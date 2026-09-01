@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+data/raw/*.jsonl
+logs/*.log
+.DS_Store
+.tmp.driveupload/
+.tmp.drivedownload/

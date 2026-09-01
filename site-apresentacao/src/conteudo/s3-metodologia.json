@@ -1,0 +1,96 @@
+{
+  "_leiaMe": "Aba 03. 'blocos' é a unidade central da tela — cada bloco vira um cartão com fonte, N, função, critérios de amostra e instrumento de coleta.",
+  "ficha": [
+    {
+      "rotulo": "Natureza",
+      "valor": "Descritivo-exploratória"
+    },
+    {
+      "rotulo": "Abordagem",
+      "valor": "Quantitativa, com componente de análise de conteúdo complementar"
+    },
+    {
+      "rotulo": "Delineamento",
+      "valor": "Transversal — coleta em janela concentrada de tempo"
+    },
+    {
+      "rotulo": "Fontes de dados",
+      "valor": "Exclusivamente secundárias e públicas"
+    },
+    {
+      "rotulo": "Recorte geográfico",
+      "valor": "27 capitais brasileiras"
+    },
+    {
+      "rotulo": "Unidade de análise",
+      "valor": "Jogo (A) · Estabelecimento (B) · Avaliação individual (C)"
+    }
+  ],
+  "blocos": {
+    "titulo": "Três blocos, ordenados do maior para o menor N",
+    "descricao": "Os blocos se articulam: A fundamenta os perfis de sucesso de jogos, B testa a associação desses perfis com o desempenho dos estabelecimentos, e C aprofunda essa associação no nível do consumidor individual.",
+    "rotulos": {
+      "fonte": "Fonte",
+      "n": "N estimado",
+      "funcao": "Função analítica",
+      "criterios": "População e critérios de amostra",
+      "instrumento": "Instrumento e procedimento de coleta"
+    },
+    "itens": [
+      {
+        "id": "A",
+        "titulo": "Bloco A — Jogos de tabuleiro",
+        "cor": "azul",
+        "fonte": "Ludopedia (API OAuth + scraping) e BoardGameGeek",
+        "n": "Alto",
+        "funcao": "Unidade quantitativa principal: engajamento, retenção, desejo e clusterização",
+        "criterios": [
+          "qt_tem ≥ 100 registros de posse, para estabilidade estatística dos indicadores por razão",
+          "Jogos publicados a partir de 2010 — consolidação do mercado moderno no Brasil",
+          "Excluídos jogos sem mecânica registrada ou sem nota média disponível"
+        ],
+        "instrumento": "API /api/v1/jogos/{id} fornece jogadores, duração, idade mínima, mecânicas, categorias e os contadores de usuário (qt_tem, qt_teve, qt_favorito, qt_quer, qt_jogou). A raspagem de /jogo/* complementa com nota média, volume de avaliações e partidas registradas, com intervalo mínimo de 5s entre requisições, conforme o robots.txt. O BoardGameGeek acrescenta o weight de complexidade da comunidade internacional."
+      },
+      {
+        "id": "B",
+        "titulo": "Bloco B — Estabelecimentos",
+        "cor": "roxo",
+        "fonte": "Google Places API, redes sociais e sites próprios, nas 27 capitais",
+        "n": "70 a 90",
+        "funcao": "Unidade estratégica: desempenho comparado entre estabelecimentos",
+        "criterios": [
+          "Identificação combina busca estruturada via Google Places API (termos do formato cruzados com cada capital) e filtro de dois estágios: termo-chave no nome ou nas avaliações, e categoria de negócio compatível com alimentação e bebidas",
+          "O filtro de categoria exclui lojas de brinquedos, brinquedotecas e varejo correlato falsamente capturados pelo termo-chave",
+          "Candidatos aprovados no filtro automatizado passam por curadoria manual de relevância antes de compor a base final",
+          "Enumeração completa (censo) da população identificada — sem amostragem, dado o N estimado reduzido"
+        ],
+        "instrumento": "Google Places API (textSearch e Place Details) fornece avaliação média, volume de avaliações, categoria de negócio, telefone, link do Google Maps e site/rede social declarado. Observação manual direta de canais públicos complementa com política de precificação (couvert, cobrança por hora ou consumo mínimo), modelo de alimentação e bebidas e, quando disponível, o acervo de jogos declarado."
+      },
+      {
+        "id": "C",
+        "titulo": "Bloco C — Avaliações individuais",
+        "cor": "carmesim",
+        "fonte": "Google Places API — campo reviews dos estabelecimentos do Bloco B",
+        "n": "Até 5 por estabelecimento",
+        "funcao": "Elo entre A e B: análise de conteúdo e agrupamento descritivo",
+        "criterios": [
+          "População: avaliações públicas em português retornadas pelo campo reviews da Place Details — até 5 por estabelecimento, selecionadas pelo próprio Google como \"mais relevantes\"",
+          "Avaliações em outros idiomas são descartadas nesta fase, por o dicionário de análise de conteúdo ser específico do português",
+          "Redução em relação ao desenho original (enumeração completa / amostra de até 100 por estabelecimento), adotada porque a maioria dos estabelecimentos não acumula 100 avaliações públicas — ver Limitações"
+        ],
+        "instrumento": "Reaproveita, sem raspagem adicional, o campo reviews já obtido na mesma chamada de Place Details do Bloco B — texto, nota, data relativa e idioma de até 5 avaliações por estabelecimento. Identificadores pessoais do autor não são coletados nem armazenados, em conformidade com a LGPD."
+      }
+    ]
+  },
+  "etica": {
+    "titulo": "Garantias éticas",
+    "itens": [
+      "Pesquisa baseada exclusivamente em dados secundários públicos, sem coleta direta com participantes humanos.",
+      "Raspagem do Bloco A conforme robots.txt da Ludopedia, com intervalo mínimo entre requisições.",
+      "Coleta dos Blocos B e C limitada a informações e avaliações públicas, sem identificadores pessoais do autor da avaliação — Lei nº 13.709/2018 (LGPD).",
+      "Verificado junto à orientadora: pesquisas com dados secundários públicos e anonimizados dispensam, em geral, submissão ao CEP/Plataforma Brasil (Resolução CNS nº 510/2016).",
+      "Por decisão metodológica, a pesquisa não coleta nem infere dados individuais de idade de usuários da Ludopedia ou de autores de avaliações — não há meio de acesso público a essa informação sem raspar perfis individuais."
+    ]
+  },
+  "nota": "Fonte: Metodologia deste trabalho. Coleta e processamento concluídos nos três blocos; testes formais de hipótese em andamento."
+}

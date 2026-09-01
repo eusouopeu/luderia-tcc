@@ -1,0 +1,80 @@
+{
+  "_leiaMe": "Identificação do trabalho, abas da barra lateral e textos da moldura do site. Em cada seção: 'titulo' e 'subtitulo' aparecem na barra lateral; 'subtituloLongo' aparece no cabeçalho da aba; 'tempo' é a estimativa de fala.",
+  "meta": {
+    "titulo": "Luderia Casual",
+    "subtitulo": "Estudo de viabilidade de um ludobar/luderia/quiz-bar posicionado para o público casual, a partir de dados de jogos, estabelecimentos e avaliações nas 27 capitais brasileiras",
+    "autor": "Pedro Caio Feitosa Teles",
+    "curso": "Bacharelado em Administração — Escola de Administração, UFBA",
+    "ano": "2026"
+  },
+  "barraLateral": {
+    "_leiaMe": "corFundo e corAbaAtiva aceitam qualquer nome listado em src/tema.js.",
+    "corFundo": "azulProfundo",
+    "corAbaAtiva": "roxoEscuro",
+    "chapeu": "TCC · Administração · UFBA",
+    "dicaTeclado": "Use ← → para navegar entre as seções",
+    "rotuloNavegacao": "Navegação entre seções"
+  },
+  "rodape": {
+    "inicio": "Início",
+    "fim": "Fim"
+  },
+  "secoes": [
+    {
+      "id": "estrutura",
+      "n": 1,
+      "titulo": "Estrutura da pesquisa",
+      "subtitulo": "Contexto, objetivos e justificativa",
+      "tempo": "1min30",
+      "subtituloLongo": "Contexto de mercado, objetivos e justificativa"
+    },
+    {
+      "id": "teorico",
+      "n": 2,
+      "titulo": "Quadro teórico",
+      "subtitulo": "Conceitos e fontes adotadas",
+      "tempo": "1min30",
+      "subtituloLongo": "Conceitos centrais e instrumental analítico"
+    },
+    {
+      "id": "metodologia",
+      "n": 3,
+      "titulo": "Caracterização metodológica",
+      "subtitulo": "Blocos de dados, população e coleta",
+      "tempo": "1min30",
+      "subtituloLongo": "Tipo, blocos de dados, população e instrumentos"
+    },
+    {
+      "id": "indicadores",
+      "n": 4,
+      "titulo": "Quadro de indicadores",
+      "subtitulo": "Do dado bruto ao indicador",
+      "tempo": "1min30",
+      "subtituloLongo": "Do dado bruto ao indicador composto, por bloco"
+    },
+    {
+      "id": "modelo",
+      "n": 5,
+      "titulo": "Modelo de hipóteses",
+      "subtitulo": "Objetivo ↔ bloco ↔ hipótese ↔ técnica",
+      "tempo": "1min30",
+      "subtituloLongo": "Objetivo específico ↔ bloco ↔ hipótese ↔ técnica"
+    },
+    {
+      "id": "tecnicas",
+      "n": 6,
+      "titulo": "Técnicas de análise",
+      "subtitulo": "Correlação, comparação, cluster, agrupamento descritivo",
+      "tempo": "1min30",
+      "subtituloLongo": "Como os dados coletados viram evidência"
+    },
+    {
+      "id": "contribuicoes",
+      "n": 7,
+      "titulo": "Contribuições esperadas",
+      "subtitulo": "Gerencial, acadêmica e social",
+      "tempo": "1min",
+      "subtituloLongo": "Gerencial, acadêmica, social — e as limitações"
+    }
+  ]
+}

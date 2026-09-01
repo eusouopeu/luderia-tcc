@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta: apenas as escalas blue e rose do Tailwind, em tons mais claros do que a versão
+     anterior (que também usava purple). Os nomes de token (roxo/lavanda/carmesim) foram mantidos
+     por compatibilidade com o conteúdo em src/conteudo/*.json — hoje todos resolvem para azul ou
+     rosa; são só três tons de rosa (claro/médio/profundo) para diferenciar grupos lado a lado. */
+  --color-azul-950: #1e3a8a;
+  --color-azul-900: #1e40af;
+  --color-azul-800: #1d4ed8;
+  --color-azul-700: #2563eb;
+  --color-roxo-700: #e11d48;
+  --color-roxo-600: #f43f5e;
+  --color-roxo-500: #fb7185;
+  --color-lavanda-400: #fda4af;
+  --color-lavanda-300: #fecdd3;
+  --color-lavanda-200: #ffe4e6;
+  --color-lavanda-100: #fff1f2;
+  --color-rosa-500: #fb7185;
+  --color-rosa-400: #fda4af;
+  --color-carmesim-600: #be123c;
+  --color-carmesim-500: #e11d48;
+  --color-papel-50: #f8fafc;
+  --color-papel-100: #f1f5f9;
+  --color-papel-200: #e2e8f0;
+
+  /* Fonte única do site. `font-display` existe só para separar títulos de corpo de texto. */
+  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-grow-x: grow-x 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes grow-x {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+html { scroll-behavior: smooth; }
+
+/* Montserrat é mais larga que a fonte condensada anterior. */
+.font-display { letter-spacing: -0.015em; }
+body { background: var(--color-papel-50); }
+
+/* trilha de rolagem discreta */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-papel-100); }
+::-webkit-scrollbar-thumb { background: var(--color-lavanda-400); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-roxo-600); }
+
+@media print {
+  .no-print { display: none !important; }
+}

@@ -1,0 +1,94 @@
+{
+  "_leiaMe": "Aba 02. 'grupos' define as abas de filtro e a cor de cada camada; 'rotuloTodos' é o último filtro.",
+  "introducao": "O trabalho não constrói teoria nova: aplica instrumental de estudo de viabilidade e de estratégia a um caso real de entretenimento social presencial. Os conceitos abaixo organizam-se em três camadas — o negócio que se investiga, os índices que traduzem seus dados e as técnicas que os tratam.",
+  "grupos": [
+    {
+      "nome": "O negócio e o público",
+      "cor": "azul"
+    },
+    {
+      "nome": "Índices do Bloco A",
+      "cor": "roxo"
+    },
+    {
+      "nome": "Instrumental analítico",
+      "cor": "lavanda"
+    }
+  ],
+  "rotuloTodos": "Todos",
+  "conceitos": [
+    {
+      "termo": "Ludobar / luderia / quiz-bar",
+      "grupo": "O negócio e o público",
+      "definicao": "Bar temático com acervo de jogos de tabuleiro para consumo no local, cobrança por acesso ou por hora, com variações de posicionamento — do foco em jogos de tabuleiro ao quiz-bar. A Ludus Luderia, pioneira em São Paulo desde 2007, é a referência do formato no Brasil.",
+      "fonte": "Introdução deste trabalho; DIVERSÓRIO (2026)"
+    },
+    {
+      "termo": "Público casual vs. hobbyista",
+      "grupo": "O negócio e o público",
+      "definicao": "O consumidor casual busca uma ocasião social pontual, sem envolvimento prévio com jogos de tabuleiro. O hobbyista já integra a comunidade consolidada de jogadores — 84% do Censo Ludopedia têm entre 19 e 40 anos, e apenas 3% têm menos de 18.",
+      "fonte": "LUDOPEDIA (2020)"
+    },
+    {
+      "termo": "Decisão de baixo envolvimento",
+      "grupo": "O negócio e o público",
+      "definicao": "Lógica inspirada na expansão do Nintendo Wii do nicho hobbyista ao público casual pela eliminação da barreira de entrada — curva de aprendizado mínima e diversão rápida — e não pelo aprofundamento do catálogo. Referência conceitual do posicionamento proposto.",
+      "fonte": "Introdução deste trabalho"
+    },
+    {
+      "termo": "Estudo de viabilidade",
+      "grupo": "O negócio e o público",
+      "definicao": "Avaliação sistemática da atratividade de um negócio antes do investimento. Aqui, conduzida exclusivamente por dados secundários públicos, articulados em três blocos — jogos, estabelecimentos e avaliações.",
+      "fonte": "Metodologia deste trabalho; MALHOTRA (2019)"
+    },
+    {
+      "termo": "Taxa de Retenção",
+      "grupo": "Índices do Bloco A",
+      "definicao": "qt_tem / (qt_tem + qt_teve) — proporção de quem ainda possui o jogo entre todos os que já o possuíram. Mede a permanência do jogo na coleção do usuário.",
+      "fonte": "Metodologia — Quadro 02"
+    },
+    {
+      "termo": "Índice de Desejo",
+      "grupo": "Índices do Bloco A",
+      "definicao": "qt_quer / qt_tem — intensidade da demanda latente por um jogo em relação à sua base de posse atual. Usado para testar o efeito de decaimento do hype (H4).",
+      "fonte": "Metodologia — Quadro 02"
+    },
+    {
+      "termo": "Taxa de Fidelização",
+      "grupo": "Índices do Bloco A",
+      "definicao": "qt_favorito / qt_tem — proporção de possuidores que marcam o jogo como favorito. Testada contra a Diversidade Mecânica (H3) e o tipo de mecânica (H2).",
+      "fonte": "Metodologia — Quadro 02"
+    },
+    {
+      "termo": "Índice de Acessibilidade Family/Casual",
+      "grupo": "Índices do Bloco A",
+      "definicao": "Proxy construído a partir de idade mínima, duração, complexidade (weight do BoardGameGeek) e tipo de mecânica — sem validação direta contra dados reais de adesão etária, indisponíveis nas fontes utilizadas.",
+      "fonte": "Metodologia; Limitações metodológicas"
+    },
+    {
+      "termo": "Grade ERRC",
+      "grupo": "Instrumental analítico",
+      "definicao": "Ferramenta da Estratégia do Oceano Azul que reformula a curva de valor de um setor perguntando o que Eliminar, Reduzir, Elevar e Criar — aplicada aqui para delimitar acervo e modelo de alimentação e bebidas do estabelecimento proposto.",
+      "fonte": "Objetivo específico (vi)"
+    },
+    {
+      "termo": "Clusterização",
+      "grupo": "Instrumental analítico",
+      "definicao": "Agrupamento dos jogos do Bloco A por Índice de Engajamento, Taxa de Retenção e Índice de Desejo — e, em paralelo, pelo Índice de Acessibilidade — para identificar perfis de sucesso e o perfil hobbyista versus acessível.",
+      "fonte": "Metodologia — Técnicas de análise"
+    },
+    {
+      "termo": "Agrupamento descritivo",
+      "grupo": "Instrumental analítico",
+      "definicao": "Particiona as avaliações do Bloco C em três agrupamentos independentes — por nota média do estabelecimento, por volume de avaliações (regra do IQR) e por nota individual (corte fixo ao estilo NPS) —, comparados por teste exato de Fisher. Substitui, nesta fase, a modelagem multinível originalmente prevista, reservada para uma expansão futura da pesquisa.",
+      "fonte": "Metodologia — Técnicas de análise"
+    },
+    {
+      "termo": "Análise de conteúdo",
+      "grupo": "Instrumental analítico",
+      "definicao": "Codificação categorial de avaliações em texto livre por dicionário de termos-chave, com validação manual em 10% da subamostra codificada, gerando as variáveis binárias do Bloco C.",
+      "fonte": "BARDIN (2011)"
+    }
+  ],
+  "nota": "Referências completas nas seções Introdução e Metodologia deste trabalho, em formato ABNT NBR 6023."
+}

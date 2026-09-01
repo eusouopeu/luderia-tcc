@@ -1,0 +1,119 @@
+{
+  "_leiaMe": "Aba 07. Os blocos abrem recolhidos; 'destaque' pinta o eixo principal.",
+  "numeros": [
+    {
+      "valor": 53,
+      "sufixo": " bi",
+      "decimais": 0,
+      "cor": "roxo",
+      "texto": "reais movimentados pelo mercado global de jogos de tabuleiro em 2024 (SEBRAE, 2026)"
+    },
+    {
+      "valor": 13.1,
+      "sufixo": "%",
+      "decimais": 1,
+      "cor": "azulEscuro",
+      "texto": "de participação dos jogos de tabuleiro e cartas nas vendas da indústria de brinquedos em 2025 — ante 9,1% em 2017 (ABRINQ, 2026)"
+    },
+    {
+      "valor": 3,
+      "sufixo": "%",
+      "decimais": 0,
+      "cor": "carmesim",
+      "texto": "dos respondentes do Censo Ludopedia têm menos de 18 anos — evidência da concentração hobbyista do mercado atual (LUDOPEDIA, 2020)"
+    }
+  ],
+  "eixos": {
+    "titulo": "Os três eixos",
+    "descricao": "Clique em cada eixo para abrir.",
+    "rotuloDestaque": "contribuição principal",
+    "itens": [
+      {
+        "eixo": "Gerencial",
+        "destaque": true,
+        "itens": [
+          {
+            "titulo": "Curadoria do acervo de jogos",
+            "texto": "Guiada pelos perfis identificados por clusterização e pelo Índice de Acessibilidade Family/Casual — não pela amplitude do catálogo."
+          },
+          {
+            "titulo": "Política de precificação",
+            "texto": "Orientada pela comparação entre categorias de preço praticadas nos estabelecimentos do Bloco B."
+          },
+          {
+            "titulo": "Modelo de alimentação e bebidas",
+            "texto": "Minimiza o investimento inicial em cozinha própria sem comprometer a experiência do público-alvo, com base na comparação entre modelos concorrentes."
+          },
+          {
+            "titulo": "Posicionamento de marca",
+            "texto": "Voltado à atração do público casual e ao afastamento controlado do público hobbyista exigente."
+          },
+          {
+            "titulo": "Processo replicável",
+            "texto": "A aplicação da grade ERRC documenta um processo de delimitação estratégica replicável por empreendedores em fase de estruturação de negócios similares."
+          }
+        ]
+      },
+      {
+        "eixo": "Acadêmica",
+        "itens": [
+          "Preenche lacuna na literatura de estudos de viabilidade do setor de entretenimento social presencial — os levantamentos disponíveis concentram-se no varejo e na indústria editorial, sem tratar o nível do estabelecimento.",
+          "Articula três blocos de dados de naturezas distintas: indicadores de jogos via API e scraping, perfil de estabelecimentos via Google Places API e avaliações individuais via análise de conteúdo e agrupamento descritivo.",
+          "Amplia o escopo metodológico ao aplicar correlação, regressão, comparação entre grupos, clusterização e agrupamento descritivo a um problema real de posicionamento de mercado."
+        ]
+      },
+      {
+        "eixo": "Social",
+        "itens": [
+          "Oferece um espaço de lazer social presencial, alternativo ao consumo de entretenimento mediado por telas.",
+          "Amplia esse benefício para além da comunidade já consolidada de jogadores, reduzindo a barreira de entrada representada pela cultura hobbyista.",
+          "Abre o formato a ocasiões sociais cotidianas — encontros entre amigos, aniversários, confraternizações corporativas."
+        ]
+      }
+    ]
+  },
+  "limitacoes": {
+    "titulo": "O que o estudo não vai permitir afirmar",
+    "subtitulo": "limitações reconhecidas",
+    "itens": [
+      "O Bloco C se reduz a até 5 avaliações por estabelecimento, selecionadas pelo algoritmo do Google como \"mais relevantes\" — nem as mais recentes, nem uma amostra aleatória —, restringindo H8' e H9' a um caráter exploratório e descritivo, sem pretensão de generalização estatística.",
+      "O corte transversal impede identificar variações temporais na adesão a jogos e no desempenho de estabelecimentos, e inviabiliza inferências causais.",
+      "A variável idade mínima, central para H1, tem confiabilidade reduzida: a própria Ludopedia reconhece que a classificação etária é frequentemente elevada por exigência legal, sem refletir a jogabilidade real.",
+      "O N reduzido do Bloco B (70 a 90 estabelecimentos) restringe o poder estatístico dos testes de comparação entre grupos, o que motivou a adoção de técnicas não paramétricas em todo esse bloco.",
+      "A hipótese-ponte H7 depende da identificação do acervo real de cada estabelecimento em canais públicos, nem sempre disponível ou atualizada — fragmentando o teste em um componente estatístico e um qualitativo.",
+      "O Índice de Acessibilidade Family/Casual é um proxy construído a partir de variáveis do próprio jogo, sem validação direta contra dados reais de adesão etária, indisponíveis nas fontes utilizadas.",
+      "As avaliações do Google Maps estão sujeitas a viés de autosseleção — representam quem se motivou a avaliar publicamente, o que pode superrepresentar experiências extremas em relação à experiência média."
+    ]
+  },
+  "agenda": {
+    "titulo": "Próximos passos",
+    "subtitulo": "do estado atual até a análise",
+    "itens": [
+      {
+        "titulo": "Fechar a curadoria do Bloco B",
+        "texto": "Confirmar a relevância de cada candidato identificado via Google Places API nas 27 capitais, descartando falsos positivos e duplicatas."
+      },
+      {
+        "titulo": "Rodar os testes de hipótese do Bloco A",
+        "texto": "Aplicar regressão múltipla (H1), ANCOVA (H2) e regressão (H4) sobre os indicadores de engajamento, retenção e desejo — correlação e clusterização já processadas."
+      },
+      {
+        "titulo": "Testar o Bloco B",
+        "texto": "Aplicar Kruskal-Wallis para comparar avaliação média e volume de avaliações entre capitais e categorias de precificação e de alimentação e bebidas."
+      },
+      {
+        "titulo": "Validar a codificação do Bloco C",
+        "texto": "Checar manualmente 10% da subamostra codificada pelo dicionário de termos-chave, e cruzar os agrupamentos descritivos (IQR/NPS) por teste exato de Fisher para H8' e H9'."
+      },
+      {
+        "titulo": "Consolidar a grade ERRC",
+        "texto": "Traduzir os achados estatísticos e qualitativos dos três blocos em decisões de Eliminar, Reduzir, Elevar e Criar."
+      }
+    ]
+  },
+  "fecho": {
+    "rotulo": "Em uma frase",
+    "texto": "A viabilidade de uma luderia casual se decide onde os dados dos jogos, dos estabelecimentos concorrentes e dos consumidores se encontram — e é esse encontro que a pesquisa está construindo."
+  },
+  "nota": "Fonte: Introdução, Justificativa e Limitações metodológicas deste trabalho."
+}

@@ -1,0 +1,79 @@
+{
+  "_leiaMe": "Aba 06. 'tecnicas' são as cinco técnicas descritas na metodologia. 'coleta' descreve o estado de execução por bloco.",
+  "tecnicas": [
+    {
+      "nome": "Correlação e regressão",
+      "resumo": "Testa as hipóteses do Bloco A relativas a variáveis contínuas.",
+      "detalhes": [
+        "H1 — regressão linear múltipla: qt_jogou como variável dependente, idade mínima e duração como preditores, controlando pela Diversidade Mecânica.",
+        "H3 — correlação de Spearman entre Diversidade Mecânica e Taxa de Fidelização, dada a natureza ordinal da primeira variável.",
+        "H4 — regressão: Índice de Desejo como variável dependente, tempo desde a publicação como preditor.",
+        "H7 (onde o acervo é identificável) — correlação de Spearman entre escore de alinhamento de acervo e avaliação média."
+      ]
+    },
+    {
+      "nome": "Comparação entre grupos",
+      "resumo": "Testa H2, H5(B) e H6/H6b.",
+      "detalhes": [
+        "H2 — ANCOVA: Taxa de Fidelização entre jogos de mecânica cooperativa e competitiva, controlando pelas demais variáveis do modelo.",
+        "H5(B) — Kruskal-Wallis: avaliação média do Google Maps entre Salvador e as demais capitais, não paramétrico dado o N reduzido do Bloco B.",
+        "H6 e H6b — Kruskal-Wallis: volume de avaliações e avaliação média entre categorias de política de precificação e de modelo de alimentação e bebidas."
+      ]
+    },
+    {
+      "nome": "Clusterização",
+      "resumo": "Opera em dois níveis sobre o Bloco A.",
+      "detalhes": [
+        "Nível do jogo: agrupa os títulos por Índice de Engajamento, Taxa de Retenção e Índice de Desejo, testando H5(A) e identificando perfis de sucesso sem depender da nota média.",
+        "Índice de Acessibilidade Family/Casual: gera um segundo agrupamento, classificando os jogos entre o perfil hobbyista e o perfil acessível.",
+        "Esse segundo agrupamento fundamenta o escore de alinhamento de acervo usado no Bloco B (H7)."
+      ]
+    },
+    {
+      "nome": "Agrupamento descritivo",
+      "resumo": "Particiona o Bloco C em três agrupamentos independentes, testa H8' e H9'.",
+      "detalhes": [
+        "Três agrupamentos por regra do IQR: por nota média do estabelecimento e por volume de avaliações (maiores/menores/outliers); por nota individual da avaliação, com corte fixo por estrelas ao estilo NPS (5 = promotor, 4 = neutro, 1-3 = detrator).",
+        "H8' — compara, entre promotor/neutro/detrator, a proporção de avaliações que mencionam preço, cruzada com o agrupamento por nota média do estabelecimento — teste exato de Fisher.",
+        "H9' — compara a proporção de menções a fricção de complexidade entre promotor/neutro/detrator, cruzada com o perfil de acervo do estabelecimento (hobbyista ou acessível) — teste exato de Fisher.",
+        "H7 (onde o acervo não é identificável) — tratada qualitativamente, por estudo de caso descritivo.",
+        "Substitui, nesta fase da pesquisa, a modelagem multinível originalmente prevista para H8 e H9, reservada para uma eventual expansão em que o Bloco C seja ampliado por raspagem."
+      ]
+    },
+    {
+      "nome": "Análise de conteúdo",
+      "resumo": "Gera as variáveis binárias do Bloco C.",
+      "detalhes": [
+        "Bardin (2011): pré-análise, exploração do material e tratamento dos resultados.",
+        "Dicionário de termos-chave orienta a codificação automatizada inicial das menções a preço e a fricção de complexidade.",
+        "Validação manual em subamostra de 10% das avaliações codificadas, para checagem de consistência.",
+        "Complementa a interpretação dos agrupamentos descritivos com exemplos ilustrativos de cada padrão identificado."
+      ]
+    }
+  ],
+  "coleta": {
+    "titulo": "Estado da coleta, por bloco",
+    "descricao": "Coleta e processamento concluídos nos três blocos. Correlação e clusterização já rodadas nos Blocos A e C; os testes formais de comparação entre grupos (Bloco B) e o cruzamento de agrupamentos com teste de Fisher (Bloco C) seguem em andamento.",
+    "itens": [
+      {
+        "bloco": "Bloco A — Jogos",
+        "cor": "azul",
+        "estagio": "Coleta e análise concluídas",
+        "texto": "Coleta via API OAuth da Ludopedia, raspagem complementar e enriquecimento pelo weight de complexidade do BoardGameGeek concluídos. Correlações (Pearson e Spearman) e clusterização de perfis de sucesso já processadas."
+      },
+      {
+        "bloco": "Bloco B — Estabelecimentos",
+        "cor": "roxo",
+        "estagio": "Curadoria em andamento",
+        "texto": "Identificação de candidatos via Google Places API nas 27 capitais concluída; curadoria manual da planilha de estabelecimentos, para confirmar relevância e descartar falsos positivos, em andamento."
+      },
+      {
+        "bloco": "Bloco C — Avaliações",
+        "cor": "carmesim",
+        "estagio": "Coleta e análise concluídas",
+        "texto": "Avaliações reaproveitadas do campo reviews do Bloco B, filtradas por idioma e analisadas. Clusterização e correlações já processadas; codificação por análise de conteúdo e agrupamentos descritivos (H8', H9') em validação."
+      }
+    ]
+  },
+  "nota": "Nível de significância adotado em toda a pesquisa: p < 0,05. Fonte: Metodologia deste trabalho — seção Técnicas de análise."
+}

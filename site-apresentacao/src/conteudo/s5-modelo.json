@@ -1,0 +1,130 @@
+{
+  "_leiaMe": "Aba 05. Cada entrada de 'objetivos' vira um botão no seletor e um bloco da matriz. O objetivo (vi) não testa hipótese estatística — é síntese estratégica.",
+  "introducao": "Cada objetivo específico governa um bloco de dados e testa um conjunto fechado de hipóteses, cada uma com uma técnica de análise definida a priori. Selecione um objetivo para percorrer a cadeia.",
+  "coresBloco": {
+    "Bloco A": "azul",
+    "Bloco B": "roxo",
+    "Ponte A ↔ B": "lavanda",
+    "Bloco C": "carmesim",
+    "Síntese": "azulEscuro"
+  },
+  "rotulos": {
+    "hipoteses": "Hipóteses testadas",
+    "tecnica": "Técnica de análise",
+    "prefixoBloco": "bloco"
+  },
+  "matriz": {
+    "titulo": "A matriz completa",
+    "colunas": [
+      "OE",
+      "Bloco",
+      "Hipóteses",
+      "Técnica"
+    ]
+  },
+  "objetivos": [
+    {
+      "oe": "(i)",
+      "bloco": "Bloco A",
+      "pergunta": "Que jogos engajam, retêm e fidelizam mais — e por quê?",
+      "hipoteses": [
+        {
+          "id": "H1",
+          "texto": "Jogos com menor idade mínima e menor duração de partida têm mais partidas registradas (qt_jogou), controlando pela diversidade mecânica.",
+          "tecnica": "Regressão linear múltipla"
+        },
+        {
+          "id": "H2",
+          "texto": "Jogos de mecânica cooperativa têm Taxa de Fidelização superior aos de mecânica competitiva.",
+          "tecnica": "ANCOVA"
+        },
+        {
+          "id": "H3",
+          "texto": "A Diversidade Mecânica está positivamente associada à Taxa de Fidelização.",
+          "tecnica": "Correlação de Spearman"
+        },
+        {
+          "id": "H4",
+          "texto": "O Índice de Desejo decai com o tempo desde a publicação do jogo (decaimento do hype).",
+          "tecnica": "Regressão linear"
+        }
+      ]
+    },
+    {
+      "oe": "(ii)",
+      "bloco": "Bloco A",
+      "pergunta": "Que jogos são acessíveis ao público casual, e quais são hobbyistas?",
+      "hipoteses": [
+        {
+          "id": "H5(A)",
+          "texto": "É possível identificar perfis distintos de sucesso entre os jogos a partir do Índice de Engajamento, da Taxa de Retenção e do Índice de Desejo, sem depender da nota média.",
+          "tecnica": "Clusterização"
+        }
+      ]
+    },
+    {
+      "oe": "(iii)",
+      "bloco": "Bloco B",
+      "pergunta": "Como os estabelecimentos concorrentes se posicionam nas 27 capitais?",
+      "hipoteses": [
+        {
+          "id": "H5(B)",
+          "texto": "A avaliação média dos estabelecimentos em Salvador difere da avaliação média nas demais capitais pesquisadas.",
+          "tecnica": "Kruskal-Wallis"
+        },
+        {
+          "id": "H6",
+          "texto": "O volume de avaliações difere entre categorias de política de precificação.",
+          "tecnica": "Kruskal-Wallis"
+        },
+        {
+          "id": "H6b",
+          "texto": "A avaliação média difere entre categorias de modelo de alimentação e bebidas.",
+          "tecnica": "Kruskal-Wallis"
+        }
+      ]
+    },
+    {
+      "oe": "(iv)",
+      "bloco": "Ponte A ↔ B",
+      "pergunta": "O acervo de um estabelecimento se relaciona com sua avaliação?",
+      "hipoteses": [
+        {
+          "id": "H7",
+          "texto": "O alinhamento do acervo de um estabelecimento aos perfis de jogos acessíveis identificados no Bloco A está associado positivamente à sua avaliação média.",
+          "tecnica": "Correlação de Spearman onde o acervo é identificável; estudo de caso descritivo nos demais"
+        }
+      ]
+    },
+    {
+      "oe": "(v)",
+      "bloco": "Bloco C",
+      "pergunta": "O que preço e complexidade têm a ver com a nota do consumidor?",
+      "hipoteses": [
+        {
+          "id": "H8'",
+          "texto": "A proporção de avaliações que mencionam preço é maior entre os detratores (1-3 estrelas) do que entre os promotores (5 estrelas), cruzando o agrupamento por nota individual com o agrupamento por nota média do estabelecimento.",
+          "tecnica": "Agrupamento descritivo (IQR/NPS) + teste exato de Fisher"
+        },
+        {
+          "id": "H9'",
+          "texto": "A proporção de menções a fricção de complexidade é maior entre os detratores, e essa menção se concentra nos estabelecimentos de perfil hobbyista, cruzando o agrupamento por nota individual com o perfil de acervo do estabelecimento.",
+          "tecnica": "Agrupamento descritivo (IQR/NPS) + teste exato de Fisher"
+        }
+      ]
+    },
+    {
+      "oe": "(vi)",
+      "bloco": "Síntese",
+      "pergunta": "Como transformar os achados em posicionamento estratégico?",
+      "hipoteses": [
+        {
+          "id": "ERRC",
+          "texto": "Sem teste de hipótese estatística: a grade ERRC organiza os achados dos Blocos A e B em decisões de Eliminar, Reduzir, Elevar e Criar para o acervo e o modelo de alimentação e bebidas do estabelecimento proposto.",
+          "tecnica": "Grade ERRC — Estratégia do Oceano Azul"
+        }
+      ]
+    }
+  ],
+  "nota": "H = hipótese; A numeração segue a ordem de apresentação na metodologia deste trabalho, não a ordem de importância."
+}

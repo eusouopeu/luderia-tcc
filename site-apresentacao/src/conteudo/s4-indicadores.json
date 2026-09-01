@@ -1,0 +1,140 @@
+{
+  "_leiaMe": "Aba 04. A ordem de 'colunas' define a ordem das colunas da tabela e deve casar com 'campos' de cada item em 'itens'.",
+  "introducao": {
+    "antes": "Cada indicador do Quadro 02 da metodologia nasce de variáveis brutas coletadas nos três blocos — contadores de usuário como",
+    "exemplos": [
+      "qt_tem",
+      "qt_favorito",
+      "qt_quer"
+    ],
+    "depois": "— e se conecta a uma ou mais hipóteses do modelo de análise.",
+    "prefixoObservacao": "",
+    "fim": ""
+  },
+  "dimensoes": [
+    "Bloco A",
+    "Bloco B",
+    "Bloco C"
+  ],
+  "coresDimensao": {
+    "Bloco A": "azul",
+    "Bloco B": "roxo",
+    "Bloco C": "carmesim"
+  },
+  "rotuloTodas": "Todos",
+  "colunas": [
+    {
+      "titulo": "Bloco",
+      "campo": "dim"
+    },
+    {
+      "titulo": "Indicador",
+      "campo": "indicador"
+    },
+    {
+      "titulo": "Definição / fórmula",
+      "campo": "definicao"
+    },
+    {
+      "titulo": "Uso analítico",
+      "campo": "uso"
+    }
+  ],
+  "rotulosCartao": {
+    "definicao": "Definição",
+    "uso": "Uso analítico"
+  },
+  "itens": [
+    {
+      "dim": "Bloco A",
+      "indicador": "Índice de Engajamento",
+      "definicao": "Combina os contadores de interação do jogo — posse, partidas jogadas, favoritos — num escore síntese da comunidade.",
+      "uso": "Unidade quantitativa principal; insumo da clusterização de perfis de sucesso (H5-A)"
+    },
+    {
+      "dim": "Bloco A",
+      "indicador": "Taxa de Retenção",
+      "definicao": "qt_tem / (qt_tem + qt_teve)",
+      "uso": "Insumo da clusterização de perfis de sucesso (H5-A)"
+    },
+    {
+      "dim": "Bloco A",
+      "indicador": "Índice de Desejo",
+      "definicao": "qt_quer / qt_tem",
+      "uso": "Variável dependente de H4 — decaimento do hype; insumo de H5-A"
+    },
+    {
+      "dim": "Bloco A",
+      "indicador": "Taxa de Fidelização",
+      "definicao": "qt_favorito / qt_tem",
+      "uso": "Variável dependente de H2 (mecânica cooperativa vs. competitiva) e H3 (diversidade mecânica)"
+    },
+    {
+      "dim": "Bloco A",
+      "indicador": "Diversidade Mecânica",
+      "definicao": "Número de mecânicas de jogo distintas associadas ao título.",
+      "uso": "Controle em H1; preditor ordinal de H3"
+    },
+    {
+      "dim": "Bloco A",
+      "indicador": "Amplitude de Público",
+      "definicao": "Intervalo entre o número mínimo e máximo de jogadores suportado pelo jogo.",
+      "uso": "Insumo do Índice de Acessibilidade Family/Casual"
+    },
+    {
+      "dim": "Bloco A",
+      "indicador": "Índice de Acessibilidade Family/Casual",
+      "definicao": "Proxy construído a partir de idade mínima, duração, complexidade (weight do BoardGameGeek) e tipo de mecânica.",
+      "uso": "Base da clusterização hobbyista / acessível (H5-A) e do escore de alinhamento de acervo (H7)"
+    },
+    {
+      "dim": "Bloco B",
+      "indicador": "Avaliação média",
+      "definicao": "Nota média do estabelecimento no Google Maps.",
+      "uso": "Variável dependente de H5(B), H6b e H7"
+    },
+    {
+      "dim": "Bloco B",
+      "indicador": "Volume de avaliações",
+      "definicao": "Contagem de avaliações públicas do estabelecimento no Google Maps.",
+      "uso": "Variável dependente de H6"
+    },
+    {
+      "dim": "Bloco B",
+      "indicador": "Preços praticados",
+      "definicao": "Categoria de política de precificação: couvert, cobrança por hora ou consumo mínimo.",
+      "uso": "Preditor categórico de H6"
+    },
+    {
+      "dim": "Bloco B",
+      "indicador": "Modelo de alimentação e bebidas",
+      "definicao": "Categoria: cozinha própria, parceria com food truck ou operação somente-bar.",
+      "uso": "Preditor categórico de H6b"
+    },
+    {
+      "dim": "Bloco B",
+      "indicador": "Escore de alinhamento de acervo",
+      "definicao": "Correspondência entre o acervo declarado do estabelecimento e os perfis de jogos acessíveis do Bloco A, quando o acervo é identificável em canais públicos.",
+      "uso": "Preditor de H7 (ponte A ↔ B); tratado qualitativamente quando o acervo não é identificável"
+    },
+    {
+      "dim": "Bloco C",
+      "indicador": "Menção a preço / \"caro\"",
+      "definicao": "Variável binária por análise de conteúdo — dicionário de termos-chave, com validação manual em 10% da subamostra.",
+      "uso": "Preditor de nível 1 em H8, controlando pela avaliação média do estabelecimento (nível 2)"
+    },
+    {
+      "dim": "Bloco C",
+      "indicador": "Menção a fricção de complexidade",
+      "definicao": "Variável binária — menção a dificuldade ou intimidação nas regras do jogo ou da mecânica.",
+      "uso": "Preditor de nível 1 em H9, cruzado com o perfil de acervo do estabelecimento (nível 2)"
+    },
+    {
+      "dim": "Bloco C",
+      "indicador": "Menção à ausência de fricção",
+      "definicao": "Variável binária — menção favorável, indicando acolhimento a iniciantes.",
+      "uso": "Complementa a leitura qualitativa de H9"
+    }
+  ],
+  "nota": "Quadro 02 da metodologia deste trabalho. As variáveis binárias do Bloco C derivam de análise de conteúdo (BARDIN, 2011)."
+}

@@ -1,0 +1,76 @@
+{
+  "_leiaMe": "Aba 01. 'cascata' é a cadeia dedutiva; 'objetivosEspecificos' são os seis (i)-(vi) da introdução.",
+  "cascata": {
+    "titulo": "Do crescimento do mercado à pergunta de pesquisa",
+    "descricao": "Do que se observa no mercado até o que este estudo consegue medir. Clique em cada nível.",
+    "cores": [
+      "azulProfundo",
+      "roxo",
+      "rosa"
+    ],
+    "etapas": [
+      {
+        "nivel": "Contexto de mercado",
+        "escopo": "O que se observa",
+        "texto": "O mercado brasileiro de jogos de tabuleiro cresce acima da média do setor de brinquedos (16% no segmento contra a média geral, ABRINQ 2026) e sustenta um modelo de negócio consolidado — o ludobar/luderia/quiz-bar —, hoje operado majoritariamente para o público hobbyista: acervos extensos, cobrança por acesso ilimitado e jogos de regras complexas."
+      },
+      {
+        "nivel": "Lacuna identificada",
+        "escopo": "O que falta",
+        "texto": "O Censo Ludopedia 2020 mostra que apenas 3% dos jogadores cadastrados têm menos de 18 anos, evidenciando um público já consolidado do hobby — não o consumidor casual, que busca uma ocasião social pontual sem envolvimento prévio com jogos de tabuleiro. Não há, na literatura brasileira de estudos de viabilidade, um recorte no nível do estabelecimento voltado a esse público."
+      },
+      {
+        "nivel": "Problema de pesquisa",
+        "escopo": "Pergunta empírica",
+        "texto": "É viável um estabelecimento no formato ludobar/luderia/quiz-bar posicionado para o público casual — com curva de aprendizado mínima, diversão rápida e ocasião social em sessões de 20 a 30 minutos —, a partir de dados de jogos, de estabelecimentos concorrentes nas 27 capitais brasileiras e de avaliações de seus consumidores?"
+      }
+    ]
+  },
+  "objetivoGeral": {
+    "rotulo": "Objetivo geral",
+    "texto": "Avaliar a viabilidade de uma luderia posicionada para o público casual, a partir da análise de dados de jogos físicos, de estabelecimentos similares nas 27 capitais brasileiras e de avaliações de seus consumidores."
+  },
+  "objetivosEspecificos": {
+    "titulo": "Objetivos específicos",
+    "descricao": "Seis objetivos, do Bloco A ao Bloco C, fechando na síntese estratégica.",
+    "itens": [
+      {
+        "id": "(i)",
+        "dim": "Bloco A · Jogos",
+        "cor": "azul",
+        "texto": "Mapear indicadores de engajamento, retenção e fidelização de jogos de cartas e de tabuleiro a partir de dados da Ludopedia e do BoardGameGeek."
+      },
+      {
+        "id": "(ii)",
+        "dim": "Bloco A · Jogos",
+        "cor": "azul",
+        "texto": "Construir um índice de acessibilidade family/casual e identificar, por clusterização, perfis de jogos hobbyistas e perfis de jogos acessíveis."
+      },
+      {
+        "id": "(iii)",
+        "dim": "Bloco B · Estabelecimentos",
+        "cor": "roxo",
+        "texto": "Mapear e comparar estabelecimentos do formato ludobar/luderia/quiz-bar nas 27 capitais brasileiras quanto a avaliação, volume de avaliações, política de precificação e modelo de alimentação e bebidas."
+      },
+      {
+        "id": "(iv)",
+        "dim": "Ponte A ↔ B",
+        "cor": "lavanda",
+        "texto": "Testar a associação entre o alinhamento do acervo de cada estabelecimento aos perfis de jogos identificados e a avaliação recebida."
+      },
+      {
+        "id": "(v)",
+        "dim": "Bloco C · Avaliações",
+        "cor": "carmesim",
+        "texto": "Analisar avaliações individuais de consumidores quanto a menções de preço e de fricção de complexidade ou intimidação, e sua associação com a nota atribuída."
+      },
+      {
+        "id": "(vi)",
+        "dim": "Síntese estratégica",
+        "cor": "azulEscuro",
+        "texto": "Aplicar a grade ERRC (Eliminar-Reduzir-Elevar-Criar) para delimitar o posicionamento estratégico do estabelecimento proposto, na curadoria do acervo e no modelo de alimentação e bebidas."
+      }
+    ]
+  },
+  "nota": "Fonte: seção Introdução e Objetivos do relatório. A pesquisa combina exclusivamente dados secundários públicos, sem coleta direta com participantes humanos."
+}
