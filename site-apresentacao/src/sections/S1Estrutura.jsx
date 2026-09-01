@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { QRCodeSVG } from "qrcode.react";
 import c from "../conteudo/s1-estrutura.json";
+import site from "../conteudo/site.json";
 import { cor } from "../tema";
 import { TituloSecao, Cartao, Reveal, Etiqueta, Nota } from "../components/ui";
 
@@ -9,6 +11,25 @@ export default function S1Estrutura() {
   return (
     <>
       <TituloSecao id="estrutura" />
+
+      {/* QR code — acesso pelo celular */}
+      <Reveal>
+        <Cartao tom="areia" className="mb-10 flex flex-col items-center gap-4 p-5 sm:flex-row sm:gap-6">
+          <div className="shrink-0 rounded-lg bg-white p-2.5 shadow-sm">
+            <QRCodeSVG value={site.meta.url} size={104} bgColor="#ffffff" fgColor="var(--color-azul-950)" level="M" />
+          </div>
+          <div className="min-w-0 text-center sm:text-left">
+            <h3 className="font-display text-base font-bold text-azul-950">{site.qrcode.titulo}</h3>
+            <p className="mt-1 text-sm leading-relaxed text-azul-700/80">{site.qrcode.texto}</p>
+            <a
+              href={site.meta.url}
+              className="mt-1.5 inline-block text-sm font-semibold break-all text-roxo-600 hover:underline"
+            >
+              {site.meta.url}
+            </a>
+          </div>
+        </Cartao>
+      </Reveal>
 
       {/* Cascata dedutiva */}
       <Reveal>
