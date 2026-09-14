@@ -1,0 +1,256 @@
+tabela,variavel_id,variavel,unidade,nivel,localidade_id,localidade,periodo,Atividades de serviços,valor_original,valor
+10758,630,Número de empresas,Unidades,Brasil,1,Brasil,2024,1. Total,1919365,1919365.0
+10758,630,Número de empresas,Unidades,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,220098,220098.0
+10758,630,Número de empresas,Unidades,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",57579,57579.0
+10758,631,Pessoal ocupado em 31/12,Pessoas,Brasil,1,Brasil,2024,1. Total,15864213,15864213.0
+10758,631,Pessoal ocupado em 31/12,Pessoas,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,1856632,1856632.0
+10758,631,Pessoal ocupado em 31/12,Pessoas,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",253500,253500.0
+10758,857,"Gastos com pessoal - salários, retiradas e outras remunerações",Mil Reais,Brasil,1,Brasil,2024,1. Total,644229550,644229550.0
+10758,857,"Gastos com pessoal - salários, retiradas e outras remunerações",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,49116567,49116567.0
+10758,857,"Gastos com pessoal - salários, retiradas e outras remunerações",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",6366191,6366191.0
+10758,1242,Valor adicionado,Mil Reais,Brasil,1,Brasil,2024,1. Total,2061821000,2061821000.0
+10758,1242,Valor adicionado,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,130518100,130518100.0
+10758,1242,Valor adicionado,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",21303053,21303053.0
+10758,643,Receita operacional líquida,Mil Reais,Brasil,1,Brasil,2024,1. Total,3529697760,3529697760.0
+10758,643,Receita operacional líquida,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,257709554,257709554.0
+10758,643,Receita operacional líquida,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",33676457,33676457.0
+10758,657,Custo das mercadorias revendidas,Mil Reais,Brasil,1,Brasil,2024,1. Total,71318304,71318304.0
+10758,657,Custo das mercadorias revendidas,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,11715528,11715528.0
+10758,657,Custo das mercadorias revendidas,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",420235,420235.0
+10758,1552,Subvenções e outras receitas operacionais,Mil Reais,Brasil,1,Brasil,2024,1. Total,132858272,132858272.0
+10758,1552,Subvenções e outras receitas operacionais,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,4211911,4211911.0
+10758,1552,Subvenções e outras receitas operacionais,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",1064458,1064458.0
+10758,634,Valor bruto da produção,Mil Reais,Brasil,1,Brasil,2024,1. Total,3591237727,3591237727.0
+10758,634,Valor bruto da produção,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,250205937,250205937.0
+10758,634,Valor bruto da produção,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",34320681,34320681.0
+10758,637,Consumo intermediário - total,Mil Reais,Brasil,1,Brasil,2024,1. Total,1529416725,1529416725.0
+10758,637,Consumo intermediário - total,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,119687837,119687837.0
+10758,637,Consumo intermediário - total,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",13017627,13017627.0
+10758,1553,"Consumo intermediário - mercadorias, materiais de consumo e de reposição",Mil Reais,Brasil,1,Brasil,2024,1. Total,290931691,290931691.0
+10758,1553,"Consumo intermediário - mercadorias, materiais de consumo e de reposição",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,69074154,69074154.0
+10758,1553,"Consumo intermediário - mercadorias, materiais de consumo e de reposição",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",1906005,1906005.0
+10758,1554,Consumo intermediário - combustíveis e lubrificantes,Mil Reais,Brasil,1,Brasil,2024,1. Total,142302243,142302243.0
+10758,1554,Consumo intermediário - combustíveis e lubrificantes,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,977343,977343.0
+10758,1554,Consumo intermediário - combustíveis e lubrificantes,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",176739,176739.0
+10758,1555,Consumo intermediário - serviços prestados por terceiros,Mil Reais,Brasil,1,Brasil,2024,1. Total,447464508,447464508.0
+10758,1555,Consumo intermediário - serviços prestados por terceiros,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,11055944,11055944.0
+10758,1555,Consumo intermediário - serviços prestados por terceiros,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",4290539,4290539.0
+10758,1556,"Consumo intermediário - aluguéis de imóveis, veículos, máquinas e equipamentos",Mil Reais,Brasil,1,Brasil,2024,1. Total,117372618,117372618.0
+10758,1556,"Consumo intermediário - aluguéis de imóveis, veículos, máquinas e equipamentos",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,10525106,10525106.0
+10758,1556,"Consumo intermediário - aluguéis de imóveis, veículos, máquinas e equipamentos",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",2295233,2295233.0
+10758,1557,Consumo intermediário - prêmios de seguros,Mil Reais,Brasil,1,Brasil,2024,1. Total,9862587,9862587.0
+10758,1557,Consumo intermediário - prêmios de seguros,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,178697,178697.0
+10758,1557,Consumo intermediário - prêmios de seguros,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",63110,63110.0
+10758,1558,Consumo intermediário - serviços de comunicação,Mil Reais,Brasil,1,Brasil,2024,1. Total,12954582,12954582.0
+10758,1558,Consumo intermediário - serviços de comunicação,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,703107,703107.0
+10758,1558,Consumo intermediário - serviços de comunicação,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",123672,123672.0
+10758,1559,"Consumo intermediário - energia elétrica, gás, água e esgoto",Mil Reais,Brasil,1,Brasil,2024,1. Total,29930326,29930326.0
+10758,1559,"Consumo intermediário - energia elétrica, gás, água e esgoto",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,5717397,5717397.0
+10758,1559,"Consumo intermediário - energia elétrica, gás, água e esgoto",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",1158832,1158832.0
+10758,1560,Consumo intermediário - outros custos e despesas operacionais,Mil Reais,Brasil,1,Brasil,2024,1. Total,486162672,486162672.0
+10758,1560,Consumo intermediário - outros custos e despesas operacionais,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,21324430,21324430.0
+10758,1560,Consumo intermediário - outros custos e despesas operacionais,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",3198442,3198442.0
+10758,856,Gastos com pessoal - total,Mil Reais,Brasil,1,Brasil,2024,1. Total,930648146,930648146.0
+10758,856,Gastos com pessoal - total,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,64697891,64697891.0
+10758,856,Gastos com pessoal - total,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",8033105,8033105.0
+10758,859,Gastos com pessoal - contribuições para a previdência social,Mil Reais,Brasil,1,Brasil,2024,1. Total,91466684,91466684.0
+10758,859,Gastos com pessoal - contribuições para a previdência social,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,4809689,4809689.0
+10758,859,Gastos com pessoal - contribuições para a previdência social,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",523498,523498.0
+10758,860,Gastos com pessoal - FGTS,Mil Reais,Brasil,1,Brasil,2024,1. Total,45595045,45595045.0
+10758,860,Gastos com pessoal - FGTS,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,3712750,3712750.0
+10758,860,Gastos com pessoal - FGTS,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",395575,395575.0
+10758,858,Gastos com pessoal - contribuições para a previdência privada,Mil Reais,Brasil,1,Brasil,2024,1. Total,4684448,4684448.0
+10758,858,Gastos com pessoal - contribuições para a previdência privada,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,176268,176268.0
+10758,858,Gastos com pessoal - contribuições para a previdência privada,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",31042,31042.0
+10758,861,Gastos com pessoal - indenizações trabalhistas,Mil Reais,Brasil,1,Brasil,2024,1. Total,24180293,24180293.0
+10758,861,Gastos com pessoal - indenizações trabalhistas,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,2342549,2342549.0
+10758,861,Gastos com pessoal - indenizações trabalhistas,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",243837,243837.0
+10758,862,Gastos com pessoal - benefícios concedidos aos empregados,Mil Reais,Brasil,1,Brasil,2024,1. Total,120344088,120344088.0
+10758,862,Gastos com pessoal - benefícios concedidos aos empregados,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,4535281,4535281.0
+10758,862,Gastos com pessoal - benefícios concedidos aos empregados,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",472583,472583.0
+10758,468,PIS sobre folha de pagamento,Mil Reais,Brasil,1,Brasil,2024,1. Total,148032,148032.0
+10758,468,PIS sobre folha de pagamento,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,4786,4786.0
+10758,468,PIS sobre folha de pagamento,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",380,380.0
+10758,636,Excedente operacional bruto,Mil Reais,Brasil,1,Brasil,2024,1. Total,1131172862,1131172862.0
+10758,636,Excedente operacional bruto,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,65820209,65820209.0
+10758,636,Excedente operacional bruto,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",13269949,13269949.0
+10758,639,Receita bruta - prestação de serviços,Mil Reais,Brasil,1,Brasil,2024,1. Total,3745336701,3745336701.0
+10758,639,Receita bruta - prestação de serviços,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,270865189,270865189.0
+10758,639,Receita bruta - prestação de serviços,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",35733057,35733057.0
+10758,640,Receita bruta - revenda de mercadorias,Mil Reais,Brasil,1,Brasil,2024,1. Total,93205088,93205088.0
+10758,640,Receita bruta - revenda de mercadorias,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,4840753,4840753.0
+10758,640,Receita bruta - revenda de mercadorias,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",852862,852862.0
+10758,641,Receita bruta - outras atividades,Mil Reais,Brasil,1,Brasil,2024,1. Total,30223311,30223311.0
+10758,641,Receita bruta - outras atividades,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,2443123,2443123.0
+10758,641,Receita bruta - outras atividades,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",138473,138473.0
+10758,642,Deduções,Mil Reais,Brasil,1,Brasil,2024,1. Total,398293662,398293662.0
+10758,642,Deduções,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,20439512,20439512.0
+10758,642,Deduções,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",3047935,3047935.0
+10758,1567,Aluguel de imóveis,Mil Reais,Brasil,1,Brasil,2024,1. Total,10404113,10404113.0
+10758,1567,Aluguel de imóveis,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,852935,852935.0
+10758,1567,Aluguel de imóveis,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",100604,100604.0
+10758,678,Subvenções e dotações orçamentárias recebidas de governos,Mil Reais,Brasil,1,Brasil,2024,1. Total,20112482,20112482.0
+10758,678,Subvenções e dotações orçamentárias recebidas de governos,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,60015,60015.0
+10758,678,Subvenções e dotações orçamentárias recebidas de governos,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",172795,172795.0
+10758,679,"Receitas financeiras, variações monetárias ativas e resultado positivo em participações societárias",Mil Reais,Brasil,1,Brasil,2024,1. Total,296346049,296346049.0
+10758,679,"Receitas financeiras, variações monetárias ativas e resultado positivo em participações societárias",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,2373485,2373485.0
+10758,679,"Receitas financeiras, variações monetárias ativas e resultado positivo em participações societárias",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",1596597,1596597.0
+10758,674,Outras receitas operacionais,Mil Reais,Brasil,1,Brasil,2024,1. Total,102341676,102341676.0
+10758,674,Outras receitas operacionais,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,3298961,3298961.0
+10758,674,Outras receitas operacionais,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",791059,791059.0
+10758,646,Receitas não-operacionais,Mil Reais,Brasil,1,Brasil,2024,1. Total,95739555,95739555.0
+10758,646,Receitas não-operacionais,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,915353,915353.0
+10758,646,Receitas não-operacionais,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",686690,686690.0
+10758,1568,Total de custos,Mil Reais,Brasil,1,Brasil,2024,1. Total,542203079,542203079.0
+10758,1568,Total de custos,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,87810813,87810813.0
+10758,1568,Total de custos,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",2637244,2637244.0
+10758,1569,Outros custos,Mil Reais,Brasil,1,Brasil,2024,1. Total,31794674,31794674.0
+10758,1569,Outros custos,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,6043788,6043788.0
+10758,1569,Outros custos,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",134265,134265.0
+10758,1537,Total de despesas operacionais,Mil Reais,Brasil,1,Brasil,2024,1. Total,1107854836,1107854836.0
+10758,1537,Total de despesas operacionais,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,46310403,46310403.0
+10758,1537,Total de despesas operacionais,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",11451528,11451528.0
+10758,10194,Despesas com aluguel de imóveis,Mil Reais,Brasil,1,Brasil,2024,1. Total,95971536,95971536.0
+10758,10194,Despesas com aluguel de imóveis,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,10250692,10250692.0
+10758,10194,Despesas com aluguel de imóveis,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",2067207,2067207.0
+10758,1570,Publicidade e propaganda,Mil Reais,Brasil,1,Brasil,2024,1. Total,47613991,47613991.0
+10758,1570,Publicidade e propaganda,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,1949235,1949235.0
+10758,1570,Publicidade e propaganda,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",637209,637209.0
+10758,1571,Comissões pagas a terceiros,Mil Reais,Brasil,1,Brasil,2024,1. Total,37044966,37044966.0
+10758,1571,Comissões pagas a terceiros,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,378993,378993.0
+10758,1571,Comissões pagas a terceiros,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",273395,273395.0
+10758,652,Serviços prestados por profissionais liberais ou autônomos,Mil Reais,Brasil,1,Brasil,2024,1. Total,51138464,51138464.0
+10758,652,Serviços prestados por profissionais liberais ou autônomos,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,1152755,1152755.0
+10758,652,Serviços prestados por profissionais liberais ou autônomos,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",482086,482086.0
+10758,1572,Serviços técnicos-profissionais,Mil Reais,Brasil,1,Brasil,2024,1. Total,190589531,190589531.0
+10758,1572,Serviços técnicos-profissionais,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,5551513,5551513.0
+10758,1572,Serviços técnicos-profissionais,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",2482023,2482023.0
+10758,1573,"Vigilância, segurança e transporte de valores",Mil Reais,Brasil,1,Brasil,2024,1. Total,9379808,9379808.0
+10758,1573,"Vigilância, segurança e transporte de valores",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,262920,262920.0
+10758,1573,"Vigilância, segurança e transporte de valores",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",80014,80014.0
+10758,1574,Mão-de-obra contratada temporariamente junto à empresas locadoras de mão-de-obra,Mil Reais,Brasil,1,Brasil,2024,1. Total,9312551,9312551.0
+10758,1574,Mão-de-obra contratada temporariamente junto à empresas locadoras de mão-de-obra,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,501087,501087.0
+10758,1574,Mão-de-obra contratada temporariamente junto à empresas locadoras de mão-de-obra,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",103567,103567.0
+10758,1575,Manutenção e reparação de bens,Mil Reais,Brasil,1,Brasil,2024,1. Total,58203962,58203962.0
+10758,1575,Manutenção e reparação de bens,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,1358181,1358181.0
+10758,1575,Manutenção e reparação de bens,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",534409,534409.0
+10758,1576,Outros serviços prestados por empresas,Mil Reais,Brasil,1,Brasil,2024,1. Total,41568423,41568423.0
+10758,1576,Outros serviços prestados por empresas,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,2229487,2229487.0
+10758,1576,Outros serviços prestados por empresas,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",608440,608440.0
+10758,655,"Impostos e taxas (IPTU, IPVA, IOF, alvarás, etc.)",Mil Reais,Brasil,1,Brasil,2024,1. Total,57093211,57093211.0
+10758,655,"Impostos e taxas (IPTU, IPVA, IOF, alvarás, etc.)",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,2958893,2958893.0
+10758,655,"Impostos e taxas (IPTU, IPVA, IOF, alvarás, etc.)",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",652929,652929.0
+10758,1577,Viagens e representações,Mil Reais,Brasil,1,Brasil,2024,1. Total,16725592,16725592.0
+10758,1577,Viagens e representações,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,364725,364725.0
+10758,1577,Viagens e representações,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",185816,185816.0
+10758,1578,Materiais de expediente e de escritório,Mil Reais,Brasil,1,Brasil,2024,1. Total,32006952,32006952.0
+10758,1578,Materiais de expediente e de escritório,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,5678131,5678131.0
+10758,1578,Materiais de expediente e de escritório,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",480358,480358.0
+10758,2267,"Direitos autorais, franquias e royalties pelo uso de marcas e patentes",Mil Reais,Brasil,1,Brasil,2024,1. Total,38380935,38380935.0
+10758,2267,"Direitos autorais, franquias e royalties pelo uso de marcas e patentes",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,1936850,1936850.0
+10758,2267,"Direitos autorais, franquias e royalties pelo uso de marcas e patentes",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",70970,70970.0
+10758,1462,Outras despesas operacionais,Mil Reais,Brasil,1,Brasil,2024,1. Total,289368887,289368887.0
+10758,1462,Outras despesas operacionais,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,5137738,5137738.0
+10758,1462,Outras despesas operacionais,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",1447492,1447492.0
+10758,1580,"Total de despesas financeiras, arrendamento mercantil e de participações acionárias",Mil Reais,Brasil,1,Brasil,2024,1. Total,344608936,344608936.0
+10758,1580,"Total de despesas financeiras, arrendamento mercantil e de participações acionárias",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,4885276,4885276.0
+10758,1580,"Total de despesas financeiras, arrendamento mercantil e de participações acionárias",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",1959267,1959267.0
+10758,1581,"Arrendamento mercantil (leasing) de máquinas, equipamentos e veículos",Mil Reais,Brasil,1,Brasil,2024,1. Total,21401084,21401084.0
+10758,1581,"Arrendamento mercantil (leasing) de máquinas, equipamentos e veículos",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,274414,274414.0
+10758,1581,"Arrendamento mercantil (leasing) de máquinas, equipamentos e veículos",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",228026,228026.0
+10758,1277,Despesas financeiras,Mil Reais,Brasil,1,Brasil,2024,1. Total,212458964,212458964.0
+10758,1277,Despesas financeiras,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,3249556,3249556.0
+10758,1277,Despesas financeiras,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",1095553,1095553.0
+10758,1276,Variações monetárias passivas,Mil Reais,Brasil,1,Brasil,2024,1. Total,84654001,84654001.0
+10758,1276,Variações monetárias passivas,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,246799,246799.0
+10758,1276,Variações monetárias passivas,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",481285,481285.0
+10758,1464,Comissões pagas à administradoras de cartão de crédito,Mil Reais,Brasil,1,Brasil,2024,1. Total,12948714,12948714.0
+10758,1464,Comissões pagas à administradoras de cartão de crédito,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,866160,866160.0
+10758,1464,Comissões pagas à administradoras de cartão de crédito,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",111389,111389.0
+10758,659,Resultado negativo em participações societárias,Mil Reais,Brasil,1,Brasil,2024,1. Total,13146178,13146178.0
+10758,659,Resultado negativo em participações societárias,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,248346,248346.0
+10758,659,Resultado negativo em participações societárias,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",43014,43014.0
+10758,1465,"Total de depreciação, amortização, despesas não-operacionais e constituição de provisões",Mil Reais,Brasil,1,Brasil,2024,1. Total,409042065,409042065.0
+10758,1465,"Total de depreciação, amortização, despesas não-operacionais e constituição de provisões",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,6023076,6023076.0
+10758,1465,"Total de depreciação, amortização, despesas não-operacionais e constituição de provisões",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",2104593,2104593.0
+10758,656,Depreciação e amortização,Mil Reais,Brasil,1,Brasil,2024,1. Total,177967304,177967304.0
+10758,656,Depreciação e amortização,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,2740286,2740286.0
+10758,656,Depreciação e amortização,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",1287530,1287530.0
+10758,661,Despesas não-operacionais,Mil Reais,Brasil,1,Brasil,2024,1. Total,32229481,32229481.0
+10758,661,Despesas não-operacionais,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,290823,290823.0
+10758,661,Despesas não-operacionais,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",43372,43372.0
+10758,1582,Provisão para imposto de renda e contribuição social,Mil Reais,Brasil,1,Brasil,2024,1. Total,123628859,123628859.0
+10758,1582,Provisão para imposto de renda e contribuição social,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,2033487,2033487.0
+10758,1582,Provisão para imposto de renda e contribuição social,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",658321,658321.0
+10758,1583,Outras provisões,Mil Reais,Brasil,1,Brasil,2024,1. Total,61379825,61379825.0
+10758,1583,Outras provisões,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,552407,552407.0
+10758,1583,Outras provisões,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",82289,82289.0
+10758,662,Salários e outras remunerações,Mil Reais,Brasil,1,Brasil,2024,1. Total,559857071,559857071.0
+10758,662,Salários e outras remunerações,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,44068802,44068802.0
+10758,662,Salários e outras remunerações,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",5054736,5054736.0
+10758,1584,Participação nos lucros e honorários da diretoria,Mil Reais,Brasil,1,Brasil,2024,1. Total,30594517,30594517.0
+10758,1584,Participação nos lucros e honorários da diretoria,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,678031,678031.0
+10758,1584,Participação nos lucros e honorários da diretoria,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",193742,193742.0
+10758,1585,Remuneração dos sócios cooperados,Mil Reais,Brasil,1,Brasil,2024,1. Total,3607972,3607972.0
+10758,1585,Remuneração dos sócios cooperados,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,227736,227736.0
+10758,1585,Remuneração dos sócios cooperados,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",8466,8466.0
+10758,1595,Retiradas prolabore dos proprietários e sócios,Mil Reais,Brasil,1,Brasil,2024,1. Total,50169986,50169986.0
+10758,1595,Retiradas prolabore dos proprietários e sócios,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,4141997,4141997.0
+10758,1595,Retiradas prolabore dos proprietários e sócios,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",1109247,1109247.0
+10758,668,Pessoal ocupado em 31/12 - assalariado,Pessoas,Brasil,1,Brasil,2024,1. Total,13698638,13698638.0
+10758,668,Pessoal ocupado em 31/12 - assalariado,Pessoas,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,1646944,1646944.0
+10758,668,Pessoal ocupado em 31/12 - assalariado,Pessoas,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",194734,194734.0
+10758,1586,Pessoal ocupado em 31/12 - não-assalariado - proprietários e sócios com atividade na empresa,Pessoas,Brasil,1,Brasil,2024,1. Total,2038421,2038421.0
+10758,1586,Pessoal ocupado em 31/12 - não-assalariado - proprietários e sócios com atividade na empresa,Pessoas,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,193172,193172.0
+10758,1586,Pessoal ocupado em 31/12 - não-assalariado - proprietários e sócios com atividade na empresa,Pessoas,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",57339,57339.0
+10758,1587,Pessoal ocupado em 31/12 - não-assalariado - sócios cooperados,Pessoas,Brasil,1,Brasil,2024,1. Total,80984,80984.0
+10758,1587,Pessoal ocupado em 31/12 - não-assalariado - sócios cooperados,Pessoas,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,7293,7293.0
+10758,1587,Pessoal ocupado em 31/12 - não-assalariado - sócios cooperados,Pessoas,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",404,404.0
+10758,1588,Pessoal ocupado em 31/12 - não-assalariado - membros da família sem remuneração,Pessoas,Brasil,1,Brasil,2024,1. Total,46170,46170.0
+10758,1588,Pessoal ocupado em 31/12 - não-assalariado - membros da família sem remuneração,Pessoas,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,9223,9223.0
+10758,1588,Pessoal ocupado em 31/12 - não-assalariado - membros da família sem remuneração,Pessoas,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",1023,1023.0
+10758,1417,Pessoal ocupado em 31/03,Pessoas,Brasil,1,Brasil,2024,1. Total,16220541,16220541.0
+10758,1417,Pessoal ocupado em 31/03,Pessoas,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,1759755,1759755.0
+10758,1417,Pessoal ocupado em 31/03,Pessoas,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",243684,243684.0
+10758,1418,Pessoal ocupado em 30/06,Pessoas,Brasil,1,Brasil,2024,1. Total,16406008,16406008.0
+10758,1418,Pessoal ocupado em 30/06,Pessoas,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,1799285,1799285.0
+10758,1418,Pessoal ocupado em 30/06,Pessoas,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",250722,250722.0
+10758,1419,Pessoal ocupado em 30/09,Pessoas,Brasil,1,Brasil,2024,1. Total,17278641,17278641.0
+10758,1419,Pessoal ocupado em 30/09,Pessoas,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,1835873,1835873.0
+10758,1419,Pessoal ocupado em 30/09,Pessoas,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",870444,870444.0
+10758,1589,Total de aquisições,Mil Reais,Brasil,1,Brasil,2024,1. Total,348398811,348398811.0
+10758,1589,Total de aquisições,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,4516206,4516206.0
+10758,1589,Total de aquisições,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",4003134,4003134.0
+10758,1590,Terrenos,Mil Reais,Brasil,1,Brasil,2024,1. Total,15304284,15304284.0
+10758,1590,Terrenos,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,70897,70897.0
+10758,1590,Terrenos,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",112261,112261.0
+10758,1591,Edificações,Mil Reais,Brasil,1,Brasil,2024,1. Total,36013460,36013460.0
+10758,1591,Edificações,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,664538,664538.0
+10758,1591,Edificações,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",496725,496725.0
+10758,1592,"Maquinas, equipamentos e instalações",Mil Reais,Brasil,1,Brasil,2024,1. Total,91655335,91655335.0
+10758,1592,"Maquinas, equipamentos e instalações",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,2477631,2477631.0
+10758,1592,"Maquinas, equipamentos e instalações",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",1430708,1430708.0
+10758,1593,Meios de transporte,Mil Reais,Brasil,1,Brasil,2024,1. Total,129587757,129587757.0
+10758,1593,Meios de transporte,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,240895,240895.0
+10758,1593,Meios de transporte,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",347168,347168.0
+10758,1535,Outras aquisições,Mil Reais,Brasil,1,Brasil,2024,1. Total,75837975,75837975.0
+10758,1535,Outras aquisições,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,1062246,1062246.0
+10758,1535,Outras aquisições,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",1616273,1616273.0
+10758,1594,Total de baixas,Mil Reais,Brasil,1,Brasil,2024,1. Total,125777286,125777286.0
+10758,1594,Total de baixas,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,1237040,1237040.0
+10758,1594,Total de baixas,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",838305,838305.0
+10758,10195,Baixas de terrenos,Mil Reais,Brasil,1,Brasil,2024,1. Total,2563269,2563269.0
+10758,10195,Baixas de terrenos,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,17550,17550.0
+10758,10195,Baixas de terrenos,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",28492,28492.0
+10758,14143,Baixas de edificações,Mil Reais,Brasil,1,Brasil,2024,1. Total,7111739,7111739.0
+10758,14143,Baixas de edificações,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,115335,115335.0
+10758,14143,Baixas de edificações,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",10271,10271.0
+10758,1522,"Baixas de máquinas, equipamentos e instalações",Mil Reais,Brasil,1,Brasil,2024,1. Total,32112542,32112542.0
+10758,1522,"Baixas de máquinas, equipamentos e instalações",Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,613942,613942.0
+10758,1522,"Baixas de máquinas, equipamentos e instalações",Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",102952,102952.0
+10758,1524,Baixas de meios de transporte,Mil Reais,Brasil,1,Brasil,2024,1. Total,67180811,67180811.0
+10758,1524,Baixas de meios de transporte,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,82334,82334.0
+10758,1524,Baixas de meios de transporte,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",325258,325258.0
+10758,1536,Outras baixas,Mil Reais,Brasil,1,Brasil,2024,1. Total,16808923,16808923.0
+10758,1536,Outras baixas,Mil Reais,Brasil,1,Brasil,2024,2.2 Serviços de alimentação,407879,407879.0
+10758,1536,Outras baixas,Mil Reais,Brasil,1,Brasil,2024,"2.3 Atividades culturais, recreativas e esportivas",371331,371331.0

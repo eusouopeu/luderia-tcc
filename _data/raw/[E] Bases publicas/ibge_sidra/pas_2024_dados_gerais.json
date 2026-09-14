@@ -1,0 +1,7234 @@
+{
+ "tabela": 10758,
+ "nome_tabela": "Dados gerais dos serviços empresariais não-financeiros, segundo as atividades - CNAE 2.0",
+ "url": "https://servicodados.ibge.gov.br/api/v3/agregados/10758/periodos/-1/variaveis/630%7C631%7C857%7C1242%7C643%7C657%7C1552%7C634%7C637%7C1553%7C1554%7C1555%7C1556%7C1557%7C1558%7C1559%7C1560%7C856%7C859%7C860%7C858%7C861%7C862%7C468%7C636%7C639%7C640%7C641%7C642%7C1567%7C678%7C679%7C674%7C646%7C1568%7C1569%7C1537%7C10194%7C1570%7C1571%7C652%7C1572%7C1573%7C1574%7C1575%7C1576%7C655%7C1577%7C1578%7C2267%7C1462%7C1580%7C1581%7C1277%7C1276%7C1464%7C659%7C1465%7C656%7C661%7C1582%7C1583%7C662%7C1584%7C1585%7C1595%7C668%7C1586%7C1587%7C1588%7C1417%7C1418%7C1419%7C1589%7C1590%7C1591%7C1592%7C1593%7C1535%7C1594%7C10195%7C14143%7C1522%7C1524%7C1536?localidades=N1%5Ball%5D&classificacao=12355%5B106829%2C106832%2C9277%5D",
+ "data_coleta": "2026-09-14",
+ "resposta": [
+  {
+   "id": "630",
+   "variavel": "Número de empresas",
+   "unidade": "Unidades",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1919365"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "220098"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "57579"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "631",
+   "variavel": "Pessoal ocupado em 31/12",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "15864213"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1856632"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "253500"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "857",
+   "variavel": "Gastos com pessoal - salários, retiradas e outras remunerações",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "644229550"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "49116567"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "6366191"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1242",
+   "variavel": "Valor adicionado",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2061821000"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "130518100"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "21303053"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "643",
+   "variavel": "Receita operacional líquida",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "3529697760"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "257709554"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "33676457"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "657",
+   "variavel": "Custo das mercadorias revendidas",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "71318304"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "11715528"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "420235"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1552",
+   "variavel": "Subvenções e outras receitas operacionais",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "132858272"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "4211911"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1064458"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "634",
+   "variavel": "Valor bruto da produção",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "3591237727"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "250205937"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "34320681"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "637",
+   "variavel": "Consumo intermediário - total",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1529416725"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "119687837"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "13017627"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1553",
+   "variavel": "Consumo intermediário - mercadorias, materiais de consumo e de reposição",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "290931691"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "69074154"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1906005"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1554",
+   "variavel": "Consumo intermediário - combustíveis e lubrificantes",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "142302243"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "977343"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "176739"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1555",
+   "variavel": "Consumo intermediário - serviços prestados por terceiros",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "447464508"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "11055944"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "4290539"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1556",
+   "variavel": "Consumo intermediário - aluguéis de imóveis, veículos, máquinas e equipamentos",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "117372618"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "10525106"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2295233"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1557",
+   "variavel": "Consumo intermediário - prêmios de seguros",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "9862587"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "178697"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "63110"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1558",
+   "variavel": "Consumo intermediário - serviços de comunicação",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "12954582"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "703107"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "123672"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1559",
+   "variavel": "Consumo intermediário - energia elétrica, gás, água e esgoto",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "29930326"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "5717397"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1158832"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1560",
+   "variavel": "Consumo intermediário - outros custos e despesas operacionais",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "486162672"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "21324430"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "3198442"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "856",
+   "variavel": "Gastos com pessoal - total",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "930648146"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "64697891"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "8033105"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "859",
+   "variavel": "Gastos com pessoal - contribuições para a previdência social",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "91466684"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "4809689"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "523498"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "860",
+   "variavel": "Gastos com pessoal - FGTS",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "45595045"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "3712750"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "395575"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "858",
+   "variavel": "Gastos com pessoal - contribuições para a previdência privada",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "4684448"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "176268"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "31042"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "861",
+   "variavel": "Gastos com pessoal - indenizações trabalhistas",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "24180293"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2342549"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "243837"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "862",
+   "variavel": "Gastos com pessoal - benefícios concedidos aos empregados",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "120344088"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "4535281"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "472583"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "468",
+   "variavel": "PIS sobre folha de pagamento",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "148032"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "4786"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "380"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "636",
+   "variavel": "Excedente operacional bruto",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1131172862"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "65820209"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "13269949"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "639",
+   "variavel": "Receita bruta - prestação de serviços",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "3745336701"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "270865189"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "35733057"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "640",
+   "variavel": "Receita bruta - revenda de mercadorias",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "93205088"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "4840753"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "852862"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "641",
+   "variavel": "Receita bruta - outras atividades",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "30223311"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2443123"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "138473"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "642",
+   "variavel": "Deduções",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "398293662"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "20439512"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "3047935"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1567",
+   "variavel": "Aluguel de imóveis",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "10404113"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "852935"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "100604"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "678",
+   "variavel": "Subvenções e dotações orçamentárias recebidas de governos",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "20112482"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "60015"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "172795"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "679",
+   "variavel": "Receitas financeiras, variações monetárias ativas e resultado positivo em participações societárias",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "296346049"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2373485"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1596597"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "674",
+   "variavel": "Outras receitas operacionais",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "102341676"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "3298961"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "791059"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "646",
+   "variavel": "Receitas não-operacionais",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "95739555"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "915353"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "686690"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1568",
+   "variavel": "Total de custos",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "542203079"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "87810813"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2637244"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1569",
+   "variavel": "Outros custos",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "31794674"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "6043788"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "134265"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1537",
+   "variavel": "Total de despesas operacionais",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1107854836"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "46310403"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "11451528"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "10194",
+   "variavel": "Despesas com aluguel de imóveis",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "95971536"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "10250692"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2067207"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1570",
+   "variavel": "Publicidade e propaganda",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "47613991"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1949235"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "637209"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1571",
+   "variavel": "Comissões pagas a terceiros",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "37044966"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "378993"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "273395"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "652",
+   "variavel": "Serviços prestados por profissionais liberais ou autônomos",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "51138464"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1152755"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "482086"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1572",
+   "variavel": "Serviços técnicos-profissionais",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "190589531"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "5551513"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2482023"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1573",
+   "variavel": "Vigilância, segurança e transporte de valores",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "9379808"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "262920"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "80014"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1574",
+   "variavel": "Mão-de-obra contratada temporariamente junto à empresas locadoras de mão-de-obra",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "9312551"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "501087"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "103567"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1575",
+   "variavel": "Manutenção e reparação de bens",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "58203962"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1358181"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "534409"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1576",
+   "variavel": "Outros serviços prestados por empresas",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "41568423"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2229487"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "608440"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "655",
+   "variavel": "Impostos e taxas (IPTU, IPVA, IOF, alvarás, etc.)",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "57093211"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2958893"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "652929"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1577",
+   "variavel": "Viagens e representações",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "16725592"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "364725"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "185816"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1578",
+   "variavel": "Materiais de expediente e de escritório",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "32006952"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "5678131"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "480358"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "2267",
+   "variavel": "Direitos autorais, franquias e royalties pelo uso de marcas e patentes",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "38380935"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1936850"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "70970"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1462",
+   "variavel": "Outras despesas operacionais",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "289368887"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "5137738"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1447492"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1580",
+   "variavel": "Total de despesas financeiras, arrendamento mercantil e de participações acionárias",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "344608936"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "4885276"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1959267"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1581",
+   "variavel": "Arrendamento mercantil (leasing) de máquinas, equipamentos e veículos",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "21401084"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "274414"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "228026"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1277",
+   "variavel": "Despesas financeiras",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "212458964"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "3249556"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1095553"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1276",
+   "variavel": "Variações monetárias passivas",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "84654001"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "246799"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "481285"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1464",
+   "variavel": "Comissões pagas à administradoras de cartão de crédito",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "12948714"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "866160"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "111389"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "659",
+   "variavel": "Resultado negativo em participações societárias",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "13146178"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "248346"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "43014"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1465",
+   "variavel": "Total de depreciação, amortização, despesas não-operacionais e constituição de provisões",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "409042065"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "6023076"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2104593"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "656",
+   "variavel": "Depreciação e amortização",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "177967304"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2740286"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1287530"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "661",
+   "variavel": "Despesas não-operacionais",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "32229481"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "290823"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "43372"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1582",
+   "variavel": "Provisão para imposto de renda e contribuição social",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "123628859"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2033487"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "658321"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1583",
+   "variavel": "Outras provisões",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "61379825"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "552407"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "82289"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "662",
+   "variavel": "Salários e outras remunerações",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "559857071"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "44068802"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "5054736"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1584",
+   "variavel": "Participação nos lucros e honorários da diretoria",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "30594517"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "678031"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "193742"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1585",
+   "variavel": "Remuneração dos sócios cooperados",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "3607972"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "227736"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "8466"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1595",
+   "variavel": "Retiradas prolabore dos proprietários e sócios",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "50169986"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "4141997"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1109247"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "668",
+   "variavel": "Pessoal ocupado em 31/12 - assalariado",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "13698638"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1646944"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "194734"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1586",
+   "variavel": "Pessoal ocupado em 31/12 - não-assalariado - proprietários e sócios com atividade na empresa",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2038421"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "193172"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "57339"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1587",
+   "variavel": "Pessoal ocupado em 31/12 - não-assalariado - sócios cooperados",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "80984"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "7293"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "404"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1588",
+   "variavel": "Pessoal ocupado em 31/12 - não-assalariado - membros da família sem remuneração",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "46170"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "9223"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1023"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1417",
+   "variavel": "Pessoal ocupado em 31/03",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "16220541"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1759755"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "243684"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1418",
+   "variavel": "Pessoal ocupado em 30/06",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "16406008"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1799285"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "250722"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1419",
+   "variavel": "Pessoal ocupado em 30/09",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "17278641"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1835873"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "870444"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1589",
+   "variavel": "Total de aquisições",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "348398811"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "4516206"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "4003134"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1590",
+   "variavel": "Terrenos",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "15304284"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "70897"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "112261"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1591",
+   "variavel": "Edificações",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "36013460"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "664538"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "496725"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1592",
+   "variavel": "Maquinas, equipamentos e instalações",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "91655335"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2477631"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1430708"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1593",
+   "variavel": "Meios de transporte",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "129587757"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "240895"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "347168"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1535",
+   "variavel": "Outras aquisições",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "75837975"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1062246"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1616273"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1594",
+   "variavel": "Total de baixas",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "125777286"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "1237040"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "838305"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "10195",
+   "variavel": "Baixas de terrenos",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "2563269"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "17550"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "28492"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "14143",
+   "variavel": "Baixas de edificações",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "7111739"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "115335"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "10271"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1522",
+   "variavel": "Baixas de máquinas, equipamentos e instalações",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "32112542"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "613942"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "102952"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1524",
+   "variavel": "Baixas de meios de transporte",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "67180811"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "82334"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "325258"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1536",
+   "variavel": "Outras baixas",
+   "unidade": "Mil Reais",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106829": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "16808923"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "106832": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "407879"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12355",
+       "nome": "Atividades de serviços",
+       "categoria": {
+        "9277": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "371331"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "uso_no_plano": "Coerência de margem, CMV e custo de pessoal em serviços de alimentação (9.8)"
+}

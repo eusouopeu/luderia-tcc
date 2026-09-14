@@ -1,0 +1,441 @@
+{
+ "tabela": 6579,
+ "nome_tabela": "População residente estimada",
+ "url": "https://servicodados.ibge.gov.br/api/v3/agregados/6579/periodos/-3/variaveis/9324?localidades=N1%5Ball%5D%7CN6%5B1200401%2C2704302%2C1600303%2C1302603%2C2927408%2C2304400%2C5300108%2C3205309%2C5208707%2C2111300%2C5103403%2C5002704%2C3106200%2C1501402%2C2507507%2C4106902%2C2611606%2C2211001%2C3304557%2C2408102%2C4314902%2C1100205%2C1400100%2C4205407%2C3550308%2C2800308%2C1721000%5D",
+ "data_coleta": "2026-09-14",
+ "resposta": [
+  {
+   "id": "9324",
+   "variavel": "População residente estimada",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2024": "212583750",
+        "2025": "213421037",
+        "2026": "214211951"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2024": "387852",
+        "2025": "389001",
+        "2026": "390058"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2024": "994464",
+        "2025": "994952",
+        "2026": "995134"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2024": "487200",
+        "2025": "489676",
+        "2026": "491987"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2024": "2279686",
+        "2025": "2303732",
+        "2026": "2327101"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2024": "2568928",
+        "2025": "2564204",
+        "2026": "2559945"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2024": "2574412",
+        "2025": "2578483",
+        "2026": "2582360"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2024": "2982818",
+        "2025": "2996899",
+        "2026": "3009996"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2024": "342800",
+        "2025": "343378",
+        "2026": "343935"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2024": "1494599",
+        "2025": "1503256",
+        "2026": "1511709"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2024": "1088057",
+        "2025": "1089215",
+        "2026": "1090229"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2024": "682932",
+        "2025": "691875",
+        "2026": "698917"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2024": "954537",
+        "2025": "962883",
+        "2026": "970843"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2024": "2416339",
+        "2025": "2415872",
+        "2026": "2415451"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2024": "1398531",
+        "2025": "1397315",
+        "2026": "1396157"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2024": "888679",
+        "2025": "897633",
+        "2026": "906093"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2024": "1829225",
+        "2025": "1830795",
+        "2026": "1832183"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2024": "1587707",
+        "2025": "1588376",
+        "2026": "1588983"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2024": "902644",
+        "2025": "905692",
+        "2026": "908012"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2024": "6729894",
+        "2025": "6730729",
+        "2026": "6731133"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2024": "785368",
+        "2025": "784249",
+        "2026": "783196"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2024": "1389322",
+        "2025": "1388794",
+        "2026": "1388791"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2024": "514873",
+        "2025": "517709",
+        "2026": "520379"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2024": "470169",
+        "2025": "485477",
+        "2026": "500965"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2024": "576361",
+        "2025": "587486",
+        "2026": "598370"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2024": "11895578",
+        "2025": "11904961",
+        "2026": "11911337"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2024": "628849",
+        "2025": "621408",
+        "2026": "623328"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2024": "323625",
+        "2025": "328499",
+        "2026": "333154"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "uso_no_plano": "Atualização da população do Censo (5.2, 6.6)"
+}

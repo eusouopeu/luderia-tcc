@@ -1,0 +1,8332 @@
+{
+ "tabela": 9514,
+ "nome_tabela": "População residente, por sexo, idade e forma de declaração da idade",
+ "url": "https://servicodados.ibge.gov.br/api/v3/agregados/9514/periodos/2022/variaveis/93?localidades=N6%5B1200401%2C2704302%2C1600303%2C1302603%2C2927408%2C2304400%2C5300108%2C3205309%2C5208707%2C2111300%2C5103403%2C5002704%2C3106200%2C1501402%2C2507507%2C4106902%2C2611606%2C2211001%2C3304557%2C2408102%2C4314902%2C1100205%2C1400100%2C4205407%2C3550308%2C2800308%2C1721000%5D&classificacao=2%5B6794%5D%7C286%5B113635%5D%7C287%5B100362%2C93070%2C93084%2C93085%2C93086%2C93087%2C93088%2C93089%2C93090%2C93091%2C93092%2C93093%2C93094%2C93095%2C93096%2C93097%2C93098%2C49108%2C49109%2C60040%2C60041%2C6653%5D",
+ "data_coleta": "2026-09-14",
+ "resposta": [
+  {
+   "id": "93",
+   "variavel": "População residente",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "100362": "Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "364756"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "957916"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "442933"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "2063689"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "2417678"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "2428708"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "2817381"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "322869"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "1437366"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "1037775"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "650877"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "898100"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "2315560"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "1303403"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "833932"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "1773718"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "1488920"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "866300"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "6211223"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "751300"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "1332845"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "460434"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "413486"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "537211"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "11451999"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "602757"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "302692"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93070": "0 a 4 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "26436"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "63010"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "36948"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "153636"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "122445"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "138704"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "166848"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "17078"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "83676"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "63544"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "43647"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "59766"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "111703"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "70625"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "52011"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "85003"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "80947"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "54739"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "310648"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "42640"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "64258"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "32424"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "37337"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "25973"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "599931"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "34951"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "22841"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93084": "5 a 9 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "29363"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "65126"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "38551"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "169175"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "141324"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "155660"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "184611"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "18419"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "89501"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "68279"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "46681"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "63928"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "124644"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "80003"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "55538"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "100444"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "93275"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "57613"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "367196"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "46579"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "76417"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "36013"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "37033"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "29092"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "682444"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "37963"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "22977"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93085": "10 a 14 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "28831"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "65327"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "37375"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "162708"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "141898"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "154376"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "182774"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "17857"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "85964"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "70132"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "44306"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "61139"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "122943"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "84509"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "54520"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "101958"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "89504"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "57785"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "354457"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "46549"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "72898"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "35383"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "34279"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "27856"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "670931"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "39332"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "22639"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93086": "15 a 19 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "30991"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "69989"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "39023"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "170508"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "150329"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "165546"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "208546"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "18615"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "94233"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "76265"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "45271"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "60791"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "134631"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "93564"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "56477"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "106401"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "95331"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "62380"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "371931"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "49620"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "75603"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "35762"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "35300"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "29070"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "720787"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "41048"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "24274"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93087": "20 a 24 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "33091"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "79597"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "42092"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "186449"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "176681"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "189360"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "227966"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "22666"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "113359"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "90397"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "49212"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "66260"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "169064"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "104095"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "63682"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "131613"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "108788"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "72129"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "439660"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "57881"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "93432"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "38595"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "40291"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "41329"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "845139"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "47506"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "29250"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93088": "25 a 29 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "31395"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "79300"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "39558"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "180961"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "174296"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "201977"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "224162"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "23212"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "120411"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "87786"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "52286"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "71631"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "175522"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "100056"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "66089"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "138949"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "110525"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "67987"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "454428"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "58542"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "99223"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "39010"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "39293"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "47102"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "882865"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "47708"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "28924"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93089": "30 a 34 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "29746"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "73145"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "36284"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "164135"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "173758"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "197115"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "223174"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "23980"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "118931"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "87665"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "54411"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "70858"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "174412"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "97088"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "66602"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "138214"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "111506"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "70233"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "460448"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "56842"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "97365"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "38580"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "35080"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "48512"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "888568"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "47174"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "26854"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93090": "35 a 39 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "30217"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "76853"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "35969"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "172209"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "212114"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "201946"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "239309"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "26637"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "122169"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "91790"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "56378"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "71900"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "183821"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "103417"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "70608"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "142224"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "116312"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "75169"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "479813"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "59971"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "101607"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "39669"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "34299"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "49003"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "942674"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "50481"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "26703"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93091": "40 a 44 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "28924"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "75521"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "32558"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "167172"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "224460"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "194267"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "253359"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "26887"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "120930"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "85452"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "54982"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "71060"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "194854"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "107814"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "68409"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "147403"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "118769"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "71445"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "504195"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "59019"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "106010"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "36601"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "30645"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "46856"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "947455"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "50998"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "25202"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93092": "45 a 49 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "23032"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "67389"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "26874"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "135513"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "182336"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "163156"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "210070"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "22069"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "101125"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "68646"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "44522"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "60568"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "160678"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "94224"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "56492"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "127287"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "105430"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "58662"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "426864"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "50094"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "88289"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "30126"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "23737"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "36598"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "812857"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "42376"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "20207"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93093": "50 a 54 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "19471"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "61459"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "22425"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "111450"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "167966"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "156480"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "179636"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "20112"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "90684"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "63000"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "39634"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "55483"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "153791"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "87196"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "51839"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "120887"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "100962"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "51651"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "402001"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "48363"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "81321"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "26358"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "19021"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "32470"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "752842"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "38720"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "15694"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93094": "55 a 59 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "15849"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "52647"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "17105"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "89635"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "150996"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "144145"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "151836"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "20532"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "79870"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "52555"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "34066"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "50341"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "147393"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "75408"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "48051"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "111658"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "93575"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "46981"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "386411"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "47005"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "84162"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "23041"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "15334"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "31672"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "682446"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "34366"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "12211"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93095": "60 a 64 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "12575"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "42954"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "13424"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "71893"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "129702"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "114541"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "116514"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "19349"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "68785"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "43655"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "29223"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "43245"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "134720"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "65517"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "39034"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "97950"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "81917"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "38479"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "360818"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "39192"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "82145"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "18208"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "11596"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "28531"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "606419"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "28229"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "8890"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93096": "65 a 69 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "9648"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "32452"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "9736"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "52399"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "98972"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "87773"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "89949"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "16196"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "53713"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "33100"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "22120"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "33667"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "108787"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "50417"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "29992"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "79499"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "63441"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "29563"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "304598"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "30607"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "70134"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "12845"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "8457"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "22668"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "490960"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "21942"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "6312"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93097": "70 a 74 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "6546"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "23241"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "6226"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "34251"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "71342"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "66304"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "66188"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "11644"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "39557"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "22671"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "14979"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "23817"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "82861"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "36700"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "22403"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "59039"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "47650"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "21818"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "233160"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "23202"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "53969"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "8098"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "5400"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "17112"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "370447"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "16512"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "4228"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "93098": "75 a 79 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "4083"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "13995"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "4090"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "20134"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "43751"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "42675"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "42396"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "7493"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "25381"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "14569"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "9333"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "15488"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "57775"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "24225"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "14400"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "39360"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "31091"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "13444"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "151529"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "15328"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "37529"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "4710"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "3112"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "10746"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "244904"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "10578"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "2692"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "49108": "80 a 84 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "2469"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "8664"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "2452"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "11770"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "28965"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "28776"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "27501"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "4930"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "16036"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "9689"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "5469"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "9622"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "39304"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "14989"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "9589"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "24369"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "20825"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "8315"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "102752"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "10197"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "24570"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "2871"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "1793"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "6581"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "161775"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "6709"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "1586"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "49109": "85 a 89 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "1263"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "4479"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "1384"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "6199"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "15639"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "15752"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "14401"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "3162"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "8393"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "5293"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "2822"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "5436"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "23447"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "8444"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "5015"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "13618"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "11611"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "4725"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "61497"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "5704"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "14746"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "1362"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "926"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "3734"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "92602"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "3615"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "791"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "60040": "90 a 94 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "573"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "1951"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "583"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "2510"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "7684"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "7258"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "6121"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "1501"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "3555"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "2293"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "1141"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "2359"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "11173"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "3686"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "2351"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "5995"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "5401"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "2251"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "29295"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "2767"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "6915"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "567"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "385"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "1727"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "42666"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "1797"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "303"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "60041": "95 a 99 anos"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "192"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "652"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "179"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "776"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "2504"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "2463"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "1720"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "445"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "922"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "730"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "309"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "611"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "3385"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "1119"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "676"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "1610"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "1722"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "760"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "8132"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "1007"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "1927"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "174"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "126"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "496"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "11526"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "628"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "88"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "2",
+       "nome": "Sexo",
+       "categoria": {
+        "6794": "Total"
+       }
+      },
+      {
+       "id": "286",
+       "nome": "Forma de declaração da idade",
+       "categoria": {
+        "113635": "Total"
+       }
+      },
+      {
+       "id": "287",
+       "nome": "Idade",
+       "categoria": {
+        "6653": "100 anos ou mais"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "61"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "165"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "97"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "206"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "516"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "434"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "300"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "85"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "171"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "264"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "85"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "130"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "652"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "307"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "154"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "237"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "338"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "171"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "1390"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "191"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "325"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "37"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "42"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "83"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "1761"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "124"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "26"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "uso_no_plano": "Público-alvo por faixa etária (5.2, 6.6)"
+}

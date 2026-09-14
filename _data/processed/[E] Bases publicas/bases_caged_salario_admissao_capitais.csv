@@ -1,0 +1,673 @@
+recorte,capital,cbo,ocupacao,admissoes,salario_p25,salario_mediana,salario_p75,salario_medio,horas_mediana,periodo_competencia,amostra_pequena
+todas as atividades,Aracaju,141510,Gerente de restaurante,55,2000.0,2304.23,2993.27,2534.45,44.0,202508-202607,False
+todas as atividades,Aracaju,141515,Gerente de bar,5,2100.0,3000.0,3000.0,2616.0,44.0,202508-202607,True
+todas as atividades,Aracaju,371410,Recreador,54,1593.9,1621.0,1706.6,1648.97,44.0,202508-202607,False
+todas as atividades,Aracaju,421125,Operador de caixa,1826,1621.0,1635.0,1660.0,1654.78,44.0,202508-202607,False
+todas as atividades,Aracaju,513205,Cozinheiro geral,775,1621.0,1680.0,1900.0,1813.44,44.0,202508-202607,False
+todas as atividades,Aracaju,513405,Garçom,677,1560.0,1621.0,1661.0,1620.47,44.0,202508-202607,False
+todas as atividades,Aracaju,513415,Cumim,217,1560.0,1621.0,1633.89,1609.06,44.0,202508-202607,False
+todas as atividades,Aracaju,513420,Barman,168,1560.0,1650.0,1800.0,1739.5,44.0,202508-202607,False
+todas as atividades,Aracaju,513435,Atendente de lanchonete,1476,1560.0,1621.0,1621.0,1606.15,44.0,202508-202607,False
+todas as atividades,Aracaju,513505,Auxiliar nos serviços de alimentação,1668,1560.0,1621.0,1670.0,1638.59,44.0,202508-202607,False
+todas as atividades,Aracaju,514320,Faxineiro,3240,1560.0,1621.0,1623.22,1602.46,44.0,202508-202607,False
+todas as atividades,Aracaju,521140,Atendente de lojas e mercados,2464,1621.0,1635.0,1660.0,1645.67,44.0,202508-202607,False
+todas as atividades,Belo Horizonte,141510,Gerente de restaurante,730,2031.59,2608.88,3500.0,2981.1,44.0,202508-202607,False
+todas as atividades,Belo Horizonte,141515,Gerente de bar,175,2000.0,2285.8,2800.0,2511.88,44.0,202508-202607,False
+todas as atividades,Belo Horizonte,371410,Recreador,1046,1800.0,1958.01,2622.4,3762.46,44.0,202508-202607,False
+todas as atividades,Belo Horizonte,421125,Operador de caixa,16765,1720.0,1720.0,1836.79,1761.69,44.0,202508-202607,False
+todas as atividades,Belo Horizonte,513205,Cozinheiro geral,5386,1737.59,1943.37,2200.0,2017.35,44.0,202508-202607,False
+todas as atividades,Belo Horizonte,513405,Garçom,3037,1623.94,1738.0,1750.0,1763.15,44.0,202508-202607,False
+todas as atividades,Belo Horizonte,513415,Cumim,598,1621.0,1697.0,1738.0,1701.46,44.0,202508-202607,False
+todas as atividades,Belo Horizonte,513420,Barman,452,1650.0,1738.0,2000.0,1841.33,44.0,202508-202607,False
+todas as atividades,Belo Horizonte,513435,Atendente de lanchonete,11839,1609.94,1697.0,1791.33,1703.35,44.0,202508-202607,False
+todas as atividades,Belo Horizonte,513505,Auxiliar nos serviços de alimentação,11040,1649.12,1700.0,1800.0,1762.53,44.0,202508-202607,False
+todas as atividades,Belo Horizonte,514320,Faxineiro,35572,1649.12,1715.99,1772.8,1791.28,44.0,202508-202607,False
+todas as atividades,Belo Horizonte,521140,Atendente de lojas e mercados,16079,1697.0,1720.0,1836.79,1760.6,44.0,202508-202607,False
+todas as atividades,Belém,141510,Gerente de restaurante,91,1800.0,2420.0,3464.44,3211.63,44.0,202508-202607,False
+todas as atividades,Belém,141515,Gerente de bar,24,1606.49,1680.0,2000.0,1903.29,44.0,202508-202607,True
+todas as atividades,Belém,371410,Recreador,65,1553.2,1621.0,1728.0,1706.48,44.0,202508-202607,False
+todas as atividades,Belém,421125,Operador de caixa,3354,1621.0,1670.0,1802.72,1708.87,44.0,202508-202607,False
+todas as atividades,Belém,513205,Cozinheiro geral,2443,1621.0,1650.0,1694.62,1794.8,44.0,202508-202607,False
+todas as atividades,Belém,513405,Garçom,798,1580.0,1621.0,1680.0,1653.73,44.0,202508-202607,False
+todas as atividades,Belém,513415,Cumim,400,1518.0,1615.32,1621.0,1608.36,44.0,202508-202607,False
+todas as atividades,Belém,513420,Barman,219,1580.0,1621.0,1680.0,1706.49,44.0,202508-202607,False
+todas as atividades,Belém,513435,Atendente de lanchonete,2724,1580.0,1621.0,1633.11,1615.25,44.0,202508-202607,False
+todas as atividades,Belém,513505,Auxiliar nos serviços de alimentação,2462,1560.0,1621.0,1680.0,1641.57,44.0,202508-202607,False
+todas as atividades,Belém,514320,Faxineiro,8095,1586.87,1621.0,1694.62,1635.17,44.0,202508-202607,False
+todas as atividades,Belém,521140,Atendente de lojas e mercados,3763,1519.47,1621.0,1670.0,1633.89,44.0,202508-202607,False
+todas as atividades,Boa Vista,141510,Gerente de restaurante,8,2055.25,2350.0,2892.86,2620.56,44.0,202508-202607,True
+todas as atividades,Boa Vista,141515,Gerente de bar,6,1715.75,2000.0,2053.47,1896.43,44.0,202508-202607,True
+todas as atividades,Boa Vista,371410,Recreador,60,1586.31,1621.0,1621.0,1623.51,44.0,202508-202607,False
+todas as atividades,Boa Vista,421125,Operador de caixa,2248,1601.49,1621.0,1621.0,1606.19,44.0,202508-202607,False
+todas as atividades,Boa Vista,513205,Cozinheiro geral,255,1600.0,1621.0,1786.3,1777.4,44.0,202508-202607,False
+todas as atividades,Boa Vista,513405,Garçom,252,1586.31,1621.0,1621.0,1615.57,44.0,202508-202607,False
+todas as atividades,Boa Vista,513415,Cumim,112,1586.31,1621.0,1621.0,1605.33,44.0,202508-202607,False
+todas as atividades,Boa Vista,513420,Barman,40,1586.31,1593.16,1621.0,1627.37,44.0,202508-202607,False
+todas as atividades,Boa Vista,513435,Atendente de lanchonete,548,1600.0,1621.0,1621.0,1614.97,44.0,202508-202607,False
+todas as atividades,Boa Vista,513505,Auxiliar nos serviços de alimentação,977,1586.31,1621.0,1621.0,1629.36,44.0,202508-202607,False
+todas as atividades,Boa Vista,514320,Faxineiro,1966,1586.31,1621.0,1636.02,1637.49,44.0,202508-202607,False
+todas as atividades,Boa Vista,521140,Atendente de lojas e mercados,2658,1601.49,1621.0,1621.0,1604.85,44.0,202508-202607,False
+todas as atividades,Brasília,141510,Gerente de restaurante,466,1772.56,2200.0,2700.0,2447.39,44.0,202508-202607,False
+todas as atividades,Brasília,141515,Gerente de bar,89,1800.0,2204.16,3027.08,2446.82,44.0,202508-202607,False
+todas as atividades,Brasília,371410,Recreador,1889,1656.0,1767.97,2001.05,1866.78,44.0,202508-202607,False
+todas as atividades,Brasília,421125,Operador de caixa,13564,1621.0,1639.44,1700.0,1659.59,44.0,202508-202607,False
+todas as atividades,Brasília,513205,Cozinheiro geral,5309,1702.0,1792.86,2126.2,1992.15,44.0,202508-202607,False
+todas as atividades,Brasília,513405,Garçom,4260,1639.44,1750.68,1750.68,1823.94,44.0,202508-202607,False
+todas as atividades,Brasília,513415,Cumim,2005,1639.44,1750.68,1750.68,1708.51,44.0,202508-202607,False
+todas as atividades,Brasília,513420,Barman,825,1639.44,1750.68,1750.68,1739.79,44.0,202508-202607,False
+todas as atividades,Brasília,513435,Atendente de lanchonete,13663,1639.44,1655.0,1750.68,1701.73,44.0,202508-202607,False
+todas as atividades,Brasília,513505,Auxiliar nos serviços de alimentação,11082,1639.44,1700.0,1750.68,1732.47,44.0,202508-202607,False
+todas as atividades,Brasília,514320,Faxineiro,31019,1630.0,1743.69,1850.0,1739.03,44.0,202508-202607,False
+todas as atividades,Brasília,521140,Atendente de lojas e mercados,20393,1621.0,1681.0,1700.0,1675.63,44.0,202508-202607,False
+todas as atividades,Campo Grande,141510,Gerente de restaurante,69,2000.0,2508.0,3139.0,2988.95,44.0,202508-202607,False
+todas as atividades,Campo Grande,141515,Gerente de bar,20,2000.0,2450.0,2850.0,2561.68,44.0,202508-202607,True
+todas as atividades,Campo Grande,371410,Recreador,148,1600.0,1691.2,1800.0,1760.76,44.0,202508-202607,False
+todas as atividades,Campo Grande,421125,Operador de caixa,4057,1665.0,1756.0,1831.0,1774.05,44.0,202508-202607,False
+todas as atividades,Campo Grande,513205,Cozinheiro geral,1001,1651.0,1830.0,2100.0,1942.47,44.0,202508-202607,False
+todas as atividades,Campo Grande,513405,Garçom,708,1621.0,1691.2,1842.54,1756.2,44.0,202508-202607,False
+todas as atividades,Campo Grande,513415,Cumim,150,1600.0,1691.2,1691.2,1684.25,44.0,202508-202607,False
+todas as atividades,Campo Grande,513420,Barman,164,1600.0,1691.2,1800.0,1732.32,44.0,202508-202607,False
+todas as atividades,Campo Grande,513435,Atendente de lanchonete,2824,1600.0,1651.6,1700.0,1697.07,44.0,202508-202607,False
+todas as atividades,Campo Grande,513505,Auxiliar nos serviços de alimentação,3645,1621.0,1691.2,1800.0,1752.12,44.0,202508-202607,False
+todas as atividades,Campo Grande,514320,Faxineiro,6469,1600.0,1651.0,1717.2,1680.24,44.0,202508-202607,False
+todas as atividades,Campo Grande,521140,Atendente de lojas e mercados,5252,1665.0,1790.0,1830.0,1777.02,44.0,202508-202607,False
+todas as atividades,Cuiabá,141510,Gerente de restaurante,131,2000.0,2618.0,3531.0,2942.49,44.0,202508-202607,False
+todas as atividades,Cuiabá,141515,Gerente de bar,10,1740.0,2000.0,2567.5,2185.2,44.0,202508-202607,True
+todas as atividades,Cuiabá,371410,Recreador,136,1633.46,1805.25,2598.53,2128.49,44.0,202508-202607,False
+todas as atividades,Cuiabá,421125,Operador de caixa,4505,1615.0,1720.0,1800.0,1733.23,44.0,202508-202607,False
+todas as atividades,Cuiabá,513205,Cozinheiro geral,1233,1645.0,1741.5,2000.0,1899.49,44.0,202508-202607,False
+todas as atividades,Cuiabá,513405,Garçom,656,1570.0,1621.0,1676.0,1670.08,44.0,202508-202607,False
+todas as atividades,Cuiabá,513415,Cumim,173,1570.0,1621.0,1676.0,1655.64,44.0,202508-202607,False
+todas as atividades,Cuiabá,513420,Barman,171,1621.0,1676.0,1853.55,1791.13,44.0,202508-202607,False
+todas as atividades,Cuiabá,513435,Atendente de lanchonete,2386,1570.0,1621.0,1676.0,1654.32,44.0,202508-202607,False
+todas as atividades,Cuiabá,513505,Auxiliar nos serviços de alimentação,2825,1615.0,1676.0,1732.94,1711.11,44.0,202508-202607,False
+todas as atividades,Cuiabá,514320,Faxineiro,8632,1621.0,1632.91,1743.97,1692.99,44.0,202508-202607,False
+todas as atividades,Cuiabá,521140,Atendente de lojas e mercados,3141,1615.0,1685.0,1720.0,1698.49,44.0,202508-202607,False
+todas as atividades,Curitiba,141510,Gerente de restaurante,578,2200.0,2538.48,3500.0,3476.02,44.0,202508-202607,False
+todas as atividades,Curitiba,141515,Gerente de bar,83,2184.28,2500.0,2950.0,2532.75,44.0,202508-202607,False
+todas as atividades,Curitiba,371410,Recreador,141,1828.0,1996.0,2166.0,2029.47,44.0,202508-202607,False
+todas as atividades,Curitiba,421125,Operador de caixa,14091,1711.0,1927.02,2058.0,1917.34,44.0,202508-202607,False
+todas as atividades,Curitiba,513205,Cozinheiro geral,7295,1782.73,1900.0,2166.0,2011.09,44.0,202508-202607,False
+todas as atividades,Curitiba,513405,Garçom,2752,1828.0,1900.0,2068.0,1978.93,44.0,202508-202607,False
+todas as atividades,Curitiba,513415,Cumim,426,1828.0,1900.0,1955.37,1870.6,44.0,202508-202607,False
+todas as atividades,Curitiba,513420,Barman,484,1828.0,1925.77,2100.0,2015.99,44.0,202508-202607,False
+todas as atividades,Curitiba,513435,Atendente de lanchonete,9604,1828.0,1828.0,2000.0,1906.82,44.0,202508-202607,False
+todas as atividades,Curitiba,513505,Auxiliar nos serviços de alimentação,12021,1828.0,1864.85,2002.0,1920.35,44.0,202508-202607,False
+todas as atividades,Curitiba,514320,Faxineiro,26258,1764.0,1828.0,1900.0,1851.37,44.0,202508-202607,False
+todas as atividades,Curitiba,521140,Atendente de lojas e mercados,16251,1710.99,1891.0,2058.0,1896.11,44.0,202508-202607,False
+todas as atividades,Florianópolis,141510,Gerente de restaurante,163,2146.0,2596.8,3000.0,2761.3,44.0,202508-202607,False
+todas as atividades,Florianópolis,141515,Gerente de bar,31,2146.0,2269.4,2672.0,2443.59,44.0,202508-202607,False
+todas as atividades,Florianópolis,371410,Recreador,138,2000.0,2146.0,2166.0,2249.88,44.0,202508-202607,False
+todas as atividades,Florianópolis,421125,Operador de caixa,4101,2127.0,2255.0,2256.0,2222.49,44.0,202508-202607,False
+todas as atividades,Florianópolis,513205,Cozinheiro geral,2206,1978.0,2146.0,2315.68,2215.89,44.0,202508-202607,False
+todas as atividades,Florianópolis,513405,Garçom,2007,1978.0,2095.0,2146.0,2104.41,44.0,202508-202607,False
+todas as atividades,Florianópolis,513415,Cumim,141,1978.0,1978.0,2146.0,2052.21,44.0,202508-202607,False
+todas as atividades,Florianópolis,513420,Barman,340,1978.0,2146.0,2183.0,2158.47,44.0,202508-202607,False
+todas as atividades,Florianópolis,513435,Atendente de lanchonete,3748,1978.0,2048.46,2146.0,2066.6,44.0,202508-202607,False
+todas as atividades,Florianópolis,513505,Auxiliar nos serviços de alimentação,4536,1978.0,2146.0,2200.0,2130.69,44.0,202508-202607,False
+todas as atividades,Florianópolis,514320,Faxineiro,8466,1653.63,1752.85,1985.0,1854.7,44.0,202508-202607,False
+todas as atividades,Florianópolis,521140,Atendente de lojas e mercados,3432,2110.0,2255.0,2271.0,2182.36,44.0,202508-202607,False
+todas as atividades,Fortaleza,141510,Gerente de restaurante,243,1800.0,2245.31,2804.36,2524.93,44.0,202508-202607,False
+todas as atividades,Fortaleza,141515,Gerente de bar,35,1687.24,2000.0,2465.75,2227.45,44.0,202508-202607,False
+todas as atividades,Fortaleza,371410,Recreador,363,1568.09,1621.0,1674.49,1686.22,44.0,202508-202607,False
+todas as atividades,Fortaleza,421125,Operador de caixa,8680,1594.11,1635.0,1672.22,1644.37,44.0,202508-202607,False
+todas as atividades,Fortaleza,513205,Cozinheiro geral,4935,1621.0,1655.52,1767.93,1737.03,44.0,202508-202607,False
+todas as atividades,Fortaleza,513405,Garçom,2440,1563.54,1658.28,1674.49,1644.68,44.0,202508-202607,False
+todas as atividades,Fortaleza,513415,Cumim,1110,1563.54,1658.28,1674.49,1622.91,44.0,202508-202607,False
+todas as atividades,Fortaleza,513420,Barman,663,1563.6,1674.49,1674.49,1682.24,44.0,202508-202607,False
+todas as atividades,Fortaleza,513435,Atendente de lanchonete,6228,1530.0,1600.0,1658.28,1351.38,44.0,202508-202607,False
+todas as atividades,Fortaleza,513505,Auxiliar nos serviços de alimentação,7059,1563.54,1653.42,1674.49,1879.7,44.0,202508-202607,False
+todas as atividades,Fortaleza,514320,Faxineiro,18908,1548.36,1621.0,1641.0,1629.33,44.0,202508-202607,False
+todas as atividades,Fortaleza,521140,Atendente de lojas e mercados,6424,1594.11,1635.0,1674.49,1645.78,44.0,202508-202607,False
+todas as atividades,Goiânia,141510,Gerente de restaurante,179,2000.0,2496.0,2885.0,2657.38,44.0,202508-202607,False
+todas as atividades,Goiânia,141515,Gerente de bar,70,1762.5,2219.5,2857.15,2500.12,44.0,202508-202607,False
+todas as atividades,Goiânia,371410,Recreador,436,1635.87,1682.42,1760.0,1755.98,44.0,202508-202607,False
+todas as atividades,Goiânia,421125,Operador de caixa,9837,1613.0,1653.75,1745.63,1702.42,44.0,202508-202607,False
+todas as atividades,Goiânia,513205,Cozinheiro geral,2472,1635.87,1854.62,2288.0,2022.6,44.0,202508-202607,False
+todas as atividades,Goiânia,513405,Garçom,2450,1635.87,1635.87,1750.0,1720.86,44.0,202508-202607,False
+todas as atividades,Goiânia,513415,Cumim,848,1635.87,1635.87,1750.0,1711.32,44.0,202508-202607,False
+todas as atividades,Goiânia,513420,Barman,636,1635.87,1750.0,1890.0,1809.51,44.0,202508-202607,False
+todas as atividades,Goiânia,513435,Atendente de lanchonete,7269,1635.87,1635.87,1750.0,1706.57,44.0,202508-202607,False
+todas as atividades,Goiânia,513505,Auxiliar nos serviços de alimentação,6483,1635.87,1700.0,1800.0,1752.55,44.0,202508-202607,False
+todas as atividades,Goiânia,514320,Faxineiro,16669,1601.55,1676.0,1711.5,1735.01,44.0,202508-202607,False
+todas as atividades,Goiânia,521140,Atendente de lojas e mercados,7685,1621.0,1682.6,1738.01,1706.47,44.0,202508-202607,False
+todas as atividades,João Pessoa,141510,Gerente de restaurante,106,2000.0,2360.52,2779.25,2507.07,44.0,202508-202607,False
+todas as atividades,João Pessoa,141515,Gerente de bar,18,1925.0,2000.0,3000.0,2513.75,44.0,202508-202607,True
+todas as atividades,João Pessoa,371410,Recreador,138,1621.0,1700.0,1722.3,1754.83,44.0,202508-202607,False
+todas as atividades,João Pessoa,421125,Operador de caixa,2766,1675.0,1685.0,1700.0,1679.64,44.0,202508-202607,False
+todas as atividades,João Pessoa,513205,Cozinheiro geral,2188,1600.0,1638.39,1700.0,1711.84,44.0,202508-202607,False
+todas as atividades,João Pessoa,513405,Garçom,1325,1563.0,1621.0,1660.0,1626.61,44.0,202508-202607,False
+todas as atividades,João Pessoa,513415,Cumim,571,1563.0,1621.0,1621.0,1601.06,44.0,202508-202607,False
+todas as atividades,João Pessoa,513420,Barman,263,1563.0,1621.0,1665.0,1664.89,44.0,202508-202607,False
+todas as atividades,João Pessoa,513435,Atendente de lanchonete,3147,1563.0,1621.0,1665.0,1621.71,44.0,202508-202607,False
+todas as atividades,João Pessoa,513505,Auxiliar nos serviços de alimentação,2705,1563.0,1621.0,1665.0,1631.34,44.0,202508-202607,False
+todas as atividades,João Pessoa,514320,Faxineiro,5877,1530.0,1621.0,1631.5,1605.74,44.0,202508-202607,False
+todas as atividades,João Pessoa,521140,Atendente de lojas e mercados,2939,1675.0,1685.0,1700.0,1675.83,44.0,202508-202607,False
+todas as atividades,Macapá,141510,Gerente de restaurante,13,1825.17,2194.0,2512.04,2270.16,44.0,202508-202607,True
+todas as atividades,Macapá,141515,Gerente de bar,1,3500.0,3500.0,3500.0,3500.0,44.0,202508-202607,True
+todas as atividades,Macapá,371410,Recreador,5,1621.0,1621.0,1621.0,1621.0,44.0,202508-202607,True
+todas as atividades,Macapá,421125,Operador de caixa,1200,1518.0,1621.0,1621.0,1623.48,44.0,202508-202607,False
+todas as atividades,Macapá,513205,Cozinheiro geral,421,1621.0,1621.0,1889.35,1758.07,44.0,202508-202607,False
+todas as atividades,Macapá,513405,Garçom,214,1580.0,1621.0,1687.28,1882.14,44.0,202508-202607,False
+todas as atividades,Macapá,513415,Cumim,35,1518.0,1621.0,1621.0,1586.41,44.0,202508-202607,False
+todas as atividades,Macapá,513420,Barman,47,1580.0,1621.0,1621.0,1622.91,44.0,202508-202607,False
+todas as atividades,Macapá,513435,Atendente de lanchonete,463,1518.0,1621.0,1621.0,1631.87,44.0,202508-202607,False
+todas as atividades,Macapá,513505,Auxiliar nos serviços de alimentação,848,1580.0,1621.0,1621.0,1643.68,44.0,202508-202607,False
+todas as atividades,Macapá,514320,Faxineiro,4532,1621.0,1649.48,1717.2,1670.3,44.0,202508-202607,False
+todas as atividades,Macapá,521140,Atendente de lojas e mercados,1312,1560.0,1621.0,1621.0,1614.06,44.0,202508-202607,False
+todas as atividades,Maceió,141510,Gerente de restaurante,77,1895.0,2500.0,3000.0,2716.41,44.0,202508-202607,False
+todas as atividades,Maceió,141515,Gerente de bar,9,2024.0,2200.0,2980.0,2726.98,44.0,202508-202607,True
+todas as atividades,Maceió,371410,Recreador,139,1621.0,1695.0,1842.22,1736.58,44.0,202508-202607,False
+todas as atividades,Maceió,421125,Operador de caixa,2670,1553.0,1622.73,1660.0,1623.27,44.0,202508-202607,False
+todas as atividades,Maceió,513205,Cozinheiro geral,898,1621.43,1695.0,1900.0,1848.64,44.0,202508-202607,False
+todas as atividades,Maceió,513405,Garçom,944,1580.0,1695.0,1695.0,1702.2,44.0,202508-202607,False
+todas as atividades,Maceió,513415,Cumim,494,1580.0,1695.0,1695.0,1663.08,44.0,202508-202607,False
+todas as atividades,Maceió,513420,Barman,232,1580.0,1695.0,1695.0,1756.91,44.0,202508-202607,False
+todas as atividades,Maceió,513435,Atendente de lanchonete,2048,1580.0,1621.0,1695.0,1635.23,44.0,202508-202607,False
+todas as atividades,Maceió,513505,Auxiliar nos serviços de alimentação,2247,1580.0,1695.0,1695.0,1665.06,44.0,202508-202607,False
+todas as atividades,Maceió,514320,Faxineiro,4942,1550.0,1621.0,1666.0,1621.29,44.0,202508-202607,False
+todas as atividades,Maceió,521140,Atendente de lojas e mercados,2578,1553.0,1621.0,1660.0,1618.5,44.0,202508-202607,False
+todas as atividades,Manaus,141510,Gerente de restaurante,177,1900.0,2393.92,3000.0,2593.4,44.0,202508-202607,False
+todas as atividades,Manaus,141515,Gerente de bar,26,2125.0,2528.97,2923.08,2604.89,44.0,202508-202607,True
+todas as atividades,Manaus,371410,Recreador,158,1621.0,1621.0,1621.0,1643.7,40.0,202508-202607,False
+todas as atividades,Manaus,421125,Operador de caixa,5961,1550.0,1621.0,1650.0,1617.31,44.0,202508-202607,False
+todas as atividades,Manaus,513205,Cozinheiro geral,1660,1621.0,1765.0,1860.0,1814.99,44.0,202508-202607,False
+todas as atividades,Manaus,513405,Garçom,880,1593.9,1621.0,1621.0,1638.85,44.0,202508-202607,False
+todas as atividades,Manaus,513415,Cumim,462,1593.9,1621.0,1621.0,1605.91,44.0,202508-202607,False
+todas as atividades,Manaus,513420,Barman,242,1593.9,1621.0,1621.0,1650.85,44.0,202508-202607,False
+todas as atividades,Manaus,513435,Atendente de lanchonete,3937,1593.9,1621.0,1621.0,1663.22,44.0,202508-202607,False
+todas as atividades,Manaus,513505,Auxiliar nos serviços de alimentação,5373,1600.0,1621.0,1731.09,1661.0,44.0,202508-202607,False
+todas as atividades,Manaus,514320,Faxineiro,13048,1550.0,1621.0,1670.0,1653.17,44.0,202508-202607,False
+todas as atividades,Manaus,521140,Atendente de lojas e mercados,7586,1600.0,1621.0,1650.0,1645.36,44.0,202508-202607,False
+todas as atividades,Natal,141510,Gerente de restaurante,53,1715.0,2200.0,2890.0,2589.38,44.0,202508-202607,False
+todas as atividades,Natal,141515,Gerente de bar,9,1800.0,1800.0,2000.0,1973.25,44.0,202508-202607,True
+todas as atividades,Natal,371410,Recreador,206,1590.0,1621.0,1691.44,1657.28,44.0,202508-202607,False
+todas as atividades,Natal,421125,Operador de caixa,2350,1565.0,1621.0,1621.0,1604.89,44.0,202508-202607,False
+todas as atividades,Natal,513205,Cozinheiro geral,1287,1607.81,1653.0,1720.36,1753.85,44.0,202508-202607,False
+todas as atividades,Natal,513405,Garçom,829,1615.0,1621.0,1678.0,1638.73,44.0,202508-202607,False
+todas as atividades,Natal,513415,Cumim,535,1595.0,1621.0,1664.85,1650.02,44.0,202508-202607,False
+todas as atividades,Natal,513420,Barman,192,1615.0,1649.33,1715.0,1672.56,44.0,202508-202607,False
+todas as atividades,Natal,513435,Atendente de lanchonete,1399,1595.0,1621.0,1639.0,1619.13,44.0,202508-202607,False
+todas as atividades,Natal,513505,Auxiliar nos serviços de alimentação,2480,1595.0,1621.0,1653.0,1628.18,44.0,202508-202607,False
+todas as atividades,Natal,514320,Faxineiro,5827,1580.42,1621.0,1645.42,1609.18,44.0,202508-202607,False
+todas as atividades,Natal,521140,Atendente de lojas e mercados,2443,1565.0,1621.0,1628.0,1608.58,44.0,202508-202607,False
+todas as atividades,Palmas,141510,Gerente de restaurante,19,1747.0,2000.0,2663.93,2427.05,44.0,202508-202607,True
+todas as atividades,Palmas,141515,Gerente de bar,5,3000.0,3000.0,3000.0,3060.0,44.0,202508-202607,True
+todas as atividades,Palmas,371410,Recreador,64,1600.0,1700.0,1760.19,1708.76,44.0,202508-202607,False
+todas as atividades,Palmas,421125,Operador de caixa,2474,1621.0,1677.0,1677.0,1676.94,44.0,202508-202607,False
+todas as atividades,Palmas,513205,Cozinheiro geral,855,1793.0,1850.0,1850.0,1851.38,44.0,202508-202607,False
+todas as atividades,Palmas,513405,Garçom,386,1626.0,1731.04,1747.0,1739.6,44.0,202508-202607,False
+todas as atividades,Palmas,513415,Cumim,83,1606.0,1725.0,1725.0,1731.23,44.0,202508-202607,False
+todas as atividades,Palmas,513420,Barman,99,1606.0,1725.0,1725.0,1716.33,44.0,202508-202607,False
+todas as atividades,Palmas,513435,Atendente de lanchonete,925,1606.0,1677.0,1725.0,1681.68,44.0,202508-202607,False
+todas as atividades,Palmas,513505,Auxiliar nos serviços de alimentação,1137,1606.0,1677.0,1725.0,1706.79,44.0,202508-202607,False
+todas as atividades,Palmas,514320,Faxineiro,2190,1588.83,1670.3,1696.71,1678.7,44.0,202508-202607,False
+todas as atividades,Palmas,521140,Atendente de lojas e mercados,1315,1606.0,1677.0,1725.0,1702.36,44.0,202508-202607,False
+todas as atividades,Porto Alegre,141510,Gerente de restaurante,368,2158.52,2600.0,3466.77,2907.64,44.0,202508-202607,False
+todas as atividades,Porto Alegre,141515,Gerente de bar,69,1930.0,2100.0,2700.0,2361.88,44.0,202508-202607,False
+todas as atividades,Porto Alegre,371410,Recreador,274,1837.83,1949.0,2304.0,2186.55,44.0,202508-202607,False
+todas as atividades,Porto Alegre,421125,Operador de caixa,9177,1812.95,1916.0,1916.0,1888.16,44.0,202508-202607,False
+todas as atividades,Porto Alegre,513205,Cozinheiro geral,3416,1770.0,1850.0,2035.37,1923.79,44.0,202508-202607,False
+todas as atividades,Porto Alegre,513405,Garçom,2174,1770.85,1804.0,1930.0,1863.39,44.0,202508-202607,False
+todas as atividades,Porto Alegre,513415,Cumim,205,1770.85,1770.85,1850.0,1815.4,44.0,202508-202607,False
+todas as atividades,Porto Alegre,513420,Barman,295,1770.85,1831.0,1930.0,1905.34,44.0,202508-202607,False
+todas as atividades,Porto Alegre,513435,Atendente de lanchonete,5780,1770.85,1770.85,1850.0,1809.25,44.0,202508-202607,False
+todas as atividades,Porto Alegre,513505,Auxiliar nos serviços de alimentação,8663,1770.85,1872.0,1916.0,1863.12,44.0,202508-202607,False
+todas as atividades,Porto Alegre,514320,Faxineiro,16074,1653.58,1765.86,1817.8,1757.99,44.0,202508-202607,False
+todas as atividades,Porto Alegre,521140,Atendente de lojas e mercados,6783,1802.0,1916.0,1926.0,1879.97,44.0,202508-202607,False
+todas as atividades,Porto Velho,141510,Gerente de restaurante,18,1800.0,2000.0,3125.0,2387.77,44.0,202508-202607,True
+todas as atividades,Porto Velho,141515,Gerente de bar,7,1730.5,1800.0,2160.75,2029.07,44.0,202508-202607,True
+todas as atividades,Porto Velho,371410,Recreador,35,1598.0,1621.0,1706.5,1648.99,44.0,202508-202607,False
+todas as atividades,Porto Velho,421125,Operador de caixa,1910,1679.0,1700.0,1773.0,1716.43,44.0,202508-202607,False
+todas as atividades,Porto Velho,513205,Cozinheiro geral,368,1621.0,1706.5,1850.82,1822.12,44.0,202508-202607,False
+todas as atividades,Porto Velho,513405,Garçom,171,1598.0,1688.0,1706.5,1678.84,44.0,202508-202607,False
+todas as atividades,Porto Velho,513415,Cumim,68,1598.0,1637.0,1706.5,1657.12,44.0,202508-202607,False
+todas as atividades,Porto Velho,513420,Barman,66,1598.0,1662.5,1706.5,1656.34,44.0,202508-202607,False
+todas as atividades,Porto Velho,513435,Atendente de lanchonete,914,1598.0,1621.0,1706.5,1648.92,44.0,202508-202607,False
+todas as atividades,Porto Velho,513505,Auxiliar nos serviços de alimentação,1131,1598.0,1700.0,1731.09,1688.56,44.0,202508-202607,False
+todas as atividades,Porto Velho,514320,Faxineiro,3064,1620.27,1700.0,1743.48,1683.41,44.0,202508-202607,False
+todas as atividades,Porto Velho,521140,Atendente de lojas e mercados,1625,1688.0,1700.0,1773.0,1713.47,44.0,202508-202607,False
+todas as atividades,Recife,141510,Gerente de restaurante,239,2000.0,2750.0,3795.63,3128.42,44.0,202508-202607,False
+todas as atividades,Recife,141515,Gerente de bar,38,2032.54,2500.0,2900.0,3338.74,44.0,202508-202607,False
+todas as atividades,Recife,371410,Recreador,153,1651.8,1700.0,1724.89,1669.56,44.0,202508-202607,False
+todas as atividades,Recife,421125,Operador de caixa,3684,1651.0,1715.77,1740.0,1705.94,44.0,202508-202607,False
+todas as atividades,Recife,513205,Cozinheiro geral,2719,1638.39,1700.0,1825.36,1785.9,44.0,202508-202607,False
+todas as atividades,Recife,513405,Garçom,1603,1651.8,1700.0,1700.0,1683.0,44.0,202508-202607,False
+todas as atividades,Recife,513415,Cumim,932,1651.8,1700.0,1700.0,1682.08,44.0,202508-202607,False
+todas as atividades,Recife,513420,Barman,450,1651.8,1700.0,1746.66,1749.66,44.0,202508-202607,False
+todas as atividades,Recife,513435,Atendente de lanchonete,4124,1622.73,1656.03,1700.0,1656.84,44.0,202508-202607,False
+todas as atividades,Recife,513505,Auxiliar nos serviços de alimentação,5084,1638.39,1668.0,1700.0,1706.79,44.0,202508-202607,False
+todas as atividades,Recife,514320,Faxineiro,11265,1566.91,1632.45,1654.71,1629.93,44.0,202508-202607,False
+todas as atividades,Recife,521140,Atendente de lojas e mercados,6016,1647.79,1655.4,1733.0,1678.63,44.0,202508-202607,False
+todas as atividades,Rio Branco,141510,Gerente de restaurante,13,1621.0,1621.0,2500.0,2137.29,44.0,202508-202607,True
+todas as atividades,Rio Branco,141515,Gerente de bar,2,2238.61,2332.22,2425.84,2332.22,44.0,202508-202607,True
+todas as atividades,Rio Branco,371410,Recreador,27,1518.0,1598.0,1706.5,1615.72,44.0,202508-202607,True
+todas as atividades,Rio Branco,421125,Operador de caixa,747,1518.0,1621.0,1700.0,1644.27,44.0,202508-202607,False
+todas as atividades,Rio Branco,513205,Cozinheiro geral,502,1642.0,1657.48,1790.07,1729.48,44.0,202508-202607,False
+todas as atividades,Rio Branco,513405,Garçom,159,1518.0,1621.0,1678.74,1633.0,44.0,202508-202607,False
+todas as atividades,Rio Branco,513415,Cumim,67,1598.0,1621.0,1706.5,1625.45,44.0,202508-202607,False
+todas as atividades,Rio Branco,513420,Barman,35,1598.0,1621.0,1706.5,1637.74,44.0,202508-202607,False
+todas as atividades,Rio Branco,513435,Atendente de lanchonete,651,1518.0,1621.0,1646.96,1627.52,44.0,202508-202607,False
+todas as atividades,Rio Branco,513505,Auxiliar nos serviços de alimentação,742,1602.5,1621.0,1706.5,1662.68,44.0,202508-202607,False
+todas as atividades,Rio Branco,514320,Faxineiro,2511,1540.47,1621.0,1663.7,1624.01,44.0,202508-202607,False
+todas as atividades,Rio Branco,521140,Atendente de lojas e mercados,1064,1576.84,1621.0,1672.22,1642.6,44.0,202508-202607,False
+todas as atividades,Rio de Janeiro,141510,Gerente de restaurante,1378,2000.0,2334.64,2983.0,2657.96,44.0,202508-202607,False
+todas as atividades,Rio de Janeiro,141515,Gerente de bar,344,1900.0,2200.0,2742.7,2391.68,44.0,202508-202607,False
+todas as atividades,Rio de Janeiro,371410,Recreador,812,1621.0,1684.0,1800.0,1759.18,44.0,202508-202607,False
+todas as atividades,Rio de Janeiro,421125,Operador de caixa,21049,1650.0,1768.67,1810.0,1753.69,44.0,202508-202607,False
+todas as atividades,Rio de Janeiro,513205,Cozinheiro geral,10755,1622.4,1810.0,2112.02,1942.99,44.0,202508-202607,False
+todas as atividades,Rio de Janeiro,513405,Garçom,8371,1658.8,1658.8,1751.0,1789.74,44.0,202508-202607,False
+todas as atividades,Rio de Janeiro,513415,Cumim,3638,1658.8,1658.8,1733.45,1696.25,44.0,202508-202607,False
+todas as atividades,Rio de Janeiro,513420,Barman,1894,1735.11,1768.68,1861.5,1806.2,44.0,202508-202607,False
+todas as atividades,Rio de Janeiro,513435,Atendente de lanchonete,19912,1560.0,1629.1,1783.0,1668.57,44.0,202508-202607,False
+todas as atividades,Rio de Janeiro,513505,Auxiliar nos serviços de alimentação,19582,1621.0,1706.84,1810.0,1741.75,44.0,202508-202607,False
+todas as atividades,Rio de Janeiro,514320,Faxineiro,51212,1650.67,1730.75,1743.69,1727.96,44.0,202508-202607,False
+todas as atividades,Rio de Janeiro,521140,Atendente de lojas e mercados,27986,1621.0,1712.0,1810.0,1725.34,44.0,202508-202607,False
+todas as atividades,Salvador,141510,Gerente de restaurante,168,2000.0,2500.0,3268.79,2889.45,44.0,202508-202607,False
+todas as atividades,Salvador,141515,Gerente de bar,20,2500.0,2640.86,3525.0,3001.52,44.0,202508-202607,True
+todas as atividades,Salvador,371410,Recreador,86,1621.0,1651.92,1722.0,1755.69,44.0,202508-202607,False
+todas as atividades,Salvador,421125,Operador de caixa,4772,1621.0,1700.0,1704.0,1700.67,44.0,202508-202607,False
+todas as atividades,Salvador,513205,Cozinheiro geral,3709,1621.0,1683.84,1800.0,1743.43,44.0,202508-202607,False
+todas as atividades,Salvador,513405,Garçom,1911,1625.09,1625.09,1646.0,1643.38,44.0,202508-202607,False
+todas as atividades,Salvador,513415,Cumim,672,1625.09,1625.09,1625.09,1629.41,44.0,202508-202607,False
+todas as atividades,Salvador,513420,Barman,408,1625.09,1625.09,1757.69,1719.28,44.0,202508-202607,False
+todas as atividades,Salvador,513435,Atendente de lanchonete,3863,1621.0,1625.09,1636.96,1624.1,44.0,202508-202607,False
+todas as atividades,Salvador,513505,Auxiliar nos serviços de alimentação,4943,1621.0,1625.09,1700.0,1664.09,44.0,202508-202607,False
+todas as atividades,Salvador,514320,Faxineiro,14785,1552.0,1621.0,1660.0,1625.55,44.0,202508-202607,False
+todas as atividades,Salvador,521140,Atendente de lojas e mercados,6793,1621.0,1646.0,1703.44,1672.88,44.0,202508-202607,False
+todas as atividades,São Luís,141510,Gerente de restaurante,66,1928.1,2233.64,2988.95,2615.43,44.0,202508-202607,False
+todas as atividades,São Luís,141515,Gerente de bar,8,1740.54,1793.65,2125.0,1972.61,44.0,202508-202607,True
+todas as atividades,São Luís,371410,Recreador,67,1647.06,1665.59,1787.3,1694.64,44.0,202508-202607,False
+todas as atividades,São Luís,421125,Operador de caixa,2224,1621.0,1686.14,1787.3,1690.08,44.0,202508-202607,False
+todas as atividades,São Luís,513205,Cozinheiro geral,1179,1570.0,1665.59,1750.0,1713.8,44.0,202508-202607,False
+todas as atividades,São Luís,513405,Garçom,531,1665.59,1665.59,1685.0,1704.84,44.0,202508-202607,False
+todas as atividades,São Luís,513415,Cumim,161,1665.59,1665.59,1665.59,1706.4,44.0,202508-202607,False
+todas as atividades,São Luís,513420,Barman,105,1665.59,1665.59,1665.9,1716.65,44.0,202508-202607,False
+todas as atividades,São Luís,513435,Atendente de lanchonete,1469,1648.0,1665.59,1665.59,1658.37,44.0,202508-202607,False
+todas as atividades,São Luís,513505,Auxiliar nos serviços de alimentação,1859,1665.29,1665.59,1670.0,1680.59,44.0,202508-202607,False
+todas as atividades,São Luís,514320,Faxineiro,6186,1535.0,1621.0,1636.74,1620.76,44.0,202508-202607,False
+todas as atividades,São Luís,521140,Atendente de lojas e mercados,2715,1621.0,1686.14,1787.3,1716.24,44.0,202508-202607,False
+todas as atividades,São Paulo,141510,Gerente de restaurante,3136,2532.2,3000.0,3981.9,3505.72,44.0,202508-202607,False
+todas as atividades,São Paulo,141515,Gerente de bar,666,2424.9,3000.0,3650.0,3226.15,44.0,202508-202607,False
+todas as atividades,São Paulo,371410,Recreador,1502,1826.59,2000.0,2209.14,2079.93,44.0,202508-202607,False
+todas as atividades,São Paulo,421125,Operador de caixa,42332,1976.0,2100.0,2120.0,2075.47,44.0,202508-202607,False
+todas as atividades,São Paulo,513205,Cozinheiro geral,28857,1850.0,2092.54,2500.0,2258.12,44.0,202508-202607,False
+todas as atividades,São Paulo,513405,Garçom,15217,1805.06,2070.51,2237.0,2137.68,44.0,202508-202607,False
+todas as atividades,São Paulo,513415,Cumim,5378,1804.0,1804.0,2001.61,1918.26,44.0,202508-202607,False
+todas as atividades,São Paulo,513420,Barman,2990,1804.0,2021.28,2350.0,2130.47,44.0,202508-202607,False
+todas as atividades,São Paulo,513435,Atendente de lanchonete,52586,1621.0,1804.0,2070.51,1880.89,44.0,202508-202607,False
+todas as atividades,São Paulo,513505,Auxiliar nos serviços de alimentação,57520,1810.0,1972.38,2125.85,2017.31,44.0,202508-202607,False
+todas as atividades,São Paulo,514320,Faxineiro,214848,1717.2,1823.93,1837.4,1830.07,44.0,202508-202607,False
+todas as atividades,São Paulo,521140,Atendente de lojas e mercados,80604,1922.48,2070.51,2120.0,2030.03,44.0,202508-202607,False
+todas as atividades,Teresina,141510,Gerente de restaurante,33,1675.0,2000.0,2325.95,2163.83,44.0,202508-202607,False
+todas as atividades,Teresina,141515,Gerente de bar,5,1675.0,1796.05,2100.0,2027.81,44.0,202508-202607,True
+todas as atividades,Teresina,371410,Recreador,91,1568.0,1600.0,1675.0,1620.37,44.0,202508-202607,False
+todas as atividades,Teresina,421125,Operador de caixa,1960,1631.05,1661.91,1728.39,1669.35,44.0,202508-202607,False
+todas as atividades,Teresina,513205,Cozinheiro geral,711,1570.0,1675.0,1706.86,1708.03,44.0,202508-202607,False
+todas as atividades,Teresina,513405,Garçom,699,1568.0,1675.0,1675.0,1656.5,44.0,202508-202607,False
+todas as atividades,Teresina,513415,Cumim,165,1568.0,1675.0,1675.0,1633.84,44.0,202508-202607,False
+todas as atividades,Teresina,513420,Barman,130,1568.0,1675.0,1675.0,1647.37,44.0,202508-202607,False
+todas as atividades,Teresina,513435,Atendente de lanchonete,1246,1568.0,1647.57,1675.0,1632.87,44.0,202508-202607,False
+todas as atividades,Teresina,513505,Auxiliar nos serviços de alimentação,1554,1570.0,1653.96,1675.0,1646.07,44.0,202508-202607,False
+todas as atividades,Teresina,514320,Faxineiro,3324,1553.96,1621.0,1654.13,1612.63,44.0,202508-202607,False
+todas as atividades,Teresina,521140,Atendente de lojas e mercados,1814,1601.48,1633.51,1728.39,1655.99,44.0,202508-202607,False
+todas as atividades,Vitória,141510,Gerente de restaurante,156,2294.23,2740.18,3990.25,3167.89,44.0,202508-202607,False
+todas as atividades,Vitória,141515,Gerente de bar,13,1974.78,2500.0,2900.0,2644.05,44.0,202508-202607,True
+todas as atividades,Vitória,371410,Recreador,52,1642.75,1702.05,1705.0,1685.99,44.0,202508-202607,False
+todas as atividades,Vitória,421125,Operador de caixa,2247,1650.0,1674.75,1828.6,1726.57,44.0,202508-202607,False
+todas as atividades,Vitória,513205,Cozinheiro geral,1028,1749.0,2038.65,2364.49,2097.21,44.0,202508-202607,False
+todas as atividades,Vitória,513405,Garçom,786,1647.29,1705.0,1840.4,1779.1,44.0,202508-202607,False
+todas as atividades,Vitória,513415,Cumim,167,1590.0,1705.0,1705.0,1658.56,44.0,202508-202607,False
+todas as atividades,Vitória,513420,Barman,117,1705.0,1732.94,1852.23,1795.25,44.0,202508-202607,False
+todas as atividades,Vitória,513435,Atendente de lanchonete,1954,1590.0,1700.5,1705.0,1690.44,44.0,202508-202607,False
+todas as atividades,Vitória,513505,Auxiliar nos serviços de alimentação,2272,1640.0,1705.0,1800.0,1754.16,44.0,202508-202607,False
+todas as atividades,Vitória,514320,Faxineiro,3568,1608.14,1653.63,1735.02,1692.39,44.0,202508-202607,False
+todas as atividades,Vitória,521140,Atendente de lojas e mercados,2022,1640.0,1650.0,1713.61,1704.44,44.0,202508-202607,False
+todas as atividades,27 capitais,141510,Gerente de restaurante,8733,2190.66,2690.0,3500.0,3071.68,44.0,202508-202607,False
+todas as atividades,27 capitais,141515,Gerente de bar,1788,2000.0,2500.0,3032.68,2748.31,44.0,202508-202607,False
+todas as atividades,27 capitais,371410,Recreador,8285,1639.44,1800.0,2037.28,2111.51,44.0,202508-202607,False
+todas as atividades,27 capitais,421125,Operador de caixa,190551,1650.0,1747.0,1976.0,1820.89,44.0,202508-202607,False
+todas as atividades,27 capitais,513205,Cozinheiro geral,93863,1683.84,1850.0,2172.0,2013.41,44.0,202508-202607,False
+todas as atividades,27 capitais,513405,Garçom,56237,1651.8,1750.68,2000.0,1871.22,44.0,202508-202607,False
+todas as atividades,27 capitais,513415,Cumim,19813,1635.87,1700.0,1804.0,1747.24,44.0,202508-202607,False
+todas as atividades,27 capitais,513420,Barman,11727,1664.45,1793.5,2000.0,1875.17,44.0,202508-202607,False
+todas as atividades,27 capitais,513435,Atendente de lanchonete,166727,1621.0,1688.53,1828.0,1753.21,44.0,202508-202607,False
+todas as atividades,27 capitais,513505,Auxiliar nos serviços de alimentação,181938,1646.96,1800.0,1950.0,1847.18,44.0,202508-202607,False
+todas as atividades,27 capitais,514320,Faxineiro,528547,1640.75,1717.2,1837.4,1762.32,44.0,202508-202607,False
+todas as atividades,27 capitais,521140,Atendente de lojas e mercados,243137,1650.0,1773.0,2000.0,1831.24,44.0,202508-202607,False
+CNAE 56 - alimentação,Aracaju,141510,Gerente de restaurante,54,2000.0,2304.23,2925.68,2433.24,44.0,202508-202607,False
+CNAE 56 - alimentação,Aracaju,141515,Gerente de bar,5,2100.0,3000.0,3000.0,2616.0,44.0,202508-202607,True
+CNAE 56 - alimentação,Aracaju,371410,Recreador,15,1560.0,1621.0,1645.5,1631.67,44.0,202508-202607,True
+CNAE 56 - alimentação,Aracaju,421125,Operador de caixa,227,1560.0,1621.0,1670.0,1627.91,44.0,202508-202607,False
+CNAE 56 - alimentação,Aracaju,513205,Cozinheiro geral,549,1621.0,1700.0,2000.0,1847.17,44.0,202508-202607,False
+CNAE 56 - alimentação,Aracaju,513405,Garçom,562,1560.0,1621.0,1647.5,1617.34,44.0,202508-202607,False
+CNAE 56 - alimentação,Aracaju,513415,Cumim,185,1560.0,1621.0,1633.89,1607.12,44.0,202508-202607,False
+CNAE 56 - alimentação,Aracaju,513420,Barman,161,1560.0,1650.0,1800.0,1744.95,44.0,202508-202607,False
+CNAE 56 - alimentação,Aracaju,513435,Atendente de lanchonete,1232,1560.0,1621.0,1621.0,1601.79,44.0,202508-202607,False
+CNAE 56 - alimentação,Aracaju,513505,Auxiliar nos serviços de alimentação,1137,1560.0,1621.0,1670.0,1630.71,44.0,202508-202607,False
+CNAE 56 - alimentação,Aracaju,514320,Faxineiro,475,1560.0,1621.0,1621.0,1605.94,44.0,202508-202607,False
+CNAE 56 - alimentação,Aracaju,521140,Atendente de lojas e mercados,153,1560.0,1621.0,1660.0,1636.82,44.0,202508-202607,False
+CNAE 56 - alimentação,Belo Horizonte,141510,Gerente de restaurante,617,2026.05,2700.0,3663.21,3006.85,44.0,202508-202607,False
+CNAE 56 - alimentação,Belo Horizonte,141515,Gerente de bar,154,2000.0,2275.0,2742.0,2422.48,44.0,202508-202607,False
+CNAE 56 - alimentação,Belo Horizonte,371410,Recreador,41,1697.0,1738.0,2000.0,1784.37,44.0,202508-202607,False
+CNAE 56 - alimentação,Belo Horizonte,421125,Operador de caixa,804,1621.0,1697.0,1800.0,1733.62,44.0,202508-202607,False
+CNAE 56 - alimentação,Belo Horizonte,513205,Cozinheiro geral,3703,1738.0,2000.0,2250.0,2041.74,44.0,202508-202607,False
+CNAE 56 - alimentação,Belo Horizonte,513405,Garçom,2577,1623.94,1738.0,1738.0,1741.85,44.0,202508-202607,False
+CNAE 56 - alimentação,Belo Horizonte,513415,Cumim,485,1621.0,1697.0,1738.0,1701.34,44.0,202508-202607,False
+CNAE 56 - alimentação,Belo Horizonte,513420,Barman,410,1650.0,1738.0,2000.0,1848.52,44.0,202508-202607,False
+CNAE 56 - alimentação,Belo Horizonte,513435,Atendente de lanchonete,7920,1600.0,1640.72,1704.44,1681.69,44.0,202508-202607,False
+CNAE 56 - alimentação,Belo Horizonte,513505,Auxiliar nos serviços de alimentação,7501,1623.94,1697.0,1793.0,1755.26,44.0,202508-202607,False
+CNAE 56 - alimentação,Belo Horizonte,514320,Faxineiro,2414,1621.0,1688.0,1772.8,1773.58,44.0,202508-202607,False
+CNAE 56 - alimentação,Belo Horizonte,521140,Atendente de lojas e mercados,1857,1600.0,1697.0,1738.0,1698.59,44.0,202508-202607,False
+CNAE 56 - alimentação,Belém,141510,Gerente de restaurante,67,1720.0,2200.0,3035.84,2421.97,44.0,202508-202607,False
+CNAE 56 - alimentação,Belém,141515,Gerente de bar,13,1725.28,2000.0,2128.0,2161.93,44.0,202508-202607,True
+CNAE 56 - alimentação,Belém,371410,Recreador,42,1553.2,1621.0,1700.0,1647.52,44.0,202508-202607,False
+CNAE 56 - alimentação,Belém,421125,Operador de caixa,265,1580.0,1621.0,1680.0,1654.26,44.0,202508-202607,False
+CNAE 56 - alimentação,Belém,513205,Cozinheiro geral,1223,1650.0,1650.0,1685.22,1706.88,44.0,202508-202607,False
+CNAE 56 - alimentação,Belém,513405,Garçom,611,1580.0,1621.0,1680.0,1617.15,44.0,202508-202607,False
+CNAE 56 - alimentação,Belém,513415,Cumim,322,1518.0,1616.0,1621.0,1601.73,44.0,202508-202607,False
+CNAE 56 - alimentação,Belém,513420,Barman,176,1580.0,1621.0,1680.0,1656.46,44.0,202508-202607,False
+CNAE 56 - alimentação,Belém,513435,Atendente de lanchonete,2097,1580.0,1621.0,1621.0,1608.37,44.0,202508-202607,False
+CNAE 56 - alimentação,Belém,513505,Auxiliar nos serviços de alimentação,1588,1580.0,1621.0,1650.0,1619.61,44.0,202508-202607,False
+CNAE 56 - alimentação,Belém,514320,Faxineiro,447,1520.0,1621.0,1621.0,1606.85,44.0,202508-202607,False
+CNAE 56 - alimentação,Belém,521140,Atendente de lojas e mercados,336,1580.0,1621.0,1636.18,1611.77,44.0,202508-202607,False
+CNAE 56 - alimentação,Boa Vista,141510,Gerente de restaurante,7,1910.5,2300.0,2628.58,2280.64,44.0,202508-202607,True
+CNAE 56 - alimentação,Boa Vista,141515,Gerente de bar,3,1793.16,2000.0,2035.64,1885.87,44.0,202508-202607,True
+CNAE 56 - alimentação,Boa Vista,371410,Recreador,9,1586.31,1621.0,1621.0,1616.84,44.0,202508-202607,True
+CNAE 56 - alimentação,Boa Vista,421125,Operador de caixa,56,1586.31,1621.0,1621.0,1621.52,44.0,202508-202607,False
+CNAE 56 - alimentação,Boa Vista,513205,Cozinheiro geral,118,1586.31,1621.0,1784.59,1743.1,44.0,202508-202607,False
+CNAE 56 - alimentação,Boa Vista,513405,Garçom,172,1586.31,1621.0,1621.0,1613.84,44.0,202508-202607,False
+CNAE 56 - alimentação,Boa Vista,513415,Cumim,94,1586.31,1611.24,1621.0,1604.18,44.0,202508-202607,False
+CNAE 56 - alimentação,Boa Vista,513420,Barman,34,1586.31,1593.16,1621.0,1624.05,44.0,202508-202607,False
+CNAE 56 - alimentação,Boa Vista,513435,Atendente de lanchonete,266,1586.31,1621.0,1621.0,1618.66,44.0,202508-202607,False
+CNAE 56 - alimentação,Boa Vista,513505,Auxiliar nos serviços de alimentação,591,1586.31,1621.0,1621.0,1625.8,44.0,202508-202607,False
+CNAE 56 - alimentação,Boa Vista,514320,Faxineiro,83,1586.31,1621.0,1621.0,1644.02,44.0,202508-202607,False
+CNAE 56 - alimentação,Boa Vista,521140,Atendente de lojas e mercados,56,1597.7,1621.0,1621.0,1625.8,44.0,202508-202607,False
+CNAE 56 - alimentação,Brasília,141510,Gerente de restaurante,375,1800.0,2237.18,2700.0,2453.77,44.0,202508-202607,False
+CNAE 56 - alimentação,Brasília,141515,Gerente de bar,70,1800.0,2200.0,3032.68,2425.86,44.0,202508-202607,False
+CNAE 56 - alimentação,Brasília,371410,Recreador,179,1639.44,1750.68,1750.68,1724.99,44.0,202508-202607,False
+CNAE 56 - alimentação,Brasília,421125,Operador de caixa,1145,1639.44,1750.0,1750.68,1721.9,44.0,202508-202607,False
+CNAE 56 - alimentação,Brasília,513205,Cozinheiro geral,3206,1724.49,1750.68,2000.0,1914.03,44.0,202508-202607,False
+CNAE 56 - alimentação,Brasília,513405,Garçom,3127,1639.44,1750.68,1750.68,1727.83,44.0,202508-202607,False
+CNAE 56 - alimentação,Brasília,513415,Cumim,1622,1639.44,1750.68,1750.68,1707.4,44.0,202508-202607,False
+CNAE 56 - alimentação,Brasília,513420,Barman,667,1639.44,1750.68,1750.68,1742.38,44.0,202508-202607,False
+CNAE 56 - alimentação,Brasília,513435,Atendente de lanchonete,8944,1639.44,1720.88,1750.68,1722.79,44.0,202508-202607,False
+CNAE 56 - alimentação,Brasília,513505,Auxiliar nos serviços de alimentação,7302,1639.44,1750.06,1750.68,1717.38,44.0,202508-202607,False
+CNAE 56 - alimentação,Brasília,514320,Faxineiro,2369,1639.44,1720.76,1750.68,1705.01,44.0,202508-202607,False
+CNAE 56 - alimentação,Brasília,521140,Atendente de lojas e mercados,1619,1639.44,1700.0,1750.68,1700.22,44.0,202508-202607,False
+CNAE 56 - alimentação,Campo Grande,141510,Gerente de restaurante,58,2195.9,2574.82,3119.5,2885.55,44.0,202508-202607,False
+CNAE 56 - alimentação,Campo Grande,141515,Gerente de bar,14,2000.0,2500.0,2950.0,2679.47,44.0,202508-202607,True
+CNAE 56 - alimentação,Campo Grande,371410,Recreador,48,1600.0,1691.2,1691.2,1704.62,44.0,202508-202607,False
+CNAE 56 - alimentação,Campo Grande,421125,Operador de caixa,208,1600.0,1691.2,1800.0,1736.68,44.0,202508-202607,False
+CNAE 56 - alimentação,Campo Grande,513205,Cozinheiro geral,510,1621.0,1800.0,2127.2,1936.87,44.0,202508-202607,False
+CNAE 56 - alimentação,Campo Grande,513405,Garçom,540,1621.0,1691.2,1800.0,1740.87,44.0,202508-202607,False
+CNAE 56 - alimentação,Campo Grande,513415,Cumim,118,1600.0,1691.2,1691.2,1658.94,44.0,202508-202607,False
+CNAE 56 - alimentação,Campo Grande,513420,Barman,126,1600.0,1691.2,1728.03,1698.83,44.0,202508-202607,False
+CNAE 56 - alimentação,Campo Grande,513435,Atendente de lanchonete,2148,1600.0,1691.0,1692.0,1698.15,44.0,202508-202607,False
+CNAE 56 - alimentação,Campo Grande,513505,Auxiliar nos serviços de alimentação,1948,1609.0,1691.2,1800.0,1743.07,44.0,202508-202607,False
+CNAE 56 - alimentação,Campo Grande,514320,Faxineiro,199,1600.0,1691.2,1800.0,1748.73,44.0,202508-202607,False
+CNAE 56 - alimentação,Campo Grande,521140,Atendente de lojas e mercados,306,1621.0,1691.2,1785.0,1733.93,44.0,202508-202607,False
+CNAE 56 - alimentação,Cuiabá,141510,Gerente de restaurante,113,2180.0,2654.0,3561.99,3007.64,44.0,202508-202607,False
+CNAE 56 - alimentação,Cuiabá,141515,Gerente de bar,7,1710.5,2500.0,2795.0,2304.57,44.0,202508-202607,True
+CNAE 56 - alimentação,Cuiabá,371410,Recreador,19,1570.0,1621.0,1676.0,1613.68,44.0,202508-202607,True
+CNAE 56 - alimentação,Cuiabá,421125,Operador de caixa,210,1570.0,1657.0,1700.0,1696.05,44.0,202508-202607,False
+CNAE 56 - alimentação,Cuiabá,513205,Cozinheiro geral,522,1621.0,1730.75,2000.0,1894.87,44.0,202508-202607,False
+CNAE 56 - alimentação,Cuiabá,513405,Garçom,357,1570.0,1621.0,1676.0,1633.87,44.0,202508-202607,False
+CNAE 56 - alimentação,Cuiabá,513415,Cumim,112,1570.0,1621.0,1676.0,1648.71,44.0,202508-202607,False
+CNAE 56 - alimentação,Cuiabá,513420,Barman,96,1570.0,1676.0,1800.0,1765.35,44.0,202508-202607,False
+CNAE 56 - alimentação,Cuiabá,513435,Atendente de lanchonete,1671,1570.0,1621.0,1676.0,1653.18,44.0,202508-202607,False
+CNAE 56 - alimentação,Cuiabá,513505,Auxiliar nos serviços de alimentação,1586,1600.0,1650.0,1700.0,1690.72,44.0,202508-202607,False
+CNAE 56 - alimentação,Cuiabá,514320,Faxineiro,306,1621.0,1632.91,1763.54,1716.4,44.0,202508-202607,False
+CNAE 56 - alimentação,Cuiabá,521140,Atendente de lojas e mercados,180,1600.0,1676.0,1717.0,1670.27,44.0,202508-202607,False
+CNAE 56 - alimentação,Curitiba,141510,Gerente de restaurante,500,2200.0,2518.52,3338.63,3442.81,44.0,202508-202607,False
+CNAE 56 - alimentação,Curitiba,141515,Gerente de bar,71,2200.0,2500.0,3000.0,2582.97,44.0,202508-202607,False
+CNAE 56 - alimentação,Curitiba,371410,Recreador,34,1828.0,1828.0,1900.0,1874.82,44.0,202508-202607,False
+CNAE 56 - alimentação,Curitiba,421125,Operador de caixa,832,1828.0,1900.0,2000.0,1944.88,44.0,202508-202607,False
+CNAE 56 - alimentação,Curitiba,513205,Cozinheiro geral,3287,1891.28,2000.0,2300.0,2146.07,44.0,202508-202607,False
+CNAE 56 - alimentação,Curitiba,513405,Garçom,2276,1828.0,1900.0,2007.95,1958.54,44.0,202508-202607,False
+CNAE 56 - alimentação,Curitiba,513415,Cumim,304,1828.0,1896.0,1900.0,1844.77,44.0,202508-202607,False
+CNAE 56 - alimentação,Curitiba,513420,Barman,419,1828.0,1906.2,2100.0,2013.82,44.0,202508-202607,False
+CNAE 56 - alimentação,Curitiba,513435,Atendente de lanchonete,7372,1828.0,1828.0,1910.0,1885.6,44.0,202508-202607,False
+CNAE 56 - alimentação,Curitiba,513505,Auxiliar nos serviços de alimentação,8193,1828.0,1853.29,2000.0,1914.09,44.0,202508-202607,False
+CNAE 56 - alimentação,Curitiba,514320,Faxineiro,1993,1800.0,1895.65,1907.56,1890.68,44.0,202508-202607,False
+CNAE 56 - alimentação,Curitiba,521140,Atendente de lojas e mercados,1036,1828.0,1900.0,2050.75,1936.79,44.0,202508-202607,False
+CNAE 56 - alimentação,Florianópolis,141510,Gerente de restaurante,143,2146.0,2500.0,3000.0,2746.46,44.0,202508-202607,False
+CNAE 56 - alimentação,Florianópolis,141515,Gerente de bar,26,2146.0,2198.0,2500.0,2411.49,44.0,202508-202607,True
+CNAE 56 - alimentação,Florianópolis,371410,Recreador,7,1978.0,1978.0,2146.0,2050.0,44.0,202508-202607,True
+CNAE 56 - alimentação,Florianópolis,421125,Operador de caixa,369,1978.0,2146.0,2146.0,2095.79,44.0,202508-202607,False
+CNAE 56 - alimentação,Florianópolis,513205,Cozinheiro geral,1383,1978.0,2146.0,2327.6,2242.29,44.0,202508-202607,False
+CNAE 56 - alimentação,Florianópolis,513405,Garçom,1476,1978.0,2000.0,2146.0,2082.47,44.0,202508-202607,False
+CNAE 56 - alimentação,Florianópolis,513415,Cumim,122,1978.0,1989.0,2146.0,2055.51,44.0,202508-202607,False
+CNAE 56 - alimentação,Florianópolis,513420,Barman,250,1978.0,2146.0,2200.0,2159.5,44.0,202508-202607,False
+CNAE 56 - alimentação,Florianópolis,513435,Atendente de lanchonete,2746,1978.0,2100.0,2146.0,2077.41,44.0,202508-202607,False
+CNAE 56 - alimentação,Florianópolis,513505,Auxiliar nos serviços de alimentação,2925,1978.0,2146.0,2146.0,2101.59,44.0,202508-202607,False
+CNAE 56 - alimentação,Florianópolis,514320,Faxineiro,300,1978.0,2100.0,2146.0,2067.65,44.0,202508-202607,False
+CNAE 56 - alimentação,Florianópolis,521140,Atendente de lojas e mercados,309,1978.0,2146.0,2146.0,2084.35,44.0,202508-202607,False
+CNAE 56 - alimentação,Fortaleza,141510,Gerente de restaurante,160,1697.42,2000.0,2525.2,2258.27,44.0,202508-202607,False
+CNAE 56 - alimentação,Fortaleza,141515,Gerente de bar,27,1674.49,2000.0,2431.5,2156.21,44.0,202508-202607,True
+CNAE 56 - alimentação,Fortaleza,371410,Recreador,106,1568.09,1674.49,1674.49,1636.54,44.0,202508-202607,False
+CNAE 56 - alimentação,Fortaleza,421125,Operador de caixa,701,1563.54,1658.28,1674.49,1640.0,44.0,202508-202607,False
+CNAE 56 - alimentação,Fortaleza,513205,Cozinheiro geral,1733,1568.1,1674.49,1877.4,1782.15,44.0,202508-202607,False
+CNAE 56 - alimentação,Fortaleza,513405,Garçom,1557,1563.54,1658.28,1674.49,1623.27,44.0,202508-202607,False
+CNAE 56 - alimentação,Fortaleza,513415,Cumim,757,1563.54,1658.28,1674.49,1622.07,44.0,202508-202607,False
+CNAE 56 - alimentação,Fortaleza,513420,Barman,486,1563.54,1674.49,1674.49,1664.26,44.0,202508-202607,False
+CNAE 56 - alimentação,Fortaleza,513435,Atendente de lanchonete,3666,1563.54,1635.0,1674.49,1620.87,44.0,202508-202607,False
+CNAE 56 - alimentação,Fortaleza,513505,Auxiliar nos serviços de alimentação,3930,1563.54,1653.42,1674.49,2056.3,44.0,202508-202607,False
+CNAE 56 - alimentação,Fortaleza,514320,Faxineiro,956,1563.54,1650.0,1674.49,1622.69,44.0,202508-202607,False
+CNAE 56 - alimentação,Fortaleza,521140,Atendente de lojas e mercados,449,1563.54,1621.0,1665.29,1609.94,44.0,202508-202607,False
+CNAE 56 - alimentação,Goiânia,141510,Gerente de restaurante,138,2017.5,2446.48,2843.0,2629.84,44.0,202508-202607,False
+CNAE 56 - alimentação,Goiânia,141515,Gerente de bar,59,1750.0,2251.66,2878.57,2539.01,44.0,202508-202607,False
+CNAE 56 - alimentação,Goiânia,371410,Recreador,141,1635.87,1635.87,1750.0,1721.55,44.0,202508-202607,False
+CNAE 56 - alimentação,Goiânia,421125,Operador de caixa,566,1635.87,1700.0,1800.0,1753.45,44.0,202508-202607,False
+CNAE 56 - alimentação,Goiânia,513205,Cozinheiro geral,1500,1635.87,1844.17,2239.89,1989.48,44.0,202508-202607,False
+CNAE 56 - alimentação,Goiânia,513405,Garçom,1667,1635.87,1635.87,1750.0,1714.35,44.0,202508-202607,False
+CNAE 56 - alimentação,Goiânia,513415,Cumim,517,1635.87,1635.87,1750.0,1710.71,44.0,202508-202607,False
+CNAE 56 - alimentação,Goiânia,513420,Barman,406,1635.87,1750.0,1800.0,1793.03,44.0,202508-202607,False
+CNAE 56 - alimentação,Goiânia,513435,Atendente de lanchonete,4472,1635.87,1635.87,1750.0,1697.72,44.0,202508-202607,False
+CNAE 56 - alimentação,Goiânia,513505,Auxiliar nos serviços de alimentação,3816,1635.87,1650.0,1750.0,1731.0,44.0,202508-202607,False
+CNAE 56 - alimentação,Goiânia,514320,Faxineiro,922,1635.87,1650.0,1750.0,1710.25,44.0,202508-202607,False
+CNAE 56 - alimentação,Goiânia,521140,Atendente de lojas e mercados,804,1635.87,1635.87,1750.0,1692.7,44.0,202508-202607,False
+CNAE 56 - alimentação,João Pessoa,141510,Gerente de restaurante,91,2000.0,2431.5,2870.0,2561.81,44.0,202508-202607,False
+CNAE 56 - alimentação,João Pessoa,141515,Gerente de bar,16,2000.0,2250.0,3000.0,2617.03,44.0,202508-202607,True
+CNAE 56 - alimentação,João Pessoa,371410,Recreador,48,1563.0,1621.0,1621.0,1599.62,44.0,202508-202607,False
+CNAE 56 - alimentação,João Pessoa,421125,Operador de caixa,245,1563.0,1621.0,1621.0,1618.09,44.0,202508-202607,False
+CNAE 56 - alimentação,João Pessoa,513205,Cozinheiro geral,715,1600.0,1648.0,1800.0,1745.48,44.0,202508-202607,False
+CNAE 56 - alimentação,João Pessoa,513405,Garçom,1010,1563.0,1621.0,1621.0,1611.84,44.0,202508-202607,False
+CNAE 56 - alimentação,João Pessoa,513415,Cumim,485,1563.0,1621.0,1621.0,1603.6,44.0,202508-202607,False
+CNAE 56 - alimentação,João Pessoa,513420,Barman,207,1563.0,1621.0,1638.0,1635.77,44.0,202508-202607,False
+CNAE 56 - alimentação,João Pessoa,513435,Atendente de lanchonete,1955,1563.0,1621.0,1653.42,1615.2,44.0,202508-202607,False
+CNAE 56 - alimentação,João Pessoa,513505,Auxiliar nos serviços de alimentação,1776,1563.0,1621.0,1658.06,1624.51,44.0,202508-202607,False
+CNAE 56 - alimentação,João Pessoa,514320,Faxineiro,537,1563.0,1621.0,1621.0,1603.53,44.0,202508-202607,False
+CNAE 56 - alimentação,João Pessoa,521140,Atendente de lojas e mercados,250,1563.0,1621.0,1621.0,1614.53,44.0,202508-202607,False
+CNAE 56 - alimentação,Macapá,141510,Gerente de restaurante,12,2057.14,2194.0,2634.03,2307.24,44.0,202508-202607,True
+CNAE 56 - alimentação,Macapá,141515,Gerente de bar,1,3500.0,3500.0,3500.0,3500.0,44.0,202508-202607,True
+CNAE 56 - alimentação,Macapá,371410,Recreador,1,1621.0,1621.0,1621.0,1621.0,44.0,202508-202607,True
+CNAE 56 - alimentação,Macapá,421125,Operador de caixa,48,1580.0,1621.0,1621.0,1612.42,44.0,202508-202607,False
+CNAE 56 - alimentação,Macapá,513205,Cozinheiro geral,127,1580.0,1621.0,1687.28,1645.81,44.0,202508-202607,False
+CNAE 56 - alimentação,Macapá,513405,Garçom,129,1518.0,1621.0,1621.0,1606.71,44.0,202508-202607,False
+CNAE 56 - alimentação,Macapá,513415,Cumim,28,1518.0,1621.0,1621.0,1593.94,44.0,202508-202607,True
+CNAE 56 - alimentação,Macapá,513420,Barman,34,1526.0,1621.0,1621.0,1619.33,44.0,202508-202607,False
+CNAE 56 - alimentação,Macapá,513435,Atendente de lanchonete,306,1518.0,1621.0,1621.0,1595.53,44.0,202508-202607,False
+CNAE 56 - alimentação,Macapá,513505,Auxiliar nos serviços de alimentação,485,1580.0,1621.0,1621.0,1604.88,44.0,202508-202607,False
+CNAE 56 - alimentação,Macapá,514320,Faxineiro,103,1601.49,1621.0,1621.0,1607.86,44.0,202508-202607,False
+CNAE 56 - alimentação,Macapá,521140,Atendente de lojas e mercados,109,1518.0,1621.0,1621.0,1592.92,44.0,202508-202607,False
+CNAE 56 - alimentação,Maceió,141510,Gerente de restaurante,71,1897.5,2500.0,3000.0,2570.73,44.0,202508-202607,False
+CNAE 56 - alimentação,Maceió,141515,Gerente de bar,9,2024.0,2200.0,2980.0,2726.98,44.0,202508-202607,True
+CNAE 56 - alimentação,Maceió,371410,Recreador,25,1580.0,1695.0,1695.0,1648.53,44.0,202508-202607,True
+CNAE 56 - alimentação,Maceió,421125,Operador de caixa,285,1580.0,1695.0,1695.0,1663.6,44.0,202508-202607,False
+CNAE 56 - alimentação,Maceió,513205,Cozinheiro geral,573,1621.0,1695.0,1849.7,1779.68,44.0,202508-202607,False
+CNAE 56 - alimentação,Maceió,513405,Garçom,685,1580.0,1695.0,1695.0,1654.44,44.0,202508-202607,False
+CNAE 56 - alimentação,Maceió,513415,Cumim,318,1580.0,1695.0,1695.0,1642.82,44.0,202508-202607,False
+CNAE 56 - alimentação,Maceió,513420,Barman,176,1580.0,1695.0,1695.0,1665.55,44.0,202508-202607,False
+CNAE 56 - alimentação,Maceió,513435,Atendente de lanchonete,1695,1580.0,1660.0,1695.0,1640.38,44.0,202508-202607,False
+CNAE 56 - alimentação,Maceió,513505,Auxiliar nos serviços de alimentação,1444,1580.0,1695.0,1695.0,1655.85,44.0,202508-202607,False
+CNAE 56 - alimentação,Maceió,514320,Faxineiro,385,1580.0,1669.8,1695.0,1641.45,44.0,202508-202607,False
+CNAE 56 - alimentação,Maceió,521140,Atendente de lojas e mercados,257,1580.0,1621.0,1695.0,1640.64,44.0,202508-202607,False
+CNAE 56 - alimentação,Manaus,141510,Gerente de restaurante,143,1792.86,2200.0,3075.0,2562.12,44.0,202508-202607,False
+CNAE 56 - alimentação,Manaus,141515,Gerente de bar,19,2000.0,2300.0,2528.97,2327.1,44.0,202508-202607,True
+CNAE 56 - alimentação,Manaus,371410,Recreador,49,1593.9,1621.0,1621.0,1601.62,44.0,202508-202607,False
+CNAE 56 - alimentação,Manaus,421125,Operador de caixa,362,1593.9,1621.0,1621.0,1620.34,44.0,202508-202607,False
+CNAE 56 - alimentação,Manaus,513205,Cozinheiro geral,904,1621.0,1790.0,1850.0,1803.27,44.0,202508-202607,False
+CNAE 56 - alimentação,Manaus,513405,Garçom,639,1593.9,1621.0,1621.0,1616.54,44.0,202508-202607,False
+CNAE 56 - alimentação,Manaus,513415,Cumim,386,1593.9,1621.0,1621.0,1604.64,44.0,202508-202607,False
+CNAE 56 - alimentação,Manaus,513420,Barman,195,1593.9,1621.0,1621.0,1640.7,44.0,202508-202607,False
+CNAE 56 - alimentação,Manaus,513435,Atendente de lanchonete,2834,1593.9,1621.0,1621.0,1669.97,44.0,202508-202607,False
+CNAE 56 - alimentação,Manaus,513505,Auxiliar nos serviços de alimentação,3354,1621.0,1621.0,1731.09,1667.26,44.0,202508-202607,False
+CNAE 56 - alimentação,Manaus,514320,Faxineiro,2094,1621.0,1698.99,1698.99,1777.09,44.0,202508-202607,False
+CNAE 56 - alimentação,Manaus,521140,Atendente de lojas e mercados,594,1593.9,1621.0,1621.0,1869.81,44.0,202508-202607,False
+CNAE 56 - alimentação,Natal,141510,Gerente de restaurante,37,1857.14,2301.33,2890.0,2469.63,44.0,202508-202607,False
+CNAE 56 - alimentação,Natal,141515,Gerente de bar,8,1800.0,1800.0,2060.82,2021.16,44.0,202508-202607,True
+CNAE 56 - alimentação,Natal,371410,Recreador,24,1595.0,1615.0,1663.5,1631.17,44.0,202508-202607,True
+CNAE 56 - alimentação,Natal,421125,Operador de caixa,173,1615.0,1637.0,1653.0,1646.04,44.0,202508-202607,False
+CNAE 56 - alimentação,Natal,513205,Cozinheiro geral,519,1621.0,1678.0,1900.0,1779.94,44.0,202508-202607,False
+CNAE 56 - alimentação,Natal,513405,Garçom,622,1615.0,1621.0,1653.0,1633.05,44.0,202508-202607,False
+CNAE 56 - alimentação,Natal,513415,Cumim,292,1595.0,1621.0,1653.0,1632.77,44.0,202508-202607,False
+CNAE 56 - alimentação,Natal,513420,Barman,144,1615.0,1639.0,1715.0,1664.59,44.0,202508-202607,False
+CNAE 56 - alimentação,Natal,513435,Atendente de lanchonete,1010,1595.0,1621.0,1639.0,1623.75,44.0,202508-202607,False
+CNAE 56 - alimentação,Natal,513505,Auxiliar nos serviços de alimentação,1343,1595.0,1621.0,1669.94,1633.86,44.0,202508-202607,False
+CNAE 56 - alimentação,Natal,514320,Faxineiro,365,1595.0,1621.0,1653.0,1630.5,44.0,202508-202607,False
+CNAE 56 - alimentação,Natal,521140,Atendente de lojas e mercados,185,1595.0,1621.0,1670.0,1630.93,44.0,202508-202607,False
+CNAE 56 - alimentação,Palmas,141510,Gerente de restaurante,18,1747.0,2150.0,2674.46,2458.66,44.0,202508-202607,True
+CNAE 56 - alimentação,Palmas,141515,Gerente de bar,2,3200.0,3400.0,3600.0,3400.0,44.0,202508-202607,True
+CNAE 56 - alimentação,Palmas,371410,Recreador,12,1606.0,1712.5,1725.0,1689.34,44.0,202508-202607,True
+CNAE 56 - alimentação,Palmas,421125,Operador de caixa,106,1621.0,1725.0,1773.43,1750.83,44.0,202508-202607,False
+CNAE 56 - alimentação,Palmas,513205,Cozinheiro geral,609,1793.0,1850.0,1850.0,1853.73,44.0,202508-202607,False
+CNAE 56 - alimentação,Palmas,513405,Garçom,279,1626.0,1700.0,1747.0,1721.24,44.0,202508-202607,False
+CNAE 56 - alimentação,Palmas,513415,Cumim,72,1606.0,1725.0,1725.0,1716.09,44.0,202508-202607,False
+CNAE 56 - alimentação,Palmas,513420,Barman,59,1621.0,1725.0,1725.0,1727.54,44.0,202508-202607,False
+CNAE 56 - alimentação,Palmas,513435,Atendente de lanchonete,583,1606.0,1677.0,1725.0,1685.4,44.0,202508-202607,False
+CNAE 56 - alimentação,Palmas,513505,Auxiliar nos serviços de alimentação,581,1606.0,1664.0,1725.0,1704.17,44.0,202508-202607,False
+CNAE 56 - alimentação,Palmas,514320,Faxineiro,110,1609.9,1700.0,1708.35,1688.17,44.0,202508-202607,False
+CNAE 56 - alimentação,Palmas,521140,Atendente de lojas e mercados,66,1606.0,1621.0,1725.0,1672.61,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Alegre,141510,Gerente de restaurante,335,2116.05,2600.0,3466.77,2884.12,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Alegre,141515,Gerente de bar,59,1930.0,2102.9,3000.0,2406.8,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Alegre,371410,Recreador,19,1770.85,1770.85,1850.0,1806.09,44.0,202508-202607,True
+CNAE 56 - alimentação,Porto Alegre,421125,Operador de caixa,667,1770.85,1770.85,1850.0,1836.8,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Alegre,513205,Cozinheiro geral,1776,1770.85,1892.8,2080.0,1987.32,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Alegre,513405,Garçom,1850,1770.85,1802.0,1930.0,1857.81,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Alegre,513415,Cumim,194,1770.85,1770.85,1850.0,1812.46,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Alegre,513420,Barman,262,1770.85,1830.62,1930.0,1885.9,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Alegre,513435,Atendente de lanchonete,5015,1770.85,1770.85,1850.0,1802.49,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Alegre,513505,Auxiliar nos serviços de alimentação,4478,1770.85,1770.85,1868.23,1821.52,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Alegre,514320,Faxineiro,1259,1765.86,1770.85,1831.0,1781.27,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Alegre,521140,Atendente de lojas e mercados,474,1770.85,1800.0,1912.0,1854.35,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Velho,141510,Gerente de restaurante,13,1800.0,2000.0,3300.0,2442.96,44.0,202508-202607,True
+CNAE 56 - alimentação,Porto Velho,141515,Gerente de bar,3,2160.75,2431.5,2715.75,2440.5,44.0,202508-202607,True
+CNAE 56 - alimentação,Porto Velho,371410,Recreador,11,1598.0,1598.0,1598.0,1609.95,44.0,202508-202607,True
+CNAE 56 - alimentação,Porto Velho,421125,Operador de caixa,76,1598.0,1639.0,1706.5,1662.65,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Velho,513205,Cozinheiro geral,231,1598.0,1706.5,1800.0,1755.4,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Velho,513405,Garçom,101,1598.0,1637.0,1706.5,1653.1,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Velho,513415,Cumim,51,1598.0,1637.0,1706.5,1655.56,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Velho,513420,Barman,48,1598.0,1694.0,1706.5,1660.85,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Velho,513435,Atendente de lanchonete,513,1598.0,1621.0,1706.5,1641.72,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Velho,513505,Auxiliar nos serviços de alimentação,545,1598.0,1637.0,1706.5,1661.59,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Velho,514320,Faxineiro,92,1598.0,1639.0,1706.5,1666.74,44.0,202508-202607,False
+CNAE 56 - alimentação,Porto Velho,521140,Atendente de lojas e mercados,80,1621.0,1686.01,1706.5,1663.48,44.0,202508-202607,False
+CNAE 56 - alimentação,Recife,141510,Gerente de restaurante,200,2000.0,2769.3,3796.73,3043.35,44.0,202508-202607,False
+CNAE 56 - alimentação,Recife,141515,Gerente de bar,28,2000.0,2500.0,2512.5,2670.64,44.0,202508-202607,True
+CNAE 56 - alimentação,Recife,371410,Recreador,72,1651.8,1700.0,1700.0,1686.56,44.0,202508-202607,False
+CNAE 56 - alimentação,Recife,421125,Operador de caixa,375,1651.8,1700.0,1700.0,1686.56,44.0,202508-202607,False
+CNAE 56 - alimentação,Recife,513205,Cozinheiro geral,1950,1651.65,1700.0,1827.57,1783.49,44.0,202508-202607,False
+CNAE 56 - alimentação,Recife,513405,Garçom,1126,1651.8,1700.0,1700.0,1668.7,44.0,202508-202607,False
+CNAE 56 - alimentação,Recife,513415,Cumim,810,1651.8,1700.0,1700.0,1675.38,44.0,202508-202607,False
+CNAE 56 - alimentação,Recife,513420,Barman,374,1651.8,1700.0,1700.0,1714.75,44.0,202508-202607,False
+CNAE 56 - alimentação,Recife,513435,Atendente de lanchonete,3148,1622.73,1656.03,1700.0,1658.97,44.0,202508-202607,False
+CNAE 56 - alimentação,Recife,513505,Auxiliar nos serviços de alimentação,3110,1630.46,1668.0,1700.0,1669.43,44.0,202508-202607,False
+CNAE 56 - alimentação,Recife,514320,Faxineiro,1372,1638.65,1668.0,1700.0,1658.48,44.0,202508-202607,False
+CNAE 56 - alimentação,Recife,521140,Atendente de lojas e mercados,558,1621.0,1651.8,1700.0,1645.73,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio Branco,141510,Gerente de restaurante,10,1621.0,1881.93,2679.22,2204.27,44.0,202508-202607,True
+CNAE 56 - alimentação,Rio Branco,141515,Gerente de bar,1,2145.0,2145.0,2145.0,2145.0,44.0,202508-202607,True
+CNAE 56 - alimentação,Rio Branco,371410,Recreador,6,1518.0,1518.0,1729.5,1612.0,44.0,202508-202607,True
+CNAE 56 - alimentação,Rio Branco,421125,Operador de caixa,56,1518.0,1614.24,1621.0,1595.01,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio Branco,513205,Cozinheiro geral,85,1621.0,1621.0,1790.07,1721.58,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio Branco,513405,Garçom,105,1518.0,1621.0,1639.44,1609.87,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio Branco,513415,Cumim,37,1518.0,1621.0,1650.0,1614.51,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio Branco,513420,Barman,17,1518.0,1621.0,1621.0,1631.73,44.0,202508-202607,True
+CNAE 56 - alimentação,Rio Branco,513435,Atendente de lanchonete,468,1518.0,1621.0,1639.44,1627.69,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio Branco,513505,Auxiliar nos serviços de alimentação,367,1518.0,1621.0,1621.0,1617.63,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio Branco,514320,Faxineiro,67,1518.0,1621.0,1621.0,1595.76,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio Branco,521140,Atendente de lojas e mercados,89,1518.0,1539.44,1621.0,1588.43,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio de Janeiro,141510,Gerente de restaurante,1157,2000.0,2347.5,3000.0,2642.95,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio de Janeiro,141515,Gerente de bar,288,1849.28,2200.0,2600.0,2345.26,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio de Janeiro,371410,Recreador,116,1621.0,1621.0,1670.53,1639.33,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio de Janeiro,421125,Operador de caixa,2459,1621.0,1697.14,1800.68,1716.17,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio de Janeiro,513205,Cozinheiro geral,7097,1650.0,1801.0,2080.0,1926.04,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio de Janeiro,513405,Garçom,6536,1658.8,1658.8,1733.45,1771.95,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio de Janeiro,513415,Cumim,2971,1658.8,1658.8,1733.45,1679.65,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio de Janeiro,513420,Barman,1516,1736.53,1768.68,1848.27,1770.17,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio de Janeiro,513435,Atendente de lanchonete,16540,1555.05,1622.4,1730.4,1654.99,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio de Janeiro,513505,Auxiliar nos serviços de alimentação,13229,1621.0,1693.32,1800.68,1729.03,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio de Janeiro,514320,Faxineiro,4697,1621.0,1689.35,1800.68,1702.61,44.0,202508-202607,False
+CNAE 56 - alimentação,Rio de Janeiro,521140,Atendente de lojas e mercados,2978,1621.0,1700.0,1800.68,1713.23,44.0,202508-202607,False
+CNAE 56 - alimentação,Salvador,141510,Gerente de restaurante,158,1985.0,2500.0,3151.18,2801.6,44.0,202508-202607,False
+CNAE 56 - alimentação,Salvador,141515,Gerente de bar,14,2218.64,2500.0,2670.43,2606.26,44.0,202508-202607,True
+CNAE 56 - alimentação,Salvador,371410,Recreador,8,1625.09,1625.09,1625.09,1627.7,44.0,202508-202607,True
+CNAE 56 - alimentação,Salvador,421125,Operador de caixa,600,1625.09,1625.09,1646.0,1644.79,44.0,202508-202607,False
+CNAE 56 - alimentação,Salvador,513205,Cozinheiro geral,1827,1625.09,1700.0,1893.45,1800.42,44.0,202508-202607,False
+CNAE 56 - alimentação,Salvador,513405,Garçom,1595,1625.09,1625.09,1625.09,1631.96,44.0,202508-202607,False
+CNAE 56 - alimentação,Salvador,513415,Cumim,601,1625.09,1625.09,1625.09,1628.15,44.0,202508-202607,False
+CNAE 56 - alimentação,Salvador,513420,Barman,351,1625.09,1625.09,1702.96,1671.51,44.0,202508-202607,False
+CNAE 56 - alimentação,Salvador,513435,Atendente de lanchonete,2943,1621.0,1625.09,1629.04,1621.32,44.0,202508-202607,False
+CNAE 56 - alimentação,Salvador,513505,Auxiliar nos serviços de alimentação,2738,1625.09,1625.09,1650.0,1650.34,44.0,202508-202607,False
+CNAE 56 - alimentação,Salvador,514320,Faxineiro,1470,1625.09,1625.09,1625.09,1630.79,44.0,202508-202607,False
+CNAE 56 - alimentação,Salvador,521140,Atendente de lojas e mercados,854,1621.0,1625.09,1646.0,1630.5,44.0,202508-202607,False
+CNAE 56 - alimentação,São Luís,141510,Gerente de restaurante,50,1842.5,2265.5,3000.0,2722.32,44.0,202508-202607,False
+CNAE 56 - alimentação,São Luís,141515,Gerente de bar,5,1765.52,2000.0,2500.0,2105.6,44.0,202508-202607,True
+CNAE 56 - alimentação,São Luís,371410,Recreador,14,1665.59,1665.59,1665.59,1672.73,44.0,202508-202607,True
+CNAE 56 - alimentação,São Luís,421125,Operador de caixa,259,1665.59,1665.59,1665.59,1673.46,44.0,202508-202607,False
+CNAE 56 - alimentação,São Luís,513205,Cozinheiro geral,657,1665.59,1665.59,1765.53,1753.02,44.0,202508-202607,False
+CNAE 56 - alimentação,São Luís,513405,Garçom,358,1665.59,1665.59,1665.59,1671.36,44.0,202508-202607,False
+CNAE 56 - alimentação,São Luís,513415,Cumim,107,1665.59,1665.59,1665.59,1669.33,44.0,202508-202607,False
+CNAE 56 - alimentação,São Luís,513420,Barman,87,1665.59,1665.59,1665.59,1708.0,44.0,202508-202607,False
+CNAE 56 - alimentação,São Luís,513435,Atendente de lanchonete,992,1665.59,1665.59,1665.59,1663.71,44.0,202508-202607,False
+CNAE 56 - alimentação,São Luís,513505,Auxiliar nos serviços de alimentação,1240,1665.59,1665.59,1665.59,1668.42,44.0,202508-202607,False
+CNAE 56 - alimentação,São Luís,514320,Faxineiro,709,1636.74,1636.74,1665.59,1638.8,44.0,202508-202607,False
+CNAE 56 - alimentação,São Luís,521140,Atendente de lojas e mercados,156,1665.59,1665.59,1665.76,1672.9,44.0,202508-202607,False
+CNAE 56 - alimentação,São Paulo,141510,Gerente de restaurante,2707,2562.56,3000.0,3870.42,3389.64,44.0,202508-202607,False
+CNAE 56 - alimentação,São Paulo,141515,Gerente de bar,489,2360.06,3000.0,3650.0,3231.04,44.0,202508-202607,False
+CNAE 56 - alimentação,São Paulo,371410,Recreador,70,1804.0,1822.04,2070.51,1967.22,44.0,202508-202607,False
+CNAE 56 - alimentação,São Paulo,421125,Operador de caixa,2859,1837.5,2050.02,2200.0,2074.82,44.0,202508-202607,False
+CNAE 56 - alimentação,São Paulo,513205,Cozinheiro geral,18211,1850.0,2149.82,2500.0,2278.51,44.0,202508-202607,False
+CNAE 56 - alimentação,São Paulo,513405,Garçom,12242,1804.0,2070.0,2200.0,2109.6,44.0,202508-202607,False
+CNAE 56 - alimentação,São Paulo,513415,Cumim,4717,1804.0,1804.0,1976.88,1890.41,44.0,202508-202607,False
+CNAE 56 - alimentação,São Paulo,513420,Barman,2413,1804.0,2004.0,2300.0,2076.32,44.0,202508-202607,False
+CNAE 56 - alimentação,São Paulo,513435,Atendente de lanchonete,42478,1611.78,1774.94,2000.0,1828.46,44.0,202508-202607,False
+CNAE 56 - alimentação,São Paulo,513505,Auxiliar nos serviços de alimentação,35245,1804.0,1950.0,2120.0,2021.3,44.0,202508-202607,False
+CNAE 56 - alimentação,São Paulo,514320,Faxineiro,7323,1804.0,1837.4,2050.01,1922.89,44.0,202508-202607,False
+CNAE 56 - alimentação,São Paulo,521140,Atendente de lojas e mercados,4963,1804.0,1976.1,2107.45,1987.95,44.0,202508-202607,False
+CNAE 56 - alimentação,Teresina,141510,Gerente de restaurante,27,1800.0,2000.0,2262.98,2169.36,44.0,202508-202607,True
+CNAE 56 - alimentação,Teresina,141515,Gerente de bar,4,1648.25,1735.52,2097.04,2009.76,44.0,202508-202607,True
+CNAE 56 - alimentação,Teresina,371410,Recreador,49,1568.0,1675.0,1675.0,1622.63,44.0,202508-202607,False
+CNAE 56 - alimentação,Teresina,421125,Operador de caixa,189,1568.0,1675.0,1675.0,1635.55,44.0,202508-202607,False
+CNAE 56 - alimentação,Teresina,513205,Cozinheiro geral,426,1568.0,1675.0,1675.0,1705.33,44.0,202508-202607,False
+CNAE 56 - alimentação,Teresina,513405,Garçom,565,1568.0,1675.0,1675.0,1647.76,44.0,202508-202607,False
+CNAE 56 - alimentação,Teresina,513415,Cumim,126,1568.0,1675.0,1675.0,1642.44,44.0,202508-202607,False
+CNAE 56 - alimentação,Teresina,513420,Barman,106,1568.0,1675.0,1675.0,1641.69,44.0,202508-202607,False
+CNAE 56 - alimentação,Teresina,513435,Atendente de lanchonete,891,1568.0,1621.0,1675.0,1627.14,44.0,202508-202607,False
+CNAE 56 - alimentação,Teresina,513505,Auxiliar nos serviços de alimentação,925,1568.0,1675.0,1675.0,1635.53,44.0,202508-202607,False
+CNAE 56 - alimentação,Teresina,514320,Faxineiro,167,1568.0,1647.57,1675.0,1627.79,44.0,202508-202607,False
+CNAE 56 - alimentação,Teresina,521140,Atendente de lojas e mercados,194,1568.0,1675.0,1675.0,1646.97,44.0,202508-202607,False
+CNAE 56 - alimentação,Vitória,141510,Gerente de restaurante,128,2377.76,2843.07,4289.52,3281.64,44.0,202508-202607,False
+CNAE 56 - alimentação,Vitória,141515,Gerente de bar,9,1924.4,2500.0,2600.0,2427.41,44.0,202508-202607,True
+CNAE 56 - alimentação,Vitória,371410,Recreador,23,1705.0,1705.0,1731.28,1718.19,44.0,202508-202607,True
+CNAE 56 - alimentação,Vitória,421125,Operador de caixa,176,1590.0,1705.0,1726.54,1745.69,44.0,202508-202607,False
+CNAE 56 - alimentação,Vitória,513205,Cozinheiro geral,699,1709.25,2031.05,2400.0,2098.83,44.0,202508-202607,False
+CNAE 56 - alimentação,Vitória,513405,Garçom,679,1647.29,1705.0,1827.5,1761.45,44.0,202508-202607,False
+CNAE 56 - alimentação,Vitória,513415,Cumim,162,1590.0,1705.0,1705.0,1658.48,44.0,202508-202607,False
+CNAE 56 - alimentação,Vitória,513420,Barman,105,1705.0,1732.94,1852.23,1800.99,44.0,202508-202607,False
+CNAE 56 - alimentação,Vitória,513435,Atendente de lanchonete,1384,1590.0,1705.0,1705.0,1702.39,44.0,202508-202607,False
+CNAE 56 - alimentação,Vitória,513505,Auxiliar nos serviços de alimentação,1661,1638.97,1705.0,1790.0,1747.97,44.0,202508-202607,False
+CNAE 56 - alimentação,Vitória,514320,Faxineiro,578,1553.88,1704.0,1821.89,1702.46,44.0,202508-202607,False
+CNAE 56 - alimentação,Vitória,521140,Atendente de lojas e mercados,269,1616.6,1705.0,1709.25,1687.54,44.0,202508-202607,False
+CNAE 56 - alimentação,27 capitais,141510,Gerente de restaurante,7389,2200.0,2700.0,3500.0,3017.41,44.0,202508-202607,False
+CNAE 56 - alimentação,27 capitais,141515,Gerente de bar,1404,2000.0,2500.0,3000.0,2701.66,44.0,202508-202607,False
+CNAE 56 - alimentação,27 capitais,371410,Recreador,1188,1621.0,1669.2,1750.0,1701.11,44.0,202508-202607,False
+CNAE 56 - alimentação,27 capitais,421125,Operador de caixa,14318,1625.09,1733.45,1900.0,1800.66,44.0,202508-202607,False
+CNAE 56 - alimentação,27 capitais,513205,Cozinheiro geral,54140,1738.0,1872.0,2233.21,2045.17,44.0,202508-202607,False
+CNAE 56 - alimentação,27 capitais,513405,Garçom,43443,1651.0,1750.68,1978.0,1850.5,44.0,202508-202607,False
+CNAE 56 - alimentação,27 capitais,513415,Cumim,15995,1639.44,1700.0,1804.0,1739.31,44.0,202508-202607,False
+CNAE 56 - alimentação,27 capitais,513420,Barman,9325,1658.8,1770.85,1978.0,1848.27,44.0,202508-202607,False
+CNAE 56 - alimentação,27 capitais,513435,Atendente de lanchonete,125289,1621.0,1688.53,1804.0,1747.74,44.0,202508-202607,False
+CNAE 56 - alimentação,27 capitais,513505,Auxiliar nos serviços de alimentação,113038,1642.16,1786.12,1934.0,1844.36,44.0,202508-202607,False
+CNAE 56 - alimentação,27 capitais,514320,Faxineiro,31792,1625.09,1703.0,1821.6,1766.5,44.0,202508-202607,False
+CNAE 56 - alimentação,27 capitais,521140,Atendente de lojas e mercados,19181,1621.0,1712.0,1850.0,1790.53,44.0,202508-202607,False

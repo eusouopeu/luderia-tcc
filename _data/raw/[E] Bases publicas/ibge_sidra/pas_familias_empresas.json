@@ -1,0 +1,1131 @@
+{
+ "tabela": 2619,
+ "nome_tabela": "Número de empresas e Pessoal ocupado em 31/12 das empresas de serviços prestados às famílias, total e empresas com 20 ou mais pessoas ocupadas, segundo as atividades - CNAE 2.0",
+ "url": "https://servicodados.ibge.gov.br/api/v3/agregados/2619/periodos/-5/variaveis/630%7C1150%7C668%7C1586%7C1587%7C1588?localidades=N1%5Ball%5D&classificacao=12356%5B106889%2C106891%2C9310%2C106899%2C9311%2C9313%5D",
+ "data_coleta": "2026-09-14",
+ "resposta": [
+  {
+   "id": "630",
+   "variavel": "Número de empresas",
+   "unidade": "Unidades",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106889": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "417755",
+        "2020": "357337",
+        "2021": "387121",
+        "2022": "397390",
+        "2023": "446291"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106891": "1.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "241802",
+        "2020": "185915",
+        "2021": "205096",
+        "2022": "204079",
+        "2023": "220791"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9310": "1.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "38463",
+        "2020": "40222",
+        "2021": "40744",
+        "2022": "44276",
+        "2023": "51968"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106899": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "13459",
+        "2020": "10707",
+        "2021": "11034",
+        "2022": "12300",
+        "2023": "13664"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9311": "2.2.1 Restaurantes e outros serviços de alimentação e bebidas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "12108",
+        "2020": "9396",
+        "2021": "9694",
+        "2022": "10771",
+        "2023": "11904"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9313": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "1567",
+        "2020": "1268",
+        "2021": "1276",
+        "2022": "1481",
+        "2023": "1746"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1150",
+   "variavel": "Pessoal ocupado em 31/12 - total",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106889": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "2853954",
+        "2020": "2381347",
+        "2021": "2614313",
+        "2022": "2775383",
+        "2023": "3014125"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106891": "1.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "1761825",
+        "2020": "1432205",
+        "2021": "1552740",
+        "2022": "1648191",
+        "2023": "1788328"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9310": "1.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "193250",
+        "2020": "165575",
+        "2021": "178260",
+        "2022": "194993",
+        "2023": "226691"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106899": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "772522",
+        "2020": "588247",
+        "2021": "653891",
+        "2022": "722892",
+        "2023": "816720"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9311": "2.2.1 Restaurantes e outros serviços de alimentação e bebidas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "556435",
+        "2020": "411914",
+        "2021": "449061",
+        "2022": "492006",
+        "2023": "540575"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9313": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "72772",
+        "2020": "53857",
+        "2021": "60060",
+        "2022": "68745",
+        "2023": "79436"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "668",
+   "variavel": "Pessoal ocupado em 31/12 - assalariado",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106889": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "2392866",
+        "2020": "1989219",
+        "2021": "2199114",
+        "2022": "2363280",
+        "2023": "2535491"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106891": "1.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "1501321",
+        "2020": "1226719",
+        "2021": "1345687",
+        "2022": "1449984",
+        "2023": "1575781"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9310": "1.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "149113",
+        "2020": "122148",
+        "2021": "135632",
+        "2022": "149552",
+        "2023": "171585"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106899": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "755658",
+        "2020": "575187",
+        "2021": "640820",
+        "2022": "707974",
+        "2023": "801077"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9311": "2.2.1 Restaurantes e outros serviços de alimentação e bebidas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "541095",
+        "2020": "400348",
+        "2021": "437546",
+        "2022": "478824",
+        "2023": "526698"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9313": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "70674",
+        "2020": "52302",
+        "2021": "58501",
+        "2022": "66893",
+        "2023": "77064"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1586",
+   "variavel": "Pessoal ocupado em 31/12 - não-assalariado - proprietários e sócios com atividade na empresa",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106889": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "444511",
+        "2020": "373258",
+        "2021": "395733",
+        "2022": "397775",
+        "2023": "436835"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106891": "1.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "249465",
+        "2020": "193127",
+        "2021": "193892",
+        "2022": "189732",
+        "2023": "194040"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9310": "1.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "42918",
+        "2020": "41478",
+        "2021": "40759",
+        "2022": "44906",
+        "2023": "53548"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106899": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "16539",
+        "2020": "12824",
+        "2021": "12698",
+        "2022": "14061",
+        "2023": "14945"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9311": "2.2.1 Restaurantes e outros serviços de alimentação e bebidas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "15054",
+        "2020": "11374",
+        "2021": "11312",
+        "2022": "12500",
+        "2023": "13224"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9313": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "2036",
+        "2020": "1527",
+        "2021": "1529",
+        "2022": "1745",
+        "2023": "2307"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1587",
+   "variavel": "Pessoal ocupado em 31/12 - não-assalariado - sócios cooperados",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106889": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "977",
+        "2020": "2687",
+        "2021": "4087",
+        "2022": "4103",
+        "2023": "2330"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106891": "1.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "66",
+        "2020": "58",
+        "2021": "2863",
+        "2022": "3264",
+        "2023": "1267"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9310": "1.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "195",
+        "2020": "1030",
+        "2021": "507",
+        "2022": "229",
+        "2023": "85"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106899": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "54",
+        "2020": "57",
+        "2021": "227",
+        "2022": "279",
+        "2023": "146"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9311": "2.2.1 Restaurantes e outros serviços de alimentação e bebidas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "45",
+        "2020": "42",
+        "2021": "68",
+        "2022": "119",
+        "2023": "127"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9313": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "35",
+        "2020": "12",
+        "2021": "22",
+        "2022": "95",
+        "2023": "51"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1588",
+   "variavel": "Pessoal ocupado em 31/12 - não-assalariado - membros da família sem remuneração",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106889": "1. Total"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "15600",
+        "2020": "16183",
+        "2021": "15379",
+        "2022": "10225",
+        "2023": "39469"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106891": "1.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "10973",
+        "2020": "12301",
+        "2021": "10298",
+        "2022": "5211",
+        "2023": "17240"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9310": "1.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "1024",
+        "2020": "919",
+        "2021": "1362",
+        "2022": "306",
+        "2023": "1473"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "106899": "2.2 Serviços de alimentação"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "271",
+        "2020": "179",
+        "2021": "146",
+        "2022": "578",
+        "2023": "552"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9311": "2.2.1 Restaurantes e outros serviços de alimentação e bebidas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "241",
+        "2020": "150",
+        "2021": "135",
+        "2022": "563",
+        "2023": "526"
+       }
+      }
+     ]
+    },
+    {
+     "classificacoes": [
+      {
+       "id": "12356",
+       "nome": "Serviços prestados às famílias",
+       "categoria": {
+        "9313": "2.3 Atividades culturais, recreativas e esportivas"
+       }
+      }
+     ],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2019": "27",
+        "2020": "16",
+        "2021": "8",
+        "2022": "12",
+        "2023": "14"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "uso_no_plano": "Coerência de margem, CMV e custo de pessoal em serviços de alimentação (9.8)"
+}

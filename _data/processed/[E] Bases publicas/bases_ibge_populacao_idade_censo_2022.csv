@@ -1,0 +1,595 @@
+tabela,variavel_id,variavel,unidade,nivel,localidade_id,localidade,periodo,Sexo,Forma de declaração da idade,Idade,valor_original,valor
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,Total,364756,364756.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,Total,957916,957916.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,Total,442933,442933.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,Total,2063689,2063689.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,Total,2417678,2417678.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,Total,2428708,2428708.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,Total,2817381,2817381.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,Total,322869,322869.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,Total,1437366,1437366.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,Total,1037775,1037775.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,Total,650877,650877.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,Total,898100,898100.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,Total,2315560,2315560.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,Total,1303403,1303403.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,Total,833932,833932.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,Total,1773718,1773718.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,Total,1488920,1488920.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,Total,866300,866300.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,Total,6211223,6211223.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,Total,751300,751300.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,Total,1332845,1332845.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,Total,460434,460434.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,Total,413486,413486.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,Total,537211,537211.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,Total,11451999,11451999.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,Total,602757,602757.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,Total,302692,302692.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,0 a 4 anos,26436,26436.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,0 a 4 anos,63010,63010.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,0 a 4 anos,36948,36948.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,0 a 4 anos,153636,153636.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,0 a 4 anos,122445,122445.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,0 a 4 anos,138704,138704.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,0 a 4 anos,166848,166848.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,0 a 4 anos,17078,17078.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,0 a 4 anos,83676,83676.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,0 a 4 anos,63544,63544.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,0 a 4 anos,43647,43647.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,0 a 4 anos,59766,59766.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,0 a 4 anos,111703,111703.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,0 a 4 anos,70625,70625.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,0 a 4 anos,52011,52011.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,0 a 4 anos,85003,85003.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,0 a 4 anos,80947,80947.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,0 a 4 anos,54739,54739.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,0 a 4 anos,310648,310648.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,0 a 4 anos,42640,42640.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,0 a 4 anos,64258,64258.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,0 a 4 anos,32424,32424.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,0 a 4 anos,37337,37337.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,0 a 4 anos,25973,25973.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,0 a 4 anos,599931,599931.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,0 a 4 anos,34951,34951.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,0 a 4 anos,22841,22841.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,5 a 9 anos,29363,29363.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,5 a 9 anos,65126,65126.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,5 a 9 anos,38551,38551.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,5 a 9 anos,169175,169175.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,5 a 9 anos,141324,141324.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,5 a 9 anos,155660,155660.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,5 a 9 anos,184611,184611.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,5 a 9 anos,18419,18419.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,5 a 9 anos,89501,89501.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,5 a 9 anos,68279,68279.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,5 a 9 anos,46681,46681.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,5 a 9 anos,63928,63928.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,5 a 9 anos,124644,124644.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,5 a 9 anos,80003,80003.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,5 a 9 anos,55538,55538.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,5 a 9 anos,100444,100444.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,5 a 9 anos,93275,93275.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,5 a 9 anos,57613,57613.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,5 a 9 anos,367196,367196.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,5 a 9 anos,46579,46579.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,5 a 9 anos,76417,76417.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,5 a 9 anos,36013,36013.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,5 a 9 anos,37033,37033.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,5 a 9 anos,29092,29092.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,5 a 9 anos,682444,682444.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,5 a 9 anos,37963,37963.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,5 a 9 anos,22977,22977.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,10 a 14 anos,28831,28831.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,10 a 14 anos,65327,65327.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,10 a 14 anos,37375,37375.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,10 a 14 anos,162708,162708.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,10 a 14 anos,141898,141898.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,10 a 14 anos,154376,154376.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,10 a 14 anos,182774,182774.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,10 a 14 anos,17857,17857.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,10 a 14 anos,85964,85964.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,10 a 14 anos,70132,70132.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,10 a 14 anos,44306,44306.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,10 a 14 anos,61139,61139.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,10 a 14 anos,122943,122943.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,10 a 14 anos,84509,84509.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,10 a 14 anos,54520,54520.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,10 a 14 anos,101958,101958.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,10 a 14 anos,89504,89504.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,10 a 14 anos,57785,57785.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,10 a 14 anos,354457,354457.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,10 a 14 anos,46549,46549.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,10 a 14 anos,72898,72898.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,10 a 14 anos,35383,35383.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,10 a 14 anos,34279,34279.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,10 a 14 anos,27856,27856.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,10 a 14 anos,670931,670931.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,10 a 14 anos,39332,39332.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,10 a 14 anos,22639,22639.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,15 a 19 anos,30991,30991.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,15 a 19 anos,69989,69989.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,15 a 19 anos,39023,39023.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,15 a 19 anos,170508,170508.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,15 a 19 anos,150329,150329.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,15 a 19 anos,165546,165546.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,15 a 19 anos,208546,208546.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,15 a 19 anos,18615,18615.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,15 a 19 anos,94233,94233.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,15 a 19 anos,76265,76265.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,15 a 19 anos,45271,45271.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,15 a 19 anos,60791,60791.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,15 a 19 anos,134631,134631.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,15 a 19 anos,93564,93564.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,15 a 19 anos,56477,56477.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,15 a 19 anos,106401,106401.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,15 a 19 anos,95331,95331.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,15 a 19 anos,62380,62380.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,15 a 19 anos,371931,371931.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,15 a 19 anos,49620,49620.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,15 a 19 anos,75603,75603.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,15 a 19 anos,35762,35762.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,15 a 19 anos,35300,35300.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,15 a 19 anos,29070,29070.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,15 a 19 anos,720787,720787.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,15 a 19 anos,41048,41048.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,15 a 19 anos,24274,24274.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,20 a 24 anos,33091,33091.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,20 a 24 anos,79597,79597.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,20 a 24 anos,42092,42092.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,20 a 24 anos,186449,186449.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,20 a 24 anos,176681,176681.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,20 a 24 anos,189360,189360.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,20 a 24 anos,227966,227966.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,20 a 24 anos,22666,22666.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,20 a 24 anos,113359,113359.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,20 a 24 anos,90397,90397.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,20 a 24 anos,49212,49212.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,20 a 24 anos,66260,66260.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,20 a 24 anos,169064,169064.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,20 a 24 anos,104095,104095.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,20 a 24 anos,63682,63682.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,20 a 24 anos,131613,131613.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,20 a 24 anos,108788,108788.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,20 a 24 anos,72129,72129.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,20 a 24 anos,439660,439660.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,20 a 24 anos,57881,57881.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,20 a 24 anos,93432,93432.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,20 a 24 anos,38595,38595.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,20 a 24 anos,40291,40291.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,20 a 24 anos,41329,41329.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,20 a 24 anos,845139,845139.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,20 a 24 anos,47506,47506.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,20 a 24 anos,29250,29250.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,25 a 29 anos,31395,31395.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,25 a 29 anos,79300,79300.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,25 a 29 anos,39558,39558.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,25 a 29 anos,180961,180961.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,25 a 29 anos,174296,174296.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,25 a 29 anos,201977,201977.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,25 a 29 anos,224162,224162.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,25 a 29 anos,23212,23212.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,25 a 29 anos,120411,120411.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,25 a 29 anos,87786,87786.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,25 a 29 anos,52286,52286.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,25 a 29 anos,71631,71631.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,25 a 29 anos,175522,175522.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,25 a 29 anos,100056,100056.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,25 a 29 anos,66089,66089.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,25 a 29 anos,138949,138949.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,25 a 29 anos,110525,110525.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,25 a 29 anos,67987,67987.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,25 a 29 anos,454428,454428.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,25 a 29 anos,58542,58542.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,25 a 29 anos,99223,99223.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,25 a 29 anos,39010,39010.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,25 a 29 anos,39293,39293.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,25 a 29 anos,47102,47102.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,25 a 29 anos,882865,882865.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,25 a 29 anos,47708,47708.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,25 a 29 anos,28924,28924.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,30 a 34 anos,29746,29746.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,30 a 34 anos,73145,73145.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,30 a 34 anos,36284,36284.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,30 a 34 anos,164135,164135.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,30 a 34 anos,173758,173758.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,30 a 34 anos,197115,197115.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,30 a 34 anos,223174,223174.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,30 a 34 anos,23980,23980.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,30 a 34 anos,118931,118931.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,30 a 34 anos,87665,87665.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,30 a 34 anos,54411,54411.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,30 a 34 anos,70858,70858.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,30 a 34 anos,174412,174412.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,30 a 34 anos,97088,97088.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,30 a 34 anos,66602,66602.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,30 a 34 anos,138214,138214.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,30 a 34 anos,111506,111506.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,30 a 34 anos,70233,70233.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,30 a 34 anos,460448,460448.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,30 a 34 anos,56842,56842.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,30 a 34 anos,97365,97365.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,30 a 34 anos,38580,38580.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,30 a 34 anos,35080,35080.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,30 a 34 anos,48512,48512.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,30 a 34 anos,888568,888568.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,30 a 34 anos,47174,47174.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,30 a 34 anos,26854,26854.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,35 a 39 anos,30217,30217.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,35 a 39 anos,76853,76853.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,35 a 39 anos,35969,35969.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,35 a 39 anos,172209,172209.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,35 a 39 anos,212114,212114.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,35 a 39 anos,201946,201946.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,35 a 39 anos,239309,239309.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,35 a 39 anos,26637,26637.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,35 a 39 anos,122169,122169.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,35 a 39 anos,91790,91790.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,35 a 39 anos,56378,56378.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,35 a 39 anos,71900,71900.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,35 a 39 anos,183821,183821.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,35 a 39 anos,103417,103417.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,35 a 39 anos,70608,70608.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,35 a 39 anos,142224,142224.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,35 a 39 anos,116312,116312.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,35 a 39 anos,75169,75169.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,35 a 39 anos,479813,479813.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,35 a 39 anos,59971,59971.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,35 a 39 anos,101607,101607.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,35 a 39 anos,39669,39669.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,35 a 39 anos,34299,34299.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,35 a 39 anos,49003,49003.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,35 a 39 anos,942674,942674.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,35 a 39 anos,50481,50481.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,35 a 39 anos,26703,26703.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,40 a 44 anos,28924,28924.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,40 a 44 anos,75521,75521.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,40 a 44 anos,32558,32558.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,40 a 44 anos,167172,167172.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,40 a 44 anos,224460,224460.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,40 a 44 anos,194267,194267.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,40 a 44 anos,253359,253359.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,40 a 44 anos,26887,26887.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,40 a 44 anos,120930,120930.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,40 a 44 anos,85452,85452.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,40 a 44 anos,54982,54982.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,40 a 44 anos,71060,71060.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,40 a 44 anos,194854,194854.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,40 a 44 anos,107814,107814.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,40 a 44 anos,68409,68409.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,40 a 44 anos,147403,147403.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,40 a 44 anos,118769,118769.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,40 a 44 anos,71445,71445.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,40 a 44 anos,504195,504195.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,40 a 44 anos,59019,59019.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,40 a 44 anos,106010,106010.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,40 a 44 anos,36601,36601.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,40 a 44 anos,30645,30645.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,40 a 44 anos,46856,46856.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,40 a 44 anos,947455,947455.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,40 a 44 anos,50998,50998.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,40 a 44 anos,25202,25202.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,45 a 49 anos,23032,23032.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,45 a 49 anos,67389,67389.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,45 a 49 anos,26874,26874.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,45 a 49 anos,135513,135513.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,45 a 49 anos,182336,182336.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,45 a 49 anos,163156,163156.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,45 a 49 anos,210070,210070.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,45 a 49 anos,22069,22069.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,45 a 49 anos,101125,101125.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,45 a 49 anos,68646,68646.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,45 a 49 anos,44522,44522.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,45 a 49 anos,60568,60568.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,45 a 49 anos,160678,160678.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,45 a 49 anos,94224,94224.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,45 a 49 anos,56492,56492.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,45 a 49 anos,127287,127287.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,45 a 49 anos,105430,105430.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,45 a 49 anos,58662,58662.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,45 a 49 anos,426864,426864.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,45 a 49 anos,50094,50094.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,45 a 49 anos,88289,88289.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,45 a 49 anos,30126,30126.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,45 a 49 anos,23737,23737.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,45 a 49 anos,36598,36598.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,45 a 49 anos,812857,812857.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,45 a 49 anos,42376,42376.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,45 a 49 anos,20207,20207.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,50 a 54 anos,19471,19471.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,50 a 54 anos,61459,61459.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,50 a 54 anos,22425,22425.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,50 a 54 anos,111450,111450.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,50 a 54 anos,167966,167966.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,50 a 54 anos,156480,156480.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,50 a 54 anos,179636,179636.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,50 a 54 anos,20112,20112.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,50 a 54 anos,90684,90684.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,50 a 54 anos,63000,63000.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,50 a 54 anos,39634,39634.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,50 a 54 anos,55483,55483.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,50 a 54 anos,153791,153791.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,50 a 54 anos,87196,87196.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,50 a 54 anos,51839,51839.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,50 a 54 anos,120887,120887.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,50 a 54 anos,100962,100962.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,50 a 54 anos,51651,51651.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,50 a 54 anos,402001,402001.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,50 a 54 anos,48363,48363.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,50 a 54 anos,81321,81321.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,50 a 54 anos,26358,26358.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,50 a 54 anos,19021,19021.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,50 a 54 anos,32470,32470.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,50 a 54 anos,752842,752842.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,50 a 54 anos,38720,38720.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,50 a 54 anos,15694,15694.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,55 a 59 anos,15849,15849.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,55 a 59 anos,52647,52647.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,55 a 59 anos,17105,17105.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,55 a 59 anos,89635,89635.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,55 a 59 anos,150996,150996.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,55 a 59 anos,144145,144145.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,55 a 59 anos,151836,151836.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,55 a 59 anos,20532,20532.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,55 a 59 anos,79870,79870.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,55 a 59 anos,52555,52555.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,55 a 59 anos,34066,34066.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,55 a 59 anos,50341,50341.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,55 a 59 anos,147393,147393.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,55 a 59 anos,75408,75408.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,55 a 59 anos,48051,48051.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,55 a 59 anos,111658,111658.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,55 a 59 anos,93575,93575.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,55 a 59 anos,46981,46981.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,55 a 59 anos,386411,386411.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,55 a 59 anos,47005,47005.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,55 a 59 anos,84162,84162.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,55 a 59 anos,23041,23041.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,55 a 59 anos,15334,15334.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,55 a 59 anos,31672,31672.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,55 a 59 anos,682446,682446.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,55 a 59 anos,34366,34366.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,55 a 59 anos,12211,12211.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,60 a 64 anos,12575,12575.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,60 a 64 anos,42954,42954.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,60 a 64 anos,13424,13424.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,60 a 64 anos,71893,71893.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,60 a 64 anos,129702,129702.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,60 a 64 anos,114541,114541.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,60 a 64 anos,116514,116514.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,60 a 64 anos,19349,19349.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,60 a 64 anos,68785,68785.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,60 a 64 anos,43655,43655.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,60 a 64 anos,29223,29223.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,60 a 64 anos,43245,43245.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,60 a 64 anos,134720,134720.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,60 a 64 anos,65517,65517.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,60 a 64 anos,39034,39034.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,60 a 64 anos,97950,97950.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,60 a 64 anos,81917,81917.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,60 a 64 anos,38479,38479.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,60 a 64 anos,360818,360818.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,60 a 64 anos,39192,39192.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,60 a 64 anos,82145,82145.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,60 a 64 anos,18208,18208.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,60 a 64 anos,11596,11596.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,60 a 64 anos,28531,28531.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,60 a 64 anos,606419,606419.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,60 a 64 anos,28229,28229.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,60 a 64 anos,8890,8890.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,65 a 69 anos,9648,9648.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,65 a 69 anos,32452,32452.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,65 a 69 anos,9736,9736.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,65 a 69 anos,52399,52399.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,65 a 69 anos,98972,98972.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,65 a 69 anos,87773,87773.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,65 a 69 anos,89949,89949.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,65 a 69 anos,16196,16196.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,65 a 69 anos,53713,53713.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,65 a 69 anos,33100,33100.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,65 a 69 anos,22120,22120.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,65 a 69 anos,33667,33667.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,65 a 69 anos,108787,108787.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,65 a 69 anos,50417,50417.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,65 a 69 anos,29992,29992.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,65 a 69 anos,79499,79499.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,65 a 69 anos,63441,63441.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,65 a 69 anos,29563,29563.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,65 a 69 anos,304598,304598.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,65 a 69 anos,30607,30607.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,65 a 69 anos,70134,70134.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,65 a 69 anos,12845,12845.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,65 a 69 anos,8457,8457.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,65 a 69 anos,22668,22668.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,65 a 69 anos,490960,490960.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,65 a 69 anos,21942,21942.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,65 a 69 anos,6312,6312.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,70 a 74 anos,6546,6546.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,70 a 74 anos,23241,23241.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,70 a 74 anos,6226,6226.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,70 a 74 anos,34251,34251.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,70 a 74 anos,71342,71342.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,70 a 74 anos,66304,66304.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,70 a 74 anos,66188,66188.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,70 a 74 anos,11644,11644.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,70 a 74 anos,39557,39557.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,70 a 74 anos,22671,22671.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,70 a 74 anos,14979,14979.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,70 a 74 anos,23817,23817.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,70 a 74 anos,82861,82861.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,70 a 74 anos,36700,36700.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,70 a 74 anos,22403,22403.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,70 a 74 anos,59039,59039.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,70 a 74 anos,47650,47650.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,70 a 74 anos,21818,21818.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,70 a 74 anos,233160,233160.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,70 a 74 anos,23202,23202.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,70 a 74 anos,53969,53969.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,70 a 74 anos,8098,8098.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,70 a 74 anos,5400,5400.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,70 a 74 anos,17112,17112.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,70 a 74 anos,370447,370447.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,70 a 74 anos,16512,16512.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,70 a 74 anos,4228,4228.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,75 a 79 anos,4083,4083.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,75 a 79 anos,13995,13995.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,75 a 79 anos,4090,4090.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,75 a 79 anos,20134,20134.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,75 a 79 anos,43751,43751.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,75 a 79 anos,42675,42675.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,75 a 79 anos,42396,42396.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,75 a 79 anos,7493,7493.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,75 a 79 anos,25381,25381.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,75 a 79 anos,14569,14569.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,75 a 79 anos,9333,9333.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,75 a 79 anos,15488,15488.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,75 a 79 anos,57775,57775.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,75 a 79 anos,24225,24225.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,75 a 79 anos,14400,14400.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,75 a 79 anos,39360,39360.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,75 a 79 anos,31091,31091.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,75 a 79 anos,13444,13444.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,75 a 79 anos,151529,151529.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,75 a 79 anos,15328,15328.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,75 a 79 anos,37529,37529.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,75 a 79 anos,4710,4710.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,75 a 79 anos,3112,3112.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,75 a 79 anos,10746,10746.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,75 a 79 anos,244904,244904.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,75 a 79 anos,10578,10578.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,75 a 79 anos,2692,2692.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,80 a 84 anos,2469,2469.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,80 a 84 anos,8664,8664.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,80 a 84 anos,2452,2452.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,80 a 84 anos,11770,11770.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,80 a 84 anos,28965,28965.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,80 a 84 anos,28776,28776.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,80 a 84 anos,27501,27501.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,80 a 84 anos,4930,4930.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,80 a 84 anos,16036,16036.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,80 a 84 anos,9689,9689.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,80 a 84 anos,5469,5469.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,80 a 84 anos,9622,9622.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,80 a 84 anos,39304,39304.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,80 a 84 anos,14989,14989.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,80 a 84 anos,9589,9589.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,80 a 84 anos,24369,24369.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,80 a 84 anos,20825,20825.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,80 a 84 anos,8315,8315.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,80 a 84 anos,102752,102752.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,80 a 84 anos,10197,10197.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,80 a 84 anos,24570,24570.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,80 a 84 anos,2871,2871.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,80 a 84 anos,1793,1793.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,80 a 84 anos,6581,6581.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,80 a 84 anos,161775,161775.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,80 a 84 anos,6709,6709.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,80 a 84 anos,1586,1586.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,85 a 89 anos,1263,1263.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,85 a 89 anos,4479,4479.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,85 a 89 anos,1384,1384.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,85 a 89 anos,6199,6199.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,85 a 89 anos,15639,15639.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,85 a 89 anos,15752,15752.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,85 a 89 anos,14401,14401.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,85 a 89 anos,3162,3162.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,85 a 89 anos,8393,8393.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,85 a 89 anos,5293,5293.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,85 a 89 anos,2822,2822.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,85 a 89 anos,5436,5436.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,85 a 89 anos,23447,23447.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,85 a 89 anos,8444,8444.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,85 a 89 anos,5015,5015.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,85 a 89 anos,13618,13618.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,85 a 89 anos,11611,11611.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,85 a 89 anos,4725,4725.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,85 a 89 anos,61497,61497.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,85 a 89 anos,5704,5704.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,85 a 89 anos,14746,14746.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,85 a 89 anos,1362,1362.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,85 a 89 anos,926,926.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,85 a 89 anos,3734,3734.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,85 a 89 anos,92602,92602.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,85 a 89 anos,3615,3615.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,85 a 89 anos,791,791.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,90 a 94 anos,573,573.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,90 a 94 anos,1951,1951.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,90 a 94 anos,583,583.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,90 a 94 anos,2510,2510.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,90 a 94 anos,7684,7684.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,90 a 94 anos,7258,7258.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,90 a 94 anos,6121,6121.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,90 a 94 anos,1501,1501.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,90 a 94 anos,3555,3555.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,90 a 94 anos,2293,2293.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,90 a 94 anos,1141,1141.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,90 a 94 anos,2359,2359.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,90 a 94 anos,11173,11173.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,90 a 94 anos,3686,3686.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,90 a 94 anos,2351,2351.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,90 a 94 anos,5995,5995.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,90 a 94 anos,5401,5401.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,90 a 94 anos,2251,2251.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,90 a 94 anos,29295,29295.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,90 a 94 anos,2767,2767.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,90 a 94 anos,6915,6915.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,90 a 94 anos,567,567.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,90 a 94 anos,385,385.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,90 a 94 anos,1727,1727.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,90 a 94 anos,42666,42666.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,90 a 94 anos,1797,1797.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,90 a 94 anos,303,303.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,95 a 99 anos,192,192.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,95 a 99 anos,652,652.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,95 a 99 anos,179,179.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,95 a 99 anos,776,776.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,95 a 99 anos,2504,2504.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,95 a 99 anos,2463,2463.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,95 a 99 anos,1720,1720.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,95 a 99 anos,445,445.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,95 a 99 anos,922,922.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,95 a 99 anos,730,730.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,95 a 99 anos,309,309.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,95 a 99 anos,611,611.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,95 a 99 anos,3385,3385.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,95 a 99 anos,1119,1119.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,95 a 99 anos,676,676.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,95 a 99 anos,1610,1610.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,95 a 99 anos,1722,1722.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,95 a 99 anos,760,760.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,95 a 99 anos,8132,8132.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,95 a 99 anos,1007,1007.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,95 a 99 anos,1927,1927.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,95 a 99 anos,174,174.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,95 a 99 anos,126,126.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,95 a 99 anos,496,496.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,95 a 99 anos,11526,11526.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,95 a 99 anos,628,628.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,95 a 99 anos,88,88.0
+9514,93,População residente,Pessoas,Município,1200401,Rio Branco (AC),2022,Total,Total,100 anos ou mais,61,61.0
+9514,93,População residente,Pessoas,Município,2704302,Maceió (AL),2022,Total,Total,100 anos ou mais,165,165.0
+9514,93,População residente,Pessoas,Município,1600303,Macapá (AP),2022,Total,Total,100 anos ou mais,97,97.0
+9514,93,População residente,Pessoas,Município,1302603,Manaus (AM),2022,Total,Total,100 anos ou mais,206,206.0
+9514,93,População residente,Pessoas,Município,2927408,Salvador (BA),2022,Total,Total,100 anos ou mais,516,516.0
+9514,93,População residente,Pessoas,Município,2304400,Fortaleza (CE),2022,Total,Total,100 anos ou mais,434,434.0
+9514,93,População residente,Pessoas,Município,5300108,Brasília (DF),2022,Total,Total,100 anos ou mais,300,300.0
+9514,93,População residente,Pessoas,Município,3205309,Vitória (ES),2022,Total,Total,100 anos ou mais,85,85.0
+9514,93,População residente,Pessoas,Município,5208707,Goiânia (GO),2022,Total,Total,100 anos ou mais,171,171.0
+9514,93,População residente,Pessoas,Município,2111300,São Luís (MA),2022,Total,Total,100 anos ou mais,264,264.0
+9514,93,População residente,Pessoas,Município,5103403,Cuiabá (MT),2022,Total,Total,100 anos ou mais,85,85.0
+9514,93,População residente,Pessoas,Município,5002704,Campo Grande (MS),2022,Total,Total,100 anos ou mais,130,130.0
+9514,93,População residente,Pessoas,Município,3106200,Belo Horizonte (MG),2022,Total,Total,100 anos ou mais,652,652.0
+9514,93,População residente,Pessoas,Município,1501402,Belém (PA),2022,Total,Total,100 anos ou mais,307,307.0
+9514,93,População residente,Pessoas,Município,2507507,João Pessoa (PB),2022,Total,Total,100 anos ou mais,154,154.0
+9514,93,População residente,Pessoas,Município,4106902,Curitiba (PR),2022,Total,Total,100 anos ou mais,237,237.0
+9514,93,População residente,Pessoas,Município,2611606,Recife (PE),2022,Total,Total,100 anos ou mais,338,338.0
+9514,93,População residente,Pessoas,Município,2211001,Teresina (PI),2022,Total,Total,100 anos ou mais,171,171.0
+9514,93,População residente,Pessoas,Município,3304557,Rio de Janeiro (RJ),2022,Total,Total,100 anos ou mais,1390,1390.0
+9514,93,População residente,Pessoas,Município,2408102,Natal (RN),2022,Total,Total,100 anos ou mais,191,191.0
+9514,93,População residente,Pessoas,Município,4314902,Porto Alegre (RS),2022,Total,Total,100 anos ou mais,325,325.0
+9514,93,População residente,Pessoas,Município,1100205,Porto Velho (RO),2022,Total,Total,100 anos ou mais,37,37.0
+9514,93,População residente,Pessoas,Município,1400100,Boa Vista (RR),2022,Total,Total,100 anos ou mais,42,42.0
+9514,93,População residente,Pessoas,Município,4205407,Florianópolis (SC),2022,Total,Total,100 anos ou mais,83,83.0
+9514,93,População residente,Pessoas,Município,3550308,São Paulo (SP),2022,Total,Total,100 anos ou mais,1761,1761.0
+9514,93,População residente,Pessoas,Município,2800308,Aracaju (SE),2022,Total,Total,100 anos ou mais,124,124.0
+9514,93,População residente,Pessoas,Município,1721000,Palmas (TO),2022,Total,Total,100 anos ou mais,26,26.0

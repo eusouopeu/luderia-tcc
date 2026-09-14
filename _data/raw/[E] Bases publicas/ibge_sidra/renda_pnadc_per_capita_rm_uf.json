@@ -1,0 +1,1473 @@
+{
+ "tabela": 7395,
+ "nome_tabela": "Rendimento médio mensal real domiciliar per capita",
+ "url": "https://servicodados.ibge.gov.br/api/v3/agregados/7395/periodos/-3/variaveis/4196%7C4197?localidades=N1%5Ball%5D%7CN3%5Ball%5D%7CN7%5Ball%5D",
+ "data_coleta": "2026-09-14",
+ "resposta": [
+  {
+   "id": "4196",
+   "variavel": "Rendimento médio mensal real domiciliar per capita",
+   "unidade": "Reais",
+   "resultados": [
+    {
+     "classificacoes": [],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2023": "2039",
+        "2024": "2157",
+        "2025": "2280"
+       }
+      },
+      {
+       "localidade": {
+        "id": "11",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Rondônia"
+       },
+       "serie": {
+        "2023": "1647",
+        "2024": "1829",
+        "2025": "2020"
+       }
+      },
+      {
+       "localidade": {
+        "id": "12",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Acre"
+       },
+       "serie": {
+        "2023": "1167",
+        "2024": "1316",
+        "2025": "1427"
+       }
+      },
+      {
+       "localidade": {
+        "id": "13",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Amazonas"
+       },
+       "serie": {
+        "2023": "1284",
+        "2024": "1330",
+        "2025": "1425"
+       }
+      },
+      {
+       "localidade": {
+        "id": "14",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Roraima"
+       },
+       "serie": {
+        "2023": "1538",
+        "2024": "1721",
+        "2025": "1808"
+       }
+      },
+      {
+       "localidade": {
+        "id": "15",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Pará"
+       },
+       "serie": {
+        "2023": "1379",
+        "2024": "1419",
+        "2025": "1472"
+       }
+      },
+      {
+       "localidade": {
+        "id": "16",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Amapá"
+       },
+       "serie": {
+        "2023": "1525",
+        "2024": "1568",
+        "2025": "1769"
+       }
+      },
+      {
+       "localidade": {
+        "id": "17",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Tocantins"
+       },
+       "serie": {
+        "2023": "1736",
+        "2024": "1884",
+        "2025": "2061"
+       }
+      },
+      {
+       "localidade": {
+        "id": "21",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Maranhão"
+       },
+       "serie": {
+        "2023": "1056",
+        "2024": "1151",
+        "2025": "1206"
+       }
+      },
+      {
+       "localidade": {
+        "id": "22",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Piauí"
+       },
+       "serie": {
+        "2023": "1396",
+        "2024": "1490",
+        "2025": "1520"
+       }
+      },
+      {
+       "localidade": {
+        "id": "23",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Ceará"
+       },
+       "serie": {
+        "2023": "1261",
+        "2024": "1292",
+        "2025": "1423"
+       }
+      },
+      {
+       "localidade": {
+        "id": "24",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Rio Grande do Norte"
+       },
+       "serie": {
+        "2023": "1503",
+        "2024": "1580",
+        "2025": "1737"
+       }
+      },
+      {
+       "localidade": {
+        "id": "25",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Paraíba"
+       },
+       "serie": {
+        "2023": "1429",
+        "2024": "1485",
+        "2025": "1567"
+       }
+      },
+      {
+       "localidade": {
+        "id": "26",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Pernambuco"
+       },
+       "serie": {
+        "2023": "1258",
+        "2024": "1507",
+        "2025": "1548"
+       }
+      },
+      {
+       "localidade": {
+        "id": "27",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Alagoas"
+       },
+       "serie": {
+        "2023": "1196",
+        "2024": "1366",
+        "2025": "1435"
+       }
+      },
+      {
+       "localidade": {
+        "id": "28",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Sergipe"
+       },
+       "serie": {
+        "2023": "1316",
+        "2024": "1541",
+        "2025": "1678"
+       }
+      },
+      {
+       "localidade": {
+        "id": "29",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Bahia"
+       },
+       "serie": {
+        "2023": "1272",
+        "2024": "1379",
+        "2025": "1498"
+       }
+      },
+      {
+       "localidade": {
+        "id": "31",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Minas Gerais"
+       },
+       "serie": {
+        "2023": "2008",
+        "2024": "2079",
+        "2025": "2259"
+       }
+      },
+      {
+       "localidade": {
+        "id": "32",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Espírito Santo"
+       },
+       "serie": {
+        "2023": "2014",
+        "2024": "2166",
+        "2025": "2229"
+       }
+      },
+      {
+       "localidade": {
+        "id": "33",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Rio de Janeiro"
+       },
+       "serie": {
+        "2023": "2433",
+        "2024": "2496",
+        "2025": "2711"
+       }
+      },
+      {
+       "localidade": {
+        "id": "35",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "São Paulo"
+       },
+       "serie": {
+        "2023": "2715",
+        "2024": "2847",
+        "2025": "2917"
+       }
+      },
+      {
+       "localidade": {
+        "id": "41",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Paraná"
+       },
+       "serie": {
+        "2023": "2220",
+        "2024": "2468",
+        "2025": "2710"
+       }
+      },
+      {
+       "localidade": {
+        "id": "42",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Santa Catarina"
+       },
+       "serie": {
+        "2023": "2480",
+        "2024": "2658",
+        "2025": "2807"
+       }
+      },
+      {
+       "localidade": {
+        "id": "43",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Rio Grande do Sul"
+       },
+       "serie": {
+        "2023": "2531",
+        "2024": "2701",
+        "2025": "2782"
+       }
+      },
+      {
+       "localidade": {
+        "id": "50",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Mato Grosso do Sul"
+       },
+       "serie": {
+        "2023": "2274",
+        "2024": "2246",
+        "2025": "2304"
+       }
+      },
+      {
+       "localidade": {
+        "id": "51",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Mato Grosso"
+       },
+       "serie": {
+        "2023": "2200",
+        "2024": "2354",
+        "2025": "2381"
+       }
+      },
+      {
+       "localidade": {
+        "id": "52",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Goiás"
+       },
+       "serie": {
+        "2023": "2156",
+        "2024": "2215",
+        "2025": "2378"
+       }
+      },
+      {
+       "localidade": {
+        "id": "53",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Distrito Federal"
+       },
+       "serie": {
+        "2023": "3597",
+        "2024": "3694",
+        "2025": "4286"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1301",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Manaus - AM"
+       },
+       "serie": {
+        "2023": "1494",
+        "2024": "1585",
+        "2025": "1639"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Belém - PA"
+       },
+       "serie": {
+        "2023": "2053",
+        "2024": "2004",
+        "2025": "1979"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1601",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Macapá - AP"
+       },
+       "serie": {
+        "2023": "1696",
+        "2024": "1686",
+        "2025": "1949"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2101",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Grande São Luís - MA"
+       },
+       "serie": {
+        "2023": "1291",
+        "2024": "1593",
+        "2025": "1609"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2301",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Fortaleza - CE"
+       },
+       "serie": {
+        "2023": "1648",
+        "2024": "1641",
+        "2025": "1844"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2401",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Natal - RN"
+       },
+       "serie": {
+        "2023": "1988",
+        "2024": "1988",
+        "2025": "2356"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2501",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "João Pessoa - PB"
+       },
+       "serie": {
+        "2023": "2109",
+        "2024": "2098",
+        "2025": "2215"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2601",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Recife - PE"
+       },
+       "serie": {
+        "2023": "1576",
+        "2024": "1988",
+        "2025": "1951"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2701",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Maceió - AL"
+       },
+       "serie": {
+        "2023": "1608",
+        "2024": "1818",
+        "2025": "2015"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2801",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Aracaju - SE"
+       },
+       "serie": {
+        "2023": "1820",
+        "2024": "2090",
+        "2025": "2429"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2901",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Salvador - BA"
+       },
+       "serie": {
+        "2023": "1985",
+        "2024": "1901",
+        "2025": "1900"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3101",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Belo Horizonte - MG"
+       },
+       "serie": {
+        "2023": "2672",
+        "2024": "2606",
+        "2025": "3000"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3201",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Grande Vitória - ES"
+       },
+       "serie": {
+        "2023": "2376",
+        "2024": "2605",
+        "2025": "2697"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3301",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Rio de Janeiro - RJ"
+       },
+       "serie": {
+        "2023": "2691",
+        "2024": "2741",
+        "2025": "2972"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3501",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "São Paulo - SP"
+       },
+       "serie": {
+        "2023": "3179",
+        "2024": "3309",
+        "2025": "3152"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4101",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Curitiba - PR"
+       },
+       "serie": {
+        "2023": "2665",
+        "2024": "3083",
+        "2025": "3273"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4201",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Florianópolis - SC"
+       },
+       "serie": {
+        "2023": "3433",
+        "2024": "3520",
+        "2025": "3657"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4301",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Porto Alegre - RS"
+       },
+       "serie": {
+        "2023": "2849",
+        "2024": "3090",
+        "2025": "3097"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5101",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Vale do Rio Cuiabá - MT"
+       },
+       "serie": {
+        "2023": "2268",
+        "2024": "2558",
+        "2025": "2521"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5201",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Goiânia - GO"
+       },
+       "serie": {
+        "2023": "2474",
+        "2024": "2537",
+        "2025": "2995"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "4197",
+   "variavel": "Coeficiente de variação - Rendimento médio mensal real domiciliar per capita",
+   "unidade": "%",
+   "resultados": [
+    {
+     "classificacoes": [],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2023": "0.8",
+        "2024": "0.8",
+        "2025": "0.8"
+       }
+      },
+      {
+       "localidade": {
+        "id": "11",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Rondônia"
+       },
+       "serie": {
+        "2023": "3.7",
+        "2024": "4.8",
+        "2025": "4.0"
+       }
+      },
+      {
+       "localidade": {
+        "id": "12",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Acre"
+       },
+       "serie": {
+        "2023": "3.7",
+        "2024": "3.9",
+        "2025": "4.7"
+       }
+      },
+      {
+       "localidade": {
+        "id": "13",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Amazonas"
+       },
+       "serie": {
+        "2023": "4.5",
+        "2024": "4.0",
+        "2025": "4.3"
+       }
+      },
+      {
+       "localidade": {
+        "id": "14",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Roraima"
+       },
+       "serie": {
+        "2023": "5.9",
+        "2024": "5.4",
+        "2025": "6.0"
+       }
+      },
+      {
+       "localidade": {
+        "id": "15",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Pará"
+       },
+       "serie": {
+        "2023": "3.7",
+        "2024": "3.3",
+        "2025": "3.4"
+       }
+      },
+      {
+       "localidade": {
+        "id": "16",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Amapá"
+       },
+       "serie": {
+        "2023": "6.2",
+        "2024": "6.2",
+        "2025": "8.2"
+       }
+      },
+      {
+       "localidade": {
+        "id": "17",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Tocantins"
+       },
+       "serie": {
+        "2023": "3.8",
+        "2024": "3.4",
+        "2025": "4.2"
+       }
+      },
+      {
+       "localidade": {
+        "id": "21",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Maranhão"
+       },
+       "serie": {
+        "2023": "2.3",
+        "2024": "2.7",
+        "2025": "2.1"
+       }
+      },
+      {
+       "localidade": {
+        "id": "22",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Piauí"
+       },
+       "serie": {
+        "2023": "9.3",
+        "2024": "8.6",
+        "2025": "5.1"
+       }
+      },
+      {
+       "localidade": {
+        "id": "23",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Ceará"
+       },
+       "serie": {
+        "2023": "3.3",
+        "2024": "2.8",
+        "2025": "3.5"
+       }
+      },
+      {
+       "localidade": {
+        "id": "24",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Rio Grande do Norte"
+       },
+       "serie": {
+        "2023": "4.9",
+        "2024": "5.0",
+        "2025": "5.4"
+       }
+      },
+      {
+       "localidade": {
+        "id": "25",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Paraíba"
+       },
+       "serie": {
+        "2023": "5.3",
+        "2024": "4.6",
+        "2025": "4.5"
+       }
+      },
+      {
+       "localidade": {
+        "id": "26",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Pernambuco"
+       },
+       "serie": {
+        "2023": "4.0",
+        "2024": "4.6",
+        "2025": "3.4"
+       }
+      },
+      {
+       "localidade": {
+        "id": "27",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Alagoas"
+       },
+       "serie": {
+        "2023": "3.7",
+        "2024": "4.1",
+        "2025": "3.6"
+       }
+      },
+      {
+       "localidade": {
+        "id": "28",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Sergipe"
+       },
+       "serie": {
+        "2023": "5.0",
+        "2024": "4.8",
+        "2025": "4.8"
+       }
+      },
+      {
+       "localidade": {
+        "id": "29",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Bahia"
+       },
+       "serie": {
+        "2023": "3.0",
+        "2024": "2.9",
+        "2025": "2.4"
+       }
+      },
+      {
+       "localidade": {
+        "id": "31",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Minas Gerais"
+       },
+       "serie": {
+        "2023": "2.2",
+        "2024": "2.0",
+        "2025": "2.1"
+       }
+      },
+      {
+       "localidade": {
+        "id": "32",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Espírito Santo"
+       },
+       "serie": {
+        "2023": "3.0",
+        "2024": "3.1",
+        "2025": "3.1"
+       }
+      },
+      {
+       "localidade": {
+        "id": "33",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Rio de Janeiro"
+       },
+       "serie": {
+        "2023": "2.4",
+        "2024": "2.4",
+        "2025": "3.2"
+       }
+      },
+      {
+       "localidade": {
+        "id": "35",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "São Paulo"
+       },
+       "serie": {
+        "2023": "2.5",
+        "2024": "2.3",
+        "2025": "2.2"
+       }
+      },
+      {
+       "localidade": {
+        "id": "41",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Paraná"
+       },
+       "serie": {
+        "2023": "2.5",
+        "2024": "2.2",
+        "2025": "2.5"
+       }
+      },
+      {
+       "localidade": {
+        "id": "42",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Santa Catarina"
+       },
+       "serie": {
+        "2023": "1.7",
+        "2024": "1.7",
+        "2025": "1.4"
+       }
+      },
+      {
+       "localidade": {
+        "id": "43",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Rio Grande do Sul"
+       },
+       "serie": {
+        "2023": "1.9",
+        "2024": "2.1",
+        "2025": "2.1"
+       }
+      },
+      {
+       "localidade": {
+        "id": "50",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Mato Grosso do Sul"
+       },
+       "serie": {
+        "2023": "3.9",
+        "2024": "3.3",
+        "2025": "2.8"
+       }
+      },
+      {
+       "localidade": {
+        "id": "51",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Mato Grosso"
+       },
+       "serie": {
+        "2023": "3.1",
+        "2024": "2.8",
+        "2025": "2.8"
+       }
+      },
+      {
+       "localidade": {
+        "id": "52",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Goiás"
+       },
+       "serie": {
+        "2023": "2.8",
+        "2024": "2.8",
+        "2025": "3.2"
+       }
+      },
+      {
+       "localidade": {
+        "id": "53",
+        "nivel": {
+         "id": "N3",
+         "nome": "Unidade da Federação"
+        },
+        "nome": "Distrito Federal"
+       },
+       "serie": {
+        "2023": "4.9",
+        "2024": "5.6",
+        "2025": "5.0"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1301",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Manaus - AM"
+       },
+       "serie": {
+        "2023": "5.6",
+        "2024": "5.0",
+        "2025": "5.6"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Belém - PA"
+       },
+       "serie": {
+        "2023": "8.0",
+        "2024": "7.1",
+        "2025": "7.7"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1601",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Macapá - AP"
+       },
+       "serie": {
+        "2023": "7.0",
+        "2024": "7.3",
+        "2025": "9.6"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2101",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Grande São Luís - MA"
+       },
+       "serie": {
+        "2023": "5.5",
+        "2024": "6.6",
+        "2025": "5.4"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2301",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Fortaleza - CE"
+       },
+       "serie": {
+        "2023": "5.9",
+        "2024": "4.6",
+        "2025": "5.7"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2401",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Natal - RN"
+       },
+       "serie": {
+        "2023": "8.0",
+        "2024": "6.7",
+        "2025": "8.7"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2501",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "João Pessoa - PB"
+       },
+       "serie": {
+        "2023": "9.5",
+        "2024": "8.4",
+        "2025": "7.9"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2601",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Recife - PE"
+       },
+       "serie": {
+        "2023": "6.2",
+        "2024": "7.2",
+        "2025": "5.2"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2701",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Maceió - AL"
+       },
+       "serie": {
+        "2023": "6.6",
+        "2024": "6.5",
+        "2025": "6.0"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2801",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Aracaju - SE"
+       },
+       "serie": {
+        "2023": "8.4",
+        "2024": "7.9",
+        "2025": "7.1"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2901",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Salvador - BA"
+       },
+       "serie": {
+        "2023": "6.8",
+        "2024": "6.3",
+        "2025": "4.8"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3101",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Belo Horizonte - MG"
+       },
+       "serie": {
+        "2023": "5.6",
+        "2024": "5.0",
+        "2025": "4.9"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3201",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Grande Vitória - ES"
+       },
+       "serie": {
+        "2023": "4.6",
+        "2024": "4.4",
+        "2025": "5.0"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3301",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Rio de Janeiro - RJ"
+       },
+       "serie": {
+        "2023": "2.9",
+        "2024": "2.8",
+        "2025": "3.9"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3501",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "São Paulo - SP"
+       },
+       "serie": {
+        "2023": "4.0",
+        "2024": "3.8",
+        "2025": "3.5"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4101",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Curitiba - PR"
+       },
+       "serie": {
+        "2023": "3.6",
+        "2024": "3.8",
+        "2025": "4.8"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4201",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Florianópolis - SC"
+       },
+       "serie": {
+        "2023": "5.3",
+        "2024": "4.6",
+        "2025": "3.9"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4301",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Porto Alegre - RS"
+       },
+       "serie": {
+        "2023": "3.2",
+        "2024": "3.9",
+        "2025": "3.6"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5101",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Vale do Rio Cuiabá - MT"
+       },
+       "serie": {
+        "2023": "7.3",
+        "2024": "7.0",
+        "2025": "4.6"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5201",
+        "nivel": {
+         "id": "N7",
+         "nome": "Região Metropolitana até 2020"
+        },
+        "nome": "Goiânia - GO"
+       },
+       "serie": {
+        "2023": "4.6",
+        "2024": "4.2",
+        "2025": "6.4"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "uso_no_plano": "Renda domiciliar per capita por região metropolitana e UF (5.2, 6.4)"
+}
