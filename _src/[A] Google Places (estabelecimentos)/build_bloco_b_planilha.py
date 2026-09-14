@@ -1,46 +1,56 @@
 """
-Bloco B - etapa 3: junta candidatos (etapa 1) e detalhes (etapa 2) e aplica
-um filtro de três estágios para reter apenas os candidatos com alta
-probabilidade de serem de fato um ludobar/luderia/quiz-bar:
+Bloco A - etapa 3: junta candidatos (etapa 1) e detalhes (etapa 2) e monta a
+planilha de curadoria. Desenho do recorte (_instrucoes/4_metodologia.md):
 
-  1. Palavra-chave no nome do estabelecimento OU no texto das avaliações
-     (até 5 por local, retornadas pela própria Places API).
-  2. Categoria de negócio (`types` do Google) compatível com formato de
-     alimentação/bebidas (bar, cafe, restaurant etc.) - elimina lojas de
-     brinquedo, brinquedotecas, lojas de videogame e fliperamas que a
-     palavra-chave no nome também capturaria por engano.
-  3. Endereço no Brasil - a textSearch por termo x capital também retorna
-     estabelecimentos estrangeiros (Porto/PT, Buenos Aires/AR), fora da
-     população das 27 capitais brasileiras.
+  É do tipo      -> verificação manual do autor (fotos do Maps com mesas ou
+                    estantes de jogos, ou texto que menciona jogar no local).
+                    Coluna `evidencia_espaco_jogo`, preenchida à mão.
+  Está ativa     -> status do Google diferente de fechado e avaliação mais
+                    recente com até 6 meses (coluna `ativo_6m`).
+  Presença       -> volume de avaliações no Maps OU publicações no Instagram
+                    acima do limiar; limiares definidos pela distribuição
+                    (analise_bloco_b_limiares.py), não fixados aqui.
 
-Só passa quem bate nos três estágios. Dois arquivos de saída:
-  _data/processed/bloco_b_planilha_curadoria.csv - aprovados, uma linha por
-      place_id único, pronta para a etapa de codificação manual
-      (precificação, alimentação/bebidas, acervo).
-  _data/processed/bloco_b_descartados_por_filtro.csv - reprovados, com
-      motivo_descarte ("sem_termo_chave" ou "categoria_incompativel"),
-      mantidos para auditoria/transparência metodológica.
+Filtro automático, aplicado antes da curadoria:
+  1. Palavra-chave no nome OU no texto das avaliações (até 5 por local).
+  2. Endereço no Brasil.
+  3. Não marcado como fechado definitivamente pelo Google.
 
-match_tipo indica onde o termo-chave foi encontrado: "nome", "avaliacao" ou
-"nome+avaliacao".
+A categoria do Google deixou de eliminar candidatos: casas que funcionam como
+espaço de jogo aparecem como loja de jogos ou de brinquedos. A categoria vira
+a coluna `grupo_categoria`, só para orientar a curadoria.
+
+Estabelecimentos da lista manual do autor (bloco_b_lista_manual_rj.csv) com
+place_id entram mesmo sem passar no filtro, marcados em `origem`.
+
+A curadoria manual já feita é preservada: colunas manuais de uma versão
+anterior da planilha são reaproveitadas pelo place_id.
 
 Uso:
-    python3 src/build_bloco_b_planilha.py
+    python3 "_src/[A] Google Places (estabelecimentos)/build_bloco_b_planilha.py"
 """
 import csv
 import json
 import pathlib
+import re
 import unicodedata
 from collections import defaultdict
+from datetime import datetime, timedelta, timezone
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-CANDIDATOS_PATH = ROOT / "_data" / "raw" / "[A] Estabelecimentos e cardapios" / "bloco_b_candidatos.csv"
-DETALHES_PATH = ROOT / "_data" / "raw" / "[A] Estabelecimentos e cardapios" / "bloco_b_detalhes.jsonl"
-OUT_PATH = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios" / "bloco_b_planilha_curadoria.csv"
-OUT_DESCARTADOS_PATH = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios" / "bloco_b_descartados_por_filtro.csv"
+RAW = ROOT / "_data" / "raw" / "[A] Estabelecimentos e cardapios"
+PROCESSED = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios"
+CANDIDATOS_PATH = RAW / "bloco_b_candidatos.csv"
+DETALHES_PATH = RAW / "bloco_b_detalhes.jsonl"
+LISTA_MANUAL_PATH = RAW / "bloco_b_lista_manual_rj.csv"
+OUT_PATH = PROCESSED / "bloco_b_planilha_curadoria.csv"
+OUT_DESCARTADOS_PATH = PROCESSED / "bloco_b_descartados_por_filtro.csv"
 
-# Lista ampla: aplicada ao NOME do estabelecimento, onde a presença do termo
-# é sinal forte (um bar não se chama "Games" ou "Jogos" por acaso).
+# Data de referência da janela de atividade: data da coleta dos detalhes.
+DATA_REFERENCIA = datetime.fromtimestamp(DETALHES_PATH.stat().st_mtime, tz=timezone.utc)
+JANELA_ATIVIDADE = timedelta(days=183)
+
+# Lista ampla: aplicada ao NOME, onde o termo é sinal forte.
 KEYWORDS_NOME = [
     "quiz",
     "jogue",
@@ -53,12 +63,15 @@ KEYWORDS_NOME = [
     "board",
     "game",
     "bodogami",
+    "rpg",
+    "card",
+    "magic",
+    "geek",
+    "nerd",
 ]
 
-# Lista restrita: aplicada ao texto das AVALIAÇÕES, onde termos soltos como
-# "jogo"/"game"/"brinquedo" geram falso positivo (jogo de futebol na TV,
-# fliperama, espaço de festa infantil). Exige termos específicos de board
-# game ou frases compostas.
+# Lista restrita: aplicada ao texto das AVALIAÇÕES, onde termos soltos geram
+# falso positivo (jogo de futebol na TV, fliperama, festa infantil).
 KEYWORDS_AVALIACAO = [
     "quiz",
     "ludo",
@@ -66,47 +79,53 @@ KEYWORDS_AVALIACAO = [
     "tabuleiro",
     "bodogami",
     "board game",
+    "boardgame",
     "jogo de tabuleiro",
     "jogos de tabuleiro",
+    "rpg",
+    "card game",
+    "magic the gathering",
+    "pokemon tcg",
 ]
 
-# O formato ludobar/luderia/quiz-bar é um estabelecimento de alimentação e
-# bebidas - exigir que o `types` do Google inclua ao menos uma categoria
-# desse tipo elimina lojas de brinquedo/varejo, brinquedotecas e fliperamas
-# que a palavra-chave "brinquedo"/"game" no nome também captura por engano.
-TYPES_BAR_CAFE = {
-    "bar",
-    "restaurant",
-    "cafe",
-    "coffee_shop",
-    "cocktail_bar",
-    "night_club",
-    "pub",
-    "wine_bar",
-    "snack_bar",
-    "hamburger_restaurant",
-    "american_restaurant",
-    "meal_takeaway",
-    "food",
+TYPES_AEB = {
+    "bar", "restaurant", "cafe", "coffee_shop", "cocktail_bar", "night_club",
+    "pub", "wine_bar", "snack_bar", "hamburger_restaurant", "american_restaurant",
+    "meal_takeaway", "food", "gastropub", "bar_and_grill", "brewery", "irish_pub",
+    "pizza_restaurant", "sports_bar", "brazilian_restaurant", "food_court",
 }
+TYPES_LOJA = {"store", "toy_store", "book_store", "home_goods_store", "electronics_store", "gift_shop"}
+
+RE_INSTAGRAM = re.compile(r"instagram\.com/([A-Za-z0-9_.]+)", re.IGNORECASE)
+HANDLES_INVALIDOS = {"p", "reel", "reels", "stories", "explore", "accounts"}
+
+COLUNAS_MANUAIS = [
+    "evidencia_espaco_jogo",
+    "relevante",
+    "politica_precificacao",
+    "modelo_alimentacao_bebidas",
+    "acervo_declarado",
+]
 
 COLUNAS_CURADORIA = [
     "place_id",
     "nome",
     "endereco",
     "capital_busca",
+    "origem",
     "match_tipo",
+    "grupo_categoria",
     "categorias_google",
     "avaliacao_media",
     "volume_avaliacoes",
+    "status_google",
+    "ultima_avaliacao_data",
+    "ativo_6m",
     "site_ou_rede_social",
+    "instagram_usuario",
     "telefone",
     "link_google_maps",
-    "status_google",
-    "relevante",
-    "politica_precificacao",
-    "modelo_alimentacao_bebidas",
-    "acervo_declarado",
+    *COLUNAS_MANUAIS,
 ]
 
 COLUNAS_DESCARTADOS = [
@@ -139,10 +158,8 @@ def classifica(detalhe):
     reviews_texto = " ".join(
         (r.get("text") or {}).get("text", "") for r in detalhe.get("reviews", [])
     )
-
     bate_nome = contem_keyword(nome, KEYWORDS_NOME)
     bate_avaliacao = contem_keyword(reviews_texto, KEYWORDS_AVALIACAO)
-
     if bate_nome and bate_avaliacao:
         return "nome+avaliacao"
     if bate_nome:
@@ -152,16 +169,38 @@ def classifica(detalhe):
     return None
 
 
-def bate_categoria(detalhe):
-    return bool(set(detalhe.get("types", [])) & TYPES_BAR_CAFE)
+def grupo_categoria(detalhe):
+    types = set(detalhe.get("types", []))
+    if types & TYPES_AEB:
+        return "alimentos_bebidas"
+    if types & TYPES_LOJA:
+        return "loja"
+    return "outro"
 
 
 def bate_pais(detalhe):
-    """A textSearch por termo x capital retorna também estabelecimentos fora
-    do Brasil (ex.: Porto/PT, Buenos Aires/AR encontrados por "board game
-    bar"). A população do Bloco B são as 27 capitais brasileiras."""
+    """A textSearch por termo x capital também retorna locais fora do Brasil."""
     endereco = normaliza(detalhe.get("formattedAddress", "")).strip()
     return endereco.endswith("brazil") or endereco.endswith("brasil")
+
+
+def ultima_avaliacao(detalhe):
+    """Data da avaliação mais recente entre as até 5 que a API devolve. A API
+    ordena por relevância, não por data: a data encontrada é um limite
+    inferior. Avaliação recente prova atividade; ausência dela é inconclusiva."""
+    datas = [r["publishTime"] for r in detalhe.get("reviews", []) if r.get("publishTime")]
+    if not datas:
+        return None
+    # publishTime vem com nanossegundos ("2026-02-04T00:31:21.376434868Z"),
+    # que o fromisoformat não aceita; a precisão de segundos basta.
+    return max(datetime.fromisoformat(d[:19]).replace(tzinfo=timezone.utc) for d in datas)
+
+
+def instagram_usuario(url):
+    m = RE_INSTAGRAM.search(url or "")
+    if not m or m.group(1).lower() in HANDLES_INVALIDOS:
+        return ""
+    return m.group(1).rstrip(".").lower()
 
 
 def load_capitais_por_place_id():
@@ -177,77 +216,104 @@ def load_detalhes():
     detalhes = {}
     with open(DETALHES_PATH, encoding="utf-8") as f:
         for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            d = json.loads(line)
-            detalhes[d["id"]] = d
+            if line.strip():
+                d = json.loads(line)
+                detalhes[d["id"]] = d
     return detalhes
+
+
+def load_lista_manual():
+    if not LISTA_MANUAL_PATH.exists():
+        return set()
+    with open(LISTA_MANUAL_PATH, newline="", encoding="utf-8") as f:
+        return {r["place_id"] for r in csv.DictReader(f) if r["place_id"]}
+
+
+def load_curadoria_anterior():
+    """Colunas manuais já preenchidas, por place_id."""
+    if not OUT_PATH.exists():
+        return {}
+    anterior = {}
+    with open(OUT_PATH, newline="", encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            pid = r.get("place_id", "")
+            if pid.startswith("ChIJ"):
+                anterior[pid] = {c: r.get(c, "") for c in COLUNAS_MANUAIS}
+    return anterior
 
 
 def main():
     capitais_por_id = load_capitais_por_place_id()
     detalhes = load_detalhes()
+    lista_manual = load_lista_manual()
+    anterior = load_curadoria_anterior()
 
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-
-    mantidos = []
-    descartados = []
-
+    mantidos, descartados = [], []
     for place_id, d in detalhes.items():
         match_tipo = classifica(d)
-        categoria_ok = bate_categoria(d)
-        pais_ok = bate_pais(d)
-        capital_busca = ";".join(sorted(capitais_por_id.get(place_id, [])))
-        categorias_google = ";".join(d.get("types", []))
+        status = d.get("businessStatus", "")
         base = {
             "place_id": place_id,
             "nome": (d.get("displayName") or {}).get("text"),
             "endereco": d.get("formattedAddress"),
-            "capital_busca": capital_busca,
-            "categorias_google": categorias_google,
+            "capital_busca": ";".join(sorted(capitais_por_id.get(place_id, []))),
+            "categorias_google": ";".join(d.get("types", [])),
             "avaliacao_media": d.get("rating"),
-            "volume_avaliacoes": d.get("userRatingCount"),
+            "volume_avaliacoes": d.get("userRatingCount") or 0,
             "site_ou_rede_social": d.get("websiteUri"),
         }
-        if match_tipo and categoria_ok and pais_ok:
-            mantidos.append(
-                {
-                    **base,
-                    "match_tipo": match_tipo,
-                    "telefone": d.get("internationalPhoneNumber"),
-                    "link_google_maps": d.get("googleMapsUri"),
-                    "status_google": d.get("businessStatus"),
-                    "relevante": "",
-                    "politica_precificacao": "",
-                    "modelo_alimentacao_bebidas": "",
-                    "acervo_declarado": "",
-                }
-            )
-        else:
-            if not match_tipo:
-                motivo = "sem_termo_chave"
-            elif not categoria_ok:
-                motivo = "categoria_incompativel"
-            else:
-                motivo = "fora_do_brasil"
-            descartados.append({**base, "motivo_descarte": motivo})
+        manual = place_id in lista_manual
 
-    mantidos.sort(key=lambda r: r["nome"] or "")
+        if not bate_pais(d):
+            motivo = "fora_do_brasil"
+        elif status == "CLOSED_PERMANENTLY":
+            motivo = "fechado_definitivamente"
+        elif not match_tipo and not manual:
+            motivo = "sem_termo_chave"
+        else:
+            motivo = None
+
+        if motivo:
+            descartados.append({**base, "motivo_descarte": motivo})
+            continue
+
+        ultima = ultima_avaliacao(d)
+        if ultima and DATA_REFERENCIA - ultima <= JANELA_ATIVIDADE:
+            ativo = "sim"
+        else:
+            ativo = "inconclusivo"
+        mantidos.append(
+            {
+                **base,
+                # "ambas": na lista manual e aprovado pelo filtro automático.
+                "origem": ("ambas" if match_tipo else "lista_manual") if manual else "busca_automatica",
+                "match_tipo": match_tipo or "",
+                "grupo_categoria": grupo_categoria(d),
+                "status_google": status,
+                "ultima_avaliacao_data": ultima.date().isoformat() if ultima else "",
+                "ativo_6m": ativo,
+                "instagram_usuario": instagram_usuario(d.get("websiteUri")),
+                "telefone": d.get("internationalPhoneNumber"),
+                "link_google_maps": d.get("googleMapsUri"),
+                **anterior.get(place_id, {c: "" for c in COLUNAS_MANUAIS}),
+            }
+        )
+
+    mantidos.sort(key=lambda r: (r["capital_busca"], r["nome"] or ""))
     descartados.sort(key=lambda r: r["nome"] or "")
 
+    PROCESSED.mkdir(parents=True, exist_ok=True)
     with open(OUT_PATH, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=COLUNAS_CURADORIA)
         writer.writeheader()
         writer.writerows(mantidos)
-
     with open(OUT_DESCARTADOS_PATH, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=COLUNAS_DESCARTADOS)
         writer.writeheader()
         writer.writerows(descartados)
 
-    print(f"OK: {len(mantidos)} candidatos aprovados no filtro salvos em {OUT_PATH}")
-    print(f"    {len(descartados)} descartados (sem termo-chave em nome/avaliações) salvos em {OUT_DESCARTADOS_PATH}")
+    print(f"OK: {len(mantidos)} candidatos na planilha de curadoria ({OUT_PATH.name})")
+    print(f"    {len(descartados)} descartados ({OUT_DESCARTADOS_PATH.name})")
 
 
 if __name__ == "__main__":

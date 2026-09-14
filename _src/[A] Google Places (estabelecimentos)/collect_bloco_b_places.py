@@ -62,36 +62,62 @@ TERMOS = [
     "café de jogos de tabuleiro",
     "bar de jogos de tabuleiro",
     "jogos de tabuleiro",
+    # Lojas de jogos com mesas para partidas: no Google Maps muitas casas que
+    # funcionam como espaço de jogo estão categorizadas como loja de jogos ou
+    # de brinquedos, e não aparecem nos termos de bar/café acima.
+    "loja de jogos de tabuleiro",
+    "loja de board game",
+    "loja de card game",
+    "loja de RPG",
+    "board game",
+    "clube de jogos de tabuleiro",
 ]
+
+COLUNAS = ["place_id", "nome", "endereco", "capital_busca", "termo_busca"]
+
+
+def load_combos_feitos():
+    """Combinações capital x termo já presentes no CSV. Permite acrescentar
+    termos novos sem repetir (e pagar de novo) as buscas antigas."""
+    if not OUT_PATH.exists():
+        return set()
+    with open(OUT_PATH, newline="", encoding="utf-8") as f:
+        return {(r["capital_busca"], r["termo_busca"]) for r in csv.DictReader(f)}
 
 
 def main():
     client = PlacesClient()
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
-    rows = []
-    combos = [(capital, termo) for capital in CAPITAIS for termo in TERMOS]
-    for capital, termo in tqdm(combos, desc="Buscando termo x capital"):
-        query = f"{termo} em {capital}"
-        places = client.text_search_all(query)
-        for place in places:
-            rows.append(
-                {
-                    "place_id": place.get("id"),
-                    "nome": (place.get("displayName") or {}).get("text"),
-                    "endereco": place.get("formattedAddress"),
-                    "capital_busca": capital,
-                    "termo_busca": termo,
-                }
-            )
+    feitos = load_combos_feitos()
+    combos = [(c, t) for c in CAPITAIS for t in TERMOS if (c, t) not in feitos]
+    print(f"{len(combos)} combinações capital x termo pendentes ({len(feitos)} já no CSV)")
 
-    with open(OUT_PATH, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["place_id", "nome", "endereco", "capital_busca", "termo_busca"])
-        writer.writeheader()
-        writer.writerows(rows)
+    novo = not OUT_PATH.exists()
+    n_linhas, ids = 0, set()
+    # Grava a cada combinação: uma queda de rede no meio não perde o que já
+    # foi pago, e a execução seguinte retoma de onde parou.
+    with open(OUT_PATH, "a", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=COLUNAS)
+        if novo:
+            writer.writeheader()
+        for capital, termo in tqdm(combos, desc="Buscando termo x capital"):
+            places = client.text_search_all(f"{termo} em {capital}")
+            for place in places:
+                writer.writerow(
+                    {
+                        "place_id": place.get("id"),
+                        "nome": (place.get("displayName") or {}).get("text"),
+                        "endereco": place.get("formattedAddress"),
+                        "capital_busca": capital,
+                        "termo_busca": termo,
+                    }
+                )
+                ids.add(place.get("id"))
+            n_linhas += len(places)
+            f.flush()
 
-    n_unicos = len({r["place_id"] for r in rows})
-    print(f"OK: {len(rows)} ocorrências ({n_unicos} place_id únicos) salvas em {OUT_PATH}")
+    print(f"OK: {n_linhas} ocorrências novas ({len(ids)} place_id únicos) acrescentadas a {OUT_PATH}")
 
 
 if __name__ == "__main__":
