@@ -3,8 +3,13 @@ __pycache__/
 *.pyc
 .venv/
 venv/
-data/raw/*.jsonl
-logs/*.log
+# Dados brutos: textos integrais, históricos e respostas de API não são publicados (_instrucoes/4_metodologia.md §3.4)
+_data/raw/**/*.jsonl
+_logs/*.log
+# Bloco E: arquivos originais grandes (microdados e agregados do Censo); regeneráveis pelos scripts de coleta
+_data/raw/\[E\]*/**/*.7z
+_data/raw/\[E\]*/**/*.zip
+_data/raw/\[E\]*/caged/
 .DS_Store
 .tmp.driveupload/
 .tmp.drivedownload/

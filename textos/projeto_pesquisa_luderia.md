@@ -215,4 +215,4 @@ COHEN, Jacob. A coefficient of agreement for nominal scales. *Educational and Ps
 
 KAM INSIGHT. *Competitive socialising*: winning a new customer occasion. KAM Media, 2022. Disponível em: https://kaminsight.com/wp-content/uploads/sites/2044/2023/07/KAM-Competitive-Socialising-Feb-22.pdf. [Completar data de acesso.]
 
-Obras marcadas [A VERIFICAR] no Quadro 01 constam em `instrucoes/ref-teorico.md` e devem ser conferidas antes da entrega.
+Obras marcadas [A VERIFICAR] no Quadro 01 constam em `_instrucoes/2_ref-teorico.md` e devem ser conferidas antes da entrega.

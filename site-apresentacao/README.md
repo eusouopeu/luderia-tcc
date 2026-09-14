@@ -55,7 +55,7 @@ Todo o texto vem de dois arquivos na raiz do projeto `TCC Luderia/`:
 - `metodologia_tcc_luderia.md` — blocos de dados, população, instrumentos, indicadores, hipóteses e
   técnicas de análise.
 
-A pesquisa está em fase de coleta (ver `data/` e `src/` na raiz do projeto): as seções 6 e 7 refletem o
+A pesquisa está em fase de coleta (ver `_data/` e `_src/` na raiz do projeto): as seções 6 e 7 refletem o
 estado atual da coleta, não resultados fechados. Ao concluir a análise, atualize
 `src/conteudo/s6-tecnicas.json` e `src/conteudo/s7-contribuicoes.json` com os achados reais — o padrão de
 componentes já suporta gráficos via Recharts, seguindo o modelo usado no TCC anterior (`Dance Forrónejo`).

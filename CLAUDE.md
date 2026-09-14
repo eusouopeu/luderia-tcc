@@ -8,32 +8,39 @@ Ler este arquivo sempre. Ler os demais sob demanda, conforme a tarefa.
 
 | Arquivo | Quando ler |
 |---|---|
-| [instrucoes/estrutura.md](instrucoes/estrutura.md) | Visão do todo; qualquer tarefa que envolva mais de um capítulo ou a ordem dos capítulos |
-| [instrucoes/ref-teorico.md](instrucoes/ref-teorico.md) | Cap. 2 — escrita, citação, subcapítulos, lista de leitura |
-| [instrucoes/metodologia.md](instrucoes/metodologia.md) | Cap. 3 — subcapítulos, instrumentos de coleta, matriz de evidências |
-| [instrucoes/mercado.md](instrucoes/mercado.md) | Cap. 5 — análise de mercado |
-| [instrucoes/marketing.md](instrucoes/marketing.md) | Cap. 6 — plano de marketing e estimativa de demanda |
-| [instrucoes/operacional.md](instrucoes/operacional.md) | Cap. 7 — plano operacional |
-| [instrucoes/juridico.md](instrucoes/juridico.md) | Cap. 8 — aspectos jurídicos e legais |
-| [instrucoes/financeiro.md](instrucoes/financeiro.md) | Cap. 9 — premissas, modelo financeiro, sensibilidade |
-| [instrucoes/anal-riscos.md](instrucoes/anal-riscos.md) | Cap. 10 — análise estratégica e de riscos |
-| [instrucoes/biblio-apendices.md](instrucoes/biblio-apendices.md) | Referências, apêndices, tabelas, quadros, figuras |
+| [_instrucoes/1_estrutura.md](_instrucoes/1_estrutura.md) | Visão do todo; qualquer tarefa que envolva mais de um capítulo ou a ordem dos capítulos |
+| [_instrucoes/2_ref-teorico.md](_instrucoes/2_ref-teorico.md) | Cap. 2 — escrita, citação, subcapítulos, lista de leitura |
+| [_instrucoes/4_metodologia.md](_instrucoes/4_metodologia.md) | Cap. 3 — subcapítulos, instrumentos de coleta, matriz de evidências |
+| [_instrucoes/3_mercado.md](_instrucoes/3_mercado.md) | Cap. 5 — análise de mercado |
+| [_instrucoes/5_marketing.md](_instrucoes/5_marketing.md) | Cap. 6 — plano de marketing e estimativa de demanda |
+| [_instrucoes/7_operacional.md](_instrucoes/7_operacional.md) | Cap. 7 — plano operacional |
+| [_instrucoes/6_juridico.md](_instrucoes/6_juridico.md) | Cap. 8 — aspectos jurídicos e legais |
+| [_instrucoes/8_financeiro.md](_instrucoes/8_financeiro.md) | Cap. 9 — premissas, modelo financeiro, sensibilidade |
+| [_instrucoes/9_anal-riscos.md](_instrucoes/9_anal-riscos.md) | Cap. 10 — análise estratégica e de riscos |
+| [_instrucoes/10_biblio-apendices.md](_instrucoes/10_biblio-apendices.md) | Referências, apêndices, tabelas, quadros, figuras |
 
-Introdução (cap. 1), sumário executivo (cap. 4) e considerações finais (cap. 11) não têm arquivo próprio: seguem a descrição em `estrutura.md`.
+A numeração dos arquivos de instrução é a ordem de leitura, não o número do capítulo. Introdução (cap. 1), sumário executivo (cap. 4) e considerações finais (cap. 11) não têm arquivo próprio: seguem a descrição em `_instrucoes/1_estrutura.md`.
 
 ## Estado do projeto
 
-- Pastas: `textos/` (projeto de pesquisa, cronograma e capítulos do TCC), `arquivados/` (arquivos fora de uso), `bibliografia/` (PDFs das referências), `instrucoes/` (arquivos de instrução).
+- Pastas: `textos/` (projeto de pesquisa, cronograma e capítulos do TCC), `arquivados/` (arquivos fora de uso), `bibliografia/` (PDFs das referências e `referencias_bases_publicas.md`), `_instrucoes/` (arquivos de instrução), `_src/` (scripts), `_data/` (dados), `_logs/` (logs de erro das coletas).
 - Prazos: ver `textos/cronograma_luderia.md`. Versão final para a banca em 16/11/2026.
 - `arquivados/introducao_tcc_luderia.md` e `arquivados/metodologia_tcc_luderia.md` são rascunhos escritos no **desenho anterior (TCC pesquisa de mercado)**, com hipóteses H1–H9. Servem de insumo, mas precisam ser adaptados ao formato plano de negócios: hipóteses e testes estatísticos saem do corpo do texto e vão para apêndice, salvo quando sustentam uma decisão do plano.
-- Pipeline de dados em `src/` (`collect_*` → `build_*` → `analise_*`), saídas em `data/processed/`. Blocos de dados, em ordem de relevância (correspondência com os prefixos dos arquivos em `instrucoes/metodologia.md`):
+- Pipeline de dados em `_src/[bloco] Fonte/` (`collect_*` → `build_*` → `analise_*`). Brutos em `_data/raw/[bloco] Nome/`, processados em `_data/processed/[bloco] Nome/`, com uma subpasta por bloco (letra entre colchetes). Cada script define `ROOT = Path(__file__).resolve().parents[2]` e roda de qualquer diretório. Os prefixos dos arquivos seguem o desenho anterior (ex.: Bloco A gera `bloco_b_*`); a correspondência está em `_instrucoes/4_metodologia.md`. Blocos de dados, em ordem de relevância:
   - **Bloco A** — estabelecimentos concorrentes nas 27 capitais e cardápios → concorrência, preço, A&B, ticket.
   - **Bloco B** — 30 a 50 avaliações mais recentes com texto por estabelecimento → proposta de valor, reclamações, ticket, fluxo.
   - **Bloco C** — histórico pseudonimizado dos avaliadores → nota centrada, perfil de consumo, parcerias.
   - **Bloco D** — contagem direta de ocupação nas duas unidades da São Jogue (Salvador) → ocupação, giro, calibração.
-  - **Bloco E** — bases públicas (IBGE, RAIS/CAGED, FipeZap, Simples Nacional, Banco Central) → demanda, custos, tributos, taxa de desconto.
+  - **Bloco E** — bases públicas (IBGE, Novo CAGED, FipeZap, Simples Nacional, Banco Central, CONCLA) → demanda, custos, tributos, taxa de desconto. Coletado em 14/09/2026; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
   - **Bloco F** — jogos (Ludopedia, BoardGameGeek) → acervo; menor relevância, pode ser retirado.
 - Site de apresentação em `site-apresentacao/`.
+
+## Versionamento
+
+- **Commit e push automáticos.** Após qualquer modificação em arquivos do projeto, fazer o commit local e, em seguida, o push para o repositório do GitHub (`origin`, branch atual). Não é preciso pedir confirmação.
+- Um commit por conjunto coerente de mudanças, com mensagem em português que diga o que mudou e por quê.
+- Antes do commit, conferir com `git status` se nenhum arquivo ignorado por regra do `.gitignore` (dados brutos, `.env`, CAGED, zips) entrou por engano.
+- Se o push falhar (conflito, rede, autenticação), informar o erro ao autor em vez de forçar (`--force`).
 
 ## Princípios e preferências
 

@@ -7,7 +7,7 @@
 | Versão | 1 |
 | Data do registro | 14/09/2026 |
 | Comprovação da data | Data e identificador do commit que adiciona este arquivo ao repositório |
-| Documentos relacionados | `textos/projeto_pesquisa_luderia.md`; `instrucoes/metodologia.md` |
+| Documentos relacionados | `textos/projeto_pesquisa_luderia.md`; `_instrucoes/4_metodologia.md` |
 
 Este documento registra as hipóteses, variáveis, técnicas e critérios de decisão **antes da análise** dos Blocos B (avaliações recentes) e C (histórico dos avaliadores). Mudanças posteriores só são válidas como emenda datada (§10), registrada antes da abertura da metade confirmatória da base.
 
@@ -120,7 +120,7 @@ Rótulos de data relativa ("há 2 dias", "há 3 semanas") são comparados como t
 1. Ocorre depois do fim da coleta do Bloco B e antes de qualquer análise dos Blocos B e C.
 2. **Unidade do sorteio:** avaliador. Cada avaliador é associado ao estabelecimento de sua primeira avaliação coletada, que define o estrato.
 3. **Sorteio:** 50% dos avaliadores de cada estrato para a metade exploratória e 50% para a confirmatória. Em estratos com número ímpar, o avaliador excedente vai para a confirmatória.
-4. **Semente:** 20260914, no script `src/sorteio_divisao_base.py`.
+4. **Semente:** 20260914, no script `_src/sorteio_divisao_base.py`.
 5. **Integridade:** o arquivo da metade confirmatória é salvo separadamente, e seu hash SHA-256 é registrado na emenda seguinte ao sorteio. O arquivo não é aberto até a emenda final.
 6. **Metade exploratória:** construção e validação do dicionário, análises exploratórias, ajuste de especificações.
 7. **Metade confirmatória:** análises das seções 4 e 5, em rodada única, com o script congelado e versionado antes da execução.
@@ -129,7 +129,7 @@ Rótulos de data relativa ("há 2 dias", "há 3 semanas") são comparados como t
 ## 8 VALIDAÇÃO DO DICIONÁRIO
 
 1. **Manual de codificação** com definição, exemplos e casos de fronteira de cada variável de texto, concluído antes da codificação humana.
-2. **Amostra:** 200 avaliações da metade exploratória, sorteadas com estratificação por estabelecimento (semente 20260915, `src/sorteio_validacao.py`).
+2. **Amostra:** 200 avaliações da metade exploratória, sorteadas com estratificação por estabelecimento (semente 20260915, `_src/sorteio_validacao.py`).
 3. **Codificação humana 1:** autor, sem ver a saída do dicionário.
 4. **Codificação humana 2:** segunda pessoa com o manual. Na falta dela, recodificação pelo autor após no mínimo 14 dias, sem consultar a codificação 1.
 5. **Concordância humana:** kappa de Cohen por variável; divergências resolvidas por consenso, formando a codificação de referência.
@@ -148,7 +148,7 @@ Sem hipótese prévia, sem uso para confirmação e apresentadas como explorató
 - Sobreposição de avaliadores entre luderias da mesma capital.
 - Jogos citados nas avaliações.
 - Velocidade de avaliações por estabelecimento e modelo de calibração da ocupação.
-- Contagem direta de ocupação (Bloco D): taxa de ocupação, pessoas por mesa e permanência, por turno. Protocolo e sorteio dos turnos (semente 20260916, `src/sorteio_contagem.py`) em `instrucoes/metodologia.md`.
+- Contagem direta de ocupação (Bloco D): taxa de ocupação, pessoas por mesa e permanência, por turno. Protocolo e sorteio dos turnos (semente 20260916, `_src/sorteio_contagem.py`) em `_instrucoes/4_metodologia.md`.
 
 **Análises de sensibilidade** para H1 a H5, reportadas junto aos resultados confirmatórios, sem substituí-los:
 
