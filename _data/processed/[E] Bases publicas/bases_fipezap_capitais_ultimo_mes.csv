@@ -1,28 +1,28 @@
-codigo_ibge,capital,uf,comercial_data,comercial_locacao_preco_m2,comercial_locacao_var_12m_pct,comercial_rentabilidade_mensal_pct,residencial_data,residencial_locacao_preco_m2,residencial_locacao_var_12m_pct,cobertura_comercial,cobertura_residencial
-1200401,Rio Branco,AC,,,,,,,,False,False
-2704302,Maceió,AL,,,,,2026-07-01,56.199248569173506,7.012008243471746,False,True
-1600303,Macapá,AP,,,,,,,,False,False
-1302603,Manaus,AM,,,,,2026-07-01,53.07490772233377,7.896539132749436,False,True
-2927408,Salvador,BA,2026-07-01,54.145254535008746,18.855596579257927,0.9465798835206592,2026-07-01,54.35384566123883,11.111861453752159,True,True
-2304400,Fortaleza,CE,,,,,2026-07-01,41.655579606252225,16.267558902411274,False,True
-5300108,Brasília,DF,2026-07-01,44.19514972023748,7.656290019025724,0.6469737826638682,2026-07-01,54.56254565513587,14.797610703859899,True,True
-3205309,Vitória,ES,,,,,2026-07-01,54.69285519859706,11.940521075600262,False,True
-5208707,Goiânia,GO,,,,,2026-07-01,43.20581774452237,2.6625958039864894,False,True
-2111300,São Luís,MA,,,,,2026-07-01,57.3343315443469,4.041597863849966,False,True
-5103403,Cuiabá,MT,,,,,2026-07-01,48.857061639553685,9.251853764891527,False,True
-5002704,Campo Grande,MS,,,,,2026-07-01,31.55035428473629,-4.975520629591013,False,True
-3106200,Belo Horizonte,MG,2026-07-01,37.85915191432747,8.79349722325431,0.5592353455539234,2026-07-01,50.13804821645034,7.772664689264275,True,True
-1501402,Belém,PA,,,,,2026-07-01,62.65405050733797,8.385280601270328,False,True
-2507507,João Pessoa,PB,,,,,2026-07-01,51.67760434867345,12.989371698353391,False,True
-4106902,Curitiba,PR,2026-07-01,46.23457525142509,12.846141413227263,0.5247476622022947,2026-07-01,48.90827337316341,9.168667220904346,True,True
-2611606,Recife,PE,,,,,2026-07-01,64.11124601963887,7.566412316797355,False,True
-2211001,Teresina,PI,,,,,2026-07-01,32.45340562331847,19.158033027762134,False,True
-3304557,Rio de Janeiro,RJ,2026-07-01,56.98074913668047,21.339627127342098,0.6686257582832708,2026-07-01,60.79949403306314,13.523985249197047,True,True
-2408102,Natal,RN,,,,,2026-07-01,44.25723452280538,14.60236699475892,False,True
-4314902,Porto Alegre,RS,2026-07-01,34.728919128902014,2.8469122584146023,0.5522478965779906,2026-07-01,45.99396056541392,10.782414796112839,True,True
-1100205,Porto Velho,RO,,,,,,,,False,False
-1400100,Boa Vista,RR,,,,,,,,False,False
-4205407,Florianópolis,SC,2026-07-01,51.77841985049288,7.439223182113541,0.5498013786757634,2026-07-01,60.84164502046707,2.989847933327461,True,True
-3550308,São Paulo,SP,2026-07-01,61.74298875373592,7.822186643305917,0.6113327365590138,2026-07-01,65.17716703963498,5.529707463547506,True,True
-2800308,Aracaju,SE,,,,,2026-07-01,36.90476566675525,25.77904138352345,False,True
-1721000,Palmas,TO,,,,,,,,False,False
+codigo_ibge,capital,uf,comercial_data,comercial_locacao_preco_m2,comercial_locacao_var_12m_pct,comercial_rentabilidade_mensal_pct,residencial_data,residencial_locacao_preco_m2,residencial_locacao_var_12m_pct,cobertura_comercial,cobertura_residencial,razao_comercial_residencial,comercial_estimado_preco_m2_min,comercial_estimado_preco_m2_mediana,comercial_estimado_preco_m2_max,fonte_locacao_comercial
+1200401,Rio Branco,AC,,,,,,,,False,False,,,,,sem dado FipeZAP
+2704302,Maceió,AL,,,,,2026-07-01,56.199248569173506,7.012008243471746,False,True,,42.43,50.25,55.98,estimativa: residencial × razão comercial/residencial das capitais cobertas
+1600303,Macapá,AP,,,,,,,,False,False,,,,,sem dado FipeZAP
+1302603,Manaus,AM,,,,,2026-07-01,53.07490772233377,7.896539132749436,False,True,,40.08,47.45,52.87,estimativa: residencial × razão comercial/residencial das capitais cobertas
+2927408,Salvador,BA,2026-07-01,54.145254535008746,18.855596579257927,0.9465798835206592,2026-07-01,54.35384566123883,11.111861453752159,True,True,0.996,,,,FipeZAP comercial
+2304400,Fortaleza,CE,,,,,2026-07-01,41.655579606252225,16.267558902411274,False,True,,31.45,37.24,41.5,estimativa: residencial × razão comercial/residencial das capitais cobertas
+5300108,Brasília,DF,2026-07-01,44.19514972023748,7.656290019025724,0.6469737826638682,2026-07-01,54.56254565513587,14.797610703859899,True,True,0.81,,,,FipeZAP comercial
+3205309,Vitória,ES,,,,,2026-07-01,54.69285519859706,11.940521075600262,False,True,,41.3,48.9,54.48,estimativa: residencial × razão comercial/residencial das capitais cobertas
+5208707,Goiânia,GO,,,,,2026-07-01,43.20581774452237,2.6625958039864894,False,True,,32.62,38.63,43.04,estimativa: residencial × razão comercial/residencial das capitais cobertas
+2111300,São Luís,MA,,,,,2026-07-01,57.3343315443469,4.041597863849966,False,True,,43.29,51.26,57.11,estimativa: residencial × razão comercial/residencial das capitais cobertas
+5103403,Cuiabá,MT,,,,,2026-07-01,48.857061639553685,9.251853764891527,False,True,,36.89,43.68,48.67,estimativa: residencial × razão comercial/residencial das capitais cobertas
+5002704,Campo Grande,MS,,,,,2026-07-01,31.55035428473629,-4.975520629591013,False,True,,23.82,28.21,31.43,estimativa: residencial × razão comercial/residencial das capitais cobertas
+3106200,Belo Horizonte,MG,2026-07-01,37.85915191432747,8.79349722325431,0.5592353455539234,2026-07-01,50.13804821645034,7.772664689264275,True,True,0.755,,,,FipeZAP comercial
+1501402,Belém,PA,,,,,2026-07-01,62.65405050733797,8.385280601270328,False,True,,47.31,56.02,62.41,estimativa: residencial × razão comercial/residencial das capitais cobertas
+2507507,João Pessoa,PB,,,,,2026-07-01,51.67760434867345,12.989371698353391,False,True,,39.02,46.21,51.48,estimativa: residencial × razão comercial/residencial das capitais cobertas
+4106902,Curitiba,PR,2026-07-01,46.23457525142509,12.846141413227263,0.5247476622022947,2026-07-01,48.90827337316341,9.168667220904346,True,True,0.945,,,,FipeZAP comercial
+2611606,Recife,PE,,,,,2026-07-01,64.11124601963887,7.566412316797355,False,True,,48.41,57.32,63.87,estimativa: residencial × razão comercial/residencial das capitais cobertas
+2211001,Teresina,PI,,,,,2026-07-01,32.45340562331847,19.158033027762134,False,True,,24.5,29.02,32.33,estimativa: residencial × razão comercial/residencial das capitais cobertas
+3304557,Rio de Janeiro,RJ,2026-07-01,56.98074913668047,21.339627127342098,0.6686257582832708,2026-07-01,60.79949403306314,13.523985249197047,True,True,0.937,,,,FipeZAP comercial
+2408102,Natal,RN,,,,,2026-07-01,44.25723452280538,14.60236699475892,False,True,,33.42,39.57,44.09,estimativa: residencial × razão comercial/residencial das capitais cobertas
+4314902,Porto Alegre,RS,2026-07-01,34.728919128902014,2.8469122584146023,0.5522478965779906,2026-07-01,45.99396056541392,10.782414796112839,True,True,0.755,,,,FipeZAP comercial
+1100205,Porto Velho,RO,,,,,,,,False,False,,,,,sem dado FipeZAP
+1400100,Boa Vista,RR,,,,,,,,False,False,,,,,sem dado FipeZAP
+4205407,Florianópolis,SC,2026-07-01,51.77841985049288,7.439223182113541,0.5498013786757634,2026-07-01,60.84164502046707,2.989847933327461,True,True,0.851,,,,FipeZAP comercial
+3550308,São Paulo,SP,2026-07-01,61.74298875373592,7.822186643305917,0.6113327365590138,2026-07-01,65.17716703963498,5.529707463547506,True,True,0.947,,,,FipeZAP comercial
+2800308,Aracaju,SE,,,,,2026-07-01,36.90476566675525,25.77904138352345,False,True,,27.87,33.0,36.76,estimativa: residencial × razão comercial/residencial das capitais cobertas
+1721000,Palmas,TO,,,,,,,,False,False,,,,,sem dado FipeZAP

@@ -2,24 +2,27 @@
 Coleta os microdados de movimentação do Novo CAGED (MTE, FTP do PDET) e guarda só
 as admissões das ocupações de uma luderia com bar nas 27 capitais.
 
-Uso no plano: salário de contratação por ocupação e capital (7.5 e cap. 9).
+Uso no plano: salário de contratação por ocupação e capital (7.5 e cap. 9) e sua
+série histórica desde 2021 (projeção de reajustes).
 O salário de admissão é o que um negócio novo paga ao contratar; por isso o
 CAGED substitui a RAIS vínculos (média do estoque, 3,8 GB compactados em 2024).
 
 Uso:
-  python collect_bases_caged.py              # últimos 12 meses disponíveis
-  python collect_bases_caged.py --meses 3
-  python collect_bases_caged.py --manter-originais   # não apaga os .7z
+  python collect_bases_caged.py                            # últimos 12 meses disponíveis
+  python collect_bases_caged.py --inicio 202101            # de jan/2021 até o último mês disponível
+  python collect_bases_caged.py --inicio 202101 --fim 202512
+  python collect_bases_caged.py --manter-originais         # não apaga os .7z
 
 Saídas em _data/raw/[E] Bases publicas/caged/:
-  caged_mov_<AAAAMM>_admissoes.csv   admissões filtradas, colunas selecionadas
+  caged_mov_<AAAAMM>_admissoes.csv.gz   admissões filtradas, só as colunas usadas no tratamento
   layout_novo_caged_movimentacao.xlsx
-Meses já processados são pulados.
+Meses já processados (.csv ou .csv.gz) são pulados.
 """
 
 import argparse
 import ftplib
 import shutil
+import time
 
 import pandas as pd
 import py7zr
@@ -48,10 +51,9 @@ CBOS = {
 }
 MUNICIPIOS = {cod[:6] for cod in CAPITAIS}  # o CAGED usa o código de 6 dígitos
 COLUNAS = [
-    "competênciamov", "município", "seção", "subclasse", "saldomovimentação", "categoria",
-    "cbo2002ocupação", "graudeinstrução", "idade", "horascontratuais", "tipoempregador",
-    "tipomovimentação", "indtrabintermitente", "indtrabparcial", "tamestabjan", "indicadoraprendiz",
-    "salário", "unidadesaláriocódigo", "valorsaláriofixo",
+    "competênciamov", "município", "subclasse", "saldomovimentação", "cbo2002ocupação",
+    "horascontratuais", "indtrabintermitente", "indtrabparcial", "indicadoraprendiz",
+    "salário", "unidadesaláriocódigo",
 ]
 
 
@@ -78,6 +80,9 @@ def ler_txt(caminho) -> pd.DataFrame:
         encoding = "latin-1"
     cabecalho = pd.read_csv(caminho, sep=";", nrows=0, encoding=encoding).columns
     usar = [c for c in COLUNAS if c in cabecalho]
+    faltando = sorted(set(COLUNAS) - set(usar))
+    if faltando:
+        print("   colunas ausentes neste mês:", faltando)
     partes = []
     for bloco in pd.read_csv(caminho, sep=";", dtype=str, usecols=usar, encoding=encoding, chunksize=500_000):
         filtro = (bloco["município"].isin(MUNICIPIOS) & bloco["cbo2002ocupação"].isin(CBOS)
@@ -87,8 +92,8 @@ def ler_txt(caminho) -> pd.DataFrame:
 
 
 def processar_mes(ftp: ftplib.FTP, mes: str, manter: bool) -> None:
-    destino = OUT_DIR / f"caged_mov_{mes}_admissoes.csv"
-    if destino.exists():
+    destino = OUT_DIR / f"caged_mov_{mes}_admissoes.csv.gz"
+    if destino.exists() or destino.with_suffix("").exists():
         print("já processado:", mes)
         return
     TMP_DIR.mkdir(parents=True, exist_ok=True)
@@ -99,8 +104,8 @@ def processar_mes(ftp: ftplib.FTP, mes: str, manter: bool) -> None:
         z.extractall(path=TMP_DIR / mes)
     txt = next((TMP_DIR / mes).rglob("*.txt"))
     df = ler_txt(txt)
-    df.to_csv(destino, index=False)
-    print(f"{mes}: {len(df):>6} admissões filtradas ({arquivo_7z.stat().st_size / 1e6:.0f} MB baixados)")
+    df.to_csv(destino, index=False, compression="gzip")
+    print(f"{mes}: {len(df):>6} admissões filtradas ({arquivo_7z.stat().st_size / 1e6:.0f} MB baixados)", flush=True)
     shutil.rmtree(TMP_DIR / mes)
     if manter:
         arquivo_7z.rename(OUT_DIR / arquivo_7z.name)
@@ -110,7 +115,9 @@ def processar_mes(ftp: ftplib.FTP, mes: str, manter: bool) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--meses", type=int, default=12)
+    parser.add_argument("--meses", type=int, default=12, help="últimos N meses (ignorado se --inicio for usado)")
+    parser.add_argument("--inicio", help="primeira competência, AAAAMM")
+    parser.add_argument("--fim", help="última competência, AAAAMM")
     parser.add_argument("--manter-originais", action="store_true")
     args = parser.parse_args()
 
@@ -120,15 +127,23 @@ def main() -> None:
     if not layout.exists():
         with layout.open("wb") as f:
             ftp.retrbinary(f"RETR {FTP_BASE}/Layout Não-identificado Novo Caged Movimentação.xlsx", f.write)
-    meses = meses_disponiveis(ftp)[-args.meses:]
-    print("meses:", meses[0], "a", meses[-1])
+    meses = meses_disponiveis(ftp)
+    if args.inicio:
+        meses = [m for m in meses if m >= args.inicio and (not args.fim or m <= args.fim)]
+    else:
+        meses = meses[-args.meses:]
+    print("meses:", meses[0], "a", meses[-1], f"({len(meses)})", flush=True)
     for mes in meses:
-        try:
-            processar_mes(ftp, mes, args.manter_originais)
-        except (ftplib.all_errors) as e:
-            print(f"{mes}: erro de FTP ({e}); reconectando")
-            ftp = conectar()
-            processar_mes(ftp, mes, args.manter_originais)
+        for tentativa in range(1, 4):
+            try:
+                processar_mes(ftp, mes, args.manter_originais)
+                break
+            except (*ftplib.all_errors, EOFError) as e:
+                print(f"{mes}: erro de FTP ({e}); reconectando (tentativa {tentativa} de 3)", flush=True)
+                time.sleep(30 * tentativa)
+                ftp = conectar()
+        else:
+            raise RuntimeError(f"{mes}: falhou após 3 tentativas; rode de novo para retomar deste mês")
     if TMP_DIR.exists() and not any(TMP_DIR.iterdir()):
         TMP_DIR.rmdir()
 

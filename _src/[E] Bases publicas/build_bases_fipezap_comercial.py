@@ -82,6 +82,22 @@ def main() -> None:
     tabela = capitais.merge(pd.DataFrame(ultimos), left_on="capital", right_on="cidade", how="left").drop(columns="cidade")
     tabela["cobertura_comercial"] = tabela.get("comercial_locacao_preco_m2").notna()
     tabela["cobertura_residencial"] = tabela.get("residencial_locacao_preco_m2").notna()
+
+    # O FipeZAP comercial nunca cobriu as demais capitais (versões de 2017 a 2026 conferidas).
+    # Estimativa: locação residencial da capital × razão comercial/residencial das capitais cobertas,
+    # em faixa (mínimo, mediana e máximo da razão). É estimativa do autor sobre dado N2, não dado observado.
+    ambos = tabela["cobertura_comercial"] & tabela["cobertura_residencial"]
+    razao = tabela.loc[ambos, "comercial_locacao_preco_m2"] / tabela.loc[ambos, "residencial_locacao_preco_m2"]
+    tabela["razao_comercial_residencial"] = razao.round(3)
+    estimar = ~tabela["cobertura_comercial"] & tabela["cobertura_residencial"]
+    for nome, valor in [("min", razao.min()), ("mediana", razao.median()), ("max", razao.max())]:
+        tabela.loc[estimar, f"comercial_estimado_preco_m2_{nome}"] = (
+            tabela.loc[estimar, "residencial_locacao_preco_m2"] * valor).round(2)
+    tabela["fonte_locacao_comercial"] = "sem dado FipeZAP"
+    tabela.loc[estimar, "fonte_locacao_comercial"] = "estimativa: residencial × razão comercial/residencial das capitais cobertas"
+    tabela.loc[tabela["cobertura_comercial"], "fonte_locacao_comercial"] = "FipeZAP comercial"
+    print(f"razão comercial/residencial em {len(razao)} capitais: mín. {razao.min():.3f}, "
+          f"mediana {razao.median():.3f}, máx. {razao.max():.3f}")
     tabela.to_csv(PROCESSED_DIR / "bases_fipezap_capitais_ultimo_mes.csv", index=False)
     print("cidades com série comercial:", sorted(serie["cidade"].unique()))
     print(tabela.to_string(index=False))

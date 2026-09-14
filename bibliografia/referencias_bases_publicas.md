@@ -21,7 +21,7 @@ BRASIL. Lei Complementar nº 123, de 14 de dezembro de 2006. Institui o Estatuto
 
 BRASIL. Ministério do Trabalho e Emprego. **Layout não-identificado Novo Caged movimentação**. Brasília, DF: MTE, 2022. Planilha eletrônica. Disponível em: ftp://ftp.mtps.gov.br/pdet/microdados/NOVO%20CAGED/. Acesso em: 14 set. 2026.
 
-BRASIL. Ministério do Trabalho e Emprego. **Microdados do Novo CAGED**: movimentações, competências de agosto de 2025 a julho de 2026. Brasília, DF: MTE, 2026. Base de dados. Disponível em: ftp://ftp.mtps.gov.br/pdet/microdados/NOVO%20CAGED/. Acesso em: 14 set. 2026.
+BRASIL. Ministério do Trabalho e Emprego. **Microdados do Novo CAGED**: movimentações, competências de janeiro de 2021 a julho de 2026. Brasília, DF: MTE, 2026. Base de dados. Disponível em: ftp://ftp.mtps.gov.br/pdet/microdados/NOVO%20CAGED/. Acesso em: 14 set. 2026.
 
 COMISSÃO NACIONAL DE CLASSIFICAÇÃO (CONCLA). **Classificação Nacional de Atividades Econômicas (CNAE)**: subclasses 4763-6/01, 5611-2/01, 5611-2/03, 5611-2/04, 5611-2/05, 5620-1/02, 7729-2/02, 8230-0/01, 9329-8/04 e 9329-8/99. Rio de Janeiro: IBGE, 2026. Base de dados. Disponível em: https://servicodados.ibge.gov.br/api/v2/cnae/subclasses. Acesso em: 14 set. 2026.
 
@@ -81,7 +81,9 @@ Várias obras do mesmo autor e ano são diferenciadas por letra na citação e n
 
 - **Renda por bairro ou setor censitário:** o Censo 2022 não divulga renda nos agregados por bairro e por setor. A renda sai por município (tab. 10299) e por região metropolitana (PNAD Contínua, tab. 7395).
 - **Bairros:** o IBGE não tem divisão oficial de bairros cadastrada para Brasília, Goiânia, Palmas, Rio Branco, São Luís e São Paulo. Em Porto Velho e Cuiabá, os bairros cobrem 62% e 80% da população do município; nas demais capitais com bairros, 91% ou mais.
-- **FipeZAP comercial:** cobre 10 cidades, 8 delas capitais (Belo Horizonte, Brasília, Curitiba, Florianópolis, Porto Alegre, Rio de Janeiro, Salvador e São Paulo). Nas demais, a locação residencial é a única referência da mesma fonte. Não há dado FipeZAP para Rio Branco, Macapá, Porto Velho, Boa Vista e Palmas.
+- **FipeZAP comercial:** cobre 10 cidades, 8 delas capitais (Belo Horizonte, Brasília, Curitiba, Florianópolis, Porto Alegre, Rio de Janeiro, Salvador e São Paulo). Não existe série antiga para as demais capitais. As versões conferidas no Internet Archive foram as planilhas comerciais de abr./2017, jun./2017, mar./2018 e nov./2018, com 4 capitais, e as séries históricas de fev./2021, mar./2022, fev./2023, dez./2024, jun./2025 e ago./2025, com as mesmas 8 capitais.
+- **Estimativa para as capitais sem índice comercial:** preço de locação residencial da capital × razão comercial/residencial observada nas 8 capitais cobertas (jul./2026: mínimo 0,755, mediana 0,894, máximo 0,996). A estimativa sai em faixa em `bases_fipezap_capitais_ultimo_mes.csv`. É estimativa do autor sobre dado N2 e deve ser declarada como tal. Não há dado FipeZAP, nem estimativa possível, para Rio Branco, Macapá, Porto Velho, Boa Vista e Palmas.
 - **POF 2017-2018:** a menor unidade geográfica é a UF, e os valores estão em reais de 2018. A correção pelo IPCA fica no modelo financeiro.
 - **PAS:** só tem nível Brasil. As tabelas 2611 a 2619 vão até 2023; a 10758, série nova, traz 2024.
 - **Novo CAGED:** o salário é o de admissão, não a média do estoque de vínculos. A RAIS vínculos 2024 não foi usada (3,8 GB compactados).
+- **Série salarial 2021–2026:** média do salário de admissão por mês e por ano, nominal e real (IPCA, SGS 433), com a razão entre a média e o salário mínimo vigente (SGS 1619). Para a média não ser distorcida por erro de declaração, ficam de fora salários abaixo de 50% ou acima de 30 vezes o salário mínimo da competência. O ano de 2026 vai até julho e está sinalizado como incompleto. Declarações fora do prazo (arquivos CAGEDFOR) não entram.

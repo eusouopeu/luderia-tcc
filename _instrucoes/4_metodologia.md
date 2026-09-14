@@ -111,8 +111,8 @@ O recorte das mais recentes descreve a operação atual de cada concorrente e **
 | IBGE — PNAD Contínua | Rendimento médio por capital | Atualização da renda da POF e do Censo |
 | IBGE — Pesquisa Anual de Serviços (PAS) | Receita, custos e pessoal ocupado em serviços de alimentação | Checagens de coerência de margem e custo de pessoal (9.8) |
 | IBGE — CONCLA | Códigos CNAE | Enquadramento da atividade (8.1) |
-| Novo CAGED (MTE, portal PDET) | Salário de admissão por ocupação (CBO) e capital, 12 meses | Custo de pessoal (7.5 e cap. 9) |
-| FipeZap — índice de locação comercial | Preço de locação por m² nas capitais cobertas (10 cidades, 8 capitais); locação residencial como referência nas demais | Aluguel (cap. 9) |
+| Novo CAGED (MTE, portal PDET) | Salário médio de admissão por ocupação (CBO) e capital: últimos 12 meses e série mensal e anual de 2021 a 2026, nominal, real e em múltiplos do salário mínimo | Custo de pessoal (7.5 e cap. 9); projeção de reajustes salariais |
+| FipeZap — índice de locação comercial | Preço de locação por m² nas 8 capitais cobertas (não há série antiga para as demais); nas outras 14 capitais com índice residencial, faixa estimada pela razão comercial/residencial (N2 + N6) | Aluguel (cap. 9) |
 | Lei Complementar 123/2006 e anexos do Simples Nacional | Alíquotas por faixa de receita | Tributos (8.1 e cap. 9) |
 | Banco Central — SGS e relatório Focus | Selic e IPCA observados e projetados; salário mínimo | Taxa mínima de atratividade e inflação do modelo (cap. 9) |
 
