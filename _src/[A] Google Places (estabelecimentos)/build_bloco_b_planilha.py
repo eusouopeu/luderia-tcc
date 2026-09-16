@@ -46,8 +46,6 @@ LISTA_MANUAL_PATH = RAW / "bloco_b_lista_manual_rj.csv"
 OUT_PATH = PROCESSED / "bloco_b_planilha_curadoria.csv"
 OUT_DESCARTADOS_PATH = PROCESSED / "bloco_b_descartados_por_filtro.csv"
 
-# Data de referência da janela de atividade: data da coleta dos detalhes.
-DATA_REFERENCIA = datetime.fromtimestamp(DETALHES_PATH.stat().st_mtime, tz=timezone.utc)
 JANELA_ATIVIDADE = timedelta(days=183)
 
 # Lista ampla: aplicada ao NOME, onde o termo é sinal forte.
@@ -88,6 +86,14 @@ KEYWORDS_AVALIACAO = [
     "pokemon tcg",
 ]
 
+# Termos de baixa precisão, medida como a fração dos locais que cada termo
+# trouxe e que acabou aprovada: "quiz bar" 8%, "ludoteca" 48%, contra 68% a
+# 97% dos demais. Quem apareceu só nesses termos e ainda por cima não tem
+# palavra-chave é bar de noite de perguntas ou brinquedoteca, não luderia.
+# A regra só se aplica a quem já reprovou no filtro de palavra-chave: quem
+# passou continua na planilha, tenha vindo do termo que for.
+TERMOS_BAIXA_PRECISAO = {"quiz bar", "ludoteca"}
+
 TYPES_AEB = {
     "bar", "restaurant", "cafe", "coffee_shop", "cocktail_bar", "night_club",
     "pub", "wine_bar", "snack_bar", "hamburger_restaurant", "american_restaurant",
@@ -125,6 +131,7 @@ COLUNAS_CURADORIA = [
     "instagram_usuario",
     "telefone",
     "link_google_maps",
+    "data_coleta",
     *COLUNAS_MANUAIS,
 ]
 
@@ -134,10 +141,12 @@ COLUNAS_DESCARTADOS = [
     "endereco",
     "capital_busca",
     "motivo_descarte",
+    "termos_busca",
     "categorias_google",
     "avaliacao_media",
     "volume_avaliacoes",
     "site_ou_rede_social",
+    "data_coleta",
 ]
 
 
@@ -196,6 +205,17 @@ def ultima_avaliacao(detalhe):
     return max(datetime.fromisoformat(d[:19]).replace(tzinfo=timezone.utc) for d in datas)
 
 
+def data_referencia(detalhes):
+    """Data de corte da janela de atividade: a coleta mais recente do arquivo
+    de detalhes. Vem da coluna `data_coleta` de cada registro, não da data de
+    modificação do arquivo: a coleta é incremental e o arquivo mistura datas.
+    O fallback para o mtime cobre um arquivo anterior à criação da coluna."""
+    datas = [d["data_coleta"] for d in detalhes.values() if d.get("data_coleta")]
+    if not datas:
+        return datetime.fromtimestamp(DETALHES_PATH.stat().st_mtime, tz=timezone.utc)
+    return datetime.fromisoformat(max(datas)).replace(tzinfo=timezone.utc)
+
+
 def instagram_usuario(url):
     m = RE_INSTAGRAM.search(url or "")
     if not m or m.group(1).lower() in HANDLES_INVALIDOS:
@@ -203,13 +223,15 @@ def instagram_usuario(url):
     return m.group(1).rstrip(".").lower()
 
 
-def load_capitais_por_place_id():
-    capitais = defaultdict(set)
+def load_buscas_por_place_id():
+    """Capitais e termos de busca que encontraram cada place_id."""
+    capitais, termos = defaultdict(set), defaultdict(set)
     with open(CANDIDATOS_PATH, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row["place_id"]:
                 capitais[row["place_id"]].add(row["capital_busca"])
-    return capitais
+                termos[row["place_id"]].add(row["termo_busca"])
+    return capitais, termos
 
 
 def load_detalhes():
@@ -243,10 +265,11 @@ def load_curadoria_anterior():
 
 
 def main():
-    capitais_por_id = load_capitais_por_place_id()
+    capitais_por_id, termos_por_id = load_buscas_por_place_id()
     detalhes = load_detalhes()
     lista_manual = load_lista_manual()
     anterior = load_curadoria_anterior()
+    data_ref = data_referencia(detalhes)
 
     mantidos, descartados = [], []
     for place_id, d in detalhes.items():
@@ -261,24 +284,34 @@ def main():
             "avaliacao_media": d.get("rating"),
             "volume_avaliacoes": d.get("userRatingCount") or 0,
             "site_ou_rede_social": d.get("websiteUri"),
+            "data_coleta": d.get("data_coleta", ""),
         }
         manual = place_id in lista_manual
+        termos = termos_por_id.get(place_id, set())
 
         if not bate_pais(d):
             motivo = "fora_do_brasil"
         elif status == "CLOSED_PERMANENTLY":
             motivo = "fechado_definitivamente"
         elif not match_tipo and not manual:
-            motivo = "sem_termo_chave"
+            # Separa o erro grosseiro (só veio de termo ruim) do caso em que a
+            # evidência pode existir mas não apareceu nas até 5 avaliações que
+            # a API devolve. Só o segundo grupo merece checagem manual.
+            if termos and not (termos - TERMOS_BAIXA_PRECISAO):
+                motivo = "so_termo_baixa_precisao"
+            else:
+                motivo = "sem_termo_chave"
         else:
             motivo = None
 
         if motivo:
-            descartados.append({**base, "motivo_descarte": motivo})
+            descartados.append(
+                {**base, "motivo_descarte": motivo, "termos_busca": ";".join(sorted(termos))}
+            )
             continue
 
         ultima = ultima_avaliacao(d)
-        if ultima and DATA_REFERENCIA - ultima <= JANELA_ATIVIDADE:
+        if ultima and data_ref - ultima <= JANELA_ATIVIDADE:
             ativo = "sim"
         else:
             ativo = "inconclusivo"

@@ -7,6 +7,12 @@ O campo websiteUri é o mais importante para a etapa manual seguinte: para a
 maioria dos pequenos estabelecimentos, é o link do Instagram/Linktree
 cadastrado no perfil do Google Maps, não necessariamente um site próprio.
 
+Cada registro recebe a coluna `data_coleta` (data UTC da chamada à API), que
+é o que datam os dados do Bloco A: a coleta é incremental, então o arquivo
+tem registros de datas diferentes e a data de modificação do arquivo não
+serve como referência. Registros anteriores à criação dessa coluna foram
+preenchidos com a data de modificação do arquivo (2026-09-01).
+
 Resumível: se interrompido, rode de novo - place_ids já salvos em
 _data/raw/bloco_b_detalhes.jsonl são pulados.
 
@@ -16,6 +22,7 @@ Uso:
 import json
 import pathlib
 from csv import DictReader
+from datetime import datetime, timezone
 
 from tqdm import tqdm
 
@@ -62,6 +69,7 @@ def main():
             except RuntimeError as exc:
                 print(f"Erro em {place_id}: {exc}")
                 continue
+            detalhe["data_coleta"] = datetime.now(timezone.utc).date().isoformat()
             f.write(json.dumps(detalhe, ensure_ascii=False) + "\n")
 
     print(f"OK: detalhes salvos em {OUT_PATH}")
