@@ -4,7 +4,7 @@ Extrai da planilha original do Índice FipeZAP as séries de imóveis comerciais
 
 Entrada: _data/raw/[E] Bases publicas/fipezap/fipezap-serieshistoricas_<data>.xlsx
 Saídas em _data/processed/[E] Bases publicas/:
-Saídas no padrão "[E] {dado} {período} ({fonte}).csv":
+Saídas em Financeiro/, no padrão "[E] {dado} {período} ({fonte}).csv":
   "Aluguel e Venda Comercial"          série mensal por cidade (só meses com dado)
   "Aluguel Comercial por Capital"      uma linha por capital: último preço de locação comercial e
                                        residencial (R$/m²) e variação em 12 meses
@@ -77,7 +77,7 @@ def main() -> None:
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     serie = pd.concat(series, ignore_index=True)
-    serie.to_csv(caminho_saida("Aluguel e Venda Comercial", rotulo_periodo(serie["data"]), "FipeZap"),
+    serie.to_csv(caminho_saida("Financeiro", "Aluguel e Venda Comercial", rotulo_periodo(serie["data"]), "FipeZap"),
                  index=False)
 
     capitais = pd.DataFrame([{"codigo_ibge": k, "capital": v[0], "uf": v[1]} for k, v in CAPITAIS.items()])
@@ -102,7 +102,7 @@ def main() -> None:
           f"mediana {razao.median():.3f}, máx. {razao.max():.3f}")
     # O nome traz o mês de referência do último dado comercial (AAAA-MM), não só o ano.
     mes = pd.to_datetime(tabela["comercial_data"]).max().strftime("%Y-%m")
-    tabela.to_csv(caminho_saida("Aluguel Comercial por Capital", mes, "FipeZap"), index=False)
+    tabela.to_csv(caminho_saida("Financeiro", "Aluguel Comercial por Capital", mes, "FipeZap"), index=False)
     print("cidades com série comercial:", sorted(serie["cidade"].unique()))
     print(tabela.to_string(index=False))
 

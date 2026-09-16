@@ -2,7 +2,7 @@
 Trata as séries do Banco Central coletadas por collect_bases_bcb.py.
 
 Saídas em _data/processed/[E] Bases publicas/:
-Saídas no padrão "[E] {dado} {período} ({fonte}).csv":
+Saídas em Financeiro/, no padrão "[E] {dado} {período} ({fonte}).csv":
   "Selic IPCA e Salário Mínimo"                séries do SGS em formato longo (codigo_sgs, serie, data, valor)
   "Selic IPCA e Salário Mínimo Último Valor"   último valor de cada série
   "Expectativas Focus"                         pesquisa Focus mais recente de cada indicador, por ano de
@@ -29,9 +29,9 @@ def main() -> None:
         df.insert(1, "serie", bruto["nome"])
         partes.append(df)
     sgs = pd.concat(partes, ignore_index=True)
-    sgs.to_csv(caminho_saida("Selic IPCA e Salário Mínimo", rotulo_periodo(sgs["data"]), "BCB"), index=False)
+    sgs.to_csv(caminho_saida("Financeiro", "Selic IPCA e Salário Mínimo", rotulo_periodo(sgs["data"]), "BCB"), index=False)
     ultimos = sgs.sort_values("data").groupby(["codigo_sgs", "serie"]).tail(1)
-    ultimos.to_csv(caminho_saida("Selic IPCA e Salário Mínimo Último Valor",
+    ultimos.to_csv(caminho_saida("Financeiro", "Selic IPCA e Salário Mínimo Último Valor",
                                  rotulo_periodo(ultimos["data"]), "BCB"), index=False)
     print(ultimos.to_string(index=False))
 
@@ -43,7 +43,7 @@ def main() -> None:
     colunas = ["Indicador", "IndicadorDetalhe", "Data", "DataReferencia", "Mediana", "Media", "DesvioPadrao",
                "Minimo", "Maximo", "numeroRespondentes"]
     focus = focus[colunas].sort_values(["Indicador", "IndicadorDetalhe", "DataReferencia"], na_position="first")
-    focus.to_csv(caminho_saida("Expectativas Focus", rotulo_periodo(focus["DataReferencia"]), "BCB"), index=False)
+    focus.to_csv(caminho_saida("Financeiro", "Expectativas Focus", rotulo_periodo(focus["DataReferencia"]), "BCB"), index=False)
     print(focus.to_string(index=False))
 
 

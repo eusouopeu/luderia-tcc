@@ -31,7 +31,7 @@ A numeração dos arquivos de instrução é a ordem de leitura, não o número 
   - **Bloco B** — 30 a 50 avaliações mais recentes com texto por estabelecimento → proposta de valor, reclamações, ticket, fluxo.
   - **Bloco C** — histórico pseudonimizado dos avaliadores → nota centrada, perfil de consumo, parcerias.
   - **Bloco D** — contagem direta de ocupação nas duas unidades da São Jogue (Salvador) → ocupação, giro, calibração.
-  - **Bloco E** — bases públicas (IBGE, Novo CAGED, FipeZap, Simples Nacional, Banco Central, CONCLA) → demanda, custos, tributos, taxa de desconto. Coletado em 14/09/2026; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
+  - **Bloco E** — bases públicas (IBGE, Novo CAGED, FipeZap, Simples Nacional, Banco Central, CONCLA) → demanda, custos, tributos, taxa de desconto. Coletado em 14/09/2026; referências ABNT em `bibliografia/referencias_bases_publicas.md`. As saídas tratadas ficam em subpastas por uso no plano (`Mercado e demanda/`, `Ponto e operacoes/`, `Juridico e tributario/`, `Financeiro/`, `Multiuso/`), definidas em `USOS` no `bases_comum.py`.
   - **Bloco F** — jogos (Ludopedia, BoardGameGeek) → acervo; menor relevância, pode ser retirado.
 - Site de apresentação em `site-apresentacao/`.
 

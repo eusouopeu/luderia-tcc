@@ -1,8 +1,8 @@
 """
 Trata os JSON do SIDRA coletados por collect_bases_ibge_sidra.py.
 
-Saídas em _data/processed/[E] Bases publicas/, no padrão "[E] {dado} {período} ({fonte}).csv":
-  uma saída por consulta, em formato longo (uma linha por valor), nomeada por SAIDAS
+Saídas em _data/processed/[E] Bases publicas/<uso>/, no padrão "[E] {dado} {período} ({fonte}).csv":
+  uma saída por consulta, em formato longo (uma linha por valor), com uso e nome definidos em SAIDAS
   "[E] Resumo de População e Renda por Capital ... (IBGE).csv": uma linha por capital, com
   população, faixa de 20 a 39 anos e renda
 """
@@ -14,22 +14,22 @@ from bases_comum import (CAPITAIS, PROCESSED_DIR, RAW_DIR, caminho_saida, confer
 
 IN_DIR = RAW_DIR / "ibge_sidra"
 
-# Consulta (nome do JSON bruto) -> (dado principal, fonte) do nome de saída. O período sai dos dados.
+# Consulta (nome do JSON bruto) -> (uso, dado principal, fonte). O período sai dos próprios dados.
 SAIDAS = {
-    "ipca_alimentacao_fora": ("IPCA Alimentação Fora do Domicílio", "IBGE"),
-    "pas_2024_dados_gerais": ("Serviços Dados Gerais", "IBGE PAS"),
-    "pas_familias_custos": ("Serviços às Famílias Custos", "IBGE PAS"),
-    "pas_familias_empresas": ("Serviços às Famílias Empresas", "IBGE PAS"),
-    "pas_familias_pessoal": ("Serviços às Famílias Pessoal", "IBGE PAS"),
-    "pas_familias_receita": ("Serviços às Famílias Receita", "IBGE PAS"),
-    "pof_alimentacao_fora_renda_uf": ("Despesa com Alimentação por Renda", "IBGE POF"),
-    "pof_despesas_renda_uf": ("Despesa Total por Renda", "IBGE POF"),
-    "populacao_censo_2022": ("População Residente", "IBGE Censo"),
-    "populacao_estimada": ("População Estimada", "IBGE"),
-    "populacao_idade_censo_2022": ("População por Idade", "IBGE Censo"),
-    "renda_censo_2022_idade": ("Renda por Idade", "IBGE Censo"),
-    "renda_pnadc_per_capita_rm_uf": ("Renda Domiciliar per Capita", "IBGE PNADC"),
-    "renda_pnadc_trabalho_capitais": ("Renda do Trabalho por Capital", "IBGE PNADC"),
+    "ipca_alimentacao_fora": ("Multiuso", "IPCA Alimentação Fora do Domicílio", "IBGE"),
+    "pas_2024_dados_gerais": ("Financeiro", "Serviços Dados Gerais", "IBGE PAS"),
+    "pas_familias_custos": ("Financeiro", "Serviços às Famílias Custos", "IBGE PAS"),
+    "pas_familias_empresas": ("Financeiro", "Serviços às Famílias Empresas", "IBGE PAS"),
+    "pas_familias_pessoal": ("Financeiro", "Serviços às Famílias Pessoal", "IBGE PAS"),
+    "pas_familias_receita": ("Financeiro", "Serviços às Famílias Receita", "IBGE PAS"),
+    "pof_alimentacao_fora_renda_uf": ("Multiuso", "Despesa com Alimentação por Renda", "IBGE POF"),
+    "pof_despesas_renda_uf": ("Multiuso", "Despesa Total por Renda", "IBGE POF"),
+    "populacao_censo_2022": ("Mercado e demanda", "População Residente", "IBGE Censo"),
+    "populacao_estimada": ("Mercado e demanda", "População Estimada", "IBGE"),
+    "populacao_idade_censo_2022": ("Mercado e demanda", "População por Idade", "IBGE Censo"),
+    "renda_censo_2022_idade": ("Mercado e demanda", "Renda por Idade", "IBGE Censo"),
+    "renda_pnadc_per_capita_rm_uf": ("Mercado e demanda", "Renda Domiciliar per Capita", "IBGE PNADC"),
+    "renda_pnadc_trabalho_capitais": ("Mercado e demanda", "Renda do Trabalho por Capital", "IBGE PNADC"),
 }
 FAIXAS_20_39 = ["20 a 24 anos", "25 a 29 anos", "30 a 34 anos", "35 a 39 anos"]
 PADRAO_PNADC = "habitualmente recebido no trabalho principal"  # variável de referência da tabela 5436
@@ -76,13 +76,13 @@ def main() -> None:
         conferir_capitais(df)
         if arq.stem not in SAIDAS:
             raise KeyError(f"Consulta sem nome de saída em SAIDAS: {arq.stem}")
-        dado, fonte = SAIDAS[arq.stem]
-        df.to_csv(caminho_saida(dado, rotulo_periodo(df["periodo"]), fonte), index=False)
+        uso, dado, fonte = SAIDAS[arq.stem]
+        df.to_csv(caminho_saida(uso, dado, rotulo_periodo(df["periodo"]), fonte), index=False)
         tabelas[arq.stem] = df
         print(f"{arq.stem:34s} {len(df):>6} linhas")
     resumo = resumo_capitais(tabelas)
     periodo = f"{tabelas['populacao_censo_2022']['periodo'].max()}-{tabelas['populacao_estimada']['periodo'].max()}"
-    resumo.to_csv(caminho_saida("Resumo de População e Renda por Capital", periodo, "IBGE"), index=False)
+    resumo.to_csv(caminho_saida("Mercado e demanda", "Resumo de População e Renda por Capital", periodo, "IBGE"), index=False)
     print(resumo.to_string(index=False))
 
 

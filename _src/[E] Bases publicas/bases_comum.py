@@ -59,6 +59,15 @@ IDS_CAPITAIS = ",".join(CAPITAIS)
 
 SIDRA_API = "https://servicodados.ibge.gov.br/api/v3/agregados"
 
+# Subpastas de _data/processed/[E] Bases publicas/, por uso da tabela no plano.
+USOS = {
+    "Mercado e demanda": "cap. 5 e 6: população e renda das capitais",
+    "Ponto e operacoes": "6.4 e 7.1: escolha do bairro e perfil do entorno",
+    "Juridico e tributario": "8.1: enquadramento e tributos",
+    "Financeiro": "cap. 9: premissas de custo, taxa de desconto e coerência setorial",
+    "Multiuso": "usada em mais de um capítulo (deflator, ticket, custo de pessoal)",
+}
+
 
 def rotulo_periodo(valores) -> str:
     """Rótulo de período a partir de uma coluna de competências (AAAA, AAAAMM ou AAAA-MM-DD)."""
@@ -68,9 +77,17 @@ def rotulo_periodo(valores) -> str:
     return anos[0] if anos[0] == anos[-1] else f"{anos[0]}-{anos[-1]}"
 
 
-def caminho_saida(dado: str, periodo: str, fonte: str) -> pathlib.Path:
-    """Caminho de saída no padrão do bloco: "[E] {dado principal} {período} ({fonte}).csv"."""
-    return PROCESSED_DIR / f"[E] {dado} {periodo} ({fonte}).csv"
+def caminho_saida(subpasta: str, dado: str, periodo: str, fonte: str) -> pathlib.Path:
+    """Caminho de saída do bloco: <subpasta de uso>/"[E] {dado principal} {período} ({fonte}).csv".
+
+    A subpasta é o uso da tabela no plano (ver USOS), não a fonte: a mesma fonte pode
+    alimentar capítulos diferentes e o que decide a pasta é a decisão que o dado sustenta.
+    """
+    if subpasta not in USOS:
+        raise ValueError(f"Subpasta fora do conjunto previsto: {subpasta}")
+    destino = PROCESSED_DIR / subpasta
+    destino.mkdir(parents=True, exist_ok=True)
+    return destino / f"[E] {dado} {periodo} ({fonte}).csv"
 _cache_metadados: dict[int, dict] = {}
 
 

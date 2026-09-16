@@ -1,7 +1,7 @@
 """
 Achata o JSON das subclasses CNAE coletado por collect_bases_concla_cnae.py.
 
-Saída: "[E] Subclasses CNAE {ano da coleta} (CONCLA).csv"
+Saída: Juridico e tributario/"[E] Subclasses CNAE {ano da coleta} (CONCLA).csv"
   uma linha por subclasse: código formatado, hierarquia, papel no plano, atividades
   compreendidas e observações (o que a subclasse compreende e não compreende).
 """
@@ -11,7 +11,7 @@ import pandas as pd
 from bases_comum import DATA_COLETA, PROCESSED_DIR, RAW_DIR, caminho_saida, ler_json
 
 IN_PATH = RAW_DIR / "concla" / "cnae_subclasses.json"
-OUT_PATH = caminho_saida("Subclasses CNAE", DATA_COLETA[:4], "CONCLA")
+OUT_PATH = caminho_saida("Juridico e tributario", "Subclasses CNAE", DATA_COLETA[:4], "CONCLA")
 
 
 def main() -> None:

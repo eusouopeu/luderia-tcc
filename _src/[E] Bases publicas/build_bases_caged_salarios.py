@@ -9,7 +9,7 @@ Para a média não ser distorcida por erro de declaração, ficam de fora salár
 abaixo de 50% ou acima de 30 vezes o salário mínimo vigente na competência.
 
 Saídas em _data/processed/[E] Bases publicas/:
-Saídas no padrão "[E] {dado} {período} ({fonte}).csv":
+Saídas em Multiuso/ (custo de pessoal em 7.5 e cap. 9), no padrão "[E] {dado} {período} ({fonte}).csv":
   "Salário Admissão por Capital"   últimos 12 meses: média, p25, mediana, p75
   "Salário Admissão Mensal"        por competência: média nominal e real, mediana, salário mínimo
                                    vigente e razão média/mínimo
@@ -136,7 +136,7 @@ def main() -> None:
     recente = agregar(df[df["competencia"].isin(ultimos)], [])
     recente["periodo_competencia"] = f"{ultimos[0]}-{ultimos[-1]}"
     recente[colunas + ["periodo_competencia"]].to_csv(
-        caminho_saida("Salário Admissão por Capital", rotulo_periodo(ultimos), "CAGED"), index=False)
+        caminho_saida("Multiuso", "Salário Admissão por Capital", rotulo_periodo(ultimos), "CAGED"), index=False)
 
     # Série mensal
     mensal = agregar(df, ["competencia"])
@@ -144,7 +144,7 @@ def main() -> None:
     mensal["razao_medio_salario_minimo"] = (mensal["salario_medio"] / mensal["salario_minimo"]).round(3)
     mensal = mensal[["competencia"] + colunas + ["salario_minimo", "razao_medio_salario_minimo"]]
     mensal.sort_values(["recorte", "capital", "cbo", "competencia"]).to_csv(
-        caminho_saida("Salário Admissão Mensal", rotulo_periodo(mensal["competencia"]), "CAGED"), index=False)
+        caminho_saida("Multiuso", "Salário Admissão Mensal", rotulo_periodo(mensal["competencia"]), "CAGED"), index=False)
 
     # Série anual
     anual = agregar(df, ["ano"])
@@ -162,7 +162,7 @@ def main() -> None:
         anual[destino] = (anual.groupby(chave)[coluna].pct_change() * 100).round(2).where(consecutivo)
     anual = anual[["ano"] + colunas + ["meses_no_ano", "ano_incompleto", "salario_minimo_medio_ano",
                                        "razao_medio_salario_minimo", "var_anual_nominal_pct", "var_anual_real_pct"]]
-    anual.to_csv(caminho_saida("Salário Admissão Anual", rotulo_periodo(anual["ano"]), "CAGED"), index=False)
+    anual.to_csv(caminho_saida("Multiuso", "Salário Admissão Anual", rotulo_periodo(anual["ano"]), "CAGED"), index=False)
 
     print(f"preços reais de {df['competencia'].max()}")
     vis = anual[(anual["capital"] == "27 capitais") & (anual["recorte"] == "CNAE 56 - alimentação")]
