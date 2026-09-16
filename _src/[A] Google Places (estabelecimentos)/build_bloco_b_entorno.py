@@ -1,45 +1,42 @@
 """
-Bloco B - etapa 4c: junta localizações e contagens de entorno numa planilha
-por estabelecimento, com variável contínua (contagem) e duas variáveis
-categóricas derivadas para cada combinação subcategoria x raio.
+Bloco A - etapa 4c: monta a tabela de entorno, uma linha por estabelecimento
+da curadoria que tenha coordenada e contagem coletada.
 
-Duas fontes, por razão metodológica (ver docstring de
-collect_bloco_b_entorno.py):
-  - Google Places: praias_parques, transporte_metro, transporte_onibus.
-  - OpenStreetMap (Overpass): as oito subcategorias comerciais, onde o
-    Google inflava a contagem por herança de tipo entre empreendimento e
-    lojas inquilinas.
+Seis colunas de contagem, três categorias em dois raios, todas vindas da
+Overpass API (OpenStreetMap), que é gratuita. Ver
+collect_bloco_b_entorno_osm.py para como cada categoria é operacionalizada e
+por que a contagem é deduplicada.
 
-Categóricas derivadas, para cada subcategoria x raio:
-  - presente (sim/nao) - útil nas subcategorias esparsas (ex.: shoppings,
-    transporte_metro).
-  - densidade (baixa/media/alta) por tercis da amostra, calculados
-    separadamente por raio - útil nas subcategorias densas.
+  qt_praias_parques_500m      qt_praias_parques_1000m
+  qt_shoppings_grandes_500m   qt_shoppings_grandes_1000m
+  qt_estacoes_metro_500m      qt_estacoes_metro_1000m
 
-Saída: _data/processed/bloco_b_entorno.csv
+A versão anterior tinha 66 colunas: oito subcategorias comerciais vindas do
+OSM, três categorias vindas do Google e, para cada combinação, duas
+categóricas derivadas (presente e densidade por tercil). Saíram todas. As
+comerciais não mudavam decisão do plano; as derivadas podem ser recalculadas
+a partir da contagem a qualquer momento, e fixá-las no arquivo congelava
+tercis de uma amostra que ainda cresce.
+
+Saída: _data/processed/[A] Estabelecimentos e cardapios/bloco_b_entorno.csv
 
 Uso:
-    python3 src/build_bloco_b_entorno.py
+    python3 "_src/[A] Google Places (estabelecimentos)/build_bloco_b_entorno.py"
 """
 import csv
 import json
 import pathlib
 
-from collect_bloco_b_entorno import CATEGORIAS as CATEGORIAS_GOOGLE
-from collect_bloco_b_entorno_osm import SUBCATEGORIAS as SUBCATEGORIAS_OSM
-
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-CURADORIA_PATH = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios" / "bloco_b_planilha_curadoria.csv"
-LOCALIZACOES_PATH = ROOT / "_data" / "raw" / "[A] Estabelecimentos e cardapios" / "bloco_b_localizacoes.jsonl"
-ENTORNO_GOOGLE_PATH = ROOT / "_data" / "raw" / "[A] Estabelecimentos e cardapios" / "bloco_b_entorno.jsonl"
-ENTORNO_OSM_PATH = ROOT / "_data" / "raw" / "[A] Estabelecimentos e cardapios" / "bloco_b_entorno_osm.jsonl"
-OUT_PATH = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios" / "bloco_b_entorno.csv"
+RAW = ROOT / "_data" / "raw" / "[A] Estabelecimentos e cardapios"
+PROCESSED = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios"
+CURADORIA_PATH = PROCESSED / "bloco_b_planilha_curadoria.csv"
+LOCALIZACOES_PATH = RAW / "bloco_b_localizacoes.jsonl"
+ENTORNO_PATH = RAW / "bloco_b_entorno_osm_ancoras.jsonl"
+OUT_PATH = PROCESSED / "bloco_b_entorno.csv"
 
 RAIOS_M = [500, 1000]
-SUBCATEGORIAS_GOOGLE = list(CATEGORIAS_GOOGLE.keys())
-# Comerciais (OSM) primeiro, depois transporte/parques (Google).
-SUBCATEGORIAS = SUBCATEGORIAS_OSM + SUBCATEGORIAS_GOOGLE
-FONTE = {**{s: "osm" for s in SUBCATEGORIAS_OSM}, **{s: "google" for s in SUBCATEGORIAS_GOOGLE}}
+CATEGORIAS = ["praias_parques", "shoppings_grandes", "estacoes_metro"]
 
 
 def load_curadoria():
@@ -51,8 +48,7 @@ def load_localizacoes():
     locs = {}
     with open(LOCALIZACOES_PATH, encoding="utf-8") as f:
         for line in f:
-            line = line.strip()
-            if not line:
+            if not line.strip():
                 continue
             d = json.loads(line)
             loc = d.get("location")
@@ -62,47 +58,16 @@ def load_localizacoes():
 
 
 def load_entorno():
-    """{(place_id, subcategoria, raio): qt} das duas fontes."""
+    """{(place_id, categoria, raio): qt}"""
     entorno = {}
-
-    with open(ENTORNO_GOOGLE_PATH, encoding="utf-8") as f:
+    with open(ENTORNO_PATH, encoding="utf-8") as f:
         for line in f:
-            line = line.strip()
-            if not line:
+            if not line.strip():
                 continue
             d = json.loads(line)
-            if d["categoria"] in SUBCATEGORIAS_GOOGLE:
-                entorno[(d["place_id"], d["categoria"], d["raio_m"])] = d["qt_lugares"]
-
-    with open(ENTORNO_OSM_PATH, encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            d = json.loads(line)
-            for sub, qt in d["contagens"].items():
-                entorno[(d["place_id"], sub, d["raio_m"])] = qt
-
+            for cat, qt in d["contagens"].items():
+                entorno[(d["place_id"], cat, d["raio_m"])] = qt
     return entorno
-
-
-def tercis(valores):
-    """Retorna os dois pontos de corte (33% e 67%) de uma lista de valores."""
-    ordenados = sorted(valores)
-    n = len(ordenados)
-    if n < 3:
-        return None, None
-    return ordenados[n // 3], ordenados[(2 * n) // 3]
-
-
-def classifica_tercil(valor, corte1, corte2):
-    if corte1 is None:
-        return ""
-    if valor <= corte1:
-        return "baixa"
-    if valor <= corte2:
-        return "media"
-    return "alta"
 
 
 def main():
@@ -110,20 +75,23 @@ def main():
     localizacoes = load_localizacoes()
     entorno = load_entorno()
 
-    place_ids = [pid for pid in curadoria if pid in localizacoes]
-    faltantes = [pid for pid in curadoria if pid not in localizacoes]
-    if faltantes:
-        print(f"Aviso: {len(faltantes)} place_ids sem localização (rode collect_bloco_b_localizacoes.py)")
+    place_ids = sorted(
+        pid
+        for pid in curadoria
+        if pid in localizacoes and (pid, CATEGORIAS[0], RAIOS_M[0]) in entorno
+    )
+    sem_coordenada = [pid for pid in curadoria if pid not in localizacoes]
+    if sem_coordenada:
+        print(
+            f"Aviso: {len(sem_coordenada)} dos {len(curadoria)} estabelecimentos da "
+            "curadoria não têm coordenada e ficam fora da tabela "
+            "(rode collect_bloco_b_localizacoes.py para incluí-los)"
+        )
 
-    cortes = {}
-    for subcat in SUBCATEGORIAS:
+    fieldnames = ["place_id", "nome", "endereco", "capital_busca", "lat", "lng"]
+    for cat in CATEGORIAS:
         for raio in RAIOS_M:
-            valores = [
-                entorno[(pid, subcat, raio)]
-                for pid in place_ids
-                if (pid, subcat, raio) in entorno
-            ]
-            cortes[(subcat, raio)] = tercis(valores)
+            fieldnames.append(f"qt_{cat}_{raio}m")
 
     linhas = []
     for pid in place_ids:
@@ -133,51 +101,38 @@ def main():
             "place_id": pid,
             "nome": row["nome"],
             "endereco": row["endereco"],
+            "capital_busca": row["capital_busca"],
             "lat": lat,
             "lng": lng,
         }
-        for subcat in SUBCATEGORIAS:
+        for cat in CATEGORIAS:
             for raio in RAIOS_M:
-                qt = entorno.get((pid, subcat, raio))
-                corte1, corte2 = cortes[(subcat, raio)]
-                prefixo = f"{subcat}_{raio}m"
-
-                linha[f"qt_{prefixo}"] = qt if qt is not None else ""
-                linha[f"presente_{prefixo}"] = (
-                    ("sim" if qt > 0 else "nao") if qt is not None else ""
-                )
-                linha[f"densidade_{prefixo}"] = (
-                    classifica_tercil(qt, corte1, corte2) if qt is not None else ""
-                )
+                qt = entorno.get((pid, cat, raio))
+                linha[f"qt_{cat}_{raio}m"] = qt if qt is not None else ""
         linhas.append(linha)
 
-    fieldnames = ["place_id", "nome", "endereco", "lat", "lng"]
-    for subcat in SUBCATEGORIAS:
-        for raio in RAIOS_M:
-            prefixo = f"{subcat}_{raio}m"
-            fieldnames += [f"qt_{prefixo}", f"presente_{prefixo}", f"densidade_{prefixo}"]
+    linhas.sort(key=lambda r: (r["capital_busca"], r["nome"] or ""))
 
+    PROCESSED.mkdir(parents=True, exist_ok=True)
     with open(OUT_PATH, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(linhas)
 
-    print(f"OK: {len(linhas)} estabelecimentos salvos em {OUT_PATH}")
+    print(f"OK: {len(linhas)} estabelecimentos salvos em {OUT_PATH.name}")
     print()
-    print(f"{'subcategoria':<22}{'fonte':<8}{'raio':>6}  {'min':>4}  {'max':>4}  {'media':>7}  {'zeros':>6}")
-    for subcat in SUBCATEGORIAS:
+    print(f"{'categoria':<20}{'raio':>6}  {'min':>4}  {'max':>4}  {'media':>7}  {'zeros':>8}")
+    for cat in CATEGORIAS:
         for raio in RAIOS_M:
             valores = [
-                entorno[(pid, subcat, raio)]
-                for pid in place_ids
-                if (pid, subcat, raio) in entorno
+                entorno[(pid, cat, raio)] for pid in place_ids if (pid, cat, raio) in entorno
             ]
             if not valores:
                 continue
             zeros = sum(1 for v in valores if v == 0)
             print(
-                f"{subcat:<22}{FONTE[subcat]:<8}{raio:>5}m  {min(valores):>4}  {max(valores):>4}  "
-                f"{sum(valores) / len(valores):>7.1f}  {zeros:>3}/{len(valores)}"
+                f"{cat:<20}{raio:>5}m  {min(valores):>4}  {max(valores):>4}  "
+                f"{sum(valores) / len(valores):>7.1f}  {zeros:>4}/{len(valores)}"
             )
 
 
