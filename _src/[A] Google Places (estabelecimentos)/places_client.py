@@ -35,6 +35,16 @@ DETAILS_FIELD_MASK = ",".join(
     ]
 )
 
+# Mesma máscara sem `reviews`. É o campo de avaliações que promove a chamada
+# ao SKU "Place Details Enterprise + Atmosphere", o único que gerou cobrança
+# até aqui (1.161 chamadas, R$ 23,63 em setembro de 2026). Sem ele a chamada
+# cai no SKU "Place Details Enterprise", cuja franquia mensal ainda estava
+# aberta (219 chamadas, R$ 0,00 no mesmo período). Derivada da máscara cheia
+# para não sair de sincronia com ela.
+DETAILS_SEM_REVIEWS_FIELD_MASK = ",".join(
+    campo for campo in DETAILS_FIELD_MASK.split(",") if campo != "reviews"
+)
+
 LOCATION_FIELD_MASK = "id,location"
 
 # Nearby Search: só o id de cada resultado, suficiente para contagem no
@@ -114,6 +124,9 @@ class PlacesClient:
 
     def place_details(self, place_id):
         return self._get(f"places/{place_id}", DETAILS_FIELD_MASK)
+
+    def place_details_sem_reviews(self, place_id):
+        return self._get(f"places/{place_id}", DETAILS_SEM_REVIEWS_FIELD_MASK)
 
     def place_location(self, place_id):
         return self._get(f"places/{place_id}", LOCATION_FIELD_MASK)

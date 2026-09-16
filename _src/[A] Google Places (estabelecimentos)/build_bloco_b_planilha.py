@@ -20,6 +20,14 @@ A categoria do Google deixou de eliminar candidatos: casas que funcionam como
 espaço de jogo aparecem como loja de jogos ou de brinquedos. A categoria vira
 a coluna `grupo_categoria`, só para orientar a curadoria.
 
+O script tem três saídas, não duas:
+  bloco_b_planilha_curadoria.csv  -> aprovados, vão para a curadoria manual
+  bloco_b_triagem.csv             -> indefinidos: sem palavra-chave no nome e
+                                     sem avaliações coletadas. O filtro não
+                                     tem como decidir, porque o texto das
+                                     avaliações não foi comprado para eles.
+  bloco_b_descartados_por_filtro.csv -> reprovados de fato
+
 Estabelecimentos da lista manual do autor (bloco_b_lista_manual_rj.csv) com
 place_id entram mesmo sem passar no filtro, marcados em `origem`.
 
@@ -42,9 +50,11 @@ RAW = ROOT / "_data" / "raw" / "[A] Estabelecimentos e cardapios"
 PROCESSED = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios"
 CANDIDATOS_PATH = RAW / "bloco_b_candidatos.csv"
 DETALHES_PATH = RAW / "bloco_b_detalhes.jsonl"
+DETALHES_SEM_REVIEWS_PATH = RAW / "bloco_b_detalhes_sem_reviews.jsonl"
 LISTA_MANUAL_PATH = RAW / "bloco_b_lista_manual_rj.csv"
 OUT_PATH = PROCESSED / "bloco_b_planilha_curadoria.csv"
 OUT_DESCARTADOS_PATH = PROCESSED / "bloco_b_descartados_por_filtro.csv"
+OUT_TRIAGEM_PATH = PROCESSED / "bloco_b_triagem.csv"
 
 JANELA_ATIVIDADE = timedelta(days=183)
 
@@ -94,6 +104,30 @@ KEYWORDS_AVALIACAO = [
 # passou continua na planilha, tenha vindo do termo que for.
 TERMOS_BAIXA_PRECISAO = {"quiz bar", "ludoteca"}
 
+# O outro extremo da mesma medida: termos que aprovaram de 74% a 97% do que
+# trouxeram. Não aprovam nem reprovam ninguém; servem só para ordenar a fila
+# de checagem manual da triagem.
+TERMOS_ALTA_PRECISAO = {
+    "loja de board game",
+    "loja de RPG",
+    "loja de card game",
+    "luderia",
+    "board game café",
+    "café de jogos de tabuleiro",
+    "loja de jogos de tabuleiro",
+    "clube de jogos de tabuleiro",
+}
+
+# Shopping center e varejo grande entram na busca por abrigarem uma loja de
+# jogos, não por serem uma. São 20 dos 233 indefinidos e vão para o fim da
+# fila: ordenar a triagem só por volume de avaliações punha Shopping da Ilha
+# (35.949 avaliações) e Decathlon no topo.
+TYPES_VAREJO_GRANDE = {
+    "shopping_mall", "department_store", "supermarket", "grocery_store",
+    "hardware_store", "furniture_store", "clothing_store",
+    "sporting_goods_store", "pharmacy", "convenience_store",
+}
+
 TYPES_AEB = {
     "bar", "restaurant", "cafe", "coffee_shop", "cocktail_bar", "night_club",
     "pub", "wine_bar", "snack_bar", "hamburger_restaurant", "american_restaurant",
@@ -133,6 +167,31 @@ COLUNAS_CURADORIA = [
     "link_google_maps",
     "data_coleta",
     *COLUNAS_MANUAIS,
+]
+
+COLUNAS_MANUAIS_TRIAGEM = ["evidencia_espaco_jogo", "relevante", "observacao"]
+
+# Indefinidos: sem palavra-chave no nome e sem avaliações coletadas. O filtro
+# não os aprova nem os reprova, porque a evidência que decidiria está no texto
+# das avaliações, que não foi comprado para eles. Vão para checagem manual.
+COLUNAS_TRIAGEM = [
+    "place_id",
+    "nome",
+    "endereco",
+    "capital_busca",
+    "termos_busca",
+    "termos_alta_precisao",
+    "varejo_grande",
+    "grupo_categoria",
+    "categorias_google",
+    "avaliacao_media",
+    "volume_avaliacoes",
+    "status_google",
+    "site_ou_rede_social",
+    "instagram_usuario",
+    "link_google_maps",
+    "data_coleta",
+    *COLUNAS_MANUAIS_TRIAGEM,
 ]
 
 COLUNAS_DESCARTADOS = [
@@ -235,12 +294,21 @@ def load_buscas_por_place_id():
 
 
 def load_detalhes():
+    """Junta os dois arquivos de detalhes e marca cada registro com
+    `reviews_coletadas`. O arquivo sem avaliações foi coletado no SKU barato
+    (Place Details Enterprise) e não tem o campo `reviews`; para ele, ausência
+    de evidência nas avaliações não é evidência de ausência. O arquivo com
+    avaliações tem precedência quando o mesmo place_id está nos dois."""
     detalhes = {}
-    with open(DETALHES_PATH, encoding="utf-8") as f:
-        for line in f:
-            if line.strip():
-                d = json.loads(line)
-                detalhes[d["id"]] = d
+    for path, tem_reviews in ((DETALHES_SEM_REVIEWS_PATH, False), (DETALHES_PATH, True)):
+        if not path.exists():
+            continue
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    d = json.loads(line)
+                    d["reviews_coletadas"] = tem_reviews
+                    detalhes[d["id"]] = d
     return detalhes
 
 
@@ -251,16 +319,17 @@ def load_lista_manual():
         return {r["place_id"] for r in csv.DictReader(f) if r["place_id"]}
 
 
-def load_curadoria_anterior():
-    """Colunas manuais já preenchidas, por place_id."""
-    if not OUT_PATH.exists():
+def load_manuais_anteriores(path, colunas):
+    """Colunas manuais já preenchidas, por place_id. Preserva o trabalho de
+    curadoria quando o script roda de novo."""
+    if not path.exists():
         return {}
     anterior = {}
-    with open(OUT_PATH, newline="", encoding="utf-8") as f:
+    with open(path, newline="", encoding="utf-8") as f:
         for r in csv.DictReader(f):
             pid = r.get("place_id", "")
             if pid.startswith("ChIJ"):
-                anterior[pid] = {c: r.get(c, "") for c in COLUNAS_MANUAIS}
+                anterior[pid] = {c: r.get(c, "") for c in colunas}
     return anterior
 
 
@@ -268,10 +337,11 @@ def main():
     capitais_por_id, termos_por_id = load_buscas_por_place_id()
     detalhes = load_detalhes()
     lista_manual = load_lista_manual()
-    anterior = load_curadoria_anterior()
+    anterior = load_manuais_anteriores(OUT_PATH, COLUNAS_MANUAIS)
+    anterior_triagem = load_manuais_anteriores(OUT_TRIAGEM_PATH, COLUNAS_MANUAIS_TRIAGEM)
     data_ref = data_referencia(detalhes)
 
-    mantidos, descartados = [], []
+    mantidos, triagem, descartados = [], [], []
     for place_id, d in detalhes.items():
         match_tipo = classifica(d)
         status = d.get("businessStatus", "")
@@ -299,10 +369,34 @@ def main():
             # a API devolve. Só o segundo grupo merece checagem manual.
             if termos and not (termos - TERMOS_BAIXA_PRECISAO):
                 motivo = "so_termo_baixa_precisao"
+            elif not d.get("reviews_coletadas"):
+                # Sem o texto das avaliações, reprovar seria confundir falta de
+                # evidência com evidência de ausência. Vai para checagem manual.
+                motivo = "indefinido_sem_reviews"
             else:
                 motivo = "sem_termo_chave"
         else:
             motivo = None
+
+        if motivo == "indefinido_sem_reviews":
+            triagem.append(
+                {
+                    **base,
+                    "termos_busca": ";".join(sorted(termos)),
+                    "termos_alta_precisao": len(termos & TERMOS_ALTA_PRECISAO),
+                    "varejo_grande": (
+                        "sim" if set(d.get("types", [])) & TYPES_VAREJO_GRANDE else "nao"
+                    ),
+                    "grupo_categoria": grupo_categoria(d),
+                    "status_google": status,
+                    "instagram_usuario": instagram_usuario(d.get("websiteUri")),
+                    "link_google_maps": d.get("googleMapsUri"),
+                    **anterior_triagem.get(
+                        place_id, {c: "" for c in COLUNAS_MANUAIS_TRIAGEM}
+                    ),
+                }
+            )
+            continue
 
         if motivo:
             descartados.append(
@@ -333,6 +427,17 @@ def main():
         )
 
     mantidos.sort(key=lambda r: (r["capital_busca"], r["nome"] or ""))
+    # Prioridade da triagem: primeiro quem foi achado por mais termos de alta
+    # precisão, depois por volume de avaliações, com shopping e varejo grande
+    # no fim da fila. O critério é a chance de ser um espaço de jogo, não o
+    # tamanho do estabelecimento.
+    triagem.sort(
+        key=lambda r: (
+            r["varejo_grande"] == "sim",
+            -int(r["termos_alta_precisao"]),
+            -int(r["volume_avaliacoes"] or 0),
+        )
+    )
     descartados.sort(key=lambda r: r["nome"] or "")
 
     PROCESSED.mkdir(parents=True, exist_ok=True)
@@ -340,12 +445,17 @@ def main():
         writer = csv.DictWriter(f, fieldnames=COLUNAS_CURADORIA)
         writer.writeheader()
         writer.writerows(mantidos)
+    with open(OUT_TRIAGEM_PATH, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=COLUNAS_TRIAGEM)
+        writer.writeheader()
+        writer.writerows(triagem)
     with open(OUT_DESCARTADOS_PATH, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=COLUNAS_DESCARTADOS)
         writer.writeheader()
         writer.writerows(descartados)
 
     print(f"OK: {len(mantidos)} candidatos na planilha de curadoria ({OUT_PATH.name})")
+    print(f"    {len(triagem)} indefinidos para checagem manual ({OUT_TRIAGEM_PATH.name})")
     print(f"    {len(descartados)} descartados ({OUT_DESCARTADOS_PATH.name})")
 
 
