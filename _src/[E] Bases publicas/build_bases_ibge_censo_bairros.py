@@ -2,7 +2,7 @@
 Trata os Agregados por Bairros do Censo 2022 (IBGE) para as 27 capitais.
 
 Entrada: zips e dicionário em _data/raw/[E] Bases publicas/ibge_censo_2022/
-Saída: _data/processed/[E] Bases publicas/bases_ibge_censo_2022_bairros_capitais.csv
+Saída: "[E] População por Bairro 2022 (IBGE Censo).csv"
   uma linha por bairro: população, domicílios, média de moradores, área, densidade,
   população por faixa etária e participação da faixa de 20 a 39 anos.
 
@@ -15,10 +15,10 @@ import zipfile
 
 import pandas as pd
 
-from bases_comum import CAPITAIS, PROCESSED_DIR, RAW_DIR
+from bases_comum import CAPITAIS, PROCESSED_DIR, RAW_DIR, caminho_saida
 
 IN_DIR = RAW_DIR / "ibge_censo_2022"
-OUT_PATH = PROCESSED_DIR / "bases_ibge_censo_2022_bairros_capitais.csv"
+OUT_PATH = caminho_saida("População por Bairro", "2022", "IBGE Censo")
 BASICO = {"v0001": "pessoas", "v0002": "domicilios", "v0007": "domicilios_particulares_ocupados",
           "v0005": "media_moradores"}
 

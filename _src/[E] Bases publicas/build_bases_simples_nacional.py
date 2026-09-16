@@ -4,9 +4,10 @@ Nacional na redação da LC nº 155/2016 (vigente).
 
 Entrada: _data/raw/[E] Bases publicas/legislacao/lcp123_compilada_planalto_<data>.htm
 Saídas em _data/processed/[E] Bases publicas/:
-  bases_simples_nacional_faixas.csv       anexo, faixa, receita bruta em 12 meses (mín., máx.),
-                                          alíquota nominal e parcela a deduzir
-  bases_simples_nacional_reparticao.csv   percentual de repartição de cada tributo por faixa
+Saídas no padrão "[E] {dado} {período} ({fonte}).csv", com o ano de vigência conferida:
+  "Faixas e Alíquotas por Anexo"      anexo, faixa, receita bruta em 12 meses (mín., máx.),
+                                      alíquota nominal e parcela a deduzir
+  "Repartição de Tributos por Anexo"  percentual de repartição de cada tributo por faixa
 
 Alíquota efetiva (art. 18, § 1º-A): (RBT12 × alíquota nominal − parcela a deduzir) ÷ RBT12.
 """
@@ -16,7 +17,7 @@ import re
 import pandas as pd
 from bs4 import BeautifulSoup
 
-from bases_comum import PROCESSED_DIR, RAW_DIR
+from bases_comum import DATA_COLETA, PROCESSED_DIR, RAW_DIR, caminho_saida
 
 IN_DIR = RAW_DIR / "legislacao"
 
@@ -70,8 +71,9 @@ def main() -> None:
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     df_faixas = pd.DataFrame(faixas)
-    df_faixas.to_csv(PROCESSED_DIR / "bases_simples_nacional_faixas.csv", index=False)
-    pd.DataFrame(reparticao).to_csv(PROCESSED_DIR / "bases_simples_nacional_reparticao.csv", index=False)
+    df_faixas.to_csv(caminho_saida("Faixas e Alíquotas por Anexo", DATA_COLETA[:4], "Simples Nacional"), index=False)
+    pd.DataFrame(reparticao).to_csv(
+        caminho_saida("Repartição de Tributos por Anexo", DATA_COLETA[:4], "Simples Nacional"), index=False)
     contagem = df_faixas.groupby("anexo").size()
     if not (set(contagem.index) == {"I", "II", "III", "IV", "V"} and (contagem == 6).all()):
         raise ValueError(f"Esperadas 6 faixas em cada um dos 5 anexos; obtido: {contagem.to_dict()}")

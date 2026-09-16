@@ -9,11 +9,12 @@ Para a média não ser distorcida por erro de declaração, ficam de fora salár
 abaixo de 50% ou acima de 30 vezes o salário mínimo vigente na competência.
 
 Saídas em _data/processed/[E] Bases publicas/:
-  bases_caged_salario_admissao_capitais.csv       últimos 12 meses: média, p25, mediana, p75
-  bases_caged_salario_admissao_serie_mensal.csv   por competência: média nominal e real, mediana,
-                                                  salário mínimo vigente e razão média/mínimo
-  bases_caged_salario_admissao_serie_anual.csv    por ano: média nominal e real, variação anual,
-                                                  razão média/mínimo; ano incompleto sinalizado
+Saídas no padrão "[E] {dado} {período} ({fonte}).csv":
+  "Salário Admissão por Capital"   últimos 12 meses: média, p25, mediana, p75
+  "Salário Admissão Mensal"        por competência: média nominal e real, mediana, salário mínimo
+                                   vigente e razão média/mínimo
+  "Salário Admissão Anual"         por ano: média nominal e real, variação anual, razão média/mínimo;
+                                   ano incompleto sinalizado
 Cada saída tem os recortes "todas as atividades" e "CNAE 56 - alimentação" e a linha
 "27 capitais" de cada ocupação. amostra_pequena = menos de 30 admissões.
 Valores reais a preços do último mês do IPCA disponível (SGS 433).
@@ -22,7 +23,7 @@ Uso no plano: custo de pessoal (7.5 e cap. 9) e projeção de reajustes salariai
 
 import pandas as pd
 
-from bases_comum import CAPITAIS, PROCESSED_DIR, RAW_DIR, ler_json
+from bases_comum import CAPITAIS, PROCESSED_DIR, RAW_DIR, caminho_saida, ler_json, rotulo_periodo
 from collect_bases_caged import CBOS
 
 IN_DIR = RAW_DIR / "caged"
@@ -134,7 +135,8 @@ def main() -> None:
     ultimos = sorted(df["competencia"].unique())[-12:]
     recente = agregar(df[df["competencia"].isin(ultimos)], [])
     recente["periodo_competencia"] = f"{ultimos[0]}-{ultimos[-1]}"
-    recente[colunas + ["periodo_competencia"]].to_csv(PROCESSED_DIR / "bases_caged_salario_admissao_capitais.csv", index=False)
+    recente[colunas + ["periodo_competencia"]].to_csv(
+        caminho_saida("Salário Admissão por Capital", rotulo_periodo(ultimos), "CAGED"), index=False)
 
     # Série mensal
     mensal = agregar(df, ["competencia"])
@@ -142,7 +144,7 @@ def main() -> None:
     mensal["razao_medio_salario_minimo"] = (mensal["salario_medio"] / mensal["salario_minimo"]).round(3)
     mensal = mensal[["competencia"] + colunas + ["salario_minimo", "razao_medio_salario_minimo"]]
     mensal.sort_values(["recorte", "capital", "cbo", "competencia"]).to_csv(
-        PROCESSED_DIR / "bases_caged_salario_admissao_serie_mensal.csv", index=False)
+        caminho_saida("Salário Admissão Mensal", rotulo_periodo(mensal["competencia"]), "CAGED"), index=False)
 
     # Série anual
     anual = agregar(df, ["ano"])
@@ -160,7 +162,7 @@ def main() -> None:
         anual[destino] = (anual.groupby(chave)[coluna].pct_change() * 100).round(2).where(consecutivo)
     anual = anual[["ano"] + colunas + ["meses_no_ano", "ano_incompleto", "salario_minimo_medio_ano",
                                        "razao_medio_salario_minimo", "var_anual_nominal_pct", "var_anual_real_pct"]]
-    anual.to_csv(PROCESSED_DIR / "bases_caged_salario_admissao_serie_anual.csv", index=False)
+    anual.to_csv(caminho_saida("Salário Admissão Anual", rotulo_periodo(anual["ano"]), "CAGED"), index=False)
 
     print(f"preços reais de {df['competencia'].max()}")
     vis = anual[(anual["capital"] == "27 capitais") & (anual["recorte"] == "CNAE 56 - alimentação")]

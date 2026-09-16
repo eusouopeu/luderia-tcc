@@ -3,7 +3,7 @@ Constantes e funções comuns aos scripts do Bloco E (bases públicas).
 
 Estrutura de pastas:
   _data/raw/[E] Bases publicas/<fonte>/   respostas brutas das APIs e arquivos originais
-  _data/processed/[E] Bases publicas/     tabelas tratadas, prefixo bases_
+  _data/processed/[E] Bases publicas/     tabelas tratadas, padrão "[E] {dado} {período} ({fonte}).csv"
 
 A consulta ao SIDRA usa a API de agregados do IBGE, versão 3:
 https://servicodados.ibge.gov.br/api/docs/agregados?versao=3
@@ -58,6 +58,19 @@ CAPITAIS = {
 IDS_CAPITAIS = ",".join(CAPITAIS)
 
 SIDRA_API = "https://servicodados.ibge.gov.br/api/v3/agregados"
+
+
+def rotulo_periodo(valores) -> str:
+    """Rótulo de período a partir de uma coluna de competências (AAAA, AAAAMM ou AAAA-MM-DD)."""
+    anos = sorted({str(v)[:4] for v in valores if pd.notna(v) and str(v)[:4].isdigit()})
+    if not anos:
+        raise ValueError("Nenhum ano identificável na coluna de período.")
+    return anos[0] if anos[0] == anos[-1] else f"{anos[0]}-{anos[-1]}"
+
+
+def caminho_saida(dado: str, periodo: str, fonte: str) -> pathlib.Path:
+    """Caminho de saída no padrão do bloco: "[E] {dado principal} {período} ({fonte}).csv"."""
+    return PROCESSED_DIR / f"[E] {dado} {periodo} ({fonte}).csv"
 _cache_metadados: dict[int, dict] = {}
 
 

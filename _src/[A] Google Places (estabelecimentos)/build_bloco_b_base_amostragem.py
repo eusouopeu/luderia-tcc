@@ -47,7 +47,8 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 RAW = ROOT / "_data" / "raw" / "[A] Estabelecimentos e cardapios"
 CANDIDATOS_PATH = RAW / "bloco_b_candidatos.csv"
 REGIC_PATH = RAW / "Metrópoles.md"
-RESUMO_CAPITAIS_PATH = ROOT / "_data" / "processed" / "[E] Bases publicas" / "bases_ibge_resumo_capitais.csv"
+RESUMO_CAPITAIS_PATH = (ROOT / "_data" / "processed" / "[E] Bases publicas"
+                        / "[E] Resumo de População e Renda por Capital 2022-2026 (IBGE).csv")
 OUT_PATH = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios" / "bloco_b_base_amostragem.xlsx"
 
 META_POR_ESTRATO = 45

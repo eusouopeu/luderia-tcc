@@ -2,14 +2,16 @@
 Trata as séries do Banco Central coletadas por collect_bases_bcb.py.
 
 Saídas em _data/processed/[E] Bases publicas/:
-  bases_bcb_sgs_series.csv     séries do SGS em formato longo (codigo_sgs, serie, data, valor)
-  bases_bcb_sgs_ultimos.csv    último valor de cada série
-  bases_bcb_focus_ultimo.csv   pesquisa Focus mais recente de cada indicador, por ano de referência
+Saídas no padrão "[E] {dado} {período} ({fonte}).csv":
+  "Selic IPCA e Salário Mínimo"                séries do SGS em formato longo (codigo_sgs, serie, data, valor)
+  "Selic IPCA e Salário Mínimo Último Valor"   último valor de cada série
+  "Expectativas Focus"                         pesquisa Focus mais recente de cada indicador, por ano de
+                                               referência
 """
 
 import pandas as pd
 
-from bases_comum import PROCESSED_DIR, RAW_DIR, ler_json
+from bases_comum import PROCESSED_DIR, RAW_DIR, caminho_saida, ler_json, rotulo_periodo
 
 IN_DIR = RAW_DIR / "bcb"
 
@@ -27,9 +29,10 @@ def main() -> None:
         df.insert(1, "serie", bruto["nome"])
         partes.append(df)
     sgs = pd.concat(partes, ignore_index=True)
-    sgs.to_csv(PROCESSED_DIR / "bases_bcb_sgs_series.csv", index=False)
+    sgs.to_csv(caminho_saida("Selic IPCA e Salário Mínimo", rotulo_periodo(sgs["data"]), "BCB"), index=False)
     ultimos = sgs.sort_values("data").groupby(["codigo_sgs", "serie"]).tail(1)
-    ultimos.to_csv(PROCESSED_DIR / "bases_bcb_sgs_ultimos.csv", index=False)
+    ultimos.to_csv(caminho_saida("Selic IPCA e Salário Mínimo Último Valor",
+                                 rotulo_periodo(ultimos["data"]), "BCB"), index=False)
     print(ultimos.to_string(index=False))
 
     focus = pd.DataFrame(ler_json(IN_DIR / "focus_anuais.json")["dados"])
@@ -40,7 +43,7 @@ def main() -> None:
     colunas = ["Indicador", "IndicadorDetalhe", "Data", "DataReferencia", "Mediana", "Media", "DesvioPadrao",
                "Minimo", "Maximo", "numeroRespondentes"]
     focus = focus[colunas].sort_values(["Indicador", "IndicadorDetalhe", "DataReferencia"], na_position="first")
-    focus.to_csv(PROCESSED_DIR / "bases_bcb_focus_ultimo.csv", index=False)
+    focus.to_csv(caminho_saida("Expectativas Focus", rotulo_periodo(focus["DataReferencia"]), "BCB"), index=False)
     print(focus.to_string(index=False))
 
 

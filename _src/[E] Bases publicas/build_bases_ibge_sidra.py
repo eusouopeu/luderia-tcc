@@ -1,17 +1,36 @@
 """
 Trata os JSON do SIDRA coletados por collect_bases_ibge_sidra.py.
 
-Saídas em _data/processed/[E] Bases publicas/:
-  bases_ibge_<consulta>.csv        formato longo, uma linha por valor (uma saída por consulta)
-  bases_ibge_resumo_capitais.csv   uma linha por capital: população, faixa de 20 a 39 anos e renda
+Saídas em _data/processed/[E] Bases publicas/, no padrão "[E] {dado} {período} ({fonte}).csv":
+  uma saída por consulta, em formato longo (uma linha por valor), nomeada por SAIDAS
+  "[E] Resumo de População e Renda por Capital ... (IBGE).csv": uma linha por capital, com
+  população, faixa de 20 a 39 anos e renda
 """
 
 import pandas as pd
 
-from bases_comum import CAPITAIS, PROCESSED_DIR, RAW_DIR, conferir_capitais, ler_json, sidra_para_df
+from bases_comum import (CAPITAIS, PROCESSED_DIR, RAW_DIR, caminho_saida, conferir_capitais, ler_json,
+                         rotulo_periodo, sidra_para_df)
 
 IN_DIR = RAW_DIR / "ibge_sidra"
-OUT_RESUMO = PROCESSED_DIR / "bases_ibge_resumo_capitais.csv"
+
+# Consulta (nome do JSON bruto) -> (dado principal, fonte) do nome de saída. O período sai dos dados.
+SAIDAS = {
+    "ipca_alimentacao_fora": ("IPCA Alimentação Fora do Domicílio", "IBGE"),
+    "pas_2024_dados_gerais": ("Serviços Dados Gerais", "IBGE PAS"),
+    "pas_familias_custos": ("Serviços às Famílias Custos", "IBGE PAS"),
+    "pas_familias_empresas": ("Serviços às Famílias Empresas", "IBGE PAS"),
+    "pas_familias_pessoal": ("Serviços às Famílias Pessoal", "IBGE PAS"),
+    "pas_familias_receita": ("Serviços às Famílias Receita", "IBGE PAS"),
+    "pof_alimentacao_fora_renda_uf": ("Despesa com Alimentação por Renda", "IBGE POF"),
+    "pof_despesas_renda_uf": ("Despesa Total por Renda", "IBGE POF"),
+    "populacao_censo_2022": ("População Residente", "IBGE Censo"),
+    "populacao_estimada": ("População Estimada", "IBGE"),
+    "populacao_idade_censo_2022": ("População por Idade", "IBGE Censo"),
+    "renda_censo_2022_idade": ("Renda por Idade", "IBGE Censo"),
+    "renda_pnadc_per_capita_rm_uf": ("Renda Domiciliar per Capita", "IBGE PNADC"),
+    "renda_pnadc_trabalho_capitais": ("Renda do Trabalho por Capital", "IBGE PNADC"),
+}
 FAIXAS_20_39 = ["20 a 24 anos", "25 a 29 anos", "30 a 34 anos", "35 a 39 anos"]
 PADRAO_PNADC = "habitualmente recebido no trabalho principal"  # variável de referência da tabela 5436
 
@@ -55,11 +74,15 @@ def main() -> None:
     for arq in sorted(IN_DIR.glob("*.json")):
         df = sidra_para_df(ler_json(arq))
         conferir_capitais(df)
-        df.to_csv(PROCESSED_DIR / f"bases_ibge_{arq.stem}.csv", index=False)
+        if arq.stem not in SAIDAS:
+            raise KeyError(f"Consulta sem nome de saída em SAIDAS: {arq.stem}")
+        dado, fonte = SAIDAS[arq.stem]
+        df.to_csv(caminho_saida(dado, rotulo_periodo(df["periodo"]), fonte), index=False)
         tabelas[arq.stem] = df
         print(f"{arq.stem:34s} {len(df):>6} linhas")
     resumo = resumo_capitais(tabelas)
-    resumo.to_csv(OUT_RESUMO, index=False)
+    periodo = f"{tabelas['populacao_censo_2022']['periodo'].max()}-{tabelas['populacao_estimada']['periodo'].max()}"
+    resumo.to_csv(caminho_saida("Resumo de População e Renda por Capital", periodo, "IBGE"), index=False)
     print(resumo.to_string(index=False))
 
 
