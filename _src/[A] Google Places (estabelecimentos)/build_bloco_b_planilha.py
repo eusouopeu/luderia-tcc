@@ -28,6 +28,11 @@ O script tem três saídas, não duas:
                                      avaliações não foi comprado para eles.
   bloco_b_descartados_por_filtro.csv -> reprovados de fato
 
+A triagem manual decide os indefinidos: quem tem `fotos_comprovam` ou
+`instagram_comprova` igual a "sim" sobe para a planilha de curadoria, com
+`origem` = "triagem_manual" e `evidencia_espaco_jogo` = "sim". "inconclusivo"
+não sobe: a regra exige evidência positiva do espaço de jogo.
+
 Estabelecimentos da lista manual do autor (bloco_b_lista_manual_rj.csv) com
 place_id entram mesmo sem passar no filtro, marcados em `origem`.
 
@@ -169,7 +174,20 @@ COLUNAS_CURADORIA = [
     *COLUNAS_MANUAIS,
 ]
 
-COLUNAS_MANUAIS_TRIAGEM = ["evidencia_espaco_jogo", "relevante", "observacao"]
+COLUNAS_MANUAIS_TRIAGEM = [
+    "evidencia_espaco_jogo",
+    "relevante",
+    "observacao",
+    "tem_fotos_maps",
+    "fotos_comprovam",
+    "tem_instagram",
+    "instagram_comprova",
+]
+
+
+def aprovado_na_triagem(manuais):
+    """Evidência positiva em pelo menos uma das duas checagens manuais."""
+    return "sim" in (manuais.get("fotos_comprovam"), manuais.get("instagram_comprova"))
 
 # Indefinidos: sem palavra-chave no nome e sem avaliações coletadas. O filtro
 # não os aprova nem os reprova, porque a evidência que decidiria está no texto
@@ -378,7 +396,11 @@ def main():
         else:
             motivo = None
 
+        triado = False
         if motivo == "indefinido_sem_reviews":
+            manuais_triagem = anterior_triagem.get(
+                place_id, {c: "" for c in COLUNAS_MANUAIS_TRIAGEM}
+            )
             triagem.append(
                 {
                     **base,
@@ -391,12 +413,14 @@ def main():
                     "status_google": status,
                     "instagram_usuario": instagram_usuario(d.get("websiteUri")),
                     "link_google_maps": d.get("googleMapsUri"),
-                    **anterior_triagem.get(
-                        place_id, {c: "" for c in COLUNAS_MANUAIS_TRIAGEM}
-                    ),
+                    **manuais_triagem,
                 }
             )
-            continue
+            # A linha fica também na triagem, como registro da decisão.
+            if not aprovado_na_triagem(manuais_triagem):
+                continue
+            triado = True
+            motivo = None
 
         if motivo:
             descartados.append(
@@ -409,11 +433,20 @@ def main():
             ativo = "sim"
         else:
             ativo = "inconclusivo"
+        manuais = anterior.get(place_id, {c: "" for c in COLUNAS_MANUAIS})
+        if triado and not manuais["evidencia_espaco_jogo"]:
+            manuais["evidencia_espaco_jogo"] = "sim"
+        if triado:
+            origem = "triagem_manual"
+        elif manual:
+            # "ambas": na lista manual e aprovado pelo filtro automático.
+            origem = "ambas" if match_tipo else "lista_manual"
+        else:
+            origem = "busca_automatica"
         mantidos.append(
             {
                 **base,
-                # "ambas": na lista manual e aprovado pelo filtro automático.
-                "origem": ("ambas" if match_tipo else "lista_manual") if manual else "busca_automatica",
+                "origem": origem,
                 "match_tipo": match_tipo or "",
                 "grupo_categoria": grupo_categoria(d),
                 "status_google": status,
@@ -422,7 +455,7 @@ def main():
                 "instagram_usuario": instagram_usuario(d.get("websiteUri")),
                 "telefone": d.get("internationalPhoneNumber"),
                 "link_google_maps": d.get("googleMapsUri"),
-                **anterior.get(place_id, {c: "" for c in COLUNAS_MANUAIS}),
+                **manuais,
             }
         )
 
