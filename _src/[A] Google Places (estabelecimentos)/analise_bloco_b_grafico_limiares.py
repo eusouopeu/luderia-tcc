@@ -1,0 +1,98 @@
+"""
+Bloco A - gráfico da distribuição de frequências dos estabelecimentos ativos
+por volume de avaliações no Google Maps. Lê a linha TOTAL_UNICOS das colunas
+`min_x_ativos` de bloco_b_limiares_avaliacoes.csv (gerada por
+analise_bloco_b_limiares.py).
+
+As colunas `min_x_ativos` são acumuladas (volume >= x). O painel da esquerda
+desacumula em faixas (frequência simples); o da direita mostra o acumulado,
+que é o número de estabelecimentos que sobra em cada limiar de corte.
+
+Saída em _data/processed/[A] Estabelecimentos e cardapios/:
+  bloco_b_grafico_limiares_ativos.png
+
+Uso:
+    python3 "_src/[A] Google Places (estabelecimentos)/analise_bloco_b_grafico_limiares.py"
+"""
+import csv
+import pathlib
+
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+ROOT = pathlib.Path(__file__).resolve().parents[2]
+PROCESSED = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios"
+LIMIARES_PATH = PROCESSED / "bloco_b_limiares_avaliacoes.csv"
+OUT_PATH = PROCESSED / "bloco_b_grafico_limiares_ativos.png"
+
+COR_BARRA = "#2a78d6"
+COR_TEXTO = "#0b0b0b"
+COR_TEXTO_SECUNDARIO = "#52514e"
+COR_GRADE = "#e4e3df"
+COR_FUNDO = "#fcfcfb"
+
+
+def carrega_total():
+    with open(LIMIARES_PATH, newline="", encoding="utf-8") as f:
+        total = next(r for r in csv.DictReader(f) if r["capital"] == "TOTAL_UNICOS")
+    # Limiares na ordem das colunas: min_0_ativos, min_10_ativos, ...
+    limiares = sorted(
+        int(c.split("_")[1]) for c in total if c.startswith("min_") and c.endswith("_ativos")
+    )
+    return limiares, [int(total[f"min_{lim}_ativos"]) for lim in limiares]
+
+
+def faixas(limiares, acumulado):
+    """Desacumula: frequência de cada faixa [limiar, próximo limiar)."""
+    rotulos, freq = [], []
+    for i, lim in enumerate(limiares):
+        if i + 1 < len(limiares):
+            rotulos.append(f"{lim}–{limiares[i + 1] - 1}")
+            freq.append(acumulado[i] - acumulado[i + 1])
+        else:
+            rotulos.append(f"{lim} ou mais")
+            freq.append(acumulado[i])
+    return rotulos, freq
+
+
+def estiliza(ax, titulo, rotulo_x):
+    ax.set_facecolor(COR_FUNDO)
+    ax.set_title(titulo, loc="left", fontsize=11, color=COR_TEXTO, pad=10)
+    ax.set_xlabel(rotulo_x, fontsize=9, color=COR_TEXTO_SECUNDARIO)
+    ax.set_ylabel("Estabelecimentos ativos", fontsize=9, color=COR_TEXTO_SECUNDARIO)
+    ax.grid(axis="y", color=COR_GRADE, linewidth=0.8)
+    ax.set_axisbelow(True)
+    for lado in ("top", "right", "left"):
+        ax.spines[lado].set_visible(False)
+    ax.spines["bottom"].set_color(COR_TEXTO_SECUNDARIO)
+    ax.tick_params(colors=COR_TEXTO_SECUNDARIO, labelsize=9, length=0)
+
+
+def barras(ax, rotulos, valores):
+    pos = range(len(valores))
+    ax.bar(pos, valores, width=0.7, color=COR_BARRA, edgecolor=COR_FUNDO, linewidth=2)
+    ax.set_xticks(list(pos), rotulos)
+    for x, v in zip(pos, valores):
+        ax.text(x, v, f"{v}", ha="center", va="bottom", fontsize=9, color=COR_TEXTO)
+    ax.set_ylim(0, max(valores) * 1.12)
+
+
+def main():
+    limiares, acumulado = carrega_total()
+    rotulos, freq = faixas(limiares, acumulado)
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4.2), facecolor=COR_FUNDO)
+    barras(ax1, rotulos, freq)
+    estiliza(ax1, "Frequência por faixa", "Avaliações no Google Maps")
+    barras(ax2, [f"≥ {lim}" for lim in limiares], acumulado)
+    estiliza(ax2, "Frequência acumulada (restantes em cada limiar)", "Limiar mínimo de avaliações")
+
+    fig.tight_layout()
+    fig.savefig(OUT_PATH, dpi=200, facecolor=COR_FUNDO)
+    print(f"OK: {OUT_PATH.name} - faixas {dict(zip(rotulos, freq))}")
+
+
+if __name__ == "__main__":
+    main()
