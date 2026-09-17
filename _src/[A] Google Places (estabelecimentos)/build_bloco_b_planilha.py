@@ -31,7 +31,10 @@ O script tem três saídas, não duas:
 A triagem manual decide os indefinidos: quem tem `fotos_comprovam` ou
 `instagram_comprova` igual a "sim" sobe para a planilha de curadoria, com
 `origem` = "triagem_manual" e `evidencia_espaco_jogo` = "sim". "inconclusivo"
-não sobe: a regra exige evidência positiva do espaço de jogo.
+conta como eliminado: a regra exige evidência positiva do espaço de jogo. Os
+48 que o autor tirou da planilha de triagem por inspeção do nome (redes de
+papelaria, brinquedos e livrarias, boliches) foram registrados com fotos no
+Maps que não comprovam.
 
 Estabelecimentos da lista manual do autor (bloco_b_lista_manual_rj.csv) com
 place_id entram mesmo sem passar no filtro, marcados em `origem`.
