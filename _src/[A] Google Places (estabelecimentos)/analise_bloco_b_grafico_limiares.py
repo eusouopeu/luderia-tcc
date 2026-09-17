@@ -1,16 +1,17 @@
 """
-Bloco A - gráfico da distribuição de frequências dos estabelecimentos ativos
-por volume de avaliações no Google Maps. Lê a linha TOTAL_UNICOS das colunas
-`min_x_ativos` de bloco_b_limiares_avaliacoes.csv (gerada por
-analise_bloco_b_limiares.py).
+Bloco A - gráfico da distribuição de frequências de todos os candidatos da
+planilha de curadoria (ativos ou não) por volume de avaliações no Google Maps.
+Lê a linha TOTAL_UNICOS das colunas `min_x` de bloco_b_limiares_avaliacoes.csv
+(gerada por analise_bloco_b_limiares.py); as colunas `min_x_ativos` ficam de
+fora.
 
-As colunas `min_x_ativos` são acumuladas (volume >= x). O painel da esquerda
+As colunas `min_x` são acumuladas (volume >= x). O painel da esquerda
 desacumula em faixas (frequência simples); o da direita mostra o acumulado,
 que é o número de estabelecimentos que sobra em cada limiar de corte.
 
 Saídas em _data/processed/[A] Estabelecimentos e cardapios/:
-  bloco_b_grafico_limiares_ativos.png            -> contagens
-  bloco_b_grafico_limiares_ativos_percentual.png -> % do total de ativos
+  bloco_b_grafico_limiares.png            -> contagens
+  bloco_b_grafico_limiares_percentual.png -> % do total de candidatos
 
 Uso:
     python3 "_src/[A] Google Places (estabelecimentos)/analise_bloco_b_grafico_limiares.py"
@@ -26,8 +27,8 @@ import matplotlib.pyplot as plt
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 PROCESSED = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios"
 LIMIARES_PATH = PROCESSED / "bloco_b_limiares_avaliacoes.csv"
-OUT_PATH = PROCESSED / "bloco_b_grafico_limiares_ativos.png"
-OUT_PERCENTUAL_PATH = PROCESSED / "bloco_b_grafico_limiares_ativos_percentual.png"
+OUT_PATH = PROCESSED / "bloco_b_grafico_limiares.png"
+OUT_PERCENTUAL_PATH = PROCESSED / "bloco_b_grafico_limiares_percentual.png"
 
 COR_BARRA = "#2a78d6"
 COR_TEXTO = "#0b0b0b"
@@ -39,11 +40,11 @@ COR_FUNDO = "#fcfcfb"
 def carrega_total():
     with open(LIMIARES_PATH, newline="", encoding="utf-8") as f:
         total = next(r for r in csv.DictReader(f) if r["capital"] == "TOTAL_UNICOS")
-    # Limiares na ordem das colunas: min_0_ativos, min_10_ativos, ...
+    # Limiares na ordem das colunas: min_0, min_10, ... (sem as `_ativos`)
     limiares = sorted(
-        int(c.split("_")[1]) for c in total if c.startswith("min_") and c.endswith("_ativos")
+        int(c.split("_")[1]) for c in total if c.startswith("min_") and not c.endswith("_ativos")
     )
-    return limiares, [int(total[f"min_{lim}_ativos"]) for lim in limiares]
+    return limiares, [int(total[f"min_{lim}"]) for lim in limiares]
 
 
 def faixas(limiares, acumulado):
@@ -67,7 +68,7 @@ def estiliza(ax, titulo, rotulo_x, percentual=False):
     ax.set_facecolor(COR_FUNDO)
     ax.set_title(titulo, loc="left", fontsize=11, color=COR_TEXTO, pad=10)
     ax.set_xlabel(rotulo_x, fontsize=9, color=COR_TEXTO_SECUNDARIO)
-    rotulo_y = "% dos estabelecimentos ativos" if percentual else "Estabelecimentos ativos"
+    rotulo_y = "% dos estabelecimentos" if percentual else "Estabelecimentos"
     ax.set_ylabel(rotulo_y, fontsize=9, color=COR_TEXTO_SECUNDARIO)
     if percentual:
         ax.yaxis.set_major_formatter(lambda v, _: f"{v:.0f}%")
@@ -110,7 +111,7 @@ def main():
     rotulos, freq = faixas(limiares, acumulado)
     grafico(limiares, freq, acumulado, rotulos, OUT_PATH, percentual=False)
 
-    # Base do percentual: todos os ativos (limiar 0), para as duas visões.
+    # Base do percentual: todos os candidatos (limiar 0), para as duas visões.
     base = acumulado[0]
     grafico(
         limiares,
