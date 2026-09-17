@@ -14,7 +14,7 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 - **Avaliações:** as **30 a 50 avaliações mais recentes com texto** de cada estabelecimento, com texto integral.
 - **Perfis dos avaliadores:** histórico público de cada autor dessas avaliações, com o nome substituído por código aleatório.
 - **Cardápios** de cada estabelecimento.
-- **Contagem direta de ocupação** nas duas unidades da São Jogue (única luderia de Salvador), com três visitas por unidade em dias e horários sorteados.
+- **Contagem direta de ocupação** nas duas unidades da São Jogue (única luderia de Salvador), com quatro visitas no total em dias e turnos sorteados, metade na quinzena seguinte ao pagamento dos servidores estaduais da Bahia e metade na quinzena anterior ao pagamento seguinte.
 - **Bases públicas:** IBGE (Censo 2022 por setor censitário, estimativas populacionais, POF 2017–2018, PNAD Contínua, PAS, CONCLA), RAIS e Novo CAGED, FipeZap comercial, Lei Complementar 123/2006 e anexos do Simples Nacional, Banco Central (SGS e Focus).
 - **Garantias de robustez:** registro prévio das hipóteses com divisão da base em metade exploratória e metade confirmatória; validação do dicionário de codificação; efeito fixo ou ponderação por estabelecimento; nota centrada no avaliador; tamanho de efeito; correção para múltiplas comparações; análise de sensibilidade; registro de premissas com faixas. Simulação de Monte Carlo opcional.
 - **Jogos (Bloco F):** menor relevância para as decisões do plano; pode ser retirado.
@@ -91,16 +91,17 @@ O recorte das mais recentes descreve a operação atual de cada concorrente e **
 | Item | Descrição |
 |---|---|
 | Local | As duas unidades da São Jogue, única luderia de Salvador |
-| Visitas | 3 por unidade, 6 no total, entre 25/09/2026 e 11/10/2026 |
-| Sorteio | Lista de todos os turnos de funcionamento de cada unidade no período (dia × bloco de 2 horas dentro do horário de funcionamento). Sorteio estratificado por unidade: **1 turno em dia útil** (segunda a quinta), **1 turno em sexta ou sábado** e **1 turno livre** entre os restantes. Feriados excluídos. Turnos simultâneos nas duas unidades são ressorteados (um único observador). Sorteio feito por script com semente fixa, registrado antes da primeira visita |
-| Duração da visita | 2 horas, com contagem a cada 30 minutos (5 contagens por visita) |
+| Visitas | 4 no total, 2 por unidade, entre 29/09/2026 e 28/10/2026 |
+| Períodos | **Quinzena pós-pagamento:** 29/09 a 13/10/2026, a partir do primeiro dia de pagamento dos servidores estaduais da Bahia (inativos e pensionistas em 29/09; ativos em 30/09). **Quinzena pré-pagamento:** 14/10 a 28/10/2026, até a véspera do pagamento de outubro (29/10). Fonte: Governo da Bahia, Tabela de Pagamentos 2026 |
+| Sorteio | Lista de todas as combinações de dia e turno do período, com três turnos fixos dentro do funcionamento das 12h00 às 22h00: 12h00-15h00, 15h30-18h30 e 19h00-22h00. Em cada quinzena: **1 visita em dia útil** (segunda a quinta) e **1 no fim de semana** (sexta a domingo). Feriados (12/10) e dias sem funcionamento excluídos. Cada unidade recebe uma visita por quinzena e uma de cada tipo de dia; um sorteio define qual unidade fica com o dia útil da quinzena pós-pagamento. Números aleatórios com semente fixa (20260916), gerados por `_src/[D] Contagem direta de ocupacao/build_contagem_sorteio.py` na planilha `contagem_sorteio_visitas.xlsx`; resultado registrado antes da primeira visita. Como as quatro datas caem em quinzenas e tipos de dia distintos, não há visitas simultâneas |
+| Duração da visita | 3 horas, com contagem a cada 30 minutos (7 contagens por visita) |
 | Registro por contagem | Mesas disponíveis; mesas ocupadas; pessoas presentes; tamanho de cada grupo sentado |
 | Registro contínuo | Horário de chegada e saída dos grupos que entram ou saem durante a visita (permanência observada) |
 | Registro complementar | Política de cobrança aplicada, preços do cardápio na data, dia, horário e condições atípicas (evento, chuva, jogo de futebol) |
 | Instrumento | Formulário padronizado preenchido no celular; sem fotos de pessoas; sem registro de características individuais |
 | Saídas | Taxa de ocupação por turno; pessoas por mesa; permanência média (com observações censuradas); estimativa de visitantes por semana, em faixa |
 | Uso no plano | Premissas de ocupação, pessoas por mesa e giro (cap. 9); calibração do fluxo dos demais concorrentes; capacidade (7.2) |
-| Limitação | Seis visitas em um único estabelecimento e uma única cidade; permanência censurada pela duração da visita; resultado com faixa larga |
+| Limitação | Quatro visitas em um único estabelecimento e uma única cidade; uma visita por combinação de quinzena e tipo de dia, sem repetição que permita medir a variação dentro de cada combinação; permanência censurada pela duração da visita; resultado com faixa larga |
 
 ### Bloco E — Bases públicas
 
@@ -231,7 +232,7 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 
 | Premissa | Evidência | Técnica | Limitação declarada |
 |---|---|---|---|
-| **Ocupação** | Contagem direta na São Jogue (Bloco D) | Taxa de ocupação por turno; média e amplitude entre as seis visitas | Um estabelecimento, seis visitas |
+| **Ocupação** | Contagem direta na São Jogue (Bloco D) | Taxa de ocupação por turno; média e amplitude entre as quatro visitas; comparação descritiva entre quinzenas e tipos de dia | Um estabelecimento, quatro visitas |
 | **Ocupação** | Velocidade de avaliações calibrada (Blocos B e D) | Modelo de calibração (abaixo) | Razão avaliações/visitantes pode variar entre estabelecimentos |
 | **Pessoas por mesa** | Tamanho do grupo citado (Bloco B) e observado (Bloco D) | Distribuição e comparação entre as duas fontes | Relato espontâneo × poucas observações |
 | **Giro de mesa** | Permanência observada (Bloco D) e política de cobrança (Bloco A) | Permanência média; comparação descritiva dos modelos de cobrança | Permanência censurada pela duração da visita |
@@ -298,7 +299,7 @@ Citar a Lei nº 13.709/2018 (LGPD) e a Resolução CNS nº 510/2016. Registrar a
 | Autosseleção de quem avalia | Superrepresenta experiências extremas e usuários ativos | Declarada; nota centrada no avaliador reduz o viés de exigência |
 | Recorte das 30 a 50 mais recentes | Não cobre sazonalidade de longo prazo | Declarada; sazonalidade tratada como premissa com faixa |
 | Datas relativas | Impossibilita dia da semana e dia do mês das avaliações | Curva semanal vem da contagem direta |
-| Contagem em um único estabelecimento e cidade, com seis visitas | Razão de calibração pode não valer para outros locais; sem sazonalidade | Faixa larga; sensibilidade da ocupação no tornado; validação recomendada antes do investimento |
+| Contagem em um único estabelecimento e cidade, com quatro visitas | Razão de calibração pode não valer para outros locais; sem sazonalidade | Faixa larga; sensibilidade da ocupação no tornado; validação recomendada antes do investimento |
 | Permanência censurada pela duração da visita | Subestima a permanência de grupos longos | Declarada; observações censuradas sinalizadas |
 | Erro de classificação do dicionário | Viés nas variáveis de texto | Validação com kappa e F1; variáveis reprovadas saem da análise confirmatória |
 | Valores citados em poucos textos | Amostra pequena para o ticket | Triangulação com cardápio, preços observados e POF |

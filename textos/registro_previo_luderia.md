@@ -148,7 +148,7 @@ Sem hipótese prévia, sem uso para confirmação e apresentadas como explorató
 - Sobreposição de avaliadores entre luderias da mesma capital.
 - Jogos citados nas avaliações.
 - Velocidade de avaliações por estabelecimento e modelo de calibração da ocupação.
-- Contagem direta de ocupação (Bloco D): taxa de ocupação, pessoas por mesa e permanência, por turno. Protocolo e sorteio dos turnos (semente 20260916, `_src/sorteio_contagem.py`) em `_instrucoes/4_metodologia.md`.
+- Contagem direta de ocupação (Bloco D): taxa de ocupação, pessoas por mesa e permanência, por turno. Protocolo e sorteio dos turnos (semente 20260916, `_src/[D] Contagem direta de ocupacao/build_contagem_sorteio.py`) em `_instrucoes/4_metodologia.md`, conforme a emenda 1.
 
 **Análises de sensibilidade** para H1 a H5, reportadas junto aos resultados confirmatórios, sem substituí-los:
 
@@ -163,7 +163,7 @@ Cada emenda recebe número, data, descrição, justificativa e commit. Emendas f
 
 | Nº | Data | Descrição | Justificativa | Commit |
 |---|---|---|---|---|
-| - | - | - | - | - |
+| 1 | 17/09/2026 | Contagem direta (Bloco D): de 6 visitas de 2 horas (3 por unidade, 25/09 a 11/10) para 4 visitas de 3 horas (2 por unidade), metade na quinzena pós-pagamento dos servidores estaduais da Bahia (29/09 a 13/10) e metade na quinzena pré-pagamento (14/10 a 28/10), cada par com 1 dia útil e 1 de fim de semana, em três turnos fixos. O script do sorteio passa a ser `_src/[D] Contagem direta de ocupacao/build_contagem_sorteio.py`, com a mesma semente | Incluir o ciclo de renda como fonte de variação da ocupação e cobrir o horário de funcionamento com menos deslocamentos. Feita antes de qualquer visita e antes da coleta e da análise dos Blocos B e C; a análise da contagem é exploratória (§9) | registrado no commit desta emenda |
 
 ## 11 SOFTWARE
 

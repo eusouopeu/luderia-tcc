@@ -1,6 +1,10 @@
 # CRONOGRAMA INDIVIDUAL - TCC LUDERIA
 
-## Marcos definidos pela orientação
+Atualizado em 17/09/2026.
+
+As semanas vão de sábado a sexta-feira. Assim, cada entrega definida pela orientação cai no último dia de uma semana.
+
+## Entregas definidas pela orientação
 
 | Data | Dia | Entrega |
 |---|---|---|
@@ -8,64 +12,89 @@
 | 02/10/2026 | sexta | Projeto consolidado |
 | 16/10/2026 | sexta | Coleta e organização dos dados em estágio avançado |
 | 30/10/2026 | sexta | Primeira versão dos resultados e análises |
-| 06/11/2026 | sexta | Versão completa para leitura da orientadora |
+| 06/11/2026 | sexta | Versão completa para leitura da orientação |
 | 16/11/2026 | segunda | Versão final para a banca (data de referência) |
 | Final de novembro | - | Defesa |
 
 Feriados nacionais no período: 12/10 (segunda), 02/11 (segunda) e 20/11 (sexta).
 
-## Caminho crítico
+## Situação em 17/09/2026
 
-Cinco atividades condicionam o restante do cronograma:
+| Etapa | Situação |
+|---|---|
+| Introdução (cap. 1) | Rascunho concluído |
+| Registro prévio das hipóteses | Concluído e datado em 14/09 |
+| Bases públicas (IBGE, CAGED, FipeZap, Simples Nacional, Banco Central) | Coletadas e tratadas em 14/09 |
+| Busca dos estabelecimentos concorrentes nas 27 capitais | Concluída: 737 candidatos nas capitais e em suas regiões metropolitanas |
+| Seleção final dos estabelecimentos a analisar | Em andamento: falta definir o número mínimo de avaliações e confirmar quais são espaços de jogo |
+| Avaliações, perfis dos avaliadores, cardápios e contagem de ocupação | Não iniciados |
 
-1. **Coleta dos perfis dos avaliadores (Bloco C).** É a coleta mais longa: até 3.650 perfis. Começa assim que as primeiras avaliações do Bloco B estiverem copiadas e termina até 14/10.
-2. **Registro prévio.** Precisa estar datado no repositório até 27/09, antes de qualquer análise das avaliações. As emendas vindas da metade exploratória fecham até 25/10, antes de abrir a metade confirmatória.
-3. **Validação do dicionário.** A recodificação exige intervalo mínimo de 14 dias após a primeira codificação (se não houver segunda pessoa). A primeira codificação termina em 02/10; a segunda ocorre entre 16 e 18/10.
-4. **Contagem direta de ocupação (Bloco D).** Seis visitas entre 25/09 e 11/10, em turnos sorteados até 20/09. A calibração da ocupação depende delas.
-5. **Registro de premissas.** O modelo financeiro só é montado depois que ocupação, ticket e custos têm faixa e fonte. A versão 1 fecha em 18/10.
+## Etapas que definem o prazo
+
+Cinco etapas condicionam o restante do cronograma:
+
+1. **Perfis dos avaliadores.** É a coleta mais longa. Começa quando as primeiras avaliações estiverem copiadas e termina até 14/10.
+2. **Validação da codificação das avaliações.** A mesma amostra de 200 avaliações é codificada duas vezes, com intervalo mínimo de 14 dias. A primeira codificação termina em 02/10; a segunda começa em 16/10.
+3. **Emenda ao registro prévio.** Os ajustes feitos na parte exploratória da base são registrados até 23/10. Só depois disso a parte confirmatória é aberta.
+4. **Contagem de ocupação na São Jogue.** São quatro visitas entre 29/09 e 28/10. A estimativa de ocupação depende delas.
+5. **Registro de premissas.** O modelo financeiro só é montado quando ocupação, ticket médio e custos têm faixa e fonte.
+
+## Contagem de ocupação na São Jogue
+
+A contagem é a única coleta presencial do trabalho. Ela mede quantas mesas e pessoas ocupam a luderia em cada horário.
+
+- **Quatro visitas no total**, duas em cada unidade da São Jogue.
+- **Dois períodos**, definidos pelo pagamento dos servidores estaduais da Bahia (29/09 para inativos e pensionistas; 30/09 para ativos):
+  - quinzena após o pagamento: 29/09 a 13/10;
+  - quinzena antes do pagamento seguinte: 14/10 a 28/10.
+- **Em cada quinzena**, uma visita em dia útil (segunda a quinta) e uma no fim de semana (sexta a domingo). Cada unidade recebe uma visita por quinzena e uma de cada tipo de dia.
+- **Horário:** a São Jogue funciona das 12h00 às 22h00. Cada visita dura 3 horas, em um de três turnos (12h00-15h00, 15h30-18h30 ou 19h00-22h00), com uma contagem a cada 30 minutos.
+- **Sorteio:** os dias e turnos são sorteados na planilha `contagem_sorteio_visitas.xlsx` antes da primeira visita. Feriados e dias sem funcionamento ficam de fora.
+
+Fonte das datas de pagamento: Governo da Bahia, Tabela de Pagamentos 2026 dos servidores estaduais.
 
 ## Cronograma semanal
 
 | Semana | Período | Coleta e análise | Escrita | Entrega |
 |---|---|---|---|---|
-| 1 | 14/09 a 20/09 | Conclusão da curadoria dos estabelecimentos (Bloco A); início da cópia das avaliações (Bloco B); início da coleta dos cardápios; levantamento dos horários de funcionamento da São Jogue; **sorteio dos turnos da contagem** (script com semente fixa) e formulário de observação | Leitura das cinco referências essenciais; cronograma | **18/09: cronograma** |
-| 2 | 21/09 a 27/09 | Conclusão da cópia das avaliações (27/09); início da coleta dos perfis (Bloco C); Censo 2022, estimativas populacionais e PNAD Contínua; manual de codificação e dicionário versão 0; primeiras visitas da contagem, conforme sorteio | **Registro prévio datado até 27/09**; projeto: hipóteses, quadro de itens e modelo de análise; rascunho do cap. 2 | - |
-| 3 | 28/09 a 04/10 | Divisão dos avaliadores em metade exploratória e confirmatória (28/09); primeira codificação manual das 200 avaliações da amostra de validação (até 02/10); conclusão dos cardápios (30/09); coleta dos perfis; visitas da contagem | Revisão final do projeto; rascunho do cap. 3 | **02/10: projeto consolidado** |
-| 4 | 05/10 a 11/10 | Coleta dos perfis; POF, PAS, RAIS/CAGED, FipeZap, Simples Nacional, CONCLA, SGS e Focus; **últimas visitas da contagem (até 11/10)**; estrutura do modelo financeiro (abas de premissas, cálculo e cenários) | Rascunho do cap. 5 | - |
-| 5 | 12/10 a 18/10 | **Conclusão dos perfis (14/10)**; organização das bases e do dicionário de dados; segunda codificação (16 a 18/10), kappa e F1; revisão do dicionário; análise da contagem e modelo de calibração; registro de premissas versão 1 | Rascunho do cap. 6 | **16/10: coleta em estágio avançado** |
-| 6 | 19/10 a 25/10 | Análises exploratórias na metade exploratória; nova rodada de validação, se alguma variável for reprovada; **emenda ao registro prévio até 25/10**; estimativa de ocupação e fluxo em faixa; modelo financeiro versão 1 | Rascunhos dos caps. 7 e 8 | - |
-| 7 | 26/10 a 01/11 | **Análise confirmatória (rodada única)**; estatísticas descritivas na base completa; indicadores de viabilidade nos três cenários; tornado; pontos de ruptura; checagens de coerência | Caps. 5, 6 e 9 completos; rascunho do cap. 10 | **30/10: primeira versão dos resultados** |
-| 8 | 02/11 a 08/11 | Ajustes finais no modelo; tabelas e figuras; Monte Carlo (opcional) | Cap. 10 completo; caps. 4 e 11; revisão da introdução; apêndices (manual de codificação, registro prévio, protocolo da contagem); referências | **06/11: versão completa** |
-| 9 | 09/11 a 15/11 | Atualização do site de apresentação | Incorporação das observações da orientadora; revisão de estilo e das normas ABNT; conferência das referências marcadas [A VERIFICAR] | - |
-| 10 | 16/11 a 22/11 | - | Preparação da apresentação | **16/11: versão final para a banca** |
-| 11 | 23/11 a 30/11 | - | Ensaios da apresentação | **Defesa** |
+| 1 | 12/09 a 18/09 | Coleta e tratamento das bases públicas (14/09); busca e triagem dos estabelecimentos concorrentes; recorte pelas regiões metropolitanas das capitais; datas de pagamento dos servidores e planilha de sorteio da contagem | Registro prévio (14/09); leitura das cinco referências essenciais; cronograma | **18/09: cronograma** |
+| 2 | 19/09 a 25/09 | Definição do número mínimo de avaliações por estabelecimento (teste em amostra); lista final de estabelecimentos; início da cópia das avaliações; início da coleta dos cardápios; sorteio das visitas e formulário de observação da contagem; manual de codificação das avaliações | Projeto: hipóteses, quadro de variáveis e modelo de análise; rascunho do cap. 2 | - |
+| 3 | 26/09 a 02/10 | Conclusão da cópia das avaliações (27/09); início da coleta dos perfis dos avaliadores; divisão da base em parte exploratória e parte confirmatória (28/09); primeira codificação das 200 avaliações da amostra (até 02/10); conclusão dos cardápios (30/09); visitas da contagem, conforme sorteio (quinzena pós-pagamento a partir de 29/09) | Revisão final do projeto; rascunho do cap. 3 | **02/10: projeto consolidado** |
+| 4 | 03/10 a 09/10 | Coleta dos perfis; visitas da contagem, conforme sorteio; estrutura do modelo financeiro (premissas, cálculos e cenários) | Rascunho do cap. 5 | - |
+| 5 | 10/10 a 16/10 | Fim da quinzena pós-pagamento (13/10) e início da pré-pagamento (14/10); conclusão dos perfis (14/10); organização das bases e do dicionário de dados; segunda codificação das 200 avaliações (a partir de 16/10); primeira versão do registro de premissas | Rascunho do cap. 6 | **16/10: coleta em estágio avançado** |
+| 6 | 17/10 a 23/10 | Concordância entre as duas codificações e revisão do dicionário; análises da parte exploratória; emenda ao registro prévio (até 23/10); modelo financeiro versão 1; visitas da contagem, conforme sorteio | Rascunhos dos caps. 7 e 8 | - |
+| 7 | 24/10 a 30/10 | Última visita da contagem (até 28/10); estimativa de ocupação e fluxo, em faixa; análise da parte confirmatória (rodada única); estatísticas descritivas; viabilidade nos três cenários; análise de sensibilidade e pontos de ruptura | Caps. 5, 6 e 9 completos; rascunho do cap. 10 | **30/10: primeira versão dos resultados** |
+| 8 | 31/10 a 06/11 | Ajustes finais no modelo financeiro; tabelas e figuras; simulação de Monte Carlo (opcional) | Cap. 10 completo; caps. 4 e 11; revisão da introdução; apêndices; referências | **06/11: versão completa** |
+| 9 | 07/11 a 13/11 | Atualização do site de apresentação | Ajustes pedidos pela orientação; revisão de estilo e das normas ABNT; conferência das referências pendentes | - |
+| 10 | 14/11 a 20/11 | - | Preparação da apresentação | **16/11: versão final para a banca** |
+| 11 | 21/11 a 27/11 | - | Ensaios da apresentação | **Defesa (data a definir)** |
 
-## Distribuição dos capítulos
+## Capítulos
 
 | Capítulo | Rascunho | Versão completa |
 |---|---|---|
-| 1 Introdução | Concluído | 08/11 (revisão) |
-| 2 Referencial teórico | 27/09 | 06/11 |
-| 3 Metodologia | 04/10 | 06/11 |
+| 1 Introdução | Concluído | 06/11 (revisão) |
+| 2 Referencial teórico | 25/09 | 06/11 |
+| 3 Metodologia | 02/10 | 06/11 |
 | 4 Sumário executivo | 06/11 | 06/11 |
-| 5 Análise de mercado | 11/10 | 30/10 |
-| 6 Plano de marketing | 18/10 | 30/10 |
-| 7 Plano operacional | 25/10 | 06/11 |
-| 8 Aspectos jurídicos | 25/10 | 06/11 |
-| 9 Plano financeiro | 25/10 | 30/10 |
-| 10 Riscos | 01/11 | 06/11 |
+| 5 Análise de mercado | 09/10 | 30/10 |
+| 6 Plano de marketing | 16/10 | 30/10 |
+| 7 Plano operacional | 23/10 | 06/11 |
+| 8 Aspectos jurídicos | 23/10 | 06/11 |
+| 9 Plano financeiro | 23/10 | 30/10 |
+| 10 Riscos | 30/10 | 06/11 |
 | 11 Considerações finais | 06/11 | 06/11 |
-| Referências e apêndices | contínuo | 06/11 |
+| Referências e apêndices | Contínuo | 06/11 |
 
 ## Plano de corte em caso de atraso
 
-Os itens abaixo saem do escopo, nesta ordem, se uma entrega atrasar mais de três dias. Os itens cortados entram nas considerações finais como próximos passos.
+Se uma entrega atrasar mais de três dias, os itens abaixo saem do escopo, nesta ordem. Os itens cortados entram nas considerações finais como próximos passos.
 
-1. Simulação de Monte Carlo (a sensibilidade univariada e os pontos de ruptura permanecem).
-2. Sobreposição de avaliadores entre luderias.
-3. Bloco F (jogos): retirado da pesquisa.
-4. Atualização do site de apresentação (as figuras do texto permanecem).
-5. Perfis dos avaliadores reduzidos a uma amostra sorteada de 20 avaliadores por estabelecimento. Nesse caso, H1 e H2 usam a nota bruta com efeito fixo por estabelecimento, e a nota centrada fica restrita à amostra.
-6. Contagem direta reduzida a duas visitas por unidade (uma em dia útil e uma em sexta ou sábado).
+1. Simulação de Monte Carlo. A análise de sensibilidade e os pontos de ruptura permanecem.
+2. Comparação de avaliadores em comum entre luderias.
+3. Base de jogos (Ludopedia e BoardGameGeek).
+4. Atualização do site de apresentação. As figuras do texto permanecem.
+5. Perfis dos avaliadores reduzidos a uma amostra de 20 avaliadores por estabelecimento.
+6. Contagem de ocupação reduzida a duas visitas, uma por quinzena, ambas no fim de semana.
 
-**Não entram no plano de corte:** registro prévio, validação do dicionário e registro de premissas. São baratos e sustentam a robustez do trabalho.
+**Não entram no plano de corte:** registro prévio, validação da codificação e registro de premissas. Custam pouco e sustentam a confiabilidade dos resultados.
