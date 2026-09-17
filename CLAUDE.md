@@ -45,6 +45,10 @@ A numeração dos arquivos de instrução é a ordem de leitura, não o número 
 ## Princípios e preferências
 
 - **Escrita:** usar a skill `meu-estilo-escrita` para qualquer texto em prosa do TCC (frases curtas, lógica dedutiva, tom impessoal, vocabulário técnico direto).
+- **Tabela agregada fecha com o total.** Em toda tabela com linhas por grupo (capital, UF, região, categoria) e linha de total:
+  - cada unidade (place_id, avaliação, jogo) conta em **um único grupo**, atribuído por atributo próprio dela (ex.: UF do endereço), nunca pelo contexto da coleta (ex.: capital da busca que a encontrou);
+  - antes de entregar, somar as linhas de cada coluna e comparar com o total; a diferença deve ser zero. Se a tabela for de contagem não exclusiva por desenho, isso fica escrito no nome da coluna e na docstring, e o total não é apresentado como soma;
+  - vale também ao rodar de novo um script existente: ler a regra de atribuição antes de confiar na saída. Gráfico feito a partir da linha de total não dispensa conferir as linhas.
 - **Decisão antes de descrição:** todo resultado precisa responder "que decisão do plano isso muda?". Se não muda nenhuma, vai para apêndice ou sai.
 - **Nada de número sem fonte.** Toda afirmação quantitativa tem fonte específica (instituição, base, recorte, data), não "internet" ou "estudos mostram".
 - **Nada de referência inventada.** Não citar obra que não foi localizada e conferida. Referência não verificada fica marcada como `[A VERIFICAR]`.
