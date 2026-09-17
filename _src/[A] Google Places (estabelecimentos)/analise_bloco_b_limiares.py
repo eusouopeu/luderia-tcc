@@ -7,7 +7,9 @@ Também mede quantos estabelecimentos da lista manual do autor (Rio de Janeiro)
 a busca automática encontrou: primeira estimativa de cobertura.
 
 Saídas em _data/processed/[A] Estabelecimentos e cardapios/:
-  bloco_b_limiares_avaliacoes.csv - capital (UF do endereço) x limiar (total e só ativos)
+  bloco_b_limiares_avaliacoes.csv - capital (UF do endereço) x limiar (total e só ativos),
+      com a coluna REGIC e as capitais agrupadas em Metrópoles e Capitais
+      Regionais; a linha de cada grupo, acima das suas capitais, é a soma delas
   bloco_b_cobertura_lista_manual.csv - item da lista manual x encontrado
 
 Uso:
@@ -26,6 +28,7 @@ CURADORIA_PATH = PROCESSED / "bloco_b_planilha_curadoria.csv"
 DESCARTADOS_PATH = PROCESSED / "bloco_b_descartados_por_filtro.csv"
 CANDIDATOS_PATH = RAW / "bloco_b_candidatos.csv"
 LISTA_MANUAL_PATH = RAW / "bloco_b_lista_manual_rj.csv"
+REGIC_PATH = RAW / "Metrópoles.md"
 OUT_LIMIARES = PROCESSED / "bloco_b_limiares_avaliacoes.csv"
 OUT_COBERTURA = PROCESSED / "bloco_b_cobertura_lista_manual.csv"
 
@@ -56,6 +59,35 @@ RE_UF = re.compile(r"[,-]\s*([^,-]+?)\s*,(?:\s*[\d-]+\s*,)?\s*Bra[sz]il\s*$")
 def normaliza(texto):
     sem_acento = unicodedata.normalize("NFKD", texto or "").encode("ascii", "ignore").decode("ascii")
     return "".join(ch for ch in sem_acento.lower() if ch.isalnum())
+
+
+# Grupos da pesquisa (REGIC 2018, IBGE), na ordem da tabela.
+GRUPOS_REGIC = ["Metrópoles", "Capitais Regionais"]
+# Metrópoles.md traz os níveis no plural; a coluna REGIC usa o singular.
+NIVEL_SINGULAR = {
+    "Grande Metrópole Nacional": "Grande Metrópole Nacional",
+    "Metrópoles Nacionais": "Metrópole Nacional",
+    "Metrópoles": "Metrópole",
+    "Capitais Regionais A": "Capital Regional A",
+    "Capitais Regionais B": "Capital Regional B",
+    "Capitais Regionais C": "Capital Regional C",
+}
+
+
+def load_regic():
+    """Lê Metrópoles.md (divisão extraída pelo autor da REGIC 2018): '# ' é o
+    grupo, '## ' o nível, '- ' a capital. Devolve capital -> (grupo, nível)."""
+    regic, grupo, nivel = {}, None, None
+    for linha in REGIC_PATH.read_text(encoding="utf-8").splitlines():
+        linha = linha.strip()
+        if linha.startswith("## "):
+            nivel = NIVEL_SINGULAR[linha[3:].strip()]
+        elif linha.startswith("# "):
+            grupo = linha[2:].strip()
+            assert grupo in GRUPOS_REGIC, grupo
+        elif linha.startswith("- "):
+            regic[linha[2:].strip()] = (grupo, nivel)
+    return regic
 
 
 def capital_do_endereco(r):
@@ -91,14 +123,34 @@ def limiares():
                     if r["ativo_6m"] == "sim":
                         alvo[f"min_{lim}_ativos"] += 1
 
-    colunas = ["capital"] + [c for lim in LIMIARES for c in (f"min_{lim}", f"min_{lim}_ativos")]
+    regic = load_regic()
+    sem_regic = set(contagem) - set(regic)
+    assert not sem_regic, f"capitais sem classificação REGIC: {sem_regic}"
+
+    metricas = [c for lim in LIMIARES for c in (f"min_{lim}", f"min_{lim}_ativos")]
+    colunas = ["capital", "REGIC"] + metricas
+    saida = []
+    for grupo in GRUPOS_REGIC:
+        capitais = sorted(c for c, (g, _) in regic.items() if g == grupo)
+        soma = {m: sum(contagem[c].get(m, 0) for c in capitais) for m in metricas}
+        saida.append({"capital": grupo, "REGIC": "", **soma})
+        saida += [
+            {"capital": c, "REGIC": regic[c][1], **{m: contagem[c].get(m, 0) for m in metricas}}
+            for c in capitais
+        ]
+    linha_total = {"capital": "TOTAL_UNICOS", "REGIC": "", **{m: total.get(m, 0) for m in metricas}}
+
+    # Fechamento: a soma dos grupos tem de dar o total de únicos (CLAUDE.md).
+    for m in metricas:
+        soma_grupos = sum(r[m] for r in saida if r["capital"] in GRUPOS_REGIC)
+        assert soma_grupos == linha_total[m], f"{m}: grupos {soma_grupos} != total {linha_total[m]}"
+
     with open(OUT_LIMIARES, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=colunas)
         writer.writeheader()
-        for capital in sorted(contagem):
-            writer.writerow({"capital": capital, **{c: contagem[capital].get(c, 0) for c in colunas[1:]}})
-        writer.writerow({"capital": "TOTAL_UNICOS", **{c: total.get(c, 0) for c in colunas[1:]}})
-    print(f"OK: {OUT_LIMIARES.name}")
+        writer.writerows(saida)
+        writer.writerow(linha_total)
+    print(f"OK: {OUT_LIMIARES.name} - soma dos grupos confere com o total")
 
 
 def cobertura():

@@ -1,29 +1,31 @@
-capital,min_0,min_0_ativos,min_10,min_10_ativos,min_20,min_20_ativos,min_30,min_30_ativos,min_50,min_50_ativos,min_100,min_100_ativos
-Aracaju,20,3,14,3,12,3,12,3,9,2,6,1
-Belo Horizonte,37,9,30,8,27,8,27,8,22,6,20,5
-Belém,25,5,19,4,15,3,10,2,9,2,6,1
-Boa Vista,11,1,6,1,5,0,4,0,3,0,2,0
-Brasília,24,15,20,13,17,11,16,10,15,9,11,7
-Campo Grande,31,8,24,8,23,8,20,6,14,4,9,2
-Cuiabá,23,2,11,1,9,1,6,1,5,1,5,1
-Curitiba,34,12,30,11,29,10,25,8,22,7,16,5
-Florianópolis,34,13,26,11,21,9,19,8,14,5,9,1
-Fortaleza,43,5,34,5,33,5,31,5,24,4,20,4
-Goiânia,36,10,26,9,24,8,22,7,18,6,13,3
-João Pessoa,29,7,23,5,22,4,21,4,14,3,9,2
-Macapá,13,4,10,2,9,2,8,2,5,0,3,0
-Maceió,28,8,16,7,12,5,12,5,9,5,8,4
-Manaus,26,7,23,7,18,6,16,4,14,3,10,1
-Natal,23,6,19,6,17,5,15,4,13,4,11,4
-Palmas,20,7,13,3,12,3,9,2,9,2,5,2
-Porto Alegre,34,11,28,8,27,8,27,8,26,7,14,2
-Porto Velho,9,2,7,2,5,1,2,0,1,0,1,0
-Recife,32,7,28,6,28,6,24,6,22,6,16,3
-Rio Branco,11,4,7,3,6,2,5,2,3,1,2,1
-Rio de Janeiro,47,18,40,16,33,14,27,13,22,11,14,6
-Salvador,27,6,19,5,17,3,17,3,12,2,8,1
-São Luís,26,4,12,3,11,3,9,1,7,1,4,0
-São Paulo,63,21,58,20,47,17,46,17,43,17,29,9
-Teresina,20,5,16,4,13,2,11,2,6,2,3,0
-Vitória,28,4,20,4,14,2,13,1,11,1,9,1
-TOTAL_UNICOS,754,204,579,175,506,149,454,132,372,111,263,66
+capital,REGIC,min_0,min_0_ativos,min_10,min_10_ativos,min_20,min_20_ativos,min_30,min_30_ativos,min_50,min_50_ativos,min_100,min_100_ativos
+Metrópoles,,490,143,401,127,350,110,320,100,274,86,195,49
+Belo Horizonte,Metrópole,37,9,30,8,27,8,27,8,22,6,20,5
+Belém,Metrópole,25,5,19,4,15,3,10,2,9,2,6,1
+Brasília,Metrópole Nacional,24,15,20,13,17,11,16,10,15,9,11,7
+Curitiba,Metrópole,34,12,30,11,29,10,25,8,22,7,16,5
+Florianópolis,Metrópole,34,13,26,11,21,9,19,8,14,5,9,1
+Fortaleza,Metrópole,43,5,34,5,33,5,31,5,24,4,20,4
+Goiânia,Metrópole,36,10,26,9,24,8,22,7,18,6,13,3
+Manaus,Metrópole,26,7,23,7,18,6,16,4,14,3,10,1
+Porto Alegre,Metrópole,34,11,28,8,27,8,27,8,26,7,14,2
+Recife,Metrópole,32,7,28,6,28,6,24,6,22,6,16,3
+Rio de Janeiro,Metrópole Nacional,47,18,40,16,33,14,27,13,22,11,14,6
+Salvador,Metrópole,27,6,19,5,17,3,17,3,12,2,8,1
+São Paulo,Grande Metrópole Nacional,63,21,58,20,47,17,46,17,43,17,29,9
+Vitória,Metrópole,28,4,20,4,14,2,13,1,11,1,9,1
+Capitais Regionais,,264,61,178,48,156,39,134,32,98,25,68,17
+Aracaju,Capital Regional A,20,3,14,3,12,3,12,3,9,2,6,1
+Boa Vista,Capital Regional C,11,1,6,1,5,0,4,0,3,0,2,0
+Campo Grande,Capital Regional A,31,8,24,8,23,8,20,6,14,4,9,2
+Cuiabá,Capital Regional A,23,2,11,1,9,1,6,1,5,1,5,1
+João Pessoa,Capital Regional A,29,7,23,5,22,4,21,4,14,3,9,2
+Macapá,Capital Regional C,13,4,10,2,9,2,8,2,5,0,3,0
+Maceió,Capital Regional A,28,8,16,7,12,5,12,5,9,5,8,4
+Natal,Capital Regional A,23,6,19,6,17,5,15,4,13,4,11,4
+Palmas,Capital Regional B,20,7,13,3,12,3,9,2,9,2,5,2
+Porto Velho,Capital Regional B,9,2,7,2,5,1,2,0,1,0,1,0
+Rio Branco,Capital Regional C,11,4,7,3,6,2,5,2,3,1,2,1
+São Luís,Capital Regional A,26,4,12,3,11,3,9,1,7,1,4,0
+Teresina,Capital Regional A,20,5,16,4,13,2,11,2,6,2,3,0
+TOTAL_UNICOS,,754,204,579,175,506,149,454,132,372,111,263,66
