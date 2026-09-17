@@ -1,6 +1,7 @@
 """
 Bloco A - análise de sensibilidade do recorte: quantos candidatos da planilha
-de curadoria passam em cada limiar de volume de avaliações, por capital. Serve
+de curadoria passam em cada limiar de volume de avaliações, por capital. A
+curadoria já está no recorte da região metropolitana da capital (recorte_rm.py). Serve
 para escolher o limiar pela distribuição, e não antes de ver os dados.
 
 Também mede quantos estabelecimentos da lista manual do autor (Rio de Janeiro)
@@ -17,9 +18,10 @@ Uso:
 """
 import csv
 import pathlib
-import re
 import unicodedata
 from collections import defaultdict
+
+from recorte_rm import classifica, no_recorte
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 RAW = ROOT / "_data" / "raw" / "[A] Estabelecimentos e cardapios"
@@ -33,33 +35,6 @@ OUT_LIMIARES = PROCESSED / "bloco_b_limiares_avaliacoes.csv"
 OUT_COBERTURA = PROCESSED / "bloco_b_cobertura_lista_manual.csv"
 
 LIMIARES = [0, 10, 20, 30, 50, 100]
-
-# Capital de cada UF, com a UF por sigla e por nome (o Google usa os dois).
-CAPITAL_POR_UF = {
-    "AC": "Rio Branco", "AL": "Maceió", "AM": "Manaus", "AP": "Macapá",
-    "BA": "Salvador", "CE": "Fortaleza", "DF": "Brasília", "ES": "Vitória",
-    "GO": "Goiânia", "MA": "São Luís", "MG": "Belo Horizonte", "MS": "Campo Grande",
-    "MT": "Cuiabá", "PA": "Belém", "PB": "João Pessoa", "PE": "Recife",
-    "PI": "Teresina", "PR": "Curitiba", "RJ": "Rio de Janeiro", "RN": "Natal",
-    "RO": "Porto Velho", "RR": "Boa Vista", "RS": "Porto Alegre", "SC": "Florianópolis",
-    "SE": "Aracaju", "SP": "São Paulo", "TO": "Palmas",
-}
-UF_POR_NOME = {
-    "acre": "AC", "alagoas": "AL", "amazonas": "AM", "amapa": "AP", "bahia": "BA",
-    "ceara": "CE", "distritofederal": "DF", "espiritosanto": "ES", "goias": "GO",
-    "maranhao": "MA", "minasgerais": "MG", "matogrossodosul": "MS", "matogrosso": "MT",
-    "para": "PA", "paraiba": "PB", "pernambuco": "PE", "piaui": "PI", "parana": "PR",
-    "riodejaneiro": "RJ", "riograndedonorte": "RN", "rondonia": "RO", "roraima": "RR",
-    "riograndedosul": "RS", "santacatarina": "SC", "sergipe": "SE", "saopaulo": "SP",
-    "tocantins": "TO",
-}
-RE_UF = re.compile(r"[,-]\s*([^,-]+?)\s*,(?:\s*[\d-]+\s*,)?\s*Bra[sz]il\s*$")
-
-
-def normaliza(texto):
-    sem_acento = unicodedata.normalize("NFKD", texto or "").encode("ascii", "ignore").decode("ascii")
-    return "".join(ch for ch in sem_acento.lower() if ch.isalnum())
-
 
 # Grupos da pesquisa (REGIC 2018, IBGE), na ordem da tabela.
 GRUPOS_REGIC = ["Metrópoles", "Capitais Regionais"]
@@ -90,20 +65,17 @@ def load_regic():
     return regic
 
 
+def normaliza(texto):
+    sem_acento = unicodedata.normalize("NFKD", texto or "").encode("ascii", "ignore").decode("ascii")
+    return "".join(ch for ch in sem_acento.lower() if ch.isalnum())
+
+
 def capital_do_endereco(r):
-    """Capital da UF do endereço. A capital da busca não serve para contar: a
-    busca por termo x capital devolve casas de outros estados, e 61 candidatos
-    foram achados em mais de uma capital (um deles em 21), o que fazia a soma
-    das capitais passar do total. Sem UF legível, usa a capital da busca só se
-    ela for única."""
-    m = RE_UF.search(r["endereco"] or "")
-    if m:
-        uf = m.group(1).strip()
-        uf = uf if uf in CAPITAL_POR_UF else UF_POR_NOME.get(normaliza(uf), "")
-        if uf:
-            return CAPITAL_POR_UF[uf]
-    buscas = [c for c in (r["capital_busca"] or "").split(";") if c]
-    return buscas[0] if len(buscas) == 1 else "sem_capital"
+    """Capital da UF do endereço (recorte_rm.py). A capital da busca não serve
+    para contar: a busca por termo x capital devolve casas de outros estados,
+    e 61 candidatos foram achados em mais de uma capital (um deles em 21), o
+    que fazia a soma das capitais passar do total."""
+    return classifica(r["endereco"])["capital_referencia"] or "sem_capital"
 
 
 def limiares():
@@ -113,6 +85,8 @@ def limiares():
     contagem = defaultdict(lambda: defaultdict(int))
     total = defaultdict(int)
     for r in linhas:
+        # A curadoria já vem no recorte da RM (build_bloco_b_planilha.py).
+        assert no_recorte(r["endereco"]), f"fora do recorte da RM: {r['nome']}"
         volume = int(float(r["volume_avaliacoes"] or 0))
         # Cada place_id conta uma vez, na capital da UF do seu endereço; assim
         # a soma das capitais fecha com o total.

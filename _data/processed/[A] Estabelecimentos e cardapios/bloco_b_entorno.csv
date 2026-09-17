@@ -1,7 +1,6 @@
 place_id,nome,endereco,capital_busca,lat,lng,qt_praias_parques_500m,qt_praias_parques_1000m,qt_shoppings_grandes_500m,qt_shoppings_grandes_1000m,qt_estacoes_metro_500m,qt_estacoes_metro_1000m
 ChIJa6-7T2uxGgcR4K-1owvXsuI,Multiverso Game Point,"Tv. 5 Cj Jorn O Dantas, 37 - São Conrado, Aracaju - SE, 49042-971, Brazil",Aracaju,-10.963738,-37.0835852,1,4,0,0,0,0
 ChIJU4Wj-2mzGgcR0Jw7mlyGN-Q,Tabuleiro do Acarajé,"R. Rio Grande do Sul, 197 - Siqueira Campos, Aracaju - SE, 49075-510, Brazil",Aracaju,-10.9124736,-37.0695374,2,7,0,0,0,0
-ChIJO9bPE0GdEZURRD6c41YpCRI,Beer & Boards,"R. Gen. Abreu, 342 - Cidade Nova, Rio Grande - RS, 96202-570, Brazil",Aracaju;Belém;Boa Vista;Campo Grande;Natal;Porto Velho;Rio de Janeiro,-32.0424838,-52.111675,2,3,0,0,0,0
 ChIJY_lqHVLl3JQRvDHacOMDKuc,BoardZ Game Pub,"R. Chile, 2077 - Rebouças, Curitiba - PR, 80220-181, Brazil",Aracaju;Boa Vista;Campo Grande;Curitiba;João Pessoa;Rio de Janeiro,-25.4521863,-49.268752799999994,2,9,0,0,0,0
 ChIJbZRHQPRfzpQRz97-ZOg0yXA,Castelos Bar & Boardgames,"R. Serra de Botucatu, 995 - Vila Gomes Cardim, São Paulo - SP, 03317-000, Brazil",Aracaju;São Paulo,-23.542591299999998,-46.5621838,5,17,0,0,0,1
 ChIJpzB8zc2XpgARoJTUu90J6Pw,Comdado Bar e Jogos,"Av. Amazonas, 2310 - Santo Agostinho, Belo Horizonte - MG, 30180-012, Brazil",Belo Horizonte,-19.9276457,-43.954388200000004,5,7,0,1,0,0
@@ -15,13 +14,11 @@ ChIJcRvp0r15GZURj1bFNF3n5jw,HEX Board Game Café,"R. Riachuelo, 1339 - Sala 1003
 ChIJTaG5ALpZzpQRUDErQ-RkfTs,Ludus Luderia,"R. Treze de Maio, 972 - Bela Vista, São Paulo - SP, 01327-000, Brazil",Belém;Boa Vista;Campo Grande;Cuiabá;Macapá;Maceió;Manaus;Natal;Palmas;Porto Velho;Rio de Janeiro;São Luís;São Paulo;Teresina;Vitória,-23.5618382,-46.6462097,3,21,0,2,1,6
 ChIJZz29dnVXzpQRvRh7_YKyUN4,Encounter | Jogos de Tabuleiro | Board Games,"Av. dos Eucaliptos, 204 - Moema, São Paulo - SP, 04517-050, Brazil",Belém;Campo Grande;João Pessoa;Maceió;Recife;São Paulo,-23.606458399999998,-46.6738581,5,15,0,1,0,1
 ChIJoTlvBfMbFgcRHvuCKHBQrXQ,São Jogue - Bela Vista,"Alameda Euvaldo Luz, 92 - Pernambués, Salvador - BA, 41098-020, Brazil",Boa Vista;Brasília;João Pessoa;Natal;Salvador,-12.9694361,-38.4736806,1,3,1,1,1,2
-ChIJ73mEeqQdzpQRKti9DbyjiWM,House Rules Ludobar,"Av. São Paulo, 614 - Boqueirão, Praia Grande - SP, 11701-380, Brazil",Boa Vista;Campo Grande;Natal;São Paulo,-24.007962499999998,-46.4185685,11,31,0,0,0,0
 ChIJOczn8z7l3JQRNBEL_ZJ3iQo,Joyjoy Café,"Av. Presidente Affonso Camargo, 1939 - Lj 02 - Cristo Rei, Curitiba - PR, 80050-370, Brazil",Boa Vista;Curitiba,-25.437043300000003,-49.241465399999996,4,21,0,0,0,0
 ChIJ0yXbI35IxwcR0_jLi-uINUU,Balboa's Hobby Games,"R. Maria Tomásia, 208 - Aldeota, Fortaleza - CE, 60150-170, Brazil",Boa Vista;Fortaleza;João Pessoa;Manaus,-3.7346889,-38.5002607,2,4,5,5,0,0
 ChIJKeHwNv5ZzpQRlmzx9rCTWdM,Bodogami Restaurante e Cafeteria,"Av. da Liberdade, 456 - Liberdade, São Paulo - SP, 01502-001, Brazil",Boa Vista;Goiânia;Rio de Janeiro;São Paulo,-23.5568468,-46.6365999,8,26,0,0,1,3
 ChIJRUjwU66WoGgRzc9yJU7jkwM,Nala Land - Bar de Jogos de Tabuleiro em Recife,"R. Raul Pompéia, 271 - Arruda, Recife - PE, 52120-150, Brazil",Boa Vista;Recife,-8.023975799999999,-34.895067,2,11,0,0,0,0
 ChIJOcVssmeDmQARZZrnWu2mnwA,TabuClub,"R. Newton Prado, 29 - Santa Rosa, Niterói - RJ, 24240-004, Brazil",Boa Vista;Rio de Janeiro,-22.898584099999997,-43.102339699999995,2,4,0,0,0,0
-ChIJq92vt8sxpJQR-lNNTdp0RLQ,TABLE GAMES (Burgers),"Av. Cel. Belchior de Godói, 1330 - Santa Terezinha, Araguari - MG, 38447-218, Brazil",Boa Vista;Teresina,-18.6405603,-48.2071542,2,10,0,0,0,0
 ChIJfyav9YI9uAARjwbBqcRm2_k,Café Geek Cafeteria e Ludoteca,"R. São Marcos, 127 - Santa Inês, Vila Velha - ES, 29108-050, Brazil",Boa Vista;Vitória,-20.3447463,-40.3108461,2,9,0,0,0,0
 ChIJyXjE650xWpMRJL-J6QbGkt4,FORTALÚDICA - BURGERS & JOGOS,"Guará II QE 26 BLOCO B Lj 31 - Guará, Brasília - DF, 71060-621, Brazil",Brasília,-15.8331212,-47.9838145,2,4,0,0,0,1
 ChIJzdFNP3AyWpMRH2P6HEuhE-I,Loja de Jogos - Asgard,"Rua 25 Sul, Lote 30 Bloco A loja 1 - Águas Claras, Brasília - DF, 71928-720, Brazil",Brasília,-15.843839500000001,-48.0292294,9,17,0,0,1,1
@@ -43,14 +40,12 @@ ChIJMwO7YgDdrAcRiYUURL8xCls,Mokuzai café e jogos,"R. Funcionário Odon Almeida,
 ChIJqQGLHGfnrAcR7cbxZrSPynE,Taverna Mestre Ogro,"R. Alfredo José Athaíde, 189 - ap106 - Alto do Céu, João Pessoa - PB, 58027-740, Brazil",João Pessoa,-7.099467499999999,-34.8694748,2,6,0,0,0,0
 ChIJnyqy8QHhYY0RIHJp_Ofb4v8,4 Fun Geek Store,"Acelino de Leão, 1503 - Buritizal, Macapá - AP, 68901-092, Brazil",Macapá,0.0262662,-51.069543900000006,2,5,0,1,0,0
 ChIJbSfwVQDhYY0Rx5aY3a7TZzQ,Board House - Jogos de Tabuleiro,"Av. Desidério Antônio Coelho, 1189 - Trem, Macapá - AP, 68901-080, Brazil",Macapá,0.026959900000000002,-51.066423799999995,1,5,0,1,0,0
-ChIJpZbpu_zVBQcRuPFD4K5R8Co,Taverna: Game & Café,"R. Srg. Benevides Montes, 214 - Primavera, Arapiraca - AL, 57300-230, Brazil",Maceió,-9.7610538,-36.6584238,2,8,0,0,0,0
 ChIJvXuPLAAFbJIRncOH-f4lasQ,Acerola: A Casa do Acy,"Av. Maués, 700 - Cachoeirinha, Manaus - AM, 69065-070, Brazil",Manaus,-3.1265798000000005,-60.001696300000006,1,3,0,0,0,0
 ChIJf1eUzsUbbJIROHClUemcirk,Player Food,"R. Lapis Lazuli, 6 - Nossa Sra. das Graças, Manaus - AM, 69053-600, Brazil",Manaus,-3.1040804,-60.01650850000001,6,17,1,3,0,0
 ChIJweOclBAQbJIRztG7ZblPNSk,Tetris Game Burger,"Av. Djalma Batista, 31 - Chapada, Manaus - AM, 69053-000, Brazil",Manaus,-3.0978272,-60.02424409999999,3,18,3,3,0,0
 ChIJd5jnFQAFbJIRyaRaoNBV_hg,Vezzo - Doces e Jogos,"Av. Visc. de Porto Alegre, 721 - Praça 14 de Janeiro, Manaus - AM, 69020-130, Brazil",Manaus,-3.1299341999999997,-60.01352310000001,3,11,0,0,0,0
 ChIJHSDPTgF5GZURKmSqKITyoGM,Arcadea Gaming Pub,"R. Gen. Neto, 440 - Moinhos de Vento, Porto Alegre - RS, 90560-020, Brazil",Manaus;Porto Alegre,-30.0215237,-51.206898599999995,6,12,0,3,0,0
 ChIJ1S2JbVz_sgcRhJDPIt6lg5c,Vem pra Mesa Game Center,"Shopping Via Direta - Av. Sen. Salgado Filho, 2233 - Loja 624 - Lagoa Nova, Natal - RN, 59076-000, Brazil",Natal,-5.841018399999999,-35.2093467,6,12,2,2,0,0
-ChIJCdEZv21PpJQRg6vLc_9tIcc,Mestre dos Jogos LudoBar,"R. João Balbino, 537 - Santa Mônica, Uberlândia - MG, 38408-265, Brazil",Palmas,-18.918741600000004,-48.2307426,1,7,0,0,0,0
 ChIJ7UwihgtwmQARd_GtVTEV5Zw,Bar Do K.B. Ludo,"R. Lêda - Jardim Leal, Duque de Caxias - RJ, 25035-550, Brazil",Rio de Janeiro,-22.760841600000003,-43.3131744,1,6,0,0,0,0
 ChIJGTvSWgCDmQARyu8hVg-kaSw,Bubble Planet - Lanchonete e Cardgames,"Av. Roberto Silveira, 349 - loja 103 - Icaraí, Niterói - RJ, 24230-152, Brazil",Rio de Janeiro,-22.9051969,-43.1043065,2,7,0,0,0,0
 ChIJk4ZqIH1_mQARrByPymrpe7E,Donna Gastrobar,"R. Dezenove de Fevereiro, 165 - Botafogo, Rio de Janeiro - RJ, 22280-030, Brazil",Rio de Janeiro,-22.9542377,-43.1853164,2,13,0,3,1,1

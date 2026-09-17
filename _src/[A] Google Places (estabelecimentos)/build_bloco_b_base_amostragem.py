@@ -13,7 +13,9 @@ Decisões:
     do Rio de Janeiro).
   - Estratos pela REGIC 2018 (IBGE), em dois grupos: Metrópoles (14 capitais)
     e Capitais Regionais (13). Divisão extraída pelo autor em Metrópoles.md.
-    Casas fora das capitais ficam fora do recorte.
+    Recorte geográfico: município da capital ou região metropolitana dela
+    (recorte_rm.py); a casa entra no estrato da capital do seu estado. Casas
+    no interior ou em outra RM ficam "fora do recorte".
   - Sorteio: cada casa recebe ALEATÓRIO() na planilha; uma fórmula ordena as
     casas por esse número dentro do estrato, e a aba Amostragem busca a 1ª,
     a 2ª, a 3ª casa de cada estrato. ALEATÓRIO() recalcula a cada edição: o
@@ -33,12 +35,13 @@ Uso:
 """
 import csv
 import pathlib
-import re
 import unicodedata
 from collections import Counter, defaultdict
 from urllib.parse import quote
 
 from openpyxl import Workbook
+
+from recorte_rm import SITUACOES_NO_RECORTE, classifica
 from openpyxl.styles import Alignment, Border, Font, Side
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
@@ -54,12 +57,6 @@ OUT_PATH = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios" / "
 META_POR_ESTRATO = 45
 FORA = "fora do recorte"
 
-# "..., Rio de Janeiro - RJ, 22271-041, Brazil" ou "..., Goiânia, GO, 74595-331, Brasil"
-RE_MUNICIPIO = [
-    re.compile(r",\s*([^,]+?)\s+-\s+([A-Z]{2})(?:,|\s*$)"),
-    re.compile(r"(?:^|[,-])\s*([^,\-]+?),\s*([A-Z]{2}),\s*\d{5}-?\d{3}"),
-]
-
 FONTE = Font(name="Arial", size=10, color="000000")
 NEGRITO = Font(name="Arial", size=10, color="000000", bold=True)
 FINA = Side(style="thin", color="000000")
@@ -68,15 +65,6 @@ FINA = Side(style="thin", color="000000")
 def normaliza(texto):
     sem_acento = unicodedata.normalize("NFKD", texto or "").encode("ascii", "ignore").decode("ascii")
     return sem_acento.lower().strip()
-
-
-def municipio_uf(endereco):
-    for regex in RE_MUNICIPIO:
-        achados = regex.findall(endereco or "")
-        if achados:
-            municipio, uf = achados[-1]
-            return municipio.strip(), uf
-    return "", ""
 
 
 def load_capitais():
@@ -298,9 +286,12 @@ def main():
         endereco = (r["endereco"] or "").strip()
         if not normaliza(endereco).endswith(("brazil", "brasil")):
             continue
-        municipio, uf = municipio_uf(endereco)
-        chave = (normaliza(municipio), uf)
-        estrato, nivel = regic[chave[0]] if chave in capitais else (FORA, "")
+        c = classifica(endereco)
+        municipio, uf = c["municipio"], c["uf"]
+        if c["situacao"] in SITUACOES_NO_RECORTE:
+            estrato, nivel = regic[normaliza(c["capital_referencia"])]
+        else:
+            estrato, nivel = FORA, ""
         linhas.append(
             {
                 "place_id": pid,

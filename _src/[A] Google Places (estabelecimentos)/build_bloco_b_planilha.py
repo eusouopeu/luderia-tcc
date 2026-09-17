@@ -15,6 +15,10 @@ Filtro automático, aplicado antes da curadoria:
   1. Palavra-chave no nome OU no texto das avaliações (até 5 por local).
   2. Endereço no Brasil.
   3. Não marcado como fechado definitivamente pelo Google.
+  4. No recorte geográfico: município da capital do estado ou da região
+     metropolitana dela (recorte_rm.py). Quem passa nos filtros 1 a 3, ou foi
+     aprovado na triagem, mas fica fora da RM vai para os descartados com
+     motivo `fora_da_rm_da_capital`.
 
 A categoria do Google deixou de eliminar candidatos: casas que funcionam como
 espaço de jogo aparecem como loja de jogos ou de brinquedos. A categoria vira
@@ -50,6 +54,8 @@ import json
 import pathlib
 import re
 import unicodedata
+
+from recorte_rm import no_recorte
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
@@ -424,6 +430,11 @@ def main():
                 continue
             triado = True
             motivo = None
+
+        # Recorte geográfico, depois dos filtros de tipo: só para quem iria à
+        # curadoria. A triagem guarda a linha como registro da decisão.
+        if motivo is None and not no_recorte(d.get("formattedAddress")):
+            motivo = "fora_da_rm_da_capital"
 
         if motivo:
             descartados.append(
