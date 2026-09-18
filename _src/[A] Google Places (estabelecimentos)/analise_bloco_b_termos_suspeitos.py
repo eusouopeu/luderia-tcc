@@ -17,6 +17,8 @@ Saídas em _data/processed/[A] Estabelecimentos e cardapios/:
       grupo sem as linhas com algum termo suspeito no nome ("store" e loja de
       departamento não tiram a linha). A coluna capital_busca é trocada por
       capital_endereco: a capital da UF do endereço.
+  bloco_b_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv -
+      curadoria filtrada das metrópoles só com volume de avaliações > 100.
 
 Uso:
     python3 "_src/[A] Google Places (estabelecimentos)/analise_bloco_b_termos_suspeitos.py"
@@ -35,6 +37,8 @@ FILTRADAS = {
     "metropoles": PROCESSED / "bloco_b_planilha_curadoria_metropoles_filtrada.csv",
     "capitais_regionais": PROCESSED / "bloco_b_planilha_curadoria_capitais_regionais_filtrada.csv",
 }
+OUT_METROPOLES_100_PATH = PROCESSED / "bloco_b_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv"
+MINIMO_AVALIACOES = 100  # estritamente maior que
 
 PLANILHAS = {
     "curadoria_metropoles": "bloco_b_planilha_curadoria_metropoles.csv",
@@ -104,6 +108,20 @@ def main():
     print(f"OK: {OUT_PATH.name}")
     for grupo, out_path in FILTRADAS.items():
         filtra(PROCESSED / PLANILHAS[f"curadoria_{grupo}"], out_path)
+    filtra_volume(FILTRADAS["metropoles"], OUT_METROPOLES_100_PATH)
+
+
+def filtra_volume(entrada, out_path):
+    with open(entrada, newline="", encoding="utf-8") as f:
+        leitor = csv.DictReader(f)
+        colunas, linhas = leitor.fieldnames, list(leitor)
+    mantidas = [r for r in linhas if int(float(r["volume_avaliacoes"] or 0)) > MINIMO_AVALIACOES]
+    mantidas.sort(key=lambda r: (r["capital_endereco"], -int(float(r["volume_avaliacoes"]))))
+    with open(out_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=colunas)
+        writer.writeheader()
+        writer.writerows(mantidas)
+    print(f"OK: {out_path.name} - {len(mantidas)} de {len(linhas)} com mais de {MINIMO_AVALIACOES} avaliações")
 
 
 def filtra(entrada, out_path):
