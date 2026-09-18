@@ -18,13 +18,14 @@ const OUT = path.join(ROOT, "textos", "cronograma_luderia.docx");
 
 const FONTE = "Arial";
 const TAM = 20; // 10 pt
-const LARGURA = 15398 - 2 * 1134; // A4 paisagem menos margens de 2 cm (DXA)
+const LARGURA = 16838 - 2 * 1134; // A4 paisagem (16.838 DXA de largura) menos margens de 2 cm
 
 // Larguras relativas por cabeçalho de tabela.
 const PESOS = {
   "Semana": 8, "Período": 10, "Coleta e análise": 44, "Escrita": 24, "Entrega": 16,
   "Data": 14, "Dia": 10, "Etapa": 45, "Situação": 55, "Capítulo": 40, "Rascunho": 30,
-  "Versão completa": 30,
+  "Versão completa": 30, "Variável": 26, "Finalidade": 28, "Fonte dos dados": 26,
+  "Instrumento de coleta": 26,
 };
 
 function runs(texto, extra = {}) {

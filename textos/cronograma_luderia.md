@@ -1,22 +1,64 @@
 # CRONOGRAMA INDIVIDUAL - TCC LUDERIA
 
-Atualizado em 17/09/2026.
+Atualizado em 18/09/2026.
 
-As semanas vão de sábado a sexta-feira. Assim, cada entrega definida pela orientação cai no último dia de uma semana.
+## Estrutura e objetivos
 
-## Entregas definidas pela orientação
+O trabalho é um plano de negócios baseado em evidências. Ele segue a estrutura de um plano de negócios: análise de mercado, marketing, operação, aspectos jurídicos, finanças e riscos. A diferença está no método: cada decisão do plano é ligada a um dado, e cada dado a uma fonte e a um nível de confiança.
 
-| Data | Dia | Entrega |
-|---|---|---|
-| 18/09/2026 | sexta | Cronograma individual |
-| 02/10/2026 | sexta | Projeto consolidado |
-| 16/10/2026 | sexta | Coleta e organização dos dados em estágio avançado |
-| 30/10/2026 | sexta | Primeira versão dos resultados e análises |
-| 06/11/2026 | sexta | Versão completa para leitura da orientação |
-| 16/11/2026 | segunda | Versão final para a banca (data de referência) |
-| Final de novembro | - | Defesa |
+O negócio analisado é uma luderia, estabelecimento que combina comida, bebida e um acervo de jogos de tabuleiro. O plano mira o público casual: pessoas que usam o jogo como forma de socializar, e não como hobby.
 
-Feriados nacionais no período: 12/10 (segunda), 02/11 (segunda) e 20/11 (sexta).
+**Objetivo geral:** avaliar se uma luderia voltada ao público casual é viável do ponto de vista de mercado, de operação e financeiro, com premissas sustentadas por dados públicos e por observação direta.
+
+**Objetivos específicos:**
+
+1. Analisar o mercado e a concorrência de luderias nas 27 capitais: avaliação dos clientes, preço, cardápio e modelo de comida e bebida.
+2. Caracterizar o comportamento de consumo do público das luderias.
+3. Definir o posicionamento e o composto de marketing a partir dos aspectos que mais pesam na satisfação dos clientes.
+4. Estimar a demanda, a taxa de ocupação e o giro de mesas.
+5. Dimensionar a estrutura operacional e os requisitos jurídicos do negócio.
+6. Projetar investimentos, receitas, custos e indicadores de viabilidade.
+7. Identificar as premissas que mais afetam o resultado e os valores a partir dos quais o negócio deixa de ser viável.
+8. Propor um plano de contingência e as validações necessárias antes do investimento.
+
+## Pressupostos e hipóteses
+
+Os pressupostos orientam o desenho da pesquisa e são verificados ao longo da análise:
+
+- **P1:** o público das luderias é majoritariamente casual. Quem tem o jogo como hobby tende a montar acervo e espaço de jogo em casa.
+- **P2:** a taxa de ocupação e o ticket médio concentram a maior parte da incerteza sobre o resultado financeiro.
+- **P3:** o ritmo de novas avaliações no Google, calibrado pela contagem de ocupação, estima o fluxo de clientes dos concorrentes com margem de erro aceitável para a decisão.
+
+As hipóteses foram registradas em 14/09/2026, antes da coleta das avaliações. Elas são testadas uma única vez, em uma parte da base separada para esse fim:
+
+- **H1 - Atendimento:** reclamações sobre atendimento e sobre a explicação dos jogos reduzem mais a nota do cliente do que reclamações sobre comida e bebida.
+- **H2 - Comida:** elogios à comida estão associados a notas mais altas, na comparação dentro de um mesmo estabelecimento.
+- **H3 - Preço:** a proporção de reclamações de preço muda conforme a forma de cobrança (couvert, cobrança por hora ou consumação mínima).
+- **H4 - Roteiro da saída:** nas luderias sem cozinha própria, é mais comum que o cliente avalie também um restaurante no mesmo dia.
+- **H5 - Ticket:** o gasto por pessoa citado nas avaliações fica dentro da faixa calculada a partir dos cardápios da mesma capital.
+
+A nota usada nas hipóteses é a nota centrada no avaliador: a nota dada à luderia menos a média das notas que a mesma pessoa dá a todos os lugares. Isso separa a experiência na luderia do grau de exigência de quem avalia.
+
+## Variáveis e instrumentos de coleta
+
+| Variável | Finalidade | Fonte dos dados | Instrumento de coleta |
+|---|---|---|---|
+| Avaliação média e número de avaliações | Medir a satisfação e o porte dos concorrentes | Google Maps | Google Places API |
+| Forma de cobrança, modelo de comida e bebida e acervo de jogos | Comparar os formatos de negócio dos concorrentes | Site, Instagram e cardápio de cada estabelecimento | Registro manual em planilha |
+| Pontos de fluxo no entorno (parques e praias, shoppings, estações de metrô) | Avaliar a localização dos concorrentes | OpenStreetMap | Contagem automática em raios de 500 m e 1.000 m |
+| Itens e preços do cardápio | Definir o preço e estimar o ticket médio | Cardápio digital de cada estabelecimento | Registro manual em planilha |
+| Nota e texto de cada avaliação | Identificar o que pesa na satisfação e as principais reclamações | Google Maps (30 a 50 avaliações mais recentes com texto por estabelecimento) | Cópia das avaliações e codificação por dicionário de termos validado |
+| Tamanho do grupo e valores em R$ citados nas avaliações | Estimar pessoas por mesa e gasto por pessoa | Texto das avaliações | Codificação por dicionário de termos |
+| Data das avaliações | Estimar o ritmo de novos clientes de cada concorrente | Google Maps | Cópia das avaliações |
+| Histórico de avaliações de cada avaliador | Calcular a nota centrada e o perfil de consumo do público | Perfil público do avaliador no Google Maps, com o nome trocado por código | Cópia do histórico |
+| Mesas ocupadas, pessoas presentes e tamanho dos grupos | Medir a taxa de ocupação e as pessoas por mesa | São Jogue, as duas unidades em Salvador | Formulário de observação, com contagem a cada 30 minutos em 4 visitas sorteadas |
+| Chegada e saída dos grupos | Medir o tempo de permanência e o giro de mesas | São Jogue | Formulário de observação |
+| População e renda por capital e bairro | Dimensionar o mercado e escolher a praça | IBGE (Censo 2022 e estimativas populacionais) | Download das bases públicas |
+| Gasto das famílias com alimentação fora de casa | Conferir o ticket médio | IBGE (Pesquisa de Orçamentos Familiares) | Download das bases públicas |
+| Salário de admissão por ocupação | Estimar o custo de pessoal | Novo CAGED (Ministério do Trabalho) | Download das bases públicas |
+| Aluguel comercial por m² | Estimar o custo de ocupação do imóvel | FipeZap | Download das bases públicas |
+| Alíquotas do Simples Nacional | Estimar os tributos | Lei Complementar nº 123/2006 | Consulta à legislação |
+| Selic e IPCA projetados | Definir a taxa de desconto e a inflação do modelo financeiro | Banco Central (SGS e Boletim Focus) | Download das bases públicas |
 
 ## Situação em 17/09/2026
 
@@ -54,6 +96,8 @@ A contagem é a única coleta presencial do trabalho. Ela mede quantas mesas e p
 Fonte das datas de pagamento: Governo da Bahia, Tabela de Pagamentos 2026 dos servidores estaduais.
 
 ## Cronograma semanal
+
+As semanas vão de sábado a sexta-feira. Assim, cada entrega definida pela orientação (18/09, 02/10, 16/10, 30/10 e 06/11) cai no último dia de uma semana. A versão final para a banca tem 16/11 como data de referência, e a defesa ocorre no final de novembro. Feriados nacionais no período: 12/10, 02/11 e 20/11.
 
 | Semana | Período | Coleta e análise | Escrita | Entrega |
 |---|---|---|---|---|
