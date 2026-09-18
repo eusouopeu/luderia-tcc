@@ -12,6 +12,10 @@ que é o número de estabelecimentos que sobra em cada limiar de corte.
 Saídas em _data/processed/[A] Estabelecimentos e cardapios/:
   bloco_b_grafico_limiares.png            -> contagens
   bloco_b_grafico_limiares_percentual.png -> % do total de candidatos
+  bloco_b_grafico_limiares_metropoles_filtrada.png e
+  bloco_b_grafico_limiares_capitais_regionais_filtrada.png -> contagens da
+      linha de cada grupo em bloco_b_limiares_avaliacoes_filtrada.csv (curadorias
+      sem termos suspeitos no nome)
 
 Uso:
     python3 "_src/[A] Google Places (estabelecimentos)/analise_bloco_b_grafico_limiares.py"
@@ -29,6 +33,12 @@ PROCESSED = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios"
 LIMIARES_PATH = PROCESSED / "bloco_b_limiares_avaliacoes.csv"
 OUT_PATH = PROCESSED / "bloco_b_grafico_limiares.png"
 OUT_PERCENTUAL_PATH = PROCESSED / "bloco_b_grafico_limiares_percentual.png"
+LIMIARES_FILTRADA_PATH = PROCESSED / "bloco_b_limiares_avaliacoes_filtrada.csv"
+# Linha da tabela filtrada -> gráfico de contagens gerado para ela.
+GRAFICOS_FILTRADA = {
+    "Metrópoles": PROCESSED / "bloco_b_grafico_limiares_metropoles_filtrada.png",
+    "Capitais Regionais": PROCESSED / "bloco_b_grafico_limiares_capitais_regionais_filtrada.png",
+}
 
 COR_BARRA = "#2a78d6"
 COR_TEXTO = "#0b0b0b"
@@ -37,9 +47,9 @@ COR_GRADE = "#e4e3df"
 COR_FUNDO = "#fcfcfb"
 
 
-def carrega_total():
-    with open(LIMIARES_PATH, newline="", encoding="utf-8") as f:
-        total = next(r for r in csv.DictReader(f) if r["capital"] == "TOTAL_UNICOS")
+def carrega_total(path=LIMIARES_PATH, linha="TOTAL_UNICOS"):
+    with open(path, newline="", encoding="utf-8") as f:
+        total = next(r for r in csv.DictReader(f) if r["capital"] == linha)
     # Limiares na ordem das colunas: min_0, min_10, ... (sem as `_ativos`)
     limiares = sorted(
         int(c.split("_")[1]) for c in total if c.startswith("min_") and not c.endswith("_ativos")
@@ -89,8 +99,10 @@ def barras(ax, rotulos, valores, percentual=False):
     ax.set_ylim(0, max(valores) * 1.12)
 
 
-def grafico(limiares, freq, acumulado, rotulos, out_path, percentual):
+def grafico(limiares, freq, acumulado, rotulos, out_path, percentual, titulo=None):
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4.2), facecolor=COR_FUNDO)
+    if titulo:
+        fig.suptitle(titulo, x=0.01, ha="left", fontsize=12, color=COR_TEXTO)
     barras(ax1, rotulos, freq, percentual)
     estiliza(ax1, "Frequência por faixa", "Avaliações no Google Maps", percentual)
     barras(ax2, [f"≥ {lim}" for lim in limiares], acumulado, percentual)
@@ -121,6 +133,12 @@ def main():
         OUT_PERCENTUAL_PATH,
         percentual=True,
     )
+
+    for grupo, out_path in GRAFICOS_FILTRADA.items():
+        limiares, acumulado = carrega_total(LIMIARES_FILTRADA_PATH, grupo)
+        rotulos, freq = faixas(limiares, acumulado)
+        titulo = f"{grupo} - curadoria sem termos suspeitos ({acumulado[0]} estabelecimentos)"
+        grafico(limiares, freq, acumulado, rotulos, out_path, percentual=False, titulo=titulo)
 
 
 if __name__ == "__main__":

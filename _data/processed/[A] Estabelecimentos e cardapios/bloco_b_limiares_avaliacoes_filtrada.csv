@@ -1,0 +1,31 @@
+capital,REGIC,min_0,min_0_ativos,min_10,min_10_ativos,min_20,min_20_ativos,min_30,min_30_ativos,min_50,min_50_ativos,min_100,min_100_ativos
+Metrópoles,,368,105,302,93,268,81,248,73,222,66,165,40
+Belo Horizonte,Metrópole,28,7,22,6,21,6,21,6,17,4,16,3
+Belém,Metrópole,20,5,14,4,11,3,8,2,7,2,4,1
+Brasília,Metrópole Nacional,23,14,19,12,16,10,15,9,15,9,11,7
+Curitiba,Metrópole,26,9,24,9,23,8,21,7,19,6,14,4
+Florianópolis,Metrópole,22,7,17,6,14,5,14,5,12,4,8,1
+Fortaleza,Metrópole,30,5,22,5,21,5,20,5,15,4,14,4
+Goiânia,Metrópole,26,6,17,5,17,5,16,4,15,4,11,2
+Manaus,Metrópole,23,7,21,7,16,6,14,4,12,3,8,1
+Porto Alegre,Metrópole,26,5,21,3,20,3,20,3,20,3,12,1
+Recife,Metrópole,27,6,23,5,23,5,20,5,18,5,13,2
+Rio de Janeiro,Metrópole Nacional,36,12,30,10,24,9,19,8,16,7,12,5
+Salvador,Metrópole,13,1,11,1,10,0,10,0,9,0,7,0
+São Paulo,Grande Metrópole Nacional,53,18,49,17,43,15,42,15,40,15,29,9
+Vitória,Metrópole,15,3,12,3,9,1,8,0,7,0,6,0
+Capitais Regionais,,168,40,116,34,102,28,85,22,63,15,50,9
+Aracaju,Capital Regional A,15,2,9,2,8,2,8,2,6,1,4,0
+Boa Vista,Capital Regional C,7,1,3,1,2,0,1,0,1,0,1,0
+Campo Grande,Capital Regional A,17,7,14,7,14,7,12,5,9,3,7,2
+Cuiabá,Capital Regional A,20,2,10,1,8,1,5,1,4,1,4,1
+João Pessoa,Capital Regional A,18,4,13,3,13,3,12,3,8,2,5,1
+Macapá,Capital Regional C,9,3,7,2,6,2,5,2,3,0,3,0
+Maceió,Capital Regional A,19,5,11,4,8,2,8,2,6,2,5,1
+Natal,Capital Regional A,14,4,13,4,12,4,10,3,9,3,9,3
+Palmas,Capital Regional B,7,1,7,1,6,1,5,1,5,1,4,1
+Porto Velho,Capital Regional B,6,2,4,2,3,1,1,0,1,0,1,0
+Rio Branco,Capital Regional C,8,3,5,2,4,1,3,1,1,0,1,0
+São Luís,Capital Regional A,14,3,7,2,7,2,5,0,4,0,3,0
+Teresina,Capital Regional A,14,3,13,3,11,2,10,2,6,2,3,0
+TOTAL_UNICOS,,536,145,418,127,370,109,333,95,285,81,215,49

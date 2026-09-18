@@ -11,6 +11,8 @@ Saídas em _data/processed/[A] Estabelecimentos e cardapios/:
   bloco_b_limiares_avaliacoes.csv - capital (UF do endereço) x limiar (total e só ativos),
       com a coluna REGIC e as capitais agrupadas em Metrópoles e Capitais
       Regionais; a linha de cada grupo, acima das suas capitais, é a soma delas
+  bloco_b_limiares_avaliacoes_filtrada.csv - mesma tabela, a partir das
+      curadorias filtradas por termos suspeitos (analise_bloco_b_termos_suspeitos.py)
   bloco_b_cobertura_lista_manual.csv - item da lista manual x encontrado
 
 Uso:
@@ -32,6 +34,11 @@ CANDIDATOS_PATH = RAW / "bloco_b_candidatos.csv"
 LISTA_MANUAL_PATH = RAW / "bloco_b_lista_manual_rj.csv"
 REGIC_PATH = RAW / "Metrópoles.md"
 OUT_LIMIARES = PROCESSED / "bloco_b_limiares_avaliacoes.csv"
+OUT_LIMIARES_FILTRADA = PROCESSED / "bloco_b_limiares_avaliacoes_filtrada.csv"
+FILTRADAS_PATHS = [
+    PROCESSED / "bloco_b_planilha_curadoria_metropoles_filtrada.csv",
+    PROCESSED / "bloco_b_planilha_curadoria_capitais_regionais_filtrada.csv",
+]
 OUT_COBERTURA = PROCESSED / "bloco_b_cobertura_lista_manual.csv"
 
 LIMIARES = [0, 10, 20, 30, 50, 100]
@@ -78,9 +85,11 @@ def capital_do_endereco(r):
     return classifica(r["endereco"])["capital_referencia"] or "sem_capital"
 
 
-def limiares():
-    with open(CURADORIA_PATH, newline="", encoding="utf-8") as f:
-        linhas = list(csv.DictReader(f))
+def limiares(entradas, out_path):
+    linhas = []
+    for entrada in entradas:
+        with open(entrada, newline="", encoding="utf-8") as f:
+            linhas += list(csv.DictReader(f))
 
     contagem = defaultdict(lambda: defaultdict(int))
     total = defaultdict(int)
@@ -119,12 +128,12 @@ def limiares():
         soma_grupos = sum(r[m] for r in saida if r["capital"] in GRUPOS_REGIC)
         assert soma_grupos == linha_total[m], f"{m}: grupos {soma_grupos} != total {linha_total[m]}"
 
-    with open(OUT_LIMIARES, "w", newline="", encoding="utf-8") as f:
+    with open(out_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=colunas)
         writer.writeheader()
         writer.writerows(saida)
         writer.writerow(linha_total)
-    print(f"OK: {OUT_LIMIARES.name} - soma dos grupos confere com o total")
+    print(f"OK: {out_path.name} - soma dos grupos confere com o total")
 
 
 def cobertura():
@@ -163,5 +172,6 @@ def cobertura():
 
 
 if __name__ == "__main__":
-    limiares()
+    limiares([CURADORIA_PATH], OUT_LIMIARES)
+    limiares(FILTRADAS_PATHS, OUT_LIMIARES_FILTRADA)
     cobertura()

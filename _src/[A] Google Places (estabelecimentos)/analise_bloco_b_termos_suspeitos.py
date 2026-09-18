@@ -12,10 +12,11 @@ termos conta nos dois. A linha "qualquer condição" conta cada place_id uma vez
 
 Saídas em _data/processed/[A] Estabelecimentos e cardapios/:
   bloco_b_termos_suspeitos.csv - condição x planilha
-  bloco_b_planilha_curadoria_metropoles_filtrada.csv - curadoria das
-      metrópoles sem as linhas com algum termo suspeito no nome ("store" e
-      loja de departamento não tiram a linha). A coluna capital_busca é
-      trocada por capital_endereco: a capital da UF do endereço.
+  bloco_b_planilha_curadoria_metropoles_filtrada.csv e
+  bloco_b_planilha_curadoria_capitais_regionais_filtrada.csv - curadoria do
+      grupo sem as linhas com algum termo suspeito no nome ("store" e loja de
+      departamento não tiram a linha). A coluna capital_busca é trocada por
+      capital_endereco: a capital da UF do endereço.
 
 Uso:
     python3 "_src/[A] Google Places (estabelecimentos)/analise_bloco_b_termos_suspeitos.py"
@@ -29,7 +30,11 @@ from recorte_rm import classifica
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 PROCESSED = ROOT / "_data" / "processed" / "[A] Estabelecimentos e cardapios"
 OUT_PATH = PROCESSED / "bloco_b_termos_suspeitos.csv"
-OUT_FILTRADA_PATH = PROCESSED / "bloco_b_planilha_curadoria_metropoles_filtrada.csv"
+# Grupo REGIC -> planilha filtrada gerada a partir da curadoria dele.
+FILTRADAS = {
+    "metropoles": PROCESSED / "bloco_b_planilha_curadoria_metropoles_filtrada.csv",
+    "capitais_regionais": PROCESSED / "bloco_b_planilha_curadoria_capitais_regionais_filtrada.csv",
+}
 
 PLANILHAS = {
     "curadoria_metropoles": "bloco_b_planilha_curadoria_metropoles.csv",
@@ -56,7 +61,7 @@ TERMOS = {
     "fisioterapia": ["fisioterapia"],
     "atacado": ["atacado", "atacadista", "atacadão"],
 }
-# Condições que não tiram a linha da planilha filtrada das metrópoles.
+# Condições que não tiram a linha das planilhas filtradas.
 MANTIDAS_NO_FILTRO = {"tipo: loja de departamento", "termo: store"}
 TIPO_LOJA_DEPARTAMENTO = "department_store"
 
@@ -97,11 +102,12 @@ def main():
         for rotulo in rotulos + ["qualquer condição", "total_da_planilha"]:
             writer.writerow([rotulo] + [contagem[p][rotulo] for p in PLANILHAS])
     print(f"OK: {OUT_PATH.name}")
-    filtra_metropoles()
+    for grupo, out_path in FILTRADAS.items():
+        filtra(PROCESSED / PLANILHAS[f"curadoria_{grupo}"], out_path)
 
 
-def filtra_metropoles():
-    with open(PROCESSED / PLANILHAS["curadoria_metropoles"], newline="", encoding="utf-8") as f:
+def filtra(entrada, out_path):
+    with open(entrada, newline="", encoding="utf-8") as f:
         leitor = csv.DictReader(f)
         colunas, linhas = leitor.fieldnames, list(leitor)
     colunas = ["capital_endereco" if c == "capital_busca" else c for c in colunas]
@@ -114,11 +120,11 @@ def filtra_metropoles():
         r["capital_endereco"] = classifica(r["endereco"])["capital_referencia"]
         mantidas.append(r)
     assert len(mantidas) + retiradas == len(linhas)
-    with open(OUT_FILTRADA_PATH, "w", newline="", encoding="utf-8") as f:
+    with open(out_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=colunas)
         writer.writeheader()
         writer.writerows(mantidas)
-    print(f"OK: {OUT_FILTRADA_PATH.name} - {len(mantidas)} mantidas, {retiradas} retiradas de {len(linhas)}")
+    print(f"OK: {out_path.name} - {len(mantidas)} mantidas, {retiradas} retiradas de {len(linhas)}")
 
 
 if __name__ == "__main__":
