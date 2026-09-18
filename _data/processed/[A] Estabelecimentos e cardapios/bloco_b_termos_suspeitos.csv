@@ -1,0 +1,19 @@
+condicao,curadoria_metropoles,curadoria_capitais_regionais,descartados_metropoles,descartados_capitais_regionais
+tipo: loja de departamento,2,0,2,2
+termo: assistência,7,4,0,0
+termo: técnica,7,3,0,0
+termo: eletrônico,2,3,0,0
+termo: aluguel,24,14,0,0
+termo: brinquedo,66,69,1,0
+termo: locação,3,3,0,0
+termo: TCG,8,1,0,0
+termo: Trading Cards,0,0,0,0
+termo: store,22,9,5,1
+termo: video games,1,1,0,0
+termo: informática,7,5,0,0
+termo: imports,0,1,1,0
+termo: fisio,0,7,0,0
+termo: fisioterapia,0,6,0,0
+termo: atacado,0,0,0,1
+qualquer condição,127,104,9,4
+total_da_planilha,474,263,381,374
