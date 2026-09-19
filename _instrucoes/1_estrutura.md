@@ -3,8 +3,9 @@
 ## Descrição geral
 
 **Tipo:** TCC plano de negócios baseado em evidências.
-**Objeto:** estabelecimento no formato luderia/ludobar/quiz-bar posicionado para o público casual — curva de aprendizado mínima, diversão rápida e ocasião social (encontros, aniversários, eventos corporativos), em oposição ao modelo hobbyista de acervo extenso e jogos complexos.
-**Pergunta central:** o negócio é viável, e sob quais condições (praça, formato, preço, acervo, investimento)?
+**Objeto:** estabelecimento no formato luderia/ludobar/quiz-bar em Salvador (BA), posicionado para o público casual — curva de aprendizado mínima, diversão rápida e ocasião social (encontros, aniversários, eventos corporativos), em oposição ao modelo hobbyista de acervo extenso e jogos complexos.
+**Pergunta central:** o negócio é viável em Salvador, e sob quais condições (bairro e ponto, formato, preço, acervo, investimento)?
+**Recorte geográfico:** o plano é para Salvador. A concorrência das 14 metrópoles da REGIC serve de benchmark de preço, satisfação e fluxo; as bases públicas de Salvador (e, quando houver, por bairro) definem demanda e custos.
 **Diferencial do trabalho:** premissas rastreáveis e testadas, sustentadas por dados secundários e primários comportamentais, com pipeline reproduzível.
 
 Princípios, hierarquias e personalizações da estrutura: ver [../CLAUDE.md](../CLAUDE.md).
@@ -36,7 +37,7 @@ Aproveitar `introducao_tcc_luderia.md`, reescrevendo objetivos específicos em t
 
 - **3.1 Caracterização do trabalho** — plano de negócios baseado em evidências.
 - **3.2 Hierarquia de evidências** — escala N1–N6 e hierarquia de tipos de dados.
-- **3.3 Fontes e instrumentos de coleta** — Blocos A a F, em ordem de relevância.
+- **3.3 Fontes e instrumentos de coleta** — Blocos A, B, D, E e F, em ordem de relevância (o Bloco C foi retirado).
 - **3.4 Tratamento dos dados** — pipeline, pseudonimização, variáveis, validação do dicionário.
 - **3.5 Registro prévio e divisão da base** — hipóteses registradas; metade exploratória e metade confirmatória.
 - **3.6 Técnicas de análise e controles** — técnicas por área, calibração da ocupação, controles estatísticos.
@@ -58,17 +59,17 @@ Escrito por último, em até duas páginas. Não traz informação que não este
 ### 5. Análise de Mercado → [3_mercado.md](3_mercado.md)
 
 - **5.1 Análise do setor** — tamanho, crescimento, tendências.
-- **5.2 Público-alvo e segmentação** — casual × hobbyista; ocasiões de consumo.
-- **5.3 Análise da concorrência** — Bloco A.
+- **5.2 Público-alvo e segmentação** — casual × hobbyista; ocasiões de consumo; público em Salvador. Escrito depois do fim da análise do Bloco B.
+- **5.3 Análise da concorrência** — Bloco A (14 metrópoles, mais de 100 avaliações), com destaque para Salvador.
 - **5.4 Fornecedores** — jogos, A&B, mobiliário.
 - **5.5 Macroambiente (PESTEL)**
 
 ### 6. Plano de Marketing → [5_marketing.md](5_marketing.md)
 
 - **6.1 Proposta de valor e posicionamento** — grade ERRC.
-- **6.2 Produto/serviço** — experiência, acervo (Bloco F), A&B.
+- **6.2 Produto/serviço** — experiência, acervo (Bloco F), cardápio.
 - **6.3 Preço**
-- **6.4 Praça** — escolha de cidade e ponto.
+- **6.4 Praça** — escolha do bairro e do ponto em Salvador.
 - **6.5 Promoção e comunicação**
 - **6.6 Estimativa de demanda** — calibração e triangulação.
 
@@ -111,6 +112,6 @@ Escrito por último, em até duas páginas. Não traz informação que não este
 - **11.2 Síntese dos objetivos** — um parágrafo por objetivo específico.
 - **11.3 Limitações** — principalmente das premissas de maior incerteza.
 - **11.4 Próximos passos** — validações a fazer antes de investir (ex.: evento piloto, cotação de ponto).
-- **11.5 Estudos futuros** — pesquisa que ficou fora do escopo (ex.: análise do histórico completo de avaliações, sem o recorte das 50 mais recentes).
+- **11.5 Estudos futuros** — pesquisa que ficou fora do escopo (ex.: histórico completo de avaliações, sem o recorte do último mês; histórico dos avaliadores; comparação entre modelos de alimentos e bebidas).
 
 ### Referências, Apêndices e Anexos → [10_biblio-apendices.md](10_biblio-apendices.md)

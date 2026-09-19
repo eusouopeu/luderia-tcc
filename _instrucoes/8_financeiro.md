@@ -37,6 +37,8 @@ Custos
 └── Investimento: reforma, mobiliário, cozinha e bar, acervo inicial, capital de giro, pré-operacional
 ```
 
+O modelo de alimentos e bebidas (cozinha própria, parceria ou só bar) é premissa do autor, com custo e investimento correspondentes; o trabalho não compara modelos empiricamente.
+
 - **Taxa de ocupação e ticket médio costumam concentrar quase todo o risco.** Eles merecem mais evidência que o resto (ver instrumentos em [4_metodologia.md](4_metodologia.md)).
 - A árvore aparece como figura no texto; cada folha corresponde a uma linha do registro de premissas.
 
@@ -68,7 +70,7 @@ Tabela única, no apêndice do TCC e na aba `premissas` do modelo. Uma linha por
 
 Regras:
 - **Toda premissa tem faixa**, não só valor único. Os cenários saem daí.
-- **Fonte específica:** "FipeZap, locação comercial, [capital], [mês/ano]" — nunca "internet".
+- **Fonte específica:** "FipeZap, locação comercial, Salvador, [mês/ano]" — nunca "internet".
 - **Justificativa explícita da faixa:** por que o pessimista é 25% e não 15%.
 - **IDs estáveis:** `R` receita, `C` custo, `I` investimento, `M` macro/financeiro (ex.: TMA, inflação). O ID é usado no texto, no modelo e no código.
 - A coluna "Impacto no VPL" é preenchida depois do tornado (§4.2).

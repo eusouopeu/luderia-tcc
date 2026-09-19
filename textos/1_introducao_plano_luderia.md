@@ -12,9 +12,9 @@ Esse modelo deixa de fora o público casual: o consumidor que busca uma ocasião
 
 ## 1.1 OBJETIVOS
 
-Este trabalho tem como objetivo principal avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma luderia posicionada para o público casual, de modo a subsidiar a decisão de investimento e a identificar as condições sob as quais o negócio se sustenta.
+Este trabalho tem como objetivo principal avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma luderia em Salvador posicionada para o público casual, de modo a subsidiar a decisão de investimento e a identificar as condições sob as quais o negócio se sustenta.
 
-Para atingir esse propósito, foram traçados os seguintes objetivos específicos: (i) analisar o mercado e a concorrência de luderias nas 27 capitais brasileiras quanto a avaliação, preço e modelo de alimentação e bebidas; (ii) caracterizar o público-alvo casual e suas ocasiões de consumo; (iii) definir o posicionamento e o composto de marketing, incluindo a curadoria do acervo a partir de perfis de jogos; (iv) estimar a demanda e a taxa de ocupação a partir de evidências secundárias e comportamentais; (v) dimensionar a estrutura operacional e os requisitos jurídicos do negócio; e (vi) projetar investimentos, receitas, custos e indicadores de viabilidade a partir de premissas rastreáveis.
+Para atingir esse propósito, foram traçados os seguintes objetivos específicos: (i) analisar o mercado e a concorrência de luderias nas 14 metrópoles brasileiras, com destaque para Salvador, quanto a avaliação, preço e cardápio; (ii) caracterizar o público-alvo casual e suas ocasiões de consumo; (iii) definir o posicionamento e o composto de marketing, incluindo a curadoria do acervo a partir de perfis de jogos; (iv) estimar a demanda e a taxa de ocupação a partir de evidências secundárias e comportamentais; (v) dimensionar a estrutura operacional e os requisitos jurídicos do negócio; e (vi) projetar investimentos, receitas, custos e indicadores de viabilidade a partir de premissas rastreáveis.
 
 A partir dos resultados obtidos no cumprimento dos objetivos anteriores, espera-se ainda: (vii) identificar as premissas críticas e os pontos de ruptura do negócio por meio de análise de sensibilidade; e (viii) propor um plano de contingência e as validações necessárias antes do investimento.
 
@@ -26,7 +26,7 @@ Do ponto de vista acadêmico, este trabalho preenche uma lacuna na literatura so
 
 Do ponto de vista social, a luderia oferece um espaço de lazer presencial, alternativo ao entretenimento mediado por telas. O posicionamento para o público casual amplia esse benefício para além da comunidade de jogadores já consolidada. Ele reduz a barreira de entrada representada pela cultura hobbyista - catálogos extensos, regras complexas e sessões longas - e abre o formato a ocasiões sociais cotidianas, como encontros entre amigos, aniversários e confraternizações corporativas.
 
-Por fim, do ponto de vista gerencial, os resultados deste trabalho orientam decisões concretas de investimento: a escolha da praça, a curadoria do acervo, a política de preço e o modelo de alimentação e bebidas. Empreendedores do setor enfrentam, com frequência, a ausência de dados sobre demanda e desempenho de concorrentes. O trabalho documenta um processo replicável de construção de premissas a partir de fontes públicas e de testes comportamentais de baixo custo. Negócios de lazer em fase de estruturação podem adotar essa abordagem para reduzir a incerteza antes do investimento.
+Por fim, do ponto de vista gerencial, os resultados deste trabalho orientam decisões concretas de investimento: a escolha do ponto, a curadoria do acervo, a política de preço e o cardápio. Empreendedores do setor enfrentam, com frequência, a ausência de dados sobre demanda e desempenho de concorrentes. O trabalho documenta um processo replicável de construção de premissas a partir de fontes públicas e de testes comportamentais de baixo custo. Negócios de lazer em fase de estruturação podem adotar essa abordagem para reduzir a incerteza antes do investimento.
 
 ## 1.3 ESTRUTURA DO RELATÓRIO
 
@@ -34,7 +34,7 @@ O relatório organiza-se em onze capítulos. O capítulo 2 apresenta o referenci
 
 O capítulo 3 descreve a metodologia utilizada - fontes e instrumentos de coleta, tratamento dos dados, hierarquia de evidências e limitações. O capítulo inclui a matriz de evidências, que vincula cada decisão do plano ao dado que a sustenta. O capítulo 4 traz o sumário executivo, com a síntese do negócio e dos indicadores de viabilidade.
 
-Os capítulos 5 a 8 desenvolvem o plano. O capítulo 5 apresenta a análise de mercado, com o panorama do setor, o público-alvo e a concorrência nas 27 capitais. O capítulo 6 apresenta o plano de marketing, com o posicionamento, o composto mercadológico e a estimativa de demanda. O capítulo 7 descreve o plano operacional, e o capítulo 8 trata dos aspectos jurídicos e legais.
+Os capítulos 5 a 8 desenvolvem o plano. O capítulo 5 apresenta a análise de mercado, com o panorama do setor, o público-alvo e a concorrência nas 14 metrópoles brasileiras. O capítulo 6 apresenta o plano de marketing, com o posicionamento, o composto mercadológico e a estimativa de demanda. O capítulo 7 descreve o plano operacional, e o capítulo 8 trata dos aspectos jurídicos e legais.
 
 O capítulo 9 apresenta o plano financeiro, com o registro de premissas, os demonstrativos projetados e os indicadores de viabilidade. O capítulo 10 reúne a análise estratégica e de riscos, com os cenários, as premissas críticas e o plano de contingência.
 

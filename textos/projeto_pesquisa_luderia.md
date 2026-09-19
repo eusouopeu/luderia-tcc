@@ -12,15 +12,15 @@ Um investimento nesse formato enfrenta, contudo, um problema de evidência. Não
 
 ### 1.2 Questão de pesquisa
 
-Uma luderia posicionada para o público casual é viável, e sob quais condições de praça, preço, modelo de alimentação e bebidas e ocupação?
+Uma luderia em Salvador posicionada para o público casual é viável, e sob quais condições de ponto, preço e ocupação?
 
 ### 1.3 Objetivo geral
 
-Avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma luderia posicionada para o público casual, a partir de premissas sustentadas por dados secundários públicos e por observação direta.
+Avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma luderia em Salvador posicionada para o público casual, a partir de premissas sustentadas por dados secundários públicos e por observação direta.
 
 ### 1.4 Objetivos específicos
 
-1. Analisar o mercado e a concorrência de luderias nas 27 capitais brasileiras quanto a avaliação, preço, cardápio e modelo de alimentação e bebidas.
+1. Analisar o mercado e a concorrência de luderias nas 14 metrópoles brasileiras, com destaque para Salvador, quanto a avaliação, preço e cardápio.
 2. Caracterizar o comportamento de consumo do público das luderias.
 3. Definir o posicionamento e o composto de marketing a partir dos aspectos que mais pesam na satisfação dos clientes.
 4. Estimar a demanda, a taxa de ocupação e o giro de mesas a partir de observação direta e de avaliações calibradas.
@@ -39,13 +39,13 @@ Avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma
 
 **Hipóteses confirmatórias** (registradas antes da análise e testadas na metade confirmatória da base):
 
-- **H1 - Aspectos da experiência:** menções negativas a atendimento e à explicação dos jogos associam-se a uma redução da nota centrada no avaliador maior que a de menções negativas a comida e bebida.
-- **H2 - Comida:** menções positivas a comida associam-se a nota centrada maior, controlado o estabelecimento.
+- **H1 - Aspectos da experiência:** menções negativas a atendimento e a ambiente associam-se a uma redução da nota maior que a de menções negativas a comida e bebida, controlado o estabelecimento.
 - **H3 - Preço:** a proporção de avaliações com reclamação de preço difere entre as políticas de cobrança (couvert, por hora, consumação mínima).
-- **H4 - Jornada da ocasião:** a proporção de avaliações acompanhadas de avaliação de restaurante na mesma data relativa (mesmo dia ou mesma semana) é maior em estabelecimentos sem cozinha própria.
 - **H5 - Ticket:** a mediana dos valores por pessoa citados nas avaliações fica dentro da faixa da cesta de cardápio da mesma capital.
 
-**Análises exploratórias** (sem hipótese prévia): ranking de reclamações; categorias sobrerrepresentadas no histórico dos avaliadores; sobreposição de clientela entre luderias; jogos citados.
+As hipóteses H2 (comida) e H4 (jornada da ocasião) foram retiradas na emenda 2 do registro prévio, junto com o histórico dos avaliadores e a comparação entre modelos de alimentação e bebidas. Os códigos das hipóteses mantidas não mudam.
+
+**Análises exploratórias** (sem hipótese prévia): ranking de reclamações; relação entre menções a comida e nota; jogos citados; velocidade de avaliações e calibração do fluxo.
 
 ## 2 QUADRO TEÓRICO
 
@@ -65,10 +65,8 @@ Avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma
 | Concordância entre codificadores | Grau de acordo entre duas codificações independentes, descontado o acordo esperado ao acaso (kappa) | COHEN (1960) [A VERIFICAR] |
 | Registro prévio | Registro datado de hipóteses, variáveis e análises antes do acesso aos dados, que separa resultados confirmatórios de exploratórios | Elaborado pelo autor |
 | Taxa de descobertas falsas | Proporção esperada de falsos positivos entre os resultados significativos; controlada em testes múltiplos | BENJAMINI; HOCHBERG (1995) [A VERIFICAR] |
-| Nota centrada no avaliador | Nota dada ao estabelecimento menos a nota média do mesmo avaliador em todo o seu histórico | Elaborado pelo autor |
-| Velocidade de avaliações | Número de avaliações com texto por mês de um estabelecimento, no recorte das mais recentes | Elaborado pelo autor |
-| Lift de categoria | Proporção de uma categoria de lugar no histórico dos avaliadores de luderias dividida pela proporção na base de comparação | Elaborado pelo autor |
-| Taxa de ocupação | Proporção dos lugares disponíveis efetivamente ocupados em um turno de funcionamento | Elaborado pelo autor |
+| Velocidade de avaliações | Número de avaliações com texto por mês de um estabelecimento, no recorte das publicadas até "um mês atrás" | Elaborado pelo autor |
+| Taxa de ocupação | Proporção dos lugares disponíveis efetivamente ocupados em um período de funcionamento | Elaborado pelo autor |
 | Giro de mesa | Número de grupos que ocupam uma mesa em um período, inverso da permanência média | Elaborado pelo autor |
 | Nível de evidência (N1-N6) | Escala de confiabilidade das premissas: N1 cotação, contrato ou tabela oficial; N2 dado público estruturado; N3 benchmark medido pelo autor; N4 relatório setorial; N5 coleta primária comportamental; N6 estimativa do autor | Elaborado pelo autor |
 | Indicadores de viabilidade | VPL, TIR, payback descontado e ponto de equilíbrio | ASSAF NETO [A VERIFICAR] |
@@ -82,7 +80,7 @@ Fonte: elaborado pelo próprio autor
 
 O trabalho é um plano de negócios baseado em evidências. Quanto à natureza, a pesquisa é aplicada. Quanto aos objetivos, é descritivo-exploratória, com hipóteses confirmatórias registradas previamente. A abordagem é quantitativa, com análise de conteúdo. O delineamento é transversal.
 
-A pesquisa usa dados secundários públicos e uma coleta primária comportamental: a contagem direta de ocupação. Questionários não são usados: esses instrumentos geram dados atitudinais e estão sujeitos a vieses de amostragem e de não-resposta. Cada premissa do plano recebe um nível de evidência (N1-N6), e as premissas críticas são testadas por triangulação e análise de sensibilidade.
+A pesquisa usa dados secundários públicos e uma coleta primária comportamental: a contagem direta de ocupação, com leitura do número da nota fiscal. Questionários não são usados: esses instrumentos geram dados atitudinais e estão sujeitos a vieses de amostragem e de não-resposta. Cada premissa do plano recebe um nível de evidência (N1-N6), e as premissas críticas são testadas por triangulação e análise de sensibilidade.
 
 ### 3.2 Instrumentos e procedimentos de coleta
 
@@ -90,18 +88,17 @@ A pesquisa usa dados secundários públicos e uma coleta primária comportamenta
 
 | Bloco | Instrumento | Procedimento | Situação |
 |---|---|---|---|
-| A - Estabelecimentos e cardápios | Google Places API; site, Instagram e cardápio digital; OpenStreetMap | Busca por termo e capital, filtro e curadoria manual; registro de preço, modelo de A&B e acervo; entorno em 500 m e 1.000 m; itens e preços do cardápio por categoria | Estabelecimentos coletados (73 candidatos, curadoria pendente); cardápios previstos |
-| B - Avaliações recentes | Página pública de avaliações no Google Maps | Cópia integral das 30 a 50 avaliações mais recentes com texto por estabelecimento (até 3.650); pseudonimização do autor na coleta | Previsto |
-| C - Histórico dos avaliadores | Perfil público de cada autor do Bloco B | Registro de categoria, cidade, nota e data relativa de cada avaliação do histórico; nome substituído por código aleatório | Previsto |
-| D - Contagem direta de ocupação | Formulário padronizado de observação | Duas unidades da São Jogue (Salvador); 4 visitas de 3 horas no total, em dias e turnos sorteados: 2 na quinzena após o pagamento dos servidores estaduais (29/09 a 13/10/2026) e 2 na quinzena anterior ao pagamento seguinte (14/10 a 28/10/2026), cada par com 1 dia útil e 1 dia de fim de semana; contagem a cada 30 minutos de mesas, pessoas e grupos; registro de chegadas e saídas | Previsto |
-| E - Bases públicas | IBGE (Censo 2022, estimativas populacionais, POF, PNAD Contínua, PAS, CONCLA); RAIS e Novo CAGED; FipeZap; LC 123/2006; Banco Central (SGS e Focus) | Extração das variáveis por capital, bairro ou ocupação | Previsto |
+| A - Estabelecimentos e cardápios | Google Places API; site, Instagram e cardápio digital; OpenStreetMap | Busca por termo nas capitais, filtro e curadoria manual; recorte de estabelecimentos com mais de 100 avaliações nas 14 metrópoles da REGIC (IBGE); registro de preço e acervo; entorno em 500 m e 1.000 m; itens e preços do cardápio por categoria | Estabelecimentos coletados (164 candidatos no recorte, curadoria pendente; 100 a 150 esperados); cardápios previstos |
+| B - Avaliações recentes | Página pública de avaliações no Google Maps | Cópia integral de todas as avaliações com texto publicadas até "um mês atrás", por estabelecimento, com data da coleta registrada; pseudonimização do autor na coleta | Previsto |
+| D - Contagem direta de ocupação | Formulário padronizado de observação; nota fiscal (NFC-e) | Duas unidades da São Jogue (Salvador); 4 visitas, do lado de fora e sem duração fixa: 2 sorteadas na quinzena após o pagamento dos servidores estaduais (29/09 a 13/10/2026), 1 em dia útil e 1 no fim de semana, e 2 de retorno 15 dias depois, na mesma unidade; registro de entradas e saídas de grupos, contagem a cada 30 minutos e número da NFC-e no início e no fim de cada visita | Previsto |
+| E - Bases públicas | IBGE (Censo 2022, estimativas populacionais, POF, PNAD Contínua, PAS, CONCLA); Novo CAGED; FipeZap; LC 123/2006; Banco Central (SGS e Focus) | Extração das variáveis para Salvador (por bairro, quando disponível) e para as demais capitais, como comparação | Coletado em 14/09/2026 |
 | F - Jogos | API da Ludopedia e raspagem; BoardGameGeek | Contadores de usuário e características; 563 jogos | Coletado; pode ser retirado |
 
 Fonte: elaborado pelo próprio autor
 
 Antes da análise, as hipóteses, variáveis e técnicas são registradas em documento datado no repositório. Os avaliadores são sorteados em uma metade exploratória, usada para construir e validar o dicionário de codificação, e uma metade confirmatória, usada uma única vez para testar as hipóteses. O dicionário é validado em 200 avaliações codificadas manualmente por dois codificadores, com critério de kappa e F1 iguais ou superiores a 0,70.
 
-As avaliações e os perfis são informações de acesso público. O nome do usuário é substituído por código aleatório na coleta, e as demais variáveis não permitem identificação. O trabalho divulga apenas dados processados. A contagem direta é observação agregada em espaço comercial aberto ao público, sem fotos nem registro de características individuais (Lei nº 13.709/2018; Resolução CNS nº 510/2016).
+As avaliações são informações de acesso público. O nome do usuário é substituído por código aleatório na coleta, e as demais variáveis não permitem identificação. O trabalho divulga apenas dados processados. A contagem direta é observação agregada, feita do lado de fora de espaço comercial aberto ao público, sem fotos nem registro de características individuais (Lei nº 13.709/2018; Resolução CNS nº 510/2016).
 
 ## 4 QUADRO DE ITENS
 
@@ -114,31 +111,26 @@ Como a pesquisa não usa questionários, os itens correspondem às variáveis re
 | A01 | Avaliação média no Google | Desempenho percebido | Cinco forças | Escala de 1 a 5 |
 | A02 | Volume de avaliações | Porte | Cinco forças | Contagem |
 | A03 | Política de cobrança | Preço | Composto de marketing | Categórica: couvert, por hora, consumação mínima, outra |
-| A04 | Modelo de alimentação e bebidas | Produto | Grade ERRC | Categórica: cozinha própria, parceria, somente bar |
-| A05 | Acervo declarado | Posicionamento | Público hobbyista × casual | Contagem de títulos |
-| A06 | Estabelecimentos no entorno | Praça | Cinco forças | Contagem por categoria em 500 m e 1.000 m |
-| A07 | Itens oferecidos no cardápio | Variedade | Grade ERRC | Presença por categoria (bebidas, entradas, principais, sobremesas); contagem de itens |
-| A08 | Preço de cada item | Preço | Composto de marketing | R$ |
-| A09 | Couvert ou taxa de jogo | Preço | Composto de marketing | R$ |
-| B01 | Nota da avaliação | Satisfação | Atributos obrigatórios e atrativos | Escala de 1 a 5; nota centrada no avaliador |
+| A04 | Acervo declarado | Posicionamento | Público hobbyista × casual | Contagem de títulos |
+| A05 | Estabelecimentos no entorno | Praça | Cinco forças | Contagem por categoria em 500 m e 1.000 m |
+| A06 | Itens oferecidos no cardápio | Variedade | Grade ERRC | Presença por categoria (bebidas, entradas, principais, sobremesas); contagem de itens; contagem de itens que exigem preparo |
+| A07 | Preço de cada item | Preço | Composto de marketing | R$ |
+| A08 | Couvert ou taxa de jogo | Preço | Composto de marketing | R$ |
+| B01 | Nota da avaliação | Satisfação | Atributos obrigatórios e atrativos | Escala de 1 a 5 |
 | B02 | Aspectos mencionados | Atributos da experiência | Atributos obrigatórios e atrativos; análise de conteúdo | Binária por aspecto: ambiente, barulho, atendimento, explicação dos jogos, acervo, estado das peças, comida, bebida, preço, limpeza, conforto |
 | B03 | Polaridade de cada aspecto | Satisfação por atributo | Análise de conteúdo | Categórica: positiva, negativa, neutra |
 | B04 | Tamanho do grupo citado | Pessoas por mesa | Taxa de ocupação | Número de pessoas |
 | B05 | Valores em R$ citados | Ticket | Indicadores de viabilidade | R$; tipo: por pessoa, conta total, item |
 | B06 | Jogos citados | Acervo | Público hobbyista × casual | Binária por jogo |
-| B07 | Data relativa | Velocidade de avaliações | Velocidade de avaliações | Avaliações com texto por mês |
-| C01 | Total de avaliações do avaliador | Atividade do avaliador | Nota centrada no avaliador | Contagem |
-| C02 | Categoria de cada lugar do histórico | Perfil de consumo | Lift de categoria | Proporção por categoria; lift |
-| C03 | Cidade de cada lugar do histórico | Base de comparação | Lift de categoria | Categórica |
-| C04 | Nota de cada avaliação do histórico | Exigência do avaliador | Nota centrada no avaliador | Média das notas |
-| C05 | Data relativa de cada avaliação do histórico | Jornada da ocasião | *Competitive socialising* | Binária: outra avaliação no mesmo dia; categoria desse lugar |
-| D01 | Mesas disponíveis e ocupadas | Taxa de ocupação | Taxa de ocupação | Contagem a cada 30 minutos; proporção |
-| D02 | Pessoas presentes | Taxa de ocupação | Taxa de ocupação | Contagem a cada 30 minutos |
-| D03 | Tamanho de cada grupo sentado | Pessoas por mesa | Taxa de ocupação | Número de pessoas |
-| D04 | Horário de chegada e saída dos grupos | Permanência | Giro de mesa | Minutos; observação censurada sinalizada |
-| D05 | Unidade, dia e turno | Estrato da visita | Taxa de ocupação | Categórica |
-| D06 | Cobrança e preços aplicados na data | Preço efetivo | Composto de marketing | R$ |
-| E01 | População por setor censitário e município | Tamanho do mercado | Estudo de viabilidade econômica | Pessoas |
+| B07 | Data relativa e data da coleta | Velocidade de avaliações | Velocidade de avaliações | Avaliações com texto por mês |
+| D01 | Entrada e saída de cada grupo | Fluxo; permanência | Taxa de ocupação; giro de mesa | Horário; pessoas; observação censurada sinalizada |
+| D02 | Saldo de pessoas no interior | Taxa de ocupação | Taxa de ocupação | Contagem a cada 30 minutos |
+| D03 | Tamanho de cada grupo | Pessoas por mesa | Taxa de ocupação | Número de pessoas |
+| D04 | Mesas disponíveis e ocupadas visíveis | Capacidade; ocupação | Taxa de ocupação | Contagem única (disponíveis); a cada 30 minutos (ocupadas, quando visíveis) |
+| D05 | Número da NFC-e no início e no fim da visita | Transações | Taxa de ocupação | Número sequencial; notas por dia e pessoas por nota |
+| D06 | Unidade, data, tipo de visita, início e fim | Estrato da visita | Taxa de ocupação | Categórica; horário |
+| D07 | Cobrança e preços aplicados na data | Preço efetivo | Composto de marketing | R$ |
+| E01 | População por bairro de Salvador e por município | Tamanho do mercado | Estudo de viabilidade econômica | Pessoas |
 | E02 | Renda média | Poder de compra | Estudo de viabilidade econômica | R$ por mês |
 | E03 | Gasto com alimentação fora de casa e recreação | Ticket potencial | Indicadores de viabilidade | R$ por mês por família |
 | E04 | Receita, custos e pessoal em serviços de alimentação | Benchmark setorial | Indicadores de viabilidade | R$; pessoas |
@@ -157,12 +149,12 @@ Fonte: elaborado pelo próprio autor
 
 | Objetivo específico | Dimensão | Variáveis ou categorias | Itens |
 |---|---|---|---|
-| 1. Analisar o mercado e a concorrência | Concorrência; praça | Desempenho percebido; porte; preço; produto; variedade; entorno; tamanho do mercado; sobreposição de clientela | A01-A09, C02, E01, E02 |
-| 2. Caracterizar o comportamento de consumo | Público | Perfil de consumo; jornada da ocasião; pessoas por mesa; poder de compra | B04, C02-C05, E02, E03 |
-| 3. Definir posicionamento e composto de marketing | Posicionamento; produto; preço | Atributos da experiência; satisfação por atributo; preço; modelo de A&B; variedade; acervo | A03, A04, A07-A09, B01-B03, B06, C05, F01-F02 |
-| 4. Estimar demanda, ocupação e giro | Demanda | Taxa de ocupação; permanência; pessoas por mesa; velocidade de avaliações; tamanho do mercado | B04, B07, D01-D05, E01 |
-| 5. Dimensionar operação e requisitos jurídicos | Operação; aspectos legais | Reclamações operacionais; capacidade; custo de pessoal; tributos | B02-B03, D03-D04, E05, E07 |
-| 6. Projetar investimentos, receitas, custos e indicadores | Viabilidade econômico-financeira | Ticket; preço efetivo; custos; benchmark setorial; taxa de desconto | A08-A09, B05, D06, E03-E08 |
+| 1. Analisar o mercado e a concorrência | Concorrência; praça | Desempenho percebido; porte; preço; produto; variedade; entorno; tamanho do mercado | A01-A08, E01, E02 |
+| 2. Caracterizar o comportamento de consumo | Público | Atributos da experiência; pessoas por mesa; gasto por pessoa; poder de compra | B02-B05, D03, E02, E03 |
+| 3. Definir posicionamento e composto de marketing | Posicionamento; produto; preço | Atributos da experiência; satisfação por atributo; preço; variedade; acervo | A03, A06-A08, B01-B03, B06, F01-F02 |
+| 4. Estimar demanda, ocupação e giro | Demanda | Taxa de ocupação; transações; permanência; pessoas por mesa; velocidade de avaliações; tamanho do mercado | B04, B07, D01-D06, E01 |
+| 5. Dimensionar operação e requisitos jurídicos | Operação; aspectos legais | Reclamações operacionais; capacidade; custo de pessoal; tributos | B02-B03, D01, D03-D04, E05, E07 |
+| 6. Projetar investimentos, receitas, custos e indicadores | Viabilidade econômico-financeira | Ticket; preço efetivo; custos; benchmark setorial; taxa de desconto | A07-A08, B05, D07, E03-E08 |
 | 7. Identificar premissas críticas e pontos de ruptura | Risco das premissas | Premissas do modelo financeiro com faixas e nível de evidência | Todos os itens que alimentam premissas |
 | 8. Propor contingência e validações | Risco do negócio | Premissas críticas; limitações da evidência | Saídas do objetivo 7 |
 
@@ -174,10 +166,10 @@ Fonte: elaborado pelo próprio autor
 
 | Objetivo específico | Técnicas |
 |---|---|
-| 1 | Estatística descritiva por capital e modelo de negócio; comparação de cardápios (preço, variedade e itens); mapa de concorrentes; Cinco Forças; PESTEL; sobreposição de avaliadores entre estabelecimentos |
-| 2 | Proporção por categoria e lift com intervalo de confiança por bootstrap; frequência de avaliações no mesmo dia por categoria |
-| 3 | Análise de conteúdo com dicionário validado (kappa e F1); análise de penalidade e recompensa; regressão da nota centrada com efeito fixo por estabelecimento (H1, H2); teste de proporções entre políticas de cobrança (H3) e modelos de A&B (H4); grade ERRC |
-| 4 | Taxa de ocupação e permanência por turno; modelo de calibração (visitantes estimados na São Jogue ÷ velocidade de avaliações → fluxo dos demais concorrentes); resultados em faixa |
+| 1 | Estatística descritiva por metrópole, com Salvador em destaque; comparação de cardápios (preço, variedade e itens); mapa de concorrentes; Cinco Forças; PESTEL |
+| 2 | Distribuição do tamanho dos grupos (citado e observado) e dos valores por pessoa citados; perfil demográfico e de renda de Salvador |
+| 3 | Análise de conteúdo com dicionário validado (kappa e F1); análise de penalidade e recompensa; regressão da nota com efeito fixo por estabelecimento (H1); comparação da proporção de reclamações de preço entre políticas de cobrança (H3); grade ERRC |
+| 4 | Pessoas por hora e permanência; notas fiscais emitidas em 15 dias × pessoas por nota; modelo de calibração (visitantes estimados na São Jogue ÷ velocidade de avaliações → fluxo dos demais concorrentes); resultados em faixa |
 | 5 | Ranking de reclamações com intervalo de confiança; dimensionamento de mesas e equipe; levantamento documental da legislação |
 | 6 | Cesta de consumo por pessoa calibrada pelos valores citados (H5) e checada contra a POF; árvore de direcionadores; registro de premissas com faixas; DRE e fluxo de caixa projetados; VPL, TIR, payback descontado e ponto de equilíbrio |
 | 7 | Análise de sensibilidade (gráfico tornado); ponto de ruptura; simulação de Monte Carlo (opcional) |
@@ -191,11 +183,11 @@ Controles aplicados a todos os testes: registro prévio com divisão da base em 
 
 ### 7.1 Contribuições acadêmicas
 
-O trabalho produz o primeiro mapeamento de luderias nas 27 capitais brasileiras, com dados de avaliação, preço, cardápio e modelo de alimentação e bebidas. Além disso, propõe um método de plano de negócios baseado em evidências: premissas classificadas por nível de evidência, estimativa de ocupação por avaliações calibradas por observação direta e hipóteses registradas antes da análise. Esse método responde a uma fragilidade recorrente de planos de negócios: projeções apoiadas em premissas sem fonte e resultados sem controle de achados ao acaso.
+O trabalho produz o primeiro mapeamento das luderias estabelecidas nas 14 metrópoles brasileiras, com dados de avaliação, preço e cardápio. Além disso, propõe um método de plano de negócios baseado em evidências: premissas classificadas por nível de evidência, estimativa de ocupação por avaliações calibradas por observação direta e hipóteses registradas antes da análise. Esse método responde a uma fragilidade recorrente de planos de negócios: projeções apoiadas em premissas sem fonte e resultados sem controle de achados ao acaso.
 
 ### 7.2 Contribuições práticas
 
-O trabalho orienta decisões concretas de investimento: a escolha da praça, o modelo de cobrança, o modelo de alimentação e bebidas, o dimensionamento de mesas e a composição do cardápio. O registro de premissas e o modelo financeiro dirigido por parâmetros permitem ao empreendedor atualizar as projeções à medida que novos dados surgem. Os pontos de ruptura indicam os valores mínimos de ocupação e ticket que sustentam o negócio e servem de indicadores de monitoramento após a abertura.
+O trabalho orienta decisões concretas de investimento: a escolha do bairro em Salvador, o modelo de cobrança, o dimensionamento de mesas e a composição do cardápio. O registro de premissas e o modelo financeiro dirigido por parâmetros permitem ao empreendedor atualizar as projeções à medida que novos dados surgem. Os pontos de ruptura indicam os valores mínimos de ocupação e ticket que sustentam o negócio e servem de indicadores de monitoramento após a abertura.
 
 O processo é replicável por outros negócios de lazer em fase de estruturação, que enfrentam a mesma ausência de dados sobre demanda e concorrência. O repositório de coleta e análise, o dicionário de dados e o site de apresentação ficam disponíveis como produto de consulta para empreendedores e pesquisadores do setor.
 

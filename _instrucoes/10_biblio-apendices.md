@@ -73,8 +73,8 @@ Fonte: elaborado pelo próprio autor
 | C | Demonstrativos financeiros detalhados (DRE e fluxo de caixa mensais) | Modelo financeiro |
 | D | Checagens de coerência | [8_financeiro.md](8_financeiro.md) §5 |
 | E | Bloco A — base de estabelecimentos, critérios de curadoria e cardápios | `_data/processed/bloco_b_*`, `cardapios_*` |
-| F | Blocos B e C — manual de codificação, validação do dicionário, resultados confirmatórios e exploratórios | `_data/processed/bloco_c_*`, `avaliadores_*` |
-| G | Bloco D — protocolo, sorteio e registros da contagem direta | `_data/processed/contagem_*` |
+| F | Bloco B — manual de codificação, validação do dicionário, resultados confirmatórios e exploratórios | `_data/processed/bloco_c_*` |
+| G | Bloco D — protocolo, sorteio, registros da contagem direta e números das NFC-e | `_data/processed/contagem_*` |
 | H | Registro prévio e emendas | `textos/registro_previo_luderia.md` |
 | I | Bloco F — correlações, clusters e perfis de jogos (se o bloco for mantido) | `_data/processed/bloco_a_*` |
 | J | Dicionário de variáveis | A criar no repositório |

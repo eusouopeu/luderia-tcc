@@ -164,6 +164,22 @@ Cada emenda recebe número, data, descrição, justificativa e commit. Emendas f
 | Nº | Data | Descrição | Justificativa | Commit |
 |---|---|---|---|---|
 | 1 | 17/09/2026 | Contagem direta (Bloco D): de 6 visitas de 2 horas (3 por unidade, 25/09 a 11/10) para 4 visitas de 3 horas (2 por unidade), metade na quinzena pós-pagamento dos servidores estaduais da Bahia (29/09 a 13/10) e metade na quinzena pré-pagamento (14/10 a 28/10), cada par com 1 dia útil e 1 de fim de semana, em três turnos fixos. O script do sorteio passa a ser `_src/[D] Contagem direta de ocupacao/build_contagem_sorteio.py`, com a mesma semente | Incluir o ciclo de renda como fonte de variação da ocupação e cobrir o horário de funcionamento com menos deslocamentos. Feita antes de qualquer visita e antes da coleta e da análise dos Blocos B e C; a análise da contagem é exploratória (§9) | registrado no commit desta emenda |
+| 2 | 18/09/2026 | Redução de escopo e novo protocolo da contagem. Detalhes em §10.2 | Ajustar a pesquisa ao prazo e à praça do plano (Salvador). Feita antes de qualquer visita e antes da coleta e da análise do Bloco B | registrado no commit desta emenda |
+
+### 10.2 Emenda 2 (18/09/2026)
+
+1. **Bloco C retirado.** O histórico dos avaliadores não é coletado. Consequências:
+   - H1 usa `nota` no lugar de `nota_centrada`. Efeito fixo de estabelecimento e erro padrão agrupado por estabelecimento são mantidos. A base de H1 passa a ser todas as avaliações elegíveis da metade confirmatória;
+   - saem as definições de avaliador com histórico válido, `nota_centrada`, `restaurante_mesma_data` e categorias de restaurante (§3);
+   - saem das análises exploratórias (§9) o lift de categorias e a sobreposição de avaliadores entre luderias;
+   - sai da sensibilidade (§9) a versão de H1 com `nota` no lugar de `nota_centrada`.
+2. **Modelo de alimentos e bebidas não é avaliado.** Sai a variável `cozinha_propria` (§3.2) e a comparação de cardápios por modelo de A&B (§9).
+3. **H2 e H4 retiradas.** H4 dependia do histórico dos avaliadores e do modelo de A&B. H2 (comida) servia à decisão sobre o modelo de A&B, que saiu do escopo; a relação entre menções a comida e nota passa a análise exploratória (§9). A correção de Benjamini-Hochberg (§5) passa a ser aplicada a H1 e H3. Os códigos das hipóteses mantidas não mudam.
+4. **H1 redefinida.** A hipótese passa a comparar atendimento e ambiente com comida e bebida: *menções negativas a atendimento e a ambiente associam-se a uma redução da nota maior que a de menções negativas a comida e bebida*. Teste: contraste `(β_neg_atendimento + β_neg_ambiente)/2 − (β_neg_comida + β_neg_bebida)/2 < 0`, teste de Wald unilateral, no mesmo modelo de §4 com `nota` como variável dependente. Suficiência: menos de 30 menções negativas em algum dos quatro aspectos do contraste → inconclusiva. `neg_explicacao_jogos` continua no modelo como controle.
+5. **Recorte do Bloco A:** estabelecimentos com mais de 100 avaliações no Google Maps nas 14 capitais classificadas como metrópole pela REGIC 2018 (IBGE), e suas regiões metropolitanas, aprovados na curadoria.
+6. **Recorte do Bloco B:** todas as avaliações com texto cujo rótulo de data seja de até "um mês atrás", inclusive, na data da coleta, no lugar das 30 a 50 mais recentes. A data e a hora da coleta são registradas por estabelecimento. Na sensibilidade (§9), o corte "menos de 30 avaliações com texto" passa a "menos de 10 avaliações com texto no recorte".
+7. **Contagem direta (Bloco D):** 4 visitas, 2 por unidade. As 2 visitas sorteadas ficam na quinzena pós-pagamento (29/09 a 13/10/2026), 1 em dia útil e 1 no fim de semana, com unidade sorteada. As 2 visitas de retorno ocorrem 15 dias depois, na mesma unidade. Observação do lado de fora, sem duração fixa e sem turnos; início e fim registrados. Em cada visita, registro do número da NFC-e no início e no fim, para medir as notas emitidas entre as visitas e durante a observação. Mesma semente (20260916) e mesmo script. A análise continua exploratória (§9).
+
 
 ## 11 SOFTWARE
 

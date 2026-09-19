@@ -1,6 +1,6 @@
 # CLAUDE.md — TCC Luderia
 
-TCC em formato **plano de negócios baseado em evidências** para uma luderia/ludobar/quiz-bar posicionada para o **público casual** (não-hobbyista). A estrutura é de plano de negócios; cada decisão relevante é amarrada a um dado, e cada dado a uma fonte e a um grau de confiança.
+TCC em formato **plano de negócios baseado em evidências** para uma luderia/ludobar/quiz-bar em **Salvador**, posicionada para o **público casual** (não-hobbyista). A estrutura é de plano de negócios; cada decisão relevante é amarrada a um dado, e cada dado a uma fonte e a um grau de confiança.
 
 ## Mapa dos arquivos de instrução
 
@@ -27,10 +27,10 @@ A numeração dos arquivos de instrução é a ordem de leitura, não o número 
 - Prazos: ver `textos/cronograma_luderia.md`. Versão final para a banca em 16/11/2026.
 - `arquivados/introducao_tcc_luderia.md` e `arquivados/metodologia_tcc_luderia.md` são rascunhos escritos no **desenho anterior (TCC pesquisa de mercado)**, com hipóteses H1–H9. Servem de insumo, mas precisam ser adaptados ao formato plano de negócios: hipóteses e testes estatísticos saem do corpo do texto e vão para apêndice, salvo quando sustentam uma decisão do plano.
 - Pipeline de dados em `_src/[bloco] Fonte/` (`collect_*` → `build_*` → `analise_*`). Brutos em `_data/raw/[bloco] Nome/`, processados em `_data/processed/[bloco] Nome/`, com uma subpasta por bloco (letra entre colchetes). Cada script define `ROOT = Path(__file__).resolve().parents[2]` e roda de qualquer diretório. Os prefixos dos arquivos seguem o desenho anterior (ex.: Bloco A gera `bloco_b_*`); a correspondência está em `_instrucoes/4_metodologia.md`. Blocos de dados, em ordem de relevância:
-  - **Bloco A** — estabelecimentos concorrentes nas 27 capitais e cardápios → concorrência, preço, A&B, ticket.
-  - **Bloco B** — 30 a 50 avaliações mais recentes com texto por estabelecimento → proposta de valor, reclamações, ticket, fluxo.
-  - **Bloco C** — histórico pseudonimizado dos avaliadores → nota centrada, perfil de consumo, parcerias.
-  - **Bloco D** — contagem direta de ocupação nas duas unidades da São Jogue (Salvador) → ocupação, giro, calibração.
+  - **Bloco A** — estabelecimentos concorrentes com mais de 100 avaliações nas 14 capitais classificadas como metrópole pela REGIC (IBGE), e seus cardápios → concorrência, preço, ticket. O modelo de alimentos e bebidas (cozinha própria, parceria ou só bar) não é avaliado.
+  - **Bloco B** — todas as avaliações com texto publicadas até "um mês atrás" (rótulo do Google Maps na data da coleta), por estabelecimento → proposta de valor, reclamações, ticket, fluxo.
+  - **Bloco C** — retirado em 18/09/2026 (histórico dos avaliadores). A letra não é reaproveitada.
+  - **Bloco D** — contagem direta, do lado de fora, nas duas unidades da São Jogue (Salvador): 2 visitas sorteadas e 2 de retorno 15 dias depois, com leitura do número da NFC-e → ocupação, giro, transações no intervalo, calibração.
   - **Bloco E** — bases públicas (IBGE, Novo CAGED, FipeZap, Simples Nacional, Banco Central, CONCLA) → demanda, custos, tributos, taxa de desconto. Coletado em 14/09/2026; referências ABNT em `bibliografia/referencias_bases_publicas.md`. As saídas tratadas ficam em subpastas por uso no plano (`Mercado e demanda/`, `Ponto e operacoes/`, `Juridico e tributario/`, `Financeiro/`, `Multiuso/`), definidas em `USOS` no `bases_comum.py`.
   - **Bloco F** — jogos (Ludopedia, BoardGameGeek) → acervo; menor relevância, pode ser retirado.
 - Site de apresentação em `site-apresentacao/`.
@@ -124,7 +124,7 @@ Na dúvida entre aprofundar um item de nível baixo ou fortalecer um de nível a
 Diferenças deliberadas em relação a um plano de negócios comum. Aplicar sempre.
 
 1. **Metodologia (cap. 3) robusta.** Descreve fontes, critérios de coleta, tratamento, limitações e a hierarquia de evidências. O método é defendido pela **confiabilidade do número gerado**, não pela teoria. Detalhes em `instrucoes/metodologia.md`.
-2. **Matriz de evidências** (quadro no cap. 3 ou apêndice). Tabela com: **decisão → pergunta → dado usado → fonte → confiança (N1–N6)**. Ex.: "Em quais capitais abrir?" → densidade de concorrentes (Bloco A) + renda e população (IBGE) → N3 + N2.
+2. **Matriz de evidências** (quadro no cap. 3 ou apêndice). Tabela com: **decisão → pergunta → dado usado → fonte → confiança (N1–N6)**. Ex.: "Em que bairro de Salvador abrir?" → população e renda por bairro (IBGE) + localização dos concorrentes (Bloco A) → N2 + N3.
 3. **Plano financeiro (cap. 9) com premissas rastreáveis**, triangulação e sensibilidade. Detalhes em `instrucoes/financeiro.md`.
 4. **Modelo financeiro dirigido por premissas.** Premissas numa aba, cálculos em outra, cenários como parâmetros. Nenhum número digitado dentro de fórmula de cálculo.
 5. **Apêndices técnicos** com correlações, clusters, dicionário de variáveis e link para o repositório.
