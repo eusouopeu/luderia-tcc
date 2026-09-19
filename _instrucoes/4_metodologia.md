@@ -17,7 +17,7 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 - **Histórico dos avaliadores (Bloco C):** retirado do escopo em 18/09/2026. Saem a nota centrada no avaliador, o lift de categorias, a avaliação no mesmo dia e a sobreposição de clientela.
 - **Modelo de alimentos e bebidas:** não é avaliado. Cozinha própria, parceria ou só bar deixa de ser variável do Bloco A e passa a premissa do autor no cap. 9.
 - **Cardápios** de cada estabelecimento.
-- **Contagem direta de ocupação** nas duas unidades da São Jogue (única luderia de Salvador), feita do lado de fora: 2 visitas sorteadas na quinzena seguinte ao pagamento dos servidores estaduais da Bahia e 2 visitas de retorno 15 dias depois, na mesma unidade. O número da NFC-e lido nas duas visitas dá as notas emitidas no intervalo.
+- **Contagem direta de ocupação** nas duas unidades da São Jogue (única luderia de Salvador), feita do lado de fora: 2 visitas sorteadas entre 02/10 e 04/10/2026, em dia e hora de início sorteados, e 2 visitas de retorno 15 dias depois, na mesma unidade e hora. O número da NFC-e lido nas duas visitas dá as notas emitidas no intervalo.
 - **Bases públicas:** IBGE (Censo 2022 por setor censitário, estimativas populacionais, POF 2017–2018, PNAD Contínua, PAS, CONCLA), RAIS e Novo CAGED, FipeZap comercial, Lei Complementar 123/2006 e anexos do Simples Nacional, Banco Central (SGS e Focus).
 - **Garantias de robustez:** registro prévio das hipóteses com divisão da base em metade exploratória e metade confirmatória; validação do dicionário de codificação; efeito fixo ou ponderação por estabelecimento; tamanho de efeito; correção para múltiplas comparações; análise de sensibilidade; registro de premissas com faixas. Simulação de Monte Carlo opcional.
 - **Jogos (Bloco F):** menor relevância para as decisões do plano; pode ser retirado.
@@ -89,8 +89,8 @@ O histórico dos avaliadores foi retirado do escopo em 18/09/2026. A letra não 
 |---|---|
 | Local | As duas unidades da São Jogue, única luderia de Salvador |
 | Visitas | 4 no total, 2 por unidade: 1 **sorteada** e 1 de **retorno**, 15 dias depois, na mesma unidade |
-| Períodos | Visitas sorteadas na **quinzena pós-pagamento** (29/09 a 13/10/2026), a partir do primeiro dia de pagamento dos servidores estaduais da Bahia (inativos e pensionistas em 29/09; ativos em 30/09). Os retornos caem na **quinzena pré-pagamento** (14/10 a 28/10/2026), até a véspera do pagamento de outubro (29/10). Fonte: Governo da Bahia, Tabela de Pagamentos 2026 |
-| Sorteio | Das visitas sorteadas, **1 em dia útil** (segunda a quinta) e **1 no fim de semana** (sexta a domingo); um número sorteado define qual unidade fica com o dia útil. Feriados (12/10) e dias sem funcionamento excluídos. O retorno é fixo (sorteada + 15 dias); se a unidade estiver fechada, passa ao dia seguinte de funcionamento. Como 15 dias não fecham semanas inteiras, o retorno cai no dia da semana seguinte ao da visita sorteada. Semente fixa (20260916), `_src/[D] Contagem direta de ocupacao/build_contagem_sorteio.py`, planilha `contagem_sorteio_visitas.xlsx`; resultado registrado antes da primeira visita |
+| Períodos | Visitas sorteadas de **02/10 a 04/10/2026** (sexta a domingo), na quinzena posterior ao pagamento dos servidores estaduais da Bahia (29/09 para inativos e pensionistas; 30/09 para ativos). Os retornos caem de **17/10 a 19/10/2026**, na quinzena anterior ao pagamento de outubro (29/10). Fonte: Governo da Bahia, Tabela de Pagamentos 2026 |
+| Sorteio | Cada combinação de dia (02/10 a 04/10) e hora de início (12h00 a 19h00, de hora em hora) é uma possibilidade: 24 combinações. As duas unidades ficam em dias diferentes; um número sorteado define qual unidade escolhe primeiro. Combinações em que a unidade não funciona são excluídas. O retorno é fixo: sorteada + 15 dias, mesma unidade e mesma hora de início; se a unidade estiver fechada, passa ao dia seguinte de funcionamento. Semente fixa (20260916), `_src/[D] Contagem direta de ocupacao/build_contagem_sorteio.py`, planilha `contagem_sorteio_visitas.xlsx`; resultado registrado antes da primeira visita |
 | Posição do observador | Do lado de fora do estabelecimento, com vista para a entrada |
 | Duração da visita | Sem duração fixa. Horário de início e de fim registrados; todas as taxas são calculadas por hora observada |
 | Registro contínuo | Entrada e saída de cada grupo: horário e número de pessoas. Grupos identificados por código para ligar entrada e saída (permanência) |
@@ -100,7 +100,7 @@ O histórico dos avaliadores foi retirado do escopo em 18/09/2026. A letra não 
 | Instrumento | Formulário padronizado preenchido no celular; sem fotos de pessoas; sem registro de características individuais |
 | Saídas | Pessoas por hora; tamanho dos grupos; permanência média (com observações censuradas); pessoas por nota fiscal (entradas ÷ notas emitidas durante a visita); notas por dia no intervalo de 15 dias; estimativa de visitantes por semana, em faixa |
 | Uso no plano | Premissas de ocupação, pessoas por mesa e giro (cap. 9); calibração do fluxo dos demais concorrentes; capacidade (7.2) |
-| Limitação | Quatro visitas em um único estabelecimento e uma única cidade; observação de fora não vê o salão inteiro; numeração da NFC-e pode incluir delivery e vendas de balcão, e uma nota pode cobrir um grupo inteiro; permanência censurada pelo início e fim da visita |
+| Limitação | Quatro visitas em um único estabelecimento e uma única cidade, concentradas entre sexta e segunda: a contagem não observa dias úteis, que entram pelo caminho das notas fiscais; observação de fora não vê o salão inteiro; numeração da NFC-e pode incluir delivery e vendas de balcão, e uma nota pode cobrir um grupo inteiro; permanência censurada pelo início e fim da visita |
 
 ### Bloco E — Bases públicas
 
@@ -214,7 +214,7 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 
 | Premissa | Evidência | Técnica | Limitação declarada |
 |---|---|---|---|
-| **Ocupação** | Contagem direta na São Jogue (Bloco D) | Pessoas por hora e saldo no interior por hora do dia; média e amplitude entre as quatro visitas; comparação descritiva entre quinzenas e tipos de dia | Um estabelecimento, quatro visitas |
+| **Ocupação** | Contagem direta na São Jogue (Bloco D) | Pessoas por hora e saldo no interior por hora do dia; média e amplitude entre as quatro visitas; comparação descritiva entre visita sorteada e retorno | Um estabelecimento, quatro visitas, só fim de semana |
 | **Fluxo** | NFC-e emitidas em 15 dias (Bloco D) | Notas por dia no intervalo × pessoas por nota observadas nas visitas → visitantes por semana, por unidade | Numeração pode incluir delivery e balcão |
 | **Ocupação** | Velocidade de avaliações calibrada (Blocos B e D) | Modelo de calibração (abaixo) | Razão avaliações/visitantes pode variar entre estabelecimentos |
 | **Pessoas por mesa** | Tamanho do grupo citado (Bloco B) e observado (Bloco D) | Distribuição e comparação entre as duas fontes | Relato espontâneo × poucas observações |
@@ -226,7 +226,7 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 
 1. **Visitantes por semana na São Jogue, por dois caminhos:**
    - **(a) Notas fiscais:** notas emitidas entre a visita sorteada e a de retorno ÷ dias do intervalo × 7 × pessoas por nota (entradas contadas ÷ notas emitidas durante as visitas);
-   - **(b) Contagem:** pessoas por hora observadas × horas de funcionamento semanais, ponderadas por tipo de dia.
+   - **(b) Contagem:** pessoas por hora observadas × horas de funcionamento de fim de semana; os dias úteis entram pela razão entre dia útil e fim de semana implícita no caminho (a), declarada como premissa com faixa.
    Os dois caminhos são comparados; a divergência entra na faixa (mínimo, provável e máximo).
 2. **Razão de calibração:** avaliações com texto por semana da São Jogue (velocidade do Bloco B) ÷ visitantes por semana estimados.
 3. **Fluxo dos demais concorrentes:** velocidade de avaliações de cada estabelecimento ÷ razão de calibração. Resultado em faixa.

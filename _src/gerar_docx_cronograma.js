@@ -4,7 +4,10 @@
 // separados por "; " viram tópicos (bullets). **negrito** e `código` são
 // mantidos como negrito e texto simples.
 //
-// Uso: node "_src/gerar_docx_cronograma.js"
+// Com --resumo, gera textos/cronograma_luderia_atual.docx em A4 retrato, só com
+// os títulos e as tabelas das seções listadas em SECOES_RESUMO.
+//
+// Uso: node "_src/gerar_docx_cronograma.js" [--resumo]
 const fs = require("fs");
 const path = require("path");
 const {
@@ -14,15 +17,18 @@ const {
 
 const ROOT = path.resolve(__dirname, "..");
 const MD = path.join(ROOT, "textos", "cronograma_luderia.md");
-const OUT = path.join(ROOT, "textos", "cronograma_luderia.docx");
+const RESUMO = process.argv.includes("--resumo");
+const OUT = path.join(ROOT, "textos", RESUMO ? "cronograma_luderia_atual.docx" : "cronograma_luderia.docx");
+const SECOES_RESUMO = ["Variáveis e instrumentos de coleta", "Cronograma semanal", "Capítulos"];
 
 const FONTE = "Arial";
 const TAM = 20; // 10 pt
-const LARGURA = 16838 - 2 * 1134; // A4 paisagem (16.838 DXA de largura) menos margens de 2 cm
+// A4 (11.906 × 16.838 DXA) menos margens de 2 cm: paisagem na versão completa, retrato no resumo.
+const LARGURA = (RESUMO ? 11906 : 16838) - 2 * 1134;
 
 // Larguras relativas por cabeçalho de tabela.
 const PESOS = {
-  "Semana": 8, "Período": 10, "Coleta e análise": 44, "Escrita": 24, "Entrega": 16,
+  "Semana": 12, "Período": 10, "Coleta e análise": 40, "Escrita": 24, "Entrega": 16,
   "Data": 14, "Dia": 10, "Etapa": 45, "Situação": 55, "Capítulo": 40, "Rascunho": 30,
   "Versão completa": 30, "Variável": 26, "Finalidade": 28, "Fonte dos dados": 26,
   "Instrumento de coleta": 26,
@@ -42,6 +48,14 @@ function paragrafo(texto, opts = {}) {
 }
 
 function itensCelula(texto, cabecalho) {
+  // No resumo, o período "12/09 a 18/09" ocupa três linhas, como no documento do autor.
+  const periodo = RESUMO && !cabecalho && /^\d{2}\/\d{2} a \d{2}\/\d{2}$/.test(texto);
+  if (periodo) {
+    return texto.split(" a ").flatMap((d, k) => [
+      ...(k ? [new Paragraph({ children: runs("–"), alignment: AlignmentType.CENTER })] : []),
+      new Paragraph({ children: runs(d), alignment: AlignmentType.CENTER }),
+    ]);
+  }
   const itens = cabecalho ? [texto] : texto.split(/;\s+/).map((s) => s.trim()).filter(Boolean);
   if (itens.length <= 1 || texto === "-") {
     return [new Paragraph({ children: runs(texto, { bold: cabecalho }), spacing: { after: 40 } })];
@@ -78,6 +92,18 @@ function tabela(linhas) {
       })),
     })),
   });
+}
+
+// Mantém o título e, das seções de SECOES_RESUMO, apenas o título e as tabelas.
+function filtraResumo(md) {
+  const saida = [];
+  let dentro = false;
+  for (const l of md.split("\n")) {
+    if (l.startsWith("# ")) { saida.push(l); continue; }
+    if (l.startsWith("## ")) { dentro = SECOES_RESUMO.includes(l.slice(3).trim()); if (dentro) saida.push("", l, ""); continue; }
+    if (dentro && l.startsWith("|")) saida.push(l);
+  }
+  return saida.join("\n");
 }
 
 function converte(md) {
@@ -142,10 +168,10 @@ const doc = new Document({
   },
   sections: [{
     properties: { page: {
-      size: { width: 11906, height: 16838, orientation: PageOrientation.LANDSCAPE },
+      size: { width: 11906, height: 16838, orientation: RESUMO ? PageOrientation.PORTRAIT : PageOrientation.LANDSCAPE },
       margin: { top: 1134, bottom: 1134, left: 1134, right: 1134 },
     } },
-    children: converte(fs.readFileSync(MD, "utf-8")),
+    children: converte(RESUMO ? filtraResumo(fs.readFileSync(MD, "utf-8")) : fs.readFileSync(MD, "utf-8")),
   }],
 });
 
