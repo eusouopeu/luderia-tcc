@@ -16,3 +16,4 @@ _data/raw/\[E\]*/caged/
 # Bloco A: curadoria manual e luderias aprovadas trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4)
 _data/raw/\[A\]*/bloco_b_curadoria_manual_*.xlsx
 _data/processed/\[A\]*/bloco_b_luderias_aprovadas_*.xlsx
+_data/processed/\[A\]*/bloco_b_comentarios_aprovadas_*.xlsx
