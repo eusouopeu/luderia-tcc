@@ -1,6 +1,6 @@
 # CRONOGRAMA INDIVIDUAL - TCC LUDERIA
 
-Atualizado em 18/09/2026.
+Atualizado em 02/10/2026.
 
 ## Estrutura e objetivos
 
@@ -92,7 +92,7 @@ Cinco etapas condicionam o restante do cronograma:
 1. **Coleta das avaliações do último mês.** Todos os estabelecimentos são coletados no menor intervalo possível, para que a janela de um mês seja a mesma para todos. Termina até 27/09.
 2. **Validação da codificação das avaliações.** A mesma amostra de 200 avaliações é codificada duas vezes, com intervalo mínimo de 14 dias. A primeira codificação termina em 02/10; a segunda começa em 16/10.
 3. **Emenda ao registro prévio.** Os ajustes feitos na parte exploratória da base são registrados até 23/10. Só depois disso a parte confirmatória é aberta.
-4. **Contagem de ocupação na São Jogue.** Visitas sorteadas entre 02/10 e 04/10; visitas de retorno entre 17/10 e 19/10. A estimativa de ocupação depende delas.
+4. **Contagem de ocupação na São Jogue.** Visitas sorteadas no sábado, 03/10; visitas de retorno no domingo, 18/10. A estimativa de ocupação depende delas.
 5. **Registro de premissas.** O modelo financeiro só é montado quando ocupação, ticket médio e custos têm faixa e fonte.
 
 ## Contagem de ocupação na São Jogue
@@ -100,10 +100,10 @@ Cinco etapas condicionam o restante do cronograma:
 A contagem é a única coleta presencial do trabalho. Ela mede quantas pessoas entram na luderia, quanto tempo ficam e quantas notas fiscais são emitidas.
 
 - **Quatro visitas no total**, duas em cada unidade da São Jogue: uma sorteada e uma de retorno.
-- **Visitas sorteadas** entre 02/10 e 04/10 (sexta a domingo), na quinzena após o pagamento dos servidores estaduais da Bahia (29/09 para inativos e pensionistas; 30/09 para ativos). O sorteio escolhe o dia e a hora de início de cada visita: cada hora cheia entre 12h00 e 19h00 é uma possibilidade. As duas unidades ficam em dias diferentes.
-- **Visitas de retorno** 15 dias depois de cada visita sorteada, na mesma unidade e na mesma hora de início, entre 17/10 e 19/10.
+- **Visitas sorteadas** no sábado, 03/10, as duas unidades no mesmo dia, na quinzena após o pagamento dos servidores estaduais da Bahia (29/09 para inativos e pensionistas; 30/09 para ativos). O sorteio escolhe só a hora de início de cada visita: cada hora cheia entre 12h00 e 19h00 é uma possibilidade. As horas de início das duas unidades distam no mínimo 2 horas.
+- **Visitas de retorno** 15 dias depois de cada visita sorteada, na mesma unidade e na mesma hora de início: domingo, 18/10.
 - **Nota fiscal:** em cada visita, o número da NFC-e é registrado no início e no fim, com uma compra própria. A diferença entre a visita sorteada e a de retorno dá as notas emitidas em 15 dias. A diferença dentro da mesma visita, comparada às entradas contadas, dá as pessoas por nota.
-- **Observação do lado de fora**, sem duração fixa. O início e o fim de cada visita são registrados, e os resultados são calculados por hora observada. Entradas e saídas dos grupos são registradas continuamente; pessoas no interior e mesas ocupadas, a cada 30 minutos.
+- **Observação do lado de fora**, com duração fixa de 3 horas. O início e o fim de cada visita são registrados, e os resultados são calculados por hora observada. Entradas e saídas dos grupos são registradas continuamente; pessoas no interior e mesas ocupadas, a cada 30 minutos.
 - **Sorteio:** feito na planilha `contagem_sorteio_visitas.xlsx` antes da primeira visita. Dias e horários sem funcionamento ficam de fora.
 
 Fonte das datas de pagamento: Governo da Bahia, Tabela de Pagamentos 2026 dos servidores estaduais.
@@ -147,7 +147,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 - [ ] Divisão da base em parte exploratória e parte confirmatória
 - [ ] Primeira codificação das 200 avaliações da amostra (até 02/10)
 - [ ] Conclusão dos cardápios
-- [ ] Visitas sorteadas, conforme sorteio (a partir de 02/10)
+- [ ] Sorteio das horas das visitas
 
 ### Semana 4
 
@@ -155,7 +155,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 |---|---|---|---|
 | 4 | 03/10 a 09/10 | Cap. 5: seções 5.1 (setor), 5.4 (fornecedores) e 5.5 (PESTEL) e esboço das cinco forças; rascunho do cap. 8 (Aspectos jurídicos) | - |
 
-- [ ] Visitas sorteadas, conforme sorteio (até 04/10)
+- [ ] Visitas sorteadas (sábado, 03/10)
 - [ ] Busca de dados secundários sobre o setor de bares, lanchonetes e espaços de jogos
 - [ ] Estatística descritiva dos concorrentes (preço, cardápio e avaliação por metrópole)
 - [ ] Cotações em Salvador (ponto, mobiliário e acervo)
@@ -177,7 +177,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 |---|---|---|---|
 | 6 | 17/10 a 23/10 | Rascunho do cap. 7 (Plano operacional); esboço do cap. 9 (Plano financeiro) | - |
 
-- [ ] Visitas de retorno, conforme sorteio (até 19/10)
+- [ ] Visitas de retorno (domingo, 18/10)
 - [ ] Estimativa de ocupação e fluxo, em faixa, pelas notas fiscais e pela contagem
 - [ ] Concordância entre as duas codificações e revisão do dicionário
 - [ ] Análises da parte exploratória

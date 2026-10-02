@@ -41,7 +41,7 @@ Avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma
 
 - **H1 - Aspectos da experiência:** menções negativas a atendimento e a ambiente associam-se a uma redução da nota maior que a de menções negativas a comida e bebida, controlado o estabelecimento.
 - **H3 - Preço:** a proporção de avaliações com reclamação de preço difere entre as políticas de cobrança (couvert, por hora, consumação mínima).
-- **H5 - Ticket:** a mediana dos valores por pessoa citados nas avaliações fica dentro da faixa da cesta de cardápio da mesma capital.
+- **H5 - Ticket:** a mediana dos valores por pessoa citados nas avaliações fica dentro da faixa da cesta de cardápio do próprio estabelecimento.
 
 As hipóteses H2 (comida) e H4 (jornada da ocasião) foram retiradas na emenda 2 do registro prévio, junto com o histórico dos avaliadores e a comparação entre modelos de alimentação e bebidas. Os códigos das hipóteses mantidas não mudam.
 
@@ -88,15 +88,15 @@ A pesquisa usa dados secundários públicos e uma coleta primária comportamenta
 
 | Bloco | Instrumento | Procedimento | Situação |
 |---|---|---|---|
-| A - Estabelecimentos e cardápios | Google Places API; site, Instagram e cardápio digital; OpenStreetMap | Busca por termo nas capitais, filtro e curadoria manual; recorte de estabelecimentos com mais de 100 avaliações nas 14 metrópoles da REGIC (IBGE); registro de preço e acervo; entorno em 500 m e 1.000 m; itens e preços do cardápio por categoria | Estabelecimentos coletados (164 candidatos no recorte, curadoria pendente; 100 a 150 esperados); cardápios previstos |
+| A - Estabelecimentos e cardápios | Google Places API; Google Maps (extração manual); site, Instagram e cardápio digital; OpenStreetMap | Busca por termo nas capitais, filtro e curadoria manual; recorte de estabelecimentos com mais de 100 avaliações nas 14 metrópoles da REGIC (IBGE); notas por aspecto (comida, ambiente, serviço) e localização em shopping, por extração manual; registro de preço e acervo; shoppings e estações de metrô em 500 m e 1.000 m; itens e preços do cardápio por categoria | Estabelecimentos coletados (164 candidatos no recorte, curadoria pendente; 100 a 150 esperados); cardápios previstos |
 | B - Avaliações recentes | Página pública de avaliações no Google Maps | Cópia integral de todas as avaliações com texto publicadas até "um mês atrás", por estabelecimento, com data da coleta registrada; pseudonimização do autor na coleta | Previsto |
-| D - Contagem direta de ocupação | Formulário padronizado de observação; nota fiscal (NFC-e) | Duas unidades da São Jogue (Salvador); 4 visitas, do lado de fora e sem duração fixa: 2 sorteadas entre 02/10 e 04/10/2026, com dia e hora de início (12h00 a 19h00) sorteados, e 2 de retorno 15 dias depois, na mesma unidade e hora; registro de entradas e saídas de grupos, contagem a cada 30 minutos e número da NFC-e no início e no fim de cada visita | Previsto |
+| D - Contagem direta de ocupação | Formulário padronizado de observação; nota fiscal (NFC-e) | Duas unidades da São Jogue (Salvador); 4 visitas de 3 horas, do lado de fora: 2 sorteadas no sábado, 03/10/2026, com hora de início sorteada (12h00 a 19h00) e no mínimo 2 horas entre os inícios das duas unidades, e 2 de retorno 15 dias depois (domingo, 18/10/2026), na mesma unidade e hora; registro de entradas e saídas de grupos, contagem a cada 30 minutos e número da NFC-e no início e no fim de cada visita | Previsto |
 | E - Bases públicas | IBGE (Censo 2022, estimativas populacionais, POF, PNAD Contínua, PAS, CONCLA); Novo CAGED; FipeZap; LC 123/2006; Banco Central (SGS e Focus) | Extração das variáveis para Salvador (por bairro, quando disponível) e para as demais capitais, como comparação | Coletado em 14/09/2026 |
 | F - Jogos | API da Ludopedia e raspagem; BoardGameGeek | Contadores de usuário e características; 563 jogos | Coletado; pode ser retirado |
 
 Fonte: elaborado pelo próprio autor
 
-Antes da análise, as hipóteses, variáveis e técnicas são registradas em documento datado no repositório. Os avaliadores são sorteados em uma metade exploratória, usada para construir e validar o dicionário de codificação, e uma metade confirmatória, usada uma única vez para testar as hipóteses. O dicionário é validado em 200 avaliações codificadas manualmente por dois codificadores, com critério de kappa e F1 iguais ou superiores a 0,70.
+Antes da análise, as hipóteses, variáveis e técnicas são registradas em documento datado no repositório. Os avaliadores são sorteados em uma metade exploratória, usada para construir e validar o dicionário de codificação, e uma metade confirmatória, usada uma única vez para testar as hipóteses. O dicionário é validado em 200 avaliações da metade exploratória, codificadas manualmente duas vezes: pelo autor e por uma segunda pessoa com o manual de codificação. Na falta da segunda pessoa, o autor recodifica a amostra após no mínimo 14 dias, sem consultar a primeira codificação. O critério de aceitação é kappa e F1 iguais ou superiores a 0,70 por variável.
 
 As avaliações são informações de acesso público. O nome do usuário é substituído por código aleatório na coleta, e as demais variáveis não permitem identificação. O trabalho divulga apenas dados processados. A contagem direta é observação agregada, feita do lado de fora de espaço comercial aberto ao público, sem fotos nem registro de características individuais (Lei nº 13.709/2018; Resolução CNS nº 510/2016).
 
@@ -112,10 +112,13 @@ Como a pesquisa não usa questionários, os itens correspondem às variáveis re
 | A02 | Volume de avaliações | Porte | Cinco forças | Contagem |
 | A03 | Política de cobrança | Preço | Composto de marketing | Categórica: couvert, por hora, consumação mínima, outra |
 | A04 | Acervo declarado | Posicionamento | Público hobbyista × casual | Contagem de títulos |
-| A05 | Estabelecimentos no entorno | Praça | Cinco forças | Contagem por categoria em 500 m e 1.000 m |
+| A05 | Shoppings e estações de metrô no entorno | Praça | Cinco forças | Contagem em 500 m e 1.000 m |
 | A06 | Itens oferecidos no cardápio | Variedade | Grade ERRC | Presença por categoria (bebidas, entradas, principais, sobremesas); contagem de itens; contagem de itens que exigem preparo |
 | A07 | Preço de cada item | Preço | Composto de marketing | R$ |
 | A08 | Couvert ou taxa de jogo | Preço | Composto de marketing | R$ |
+| A09 | Notas médias por aspecto (comida, ambiente, serviço) | Satisfação por atributo | Atributos obrigatórios e atrativos | Escala de 1 a 5, por aspecto |
+| A10 | Horário de funcionamento | Praça | Composto de marketing | Horas por semana; dias e horários |
+| A11 | Endereço e localização em shopping | Praça | Cinco forças | Metrópole e bairro; binária (shopping ou rua) |
 | B01 | Nota da avaliação | Satisfação | Atributos obrigatórios e atrativos | Escala de 1 a 5 |
 | B02 | Aspectos mencionados | Atributos da experiência | Atributos obrigatórios e atrativos; análise de conteúdo | Binária por aspecto: ambiente, barulho, atendimento, explicação dos jogos, acervo, estado das peças, comida, bebida, preço, limpeza, conforto |
 | B03 | Polaridade de cada aspecto | Satisfação por atributo | Análise de conteúdo | Categórica: positiva, negativa, neutra |
@@ -149,9 +152,9 @@ Fonte: elaborado pelo próprio autor
 
 | Objetivo específico | Dimensão | Variáveis ou categorias | Itens |
 |---|---|---|---|
-| 1. Analisar o mercado e a concorrência | Concorrência; praça | Desempenho percebido; porte; preço; produto; variedade; entorno; tamanho do mercado | A01-A08, E01, E02 |
+| 1. Analisar o mercado e a concorrência | Concorrência; praça | Desempenho percebido; porte; preço; produto; variedade; entorno; tipo de ponto; horário; tamanho do mercado | A01-A11, E01, E02 |
 | 2. Caracterizar o comportamento de consumo | Público | Atributos da experiência; pessoas por mesa; gasto por pessoa; poder de compra | B02-B05, D03, E02, E03 |
-| 3. Definir posicionamento e composto de marketing | Posicionamento; produto; preço | Atributos da experiência; satisfação por atributo; preço; variedade; acervo | A03, A06-A08, B01-B03, B06, F01-F02 |
+| 3. Definir posicionamento e composto de marketing | Posicionamento; produto; preço | Atributos da experiência; satisfação por atributo; preço; variedade; acervo | A03, A06-A09, B01-B03, B06, F01-F02 |
 | 4. Estimar demanda, ocupação e giro | Demanda | Taxa de ocupação; transações; permanência; pessoas por mesa; velocidade de avaliações; tamanho do mercado | B04, B07, D01-D06, E01 |
 | 5. Dimensionar operação e requisitos jurídicos | Operação; aspectos legais | Reclamações operacionais; capacidade; custo de pessoal; tributos | B02-B03, D01, D03-D04, E05, E07 |
 | 6. Projetar investimentos, receitas, custos e indicadores | Viabilidade econômico-financeira | Ticket; preço efetivo; custos; benchmark setorial; taxa de desconto | A07-A08, B05, D07, E03-E08 |
