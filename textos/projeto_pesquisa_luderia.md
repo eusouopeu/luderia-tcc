@@ -1,33 +1,32 @@
-# PROJETO DE TCC - PLANO DE NEGÓCIOS DE UMA LUDERIA PARA O PÚBLICO CASUAL
+# PROJETO DE TCC - PLANO DE NEGÓCIOS DE UMA LUDERIA EM SALVADOR
 
 ## 1 ESTRUTURA DA PESQUISA
 
 ### 1.1 Problema
 
-O mercado brasileiro de jogos de tabuleiro está em expansão: os jogos de tabuleiro e cartas passaram de 9,1% para 13,1% das vendas da indústria de brinquedos entre 2017 e 2025 (ABRINQ, 2026). Esse crescimento sustenta um formato de negócio específico: a luderia, estabelecimento que combina alimentação, bebidas e acesso a um acervo de jogos.
+O consumo de lazer está se deslocando da posse de bens para a vivência de experiências. A pesquisa em comportamento do consumidor mostra que compras de experiências geram mais satisfação que compras de bens materiais (GILOVICH; KUMAR; JAMPOL, 2015). Essa preferência é mais forte nas gerações mais novas: nos Estados Unidos, 78% dos *millennials* declararam preferir gastar com uma experiência a comprar um bem desejado (EVENTBRITE, 2014). O varejo físico acompanha esse movimento. Nos shopping centers brasileiros, as operações de lazer passaram de 1,4% para 2,2% do total de lojas entre 2019 e 2023, segundo dados da Abrasce (MERCADO&CONSUMO, 2025).
 
-As luderias brasileiras operam, porém, com uma oferta desenhada para o público hobbyista: acervos extensos, jogos de regras complexas e monitoria especializada. O público casual - o consumidor que vê o jogo como meio de socialização, e não como fim em si mesmo - permanece pouco atendido. No exterior, esse público sustenta o setor de *competitive socialising*: no Reino Unido, 46% dos adultos jogaram jogos de tabuleiro nos últimos seis meses, e 88% esperam de bares uma experiência que não conseguem ter em casa (KAM INSIGHT, 2022).
+A luderia se insere nessa tendência. O formato combina alimentação, bebidas e acesso a um acervo de jogos de tabuleiro e cartas em uma mesma ocasião social. A demanda por jogos também cresce: os jogos de tabuleiro e cartas passaram de 9,1% para 13,1% das vendas da indústria de brinquedos entre 2017 e 2025 (ABRINQ, 2026). No exterior, o formato integra o setor de *competitive socialising*: no Reino Unido, 46% dos adultos jogaram jogos de tabuleiro nos últimos seis meses, e 88% esperam de bares uma experiência que não conseguem ter em casa (KAM INSIGHT, 2022).
 
 Um investimento nesse formato enfrenta, contudo, um problema de evidência. Não há levantamento setorial sobre luderias no Brasil, e as premissas que concentram o risco do negócio - taxa de ocupação e ticket médio - costumam ser estimadas sem fonte. O único estudo de viabilidade identificado sobre o formato analisa um caso isolado (ASAKURA; SILVA; MELLO, 2018).
 
 ### 1.2 Questão de pesquisa
 
-Uma luderia em Salvador posicionada para o público casual é viável, e sob quais condições de ponto, preço e ocupação?
+Uma luderia em Salvador é viável, e sob quais condições de ponto, preço e ocupação?
 
 ### 1.3 Objetivo geral
 
-Avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma luderia em Salvador posicionada para o público casual, a partir de premissas sustentadas por dados secundários públicos e por observação direta.
+Avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma luderia em Salvador, a partir de premissas sustentadas por dados secundários públicos e por observação direta.
 
 ### 1.4 Objetivos específicos
 
 1. Analisar o mercado e a concorrência de luderias nas 14 metrópoles brasileiras, com destaque para Salvador, quanto a avaliação, preço e cardápio.
-2. Caracterizar o comportamento de consumo do público das luderias.
-3. Definir o posicionamento e o composto de marketing a partir dos aspectos que mais pesam na satisfação dos clientes.
-4. Estimar a demanda, a taxa de ocupação e o giro de mesas a partir de observação direta e de avaliações calibradas.
-5. Dimensionar a estrutura operacional e os requisitos jurídicos do negócio.
-6. Projetar investimentos, receitas, custos e indicadores de viabilidade a partir de premissas rastreáveis.
-7. Identificar as premissas críticas e os pontos de ruptura do negócio.
-8. Propor um plano de contingência e as validações necessárias antes do investimento.
+2. Definir o posicionamento e o composto de marketing a partir dos aspectos que mais pesam na satisfação dos clientes.
+3. Estimar a demanda, a taxa de ocupação e o giro de mesas a partir de observação direta e de avaliações calibradas.
+4. Dimensionar a estrutura operacional e os requisitos jurídicos do negócio.
+5. Projetar investimentos, receitas, custos e indicadores de viabilidade a partir de premissas rastreáveis.
+6. Identificar as premissas críticas e os pontos de ruptura do negócio.
+7. Propor um plano de contingência e as validações necessárias antes do investimento.
 
 ### 1.5 Pressupostos e hipóteses
 
@@ -153,13 +152,12 @@ Fonte: elaborado pelo próprio autor
 | Objetivo específico | Dimensão | Variáveis ou categorias | Itens |
 |---|---|---|---|
 | 1. Analisar o mercado e a concorrência | Concorrência; praça | Desempenho percebido; porte; preço; produto; variedade; entorno; tipo de ponto; horário; tamanho do mercado | A01-A11, E01, E02 |
-| 2. Caracterizar o comportamento de consumo | Público | Atributos da experiência; pessoas por mesa; gasto por pessoa; poder de compra | B02-B05, D03, E02, E03 |
-| 3. Definir posicionamento e composto de marketing | Posicionamento; produto; preço | Atributos da experiência; satisfação por atributo; preço; variedade; acervo | A03, A06-A09, B01-B03, B06, F01-F02 |
-| 4. Estimar demanda, ocupação e giro | Demanda | Taxa de ocupação; transações; permanência; pessoas por mesa; velocidade de avaliações; tamanho do mercado | B04, B07, D01-D06, E01 |
-| 5. Dimensionar operação e requisitos jurídicos | Operação; aspectos legais | Reclamações operacionais; capacidade; custo de pessoal; tributos | B02-B03, D01, D03-D04, E05, E07 |
-| 6. Projetar investimentos, receitas, custos e indicadores | Viabilidade econômico-financeira | Ticket; preço efetivo; custos; benchmark setorial; taxa de desconto | A07-A08, B05, D07, E03-E08 |
-| 7. Identificar premissas críticas e pontos de ruptura | Risco das premissas | Premissas do modelo financeiro com faixas e nível de evidência | Todos os itens que alimentam premissas |
-| 8. Propor contingência e validações | Risco do negócio | Premissas críticas; limitações da evidência | Saídas do objetivo 7 |
+| 2. Definir posicionamento e composto de marketing | Posicionamento; produto; preço | Atributos da experiência; satisfação por atributo; preço; variedade; acervo | A03, A06-A09, B01-B03, B06, F01-F02 |
+| 3. Estimar demanda, ocupação e giro | Demanda | Taxa de ocupação; transações; permanência; pessoas por mesa; velocidade de avaliações; tamanho do mercado | B04, B07, D01-D06, E01 |
+| 4. Dimensionar operação e requisitos jurídicos | Operação; aspectos legais | Reclamações operacionais; capacidade; custo de pessoal; tributos | B02-B03, D01, D03-D04, E05, E07 |
+| 5. Projetar investimentos, receitas, custos e indicadores | Viabilidade econômico-financeira | Ticket; preço efetivo; custos; benchmark setorial; taxa de desconto | A07-A08, B05, D07, E03-E08 |
+| 6. Identificar premissas críticas e pontos de ruptura | Risco das premissas | Premissas do modelo financeiro com faixas e nível de evidência | Todos os itens que alimentam premissas |
+| 7. Propor contingência e validações | Risco do negócio | Premissas críticas; limitações da evidência | Saídas do objetivo 6 |
 
 Fonte: elaborado pelo próprio autor
 
@@ -170,13 +168,12 @@ Fonte: elaborado pelo próprio autor
 | Objetivo específico | Técnicas |
 |---|---|
 | 1 | Estatística descritiva por metrópole, com Salvador em destaque; comparação de cardápios (preço, variedade e itens); mapa de concorrentes; Cinco Forças; PESTEL |
-| 2 | Distribuição do tamanho dos grupos (citado e observado) e dos valores por pessoa citados; perfil demográfico e de renda de Salvador |
-| 3 | Análise de conteúdo com dicionário validado (kappa e F1); análise de penalidade e recompensa; regressão da nota com efeito fixo por estabelecimento (H1); comparação da proporção de reclamações de preço entre políticas de cobrança (H3); grade ERRC |
-| 4 | Pessoas por hora e permanência; notas fiscais emitidas em 15 dias × pessoas por nota; modelo de calibração (visitantes estimados na São Jogue ÷ velocidade de avaliações → fluxo dos demais concorrentes); resultados em faixa |
-| 5 | Ranking de reclamações com intervalo de confiança; dimensionamento de mesas e equipe; levantamento documental da legislação |
-| 6 | Cesta de consumo por pessoa calibrada pelos valores citados (H5) e checada contra a POF; árvore de direcionadores; registro de premissas com faixas; DRE e fluxo de caixa projetados; VPL, TIR, payback descontado e ponto de equilíbrio |
-| 7 | Análise de sensibilidade (gráfico tornado); ponto de ruptura; simulação de Monte Carlo (opcional) |
-| 8 | Matriz SWOT; cenários pessimista, provável e otimista; matriz de riscos |
+| 2 | Análise de conteúdo com dicionário validado (kappa e F1); análise de penalidade e recompensa; regressão da nota com efeito fixo por estabelecimento (H1); comparação da proporção de reclamações de preço entre políticas de cobrança (H3); grade ERRC |
+| 3 | Pessoas por hora e permanência; notas fiscais emitidas em 15 dias × pessoas por nota; modelo de calibração (visitantes estimados na São Jogue ÷ velocidade de avaliações → fluxo dos demais concorrentes); resultados em faixa |
+| 4 | Ranking de reclamações com intervalo de confiança; dimensionamento de mesas e equipe; levantamento documental da legislação |
+| 5 | Cesta de consumo por pessoa calibrada pelos valores citados (H5) e checada contra a POF; árvore de direcionadores; registro de premissas com faixas; DRE e fluxo de caixa projetados; VPL, TIR, payback descontado e ponto de equilíbrio |
+| 6 | Análise de sensibilidade (gráfico tornado); ponto de ruptura; simulação de Monte Carlo (opcional) |
+| 7 | Matriz SWOT; cenários pessimista, provável e otimista; matriz de riscos |
 
 Fonte: elaborado pelo próprio autor
 
@@ -208,6 +205,12 @@ BENJAMINI, Yoav; HOCHBERG, Yosef. Controlling the false discovery rate: a practi
 
 COHEN, Jacob. A coefficient of agreement for nominal scales. *Educational and Psychological Measurement*, 1960. [A VERIFICAR]
 
+EVENTBRITE. *Millennials*: fueling the experience economy. Pesquisa conduzida pela Harris Poll, 2014. [A VERIFICAR: localizar o relatório original.]
+
+GILOVICH, Thomas; KUMAR, Amit; JAMPOL, Lily. A wonderful life: experiential consumption and the pursuit of happiness. *Journal of Consumer Psychology*, v. 25, n. 1, p. 152-165, 2015. DOI: 10.1016/j.jcps.2014.08.004.
+
 KAM INSIGHT. *Competitive socialising*: winning a new customer occasion. KAM Media, 2022. Disponível em: https://kaminsight.com/wp-content/uploads/sites/2044/2023/07/KAM-Competitive-Socialising-Feb-22.pdf. [Completar data de acesso.]
+
+MERCADO&CONSUMO. Lazer é a segunda maior motivação de ida a shopping centers. *Mercado&Consumo*, 8 jan. 2025. Disponível em: https://mercadoeconsumo.com.br/08/01/2025/shopping-centers/lazer-e-a-segunda-maior-motivacao-de-ida-a-shopping-centers. Acesso em: 2 out. 2026. [Substituir pela publicação original da Abrasce, quando localizada.]
 
 Obras marcadas [A VERIFICAR] no Quadro 01 constam em `_instrucoes/2_ref-teorico.md` e devem ser conferidas antes da entrega.
