@@ -314,7 +314,7 @@ Em ordem de criticidade:
 
 **Formulação do autor (09/10/2026):** existe um público potencial (30 anos ou mais, casado e/ou com filhos) que frequentaria luderias se houvesse mudança no ambiente, no público ou na qualidade do serviço das luderias atuais.
 
-**Status:** proposta, ainda não registrada. Não consta no registro prévio nem no projeto de pesquisa. Como a coleta do Bloco B e a divisão da base ainda não ocorreram, ela pode entrar como emenda datada antes de qualquer análise (registro prévio, §10).
+**Status (atualizado em 09/10/2026): guardada para a seção de estudos futuros (cap. 11.5), por decisão do autor; ver `lacunas-bibliograficas.md` §7.1.** Estado anterior: proposta, ainda não registrada. Não consta no registro prévio nem no projeto de pesquisa. Como a coleta do Bloco B e a divisão da base ainda não ocorreram, ela pode entrar como emenda datada antes de qualquer análise (registro prévio, §10).
 
 **Problema de operacionalização (decidir antes de buscar a literatura).** A hipótese é contrafactual ("frequentaria se..."). O projeto não usa questionários e rebaixa dado atitudinal e de intenção ao último nível (CLAUDE.md, §2). Os dados do projeto também têm limites para ela:
 
