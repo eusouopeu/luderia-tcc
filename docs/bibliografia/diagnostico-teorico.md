@@ -16,7 +16,9 @@ Legenda do campo **Natureza**:
 
 ---
 
-## 0. Pontos que mudam o diagnóstico (decidir antes da etapa 2)
+## 0. Pontos que mudam o diagnóstico
+
+**Decisão do autor (09/10/2026): o recorte "público casual" saiu de vez.** O casual deixa de ser diferencial porque já é o público atual da maioria das luderias. Efeitos: Stebbins, jogador casual × hobbyista e Oceano Azul passam a P3 (contexto); 2.3 e 2.4 dos arquivos de instrução e a introdução ficam desatualizados em relação a essa decisão (não alterados aqui). Em seu lugar, o autor propõe uma hipótese sobre um **público potencial** (§9). Os itens 1 e 2 abaixo ficam como registro da inconsistência encontrada.
 
 1. **O recorte "público casual" saiu do projeto, mas continua nas instruções.** O commit `61599fa` (02/10/2026) retirou o recorte de `projeto_pesquisa_luderia.md`, com a justificativa de que "a maioria das luderias já atende o público casual". `_instrucoes/1_estrutura.md`, `2_ref-teorico.md`, `3_mercado.md`, `5_marketing.md` e `1_introducao_plano_luderia.md` ainda sustentam o posicionamento "casual × hobbyista" (subcapítulos 2.3, 2.4, 5.2, 6.1). A introdução afirma o oposto do commit: que as luderias "operam majoritariamente voltadas ao público hobbyista".
    **Consequência:** a fundamentação de Stebbins, jogador casual × hobbyista e Oceano Azul vale só se o recorte voltar. Este diagnóstico marca esses itens como **condicionais**.
@@ -305,3 +307,29 @@ Em ordem de criticidade:
 15. **Fracasso e sobrevivência de bares e restaurantes.** Sustenta 10.4.
 
 **Decisão necessária do autor antes da etapa 2:** o recorte "público casual" volta ao plano ou sai de vez dos textos? A resposta define se os itens 13 (Stebbins, jogador casual) e 12 (Oceano Azul) entram no roteiro como P1/P2 ou como P3.
+
+---
+
+## 9. Hipótese proposta: público potencial (pessoas de 30 anos ou mais, casadas e/ou com filhos)
+
+**Formulação do autor (09/10/2026):** existe um público potencial (30 anos ou mais, casado e/ou com filhos) que frequentaria luderias se houvesse mudança no ambiente, no público ou na qualidade do serviço das luderias atuais.
+
+**Status:** proposta, ainda não registrada. Não consta no registro prévio nem no projeto de pesquisa. Como a coleta do Bloco B e a divisão da base ainda não ocorreram, ela pode entrar como emenda datada antes de qualquer análise (registro prévio, §10).
+
+**Problema de operacionalização (decidir antes de buscar a literatura).** A hipótese é contrafactual ("frequentaria se..."). O projeto não usa questionários e rebaixa dado atitudinal e de intenção ao último nível (CLAUDE.md, §2). Os dados do projeto também têm limites para ela:
+
+| Dado | O que consegue mostrar | O que não consegue |
+|---|---|---|
+| Censo 2022, PNAD (Bloco E) | Tamanho do segmento em Salvador (30+, casados, com filhos) | Propensão a frequentar luderias |
+| Avaliações (Bloco B) | Reclamações sobre ambiente, barulho, público e atendimento; menções a filhos, família, idade | Quem **não foi**. Só vê quem foi e avaliou, ou seja, quem tolerou o ambiente atual |
+| Contagem direta (Bloco D) | Composição dos grupos, se o protocolo registrar crianças ou idade aparente | Hoje o protocolo proíbe registro de características individuais (3.8) |
+| Cultura nas Capitais, Hábitos Culturais, POF | Comportamento de lazer e gasto do segmento | Relação com jogos de tabuleiro |
+
+Formulações possíveis, da mais testável para a menos:
+
+1. **Descritiva de tamanho (N2):** o segmento é grande em Salvador (Censo). Testável, mas não prova propensão.
+2. **De barreira observada (N3):** entre as avaliações, as menções negativas a ambiente, barulho e público associam-se a menções a filhos/família/idade. Testável no Bloco B, com a limitação de só ver quem foi.
+3. **Comparativa entre estabelecimentos (N3):** estabelecimentos com outro ambiente (diurno, em shopping, familiar) têm maior proporção de menções a filhos ou família. Testável no Bloco A + B; dependência de coletar `shopping/rua` e horário (A10, A11, já previstos).
+4. **De intenção (N6/atitudinal):** "frequentaria se...". Só testável por questionário ou porta falsa, fora do escopo atual; entraria como validação recomendada (cap. 11).
+
+Observação de validade: as três variáveis causais da hipótese (ambiente, público, qualidade do serviço) coincidem com aspectos já codificados no Bloco B (`ambiente`, `barulho`, `atendimento`, `explicacao_jogos`). Falta codificar **perfil do cliente** (filhos, família, idade, estado civil), que hoje não existe no dicionário (3.4).
