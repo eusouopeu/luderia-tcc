@@ -1,0 +1,37 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao
+Sanduíches;Dixit;hambúrguer 150 g, queijo prato, cebola caramelizada e salada;;38;pratos principais;hambúrguer;S;combo: + R$ 14,90 com batata pequena e refrigerante
+Sanduíches;Flamecraft;hambúrguer 150 g, queijo prato, picles, bacon e sriracha;;38;pratos principais;hambúrguer;S;combo: + R$ 14,90 com batata pequena e refrigerante
+Sanduíches;Wingspan;frango empanado, mussarela e alho-poró na baguete;;32;pratos principais;outros;S;combo: + R$ 14,90 com batata pequena e refrigerante
+Sanduíches;Kafta Istanbul Dog;kafta, mussarela e cebola caramelizada na baguete;;32;pratos principais;outros;S;combo: + R$ 14,90 com batata pequena e refrigerante
+Sanduíches;Papai Uwe;queijo minas, rúcula e tomate seco na baguete (vegetariano);;38;pratos principais;outros;S;combo: + R$ 14,90 com batata pequena e refrigerante
+Sanduíches;Verdant;burger vegano de picanha, rúcula e tomate seco (vegano);;42;pratos principais;hambúrguer;S;combo: + R$ 14,90 com batata pequena e refrigerante
+Petiscos;Korean dog;salsichão empanado no palito com sriracha;;22;entradas;outras;S;
+Petiscos;Tiras de frango;frango empanado com molho de alho;;32;entradas;outras;S;
+Petiscos;Dadinhos de tapioca;com geleia de pimenta;12 unidades;32;entradas;outras;S;
+Petiscos;Kibes;mini kibes com molho de alho;10 unidades;32;entradas;outras;S;
+Petiscos;Mussarela empanada;com molho de alho;6 unidades;22;entradas;outras;S;
+Petiscos;Pastéis de 3 queijos;;3 unidades;24;entradas;outras;S;
+Petiscos;Batata frita;com mussarela maçaricada;porção;24;entradas;batata;S;
+Petiscos;Salgadinho vegano;coxinha de jaca, risoles ou kibe;10 unidades;36;entradas;outras;S;
+Sobremesas;Milk-shake;chocolate, morango, café ou paçoca;;22;bebidas;não alcoólicas;S;
+Sobremesas;Brownie com sorvete;;;24;sobremesas;sobremesas;S;
+Sobremesas;Cookie com sorvete;;;28;sobremesas;sobremesas;S;
+Sobremesas;Brownie recheado;vários sabores;;10;sobremesas;sobremesas;N;
+Sobremesas;Alfajor;;;12;sobremesas;sobremesas;N;
+Sobremesas;Brownie vegano;;;12;sobremesas;sobremesas;N;
+Bebidas;Água mineral;;;5;bebidas;não alcoólicas;N;
+Bebidas;Água mineral com gás;;;6;bebidas;não alcoólicas;N;
+Bebidas;Café expresso;;;7;bebidas;não alcoólicas;S;
+Bebidas;Refrigerante;;lata;9;bebidas;refrigerante;N;
+Bebidas;H2OH;;;9;bebidas;refrigerante;N;
+Bebidas;Suco Del Valle;;lata;9;bebidas;não alcoólicas;N;
+Bebidas;Matte Leão;;;9;bebidas;não alcoólicas;N;
+Bebidas;Red Bull;;;18;bebidas;não alcoólicas;N;
+Bebidas;Soda italiana;amora, tangerina, maracujá, maçã verde ou limão siciliano;;16;bebidas;não alcoólicas;S;
+Cervejas;Império Lager;;long neck;10;bebidas;cerveja;N;
+Cervejas;Heineken;;long neck;14;bebidas;cerveja;N;
+Cervejas;Hocus Pocus Alma;;;16;bebidas;cerveja;N;
+Cervejas;Hocus Pocus Orange Sunshine;;;17;bebidas;cerveja;N;
+Cervejas;Hocus Pocus Aura;;;18;bebidas;cerveja;N;
+Cervejas;Hocus Pocus Magic Trap;;;20;bebidas;cerveja;N;
+Cervejas;Cerveja zero álcool;;;12;bebidas;não alcoólicas;N;

@@ -1,0 +1,97 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao
+Petiscos;Pixel Fries;batata frita;;27;entradas;batata;S;
+Petiscos;Pixel Fries cheddar e bacon;batata frita com cheddar e bacon;;29;entradas;batata;S;
+Petiscos;Nachos do Arca;tortilhas, molho de cheddar, chili e farofa de bacon;;35;entradas;outras;S;
+Petiscos;Polenta palito;polenta em dados com provolone e mayo defumada;;15;entradas;outras;S;
+Petiscos;Chicken fingers;peito de frango empanado e maionese da casa;;37;entradas;outras;S;
+Petiscos;Mussarela sticks;palito de mussarela empanado;;29;entradas;outras;S;
+Petiscos;Bolinho de mandioca com carne curada;;;40;entradas;outras;S;
+Petiscos;Coxinha de frango com requeijão;;;36;entradas;outras;S;
+Petiscos;Dadinho de tapioca;com queijo coalho e geleia de pimenta;;34;entradas;outras;S;
+Chopp geladíssimo;Chopp;;300 ml;14;bebidas;cerveja;N;
+Chopp geladíssimo;Chopp;;450 ml;16;bebidas;cerveja;N;
+Cervejas;Heineken;;;15;bebidas;cerveja;N;
+Cervejas;Amstel;;;14;bebidas;cerveja;N;
+Cervejas;Amstel Ultra;;;10;bebidas;cerveja;N;
+Cervejas;Estrella Galicia;;;12;bebidas;cerveja;N;
+Cervejas;Barbarella Framboesa;;;17;bebidas;cerveja;N;
+Cervejas;Lagunitas;;;22;bebidas;cerveja;N;
+Cervejas;Blue Moon;;;21;bebidas;cerveja;N;
+Cervejas;Roleta Russa APA;;;16;bebidas;cerveja;N;
+Cervejas;Roleta Russa IPA;;;16;bebidas;cerveja;N;
+Baldinhos;Baldinho de Amstel;;balde;55;bebidas;cerveja;N;quantidade de unidades não informada
+Baldinhos;Baldinho de Amstel Ultra;;balde;48;bebidas;cerveja;N;quantidade de unidades não informada
+Baldinhos;Baldinho de Roleta Russa;;balde;60;bebidas;cerveja;N;quantidade de unidades não informada
+Baldinhos;Baldinho de Heineken;;balde;60;bebidas;cerveja;N;quantidade de unidades não informada
+Baldinhos;Baldinho Roleta Russa APA;;balde;60;bebidas;cerveja;N;quantidade de unidades não informada
+Baldinhos;Baldinho Roleta Russa IPA;;balde;60;bebidas;cerveja;N;quantidade de unidades não informada
+Baldinhos;Baldinho Estrella Galicia;;balde;59;bebidas;cerveja;N;quantidade de unidades não informada
+Combos;Combo Jack Daniel's Fire;garrafa 1 L com 6 latas de Monster;combo;310;bebidas;drinks;N;
+Combos;Combo Jack Daniel's Honey;garrafa com 6 latas de Monster;combo;310;bebidas;drinks;N;
+Combos;Combo Jack Daniel's Original;garrafa com 6 latas de Monster;combo;310;bebidas;drinks;N;
+Combos;Combo Jack Daniel's Apple;garrafa com 6 latas de Monster;combo;310;bebidas;drinks;N;
+Soft drinks;Suco Del Valle uva;;;6;bebidas;não alcoólicas;N;
+Soft drinks;Água mineral;;;7;bebidas;não alcoólicas;N;
+Soft drinks;Refrigerante;Coca-Cola, Coca-Cola Zero, Fanta Guaraná, Fanta Laranja ou Sprite;;8;bebidas;refrigerante;N;
+Soft drinks;Água tônica;tradicional ou sem açúcar;;8;bebidas;refrigerante;N;
+Energéticos;Monster Mango Loco;;;15;bebidas;não alcoólicas;N;
+Energéticos;Red Bull;;;15;bebidas;não alcoólicas;N;
+Doses;Dose de Absolut;;dose;23;bebidas;drinks;N;
+Doses;Cachaça de jambu;;dose;16;bebidas;drinks;N;
+Doses;Cachaça;;dose;15;bebidas;drinks;N;
+Doses;Campari;;dose;20;bebidas;drinks;N;
+Doses;Jack Daniel's;;dose;23;bebidas;drinks;N;
+Doses;Jack Daniel's Honey;;dose;23;bebidas;drinks;N;
+Doses;Jack Daniel's Fire;;dose;23;bebidas;drinks;N;
+Doses;Jack Daniel's Apple;;dose;23;bebidas;drinks;N;
+Doses;Jägermeister;;dose;25;bebidas;drinks;N;
+Doses;Jose Cuervo;;dose;23;bebidas;drinks;N;
+Doses;Licor 43;;dose;23;bebidas;drinks;N;
+Espumantes;Nero Celebration Brut;;garrafa;72;bebidas;drinks;N;
+Espumantes;Nero Celebration Moscatel;;garrafa;72;bebidas;drinks;N;
+Espumantes;Nero Celebration Rosé;;garrafa;72;bebidas;drinks;N;
+Vinhos;Vinho branco Sexy Fish;;garrafa;70;bebidas;drinks;N;
+Vinhos;Vinho tinto Sexy Fish;;garrafa;70;bebidas;drinks;N;
+Vinhos;Vinho Norton DuOC Malbec;;garrafa;79;bebidas;drinks;N;
+Vinhos;Vinho rosé Sexy Fish;;garrafa;;bebidas;drinks;N;preço cortado na borda da página do PDF
+Burgers;Atari;burger, queijo colonial, cebola roxa caramelizada no Jack Daniel's e mayo de chimichurri;;45;pratos principais;hambúrguer;S;
+Burgers;Baconality;burger, creme de cheddar, farofa de bacon e candy bacon;;49;pratos principais;hambúrguer;S;
+Burgers;Clássico;burger, queijo colonial, alface, tomate e mayo de chimichurri;;45;pratos principais;hambúrguer;S;
+Burgers;Jurassic Chicken;frango crocante, mayo de mel defumado, cebola roxa, alface e tomate;;41;pratos principais;hambúrguer;S;
+Burgers;Doom;dois burgers, creme de cheddar, farofa de bacon, candy bacon e mayo;;55;pratos principais;hambúrguer;S;
+Burgers;Super Mario;pão brioche, burger 180 g e mussarela;;40;pratos principais;hambúrguer;S;
+Burgers;The Boss;burger, mussarela crocante, mayo de chimichurri e cebola caramelizada;;49;pratos principais;hambúrguer;S;
+Burgers vegetarianos;Atari (vegetariano);burger vegetal, queijo colonial, cebola caramelizada e mayo de chimichurri;;45;pratos principais;hambúrguer;S;
+Burgers vegetarianos;Clássico (vegetariano);burger vegetal, queijo colonial, alface, tomate e mayo de chimichurri;;45;pratos principais;hambúrguer;S;
+Burgers vegetarianos;The Boss (vegetariano);burger vegetal, mussarela crocante e cebola caramelizada;;49;pratos principais;hambúrguer;S;
+Burgers vegetarianos;Super Mario (vegetariano);burger vegetal 180 g e mussarela;;40;pratos principais;hambúrguer;S;
+Promoções;Buffet de hambúrguer;;por pessoa;69;pratos principais;hambúrguer;S;só às terças-feiras
+Sobremesas;Torta holandesa;;;26;sobremesas;sobremesas;S;
+Sobremesas;Churros da Dona Florinda;porção de churros com doce de leite;porção;25;sobremesas;sobremesas;S;
+Sobremesas;Torta de sorvete no pote;;;25;sobremesas;sobremesas;S;
+Sobremesas;Alfajor de chocolate;;;9;sobremesas;sobremesas;N;
+Drinks autorais;Baby Yoda;vodka, kiwi, xarope de maçã verde, limão e uva;;29;bebidas;drinks;S;
+Drinks autorais;Blanka;Monster Mango Loco, cachaça, limão, hortelã e maracujá;;34;bebidas;drinks;S;
+Drinks autorais;Brutality;tequila prata, morango, limão siciliano, tônica e hortelã;;32;bebidas;drinks;S;
+Drinks autorais;Cello Spritz;limoncello, tangerina, espumante moscatel e espuma de gengibre;;35;bebidas;drinks;S;
+Drinks autorais;Hi Barbie!;gin, triple sec, chá de hibisco, limão e grenadine;;29;bebidas;drinks;S;
+Drinks autorais;Jäger Mojito;Jägermeister, limão e água com gás;;28;bebidas;drinks;S;
+Drinks autorais;Lara Croft;Jack Daniel's Apple, Cointreau, limão siciliano e ginger ale;;40;bebidas;drinks;S;
+Drinks autorais;Polissuco;Monster, gin, curaçau blue, limão e hortelã;;35;bebidas;drinks;S;
+Drinks autorais;Power Jam;cachaça de jambu;;24;bebidas;drinks;S;
+Drinks autorais;Power Star;vodka, licor de pêssego, suco de laranja e grenadine;;34;bebidas;drinks;S;
+Drinks autorais;Sonic;curaçau blue, limão siciliano, vodka e hortelã;;29;bebidas;drinks;S;
+Drinks clássicos;Aperol;Aperol, água com gás e prosecco;;35;bebidas;drinks;S;
+Drinks clássicos;Mojito;rum prata, hortelã, açúcar, água com gás e limão;;24;bebidas;drinks;S;
+Drinks clássicos;Moscow Mule;vodka, limão, xarope de gengibre e hortelã;;32;bebidas;drinks;S;
+Drinks clássicos;Negroni;Campari, gin e vermute;;30;bebidas;drinks;S;
+Drinks clássicos;Caipirinha de vodka;;limão;25;bebidas;drinks;S;
+Drinks clássicos;Caipirinha de vodka;;morango;25;bebidas;drinks;S;
+Drinks clássicos;Caipirinha de cachaça;;limão;22;bebidas;drinks;S;
+Drinks clássicos;Caipirinha de cachaça;;morango;22;bebidas;drinks;S;
+Drinks clássicos;Gin tônica;gin, tônica, limão siciliano, pimenta rosa e alecrim;;29;bebidas;drinks;S;
+Drinks clássicos;Vodka com energético;;;36;bebidas;drinks;S;
+Drinks sem álcool;Brutality sem álcool;morango, limão siciliano, tônica e hortelã;;30;bebidas;não alcoólicas;S;
+Drinks sem álcool;Hi Barbie sem álcool;;;25;bebidas;não alcoólicas;S;
+Drinks sem álcool;Pink lemonade;;;13;bebidas;não alcoólicas;S;
+Drinks sem álcool;Sonic sem álcool;xarope blue, limão siciliano e hortelã;;28;bebidas;não alcoólicas;S;

@@ -1,0 +1,61 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao
+Site (página inicial);Ingresso;jogos à vontade durante todo o dia;quarta e quinta;23;couvert ou taxa de jogo;couvert ou taxa de jogo;N;informação da página inicial do site, não do cardápio Cloudfy
+Site (página inicial);Ingresso;jogos à vontade durante todo o dia;sexta, sábado, domingo e feriados;28;couvert ou taxa de jogo;couvert ou taxa de jogo;N;informação da página inicial do site, não do cardápio Cloudfy
+Hamburguers;Sidequest;blend 150 g, cheddar, tomate e alface;;30;pratos principais;hambúrguer;S;
+Hamburguers;King of Tokyo;blend 150 g, cheddar, bacon, cebola roxa caramelizada e salada;;40;pratos principais;hambúrguer;S;
+Hamburguers;Splendor;blend 150 g, cheddar, pepperoni, geleia de pimenta e salada;;40;pratos principais;hambúrguer;S;
+Hamburguers;Wingspan;blend de frango 100 g, queijo coalho 50 g, queijo e alface;;40;pratos principais;hambúrguer;S;
+Hamburguers;Dobble;pão de leite, dois blends de 100 g e dois cheddars;;35;pratos principais;hambúrguer;S;
+Hamburguers;Uno;pão de leite, blend 100 g e cheddar;;25;pratos principais;hambúrguer;S;
+Combos;Combo Sidequest;hambúrguer, fritas e refrigerante KS;combo;40;pratos principais;hambúrguer;S;
+Combos;Combo King of Tokyo;hambúrguer, fritas e refrigerante KS;combo;50;pratos principais;hambúrguer;S;
+Combos;Combo Splendor;hambúrguer, fritas e refrigerante KS;combo;50;pratos principais;hambúrguer;S;
+Combos;Combo Wingspan;hambúrguer, fritas e refrigerante KS;combo;50;pratos principais;hambúrguer;S;
+Combos;Combo Uno;hambúrguer, fritas e refrigerante KS;combo;35;pratos principais;hambúrguer;S;
+Combos;Combo Dobble;hambúrguer, fritas e refrigerante KS;combo;45;pratos principais;hambúrguer;S;
+Combos;Combo sanduíche calabresa;sanduíche de calabresa e refrigerante lata;combo;25;pratos principais;outros;S;preço anterior riscado: R$ 27
+Combos;Combo sanduíche frango;sanduíche de frango e refrigerante lata;combo;25;pratos principais;outros;S;preço anterior riscado: R$ 27
+Sanduíches;Sanduíche misto;baguete brioche 15 cm, mussarela e peito de peru;;16;pratos principais;outros;S;
+Sanduíches;Sanduíche calabresa;baguete brioche 15 cm, calabresa, salada e mussarela;;20;pratos principais;outros;S;
+Sanduíches;Sanduíche frango;baguete brioche 15 cm, frango desfiado, salada e mussarela;;20;pratos principais;outros;S;
+Tira gosto;Batata frita;;P;16;entradas;batata;S;
+Tira gosto;Batata frita;;M;26;entradas;batata;S;
+Tira gosto;Batata frita;;G;36;entradas;batata;S;
+Tira gosto;Pão de queijo;;12 unidades;12;entradas;outras;S;
+Tira gosto;Pão de alho;baguete brioche 15 cm com mussarela e molho de alho;;20;entradas;outras;S;
+Tira gosto;Batata calabresa;batata frita com duas porções de calabresa;porção;45;entradas;batata;S;
+Café;Café espresso;;60 ml;5;bebidas;não alcoólicas;S;
+Café;Café espresso duplo;;120 ml;9;bebidas;não alcoólicas;S;
+Café;Cappuccino italiano;leite vaporizado e espresso;;12;bebidas;não alcoólicas;S;
+Café;Cappuccino brasileiro;leite vaporizado, cappuccino em pó, espresso e canela;;14;bebidas;não alcoólicas;S;
+Café;Chocolate quente;com chantili e Nutella;;16;bebidas;não alcoólicas;S;
+Cafés gelados;Café espresso white;leite gelado, xarope e espresso;;15;bebidas;não alcoólicas;S;
+Cafés gelados;Café affogato;sorvete, Oreo, calda de chocolate e espresso;;18;bebidas;não alcoólicas;S;
+Sucos;Suco de abacaxi;;;10;bebidas;não alcoólicas;S;
+Sucos;Suco de goiaba;;;10;bebidas;não alcoólicas;S;
+Sucos;Suco de acerola;;;10;bebidas;não alcoólicas;S;
+Sucos;Suco de morango;;;12;bebidas;não alcoólicas;S;
+Soda italiana;Soda italiana de limão siciliano;;;13;bebidas;não alcoólicas;S;
+Soda italiana;Soda italiana de maçã verde;;;13;bebidas;não alcoólicas;S;
+Soda italiana;Soda italiana pink lemonade;;;13;bebidas;não alcoólicas;S;
+Soda italiana;Soda italiana de blueberry;;;13;bebidas;não alcoólicas;S;
+Soda italiana;Soda italiana de pêssego;;;13;bebidas;não alcoólicas;S;
+Bebidas;Água;;500 ml;4;bebidas;não alcoólicas;N;
+Bebidas;Água com gás;;500 ml;5;bebidas;não alcoólicas;N;
+Bebidas;Coca-Cola Zero KS;;290 ml;5;bebidas;refrigerante;N;
+Bebidas;Coca-Cola;;lata 350 ml;7;bebidas;refrigerante;N;
+Bebidas;Coca-Cola Zero;;lata 350 ml;7;bebidas;refrigerante;N;
+Bebidas;Energético Monster;;473 ml;14;bebidas;não alcoólicas;N;
+Bebidas;Energético Monster Pipeline Punch;;473 ml;14;bebidas;não alcoólicas;N;
+Cervejas (long neck);Budweiser;;long neck 330 ml;13;bebidas;cerveja;N;
+Cervejas (long neck);Eisenbahn;;long neck 355 ml;13;bebidas;cerveja;N;
+Cervejas (long neck);Heineken;;long neck 330 ml;14;bebidas;cerveja;N;
+Dose;Cachaça de jambu;;dose 60 ml;10;bebidas;drinks;N;
+Dose;Gin Gordon's;;dose 60 ml;15;bebidas;drinks;N;
+Drinks;Absolut Vodka Sprite;;lata 269 ml;13;bebidas;drinks;N;
+Drinks;Caipirinha;aguardente, limão, xarope de açúcar e gelo;60 ml de aguardente;16;bebidas;drinks;S;
+Drinks;Ice 51 Kiwi;;275 ml;13;bebidas;drinks;N;
+Milkshakes;Milk-shake de cappuccino;;;24;bebidas;não alcoólicas;S;
+Milkshakes;Milk-shake de morango;;;26;bebidas;não alcoólicas;S;
+Milkshakes;Milk-shake de Ovomaltine;;;24;bebidas;não alcoólicas;S;
+Milkshakes;Milk-shake de paçoca;;;24;bebidas;não alcoólicas;S;

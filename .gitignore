@@ -20,3 +20,7 @@ _data/processed/\[A\]*/bloco_b_comentarios_aprovadas_*.xlsx
 
 # PDFs de terceiros baixados para leitura (direitos autorais; repositório público)
 bibliografia/leituras-P1/
+
+# Bloco A: cardápios originais (PDF, imagens, HTML de terceiros); só a transcrição em CSV é publicada
+_data/raw/\[A\]*/cardapios/*
+!_data/raw/\[A\]*/cardapios/transcricao/

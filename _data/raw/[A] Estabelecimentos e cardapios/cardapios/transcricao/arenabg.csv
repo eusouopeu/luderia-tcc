@@ -1,0 +1,79 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao
+Horários e valores de entrada;Entrada;;quarta e quinta;0;couvert ou taxa de jogo;couvert ou taxa de jogo;N;gratuita, rodapé da página do cardápio
+Horários e valores de entrada;Entrada;;sexta;12.5;couvert ou taxa de jogo;couvert ou taxa de jogo;N;rodapé da página do cardápio
+Horários e valores de entrada;Entrada;;sábado, domingo e feriados;25;couvert ou taxa de jogo;couvert ou taxa de jogo;N;rodapé da página do cardápio
+Hambúrgueres;Arena Quest;angus 180 g, cheddar, bacon, picles e cebola crispy;hambúrguer;45;pratos principais;hambúrguer;S;
+Hambúrgueres;Arena Quest;angus 180 g, cheddar, bacon, picles e cebola crispy;combo com batata 300 g e lata;61;pratos principais;hambúrguer;S;
+Hambúrgueres;Combacon;angus 180 g, bacon e provolone;hambúrguer;40;pratos principais;hambúrguer;S;
+Hambúrgueres;Combacon;angus 180 g, bacon e provolone;combo com batata 300 g e lata;57;pratos principais;hambúrguer;S;
+Hambúrgueres;Cheddar Blitz;angus 180 g, bacon, cheddar e onion rings;hambúrguer;42;pratos principais;hambúrguer;S;
+Hambúrgueres;Cheddar Blitz;angus 180 g, bacon, cheddar e onion rings;combo com batata 300 g e lata;59;pratos principais;hambúrguer;S;
+Hambúrgueres;Jalapeño Ride;angus 180 g, jalapeño, american cheese e salada;hambúrguer;39;pratos principais;hambúrguer;S;
+Hambúrgueres;Jalapeño Ride;angus 180 g, jalapeño, american cheese e salada;combo com batata 300 g e lata;57;pratos principais;hambúrguer;S;
+Hambúrgueres;Distrito BBQ;angus 180 g, cebola caramelizada, american cheese, salada e barbecue;hambúrguer;38;pratos principais;hambúrguer;S;
+Hambúrgueres;Distrito BBQ;angus 180 g, cebola caramelizada, american cheese, salada e barbecue;combo com batata 300 g e lata;55;pratos principais;hambúrguer;S;
+Hambúrgueres;Detecheese;angus 180 g, mussarela empanada 100 g, american cheese e bacon;hambúrguer;53;pratos principais;hambúrguer;S;
+Hambúrgueres;Detecheese;angus 180 g, mussarela empanada 100 g, american cheese e bacon;combo com batata 300 g e lata;69;pratos principais;hambúrguer;S;
+Hambúrgueres;Duo Burger;dois angus 180 g, american cheese, cheddar, picles e bacon;hambúrguer;60;pratos principais;hambúrguer;S;
+Hambúrgueres;Duo Burger;dois angus 180 g, american cheese, cheddar, picles e bacon;combo com batata 300 g e lata;78;pratos principais;hambúrguer;S;
+Hambúrgueres;Trivia Salad;angus 180 g, salada e american cheese;hambúrguer;37;pratos principais;hambúrguer;S;
+Hambúrgueres;Trivia Salad;angus 180 g, salada e american cheese;combo com batata 300 g e lata;52;pratos principais;hambúrguer;S;
+Hambúrgueres;Ark Burguer;angus 180 g e american cheese;hambúrguer;35;pratos principais;hambúrguer;S;
+Hambúrgueres;Ark Burguer;angus 180 g e american cheese;combo com batata 300 g e lata;50;pratos principais;hambúrguer;S;
+Hambúrgueres;Chicken Rush;hambúrguer de frango e salada;hambúrguer;36;pratos principais;hambúrguer;S;
+Hambúrgueres;Chicken Rush;hambúrguer de frango e salada;combo com batata 300 g e lata;52;pratos principais;hambúrguer;S;
+Hambúrgueres;Finspão Burguer;hambúrguer de salmão 120 g, molho tártaro e american cheese;hambúrguer;45;pratos principais;hambúrguer;S;
+Hambúrgueres;Finspão Burguer;hambúrguer de salmão 120 g, molho tártaro e american cheese;combo com batata 300 g e lata;62;pratos principais;hambúrguer;S;
+Hambúrgueres;Village Burguer;hambúrguer de soja, american cheese e salada;hambúrguer;46;pratos principais;hambúrguer;S;vegetariano
+Hambúrgueres;Village Burguer;hambúrguer de soja, american cheese e salada;combo com batata 300 g e lata;63;pratos principais;hambúrguer;S;vegetariano
+Hambúrgueres;Cheese Ever Green;hambúrguer de soja, mussarela empanada e american cheese;hambúrguer;63;pratos principais;hambúrguer;S;vegetariano
+Hambúrgueres;Cheese Ever Green;hambúrguer de soja, mussarela empanada e american cheese;combo com batata 300 g e lata;79;pratos principais;hambúrguer;S;vegetariano
+Refrigerantes;Coca-Cola;;lata;9;bebidas;refrigerante;N;
+Refrigerantes;Coca-Cola Zero;;lata;9;bebidas;refrigerante;N;
+Refrigerantes;Guaraná Antarctica;;lata;8;bebidas;refrigerante;N;
+Refrigerantes;Guaraná Antarctica Zero;;lata;8;bebidas;refrigerante;N;
+Refrigerantes;Pepsi Black Zero;;;8;bebidas;refrigerante;N;
+Refrigerantes;Schweppes Citrus;;lata;8;bebidas;refrigerante;N;
+Refrigerantes;H2OH Limoneto;;garrafa;10;bebidas;refrigerante;N;
+Refrigerantes;Água tônica;;lata;8;bebidas;refrigerante;N;
+Refrigerantes;Água tônica Zero;;lata;8;bebidas;refrigerante;N;
+Drinks;Arena Mule;vodca, gengibre, limão e espuma de limão siciliano;;25;bebidas;drinks;S;
+Drinks;Caipifruta de limão;vodca e limão;;25;bebidas;drinks;S;
+Drinks;Sakerinha de limão;saquê e limão;;25;bebidas;drinks;S;
+Drinks;Gin Tropical;gin, tônica, abacaxi, manga e maracujá;;27;bebidas;drinks;S;
+Drinks;Gin Frutas Vermelhas;gin, tônica, amora, morango e mirtilo;;27;bebidas;drinks;S;
+Drinks;Gin Morango e Pitaya;gin, tônica, morango e pitaya;;27;bebidas;drinks;S;
+Drinks;Gin Blue;gin, Orange Blue e tônica;;27;bebidas;drinks;S;
+Drinks;Piña Colada;rum, abacaxi e coco;;25;bebidas;drinks;S;
+Drinks;Cuba Libre;rum, refrigerante de cola e limão;;25;bebidas;drinks;S;
+Drinks;Xeque Mate;bebida mista de mate, rum, guaraná e limão;lata;16;bebidas;drinks;N;
+Drinks;Smirnoff Ice;;garrafa;14;bebidas;drinks;N;
+Cervejas e chopps;Chopp de vinho;;garrafa 600 ml;16;bebidas;drinks;N;
+Cervejas e chopps;Flying Fish;fruit beer de limão siciliano;lata;9;bebidas;cerveja;N;
+Cervejas e chopps;Eisenbahn Pilsen;;lata;11;bebidas;cerveja;N;
+Cervejas e chopps;Heineken;;lata;12;bebidas;cerveja;N;
+Cervejas e chopps;Budweiser;;lata;11;bebidas;cerveja;N;
+Sucos;Suco de uva Del Valle;;lata;9;bebidas;não alcoólicas;N;
+Sucos;Suco de pêssego Del Valle;;lata;9;bebidas;não alcoólicas;N;
+Sucos;Suco de manga Del Valle;;lata;9;bebidas;não alcoólicas;N;
+Energéticos;Monster Ultra Zero;;lata;16;bebidas;não alcoólicas;N;
+Energéticos;Monster Absolut Zero;;lata;16;bebidas;não alcoólicas;N;
+Energéticos;Monster Ultra Fiesta Mango Zero;;lata;16;bebidas;não alcoólicas;N;
+Águas;Água;;garrafa 500 ml;5;bebidas;não alcoólicas;N;
+Águas;Água com gás;;garrafa 500 ml;6;bebidas;não alcoólicas;N;
+Quentes (Dolce Gusto);Choco Land;chocolate quente com chantili;200 ml;20;bebidas;não alcoólicas;S;
+Quentes (Dolce Gusto);Café matinal;café preto;120 ml;6;bebidas;não alcoólicas;S;
+Quentes (Dolce Gusto);Café lungo;café espresso;120 ml;6;bebidas;não alcoólicas;S;
+Quentes (Dolce Gusto);Mochaccino canela;;120 ml;6;bebidas;não alcoólicas;S;
+Porções;ClanKibe;6 kibes com limão e molho;6 unidades;38;entradas;outras;S;
+Porções;Porks;linguiça de pernil com cebola e batata rústica;porção;45;entradas;outras;S;
+Porções;La Franga;peito de frango empanado com dois molhos;500 g;40;entradas;outras;S;
+Porções;Resta 1;bolinhas de queijo, de calabresa ou mini coxinhas;16 unidades;30;entradas;outras;S;
+Porções;Modo Solo;batata frita;300 g;15;entradas;batata;S;
+Porções;Modo Coop;batata frita;600 g;27;entradas;batata;S;
+Porções;Tipo War;10 onion rings e 300 g de batata frita;porção;30;entradas;batata;S;
+Porções;Port Onion;onion rings;20 unidades;28;entradas;outras;S;
+Porções;Deluxe;batata frita com cheddar e bacon;600 g;45;entradas;batata;S;
+Porções;Potinho adicional de molho;;unidade;3;outros;adicionais;N;
+Sobremesas;Procissão dos Brownies;3 bolas de sorvete, cobertura e brownie;;23;sobremesas;sobremesas;S;
+Sobremesas;Trio Gelado;3 bolas de sorvete, cobertura, paçoca e biju;;21;sobremesas;sobremesas;S;

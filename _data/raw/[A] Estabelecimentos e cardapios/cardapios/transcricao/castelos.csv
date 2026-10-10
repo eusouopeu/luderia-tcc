@@ -1,0 +1,70 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao
+Novidade;Frango tarê;cubos de frango empanados com shoyu, gengibre e molho tarê;porção;39.9;entradas;outras;S;
+Porções;Batata frita temperada;batata com ervas;porção;35.9;entradas;batata;S;porções acompanham 1 molho
+Porções;Batata frita suprema;batata com cheddar, queijo ralado e bacon;porção;43.9;entradas;batata;S;porções acompanham 1 molho
+Porções;Tirinhas de frango especial;frango empanado;porção;45.9;entradas;outras;S;porções acompanham 1 molho
+Porções;Dadinho de tapioca;com geleia de pimenta;porção;34.9;entradas;outras;S;porções acompanham 1 molho
+Porções;Onion rings;anéis de cebola empanados;porção;35.9;entradas;outras;S;porções acompanham 1 molho
+Porções;Bolinha de queijo;;porção;40.9;entradas;outras;S;porções acompanham 1 molho
+Porções;Molho adicional;barbecue, alho, da casa, maionese de bacon ou geleia de pimenta;unidade;5;outros;adicionais;S;
+Hambúrguer;Troca pelo Hambúrguer do Futuro;hambúrguer vegetal 125 g no lugar da carne;adicional;6;outros;adicionais;S;
+Novidade;Imperatriz;hambúrguer 150 g, queijo prato, salada, bacon e jalapeño;;45.9;pratos principais;hambúrguer;S;
+Novidade;Gladiador;dois hambúrgueres de 150 g, queijo prato, bacon, cebola e barbecue;;53.9;pratos principais;hambúrguer;S;
+Sanduíches;Bobo da Corte;frango frito, cream cheese, salada e molho de alho;;36.9;pratos principais;hambúrguer;S;
+Sanduíches;CBO;frango frito, queijo prato, maionese de bacon e cebola crispy;;43.9;pratos principais;hambúrguer;S;
+Sanduíches;Escudeiro;hambúrguer 150 g, queijo prato e molho da casa;;38.9;pratos principais;hambúrguer;S;
+Sanduíches;Duquesa;hambúrguer 150 g, salada, picles e queijo prato;;42.9;pratos principais;hambúrguer;S;
+Sanduíches;Duque de Cheddar;hambúrguer 150 g, bacon, cebola caramelizada e cheddar;;41.9;pratos principais;hambúrguer;S;
+Sanduíches;Cavaleiro;hambúrguer 150 g, bacon, ovo e queijo prato;;45.9;pratos principais;hambúrguer;S;
+Sanduíches;Samurai;hambúrguer 150 g, couve crispy, alho frito, cream cheese e molho tarê;;44.9;pratos principais;hambúrguer;S;
+Sanduíches;Cowboy;hambúrguer 150 g, queijo prato, barbecue, bacon e onion rings;;43.9;pratos principais;hambúrguer;S;
+Sanduíches;Imperador;hambúrguer 150 g, bacon, ovo, salada, picles e queijo prato;;49.9;pratos principais;hambúrguer;S;
+Desafio Mortal;Drink Mortal alcoólico;vodca, limão, cranberry e triple sec;por jogador;17.9;bebidas;drinks;S;drink game para 2 a 8 jogadores, por tempo limitado
+Desafio Mortal;Drink Mortal sem álcool;cranberry, groselha, limão e soda;por jogador;17.9;bebidas;não alcoólicas;S;drink game para 2 a 8 jogadores, por tempo limitado
+Novidade;Milk-shake de caramelo salgado;;sem álcool;26.9;bebidas;não alcoólicas;S;
+Novidade;Milk-shake de caramelo salgado;;com whisky;33.9;bebidas;drinks;S;
+Novidade;Maracujack;maracujá, Schweppes Citrus e Jack Daniel's;;43.9;bebidas;drinks;S;
+Novidade;O Gato Prateado;duas bolas de sorvete, cobertura, chantili e canudo;;23.9;sobremesas;sobremesas;S;
+Novidade;Jack & Coke;Jack Daniel's e Coca-Cola;;38.9;bebidas;drinks;S;
+Drink games;Drink game;shots de vodca, cachaça ou tequila com jogo (jenga, roleta, garrafa ou velha);4 shots de 25 ml;24.9;bebidas;drinks;N;refil R$ 15
+Drink games;Drink game;shots de vodca, cachaça ou tequila com jogo (jenga, roleta, garrafa ou velha);8 shots de 25 ml;40.9;bebidas;drinks;N;refil R$ 25
+Drink games;Drink game;shots de vodca, cachaça ou tequila com jogo (jenga, roleta, garrafa ou velha);9 shots de 25 ml;42.9;bebidas;drinks;N;refil R$ 28
+Drinks;Leitinho da Mamãe;coco, leite condensado e vodca na mamadeira;;29.9;bebidas;drinks;S;
+Drinks;Ataque no Caribe;gin, limão, abacaxi, curaçau blue e Schweppes Citrus;;37.9;bebidas;drinks;S;
+Drinks;Banho de Gin;gin, limão, soda e licor de gengibre;;37.9;bebidas;drinks;S;
+Drinks;Moscow Mule;;;37.9;bebidas;drinks;S;
+Drinks;Cuba Libre;;;32.9;bebidas;drinks;S;
+Drinks;Mojito;;;32.9;bebidas;drinks;S;
+Drinks;Bruma de São Patrício;whisky, licor de café, café e chantili (servido quente);;40.9;bebidas;drinks;S;
+Drinks;Caipirinha no pote;;limão ou maracujá;35.9;bebidas;drinks;S;
+Drinks;Caipirinha no pote;;morango ou kiwi;35.9;bebidas;drinks;S;
+Drinks;Caipiroska no pote;;limão ou maracujá;37.9;bebidas;drinks;S;
+Drinks;Caipiroska no pote;;morango ou kiwi;37.9;bebidas;drinks;S;
+Drinks;Caipiríssima no pote;rum branco e limão;;37.9;bebidas;drinks;S;
+Drinks;Sakerinha no pote;;limão ou maracujá;37.9;bebidas;drinks;S;
+Drinks;Sakerinha no pote;;morango ou kiwi;37.9;bebidas;drinks;S;
+Drinks;Margarita frozen;tequila, morango ou limão e licor de laranja;;36.9;bebidas;drinks;S;
+Drinks;Negroni da Realeza;;;39.9;bebidas;drinks;S;
+Drinks;Gin Tropical;laranja, limão, gin e Red Bull Tropical;;44.99;bebidas;drinks;S;
+Drinks;Gin tônica limão;;;40.9;bebidas;drinks;S;
+Novidade;Sodas brasileiras;soda ou água com gás, açúcar e sabor à escolha;;17.9;bebidas;não alcoólicas;S;
+Bebidas sem álcool;Milk-shake;chocolate, maracujá, morango, paçoca, Ovomaltine ou leite Ninho;;26.9;bebidas;não alcoólicas;S;
+Bebidas sem álcool;Leitinho da Mamãe Kids;coco e leite condensado na mamadeira;;26;bebidas;não alcoólicas;S;
+Bebidas sem álcool;Refrigerante;;lata;8;bebidas;refrigerante;N;
+Bebidas sem álcool;H2OH;;;10;bebidas;refrigerante;N;
+Bebidas sem álcool;Suco Del Valle;;lata;8;bebidas;não alcoólicas;N;
+Bebidas sem álcool;Água com ou sem gás;;;6;bebidas;não alcoólicas;N;
+Bebidas sem álcool;Café;;;6;bebidas;não alcoólicas;S;
+Bebidas sem álcool;Energético Red Bull;;;12;bebidas;não alcoólicas;N;
+Bebidas sem álcool;Energético Monster;;;15;bebidas;não alcoólicas;N;
+Bebidas;WhiskyShake;milk-shake com dose de whisky;;33.9;bebidas;drinks;S;
+Bebidas;Licor artesanal;anis ou gengibre;1 shot de 25 ml;9.9;bebidas;drinks;N;
+Bebidas;Licor artesanal;anis ou gengibre;2 shots de 25 ml;16.9;bebidas;drinks;N;
+Bebidas;Budweiser;;;12;bebidas;cerveja;N;
+Bebidas;Stella Artois;;;15;bebidas;cerveja;N;
+Bebidas;Heineken ou Heineken Zero;;;15;bebidas;cerveja;N;
+Bebidas;Eisenbahn IPA;;;17;bebidas;cerveja;N;
+Bebidas;Langerwisch;;;21;bebidas;cerveja;N;
+Bebidas;Xeque Mate;;;22;bebidas;drinks;N;
+Bebidas;Whisky Red Label;;dose;15;bebidas;drinks;N;
+Bebidas;Whisky Black Label;;dose;25;bebidas;drinks;N;
