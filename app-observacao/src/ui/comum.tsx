@@ -1,23 +1,25 @@
 import type { ReactNode } from 'react'
 import { MinusIcon, PlusIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Ajuda } from './Ajuda'
+import { useVoltar } from './voltar'
 
 export function Rotulo({ icone, children, className = '' }: { icone?: ReactNode; children: ReactNode; className?: string }) {
   return (
-    <div className={`mb-1.5 mt-4 flex items-center gap-1.5 text-[13px] font-extrabold uppercase first:mt-0 ${className}`}>
+    <div className={`mb-1.5 mt-4 flex items-center gap-1.5 text-sm font-bold uppercase tracking-wide first:mt-0 ${className}`}>
       {icone}
       {children}
     </div>
   )
 }
 
-/** Folha que sobe de baixo; toque fora fecha. */
+/** Folha que sobe de baixo; toque fora ou o voltar do Android fecha. */
 export function Folha({ titulo, onFechar, children }: { titulo: string; onFechar: () => void; children: ReactNode }) {
+  useVoltar(onFechar)
   return (
     <div className="fixed inset-0 z-30 flex flex-col justify-end bg-escuro/40" onClick={onFechar}>
       <div className="max-h-[88dvh] overflow-y-auto rounded-t-2xl bg-papel p-4 safe-bottom" onClick={(e) => e.stopPropagation()}>
         <div className="mb-3 flex items-center">
-          <h2 className="flex-1 text-lg font-extrabold">{titulo}</h2>
+          <h2 className="flex-1 text-xl font-extrabold">{titulo}</h2>
           <button onClick={onFechar} className="p-1" aria-label="Fechar">
             <XMarkIcon className="size-6" />
           </button>
@@ -36,9 +38,9 @@ export function Fab({ onClick, rotulo, children, badge, desligado }: { onClick: 
       disabled={desligado}
       aria-label={rotulo}
       title={rotulo}
-      className="fixed bottom-[84px] right-5 z-10 grid size-16 place-items-center rounded-full bg-caneta-700 text-sobre shadow-lg disabled:opacity-50"
+      className="fixed bottom-[88px] right-5 z-10 grid size-14 place-items-center rounded-full bg-caneta-700 text-sobre shadow-lg disabled:opacity-50"
     >
-      {children ?? <PlusIcon className="size-8" />}
+      {children ?? <PlusIcon className="size-7" />}
       {!!badge && <span className="absolute -right-1 -top-1 grid h-6 min-w-6 place-items-center rounded-full bg-papel px-1 text-xs font-bold text-caneta-700">{badge}</span>}
     </button>
   )
@@ -49,7 +51,7 @@ export function Chip({ children, onClick, ativo = true }: { children: ReactNode;
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full px-3 py-0.5 text-[15px] ${ativo ? 'bg-neutro-300 text-neutro-800' : 'bg-neutro-100 text-neutro-500'}`}
+      className={`rounded-full px-3 py-1 text-sm ${ativo ? 'bg-neutro-300 text-neutro-800' : 'bg-neutro-100 text-neutro-500'}`}
     >
       {children}
     </button>
@@ -63,13 +65,13 @@ const mais = 'grid place-items-center bg-ok-600 text-sobre'
 export function ContadorV({ valor, onChange }: { valor: number; onChange: (v: number) => void }) {
   return (
     <div className="overflow-hidden rounded-lg">
-      <div className="grid h-[72px] place-items-center bg-papel text-3xl font-extrabold">{valor}</div>
-      <div className="grid h-12 grid-cols-2">
+      <div className="grid h-14 place-items-center bg-papel text-2xl font-extrabold">{valor}</div>
+      <div className="grid h-11 grid-cols-2">
         <button onClick={() => onChange(Math.max(0, valor - 1))} className={menos} aria-label="Menos">
-          <MinusIcon className="size-6 stroke-[3]" />
+          <MinusIcon className="size-5 stroke-[3]" />
         </button>
         <button onClick={() => onChange(valor + 1)} className={mais} aria-label="Mais">
-          <PlusIcon className="size-6 stroke-[3]" />
+          <PlusIcon className="size-5 stroke-[3]" />
         </button>
       </div>
     </div>
@@ -95,16 +97,16 @@ export function ContadorH({
   return (
     <div className={`flex ${altura} overflow-hidden rounded-lg`}>
       <button onClick={() => onChange(Math.max(0, valor - 1))} className={`w-12 ${m}`} aria-label="Menos">
-        <MinusIcon className="size-6 stroke-[3]" />
+        <MinusIcon className="size-5 stroke-[3]" />
       </button>
-      <span className="grid flex-1 place-items-center bg-papel text-2xl font-extrabold text-neutro-900">
+      <span className="grid flex-1 place-items-center bg-papel text-xl font-extrabold text-neutro-900">
         <span>
           {valor}
-          {sufixo && <span className="text-lg">{sufixo}</span>}
+          {sufixo && <span className="text-base">{sufixo}</span>}
         </span>
       </span>
       <button onClick={() => onChange(valor + 1)} className={`w-12 ${p}`} aria-label="Mais">
-        <PlusIcon className="size-6 stroke-[3]" />
+        <PlusIcon className="size-5 stroke-[3]" />
       </button>
     </div>
   )
@@ -120,7 +122,7 @@ export const areaTexto = 'w-full resize-none rounded-lg bg-neutro-100 p-2.5 outl
 export function Secao({ titulo, ajuda, children }: { titulo: string; ajuda?: ReactNode; children: ReactNode }) {
   return (
     <section className="mt-6">
-      <h3 className="mb-2 flex items-center gap-1 text-[13px] font-extrabold uppercase text-neutro-800">
+      <h3 className="mb-2 flex items-center gap-1 text-sm font-bold uppercase tracking-wide text-neutro-800">
         {titulo}
         {ajuda && <Ajuda rotulo={`Sobre ${titulo.toLowerCase()}`}>{ajuda}</Ajuda>}
       </h3>
@@ -132,7 +134,7 @@ export function Secao({ titulo, ajuda, children }: { titulo: string; ajuda?: Rea
 /** Opção marcável (filtro, categoria): o fundo diz se está ligada, sem borda. */
 export function Opcao({ ativo, onClick, children }: { ativo: boolean; onClick: () => void; children: ReactNode }) {
   return (
-    <button onClick={onClick} aria-pressed={ativo} className={`rounded-full px-3 py-1.5 text-sm ${ativo ? 'bg-caneta-600 text-sobre' : 'bg-neutro-100 text-neutro-700'}`}>
+    <button onClick={onClick} aria-pressed={ativo} className={`rounded-full px-3 py-1.5 text-[15px] ${ativo ? 'bg-caneta-600 text-sobre' : 'bg-neutro-100 text-neutro-700'}`}>
       {children}
     </button>
   )

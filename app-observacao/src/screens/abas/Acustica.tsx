@@ -59,7 +59,7 @@ export function AbaAcustica({ unidade, semVisita }: { unidade: Unidade; semVisit
 function Dado({ icone, rotulo, valor, cor = 'text-caneta-600', largo, ajuda }: { icone: React.ReactNode; rotulo: string; valor: string; cor?: string; largo?: boolean; ajuda?: string }) {
   return (
     <div className={largo ? 'col-span-2' : ''}>
-      <div className="flex items-center gap-1 text-[12px] font-extrabold uppercase text-neutro-800">
+      <div className="flex items-center gap-1 text-sm font-bold uppercase text-neutro-800">
         {icone}
         {rotulo}
         {ajuda && <Ajuda rotulo={`Sobre ${rotulo.toLowerCase()}`}>{ajuda}</Ajuda>}

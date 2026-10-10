@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 import { App as CapApp } from '@capacitor/app'
 import { ArrowUpTrayIcon, ChevronRightIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { useLoja } from './store'
-import { agoraHora, arquivosCsv, novoId, registroAberto, siglaDe, visitaAtiva, acervoVazio, type Estado, type Registro } from './domain/model'
+import { agoraHora, arquivosCsv, novasMesas, novoId, registroAberto, siglaDe, visitaAtiva, acervoVazio, type Estado, type Registro, type Unidade as TUnidade } from './domain/model'
 import { compartilhar } from './storage/exportar'
 import { BotaoTema, useTemaEfetivo } from './ui/tema'
+import { voltarCamada } from './ui/voltar'
+import { Avisos, avisar } from './ui/aviso'
 import { Unidade, type Aba, type Pagina } from './screens/Unidade'
 import { FormMesa } from './screens/FormMesa'
 import { FormAcervo } from './screens/FormAcervo'
@@ -42,10 +44,10 @@ export function App() {
   // botão voltar do Android: fecha o que está por cima, depois volta às unidades, depois sai
   useEffect(() => {
     const h = CapApp.addListener('backButton', () => {
+      // formulários e folhas abertos fecham por conta própria (e gravam o que mudou)
+      if (voltarCamada()) return
       const t = telaRef.current
-      if (t.form) setTela({ ...t, form: undefined })
-      else if (t.acervo) setTela({ ...t, acervo: false })
-      else if (t.folha) setTela({ ...t, folha: undefined })
+      if (t.folha) setTela({ ...t, folha: undefined })
       else if (t.unidadeId && t.pagina !== 'inicio') setTela({ ...t, pagina: 'inicio' })
       else if (t.unidadeId) setTela({ aba: 'mesas', pagina: 'inicio' })
       else void CapApp.exitApp()
@@ -69,7 +71,7 @@ export function App() {
             ...e,
             unidades: [
               ...e.unidades,
-              { id, nome, sigla: siglaDe(nome), acervo: acervoVazio(), mesas: Array.from({ length: 6 }, (_, i) => ({ id: novoId() + i, nome: `Mesa ${i + 1}` })) },
+              { id, nome, sigla: siglaDe(nome), acervo: acervoVazio(), mesas: novasMesas([], 6) },
             ],
           }))
           setTela({ unidadeId: id, aba: 'mesas', pagina: 'inicio' })
@@ -99,6 +101,10 @@ export function App() {
   }
 
   const mesaDoForm = tela.form && unidade.mesas.find((m) => m.id === tela.form!.registro.mesaId)
+  const gravarRegistro = (r: Registro) =>
+    mudar((e) => ({ ...e, registros: e.registros.some((x) => x.id === r.id) ? e.registros.map((x) => (x.id === r.id ? r : x)) : [...e.registros, r] }))
+  const tirarRegistro = (id: string) => mudar((e) => ({ ...e, registros: e.registros.filter((x) => x.id !== id) }))
+  const mudarUnidade = (u: TUnidade) => mudar((e) => ({ ...e, unidades: e.unidades.map((x) => (x.id === u.id ? u : x)) }))
   const ativa = visitaAtiva(estado, unidade.id)
 
   return (
@@ -174,24 +180,13 @@ export function App() {
         />
       )}
       {tela.folha === 'editar' && (
-        <FolhaEditar
-          estado={estado}
-          unidade={unidade}
-          onFechar={() => muda({ folha: undefined })}
-          onSalvar={(u) => {
-            mudar((e) => ({ ...e, unidades: e.unidades.map((x) => (x.id === u.id ? u : x)) }))
-            muda({ folha: undefined })
-          }}
-        />
+        <FolhaEditar estado={estado} unidade={unidade} onFechar={() => muda({ folha: undefined })} onMudar={mudarUnidade} />
       )}
       {tela.acervo && (
         <FormAcervo
           acervo={unidade.acervo}
           onFechar={() => muda({ acervo: false })}
-          onSalvar={(acervo) => {
-            mudar((e) => ({ ...e, unidades: e.unidades.map((x) => (x.id === unidade.id ? { ...x, acervo } : x)) }))
-            muda({ acervo: false })
-          }}
+          onMudar={(acervo) => mudarUnidade({ ...useLoja.getState().estado.unidades.find((x) => x.id === unidade.id)!, acervo })}
         />
       )}
       {tela.form && (
@@ -200,26 +195,29 @@ export function App() {
           titulo={mesaDoForm?.nome ?? 'Mesa'}
           registro={tela.form.registro}
           acervo={unidade.acervo.jogos}
-          onFechar={() => muda({ form: undefined })}
-          onSalvar={(r) => {
-            mudar((e) => ({
-              ...e,
-              registros: e.registros.some((x) => x.id === r.id) ? e.registros.map((x) => (x.id === r.id ? r : x)) : [...e.registros, r],
-            }))
+          onMudar={gravarRegistro}
+          onFechar={(r) => {
+            const { novo, registro: original } = tela.form!
+            gravarRegistro(r)
+            muda({ form: undefined })
+            const mesa = mesaDoForm?.nome ?? 'mesa'
+            if (novo) avisar(`Grupo de ${r.pessoas} registrado na ${mesa}, entrada ${r.entrada}.`, { rotulo: 'Desfazer', fazer: () => tirarRegistro(r.id) })
+            else if (JSON.stringify(r) !== JSON.stringify(original)) avisar(`${mesa}: alterações salvas.`, { rotulo: 'Desfazer', fazer: () => gravarRegistro(original) })
+          }}
+          onDesfazer={() => {
+            const { novo, registro: original } = tela.form!
+            if (novo) tirarRegistro(original.id)
+            else gravarRegistro(original)
             muda({ form: undefined })
           }}
-          onApagar={
-            tela.form.novo
-              ? undefined
-              : () => {
-                  if (!confirm('Apagar este registro?')) return
-                  const id = tela.form!.registro.id
-                  mudar((e) => ({ ...e, registros: e.registros.filter((x) => x.id !== id) }))
-                  muda({ form: undefined })
-                }
-          }
+          onApagar={() => {
+            if (!confirm('Apagar este registro?')) return
+            tirarRegistro(tela.form!.registro.id)
+            muda({ form: undefined })
+          }}
         />
       )}
+      <Avisos />
     </>
   )
 }
@@ -229,11 +227,11 @@ function Inicio({ estado, onAbrir, onNova, onExportar }: { estado: Estado; onAbr
     <div className="min-h-dvh bg-papel px-4 safe-bottom">
       <header className="sticky top-0 z-20 -mx-4 flex items-center bg-papel px-4 pb-4 pt-6 safe-top">
         <div className="flex-1">
-          <h1 className="text-3xl font-extrabold">Observação</h1>
+          <h1 className="text-2xl font-extrabold">Observação</h1>
         </div>
         <BotaoTema />
         <button onClick={onExportar} className="p-2 text-caneta-700" aria-label="Exportar tudo em CSV">
-          <ArrowUpTrayIcon className="size-7" />
+          <ArrowUpTrayIcon className="size-6" />
         </button>
       </header>
       <ul className="space-y-3">
@@ -243,11 +241,11 @@ function Inicio({ estado, onAbrir, onNova, onExportar }: { estado: Estado; onAbr
           return (
             <li key={u.id}>
               <button onClick={() => onAbrir(u.id)} className="flex w-full items-center gap-3 rounded-xl bg-neutro-100 p-4 text-left">
-                <span className="flex-1 text-lg font-extrabold uppercase">{u.nome}</span>
+                <span className="flex-1 text-lg font-bold uppercase">{u.nome}</span>
                 {ativa ? (
-                  <span className="rounded-full bg-caneta-600 px-2 py-0.5 text-xs font-bold text-sobre">ao vivo</span>
+                  <span className="rounded-full bg-caneta-600 px-2 py-0.5 text-[13px] font-bold text-sobre">ao vivo</span>
                 ) : (
-                  <span className="text-sm text-neutro-500" title="grupos registrados">{n}</span>
+                  <span className="text-sm text-neutro-500">{n} grupos · {u.mesas.length} mesas</span>
                 )}
                 <ChevronRightIcon className="size-5" />
               </button>
@@ -255,8 +253,8 @@ function Inicio({ estado, onAbrir, onNova, onExportar }: { estado: Estado; onAbr
           )
         })}
       </ul>
-      <button onClick={onNova} aria-label="Nova unidade" title="Nova unidade" className="mx-auto mt-4 grid size-12 place-items-center rounded-full bg-neutro-100 text-neutro-700">
-        <PlusIcon className="size-6" />
+      <button onClick={onNova} className="mt-3 flex h-12 w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-neutro-200 font-semibold text-neutro-600">
+        <PlusIcon className="size-5" /> Nova unidade
       </button>
       <p className="mt-8 text-center text-xs text-neutro-400">v{__APP_VERSION__}</p>
     </div>

@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react'
+import { useRef, useState, type ReactNode } from 'react'
 import {
   BellAlertIcon,
   CalendarIcon,
@@ -16,43 +16,64 @@ import { BoloIcon } from '../ui/icones'
 import { Chip, ContadorH, ContadorV as Contador, Rotulo, campoClaro as campo } from '../ui/comum'
 import { SeletorJogos } from '../ui/SeletorJogos'
 import { ListaPedidos } from '../ui/Pedidos'
+import { useVoltar } from '../ui/voltar'
 import { agoraHora, dataBr, dataIso, mascaraData, permanenciaMin, type Registro } from '../domain/model'
 
 type Rascunho = Omit<Registro, 'data'> & { dataTexto: string }
 
-/** Formulário de um grupo numa mesa (mockups "Mesa 1"): edição e resumo depois da saída. */
+/** Converte o rascunho em registro; campo inválido fica com o último valor válido. */
+function paraRegistro(r: Rascunho, ultimo: Registro): Registro {
+  const { dataTexto, ...resto } = r
+  const entrada = /^\d{2}:\d{2}$/.test(r.entrada) ? r.entrada : ultimo.entrada
+  const saida = r.saida === null ? null : permanenciaMin(entrada, r.saida) === null ? ultimo.saida : r.saida
+  return { ...resto, data: dataIso(dataTexto) ?? ultimo.data, entrada, saida }
+}
+
+function erroDe(r: Rascunho): string {
+  if (!dataIso(r.dataTexto)) return 'Data incompleta ou inválida (dd/mm/aaaa): fica a anterior até corrigir.'
+  if (!/^\d{2}:\d{2}$/.test(r.entrada)) return 'Preencha a hora de entrada.'
+  if (r.saida && permanenciaMin(r.entrada, r.saida) === null) return 'A saída está antes da entrada: fica a anterior até corrigir.'
+  return ''
+}
+
+/**
+ * Formulário de um grupo numa mesa (mockups "Mesa 1"): edição e resumo depois da saída.
+ * Cada mudança é gravada na hora (`onMudar`); fechar, pelo botão ou pelo voltar, não perde nada.
+ */
 export function FormMesa({
   titulo,
   registro,
   onFechar,
-  onSalvar,
+  onMudar,
+  onDesfazer,
   onApagar,
   acervo = [],
 }: {
   titulo: string
   registro: Registro
   acervo?: string[]
-  onFechar: () => void
-  onSalvar: (r: Registro) => void
+  /** fecha devolvendo o registro como ficou */
+  onFechar: (r: Registro) => void
+  onMudar: (r: Registro) => void
+  /** volta ao registro de quando abriu (ou tira o grupo novo) */
+  onDesfazer: () => void
   onApagar?: () => void
 }) {
   const [r, setR] = useState<Rascunho>({ ...registro, dataTexto: dataBr(registro.data) })
   const [modo, setModo] = useState<'editar' | 'resumo'>(registro.saida ? 'resumo' : 'editar')
-  const [erro, setErro] = useState('')
   const [escolher, setEscolher] = useState(false)
+  const atual = useRef(r)
+  const ultimo = useRef(registro)
   const muda = (p: Partial<Rascunho>) => {
-    setR((x) => ({ ...x, ...p }))
-    setErro('')
+    const prox = { ...atual.current, ...p }
+    atual.current = prox
+    setR(prox)
+    ultimo.current = paraRegistro(prox, ultimo.current)
+    onMudar(ultimo.current)
   }
-
-  function salvar() {
-    const data = dataIso(r.dataTexto)
-    if (!data) return setErro('Data incompleta ou inválida (dd/mm/aaaa).')
-    if (!/^\d{2}:\d{2}$/.test(r.entrada)) return setErro('Preencha a hora de entrada.')
-    if (r.saida && permanenciaMin(r.entrada, r.saida) === null) return setErro('A saída está antes da entrada.')
-    const { dataTexto: _, ...resto } = r
-    onSalvar({ ...resto, data })
-  }
+  const fechar = () => onFechar(ultimo.current)
+  useVoltar(fechar)
+  const erro = erroDe(r)
 
   return (
     <div className="fixed inset-0 z-20 overflow-y-auto bg-papel safe-top safe-bottom">
@@ -67,7 +88,7 @@ export function FormMesa({
 
         <div className="relative rounded-2xl bg-caneta-200 px-4 pb-5 pt-3 text-neutro-800">
           <div className="mb-4 flex items-center">
-            <button onClick={onFechar} className="-ml-1 p-2" aria-label="Voltar">
+            <button onClick={fechar} className="-ml-1 p-2" aria-label="Voltar">
               <ChevronLeftIcon className="size-6" />
             </button>
             <h1 className="flex-1 pl-9 text-center text-xl font-extrabold uppercase">{titulo}</h1>
@@ -112,19 +133,20 @@ export function FormMesa({
             onChange={(e) => muda({ notas: e.target.value })}
             placeholder="Anotações..."
             rows={4}
-            className="w-full resize-none rounded-lg bg-papel p-2.5 text-[15px] outline-none placeholder:text-neutro-400 focus:ring-2 focus:ring-foco-500"
+            className="w-full resize-none rounded-lg bg-papel p-2.5 text-base outline-none placeholder:text-neutro-400 focus:ring-2 focus:ring-foco-500"
           />
 
           {erro && <p className="mt-3 text-sm font-semibold text-erro-600">{erro}</p>}
 
           <div className="mt-5 grid grid-cols-2 gap-3">
-            <button onClick={onFechar} className="h-10 rounded bg-caneta-300 font-bold text-caneta-600">
-              Descartar
+            <button onClick={onDesfazer} className="h-11 rounded bg-caneta-300 font-bold text-caneta-700">
+              Desfazer
             </button>
-            <button onClick={salvar} className="h-10 rounded bg-caneta-600 font-bold text-sobre">
-              Salvar
+            <button onClick={fechar} className="h-11 rounded bg-caneta-600 font-bold text-sobre">
+              Pronto
             </button>
           </div>
+          <p className="mt-2 text-center text-xs text-neutro-600">Salvo automaticamente</p>
         </div>
       </div>
       {escolher && (
@@ -160,12 +182,12 @@ function Edicao({ r, muda, onSaida }: { r: Rascunho; muda: (p: Partial<Rascunho>
       <div className="flex items-center gap-4">
         <input type="time" value={r.entrada} onChange={(e) => muda({ entrada: e.target.value })} className={`${campo} flex-1`} />
         {r.saida === null ? (
-          <button onClick={onSaida} className="grid size-14 shrink-0 place-items-center rounded-full bg-erro-300 text-sm font-extrabold text-erro-600">
+          <button onClick={onSaida} className="grid size-14 shrink-0 place-items-center rounded-full bg-erro-300 text-[13px] font-extrabold text-erro-700">
             SAÍDA
           </button>
         ) : (
           <div className="relative w-28 shrink-0">
-            <span className="absolute -top-5 left-0 text-[13px] font-extrabold">SAÍDA</span>
+            <span className="absolute -top-5 left-0 text-sm font-bold">SAÍDA</span>
             <input type="time" value={r.saida} onChange={(e) => muda({ saida: e.target.value })} className={campo} />
             <button onClick={() => muda({ saida: null })} className="absolute -right-2 -top-2 rounded-full bg-neutro-800 p-0.5 text-neutro-50" aria-label="Desfazer saída">
               <XMarkIcon className="size-4" />
@@ -195,7 +217,7 @@ function Valor({ icone, rotulo, children }: { icone: ReactNode; rotulo: string; 
   return (
     <div>
       <Rotulo icone={icone}>{rotulo}</Rotulo>
-      <div className="whitespace-nowrap pl-2.5 text-2xl font-bold text-caneta-600">{children}</div>
+      <div className="whitespace-nowrap pl-2.5 text-xl font-bold text-caneta-700">{children}</div>
     </div>
   )
 }
@@ -230,7 +252,7 @@ function Resumo({ r }: { r: Rascunho }) {
         </Valor>
         <Valor icone={<PuzzlePieceIcon className="size-5" />} rotulo="Instrutor na mesa">
           {r.instrutor}
-          <span className="text-lg">x</span>
+          <span className="text-base">x</span>
         </Valor>
         {p !== null && (
           <Valor icone={<ClockIcon className="size-5" />} rotulo="Permanência">
