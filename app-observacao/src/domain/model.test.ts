@@ -32,11 +32,11 @@ describe('paraCsv', () => {
       registros: [
         {
           id: 'r1', visitaId: 'v1', unidadeId: 'u1', mesaId: 'm1', data: '2026-10-18', aniversario: true,
-          entrada: '14:05', saida: '16:35', pessoas: 4, criancas: 2, instrutor: 4, jogos: ['Dixit'], notas: 'jogo "Dixit"; ótimo',
+          entrada: '14:05', saida: '16:35', pessoas: 4, criancas: 2, instrutor: 4, jogos: ['Dixit'], pedidos: [], notas: 'jogo "Dixit"; ótimo',
         },
         {
           id: 'r2', visitaId: 'v1', unidadeId: 'u1', mesaId: 'm1', data: '2026-10-18', aniversario: false,
-          entrada: '16:50', saida: null, pessoas: 2, criancas: 0, instrutor: 0, jogos: [], notas: '',
+          entrada: '16:50', saida: null, pessoas: 2, criancas: 0, instrutor: 0, jogos: [], pedidos: [], notas: '',
         },
       ],
     }

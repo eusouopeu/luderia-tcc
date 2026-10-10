@@ -1,9 +1,10 @@
 import { useRef, useState, type ReactNode } from 'react'
 import { useLoja } from '../store'
-import { ContadorH } from '../ui/comum'
+import { ContadorH, Secao } from '../ui/comum'
 import { arquivosCsv, hojeIso, type Config, type Unidade } from '../domain/model'
 import { gravarBackup, lerBackup, ultimoBackup } from '../storage/backup'
 import { compartilhar } from '../storage/exportar'
+import { uriDaFoto } from '../storage/fotos'
 
 /** Calibração, roteiro, backup, exportação e a unidade (mesas, apagar). */
 export function PaginaAjustes({ unidade, onEditar, onApagar }: { unidade: Unidade; onEditar: () => void; onApagar: () => void }) {
@@ -16,10 +17,7 @@ export function PaginaAjustes({ unidade, onEditar, onApagar }: { unidade: Unidad
 
   return (
     <div className="px-4 pb-10">
-      <Secao titulo="Microfone">
-        <p className="mb-2 text-sm text-slate-600">
-          Calibração somada ao nível do microfone (dBFS). Ajuste até o app bater com um decibelímetro no mesmo lugar. Padrão: 90.
-        </p>
+      <Secao titulo="Microfone" ajuda="Calibração somada ao nível do microfone (dBFS). Ajuste até o app bater com um decibelímetro no mesmo lugar. Padrão: 90.">
         <ContadorH valor={c.calibracaoDb} sufixo=" dB" onChange={(v) => muda({ calibracaoDb: v })} />
       </Secao>
 
@@ -41,12 +39,19 @@ export function PaginaAjustes({ unidade, onEditar, onApagar }: { unidade: Unidad
         <Botao onClick={() => void compartilhar([...arquivosCsv(estado), { nome: `observacao-backup-${hojeIso()}.json`, conteudo: JSON.stringify({ app: 'observacao-luderia', versao: 2, estado }) }])}>
           Tudo (CSVs + backup JSON)
         </Botao>
+        <Botao
+          onClick={async () => {
+            const uris = (await Promise.all(estado.fotos.filter((f) => f.unidadeId === unidade.id).map((f) => uriDaFoto(f.arquivo)))).filter((u): u is string => !!u)
+            if (!uris.length) return setMsg('Sem fotos no celular para exportar.')
+            const { Share } = await import('@capacitor/share')
+            await Share.share({ title: `Fotos ${unidade.nome}`, files: uris })
+          }}
+        >
+          Fotos desta unidade ({estado.fotos.filter((f) => f.unidadeId === unidade.id).length})
+        </Botao>
       </Secao>
 
-      <Secao titulo="Backup">
-        <p className="mb-2 text-sm text-slate-600">
-          Automático a cada mudança, em Documentos/ObservacaoLuderia (um arquivo por dia). {ult ? `Último: ${ult.quando}, em ${ult.onde}.` : ''}
-        </p>
+      <Secao titulo="Backup" ajuda={<>Automático a cada mudança, em Documentos/ObservacaoLuderia (um arquivo por dia). {ult ? `Último: ${ult.quando}, em ${ult.onde}.` : ''}</>}>
         <Botao onClick={async () => setMsg((await gravarBackup(estado)) ? 'Backup gravado.' : 'Backup só funciona no celular.')}>Fazer backup agora</Botao>
         <Botao onClick={() => arquivo.current?.click()}>Restaurar backup…</Botao>
         <input
@@ -65,32 +70,24 @@ export function PaginaAjustes({ unidade, onEditar, onApagar }: { unidade: Unidad
             }
           }}
         />
-        {msg && <p className="mt-2 text-sm font-semibold text-emerald-700">{msg}</p>}
+        {msg && <p className="mt-2 text-sm font-semibold text-ok-700">{msg}</p>}
       </Secao>
 
       <Secao titulo={`Unidade ${unidade.nome}`}>
         <Botao onClick={onEditar}>Editar nome, sigla e mesas</Botao>
-        <button onClick={onApagar} className="mt-2 h-11 w-full rounded-lg bg-rose-100 font-bold text-rose-600">
+        <button onClick={onApagar} className="mt-2 h-11 w-full rounded-lg bg-erro-100 font-bold text-erro-600">
           Apagar unidade
         </button>
       </Secao>
-      <p className="mt-8 text-center text-xs text-slate-400">Observação Luderia v{__APP_VERSION__}</p>
+      <p className="mt-8 text-center text-xs text-neutro-400">Observação Luderia v{__APP_VERSION__}</p>
     </div>
   )
 }
 
-function Secao({ titulo, children }: { titulo: string; children: ReactNode }) {
-  return (
-    <section className="mt-6">
-      <h3 className="mb-2 text-[13px] font-extrabold uppercase">{titulo}</h3>
-      {children}
-    </section>
-  )
-}
 
 function Botao({ onClick, children }: { onClick: () => void; children: ReactNode }) {
   return (
-    <button onClick={onClick} className="mt-2 h-11 w-full rounded-lg bg-slate-200 font-semibold">
+    <button onClick={onClick} className="mt-2 h-11 w-full rounded-lg bg-neutro-200 font-semibold">
       {children}
     </button>
   )

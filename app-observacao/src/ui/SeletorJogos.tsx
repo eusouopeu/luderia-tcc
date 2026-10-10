@@ -37,30 +37,30 @@ export function SeletorJogos({
 
   return (
     <Folha titulo={`${titulo} · ${selecionados.length}`} onFechar={onFechar}>
-      <label className="mb-3 flex h-11 items-center gap-2 rounded-lg border border-slate-300 px-3">
-        <MagnifyingGlassIcon className="size-5 text-slate-400" />
-        <input value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Buscar jogo…" className="flex-1 outline-none" />
+      <label className="mb-3 flex h-11 items-center gap-2 rounded-lg bg-neutro-100 px-3 focus-within:ring-2 focus-within:ring-foco-500">
+        <MagnifyingGlassIcon className="size-5 text-neutro-400" />
+        <input value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Buscar jogo…" className="flex-1 bg-transparent outline-none" />
       </label>
       {novo && !existe && (
-        <button onClick={() => (alternar(novo), setBusca(''))} className="mb-2 flex w-full items-center gap-2 rounded-lg bg-orange-100 px-3 py-2.5 font-semibold text-orange-700">
+        <button onClick={() => (alternar(novo), setBusca(''))} className="mb-2 flex w-full items-center gap-2 rounded-lg bg-caneta-100 px-3 py-2.5 font-semibold text-caneta-700">
           <PlusIcon className="size-5" /> Adicionar “{novo}”
         </button>
       )}
-      <ul className="divide-y divide-slate-100">
+      <ul className="divide-y divide-neutro-100">
         {lista.slice(0, 120).map((j) => {
           const on = selecionados.includes(j.n)
           return (
             <li key={j.n}>
               <button onClick={() => alternar(j.n)} className="flex w-full items-center gap-3 py-2.5 text-left">
-                <span className={`grid size-6 shrink-0 place-items-center rounded border ${on ? 'border-orange-600 bg-orange-600 text-white' : 'border-slate-300'}`}>
+                <span className={`grid size-6 shrink-0 place-items-center rounded border ${on ? 'border-caneta-600 bg-caneta-600 text-papel' : 'border-neutro-300'}`}>
                   {on && <CheckIcon className="size-4 stroke-[3]" />}
                 </span>
                 <span className="flex-1">
                   {j.n}
-                  {destaque.includes(j.n) && <span className="ml-2 text-xs font-bold text-orange-600">ACERVO</span>}
+                  {destaque.includes(j.n) && <span className="ml-2 text-xs font-bold text-caneta-600">ACERVO</span>}
                 </span>
                 {j.min && (
-                  <span className="text-xs text-slate-400">
+                  <span className="text-xs text-neutro-400">
                     {j.min}–{j.max}p{j.t ? ` · ${j.t}min` : ''}
                   </span>
                 )}

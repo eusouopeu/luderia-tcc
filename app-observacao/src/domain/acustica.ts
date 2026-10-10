@@ -10,10 +10,10 @@ export function leq(niveis: number[]): number | null {
 }
 
 export function classificar(db: number): { rotulo: string; cor: string } {
-  if (db < 55) return { rotulo: 'Boa', cor: 'text-emerald-600' }
-  if (db < 65) return { rotulo: 'Razoável', cor: 'text-orange-600' }
-  if (db < 75) return { rotulo: 'Ruim', cor: 'text-rose-500' }
-  return { rotulo: 'Muito ruim', cor: 'text-rose-700' }
+  if (db < 55) return { rotulo: 'Boa', cor: 'text-ok-600' }
+  if (db < 65) return { rotulo: 'Razoável', cor: 'text-alerta-700' }
+  if (db < 75) return { rotulo: 'Ruim', cor: 'text-erro-500' }
+  return { rotulo: 'Muito ruim', cor: 'text-erro-700' }
 }
 
 const REFERENCIAS: [number, string][] = [

@@ -21,7 +21,7 @@ type Icone = ComponentType<SVGProps<SVGSVGElement>>
 const ABAS: [Aba, Icone, string][] = [
   ['mesas', Squares2X2Icon, 'Mesas'],
   ['fluxo', ArrowsRightLeftIcon, 'Fluxo'],
-  ['acustica', MicrophoneIcon, 'Acústica'],
+  ['acustica', MicrophoneIcon, 'Ambiente'],
   ['timer', ClockIcon, 'Temporizador'],
 ]
 const PAGINAS: [Pagina, Icone, Icone, string][] = [
@@ -52,32 +52,32 @@ export function Unidade({
   children: ReactNode
 }) {
   return (
-    <div className="min-h-dvh bg-white pb-[72px] safe-top">
+    <div className="min-h-dvh bg-papel pb-[72px] safe-top">
       <header className="flex items-center gap-3 px-4 pb-2 pt-5">
         <button onClick={onVoltar} className="p-1" aria-label="Voltar às unidades">
           <ChevronLeftIcon className="size-7" />
         </button>
-        <h1 className="flex-1 truncate text-3xl font-extrabold uppercase text-black">{unidade.nome}</h1>
-        <button onClick={onExportar} className="p-2 text-orange-700" aria-label="Exportar CSV">
+        <h1 className="flex-1 truncate text-3xl font-extrabold uppercase text-tinta">{unidade.nome}</h1>
+        <button onClick={onExportar} className="p-2 text-caneta-700" aria-label="Exportar CSV">
           <ArrowUpTrayIcon className="size-7" />
         </button>
       </header>
       {pagina === 'inicio' && (
-        <nav className="mx-4 mt-2 flex h-12 overflow-hidden rounded-lg bg-slate-300">
+        <nav role="tablist" className="mx-4 mt-2 flex h-12 overflow-hidden rounded-lg bg-neutro-300">
           {ABAS.map(([id, I, rot]) => (
-            <button key={id} onClick={() => onAba(id)} aria-label={rot} className={`grid flex-1 place-items-center rounded-lg ${aba === id ? 'bg-orange-600 text-white' : 'text-slate-900'}`}>
+            <button key={id} onClick={() => onAba(id)} aria-label={rot} title={rot} aria-selected={aba === id} role="tab" className={`grid flex-1 place-items-center rounded-lg ${aba === id ? 'bg-caneta-600 text-papel' : 'text-neutro-900'}`}>
               <I className="size-7" />
             </button>
           ))}
         </nav>
       )}
       {children}
-      <nav className="fixed inset-x-0 bottom-0 z-10 flex border-t border-slate-300 bg-white safe-bottom">
+      <nav className="fixed inset-x-0 bottom-0 z-10 flex border-t border-neutro-100 bg-papel safe-bottom">
         {PAGINAS.map(([id, I, Ativo, rot]) => {
           const on = pagina === id
           const C = on ? Ativo : I
           return (
-            <button key={id} onClick={() => onPagina(id)} aria-label={rot} className={`grid h-16 flex-1 place-items-center ${on ? 'text-orange-700' : 'text-slate-900'}`}>
+            <button key={id} onClick={() => onPagina(id)} aria-label={rot} title={rot} aria-current={on ? 'page' : undefined} className={`grid h-16 flex-1 place-items-center ${on ? 'text-caneta-700' : 'text-neutro-900'}`}>
               <C className="size-8" />
             </button>
           )

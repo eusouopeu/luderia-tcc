@@ -10,7 +10,7 @@ import { FormAcervo } from './screens/FormAcervo'
 import { FolhaAcoes, FolhaEditar, FolhaRegistros } from './screens/Folhas'
 import { AbaMesas } from './screens/abas/Mesas'
 import { AbaFluxo } from './screens/abas/Fluxo'
-import { AbaAcustica } from './screens/abas/Acustica'
+import { AbaAmbiente } from './screens/abas/Ambiente'
 import { AbaTemporizador } from './screens/abas/Temporizador'
 import { PaginaVisita } from './screens/Visita'
 import { PaginaResumo } from './screens/Resumo'
@@ -91,7 +91,7 @@ export function App() {
     const aberto = registroAberto(useLoja.getState().estado, visita.id, mesaId)
     const registro: Registro = aberto ?? {
       id: novoId(), visitaId: visita.id, unidadeId: unidade!.id, mesaId, data: visita.inicio.slice(0, 10), aniversario: false,
-      entrada: agoraHora(), saida: null, pessoas: 2, criancas: 0, instrutor: 0, jogos: [], notas: '',
+      entrada: agoraHora(), saida: null, pessoas: 2, criancas: 0, instrutor: 0, jogos: [], notas: '', pedidos: [],
     }
     muda({ form: { registro, novo: !aberto } })
   }
@@ -120,7 +120,7 @@ export function App() {
           />
         )}
         {tela.pagina === 'inicio' && tela.aba === 'fluxo' && <AbaFluxo unidade={unidade} semVisita={garantirVisita} />}
-        {tela.pagina === 'inicio' && tela.aba === 'acustica' && <AbaAcustica unidade={unidade} semVisita={garantirVisita} />}
+        {tela.pagina === 'inicio' && tela.aba === 'acustica' && <AbaAmbiente unidade={unidade} semVisita={garantirVisita} />}
         {tela.pagina === 'inicio' && tela.aba === 'timer' && <AbaTemporizador unidade={unidade} onMesa={abrirMesa} />}
         {tela.pagina === 'visita' && <PaginaVisita unidade={unidade} />}
         {tela.pagina === 'resumo' && <PaginaResumo unidade={unidade} />}
@@ -224,13 +224,12 @@ export function App() {
 
 function Inicio({ estado, onAbrir, onNova, onExportar }: { estado: Estado; onAbrir: (id: string) => void; onNova: () => void; onExportar: () => void }) {
   return (
-    <div className="min-h-dvh bg-white px-4 safe-top safe-bottom">
+    <div className="min-h-dvh bg-papel px-4 safe-top safe-bottom">
       <header className="flex items-center pb-4 pt-6">
         <div className="flex-1">
-          <p className="text-xs font-bold uppercase tracking-wide text-orange-700">TCC Luderia · Bloco D</p>
           <h1 className="text-3xl font-extrabold">Observação</h1>
         </div>
-        <button onClick={onExportar} className="p-2 text-orange-700" aria-label="Exportar tudo em CSV">
+        <button onClick={onExportar} className="p-2 text-caneta-700" aria-label="Exportar tudo em CSV">
           <ArrowUpTrayIcon className="size-7" />
         </button>
       </header>
@@ -240,24 +239,23 @@ function Inicio({ estado, onAbrir, onNova, onExportar }: { estado: Estado; onAbr
           const n = estado.registros.filter((r) => r.unidadeId === u.id).length
           return (
             <li key={u.id}>
-              <button onClick={() => onAbrir(u.id)} className="flex w-full items-center gap-3 rounded-xl bg-slate-100 p-4 text-left">
-                <span className="flex-1">
-                  <span className="block text-lg font-extrabold uppercase">{u.nome}</span>
-                  <span className="text-sm text-slate-600">
-                    {u.mesas.length} mesas · {n} grupos registrados
-                    {ativa && <b className="text-orange-700"> · visita em andamento</b>}
-                  </span>
-                </span>
+              <button onClick={() => onAbrir(u.id)} className="flex w-full items-center gap-3 rounded-xl bg-neutro-100 p-4 text-left">
+                <span className="flex-1 text-lg font-extrabold uppercase">{u.nome}</span>
+                {ativa ? (
+                  <span className="rounded-full bg-caneta-600 px-2 py-0.5 text-xs font-bold text-papel">ao vivo</span>
+                ) : (
+                  <span className="text-sm text-neutro-500" title="grupos registrados">{n}</span>
+                )}
                 <ChevronRightIcon className="size-5" />
               </button>
             </li>
           )
         })}
       </ul>
-      <button onClick={onNova} className="mt-4 flex h-12 w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 font-bold text-slate-600">
-        <PlusIcon className="size-5" /> Nova unidade
+      <button onClick={onNova} aria-label="Nova unidade" title="Nova unidade" className="mx-auto mt-4 grid size-12 place-items-center rounded-full bg-neutro-100 text-neutro-700">
+        <PlusIcon className="size-6" />
       </button>
-      <p className="mt-8 text-center text-xs text-slate-400">v{__APP_VERSION__}</p>
+      <p className="mt-8 text-center text-xs text-neutro-400">v{__APP_VERSION__}</p>
     </div>
   )
 }

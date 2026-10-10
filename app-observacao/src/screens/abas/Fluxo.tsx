@@ -49,28 +49,26 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
 
   return (
     <div className="px-4 pb-28">
-      <h2 className="mb-1 mt-5 text-center text-sm font-bold uppercase">Entradas e saídas (fluxo)</h2>
       {visita && (
-        <p className="mb-3 text-center text-sm text-slate-600">
-          Dentro agora: <b className="text-orange-700">{pessoasDentro(estado, visita.id)} pessoas</b> · {gruposDentro(estado, visita.id).length} grupos · {entradas.length} entradas
+        <p className="my-4 text-center" title={`${gruposDentro(estado, visita.id).length} grupos dentro · ${entradas.length} entradas`}>
+          <b className="text-3xl text-caneta-700">{pessoasDentro(estado, visita.id)}</b> <span className="text-sm text-neutro-500">dentro</span>
         </p>
       )}
-      {!visita && <p className="mt-10 text-center text-slate-500">Toque em + para começar a visita e registrar a primeira entrada.</p>}
       <div className="space-y-3">
         {cartoes.map((en) => {
           const sa = saidaDe(en.codigo)
           const atual = sa ?? en
           return (
-            <div key={en.id} className={`rounded-xl bg-slate-200/70 p-4 ${sa ? 'opacity-60' : ''}`}>
+            <div key={en.id} className={`rounded-xl bg-neutro-200/70 p-4 ${sa ? 'opacity-60' : ''}`}>
               <div className="flex items-center gap-2">
                 <button onClick={() => apagar(en)} className="w-[88px] shrink-0 text-left text-[17px]" aria-label={`Grupo ${en.codigo}`}>
-                  <b className="text-orange-600">ID:</b> {en.codigo}
+                  <b className="text-caneta-600">ID:</b> {en.codigo}
                 </button>
-                <div className="flex h-8 flex-1 overflow-hidden rounded-md bg-slate-300 text-xs font-bold">
-                  <button onClick={() => sa && sair(en, false)} className={`flex-1 ${!sa ? 'bg-orange-600 text-white' : 'text-slate-700'}`}>
+                <div className="flex h-8 flex-1 overflow-hidden rounded-md bg-neutro-300 text-xs font-bold">
+                  <button onClick={() => sa && sair(en, false)} className={`flex-1 ${!sa ? 'bg-caneta-600 text-papel' : 'text-neutro-700'}`}>
                     ENTRADA
                   </button>
-                  <button onClick={() => !sa && sair(en, true)} className={`flex-1 ${sa ? 'bg-orange-600 text-white' : 'text-slate-700'}`}>
+                  <button onClick={() => !sa && sair(en, true)} className={`flex-1 ${sa ? 'bg-caneta-600 text-papel' : 'text-neutro-700'}`}>
                     SAÍDA
                   </button>
                 </div>
@@ -78,7 +76,7 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
                   type="time"
                   value={atual.hora}
                   onChange={(ev) => muda(en.codigo, { hora: ev.target.value }, sa ? 'saida' : 'entrada')}
-                  className="h-8 w-[76px] rounded-md bg-white text-center text-[15px] font-medium outline-none"
+                  className="h-8 w-[76px] rounded-md bg-papel text-center text-[15px] font-medium outline-none"
                 />
               </div>
               <div className="mt-3 grid grid-cols-2 gap-4">

@@ -70,6 +70,36 @@ export type Registro = {
   instrutor: number
   jogos: string[]
   notas: string
+  pedidos: Pedido[]
+}
+export type CategoriaPedido = 'bebida' | 'comida' | 'sobremesa'
+export const CATEGORIAS_PEDIDO: CategoriaPedido[] = ['bebida', 'comida', 'sobremesa']
+/** Pedido feito pela mesa: hora do pedido e da chegada (tempo de espera). */
+export type Pedido = { id: string; categoria: CategoriaPedido; descricao: string; pedido: string; chegada: string | null }
+/** Foto de apoio (cardápio, estante, salão), sem pessoas. O arquivo fica em Documentos. */
+export type Foto = {
+  id: string
+  unidadeId: string
+  visitaId: string | null
+  categoria: string
+  hora: string
+  /** caminho relativo (ObservacaoLuderia/fotos/…) no armazenamento do celular */
+  arquivo: string
+  /** miniatura em data URL para a lista */
+  miniatura: string
+  nota: string
+}
+/** Medida feita numa foto pela escala de um objeto de referência no mesmo plano. */
+export type Medida = {
+  id: string
+  unidadeId: string
+  visitaId: string | null
+  rotulo: string
+  cm: number
+  referencia: string
+  refCm: number
+  fotoId: string
+  hora: string
 }
 /** Passagem de um grupo pela porta. Entrada e saída do mesmo grupo têm o mesmo código. */
 export type Fluxo = {
@@ -107,6 +137,8 @@ export type Estado = {
   fluxos: Fluxo[]
   contagens: Contagem[]
   medicoes: Medicao[]
+  fotos: Foto[]
+  medidas: Medida[]
   config: Config
 }
 
@@ -141,6 +173,8 @@ export function estadoInicial(): Estado {
     fluxos: [],
     contagens: [],
     medicoes: [],
+    fotos: [],
+    medidas: [],
     config: configPadrao(),
   }
 }
@@ -159,10 +193,12 @@ export function normalizar(e: Partial<Estado>): Estado {
       notas: v.notas ?? [],
       ficha: { ...fichaVazia(), ...v.ficha },
     })),
-    registros: (e.registros ?? []).map((r) => ({ ...r, jogos: r.jogos ?? [] })),
+    registros: (e.registros ?? []).map((r) => ({ ...r, jogos: r.jogos ?? [], pedidos: r.pedidos ?? [] })),
     fluxos: e.fluxos ?? [],
     contagens: e.contagens ?? [],
     medicoes: e.medicoes ?? [],
+    fotos: e.fotos ?? [],
+    medidas: e.medidas ?? [],
     config,
   }
 }
@@ -196,6 +232,10 @@ export function permanenciaMin(entrada: string, saida: string | null): number | 
   if (a === null || b === null || b < a) return null
   return b - a
 }
+
+/** Minutos entre o pedido e a chegada; null se não chegou. */
+export const esperaPedido = (p: Pedido) => permanenciaMin(p.pedido, p.chegada)
+export const esperaMin = esperaPedido
 
 /** dd/mm/aaaa → aaaa-mm-dd, ou null se incompleta ou inexistente. */
 export function dataIso(br: string): string | null {
@@ -331,6 +371,38 @@ export function arquivosCsv(e: Estado, unidadeId?: string): { nome: string; cont
           ...v.ficha.precos.map((p) => [nomeUnidade(e, v.unidadeId), v.inicio, 'cardapio', p.item, '', '', p.preco]),
           ...v.notas.flatMap((n) => n.itens.map((i) => [nomeUnidade(e, v.unidadeId), v.inicio, `nfce_${n.momento}_${n.numero}`, i.nome, i.qtd, i.un, i.valor])),
         ]),
+      ),
+    },
+    {
+      nome: 'contagem_pedidos.csv',
+      conteudo: csv(
+        ['unidade', 'visita_inicio', 'mesa', 'grupo_entrada', 'pessoas', 'categoria', 'descricao', 'pedido', 'chegada', 'espera_min', 'pendente'],
+        e.registros
+          .filter((r) => ok(r.visitaId))
+          .flatMap((r) => {
+            const v = vis(r.visitaId)!
+            const u = e.unidades.find((x) => x.id === r.unidadeId)
+            const mesa = u?.mesas.find((m) => m.id === r.mesaId)?.nome ?? r.mesaId
+            return r.pedidos.map((p) => [nomeUnidade(e, v.unidadeId), v.inicio, mesa, r.entrada, r.pessoas, p.categoria, p.descricao, p.pedido, p.chegada, esperaPedido(p), p.chegada ? 'nao' : 'sim'])
+          }),
+      ),
+    },
+    {
+      nome: 'contagem_medidas.csv',
+      conteudo: csv(
+        ['unidade', 'visita_inicio', 'hora', 'rotulo', 'cm', 'referencia', 'referencia_cm', 'foto'],
+        e.medidas
+          .filter((m) => !unidadeId || m.unidadeId === unidadeId)
+          .map((m) => [nomeUnidade(e, m.unidadeId), m.visitaId ? vis(m.visitaId)?.inicio : '', m.hora, m.rotulo, m.cm, m.referencia, m.refCm, e.fotos.find((f) => f.id === m.fotoId)?.arquivo.split('/').pop()]),
+      ),
+    },
+    {
+      nome: 'contagem_fotos.csv',
+      conteudo: csv(
+        ['unidade', 'visita_inicio', 'hora', 'categoria', 'arquivo', 'nota'],
+        e.fotos
+          .filter((f) => !unidadeId || f.unidadeId === unidadeId)
+          .map((f) => [nomeUnidade(e, f.unidadeId), f.visitaId ? vis(f.visitaId)?.inicio : '', f.hora, f.categoria, f.arquivo.split('/').pop(), f.nota]),
       ),
     },
     {

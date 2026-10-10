@@ -1,4 +1,4 @@
-import { minutos, permanenciaMin, type Estado } from './model'
+import { CATEGORIAS_PEDIDO, esperaPedido, minutos, permanenciaMin, type CategoriaPedido, type Estado } from './model'
 import { notasEmitidas } from './nfce'
 import { situacaoTimer } from './temporizador'
 
@@ -62,6 +62,19 @@ export function resumoVisita(e: Estado, visitaId: string) {
     jogos: [...contJogos].sort((a, b) => b[1] - a[1]).slice(0, 8),
   }
 
+  // pedidos (tempo de espera por categoria)
+  const peds = regs.flatMap((r) => r.pedidos)
+  const esperaMedia = {} as Record<CategoriaPedido, number | null>
+  for (const c of CATEGORIAS_PEDIDO)
+    esperaMedia[c] = r1(media(peds.filter((p) => p.categoria === c).map(esperaPedido).filter((x): x is number => x !== null)))
+  const pedidos = {
+    total: peds.length,
+    pendentes: peds.filter((p) => !p.chegada).length,
+    porGrupo: regs.length ? r1(peds.length / regs.length) : null,
+    esperaMedia,
+    porCategoria: Object.fromEntries(CATEGORIAS_PEDIDO.map((c) => [c, peds.filter((p) => p.categoria === c).length])) as Record<CategoriaPedido, number>,
+  }
+
   // contagens periódicas
   const nMesas = u?.mesas.length ?? 0
   const ocup = e.contagens
@@ -89,6 +102,7 @@ export function resumoVisita(e: Estado, visitaId: string) {
     duracaoMin,
     fluxo,
     mesas,
+    pedidos,
     contagens,
     notasEmitidas: emitidas,
     notasPorHora: emitidas !== null && horas > 0 ? r1(emitidas / horas) : null,
