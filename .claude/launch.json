@@ -4,8 +4,24 @@
     {
       "name": "luderia-tcc-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "site-apresentacao", "run", "dev"],
+      "runtimeArgs": [
+        "--prefix",
+        "site-apresentacao",
+        "run",
+        "dev"
+      ],
       "port": 5173
+    },
+    {
+      "name": "app-observacao",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "app-observacao",
+        "run",
+        "dev"
+      ],
+      "port": 5174
     }
   ]
 }
