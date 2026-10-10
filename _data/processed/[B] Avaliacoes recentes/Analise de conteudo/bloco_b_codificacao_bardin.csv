@@ -1,0 +1,590 @@
+id_notion;sigla;nota;codigos;situacao
+c98d22;ALC;5;ATD+ MED+ AB+ PRC+ OCA:aniv OCA:ami RET+;analisada
+9d80f4;ALC;5;ACV-;analisada
+b3263a;ALC;5;PRC+ ACV+ ATD+ OCA:ami;analisada
+48ab1c;ALC;5;AMB+ ACV+;analisada
+8a252d;ALC;5;ATD+ COMU+ ACV+;analisada
+507fcc;ALC;5;DIV AB+ RET+;analisada
+7636a2;ALC;5;AMB+ AB+ ATD+;analisada
+b44fcd;ALC;5;OCA:ami HOB;analisada
+bd0c44;ARC;5;AMB+ ACV+ AB+ ATD±;analisada
+a12183;ARC;5;ACV+ AMB+ ATD± AB+ PRC±;analisada
+03806a;ARC;5;ACV+;analisada
+d81f32;ARC;3;AB- PRC- RUI-;analisada
+17a0cf;ARE;5;OCA:ami AB+ TMP+ PRC+ ATD+ MED+;analisada
+79e2e4;ARE;5;OCA:ami ATD+ ACV+ MED+ AB+ RET+ OCA:aniv;analisada
+7cd67d;ARE;5;OCA:fam AB+ DESC LOC± OCA:aniv;analisada
+3f4cfc;ARE;5;AB+ ACV+;analisada
+420a11;ARE;5;MED+ ATD+ AB+ RET+;analisada
+fb2e9a;ARE;5;AMB+ CAP+ AB+;analisada
+8450fe;ARE;5;PRG+ HOB;analisada
+3a7474;ARE;2;HOB ATD+ MED- PRC- AB~;analisada
+ebc1dc;ARE;5;LOC+ AMB+ ACV+ AB+;analisada
+5a520a;ARE;5;AMB+ ACV+ OCA:fam OCA:ami DIV AB+;analisada
+afee83;ARE;5;AMB+ ATD+ ACV+ MED+ DIV AB+ OCA:ami OCA:fam;analisada
+8f99e3;ARE;5;AMB+ ACV+ MED+ AB+ RET+;analisada
+65bbbf;ARE;5;AB+ COMU+ RET+;analisada
+fdf88e;BAL;2;OCA:aniv PRC- AB- RET-;analisada
+eff9da;BAL;5;GEN+;analisada
+618160;BRZ;5;RET+ ATD+ AB+ PRC+;analisada
+a3dac5;BRZ;5;ATD+ MED+ AB+ PRC+;analisada
+48c6a5;BRZ;5;ATD+;analisada
+eed2d3;BRZ;5;GEN+;analisada
+36247b;BRZ;5;OCA:ami ATD+ CAP+ OCA:aniv;analisada
+10199d;BRZ;5;AMB+ OCA:fam OCA:ami AB+ DIV;analisada
+624ce0;BRZ;5;ATD+ DIV COMU+;analisada
+0aa9dd;BRZ;5;ACV+ ATD+ PRC+ AB±;analisada
+784f54;BRZ;5;ATD+ LOC- INC+ RET+;analisada
+909d84;BRZ;5;ATD+ MED+ AB+ OCA:casal PRC+ OCA:ami;analisada
+32a67c;BRZ;5;OCA:ami ACV+ PRC~ AB+ ATD+ MED-;analisada
+e3ef71;BOD;5;PRC+ ACV+;analisada
+746f31;BOD;5;ATD+ PRG+;analisada
+e04fdb;BOD;5;ACV- ATD+;analisada
+461bdf;BOD;5;AB+ OCA:casal;analisada
+92318e;BOD;5;AMB+ ATD+;analisada
+00cb41;BOD;5;AB+;analisada
+79ceda;BOD;5;AB+ AMB+ ACV+;analisada
+bc02b9;BOD;5;ATD+ RET+;analisada
+dbd13c;BOD;5;PRG+ ATD+ AB+ RET+;analisada
+8ec75a;BOD;5;ATD+ NOM;analisada
+9ecb69;BOD;5;AMB+ PRG+;analisada
+129ed7;BOD;5;ATD+ NOM;analisada
+abf7c0;BOD;5;PRG+ ACV+ CAP~;analisada
+fd65ac;BOD;5;GEN+;analisada
+1e41e2;BOD;5;AB+ ATD+ MED+ OCA:ami NOM;analisada
+fea8f2;BOD;3;AB- PRC- AMB+ ACV+;analisada
+eff8ce;BOD;5;ACV+;analisada
+bd864e;BOD;2;AB-;analisada
+3aba59;BOD;1;ATD- AB- RET-;analisada
+ed5096;BOD;1;CAP- PRC- ATD- AB-;analisada
+725df9;BOD;2;AB- ATD± PRC- ACV+ AMB+;analisada
+0092ba;BOD;2;RUI- PRC- TMP- AB+ ATD+ CAP-;analisada
+a2de56;BOD;2;TMP- RUI- AB+ CAP-;analisada
+5da43f;BOD;5;DIV AB+ PRC+ AMB+;analisada
+265535;BOD;3;AMB+ AB+ ACV- PRC-;analisada
+4c1c92;BOD;5;ATD+;analisada
+150e63;BOD;5;GEN+;analisada
+0bd49a;BOD;5;PRC+;analisada
+396131;BOD;5;GEN+;analisada
+3d4788;BOD;5;AB+ MED+ RET+;analisada
+f8a9ed;BOD;5;GEN+;analisada
+195a9b;BOD;5;AB+;analisada
+912abf;BOD;5;MED+;analisada
+145a24;BOD;5;AMB+ ATD+ MED+ AB+ ACV+;analisada
+925226;BRV;5;VAR+ MED+;analisada
+4804b0;BRV;5;VAR+ OCA:ami ACV+ ATD+;analisada
+861982;BRV;5;ACV+ OCA:ami MED+ RET+;analisada
+5a5d6e;BRV;5;VAR+ RET+;analisada
+7db9dd;BRV;5;VAR+;analisada
+5e807f;BRV;5;VAR+;analisada
+91dfdc;BRV;1;ATD- RET-;analisada
+8dad7f;BRV;5;ATD+;analisada
+c5f941;BRV;5;;excluida: fora do tema (revisão de veículo)
+f8dcf8;BRV;5;ATD+;analisada
+a8b81a;BRV;5;ACV+ AMB+ ATD+;analisada
+450e12;BRV;5;AMB+ VAR+ OCA:casal ATD+ NOM;analisada
+597877;BRV;1;VAR- ATD-;analisada
+2deda5;BRV;5;MED+ ATD+ ACV+ VAR+;analisada
+3006dc;BRV;5;ACV+ MED+;analisada
+6e3a0a;CCG;5;GEN+;analisada
+3792fb;CCG;5;OCA:ami HOB AB+;analisada
+9bc31e;CCG;5;AMB+ VAR+ PRC+;analisada
+43ec9b;CCG;5;GEN+;analisada
+1318b1;CCG;5;AMB+ PRG+ COMU+ AB~ HOB;analisada
+ac51de;CGK;5;OCA:ami ATD+ AMB+ AB+ ACV+ PRC+ OCA:fam;analisada
+c14b11;CGK;5;AMB+ OCA:ami OCA:casal ACV+;analisada
+c6985c;CGK;5;AMB+ ACV+ ATD+ MED+ AB+ PRC+ OCA:casal RET+;analisada
+fd9dc2;CGK;5;ATD+ ACV+ AMB+;analisada
+f54ac9;CGK;5;GEN+;analisada
+521e25;CAR;5;AMB+ OCA:fam OCA:ami OCA:casal;analisada
+eee62d;CAR;5;OCA:aniv MED+ ATD+ AB+ ACV+;analisada
+ffd65f;CAR;5;GEN+;analisada
+9fffab;CAR;2;CAP- OCA:fam AMB- ACV+ AB± ATD-;analisada
+4d14d1;CAR;4;TMP+ AMB- AB-;analisada
+3415cd;CAR;5;RET+ OCA:ami PRC+ ATD+ AB±;analisada
+3d7ec3;CAR;5;AB+ INC+ AMB+ ACV+ ATD+;analisada
+632416;CAR;5;ATD+ OCA:fam;analisada
+be4651;CAR;5;ATD+ PRC+ TMP+ AMB+;analisada
+00d8ff;CAR;5;OCA:aniv OCA:fam AMB+ PRG+ MED+ ATD+ AB+ PRC+ RET+;analisada
+6611a7;CAR;5;AB+ PRC+ ACV- RUI+ LOC+;analisada
+1d0c6e;CAR;5;AMB+ PRG+ ATD+;analisada
+410457;CAR;5;AMB+ MED+ AB-;analisada
+997205;CAR;5;OCA:aniv AMB+ ATD+ AB+;analisada
+e880ea;CAR;5;CAP- TMP-;analisada
+91e885;CAR;2;AMB-;analisada
+0f1f75;CAR;5;AMB+ PRG+ PRC+ AB+ OCA:ami ATD+;analisada
+d18090;CAR;3;AB+ PRG+ AMB+ OCA:aniv PRC- CAP~;analisada
+a95a62;CAR;4;ATD+ MED+ TMP-;analisada
+2cb09b;CAR;5;RET+ PRC+ AMB+ PRG+ ACV+ OCA:fam ATD+ MED+;analisada
+12f7a0;CAR;5;AB+ ATD+;analisada
+93794c;CAR;5;AB-;analisada
+d09508;CAR;4;AMB+ PRC+ PRG+ AB- GEEK;analisada
+dc74f2;CAR;5;OCA:fam OCA:ami ACV+ MED+ AB+ AMB+ GEEK CAP~;analisada
+2b19f1;CAR;5;OCA:ami ATD+ AB+ RET+;analisada
+66f677;CAR;5;AB+ AMB+ ATD+ PRC+ ACV+;analisada
+5912a9;CAR;5;OCA:ami AB+ ATD+;analisada
+2d8f62;CAR;5;ATD+ AB+ PRC+ ACV+ RET+;analisada
+360894;CAR;5;OCA:aniv CAP+ ATD+ GEEK AMB+ MED+ AB+ PRC+ RET+;analisada
+860557;CAR;5;AMB+ ATD+ RET+ PRG+;analisada
+1dda12;CAR;5;OCA:aniv ATD+;analisada
+4a70e0;CAR;5;ACV+ AMB+ ATD+ MED+ NOM;analisada
+a42258;CAR;5;OCA:ami OCA:fam ATD+ ACV+ MED+;analisada
+1d3e59;CAR;5;ATD+ ACV+ AB+;analisada
+132c58;CAR;5;AMB+ RET+;analisada
+49b34d;CAR;5;AMB+ ACV+ PRG+ GEEK;analisada
+b88fb4;CAS;5;GEN+;analisada
+513d98;CAS;1;GEN-;analisada
+1289f7;CAS;5;ATD+;analisada
+eb28c1;CAS;5;GEN+;analisada
+014bbf;CAS;1;ATD- CAP- AMB-;analisada
+2f36ff;CAS;5;DIV;analisada
+045221;CAS;4;AB- ATD+ AMB- RUI-;analisada
+b786de;CAS;5;OCA:fam OCA:ami ATD+ AB+ LOC+;analisada
+894bdc;CAS;5;ATD+ AB+ NOM;analisada
+e816d3;CAS;5;ATD+ NOM;analisada
+6e16ed;CAS;5;ATD+ NOM;analisada
+d59678;CAS;3;ATD- TMP- AMB- ACV- MED-;analisada
+a0f63d;CAS;5;ATD+ AMB+ ACV+ NOM;analisada
+aaabf6;CAS;5;DIV;analisada
+45a8bb;CAS;5;GEN+;analisada
+63ee44;CAS;5;ATD+ NOM;analisada
+e0c707;CAS;5;ATD+ NOM;analisada
+788163;CAS;5;OCA:ami ATD+ NOM;analisada
+fdc6c5;CAS;5;ATD+ NOM;analisada
+e411d8;CAS;5;ATD+ RET+ NOM;analisada
+59c701;CAS;5;ATD+ AB+ PRC+ NOM;analisada
+6589e0;CAS;4;ATD+ AMB- NOM;analisada
+c52e90;CAS;5;AB+ ATD+ ACV+ NOM;analisada
+405e2e;CAS;5;AB+ ATD+ NOM;analisada
+302ed0;CAS;5;OCA:aniv ATD+ NOM;analisada
+da94c5;CAS;5;ATD+ AB+ AMB+ NOM;analisada
+2899bc;CAS;5;AMB+ AB+ ATD+ NOM;analisada
+c3fd41;CAS;5;AB+ AMB+ ATD+ NOM;analisada
+7abf6a;CAS;5;AB+;analisada
+31dfa1;CAS;5;OCA:fam OCA:ami;analisada
+a1f291;CAS;5;GEN+;analisada
+93be23;CAS;4;DIV OCA:ami OCA:aniv;analisada
+869dab;CAS;5;OCA:fam DIV;analisada
+7e5ecc;CAS;5;AB+ ATD+;analisada
+eced93;CAS;5;ACV+ ATD+ RET+;analisada
+12ce5b;CAS;5;AMB+ OCA:fam ATD+ AB+;analisada
+e592dd;CAS;5;GEN+;analisada
+5dbf3e;CAS;5;AMB+ ATD+ AB+;analisada
+ba59f4;CAS;5;AMB+ OCA:fam DIV;analisada
+b3da64;CAS;3;AB+ ATD- MED- AMB-;analisada
+e4a1e4;CHF;5;AB+ ACV+ OCA:ami AMB- ATD+;analisada
+eb3e8e;CHF;1;TMP-;analisada
+f2bc63;CHF;1;ATD- CAP- TMP- AMB- AB- ACV- RET-;analisada
+97f030;CHF;2;AB- TMP- AMB- ACV+ CAP-;analisada
+aa3f8b;CHF;4;AMB+ ACV+ TMP- AB+;analisada
+7e9595;CHF;5;AMB+ ATD+ AB+ ACV+ OCA:ami RET+;analisada
+781330;CHF;1;CAP- ATD-;analisada
+318a80;CHF;5;ATD+ NOM RET+;analisada
+145413;CHF;4;OCA:ami AB~ DIV;analisada
+deff0f;CHF;5;ATD+ MED+ NOM;analisada
+c3058a;CHF;5;AMB+ ACV+ ATD+ MED+ NOM;analisada
+99efa6;CHF;5;DIV AB+ ATD+;analisada
+ca3033;CIN;5;GEN+;analisada
+cedb4c;CIN;5;GEN+;analisada
+1653e6;CIN;5;OCA:fam ATD+ AB+ RET+;analisada
+f32a9e;CIN;5;AMB+ OCA:fam;analisada
+7a091b;CIN;5;AMB+ AB±;analisada
+c94153;CIN;5;GEN+;analisada
+b53bb1;CIN;5;AMB+;analisada
+f79e51;CIN;5;AMB+ ACV+ PRG+ RET+;analisada
+cad756;CIN;1;ACV- ATD+ AMB-;analisada
+0f8e43;CIN;2;OCA:ami PRG+ AMB+ AB~ ATD- OCA:aniv RET-;analisada
+a1966b;CIN;5;PRC-;analisada
+8e4fce;CIN;3;AMB+ PRC- AB-;analisada
+dcff87;CIN;5;AB+ PRC+ DIV;analisada
+21a88c;CIN;4;PRC- LOC-;analisada
+acb6c4;CIN;5;GEN+;analisada
+e3b8a9;CIN;4;OCA:aniv OCA:fam PRG+ ATD± TMP- ACV+ AB+;analisada
+8a3837;CIN;5;ATD+;analisada
+1e3827;CIN;5;ATD+ OCA:fam PRG+ TMP- AB+ AMB+;analisada
+755f18;COL;5;AB+ VAR+ PRC+ RET+ HOB;analisada
+da3db1;COL;4;AMB+ ATD+ AB~ GEEK;analisada
+842478;CMD;5;OCA:ami CAP+ AMB+ DIV;analisada
+1f53c8;CMD;5;OCA:aniv ATD+ MED+;analisada
+50540a;CMD;2;AB- ATD- RET-;analisada
+bc49da;CMD;5;GEN+;analisada
+b6c385;CMD;5;DIV;analisada
+573d2b;CMD;3;AB+ ACV+ CAP-;analisada
+3f7caf;COV;1;OCA:aniv AMB- ATD- MED- NOV AB+ TMP+ RET-;analisada
+be8b3c;COV;4;OCA:ami OCA:fam ACV+;analisada
+53295b;COV;5;AB+ ATD+ ACV+;analisada
+d90907;DOM;5;ATD+;analisada
+8a8ea2;DOM;4;VAR+ PRC+ AMB- HOB;analisada
+4e34e9;DOM;5;VAR+ PRC+ HOB;analisada
+877d1e;DOM;5;VAR+ HOB;analisada
+35d400;DOM;5;AMB+ ATD+;analisada
+c23961;DOM;5;AMB±;analisada
+4aa66a;ENC;1;ACV+ AMB+ MED- ATD- TMP- CAP- HOB RET- OCA:casal;analisada
+ca7e92;ENC;5;VAR+ GEN+;analisada
+77e84e;ENC;5;AMB+ ATD+;analisada
+c28cfa;ENC;5;ACV+ ATD+ MED+ CAP~;analisada
+6f80d8;ENC;5;AMB~ ATD+;analisada
+3e8ee2;ENC;5;AMB+ ATD+ AB+;analisada
+25d75a;ENC;5;AB+ AMB+ ACV+ PRG+ HOB;analisada
+75ab4b;ENC;5;AMB+ AB+ MED+ NOV OCA:ami OCA:fam;analisada
+1cbae8;ENC;5;MED+ AB+ ACV+ HOB;analisada
+62c87d;ENC;5;OCA:ami MED+;analisada
+23470a;ENC;5;DIV RET+;analisada
+f819b1;ENC;5;AB+ ATD+ AMB+ ACV+;analisada
+ee2a76;ENC;5;OCA:fam AMB+ ACV+ AB+ ATD+;analisada
+41f018;ENC;5;ATD+ AB+ ACV+ RET+;analisada
+131203;ENC;5;ACV+ AB+ ATD+;analisada
+7313dc;ENC;5;ATD+ ACV+;analisada
+1a718a;ENC;5;ACV+ AB+ ATD+ PRC±;analisada
+3251bc;ENC;5;DIV;analisada
+06e1b2;ENC;5;RET+ AB+ ATD+ ACV+;analisada
+633b17;FTL;5;ATD+ AB+;analisada
+4dd1fa;FTL;5;VAR+ HOB;analisada
+3adf86;FTL;5;ATD+ PRC+ VAR+;analisada
+26b879;FTL;5;AB+;analisada
+1cfd4a;FTL;5;ATD+ VAR+;analisada
+18cc3c;FTL;5;VAR+ AMB+ PRC+ HOB;analisada
+2a83d2;FTL;5;AMB+ OCA:fam ATD+ AB+ TMP+;analisada
+1a52ec;FTL;4;AMB+ ATD+ ACV+ VAR+ AB+ PRC- NOV;analisada
+713048;FTL;5;AMB+ ACV+ ATD+ OCA:ami OCA:fam AB+ RET+;analisada
+7e7235;FTL;5;AMB+ ACV+ VAR+ AB+ ATD+;analisada
+c4960c;FTL;5;ATD+;analisada
+582712;FTL;5;ACV+ AB+;analisada
+183ffd;FTL;5;VAR+ ATD+ HOB;analisada
+290f68;FTL;5;OCA:aniv OCA:fam AB+ DESC;analisada
+55db9a;FAN;5;RET+ ATD+ AB+;analisada
+d5e24e;FAN;1;OCA:aniv ATD- ACV- CAP- RET-;analisada
+94aea8;FAN;5;OCA:fam ACV+ AB+ CAP~;analisada
+164ddc;FAN;5;ACV+ AB+ OCA:fam;analisada
+46615b;FAN;5;GEN+;analisada
+044ea8;FAN;5;RET+;analisada
+531b1c;FAN;3;OCA:fam ATD+ GEN~;analisada
+d420e1;FAN;4;AMB+ ACV- PRC- AB~ ATD± TMP-;analisada
+46dc1e;FAN;2;AB- PRC- RUI- OCA:fam ATD-;analisada
+15f3af;FAN;5;AMB+ ATD+ TMP+ AB+;analisada
+19e22f;FAN;5;ATD+ NOM RET+;analisada
+5ab7c9;FAN;5;AMB+ AB+ ATD+ NOM;analisada
+bf0eec;FAN;5;ACV+ AB+ ATD+;analisada
+70aa9f;FAN;5;ATD± CAP~;analisada
+0e8aa3;FAN;5;AB+ OCA:fam;analisada
+65f1e3;FAN;5;ATD+ AB+ ACV+ OCA:fam;analisada
+5fd263;FLW;5;AMB+ VAR+;analisada
+947fbb;FLW;5;AB+ ATD+ RET+ AMB+;analisada
+316b46;FLW;5;AB+;analisada
+886850;FLW;5;VAR+ AB+ COMU+ ATD+;analisada
+b023fd;FLW;5;PRC+ AMB+ HOB;analisada
+e0c3ca;FLW;5;ATD+ COMU+;analisada
+c0a736;FLW;5;HOB COMU+ ATD+ INC+;analisada
+3d3d39;FLW;1;ATD- RET-;analisada
+f6caa1;FLW;5;ATD+ NOM VAR+ AMB+ HOB;analisada
+8f2968;FLW;5;AMB+ PRG+ ATD+ NOM AB+;analisada
+275b87;FLW;5;AMB+ ATD+ NOM AB+;analisada
+3a08b2;FLW;5;ATD+ NOM AB+;analisada
+cc3779;FLW;5;OCA:fam ATD+ NOM;analisada
+bb0169;GOB;4;HOB AB-;analisada
+9e1078;GOB;5;ATD+ AB+;analisada
+08d584;GOB;3;ACV+ ATD- AB- PRC-;analisada
+d4548d;GOB;4;ACV+ AB- ATD+;analisada
+d30a52;GAR;1;GEN-;analisada
+215b7c;GRU;5;HOB COMU+;analisada
+67803d;GRU;4;VAR+ AMB+ ATD-;analisada
+b674f1;GRU;5;COMU+ VAR+ PRC+;analisada
+1ba344;GRU;3;HOB COMU± NOV;analisada
+087fa8;GRU;4;HOB;analisada
+cd4677;GRU;5;GEN+;analisada
+962d43;GRU;5;AMB+ PRC+ ATD+;analisada
+64dd0b;GRU;5;VAR+;analisada
+a57f37;ILU;1;VAR- HOB;analisada
+7099e7;ILU;5;VAR+ ATD+ PRC+ NOV RET+;analisada
+aea9cd;ILU;4;PRC+ VAR+ ATD±;analisada
+66246c;INS;1;VAR- HOB;analisada
+a99c8b;INS;5;VAR+ ATD+;analisada
+04a84c;INS;5;VAR+ ATD+ HOB;analisada
+afed2f;JGS;5;ACV+ MED+ ATD± AMB+;analisada
+18976c;JGS;2;AB- ATD-;analisada
+5ef03d;JOY;2;ATD± INC- MED+ ACV+ AB+ OCA:ami;analisada
+8d22ab;JOY;1;VAR- MED-;analisada
+89d663;JOY;4;ACV+ AMB+ AB~ PRC-;analisada
+5bb008;JOY;1;VAR- ATD-;analisada
+ef2413;JOY;5;GEN+;analisada
+548900;JOY;5;DIV ACV+;analisada
+3bd18e;JOY;5;DIV;analisada
+0b2ff1;ASG;5;ATD+;analisada
+1062b1;ASG;5;ATD+;analisada
+14e510;LCA;5;RET+ ATD+ OCA:fam AB+ HOB;analisada
+5081d2;LCA;5;INC+ AMB+ ATD+ AB+ OCA:ami;analisada
+f00ca8;LCA;5;DIV ACV+ AMB+ AB+;analisada
+768644;LCA;3;ACV+ CAP- AMB+ ATD- AB- PRC- OCA:ami;analisada
+fdfd38;LCA;5;DIV ACV+ MED+ VAR+ AB+ PRC+ OCA:casal OCA:ami;analisada
+b273c3;LCA;2;CAP- INC- ACV+ MED+ ATD-;analisada
+1ec94d;LCA;1;CAP- INC-;analisada
+f77554;LCA;5;AMB+ ACV+;analisada
+9ca211;LCA;5;ATD+ AMB+ ACV+;analisada
+70ffad;LCA;5;OCA:fam ACV+ DIV;analisada
+5fc4d1;LCA;5;ACV+ AMB+ AB+ OCA:ami;analisada
+085fd0;LCA;3;ACV+ AMB+ RUI- MED+ CAP- INC- HOB RET-;analisada
+6ed534;LCA;5;RET+ ACV+ DIV;analisada
+09557c;LCA;5;ATD+ ACV+ PRG+;analisada
+77f969;LCA;5;ATD+;analisada
+8cd605;LCA;5;CAP~ ACV+;analisada
+a13e6a;LCA;5;DESC ACV+ AMB+ ATD+ AB+;analisada
+1153e4;LCA;5;AMB+ ACV+ MED+ DESC OCA:casal OCA:ami RET+;analisada
+b1c7eb;LCA;5;AMB+ ATD+ ACV+ OCA:ami OCA:fam COMU+ DIV;analisada
+9c1f7a;LCA;5;ATD+;analisada
+9bced6;LCA;5;DIV ATD+;analisada
+1f3515;LCA;5;OCA:fam OCA:ami ACV+;analisada
+20a51d;LCA;5;ATD+;analisada
+f5645c;LCA;5;ATD+ AB+ ACV+ RET+;analisada
+0280e6;LCA;5;NOV ACV+ AB+;analisada
+f2d0d9;LCA;5;OCA:fam OCA:ami AMB+ ATD+ DIV;analisada
+7f1c5b;LCA;5;ACV+ MED+ AB+;analisada
+a01ebc;LCA;5;AMB+ OCA:ami OCA:fam AB+ ATD+ DIV;analisada
+051e84;LCA;5;OCA:ami OCA:fam ATD+;analisada
+fe3755;LCA;5;ATD+ MED+ AB+;analisada
+499607;LCA;5;AMB+ ATD+ RET+;analisada
+06fcc3;LCA;5;ATD+;analisada
+6d71d8;LCA;5;AMB+ ACV+ ATD+ MED+;analisada
+762eee;LCA;5;AMB+ ATD+;analisada
+5b6f62;LCA;5;ATD+;analisada
+07919f;LCA;5;OCA:fam OCA:ami ATD+ MED+ RET+;analisada
+a3c06f;LCA;5;AMB+ AB+ ACV+;analisada
+114568;LCA;5;RET+ OCA:casal ACV+ AMB+ ATD+ MED+ AB+;analisada
+b9fd9d;LCA;5;ATD+ ACV+;analisada
+537cf3;LCA;5;ATD+ LOC+ MED+ AB+ RET+;analisada
+0011dd;LCA;5;GEN+ RET+;analisada
+80bae2;LCA;5;AMB+ ATD+ AB+ ACV+ RET+ DIV;analisada
+b576d1;LCA;5;ACV+ MED+ AB+;analisada
+f1c01d;LCA;5;AMB+ OCA:ami;analisada
+af7d38;LCA;5;AMB+ ACV+ ATD+ MED+ AB+;analisada
+9aa2a2;LCA;1;OCA:fam ATD- TMP- AB- INC- RET-;analisada
+f8e690;LCA;1;CAP- ATD- RET-;analisada
+4eaabd;LCA;1;CAP- ATD- RET-;analisada
+64afb6;LCA;2;ACV+ MED+ CAP- TMP- ATD-;analisada
+42648c;LCA;3;CAP- TMP- ATD- ACV+ DIV AB+ MED+ OCA:aniv RET-;analisada
+e39069;LCA;5;DIV;analisada
+12c163;LCA;5;ATD+ RET+;analisada
+d13d41;LCA;5;ACV+ MED+ AMB+;analisada
+d96084;LCA;5;LOC+ AB+ ACV+ PRC+ ATD+ MED+ NOM RET+;analisada
+036dae;LCA;5;AMB+ ACV+ ATD+ MED+ NOM RET+;analisada
+24ba6f;LCA;5;AMB+ ACV+ ATD+ MED+ NOM RET+;analisada
+d83744;LCA;5;OCA:ami ACV+ AMB+ AB+ MED+ NOM PRC~;analisada
+29a61d;LCA;5;ATD+ MED+;analisada
+7f73d1;LCA;5;OCA:ami DIV;analisada
+7bcd15;LCA;5;OCA:fam INC+;analisada
+5658a1;LCA;5;AMB+ AB+ DIV;analisada
+e33946;LCA;5;OCA:casal OCA:ami AMB+ ATD+ AB+ PRC+ RET+;analisada
+7f1f39;LCA;5;ACV+ ATD+ RUI± AMB+ RET+;analisada
+7203ee;LCA;4;ACV+ ATD+ MED+ AB±;analisada
+088a43;LCA;4;ACV+ AB+ CAP- OCA:ami;analisada
+85e5c6;LCA;2;AMB+ ATD+ CAP- INC- ACV+;analisada
+996bed;LCA;5;GEN+;analisada
+096b9a;LCA;5;ATD+;analisada
+fbb704;LCA;5;OCA:ami ACV+ AMB+ PRC+ AB+ RET+;analisada
+9c0c6e;LCF;2;AMB+ AB- PRC- HOB;analisada
+7d52d1;BGC;5;OCA:ami ACV+;analisada
+7c117a;BGC;5;ACV+ ATD+ AMB+ AB+ OCA:ami;analisada
+efe8c8;BGC;1;OCA:aniv ATD- RET-;analisada
+db6921;BGC;2;ATD-;analisada
+1e7186;BGC;5;ACV+ ATD+ MED+ NOM;analisada
+8c3c61;BGC;5;OCA:ami ATD+ MED+ ACV+ PRC+ AB+ INC+;analisada
+012d07;BGC;3;ATD- MED+;analisada
+f3fba1;BGC;5;ACV+ AB+;analisada
+0afc53;BGC;5;ACV+ MED+ NOV;analisada
+6c6f0b;BGC;5;ATD+ MED+ NOV OCA:fam OCA:casal OCA:ami RUI+ DESC AB+ RET+;analisada
+92db90;BGC;5;GEN+;analisada
+810045;SDQ;5;AB~;analisada
+23ebca;SDQ;4;AMB+ PRC± ACV+ VAR+ AB-;analisada
+affac8;SDQ;5;DIV;analisada
+82e188;SDQ;1;AMB- TMP- AB-;analisada
+c9dfdd;SDQ;5;OCA:ami DIV;analisada
+ccc6e1;SDQ;5;ATD+ DIV;analisada
+cf0c2e;SDQ;5;OCA:ami AMB- CAP-;analisada
+9dd7d1;SDQ;5;GEN+ RET+;analisada
+f3c77c;SDQ;5;GEN+ RET+;analisada
+6b8ec8;SDQ;1;OCA:aniv OCA:ami CAP-;analisada
+d30537;SDQ;4;AMB+ ACV+ OCA:ami OCA:fam ATD+ MED+ PRC-;analisada
+04b2da;SDQ;5;OCA:fam ACV+ AB+ PRC+;analisada
+d5287d;SDQ;5;OCA:ami RET+;analisada
+b36ca7;SDQ;5;RET+ OCA:ami AB+ AMB+;analisada
+581424;SDQ;5;GEN+;analisada
+01026c;SDQ;5;AMB+ DIV RET+;analisada
+eb9b5b;SDQ;5;AMB+ ACV+ AB+;analisada
+29b0f9;LUD;5;ACV+ MED+;analisada
+bca3cc;LUD;5;ATD+ DIV COMU+ RET+;analisada
+a83b33;LUD;5;AMB+ ATD+ AB+;analisada
+33987f;LUD;5;ATD+ MED+ PRC± ACV+;analisada
+368b99;LUD;4;PRC-;analisada
+706ea8;LUD;5;DIV MED+ AB+ LOC~;analisada
+b2976c;LUD;5;ATD+;analisada
+2789ff;LUD;5;ATD+ AB+ ACV+;analisada
+7ec592;LUD;5;ACV+ ATD+;analisada
+8efddb;LUD;4;ATD+ MED+ AB±;analisada
+817fc5;LUD;5;OCA:aniv AMB+ CAP~ ACV+ MED+ AB± PRC- RET+;analisada
+90cb6b;MCH;5;;excluida: duplicata de FLW
+98070e;MCH;5;;excluida: duplicata de FLW
+d961d8;MCH;5;;excluida: duplicata de FLW
+fc5eea;MCH;5;;excluida: duplicata de FLW
+aadfeb;MCH;5;;excluida: duplicata de FLW
+5519f2;MCH;5;;excluida: duplicata de FLW
+dcf5ee;MCH;5;;excluida: duplicata de FLW
+af72bf;MCH;1;;excluida: duplicata de FLW
+362c77;MCH;5;;excluida: duplicata de FLW
+256de2;MCH;5;;excluida: duplicata de FLW
+143590;MCH;5;;excluida: duplicata de FLW
+6b6adb;MCH;5;;excluida: duplicata de FLW
+5cd559;MCH;5;;excluida: duplicata de FLW
+c1f906;MSB;5;GEN+ RET+;analisada
+3182a3;MSB;5;HOB PRG+ PRC~ ATD+ NOM RET+;analisada
+e00b42;MSB;2;HOB ATD- COMU- AMB- PRC-;analisada
+e356a5;MSB;5;AMB+ ATD+ COMU+ VAR+;analisada
+0c905d;MSB;5;PRC+ ATD+ LOC+;analisada
+b0dce6;MSB;5;ATD+ NOM AMB+ AB+ VAR+;analisada
+1537bb;MSB;5;VAR+ OCA:fam;analisada
+0d52b3;MSB;5;ATD+;analisada
+a99b78;MSB;5;AMB+ NOV COMU+;analisada
+40dcc3;MSB;5;AMB+ VAR+;analisada
+617387;MSB;5;ATD+;analisada
+ca471b;MSB;5;AMB+ OCA:fam RET+;analisada
+35bb1c;MSB;5;ATD+ VAR+ PRG+ HOB;analisada
+5dec59;MSB;5;PRG+ LOC+ AMB+ VAR+ AB+ COMU+ HOB;analisada
+f3df37;MSB;5;GEN+;analisada
+b7fd48;MSB;5;COMU+ AB+;analisada
+2a7fd2;MSB;5;PRG+ HOB ATD+ AMB+;analisada
+d122a2;MSB;5;VAR+ PRG+ HOB;analisada
+38e5a5;MSB;5;AMB+;analisada
+c7e450;MSB;5;AMB+ COMU+ VAR+ PRG+ ATD+ NOM;analisada
+ac22cd;MSB;5;ATD+ NOM;analisada
+e13828;MSB;5;AMB+ ATD+;analisada
+3a220e;MSB;5;COMU+ HOB VAR+ RET+;analisada
+b49e7e;MSB;5;ATD+ VAR+ PRC+ NOM PRG+ HOB;analisada
+2ba943;MSB;5;AMB+ ATD+ RET+;analisada
+98de04;MSB;5;ATD+ VAR+ COMU+ HOB;analisada
+e7a868;MSB;5;HOB ATD+ NOM AMB+;analisada
+561d4e;MSB;5;ATD+ VAR+;analisada
+d99141;MSB;5;VAR+ HOB;analisada
+9e4550;MSB;5;ATD+ NOM AB+ VAR+ PRG+ COMU+ HOB RET+;analisada
+cb36de;MSB;5;ATD+ AB+ AMB+;analisada
+cb0b86;MSB;5;ATD+ COMU+ NOV PRG+ HOB;analisada
+c7f213;MSB;5;AMB+;analisada
+ae5476;MSB;5;PRC+ COMU+ HOB;analisada
+1d6485;MSB;5;ATD+ NOM;analisada
+653d38;MSB;5;GEN+;analisada
+090ce4;MSB;5;HOB AMB+ COMU+ PRC+ ATD+ PRG+;analisada
+e56e79;MSB;5;HOB AMB+ AB+ PRG+;analisada
+c7dcd5;NAL;5;AB+ ACV+ AMB+ CAP~;analisada
+06d5d2;NAL;5;DIV;analisada
+ae482d;NAL;5;GEN+;analisada
+cc182a;NAL;5;NOV AMB+ ACV+ ATD+ MED+ AB+;analisada
+048596;NAL;5;ACV+ AMB+ AB+ PRG+;analisada
+3809c9;NAL;5;AMB+ ATD+;analisada
+c632eb;NAL;5;OCA:fam RET+;analisada
+764336;OMN;5;GEN+;analisada
+bee25d;OMN;5;ATD+ NOM;analisada
+f1a832;OMN;5;VAR+ ATD+ PRC+;analisada
+f478fc;OMN;5;ATD+;analisada
+4ccece;OMN;5;ATD+ ACV+;analisada
+f7e59a;OMN;5;HOB PRG+ AMB+ AB+ ATD+ NOM;analisada
+5f7dab;OMN;5;VAR+ ACV+ OCA:ami;analisada
+d3929a;PAL;5;VAR+ ATD+;analisada
+a24ccb;PAL;5;AMB+ NOV COMU+;analisada
+b27d96;PAL;5;COMU+ HOB;analisada
+74f1ce;PIT;5;VAR+ ATD+;analisada
+e284dd;PIT;5;PRG+ COMU+;analisada
+c89dc1;PIT;5;OCA:fam ACV+ PRC+ ATD+ MED+ HOB RET+;analisada
+065d9b;PLC;5;ATD+ PRC+ AB+;analisada
+e1d3e1;PLC;5;ATD+ VAR+ AMB+ PRC+ DIV;analisada
+c91cdb;PLC;2;ATD- COMU- HOB RET-;analisada
+064a68;PLC;5;ACV+ AB~;analisada
+37cbd0;PLC;5;VAR+;analisada
+f5b6b3;PLC;5;ATD+ ACV+ VAR+ PRC+ RET+;analisada
+3f1bd0;PLC;5;ATD+;analisada
+f05ce5;PLC;4;ACV+ MED- CAP~;analisada
+96c98e;PLC;5;AMB+ AB+ HOB;analisada
+39f456;PLC;3;ACV+ AB-;analisada
+933dbe;PLC;2;VAR± ATD+;analisada
+56d7d1;PEZ;5;VAR+;analisada
+0a2491;PEZ;5;ATD+ NOM VAR+;analisada
+b9464b;PEZ;5;PRC~ ACV+;analisada
+d7aa94;PEZ;5;ATD+ VAR+ ACV+;analisada
+be0aab;PEZ;5;ACV+ MED+;analisada
+062b38;PEZ;1;VAR- TMP- HOB;analisada
+7a61a5;PEZ;5;GEN+;analisada
+9797a4;PEZ;5;VAR+ PRC+ OCA:ami ATD+ NOM MED+;analisada
+c2ef52;PEZ;5;VAR+ ATD+ NOM;analisada
+2385f5;PEZ;5;ATD+ NOM NOV MED+ AMB+ RET+;analisada
+ae9607;PEZ;5;PRC+ ATD+ NOM OCA:fam RET+;analisada
+0dcf00;PEZ;5;ATD+ NOM;analisada
+9d4e40;PEZ;5;ATD+ ACV+ PRC+ MED+ VAR+;analisada
+34fa9e;PEZ;5;VAR+;analisada
+1fafbf;PEZ;5;VAR+;analisada
+7a2d23;PEZ;1;ATD- PRC-;analisada
+82d52e;RED;5;ATD+ TMP+;analisada
+ab134a;SHF;5;OCA:casal ATD+ NOM MED+ AB+;analisada
+491a74;SHF;5;ATD+ NOM;analisada
+480cde;SHF;5;ATD+ NOM AMB+ AB+;analisada
+66fc58;SHF;5;ATD+ NOM MED+;analisada
+5f9015;SHF;5;ATD+ NOM;analisada
+e7e2f2;SHF;5;ATD+ NOM RET+;analisada
+ba54a4;SHF;5;ATD+ NOM RET+;analisada
+60b24d;SHF;5;ATD+ NOM AB+ MED+ RET+;analisada
+0ea53f;SHF;5;AB+ ACV+ OCA:ami ATD+ NOM;analisada
+321538;SHF;5;MED+ ATD+ NOM;analisada
+0045d6;SHF;5;ATD+ NOM;analisada
+3e73fa;SHF;5;ACV+ ATD+ NOM MED+ NOV AB+ DIV;analisada
+fedafd;SHF;4;ACV+ MED+ TMP+ AB+ PRC-;analisada
+8f48a7;SHF;5;MED+ ATD+ NOM;analisada
+488faf;SHF;5;PRC+ AB+ ATD+ NOM;analisada
+7ebe22;SHF;4;MED+ ATD+ NOM TMP± AB+;analisada
+dd8d94;SHF;5;ATD+ NOM;analisada
+4ef175;SHF;5;ATD+ NOM;analisada
+7de268;SHF;5;ATD+ NOM MED+;analisada
+3225c1;SHF;5;ACV+ ATD+ NOM;analisada
+1eca15;SHF;5;ATD+ NOM;analisada
+57274c;SHF;5;AMB+ DIV ACV+ AB+ OCA:ami ATD+ NOM;analisada
+cafc81;SHF;5;AMB+ DIV ATD+ NOM;analisada
+d6f2be;SHF;5;ATD+ NOM;analisada
+c46e27;SHF;5;ATD+ NOM RET+;analisada
+0dcb24;SHF;5;AB+ ATD+ NOM;analisada
+180323;SHF;2;ATD± MED- TMP+ PRC- ACV- RET-;analisada
+4602df;SHF;1;HOB AB+ PRC- ACV- MED- ATD- CAP~ RET-;analisada
+086c6a;SHF;5;AMB+ ATD+ NOM MED+ RET+;analisada
+3dcaeb;SHF;5;OCA:ami AMB+ RUI± AB+ ATD+ NOM PRC+ RET+;analisada
+39345d;SJG;5;AMB+ ACV+ AB+ PRC+ ATD+;analisada
+b76815;SJG;5;ATD+ NOM;analisada
+2bcadb;SJG;1;TMP- PRG- CAP- AB-;analisada
+e317e1;SJG;2;OCA:aniv PRG- AMB+;analisada
+fe6b3f;TAV;1;ATD- VAR- HOB RET-;analisada
+64f325;TAV;5;VAR+ HOB;analisada
+5ab1a9;TAV;5;AMB+ COMU+ PRG+ HOB;analisada
+fd5ac2;TAV;5;HOB;analisada
+8c5049;TAV;5;VAR+;analisada
+ffec12;UTP;5;AMB+ AB+;analisada
+afb61a;UTP;5;PRC+ AB+ OCA:ami DIV RET+;analisada
+1c615f;UTP;2;AB- TMP- MED- ACV+;analisada
+da6a3b;UTP;5;AMB+ PRG+ HOB PRC+;analisada
+f115b5;UTP;5;AB+ PRC+;analisada
+1a687a;UTP;5;AB+ ATD+ AMB+;analisada
+6d4849;UTP;5;VAR+ GEN+;analisada
+e9b1ca;UTP;5;AB+ AMB+ DIV;analisada
+d55eb2;UTP;5;ATD+ AMB+ HOB;analisada
+8cd9b4;UTP;2;OCA:ami CAP- AB- TMP- ACV+;analisada
+eb97cb;UTP;5;HOB VAR+ ATD+ AB+ AMB+;analisada
+1284f4;UTP;3;ATD+ AB- CAP- RUI- TMP-;analisada
+a8682b;UTP;5;AB+ ATD+;analisada
+94b7e5;UTP;3;RET+ AB- TMP-;analisada
+2341e2;UTP;4;AB± AMB+ ACV+ TMP-;analisada
+5213bc;UTP;5;ACV+ AMB+;analisada
+101a8e;UTP;5;ACV+ ATD+ PRC+ AB+ MED-;analisada
+b243b1;UTP;5;ATD+;analisada
+7a70bd;UTP;5;AMB+ VAR+ AB+ PRC+ HOB;analisada
+c82469;UTP;1;ATD- AMB-;analisada
+ffac44;UTP;5;AB+ HOB;analisada
+580f17;UTP;5;AB+ AMB+ INC± LOC-;analisada
+669e80;VCT;5;ATD+ PRC+ AMB+ HOB;analisada
+0a0ab0;VCT;5;ATD+ NOM OCA:ami AB~;analisada
+3f1680;VCT;5;GEN+;analisada
+99395c;XPL;2;VAR+ PRC-;analisada
+c1cce1;XPL;5;PRG+ AMB+ HOB RET+;analisada
+0af55b;XPL;3;VAR+ AMB-;analisada
+d5bcda;XPL;5;VAR+ PRC~;analisada
+17e184;XPL;5;VAR+ HOB ATD+;analisada

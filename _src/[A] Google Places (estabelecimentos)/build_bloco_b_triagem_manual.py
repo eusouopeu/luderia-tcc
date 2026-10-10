@@ -21,6 +21,10 @@ anotação para as colunas da triagem pelas regras abaixo:
     no Instagram (a anotação não diz se o perfil foi encontrado);
   - vazio -> triagem pendente.
 
+Revisões posteriores à anotação ficam em REVISOES (place_id -> nova anotação,
+com data e motivo) e substituem a anotação original antes da classificação.
+
+
 Cada place_id recebe um único resultado; a soma dos resultados fecha com o
 total de linhas da entrada (conferido no terminal).
 
@@ -58,6 +62,15 @@ NA = "não se aplica"
 PADRAO_AVALIACAO = re.compile(r"^\s*(\d+[hdsm]\s*::|\d)")
 PREFIXO_FOTOS = re.compile(r"^\s*(fotos google|google fotos)\s*,\s*", re.I)
 PREFIXO_INSTA = re.compile(r"^\s*instagram\s*,\s*", re.I)
+
+# 10/10/2026: aprovados pelas fotos na primeira triagem; nova conferência das
+# fotos deixou dúvida e o Instagram mostrou lojas de TCG, sem acervo para jogar.
+LOJA_TCG = "instagram, loja de TCG"
+REVISOES = {
+    "ChIJA7jlA899mQARAEFLCN4b2oI": LOJA_TCG,  # Bolsa do Infinito (Rio de Janeiro)
+    "ChIJO7xc2qZbzpQRfyZR6yK538I": LOJA_TCG,  # Polar Jogos (São Paulo)
+    "ChIJRwi-IMcEFgcR2QL8OciGdQ0": LOJA_TCG,  # PlayGround Game Store (Salvador)
+}
 
 
 def classifica(anotacao):
@@ -101,6 +114,9 @@ def main():
     df = df.drop(columns=[c for c in extras if df[c].isna().all()])
     extras = [c for c in extras if c in df.columns]
     df = df.rename(columns={c: f"Comentário {30 + i}" for i, c in enumerate(extras, start=1)})
+    revisados = df["place_id"].isin(REVISOES)
+    df.loc[revisados, "Comentário 1"] = df.loc[revisados, "place_id"].map(REVISOES)
+    print(f"anotações revisadas: {int(revisados.sum())} de {len(REVISOES)}")
 
     colunas = [COL_FOTOS, COL_FOTOS_OK, COL_INSTA, COL_INSTA_OK, "atividade identificada", "resultado da triagem"]
     df[colunas] = pd.DataFrame(df["Comentário 1"].map(classifica).tolist(), index=df.index)
