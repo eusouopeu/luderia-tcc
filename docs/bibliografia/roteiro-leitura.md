@@ -15,6 +15,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** HU et al. On self-selection biases in online product reviews. *MIS Quarterly*, v. 41, n. 2, p. 449–471, 2017. DOI 10.25300/misq/2017/41.2.06.
 - **Tipo:** Metodológica / empírica. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
+- **Acesso:** **Ler online:** [AIS eLibrary](https://aisel.aisnet.org/misq/vol41/iss2/8) · [DOI](https://doi.org/10.25300/misq/2017/41.2.06). O download automático foi bloqueado pelo site; tente pelo Portal de Periódicos CAPES (acesso institucional, a confirmar).
 - **Páginas:** Páginas não verificadas. Sugestão: introdução e as seções sobre os vieses de seleção que levam à distribuição em J (termos de busca: *J-shaped distribution*, *self-selection*, *under-reporting*). Artigo tem 23 p.; ler no máximo 12.
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Entender por que quem avalia não representa quem consumiu e como isso distorce a nota.
@@ -28,6 +29,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** BRINCKMANN et al. Should entrepreneurs plan or just storm the castle? A meta-analysis on contextual factors impacting the business planning–performance relationship in small firms. *Journal of Business Venturing*, v. 25, n. 1, p. 24–40, 2010. DOI 10.1016/j.jbusvent.2008.10.007.
 - **Tipo:** Empírica (meta-análise). **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
+- **Acesso:** **Ler online:** [DOI](https://doi.org/10.1016/j.jbusvent.2008.10.007) (ScienceDirect, pago). Acesso pelo Portal de Periódicos CAPES (a confirmar). Não achei cópia aberta.
 - **Páginas:** Páginas não verificadas. Sugestão: introdução, síntese dos moderadores e discussão. Artigo tem 17 p.; ler no máximo 12.
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Saber o que a evidência diz sobre a relação entre planejamento formal e desempenho de pequenas empresas, e sob quais condições.
@@ -41,6 +43,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** BRINER; DENYER; ROUSSEAU. Evidence-based management: concept cleanup time? *Academy of Management Perspectives*, v. 23, n. 4, p. 19–32, 2009. DOI 10.5465/amp.2009.45590138.
 - **Tipo:** Seminal / conceitual. **Status:** **Verificado no texto** (páginas conferidas no arquivo).
+- **Acesso:** **Baixado:** `bibliografia/leituras-P1/Briner et al. (AMP, 2009).pdf` (cópia hospedada em página de disciplina da Univ. de Michigan, não da editora). [DOI](https://doi.org/10.5465/amp.2009.45590138)
 - **Páginas:** pp. 19–23 (numeração impressa; posição 2–6 no PDF). Verificado no texto: o artigo define a gestão baseada em evidências como família de abordagens (p. 19–20), apresenta o quadro 'é / não é' (p. 21) e as quatro fontes de informação (p. 19 e 23).
 - **Quantidade estimada:** 5 p. (verificada)
 - **Objetivo:** Fixar o conceito de gestão baseada em evidências e suas quatro fontes de informação, para ancorar a escala N1–N6.
@@ -55,6 +58,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** ASSAF NETO, Alexandre. *Finanças corporativas e valor*. São Paulo: Atlas. ISBN 8522440557 (ed. de 2005 localizada; conferir a edição usada).
 - **Tipo:** Livro-texto (referência nacional). **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
+- **Acesso:** **Livro.** Sem cópia online. Biblioteca da UFBA.
 - **Páginas:** Páginas não verificadas. Sugestão: capítulos sobre métodos de avaliação de investimentos (VPL, TIR, payback) e sobre custo de capital. Numeração varia por edição; localizar pelo sumário.
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Definir VPL, TIR, payback descontado e TMA com obra nacional já citada no projeto.
@@ -69,6 +73,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** KIMES et al. Restaurant revenue management: applying yield management to the restaurant industry. *Cornell Hotel and Restaurant Administration Quarterly*, v. 39, n. 3, p. 32–39, 1998. DOI 10.1177/001088049803900308.
 - **Tipo:** Seminal / conceitual. **Status:** **Verificado no texto** (páginas conferidas no arquivo).
+- **Acesso:** **Baixado:** `bibliografia/leituras-P1/Kimes et al. (CHRAQ, 1998).pdf` (repositório aberto eCommons, Cornell). [Registro](https://hdl.handle.net/1813/71952)
 - **Páginas:** pp. 32–39, artigo inteiro (8 p.). Verificado: relaciona preço ao tempo de permanência na mesa e define receita por assento-hora disponível (RevPASH).
 - **Quantidade estimada:** 8 p. (verificada)
 - **Objetivo:** Entender capacidade em restaurante como assento × tempo, e a ligação entre duração da refeição, giro e receita.
@@ -82,6 +87,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** LITTLE, John D. C. OR Forum — Little's law as viewed on its 50th anniversary. *Operations Research*, v. 59, n. 3, p. 536–549, 2011. DOI 10.1287/opre.1110.0940.
 - **Tipo:** Seminal / metodológica. **Status:** **Verificado no texto** (páginas conferidas no arquivo).
+- **Acesso:** **Baixado:** `bibliografia/leituras-P1/Little (OR, 2011).pdf` (cópia de página de disciplina da UMass, não da editora). [DOI](https://doi.org/10.1287/opre.1110.0940)
 - **Páginas:** pp. 536–538 (início do artigo, onde a lei L = λW é enunciada). O restante do intervalo não foi lido seção a seção.
 - **Quantidade estimada:** 3 p. (verificada)
 - **Objetivo:** Fundamentar a identidade entre número médio de pessoas no sistema, taxa de chegada e permanência média, que dá consistência interna às medidas do Bloco D.
@@ -95,6 +101,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** ALTMANN, Jeanne. Observational study of behavior: sampling methods. *Behaviour*, v. 49, n. 3–4, p. 227–266, 1974. DOI 10.1163/156853974x00534.
 - **Tipo:** Seminal / metodológica. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
+- **Acesso:** **Ler online:** [JSTOR](https://www.jstor.org/stable/4533591) · [DOI](https://doi.org/10.1163/156853974x00534). Existem cópias não oficiais; não baixei.
 - **Páginas:** Páginas não verificadas. Artigo tem 40 p.; sugestão: partes sobre tipos de amostragem e seus vieses (termos de busca: *instantaneous sampling*, *focal sampling*, *scan sampling*). Máximo 12 p.
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Escolher e justificar regras de amostragem de tempo na contagem direta (registro a cada 30 min, janelas fixas de 3 h).
@@ -108,6 +115,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** KRIPPENDORFF, Klaus. Reliability in content analysis: some common misconceptions and recommendations. *Human Communication Research*, v. 30, n. 3, p. 411–433, 2004. DOI 10.1111/j.1468-2958.2004.tb00738.x.
 - **Tipo:** Metodológica. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
+- **Acesso:** **Ler online:** [Repositório da Penn (versão aceita)](https://repository.upenn.edu/asc_papers/242) · [DOI](https://doi.org/10.1111/j.1468-2958.2004.tb00738.x). O download automático não funcionou; abra no navegador.
 - **Páginas:** Páginas não verificadas. Artigo tem 23 p.; ler as seções sobre medidas de concordância e limiares de aceitação (máximo 12).
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Decidir entre kappa de Cohen e outras medidas de concordância e justificar (ou ajustar) o limiar de 0,70.
@@ -121,6 +129,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** GRIMMER; STEWART. Text as data: the promise and pitfalls of automatic content analysis methods for political texts. *Political Analysis*, v. 21, n. 3, p. 267–297, 2013. DOI 10.1093/pan/mps028.
 - **Tipo:** Metodológica. **Status:** **Verificado no texto** (páginas conferidas no arquivo).
+- **Acesso:** **Baixado:** `bibliografia/leituras-P1/Grimmer & Stewart (Political Analysis, 2013).pdf` (cópia hospedada no site da ONU). Versão oficial de leitura gratuita: [Cambridge Core](https://www.cambridge.org/core/product/F7AAC8B2909441603FEB25C156448F20).
 - **Páginas:** pp. 267–271 (introdução e quatro princípios, incluindo 'validar, validar, validar') e pp. 274–275 (seção 5.1, métodos de dicionário). Posição no PDF: 1–5 e 8–9.
 - **Quantidade estimada:** 7 p. (verificada)
 - **Objetivo:** Fundamentar a exigência de validar o dicionário contra codificação humana antes de usá-lo.
@@ -134,6 +143,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** NOSEK; EBERSOLE; DEHAVEN; MELLOR. The preregistration revolution. *Proceedings of the National Academy of Sciences*, v. 115, n. 11, p. 2600–2606, 2018. DOI 10.1073/pnas.1708274114.
 - **Tipo:** Seminal / metodológica. **Status:** **Verificado no texto** (páginas conferidas no arquivo).
+- **Acesso:** **Baixado:** `bibliografia/leituras-P1/Nosek et al. (PNAS, 2018) - manuscrito.pdf` (manuscrito, não a versão do PNAS). Versão submetida aberta: [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5856500/) · [DOI](https://doi.org/10.1073/pnas.1708274114).
 - **Páginas:** Manuscrito (errorstatistics.com), pp. 2–4 e 7–8, numeração própria do manuscrito (PDF posição 3–5 e 8–9). **Não é a paginação do PNAS (2600–2606).** Verificado: distinção entre predição e pós-dição, 'forking paths' (p. 3) e divisão de amostra em exploratória e confirmatória (p. 8).
 - **Quantidade estimada:** 5 p. (verificada)
 - **Objetivo:** Fundamentar o registro prévio e a separação entre análise exploratória e confirmatória.
@@ -147,6 +157,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** SALTELLI; ANNONI. How to avoid a perfunctory sensitivity analysis. *Environmental Modelling & Software*, v. 25, n. 12, p. 1508–1517, 2010. DOI 10.1016/j.envsoft.2010.04.012.
 - **Tipo:** Metodológica. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
+- **Acesso:** **Ler online:** [DOI](https://doi.org/10.1016/j.envsoft.2010.04.012) (Elsevier, pago). Acesso pelo Portal CAPES (a confirmar). Não confirmei cópia aberta.
 - **Páginas:** Páginas não verificadas. Artigo tem 10 p.; ler inteiro.
 - **Quantidade estimada:** 10 p. (teto; intervalo não verificado)
 - **Objetivo:** Entender os limites da sensibilidade variando um parâmetro por vez (base do tornado) e quando isso engana.
@@ -160,6 +171,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** BITNER, Mary Jo. Servicescapes: the impact of physical surroundings on customers and employees. *Journal of Marketing*, v. 56, n. 2, p. 57–71, 1992. DOI 10.1177/002224299205600205.
 - **Tipo:** Seminal / conceitual. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
+- **Acesso:** **Ler online:** [DOI](https://doi.org/10.1177/002224299205600205) (SAGE, pago). Existe cópia em página de disciplina grega; não baixei.
 - **Páginas:** Páginas não verificadas. Sugestão: o modelo conceitual do ambiente de serviço e as dimensões do ambiente. Máximo 12 p. (artigo tem 15).
 - **Quantidade estimada:** 10 p. (teto; intervalo não verificado)
 - **Objetivo:** Dar base teórica à categoria 'ambiente' e à expectativa de que o ambiente físico afete a avaliação.
@@ -173,6 +185,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** NAMKUNG; JANG. Does food quality really matter in restaurants? Its impact on customer satisfaction and behavioral intentions. *Journal of Hospitality & Tourism Research*, v. 31, n. 3, p. 387–409, 2007. DOI 10.1177/1096348007299924.
 - **Tipo:** Empírica. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
+- **Acesso:** **Ler online:** [SAGE](https://journals.sagepub.com/doi/pdf/10.1177/1096348007299924) · [DOI](https://doi.org/10.1177/1096348007299924). Gratuito para leitura segundo o Unpaywall; o download automático foi bloqueado, abra no navegador.
 - **Páginas:** Páginas não verificadas. Artigo tem 23 p.; ler introdução, resultados e discussão (máximo 12).
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Ver como a literatura de restaurantes pesa a comida frente a outros atributos na satisfação.
@@ -186,6 +199,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** LOHR, Sharon L. *Sampling: design and analysis*. Boca Raton: CRC Press (ed. de 2019 localizada; ISBN 0367273462). [Alternativa clássica: COCHRAN, William G. *Sampling techniques*. Wiley.]
 - **Tipo:** Livro-texto. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
+- **Acesso:** **Livro.** Sem cópia online. Biblioteca da UFBA.
 - **Páginas:** Páginas não verificadas. Sugestão: capítulo sobre estimadores de razão e regressão, e seções sobre erro de estimação. Localizar pelo sumário da edição.
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Fundamentar o estimador por razão usado na calibração (visitantes ÷ avaliações) e o erro dessa razão.
@@ -199,6 +213,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** WEBB et al. *Unobtrusive measures*: nonreactive research in the social sciences. Chicago: Rand McNally. (Ed. de 1971 localizada; primeira edição, 1966.)
 - **Tipo:** Seminal / metodológica. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
+- **Acesso:** **Livro.** Sem cópia online. Biblioteca ou sebo.
 - **Páginas:** Páginas não verificadas. Sugestão: capítulo introdutório sobre medidas não reativas e as partes sobre rastros físicos e arquivos. Localizar pelo sumário.
 - **Quantidade estimada:** 10 p. (teto; intervalo não verificado)
 - **Objetivo:** Fundamentar o uso de rastros (avaliações, notas fiscais) e de observação não reativa como alternativa a perguntar às pessoas.
@@ -212,6 +227,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** PARSA et al. Why restaurants fail. *Cornell Hotel and Restaurant Administration Quarterly*, v. 46, n. 3, p. 304–322, 2005. DOI 10.1177/0010880405275598.
 - **Tipo:** Empírica. **Status:** **Verificado no texto** (páginas conferidas no arquivo).
+- **Acesso:** **Baixado:** `bibliografia/leituras-P1/Parsa et al. (CHRAQ, 2005).pdf` (cópia de página de disciplina da UCSB, não da editora). [DOI](https://doi.org/10.1177/0010880405275598)
 - **Páginas:** pp. 304–310 (resumo, método e resultados, incluindo a tabela de fracasso acumulado na p. 309) e pp. 318–319 (conclusões). Posição no PDF: 1–7 e 15–16.
 - **Quantidade estimada:** 9 p. (verificada)
 - **Objetivo:** Obter taxas e causas de fracasso de restaurantes independentes, com método explícito.

@@ -17,3 +17,6 @@ _data/raw/\[E\]*/caged/
 _data/raw/\[A\]*/bloco_b_curadoria_manual_*.xlsx
 _data/processed/\[A\]*/bloco_b_luderias_aprovadas_*.xlsx
 _data/processed/\[A\]*/bloco_b_comentarios_aprovadas_*.xlsx
+
+# PDFs de terceiros baixados para leitura (direitos autorais; repositório público)
+bibliografia/leituras-P1/
