@@ -1,22 +1,7 @@
-import { useState, type ReactNode } from 'react'
-import { PlusIcon, TrashIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
+import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { Folha } from '../ui/comum'
 import { dataBr, novoId, permanenciaMin, type Estado, type Unidade } from '../domain/model'
-
-function Folha({ titulo, onFechar, children }: { titulo: string; onFechar: () => void; children: ReactNode }) {
-  return (
-    <div className="fixed inset-0 z-10 flex flex-col justify-end bg-black/40" onClick={onFechar}>
-      <div className="max-h-[85dvh] overflow-y-auto rounded-t-2xl bg-white p-4 safe-bottom" onClick={(e) => e.stopPropagation()}>
-        <div className="mb-3 flex items-center">
-          <h2 className="flex-1 text-lg font-extrabold">{titulo}</h2>
-          <button onClick={onFechar} className="p-1" aria-label="Fechar">
-            <XMarkIcon className="size-6" />
-          </button>
-        </div>
-        {children}
-      </div>
-    </div>
-  )
-}
 
 /** Lista dos grupos registrados na unidade, por visita (mais recente primeiro). */
 export function FolhaRegistros({
@@ -90,6 +75,8 @@ export function FolhaEditar({
     <Folha titulo="Editar unidade" onFechar={onFechar}>
       <label className="mb-1 block text-xs font-bold uppercase text-slate-500">Nome</label>
       <input value={u.nome} onChange={(e) => setU({ ...u, nome: e.target.value })} className={campo} />
+      <label className="mb-1 mt-4 block text-xs font-bold uppercase text-slate-500">Sigla (código dos grupos no fluxo: {u.sigla || 'BV'}-1)</label>
+      <input value={u.sigla} maxLength={4} onChange={(e) => setU({ ...u, sigla: e.target.value.toUpperCase() })} className={campo} />
       <label className="mb-1 mt-4 block text-xs font-bold uppercase text-slate-500">Mesas</label>
       <ul className="space-y-2">
         {u.mesas.map((m, i) => (
@@ -118,11 +105,41 @@ export function FolhaEditar({
         <PlusIcon className="size-5" /> Mesa
       </button>
       <button
-        onClick={() => onSalvar({ ...u, nome: u.nome.trim() || unidade.nome })}
+        onClick={() => onSalvar({ ...u, nome: u.nome.trim() || unidade.nome, sigla: u.sigla.trim() || unidade.sigla })}
         className="mt-5 h-12 w-full rounded-lg bg-purple-600 font-bold text-white"
       >
         Salvar
       </button>
+    </Folha>
+  )
+}
+
+/** Botão + da aba Mesas: ações da visita. */
+export function FolhaAcoes({
+  ativa,
+  onFechar,
+  onComecar,
+  onEncerrar,
+  onRegistros,
+  onEditar,
+}: {
+  ativa: boolean
+  onFechar: () => void
+  onComecar: () => void
+  onEncerrar: () => void
+  onRegistros: () => void
+  onEditar: () => void
+}) {
+  const b = 'mt-2 h-12 w-full rounded-lg font-bold'
+  return (
+    <Folha titulo="Ações" onFechar={onFechar}>
+      {ativa ? (
+        <button onClick={onEncerrar} className={`${b} bg-slate-800 text-white`}>Encerrar visita</button>
+      ) : (
+        <button onClick={onComecar} className={`${b} bg-orange-600 text-white`}>Começar visita</button>
+      )}
+      <button onClick={onRegistros} className={`${b} bg-slate-200`}>Registros das mesas</button>
+      <button onClick={onEditar} className={`${b} bg-slate-200`}>Editar mesas</button>
     </Folha>
   )
 }

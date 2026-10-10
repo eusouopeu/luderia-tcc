@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { dataIso, estadoInicial, paraCsv, permanenciaMin, type Estado } from './model'
+import { acervoVazio, dataIso, estadoInicial, normalizar, paraCsv, permanenciaMin, type Estado } from './model'
 
 describe('permanenciaMin', () => {
   it('conta os minutos entre entrada e saída', () => {
@@ -27,16 +27,16 @@ describe('paraCsv', () => {
   it('uma linha por grupo, censura marcada e texto escapado', () => {
     const e: Estado = {
       ...estadoInicial(),
-      unidades: [{ id: 'u1', nome: 'Bela Vista', mesas: [{ id: 'm1', nome: 'Mesa 1' }] }],
-      visitas: [{ id: 'v1', unidadeId: 'u1', inicio: '2026-10-18T14:00:00', fim: '2026-10-18T17:00:00' }],
+      unidades: [{ id: 'u1', nome: 'Bela Vista', sigla: 'BV', acervo: acervoVazio(), mesas: [{ id: 'm1', nome: 'Mesa 1' }] }],
+      visitas: normalizar({ visitas: [{ id: 'v1', unidadeId: 'u1', inicio: '2026-10-18T14:00:00', fim: '2026-10-18T17:00:00' }] as Estado['visitas'] }).visitas,
       registros: [
         {
           id: 'r1', visitaId: 'v1', unidadeId: 'u1', mesaId: 'm1', data: '2026-10-18', aniversario: true,
-          entrada: '14:05', saida: '16:35', pessoas: 4, criancas: 2, instrutor: 4, notas: 'jogo "Dixit"; ótimo',
+          entrada: '14:05', saida: '16:35', pessoas: 4, criancas: 2, instrutor: 4, jogos: ['Dixit'], notas: 'jogo "Dixit"; ótimo',
         },
         {
           id: 'r2', visitaId: 'v1', unidadeId: 'u1', mesaId: 'm1', data: '2026-10-18', aniversario: false,
-          entrada: '16:50', saida: null, pessoas: 2, criancas: 0, instrutor: 0, notas: '',
+          entrada: '16:50', saida: null, pessoas: 2, criancas: 0, instrutor: 0, jogos: [], notas: '',
         },
       ],
     }

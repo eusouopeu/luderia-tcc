@@ -1,5 +1,9 @@
 {
   "appId": "com.pedro.observacaoluderia",
   "appName": "Observação Luderia",
-  "webDir": "dist"
+  "webDir": "dist",
+  "plugins": {
+    "CapacitorHttp": { "enabled": false },
+    "LocalNotifications": { "iconColor": "#CA3500" }
+  }
 }

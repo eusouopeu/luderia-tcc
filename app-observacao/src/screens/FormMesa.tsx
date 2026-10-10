@@ -4,14 +4,15 @@ import {
   ChevronLeftIcon,
   ClockIcon,
   ListBulletIcon,
-  MinusIcon,
+  ChevronDownIcon,
   PencilIcon,
-  PlusIcon,
   PuzzlePieceIcon,
   UserGroupIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { BoloIcon } from '../ui/icones'
+import { Chip, ContadorH, ContadorV as Contador, Rotulo, campo } from '../ui/comum'
+import { SeletorJogos } from '../ui/SeletorJogos'
 import { agoraHora, dataBr, dataIso, mascaraData, permanenciaMin, type Registro } from '../domain/model'
 
 type Rascunho = Omit<Registro, 'data'> & { dataTexto: string }
@@ -23,9 +24,11 @@ export function FormMesa({
   onFechar,
   onSalvar,
   onApagar,
+  acervo = [],
 }: {
   titulo: string
   registro: Registro
+  acervo?: string[]
   onFechar: () => void
   onSalvar: (r: Registro) => void
   onApagar?: () => void
@@ -33,6 +36,7 @@ export function FormMesa({
   const [r, setR] = useState<Rascunho>({ ...registro, dataTexto: dataBr(registro.data) })
   const [modo, setModo] = useState<'editar' | 'resumo'>(registro.saida ? 'resumo' : 'editar')
   const [erro, setErro] = useState('')
+  const [escolher, setEscolher] = useState(false)
   const muda = (p: Partial<Rascunho>) => {
     setR((x) => ({ ...x, ...p }))
     setErro('')
@@ -75,6 +79,20 @@ export function FormMesa({
 
           {modo === 'editar' ? <Edicao r={r} muda={muda} onSaida={() => (muda({ saida: agoraHora() }), setModo('resumo'))} /> : <Resumo r={r} />}
 
+          <Rotulo icone={<ListBulletIcon className="size-5" />}>Jogos</Rotulo>
+          {modo === 'editar' ? (
+            <button onClick={() => setEscolher(true)} className="flex min-h-11 w-full items-center gap-2 rounded-lg bg-white px-3 py-2 text-left">
+              <span className="flex flex-1 flex-wrap gap-2">
+                {r.jogos.length ? r.jogos.map((j) => <Chip key={j}>{j}</Chip>) : <span className="text-slate-400">Escolher jogos…</span>}
+              </span>
+              <ChevronDownIcon className="size-6 shrink-0" />
+            </button>
+          ) : (
+            <div className="flex flex-wrap gap-2">
+              {r.jogos.length ? r.jogos.map((j) => <Chip key={j}>{j}</Chip>) : <span className="pl-2.5 text-slate-500">—</span>}
+            </div>
+          )}
+
           <Rotulo icone={<ListBulletIcon className="size-5" />}>Notas</Rotulo>
           <textarea
             value={r.notas}
@@ -88,7 +106,7 @@ export function FormMesa({
 
           <div className="mt-5 grid grid-cols-2 gap-3">
             <button onClick={onFechar} className="h-10 rounded bg-orange-300 font-bold text-orange-600">
-              Cancelar
+              Descartar
             </button>
             <button onClick={salvar} className="h-10 rounded bg-orange-600 font-bold text-white">
               Salvar
@@ -101,20 +119,12 @@ export function FormMesa({
           )}
         </div>
       </div>
+      {escolher && (
+        <SeletorJogos selecionados={r.jogos} destaque={acervo} onFechar={() => setEscolher(false)} onMudar={(jogos) => muda({ jogos })} />
+      )}
     </div>
   )
 }
-
-function Rotulo({ icone, children }: { icone: ReactNode; children: ReactNode }) {
-  return (
-    <div className="mb-1.5 mt-4 flex items-center gap-1.5 text-[13px] font-extrabold uppercase first:mt-0">
-      {icone}
-      {children}
-    </div>
-  )
-}
-
-const campo = 'h-10 w-full rounded-lg border border-slate-300 bg-white px-3 text-[17px] outline-none focus:border-orange-500'
 
 function Edicao({ r, muda, onSaida }: { r: Rascunho; muda: (p: Partial<Rascunho>) => void; onSaida: () => void }) {
   return (
@@ -168,37 +178,8 @@ function Edicao({ r, muda, onSaida }: { r: Rascunho; muda: (p: Partial<Rascunho>
       </div>
 
       <Rotulo icone={<PuzzlePieceIcon className="size-5" />}>Instrutor na mesa</Rotulo>
-      <div className="flex h-11 overflow-hidden rounded-lg">
-        <button onClick={() => muda({ instrutor: Math.max(0, r.instrutor - 1) })} className="grid w-12 place-items-center bg-rose-500 text-white" aria-label="Menos">
-          <MinusIcon className="size-6 stroke-[3]" />
-        </button>
-        <span className="grid flex-1 place-items-center bg-white text-2xl font-extrabold">
-          <span>
-            {r.instrutor}
-            <span className="text-lg">x</span>
-          </span>
-        </span>
-        <button onClick={() => muda({ instrutor: r.instrutor + 1 })} className="grid w-12 place-items-center bg-emerald-600 text-white" aria-label="Mais">
-          <PlusIcon className="size-6 stroke-[3]" />
-        </button>
-      </div>
+      <ContadorH valor={r.instrutor} sufixo="x" onChange={(v) => muda({ instrutor: v })} />
     </>
-  )
-}
-
-function Contador({ valor, onChange }: { valor: number; onChange: (v: number) => void }) {
-  return (
-    <div className="overflow-hidden rounded-lg">
-      <div className="grid h-[72px] place-items-center bg-white text-3xl font-extrabold">{valor}</div>
-      <div className="grid h-12 grid-cols-2">
-        <button onClick={() => onChange(Math.max(0, valor - 1))} className="grid place-items-center bg-rose-500 text-white" aria-label="Menos">
-          <MinusIcon className="size-6 stroke-[3]" />
-        </button>
-        <button onClick={() => onChange(valor + 1)} className="grid place-items-center bg-emerald-600 text-white" aria-label="Mais">
-          <PlusIcon className="size-6 stroke-[3]" />
-        </button>
-      </div>
-    </div>
   )
 }
 
