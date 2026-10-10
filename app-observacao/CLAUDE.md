@@ -9,7 +9,15 @@ App Android do roteiro de observação do Bloco D (TCC Luderia). Padrões herdad
 - `src/store.ts` — estado (zustand) com `comecar`/`encerrar`/`alternarPausa`; grava agrupado (300 ms) e agenda backup (5 s) e lembretes.
 - `src/storage/` — `repo.ts` (JSON no SQLite/localStorage), `backup.ts` (Documentos/ObservacaoLuderia, um arquivo por dia), `lembretes.ts` (notificações locais das contagens), `exportar.ts` (compartilha vários arquivos).
 - Telas: `App.tsx` (navegação, voltar do Android), `screens/Unidade.tsx` (casca: abas Mesas/Fluxo/Acústica/Temporizador + barra Início/Visita/Resumo/Ajustes), `screens/abas/*`, `screens/Visita.tsx` (ficha + leitor de QR), `Resumo.tsx`, `Ajustes.tsx`, `FormMesa.tsx`, `FormAcervo.tsx`, `Folhas.tsx`.
-- Microfone (`ui/useMicrofone.ts`): dB estimado = dBFS + calibração (Ajustes). Câmera (`ui/useLeitorQr.ts`): cópia do Brita.
+- Microfone (`ui/useMicrofone.ts`): dB estimado = dBFS + calibração (Ajustes). Câmera: QR da NFC-e (`ui/useLeitorQr.ts`, cópia do Brita) e fotos por `<input capture>` (`screens/abas/Fotos.tsx`).
+- **Aba Ambiente** (`screens/abas/Ambiente.tsx`): Acústica, Medidas (`domain/medida.ts`: escala por objeto de referência no mesmo plano; `Medidor` marca 4 pontos arrastáveis) e Fotos (`storage/fotos.ts`: JPEG 2000 px em Documentos/ObservacaoLuderia/fotos, `arquivo` = "PASTA:caminho", miniatura em data URL no estado). OCR fica no pipeline: `_src/[D] Contagem direta de ocupacao/ocr_fotos.py`; fotos cruas no `.gitignore`.
+- **Pedidos** (`Registro.pedidos`, `ui/Pedidos.tsx`): categoria + hora do pedido + chegada → espera. Atalhos na mesa ocupada (`ui/MesaDesenho.tsx`): +1 instrutor e folha de pedidos.
+- **Outro celular** (`screens/Transferir.tsx`, `domain/juntar.ts`): plugin nativo `AproximacaoPlugin.java` — o NFC só dispara (quem envia emula cartão `AproximacaoHce`, AID F04F42534C5544, com código da sessão + PSM), a cópia vai por Bluetooth L2CAP sobre BLE (anúncio com o código em service data). Android 10+. Quem recebe junta (local vence no mesmo id) ou substitui. Fotos não vão (só miniaturas).
+- **Tema** (`ui/tema.tsx`): `config.tema` sistema/claro/escuro; `data-tema` no `<html>` troca os valores das variáveis em `app.css` (`:root[data-tema='escuro']`); `index.html` aplica antes do 1º paint; `TemaPlugin.java` pinta o fundo atrás das barras do sistema. Botão na barra superior (fixa, `sticky`) e em Ajustes.
+
+## Design
+- Segue `../../_shared/design-standards.md` e `minimalismo.md`, exceto a cor: primária laranja dos mockups do Pedro (escala `caneta` em `app.css`) em vez do roxo. Nenhuma classe da paleta padrão do Tailwind: só tokens (`caneta`, `neutro`, `erro`, `ok`, `alerta`, `foco`, `papel`, `tinta`; `sobre` = texto sobre cor forte e `escuro` = fundo de câmera, fixos nos dois temas). Os −/+ vermelho/verde vêm dos mockups.
+- Ajuda de seção: `ui/Ajuda.tsx` (ⓘ com balão), via `Secao ajuda=`; nada de texto de instrução fixo.
 
 ## Build
 - Ícone: `npx tsx scripts/gerar-icone.ts` (Heroicons `puzzle-piece`).

@@ -129,7 +129,8 @@ export type Medicao = {
   pico: number
   pessoas: number
 }
-export type Config = { calibracaoDb: number; duracaoMin: number; intervaloMin: number }
+export type Tema = 'sistema' | 'claro' | 'escuro'
+export type Config = { calibracaoDb: number; duracaoMin: number; intervaloMin: number; tema: Tema }
 export type Estado = {
   unidades: Unidade[]
   visitas: Visita[]
@@ -146,7 +147,7 @@ export const novoId = () => Date.now().toString(36) + Math.random().toString(36)
 
 export const acervoVazio = (): Acervo => ({ estantes: 0, prateleiras: 0, caixas: 0, instrutores: 0, atendentes: 0, jogos: [] })
 export const fichaVazia = (): Ficha => ({ cobranca: '', valorCobranca: '', precos: [], condicoes: [], observacoes: '' })
-export const configPadrao = (): Config => ({ calibracaoDb: 90, duracaoMin: 180, intervaloMin: 30 })
+export const configPadrao = (): Config => ({ calibracaoDb: 90, duracaoMin: 180, intervaloMin: 30, tema: 'sistema' })
 
 export const siglaDe = (nome: string) =>
   nome

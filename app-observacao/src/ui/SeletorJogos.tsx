@@ -52,7 +52,7 @@ export function SeletorJogos({
           return (
             <li key={j.n}>
               <button onClick={() => alternar(j.n)} className="flex w-full items-center gap-3 py-2.5 text-left">
-                <span className={`grid size-6 shrink-0 place-items-center rounded border ${on ? 'border-caneta-600 bg-caneta-600 text-papel' : 'border-neutro-300'}`}>
+                <span className={`grid size-6 shrink-0 place-items-center rounded border ${on ? 'border-caneta-600 bg-caneta-600 text-sobre' : 'border-neutro-300'}`}>
                   {on && <CheckIcon className="size-4 stroke-[3]" />}
                 </span>
                 <span className="flex-1">

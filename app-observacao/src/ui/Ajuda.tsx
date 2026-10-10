@@ -58,7 +58,7 @@ export function Ajuda({ children, rotulo = 'Ajuda' }: { children: ReactNode; rot
             ref={balao}
             role="tooltip"
             style={{ top: pos?.top ?? -9999, left: pos?.left ?? 0, width: pos?.largura }}
-            className="fixed z-50 rounded-xl bg-neutro-800 px-3 py-2 text-sm normal-case leading-normal font-normal text-papel shadow-lg"
+            className="fixed z-50 rounded-xl bg-neutro-800 px-3 py-2 text-sm normal-case leading-normal font-normal text-neutro-50 shadow-lg"
           >
             {children}
           </div>,

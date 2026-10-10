@@ -69,7 +69,7 @@ export function SecaoFotos({ unidade }: { unidade: Unidade }) {
         {fotos.map((f) => (
           <button key={f.id} onClick={() => setAberta(f)} className="relative aspect-square overflow-hidden rounded-lg bg-neutro-200">
             <img src={f.miniatura} alt={f.categoria} className="size-full object-cover" />
-            <span className="absolute inset-x-0 bottom-0 bg-tinta/50 px-1 text-[11px] text-papel">
+            <span className="absolute inset-x-0 bottom-0 bg-escuro/50 px-1 text-[11px] text-sobre">
               {f.categoria} · {f.hora}
             </span>
           </button>

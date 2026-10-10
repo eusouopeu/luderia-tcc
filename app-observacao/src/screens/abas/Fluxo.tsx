@@ -65,10 +65,10 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
                   <b className="text-caneta-600">ID:</b> {en.codigo}
                 </button>
                 <div className="flex h-8 flex-1 overflow-hidden rounded-md bg-neutro-300 text-xs font-bold">
-                  <button onClick={() => sa && sair(en, false)} className={`flex-1 ${!sa ? 'bg-caneta-600 text-papel' : 'text-neutro-700'}`}>
+                  <button onClick={() => sa && sair(en, false)} className={`flex-1 ${!sa ? 'bg-caneta-600 text-sobre' : 'text-neutro-700'}`}>
                     ENTRADA
                   </button>
-                  <button onClick={() => !sa && sair(en, true)} className={`flex-1 ${sa ? 'bg-caneta-600 text-papel' : 'text-neutro-700'}`}>
+                  <button onClick={() => !sa && sair(en, true)} className={`flex-1 ${sa ? 'bg-caneta-600 text-sobre' : 'text-neutro-700'}`}>
                     SAÍDA
                   </button>
                 </div>

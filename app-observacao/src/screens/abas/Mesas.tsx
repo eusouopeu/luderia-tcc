@@ -68,7 +68,7 @@ export function AbaMesas({
           })}
         </div>
         <button onClick={onAcervo} className="flex w-12 shrink-0 items-center justify-center rounded-lg bg-caneta-400">
-          <span className="rotate-180 whitespace-nowrap text-sm font-medium tracking-wide text-papel [writing-mode:vertical-rl]">
+          <span className="rotate-180 whitespace-nowrap text-sm font-medium tracking-wide text-sobre [writing-mode:vertical-rl]">
             ACERVO DE JOGOS{unidade.acervo.jogos.length ? ` · ${unidade.acervo.jogos.length}` : ''}
           </span>
         </button>

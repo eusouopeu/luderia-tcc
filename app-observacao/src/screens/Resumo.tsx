@@ -22,7 +22,7 @@ export function PaginaResumo({ unidade }: { unidade: Unidade }) {
       {visitas.length > 1 && (
         <div className="-mx-4 mt-3 flex gap-2 overflow-x-auto px-4">
           {visitas.map((x) => (
-            <button key={x.id} onClick={() => setSel(x.id)} className={`shrink-0 rounded-full px-3 py-1 text-sm ${x.id === v.id ? 'bg-caneta-600 text-papel' : 'bg-neutro-100'}`}>
+            <button key={x.id} onClick={() => setSel(x.id)} className={`shrink-0 rounded-full px-3 py-1 text-sm ${x.id === v.id ? 'bg-caneta-600 text-sobre' : 'bg-neutro-100'}`}>
               {dataBr(x.inicio.slice(0, 10)).slice(0, 5)} {x.inicio.slice(11, 16)}
             </button>
           ))}

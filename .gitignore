@@ -24,3 +24,6 @@ bibliografia/leituras-P1/
 # Bloco A: cardápios originais (PDF, imagens, HTML de terceiros); só a transcrição em CSV é publicada
 _data/raw/\[A\]*/cardapios/*
 !_data/raw/\[A\]*/cardapios/transcricao/
+
+# Bloco D: fotos do app de observação (cardápio, estante: material de terceiros); só o texto transcrito é publicado
+_data/raw/\[D\]*/app/fotos/

@@ -125,7 +125,7 @@ function Medidor({ arquivo, onCancelar, onSalvar }: { arquivo: string; onCancela
   const s = dim.w / 120
 
   return (
-    <div className="fixed inset-0 z-40 flex flex-col bg-neutro-900 text-papel safe-top safe-bottom">
+    <div className="fixed inset-0 z-40 flex flex-col bg-escuro text-sobre safe-top safe-bottom">
       <div className="flex items-center gap-2 p-3">
         <p className="flex-1 text-sm font-bold">{passo}</p>
         <button onClick={() => setPts([])} className="rounded bg-papel/15 px-2 py-1 text-xs">
@@ -142,11 +142,11 @@ function Medidor({ arquivo, onCancelar, onSalvar }: { arquivo: string; onCancela
             <svg viewBox={`0 0 ${dim.w} ${dim.h}`} className="pointer-events-none absolute inset-0 size-full">
               {[0, 2].map((k) =>
                 pts[k + 1] ? (
-                  <line key={k} x1={pts[k].x} y1={pts[k].y} x2={pts[k + 1].x} y2={pts[k + 1].y} stroke={k ? 'var(--color-caneta-500)' : 'var(--color-papel)'} strokeWidth={s} />
+                  <line key={k} x1={pts[k].x} y1={pts[k].y} x2={pts[k + 1].x} y2={pts[k + 1].y} stroke={k ? 'var(--color-caneta-500)' : 'var(--color-sobre)'} strokeWidth={s} />
                 ) : null,
               )}
               {pts.map((p, i) => (
-                <circle key={i} cx={p.x} cy={p.y} r={s * 2.5} fill="none" stroke={i < 2 ? 'var(--color-papel)' : 'var(--color-caneta-500)'} strokeWidth={s} />
+                <circle key={i} cx={p.x} cy={p.y} r={s * 2.5} fill="none" stroke={i < 2 ? 'var(--color-sobre)' : 'var(--color-caneta-500)'} strokeWidth={s} />
               ))}
             </svg>
           </div>
@@ -174,7 +174,7 @@ function Medidor({ arquivo, onCancelar, onSalvar }: { arquivo: string; onCancela
         <button
           disabled={valor === null}
           onClick={() => valor !== null && onSalvar(rotulo, valor, refNome, refCm)}
-          className="h-12 w-full rounded-lg bg-caneta-600 font-bold text-papel disabled:opacity-40"
+          className="h-12 w-full rounded-lg bg-caneta-600 font-bold text-sobre disabled:opacity-40"
         >
           {valor === null ? 'Marque os 4 pontos' : `Salvar ${cm(valor)}`}
         </button>

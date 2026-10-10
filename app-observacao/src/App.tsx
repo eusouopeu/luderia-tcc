@@ -4,6 +4,7 @@ import { ArrowUpTrayIcon, ChevronRightIcon, PlusIcon } from '@heroicons/react/24
 import { useLoja } from './store'
 import { agoraHora, arquivosCsv, novoId, registroAberto, siglaDe, visitaAtiva, acervoVazio, type Estado, type Registro } from './domain/model'
 import { compartilhar } from './storage/exportar'
+import { BotaoTema, useTemaEfetivo } from './ui/tema'
 import { Unidade, type Aba, type Pagina } from './screens/Unidade'
 import { FormMesa } from './screens/FormMesa'
 import { FormAcervo } from './screens/FormAcervo'
@@ -28,6 +29,7 @@ type Tela = {
 
 export function App() {
   const { pronto, estado, iniciar, mudar, comecar, encerrar } = useLoja()
+  useTemaEfetivo()
   const [tela, setTela] = useState<Tela>({ aba: 'mesas', pagina: 'inicio' })
   const telaRef = useRef(tela)
   telaRef.current = tela
@@ -224,11 +226,12 @@ export function App() {
 
 function Inicio({ estado, onAbrir, onNova, onExportar }: { estado: Estado; onAbrir: (id: string) => void; onNova: () => void; onExportar: () => void }) {
   return (
-    <div className="min-h-dvh bg-papel px-4 safe-top safe-bottom">
-      <header className="flex items-center pb-4 pt-6">
+    <div className="min-h-dvh bg-papel px-4 safe-bottom">
+      <header className="sticky top-0 z-20 -mx-4 flex items-center bg-papel px-4 pb-4 pt-6 safe-top">
         <div className="flex-1">
           <h1 className="text-3xl font-extrabold">Observação</h1>
         </div>
+        <BotaoTema />
         <button onClick={onExportar} className="p-2 text-caneta-700" aria-label="Exportar tudo em CSV">
           <ArrowUpTrayIcon className="size-7" />
         </button>
@@ -242,7 +245,7 @@ function Inicio({ estado, onAbrir, onNova, onExportar }: { estado: Estado; onAbr
               <button onClick={() => onAbrir(u.id)} className="flex w-full items-center gap-3 rounded-xl bg-neutro-100 p-4 text-left">
                 <span className="flex-1 text-lg font-extrabold uppercase">{u.nome}</span>
                 {ativa ? (
-                  <span className="rounded-full bg-caneta-600 px-2 py-0.5 text-xs font-bold text-papel">ao vivo</span>
+                  <span className="rounded-full bg-caneta-600 px-2 py-0.5 text-xs font-bold text-sobre">ao vivo</span>
                 ) : (
                   <span className="text-sm text-neutro-500" title="grupos registrados">{n}</span>
                 )}

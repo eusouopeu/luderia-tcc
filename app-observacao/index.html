@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      // aplica o tema antes do primeiro paint (sem piscar branco no escuro)
+      try {
+        const t = localStorage.getItem('observacao-luderia:tema') || 'sistema'
+        const escuro = t === 'escuro' || (t === 'sistema' && matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.dataset.tema = escuro ? 'escuro' : 'claro'
+      } catch {}
+    </script>
     <title>Observação Luderia</title>
   </head>
   <body>

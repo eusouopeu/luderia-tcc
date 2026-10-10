@@ -106,7 +106,7 @@ export function FolhaEditar({
       </button>
       <button
         onClick={() => onSalvar({ ...u, nome: u.nome.trim() || unidade.nome, sigla: u.sigla.trim() || unidade.sigla })}
-        className="mt-5 h-12 w-full rounded-lg bg-caneta-600 font-bold text-papel"
+        className="mt-5 h-12 w-full rounded-lg bg-caneta-600 font-bold text-sobre"
       >
         Salvar
       </button>
@@ -134,9 +134,9 @@ export function FolhaAcoes({
   return (
     <Folha titulo="Ações" onFechar={onFechar}>
       {ativa ? (
-        <button onClick={onEncerrar} className={`${b} bg-neutro-800 text-papel`}>Encerrar visita</button>
+        <button onClick={onEncerrar} className={`${b} bg-neutro-800 text-neutro-50`}>Encerrar visita</button>
       ) : (
-        <button onClick={onComecar} className={`${b} bg-caneta-600 text-papel`}>Começar visita</button>
+        <button onClick={onComecar} className={`${b} bg-caneta-600 text-sobre`}>Começar visita</button>
       )}
       <button onClick={onRegistros} className={`${b} bg-neutro-200`}>Registros das mesas</button>
       <button onClick={onEditar} className={`${b} bg-neutro-200`}>Editar mesas</button>

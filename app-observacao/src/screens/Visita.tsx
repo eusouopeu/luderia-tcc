@@ -53,7 +53,7 @@ export function PaginaVisita({ unidade }: { unidade: Unidade }) {
       {visitas.length > 1 && (
         <div className="-mx-4 mt-3 flex gap-2 overflow-x-auto px-4">
           {visitas.map((x) => (
-            <button key={x.id} onClick={() => setSel(x.id)} className={`shrink-0 rounded-full px-3 py-1 text-sm ${x.id === v.id ? 'bg-caneta-600 text-papel' : 'bg-neutro-200'}`}>
+            <button key={x.id} onClick={() => setSel(x.id)} className={`shrink-0 rounded-full px-3 py-1 text-sm ${x.id === v.id ? 'bg-caneta-600 text-sobre' : 'bg-neutro-200'}`}>
               {dataBr(x.inicio.slice(0, 10)).slice(0, 5)} {x.inicio.slice(11, 16)}
               {!x.fim && ' ●'}
             </button>
@@ -198,7 +198,7 @@ function LeitorNfce({ onFechar, onLido }: { onFechar: () => void; onLido: (url: 
   const { videoRef, erro, aviso } = useLeitorQr(true, onLido, pareceQrNfce, 'Esse QR não é de nota fiscal (NFC-e). Use o do rodapé do cupom.')
   const [link, setLink] = useState('')
   return (
-    <div className="fixed inset-0 z-40 flex flex-col bg-tinta text-papel safe-top safe-bottom">
+    <div className="fixed inset-0 z-40 flex flex-col bg-escuro text-sobre safe-top safe-bottom">
       <div className="flex items-center p-3">
         <p className="flex-1 font-bold">Aponte para o QR code do cupom</p>
         <button onClick={onFechar} className="p-2" aria-label="Fechar">
@@ -207,7 +207,7 @@ function LeitorNfce({ onFechar, onLido }: { onFechar: () => void; onLido: (url: 
       </div>
       <div className="relative flex-1 overflow-hidden">
         <video ref={videoRef} playsInline muted className="absolute inset-0 size-full object-cover" />
-        <div className="absolute left-1/2 top-1/2 size-64 -translate-x-1/2 -translate-y-1/2 rounded-2xl border-4 border-papel/80" />
+        <div className="absolute left-1/2 top-1/2 size-64 -translate-x-1/2 -translate-y-1/2 rounded-2xl border-4 border-sobre/80" />
       </div>
       {(erro || aviso) && <p className="bg-erro-600 p-3 text-sm">{erro || aviso}</p>}
       <div className="flex gap-2 p-3">

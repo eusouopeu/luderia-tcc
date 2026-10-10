@@ -5,14 +5,15 @@ Entrada: os CSVs exportados pelo app (Ajustes › Exportar, ou o botão de envio
 unidade), copiados para `_data/raw/[D] Contagem direta de ocupacao/app/`:
   contagem_grupos_mesa.csv, contagem_fluxo.csv, contagem_rodadas.csv,
   contagem_acustica.csv, contagem_visitas.csv, contagem_precos.csv,
-  contagem_unidades.csv
+  contagem_unidades.csv, contagem_pedidos.csv, contagem_medidas.csv,
+  contagem_fotos.csv
 Separador ";" com BOM (o app grava assim para o Excel).
 
 Saídas em `_data/processed/[D] Contagem direta de ocupacao/`:
   contagem_resumo_visitas.csv  - uma linha por visita: pessoas por hora (porta),
       tamanho do grupo, permanência (mesas e porta, com contagem de censurados),
       ocupação média das mesas nas contagens, notas emitidas na visita e pessoas
-      por nota.
+      por nota, pedidos por grupo e espera média (pedido → chegada) por categoria.
   contagem_notas_intervalo.csv - por unidade: notas emitidas entre a visita
       sorteada e a de retorno (última NFC-e da primeira × primeira NFC-e da
       segunda, mesma série e CNPJ) e notas por dia no intervalo.
@@ -22,6 +23,8 @@ Regras (_instrucoes/4_metodologia.md, Bloco D):
     tempo pausado no temporizador.
   - Permanência média só com grupos de entrada e saída vistas; os censurados
     (sem saída) são contados à parte, não imputados.
+  - Espera dos pedidos: só pedidos com chegada registrada; os pendentes são
+    contados à parte (censurados), não imputados.
   - Pessoas por nota = pessoas que entraram pela porta ÷ notas emitidas durante
     a visita; sem registro de porta, usa as pessoas das mesas.
 Uso: python3 "_src/[D] Contagem direta de ocupacao/analise_contagem.py"
@@ -63,6 +66,7 @@ def resumo_visitas() -> pd.DataFrame:
     rodadas = ler("contagem_rodadas.csv")
     unidades = ler("contagem_unidades.csv")
     acustica = ler("contagem_acustica.csv")
+    pedidos = ler("contagem_pedidos.csv")
 
     linhas = []
     for _, v in visitas.iterrows():
@@ -75,6 +79,12 @@ def resumo_visitas() -> pd.DataFrame:
         f = fluxo[(fluxo["unidade"] == chave[0]) & (fluxo["visita_inicio"] == chave[1])] if not fluxo.empty else fluxo
         r = rodadas[(rodadas["unidade"] == chave[0]) & (rodadas["visita_inicio"] == chave[1])] if not rodadas.empty else rodadas
         a = acustica[(acustica["unidade"] == chave[0]) & (acustica["visita_inicio"] == chave[1])] if not acustica.empty else acustica
+        p = pedidos[(pedidos["unidade"] == chave[0]) & (pedidos["visita_inicio"] == chave[1])] if not pedidos.empty else pedidos
+        esperas = {}
+        for cat in ("bebida", "comida", "sobremesa"):
+            e = num(p.loc[p["categoria"] == cat, "espera_min"]).dropna() if not p.empty else pd.Series(dtype=float)
+            esperas[f"espera_{cat}_media_min"] = round(e.mean(), 1) if len(e) else float("nan")
+            esperas[f"pedidos_{cat}"] = int((p["categoria"] == cat).sum()) if not p.empty else 0
 
         # porta
         ent = f[f["tipo"] == "entrada"] if not f.empty else f
@@ -123,6 +133,9 @@ def resumo_visitas() -> pd.DataFrame:
             "pico_mesas_ocupadas": ocup.max() if len(ocup) else float("nan"),
             "notas_emitidas_visita": emitidas,
             "pessoas_por_nota": round(base / emitidas, 2) if emitidas and emitidas > 0 else float("nan"),
+            "pedidos_por_grupo": round(len(p) / len(g), 2) if len(g) else float("nan"),
+            "pedidos_pendentes": int((p["pendente"] == "sim").sum()) if not p.empty else 0,
+            **esperas,
             "db_medio": round(num(a["db_leq10s_estimado"]).mean(), 1) if not a.empty else float("nan"),
             "cobranca": v["cobranca"],
             "condicoes": v["condicoes"],

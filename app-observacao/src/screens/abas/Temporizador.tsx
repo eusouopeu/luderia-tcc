@@ -103,7 +103,7 @@ export function AbaTemporizador({ unidade, onMesa }: { unidade: Unidade; onMesa:
         <div className="absolute inset-0 flex flex-col items-center justify-center px-10 text-center">
           {!ativa ? (
             <>
-              <button onClick={() => comecar(unidade.id)} className="grid size-20 place-items-center rounded-full bg-caneta-700 text-papel" aria-label="Começar visita">
+              <button onClick={() => comecar(unidade.id)} className="grid size-20 place-items-center rounded-full bg-caneta-700 text-sobre" aria-label="Começar visita">
                 <PlayIcon className="size-10" />
               </button>
               <p className="mt-3 font-bold">Começar</p>
@@ -119,7 +119,7 @@ export function AbaTemporizador({ unidade, onMesa }: { unidade: Unidade; onMesa:
           ) : (
             <>
               <p className="text-2xl font-extrabold">Tempo concluído</p>
-              <button onClick={() => confirm('Encerrar a visita agora?') && encerrar(ativa.id)} className="mt-3 rounded-lg bg-neutro-800 px-4 py-2 font-bold text-papel">
+              <button onClick={() => confirm('Encerrar a visita agora?') && encerrar(ativa.id)} className="mt-3 rounded-lg bg-neutro-800 px-4 py-2 font-bold text-neutro-50">
                 Encerrar visita
               </button>
             </>
@@ -174,7 +174,7 @@ export function AbaTemporizador({ unidade, onMesa }: { unidade: Unidade; onMesa:
             <Redondo onClick={() => marcar('vazia')} rotulo="Mesa vazia" cls="bg-erro-200 text-erro-600" off={pendente < 0}>
               <XMarkIcon className="size-6" />
             </Redondo>
-            <button onClick={() => alternarPausa(ativa.id)} aria-label={s?.pausado ? 'Retomar' : 'Pausar'} className="grid size-20 place-items-center rounded-full bg-caneta-700 text-papel">
+            <button onClick={() => alternarPausa(ativa.id)} aria-label={s?.pausado ? 'Retomar' : 'Pausar'} className="grid size-20 place-items-center rounded-full bg-caneta-700 text-sobre">
               {s?.pausado ? <PlayIcon className="size-8" /> : <PauseIcon className="size-8" />}
             </button>
             <Redondo onClick={() => marcar('ocupada')} rotulo="Mesa ocupada" cls="bg-ok-200 text-ok-700" off={pendente < 0}>

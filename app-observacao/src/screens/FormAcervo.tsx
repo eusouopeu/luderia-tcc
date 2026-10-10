@@ -14,7 +14,7 @@ export function FormAcervo({ acervo, onFechar, onSalvar }: { acervo: Acervo; onF
   return (
     <div className="fixed inset-0 z-20 overflow-y-auto bg-papel safe-top safe-bottom">
       <div className="mx-auto my-6 w-full max-w-[440px] px-4">
-        <div className="rounded-2xl bg-caneta-400 px-4 pb-5 pt-3 text-papel">
+        <div className="rounded-2xl bg-caneta-400 px-4 pb-5 pt-3 text-sobre">
           <div className="mb-4 flex items-center">
             <button onClick={onFechar} className="-ml-1 p-2 text-neutro-900" aria-label="Voltar">
               <ChevronLeftIcon className="size-6" />
@@ -66,7 +66,7 @@ export function FormAcervo({ acervo, onFechar, onSalvar }: { acervo: Acervo; onF
             <button onClick={onFechar} className="h-11 rounded bg-caneta-300 font-bold text-caneta-700">
               Descartar
             </button>
-            <button onClick={() => onSalvar(a)} className="h-11 rounded bg-caneta-700 font-bold text-papel">
+            <button onClick={() => onSalvar(a)} className="h-11 rounded bg-caneta-700 font-bold text-sobre">
               Salvar
             </button>
           </div>

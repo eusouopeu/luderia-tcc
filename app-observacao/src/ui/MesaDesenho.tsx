@@ -62,7 +62,7 @@ export function MesaDesenho({
             <button
               onClick={(e) => (e.stopPropagation(), onPedidos())}
               aria-label={`Pedidos da ${nome}`}
-              className={`relative flex h-8 min-w-8 items-center justify-center rounded-md px-1 active:scale-95 ${pendentes ? 'bg-caneta-700 text-papel' : 'bg-papel/80 text-neutro-800'}`}
+              className={`relative flex h-8 min-w-8 items-center justify-center rounded-md px-1 active:scale-95 ${pendentes ? 'bg-caneta-700 text-sobre' : 'bg-papel/80 text-neutro-800'}`}
             >
               <BellAlertIcon className="size-4" />
               {pendentes > 0 && <span className="ml-0.5 text-[11px] font-bold">{pendentes}</span>}

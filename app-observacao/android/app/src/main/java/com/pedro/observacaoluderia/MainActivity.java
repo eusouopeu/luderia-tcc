@@ -10,6 +10,8 @@ import com.getcapacitor.BridgeActivity;
 public class MainActivity extends BridgeActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        registerPlugin(AproximacaoPlugin.class);
+        registerPlugin(TemaPlugin.class);
         super.onCreate(savedInstanceState);
         /*
          * Android 15 (targetSdk 35) desenha de ponta a ponta e ignora adjustResize:

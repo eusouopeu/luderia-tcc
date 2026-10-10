@@ -13,6 +13,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { HomeIcon as HomeSolid, BookOpenIcon as BookSolid, ChartBarIcon as ChartSolid, Cog6ToothIcon as CogSolid } from '@heroicons/react/24/solid'
 import type { Unidade as TUnidade } from '../domain/model'
+import { BotaoTema } from '../ui/tema'
 
 export type Aba = 'mesas' | 'fluxo' | 'acustica' | 'timer'
 export type Pagina = 'inicio' | 'visita' | 'resumo' | 'ajustes'
@@ -52,25 +53,29 @@ export function Unidade({
   children: ReactNode
 }) {
   return (
-    <div className="min-h-dvh bg-papel pb-[72px] safe-top">
-      <header className="flex items-center gap-3 px-4 pb-2 pt-5">
+    <div className="min-h-dvh bg-papel pb-[72px]">
+      {/* barra superior fixa: cabeçalho + abas de observação */}
+      <div className="sticky top-0 z-20 bg-papel pb-2 safe-top">
+      <header className="flex items-center gap-1 px-4 pb-2 pt-4">
         <button onClick={onVoltar} className="p-1" aria-label="Voltar às unidades">
           <ChevronLeftIcon className="size-7" />
         </button>
-        <h1 className="flex-1 truncate text-3xl font-extrabold uppercase text-tinta">{unidade.nome}</h1>
-        <button onClick={onExportar} className="p-2 text-caneta-700" aria-label="Exportar CSV">
+        <h1 className="ml-2 flex-1 truncate text-3xl font-extrabold uppercase text-tinta">{unidade.nome}</h1>
+        <BotaoTema />
+        <button onClick={onExportar} className="p-2 text-caneta-700" aria-label="Exportar CSV" title="Exportar CSV">
           <ArrowUpTrayIcon className="size-7" />
         </button>
       </header>
       {pagina === 'inicio' && (
         <nav role="tablist" className="mx-4 mt-2 flex h-12 overflow-hidden rounded-lg bg-neutro-300">
           {ABAS.map(([id, I, rot]) => (
-            <button key={id} onClick={() => onAba(id)} aria-label={rot} title={rot} aria-selected={aba === id} role="tab" className={`grid flex-1 place-items-center rounded-lg ${aba === id ? 'bg-caneta-600 text-papel' : 'text-neutro-900'}`}>
+            <button key={id} onClick={() => onAba(id)} aria-label={rot} title={rot} aria-selected={aba === id} role="tab" className={`grid flex-1 place-items-center rounded-lg ${aba === id ? 'bg-caneta-600 text-sobre' : 'text-neutro-900'}`}>
               <I className="size-7" />
             </button>
           ))}
         </nav>
       )}
+      </div>
       {children}
       <nav className="fixed inset-x-0 bottom-0 z-10 flex border-t border-neutro-100 bg-papel safe-bottom">
         {PAGINAS.map(([id, I, Ativo, rot]) => {

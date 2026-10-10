@@ -4,9 +4,9 @@ import { agoraHora, esperaPedido, novoId, CATEGORIAS_PEDIDO, type CategoriaPedid
 export const NOME_CATEGORIA: Record<CategoriaPedido, string> = { bebida: 'Bebida', comida: 'Comida', sobremesa: 'Sobremesa' }
 // categoria não é estado: mesmo tom neutro da escala primária para todas (minimalismo.md)
 const COR: Record<CategoriaPedido, string> = {
-  bebida: 'bg-caneta-100 text-caneta-800',
-  comida: 'bg-caneta-100 text-caneta-800',
-  sobremesa: 'bg-caneta-100 text-caneta-800',
+  bebida: 'bg-caneta-100 text-caneta-700',
+  comida: 'bg-caneta-100 text-caneta-700',
+  sobremesa: 'bg-caneta-100 text-caneta-700',
 }
 
 /** Pedidos de um grupo: um toque cria com a hora atual; "Chegou" marca a chegada e mostra a espera. */
@@ -58,7 +58,7 @@ export function ListaPedidos({ pedidos, onChange }: { pedidos: Pedido[]; onChang
                     onClick={() => (muda(p.id, { chegada: agoraHora() }), navigator.vibrate?.(40))}
                     aria-label="Chegou"
                     title="Chegou"
-                    className="ml-auto grid size-9 place-items-center rounded-full bg-ok-600 text-papel"
+                    className="ml-auto grid size-9 place-items-center rounded-full bg-ok-600 text-sobre"
                   >
                     <CheckIcon className="size-5 stroke-[2.5]" />
                   </button>

@@ -121,7 +121,7 @@ export function FormMesa({
             <button onClick={onFechar} className="h-10 rounded bg-caneta-300 font-bold text-caneta-600">
               Descartar
             </button>
-            <button onClick={salvar} className="h-10 rounded bg-caneta-600 font-bold text-papel">
+            <button onClick={salvar} className="h-10 rounded bg-caneta-600 font-bold text-sobre">
               Salvar
             </button>
           </div>
@@ -167,7 +167,7 @@ function Edicao({ r, muda, onSaida }: { r: Rascunho; muda: (p: Partial<Rascunho>
           <div className="relative w-28 shrink-0">
             <span className="absolute -top-5 left-0 text-[13px] font-extrabold">SAÍDA</span>
             <input type="time" value={r.saida} onChange={(e) => muda({ saida: e.target.value })} className={campo} />
-            <button onClick={() => muda({ saida: null })} className="absolute -right-2 -top-2 rounded-full bg-neutro-800 p-0.5 text-papel" aria-label="Desfazer saída">
+            <button onClick={() => muda({ saida: null })} className="absolute -right-2 -top-2 rounded-full bg-neutro-800 p-0.5 text-neutro-50" aria-label="Desfazer saída">
               <XMarkIcon className="size-4" />
             </button>
           </div>

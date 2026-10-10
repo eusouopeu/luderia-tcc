@@ -14,7 +14,7 @@ export function Rotulo({ icone, children, className = '' }: { icone?: ReactNode;
 /** Folha que sobe de baixo; toque fora fecha. */
 export function Folha({ titulo, onFechar, children }: { titulo: string; onFechar: () => void; children: ReactNode }) {
   return (
-    <div className="fixed inset-0 z-30 flex flex-col justify-end bg-tinta/40" onClick={onFechar}>
+    <div className="fixed inset-0 z-30 flex flex-col justify-end bg-escuro/40" onClick={onFechar}>
       <div className="max-h-[88dvh] overflow-y-auto rounded-t-2xl bg-papel p-4 safe-bottom" onClick={(e) => e.stopPropagation()}>
         <div className="mb-3 flex items-center">
           <h2 className="flex-1 text-lg font-extrabold">{titulo}</h2>
@@ -36,7 +36,7 @@ export function Fab({ onClick, rotulo, children, badge, desligado }: { onClick: 
       disabled={desligado}
       aria-label={rotulo}
       title={rotulo}
-      className="fixed bottom-[84px] right-5 z-10 grid size-16 place-items-center rounded-full bg-caneta-700 text-papel shadow-lg disabled:opacity-50"
+      className="fixed bottom-[84px] right-5 z-10 grid size-16 place-items-center rounded-full bg-caneta-700 text-sobre shadow-lg disabled:opacity-50"
     >
       {children ?? <PlusIcon className="size-8" />}
       {!!badge && <span className="absolute -right-1 -top-1 grid h-6 min-w-6 place-items-center rounded-full bg-papel px-1 text-xs font-bold text-caneta-700">{badge}</span>}
@@ -56,8 +56,8 @@ export function Chip({ children, onClick, ativo = true }: { children: ReactNode;
   )
 }
 
-const menos = 'grid place-items-center bg-erro-500 text-papel'
-const mais = 'grid place-items-center bg-ok-600 text-papel'
+const menos = 'grid place-items-center bg-erro-500 text-sobre'
+const mais = 'grid place-items-center bg-ok-600 text-sobre'
 
 /** Número grande com − e + embaixo (pessoas, crianças). */
 export function ContadorV({ valor, onChange }: { valor: number; onChange: (v: number) => void }) {
@@ -132,7 +132,7 @@ export function Secao({ titulo, ajuda, children }: { titulo: string; ajuda?: Rea
 /** Opção marcável (filtro, categoria): o fundo diz se está ligada, sem borda. */
 export function Opcao({ ativo, onClick, children }: { ativo: boolean; onClick: () => void; children: ReactNode }) {
   return (
-    <button onClick={onClick} aria-pressed={ativo} className={`rounded-full px-3 py-1.5 text-sm ${ativo ? 'bg-caneta-600 text-papel' : 'bg-neutro-100 text-neutro-700'}`}>
+    <button onClick={onClick} aria-pressed={ativo} className={`rounded-full px-3 py-1.5 text-sm ${ativo ? 'bg-caneta-600 text-sobre' : 'bg-neutro-100 text-neutro-700'}`}>
       {children}
     </button>
   )

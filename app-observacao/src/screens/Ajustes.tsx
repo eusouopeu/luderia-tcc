@@ -1,10 +1,11 @@
 import { useRef, useState, type ReactNode } from 'react'
 import { useLoja } from '../store'
-import { ContadorH, Secao } from '../ui/comum'
+import { ContadorH, Opcao, Secao } from '../ui/comum'
 import { arquivosCsv, hojeIso, type Config, type Unidade } from '../domain/model'
 import { gravarBackup, lerBackup, ultimoBackup } from '../storage/backup'
 import { compartilhar } from '../storage/exportar'
 import { uriDaFoto } from '../storage/fotos'
+import { Transferir } from './Transferir'
 
 /** Calibração, roteiro, backup, exportação e a unidade (mesas, apagar). */
 export function PaginaAjustes({ unidade, onEditar, onApagar }: { unidade: Unidade; onEditar: () => void; onApagar: () => void }) {
@@ -17,6 +18,16 @@ export function PaginaAjustes({ unidade, onEditar, onApagar }: { unidade: Unidad
 
   return (
     <div className="px-4 pb-10">
+      <Secao titulo="Tema">
+        <div className="flex gap-2">
+          {(['sistema', 'claro', 'escuro'] as const).map((t) => (
+            <Opcao key={t} ativo={c.tema === t} onClick={() => muda({ tema: t })}>
+              {t === 'sistema' ? 'Do sistema' : t === 'claro' ? 'Claro' : 'Escuro'}
+            </Opcao>
+          ))}
+        </div>
+      </Secao>
+
       <Secao titulo="Microfone" ajuda="Calibração somada ao nível do microfone (dBFS). Ajuste até o app bater com um decibelímetro no mesmo lugar. Padrão: 90.">
         <ContadorH valor={c.calibracaoDb} sufixo=" dB" onChange={(v) => muda({ calibracaoDb: v })} />
       </Secao>
@@ -49,6 +60,13 @@ export function PaginaAjustes({ unidade, onEditar, onApagar }: { unidade: Unidad
         >
           Fotos desta unidade ({estado.fotos.filter((f) => f.unidadeId === unidade.id).length})
         </Botao>
+      </Secao>
+
+      <Secao
+        titulo="Outro celular"
+        ajuda="Copia todos os dados para outro celular com o app: num toque em Enviar, no outro em Receber, e encoste as costas dos dois (NFC). A cópia vai por Bluetooth. Quem recebe escolhe juntar (soma o que é novo) ou substituir. Precisa de Android 10+, NFC e Bluetooth ligados. As fotos não vão junto, só as miniaturas."
+      >
+        <Transferir />
       </Secao>
 
       <Secao titulo="Backup" ajuda={<>Automático a cada mudança, em Documentos/ObservacaoLuderia (um arquivo por dia). {ult ? `Último: ${ult.quando}, em ${ult.onde}.` : ''}</>}>

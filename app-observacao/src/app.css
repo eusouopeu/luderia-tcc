@@ -21,6 +21,9 @@
   --color-current: currentColor;
   --color-papel: #ffffff;
   --color-tinta: #000000;
+  /* fixas nos dois temas: texto sobre cor forte e fundo de câmera/sobreposição */
+  --color-sobre: #ffffff;
+  --color-escuro: #000000;
 
   --color-caneta-50: #fff7ed;
   --color-caneta-100: #ffedd4;
@@ -68,6 +71,46 @@
 
   --color-foco-300: #8ec5ff;
   --color-foco-500: #2b7fff;
+}
+
+/* Tema escuro: mesmos nomes, valores trocados (neutros invertidos, fundos claros
+   das escalas viram tons escuros, textos fortes clareiam). O app põe
+   data-tema="escuro" no <html> (Ajustes ou botão da barra superior). */
+:root[data-tema='escuro'] {
+  color-scheme: dark;
+  --color-papel: #0a0f1a;
+  --color-tinta: #ffffff;
+  --color-neutro-50: #121a2b;
+  --color-neutro-100: #1d293d;
+  --color-neutro-200: #314158;
+  --color-neutro-300: #45556c;
+  --color-neutro-400: #62748e;
+  --color-neutro-500: #90a1b9;
+  --color-neutro-600: #cad5e2;
+  --color-neutro-700: #e2e8f0;
+  --color-neutro-800: #f1f5f9;
+  --color-neutro-900: #f8fafc;
+  --color-caneta-50: #2a1306;
+  --color-caneta-100: #3d1c0a;
+  --color-caneta-200: #4d240c;
+  --color-caneta-300: #7a3412;
+  --color-caneta-400: #c2560c;
+  --color-caneta-700: #ff8f4d;
+  --color-caneta-800: #9f2d00;
+  --color-caneta-900: #ffd1a8;
+  --color-erro-50: #2a0a12;
+  --color-erro-100: #4c0519;
+  --color-erro-200: #6b0a24;
+  --color-erro-300: #9f1239;
+  --color-erro-600: #ff637e;
+  --color-erro-700: #ff8fa3;
+  --color-erro-800: #ffb3c1;
+  --color-ok-100: #053b2b;
+  --color-ok-200: #065f46;
+  --color-ok-700: #34d399;
+  --color-ok-900: #a7f3d0;
+  --color-alerta-100: #451a03;
+  --color-alerta-700: #fbbf24;
 }
 
 html, body { background: var(--color-papel); color: var(--color-neutro-900); line-height: 1.5; -webkit-tap-highlight-color: transparent; }
