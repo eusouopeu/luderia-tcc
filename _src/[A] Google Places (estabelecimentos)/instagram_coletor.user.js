@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.11-4
+// @version      2026.10.11-5
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -47,7 +47,10 @@
   function normalizar(o) {
     const tipoMidia = { 1: 'foto', 2: 'video', 8: 'carrossel' }[o.media_type] || String(o.media_type ?? '');
     return {
-      perfil: o.user?.username || o.owner?.username || '',
+      perfil: (o.user?.username || o.owner?.username || '').toLowerCase(),
+      // Posts em colaboração: contas convidadas como coautoras (além do dono).
+      coautores: [...(o.coauthor_producers || []), ...(o.invited_coauthor_producers || [])]
+        .map((c) => c?.username?.toLowerCase()).filter(Boolean).join(', '),
       shortcode: o.code,
       url: `https://www.instagram.com/p/${o.code}/`,
       taken_at: o.taken_at,
@@ -94,28 +97,30 @@
 
   const ehEvento = (p) => p.evento === 'provável' || p.evento === 'possível';
 
-  function ingerir(dado, prof = 0) {
+  // `pagina`: perfil em cuja página (ou coleta via API) o post apareceu. Só é usado
+  // para situar posts sem dono identificado na resposta.
+  function ingerir(dado, pagina = perfilAtual() || '', prof = 0) {
     if (!dado || typeof dado !== 'object' || prof > 40) return;
-    if (Array.isArray(dado)) { for (const x of dado) ingerir(x, prof + 1); return; }
+    if (Array.isArray(dado)) { for (const x of dado) ingerir(x, pagina, prof + 1); return; }
     if (typeof dado.username === 'string') {
       const n = typeof dado.media_count === 'number' ? dado.media_count : dado.edge_owner_to_timeline_media?.count;
       if (typeof n === 'number') totais.set(dado.username.toLowerCase(), n);
     }
     if (typeof dado.code === 'string' && typeof dado.taken_at === 'number') {
-      const novo = normalizar(dado);
+      const novo = { ...normalizar(dado), pagina_coleta: pagina };
       const velho = posts.get(novo.shortcode);
       // Mantém o campo já preenchido quando a resposta nova vem incompleta.
       posts.set(novo.shortcode, velho ? mesclar(velho, novo) : novo);
     }
     for (const k in dado) {
       const v = dado[k];
-      if (v && typeof v === 'object') ingerir(v, prof + 1);
+      if (v && typeof v === 'object') ingerir(v, pagina, prof + 1);
     }
   }
 
   function mesclar(a, b) {
     const r = { ...a };
-    for (const k in b) if (b[k] !== '' && b[k] != null) r[k] = b[k];
+    for (const k in b) if (b[k] !== '' && b[k] != null && !(k === 'pagina_coleta' && a[k])) r[k] = b[k];
     return r;
   }
 
@@ -177,11 +182,22 @@
     return m && !RESERVADOS.has(m[1]) ? m[1].toLowerCase() : null;
   }
 
+  // Vínculo do post com o perfil: próprio, colaboração (o perfil é dono ou coautor)
+  // ou sem dono identificado (a resposta não trouxe o dono; vale a página da coleta).
+  function vinculo(p, user) {
+    const coaut = p.coautores ? p.coautores.split(', ') : [];
+    if (p.perfil === user) return coaut.length ? 'colaboração' : 'próprio';
+    if (coaut.includes(user)) return 'colaboração';
+    if (!p.perfil && p.pagina_coleta === user) return 'sem dono identificado';
+    return '';
+  }
+
   function postsDe(user) {
     return [...posts.values()]
-      .filter((p) => p.perfil.toLowerCase() === user)
+      .filter((p) => vinculo(p, user))
       .sort((a, b) => a.taken_at - b.taken_at);
   }
+
 
   // Número do post contado a partir do primeiro publicado (#1 = mais antigo).
   // Com todos os posts carregados, é a ordem cronológica. Com carga parcial, conta
@@ -231,7 +247,7 @@
 
   // ---------- exportação ----------
 
-  const COLS_POSTS = ['perfil', 'numero_post', 'fixado', 'shortcode', 'url', 'data_hora', 'taken_at', 'tipo', 'curtidas', 'comentarios', 'visualizacoes', 'n_midias', 'local', 'evento', 'categorias_evento', 'legenda'];
+  const COLS_POSTS = ['perfil', 'vinculo', 'coautores', 'pagina_coleta', 'numero_post', 'fixado', 'shortcode', 'url', 'data_hora', 'taken_at', 'tipo', 'curtidas', 'comentarios', 'visualizacoes', 'n_midias', 'local', 'evento', 'categorias_evento', 'legenda'];
   const COLS_PERFIS = ['perfil', 'nome', 'categoria', 'privado', 'seguidores', 'seguindo', 'n_posts_declarado', 'n_posts_coletados', 'n_posts_evento', 'primeiro_post', 'ultimo_post', 'site', 'bio', 'coletado_em'];
 
   function celula(v) {
@@ -268,7 +284,7 @@
     const carimbo = new Date().toISOString().slice(0, 10);
     const linhas = usuarios.flatMap((u) => {
       const nums = numeros(u);
-      return postsDe(u).map((p) => ({ ...p, numero_post: nums.get(p.shortcode) ?? '', data_hora: dataHora(p.taken_at) }));
+      return postsDe(u).map((p) => ({ ...p, vinculo: vinculo(p, u), numero_post: nums.get(p.shortcode) ?? '', data_hora: dataHora(p.taken_at) }));
     });
     baixar(`instagram_posts_${sufixo}_${carimbo}.csv`, csv(linhas, COLS_POSTS), 'text/csv;charset=utf-8');
     baixar(`instagram_perfis_${sufixo}_${carimbo}.csv`, csv(usuarios.map(linhaPerfil), COLS_PERFIS), 'text/csv;charset=utf-8');
@@ -297,7 +313,7 @@
     for (;;) {
       if (parar) throw new Error('interrompido');
       const j = await api(`/api/v1/feed/user/${info.id}/?count=12${maxId ? `&max_id=${maxId}` : ''}`);
-      ingerir(j.items || []);
+      ingerir(j.items || [], user);
       agendarSelos();
       const ps = postsDe(user);
       status(`@${user}: ${ps.length}/${info.edge_owner_to_timeline_media?.count ?? '?'} posts · mais antigo ${ps[0] ? dataCurta(ps[0].taken_at) : '-'}`);
@@ -314,7 +330,14 @@
     ocupado = false; atualizarBotoes(); atualizarResumo();
   }
 
+  let rolando = false;
+
   async function rolarAteOFim() {
+    rolando = true;
+    try { await rolarAteOFimInterno(); } finally { rolando = false; }
+  }
+
+  async function rolarAteOFimInterno() {
     const inicio = perfilAtual();
     let altura = 0, semMudanca = 0;
     // Para também se o usuário sair do perfil no meio da rolagem.
@@ -382,8 +405,11 @@
 
       let selo = a.querySelector(':scope > .igc-selo');
       if (!p || !mostrarSelos) { selo?.remove(); continue; }
-      const n = numeros(p.perfil.toLowerCase()).get(p.shortcode);
-      const prefixo = n ? `#${n} · ` : p.fixado ? '📌 · ' : '';
+      const u = perfilAtual() || p.perfil;
+      const n = numeros(u).get(p.shortcode);
+      const v = vinculo(p, u);
+      const marca = v === 'colaboração' ? '🤝 ' : v === 'sem dono identificado' ? '❔ ' : '';
+      const prefixo = (n ? `#${n} · ` : p.fixado ? '📌 · ' : '') + marca;
       const linha1 = `${prefixo}${dataCurta(p.taken_at)} · ♥ ${compacto(p.curtidas)} · 💬 ${compacto(p.comentarios)}` +
         (p.visualizacoes !== '' ? ` · ▶ ${compacto(p.visualizacoes)}` : '');
       const linha2 = ehEvento(p) ? `🎲 ${p.categorias_evento}${p.evento === 'possível' ? ' (?)' : ''}` : '';
@@ -424,6 +450,12 @@
     el.resumo.textContent = ps.length
       ? `${ps.length} posts carregados · mais antigo ${dataCurta(ps[0].taken_at)} · mais recente ${dataCurta(ps[ps.length - 1].taken_at)}`
       : 'Nenhum post carregado ainda.';
+    const conta = (v) => ps.filter((p) => vinculo(p, u) === v).length;
+    const colab = ps.filter((p) => vinculo(p, u) === 'colaboração');
+    const colabOutro = colab.filter((p) => p.perfil !== u).length;
+    el.contagens.textContent = ps.length
+      ? `Próprios: ${conta('próprio')} · 🤝 Colaboração: ${colab.length} (dono é outro perfil: ${colabOutro}) · ❔ Sem dono identificado: ${conta('sem dono identificado')}`
+      : '';
     atualizarLista(u, ps);
   }
 
@@ -511,6 +543,12 @@
     el.fila = criar('textarea', { placeholder: 'Fila: um @perfil ou link por linha' });
 
     const bRolar = botao('Rolar até o fim', () => executar(rolarAteOFim));
+    // Volta ao topo; se a rolagem automática estiver em curso, para ela antes.
+    const bTopo = botao('Voltar ao topo', () => {
+      if (rolando) parar = true;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    el.contagens = criar('p', { className: 'status' });
     const bApi = botao('Coletar via API', () => {
       const u = perfilAtual();
       if (u) executar(() => coletarPerfil(u).then(() => status(`@${u} completo.`)));
@@ -544,7 +582,8 @@
     const painel = criar('div', { id: 'igc-painel' }, [
       cabecalho,
       el.resumo,
-      criar('div', { className: 'linha' }, [bRolar, bApi]),
+      el.contagens,
+      criar('div', { className: 'linha' }, [bRolar, bTopo, bApi]),
       criar('div', { className: 'linha' }, [bCsv, bJson, el.parar]),
       criar('label', {}, [chkAuto, document.createTextNode(' Rolar até o fim ao abrir um perfil')]),
       criar('label', {}, [chk, document.createTextNode(' Selos na grade')]),
