@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.11-1
+// @version      2026.10.11-2
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -323,6 +323,7 @@
   function status(t) { if (el.status) el.status.textContent = t; }
 
   function atualizarResumo() {
+    if (!el.titulo) return;
     const u = perfilAtual();
     el.titulo.textContent = u ? `Coletor IG · @${u}` : 'Coletor IG';
     if (!u) { el.resumo.textContent = 'Abra um perfil.'; return; }
@@ -337,28 +338,32 @@
     el.parar.disabled = !ocupado;
   }
 
-  function montarPainel() {
-    const css = document.createElement('style');
-    css.textContent = `
-      .igc-selo{position:absolute;left:4px;bottom:4px;z-index:3;pointer-events:none;
-        background:rgba(0,0,0,.75);color:#fff;font:600 11px/1.3 system-ui,sans-serif;
-        padding:2px 6px;border-radius:4px;white-space:nowrap}
-      #igc-painel{position:fixed;right:12px;bottom:12px;z-index:99999;width:300px;
-        background:#fff;color:#111;border:1px solid #ccc;border-radius:10px;
-        box-shadow:0 4px 16px rgba(0,0,0,.18);font:13px/1.4 system-ui,sans-serif;padding:10px}
-      @media (prefers-color-scheme:dark){#igc-painel{background:#1e1e1e;color:#eee;border-color:#444}}
-      #igc-painel.min>*:not(header){display:none}
-      #igc-painel header{display:flex;justify-content:space-between;align-items:center;font-weight:700;cursor:pointer}
-      #igc-painel p{margin:6px 0}
-      #igc-painel .linha{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
-      #igc-painel button{flex:1 1 auto;padding:5px 8px;border-radius:6px;border:1px solid #888;
-        background:transparent;color:inherit;cursor:pointer;font:inherit}
-      #igc-painel button:disabled{opacity:.4;cursor:default}
-      #igc-painel textarea{width:100%;box-sizing:border-box;height:70px;font:12px monospace;
-        background:transparent;color:inherit;border:1px solid #888;border-radius:6px}
-      #igc-painel .status{font-size:12px;opacity:.8}`;
-    document.head.appendChild(css);
+  const CSS_SELOS = `
+    .igc-selo{position:absolute;left:4px;bottom:4px;z-index:3;pointer-events:none;
+      background:rgba(0,0,0,.75);color:#fff;font:600 11px/1.3 system-ui,sans-serif;
+      padding:2px 6px;border-radius:4px;white-space:nowrap}`;
 
+  // O painel fica num shadow DOM: o CSS do Instagram não o afeta.
+  const CSS_PAINEL = `
+    #igc-painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:300px;
+      max-height:calc(100vh - 24px);overflow:auto;box-sizing:border-box;
+      background:#fff;color:#111;border:1px solid #ccc;border-radius:10px;
+      box-shadow:0 4px 16px rgba(0,0,0,.18);font:13px/1.4 system-ui,sans-serif;padding:10px}
+    @media (prefers-color-scheme:dark){#igc-painel{background:#1e1e1e;color:#eee;border-color:#444}}
+    #igc-painel.min>*:not(header){display:none}
+    header{display:flex;justify-content:space-between;align-items:center;font-weight:700;cursor:pointer}
+    p{margin:6px 0}
+    .linha{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+    button{flex:1 1 auto;padding:5px 8px;border-radius:6px;border:1px solid #888;
+      background:transparent;color:inherit;cursor:pointer;font:inherit}
+    button:disabled{opacity:.4;cursor:default}
+    textarea{width:100%;box-sizing:border-box;height:70px;font:12px monospace;
+      background:transparent;color:inherit;border:1px solid #888;border-radius:6px}
+    .status{font-size:12px;opacity:.8}`;
+
+  let hospedeiro = null;
+
+  function montarPainel() {
     const botao = (texto, fn) => criar('button', { textContent: texto, onclick: fn });
 
     el.titulo = criar('span', { textContent: 'Coletor IG' });
@@ -399,24 +404,45 @@
       el.status,
     ]);
     cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.textContent = painel.classList.contains('min') ? '+' : '–'; };
-    document.body.appendChild(painel);
+
+    hospedeiro = criar('div', { id: 'igc-hospedeiro' });
+    const raiz = hospedeiro.attachShadow({ mode: 'open' });
+    raiz.appendChild(criar('style', { textContent: CSS_PAINEL }));
+    raiz.appendChild(painel);
     atualizarBotoes();
-    atualizarResumo();
+  }
+
+  // O React do Instagram pode refazer o <body> ao hidratar a página e apagar o que
+  // foi inserido antes. Por isso o painel fica fora do <body> e é reposto se sumir.
+  function garantirPainel() {
+    const raiz = document.documentElement;
+    if (!raiz) return;
+    if (!document.getElementById('igc-estilo-selos')) {
+      (document.head || raiz).appendChild(criar('style', { id: 'igc-estilo-selos', textContent: CSS_SELOS }));
+    }
+    if (!hospedeiro) montarPainel();
+    if (!hospedeiro.isConnected) raiz.appendChild(hospedeiro);
   }
 
   function iniciar() {
+    console.info('[Coletor IG] iniciado');
     lerDadosEmbutidos();
-    montarPainel();
-    new MutationObserver(agendarSelos).observe(document.body, { childList: true, subtree: true });
-    // O Instagram troca de página sem recarregar; acompanha a URL.
     let caminho = location.pathname;
     setInterval(() => {
-      if (location.pathname !== caminho) { caminho = location.pathname; lerDadosEmbutidos(); }
-      atualizarResumo();
+      try {
+        garantirPainel();
+        // O Instagram troca de página sem recarregar; acompanha a URL.
+        if (location.pathname !== caminho) { caminho = location.pathname; lerDadosEmbutidos(); }
+        atualizarResumo();
+      } catch (e) { console.error('[Coletor IG]', e); }
     }, 1000);
+    garantirPainel();
+    atualizarResumo();
+    new MutationObserver(agendarSelos).observe(document.documentElement, { childList: true, subtree: true });
     agendarSelos();
   }
 
+  console.info('[Coletor IG] carregado');
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar);
   else iniciar();
 })();
