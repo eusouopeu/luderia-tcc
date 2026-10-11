@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.11-2
+// @version      2026.10.11-3
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -57,8 +57,40 @@
       n_midias: o.carousel_media_count ?? 1,
       local: o.location?.name || '',
       legenda: o.caption?.text || '',
+      ...classificar(o.caption?.text || ''),
     };
   }
+
+  // ---------- eventos nas legendas ----------
+
+  // Termos procurados na legenda já sem acento e em minúsculas. A lista é
+  // deliberadamente larga: o filtro serve para achar candidatos, e a leitura
+  // do post decide. Edite à vontade.
+  const CATEGORIAS = {
+    'noite temática': /\bnoites? (tematica|de|do|da|dos|das)\b|\btematic|\bfesta\b|\bhalloween\b|\bcarnaval\b|\bsao joao\b|\bjunin|\bnatal(ino|ina)?\b|\bdia dos namorados\b|\bkaraoke\b|\bespecial de\b/,
+    'workshop/aula': /\bworkshop|\boficina|\baulas?\b|\bcursos?\b|\bpalestra|\baprend(a|er) a jogar\b|\bensina(r|mos) a jogar\b|\biniciac|\biniciantes?\b/,
+    'competição': /\bcampeonato|\btorneio|\bcompetic|\bcopa\b|\bligas?\b|\bdesafio|\bpremi(o|os|ac)|\bchaveamento|\bvencedor|\branking\b|\bclassificat/,
+    'quiz/bingo': /\bquiz|\btrivia\b|\bperguntas e respostas\b|\bbingo\b/,
+    'encontro/RPG': /\bencontros?\b|\bmeetup|\brpg\b|\bone.?shot|\bsessao de\b|\blancamento|\bmesa aberta\b|\bjogatina|\beventos?\b|\bconvidad/,
+  };
+
+  // Indícios de agenda: data, hora, inscrição. Sozinhos não marcam evento,
+  // mas elevam o grau de "possível" para "provável".
+  const AGENDA = /\b(segunda|terca|quarta|quinta|sexta|sabado|domingo)\b|\bdia \d{1,2}\b|\b\d{1,2} ?h(\d{2})?\b|\b\d{1,2}:\d{2}\b|\b\d{1,2}\/\d{1,2}\b|\binscri|\bvagas?\b|\bingressos?\b|\breserv|\bgaranta\b|\blink na bio\b/;
+
+  function semAcento(t) {
+    return t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  }
+
+  function classificar(legenda) {
+    if (!legenda) return { evento: '', categorias_evento: '' };
+    const t = semAcento(legenda);
+    const cats = Object.keys(CATEGORIAS).filter((c) => CATEGORIAS[c].test(t));
+    if (!cats.length) return { evento: 'não', categorias_evento: '' };
+    return { evento: AGENDA.test(t) ? 'provável' : 'possível', categorias_evento: cats.join(', ') };
+  }
+
+  const ehEvento = (p) => p.evento === 'provável' || p.evento === 'possível';
 
   function ingerir(dado, prof = 0) {
     if (!dado || typeof dado !== 'object' || prof > 40) return;
@@ -166,8 +198,8 @@
 
   // ---------- exportação ----------
 
-  const COLS_POSTS = ['perfil', 'shortcode', 'url', 'data_hora', 'taken_at', 'tipo', 'curtidas', 'comentarios', 'visualizacoes', 'n_midias', 'local', 'legenda'];
-  const COLS_PERFIS = ['perfil', 'nome', 'categoria', 'privado', 'seguidores', 'seguindo', 'n_posts_declarado', 'n_posts_coletados', 'primeiro_post', 'ultimo_post', 'site', 'bio', 'coletado_em'];
+  const COLS_POSTS = ['perfil', 'shortcode', 'url', 'data_hora', 'taken_at', 'tipo', 'curtidas', 'comentarios', 'visualizacoes', 'n_midias', 'local', 'evento', 'categorias_evento', 'legenda'];
+  const COLS_PERFIS = ['perfil', 'nome', 'categoria', 'privado', 'seguidores', 'seguindo', 'n_posts_declarado', 'n_posts_coletados', 'n_posts_evento', 'primeiro_post', 'ultimo_post', 'site', 'bio', 'coletado_em'];
 
   function celula(v) {
     const s = String(v ?? '');
@@ -193,6 +225,7 @@
     return {
       ...p,
       n_posts_coletados: ps.length,
+      n_posts_evento: ps.filter(ehEvento).length,
       primeiro_post: ps.length ? dataHora(ps[0].taken_at) : '',
       ultimo_post: ps.length ? dataHora(ps[ps.length - 1].taken_at) : '',
     };
@@ -283,6 +316,14 @@
 
   let selosAgendados = false;
   let mostrarSelos = true;
+  let soEventos = false;
+  let busca = '';
+
+  function passaFiltro(p) {
+    if (soEventos && !(p && ehEvento(p))) return false;
+    if (busca && !(p && semAcento(`${p.legenda} ${p.local}`).includes(busca))) return false;
+    return true;
+  }
 
   function agendarSelos() {
     if (selosAgendados) return;
@@ -291,21 +332,32 @@
   }
 
   function aplicarSelos() {
+    const filtrando = soEventos || busca;
     for (const a of document.querySelectorAll('a[href*="/p/"], a[href*="/reel/"]')) {
+      if (!a.querySelector('img, video')) continue; // só links da grade
       const m = a.getAttribute('href').match(/\/(?:p|reel)\/([\w-]+)/);
       const p = m && posts.get(m[1]);
+      // Filtro: apaga os posts que não passam (sem dados conta como não passa).
+      const opacidade = filtrando && !passaFiltro(p) ? '0.12' : '';
+      if (a.style.opacity !== opacidade) a.style.opacity = opacidade;
+
       let selo = a.querySelector(':scope > .igc-selo');
       if (!p || !mostrarSelos) { selo?.remove(); continue; }
-      if (!a.querySelector('img, video')) continue; // só links da grade
-      const texto = `${dataCurta(p.taken_at)} · ♥ ${compacto(p.curtidas)} · 💬 ${compacto(p.comentarios)}` +
+      const linha1 = `${dataCurta(p.taken_at)} · ♥ ${compacto(p.curtidas)} · 💬 ${compacto(p.comentarios)}` +
         (p.visualizacoes !== '' ? ` · ▶ ${compacto(p.visualizacoes)}` : '');
+      const linha2 = ehEvento(p) ? `🎲 ${p.categorias_evento}${p.evento === 'possível' ? ' (?)' : ''}` : '';
+      const chave = `${linha1}|${linha2}`;
       if (!selo) {
         selo = document.createElement('div');
         selo.className = 'igc-selo';
         if (getComputedStyle(a).position === 'static') a.style.position = 'relative';
         a.appendChild(selo);
       }
-      if (selo.textContent !== texto) selo.textContent = texto;
+      if (selo.dataset.chave !== chave) {
+        selo.dataset.chave = chave;
+        selo.classList.toggle('igc-evento', !!linha2);
+        selo.replaceChildren(criar('div', { textContent: linha1 }), ...(linha2 ? [criar('div', { className: 'igc-cat', textContent: linha2 })] : []));
+      }
     }
   }
 
@@ -331,6 +383,28 @@
     el.resumo.textContent = ps.length
       ? `${ps.length} posts carregados · mais antigo ${dataCurta(ps[0].taken_at)} · mais recente ${dataCurta(ps[ps.length - 1].taken_at)}`
       : 'Nenhum post carregado ainda.';
+    atualizarLista(u, ps);
+  }
+
+  let chaveLista = '';
+
+  // Lista no painel: com busca, os posts cuja legenda contém o termo; sem busca,
+  // os possíveis eventos. Mais recentes primeiro; cada item abre o post numa aba nova.
+  function atualizarLista(u, ps) {
+    const lista = ps.filter((p) => (busca ? passaFiltro(p) : ehEvento(p))).reverse();
+    const chave = `${u}|${busca}|${soEventos}|${lista.length}|${ps.length}`;
+    if (chave === chaveLista) return;
+    chaveLista = chave;
+    el.listaTitulo.textContent = busca
+      ? `Posts com "${el.busca.value.trim()}" (${lista.length})`
+      : `Possíveis eventos (${lista.length} de ${ps.length} posts)`;
+    el.lista.replaceChildren(...lista.map((p) => {
+      const trecho = p.legenda.replace(/\s+/g, ' ').slice(0, 110);
+      return criar('a', { href: p.url, target: '_blank', title: p.legenda }, [
+        criar('b', { textContent: `${dataCurta(p.taken_at)}${p.categorias_evento ? ' · ' + p.categorias_evento : ''}${p.evento === 'possível' ? ' (?)' : ''}` }),
+        criar('span', { textContent: trecho + (p.legenda.length > 110 ? '…' : '') }),
+      ]);
+    }));
   }
 
   function atualizarBotoes() {
@@ -340,12 +414,15 @@
 
   const CSS_SELOS = `
     .igc-selo{position:absolute;left:4px;bottom:4px;z-index:3;pointer-events:none;
-      background:rgba(0,0,0,.75);color:#fff;font:600 11px/1.3 system-ui,sans-serif;
-      padding:2px 6px;border-radius:4px;white-space:nowrap}`;
+      max-width:calc(100% - 8px);box-sizing:border-box;
+      background:rgba(0,0,0,.78);color:#fff;font:600 14px/1.35 system-ui,sans-serif;
+      padding:4px 8px;border-radius:6px}
+    .igc-selo.igc-evento{background:rgba(196,72,0,.92)}
+    .igc-cat{font-size:13px;font-weight:700}`;
 
   // O painel fica num shadow DOM: o CSS do Instagram não o afeta.
   const CSS_PAINEL = `
-    #igc-painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:300px;
+    #igc-painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:340px;
       max-height:calc(100vh - 24px);overflow:auto;box-sizing:border-box;
       background:#fff;color:#111;border:1px solid #ccc;border-radius:10px;
       box-shadow:0 4px 16px rgba(0,0,0,.18);font:13px/1.4 system-ui,sans-serif;padding:10px}
@@ -359,7 +436,16 @@
     button:disabled{opacity:.4;cursor:default}
     textarea{width:100%;box-sizing:border-box;height:70px;font:12px monospace;
       background:transparent;color:inherit;border:1px solid #888;border-radius:6px}
-    .status{font-size:12px;opacity:.8}`;
+    .status{font-size:12px;opacity:.8}
+    input[type=search]{width:100%;box-sizing:border-box;margin:6px 0;padding:5px 8px;font:inherit;
+      background:transparent;color:inherit;border:1px solid #888;border-radius:6px}
+    label{display:inline-block;margin-right:12px}
+    .subtitulo{font-weight:700;margin-top:10px}
+    .lista{max-height:260px;overflow:auto;border-top:1px solid #8885}
+    .lista a{display:block;padding:5px 2px;border-bottom:1px solid #8885;color:inherit;text-decoration:none;font-size:12px}
+    .lista a:hover{background:#8882}
+    .lista b{color:#d35400}
+    .lista span{display:block;opacity:.75}`;
 
   let hospedeiro = null;
 
@@ -391,6 +477,14 @@
     el.acoes = [bRolar, bApi, bCsv, bJson, bFila];
 
     const chk = criar('input', { type: 'checkbox', checked: true, onchange: (e) => { mostrarSelos = e.target.checked; aplicarSelos(); } });
+    const chkEventos = criar('input', { type: 'checkbox', onchange: (e) => { soEventos = e.target.checked; aplicarSelos(); atualizarResumo(); } });
+    el.busca = criar('input', {
+      type: 'search',
+      placeholder: 'Buscar na legenda (ex.: torneio, quiz)',
+      oninput: (e) => { busca = semAcento(e.target.value.trim()); aplicarSelos(); atualizarResumo(); },
+    });
+    el.listaTitulo = criar('p', { className: 'subtitulo' });
+    el.lista = criar('div', { className: 'lista' });
     const minimizar = criar('span', { textContent: '–' });
     const cabecalho = criar('header', {}, [el.titulo, minimizar]);
     const painel = criar('div', { id: 'igc-painel' }, [
@@ -399,6 +493,10 @@
       criar('div', { className: 'linha' }, [bRolar, bApi]),
       criar('div', { className: 'linha' }, [bCsv, bJson, el.parar]),
       criar('label', {}, [chk, document.createTextNode(' Selos na grade')]),
+      criar('label', {}, [chkEventos, document.createTextNode(' Só eventos')]),
+      el.busca,
+      el.listaTitulo,
+      el.lista,
       el.fila,
       criar('div', { className: 'linha' }, [bFila]),
       el.status,
