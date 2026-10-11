@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { acervoVazio, dataIso, estadoInicial, normalizar, paraCsv, permanenciaMin, type Estado } from './model'
+import { acervoVazio, dataIso, estadoInicial, normalizar, novasMesas, paraCsv, permanenciaMin, proximoCodigo, type Estado, type Fluxo } from './model'
 
 describe('permanenciaMin', () => {
   it('conta os minutos entre entrada e saída', () => {
@@ -46,5 +46,25 @@ describe('paraCsv', () => {
     expect(linhas[1]).toContain(';150;')
     expect(linhas[1]).toContain('"jogo ""Dixit""; ótimo"')
     expect(linhas[2]).toMatch(/;sim;?/) // censurada: saiu depois do fim da observação
+  })
+})
+
+describe('novasMesas', () => {
+  it('numera depois da maior mesa existente', () => {
+    const mesas = [{ id: 'a', nome: 'Mesa 1' }, { id: 'b', nome: 'Mesa 9' }]
+    expect(novasMesas(mesas, 2).map((m) => m.nome)).toEqual(['Mesa 10', 'Mesa 11'])
+  })
+  it('gera ids distintos', () => {
+    const [a, b] = novasMesas([], 2)
+    expect(a.id).not.toBe(b.id)
+    expect(a.nome).toBe('Mesa 1')
+  })
+})
+
+describe('proximoCodigo', () => {
+  it('não repete código depois de apagar um grupo do meio', () => {
+    const f = (codigo: string): Fluxo => ({ id: codigo, visitaId: 'v', codigo, tipo: 'entrada', hora: '14:00', pessoas: 2, criancas: 0 })
+    expect(proximoCodigo([f('BV-1'), f('BV-3')], 'v', 'BV')).toBe('BV-4')
+    expect(proximoCodigo([], 'v', 'BV')).toBe('BV-1')
   })
 })

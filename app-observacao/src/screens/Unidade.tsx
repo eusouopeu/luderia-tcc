@@ -53,24 +53,24 @@ export function Unidade({
   children: ReactNode
 }) {
   return (
-    <div className="min-h-dvh bg-papel pb-[72px]">
+    <div className="min-h-dvh bg-papel pb-[80px]">
       {/* barra superior fixa: cabeçalho + abas de observação */}
       <div className="sticky top-0 z-20 bg-papel pb-2 safe-top">
       <header className="flex items-center gap-1 px-4 pb-2 pt-4">
         <button onClick={onVoltar} className="p-1" aria-label="Voltar às unidades">
-          <ChevronLeftIcon className="size-7" />
+          <ChevronLeftIcon className="size-6" />
         </button>
-        <h1 className="ml-2 flex-1 truncate text-3xl font-extrabold uppercase text-tinta">{unidade.nome}</h1>
+        <h1 className="ml-1 flex-1 truncate text-2xl font-extrabold uppercase text-tinta">{unidade.nome}</h1>
         <BotaoTema />
         <button onClick={onExportar} className="p-2 text-caneta-700" aria-label="Exportar CSV" title="Exportar CSV">
-          <ArrowUpTrayIcon className="size-7" />
+          <ArrowUpTrayIcon className="size-6" />
         </button>
       </header>
       {pagina === 'inicio' && (
-        <nav role="tablist" className="mx-4 mt-2 flex h-12 overflow-hidden rounded-lg bg-neutro-300">
+        <nav role="tablist" className="mx-4 mt-1 flex h-12 overflow-hidden rounded-lg bg-neutro-300">
           {ABAS.map(([id, I, rot]) => (
             <button key={id} onClick={() => onAba(id)} aria-label={rot} title={rot} aria-selected={aba === id} role="tab" className={`grid flex-1 place-items-center rounded-lg ${aba === id ? 'bg-caneta-600 text-sobre' : 'text-neutro-900'}`}>
-              <I className="size-7" />
+              <I className="size-6" />
             </button>
           ))}
         </nav>
@@ -82,8 +82,9 @@ export function Unidade({
           const on = pagina === id
           const C = on ? Ativo : I
           return (
-            <button key={id} onClick={() => onPagina(id)} aria-label={rot} title={rot} aria-current={on ? 'page' : undefined} className={`grid h-16 flex-1 place-items-center ${on ? 'text-caneta-700' : 'text-neutro-900'}`}>
-              <C className="size-8" />
+            <button key={id} onClick={() => onPagina(id)} aria-label={rot} title={rot} aria-current={on ? 'page' : undefined} className={`flex h-16 flex-1 flex-col items-center justify-center gap-0.5 ${on ? 'text-caneta-700' : 'text-neutro-700'}`}>
+              <C className="size-6" />
+              <span className={`text-xs ${on ? 'font-bold' : 'font-medium'}`}>{rot}</span>
             </button>
           )
         })}

@@ -69,7 +69,7 @@ export function PaginaResumo({ unidade }: { unidade: Unidade }) {
             {r.contagens.serie.map((c) => (
               <div key={c.etapa} className="flex flex-1 flex-col items-center gap-1">
                 <div className="w-full rounded-t bg-caneta-500" style={{ height: `${nMesas ? (c.ocupadas / nMesas) * 56 : 0}px` }} />
-                <span className="text-[10px] text-neutro-500">{c.hora}</span>
+                <span className="text-xs text-neutro-500">{c.hora}</span>
               </div>
             ))}
           </div>
@@ -96,7 +96,7 @@ function Bloco({ titulo, destaque, unidadeDestaque, badge, children }: { titulo:
     <section className="mt-3 rounded-xl bg-neutro-50 px-4 py-3">
       <button onClick={() => setAberto((x) => !x)} aria-expanded={aberto} className="flex w-full items-center gap-3 text-left">
         <span className="flex-1">
-          <span className="block text-[12px] font-extrabold uppercase text-neutro-500">{titulo}</span>
+          <span className="block text-xs font-bold uppercase text-neutro-500">{titulo}</span>
           <span className="text-2xl font-extrabold text-caneta-600">{destaque}</span> <span className="text-sm text-neutro-500">{unidadeDestaque}</span>
         </span>
         {!!badge && <span className="rounded-full bg-alerta-100 px-2 text-xs font-bold text-alerta-700" title="pendentes">{badge}</span>}
