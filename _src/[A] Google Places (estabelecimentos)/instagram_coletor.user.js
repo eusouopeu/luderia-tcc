@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.11-3
+// @version      2026.10.11-4
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -38,6 +38,7 @@
 
   const posts = new Map();   // shortcode -> post normalizado
   const perfis = new Map();  // username -> dados do perfil
+  const totais = new Map();  // username -> nº de posts declarado pelo Instagram
   let parar = false;
   let ocupado = false;
 
@@ -56,6 +57,7 @@
       visualizacoes: o.play_count ?? o.ig_play_count ?? o.view_count ?? '',
       n_midias: o.carousel_media_count ?? 1,
       local: o.location?.name || '',
+      fixado: o.timeline_pinned_user_ids?.length ? 'sim' : '',
       legenda: o.caption?.text || '',
       ...classificar(o.caption?.text || ''),
     };
@@ -95,6 +97,10 @@
   function ingerir(dado, prof = 0) {
     if (!dado || typeof dado !== 'object' || prof > 40) return;
     if (Array.isArray(dado)) { for (const x of dado) ingerir(x, prof + 1); return; }
+    if (typeof dado.username === 'string') {
+      const n = typeof dado.media_count === 'number' ? dado.media_count : dado.edge_owner_to_timeline_media?.count;
+      if (typeof n === 'number') totais.set(dado.username.toLowerCase(), n);
+    }
     if (typeof dado.code === 'string' && typeof dado.taken_at === 'number') {
       const novo = normalizar(dado);
       const velho = posts.get(novo.shortcode);
@@ -177,6 +183,33 @@
       .sort((a, b) => a.taken_at - b.taken_at);
   }
 
+  // Número do post contado a partir do primeiro publicado (#1 = mais antigo).
+  // Com todos os posts carregados, é a ordem cronológica. Com carga parcial, conta
+  // de trás para frente a partir do total declarado pelo Instagram; posts fixados
+  // ficam sem número até a carga completa, porque aparecem fora de ordem no topo.
+  // Posts arquivados ou apagados não entram no total, então o número é o da grade atual.
+  let cacheNumeros = { chave: '', mapa: new Map() };
+
+  function numeros(user) {
+    const total = totais.get(user);
+    const ps = postsDe(user);
+    const chave = `${user}|${ps.length}|${total}`;
+    if (cacheNumeros.chave === chave) return cacheNumeros.mapa;
+    const mapa = new Map();
+    if (total && ps.length >= total) ps.forEach((p, i) => mapa.set(p.shortcode, i + 1));
+    else if (total) ps.filter((p) => !p.fixado).reverse().forEach((p, i) => mapa.set(p.shortcode, total - i));
+    cacheNumeros = { chave, mapa };
+    return mapa;
+  }
+
+  function lerPref(chave) {
+    try { return localStorage.getItem(chave) === '1'; } catch (_) { return false; }
+  }
+
+  function gravarPref(chave, valor) {
+    try { localStorage.setItem(chave, valor ? '1' : '0'); } catch (_) { /* sem armazenamento */ }
+  }
+
   function cookie(nome) {
     return document.cookie.split('; ').find((c) => c.startsWith(nome + '='))?.split('=')[1] || '';
   }
@@ -198,7 +231,7 @@
 
   // ---------- exportação ----------
 
-  const COLS_POSTS = ['perfil', 'shortcode', 'url', 'data_hora', 'taken_at', 'tipo', 'curtidas', 'comentarios', 'visualizacoes', 'n_midias', 'local', 'evento', 'categorias_evento', 'legenda'];
+  const COLS_POSTS = ['perfil', 'numero_post', 'fixado', 'shortcode', 'url', 'data_hora', 'taken_at', 'tipo', 'curtidas', 'comentarios', 'visualizacoes', 'n_midias', 'local', 'evento', 'categorias_evento', 'legenda'];
   const COLS_PERFIS = ['perfil', 'nome', 'categoria', 'privado', 'seguidores', 'seguindo', 'n_posts_declarado', 'n_posts_coletados', 'n_posts_evento', 'primeiro_post', 'ultimo_post', 'site', 'bio', 'coletado_em'];
 
   function celula(v) {
@@ -233,7 +266,10 @@
 
   function exportar(usuarios, sufixo) {
     const carimbo = new Date().toISOString().slice(0, 10);
-    const linhas = usuarios.flatMap((u) => postsDe(u).map((p) => ({ ...p, data_hora: dataHora(p.taken_at) })));
+    const linhas = usuarios.flatMap((u) => {
+      const nums = numeros(u);
+      return postsDe(u).map((p) => ({ ...p, numero_post: nums.get(p.shortcode) ?? '', data_hora: dataHora(p.taken_at) }));
+    });
     baixar(`instagram_posts_${sufixo}_${carimbo}.csv`, csv(linhas, COLS_POSTS), 'text/csv;charset=utf-8');
     baixar(`instagram_perfis_${sufixo}_${carimbo}.csv`, csv(usuarios.map(linhaPerfil), COLS_PERFIS), 'text/csv;charset=utf-8');
   }
@@ -242,6 +278,7 @@
 
   async function coletarPerfil(user) {
     const info = (await api(`/api/v1/users/web_profile_info/?username=${encodeURIComponent(user)}`)).data.user;
+    if (typeof info.edge_owner_to_timeline_media?.count === 'number') totais.set(user, info.edge_owner_to_timeline_media.count);
     perfis.set(user, {
       perfil: user,
       nome: info.full_name,
@@ -278,8 +315,10 @@
   }
 
   async function rolarAteOFim() {
+    const inicio = perfilAtual();
     let altura = 0, semMudanca = 0;
-    while (!parar && semMudanca < 8) {
+    // Para também se o usuário sair do perfil no meio da rolagem.
+    while (!parar && semMudanca < 8 && perfilAtual() === inicio) {
       window.scrollTo(0, document.documentElement.scrollHeight);
       await esperar(sortear([1200, 2000]));
       const h = document.documentElement.scrollHeight;
@@ -343,7 +382,9 @@
 
       let selo = a.querySelector(':scope > .igc-selo');
       if (!p || !mostrarSelos) { selo?.remove(); continue; }
-      const linha1 = `${dataCurta(p.taken_at)} · ♥ ${compacto(p.curtidas)} · 💬 ${compacto(p.comentarios)}` +
+      const n = numeros(p.perfil.toLowerCase()).get(p.shortcode);
+      const prefixo = n ? `#${n} · ` : p.fixado ? '📌 · ' : '';
+      const linha1 = `${prefixo}${dataCurta(p.taken_at)} · ♥ ${compacto(p.curtidas)} · 💬 ${compacto(p.comentarios)}` +
         (p.visualizacoes !== '' ? ` · ▶ ${compacto(p.visualizacoes)}` : '');
       const linha2 = ehEvento(p) ? `🎲 ${p.categorias_evento}${p.evento === 'possível' ? ' (?)' : ''}` : '';
       const chave = `${linha1}|${linha2}`;
@@ -449,6 +490,18 @@
 
   let hospedeiro = null;
 
+  const PREF_ROLAR = 'igc-rolar-ao-abrir';
+  let rolarAoAbrir = lerPref(PREF_ROLAR);
+  let ultimoAutoRolado = null;
+
+  // Dispara a rolagem uma vez por perfil aberto (abrir um post e voltar não repete).
+  function talvezRolarSozinho() {
+    const u = perfilAtual();
+    if (!rolarAoAbrir || !u || u === ultimoAutoRolado || ocupado) return;
+    ultimoAutoRolado = u;
+    setTimeout(() => { if (perfilAtual() === u && !ocupado) executar(rolarAteOFim); }, 2000);
+  }
+
   function montarPainel() {
     const botao = (texto, fn) => criar('button', { textContent: texto, onclick: fn });
 
@@ -477,6 +530,7 @@
     el.acoes = [bRolar, bApi, bCsv, bJson, bFila];
 
     const chk = criar('input', { type: 'checkbox', checked: true, onchange: (e) => { mostrarSelos = e.target.checked; aplicarSelos(); } });
+    const chkAuto = criar('input', { type: 'checkbox', checked: rolarAoAbrir, onchange: (e) => { rolarAoAbrir = e.target.checked; gravarPref(PREF_ROLAR, rolarAoAbrir); } });
     const chkEventos = criar('input', { type: 'checkbox', onchange: (e) => { soEventos = e.target.checked; aplicarSelos(); atualizarResumo(); } });
     el.busca = criar('input', {
       type: 'search',
@@ -492,6 +546,7 @@
       el.resumo,
       criar('div', { className: 'linha' }, [bRolar, bApi]),
       criar('div', { className: 'linha' }, [bCsv, bJson, el.parar]),
+      criar('label', {}, [chkAuto, document.createTextNode(' Rolar até o fim ao abrir um perfil')]),
       criar('label', {}, [chk, document.createTextNode(' Selos na grade')]),
       criar('label', {}, [chkEventos, document.createTextNode(' Só eventos')]),
       el.busca,
@@ -532,6 +587,7 @@
         // O Instagram troca de página sem recarregar; acompanha a URL.
         if (location.pathname !== caminho) { caminho = location.pathname; lerDadosEmbutidos(); }
         atualizarResumo();
+        talvezRolarSozinho();
       } catch (e) { console.error('[Coletor IG]', e); }
     }, 1000);
     garantirPainel();
