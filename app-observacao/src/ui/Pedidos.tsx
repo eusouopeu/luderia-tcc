@@ -22,7 +22,7 @@ export function ListaPedidos({ pedidos, onChange }: { pedidos: Pedido[]; onChang
     <div>
       <div className="grid grid-cols-3 gap-2">
         {CATEGORIAS_PEDIDO.map((c) => (
-          <button key={c} onClick={() => novo(c)} className={`h-11 rounded-lg text-sm font-bold ${COR[c]}`}>
+          <button key={c} onClick={() => novo(c)} className={`h-11 whitespace-nowrap rounded-lg text-[13px] font-bold ${COR[c]}`}>
             + {NOME_CATEGORIA[c]}
           </button>
         ))}

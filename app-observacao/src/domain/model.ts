@@ -145,6 +145,21 @@ export type Estado = {
 
 export const novoId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7)
 
+/** Próximas `n` mesas, numeradas depois da maior "Mesa N" que já existe. */
+export function novasMesas(mesas: Mesa[], n = 1): Mesa[] {
+  const maior = mesas.reduce((m, x) => Math.max(m, Number(/^mesa\s*(\d+)$/i.exec(x.nome.trim())?.[1] ?? 0)), 0)
+  const base = Math.max(maior, mesas.length)
+  return Array.from({ length: n }, (_, i) => ({ id: novoId() + i, nome: `Mesa ${base + i + 1}` }))
+}
+
+/** Próximo código de grupo no fluxo da porta: maior número já usado + 1 (apagar um grupo não repete código). */
+export function proximoCodigo(fluxos: Fluxo[], visitaId: string, sigla: string): string {
+  const maior = fluxos
+    .filter((f) => f.visitaId === visitaId && f.tipo === 'entrada')
+    .reduce((m, f) => Math.max(m, Number(/-(\d+)$/.exec(f.codigo)?.[1] ?? 0)), 0)
+  return `${sigla}-${maior + 1}`
+}
+
 export const acervoVazio = (): Acervo => ({ estantes: 0, prateleiras: 0, caixas: 0, instrutores: 0, atendentes: 0, jogos: [] })
 export const fichaVazia = (): Ficha => ({ cobranca: '', valorCobranca: '', precos: [], condicoes: [], observacoes: '' })
 export const configPadrao = (): Config => ({ calibracaoDb: 90, duracaoMin: 180, intervaloMin: 30, tema: 'sistema' })

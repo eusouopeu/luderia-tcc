@@ -123,3 +123,9 @@ button:active:not(:disabled) { transform: scale(0.96); }
 input, textarea, select { transition: box-shadow 150ms; }
 button:disabled { cursor: default; }
 input[type='time']::-webkit-calendar-picker-indicator { display: none; }
+/* confirmação visível de um lançamento novo: cartão pisca na cor primária e o aviso sobe */
+@keyframes destaque { 0%, 60% { box-shadow: 0 0 0 3px var(--color-caneta-500); } 100% { box-shadow: 0 0 0 3px transparent; } }
+.destaque { animation: destaque 1.8s ease-out; }
+@keyframes sobe { from { transform: translateY(12px); opacity: 0; } to { transform: none; opacity: 1; } }
+.aviso { animation: sobe 200ms ease-out; }
+@media (prefers-reduced-motion: reduce) { .destaque, .aviso { animation: none; } }
