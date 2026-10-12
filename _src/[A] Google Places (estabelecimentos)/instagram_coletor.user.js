@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.12-1
+// @version      2026.10.12-2
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -377,10 +377,13 @@
   // n_posts_coletados conta também colaborações em que o dono é outro perfil (o mesmo
   // post entra em mais de um perfil); n_posts_proprios conta só os do dono, um perfil por post.
   // Colunas *_periodo: só posts cujo dono é o perfil, dentro de periodo_de..periodo_ate.
+  // Colunas *_periodo_com_compart: somam também as colaborações de outro dono em que o
+  // perfil é coautor; contagem não exclusiva (o mesmo post entra no dono e no coautor).
   const COLS_PERFIS = ['perfil', 'nome', 'fonte_nome', 'categoria', 'privado', 'seguidores', 'fonte_seguidores', 'seguindo',
     'n_posts_declarado', 'fonte_n_posts', 'n_posts_coletados', 'n_posts_proprios', 'grade_completa', 'n_posts_evento',
     'primeiro_post', 'ultimo_post', 'site', 'fonte_site',
     'periodo_de', 'periodo_ate', 'n_posts_periodo', 'comentarios_periodo', 'n_posts_periodo_sem_contagem',
+    'n_posts_periodo_com_compart', 'comentarios_periodo_com_compart', 'n_posts_periodo_com_compart_sem_contagem',
     'n_colab_outro_dono_periodo', 'n_sem_dono_periodo', 'bio', 'coletado_em'];
 
   function celula(v) {
@@ -422,9 +425,12 @@
       ultimo_post: ps.length ? dataHora(ps[ps.length - 1].taken_at) : '',
       periodo_de: per ? dataDe : '',
       periodo_ate: per ? dataAte : '',
-      n_posts_periodo: per?.n ?? '',
-      comentarios_periodo: per?.comentarios ?? '',
-      n_posts_periodo_sem_contagem: per?.semContagem ?? '',
+      n_posts_periodo: per?.proprios.n ?? '',
+      comentarios_periodo: per?.proprios.comentarios ?? '',
+      n_posts_periodo_sem_contagem: per?.proprios.semContagem ?? '',
+      n_posts_periodo_com_compart: per?.comCompartilhados.n ?? '',
+      comentarios_periodo_com_compart: per?.comCompartilhados.comentarios ?? '',
+      n_posts_periodo_com_compart_sem_contagem: per?.comCompartilhados.semContagem ?? '',
       n_colab_outro_dono_periodo: per?.colabOutroDono ?? '',
       n_sem_dono_periodo: per?.semDono ?? '',
       coletado_em: p.coletado_em || capturados.get(user)?.coletado_em || dataHora(Date.now() / 1000),
@@ -736,7 +742,9 @@
     const d = dadosPerfil(u);
     const total = totalDe(u);
     const completo = total != null && ps.length >= total;
-    const per = resumoPeriodo(ps, u);
+    const resumo = resumoPeriodo(ps, u);
+    // Contagem que alimenta os campos copiáveis, conforme o toggle de compartilhados.
+    const per = resumo && (contarCompartilhados ? resumo.comCompartilhados : resumo.proprios);
     const valores = {
       nome: d.nome, url: { v: `https://www.instagram.com/${u}/`, f: '' }, site: d.site,
       seguidores: d.seguidores,
@@ -767,24 +775,39 @@
     const parcial = podeFaltar ? ' (parcial: carregue mais posts)' : '';
     el.avisoPeriodo.textContent = parcial;
     el.avisoComentarios.textContent = parcial + (per.semContagem ? ` (${per.semContagem} post(s) sem contagem)` : '');
-    const fora = [];
-    if (per.colabOutroDono) fora.push(`${per.colabOutroDono} colaboração(ões) cujo dono é outro perfil`);
-    if (per.semDono) fora.push(`${per.semDono} sem dono identificado`);
-    el.foraPeriodo.textContent = fora.length ? `Fora da conta: ${fora.join(' e ')}.` : '';
+    const rotuloPosts = contarCompartilhados ? 'Posts no período (próprios + compartilhados)' : 'Posts próprios no período';
+    const rotuloCom = contarCompartilhados ? 'Comentários no período (soma, próprios + compartilhados)' : 'Comentários no período (soma, posts próprios)';
+    if (el.rotulos.n_periodo.textContent !== rotuloPosts) el.rotulos.n_periodo.textContent = rotuloPosts;
+    if (el.rotulos.comentarios_periodo.textContent !== rotuloCom) el.rotulos.comentarios_periodo.textContent = rotuloCom;
+    const notas = [];
+    if (resumo.colabOutroDono) {
+      notas.push(contarCompartilhados
+        ? `Inclui ${resumo.colabOutroDono} compartilhado(s) cujo dono é outro perfil (também contam para o dono).`
+        : `Fora da conta: ${resumo.colabOutroDono} compartilhado(s) cujo dono é outro perfil.`);
+    }
+    if (resumo.semDono) notas.push(`Fora da conta: ${resumo.semDono} sem dono identificado.`);
+    el.foraPeriodo.textContent = notas.join(' ');
   }
 
-  // Posts do período que contam para o perfil: só aqueles de que ele é o dono. Uma
-  // colaboração conta uma vez só, para o dono, e nunca para o coautor; assim a soma
-  // entre perfis fecha com o total de posts distintos.
+  // Posts do período em duas contagens:
+  //  - próprios: só aqueles de que o perfil é o dono. Uma colaboração conta uma vez só,
+  //    para o dono; assim a soma entre perfis fecha com o total de posts distintos.
+  //  - com compartilhados: próprios + colaborações em que o dono é outro perfil e este
+  //    é coautor. A mesma colaboração entra em mais de um perfil (contagem não exclusiva).
+  // Posts sem dono identificado ficam fora das duas.
   function resumoPeriodo(ps, u) {
     if (!dataDe && !dataAte) return null;
     const doPeriodo = ps.filter(passaData);
-    const doDono = doPeriodo.filter((p) => p.perfil === u);
+    const conta = (lista) => ({
+      n: lista.length,
+      comentarios: lista.reduce((s, p) => s + (Number(p.comentarios) || 0), 0),
+      semContagem: lista.filter((p) => p.comentarios === '').length,
+    });
+    const colabOutro = doPeriodo.filter((p) => p.perfil && p.perfil !== u);
     return {
-      n: doDono.length,
-      comentarios: doDono.reduce((s, p) => s + (Number(p.comentarios) || 0), 0),
-      semContagem: doDono.filter((p) => p.comentarios === '').length,
-      colabOutroDono: doPeriodo.filter((p) => p.perfil && p.perfil !== u).length,
+      proprios: conta(doPeriodo.filter((p) => p.perfil === u)),
+      comCompartilhados: conta(doPeriodo.filter((p) => p.perfil)),
+      colabOutroDono: colabOutro.length,
       semDono: doPeriodo.filter((p) => !p.perfil).length,
     };
   }
@@ -926,6 +949,8 @@
   let hospedeiro = null;
 
   const PREF_ROLAR = 'igc-rolar-ao-abrir';
+  const PREF_COMPART = 'igc-contar-compartilhados';
+  let contarCompartilhados = lerPref(PREF_COMPART);
   let rolarAoAbrir = lerPref(PREF_ROLAR);
   let ultimoAutoRolado = null;
 
@@ -981,13 +1006,15 @@
     // Campos copiáveis do perfil aberto.
     el.campos = {};
     el.fontes = {};
+    el.rotulos = {};
     const campo = (chave, rotulo, extra) => {
       const entrada = criar('input', { type: 'text', readOnly: true });
       el.campos[chave] = entrada;
       el.fontes[chave] = criar('span', { className: 'fonte' });
+      el.rotulos[chave] = document.createTextNode(rotulo);
       const bCopiar = criar('button', { textContent: '⧉', title: 'Copiar', onclick: () => copiar(entrada.value, bCopiar) });
       return criar('div', { className: 'campo' }, [
-        criar('span', {}, [document.createTextNode(rotulo), el.fontes[chave], ...(extra ? [extra] : [])]),
+        criar('span', {}, [el.rotulos[chave], el.fontes[chave], ...(extra ? [extra] : [])]),
         criar('div', {}, [entrada, bCopiar]),
       ]);
     };
@@ -1004,9 +1031,12 @@
     el.avisoPeriodo = criar('span');
     el.avisoComentarios = criar('span');
     el.foraPeriodo = criar('p', { className: 'status' });
+    const chkCompart = criar('input', { type: 'checkbox', checked: contarCompartilhados,
+      onchange: (e) => { contarCompartilhados = e.target.checked; gravarPref(PREF_COMPART, contarCompartilhados); atualizarResumo(); } });
     el.blocoPeriodo = criar('div', { style: 'display:none' }, [
-      campo('n_periodo', 'Posts próprios no período', el.avisoPeriodo),
-      campo('comentarios_periodo', 'Comentários no período (soma, posts próprios)', el.avisoComentarios),
+      criar('label', {}, [chkCompart, document.createTextNode(' Contar posts compartilhados (colaborações de outro dono)')]),
+      campo('n_periodo', '', el.avisoPeriodo),
+      campo('comentarios_periodo', '', el.avisoComentarios),
       el.foraPeriodo,
     ]);
 
