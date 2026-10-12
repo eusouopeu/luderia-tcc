@@ -42,7 +42,7 @@ A ordem dos blocos segue a relevância para o plano. Cada bloco tem subpasta pr�
 | **3.1 Caracterização do trabalho** | Plano de negócios baseado em evidências; pesquisa aplicada, descritivo-exploratória, quantitativa com análise de conteúdo; delineamento transversal |
 | **3.2 Hierarquia de evidências** | Escala N1–N6 ([8_financeiro.md](8_financeiro.md) §2) e hierarquia de tipos de dados ([../CLAUDE.md](../CLAUDE.md) §2); justificativa da exclusão de questionários |
 | **3.3 Fontes e instrumentos de coleta** | Blocos A, B, D, E e F: o que mede, procedimento, recorte, período, limitação |
-| **3.4 Tratamento dos dados** | Pipeline; pseudonimização; construção das variáveis; dicionário de codificação e sua validação |
+| **3.4 Tratamento dos dados** | Pipeline; pseudonimização; validação da coleta (auditoria dos censos da fonte, reconciliação das bases públicas, consistência da contagem); construção das variáveis; dicionário de codificação e sua validação |
 | **3.5 Registro prévio e divisão da base** | Hipóteses, análises e critérios registrados antes da análise; metade exploratória e metade confirmatória |
 | **3.6 Técnicas de análise e controles** | Técnicas por área do plano; calibração da ocupação; controles estatísticos |
 | **3.7 Matriz de evidências** | Quadro decisão → pergunta → dado usado → fonte → confiança |
@@ -152,6 +152,60 @@ Bloco de menor relevância para as decisões do plano. Pode ser retirado sem afe
 | Velocidade de avaliações | Número de avaliações com texto do recorte (até "um mês atrás") ÷ duração da janela, em dias, a partir da data da coleta | Avaliações com texto por mês |
 
 Regras do dicionário: tratar negações ("nada tranquilo") e ambiguidades ("familiar"). Cada versão do dicionário é registrada e datada.
+
+### Validação da coleta
+
+A validação da coleta estima o erro que sobra depois que o dado é obtido. A referência é o modelo de erro total da pesquisa (*total survey error*), que separa o erro amostral do erro não amostral: cobertura, medida e processamento (Groves et al., 2009; Biemer, 2010). A adaptação desse modelo a dados de plataformas digitais está em Amaya, Biemer e Kinyon (2020).
+
+O procedimento muda conforme a natureza de cada bloco. Os Blocos A e B são censos da fonte. O Bloco E é extração integral de tabelas oficiais. O Bloco D é uma amostra de períodos observada pelo próprio autor. O Bloco F segue a mesma regra do Bloco A, se for mantido.
+
+**Quadro XX -** Validação da coleta por bloco
+
+| Bloco | Natureza do dado | Erro amostral | Erro a validar | Instrumento de validação |
+|---|---|---|---|---|
+| A e B | Censo da fonte (Google Maps), extraído por script | Não há | Cobertura da fonte; fidelidade do script à página | Amostra de auditoria; checagem de cobertura; padrão das falhas |
+| E | Extração integral de tabelas oficiais por API | Não há na extração; há no desenho de algumas bases (POF, PNAD Contínua) | Processamento: código, filtro, unidade, deflação, junção | Reconciliação com a tabela publicada; conferência de totais |
+| D | Amostra de períodos sorteados, observada pelo autor | Há: quatro visitas representam a operação da unidade | Omissão de registro; erro de contagem | Fechamento do saldo; comparação entre caminhos independentes; dado faltante declarado |
+
+Fonte: elaborado pelo próprio autor
+
+#### Blocos A e B - censo da fonte
+
+O script coleta todos os estabelecimentos e todas as avaliações do recorte. Por isso, não há erro amostral. A amostra deixa de servir para inferir a população e passa a estimar a taxa de erro do instrumento de coleta. O fato de o script ter sido escrito com apoio de inteligência artificial não muda essa lógica: o que se valida é o dado gerado, não a autoria do código. O código fica no repositório e pode ser auditado.
+
+A validação tem três etapas:
+
+| Etapa | Procedimento |
+|---|---|
+| 1. Fidelidade | Amostra aleatória estratificada por capital e faixa de volume de avaliações. No Bloco A, 20% dos estabelecimentos curados: nota média, número de avaliações e endereço conferidos na página. No Bloco B, as mesmas 200 avaliações sorteadas para a validação do dicionário: texto, nota e rótulo de data conferidos na página. A conferência é feita até sete dias após a coleta, e a data de cada conferência é registrada |
+| 2. Completude | Nos estabelecimentos sorteados do Bloco B, o número de avaliações com texto no recorte, contado na página, é comparado ao número coletado. Diferença indica avaliação perdida por paginação, tempo de espera ou limite de pedidos |
+| 3. Cobertura | A lista do Bloco A é comparada a fontes independentes: buscas manuais por termo nas capitais e perfis de luderias no Instagram. Estabelecimento encontrado fora da lista é registrado com o motivo da ausência |
+
+O resultado é a taxa de erro por variável, com intervalo de confiança de 95% (método de Wilson). O critério de aceitação é limite superior do intervalo igual ou inferior a 5%. Variável acima do critério tem o script corrigido e o estrato afetado coletado de novo. Se a recoleta não for possível, a variável é reportada com a taxa de erro medida e entra no cálculo da faixa da premissa que ela alimenta.
+
+O erro da coleta não é tratado como restrito a uma variável. Falhas de paginação, de carregamento e de limite de pedidos afetam a inclusão do registro inteiro. Essas falhas tendem a se concentrar em grupos específicos, como estabelecimentos com muitas avaliações ou páginas com layout diferente. Erro concentrado em um grupo gera viés, e o tamanho da base não o dilui (Meng, 2018). Por isso, os registros com falha ou campo vazio são comparados aos completos por capital e faixa de volume. Diferença entre os dois grupos é reportada como limitação.
+
+A validação cobre a relação entre o script e a página. A relação entre a página e a realidade é outra camada: estabelecimentos fora do Google Maps, avaliações falsas e autosseleção de quem avalia. Essa camada não é medida pela auditoria e fica declarada em §3.9.
+
+#### Bloco E - bases públicas
+
+A extração por API copia tabelas inteiras. Não há sorteio nem página a ser lida, e o volume de séries é pequeno. A validação, então, é exaustiva: cada série usada no plano é reconciliada com a tabela publicada no portal da instituição, em ao menos um período e um recorte geográfico. Os totais são conferidos com a soma das linhas, conforme a regra de tabela agregada do projeto. As funções de conferência ficam nos próprios scripts `build_bases_*`.
+
+Os erros mais prováveis são de processamento: código de variável ou de município trocado, filtro aplicado à série errada, unidade (mil, milhão, percentual) e índice de correção monetária. O erro da própria base não é validado pelo trabalho, e sim declarado em §3.9: amostra da POF e da PNAD Contínua, cobertura só do emprego formal no Novo CAGED e preço anunciado, não contratado, no FipeZap.
+
+#### Bloco D - contagem direta
+
+A contagem não é censo. As quatro visitas são uma amostra de períodos, e o sorteio da hora de início existe para reduzir o viés de escolha desses períodos. O erro amostral, então, existe e é tratado pela faixa larga da premissa de ocupação e pela análise de sensibilidade (§3.6).
+
+O instrumento é o próprio observador, e não há gravação para auditar depois. A validação usa a consistência interna do registro e a comparação entre caminhos independentes:
+
+| Checagem | Procedimento |
+|---|---|
+| Fechamento do saldo | Contagem inicial + entradas - saídas, comparada à contagem feita a cada 30 minutos. A diferença acumulada mede a omissão de registros na porta |
+| Grupos sem saída | Grupos com entrada e sem saída registrada são contados à parte. Os que ainda estão no salão ao fim da visita são censurados; os demais são omissões |
+| Caminhos independentes | Pessoas pela porta, pessoas pelas mesas e notas fiscais emitidas: as três estimativas de fluxo são comparadas por visita |
+
+Dado não anotado é tratado como faltante. Não há imputação. A taxa de omissão de cada visita é reportada junto com as saídas. Quando a omissão for relevante, a estimativa de fluxo usa o caminho com menos falhas e a faixa da premissa aumenta. O script `analise_contagem.py` já conta à parte os grupos sem saída e os pedidos sem chegada, sem imputação. O fechamento do saldo e a separação entre censura e omissão ainda precisam ser acrescentados a ele.
 
 ### Validação do dicionário
 
@@ -288,6 +342,9 @@ Citar a Lei nº 13.709/2018 (LGPD) e a Resolução CNS nº 510/2016. Registrar a
 | Observação do lado de fora | Não vê o salão inteiro; saldo de pessoas acumula erros de contagem | Contagem inicial e final conferidas; comparação com o caminho das notas fiscais |
 | Numeração da NFC-e | Pode incluir delivery e balcão; uma nota cobre um grupo | Pessoas por nota medidas nas próprias visitas; série e unidade registradas |
 | Permanência censurada pelo início e fim da visita | Subestima a permanência de grupos longos | Declarada; observações censuradas sinalizadas |
+| Cobertura do Google Maps | Estabelecimentos fora da plataforma ou cortados pela busca não entram no censo da fonte | Checagem de cobertura com buscas manuais e Instagram; ausências registradas com o motivo |
+| Falhas do script de coleta | Registros perdidos ou campos errados, possivelmente concentrados em um grupo | Amostra de auditoria com taxa de erro e IC 95%; comparação entre registros com falha e completos; recoleta do estrato afetado |
+| Omissões na contagem direta | Entradas ou saídas não anotadas reduzem o fluxo e distorcem a permanência | Fechamento do saldo a cada 30 minutos; comparação com mesas e notas fiscais; taxa de omissão reportada, sem imputação |
 | Erro de classificação do dicionário | Viés nas variáveis de texto | Validação com kappa e F1; variáveis reprovadas saem da análise confirmatória |
 | Valores citados em poucos textos | Amostra pequena para o ticket | Triangulação com cardápio, preços observados e POF |
 | Cardápios desatualizados | Preços defasados | Data da coleta registrada; correção pelo IPCA quando a data do cardápio for conhecida |
@@ -311,3 +368,8 @@ Entram no cap. 11 como validações recomendadas antes do investimento, ou são 
 - COHEN, Jacob. A coefficient of agreement for nominal scales. *Educational and Psychological Measurement*, 1960. — kappa. `[A VERIFICAR]`
 - BENJAMINI, Yoav; HOCHBERG, Yosef. Controlling the false discovery rate. *Journal of the Royal Statistical Society: Series B*, 1995. — múltiplas comparações. `[A VERIFICAR]`
 - MALHOTRA, Naresh K. *Pesquisa de marketing*. 2019. `[A VERIFICAR]`
+- GROVES, Robert M. et al. *Survey methodology*. 2. ed. Wiley, 2009. — erro total da pesquisa. `[A VERIFICAR]`
+- BIEMER, Paul P. Total survey error: design, implementation, and evaluation. *Public Opinion Quarterly*, v. 74, n. 5, 2010. — erro amostral e não amostral. `[A VERIFICAR]`
+- AMAYA, Ashley; BIEMER, Paul P.; KINYON, David. Total error in a big data world: adapting the TSE framework to big data. *Journal of Survey Statistics and Methodology*, v. 8, n. 1, 2020. — erro total em dados de plataforma. `[A VERIFICAR]`
+- MENG, Xiao-Li. Statistical paradises and paradoxes in big data (I). *The Annals of Applied Statistics*, v. 12, n. 2, 2018. — viés de seleção em bases grandes. `[A VERIFICAR]`
+- WILSON, Edwin B. Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association*, v. 22, 1927. — intervalo da taxa de erro. `[A VERIFICAR]`
