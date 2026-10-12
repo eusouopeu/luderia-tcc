@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.12-5
+// @version      2026.10.12-6
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -16,8 +16,10 @@
  *    com `code` + `taken_at` (um post). Assim a grade ganha um selo com data, curtidas
  *    e comentários sem abrir post por post.
  *  - "Rolar até o fim": rola a página sozinho até o site parar de carregar posts.
- *  - "Coletar via API": pede os posts direto ao endpoint interno que o site usa,
+ *  - Botões de API: pedem os posts direto ao endpoint interno que o site usa,
  *    12 por vez, com pausa aleatória entre pedidos. Mais rápido que rolar.
+ *    "Coletar período (API)": só os posts até a data "De" (2-3 pedidos por perfil).
+ *    "Histórico completo (API)": vai até o primeiro post; use só para essa data.
  *  - "Fila": coleta vários perfis em sequência, com pausa maior entre perfis,
  *    e baixa dois CSV no fim (posts e perfis).
  *
@@ -162,6 +164,8 @@
       tipo: o.product_type === 'clips' ? 'reels' : tipoMidia,
       curtidas: o.like_count ?? '',
       comentarios: o.comment_count ?? '',
+      // Momento em que a contagem de comentários foi lida (ela cresce com o tempo).
+      medido_em: o.comment_count != null ? Math.floor(Date.now() / 1000) : '',
       visualizacoes: o.play_count ?? o.ig_play_count ?? o.view_count ?? '',
       n_midias: o.carousel_media_count ?? 1,
       local: o.location?.name || '',
@@ -236,6 +240,7 @@
       nome: typeof u.full_name === 'string' ? u.full_name : '',
       seguidores: typeof seg === 'number' ? seg : '',
       site: u.external_url || u.bio_links?.find((b) => b?.url)?.url || '',
+      bio: typeof u.biography === 'string' ? u.biography : '',
     };
     // Só registra quando veio algo além do nome (dono de post traz só username e nome).
     if (novo.seguidores !== '' || novo.site) novo.coletado_em = dataHora(Date.now() / 1000);
@@ -403,7 +408,15 @@
     'primeiro_post', 'ultimo_post', 'site', 'fonte_site',
     'periodo_de', 'periodo_ate', 'n_posts_periodo', 'comentarios_periodo', 'n_posts_periodo_sem_contagem',
     'n_posts_periodo_com_compart', 'comentarios_periodo_com_compart', 'n_posts_periodo_com_compart_sem_contagem',
-    'n_colab_outro_dono_periodo', 'n_sem_dono_periodo', 'bio', 'coletado_em'];
+    'n_colab_outro_dono_periodo', 'n_sem_dono_periodo',
+    'curtidas_periodo', 'n_posts_periodo_sem_curtidas', 'curtidas_periodo_com_compart', 'n_posts_periodo_com_compart_sem_curtidas',
+    'comentarios_medidos_de', 'comentarios_medidos_ate', 'periodo_pronto', 'pendencias_periodo', 'primeiro_post_definitivo',
+    'indicios_aluguel', 'indicios_venda', 'indicios_precificacao', 'precos_citados_precificacao', 'bio', 'coletado_em'];
+  // curtidas_*: soma das curtidas no período (posts com curtidas ocultas ficam em *_sem_curtidas).
+  // comentarios_medidos_de/ate: quando as contagens de comentários do período foram lidas.
+  // periodo_pronto: "sim" quando os campos do período são definitivos (ver prontidao()).
+  // indicios_*: nº de trechos (bio + legendas carregadas) com termos de aluguel, venda ou
+  // cobrança; servem para achar evidência, não para decidir sozinhos.
 
   function celula(v) {
     const s = String(v ?? '');
@@ -429,6 +442,8 @@
     const d = dadosPerfil(user);
     const per = resumoPeriodo(ps, user);
     const total = totalDe(user);
+    const pr = prontidao(user, ps, d, per && (contarCompartilhados ? per.comCompartilhados : per.proprios));
+    const ind = indicios(user, ps);
     return {
       ...p,
       perfil: user,
@@ -452,6 +467,19 @@
       n_posts_periodo_com_compart_sem_contagem: per?.comCompartilhados.semContagem ?? '',
       n_colab_outro_dono_periodo: per?.colabOutroDono ?? '',
       n_sem_dono_periodo: per?.semDono ?? '',
+      curtidas_periodo: per?.proprios.curtidas ?? '',
+      n_posts_periodo_sem_curtidas: per?.proprios.semCurtidas ?? '',
+      curtidas_periodo_com_compart: per?.comCompartilhados.curtidas ?? '',
+      n_posts_periodo_com_compart_sem_curtidas: per?.comCompartilhados.semCurtidas ?? '',
+      comentarios_medidos_de: per?.comCompartilhados.medidoDe ? dataHora(per.comCompartilhados.medidoDe) : '',
+      comentarios_medidos_ate: per?.comCompartilhados.medidoAte ? dataHora(per.comCompartilhados.medidoAte) : '',
+      periodo_pronto: pr.periodo ? 'sim' : 'não',
+      pendencias_periodo: pr.pendencias.join('; '),
+      primeiro_post_definitivo: pr.primeiro ? 'sim' : 'não',
+      indicios_aluguel: ind.aluguel.length,
+      indicios_venda: ind.venda.length,
+      indicios_precificacao: ind.precificacao.length,
+      precos_citados_precificacao: [...new Set(ind.precificacao.flatMap((x) => x.precos))].join(', '),
       coletado_em: p.coletado_em || capturados.get(user)?.coletado_em || dataHora(Date.now() / 1000),
     };
   }
@@ -513,7 +541,11 @@
     try { localStorage.setItem(CHAVE_CURSORES, JSON.stringify(todos)); } catch (_) { /* ignora */ }
   }
 
-  async function coletarPerfil(user) {
+  // modo 'periodo': começa do post mais recente e para assim que a página traz um post
+  //   (não fixado) anterior à data "De". Poucos pedidos por perfil; não mexe no cursor.
+  // modo 'completo': vai até o primeiro post (data do primeiro post); continua do
+  //   cursor salvo, se houver.
+  async function coletarPerfil(user, modo = 'completo') {
     const info = (await apiPaciente(`/api/v1/users/web_profile_info/?username=${encodeURIComponent(user)}`)).data.user;
     if (typeof info.edge_owner_to_timeline_media?.count === 'number') totais.set(user, info.edge_owner_to_timeline_media.count);
     perfis.set(user, {
@@ -530,7 +562,9 @@
     });
     if (info.is_private && !info.followed_by_viewer) { status(`@${user} é privado; só dados do perfil.`); return; }
 
-    const salvo = cursores()[user];
+    const periodo = modo === 'periodo';
+    if (periodo && !dataDe) throw new Error('defina a data "De" do período antes de coletar só o período');
+    const salvo = periodo ? null : cursores()[user];
     let maxId = salvo?.id === info.id ? salvo.maxId : '';
     if (maxId) status(`@${user}: continuando de onde parou.`);
     for (;;) {
@@ -540,12 +574,15 @@
       agendarSelos();
       const ps = postsDe(user);
       status(`@${user}: ${ps.length}/${info.edge_owner_to_timeline_media?.count ?? '?'} posts · mais antigo ${ps[0] ? dataCurta(ps[0].taken_at) : '-'}`);
+      const passouDoInicio = periodo && (j.items || [])
+        .some((i) => !i.timeline_pinned_user_ids?.length && diaLocal(i.taken_at) < dataDe);
+      if (passouDoInicio) { status(`@${user}: período coberto (${postsDe(user).filter(passaData).length} posts).`); return; }
       if (!j.more_available || !j.next_max_id) break;
       maxId = j.next_max_id;
-      gravarCursor(user, { id: info.id, maxId });
+      if (!periodo) gravarCursor(user, { id: info.id, maxId });
       await esperar(sortear(PAUSA_PEDIDO));
     }
-    gravarCursor(user, null);
+    if (!periodo) gravarCursor(user, null);
   }
 
   async function executar(tarefa) {
@@ -589,19 +626,26 @@
     try { f ? localStorage.setItem(CHAVE_FILA, JSON.stringify(f)) : localStorage.removeItem(CHAVE_FILA); } catch (_) { /* ignora */ }
   }
 
-  async function coletarFila(usuarios) {
+  async function coletarFila(usuarios, modo) {
     const salva = lerFila();
-    const mesma = salva && salva.todos.join(' ') === usuarios.join(' ');
+    const mesma = salva && salva.todos.join(' ') === usuarios.join(' ') && (salva.modo || 'completo') === modo;
     const feitos = mesma ? salva.feitos.filter((u) => perfis.has(u)) : [];
-    gravarFila({ todos: usuarios, feitos });
+    // No modo completo, perfil com a grade já toda carregada não precisa de pedido.
+    if (modo === 'completo') {
+      for (const u of usuarios) {
+        const t = totalDe(u);
+        if (!feitos.includes(u) && perfis.has(u) && t != null && postsDe(u).length >= t) feitos.push(u);
+      }
+    }
+    gravarFila({ todos: usuarios, feitos, modo });
     if (feitos.length) status(`Continuando a fila: ${feitos.length}/${usuarios.length} perfis já coletados.`);
     try {
       const pendentes = usuarios.filter((u) => !feitos.includes(u));
       for (const [i, u] of pendentes.entries()) {
         status(`Fila ${feitos.length + 1}/${usuarios.length}: @${u}`);
-        await coletarPerfil(u);
+        await coletarPerfil(u, modo);
         feitos.push(u);
-        gravarFila({ todos: usuarios, feitos });
+        gravarFila({ todos: usuarios, feitos, modo });
         if (i < pendentes.length - 1) {
           const pausa = sortear(PAUSA_PERFIL);
           await esperarContando(pausa, `@${u} pronto. Próximo perfil em`);
@@ -755,7 +799,7 @@
 
   // Origem de cada dado do perfil, mostrada ao lado do campo e exportada no CSV.
   const FONTES = {
-    API: 'botão "Coletar via API" (web_profile_info)',
+    API: 'botões de coleta via API (web_profile_info)',
     JSON: 'dados internos que o próprio site carregou',
     'cabeçalho': 'texto visível no cabeçalho do perfil',
     'cabeçalho ≈': 'só o domínio exibido no cabeçalho ("dominio.com e mais N"); o caminho do link pode faltar',
@@ -841,6 +885,7 @@
       total: d.posts,
       n_periodo: { v: per ? String(per.n) : '', f: '' },
       comentarios_periodo: { v: per ? String(per.comentarios) : '', f: '' },
+      curtidas_periodo: { v: per ? String(per.curtidas) : '', f: '' },
     };
     for (const k in valores) {
       const { v, f } = valores[k];
@@ -854,20 +899,32 @@
     el.avisoNome.textContent = d.nome_perfil.v && d.nome_perfil.v !== d.nome.v ? ` (no perfil: "${d.nome_perfil.v}")` : '';
     el.avisoPrimeiro.textContent = !ps.length ? '' : completo ? '' : ` (parcial: ${ps.length}/${total ?? '?'} posts)`;
 
+    atualizarIndicios(u, ps);
+    const pr = prontidao(u, ps, d, per);
+    el.pronto.className = `pronto ${pr.periodo ? 'ok' : 'pendente'}`;
+    el.pronto.textContent = (pr.periodo ? '✅ Pronto para registrar' : `⏳ Pendente: ${pr.pendencias.join('; ')}`) +
+      (pr.primeiro ? ' · primeiro post definitivo' : ' · primeiro post ainda parcial (use "Histórico completo")');
+
     // Campos do período: só aparecem com alguma data no filtro.
     el.blocoPeriodo.style.display = per ? '' : 'none';
     if (!per) return;
     // Se a grade não está toda carregada e o período começa antes do post mais antigo
     // carregado, pode haver posts do período que ainda não vieram.
     const maisAntigo = ps.length ? diaLocal(ps[0].taken_at) : '';
-    const podeFaltar = !completo && (!dataDe || !maisAntigo || dataDe <= maisAntigo);
+    const podeFaltar = !periodoCoberto(u, ps) && (!dataDe || !maisAntigo || dataDe <= maisAntigo);
     const parcial = podeFaltar ? ' (parcial: carregue mais posts)' : '';
     el.avisoPeriodo.textContent = parcial;
-    el.avisoComentarios.textContent = parcial + (per.semContagem ? ` (${per.semContagem} post(s) sem contagem)` : '');
+    const dm = (ts) => new Date(ts * 1000).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+    const medicao = per.medidoDe ? (dm(per.medidoDe) === dm(per.medidoAte) ? ` · medidos em ${dm(per.medidoDe)}` : ` · medidos entre ${dm(per.medidoDe)} e ${dm(per.medidoAte)}`) : '';
+    el.avisoComentarios.textContent = parcial + (per.semContagem ? ` (${per.semContagem} post(s) sem contagem)` : '') + medicao +
+      (per.semMedicao ? ` (${per.semMedicao} sem data de medição: coletados antes desta versão)` : '');
+    el.avisoCurtidas.textContent = parcial + (per.semCurtidas ? ` (${per.semCurtidas} post(s) com curtidas ocultas)` : '');
     const rotuloPosts = contarCompartilhados ? 'Posts no período (próprios + compartilhados)' : 'Posts próprios no período';
     const rotuloCom = contarCompartilhados ? 'Comentários no período (soma, próprios + compartilhados)' : 'Comentários no período (soma, posts próprios)';
     if (el.rotulos.n_periodo.textContent !== rotuloPosts) el.rotulos.n_periodo.textContent = rotuloPosts;
     if (el.rotulos.comentarios_periodo.textContent !== rotuloCom) el.rotulos.comentarios_periodo.textContent = rotuloCom;
+    const rotuloCurt = contarCompartilhados ? 'Curtidas no período (soma, próprios + compartilhados)' : 'Curtidas no período (soma, posts próprios)';
+    if (el.rotulos.curtidas_periodo.textContent !== rotuloCurt) el.rotulos.curtidas_periodo.textContent = rotuloCurt;
     const notas = [];
     if (resumo.colabOutroDono) {
       notas.push(contarCompartilhados
@@ -891,11 +948,19 @@
   function resumoPeriodo(ps, u) {
     if (!dataDe && !dataAte) return null;
     const doPeriodo = ps.filter(passaData);
-    const conta = (lista) => ({
-      n: lista.length,
-      comentarios: lista.reduce((s, p) => s + (Number(p.comentarios) || 0), 0),
-      semContagem: lista.filter((p) => p.comentarios === '').length,
-    });
+    const conta = (lista) => {
+      const medidos = lista.map((p) => p.medido_em).filter(Boolean);
+      return {
+        n: lista.length,
+        comentarios: lista.reduce((s, p) => s + (Number(p.comentarios) || 0), 0),
+        semContagem: lista.filter((p) => p.comentarios === '').length,
+        curtidas: lista.reduce((s, p) => s + (Number(p.curtidas) || 0), 0),
+        semCurtidas: lista.filter((p) => p.curtidas === '').length,
+        medidoDe: medidos.length ? Math.min(...medidos) : 0,
+        medidoAte: medidos.length ? Math.max(...medidos) : 0,
+        semMedicao: lista.filter((p) => p.comentarios !== '' && !p.medido_em).length,
+      };
+    };
     const colabOutro = doPeriodo.filter((p) => p.perfil && p.perfil !== u);
     return {
       proprios: conta(doPeriodo.filter((p) => p.perfil === u)),
@@ -903,6 +968,96 @@
       colabOutroDono: colabOutro.length,
       semDono: doPeriodo.filter((p) => !p.perfil).length,
     };
+  }
+
+  // Cobertura do período: a grade toda carregada, ou algum post não fixado anterior à
+  // data "De" (sinal de que a paginação já passou do início do período).
+  function periodoCoberto(u, ps) {
+    const total = totalDe(u);
+    if (total != null && ps.length >= total) return true;
+    return !!dataDe && ps.some((p) => !p.fixado && diaLocal(p.taken_at) < dataDe);
+  }
+
+  // Os campos só estão prontos para ir ao Notion quando nenhum é parcial ou aproximado.
+  function prontidao(u, ps, d, per) {
+    const total = totalDe(u);
+    const pendencias = [];
+    if (!d.nome.v) pendencias.push('nome não lido');
+    if (!d.seguidores.v) pendencias.push('seguidores não lidos');
+    else if (d.seguidores.f.includes('≈')) pendencias.push('seguidores aproximados (use "Coletar período")');
+    if (!d.posts.v) pendencias.push('total de posts não lido');
+    else if (d.posts.f.includes('≈')) pendencias.push('total de posts aproximado');
+    if (!per) pendencias.push('sem período definido');
+    else {
+      if (!periodoCoberto(u, ps)) pendencias.push('período não coberto (carregue mais posts)');
+      if (per.semContagem) pendencias.push(`${per.semContagem} post(s) sem contagem de comentários`);
+    }
+    return { periodo: !pendencias.length, pendencias, primeiro: total != null && ps.length >= total };
+  }
+
+  // ---------- indícios de aluguel, venda e cobrança ----------
+
+  // Termos procurados na bio e nas legendas (sem acento, minúsculas). Indício não é
+  // prova: a lista mostra o trecho e o link para conferir.
+  const INDICIOS = {
+    aluguel: /\balug(a|am|amos|ar|ue|uel|ueis)\b|\blocacao de jogos|\bleve (o |seu )?jogo|\bjogos? (para|pra) levar/,
+    venda: /\bvend(a|as|emos|endo|e|e-se)\b|\ba venda\b|\bloja (virtual|online|fisica)\b|\bnossa loja\b|\bpre-?venda|\bencomend|\bdisponive(l|is) (na|em) (nossa )?loja/,
+    precificacao: /\btaxa (de )?(mesa|ludica|de jogos?|de entrada|de acesso|de uso|do acervo)\b|\bcouvert\b|\bpor pessoa\b|\bconsumacao minima|\bpor hora\b|\bpasse livre\b|\bentrada (gratuita|franca|livre)\b|\bjogue a vontade\b|\bvalor (por|da|de) (pessoa|mesa|hora|entrada)\b|\bsem taxa\b/,
+  };
+
+  let cacheIndicios = { chave: '', valor: null };
+
+  function indicios(u, ps) {
+    const api = perfis.get(u) || {};
+    const bio = api.bio || capturados.get(u)?.bio || '';
+    const chave = `${u}|${ps.length}|${bio.length}`;
+    if (cacheIndicios.chave === chave) return cacheIndicios.valor;
+    const textos = [
+      ...(bio ? [{ origem: 'bio', data: '', url: `https://www.instagram.com/${u}/`, texto: bio }] : []),
+      ...ps.filter((p) => p.legenda).map((p) => ({ origem: 'post', data: dataCurta(p.taken_at), url: p.url, texto: p.legenda })),
+    ].reverse(); // mais recentes primeiro; a bio vai para o fim e volta ao topo abaixo
+    const r = {};
+    for (const [cat, re] of Object.entries(INDICIOS)) {
+      r[cat] = [];
+      for (const t of textos) {
+        const plano = semAcento(t.texto);
+        const m = plano.match(re);
+        if (!m) continue;
+        // Trecho em volta do termo. As posições do match valem para o texto em NFD sem
+        // acentos (o semAcento só remove as marcas e põe em minúsculas).
+        const norm = t.texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const ini = Math.max(0, m.index - 50);
+        const trecho = norm.slice(ini, m.index + m[0].length + 60).replace(/\s+/g, ' ').trim();
+        const precos = cat === 'precificacao' ? (trecho.match(/r\$\s?\d+(?:[.,]\d{2})?/gi) || []).map((x) => x.replace(/\s/g, '')) : [];
+        r[cat].push({ ...t, termo: m[0], trecho, precos });
+      }
+      r[cat].sort((a, b) => (a.origem === 'bio' ? -1 : b.origem === 'bio' ? 1 : 0));
+    }
+    cacheIndicios = { chave, valor: r };
+    return r;
+  }
+
+  const ROTULOS_INDICIOS = { aluguel: 'Aluguel de jogos', venda: 'Venda de jogos', precificacao: 'Precificação / couvert' };
+  let chaveIndiciosPainel = '';
+
+  function atualizarIndicios(u, ps) {
+    const ind = indicios(u, ps);
+    const chave = `${u}|${ps.length}|${Object.values(ind).map((x) => x.length).join(',')}`;
+    if (chave === chaveIndiciosPainel) return;
+    chaveIndiciosPainel = chave;
+    el.indiciosTitulo.textContent = `Indícios na bio e legendas (${Object.keys(ind).map((k) => `${ROTULOS_INDICIOS[k].split(' ')[0].toLowerCase()} ${ind[k].length}`).join(' · ')})`;
+    el.indicios.replaceChildren(...Object.keys(ind).flatMap((k) => {
+      const lista = ind[k];
+      const precos = [...new Set(lista.flatMap((x) => x.precos))];
+      const cab = criar('p', { className: 'subtitulo', textContent: `${ROTULOS_INDICIOS[k]}: ${lista.length ? `há indício (${lista.length})` : 'sem indício nos textos carregados'}${precos.length ? ` · valores citados: ${precos.join(', ')}` : ''}` });
+      const itens = lista.slice(0, 15).map((x) => criar('div', { className: 'item' }, [
+        criar('a', { href: x.url, target: '_blank', title: x.texto }, [
+          criar('b', { textContent: x.origem === 'bio' ? 'bio' : x.data }),
+          criar('span', { textContent: `…${x.trecho}…` }),
+        ]),
+      ]));
+      return [cab, criar('div', { className: 'lista' }, itens)];
+    }));
   }
 
   async function copiar(texto, botao) {
@@ -1019,6 +1174,12 @@
     label{display:inline-block;margin-right:12px}
     .subtitulo{font-weight:700;margin-top:10px}
     summary.subtitulo{cursor:pointer;margin:10px 0 6px}
+    .pronto{padding:5px 8px;border-radius:6px;font-size:12px;font-weight:600}
+    .pronto.ok{background:#2e7d3222;color:inherit;border:1px solid #2e7d32}
+    .pronto.pendente{background:#ef6c0022;color:inherit;border:1px solid #ef6c00}
+    select{width:100%;box-sizing:border-box;margin:6px 0;padding:4px 6px;font:inherit;
+      background:transparent;color:inherit;border:1px solid #888;border-radius:6px}
+    select option{color:#111}
     .lista{max-height:260px;overflow:auto;border-top:1px solid #8885}
     .lista .item{display:flex;gap:4px;align-items:center;border-bottom:1px solid #8885}
     .lista a{flex:1 1 auto;min-width:0;display:block;padding:5px 2px;color:inherit;text-decoration:none;font-size:12px}
@@ -1074,10 +1235,16 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     el.contagens = criar('p', { className: 'status' });
-    const bApi = botao('Coletar via API', () => {
+    const bApi = botao('Coletar período (API)', () => {
       const u = perfilAtual();
-      if (u) executar(() => coletarPerfil(u).then(() => status(`@${u} completo.`)));
+      if (u) executar(() => coletarPerfil(u, 'periodo'));
     });
+    bApi.title = 'Poucos pedidos: dados do perfil e posts até a data "De". Não chega ao primeiro post.';
+    const bHistorico = botao('Histórico completo (API)', () => {
+      const u = perfilAtual();
+      if (u) executar(() => coletarPerfil(u, 'completo').then(() => status(`@${u} completo.`)));
+    });
+    bHistorico.title = 'Vai até o primeiro post (data do primeiro post). Muitos pedidos; continua de onde parou.';
     const bCsv = botao('Exportar CSV', () => { const u = perfilAtual(); if (u) exportar([u], u); });
     const bJson = botao('JSON', () => {
       const u = perfilAtual();
@@ -1087,10 +1254,14 @@
       const us = [...new Set(el.fila.value.split(/\s+/)
         .map((s) => s.replace(/^.*instagram\.com\//, '').replace(/^@/, '').split(/[/?]/)[0].toLowerCase())
         .filter(Boolean))];
-      if (us.length) executar(() => coletarFila(us));
+      if (us.length) executar(() => coletarFila(us, el.modoFila.value));
     });
+    el.modoFila = criar('select', {}, [
+      criar('option', { value: 'periodo', textContent: 'Fila: só o período (rápido)' }),
+      criar('option', { value: 'completo', textContent: 'Fila: histórico completo (primeiro post)' }),
+    ]);
     el.parar = botao('Parar', () => { parar = true; status('Parando…'); });
-    el.acoes = [bRolar, bApi, bCsv, bJson, bFila];
+    el.acoes = [bRolar, bApi, bHistorico, bCsv, bJson, bFila];
 
     const chk = criar('input', { type: 'checkbox', checked: true, onchange: (e) => { mostrarSelos = e.target.checked; aplicarSelos(); } });
     const chkNumero = criar('input', { type: 'checkbox', checked: mostrarNumero, onchange: (e) => { mostrarNumero = e.target.checked; gravarPref(PREF_NUMERO, mostrarNumero); aplicarSelos(); } });
@@ -1118,8 +1289,10 @@
     };
     el.avisoPrimeiro = criar('span');
     el.avisoNome = criar('span');
+    el.pronto = criar('p', { className: 'pronto' });
     const blocoCampos = criar('div', {}, [
       criar('p', { className: 'subtitulo', textContent: 'Dados do perfil' }),
+      el.pronto,
       campo('primeiro', 'Data do primeiro post', el.avisoPrimeiro),
       campo('seguidores', 'Seguidores'),
       campo('total', 'Total de posts (declarado no perfil)'),
@@ -1129,6 +1302,7 @@
     ]);
     el.avisoPeriodo = criar('span');
     el.avisoComentarios = criar('span');
+    el.avisoCurtidas = criar('span');
     el.foraPeriodo = criar('p', { className: 'status' });
     const chkCompart = criar('input', { type: 'checkbox', checked: contarCompartilhados,
       onchange: (e) => { contarCompartilhados = e.target.checked; gravarPref(PREF_COMPART, contarCompartilhados); atualizarResumo(); } });
@@ -1136,6 +1310,7 @@
       criar('label', {}, [chkCompart, document.createTextNode(' Contar posts compartilhados (colaborações de outro dono)')]),
       campo('n_periodo', '', el.avisoPeriodo),
       campo('comentarios_periodo', '', el.avisoComentarios),
+      campo('curtidas_periodo', '', el.avisoCurtidas),
       el.foraPeriodo,
     ]);
 
@@ -1156,13 +1331,17 @@
     el.lista = criar('div', { className: 'lista' });
     // Lista de eventos/busca recolhível; começa fechada.
     const blocoLista = criar('details', {}, [criar('summary', { className: 'subtitulo' }, [el.listaTitulo]), el.lista, el.validacao]);
+    el.indiciosTitulo = criar('span');
+    el.indicios = criar('div');
+    const blocoIndicios = criar('details', {}, [criar('summary', { className: 'subtitulo' }, [el.indiciosTitulo]), el.indicios]);
     const minimizar = criar('span', { textContent: '–' });
     const cabecalho = criar('header', {}, [el.titulo, minimizar]);
     const painel = criar('div', { id: 'igc-painel' }, [
       cabecalho,
       el.resumo,
       el.contagens,
-      criar('div', { className: 'linha' }, [bRolar, bTopo, bApi]),
+      criar('div', { className: 'linha' }, [bRolar, bTopo]),
+      criar('div', { className: 'linha' }, [bApi, bHistorico]),
       criar('div', { className: 'linha' }, [bCsv, bJson, el.parar]),
       blocoCampos,
       criar('label', {}, [chkAuto, document.createTextNode(' Rolar até o fim ao abrir um perfil')]),
@@ -1174,7 +1353,9 @@
       criar('label', {}, [chkEventos, document.createTextNode(' Posts que não são possíveis eventos')]),
       el.busca,
       blocoLista,
+      blocoIndicios,
       el.fila,
+      el.modoFila,
       criar('div', { className: 'linha' }, [bFila, bApagar]),
       el.status,
     ]);
@@ -1221,6 +1402,7 @@
     const fila = lerFila();
     if (fila && fila.feitos.length < fila.todos.length) {
       el.fila.value = fila.todos.join('\n');
+      el.modoFila.value = fila.modo || 'completo';
       status(`Fila interrompida: ${fila.feitos.length}/${fila.todos.length} perfis coletados. "Coletar fila" continua dos que faltam.`);
     }
     new MutationObserver(agendarSelos).observe(document.documentElement, { childList: true, subtree: true });
