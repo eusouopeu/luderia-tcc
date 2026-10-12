@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.11-7
+// @version      2026.10.11-8
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -498,6 +498,16 @@
 
   // ---------- campos copiáveis do perfil ----------
 
+  // Converte contagem exibida em inteiro: "60,5 mil" e "60.5K" → 60500; "1,2 mi" → 1200000;
+  // "3.456" e "1,234" → 3456 e 1234. Com sufixo, o valor é aproximado (só 1 casa decimal).
+  function inteiro(texto) {
+    const m = String(texto).trim().match(/^([\d.,]+)\s*(mil|mi|k|m)?$/i);
+    if (!m) return '';
+    if (!m[2]) return m[1].replace(/\D/g, '');
+    const fator = { mil: 1e3, k: 1e3, mi: 1e6, m: 1e6 }[m[2].toLowerCase()];
+    return String(Math.round(parseFloat(m[1].replace(',', '.')) * fator));
+  }
+
   // Junta, por ordem de confiança: coleta via API > respostas capturadas > HTML da página.
   function dadosPerfil(u) {
     const api = perfis.get(u) || {};
@@ -507,7 +517,10 @@
     const titulo = meta('og:title');
     const metaValida = titulo.toLowerCase().includes(`@${u})`);
     const nomeMeta = metaValida ? titulo.split(' (@')[0].trim() : '';
-    const segMeta = metaValida ? (meta('og:description').match(/^([\d.,]+\s*(?:mil|mi|k|m)?)\s*(?:followers|seguidores)/i)?.[1]?.trim() || '') : '';
+    const segMeta = metaValida ? inteiro(meta('og:description').match(/^([\d.,]+\s*(?:mil|mi|k|m)?)\s*(?:followers|seguidores)/i)?.[1] || '') : '';
+    // No cabeçalho, o número abreviado ("60,5 mil") traz o exato no atributo title.
+    const tituloSeg = document.querySelector(`header a[href$="/${u}/followers/"] span[title], header a[href*="/followers"] span[title]`)?.title || '';
+    const segDom = tituloSeg.replace(/\D/g, '');
     // Link da bio na página: o Instagram o embrulha em l.instagram.com/?u=<destino>.
     let siteDom = '';
     const a = document.querySelector('header a[href*="l.instagram.com"]');
@@ -515,7 +528,7 @@
     const escolher = (...vs) => vs.find((v) => v !== '' && v != null) ?? '';
     return {
       nome: escolher(api.nome, cap.nome, nomeMeta),
-      seguidores: String(escolher(api.seguidores, cap.seguidores, segMeta)),
+      seguidores: String(escolher(api.seguidores, cap.seguidores, segDom, segMeta)),
       site: escolher(api.site, cap.site, siteDom),
     };
   }
