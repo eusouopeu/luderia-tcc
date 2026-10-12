@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.12-4
+// @version      2026.10.12-5
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -204,7 +204,7 @@
 
   // `pagina`: perfil em cuja página (ou coleta via API) o post apareceu. Só é usado
   // para situar posts sem dono identificado na resposta.
-  function ingerir(dado, pagina = perfilAtual() || '', prof = 0) {
+  function ingerir(dado, pagina = perfilDaGrade() || '', prof = 0) {
     if (!dado || typeof dado !== 'object' || prof > 40) return;
     if (Array.isArray(dado)) { for (const x of dado) ingerir(x, pagina, prof + 1); return; }
     if (typeof dado.username === 'string') {
@@ -309,13 +309,23 @@
     return m && !RESERVADOS.has(m[1]) ? m[1].toLowerCase() : null;
   }
 
+  // Perfil cuja grade de posts está aberta (aba principal ou reels). A aba "marcados"
+  // fica de fora: lá aparecem posts de outros perfis que só marcaram este.
+  function perfilDaGrade() {
+    return /\/tagged\/?$/.test(location.pathname) ? null : perfilAtual();
+  }
+
   // Vínculo do post com o perfil: próprio, colaboração (o perfil é dono ou coautor)
-  // ou sem dono identificado (a resposta não trouxe o dono; vale a página da coleta).
+  // ou sem dono identificado (a resposta não trouxe o dono).
+  // A presença do post na grade do perfil (p.grades, anotada em aplicarSelos) também
+  // conta: as respostas do site às vezes omitem o dono ou a lista de coautores, e um
+  // post de outro dono só aparece na grade deste perfil se ele for coautor.
   function vinculo(p, user) {
     const coaut = p.coautores ? p.coautores.split(', ') : [];
+    const naGrade = (p.grades || []).includes(user);
     if (p.perfil === user) return coaut.length ? 'colaboração' : 'próprio';
-    if (coaut.includes(user)) return 'colaboração';
-    if (!p.perfil && p.pagina_coleta === user) return 'sem dono identificado';
+    if (coaut.includes(user) || (p.perfil && naGrade)) return 'colaboração';
+    if (!p.perfil && (p.pagina_coleta === user || naGrade)) return 'sem dono identificado';
     return '';
   }
 
@@ -384,8 +394,9 @@
   // n_posts_coletados conta também colaborações em que o dono é outro perfil (o mesmo
   // post entra em mais de um perfil); n_posts_proprios conta só os do dono, um perfil por post.
   // Colunas *_periodo: só posts cujo dono é o perfil, dentro de periodo_de..periodo_ate.
-  // Colunas *_periodo_com_compart: somam também as colaborações de outro dono em que o
-  // perfil é coautor; contagem não exclusiva (o mesmo post entra no dono e no coautor).
+  // Colunas *_periodo_com_compart: todos os posts do perfil no período, como na grade:
+  // somam também colaborações de outro dono e posts sem dono identificado; contagem não
+  // exclusiva (o mesmo post entra no dono e no coautor).
   // nome: nome exibido sem o slogan; nome_perfil: como aparece no Instagram.
   const COLS_PERFIS = ['perfil', 'nome', 'nome_perfil', 'fonte_nome', 'categoria', 'privado', 'seguidores', 'fonte_seguidores', 'seguindo',
     'n_posts_declarado', 'fonte_n_posts', 'n_posts_coletados', 'n_posts_proprios', 'grade_completa', 'n_posts_evento',
@@ -641,6 +652,7 @@
 
   function aplicarSelos() {
     const filtrando = soEventos || busca || dataDe || dataAte;
+    let gradeMudou = false;
     for (const a of document.querySelectorAll('a[href*="/p/"], a[href*="/reel/"]')) {
       if (!a.querySelector('img, video')) continue; // só links da grade
       const m = a.getAttribute('href').match(/\/(?:p|reel)\/([\w-]+)/);
@@ -648,6 +660,14 @@
       // Filtro: apaga os posts que não passam (sem dados conta como não passa).
       const opacidade = filtrando && !passaFiltro(p) ? '0.12' : '';
       if (a.style.opacity !== opacidade) a.style.opacity = opacidade;
+
+      // Anota em que grade o post foi visto (ver vinculo).
+      const grade = perfilDaGrade();
+      if (p && grade && !(p.grades || []).includes(grade)) {
+        p.grades = [...(p.grades || []), grade];
+        sujos.add(p.shortcode);
+        gradeMudou = true;
+      }
 
       let selo = a.querySelector(':scope > .igc-selo');
       if (!p || !mostrarSelos) { selo?.remove(); continue; }
@@ -675,6 +695,8 @@
         selo.replaceChildren(criar('div', { textContent: linha1 }), ...(linha2 ? [criar('div', { className: 'igc-cat', textContent: linha2 })] : []));
       }
     }
+    // Post novo na grade muda as contagens: atualiza o painel já, sem esperar o ciclo de 1 s.
+    if (gradeMudou) atualizarResumo();
   }
 
   // ---------- painel ----------
@@ -852,16 +874,20 @@
         ? `Inclui ${resumo.colabOutroDono} compartilhado(s) cujo dono é outro perfil (também contam para o dono).`
         : `Fora da conta: ${resumo.colabOutroDono} compartilhado(s) cujo dono é outro perfil.`);
     }
-    if (resumo.semDono) notas.push(`Fora da conta: ${resumo.semDono} sem dono identificado.`);
+    if (resumo.semDono) {
+      notas.push(contarCompartilhados
+        ? `Inclui ${resumo.semDono} post(s) da grade sem dono identificado na resposta do site.`
+        : `Fora da conta: ${resumo.semDono} post(s) sem dono identificado (ative os compartilhados para incluir).`);
+    }
     el.foraPeriodo.textContent = notas.join(' ');
   }
 
   // Posts do período em duas contagens:
   //  - próprios: só aqueles de que o perfil é o dono. Uma colaboração conta uma vez só,
   //    para o dono; assim a soma entre perfis fecha com o total de posts distintos.
-  //  - com compartilhados: próprios + colaborações em que o dono é outro perfil e este
-  //    é coautor. A mesma colaboração entra em mais de um perfil (contagem não exclusiva).
-  // Posts sem dono identificado ficam fora das duas.
+  //  - com compartilhados: todos os posts do perfil no período, como aparecem na grade:
+  //    próprios + colaborações de outro dono + posts sem dono identificado. A mesma
+  //    colaboração entra em mais de um perfil (contagem não exclusiva).
   function resumoPeriodo(ps, u) {
     if (!dataDe && !dataAte) return null;
     const doPeriodo = ps.filter(passaData);
@@ -873,7 +899,7 @@
     const colabOutro = doPeriodo.filter((p) => p.perfil && p.perfil !== u);
     return {
       proprios: conta(doPeriodo.filter((p) => p.perfil === u)),
-      comCompartilhados: conta(doPeriodo.filter((p) => p.perfil)),
+      comCompartilhados: conta(doPeriodo),
       colabOutroDono: colabOutro.length,
       semDono: doPeriodo.filter((p) => !p.perfil).length,
     };
