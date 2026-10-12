@@ -6,24 +6,27 @@ venv/
 # Dados brutos: textos integrais, históricos e respostas de API não são publicados (_instrucoes/4_metodologia.md §3.4)
 _data/raw/**/*.jsonl
 _logs/*.log
-# Bloco E: arquivos originais grandes (microdados e agregados do Censo); regeneráveis pelos scripts de coleta
-_data/raw/\[E\]*/**/*.7z
-_data/raw/\[E\]*/**/*.zip
-_data/raw/\[E\]*/caged/
+# Bloco B4: arquivos originais grandes (microdados e agregados do Censo); regeneráveis pelos scripts de coleta
+_data/raw/\[B4\]*/**/*.7z
+_data/raw/\[B4\]*/**/*.zip
+_data/raw/\[B4\]*/caged/
 .DS_Store
 .tmp.driveupload/
 .tmp.drivedownload/
-# Bloco A: curadoria manual e luderias aprovadas trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4)
-_data/raw/\[A\]*/bloco_b_curadoria_manual_*.xlsx
-_data/processed/\[A\]*/bloco_b_luderias_aprovadas_*.xlsx
-_data/processed/\[A\]*/bloco_b_comentarios_aprovadas_*.xlsx
+# Bloco B1: curadoria manual e luderias aprovadas trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4)
+_data/raw/\[B1\]*/B1_curadoria_manual_*.xlsx
+_data/processed/\[B1\]*/B1_luderias_aprovadas_*.xlsx
+_data/processed/\[B1\]*/B1_comentarios_aprovadas_*.xlsx
 
 # PDFs de terceiros baixados para leitura (direitos autorais; repositório público)
 bibliografia/leituras-P1/
 
-# Bloco A: cardápios originais (PDF, imagens, HTML de terceiros); só a transcrição em CSV é publicada
-_data/raw/\[A\]*/cardapios/*
-!_data/raw/\[A\]*/cardapios/transcricao/
+# Bloco B1: cardápios originais (PDF, imagens, HTML de terceiros); só a transcrição em CSV é publicada
+_data/raw/\[B1\]*/cardapios/*
+!_data/raw/\[B1\]*/cardapios/transcricao/
 
-# Bloco D: fotos do app de observação (cardápio, estante: material de terceiros); só o texto transcrito é publicado
-_data/raw/\[D\]*/app/fotos/
+# Bloco B3: fotos do app de observação (cardápio, estante: material de terceiros); só o texto transcrito é publicado
+_data/raw/\[B3\]*/app/fotos/
+
+# Versões automáticas dos textos (mod tcc do Claude Code)
+.tcc-historico/

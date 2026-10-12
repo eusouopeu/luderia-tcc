@@ -1,0 +1,68 @@
+# TCC Luderia
+
+Plano de negócios baseado em evidências para uma luderia/ludobar/quiz-bar em Salvador (BA), posicionada para o público casual. Trabalho de Conclusão de Curso, Bacharelado em Administração, Escola de Administração da UFBA.
+
+Todo número do texto pode ser gerado de novo por um script deste repositório. As decisões de desenho e as limitações de cada bloco estão em [_instrucoes/4_metodologia.md](_instrucoes/4_metodologia.md).
+
+## Estrutura
+
+| Pasta | Conteúdo |
+|---|---|
+| `textos/` | Projeto de pesquisa, cronograma, registro prévio e capítulos |
+| `_instrucoes/` | Instruções por capítulo (ver [CLAUDE.md](CLAUDE.md)) |
+| `_src/[Bn] Fonte/` | Scripts de coleta, tratamento e análise, um bloco por pasta |
+| `_data/raw/[Bn] Nome/` | Dados brutos (parte não publicada: ver `.gitignore`) |
+| `_data/processed/[Bn] Nome/` | Tabelas e gráficos tratados |
+| `bibliografia/`, `docs/` | Referências, diagnóstico bibliográfico, registro de alterações |
+| `app-observacao/` | App Android usado na contagem direta (Bloco B3) |
+| `site-apresentacao/` | Site da apresentação oral |
+| `arquivados/` | Rascunhos e saídas do desenho anterior |
+
+## Pipeline
+
+Cada script segue a sequência `collect` (coleta) → `build` (tratamento) → `analise`. Os scripts se chamam `<etapa>_Bn_<conteúdo>.py` e as saídas, `Bn_<conteúdo>`. Os blocos estão em ordem de relevância para o plano.
+
+| Bloco | Fonte | Scripts principais | Uso no plano |
+|---|---|---|---|
+| **B1** Estabelecimentos e cardápios | Google Places API, OpenStreetMap, curadoria manual | `collect_B1_places` → `collect_B1_details` (`--sem-reviews`) → `build_B1_planilha` → `build_B1_planilhas_regic` → `analise_B1_limiares` → `build_B1_triagem_manual` → `build_B1_cardapios_planilha` | Concorrência, preço, ticket |
+| **B2** Avaliações recentes | Google Maps (avaliações até "um mês atrás") | `analise_B2_conteudo_bardin` | Proposta de valor, reclamações, fluxo |
+| **B3** Contagem direta de ocupação | Observação na São Jogue (app) e NFC-e | `build_B3_contagem_sorteio` → `analise_B3_contagem`, `build_B3_ocr_fotos` | Ocupação, giro, calibração |
+| **B4** Bases públicas | IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA | `collect_B4_*` → `build_B4_*` | Demanda, custos, tributos, taxa de desconto |
+| **B5** Jogos | Ludopedia | `collect_B5_ids` → `scrape_B5_ranking` → `select_B5_top_n` → `collect_B5_details` → `build_B5_dataset` → `analise_B5_correlacao_clusters` | Acervo (menor relevância) |
+| **B6** Histórico dos avaliadores | — | — | Retirado em 18/09/2026 |
+
+Todo script roda a partir de qualquer diretório:
+
+```bash
+python3 "_src/[B1] Google Places (estabelecimentos)/analise_B1_limiares.py"
+```
+
+## Instalação
+
+Python 3.11+:
+
+```bash
+pip install -r requirements.txt
+```
+
+As chaves de API ficam em `.env`, na raiz, que não é versionado: `GOOGLE_PLACES_API_KEY` e `LUDOPEDIA_APP_ID`, `LUDOPEDIA_APP_KEY`, `LUDOPEDIA_ACCESS_TOKEN`.
+
+O site e o app usam [pnpm](https://pnpm.io). Os pacotes ficam num repositório global (`~/Library/pnpm/store`), compartilhado entre projetos, e cada `node_modules` só tem links para ele.
+
+```bash
+npm i -g pnpm
+```
+
+```bash
+pnpm --dir site-apresentacao install
+```
+
+```bash
+pnpm --dir site-apresentacao dev
+```
+
+## Regras de dados
+
+- Toda tabela agregada fecha com o total: cada unidade conta em um único grupo, atribuído por atributo próprio.
+- Texto integral de avaliações, respostas de API e cardápios de terceiros não são publicados (`.gitignore`).
+- Mudanças no projeto ficam em [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md).

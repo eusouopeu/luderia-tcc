@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "luderia-tcc-dev",
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "pnpm",
       "runtimeArgs": [
-        "--prefix",
+        "--dir",
         "site-apresentacao",
         "run",
         "dev"
@@ -14,9 +14,9 @@
     },
     {
       "name": "app-observacao",
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "pnpm",
       "runtimeArgs": [
-        "--prefix",
+        "--dir",
         "app-observacao",
         "run",
         "dev"

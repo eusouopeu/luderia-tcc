@@ -11,7 +11,7 @@ const mediana = (xs: number[]) => {
 }
 const r1 = (x: number | null) => (x === null ? null : Math.round(x * 10) / 10)
 
-/** Indicadores de uma visita (saídas do Bloco D em _instrucoes/4_metodologia.md). */
+/** Indicadores de uma visita (saídas do Bloco B3 em _instrucoes/4_metodologia.md). */
 export function resumoVisita(e: Estado, visitaId: string) {
   const v = e.visitas.find((x) => x.id === visitaId)!
   const u = e.unidades.find((x) => x.id === v.unidadeId)

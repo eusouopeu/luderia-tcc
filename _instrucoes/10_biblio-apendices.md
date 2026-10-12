@@ -72,11 +72,11 @@ Fonte: elaborado pelo próprio autor
 | B | Registro de premissas completo | [8_financeiro.md](8_financeiro.md) |
 | C | Demonstrativos financeiros detalhados (DRE e fluxo de caixa mensais) | Modelo financeiro |
 | D | Checagens de coerência | [8_financeiro.md](8_financeiro.md) §5 |
-| E | Bloco A — base de estabelecimentos, critérios de curadoria e cardápios | `_data/processed/bloco_b_*`, `cardapios_*` |
-| F | Bloco B — manual de codificação, validação do dicionário, resultados confirmatórios e exploratórios | `_data/processed/bloco_c_*` |
-| G | Bloco D — protocolo, sorteio, registros da contagem direta e números das NFC-e | `_data/processed/contagem_*` |
+| E | Bloco B1 — base de estabelecimentos, critérios de curadoria e cardápios | `_data/processed/[B1] Estabelecimentos e cardapios/B1_*` |
+| F | Bloco B2 — manual de codificação, validação do dicionário, resultados confirmatórios e exploratórios | `_data/processed/[B2] Avaliacoes recentes/B2_*` |
+| G | Bloco B3 — protocolo, sorteio, registros da contagem direta e números das NFC-e | `_data/processed/[B3] Contagem direta de ocupacao/B3_*` |
 | H | Registro prévio e emendas | `textos/registro_previo_luderia.md` |
-| I | Bloco F — correlações, clusters e perfis de jogos (se o bloco for mantido) | `_data/processed/bloco_a_*` |
+| I | Bloco B5 — correlações, clusters e perfis de jogos (se o bloco for mantido) | `_data/processed/[B5] Jogos (ludopedia)/B5_*` |
 | J | Dicionário de variáveis | A criar no repositório |
 | K | Repositório e produto visual — links e instruções de reprodução | README do repositório; `site-apresentacao/` |
 

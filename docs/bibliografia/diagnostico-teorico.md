@@ -29,7 +29,7 @@ Legenda do campo **Natureza**:
 
 ## 1. Variáveis e indicadores
 
-### 1.1 Variáveis do Bloco A (estabelecimentos e cardápios)
+### 1.1 Variáveis do Bloco B1 (estabelecimentos e cardápios)
 
 | Cód. | Variável | Definição operacional | Mensuração | Natureza | Problema de validade |
 |---|---|---|---|---|---|
@@ -43,7 +43,7 @@ Legenda do campo **Natureza**:
 | A10–A11 | Horário, endereço, shopping × rua | Registro | Horas; binária | Op | — |
 | — | Cesta por pessoa | Couvert + 1 bebida + 1 entrada ou prato, em P25/mediana/P75 | R$ | Op+Fund | Composição arbitrária. Os percentis definem a "faixa" de H5 pelo mesmo cardápio, o que pode tornar o teste quase tautológico |
 
-### 1.2 Variáveis do Bloco B (avaliações)
+### 1.2 Variáveis do Bloco B2 (avaliações)
 
 | Cód. | Variável | Definição operacional | Natureza | Problema de validade |
 |---|---|---|---|---|
@@ -51,11 +51,11 @@ Legenda do campo **Natureza**:
 | B02/B03 | `asp_*`, `neg_*`, `pos_*` | Presença e polaridade de 11 aspectos por dicionário de termos | Fund | **Endogeneidade:** quem dá nota baixa tende a citar aspectos negativos; a menção não causa a nota. Validade de construto dos 11 aspectos (de onde vêm?). Dicionário com negação e ambiguidade |
 | B04 | Tamanho do grupo citado | Número extraído do texto | Op | Relato espontâneo e raro; vies para grupos grandes |
 | B05 | `valor_pessoa` | R$ por pessoa citado, ou conta ÷ pessoas | Fund | Poucos textos citam valor; autosseleção; mistura de conta com consumo individual |
-| B06 | Jogos citados | Binária por jogo (dicionário do Bloco F) | Op | Depende do Bloco F, que "pode ser retirado" |
+| B06 | Jogos citados | Binária por jogo (dicionário do Bloco B5) | Op | Depende do Bloco B5, que "pode ser retirado" |
 | B07 | **Velocidade de avaliações** | Nº de avaliações com texto até "um mês atrás" ÷ janela em dias | Fund | **Variável central da estimativa de demanda.** Proxy de fluxo com base teórica não demonstrada (§6.1) |
 | — | `politica_cobranca` × `reclamacao_preco` | Proporção de avaliações com `neg_preco` por estabelecimento | Fund | Confunde política de cobrança com nível de preço |
 
-### 1.3 Variáveis do Bloco D (contagem direta)
+### 1.3 Variáveis do Bloco B3 (contagem direta)
 
 | Cód. | Variável | Definição operacional | Natureza | Problema de validade |
 |---|---|---|---|---|
@@ -64,12 +64,12 @@ Legenda do campo **Natureza**:
 | D03 | Tamanho do grupo | Pessoas por grupo na entrada | Op | — |
 | D04 | Mesas disponíveis e ocupadas visíveis | Contagem de fora | Op | Não vê o salão inteiro |
 | D05 | Número da NFC-e | Início e fim da visita; notas/dia no intervalo de 15 dias | Fund (metodológica) + Legal | Pressupõe numeração sequencial por série e unidade, sem venda de balcão ou delivery misturada. Sem fonte técnica |
-| — | **Taxa de ocupação** | "Proporção dos lugares disponíveis efetivamente ocupados" (projeto, Quadro 01) | Fund | A definição usa lugares; o Bloco D mede pessoas e mesas visíveis. Falta definir o denominador (lugares, mesas, m²) e o período |
+| — | **Taxa de ocupação** | "Proporção dos lugares disponíveis efetivamente ocupados" (projeto, Quadro 01) | Fund | A definição usa lugares; o Bloco B3 mede pessoas e mesas visíveis. Falta definir o denominador (lugares, mesas, m²) e o período |
 | — | **Giro de mesa** | "Número de grupos por mesa por período, inverso da permanência média" | Fund | Definição só vale se a mesa fica ocupada o tempo todo; sem tempo ocioso o inverso da permanência não é o giro |
 | — | **Permanência** | Saída − entrada, com observações censuradas | Fund | Censura pelo início e fim da visita exige método próprio (análise de sobrevivência) |
 | — | Visitantes/semana | Via notas fiscais × pessoas por nota; ou pessoas/hora × horas | Fund | Duas rotas com dias úteis inferidos; com 1 estabelecimento e 4 visitas |
 
-### 1.4 Variáveis do Bloco E (bases públicas)
+### 1.4 Variáveis do Bloco B4 (bases públicas)
 
 | Cód. | Variável | Natureza | Observação |
 |---|---|---|---|
@@ -81,7 +81,7 @@ Legenda do campo **Natureza**:
 | E07 | Alíquotas do Simples; CNAE | Legal | LC 123/2006; CONCLA |
 | E08 | Selic e IPCA projetados (Focus) | Fund | Usados como taxa de desconto, o que não é o mesmo que custo de capital do projeto (§6.6) |
 
-### 1.5 Variáveis do Bloco F (jogos)
+### 1.5 Variáveis do Bloco B5 (jogos)
 
 | Variável | Natureza | Observação |
 |---|---|---|
@@ -125,7 +125,7 @@ Legenda do campo **Natureza**:
 | Perfil do jogador de jogos de tabuleiro | 2.4; 5.2 | parcial | Fontes listadas, mas autosselecionadas (hobbyista) |
 | Satisfação, qualidade de serviço, atributos obrigatórios × atrativos (Kano) | H1; penalidade-recompensa | não | Kano (1984) `[A VERIFICAR]` |
 | Servicescape / ambiente físico | H1 ("ambiente") | não | **Sem fonte** |
-| Avaliações online como indicador de demanda e de qualidade | Bloco B inteiro | não | **Sem fonte** |
+| Avaliações online como indicador de demanda e de qualidade | Bloco B2 inteiro | não | **Sem fonte** |
 | Análise de conteúdo e validade de dicionário | 3.4 | não | Bardin (2011) |
 | Concordância entre codificadores (kappa) | 3.4 | não | Cohen (1960) `[A VERIFICAR]` |
 | Registro prévio e divisão exploratória/confirmatória | 3.5 | não | **Sem fonte** |
@@ -171,7 +171,7 @@ Legenda do campo **Natureza**:
 | M2 | Hierarquia de tipos de dados: comportamental com dinheiro > ... > atitudinal | Op+Fund | Argumento "comportamento > intenção declarada" sustenta a exclusão de questionários |
 | M3 | **Sem questionários** | Op+Fund | Decisão defensável, mas o texto precisa da literatura sobre intenção × comportamento e viés de não resposta |
 | M4 | Avaliações do Google Maps como fonte de dados | Fund | Validade, autosseleção, viés de resposta; termos de uso da plataforma; ética de coleta automatizada |
-| M5 | Recorte do Bloco B: avaliações com texto até "um mês atrás" | Op | Escolha operacional; a limitação (rótulo arredondado, sem sazonalidade) é declarada |
+| M5 | Recorte do Bloco B2: avaliações com texto até "um mês atrás" | Op | Escolha operacional; a limitação (rótulo arredondado, sem sazonalidade) é declarada |
 | M6 | Corte de 100 avaliações e 14 metrópoles da REGIC | Op | Fonte oficial (IBGE REGIC 2018); o corte de 100 é do autor |
 | M7 | **Velocidade de avaliações como proxy de fluxo, calibrada por 1 estabelecimento** | Fund | Validade do proxy e do estimador por razão. Sem erro-padrão com n=1 |
 | M8 | Contagem direta: 4 visitas, 3 h, sorteio de hora de início | Op+Fund | Amostragem de tempo; representatividade; critério de parada |
@@ -212,7 +212,7 @@ Legenda do campo **Natureza**:
 
 - A razão de calibração vem de **um** estabelecimento (São Jogue, duas unidades) e quatro visitas. Não permite estimar a variância da razão entre estabelecimentos; a limitação é declarada, mas o modelo de cálculo (item 3 do modelo de calibração) aplica a mesma razão a todos.
 - A propensão a avaliar varia por tipo de público, política de incentivo do estabelecimento ("avalie e ganhe"), presença do Google Local Guides, turismo. Nada disso entra no modelo.
-- O Bloco B só conta avaliações **com texto**. A razão avaliações-com-texto ÷ visitantes depende de quanto cada público escreve.
+- O Bloco B2 só conta avaliações **com texto**. A razão avaliações-com-texto ÷ visitantes depende de quanto cada público escreve.
 - A janela é um mês com rótulo relativo ("um mês atrás") arredondado pelo Google.
 - **Falta literatura** sobre: avaliações online como proxy de demanda e de receita; viés de seleção em avaliações; estimador por razão e seu erro.
 
@@ -228,13 +228,13 @@ Vários itens citam um construto que não os sustenta: A01 (avaliação média) 
 
 ### 6.4 Ferramentas estratégicas aplicadas a um negócio único e local
 
-- Cinco forças foi concebida para setores/indústrias. Aplicar a uma luderia em Salvador exige delimitar o "setor" (lazer social? bares? jogos?). Hoje o Bloco A trata como setor "luderias em 14 metrópoles", e a rivalidade que importa é a de Salvador (poucos concorrentes).
+- Cinco forças foi concebida para setores/indústrias. Aplicar a uma luderia em Salvador exige delimitar o "setor" (lazer social? bares? jogos?). Hoje o Bloco B1 trata como setor "luderias em 14 metrópoles", e a rivalidade que importa é a de Salvador (poucos concorrentes).
 - Há divergência entre autores sobre a utilidade de Oceano Azul versus Cinco forças e sobre o uso de SWOT; o texto deve confrontar, como exige `2_ref-teorico.md`.
 - **Oceano Azul** só se sustenta se o recorte casual permanecer (§0.1). A afirmação de que o Nintendo Wii "expandiu um mercado de nicho pela eliminação da barreira de entrada" (introdução) precisa de fonte própria; não está confirmado que Kim & Mauborgne tratem do Wii.
 
 ### 6.5 Atitudinal × comportamental e a exclusão de questionários (M2, M3)
 
-A decisão é coerente internamente, mas a justificativa ("viés de amostragem e de não resposta") é do autor. A literatura sobre a lacuna entre intenção e comportamento e sobre viés hipotético em preferência declarada fundamentaria. Cuidado: a avaliação online também é um dado declarado e autosselecionado; a hierarquia coloca "rastros digitais" em 5º e "declarado factual" em 6º, o que é defensável, mas precisa de argumento, pois o Bloco B sustenta H1, H3, H5.
+A decisão é coerente internamente, mas a justificativa ("viés de amostragem e de não resposta") é do autor. A literatura sobre a lacuna entre intenção e comportamento e sobre viés hipotético em preferência declarada fundamentaria. Cuidado: a avaliação online também é um dado declarado e autosselecionado; a hierarquia coloca "rastros digitais" em 5º e "declarado factual" em 6º, o que é defensável, mas precisa de argumento, pois o Bloco B2 sustenta H1, H3, H5.
 
 ### 6.6 Taxa de desconto
 
@@ -261,7 +261,7 @@ Kappa ≥ 0,70 e F1 ≥ 0,70; acerto exato ≥ 0,80; ≥30 menções; ≥10 aval
 
 ### 6.11 Coleta automatizada de avaliações
 
-A coleta do Bloco B é automatizada sobre páginas públicas do Google Maps. A seção 3.8 cobre a base legal de dados pessoais (LGPD, Res. CNS 510/2016), mas não os termos de uso da plataforma nem a literatura sobre ética de raspagem. É risco jurídico e de reputação acadêmica, não só estatístico.
+A coleta do Bloco B2 é automatizada sobre páginas públicas do Google Maps. A seção 3.8 cobre a base legal de dados pessoais (LGPD, Res. CNS 510/2016), mas não os termos de uso da plataforma nem a literatura sobre ética de raspagem. É risco jurídico e de reputação acadêmica, não só estatístico.
 
 ### 6.12 Possível inconsistência de datas na lista de leitura
 
@@ -278,7 +278,7 @@ A coleta do Bloco B é automatizada sobre páginas públicas do Google Maps. A s
 - Categorias de cardápio; composição da cesta (declarar a arbitrariedade).
 - Árvore de direcionadores; IDs de premissas; faixas pessimista/provável/otimista (justificadas caso a caso).
 - Uso do Simples Nacional, CNAE, alíquotas (fonte legal).
-- Coleta do Bloco E (fontes oficiais, sem literatura).
+- Coleta do Bloco B4 (fontes oficiais, sem literatura).
 
 **Exige fundamentação na literatura (Fund / Op+Fund):** M1–M4, M7, M10–M15, M17–M19, M21–M22; os conceitos de §2 marcados "Sem fonte"; as hipóteses H1, H3 e a justificativa de P3.
 
@@ -314,22 +314,22 @@ Em ordem de criticidade:
 
 **Formulação do autor (09/10/2026):** existe um público potencial (30 anos ou mais, casado e/ou com filhos) que frequentaria luderias se houvesse mudança no ambiente, no público ou na qualidade do serviço das luderias atuais.
 
-**Status (atualizado em 09/10/2026): guardada para a seção de estudos futuros (cap. 11.5), por decisão do autor; ver `lacunas-bibliograficas.md` §7.1.** Estado anterior: proposta, ainda não registrada. Não consta no registro prévio nem no projeto de pesquisa. Como a coleta do Bloco B e a divisão da base ainda não ocorreram, ela pode entrar como emenda datada antes de qualquer análise (registro prévio, §10).
+**Status (atualizado em 09/10/2026): guardada para a seção de estudos futuros (cap. 11.5), por decisão do autor; ver `lacunas-bibliograficas.md` §7.1.** Estado anterior: proposta, ainda não registrada. Não consta no registro prévio nem no projeto de pesquisa. Como a coleta do Bloco B2 e a divisão da base ainda não ocorreram, ela pode entrar como emenda datada antes de qualquer análise (registro prévio, §10).
 
 **Problema de operacionalização (decidir antes de buscar a literatura).** A hipótese é contrafactual ("frequentaria se..."). O projeto não usa questionários e rebaixa dado atitudinal e de intenção ao último nível (CLAUDE.md, §2). Os dados do projeto também têm limites para ela:
 
 | Dado | O que consegue mostrar | O que não consegue |
 |---|---|---|
-| Censo 2022, PNAD (Bloco E) | Tamanho do segmento em Salvador (30+, casados, com filhos) | Propensão a frequentar luderias |
-| Avaliações (Bloco B) | Reclamações sobre ambiente, barulho, público e atendimento; menções a filhos, família, idade | Quem **não foi**. Só vê quem foi e avaliou, ou seja, quem tolerou o ambiente atual |
-| Contagem direta (Bloco D) | Composição dos grupos, se o protocolo registrar crianças ou idade aparente | Hoje o protocolo proíbe registro de características individuais (3.8) |
+| Censo 2022, PNAD (Bloco B4) | Tamanho do segmento em Salvador (30+, casados, com filhos) | Propensão a frequentar luderias |
+| Avaliações (Bloco B2) | Reclamações sobre ambiente, barulho, público e atendimento; menções a filhos, família, idade | Quem **não foi**. Só vê quem foi e avaliou, ou seja, quem tolerou o ambiente atual |
+| Contagem direta (Bloco B3) | Composição dos grupos, se o protocolo registrar crianças ou idade aparente | Hoje o protocolo proíbe registro de características individuais (3.8) |
 | Cultura nas Capitais, Hábitos Culturais, POF | Comportamento de lazer e gasto do segmento | Relação com jogos de tabuleiro |
 
 Formulações possíveis, da mais testável para a menos:
 
 1. **Descritiva de tamanho (N2):** o segmento é grande em Salvador (Censo). Testável, mas não prova propensão.
-2. **De barreira observada (N3):** entre as avaliações, as menções negativas a ambiente, barulho e público associam-se a menções a filhos/família/idade. Testável no Bloco B, com a limitação de só ver quem foi.
-3. **Comparativa entre estabelecimentos (N3):** estabelecimentos com outro ambiente (diurno, em shopping, familiar) têm maior proporção de menções a filhos ou família. Testável no Bloco A + B; dependência de coletar `shopping/rua` e horário (A10, A11, já previstos).
+2. **De barreira observada (N3):** entre as avaliações, as menções negativas a ambiente, barulho e público associam-se a menções a filhos/família/idade. Testável no Bloco B2, com a limitação de só ver quem foi.
+3. **Comparativa entre estabelecimentos (N3):** estabelecimentos com outro ambiente (diurno, em shopping, familiar) têm maior proporção de menções a filhos ou família. Testável no Bloco B1 + B; dependência de coletar `shopping/rua` e horário (A10, A11, já previstos).
 4. **De intenção (N6/atitudinal):** "frequentaria se...". Só testável por questionário ou porta falsa, fora do escopo atual; entraria como validação recomendada (cap. 11).
 
-Observação de validade: as três variáveis causais da hipótese (ambiente, público, qualidade do serviço) coincidem com aspectos já codificados no Bloco B (`ambiente`, `barulho`, `atendimento`, `explicacao_jogos`). Falta codificar **perfil do cliente** (filhos, família, idade, estado civil), que hoje não existe no dicionário (3.4).
+Observação de validade: as três variáveis causais da hipótese (ambiente, público, qualidade do serviço) coincidem com aspectos já codificados no Bloco B2 (`ambiente`, `barulho`, `atendimento`, `explicacao_jogos`). Falta codificar **perfil do cliente** (filhos, família, idade, estado civil), que hoje não existe no dicionário (3.4).

@@ -50,9 +50,9 @@ Cada premissa recebe um nível. **Quanto mais alto o nível, mais confiável** (
 |---|---|---|
 | **N1** | Orçamento ou cotação real, contrato, tabela oficial | Cotação de aluguel do ponto, tabela do Simples Nacional, piso da convenção coletiva |
 | **N2** | Dado público estruturado | IBGE (população, renda), RAIS/CAGED (salários), FipeZap (aluguel comercial) |
-| **N3** | Benchmark de concorrentes medido pelo autor | Preços e horários do Bloco A |
+| **N3** | Benchmark de concorrentes medido pelo autor | Preços e horários do Bloco B1 |
 | **N4** | Referências setoriais e relatórios | Sebrae, Abrasel, CMV típico de bares |
-| **N5** | Coleta primária comportamental própria | Contagem direta de ocupação (Bloco D) |
+| **N5** | Coleta primária comportamental própria | Contagem direta de ocupação (Bloco B3) |
 | **N6** | Estimativa do autor ou entrevista informal | "Acho que dá 3 giros por noite" |
 
 **Regra de robustez:** nenhuma premissa crítica (definida pelo tornado, §4.2) pode ficar só em N6. Se não houver alternativa, ela precisa de faixa larga e aparecer destacada na análise de risco (cap. 10).
@@ -65,7 +65,7 @@ Tabela única, no apêndice do TCC e na aba `premissas` do modelo. Uma linha por
 
 | ID | Premissa | Unidade | Pessimista | Provável | Otimista | Fonte | Nível | Justificativa da faixa | Impacto no VPL |
 |---|---|---|---|---|---|---|---|---|---|
-| R03 | Ocupação em dia útil | % | 25 | 40 | 55 | Blocos B e D | N3/N5 | ... | Alto |
+| R03 | Ocupação em dia útil | % | 25 | 40 | 55 | Blocos B2 e B3 | N3/N5 | ... | Alto |
 | C07 | Aluguel | R$/mês | ... | ... | ... | FipeZap + 3 cotações | N1/N2 | ... | Médio |
 
 Regras:
@@ -99,7 +99,7 @@ Verificar antes de fechar o modelo e registrar o resultado em apêndice:
 - A capacidade física comporta a demanda projetada? (clientes/dia ≤ lugares × giros possíveis no horário)
 - A equipe dimensionada (7.5) atende a ocupação projetada?
 - CMV e margens batem com referências setoriais?
-- O preço está na faixa dos concorrentes do Bloco A? Se acima, o posicionamento justifica?
+- O preço está na faixa dos concorrentes do Bloco B1? Se acima, o posicionamento justifica?
 - A rampa de maturação é realista (6 a 12 meses, sem ocupação madura no mês 1)?
 - Encargos e impostos batem com o regime tributário do cap. 8?
 - A demanda projetada é compatível com o tamanho do público-alvo (penetração plausível)?

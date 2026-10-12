@@ -1,4 +1,4 @@
-/* Modelo do roteiro de observação (Bloco D): unidades com mesas e acervo,
+/* Modelo do roteiro de observação (Bloco B3): unidades com mesas e acervo,
    visitas (ficha, notas fiscais, temporizador), grupos nas mesas, fluxo na
    porta, contagens periódicas e medições de som. */
 
@@ -321,7 +321,7 @@ export function paraCsv(e: Estado, unidadeId?: string): string {
 const daUnidade = (e: Estado, unidadeId?: string) => (vId: string) =>
   !unidadeId || e.visitas.find((v) => v.id === vId)?.unidadeId === unidadeId
 
-/** Todos os arquivos da exportação, com o prefixo `contagem_` do Bloco D. */
+/** Todos os arquivos da exportação, com o prefixo `contagem_` do Bloco B3. */
 export function arquivosCsv(e: Estado, unidadeId?: string): { nome: string; conteudo: string }[] {
   const ok = daUnidade(e, unidadeId)
   const visitas = e.visitas.filter((v) => ok(v.id))

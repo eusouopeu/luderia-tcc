@@ -12,36 +12,36 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 
 - **Praça do plano:** Salvador (BA). A decisão de localização é o bairro e o ponto, não a cidade.
 - **Sem questionários.** Dados secundários públicos e uma única coleta primária comportamental (contagem direta de ocupação, com leitura do número da NFC-e).
-- **Estabelecimentos (Bloco A):** concorrentes com **mais de 100 avaliações** no Google Maps nas **14 capitais classificadas como metrópole pela REGIC** (IBGE); população final esperada de 100 a 150 estabelecimentos após a curadoria.
-- **Avaliações (Bloco B):** **todas as avaliações com texto publicadas até "um mês atrás"** (rótulo relativo do Google Maps na data da coleta), por estabelecimento, com texto integral. O número de avaliações varia entre estabelecimentos.
-- **Histórico dos avaliadores (Bloco C):** retirado do escopo em 18/09/2026. Saem a nota centrada no avaliador, o lift de categorias, a avaliação no mesmo dia e a sobreposição de clientela.
-- **Modelo de alimentos e bebidas:** não é avaliado. Cozinha própria, parceria ou só bar deixa de ser variável do Bloco A e passa a premissa do autor no cap. 9.
+- **Estabelecimentos (Bloco B1):** concorrentes com **mais de 100 avaliações** no Google Maps nas **14 capitais classificadas como metrópole pela REGIC** (IBGE); população final esperada de 100 a 150 estabelecimentos após a curadoria.
+- **Avaliações (Bloco B2):** **todas as avaliações com texto publicadas até "um mês atrás"** (rótulo relativo do Google Maps na data da coleta), por estabelecimento, com texto integral. O número de avaliações varia entre estabelecimentos.
+- **Histórico dos avaliadores (Bloco B6):** retirado do escopo em 18/09/2026. Saem a nota centrada no avaliador, o lift de categorias, a avaliação no mesmo dia e a sobreposição de clientela.
+- **Modelo de alimentos e bebidas:** não é avaliado. Cozinha própria, parceria ou só bar deixa de ser variável do Bloco B1 e passa a premissa do autor no cap. 9.
 - **Cardápios** de cada estabelecimento.
 - **Contagem direta de ocupação** nas duas unidades da São Jogue (única luderia de Salvador), feita do lado de fora: 2 visitas sorteadas no sábado, 03/10/2026, com hora de início sorteada e duração fixa de 3 horas, e 2 visitas de retorno 15 dias depois (domingo, 18/10/2026), na mesma unidade e hora. O número da NFC-e lido nas duas visitas dá as notas emitidas no intervalo.
 - **Bases públicas:** IBGE (Censo 2022 por setor censitário, estimativas populacionais, POF 2017–2018, PNAD Contínua, PAS, CONCLA), RAIS e Novo CAGED, FipeZap comercial, Lei Complementar 123/2006 e anexos do Simples Nacional, Banco Central (SGS e Focus).
 - **Garantias de robustez:** registro prévio das hipóteses com divisão da base em metade exploratória e metade confirmatória; validação do dicionário de codificação; efeito fixo ou ponderação por estabelecimento; tamanho de efeito; correção para múltiplas comparações; análise de sensibilidade; registro de premissas com faixas. Simulação de Monte Carlo opcional.
-- **Jogos (Bloco F):** menor relevância para as decisões do plano; pode ser retirado.
+- **Jogos (Bloco B5):** menor relevância para as decisões do plano; pode ser retirado.
 
 ### Correspondência entre blocos e arquivos do pipeline
 
-A ordem dos blocos segue a relevância para o plano. Cada bloco tem subpasta própria em `_src/`, `_data/raw/` e `_data/processed/`. Os prefixos dos arquivos já gerados seguem o desenho anterior e foram mantidos.
+Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/`. Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `<etapa>_Bn_<conteúdo>.py` nos scripts (etapa = `collect`, `build` ou `analise`). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `bases_comum.py`, `ludopedia_client.py`) não levam código. Saídas e scripts do desenho anterior ficam em `arquivados/recorte-antigo/`.
 
-| Bloco | Conteúdo | Scripts | Pasta em `_data/processed/` | Prefixo |
-|---|---|---|---|---|
-| A | Estabelecimentos e cardápios | `_src/[A] Google Places (estabelecimentos)/` | `[A] Estabelecimentos e cardapios/` | `bloco_b_` (existentes); `cardapios_` (novo) |
-| B | Avaliações recentes | `_src/[B] Google Places (comentarios)/` | `[B] Avaliacoes recentes/` | `bloco_c_` (existentes, a substituir pela nova coleta) |
-| C | Histórico dos avaliadores — **retirado em 18/09/2026** | — | — | — |
-| D | Contagem direta de ocupação | — | `[D] Contagem direta de ocupacao/` | `contagem_` (novo) |
-| E | Bases públicas | `_src/[E] Bases publicas/` | `[E] Bases publicas/` | `bases_` |
-| F | Jogos | `_src/[F] Ludopedia (jogos)/` | `[F] Jogos (ludopedia)/` | `bloco_a_` (existentes) |
+| Bloco | Conteúdo | Scripts | Pasta de dados |
+|---|---|---|---|
+| B1 | Estabelecimentos e cardápios | `_src/[B1] Google Places (estabelecimentos)/` | `[B1] Estabelecimentos e cardapios/` |
+| B2 | Avaliações recentes | `_src/[B2] Google Places (comentarios)/` | `[B2] Avaliacoes recentes/` |
+| B3 | Contagem direta de ocupação | `_src/[B3] Contagem direta de ocupacao/` | `[B3] Contagem direta de ocupacao/` |
+| B4 | Bases públicas | `_src/[B4] Bases publicas/` | `[B4] Bases publicas/` |
+| B5 | Jogos | `_src/[B5] Ludopedia (jogos)/` | `[B5] Jogos (ludopedia)/` |
+| B6 | Histórico dos avaliadores — **retirado em 18/09/2026** | — | `[B6] Historico dos avaliadores/` (vazia) |
 
 ## Divisão de subcapítulos
 
 | Subcapítulo | Conteúdo |
 |---|---|
 | **3.1 Caracterização do trabalho** | Plano de negócios baseado em evidências; pesquisa aplicada, descritivo-exploratória, quantitativa com análise de conteúdo; delineamento transversal |
-| **3.2 Hierarquia de evidências** | Escala N1–N6 ([8_financeiro.md](8_financeiro.md) §2) e hierarquia de tipos de dados ([../CLAUDE.md](../CLAUDE.md) §2); justificativa da exclusão de questionários |
-| **3.3 Fontes e instrumentos de coleta** | Blocos A, B, D, E e F: o que mede, procedimento, recorte, período, limitação |
+| **3.2 Hierarquia de evidências** | Escala N1–N6 ([8_financeiro.md](8_financeiro.md) §2) e hierarquia de tipos de dados ([1_estrutura.md](1_estrutura.md), "Princípios do plano", P2); justificativa da exclusão de questionários |
+| **3.3 Fontes e instrumentos de coleta** | Blocos B1, B2, B3, B4 e B5: o que mede, procedimento, recorte, período, limitação |
 | **3.4 Tratamento dos dados** | Pipeline; pseudonimização; validação da coleta (auditoria dos censos da fonte, reconciliação das bases públicas, consistência da contagem); construção das variáveis; dicionário de codificação e sua validação |
 | **3.5 Registro prévio e divisão da base** | Hipóteses, análises e critérios registrados antes da análise; metade exploratória e metade confirmatória |
 | **3.6 Técnicas de análise e controles** | Técnicas por área do plano; calibração da ocupação; controles estatísticos |
@@ -51,19 +51,19 @@ A ordem dos blocos segue a relevância para o plano. Cada bloco tem subpasta pr�
 
 ## 3.3 Fontes e instrumentos de coleta
 
-### Bloco A — Estabelecimentos e cardápios
+### Bloco B1 — Estabelecimentos e cardápios
 
 | Item | Descrição |
 |---|---|
 | Fonte | Google Places API; site, Instagram e cardápio digital de cada estabelecimento; OpenStreetMap |
-| Recorte | Luderias, ludobares e quiz-bares com **mais de 100 avaliações** nas **14 capitais classificadas como metrópole** pela REGIC 2018 (IBGE) e em suas regiões metropolitanas; 164 candidatos antes da curadoria manual (`bloco_b_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv`); população final esperada de 100 a 150. Cada estabelecimento é atribuído à metrópole pelo endereço |
+| Recorte | Luderias, ludobares e quiz-bares com **mais de 100 avaliações** nas **14 capitais classificadas como metrópole** pela REGIC 2018 (IBGE) e em suas regiões metropolitanas; 164 candidatos antes da curadoria manual (`B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv`); população final esperada de 100 a 150. Cada estabelecimento é atribuído à metrópole pelo endereço |
 | Variáveis | Avaliação média, volume de avaliações, política de preço, acervo declarado, entorno em 500 m e 1.000 m. O modelo de A&B não é registrado |
 | **Cardápios** | Itens oferecidos, preço por item, variedade por categoria e número de itens que exigem preparo (sem contar itens prontos, como balas, refrigerantes e água). Categorias fixas: **bebidas** (drinks, refrigerante, cerveja, não alcoólicas), **entradas** (batata, outras), **pratos principais** (hambúrguer, pizza, outros), **sobremesas**, **couvert ou taxa de jogo** |
 | Registro | Data da coleta e link do cardápio; preços em R$ com duas casas decimais |
 | Uso no plano | Concorrência (5.3), preço (6.3), cardápio (6.2), ticket médio (cap. 9) |
 | Limitação | O corte de 100 avaliações exclui casas novas ou pequenas: o recorte descreve concorrentes estabelecidos. Cardápios desatualizados ou indisponíveis; preço de cardápio não informa quanto cada pessoa consome |
 
-### Bloco B — Avaliações recentes
+### Bloco B2 — Avaliações recentes
 
 | Item | Descrição |
 |---|---|
@@ -77,11 +77,11 @@ A ordem dos blocos segue a relevância para o plano. Cada bloco tem subpasta pr�
 
 O recorte por período descreve a operação atual de cada concorrente e torna o número de avaliações uma medida direta do ritmo de avaliações. Como estabelecimentos movimentados contribuem com mais avaliações, as análises agregadas ponderam por estabelecimento ou usam efeito fixo.
 
-### Bloco C — Retirado
+### Bloco B6 — Retirado
 
 O histórico dos avaliadores foi retirado do escopo em 18/09/2026. A letra não é reaproveitada, para manter a correspondência com os arquivos já gerados.
 
-### Bloco D — Contagem direta de ocupação
+### Bloco B3 — Contagem direta de ocupação
 
 Única coleta primária do trabalho. Fornece a **âncora absoluta** de fluxo, tamanho de grupo e permanência, usada para calibrar a velocidade de avaliações (§3.6). A leitura do número da NFC-e acrescenta um registro transacional (tipo 2 na hierarquia de dados) ao que é observado na porta.
 
@@ -90,7 +90,7 @@ O histórico dos avaliadores foi retirado do escopo em 18/09/2026. A letra não 
 | Local | As duas unidades da São Jogue, única luderia de Salvador |
 | Visitas | 4 no total, 2 por unidade: 1 **sorteada** e 1 de **retorno**, 15 dias depois, na mesma unidade |
 | Períodos | Visitas sorteadas no **sábado, 03/10/2026**, as duas unidades no mesmo dia, na quinzena posterior ao pagamento dos servidores estaduais da Bahia (29/09 para inativos e pensionistas; 30/09 para ativos). Os retornos caem no **domingo, 18/10/2026**, na quinzena anterior ao pagamento de outubro (29/10). Fonte: Governo da Bahia, Tabela de Pagamentos 2026 |
-| Sorteio | Só a hora de início é sorteada (12h00 a 19h00, de hora em hora): 8 possibilidades por unidade. Um número sorteado define qual unidade escolhe primeiro; as horas de início das duas unidades distam no mínimo 2 horas. Horas em que a unidade não fica aberta pelas 3 horas seguintes são excluídas. O retorno é fixo: sorteada + 15 dias, mesma unidade e mesma hora de início; se a unidade estiver fechada, passa ao dia seguinte de funcionamento. Semente fixa (20260916), `_src/[D] Contagem direta de ocupacao/build_contagem_sorteio.py`, planilha `contagem_sorteio_visitas.xlsx`; resultado registrado antes da primeira visita |
+| Sorteio | Só a hora de início é sorteada (12h00 a 19h00, de hora em hora): 8 possibilidades por unidade. Um número sorteado define qual unidade escolhe primeiro; as horas de início das duas unidades distam no mínimo 2 horas. Horas em que a unidade não fica aberta pelas 3 horas seguintes são excluídas. O retorno é fixo: sorteada + 15 dias, mesma unidade e mesma hora de início; se a unidade estiver fechada, passa ao dia seguinte de funcionamento. Semente fixa (20260916), `_src/[B3] Contagem direta de ocupacao/build_B3_contagem_sorteio.py`, planilha `B3_contagem_sorteio_visitas.xlsx`; resultado registrado antes da primeira visita |
 | Posição do observador | Do lado de fora do estabelecimento, com vista para a entrada |
 | Duração da visita | Fixa, de 3 horas. Horário de início e de fim registrados; todas as taxas são calculadas por hora observada |
 | Registro contínuo | Entrada e saída de cada grupo: horário e número de pessoas. Grupos identificados por código para ligar entrada e saída (permanência) |
@@ -102,7 +102,7 @@ O histórico dos avaliadores foi retirado do escopo em 18/09/2026. A letra não 
 | Uso no plano | Premissas de ocupação, pessoas por mesa e giro (cap. 9); calibração do fluxo dos demais concorrentes; capacidade (7.2) |
 | Limitação | Quatro visitas em um único estabelecimento e uma única cidade, em um sábado e um domingo: a contagem não observa dias úteis, que entram pelo caminho das notas fiscais; observação de fora não vê o salão inteiro; numeração da NFC-e pode incluir delivery e vendas de balcão, e uma nota pode cobrir um grupo inteiro; permanência censurada pelo início e fim da visita |
 
-### Bloco E — Bases públicas
+### Bloco B4 — Bases públicas
 
 | Base | Variáveis | Uso no plano |
 |---|---|---|
@@ -116,11 +116,11 @@ O histórico dos avaliadores foi retirado do escopo em 18/09/2026. A letra não 
 | Lei Complementar 123/2006 e anexos do Simples Nacional | Alíquotas por faixa de receita | Tributos (8.1 e cap. 9) |
 | Banco Central — SGS e relatório Focus | Selic e IPCA observados e projetados; salário mínimo | Taxa mínima de atratividade e inflação do modelo (cap. 9) |
 
-Scripts em `_src/[E] Bases publicas/` (`collect_bases_*` → `build_bases_*`); saídas `bases_*` em `_data/processed/[E] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`. A RAIS vínculos foi substituída pelo Novo CAGED: o salário de admissão mede o que um negócio novo paga ao contratar, e os microdados da RAIS 2024 somam 3,8 GB compactados.
+Scripts em `_src/[B4] Bases publicas/` (`collect_B4_*` → `build_B4_*`); saídas `[B4] *.csv` em `_data/processed/[B4] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`. A RAIS vínculos foi substituída pelo Novo CAGED: o salário de admissão mede o que um negócio novo paga ao contratar, e os microdados da RAIS 2024 somam 3,8 GB compactados.
 
-### Bloco F — Jogos
+### Bloco B5 — Jogos
 
-Bloco de menor relevância para as decisões do plano. Pode ser retirado sem afetar os demais: nesse caso, as variáveis "jogos citados" (Bloco B) e a curadoria por clusters saem do escopo, e o acervo passa a ser definido pelos jogos citados nas avaliações e pelo acervo declarado dos concorrentes.
+Bloco de menor relevância para as decisões do plano. Pode ser retirado sem afetar os demais: nesse caso, as variáveis "jogos citados" (Bloco B2) e a curadoria por clusters saem do escopo, e o acervo passa a ser definido pelos jogos citados nas avaliações e pelo acervo declarado dos concorrentes.
 
 | Item | Descrição |
 |---|---|
@@ -139,7 +139,7 @@ Bloco de menor relevância para as decisões do plano. Pode ser retirado sem afe
 - Dicionário de dados com nome, descrição, tipo, unidade e origem de cada variável.
 - Todo sorteio (visitas, divisão da base, amostra de validação) usa semente fixa registrada no código.
 
-### Variáveis derivadas dos textos (Bloco B)
+### Variáveis derivadas dos textos (Bloco B2)
 
 | Variável | Construção | Codificação |
 |---|---|---|
@@ -148,7 +148,7 @@ Bloco de menor relevância para as decisões do plano. Pode ser retirado sem afe
 | Menção a comida | Aspecto comida | Binária e polaridade |
 | Tamanho do grupo | Expressões como "fomos em 6", "casal", "eu e dois amigos" | Número de pessoas |
 | Valores citados | Expressões com R$ e contexto ("por pessoa", "a conta", "o couvert") | R$; tipo de valor (por pessoa, conta total, item) |
-| Jogos citados | Nomes dos jogos do Bloco F | Binária por jogo; cluster do Bloco F |
+| Jogos citados | Nomes dos jogos do Bloco B5 | Binária por jogo; cluster do Bloco B5 |
 | Velocidade de avaliações | Número de avaliações com texto do recorte (até "um mês atrás") ÷ duração da janela, em dias, a partir da data da coleta | Avaliações com texto por mês |
 
 Regras do dicionário: tratar negações ("nada tranquilo") e ambiguidades ("familiar"). Cada versão do dicionário é registrada e datada.
@@ -157,7 +157,7 @@ Regras do dicionário: tratar negações ("nada tranquilo") e ambiguidades ("fam
 
 A validação da coleta estima o erro que sobra depois que o dado é obtido. A referência é o modelo de erro total da pesquisa (*total survey error*), que separa o erro amostral do erro não amostral: cobertura, medida e processamento (Groves et al., 2009; Biemer, 2010). A adaptação desse modelo a dados de plataformas digitais está em Amaya, Biemer e Kinyon (2020).
 
-O procedimento muda conforme a natureza de cada bloco. Os Blocos A e B são censos da fonte. O Bloco E é extração integral de tabelas oficiais. O Bloco D é uma amostra de períodos observada pelo próprio autor. O Bloco F segue a mesma regra do Bloco A, se for mantido.
+O procedimento muda conforme a natureza de cada bloco. Os Blocos B1 e B2 são censos da fonte. O Bloco B4 é extração integral de tabelas oficiais. O Bloco B3 é uma amostra de períodos observada pelo próprio autor. O Bloco B5 segue a mesma regra do Bloco B1, se for mantido.
 
 **Quadro XX -** Validação da coleta por bloco
 
@@ -169,7 +169,7 @@ O procedimento muda conforme a natureza de cada bloco. Os Blocos A e B são cens
 
 Fonte: elaborado pelo próprio autor
 
-#### Blocos A e B - censo da fonte
+#### Blocos B1 e B2 - censo da fonte
 
 O script coleta todos os estabelecimentos e todas as avaliações do recorte. Por isso, não há erro amostral. A amostra deixa de servir para inferir a população e passa a estimar a taxa de erro do instrumento de coleta. O fato de o script ter sido escrito com apoio de inteligência artificial não muda essa lógica: o que se valida é o dado gerado, não a autoria do código. O código fica no repositório e pode ser auditado.
 
@@ -177,9 +177,9 @@ A validação tem três etapas:
 
 | Etapa | Procedimento |
 |---|---|
-| 1. Fidelidade | Amostra aleatória estratificada por capital e faixa de volume de avaliações. No Bloco A, 20% dos estabelecimentos curados: nota média, número de avaliações e endereço conferidos na página. No Bloco B, as mesmas 200 avaliações sorteadas para a validação do dicionário: texto, nota e rótulo de data conferidos na página. A conferência é feita até sete dias após a coleta, e a data de cada conferência é registrada |
-| 2. Completude | Nos estabelecimentos sorteados do Bloco B, o número de avaliações com texto no recorte, contado na página, é comparado ao número coletado. Diferença indica avaliação perdida por paginação, tempo de espera ou limite de pedidos |
-| 3. Cobertura | A lista do Bloco A é comparada a fontes independentes: buscas manuais por termo nas capitais e perfis de luderias no Instagram. Estabelecimento encontrado fora da lista é registrado com o motivo da ausência |
+| 1. Fidelidade | Amostra aleatória estratificada por capital e faixa de volume de avaliações. No Bloco B1, 20% dos estabelecimentos curados: nota média, número de avaliações e endereço conferidos na página. No Bloco B2, as mesmas 200 avaliações sorteadas para a validação do dicionário: texto, nota e rótulo de data conferidos na página. A conferência é feita até sete dias após a coleta, e a data de cada conferência é registrada |
+| 2. Completude | Nos estabelecimentos sorteados do Bloco B2, o número de avaliações com texto no recorte, contado na página, é comparado ao número coletado. Diferença indica avaliação perdida por paginação, tempo de espera ou limite de pedidos |
+| 3. Cobertura | A lista do Bloco B1 é comparada a fontes independentes: buscas manuais por termo nas capitais e perfis de luderias no Instagram. Estabelecimento encontrado fora da lista é registrado com o motivo da ausência |
 
 O resultado é a taxa de erro por variável, com intervalo de confiança de 95% (método de Wilson). O critério de aceitação é limite superior do intervalo igual ou inferior a 5%. Variável acima do critério tem o script corrigido e o estrato afetado coletado de novo. Se a recoleta não for possível, a variável é reportada com a taxa de erro medida e entra no cálculo da faixa da premissa que ela alimenta.
 
@@ -187,13 +187,13 @@ O erro da coleta não é tratado como restrito a uma variável. Falhas de pagina
 
 A validação cobre a relação entre o script e a página. A relação entre a página e a realidade é outra camada: estabelecimentos fora do Google Maps, avaliações falsas e autosseleção de quem avalia. Essa camada não é medida pela auditoria e fica declarada em §3.9.
 
-#### Bloco E - bases públicas
+#### Bloco B4 - bases públicas
 
-A extração por API copia tabelas inteiras. Não há sorteio nem página a ser lida, e o volume de séries é pequeno. A validação, então, é exaustiva: cada série usada no plano é reconciliada com a tabela publicada no portal da instituição, em ao menos um período e um recorte geográfico. Os totais são conferidos com a soma das linhas, conforme a regra de tabela agregada do projeto. As funções de conferência ficam nos próprios scripts `build_bases_*`.
+A extração por API copia tabelas inteiras. Não há sorteio nem página a ser lida, e o volume de séries é pequeno. A validação, então, é exaustiva: cada série usada no plano é reconciliada com a tabela publicada no portal da instituição, em ao menos um período e um recorte geográfico. Os totais são conferidos com a soma das linhas, conforme a regra de tabela agregada do projeto. As funções de conferência ficam nos próprios scripts `build_B4_*`.
 
 Os erros mais prováveis são de processamento: código de variável ou de município trocado, filtro aplicado à série errada, unidade (mil, milhão, percentual) e índice de correção monetária. O erro da própria base não é validado pelo trabalho, e sim declarado em §3.9: amostra da POF e da PNAD Contínua, cobertura só do emprego formal no Novo CAGED e preço anunciado, não contratado, no FipeZap.
 
-#### Bloco D - contagem direta
+#### Bloco B3 - contagem direta
 
 A contagem não é censo. As quatro visitas são uma amostra de períodos, e o sorteio da hora de início existe para reduzir o viés de escolha desses períodos. O erro amostral, então, existe e é tratado pela faixa larga da premissa de ocupação e pela análise de sensibilidade (§3.6).
 
@@ -205,7 +205,7 @@ O instrumento é o próprio observador, e não há gravação para auditar depoi
 | Grupos sem saída | Grupos com entrada e sem saída registrada são contados à parte. Os que ainda estão no salão ao fim da visita são censurados; os demais são omissões |
 | Caminhos independentes | Pessoas pela porta, pessoas pelas mesas e notas fiscais emitidas: as três estimativas de fluxo são comparadas por visita |
 
-Dado não anotado é tratado como faltante. Não há imputação. A taxa de omissão de cada visita é reportada junto com as saídas. Quando a omissão for relevante, a estimativa de fluxo usa o caminho com menos falhas e a faixa da premissa aumenta. O script `analise_contagem.py` já conta à parte os grupos sem saída e os pedidos sem chegada, sem imputação. O fechamento do saldo e a separação entre censura e omissão ainda precisam ser acrescentados a ele.
+Dado não anotado é tratado como faltante. Não há imputação. A taxa de omissão de cada visita é reportada junto com as saídas. Quando a omissão for relevante, a estimativa de fluxo usa o caminho com menos falhas e a faixa da premissa aumenta. O script `analise_B3_contagem.py` já conta à parte os grupos sem saída e os pedidos sem chegada, sem imputação. O fechamento do saldo e a separação entre censura e omissão ainda precisam ser acrescentados a ele.
 
 ### Validação do dicionário
 
@@ -242,7 +242,7 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 
 ### Divisão da base
 
-- Após o fim da coleta do Bloco B, os **avaliadores** são sorteados em duas metades, com estratificação pelo estabelecimento avaliado e semente fixa. O sorteio é por avaliador para que quem avaliou duas luderias não apareça nas duas metades.
+- Após o fim da coleta do Bloco B2, os **avaliadores** são sorteados em duas metades, com estratificação pelo estabelecimento avaliado e semente fixa. O sorteio é por avaliador para que quem avaliou duas luderias não apareça nas duas metades.
 - **Metade exploratória:** construção e validação do dicionário; análises exploratórias; ajuste das especificações.
 - **Metade confirmatória:** fica fechada até a emenda final do registro; as análises registradas rodam uma única vez.
 - Estatísticas descritivas usadas no plano (reclamações, cardápios, ticket, velocidade de avaliações) usam a base completa depois da análise confirmatória.
@@ -262,17 +262,17 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 | Variável | Pergunta | Técnica |
 |---|---|---|
 | Principais reclamações | Quais falhas operacionais evitar e em que proporção aparecem? | Frequência absoluta e percentual por aspecto negativo, com intervalo de confiança; ranking total e por estabelecimento |
-| Permanência e tamanho dos grupos (Bloco D) | Quantas mesas de cada tamanho e qual capacidade? | Distribuição do tamanho dos grupos na entrada; permanência média com observações censuradas |
+| Permanência e tamanho dos grupos (Bloco B3) | Quantas mesas de cada tamanho e qual capacidade? | Distribuição do tamanho dos grupos na entrada; permanência média com observações censuradas |
 
 ### Financeiro — premissas críticas
 
 | Premissa | Evidência | Técnica | Limitação declarada |
 |---|---|---|---|
-| **Ocupação** | Contagem direta na São Jogue (Bloco D) | Pessoas por hora e saldo no interior por hora do dia; média e amplitude entre as quatro visitas; comparação descritiva entre visita sorteada e retorno | Um estabelecimento, quatro visitas, só fim de semana |
-| **Fluxo** | NFC-e emitidas em 15 dias (Bloco D) | Notas por dia no intervalo × pessoas por nota observadas nas visitas → visitantes por semana, por unidade | Numeração pode incluir delivery e balcão |
-| **Ocupação** | Velocidade de avaliações calibrada (Blocos B e D) | Modelo de calibração (abaixo) | Razão avaliações/visitantes pode variar entre estabelecimentos |
-| **Pessoas por mesa** | Tamanho do grupo citado (Bloco B) e observado (Bloco D) | Distribuição e comparação entre as duas fontes | Relato espontâneo × poucas observações |
-| **Giro de mesa** | Permanência observada (Bloco D) e política de cobrança (Bloco A) | Permanência média; comparação descritiva dos modelos de cobrança | Permanência censurada pelo início e fim da visita |
+| **Ocupação** | Contagem direta na São Jogue (Bloco B3) | Pessoas por hora e saldo no interior por hora do dia; média e amplitude entre as quatro visitas; comparação descritiva entre visita sorteada e retorno | Um estabelecimento, quatro visitas, só fim de semana |
+| **Fluxo** | NFC-e emitidas em 15 dias (Bloco B3) | Notas por dia no intervalo × pessoas por nota observadas nas visitas → visitantes por semana, por unidade | Numeração pode incluir delivery e balcão |
+| **Ocupação** | Velocidade de avaliações calibrada (Blocos B2 e B3) | Modelo de calibração (abaixo) | Razão avaliações/visitantes pode variar entre estabelecimentos |
+| **Pessoas por mesa** | Tamanho do grupo citado (Bloco B2) e observado (Bloco B3) | Distribuição e comparação entre as duas fontes | Relato espontâneo × poucas observações |
+| **Giro de mesa** | Permanência observada (Bloco B3) e política de cobrança (Bloco B1) | Permanência média; comparação descritiva dos modelos de cobrança | Permanência censurada pelo início e fim da visita |
 | **Ticket médio** | Valores citados × cardápio × metrópole | Mediana e intervalo interquartil dos valores por pessoa; comparação com a cesta de cardápio | Poucos textos citam valores |
 | **Ticket médio** | Itens fixos do cardápio (bebidas, entradas, principal, sobremesa, couvert) | **Cesta por pessoa** = couvert + bebida + entrada ou prato, por metrópole, com Salvador em destaque; calibrada pelos valores citados e pelos preços observados na São Jogue; checada contra a POF | Consumo por pessoa é premissa com faixa |
 
@@ -282,7 +282,7 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
    - **(a) Notas fiscais:** notas emitidas entre a visita sorteada e a de retorno ÷ dias do intervalo × 7 × pessoas por nota (entradas contadas ÷ notas emitidas durante as visitas);
    - **(b) Contagem:** pessoas por hora observadas × horas de funcionamento de fim de semana; os dias úteis entram pela razão entre dia útil e fim de semana implícita no caminho (a), declarada como premissa com faixa.
    Os dois caminhos são comparados; a divergência entra na faixa (mínimo, provável e máximo).
-2. **Razão de calibração:** avaliações com texto por semana da São Jogue (velocidade do Bloco B) ÷ visitantes por semana estimados.
+2. **Razão de calibração:** avaliações com texto por semana da São Jogue (velocidade do Bloco B2) ÷ visitantes por semana estimados.
 3. **Fluxo dos demais concorrentes:** velocidade de avaliações de cada estabelecimento ÷ razão de calibração. Resultado em faixa.
 4. **Uso no plano:** faixa de visitantes por semana para estabelecimentos comparáveis ao proposto → premissa de ocupação no registro de premissas (N5 + N3).
 
@@ -303,14 +303,14 @@ Custos (aluguel, pessoal, tributos) e indicadores seguem [8_financeiro.md](8_fin
 
 | Decisão | Pergunta | Dado usado | Fonte | Confiança |
 |---|---|---|---|---|
-| Em que bairro de Salvador abrir? | Onde está o público-alvo, longe da concorrência direta e com aluguel compatível? | População e faixa etária por bairro; renda; localização da São Jogue; aluguel; entorno | Censo 2022; PNAD Contínua; Bloco A; FipeZap; OpenStreetMap | N2 + N3 |
-| Qual modelo de cobrança? | Qual modelo o mercado pratica e qual gera menos reclamação de preço? | Política de preço; reclamações de preço | Blocos A e B | N3 |
-| Que cardápio oferecer? | Qual o peso da comida na satisfação e que itens e preços o mercado pratica? | Menções a comida × nota; cardápios | Blocos A e B | N3 |
-| Qual ticket médio projetar? | Quanto uma pessoa gasta por visita? | Valores citados; cesta de cardápio; preços observados; gasto familiar | Blocos A, B e D; POF | N3 + N5 + N2 |
-| Qual ocupação projetar? | Quantos visitantes por semana um estabelecimento comparável recebe? | Notas fiscais emitidas em 15 dias; contagem direta; velocidade de avaliações calibrada | Blocos B e D | N5 + N3 |
-| Qual giro projetar? | Quanto tempo uma mesa fica ocupada? | Permanência observada; modelos de cobrança | Blocos A e D | N5 |
-| Quantas mesas e de que tamanho? | Quantas pessoas ocupam cada mesa? | Tamanho do grupo citado e observado | Blocos B e D | N3 + N5 |
-| Qual acervo inicial? | Quais jogos o público cita? | Jogos citados; clusters | Blocos B e F | N3 |
+| Em que bairro de Salvador abrir? | Onde está o público-alvo, longe da concorrência direta e com aluguel compatível? | População e faixa etária por bairro; renda; localização da São Jogue; aluguel; entorno | Censo 2022; PNAD Contínua; Bloco B1; FipeZap; OpenStreetMap | N2 + N3 |
+| Qual modelo de cobrança? | Qual modelo o mercado pratica e qual gera menos reclamação de preço? | Política de preço; reclamações de preço | Blocos B1 e B2 | N3 |
+| Que cardápio oferecer? | Qual o peso da comida na satisfação e que itens e preços o mercado pratica? | Menções a comida × nota; cardápios | Blocos B1 e B2 | N3 |
+| Qual ticket médio projetar? | Quanto uma pessoa gasta por visita? | Valores citados; cesta de cardápio; preços observados; gasto familiar | Blocos B1, B2 e B3; POF | N3 + N5 + N2 |
+| Qual ocupação projetar? | Quantos visitantes por semana um estabelecimento comparável recebe? | Notas fiscais emitidas em 15 dias; contagem direta; velocidade de avaliações calibrada | Blocos B2 e B3 | N5 + N3 |
+| Qual giro projetar? | Quanto tempo uma mesa fica ocupada? | Permanência observada; modelos de cobrança | Blocos B1 e B3 | N5 |
+| Quantas mesas e de que tamanho? | Quantas pessoas ocupam cada mesa? | Tamanho do grupo citado e observado | Blocos B2 e B3 | N3 + N5 |
+| Qual acervo inicial? | Quais jogos o público cita? | Jogos citados; clusters | Blocos B2 e B5 | N3 |
 | Qual regime tributário? | Qual a carga sobre a receita projetada? | Alíquotas | LC 123/2006; CONCLA | N1 |
 | Qual taxa de desconto? | Qual o custo de oportunidade do capital? | Selic e IPCA projetados | Banco Central (Focus) | N2 |
 
@@ -336,7 +336,7 @@ Citar a Lei nº 13.709/2018 (LGPD) e a Resolução CNS nº 510/2016. Registrar a
 |---|---|---|
 | Autosseleção de quem avalia | Superrepresenta experiências extremas e usuários ativos | Declarada; efeito fixo por estabelecimento; sem controle do grau de exigência de cada avaliador |
 | Recorte de um mês de avaliações | Não cobre sazonalidade; rótulo "um mês atrás" sem limite exato | Declarada; data da coleta registrada; sazonalidade tratada como premissa com faixa |
-| Corte de 100 avaliações no Bloco A | Exclui casas novas ou pequenas | Declarada; total da busca apresentado ao lado do total acima do corte |
+| Corte de 100 avaliações no Bloco B1 | Exclui casas novas ou pequenas | Declarada; total da busca apresentado ao lado do total acima do corte |
 | Datas relativas | Impossibilita dia da semana e dia do mês das avaliações | Curva semanal vem da contagem direta |
 | Contagem em um único estabelecimento e cidade, com quatro visitas | Razão de calibração pode não valer para outros locais; sem sazonalidade | Faixa larga; sensibilidade da ocupação no tornado; validação recomendada antes do investimento |
 | Observação do lado de fora | Não vê o salão inteiro; saldo de pessoas acumula erros de contagem | Contagem inicial e final conferidas; comparação com o caminho das notas fiscais |

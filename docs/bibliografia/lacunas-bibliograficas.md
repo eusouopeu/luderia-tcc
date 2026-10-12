@@ -85,7 +85,7 @@ Duas limitações da própria verificação:
 
 - R17 (Brealey et al.) repete R04 (Assaf Neto) em parte; manter R04 como P1 e R17 só se R04 não cobrir risco e custo de capital;
 - R41 e R42 (SWOT) são críticas sobrepostas; ler uma;
-- as P3 de estudos de manipulação de avaliações (R72, R73) só entram se o texto aprofundar a validade do Bloco B;
+- as P3 de estudos de manipulação de avaliações (R72, R73) só entram se o texto aprofundar a validade do Bloco B2;
 - R79 (Stebbins) e R61 (Kim e Mauborgne) perdem prioridade com a retirada do recorte casual (decisão de 09/10/2026).
 
 **Cada intervalo de páginas está verificado?** Não: 12 de 79 (seção 1).
@@ -109,13 +109,13 @@ Arquivos que ainda carregam o posicionamento casual × hobbyista e **não foram 
 
 **Formulação:** existe um público potencial (pessoas de 30 anos ou mais, casadas e/ou com filhos) que frequentaria luderias caso houvesse mudança no ambiente, no público ou na qualidade do serviço das luderias atuais.
 
-**Por que fica para estudos futuros:** a hipótese é contrafactual ("frequentaria se..."), o projeto não usa questionários, e o Bloco B só vê quem já foi. Formas de teste, da mais testável para a menos, estão em `diagnostico-teorico.md` §9.
+**Por que fica para estudos futuros:** a hipótese é contrafactual ("frequentaria se..."), o projeto não usa questionários, e o Bloco B2 só vê quem já foi. Formas de teste, da mais testável para a menos, estão em `diagnostico-teorico.md` §9.
 
 **O que seria preciso:**
 
 - dado de intenção ou de porta falsa com anúncio segmentado (extensão já listada em `_instrucoes/4_metodologia.md`);
 - codificação de perfil do cliente nas avaliações (filhos, família, idade, estado civil), que hoje não existe no dicionário;
-- tamanho do segmento em Salvador pelo Censo 2022 e pela PNAD Contínua (Bloco E).
+- tamanho do segmento em Salvador pelo Censo 2022 e pela PNAD Contínua (Bloco B4).
 
 **Literatura:** **não levantada** nesta auditoria. Pistas a investigar, sem afirmar que sustentem a hipótese:
 

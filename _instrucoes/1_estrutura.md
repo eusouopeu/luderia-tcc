@@ -8,7 +8,7 @@
 **Recorte geográfico:** o plano é para Salvador. A concorrência das 14 metrópoles da REGIC serve de benchmark de preço, satisfação e fluxo; as bases públicas de Salvador (e, quando houver, por bairro) definem demanda e custos.
 **Diferencial do trabalho:** premissas rastreáveis e testadas, sustentadas por dados secundários e primários comportamentais, com pipeline reproduzível.
 
-Princípios, hierarquias e personalizações da estrutura: ver [../CLAUDE.md](../CLAUDE.md).
+Princípios gerais: ver [../CLAUDE.md](../CLAUDE.md). Hierarquias e personalizações da estrutura: seção "Princípios do plano", no fim deste arquivo.
 
 ## Estrutura
 
@@ -37,7 +37,7 @@ Aproveitar `introducao_tcc_luderia.md`, reescrevendo objetivos específicos em t
 
 - **3.1 Caracterização do trabalho** — plano de negócios baseado em evidências.
 - **3.2 Hierarquia de evidências** — escala N1–N6 e hierarquia de tipos de dados.
-- **3.3 Fontes e instrumentos de coleta** — Blocos A, B, D, E e F, em ordem de relevância (o Bloco C foi retirado).
+- **3.3 Fontes e instrumentos de coleta** — Blocos B1, B2, B3, B4 e B5, em ordem de relevância (o Bloco B6 foi retirado).
 - **3.4 Tratamento dos dados** — pipeline, pseudonimização, variáveis, validação do dicionário.
 - **3.5 Registro prévio e divisão da base** — hipóteses registradas; metade exploratória e metade confirmatória.
 - **3.6 Técnicas de análise e controles** — técnicas por área, calibração da ocupação, controles estatísticos.
@@ -59,15 +59,15 @@ Escrito por último, em até duas páginas. Não traz informação que não este
 ### 5. Análise de Mercado → [3_mercado.md](3_mercado.md)
 
 - **5.1 Análise do setor** — tamanho, crescimento, tendências.
-- **5.2 Público-alvo e segmentação** — casual × hobbyista; ocasiões de consumo; público em Salvador. Escrito depois do fim da análise do Bloco B.
-- **5.3 Análise da concorrência** — Bloco A (14 metrópoles, mais de 100 avaliações), com destaque para Salvador.
+- **5.2 Público-alvo e segmentação** — casual × hobbyista; ocasiões de consumo; público em Salvador. Escrito depois do fim da análise do Bloco B2.
+- **5.3 Análise da concorrência** — Bloco B1 (14 metrópoles, mais de 100 avaliações), com destaque para Salvador.
 - **5.4 Fornecedores** — jogos, A&B, mobiliário.
 - **5.5 Macroambiente (PESTEL)**
 
 ### 6. Plano de Marketing → [5_marketing.md](5_marketing.md)
 
 - **6.1 Proposta de valor e posicionamento** — grade ERRC.
-- **6.2 Produto/serviço** — experiência, acervo (Bloco F), cardápio.
+- **6.2 Produto/serviço** — experiência, acervo (Bloco B5), cardápio.
 - **6.3 Preço**
 - **6.4 Praça** — escolha do bairro e do ponto em Salvador.
 - **6.5 Promoção e comunicação**
@@ -115,3 +115,68 @@ Escrito por último, em até duas páginas. Não traz informação que não este
 - **11.5 Estudos futuros** — pesquisa que ficou fora do escopo (ex.: histórico completo de avaliações, sem o recorte do último mês; histórico dos avaliadores; comparação entre modelos de alimentos e bebidas).
 
 ### Referências, Apêndices e Anexos → [10_biblio-apendices.md](10_biblio-apendices.md)
+
+## Princípios do plano
+
+Movidos do `CLAUDE.md` em 12/10/2026.
+
+### P1. Hierarquia de fontes
+
+Ordem de preferência quando duas fontes tratam do mesmo ponto. Fonte mais alta prevalece; divergência relevante entre fontes é registrada, não escondida.
+
+Fontes bibliográficas e documentais (para números e premissas, usar a escala N1–N6 de [8_financeiro.md](8_financeiro.md) §2):
+
+1. Legislação e normas técnicas oficiais
+2. Artigos revisados por pares e livros acadêmicos
+3. Teses e dissertações (BDTD, repositórios institucionais)
+4. Relatórios de institutos oficiais e entidades setoriais
+5. Livros profissionais e manuais de referência (ex.: guias de plano de negócios)
+6. Imprensa especializada e de negócios
+7. Blogs, sites institucionais de empresas, redes sociais — só como fato pontual (ex.: preço praticado), nunca como sustentação de argumento
+
+Imprensa que cita um dado deve ser substituída pela fonte original sempre que ela for localizável.
+
+### P2. Hierarquia de tipos de dados
+
+Da maior para a menor confiabilidade para estimar comportamento de consumo:
+
+1. **Comportamental com dinheiro** — compra, ingresso pago, pré-venda, depósito
+2. **Registros operacionais e transacionais** — dados de caixa, reservas, contratos, cotações
+3. **Comportamental observado diretamente** — contagem de ocupação, cliente oculto
+4. **Comportamental sem dinheiro** — clique, cadastro em lista de espera, reserva gratuita
+5. **Rastros digitais e proxies** — avaliações, volume de buscas, horários de pico, seguidores, público estimado de anúncios
+6. **Declarado factual** — entrevista sobre números operacionais ("quantas mesas giram numa sexta?")
+7. **Atitudinal** — opinião, intenção de compra, disposição a pagar declarada. **Evitar; nunca usar como base de premissa crítica.**
+
+Critérios de desempate dentro do mesmo tipo:
+
+- **Absoluto > relativo** (pessoas/hora > índice de 0 a 100)
+- **Proxy calibrado > proxy não calibrado** (avaliações/mês convertidas por taxa medida > convertidas por taxa suposta)
+- **Local > nacional > internacional**
+- **Recente > defasado** (corrigir valores monetários antigos pelo IPCA)
+- **Medido > estimado**
+
+### P3. Hierarquia de focos
+
+Onde investir tempo, texto e rigor, em ordem de prioridade:
+
+1. **Decisões do plano** — abrir ou não, onde, formato, preço, acervo, investimento
+2. **Premissas críticas** — as que mais movem o VPL no tornado; por padrão, **taxa de ocupação** e **ticket médio**
+3. **Evidência dessas premissas** — triangulação, calibração, ponto de ruptura
+4. **Coerência do conjunto** — capacidade × demanda, equipe × ocupação, preço × concorrência
+5. **Contexto descritivo** — setor, tendências, perfil do público
+6. **Rigor estatístico acessório** — correlações, testes, clusters que não mudam decisão → apêndice
+
+Na dúvida entre aprofundar um item de nível baixo ou fortalecer um de nível alto, fortalecer o de nível alto.
+
+### P4. Personalização da estrutura
+
+Diferenças deliberadas em relação a um plano de negócios comum. Aplicar sempre.
+
+1. **Metodologia (cap. 3) robusta.** Descreve fontes, critérios de coleta, tratamento, limitações e a hierarquia de evidências. O método é defendido pela **confiabilidade do número gerado**, não pela teoria. Detalhes em [4_metodologia.md](4_metodologia.md).
+2. **Matriz de evidências** (quadro no cap. 3 ou apêndice). Tabela com: **decisão → pergunta → dado usado → fonte → confiança (N1–N6)**. Ex.: "Em que bairro de Salvador abrir?" → população e renda por bairro (IBGE) + localização dos concorrentes (Bloco B1) → N2 + N3.
+3. **Plano financeiro (cap. 9) com premissas rastreáveis**, triangulação e sensibilidade. Detalhes em [8_financeiro.md](8_financeiro.md).
+4. **Modelo financeiro dirigido por premissas.** Premissas numa aba, cálculos em outra, cenários como parâmetros. Nenhum número digitado dentro de fórmula de cálculo.
+5. **Apêndices técnicos** com correlações, clusters, dicionário de variáveis e link para o repositório.
+6. **Pipeline reproduzível.** Repositório com coleta → tratamento → análise, README na raiz e dicionário de dados. Qualquer número do texto deve ser regenerável a partir de um script de `_src/`.
+7. **Produto visual.** Dashboard ou o próprio `site-apresentacao/` com mapa de concorrentes, cenários e sensibilidade.

@@ -1,6 +1,6 @@
-# Roteiro de observação — São Jogue (Bloco D)
+# Roteiro de observação — São Jogue (Bloco B3)
 
-Roteiro de campo da contagem direta de ocupação. Protocolo em `_instrucoes/4_metodologia.md` (Bloco D) e no `textos/registro_previo_luderia.md`. Este arquivo diz **o que fazer, em que ordem e o que anotar**. As fichas em branco da seção 7 são para preencher em campo.
+Roteiro de campo da contagem direta de ocupação. Protocolo em `_instrucoes/4_metodologia.md` (Bloco B3) e no `textos/registro_previo_luderia.md`. Este arquivo diz **o que fazer, em que ordem e o que anotar**. As fichas em branco da seção 7 são para preencher em campo.
 
 ## 1. Agenda
 
@@ -21,7 +21,7 @@ Unidades:
 ### Antes de sair
 
 - [ ] Conferir se as duas unidades ficam abertas das 18h00 às 21h00 no sábado e no domingo.
-- [ ] Preencher a aba **Registro** da planilha `contagem_sorteio_visitas.xlsx` com a agenda acima.
+- [ ] Preencher a aba **Registro** da planilha `B3_contagem_sorteio_visitas.xlsx` com a agenda acima.
 
 ## 2. Material
 
@@ -84,7 +84,7 @@ Uma linha da ficha de grupos por grupo. A entrada e a saída do mesmo grupo fica
 
 ## 5. Depois de cada visita
 
-- No mesmo dia, digitar as fichas em `_data/raw/[D] Contagem direta de ocupacao/`: `contagem_visitas.csv` (cabeçalho), `contagem_grupos.csv` (grupos) e `contagem_30min.csv`.
+- No mesmo dia, digitar as fichas em `_data/raw/[B3] Contagem direta de ocupacao/`: `contagem_visitas.csv` (cabeçalho), `contagem_grupos.csv` (grupos) e `contagem_30min.csv`.
 - Preencher a linha da visita na aba **Registro** da planilha: início, fim, NFC-e no início e no fim, "Realizada?", observação.
 - Guardar as notas fiscais (foto da nota ou do QR Code; sem dados pessoais).
 - Não analisar os números antes da última visita, além da conferência de digitação.

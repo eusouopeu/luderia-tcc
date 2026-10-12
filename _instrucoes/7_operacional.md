@@ -15,7 +15,7 @@ Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e
 ### 7.2 Capacidade instalada
 - Número de mesas e lugares; pessoas por mesa.
 - Horário de funcionamento por dia da semana.
-- Giros possíveis por dia, a partir da duração média da sessão (permanência observada na contagem direta, Bloco D).
+- Giros possíveis por dia, a partir da duração média da sessão (permanência observada na contagem direta, Bloco B3).
 - Capacidade máxima teórica (clientes/dia) — teto para a demanda projetada.
 - Lotação máxima permitida pelo AVCB, quando conhecida.
 
@@ -26,7 +26,7 @@ Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e
 - Fluxograma dos processos principais (figura).
 
 ### 7.4 Gestão do acervo
-- Composição inicial (de 6.2) e critérios de curadoria (clusters do Bloco F).
+- Composição inicial (de 6.2) e critérios de curadoria (clusters do Bloco B5).
 - Conferência de peças após uso, reposição e desgaste (taxa de reposição vai para as premissas).
 - Renovação periódica do acervo.
 
