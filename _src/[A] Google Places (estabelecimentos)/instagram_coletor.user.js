@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.12-3
+// @version      2026.10.12-4
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -31,16 +31,22 @@
  * Os CSV usam ";" como separador e UTF-8 com BOM (abrem direto no Excel pt-BR).
  * No pandas: pd.read_csv(caminho, sep=";").
  *
- * Use uma conta secundária. Se o Instagram responder 401/429, o script para e
- * mantém o que já coletou; espere algumas horas antes de continuar.
+ * Use uma conta secundária. Limite de pedidos (HTTP 429): o script espera 15, 30 e
+ * 60 min e tenta de novo; se continuar bloqueado, para. A coleta de um perfil
+ * continua da página em que parou (cursor salvo), sem recomeçar do primeiro post.
+ * Sessão recusada (401/403): para na hora; entre de novo no Instagram.
  */
 
 (function () {
   'use strict';
 
   const APP_ID = '936619743392459';
-  const PAUSA_PEDIDO = [1500, 3500];   // ms entre páginas de posts
-  const PAUSA_PERFIL = [20000, 40000]; // ms entre perfis da fila
+  const PAUSA_PEDIDO = [3000, 6000];   // ms entre páginas de posts
+  const PAUSA_PERFIL = [45000, 90000]; // ms entre perfis da fila
+  // A cada PAGINAS_POR_BLOCO pedidos, uma pausa longa: espalha a carga e reduz o 429.
+  const PAGINAS_POR_BLOCO = 60;
+  const PAUSA_BLOCO = [5 * 60000, 8 * 60000];
+  const ESPERAS_429 = [15, 30, 60]; // minutos de espera antes de cada nova tentativa
   const RESERVADOS = new Set(['explore', 'p', 'reel', 'reels', 'direct', 'accounts', 'stories', 'about', 'legal', 'developer', 'web']);
 
   const posts = new Map();   // shortcode -> post normalizado
@@ -128,7 +134,7 @@
     if (!confirm('Apagar todos os posts e perfis salvos neste navegador? Exporte antes o que quiser guardar.')) return;
     posts.clear(); perfis.clear(); capturados.clear(); totais.clear(); totalPagina.clear(); validacao.clear();
     sujos.clear(); versaoValidacao++;
-    try { localStorage.removeItem(CHAVE_FILA); } catch (_) { /* ignora */ }
+    try { localStorage.removeItem(CHAVE_FILA); localStorage.removeItem(CHAVE_CURSORES); } catch (_) { /* ignora */ }
     if (banco) {
       const tx = banco.transaction(['posts', 'kv'], 'readwrite');
       tx.objectStore('posts').clear();
@@ -366,7 +372,7 @@
         'X-CSRFToken': cookie('csrftoken'),
       },
     });
-    if (!r.ok) throw new Error(`HTTP ${r.status} em ${caminho.split('?')[0]}`);
+    if (!r.ok) throw Object.assign(new Error(`HTTP ${r.status} em ${caminho.split('?')[0]}`), { http: r.status });
     const j = await r.json();
     if (j.status === 'fail') throw new Error(j.message || 'resposta "fail" do Instagram');
     return j;
@@ -451,8 +457,53 @@
 
   // ---------- coleta ----------
 
+  let pedidosFeitos = 0;
+
+  // Espera mostrando a contagem regressiva; "Parar" interrompe.
+  async function esperarContando(ms, texto) {
+    const fim = Date.now() + ms;
+    while (Date.now() < fim) {
+      if (parar) throw new Error('interrompido');
+      const s = Math.ceil((fim - Date.now()) / 1000);
+      status(`${texto} ${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`);
+      await esperar(1000);
+    }
+  }
+
+  // Pedido à API com espera em caso de limite (429) e pausa longa a cada bloco de pedidos.
+  async function apiPaciente(caminho) {
+    if (pedidosFeitos && pedidosFeitos % PAGINAS_POR_BLOCO === 0) {
+      await esperarContando(sortear(PAUSA_BLOCO), `Pausa preventiva após ${pedidosFeitos} pedidos. Retoma em`);
+    }
+    for (let tentativa = 0; ; tentativa++) {
+      try {
+        const j = await api(caminho);
+        pedidosFeitos++;
+        return j;
+      } catch (e) {
+        if (e.http !== 429 || tentativa >= ESPERAS_429.length) throw e;
+        await esperarContando(ESPERAS_429[tentativa] * 60000,
+          `Instagram limitou os pedidos (429). Tentativa ${tentativa + 2}/${ESPERAS_429.length + 1} em`);
+      }
+    }
+  }
+
+  // Cursor da paginação por perfil (id do usuário e max_id da próxima página), salvo a
+  // cada página. Uma coleta interrompida continua daí; ao terminar, o cursor é apagado.
+  const CHAVE_CURSORES = 'igc-cursores';
+
+  function cursores() {
+    try { return JSON.parse(localStorage.getItem(CHAVE_CURSORES) || '{}'); } catch (_) { return {}; }
+  }
+
+  function gravarCursor(user, c) {
+    const todos = cursores();
+    if (c) todos[user] = c; else delete todos[user];
+    try { localStorage.setItem(CHAVE_CURSORES, JSON.stringify(todos)); } catch (_) { /* ignora */ }
+  }
+
   async function coletarPerfil(user) {
-    const info = (await api(`/api/v1/users/web_profile_info/?username=${encodeURIComponent(user)}`)).data.user;
+    const info = (await apiPaciente(`/api/v1/users/web_profile_info/?username=${encodeURIComponent(user)}`)).data.user;
     if (typeof info.edge_owner_to_timeline_media?.count === 'number') totais.set(user, info.edge_owner_to_timeline_media.count);
     perfis.set(user, {
       perfil: user,
@@ -468,18 +519,22 @@
     });
     if (info.is_private && !info.followed_by_viewer) { status(`@${user} é privado; só dados do perfil.`); return; }
 
-    let maxId = '';
+    const salvo = cursores()[user];
+    let maxId = salvo?.id === info.id ? salvo.maxId : '';
+    if (maxId) status(`@${user}: continuando de onde parou.`);
     for (;;) {
       if (parar) throw new Error('interrompido');
-      const j = await api(`/api/v1/feed/user/${info.id}/?count=12${maxId ? `&max_id=${maxId}` : ''}`);
+      const j = await apiPaciente(`/api/v1/feed/user/${info.id}/?count=12${maxId ? `&max_id=${maxId}` : ''}`);
       ingerir(j.items || [], user);
       agendarSelos();
       const ps = postsDe(user);
       status(`@${user}: ${ps.length}/${info.edge_owner_to_timeline_media?.count ?? '?'} posts · mais antigo ${ps[0] ? dataCurta(ps[0].taken_at) : '-'}`);
       if (!j.more_available || !j.next_max_id) break;
       maxId = j.next_max_id;
+      gravarCursor(user, { id: info.id, maxId });
       await esperar(sortear(PAUSA_PEDIDO));
     }
+    gravarCursor(user, null);
   }
 
   async function executar(tarefa) {
@@ -538,9 +593,7 @@
         gravarFila({ todos: usuarios, feitos });
         if (i < pendentes.length - 1) {
           const pausa = sortear(PAUSA_PERFIL);
-          status(`@${u} pronto. Próximo em ${Math.round(pausa / 1000)} s.`);
-          await esperar(pausa);
-          if (parar) throw new Error('interrompido');
+          await esperarContando(pausa, `@${u} pronto. Próximo perfil em`);
         }
       }
       status(`Fila concluída: ${feitos.length} perfis.`);
