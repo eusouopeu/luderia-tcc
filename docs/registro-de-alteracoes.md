@@ -195,3 +195,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o registro cobria só arquivos do projeto.
 **Depois**: mudanças em bancos de dados do Notion também entram no registro.
 **Justificativa**: pedido do autor em 12/10/2026.
+
+### 19:51
+**Objeto**: banco "A - Estabelecimentos" do Notion, coluna Cardápio (Café Geek e Cartola Luderia)
+**Antes**: sem link de cardápio, embora tenham cardápio baixado em `_data/processed/[B1] Estabelecimentos e cardapios/Cardápios/`.
+**Depois**: Cardápio preenchido com o texto "cardápio baixado".
+**Justificativa**: pedido do autor; marcar quem tem cardápio local sem link. Covil Game Bar ficou de fora: o PDF baixado é cardápio de jogos, não de comida.
+
+### 19:51
+**Objeto**: banco "Status da coleta" do Notion, coluna Cardápio
+**Antes**: 3 linhas com "Coleta parcial" (Ludus Luderia, Shelf Bar, Fan Hour), 1 com "NÃO É" (Ilusões Industriais) e 47 com "Não coletado". Calculado antes do preenchimento dos cardápios no A.
+**Depois**: 34 linhas com "Coleta parcial" (31 mudaram), 1 "NÃO É" e 16 "Não coletado". Critério da descrição da coluna (24 campos da view CARDAPIO do A), contando o campo do link como preenchido quando há URL ou "cardápio baixado". Nenhum estabelecimento chegou a 24 de 24, então nenhum está em "Coleta completa". Sem coleta: os 15 do A com 0 campos e o Machado Games, que não está no A.
+**Justificativa**: pedido do autor; refletir links de cardápio e cardápios baixados.
