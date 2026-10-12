@@ -42,6 +42,13 @@ A numeração dos arquivos de instrução é a ordem de leitura, não o número 
 - Antes do commit, conferir com `git status` se nenhum arquivo ignorado por regra do `.gitignore` (dados brutos, `.env`, CAGED, zips) entrou por engano.
 - Se o push falhar (conflito, rede, autenticação), informar o erro ao autor em vez de forçar (`--force`).
 
+## Registro de alterações
+
+Arquivo: [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md). Formato de cada registro no topo do próprio arquivo. Registros novos entram no fim, sob o cabeçalho da data (`## AAAA/MM/DD`), criado se ainda não existir; a hora (`### HH:mm`) vem de `date`. Os registros entram no mesmo commit da mudança.
+
+1. **TODA VEZ** que uma ação mudar qualquer arquivo da pasta do projeto (metodologia, arquivos de dados, instruções, capítulos, site de apresentação, app de coleta de observação, scripts de extração etc.), registrar a mudança com data, hora, **Objeto**, **Antes**, **Depois** e **Justificativa** (por que a mudança foi feita ou por que o autor a pediu).
+2. **TODA VEZ** que, ao ler, editar ou criar um arquivo da pasta, aparecer uma informação divergente de outro documento e essa divergência ainda não tiver registro, adicionar um registro com a data em que a divergência foi encontrada, **Objeto**, **Antes** (o que diz o arquivo mais antigo), **Depois** (o que diz o arquivo mais recente) e **Efeitos colaterais** (prejuízos que a versão mais recente pode causar ao trabalho, se houver). Registrar a divergência não autoriza corrigi-la sem pedido do autor.
+
 ## Princípios e preferências
 
 - **Escrita:** usar a skill `meu-estilo-escrita` para qualquer texto em prosa do TCC (frases curtas, lógica dedutiva, tom impessoal, vocabulário técnico direto).
