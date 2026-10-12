@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.11-8
+// @version      2026.10.11-9
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -142,7 +142,9 @@
   }
 
   function ingerirTexto(t) {
-    if (!t || t.indexOf('taken_at') === -1) return;
+    // Posts têm `taken_at`; os dados do perfil (seguidores, links da bio) vêm em
+    // blocos à parte, sem posts, e também precisam passar.
+    if (!t || !/taken_at|bio_links|follower_count|media_count|external_url/.test(t)) return;
     try { ingerir(JSON.parse(t.replace(/^for \(;;\);/, ''))); agendarSelos(); } catch (_) { /* não é JSON */ }
   }
 
@@ -519,23 +521,42 @@
     const nomeMeta = metaValida ? titulo.split(' (@')[0].trim() : '';
     const segMeta = metaValida ? inteiro(meta('og:description').match(/^([\d.,]+\s*(?:mil|mi|k|m)?)\s*(?:followers|seguidores)/i)?.[1] || '') : '';
     // No cabeçalho, o número abreviado ("60,5 mil") traz o exato no atributo title.
-    const tituloSeg = document.querySelector(`header a[href$="/${u}/followers/"] span[title], header a[href*="/followers"] span[title]`)?.title || '';
+    // Sem login o link de seguidores é href="#"; por isso a busca é pelo texto ao lado.
+    const tituloSeg = [...document.querySelectorAll('header span[title]')]
+      .find((s) => /seguidor|follower/i.test(s.closest('a, li')?.textContent || ''))?.title || '';
     const segDom = tituloSeg.replace(/\D/g, '');
     // Link da bio na página: o Instagram o embrulha em l.instagram.com/?u=<destino>.
     let siteDom = '';
     const a = document.querySelector('header a[href*="l.instagram.com"]');
     if (a) { try { siteDom = new URL(a.href).searchParams.get('u') || ''; } catch (_) { /* ignora */ } }
+    // Com mais de um link, o cabeçalho mostra só o texto "dominio.com e mais 1" num botão.
+    if (!siteDom) {
+      for (const n of document.querySelectorAll('header a, header button, header span')) {
+        const m = n.textContent.trim().match(/^((?:[\w-]+\.)+[a-z]{2,}(?:\/\S*)?)(?:\s+(?:e mais|and) \d+(?: more)?)?$/i);
+        if (m && !/instagram\.com/i.test(m[1])) { siteDom = 'https://' + m[1]; break; }
+      }
+    }
+    // Nº de posts: cabeçalho (logado: "2.003 publicações") ou meta description ("2,003 posts").
+    const reqPosts = /([\d.,]+(?:\s*(?:mil|mi|k|m))?)\s*(?:posts?|publica[cç](?:ão|ões|ao|oes))(?![a-z])/i;
+    const cab = document.querySelector('header');
+    const postsTxt = (cab?.innerText || cab?.textContent || '').match(reqPosts)?.[1] ||
+      (metaValida ? (meta('og:description') || document.querySelector('meta[name="description"]')?.content || '').match(reqPosts)?.[1] : '') || '';
     const escolher = (...vs) => vs.find((v) => v !== '' && v != null) ?? '';
     return {
       nome: escolher(api.nome, cap.nome, nomeMeta),
       seguidores: String(escolher(api.seguidores, cap.seguidores, segDom, segMeta)),
       site: escolher(api.site, cap.site, siteDom),
+      posts: inteiro(postsTxt),
+      postsAprox: /[a-z]/i.test(postsTxt), // "1,2 mil": abreviado, não exato
     };
   }
 
   function atualizarCampos(u, ps) {
     const d = dadosPerfil(u);
-    const total = totais.get(u);
+    // Sem o total nas respostas capturadas, usa o da página; se for exato, passa a
+    // valer também para numerar os posts e saber se a grade está completa.
+    if (!totais.has(u) && d.posts && !d.postsAprox) totais.set(u, Number(d.posts));
+    const total = totais.get(u) ?? (d.posts ? Number(d.posts) : undefined);
     const completo = total != null && ps.length >= total;
     const valores = {
       nome: d.nome,
