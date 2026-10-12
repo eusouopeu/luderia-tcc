@@ -16,7 +16,7 @@ Consolidar forças, fraquezas e riscos, e mostrar **o que acontece se as premiss
 - Pessimista, provável e otimista, construídos a partir das faixas do registro de premissas.
 - Narrativa de cada cenário: que combinação de condições de mercado o produz.
 - Quadro-resumo com investimento, VPL, TIR, payback e ponto de equilíbrio por cenário.
-- Resultado da simulação de Monte Carlo, se feita (probabilidade de VPL > 0).
+- Resultado da simulação de Monte Carlo, só se o extra for feito (probabilidade de VPL > 0, com remissão ao apêndice).
 
 ### 10.3 Premissas críticas e pontos de ruptura
 - Gráfico tornado (do cap. 9) com interpretação.

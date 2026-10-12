@@ -8,7 +8,7 @@ Ler este arquivo sempre. Ler os demais sob demanda, conforme a tarefa. A numera�
 
 | Arquivo | Quando ler |
 |---|---|
-| [_instrucoes/1_estrutura.md](_instrucoes/1_estrutura.md) | Visão do todo; tarefa com mais de um capítulo; caps. 1, 4 e 11 (sem arquivo próprio); hierarquias de fontes, dados e focos |
+| [_instrucoes/1_estrutura.md](_instrucoes/1_estrutura.md) | Visão do todo; tarefa com mais de um capítulo; caps. 1, 4 e 11 (sem arquivo próprio); teto de páginas; hierarquias de fontes, dados e focos; escrita e vocabulário |
 | [_instrucoes/2_ref-teorico.md](_instrucoes/2_ref-teorico.md) | Cap. 2 — escrita, citação, subcapítulos, lista de leitura |
 | [_instrucoes/4_metodologia.md](_instrucoes/4_metodologia.md) | Cap. 3 — instrumentos de coleta, blocos de dados, matriz de evidências |
 | [_instrucoes/3_mercado.md](_instrucoes/3_mercado.md) | Cap. 5 — análise de mercado |
@@ -29,7 +29,6 @@ Ler este arquivo sempre. Ler os demais sob demanda, conforme a tarefa. A numera�
   - **B2** — avaliações com texto publicadas até "um mês atrás" (rótulo do Google Maps na data da coleta) → proposta de valor, reclamações, ticket, fluxo.
   - **B3** — contagem direta nas duas unidades da São Jogue (Salvador), com leitura da NFC-e → ocupação, giro, calibração.
   - **B4** — bases públicas (IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA) → demanda, custos, tributos, taxa de desconto. Subpastas por uso definidas em `USOS` no `bases_comum.py`.
-  - **B5** — jogos (Ludopedia) → acervo; menor relevância, pode ser retirado.
   - **B6** — histórico dos avaliadores; retirado em 18/09/2026.
 
 ## Versionamento
@@ -47,7 +46,8 @@ Arquivo: [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md) (forma
 
 ## Princípios
 
-- **Escrita:** skill `meu-estilo-escrita` para qualquer prosa do TCC.
+- **Escrita:** skill `meu-estilo-escrita` para qualquer prosa do TCC, mais as regras de escrita e o vocabulário controlado de `_instrucoes/1_estrutura.md` (P5 e P6).
+- **Extensão:** no máximo 90 páginas, com teto por capítulo em `_instrucoes/1_estrutura.md`. Testes de hipótese H1–H9 e Monte Carlo são extras, só se sobrar tempo.
 - **Tabela agregada fecha com o total.** Cada unidade (place_id, avaliação, jogo) conta em **um único grupo**, atribuído por atributo próprio (ex.: UF do endereço), nunca pelo contexto da coleta. Antes de entregar, somar as linhas e comparar com o total (diferença zero); vale também ao rodar de novo um script existente. Contagem não exclusiva por desenho fica declarada no nome da coluna e na docstring, sem total como soma.
 - **Decisão antes de descrição:** todo resultado responde "que decisão do plano isso muda?". Se nenhuma, vai para apêndice ou sai.
 - **Nada de número sem fonte** (instituição, base, recorte, data). **Nada de referência inventada:** obra não conferida fica `[A VERIFICAR]`.

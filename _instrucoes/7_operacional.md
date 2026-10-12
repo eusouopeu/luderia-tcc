@@ -26,7 +26,7 @@ Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e
 - Fluxograma dos processos principais (figura).
 
 ### 7.4 Gestão do acervo
-- Composição inicial (de 6.2) e critérios de curadoria (clusters do Bloco B5).
+- Composição inicial (de 6.2) e critérios de curadoria (jogos citados nas avaliações e acervo declarado dos concorrentes).
 - Conferência de peças após uso, reposição e desgaste (taxa de reposição vai para as premissas).
 - Renovação periódica do acervo.
 

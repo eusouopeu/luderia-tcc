@@ -90,7 +90,8 @@ Variar cada premissa entre pessimista e otimista, mantendo as demais no prováve
 ### 4.3 Ponto de ruptura
 Para cada premissa crítica, calcular o valor que zera o VPL. Redação padrão: "o negócio é viável enquanto a ocupação média ficar acima de X%". A discussão passa a ser a plausibilidade de ficar acima do ponto de ruptura.
 
-### 4.4 Simulação de Monte Carlo (opcional)
+### 4.4 Simulação de Monte Carlo — extra, só se sobrar tempo
+Só depois de o plano estar completo; se feita, o resultado vai para apêndice e o corpo cita só a probabilidade de VPL > 0.
 Distribuições triangulares com os três valores do registro; 10 mil simulações; resultado como probabilidade de VPL > 0 e distribuição do payback. Declarar a hipótese de independência entre premissas ou modelar correlações relevantes (ex.: ocupação × ticket).
 
 ## 5. Checagens de coerência

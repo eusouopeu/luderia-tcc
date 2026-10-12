@@ -16,7 +16,7 @@ Todo número do texto pode ser gerado de novo por um script deste repositório. 
 | `bibliografia/`, `docs/` | Referências, diagnóstico bibliográfico, registro de alterações |
 | `app-observacao/` | App Android usado na contagem direta (Bloco B3) |
 | `site-apresentacao/` | Site da apresentação oral |
-| `arquivados/` | Rascunhos e saídas do desenho anterior |
+| `arquivados/` | Rascunhos, saídas do desenho anterior e dados retirados do escopo, guardados para uso futuro |
 
 ## Pipeline
 
@@ -28,7 +28,6 @@ Cada script segue a sequência `collect` (coleta) → `build` (tratamento) → `
 | **B2** Avaliações recentes | Google Maps (avaliações até "um mês atrás") | `analise_B2_conteudo_bardin` | Proposta de valor, reclamações, fluxo |
 | **B3** Contagem direta de ocupação | Observação na São Jogue (app) e NFC-e | `build_B3_contagem_sorteio` → `analise_B3_contagem`, `build_B3_ocr_fotos` | Ocupação, giro, calibração |
 | **B4** Bases públicas | IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA | `collect_B4_*` → `build_B4_*` | Demanda, custos, tributos, taxa de desconto |
-| **B5** Jogos | Ludopedia | `collect_B5_ids` → `scrape_B5_ranking` → `select_B5_top_n` → `collect_B5_details` → `build_B5_dataset` → `analise_B5_correlacao_clusters` | Acervo (menor relevância) |
 | **B6** Histórico dos avaliadores | — | — | Retirado em 18/09/2026 |
 
 Todo script roda a partir de qualquer diretório:
@@ -45,7 +44,7 @@ Python 3.11+:
 pip install -r requirements.txt
 ```
 
-As chaves de API ficam em `.env`, na raiz, que não é versionado: `GOOGLE_PLACES_API_KEY` e `LUDOPEDIA_APP_ID`, `LUDOPEDIA_APP_KEY`, `LUDOPEDIA_ACCESS_TOKEN`.
+As chaves de API ficam em `.env`, na raiz, que não é versionado: `GOOGLE_PLACES_API_KEY`.
 
 O site e o app usam [pnpm](https://pnpm.io). Os pacotes ficam num repositório global (`~/Library/pnpm/store`), compartilhado entre projetos, e cada `node_modules` só tem links para ele.
 

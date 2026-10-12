@@ -1,6 +1,6 @@
 """Gera src/domain/jogos.json: banco de jogos do app de observação.
 
-Fonte: Bloco B5 (Ludopedia), `_data/processed/[B5] Jogos (ludopedia)/B5_jogos_completo.csv`,
+Fonte: base de jogos da Ludopedia, arquivada em `arquivados/B5-jogos/` (`B5_jogos_completo.csv`),
 ordenado por `qt_tem` (usuários que têm o jogo) como proxy de popularidade no Brasil.
 Entram os 170 primeiros, mais uma lista curada de jogos de massa/familiares/clássicos
 que o ranking hobbista da Ludopedia não cobre (comuns em luderias para público casual).
@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SAIDA = Path(__file__).resolve().parents[1] / "src" / "domain" / "jogos.json"
-FONTE = ROOT / "_data" / "processed" / "[B5] Jogos (ludopedia)" / "B5_jogos_completo.csv"
+FONTE = ROOT / "arquivados" / "B5-jogos" / "_data" / "processed" / "[B5] Jogos (ludopedia)" / "B5_jogos_completo.csv"
 TOP = 170
 
 # nome, jogadores mín., máx., minutos (None = não conferido)

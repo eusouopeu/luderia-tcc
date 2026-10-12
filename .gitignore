@@ -30,3 +30,7 @@ _data/raw/\[B3\]*/app/fotos/
 
 # Versões automáticas dos textos (mod tcc do Claude Code)
 .tcc-historico/
+
+# Arquivados: mesmas regras dos dados brutos (respostas de API e logs não são publicados)
+arquivados/**/*.jsonl
+arquivados/**/*.log

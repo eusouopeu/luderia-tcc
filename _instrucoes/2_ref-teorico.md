@@ -34,14 +34,19 @@ Padrão de parágrafo: **afirmação → sustentação (citação ou dado) → l
 
 ## Divisão de subcapítulos
 
-| Subcapítulo | Conteúdo | Usado em |
-|---|---|---|
-| **2.1 Empreendedorismo e plano de negócios** | Conceito, função e componentes do plano de negócios | Estrutura geral |
-| **2.2 Estratégia e modelo de negócio** | Canvas; Oceano Azul e grade ERRC; cinco forças; SWOT; PESTEL | Caps. 5, 6, 10 |
-| **2.3 Lazer, jogo e economia da experiência** | Lazer; lazer casual × lazer sério; economia da experiência | Caps. 5.2, 6.1 |
-| **2.4 Público de jogos de tabuleiro e cartas** | Perfil do jogador hobbyista e casual; motivações; barreiras de entrada | Caps. 5.2, 6.2 |
-| **2.5 Estabelecimentos de lazer e entretenimento** | Bares temáticos; competitive socialising; luderias e board game cafés | Caps. 5.3, 7 |
-| **2.6 Viabilidade e decisão sob incerteza** | VPL, TIR, payback, ponto de equilíbrio; cenários; sensibilidade; simulação | Caps. 9, 10 |
+Teto do capítulo: **10 páginas** ([1_estrutura.md](1_estrutura.md), "Extensão"). Cada subcapítulo existe para justificar uma ferramenta ou um conceito que o plano usa depois; o que só contextualiza fica em uma página ou menos.
+
+| Subcapítulo | Conteúdo | Ferramenta ou conceito que justifica | Usado em | Teto (páginas) |
+|---|---|---|---|---|
+| **2.1 Empreendedorismo e plano de negócios** | Função e componentes do plano de negócios | Estrutura do trabalho | Estrutura geral | 1,5 |
+| **2.2 Estratégia e modelo de negócio** | Oceano Azul e grade ERRC; cinco forças; SWOT; PESTEL. Canvas só se for usado no cap. 6 | Ferramentas de análise dos caps. 5, 6 e 10 | Caps. 5, 6, 10 | 3 |
+| **2.3 Lazer, jogo e economia da experiência** | Lazer casual × lazer sério; economia da experiência | Só o posicionamento para o público casual | Caps. 5.2, 6.1 | 1 |
+| **2.4 Público de jogos de tabuleiro e cartas** | Perfil do jogador hobbyista e casual; barreiras de entrada | Segmentação e proposta de valor | Caps. 5.2, 6.2 | 1,5 |
+| **2.5 Estabelecimentos de lazer e entretenimento** | Bares temáticos; *competitive socialising*; terceiro lugar | Modelo de negócio e concorrência | Caps. 5.3, 7 | 1 |
+| **2.6 Viabilidade e decisão sob incerteza** | VPL, TIR, payback, ponto de equilíbrio; cenários; tornado; ponto de ruptura. Monte Carlo só se o extra for feito | Modelo financeiro e análise de riscos | Caps. 9, 10 | 2 |
+
+- A história das luderias (pioneiras, difusão no Brasil, números do setor) não entra no cap. 2: vai para a introdução, em um parágrafo.
+- Conceito sem ferramenta correspondente nos caps. 5 a 10 sai, mesmo que bem fundamentado.
 
 ## Lista de referências para ler
 

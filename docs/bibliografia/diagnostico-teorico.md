@@ -51,7 +51,7 @@ Legenda do campo **Natureza**:
 | B02/B03 | `asp_*`, `neg_*`, `pos_*` | Presença e polaridade de 11 aspectos por dicionário de termos | Fund | **Endogeneidade:** quem dá nota baixa tende a citar aspectos negativos; a menção não causa a nota. Validade de construto dos 11 aspectos (de onde vêm?). Dicionário com negação e ambiguidade |
 | B04 | Tamanho do grupo citado | Número extraído do texto | Op | Relato espontâneo e raro; vies para grupos grandes |
 | B05 | `valor_pessoa` | R$ por pessoa citado, ou conta ÷ pessoas | Fund | Poucos textos citam valor; autosseleção; mistura de conta com consumo individual |
-| B06 | Jogos citados | Binária por jogo (dicionário do Bloco B5) | Op | Depende do Bloco B5, que "pode ser retirado" |
+| B06 | Jogos citados | Binária por jogo (lista aberta, construída na codificação) | Op | — |
 | B07 | **Velocidade de avaliações** | Nº de avaliações com texto até "um mês atrás" ÷ janela em dias | Fund | **Variável central da estimativa de demanda.** Proxy de fluxo com base teórica não demonstrada (§6.1) |
 | — | `politica_cobranca` × `reclamacao_preco` | Proporção de avaliações com `neg_preco` por estabelecimento | Fund | Confunde política de cobrança com nível de preço |
 
@@ -80,13 +80,6 @@ Legenda do campo **Natureza**:
 | E06 | Aluguel comercial (FipeZap, por cidade) | Op | Não distingue bairro |
 | E07 | Alíquotas do Simples; CNAE | Legal | LC 123/2006; CONCLA |
 | E08 | Selic e IPCA projetados (Focus) | Fund | Usados como taxa de desconto, o que não é o mesmo que custo de capital do projeto (§6.6) |
-
-### 1.5 Variáveis do Bloco B5 (jogos)
-
-| Variável | Natureza | Observação |
-|---|---|---|
-| `qt_tem`, `qt_teve`, `qt_quer`, `qt_favorito`, `qt_jogou` | Op+Fund | Engajamento do jogo. Índice de "acessibilidade" e clusters dependem da teoria de jogador casual × hobbyista (condicional ao §0.1). **Bloco de menor relevância; pode ser retirado** |
-| Duração, idade mínima, nº de jogadores, mecânicas, nota BGG | Op | — |
 
 ### 1.6 Variáveis financeiras (cap. 9)
 

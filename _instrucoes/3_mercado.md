@@ -19,7 +19,7 @@ Padrão de parágrafo: **achado → evidência → implicação para o plano**.
 - Skill `meu-estilo-escrita`; impessoal; frases curtas.
 - Números: sempre com unidade, recorte geográfico e data ("em 2025, nas 14 metrópoles da REGIC").
 - Indicar o nível de evidência quando o número sustentar premissa crítica (N1–N6).
-- Dados próprios (Blocos B1, B2, B3, B4 e B5): "Fonte: elaborado pelo próprio autor com base em [fonte original] ([ano])".
+- Dados próprios (Blocos B1, B2, B3 e B4): "Fonte: elaborado pelo próprio autor com base em [fonte original] ([ano])".
 - Dados de terceiros: citação autor-data (ABNT NBR 10520:2023); preferir a fonte original à imprensa que a repercute.
 - Descrever resultados estatísticos em linguagem de decisão ("jogos com partidas curtas têm maior retenção"), com o teste e o valor-p remetidos ao apêndice.
 
@@ -52,7 +52,7 @@ A matriz SWOT não fica neste capítulo: está em 10.1.
 - Mapeamento: Bloco B1 (localização, avaliação, volume de avaliações, preço, acervo declarado). Recorte: estabelecimentos com mais de 100 avaliações nas 14 metrópoles da REGIC. O recorte descreve concorrentes estabelecidos; casas novas ou pequenas ficam de fora, e isso é declarado.
 - Concorrência em Salvador: localização das unidades da São Jogue e de outros espaços com jogos, por bairro.
 - Densidade por metrópole: total da busca e total acima do corte de 100 avaliações, lado a lado.
-- Posicionamento dos concorrentes: hobbyista × acessível (escore de alinhamento com clusters do Bloco B5).
+- Posicionamento dos concorrentes: hobbyista × acessível, pelo acervo declarado (tamanho, presença dos jogos mais citados nas avaliações) e pela política de cobrança (Bloco B1).
 - Desempenho estimado: velocidade de avaliações calibrada (ver [4_metodologia.md](4_metodologia.md)).
 - Sobrevivência: dados abertos do CNPJ.
 - Cinco forças de Porter aplicadas.

@@ -19,8 +19,8 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 - **Cardápios** de cada estabelecimento.
 - **Contagem direta de ocupação** nas duas unidades da São Jogue (única luderia de Salvador), feita do lado de fora: 2 visitas sorteadas no sábado, 03/10/2026, com hora de início sorteada e duração fixa de 3 horas, e 2 visitas de retorno 15 dias depois (domingo, 18/10/2026), na mesma unidade e hora. O número da NFC-e lido nas duas visitas dá as notas emitidas no intervalo.
 - **Bases públicas:** IBGE (Censo 2022 por setor censitário, estimativas populacionais, POF 2017–2018, PNAD Contínua, PAS, CONCLA), RAIS e Novo CAGED, FipeZap comercial, Lei Complementar 123/2006 e anexos do Simples Nacional, Banco Central (SGS e Focus).
-- **Garantias de robustez:** registro prévio das hipóteses com divisão da base em metade exploratória e metade confirmatória; validação do dicionário de codificação; efeito fixo ou ponderação por estabelecimento; tamanho de efeito; correção para múltiplas comparações; análise de sensibilidade; registro de premissas com faixas. Simulação de Monte Carlo opcional.
-- **Jogos (Bloco B5):** menor relevância para as decisões do plano; pode ser retirado.
+- **Garantias de robustez (núcleo):** validação da coleta e da codificação; ponderação por estabelecimento; registro de premissas com faixas e nível de evidência; três cenários; tornado; ponto de ruptura.
+- **Extras, só se sobrar tempo no fim:** testes de hipótese H1–H9 com registro prévio, divisão da base em metade exploratória e confirmatória e correção para múltiplas comparações (§3.5); simulação de Monte Carlo ([8_financeiro.md](8_financeiro.md) §4.4). Se feitos, vão para apêndice. A banca de um plano de negócios avalia se a premissa se sustenta; os três cenários, o tornado e o ponto de ruptura já respondem sob quais condições o negócio é viável.
 
 ### Correspondência entre blocos e arquivos do pipeline
 
@@ -32,7 +32,6 @@ Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/
 | B2 | Avaliações recentes | `_src/[B2] Google Places (comentarios)/` | `[B2] Avaliacoes recentes/` |
 | B3 | Contagem direta de ocupação | `_src/[B3] Contagem direta de ocupacao/` | `[B3] Contagem direta de ocupacao/` |
 | B4 | Bases públicas | `_src/[B4] Bases publicas/` | `[B4] Bases publicas/` |
-| B5 | Jogos | `_src/[B5] Ludopedia (jogos)/` | `[B5] Jogos (ludopedia)/` |
 | B6 | Histórico dos avaliadores — **retirado em 18/09/2026** | — | `[B6] Historico dos avaliadores/` (vazia) |
 
 ## Divisão de subcapítulos
@@ -41,9 +40,9 @@ Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/
 |---|---|
 | **3.1 Caracterização do trabalho** | Plano de negócios baseado em evidências; pesquisa aplicada, descritivo-exploratória, quantitativa com análise de conteúdo; delineamento transversal |
 | **3.2 Hierarquia de evidências** | Escala N1–N6 ([8_financeiro.md](8_financeiro.md) §2) e hierarquia de tipos de dados ([1_estrutura.md](1_estrutura.md), "Princípios do plano", P2); justificativa da exclusão de questionários |
-| **3.3 Fontes e instrumentos de coleta** | Blocos B1, B2, B3, B4 e B5: o que mede, procedimento, recorte, período, limitação |
+| **3.3 Fontes e instrumentos de coleta** | Blocos B1, B2, B3 e B4: o que mede, procedimento, recorte, período, limitação |
 | **3.4 Tratamento dos dados** | Pipeline; pseudonimização; validação da coleta (auditoria dos censos da fonte, reconciliação das bases públicas, consistência da contagem); construção das variáveis; dicionário de codificação e sua validação |
-| **3.5 Registro prévio e divisão da base** | Hipóteses, análises e critérios registrados antes da análise; metade exploratória e metade confirmatória |
+| **3.5 Registro prévio e testes de hipótese** | **Extra, só se sobrar tempo.** Hipóteses H1–H9, registro prévio, metade exploratória e confirmatória. Se não for feito, a seção sai e as seguintes sobem um número |
 | **3.6 Técnicas de análise e controles** | Técnicas por área do plano; calibração da ocupação; controles estatísticos |
 | **3.7 Matriz de evidências** | Quadro decisão → pergunta → dado usado → fonte → confiança |
 | **3.8 Aspectos éticos e legais** | Base legal da coleta, pseudonimização, observação sem identificação, divulgação apenas de dados processados |
@@ -71,7 +70,7 @@ Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/
 | Recorte | **Todas as avaliações com texto cujo rótulo de data seja de até "um mês atrás"**, inclusive, na data da coleta. O número de avaliações varia com o movimento de cada estabelecimento |
 | Tamanho esperado | Depende do ritmo de avaliações; estimado depois da coleta de um teste em amostra |
 | Procedimento | Cópia integral e automatizada do texto, da nota, da data relativa e do identificador do autor; pseudonimização do autor na própria coleta. Data e hora da coleta registradas por estabelecimento; coleta de todos os estabelecimentos no menor intervalo possível, para que as janelas de um mês coincidam |
-| Variáveis derivadas | Aspectos mencionados e polaridade, reclamações, menções a comida, tamanho do grupo, valores em R$ citados, jogos citados, velocidade de avaliações (§3.4) |
+| Variáveis derivadas | Aspectos mencionados e polaridade, reclamações, menções a comida, tamanho do grupo, valores em R$ citados, jogos citados (base do acervo inicial), velocidade de avaliações (§3.4) |
 | Uso no plano | Marketing (6.1 e 6.2), operacional (7.3), premissas de ocupação e ticket (cap. 9) |
 | Limitação | Autosseleção de quem avalia; o rótulo "um mês atrás" é arredondado pelo Google e não tem limite exato; janela de um mês não cobre sazonalidade |
 
@@ -79,7 +78,7 @@ O recorte por período descreve a operação atual de cada concorrente e torna o
 
 ### Bloco B6 — Retirado
 
-O histórico dos avaliadores foi retirado do escopo em 18/09/2026. A letra não é reaproveitada, para manter a correspondência com os arquivos já gerados.
+O histórico dos avaliadores foi retirado do escopo em 18/09/2026. O código B6 fica reservado só para registrar a retirada.
 
 ### Bloco B3 — Contagem direta de ocupação
 
@@ -118,18 +117,6 @@ O histórico dos avaliadores foi retirado do escopo em 18/09/2026. A letra não 
 
 Scripts em `_src/[B4] Bases publicas/` (`collect_B4_*` → `build_B4_*`); saídas `[B4] *.csv` em `_data/processed/[B4] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`. A RAIS vínculos foi substituída pelo Novo CAGED: o salário de admissão mede o que um negócio novo paga ao contratar, e os microdados da RAIS 2024 somam 3,8 GB compactados.
 
-### Bloco B5 — Jogos
-
-Bloco de menor relevância para as decisões do plano. Pode ser retirado sem afetar os demais: nesse caso, as variáveis "jogos citados" (Bloco B2) e a curadoria por clusters saem do escopo, e o acervo passa a ser definido pelos jogos citados nas avaliações e pelo acervo declarado dos concorrentes.
-
-| Item | Descrição |
-|---|---|
-| Fonte | API da Ludopedia e raspagem das páginas públicas de jogos; BoardGameGeek (complexidade) |
-| Recorte | Jogos com edição nacional, publicados a partir de 2010, com ao menos 100 registros de posse; 563 jogos |
-| Variáveis | Contadores de usuário (`qt_tem`, `qt_teve`, `qt_quer`, `qt_favorito`, `qt_jogou`), duração, idade mínima, número de jogadores, mecânicas, nota média |
-| Uso no plano | Curadoria do acervo (6.2 e 7.4); dicionário de jogos citados nas avaliações |
-| Limitação | Base de jogadores engajados; não inclui jogos de cartas tradicionais |
-
 ## 3.4 Tratamento dos dados
 
 ### Pipeline
@@ -148,7 +135,7 @@ Bloco de menor relevância para as decisões do plano. Pode ser retirado sem afe
 | Menção a comida | Aspecto comida | Binária e polaridade |
 | Tamanho do grupo | Expressões como "fomos em 6", "casal", "eu e dois amigos" | Número de pessoas |
 | Valores citados | Expressões com R$ e contexto ("por pessoa", "a conta", "o couvert") | R$; tipo de valor (por pessoa, conta total, item) |
-| Jogos citados | Nomes dos jogos do Bloco B5 | Binária por jogo; cluster do Bloco B5 |
+| Jogos citados | Nomes de jogos identificados no texto; lista aberta, construída durante a codificação | Binária por jogo; frequência por jogo e por estabelecimento |
 | Velocidade de avaliações | Número de avaliações com texto do recorte (até "um mês atrás") ÷ duração da janela, em dias, a partir da data da coleta | Avaliações com texto por mês |
 
 Regras do dicionário: tratar negações ("nada tranquilo") e ambiguidades ("familiar"). Cada versão do dicionário é registrada e datada.
@@ -157,15 +144,26 @@ Regras do dicionário: tratar negações ("nada tranquilo") e ambiguidades ("fam
 
 A validação da coleta estima o erro que sobra depois que o dado é obtido. A referência é o modelo de erro total da pesquisa (*total survey error*), que separa o erro amostral do erro não amostral: cobertura, medida e processamento (Groves et al., 2009; Biemer, 2010). A adaptação desse modelo a dados de plataformas digitais está em Amaya, Biemer e Kinyon (2020).
 
-O procedimento muda conforme a natureza de cada bloco. Os Blocos B1 e B2 são censos da fonte. O Bloco B4 é extração integral de tabelas oficiais. O Bloco B3 é uma amostra de períodos observada pelo próprio autor. O Bloco B5 segue a mesma regra do Bloco B1, se for mantido.
+> **Proposta de validação proporcional — em estudo, não adotada.** O autor ainda vai estudar esta etapa com calma para ter certeza de que o procedimento é estatisticamente defensável. Até essa decisão, valem os procedimentos detalhados abaixo, e a proposta não deve ser aplicada nem citada no texto do TCC.
+>
+> A proposta reduz a validação ao núcleo que mais protege as premissas:
+>
+> - **B1 e B2 — fidelidade:** amostra aleatória de 30 estabelecimentos e 100 avaliações, conferidos na página (nota, volume, endereço; texto, nota e rótulo de data).
+> - **B2 — codificação:** o autor recodifica 10% das avaliações depois de um intervalo de no mínimo 14 dias, sem consultar a primeira codificação; concordância medida pelo kappa de Cohen.
+> - **B4 — reconciliação:** cada série usada no plano conferida com o portal de origem em ao menos um período e um recorte.
+> - **Erro total da pesquisa (TSE):** fica em uma frase com citação, não em uma seção.
+>
+> Pontos a estudar antes de adotar: a precisão da amostra frente ao critério de aceitação (limite superior de 5% pelo intervalo de Wilson). Mesmo com zero erros, o limite superior de 95% é 3,84 ÷ (n + 3,84): cerca de 11% com n = 30 e 3,7% com n = 100. Portanto, 30 estabelecimentos não cumprem o critério atual; ou a amostra do B1 cresce para perto de 75 (limite de cerca de 5% com zero erros), ou o critério muda; se a concordância de um único codificador consigo mesmo é aceita pela banca; como estratificar a amostra pequena (capital e faixa de volume).
+
+O procedimento muda conforme a natureza de cada bloco. Os Blocos B1 e B2 são censos da fonte. O Bloco B4 é extração integral de tabelas oficiais. O Bloco B3 é uma amostra de períodos observada pelo próprio autor.
 
 **Quadro XX -** Validação da coleta por bloco
 
 | Bloco | Natureza do dado | Erro amostral | Erro a validar | Instrumento de validação |
 |---|---|---|---|---|
-| A e B | Censo da fonte (Google Maps), extraído por script | Não há | Cobertura da fonte; fidelidade do script à página | Amostra de auditoria; checagem de cobertura; padrão das falhas |
-| E | Extração integral de tabelas oficiais por API | Não há na extração; há no desenho de algumas bases (POF, PNAD Contínua) | Processamento: código, filtro, unidade, deflação, junção | Reconciliação com a tabela publicada; conferência de totais |
-| D | Amostra de períodos sorteados, observada pelo autor | Há: quatro visitas representam a operação da unidade | Omissão de registro; erro de contagem | Fechamento do saldo; comparação entre caminhos independentes; dado faltante declarado |
+| B1 e B2 | Censo da fonte (Google Maps), extraído por script | Não há | Cobertura da fonte; fidelidade do script à página | Amostra de auditoria; checagem de cobertura; padrão das falhas |
+| B4 | Extração integral de tabelas oficiais por API | Não há na extração; há no desenho de algumas bases (POF, PNAD Contínua) | Processamento: código, filtro, unidade, deflação, junção | Reconciliação com a tabela publicada; conferência de totais |
+| B3 | Amostra de períodos sorteados, observada pelo autor | Há: quatro visitas representam a operação da unidade | Omissão de registro; erro de contagem | Fechamento do saldo; comparação entre caminhos independentes; dado faltante declarado |
 
 Fonte: elaborado pelo próprio autor
 
@@ -209,7 +207,7 @@ Dado não anotado é tratado como faltante. Não há imputação. A taxa de omis
 
 ### Validação do dicionário
 
-O dicionário só é aplicado à metade confirmatória depois de validado na metade exploratória.
+O dicionário é validado numa amostra antes de ser aplicado à base inteira. Se o extra do §3.5 for feito, a amostra sai da metade exploratória e o dicionário só é aplicado à metade confirmatória depois de validado.
 
 | Etapa | Procedimento |
 |---|---|
@@ -224,7 +222,9 @@ O dicionário só é aplicado à metade confirmatória depois de validado na met
 
 Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados por taxa de acerto exato na mesma amostra.
 
-## 3.5 Registro prévio e divisão da base
+## 3.5 Registro prévio e divisão da base — extra
+
+> **Extra, só se sobrar tempo no fim.** O corpo do plano usa estatística descritiva com intervalo de confiança, três cenários, tornado e ponto de ruptura. Os testes de hipótese H1–H9 (`textos/registro_previo_luderia.md`), a divisão da base, a correção de Benjamini-Hochberg e as regressões com efeito fixo só entram se houver tempo depois de o plano estar completo, e então vão para apêndice. O procedimento abaixo fica registrado para esse caso.
 
 ### Registro prévio
 
@@ -253,8 +253,8 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 
 | Variável ou cruzamento | Pergunta | Técnica |
 |---|---|---|
-| Aspectos mencionados × nota | Quais aspectos são obrigatórios e quais são diferenciais? | Análise de penalidade e recompensa; regressão da nota com efeito fixo por estabelecimento |
-| Menções a comida × nota | Qual o peso da comida na nota? | Regressão da nota sobre menção e polaridade de comida, com efeito fixo por estabelecimento |
+| Aspectos mencionados × nota | Quais aspectos são obrigatórios e quais são diferenciais? | Análise de penalidade e recompensa (descritiva, ponderada por estabelecimento). Extra: regressão da nota com efeito fixo por estabelecimento (H1) |
+| Menções a comida × nota | Qual o peso da comida na nota? | Nota média com e sem menção negativa a comida, ponderada por estabelecimento. Extra: regressão com efeito fixo por estabelecimento |
 | Comparação de cardápios | Como os concorrentes diferem em preço, variedade e itens? | Estatística descritiva por categoria de item e por metrópole, com Salvador em destaque; análise qualitativa dos itens |
 
 ### Operacional
@@ -286,14 +286,14 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 3. **Fluxo dos demais concorrentes:** velocidade de avaliações de cada estabelecimento ÷ razão de calibração. Resultado em faixa.
 4. **Uso no plano:** faixa de visitantes por semana para estabelecimentos comparáveis ao proposto → premissa de ocupação no registro de premissas (N5 + N3).
 
-Custos (aluguel, pessoal, tributos) e indicadores seguem [8_financeiro.md](8_financeiro.md): registro de premissas com faixas, triangulação, tornado, ponto de ruptura e, opcionalmente, Monte Carlo.
+Custos (aluguel, pessoal, tributos) e indicadores seguem [8_financeiro.md](8_financeiro.md): registro de premissas com faixas, triangulação, tornado e ponto de ruptura. Monte Carlo é extra, só se sobrar tempo.
 
 ### Controles estatísticos (valem para todas as análises)
 
 - **Unidade de análise explícita:** avaliação, avaliador ou estabelecimento. Decisões sobre modelos de negócio usam o estabelecimento como unidade.
-- **Efeito fixo por estabelecimento** nas regressões com avaliações; alternativa: ponderação igual por estabelecimento.
-- **Tamanho de efeito** junto com o valor-p (diferença de médias, razão de chances, V de Cramér).
-- **Correção de Benjamini-Hochberg** para o conjunto de testes confirmatórios.
+- **Ponderação igual por estabelecimento** nas estatísticas com avaliações, para que casas movimentadas não dominem o resultado.
+- **Intervalo de confiança** junto de toda proporção ou média usada em premissa.
+- **Só no extra (§3.5):** efeito fixo por estabelecimento nas regressões; tamanho de efeito junto com o valor-p (diferença de médias, razão de chances, V de Cramér); correção de Benjamini-Hochberg para o conjunto de testes confirmatórios.
 - **Sensibilidade:** resultados com e sem os cinco estabelecimentos de maior volume, e com e sem os de menos de 10 avaliações com texto no recorte.
 - Resultado não significativo também é reportado.
 
@@ -310,7 +310,7 @@ Custos (aluguel, pessoal, tributos) e indicadores seguem [8_financeiro.md](8_fin
 | Qual ocupação projetar? | Quantos visitantes por semana um estabelecimento comparável recebe? | Notas fiscais emitidas em 15 dias; contagem direta; velocidade de avaliações calibrada | Blocos B2 e B3 | N5 + N3 |
 | Qual giro projetar? | Quanto tempo uma mesa fica ocupada? | Permanência observada; modelos de cobrança | Blocos B1 e B3 | N5 |
 | Quantas mesas e de que tamanho? | Quantas pessoas ocupam cada mesa? | Tamanho do grupo citado e observado | Blocos B2 e B3 | N3 + N5 |
-| Qual acervo inicial? | Quais jogos o público cita? | Jogos citados; clusters | Blocos B2 e B5 | N3 |
+| Qual acervo inicial? | Quais jogos o público cita e quais os concorrentes oferecem? | Jogos citados; acervo declarado | Blocos B1 e B2 | N3 |
 | Qual regime tributário? | Qual a carga sobre a receita projetada? | Alíquotas | LC 123/2006; CONCLA | N1 |
 | Qual taxa de desconto? | Qual o custo de oportunidade do capital? | Selic e IPCA projetados | Banco Central (Focus) | N2 |
 
@@ -345,7 +345,7 @@ Citar a Lei nº 13.709/2018 (LGPD) e a Resolução CNS nº 510/2016. Registrar a
 | Cobertura do Google Maps | Estabelecimentos fora da plataforma ou cortados pela busca não entram no censo da fonte | Checagem de cobertura com buscas manuais e Instagram; ausências registradas com o motivo |
 | Falhas do script de coleta | Registros perdidos ou campos errados, possivelmente concentrados em um grupo | Amostra de auditoria com taxa de erro e IC 95%; comparação entre registros com falha e completos; recoleta do estrato afetado |
 | Omissões na contagem direta | Entradas ou saídas não anotadas reduzem o fluxo e distorcem a permanência | Fechamento do saldo a cada 30 minutos; comparação com mesas e notas fiscais; taxa de omissão reportada, sem imputação |
-| Erro de classificação do dicionário | Viés nas variáveis de texto | Validação com kappa e F1; variáveis reprovadas saem da análise confirmatória |
+| Erro de classificação do dicionário | Viés nas variáveis de texto | Validação com kappa e F1; variável reprovada é reportada como exploratória |
 | Valores citados em poucos textos | Amostra pequena para o ticket | Triangulação com cardápio, preços observados e POF |
 | Cardápios desatualizados | Preços defasados | Data da coleta registrada; correção pelo IPCA quando a data do cardápio for conhecida |
 | FipeZap por cidade, não por bairro | Aluguel médio de Salvador não distingue bairros | Faixa larga; cotação de pontos (N1) recomendada antes do investimento |

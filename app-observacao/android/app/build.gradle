@@ -7,8 +7,8 @@ android {
         applicationId "com.pedro.observacaoluderia"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 7
-        versionName "2026.10.12-1"
+        versionCode 8
+        versionName "2026.10.12-2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
