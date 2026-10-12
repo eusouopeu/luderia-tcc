@@ -1,6 +1,6 @@
 # Registro de alterações
 
-Mudanças relevantes no TCC e na pasta do projeto: metodologia, arquivos, instruções, capítulos, site de apresentação, app de coleta de observação, scripts de extração etc. Registros em ordem cronológica, do mais antigo para o mais recente.
+Mudanças relevantes no TCC e na pasta do projeto: metodologia, arquivos, instruções, capítulos, site de apresentação, app de coleta de observação, scripts de extração, bancos de dados do Notion etc. Registros em ordem cronológica, do mais antigo para o mais recente.
 
 Formato de uma mudança:
 
@@ -184,3 +184,14 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: regra "Pastas enxutas" e padrão de nome dos arquivos de rede social.
 **Justificativa**: pedido do autor, para considerar nas próximas criações de arquivos e pastas.
 
+### 19:45
+**Objeto**: banco "A - Estabelecimentos" do Notion (colunas Site, Cardápio, Loja, Acervo, Outros links, Outras anotações), 33 estabelecimentos
+**Antes**: todos os links ficavam em Site, Cardápio e Outros links. Linktrees, heylink, beacons, lnk.bio e similares estavam em Site; sites próprios, lojas e acervos de aluguel estavam em Outros links; uma anotação estava em Outros links (Café Geek).
+**Depois**: Site só com site próprio (.com.br ou domínio da marca). Linktree e similares em Outros links. Acervo de aluguel (acervodejogos.com.br, página de locação do Game of Boards) em Acervo. Loja online com preços de venda (Asgard, CCG Floripa, Game of Boards) em Loja. Anotações movidas para Outras anotações (Café Geek e JOYJOY CAFÉ). Duplicatas removidas (Bravo Jogos, Chef on Play, Ludoteca BGC). Tracking de links limpo (Coletivo Geek, XPlace, Covil Game Bar, Encounter). Conferido por abertura das páginas: Alçapão (página de aluguel, em Site), Game of Boards (locação com 505 jogos, em Acervo), Ludoteca BGC (redireciona para acervodejogos), CCG Floripa e Asgard (lojas com preços), Arcadea (widget de reservas, em Outros links).
+**Justificativa**: pedido do autor; novas colunas separam os tipos de link e alimentam B1 (cardápio, preço, aluguel e venda de jogos).
+
+### 19:45
+**Objeto**: `CLAUDE.md` (Registro de alterações)
+**Antes**: o registro cobria só arquivos do projeto.
+**Depois**: mudanças em bancos de dados do Notion também entram no registro.
+**Justificativa**: pedido do autor em 12/10/2026.

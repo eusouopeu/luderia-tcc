@@ -41,7 +41,7 @@ Ler este arquivo sempre. Ler os demais sob demanda, conforme a tarefa. A numera�
 
 Arquivo: [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md) (formato no topo). Registros novos entram no fim, sob `## AAAA/MM/DD` (criado se não existir), com a hora (`### HH:mm`) tirada de `date`, no mesmo commit da mudança.
 
-1. **TODA VEZ** que uma ação mudar qualquer arquivo do projeto, registrar data, hora, **Objeto**, **Antes**, **Depois** e **Justificativa**.
+1. **TODA VEZ** que uma ação mudar qualquer arquivo do projeto **ou qualquer banco de dados do Notion**, registrar data, hora, **Objeto**, **Antes**, **Depois** e **Justificativa**.
 2. **TODA VEZ** que aparecer informação divergente entre documentos ainda sem registro, registrar data, **Objeto**, **Antes** (arquivo mais antigo), **Depois** (mais recente) e **Efeitos colaterais**. Registrar a divergência não autoriza corrigi-la sem pedido do autor.
 
 ## Princípios
