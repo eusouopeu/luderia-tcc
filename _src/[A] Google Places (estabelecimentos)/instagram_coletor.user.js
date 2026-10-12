@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.11-6
+// @version      2026.10.11-7
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -530,9 +530,33 @@
       site: d.site,
       seguidores: d.seguidores,
       primeiro: ps.length ? new Date(ps[0].taken_at * 1000).toLocaleDateString('pt-BR') : '',
+      // Total declarado pelo Instagram no perfil, não o nº de posts carregados.
+      total: total != null ? String(total) : '',
+      ...periodo(ps),
     };
     for (const k in valores) if (el.campos[k].value !== valores[k]) el.campos[k].value = valores[k];
     el.avisoPrimeiro.textContent = !ps.length ? '' : completo ? '' : ` (parcial: ${ps.length}/${total ?? '?'} posts)`;
+
+    // Campos do período: só aparecem com alguma data no filtro.
+    const comPeriodo = !!(dataDe || dataAte);
+    el.blocoPeriodo.style.display = comPeriodo ? '' : 'none';
+    if (!comPeriodo) return;
+    // Se a grade não está toda carregada e o período começa antes do post mais antigo
+    // carregado, pode haver posts do período que ainda não vieram.
+    const maisAntigo = ps.length ? diaLocal(ps[0].taken_at) : '';
+    const podeFaltar = !completo && (!dataDe || !maisAntigo || dataDe <= maisAntigo);
+    el.avisoPeriodo.textContent = podeFaltar ? ' (parcial: carregue mais posts)' : '';
+    const semNumero = ps.filter((p) => passaData(p) && p.comentarios === '').length;
+    el.avisoComentarios.textContent = (podeFaltar ? ' (parcial: carregue mais posts)' : '') +
+      (semNumero ? ` (${semNumero} post(s) sem contagem)` : '');
+  }
+
+  // Nº de posts e soma de comentários dos posts carregados dentro do filtro de data.
+  function periodo(ps) {
+    if (!dataDe && !dataAte) return { n_periodo: '', comentarios_periodo: '' };
+    const doPeriodo = ps.filter(passaData);
+    const soma = doPeriodo.reduce((s, p) => s + (Number(p.comentarios) || 0), 0);
+    return { n_periodo: String(doPeriodo.length), comentarios_periodo: String(soma) };
   }
 
   async function copiar(texto, botao) {
@@ -689,11 +713,18 @@
     el.avisoPrimeiro = criar('span');
     const blocoCampos = criar('div', {}, [
       criar('p', { className: 'subtitulo', textContent: 'Dados do perfil' }),
-      campo('nome', 'Nome do estabelecimento'),
-      campo('url', 'URL do Instagram'),
-      campo('site', 'Site / Linktree'),
-      campo('seguidores', 'Seguidores'),
       campo('primeiro', 'Data do primeiro post', el.avisoPrimeiro),
+      campo('seguidores', 'Seguidores'),
+      campo('total', 'Total de posts (declarado no perfil)'),
+      campo('site', 'Site / Linktree'),
+      campo('url', 'URL do Instagram'),
+      campo('nome', 'Nome do estabelecimento'),
+    ]);
+    el.avisoPeriodo = criar('span');
+    el.avisoComentarios = criar('span');
+    el.blocoPeriodo = criar('div', { style: 'display:none' }, [
+      campo('n_periodo', 'Posts no período', el.avisoPeriodo),
+      campo('comentarios_periodo', 'Comentários no período (soma)', el.avisoComentarios),
     ]);
 
     // Filtro de data (inclusivo nas duas pontas).
@@ -720,6 +751,7 @@
       criar('label', {}, [chk, document.createTextNode(' Selos na grade')]),
       criar('p', { className: 'subtitulo', textContent: 'Esmaecer na grade' }),
       blocoDatas,
+      el.blocoPeriodo,
       criar('label', {}, [chkEventos, document.createTextNode(' Posts que não são possíveis eventos')]),
       el.busca,
       el.listaTitulo,
