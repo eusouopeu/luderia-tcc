@@ -34,3 +34,13 @@ _data/raw/\[B3\]*/app/fotos/
 # Arquivados: mesmas regras dos dados brutos (respostas de API e logs não são publicados)
 arquivados/**/*.jsonl
 arquivados/**/*.log
+
+# Bloco B1: cardápios baixados em _data/processed (PDF, imagens e prints de terceiros); só CSV e transcrições são publicados
+_data/processed/\[B1\]*/Cardápios/**/*.pdf
+_data/processed/\[B1\]*/Cardápios/**/*.png
+_data/processed/\[B1\]*/Cardápios/**/*.jpg
+_data/processed/\[B1\]*/Cardápios/**/*.jpeg
+_data/processed/\[B1\]*/Cardápios/**/*.webp
+_data/processed/\[B1\]*/Cardápios/*.pdf
+# Modelo de idioma do Tesseract (OCR), baixado de tessdata_fast
+_src/\[B1\]*/tessdata/

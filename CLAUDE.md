@@ -55,3 +55,5 @@ Arquivo: [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md) (forma
 - **Sem questionários** de opinião ou intenção; preferir fontes secundárias e primárias comportamentais.
 - **Normas:** ABNT (detalhes em `_instrucoes/10_biblio-apendices.md`). Instituição: UFBA.
 - **Idioma:** português do Brasil no texto, nos comentários do código e nos nomes de arquivos de saída.
+- **Pastas enxutas:** nenhuma pasta com mais de cerca de 10 itens soltos na raiz; ao criar arquivos ou pastas, agrupar em subpastas por etapa ou tema (ex.: amostragem, curadoria, aprovadas, cardápios, redes sociais). Pedido do autor em 12/10/2026: abrir a pasta e ver dezenas de arquivos de uma vez sobrecarrega.
+- **Nome de arquivo de coleta de rede social:** `AAAA-MM-DD_<estabelecimento>_instagram_<perfis|posts>.csv`.

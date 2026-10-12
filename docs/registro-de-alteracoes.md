@@ -159,3 +159,28 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: a metodologia chama de ticket médio o gasto total por pessoa.
 **Depois**: a árvore de direcionadores usa ticket médio só para A&B. O vocabulário controlado (P6) define ticket médio como gasto total e "ticket médio de A&B" como a parte da árvore.
 **Efeitos colaterais**: risco de contar o couvert duas vezes no modelo se a cesta com couvert alimentar a folha "ticket médio de A&B".
+
+### 17:58
+**Objeto**: `_data/processed/[B1] Estabelecimentos e cardapios/Redes Sociais/` (98 CSV do Instagram)
+**Antes**: `instagram_<perfis|posts>_<perfil>_<data>.csv`, com três duplicatas ` (1)` (bravojogos perfis e posts, ludusluderia posts).
+**Depois**: `<data>_<perfil>_instagram_<perfis|posts>.csv`; as duplicatas receberam o sufixo `_2`. O tipo (perfis ou posts) foi mantido no fim porque, sem ele, os dois arquivos do mesmo perfil teriam o mesmo nome.
+**Justificativa**: pedido do autor; a data no início ordena a pasta por coleta.
+
+### 17:58
+**Objeto**: `_src/[B1] Cardapios/` (novo): `collect_B1_cardapios.py`, `build_B1_cardapios_ocr.py`, `collect_B1_sinais_jogos.py`; saídas em `_data/processed/[B1] Estabelecimentos e cardapios/Cardápios/`
+**Antes**: cardápios lidos à mão; sem script de download, OCR ou busca de sinais de venda e aluguel.
+**Depois**: download de PDFs e imagens por estabelecimento (log em `B1_cardapios_baixados.csv`), texto por OCR ou camada de texto em `transcricao/` e `B1_cardapios_ocr_linhas.csv`, e sinais de venda, aluguel e taxa em `B1_sinais_venda_aluguel.csv`. Tesseract com idioma português em `_src/[B1] Cardapios/tessdata/` (ignorado pelo git). Banco A do Notion preenchido com o que foi extraído.
+**Justificativa**: pedido do autor; reprodutibilidade da coleta de cardápios (B1).
+
+### 17:58
+**Objeto**: `.gitignore`
+**Antes**: só os cardápios de `_data/raw/[B1]*/cardapios/` eram ignorados.
+**Depois**: PDFs e imagens de `_data/processed/[B1]*/Cardápios/` e o modelo `tessdata` também.
+**Justificativa**: material de terceiros em repositório público; só CSV e transcrições são publicados.
+
+### 17:58
+**Objeto**: `CLAUDE.md` (Princípios)
+**Antes**: sem regra sobre quantidade de itens por pasta.
+**Depois**: regra "Pastas enxutas" e padrão de nome dos arquivos de rede social.
+**Justificativa**: pedido do autor, para considerar nas próximas criações de arquivos e pastas.
+
