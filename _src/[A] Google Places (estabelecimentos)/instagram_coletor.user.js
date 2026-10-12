@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.11-9
+// @version      2026.10.12-1
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -21,6 +21,13 @@
  *  - "Fila": coleta vários perfis em sequência, com pausa maior entre perfis,
  *    e baixa dois CSV no fim (posts e perfis).
  *
+ *  - Posts, dados de perfil e marcações ficam salvos no navegador (IndexedDB do
+ *    instagram.com); recarregar não perde a coleta. "Apagar dados salvos" zera tudo.
+ *  - Campos do período contam só posts de que o perfil é dono: colaboração conta uma
+ *    vez, para o dono. Cada dado do perfil traz a fonte (API, JSON, cabeçalho, meta).
+ *  - ✓/✗ na lista marcam à mão se o post é evento; o painel mostra a precisão do
+ *    classificador e o CSV de posts traz a coluna evento_validado.
+ *
  * Os CSV usam ";" como separador e UTF-8 com BOM (abrem direto no Excel pt-BR).
  * No pandas: pd.read_csv(caminho, sep=";").
  *
@@ -38,9 +45,101 @@
 
   const posts = new Map();   // shortcode -> post normalizado
   const perfis = new Map();  // username -> dados do perfil
-  const totais = new Map();  // username -> nº de posts declarado pelo Instagram
+  const totais = new Map();  // username -> nº de posts declarado pelo Instagram (respostas/API)
+  const totalPagina = new Map(); // username -> nº de posts lido do cabeçalho/meta (exato)
+  const validacao = new Map(); // shortcode -> 'sim' | 'não' (é evento? marcado à mão)
+  let versaoValidacao = 0;
   let parar = false;
   let ocupado = false;
+
+  // ---------- armazenamento local (IndexedDB) ----------
+
+  // Posts e dados de perfil ficam salvos no navegador: recarregar a página não
+  // obriga a coletar de novo. Os posts vão um a um (só os alterados); os mapas
+  // pequenos vão inteiros, quando mudam.
+  const sujos = new Set(); // shortcodes alterados desde o último salvamento
+  let banco = null;
+  let ultimoKv = '';
+
+  function abrirBanco() {
+    return new Promise((ok, erro) => {
+      const r = indexedDB.open('igc-coletor', 1);
+      r.onupgradeneeded = () => {
+        r.result.createObjectStore('posts', { keyPath: 'shortcode' });
+        r.result.createObjectStore('kv');
+      };
+      r.onsuccess = () => ok(r.result);
+      r.onerror = () => erro(r.error);
+    });
+  }
+
+  const pedido = (r) => new Promise((ok, erro) => { r.onsuccess = () => ok(r.result); r.onerror = () => erro(r.error); });
+
+  function estadoKv() {
+    return JSON.stringify({
+      perfis: [...perfis], capturados: [...capturados], totais: [...totais],
+      totalPagina: [...totalPagina], validacao: [...validacao],
+    });
+  }
+
+  async function carregarSalvos() {
+    try {
+      banco = await abrirBanco();
+      const tx = banco.transaction(['posts', 'kv'], 'readonly');
+      const [lista, kv] = await Promise.all([pedido(tx.objectStore('posts').getAll()), pedido(tx.objectStore('kv').get('estado'))]);
+      // O que chegou nesta sessão antes da leitura prevalece sobre o salvo.
+      for (const p of lista) { const atual = posts.get(p.shortcode); posts.set(p.shortcode, atual ? mesclar(p, atual) : p); }
+      if (kv) {
+        const e = JSON.parse(kv);
+        for (const [k, v] of e.perfis || []) if (!perfis.has(k)) perfis.set(k, v);
+        for (const [k, v] of e.capturados || []) capturados.set(k, mesclar(v, capturados.get(k) || {}));
+        for (const [k, v] of e.totais || []) if (!totais.has(k)) totais.set(k, v);
+        for (const [k, v] of e.totalPagina || []) if (!totalPagina.has(k)) totalPagina.set(k, v);
+        for (const [k, v] of e.validacao || []) if (!validacao.has(k)) validacao.set(k, v);
+        versaoValidacao++;
+      }
+      const nPerfis = new Set(lista.map((p) => p.perfil).filter(Boolean)).size;
+      if (lista.length) status(`Dados salvos carregados: ${lista.length} posts de ${nPerfis} perfis.`);
+      agendarSelos();
+      atualizarResumo();
+    } catch (e) { console.warn('[Coletor IG] sem armazenamento local', e); }
+  }
+
+  async function salvar() {
+    if (!banco) return;
+    const kv = estadoKv();
+    if (!sujos.size && kv === ultimoKv) return;
+    const lote = [...sujos];
+    sujos.clear();
+    try {
+      const tx = banco.transaction(['posts', 'kv'], 'readwrite');
+      const loja = tx.objectStore('posts');
+      for (const s of lote) { const p = posts.get(s); if (p) loja.put(p); }
+      if (kv !== ultimoKv) tx.objectStore('kv').put(kv, 'estado');
+      await new Promise((ok, erro) => { tx.oncomplete = ok; tx.onerror = () => erro(tx.error); });
+      ultimoKv = kv;
+    } catch (e) {
+      for (const s of lote) sujos.add(s); // tenta de novo no próximo ciclo
+      console.warn('[Coletor IG] falha ao salvar', e);
+    }
+  }
+
+  async function apagarSalvos() {
+    if (!confirm('Apagar todos os posts e perfis salvos neste navegador? Exporte antes o que quiser guardar.')) return;
+    posts.clear(); perfis.clear(); capturados.clear(); totais.clear(); totalPagina.clear(); validacao.clear();
+    sujos.clear(); versaoValidacao++;
+    try { localStorage.removeItem(CHAVE_FILA); } catch (_) { /* ignora */ }
+    if (banco) {
+      const tx = banco.transaction(['posts', 'kv'], 'readwrite');
+      tx.objectStore('posts').clear();
+      tx.objectStore('kv').clear();
+    }
+    ultimoKv = '';
+    status('Dados salvos apagados.');
+    lerDadosEmbutidos();
+    agendarSelos();
+    atualizarResumo();
+  }
 
   // ---------- captura das respostas do site ----------
 
@@ -112,6 +211,7 @@
       const velho = posts.get(novo.shortcode);
       // Mantém o campo já preenchido quando a resposta nova vem incompleta.
       posts.set(novo.shortcode, velho ? mesclar(velho, novo) : novo);
+      sujos.add(novo.shortcode);
     }
     for (const k in dado) {
       const v = dado[k];
@@ -131,6 +231,8 @@
       seguidores: typeof seg === 'number' ? seg : '',
       site: u.external_url || u.bio_links?.find((b) => b?.url)?.url || '',
     };
+    // Só registra quando veio algo além do nome (dono de post traz só username e nome).
+    if (novo.seguidores !== '' || novo.site) novo.coletado_em = dataHora(Date.now() / 1000);
     const chave = u.username.toLowerCase();
     capturados.set(chave, mesclar(capturados.get(chave) || {}, novo));
   }
@@ -218,6 +320,11 @@
   }
 
 
+  // Total de posts declarado: respostas do site ou API; na falta, o lido da página.
+  function totalDe(u) {
+    return totais.get(u) ?? totalPagina.get(u);
+  }
+
   // Número do post contado a partir do primeiro publicado (#1 = mais antigo).
   // Com todos os posts carregados, é a ordem cronológica. Com carga parcial, conta
   // de trás para frente a partir do total declarado pelo Instagram; posts fixados
@@ -226,7 +333,7 @@
   let cacheNumeros = { chave: '', mapa: new Map() };
 
   function numeros(user) {
-    const total = totais.get(user);
+    const total = totalDe(user);
     const ps = postsDe(user);
     const chave = `${user}|${ps.length}|${total}`;
     if (cacheNumeros.chave === chave) return cacheNumeros.mapa;
@@ -266,8 +373,15 @@
 
   // ---------- exportação ----------
 
-  const COLS_POSTS = ['perfil', 'vinculo', 'coautores', 'pagina_coleta', 'numero_post', 'fixado', 'shortcode', 'url', 'data_hora', 'taken_at', 'tipo', 'curtidas', 'comentarios', 'visualizacoes', 'n_midias', 'local', 'evento', 'categorias_evento', 'legenda'];
-  const COLS_PERFIS = ['perfil', 'nome', 'categoria', 'privado', 'seguidores', 'seguindo', 'n_posts_declarado', 'n_posts_coletados', 'n_posts_evento', 'primeiro_post', 'ultimo_post', 'site', 'bio', 'coletado_em'];
+  const COLS_POSTS = ['perfil', 'vinculo', 'coautores', 'pagina_coleta', 'numero_post', 'fixado', 'shortcode', 'url', 'data_hora', 'taken_at', 'tipo', 'curtidas', 'comentarios', 'visualizacoes', 'n_midias', 'local', 'evento', 'categorias_evento', 'evento_validado', 'legenda'];
+  // n_posts_coletados conta também colaborações em que o dono é outro perfil (o mesmo
+  // post entra em mais de um perfil); n_posts_proprios conta só os do dono, um perfil por post.
+  // Colunas *_periodo: só posts cujo dono é o perfil, dentro de periodo_de..periodo_ate.
+  const COLS_PERFIS = ['perfil', 'nome', 'fonte_nome', 'categoria', 'privado', 'seguidores', 'fonte_seguidores', 'seguindo',
+    'n_posts_declarado', 'fonte_n_posts', 'n_posts_coletados', 'n_posts_proprios', 'grade_completa', 'n_posts_evento',
+    'primeiro_post', 'ultimo_post', 'site', 'fonte_site',
+    'periodo_de', 'periodo_ate', 'n_posts_periodo', 'comentarios_periodo', 'n_posts_periodo_sem_contagem',
+    'n_colab_outro_dono_periodo', 'n_sem_dono_periodo', 'bio', 'coletado_em'];
 
   function celula(v) {
     const s = String(v ?? '');
@@ -288,14 +402,32 @@
   }
 
   function linhaPerfil(user) {
-    const p = perfis.get(user) || { perfil: user };
+    const p = perfis.get(user) || {};
     const ps = postsDe(user);
+    const d = dadosPerfil(user);
+    const per = resumoPeriodo(ps, user);
+    const total = totalDe(user);
     return {
       ...p,
+      perfil: user,
+      nome: d.nome.v, fonte_nome: d.nome.f,
+      seguidores: d.seguidores.v, fonte_seguidores: d.seguidores.f,
+      n_posts_declarado: d.posts.v, fonte_n_posts: d.posts.f,
+      site: d.site.v, fonte_site: d.site.f,
       n_posts_coletados: ps.length,
+      n_posts_proprios: ps.filter((x) => x.perfil === user).length,
+      grade_completa: total != null && ps.length >= total ? 'sim' : 'não',
       n_posts_evento: ps.filter(ehEvento).length,
       primeiro_post: ps.length ? dataHora(ps[0].taken_at) : '',
       ultimo_post: ps.length ? dataHora(ps[ps.length - 1].taken_at) : '',
+      periodo_de: per ? dataDe : '',
+      periodo_ate: per ? dataAte : '',
+      n_posts_periodo: per?.n ?? '',
+      comentarios_periodo: per?.comentarios ?? '',
+      n_posts_periodo_sem_contagem: per?.semContagem ?? '',
+      n_colab_outro_dono_periodo: per?.colabOutroDono ?? '',
+      n_sem_dono_periodo: per?.semDono ?? '',
+      coletado_em: p.coletado_em || capturados.get(user)?.coletado_em || dataHora(Date.now() / 1000),
     };
   }
 
@@ -303,7 +435,7 @@
     const carimbo = new Date().toISOString().slice(0, 10);
     const linhas = usuarios.flatMap((u) => {
       const nums = numeros(u);
-      return postsDe(u).map((p) => ({ ...p, vinculo: vinculo(p, u), numero_post: nums.get(p.shortcode) ?? '', data_hora: dataHora(p.taken_at) }));
+      return postsDe(u).map((p) => ({ ...p, vinculo: vinculo(p, u), numero_post: nums.get(p.shortcode) ?? '', data_hora: dataHora(p.taken_at), evento_validado: validacao.get(p.shortcode) || '' }));
     });
     baixar(`instagram_posts_${sufixo}_${carimbo}.csv`, csv(linhas, COLS_POSTS), 'text/csv;charset=utf-8');
     baixar(`instagram_perfis_${sufixo}_${carimbo}.csv`, csv(usuarios.map(linhaPerfil), COLS_PERFIS), 'text/csv;charset=utf-8');
@@ -371,14 +503,32 @@
     status(parar ? 'Rolagem interrompida.' : 'Chegou ao fim da grade.');
   }
 
+  // A fila em curso fica no localStorage: se a página fechar ou o Instagram bloquear,
+  // "Coletar fila" com a mesma lista continua dos perfis que faltam.
+  const CHAVE_FILA = 'igc-fila';
+
+  function lerFila() {
+    try { return JSON.parse(localStorage.getItem(CHAVE_FILA) || 'null'); } catch (_) { return null; }
+  }
+
+  function gravarFila(f) {
+    try { f ? localStorage.setItem(CHAVE_FILA, JSON.stringify(f)) : localStorage.removeItem(CHAVE_FILA); } catch (_) { /* ignora */ }
+  }
+
   async function coletarFila(usuarios) {
-    const feitos = [];
+    const salva = lerFila();
+    const mesma = salva && salva.todos.join(' ') === usuarios.join(' ');
+    const feitos = mesma ? salva.feitos.filter((u) => perfis.has(u)) : [];
+    gravarFila({ todos: usuarios, feitos });
+    if (feitos.length) status(`Continuando a fila: ${feitos.length}/${usuarios.length} perfis já coletados.`);
     try {
-      for (const [i, u] of usuarios.entries()) {
-        status(`Fila ${i + 1}/${usuarios.length}: @${u}`);
+      const pendentes = usuarios.filter((u) => !feitos.includes(u));
+      for (const [i, u] of pendentes.entries()) {
+        status(`Fila ${feitos.length + 1}/${usuarios.length}: @${u}`);
         await coletarPerfil(u);
         feitos.push(u);
-        if (i < usuarios.length - 1) {
+        gravarFila({ todos: usuarios, feitos });
+        if (i < pendentes.length - 1) {
           const pausa = sortear(PAUSA_PERFIL);
           status(`@${u} pronto. Próximo em ${Math.round(pausa / 1000)} s.`);
           await esperar(pausa);
@@ -386,6 +536,7 @@
         }
       }
       status(`Fila concluída: ${feitos.length} perfis.`);
+      gravarFila(null);
     } finally {
       // Baixa o parcial mesmo se a fila parar no meio.
       const comDados = usuarios.filter((u) => perfis.has(u));
@@ -399,8 +550,9 @@
   let mostrarSelos = true;
   let soEventos = false;
   let busca = '';
-  let dataDe = '';  // 'AAAA-MM-DD' ou vazio; inclusivo
-  let dataAte = ''; // idem
+  // Período padrão da coleta do Bloco A; 'AAAA-MM-DD' ou vazio; inclusivo nas duas pontas.
+  const PERIODO_PADRAO = ['2026-09-01', '2026-10-01'];
+  let [dataDe, dataAte] = PERIODO_PADRAO;
 
   function diaLocal(ts) {
     return dataHora(ts).slice(0, 10);
@@ -445,7 +597,10 @@
       const prefixo = (n ? `#${n} · ` : p.fixado ? '📌 · ' : '') + marca;
       const linha1 = `${prefixo}${dataCurta(p.taken_at)} · ♥ ${compacto(p.curtidas)} · 💬 ${compacto(p.comentarios)}` +
         (p.visualizacoes !== '' ? ` · ▶ ${compacto(p.visualizacoes)}` : '');
-      const linha2 = ehEvento(p) ? `🎲 ${p.categorias_evento}${p.evento === 'possível' ? ' (?)' : ''}` : '';
+      const val = validacao.get(p.shortcode);
+      const marcaVal = val === 'sim' ? ' ✔' : val === 'não' ? ' ✘' : '';
+      const linha2 = ehEvento(p) ? `🎲 ${p.categorias_evento}${p.evento === 'possível' ? ' (?)' : ''}${marcaVal}`
+        : val === 'sim' ? '🎲 evento (marcado à mão) ✔' : '';
       const chave = `${linha1}|${linha2}`;
       if (!selo) {
         selo = document.createElement('div');
@@ -481,7 +636,10 @@
     if (!u) {
       el.resumo.textContent = 'Abra um perfil.';
       for (const k in el.campos) el.campos[k].value = '';
+      for (const k in el.fontes) el.fontes[k].textContent = '';
       el.avisoPrimeiro.textContent = '';
+      el.blocoPeriodo.style.display = 'none';
+      atualizarValidacao();
       return;
     }
     const ps = postsDe(u);
@@ -496,6 +654,7 @@
       : '';
     atualizarLista(u, ps);
     atualizarCampos(u, ps);
+    atualizarValidacao();
   }
 
   // ---------- campos copiáveis do perfil ----------
@@ -510,87 +669,124 @@
     return String(Math.round(parseFloat(m[1].replace(',', '.')) * fator));
   }
 
+  // Origem de cada dado do perfil, mostrada ao lado do campo e exportada no CSV.
+  const FONTES = {
+    API: 'botão "Coletar via API" (web_profile_info)',
+    JSON: 'dados internos que o próprio site carregou',
+    'cabeçalho': 'texto visível no cabeçalho do perfil',
+    'cabeçalho ≈': 'só o domínio exibido no cabeçalho ("dominio.com e mais N"); o caminho do link pode faltar',
+    meta: 'resumo da página (meta tag)',
+    'meta ≈': 'resumo da página (meta tag), abreviado pelo Instagram: valor aproximado',
+    'página (salvo)': 'lido do cabeçalho ou da meta tag numa visita anterior a este perfil',
+  };
+
   // Junta, por ordem de confiança: coleta via API > respostas capturadas > HTML da página.
+  // Cada campo vem como { v: valor, f: fonte }. O HTML só vale para o perfil aberto.
   function dadosPerfil(u) {
     const api = perfis.get(u) || {};
     const cap = capturados.get(u) || {};
+    const naPagina = perfilAtual() === u;
     const meta = (prop) => document.querySelector(`meta[property="${prop}"]`)?.content || '';
     // As meta tags podem ficar de um perfil anterior após navegar; só valem se citarem este @.
-    const titulo = meta('og:title');
+    const titulo = naPagina ? meta('og:title') : '';
     const metaValida = titulo.toLowerCase().includes(`@${u})`);
+    const descricao = metaValida ? (meta('og:description') || document.querySelector('meta[name="description"]')?.content || '') : '';
     const nomeMeta = metaValida ? titulo.split(' (@')[0].trim() : '';
-    const segMeta = metaValida ? inteiro(meta('og:description').match(/^([\d.,]+\s*(?:mil|mi|k|m)?)\s*(?:followers|seguidores)/i)?.[1] || '') : '';
+    const segMetaTxt = descricao.match(/^([\d.,]+\s*(?:mil|mi|k|m)?)\s*(?:followers|seguidores)/i)?.[1] || '';
+    const cab = naPagina ? document.querySelector('header') : null;
     // No cabeçalho, o número abreviado ("60,5 mil") traz o exato no atributo title.
     // Sem login o link de seguidores é href="#"; por isso a busca é pelo texto ao lado.
-    const tituloSeg = [...document.querySelectorAll('header span[title]')]
-      .find((s) => /seguidor|follower/i.test(s.closest('a, li')?.textContent || ''))?.title || '';
-    const segDom = tituloSeg.replace(/\D/g, '');
+    const tituloSeg = cab ? [...cab.querySelectorAll('span[title]')]
+      .find((s) => /seguidor|follower/i.test(s.closest('a, li')?.textContent || ''))?.title || '' : '';
     // Link da bio na página: o Instagram o embrulha em l.instagram.com/?u=<destino>.
-    let siteDom = '';
-    const a = document.querySelector('header a[href*="l.instagram.com"]');
+    let siteDom = '', siteDomAprox = false;
+    const a = cab?.querySelector('a[href*="l.instagram.com"]');
     if (a) { try { siteDom = new URL(a.href).searchParams.get('u') || ''; } catch (_) { /* ignora */ } }
     // Com mais de um link, o cabeçalho mostra só o texto "dominio.com e mais 1" num botão.
-    if (!siteDom) {
-      for (const n of document.querySelectorAll('header a, header button, header span')) {
+    if (!siteDom && cab) {
+      for (const n of cab.querySelectorAll('a, button, span')) {
         const m = n.textContent.trim().match(/^((?:[\w-]+\.)+[a-z]{2,}(?:\/\S*)?)(?:\s+(?:e mais|and) \d+(?: more)?)?$/i);
-        if (m && !/instagram\.com/i.test(m[1])) { siteDom = 'https://' + m[1]; break; }
+        if (m && !/instagram\.com/i.test(m[1])) { siteDom = 'https://' + m[1]; siteDomAprox = true; break; }
       }
     }
     // Nº de posts: cabeçalho (logado: "2.003 publicações") ou meta description ("2,003 posts").
     const reqPosts = /([\d.,]+(?:\s*(?:mil|mi|k|m))?)\s*(?:posts?|publica[cç](?:ão|ões|ao|oes))(?![a-z])/i;
-    const cab = document.querySelector('header');
-    const postsTxt = (cab?.innerText || cab?.textContent || '').match(reqPosts)?.[1] ||
-      (metaValida ? (meta('og:description') || document.querySelector('meta[name="description"]')?.content || '').match(reqPosts)?.[1] : '') || '';
-    const escolher = (...vs) => vs.find((v) => v !== '' && v != null) ?? '';
+    const postsCab = (cab?.innerText || cab?.textContent || '').match(reqPosts)?.[1] || '';
+    const postsMeta = descricao.match(reqPosts)?.[1] || '';
+    const aprox = (t) => /[a-z]/i.test(t); // "1,2 mil": abreviado, não exato
+    // Total exato lido da página passa a valer para numerar posts e saber se a grade está completa.
+    if (postsCab && !aprox(postsCab)) totalPagina.set(u, Number(inteiro(postsCab)));
+    else if (postsMeta && !aprox(postsMeta)) totalPagina.set(u, Number(inteiro(postsMeta)));
+
+    const escolher = (...pares) => {
+      const [v, f] = pares.find(([x]) => x !== '' && x != null) || ['', ''];
+      return { v: String(v), f };
+    };
     return {
-      nome: escolher(api.nome, cap.nome, nomeMeta),
-      seguidores: String(escolher(api.seguidores, cap.seguidores, segDom, segMeta)),
-      site: escolher(api.site, cap.site, siteDom),
-      posts: inteiro(postsTxt),
-      postsAprox: /[a-z]/i.test(postsTxt), // "1,2 mil": abreviado, não exato
+      nome: escolher([api.nome, 'API'], [cap.nome, 'JSON'], [nomeMeta, 'meta']),
+      seguidores: escolher([api.seguidores, 'API'], [cap.seguidores, 'JSON'],
+        [tituloSeg.replace(/\D/g, ''), 'cabeçalho'], [inteiro(segMetaTxt), aprox(segMetaTxt) ? 'meta ≈' : 'meta']),
+      site: escolher([api.site, 'API'], [cap.site, 'JSON'], [siteDom, siteDomAprox ? 'cabeçalho ≈' : 'cabeçalho']),
+      posts: escolher([api.n_posts_declarado, 'API'], [totais.get(u), 'JSON'],
+        [inteiro(postsCab), aprox(postsCab) ? 'cabeçalho ≈' : 'cabeçalho'], [inteiro(postsMeta), aprox(postsMeta) ? 'meta ≈' : 'meta'], [totalPagina.get(u), 'página (salvo)']),
     };
   }
 
   function atualizarCampos(u, ps) {
     const d = dadosPerfil(u);
-    // Sem o total nas respostas capturadas, usa o da página; se for exato, passa a
-    // valer também para numerar os posts e saber se a grade está completa.
-    if (!totais.has(u) && d.posts && !d.postsAprox) totais.set(u, Number(d.posts));
-    const total = totais.get(u) ?? (d.posts ? Number(d.posts) : undefined);
+    const total = totalDe(u);
     const completo = total != null && ps.length >= total;
+    const per = resumoPeriodo(ps, u);
     const valores = {
-      nome: d.nome,
-      url: `https://www.instagram.com/${u}/`,
-      site: d.site,
+      nome: d.nome, url: { v: `https://www.instagram.com/${u}/`, f: '' }, site: d.site,
       seguidores: d.seguidores,
-      primeiro: ps.length ? new Date(ps[0].taken_at * 1000).toLocaleDateString('pt-BR') : '',
+      primeiro: { v: ps.length ? new Date(ps[0].taken_at * 1000).toLocaleDateString('pt-BR') : '', f: '' },
       // Total declarado pelo Instagram no perfil, não o nº de posts carregados.
-      total: total != null ? String(total) : '',
-      ...periodo(ps),
+      total: d.posts,
+      n_periodo: { v: per ? String(per.n) : '', f: '' },
+      comentarios_periodo: { v: per ? String(per.comentarios) : '', f: '' },
     };
-    for (const k in valores) if (el.campos[k].value !== valores[k]) el.campos[k].value = valores[k];
+    for (const k in valores) {
+      const { v, f } = valores[k];
+      if (el.campos[k].value !== v) el.campos[k].value = v;
+      const rotulo = f ? ` · ${f}` : '';
+      if (el.fontes[k] && el.fontes[k].textContent !== rotulo) {
+        el.fontes[k].textContent = rotulo;
+        el.fontes[k].title = FONTES[f] || '';
+      }
+    }
     el.avisoPrimeiro.textContent = !ps.length ? '' : completo ? '' : ` (parcial: ${ps.length}/${total ?? '?'} posts)`;
 
     // Campos do período: só aparecem com alguma data no filtro.
-    const comPeriodo = !!(dataDe || dataAte);
-    el.blocoPeriodo.style.display = comPeriodo ? '' : 'none';
-    if (!comPeriodo) return;
+    el.blocoPeriodo.style.display = per ? '' : 'none';
+    if (!per) return;
     // Se a grade não está toda carregada e o período começa antes do post mais antigo
     // carregado, pode haver posts do período que ainda não vieram.
     const maisAntigo = ps.length ? diaLocal(ps[0].taken_at) : '';
     const podeFaltar = !completo && (!dataDe || !maisAntigo || dataDe <= maisAntigo);
-    el.avisoPeriodo.textContent = podeFaltar ? ' (parcial: carregue mais posts)' : '';
-    const semNumero = ps.filter((p) => passaData(p) && p.comentarios === '').length;
-    el.avisoComentarios.textContent = (podeFaltar ? ' (parcial: carregue mais posts)' : '') +
-      (semNumero ? ` (${semNumero} post(s) sem contagem)` : '');
+    const parcial = podeFaltar ? ' (parcial: carregue mais posts)' : '';
+    el.avisoPeriodo.textContent = parcial;
+    el.avisoComentarios.textContent = parcial + (per.semContagem ? ` (${per.semContagem} post(s) sem contagem)` : '');
+    const fora = [];
+    if (per.colabOutroDono) fora.push(`${per.colabOutroDono} colaboração(ões) cujo dono é outro perfil`);
+    if (per.semDono) fora.push(`${per.semDono} sem dono identificado`);
+    el.foraPeriodo.textContent = fora.length ? `Fora da conta: ${fora.join(' e ')}.` : '';
   }
 
-  // Nº de posts e soma de comentários dos posts carregados dentro do filtro de data.
-  function periodo(ps) {
-    if (!dataDe && !dataAte) return { n_periodo: '', comentarios_periodo: '' };
+  // Posts do período que contam para o perfil: só aqueles de que ele é o dono. Uma
+  // colaboração conta uma vez só, para o dono, e nunca para o coautor; assim a soma
+  // entre perfis fecha com o total de posts distintos.
+  function resumoPeriodo(ps, u) {
+    if (!dataDe && !dataAte) return null;
     const doPeriodo = ps.filter(passaData);
-    const soma = doPeriodo.reduce((s, p) => s + (Number(p.comentarios) || 0), 0);
-    return { n_periodo: String(doPeriodo.length), comentarios_periodo: String(soma) };
+    const doDono = doPeriodo.filter((p) => p.perfil === u);
+    return {
+      n: doDono.length,
+      comentarios: doDono.reduce((s, p) => s + (Number(p.comentarios) || 0), 0),
+      semContagem: doDono.filter((p) => p.comentarios === '').length,
+      colabOutroDono: doPeriodo.filter((p) => p.perfil && p.perfil !== u).length,
+      semDono: doPeriodo.filter((p) => !p.perfil).length,
+    };
   }
 
   async function copiar(texto, botao) {
@@ -613,7 +809,7 @@
   // Mais recentes primeiro; cada item abre o post numa aba nova.
   function atualizarLista(u, ps) {
     const lista = ps.filter((p) => (busca ? passaFiltro(p) : passaData(p) && ehEvento(p))).reverse();
-    const chave = `${u}|${busca}|${soEventos}|${dataDe}|${dataAte}|${lista.length}|${ps.length}`;
+    const chave = `${u}|${busca}|${soEventos}|${dataDe}|${dataAte}|${lista.length}|${ps.length}|${versaoValidacao}`;
     if (chave === chaveLista) return;
     chaveLista = chave;
     const periodo = dataDe || dataAte ? ' no período' : '';
@@ -622,11 +818,54 @@
       : `Possíveis eventos${periodo} (${lista.length} de ${ps.length} posts)`;
     el.lista.replaceChildren(...lista.map((p) => {
       const trecho = p.legenda.replace(/\s+/g, ' ').slice(0, 110);
-      return criar('a', { href: p.url, target: '_blank', title: p.legenda }, [
-        criar('b', { textContent: `${dataCurta(p.taken_at)}${p.categorias_evento ? ' · ' + p.categorias_evento : ''}${p.evento === 'possível' ? ' (?)' : ''}` }),
-        criar('span', { textContent: trecho + (p.legenda.length > 110 ? '…' : '') }),
+      const val = validacao.get(p.shortcode);
+      const bVal = (valor, texto, dica) => criar('button', {
+        textContent: texto, title: dica, className: val === valor ? `ativo-${valor === 'sim' ? 'sim' : 'nao'}` : '',
+        onclick: () => marcarValidacao(p.shortcode, valor),
+      });
+      return criar('div', { className: 'item' }, [
+        criar('a', { href: p.url, target: '_blank', title: p.legenda }, [
+          criar('b', { textContent: `${dataCurta(p.taken_at)}${p.categorias_evento ? ' · ' + p.categorias_evento : ''}${p.evento === 'possível' ? ' (?)' : ''}` }),
+          criar('span', { textContent: trecho + (p.legenda.length > 110 ? '…' : '') }),
+        ]),
+        criar('div', { className: 'val' }, [bVal('sim', '✓', 'É evento'), bVal('não', '✗', 'Não é evento')]),
       ]);
     }));
+  }
+
+  // ---------- validação manual do classificador de eventos ----------
+
+  // Clicar de novo na mesma marca desfaz.
+  function marcarValidacao(shortcode, valor) {
+    if (validacao.get(shortcode) === valor) validacao.delete(shortcode);
+    else validacao.set(shortcode, valor);
+    versaoValidacao++;
+    agendarSelos();
+    atualizarResumo();
+  }
+
+  let chaveValidacao = '';
+
+  // Precisão do classificador sobre os posts marcados à mão, de todos os perfis:
+  // dos que ele aponta como evento, quantos são; dos que ele não aponta, quantos eram.
+  function atualizarValidacao() {
+    const chave = `${versaoValidacao}|${posts.size}`;
+    if (chave === chaveValidacao) return;
+    chaveValidacao = chave;
+    const grupos = { 'provável': [0, 0], 'possível': [0, 0], 'não': [0, 0] };
+    for (const [s, v] of validacao) {
+      const g = grupos[posts.get(s)?.evento];
+      if (!g) continue;
+      g[0]++;
+      if (v === 'sim') g[1]++;
+    }
+    const pct = ([n, sim]) => (n ? `${sim}/${n} (${Math.round((100 * sim) / n)}%)` : '—');
+    const total = grupos['provável'][0] + grupos['possível'][0] + grupos['não'][0];
+    const apontados = [grupos['provável'][0] + grupos['possível'][0], grupos['provável'][1] + grupos['possível'][1]];
+    el.validacao.textContent = total
+      ? `Validação (${total} posts marcados, todos os perfis) · são evento: provável ${pct(grupos['provável'])} · possível ${pct(grupos['possível'])} · ` +
+        `precisão geral ${pct(apontados)} · não apontados que eram evento ${pct(grupos['não'])}`
+      : 'Validação: marque ✓/✗ nos posts da lista para medir a precisão do classificador.';
   }
 
   function atualizarBotoes() {
@@ -664,8 +903,14 @@
     label{display:inline-block;margin-right:12px}
     .subtitulo{font-weight:700;margin-top:10px}
     .lista{max-height:260px;overflow:auto;border-top:1px solid #8885}
-    .lista a{display:block;padding:5px 2px;border-bottom:1px solid #8885;color:inherit;text-decoration:none;font-size:12px}
+    .lista .item{display:flex;gap:4px;align-items:center;border-bottom:1px solid #8885}
+    .lista a{flex:1 1 auto;min-width:0;display:block;padding:5px 2px;color:inherit;text-decoration:none;font-size:12px}
     .lista a:hover{background:#8882}
+    .val{display:flex;flex-direction:column;gap:2px}
+    .val button{flex:0 0 auto;width:26px;padding:1px 0;font-size:12px}
+    .val .ativo-sim{background:#2e7d32;color:#fff;border-color:#2e7d32}
+    .val .ativo-nao{background:#c62828;color:#fff;border-color:#c62828}
+    .fonte{opacity:.8;font-style:italic;cursor:help}
     .lista b{color:#d35400}
     .lista span{display:block;opacity:.75}
     .campo{margin:4px 0}
@@ -714,7 +959,7 @@
     const bCsv = botao('Exportar CSV', () => { const u = perfilAtual(); if (u) exportar([u], u); });
     const bJson = botao('JSON', () => {
       const u = perfilAtual();
-      if (u) baixar(`instagram_${u}.json`, JSON.stringify({ perfil: linhaPerfil(u), posts: postsDe(u) }, null, 2), 'application/json');
+      if (u) baixar(`instagram_${u}.json`, JSON.stringify({ perfil: linhaPerfil(u), posts: postsDe(u).map((p) => ({ ...p, evento_validado: validacao.get(p.shortcode) || '' })) }, null, 2), 'application/json');
     });
     const bFila = botao('Coletar fila', () => {
       const us = [...new Set(el.fila.value.split(/\s+/)
@@ -735,12 +980,14 @@
     });
     // Campos copiáveis do perfil aberto.
     el.campos = {};
+    el.fontes = {};
     const campo = (chave, rotulo, extra) => {
       const entrada = criar('input', { type: 'text', readOnly: true });
       el.campos[chave] = entrada;
+      el.fontes[chave] = criar('span', { className: 'fonte' });
       const bCopiar = criar('button', { textContent: '⧉', title: 'Copiar', onclick: () => copiar(entrada.value, bCopiar) });
       return criar('div', { className: 'campo' }, [
-        criar('span', {}, [document.createTextNode(rotulo), ...(extra ? [extra] : [])]),
+        criar('span', {}, [document.createTextNode(rotulo), el.fontes[chave], ...(extra ? [extra] : [])]),
         criar('div', {}, [entrada, bCopiar]),
       ]);
     };
@@ -756,18 +1003,24 @@
     ]);
     el.avisoPeriodo = criar('span');
     el.avisoComentarios = criar('span');
+    el.foraPeriodo = criar('p', { className: 'status' });
     el.blocoPeriodo = criar('div', { style: 'display:none' }, [
-      campo('n_periodo', 'Posts no período', el.avisoPeriodo),
-      campo('comentarios_periodo', 'Comentários no período (soma)', el.avisoComentarios),
+      campo('n_periodo', 'Posts próprios no período', el.avisoPeriodo),
+      campo('comentarios_periodo', 'Comentários no período (soma, posts próprios)', el.avisoComentarios),
+      el.foraPeriodo,
     ]);
 
-    // Filtro de data (inclusivo nas duas pontas).
+    // Filtro de data (inclusivo nas duas pontas); começa no período padrão.
     const aoMudarData = () => { dataDe = el.de.value; dataAte = el.ate.value; aplicarSelos(); atualizarResumo(); };
-    el.de = criar('input', { type: 'date', title: 'De (inclusivo)', onchange: aoMudarData });
-    el.ate = criar('input', { type: 'date', title: 'Até (inclusivo)', onchange: aoMudarData });
+    el.de = criar('input', { type: 'date', value: dataDe, title: 'De (inclusivo)', onchange: aoMudarData });
+    el.ate = criar('input', { type: 'date', value: dataAte, title: 'Até (inclusivo)', onchange: aoMudarData });
     const bLimparDatas = criar('button', { textContent: '✕', title: 'Limpar datas', onclick: () => { el.de.value = ''; el.ate.value = ''; aoMudarData(); } });
+    const bPadrao = criar('button', { textContent: '↺', title: `Voltar ao período padrão (${PERIODO_PADRAO.map((d) => d.split('-').reverse().join('/')).join(' a ')})`,
+      onclick: () => { [el.de.value, el.ate.value] = PERIODO_PADRAO; aoMudarData(); } });
+    el.validacao = criar('p', { className: 'status' });
+    const bApagar = botao('Apagar dados salvos', apagarSalvos);
     const blocoDatas = criar('div', { className: 'datas' }, [
-      document.createTextNode('De'), el.de, document.createTextNode('até'), el.ate, bLimparDatas,
+      document.createTextNode('De'), el.de, document.createTextNode('até'), el.ate, bPadrao, bLimparDatas,
     ]);
 
     el.listaTitulo = criar('p', { className: 'subtitulo' });
@@ -790,8 +1043,9 @@
       el.busca,
       el.listaTitulo,
       el.lista,
+      el.validacao,
       el.fila,
-      criar('div', { className: 'linha' }, [bFila]),
+      criar('div', { className: 'linha' }, [bFila, bApagar]),
       el.status,
     ]);
     cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.textContent = painel.classList.contains('min') ? '+' : '–'; };
@@ -830,6 +1084,15 @@
     }, 1000);
     garantirPainel();
     atualizarResumo();
+    carregarSalvos();
+    setInterval(salvar, 3000);
+    addEventListener('pagehide', salvar);
+    // Fila interrompida numa sessão anterior: repõe a lista para continuar.
+    const fila = lerFila();
+    if (fila && fila.feitos.length < fila.todos.length) {
+      el.fila.value = fila.todos.join('\n');
+      status(`Fila interrompida: ${fila.feitos.length}/${fila.todos.length} perfis coletados. "Coletar fila" continua dos que faltam.`);
+    }
     new MutationObserver(agendarSelos).observe(document.documentElement, { childList: true, subtree: true });
     agendarSelos();
   }
