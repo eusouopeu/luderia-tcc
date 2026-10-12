@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.12-2
+// @version      2026.10.12-3
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -344,8 +344,9 @@
     return mapa;
   }
 
-  function lerPref(chave) {
-    try { return localStorage.getItem(chave) === '1'; } catch (_) { return false; }
+  // Preferência salva; sem valor salvo, vale o padrão.
+  function lerPref(chave, padrao = false) {
+    try { const v = localStorage.getItem(chave); return v === null ? padrao : v === '1'; } catch (_) { return padrao; }
   }
 
   function gravarPref(chave, valor) {
@@ -379,7 +380,8 @@
   // Colunas *_periodo: só posts cujo dono é o perfil, dentro de periodo_de..periodo_ate.
   // Colunas *_periodo_com_compart: somam também as colaborações de outro dono em que o
   // perfil é coautor; contagem não exclusiva (o mesmo post entra no dono e no coautor).
-  const COLS_PERFIS = ['perfil', 'nome', 'fonte_nome', 'categoria', 'privado', 'seguidores', 'fonte_seguidores', 'seguindo',
+  // nome: nome exibido sem o slogan; nome_perfil: como aparece no Instagram.
+  const COLS_PERFIS = ['perfil', 'nome', 'nome_perfil', 'fonte_nome', 'categoria', 'privado', 'seguidores', 'fonte_seguidores', 'seguindo',
     'n_posts_declarado', 'fonte_n_posts', 'n_posts_coletados', 'n_posts_proprios', 'grade_completa', 'n_posts_evento',
     'primeiro_post', 'ultimo_post', 'site', 'fonte_site',
     'periodo_de', 'periodo_ate', 'n_posts_periodo', 'comentarios_periodo', 'n_posts_periodo_sem_contagem',
@@ -413,7 +415,7 @@
     return {
       ...p,
       perfil: user,
-      nome: d.nome.v, fonte_nome: d.nome.f,
+      nome: d.nome.v, nome_perfil: d.nome_perfil.v, fonte_nome: d.nome.f,
       seguidores: d.seguidores.v, fonte_seguidores: d.seguidores.f,
       n_posts_declarado: d.posts.v, fonte_n_posts: d.posts.f,
       site: d.site.v, fonte_site: d.site.f,
@@ -600,7 +602,7 @@
       const n = numeros(u).get(p.shortcode);
       const v = vinculo(p, u);
       const marca = v === 'colaboração' ? '🤝 ' : v === 'sem dono identificado' ? '❔ ' : '';
-      const prefixo = (n ? `#${n} · ` : p.fixado ? '📌 · ' : '') + marca;
+      const prefixo = (mostrarNumero && n ? `#${n} · ` : p.fixado ? '📌 · ' : '') + marca;
       const linha1 = `${prefixo}${dataCurta(p.taken_at)} · ♥ ${compacto(p.curtidas)} · 💬 ${compacto(p.comentarios)}` +
         (p.visualizacoes !== '' ? ` · ▶ ${compacto(p.visualizacoes)}` : '');
       const val = validacao.get(p.shortcode);
@@ -644,6 +646,7 @@
       for (const k in el.campos) el.campos[k].value = '';
       for (const k in el.fontes) el.fontes[k].textContent = '';
       el.avisoPrimeiro.textContent = '';
+      el.avisoNome.textContent = '';
       el.blocoPeriodo.style.display = 'none';
       atualizarValidacao();
       return;
@@ -728,14 +731,24 @@
       const [v, f] = pares.find(([x]) => x !== '' && x != null) || ['', ''];
       return { v: String(v), f };
     };
-    return {
-      nome: escolher([api.nome, 'API'], [cap.nome, 'JSON'], [nomeMeta, 'meta']),
+    const r = {
+      nome_perfil: escolher([api.nome, 'API'], [cap.nome, 'JSON'], [nomeMeta, 'meta']),
       seguidores: escolher([api.seguidores, 'API'], [cap.seguidores, 'JSON'],
         [tituloSeg.replace(/\D/g, ''), 'cabeçalho'], [inteiro(segMetaTxt), aprox(segMetaTxt) ? 'meta ≈' : 'meta']),
       site: escolher([api.site, 'API'], [cap.site, 'JSON'], [siteDom, siteDomAprox ? 'cabeçalho ≈' : 'cabeçalho']),
       posts: escolher([api.n_posts_declarado, 'API'], [totais.get(u), 'JSON'],
         [inteiro(postsCab), aprox(postsCab) ? 'cabeçalho ≈' : 'cabeçalho'], [inteiro(postsMeta), aprox(postsMeta) ? 'meta ≈' : 'meta'], [totalPagina.get(u), 'página (salvo)']),
     };
+    r.nome = { v: nomeSemSlogan(r.nome_perfil.v), f: r.nome_perfil.f };
+    return r;
+  }
+
+  // O nome exibido no perfil costuma vir com slogan: "Café Geek | Cafeteria & Ludoteca",
+  // "Chef on Play - Burgers e Games". Fica o trecho antes do primeiro separador
+  // (| • · – — ou " - "). Nome sem separador volta inteiro.
+  function nomeSemSlogan(nome) {
+    const limpo = nome.split(/\s*[|•·–—]\s*|\s+-\s+/)[0].trim();
+    return limpo || nome.trim();
   }
 
   function atualizarCampos(u, ps) {
@@ -763,6 +776,7 @@
         el.fontes[k].title = FONTES[f] || '';
       }
     }
+    el.avisoNome.textContent = d.nome_perfil.v && d.nome_perfil.v !== d.nome.v ? ` (no perfil: "${d.nome_perfil.v}")` : '';
     el.avisoPrimeiro.textContent = !ps.length ? '' : completo ? '' : ` (parcial: ${ps.length}/${total ?? '?'} posts)`;
 
     // Campos do período: só aparecem com alguma data no filtro.
@@ -925,6 +939,7 @@
       background:transparent;color:inherit;border:1px solid #888;border-radius:6px}
     label{display:inline-block;margin-right:12px}
     .subtitulo{font-weight:700;margin-top:10px}
+    summary.subtitulo{cursor:pointer;margin:10px 0 6px}
     .lista{max-height:260px;overflow:auto;border-top:1px solid #8885}
     .lista .item{display:flex;gap:4px;align-items:center;border-bottom:1px solid #8885}
     .lista a{flex:1 1 auto;min-width:0;display:block;padding:5px 2px;color:inherit;text-decoration:none;font-size:12px}
@@ -950,7 +965,10 @@
 
   const PREF_ROLAR = 'igc-rolar-ao-abrir';
   const PREF_COMPART = 'igc-contar-compartilhados';
-  let contarCompartilhados = lerPref(PREF_COMPART);
+  let contarCompartilhados = lerPref(PREF_COMPART, true);
+  // Número do post (#N) nos selos: oculto por padrão, para o selo caber numa linha.
+  const PREF_NUMERO = 'igc-numero-nos-selos';
+  let mostrarNumero = lerPref(PREF_NUMERO, false);
   let rolarAoAbrir = lerPref(PREF_ROLAR);
   let ultimoAutoRolado = null;
 
@@ -996,6 +1014,7 @@
     el.acoes = [bRolar, bApi, bCsv, bJson, bFila];
 
     const chk = criar('input', { type: 'checkbox', checked: true, onchange: (e) => { mostrarSelos = e.target.checked; aplicarSelos(); } });
+    const chkNumero = criar('input', { type: 'checkbox', checked: mostrarNumero, onchange: (e) => { mostrarNumero = e.target.checked; gravarPref(PREF_NUMERO, mostrarNumero); aplicarSelos(); } });
     const chkAuto = criar('input', { type: 'checkbox', checked: rolarAoAbrir, onchange: (e) => { rolarAoAbrir = e.target.checked; gravarPref(PREF_ROLAR, rolarAoAbrir); } });
     const chkEventos = criar('input', { type: 'checkbox', onchange: (e) => { soEventos = e.target.checked; aplicarSelos(); atualizarResumo(); } });
     el.busca = criar('input', {
@@ -1019,6 +1038,7 @@
       ]);
     };
     el.avisoPrimeiro = criar('span');
+    el.avisoNome = criar('span');
     const blocoCampos = criar('div', {}, [
       criar('p', { className: 'subtitulo', textContent: 'Dados do perfil' }),
       campo('primeiro', 'Data do primeiro post', el.avisoPrimeiro),
@@ -1026,7 +1046,7 @@
       campo('total', 'Total de posts (declarado no perfil)'),
       campo('site', 'Site / Linktree'),
       campo('url', 'URL do Instagram'),
-      campo('nome', 'Nome do estabelecimento'),
+      campo('nome', 'Nome do estabelecimento', el.avisoNome),
     ]);
     el.avisoPeriodo = criar('span');
     el.avisoComentarios = criar('span');
@@ -1053,8 +1073,10 @@
       document.createTextNode('De'), el.de, document.createTextNode('até'), el.ate, bPadrao, bLimparDatas,
     ]);
 
-    el.listaTitulo = criar('p', { className: 'subtitulo' });
+    el.listaTitulo = criar('span');
     el.lista = criar('div', { className: 'lista' });
+    // Lista de eventos/busca recolhível; começa fechada.
+    const blocoLista = criar('details', {}, [criar('summary', { className: 'subtitulo' }, [el.listaTitulo]), el.lista, el.validacao]);
     const minimizar = criar('span', { textContent: '–' });
     const cabecalho = criar('header', {}, [el.titulo, minimizar]);
     const painel = criar('div', { id: 'igc-painel' }, [
@@ -1066,14 +1088,13 @@
       blocoCampos,
       criar('label', {}, [chkAuto, document.createTextNode(' Rolar até o fim ao abrir um perfil')]),
       criar('label', {}, [chk, document.createTextNode(' Selos na grade')]),
+      criar('label', {}, [chkNumero, document.createTextNode(' Número do post nos selos')]),
       criar('p', { className: 'subtitulo', textContent: 'Esmaecer na grade' }),
       blocoDatas,
       el.blocoPeriodo,
       criar('label', {}, [chkEventos, document.createTextNode(' Posts que não são possíveis eventos')]),
       el.busca,
-      el.listaTitulo,
-      el.lista,
-      el.validacao,
+      blocoLista,
       el.fila,
       criar('div', { className: 'linha' }, [bFila, bApagar]),
       el.status,
