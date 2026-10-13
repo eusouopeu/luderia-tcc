@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de avaliações do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.13-3
+// @version      2026.10.13-4
 // @description  Abre as avaliações de um lugar, ordena por mais recentes, rola até o fim do período, expande os textos (no idioma original), filtra por tema, opinião, componentes e busca, salva o progresso, coleta em fila, confere amostras e exporta CSV com autor pseudonimizado.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -1186,7 +1186,7 @@
   }
 
   // ---------- painel (padrão: canto superior direito, shadow DOM, fora do <body>) ----------
-  // Fica à esquerda do painel de horários de pico, para os dois caberem juntos.
+  // Na lateral direita. Se o painel de horários de pico estiver aberto, fica logo abaixo dele.
 
   const el = {};
   let hospedeiro = null;
@@ -1216,7 +1216,7 @@
   }
 
   const CSS = `
-    #painel{position:fixed;top:12px;right:354px;z-index:2147483647;width:340px;
+    #painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:340px;
       max-height:calc(100vh - 24px);overflow:auto;box-sizing:border-box;
       background:#fff;color:#111;border:1px solid #ccc;border-radius:10px;
       box-shadow:0 4px 16px rgba(0,0,0,.18);font:13px/1.4 system-ui,sans-serif;padding:10px}
@@ -1399,9 +1399,20 @@
     atualizarBotoes();
   }
 
+  function posicionarPainel() {
+    const picos = document.getElementById('tcc-picos-hospedeiro')?.shadowRoot?.getElementById('painel');
+    const r = picos?.getBoundingClientRect();
+    const topo = r && r.height ? Math.round(r.bottom + 8) : 12;
+    if (el.painel.style.top !== `${topo}px`) {
+      el.painel.style.top = `${topo}px`;
+      el.painel.style.maxHeight = `calc(100vh - ${topo + 12}px)`;
+    }
+  }
+
   function garantirPainel() {
     if (!hospedeiro) montarPainel();
     if (!hospedeiro.isConnected) document.documentElement.appendChild(hospedeiro);
+    posicionarPainel();
     // Ao trocar de lugar, "Já ordenei" e o place_id colado deixam de valer.
     const nome = infoLugar().nome_estabelecimento;
     if (nome && nome !== ultimoLugar) {
