@@ -350,3 +350,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: código no formato número + letra ("2d", "3s", "1m"); a ordenação alfabética misturava as unidades.
 **Depois**: código no formato letra + número ("d2", "s3", "m1"); a anotação de entrada aceita as duas ordens. Planilha regerada: 342 comentários, diferença zero com as células da entrada.
 **Justificativa**: pedido do autor: ao retomar a coleta, ordenar a coluna agrupa por unidade (dia, semana, mês) e o comentário mais antigo é o maior número do grupo "m".
+
+### 07:31
+**Objeto**: banco "B - Comentários" do Notion, coluna "Data relativa" (539 linhas)
+**Antes**: códigos em duas grafias, número + letra ("1m", "3s", "2d", "8h"; 294 linhas) e por extenso ("1 mês", "3 meses", "2 semanas", "4 dias"; 245 linhas). Ordenar a coluna misturava unidades e grafias.
+**Depois**: todas no formato letra + número: d1–d6 (38), h3, h8 e h15 (3), s1 (51), s2 (44), s3 (78), s4 (19), m1 (198), m2 (46), m3 (63). Ficaram como estavam 48 linhas sem data e 1 com "3" sem unidade (Magic Store Brazil), que precisa de conferência manual. Total do banco conferido depois da troca: 588 linhas, igual ao de antes.
+**Justificativa**: pedido do autor: ao retomar a coleta, ordenar a coluna agrupa por unidade (dia, semana, mês), e o comentário mais antigo de cada casa é o maior número do grupo "m". A grafia por extenso entrou na troca porque também quebrava o agrupamento.
