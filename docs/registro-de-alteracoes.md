@@ -287,3 +287,14 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: só o corte de mais de 100 avaliações: 164 candidatos na curadoria filtrada das metrópoles; 87 lojas do Acervo de Jogos triadas (31 já aprovadas, 51 descartadas, 5 novas).
 **Depois**: mesmos filtros (termos suspeitos, metrópole REGIC pelo endereço) com corte de 50 ou mais avaliações: 222 candidatos (164 + 58 na faixa de 50 a 100, sem triagem manual). Triagem do Acervo com 50+: 105 lojas (31 já aprovadas, 54 descartadas, 5 novas, 9 com triagem manual pendente por estarem na curadoria de 50+, 6 a conferir). As saídas de corte 100 não mudaram.
 **Justificativa**: pedido do autor, que avalia expandir a população para 50 ou mais avaliações.
+
+### 01:43
+**Objeto**: `_src/[B1] Acervo de Jogos/collect_B1_jogos_dos_acervos.py` (novo); saída `Acervo de Jogos/B1_jogos_dos_acervos.csv`; listas da Ludopedia em `_data/raw/[B1]*/acervos_jogos/ludopedia_*.txt`; `.gitignore`
+**Antes**: sem lista de jogos por estabelecimento, salvo o Covil (`B1_jogos_covil.csv`).
+**Depois**: 8.736 linhas (título × estabelecimento) para as 16 casas com dados de comida no banco A e acervo publicado: 11 no Acervo de Jogos (ordem "mais alugados"), Ludoteca SideQuest no rejoy, Arena BG, Castelos e Chef on Play na coleção da Ludopedia (ordem alfabética; lida no navegador por causa do Cloudflare) e Covil pelo PDF de 2023. Cache das páginas em `acervos_jogos/<loja>/`, ignorado no git.
+**Justificativa**: pedido do autor; insumo da coluna "Jogos do acervo" do banco A.
+
+**Objeto**: banco "A - Estabelecimentos" do Notion, coluna "Jogos do acervo"
+**Antes**: multi-seleção vazia, sem opções.
+**Depois**: tipo texto; 16 linhas com os 100 primeiros títulos de cada acervo, separados por "; " (mais alugados no Acervo de Jogos; ordem alfabética na rejoy e na Ludopedia; ordem do PDF no Covil). Sem preenchimento: casas com comida e sem acervo publicado (Arcadea, Asgard, BoardZ, Café Geek, Cartola, Cineplay, Fan hour, Flow, Fortalúdica, Inside, Encounter, Ludus, Utopia) e casas com acervo e sem dados de comida (Balboa's, Dominaria, Dungeon, Game of Boards, JOYJOY, LudoCafé, Nala Land, Paladins, Pittas, São Jogue, Tubaleria, Vila Celta, JogaSampa).
+**Justificativa**: pedido do autor. A multi-seleção não comportava o conteúdo: o conector do Notion aceita no máximo 100 opções na coluna, e os 100 primeiros das 16 casas somam 843 títulos distintos. O autor escolheu texto com os 100 primeiros.

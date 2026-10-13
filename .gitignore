@@ -48,3 +48,4 @@ _src/\[B1\]*/tessdata/
 # Bloco B1: páginas HTML do Acervo de Jogos (material de terceiros, cache da coleta); só os CSV são publicados
 _data/raw/\[B1\]*/acervodejogos/*.html
 _data/raw/\[B1\]*/acervodejogos/lojas/
+_data/raw/\[B1\]*/acervos_jogos/*/
