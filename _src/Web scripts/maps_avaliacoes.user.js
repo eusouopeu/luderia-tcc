@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de avaliações do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.13-6
+// @version      2026.10.13-7
 // @description  Abre as avaliações de um lugar, ordena por mais recentes, rola até o fim do período, expande os textos (no idioma original), filtra por tema, opinião, componentes e busca, salva o progresso, coleta em fila, confere amostras e exporta CSV com autor pseudonimizado.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -53,7 +53,7 @@
  * O placar mostra confere, diverge, faltam e a fidelidade com intervalo de Wilson (95%).
  *
  * Filtros (tema, opinião, componentes, busca) e período valem para o CSV "dos
- * filtros", para esmaecer na página o que fica de fora e para destacar no texto
+ * filtros", para esmaecer ou ocultar na página o que fica de fora e para destacar no texto
  * as palavras que acionaram o filtro (tema em amarelo, positiva em verde,
  * negativa em vermelho, negação sublinhada em laranja, busca em azul). São regras
  * de palavras-chave para achar comentários, não a codificação do método (Bardin).
@@ -69,6 +69,19 @@
  *    e ao anterior que passa, como o "localizar na página" do navegador. A seção
  *    "Comentários filtrados" lista os que passam; clicar num item rola até ele.
  *  - Período e filtros ficam salvos: valem depois de recarregar e em cada lugar da fila.
+ *  - "Fora do filtro" (Manter, Esmaecer ou Ocultar) decide o que a página faz com os
+ *    comentários que não passam. Ocultar não age durante a coleta, para não mexer na
+ *    rolagem da lista; os comentários reaparecem ao fim.
+ *
+ * Recibo dos filtros: cada CSV diz com que entradas foi gerado, para que o arquivo
+ * seja auditável sem a memória de quem coletou.
+ *  - Na coleta (colunas periodo_de_dias, periodo_ate_dias, coleta_parar_em_conhecidas,
+ *    coleta_ordenacao_manual): o período e as opções valem no momento em que a lista
+ *    foi rolada, e ficam gravados em cada linha, inclusive na coleta recuperada.
+ *  - Na exportação (colunas recibo_*): o recorte do arquivo (tudo, período ou filtros),
+ *    o período, os temas, a opinião, os componentes e a busca realmente aplicados às
+ *    linhas, e a data e hora do arquivo. No recorte "tudo", nada foi aplicado.
+ *  - O CSV-resumo leva as mesmas entradas da coleta.
  *
  * Painel: arraste pelo cabeçalho e redimensione pelo canto inferior direito; posição
  * e tamanho ficam salvos. Duplo clique no cabeçalho volta ao canto, no tamanho padrão.
@@ -551,7 +564,7 @@
   // ---------- período e filtros ----------
 
   const periodo = { de: 0, ate: 30 };
-  const filtros = { temas: new Set(), opiniao: '', componentes: new Set(), busca: null, buscaTexto: '', esmaecer: false, destacar: true };
+  const filtros = { temas: new Set(), opiniao: '', componentes: new Set(), busca: null, buscaTexto: '', fora: '', destacar: true };
 
   // Período e filtros ficam salvos no Tampermonkey: valem depois de recarregar a
   // página e em cada lugar da fila.
@@ -560,7 +573,7 @@
   const filtrosParaSalvar = () => ({
     de: periodo.de, ate: periodo.ate === Infinity ? 'tudo' : periodo.ate,
     temas: [...filtros.temas], opiniao: filtros.opiniao, componentes: [...filtros.componentes],
-    busca: filtros.buscaTexto, esmaecer: filtros.esmaecer, destacar: filtros.destacar,
+    busca: filtros.buscaTexto, fora: filtros.fora, destacar: filtros.destacar,
   });
 
   function carregarFiltros(s) {
@@ -572,7 +585,8 @@
     filtros.opiniao = ['positiva', 'negativa'].includes(s.opiniao) ? s.opiniao : '';
     filtros.buscaTexto = String(s.busca || '');
     filtros.busca = lerBusca(filtros.buscaTexto);
-    filtros.esmaecer = !!s.esmaecer;
+    // Antes havia só o liga/desliga "esmaecer"; o valor antigo vira "esmaecer".
+    filtros.fora = ['esmaecer', 'ocultar'].includes(s.fora) ? s.fora : s.esmaecer ? 'esmaecer' : '';
     filtros.destacar = s.destacar !== false;
   }
 
@@ -705,9 +719,22 @@
     observador.observe(raiz, { childList: true, subtree: true, characterData: true });
   }
 
+  // O que a página faz com um comentário que não passa: nada, esmaece ou oculta. Durante a
+  // coleta o ocultar vira esmaecer, porque a rolagem depende da altura da lista.
+  function aplicarForaDoFiltro(c, ok) {
+    const modo = ok ? '' : filtros.fora === 'ocultar' && ocupado ? 'esmaecer' : filtros.fora;
+    const marca = c.dataset.tccFora || '';
+    if (modo === marca) return;
+    if (marca === 'esmaecer') c.style.opacity = '';
+    if (marca === 'ocultar') c.style.display = '';
+    if (modo === 'esmaecer') { c.style.transition = 'opacity .2s'; c.style.opacity = '0.25'; }
+    if (modo === 'ocultar') c.style.display = 'none';
+    if (modo) c.dataset.tccFora = modo; else delete c.dataset.tccFora;
+  }
+
   function atualizarFiltrosNaPagina({ seMudou = false } = {}) {
     atualizarIdsConhecidos();
-    const chaveAgora = `${chaveIdsConhecidos}|${idsConhecidos.size}`;
+    const chaveAgora = `${chaveIdsConhecidos}|${idsConhecidos.size}|${filtros.fora}|${ocupado}`;
     if (seMudou && !paginaMudou && chaveAgora === chaveAplicada) return;
     paginaMudou = false;
     chaveAplicada = chaveAgora;
@@ -717,14 +744,7 @@
     for (const c of cs) {
       const ok = passaFiltros(lerCartao(c));
       if (ok) passam.push(c);
-      if (filtros.esmaecer && !ok) {
-        c.style.transition = 'opacity .2s';
-        c.style.opacity = '0.25';
-        c.dataset.tccEsmaecido = '1';
-      } else if (c.dataset.tccEsmaecido) {
-        c.style.opacity = '';
-        delete c.dataset.tccEsmaecido;
-      }
+      aplicarForaDoFiltro(c, ok);
       destacarCartao(c, ok ? chave : '');
     }
     if (el.contagem) {
@@ -898,6 +918,12 @@
     return caixa;
   }
 
+  // Entradas da coleta que não aparecem nos dados: ficam gravadas em cada linha.
+  const entradasDaColeta = () => ({
+    coleta_parar_em_conhecidas: el.pararConhecidas?.checked ? 'sim' : 'não',
+    coleta_ordenacao_manual: el.jaOrdenado?.checked ? 'sim' : 'não',
+  });
+
   // Linhas do CSV a partir dos cartões lidos (sem repetir review_id).
   async function montarLinhas(lidos, lugar, motivo, coletado_em, antes) {
     const vistos = new Set();
@@ -915,6 +941,7 @@
         no_periodo: noPeriodo(r) ? 'sim' : 'não',
         periodo_de_dias: periodo.de,
         periodo_ate_dias: periodo.ate === Infinity ? 'sem limite' : periodo.ate,
+        ...entradasDaColeta(),
         motivo_parada: motivo,
         coleta_completa: COMPLETA[motivo] || 'não',
         versao_script: VERSAO,
@@ -949,6 +976,7 @@
       novas: linhas.filter((r) => r.ja_coletada === 'não').length,
       no_periodo: noP.length, no_periodo_com_texto: noPT,
       periodo_de_dias: periodo.de, periodo_ate_dias: finito ? periodo.ate : 'sem limite',
+      ...entradasDaColeta(),
       janela_dias_min: jMin || '', janela_dias_max: jMax || '',
       texto_por_mes_min: porMes(jMax), texto_por_mes_max: porMes(jMin),
       motivo_parada: motivo, coleta_completa: COMPLETA[motivo] || 'não', versao_script: VERSAO, url: location.href,
@@ -1338,10 +1366,12 @@
     'detalhes', 'tipo_servico', 'tipo_refeicao', 'preco_por_pessoa', 'tamanho_grupo', 'tempo_espera', 'reserva', 'estacionamento',
     'pratos_recomendados', 'notas_por_aspecto', 'n_fotos', 'urls_fotos', 'provavel_cardapio', 'valor_rs_no_texto', 'temas', 'opiniao',
     'resposta_dono', 'texto_resposta', 'periodo_de_dias', 'periodo_ate_dias', 'motivo_parada', 'coleta_completa', 'versao_script',
-    'coletado_em', 'url'];
+    'coletado_em', 'url',
+    'coleta_parar_em_conhecidas', 'coleta_ordenacao_manual', 'recibo_recorte', 'recibo_periodo', 'recibo_temas', 'recibo_opiniao',
+    'recibo_componentes', 'recibo_busca', 'recibo_exportado_em'];
   const COLS_RESUMO = ['data_coleta', 'place_id', 'id_maps', 'nome_estabelecimento', 'avaliacao_media_estabelecimento',
     'volume_avaliacoes_estabelecimento', 'lidas', 'com_texto', 'sem_texto', 'soma_confere', 'novas', 'no_periodo',
-    'no_periodo_com_texto', 'periodo_de_dias', 'periodo_ate_dias', 'janela_dias_min', 'janela_dias_max', 'texto_por_mes_min',
+    'no_periodo_com_texto', 'periodo_de_dias', 'periodo_ate_dias', 'coleta_parar_em_conhecidas', 'coleta_ordenacao_manual', 'janela_dias_min', 'janela_dias_max', 'texto_por_mes_min',
     'texto_por_mes_max', 'motivo_parada', 'coleta_completa', 'versao_script', 'url'];
   const COLS_CONF = ['review_id', 'nome_estabelecimento', 'coletado_em', 'nota_coletada', 'nota_pagina', 'nota_confere_auto',
     'data_coletada', 'data_pagina', 'texto_confere_auto', 'resultado', 'observacao', 'conferido_em'];
@@ -1363,13 +1393,33 @@
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
   }
 
+  // Recibo da exportação: o que foi aplicado às linhas do arquivo. No recorte "tudo"
+  // nada foi aplicado; em "período", o período e "com texto"; em "filtros", o período e
+  // todos os filtros ligados. O que não foi aplicado fica "nenhum".
+  function reciboExportacao(recorte) {
+    const nenhum = 'nenhum';
+    const filtra = recorte === 'filtros';
+    const aplicaPeriodo = recorte === 'periodo' || filtra;
+    return {
+      recibo_recorte: recorte,
+      recibo_periodo: aplicaPeriodo ? `${periodo.de} a ${periodo.ate === Infinity ? 'sem limite' : periodo.ate} dias` : nenhum,
+      recibo_temas: (filtra && [...filtros.temas].map((k) => ROTULO_TEMA[k]).join('; ')) || nenhum,
+      recibo_opiniao: (filtra && filtros.opiniao) || nenhum,
+      recibo_componentes: recorte === 'periodo' ? 'com texto'
+        : (filtra && [...filtros.componentes].map((k) => COMPONENTES[k][0]).join('; ')) || nenhum,
+      recibo_busca: (filtra && filtros.buscaTexto.trim()) || nenhum,
+      recibo_exportado_em: agora(),
+    };
+  }
+
   function baixar(linhas, sufixo, { forcar = false } = {}) {
     if (!resultado.length) { status('Nada para exportar: colete ou recupere uma coleta primeiro.'); return; }
     if (!linhas.length) { status('Nenhuma avaliação coletada passa neste recorte.'); return; }
     if (alertaSeletores && !forcar && !confirm(`${alertaSeletores}\n\nExportar mesmo assim?`)) return;
     // O place_id colado depois da coleta também entra.
     const placeId = el.placeId.value.trim();
-    const saida = linhas.map((l) => (l.place_id || !placeId ? l : { ...l, place_id: placeId }));
+    const recibo = reciboExportacao(sufixo);
+    const saida = linhas.map((l) => ({ ...(l.place_id || !placeId ? l : { ...l, place_id: placeId }), ...recibo }));
     salvarArquivo(`${dataLocal(new Date())}_${nomeArquivo(linhas[0].nome_estabelecimento)}_maps_avaliacoes_${sufixo}.csv`, csv(saida, COLS));
   }
 
@@ -1804,6 +1854,17 @@
     const grupoPills = criar('div', { className: 'pills' }, pills);
     grupoPills.setAttribute('role', 'tablist');
 
+    const pillsFora = [['', 'Manter'], ['esmaecer', 'Esmaecer'], ['ocultar', 'Ocultar']].map(([v, t]) => {
+      const b = criar('button', { type: 'button', className: 'pill', onclick: () => { filtros.fora = v; pintarFora(); reaplicar(); } }, [t]);
+      b.dataset.valor = v;
+      b.setAttribute('role', 'tab');
+      return b;
+    });
+    const pintarFora = () => pillsFora.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.valor === filtros.fora)));
+    pintarFora();
+    const grupoFora = criar('div', { className: 'pills' }, pillsFora);
+    grupoFora.setAttribute('role', 'tablist');
+
     const limparFiltros = () => {
       filtros.temas.clear(); filtros.componentes.clear(); filtros.opiniao = ''; filtros.busca = null; filtros.buscaTexto = '';
       campoBusca.value = '';
@@ -1832,9 +1893,10 @@
       grupoPills,
       criar('div', { className: 'subtitulo' }, ['Componentes', ajuda('Passa só se tiver todos os marcados.')]),
       criar('div', { className: 'tags' }, tagsComp),
+      criar('div', { className: 'subtitulo' }, ['Fora do filtro', ajuda('O que a página faz com as avaliações fora do período e dos filtros: manter como estão, deixar translúcidas ou ocultar. Durante a coleta, ocultar age como esmaecer, para não mexer na rolagem.')]),
+      grupoFora,
       criar('div', { className: 'subtitulo' }, ['Na página']),
       criar('div', { className: 'tags' }, [
-        etiqueta('Esmaecer o que fica fora', (v) => { filtros.esmaecer = v; reaplicar(); }, { ligada: filtros.esmaecer, dica: 'Deixa translúcidas na página as avaliações fora do período e dos filtros.' }),
         etiqueta('Destacar palavras', (v) => { filtros.destacar = v; reaplicar(); }, { ligada: filtros.destacar, dica: legendaDestaques }),
       ]),
     ]);

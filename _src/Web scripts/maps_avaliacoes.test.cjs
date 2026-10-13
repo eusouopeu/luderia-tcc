@@ -25,7 +25,7 @@ function carregar(contexto = {}) {
     ...contexto,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Avaliações do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { infoLugar, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros });})();';
+    + 'Object.assign(globalThis.__test, { infoLugar, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros, reciboExportacao, aplicarForaDoFiltro, filtros });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_avaliacoes.user.js' });
   return ambiente.__test;
 }
@@ -119,10 +119,66 @@ test('placar da conferência fecha com o total sorteado', () => {
 
 test('filtros salvos voltam iguais e ignoram chaves desconhecidas', () => {
   const t = carregar();
-  t.carregarFiltros({ de: 7, ate: 'tudo', temas: ['preco', 'inventado'], opiniao: 'negativa', componentes: ['fotos'], busca: 'couvert', esmaecer: true, destacar: false });
+  t.carregarFiltros({ de: 7, ate: 'tudo', temas: ['preco', 'inventado'], opiniao: 'negativa', componentes: ['fotos'], busca: 'couvert', fora: 'ocultar', destacar: false });
   const s = t.filtrosParaSalvar();
-  assert.deepEqual(JSON.parse(JSON.stringify(s)), { de: 7, ate: 'tudo', temas: ['preco'], opiniao: 'negativa', componentes: ['fotos'], busca: 'couvert', esmaecer: true, destacar: false });
+  assert.deepEqual(JSON.parse(JSON.stringify(s)), { de: 7, ate: 'tudo', temas: ['preco'], opiniao: 'negativa', componentes: ['fotos'], busca: 'couvert', fora: 'ocultar', destacar: false });
   const r = { idade_dias_aprox: 400, temas: 'preço', opiniao: 'negativa', n_fotos: 2, texto_avaliacao: 'O couvert é caro' };
   assert.equal(t.passaFiltros(r), true);
   assert.equal(t.passaFiltros({ ...r, n_fotos: 0 }), false);
+});
+
+test('preferência antiga "esmaecer: true" vira o modo esmaecer', () => {
+  const t = carregar();
+  t.carregarFiltros({ de: 0, ate: 30, esmaecer: true });
+  assert.equal(t.filtrosParaSalvar().fora, 'esmaecer');
+  t.carregarFiltros({ de: 0, ate: 30, fora: 'invalido' });
+  assert.equal(t.filtrosParaSalvar().fora, '');
+});
+
+test('fora do filtro: esmaece, oculta e restaura sem deixar rastro', () => {
+  const t = carregar();
+  const c = { style: {}, dataset: {} };
+  t.filtros.fora = 'esmaecer';
+  t.aplicarForaDoFiltro(c, false);
+  assert.equal(c.style.opacity, '0.25');
+  t.filtros.fora = 'ocultar';
+  t.aplicarForaDoFiltro(c, false);
+  assert.equal(c.style.opacity, '');
+  assert.equal(c.style.display, 'none');
+  t.aplicarForaDoFiltro(c, true);
+  assert.equal(c.style.display, '');
+  assert.equal(c.dataset.tccFora, undefined);
+});
+
+test('recibo da exportação diz o que foi aplicado a cada recorte', () => {
+  const t = carregar();
+  t.carregarFiltros({ de: 0, ate: 180, temas: ['preco', 'servico'], opiniao: 'negativa', componentes: ['fotos'], busca: ' couvert ' });
+  const tudo = t.reciboExportacao('tudo');
+  assert.equal(tudo.recibo_recorte, 'tudo');
+  assert.deepEqual([tudo.recibo_periodo, tudo.recibo_temas, tudo.recibo_opiniao, tudo.recibo_busca], ['nenhum', 'nenhum', 'nenhum', 'nenhum']);
+  const periodo = t.reciboExportacao('periodo');
+  assert.equal(periodo.recibo_periodo, '0 a 180 dias');
+  assert.equal(periodo.recibo_componentes, 'com texto');
+  assert.equal(periodo.recibo_temas, 'nenhum');
+  const filtros = t.reciboExportacao('filtros');
+  assert.equal(filtros.recibo_temas, 'preço; serviço');
+  assert.equal(filtros.recibo_opiniao, 'negativa');
+  assert.equal(filtros.recibo_componentes, 'fotos');
+  assert.equal(filtros.recibo_busca, 'couvert');
+  t.carregarFiltros({ de: 0, ate: 'tudo' });
+  assert.equal(t.reciboExportacao('filtros').recibo_periodo, '0 a sem limite dias');
+});
+
+test('colunas do recibo existem no CSV e as linhas da coleta gravam as entradas', async () => {
+  const t = carregar();
+  for (const c of ['coleta_parar_em_conhecidas', 'coleta_ordenacao_manual', 'recibo_recorte', 'recibo_periodo', 'recibo_busca', 'recibo_exportado_em']) {
+    assert.ok(t.COLS.includes(c), c);
+  }
+  assert.equal(new Set(t.COLS).size, t.COLS.length);
+  const lugar = { place_id: 'p', id_maps: 'm', nome_estabelecimento: 'X' };
+  const lidos = [{ review_id: 'a', idade_dias_aprox: 3, tem_texto: 'sim', texto_avaliacao: 'ok' }];
+  const [linha] = await t.montarLinhas(lidos, lugar, 'fim da lista', '2026-10-13 20:00', new Set());
+  assert.equal(linha.coleta_parar_em_conhecidas, 'não');
+  assert.equal(linha.coleta_ordenacao_manual, 'não');
+  assert.equal(linha.periodo_ate_dias, 30);
 });

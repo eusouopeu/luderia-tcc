@@ -446,3 +446,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: avaliações até "um mês atrás".
 **Depois**: avaliações até "3 meses atrás", inclusive, como em `_instrucoes/4_metodologia.md`.
 **Justificativa**: o autor confirmou o recorte de 3 meses; resolve a divergência registrada às 19:51.
+
+### 20:45
+**Objeto**: `_src/Web scripts/maps_avaliacoes.user.js` (versão 2026.10.13-7) e `maps_avaliacoes.test.cjs`
+**Antes**: o CSV registrava só `periodo_de_dias` e `periodo_ate_dias` da coleta; os filtros (tema, opinião, componentes, busca) e o período usados na exportação não ficavam em lugar nenhum. O liga/desliga "Esmaecer o que fica fora" era a única opção para os comentários fora do filtro.
+**Depois**: recibo dos filtros. Cada linha do CSV de avaliações leva `coleta_parar_em_conhecidas` e `coleta_ordenacao_manual` (entradas da coleta) e `recibo_recorte`, `recibo_periodo`, `recibo_temas`, `recibo_opiniao`, `recibo_componentes`, `recibo_busca` e `recibo_exportado_em` (o que foi aplicado ao arquivo: "nenhum" quando nada). O CSV-resumo leva as duas entradas da coleta. O liga/desliga virou a tab pill "Fora do filtro" com Manter, Esmaecer e Ocultar; ocultar vira esmaecer durante a coleta para não alterar a rolagem; a preferência antiga `esmaecer` é lida como "Esmaecer". Cinco testes novos (14 passam).
+**Justificativa**: pedido do autor, depois de a conferência dos quatro CSV mostrar que o filtro de período da coleta não ficava registrado de modo auditável.
