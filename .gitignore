@@ -50,3 +50,6 @@ _data/raw/\[B1\]*/acervodejogos/*.html
 _data/raw/\[B1\]*/acervodejogos/lojas/
 _data/raw/\[B1\]*/acervos_jogos/*/
 _data/raw/\[B1\]*/lojas_venda/
+
+# Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/Web scripts/gerar_carregadores.py)
+_src/Web scripts/carregadores/

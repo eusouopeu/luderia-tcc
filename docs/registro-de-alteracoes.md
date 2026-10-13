@@ -410,3 +410,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: os três primeiros em `_src/[B1] Google Places (estabelecimentos)/`; `maps_avaliacoes.user.js` e o teste em `_src/[B2] Google Places (comentarios)/`.
 **Depois**: todos em `_src/Web scripts/`; o teste foi junto porque lê o script pela própria pasta. Caminho citado em `_src/[B1] Instagram/instagram_comum.py` atualizado.
 **Justificativa**: pedido do autor: separar os scripts de navegador dos scripts Python do pipeline.
+
+### 15:11
+**Objeto**: `_src/Web scripts/gerar_carregadores.py` (novo); `.gitignore`
+**Antes**: cada melhoria num script do Tampermonkey exigia colar o código de novo no navegador.
+**Depois**: o gerador cria em `_src/Web scripts/carregadores/` (fora do git, com o caminho absoluto da máquina) um carregador por script, com o mesmo cabeçalho, @name e @namespace e um @require file:/// para o arquivo do repositório. Instalado uma vez, o navegador lê o código do disco a cada página; só mudança de cabeçalho pede reinstalação, que o gerador detecta e abre no Chrome com `--abrir`.
+**Justificativa**: pedido do autor: atualizar os scripts no navegador automaticamente quando o código melhora.
