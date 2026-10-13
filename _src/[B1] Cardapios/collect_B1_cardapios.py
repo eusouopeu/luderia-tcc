@@ -25,6 +25,8 @@ FONTES = [
     ("Fortalúdica", "arquivo", "https://drive.google.com/uc?export=download&id=1cl7YIKdJhuuhNCUKAO0-96czajLGInqJ"),
     ("Ludus Luderia", "arquivo", "https://drive.google.com/uc?export=download&id=1s7GHW2xdsauEU55oIFPCojKY-nSrrKTB"),
     ("Luderia Carioca", "arquivo", "https://i.postimg.cc/T3qJVwfn/cardapio.jpg"),
+    # Achado pelo Acervo de Jogos (12/10/2026): link "Cardápio TabuClub" do linktr.ee/tabuclubnit
+    ("TabuClub", "arquivo", "https://drive.google.com/uc?export=download&id=1-KDTgvYRZKe4R9KCWVQHRD5xiWqjSgPW"),
     ("Alçapão Jogos", "wix", "https://www.alcapaojogos.com.br/card%C3%A1pio"),
     ("BoardZ Game Pub", "wix", "https://www.boardzgamepub.com.br/card%C3%A1pio"),
     ("Castelos Bar", "wix", "https://www.castelosbar.com.br/cardapio"),
