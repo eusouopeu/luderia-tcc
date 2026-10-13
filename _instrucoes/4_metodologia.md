@@ -175,11 +175,24 @@ A validação tem três etapas:
 
 | Etapa | Procedimento |
 |---|---|
-| 1. Fidelidade | Amostra aleatória estratificada por capital e faixa de volume de avaliações. No Bloco B1, 20% dos estabelecimentos curados: nota média, número de avaliações e endereço conferidos na página. No Bloco B2, as mesmas 200 avaliações sorteadas para a validação do dicionário: texto, nota e rótulo de data conferidos na página. A conferência é feita até sete dias após a coleta, e a data de cada conferência é registrada |
-| 2. Completude | Nos estabelecimentos sorteados do Bloco B2, o número de avaliações com texto no recorte, contado na página, é comparado ao número coletado. Diferença indica avaliação perdida por paginação, tempo de espera ou limite de pedidos |
+| 1. Fidelidade | No Bloco B1, amostra aleatória estratificada por capital e faixa de volume de avaliações: 20% dos estabelecimentos curados, com nota média, número de avaliações e endereço conferidos na página. No Bloco B2, amostra estratificada por estabelecimento em duas etapas (abaixo): texto, nota e rótulo de data conferidos na página. As 200 avaliações da primeira etapa são as mesmas da validação do dicionário. A conferência é feita até sete dias após a coleta, e a data de cada conferência é registrada |
+| 2. Completude | Em todos os estabelecimentos do Bloco B2, o número de avaliações com texto no recorte, contado na página, é comparado ao número coletado. Diferença indica avaliação perdida por paginação, tempo de espera ou limite de pedidos |
 | 3. Cobertura | A lista do Bloco B1 é comparada a fontes independentes: buscas manuais por termo nas capitais e perfis de luderias no Instagram. Estabelecimento encontrado fora da lista é registrado com o motivo da ausência |
 
 O resultado é a taxa de erro por variável, com intervalo de confiança de 95% (método de Wilson). O critério de aceitação é limite superior do intervalo igual ou inferior a 5%. Variável acima do critério tem o script corrigido e o estrato afetado coletado de novo. Se a recoleta não for possível, a variável é reportada com a taxa de erro medida e entra no cálculo da faixa da premissa que ela alimenta.
+
+##### Amostra de auditoria do Bloco B2
+
+O desenho combina um total calculado pelo critério de aceitação (Wilson) com a regra de inspeção em duas etapas usada no controle de qualidade por atributos (ABNT NBR 5426 `[A VERIFICAR]`). Cada estabelecimento é um estrato, e todos entram na amostra. O motivo é o padrão das falhas: elas tendem a se concentrar em certas páginas, e um estabelecimento fora da amostra esconderia a falha. Explicação em linguagem simples em `docs/estatidez.md`.
+
+| Passo | Procedimento |
+|---|---|
+| 1. Tamanho total | n = 200 avaliações. Pelo intervalo de Wilson, 200 conferências aprovam a variável com até 3 erros (limite superior de 4,3%); o mínimo para aprovar com zero erros seria 73. O tamanho quase não depende do total de avaliações coletadas: a correção para população finita muda o resultado em poucas unidades |
+| 2. Mínimo por estabelecimento | 3 avaliações por estabelecimento, ou todas, se o estabelecimento tiver menos de 3 no recorte |
+| 3. Alocação do restante | As avaliações que sobram depois dos mínimos são divididas na proporção do número de avaliações de cada estabelecimento no recorte, descontado o mínimo. O arredondamento segue o método dos maiores restos, para que a soma feche com 200 (diferença zero) |
+| 4. Sorteio | Chave aleatória gerada com semente fixa e gravada como valor; dentro de cada estabelecimento, entram as avaliações de menor chave. Planilha com a semente, o hash SHA-256 da base de origem e as fórmulas da alocação e da seleção, registrada no repositório antes da primeira conferência |
+| 5. Taxa de erro | Por variável, só com a primeira etapa: taxa sem ponderação, com o intervalo de Wilson, e taxa ponderada pelo peso de cada estabelecimento na base. O critério de 5% vale para as duas; se divergirem, prevalece a pior |
+| 6. Segunda etapa | Estabelecimento com pelo menos um erro numa variável tem essa variável conferida em mais avaliações: todas as do recorte, se forem até 30; senão, as 20 seguintes na ordem da chave. A segunda etapa não entra na taxa geral, porque concentra a amostra onde já houve erro. Serve para diagnosticar falha concentrada: taxa acima de 5% no estabelecimento leva à correção do script e à recoleta do estabelecimento |
 
 O erro da coleta não é tratado como restrito a uma variável. Falhas de paginação, de carregamento e de limite de pedidos afetam a inclusão do registro inteiro. Essas falhas tendem a se concentrar em grupos específicos, como estabelecimentos com muitas avaliações ou páginas com layout diferente. Erro concentrado em um grupo gera viés, e o tamanho da base não o dilui (Meng, 2018). Por isso, os registros com falha ou campo vazio são comparados aos completos por capital e faixa de volume. Diferença entre os dois grupos é reportada como limitação.
 

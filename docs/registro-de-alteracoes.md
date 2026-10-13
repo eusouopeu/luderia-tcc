@@ -392,3 +392,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: "até 'um mês atrás'" em `CLAUDE.md`, `README.md`, `_instrucoes/1_estrutura.md` (vocabulário controlado), `docs/bibliografia/diagnostico-teorico.md`, `textos/projeto_pesquisa_luderia.md`, `textos/cronograma_luderia.md`, `textos/cronograma_luderia_semanas.md` e no cabeçalho do `maps_avaliacoes.user.js`; metade exploratória e confirmatória em `_instrucoes/1_estrutura.md` (§3.5), `textos/projeto_pesquisa_luderia.md` e `textos/registro_previo_luderia.md`.
 **Depois**: `_instrucoes/4_metodologia.md` (13/10/2026): até "3 meses atrás" e base única.
 **Efeitos colaterais**: os demais documentos descrevem um recorte e um desenho que não valem mais; a velocidade de avaliações calculada com janela de um mês fica incomparável com a de três meses. Correção depende de pedido do autor.
+
+### 12:36
+**Objeto**: `_instrucoes/4_metodologia.md`, §3.4 validação da coleta do Bloco B2 (etapas 1 e 2 e nova subseção "Amostra de auditoria do Bloco B2")
+**Antes**: fidelidade conferida nas mesmas 200 avaliações da validação do dicionário, em amostra estratificada por capital e faixa de volume; completude só nos estabelecimentos sorteados.
+**Depois**: amostra estratificada por estabelecimento, todos incluídos: n = 200 pelo critério de Wilson (aprova com até 3 erros), mínimo de 3 por estabelecimento, restante proporcional com maiores restos, chave aleatória com semente fixa; taxa sem e com ponderação, prevalece a pior; segunda etapa nos estabelecimentos com erro (todas até 30, senão mais 20), fora da taxa geral. Completude em todos os estabelecimentos. B1 mantém o desenho anterior.
+**Justificativa**: pedido do autor (opções B + E discutidas na sessão): auditar cada estabelecimento, porque falhas do script tendem a se concentrar em certas páginas.
+
+### 12:36
+**Objeto**: `docs/estatidez.md`, nova seção 4
+**Antes**: seções 1 a 3 (semente fixa, Cochran, Wilson).
+**Depois**: seção 4 com estratificação por estabelecimento, percentual × número absoluto, quadro das opções A a E, receita B + E e tabela hipergeométrica mostrando que o tamanho da base quase não muda a amostra; NBR 5426 nas referências.
+**Justificativa**: pedido do autor.

@@ -166,10 +166,66 @@ No seu método, o Wilson é usado também ao contrário, para escolher o *n*: qu
 
 ---
 
+## 4. Quantas avaliações conferir em cada estabelecimento
+
+### Por que olhar todos os estabelecimentos
+
+O script pode errar mais em certas páginas: uma luderia com layout diferente, outra com muitas avaliações, em que a rolagem trava. Se o sorteio deixar essa luderia de fora, o erro passa sem ser visto. Por isso cada estabelecimento vira uma urna (um **estrato**), e todas as urnas entram no sorteio. É a **amostragem estratificada**.
+
+### Percentual ou número absoluto?
+
+Volte à sopa. Para saber se a sopa está salgada, uma colherada de uma panela pequena diz o mesmo que uma colherada de uma panela gigante. O que importa é **quantas colheradas** você prova, não que fração da panela.
+
+Com a amostra é igual: a precisão depende de **quantas** avaliações você confere, quase nada do total que existe. Por isso:
+- conferir 10% de uma casa com 20 avaliações dá 2 avaliações, que não dizem quase nada sobre ela;
+- conferir 10% de uma casa com 400 dá 40, um esforço grande demais.
+
+O percentual serve para **dividir** um total entre as casas. Não serve para **decidir** o total.
+
+### As opções
+
+| Opção | Como funciona | Robustez | Dificuldade de fazer | Dificuldade de entender |
+|---|---|---|---|---|
+| A. Percentual fixo | X% de cada casa, com um mínimo | Baixa a média: o total não sai do critério de 5% | Baixa | Baixa |
+| B. Total pelo Wilson, dividido entre as casas | Calcula o total pelo critério de 5% e divide na proporção do tamanho de cada casa, com mínimo por casa | Alta para a taxa da variável; média para falha concentrada | Média | Média |
+| C. Tamanho calculado para cada casa | Wilson ou hipergeométrica em cada casa | Alta por casa | Alta: quase censo nas casas pequenas | Alta |
+| D. Alocação de Neyman | Mais amostra onde o erro varia mais | Alta em teoria | Alta: exige saber antes a variação do erro, e não se sabe | Alta |
+| E. Aceitação em duas etapas | Cada casa é um lote: confere poucas; achou erro, confere mais | Alta para falha concentrada | Média | Baixa |
+
+### A escolha: B + E
+
+A receita, como está na metodologia (§3.4):
+
+1. **Total:** 200 avaliações. Pela tabela da seção 3, 200 aprovam a variável com até 3 erros.
+2. **Mínimo:** 3 por estabelecimento (ou todas, se a casa tiver menos de 3).
+3. **Resto:** o que sobra dos 200 é dividido na proporção do tamanho de cada casa. O arredondamento é feito pelos maiores restos, para a soma dar 200 exatos.
+4. **Sorteio:** chave fixa (seção 1), menores chaves de cada casa.
+5. **Taxa de erro:** calculada só com essas 200, de dois jeitos (sem peso e com peso de cada casa). As duas precisam passar no critério de 5%.
+6. **Segunda etapa:** casa com algum erro é conferida a fundo naquela variável: todas as avaliações, se forem até 30, ou mais 20. Isso não entra na taxa geral: seria como provar a sopa só onde já achou sal demais e concluir que a panela inteira está salgada. Serve para descobrir se o problema é daquela casa.
+
+Por que o peso no passo 5: o mínimo de 3 dá às casas pequenas mais espaço na amostra do que elas têm na base. A taxa com peso corrige isso. Quando as duas taxas concordam, o mínimo não distorceu nada.
+
+### O tamanho da base quase não muda o tamanho da amostra
+
+Conta exata (distribuição hipergeométrica): quantas avaliações conferir para, se o script errasse em 5% da base, achar o problema com 95% de chance.
+
+| Avaliações na base | Aprovar com 0 erros | Aprovar com até 3 erros |
+|---|---|---|
+| 500 | 56 | 139 |
+| 1.000 | 57 | 146 |
+| 2.000 | 58 | 150 |
+| 4.000 | 58 | 151 |
+| 100.000 | 59 | 153 |
+
+Dobrar a base de 2.000 para 4.000 muda a amostra em **uma** avaliação. Os números do Wilson (73 e 173) são um pouco maiores porque ele não usa o tamanho da base e é mais conservador.
+
+---
+
 ## Referências citadas
 
 Todas `[A VERIFICAR]` até a conferência da obra.
 
+- ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. *NBR 5426*: planos de amostragem e procedimentos na inspeção por atributos. Rio de Janeiro: ABNT, 1985. `[A VERIFICAR]`
 - BROWN, Lawrence D.; CAI, T. Tony; DASGUPTA, Anirban. Interval estimation for a binomial proportion. *Statistical Science*, v. 16, n. 2, p. 101-133, 2001. `[A VERIFICAR]`
 - COCHRAN, William G. *Sampling techniques*. 3. ed. New York: Wiley, 1977. `[A VERIFICAR]`
 - MATSUMOTO, Makoto; NISHIMURA, Takuji. Mersenne twister: a 623-dimensionally equidistributed uniform pseudo-random number generator. *ACM Transactions on Modeling and Computer Simulation*, v. 8, n. 1, p. 3-30, 1998. `[A VERIFICAR]`
