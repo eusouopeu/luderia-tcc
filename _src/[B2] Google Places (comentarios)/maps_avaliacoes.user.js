@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de avaliações do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.13-5
+// @version      2026.10.13-6
 // @description  Abre as avaliações de um lugar, ordena por mais recentes, rola até o fim do período, expande os textos (no idioma original), filtra por tema, opinião, componentes e busca, salva o progresso, coleta em fila, confere amostras e exporta CSV com autor pseudonimizado.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -50,6 +50,7 @@
  * Conferência (fidelidade, §3.6 do método): cole os review_id sorteados. O script
  * diz de que lugar é cada um, rola até ele, destaca e mostra lado a lado o que foi
  * coletado e o que está na página. Marque ✓ ou ✗ e exporte o CSV da conferência.
+ * O placar mostra confere, diverge, faltam e a fidelidade com intervalo de Wilson (95%).
  *
  * Filtros (tema, opinião, componentes, busca) e período valem para o CSV "dos
  * filtros", para esmaecer na página o que fica de fora e para destacar no texto
@@ -67,6 +68,12 @@
  *  - As setas ao lado de "Filtros" (ou Enter e Shift+Enter na busca) vão ao próximo
  *    e ao anterior que passa, como o "localizar na página" do navegador. A seção
  *    "Comentários filtrados" lista os que passam; clicar num item rola até ele.
+ *  - Período e filtros ficam salvos: valem depois de recarregar e em cada lugar da fila.
+ *
+ * Painel: arraste pelo cabeçalho e redimensione pelo canto inferior direito; posição
+ * e tamanho ficam salvos. Duplo clique no cabeçalho volta ao canto, no tamanho padrão.
+ * Durante a coleta, uma barra mostra o maior entre carregadas ÷ volume do lugar e
+ * idade da última ÷ fim do período; na fila, outra barra mostra o lugar atual.
  *
  * Pseudonimização na coleta: o nome do autor não sai do navegador. O CSV traz um
  * código (SHA-256 do id de colaborador do Google + um sal, 12 caracteres). O sal
@@ -544,7 +551,33 @@
   // ---------- período e filtros ----------
 
   const periodo = { de: 0, ate: 30 };
-  const filtros = { temas: new Set(), opiniao: '', componentes: new Set(), busca: null, esmaecer: false, destacar: true };
+  const filtros = { temas: new Set(), opiniao: '', componentes: new Set(), busca: null, buscaTexto: '', esmaecer: false, destacar: true };
+
+  // Período e filtros ficam salvos no Tampermonkey: valem depois de recarregar a
+  // página e em cada lugar da fila.
+  const CHAVE_FILTROS = 'pref:filtros';
+
+  const filtrosParaSalvar = () => ({
+    de: periodo.de, ate: periodo.ate === Infinity ? 'tudo' : periodo.ate,
+    temas: [...filtros.temas], opiniao: filtros.opiniao, componentes: [...filtros.componentes],
+    busca: filtros.buscaTexto, esmaecer: filtros.esmaecer, destacar: filtros.destacar,
+  });
+
+  function carregarFiltros(s) {
+    if (!s) return;
+    if (Number.isFinite(+s.de)) periodo.de = +s.de;
+    periodo.ate = s.ate === 'tudo' ? Infinity : Number.isFinite(+s.ate) ? +s.ate : 30;
+    filtros.temas = new Set((s.temas || []).filter((k) => k in TEMAS));
+    filtros.componentes = new Set((s.componentes || []).filter((k) => k in COMPONENTES));
+    filtros.opiniao = ['positiva', 'negativa'].includes(s.opiniao) ? s.opiniao : '';
+    filtros.buscaTexto = String(s.busca || '');
+    filtros.busca = lerBusca(filtros.buscaTexto);
+    filtros.esmaecer = !!s.esmaecer;
+    filtros.destacar = s.destacar !== false;
+  }
+
+  const salvarFiltros = () => GM_setValue(CHAVE_FILTROS, filtrosParaSalvar());
+  const filtrosAtivos = () => filtros.temas.size + filtros.componentes.size + (filtros.opiniao ? 1 : 0) + (filtros.buscaTexto.trim() ? 1 : 0);
 
   const noPeriodo = (r) => r.idade_dias_aprox !== '' && r.idade_dias_aprox >= periodo.de && r.idade_dias_aprox <= periodo.ate;
   const jaColetada = (r) => (r.ja_coletada ? r.ja_coletada === 'sim' : idsConhecidos.has(r.review_id));
@@ -653,8 +686,31 @@
     }
   }
 
-  function atualizarFiltrosNaPagina() {
+  // Só refaz o trabalho na página quando a lista mudou (observador de mutações) ou
+  // quando mudou o lugar; mudanças de filtro chamam sem `seMudou` e sempre refazem.
+  let paginaMudou = true;
+  let listaObservada = null;
+  let observador = null;
+  let chaveAplicada = '';
+
+  function vigiarLista() {
+    const primeiro = cartoes()[0];
+    const raiz = primeiro ? (rolavel(primeiro) || primeiro.parentElement) : null;
+    if (raiz === listaObservada) return;
+    observador?.disconnect();
+    listaObservada = raiz;
+    paginaMudou = true;
+    if (!raiz) return;
+    observador = observador || new MutationObserver(() => { paginaMudou = true; });
+    observador.observe(raiz, { childList: true, subtree: true, characterData: true });
+  }
+
+  function atualizarFiltrosNaPagina({ seMudou = false } = {}) {
     atualizarIdsConhecidos();
+    const chaveAgora = `${chaveIdsConhecidos}|${idsConhecidos.size}`;
+    if (seMudou && !paginaMudou && chaveAgora === chaveAplicada) return;
+    paginaMudou = false;
+    chaveAplicada = chaveAgora;
     const cs = cartoes();
     const chave = chaveDestaque();
     const passam = [];
@@ -773,6 +829,7 @@
       status(`${cs.length} avaliações carregadas · a última: ${cs.length ? lerCartao(cs[cs.length - 1]).data_relativa || '?' : '?'}` +
         (semCrescer ? ` · esperando carregar (${semCrescer}/8)` : ''));
       atualizarFiltrosNaPagina();
+      mostrarProgressoColeta(cs, usarPeriodo);
       if (aCada) await aCada(cs);
       if (!ordemConferida && cs.length >= 10) {
         ordemConferida = true;
@@ -798,6 +855,17 @@
       caixa.scrollTo(0, caixa.scrollHeight);
       await esperar(sortear([1200, 2000]) * fator);
     }
+  }
+
+  // Barra de progresso: o maior entre carregadas ÷ volume do lugar e idade da última
+  // carregada ÷ fim do período (a coleta para ao passar do período).
+  function mostrarProgressoColeta(cs, usarPeriodo) {
+    const volume = +infoLugar().volume_avaliacoes_estabelecimento;
+    const idade = cs.length ? lerCartao(cs[cs.length - 1]).idade_dias_aprox : '';
+    const fracVolume = volume ? cs.length / volume : 0;
+    const fracPeriodo = usarPeriodo && periodo.ate !== Infinity && idade !== '' ? idade / (periodo.ate + 1) : 0;
+    // Enquanto roda, para em 99%: 100% só quando a coleta termina (e a barra some).
+    progresso('coleta', Math.min(0.99, Math.max(fracVolume, fracPeriodo)), `${cs.length}${volume ? ` de ${volume}` : ''} carregadas`);
   }
 
   const MSG_MOTIVO = {
@@ -1128,9 +1196,49 @@
   const trecho = (t, n = 110) => `"${t.slice(0, n)}${t.length > n ? '…' : ''}"`;
   const chipConfere = (rotulo, ok) => criar('span', { className: `chip ${ok ? 'sim' : 'nao'}`, textContent: `${rotulo} ${ok ? 'confere' : 'diverge'}` });
 
+  // Intervalo de confiança de Wilson (95%) para a proporção k/n.
+  function wilson(k, n, z = 1.96) {
+    if (!n) return null;
+    const p = k / n, z2 = z * z, d = 1 + z2 / n;
+    const centro = (p + z2 / (2 * n)) / d;
+    const margem = (z * Math.sqrt(p * (1 - p) / n + z2 / (4 * n * n))) / d;
+    return [Math.max(0, centro - margem), Math.min(1, centro + margem)];
+  }
+
+  const pct = (x) => `${(x * 100).toFixed(1).replace('.', ',')}%`;
+
+  // Placar da conferência: marcadas, faltam, fidelidade com IC 95% e divergências
+  // apontadas pela comparação automática.
+  function placarConferencia(conf) {
+    const marcas = conf.ids.map((id) => conf.marcas[id]).filter(Boolean);
+    const ok = marcas.filter((m) => m.resultado === 'confere').length;
+    const nd = marcas.length - ok;
+    const autoNota = marcas.filter((m) => m.nota_confere_auto === 'não').length;
+    const autoTexto = marcas.filter((m) => m.texto_confere_auto === 'não').length;
+    return { total: conf.ids.length, ok, nd, faltam: conf.ids.length - marcas.length, ic: wilson(ok, marcas.length), autoNota, autoTexto };
+  }
+
+  function mostrarPlacar(conf) {
+    const pl = placarConferencia(conf);
+    el.placar.hidden = !pl.total;
+    if (!pl.total) return;
+    el.placarOk.style.width = `${pl.ok / pl.total * 100}%`;
+    el.placarErro.style.width = `${pl.nd / pl.total * 100}%`;
+    el.placarNums.replaceChildren(
+      criar('span', { className: 'op-positiva', textContent: `✓ ${pl.ok}` }),
+      criar('span', { className: 'op-negativa', textContent: `✗ ${pl.nd}` }),
+      criar('span', { className: 'suave', textContent: `faltam ${pl.faltam}` }));
+    const n = pl.ok + pl.nd;
+    const nos = n ? [criar('b', { textContent: `Fidelidade ${pct(pl.ok / n)}` }), criar('span', { className: 'suave', textContent: ` · IC 95% ${pct(pl.ic[0])} a ${pct(pl.ic[1])}` })]
+      : [criar('span', { className: 'suave', textContent: 'Fidelidade aparece com a primeira marca.' })];
+    if (pl.autoNota || pl.autoTexto) nos.push(criar('div', { className: 'suave', textContent: `Automático divergiu: nota ${pl.autoNota}, texto ${pl.autoTexto}` }));
+    el.placarFid.replaceChildren(...nos);
+  }
+
   function mostrarConferencia() {
     if (!el.confInfo) return;
     const conf = lerConf();
+    mostrarPlacar(conf);
     const id = conf.ids[conf.i];
     const feitas = Object.keys(conf.marcas).length;
     el.confPos.textContent = conf.ids.length ? `${conf.i + 1}/${conf.ids.length}` : '';
@@ -1349,6 +1457,19 @@
   function atualizarBotoes() {
     for (const b of el.acoes || []) b.disabled = ocupado;
     if (el.parar) el.parar.disabled = !ocupado;
+    if (!ocupado) progresso('coleta', null);
+  }
+
+  // Barras de progresso (coleta e fila). `frac` nulo esconde a barra.
+  function progresso(tipo, frac, texto = '') {
+    const b = el.barras?.[tipo];
+    if (!b) return;
+    if (frac == null) { b.caixa.hidden = true; return; }
+    const pct = Math.round(Math.min(1, Math.max(0, frac)) * 100);
+    b.caixa.hidden = false;
+    b.preenchido.style.width = `${pct}%`;
+    b.texto.textContent = texto;
+    b.pct.textContent = `${pct}%`;
   }
 
   async function executar(fn, { avisar = false } = {}) {
@@ -1464,10 +1585,26 @@
     #painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:360px;max-height:calc(100vh - 24px);
       overflow:auto;background:var(--fundo);color:var(--texto);border-radius:14px;
       box-shadow:0 8px 28px rgba(0,0,0,.2);font:14px/1.5 var(--fonte);padding:10px 14px 12px}
-    #painel.min{padding-bottom:10px}
+    #painel{resize:both;min-width:300px;min-height:120px;max-width:calc(100vw - 24px)}
+    #painel.min{padding-bottom:10px;height:auto!important;min-height:0;resize:none}
+    #painel.arrastando{user-select:none;opacity:.92}
     #painel.min>*:not(header){display:none}
-    header{display:flex;align-items:center;gap:2px}
+    header{display:flex;align-items:center;gap:2px;cursor:grab;touch-action:none}
+    #painel.arrastando header{cursor:grabbing}
     header .nome{flex:1;font-weight:700;font-size:15px;cursor:pointer;user-select:none}
+    .barra{margin:8px 0}
+    .barra[hidden]{display:none}
+    .barra .txt{display:flex;justify-content:space-between;font-size:12px;color:var(--suave);font-variant-numeric:tabular-nums}
+    .trilho{height:6px;background:var(--sup);border-radius:999px;overflow:hidden;display:flex}
+    .preenchido{height:100%;background:var(--caneta);border-radius:999px;transition:width .25s}
+    .selo.ativos{background:var(--azul);color:#fff}
+    .placar{margin:8px 0}
+    .placar[hidden]{display:none}
+    .placar .trilho{margin:4px 0}
+    .placar .seg-ok{background:var(--ok);transition:width .25s}
+    .placar .seg-erro{background:var(--erro);transition:width .25s}
+    .placar .nums{display:flex;gap:10px;font-size:12.5px;font-weight:600;align-items:center}
+    .placar .fid{font-size:12.5px}
     svg{width:18px;height:18px;flex:none}
     button{font:inherit;color:inherit;border:0;background:var(--sup);border-radius:8px;padding:6px 10px;cursor:pointer;
       display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:background .15s,color .15s,transform .1s}
@@ -1593,7 +1730,9 @@
 
   function montarPainel() {
     carregarFonte();
-    const reaplicar = () => atualizarFiltrosNaPagina();
+    carregarFiltros(GM_getValue(CHAVE_FILTROS, null));
+    const reaplicar = () => { salvarFiltros(); pintarAtivos(); atualizarFiltrosNaPagina(); };
+    const pintarAtivos = () => { const n = filtrosAtivos(); el.nAtivos.textContent = n ? `${n} ativo${n > 1 ? 's' : ''}` : ''; };
     const alternar = (conjunto, k) => (ligada) => { if (ligada) conjunto.add(k); else conjunto.delete(k); reaplicar(); };
 
     el.status = criar('div', { className: 'status', textContent: 'Abra um lugar e clique em "Coletar avaliações".' });
@@ -1606,7 +1745,9 @@
       OPCOES_PERIODO.map(([v, t]) => criar('option', { value: v, textContent: t })));
     const seletorAte = criar('select', { onchange: (e) => { periodo.ate = e.target.value === 'tudo' ? Infinity : +e.target.value; reaplicar(); } },
       [...OPCOES_PERIODO.slice(1).map(([v, t]) => criar('option', { value: v, textContent: t })), criar('option', { value: 'tudo', textContent: 'sem limite' })]);
-    seletorAte.value = '30';
+    seletorDe.value = String(periodo.de);
+    seletorAte.value = periodo.ate === Infinity ? 'tudo' : String(periodo.ate);
+    if (seletorAte.value === '') { seletorAte.value = '30'; periodo.ate = 30; }
 
     const bColetar = botaoTexto('arrow-down-tray', 'Coletar avaliações', () => executar(async () => {
       const motivo = await coletar();
@@ -1620,22 +1761,24 @@
 
     // ----- filtros -----
     let timerBusca = 0;
-    const campoBusca = criar('input', { type: 'search', placeholder: 'Buscar no texto (aceita regex)' });
+    const campoBusca = criar('input', { type: 'search', placeholder: 'Buscar no texto (aceita regex)', value: filtros.buscaTexto });
+    const lerCampoBusca = () => { filtros.buscaTexto = campoBusca.value; filtros.busca = lerBusca(campoBusca.value); };
     campoBusca.setAttribute('aria-label', 'Buscar no texto');
     campoBusca.oninput = () => {
       clearTimeout(timerBusca);
-      timerBusca = setTimeout(() => { filtros.busca = lerBusca(campoBusca.value); reaplicar(); }, 200);
+      timerBusca = setTimeout(() => { lerCampoBusca(); reaplicar(); }, 200);
     };
     // Enter vai ao próximo, Shift+Enter ao anterior (como o "localizar" do navegador).
     campoBusca.onkeydown = (e) => {
       if (e.key !== 'Enter') return;
       e.preventDefault();
       clearTimeout(timerBusca);
-      filtros.busca = lerBusca(campoBusca.value);
+      lerCampoBusca();
+      salvarFiltros(); pintarAtivos();
       navegarFiltrados(e.shiftKey ? -1 : 1);
     };
 
-    const tagsTema = Object.keys(TEMAS).map((k) => etiqueta(ROTULO_TEMA[k], alternar(filtros.temas, k)));
+    const tagsTema = Object.keys(TEMAS).map((k) => etiqueta(ROTULO_TEMA[k], alternar(filtros.temas, k), { ligada: filtros.temas.has(k) }));
     const dicasComp = {
       cardapio: 'Tem foto e o texto cita cardápio, menu, preço ou valor.',
       aspectos: 'Notas de comida, serviço ou ambiente que o Google mostra no cartão.',
@@ -1643,7 +1786,7 @@
     };
     const rotulosComp = { aspectos: 'notas por aspecto' };
     const tagsComp = Object.entries(COMPONENTES).map(([k, [rotulo]]) =>
-      etiqueta(rotulosComp[k] || rotulo, alternar(filtros.componentes, k), { dica: dicasComp[k] || '' }));
+      etiqueta(rotulosComp[k] || rotulo, alternar(filtros.componentes, k), { ligada: filtros.componentes.has(k), dica: dicasComp[k] || '' }));
 
     const DICAS_OPINIAO = {
       positiva: 'Nota 5 e ao menos uma palavra positiva no texto (ou negação de uma negativa, como "não foi caro"). A negação vale para até 3 palavras antes, na mesma oração.',
@@ -1662,7 +1805,7 @@
     grupoPills.setAttribute('role', 'tablist');
 
     const limparFiltros = () => {
-      filtros.temas.clear(); filtros.componentes.clear(); filtros.opiniao = ''; filtros.busca = null;
+      filtros.temas.clear(); filtros.componentes.clear(); filtros.opiniao = ''; filtros.busca = null; filtros.buscaTexto = '';
       campoBusca.value = '';
       for (const t of [...tagsTema, ...tagsComp]) t.checked = false;
       pintarPills();
@@ -1671,9 +1814,11 @@
     };
 
     el.contagem = criar('span', { className: 'selo', title: 'Carregadas na página que passam no período e nos filtros' });
+    el.nAtivos = criar('span', { className: 'selo ativos', title: 'Filtros ligados (ficam salvos ao recarregar a página)' });
+    pintarAtivos();
     el.navPos = criar('span', { className: 'pos' });
     const filtrosUI = secao('filtros', [
-      'Filtros', el.contagem, criar('span', { className: 'esp' }), el.navPos,
+      'Filtros', el.nAtivos, el.contagem, criar('span', { className: 'esp' }), el.navPos,
       botaoIcone('chevron-up', 'Comentário anterior que passa nos filtros (Shift+Enter na busca)', naoAlterna(() => navegarFiltrados(-1))),
       botaoIcone('chevron-down', 'Próximo comentário que passa nos filtros (Enter na busca)', naoAlterna(() => navegarFiltrados(1))),
     ], [
@@ -1689,8 +1834,8 @@
       criar('div', { className: 'tags' }, tagsComp),
       criar('div', { className: 'subtitulo' }, ['Na página']),
       criar('div', { className: 'tags' }, [
-        etiqueta('Esmaecer o que fica fora', (v) => { filtros.esmaecer = v; reaplicar(); }, { dica: 'Deixa translúcidas na página as avaliações fora do período e dos filtros.' }),
-        etiqueta('Destacar palavras', (v) => { filtros.destacar = v; reaplicar(); }, { ligada: true, dica: legendaDestaques }),
+        etiqueta('Esmaecer o que fica fora', (v) => { filtros.esmaecer = v; reaplicar(); }, { ligada: filtros.esmaecer, dica: 'Deixa translúcidas na página as avaliações fora do período e dos filtros.' }),
+        etiqueta('Destacar palavras', (v) => { filtros.destacar = v; reaplicar(); }, { ligada: filtros.destacar, dica: legendaDestaques }),
       ]),
     ]);
 
@@ -1722,6 +1867,11 @@
     // ----- conferência -----
     el.confIds = criar('textarea', { placeholder: 'review_id sorteados, um por linha' });
     el.confInfo = criar('div', { className: 'info' });
+    el.placarOk = criar('div', { className: 'seg-ok' });
+    el.placarErro = criar('div', { className: 'seg-erro' });
+    el.placarNums = criar('div', { className: 'nums' });
+    el.placarFid = criar('div', { className: 'fid' });
+    el.placar = criar('div', { className: 'placar', hidden: true }, [el.placarNums, criar('div', { className: 'trilho' }, [el.placarOk, el.placarErro]), el.placarFid]);
     el.confPos = criar('span', { className: 'pos' });
     el.confSelo = criar('span', { className: 'selo', title: 'Marcadas / sorteadas' });
     el.confAbrir = botaoIcone('arrow-top-right-on-square', 'Abrir o lugar desta avaliação', abrirLugarConferido);
@@ -1734,6 +1884,7 @@
         botaoIcone('chevron-left', 'Anterior', () => moverConferencia(-1), 'leve'), el.confPos,
         botaoIcone('chevron-right', 'Próxima', () => moverConferencia(1), 'leve'),
       ]),
+      el.placar,
       el.confInfo,
       criar('div', { className: 'linha' }, [
         el.confAbrir, bAchar, criar('span', { className: 'esp' }),
@@ -1774,8 +1925,16 @@
 
     el.acoes = [bColetar, bLocalizar, bRecuperar, bFila, bContinuarFila, bAchar];
 
+    const barra = () => {
+      const b = { preenchido: criar('div', { className: 'preenchido' }), texto: criar('span'), pct: criar('span') };
+      b.caixa = criar('div', { className: 'barra', hidden: true }, [criar('div', { className: 'txt' }, [b.texto, b.pct]),
+        criar('div', { className: 'trilho' }, [b.preenchido])]);
+      return b;
+    };
+    el.barras = { fila: barra(), coleta: barra() };
+
     const bMin = botaoIcone('minus', 'Minimizar', null, 'leve');
-    const cabecalho = criar('header', {}, [
+    const cabecalho = criar('header', { title: 'Arraste para mover · duplo clique volta ao canto' }, [
       criar('span', { className: 'nome', textContent: 'Avaliações do Maps' }),
       alternaPref('som', 'Som ao concluir', 'bell', 'bell-slash'),
       alternaPref('autobaixar', 'Download automático do CSV', 'arrow-down-tray', 'arrow-down-tray'),
@@ -1789,6 +1948,8 @@
       ]),
       criar('div', { className: 'tags' }, [el.jaOrdenado]),
       criar('div', { className: 'linha' }, [bColetar, el.parar, bLocalizar]),
+      el.barras.fila.caixa,
+      el.barras.coleta.caixa,
       el.status,
       criar('div', { className: 'linha' }, [
         criar('span', { className: 'rotulo', textContent: 'CSV' }),
@@ -1812,7 +1973,17 @@
       fecharDica();
     };
     bMin.onclick = minimizar;
-    cabecalho.querySelector('.nome').onclick = minimizar;
+    cabecalho.querySelector('.nome').onclick = () => { if (!arrastou) minimizar(); };
+    prepararArraste(cabecalho, painel);
+    // O tamanho só muda pela alça de redimensionar, que grava largura e altura no estilo.
+    addEventListener('pointerup', () => {
+      if (painel.classList.contains('min')) return;
+      const { width, height } = painel.style;
+      if (width && (width !== posicao?.width || height !== posicao?.height)) {
+        posicao = { ...posicao, width, height };
+        GM_setValue(CHAVE_POSICAO, posicao);
+      }
+    });
     painel.addEventListener('click', liberarAudio);
     painel.addEventListener('scroll', fecharDica);
     // As teclas digitadas no painel não chegam aos atalhos do Maps.
@@ -1837,7 +2008,63 @@
     mostrarConferencia();
   }
 
+  // Posição e tamanho escolhidos pelo autor, salvos no Tampermonkey. Sem posição
+  // salva, o painel fica no canto direito (abaixo do de horários de pico).
+  const CHAVE_POSICAO = 'pref:posicao';
+  let posicao = GM_getValue(CHAVE_POSICAO, null);
+  let arrastou = false;
+
+  function prepararArraste(cabecalho, painel) {
+    cabecalho.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0 || e.target.closest('button, .ajuda')) return;
+      const r = painel.getBoundingClientRect();
+      const x0 = e.clientX, y0 = e.clientY;
+      let moveu = false;
+      const mover = (ev) => {
+        if (!moveu && Math.hypot(ev.clientX - x0, ev.clientY - y0) < 4) return;
+        moveu = true;
+        painel.classList.add('arrastando');
+        posicao = { ...posicao, left: Math.round(r.left + ev.clientX - x0), top: Math.round(r.top + ev.clientY - y0) };
+        posicionarPainel();
+      };
+      const soltar = () => {
+        removeEventListener('pointermove', mover);
+        removeEventListener('pointerup', soltar);
+        painel.classList.remove('arrastando');
+        if (!moveu) return;
+        GM_setValue(CHAVE_POSICAO, posicao);
+        arrastou = true;
+        setTimeout(() => { arrastou = false; }, 0);
+      };
+      addEventListener('pointermove', mover);
+      addEventListener('pointerup', soltar);
+    });
+    cabecalho.addEventListener('dblclick', (e) => {
+      if (e.target.closest('button, .ajuda')) return;
+      posicao = null;
+      GM_deleteValue(CHAVE_POSICAO);
+      painel.style.width = painel.style.height = painel.style.left = '';
+      posicionarPainel();
+      status('Painel de volta ao canto, no tamanho padrão.');
+    });
+  }
+
   function posicionarPainel() {
+    const p = el.painel;
+    if (posicao?.width && !p.style.width) { p.style.width = posicao.width; p.style.height = posicao.height || ''; }
+    if (posicao && posicao.left != null) {
+      const w = p.offsetWidth || 360;
+      const left = Math.min(Math.max(0, posicao.left), Math.max(0, innerWidth - w));
+      const top = Math.min(Math.max(0, posicao.top), Math.max(0, innerHeight - 48));
+      if (p.style.left !== `${left}px` || p.style.top !== `${top}px`) {
+        p.style.left = `${left}px`;
+        p.style.right = 'auto';
+        p.style.top = `${top}px`;
+        p.style.maxHeight = `calc(100vh - ${top + 12}px)`;
+      }
+      return;
+    }
+    if (p.style.left || p.style.right) { p.style.left = ''; p.style.right = ''; }
     const picos = document.getElementById('tcc-picos-hospedeiro')?.shadowRoot?.getElementById('painel');
     const r = picos?.getBoundingClientRect();
     const topo = r && r.height ? Math.round(r.bottom + 8) : 12;
@@ -1852,6 +2079,8 @@
     const fila = GM_getValue(CHAVE_FILA, null);
     const texto = fila && fila.i < fila.itens.length ? `${fila.ativa ? 'fila' : 'pausada'} ${fila.i}/${fila.itens.length}` : '';
     if (el.filaSelo.textContent !== texto) el.filaSelo.textContent = texto;
+    if (fila?.ativa && fila.i < fila.itens.length) progresso('fila', fila.i / fila.itens.length, `Fila: lugar ${fila.i + 1} de ${fila.itens.length}`);
+    else progresso('fila', null);
   }
 
   function garantirPainel() {
@@ -1865,7 +2094,8 @@
       ultimoLugar = nome;
     }
     atualizarSeloFila();
-    if (!ocupado && !el.painel.classList.contains('min')) atualizarFiltrosNaPagina();
+    vigiarLista();
+    if (!ocupado && !el.painel.classList.contains('min')) atualizarFiltrosNaPagina({ seMudou: true });
   }
 
   function avisosAoAbrir() {

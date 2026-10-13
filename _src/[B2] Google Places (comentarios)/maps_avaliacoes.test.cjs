@@ -25,7 +25,7 @@ function carregar(contexto = {}) {
     ...contexto,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Avaliações do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { infoLugar, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, montarLinhas, csv, COLS, salvarArquivo, proximoIndice });})();';
+    + 'Object.assign(globalThis.__test, { infoLugar, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_avaliacoes.user.js' });
   return ambiente.__test;
 }
@@ -96,4 +96,33 @@ test('navegação entre filtrados começa na ponta certa e dá a volta', () => {
   assert.equal(proximoIndice(5, 4, 1), 0);
   assert.equal(proximoIndice(5, 0, -1), 4);
   assert.equal(proximoIndice(5, 2, 1), 3);
+});
+
+test('intervalo de Wilson: 19 de 20 dá 76,4% a 99,1%', () => {
+  const [a, b] = carregar().wilson(19, 20);
+  assert.equal(a.toFixed(3), '0.764');
+  assert.equal(b.toFixed(3), '0.991');
+  assert.equal(carregar().wilson(0, 0), null);
+});
+
+test('placar da conferência fecha com o total sorteado', () => {
+  const conf = { ids: ['a', 'b', 'c', 'd'], marcas: {
+    a: { review_id: 'a', resultado: 'confere', nota_confere_auto: 'sim', texto_confere_auto: 'sim' },
+    b: { review_id: 'b', resultado: 'diverge', nota_confere_auto: 'não', texto_confere_auto: 'sim' },
+    c: { review_id: 'c', resultado: 'confere', nota_confere_auto: 'sim', texto_confere_auto: 'não' },
+    x: { review_id: 'x', resultado: 'confere' },
+  } };
+  const p = carregar().placarConferencia(conf);
+  assert.deepEqual([p.ok, p.nd, p.faltam, p.autoNota, p.autoTexto], [2, 1, 1, 1, 1]);
+  assert.equal(p.ok + p.nd + p.faltam, p.total);
+});
+
+test('filtros salvos voltam iguais e ignoram chaves desconhecidas', () => {
+  const t = carregar();
+  t.carregarFiltros({ de: 7, ate: 'tudo', temas: ['preco', 'inventado'], opiniao: 'negativa', componentes: ['fotos'], busca: 'couvert', esmaecer: true, destacar: false });
+  const s = t.filtrosParaSalvar();
+  assert.deepEqual(JSON.parse(JSON.stringify(s)), { de: 7, ate: 'tudo', temas: ['preco'], opiniao: 'negativa', componentes: ['fotos'], busca: 'couvert', esmaecer: true, destacar: false });
+  const r = { idade_dias_aprox: 400, temas: 'preço', opiniao: 'negativa', n_fotos: 2, texto_avaliacao: 'O couvert é caro' };
+  assert.equal(t.passaFiltros(r), true);
+  assert.equal(t.passaFiltros({ ...r, n_fotos: 0 }), false);
 });
