@@ -24,7 +24,7 @@ Cada script segue a sequência `collect` (coleta) → `build` (tratamento) → `
 
 | Bloco | Fonte | Scripts principais | Uso no plano |
 |---|---|---|---|
-| **B1** Estabelecimentos e cardápios | Google Places API, OpenStreetMap, curadoria manual | `collect_B1_places` → `collect_B1_details` (`--sem-reviews`) → `build_B1_planilha` → `build_B1_planilhas_regic` → `analise_B1_limiares` → `build_B1_triagem_manual` → `build_B1_cardapios_planilha` | Concorrência, preço, ticket |
+| **B1** Estabelecimentos e cardápios | Google Places API, OpenStreetMap, curadoria manual | `collect_B1_places` → `collect_B1_details` (`--sem-reviews`) → `build_B1_planilha` → `build_B1_planilhas_regic` → `analise_B1_limiares` → `build_B1_triagem_manual` → `build_B1_cardapios_planilha`; legendas do Instagram: `analise_B1_instagram_temas`, `analise_B1_instagram_precos`, `analise_B1_instagram_eventos` | Concorrência, preço, ticket, eventos |
 | **B2** Avaliações recentes | Google Maps (avaliações até "um mês atrás") | `analise_B2_conteudo_bardin` | Proposta de valor, reclamações, fluxo |
 | **B3** Contagem direta de ocupação | Observação na São Jogue (app) e NFC-e | `build_B3_contagem_sorteio` → `analise_B3_contagem`, `build_B3_ocr_fotos` | Ocupação, giro, calibração |
 | **B4** Bases públicas | IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA | `collect_B4_*` → `build_B4_*` | Demanda, custos, tributos, taxa de desconto |
