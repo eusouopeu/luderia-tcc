@@ -344,3 +344,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: painel fixo a 354 px da borda direita, para ficar à esquerda do painel de horários de pico; sem esse outro painel, ficava no meio da tela.
 **Depois**: painel encostado na borda direita (12 px); se o painel de horários de pico estiver aberto, fica logo abaixo dele, com a altura máxima ajustada.
 **Justificativa**: pedido do autor: o painel aparecia no meio da tela. Na mesma sessão, a versão 2026.10.13-3 foi testada injetada no Maps real sem login: abre as avaliações, rola e dispara o download; sem login o Google mostra só 5 avaliações e não deixa ordenar, então a falha relatada no modo logado ainda não foi reproduzida.
+
+### 07:03
+**Objeto**: `_src/[B1] Google Places (estabelecimentos)/build_B1_comentarios_aprovadas.py`, coluna "data relativa" da saída `B1_comentarios_aprovadas_metropoles_mais_100_avaliacoes.xlsx`
+**Antes**: código no formato número + letra ("2d", "3s", "1m"); a ordenação alfabética misturava as unidades.
+**Depois**: código no formato letra + número ("d2", "s3", "m1"); a anotação de entrada aceita as duas ordens. Planilha regerada: 342 comentários, diferença zero com as células da entrada.
+**Justificativa**: pedido do autor: ao retomar a coleta, ordenar a coluna agrupa por unidade (dia, semana, mês) e o comentário mais antigo é o maior número do grupo "m".

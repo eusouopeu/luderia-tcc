@@ -9,7 +9,9 @@ Nenhum campo é obrigatório; cada parte é reconhecida pelo conteúdo, não pel
 posição. Campo ausente no comentário recebe "R" (revisar).
 
 Padronizações:
-  - data: "2 dias" -> "2d", "3S" -> "3s", "fim de um mes atrás" -> "1m";
+  - data: letra da unidade antes do número, para a ordenação alfabética
+    agrupar por unidade: "2 dias" -> "d2", "3S" -> "s3", "fim de um mes atrás"
+    -> "m1"; a anotação aceita as duas ordens ("2d" ou "d2");
   - notas por aspecto: "comida e ambiente 4" vale 4 para os dois aspectos;
     aspecto não citado, "sem ambiente" ou "não avaliado" fica "R";
   - preço: "+200" -> "200+";
@@ -47,6 +49,7 @@ CAMPOS = [
 ]
 
 RE_DATA = re.compile(r"^(\d+)\s*(h|d|s|m|dias?|semanas?|mes|mês|meses)$", re.I)
+RE_DATA_LETRA = re.compile(r"^(h|d|s|m)\s*(\d+)$", re.I)
 RE_NOTA = re.compile(r"^([1-5])\s*(?:\((.*?)\)?)?$")
 RE_PRECO = re.compile(r"^\+?\d{2,3}(?:\s*-\s*\d{2,3})?\+?$")
 UNIDADE = {"dia": "d", "dias": "d", "semana": "s", "semanas": "s", "mes": "m", "mês": "m", "meses": "m"}
@@ -58,10 +61,13 @@ def sem_acento(texto):
 
 def data(parte):
     m = RE_DATA.match(parte)
-    if not m:
+    if m:
+        numero, unidade = m.group(1), m.group(2).lower()
+    elif m := RE_DATA_LETRA.match(parte):
+        unidade, numero = m.group(1).lower(), m.group(2)
+    else:
         return None
-    unidade = m.group(2).lower()
-    return f"{m.group(1)}{UNIDADE.get(unidade, unidade)}"
+    return f"{UNIDADE.get(unidade, unidade)}{numero}"
 
 
 def notas_aspecto(texto):
@@ -151,7 +157,7 @@ def separa(comentario):
             linha["nota geral"] = nota.group(1)
             dentro = nota.group(2) or ""
             if "mes atras" in sem_acento(dentro):
-                linha["data relativa"] = linha["data relativa"] or "1m"
+                linha["data relativa"] = linha["data relativa"] or "m1"
             for aspecto, valor in notas_aspecto(dentro).items():
                 linha[f"nota {aspecto}"] = valor
             continue
