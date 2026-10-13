@@ -416,3 +416,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: cada melhoria num script do Tampermonkey exigia colar o código de novo no navegador.
 **Depois**: o gerador cria em `_src/Web scripts/carregadores/` (fora do git, com o caminho absoluto da máquina) um carregador por script, com o mesmo cabeçalho, @name e @namespace e um @require file:/// para o arquivo do repositório. Instalado uma vez, o navegador lê o código do disco a cada página; só mudança de cabeçalho pede reinstalação, que o gerador detecta e abre no Chrome com `--abrir`.
 **Justificativa**: pedido do autor: atualizar os scripts no navegador automaticamente quando o código melhora.
+
+### 15:23
+**Objeto**: `_src/Web scripts/gerar_carregadores.py`
+**Antes**: abria os carregadores no Google Chrome, que não está instalado, e gravava o cabeçalho como instalado mesmo quando a abertura falhava.
+**Depois**: abre no Vivaldi, o navegador com o Tampermonkey (opção `--navegador` para outro); só marca como instalado o que abriu sem erro.
+**Justificativa**: a primeira execução falhou; o Firefox também tem o Tampermonkey, mas lá ele não lê `@require file:///`.

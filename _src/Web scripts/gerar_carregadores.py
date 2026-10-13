@@ -13,10 +13,10 @@ Como funciona:
   - mudança no cabeçalho (novo @match, @grant, @run-at...) exige instalar o
     carregador de novo. O script guarda a impressão dos cabeçalhos em
     carregadores/cabecalhos.json e lista os carregadores que mudaram; com
-    --abrir, abre esses no Chrome para instalar com um clique.
+    --abrir, abre esses no navegador (Vivaldi) para instalar com um clique.
 
-Configuração única no Chrome (feita pelo autor):
-  1. chrome://extensions → Tampermonkey → Detalhes → ligar "Permitir acesso a
+Configuração única no Vivaldi (feita pelo autor):
+  1. vivaldi://extensions → Tampermonkey → Detalhes → ligar "Permitir acesso a
      URLs de arquivo";
   2. instalar cada carregador uma vez: python3 gerar_carregadores.py --abrir --todos
   3. se uma mudança no corpo não aparecer ao recarregar a página:
@@ -27,7 +27,7 @@ Os carregadores têm o caminho absoluto desta máquina e ficam fora do git.
 
 Uso:
     python3 "_src/Web scripts/gerar_carregadores.py"            # gera e lista o que mudou
-    python3 "_src/Web scripts/gerar_carregadores.py" --abrir    # e abre no Chrome os que mudaram
+    python3 "_src/Web scripts/gerar_carregadores.py" --abrir    # e abre no navegador os que mudaram
     python3 "_src/Web scripts/gerar_carregadores.py" --abrir --todos
 """
 import argparse
@@ -40,6 +40,9 @@ from pathlib import Path
 PASTA = Path(__file__).resolve().parent
 SAIDA = PASTA / "carregadores"
 IMPRESSOES = SAIDA / "cabecalhos.json"
+# Navegador com o Tampermonkey em que os carregadores funcionam. O Firefox não
+# serve: lá o Tampermonkey não lê @require file:///.
+NAVEGADOR = "Vivaldi"
 RE_CABECALHO = re.compile(r"// ==UserScript==\n(.*?)// ==/UserScript==", re.S)
 
 
@@ -72,7 +75,8 @@ def impressao(linhas):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--abrir", action="store_true", help="abre no Chrome os carregadores a instalar")
+    ap.add_argument("--abrir", action="store_true", help="abre no navegador os carregadores a instalar")
+    ap.add_argument("--navegador", default=NAVEGADOR, help=f"aplicativo do macOS (padrão: {NAVEGADOR})")
     ap.add_argument("--todos", action="store_true", help="com --abrir, abre todos, não só os que mudaram")
     args = ap.parse_args()
 
@@ -97,10 +101,15 @@ def main():
     # continua pendente até a próxima execução com --abrir.
     gravar = {n: v for n, v in antigas.items() if n in novas}
     if args.abrir and abrir:
+        abertos = 0
         for f in abrir:
-            subprocess.run(["open", "-a", "Google Chrome", str(f)], check=False)
+            r = subprocess.run(["open", "-a", args.navegador, str(f)], capture_output=True, text=True)
+            if r.returncode != 0:
+                print(f"falha ao abrir {f.name} no {args.navegador}: {r.stderr.strip()}")
+                continue
             gravar[f.name] = novas[f.name]
-        print(f"\nabertos no Chrome: {len(abrir)}. Clique em Instalar/Atualizar em cada aba.")
+            abertos += 1
+        print(f"\nabertos no {args.navegador}: {abertos} de {len(abrir)}. Clique em Instalar/Atualizar em cada aba.")
     elif mudaram:
         print("\nrode com --abrir para instalar os que mudaram.")
     IMPRESSOES.write_text(json.dumps(gravar, indent=2, ensure_ascii=False) + "\n")
