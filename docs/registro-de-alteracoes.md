@@ -404,3 +404,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: seções 1 a 3 (semente fixa, Cochran, Wilson).
 **Depois**: seção 4 com estratificação por estabelecimento, percentual × número absoluto, quadro das opções A a E, receita B + E e tabela hipergeométrica mostrando que o tamanho da base quase não muda a amostra; NBR 5426 nas referências.
 **Justificativa**: pedido do autor.
+
+### 15:01
+**Objeto**: scripts do Tampermonkey (`instagram_coletor.user.js`, `cardapio_coletor.user.js`, `maps_horarios_pico.user.js`, `maps_avaliacoes.user.js`) e o teste `maps_avaliacoes.test.cjs`
+**Antes**: os três primeiros em `_src/[B1] Google Places (estabelecimentos)/`; `maps_avaliacoes.user.js` e o teste em `_src/[B2] Google Places (comentarios)/`.
+**Depois**: todos em `_src/Web scripts/`; o teste foi junto porque lê o script pela própria pasta. Caminho citado em `_src/[B1] Instagram/instagram_comum.py` atualizado.
+**Justificativa**: pedido do autor: separar os scripts de navegador dos scripts Python do pipeline.

@@ -1,7 +1,7 @@
 """
 Bloco B1 - funções comuns às análises das legendas do Instagram.
 
-Carrega os CSVs de posts exportados pelo coletor (instagram_coletor.user.js),
+Carrega os CSVs de posts exportados pelo coletor (_src/Web scripts/instagram_coletor.user.js),
 um por perfil coletado, e devolve uma base com um post por linha.
 
 Regras de atribuição (uma unidade, um grupo):
