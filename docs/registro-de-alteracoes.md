@@ -273,3 +273,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: 1641.
 **Depois**: sem alteração.
 **Efeitos colaterais**: valor fora de escala (os demais couverts vão de R$ 10 a R$ 20); foi excluído da sumarização. Provável erro de digitação, a conferir pelo autor.
+
+### 21:51
+**Objeto**: banco "Status da coleta" do Notion, coluna Cardápio, frente ao banco "A - Estabelecimentos"
+**Antes**: Status (calculado às 20:19): Chef on Play, Cineplay, Comdado, Covil, Encounter, Flow Games e Ludoteca BGC em "Coleta parcial"; Inside Games e Utopia em "Não coletado". Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria ausentes.
+**Depois**: A (21:42): os 9 com itens e preços extraídos dos prints, o que pelo critério da coluna é "Coleta completa"; as 5 luderias novas estão no A.
+**Efeitos colaterais**: o Status superestima o que falta coletar; a lista de pendências de cardápio deve sair do A, não do Status, até o Status ser recalculado.
