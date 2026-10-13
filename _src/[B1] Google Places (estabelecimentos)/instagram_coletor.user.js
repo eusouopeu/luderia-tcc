@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.12-6
+// @version      2026.10.13-1
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -29,6 +29,14 @@
  *    vez, para o dono. Cada dado do perfil traz a fonte (API, JSON, cabeçalho, meta).
  *  - ✓/✗ na lista marcam à mão se o post é evento; o painel mostra a precisão do
  *    classificador e o CSV de posts traz a coluna evento_validado.
+ *  - Conferência (fidelidade): cole os shortcodes (ou links) sorteados. O script
+ *    guarda o que foi coletado de cada post no momento em que a conferência começa,
+ *    contorna os posts na grade, abre um por um e mostra o coletado para comparar
+ *    com a página. Marque ✓ ou ✗ e exporte o CSV da conferência.
+ *  - Botões "Som ao concluir" (dois bipes ao fim de uma coleta, rolagem ou fila;
+ *    bipes graves se parou com erro) e "Download automático" (CSV de posts e de
+ *    perfis ao fim da coleta por API e da fila). O navegador só libera o som
+ *    depois de um clique na página.
  *
  * Os CSV usam ";" como separador e UTF-8 com BOM (abrem direto no Excel pt-BR).
  * No pandas: pd.read_csv(caminho, sep=";").
@@ -588,8 +596,10 @@
   async function executar(tarefa) {
     if (ocupado) return;
     ocupado = true; parar = false; atualizarBotoes();
-    try { await tarefa(); } catch (e) { status(`Parou: ${e.message}. O que já veio continua disponível para exportar.`); }
+    let ok = true;
+    try { await tarefa(); } catch (e) { ok = false; status(`Parou: ${e.message}. O que já veio continua disponível para exportar.`); }
     ocupado = false; atualizarBotoes(); atualizarResumo();
+    tocar(ok && !parar);
   }
 
   let rolando = false;
@@ -656,7 +666,7 @@
     } finally {
       // Baixa o parcial mesmo se a fila parar no meio.
       const comDados = usuarios.filter((u) => perfis.has(u));
-      if (comDados.length) exportar(comDados, `fila${comDados.length}`);
+      if (comDados.length && autoBaixar) exportar(comDados, `fila${comDados.length}`);
     }
   }
 
@@ -704,6 +714,9 @@
       // Filtro: apaga os posts que não passam (sem dados conta como não passa).
       const opacidade = filtrando && !passaFiltro(p) ? '0.12' : '';
       if (a.style.opacity !== opacidade) a.style.opacity = opacidade;
+      // Conferência: contorna os posts sorteados; o atual, mais grosso.
+      const contorno = m && conf.codigos.includes(m[1]) ? (m[1] === conf.codigos[conf.i] ? '4px solid #e8a400' : '2px dashed #e8a400') : '';
+      if (a.style.outline !== contorno) { a.style.outline = contorno; a.style.outlineOffset = contorno ? '-4px' : ''; }
 
       // Anota em que grade o post foi visto (ver vinculo).
       const grade = perfilDaGrade();
@@ -1199,7 +1212,9 @@
     .campo button{flex:0 0 30px;padding:2px}
     .datas{display:flex;gap:6px;align-items:center;margin:6px 0}
     .datas input{color-scheme:light dark}
-    .datas button{flex:0 0 auto}`;
+    .datas button{flex:0 0 auto}
+    button.toggle[aria-pressed=true]{background:#2e7d32;border-color:#2e7d32;color:#fff}
+    .info{white-space:pre-line;background:#8881;border-radius:6px;padding:4px 6px}`;
 
   let hospedeiro = null;
 
@@ -1207,6 +1222,108 @@
   const PREF_COMPART = 'igc-contar-compartilhados';
   let contarCompartilhados = lerPref(PREF_COMPART, true);
   // Número do post (#N) nos selos: oculto por padrão, para o selo caber numa linha.
+  const PREF_SOM = 'igc-som-ao-concluir';
+  const PREF_AUTOBAIXAR = 'igc-download-automatico';
+  let somAoConcluir = lerPref(PREF_SOM, true);
+  // Ligado por padrão: a fila já baixava os CSV sozinha no fim.
+  let autoBaixar = lerPref(PREF_AUTOBAIXAR, true);
+  let audio = null;
+
+  // O navegador só libera áudio depois de um clique: o painel chama isto a cada clique.
+  function liberarAudio() {
+    try { audio = audio || new AudioContext(); if (audio.state === 'suspended') audio.resume(); } catch (_) { audio = null; }
+  }
+
+  function tocar(ok = true) {
+    if (!somAoConcluir) return;
+    liberarAudio();
+    if (!audio) return;
+    (ok ? [880, 1320] : [440, 330]).forEach((f, i) => {
+      const o = audio.createOscillator(), g = audio.createGain();
+      o.frequency.value = f;
+      o.connect(g); g.connect(audio.destination);
+      const t = audio.currentTime + i * 0.22;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.3, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.2);
+      o.start(t); o.stop(t + 0.21);
+    });
+  }
+
+  // ---------- conferência (fidelidade) ----------
+
+  // { codigos, i, coletado: { shortcode: dados no início da conferência }, marcas: { shortcode: marca } }
+  const CHAVE_CONF = 'igc-conferencia';
+  const confVazia = () => ({ codigos: [], i: 0, coletado: {}, marcas: {} });
+  let conf = (() => { try { return JSON.parse(localStorage.getItem(CHAVE_CONF) || 'null') || confVazia(); } catch (_) { return confVazia(); } })();
+
+  function gravarConf() {
+    try { localStorage.setItem(CHAVE_CONF, JSON.stringify(conf)); } catch (_) { /* sem armazenamento */ }
+    agendarSelos();
+    mostrarConferencia();
+  }
+
+  // O que foi coletado de cada post fica congelado no início: abrir o post atualiza
+  // os dados em memória, e a comparação perderia o sentido.
+  function dadosColetados(s) {
+    const p = posts.get(s);
+    return p ? { perfil: p.perfil, data_hora: dataHora(p.taken_at), curtidas: p.curtidas, comentarios: p.comentarios, tipo: p.tipo, legenda: (p.legenda || '').replace(/\s+/g, ' ').slice(0, 120) } : null;
+  }
+
+  function iniciarConferencia() {
+    const codigos = [...new Set(el.confCodigos.value.split(/[\s;,]+/)
+      .map((t) => (t.match(/\/(?:p|reel)\/([\w-]+)/) || [null, t.trim()])[1]).filter(Boolean))];
+    if (!codigos.length) { status('Cole os shortcodes ou links sorteados, um por linha.'); return; }
+    if (Object.keys(conf.marcas).length && !confirm('Começar outra conferência apaga as marcas da atual. Exporte antes. Continuar?')) return;
+    conf = { codigos, i: 0, coletado: Object.fromEntries(codigos.map((s) => [s, dadosColetados(s)])), marcas: {} };
+    const semDados = codigos.filter((s) => !conf.coletado[s]).length;
+    gravarConf();
+    status(`Conferência com ${codigos.length} posts${semDados ? `; ${semDados} sem dados coletados neste navegador` : ''}.`);
+  }
+
+  function moverConferencia(passo) {
+    conf.i = Math.max(0, Math.min(conf.codigos.length - 1, conf.i + passo));
+    gravarConf();
+  }
+
+  function abrirConferido() {
+    const s = conf.codigos[conf.i];
+    if (s) location.href = `https://www.instagram.com/p/${s}/`;
+  }
+
+  function marcarConferencia(resultado) {
+    const s = conf.codigos[conf.i];
+    if (!s) return;
+    const observacao = resultado === 'diverge' ? (prompt('O que diverge? (data, curtidas, comentários, legenda…)') || '') : '';
+    const c = conf.coletado[s] || {};
+    conf.marcas[s] = {
+      shortcode: s, perfil: c.perfil || '', url: `https://www.instagram.com/p/${s}/`, data_coletada: c.data_hora || '',
+      curtidas_coletadas: c.curtidas ?? '', comentarios_coletados: c.comentarios ?? '', resultado, observacao, conferido_em: dataHora(Date.now() / 1000),
+    };
+    if (conf.i < conf.codigos.length - 1) conf.i++;
+    gravarConf();
+  }
+
+  const COLS_CONF = ['shortcode', 'perfil', 'url', 'data_coletada', 'curtidas_coletadas', 'comentarios_coletados', 'resultado', 'observacao', 'conferido_em'];
+
+  function baixarConferencia() {
+    const marcas = Object.values(conf.marcas);
+    if (!marcas.length) { status('Nenhum post marcado na conferência.'); return; }
+    baixar(`${dataHora(Date.now() / 1000).slice(0, 10)}_instagram_conferencia.csv`, csv(marcas, COLS_CONF), 'text/csv;charset=utf-8');
+  }
+
+  function mostrarConferencia() {
+    if (!el.confInfo) return;
+    const s = conf.codigos[conf.i];
+    if (!s) { el.confInfo.textContent = 'Sem conferência em curso.'; return; }
+    const c = conf.coletado[s];
+    const m = conf.marcas[s];
+    const aberto = location.pathname.includes(`/${s}/`);
+    el.confInfo.textContent = `${conf.i + 1}/${conf.codigos.length} (${Object.keys(conf.marcas).length} marcados) · ${s}${aberto ? ' · aberto' : ''}\n` +
+      (c ? `Coletado: @${c.perfil} · ${c.data_hora} · ♥ ${c.curtidas} · 💬 ${c.comentarios} · ${c.tipo}\n"${c.legenda}"` : 'Sem dados coletados deste post neste navegador.') +
+      (m ? `\nMarcado: ${m.resultado}${m.observacao ? ` (${m.observacao})` : ''}` : '');
+  }
+
   const PREF_NUMERO = 'igc-numero-nos-selos';
   let mostrarNumero = lerPref(PREF_NUMERO, false);
   let rolarAoAbrir = lerPref(PREF_ROLAR);
@@ -1237,12 +1354,12 @@
     el.contagens = criar('p', { className: 'status' });
     const bApi = botao('Coletar período (API)', () => {
       const u = perfilAtual();
-      if (u) executar(() => coletarPerfil(u, 'periodo'));
+      if (u) executar(() => coletarPerfil(u, 'periodo').then(() => { if (autoBaixar) exportar([u], u); }));
     });
     bApi.title = 'Poucos pedidos: dados do perfil e posts até a data "De". Não chega ao primeiro post.';
     const bHistorico = botao('Histórico completo (API)', () => {
       const u = perfilAtual();
-      if (u) executar(() => coletarPerfil(u, 'completo').then(() => status(`@${u} completo.`)));
+      if (u) executar(() => coletarPerfil(u, 'completo').then(() => { status(`@${u} completo.`); if (autoBaixar) exportar([u], u); }));
     });
     bHistorico.title = 'Vai até o primeiro post (data do primeiro post). Muitos pedidos; continua de onde parou.';
     const bCsv = botao('Exportar CSV', () => { const u = perfilAtual(); if (u) exportar([u], u); });
@@ -1262,6 +1379,28 @@
     ]);
     el.parar = botao('Parar', () => { parar = true; status('Parando…'); });
     el.acoes = [bRolar, bApi, bHistorico, bCsv, bJson, bFila];
+
+    const toggle = (rotulo, ler, gravar) => {
+      const b = criar('button', { className: 'toggle' });
+      const pintar = () => { b.setAttribute('aria-pressed', String(ler())); b.textContent = `${rotulo}: ${ler() ? 'ligado' : 'desligado'}`; };
+      b.onclick = () => { gravar(!ler()); pintar(); };
+      pintar();
+      return b;
+    };
+    const bSom = toggle('🔔 Som ao concluir', () => somAoConcluir, (v) => { somAoConcluir = v; gravarPref(PREF_SOM, v); if (v) tocar(true); });
+    const bAuto = toggle('⬇ Download automático', () => autoBaixar, (v) => { autoBaixar = v; gravarPref(PREF_AUTOBAIXAR, v); });
+
+    el.confCodigos = criar('textarea', { placeholder: 'Conferência: shortcodes ou links sorteados, um por linha', value: conf.codigos.join('\n') });
+    el.confInfo = criar('p', { className: 'status info' });
+    const blocoConferencia = criar('details', { ontoggle: mostrarConferencia }, [
+      criar('summary', { className: 'subtitulo', textContent: 'Conferência de fidelidade' }),
+      el.confCodigos,
+      criar('div', { className: 'linha' }, [botao('Começar', iniciarConferencia), botao('◀', () => moverConferencia(-1)), botao('▶', () => moverConferencia(1))]),
+      el.confInfo,
+      criar('div', { className: 'linha' }, [botao('Abrir post', abrirConferido)]),
+      criar('div', { className: 'linha' }, [botao('✓ confere', () => marcarConferencia('confere')), botao('✗ diverge', () => marcarConferencia('diverge'))]),
+      criar('div', { className: 'linha' }, [botao('CSV da conferência', baixarConferencia)]),
+    ]);
 
     const chk = criar('input', { type: 'checkbox', checked: true, onchange: (e) => { mostrarSelos = e.target.checked; aplicarSelos(); } });
     const chkNumero = criar('input', { type: 'checkbox', checked: mostrarNumero, onchange: (e) => { mostrarNumero = e.target.checked; gravarPref(PREF_NUMERO, mostrarNumero); aplicarSelos(); } });
@@ -1338,6 +1477,7 @@
     const cabecalho = criar('header', {}, [el.titulo, minimizar]);
     const painel = criar('div', { id: 'igc-painel' }, [
       cabecalho,
+      criar('div', { className: 'linha' }, [bSom, bAuto]),
       el.resumo,
       el.contagens,
       criar('div', { className: 'linha' }, [bRolar, bTopo]),
@@ -1357,9 +1497,11 @@
       el.fila,
       el.modoFila,
       criar('div', { className: 'linha' }, [bFila, bApagar]),
+      blocoConferencia,
       el.status,
     ]);
     cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.textContent = painel.classList.contains('min') ? '+' : '–'; };
+    painel.addEventListener('click', liberarAudio);
 
     hospedeiro = criar('div', { id: 'igc-hospedeiro' });
     const raiz = hospedeiro.attachShadow({ mode: 'open' });
@@ -1390,6 +1532,7 @@
         // O Instagram troca de página sem recarregar; acompanha a URL.
         if (location.pathname !== caminho) { caminho = location.pathname; lerDadosEmbutidos(); }
         atualizarResumo();
+        mostrarConferencia();
         talvezRolarSozinho();
       } catch (e) { console.error('[Coletor IG]', e); }
     }, 1000);
