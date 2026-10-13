@@ -368,3 +368,27 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: filtros e período voltavam ao padrão a cada página carregada (inclusive entre lugares da fila); painel fixo no canto, sem mudar tamanho; progresso só em texto; a conferência mostrava só a posição e o número de marcadas; a página era refiltrada inteira a cada 1,5 s, mesmo sem mudança.
 **Depois**: (1) período e filtros salvos no Tampermonkey e restaurados ao abrir, com selo azul "n ativos" no título "Filtros". (2) Painel arrastável pelo cabeçalho e redimensionável pelo canto, com posição e tamanho salvos; duplo clique no cabeçalho volta ao canto e ao tamanho padrão. (3) Barra de progresso da coleta (maior entre carregadas ÷ volume do lugar e idade da última ÷ fim do período, até 99% enquanto roda) e da fila (lugar atual ÷ total). (4) Refiltragem periódica só quando a lista muda (observador de mutações na lista) ou muda o lugar; mudanças de filtro continuam aplicando na hora. (5) Placar da conferência: confere, diverge e faltam em barra verde e vermelha, fidelidade com intervalo de Wilson (95%) e quantas divergências a comparação automática apontou. Três testes novos (Wilson, placar fecha com o total sorteado, filtros salvos); 10 de 10 passando.
 **Justificativa**: pedido do autor (sugestões 1, 2, 4, 6 e 7 da rodada anterior). Conferido na página local com cartões simulados: filtros restaurados, arraste salvo sem minimizar, duplo clique, barra durante a coleta e placar; falta testar no Maps real.
+
+### 12:23
+**Objeto**: `_instrucoes/4_metodologia.md`, recorte temporal do Bloco B2 (escopo, §3.3, variável velocidade de avaliações, quadro de limitações)
+**Antes**: avaliações com texto até "um mês atrás"; janela de um mês.
+**Depois**: avaliações com texto até "3 meses atrás"; o rótulo cobre de 90 a 119 dias, e a janela vai de 90 a 120 dias antes da coleta. Limitação reescrita: a janela cobre só parte do ano e não mede sazonalidade.
+**Justificativa**: pedido do autor: o período de coleta foi ampliado para "até três meses atrás".
+
+### 12:23
+**Objeto**: `_instrucoes/4_metodologia.md`, divisão da base em metades (escopo, quadro do cap. 3, §3.4 pipeline e validação do dicionário, §3.5, §3.6)
+**Antes**: avaliadores sorteados em metade exploratória e metade confirmatória; dicionário validado em 200 avaliações da metade exploratória; seção "Divisão da base".
+**Depois**: base única. A etapa exploratória e a descritiva usam a população inteira de avaliações; as 200 avaliações da validação do dicionário saem da base inteira; a seção vira "Base única" e declara que, se o extra for feito, os testes rodam na mesma base em que o dicionário foi construído. §3.5 passa a "Registro prévio — extra".
+**Justificativa**: orientação do orientador, repassada pelo autor em 13/10/2026: fazer as etapas exploratória e descritiva com a população total de comentários.
+
+### 12:23
+**Objeto**: `docs/estatidez.md` (novo)
+**Antes**: não existia.
+**Depois**: explicação em linguagem simples do sorteio com semente fixa e chave aleatória (passo a passo e consequências), da fórmula de Cochran e do intervalo de Wilson, com tabela de aprovação pelo critério de 5% e referências marcadas [A VERIFICAR].
+**Justificativa**: pedido do autor, para entender e defender na banca o método de sorteio e o cálculo do tamanho da amostra da auditoria.
+
+### 12:23
+**Objeto**: divergência entre `_instrucoes/4_metodologia.md` e outros documentos sobre o recorte do B2 e a divisão da base
+**Antes**: "até 'um mês atrás'" em `CLAUDE.md`, `README.md`, `_instrucoes/1_estrutura.md` (vocabulário controlado), `docs/bibliografia/diagnostico-teorico.md`, `textos/projeto_pesquisa_luderia.md`, `textos/cronograma_luderia.md`, `textos/cronograma_luderia_semanas.md` e no cabeçalho do `maps_avaliacoes.user.js`; metade exploratória e confirmatória em `_instrucoes/1_estrutura.md` (§3.5), `textos/projeto_pesquisa_luderia.md` e `textos/registro_previo_luderia.md`.
+**Depois**: `_instrucoes/4_metodologia.md` (13/10/2026): até "3 meses atrás" e base única.
+**Efeitos colaterais**: os demais documentos descrevem um recorte e um desenho que não valem mais; a velocidade de avaliações calculada com janela de um mês fica incomparável com a de três meses. Correção depende de pedido do autor.

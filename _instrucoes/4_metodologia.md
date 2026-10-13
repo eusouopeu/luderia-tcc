@@ -13,14 +13,14 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 - **Praça do plano:** Salvador (BA). A decisão de localização é o bairro e o ponto, não a cidade.
 - **Sem questionários.** Dados secundários públicos e uma única coleta primária comportamental (contagem direta de ocupação, com leitura do número da NFC-e).
 - **Estabelecimentos (Bloco B1):** concorrentes com **mais de 100 avaliações** no Google Maps nas **14 capitais classificadas como metrópole pela REGIC** (IBGE); população final esperada de 100 a 150 estabelecimentos após a curadoria.
-- **Avaliações (Bloco B2):** **todas as avaliações com texto publicadas até "um mês atrás"** (rótulo relativo do Google Maps na data da coleta), por estabelecimento, com texto integral. O número de avaliações varia entre estabelecimentos.
+- **Avaliações (Bloco B2):** **todas as avaliações com texto publicadas até "3 meses atrás"** (rótulo relativo do Google Maps na data da coleta), por estabelecimento, com texto integral. O número de avaliações varia entre estabelecimentos. Não há divisão da base: a etapa exploratória e a descritiva usam a população inteira de avaliações coletadas (orientação do orientador, registrada em 13/10/2026).
 - **Histórico dos avaliadores (Bloco B6):** retirado do escopo em 18/09/2026. Saem a nota centrada no avaliador, o lift de categorias, a avaliação no mesmo dia e a sobreposição de clientela.
 - **Modelo de alimentos e bebidas:** não é avaliado. Cozinha própria, parceria ou só bar deixa de ser variável do Bloco B1 e passa a premissa do autor no cap. 9.
 - **Cardápios** de cada estabelecimento.
 - **Contagem direta de ocupação** nas duas unidades da São Jogue (única luderia de Salvador), feita do lado de fora: 2 visitas sorteadas no sábado, 03/10/2026, com hora de início sorteada e duração fixa de 3 horas, e 2 visitas de retorno 15 dias depois (domingo, 18/10/2026), na mesma unidade e hora. O número da NFC-e lido nas duas visitas dá as notas emitidas no intervalo.
 - **Bases públicas:** IBGE (Censo 2022 por setor censitário, estimativas populacionais, POF 2017–2018, PNAD Contínua, PAS, CONCLA), RAIS e Novo CAGED, FipeZap comercial, Lei Complementar 123/2006 e anexos do Simples Nacional, Banco Central (SGS e Focus).
 - **Garantias de robustez (núcleo):** validação da coleta e da codificação; ponderação por estabelecimento; registro de premissas com faixas e nível de evidência; três cenários; tornado; ponto de ruptura.
-- **Extras, só se sobrar tempo no fim:** testes de hipótese H1–H9 com registro prévio, divisão da base em metade exploratória e confirmatória e correção para múltiplas comparações (§3.5); simulação de Monte Carlo ([8_financeiro.md](8_financeiro.md) §4.4). Se feitos, vão para apêndice. A banca de um plano de negócios avalia se a premissa se sustenta; os três cenários, o tornado e o ponto de ruptura já respondem sob quais condições o negócio é viável.
+- **Extras, só se sobrar tempo no fim:** testes de hipótese H1–H9 com registro prévio e correção para múltiplas comparações, na base inteira (§3.5); simulação de Monte Carlo ([8_financeiro.md](8_financeiro.md) §4.4). Se feitos, vão para apêndice. A banca de um plano de negócios avalia se a premissa se sustenta; os três cenários, o tornado e o ponto de ruptura já respondem sob quais condições o negócio é viável.
 
 ### Correspondência entre blocos e arquivos do pipeline
 
@@ -42,7 +42,7 @@ Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/
 | **3.2 Hierarquia de evidências** | Escala N1–N6 ([8_financeiro.md](8_financeiro.md) §2) e hierarquia de tipos de dados ([1_estrutura.md](1_estrutura.md), "Princípios do plano", P2); justificativa da exclusão de questionários |
 | **3.3 Fontes e instrumentos de coleta** | Blocos B1, B2, B3 e B4: o que mede, procedimento, recorte, período, limitação |
 | **3.4 Tratamento dos dados** | Pipeline; pseudonimização; validação da coleta (auditoria dos censos da fonte, reconciliação das bases públicas, consistência da contagem); construção das variáveis; dicionário de codificação e sua validação |
-| **3.5 Registro prévio e testes de hipótese** | **Extra, só se sobrar tempo.** Hipóteses H1–H9, registro prévio, metade exploratória e confirmatória. Se não for feito, a seção sai e as seguintes sobem um número |
+| **3.5 Registro prévio e testes de hipótese** | **Extra, só se sobrar tempo.** Hipóteses H1–H9 e registro prévio, na base inteira. Se não for feito, a seção sai e as seguintes sobem um número |
 | **3.6 Técnicas de análise e controles** | Técnicas por área do plano; calibração da ocupação; controles estatísticos |
 | **3.7 Matriz de evidências** | Quadro decisão → pergunta → dado usado → fonte → confiança |
 | **3.8 Aspectos éticos e legais** | Base legal da coleta, pseudonimização, observação sem identificação, divulgação apenas de dados processados |
@@ -67,12 +67,12 @@ Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/
 | Item | Descrição |
 |---|---|
 | Fonte | Página pública de avaliações de cada estabelecimento no Google Maps |
-| Recorte | **Todas as avaliações com texto cujo rótulo de data seja de até "um mês atrás"**, inclusive, na data da coleta. O número de avaliações varia com o movimento de cada estabelecimento |
+| Recorte | **Todas as avaliações com texto cujo rótulo de data seja de até "3 meses atrás"**, inclusive, na data da coleta. O rótulo "3 meses atrás" cobre de 90 a 119 dias; a janela vai, então, de 90 a 120 dias antes da coleta. O número de avaliações varia com o movimento de cada estabelecimento |
 | Tamanho esperado | Depende do ritmo de avaliações; estimado depois da coleta de um teste em amostra |
-| Procedimento | Cópia integral e automatizada do texto, da nota, da data relativa e do identificador do autor; pseudonimização do autor na própria coleta. Data e hora da coleta registradas por estabelecimento; coleta de todos os estabelecimentos no menor intervalo possível, para que as janelas de um mês coincidam |
+| Procedimento | Cópia integral e automatizada do texto, da nota, da data relativa e do identificador do autor; pseudonimização do autor na própria coleta. Data e hora da coleta registradas por estabelecimento; coleta de todos os estabelecimentos no menor intervalo possível, para que as janelas de três meses coincidam |
 | Variáveis derivadas | Aspectos mencionados e polaridade, reclamações, menções a comida, tamanho do grupo, valores em R$ citados, jogos citados (base do acervo inicial), velocidade de avaliações (§3.4) |
 | Uso no plano | Marketing (6.1 e 6.2), operacional (7.3), premissas de ocupação e ticket (cap. 9) |
-| Limitação | Autosseleção de quem avalia; o rótulo "um mês atrás" é arredondado pelo Google e não tem limite exato; janela de um mês não cobre sazonalidade |
+| Limitação | Autosseleção de quem avalia; o rótulo "3 meses atrás" é arredondado pelo Google e não tem limite exato; a janela de três meses cobre só parte do ano e não mede sazonalidade |
 
 O recorte por período descreve a operação atual de cada concorrente e torna o número de avaliações uma medida direta do ritmo de avaliações. Como estabelecimentos movimentados contribuem com mais avaliações, as análises agregadas ponderam por estabelecimento ou usam efeito fixo.
 
@@ -124,7 +124,7 @@ Scripts em `_src/[B4] Bases publicas/` (`collect_B4_*` → `build_B4_*`); saída
 - Scripts em `_src/[bloco]/` seguindo o padrão `collect_*` → `build_*` → `analise_*`; saídas em `_data/processed/` com o prefixo do bloco.
 - Dados brutos (textos integrais) ficam em `_data/raw/`, fora do repositório público. O TCC e o repositório divulgam **apenas dados processados**.
 - Dicionário de dados com nome, descrição, tipo, unidade e origem de cada variável.
-- Todo sorteio (visitas, divisão da base, amostra de validação) usa semente fixa registrada no código.
+- Todo sorteio (visitas, amostra de validação do dicionário, amostra de auditoria da coleta) usa semente fixa registrada no código.
 
 ### Variáveis derivadas dos textos (Bloco B2)
 
@@ -136,7 +136,7 @@ Scripts em `_src/[B4] Bases publicas/` (`collect_B4_*` → `build_B4_*`); saída
 | Tamanho do grupo | Expressões como "fomos em 6", "casal", "eu e dois amigos" | Número de pessoas |
 | Valores citados | Expressões com R$ e contexto ("por pessoa", "a conta", "o couvert") | R$; tipo de valor (por pessoa, conta total, item) |
 | Jogos citados | Nomes de jogos identificados no texto; lista aberta, construída durante a codificação | Binária por jogo; frequência por jogo e por estabelecimento |
-| Velocidade de avaliações | Número de avaliações com texto do recorte (até "um mês atrás") ÷ duração da janela, em dias, a partir da data da coleta | Avaliações com texto por mês |
+| Velocidade de avaliações | Número de avaliações com texto do recorte (até "3 meses atrás") ÷ duração da janela, em dias, a partir da data da coleta | Avaliações com texto por mês |
 
 Regras do dicionário: tratar negações ("nada tranquilo") e ambiguidades ("familiar"). Cada versão do dicionário é registrada e datada.
 
@@ -207,45 +207,43 @@ Dado não anotado é tratado como faltante. Não há imputação. A taxa de omis
 
 ### Validação do dicionário
 
-O dicionário é validado numa amostra antes de ser aplicado à base inteira. Se o extra do §3.5 for feito, a amostra sai da metade exploratória e o dicionário só é aplicado à metade confirmatória depois de validado.
+O dicionário é validado numa amostra antes de ser aplicado à base inteira. A amostra sai da própria base inteira, já que não há divisão em metades.
 
 | Etapa | Procedimento |
 |---|---|
 | 1. Manual de codificação | Definição operacional de cada variável de texto, com exemplos positivos, negativos e casos de fronteira. Vai para apêndice |
-| 2. Amostra | 200 avaliações da metade exploratória, sorteadas com estratificação por estabelecimento |
+| 2. Amostra | 200 avaliações da base inteira, sorteadas com estratificação por estabelecimento |
 | 3. Codificação humana 1 | O autor codifica as 200 avaliações pelo manual, sem ver a saída do dicionário |
 | 4. Codificação humana 2 | Uma segunda pessoa codifica as mesmas avaliações pelo manual. Alternativa: o autor recodifica após no mínimo 14 dias, sem consultar a primeira codificação |
 | 5. Concordância humana | Kappa de Cohen por variável entre as codificações 1 e 2; divergências resolvidas por consenso, gerando a codificação de referência |
 | 6. Desempenho do dicionário | Precisão, revocação e F1 do dicionário contra a codificação de referência, por variável |
 | 7. Critério de aceitação | Kappa ≥ 0,70 e F1 ≥ 0,70 por variável |
-| 8. Revisão | Variável abaixo do critério: revisão do dicionário e novo teste em outras 100 avaliações da metade exploratória. Se continuar abaixo, sai da análise confirmatória e é reportada como exploratória |
+| 8. Revisão | Variável abaixo do critério: revisão do dicionário e novo teste em outras 100 avaliações da base, fora das já sorteadas. Se continuar abaixo, a variável é reportada como exploratória, com o desempenho medido, e não sustenta premissa sozinha |
 
 Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados por taxa de acerto exato na mesma amostra.
 
-## 3.5 Registro prévio e divisão da base — extra
+## 3.5 Registro prévio — extra
 
-> **Extra, só se sobrar tempo no fim.** O corpo do plano usa estatística descritiva com intervalo de confiança, três cenários, tornado e ponto de ruptura. Os testes de hipótese H1–H9 (`textos/registro_previo_luderia.md`), a divisão da base, a correção de Benjamini-Hochberg e as regressões com efeito fixo só entram se houver tempo depois de o plano estar completo, e então vão para apêndice. O procedimento abaixo fica registrado para esse caso.
+> **Extra, só se sobrar tempo no fim.** O corpo do plano usa estatística descritiva com intervalo de confiança, três cenários, tornado e ponto de ruptura. Os testes de hipótese H1–H9 (`textos/registro_previo_luderia.md`), a correção de Benjamini-Hochberg e as regressões com efeito fixo só entram se houver tempo depois de o plano estar completo, e então vão para apêndice. O procedimento abaixo fica registrado para esse caso.
 
 ### Registro prévio
 
 - **Documento:** `textos/registro_previo_luderia.md`, versionado no repositório. A data e o identificador do commit comprovam que o registro antecede a análise.
 - **Prazo:** antes de qualquer análise das avaliações. A coleta pode ocorrer antes do registro; a análise, não.
 - **Conteúdo:**
-  - hipóteses confirmatórias, com direção quando houver (ver `textos/projeto_pesquisa_luderia.md` §1.5);
+  - hipóteses, com direção quando houver (ver `textos/projeto_pesquisa_luderia.md` §1.5);
   - análises exploratórias previstas, sem hipótese;
   - variáveis, unidade de análise e técnica de cada teste;
   - nível de significância (0,05 após correção de Benjamini-Hochberg) e medida de tamanho de efeito;
   - critérios de exclusão (avaliações sem texto útil, estabelecimentos fora da curadoria) e tratamento de dados ausentes;
-  - procedimento de divisão da base e de validação do dicionário.
-- **Emendas:** mudanças decorrentes da metade exploratória são registradas como emenda datada **antes** de abrir a metade confirmatória.
-- **No texto do TCC:** resultados confirmatórios e exploratórios são apresentados separadamente; desvios do registro são declarados.
+  - procedimento de validação do dicionário.
+- **Emendas:** mudanças feitas depois do registro são registradas como emenda datada **antes** da rodada dos testes.
+- **No texto do TCC:** resultados dos testes registrados e análises exploratórias são apresentados separadamente; desvios do registro são declarados.
 
-### Divisão da base
+### Base única
 
-- Após o fim da coleta do Bloco B2, os **avaliadores** são sorteados em duas metades, com estratificação pelo estabelecimento avaliado e semente fixa. O sorteio é por avaliador para que quem avaliou duas luderias não apareça nas duas metades.
-- **Metade exploratória:** construção e validação do dicionário; análises exploratórias; ajuste das especificações.
-- **Metade confirmatória:** fica fechada até a emenda final do registro; as análises registradas rodam uma única vez.
-- Estatísticas descritivas usadas no plano (reclamações, cardápios, ticket, velocidade de avaliações) usam a base completa depois da análise confirmatória.
+- Não há divisão da base em metades. A etapa exploratória (construção e validação do dicionário, ajuste das especificações) e a descritiva (reclamações, cardápios, ticket, velocidade de avaliações) usam a população inteira de avaliações coletadas. Orientação do orientador, registrada em 13/10/2026.
+- Consequência: se o extra for feito, os testes rodam na mesma base em que o dicionário foi construído. Isso é declarado como limitação dos testes, que vão para apêndice.
 
 ## 3.6 Técnicas de análise por área do plano
 
@@ -293,7 +291,7 @@ Custos (aluguel, pessoal, tributos) e indicadores seguem [8_financeiro.md](8_fin
 - **Unidade de análise explícita:** avaliação, avaliador ou estabelecimento. Decisões sobre modelos de negócio usam o estabelecimento como unidade.
 - **Ponderação igual por estabelecimento** nas estatísticas com avaliações, para que casas movimentadas não dominem o resultado.
 - **Intervalo de confiança** junto de toda proporção ou média usada em premissa.
-- **Só no extra (§3.5):** efeito fixo por estabelecimento nas regressões; tamanho de efeito junto com o valor-p (diferença de médias, razão de chances, V de Cramér); correção de Benjamini-Hochberg para o conjunto de testes confirmatórios.
+- **Só no extra (§3.5):** efeito fixo por estabelecimento nas regressões; tamanho de efeito junto com o valor-p (diferença de médias, razão de chances, V de Cramér); correção de Benjamini-Hochberg para o conjunto de testes registrados.
 - **Sensibilidade:** resultados com e sem os cinco estabelecimentos de maior volume, e com e sem os de menos de 10 avaliações com texto no recorte.
 - Resultado não significativo também é reportado.
 
@@ -335,7 +333,7 @@ Citar a Lei nº 13.709/2018 (LGPD) e a Resolução CNS nº 510/2016. Registrar a
 | Limitação | Efeito | Tratamento |
 |---|---|---|
 | Autosseleção de quem avalia | Superrepresenta experiências extremas e usuários ativos | Declarada; efeito fixo por estabelecimento; sem controle do grau de exigência de cada avaliador |
-| Recorte de um mês de avaliações | Não cobre sazonalidade; rótulo "um mês atrás" sem limite exato | Declarada; data da coleta registrada; sazonalidade tratada como premissa com faixa |
+| Recorte de três meses de avaliações | Cobre só parte do ano e não mede sazonalidade; rótulo "3 meses atrás" sem limite exato | Declarada; data da coleta registrada; sazonalidade tratada como premissa com faixa |
 | Corte de 100 avaliações no Bloco B1 | Exclui casas novas ou pequenas | Declarada; total da busca apresentado ao lado do total acima do corte |
 | Datas relativas | Impossibilita dia da semana e dia do mês das avaliações | Curva semanal vem da contagem direta |
 | Contagem em um único estabelecimento e cidade, com quatro visitas | Razão de calibração pode não valer para outros locais; sem sazonalidade | Faixa larga; sensibilidade da ocupação no tornado; validação recomendada antes do investimento |
