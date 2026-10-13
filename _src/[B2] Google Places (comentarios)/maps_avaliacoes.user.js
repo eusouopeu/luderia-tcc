@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de avaliações do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.13-4
+// @version      2026.10.13-5
 // @description  Abre as avaliações de um lugar, ordena por mais recentes, rola até o fim do período, expande os textos (no idioma original), filtra por tema, opinião, componentes e busca, salva o progresso, coleta em fila, confere amostras e exporta CSV com autor pseudonimizado.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -64,6 +64,9 @@
  *  - Componentes: todos os marcados presentes. "Provável cardápio": tem foto e o
  *    texto cita cardápio, menu, preço ou valor.
  *  - Busca: texto ou expressão regular, sem diferença de maiúsculas.
+ *  - As setas ao lado de "Filtros" (ou Enter e Shift+Enter na busca) vão ao próximo
+ *    e ao anterior que passa, como o "localizar na página" do navegador. A seção
+ *    "Comentários filtrados" lista os que passam; clicar num item rola até ele.
  *
  * Pseudonimização na coleta: o nome do autor não sai do navegador. O CSV traz um
  * código (SHA-256 do id de colaborador do Google + um sal, 12 caracteres). O sal
@@ -654,10 +657,10 @@
     atualizarIdsConhecidos();
     const cs = cartoes();
     const chave = chaveDestaque();
-    let passam = 0;
+    const passam = [];
     for (const c of cs) {
       const ok = passaFiltros(lerCartao(c));
-      if (ok) passam++;
+      if (ok) passam.push(c);
       if (filtros.esmaecer && !ok) {
         c.style.transition = 'opacity .2s';
         c.style.opacity = '0.25';
@@ -668,7 +671,60 @@
       }
       destacarCartao(c, ok ? chave : '');
     }
-    if (el.contador) el.contador.textContent = cs.length ? `${passam} de ${cs.length} avaliações carregadas passam no período e nos filtros.` : '';
+    if (el.contagem) {
+      el.contagem.textContent = `${passam.length} de ${cs.length}`;
+      const i = passam.indexOf(contornado);
+      el.navPos.textContent = i >= 0 ? `${i + 1}/${passam.length}` : '';
+    }
+    atualizarListaFiltrados(passam);
+  }
+
+  // Avança ou volta entre os comentários carregados que passam nos filtros,
+  // como o "localizar na página" do navegador (dá a volta nas pontas).
+  const proximoIndice = (n, atual, passo) => (atual < 0 ? (passo > 0 ? 0 : n - 1) : (atual + passo + n) % n);
+
+  function navegarFiltrados(passo) {
+    const alvos = cartoes().filter((c) => passaFiltros(lerCartao(c)));
+    if (!alvos.length) { status('Nenhum comentário carregado passa no período e nos filtros.'); return; }
+    irPara(alvos[proximoIndice(alvos.length, alvos.indexOf(contornado), passo)]);
+  }
+
+  function irPara(c) {
+    contornar(c, true);
+    atualizarFiltrosNaPagina();
+  }
+
+  // Lista resumida dos comentários filtrados; só é montada com a seção aberta.
+  const LIMITE_LISTA = 200;
+  let chaveListaFiltrados = '';
+
+  function atualizarListaFiltrados(alvos) {
+    if (!el.lista) return;
+    el.listaContagem.textContent = String(alvos.length);
+    if (!el.listaUI.open) return;
+    const chave = `${periodo.de}-${periodo.ate}|${alvos.map((c) => c.dataset.reviewId).join(',')}|${contornado?.dataset.reviewId || ''}`;
+    if (chave === chaveListaFiltrados) return;
+    chaveListaFiltrados = chave;
+    if (!alvos.length) {
+      el.lista.replaceChildren(criar('p', { className: 'vazio', textContent: 'Nenhum comentário carregado passa no período e nos filtros.' }));
+      return;
+    }
+    const itens = alvos.slice(0, LIMITE_LISTA).map((c) => {
+      const r = lerCartao(c);
+      const meta = [criar('span', { textContent: `★ ${r.nota_avaliacao || '?'}` }),
+        criar('span', { className: 'suave', textContent: r.data_relativa || 'sem data' })];
+      if (r.opiniao) meta.push(criar('span', { className: `op-${r.opiniao}`, textContent: r.opiniao }));
+      if (!jaColetada(r)) meta.push(criar('span', { className: 'selo nova', textContent: 'nova' }));
+      if (+r.n_fotos) meta.push(criar('span', { className: 'suave', textContent: `${r.n_fotos} foto${+r.n_fotos > 1 ? 's' : ''}` }));
+      const texto = r.texto_avaliacao.replace(/\s+/g, ' ');
+      return criar('button', { className: `item${c === contornado ? ' atual' : ''}`, title: 'Mostrar na página', onclick: () => irPara(c) }, [
+        criar('span', { className: 'meta' }, meta),
+        criar('span', { className: 'trecho', textContent: texto ? texto.slice(0, 220) : '(sem texto)' }),
+        ...(r.temas ? [criar('span', { className: 'temas', textContent: r.temas })] : []),
+      ]);
+    });
+    if (alvos.length > LIMITE_LISTA) itens.push(criar('p', { className: 'vazio', textContent: `… e mais ${alvos.length - LIMITE_LISTA}. Use as setas dos filtros para percorrer todos.` }));
+    el.lista.replaceChildren(...itens);
   }
 
   // ---------- som e preferências ----------
@@ -895,16 +951,17 @@
     if (!alvo) { status(`Nenhuma avaliação no período. ${MSG_MOTIVO[motivo] || ''}`); return; }
     contornar(alvo);
     const r = lerCartao(alvo);
-    status(`Primeira avaliação do período: "${r.data_relativa}", nota ${r.nota_avaliacao || '?'} (contorno amarelo).`);
+    status(`Primeira avaliação do período: "${r.data_relativa}", nota ${r.nota_avaliacao || '?'} (contorno roxo).`);
   }
 
   let contornado = null;
 
   function contornar(c, fixo = false) {
-    if (contornado && contornado !== c) contornado.style.outline = '';
+    if (contornado && contornado !== c) { contornado.style.outline = ''; contornado.style.outlineOffset = ''; }
     contornado = c;
     c.scrollIntoView({ block: 'center' });
-    c.style.outline = '3px solid #e8a400';
+    c.style.outline = '3px solid #9333ea';
+    c.style.outlineOffset = '-3px';
     if (!fixo) setTimeout(() => { if (contornado === c) c.style.outline = ''; }, 6000);
   }
 
@@ -913,12 +970,14 @@
     if (!a || !a.linhas?.length) { status('Não há coleta salva.'); return; }
     resultado = a.linhas;
     alertaSeletores = checarSeletores(resultado);
-    mostrarResumo(a.motivo, a.lugar);
-    status(`Recuperada a coleta de ${a.lugar.nome_estabelecimento} (${a.quando}, ${a.motivo}): ${resultado.length} avaliações. Use os botões de CSV.`);
+    mostrarResumo(a.motivo, a.lugar, `Recuperada (${a.quando}): ${MSG_MOTIVO[a.motivo] || a.motivo}`);
   }
 
-  function mostrarResumo(motivo, lugar) {
+  // Resumo da coleta no painel: cabeçalho com a cor do desfecho, contagens em
+  // tópicos e avisos em destaque.
+  function mostrarResumo(motivo, lugar, titulo = '') {
     const noP = resultado.filter((r) => r.no_periodo === 'sim');
+    const noPT = noP.filter((r) => r.tem_texto === 'sim').length;
     const comTexto = resultado.filter((r) => r.tem_texto === 'sim').length;
     const semTexto = resultado.length - comTexto;
     const semData = resultado.filter((r) => r.idade_dias_aprox === '').length;
@@ -926,10 +985,21 @@
     const avisos = [];
     if (!lugar.place_id && !lugar.id_maps) avisos.push('Sem place_id nem id_maps: cole o place_id do B1 no campo antes de exportar.');
     else if (!lugar.place_id) avisos.push('Sem place_id na URL: cole o do B1 no campo, se quiser.');
+    if (semData) avisos.push(`${semData} sem data reconhecida: confira na página.`);
     if (alertaSeletores) avisos.push(alertaSeletores);
-    status(`${MSG_MOTIVO[motivo] || ''} ${resultado.length} lidas (${comTexto} com texto + ${semTexto} sem; ${novas} novas) · ` +
-      `${noP.length} no período, ${noP.filter((r) => r.tem_texto === 'sim').length} delas com texto` +
-      (semData ? ` · ${semData} sem data reconhecida (confira)` : '') + '.' + (avisos.length ? `\n${avisos.join('\n')}` : ''));
+    const tipo = COMPLETA[motivo] === 'sim' ? 'ok' : (COMPLETA[motivo] === 'incerta' || motivo === 'em andamento') ? 'alerta' : 'erro';
+    const item = (n, texto, detalhe = '') => criar('li', {}, [criar('b', { textContent: String(n) }), ` ${texto}`,
+      ...(detalhe ? [criar('span', { className: 'suave', textContent: ` · ${detalhe}` })] : [])]);
+    statusRico([
+      criar('div', { className: 'cab' }, [criar('span', { className: 'ponto' }), titulo || MSG_MOTIVO[motivo] || motivo]),
+      ...(lugar.nome_estabelecimento ? [criar('div', { className: 'suave', textContent: lugar.nome_estabelecimento })] : []),
+      criar('ul', {}, [
+        item(resultado.length, 'lidas', `${comTexto} com texto + ${semTexto} sem`),
+        item(noP.length, 'no período', `${noPT} com texto`),
+        item(novas, 'novas', 'não coletadas antes'),
+      ]),
+      ...avisos.map((t) => criar('p', { className: 'aviso', textContent: t })),
+    ], tipo);
   }
 
   // ---------- fila ----------
@@ -1055,29 +1125,50 @@
 
   const normalizarTexto = (t) => semAcento(t).replace(/\s+/g, ' ').trim();
 
+  const trecho = (t, n = 110) => `"${t.slice(0, n)}${t.length > n ? '…' : ''}"`;
+  const chipConfere = (rotulo, ok) => criar('span', { className: `chip ${ok ? 'sim' : 'nao'}`, textContent: `${rotulo} ${ok ? 'confere' : 'diverge'}` });
+
   function mostrarConferencia() {
+    if (!el.confInfo) return;
     const conf = lerConf();
     const id = conf.ids[conf.i];
-    if (!id) { el.confInfo.textContent = 'Sem conferência em curso.'; return; }
+    const feitas = Object.keys(conf.marcas).length;
+    el.confPos.textContent = conf.ids.length ? `${conf.i + 1}/${conf.ids.length}` : '';
+    el.confSelo.textContent = conf.ids.length ? `${feitas}/${conf.ids.length}` : '';
+    if (!id) {
+      el.confInfo.replaceChildren(criar('span', { className: 'suave', textContent: 'Cole os review_id sorteados e clique em começar.' }));
+      el.confAbrir.disabled = true;
+      return;
+    }
     const dono = lugarDoId(id);
     const marcada = conf.marcas[id];
-    const feitas = Object.keys(conf.marcas).length;
-    let t = `${conf.i + 1}/${conf.ids.length} (${feitas} marcadas) · ${id}\n`;
-    t += dono ? `Lugar: ${dono.nome}` : 'Lugar: desconhecido (id não está no registro deste navegador)';
+    const bloco = (titulo, nota, data, texto) => criar('div', { className: 'lado' }, [
+      criar('div', { className: 'rotulo', textContent: titulo }),
+      criar('div', { textContent: `★ ${nota || '?'} · ${data || '?'}` }),
+      criar('div', { className: 'trecho', textContent: texto ? trecho(texto) : '(sem texto)' }),
+    ]);
+    const nos = [
+      criar('div', { className: 'cab' }, [criar('b', { textContent: dono ? dono.nome : 'Lugar desconhecido' }),
+        ...(marcada ? [criar('span', { className: `chip ${marcada.resultado === 'confere' ? 'sim' : 'nao'}`, title: marcada.observacao || '',
+          textContent: marcada.resultado === 'confere' ? '✓ marcada' : '✗ marcada' })] : [])]),
+      criar('div', { className: 'mono', textContent: id }),
+    ];
+    if (!dono) nos.push(criar('p', { className: 'aviso', textContent: 'O id não está no registro deste navegador.' }));
     if (dono) {
       const [nota, data, texto, quando] = dono.registro;
-      t += `\nColetado (${quando}): nota ${nota || '?'} · ${data || '?'} · "${texto.slice(0, 90)}${texto.length > 90 ? '…' : ''}"`;
+      nos.push(bloco(`Coletado em ${quando}`, nota, data, texto));
     }
     if (conferida?.id === id) {
       const p = conferida.pagina;
-      t += `\nNa página: nota ${p.nota_avaliacao || '?'} · ${p.data_relativa || '?'} · "${p.texto_avaliacao.slice(0, 90)}${p.texto_avaliacao.length > 90 ? '…' : ''}"`;
+      nos.push(bloco('Na página', p.nota_avaliacao, p.data_relativa, p.texto_avaliacao));
       if (dono) {
         const [nota, , texto] = dono.registro;
-        t += `\nAutomático: nota ${nota === p.nota_avaliacao ? 'confere' : 'DIVERGE'} · texto ${normalizarTexto(p.texto_avaliacao).startsWith(normalizarTexto(texto)) ? 'confere' : 'DIVERGE'}`;
+        nos.push(criar('div', { className: 'linha' }, [chipConfere('nota', nota === p.nota_avaliacao),
+          chipConfere('texto', normalizarTexto(p.texto_avaliacao).startsWith(normalizarTexto(texto)))]));
       }
     }
-    if (marcada) t += `\nMarcada: ${marcada.resultado}${marcada.observacao ? ` (${marcada.observacao})` : ''}`;
-    el.confInfo.textContent = t;
+    if (marcada?.observacao) nos.push(criar('div', { className: 'suave', textContent: `Divergência: ${marcada.observacao}` }));
+    el.confInfo.replaceChildren(...nos);
     el.confAbrir.disabled = !dono || chaveLugar(infoLugar()) === dono.chave;
   }
 
@@ -1097,7 +1188,7 @@
     await expandirTextos();
     contornar(alvo, true);
     conferida = { id, pagina: lerCartao(alvo) };
-    status('Avaliação contornada em amarelo. Compare e marque ✓ ou ✗.');
+    status('Avaliação contornada em roxo. Compare e marque ✓ ou ✗.');
     mostrarConferencia();
   }
 
@@ -1187,6 +1278,9 @@
 
   // ---------- painel (padrão: canto superior direito, shadow DOM, fora do <body>) ----------
   // Na lateral direita. Se o painel de horários de pico estiver aberto, fica logo abaixo dele.
+  // Visual pelos padrões de _shared (design-standards.md e minimalismo.md): Montserrat,
+  // Heroicons outline, roxo como cor primária, botões delineados por fundo (sem borda),
+  // botões-ícone onde o ícone basta e explicações recolhidas em ⓘ.
 
   const el = {};
   let hospedeiro = null;
@@ -1199,7 +1293,58 @@
     return n;
   }
 
-  function status(t) { if (el.status) el.status.textContent = t; }
+  // Heroicons 24/outline (traço 1.5).
+  const ICONES = {
+    'arrow-down-tray': 'M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3',
+    'arrow-down-on-square': 'M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15M9 12l3 3m0 0 3-3m-3 3V2.25',
+    'arrow-top-right-on-square': 'M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25',
+    'arrow-uturn-left': 'M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3',
+    'bell': 'M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0',
+    'bell-slash': 'M9.143 17.082a24.248 24.248 0 0 0 3.844.148m-3.844-.148a23.856 23.856 0 0 1-5.455-1.31 8.964 8.964 0 0 0 2.3-5.542m3.155 6.852a3 3 0 0 0 5.667 1.97m1.965-2.277L21 21m-4.225-4.225a23.81 23.81 0 0 0 3.536-1.003A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6.53 6.53m10.245 10.245L6.53 6.53M3 3l3.53 3.53',
+    'calendar-days': 'M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5',
+    'check': 'm4.5 12.75 6 6 9-13.5',
+    'chevron-down': 'm19.5 8.25-7.5 7.5-7.5-7.5',
+    'chevron-left': 'M15.75 19.5 8.25 12l7.5-7.5',
+    'chevron-right': 'm8.25 4.5 7.5 7.5-7.5 7.5',
+    'chevron-up': 'm4.5 15.75 7.5-7.5 7.5 7.5',
+    'document-chart-bar': 'M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z',
+    'document-check': 'M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12',
+    'document-duplicate': 'M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75',
+    'forward': 'M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z',
+    'information-circle': 'm11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z',
+    'magnifying-glass': 'm21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z',
+    'minus': 'M5 12h14',
+    'play': 'M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z',
+    'plus': 'M12 4.5v15m7.5-7.5h-15',
+    'stop': 'M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z',
+    'trash': 'm14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0',
+    'x-mark': 'M6 18 18 6M6 6l12 12',
+  };
+
+  function icone(nome, classe = '') {
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
+    for (const [k, v] of Object.entries({ viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.5', 'aria-hidden': 'true' })) svg.setAttribute(k, v);
+    if (classe) svg.setAttribute('class', classe);
+    const p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', ICONES[nome]);
+    p.setAttribute('stroke-linecap', 'round');
+    p.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(p);
+    return svg;
+  }
+
+  function status(t, tipo = '') {
+    if (!el.status) return;
+    el.status.className = `status${tipo ? ` st-${tipo}` : ''}`;
+    el.status.textContent = t;
+  }
+
+  function statusRico(nos, tipo = '') {
+    if (!el.status) return;
+    el.status.className = `status rico${tipo ? ` st-${tipo}` : ''}`;
+    el.status.replaceChildren(...nos);
+  }
 
   function atualizarBotoes() {
     for (const b of el.acoes || []) b.disabled = ocupado;
@@ -1210,193 +1355,486 @@
     if (ocupado) return;
     ocupado = true; parar = false; atualizarBotoes();
     let ok = true;
-    try { await fn(); } catch (e) { ok = false; status(`Erro: ${e.message}`); }
+    try { await fn(); } catch (e) { ok = false; status(`Erro: ${e.message}`, 'erro'); }
     ocupado = false; atualizarBotoes();
     if (avisar) tocar(ok && !parar);
   }
 
+  // ---------- dica (ⓘ): balão flutuante ao lado do termo ----------
+  // Abre ao parar o mouse (ou com foco/toque) e fecha ao sair, com Esc, rolagem ou clique fora.
+
+  let dicaAncora = null, dicaFixa = false, timerDica = 0;
+
+  function abrirDica(ancora, conteudo, fixa = false) {
+    clearTimeout(timerDica);
+    dicaAncora = ancora; dicaFixa = fixa;
+    el.dica.replaceChildren(typeof conteudo === 'function' ? conteudo() : document.createTextNode(conteudo));
+    el.dica.hidden = false;
+    const r = ancora.getBoundingClientRect(), d = el.dica.getBoundingClientRect(), M = 12;
+    const left = Math.min(Math.max(M, r.left + r.width / 2 - d.width / 2), innerWidth - d.width - M);
+    let top = r.bottom + 6;
+    if (top + d.height > innerHeight - M) top = Math.max(M, r.top - d.height - 6);
+    el.dica.style.left = `${left}px`;
+    el.dica.style.top = `${top}px`;
+  }
+
+  function fecharDica() {
+    if (!el.dica) return;
+    el.dica.hidden = true;
+    dicaAncora = null; dicaFixa = false;
+  }
+
+  function ajuda(conteudo, rotulo = 'Explicação') {
+    const i = criar('span', { className: 'ajuda', tabIndex: 0, role: 'button' }, [icone('information-circle')]);
+    i.setAttribute('aria-label', rotulo);
+    i.addEventListener('mouseenter', () => { if (!dicaFixa) abrirDica(i, conteudo); });
+    i.addEventListener('mouseleave', () => { if (!dicaFixa) timerDica = setTimeout(fecharDica, 120); });
+    i.addEventListener('focus', () => abrirDica(i, conteudo));
+    i.addEventListener('blur', () => { if (dicaAncora === i) fecharDica(); });
+    // Dentro de uma etiqueta ou aba clicável, tocar no ⓘ não aciona o controle.
+    i.addEventListener('click', (e) => {
+      e.stopPropagation(); e.preventDefault();
+      if (dicaAncora === i && dicaFixa) fecharDica(); else abrirDica(i, conteudo, true);
+    });
+    return i;
+  }
+
+  // ---------- controles ----------
+
+  function botaoIcone(nome, rotulo, fn, classe = '') {
+    const b = criar('button', { type: 'button', className: `ico ${classe}`.trim(), title: rotulo, onclick: fn }, [icone(nome)]);
+    b.setAttribute('aria-label', rotulo);
+    return b;
+  }
+
+  const botaoTexto = (nome, texto, fn, classe = '', dica = '') =>
+    criar('button', { type: 'button', className: classe, title: dica, onclick: fn }, [...(nome ? [icone(nome)] : []), texto]);
+
+  // Etiqueta liga/desliga: cinza desligada, azul ligada. `checked` imita a caixa de marcar.
+  function etiqueta(rotulo, aoAlternar, { ligada = false, dica = '' } = {}) {
+    const b = criar('button', { type: 'button', className: 'tag' }, [rotulo]);
+    if (dica) b.appendChild(ajuda(dica));
+    const pintar = (v) => b.setAttribute('aria-pressed', String(v));
+    pintar(ligada);
+    Object.defineProperty(b, 'checked', { get: () => b.getAttribute('aria-pressed') === 'true', set: (v) => pintar(!!v) });
+    b.onclick = () => { pintar(!b.checked); aoAlternar(b.checked); };
+    return b;
+  }
+
+  // Botão-ícone de preferência (som, download automático), salvo no Tampermonkey.
+  function alternaPref(chave, rotulo, nomeLigado, nomeDesligado) {
+    const b = criar('button', { type: 'button', className: 'ico leve' });
+    const pintar = () => {
+      b.setAttribute('aria-pressed', String(prefs[chave]));
+      b.replaceChildren(icone(prefs[chave] ? nomeLigado : nomeDesligado));
+      b.title = `${rotulo}: ${prefs[chave] ? 'ligado' : 'desligado'}`;
+      b.setAttribute('aria-label', b.title);
+    };
+    b.onclick = () => { prefs[chave] = !prefs[chave]; GM_setValue(`pref:${chave}`, prefs[chave]); pintar(); if (chave === 'som' && prefs.som) tocar(true); };
+    pintar();
+    return b;
+  }
+
+  // Seção recolhível; lembra quais estavam abertas.
+  const abertos = new Set(GM_getValue('pref:abertos', ['filtros']));
+
+  function secao(id, cabeca, filhos, aoAbrir = null) {
+    const d = criar('details', { open: abertos.has(id) }, [
+      criar('summary', {}, [icone('chevron-right', 'seta'), ...cabeca]), ...filhos]);
+    d.addEventListener('toggle', () => {
+      if (d.open) abertos.add(id); else abertos.delete(id);
+      GM_setValue('pref:abertos', [...abertos]);
+      if (d.open && aoAbrir) aoAbrir();
+    });
+    return d;
+  }
+
+  // Botão dentro do <summary> que não abre nem fecha a seção.
+  const naoAlterna = (fn) => (e) => { e.preventDefault(); e.stopPropagation(); fn(); };
+
   const CSS = `
-    #painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:340px;
-      max-height:calc(100vh - 24px);overflow:auto;box-sizing:border-box;
-      background:#fff;color:#111;border:1px solid #ccc;border-radius:10px;
-      box-shadow:0 4px 16px rgba(0,0,0,.18);font:13px/1.4 system-ui,sans-serif;padding:10px}
-    @media (prefers-color-scheme:dark){#painel{background:#1e1e1e;color:#eee;border-color:#444}}
+    :host{--fundo:#fff;--texto:#18181b;--suave:#71717a;--sup:#f4f4f5;--sup2:#e4e4e7;--linha:#ececef;
+      --caneta:#7e22ce;--caneta-forte:#6b21a8;--caneta-100:#f3e8ff;--azul:#2563eb;
+      --ok:#15803d;--ok-100:#dcfce7;--erro:#b91c1c;--erro-100:#fee2e2;--alerta:#b45309;--alerta-100:#fef3c7;
+      --fonte:Montserrat,system-ui,-apple-system,"Segoe UI",sans-serif}
+    @media (prefers-color-scheme:dark){:host{--fundo:#18181b;--texto:#f4f4f5;--suave:#a1a1aa;--sup:#27272a;--sup2:#3f3f46;
+      --linha:#27272a;--caneta:#a855f7;--caneta-forte:#9333ea;--caneta-100:#3b0764;--azul:#3b82f6;
+      --ok:#4ade80;--ok-100:#052e16;--erro:#f87171;--erro-100:#450a0a;--alerta:#fbbf24;--alerta-100:#451a03}}
+    *{box-sizing:border-box}
+    #painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:360px;max-height:calc(100vh - 24px);
+      overflow:auto;background:var(--fundo);color:var(--texto);border-radius:14px;
+      box-shadow:0 8px 28px rgba(0,0,0,.2);font:14px/1.5 var(--fonte);padding:10px 14px 12px}
+    #painel.min{padding-bottom:10px}
     #painel.min>*:not(header){display:none}
-    header{display:flex;justify-content:space-between;align-items:center;font-weight:700;cursor:pointer}
-    p{margin:6px 0}
-    label{display:block;margin:3px 0}
-    label.inline{display:inline-block;margin:2px 8px 2px 0}
-    details{margin:6px 0;border-top:1px solid #8884;padding-top:4px}
-    summary{cursor:pointer;font-weight:600}
-    .titulo{font-weight:600;margin:6px 0 2px}
-    .linha{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0;align-items:center}
-    button{flex:1 1 auto;padding:5px 8px;border-radius:6px;border:1px solid #888;
-      background:transparent;color:inherit;cursor:pointer;font:inherit}
-    button:disabled{opacity:.4;cursor:default}
-    button.toggle[aria-pressed=true]{background:#2e7d32;border-color:#2e7d32;color:#fff}
-    select,input[type=text],input[type=search]{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px}
-    input[type=text],input[type=search]{flex:1 1 auto;min-width:0}
-    select option{color:#111}
-    textarea{width:100%;box-sizing:border-box;height:60px;font:12px monospace;background:transparent;color:inherit;border:1px solid #888;border-radius:6px}
-    .status,.info{font-size:12px;opacity:.85;white-space:pre-line}
-    .info{background:#8881;border-radius:6px;padding:4px 6px}
-    .contador{font-size:12px;opacity:.75}
-    .legenda span{padding:0 4px;border-radius:3px;color:#111;font-size:11px}`;
+    header{display:flex;align-items:center;gap:2px}
+    header .nome{flex:1;font-weight:700;font-size:15px;cursor:pointer;user-select:none}
+    svg{width:18px;height:18px;flex:none}
+    button{font:inherit;color:inherit;border:0;background:var(--sup);border-radius:8px;padding:6px 10px;cursor:pointer;
+      display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:background .15s,color .15s,transform .1s}
+    button:hover:not(:disabled){background:var(--sup2)}
+    button:active:not(:disabled){transform:scale(.95)}
+    button:disabled{opacity:.35;cursor:default}
+    :focus-visible{outline:2px solid var(--azul);outline-offset:1px}
+    .ico{width:32px;height:32px;padding:0;flex:none}
+    .ico.leve{background:transparent;color:var(--suave)}
+    .ico.leve:hover:not(:disabled){background:var(--sup);color:var(--texto)}
+    .ico.leve[aria-pressed=true]{color:var(--caneta)}
+    .primario{background:var(--caneta);color:#fff;font-weight:600;flex:1}
+    .primario:hover:not(:disabled){background:var(--caneta-forte)}
+    .verde{background:var(--ok-100);color:var(--ok)}
+    .vermelho{background:var(--erro-100);color:var(--erro)}
+    .verde:hover:not(:disabled),.vermelho:hover:not(:disabled){filter:brightness(.95)}
+    .parar:not(:disabled){background:var(--erro-100);color:var(--erro)}
+    .perigo:hover:not(:disabled){color:var(--erro)}
+    .mini{padding:4px 10px;font-size:13px}
+    .mini svg{width:16px;height:16px}
+    .linha{display:flex;align-items:center;gap:6px;margin:8px 0;flex-wrap:wrap}
+    .esp{flex:1}
+    .rotulo{font-size:12px;font-weight:600;color:var(--suave);display:inline-flex;align-items:center;gap:4px}
+    .suave{color:var(--suave)}
+    select,input[type=text],input[type=search],textarea{font:inherit;color:inherit;background:var(--sup);border:0;border-radius:8px;padding:6px 8px}
+    select{padding:5px 4px;cursor:pointer;flex:1;min-width:0}
+    .periodo{flex-wrap:nowrap}
+    select option{color:#111;background:#fff}
+    input{min-width:0;flex:1}
+    input::placeholder,textarea::placeholder{color:var(--suave)}
+    textarea{width:100%;height:64px;font:12px/1.45 ui-monospace,Menlo,monospace;resize:vertical;display:block}
+    .busca{display:flex;align-items:center;gap:6px;background:var(--sup);border-radius:8px;padding:0 4px 0 10px;flex:1}
+    .busca input{background:transparent;padding:7px 0}
+    .busca input::-webkit-search-cancel-button{display:none}
+    .busca>svg{color:var(--suave);width:16px;height:16px}
+    .busca .ico{width:28px;height:28px;background:transparent;color:var(--suave)}
+    details{border-top:1px solid var(--linha)}
+    details>:not(summary){margin-left:2px}
+    details[open]{padding-bottom:8px}
+    summary{list-style:none;display:flex;align-items:center;gap:6px;cursor:pointer;font-size:15px;font-weight:600;
+      padding:8px 0;user-select:none}
+    summary::-webkit-details-marker{display:none}
+    summary .seta{width:16px;height:16px;color:var(--suave);transition:transform .2s}
+    details[open]>summary .seta{transform:rotate(90deg)}
+    summary .ico{width:28px;height:28px;background:transparent;color:var(--suave)}
+    summary .ico:hover:not(:disabled){background:var(--sup);color:var(--texto)}
+    .selo{font-size:12px;font-weight:600;background:var(--sup);color:var(--suave);border-radius:999px;padding:1px 8px;white-space:nowrap}
+    .selo:empty{display:none}
+    .selo.nova{background:var(--caneta-100);color:var(--caneta)}
+    .pos{font-size:12px;color:var(--suave);font-variant-numeric:tabular-nums;font-weight:500}
+    .subtitulo{font-size:12px;font-weight:600;color:var(--suave);margin:12px 0 6px;display:flex;align-items:center;gap:4px}
+    .tags{display:flex;flex-wrap:wrap;gap:6px}
+    .tag{padding:4px 12px;border-radius:999px;font-size:13px;background:var(--sup);color:var(--suave);gap:4px}
+    .tag[aria-pressed=true]{background:var(--azul);color:#fff}
+    .tag[aria-pressed=true]:hover{background:var(--azul);filter:brightness(1.08)}
+    .tag[aria-pressed=true] .ajuda{color:#fffc}
+    .pills{display:flex;background:var(--sup);border-radius:999px;padding:3px;gap:2px}
+    .pill{flex:1;background:transparent;border-radius:999px;padding:4px 6px;font-size:13px;color:var(--suave);gap:4px}
+    .pill:hover:not(:disabled){background:var(--sup2)}
+    .pill[aria-selected=true]{background:var(--fundo);color:var(--caneta);font-weight:600}
+    .ajuda{display:inline-flex;color:var(--suave);cursor:help;border-radius:999px}
+    .ajuda svg{width:15px;height:15px}
+    .ajuda:hover{color:var(--caneta)}
+    .dica{position:fixed;z-index:2147483647;max-width:280px;background:var(--texto);color:var(--fundo);
+      font:12.5px/1.5 var(--fonte);padding:8px 10px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.25);pointer-events:none}
+    .dica[hidden]{display:none}
+    .dica .legenda{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+    .dica .legenda span{padding:0 6px;border-radius:4px;color:#111}
+    .status{font-size:13px;border-radius:10px;padding:8px 10px;background:var(--sup);white-space:pre-line;margin:8px 0}
+    .status:empty{display:none}
+    .status.rico{white-space:normal}
+    .status .cab{font-weight:600;display:flex;gap:8px;align-items:center}
+    .status ul{margin:4px 0 0;padding-left:18px}
+    .status li::marker{color:var(--suave)}
+    .ponto{width:8px;height:8px;border-radius:50%;background:var(--suave);flex:none}
+    .st-ok{background:var(--ok-100)} .st-ok .ponto{background:var(--ok)}
+    .st-alerta{background:var(--alerta-100)} .st-alerta .ponto{background:var(--alerta)}
+    .st-erro{background:var(--erro-100)} .st-erro .ponto{background:var(--erro)}
+    .aviso{color:var(--alerta);font-size:12.5px;margin:6px 0 0;font-weight:500}
+    .aviso::before{content:"⚠ "}
+    .st-alerta .aviso,.st-erro .aviso{color:inherit}
+    .info{font-size:13px;background:var(--sup);border-radius:10px;padding:8px 10px;margin:8px 0}
+    .info .cab{display:flex;gap:6px;align-items:center;justify-content:space-between}
+    .lado{margin-top:8px}
+    .lado .trecho,.item .trecho{color:var(--suave);font-size:12.5px}
+    .mono{font:11.5px/1.4 ui-monospace,Menlo,monospace;color:var(--suave);word-break:break-all}
+    .chip{font-size:12px;font-weight:600;border-radius:999px;padding:1px 8px;white-space:nowrap}
+    .chip.sim{background:var(--ok-100);color:var(--ok)}
+    .chip.nao{background:var(--erro-100);color:var(--erro)}
+    .info .linha{margin:6px 0 0}
+    .lista{max-height:320px;overflow:auto;display:flex;flex-direction:column;gap:2px;margin-top:4px}
+    .item{display:flex;flex-direction:column;align-items:stretch;text-align:left;background:transparent;padding:6px 8px;gap:2px;flex:none}
+    .item:hover:not(:disabled){background:var(--sup)}
+    .item.atual{background:var(--caneta-100)}
+    .item .meta{display:flex;gap:8px;align-items:center;font-size:12px;font-weight:600}
+    .item .trecho{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-weight:400}
+    .item .temas{font-size:11.5px;color:var(--caneta)}
+    .op-positiva{color:var(--ok)}
+    .op-negativa{color:var(--erro)}
+    .vazio{font-size:13px;color:var(--suave);margin:6px 0}`;
 
   const OPCOES_PERIODO = [[0, 'agora'], [7, '1 semana'], [14, '2 semanas'], [21, '3 semanas'], [28, '4 semanas'],
     [30, '1 mês'], ...[2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((n) => [30 * n, `${n} meses`]),
     [365, '1 ano'], ...[2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => [365 * n, `${n} anos`])];
 
-  function montarPainel() {
-    const botao = (texto, fn) => criar('button', { textContent: texto, onclick: fn });
-    const caixa = (rotulo, aoMudar, classe = 'inline', marcado = false) => {
-      const i = criar('input', { type: 'checkbox', checked: marcado, onchange: (e) => { aoMudar(e.target.checked); atualizarFiltrosNaPagina(); } });
-      return criar('label', { className: classe }, [i, ` ${rotulo}`]);
-    };
-    const alternar = (conjunto, k) => (marcado) => { if (marcado) conjunto.add(k); else conjunto.delete(k); };
-    const toggle = (rotulo, chave) => {
-      const b = criar('button', { className: 'toggle' });
-      const pintar = () => { b.setAttribute('aria-pressed', String(prefs[chave])); b.textContent = `${rotulo}: ${prefs[chave] ? 'ligado' : 'desligado'}`; };
-      b.onclick = () => { prefs[chave] = !prefs[chave]; GM_setValue(`pref:${chave}`, prefs[chave]); pintar(); if (chave === 'som' && prefs.som) tocar(true); };
-      pintar();
-      return b;
-    };
+  // Montserrat vem do Google Fonts; a @font-face declarada no documento vale dentro do shadow DOM.
+  function carregarFonte() {
+    if (document.getElementById('tcc-fonte-montserrat') || !document.head) return;
+    document.head.appendChild(criar('link', { id: 'tcc-fonte-montserrat', rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap' }));
+  }
 
-    el.status = criar('p', { className: 'status', textContent: 'Abra um lugar e clique em "Coletar avaliações".' });
-    el.contador = criar('p', { className: 'contador' });
-    el.jaOrdenado = criar('input', { type: 'checkbox' });
-    el.pararConhecidas = criar('input', { type: 'checkbox' });
+  const legendaDestaques = () => criar('div', {}, [
+    'Palavras que acionaram o filtro:',
+    criar('div', { className: 'legenda' }, [
+      criar('span', { textContent: 'tema', style: `background:${CORES.tema}` }),
+      criar('span', { textContent: 'positiva', style: `background:${CORES.positiva}` }),
+      criar('span', { textContent: 'negativa', style: `background:${CORES.negativa}` }),
+      criar('span', { textContent: 'busca', style: `background:${CORES.busca}` }),
+      criar('span', { textContent: 'negação', style: 'background:#fff;text-decoration:underline 2px #e8790c' }),
+    ]),
+  ]);
+
+  function montarPainel() {
+    carregarFonte();
+    const reaplicar = () => atualizarFiltrosNaPagina();
+    const alternar = (conjunto, k) => (ligada) => { if (ligada) conjunto.add(k); else conjunto.delete(k); reaplicar(); };
+
+    el.status = criar('div', { className: 'status', textContent: 'Abra um lugar e clique em "Coletar avaliações".' });
+    el.jaOrdenado = etiqueta('Já ordenei por "Mais recentes"', () => {}, { dica: 'Marque se já ordenou a lista à mão. O script pula a etapa de ordenar.' });
+    el.pararConhecidas = etiqueta('Parar em 10 já coletadas seguidas', () => {}, { dica: 'A rolagem para ao achar 10 avaliações já coletadas em sequência: retoma de onde a última coleta parou.' });
     el.placeId = criar('input', { type: 'text', placeholder: 'place_id do B1 (se faltar na URL)' });
 
-    const seletorDe = criar('select', { onchange: (e) => { periodo.de = +e.target.value; atualizarFiltrosNaPagina(); } },
+    // ----- topo: período e ações principais -----
+    const seletorDe = criar('select', { onchange: (e) => { periodo.de = +e.target.value; reaplicar(); } },
       OPCOES_PERIODO.map(([v, t]) => criar('option', { value: v, textContent: t })));
-    const seletorAte = criar('select', { onchange: (e) => { periodo.ate = e.target.value === 'tudo' ? Infinity : +e.target.value; atualizarFiltrosNaPagina(); } },
+    const seletorAte = criar('select', { onchange: (e) => { periodo.ate = e.target.value === 'tudo' ? Infinity : +e.target.value; reaplicar(); } },
       [...OPCOES_PERIODO.slice(1).map(([v, t]) => criar('option', { value: v, textContent: t })), criar('option', { value: 'tudo', textContent: 'sem limite' })]);
     seletorAte.value = '30';
 
-    const bColetar = botao('Coletar avaliações', () => executar(async () => {
+    const bColetar = botaoTexto('arrow-down-tray', 'Coletar avaliações', () => executar(async () => {
       const motivo = await coletar();
       if (prefs.autobaixar && resultado.length) baixar(resultado, 'tudo');
       if (motivo === 'ordem errada' || motivo === 'lista não encontrada') throw new Error(MSG_MOTIVO[motivo]);
-    }, { avisar: true }));
-    const bLocalizar = botao('Localizar período', () => executar(localizarPeriodo));
-    const bRecuperar = botao('Recuperar última coleta', recuperarAndamento);
-    el.parar = botao('Parar', () => { parar = true; status('Parando…'); });
-    el.parar.disabled = true;
+    }, { avisar: true }), 'primario');
+    el.parar = botaoIcone('stop', 'Parar', () => { parar = true; status('Parando…'); }, 'parar');
+    const bLocalizar = botaoIcone('calendar-days', 'Localizar o período na lista (rola até a primeira avaliação dele)', () => executar(localizarPeriodo));
 
-    const seletorOpiniao = criar('select', { onchange: (e) => { filtros.opiniao = e.target.value; atualizarFiltrosNaPagina(); } }, [
-      criar('option', { value: '', textContent: 'qualquer' }),
-      criar('option', { value: 'positiva', textContent: 'positiva (nota 5 + palavra positiva)' }),
-      criar('option', { value: 'negativa', textContent: 'negativa (nota ≤ 4 + palavra negativa)' }),
-    ]);
-    const busca = criar('input', { type: 'search', placeholder: 'Busca no texto (ex.: rodízio|couvert)',
-      oninput: (e) => { filtros.busca = lerBusca(e.target.value); atualizarFiltrosNaPagina(); } });
+    const bCsv = (texto, dica, fn) => botaoTexto('arrow-down-tray', texto, fn, 'mini', dica);
 
-    const legenda = criar('div', { className: 'legenda contador' }, ['Destaques: ',
-      criar('span', { textContent: 'tema', style: `background:${CORES.tema}` }), ' ',
-      criar('span', { textContent: 'positiva', style: `background:${CORES.positiva}` }), ' ',
-      criar('span', { textContent: 'negativa', style: `background:${CORES.negativa}` }), ' ',
-      criar('span', { textContent: 'busca', style: `background:${CORES.busca}` }), ' negação sublinhada']);
+    // ----- filtros -----
+    let timerBusca = 0;
+    const campoBusca = criar('input', { type: 'search', placeholder: 'Buscar no texto (aceita regex)' });
+    campoBusca.setAttribute('aria-label', 'Buscar no texto');
+    campoBusca.oninput = () => {
+      clearTimeout(timerBusca);
+      timerBusca = setTimeout(() => { filtros.busca = lerBusca(campoBusca.value); reaplicar(); }, 200);
+    };
+    // Enter vai ao próximo, Shift+Enter ao anterior (como o "localizar" do navegador).
+    campoBusca.onkeydown = (e) => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      clearTimeout(timerBusca);
+      filtros.busca = lerBusca(campoBusca.value);
+      navegarFiltrados(e.shiftKey ? -1 : 1);
+    };
 
-    const filtrosUI = criar('details', { open: true }, [
-      criar('summary', { textContent: 'Filtros' }),
-      criar('div', { className: 'titulo', textContent: 'Tema mencionado (qualquer um)' }),
-      criar('div', {}, Object.keys(TEMAS).map((k) => caixa(ROTULO_TEMA[k], alternar(filtros.temas, k)))),
-      criar('div', { className: 'linha' }, [criar('span', { className: 'titulo', textContent: 'Opinião' }), seletorOpiniao]),
-      criar('div', { className: 'titulo', textContent: 'Componentes (todos os marcados)' }),
-      criar('div', {}, Object.entries(COMPONENTES).map(([k, [rotulo]]) => caixa(rotulo, alternar(filtros.componentes, k)))),
-      criar('div', { className: 'linha' }, [busca]),
-      caixa('Esmaecer na página o que fica fora do período e dos filtros', (m) => { filtros.esmaecer = m; }, ''),
-      caixa('Destacar as palavras que acionaram o filtro', (m) => { filtros.destacar = m; }, '', true),
-      legenda,
-      el.contador,
-    ]);
+    const tagsTema = Object.keys(TEMAS).map((k) => etiqueta(ROTULO_TEMA[k], alternar(filtros.temas, k)));
+    const dicasComp = {
+      cardapio: 'Tem foto e o texto cita cardápio, menu, preço ou valor.',
+      aspectos: 'Notas de comida, serviço ou ambiente que o Google mostra no cartão.',
+      nova: 'O review_id ainda não está no registro de coletas deste lugar.',
+    };
+    const rotulosComp = { aspectos: 'notas por aspecto' };
+    const tagsComp = Object.entries(COMPONENTES).map(([k, [rotulo]]) =>
+      etiqueta(rotulosComp[k] || rotulo, alternar(filtros.componentes, k), { dica: dicasComp[k] || '' }));
 
-    el.fila = criar('textarea', { placeholder: 'Fila: uma URL do Maps ou um place_id por linha' });
-    const bFila = botao('Iniciar fila', iniciarFila);
-    const bContinuarFila = botao('Continuar fila', continuarFila);
-    const bResumo = botao('CSV-resumo (histórico)', () => baixarResumo(GM_getValue(CHAVE_RESUMOS, []), 'historico'));
-    const bLimparResumo = botao('Limpar histórico', () => {
-      if (confirm('Apagar o histórico de resumos? Exporte antes.')) { GM_setValue(CHAVE_RESUMOS, []); status('Histórico de resumos apagado.'); }
+    const DICAS_OPINIAO = {
+      positiva: 'Nota 5 e ao menos uma palavra positiva no texto (ou negação de uma negativa, como "não foi caro"). A negação vale para até 3 palavras antes, na mesma oração.',
+      negativa: 'Nota 4 ou menos e ao menos uma palavra negativa no texto (ou negação de uma positiva, como "não foi bom"). A negação vale para até 3 palavras antes, na mesma oração.',
+    };
+    const pills = [['', 'Todas'], ['positiva', 'Positivas'], ['negativa', 'Negativas']].map(([v, t]) => {
+      const b = criar('button', { type: 'button', className: 'pill', onclick: () => { filtros.opiniao = v; pintarPills(); reaplicar(); } }, [t]);
+      b.setAttribute('role', 'tab');
+      b.dataset.valor = v;
+      if (DICAS_OPINIAO[v]) b.appendChild(ajuda(DICAS_OPINIAO[v], `O que conta como ${t.toLowerCase()}`));
+      return b;
     });
-    const bEsquecer = botao('Esquecer ids deste lugar', () => {
+    const pintarPills = () => pills.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.valor === filtros.opiniao)));
+    pintarPills();
+    const grupoPills = criar('div', { className: 'pills' }, pills);
+    grupoPills.setAttribute('role', 'tablist');
+
+    const limparFiltros = () => {
+      filtros.temas.clear(); filtros.componentes.clear(); filtros.opiniao = ''; filtros.busca = null;
+      campoBusca.value = '';
+      for (const t of [...tagsTema, ...tagsComp]) t.checked = false;
+      pintarPills();
+      reaplicar();
+      status('Filtros limpos.');
+    };
+
+    el.contagem = criar('span', { className: 'selo', title: 'Carregadas na página que passam no período e nos filtros' });
+    el.navPos = criar('span', { className: 'pos' });
+    const filtrosUI = secao('filtros', [
+      'Filtros', el.contagem, criar('span', { className: 'esp' }), el.navPos,
+      botaoIcone('chevron-up', 'Comentário anterior que passa nos filtros (Shift+Enter na busca)', naoAlterna(() => navegarFiltrados(-1))),
+      botaoIcone('chevron-down', 'Próximo comentário que passa nos filtros (Enter na busca)', naoAlterna(() => navegarFiltrados(1))),
+    ], [
+      criar('div', { className: 'linha' }, [
+        criar('label', { className: 'busca' }, [icone('magnifying-glass'), campoBusca]),
+        botaoIcone('x-mark', 'Limpar todos os filtros', limparFiltros, 'leve'),
+      ]),
+      criar('div', { className: 'subtitulo' }, ['Tema', ajuda('Passa se qualquer um dos temas marcados aparecer no texto (lista de palavras-chave).')]),
+      criar('div', { className: 'tags' }, tagsTema),
+      criar('div', { className: 'subtitulo' }, ['Opinião']),
+      grupoPills,
+      criar('div', { className: 'subtitulo' }, ['Componentes', ajuda('Passa só se tiver todos os marcados.')]),
+      criar('div', { className: 'tags' }, tagsComp),
+      criar('div', { className: 'subtitulo' }, ['Na página']),
+      criar('div', { className: 'tags' }, [
+        etiqueta('Esmaecer o que fica fora', (v) => { filtros.esmaecer = v; reaplicar(); }, { dica: 'Deixa translúcidas na página as avaliações fora do período e dos filtros.' }),
+        etiqueta('Destacar palavras', (v) => { filtros.destacar = v; reaplicar(); }, { ligada: true, dica: legendaDestaques }),
+      ]),
+    ]);
+
+    // ----- retomada, fila e histórico -----
+    el.fila = criar('textarea', { placeholder: 'Uma URL do Maps ou um place_id por linha' });
+    const bRecuperar = botaoIcone('arrow-uturn-left', 'Recuperar a última coleta salva', recuperarAndamento);
+    const bEsquecer = botaoIcone('trash', 'Esquecer os ids já coletados deste lugar', () => {
       const chave = chaveLugar(infoLugar());
       if (chave && confirm(`Esquecer os review_id já coletados de ${infoLugar().nome_estabelecimento}? A conferência deles deixa de achar o lugar.`)) {
-        GM_deleteValue(PREFIXO_LUGAR + chave); atualizarIdsConhecidos(true); atualizarFiltrosNaPagina(); status('Ids esquecidos.');
+        GM_deleteValue(PREFIXO_LUGAR + chave); atualizarIdsConhecidos(true); reaplicar(); status('Ids esquecidos.');
       }
-    });
-    const retomadaUI = criar('details', {}, [
-      criar('summary', { textContent: 'Retomada, fila e resumo' }),
-      criar('label', {}, [el.pararConhecidas, ' Parar ao encontrar 10 já coletadas seguidas']),
-      criar('div', { className: 'linha' }, [bRecuperar, bEsquecer]),
+    }, 'perigo');
+    const bFila = botaoIcone('play', 'Iniciar a fila', iniciarFila);
+    const bContinuarFila = botaoIcone('forward', 'Continuar a fila de onde parou', continuarFila);
+    const bResumo = botaoIcone('document-chart-bar', 'CSV-resumo do histórico de coletas', () => baixarResumo(GM_getValue(CHAVE_RESUMOS, []), 'historico'));
+    const bLimparResumo = botaoIcone('trash', 'Limpar o histórico de resumos', () => {
+      if (confirm('Apagar o histórico de resumos? Exporte antes.')) { GM_setValue(CHAVE_RESUMOS, []); status('Histórico de resumos apagado.'); }
+    }, 'perigo');
+    el.filaSelo = criar('span', { className: 'selo' });
+    const retomadaUI = secao('retomada', ['Retomada, fila e resumo', el.filaSelo], [
+      criar('div', { className: 'tags' }, [el.pararConhecidas]),
+      criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', textContent: 'Coleta salva' }), criar('span', { className: 'esp' }), bRecuperar, bEsquecer]),
+      criar('div', { className: 'subtitulo' }, ['Fila', ajuda('O script abre cada lugar, coleta, baixa o CSV de tudo e espera 20–40 s antes do próximo. No fim, baixa o CSV-resumo da fila. "Parar" pausa; continuar retoma do lugar em que parou.')]),
       el.fila,
-      criar('div', { className: 'linha' }, [bFila, bContinuarFila]),
-      criar('div', { className: 'linha' }, [bResumo, bLimparResumo]),
+      criar('div', { className: 'linha' }, [bFila, bContinuarFila, criar('span', { className: 'esp' }),
+        criar('span', { className: 'rotulo', textContent: 'Histórico' }), bResumo, bLimparResumo]),
     ]);
 
-    el.confIds = criar('textarea', { placeholder: 'Conferência: review_id sorteados, um por linha' });
-    el.confInfo = criar('p', { className: 'info' });
-    el.confAbrir = botao('Abrir lugar', abrirLugarConferido);
-    const bAchar = botao('Achar na página', () => executar(acharConferida));
-    const conferenciaUI = criar('details', { ontoggle: mostrarConferencia }, [
-      criar('summary', { textContent: 'Conferência de fidelidade' }),
+    // ----- conferência -----
+    el.confIds = criar('textarea', { placeholder: 'review_id sorteados, um por linha' });
+    el.confInfo = criar('div', { className: 'info' });
+    el.confPos = criar('span', { className: 'pos' });
+    el.confSelo = criar('span', { className: 'selo', title: 'Marcadas / sorteadas' });
+    el.confAbrir = botaoIcone('arrow-top-right-on-square', 'Abrir o lugar desta avaliação', abrirLugarConferido);
+    const bAchar = botaoIcone('magnifying-glass', 'Achar na página', () => executar(acharConferida));
+    const conferenciaUI = secao('conferencia', ['Conferência de fidelidade', el.confSelo], [
       el.confIds,
-      criar('div', { className: 'linha' }, [botao('Começar', iniciarConferencia), botao('◀', () => moverConferencia(-1)), botao('▶', () => moverConferencia(1))]),
-      el.confInfo,
-      criar('div', { className: 'linha' }, [el.confAbrir, bAchar]),
-      criar('div', { className: 'linha' }, [botao('✓ confere', () => marcarConferencia('confere')), botao('✗ diverge', () => marcarConferencia('diverge'))]),
-      criar('div', { className: 'linha' }, [botao('CSV da conferência', baixarConferencia)]),
-    ]);
-
-    const salUI = criar('details', {}, [
-      criar('summary', { textContent: 'Sal da pseudonimização' }),
-      criar('p', { className: 'contador', textContent: 'Guarde uma cópia: sem o mesmo sal, o mesmo autor recebe outro código.' }),
       criar('div', { className: 'linha' }, [
-        botao('Copiar sal', () => { prompt('Sal atual (copie e guarde):', sal()); }),
-        botao('Importar sal', () => {
+        botaoTexto('play', 'Começar', iniciarConferencia, 'mini'),
+        criar('span', { className: 'esp' }),
+        botaoIcone('chevron-left', 'Anterior', () => moverConferencia(-1), 'leve'), el.confPos,
+        botaoIcone('chevron-right', 'Próxima', () => moverConferencia(1), 'leve'),
+      ]),
+      el.confInfo,
+      criar('div', { className: 'linha' }, [
+        el.confAbrir, bAchar, criar('span', { className: 'esp' }),
+        botaoIcone('check', 'Confere', () => marcarConferencia('confere'), 'verde'),
+        botaoIcone('x-mark', 'Diverge', () => marcarConferencia('diverge'), 'vermelho'),
+        botaoIcone('document-check', 'CSV da conferência', baixarConferencia),
+      ]),
+    ], mostrarConferencia);
+
+    // ----- sal -----
+    el.salResumo = criar('span', { className: 'mono', title: 'Início e fim do sal atual, para conferir se é o mesmo nos dois domínios' });
+    const pintarSal = () => { const s = sal(); el.salResumo.textContent = `${s.slice(0, 4)}…${s.slice(-4)}`; };
+    const salUI = secao('sal', ['Sal da pseudonimização', ajuda('Guarde uma cópia: sem o mesmo sal, o mesmo autor recebe outro código no CSV.')], [
+      criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', textContent: 'Sal atual' }), el.salResumo, criar('span', { className: 'esp' }),
+        botaoIcone('document-duplicate', 'Copiar o sal', async () => {
+          try { await navigator.clipboard.writeText(sal()); status('Sal copiado. Guarde-o fora do navegador.', 'ok'); }
+          catch (_) { prompt('Sal atual (copie e guarde):', sal()); }
+        }),
+        botaoIcone('arrow-down-on-square', 'Importar um sal', () => {
           const novo = (prompt('Cole o sal (32 caracteres hexadecimais):') || '').trim().toLowerCase();
           if (!novo) return;
-          if (!/^[0-9a-f]{32}$/.test(novo)) { status('Sal inválido: são 32 caracteres de 0-9 e a-f.'); return; }
+          if (!/^[0-9a-f]{32}$/.test(novo)) { status('Sal inválido: são 32 caracteres de 0-9 e a-f.', 'erro'); return; }
           if (novo !== sal() && !confirm('Trocar o sal muda os códigos das próximas coletas. Continuar?')) return;
           GM_setValue(CHAVE_SAL, novo);
           pseudonimos.clear();
-          status('Sal importado.');
+          pintarSal();
+          status('Sal importado.', 'ok');
         }),
       ]),
     ]);
+    pintarSal();
+
+    // ----- lista dos comentários filtrados -----
+    el.lista = criar('div', { className: 'lista' });
+    el.listaContagem = criar('span', { className: 'selo' });
+    el.listaUI = secao('lista', ['Comentários filtrados', el.listaContagem], [el.lista],
+      () => { chaveListaFiltrados = ''; reaplicar(); });
 
     el.acoes = [bColetar, bLocalizar, bRecuperar, bFila, bContinuarFila, bAchar];
 
-    const minimizar = criar('span', { textContent: '–' });
-    const cabecalho = criar('header', {}, [criar('span', { textContent: 'Avaliações do Maps' }), minimizar]);
+    const bMin = botaoIcone('minus', 'Minimizar', null, 'leve');
+    const cabecalho = criar('header', {}, [
+      criar('span', { className: 'nome', textContent: 'Avaliações do Maps' }),
+      alternaPref('som', 'Som ao concluir', 'bell', 'bell-slash'),
+      alternaPref('autobaixar', 'Download automático do CSV', 'arrow-down-tray', 'arrow-down-tray'),
+      bMin,
+    ]);
     const painel = criar('div', { id: 'painel' }, [
       cabecalho,
-      criar('div', { className: 'linha' }, [toggle('🔔 Som ao concluir', 'som'), toggle('⬇ Download automático', 'autobaixar')]),
-      criar('div', { className: 'linha' }, ['Período: de', seletorDe, 'até', seletorAte]),
-      criar('label', {}, [el.jaOrdenado, ' Já ordenei por "Mais recentes"']),
-      criar('div', { className: 'linha' }, [bColetar, el.parar]),
-      criar('div', { className: 'linha' }, [bLocalizar]),
-      filtrosUI,
-      criar('div', { className: 'linha' }, [
-        botao('CSV do período (com texto)', () => baixar(resultado.filter((r) => noPeriodo(r) && r.tem_texto === 'sim'), 'periodo')),
-        botao('CSV dos filtros', () => baixar(resultado.filter(passaFiltros), 'filtros')),
-        botao('CSV de tudo', () => baixar(resultado, 'tudo')),
+      criar('div', { className: 'linha periodo' }, [
+        criar('span', { className: 'rotulo' }, ['Período', ajuda('Idade pelo rótulo do Google (semana = 7 dias, mês = 30, ano = 365). "Até 1 mês" inclui todo o rótulo "um mês atrás" (30 a 59 dias).')]),
+        seletorDe, criar('span', { className: 'suave', textContent: 'até' }), seletorAte,
       ]),
-      criar('div', { className: 'linha' }, [el.placeId]),
+      criar('div', { className: 'tags' }, [el.jaOrdenado]),
+      criar('div', { className: 'linha' }, [bColetar, el.parar, bLocalizar]),
+      el.status,
+      criar('div', { className: 'linha' }, [
+        criar('span', { className: 'rotulo', textContent: 'CSV' }),
+        bCsv('período', 'Avaliações do período com texto', () => baixar(resultado.filter((r) => noPeriodo(r) && r.tem_texto === 'sim'), 'periodo')),
+        bCsv('filtros', 'Avaliações que passam no período e nos filtros', () => baixar(resultado.filter(passaFiltros), 'filtros')),
+        bCsv('tudo', 'Todas as avaliações lidas', () => baixar(resultado, 'tudo')),
+      ]),
+      criar('div', { className: 'linha' }, [el.placeId, ajuda('Use o place_id do B1 quando a URL não traz o identificador. Ele entra no CSV.')]),
+      filtrosUI,
       retomadaUI,
       conferenciaUI,
       salUI,
-      el.status,
+      el.listaUI,
     ]);
-    cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.textContent = painel.classList.contains('min') ? '+' : '–'; };
+    const minimizar = () => {
+      painel.classList.toggle('min');
+      const min = painel.classList.contains('min');
+      bMin.replaceChildren(icone(min ? 'plus' : 'minus'));
+      bMin.title = min ? 'Expandir' : 'Minimizar';
+      bMin.setAttribute('aria-label', bMin.title);
+      fecharDica();
+    };
+    bMin.onclick = minimizar;
+    cabecalho.querySelector('.nome').onclick = minimizar;
     painel.addEventListener('click', liberarAudio);
+    painel.addEventListener('scroll', fecharDica);
+    // As teclas digitadas no painel não chegam aos atalhos do Maps.
+    for (const tipo of ['keydown', 'keyup', 'keypress']) painel.addEventListener(tipo, (e) => {
+      if (tipo === 'keydown' && e.key === 'Escape') fecharDica();
+      e.stopPropagation();
+    });
     el.painel = painel;
+
+    el.dica = criar('div', { className: 'dica', hidden: true });
+    el.dica.setAttribute('role', 'tooltip');
+    addEventListener('keydown', (e) => { if (e.key === 'Escape') fecharDica(); });
+    addEventListener('scroll', () => { if (!dicaFixa) fecharDica(); }, true);
+    addEventListener('click', (e) => { if (dicaAncora && !e.composedPath().includes(dicaAncora)) fecharDica(); });
 
     hospedeiro = criar('div', { id: 'tcc-avaliacoes-hospedeiro' });
     const raiz = hospedeiro.attachShadow({ mode: 'open' });
     raiz.appendChild(criar('style', { textContent: CSS }));
     raiz.appendChild(painel);
+    raiz.appendChild(el.dica);
     atualizarBotoes();
+    mostrarConferencia();
   }
 
   function posicionarPainel() {
@@ -1409,6 +1847,13 @@
     }
   }
 
+  // Selo da fila no cabeçalho da seção: posição quando há fila em curso ou pausada.
+  function atualizarSeloFila() {
+    const fila = GM_getValue(CHAVE_FILA, null);
+    const texto = fila && fila.i < fila.itens.length ? `${fila.ativa ? 'fila' : 'pausada'} ${fila.i}/${fila.itens.length}` : '';
+    if (el.filaSelo.textContent !== texto) el.filaSelo.textContent = texto;
+  }
+
   function garantirPainel() {
     if (!hospedeiro) montarPainel();
     if (!hospedeiro.isConnected) document.documentElement.appendChild(hospedeiro);
@@ -1419,20 +1864,21 @@
       if (ultimoLugar && !ocupado) { el.jaOrdenado.checked = false; el.placeId.value = ''; }
       ultimoLugar = nome;
     }
+    atualizarSeloFila();
     if (!ocupado && !el.painel.classList.contains('min')) atualizarFiltrosNaPagina();
   }
 
   function avisosAoAbrir() {
+    const conf = lerConf();
+    if (conf.ids.length) { el.confIds.value = conf.ids.join('\n'); mostrarConferencia(); }
     const fila = GM_getValue(CHAVE_FILA, null);
     if (fila && !fila.ativa && fila.i < fila.itens.length) {
       el.fila.value = fila.itens.map((x) => x.place_id || x.url).join('\n');
-      status(`Fila pausada em ${fila.i}/${fila.itens.length}. "Continuar fila" retoma do próximo lugar.`);
+      status(`Fila pausada em ${fila.i}/${fila.itens.length}. "Continuar fila" retoma do próximo lugar.`, 'alerta');
       return;
     }
     const a = GM_getValue(CHAVE_ANDAMENTO, null);
-    if (a?.motivo === 'em andamento') status(`A coleta de ${a.lugar.nome_estabelecimento} (${a.quando}) não terminou: ${a.linhas.length} avaliações salvas. Use "Recuperar última coleta".`);
-    const conf = lerConf();
-    if (conf.ids.length) el.confIds.value = conf.ids.join('\n');
+    if (a?.motivo === 'em andamento') status(`A coleta de ${a.lugar.nome_estabelecimento} (${a.quando}) não terminou: ${a.linhas.length} avaliações salvas. Use "Recuperar última coleta" em Retomada.`, 'alerta');
   }
 
   console.info('[Avaliações do Maps] carregado');

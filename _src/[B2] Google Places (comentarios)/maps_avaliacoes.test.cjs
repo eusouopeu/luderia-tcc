@@ -25,7 +25,7 @@ function carregar(contexto = {}) {
     ...contexto,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Avaliações do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { infoLugar, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, montarLinhas, csv, COLS, salvarArquivo });})();';
+    + 'Object.assign(globalThis.__test, { infoLugar, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, montarLinhas, csv, COLS, salvarArquivo, proximoIndice });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_avaliacoes.user.js' });
   return ambiente.__test;
 }
@@ -87,4 +87,13 @@ test('dispara download do CSV criado', () => {
   carregar({ document }).salvarArquivo('avaliacoes.csv', 'review_id;texto\r\nr1;bom');
   assert.equal(ancora.download, 'avaliacoes.csv');
   assert.equal(clicado, true);
+});
+
+test('navegação entre filtrados começa na ponta certa e dá a volta', () => {
+  const { proximoIndice } = carregar();
+  assert.equal(proximoIndice(5, -1, 1), 0);
+  assert.equal(proximoIndice(5, -1, -1), 4);
+  assert.equal(proximoIndice(5, 4, 1), 0);
+  assert.equal(proximoIndice(5, 0, -1), 4);
+  assert.equal(proximoIndice(5, 2, 1), 3);
 });
