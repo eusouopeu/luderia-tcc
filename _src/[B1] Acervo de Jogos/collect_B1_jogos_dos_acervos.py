@@ -24,6 +24,9 @@ A listagem do Acervo de Jogos traz mais nomes que a contagem de "títulos" da
 lista /companies (ex.: Bardo Mago, 588 contra 384): a listagem inclui
 expansões e grafias diferentes do mesmo jogo, e a contagem da lista não é
 documentada. Em `posicao`, o empate de aluguéis cai em ordem alfabética.
+Aluguel (`aluguel_rs`, `aluguel_dias`): preço e período do card de cada
+título no Acervo de Jogos e na rejoy; vale o da primeira cópia listada. O
+período varia entre casas (1, 3 ou 7 dias). Ludopedia e Covil não têm preço.
 """
 import csv
 import html
@@ -64,7 +67,7 @@ FONTES = {
     "Chef on Play": ("ludopedia", "chefonplay"),
     "Covil Game Bar": ("covil", ""),
 }
-CAMPOS = ["estabelecimento", "fonte", "url_fonte", "posicao", "jogo", "data_coleta"]
+CAMPOS = ["estabelecimento", "fonte", "url_fonte", "posicao", "jogo", "aluguel_rs", "aluguel_dias", "data_coleta"]
 
 
 def baixa(url, destino):
@@ -88,7 +91,15 @@ def acervodejogos(sub):
     jogos, pagina = [], 1
     while True:
         texto = baixa(f"{base}&page={pagina}", RAW / sub / f"p{pagina:02d}.html")
-        jogos += [limpa(n) for n in re.findall(r'line-clamp-2[^"]*" href="/boardgames/[^"]+">([^<]+)</a>', texto)]
+        # Cada card: título (link line-clamp-2) e, logo depois, "R$ X<span> / N dia(s)</span>".
+        for bloco in texto.split("line-clamp-2")[1:]:
+            nome = re.match(r'[^"]*" href="/boardgames/[^"]+">([^<]+)</a>', bloco)
+            if not nome:
+                continue
+            preco = re.search(r"R\$\s*([\d.,]+)\s*<span[^>]*>\s*/\s*(\d+)\s*dias?\s*</span>", bloco)
+            jogos.append((limpa(nome.group(1)),
+                          float(preco.group(1).replace(".", "").replace(",", ".")) if preco else None,
+                          int(preco.group(2)) if preco else None))
         if f"page={pagina + 1}&amp;sort=mais_alugados" not in texto:
             return base, jogos
         pagina += 1
@@ -118,7 +129,10 @@ def rejoy(sub):
     while True:
         dados = nuxt(baixa(f"{base}?page={pagina}", RAW / sub / f"p{pagina:02d}.html"))
         bloco = next(v for k, v in dados.items() if k.startswith("boardgames"))
-        jogos += [limpa(j["name"]) for j in bloco["data"]]
+        for j in bloco["data"]:
+            precos = ((j.get("price_category") or {}).get("prices") or [{}])[0] or {}
+            jogos.append((limpa(j["name"]),
+                          float(precos["price"]) if precos.get("price") else None, precos.get("days")))
         if pagina >= bloco["meta"]["last_page"]:
             return base, jogos
         pagina += 1
@@ -127,12 +141,12 @@ def rejoy(sub):
 def ludopedia(chave):
     arq = RAW / f"ludopedia_{chave}.txt"
     linhas = arq.read_text(encoding="utf-8").splitlines()
-    return linhas[0], [limpa(x) for x in linhas[1:] if x.strip()]
+    return linhas[0], [(limpa(x), None, None) for x in linhas[1:] if x.strip()]
 
 
 def covil():
     with open(COVIL, encoding="utf-8") as f:
-        return str(COVIL.relative_to(ROOT)), [limpa(x["jogo"]) for x in csv.DictReader(f, delimiter=";")]
+        return str(COVIL.relative_to(ROOT)), [(limpa(x["jogo"]), None, None) for x in csv.DictReader(f, delimiter=";")]
 
 
 def main():
@@ -148,12 +162,13 @@ def main():
         else:
             url, jogos = covil()
         vistos = set()
-        for j in jogos:
+        for j, preco, dias in jogos:
             if j.casefold() in vistos:
                 continue
             vistos.add(j.casefold())
             saida.append({"estabelecimento": est, "fonte": fonte, "url_fonte": url,
-                          "posicao": len(vistos), "jogo": j, "data_coleta": data})
+                          "posicao": len(vistos), "jogo": j, "aluguel_rs": preco,
+                          "aluguel_dias": dias, "data_coleta": data})
         print(f"{est}: {len(vistos)} títulos ({len(jogos)} na listagem)", file=sys.stderr)
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     with open(SAIDA, "w", newline="", encoding="utf-8") as f:
