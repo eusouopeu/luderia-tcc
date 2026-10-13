@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de avaliações do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.13-2
+// @version      2026.10.13-3
 // @description  Abre as avaliações de um lugar, ordena por mais recentes, rola até o fim do período, expande os textos (no idioma original), filtra por tema, opinião, componentes e busca, salva o progresso, coleta em fila, confere amostras e exporta CSV com autor pseudonimizado.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -307,12 +307,14 @@
 
   function infoLugar() {
     const url = location.href;
-    const resumo = document.querySelector('div.F7nice')?.innerText || '';
+    const painelLugar = document.querySelector('[role="main"]');
+    const resumo = document.querySelector('div.F7nice')?.innerText || painelLugar?.innerText || '';
     const volume = (resumo.match(/\(([\d.,\s]+)\)/) || resumo.match(/([\d.]+)\s+(?:avalia|review)/i) || [])[1] || '';
     return {
       place_id: (url.match(/!19s(ChIJ[\w-]+)/) || url.match(/place_id:(ChIJ[\w-]+)/) || [])[1] || placeIdFila || el.placeId?.value.trim() || '',
       id_maps: (url.match(/!1s(0x[0-9a-f]+:0x[0-9a-f]+)/i) || [])[1] || '',
-      nome_estabelecimento: document.querySelector('h1.DUwDvf, div[role="main"] h1')?.innerText.trim() || '',
+      nome_estabelecimento: document.querySelector('h1.DUwDvf, div[role="main"] h1')?.innerText.trim()
+        || painelLugar?.getAttribute('aria-label')?.trim() || '',
       avaliacao_media_estabelecimento: (resumo.match(/(\d[.,]\d)/) || [])[1]?.replace(',', '.') || '',
       volume_avaliacoes_estabelecimento: volume.replace(/\D/g, ''),
     };
@@ -327,40 +329,62 @@
   const cartaoPorId = (id) => cartoes().find((c) => c.dataset.reviewId === id) || null;
 
   function rolavel(de) {
+    let candidato = null;
     for (let e = de; e && e !== document.body; e = e.parentElement) {
       const cs = getComputedStyle(e);
-      if (/(auto|scroll)/.test(cs.overflowY) && e.scrollHeight > e.clientHeight + 20) return e;
+      if (!/(auto|scroll)/.test(cs.overflowY)) continue;
+      if (e.scrollHeight > e.clientHeight + 20) return e;
+      // No começo a lista pode ter poucos cartões e ainda não transbordar.
+      if (!candidato) candidato = e;
     }
-    return null;
+    return candidato;
   }
 
+  const textoControle = (e) => (e.innerText || e.textContent || e.getAttribute('aria-label') || '').trim();
+
   async function abrirAbaAvaliacoes() {
-    const aba = [...document.querySelectorAll('button[role="tab"]')].find((b) => /avalia|reviews/i.test(b.innerText || b.getAttribute('aria-label')));
-    if (aba && aba.getAttribute('aria-selected') !== 'true') { aba.click(); await esperar(2500); }
+    const botoes = [...document.querySelectorAll('button, [role="tab"]')]
+      .filter((b) => !b.closest('[data-review-id]'));
+    const aba = botoes.find((b) => /^(avaliações|reviews)$/i.test(textoControle(b)))
+      || botoes.find((b) => /\b(avaliações|reviews)\b/i.test(textoControle(b))
+        && !/classificar|ordenar|sort|escrever|write/i.test(textoControle(b)));
+    if (!aba) return cartoes().length > 0;
+    if (aba.getAttribute('aria-selected') !== 'true') aba.click();
+    return aguardar(() => cartoes().length > 0, 10000);
   }
 
   async function ordenarRecentes() {
-    const botao = [...document.querySelectorAll('button')].find((b) => /classificar avalia|ordenar|sort reviews/i.test(b.getAttribute('aria-label') || '') || b.dataset.value === 'Ordenar');
+    const botao = [...document.querySelectorAll('button, [role="button"]')].find((b) =>
+      !b.closest('[data-review-id]') && (/classificar avalia|ordenar|sort reviews|sort by/i.test(textoControle(b))
+        || b.dataset.value === 'Ordenar'));
     if (!botao) return false;
     botao.click();
-    await esperar(1200);
-    const opcao = [...document.querySelectorAll('[role="menuitemradio"], [role="menuitem"]')].find((o) => /recentes|newest/i.test(o.innerText));
+    await aguardar(() => [...document.querySelectorAll('[role="menuitemradio"], [role="menuitem"], [role="option"]')]
+      .some((o) => /recentes|newest/i.test(textoControle(o))), 4000);
+    const opcao = [...document.querySelectorAll('[role="menuitemradio"], [role="menuitem"], [role="option"]')]
+      .find((o) => /recentes|newest/i.test(textoControle(o)));
     if (!opcao) { document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })); return false; }
     opcao.click();
-    await esperar(3000);
+    await esperar(1200);
     return true;
   }
 
   // Clica em "Mais" e em "Ver original" (para ler o texto no idioma do autor).
   async function expandirTextos() {
     let n = 0;
-    for (const b of document.querySelectorAll('div[data-review-id] button.w8nwRe, div[data-review-id] button[aria-label="Ver mais"], div[data-review-id] button[aria-label="See more"]')) {
-      b.click();
-      n++;
+    for (const c of cartoes()) {
+      for (const b of c.querySelectorAll('button, [role="button"]')) {
+        const rotulo = textoControle(b);
+        if (/^(mais|more|ver mais|see more)$/i.test(rotulo) || b.classList.contains('w8nwRe')) {
+          b.click();
+          n++;
+        }
+      }
     }
-    for (const b of document.querySelectorAll('div[data-review-id] button, div[data-review-id] [role="button"]')) {
-      if (b.dataset.tccOriginal) continue;
-      if (/^\s*(ver original|see original)/i.test(b.innerText || b.getAttribute('aria-label') || '')) {
+    for (const c of cartoes()) {
+      for (const b of c.querySelectorAll('button, [role="button"]')) {
+        if (b.dataset.tccOriginal) continue;
+        if (!/^(ver original|see original)/i.test(textoControle(b))) continue;
         b.dataset.tccOriginal = '1';
         b.click();
         n++;
@@ -487,7 +511,9 @@
     reg.url = location.href;
     reg.place_id = lugar.place_id || reg.place_id;
     for (const r of linhas) {
-      if (!reg.ids[r.review_id]) reg.ids[r.review_id] = [r.nota_avaliacao, r.data_relativa, r.texto_avaliacao.slice(0, 160), coletado_em];
+      if (!reg.ids[r.review_id] || (!reg.ids[r.review_id][2] && r.texto_avaliacao)) {
+        reg.ids[r.review_id] = [r.nota_avaliacao, r.data_relativa, r.texto_avaliacao.slice(0, 160), coletado_em];
+      }
     }
     GM_setValue(PREFIXO_LUGAR + chave, reg);
   }
@@ -702,7 +728,8 @@
       if (usarPeriodo && periodo.ate !== Infinity && ultimas.length === 5 && ultimas.every((d) => d !== '' && d > periodo.ate)) return 'passou do período';
       const volume = +infoLugar().volume_avaliacoes_estabelecimento;
       if (volume && cs.length >= volume) return 'fim da lista';
-      semCrescer = cs.length === ultimoN ? semCrescer + 1 : 0;
+      const noFim = caixa.scrollTop + caixa.clientHeight >= caixa.scrollHeight - 20;
+      semCrescer = cs.length === ultimoN && noFim ? semCrescer + 1 : 0;
       if (semCrescer >= 8) return 'lista parou de crescer';
       ultimoN = cs.length;
       if (semCrescer) {
@@ -710,6 +737,8 @@
         caixa.scrollBy(0, -400);
         await esperar(300);
       } else fator = 1;
+      // O Maps carrega mais avaliações quando o último cartão entra na viewport.
+      cs[cs.length - 1]?.scrollIntoView({ block: 'end' });
       caixa.scrollTo(0, caixa.scrollHeight);
       await esperar(sortear([1200, 2000]) * fator);
     }
@@ -730,11 +759,15 @@
     const lugar = infoLugar();
     if (!lugar.nome_estabelecimento) { status('Abra um lugar no Maps primeiro.'); return null; }
     status('Abrindo a aba de avaliações…');
-    await abrirAbaAvaliacoes();
+    if (!(await abrirAbaAvaliacoes())) {
+      status('Não consegui abrir as avaliações. Abra a lista no Maps e tente novamente.');
+      return null;
+    }
     if (!el.jaOrdenado.checked) {
       status('Ordenando por mais recentes…');
       if (!(await ordenarRecentes())) { status('Não consegui ordenar sozinho. Ordene por "Mais recentes", marque "Já ordenei" e clique de novo.'); return null; }
     }
+    await aguardar(() => cartoes().length > 0, 10000);
     const primeira = cartoes()[0];
     const caixa = primeira && rolavel(primeira);
     if (!caixa) { status('Lista de avaliações não encontrada (visualização limitada? entre na conta).'); return null; }
@@ -811,6 +844,13 @@
     const antes = new Set(idsConhecidos);
     const coletado_em = agora();
     let ultimoSalvo = 0;
+    const lidosPorId = new Map();
+    const guardarVisiveis = (cs) => {
+      for (const c of cs) {
+        const r = lerCartao(c);
+        if (r.review_id) lidosPorId.set(r.review_id, r);
+      }
+    };
 
     const pararNasConhecidas = el.pararConhecidas.checked && antes.size > 0;
     const motivo = await rolarLista(caixa, (cs) => {
@@ -819,9 +859,10 @@
       return fim.length === 10 && fim.every((c) => antes.has(c.dataset.reviewId)) ? 'alcançou coleta anterior' : null;
     }, {
       aCada: async (cs) => {
+        guardarVisiveis(cs);
         if (Date.now() - ultimoSalvo < 5000) return;
         ultimoSalvo = Date.now();
-        await salvarAndamento(infoLugar(), await montarLinhas(cs.map(lerCartao), infoLugar(), 'em andamento', coletado_em, antes), 'em andamento');
+        await salvarAndamento(infoLugar(), await montarLinhas([...lidosPorId.values()], infoLugar(), 'em andamento', coletado_em, antes), 'em andamento');
       },
     });
     await expandirTextos();
@@ -829,7 +870,8 @@
     await expandirTextos();
 
     const lugar = infoLugar();
-    const lidos = cartoes().map(lerCartao);
+    guardarVisiveis(cartoes());
+    const lidos = [...lidosPorId.values()];
     alertaSeletores = checarSeletores(lidos);
     resultado = await montarLinhas(lidos, lugar, motivo, coletado_em, antes);
     await salvarAndamento(lugar, resultado, motivo);
@@ -1336,7 +1378,7 @@
       criar('div', { className: 'linha' }, [bLocalizar]),
       filtrosUI,
       criar('div', { className: 'linha' }, [
-        botao('CSV do período (com texto)', () => baixar(resultado.filter((r) => r.no_periodo === 'sim' && r.tem_texto === 'sim'), 'periodo')),
+        botao('CSV do período (com texto)', () => baixar(resultado.filter((r) => noPeriodo(r) && r.tem_texto === 'sim'), 'periodo')),
         botao('CSV dos filtros', () => baixar(resultado.filter(passaFiltros), 'filtros')),
         botao('CSV de tudo', () => baixar(resultado, 'tudo')),
       ]),
