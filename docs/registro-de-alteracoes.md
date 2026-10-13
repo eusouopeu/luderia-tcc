@@ -428,3 +428,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: descrição abstrata: "uma fórmula viva (COUNTIFS) conta quantas da mesma urna têm bilhete menor" e "a soma dos n_h tem que dar o n total".
 **Depois**: dois exemplos numéricos: urna com 5 avaliações e 2 vagas, com a fórmula CONT.SES; divisão de 10 vagas entre 4 urnas, mostrando o arredondamento comum somando 11 e o método dos maiores restos fechando em 10.
 **Justificativa**: o autor não entendeu os dois passos.
+
+### 19:51
+**Objeto**: `_src/[B2] Google Places (comentarios)/build_B2_avaliacoes.py` (novo); `.gitignore`; `README.md` (linha do B2 no pipeline); saídas `B2_cobertura_coleta.csv`, `B2_fila_coleta.txt` e `B2_avaliacoes_periodo.csv` (fora do git)
+**Antes**: cada coleta do userscript ficava solta em `~/Downloads`; não havia script do B2 que juntasse as coletas, preenchesse o `place_id` ausente, conferisse a cobertura ou dissesse o que faltava coletar.
+**Depois**: o script move os CSV `_tudo` e `_resumo` para `_data/raw/[B2] Avaliacoes recentes/` (`coletas/` fora do git, por conter texto), liga cada coleta à luderia aprovada do B1 pelo cid do Maps (segunda parte do `id_maps` = `?cid=` do link do B1, conferido no BoardZ), deduplica por `review_id` ficando a coleta mais recente, aplica o recorte do método (até "3 meses atrás", idade ≤ 90 dias, levada à data da coleta mais recente), confere as somas (diferença zero) e classifica cada uma das 51 aprovadas em ok, refazer, conferir ou coletar. Os `place_id` a coletar ou refazer vão para `B2_fila_coleta.txt` e para a área de transferência, prontos para o campo Fila do userscript. Primeira execução: 2 ok (BoardZ, Bodogami), 49 a coletar, 758 avaliações no recorte (482 com texto). O CSV de Ludus Luderia em `~/Downloads` veio de uma página de teste (`localhost`), não do Maps, e foi devolvido à pasta.
+**Justificativa**: pedido do autor: reduzir o trabalho manual da coleta do B2 e conferir a cobertura de cada estabelecimento.
+
+### 19:51 — divergência
+**Objeto**: recorte do Bloco B2
+**Antes**: `CLAUDE.md` e `README.md`: avaliações até "um mês atrás".
+**Depois**: `_instrucoes/4_metodologia.md`: avaliações até "3 meses atrás", inclusive (registrado em 13/10/2026).
+**Efeitos colaterais**: `build_B2_avaliacoes.py` segue a metodologia (90 dias). Os dois arquivos mais antigos não foram corrigidos; aguardam pedido do autor.

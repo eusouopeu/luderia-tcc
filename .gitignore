@@ -53,3 +53,7 @@ _data/raw/\[B1\]*/lojas_venda/
 
 # Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/Web scripts/gerar_carregadores.py)
 _src/Web scripts/carregadores/
+
+# Bloco B2: coletas do userscript e base consolidada trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4); cobertura e fila são publicadas
+_data/raw/\[B2\]*/coletas/
+_data/processed/\[B2\]*/B2_avaliacoes_periodo.csv
