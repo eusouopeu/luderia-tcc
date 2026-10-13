@@ -19,6 +19,9 @@ Saídas em _data/processed/[B1] Estabelecimentos e cardapios/:
       capital_endereco: a capital da UF do endereço.
   B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv -
       curadoria filtrada das metrópoles só com volume de avaliações > 100.
+  B1_planilha_curadoria_metropoles_filtrada_50_ou_mais_avaliacoes.csv -
+      mesma curadoria filtrada com volume >= 50, para avaliar a expansão
+      da população (pedido do autor em 13/10/2026).
 
 Uso:
     python3 "_src/[B1] Google Places (estabelecimentos)/analise_B1_termos_suspeitos.py"
@@ -38,7 +41,9 @@ FILTRADAS = {
     "capitais_regionais": PROCESSED / "B1_planilha_curadoria_capitais_regionais_filtrada.csv",
 }
 OUT_METROPOLES_100_PATH = PROCESSED / "B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv"
+OUT_METROPOLES_50_PATH = PROCESSED / "B1_planilha_curadoria_metropoles_filtrada_50_ou_mais_avaliacoes.csv"
 MINIMO_AVALIACOES = 100  # estritamente maior que
+MINIMO_AVALIACOES_EXPANSAO = 50  # maior ou igual
 
 PLANILHAS = {
     "curadoria_metropoles": "B1_planilha_curadoria_metropoles.csv",
@@ -109,19 +114,22 @@ def main():
     for grupo, out_path in FILTRADAS.items():
         filtra(PROCESSED / PLANILHAS[f"curadoria_{grupo}"], out_path)
     filtra_volume(FILTRADAS["metropoles"], OUT_METROPOLES_100_PATH)
+    filtra_volume(FILTRADAS["metropoles"], OUT_METROPOLES_50_PATH, MINIMO_AVALIACOES_EXPANSAO, inclusivo=True)
 
 
-def filtra_volume(entrada, out_path):
+def filtra_volume(entrada, out_path, minimo=MINIMO_AVALIACOES, inclusivo=False):
     with open(entrada, newline="", encoding="utf-8") as f:
         leitor = csv.DictReader(f)
         colunas, linhas = leitor.fieldnames, list(leitor)
-    mantidas = [r for r in linhas if int(float(r["volume_avaliacoes"] or 0)) > MINIMO_AVALIACOES]
+    volume = lambda r: int(float(r["volume_avaliacoes"] or 0))  # noqa: E731
+    mantidas = [r for r in linhas if (volume(r) >= minimo if inclusivo else volume(r) > minimo)]
     mantidas.sort(key=lambda r: (r["capital_endereco"], -int(float(r["volume_avaliacoes"]))))
     with open(out_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=colunas)
         writer.writeheader()
         writer.writerows(mantidas)
-    print(f"OK: {out_path.name} - {len(mantidas)} de {len(linhas)} com mais de {MINIMO_AVALIACOES} avaliações")
+    criterio = f"{minimo} ou mais" if inclusivo else f"mais de {minimo}"
+    print(f"OK: {out_path.name} - {len(mantidas)} de {len(linhas)} com {criterio} avaliações")
 
 
 def filtra(entrada, out_path):

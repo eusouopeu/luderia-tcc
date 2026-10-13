@@ -279,3 +279,11 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: Status (calculado às 20:19): Chef on Play, Cineplay, Comdado, Covil, Encounter, Flow Games e Ludoteca BGC em "Coleta parcial"; Inside Games e Utopia em "Não coletado". Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria ausentes.
 **Depois**: A (21:42): os 9 com itens e preços extraídos dos prints, o que pelo critério da coluna é "Coleta completa"; as 5 luderias novas estão no A.
 **Efeitos colaterais**: o Status superestima o que falta coletar; a lista de pendências de cardápio deve sair do A, não do Status, até o Status ser recalculado.
+
+## 2026/10/13
+
+### 00:46
+**Objeto**: `_src/[B1] Google Places (estabelecimentos)/analise_B1_termos_suspeitos.py` e `_src/[B1] Acervo de Jogos/build_B1_acervodejogos_novas.py`; saídas novas `B1_planilha_curadoria_metropoles_filtrada_50_ou_mais_avaliacoes.csv` e `Acervo de Jogos/B1_acervodejogos_triagem_50_ou_mais_avaliacoes.csv`
+**Antes**: só o corte de mais de 100 avaliações: 164 candidatos na curadoria filtrada das metrópoles; 87 lojas do Acervo de Jogos triadas (31 já aprovadas, 51 descartadas, 5 novas).
+**Depois**: mesmos filtros (termos suspeitos, metrópole REGIC pelo endereço) com corte de 50 ou mais avaliações: 222 candidatos (164 + 58 na faixa de 50 a 100, sem triagem manual). Triagem do Acervo com 50+: 105 lojas (31 já aprovadas, 54 descartadas, 5 novas, 9 com triagem manual pendente por estarem na curadoria de 50+, 6 a conferir). As saídas de corte 100 não mudaram.
+**Justificativa**: pedido do autor, que avalia expandir a população para 50 ou mais avaliações.

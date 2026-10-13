@@ -15,6 +15,12 @@ Entrada: Acervo de Jogos/B1_acervodejogos_lojas.csv e B1_acervodejogos_places.cs
 Saída:   Acervo de Jogos/B1_acervodejogos_luderias_novas.csv (uma linha por luderia)
          Acervo de Jogos/B1_acervodejogos_triagem.csv (todas as lojas consultadas no
          Google com mais de 100 avaliações no recorte, com a decisão)
+         Acervo de Jogos/B1_acervodejogos_triagem_50_ou_mais_avaliacoes.csv (mesma
+         triagem com corte de 50 ou mais avaliações, para avaliar a expansão da
+         população; pedido do autor em 13/10/2026). Na faixa de 50 a 100, a loja
+         cujo place_id está na curadoria filtrada de 50+ ainda não passou pela
+         triagem manual do autor e fica "triagem manual pendente"; as demais sem
+         decisão registrada ficam "a conferir".
 """
 import csv
 import sys
@@ -26,7 +32,9 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "_src" / "[B1] Google Places (estabelecimentos)"))
 import recorte_rm as R  # noqa: E402
 
-PASTA = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios" / "Acervo de Jogos"
+PROC = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+PASTA = PROC / "Acervo de Jogos"
+CURADORIA_50 = PROC / "B1_planilha_curadoria_metropoles_filtrada_50_ou_mais_avaliacoes.csv"
 METROPOLES = {
     "São Paulo", "Brasília", "Rio de Janeiro", "Belém", "Belo Horizonte", "Curitiba",
     "Florianópolis", "Fortaleza", "Goiânia", "Porto Alegre", "Recife", "Salvador",
@@ -83,6 +91,8 @@ def main():
                       on="subdominio", how="left")
     df["vol"] = pd.to_numeric(df.volume_avaliacoes, errors="coerce").fillna(0)
     no_recorte = df.situacao_google.isin(R.SITUACOES_NO_RECORTE) & df.capital_google.isin(METROPOLES)
+    df["na_curadoria_50"] = df.place_id.isin(set(pd.read_csv(CURADORIA_50, dtype=str).place_id)).map(
+        {True: "sim", False: "não"})
     triagem = df[(df.vol > 100) & no_recorte].copy()
 
     def decide(r):
@@ -94,6 +104,8 @@ def main():
             return "descartada", DESCARTES[r.subdominio]
         if r.ja_na_curadoria == "sim":
             return "descartada", "place_id já passou pela curadoria e não foi aprovado"
+        if r.vol <= 100 and r.na_curadoria_50 == "sim":
+            return "triagem manual pendente", "place_id na curadoria filtrada de 50+; faixa de 50 a 100 sem triagem manual"
         if r.conferir == "sim":
             return "descartada", f"resultado do Google é outra casa (similaridade de nome {r.similaridade_nome})"
         return "a conferir", ""
@@ -103,6 +115,16 @@ def main():
             "endereco_google", "capital_google", "tipo_principal", "status_google", "ja_na_curadoria", "ja_aprovada",
             "decisao", "motivo"]
     triagem[cols].sort_values(["decisao", "capital_google"]).to_csv(PASTA / "B1_acervodejogos_triagem.csv", index=False)
+
+    triagem_50 = df[(df.vol >= 50) & no_recorte].copy()
+    triagem_50[["decisao", "motivo"]] = triagem_50.apply(lambda r: pd.Series(decide(r)), axis=1)
+    cols_50 = cols[:-2] + ["na_curadoria_50", "decisao", "motivo"]
+    triagem_50[cols_50].sort_values(["decisao", "capital_google"]).to_csv(
+        PASTA / "B1_acervodejogos_triagem_50_ou_mais_avaliacoes.csv", index=False)
+    contagem_50 = triagem_50.decisao.value_counts()
+    print("corte de 50 ou mais:\n" + contagem_50.to_string())
+    assert contagem_50.sum() == len(triagem_50)
+    print(f"total {len(triagem_50)} (soma das decisões = {contagem_50.sum()})\n")
 
     novas = []
     for r in triagem[triagem.decisao == "nova luderia"].itertuples():
