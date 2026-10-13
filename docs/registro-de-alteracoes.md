@@ -422,3 +422,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: abria os carregadores no Google Chrome, que não está instalado, e gravava o cabeçalho como instalado mesmo quando a abertura falhava.
 **Depois**: abre no Vivaldi, o navegador com o Tampermonkey (opção `--navegador` para outro); só marca como instalado o que abriu sem erro.
 **Justificativa**: a primeira execução falhou; o Firefox também tem o Tampermonkey, mas lá ele não lê `@require file:///`.
+
+### 15:41
+**Objeto**: `docs/estatidez.md`, seção 1, passos 5 e 6 do método da chave fixa
+**Antes**: descrição abstrata: "uma fórmula viva (COUNTIFS) conta quantas da mesma urna têm bilhete menor" e "a soma dos n_h tem que dar o n total".
+**Depois**: dois exemplos numéricos: urna com 5 avaliações e 2 vagas, com a fórmula CONT.SES; divisão de 10 vagas entre 4 urnas, mostrando o arredondamento comum somando 11 e o método dos maiores restos fechando em 10.
+**Justificativa**: o autor não entendeu os dois passos.

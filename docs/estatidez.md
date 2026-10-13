@@ -43,11 +43,53 @@ O `RAND()` (ALEATÓRIO, no Excel em português) não tem semente. E sorteia de n
 2. **Dar um bilhete para cada avaliação.** O script usa a semente para gerar um número entre 0 e 1 para cada review_id. Esse número é a **chave**. Ele é gravado na planilha como valor, e não como fórmula, para não mudar mais.
 3. **Separar em urnas (estratos).** Cada estabelecimento é uma urna. As avaliações de uma luderia só concorrem com as da mesma luderia.
 4. **Decidir quantas sair de cada urna** (o *n_h*). Isso é a parte de tamanho de amostra, nas seções 2 e 3.
-5. **Ganham os menores bilhetes de cada urna.** Uma fórmula viva (`COUNTIFS`) conta, para cada avaliação, quantas da mesma urna têm bilhete menor. Se essa contagem for menor que *n_h*, a avaliação entra na amostra.
-6. **Conferir o total:** a soma dos *n_h* tem que dar o *n* total, com diferença zero.
+5. **Ganham os menores bilhetes de cada urna.** Exemplo abaixo.
+6. **Conferir o total:** as quantidades das urnas somadas têm que dar o total da amostra. Exemplo abaixo.
 7. **Registrar antes de conferir:** commit da planilha com a data, antes da primeira conferência, do mesmo jeito que foi feito no sorteio das visitas do B3.
 
 O sorteio fica no passo 2 e é feito uma vez só. Toda a regra de quem entra (passos 3 a 6) fica à vista em fórmulas que você consegue auditar.
+
+#### Exemplo do passo 5: quem ganha numa urna
+
+A urna "Ludoteca" tem 5 avaliações, e dela devem sair 2 (*n_h* = 2; o *h* só indica "desta urna").
+
+| Avaliação | Bilhete | Quantas da mesma urna têm bilhete menor? | Entra? (contagem < 2) |
+|---|---|---|---|
+| A | 0,71 | 3 (C, E, B) | Não |
+| B | 0,55 | 2 (C, E) | Não |
+| C | 0,12 | 0 | **Sim** |
+| D | 0,93 | 4 | Não |
+| E | 0,40 | 1 (C) | **Sim** |
+
+A terceira coluna é a posição de cada avaliação na fila da urna, começando do zero: o menor bilhete tem 0 à frente, o segundo tem 1, o terceiro tem 2. "Contagem menor que 2" pega exatamente os dois primeiros da fila. Ganharam C e E, os dois menores bilhetes.
+
+Na planilha, a terceira coluna é uma fórmula. Com a urna na coluna B e o bilhete na coluna C:
+
+```
+=CONT.SES(B:B; B2; C:C; "<"&C2)      (Excel em inglês: COUNTIFS)
+```
+
+Lê-se: "conte as linhas cuja urna é igual à desta linha **e** cujo bilhete é menor que o desta linha". Uma coluna ao lado compara o resultado com o *n_h* da urna e mostra "sim" ou "não". Você confere qualquer linha à mão, como na tabela acima.
+
+#### Exemplo do passo 6: a soma tem que fechar
+
+A amostra total é de 10 avaliações (*n* = 10), divididas entre 4 urnas na proporção do tamanho de cada uma. A base tem 100 avaliações.
+
+| Urna | Avaliações | Fatia exata (10 × avaliações ÷ 100) | Arredondamento comum | Maiores restos |
+|---|---|---|---|---|
+| A | 17 | 1,7 | 2 | 2 |
+| B | 16 | 1,6 | 2 | 2 |
+| C | 15 | 1,5 | 2 | 1 |
+| D | 52 | 5,2 | 5 | 5 |
+| **Soma** | **100** | **10,0** | **11** ✗ | **10** ✓ |
+
+Com o arredondamento comum, a soma dá 11, e não 10: a amostra sairia maior do que o calculado, sem ninguém perceber. O **método dos maiores restos** evita isso:
+
+1. cada urna recebe a parte inteira da fatia: 1, 1, 1 e 5, somando 8;
+2. faltam 2 para chegar a 10;
+3. esses 2 vão para as urnas com a maior parte decimal (o "resto"): A (0,7) e B (0,6).
+
+A planilha tem uma linha de conferência: soma dos *n_h* menos *n*. O resultado tem que ser **zero**. É a mesma regra do projeto para qualquer tabela: as linhas somadas fecham com o total.
 
 ### Consequências para a pesquisa
 
