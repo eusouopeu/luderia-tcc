@@ -440,3 +440,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: `CLAUDE.md` e `README.md`: avaliações até "um mês atrás".
 **Depois**: `_instrucoes/4_metodologia.md`: avaliações até "3 meses atrás", inclusive (registrado em 13/10/2026).
 **Efeitos colaterais**: `build_B2_avaliacoes.py` segue a metodologia (90 dias). Os dois arquivos mais antigos não foram corrigidos; aguardam pedido do autor.
+
+### 19:58
+**Objeto**: recorte do Bloco B2 em `CLAUDE.md`, `README.md` e `_instrucoes/1_estrutura.md` (vocabulário controlado, "Velocidade de avaliações")
+**Antes**: avaliações até "um mês atrás".
+**Depois**: avaliações até "3 meses atrás", inclusive, como em `_instrucoes/4_metodologia.md`.
+**Justificativa**: o autor confirmou o recorte de 3 meses; resolve a divergência registrada às 19:51.

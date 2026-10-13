@@ -246,5 +246,5 @@ Cada termo é definido uma vez, no cap. 3 (ou na primeira ocorrência, se aparec
 | **Permanência** | Tempo entre a entrada e a saída de um grupo | duração da sessão, estadia |
 | **Giro** | Número de grupos que uma mesa recebe por dia (horas de funcionamento ÷ permanência média) | rotatividade |
 | **Ticket médio** | Gasto médio por pessoa por visita, em R$, com couvert e alimentos e bebidas. A árvore de direcionadores separa as duas partes: couvert lúdico e ticket médio de A&B | gasto médio, consumo médio, conta média |
-| **Velocidade de avaliações** | Avaliações com texto por mês, no recorte até "um mês atrás" | ritmo, frequência de avaliações |
+| **Velocidade de avaliações** | Avaliações com texto por mês, no recorte até "3 meses atrás", inclusive | ritmo, frequência de avaliações |
 | **Premissa crítica** | Uma das 3 a 5 premissas de maior impacto no VPL no tornado | premissa-chave, variável principal |

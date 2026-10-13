@@ -26,7 +26,7 @@ Ler este arquivo sempre. Ler os demais sob demanda, conforme a tarefa. A numera�
 - `arquivados/introducao_tcc_luderia.md` e `arquivados/metodologia_tcc_luderia.md` são do **desenho anterior** (pesquisa de mercado, hipóteses H1–H9): servem de insumo; hipóteses e testes vão para apêndice, salvo quando sustentam decisão do plano.
 - Pipeline: `_src/[Bn] Fonte/` → `_data/raw/[Bn] Nome/` → `_data/processed/[Bn] Nome/`. Scripts `<etapa>_Bn_<conteúdo>.py` (`collect` → `build` → `analise`), saídas `Bn_<conteúdo>`; cada script define `ROOT = Path(__file__).resolve().parents[2]` e roda de qualquer diretório. Detalhes em `_instrucoes/4_metodologia.md`. Blocos, em ordem de relevância:
   - **B1** — concorrentes com mais de 100 avaliações nas 14 metrópoles da REGIC (IBGE) e seus cardápios → concorrência, preço, ticket.
-  - **B2** — avaliações com texto publicadas até "um mês atrás" (rótulo do Google Maps na data da coleta) → proposta de valor, reclamações, ticket, fluxo.
+  - **B2** — avaliações com texto publicadas até "3 meses atrás", inclusive (rótulo do Google Maps na data da coleta) → proposta de valor, reclamações, ticket, fluxo.
   - **B3** — contagem direta nas duas unidades da São Jogue (Salvador), com leitura da NFC-e → ocupação, giro, calibração.
   - **B4** — bases públicas (IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA) → demanda, custos, tributos, taxa de desconto. Subpastas por uso definidas em `USOS` no `bases_comum.py`.
   - **B6** — histórico dos avaliadores; retirado em 18/09/2026.
