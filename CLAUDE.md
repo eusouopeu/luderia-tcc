@@ -1,6 +1,6 @@
 # CLAUDE.md — TCC Luderia
 
-TCC em formato **plano de negócios baseado em evidências** para uma luderia/ludobar/quiz-bar em **Salvador**, posicionada para o **público casual** (não-hobbyista). Cada decisão do plano é amarrada a um dado, e cada dado a uma fonte e a um grau de confiança (N1–N6).
+TCC em formato **plano de negócios baseado em evidências** para uma luderia/ludobar/quiz-bar em **Salvador**. Cada decisão do plano é amarrada a um dado, e cada dado a uma fonte e a um grau de confiança (N1–N6).
 
 ## Mapa dos arquivos de instrução
 

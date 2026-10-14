@@ -67,7 +67,7 @@ Antes de citar no texto final, conferir os dados bibliográficos completos (auto
 - 🔵 American Time Use Survey (BLS). Tempo diário em lazer, incluindo "jogar jogos", por idade e sexo (tabelas 11A/11B). Em 2024, jovens de 15 a 24 anos jogavam 0,86 h por dia; pessoas de 45 a 54 anos, 0,17 h. [Gráfico](https://www.bls.gov/charts/american-time-use/activity-leisure.htm)
 - 🔵 Eurostat, pesquisas harmonizadas de uso do tempo (HETUS). Tempo de lazer e vida social por sexo e idade em 18 a 20 países. [Link](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=How_do_women_and_men_use_their_time_-_statistics)
 - 🟡 Mintel UK, relatórios Hobbies & Interests (2025) e Leisure Time (2026). São pagos. [Link](https://store.mintel.com/report/uk-hobbies-and-interests-market-report)
-- 🟢 STEBBINS, Robert A. *Serious leisure: a perspective for our time*. Transaction, 2007. Distinção lazer sério × casual — base conceitual para hobbyista × casual (2.3). `[A VERIFICAR]`
+- 🟢 STEBBINS, Robert A. *Serious leisure: a perspective for our time*. Transaction, 2007. Distinção lazer sério × casual. Só como contexto: o recorte do público casual saiu do trabalho em 09/10/2026. `[A VERIFICAR]`
 
 ## 3. Estabelecimentos de lazer e entretenimento
 

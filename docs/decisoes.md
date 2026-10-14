@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 13/10/2026 | Público casual fora do objeto de pesquisa; retirado de instruções, introdução, projeto, cronograma, CLAUDE.md e README | `textos/capitulos/1_introducao_plano_luderia.md` |
+| 13/10/2026 | Horários das visitas planejados para o pico de fluxo provável, não sorteados: em cada unidade, sábado com entrada às 19h e domingo com entrada às 18h, 15 dias depois. A contagem mede o pico; a média do dia vem das notas fiscais | `_instrucoes/4_metodologia.md`, Bloco B3 |
 | 13/10/2026 | Cronograma num só arquivo (`textos/planejamento/cronograma_luderia.md`, com checklist por semana); o `.docx` é gerado na hora de enviar | `_src/gerar_docx_cronograma.js` |
 | 13/10/2026 | Commit e push uma vez por sessão de trabalho, não a cada arquivo | `CLAUDE.md`, "Versionamento" |
 | 13/10/2026 | Auditoria da coleta do B2: n = 200 avaliações, mínimo de 3 por estabelecimento, restante proporcional pelos maiores restos, chave aleatória com semente fixa | `_instrucoes/4_metodologia.md` §3.4; `docs/estatidez.md` |
@@ -13,9 +15,9 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 | 12/10/2026 | Testes de hipótese H1–H9 e Monte Carlo viram extras, só se sobrar tempo, em apêndice. O núcleo é validação, ponderação por estabelecimento, intervalo de confiança, premissas com faixa, três cenários, tornado e ponto de ruptura | `_instrucoes/4_metodologia.md`, "Escopo adotado" |
 | 12/10/2026 | Bloco B5 (jogos da Ludopedia) arquivado; o acervo sai dos jogos citados nas avaliações (B2) e do acervo declarado dos concorrentes (B1) | `arquivados/B5-jogos/LEIAME.md` |
 | 12/10/2026 | Blocos numerados B1 a B6, em ordem de relevância para o plano | `CLAUDE.md`, "Estado do projeto" |
-| 09/10/2026 | O recorte "público casual" sai de vez: já é o público da maioria das luderias e deixa de ser diferencial. Os arquivos que ainda o citam não foram revistos ([pendencias.md](pendencias.md), item 1) | `docs/bibliografia/diagnostico-teorico.md` §0 |
+| 09/10/2026 | O recorte "público casual" sai de vez: já é o público da maioria das luderias e deixa de ser diferencial. | `docs/bibliografia/diagnostico-teorico.md` §0 |
 | 02/10/2026 | Projeto de pesquisa sem o recorte casual: a pergunta passa a ser a viabilidade de uma luderia em Salvador, sem segmentação de público | commit `61599fa` |
-| 02/10/2026 | Visitas sorteadas da contagem concentradas no sábado, 03/10, nas duas unidades; retornos no domingo, 18/10 | `_instrucoes/4_metodologia.md`, Bloco B3 |
+| 02/10/2026 | Primeiras visitas da contagem concentradas no sábado, 03/10, nas duas unidades; retornos no domingo, 18/10 | `_instrucoes/4_metodologia.md`, Bloco B3 |
 | Semana 3 | Dois formulários de observação, um por gatilho e um por tempo, com perguntas de fluxo, ocupação, permanência e busca | `textos/planejamento/cronograma_luderia.md`, semana 3 |
 | 18/09/2026 | Plano para Salvador; concorrentes com mais de 100 avaliações nas 14 metrópoles da REGIC servem de referência | `_instrucoes/4_metodologia.md`, "Escopo adotado" |
 | 18/09/2026 | Bloco B6 (histórico dos avaliadores) retirado do escopo | `arquivados/B6-avaliadores/LEIAME.md` |

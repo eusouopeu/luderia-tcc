@@ -32,9 +32,8 @@ Avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma
 
 **Pressupostos** (orientam o desenho, verificados ao longo da análise):
 
-- **P1:** o público das luderias é majoritariamente casual, pois quem tem o jogo como fim tende a formar acervo e espaço de jogo próprios.
-- **P2:** a taxa de ocupação e o ticket médio concentram a maior parte da incerteza sobre o resultado financeiro.
-- **P3:** a velocidade de avaliações, calibrada por observação direta, estima o fluxo relativo de clientes com faixa de incerteza aceitável para a decisão.
+- **P1:** a taxa de ocupação e o ticket médio concentram a maior parte da incerteza sobre o resultado financeiro.
+- **P2:** a velocidade de avaliações, calibrada por observação direta, estima o fluxo relativo de clientes com faixa de incerteza aceitável para a decisão.
 
 **Hipóteses confirmatórias** (registradas antes da análise e testadas na metade confirmatória da base):
 
@@ -55,7 +54,6 @@ As hipóteses H2 (comida) e H4 (jornada da ocasião) foram retiradas na emenda 2
 | Plano de negócios | Documento que descreve o negócio, seu mercado, sua operação e suas projeções financeiras, usado para orientar a decisão de investimento | DORNELAS [A VERIFICAR]; SEBRAE [A VERIFICAR] |
 | Estudo de viabilidade econômica | Análise que verifica, por demonstrações projetadas e indicadores, se o investimento gera retorno financeiro | ASAKURA; SILVA; MELLO (2018) |
 | Luderia | Estabelecimento de alimentação e bebidas que oferece acesso a um acervo de jogos de tabuleiro e cartas como parte central da experiência | Elaborado pelo autor |
-| Público hobbyista × público casual | Hobbyista: envolvimento contínuo, busca por jogos complexos, jogo como fim. Casual: participação pontual, jogo como meio de socialização | Adaptado de STEBBINS (lazer sério × casual) [A VERIFICAR] |
 | *Competitive socialising* | Segmento da hospitalidade que combina atividade de jogo, alimentação e bebidas em uma ocasião social | KAM INSIGHT (2022) |
 | Grade ERRC | Ferramenta que define o posicionamento pelos atributos a eliminar, reduzir, elevar e criar em relação ao padrão do setor | KIM; MAUBORGNE [A VERIFICAR] |
 | Atributos obrigatórios e atrativos | Obrigatórios: sua ausência gera insatisfação, sua presença não gera destaque. Atrativos: sua presença gera satisfação, sua ausência não gera reclamação. Base da análise de penalidade e recompensa | KANO et al. (1984) [A VERIFICAR] |
@@ -89,7 +87,7 @@ A pesquisa usa dados secundários públicos e uma coleta primária comportamenta
 |---|---|---|---|
 | A - Estabelecimentos e cardápios | Google Places API; Google Maps (extração manual); site, Instagram e cardápio digital; OpenStreetMap | Busca por termo nas capitais, filtro e curadoria manual; recorte de estabelecimentos com mais de 100 avaliações nas 14 metrópoles da REGIC (IBGE); notas por aspecto (comida, ambiente, serviço) e localização em shopping, por extração manual; registro de preço e acervo; shoppings e estações de metrô em 500 m e 1.000 m; itens e preços do cardápio por categoria | Estabelecimentos coletados (164 candidatos no recorte, curadoria pendente; 100 a 150 esperados); cardápios previstos |
 | B - Avaliações recentes | Página pública de avaliações no Google Maps | Cópia integral de todas as avaliações com texto publicadas até "um mês atrás", por estabelecimento, com data da coleta registrada; pseudonimização do autor na coleta | Previsto |
-| D - Contagem direta de ocupação | Formulário padronizado de observação; nota fiscal (NFC-e) | Duas unidades da São Jogue (Salvador); 4 visitas de 3 horas, do lado de fora: 2 sorteadas no sábado, 03/10/2026, com hora de início sorteada (12h00 a 19h00) e no mínimo 2 horas entre os inícios das duas unidades, e 2 de retorno 15 dias depois (domingo, 18/10/2026), na mesma unidade e hora; registro de entradas e saídas de grupos, contagem a cada 30 minutos e número da NFC-e no início e no fim de cada visita | Previsto |
+| D - Contagem direta de ocupação | Formulário padronizado de observação; nota fiscal (NFC-e) | Duas unidades da São Jogue (Salvador); 4 visitas de 3 horas, do lado de fora, em horários planejados para o pico de fluxo provável: 2 no sábado, 03/10/2026, com entrada às 19h, e 2 de retorno 15 dias depois (domingo, 18/10/2026), com entrada às 18h, na mesma unidade; registro de entradas e saídas de grupos, contagem a cada 30 minutos e número da NFC-e no início e no fim de cada visita | Previsto |
 | E - Bases públicas | IBGE (Censo 2022, estimativas populacionais, POF, PNAD Contínua, PAS, CONCLA); Novo CAGED; FipeZap; LC 123/2006; Banco Central (SGS e Focus) | Extração das variáveis para Salvador (por bairro, quando disponível) e para as demais capitais, como comparação | Coletado em 14/09/2026 |
 | F - Jogos | API da Ludopedia e raspagem; BoardGameGeek | Contadores de usuário e características; 563 jogos | Coletado; pode ser retirado |
 
@@ -110,7 +108,7 @@ Como a pesquisa não usa questionários, os itens correspondem às variáveis re
 | A01 | Avaliação média no Google | Desempenho percebido | Cinco forças | Escala de 1 a 5 |
 | A02 | Volume de avaliações | Porte | Cinco forças | Contagem |
 | A03 | Política de cobrança | Preço | Composto de marketing | Categórica: couvert, por hora, consumação mínima, outra |
-| A04 | Acervo declarado | Posicionamento | Público hobbyista × casual | Contagem de títulos |
+| A04 | Acervo declarado | Posicionamento | Grade ERRC | Contagem de títulos |
 | A05 | Shoppings e estações de metrô no entorno | Praça | Cinco forças | Contagem em 500 m e 1.000 m |
 | A06 | Itens oferecidos no cardápio | Variedade | Grade ERRC | Presença por categoria (bebidas, entradas, principais, sobremesas); contagem de itens; contagem de itens que exigem preparo |
 | A07 | Preço de cada item | Preço | Composto de marketing | R$ |
@@ -123,7 +121,7 @@ Como a pesquisa não usa questionários, os itens correspondem às variáveis re
 | B03 | Polaridade de cada aspecto | Satisfação por atributo | Análise de conteúdo | Categórica: positiva, negativa, neutra |
 | B04 | Tamanho do grupo citado | Pessoas por mesa | Taxa de ocupação | Número de pessoas |
 | B05 | Valores em R$ citados | Ticket | Indicadores de viabilidade | R$; tipo: por pessoa, conta total, item |
-| B06 | Jogos citados | Acervo | Público hobbyista × casual | Binária por jogo |
+| B06 | Jogos citados | Acervo | Grade ERRC | Binária por jogo |
 | B07 | Data relativa e data da coleta | Velocidade de avaliações | Velocidade de avaliações | Avaliações com texto por mês |
 | D01 | Entrada e saída de cada grupo | Fluxo; permanência | Taxa de ocupação; giro de mesa | Horário; pessoas; observação censurada sinalizada |
 | D02 | Saldo de pessoas no interior | Taxa de ocupação | Taxa de ocupação | Contagem a cada 30 minutos |
@@ -140,8 +138,8 @@ Como a pesquisa não usa questionários, os itens correspondem às variáveis re
 | E06 | Aluguel comercial | Custo fixo | Indicadores de viabilidade | R$/m² por mês |
 | E07 | Alíquotas do Simples Nacional e CNAE | Tributos | Indicadores de viabilidade | % da receita; código |
 | E08 | Selic e IPCA projetados | Taxa de desconto e inflação | Indicadores de viabilidade | % ao ano |
-| F01 | Contadores de usuário (`qt_tem`, `qt_teve`, `qt_quer`, `qt_favorito`) | Engajamento do jogo | Público hobbyista × casual | Contagem; taxas derivadas |
-| F02 | Duração, idade mínima, número de jogadores, mecânicas | Perfil do jogo | Público hobbyista × casual | Minutos; anos; contagem; categórica |
+| F01 | Contadores de usuário (`qt_tem`, `qt_teve`, `qt_quer`, `qt_favorito`) | Engajamento do jogo | Grade ERRC | Contagem; taxas derivadas |
+| F02 | Duração, idade mínima, número de jogadores, mecânicas | Perfil do jogo | Grade ERRC | Minutos; anos; contagem; categórica |
 
 Fonte: elaborado pelo próprio autor
 

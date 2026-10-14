@@ -9,7 +9,7 @@ O referencial não é revisão de literatura exaustiva. Ele fornece **conceitos 
 Padrão de parágrafo: **afirmação → sustentação (citação ou dado) → ligação com o plano**.
 
 - Uma ideia por parágrafo; 3 a 6 frases.
-- A primeira frase enuncia a ideia; as seguintes sustentam; a última conecta com o objeto (luderia, público casual) ou anuncia onde o conceito é aplicado.
+- A primeira frase enuncia a ideia; as seguintes sustentam; a última conecta com o objeto (luderia em Salvador) ou anuncia onde o conceito é aplicado.
 - Não abrir parágrafo com citação. O argumento é do autor; a citação o sustenta.
 - Confrontar autores quando divergirem, em vez de empilhar citações concordantes.
 - Evitar parágrafos-lista ("Segundo A... Já para B... Por sua vez, C...") sem síntese.
@@ -40,8 +40,8 @@ Teto do capítulo: **10 páginas** ([1_estrutura.md](1_estrutura.md), "Extensão
 |---|---|---|---|---|
 | **2.1 Empreendedorismo e plano de negócios** | Função e componentes do plano de negócios | Estrutura do trabalho | Estrutura geral | 1,5 |
 | **2.2 Estratégia e modelo de negócio** | Oceano Azul e grade ERRC; cinco forças; SWOT; PESTEL. Canvas só se for usado no cap. 6 | Ferramentas de análise dos caps. 5, 6 e 10 | Caps. 5, 6, 10 | 3 |
-| **2.3 Lazer, jogo e economia da experiência** | Lazer casual × lazer sério; economia da experiência | Só o posicionamento para o público casual | Caps. 5.2, 6.1 | 1 |
-| **2.4 Público de jogos de tabuleiro e cartas** | Perfil do jogador hobbyista e casual; barreiras de entrada | Segmentação e proposta de valor | Caps. 5.2, 6.2 | 1,5 |
+| **2.3 Lazer, jogo e economia da experiência** | Lazer; economia da experiência | Proposta de valor do formato: a ocasião social | Caps. 5.2, 6.1 | 1 |
+| **2.4 Público de jogos de tabuleiro e cartas** | Perfil do jogador de jogos de tabuleiro; barreiras de entrada | Segmentação e proposta de valor | Caps. 5.2, 6.2 | 1,5 |
 | **2.5 Estabelecimentos de lazer e entretenimento** | Bares temáticos; *competitive socialising*; terceiro lugar | Modelo de negócio e concorrência | Caps. 5.3, 7 | 1 |
 | **2.6 Viabilidade e decisão sob incerteza** | VPL, TIR, payback, ponto de equilíbrio; cenários; tornado; ponto de ruptura. Monte Carlo só se o extra for feito | Modelo financeiro e análise de riscos | Caps. 9, 10 | 2 |
 

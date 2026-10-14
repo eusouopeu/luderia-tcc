@@ -8,8 +8,8 @@ Todas as visitas têm horário fixo: **18h00 às 21h00**.
 
 | Visita | Tipo | Unidade | Data | Início | Fim |
 |---|---|---|---|---|---|
-| 1 | Sorteada | Bela Vista (Unidade 1) | sáb., 03/10/2026 | 18h00 | 21h00 |
-| 2 | Sorteada | Paralela (Unidade 2) | sáb., 03/10/2026 | 18h00 | 21h00 |
+| 1 | Primeira | Bela Vista (Unidade 1) | sáb., 03/10/2026 | 18h00 | 21h00 |
+| 2 | Primeira | Paralela (Unidade 2) | sáb., 03/10/2026 | 18h00 | 21h00 |
 | 3 | Retorno da visita 1 | Bela Vista (Unidade 1) | dom., 18/10/2026 | 18h00 | 21h00 |
 | 4 | Retorno da visita 2 | Paralela (Unidade 2) | dom., 18/10/2026 | 18h00 | 21h00 |
 
@@ -98,12 +98,12 @@ Uma linha da ficha de grupos por grupo. A entrada e a saída do mesmo grupo fica
 | Entrada e saída do mesmo grupo | Permanência média (com censura) | Giro de mesa; capacidade |
 | Saldo e mesas ocupadas a cada 30 min | Ocupação por hora do dia | Taxa de ocupação |
 | NFC-e no início e no fim da mesma visita | Notas na visita; pessoas por nota | Conversão de notas em visitantes |
-| NFC-e da visita sorteada e do retorno | Notas em 15 dias | Visitantes por semana (caminho das notas) |
+| NFC-e da primeira visita e do retorno | Notas em 15 dias | Visitantes por semana (caminho das notas) |
 | Cardápio e cobrança | Preços na data | Ticket médio; preço |
 
 ## 7. Fichas de campo
 
-### Visita 1 — Bela Vista, sáb., 03/10/2026, 18h00 às 21h00 (sorteada)
+### Visita 1 — Bela Vista, sáb., 03/10/2026, 18h00 às 21h00 (primeira)
 
 
 **Cabeçalho**
@@ -193,7 +193,7 @@ Uma linha da ficha de grupos por grupo. A entrada e a saída do mesmo grupo fica
 | 20h30 | | | |
 | 21h00 (contagem final) | | | |
 
-### Visita 2 — Paralela, sáb., 03/10/2026, 18h00 às 21h00 (sorteada)
+### Visita 2 — Paralela, sáb., 03/10/2026, 18h00 às 21h00 (primeira)
 
 
 **Cabeçalho**

@@ -5,7 +5,7 @@ da curadoria, em dois raios (500m e 1000m), via Overpass API (OpenStreetMap).
 Só três categorias, todas de API gratuita. A versão anterior deste script
 contava oito subcategorias comerciais; foram retiradas porque nenhuma delas
 mudava decisão do plano. O que sobrou são âncoras de fluxo de público
-casual, que é o que a decisão de localização precisa.
+de lazer, que é o que a decisão de localização precisa.
 
   praias_parques    -> natural=beach OU leisure=park
   shoppings_grandes -> shop=mall com área de polígono >= 5.000 m2

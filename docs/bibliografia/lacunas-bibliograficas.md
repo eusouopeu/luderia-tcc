@@ -92,6 +92,8 @@ Duas limitações da própria verificação:
 
 ## 5. Consequência da retirada do recorte casual (sem alteração de texto)
 
+**Resolvido em 13/10/2026:** o recorte foi retirado de todos os arquivos ativos, a pedido do autor (`docs/decisoes.md`). O registro prévio, documento datado, não foi alterado.
+
 Arquivos que ainda carregam o posicionamento casual × hobbyista e **não foram alterados**: `1_introducao_plano_luderia.md`; `_instrucoes/1_estrutura.md`, `2_ref-teorico.md`, `3_mercado.md`, `5_marketing.md`; pressuposto P1 em `projeto_pesquisa_luderia.md`. O projeto de pesquisa já foi atualizado no commit `61599fa`. A decisão sobre reescrever os demais é do autor.
 
 ## 6. Perguntas para investigação

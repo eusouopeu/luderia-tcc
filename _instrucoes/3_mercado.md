@@ -2,7 +2,7 @@
 
 ## Função no plano
 
-Mostrar que existe mercado para o formato casual em Salvador, quem são os concorrentes e quais condições externas afetam o negócio. Os achados alimentam marketing (cap. 6), praça (6.4), demanda (6.6) e premissas financeiras (cap. 9).
+Mostrar que existe mercado para o formato em Salvador, quem são os concorrentes e quais condições externas afetam o negócio. Os achados alimentam marketing (cap. 6), praça (6.4), demanda (6.6) e premissas financeiras (cap. 9).
 
 ## Estruturação de parágrafos
 
@@ -41,7 +41,6 @@ A matriz SWOT não fica neste capítulo: está em 10.1.
 - Fontes: Abrinq, Sebrae, Abrasel, IBGE (PAS). Aproveitar dados da introdução.
 
 ### 5.2 Público-alvo e segmentação
-- Distinção hobbyista × casual (base: 2.3 e 2.4).
 - Perfil demográfico e de renda do público-alvo em Salvador, por bairro quando houver dado (IBGE).
 - Ocasiões de consumo: encontro, aniversário, evento corporativo.
 - O que o público valoriza e o que o afasta: Bloco B2 (menções a preço, fricção de complexidade).
@@ -52,7 +51,7 @@ A matriz SWOT não fica neste capítulo: está em 10.1.
 - Mapeamento: Bloco B1 (localização, avaliação, volume de avaliações, preço, acervo declarado). Recorte: estabelecimentos com mais de 100 avaliações nas 14 metrópoles da REGIC. O recorte descreve concorrentes estabelecidos; casas novas ou pequenas ficam de fora, e isso é declarado.
 - Concorrência em Salvador: localização das unidades da São Jogue e de outros espaços com jogos, por bairro.
 - Densidade por metrópole: total da busca e total acima do corte de 100 avaliações, lado a lado.
-- Posicionamento dos concorrentes: hobbyista × acessível, pelo acervo declarado (tamanho, presença dos jogos mais citados nas avaliações) e pela política de cobrança (Bloco B1).
+- Posicionamento dos concorrentes pelo acervo declarado (tamanho, presença dos jogos mais citados nas avaliações) e pela política de cobrança (Bloco B1).
 - Desempenho estimado: velocidade de avaliações calibrada (ver [4_metodologia.md](4_metodologia.md)).
 - Sobrevivência: dados abertos do CNPJ.
 - Cinco forças de Porter aplicadas.

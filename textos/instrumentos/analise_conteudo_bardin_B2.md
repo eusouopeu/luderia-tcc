@@ -222,13 +222,13 @@ Capacidade, reserva e fila somam 25 menções negativas nas casas de jogos (13% 
 
 A mediação aparece em 21% dos comentários das casas de jogos, quase sempre positiva (74 positivas contra 9 negativas). O elogio descreve o monitor que recomenda o jogo pelo perfil do grupo e acompanha a primeira rodada. A crítica descreve monitor que não sabe a regra ou não aparece, com nota média de 2,1. Nas lojas, a mediação aparece em só 6,5% dos comentários.
 
-**Decisão do plano:** a monitoria é parte do produto para o público casual. O acervo deve ser escolhido também pela facilidade de explicar.
+**Decisão do plano:** a monitoria é parte do produto. O acervo deve ser escolhido também pela facilidade de explicar.
 
 ### 3.5 O acervo é valorizado pela variedade, mas raramente criticado
 
 O acervo aparece em 37% dos comentários das casas de jogos. O elogio é genérico: "muitos jogos", "variedade enorme". A crítica é rara (11 menções) e trata de conservação, peças faltando e falta de lançamentos, esta citada por hobbyistas.
 
-**Decisão do plano:** um acervo médio, bem conservado e explicável atende ao público casual. Acervo muito grande não aparece como motivo de escolha nem a sua falta como motivo de queixa.
+**Decisão do plano:** um acervo médio, bem conservado e explicável atende ao público das luderias. Acervo muito grande não aparece como motivo de escolha nem a sua falta como motivo de queixa.
 
 ### 3.6 Preço: a crítica mira a cobrança, não o valor absoluto
 
@@ -246,7 +246,7 @@ Entre as ocasiões citadas nas casas de jogos, amigos aparecem em 16% dos coment
 
 Nas lojas, 28% dos comentários trazem sinais de hobbyista (TCG, torneio, coleção) e 40% tratam de varejo e pós-venda. Comunidade aparece em 13% dos comentários das lojas e em 1% dos das casas de jogos. Nas casas de jogos, os sinais de hobbyista (3%) e de iniciante (2%) são raros: o cliente comenta a ocasião e a experiência, não a sua relação com o hobby.
 
-**Decisão do plano:** lojas de TCG não são concorrentes diretas de uma luderia para o público casual. Esse achado sustenta a retirada das três lojas de TCG da triagem e a separação dos dois tipos nas análises de concorrência e de preço.
+**Decisão do plano:** lojas de TCG não são concorrentes diretas de uma luderia. Esse achado sustenta a retirada das três lojas de TCG da triagem e a separação dos dois tipos nas análises de concorrência e de preço.
 
 ### 3.9 Ruído e segurança são raros, mas graves
 

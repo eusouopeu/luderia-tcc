@@ -4,27 +4,27 @@ O mercado de jogos de tabuleiro está em expansão. O segmento movimentou mais d
 
 O bar temático de jogos, conhecido como luderia, ludobar ou quiz-bar, combina alimentação, bebidas e acesso a um acervo de jogos. A Ludus Luderia, pioneira do formato em São Paulo desde 2007, opera hoje com mais de 2 mil jogos (DIVERSÓRIO, 2026). O formato se difundiu para outras capitais brasileiras. No exterior, ele integra um setor maior, o de *competitive socialising*: o Reino Unido já soma mais de 800 locais de lazer social baseados em jogos, com o público de 18 a 34 anos responsável por cerca de 60% do gasto (SAVILLS, [s.d.]).
 
-No Brasil, porém, as luderias operam majoritariamente voltadas ao público hobbyista. Os acervos têm centenas a milhares de títulos, a cobrança dá acesso ilimitado ao catálogo e os jogos de regras complexas exigem monitoria especializada. O público atendido é estreito: no Censo Ludopedia 2020, a faixa de 19 a 40 anos concentra 84% dos respondentes (LUDOPEDIA, 2020). Mesmo entre esses jogadores engajados, 57% apontam os preços elevados como sua maior preocupação em relação aos jogos (FIGUEIREDO; MANTOVANI, 2022).
+O formato acompanha uma mudança no consumo de lazer, que se desloca da posse de bens para a vivência de experiências. Compras de experiências geram mais satisfação que compras de bens materiais (GILOVICH; KUMAR; JAMPOL, 2015). O varejo físico segue o mesmo movimento: nos shopping centers brasileiros, as operações de lazer passaram de 1,4% para 2,2% do total de lojas entre 2019 e 2023 (MERCADO&CONSUMO, 2025). A luderia vende uma ocasião social, e não um produto.
 
-Esse modelo deixa de fora o público casual: o consumidor que busca uma ocasião social pontual, sem envolvimento prévio com jogos de tabuleiro. Esse público é amplo. Socializar é a principal motivação dos brasileiros para atividades culturais presenciais (FUNDAÇÃO ITAÚ; DATAFOLHA, 2023). O descompasso entre a oferta voltada ao hobbyista e a demanda por lazer social configura uma lacuna de mercado.
+Um investimento nesse formato enfrenta, contudo, um problema de evidência. Não há levantamento setorial sobre luderias no Brasil. As premissas que concentram o risco do negócio - taxa de ocupação e ticket médio - costumam ser estimadas sem fonte. O único estudo de viabilidade identificado sobre o formato analisa um caso isolado, em uma cidade do interior paulista (ASAKURA; SILVA; MELLO, 2018).
 
-É nesse contexto que se insere a proposta deste trabalho: uma luderia posicionada para o público casual. A proposta parte da lógica do Nintendo Wii, que expandiu um mercado de nicho pela eliminação da barreira de entrada, e não pelo aprofundamento do catálogo. Nesse modelo, a proposta de valor é a curva de aprendizado mínima, a diversão rápida e a ocasião social - encontro, aniversário, evento corporativo - em sessões curtas, de 20 a 30 minutos.
+Em Salvador, a São Jogue, com duas unidades, é a única luderia em operação. Este trabalho avalia se a cidade comporta um novo estabelecimento e sob quais condições de ponto, preço e ocupação. Cada premissa do plano é ligada a um dado, e cada dado a uma fonte e a um nível de confiança.
 
 ## 1.1 OBJETIVOS
 
-Este trabalho tem como objetivo principal avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma luderia em Salvador posicionada para o público casual, de modo a subsidiar a decisão de investimento e a identificar as condições sob as quais o negócio se sustenta.
+Este trabalho tem como objetivo principal avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma luderia em Salvador, de modo a subsidiar a decisão de investimento e a identificar as condições sob as quais o negócio se sustenta.
 
-Para atingir esse propósito, foram traçados os seguintes objetivos específicos: (i) analisar o mercado e a concorrência de luderias nas 14 metrópoles brasileiras, com destaque para Salvador, quanto a avaliação, preço e cardápio; (ii) caracterizar o público-alvo casual e suas ocasiões de consumo; (iii) definir o posicionamento e o composto de marketing, incluindo a curadoria do acervo; (iv) estimar a demanda e a taxa de ocupação a partir de evidências secundárias e comportamentais; (v) dimensionar a estrutura operacional e os requisitos jurídicos do negócio; e (vi) projetar investimentos, receitas, custos e indicadores de viabilidade a partir de premissas rastreáveis.
+Para atingir esse propósito, foram traçados os seguintes objetivos específicos: (i) analisar o mercado e a concorrência de luderias nas 14 metrópoles brasileiras, com destaque para Salvador, quanto a avaliação, preço e cardápio; (ii) definir o posicionamento e o composto de marketing, incluindo a curadoria do acervo, a partir dos aspectos que mais pesam na satisfação dos clientes; (iii) estimar a demanda, a taxa de ocupação e o giro de mesas a partir de observação direta e de avaliações calibradas; (iv) dimensionar a estrutura operacional e os requisitos jurídicos do negócio; e (v) projetar investimentos, receitas, custos e indicadores de viabilidade a partir de premissas rastreáveis.
 
-A partir dos resultados obtidos no cumprimento dos objetivos anteriores, espera-se ainda: (vii) identificar as premissas críticas e os pontos de ruptura do negócio por meio de análise de sensibilidade; e (viii) propor um plano de contingência e as validações necessárias antes do investimento.
+A partir dos resultados obtidos no cumprimento dos objetivos anteriores, espera-se ainda: (vi) identificar as premissas críticas e os pontos de ruptura do negócio por meio de análise de sensibilidade; e (vii) propor um plano de contingência e as validações necessárias antes do investimento.
 
 ## 1.2 JUSTIFICATIVA
 
-A relevância de um plano de negócios para uma luderia posicionada para o público casual sustenta-se em três frentes complementares: a acadêmica, a social e a gerencial.
+A relevância de um plano de negócios para uma luderia em Salvador sustenta-se em três frentes complementares: a acadêmica, a social e a gerencial.
 
 Do ponto de vista acadêmico, este trabalho preenche uma lacuna na literatura sobre negócios de entretenimento social presencial. Os levantamentos sobre o mercado brasileiro de jogos de tabuleiro concentram-se no varejo e na indústria, sem tratar o nível do estabelecimento. O único estudo de viabilidade identificado sobre o formato analisa um caso isolado, em uma cidade do interior paulista (ASAKURA; SILVA; MELLO, 2018). Além disso, planos de negócios costumam apoiar suas projeções em premissas pouco justificadas. Este trabalho sustenta cada premissa em dados secundários e comportamentais, classificados por nível de evidência e testados por triangulação e análise de sensibilidade. Essa abordagem amplia o rigor metodológico da aplicação do instrumental de plano de negócios - análise PESTEL, Cinco Forças de Porter, matriz SWOT, grade ERRC e indicadores de viabilidade - a um caso real.
 
-Do ponto de vista social, a luderia oferece um espaço de lazer presencial, alternativo ao entretenimento mediado por telas. O posicionamento para o público casual amplia esse benefício para além da comunidade de jogadores já consolidada. Ele reduz a barreira de entrada representada pela cultura hobbyista - catálogos extensos, regras complexas e sessões longas - e abre o formato a ocasiões sociais cotidianas, como encontros entre amigos, aniversários e confraternizações corporativas.
+Do ponto de vista social, a luderia oferece um espaço de lazer presencial, alternativo ao entretenimento mediado por telas. O formato atende ocasiões sociais cotidianas, como encontros entre amigos, aniversários e confraternizações corporativas, em torno de uma atividade compartilhada.
 
 Por fim, do ponto de vista gerencial, os resultados deste trabalho orientam decisões concretas de investimento: a escolha do ponto, a curadoria do acervo, a política de preço e o cardápio. Empreendedores do setor enfrentam, com frequência, a ausência de dados sobre demanda e desempenho de concorrentes. O trabalho documenta um processo replicável de construção de premissas a partir de fontes públicas e de testes comportamentais de baixo custo. Negócios de lazer em fase de estruturação podem adotar essa abordagem para reduzir a incerteza antes do investimento.
 
@@ -48,13 +48,11 @@ ABRINQ. *Anuário da Abrinq 2026*. Associação Brasileira dos Fabricantes de Br
 
 ASAKURA; SILVA; MELLO. Estudo de viabilidade econômica de um boardgame café em Ourinhos/SP. *Anais do CIC - FIO*, 2018. Disponível em: http://www.cic.fio.edu.br/anaisCIC/anais2018/pdf/05_01.pdf. [Completar prenomes dos autores e data de acesso.]
 
+GILOVICH, Thomas; KUMAR, Amit; JAMPOL, Lily. A wonderful life: experiential consumption and the pursuit of happiness. *Journal of Consumer Psychology*, v. 25, n. 1, p. 152-165, 2015. DOI: 10.1016/j.jcps.2014.08.004.
+
 DIVERSÓRIO. Onde jogar board games em São Paulo? Conheça a Ludus Luderia com mais de 2 mil jogos. 2026.
 
-FIGUEIREDO; MANTOVANI. Jogos de tabuleiro modernos e o consumidor brasileiro. *In*: SEMEAD, 25., 2022, São Paulo. *Anais* [...]. Disponível em: https://login.semead.com.br/25semead/anais/arquivos/1057.pdf. [Completar prenomes dos autores e data de acesso.]
-
-FUNDAÇÃO ITAÚ; DATAFOLHA. *Hábitos culturais IV*. 2023. Disponível em: https://fundacaoitau.org.br/observatorio/biblioteca/habitos-culturais-iv. [Completar data de acesso.]
-
-LUDOPEDIA. Censo Ludopedia 2020. Ludopedia, 2020.
+MERCADO&CONSUMO. Lazer é a segunda maior motivação de ida a shopping centers. *Mercado&Consumo*, 8 jan. 2025. Disponível em: https://mercadoeconsumo.com.br/08/01/2025/shopping-centers/lazer-e-a-segunda-maior-motivacao-de-ida-a-shopping-centers. Acesso em: 2 out. 2026. [Substituir pela publicação original da Abrasce, quando localizada.]
 
 SAVILLS. Competitive socialising. Savills UK, [s.d.]. Disponível em: https://www.savills.co.uk/research_articles/229130/357959-0. [Conferir ano de publicação e data de acesso.]
 

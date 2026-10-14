@@ -6,9 +6,9 @@ Atualizado em 02/10/2026.
 
 O trabalho é um plano de negócios baseado em evidências. Ele segue a estrutura de um plano de negócios: análise de mercado, marketing, operação, aspectos jurídicos, finanças e riscos. A diferença está no método: cada decisão do plano é ligada a um dado, e cada dado a uma fonte e a um nível de confiança.
 
-O negócio analisado é uma luderia em Salvador, estabelecimento que combina comida, bebida e um acervo de jogos de tabuleiro. O plano mira o público casual: pessoas que usam o jogo como forma de socializar, e não como hobby. As luderias das 14 metrópoles brasileiras servem de referência de preço, satisfação e movimento.
+O negócio analisado é uma luderia em Salvador, estabelecimento que combina comida, bebida e um acervo de jogos de tabuleiro. As luderias das 14 metrópoles brasileiras servem de referência de preço, satisfação e movimento.
 
-**Objetivo geral:** avaliar se uma luderia em Salvador voltada ao público casual é viável do ponto de vista de mercado, de operação e financeiro, com premissas sustentadas por dados públicos e por observação direta.
+**Objetivo geral:** avaliar se uma luderia em Salvador é viável do ponto de vista de mercado, de operação e financeiro, com premissas sustentadas por dados públicos e por observação direta.
 
 **Objetivos específicos:**
 
@@ -25,9 +25,8 @@ O negócio analisado é uma luderia em Salvador, estabelecimento que combina com
 
 Os pressupostos orientam o desenho da pesquisa e são verificados ao longo da análise:
 
-- **P1:** o público das luderias é majoritariamente casual. Quem tem o jogo como hobby tende a montar acervo e espaço de jogo em casa.
-- **P2:** a taxa de ocupação e o ticket médio concentram a maior parte da incerteza sobre o resultado financeiro.
-- **P3:** o ritmo de novas avaliações no Google, calibrado pela contagem de ocupação e pelas notas fiscais, estima o fluxo de clientes dos concorrentes com margem de erro aceitável para a decisão.
+- **P1:** a taxa de ocupação e o ticket médio concentram a maior parte da incerteza sobre o resultado financeiro.
+- **P2:** o ritmo de novas avaliações no Google, calibrado pela contagem de ocupação e pelas notas fiscais, estima o fluxo de clientes dos concorrentes com margem de erro aceitável para a decisão.
 
 As hipóteses foram registradas em 14/09/2026 e ajustadas em 18/09/2026 (emenda 2), antes da coleta das avaliações. Elas são testadas uma única vez, em uma parte da base separada para esse fim. Os códigos seguem o registro prévio:
 
@@ -51,19 +50,19 @@ As notas são comparadas dentro de cada estabelecimento. Assim, a diferença de 
 | Valores em R$ citados nas avaliações | Estimar o gasto por pessoa e o ticket médio | Google Maps: todas as avaliações com texto publicadas até "um mês atrás", por estabelecimento | Codificação por dicionário de termos validado |
 | Tamanho do grupo citado nas avaliações | Estimar as pessoas por mesa nos concorrentes | Google Maps: todas as avaliações com texto publicadas até "um mês atrás", por estabelecimento | Codificação por dicionário de termos validado |
 | Velocidade de avaliações (avaliações com texto por mês) | Estimar o fluxo de clientes dos concorrentes, calibrado pela contagem na São Jogue | Google Maps: todas as avaliações com texto publicadas até "um mês atrás", por estabelecimento | Cálculo: avaliações com texto do recorte ÷ duração da janela, a partir da data da coleta |
-| Entradas e saídas dos grupos | Medir o fluxo de pessoas por hora | São Jogue, as duas unidades em Salvador | Formulário de observação, do lado de fora: 2 visitas sorteadas e 2 de retorno 15 dias depois, com registro contínuo na porta |
-| Número da nota fiscal (NFC-e) no início e no fim de cada visita | Medir as vendas entre a visita sorteada e a de retorno e as pessoas por nota | São Jogue, as duas unidades em Salvador | Registro da nota emitida em compra própria |
+| Entradas e saídas dos grupos | Medir o fluxo de pessoas por hora | São Jogue, as duas unidades em Salvador | Formulário de observação, do lado de fora: 2 visitas no sábado (entrada às 19h) e 2 de retorno no domingo, 15 dias depois (entrada às 18h), com registro contínuo na porta |
+| Número da nota fiscal (NFC-e) no início e no fim de cada visita | Medir as vendas entre a primeira visita e a de retorno e as pessoas por nota | São Jogue, as duas unidades em Salvador | Registro da nota emitida em compra própria |
 | Mesas disponíveis | Calcular a taxa de ocupação | São Jogue, as duas unidades em Salvador | Contagem única por unidade |
-| Mesas ocupadas (quando visíveis de fora) | Medir a taxa de ocupação | São Jogue, as duas unidades em Salvador | Formulário de observação, do lado de fora: 2 visitas sorteadas e 2 de retorno 15 dias depois, com contagem a cada 30 minutos |
-| Tamanho dos grupos | Medir as pessoas por mesa | São Jogue, as duas unidades em Salvador | Formulário de observação, do lado de fora: 2 visitas sorteadas e 2 de retorno 15 dias depois, no registro de entrada |
-| Permanência dos grupos | Medir o giro de mesas | São Jogue, as duas unidades em Salvador | Formulário de observação, do lado de fora: 2 visitas sorteadas e 2 de retorno 15 dias depois: horário de entrada e saída de cada grupo |
+| Mesas ocupadas (quando visíveis de fora) | Medir a taxa de ocupação | São Jogue, as duas unidades em Salvador | Formulário de observação, do lado de fora: 2 visitas no sábado (entrada às 19h) e 2 de retorno no domingo, 15 dias depois (entrada às 18h), com contagem a cada 30 minutos |
+| Tamanho dos grupos | Medir as pessoas por mesa | São Jogue, as duas unidades em Salvador | Formulário de observação, do lado de fora: 2 visitas no sábado (entrada às 19h) e 2 de retorno no domingo, 15 dias depois (entrada às 18h), no registro de entrada |
+| Permanência dos grupos | Medir o giro de mesas | São Jogue, as duas unidades em Salvador | Formulário de observação, do lado de fora: 2 visitas no sábado (entrada às 19h) e 2 de retorno no domingo, 15 dias depois (entrada às 18h): horário de entrada e saída de cada grupo |
 | População de Salvador, por bairro | Dimensionar o público potencial e escolher o bairro | IBGE (Censo 2022 e estimativas populacionais) | Download das bases públicas |
 | Renda em Salvador | Dimensionar o mercado e comparar o poder de compra com as demais metrópoles | IBGE (Censo 2022 e PNAD Contínua) | Download das bases públicas |
 | Gasto das famílias com alimentação fora de casa | Conferir o ticket médio | IBGE (Pesquisa de Orçamentos Familiares 2017–2018), corrigido pelo IPCA | Download das bases públicas |
 | Forma de cobrança | Comparar os formatos de cobrança dos concorrentes | Site, Instagram e cardápio digital de cada estabelecimento | Registro manual em planilha |
 | Preço do couvert ou da taxa de jogo | Definir o preço de entrada | Site, Instagram e cardápio digital de cada estabelecimento | Registro manual em planilha |
 | Preços da cesta fixa (bebida, lanche e sobremesa) | Definir os preços e estimar o ticket médio | Cardápio digital, site, Instagram e fotos do cardápio no Google Maps | Registro manual em planilha |
-| Horários mais movimentados (pessoas por hora) | Definir o horário de funcionamento e a escala da equipe | São Jogue, as duas unidades em Salvador | Formulário de observação, do lado de fora: 2 visitas sorteadas e 2 de retorno 15 dias depois |
+| Horários mais movimentados (pessoas por hora) | Definir o horário de funcionamento e a escala da equipe | São Jogue, as duas unidades em Salvador | Formulário de observação, do lado de fora: 2 visitas no sábado (entrada às 19h) e 2 de retorno no domingo, 15 dias depois (entrada às 18h) |
 | Horário de funcionamento (horas por semana) | Comparar dias e horários de funcionamento dos concorrentes | Google Maps | Google Places API |
 | Endereço | Localizar os concorrentes e atribuir metrópole e bairro | Google Maps | Google Places API |
 | Dentro de shopping (sim ou não) | Comparar os tipos de ponto (shopping ou rua) | Google Maps | Extração manual no Google Maps |
@@ -92,19 +91,19 @@ Cinco etapas condicionam o restante do cronograma:
 1. **Coleta das avaliações do último mês.** Todos os estabelecimentos são coletados no menor intervalo possível, para que a janela de um mês seja a mesma para todos. Termina até 27/09.
 2. **Validação da codificação das avaliações.** A mesma amostra de 200 avaliações é codificada duas vezes, com intervalo mínimo de 14 dias. A primeira codificação termina em 02/10; a segunda começa em 16/10.
 3. **Emenda ao registro prévio.** Os ajustes feitos na parte exploratória da base são registrados até 23/10. Só depois disso a parte confirmatória é aberta.
-4. **Contagem de ocupação na São Jogue.** Visitas sorteadas no sábado, 03/10; visitas de retorno no domingo, 18/10. A estimativa de ocupação depende delas.
+4. **Contagem de ocupação na São Jogue.** Primeiras visitas no sábado, 03/10, com entrada às 19h; visitas de retorno no domingo, 18/10, com entrada às 18h. A estimativa de ocupação depende delas.
 5. **Registro de premissas.** O modelo financeiro só é montado quando ocupação, ticket médio e custos têm faixa e fonte.
 
 ## Contagem de ocupação na São Jogue
 
 A contagem é a única coleta presencial do trabalho. Ela mede quantas pessoas entram na luderia, quanto tempo ficam e quantas notas fiscais são emitidas.
 
-- **Quatro visitas no total**, duas em cada unidade da São Jogue: uma sorteada e uma de retorno.
-- **Visitas sorteadas** no sábado, 03/10, as duas unidades no mesmo dia, na quinzena após o pagamento dos servidores estaduais da Bahia (29/09 para inativos e pensionistas; 30/09 para ativos). O sorteio escolhe só a hora de início de cada visita: cada hora cheia entre 12h00 e 19h00 é uma possibilidade. As horas de início das duas unidades distam no mínimo 2 horas.
-- **Visitas de retorno** 15 dias depois de cada visita sorteada, na mesma unidade e na mesma hora de início: domingo, 18/10.
-- **Nota fiscal:** em cada visita, o número da NFC-e é registrado no início e no fim, com uma compra própria. A diferença entre a visita sorteada e a de retorno dá as notas emitidas em 15 dias. A diferença dentro da mesma visita, comparada às entradas contadas, dá as pessoas por nota.
+- **Quatro visitas no total**, duas em cada unidade da São Jogue: uma no sábado e uma de retorno no domingo, 15 dias depois. Os horários são planejados para o pico de fluxo provável, não sorteados.
+- **Primeiras visitas** no sábado, 03/10, as duas unidades no mesmo dia, na quinzena após o pagamento dos servidores estaduais da Bahia (29/09 para inativos e pensionistas; 30/09 para ativos), com entrada às 19h.
+- **Visitas de retorno** 15 dias depois, na mesma unidade: domingo, 18/10, com entrada às 18h.
+- **Nota fiscal:** em cada visita, o número da NFC-e é registrado no início e no fim, com uma compra própria. A diferença entre a primeira visita e a de retorno dá as notas emitidas em 15 dias. A diferença dentro da mesma visita, comparada às entradas contadas, dá as pessoas por nota.
 - **Observação do lado de fora**, com duração fixa de 3 horas. O início e o fim de cada visita são registrados, e os resultados são calculados por hora observada. Entradas e saídas dos grupos são registradas continuamente; pessoas no interior e mesas ocupadas, a cada 30 minutos.
-- **Sorteio:** feito na planilha `contagem_sorteio_visitas.xlsx` antes da primeira visita. Dias e horários sem funcionamento ficam de fora.
+- **Horários:** planejados para o pico de fluxo provável, não sorteados. As reservas só abrem às 12h, 15h e 18h, e o início da noite é o horário de maior fluxo esperado.
 
 Fonte das datas de pagamento: Governo da Bahia, Tabela de Pagamentos 2026 dos servidores estaduais.
 
@@ -133,7 +132,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 - [x] Curadoria manual e lista final de estabelecimentos
 - [ ] Teste da coleta das avaliações do último mês em uma amostra
 - [x] Início da coleta das avaliações com texto
-- [ ] Elaboração do manual de codificação das avaliações :ma
+- [ ] Elaboração do manual de codificação das avaliações?
 - [ ] Início da coleta dos cardápios (preços e itens com preparo)
 - [x] Sorteio das visitas e visitas fora
 
@@ -254,6 +253,6 @@ Se uma entrega atrasar mais de três dias, os itens abaixo saem do escopo, nesta
 1. Simulação de Monte Carlo. A análise de sensibilidade e os pontos de ruptura permanecem.
 2. Base de jogos (Ludopedia e BoardGameGeek).
 3. Atualização do site de apresentação. As figuras do texto permanecem.
-4. Contagem de ocupação reduzida a uma unidade (visita sorteada e visita de retorno).
+4. Contagem de ocupação reduzida a uma unidade (primeira visita e visita de retorno).
 
 **Não entram no plano de corte:** registro prévio, validação da codificação e registro de premissas. Custam pouco e sustentam a confiabilidade dos resultados.

@@ -3,7 +3,7 @@
 ## Descrição geral
 
 **Tipo:** TCC plano de negócios baseado em evidências.
-**Objeto:** estabelecimento no formato luderia/ludobar/quiz-bar em Salvador (BA), posicionado para o público casual — curva de aprendizado mínima, diversão rápida e ocasião social (encontros, aniversários, eventos corporativos), em oposição ao modelo hobbyista de acervo extenso e jogos complexos.
+**Objeto:** estabelecimento no formato luderia/ludobar/quiz-bar em Salvador (BA).
 **Pergunta central:** o negócio é viável em Salvador, e sob quais condições (bairro e ponto, formato, preço, acervo, investimento)?
 **Recorte geográfico:** o plano é para Salvador. A concorrência das 14 metrópoles da REGIC serve de benchmark de preço, satisfação e fluxo; as bases públicas de Salvador (e, quando houver, por bairro) definem demanda e custos.
 **Diferencial do trabalho:** premissas rastreáveis e testadas, sustentadas por dados secundários e primários comportamentais, com pipeline reproduzível.
@@ -44,13 +44,13 @@ Cada capítulo com arquivo de instrução próprio aponta para ele. Capítulos s
 ### 1. Introdução — *sem arquivo próprio*
 
 - **1.1 Contextualização** — crescimento do mercado de jogos de tabuleiro; surgimento das luderias no Brasil.
-- **1.2 Problema e oportunidade** — oferta atual voltada ao hobbyista; público casual pouco atendido.
+- **1.2 Problema e oportunidade** — consumo de experiências; falta de evidência para as premissas de um investimento no formato.
 - **1.3 Objetivos** — geral (avaliar a viabilidade) e **no máximo 6 específicos, um por decisão do plano**, cada um ligado a um capítulo e respondido em um parágrafo próprio em 11.2. Proposta:
 
   | Objetivo específico | Decisão do plano | Capítulo |
   |---|---|---|
   | (i) Analisar o mercado e a concorrência nas 14 metrópoles, com destaque para Salvador | Há espaço para o formato? Qual o preço de referência? | 5 |
-  | (ii) Definir o posicionamento e o composto de marketing para o público casual | Proposta de valor, acervo, cardápio, preço, bairro | 6.1 a 6.5 |
+  | (ii) Definir o posicionamento e o composto de marketing a partir dos aspectos que mais pesam na satisfação dos clientes | Proposta de valor, acervo, cardápio, preço, bairro | 6.1 a 6.5 |
   | (iii) Estimar a demanda e a ocupação de um estabelecimento comparável | Quantos visitantes por semana projetar? | 6.6 e 9.2 |
   | (iv) Dimensionar a operação e os requisitos legais | Capacidade, equipe, layout, regime tributário, licenças | 7 e 8 |
   | (v) Projetar investimento, receitas, custos e indicadores de viabilidade | Investir ou não? | 9 |
@@ -64,8 +64,8 @@ Cada capítulo com arquivo de instrução próprio aponta para ele. Capítulos s
 
 - **2.1 Empreendedorismo e plano de negócios** — função e componentes do plano.
 - **2.2 Estratégia e modelo de negócio** — Canvas, Oceano Azul e grade ERRC, cinco forças, SWOT, PESTEL.
-- **2.3 Lazer, jogo e economia da experiência** — conceito de lazer, lazer casual × sério, consumo de experiências.
-- **2.4 Público de jogos de tabuleiro e cartas** — perfil do jogador hobbyista e casual, Brasil e exterior.
+- **2.3 Lazer, jogo e economia da experiência** — conceito de lazer, consumo de experiências.
+- **2.4 Público de jogos de tabuleiro e cartas** — perfil do jogador de jogos de tabuleiro, Brasil e exterior.
 - **2.5 Estabelecimentos de lazer e entretenimento** — bares temáticos, terceiro lugar, luderias.
 - **2.6 Viabilidade econômico-financeira e decisão sob incerteza** — VPL, TIR, payback, ponto de equilíbrio, cenários, sensibilidade, simulação.
 
@@ -95,7 +95,7 @@ Escrito por último, em até duas páginas. Não traz informação que não este
 ### 5. Análise de Mercado → [3_mercado.md](3_mercado.md)
 
 - **5.1 Análise do setor** — tamanho, crescimento, tendências.
-- **5.2 Público-alvo e segmentação** — casual × hobbyista; ocasiões de consumo; público em Salvador. Escrito depois do fim da análise do Bloco B2.
+- **5.2 Público-alvo e segmentação** — perfil do público; ocasiões de consumo; público em Salvador. Escrito depois do fim da análise do Bloco B2.
 - **5.3 Análise da concorrência** — Bloco B1 (14 metrópoles, mais de 100 avaliações), com destaque para Salvador.
 - **5.4 Fornecedores** — jogos, A&B, mobiliário.
 - **5.5 Macroambiente (PESTEL)**
@@ -233,8 +233,6 @@ Cada termo é definido uma vez, no cap. 3 (ou na primeira ocorrência, se aparec
 | Termo | Definição | Não usar como sinônimo |
 |---|---|---|
 | **Luderia** | Estabelecimento que combina alimentos e bebidas com acervo de jogos de mesa para uso no local. Abrange os formatos chamados ludobar e quiz-bar, citados só na definição | ludobar, bar de jogos, board game café, game bar |
-| **Público casual** | Consumidor sem envolvimento prévio com jogos de tabuleiro modernos, que procura uma ocasião social pontual (encontro, aniversário, evento corporativo) | jogador casual, leigo, iniciante |
-| **Público hobbyista** | Jogador engajado: coleciona jogos, acompanha lançamentos, aceita regras complexas e sessões longas | gamer, entusiasta, jogador sério |
 | **Concorrente** | Estabelecimento aprovado na curadoria do Bloco B1 | rival, player, casa (fora de citação) |
 | **Avaliação** | Avaliação com texto publicada no Google Maps | comentário, review, resenha |
 | **Taxa de ocupação** | Proporção das mesas ocupadas, em média, no horário de funcionamento; separada em dia útil e fim de semana ([8_financeiro.md](8_financeiro.md) §1) | lotação, movimento |

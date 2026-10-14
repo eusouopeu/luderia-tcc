@@ -10,7 +10,7 @@ Atualizado em 13/10/2026, 22h. Semana 5 do cronograma (10/10 a 16/10). Próxima 
 
 1. Terminar a coleta do B2 até 16/10.
 2. Preparar as visitas de retorno de **domingo, 18/10** (app de observação e `textos/instrumentos/roteiro_observacao_sao_jogue.md`).
-3. Decidir o recorte do público casual: a decisão trava a revisão da introdução e dos caps. 2, 5 e 6 (item 1 de [docs/pendencias.md](docs/pendencias.md)).
+3. Escrever o rascunho do cap. 3 (metodologia), o mais atrasado e com as instruções prontas.
 
 ## Bloqueado ou aguardando
 

@@ -8,7 +8,7 @@ Traduzir a análise de mercado em decisões de posicionamento, produto, preço, 
 
 ### 6.1 Proposta de valor e posicionamento
 - Proposta de valor em uma frase: curva de aprendizado mínima, diversão rápida e garantida, ocasião social.
-- Grade ERRC (Eliminar, Reduzir, Elevar, Criar) aplicada a acervo, experiência e A&B, comparando com o padrão hobbyista do Bloco B1.
+- Grade ERRC (Eliminar, Reduzir, Elevar, Criar) aplicada a acervo, experiência e A&B, comparando com o padrão dos concorrentes do Bloco B1.
 - Canvas do modelo de negócio (pode ir para apêndice).
 - Evidência: Bloco B2 (fricções citadas por consumidores), Bloco B1 (padrão da oferta).
 
@@ -34,7 +34,7 @@ Traduzir a análise de mercado em decisões de posicionamento, produto, preço, 
 
 ### 6.5 Promoção e comunicação
 - Canais: Instagram, Google Maps, parcerias, eventos, B2B corporativo.
-- Mensagem voltada ao público casual (sem jargão hobbyista).
+- Mensagem voltada ao público-alvo definido em 5.2.
 - Orçamento de marketing e custo de aquisição estimado (sem teste de anúncio no escopo atual: premissa em N4 ou N6).
 - Metas e indicadores de acompanhamento.
 

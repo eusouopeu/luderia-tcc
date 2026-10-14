@@ -4,7 +4,7 @@ Atualizado em 13/10/2026. Prazos do [cronograma](cronograma_luderia.md); tetos d
 
 | Cap. | Situação | Páginas (usadas/teto) | Prazo do rascunho | Depende de | Pendência principal |
 |---|---|---|---|---|---|
-| 1 Introdução | Rascunho | 3,7/4 | Concluído | — | Ainda posiciona o plano para o público casual, recorte retirado em 02/10 e 09/10 ([pendências](../../docs/pendencias.md), item 1) |
+| 1 Introdução | Rascunho | 3,7/4 | Concluído | — | Revisado em 13/10 sem o público casual; falta conferir os 7 objetivos contra o teto de 6 de `1_estrutura.md` |
 | 2 Referencial teórico | Não iniciado ⚠ | 0/10 | 25/09 | Lista de leitura | Leituras P1 de `bibliografia/` |
 | 3 Metodologia | Não iniciado ⚠ | 0/10 | 02/10 | Instruções prontas | Escrever a partir de `_instrucoes/4_metodologia.md` |
 | 4 Sumário executivo | Não iniciado | 0/2 | 06/11 | Todos | Escrito por último |

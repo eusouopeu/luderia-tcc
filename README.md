@@ -1,6 +1,6 @@
 # TCC Luderia
 
-Plano de negócios baseado em evidências para uma luderia/ludobar/quiz-bar em Salvador (BA), posicionada para o público casual. Trabalho de Conclusão de Curso, Bacharelado em Administração, Escola de Administração da UFBA.
+Plano de negócios baseado em evidências para uma luderia/ludobar/quiz-bar em Salvador (BA). Trabalho de Conclusão de Curso, Bacharelado em Administração, Escola de Administração da UFBA.
 
 Todo número do texto pode ser gerado de novo por um script deste repositório. As decisões de desenho e as limitações de cada bloco estão em [_instrucoes/4_metodologia.md](_instrucoes/4_metodologia.md).
 

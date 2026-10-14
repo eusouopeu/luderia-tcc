@@ -16,7 +16,7 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 - **Avaliações (Bloco B2):** **todas as avaliações com texto publicadas até "3 meses atrás"** (rótulo relativo do Google Maps na data da coleta), por estabelecimento, com texto integral. O número de avaliações varia entre estabelecimentos. Não há divisão da base: a etapa exploratória e a descritiva usam a população inteira de avaliações coletadas.
 - **Modelo de alimentos e bebidas:** não é avaliado. Cozinha própria, parceria ou só bar deixa de ser variável do Bloco B1 e passa a premissa do autor no cap. 9.
 - **Cardápios** de cada estabelecimento.
-- **Contagem direta de ocupação** nas duas unidades da São Jogue (única luderia de Salvador), feita do lado de fora: 2 visitas sorteadas no sábado, 03/10/2026, com hora de início sorteada e duração fixa de 3 horas, e 2 visitas de retorno 15 dias depois (domingo, 18/10/2026), na mesma unidade e hora. O número da NFC-e lido nas duas visitas dá as notas emitidas no intervalo.
+- **Contagem direta de ocupação** nas duas unidades da São Jogue (única luderia de Salvador), feita do lado de fora: 4 visitas de 3 horas, 2 por unidade, em horários planejados para os momentos de maior fluxo provável. Em cada unidade, a primeira visita é num sábado (03/10/2026), com entrada às 19h, e a segunda num domingo, 15 dias depois (18/10/2026), com entrada às 18h. O número da NFC-e lido nas duas visitas dá as notas emitidas no intervalo.
 - **Bases públicas:** IBGE (Censo 2022 por setor censitário, estimativas populacionais, POF 2017–2018, PNAD Contínua, PAS, CONCLA), RAIS e Novo CAGED, FipeZap comercial, Lei Complementar 123/2006 e anexos do Simples Nacional, Banco Central (SGS e Focus).
 - **Garantias de robustez (núcleo):** validação da coleta e da codificação; ponderação por estabelecimento; registro de premissas com faixas e nível de evidência; três cenários; tornado; ponto de ruptura.
 - **Extras, só se sobrar tempo no fim:** testes de hipótese H1–H9 com registro prévio e correção para múltiplas comparações, na base inteira (§3.5); simulação de Monte Carlo ([8_financeiro.md](8_financeiro.md) §4.4). Se feitos, vão para apêndice. A banca de um plano de negócios avalia se a premissa se sustenta; os três cenários, o tornado e o ponto de ruptura já respondem sob quais condições o negócio é viável.
@@ -81,14 +81,14 @@ O recorte por período descreve a operação atual de cada concorrente e torna o
 | Item | Descrição |
 |---|---|
 | Local | As duas unidades da São Jogue, única luderia de Salvador |
-| Visitas | 4 no total, 2 por unidade: 1 **sorteada** e 1 de **retorno**, 15 dias depois, na mesma unidade |
-| Períodos | Visitas sorteadas no **sábado, 03/10/2026**, as duas unidades no mesmo dia, na quinzena posterior ao pagamento dos servidores estaduais da Bahia (29/09 para inativos e pensionistas; 30/09 para ativos). Os retornos caem no **domingo, 18/10/2026**, na quinzena anterior ao pagamento de outubro (29/10). Fonte: Governo da Bahia, Tabela de Pagamentos 2026 |
-| Sorteio | Só a hora de início é sorteada (12h00 a 19h00, de hora em hora): 8 possibilidades por unidade. Um número sorteado define qual unidade escolhe primeiro; as horas de início das duas unidades distam no mínimo 2 horas. Horas em que a unidade não fica aberta pelas 3 horas seguintes são excluídas. O retorno é fixo: sorteada + 15 dias, mesma unidade e mesma hora de início; se a unidade estiver fechada, passa ao dia seguinte de funcionamento. Semente fixa (20260916), `_src/[B3] Contagem direta de ocupacao/build_B3_contagem_sorteio.py`, planilha `B3_contagem_sorteio_visitas.xlsx`; resultado registrado antes da primeira visita |
+| Visitas | 4 no total, 2 por unidade: a **primeira** e a de **retorno**, 15 dias depois, na mesma unidade |
+| Períodos | Primeiras visitas no **sábado, 03/10/2026**, as duas unidades no mesmo dia, na quinzena posterior ao pagamento dos servidores estaduais da Bahia (29/09 para inativos e pensionistas; 30/09 para ativos). Os retornos caem no **domingo, 18/10/2026**, na quinzena anterior ao pagamento de outubro (29/10). Fonte: Governo da Bahia, Tabela de Pagamentos 2026 |
+| Horário | Planejado, não sorteado: os horários cobrem os momentos de maior fluxo provável. Sábado, entrada às 19h; domingo, entrada às 18h; nas duas unidades. As reservas da São Jogue só abrem às 12h, 15h e 18h, e o início da noite é o horário de maior fluxo esperado. A planilha de sorteio (`build_B3_contagem_sorteio.py`, semente 20260916) fica como registro do desenho anterior |
 | Posição do observador | Do lado de fora do estabelecimento, com vista para a entrada |
 | Duração da visita | Fixa, de 3 horas. Horário de início e de fim registrados; todas as taxas são calculadas por hora observada |
 | Registro contínuo | Entrada e saída de cada grupo: horário e número de pessoas. Grupos identificados por código para ligar entrada e saída (permanência) |
 | Registro a cada 30 minutos | Saldo de pessoas no interior (entradas − saídas, a partir da contagem inicial) e mesas ocupadas, quando visíveis de fora |
-| NFC-e | Número da nota fiscal de uma compra no início e no fim de cada visita, com data, hora e série. A diferença entre visita sorteada e retorno dá as notas emitidas em 15 dias; a diferença dentro da mesma visita dá as notas emitidas durante a observação |
+| NFC-e | Número da nota fiscal de uma compra no início e no fim de cada visita, com data, hora e série. A diferença entre a primeira visita e o retorno dá as notas emitidas em 15 dias; a diferença dentro da mesma visita dá as notas emitidas durante a observação |
 | Registro complementar | Mesas disponíveis (contagem única por unidade), política de cobrança aplicada, preços do cardápio na data, dia, horário e condições atípicas (evento, chuva, jogo de futebol) |
 | Instrumento | Formulário padronizado preenchido no celular; sem fotos de pessoas; sem registro de características individuais |
 | Saídas | Pessoas por hora; tamanho dos grupos; permanência média (com observações censuradas); pessoas por nota fiscal (entradas ÷ notas emitidas durante a visita); notas por dia no intervalo de 15 dias; estimativa de visitantes por semana, em faixa |
@@ -118,7 +118,7 @@ Scripts em `_src/[B4] Bases publicas/` (`collect_B4_*` → `build_B4_*`); saída
 - Scripts em `_src/[bloco]/` seguindo o padrão `collect_*` → `build_*` → `analise_*`; saídas em `_data/processed/` com o prefixo do bloco.
 - Dados brutos (textos integrais) ficam em `_data/raw/`, fora do repositório público. O TCC e o repositório divulgam **apenas dados processados**.
 - Dicionário de dados com nome, descrição, tipo, unidade e origem de cada variável.
-- Todo sorteio (visitas, amostra de validação do dicionário, amostra de auditoria da coleta) usa semente fixa registrada no código.
+- Todo sorteio (amostra de validação do dicionário, amostra de auditoria da coleta) usa semente fixa registrada no código.
 
 ### Variáveis derivadas dos textos (Bloco B2)
 
@@ -146,7 +146,7 @@ O procedimento muda conforme a natureza de cada bloco. Os Blocos B1 e B2 são ce
 |---|---|---|---|---|
 | B1 e B2 | Censo da fonte (Google Maps), extraído por script | Não há | Cobertura da fonte; fidelidade do script à página | Amostra de auditoria; checagem de cobertura; padrão das falhas |
 | B4 | Extração integral de tabelas oficiais por API | Não há na extração; há no desenho de algumas bases (POF, PNAD Contínua) | Processamento: código, filtro, unidade, deflação, junção | Reconciliação com a tabela publicada; conferência de totais |
-| B3 | Amostra de períodos sorteados, observada pelo autor | Há: quatro visitas representam a operação da unidade | Omissão de registro; erro de contagem | Fechamento do saldo; comparação entre caminhos independentes; dado faltante declarado |
+| B3 | Períodos de maior fluxo provável, escolhidos e observados pelo autor | Há: quatro visitas no pico representam a operação da unidade | Omissão de registro; erro de contagem | Fechamento do saldo; comparação entre caminhos independentes; dado faltante declarado |
 
 Fonte: elaborado pelo próprio autor
 
@@ -189,7 +189,7 @@ Os erros mais prováveis são de processamento: código de variável ou de munic
 
 #### Bloco B3 - contagem direta
 
-A contagem não é censo. As quatro visitas são uma amostra de períodos, e o sorteio da hora de início existe para reduzir o viés de escolha desses períodos. O erro amostral, então, existe e é tratado pela faixa larga da premissa de ocupação e pela análise de sensibilidade (§3.6).
+A contagem não é censo. As quatro visitas são uma amostra de períodos, escolhidos para observar o pico de fluxo provável. A escolha é deliberada: a contagem mede a ocupação no pico, não a média do dia. O erro amostral existe e é tratado pela faixa larga da premissa de ocupação e pela análise de sensibilidade (§3.6).
 
 O instrumento é o próprio observador, e não há gravação para auditar depois. A validação usa a consistência interna do registro e a comparação entre caminhos independentes:
 
@@ -262,7 +262,7 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 
 | Premissa | Evidência | Técnica | Limitação declarada |
 |---|---|---|---|
-| **Ocupação** | Contagem direta na São Jogue (Bloco B3) | Pessoas por hora e saldo no interior por hora do dia; média e amplitude entre as quatro visitas; comparação descritiva entre visita sorteada e retorno | Um estabelecimento, quatro visitas, só fim de semana |
+| **Ocupação** | Contagem direta na São Jogue (Bloco B3) | Pessoas por hora e saldo no interior por hora do dia; média e amplitude entre as quatro visitas; comparação descritiva entre a primeira visita e o retorno | Um estabelecimento, quatro visitas, só fim de semana |
 | **Fluxo** | NFC-e emitidas em 15 dias (Bloco B3) | Notas por dia no intervalo × pessoas por nota observadas nas visitas → visitantes por semana, por unidade | Numeração pode incluir delivery e balcão |
 | **Ocupação** | Velocidade de avaliações calibrada (Blocos B2 e B3) | Modelo de calibração (abaixo) | Razão avaliações/visitantes pode variar entre estabelecimentos |
 | **Pessoas por mesa** | Tamanho do grupo citado (Bloco B2) e observado (Bloco B3) | Distribuição e comparação entre as duas fontes | Relato espontâneo × poucas observações |
@@ -273,7 +273,7 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 ### Modelo de calibração da ocupação
 
 1. **Visitantes por semana na São Jogue, por dois caminhos:**
-   - **(a) Notas fiscais:** notas emitidas entre a visita sorteada e a de retorno ÷ dias do intervalo × 7 × pessoas por nota (entradas contadas ÷ notas emitidas durante as visitas);
+   - **(a) Notas fiscais:** notas emitidas entre a primeira visita e a de retorno ÷ dias do intervalo × 7 × pessoas por nota (entradas contadas ÷ notas emitidas durante as visitas);
    - **(b) Contagem:** pessoas por hora observadas × horas de funcionamento de fim de semana; os dias úteis entram pela razão entre dia útil e fim de semana implícita no caminho (a), declarada como premissa com faixa.
    Os dois caminhos são comparados; a divergência entra na faixa (mínimo, provável e máximo).
 2. **Razão de calibração:** avaliações com texto por semana da São Jogue (velocidade do Bloco B2) ÷ visitantes por semana estimados.
@@ -332,6 +332,7 @@ Citar a Lei nº 13.709/2018 (LGPD) e a Resolução CNS nº 510/2016. Registrar a
 | Recorte de três meses de avaliações | Cobre só parte do ano e não mede sazonalidade; rótulo "3 meses atrás" sem limite exato | Declarada; data da coleta registrada; sazonalidade tratada como premissa com faixa |
 | Corte de 100 avaliações no Bloco B1 | Exclui casas novas ou pequenas | Declarada; total da busca apresentado ao lado do total acima do corte |
 | Datas relativas | Impossibilita dia da semana e dia do mês das avaliações | Curva semanal vem da contagem direta |
+| Visitas no horário de maior fluxo provável | Pessoas por hora do pico superestimam a média do dia | O caminho das notas fiscais (15 dias inteiros) dá a média; o caminho da contagem entra como limite superior da faixa |
 | Contagem em um único estabelecimento e cidade, com quatro visitas | Razão de calibração pode não valer para outros locais; sem sazonalidade | Faixa larga; sensibilidade da ocupação no tornado; validação recomendada antes do investimento |
 | Observação do lado de fora | Não vê o salão inteiro; saldo de pessoas acumula erros de contagem | Contagem inicial e final conferidas; comparação com o caminho das notas fiscais |
 | Numeração da NFC-e | Pode incluir delivery e balcão; uma nota cobre um grupo | Pessoas por nota medidas nas próprias visitas; série e unidade registradas |
