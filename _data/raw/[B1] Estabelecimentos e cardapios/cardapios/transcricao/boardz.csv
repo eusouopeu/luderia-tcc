@@ -1,0 +1,104 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao
+Burguer;PCQ;burger, maionese e cheddar;150 g;28;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;PCQ;burger, maionese e cheddar;smash 75 g;22;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Euro;burger, cheddar, salada e cebola crispy;150 g;32;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Euro;burger, cheddar, salada e cebola crispy;smash 75 g;26;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Gateway;pão australiano, burger, cheddar e cebola caramelizada;150 g;33;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Gateway;pão australiano, burger, cheddar e cebola caramelizada;smash 75 g;27;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Dungeon;burger, geleia de pimenta, provolone e rúcula;150 g;33;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Dungeon;burger, geleia de pimenta, provolone e rúcula;smash 75 g;27;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Classic;smash duplo ou simples, mussarela, cebola roxa, relish e tomate;smash duplo;34;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Classic;smash duplo ou simples, mussarela, cebola roxa, relish e tomate;smash simples;28;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Eggcide;burger, mussarela, ovo, bacon, rúcula e cebola crispy;150 g;36;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Eggcide;burger, mussarela, ovo, bacon, rúcula e cebola crispy;smash 75 g;30;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Essen;burger, mussarela, linguiça blumenau e melado;150 g;38;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Essen;burger, mussarela, linguiça blumenau e melado;smash 75 g;32;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;B&B;burger, barbecue, cheddar e bacon;150 g;38;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;B&B;burger, barbecue, cheddar e bacon;smash 75 g;32;pratos principais;hambúrguer;S;combo com batata: + R$ 10
+Burguer;Exploding Chicken;frango empanado, parmesão, alface e bacon;;32;pratos principais;hambúrguer;S;
+Adicionais;Burger 150 g com queijo;;;16;outros;adicionais;S;
+Adicionais;Smash 75 g com queijo;;;10;outros;adicionais;S;
+Adicionais;Burger de frango empanado;;;10;outros;adicionais;S;
+Adicionais;Linguiça blumenau;;;7;outros;adicionais;S;
+Adicionais;Bacon;;;6;outros;adicionais;S;
+Adicionais;Cheddar cremoso;;;6;outros;adicionais;S;
+Adicionais;Maionese de alho ou da casa;;50 g;5;outros;adicionais;S;
+Adicionais;Queijo extra;;;5;outros;adicionais;S;
+Adicionais;Relish de pepino;;;5;outros;adicionais;S;
+Adicionais;Cebola caramelizada;;;5;outros;adicionais;S;
+Adicionais;Cebola crispy;;;5;outros;adicionais;S;
+Adicionais;Geleia de pimenta;;;5;outros;adicionais;S;
+Adicionais;Ovo;;;4;outros;adicionais;S;
+Adicionais;Alface, tomate, rúcula ou cebola;;;4;outros;adicionais;S;
+Sobremesas;Mini churros com doce de leite;;10 unidades;22;sobremesas;sobremesas;S;
+Sobremesas;Brownie;brownie com amendoim;;15;sobremesas;sobremesas;S;
+Sobremesas;Brownie com sorvete;;;23;sobremesas;sobremesas;S;+ R$ 7 morango ou Nutella
+Sobremesas;Seven Wonders;sorvete, Nutella, Oreo, chocolate, doce de leite e morango;serve 2 pessoas;39;sobremesas;sobremesas;S;
+Porções;Batata frita;;pequena 150 g;12;entradas;batata;S;
+Porções;Batata frita;;grande 400 g;30;entradas;batata;S;
+Porções;Batata frita temperada;;400 g;32;entradas;batata;S;
+Porções;Batata frita com cheddar e bacon;;400 g;38;entradas;batata;S;
+Porções;Batata frita trufada com queijo;;400 g;38;entradas;batata;S;
+Porções;Polenta frita;com parmesão;450 g;26;entradas;outras;S;
+Porções;Frango empanado;com molho especial;200 g;25;entradas;outras;S;
+Porções;Onion rings;com barbecue;250 g;28;entradas;outras;S;
+Porções;Croquete de aipim;recheado com queijo e maionese de alho;300 g;32;entradas;outras;S;
+Porções;Falafel;com tofupiry;225 g;28;entradas;outras;S;
+Porções;Dadinho de tapioca;com parmesão e geleia de pimenta;200 g;29;entradas;outras;S;
+Porções;Mandioquinha;com queijo e geleia de pimenta;400 g;28;entradas;outras;S;
+Chopp;Chopp pilsen;;475 ml;16;bebidas;cerveja;N;
+Chopp;Chopp pilsen;;2 x 475 ml;30;bebidas;cerveja;N;
+Chopp;Chopp pilsen;;3 x 475 ml;42;bebidas;cerveja;N;
+Chopp;Chopp IPA;;475 ml;20;bebidas;cerveja;N;
+Chopp;Chopp IPA;;2 x 475 ml;38;bebidas;cerveja;N;
+Longs;Budweiser;;long neck;15;bebidas;cerveja;N;
+Longs;Spaten;;long neck;15;bebidas;cerveja;N;
+Longs;Stella Artois;;long neck;15;bebidas;cerveja;N;
+Longs;Heineken 0.0;;long neck;15;bebidas;não alcoólicas;N;
+Shots;Dead Men;licor de laranja, Baileys e grenadine;shot;15;bebidas;drinks;S;
+Shots;Gold Chest;licor de laranja e rum;shot;15;bebidas;drinks;S;
+Shots;Wish Me Luck;licor de menta e vodca;shot;15;bebidas;drinks;S;
+Shots;Dragon's Blood;tequila, Campari, vermute, limão, sal e tabasco;shot;15;bebidas;drinks;S;
+Shots;Jumpin' Monkeys;licor de doce de leite, licor de banana e cachaça;shot;15;bebidas;drinks;S;
+Doses;Cachaça;;dose;12;bebidas;drinks;N;
+Doses;Rum;;dose;15;bebidas;drinks;N;
+Doses;Vodca;;dose;15;bebidas;drinks;N;
+Doses;Campari;;dose;16;bebidas;drinks;N;
+Doses;Gin;;dose;22;bebidas;drinks;N;
+Doses;Licor de banana;;dose;22;bebidas;drinks;N;
+Doses;Licor de doce de leite;;dose;22;bebidas;drinks;N;
+Doses;Red Label;;dose;24;bebidas;drinks;N;
+Doses;Jack Daniel's;;dose;25;bebidas;drinks;N;
+Doses;Tequila Jose Cuervo;;dose;28;bebidas;drinks;N;
+Drinks;Caipirinha;cachaça, vodca, rum ou saquê com limão ou morango;;22;bebidas;drinks;S;
+Drinks;Caipiroska Infusion;vodca infusionada com cravo e canela;;25;bebidas;drinks;S;
+Drinks;Nevada;vodca, limão e leite condensado;;25;bebidas;drinks;S;
+Drinks;Doce de Leite Frezz;vodca, licor de doce de leite e sorvete;;25;bebidas;drinks;S;
+Drinks;Mojito;;;24;bebidas;drinks;S;
+Drinks;Negroni;;;29;bebidas;drinks;S;
+Drinks;Moscow Mule;;;28;bebidas;drinks;S;
+Drinks;Margarita;;;30;bebidas;drinks;S;
+Drinks;Cuba Libre;;;24;bebidas;drinks;S;
+Drinks;Jack & Coke;;;30;bebidas;drinks;S;
+Drinks;Sidecar;Red Label, licor de laranja e limão;;26;bebidas;drinks;S;
+Drinks;Gin tônica;;;30;bebidas;drinks;S;
+Drinks;Pink Gin;gin de morango, tônica, cranberry e laranja;;32;bebidas;drinks;S;
+Sodas italianas;Soda italiana de morango;;450 ml;15;bebidas;não alcoólicas;S;
+Sodas italianas;Soda italiana de frutas vermelhas;;450 ml;15;bebidas;não alcoólicas;S;
+Sodas italianas;Soda italiana de maçã verde;;450 ml;15;bebidas;não alcoólicas;S;
+Sodas italianas;Pink lemonade;cranberry e limão;450 ml;17;bebidas;não alcoólicas;S;
+Sucos;Suco de maracujá;;350 ml;12;bebidas;não alcoólicas;S;
+Sucos;Suco de morango;;350 ml;12;bebidas;não alcoólicas;S;adicional de leite: + R$ 3
+Sucos;Suco de abacaxi;com ou sem hortelã;350 ml;12;bebidas;não alcoólicas;S;
+Sucos;Limonada;;350 ml;12;bebidas;não alcoólicas;S;
+Sucos;Limonada suíça;;350 ml;14;bebidas;não alcoólicas;S;
+Sucos;Suco integral de uva ou laranja;;250 ml;12;bebidas;não alcoólicas;N;
+Milkshakes;Milk-shake de creme;;350 ml;22;bebidas;não alcoólicas;S;
+Milkshakes;Milk-shake de paçoca;;350 ml;25;bebidas;não alcoólicas;S;
+Milkshakes;Milk-shake de Ovomaltine ou Suflair;;350 ml;26;bebidas;não alcoólicas;S;
+Milkshakes;Milk-shake de morango ou maracujá;;350 ml;27;bebidas;não alcoólicas;S;
+Softdrinks;Matte batido;natural, limão, cranberry ou maçã verde;;13;bebidas;não alcoólicas;S;
+Softdrinks;Energético;;;18;bebidas;não alcoólicas;N;
+Softdrinks;Água com ou sem gás;;;7;bebidas;não alcoólicas;N;
+Softdrinks;Refrigerante;Coca-Cola, tônica, Citrus, Fanta, Sprite e Guaraná;;8;bebidas;refrigerante;N;
+Softdrinks;Café coado especial;;;12;bebidas;não alcoólicas;S;

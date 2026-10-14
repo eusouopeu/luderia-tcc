@@ -3,8 +3,62 @@ __pycache__/
 *.pyc
 .venv/
 venv/
-data/raw/*.jsonl
-logs/*.log
+# Dados brutos: textos integrais, históricos e respostas de API não são publicados (_instrucoes/4_metodologia.md §3.4)
+_data/raw/**/*.jsonl
+_src/_logs/*.log
+# Atalho (alias do macOS) para ~/Codigos/Apps/_shared, os padrões comuns aos apps; vale só nesta máquina
+_src/_shared
+# Bloco B4: arquivos originais grandes (microdados e agregados do Censo); regeneráveis pelos scripts de coleta
+_data/raw/\[B4\]*/**/*.7z
+_data/raw/\[B4\]*/**/*.zip
+_data/raw/\[B4\]*/caged/
 .DS_Store
 .tmp.driveupload/
 .tmp.drivedownload/
+# Bloco B1: curadoria manual e luderias aprovadas trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4)
+_data/raw/\[B1\]*/B1_curadoria_manual_*.xlsx
+_data/processed/\[B1\]*/B1_luderias_aprovadas_*.xlsx
+_data/processed/\[B1\]*/B1_comentarios_aprovadas_*.xlsx
+
+# PDFs de terceiros baixados para leitura (direitos autorais; repositório público)
+bibliografia/leituras-P1/
+
+# Bloco B1: cardápios originais (PDF, imagens, HTML de terceiros); só a transcrição em CSV é publicada
+_data/raw/\[B1\]*/cardapios/*
+!_data/raw/\[B1\]*/cardapios/transcricao/
+
+# Bloco B3: fotos do app de observação (cardápio, estante: material de terceiros); só o texto transcrito é publicado
+_data/raw/\[B3\]*/app/fotos/
+
+# Versões automáticas dos textos (mod tcc do Claude Code)
+.tcc-historico/
+
+# Arquivados: mesmas regras dos dados brutos (respostas de API e logs não são publicados)
+arquivados/**/*.jsonl
+arquivados/**/*.log
+
+# Bloco B1: cardápios baixados em _data/processed (PDF, imagens e prints de terceiros); só CSV e transcrições são publicados
+_data/processed/\[B1\]*/cardapios/**/*.pdf
+_data/processed/\[B1\]*/cardapios/**/*.png
+_data/processed/\[B1\]*/cardapios/**/*.jpg
+_data/processed/\[B1\]*/cardapios/**/*.jpeg
+_data/processed/\[B1\]*/cardapios/**/*.webp
+_data/processed/\[B1\]*/cardapios/*.pdf
+# Modelo de idioma do Tesseract (OCR), baixado de tessdata_fast
+_src/\[B1\]*/tessdata/
+
+# Bloco B1: páginas HTML do Acervo de Jogos (material de terceiros, cache da coleta); só os CSV são publicados
+_data/raw/\[B1\]*/acervodejogos/*.html
+_data/raw/\[B1\]*/acervodejogos/lojas/
+_data/raw/\[B1\]*/acervos_luderias/*/
+_data/raw/\[B1\]*/lojas_venda/
+
+# Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/Web scripts/gerar_carregadores.py)
+_src/Web scripts/carregadores/
+
+# Bloco B2: coletas do userscript e base consolidada trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4); cobertura e fila são publicadas
+_data/raw/\[B2\]*/coletas/
+_data/processed/\[B2\]*/B2_avaliacoes_periodo.csv
+
+# Cronograma: o .docx é gerado do .md quando for enviar (_src/gerar_docx_cronograma.js)
+textos/planejamento/cronograma_luderia*.docx

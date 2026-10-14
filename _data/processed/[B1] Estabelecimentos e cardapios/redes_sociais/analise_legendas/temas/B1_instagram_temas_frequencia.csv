@@ -1,0 +1,23 @@
+código;categoria;total: posts com o tema;total: % dos posts;total: % ponderado por estabelecimento;total: estabelecimentos com o tema;total: B2 avaliações, % dos comentários;total: B2 avaliações, % ponderado;total: diferença ponderada legendas - B2 (p.p.);casa de jogos: posts com o tema;casa de jogos: % dos posts;casa de jogos: % ponderado por estabelecimento;casa de jogos: estabelecimentos com o tema;casa de jogos: B2 avaliações, % dos comentários;casa de jogos: B2 avaliações, % ponderado;casa de jogos: diferença ponderada legendas - B2 (p.p.);loja com espaço de jogo: posts com o tema;loja com espaço de jogo: % dos posts;loja com espaço de jogo: % ponderado por estabelecimento;loja com espaço de jogo: estabelecimentos com o tema;loja com espaço de jogo: B2 avaliações, % dos comentários;loja com espaço de jogo: B2 avaliações, % ponderado;loja com espaço de jogo: diferença ponderada legendas - B2 (p.p.)
+ACV;Acervo de jogos;830;7.0;8.4;40;29.2;25.2;-16.8;699;12.2;15.3;21;36.7;38.4;-23.1;131;2.1;2.3;19;13.5;9.6;-7.3
+MED;Mediação lúdica (monitoria);378;3.2;4.8;31;16.5;12.6;-7.8;314;5.5;8.5;19;21.3;19.3;-10.8;64;1.0;1.5;12;6.5;4.8;-3.3
+ATD;Atendimento e hospitalidade;483;4.0;6.3;40;56.2;51.8;-45.5;342;6.0;9.3;20;58.2;52.5;-43.2;141;2.3;3.7;20;51.9;51.1;-47.4
+AB;Alimentos e bebidas;2510;21.0;22.3;42;40.0;37.3;-15.0;2150;37.5;37.1;21;47.2;52.8;-15.7;360;5.8;9.3;21;24.9;18.9;-9.6
+PRC;Preço e valor percebido;3224;27.0;28.4;45;17.2;21.0;7.4;1236;21.6;24.6;21;16.2;21.8;2.8;1988;32.0;31.7;24;19.5;20.1;11.6
+AMB;Ambiente físico e conforto;415;3.5;3.8;41;33.6;30.0;-26.2;290;5.1;4.7;20;34.6;35.3;-30.6;125;2.0;3.1;21;31.4;23.7;-20.6
+CAP;Capacidade, reserva e fila;1366;11.4;15.2;45;7.3;4.8;10.4;1185;20.7;27.4;21;10.0;8.2;19.2;181;2.9;4.5;24;1.6;0.8;3.7
+PRG;Programação e atrações;6303;52.8;53.4;45;7.0;5.9;47.5;2531;44.2;46.5;21;5.6;5.2;41.3;3772;60.7;59.4;24;9.7;6.8;52.6
+COMU;Comunidade de jogadores;431;3.6;4.2;38;5.0;5.9;-1.7;225;3.9;3.5;16;1.3;1.5;2.0;206;3.3;4.8;22;13.0;11.0;-6.2
+VAR;Varejo e pós-venda;3789;31.7;35.5;45;13.6;18.9;16.6;1079;18.8;22.9;21;1.3;1.6;21.3;2710;43.6;46.6;24;39.5;39.4;7.2
+LOC;Localização e acesso;1305;10.9;15.6;38;2.1;1.2;14.4;669;11.7;17.3;18;2.3;1.8;15.5;636;10.2;14.2;20;1.6;0.4;13.8
+INC;Segurança, inclusão e respeito;219;1.8;2.4;33;2.3;1.2;1.2;140;2.4;1.9;17;2.8;1.7;0.2;79;1.3;2.8;16;1.1;0.6;2.2
+OCA:ami;Ocasião: amigos;1439;12.0;13.8;45;12.7;;;1109;19.4;21.2;21;16.4;;;330;5.3;7.4;24;4.9;;
+OCA:fam;Ocasião: família ou crianças;676;5.7;7.6;43;9.0;;;468;8.2;10.1;21;11.3;;;208;3.3;5.4;22;4.3;;
+OCA:casal;Ocasião: casal;134;1.1;1.3;27;2.3;;;118;2.1;2.5;19;3.1;;;16;0.3;0.3;8;0.5;;
+OCA:aniv;Ocasião: aniversário ou comemoração;517;4.3;4.3;42;4.2;;;386;6.7;5.4;20;5.9;;;131;2.1;3.3;22;0.5;;
+NOV;Sinal de iniciante/não jogador;215;1.8;2.2;38;2.4;;;89;1.6;2.1;18;1.8;;;126;2.0;2.3;20;3.8;;
+HOB;Sinal de hobbyista;3639;30.5;28.5;44;11.0;;;269;4.7;5.2;20;2.8;;;3370;54.2;48.9;24;28.1;;
+DESC;Desconexão de telas;110;0.9;1.0;18;0.9;;;99;1.7;1.7;10;1.0;;;11;0.2;0.3;8;0.5;;
+DIV;Diversão como benefício;2822;23.6;25.4;44;8.0;;;2074;36.2;36.1;21;11.0;;;748;12.0;16.0;23;1.6;;
+GEEK;Identidade geek do espaço;532;4.5;6.4;40;0.9;;;247;4.3;4.6;18;1.0;;;285;4.6;8.1;22;0.5;;
+SOR;Sorteio ou concurso (só legendas);735;6.2;6.3;42;;;;247;4.3;4.8;18;;;;488;7.9;7.6;24;;;

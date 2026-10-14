@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NFC-e: o QR code de vários estados (ex.: BA) aponta para a consulta da
+     SEFAZ em http:// — e o https:// delas costuma ter cadeia de certificado
+     incompleta. O Android bloqueia http sem TLS por padrão; libera só para
+     domínios gov.br. O resto do app segue com o padrão (só https). -->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">gov.br</domain>
+    </domain-config>
+</network-security-config>

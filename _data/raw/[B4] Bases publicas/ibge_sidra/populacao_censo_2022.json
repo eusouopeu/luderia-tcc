@@ -1,0 +1,385 @@
+{
+ "tabela": 4709,
+ "nome_tabela": "População residente, Variação absoluta de população residente e Taxa de crescimento geométrico",
+ "url": "https://servicodados.ibge.gov.br/api/v3/agregados/4709/periodos/2022/variaveis/93?localidades=N1%5Ball%5D%7CN6%5B1200401%2C2704302%2C1600303%2C1302603%2C2927408%2C2304400%2C5300108%2C3205309%2C5208707%2C2111300%2C5103403%2C5002704%2C3106200%2C1501402%2C2507507%2C4106902%2C2611606%2C2211001%2C3304557%2C2408102%2C4314902%2C1100205%2C1400100%2C4205407%2C3550308%2C2800308%2C1721000%5D",
+ "data_coleta": "2026-09-14",
+ "resposta": [
+  {
+   "id": "93",
+   "variavel": "População residente",
+   "unidade": "Pessoas",
+   "resultados": [
+    {
+     "classificacoes": [],
+     "series": [
+      {
+       "localidade": {
+        "id": "1",
+        "nivel": {
+         "id": "N1",
+         "nome": "Brasil"
+        },
+        "nome": "Brasil"
+       },
+       "serie": {
+        "2022": "203080756"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1200401",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio Branco (AC)"
+       },
+       "serie": {
+        "2022": "364756"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2704302",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Maceió (AL)"
+       },
+       "serie": {
+        "2022": "957916"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1600303",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Macapá (AP)"
+       },
+       "serie": {
+        "2022": "442933"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1302603",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Manaus (AM)"
+       },
+       "serie": {
+        "2022": "2063689"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2927408",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Salvador (BA)"
+       },
+       "serie": {
+        "2022": "2417678"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2304400",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Fortaleza (CE)"
+       },
+       "serie": {
+        "2022": "2428708"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5300108",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Brasília (DF)"
+       },
+       "serie": {
+        "2022": "2817381"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3205309",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Vitória (ES)"
+       },
+       "serie": {
+        "2022": "322869"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5208707",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Goiânia (GO)"
+       },
+       "serie": {
+        "2022": "1437366"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2111300",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Luís (MA)"
+       },
+       "serie": {
+        "2022": "1037775"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5103403",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Cuiabá (MT)"
+       },
+       "serie": {
+        "2022": "650877"
+       }
+      },
+      {
+       "localidade": {
+        "id": "5002704",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Campo Grande (MS)"
+       },
+       "serie": {
+        "2022": "898100"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3106200",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belo Horizonte (MG)"
+       },
+       "serie": {
+        "2022": "2315560"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1501402",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Belém (PA)"
+       },
+       "serie": {
+        "2022": "1303403"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2507507",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "João Pessoa (PB)"
+       },
+       "serie": {
+        "2022": "833932"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4106902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Curitiba (PR)"
+       },
+       "serie": {
+        "2022": "1773718"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2611606",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Recife (PE)"
+       },
+       "serie": {
+        "2022": "1488920"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2211001",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Teresina (PI)"
+       },
+       "serie": {
+        "2022": "866300"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3304557",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Rio de Janeiro (RJ)"
+       },
+       "serie": {
+        "2022": "6211223"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2408102",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Natal (RN)"
+       },
+       "serie": {
+        "2022": "751300"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4314902",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Alegre (RS)"
+       },
+       "serie": {
+        "2022": "1332845"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1100205",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Porto Velho (RO)"
+       },
+       "serie": {
+        "2022": "460434"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1400100",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Boa Vista (RR)"
+       },
+       "serie": {
+        "2022": "413486"
+       }
+      },
+      {
+       "localidade": {
+        "id": "4205407",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Florianópolis (SC)"
+       },
+       "serie": {
+        "2022": "537211"
+       }
+      },
+      {
+       "localidade": {
+        "id": "3550308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "São Paulo (SP)"
+       },
+       "serie": {
+        "2022": "11451999"
+       }
+      },
+      {
+       "localidade": {
+        "id": "2800308",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Aracaju (SE)"
+       },
+       "serie": {
+        "2022": "602757"
+       }
+      },
+      {
+       "localidade": {
+        "id": "1721000",
+        "nivel": {
+         "id": "N6",
+         "nome": "Município"
+        },
+        "nome": "Palmas (TO)"
+       },
+       "serie": {
+        "2022": "302692"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "uso_no_plano": "Tamanho do público por capital; avaliações por 100 mil habitantes (5.2, 6.4, 6.6)"
+}

@@ -1,0 +1,58 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao
+Bebidas;Água;;;5.9;bebidas;não alcoólicas;N;
+Bebidas;Água com gás;;;5.9;bebidas;não alcoólicas;N;
+Bebidas;Refrigerante;;lata;6.9;bebidas;refrigerante;N;
+Bebidas;Refrigerante;;600 ml;11;bebidas;refrigerante;N;
+Bebidas;Refrigerante;;1,5 L;15;bebidas;refrigerante;N;
+Bebidas;Suco ou chá;;;6.9;bebidas;não alcoólicas;N;
+Bebidas;Red Bull;;;15.9;bebidas;não alcoólicas;N;
+Bebidas;Monster;;;17.9;bebidas;não alcoólicas;N;
+Bebidas;Eisenbahn ou Budweiser;;;10;bebidas;cerveja;N;baldinho: peça 5, leve 6
+Bebidas;Heineken;;;13;bebidas;cerveja;N;baldinho: peça 5, leve 6
+Bebidas;Cerveja 0% álcool;;;13;bebidas;não alcoólicas;N;
+Bebidas;Eisenbahn IPA, APA ou Weiss;;;13;bebidas;cerveja;N;baldinho: peça 5, leve 6
+Bebidas;Colorado Ribeirão;;;16;bebidas;cerveja;N;baldinho: peça 5, leve 6
+Bebidas;Patagonia;;;16;bebidas;cerveja;N;baldinho: peça 5, leve 6
+Sobremesas;Revive;bolinho de chocolate com sorvete e farofa de paçoca;;23;sobremesas;sobremesas;S;
+Sobremesas;Terracotta Army;brownie, calda de frutas vermelhas e sorvete;;26;sobremesas;sobremesas;S;
+Sobremesas;Affogato;café expresso, sorvete de creme e choco tube;;16;sobremesas;sobremesas;S;
+Sobremesas;Sorvete;;1 bola;6;sobremesas;sobremesas;N;
+Sobremesas;Sorvete;;2 bolas;10;sobremesas;sobremesas;N;
+Café;Expresso;;;5;bebidas;não alcoólicas;S;
+Café;Chocolate;;;8;bebidas;não alcoólicas;S;
+Café;Café au lait;;360 ml;8;bebidas;não alcoólicas;S;
+Café;Cappuccino;;360 ml;8;bebidas;não alcoólicas;S;
+Lanches;Place Burguer;hambúrguer bovino e suíno 200 g, mussarela, cheddar, picles e barbecue;;39.9;pratos principais;hambúrguer;S;combo: + R$ 16 com batata 250 g e bebida
+Lanches;Brass;linguiça, maionese verde, chimichurri e muçarela no pão caseiro;;29;pratos principais;outros;S;combo: + R$ 16 com batata 250 g e bebida
+Lanches;First Rat;muçarela e maionese verde no pão caseiro;;26;pratos principais;outros;S;combo: + R$ 16 com batata 250 g e bebida
+Lanches;War;hambúrguer bovino e suíno 100 g, mussarela e cheddar;;29;pratos principais;hambúrguer;S;combo: + R$ 16 com batata 250 g e bebida
+Lanches;Catan;dois hambúrgueres de 100 g, bacon, mussarela e cheddar;;34;pratos principais;hambúrguer;S;combo: + R$ 16 com batata 250 g e bebida
+Lanches;Carcassonne;dois hambúrgueres de 100 g, bacon, onion rings, mussarela e cheddar;;39;pratos principais;hambúrguer;S;combo: + R$ 16 com batata 250 g e bebida
+Lanches;La Granja;frango empanado, tomate, sour cream e rúcula no pão caseiro;;38.9;pratos principais;hambúrguer;S;combo: + R$ 16 com batata 250 g e bebida
+Lanches;Dixit;hambúrguer bovino e suíno 100 g, mussarela e salada;;31;pratos principais;hambúrguer;S;combo: + R$ 16 com batata 250 g e bebida
+Lanches;The Resistance;hambúrguer vegano, mussarela e salada;;38.9;pratos principais;hambúrguer;S;combo: + R$ 16 com batata 250 g e bebida
+Lanches;Trio;Catan, War e Dixit em formato mini;3 unidades;40;pratos principais;hambúrguer;S;combo: + R$ 16 com batata 250 g e bebida
+Lanches;Tinco;espeto à escolha, muçarela e maionese verde no pão caseiro;;26;pratos principais;outros;S;combo: + R$ 16 com batata 250 g e bebida
+Espetos;Espeto de carne;;unidade;11;entradas;outras;S;
+Espetos;Espeto de frango;;unidade;11;entradas;outras;S;
+Espetos;Espeto de linguiça;;unidade;11;entradas;outras;S;
+Espetos;Espeto de mussarela defumada;;unidade;11;entradas;outras;S;
+Espetos;Espeto de queijo coalho;;unidade;11;entradas;outras;S;
+Espetos;Pão de alho;;unidade;8;entradas;outras;S;
+Espetos;Espeto de carne com bacon;;unidade;11;entradas;outras;S;
+Espetos;Espeto de coração;;unidade;11;entradas;outras;S;
+Espetos;7 Wonders;7 espetos à escolha;7 unidades;69;entradas;outras;S;
+Porções;Batata Bandido;;250 g;21;entradas;batata;S;
+Porções;Batata Deception;;500 g;28;entradas;batata;S;
+Porções;Batata GloomHaven;;1 kg;46;entradas;batata;S;
+Porções;Batata Bandido com cheddar e bacon;;250 g;26;entradas;batata;S;
+Porções;Batata Deception com cheddar e bacon;;500 g;38;entradas;batata;S;
+Porções;Batata GloomHaven com cheddar e bacon;;1 kg;69;entradas;batata;S;
+Porções;Anéis de cebola Bandido;;300 g;24;entradas;outras;S;
+Porções;Anéis de cebola Deception;;500 g;41;entradas;outras;S;
+Porções;Anéis de cebola Rising Sun;;800 g;56;entradas;outras;S;
+Extras;Barbecue;;30 g;4;outros;adicionais;N;
+Extras;Chimichurri;;30 g;4;outros;adicionais;N;
+Extras;Cheddar;;30 g;4;outros;adicionais;N;
+Extras;Maionese verde;;30 g;4;outros;adicionais;N;
+Extras;Sour cream;;30 g;4;outros;adicionais;N;

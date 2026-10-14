@@ -1,0 +1,488 @@
+{
+ "fonte": "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses/{}",
+ "data_coleta": "2026-09-14",
+ "subclasses": {
+  "5611205": {
+   "papel_no_plano": "Principal candidata: bar com entretenimento",
+   "resposta": {
+    "id": "5611205",
+    "descricao": "BARES E OUTROS ESTABELECIMENTOS ESPECIALIZADOS EM SERVIR BEBIDAS, COM ENTRETENIMENTO ",
+    "classe": {
+     "id": "56112",
+     "descricao": "RESTAURANTES E OUTROS ESTABELECIMENTOS DE SERVIÇOS DE ALIMENTAÇÃO E BEBIDAS",
+     "grupo": {
+      "id": "561",
+      "descricao": "RESTAURANTES E OUTROS SERVIÇOS DE ALIMENTAÇÃO E BEBIDAS",
+      "divisao": {
+       "id": "56",
+       "descricao": "ALIMENTAÇÃO",
+       "secao": {
+        "id": "I",
+        "descricao": "ALOJAMENTO E ALIMENTAÇÃO"
+       }
+      }
+     },
+     "observacoes": [
+      "Esta classe compreende - as atividades de vender e servir comida preparada, com ou sem bebidas alcoólicas, ao público em geral, com serviço completo\r\n- as atividades de servir bebidas alcoólicas, com ou sem serviço de alimentação, com ou sem entretenimento, ao público em geral, com serviço completo, tais como choperias, whiskerias e outros estabelecimentos especializados em servir bebidas",
+      "Esta classe compreende ainda - o serviço de alimentação para consumo no local, com venda ou não de bebidas, em estabelecimentos que não oferecem serviço completo, tais como: lanchonetes, fast-food, pastelarias, casas de sucos, botequins e similares\r\n- os restaurantes self-service ou de comida a quilo\r\n- as atividades de restaurantes e bares em embarcações exploradas por terceiros\r\n- as sorveterias, com consumo no local, de fabricação própria ou não",
+      "Esta classe NÃO compreende - Os trailers, carrocinhas e outros tipos de ambulantes de alimentação preparada para consumo imediato (56.12-1)\r\n- a fabricação de sorvetes (10.53-8)"
+     ]
+    },
+    "atividades": [
+     "ADEGA COM SERVIÇO COMPLETO, COM ENTRETENIMENTO (MÚSICA, APRESENTAÇÕES DE SHOWS, ENTRE OUTROS)",
+     "BAR COM FABRICAÇÃO PRÓPRIA DE CERVEJA (BREWPUB), COM ENTRETENIMENTO; ATIVIDADES DE",
+     "BAR COM SERVIÇO COMPLETO, COM ENTRETENIMENTO (MÚSICA, APRESENTAÇÕES DE SHOWS, ENTRE OUTROS)",
+     "BARES E OUTROS ESTABELECIMENTOS ESPECIALIZADOS EM SERVIR BEBIDAS, COM ENTRETENIMENTO  (MÚSICA, APRESENTAÇÕES DE SHOWS, ENTRE OUTROS)",
+     "CHOPERIA, CHOPARIA COM SERVIÇO COMPLETO, COM ENTRETENIMENTO (MÚSICA, APRESENTAÇÕES DE SHOWS, ENTRE OUTROS)",
+     "PETISCARIA (BAR), COM ENTRETENIMENTO (MÚSICA, APRESENTAÇÕES DE SHOWS, ENTRE OUTROS)",
+     "SNACK-BAR, COM ENTRETENIMENTO (MÚSICA, APRESENTAÇÕES DE SHOWS, ENTRE OUTROS)",
+     "TRUCK BEER, COM ENTRETENIMENTO (MÚSICA, APRESENTAÇÕES DE SHOWS, ENTRE OUTROS)",
+     "WHISKERIA, WHISKARIA COM SERVIÇO COMPLETO, COM ENTRETENIMENTO (MÚSICA, APRESENTAÇÕES DE SHOWS, ENTRE OUTROS)"
+    ],
+    "observacoes": [
+     "Esta subclasse compreende - as atividades de servir bebidas alcoólicas, com entretenimento (música ao vivo ou não, apresentações, utilização de equipamentos sonoros, ainda que de forma eventual ou periódica), ao público em geral, com serviço completo",
+     "Esta subclasse NÃO compreende - as atividades de servir bebidas alcoólicas, sem entretenimento, ao público em geral, com serviço completo (5611-2/04)\r\n- as casas de festas e eventos (8230-0/02)\r\n- as artes cênicas e espetáculos (90.01-9)\r\n- as atividades de exploração de jogos de azar e apostas (9200-3/99)\r\n- as atividades de exploração de discotecas, cabarés, danceterias, salões de dança, de bailes e atividades similares (9329-8/01)"
+    ]
+   }
+  },
+  "5611204": {
+   "papel_no_plano": "Alternativa: bar sem entretenimento",
+   "resposta": {
+    "id": "5611204",
+    "descricao": "BARES E OUTROS ESTABELECIMENTOS ESPECIALIZADOS EM SERVIR BEBIDAS, SEM ENTRETENIMENTO",
+    "classe": {
+     "id": "56112",
+     "descricao": "RESTAURANTES E OUTROS ESTABELECIMENTOS DE SERVIÇOS DE ALIMENTAÇÃO E BEBIDAS",
+     "grupo": {
+      "id": "561",
+      "descricao": "RESTAURANTES E OUTROS SERVIÇOS DE ALIMENTAÇÃO E BEBIDAS",
+      "divisao": {
+       "id": "56",
+       "descricao": "ALIMENTAÇÃO",
+       "secao": {
+        "id": "I",
+        "descricao": "ALOJAMENTO E ALIMENTAÇÃO"
+       }
+      }
+     },
+     "observacoes": [
+      "Esta classe compreende - as atividades de vender e servir comida preparada, com ou sem bebidas alcoólicas, ao público em geral, com serviço completo\r\n- as atividades de servir bebidas alcoólicas, com ou sem serviço de alimentação, com ou sem entretenimento, ao público em geral, com serviço completo, tais como choperias, whiskerias e outros estabelecimentos especializados em servir bebidas",
+      "Esta classe compreende ainda - o serviço de alimentação para consumo no local, com venda ou não de bebidas, em estabelecimentos que não oferecem serviço completo, tais como: lanchonetes, fast-food, pastelarias, casas de sucos, botequins e similares\r\n- os restaurantes self-service ou de comida a quilo\r\n- as atividades de restaurantes e bares em embarcações exploradas por terceiros\r\n- as sorveterias, com consumo no local, de fabricação própria ou não",
+      "Esta classe NÃO compreende - Os trailers, carrocinhas e outros tipos de ambulantes de alimentação preparada para consumo imediato (56.12-1)\r\n- a fabricação de sorvetes (10.53-8)"
+     ]
+    },
+    "atividades": [
+     "ADEGA COM SERVIÇO COMPLETO, SEM ENTRETENIMENTO",
+     "BAR COM FABRICAÇÃO PRÓPRIA DE CERVEJA (BREWPUB), SEM ENTRETENIMENTO; ATIVIDADES DE",
+     "BAR COM SERVIÇO COMPLETO, SEM ENTRETENIMENTO",
+     "BARES E OUTROS ESTABELECIMENTOS ESPECIALIZADOS EM SERVIR BEBIDAS, SEM ENTRETENIMENTO",
+     "CHOPARIA, CHOPERIA COM SERVIÇO COMPLETO, SEM ENTRETENIMENTO",
+     "PETISCARIA (BAR), SEM ENTRETENIMENTO",
+     "SERVIÇO AMBULANTE DE BEBIDAS, SEM ENTRETENIMENTO",
+     "SNACK-BAR, SEM ENTRETENIMENTO",
+     "TRUCK BEER, SEM ENTRETENIMENTO",
+     "WHISKERIA, WHISKARIA COM SERVIÇO COMPLETO, SEM ENTRETENIMENTO"
+    ],
+    "observacoes": [
+     "Esta subclasse compreende - as atividades de servir bebidas alcoólicas, sem entretenimento, ao público em geral, com serviço completo",
+     "Esta subclasse NÃO compreende - as atividades de servir bebidas alcoólicas, com entretenimento (sonoro ou não, de forma eventual ou periódica), ao público em geral, com serviço completo (5611-2/05)"
+    ]
+   }
+  },
+  "5611201": {
+   "papel_no_plano": "Alternativa: restaurante (cozinha própria)",
+   "resposta": {
+    "id": "5611201",
+    "descricao": "RESTAURANTES E SIMILARES",
+    "classe": {
+     "id": "56112",
+     "descricao": "RESTAURANTES E OUTROS ESTABELECIMENTOS DE SERVIÇOS DE ALIMENTAÇÃO E BEBIDAS",
+     "grupo": {
+      "id": "561",
+      "descricao": "RESTAURANTES E OUTROS SERVIÇOS DE ALIMENTAÇÃO E BEBIDAS",
+      "divisao": {
+       "id": "56",
+       "descricao": "ALIMENTAÇÃO",
+       "secao": {
+        "id": "I",
+        "descricao": "ALOJAMENTO E ALIMENTAÇÃO"
+       }
+      }
+     },
+     "observacoes": [
+      "Esta classe compreende - as atividades de vender e servir comida preparada, com ou sem bebidas alcoólicas, ao público em geral, com serviço completo\r\n- as atividades de servir bebidas alcoólicas, com ou sem serviço de alimentação, com ou sem entretenimento, ao público em geral, com serviço completo, tais como choperias, whiskerias e outros estabelecimentos especializados em servir bebidas",
+      "Esta classe compreende ainda - o serviço de alimentação para consumo no local, com venda ou não de bebidas, em estabelecimentos que não oferecem serviço completo, tais como: lanchonetes, fast-food, pastelarias, casas de sucos, botequins e similares\r\n- os restaurantes self-service ou de comida a quilo\r\n- as atividades de restaurantes e bares em embarcações exploradas por terceiros\r\n- as sorveterias, com consumo no local, de fabricação própria ou não",
+      "Esta classe NÃO compreende - Os trailers, carrocinhas e outros tipos de ambulantes de alimentação preparada para consumo imediato (56.12-1)\r\n- a fabricação de sorvetes (10.53-8)"
+     ]
+    },
+    "atividades": [
+     "A KILO; ALIMENTAÇÃO, COMIDA, REFEIÇÃO",
+     "A PESO; ALIMENTAÇÃO, COMIDA, REFEIÇÃO",
+     "A QUILO; SERVIÇO DE ALIMENTAÇÃO",
+     "ALIMENTAÇÃO COM SERVIÇO COMPLETO; SERVIÇOS DE",
+     "CHURRASCARIA; SERVIÇO DE ALIMENTAÇÃO",
+     "EXPLORAÇÃO DE VAGÕES-RESTAURANTES, POR TERCEIROS; SERVIÇO DE ALIMENTAÇÃO",
+     "PENSÃO; SERVIÇO DE ALIMENTAÇÃO",
+     "PIZZARIA COM SERVIÇO COMPLETO; SERVIÇO DE ALIMENTAÇÃO",
+     "RESTAURANTE COM SERVIÇO COMPLETO",
+     "RESTAURANTE POR COMIDA A QUILO; SERVIÇO DE",
+     "RESTAURANTES E BARES EM EMBARCAÇÕES EXPLORADOS POR TERCEIROS; SERVIÇO DE",
+     "RESTAURANTES E SIMILARES",
+     "ROTISSERIA; SERVIÇO DE ALIMENTAÇÃO",
+     "SELF-SERVICE; SERVIÇO DE ALIMENTAÇÃO",
+     "TRATTORIA; SERVIÇO DE ALIMENTAÇÃO"
+    ],
+    "observacoes": [
+     "Esta subclasse compreende - as atividades de vender e servir comida preparada, com ou sem bebidas alcoólicas ao público em geral, com serviço completo",
+     "Esta subclasse compreende ainda - os restaurantes self-service ou de comida a quilo\r\n- as atividades de restaurante e bares em embarcações explorados por terceiros"
+    ]
+   }
+  },
+  "5611203": {
+   "papel_no_plano": "Alternativa: lanchonete",
+   "resposta": {
+    "id": "5611203",
+    "descricao": "LANCHONETES, CASAS DE CHÁ, DE SUCOS E SIMILARES",
+    "classe": {
+     "id": "56112",
+     "descricao": "RESTAURANTES E OUTROS ESTABELECIMENTOS DE SERVIÇOS DE ALIMENTAÇÃO E BEBIDAS",
+     "grupo": {
+      "id": "561",
+      "descricao": "RESTAURANTES E OUTROS SERVIÇOS DE ALIMENTAÇÃO E BEBIDAS",
+      "divisao": {
+       "id": "56",
+       "descricao": "ALIMENTAÇÃO",
+       "secao": {
+        "id": "I",
+        "descricao": "ALOJAMENTO E ALIMENTAÇÃO"
+       }
+      }
+     },
+     "observacoes": [
+      "Esta classe compreende - as atividades de vender e servir comida preparada, com ou sem bebidas alcoólicas, ao público em geral, com serviço completo\r\n- as atividades de servir bebidas alcoólicas, com ou sem serviço de alimentação, com ou sem entretenimento, ao público em geral, com serviço completo, tais como choperias, whiskerias e outros estabelecimentos especializados em servir bebidas",
+      "Esta classe compreende ainda - o serviço de alimentação para consumo no local, com venda ou não de bebidas, em estabelecimentos que não oferecem serviço completo, tais como: lanchonetes, fast-food, pastelarias, casas de sucos, botequins e similares\r\n- os restaurantes self-service ou de comida a quilo\r\n- as atividades de restaurantes e bares em embarcações exploradas por terceiros\r\n- as sorveterias, com consumo no local, de fabricação própria ou não",
+      "Esta classe NÃO compreende - Os trailers, carrocinhas e outros tipos de ambulantes de alimentação preparada para consumo imediato (56.12-1)\r\n- a fabricação de sorvetes (10.53-8)"
+     ]
+    },
+    "atividades": [
+     "ALIMENTAÇÃO SEM SERVIÇO COMPLETO; SERVIÇO DE",
+     "AÇAITERIA; SERVIÇO DE ALIMENTAÇÃO",
+     "BAR SEM SERVIÇO COMPLETO",
+     "BIROSCA; SERVIÇO DE ALIMENTAÇÃO",
+     "BROWNERIA; SERVIÇO DE ALIMENTAÇÃO",
+     "CAFETERIA; SERVIÇOS DE",
+     "CALDO DE CANA; SERVIÇO DE ALIMENTAÇÃO",
+     "CASA DE DOCES E SALGADOS; SERVIÇO DE ALIMENTAÇÃO",
+     "CASA DE SUCO; SERVIÇO DE ALIMENTAÇÃO",
+     "CASAS DE CHÁ",
+     "FAST-FOOD; SERVIÇO DE ALIMENTAÇÃO",
+     "GELATERIA; SERVIÇO DE ALIMENTAÇÃO",
+     "HAMBURGUERIA; SERVIÇO DE ALIMENTAÇÃO",
+     "LANCHERIA; SERVIÇO DE ALIMENTAÇÃO",
+     "LANCHONETE; SERVIÇO DE ALIMENTAÇÃO",
+     "PALETERIA; SERVIÇO DE ALIMENTAÇÃO",
+     "PASTELARIA; SERVIÇO DE ALIMENTAÇÃO",
+     "PIZZARIA (TIPO FAST- FOOD); SERVIÇO DE ALIMENTAÇÃO",
+     "SORVETERIA COM FABRICAÇÃO NO LOCAL; SERVIÇO DE ALIMENTAÇÃO",
+     "SORVETERIA; SERVIÇO DE ALIMENTAÇÃO"
+    ],
+    "observacoes": [
+     "Esta subclasse compreende - o serviço de alimentação para consumo no local, com venda ou não de bebidas, em estabelecimentos que não oferecem serviço completo, tais como:\r\n#- lanchonetes, fast-food, pastelarias, casas de chá, casas de suco e similares\r\n#- sorveterias, com consumo no local, de fabricação própria ou não",
+     "Esta subclasse NÃO compreende - o serviço ambulante de alimentação (5612-1/00)\r\n- as cantinas privativas e estabelecimentos especializados na venda de bebidas alcoólicas (5620-1/03) e (5611-2/02)\r\n- a fabricação de sorvetes (1053-8/00)"
+    ]
+   }
+  },
+  "9329899": {
+   "papel_no_plano": "Secundária: recreação e lazer não especificados (jogos de mesa)",
+   "resposta": {
+    "id": "9329899",
+    "descricao": "OUTRAS ATIVIDADES DE RECREAÇÃO E LAZER NÃO ESPECIFICADAS ANTERIORMENTE",
+    "classe": {
+     "id": "93298",
+     "descricao": "ATIVIDADES DE RECREAÇÃO E LAZER NÃO ESPECIFICADAS ANTERIORMENTE",
+     "grupo": {
+      "id": "932",
+      "descricao": "ATIVIDADES DE RECREAÇÃO E LAZER",
+      "divisao": {
+       "id": "93",
+       "descricao": "ATIVIDADES ESPORTIVAS E DE RECREAÇÃO E LAZER",
+       "secao": {
+        "id": "R",
+        "descricao": "ARTES, CULTURA, ESPORTE E RECREAÇÃO"
+       }
+      }
+     },
+     "observacoes": [
+      "Esta classe compreende - as atividades de exploração de discotecas, cabarés, danceterias, salões de dança e similares\r\n- as atividades de exploração dos estabelecimentos de boliche\r\n- as atividades de exploração de estabelecimentos de jogos de sinuca, bilhar e similares\r\n- a exploração de estabelecimentos de jogos eletrônicos recreativos\r\n- as atividades de operação da infra-estrutura de transportes recreacionais, como as marinas, garagens, estacionamentos para a guarda de embarcações, atracadores, etc.\r\n- a organização de feiras e shows de natureza recreacional\r\n- a exploração de pedalinhos\r\n- a exploração de karts\r\n- a exploração de trenzinhos recreacionais\r\n- outras atividades relacionadas ao lazer não especificadas anteriormente",
+      "Esta classe compreende ainda - o transporte para fins turísticos em veículos de tração animal",
+      "Esta classe NÃO compreende - a exploração de trens turísticos, teleféricos e similares (49.50-7)\r\n- os cruzeiros para pesca (divisão 50)\r\n- os acampamentos (campings) (55.90-6)\r\n- as atividades de agenciamento de profissionais para atividades esportivas, culturais e artísticas (74.90-1)\r\n- os serviços de organização de feiras, congressos, exposições e festas (82.30-0)\r\n- as casas de festas e eventos (82.30-0)\r\n- as salas de acesso à internet (82.99-7)\r\n- as atividades dos instrutores independentes de dança e as academias de dança (85.92-9)\r\n- as atividades de gestão de espaços para artes cênicas, espetáculos e outras atividades artísticas (90.03-5)\r\n- as artes cênicas e espetáculos (90.01-9)\r\n- as atividades de museus e de exploração de lugares e prédios históricos e atrações similares (91.02-3)\r\n- as atividades de exploração de casas de bingo (92.00-3)\r\n- as atividades de exploração de jogos de azar e apostas (92.00-3)\r\n- as atividades dos clubes sociais e esportivos (93.12-3)"
+     ]
+    },
+    "atividades": [
+     "ANIMAÇÃO E RECREAÇÃO EM FESTAS E EVENTOS; ATIVIDADES DE",
+     "AQUÁRIO PARA VISITAÇÃO",
+     "BALONISMO PARA FINS DE RECREAÇÃO; ATIVIDADES DE",
+     "BRINQUEDOTECA; ATIVIDADES DE",
+     "CARRINHOS ELÉTRICOS EM CAMPO DE GOLFE; LOCAÇÃO DE",
+     "CHARRETES PARA PASSEIO; LOCAÇÃO DE",
+     "COLÔNIA DE FÉRIAS",
+     "EMBARCAÇÕES (BARCOS) PARA FINS RECREATIVOS; EXPLORAÇÃO DE",
+     "EMBARCAÇÕES (BARCOS) PARA LAZER, COM TRIPULAÇÃO; LOCAÇÃO DE",
+     "EMBARCAÇÕES (BARCOS) RECREATIVAS, COM TRIPULAÇÃO; LOCAÇÃO DE",
+     "ENTRETENIMENTO INFANTIL; PRESTAÇÃO DE SERVIÇOS DE",
+     "ESCUNAS PARA FINS RECREATIVOS; LOCAÇÃO DE",
+     "ESCUNAS PARA LAZER; LOCAÇÃO DE",
+     "ESTACIONAMENTO DE BARCOS (MARINA) PARA RECREAÇÃO OU LAZER; ATIVIDADES DE",
+     "ESTADIA DE BARCOS; SERVIÇOS DE",
+     "ESTADIA PARA EMBARCAÇÕES DE ESPORTE E LAZER; SERVIÇOS DE",
+     "EXPLORAÇÃO DE BANANA BOAT; SERVIÇOS DE",
+     "EXPLORAÇÃO DE CAIAQUES; SERVIÇOS DE",
+     "EXPLORAÇÃO DE JOGOS DE BOCHA; ATIVIDADES DE",
+     "EXPLORAÇÃO DE TUK TUK PARA PASSEIOS TURÍSTICOS; SERVIÇOS DE",
+     "GARAGEM DE BARCOS; LANCHAS",
+     "GARAGEM NÁUTICA; GUARDA DE BARCOS DE LAZER",
+     "GUARDA DE BARCOS (MARINA) PARA RECREAÇÃO OU LAZER; ATIVIDADES DE",
+     "GUARDA DE EMBARCAÇÕES; SERVIÇOS DE",
+     "JOGO DE SNOOKER; EXPLORAÇÃO DE",
+     "KARTS; EXPLORAÇÃO DE",
+     "MARINA; GUARDA DE BARCOS, IATES, JET SKI",
+     "MINI BUGGY; LOCAÇÃO DE, ALUGUEL DE",
+     "MÁQUINAS DE PEGAR BICHOS, URSOS, URSINHOS DE PELÚCIA; GESTÃO DE",
+     "NAÚTICA E LAZER; LOCAÇÃO DE, ALUGUEL DE",
+     "PAINT BALL; ATIVIDADES DE RECREAÇÃO COM",
+     "PEBOLIM, FUTEBOL DE MESA, TOTÓ; EXPLORAÇÃO DE",
+     "PEDALINHOS; LOCAÇÃO DE",
+     "PRANCHAS DE SURFE; LOCAÇÃO, ALUGUEL DE",
+     "RECREAÇÃO, CONTATO E INTERAÇÃO COM ANIMAIS; ATIVIDADES DE",
+     "SHOWS DE NATUREZA RECREACIONAL",
+     "SÍTIOS DE LAZER; ALUGUEL DE",
+     "TRENZINHO PARA PASSEIOS TURÍSTICOS;  EXPLORAÇÃO DE",
+     "TRENZINHO RECREACIONAL; EXPLORAÇÃO DE",
+     "VAGAS PARA BARCOS; SERVIÇOS DE ",
+     "VAGAS PARA EMBARCAÇÕES; SERVIÇOS DE",
+     "VEÍCULOS DE TRAÇÃO ANIMAL; TRANSPORTE DE"
+    ],
+    "observacoes": [
+     "Esta subclasse compreende - as atividades de operação da infra-estrutura de transportes recreacionais, como as marinas, garagens, estacionamentos para a guarda de embarcações, atracadores, etc.\r\n- a organização de feiras e shows de natureza recreacional\r\n- a exploração de pedalinhos\r\n- a exploração de karts\r\n- a exploração de trenzinhos recreacionais\r\n- outras atividades relacionadas ao lazer não especificadas anteriormente",
+     "Esta subclasse compreende ainda - o transporte para fins turísticos em veículos de tração animal",
+     "Esta subclasse NÃO compreende - o transporte em trens turísticos, teleféricos e similares para exploração de pontos turísticos (4950-7/00)\r\n- os cruzeiros para pesca (divisão 50)\r\n- as atividades de campings (acampamentos) (5590-6/02)\r\n- as atividades de agenciamento de profissionais para atividades esportivas, culturais e artísticas (7490-1/05)\r\n- os serviços de organização de feiras, congressos, exposições e festas (8230-0/01)\r\n- as casas de festas e eventos (8230-0/02)\r\n- as artes cênicas e espetáculos (90.01-9/01, 90.01-9/02, 90.01-9-1/03, 90.01-9/04, 90.01-9/05, 90.01-9/06 e 90.01-9/99)\r\n- as atividades de museus e de exploração de lugares e prédios históricos e atrações similares (9102-3/01)\r\n- as atividades de exploração de jogos de azar e apostas (92.00-3/01, 92.00-3/02 e 92.00-3/99)\r\n- as atividades dos clubes sociais e esportivos (9312-3/00)"
+    ]
+   }
+  },
+  "9329804": {
+   "papel_no_plano": "Secundária: exploração de jogos eletrônicos recreativos",
+   "resposta": {
+    "id": "9329804",
+    "descricao": "EXPLORAÇÃO DE JOGOS ELETRÔNICOS RECREATIVOS",
+    "classe": {
+     "id": "93298",
+     "descricao": "ATIVIDADES DE RECREAÇÃO E LAZER NÃO ESPECIFICADAS ANTERIORMENTE",
+     "grupo": {
+      "id": "932",
+      "descricao": "ATIVIDADES DE RECREAÇÃO E LAZER",
+      "divisao": {
+       "id": "93",
+       "descricao": "ATIVIDADES ESPORTIVAS E DE RECREAÇÃO E LAZER",
+       "secao": {
+        "id": "R",
+        "descricao": "ARTES, CULTURA, ESPORTE E RECREAÇÃO"
+       }
+      }
+     },
+     "observacoes": [
+      "Esta classe compreende - as atividades de exploração de discotecas, cabarés, danceterias, salões de dança e similares\r\n- as atividades de exploração dos estabelecimentos de boliche\r\n- as atividades de exploração de estabelecimentos de jogos de sinuca, bilhar e similares\r\n- a exploração de estabelecimentos de jogos eletrônicos recreativos\r\n- as atividades de operação da infra-estrutura de transportes recreacionais, como as marinas, garagens, estacionamentos para a guarda de embarcações, atracadores, etc.\r\n- a organização de feiras e shows de natureza recreacional\r\n- a exploração de pedalinhos\r\n- a exploração de karts\r\n- a exploração de trenzinhos recreacionais\r\n- outras atividades relacionadas ao lazer não especificadas anteriormente",
+      "Esta classe compreende ainda - o transporte para fins turísticos em veículos de tração animal",
+      "Esta classe NÃO compreende - a exploração de trens turísticos, teleféricos e similares (49.50-7)\r\n- os cruzeiros para pesca (divisão 50)\r\n- os acampamentos (campings) (55.90-6)\r\n- as atividades de agenciamento de profissionais para atividades esportivas, culturais e artísticas (74.90-1)\r\n- os serviços de organização de feiras, congressos, exposições e festas (82.30-0)\r\n- as casas de festas e eventos (82.30-0)\r\n- as salas de acesso à internet (82.99-7)\r\n- as atividades dos instrutores independentes de dança e as academias de dança (85.92-9)\r\n- as atividades de gestão de espaços para artes cênicas, espetáculos e outras atividades artísticas (90.03-5)\r\n- as artes cênicas e espetáculos (90.01-9)\r\n- as atividades de museus e de exploração de lugares e prédios históricos e atrações similares (91.02-3)\r\n- as atividades de exploração de casas de bingo (92.00-3)\r\n- as atividades de exploração de jogos de azar e apostas (92.00-3)\r\n- as atividades dos clubes sociais e esportivos (93.12-3)"
+     ]
+    },
+    "atividades": [
+     "ACESSO À INTERNET PARA JOGOS EM REDE",
+     "CYBER CAFÉ COM PREDOMINANCIA DE EXPLORAÇÃO DE JOGOS ELETRÔNICOS E ACESSO À INTERNET",
+     "EXPLORAÇÃO DE JOGOS NO COMPUTADOR; SERVIÇOS DE",
+     "JOGO DE FLIPERAMA; EXPLORAÇÃO DE",
+     "JOGOS ELETRÔNICOS; EXPLORAÇÃO DE",
+     "LAN HOUSE COM ACESSO À INTERNET PREDOMINANTEMENTE PARA JOGOS EM REDE",
+     "VENDA DE ITENS VIRTUAIS PARA USO EM JOGOS ELETRONICOS (DIGITAIS), EXCETO O DESENVOLVIMENTO E A INTERMEDIAÇÃO; ATIVIDADES DE"
+    ],
+    "observacoes": [
+     "Esta subclasse compreende - a exploração de estabelecimentos de jogos eletrônicos recreativos",
+     "Esta subclasse NÃO compreende - as salas de acesso à internet (8299-7/07)\r\n- as atividades de exploração de casas de bingo (9200-3/01)"
+    ]
+   }
+  },
+  "8230001": {
+   "papel_no_plano": "Secundária: organização de festas e eventos",
+   "resposta": {
+    "id": "8230001",
+    "descricao": "SERVIÇOS DE ORGANIZAÇÃO DE FEIRAS, CONGRESSOS, EXPOSIÇÕES E FESTAS",
+    "classe": {
+     "id": "82300",
+     "descricao": "ATIVIDADES DE ORGANIZAÇÃO DE EVENTOS, EXCETO CULTURAIS E ESPORTIVOS",
+     "grupo": {
+      "id": "823",
+      "descricao": "ATIVIDADES DE ORGANIZAÇÃO DE EVENTOS, EXCETO CULTURAIS E ESPORTIVOS",
+      "divisao": {
+       "id": "82",
+       "descricao": "SERVIÇOS DE ESCRITÓRIO, DE APOIO ADMINISTRATIVO E OUTROS SERVIÇOS PRESTADOS PRINCIPALMENTE ÀS EMPRESAS",
+       "secao": {
+        "id": "N",
+        "descricao": "ATIVIDADES ADMINISTRATIVAS E SERVIÇOS COMPLEMENTARES"
+       }
+      }
+     },
+     "observacoes": [
+      "Esta classe compreende - as atividades de organização e promoção de feiras, leilões, congressos, convenções, conferências e exposições comerciais e profissionais, incluindo ou não o fornecimento de pessoal para operar a infra-estrutura dos lugares onde ocorrem esses eventos\r\n- a gestão de espaço para exposição para uso de terceiros\r\n- a organização de festas e eventos, familiares ou não, inclusive festas de formaturas\r\n- as atividades de gestão de casas de festas e eventos",
+      "Esta classe NÃO compreende - os serviços de alimentação para eventos e recepções - bufê (56.20-1)\r\n- a organização, produção e promoção de eventos culturais (90.01-9)\r\n- a produção e promoção de eventos esportivos (93.19-1)"
+     ]
+    },
+    "atividades": [
+     "EXPOSIÇÃO DE ANIMAIS EM FEIRAS",
+     "GESTÃO DE ESPAÇO PARA EXPOSIÇÃO, PARA USO DE TERCEIROS; ATIVIDADES DE",
+     "ORGANIZAÇÃO DE FESTAS FAMILIARES; SERVIÇO DE",
+     "ORGANIZAÇÃO DE FESTAS INFANTIS; SERVIÇO DE",
+     "ORGANIZAÇÃO DE FESTAS; SERVIÇO DE",
+     "ORGANIZAÇÃO DE FORMATURAS; SERVIÇO DE",
+     "ORGANIZAÇÃO, PRODUÇÃO E PROMOÇÃO DE ENCONTROS E CONGRESSOS; SERVIÇOS DE",
+     "ORGANIZAÇÃO, PRODUÇÃO E PROMOÇÃO DE EVENTOS, EXCETO CULTURAIS E ESPORTIVOS; SERVIÇOS DE",
+     "ORGANIZAÇÃO, PRODUÇÃO E PROMOÇÃO DE FEIRAS E EXPOSIÇÕES; SERVIÇOS DE",
+     "PARQUE DE LEILÃO DE GADO; ORGANIZAÇÃO DE",
+     "PARQUE PARA FEIRAS AGROPECUÁRIAS; GESTÃO DE",
+     "REMATES RURAIS; SERVIÇOS DE",
+     "SHOW-ROOM; GESTÃO DE"
+    ],
+    "observacoes": [
+     "Esta subclasse compreende - as atividades de organização e promoção de feiras, leilões, congressos, convenções, conferências e exposições comerciais e profissionais, incluindo ou não o fornecimento de pessoal para operar a infra-estrutura dos lugares onde ocorrem esses eventos\r\n- a gestão de espaço para exposição para uso de terceiros\r\n- a organização de festas e eventos, familiares ou não, inclusive festas de formaturas",
+     "Esta subclasse NÃO compreende - os serviços de alimentação para eventos e recepções - bufê (5620-1/02)\r\n- as casas de festas e eventos (8230-0/02)\r\n- a organização, produção e promoção de eventos culturais (90.01-9/01, 90.01-9/02, 90.01-9/03, 90.01-9/04, 90.01-9/05, 90.01-9/06 e 90.01-9/99)\r\n- a produção e promoção de eventos esportivos (9319-1/01)"
+    ]
+   }
+  },
+  "5620102": {
+   "papel_no_plano": "Secundária: bufê para eventos",
+   "resposta": {
+    "id": "5620102",
+    "descricao": "SERVIÇOS DE ALIMENTAÇÃO PARA EVENTOS E RECEPÇÕES - BUFÊ",
+    "classe": {
+     "id": "56201",
+     "descricao": "SERVIÇOS DE CATERING, BUFÊ E OUTROS SERVIÇOS DE COMIDA PREPARADA",
+     "grupo": {
+      "id": "562",
+      "descricao": "SERVIÇOS DE CATERING, BUFÊ E OUTROS SERVIÇOS DE COMIDA PREPARADA",
+      "divisao": {
+       "id": "56",
+       "descricao": "ALIMENTAÇÃO",
+       "secao": {
+        "id": "I",
+        "descricao": "ALOJAMENTO E ALIMENTAÇÃO"
+       }
+      }
+     },
+     "observacoes": [
+      "Esta classe compreende - os serviços de bufê para banquetes, coquetéis, recepções, etc .\r\n- a preparação de refeições em cozinha central por conta de terceiros (catering) para fornecimento a empresas de linhas aéreas e outras empresas de transporte\r\n- as cantinas, restaurantes de empresas e outros serviços de alimentação",
+      "Esta classe compreende ainda - a preparação de refeições ou pratos cozidos, inclusive congelados, entregues ou servidos em domicílios."
+     ]
+    },
+    "atividades": [
+     "ALIMENTAÇÃO FORNECIDOS POR BUFÊ (BUFFET) PARA BANQUETES, COQUETÉIS E RECEPÇÕES; SERVIÇOS DE",
+     "BUFE; SERVIÇOS DE ALIMENTAÇÃO",
+     "BUFFET; SERVIÇO DE ALIMENTAÇÃO",
+     "FORNECIMENTO DE ALIMENTAÇÃO PARA EVENTOS E RECEPÇÕES; SERVIÇOS DE"
+    ],
+    "observacoes": [
+     "Esta subclasse compreende - o serviço de alimentação fornecidos por bufê para banquetes, coquetéis, recepções, etc."
+    ]
+   }
+  },
+  "4763601": {
+   "papel_no_plano": "Secundária: venda de jogos (brinquedos e artigos recreativos)",
+   "resposta": {
+    "id": "4763601",
+    "descricao": "COMÉRCIO VAREJISTA DE BRINQUEDOS E ARTIGOS RECREATIVOS",
+    "classe": {
+     "id": "47636",
+     "descricao": "COMÉRCIO VAREJISTA DE ARTIGOS RECREATIVOS E ESPORTIVOS",
+     "grupo": {
+      "id": "476",
+      "descricao": "COMÉRCIO VAREJISTA DE ARTIGOS CULTURAIS, RECREATIVOS E ESPORTIVOS",
+      "divisao": {
+       "id": "47",
+       "descricao": "COMÉRCIO VAREJISTA",
+       "secao": {
+        "id": "G",
+        "descricao": "COMÉRCIO; REPARAÇÃO DE VEÍCULOS AUTOMOTORES E MOTOCICLETAS"
+       }
+      }
+     },
+     "observacoes": [
+      "Esta classe compreende - o comércio varejista de brinquedos e artigos recreativos\r\n- o comércio varejista de artigos esportivos\r\n- o comércio varejista de bicicletas e triciclos; peças e acessórios\r\n- o comércio varejista de artigos de caça, pesca e camping\r\n- o comércio varejista de embarcações e motores e outros veículos recreativos; peças e acessórios\r\n- o comércio varejista de aparelhos e equipamentos de ginástica",
+      "Esta classe compreende ainda - o comércio varejista de artigos e acessórios do vestuário para prática de esportes",
+      "Esta classe NÃO compreende - o comércio de armas e munições (47.89-0)\r\n- o comércio varejista de calçados esportivos (47.82-2)"
+     ]
+    },
+    "atividades": [
+     "AEROMODELOS; COMÉRCIO VAREJISTA DE",
+     "ARTIGOS DE BRINQUEDOS; COMÉRCIO VAREJISTA",
+     "ARTIGOS RECREATIVOS; COMÉRCIO VAREJISTA",
+     "BRINQUEDOS ARTESANAIS; COMÉRCIO VAREJISTA",
+     "BRINQUEDOS DE QUALQUER MATERIAL; COMÉRCIO VAREJISTA",
+     "BRINQUEDOS, JOGOS ELETRÔNICOS OU NÃO, PEÇAS E ACESSÓRIOS PARA; COMÉRCIO VAREJISTA",
+     "CARRINHOS DE CONTROLE REMOTO (AUTOMODELOS); COMÉRCIO VAREJISTA DE ",
+     "JOGOS RECREATIVOS; COMÉRCIO VAREJISTA",
+     "VÍDEO GAME, ELETRÔNICOS OU NÃO; COMÉRCIO VAREJISTA"
+    ],
+    "observacoes": [
+     "Esta subclasse compreende - o comércio varejista de brinquedos, jogos (eletrônicos ou não) e artigos recreativos, inclusive suas peças e acessórios",
+     "Esta subclasse NÃO compreende - o comércio varejista de artigos esportivos (4763-6/02)\r\n- o comércio varejista de bicicletas e triciclos (4763-6/03)\r\n- o comércio varejista de artigos de caça, pesca e camping (4763-6/04)"
+    ]
+   }
+  },
+  "7729202": {
+   "papel_no_plano": "Secundária: aluguel de artigos de uso pessoal (locação de jogos)",
+   "resposta": {
+    "id": "7729202",
+    "descricao": "ALUGUEL DE MÓVEIS, UTENSÍLIOS E APARELHOS DE USO DOMÉSTICO E PESSOAL; INSTRUMENTOS MUSICAIS",
+    "classe": {
+     "id": "77292",
+     "descricao": "ALUGUEL DE OBJETOS PESSOAIS E DOMÉSTICOS NÃO ESPECIFICADOS ANTERIORMENTE",
+     "grupo": {
+      "id": "772",
+      "descricao": "ALUGUEL DE OBJETOS PESSOAIS E DOMÉSTICOS",
+      "divisao": {
+       "id": "77",
+       "descricao": "ALUGUÉIS NÃO-IMOBILIÁRIOS E GESTÃO DE ATIVOS INTANGÍVEIS NÃO-FINANCEIROS",
+       "secao": {
+        "id": "N",
+        "descricao": "ATIVIDADES ADMINISTRATIVAS E SERVIÇOS COMPLEMENTARES"
+       }
+      }
+     },
+     "observacoes": [
+      "Esta classe compreende - o aluguel de aparelhos de jogos eletrônicos\r\n- o aluguel de móveis, utensílios e aparelhos eletroeletrônicos de uso doméstico e pessoal\r\n- o aluguel de instrumentos musicais\r\n- o aluguel de material médico, como cadeiras de roda, camas hospitalares, muletas, inaladores, etc\r\n- o aluguel de plantas e flores\r\n- o aluguel de livros e revistas\r\n- o aluguel de outros objetos de uso pessoal e doméstico não especificados anteriormente",
+      "Esta classe compreende ainda - o aluguel de móveis de escritório",
+      "Esta classe NÃO compreende - a locação de automóveis, caminhões, motos e outros veículos terrestres, sem condutor (grupo 77.1)\r\n- o aluguel de material telefônico (77.33-1)\r\n- o empréstimo de livros e revistas por bibliotecas (91.01-5)\r\n- a exploração de jogos eletrônicos recreativos (93.29-8)\r\n- os serviços associados de aluguel e lavagem de roupas de cama, mesa e banho, de uniformes de trabalho e artigos relacionados (96.01-7)"
+     ]
+    },
+    "atividades": [
+     "APARELHOS DE DVD; ALUGUEL DE",
+     "APARELHOS ELETRODOMÉSTICOS; ALUGUEL DE, LOCAÇÃO DE",
+     "APARELHOS ELETROELETRÔNICOS; ALUGUEL DE",
+     "AR CONDICIONADO; ALUGUEL DE",
+     "CADEIRAS; ALUGUEL DE, LOCAÇÃO DE",
+     "GELADEIRA, FREEZER; ALUGUEL DE",
+     "INSTRUMENTOS MUSICAIS; ALUGUEL DE, LOCAÇÃO DE ",
+     "MESAS; ALUGUEL DE, LOCAÇÃO DE",
+     "MÓVEIS E UTENSÍLIOS PARA FESTAS; ALUGUEL DE, LOCAÇÃO DE",
+     "MÓVEIS; ALUGUEL DE, LOCAÇÃO DE",
+     "OBJETOS E UTENSÍLIOS DOMÉSTICOS; ALUGUEL DE, LOCAÇÃO DE",
+     "TELEVISOR, TELEVISÃO; ALUGUEL DE, LOCAÇÃO DE",
+     "UTENSÍLIOS E APARELHOS DE USO DOMÉSTICO; ALUGUEL DE, LOCAÇÃO DE",
+     "UTENSÍLIOS E APARELHOS ELETROELETRÔNICOS DE USO DOMÉSTICO; ALUGUEL DE",
+     "VIDEOCASSETE; ALUGUEL DE, LOCAÇÃO DE"
+    ],
+    "observacoes": [
+     "Esta subclasse compreende - o aluguel de móveis, utensílios e aparelhos eletroeletrônicos de uso doméstico e pessoal\r\n- o aluguel de instrumentos musicais",
+     "Esta subclasse compreende ainda - o aluguel de móveis de escritório"
+    ]
+   }
+  }
+ }
+}

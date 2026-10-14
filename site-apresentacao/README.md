@@ -20,14 +20,14 @@ Durante a apresentação, as setas **←** e **→** do teclado navegam entre as
 ## Rodar localmente
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ## Publicar no GitHub Pages
 
 ```bash
-npm run deploy
+pnpm run deploy
 ```
 
 Esse comando roda o build e envia o resultado para a branch `gh-pages` do repositório remoto configurado.
@@ -41,7 +41,7 @@ Antes de rodá-lo pela primeira vez, ajuste o `base` em `vite.config.js` para o 
 
 Todo o conteúdo textual está em `src/conteudo/`, um arquivo `.json` por aba. Os componentes em
 `src/sections/` apenas desenham — não guardam texto. Para mudar qualquer palavra, edite o `.json`
-correspondente e salve; com `npm run dev` rodando, a página recarrega sozinha.
+correspondente e salve; com `pnpm dev` rodando, a página recarrega sozinha.
 
 As cores não ficam nos `.json`: eles usam nomes (`"cor": "azul"`, `"roxo"`, `"rosa"`...) resolvidos em
 `src/tema.js`, que aponta para os tokens do `@theme` em `src/index.css` — uma paleta construída a partir
@@ -55,7 +55,7 @@ Todo o texto vem de dois arquivos na raiz do projeto `TCC Luderia/`:
 - `metodologia_tcc_luderia.md` — blocos de dados, população, instrumentos, indicadores, hipóteses e
   técnicas de análise.
 
-A pesquisa está em fase de coleta (ver `data/` e `src/` na raiz do projeto): as seções 6 e 7 refletem o
+A pesquisa está em fase de coleta (ver `_data/` e `_src/` na raiz do projeto): as seções 6 e 7 refletem o
 estado atual da coleta, não resultados fechados. Ao concluir a análise, atualize
 `src/conteudo/s6-tecnicas.json` e `src/conteudo/s7-contribuicoes.json` com os achados reais — o padrão de
 componentes já suporta gráficos via Recharts, seguindo o modelo usado no TCC anterior (`Dance Forrónejo`).

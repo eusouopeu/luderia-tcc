@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* Tokens do app (_shared/design-standards.md): nenhuma cor da paleta padrão
+   do Tailwind nem hex fora daqui. A cor primária (`caneta`) é a laranja dos
+   mockups do Pedro (pedido explícito, 10/10/2026), no lugar do roxo padrão;
+   trocar de cor = trocar só a escala `caneta`. Estados (minimalismo.md):
+   ok = verde, alerta = âmbar, erro = vermelho, foco = azul (só campo ativo). */
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/Montserrat-Variable.woff2') format('woff2');
+}
+
+@theme {
+  --font-sans: 'Montserrat', system-ui, sans-serif;
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-papel: #ffffff;
+  --color-tinta: #000000;
+  /* fixas nos dois temas: texto sobre cor forte e fundo de câmera/sobreposição */
+  --color-sobre: #ffffff;
+  --color-escuro: #000000;
+
+  --color-caneta-50: #fff7ed;
+  --color-caneta-100: #ffedd4;
+  --color-caneta-200: #ffd6a7;
+  --color-caneta-300: #ffb86a;
+  --color-caneta-400: #ff8904;
+  --color-caneta-500: #ff6900;
+  --color-caneta-600: #f54900;
+  --color-caneta-700: #ca3500;
+  --color-caneta-800: #9f2d00;
+  --color-caneta-900: #7e2a0c;
+
+  --color-neutro-50: #f8fafc;
+  --color-neutro-100: #f1f5f9;
+  --color-neutro-200: #e2e8f0;
+  --color-neutro-300: #cad5e2;
+  --color-neutro-400: #90a1b9;
+  --color-neutro-500: #62748e;
+  --color-neutro-600: #45556c;
+  --color-neutro-700: #314158;
+  --color-neutro-800: #1d293d;
+  --color-neutro-900: #0f172b;
+
+  --color-erro-50: #fff1f2;
+  --color-erro-100: #ffe4e6;
+  --color-erro-200: #ffccd3;
+  --color-erro-300: #ffa1ad;
+  --color-erro-400: #ff637e;
+  --color-erro-500: #ff2056;
+  --color-erro-600: #ec003f;
+  --color-erro-700: #c70036;
+  --color-erro-800: #a50036;
+
+  --color-ok-100: #d0fae5;
+  --color-ok-200: #a4f4cf;
+  --color-ok-400: #00d492;
+  --color-ok-500: #00bc7d;
+  --color-ok-600: #009966;
+  --color-ok-700: #007a55;
+  --color-ok-900: #004f3b;
+
+  --color-alerta-100: #fef3c6;
+  --color-alerta-500: #fe9a00;
+  --color-alerta-700: #bb4d00;
+
+  --color-foco-300: #8ec5ff;
+  --color-foco-500: #2b7fff;
+}
+
+/* Tema escuro: mesmos nomes, valores trocados (neutros invertidos, fundos claros
+   das escalas viram tons escuros, textos fortes clareiam). O app põe
+   data-tema="escuro" no <html> (Ajustes ou botão da barra superior). */
+:root[data-tema='escuro'] {
+  color-scheme: dark;
+  --color-papel: #0a0f1a;
+  --color-tinta: #ffffff;
+  --color-neutro-50: #121a2b;
+  --color-neutro-100: #1d293d;
+  --color-neutro-200: #314158;
+  --color-neutro-300: #45556c;
+  --color-neutro-400: #62748e;
+  --color-neutro-500: #90a1b9;
+  --color-neutro-600: #cad5e2;
+  --color-neutro-700: #e2e8f0;
+  --color-neutro-800: #f1f5f9;
+  --color-neutro-900: #f8fafc;
+  --color-caneta-50: #2a1306;
+  --color-caneta-100: #3d1c0a;
+  --color-caneta-200: #4d240c;
+  --color-caneta-300: #7a3412;
+  --color-caneta-400: #c2560c;
+  --color-caneta-700: #ff8f4d;
+  --color-caneta-800: #9f2d00;
+  --color-caneta-900: #ffd1a8;
+  --color-erro-50: #2a0a12;
+  --color-erro-100: #4c0519;
+  --color-erro-200: #6b0a24;
+  --color-erro-300: #9f1239;
+  --color-erro-600: #ff637e;
+  --color-erro-700: #ff8fa3;
+  --color-erro-800: #ffb3c1;
+  --color-ok-100: #053b2b;
+  --color-ok-200: #065f46;
+  --color-ok-700: #34d399;
+  --color-ok-900: #a7f3d0;
+  --color-alerta-100: #451a03;
+  --color-alerta-700: #fbbf24;
+}
+
+html, body { background: var(--color-papel); color: var(--color-neutro-900); line-height: 1.5; -webkit-tap-highlight-color: transparent; }
+body { overscroll-behavior: none; }
+.safe-top { padding-top: env(safe-area-inset-top, 0px); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+button { cursor: pointer; touch-action: manipulation; transition: transform 150ms ease-out, background-color 200ms, color 200ms, opacity 200ms; }
+/* resposta imediata ao toque (minimalismo.md: microinterações curtas) */
+button:active:not(:disabled) { transform: scale(0.96); }
+input, textarea, select { transition: box-shadow 150ms; }
+button:disabled { cursor: default; }
+input[type='time']::-webkit-calendar-picker-indicator { display: none; }
+/* confirmação visível de um lançamento novo: cartão pisca na cor primária e o aviso sobe */
+@keyframes destaque { 0%, 60% { box-shadow: 0 0 0 3px var(--color-caneta-500); } 100% { box-shadow: 0 0 0 3px transparent; } }
+.destaque { animation: destaque 1.8s ease-out; }
+@keyframes sobe { from { transform: translateY(12px); opacity: 0; } to { transform: none; opacity: 1; } }
+.aviso { animation: sobe 200ms ease-out; }
+@media (prefers-reduced-motion: reduce) { .destaque, .aviso { animation: none; } }
