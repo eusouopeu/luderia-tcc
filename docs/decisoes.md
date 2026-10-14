@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 14/10/2026 | Skill de projeto `/traduza` (ou `==termo==`) gera notas de estudo em `docs/notas/`, fora do registro de alterações | `.claude/skills/traduza/SKILL.md` |
 | 14/10/2026 | Documentação do projeto segue o padrão geral `../_shared/docs-standards.md`, derivado deste projeto e do rotinas; `AGENTS.md` é link para o `CLAUDE.md` | `CLAUDE.md` |
 | 13/10/2026 | Público casual fora do objeto de pesquisa; retirado de instruções, introdução, projeto, cronograma, CLAUDE.md e README | `textos/capitulos/1_introducao_plano_luderia.md` |
 | 13/10/2026 | Horários das visitas planejados para o pico de fluxo provável, não sorteados: em cada unidade, sábado com entrada às 19h e domingo com entrada às 18h, 15 dias depois. A contagem mede o pico; a média do dia vem das notas fiscais | `_instrucoes/4_metodologia.md`, Bloco B3 |

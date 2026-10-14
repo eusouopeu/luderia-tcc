@@ -550,3 +550,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o `CLAUDE.md` não citava o padrão de documentação dos projetos; não havia `AGENTS.md`.
 **Depois**: o `CLAUDE.md` passa a citar `../_shared/docs-standards.md` (derivado deste projeto e do rotinas) e manda não carregar documentação por padrão; `AGENTS.md` criado como link simbólico para o `CLAUDE.md`, para outros agentes lerem as mesmas instruções.
 **Justificativa**: pedido do autor, para padronizar a documentação de todos os projetos.
+
+### 07:19
+**Objeto**: `.claude/skills/traduza/SKILL.md`, `docs/notas/` (`README.md`, `2026-10-14_vpl.md`), `CLAUDE.md` ("Registro de alterações")
+**Antes**: não havia forma padronizada de pedir e guardar explicações de conteúdos não entendidos nas respostas do Claude.
+**Depois**: skill de projeto `traduza`, acionada por `/traduza termos` ou `==termos==`, gera uma nota por termo em `docs/notas/` (explicação para criança de 5 a 10 anos, uso no TCC, exemplo com números e versão técnica), com índice em `docs/notas/README.md`; primeira nota (VPL) gerada como teste. O `CLAUDE.md` passa a dispensar as notas do registro de alterações.
+**Justificativa**: pedido do autor, para guardar as explicações fora do histórico da conversa e estudar para a banca; pasta em `docs/` para respeitar a regra de pastas enxutas na raiz.

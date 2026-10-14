@@ -46,6 +46,8 @@ Arquivo: [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md) (forma
 1. **TODA VEZ** que uma ação mudar qualquer arquivo do projeto **ou qualquer banco de dados do Notion**, registrar data, hora, **Objeto**, **Antes**, **Depois** e **Justificativa**.
 2. **TODA VEZ** que aparecer informação divergente entre documentos ainda sem registro, registrar data, **Objeto**, **Antes** (arquivo mais antigo), **Depois** (mais recente) e **Efeitos colaterais**. Registrar a divergência não autoriza corrigi-la sem pedido do autor.
 
+Exceção: as notas de estudo em `docs/notas/` (skill `/traduza` ou `==termo==`) não entram no registro; entram só no commit de fim de sessão.
+
 ## Fim de sessão
 
 Antes do commit, atualizar:
