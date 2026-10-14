@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Entorno no Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.13-2
-// @description  Conta estações de metrô, estações de VLT/BRT e shoppings a 500 m e 1000 m de cada estabelecimento, buscando no Google Maps em volta da coordenada; coleta uma fila e exporta CSV.
+// @version      2026.10.14-1
+// @description  Conta estações de metrô, de trem, de VLT/BRT e shoppings a 500 m e 1000 m de cada estabelecimento, buscando no Google Maps em volta da coordenada; coleta uma fila e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
 // @match        https://www.google.com/sorry/*
@@ -24,10 +24,17 @@
  * resultados (nome, categoria, coordenada, avaliações), calcula a distância
  * em linha reta (haversine) e conta os que caem a até 500 m e 1000 m.
  *
- * Buscas: "estação de metrô", "estação BRT", "estação VLT", "shopping center".
- * Cada resultado vai para UM grupo pela própria categoria e nome no Maps
- * (classificar), nunca pela busca que o trouxe; repetido entre buscas conta
- * uma vez. Grupos: metro, vlt_brt, shopping, outro (ver classificar).
+ * Buscas: "estação de metrô", "estação de trem", "estação BRT", "estação VLT",
+ * "shopping center". Cada resultado vai para UM grupo pela própria categoria e
+ * nome no Maps (classificar), nunca pela busca que o trouxe; repetido entre
+ * buscas conta uma vez. Grupos: metro, trem, vlt_brt, shopping, outro (ver
+ * classificar). O grupo trem cobre os trens metropolitanos (CPTM em São Paulo,
+ * SuperVia no Rio, Trensurb em Porto Alegre), usados como o metrô; fica em
+ * coluna própria para que a análise some metro + trem quando quiser "trilhos".
+ * A classificação é refeita na exportação, então regra nova vale também para
+ * o que já está guardado; estabelecimento coletado antes de uma busca existir
+ * (ex.: trem, desde 14/10/2026) fica com o grupo em branco e entra nos
+ * pendentes.
  *
  * Área coberta. A busca do Maps olha a parte visível do mapa. O ponto "@" da
  * URL é o centro da JANELA, e o painel lateral do Maps (cerca de 410 px)
@@ -65,19 +72,23 @@
  *
  * Uso: "Carregar CSV" (o B1_entorno.csv serve) ou cole linhas
  * "place_id;nome;lat;lng"; "Coletar fila". "Refazer pendentes" recoleta os
- * estabelecimentos com falha, cobertura insuficiente ou censura possível.
- * A cada 10 estabelecimentos, os CSVs parciais são baixados (opção no painel).
+ * estabelecimentos com falha, cobertura insuficiente, censura possível ou
+ * busca nova ainda não feita. A cada 10 estabelecimentos, os CSVs parciais
+ * são baixados (opção no painel).
  *
- * CSVs (";" e UTF-8 com BOM):
- *  - maps_entorno_resumo_AAAA-MM-DD.csv: um estabelecimento por linha. As
- *    colunas qt_*_500m estão contidas em qt_*_1000m (raios aninhados). A 1000 m,
- *    metro + vlt_brt + shoppings + outros = resultados_ate_1000m.
- *  - maps_entorno_resultados_AAAA-MM-DD.csv: um resultado por linha.
+ * CSVs (";" e UTF-8 com BOM). O fim da fila baixa só os estabelecimentos
+ * daquela fila; "Exportar CSVs" baixa tudo o que está guardado. O nome começa
+ * pela data local e traz o estabelecimento (ou "N_estabelecimentos"):
+ *  - AAAA-MM-DD_<estabelecimento>_entorno_resumo.csv: um estabelecimento por
+ *    linha. As colunas qt_*_500m estão contidas em qt_*_1000m (raios
+ *    aninhados). A 1000 m, metro + trem + vlt_brt + shoppings + outros =
+ *    resultados_ate_1000m, quando nenhum grupo está em branco.
+ *  - AAAA-MM-DD_<estabelecimento>_entorno_resultados.csv: um resultado por linha.
  *
  * Implementação futura (pedido do autor em 13/10/2026):
  *  - build_B1_entorno_maps.py, no molde do build_B2_avaliacoes.py: move os
- *    CSVs de ~/Downloads para _data/raw/, confere as somas (metro + vlt_brt +
- *    shoppings + outros = resultados_ate_1000m), compara o metrô com o
+ *    CSVs de ~/Downloads para _data/raw/, confere as somas (metro + trem +
+ *    vlt_brt + shoppings + outros = resultados_ate_1000m), compara o metrô com o
  *    B1_entorno.csv do OSM e gera a fila dos pendentes na área de
  *    transferência.
  *  - Ler a resposta da busca (pedido "search?tbm=map") interceptando fetch/XHR
@@ -107,11 +118,14 @@
   const PAUSA_ENTRE_BUSCAS = [3000, 6000];
   const CONSULTAS = [
     { consulta: 'estação de metrô', grupo: 'metro' },
+    { consulta: 'estação de trem', grupo: 'trem' },
     { consulta: 'estação BRT', grupo: 'vlt_brt' },
     { consulta: 'estação VLT', grupo: 'vlt_brt' },
     { consulta: 'shopping center', grupo: 'shopping' },
   ];
-  const GRUPOS = { metro: 'estacoes_metro', vlt_brt: 'estacoes_vlt_brt', shopping: 'shoppings' };
+  // Consultas dos estabelecimentos guardados antes do campo "consultas" (até 13/10/2026).
+  const CONSULTAS_ANTIGAS = ['estação de metrô', 'estação BRT', 'estação VLT', 'shopping center'];
+  const GRUPOS = { metro: 'estacoes_metro', trem: 'estacoes_trem', vlt_brt: 'estacoes_vlt_brt', shopping: 'shoppings' };
   const OPCOES_PADRAO = { porte: 'osm', area_min_m2: 5000, limiar_aval: 1000, abrasce: [], abrasce_arquivo: '', parcial: true };
 
   // ---------- utilidades ----------
@@ -121,10 +135,14 @@
   const semAcento = (t) => String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
   const juntar = (lista) => [...new Set(lista)].join(' | ');
 
+  const doisDig = (n) => String(n).padStart(2, '0');
+  // Data local (não UTC: depois das 21h em Brasília, toISOString já dá o dia seguinte).
+  const dataLocal = (d) => `${d.getFullYear()}-${doisDig(d.getMonth() + 1)}-${doisDig(d.getDate())}`;
+  const nomeArquivo = (t) => semAcento(t || 'lugar').replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '').slice(0, 60) || 'lugar';
+
   function agora() {
     const d = new Date();
-    const p = (n) => String(n).padStart(2, '0');
-    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
+    return `${dataLocal(d)} ${doisDig(d.getHours())}:${doisDig(d.getMinutes())}`;
   }
 
   function ler(chave, padrao) {
@@ -202,14 +220,25 @@
     return { zoom: z, lat: clat, lng: clng };
   }
 
+  // Posição de uma coordenada na janela, em px, e metros por px.
+  function naTela(lat, lng, busca, jan) {
+    const mpp = mPorPx(lat, busca.zoom);
+    const leste = (lng - busca.lng) * 111320 * Math.cos((lat * Math.PI) / 180);
+    const norte = (lat - busca.lat) * 111320;
+    return { x: jan.w / 2 + leste / mpp, y: jan.h / 2 - norte / mpp, mpp };
+  }
+
   // Distância do alvo até a borda mais próxima do mapa visível, em metros.
   function coberturaReal(alvoLat, alvoLng, busca, jan) {
-    const mpp = mPorPx(alvoLat, busca.zoom);
-    const leste = (alvoLng - busca.lng) * 111320 * Math.cos((alvoLat * Math.PI) / 180);
-    const norte = (alvoLat - busca.lat) * 111320;
-    const x = jan.w / 2 + leste / mpp;
-    const y = jan.h / 2 - norte / mpp;
+    const { x, y, mpp } = naTela(alvoLat, alvoLng, busca, jan);
     return Math.round(Math.max(0, Math.min(x - jan.painel, jan.w - x, y, jan.h - y)) * mpp);
+  }
+
+  // Resultado fora do mapa visível (com 50 px de folga): o Maps já esgotou a
+  // área e completou a lista com lugares de fora.
+  function foraDoMapa(r, busca, jan) {
+    const { x, y } = naTela(r.lat, r.lng, busca, jan);
+    return x < jan.painel - 50 || x > jan.w + 50 || y < -50 || y > jan.h + 50;
   }
 
   // ---------- classificação: um grupo por resultado, pelo próprio atributo ----------
@@ -221,20 +250,22 @@
     if (/\bmetro\b|subway/.test(c)) return 'metro';
     const transporte = /transporte|estacao|parada|ponto|terminal|onibus|trem|bonde/.test(c);
     if (/\b(brt|vlt)\b|veiculo leve|light rail|bonde|tram\b/.test(c)) return 'vlt_brt';
+    if (/\btrem\b|\btrens\b|ferrovi|train station|railway/.test(c)) return 'trem';
     if (/\b(brt|vlt)\b/.test(n) && transporte) return 'vlt_brt';
     if (/\bmetro\b/.test(n) && /estacao|transporte/.test(c)) return 'metro';
+    if (/\b(cptm|supervia|trensurb|trem)\b/.test(n) && /estacao|transporte/.test(c)) return 'trem';
     return 'outro';
   }
 
   // "Outro" com cara de estação ou shopping: vai para a revisão manual.
   function suspeito(r) {
     return r.grupo_auto === 'outro' && r.distancia_m <= RAIO_MAX &&
-      /estac|terminal|metro|\bbrt\b|\bvlt\b|\btrem\b|bonde|shopping|\bmall\b/.test(semAcento(`${r.nome} ${r.categoria_maps}`));
+      /estac|terminal|metro|\bbrt\b|\bvlt\b|\btrem\b|cptm|supervia|trensurb|ferrovi|bonde|shopping|\bmall\b/.test(semAcento(`${r.nome} ${r.categoria_maps}`));
   }
 
   // ---------- duplicatas ----------
 
-  const PALAVRAS_GENERICAS = new Set(['estacao', 'estacoes', 'metro', 'brt', 'vlt', 'shopping', 'center', 'mall', 'de', 'da', 'do', 'das', 'dos', 'e', 'linha', 'sentido', 'plataforma', 'terminal', 'parada', 'ponto', 'station']);
+  const PALAVRAS_GENERICAS = new Set(['estacao', 'estacoes', 'metro', 'trem', 'cptm', 'supervia', 'trensurb', 'brt', 'vlt', 'shopping', 'center', 'mall', 'de', 'da', 'do', 'das', 'dos', 'e', 'linha', 'sentido', 'plataforma', 'terminal', 'parada', 'ponto', 'station']);
 
   function palavras(t) {
     return new Set(semAcento(t).split(/[^a-z0-9]+/).filter((p) => p && !PALAVRAS_GENERICAS.has(p) && !/^\d{1,2}$/.test(p)));
@@ -445,8 +476,12 @@
 
   // ---------- resumo (montado na exportação, com revisões e critério atuais) ----------
 
+  const consultasDoLocal = (local) => local.consultas || CONSULTAS_ANTIGAS;
+  const consultasFaltantes = (local) => CONSULTAS.map((c) => c.consulta).filter((c) => !consultasDoLocal(local).includes(c));
+
   function problemas(local) {
     const p = [];
+    if (consultasFaltantes(local).length) p.push('busca nova não feita');
     if (local.falhas?.length) p.push('falhou');
     if (local.cobertura_insuf?.length) p.push('cobertura insuficiente');
     if (local.censura?.length) p.push('censura possível');
@@ -455,7 +490,8 @@
 
   function resumirLocal(local, rs, op) {
     const validos = rs.filter((r) => !r.duplicata_de);
-    const falhos = new Set((local.falhas || []).map(grupoDaConsulta));
+    // Grupo de consulta que falhou ou não foi feita fica em branco (não zero).
+    const falhos = new Set([...(local.falhas || []), ...consultasFaltantes(local)].map(grupoDaConsulta));
     const linha = { place_id: local.place_id, nome: local.nome, cidade: local.cidade || '', lat: local.lat, lng: local.lng };
     for (const [grupo, col] of Object.entries(GRUPOS)) {
       const itens = validos.filter((r) => r.grupo === grupo);
@@ -479,6 +515,7 @@
     linha.cobertura_min_m = local.cobertura_min_m ?? '';
     linha.consultas_subdivididas = juntar(local.subdivididas || []);
     linha.consultas_falhas = juntar(local.falhas || []);
+    linha.consultas_nao_feitas = juntar(consultasFaltantes(local));
     linha.consultas_cobertura_insuficiente = juntar(local.cobertura_insuf || []);
     linha.consultas_censura = juntar(local.censura || []);
     linha.situacao = problemas(local).join('; ') || 'ok';
@@ -492,7 +529,8 @@
     for (const local of dados.locais) {
       const rs = dados.resultados.filter((r) => r.origem === local.chave).map((r) => {
         const rev = revisoes[chave(r)];
-        return { ...r, grupo: rev || r.grupo_auto, revisado: rev ? 'sim' : '' };
+        const grupo_auto = classificar(r.nome, r.categoria_maps);
+        return { ...r, grupo_auto, grupo: rev || grupo_auto, revisado: rev ? 'sim' : '' };
       });
       marcarDuplicatas(rs);
       for (const r of rs) Object.assign(r, r.grupo === 'shopping' ? porte(r, local, op) : { porte_shopping: '', porte_base: '' });
@@ -639,13 +677,14 @@
     dados.locais = dados.locais.filter((l) => l.chave !== k).concat([{
       chave: k, ...local, buscas: fila.buscas_local, subdivididas: fila.subdivididas, censura: fila.censura,
       falhas: fila.falhas, cobertura_insuf: fila.cobertura_insuf, cobertura_min_m: fila.cobertura_min_m, osm, coletado_em,
+      consultas: CONSULTAS.map((c) => c.consulta),
     }]);
     gravar(CHAVE_DADOS, dados);
     fila.locais_fechados += 1;
     fila.buscas_em_fechados += fila.buscas_local;
     const restam = fila.pos + 1 < fila.locais.length;
     if (lerOpcoes().parcial && restam && fila.locais_fechados % PARCIAL_A_CADA === 0) {
-      baixarTudo(`_parcial-${String(dados.locais.length).padStart(3, '0')}`);
+      baixarTudo(`parcial-${String(dados.locais.length).padStart(3, '0')}`);
     }
   }
 
@@ -665,7 +704,7 @@
       gravar(CHAVE_FILA, fila);
       status(parar ? 'Fila interrompida.' : `Fila concluída: ${fila.locais.length} estabelecimentos.`);
       atualizarPainel();
-      if (!parar) { tocar('fim'); baixarTudo(); }
+      if (!parar) { tocar('fim'); baixarTudo('', fila.locais.map(chaveLocal)); }
       return;
     }
     gravar(CHAVE_FILA, fila);
@@ -720,6 +759,9 @@
       if (cob < t.alcance) fila.cobertura_insuf.push(rotulo(t));
       if (!t.quadrante) fila.cobertura_min_m = fila.cobertura_min_m == null ? cob : Math.min(fila.cobertura_min_m, cob);
       fila.lidos.push(...leitura.itens.map((r) => ({ ...r, consulta: rotulo(t) })));
+      // Lista lotada com item fora do mapa: nada foi cortado na área (comum na
+      // busca de trem em cidade sem trem); não subdivide nem marca censura.
+      if (leitura.lotou && t.busca && leitura.itens.some((r) => foraDoMapa(r, t.busca, janelaAtual()))) leitura.lotou = false;
       if (leitura.lotou && !t.quadrante) { fila.tarefas.push(...quadrantes(t)); fila.subdivididas.push(t.consulta); msg += ' Lista lotada: 4 quadrantes.'; }
       if (leitura.lotou && t.quadrante) fila.censura.push(rotulo(t));
     }
@@ -744,7 +786,7 @@
     for (const raio of RAIOS_M) cols.push(`qt_shoppings_porte_${raio}m`);
     cols.push('criterio_porte_shopping', 'qt_outros_1000m', 'resultados_ate_1000m');
     for (const col of Object.values(GRUPOS)) cols.push(`dist_${col}_mais_proxima_lida_m`);
-    return [...cols, 'duplicatas_fundidas', 'revisoes_manuais', 'buscas', 'cobertura_min_m', 'consultas_subdivididas', 'consultas_falhas', 'consultas_cobertura_insuficiente', 'consultas_censura', 'situacao', 'coletado_em'];
+    return [...cols, 'duplicatas_fundidas', 'revisoes_manuais', 'buscas', 'cobertura_min_m', 'consultas_subdivididas', 'consultas_falhas', 'consultas_nao_feitas', 'consultas_cobertura_insuficiente', 'consultas_censura', 'situacao', 'coletado_em'];
   }
 
   function celula(v) {
@@ -765,11 +807,27 @@
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
   }
 
-  function baixarTudo(sufixo = '') {
-    const { resumo, resultados } = montarSaida(lerDados(), ler(CHAVE_REVISOES, {}), lerOpcoes());
-    const dia = new Date().toISOString().slice(0, 10);
-    baixar(csv(resumo, colsResumo()), `maps_entorno_resumo_${dia}${sufixo}.csv`);
-    setTimeout(() => baixar(csv(resultados, COLS_RESULTADOS), `maps_entorno_resultados_${dia}${sufixo}.csv`), 800);
+  // "2026-10-14_sao_jogue_rio_vermelho_entorno_resumo.csv"; com mais de um
+  // estabelecimento, "2026-10-14_3_estabelecimentos_entorno_resumo.csv".
+  function nomesArquivos(locais, data, sufixo = '') {
+    const quem = locais.length === 1 ? nomeArquivo(locais[0].nome) : `${locais.length}_estabelecimentos`;
+    const fim = sufixo ? `_${sufixo}` : '';
+    return { resumo: `${data}_${quem}_entorno_resumo${fim}.csv`, resultados: `${data}_${quem}_entorno_resultados${fim}.csv` };
+  }
+
+  // Sem "chaves", exporta tudo o que está guardado; com elas, só esses estabelecimentos.
+  function baixarTudo(sufixo = '', chaves = null) {
+    const dados = lerDados();
+    if (chaves) {
+      const so = new Set(chaves);
+      dados.locais = dados.locais.filter((l) => so.has(l.chave));
+      dados.resultados = dados.resultados.filter((r) => so.has(r.origem));
+    }
+    if (!dados.locais.length) { status('Nada para exportar.'); return; }
+    const { resumo, resultados } = montarSaida(dados, ler(CHAVE_REVISOES, {}), lerOpcoes());
+    const nomes = nomesArquivos(dados.locais, dataLocal(new Date()), sufixo);
+    baixar(csv(resumo, colsResumo()), nomes.resumo);
+    setTimeout(() => baixar(csv(resultados, COLS_RESULTADOS), nomes.resultados), 800);
   }
 
   async function completarOsm() {
@@ -821,7 +879,7 @@
     if (!el.revisao.parentElement.open) return;
     el.revisao.replaceChildren(...(itens.length ? itens.map((r) => {
       const k = chave(r);
-      const sel = criar('select', {}, ['metro', 'vlt_brt', 'shopping', 'outro'].map((g) => criar('option', { value: g, textContent: g })));
+      const sel = criar('select', {}, ['metro', 'trem', 'vlt_brt', 'shopping', 'outro'].map((g) => criar('option', { value: g, textContent: g })));
       sel.value = revisoes[k] || r.grupo_auto;
       sel.onchange = () => {
         const rv = ler(CHAVE_REVISOES, {});
@@ -1012,7 +1070,7 @@
     const revisaoDet = criar('details', { ontoggle: desenharRevisao }, [el.revisaoTitulo, el.revisao]);
 
     const sinal = criar('span', { textContent: '–' });
-    const cabecalho = criar('header', { title: 'Arraste para mover; duplo clique volta ao canto' }, [criar('span', { textContent: 'Entorno (metrô, VLT/BRT, shopping)' }), sinal]);
+    const cabecalho = criar('header', { title: 'Arraste para mover; duplo clique volta ao canto' }, [criar('span', { textContent: 'Entorno (metrô, trem, VLT/BRT, shopping)' }), sinal]);
     const painel = criar('div', { id: 'painel' }, [
       cabecalho,
       el.resumo,
