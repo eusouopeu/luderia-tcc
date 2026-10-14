@@ -7,7 +7,7 @@ cardápio acessível (conferência de 10/10/2026). Cada cardápio foi transcrito
 para um CSV em dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/
 (um arquivo por estabelecimento, separador ";"). A transcrição é manual para
 imagens e PDFs e automática para páginas em texto (VUCA Food, Wix). As fontes
-originais (PDF, imagens, HTML) ficam na pasta cardapios/ e fora do repositório.
+originais (PDF, imagens, HTML) ficam em _dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/ e fora do repositório.
 
 Categorias fixas (_instrucoes/4_metodologia.md, Bloco B1):
   bebidas: drinks, refrigerante, cerveja, não alcoólicas
@@ -48,8 +48,8 @@ from openpyxl.utils import get_column_letter
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos" / "cardapios" / "transcricao"
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-TRIAGEM = PROCESSED / "B1_triagem_manual_metropoles_mais_100_avaliacoes.xlsx"
-SAIDA = PROCESSED / "B1_cardapios_itens_precos.xlsx"
+TRIAGEM = PROCESSED / "estabelecimentos/3_triagem/B1_triagem_manual_metro_av100.xlsx"
+SAIDA = PROCESSED / "cardapios" / "B1_cardapios_itens_precos.xlsx"
 
 DATA_COLETA = "2026-10-10"
 

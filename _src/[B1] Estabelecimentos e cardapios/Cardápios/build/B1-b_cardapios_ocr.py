@@ -1,6 +1,7 @@
 """Extrai o texto dos cardápios baixados (PDF com camada de texto ou OCR; imagens por OCR).
 
-Entrada: dados/[B1] Estabelecimentos e cardapios/cardapios/<Estabelecimento>/*.{pdf,png,jpg,webp}
+Entrada: dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/*.{pdf,png,jpg,webp}
+         (pastas em PASTAS, outros/cardapios_comum.py) e o cardápio de jogos do Covil, em _dados-brutos/acervos_luderias/
 Saída:   .../cardapios/transcricao/<Estabelecimento>.txt (texto bruto por arquivo)
          .../cardapios/B1_cardapios_ocr_linhas.csv (estabelecimento;arquivo;linha;texto;preco_rs)
 O idioma português vem de _src/[B1] Estabelecimentos e cardapios/Cardápios/outros/tessdata (tessdata_fast); sem ele, cai para inglês.
@@ -24,6 +25,8 @@ from pathlib import Path
 
 import pytesseract
 from PIL import Image, ImageOps
+
+from cardapios_comum import JOGOS_COVIL, PASTAS, pasta_original
 
 ROOT = Path(__file__).resolve().parents[4]
 BASE = ROOT / "dados/[B1] Estabelecimentos e cardapios/cardapios"
@@ -59,7 +62,12 @@ def texto_pdf(pdf):
 def main():
     TRANSCRICAO.mkdir(exist_ok=True)
     linhas = []
-    for pasta in sorted(p for p in BASE.iterdir() if p.is_dir() and p.name != "transcricao" and not p.name.startswith("Cardápio ")):
+    # nome nas saídas -> pasta; as pastas "Cardápio …" (prints transcritos à mão) ficam fora do OCR
+    pastas = {nome: pasta_original(nome) for nome in PASTAS if not nome.startswith("Cardápio ")}
+    pastas[JOGOS_COVIL[0]] = JOGOS_COVIL[1]
+    for nome, pasta in sorted(pastas.items()):
+        if not pasta.is_dir():
+            continue
         saida = []
         for arq in sorted(pasta.iterdir()):
             if arq.suffix.lower() == ".pdf":
@@ -68,15 +76,15 @@ def main():
                 texto, metodo = ocr_imagem(Image.open(arq)), "OCR"
             else:
                 continue
-            print(f"{pasta.name}/{arq.name}: {metodo}, {len(texto)} caracteres")
+            print(f"{nome}/{arq.name}: {metodo}, {len(texto)} caracteres")
             saida.append(f"===== {arq.name} ({metodo}) =====\n{texto}")
             for n, linha in enumerate(texto.splitlines(), 1):
                 linha = linha.strip()
                 if len(linha) < 3:
                     continue
                 m = PRECO.search(linha)
-                linhas.append([pasta.name, arq.name, n, linha, m.group(1).replace(",", ".") if m else ""])
-        (TRANSCRICAO / f"{pasta.name}.txt").write_text("\n\n".join(saida), encoding="utf-8")
+                linhas.append([nome, arq.name, n, linha, m.group(1).replace(",", ".") if m else ""])
+        (TRANSCRICAO / f"{nome}.txt").write_text("\n\n".join(saida), encoding="utf-8")
     with open(BASE / "B1_cardapios_ocr_linhas.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f, delimiter=";")
         w.writerow(["estabelecimento", "arquivo", "linha", "texto", "preco_rs"])

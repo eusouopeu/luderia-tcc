@@ -1,7 +1,8 @@
 """Baixa os cardápios (PDF e imagens) dos estabelecimentos do banco A do Notion.
 
-Saída: dados/[B1] Estabelecimentos e cardapios/cardapios/<Estabelecimento>/
-Cada arquivo baixado é registrado em B1_cardapios_baixados.csv (estabelecimento, url, arquivo, tipo, tamanho, baixado_em).
+Saída: dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/
+(pasta definida em PASTAS, outros/cardapios_comum.py; estabelecimento novo entra lá antes)
+Cada arquivo baixado é registrado em cardapios/B1_cardapios_baixados.csv (estabelecimento, url, arquivo, tipo, tamanho, baixado_em).
 Arquivos já baixados são pulados. Páginas Wix são varridas por imagens hospedadas em static.wixstatic.com.
 """
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
@@ -19,12 +20,12 @@ import ssl
 import urllib.request
 
 import certifi
+from cardapios_comum import ORIGINAIS, pasta_original
 from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[4]
-SAIDA = ROOT / "dados/[B1] Estabelecimentos e cardapios/cardapios"
-LOG = SAIDA / "B1_cardapios_baixados.csv"
+LOG = ROOT / "dados/[B1] Estabelecimentos e cardapios/cardapios/B1_cardapios_baixados.csv"
 CTX = ssl.create_default_context(cafile=certifi.where())
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh) AppleWebKit/537.36 Chrome/120 Safari/537.36"}
 
@@ -63,10 +64,9 @@ def imagens_wix(url):
 
 
 def main():
-    SAIDA.mkdir(parents=True, exist_ok=True)
     linhas = []
     for nome, tipo, url in FONTES:
-        pasta = SAIDA / nome
+        pasta = pasta_original(nome)
         try:
             alvos = [url] if tipo == "arquivo" else imagens_wix(url)
         except Exception as e:
@@ -81,12 +81,12 @@ def main():
             if ctype not in EXT or len(dados) < 20_000:
                 print(f"PULADO {nome}: {ctype}, {len(dados)} bytes")
                 continue
-            pasta.mkdir(exist_ok=True)
+            pasta.mkdir(parents=True, exist_ok=True)
             arq = pasta / f"{nome} {i:02d}{EXT[ctype]}"
             if arq.exists():
                 continue
             arq.write_bytes(dados)
-            linhas.append([nome, alvo, arq.relative_to(SAIDA), ctype, len(dados), datetime.now().isoformat(timespec="seconds")])
+            linhas.append([nome, alvo, arq.relative_to(ORIGINAIS), ctype, len(dados), datetime.now().isoformat(timespec="seconds")])
             print(f"OK {arq.name} ({len(dados)//1024} KB)")
     novo = not LOG.exists()
     with open(LOG, "a", newline="", encoding="utf-8") as f:

@@ -11,10 +11,10 @@ Ordem de busca, da fonte mais direta para a menos:
      comprova o vínculo. Só entram aqui depois de conferidos.
 Sem perfil achado, a linha fica com instagram_usuario vazio e fonte "não achado".
 
-Entrada: B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx
+Entrada: estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx
          (B1-b_triagem_manual.py)
 Saída em dados/[B1] Estabelecimentos e cardapios/:
-  B1_instagram_aprovadas.csv (uma linha por place_id aprovado)
+  estabelecimentos/3_triagem/B1_instagram_aprovadas.csv (uma linha por place_id aprovado)
 
 Uso:
     python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/collect/B1-c_instagram_aprovadas.py"
@@ -39,8 +39,8 @@ import requests
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-ENTRADA = PROCESSED / "B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx"
-SAIDA = PROCESSED / "B1_instagram_aprovadas.csv"
+ENTRADA = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
+SAIDA = PROCESSED / "estabelecimentos/3_triagem/B1_instagram_aprovadas.csv"
 
 CABECALHOS = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
                             "(KHTML, like Gecko) Chrome/126.0 Safari/537.36"}

@@ -18,7 +18,7 @@ comerciais não mudavam decisão do plano; as derivadas podem ser recalculadas
 a partir da contagem a qualquer momento, e fixá-las no arquivo congelava
 tercis de uma amostra que ainda cresce.
 
-Saída: dados/[B1] Estabelecimentos e cardapios/B1_entorno.csv
+Saída: dados/[B1] Estabelecimentos e cardapios/entorno/B1_entorno.csv
 
 Uso:
     python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/build/B1-b_entorno.py"
@@ -39,10 +39,10 @@ import pathlib
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-CURADORIA_PATH = PROCESSED / "B1_planilha_curadoria.csv"
-LOCALIZACOES_PATH = RAW / "B1_localizacoes.jsonl"
-ENTORNO_PATH = RAW / "B1_entorno_osm_ancoras.jsonl"
-OUT_PATH = PROCESSED / "B1_entorno.csv"
+CURADORIA_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria.csv"
+LOCALIZACOES_PATH = RAW / "estabelecimentos/B1_localizacoes.jsonl"
+ENTORNO_PATH = RAW / "estabelecimentos/B1_entorno_osm_ancoras.jsonl"
+OUT_PATH = PROCESSED / "entorno/B1_entorno.csv"
 
 RAIOS_M = [500, 1000]
 CATEGORIAS = ["praias_parques", "shoppings_grandes", "estacoes_metro"]

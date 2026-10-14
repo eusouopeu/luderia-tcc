@@ -43,7 +43,7 @@ import recorte_rm as R  # noqa: E402
 
 PROC = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 PASTA = PROC / "acervo_jogos"
-CURADORIA_50 = PROC / "B1_planilha_curadoria_metropoles_filtrada_50_ou_mais_avaliacoes.csv"
+CURADORIA_50 = PROC / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av50.csv"
 METROPOLES = {
     "São Paulo", "Brasília", "Rio de Janeiro", "Belém", "Belo Horizonte", "Curitiba",
     "Florianópolis", "Fortaleza", "Goiânia", "Porto Alegre", "Recife", "Salvador",

@@ -16,6 +16,8 @@ Legenda: `Bn` = código do bloco de dados (B1 a B4); `<x>` = parte variável; `[
 | Bloco em `dados/` | `[Bn] <Objeto>`: o código e o que os dados descrevem. Uma pasta por bloco | `dados/[B2] Avaliacoes recentes/` |
 | Dados brutos | `dados/[Bn] <Objeto>/_dados-brutos/` (o `_` põe a pasta no topo da listagem); os processados ficam na raiz do bloco | `dados/[B4] Bases publicas/_dados-brutos/bcb/` |
 | Subpastas dentro dos blocos de `dados/` | minúsculas, sem acento, palavras unidas por `_` (exceção: `_dados-brutos/`) | `acervo_jogos/`, `redes_sociais/analise_legendas/` |
+| Etapas de uma seleção | número da ordem + `_` + etapa, dentro de uma pasta do objeto | `estabelecimentos/1_busca/`, `2_recorte/`, `3_triagem/` |
+| Pasta por estabelecimento | `<prefixo>_<estabelecimento>/`, agrupada em `<prefixo>_<cidade>/`. Prefixo pelo tipo de material: `rs` (redes sociais), `ca` (cardápios originais). `<estabelecimento>`: perfil do Instagram em `rs`, nome curto em `ca`; `<cidade>`: capital da região metropolitana do endereço (a mesma das tabelas do B1). Ambos em minúsculas, sem acento, com `_` | `redes_sociais/rs_sao_paulo/rs_bodogami/`, `_dados-brutos/cardapios/ca_sao_paulo/ca_cartola/` |
 | Pastas fora de uso | `arquivados/<código>-<tema>/`, com a estrutura da época | `arquivados/B5-jogos/` |
 
 **Passadas**
@@ -54,7 +56,7 @@ Nomes com hífen não podem ser importados como módulo Python. Por isso, códig
 
 | Objeto | Convenção atual | Exemplo |
 |---|---|---|
-| Saída de script (B1 a B3) | `Bn_<conteúdo>.<ext>`; recortes e variantes no fim, com `_` | `B1_planilha_curadoria_metropoles_filtrada.csv` |
+| Saída de script (B1 a B3) | `Bn_<objeto>[_<recorte>][_<filtro>][_<limiar>].<ext>`, com os códigos da tabela abaixo; sem palavras que a pasta ou a extensão já dizem (`planilha_`, `grafico_`, `por_filtro`, `avaliacoes`) | `B1_curadoria_metro_f_av100.csv`, `B1_limiares_regio_f.png` |
 | Saída do B4 | `[B4] {dado principal} {período} ({fonte}).csv`, na subpasta de uso (`mercado_demanda/`, `ponto_operacoes/`, `juridico_tributario/`, `financeiro/`, `multiuso/`) | `[B4] Aluguel Comercial por Capital 2026-07 (FipeZap).csv` |
 | Resposta bruta de API do B4 | `<série>_<código>_<descrição>.json` ou `<fonte>_<conteúdo>.json`, na subpasta da fonte | `bcb/sgs_1619_salario_minimo.json` |
 | Cache bruto do Google Places e afins | `Bn_<conteúdo>.jsonl` (fora do git) | `B1_detalhes.jsonl` |
@@ -63,6 +65,17 @@ Nomes com hífen não podem ser importados como módulo Python. Por isso, códig
 | Exportação do app de observação | `contagem_<conteúdo>.csv` | `contagem_visitas.csv`, `contagem_30min.csv` |
 | Log de execução | `<script>_AAAA-MM-DD_HHMM.log`, em `logs/` do bloco (fora do git) | `B1-b_planilha_2026-10-14_0930.log` |
 
+Códigos das partes do nome das saídas:
+
+| Parte | Código | Significado |
+|---|---|---|
+| Recorte | `metro` | metrópoles da REGIC |
+| Recorte | `regio` | capitais regionais da REGIC |
+| Filtro | `f` | filtrada por termos suspeitos |
+| Limiar | `av100` | mais de 100 avaliações (> 100) |
+| Limiar | `av50` | 50 avaliações ou mais (≥ 50) |
+| Variante | `pct` | em percentual |
+
 **Passadas**
 
 | Até | Convenção | Mudou para |
@@ -70,6 +83,9 @@ Nomes com hífen não podem ser importados como módulo Python. Por isso, códig
 | 12/10/2026 | `bloco_<letra>_<conteúdo>.csv`; `[E] *.csv` nas bases públicas | `Bn_<conteúdo>`; `[B4] ….csv` |
 | 12/10/2026 | `instagram_<perfis\|posts>_<perfil>_<data>.csv`, duplicatas com ` (1)` | `AAAA-MM-DD_<perfil>_instagram_<perfis\|posts>.csv`, duplicatas com `_2` |
 | 13/10/2026 | `maps_avaliacoes_<lugar>_<sufixo>_<data UTC>.csv` | `AAAA-MM-DD_<lugar>_maps_avaliacoes_<…>.csv`, data local |
+| 14/10/2026 | Saídas do B1 soltas na raiz do bloco, com nomes por extenso (`B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv`, `B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx`, `B1_grafico_limiares_capitais_regionais_filtrada.png`, `B1_descartados_por_filtro.csv`) | `estabelecimentos/<n>_<etapa>/` e `entorno/`, com os códigos (`B1_curadoria_metro_f_av100.csv`, `B1_aprovadas_metro_av100.xlsx`, `B1_limiares_regio_f.png`, `B1_descartados.csv`) |
+| 14/10/2026 | Coletas do Instagram soltas em `redes_sociais/`; cardápios originais em `cardapios/<Nome do estabelecimento>/` (com espaço e acento, às vezes com `Cardápio ` na frente) | `redes_sociais/rs_<cidade>/rs_<perfil>/`; `_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/` |
+| 14/10/2026 | Brutos do Google Places soltos em `_dados-brutos/` | `_dados-brutos/estabelecimentos/` |
 
 ## 4. Colunas (variáveis) dos dados
 

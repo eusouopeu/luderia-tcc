@@ -42,7 +42,7 @@ Saídas em dados/[B2] Avaliacoes recentes/:
   B2_cobertura_coleta.csv     uma linha por luderia aprovada (sem texto)
   B2_fila_coleta.txt          place_id a coletar ou refazer
 
-Entrada do B1: B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx
+Entrada do B1: estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx
 
 Uso:
     python3 "_src/[B2] Avaliacoes recentes/Google Places (Comentários)/build/B2-b_avaliacoes.py"
@@ -68,7 +68,7 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx"
+B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
 RAW = ROOT / "dados" / "[B2] Avaliacoes recentes" / "_dados-brutos"
 PROCESSED = ROOT / "dados" / "[B2] Avaliacoes recentes"
 COLETAS = RAW / "coletas"

@@ -25,7 +25,7 @@ chamada cai no SKU "Place Details Enterprise", que no mesmo mês registrava
 
 Consequência para o filtro (B1-b_planilha.py): registros sem reviews só
 podem ser aprovados pela palavra-chave no NOME. Quem não bate no nome não é
-descartado, e sim mandado para `B1_triagem.csv`, porque a evidência que
+descartado, e sim mandado para `estabelecimentos/1_busca/B1_triagem.csv`, porque a evidência que
 decidiria o caso não foi comprada. Ausência de evidência não é evidência de
 ausência.
 
@@ -60,9 +60,9 @@ from places_client import PlacesClient
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
-CANDIDATOS_PATH = RAW / "B1_candidatos.csv"
-DETALHES_PATH = RAW / "B1_detalhes.jsonl"
-SEM_REVIEWS_PATH = RAW / "B1_detalhes_sem_reviews.jsonl"
+CANDIDATOS_PATH = RAW / "estabelecimentos/B1_candidatos.csv"
+DETALHES_PATH = RAW / "estabelecimentos/B1_detalhes.jsonl"
+SEM_REVIEWS_PATH = RAW / "estabelecimentos/B1_detalhes_sem_reviews.jsonl"
 
 
 def load_unique_place_ids():

@@ -35,7 +35,7 @@ contagem ingênua erra feio:
 A área vem da bounding box do polígono, que superestima footprint irregular.
 É proxy de porte, não medida de ABL, e só é usada contra um corte grosso.
 
-Saída: dados/[B1] Estabelecimentos e cardapios/_dados-brutos/B1_entorno_osm_ancoras.jsonl
+Saída: dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/B1_entorno_osm_ancoras.jsonl
        uma linha por (place_id, raio).
 
 Resumível: pares (place_id, raio) já salvos são pulados.
@@ -67,9 +67,9 @@ from osm_client import OverpassClient
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-CURADORIA_PATH = PROCESSED / "B1_planilha_curadoria.csv"
-LOCALIZACOES_PATH = RAW / "B1_localizacoes.jsonl"
-OUT_PATH = RAW / "B1_entorno_osm_ancoras.jsonl"
+CURADORIA_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria.csv"
+LOCALIZACOES_PATH = RAW / "estabelecimentos/B1_localizacoes.jsonl"
+OUT_PATH = RAW / "estabelecimentos/B1_entorno_osm_ancoras.jsonl"
 
 RAIOS_M = [500, 1000]
 

@@ -9,7 +9,7 @@ curadoria tiver alguém fora do recorte, ou um descartado por esse motivo
 estiver dentro, o script para: é sinal de que o build não aplicou a regra.
 
 Saída em dados/[B1] Estabelecimentos e cardapios/:
-  B1_conferencia_rm.csv - uma linha por estabelecimento, com município,
+  estabelecimentos/1_busca/B1_conferencia_rm.csv - uma linha por estabelecimento, com município,
                                capital de referência e situação
 
 Uso:
@@ -32,9 +32,9 @@ from recorte_rm import SITUACOES_NO_RECORTE, classifica
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-CURADORIA_PATH = PROCESSED / "B1_planilha_curadoria.csv"
-DESCARTADOS_PATH = PROCESSED / "B1_descartados_por_filtro.csv"
-OUT_PATH = PROCESSED / "B1_conferencia_rm.csv"
+CURADORIA_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria.csv"
+DESCARTADOS_PATH = PROCESSED / "estabelecimentos/1_busca/B1_descartados.csv"
+OUT_PATH = PROCESSED / "estabelecimentos/1_busca/B1_conferencia_rm.csv"
 
 MOTIVO_FORA = "fora_da_rm_da_capital"
 ORDEM = ["sem_municipio_no_endereco", "fora_da_rm", "dentro_da_rm", "municipio_da_capital"]

@@ -11,7 +11,7 @@ Regras de atribuição (uma unidade, um grupo):
   - cada post pertence ao seu dono (coluna perfil), nunca à página em que foi
     coletado; colaboração conta uma vez, para o dono;
   - entram só posts cujo dono é uma casa da lista aprovada do B1
-    (B1_instagram_aprovadas.csv, mais os apelidos de ALIAS); posts de
+    (estabelecimentos/3_triagem/B1_instagram_aprovadas.csv, mais os apelidos de ALIAS); posts de
     parceiros que aparecem na grade de uma casa saem;
   - cada casa recebe um único tipo (tipo_casa: casa de jogos ou loja com espaço de jogo),
     pelo dicionário ESTAB da análise de conteúdo do B2, para que as duas
@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parents[4]
 PASTA_B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 PASTA_REDES = PASTA_B1 / "redes_sociais"
 SAIDA = PASTA_REDES / "analise_legendas"
-APROVADAS = PASTA_B1 / "B1_instagram_aprovadas.csv"
+APROVADAS = PASTA_B1 / "estabelecimentos/3_triagem/B1_instagram_aprovadas.csv"
 SCRIPT_B2 = ROOT / "_src" / "[B2] Avaliacoes recentes" / "Google Places (Comentários)" / "analise" / "B2-a_conteudo_bardin.py"
 B2_FREQUENCIA = (ROOT / "dados" / "[B2] Avaliacoes recentes" / "analise_conteudo"
                  / "B2_bardin_frequencia_categorias.csv")
@@ -95,7 +95,7 @@ def casas():
 def carrega_posts(verbose=True):
     """Base de posts (um por shortcode), só de donos que são casas aprovadas."""
     arquivos = []
-    for f in PASTA_REDES.glob("*_instagram_posts*.csv"):
+    for f in PASTA_REDES.glob("rs_*/rs_*/*_instagram_posts*.csv"):  # rs_<cidade>/rs_<perfil>/
         m = RE_ARQUIVO.match(f.name)
         if m:
             arquivos.append((m["data"], f.name, f))

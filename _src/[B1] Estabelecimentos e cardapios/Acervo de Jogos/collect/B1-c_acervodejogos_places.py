@@ -16,7 +16,7 @@ consultada, e resposta bruta em dados/[B1].../_dados-brutos/acervodejogos/places
 Cache: loja que já tem resposta no places.jsonl não é consultada de novo (a
 API cobra por chamada); para atualizar, apagar o arquivo.
 Colunas de cruzamento com a população: ja_na_curadoria (place_id está em
-B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv) e
+estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv) e
 ja_aprovada (place_id está nas 51 aprovadas).
 """
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
@@ -50,8 +50,8 @@ PROC = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 ENTRADA = PROC / "acervo_jogos" / "B1_acervodejogos_lojas.csv"
 SAIDA = PROC / "acervo_jogos" / "B1_acervodejogos_places.csv"
 BRUTO = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos" / "acervodejogos" / "places.jsonl"
-CURADORIA = PROC / "B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv"
-APROVADAS = PROC / "B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx"
+CURADORIA = PROC / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv"
+APROVADAS = PROC / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
 
 MASCARA = ",".join("places." + c for c in [
     "id", "displayName", "formattedAddress", "rating", "userRatingCount", "types",

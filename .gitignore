@@ -17,8 +17,8 @@ dados/\[B4\]*/_dados-brutos/caged/
 .tmp.drivedownload/
 # Bloco B1: curadoria manual e luderias aprovadas trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4)
 dados/\[B1\]*/_dados-brutos/B1_curadoria_manual_*.xlsx
-dados/\[B1\]*/B1_luderias_aprovadas_*.xlsx
-dados/\[B1\]*/B1_comentarios_aprovadas_*.xlsx
+dados/\[B1\]*/estabelecimentos/3_triagem/B1_aprovadas_*.xlsx
+dados/\[B1\]*/estabelecimentos/3_triagem/B1_comentarios_aprovadas_*.xlsx
 
 # PDFs de terceiros baixados para leitura (direitos autorais; repositório público)
 bibliografia/leituras-P1/

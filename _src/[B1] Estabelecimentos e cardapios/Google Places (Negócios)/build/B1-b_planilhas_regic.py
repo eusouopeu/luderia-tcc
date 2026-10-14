@@ -12,10 +12,10 @@ Rodar depois de B1-b_planilha.py. As saídas são derivadas: rodar de
 novo sobrescreve as colunas manuais preenchidas nelas.
 
 Saídas em dados/[B1] Estabelecimentos e cardapios/:
-  B1_planilha_curadoria_metropoles.csv
-  B1_planilha_curadoria_capitais_regionais.csv
-  B1_descartados_por_filtro_metropoles.csv
-  B1_descartados_por_filtro_capitais_regionais.csv
+  estabelecimentos/2_recorte/B1_curadoria_metro.csv
+  estabelecimentos/2_recorte/B1_curadoria_regio.csv
+  estabelecimentos/1_busca/B1_descartados_metro.csv
+  estabelecimentos/1_busca/B1_descartados_regio.csv
 
 Uso:
     python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/build/B1-b_planilhas_regic.py"
@@ -37,8 +37,12 @@ from recorte_rm import classifica
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-ENTRADAS = ["B1_planilha_curadoria", "B1_descartados_por_filtro"]
-SUFIXO_GRUPO = {"Metrópoles": "metropoles", "Capitais Regionais": "capitais_regionais"}
+# Planilha de entrada -> pasta e prefixo das saídas por grupo ({prefixo}_{código do grupo}.csv)
+ENTRADAS = {
+    "estabelecimentos/2_recorte/B1_curadoria.csv": "estabelecimentos/2_recorte/B1_curadoria",
+    "estabelecimentos/1_busca/B1_descartados.csv": "estabelecimentos/1_busca/B1_descartados",
+}
+SUFIXO_GRUPO = {"Metrópoles": "metro", "Capitais Regionais": "regio"}
 
 
 def grupo_regic(endereco, regic):
@@ -48,8 +52,8 @@ def grupo_regic(endereco, regic):
 
 def main():
     regic = load_regic()
-    for nome in ENTRADAS:
-        with open(PROCESSED / f"{nome}.csv", newline="", encoding="utf-8") as f:
+    for nome, prefixo in ENTRADAS.items():
+        with open(PROCESSED / nome, newline="", encoding="utf-8") as f:
             leitor = csv.DictReader(f)
             colunas, linhas = leitor.fieldnames, list(leitor)
 
@@ -64,7 +68,7 @@ def main():
         assert soma == len(linhas), f"{nome}: grupos {soma} != total {len(linhas)}"
 
         for g, sufixo in SUFIXO_GRUPO.items():
-            out = PROCESSED / f"{nome}_{sufixo}.csv"
+            out = PROCESSED / f"{prefixo}_{sufixo}.csv"
             with open(out, "w", newline="", encoding="utf-8") as f:
                 writer = csv.DictWriter(f, fieldnames=colunas)
                 writer.writeheader()

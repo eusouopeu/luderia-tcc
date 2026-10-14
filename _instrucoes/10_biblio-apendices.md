@@ -104,9 +104,9 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 | DRE e fluxo de caixa mensais | 9.5 | C |
 | Checagens de coerência | 9.8 | D |
 | Fluxograma de limpeza e critérios de curadoria (`textos/capitulos/figuras/fluxograma_limpeza_B1.*`) | 3.3 | E |
-| Tabela e gráfico de limiares de avaliações (`B1_limiares_avaliacoes*.csv`, `B1_grafico_limiares*.png`); no texto, uma frase com o número do corte | 3.3 | E |
-| Conferência da região metropolitana (`B1_conferencia_rm.csv`) e termos suspeitos (`B1_termos_suspeitos.csv`) | 3.4 | E |
-| Cobertura da lista manual (`B1_cobertura_lista_manual.csv`) | 3.4 | E |
+| Tabela e gráfico de limiares de avaliações (`estabelecimentos/2_recorte/B1_limiares*.csv` e `B1_limiares*.png`); no texto, uma frase com o número do corte | 3.3 | E |
+| Conferência da região metropolitana (`estabelecimentos/1_busca/B1_conferencia_rm.csv`) e termos suspeitos (`estabelecimentos/1_busca/B1_termos_suspeitos.csv`) | 3.4 | E |
+| Cobertura da lista manual (`estabelecimentos/1_busca/B1_cobertura_lista_manual.csv`) | 3.4 | E |
 | Lista dos concorrentes aprovados (nome, metrópole, avaliação, volume; sem texto de avaliações) | 5.3 | E |
 | Itens e preços dos cardápios (`B1_cardapios_itens_precos.xlsx`, resumido por categoria) | 6.2, 6.3 | E |
 | Livro de códigos da análise de conteúdo (`textos/instrumentos/analise_conteudo_bardin_B2.md`), validação e frequências completas por categoria | 3.4, 5.2 | F |

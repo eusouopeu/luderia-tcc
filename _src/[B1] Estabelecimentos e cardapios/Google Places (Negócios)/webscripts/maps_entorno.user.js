@@ -63,7 +63,7 @@
  *     como CSV (colunas nome e, se houver, cidade);
  *   - avaliações: número mínimo de avaliações no Maps (proxy sem fonte).
  *
- * Uso: "Carregar CSV" (o B1_entorno.csv serve) ou cole linhas
+ * Uso: "Carregar CSV" (o entorno/B1_entorno.csv serve) ou cole linhas
  * "place_id;nome;lat;lng"; "Coletar fila". "Refazer pendentes" recoleta os
  * estabelecimentos com falha, cobertura insuficiente ou censura possível.
  * A cada 10 estabelecimentos, os CSVs parciais são baixados (opção no painel).
@@ -78,7 +78,7 @@
  *  - B1-b_entorno_maps.py, no molde do B2-b_avaliacoes.py: move os
  *    CSVs de ~/Downloads para dados/[B1] Estabelecimentos e cardapios/_dados-brutos/, confere as somas (metro + vlt_brt +
  *    shoppings + outros = resultados_ate_1000m), compara o metrô com o
- *    B1_entorno.csv do OSM e gera a fila dos pendentes na área de
+ *    entorno/B1_entorno.csv do OSM e gera a fila dos pendentes na área de
  *    transferência.
  *  - Ler a resposta da busca (pedido "search?tbm=map") interceptando fetch/XHR
  *    em vez dos cartões na tela: sem rolagem, menos frágil a mudanças de

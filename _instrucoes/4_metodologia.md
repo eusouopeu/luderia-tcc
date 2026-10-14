@@ -53,7 +53,7 @@ Cada bloco tem pasta `[Bn] Nome`, com o mesmo nome, em `_src/` e em `dados/`; em
 | Item | Descrição |
 |---|---|
 | Fonte | Google Places API; site, Instagram e cardápio digital de cada estabelecimento; OpenStreetMap |
-| Recorte | Luderias, ludobares e quiz-bares com **mais de 100 avaliações** nas **14 capitais classificadas como metrópole** pela REGIC 2018 (IBGE) e em suas regiões metropolitanas; 164 candidatos antes da curadoria manual (`B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv`); população final esperada de 100 a 150. Cada estabelecimento é atribuído à metrópole pelo endereço |
+| Recorte | Luderias, ludobares e quiz-bares com **mais de 100 avaliações** nas **14 capitais classificadas como metrópole** pela REGIC 2018 (IBGE) e em suas regiões metropolitanas; 164 candidatos antes da curadoria manual (`estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv`); população final esperada de 100 a 150. Cada estabelecimento é atribuído à metrópole pelo endereço |
 | Variáveis | Avaliação média, volume de avaliações, política de preço, acervo declarado, entorno em 500 m e 1.000 m. O modelo de A&B não é registrado |
 | **Cardápios** | Itens oferecidos, preço por item, variedade por categoria e número de itens que exigem preparo (sem contar itens prontos, como balas, refrigerantes e água). Categorias fixas: **bebidas** (drinks, refrigerante, cerveja, não alcoólicas), **entradas** (batata, outras), **pratos principais** (hambúrguer, pizza, outros), **sobremesas**, **couvert ou taxa de jogo** |
 | Registro | Data da coleta e link do cardápio; preços em R$ com duas casas decimais |

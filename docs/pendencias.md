@@ -13,7 +13,6 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
    Antes de adotar, estudar: com zero erros, o limite superior de 95% de Wilson é 3,84 ÷ (n + 3,84), cerca de 11% com n = 30 e 3,7% com n = 100. Então 30 estabelecimentos não cumprem o critério de 5%: ou a amostra do B1 sobe para perto de 75, ou o critério muda. Falta ainda ver se a banca aceita a concordância de um codificador consigo mesmo e como estratificar uma amostra pequena (capital e faixa de volume).
 2. **Hipótese do público potencial** (30 anos ou mais, casado ou com filhos, que frequentaria luderias se o ambiente, o público ou o serviço mudassem): registrar como emenda ao registro prévio ou guardar como estudo futuro (cap. 11.5)? Formulações testáveis em `docs/bibliografia/diagnostico-teorico.md` §9.
 3. **Replanejar os rascunhos atrasados** (caps. 2, 3 e 8 e seções 5.1, 5.4 e 5.5) ou acionar o plano de corte do cronograma?
-4. **Nomes e subpastas de `dados/[B1] Estabelecimentos e cardapios/`:** escolher entre as propostas de 14/10/2026 (nomes mais curtos e agrupamento em subpastas por etapa ou tema) antes de renomear; renomear muda os scripts que gravam e leem esses arquivos.
 
 ## Divergências entre documentos, ainda sem correção
 

@@ -1,7 +1,7 @@
 """
 Bloco B1 - gráfico da distribuição de frequências de todos os candidatos da
 planilha de curadoria (ativos ou não) por volume de avaliações no Google Maps.
-Lê a linha TOTAL_UNICOS das colunas `min_x` de B1_limiares_avaliacoes.csv
+Lê a linha TOTAL_UNICOS das colunas `min_x` de estabelecimentos/2_recorte/B1_limiares.csv
 (gerada por B1-a_limiares.py); as colunas `min_x_ativos` ficam de
 fora.
 
@@ -10,11 +10,11 @@ desacumula em faixas (frequência simples); o da direita mostra o acumulado,
 que é o número de estabelecimentos que sobra em cada limiar de corte.
 
 Saídas em dados/[B1] Estabelecimentos e cardapios/:
-  B1_grafico_limiares.png            -> contagens
-  B1_grafico_limiares_percentual.png -> % do total de candidatos
-  B1_grafico_limiares_metropoles_filtrada.png e
-  B1_grafico_limiares_capitais_regionais_filtrada.png -> contagens da
-      linha de cada grupo em B1_limiares_avaliacoes_filtrada.csv (curadorias
+  estabelecimentos/2_recorte/B1_limiares.png            -> contagens
+  estabelecimentos/2_recorte/B1_limiares_pct.png -> % do total de candidatos
+  estabelecimentos/2_recorte/B1_limiares_metro_f.png e
+  estabelecimentos/2_recorte/B1_limiares_regio_f.png -> contagens da
+      linha de cada grupo em estabelecimentos/2_recorte/B1_limiares_f.csv (curadorias
       sem termos suspeitos no nome)
 
 Uso:
@@ -39,14 +39,14 @@ import matplotlib.pyplot as plt
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-LIMIARES_PATH = PROCESSED / "B1_limiares_avaliacoes.csv"
-OUT_PATH = PROCESSED / "B1_grafico_limiares.png"
-OUT_PERCENTUAL_PATH = PROCESSED / "B1_grafico_limiares_percentual.png"
-LIMIARES_FILTRADA_PATH = PROCESSED / "B1_limiares_avaliacoes_filtrada.csv"
+LIMIARES_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_limiares.csv"
+OUT_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_limiares.png"
+OUT_PERCENTUAL_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_limiares_pct.png"
+LIMIARES_FILTRADA_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_limiares_f.csv"
 # Linha da tabela filtrada -> gráfico de contagens gerado para ela.
 GRAFICOS_FILTRADA = {
-    "Metrópoles": PROCESSED / "B1_grafico_limiares_metropoles_filtrada.png",
-    "Capitais Regionais": PROCESSED / "B1_grafico_limiares_capitais_regionais_filtrada.png",
+    "Metrópoles": PROCESSED / "estabelecimentos/2_recorte/B1_limiares_metro_f.png",
+    "Capitais Regionais": PROCESSED / "estabelecimentos/2_recorte/B1_limiares_regio_f.png",
 }
 
 COR_BARRA = "#2a78d6"

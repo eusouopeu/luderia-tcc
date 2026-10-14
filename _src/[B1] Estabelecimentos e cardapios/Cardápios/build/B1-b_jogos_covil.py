@@ -5,7 +5,7 @@ Saída:   .../cardapios/B1_jogos_covil.csv (pagina;jogo;tempo_min;jogadores)
 Cada jogo do PDF é título + descrição + linha "NN min  X-Y pessoas". O título é a última linha curta
 (até 50 caracteres) antes da descrição. Jogo sem a linha de tempo (ex.: Mini Sinuca) entra com tempo e
 jogadores vazios. "Recém Adicionados" é cabeçalho de seção, não jogo.
-Os prints de jul. 2025 (pasta "Cardapio de jogos Covil Game bar") mostram a versão impressa, dividida
+Os prints de jul. 2025 (pasta "_dados-brutos/acervos_luderias/Cardapio de jogos Covil Game bar") mostram a versão impressa, dividida
 em Fácil, Médio e Difícil; não foram transcritos, porque cobrem só parte da lista.
 """
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/

@@ -32,8 +32,8 @@ Entrada (anotada à mão pelo autor):
   dados/[B1] Estabelecimentos e cardapios/_dados-brutos/
       B1_curadoria_manual_metropoles_mais_100_avaliacoes.xlsx
 Saídas em dados/[B1] Estabelecimentos e cardapios/:
-  B1_triagem_manual_metropoles_mais_100_avaliacoes.xlsx
-  B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx
+  estabelecimentos/3_triagem/B1_triagem_manual_metro_av100.xlsx
+  estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx
 
 Uso:
     python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/build/B1-b_triagem_manual.py"
@@ -58,8 +58,8 @@ ROOT = pathlib.Path(__file__).resolve().parents[4]
 RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 ENTRADA = RAW / "B1_curadoria_manual_metropoles_mais_100_avaliacoes.xlsx"
-SAIDA_TRIAGEM = PROCESSED / "B1_triagem_manual_metropoles_mais_100_avaliacoes.xlsx"
-SAIDA_APROVADAS = PROCESSED / "B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx"
+SAIDA_TRIAGEM = PROCESSED / "estabelecimentos/3_triagem/B1_triagem_manual_metro_av100.xlsx"
+SAIDA_APROVADAS = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
 
 COL_FOTOS = "possui fotos no google maps?"
 COL_FOTOS_OK = "fotos do google maps comprovam?"

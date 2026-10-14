@@ -25,12 +25,12 @@ espaço de jogo aparecem como loja de jogos ou de brinquedos. A categoria vira
 a coluna `grupo_categoria`, só para orientar a curadoria.
 
 O script tem três saídas, não duas:
-  B1_planilha_curadoria.csv  -> aprovados, vão para a curadoria manual
-  B1_triagem.csv             -> indefinidos: sem palavra-chave no nome e
+  estabelecimentos/2_recorte/B1_curadoria.csv  -> aprovados, vão para a curadoria manual
+  estabelecimentos/1_busca/B1_triagem.csv             -> indefinidos: sem palavra-chave no nome e
                                      sem avaliações coletadas. O filtro não
                                      tem como decidir, porque o texto das
                                      avaliações não foi comprado para eles.
-  B1_descartados_por_filtro.csv -> reprovados de fato
+  estabelecimentos/1_busca/B1_descartados.csv -> reprovados de fato
 
 A triagem manual decide os indefinidos: quem tem `fotos_comprovam` ou
 `instagram_comprova` igual a "sim" sobe para a planilha de curadoria, com
@@ -71,13 +71,13 @@ from datetime import datetime, timedelta, timezone
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-CANDIDATOS_PATH = RAW / "B1_candidatos.csv"
-DETALHES_PATH = RAW / "B1_detalhes.jsonl"
-DETALHES_SEM_REVIEWS_PATH = RAW / "B1_detalhes_sem_reviews.jsonl"
+CANDIDATOS_PATH = RAW / "estabelecimentos/B1_candidatos.csv"
+DETALHES_PATH = RAW / "estabelecimentos/B1_detalhes.jsonl"
+DETALHES_SEM_REVIEWS_PATH = RAW / "estabelecimentos/B1_detalhes_sem_reviews.jsonl"
 LISTA_MANUAL_PATH = RAW / "B1_lista_manual_rj.csv"
-OUT_PATH = PROCESSED / "B1_planilha_curadoria.csv"
-OUT_DESCARTADOS_PATH = PROCESSED / "B1_descartados_por_filtro.csv"
-OUT_TRIAGEM_PATH = PROCESSED / "B1_triagem.csv"
+OUT_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria.csv"
+OUT_DESCARTADOS_PATH = PROCESSED / "estabelecimentos/1_busca/B1_descartados.csv"
+OUT_TRIAGEM_PATH = PROCESSED / "estabelecimentos/1_busca/B1_triagem.csv"
 
 JANELA_ATIVIDADE = timedelta(days=183)
 
