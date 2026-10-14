@@ -688,3 +688,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: tentativas curtas marcadas "fim da lista": Shelf com 40 e 80 lidas (13/10 e 14/10); Bardo Mago com 130 lidas.
 **Depois**: coletas refeitas pelo autor com rolagem manual: Shelf com 650 lidas e Bardo Mago com 220, ambas "passou do período". As avaliações das tentativas curtas estão todas contidas nas longas; no Bardo, o recorte de 90 dias não mudou (126 nas duas).
 **Efeitos colaterais**: o motivo "fim da lista" não garante coleta completa; o build trata como "ok" uma coleta interrompida em silêncio. No Shelf, a contagem por rótulo cai em "2 meses atrás" (19) e "3 meses atrás" (14), entre "um mês atrás" (113) e "4 meses atrás" (110), sem inversão de ordem; pode ser sazonalidade ou falha de carregamento.
+
+### 18:35
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Instagram/webscripts/instagram_coletor.user.js` (2026.10.14-2) e `instagram_coletor.test.cjs`
+**Antes**: a captura da lista "seguindo" só reconhecia a semente pelo endereço `/<perfil>/following/`; no desktop a lista abre numa janela sobre o perfil, sem mudar o endereço, e nada era capturado.
+**Depois**: a semente também é reconhecida pelo diálogo com título "Seguindo" (ou "Following") aberto sobre o perfil; o diálogo de seguidores, que tem "Seguindo" só nos botões das linhas, não conta. Dois testes novos (8 no total, todos passando).
+**Justificativa**: erro relatado pelo autor na primeira coleta (perfil da Flow Games).

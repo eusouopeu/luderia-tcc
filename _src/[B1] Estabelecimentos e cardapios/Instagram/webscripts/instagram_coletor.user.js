@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.14-1
+// @version      2026.10.14-2
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis, captura a lista "seguindo" (snowball) e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -22,8 +22,9 @@
  *    "Histórico completo (API)": vai até o primeiro post; use só para essa data.
  *  - "Fila": coleta vários perfis em sequência, com pausa maior entre perfis,
  *    e baixa dois CSV no fim (posts e perfis).
- *  - Snowball (lista "seguindo"): abra a lista de quem uma luderia segue
- *    (instagram.com/<perfil>/following/). O script não faz pedido próprio: lê as
+ *  - Snowball (lista "seguindo"): abra a lista de quem uma luderia segue (clique em
+ *    "seguindo" no perfil; no desktop ela abre numa janela sobre o perfil, sem mudar
+ *    o endereço, ou em instagram.com/<perfil>/following/). O script não faz pedido próprio: lê as
  *    respostas que a página recebe enquanto a lista rola ("Rolar lista de seguindo"
  *    rola o diálogo sozinho) e, como reserva, os @ visíveis no diálogo, antes do
  *    bloco "Sugestões para você". "CSV de seguindo" baixa
@@ -326,10 +327,25 @@
   // Pedido que a própria página faz ao rolar a lista de quem um perfil segue.
   const RE_SEGUINDO_URL = /\/friendships\/\d+\/following\//;
   const RE_SUGESTOES = /^(sugest(ões|oes) para voc(ê|e)|suggested for you|sugerido para voc(ê|e))$/i;
+  const RE_TITULO_SEGUINDO = /^(seguindo|following)$/i;
 
+  // Diálogo cujo título é "Seguindo". No diálogo de seguidores, "Seguindo" também
+  // aparece, mas só nos botões das linhas; por isso botões não contam.
+  function dialogoSeguindoAberto() {
+    for (const dlg of document.querySelectorAll('div[role="dialog"]')) {
+      const titulo = [...dlg.querySelectorAll('h1, h2, div, span')].find((n) => n.childElementCount === 0
+        && RE_TITULO_SEGUINDO.test(n.textContent.trim()) && !n.closest('button, [role="button"], a'));
+      if (titulo) return dlg;
+    }
+    return null;
+  }
+
+  // Semente: pelo endereço /<perfil>/following/ ou, com o diálogo "Seguindo" aberto
+  // sobre o perfil (desktop), pelo perfil da página.
   function sementeAtual() {
     const m = location.pathname.match(/^\/([A-Za-z0-9._]+)\/following\/?$/);
-    return m && !RESERVADOS.has(m[1]) ? m[1].toLowerCase() : null;
+    if (m && !RESERVADOS.has(m[1].toLowerCase())) return m[1].toLowerCase();
+    return dialogoSeguindoAberto() ? perfilAtual() : null;
   }
 
   function registrarSeguido(sem, u, fonte) {
@@ -361,7 +377,7 @@
   }
 
   function dialogoSeguindo() {
-    return sementeAtual() ? document.querySelector('div[role="dialog"]') : null;
+    return sementeAtual() ? (dialogoSeguindoAberto() || document.querySelector('div[role="dialog"]')) : null;
   }
 
   // Reserva: @ visíveis no diálogo, parando no bloco "Sugestões para você"
@@ -384,7 +400,7 @@
 
   async function rolarSeguindo() {
     const sem = sementeAtual();
-    if (!sem) { status('Abra a lista "seguindo" de um perfil (instagram.com/<perfil>/following/).'); return; }
+    if (!sem) { status('Abra a lista "seguindo" de um perfil (clique em "seguindo" no perfil).'); return; }
     let semMudanca = 0, n = -1, voltas = 0;
     while (!parar && semMudanca < 8 && sementeAtual() === sem) {
       const dlg = dialogoSeguindo();
@@ -433,7 +449,7 @@
     const sem = sementeAtual();
     const total = seguindo.size;
     if (!sem) {
-      el.seguindoInfo.textContent = `${total} lista(s) capturada(s). Abra a lista "seguindo" de uma luderia para capturar.`;
+      el.seguindoInfo.textContent = `${total} lista(s) capturada(s). Abra a lista "seguindo" de uma luderia (clique em "seguindo" no perfil) para capturar.`;
       return;
     }
     const n = seguindo.get(sem)?.size || 0;

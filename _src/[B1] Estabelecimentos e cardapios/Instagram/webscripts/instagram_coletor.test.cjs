@@ -32,6 +32,22 @@ test('reconhece a semente pela URL da lista "seguindo"', () => {
   assert.equal(carregar({ location: { pathname: '/explore/following/' } }).sementeAtual(), null);
 });
 
+function folha(texto, emBotao = false) {
+  return { childElementCount: 0, textContent: texto, closest: () => (emBotao ? {} : null) };
+}
+
+test('reconhece a semente com a lista "seguindo" aberta em janela sobre o perfil', () => {
+  const dialogo = { querySelectorAll: () => [folha('Seguindo'), folha('jeremycorbell')] };
+  const document = { querySelector: () => dialogo, querySelectorAll: (s) => (s === 'div[role="dialog"]' ? [dialogo] : []) };
+  assert.equal(carregar({ location: { pathname: '/flowg4mes/' }, document }).sementeAtual(), 'flowg4mes');
+});
+
+test('não confunde o diálogo de seguidores (botões "Seguindo" nas linhas) com a lista "seguindo"', () => {
+  const dialogo = { querySelectorAll: () => [folha('Seguidores'), folha('Seguindo', true)] };
+  const document = { querySelector: () => dialogo, querySelectorAll: (s) => (s === 'div[role="dialog"]' ? [dialogo] : []) };
+  assert.equal(carregar({ location: { pathname: '/flowg4mes/' }, document }).sementeAtual(), null);
+});
+
 test('só aceita o pedido de "seguindo" da própria página', () => {
   const { RE_SEGUINDO_URL } = carregar();
   assert.ok(RE_SEGUINDO_URL.test('https://www.instagram.com/api/v1/friendships/123/following/?count=12'));
