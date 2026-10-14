@@ -1,10 +1,12 @@
 # AGORA
 
-Atualizado em 13/10/2026, 22h. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 14/10/2026, 18h. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
 - **Coleta do B2** (avaliações até "3 meses atrás"): 2 de 51 luderias coletadas; fila em `_data/processed/[B2] Avaliacoes recentes/B2_fila_coleta.txt`, situação em `B2_cobertura_coleta.csv` (rodar `build_B2_avaliacoes.py` depois de cada coleta).
+
+- **Entorno no Maps** (`_src/Web scripts/maps_entorno.user.js`, versão 2026.10.14-1): busca de trem e nome de arquivo com data e estabelecimento; reinstalar o carregador (`python3 "_src/Web scripts/gerar_carregadores.py" --abrir`) e refazer as três primeiras extrações.
 
 ## Próximos 3 passos
 
