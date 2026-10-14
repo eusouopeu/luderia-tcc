@@ -56,6 +56,7 @@ Antes do commit, atualizar:
 2. `docs/decisoes.md`: uma linha no topo para cada decisão tomada na sessão.
 3. `docs/pendencias.md`: dúvida, ideia ou decisão em aberto que surgiu; item resolvido sai.
 4. `textos/planejamento/status_capitulos.md`, se algum capítulo mudou; checklist do cronograma, se alguma tarefa terminou.
+5. Depois do commit, rodar `_src/sincronizar_vault.sh`: copia `docs/`, `textos/` e `bibliografia/` para o vault do Obsidian (só leitura no celular, sentido único).
 
 ## Princípios
 

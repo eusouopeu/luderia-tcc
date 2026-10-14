@@ -556,3 +556,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: não havia forma padronizada de pedir e guardar explicações de conteúdos não entendidos nas respostas do Claude.
 **Depois**: skill de projeto `traduza`, acionada por `/traduza termos` ou `==termos==`, gera uma nota por termo em `docs/notas/` (explicação para criança de 5 a 10 anos, uso no TCC, exemplo com números e versão técnica), com índice em `docs/notas/README.md`; primeira nota (VPL) gerada como teste. O `CLAUDE.md` passa a dispensar as notas do registro de alterações.
 **Justificativa**: pedido do autor, para guardar as explicações fora do histórico da conversa e estudar para a banca; pasta em `docs/` para respeitar a regra de pastas enxutas na raiz.
+
+### 08:05
+**Objeto**: `_src/sincronizar_vault.sh`, `CLAUDE.md` ("Fim de sessão")
+**Antes**: não havia cópia das pastas do TCC para o vault do Obsidian; leitura no celular indisponível.
+**Depois**: script com `rsync` em sentido único copia `docs/`, `textos/` e `bibliografia/` (inclusive `leituras-P1/`, ignorada pelo git) para `~/Documents/2oCerebro/C4-Projetos/TCC Luderia/`; `--simular` mostra o que mudaria. O `CLAUDE.md` manda rodá-lo depois do commit de fim de sessão.
+**Justificativa**: pedido do autor, para ler o TCC no celular pela sincronização do vault; cópia em vez de mover pastas ou usar atalhos, para o git continuar versionando o conteúdo.
