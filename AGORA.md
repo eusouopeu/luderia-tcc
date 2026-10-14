@@ -1,14 +1,14 @@
 # AGORA
 
-Atualizado em 14/10/2026, 12h30. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 14/10/2026, 16h56. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
-- **Coleta do B2** (avaliações até "3 meses atrás"): 2 de 51 luderias coletadas; fila em `dados/[B2] Avaliacoes recentes/B2_fila_coleta.txt`, situação em `B2_cobertura_coleta.csv` (rodar `B2-b_avaliacoes.py` depois de cada coleta).
+- **Coleta do B2** (avaliações até "3 meses atrás"): 46 de 51 luderias coletadas (1.948 avaliações no recorte, 1.213 com texto, todas no Notion "B - Comentários", com "ID da avaliação"). Faltam 5 (Flow Games, Machado Games, Ilusões Industriais, Dungeon Games Store, Paladino Hobbies; fila em `B2_fila_coleta.txt`) e refazer o Shelf Bar, que parou em 40 avaliações.
 
 ## Próximos 3 passos
 
-1. Terminar a coleta do B2 até 16/10.
+1. Coletar as 5 que faltam e refazer o Shelf até 16/10; rodar `B2-b_avaliacoes.py` e subir as novas ao Notion pelo ID.
 2. Preparar as visitas de retorno de **domingo, 18/10** (app de observação e `textos/instrumentos/roteiro_observacao_sao_jogue.md`).
 3. Escrever o rascunho do cap. 3 (metodologia), o mais atrasado e com as instruções prontas.
 

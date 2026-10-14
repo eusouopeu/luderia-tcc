@@ -16,6 +16,11 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 ## Divergências entre documentos, ainda sem correção
 
+- Coleta do Shelf Bar e Jogos parou em "fim da lista" com 40 avaliações (até "uma semana atrás"), mas está como "ok" em `B2_cobertura_coleta.csv`; refazer. Ajustar o build para marcar "refazer" quando o volume lido ficar muito abaixo do volume do B1.
+- Userscript `maps_avaliacoes`: `texto_original` vem "não" nas avaliações traduzidas (6 casos).
+- Notion "B - Comentários": as 13 linhas de Machado Games repetem os textos de Flow Games.
+- Notion "B - Comentários": as 595 linhas digitadas à mão não têm "ID da avaliação"; 97 delas não casaram com avaliações das coletas: 29 de casas ainda sem coleta (Flow, Machado, Ilusões) e 68 de casas coletadas (Magic Store 31, Shelf 28, outras 1 cada), quase todas mais antigas que o recorte ou do Shelf incompleto.
+
 - `_instrucoes/1_estrutura.md` (3.5) fala em "metade exploratória e confirmatória", e o cronograma (semana 3) tem a tarefa "Divisão da base em parte exploratória e parte confirmatória"; a metodologia adotou a base única em 13/10.
 - `_instrucoes/1_estrutura.md` (11.5) cita "sem o recorte do último mês"; o recorte vigente é de 3 meses.
 - O cronograma ainda fala em "avaliações do último mês" (semana 2).

@@ -598,3 +598,33 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: 4 PDFs de cardápio soltos em `cardapios/` e originais transcritos à mão soltos em `_dados-brutos/cardapios/` ou em pastas sem o prefixo `ca_`.
 **Depois**: 34 arquivos movidos para `ca_<cidade>/ca_<estabelecimento>/` (novas `ca_sao_paulo/ca_arena_bg`, `ca_bodogami`, `ca_fan_hour`, `ca_place_games` e `ca_belo_horizonte/ca_shelf_bar`; `boardz` e `castelos` juntos com as pastas já existentes do BoardZ e do Castelos); o PDF de jogos do Covil foi para `_dados-brutos/acervos_luderias/Cardapio de jogos Covil Game bar/`, e `B1-b_jogos_covil.py` lê de lá (saída igual, 239 jogos). 9 arquivos idênticos byte a byte a outro da pasta de destino foram para a Lixeira do macOS (Arcadea, 2 do BoardZ, Bodogami, 2 do Castelos, Luderia Carioca, Ludus, Fortalúdica). `_dados-brutos/cardapios/` fica só com as pastas `ca_<cidade>/` e `transcricao/`; `cardapios/` só com as saídas e `transcricao/`.
 **Justificativa**: pedido do autor, para aplicar o padrão `ca_` a todos os originais de cardápio.
+
+### 16:56
+**Objeto**: `dados/[B2] Avaliacoes recentes/` (`B2_avaliacoes_periodo.csv`, fora do git; `B2_cobertura_coleta.csv`; `B2_fila_coleta.txt`), regerados por `B2-b_avaliacoes.py --sem-mover` com as 52 coletas coladas em `_dados-brutos/coletas/` em 13 e 14/10
+**Antes**: 2 de 51 luderias com coleta (BoardZ, Bodogami); 49 na fila.
+**Depois**: 46 ok e 5 a coletar (Flow Games, Machado Games, Ilusões Industriais, Dungeon Games Store, Paladino Hobbies); 1.948 avaliações no recorte, 1.213 com texto; soma da cobertura confere (diferença 0).
+**Justificativa**: pedido do autor: atualizar a base a partir das coletas novas e dizer o que falta coletar.
+
+### 16:56
+**Objeto**: banco "B - Comentários" do Notion (coluna nova "ID da avaliação"; 715 páginas novas; 1 página corrigida)
+**Antes**: 595 linhas digitadas à mão, sem identificador da avaliação.
+**Depois**: 1.310 linhas. Coluna "ID da avaliação" (texto, `review_id` do Google Maps) criada; entram as 715 avaliações com texto no recorte que ainda não estavam no banco (as outras 498 já estavam, conferidas pelos primeiros 16 caracteres do texto sem acento nem pontuação, por estabelecimento). 715 IDs distintos, sem repetição. Campos: Comentário original, Estabelecimento (nome do B1), Nota geral, notas de comida, serviço e ambiente, Data relativa no formato letra + número (h0 para "minutos atrás"), Data da coleta registrada, Preço por pessoa (faixa sem "R$"), Tamanho do grupo, Nível de barulho e Tempo de espera mapeados para as opções do banco, Nº do comentário (posição na lista do Maps). As linhas antigas ficaram como estavam, sem ID. A página do Play Easy com título "não" foi corrigida para o texto da avaliação.
+**Justificativa**: pedido do autor. A coluna de ID permite atualizar o banco depois sem duplicar.
+
+### 16:56 — divergência
+**Objeto**: coleta do Shelf Bar e Jogos (`2026-10-13_shelf_bar_e_jogos_maps_avaliacoes_tudo.csv`)
+**Antes**: `B2_cobertura_coleta.csv` classifica como "ok" (motivo de parada "fim da lista").
+**Depois**: a coleta leu só 40 avaliações, a mais antiga de "uma semana atrás", com `volume_na_coleta` = 31, enquanto o B1 registra 1.505 avaliações.
+**Efeitos colaterais**: o Shelf está incompleto no B2 e no Notion (só a última semana). O build trata "fim da lista" como coleta completa mesmo quando o volume lido fica muito abaixo do volume do B1.
+
+### 16:56 — divergência
+**Objeto**: coluna `texto_original` das avaliações traduzidas no CSV do userscript `maps_avaliacoes`
+**Antes**: esperado o texto no idioma original.
+**Depois**: nas 6 avaliações com `traduzida` = sim, a coluna traz "não".
+**Efeitos colaterais**: o texto original dessas avaliações não foi coletado; no Notion entrou a tradução do Google.
+
+### 16:56 — divergência
+**Objeto**: banco "B - Comentários" do Notion, Flow Games e Machado Games
+**Antes**: as 13 linhas de Machado Games.
+**Depois**: têm os mesmos textos das 13 linhas de Flow Games - Burgers Cards & Comunidade.
+**Efeitos colaterais**: um dos dois conjuntos foi lançado no estabelecimento errado; contagens por casa ficam infladas até a correção.
