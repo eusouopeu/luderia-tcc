@@ -130,12 +130,12 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 |---|---|---|---|
 | 2 | 19/09 a 25/09 | Projeto: hipóteses, quadro de variáveis e modelo de análise; rascunho do cap. 2 (Referencial teórico) | - |
 
-- [ ] Curadoria manual e lista final de estabelecimentos
+- [x] Curadoria manual e lista final de estabelecimentos
 - [ ] Teste da coleta das avaliações do último mês em uma amostra
-- [ ] Início da coleta das avaliações com texto
-- [ ] Elaboração do manual de codificação das avaliações
+- [x] Início da coleta das avaliações com texto
+- [ ] Elaboração do manual de codificação das avaliações :ma
 - [ ] Início da coleta dos cardápios (preços e itens com preparo)
-- [ ] Sorteio das visitas e formulário de observação da contagem
+- [x] Sorteio das visitas e visitas fora
 
 ### Semana 3
 
@@ -145,9 +145,10 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 
 - [ ] Conclusão da coleta das avaliações
 - [ ] Divisão da base em parte exploratória e parte confirmatória
-- [ ] Primeira codificação das 200 avaliações da amostra (até 02/10)
+- [ ] Primeira codificação das avaliações da amostra (até 10/10)
 - [ ] Conclusão dos cardápios
-- [ ] Sorteio das horas das visitas
+- [x] Definição das horas das visitas: reservas só permitiam três horários de marcação (12:00, 15:00 e 18:00), portanto optou-se pelo horário de 18:00/19:00 por acreditar ser o horário de maior fluxo/ocupação
+- [ ] Formulário de observação da contagem - optou-se por dois formulários (um por gatilho e um por tempo). Incluiu-se perguntas de fluxo/ocupação/permanência/busca
 
 ### Semana 4
 
@@ -155,7 +156,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 |---|---|---|---|
 | 4 | 03/10 a 09/10 | Cap. 5: seções 5.1 (setor), 5.4 (fornecedores) e 5.5 (PESTEL) e esboço das cinco forças; rascunho do cap. 8 (Aspectos jurídicos) | - |
 
-- [ ] Visitas sorteadas (sábado, 03/10)
+- [ ] Visita pré-teste (sábado, 03/10): para testar viabilidade de roteiro de observação e presença de outros elementos importantes
 - [ ] Busca de dados secundários sobre o setor de bares, lanchonetes e espaços de jogos
 - [ ] Estatística descritiva dos concorrentes (preço, cardápio e avaliação por metrópole)
 - [ ] Cotações em Salvador (ponto, mobiliário e acervo)

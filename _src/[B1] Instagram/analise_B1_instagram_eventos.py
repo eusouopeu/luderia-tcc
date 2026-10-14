@@ -30,7 +30,7 @@ Regras:
   - dia da semana: os dias citados na legenda do evento provável (data do
     evento, não da publicação); uma legenda pode citar vários dias.
 
-Saídas em _data/processed/[B1] Estabelecimentos e cardapios/Redes Sociais/Analise das legendas/Eventos/:
+Saídas em _data/processed/[B1] Estabelecimentos e cardapios/redes_sociais/analise_legendas/eventos/:
   B1_instagram_eventos_por_estabelecimento.csv (casa: posts, eventos, eventos/mês, % por categoria)
   B1_instagram_eventos_por_categoria.csv       (categoria x tipo de casa: posts, casas, engajamento)
   B1_instagram_eventos_dias_da_semana.csv      (dia citado x tipo de casa)
@@ -45,7 +45,7 @@ import pandas as pd
 
 import instagram_comum as ic
 
-SAIDA = ic.SAIDA / "Eventos"
+SAIDA = ic.SAIDA / "eventos"
 
 JANELA_DE, JANELA_ATE = "2025-10-01", "2026-09-30"
 MESES = 12

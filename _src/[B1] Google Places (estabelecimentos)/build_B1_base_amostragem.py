@@ -50,7 +50,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 RAW = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios"
 CANDIDATOS_PATH = RAW / "B1_candidatos.csv"
 REGIC_PATH = RAW / "Metrópoles.md"
-RESUMO_CAPITAIS_PATH = (ROOT / "_data" / "processed" / "[B4] Bases publicas" / "Mercado e demanda"
+RESUMO_CAPITAIS_PATH = (ROOT / "_data" / "processed" / "[B4] Bases publicas" / "mercado_demanda"
                         / "[B4] Resumo de População e Renda por Capital 2022-2026 (IBGE).csv")
 OUT_PATH = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios" / "B1_base_amostragem.xlsx"
 

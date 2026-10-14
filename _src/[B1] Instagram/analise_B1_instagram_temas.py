@@ -1,7 +1,7 @@
 """
 Bloco B1 - temas das legendas do Instagram das casas aprovadas, pelas mesmas
 categorias da análise de conteúdo do B2 (livro de códigos em
-textos/analise_conteudo_bardin_B2.md, §1.4).
+textos/instrumentos/analise_conteudo_bardin_B2.md, §1.4).
 
 Pergunta: o que as casas anunciam (legendas) bate com o que os clientes
 elogiam ou criticam (avaliações do Google, B2)? Tema muito anunciado e pouco
@@ -35,7 +35,7 @@ categoria; o autor preenche a coluna "correto" (sim/não) e, quando o arquivo
 preenchido existe, o script calcula a precisão por categoria com IC 95% de
 Wilson. Sensibilidade (temas que o dicionário não pega) não é medida.
 
-Saídas em _data/processed/[B1] Estabelecimentos e cardapios/Redes Sociais/Analise das legendas/Temas/:
+Saídas em _data/processed/[B1] Estabelecimentos e cardapios/redes_sociais/analise_legendas/temas/:
   B1_instagram_temas_por_post.csv          (shortcode x categorias marcadas, sem a legenda)
   B1_instagram_temas_frequencia.csv        (categoria x tipo de casa, com o B2 ao lado)
   B1_instagram_temas_por_estabelecimento.csv (casa x categoria, % dos posts)
@@ -52,7 +52,7 @@ import pandas as pd
 
 import instagram_comum as ic
 
-SAIDA = ic.SAIDA / "Temas"
+SAIDA = ic.SAIDA / "temas"
 
 JANELA_DE, JANELA_ATE = "2024-10-01", "2026-09-30"
 MIN_POSTS = 20

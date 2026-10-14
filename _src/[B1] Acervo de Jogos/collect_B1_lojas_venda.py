@@ -15,11 +15,11 @@ Plataformas:
   disponibilidade; a listagem pública não traz estoque). Entram só produtos
   com available = 1; vale o preço promocional quando houver.
 - Saipos (La Tabuleria): itens da categoria "Jogos de Tabuleiro" já coletados
-  em Cardápios/B1_cardapios_digitais_itens.csv (collect_B1_cardapios_digitais.py).
+  em cardapios/B1_cardapios_digitais_itens.csv (collect_B1_cardapios_digitais.py).
 Sem loja legível: Ludoteca BGC (o site redireciona para o Acervo de Jogos).
 
 Cache: _data/raw/[B1].../lojas_venda/<loja>/ (HTML da Liga e JSON da Tray).
-Saída: Acervo de Jogos/B1_lojas_venda_produtos.csv, um produto por linha:
+Saída: acervo_jogos/B1_lojas_venda_produtos.csv, um produto por linha:
 estabelecimento, plataforma, produto, preco_rs, url, data_coleta. Acessórios e
 TCG entram se estiverem nas categorias escolhidas; o casamento com os jogos
 (build_B1_banco_jogos.py) descarta o que não for jogo.
@@ -36,8 +36,8 @@ import requests
 ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios" / "lojas_venda"
 PROC = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
-SAIPOS = PROC / "Cardápios" / "B1_cardapios_digitais_itens.csv"
-SAIDA = PROC / "Acervo de Jogos" / "B1_lojas_venda_produtos.csv"
+SAIPOS = PROC / "cardapios" / "B1_cardapios_digitais_itens.csv"
+SAIDA = PROC / "acervo_jogos" / "B1_lojas_venda_produtos.csv"
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
                     "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"}
 

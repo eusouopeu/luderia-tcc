@@ -16,20 +16,20 @@ IN_DIR = RAW_DIR / "ibge_sidra"
 
 # Consulta (nome do JSON bruto) -> (uso, dado principal, fonte). O período sai dos próprios dados.
 SAIDAS = {
-    "ipca_alimentacao_fora": ("Multiuso", "IPCA Alimentação Fora do Domicílio", "IBGE"),
-    "pas_2024_dados_gerais": ("Financeiro", "Serviços Dados Gerais", "IBGE PAS"),
-    "pas_familias_custos": ("Financeiro", "Serviços às Famílias Custos", "IBGE PAS"),
-    "pas_familias_empresas": ("Financeiro", "Serviços às Famílias Empresas", "IBGE PAS"),
-    "pas_familias_pessoal": ("Financeiro", "Serviços às Famílias Pessoal", "IBGE PAS"),
-    "pas_familias_receita": ("Financeiro", "Serviços às Famílias Receita", "IBGE PAS"),
-    "pof_alimentacao_fora_renda_uf": ("Multiuso", "Despesa com Alimentação por Renda", "IBGE POF"),
-    "pof_despesas_renda_uf": ("Multiuso", "Despesa Total por Renda", "IBGE POF"),
-    "populacao_censo_2022": ("Mercado e demanda", "População Residente", "IBGE Censo"),
-    "populacao_estimada": ("Mercado e demanda", "População Estimada", "IBGE"),
-    "populacao_idade_censo_2022": ("Mercado e demanda", "População por Idade", "IBGE Censo"),
-    "renda_censo_2022_idade": ("Mercado e demanda", "Renda por Idade", "IBGE Censo"),
-    "renda_pnadc_per_capita_rm_uf": ("Mercado e demanda", "Renda Domiciliar per Capita", "IBGE PNADC"),
-    "renda_pnadc_trabalho_capitais": ("Mercado e demanda", "Renda do Trabalho por Capital", "IBGE PNADC"),
+    "ipca_alimentacao_fora": ("multiuso", "IPCA Alimentação Fora do Domicílio", "IBGE"),
+    "pas_2024_dados_gerais": ("financeiro", "Serviços Dados Gerais", "IBGE PAS"),
+    "pas_familias_custos": ("financeiro", "Serviços às Famílias Custos", "IBGE PAS"),
+    "pas_familias_empresas": ("financeiro", "Serviços às Famílias Empresas", "IBGE PAS"),
+    "pas_familias_pessoal": ("financeiro", "Serviços às Famílias Pessoal", "IBGE PAS"),
+    "pas_familias_receita": ("financeiro", "Serviços às Famílias Receita", "IBGE PAS"),
+    "pof_alimentacao_fora_renda_uf": ("multiuso", "Despesa com Alimentação por Renda", "IBGE POF"),
+    "pof_despesas_renda_uf": ("multiuso", "Despesa Total por Renda", "IBGE POF"),
+    "populacao_censo_2022": ("mercado_demanda", "População Residente", "IBGE Censo"),
+    "populacao_estimada": ("mercado_demanda", "População Estimada", "IBGE"),
+    "populacao_idade_censo_2022": ("mercado_demanda", "População por Idade", "IBGE Censo"),
+    "renda_censo_2022_idade": ("mercado_demanda", "Renda por Idade", "IBGE Censo"),
+    "renda_pnadc_per_capita_rm_uf": ("mercado_demanda", "Renda Domiciliar per Capita", "IBGE PNADC"),
+    "renda_pnadc_trabalho_capitais": ("mercado_demanda", "Renda do Trabalho por Capital", "IBGE PNADC"),
 }
 FAIXAS_20_39 = ["20 a 24 anos", "25 a 29 anos", "30 a 34 anos", "35 a 39 anos"]
 PADRAO_PNADC = "habitualmente recebido no trabalho principal"  # variável de referência da tabela 5436
@@ -82,7 +82,7 @@ def main() -> None:
         print(f"{arq.stem:34s} {len(df):>6} linhas")
     resumo = resumo_capitais(tabelas)
     periodo = f"{tabelas['populacao_censo_2022']['periodo'].max()}-{tabelas['populacao_estimada']['periodo'].max()}"
-    resumo.to_csv(caminho_saida("Mercado e demanda", "Resumo de População e Renda por Capital", periodo, "IBGE"), index=False)
+    resumo.to_csv(caminho_saida("mercado_demanda", "Resumo de População e Renda por Capital", periodo, "IBGE"), index=False)
     print(resumo.to_string(index=False))
 
 

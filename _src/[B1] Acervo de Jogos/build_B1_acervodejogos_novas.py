@@ -11,11 +11,11 @@ registrada em CURADORIA com a evidência e a data. Lojas com mais de 100
 avaliações no recorte que não são luderia, ou cujo resultado do Google é outra
 casa, ficam em DESCARTES com o motivo, para a conta fechar.
 
-Entrada: Acervo de Jogos/B1_acervodejogos_lojas.csv e B1_acervodejogos_places.csv
-Saída:   Acervo de Jogos/B1_acervodejogos_luderias_novas.csv (uma linha por luderia)
-         Acervo de Jogos/B1_acervodejogos_triagem.csv (todas as lojas consultadas no
+Entrada: acervo_jogos/B1_acervodejogos_lojas.csv e B1_acervodejogos_places.csv
+Saída:   acervo_jogos/B1_acervodejogos_luderias_novas.csv (uma linha por luderia)
+         acervo_jogos/B1_acervodejogos_triagem.csv (todas as lojas consultadas no
          Google com mais de 100 avaliações no recorte, com a decisão)
-         Acervo de Jogos/B1_acervodejogos_triagem_50_ou_mais_avaliacoes.csv (mesma
+         acervo_jogos/B1_acervodejogos_triagem_50_ou_mais_avaliacoes.csv (mesma
          triagem com corte de 50 ou mais avaliações, para avaliar a expansão da
          população; pedido do autor em 13/10/2026). Na faixa de 50 a 100, a loja
          cujo place_id está na curadoria filtrada de 50+ ainda não passou pela
@@ -33,7 +33,7 @@ sys.path.insert(0, str(ROOT / "_src" / "[B1] Google Places (estabelecimentos)"))
 import recorte_rm as R  # noqa: E402
 
 PROC = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
-PASTA = PROC / "Acervo de Jogos"
+PASTA = PROC / "acervo_jogos"
 CURADORIA_50 = PROC / "B1_planilha_curadoria_metropoles_filtrada_50_ou_mais_avaliacoes.csv"
 METROPOLES = {
     "São Paulo", "Brasília", "Rio de Janeiro", "Belém", "Belo Horizonte", "Curitiba",

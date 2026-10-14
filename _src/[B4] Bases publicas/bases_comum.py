@@ -61,11 +61,11 @@ SIDRA_API = "https://servicodados.ibge.gov.br/api/v3/agregados"
 
 # Subpastas de _data/processed/[B4] Bases publicas/, por uso da tabela no plano.
 USOS = {
-    "Mercado e demanda": "cap. 5 e 6: população e renda das capitais",
-    "Ponto e operacoes": "6.4 e 7.1: escolha do bairro e perfil do entorno",
-    "Juridico e tributario": "8.1: enquadramento e tributos",
-    "Financeiro": "cap. 9: premissas de custo, taxa de desconto e coerência setorial",
-    "Multiuso": "usada em mais de um capítulo (deflator, ticket, custo de pessoal)",
+    "mercado_demanda": "cap. 5 e 6: população e renda das capitais",
+    "ponto_operacoes": "6.4 e 7.1: escolha do bairro e perfil do entorno",
+    "juridico_tributario": "8.1: enquadramento e tributos",
+    "financeiro": "cap. 9: premissas de custo, taxa de desconto e coerência setorial",
+    "multiuso": "usada em mais de um capítulo (deflator, ticket, custo de pessoal)",
 }
 
 

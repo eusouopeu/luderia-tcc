@@ -3,7 +3,7 @@ Bloco B2 - análise de conteúdo (Bardin) dos comentários do Google Maps das
 luderias aprovadas: contagens por categoria e amostra de controle de qualidade.
 
 A codificação foi feita à mão, comentário por comentário, pelo livro de códigos
-de textos/analise_conteudo_bardin_B2.md (§1.4). Cada linha da entrada é um
+de textos/instrumentos/analise_conteudo_bardin_B2.md (§1.4). Cada linha da entrada é um
 comentário da base do Notion "B - Comentários (manual)", identificado pelos 6
 últimos caracteres do id da página. Os códigos de uma linha vêm separados por
 espaço; o sinal final é a polaridade (+ positiva, - negativa, ± mista,
@@ -22,7 +22,7 @@ Regras de contagem:
     Luderia Carioca (69 comentários) não domine o resultado.
 
 Entrada:
-  _data/processed/[B2] Avaliacoes recentes/Analise de conteudo/B2_codificacao_bardin.csv
+  _data/processed/[B2] Avaliacoes recentes/analise_conteudo/B2_codificacao_bardin.csv
 Saídas na mesma pasta:
   B2_bardin_frequencia_categorias.csv   (categoria x polaridade x tipo)
   B2_bardin_contexto.csv                (códigos de contexto x tipo)
@@ -44,7 +44,7 @@ import re
 import pandas as pd
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-PASTA = ROOT / "_data" / "processed" / "[B2] Avaliacoes recentes" / "Analise de conteudo"
+PASTA = ROOT / "_data" / "processed" / "[B2] Avaliacoes recentes" / "analise_conteudo"
 ENTRADA = PASTA / "B2_codificacao_bardin.csv"
 RECODIFICACAO = PASTA / "B2_bardin_recodificacao.csv"
 

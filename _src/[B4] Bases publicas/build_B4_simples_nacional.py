@@ -4,7 +4,7 @@ Nacional na redação da LC nº 155/2016 (vigente).
 
 Entrada: _data/raw/[B4] Bases publicas/legislacao/lcp123_compilada_planalto_<data>.htm
 Saídas em _data/processed/[B4] Bases publicas/:
-Saídas em Juridico e tributario/, no padrão "[B4] {dado} {período} ({fonte}).csv", com o ano de vigência conferida:
+Saídas em juridico_tributario/, no padrão "[B4] {dado} {período} ({fonte}).csv", com o ano de vigência conferida:
   "Faixas e Alíquotas por Anexo"      anexo, faixa, receita bruta em 12 meses (mín., máx.),
                                       alíquota nominal e parcela a deduzir
   "Repartição de Tributos por Anexo"  percentual de repartição de cada tributo por faixa
@@ -71,9 +71,9 @@ def main() -> None:
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     df_faixas = pd.DataFrame(faixas)
-    df_faixas.to_csv(caminho_saida("Juridico e tributario", "Faixas e Alíquotas por Anexo", DATA_COLETA[:4], "Simples Nacional"), index=False)
+    df_faixas.to_csv(caminho_saida("juridico_tributario", "Faixas e Alíquotas por Anexo", DATA_COLETA[:4], "Simples Nacional"), index=False)
     pd.DataFrame(reparticao).to_csv(
-        caminho_saida("Juridico e tributario", "Repartição de Tributos por Anexo", DATA_COLETA[:4], "Simples Nacional"), index=False)
+        caminho_saida("juridico_tributario", "Repartição de Tributos por Anexo", DATA_COLETA[:4], "Simples Nacional"), index=False)
     contagem = df_faixas.groupby("anexo").size()
     if not (set(contagem.index) == {"I", "II", "III", "IV", "V"} and (contagem == 6).all()):
         raise ValueError(f"Esperadas 6 faixas em cada um dos 5 anexos; obtido: {contagem.to_dict()}")

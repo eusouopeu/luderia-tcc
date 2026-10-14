@@ -1,6 +1,6 @@
 # Roteiro de observação — São Jogue (Bloco B3)
 
-Roteiro de campo da contagem direta de ocupação. Protocolo em `_instrucoes/4_metodologia.md` (Bloco B3) e no `textos/registro_previo_luderia.md`. Este arquivo diz **o que fazer, em que ordem e o que anotar**. As fichas em branco da seção 7 são para preencher em campo.
+Roteiro de campo da contagem direta de ocupação. Protocolo em `_instrucoes/4_metodologia.md` (Bloco B3) e no `textos/planejamento/registro_previo_luderia.md`. Este arquivo diz **o que fazer, em que ordem e o que anotar**. As fichas em branco da seção 7 são para preencher em campo.
 
 ## 1. Agenda
 

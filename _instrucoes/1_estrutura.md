@@ -60,8 +60,6 @@ Cada capítulo com arquivo de instrução próprio aponta para ele. Capítulos s
 - **1.4 Justificativa** — acadêmica, social e gerencial.
 - **1.5 Estrutura do trabalho** — um parágrafo por capítulo.
 
-Aproveitar `introducao_tcc_luderia.md`, reescrevendo objetivos específicos em termos de decisões do plano (e não de hipóteses estatísticas).
-
 ### 2. Referencial Teórico → [2_ref-teorico.md](2_ref-teorico.md)
 
 - **2.1 Empreendedorismo e plano de negócios** — função e componentes do plano.
@@ -75,7 +73,7 @@ Aproveitar `introducao_tcc_luderia.md`, reescrevendo objetivos específicos em t
 
 - **3.1 Caracterização do trabalho** — plano de negócios baseado em evidências.
 - **3.2 Hierarquia de evidências** — escala N1–N6 e hierarquia de tipos de dados.
-- **3.3 Fontes e instrumentos de coleta** — Blocos B1, B2, B3 e B4, em ordem de relevância (o Bloco B6 foi retirado).
+- **3.3 Fontes e instrumentos de coleta** — Blocos B1, B2, B3 e B4, em ordem de relevância.
 - **3.4 Tratamento dos dados** — pipeline, pseudonimização, variáveis, validação do dicionário.
 - **3.5 Registro prévio e testes de hipótese** — *Extra, só se sobrar tempo no fim (ver [4_metodologia.md](4_metodologia.md) §3.5).* H1–H9, metade exploratória e confirmatória. Se não for feito, a seção sai e as seguintes sobem um número.
 - **3.6 Técnicas de análise e controles** — técnicas por área, calibração da ocupação, controles estatísticos.
@@ -155,8 +153,6 @@ Escrito por último, em até duas páginas. Não traz informação que não este
 ### Referências, Apêndices e Anexos → [10_biblio-apendices.md](10_biblio-apendices.md)
 
 ## Princípios do plano
-
-Movidos do `CLAUDE.md` em 12/10/2026.
 
 ### P1. Hierarquia de fontes
 

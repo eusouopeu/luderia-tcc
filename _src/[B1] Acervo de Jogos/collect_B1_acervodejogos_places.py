@@ -11,7 +11,7 @@ mensal de 1.000 chamadas).
 Escolha do resultado: entre os 3 primeiros, o de nome mais parecido com o da
 loja (razão de similaridade sobre o nome normalizado). Similaridade abaixo de
 0,5 fica marcada "conferir", porque pode ser outra casa.
-Saída: Acervo de Jogos/B1_acervodejogos_places.csv, uma linha por loja
+Saída: acervo_jogos/B1_acervodejogos_places.csv, uma linha por loja
 consultada, e resposta bruta em _data/raw/[B1].../acervodejogos/places.jsonl.
 Cache: loja que já tem resposta no places.jsonl não é consultada de novo (a
 API cobra por chamada); para atualizar, apagar o arquivo.
@@ -38,8 +38,8 @@ import recorte_rm as R  # noqa: E402
 
 load_dotenv(ROOT / ".env")
 PROC = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
-ENTRADA = PROC / "Acervo de Jogos" / "B1_acervodejogos_lojas.csv"
-SAIDA = PROC / "Acervo de Jogos" / "B1_acervodejogos_places.csv"
+ENTRADA = PROC / "acervo_jogos" / "B1_acervodejogos_lojas.csv"
+SAIDA = PROC / "acervo_jogos" / "B1_acervodejogos_places.csv"
 BRUTO = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios" / "acervodejogos" / "places.jsonl"
 CURADORIA = PROC / "B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv"
 APROVADAS = PROC / "B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx"

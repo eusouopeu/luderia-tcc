@@ -6,8 +6,8 @@ Pedido do autor em 13/10/2026 (banco "B - Jogos" no Notion). Corte: jogos em
 4 ou mais estabelecimentos (sugestão registrada para depois: 3 ou mais).
 
 Entradas:
-- Acervo de Jogos/B1_jogos_dos_acervos.csv (collect_B1_jogos_dos_acervos.py).
-- Acervo de Jogos/B1_lojas_venda_produtos.csv (collect_B1_lojas_venda.py).
+- acervo_jogos/B1_jogos_dos_acervos.csv (collect_B1_jogos_dos_acervos.py).
+- acervo_jogos/B1_lojas_venda_produtos.csv (collect_B1_lojas_venda.py).
 - Ludopedia: B5 arquivado e cache da API (collect_B1_jogos_ludopedia.py);
   identificação do jogo em jogos_comum.py.
 
@@ -28,7 +28,7 @@ Regras das colunas:
 - Nota média: ranking da Ludopedia (B5, 2.500 jogos, 01/09/2026); jogo fora
   do ranking fica sem nota.
 
-Saída: Acervo de Jogos/B1_banco_jogos.csv, uma linha por jogo. Contagem não
+Saída: acervo_jogos/B1_banco_jogos.csv, uma linha por jogo. Contagem não
 exclusiva por desenho: uma casa aparece em todos os jogos do seu acervo.
 """
 import csv

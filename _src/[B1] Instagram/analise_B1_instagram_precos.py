@@ -31,7 +31,7 @@ Regras:
     produto à venda, de comida e de inscrição de torneio não entra no preço
     de uso do espaço.
 
-Saídas em _data/processed/[B1] Estabelecimentos e cardapios/Redes Sociais/Analise das legendas/Precos/:
+Saídas em _data/processed/[B1] Estabelecimentos e cardapios/redes_sociais/analise_legendas/precos/:
   B1_instagram_precos_mencoes.csv             (uma linha por valor citado)
   B1_instagram_precos_por_objeto.csv          (objeto x tipo de casa)
   B1_instagram_precos_uso_do_espaco.csv       (casa x unidade: valor mais recente, faixa, n)
@@ -47,7 +47,7 @@ import pandas as pd
 
 import instagram_comum as ic
 
-SAIDA = ic.SAIDA / "Precos"
+SAIDA = ic.SAIDA / "precos"
 
 VIGENTE_DESDE = "2024-10-01"
 ANTES, DEPOIS = 70, 45  # caracteres de contexto para classificar cada valor

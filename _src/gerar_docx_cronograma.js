@@ -1,11 +1,14 @@
-// Gera textos/cronograma_luderia.docx a partir de textos/cronograma_luderia.md.
+// Gera textos/planejamento/cronograma_luderia.docx a partir de textos/planejamento/cronograma_luderia.md,
+// a única fonte do cronograma. Os .docx não são versionados: gerar quando for enviar.
 //
 // Converte títulos, parágrafos, listas e tabelas. Dentro das células, itens
 // separados por "; " viram tópicos (bullets). **negrito** e `código` são
-// mantidos como negrito e texto simples.
+// mantidos como negrito e texto simples. Itens de checklist ("- [x]", "- [ ]")
+// viram ☑ e ☐.
 //
-// Com --resumo, gera textos/cronograma_luderia_atual.docx em A4 retrato, só com
-// os títulos e as tabelas das seções listadas em SECOES_RESUMO.
+// Com --resumo, gera textos/planejamento/cronograma_luderia_atual.docx em A4 retrato,
+// só com os títulos e as tabelas das seções listadas em SECOES_RESUMO (as tabelas
+// de uma seção viram uma só, com um cabeçalho).
 //
 // Uso: node "_src/gerar_docx_cronograma.js" [--resumo]
 const fs = require("fs");
@@ -16,9 +19,10 @@ const {
 } = require("docx");
 
 const ROOT = path.resolve(__dirname, "..");
-const MD = path.join(ROOT, "textos", "cronograma_luderia.md");
+const PASTA = path.join(ROOT, "textos", "planejamento");
+const MD = path.join(PASTA, "cronograma_luderia.md");
 const RESUMO = process.argv.includes("--resumo");
-const OUT = path.join(ROOT, "textos", RESUMO ? "cronograma_luderia_atual.docx" : "cronograma_luderia.docx");
+const OUT = path.join(PASTA, RESUMO ? "cronograma_luderia_atual.docx" : "cronograma_luderia.docx");
 const SECOES_RESUMO = ["Variáveis e instrumentos de coleta", "Cronograma semanal", "Capítulos"];
 
 const FONTE = "Arial";
@@ -28,7 +32,7 @@ const LARGURA = (RESUMO ? 11906 : 16838) - 2 * 1134;
 
 // Larguras relativas por cabeçalho de tabela.
 const PESOS = {
-  "Semana": 12, "Período": 10, "Coleta e análise": 40, "Escrita": 24, "Entrega": 16,
+  "Semana": 12, "Período": 10, "Coleta e análise": 40, "Escrita": 24, "Produção escrita": 50, "Entrega": 16,
   "Data": 14, "Dia": 10, "Etapa": 45, "Situação": 55, "Capítulo": 40, "Rascunho": 30,
   "Versão completa": 30, "Variável": 26, "Finalidade": 28, "Fonte dos dados": 26,
   "Instrumento de coleta": 26,
@@ -98,10 +102,22 @@ function tabela(linhas) {
 function filtraResumo(md) {
   const saida = [];
   let dentro = false;
+  let cabecalho = null;
+  let pulaSeparador = false;
   for (const l of md.split("\n")) {
     if (l.startsWith("# ")) { saida.push(l); continue; }
-    if (l.startsWith("## ")) { dentro = SECOES_RESUMO.includes(l.slice(3).trim()); if (dentro) saida.push("", l, ""); continue; }
-    if (dentro && l.startsWith("|")) saida.push(l);
+    if (l.startsWith("## ")) {
+      dentro = SECOES_RESUMO.includes(l.slice(3).trim());
+      cabecalho = null;
+      if (dentro) saida.push("", l, "");
+      continue;
+    }
+    if (!dentro || !l.startsWith("|")) continue;
+    // Uma tabela por semana (### Semana n) vira uma só: o cabeçalho repetido sai.
+    if (pulaSeparador) { pulaSeparador = false; continue; }
+    if (cabecalho === null) cabecalho = l;
+    else if (l === cabecalho) { pulaSeparador = true; continue; }
+    saida.push(l);
   }
   return saida.join("\n");
 }
@@ -125,6 +141,13 @@ function converte(md) {
     } else if (l.startsWith("## ")) {
       blocos.push(new Paragraph({ heading: HeadingLevel.HEADING_1,
         children: runs(l.slice(3), { bold: true, size: 24 }), spacing: { before: 240, after: 120 } }));
+    } else if (l.startsWith("### ")) {
+      blocos.push(new Paragraph({ heading: HeadingLevel.HEADING_2,
+        children: runs(l.slice(4), { bold: true, size: 22 }), spacing: { before: 200, after: 100 } }));
+    } else if (/^\s*- \[[ xX]\] /.test(l)) {
+      const feito = /^\s*- \[[xX]\]/.test(l);
+      blocos.push(paragrafo((feito ? "☑ " : "☐ ") + l.replace(/^\s*- \[[ xX]\] /, ""),
+        { par: { spacing: { after: 60 }, indent: { left: 240 } } }));
     } else if (l.startsWith("|")) {
       const tab = [];
       while (i < linhas.length && linhas[i].startsWith("|")) {

@@ -103,14 +103,14 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 | Registro de premissas completo | 9.2 | B |
 | DRE e fluxo de caixa mensais | 9.5 | C |
 | Checagens de coerência | 9.8 | D |
-| Fluxograma de limpeza e critérios de curadoria (`textos/figuras/fluxograma_limpeza_B1.*`) | 3.3 | E |
+| Fluxograma de limpeza e critérios de curadoria (`textos/capitulos/figuras/fluxograma_limpeza_B1.*`) | 3.3 | E |
 | Tabela e gráfico de limiares de avaliações (`B1_limiares_avaliacoes*.csv`, `B1_grafico_limiares*.png`); no texto, uma frase com o número do corte | 3.3 | E |
 | Conferência da região metropolitana (`B1_conferencia_rm.csv`) e termos suspeitos (`B1_termos_suspeitos.csv`) | 3.4 | E |
 | Cobertura da lista manual (`B1_cobertura_lista_manual.csv`) | 3.4 | E |
 | Lista dos concorrentes aprovados (nome, metrópole, avaliação, volume; sem texto de avaliações) | 5.3 | E |
 | Itens e preços dos cardápios (`B1_cardapios_itens_precos.xlsx`, resumido por categoria) | 6.2, 6.3 | E |
-| Livro de códigos da análise de conteúdo (`textos/analise_conteudo_bardin_B2.md`), validação e frequências completas por categoria | 3.4, 5.2 | F |
-| Protocolo de observação (`textos/roteiro_observacao_sao_jogue.md`), sorteio, registros por visita, números das NFC-e e checagens de consistência | 3.3, 6.6 | G |
+| Livro de códigos da análise de conteúdo (`textos/instrumentos/analise_conteudo_bardin_B2.md`), validação e frequências completas por categoria | 3.4, 5.2 | F |
+| Protocolo de observação (`textos/instrumentos/roteiro_observacao_sao_jogue.md`), sorteio, registros por visita, números das NFC-e e checagens de consistência | 3.3, 6.6 | G |
 | Tabelas de apoio das bases públicas: população por bairro, salários de admissão por CBO, faixas do Simples Nacional, Selic e IPCA | 6.4, 7.5, 8, 9 | H |
 | Canvas do modelo de negócio e fluxograma dos processos operacionais | 6.1, 7.3 | I |
 
@@ -129,7 +129,7 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 | I | Canvas e fluxograma dos processos | Caps. 6 e 7 |
 | J | Dicionário de variáveis | A criar no repositório |
 | K | Repositório e produto visual — links e instruções de reprodução | README do repositório; `site-apresentacao/` |
-| L | *Extra, se feito:* registro prévio, emendas e testes de hipótese H1–H9 | `textos/registro_previo_luderia.md` |
+| L | *Extra, se feito:* registro prévio, emendas e testes de hipótese H1–H9 | `textos/planejamento/registro_previo_luderia.md` |
 | M | *Extra, se feito:* simulação de Monte Carlo | [8_financeiro.md](8_financeiro.md) §4.4 |
 
 Teto dos apêndices: 9 páginas, incluindo os extras L e M, se feitos. O que não couber fica só no repositório, com o link no apêndice K.

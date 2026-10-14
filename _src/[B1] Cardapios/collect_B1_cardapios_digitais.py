@@ -5,7 +5,7 @@ Saipos: API pública do site de pedidos (delivery-api.saipos.com), a mesma que a
 VUCA Food: a página /cardapio-digital traz os itens num JSON embutido (campos categoria, nome, descricao, preco).
 Os preços do cardápio de delivery podem diferir do salão; a coluna plataforma deixa isso visível.
 
-Saída: _data/processed/[B1] Estabelecimentos e cardapios/Cardápios/B1_cardapios_digitais_itens.csv
+Saída: _data/processed/[B1] Estabelecimentos e cardapios/cardapios/B1_cardapios_digitais_itens.csv
        (estabelecimento;plataforma;url;categoria;item;descricao;preco_rs;a_partir;data_coleta)
 """
 import csv
@@ -20,7 +20,7 @@ from pathlib import Path
 import certifi
 
 ROOT = Path(__file__).resolve().parents[2]
-SAIDA = ROOT / "_data/processed/[B1] Estabelecimentos e cardapios/Cardápios/B1_cardapios_digitais_itens.csv"
+SAIDA = ROOT / "_data/processed/[B1] Estabelecimentos e cardapios/cardapios/B1_cardapios_digitais_itens.csv"
 CTX = ssl.create_default_context(cafile=certifi.where())
 UA = "Mozilla/5.0 (Macintosh) AppleWebKit/537.36 Chrome/120 Safari/537.36"
 

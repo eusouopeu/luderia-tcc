@@ -1,7 +1,7 @@
 """Procura sinais de venda e aluguel de jogos, e de modelo de precificação (taxa, passe, passaporte), nos sites e links dos estabelecimentos.
 
 Entrada: lista SITES abaixo (Site e Outros links do banco A do Notion, 12/10/2026).
-Saída:   _data/processed/[B1] Estabelecimentos e cardapios/Cardápios/B1_sinais_venda_aluguel.csv
+Saída:   _data/processed/[B1] Estabelecimentos e cardapios/cardapios/B1_sinais_venda_aluguel.csv
 Linktree: lê os títulos dos botões (loja, aluguel, ingressos). Demais páginas: conta termos no HTML.
 Os sinais são indícios; a decisão final por estabelecimento é manual (preço de jogo no DOM confirma venda).
 """
@@ -16,7 +16,7 @@ from pathlib import Path
 import certifi
 
 ROOT = Path(__file__).resolve().parents[2]
-SAIDA = ROOT / "_data/processed/[B1] Estabelecimentos e cardapios/Cardápios/B1_sinais_venda_aluguel.csv"
+SAIDA = ROOT / "_data/processed/[B1] Estabelecimentos e cardapios/cardapios/B1_sinais_venda_aluguel.csv"
 CTX = ssl.create_default_context(cafile=certifi.where())
 UA = {"User-Agent": "Mozilla/5.0"}  # Linktree devolve 403 para User-Agent completo
 

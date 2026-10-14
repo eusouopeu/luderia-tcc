@@ -4,12 +4,12 @@ TCC em formato **plano de negócios baseado em evidências** para uma luderia/lu
 
 ## Mapa dos arquivos de instrução
 
-Ler este arquivo sempre. Ler os demais sob demanda, conforme a tarefa. A numeração é a ordem de leitura, não o número do capítulo.
+Ler este arquivo e o [AGORA.md](AGORA.md) sempre. Ler os demais sob demanda, conforme a tarefa (roteiro por tarefa no [README.md](README.md), "Por onde começar"). A numeração é a ordem de leitura, não o número do capítulo.
 
 | Arquivo | Quando ler |
 |---|---|
 | [_instrucoes/1_estrutura.md](_instrucoes/1_estrutura.md) | Visão do todo; tarefa com mais de um capítulo; caps. 1, 4 e 11 (sem arquivo próprio); teto de páginas; hierarquias de fontes, dados e focos; escrita e vocabulário |
-| [_instrucoes/2_ref-teorico.md](_instrucoes/2_ref-teorico.md) | Cap. 2 — escrita, citação, subcapítulos, lista de leitura |
+| [_instrucoes/2_ref-teorico.md](_instrucoes/2_ref-teorico.md) | Cap. 2 — escrita, citação, subcapítulos (lista de leitura em `bibliografia/lista-de-leitura.md`) |
 | [_instrucoes/4_metodologia.md](_instrucoes/4_metodologia.md) | Cap. 3 — instrumentos de coleta, blocos de dados, matriz de evidências |
 | [_instrucoes/3_mercado.md](_instrucoes/3_mercado.md) | Cap. 5 — análise de mercado |
 | [_instrucoes/5_marketing.md](_instrucoes/5_marketing.md) | Cap. 6 — marketing e estimativa de demanda |
@@ -21,19 +21,21 @@ Ler este arquivo sempre. Ler os demais sob demanda, conforme a tarefa. A numera�
 
 ## Estado do projeto
 
-- Pastas: `textos/` (projeto de pesquisa, cronograma e capítulos), `arquivados/` (fora de uso, incluindo `recorte-antigo/`), `bibliografia/`, `docs/`, `_instrucoes/`, `_src/` (scripts), `_data/` (dados), `_logs/`, `site-apresentacao/`, `app-observacao/` (app Android da contagem). Visão geral do pipeline no [README.md](README.md).
-- Prazos: `textos/cronograma_luderia.md`. Versão final para a banca em 16/11/2026.
+- Pastas: `textos/` (`capitulos/`, `planejamento/`, `instrumentos/`), `arquivados/` (fora de uso, incluindo `recorte-antigo/`, B5 e B6), `bibliografia/`, `docs/`, `_instrucoes/`, `_src/` (scripts; `_src/_logs/` e o atalho `_src/_shared`), `_data/` (dados), `site-apresentacao/`, `app-observacao/` (app Android da contagem). Visão geral do pipeline no [README.md](README.md).
+- Prazos: `textos/planejamento/cronograma_luderia.md`, a única fonte do cronograma (o `.docx` é gerado por `_src/gerar_docx_cronograma.js` e não é versionado). Situação de cada capítulo: `textos/planejamento/status_capitulos.md`. Versão final para a banca em 16/11/2026.
+- Decisões tomadas: `docs/decisoes.md`. Dúvidas, ideias futuras, decisões a tomar e divergências abertas: `docs/pendencias.md`.
 - `arquivados/introducao_tcc_luderia.md` e `arquivados/metodologia_tcc_luderia.md` são do **desenho anterior** (pesquisa de mercado, hipóteses H1–H9): servem de insumo; hipóteses e testes vão para apêndice, salvo quando sustentam decisão do plano.
 - Pipeline: `_src/[Bn] Fonte/` → `_data/raw/[Bn] Nome/` → `_data/processed/[Bn] Nome/`. Scripts `<etapa>_Bn_<conteúdo>.py` (`collect` → `build` → `analise`), saídas `Bn_<conteúdo>`; cada script define `ROOT = Path(__file__).resolve().parents[2]` e roda de qualquer diretório. Detalhes em `_instrucoes/4_metodologia.md`. Blocos, em ordem de relevância:
   - **B1** — concorrentes com mais de 100 avaliações nas 14 metrópoles da REGIC (IBGE) e seus cardápios → concorrência, preço, ticket.
   - **B2** — avaliações com texto publicadas até "3 meses atrás", inclusive (rótulo do Google Maps na data da coleta) → proposta de valor, reclamações, ticket, fluxo.
   - **B3** — contagem direta nas duas unidades da São Jogue (Salvador), com leitura da NFC-e → ocupação, giro, calibração.
-  - **B4** — bases públicas (IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA) → demanda, custos, tributos, taxa de desconto. Subpastas por uso definidas em `USOS` no `bases_comum.py`.
-  - **B6** — histórico dos avaliadores; retirado em 18/09/2026.
+  - **B4** — bases públicas (IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA) → demanda, custos, tributos, taxa de desconto. Subpastas por uso (`mercado_demanda`, `ponto_operacoes`, `juridico_tributario`, `financeiro`, `multiuso`) definidas em `USOS` no `bases_comum.py`.
+  - **B6** — histórico dos avaliadores; retirado em 18/09/2026 (`arquivados/B6-avaliadores/`).
+  - Subpastas dentro de `_data/raw/[Bn]…` e `_data/processed/[Bn]…`: minúsculas, sem acento, com `_` (ex.: `cardapios/`, `acervo_jogos/`, `redes_sociais/analise_legendas/`).
 
 ## Versionamento
 
-- **Commit e push automáticos** após qualquer modificação, sem pedir confirmação (`origin`, branch atual). Um commit por conjunto coerente de mudanças, mensagem em português dizendo o que mudou e por quê.
+- **Um commit por sessão de trabalho**, com push, sem pedir confirmação (`origin`, branch atual): ao concluir o que o autor pediu na sessão, não a cada arquivo. Se a sessão tratar de assuntos sem relação entre si, um commit por assunto. Mensagem em português no formato "o que avançou no TCC" (ex.: "B2: 12 luderias coletadas e cobertura atualizada"), seguida do porquê.
 - Antes do commit, conferir com `git status` se nada ignorado pelo `.gitignore` (dados brutos, `.env`, CAGED, zips) entrou por engano.
 - Se o push falhar, informar o erro ao autor em vez de forçar (`--force`).
 
@@ -43,6 +45,15 @@ Arquivo: [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md) (forma
 
 1. **TODA VEZ** que uma ação mudar qualquer arquivo do projeto **ou qualquer banco de dados do Notion**, registrar data, hora, **Objeto**, **Antes**, **Depois** e **Justificativa**.
 2. **TODA VEZ** que aparecer informação divergente entre documentos ainda sem registro, registrar data, **Objeto**, **Antes** (arquivo mais antigo), **Depois** (mais recente) e **Efeitos colaterais**. Registrar a divergência não autoriza corrigi-la sem pedido do autor.
+
+## Fim de sessão
+
+Antes do commit, atualizar:
+
+1. [AGORA.md](AGORA.md): o que está em andamento, os próximos 3 passos e o que está bloqueado (no máximo uma tela).
+2. `docs/decisoes.md`: uma linha no topo para cada decisão tomada na sessão.
+3. `docs/pendencias.md`: dúvida, ideia ou decisão em aberto que surgiu; item resolvido sai.
+4. `textos/planejamento/status_capitulos.md`, se algum capítulo mudou; checklist do cronograma, se alguma tarefa terminou.
 
 ## Princípios
 

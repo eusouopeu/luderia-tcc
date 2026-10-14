@@ -1,4 +1,4 @@
-// Gera textos/projeto_pesquisa_luderia.docx a partir de textos/projeto_pesquisa_luderia.md.
+// Gera textos/planejamento/projeto_pesquisa_luderia.docx a partir de textos/planejamento/projeto_pesquisa_luderia.md.
 //
 // Formato acadêmico (ABNT): A4 retrato, margens de 3 cm (superior e esquerda) e
 // 2 cm (inferior e direita), Arial 12, espaçamento 1,5, texto justificado com
@@ -19,8 +19,8 @@ const {
 } = require("docx");
 
 const ROOT = path.resolve(__dirname, "..");
-const MD = path.join(ROOT, "textos", "projeto_pesquisa_luderia.md");
-const OUT = path.join(ROOT, "textos", "projeto_pesquisa_luderia.docx");
+const MD = path.join(ROOT, "textos", "planejamento", "projeto_pesquisa_luderia.md");
+const OUT = path.join(ROOT, "textos", "planejamento", "projeto_pesquisa_luderia.docx");
 
 const FONTE = "Arial";
 const TAM = 24;        // 12 pt

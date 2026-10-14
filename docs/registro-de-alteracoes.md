@@ -464,3 +464,63 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: busca do Maps centrada no estabelecimento a zoom 15 fixo; página que não carregava em 15 s virava zero resultados; mesma estação cadastrada duas vezes contava duas; resultado mal classificado só se corrigia no CSV; shopping de porte por 1.000 avaliações ou mais (sem fonte); sem previsão de término, sem salvamento parcial e sem como refazer só os problemáticos.
 **Depois**: (1) busca que não carrega é tentada de novo até 2 vezes e depois sai como falha, com os grupos que ela alimenta em branco no resumo (não zero); a tela de "tráfego incomum" (inclusive `google.com/sorry`, novo @match) pausa a fila com alarme e a retoma ao voltar ao Maps. (2) Conferido no Maps que o "@" da URL é o centro da janela, com o lado esquerdo sob o painel lateral (408 px): o centro agora vai painel/2 px para oeste, o zoom é o maior que cobre 1.000 m no mapa visível, e a cobertura real é medida em cada busca (`cobertura_min_m`); abaixo do raio, refaz com zoom menor. Teste no Iguatemi (Salvador): 1.266 m de cobertura; sem o deslocamento seriam cerca de 150 m. (3) Resultados do mesmo grupo a até 150 m e com nome parecido contam uma vez (`duplicata_de`, `duplicatas_fundidas`). (4) Painel "Revisar classificação": "outros" a até 1.000 m com cara de estação ou shopping, reclassificados com um clique (`grupo_auto`, `grupo`, `revisado`). (5) Critério de shopping de porte escolhido no painel: OpenStreetMap (shop=mall com área da bounding box ≥ 5.000 m², via Overpass, padrão), lista da Abrasce carregada como CSV, ou avaliações no Maps; colunas `qt_shoppings_porte_*` e `criterio_porte_shopping`. (8) Botão "Refazer pendentes" (falha, cobertura insuficiente ou censura possível). (11) Previsão de término no painel e CSV parcial a cada 10 estabelecimentos (opção). (12) Aviso de janela própria no cabeçalho, no painel e no status quando a aba está em segundo plano. Resumo passa a ser montado na exportação (revisões e critério de porte valem retroativamente) e fecha a soma a 1.000 m com `qt_outros_1000m` e `resultados_ate_1000m`. Recomendações 7 (build do B1 a partir dos CSVs) e 10 (ler a resposta interna da busca) registradas no cabeçalho do script como implementação futura. Onze testes passam.
 **Justificativa**: pedido do autor: implementar as recomendações 1, 2, 3, 4, 5 (com OSM e Abrasce como opções no painel), 8, 11 e 12, guardando a 7 e a 10.
+
+### 22:26
+**Objeto**: `textos/` (subpastas `capitulos/`, `planejamento/`, `instrumentos/`); `_src/gerar_docx_projeto.js`; caminhos em `_instrucoes/4_metodologia.md`, `_instrucoes/10_biblio-apendices.md`, `textos/instrumentos/roteiro_observacao_sao_jogue.md`, `textos/instrumentos/analise_conteudo_bardin_B2.md`, `analise_B2_conteudo_bardin.py` e `analise_B1_instagram_temas.py`
+**Antes**: 12 itens soltos em `textos/`, misturando capítulo, projeto, cronogramas, roteiro de campo, livro de códigos e planilha.
+**Depois**: `capitulos/` (introdução e `figuras/`), `planejamento/` (cronograma, status dos capítulos, projeto de pesquisa e registro prévio) e `instrumentos/` (roteiro de observação, livro de códigos do B2 e quadro de itens). O registro prévio não foi editado: é documento datado, e a menção a `textos/projeto_pesquisa_luderia.md` dentro dele ficou como estava.
+**Justificativa**: pedido do autor (recomendação 4): achar cada arquivo pela função.
+
+### 22:26
+**Objeto**: cronograma — `textos/cronograma_luderia.md`, `textos/cronograma_luderia_semanas.md`, `cronograma_luderia.docx`, `cronograma_luderia_atual.docx`; `_src/gerar_docx_cronograma.js`; `.gitignore`
+**Antes**: quatro arquivos com o mesmo cronograma: a versão em tabela única, a versão com checklist por semana (com edições do autor não salvas) e dois `.docx` gerados da versão em tabela.
+**Depois**: uma só fonte, `textos/planejamento/cronograma_luderia.md` (a versão com checklist, com as edições do autor). A versão em tabela única foi guardada em `arquivados/cronograma/cronograma_luderia_tabela-unica_2026-10-02.md`. O gerador lê a nova fonte, desenha os títulos de semana e os itens de checklist (☑/☐) e, no `--resumo`, junta as tabelas semanais numa só; os `.docx` são gerados na pasta `planejamento/` e não são mais versionados.
+**Justificativa**: pedido do autor (recomendação 2): o mesmo cronograma em quatro arquivos ia divergir.
+
+### 22:26
+**Objeto**: `_shared` e `_logs/` (raiz); `.gitignore`
+**Antes**: na raiz, um atalho do macOS `_shared` (não versionado) e a pasta `_logs/`, vazia.
+**Depois**: `_src/_shared` e `_src/_logs/`; o `.gitignore` ignora `_src/_logs/*.log` e o atalho, que só vale nesta máquina.
+**Justificativa**: pedido do autor (recomendação 6): mover para `_src/` em vez de apagar.
+
+### 22:26
+**Objeto**: subpastas de `_data/` — B1: `Acervo de Jogos/`, `Cardápios/`, `Redes Sociais/Analise das legendas/{Eventos,Precos,Temas}/`, `raw/…/acervos_jogos/`; B2: `Analise de conteudo/`; B4: `Mercado e demanda/`, `Ponto e operacoes/`, `Juridico e tributario/`, `Financeiro/`, `Multiuso/`; os scripts de `_src/[B1]`, `_src/[B2]` e `_src/[B4]` que as citam (`USOS` em `bases_comum.py`); `bibliografia/referencias_bases_publicas.md`; `.gitignore`; coluna de origem em `B1_jogos_dos_acervos.csv`
+**Antes**: nomes com maiúscula, acento e espaço misturados a nomes em minúsculas (`Cardápios/` em processed e `cardapios/` em raw), e `acervos_jogos/` ao lado de `acervodejogos/`, com nomes quase iguais e conteúdos diferentes.
+**Depois**: minúsculas, sem acento, com `_`: `acervo_jogos/`, `cardapios/`, `redes_sociais/analise_legendas/{eventos,precos,temas}/`, `analise_conteudo/`, `mercado_demanda/`, `ponto_operacoes/`, `juridico_tributario/`, `financeiro/`, `multiuso/`; `acervos_jogos/` virou `acervos_luderias/` (acervo de cada luderia), e `acervodejogos/` (cache do site acervodejogos.com.br) ficou como estava. As subpastas por estabelecimento dentro de `cardapios/` não mudaram. Os scripts compilam, e os caminhos de `instagram_comum.py`, `jogos_comum.py` e `bases_comum.py` existem.
+**Justificativa**: pedido do autor (recomendação 7): um padrão único de nome.
+
+### 22:26
+**Objeto**: `_data/raw/[B6] Historico dos avaliadores/` e `_data/processed/[B6] Historico dos avaliadores/`; `_instrucoes/4_metodologia.md` (escopo, tabela de blocos, seção "Bloco B6 — Retirado")
+**Antes**: pastas vazias do B6 em `_data/` e três menções à retirada na metodologia.
+**Depois**: pastas em `arquivados/B6-avaliadores/`, com `LEIAME.md` explicando a retirada; a metodologia não cita mais o B6 (a decisão está em `docs/decisoes.md`).
+**Justificativa**: pedido do autor (recomendação 7): `_data/` só com os blocos em uso, como já é feito com o B5.
+
+### 22:26
+**Objeto**: `_instrucoes/` — `4_metodologia.md`, `1_estrutura.md` e `2_ref-teorico.md`; `bibliografia/lista-de-leitura.md` (novo)
+**Antes**: 1.270 linhas de instrução, com histórico e justificativas misturados às regras: proposta de validação "em estudo, não adotada", troca da RAIS pelo CAGED, datas de orientação, retirada do B6, "Movidos do CLAUDE.md em 12/10/2026", aproveitamento de `introducao_tcc_luderia.md` (introdução já escrita) e a lista de leitura do cap. 2, com cerca de 110 linhas.
+**Depois**: 1.142 linhas, só com regras vigentes. A proposta de validação foi para `docs/pendencias.md` (decisões a tomar, item 3); RAIS → CAGED, base única, B6 e a data da orientação foram para `docs/decisoes.md`; a lista de leitura foi para `bibliografia/lista-de-leitura.md`, com um link em `2_ref-teorico.md`. O conteúdo das regras não mudou.
+**Justificativa**: pedido do autor (recomendação 10): separar regra vigente de histórico.
+
+### 22:26
+**Objeto**: `AGORA.md`, `textos/planejamento/status_capitulos.md`, `docs/decisoes.md` e `docs/pendencias.md` (novos)
+**Antes**: não havia lugar com o próximo passo, a situação dos capítulos, as decisões tomadas ou as questões em aberto; essas informações estavam espalhadas pelo registro de alterações, pelas instruções, pelo diagnóstico bibliográfico e pelo cronograma.
+**Depois**: `AGORA.md` (em andamento, próximos 3 passos, bloqueios e mapa de arquivos); painel de capítulos (situação, páginas contra o teto, prazo, dependência e pendência principal); 20 decisões datadas com a fonte; pendências divididas em decisões a tomar, divergências abertas, dúvidas e ideias futuras.
+**Justificativa**: pedido do autor (recomendações 1, 3 e 9, mais um arquivo para dúvidas, ideias futuras e decisões a tomar).
+
+### 22:26
+**Objeto**: `CLAUDE.md` (mapa, "Estado do projeto", "Versionamento", nova seção "Fim de sessão") e `README.md` (estrutura, nova seção "Por onde começar", linha do B6)
+**Antes**: commit e push após qualquer modificação, um por conjunto coerente de mudanças; caminhos antigos de `textos/` e `_logs/`; nenhum roteiro do tipo "para tal tarefa, abrir tais arquivos".
+**Depois**: um commit por sessão de trabalho (ou por assunto, se a sessão tratar de assuntos sem relação entre si), com mensagem "o que avançou no TCC"; ao fim de cada sessão, atualizar `AGORA.md`, decisões, pendências e status; caminhos novos; padrão de nome das subpastas de dados; tabela do README dizendo, para cada tarefa, o que abrir e onde fica a saída.
+**Justificativa**: pedido do autor (recomendações 11 e 12): menos commits picados e entrada direta por tarefa.
+
+### 22:26
+**Objeto**: divergência entre `_instrucoes/4_metodologia.md` (Bloco B3) e `textos/planejamento/cronograma_luderia.md` (semana 3) sobre a hora das visitas
+**Antes**: metodologia: hora de início sorteada entre 12h e 19h, de hora em hora, com semente fixa.
+**Depois**: cronograma (edição do autor): as reservas só permitiam 12h, 15h e 18h, e se optou por 18h/19h, por ser o horário de maior fluxo esperado.
+**Efeitos colaterais**: o cap. 3 e o apêndice do protocolo de observação podem descrever um sorteio que não ocorreu; o argumento de que o sorteio reduz o viés na escolha dos períodos (§3.4, Bloco B3) deixa de valer se a hora foi escolhida. Registrado em `docs/pendencias.md` (item 2); a correção depende do autor.
+
+### 22:26
+**Objeto**: divergências ainda abertas entre `_instrucoes/1_estrutura.md` (3.5 e 11.5), o cronograma (semanas 2 e 3) e `CLAUDE.md`/instruções × decisão de 09/10/2026 sobre o público casual
+**Antes**: `1_estrutura.md`: "metade exploratória e confirmatória" e "recorte do último mês"; cronograma: divisão da base e "avaliações do último mês"; `CLAUDE.md` e instruções: plano posicionado para o público casual.
+**Depois**: base única e recorte de 3 meses (`4_metodologia.md`, 13/10/2026); recorte casual retirado (`docs/bibliografia/diagnostico-teorico.md` §0, 09/10/2026).
+**Efeitos colaterais**: já registradas (13/10 e 12/10); agora também listadas em `docs/pendencias.md` para não ficarem escondidas no registro. Nenhum texto foi corrigido.

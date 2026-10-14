@@ -8,13 +8,12 @@ Aproveitar de `arquivados/metodologia_tcc_luderia.md` a descrição de fontes, f
 
 ## Escopo adotado
 
-Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atualizar esta seção, `textos/projeto_pesquisa_luderia.md` e `textos/cronograma_luderia.md`.
+Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atualizar esta seção, `textos/planejamento/projeto_pesquisa_luderia.md` e `textos/planejamento/cronograma_luderia.md`.
 
 - **Praça do plano:** Salvador (BA). A decisão de localização é o bairro e o ponto, não a cidade.
 - **Sem questionários.** Dados secundários públicos e uma única coleta primária comportamental (contagem direta de ocupação, com leitura do número da NFC-e).
 - **Estabelecimentos (Bloco B1):** concorrentes com **mais de 100 avaliações** no Google Maps nas **14 capitais classificadas como metrópole pela REGIC** (IBGE); população final esperada de 100 a 150 estabelecimentos após a curadoria.
-- **Avaliações (Bloco B2):** **todas as avaliações com texto publicadas até "3 meses atrás"** (rótulo relativo do Google Maps na data da coleta), por estabelecimento, com texto integral. O número de avaliações varia entre estabelecimentos. Não há divisão da base: a etapa exploratória e a descritiva usam a população inteira de avaliações coletadas (orientação do orientador, registrada em 13/10/2026).
-- **Histórico dos avaliadores (Bloco B6):** retirado do escopo em 18/09/2026. Saem a nota centrada no avaliador, o lift de categorias, a avaliação no mesmo dia e a sobreposição de clientela.
+- **Avaliações (Bloco B2):** **todas as avaliações com texto publicadas até "3 meses atrás"** (rótulo relativo do Google Maps na data da coleta), por estabelecimento, com texto integral. O número de avaliações varia entre estabelecimentos. Não há divisão da base: a etapa exploratória e a descritiva usam a população inteira de avaliações coletadas.
 - **Modelo de alimentos e bebidas:** não é avaliado. Cozinha própria, parceria ou só bar deixa de ser variável do Bloco B1 e passa a premissa do autor no cap. 9.
 - **Cardápios** de cada estabelecimento.
 - **Contagem direta de ocupação** nas duas unidades da São Jogue (única luderia de Salvador), feita do lado de fora: 2 visitas sorteadas no sábado, 03/10/2026, com hora de início sorteada e duração fixa de 3 horas, e 2 visitas de retorno 15 dias depois (domingo, 18/10/2026), na mesma unidade e hora. O número da NFC-e lido nas duas visitas dá as notas emitidas no intervalo.
@@ -24,7 +23,7 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 
 ### Correspondência entre blocos e arquivos do pipeline
 
-Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/`. Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `<etapa>_Bn_<conteúdo>.py` nos scripts (etapa = `collect`, `build` ou `analise`). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `bases_comum.py`, `ludopedia_client.py`) não levam código. Saídas e scripts do desenho anterior ficam em `arquivados/recorte-antigo/`.
+Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/`. Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `<etapa>_Bn_<conteúdo>.py` nos scripts (etapa = `collect`, `build` ou `analise`). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `bases_comum.py`, `ludopedia_client.py`) não levam código. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam em `arquivados/`.
 
 | Bloco | Conteúdo | Scripts | Pasta de dados |
 |---|---|---|---|
@@ -32,7 +31,6 @@ Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/
 | B2 | Avaliações recentes | `_src/[B2] Google Places (comentarios)/` | `[B2] Avaliacoes recentes/` |
 | B3 | Contagem direta de ocupação | `_src/[B3] Contagem direta de ocupacao/` | `[B3] Contagem direta de ocupacao/` |
 | B4 | Bases públicas | `_src/[B4] Bases publicas/` | `[B4] Bases publicas/` |
-| B6 | Histórico dos avaliadores — **retirado em 18/09/2026** | — | `[B6] Historico dos avaliadores/` (vazia) |
 
 ## Divisão de subcapítulos
 
@@ -76,10 +74,6 @@ Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/
 
 O recorte por período descreve a operação atual de cada concorrente e torna o número de avaliações uma medida direta do ritmo de avaliações. Como estabelecimentos movimentados contribuem com mais avaliações, as análises agregadas ponderam por estabelecimento ou usam efeito fixo.
 
-### Bloco B6 — Retirado
-
-O histórico dos avaliadores foi retirado do escopo em 18/09/2026. O código B6 fica reservado só para registrar a retirada.
-
 ### Bloco B3 — Contagem direta de ocupação
 
 Única coleta primária do trabalho. Fornece a **âncora absoluta** de fluxo, tamanho de grupo e permanência, usada para calibrar a velocidade de avaliações (§3.6). A leitura do número da NFC-e acrescenta um registro transacional (tipo 2 na hierarquia de dados) ao que é observado na porta.
@@ -115,7 +109,7 @@ O histórico dos avaliadores foi retirado do escopo em 18/09/2026. O código B6 
 | Lei Complementar 123/2006 e anexos do Simples Nacional | Alíquotas por faixa de receita | Tributos (8.1 e cap. 9) |
 | Banco Central — SGS e relatório Focus | Selic e IPCA observados e projetados; salário mínimo | Taxa mínima de atratividade e inflação do modelo (cap. 9) |
 
-Scripts em `_src/[B4] Bases publicas/` (`collect_B4_*` → `build_B4_*`); saídas `[B4] *.csv` em `_data/processed/[B4] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`. A RAIS vínculos foi substituída pelo Novo CAGED: o salário de admissão mede o que um negócio novo paga ao contratar, e os microdados da RAIS 2024 somam 3,8 GB compactados.
+Scripts em `_src/[B4] Bases publicas/` (`collect_B4_*` → `build_B4_*`); saídas `[B4] *.csv` em `_data/processed/[B4] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
 
 ## 3.4 Tratamento dos dados
 
@@ -143,17 +137,6 @@ Regras do dicionário: tratar negações ("nada tranquilo") e ambiguidades ("fam
 ### Validação da coleta
 
 A validação da coleta estima o erro que sobra depois que o dado é obtido. A referência é o modelo de erro total da pesquisa (*total survey error*), que separa o erro amostral do erro não amostral: cobertura, medida e processamento (Groves et al., 2009; Biemer, 2010). A adaptação desse modelo a dados de plataformas digitais está em Amaya, Biemer e Kinyon (2020).
-
-> **Proposta de validação proporcional — em estudo, não adotada.** O autor ainda vai estudar esta etapa com calma para ter certeza de que o procedimento é estatisticamente defensável. Até essa decisão, valem os procedimentos detalhados abaixo, e a proposta não deve ser aplicada nem citada no texto do TCC.
->
-> A proposta reduz a validação ao núcleo que mais protege as premissas:
->
-> - **B1 e B2 — fidelidade:** amostra aleatória de 30 estabelecimentos e 100 avaliações, conferidos na página (nota, volume, endereço; texto, nota e rótulo de data).
-> - **B2 — codificação:** o autor recodifica 10% das avaliações depois de um intervalo de no mínimo 14 dias, sem consultar a primeira codificação; concordância medida pelo kappa de Cohen.
-> - **B4 — reconciliação:** cada série usada no plano conferida com o portal de origem em ao menos um período e um recorte.
-> - **Erro total da pesquisa (TSE):** fica em uma frase com citação, não em uma seção.
->
-> Pontos a estudar antes de adotar: a precisão da amostra frente ao critério de aceitação (limite superior de 5% pelo intervalo de Wilson). Mesmo com zero erros, o limite superior de 95% é 3,84 ÷ (n + 3,84): cerca de 11% com n = 30 e 3,7% com n = 100. Portanto, 30 estabelecimentos não cumprem o critério atual; ou a amostra do B1 cresce para perto de 75 (limite de cerca de 5% com zero erros), ou o critério muda; se a concordância de um único codificador consigo mesmo é aceita pela banca; como estratificar a amostra pequena (capital e faixa de volume).
 
 O procedimento muda conforme a natureza de cada bloco. Os Blocos B1 e B2 são censos da fonte. O Bloco B4 é extração integral de tabelas oficiais. O Bloco B3 é uma amostra de períodos observada pelo próprio autor.
 
@@ -237,14 +220,14 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 
 ## 3.5 Registro prévio — extra
 
-> **Extra, só se sobrar tempo no fim.** O corpo do plano usa estatística descritiva com intervalo de confiança, três cenários, tornado e ponto de ruptura. Os testes de hipótese H1–H9 (`textos/registro_previo_luderia.md`), a correção de Benjamini-Hochberg e as regressões com efeito fixo só entram se houver tempo depois de o plano estar completo, e então vão para apêndice. O procedimento abaixo fica registrado para esse caso.
+> **Extra, só se sobrar tempo no fim.** O corpo do plano usa estatística descritiva com intervalo de confiança, três cenários, tornado e ponto de ruptura. Os testes de hipótese H1–H9 (`textos/planejamento/registro_previo_luderia.md`), a correção de Benjamini-Hochberg e as regressões com efeito fixo só entram se houver tempo depois de o plano estar completo, e então vão para apêndice. O procedimento abaixo fica registrado para esse caso.
 
 ### Registro prévio
 
-- **Documento:** `textos/registro_previo_luderia.md`, versionado no repositório. A data e o identificador do commit comprovam que o registro antecede a análise.
+- **Documento:** `textos/planejamento/registro_previo_luderia.md`, versionado no repositório. A data e o identificador do commit comprovam que o registro antecede a análise.
 - **Prazo:** antes de qualquer análise das avaliações. A coleta pode ocorrer antes do registro; a análise, não.
 - **Conteúdo:**
-  - hipóteses, com direção quando houver (ver `textos/projeto_pesquisa_luderia.md` §1.5);
+  - hipóteses, com direção quando houver (ver `textos/planejamento/projeto_pesquisa_luderia.md` §1.5);
   - análises exploratórias previstas, sem hipótese;
   - variáveis, unidade de análise e técnica de cada teste;
   - nível de significância (0,05 após correção de Benjamini-Hochberg) e medida de tamanho de efeito;
@@ -255,7 +238,7 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 
 ### Base única
 
-- Não há divisão da base em metades. A etapa exploratória (construção e validação do dicionário, ajuste das especificações) e a descritiva (reclamações, cardápios, ticket, velocidade de avaliações) usam a população inteira de avaliações coletadas. Orientação do orientador, registrada em 13/10/2026.
+- Não há divisão da base em metades. A etapa exploratória (construção e validação do dicionário, ajuste das especificações) e a descritiva (reclamações, cardápios, ticket, velocidade de avaliações) usam a população inteira de avaliações coletadas.
 - Consequência: se o extra for feito, os testes rodam na mesma base em que o dicionário foi construído. Isso é declarado como limitação dos testes, que vão para apêndice.
 
 ## 3.6 Técnicas de análise por área do plano
