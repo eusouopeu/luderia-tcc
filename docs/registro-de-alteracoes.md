@@ -658,3 +658,33 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: sem coleta da lista "seguindo"; checagem de cobertura do B1 pelo Instagram prevista só como busca manual de perfis.
 **Depois**: o coletor lê a lista "seguindo" de uma luderia sem pedido próprio: guarda as respostas que a página recebe ao rolar o diálogo (botão "Rolar lista de seguindo") e, como reserva, os @ visíveis antes de "Sugestões para você"; salva no navegador e exporta `AAAA-MM-DD_<perfil>_instagram_seguindo.csv`. O build junta as listas, conta o grau de entrada de cada conta (nº de sementes que a seguem), marca a situação (aprovada no B1, na curadoria do Maps, no Acervo de Jogos, nova) e grava a lista de candidatos com grau 2 ou mais e colunas de classificação manual, preservadas entre execuções; casas aprovadas entram já classificadas. A análise calcula, por corte k, precisão e sensibilidade com IC de Wilson, lista as casas novas (só perfis de negócio ou grupo) e estima a cobertura do B1 por captura e recaptura (Chapman, limite inferior). Brutos e candidatos em `_dados-brutos/redes_sociais/`, ignorados no git. Testado com listas sintéticas (somas fecham) e 6 testes do coletor.
 **Justificativa**: pedido do autor: usar o fato de as luderias se seguirem umas às outras para achar casas fora do Google Maps e do Acervo de Jogos, sem a API do Instagram e com a LGPD em mente (só perfis de negócio publicados).
+
+### 18:14
+**Objeto**: `dados/[B2] Avaliacoes recentes/B2_cobertura_coleta.csv`, `B2_fila_coleta.txt` e `B2_avaliacoes_periodo.csv` (fora do git), regerados por `B2-b_avaliacoes.py --sem-mover`
+**Antes**: 46 de 51 luderias "ok", 1.948 avaliações no recorte (1.213 com texto); fila com 5 lugares.
+**Depois**: 49 de 51 "ok" (entraram Flow Games, Dungeon Games Store, Paladino Hobbies e a coleta completa do Shelf Bar, 650 lidas até "8 meses atrás"); 2.218 avaliações no recorte (1.440 com texto); fila só com Machado Games e Ilusões Industriais. As coletas de Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria ficaram fora da base, por não estarem entre as aprovadas do B1.
+**Justificativa**: novas coletas do autor em `_dados-brutos/coletas/`.
+
+### 18:14
+**Objeto**: banco "B - Comentários" do Notion
+**Antes**: 1.310 linhas; opções de "Estabelecimento" com Machado Games e Ilusões Industriais e sem as 5 luderias novas.
+**Depois**: 1.628 linhas (1.049 com "ID da avaliação", todos distintos). Entraram 334 avaliações com texto no recorte (idade ≤ 90 dias), lidas direto da coleta mais recente de cada casa: Shelf Bar 179, Bardo Mago 100, Tubaleria 24, TabuClub 11, Toca do Rato 7, La Tabuleria 6, Dungeon 4, Flow 3 (Paladino não tem avaliação com texto no recorte). Antes de inserir, 64 do Shelf e 13 do Flow foram reconhecidas como já existentes (por ID ou pelos 16 primeiros caracteres do texto) e não repetidas. Saíram para a lixeira as 16 linhas de Machado Games (13) e Ilusões Industriais (3), e as duas opções; entraram as opções Bardo Mago, La Tabuleria, TabuClub, Toca do Rato - Pizzaria e Jogos de Tabuleiro e Tubaleria.
+**Justificativa**: pedido do autor: subir as novas coletas e excluir as duas casas que passaram pela triagem mas não são luderias (Machado Games é loja de videogame; Ilusões Industriais é loja e espaço de TCG sem acervo de jogos de tabuleiro).
+
+### 18:14
+**Objeto**: bancos "Status da coleta" e "A - Estabelecimentos" do Notion
+**Antes**: "Status da coleta" com Machado Games e Ilusões Industriais; "A - Estabelecimentos" com Ilusões Industriais.
+**Depois**: as três páginas na lixeira do Notion (recuperáveis).
+**Justificativa**: mesmo pedido do autor.
+
+### 18:14 — divergência
+**Objeto**: lista de luderias aprovadas do B1 e bancos do Notion
+**Antes**: `B1_aprovadas_metro_av100.xlsx` (e `B1_triagem_manual_metro_av100.xlsx`) mantém Machado Games e Ilusões Industriais como "aprovado" e não traz Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria (os quatro primeiros estão na base de sorteio; Toca do Rato, nem nela).
+**Depois**: no Notion, as duas primeiras foram excluídas e as cinco estão em "A - Estabelecimentos" e agora em "B - Comentários".
+**Efeitos colaterais**: o build do B2 continua pedindo coleta de Machado e Ilusões e deixa as cinco novas fora de `B2_avaliacoes_periodo.csv`; contagens do B1 e do B2 divergem das do Notion até a triagem do B1 ser corrigida.
+
+### 18:14 — divergência
+**Objeto**: coletas do userscript `maps_avaliacoes` do Shelf Bar e do Bardo Mago
+**Antes**: tentativas curtas marcadas "fim da lista": Shelf com 40 e 80 lidas (13/10 e 14/10); Bardo Mago com 130 lidas.
+**Depois**: coletas refeitas pelo autor com rolagem manual: Shelf com 650 lidas e Bardo Mago com 220, ambas "passou do período". As avaliações das tentativas curtas estão todas contidas nas longas; no Bardo, o recorte de 90 dias não mudou (126 nas duas).
+**Efeitos colaterais**: o motivo "fim da lista" não garante coleta completa; o build trata como "ok" uma coleta interrompida em silêncio. No Shelf, a contagem por rótulo cai em "2 meses atrás" (19) e "3 meses atrás" (14), entre "um mês atrás" (113) e "4 meses atrás" (110), sem inversão de ordem; pode ser sazonalidade ou falha de carregamento.

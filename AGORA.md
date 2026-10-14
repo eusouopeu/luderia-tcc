@@ -1,10 +1,10 @@
 # AGORA
 
-Atualizado em 14/10/2026, 17h40. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 14/10/2026, 18h15. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
-- **Coleta do B2** (avaliações até "3 meses atrás"): 46 de 51 luderias coletadas (1.948 avaliações no recorte, 1.213 com texto, todas no Notion "B - Comentários", com "ID da avaliação"). Faltam 5 (Flow Games, Machado Games, Ilusões Industriais, Dungeon Games Store, Paladino Hobbies; fila em `B2_fila_coleta.txt`) e refazer o Shelf Bar, que parou em 40 avaliações.
+- **Coleta do B2** (avaliações até "3 meses atrás"): completa para as 49 luderias do B1 que seguem no objeto (2.218 avaliações no recorte, 1.440 com texto) e para as 5 novas (Bardo Mago, La Tabuleria, TabuClub, Toca do Rato, Tubaleria). Notion "B - Comentários" com 1.628 linhas; Machado Games e Ilusões Industriais excluídas por não serem luderias.
 
 - **Snowball do Instagram (pronto para coletar):** coletor 2026.10.14-1 captura a lista "seguindo" (bloco "Snowball" do painel). Salvar os CSV em `dados/[B1]…/_dados-brutos/redes_sociais/seguindo/`, rodar `B1-b_instagram_seguindo.py`, classificar `B1_snowball_candidatos.csv` e rodar `B1-a_instagram_snowball.py`. Prioridade abaixo do B2.
 
@@ -12,7 +12,7 @@ Atualizado em 14/10/2026, 17h40. Semana 5 do cronograma (10/10 a 16/10). Próxim
 
 ## Próximos 3 passos
 
-1. Coletar as 5 que faltam e refazer o Shelf até 16/10; rodar `B2-b_avaliacoes.py` e subir as novas ao Notion pelo ID.
+1. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
 2. Preparar as visitas de retorno de **domingo, 18/10** (app de observação e `textos/instrumentos/roteiro_observacao_sao_jogue.md`).
 3. Escrever o rascunho do cap. 3 (metodologia), o mais atrasado e com as instruções prontas.
 

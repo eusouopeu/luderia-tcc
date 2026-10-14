@@ -20,10 +20,11 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 - Damodaran: `_instrucoes/8_financeiro.md` cita *Avaliação de investimentos* (ed. brasileira); o roteiro e o checklist da P2 citam *Investment valuation* (Wiley). Definir a edição que será lida.
 
-- Coleta do Shelf Bar e Jogos parou em "fim da lista" com 40 avaliações (até "uma semana atrás"), mas está como "ok" em `B2_cobertura_coleta.csv`; refazer. Ajustar o build para marcar "refazer" quando o volume lido ficar muito abaixo do volume do B1.
+- Build do B2 aceita "fim da lista" como coleta completa, mas o userscript para em silêncio (Shelf e Bardo Mago, 14/10). Marcar "conferir" quando o volume lido ficar muito abaixo do volume do B1 ou a última avaliação lida for mais nova que "3 meses atrás".
+- Triagem do B1 desatualizada: tirar Machado Games e Ilusões Industriais das aprovadas e decidir como entram Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria (hoje só no Notion; fora da base do B2).
+- Shelf Bar: poucas avaliações com rótulo "2 meses atrás" (19) e "3 meses atrás" (14) frente a "um mês" (113) e "4 meses" (110). Conferir no Maps se é real ou falha de carregamento.
 - Userscript `maps_avaliacoes`: `texto_original` vem "não" nas avaliações traduzidas (6 casos).
-- Notion "B - Comentários": as 13 linhas de Machado Games repetem os textos de Flow Games.
-- Notion "B - Comentários": as 595 linhas digitadas à mão não têm "ID da avaliação"; 97 delas não casaram com avaliações das coletas: 29 de casas ainda sem coleta (Flow, Machado, Ilusões) e 68 de casas coletadas (Magic Store 31, Shelf 28, outras 1 cada), quase todas mais antigas que o recorte ou do Shelf incompleto.
+- Notion "B - Comentários": as linhas digitadas à mão não têm "ID da avaliação"; depois das coletas de 14/10, 40 delas seguem sem par nas coletas (Magic Store 31, outras 1 cada), quase todas mais antigas que o recorte.
 
 - `_instrucoes/1_estrutura.md` (3.5) fala em "metade exploratória e confirmatória", e o cronograma (semana 3) tem a tarefa "Divisão da base em parte exploratória e parte confirmatória"; a metodologia adotou a base única em 13/10.
 - `_instrucoes/1_estrutura.md` (11.5) cita "sem o recorte do último mês"; o recorte vigente é de 3 meses.
