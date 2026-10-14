@@ -30,3 +30,4 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 - Extensões fora do escopo atual (durações citadas nos textos, contagem em outra capital, recoleta do volume total, teste da porta falsa): `_instrucoes/4_metodologia.md`, "Extensões fora do escopo atual".
 - Simulação de Monte Carlo e testes H1–H9, se sobrar tempo (apêndices L e M).
 - Hipótese do público potencial, se não virar emenda (item 2).
+- Alinhar os valores dos CSV já gerados às regras de `_src/dicionario.md` §4.2 (`sim`/`nao` no lugar de `0`/`1` e `True`/`False`, ponto decimal nas transcrições de cardápio, rótulos de categoria com `_`) quando o script de cada um for alterado; conferir antes que nenhum script leitor dependa do formato antigo.

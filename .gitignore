@@ -5,7 +5,7 @@ __pycache__/
 venv/
 # Dados brutos: textos integrais, históricos e respostas de API não são publicados (_instrucoes/4_metodologia.md §3.4)
 dados/*/dados-brutos/**/*.jsonl
-_src/_logs/*.log
+_src/*/logs/*.log
 # Atalho (alias do macOS) para ~/Codigos/Apps/_shared, os padrões comuns aos apps; vale só nesta máquina
 _src/_shared
 # Bloco B4: arquivos originais grandes (microdados e agregados do Censo); regeneráveis pelos scripts de coleta
@@ -45,7 +45,7 @@ dados/\[B1\]*/cardapios/**/*.jpeg
 dados/\[B1\]*/cardapios/**/*.webp
 dados/\[B1\]*/cardapios/*.pdf
 # Modelo de idioma do Tesseract (OCR), baixado de tessdata_fast
-_src/\[B1\]*/tessdata/
+_src/\[B1\]*/outros/tessdata/
 
 # Bloco B1: páginas HTML do Acervo de Jogos (material de terceiros, cache da coleta); só os CSV são publicados
 dados/\[B1\]*/dados-brutos/acervodejogos/*.html
@@ -53,8 +53,8 @@ dados/\[B1\]*/dados-brutos/acervodejogos/lojas/
 dados/\[B1\]*/dados-brutos/acervos_luderias/*/
 dados/\[B1\]*/dados-brutos/lojas_venda/
 
-# Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/Web scripts/gerar_carregadores.py)
-_src/Web scripts/carregadores/
+# Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/gerar_carregadores.py)
+_src/carregadores/
 
 # Bloco B2: coletas do userscript e base consolidada trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4); cobertura e fila são publicadas
 dados/\[B2\]*/dados-brutos/coletas/

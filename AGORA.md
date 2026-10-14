@@ -1,10 +1,10 @@
 # AGORA
 
-Atualizado em 14/10/2026, 8h30. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 14/10/2026, 9h. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
-- **Coleta do B2** (avaliações até "3 meses atrás"): 2 de 51 luderias coletadas; fila em `dados/[B2] Avaliacoes recentes/B2_fila_coleta.txt`, situação em `B2_cobertura_coleta.csv` (rodar `build_B2_avaliacoes.py` depois de cada coleta).
+- **Coleta do B2** (avaliações até "3 meses atrás"): 2 de 51 luderias coletadas; fila em `dados/[B2] Avaliacoes recentes/B2_fila_coleta.txt`, situação em `B2_cobertura_coleta.csv` (rodar `B2-b_avaliacoes.py` depois de cada coleta).
 
 ## Próximos 3 passos
 
@@ -14,6 +14,7 @@ Atualizado em 14/10/2026, 8h30. Semana 5 do cronograma (10/10 a 16/10). Próxima
 
 ## Bloqueado ou aguardando
 
+- Coleta do B2 no navegador: os carregadores do Tampermonkey apontam para a pasta antiga `_src/Web scripts/`. Antes da próxima coleta, rodar `python3 _src/gerar_carregadores.py --abrir --todos` e instalar os cinco no Vivaldi.
 - Validação do dicionário e cap. 5.2: aguardam a base do B2 completa.
 - Estimativa de ocupação e fluxo (B3): aguarda as visitas de retorno (18/10).
 - Rascunhos atrasados frente ao cronograma: caps. 2, 3 e 8 e seções 5.1, 5.4 e 5.5 ([status](textos/planejamento/status_capitulos.md)).

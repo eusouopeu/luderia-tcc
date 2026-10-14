@@ -23,7 +23,7 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 
 ### Correspondência entre blocos e arquivos do pipeline
 
-Cada bloco tem subpasta `[Bn] Nome` em `_src/` e em `dados/`; dentro de `dados/[Bn] Nome/` ficam os arquivos processados e a subpasta `dados-brutos/`. Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `<etapa>_Bn_<conteúdo>.py` nos scripts (etapa = `collect`, `build` ou `analise`). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `bases_comum.py`, `ludopedia_client.py`) não levam código. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam em `arquivados/`.
+Cada bloco tem subpasta `[Bn] Nome` em `_src/` e em `dados/`; dentro de `dados/[Bn] Nome/` ficam os arquivos processados e a subpasta `dados-brutos/`. Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `Bn-<letra>_<conteúdo>.py` nos scripts, guardados na subpasta da etapa (`collect/` → `c`, `build/` → `b`, `analise/` → `a`); cada bloco de `_src/` tem ainda `webscripts/`, `logs/` e `outros/` (convenções em [`_src/dicionario.md`](../_src/dicionario.md)). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `jogos_comum.py`, `instagram_comum.py`, `bases_comum.py`) não levam código e ficam em `outros/` do bloco. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam em `arquivados/`.
 
 | Bloco | Conteúdo | Scripts | Pasta de dados |
 |---|---|---|---|
@@ -83,7 +83,7 @@ O recorte por período descreve a operação atual de cada concorrente e torna o
 | Local | As duas unidades da São Jogue, única luderia de Salvador |
 | Visitas | 4 no total, 2 por unidade: a **primeira** e a de **retorno**, 15 dias depois, na mesma unidade |
 | Períodos | Primeiras visitas no **sábado, 03/10/2026**, as duas unidades no mesmo dia, na quinzena posterior ao pagamento dos servidores estaduais da Bahia (29/09 para inativos e pensionistas; 30/09 para ativos). Os retornos caem no **domingo, 18/10/2026**, na quinzena anterior ao pagamento de outubro (29/10). Fonte: Governo da Bahia, Tabela de Pagamentos 2026 |
-| Horário | Planejado, não sorteado: os horários cobrem os momentos de maior fluxo provável. Sábado, entrada às 19h; domingo, entrada às 18h; nas duas unidades. As reservas da São Jogue só abrem às 12h, 15h e 18h, e o início da noite é o horário de maior fluxo esperado. A planilha de sorteio (`build_B3_contagem_sorteio.py`, semente 20260916) fica como registro do desenho anterior |
+| Horário | Planejado, não sorteado: os horários cobrem os momentos de maior fluxo provável. Sábado, entrada às 19h; domingo, entrada às 18h; nas duas unidades. As reservas da São Jogue só abrem às 12h, 15h e 18h, e o início da noite é o horário de maior fluxo esperado. A planilha de sorteio (`B3-b_contagem_sorteio.py`, semente 20260916) fica como registro do desenho anterior |
 | Posição do observador | Do lado de fora do estabelecimento, com vista para a entrada |
 | Duração da visita | Fixa, de 3 horas. Horário de início e de fim registrados; todas as taxas são calculadas por hora observada |
 | Registro contínuo | Entrada e saída de cada grupo: horário e número de pessoas. Grupos identificados por código para ligar entrada e saída (permanência) |
@@ -109,13 +109,13 @@ O recorte por período descreve a operação atual de cada concorrente e torna o
 | Lei Complementar 123/2006 e anexos do Simples Nacional | Alíquotas por faixa de receita | Tributos (8.1 e cap. 9) |
 | Banco Central — SGS e relatório Focus | Selic e IPCA observados e projetados; salário mínimo | Taxa mínima de atratividade e inflação do modelo (cap. 9) |
 
-Scripts em `_src/[B4] Bases publicas/` (`collect_B4_*` → `build_B4_*`); saídas `[B4] *.csv` em `dados/[B4] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
+Scripts em `_src/[B4] Bases publicas/` (`B4-c_*` → `B4-b_*`); saídas `[B4] *.csv` em `dados/[B4] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
 
 ## 3.4 Tratamento dos dados
 
 ### Pipeline
 
-- Scripts em `_src/[bloco]/` seguindo o padrão `collect_*` → `build_*` → `analise_*`; saídas em `dados/[bloco]/` com o prefixo do bloco.
+- Scripts em `_src/[bloco]/collect/`, `build/` e `analise/`, seguindo o padrão `Bn-c_*` → `Bn-b_*` → `Bn-a_*` ([dicionário](../_src/dicionario.md)); saídas em `dados/[bloco]/` com o prefixo do bloco.
 - Dados brutos (textos integrais) ficam em `dados/[bloco]/dados-brutos/`, fora do repositório público. O TCC e o repositório divulgam **apenas dados processados**.
 - Dicionário de dados com nome, descrição, tipo, unidade e origem de cada variável.
 - Todo sorteio (amostra de validação do dicionário, amostra de auditoria da coleta) usa semente fixa registrada no código.
@@ -183,7 +183,7 @@ A validação cobre a relação entre o script e a página. A relação entre a 
 
 #### Bloco B4 - bases públicas
 
-A extração por API copia tabelas inteiras. Não há sorteio nem página a ser lida, e o volume de séries é pequeno. A validação, então, é exaustiva: cada série usada no plano é reconciliada com a tabela publicada no portal da instituição, em ao menos um período e um recorte geográfico. Os totais são conferidos com a soma das linhas, conforme a regra de tabela agregada do projeto. As funções de conferência ficam nos próprios scripts `build_B4_*`.
+A extração por API copia tabelas inteiras. Não há sorteio nem página a ser lida, e o volume de séries é pequeno. A validação, então, é exaustiva: cada série usada no plano é reconciliada com a tabela publicada no portal da instituição, em ao menos um período e um recorte geográfico. Os totais são conferidos com a soma das linhas, conforme a regra de tabela agregada do projeto. As funções de conferência ficam nos próprios scripts `B4-b_*`.
 
 Os erros mais prováveis são de processamento: código de variável ou de município trocado, filtro aplicado à série errada, unidade (mil, milhão, percentual) e índice de correção monetária. O erro da própria base não é validado pelo trabalho, e sim declarado em §3.9: amostra da POF e da PNAD Contínua, cobertura só do emprego formal no Novo CAGED e preço anunciado, não contratado, no FipeZap.
 
@@ -199,7 +199,7 @@ O instrumento é o próprio observador, e não há gravação para auditar depoi
 | Grupos sem saída | Grupos com entrada e sem saída registrada são contados à parte. Os que ainda estão no salão ao fim da visita são censurados; os demais são omissões |
 | Caminhos independentes | Pessoas pela porta, pessoas pelas mesas e notas fiscais emitidas: as três estimativas de fluxo são comparadas por visita |
 
-Dado não anotado é tratado como faltante. Não há imputação. A taxa de omissão de cada visita é reportada junto com as saídas. Quando a omissão for relevante, a estimativa de fluxo usa o caminho com menos falhas e a faixa da premissa aumenta. O script `analise_B3_contagem.py` já conta à parte os grupos sem saída e os pedidos sem chegada, sem imputação. O fechamento do saldo e a separação entre censura e omissão ainda precisam ser acrescentados a ele.
+Dado não anotado é tratado como faltante. Não há imputação. A taxa de omissão de cada visita é reportada junto com as saídas. Quando a omissão for relevante, a estimativa de fluxo usa o caminho com menos falhas e a faixa da premissa aumenta. O script `B3-a_contagem.py` já conta à parte os grupos sem saída e os pedidos sem chegada, sem imputação. O fechamento do saldo e a separação entre censura e omissão ainda precisam ser acrescentados a ele.
 
 ### Validação do dicionário
 

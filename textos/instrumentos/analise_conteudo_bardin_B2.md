@@ -5,7 +5,7 @@ Versão parcial de 10/10/2026. Corpus: base do Notion "B - Comentários (manual)
 Arquivos:
 
 - codificação comentário a comentário: `dados/[B2] Avaliacoes recentes/analise_conteudo/B2_codificacao_bardin.csv`;
-- contagens, tipologia e amostra de controle: `_src/[B2] Google Places (comentarios)/analise_B2_conteudo_bardin.py`;
+- contagens, tipologia e amostra de controle: `_src/[B2] Google Places (comentarios)/analise/B2-a_conteudo_bardin.py`;
 - saídas do script: `B2_bardin_*.csv`, na mesma pasta da codificação.
 
 ## 0. Corpus e situação dos dados
@@ -144,7 +144,7 @@ Conferência: a soma dos comentários por tipo (390 + 185) fecha com o total ana
 1. Exportar a base do Notion com a consulta do passo 1 de §1.3.
 2. Codificar cada comentário pelo livro de códigos (§1.4) e pelas regras (§1.5), sem consultar a codificação existente.
 3. Gravar o resultado no formato do CSV de codificação.
-4. Rodar `python3 "_src/[B2] Google Places (comentarios)/analise_B2_conteudo_bardin.py"`.
+4. Rodar `python3 "_src/[B2] Google Places (comentarios)/analise/B2-a_conteudo_bardin.py"`.
 
 ### 1.9 Limitações
 
