@@ -21,7 +21,8 @@ dados/\[B1\]*/estabelecimentos/3_triagem/B1_aprovadas_*.xlsx
 dados/\[B1\]*/estabelecimentos/3_triagem/B1_comentarios_aprovadas_*.xlsx
 
 # PDFs de terceiros baixados para leitura (direitos autorais; repositório público)
-bibliografia/leituras-P1/
+bibliografia/leituras-*/*
+!bibliografia/leituras-*/checklist-conceitos.md
 
 # Bloco B1: cardápios originais (PDF, imagens, HTML de terceiros); só a transcrição em CSV é publicada
 dados/\[B1\]*/_dados-brutos/cardapios/*
@@ -62,3 +63,4 @@ dados/\[B2\]*/B2_avaliacoes_periodo.csv
 
 # Cronograma: o .docx é gerado do .md quando for enviar (_src/extras/gerar_docx_cronograma.js)
 textos/planejamento/cronograma_luderia*.docx
+_src/extras/logs/

@@ -49,7 +49,7 @@ simplifica; esta é a versão que pode ir para o texto do TCC.
 Regras:
 - A versão técnica é obrigatória e tem de estar correta: a analogia nunca substitui a definição.
 - Se o termo depender de outro que o autor provavelmente também não conhece, explicar o outro em uma frase dentro da nota, sem criar nota separada.
-- Se a definição tiver fonte relevante para o TCC, citá-la; obra não conferida fica `[A VERIFICAR]`.
+- Se a definição tiver fonte relevante para o TCC, citá-la; obra não conferida fica `[AV]`.
 
 ## Resposta no chat
 

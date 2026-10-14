@@ -166,7 +166,7 @@ O resultado é a taxa de erro por variável, com intervalo de confiança de 95% 
 
 ##### Amostra de auditoria do Bloco B2
 
-O desenho combina um total calculado pelo critério de aceitação (Wilson) com a regra de inspeção em duas etapas usada no controle de qualidade por atributos (ABNT NBR 5426 `[A VERIFICAR]`). Cada estabelecimento é um estrato, e todos entram na amostra. O motivo é o padrão das falhas: elas tendem a se concentrar em certas páginas, e um estabelecimento fora da amostra esconderia a falha. Explicação em linguagem simples em `docs/estatidez.md`.
+O desenho combina um total calculado pelo critério de aceitação (Wilson) com a regra de inspeção em duas etapas usada no controle de qualidade por atributos (ABNT NBR 5426 `[AV]`). Cada estabelecimento é um estrato, e todos entram na amostra. O motivo é o padrão das falhas: elas tendem a se concentrar em certas páginas, e um estabelecimento fora da amostra esconderia a falha. Explicação em linguagem simples em `docs/estatidez.md`.
 
 | Passo | Procedimento |
 |---|---|
@@ -359,12 +359,12 @@ Entram no cap. 11 como validações recomendadas antes do investimento, ou são 
 
 ## Referências de apoio ao método
 
-- BARDIN, Laurence. *Análise de conteúdo*. Edições 70, 2011. — codificação dos textos. `[A VERIFICAR]`
-- COHEN, Jacob. A coefficient of agreement for nominal scales. *Educational and Psychological Measurement*, 1960. — kappa. `[A VERIFICAR]`
-- BENJAMINI, Yoav; HOCHBERG, Yosef. Controlling the false discovery rate. *Journal of the Royal Statistical Society: Series B*, 1995. — múltiplas comparações. `[A VERIFICAR]`
-- MALHOTRA, Naresh K. *Pesquisa de marketing*. 2019. `[A VERIFICAR]`
-- GROVES, Robert M. et al. *Survey methodology*. 2. ed. Wiley, 2009. — erro total da pesquisa. `[A VERIFICAR]`
-- BIEMER, Paul P. Total survey error: design, implementation, and evaluation. *Public Opinion Quarterly*, v. 74, n. 5, 2010. — erro amostral e não amostral. `[A VERIFICAR]`
-- AMAYA, Ashley; BIEMER, Paul P.; KINYON, David. Total error in a big data world: adapting the TSE framework to big data. *Journal of Survey Statistics and Methodology*, v. 8, n. 1, 2020. — erro total em dados de plataforma. `[A VERIFICAR]`
-- MENG, Xiao-Li. Statistical paradises and paradoxes in big data (I). *The Annals of Applied Statistics*, v. 12, n. 2, 2018. — viés de seleção em bases grandes. `[A VERIFICAR]`
-- WILSON, Edwin B. Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association*, v. 22, 1927. — intervalo da taxa de erro. `[A VERIFICAR]`
+- BARDIN, Laurence. *Análise de conteúdo*. Edições 70, 2011. — codificação dos textos. `[AV]`
+- COHEN, Jacob. A coefficient of agreement for nominal scales. *Educational and Psychological Measurement*, 1960. — kappa. `[AV]`
+- BENJAMINI, Yoav; HOCHBERG, Yosef. Controlling the false discovery rate. *Journal of the Royal Statistical Society: Series B*, 1995. — múltiplas comparações. `[AV]`
+- MALHOTRA, Naresh K. *Pesquisa de marketing*. 2019. `[AV]`
+- GROVES, Robert M. et al. *Survey methodology*. 2. ed. Wiley, 2009. — erro total da pesquisa. `[AV]`
+- BIEMER, Paul P. Total survey error: design, implementation, and evaluation. *Public Opinion Quarterly*, v. 74, n. 5, 2010. — erro amostral e não amostral. `[AV]`
+- AMAYA, Ashley; BIEMER, Paul P.; KINYON, David. Total error in a big data world: adapting the TSE framework to big data. *Journal of Survey Statistics and Methodology*, v. 8, n. 1, 2020. — erro total em dados de plataforma. `[AV]`
+- MENG, Xiao-Li. Statistical paradises and paradoxes in big data (I). *The Annals of Applied Statistics*, v. 12, n. 2, 2018. — viés de seleção em bases grandes. `[AV]`
+- WILSON, Edwin B. Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association*, v. 22, 1927. — intervalo da taxa de erro. `[AV]`

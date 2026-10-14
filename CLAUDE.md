@@ -64,7 +64,7 @@ Antes do commit, atualizar:
 - **Extensão:** no máximo 90 páginas, com teto por capítulo em `_instrucoes/1_estrutura.md`. Testes de hipótese H1–H9 e Monte Carlo são extras, só se sobrar tempo.
 - **Tabela agregada fecha com o total.** Cada unidade (place_id, avaliação, jogo) conta em **um único grupo**, atribuído por atributo próprio (ex.: UF do endereço), nunca pelo contexto da coleta. Antes de entregar, somar as linhas e comparar com o total (diferença zero); vale também ao rodar de novo um script existente. Contagem não exclusiva por desenho fica declarada no nome da coluna e na docstring, sem total como soma.
 - **Decisão antes de descrição:** todo resultado responde "que decisão do plano isso muda?". Se nenhuma, vai para apêndice ou sai.
-- **Nada de número sem fonte** (instituição, base, recorte, data). **Nada de referência inventada:** obra não conferida fica `[A VERIFICAR]`.
+- **Nada de número sem fonte** (instituição, base, recorte, data). **Nada de referência inventada:** obra não conferida fica `[AV]` (a verificar); citação de conceito com página a conferir leva `[AV-<ID>]`, com o ID do `checklist-conceitos.md` da leva em `bibliografia/leituras-*/`.
 - **Incerteza declarada:** estimativas com faixa (pessimista/provável/otimista) e nível de evidência.
 - **Sem questionários** de opinião ou intenção; preferir fontes secundárias e primárias comportamentais.
 - **Normas:** ABNT (detalhes em `_instrucoes/10_biblio-apendices.md`). Instituição: UFBA.

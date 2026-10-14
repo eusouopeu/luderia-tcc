@@ -7,7 +7,7 @@ Critérios adotados:
 - **Bases de dados on-line atualizadas continuamente** (SIDRA, SGS, Focus, CAGED, CNAE): o ano da referência é o da versão consultada (2026), e o recorte usado (tabela, série, período) entra no título ou na nota.
 - **Documentos baixados** (planilha FipeZAP, nota metodológica, texto da LC 123/2006, arquivos do Censo): o original está em `dados/[B4] Bases publicas/_dados-brutos/<fonte>/`.
 - **Dados de API**: o script de coleta está em `_src/[B4] Bases publicas/`. A resposta bruta, com URL e data, está em `dados/[B4] Bases publicas/_dados-brutos/<fonte>/`.
-- Elemento não conferido no documento original fica marcado `[A VERIFICAR]`.
+- Elemento não conferido no documento original fica marcado `[AV]`.
 
 ---
 
@@ -17,7 +17,7 @@ BANCO CENTRAL DO BRASIL (BCB). **Sistema de Expectativas de Mercado**: expectati
 
 BANCO CENTRAL DO BRASIL (BCB). **Sistema Gerenciador de Séries Temporais (SGS)**: séries 432 (Selic meta), 433 (IPCA, variação mensal), 1619 (salário mínimo), 4189 (Selic anualizada base 252), 4390 (Selic acumulada no mês) e 13522 (IPCA acumulado em 12 meses): set. 2017 a set. 2026. Brasília, DF: BCB, 2026. Base de dados. Disponível em: https://www3.bcb.gov.br/sgspub/. Acesso em: 14 set. 2026.
 
-BRASIL. Lei Complementar nº 123, de 14 de dezembro de 2006. Institui o Estatuto Nacional da Microempresa e da Empresa de Pequeno Porte; altera dispositivos das Leis nº 8.212 e 8.213, ambas de 24 de julho de 1991, da Consolidação das Leis do Trabalho – CLT, aprovada pelo Decreto-Lei nº 5.452, de 1º de maio de 1943, da Lei nº 10.189, de 14 de fevereiro de 2001, da Lei Complementar nº 63, de 11 de janeiro de 1990; e revoga as Leis nº 9.317, de 5 de dezembro de 1996, e 9.841, de 5 de outubro de 1999. **Diário Oficial da União**: seção 1, Brasília, DF, p. [A VERIFICAR], 15 dez. 2006. Republicada em 31 jan. 2009, 31 jan. 2012 e 6 mar. 2012. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm. Acesso em: 14 set. 2026.
+BRASIL. Lei Complementar nº 123, de 14 de dezembro de 2006. Institui o Estatuto Nacional da Microempresa e da Empresa de Pequeno Porte; altera dispositivos das Leis nº 8.212 e 8.213, ambas de 24 de julho de 1991, da Consolidação das Leis do Trabalho – CLT, aprovada pelo Decreto-Lei nº 5.452, de 1º de maio de 1943, da Lei nº 10.189, de 14 de fevereiro de 2001, da Lei Complementar nº 63, de 11 de janeiro de 1990; e revoga as Leis nº 9.317, de 5 de dezembro de 1996, e 9.841, de 5 de outubro de 1999. **Diário Oficial da União**: seção 1, Brasília, DF, p. [AV], 15 dez. 2006. Republicada em 31 jan. 2009, 31 jan. 2012 e 6 mar. 2012. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm. Acesso em: 14 set. 2026.
 
 BRASIL. Ministério do Trabalho e Emprego. **Layout não-identificado Novo Caged movimentação**. Brasília, DF: MTE, 2022. Planilha eletrônica. Disponível em: ftp://ftp.mtps.gov.br/pdet/microdados/NOVO%20CAGED/. Acesso em: 14 set. 2026.
 
@@ -25,7 +25,7 @@ BRASIL. Ministério do Trabalho e Emprego. **Microdados do Novo CAGED**: movimen
 
 COMISSÃO NACIONAL DE CLASSIFICAÇÃO (CONCLA). **Classificação Nacional de Atividades Econômicas (CNAE)**: subclasses 4763-6/01, 5611-2/01, 5611-2/03, 5611-2/04, 5611-2/05, 5620-1/02, 7729-2/02, 8230-0/01, 9329-8/04 e 9329-8/99. Rio de Janeiro: IBGE, 2026. Base de dados. Disponível em: https://servicodados.ibge.gov.br/api/v2/cnae/subclasses. Acesso em: 14 set. 2026.
 
-FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). **Índice FipeZAP**: notas metodológicas (atualização). São Paulo: Fipe, jun. 2020. 31 p. Disponível em: http://downloads.fipe.org.br/indices/fipezap/metodologia/indice-fipezap-metodologia-2019.pdf. Acesso em: 14 set. 2026. [A VERIFICAR: título principal, pois a capa extraída só traz "Notas metodológicas (atualização)"]
+FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). **Índice FipeZAP**: notas metodológicas (atualização). São Paulo: Fipe, jun. 2020. 31 p. Disponível em: http://downloads.fipe.org.br/indices/fipezap/metodologia/indice-fipezap-metodologia-2019.pdf. Acesso em: 14 set. 2026. [AV: título principal, pois a capa extraída só traz "Notas metodológicas (atualização)"]
 
 FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). **Índice FipeZAP**: séries históricas: imóveis residenciais e comerciais: até jul. 2026. São Paulo: Fipe, 2026. Planilha eletrônica. Disponível em: https://downloads.fipe.org.br/indices/fipezap/fipezap-serieshistoricas.xlsx. Acesso em: 14 set. 2026.
 

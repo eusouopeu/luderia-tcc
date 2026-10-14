@@ -12,9 +12,12 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
    Antes de adotar, estudar: com zero erros, o limite superior de 95% de Wilson é 3,84 ÷ (n + 3,84), cerca de 11% com n = 30 e 3,7% com n = 100. Então 30 estabelecimentos não cumprem o critério de 5%: ou a amostra do B1 sobe para perto de 75, ou o critério muda. Falta ainda ver se a banca aceita a concordância de um codificador consigo mesmo e como estratificar uma amostra pequena (capital e faixa de volume).
 2. **Hipótese do público potencial** (30 anos ou mais, casado ou com filhos, que frequentaria luderias se o ambiente, o público ou o serviço mudassem): registrar como emenda ao registro prévio ou guardar como estudo futuro (cap. 11.5)? Formulações testáveis em `docs/bibliografia/diagnostico-teorico.md` §9.
-3. **Replanejar os rascunhos atrasados** (caps. 2, 3 e 8 e seções 5.1, 5.4 e 5.5) ou acionar o plano de corte do cronograma?
+3. **PDFs da P2 que faltam:** Kimes e Robson (2004) no eCommons (bloqueou o download automático); Graham e Harvey, Delmar e Shane, Lambrecht e Skiera (SSRN), Li e Hitt (CORE), Anderson e Magruder (eScholarship), Xia et al. (UNAL) e Novaes e Kanyat (volume da revista) têm cópia aberta, mas só pelo navegador; os demais, pelo Portal CAPES ou pela biblioteca.
+4. **Replanejar os rascunhos atrasados** (caps. 2, 3 e 8 e seções 5.1, 5.4 e 5.5) ou acionar o plano de corte do cronograma?
 
 ## Divergências entre documentos, ainda sem correção
+
+- Damodaran: `_instrucoes/8_financeiro.md` cita *Avaliação de investimentos* (ed. brasileira); o roteiro e o checklist da P2 citam *Investment valuation* (Wiley). Definir a edição que será lida.
 
 - Coleta do Shelf Bar e Jogos parou em "fim da lista" com 40 avaliações (até "uma semana atrás"), mas está como "ok" em `B2_cobertura_coleta.csv`; refazer. Ajustar o build para marcar "refazer" quando o volume lido ficar muito abaixo do volume do B1.
 - Userscript `maps_avaliacoes`: `texto_original` vem "não" nas avaliações traduzidas (6 casos).

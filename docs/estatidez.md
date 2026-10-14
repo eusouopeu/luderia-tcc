@@ -265,11 +265,11 @@ Dobrar a base de 2.000 para 4.000 muda a amostra em **uma** avaliação. Os núm
 
 ## Referências citadas
 
-Todas `[A VERIFICAR]` até a conferência da obra.
+Todas `[AV]` até a conferência da obra.
 
-- ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. *NBR 5426*: planos de amostragem e procedimentos na inspeção por atributos. Rio de Janeiro: ABNT, 1985. `[A VERIFICAR]`
-- BROWN, Lawrence D.; CAI, T. Tony; DASGUPTA, Anirban. Interval estimation for a binomial proportion. *Statistical Science*, v. 16, n. 2, p. 101-133, 2001. `[A VERIFICAR]`
-- COCHRAN, William G. *Sampling techniques*. 3. ed. New York: Wiley, 1977. `[A VERIFICAR]`
-- MATSUMOTO, Makoto; NISHIMURA, Takuji. Mersenne twister: a 623-dimensionally equidistributed uniform pseudo-random number generator. *ACM Transactions on Modeling and Computer Simulation*, v. 8, n. 1, p. 3-30, 1998. `[A VERIFICAR]`
-- NEWCOMBE, Robert G. Two-sided confidence intervals for the single proportion: comparison of seven methods. *Statistics in Medicine*, v. 17, n. 8, p. 857-872, 1998. `[A VERIFICAR]`
-- WILSON, Edwin B. Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association*, v. 22, n. 158, p. 209-212, 1927. `[A VERIFICAR]`
+- ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. *NBR 5426*: planos de amostragem e procedimentos na inspeção por atributos. Rio de Janeiro: ABNT, 1985. `[AV]`
+- BROWN, Lawrence D.; CAI, T. Tony; DASGUPTA, Anirban. Interval estimation for a binomial proportion. *Statistical Science*, v. 16, n. 2, p. 101-133, 2001. `[AV]`
+- COCHRAN, William G. *Sampling techniques*. 3. ed. New York: Wiley, 1977. `[AV]`
+- MATSUMOTO, Makoto; NISHIMURA, Takuji. Mersenne twister: a 623-dimensionally equidistributed uniform pseudo-random number generator. *ACM Transactions on Modeling and Computer Simulation*, v. 8, n. 1, p. 3-30, 1998. `[AV]`
+- NEWCOMBE, Robert G. Two-sided confidence intervals for the single proportion: comparison of seven methods. *Statistics in Medicine*, v. 17, n. 8, p. 857-872, 1998. `[AV]`
+- WILSON, Edwin B. Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association*, v. 22, n. 158, p. 209-212, 1927. `[AV]`

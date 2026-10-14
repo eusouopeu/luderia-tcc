@@ -1,10 +1,12 @@
 # AGORA
 
-Atualizado em 14/10/2026, 16h56. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 14/10/2026, 17h40. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
 - **Coleta do B2** (avaliações até "3 meses atrás"): 46 de 51 luderias coletadas (1.948 avaliações no recorte, 1.213 com texto, todas no Notion "B - Comentários", com "ID da avaliação"). Faltam 5 (Flow Games, Machado Games, Ilusões Industriais, Dungeon Games Store, Paladino Hobbies; fila em `B2_fila_coleta.txt`) e refazer o Shelf Bar, que parou em 40 avaliações.
+
+- **Conferência de conceitos:** checklists em `bibliografia/leituras-P1/` (25 conceitos) e `leituras-P2/` (34), todos `[AV]`. Ao ler, trocar o `[AV]` da linha pela página; o vigia propaga. Situação em `bibliografia/relatorio-conceitos.md`.
 
 ## Próximos 3 passos
 

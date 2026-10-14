@@ -115,6 +115,6 @@ Verificar antes de fechar o modelo e registrar o resultado em apêndice:
 
 ## Referências de apoio
 
-- ASSAF NETO, Alexandre. *Finanças corporativas e valor*. Atlas. `[A VERIFICAR]`
-- DAMODARAN, Aswath. *Avaliação de investimentos*. `[A VERIFICAR]`
-- SAVAGE, Sam L. *The flaw of averages*. Wiley, 2009. — por que usar distribuições em vez de médias. `[A VERIFICAR]`
+- ASSAF NETO, Alexandre. *Finanças corporativas e valor*. Atlas. `[AV]`
+- DAMODARAN, Aswath. *Avaliação de investimentos*. `[AV]`
+- SAVAGE, Sam L. *The flaw of averages*. Wiley, 2009. — por que usar distribuições em vez de médias. `[AV]`

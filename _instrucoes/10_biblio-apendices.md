@@ -12,7 +12,7 @@
 | ABNT NBR 6028:2021 | Resumo |
 | IBGE. *Normas de apresentação tabular*. 3. ed., 1993 | Tabelas |
 
-Conferir o manual ou as normas complementares da UFBA e do curso, e as orientações da orientadora. Em caso de conflito, prevalece a norma da instituição. `[A VERIFICAR]`
+Conferir o manual ou as normas complementares da UFBA e do curso, e as orientações da orientadora. Em caso de conflito, prevalece a norma da instituição. `[AV]`
 
 ## Referências (NBR 6023:2018)
 
@@ -27,7 +27,8 @@ Conferir o manual ou as normas complementares da UFBA e do curso, e as orientaç
   - **Base de dados:** INSTITUIÇÃO. *Nome da base*. Local, ano. Disponível em: ... Acesso em: ...
   - **Legislação:** BRASIL. Lei nº X, de dia de mês de ano. Ementa. *Diário Oficial da União*, ...
   - **Repositório de código:** AUTOR. *Título do repositório*. Ano. Disponível em: URL. Acesso em: ...
-- Referência não conferida fica marcada `[A VERIFICAR]` nos arquivos de instrução e não entra na versão final.
+- Referência não conferida fica marcada `[AV]` (a verificar) e não entra na versão final.
+- Citação de conceito com página a conferir leva `[AV-<ID>]`, com o ID da linha do `checklist-conceitos.md` da leva (`bibliografia/leituras-*/`). Quando o autor troca o `[AV]` da linha pela página, o vigia de `_src/extras/conceitos/` põe a página no lugar do marcador em todo o projeto, tira o `[AV]` da obra nas listas de referências e muda VM para VT na matriz de fundamentação. Divergências entre a definição usada e a do autor vão para `bibliografia/relatorio-conceitos.md`.
 
 ## Tabelas, quadros e figuras
 

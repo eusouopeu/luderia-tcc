@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 14/10/2026 | Marcador único `[AV]` (a verificar) no lugar de `[A VERIFICAR]`; citação de conceito com página a conferir leva `[AV-<ID>]`, ligado ao `checklist-conceitos.md` da leva | `_instrucoes/10_biblio-apendices.md` |
+| 14/10/2026 | Um `checklist-conceitos.md` por leva de leitura (`bibliografia/leituras-Pn/`), versionado; vigia do launchd roda `_src/extras/conceitos/verificar_conceitos.py` a cada mudança e propaga as páginas conferidas | `bibliografia/leituras-P1/checklist-conceitos.md` |
 | 14/10/2026 | Banco "B - Comentários" do Notion alimentado pelas coletas do userscript (só avaliações com texto no recorte), com a coluna "ID da avaliação" (`review_id`) como chave para não duplicar | `docs/registro-de-alteracoes.md`, 14/10 16:56 |
 | 14/10/2026 | B1 sem arquivos soltos: saídas em `estabelecimentos/{1_busca,2_recorte,3_triagem}/` e `entorno/`, nomes com `metro`, `regio`, `f`, `av50`, `av100`; Instagram em `rs_<cidade>/rs_<perfil>/`, cardápios originais em `_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/` (cidade = capital da RM) | `_src/dicionario.md` |
 | 14/10/2026 | `_src/` espelha os blocos de `dados/`, com uma pasta por objeto (B4: uma por fonte, auxiliar em `Comum/`); utilitários em `_src/extras/`; brutos em `_dados-brutos/` | `_src/dicionario.md` |

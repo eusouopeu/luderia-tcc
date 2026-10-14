@@ -1,6 +1,6 @@
 # Análise de conteúdo das avaliações das luderias (Bloco B2)
 
-Versão parcial de 10/10/2026. Corpus: base do Notion "B - Comentários (manual)" na mesma data. A análise segue o modelo de análise de conteúdo de Bardin (2011) `[A VERIFICAR]` e tem caráter exploratório: identifica e define as categorias. A medição de intensidade dos achados fica para a etapa lexical/categórica posterior.
+Versão parcial de 10/10/2026. Corpus: base do Notion "B - Comentários (manual)" na mesma data. A análise segue o modelo de análise de conteúdo de Bardin (2011) `[AV]` e tem caráter exploratório: identifica e define as categorias. A medição de intensidade dos achados fica para a etapa lexical/categórica posterior.
 
 Arquivos:
 
@@ -33,7 +33,7 @@ Pendências que afetam a análise:
 
 ### 1.1 Enquadramento
 
-A análise de conteúdo é organizada em três polos cronológicos: pré-análise, exploração do material e tratamento dos resultados com inferência e interpretação (Bardin, 2011 `[A VERIFICAR]`). A versão aplicada é categorial e temática: o texto é recortado em temas, cada tema é classificado numa categoria e a categoria é enumerada por presença.
+A análise de conteúdo é organizada em três polos cronológicos: pré-análise, exploração do material e tratamento dos resultados com inferência e interpretação (Bardin, 2011 `[AV]`). A versão aplicada é categorial e temática: o texto é recortado em temas, cada tema é classificado numa categoria e a categoria é enumerada por presença.
 
 A análise responde a uma pergunta do plano: quais atributos da experiência numa luderia o cliente comenta, em que direção e com que peso, para orientar as decisões de formato, A&B, acervo, equipe, preço e capacidade.
 
@@ -262,4 +262,4 @@ A nota média do corpus é 4,52 e 81% dos comentários têm nota 5. Os comentár
 
 ## Referência
 
-BARDIN, Laurence. *Análise de conteúdo*. São Paulo: Edições 70, 2011. `[A VERIFICAR]`
+BARDIN, Laurence. *Análise de conteúdo*. São Paulo: Edições 70, 2011. `[AV]`

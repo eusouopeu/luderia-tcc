@@ -628,3 +628,27 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: as 13 linhas de Machado Games.
 **Depois**: têm os mesmos textos das 13 linhas de Flow Games - Burgers Cards & Comunidade.
 **Efeitos colaterais**: um dos dois conjuntos foi lançado no estabelecimento errado; contagens por casa ficam infladas até a correção.
+
+### 17:32
+**Objeto**: `bibliografia/leituras-P2/`, `bibliografia/leituras-P1/` (PDFs de Asakura, Figueiredo e Mantovani e KAM Insight), `.gitignore`
+**Antes**: PDFs de Asakura, Figueiredo e Mantovani e KAM Insight soltos em `bibliografia/` (versionados); nenhum PDF da P2 baixado; `.gitignore` ignorava `leituras-P1/` inteira.
+**Depois**: os três PDFs em `leituras-P1/` (movidos pelo autor), fora do git. `leituras-P2/` com 5 PDFs abertos (Luca, McHugh, Cameron e Miller, Liddell e Kruschke, Fiesler et al.), indicados no roteiro de leitura. Kimes e Robson (2004) não baixou: o eCommons recusou o acesso automático (erro 429). `.gitignore` ignora o conteúdo de `bibliografia/leituras-*/`, menos o `checklist-conceitos.md`.
+**Justificativa**: pedido do autor de uma pasta com a segunda leva (P2); os checklists precisam ser versionados, os PDFs de terceiros não.
+
+### 17:32
+**Objeto**: `bibliografia/leituras-P1/checklist-conceitos.md`, `bibliografia/leituras-P2/checklist-conceitos.md`, `bibliografia/relatorio-conceitos.md`, `_src/extras/conceitos/` (`verificar_conceitos.py`, testes, `instalar_vigia.sh`), LaunchAgent `br.ufba.tcc-luderia.verificar-conceitos`
+**Antes**: sem lista dos conceitos tirados de cada obra; páginas a conferir marcadas só pelo status VM da matriz.
+**Depois**: checklist por leva com termo (com ID `Rnn-x`), definição atual (com arquivo de origem), definição real (em branco), autores e referência ABNT terminada em `[AV]`: 25 conceitos na P1 (R01–R16, R50, Figueiredo e Mantovani, KAM Insight) e 34 na P2 (R17–R49). Script troca `[AV-<ID>]` pela página quando o autor tira o `[AV]` da linha, tira o `[AV]` da obra nas listas de referências (completando o intervalo de páginas se faltar), muda VM para VT na matriz quando a obra fecha e grava o relatório de pendências e divergências; 7 testes passam. Vigia do launchd roda o script a cada mudança nas pastas `leituras-*`.
+**Justificativa**: pedido do autor: conferir conceito a conceito contra a obra e propagar a página sem edição manual.
+
+### 17:32
+**Objeto**: marcador de referência não conferida em `CLAUDE.md`, `.claude/skills/traduza/SKILL.md`, `_instrucoes/4_metodologia.md`, `_instrucoes/8_financeiro.md`, `_instrucoes/10_biblio-apendices.md`, `bibliografia/lista-de-leitura.md`, `bibliografia/referencias_bases_publicas.md`, `docs/estatidez.md`, `docs/bibliografia/diagnostico-teorico.md`, `docs/bibliografia/roteiro-leitura.md`, `textos/planejamento/projeto_pesquisa_luderia.md`, `textos/instrumentos/analise_conteudo_bardin_B2.md`
+**Antes**: `[A VERIFICAR]` (84 ocorrências, duas com nota após dois-pontos).
+**Depois**: `[AV]`, com as notas mantidas (`[AV: ...]`); novo marcador `[AV-<ID>]` para página de conceito, descrito no `CLAUDE.md` e em `_instrucoes/10_biblio-apendices.md`. Não alterados: este registro e `arquivados/` (históricos).
+**Justificativa**: pedido do autor de um marcador único e curto.
+
+### 17:32 — divergência
+**Objeto**: obra de Damodaran em `_instrucoes/8_financeiro.md` e `docs/bibliografia/roteiro-leitura.md` (R18)
+**Antes**: `8_financeiro.md` cita DAMODARAN, *Avaliação de investimentos* (edição brasileira).
+**Depois**: o roteiro (09/10) cita *Investment valuation* (Wiley, ISBN 1394254628), e o checklist da P2 seguiu o roteiro.
+**Efeitos colaterais**: edição e paginação diferentes; a página conferida no checklist só vale para a edição lida.
