@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 14/10/2026, 12h. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 14/10/2026, 12h30. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 

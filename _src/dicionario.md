@@ -86,6 +86,7 @@ Códigos das partes do nome das saídas:
 | 14/10/2026 | Saídas do B1 soltas na raiz do bloco, com nomes por extenso (`B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv`, `B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx`, `B1_grafico_limiares_capitais_regionais_filtrada.png`, `B1_descartados_por_filtro.csv`) | `estabelecimentos/<n>_<etapa>/` e `entorno/`, com os códigos (`B1_curadoria_metro_f_av100.csv`, `B1_aprovadas_metro_av100.xlsx`, `B1_limiares_regio_f.png`, `B1_descartados.csv`) |
 | 14/10/2026 | Coletas do Instagram soltas em `redes_sociais/`; cardápios originais em `cardapios/<Nome do estabelecimento>/` (com espaço e acento, às vezes com `Cardápio ` na frente) | `redes_sociais/rs_<cidade>/rs_<perfil>/`; `_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/` |
 | 14/10/2026 | Brutos do Google Places soltos em `_dados-brutos/` | `_dados-brutos/estabelecimentos/` |
+| 14/10/2026 | Originais transcritos à mão soltos em `_dados-brutos/cardapios/` (`<estabelecimento>_cardapio*.{pdf,html,jpg}`) ou em pastas sem prefixo (`boardz/`, `castelos/`, `placegames/`) | `_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/` |
 
 ## 4. Colunas (variáveis) dos dados
 

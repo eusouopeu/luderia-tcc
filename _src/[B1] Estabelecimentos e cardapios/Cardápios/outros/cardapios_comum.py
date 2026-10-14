@@ -10,6 +10,10 @@ PASTAS liga o nome usado nas saídas (coluna `estabelecimento` de
 B1_cardapios_baixados.csv e B1_cardapios_ocr_linhas.csv, que era o nome da pasta
 antes de 14/10/2026) à cidade e ao nome curto da pasta. Estabelecimento novo entra
 aqui antes de rodar a coleta.
+
+As demais pastas ca_ (ca_arena_bg, ca_bodogami, ca_fan_hour, ca_place_games,
+ca_shelf_bar) guardam originais transcritos à mão em _dados-brutos/cardapios/transcricao/
+e não passam pela coleta nem pelo OCR.
 """
 import pathlib
 
