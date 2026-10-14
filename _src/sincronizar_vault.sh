@@ -5,7 +5,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DESTINO="$HOME/Documents/2oCerebro/C4-Projetos/TCC Luderia"
+DESTINO="$HOME/Documents/2oCerebro/1-Graduação/12-TCC/Luderia"
 OPCOES=(-a --delete --exclude=.DS_Store)
 [[ "${1:-}" == "--simular" ]] && OPCOES+=(--dry-run --itemize-changes)
 

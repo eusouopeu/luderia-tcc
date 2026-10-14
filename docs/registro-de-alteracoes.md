@@ -562,3 +562,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: não havia cópia das pastas do TCC para o vault do Obsidian; leitura no celular indisponível.
 **Depois**: script com `rsync` em sentido único copia `docs/`, `textos/` e `bibliografia/` (inclusive `leituras-P1/`, ignorada pelo git) para `~/Documents/2oCerebro/C4-Projetos/TCC Luderia/`; `--simular` mostra o que mudaria. O `CLAUDE.md` manda rodá-lo depois do commit de fim de sessão.
 **Justificativa**: pedido do autor, para ler o TCC no celular pela sincronização do vault; cópia em vez de mover pastas ou usar atalhos, para o git continuar versionando o conteúdo.
+
+### 08:20
+**Objeto**: `_src/sincronizar_vault.sh`
+**Antes**: destino da cópia em `~/Documents/2oCerebro/C4-Projetos/TCC Luderia/`.
+**Depois**: destino em `~/Documents/2oCerebro/1-Graduação/12-TCC/Luderia/` (subpastas `docs`, `textos`, `bibliografia`); a cópia antiga foi apagada. Os dois arquivos que já estavam na raiz de `Luderia/` não são tocados, pois o `--delete` age só dentro das três subpastas.
+**Justificativa**: pedido do autor, para manter o TCC junto das demais pastas da graduação no vault.
