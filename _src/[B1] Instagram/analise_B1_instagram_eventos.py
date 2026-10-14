@@ -30,7 +30,7 @@ Regras:
   - dia da semana: os dias citados na legenda do evento provável (data do
     evento, não da publicação); uma legenda pode citar vários dias.
 
-Saídas em _data/processed/[B1] Estabelecimentos e cardapios/redes_sociais/analise_legendas/eventos/:
+Saídas em dados/[B1] Estabelecimentos e cardapios/redes_sociais/analise_legendas/eventos/:
   B1_instagram_eventos_por_estabelecimento.csv (casa: posts, eventos, eventos/mês, % por categoria)
   B1_instagram_eventos_por_categoria.csv       (categoria x tipo de casa: posts, casas, engajamento)
   B1_instagram_eventos_dias_da_semana.csv      (dia citado x tipo de casa)

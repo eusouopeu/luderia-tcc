@@ -8,7 +8,7 @@ Colunas ausentes em meses antigos não filtram (o mês entra sem aquele critéri
 Para a média não ser distorcida por erro de declaração, ficam de fora salários
 abaixo de 50% ou acima de 30 vezes o salário mínimo vigente na competência.
 
-Saídas em _data/processed/[B4] Bases publicas/:
+Saídas em dados/[B4] Bases publicas/:
 Saídas em multiuso/ (custo de pessoal em 7.5 e cap. 9), no padrão "[B4] {dado} {período} ({fonte}).csv":
   "Salário Admissão por Capital"   últimos 12 meses: média, p25, mediana, p75
   "Salário Admissão Mensal"        por competência: média nominal e real, mediana, salário mínimo

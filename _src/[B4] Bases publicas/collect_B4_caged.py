@@ -13,7 +13,7 @@ Uso:
   python collect_B4_caged.py --inicio 202101 --fim 202512
   python collect_B4_caged.py --manter-originais         # não apaga os .7z
 
-Saídas em _data/raw/[B4] Bases publicas/caged/:
+Saídas em dados/[B4] Bases publicas/dados-brutos/caged/:
   caged_mov_<AAAAMM>_admissoes.csv.gz   admissões filtradas, só as colunas usadas no tratamento
   layout_novo_caged_movimentacao.xlsx
 Meses já processados (.csv ou .csv.gz) são pulados.

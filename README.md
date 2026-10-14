@@ -14,12 +14,12 @@ Todo número do texto pode ser gerado de novo por um script deste repositório. 
 | `textos/instrumentos/` | Roteiro de observação, livro de códigos da análise de conteúdo e quadro de itens |
 | `_instrucoes/` | Instruções por capítulo (ver [CLAUDE.md](CLAUDE.md)) |
 | `_src/[Bn] Fonte/` | Scripts de coleta, tratamento e análise, um bloco por pasta |
-| `_data/raw/[Bn] Nome/` | Dados brutos (parte não publicada: ver `.gitignore`) |
-| `_data/processed/[Bn] Nome/` | Tabelas e gráficos tratados |
+| `dados/[Bn] Nome/dados-brutos/` | Dados brutos (parte não publicada: ver `.gitignore`) |
+| `dados/[Bn] Nome/` | Tabelas e gráficos tratados |
 | `bibliografia/` | PDFs de leitura, lista de leitura e referências das bases públicas |
 | `docs/` | Decisões, pendências, registro de alterações, diagnóstico bibliográfico |
-| `app-observacao/` | App Android usado na contagem direta (Bloco B3) |
-| `site-apresentacao/` | Site da apresentação oral |
+| `_src/app-observacao/` | App Android usado na contagem direta (Bloco B3) |
+| `_src/site-apresentacao/` | Site da apresentação oral |
 | `arquivados/` | Rascunhos, saídas do desenho anterior e blocos retirados do escopo (B5, B6), guardados para uso futuro |
 
 ## Por onde começar
@@ -28,12 +28,12 @@ Abrir sempre o [AGORA.md](AGORA.md) primeiro. Depois, conforme a tarefa:
 
 | Vou… | Abrir | Saída ou registro |
 |---|---|---|
-| Escrever o cap. N | `_instrucoes/` do capítulo (mapa no [CLAUDE.md](CLAUDE.md)); dados em `_data/processed/[Bn]…`; skill `meu-estilo-escrita` | `textos/capitulos/`; atualizar `textos/planejamento/status_capitulos.md` |
+| Escrever o cap. N | `_instrucoes/` do capítulo (mapa no [CLAUDE.md](CLAUDE.md)); dados em `dados/[Bn]…`; skill `meu-estilo-escrita` | `textos/capitulos/`; atualizar `textos/planejamento/status_capitulos.md` |
 | Escrever o cap. 2 | `_instrucoes/2_ref-teorico.md` e `bibliografia/lista-de-leitura.md` | `textos/capitulos/` |
-| Coletar avaliações (B2) | `_src/Web scripts/maps_avaliacoes.user.js` (Tampermonkey), fila em `_data/processed/[B2] Avaliacoes recentes/B2_fila_coleta.txt` | rodar `build_B2_avaliacoes.py`; situação em `B2_cobertura_coleta.csv` |
-| Ir a campo (B3) | `textos/instrumentos/roteiro_observacao_sao_jogue.md` e `app-observacao/` | `_data/raw/[B3] Contagem direta de ocupacao/` |
-| Mexer em cardápios, acervos ou Instagram (B1) | `_src/[B1] Cardapios/`, `_src/[B1] Acervo de Jogos/`, `_src/[B1] Instagram/` | `_data/processed/[B1] Estabelecimentos e cardapios/` (`cardapios/`, `acervo_jogos/`, `redes_sociais/`) |
-| Atualizar uma base pública (B4) | `_src/[B4] Bases publicas/`; referências em `bibliografia/referencias_bases_publicas.md` | `_data/processed/[B4] Bases publicas/<uso>/` |
+| Coletar avaliações (B2) | `_src/Web scripts/maps_avaliacoes.user.js` (Tampermonkey), fila em `dados/[B2] Avaliacoes recentes/B2_fila_coleta.txt` | rodar `build_B2_avaliacoes.py`; situação em `B2_cobertura_coleta.csv` |
+| Ir a campo (B3) | `textos/instrumentos/roteiro_observacao_sao_jogue.md` e `_src/app-observacao/` | `dados/[B3] Contagem direta de ocupacao/dados-brutos/` |
+| Mexer em cardápios, acervos ou Instagram (B1) | `_src/[B1] Cardapios/`, `_src/[B1] Acervo de Jogos/`, `_src/[B1] Instagram/` | `dados/[B1] Estabelecimentos e cardapios/` (`cardapios/`, `acervo_jogos/`, `redes_sociais/`) |
+| Atualizar uma base pública (B4) | `_src/[B4] Bases publicas/`; referências em `bibliografia/referencias_bases_publicas.md` | `dados/[B4] Bases publicas/<uso>/` |
 | Ver ou mudar prazos | `textos/planejamento/cronograma_luderia.md` | `node _src/gerar_docx_cronograma.js` (`--resumo` para a versão curta) gera o `.docx` |
 | Tomar ou consultar uma decisão | `docs/decisoes.md` e `docs/pendencias.md` | decisão tomada sai de pendências e entra em decisões |
 | Anotar dúvida ou ideia | `docs/pendencias.md` | — |
@@ -73,11 +73,11 @@ npm i -g pnpm
 ```
 
 ```bash
-pnpm --dir site-apresentacao install
+pnpm --dir _src/site-apresentacao install
 ```
 
 ```bash
-pnpm --dir site-apresentacao dev
+pnpm --dir _src/site-apresentacao dev
 ```
 
 ## Regras de dados

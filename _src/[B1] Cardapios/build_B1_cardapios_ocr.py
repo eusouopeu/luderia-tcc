@@ -1,6 +1,6 @@
 """Extrai o texto dos cardápios baixados (PDF com camada de texto ou OCR; imagens por OCR).
 
-Entrada: _data/processed/[B1] Estabelecimentos e cardapios/cardapios/<Estabelecimento>/*.{pdf,png,jpg,webp}
+Entrada: dados/[B1] Estabelecimentos e cardapios/cardapios/<Estabelecimento>/*.{pdf,png,jpg,webp}
 Saída:   .../cardapios/transcricao/<Estabelecimento>.txt (texto bruto por arquivo)
          .../cardapios/B1_cardapios_ocr_linhas.csv (estabelecimento;arquivo;linha;texto;preco_rs)
 O idioma português vem de _src/[B1] Cardapios/tessdata (tessdata_fast); sem ele, cai para inglês.
@@ -17,7 +17,7 @@ import pytesseract
 from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parents[2]
-BASE = ROOT / "_data/processed/[B1] Estabelecimentos e cardapios/cardapios"
+BASE = ROOT / "dados/[B1] Estabelecimentos e cardapios/cardapios"
 TRANSCRICAO = BASE / "transcricao"
 TESSDATA = Path(__file__).resolve().parent / "tessdata"
 LANG = "por" if (TESSDATA / "por.traineddata").exists() else "eng"

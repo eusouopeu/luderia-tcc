@@ -18,7 +18,7 @@ Plataformas:
   em cardapios/B1_cardapios_digitais_itens.csv (collect_B1_cardapios_digitais.py).
 Sem loja legível: Ludoteca BGC (o site redireciona para o Acervo de Jogos).
 
-Cache: _data/raw/[B1].../lojas_venda/<loja>/ (HTML da Liga e JSON da Tray).
+Cache: dados/[B1].../dados-brutos/lojas_venda/<loja>/ (HTML da Liga e JSON da Tray).
 Saída: acervo_jogos/B1_lojas_venda_produtos.csv, um produto por linha:
 estabelecimento, plataforma, produto, preco_rs, url, data_coleta. Acessórios e
 TCG entram se estiverem nas categorias escolhidas; o casamento com os jogos
@@ -34,8 +34,8 @@ from pathlib import Path
 import requests
 
 ROOT = Path(__file__).resolve().parents[2]
-RAW = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios" / "lojas_venda"
-PROC = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "dados-brutos" / "lojas_venda"
+PROC = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 SAIPOS = PROC / "cardapios" / "B1_cardapios_digitais_itens.csv"
 SAIDA = PROC / "acervo_jogos" / "B1_lojas_venda_produtos.csv"
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "

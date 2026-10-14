@@ -50,7 +50,7 @@ from tqdm import tqdm
 from places_client import PlacesClient
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-RAW = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios"
+RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "dados-brutos"
 CANDIDATOS_PATH = RAW / "B1_candidatos.csv"
 DETALHES_PATH = RAW / "B1_detalhes.jsonl"
 SEM_REVIEWS_PATH = RAW / "B1_detalhes_sem_reviews.jsonl"

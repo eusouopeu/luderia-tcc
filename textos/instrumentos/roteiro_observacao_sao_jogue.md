@@ -84,7 +84,7 @@ Uma linha da ficha de grupos por grupo. A entrada e a saída do mesmo grupo fica
 
 ## 5. Depois de cada visita
 
-- No mesmo dia, digitar as fichas em `_data/raw/[B3] Contagem direta de ocupacao/`: `contagem_visitas.csv` (cabeçalho), `contagem_grupos.csv` (grupos) e `contagem_30min.csv`.
+- No mesmo dia, digitar as fichas em `dados/[B3] Contagem direta de ocupacao/dados-brutos/`: `contagem_visitas.csv` (cabeçalho), `contagem_grupos.csv` (grupos) e `contagem_30min.csv`.
 - Preencher a linha da visita na aba **Registro** da planilha: início, fim, NFC-e no início e no fim, "Realizada?", observação.
 - Guardar as notas fiscais (foto da nota ou do QR Code; sem dados pessoais).
 - Não analisar os números antes da última visita, além da conferência de digitação.

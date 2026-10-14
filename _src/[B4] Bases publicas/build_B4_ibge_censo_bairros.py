@@ -1,7 +1,7 @@
 """
 Trata os Agregados por Bairros do Censo 2022 (IBGE) para as 27 capitais.
 
-Entrada: zips e dicionário em _data/raw/[B4] Bases publicas/ibge_censo_2022/
+Entrada: zips e dicionário em dados/[B4] Bases publicas/dados-brutos/ibge_censo_2022/
 Saída: ponto_operacoes/"[B4] População por Bairro 2022 (IBGE Censo).csv"
   uma linha por bairro: população, domicílios, média de moradores, área, densidade,
   população por faixa etária e participação da faixa de 20 a 39 anos.

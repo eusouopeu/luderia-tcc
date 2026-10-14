@@ -5,8 +5,8 @@ Coleta realizada em 14/09/2026. Referências no padrão ABNT NBR 6023:2018, em o
 Critérios adotados:
 
 - **Bases de dados on-line atualizadas continuamente** (SIDRA, SGS, Focus, CAGED, CNAE): o ano da referência é o da versão consultada (2026), e o recorte usado (tabela, série, período) entra no título ou na nota.
-- **Documentos baixados** (planilha FipeZAP, nota metodológica, texto da LC 123/2006, arquivos do Censo): o original está em `_data/raw/[B4] Bases publicas/<fonte>/`.
-- **Dados de API**: o script de coleta está em `_src/[B4] Bases publicas/`. A resposta bruta, com URL e data, está em `_data/raw/[B4] Bases publicas/<fonte>/`.
+- **Documentos baixados** (planilha FipeZAP, nota metodológica, texto da LC 123/2006, arquivos do Censo): o original está em `dados/[B4] Bases publicas/dados-brutos/<fonte>/`.
+- **Dados de API**: o script de coleta está em `_src/[B4] Bases publicas/`. A resposta bruta, com URL e data, está em `dados/[B4] Bases publicas/dados-brutos/<fonte>/`.
 - Elemento não conferido no documento original fica marcado `[A VERIFICAR]`.
 
 ---
@@ -57,7 +57,7 @@ INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE). **Sistema Nacional de �
 
 ## 2. Rastreabilidade: referência → coleta → saída
 
-Pastas: scripts em `_src/[B4] Bases publicas/`, brutos em `_data/raw/[B4] Bases publicas/`, saídas em `_data/processed/[B4] Bases publicas/`, nomeadas no padrão `[B4] {dado principal} {período} ({fonte}).csv`.
+Pastas: scripts em `_src/[B4] Bases publicas/`, brutos em `dados/[B4] Bases publicas/dados-brutos/`, saídas em `dados/[B4] Bases publicas/`, nomeadas no padrão `[B4] {dado principal} {período} ({fonte}).csv`.
 
 As saídas ficam em subpastas por **uso no plano**, não por fonte: a mesma fonte alimenta capítulos diferentes, e o que define a pasta é a decisão que o dado sustenta.
 
@@ -69,7 +69,7 @@ As saídas ficam em subpastas por **uso no plano**, não por fonte: a mesma font
 | `financeiro/` | cap. 9: premissas de custo, taxa de desconto e coerência setorial |
 | `multiuso/` | usada em mais de um capítulo: deflator, ticket e custo de pessoal |
 
-A coluna "Saída tratada" abaixo traz o caminho a partir de `_data/processed/[B4] Bases publicas/`.
+A coluna "Saída tratada" abaixo traz o caminho a partir de `dados/[B4] Bases publicas/`.
 
 | Fonte | Citação no texto | Tipo | Script de coleta | Original ou bruto | Saída tratada (`build_*`) | Uso no plano | Nível |
 |---|---|---|---|---|---|---|---|

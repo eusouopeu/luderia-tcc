@@ -2,8 +2,8 @@
 Extrai do HTML compilado da LC nº 123/2006 as tabelas dos Anexos I a V do Simples
 Nacional na redação da LC nº 155/2016 (vigente).
 
-Entrada: _data/raw/[B4] Bases publicas/legislacao/lcp123_compilada_planalto_<data>.htm
-Saídas em _data/processed/[B4] Bases publicas/:
+Entrada: dados/[B4] Bases publicas/dados-brutos/legislacao/lcp123_compilada_planalto_<data>.htm
+Saídas em dados/[B4] Bases publicas/:
 Saídas em juridico_tributario/, no padrão "[B4] {dado} {período} ({fonte}).csv", com o ano de vigência conferida:
   "Faixas e Alíquotas por Anexo"      anexo, faixa, receita bruta em 12 meses (mín., máx.),
                                       alíquota nominal e parcela a deduzir

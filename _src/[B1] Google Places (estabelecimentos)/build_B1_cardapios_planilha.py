@@ -4,7 +4,7 @@ de itens e preços.
 
 Fonte: os 12 aprovados na triagem final cujo link do Google Maps leva a um
 cardápio acessível (conferência de 10/10/2026). Cada cardápio foi transcrito
-para um CSV em _data/raw/[B1] Estabelecimentos e cardapios/cardapios/transcricao/
+para um CSV em dados/[B1] Estabelecimentos e cardapios/dados-brutos/cardapios/transcricao/
 (um arquivo por estabelecimento, separador ";"). A transcrição é manual para
 imagens e PDFs e automática para páginas em texto (VUCA Food, Wix). As fontes
 originais (PDF, imagens, HTML) ficam na pasta cardapios/ e fora do repositório.
@@ -23,7 +23,7 @@ exige_preparo = "N" para item pronto (lata, garrafa, chopp, dose, água).
 Cada linha é uma combinação item x variação (tamanho, dia da semana, combo).
 Item sem preço no cardápio fica com preço vazio, não zero.
 
-Saída em _data/processed/[B1] Estabelecimentos e cardapios/:
+Saída em dados/[B1] Estabelecimentos e cardapios/:
   B1_cardapios_itens_precos.xlsx  (abas itens, resumo, precos_subcategoria, fontes)
 
 Uso:
@@ -37,8 +37,8 @@ from openpyxl.styles import Alignment, Font
 from openpyxl.utils import get_column_letter
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-RAW = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios" / "cardapios" / "transcricao"
-PROCESSED = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "dados-brutos" / "cardapios" / "transcricao"
+PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 TRIAGEM = PROCESSED / "B1_triagem_manual_metropoles_mais_100_avaliacoes.xlsx"
 SAIDA = PROCESSED / "B1_cardapios_itens_precos.xlsx"
 

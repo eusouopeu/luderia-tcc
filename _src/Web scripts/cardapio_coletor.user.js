@@ -30,7 +30,7 @@
  * O painel só aparece quando a página tem cara de cardápio (5+ preços em R$ ou
  * itens no JSON). Cardápio em PDF ou imagem não é lido: precisa de transcrição.
  *
- * Saídas (";" e UTF-8 com BOM, como as transcrições em _data/.../cardapios/transcricao/):
+ * Saídas (";" e UTF-8 com BOM, como as transcrições em dados/[B1] Estabelecimentos e cardapios/dados-brutos/cardapios/transcricao/):
  *  - CSV completo: secao_original;item;descricao;variacao;preco;categoria;subcategoria;
  *    exige_preparo;observacao;fonte;url — categoria e subcategoria seguem as categorias
  *    fixas do método do Bloco B1 e vêm de palavras-chave: revisar antes de usar.

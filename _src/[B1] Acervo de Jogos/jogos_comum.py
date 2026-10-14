@@ -22,8 +22,8 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-PROC = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios" / "acervo_jogos"
-RAW = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios" / "acervos_luderias"
+PROC = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "acervo_jogos"
+RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "dados-brutos" / "acervos_luderias"
 B5 = ROOT / "arquivados" / "B5-jogos" / "_data" / "raw" / "[B5] Jogos (ludopedia)"
 ACERVOS = PROC / "B1_jogos_dos_acervos.csv"
 API_BUSCA = RAW / "ludopedia_api_busca.json"

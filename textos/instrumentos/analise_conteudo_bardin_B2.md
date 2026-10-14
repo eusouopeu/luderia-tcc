@@ -4,7 +4,7 @@ Versão parcial de 10/10/2026. Corpus: base do Notion "B - Comentários (manual)
 
 Arquivos:
 
-- codificação comentário a comentário: `_data/processed/[B2] Avaliacoes recentes/analise_conteudo/B2_codificacao_bardin.csv`;
+- codificação comentário a comentário: `dados/[B2] Avaliacoes recentes/analise_conteudo/B2_codificacao_bardin.csv`;
 - contagens, tipologia e amostra de controle: `_src/[B2] Google Places (comentarios)/analise_B2_conteudo_bardin.py`;
 - saídas do script: `B2_bardin_*.csv`, na mesma pasta da codificação.
 

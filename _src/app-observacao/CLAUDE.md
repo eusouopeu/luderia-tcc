@@ -1,6 +1,6 @@
 # Observação Luderia (app)
 
-App Android do roteiro de observação do Bloco B3 (TCC Luderia). Padrões herdados: `../../_shared/tech-standards.md`.
+App Android do roteiro de observação do Bloco B3 (TCC Luderia). Padrões herdados: `../../../_shared/tech-standards.md`.
 
 ## Mapa
 - `src/domain/model.ts` — modelo: unidade (mesas, sigla, acervo), visita (ficha, NFC-e, temporizador com pausas), grupo na mesa (`Registro`, com jogos), fluxo na porta (`Fluxo`: entrada e saída com o mesmo código `BV-n`), contagens periódicas, medições de som, `config`. `normalizar` completa estados de versões antigas (só acrescentar campos com padrão). `arquivosCsv` gera os CSVs `contagem_*` lidos por `_src/[B3] Contagem direta de ocupacao/analise_B3_contagem.py` — mudou coluna, mude o script.
@@ -18,7 +18,7 @@ App Android do roteiro de observação do Bloco B3 (TCC Luderia). Padrões herda
 - **Tema** (`ui/tema.tsx`): `config.tema` sistema/claro/escuro; `data-tema` no `<html>` troca os valores das variáveis em `app.css` (`:root[data-tema='escuro']`); `index.html` aplica antes do 1º paint; `TemaPlugin.java` pinta o fundo atrás das barras do sistema. Botão na barra superior (fixa, `sticky`) e em Ajustes.
 
 ## Design
-- Segue `../../_shared/design-standards.md` e `minimalismo.md`, exceto a cor: primária laranja dos mockups do Pedro (escala `caneta` em `app.css`) em vez do roxo. Nenhuma classe da paleta padrão do Tailwind: só tokens (`caneta`, `neutro`, `erro`, `ok`, `alerta`, `foco`, `papel`, `tinta`; `sobre` = texto sobre cor forte e `escuro` = fundo de câmera, fixos nos dois temas). Os −/+ vermelho/verde vêm dos mockups.
+- Segue `../../../_shared/design-standards.md` e `minimalismo.md`, exceto a cor: primária laranja dos mockups do Pedro (escala `caneta` em `app.css`) em vez do roxo. Nenhuma classe da paleta padrão do Tailwind: só tokens (`caneta`, `neutro`, `erro`, `ok`, `alerta`, `foco`, `papel`, `tinta`; `sobre` = texto sobre cor forte e `escuro` = fundo de câmera, fixos nos dois temas). Os −/+ vermelho/verde vêm dos mockups.
 - Ajuda de seção: `ui/Ajuda.tsx` (ⓘ com balão), via `Secao ajuda=`; nada de texto de instrução fixo.
 
 ## Build

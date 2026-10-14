@@ -568,3 +568,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: destino da cópia em `~/Documents/2oCerebro/C4-Projetos/TCC Luderia/`.
 **Depois**: destino em `~/Documents/2oCerebro/1-Graduação/12-TCC/Luderia/` (subpastas `docs`, `textos`, `bibliografia`); a cópia antiga foi apagada. Os dois arquivos que já estavam na raiz de `Luderia/` não são tocados, pois o `--delete` age só dentro das três subpastas.
 **Justificativa**: pedido do autor, para manter o TCC junto das demais pastas da graduação no vault.
+
+### 08:25
+**Objeto**: pastas `_data/`, `Anexos/`, `site-apresentacao/`, `app-observacao/`; caminhos em todos os scripts de `_src/`, `.gitignore`, `.claude/launch.json`, `CLAUDE.md`, `README.md`, `AGORA.md`, `_instrucoes/`, `bibliografia/`, `textos/`, nos userscripts e nas colunas de caminho dos CSV de `dados/` (ex.: `B1_jogos_dos_acervos.csv`); `_src/app-observacao/scripts/gerar_jogos.py` e `CLAUDE.md` do app; versão do app (`versionCode` 9, `2026.10.14-1`)
+**Antes**: dados em `_data/raw/[Bn] Nome/` e `_data/processed/[Bn] Nome/`; `site-apresentacao/` e `app-observacao/` na raiz; `Anexos/` com uma subpasta vazia (`Cardápios (fotos)`).
+**Depois**: `dados/[Bn] Nome/` com os arquivos processados na raiz do bloco e os brutos em `dados/[Bn] Nome/dados-brutos/`; site e app em `_src/site-apresentacao/` e `_src/app-observacao/` (no app, `parents[3]` e `../../../_shared`); `Anexos/` apagada. As regras do `.gitignore` seguem os novos caminhos e deixam de fora os mesmos arquivos (244 arquivos de dados rastreados antes e depois). `arquivados/` e os registros antigos deste arquivo mantêm os caminhos da época.
+**Justificativa**: pedido do autor, para deixar a raiz mais enxuta e juntar processados e brutos de cada bloco numa só pasta; `Anexos/` não tinha mais conteúdo nem menção.

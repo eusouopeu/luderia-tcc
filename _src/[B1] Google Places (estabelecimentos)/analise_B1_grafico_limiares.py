@@ -9,7 +9,7 @@ As colunas `min_x` são acumuladas (volume >= x). O painel da esquerda
 desacumula em faixas (frequência simples); o da direita mostra o acumulado,
 que é o número de estabelecimentos que sobra em cada limiar de corte.
 
-Saídas em _data/processed/[B1] Estabelecimentos e cardapios/:
+Saídas em dados/[B1] Estabelecimentos e cardapios/:
   B1_grafico_limiares.png            -> contagens
   B1_grafico_limiares_percentual.png -> % do total de candidatos
   B1_grafico_limiares_metropoles_filtrada.png e
@@ -29,7 +29,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-PROCESSED = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 LIMIARES_PATH = PROCESSED / "B1_limiares_avaliacoes.csv"
 OUT_PATH = PROCESSED / "B1_grafico_limiares.png"
 OUT_PERCENTUAL_PATH = PROCESSED / "B1_grafico_limiares_percentual.png"

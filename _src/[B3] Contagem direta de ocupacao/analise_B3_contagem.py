@@ -1,15 +1,15 @@
 """
-Bloco B3 - análise das visitas registradas no app de observação (app-observacao/).
+Bloco B3 - análise das visitas registradas no app de observação (_src/app-observacao/).
 
 Entrada: os CSVs exportados pelo app (Ajustes › Exportar, ou o botão de envio da
-unidade), copiados para `_data/raw/[B3] Contagem direta de ocupacao/app/`:
+unidade), copiados para `dados/[B3] Contagem direta de ocupacao/dados-brutos/app/`:
   contagem_grupos_mesa.csv, contagem_fluxo.csv, contagem_rodadas.csv,
   contagem_acustica.csv, contagem_visitas.csv, contagem_precos.csv,
   contagem_unidades.csv, contagem_pedidos.csv, contagem_medidas.csv,
   contagem_fotos.csv
 Separador ";" com BOM (o app grava assim para o Excel).
 
-Saídas em `_data/processed/[B3] Contagem direta de ocupacao/`:
+Saídas em `dados/[B3] Contagem direta de ocupacao/`:
   contagem_resumo_visitas.csv  - uma linha por visita: pessoas por hora (porta),
       tamanho do grupo, permanência (mesas e porta, com contagem de censurados),
       ocupação média das mesas nas contagens, notas emitidas na visita e pessoas
@@ -34,8 +34,8 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
-ENTRADA = ROOT / "_data" / "raw" / "[B3] Contagem direta de ocupacao" / "app"
-SAIDA = ROOT / "_data" / "processed" / "[B3] Contagem direta de ocupacao"
+ENTRADA = ROOT / "dados" / "[B3] Contagem direta de ocupacao" / "dados-brutos" / "app"
+SAIDA = ROOT / "dados" / "[B3] Contagem direta de ocupacao"
 
 
 def ler(nome: str) -> pd.DataFrame:

@@ -10,7 +10,7 @@ import csv
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 SAIDA = Path(__file__).resolve().parents[1] / "src" / "domain" / "jogos.json"
 FONTE = ROOT / "arquivados" / "B5-jogos" / "_data" / "processed" / "[B5] Jogos (ludopedia)" / "B5_jogos_completo.csv"
 TOP = 170

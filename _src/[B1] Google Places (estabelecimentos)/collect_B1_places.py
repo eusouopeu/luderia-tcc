@@ -5,7 +5,7 @@ ludobar/luderia/quiz-bar nas 27 capitais brasileiras via Google Places API
 fica a cargo da etapa de filtro (build_B1_planilha.py); aqui o
 objetivo é maximizar recall.
 
-Saída: _data/raw/B1_candidatos.csv (place_id, nome, endereco, capital,
+Saída: dados/[B1] Estabelecimentos e cardapios/dados-brutos/B1_candidatos.csv (place_id, nome, endereco, capital,
 termo_busca) - um place_id pode aparecer mais de uma vez se encontrado por
 termos diferentes; o dedup por place_id é feito na etapa de detalhes.
 
@@ -20,7 +20,7 @@ from tqdm import tqdm
 from places_client import PlacesClient
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-OUT_PATH = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios" / "B1_candidatos.csv"
+OUT_PATH = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "dados-brutos" / "B1_candidatos.csv"
 
 CAPITAIS = [
     "Rio Branco",

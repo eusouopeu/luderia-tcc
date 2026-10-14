@@ -35,7 +35,7 @@ categoria; o autor preenche a coluna "correto" (sim/não) e, quando o arquivo
 preenchido existe, o script calcula a precisão por categoria com IC 95% de
 Wilson. Sensibilidade (temas que o dicionário não pega) não é medida.
 
-Saídas em _data/processed/[B1] Estabelecimentos e cardapios/redes_sociais/analise_legendas/temas/:
+Saídas em dados/[B1] Estabelecimentos e cardapios/redes_sociais/analise_legendas/temas/:
   B1_instagram_temas_por_post.csv          (shortcode x categorias marcadas, sem a legenda)
   B1_instagram_temas_frequencia.csv        (categoria x tipo de casa, com o B2 ao lado)
   B1_instagram_temas_por_estabelecimento.csv (casa x categoria, % dos posts)

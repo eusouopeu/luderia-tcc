@@ -1,7 +1,7 @@
 """
 Trata os JSON do SIDRA coletados por collect_B4_ibge_sidra.py.
 
-Saídas em _data/processed/[B4] Bases publicas/<uso>/, no padrão "[B4] {dado} {período} ({fonte}).csv":
+Saídas em dados/[B4] Bases publicas/<uso>/, no padrão "[B4] {dado} {período} ({fonte}).csv":
   uma saída por consulta, em formato longo (uma linha por valor), com uso e nome definidos em SAIDAS
   "[B4] Resumo de População e Renda por Capital ... (IBGE).csv": uma linha por capital, com
   população, faixa de 20 a 39 anos e renda

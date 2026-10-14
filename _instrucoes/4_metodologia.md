@@ -23,7 +23,7 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 
 ### Correspondência entre blocos e arquivos do pipeline
 
-Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/`. Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `<etapa>_Bn_<conteúdo>.py` nos scripts (etapa = `collect`, `build` ou `analise`). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `bases_comum.py`, `ludopedia_client.py`) não levam código. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam em `arquivados/`.
+Cada bloco tem subpasta `[Bn] Nome` em `_src/` e em `dados/`; dentro de `dados/[Bn] Nome/` ficam os arquivos processados e a subpasta `dados-brutos/`. Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `<etapa>_Bn_<conteúdo>.py` nos scripts (etapa = `collect`, `build` ou `analise`). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `bases_comum.py`, `ludopedia_client.py`) não levam código. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam em `arquivados/`.
 
 | Bloco | Conteúdo | Scripts | Pasta de dados |
 |---|---|---|---|
@@ -109,14 +109,14 @@ O recorte por período descreve a operação atual de cada concorrente e torna o
 | Lei Complementar 123/2006 e anexos do Simples Nacional | Alíquotas por faixa de receita | Tributos (8.1 e cap. 9) |
 | Banco Central — SGS e relatório Focus | Selic e IPCA observados e projetados; salário mínimo | Taxa mínima de atratividade e inflação do modelo (cap. 9) |
 
-Scripts em `_src/[B4] Bases publicas/` (`collect_B4_*` → `build_B4_*`); saídas `[B4] *.csv` em `_data/processed/[B4] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
+Scripts em `_src/[B4] Bases publicas/` (`collect_B4_*` → `build_B4_*`); saídas `[B4] *.csv` em `dados/[B4] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
 
 ## 3.4 Tratamento dos dados
 
 ### Pipeline
 
-- Scripts em `_src/[bloco]/` seguindo o padrão `collect_*` → `build_*` → `analise_*`; saídas em `_data/processed/` com o prefixo do bloco.
-- Dados brutos (textos integrais) ficam em `_data/raw/`, fora do repositório público. O TCC e o repositório divulgam **apenas dados processados**.
+- Scripts em `_src/[bloco]/` seguindo o padrão `collect_*` → `build_*` → `analise_*`; saídas em `dados/[bloco]/` com o prefixo do bloco.
+- Dados brutos (textos integrais) ficam em `dados/[bloco]/dados-brutos/`, fora do repositório público. O TCC e o repositório divulgam **apenas dados processados**.
 - Dicionário de dados com nome, descrição, tipo, unidade e origem de cada variável.
 - Todo sorteio (amostra de validação do dicionário, amostra de auditoria da coleta) usa semente fixa registrada no código.
 

@@ -2,8 +2,8 @@
 Constantes e funções comuns aos scripts do Bloco B4 (bases públicas).
 
 Estrutura de pastas:
-  _data/raw/[B4] Bases publicas/<fonte>/   respostas brutas das APIs e arquivos originais
-  _data/processed/[B4] Bases publicas/     tabelas tratadas, padrão "[B4] {dado} {período} ({fonte}).csv"
+  dados/[B4] Bases publicas/dados-brutos/<fonte>/   respostas brutas das APIs e arquivos originais
+  dados/[B4] Bases publicas/     tabelas tratadas, padrão "[B4] {dado} {período} ({fonte}).csv"
 
 A consulta ao SIDRA usa a API de agregados do IBGE, versão 3:
 https://servicodados.ibge.gov.br/api/docs/agregados?versao=3
@@ -20,8 +20,8 @@ import pandas as pd
 import requests
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-RAW_DIR = ROOT / "_data" / "raw" / "[B4] Bases publicas"
-PROCESSED_DIR = ROOT / "_data" / "processed" / "[B4] Bases publicas"
+RAW_DIR = ROOT / "dados" / "[B4] Bases publicas" / "dados-brutos"
+PROCESSED_DIR = ROOT / "dados" / "[B4] Bases publicas"
 DATA_COLETA = time.strftime("%Y-%m-%d")
 HEADERS = {"User-Agent": "Mozilla/5.0 (pesquisa academica UFBA - TCC Luderia)"}
 
@@ -59,7 +59,7 @@ IDS_CAPITAIS = ",".join(CAPITAIS)
 
 SIDRA_API = "https://servicodados.ibge.gov.br/api/v3/agregados"
 
-# Subpastas de _data/processed/[B4] Bases publicas/, por uso da tabela no plano.
+# Subpastas de dados/[B4] Bases publicas/, por uso da tabela no plano.
 USOS = {
     "mercado_demanda": "cap. 5 e 6: população e renda das capitais",
     "ponto_operacoes": "6.4 e 7.1: escolha do bairro e perfil do entorno",

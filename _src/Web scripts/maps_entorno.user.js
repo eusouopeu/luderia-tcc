@@ -76,7 +76,7 @@
  *
  * Implementação futura (pedido do autor em 13/10/2026):
  *  - build_B1_entorno_maps.py, no molde do build_B2_avaliacoes.py: move os
- *    CSVs de ~/Downloads para _data/raw/, confere as somas (metro + vlt_brt +
+ *    CSVs de ~/Downloads para dados/[B1] Estabelecimentos e cardapios/dados-brutos/, confere as somas (metro + vlt_brt +
  *    shoppings + outros = resultados_ate_1000m), compara o metrô com o
  *    B1_entorno.csv do OSM e gera a fila dos pendentes na área de
  *    transferência.

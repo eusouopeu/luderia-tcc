@@ -60,8 +60,8 @@ from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-RAW = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios"
-PROCESSED = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "dados-brutos"
+PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 CANDIDATOS_PATH = RAW / "B1_candidatos.csv"
 DETALHES_PATH = RAW / "B1_detalhes.jsonl"
 DETALHES_SEM_REVIEWS_PATH = RAW / "B1_detalhes_sem_reviews.jsonl"

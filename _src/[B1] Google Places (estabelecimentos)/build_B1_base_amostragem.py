@@ -25,7 +25,7 @@ Decisões:
     sem saber quantas avaliações a casa tem. Na aba Amostragem, as colunas
     de evidência vêm antes das de contagem pelo mesmo motivo.
 
-Saída: _data/processed/[B1] Estabelecimentos e cardapios/B1_base_amostragem.xlsx
+Saída: dados/[B1] Estabelecimentos e cardapios/B1_base_amostragem.xlsx
   Aba "Base de sorteio" - uma linha por estabelecimento, com estrato e ordem
   Aba "Amostragem"      - registro da amostra, com fórmulas de sorteio
   Aba "Resumo"          - progresso por estrato até a meta de casas do tipo
@@ -47,12 +47,12 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-RAW = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios"
+RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "dados-brutos"
 CANDIDATOS_PATH = RAW / "B1_candidatos.csv"
 REGIC_PATH = RAW / "Metrópoles.md"
-RESUMO_CAPITAIS_PATH = (ROOT / "_data" / "processed" / "[B4] Bases publicas" / "mercado_demanda"
+RESUMO_CAPITAIS_PATH = (ROOT / "dados" / "[B4] Bases publicas" / "mercado_demanda"
                         / "[B4] Resumo de População e Renda por Capital 2022-2026 (IBGE).csv")
-OUT_PATH = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios" / "B1_base_amostragem.xlsx"
+OUT_PATH = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "B1_base_amostragem.xlsx"
 
 META_POR_ESTRATO = 45
 FORA = "fora do recorte"

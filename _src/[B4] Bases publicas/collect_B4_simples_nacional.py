@@ -2,7 +2,7 @@
 Baixa o texto compilado da Lei Complementar nº 123/2006 (Simples Nacional) no
 Planalto, com os Anexos I a V na redação da Lei Complementar nº 155/2016.
 
-Saída: _data/raw/[B4] Bases publicas/legislacao/lcp123_compilada_planalto_<data>.htm
+Saída: dados/[B4] Bases publicas/dados-brutos/legislacao/lcp123_compilada_planalto_<data>.htm
 O HTML é guardado sem alteração. A extração das tabelas fica em
 build_B4_simples_nacional.py.
 """

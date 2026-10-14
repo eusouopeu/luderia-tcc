@@ -2,7 +2,7 @@
 Coleta na API do IBGE (CONCLA) as subclasses CNAE candidatas ao enquadramento da
 luderia e das atividades secundárias (8.1).
 
-Saída: _data/raw/[B4] Bases publicas/concla/cnae_subclasses.json
+Saída: dados/[B4] Bases publicas/dados-brutos/concla/cnae_subclasses.json
 """
 
 from bases_comum import DATA_COLETA, RAW_DIR, baixar, salvar_json

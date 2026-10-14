@@ -21,7 +21,7 @@ listadas no terminal.
 
 Entrada: B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx
          (build_B1_triagem_manual.py)
-Saída em _data/processed/[B1] Estabelecimentos e cardapios/:
+Saída em dados/[B1] Estabelecimentos e cardapios/:
   B1_comentarios_aprovadas_metropoles_mais_100_avaliacoes.xlsx
 Fica fora do repositório (contém texto de avaliações).
 
@@ -37,7 +37,7 @@ from openpyxl.styles import Alignment, Font
 from openpyxl.utils import get_column_letter
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-PROCESSED = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 ENTRADA = PROCESSED / "B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx"
 SAIDA = PROCESSED / "B1_comentarios_aprovadas_metropoles_mais_100_avaliacoes.xlsx"
 

@@ -10,7 +10,7 @@ como trecho do nome (ex.: "eletronico" acha "Eletrônicos"; "fisio" acha
 "Fisioterapia"). A contagem por termo não é exclusiva: um nome com dois
 termos conta nos dois. A linha "qualquer condição" conta cada place_id uma vez.
 
-Saídas em _data/processed/[B1] Estabelecimentos e cardapios/:
+Saídas em dados/[B1] Estabelecimentos e cardapios/:
   B1_termos_suspeitos.csv - condição x planilha
   B1_planilha_curadoria_metropoles_filtrada.csv e
   B1_planilha_curadoria_capitais_regionais_filtrada.csv - curadoria do
@@ -33,7 +33,7 @@ import unicodedata
 from recorte_rm import classifica
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-PROCESSED = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 OUT_PATH = PROCESSED / "B1_termos_suspeitos.csv"
 # Grupo REGIC -> planilha filtrada gerada a partir da curadoria dele.
 FILTRADAS = {

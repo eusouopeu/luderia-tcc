@@ -7,7 +7,7 @@ para escolher o limiar pela distribuição, e não antes de ver os dados.
 Também mede quantos estabelecimentos da lista manual do autor (Rio de Janeiro)
 a busca automática encontrou: primeira estimativa de cobertura.
 
-Saídas em _data/processed/[B1] Estabelecimentos e cardapios/:
+Saídas em dados/[B1] Estabelecimentos e cardapios/:
   B1_limiares_avaliacoes.csv - capital (UF do endereço) x limiar (total e só ativos),
       com a coluna REGIC e as capitais agrupadas em Metrópoles e Capitais
       Regionais; a linha de cada grupo, acima das suas capitais, é a soma delas
@@ -26,8 +26,8 @@ from collections import defaultdict
 from recorte_rm import classifica, no_recorte
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-RAW = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios"
-PROCESSED = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "dados-brutos"
+PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 CURADORIA_PATH = PROCESSED / "B1_planilha_curadoria.csv"
 DESCARTADOS_PATH = PROCESSED / "B1_descartados_por_filtro.csv"
 CANDIDATOS_PATH = RAW / "B1_candidatos.csv"

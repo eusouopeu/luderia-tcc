@@ -1,6 +1,6 @@
 """Baixa os cardápios (PDF e imagens) dos estabelecimentos do banco A do Notion.
 
-Saída: _data/processed/[B1] Estabelecimentos e cardapios/cardapios/<Estabelecimento>/
+Saída: dados/[B1] Estabelecimentos e cardapios/cardapios/<Estabelecimento>/
 Cada arquivo baixado é registrado em B1_cardapios_baixados.csv (estabelecimento, url, arquivo, tipo, tamanho, baixado_em).
 Arquivos já baixados são pulados. Páginas Wix são varridas por imagens hospedadas em static.wixstatic.com.
 """
@@ -14,7 +14,7 @@ from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SAIDA = ROOT / "_data/processed/[B1] Estabelecimentos e cardapios/cardapios"
+SAIDA = ROOT / "dados/[B1] Estabelecimentos e cardapios/cardapios"
 LOG = SAIDA / "B1_cardapios_baixados.csv"
 CTX = ssl.create_default_context(cafile=certifi.where())
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh) AppleWebKit/537.36 Chrome/120 Safari/537.36"}

@@ -11,7 +11,7 @@ a soma dos grupos mais esses casos tem de fechar com o total de cada arquivo.
 Rodar depois de build_B1_planilha.py. As saídas são derivadas: rodar de
 novo sobrescreve as colunas manuais preenchidas nelas.
 
-Saídas em _data/processed/[B1] Estabelecimentos e cardapios/:
+Saídas em dados/[B1] Estabelecimentos e cardapios/:
   B1_planilha_curadoria_metropoles.csv
   B1_planilha_curadoria_capitais_regionais.csv
   B1_descartados_por_filtro_metropoles.csv
@@ -27,7 +27,7 @@ from analise_B1_limiares import load_regic
 from recorte_rm import classifica
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-PROCESSED = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 ENTRADAS = ["B1_planilha_curadoria", "B1_descartados_por_filtro"]
 SUFIXO_GRUPO = {"Metrópoles": "metropoles", "Capitais Regionais": "capitais_regionais"}
 

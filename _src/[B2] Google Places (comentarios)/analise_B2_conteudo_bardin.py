@@ -22,7 +22,7 @@ Regras de contagem:
     Luderia Carioca (69 comentários) não domine o resultado.
 
 Entrada:
-  _data/processed/[B2] Avaliacoes recentes/analise_conteudo/B2_codificacao_bardin.csv
+  dados/[B2] Avaliacoes recentes/analise_conteudo/B2_codificacao_bardin.csv
 Saídas na mesma pasta:
   B2_bardin_frequencia_categorias.csv   (categoria x polaridade x tipo)
   B2_bardin_contexto.csv                (códigos de contexto x tipo)
@@ -44,7 +44,7 @@ import re
 import pandas as pd
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-PASTA = ROOT / "_data" / "processed" / "[B2] Avaliacoes recentes" / "analise_conteudo"
+PASTA = ROOT / "dados" / "[B2] Avaliacoes recentes" / "analise_conteudo"
 ENTRADA = PASTA / "B2_codificacao_bardin.csv"
 RECODIFICACAO = PASTA / "B2_bardin_recodificacao.csv"
 

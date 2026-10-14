@@ -32,7 +32,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "_src" / "[B1] Google Places (estabelecimentos)"))
 import recorte_rm as R  # noqa: E402
 
-PROC = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+PROC = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 PASTA = PROC / "acervo_jogos"
 CURADORIA_50 = PROC / "B1_planilha_curadoria_metropoles_filtrada_50_ou_mais_avaliacoes.csv"
 METROPOLES = {

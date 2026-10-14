@@ -3,7 +3,7 @@ Coleta séries do Banco Central: SGS (observado) e relatório Focus (projeções
 
 Uso no plano: taxa mínima de atratividade, inflação do modelo e salário mínimo (cap. 9).
 
-Saídas em _data/raw/[B4] Bases publicas/bcb/:
+Saídas em dados/[B4] Bases publicas/dados-brutos/bcb/:
   sgs_<codigo>_<nome>.json   séries do SGS
   focus_anuais.json          expectativas anuais dos últimos 120 dias
 """

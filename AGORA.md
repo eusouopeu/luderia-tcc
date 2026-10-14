@@ -1,10 +1,10 @@
 # AGORA
 
-Atualizado em 13/10/2026, 22h. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 14/10/2026, 8h30. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
-- **Coleta do B2** (avaliações até "3 meses atrás"): 2 de 51 luderias coletadas; fila em `_data/processed/[B2] Avaliacoes recentes/B2_fila_coleta.txt`, situação em `B2_cobertura_coleta.csv` (rodar `build_B2_avaliacoes.py` depois de cada coleta).
+- **Coleta do B2** (avaliações até "3 meses atrás"): 2 de 51 luderias coletadas; fila em `dados/[B2] Avaliacoes recentes/B2_fila_coleta.txt`, situação em `B2_cobertura_coleta.csv` (rodar `build_B2_avaliacoes.py` depois de cada coleta).
 
 ## Próximos 3 passos
 

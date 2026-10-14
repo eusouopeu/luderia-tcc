@@ -29,7 +29,7 @@ Fonte das datas de pagamento: Governo da Bahia, Secretaria da Administração,
 Tabela de Pagamentos 2026 (servidores.rhbahia.ba.gov.br/tabela-de-pagamentos-2026),
 consultada em 17/09/2026.
 
-Saída: _data/processed/[B3] Contagem direta de ocupacao/B3_contagem_sorteio_visitas.xlsx
+Saída: dados/[B3] Contagem direta de ocupacao/B3_contagem_sorteio_visitas.xlsx
 
 Uso:
     python3 "_src/[B3] Contagem direta de ocupacao/build_B3_contagem_sorteio.py"
@@ -43,7 +43,7 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.worksheet.datavalidation import DataValidation
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-OUT_PATH = ROOT / "_data" / "processed" / "[B3] Contagem direta de ocupacao" / "B3_contagem_sorteio_visitas.xlsx"
+OUT_PATH = ROOT / "dados" / "[B3] Contagem direta de ocupacao" / "B3_contagem_sorteio_visitas.xlsx"
 
 SEMENTE = 20260916
 DIA = date(2026, 10, 3)           # dia das visitas sorteadas (sábado)

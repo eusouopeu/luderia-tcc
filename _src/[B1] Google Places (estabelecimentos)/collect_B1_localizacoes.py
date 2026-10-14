@@ -3,7 +3,7 @@ Bloco B1 - etapa 4a: para cada place_id da planilha de curadoria
 (B1_planilha_curadoria.csv), busca a coordenada (lat/lng) via Place
 Details - pré-requisito para o cruzamento com o entorno (Nearby Search).
 
-Resumível: place_ids já salvos em _data/raw/B1_localizacoes.jsonl são
+Resumível: place_ids já salvos em dados/[B1] Estabelecimentos e cardapios/dados-brutos/B1_localizacoes.jsonl são
 pulados.
 
 Uso:
@@ -18,8 +18,8 @@ from tqdm import tqdm
 from places_client import PlacesClient
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-CURADORIA_PATH = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios" / "B1_planilha_curadoria.csv"
-OUT_PATH = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios" / "B1_localizacoes.jsonl"
+CURADORIA_PATH = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "B1_planilha_curadoria.csv"
+OUT_PATH = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "dados-brutos" / "B1_localizacoes.jsonl"
 
 
 def load_place_ids():

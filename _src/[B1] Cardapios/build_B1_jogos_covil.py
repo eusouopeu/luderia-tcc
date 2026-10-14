@@ -1,6 +1,6 @@
 """Lista de jogos do "Cardápio de Jogos Digital" do Covil Game Bar (PDF do Canva, criado em 03/05/2023).
 
-Entrada: _data/processed/[B1] Estabelecimentos e cardapios/cardapios/Cardapio de Jogos Digital - Covil Game bar.pdf
+Entrada: dados/[B1] Estabelecimentos e cardapios/cardapios/Cardapio de Jogos Digital - Covil Game bar.pdf
 Saída:   .../cardapios/B1_jogos_covil.csv (pagina;jogo;tempo_min;jogadores)
 Cada jogo do PDF é título + descrição + linha "NN min  X-Y pessoas". O título é a última linha curta
 (até 50 caracteres) antes da descrição. Jogo sem a linha de tempo (ex.: Mini Sinuca) entra com tempo e
@@ -14,7 +14,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-BASE = ROOT / "_data/processed/[B1] Estabelecimentos e cardapios/cardapios"
+BASE = ROOT / "dados/[B1] Estabelecimentos e cardapios/cardapios"
 PDF = BASE / "Cardapio de Jogos Digital - Covil Game bar.pdf"
 SAIDA = BASE / "B1_jogos_covil.csv"
 META = re.compile(r"^\s*(\d+)\s*min\s+([\d\-–a ]+?)\s*pessoas?", re.I)

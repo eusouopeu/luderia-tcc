@@ -1,7 +1,7 @@
 """
 Coleta, na API de agregados do IBGE (SIDRA), as tabelas do Bloco B4 usadas no plano.
 
-Cada consulta gera _data/raw/[B4] Bases publicas/ibge_sidra/<nome>.json com a URL,
+Cada consulta gera dados/[B4] Bases publicas/dados-brutos/ibge_sidra/<nome>.json com a URL,
 a data da coleta, o uso no plano e a resposta integral da API.
 O tratamento fica em build_B4_ibge_sidra.py.
 """

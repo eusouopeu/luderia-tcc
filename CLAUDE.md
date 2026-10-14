@@ -21,17 +21,17 @@ Ler este arquivo e o [AGORA.md](AGORA.md) sempre; não carregar documentação o
 
 ## Estado do projeto
 
-- Pastas: `textos/` (`capitulos/`, `planejamento/`, `instrumentos/`), `arquivados/` (fora de uso, incluindo `recorte-antigo/`, B5 e B6), `bibliografia/`, `docs/`, `_instrucoes/`, `_src/` (scripts; `_src/_logs/` e o atalho `_src/_shared`), `_data/` (dados), `site-apresentacao/`, `app-observacao/` (app Android da contagem). Visão geral do pipeline no [README.md](README.md).
+- Pastas: `textos/` (`capitulos/`, `planejamento/`, `instrumentos/`), `arquivados/` (fora de uso, incluindo `recorte-antigo/`, B5 e B6), `bibliografia/`, `docs/`, `_instrucoes/`, `_src/` (scripts; `_src/_logs/`, o atalho `_src/_shared`, `_src/site-apresentacao/` e `_src/app-observacao/`, app Android da contagem), `dados/` (uma pasta por bloco, com os processados na raiz e os brutos em `dados-brutos/`). Visão geral do pipeline no [README.md](README.md).
 - Prazos: `textos/planejamento/cronograma_luderia.md`, a única fonte do cronograma (o `.docx` é gerado por `_src/gerar_docx_cronograma.js` e não é versionado). Situação de cada capítulo: `textos/planejamento/status_capitulos.md`. Versão final para a banca em 16/11/2026.
 - Decisões tomadas: `docs/decisoes.md`. Dúvidas, ideias futuras, decisões a tomar e divergências abertas: `docs/pendencias.md`.
 - `arquivados/introducao_tcc_luderia.md` e `arquivados/metodologia_tcc_luderia.md` são do **desenho anterior** (pesquisa de mercado, hipóteses H1–H9): servem de insumo; hipóteses e testes vão para apêndice, salvo quando sustentam decisão do plano.
-- Pipeline: `_src/[Bn] Fonte/` → `_data/raw/[Bn] Nome/` → `_data/processed/[Bn] Nome/`. Scripts `<etapa>_Bn_<conteúdo>.py` (`collect` → `build` → `analise`), saídas `Bn_<conteúdo>`; cada script define `ROOT = Path(__file__).resolve().parents[2]` e roda de qualquer diretório. Detalhes em `_instrucoes/4_metodologia.md`. Blocos, em ordem de relevância:
+- Pipeline: `_src/[Bn] Fonte/` → `dados/[Bn] Nome/dados-brutos/` → `dados/[Bn] Nome/`. Scripts `<etapa>_Bn_<conteúdo>.py` (`collect` → `build` → `analise`), saídas `Bn_<conteúdo>`; cada script define `ROOT = Path(__file__).resolve().parents[2]` e roda de qualquer diretório. Detalhes em `_instrucoes/4_metodologia.md`. Blocos, em ordem de relevância:
   - **B1** — concorrentes com mais de 100 avaliações nas 14 metrópoles da REGIC (IBGE) e seus cardápios → concorrência, preço, ticket.
   - **B2** — avaliações com texto publicadas até "3 meses atrás", inclusive (rótulo do Google Maps na data da coleta) → proposta de valor, reclamações, ticket, fluxo.
   - **B3** — contagem direta nas duas unidades da São Jogue (Salvador), com leitura da NFC-e → ocupação, giro, calibração.
   - **B4** — bases públicas (IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA) → demanda, custos, tributos, taxa de desconto. Subpastas por uso (`mercado_demanda`, `ponto_operacoes`, `juridico_tributario`, `financeiro`, `multiuso`) definidas em `USOS` no `bases_comum.py`.
   - **B6** — histórico dos avaliadores; retirado em 18/09/2026 (`arquivados/B6-avaliadores/`).
-  - Subpastas dentro de `_data/raw/[Bn]…` e `_data/processed/[Bn]…`: minúsculas, sem acento, com `_` (ex.: `cardapios/`, `acervo_jogos/`, `redes_sociais/analise_legendas/`).
+  - Subpastas dentro de `dados/[Bn]…/` e `dados/[Bn]…/dados-brutos/`: minúsculas, sem acento, com `_` (ex.: `cardapios/`, `acervo_jogos/`, `redes_sociais/analise_legendas/`).
 
 ## Versionamento
 

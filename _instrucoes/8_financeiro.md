@@ -111,7 +111,7 @@ Verificar antes de fechar o modelo e registrar o resultado em apêndice:
 - **Cenário como parâmetro:** um seletor (pessimista/provável/otimista) alimenta todo o modelo.
 - **Nenhum número digitado dentro de fórmula de cálculo.** Todo valor vem da aba de premissas.
 - Valores em termos reais (preços constantes) ou nominais — declarar a escolha e manter a TMA coerente com ela.
-- Se implementado em Python, seguir o padrão do pipeline em `_src/` e exportar resultados para `_data/processed/` com prefixo `financeiro_`.
+- Se implementado em Python, seguir o padrão do pipeline em `_src/` e exportar resultados para `dados/[Bn] Nome/` com prefixo `financeiro_`.
 
 ## Referências de apoio
 

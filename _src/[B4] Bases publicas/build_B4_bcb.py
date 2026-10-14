@@ -1,7 +1,7 @@
 """
 Trata as séries do Banco Central coletadas por collect_B4_bcb.py.
 
-Saídas em _data/processed/[B4] Bases publicas/:
+Saídas em dados/[B4] Bases publicas/:
 Saídas em financeiro/, no padrão "[B4] {dado} {período} ({fonte}).csv":
   "Selic IPCA e Salário Mínimo"                séries do SGS em formato longo (codigo_sgs, serie, data, valor)
   "Selic IPCA e Salário Mínimo Último Valor"   último valor de cada série

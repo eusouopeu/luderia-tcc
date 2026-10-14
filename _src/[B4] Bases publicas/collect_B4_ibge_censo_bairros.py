@@ -6,7 +6,7 @@ Temas: básico (pessoas, domicílios, média de moradores) e demografia (sexo e 
 Renda não é divulgada nesse recorte; a renda por capital vem do SIDRA
 (collect_B4_ibge_sidra.py).
 
-Saída: _data/raw/[B4] Bases publicas/ibge_censo_2022/ (zips e xlsx originais)
+Saída: dados/[B4] Bases publicas/dados-brutos/ibge_censo_2022/ (zips e xlsx originais)
 """
 
 import re

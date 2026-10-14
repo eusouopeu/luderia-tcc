@@ -122,13 +122,13 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 | B | Registro de premissas completo | [8_financeiro.md](8_financeiro.md) |
 | C | Demonstrativos financeiros detalhados (DRE e fluxo de caixa mensais) | Modelo financeiro |
 | D | Checagens de coerência | [8_financeiro.md](8_financeiro.md) §5 |
-| E | Bloco B1 — curadoria, limiares, conferências, lista de concorrentes e cardápios | `_data/processed/[B1] Estabelecimentos e cardapios/B1_*` |
-| F | Bloco B2 — livro de códigos, validação da codificação, frequências por categoria | `_data/processed/[B2] Avaliacoes recentes/B2_*` |
-| G | Bloco B3 — protocolo, sorteio, registros da contagem direta e números das NFC-e | `_data/processed/[B3] Contagem direta de ocupacao/B3_*` |
-| H | Bloco B4 — tabelas de apoio das bases públicas | `_data/processed/[B4] Bases publicas/` |
+| E | Bloco B1 — curadoria, limiares, conferências, lista de concorrentes e cardápios | `dados/[B1] Estabelecimentos e cardapios/B1_*` |
+| F | Bloco B2 — livro de códigos, validação da codificação, frequências por categoria | `dados/[B2] Avaliacoes recentes/B2_*` |
+| G | Bloco B3 — protocolo, sorteio, registros da contagem direta e números das NFC-e | `dados/[B3] Contagem direta de ocupacao/B3_*` |
+| H | Bloco B4 — tabelas de apoio das bases públicas | `dados/[B4] Bases publicas/` |
 | I | Canvas e fluxograma dos processos | Caps. 6 e 7 |
 | J | Dicionário de variáveis | A criar no repositório |
-| K | Repositório e produto visual — links e instruções de reprodução | README do repositório; `site-apresentacao/` |
+| K | Repositório e produto visual — links e instruções de reprodução | README do repositório; `_src/site-apresentacao/` |
 | L | *Extra, se feito:* registro prévio, emendas e testes de hipótese H1–H9 | `textos/planejamento/registro_previo_luderia.md` |
 | M | *Extra, se feito:* simulação de Monte Carlo | [8_financeiro.md](8_financeiro.md) §4.4 |
 

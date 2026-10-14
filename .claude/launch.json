@@ -6,7 +6,7 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": [
         "--dir",
-        "site-apresentacao",
+        "_src/site-apresentacao",
         "run",
         "dev"
       ],
@@ -17,7 +17,7 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": [
         "--dir",
-        "app-observacao",
+        "_src/app-observacao",
         "run",
         "dev"
       ],

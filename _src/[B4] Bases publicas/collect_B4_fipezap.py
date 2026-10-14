@@ -2,7 +2,7 @@
 Baixa a planilha original de séries históricas do Índice FipeZAP (residencial e
 comercial) e a nota metodológica.
 
-Saída: _data/raw/[B4] Bases publicas/fipezap/ (xlsx e pdf originais)
+Saída: dados/[B4] Bases publicas/dados-brutos/fipezap/ (xlsx e pdf originais)
 A extração da locação comercial fica em build_B4_fipezap_comercial.py.
 """
 

@@ -25,12 +25,12 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
-PASTA_B1 = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+PASTA_B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 PASTA_REDES = PASTA_B1 / "redes_sociais"
 SAIDA = PASTA_REDES / "analise_legendas"
 APROVADAS = PASTA_B1 / "B1_instagram_aprovadas.csv"
 SCRIPT_B2 = ROOT / "_src" / "[B2] Google Places (comentarios)" / "analise_B2_conteudo_bardin.py"
-B2_FREQUENCIA = (ROOT / "_data" / "processed" / "[B2] Avaliacoes recentes" / "analise_conteudo"
+B2_FREQUENCIA = (ROOT / "dados" / "[B2] Avaliacoes recentes" / "analise_conteudo"
                  / "B2_bardin_frequencia_categorias.csv")
 B2_CONTEXTO = B2_FREQUENCIA.with_name("B2_bardin_contexto.csv")
 

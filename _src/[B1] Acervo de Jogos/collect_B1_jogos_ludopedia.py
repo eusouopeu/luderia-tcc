@@ -15,7 +15,7 @@ A nota média não vem na API; fica a do ranking do B5 (2.500 jogos).
 
 Ritmo: 1,5 s entre chamadas; em 429, espera 60 s e tenta de novo. Uma rajada
 em 13/10/2026 levou a bloqueio temporário da API e do site.
-Cache: _data/raw/[B1].../acervos_luderias/ludopedia_api_busca.json e
+Cache: dados/[B1].../dados-brutos/acervos_luderias/ludopedia_api_busca.json e
 ludopedia_api_jogos.json (consulta já feita não volta à API).
 """
 import json

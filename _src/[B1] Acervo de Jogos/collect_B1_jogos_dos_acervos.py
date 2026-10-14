@@ -11,13 +11,13 @@ Fontes, uma por estabelecimento:
   `posicao`.
 - rejoy (<loja>.rejoy.com.br/search): ordem da própria listagem (alfabética).
 - Ludopedia (coleção pública): a página fica atrás do Cloudflare e foi lida no
-  navegador; os títulos entram por _data/raw/.../acervos_luderias/ludopedia_<x>.txt
+  navegador; os títulos entram por dados/[B1] Estabelecimentos e cardapios/dados-brutos/acervos_luderias/ludopedia_<x>.txt
   (um título por linha, na ordem da coleção).
 - Covil Game Bar: B1_jogos_covil.csv (PDF de 2023, build_B1_jogos_covil.py).
 
-Entrada: HTML guardado em _data/raw/[B1].../acervos_luderias/ (cache: página já
+Entrada: HTML guardado em dados/[B1].../dados-brutos/acervos_luderias/ (cache: página já
 baixada não é baixada de novo).
-Saída: _data/processed/[B1] Estabelecimentos e cardapios/acervo_jogos/
+Saída: dados/[B1] Estabelecimentos e cardapios/acervo_jogos/
 B1_jogos_dos_acervos.csv, uma linha por título em cada estabelecimento.
 Um título só conta uma vez por estabelecimento (cópias repetidas saem).
 A listagem do Acervo de Jogos traz mais nomes que a contagem de "títulos" da
@@ -41,8 +41,8 @@ from pathlib import Path
 import certifi
 
 ROOT = Path(__file__).resolve().parents[2]
-RAW = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios" / "acervos_luderias"
-PROC = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "dados-brutos" / "acervos_luderias"
+PROC = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 SAIDA = PROC / "acervo_jogos" / "B1_jogos_dos_acervos.csv"
 COVIL = PROC / "cardapios" / "B1_jogos_covil.csv"
 CTX = ssl.create_default_context(cafile=certifi.where())

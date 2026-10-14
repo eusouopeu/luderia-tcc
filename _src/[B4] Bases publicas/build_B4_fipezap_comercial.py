@@ -2,8 +2,8 @@
 Extrai da planilha original do Índice FipeZAP as séries de imóveis comerciais
 (salas e conjuntos de até 200 m²) e o preço de locação residencial das capitais.
 
-Entrada: _data/raw/[B4] Bases publicas/fipezap/fipezap-serieshistoricas_<data>.xlsx
-Saídas em _data/processed/[B4] Bases publicas/:
+Entrada: dados/[B4] Bases publicas/dados-brutos/fipezap/fipezap-serieshistoricas_<data>.xlsx
+Saídas em dados/[B4] Bases publicas/:
 Saídas em financeiro/, no padrão "[B4] {dado} {período} ({fonte}).csv":
   "Aluguel e Venda Comercial"          série mensal por cidade (só meses com dado)
   "Aluguel Comercial por Capital"      uma linha por capital: último preço de locação comercial e

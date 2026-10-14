@@ -29,9 +29,9 @@ Cada place_id recebe um único resultado; a soma dos resultados fecha com o
 total de linhas da entrada (conferido no terminal).
 
 Entrada (anotada à mão pelo autor):
-  _data/raw/[B1] Estabelecimentos e cardapios/
+  dados/[B1] Estabelecimentos e cardapios/dados-brutos/
       B1_curadoria_manual_metropoles_mais_100_avaliacoes.xlsx
-Saídas em _data/processed/[B1] Estabelecimentos e cardapios/:
+Saídas em dados/[B1] Estabelecimentos e cardapios/:
   B1_triagem_manual_metropoles_mais_100_avaliacoes.xlsx
   B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx
 
@@ -46,8 +46,8 @@ from openpyxl.styles import Alignment, Font
 from openpyxl.utils import get_column_letter
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-RAW = ROOT / "_data" / "raw" / "[B1] Estabelecimentos e cardapios"
-PROCESSED = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "dados-brutos"
+PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 ENTRADA = RAW / "B1_curadoria_manual_metropoles_mais_100_avaliacoes.xlsx"
 SAIDA_TRIAGEM = PROCESSED / "B1_triagem_manual_metropoles_mais_100_avaliacoes.xlsx"
 SAIDA_APROVADAS = PROCESSED / "B1_luderias_aprovadas_metropoles_mais_100_avaliacoes.xlsx"

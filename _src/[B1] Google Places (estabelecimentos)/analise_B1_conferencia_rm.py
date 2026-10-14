@@ -8,7 +8,7 @@ Lê a planilha de curadoria (já no recorte) e os descartados com motivo
 curadoria tiver alguém fora do recorte, ou um descartado por esse motivo
 estiver dentro, o script para: é sinal de que o build não aplicou a regra.
 
-Saída em _data/processed/[B1] Estabelecimentos e cardapios/:
+Saída em dados/[B1] Estabelecimentos e cardapios/:
   B1_conferencia_rm.csv - uma linha por estabelecimento, com município,
                                capital de referência e situação
 
@@ -22,7 +22,7 @@ from collections import Counter
 from recorte_rm import SITUACOES_NO_RECORTE, classifica
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-PROCESSED = ROOT / "_data" / "processed" / "[B1] Estabelecimentos e cardapios"
+PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 CURADORIA_PATH = PROCESSED / "B1_planilha_curadoria.csv"
 DESCARTADOS_PATH = PROCESSED / "B1_descartados_por_filtro.csv"
 OUT_PATH = PROCESSED / "B1_conferencia_rm.csv"
