@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Entorno no Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.14-1
+// @version      2026.10.14-2
 // @description  Conta estações de metrô, de trem, de VLT/BRT e shoppings a 500 m e 1000 m de cada estabelecimento, buscando no Google Maps em volta da coordenada; coleta uma fila e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -35,6 +35,19 @@
  * o que já está guardado; estabelecimento coletado antes de uma busca existir
  * (ex.: trem, desde 14/10/2026) fica com o grupo em branco e entra nos
  * pendentes.
+ *
+ * Buscas dispensadas. Nas metrópoles da REGIC sem metrô, trem, VLT ou BRT em
+ * operação (SEM_SISTEMA, situação em outubro de 2026), a busca desse sistema
+ * não é feita: o grupo sai zero, não branco, e a coluna consultas_dispensadas
+ * diz o porquê. Cidade fora da tabela (inclusive municípios das regiões
+ * metropolitanas) faz todas as buscas. Sistema novo em operação: tirar a
+ * cidade da tabela.
+ *
+ * Estação mais próxima. dist_estacao_mais_proxima_lida_m é a menor distância
+ * entre metrô, trem e VLT/BRT, com o nome e o tipo da estação. Até 1000 m, é a
+ * mais próxima de fato (a busca cobre o raio); acima, é a mais próxima entre
+ * as lidas, e a verdadeira pode estar mais perto (limite superior). Fica em
+ * branco se alguma busca de transporte falhou ou não foi feita.
  *
  * Área coberta. A busca do Maps olha a parte visível do mapa. O ponto "@" da
  * URL é o centro da JANELA, e o painel lateral do Maps (cerca de 410 px)
@@ -85,12 +98,11 @@
  *    resultados_ate_1000m, quando nenhum grupo está em branco.
  *  - AAAA-MM-DD_<estabelecimento>_entorno_resultados.csv: um resultado por linha.
  *
+ * Consolidação: _src/[B1] Google Places (estabelecimentos)/build_B1_entorno_maps.py
+ * move os CSVs de ~/Downloads para _data/raw/, confere as somas, compara o
+ * metrô com o B1_entorno.csv do OSM e gera a fila dos pendentes.
+ *
  * Implementação futura (pedido do autor em 13/10/2026):
- *  - build_B1_entorno_maps.py, no molde do build_B2_avaliacoes.py: move os
- *    CSVs de ~/Downloads para _data/raw/, confere as somas (metro + trem +
- *    vlt_brt + shoppings + outros = resultados_ate_1000m), compara o metrô com o
- *    B1_entorno.csv do OSM e gera a fila dos pendentes na área de
- *    transferência.
  *  - Ler a resposta da busca (pedido "search?tbm=map") interceptando fetch/XHR
  *    em vez dos cartões na tela: sem rolagem, menos frágil a mudanças de
  *    visual e até 20 resultados por busca. Exige mapear o JSON do Maps.
@@ -125,6 +137,30 @@
   ];
   // Consultas dos estabelecimentos guardados antes do campo "consultas" (até 13/10/2026).
   const CONSULTAS_ANTIGAS = ['estação de metrô', 'estação BRT', 'estação VLT', 'shopping center'];
+  // Sistemas ausentes por metrópole (REGIC), em outubro de 2026: a busca é dispensada.
+  // Chave: nome da cidade sem acento, em minúsculas, como sai do endereço.
+  const METRO = 'estação de metrô';
+  const TREM = 'estação de trem';
+  const VLT = 'estação VLT';
+  const BRT = 'estação BRT';
+  const SEM_SISTEMA = {
+    'sao paulo': [VLT],
+    'rio de janeiro': [],
+    brasilia: [TREM, VLT],
+    belem: [METRO, TREM, VLT],
+    'belo horizonte': [TREM, VLT],
+    curitiba: [METRO, TREM, VLT],
+    florianopolis: [METRO, TREM, VLT, BRT],
+    fortaleza: [],
+    goiania: [METRO, TREM, VLT],
+    manaus: [METRO, TREM, VLT, BRT],
+    'porto alegre': [VLT],
+    recife: [],
+    salvador: [TREM],
+    vitoria: [METRO, TREM, VLT, BRT],
+  };
+  const TRANSPORTE = ['metro', 'trem', 'vlt_brt'];
+  const consultasDispensadas = (cidade) => SEM_SISTEMA[semAcento(cidade).trim()] || [];
   const GRUPOS = { metro: 'estacoes_metro', trem: 'estacoes_trem', vlt_brt: 'estacoes_vlt_brt', shopping: 'shoppings' };
   const OPCOES_PADRAO = { porte: 'osm', area_min_m2: 5000, limiar_aval: 1000, abrasce: [], abrasce_arquivo: '', parcial: true };
 
@@ -444,8 +480,9 @@
 
   // ---------- plano de buscas ----------
 
-  function tarefasIniciais() {
-    return CONSULTAS.map((c) => ({ ...c, norte: 0, leste: 0, alcance: RAIO_MAX, quadrante: '', tentativas: 0, reducao: 0 }));
+  function tarefasIniciais(local) {
+    const dispensadas = consultasDispensadas(local?.cidade);
+    return CONSULTAS.filter((c) => !dispensadas.includes(c.consulta)).map((c) => ({ ...c, norte: 0, leste: 0, alcance: RAIO_MAX, quadrante: '', tentativas: 0, reducao: 0 }));
   }
 
   function quadrantes(t) {
@@ -477,7 +514,8 @@
   // ---------- resumo (montado na exportação, com revisões e critério atuais) ----------
 
   const consultasDoLocal = (local) => local.consultas || CONSULTAS_ANTIGAS;
-  const consultasFaltantes = (local) => CONSULTAS.map((c) => c.consulta).filter((c) => !consultasDoLocal(local).includes(c));
+  const consultasFaltantes = (local) => CONSULTAS.map((c) => c.consulta)
+    .filter((c) => !consultasDoLocal(local).includes(c) && !(local.consultas_dispensadas || []).includes(c));
 
   function problemas(local) {
     const p = [];
@@ -509,6 +547,12 @@
       const d = validos.filter((r) => r.grupo === grupo).map((r) => r.distancia_m);
       linha[`dist_${col}_mais_proxima_lida_m`] = d.length && !falhos.has(grupo) ? Math.min(...d) : '';
     }
+    // Estação mais próxima de qualquer sistema; em branco se algum não foi medido.
+    const estacao = TRANSPORTE.some((g) => falhos.has(g)) ? null
+      : validos.filter((r) => TRANSPORTE.includes(r.grupo)).sort((a, b) => a.distancia_m - b.distancia_m)[0];
+    linha.dist_estacao_mais_proxima_lida_m = estacao ? estacao.distancia_m : '';
+    linha.estacao_mais_proxima = estacao ? estacao.nome : '';
+    linha.tipo_estacao_mais_proxima = estacao ? estacao.grupo : '';
     linha.duplicatas_fundidas = rs.filter((r) => r.duplicata_de).length;
     linha.revisoes_manuais = rs.filter((r) => r.revisado).length;
     linha.buscas = local.buscas;
@@ -516,6 +560,7 @@
     linha.consultas_subdivididas = juntar(local.subdivididas || []);
     linha.consultas_falhas = juntar(local.falhas || []);
     linha.consultas_nao_feitas = juntar(consultasFaltantes(local));
+    linha.consultas_dispensadas = juntar(local.consultas_dispensadas || []);
     linha.consultas_cobertura_insuficiente = juntar(local.cobertura_insuf || []);
     linha.consultas_censura = juntar(local.censura || []);
     linha.situacao = problemas(local).join('; ') || 'ok';
@@ -621,7 +666,7 @@
   }
 
   function zerarLocal(fila) {
-    Object.assign(fila, { tarefas: tarefasIniciais(), tarefa: 0, lidos: [], buscas_local: 0, subdivididas: [], censura: [], falhas: [], cobertura_insuf: [], cobertura_min_m: null });
+    Object.assign(fila, { tarefas: tarefasIniciais(fila.locais?.[fila.pos]), tarefa: 0, lidos: [], buscas_local: 0, subdivididas: [], censura: [], falhas: [], cobertura_insuf: [], cobertura_min_m: null });
   }
 
   function iniciarFila(locais, refazer = false) {
@@ -677,7 +722,8 @@
     dados.locais = dados.locais.filter((l) => l.chave !== k).concat([{
       chave: k, ...local, buscas: fila.buscas_local, subdivididas: fila.subdivididas, censura: fila.censura,
       falhas: fila.falhas, cobertura_insuf: fila.cobertura_insuf, cobertura_min_m: fila.cobertura_min_m, osm, coletado_em,
-      consultas: CONSULTAS.map((c) => c.consulta),
+      consultas: tarefasIniciais(local).map((c) => c.consulta),
+      consultas_dispensadas: consultasDispensadas(local.cidade),
     }]);
     gravar(CHAVE_DADOS, dados);
     fila.locais_fechados += 1;
@@ -786,7 +832,8 @@
     for (const raio of RAIOS_M) cols.push(`qt_shoppings_porte_${raio}m`);
     cols.push('criterio_porte_shopping', 'qt_outros_1000m', 'resultados_ate_1000m');
     for (const col of Object.values(GRUPOS)) cols.push(`dist_${col}_mais_proxima_lida_m`);
-    return [...cols, 'duplicatas_fundidas', 'revisoes_manuais', 'buscas', 'cobertura_min_m', 'consultas_subdivididas', 'consultas_falhas', 'consultas_nao_feitas', 'consultas_cobertura_insuficiente', 'consultas_censura', 'situacao', 'coletado_em'];
+    cols.push('dist_estacao_mais_proxima_lida_m', 'estacao_mais_proxima', 'tipo_estacao_mais_proxima');
+    return [...cols, 'duplicatas_fundidas', 'revisoes_manuais', 'buscas', 'cobertura_min_m', 'consultas_subdivididas', 'consultas_falhas', 'consultas_nao_feitas', 'consultas_dispensadas', 'consultas_cobertura_insuficiente', 'consultas_censura', 'situacao', 'coletado_em'];
   }
 
   function celula(v) {

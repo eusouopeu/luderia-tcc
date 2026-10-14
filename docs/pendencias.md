@@ -22,7 +22,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 ## Dúvidas
 
-- **Entorno no Maps, três primeiras extrações (14/10):** os CSVs ficaram só no Mac do autor e não foram conferidos linha a linha. Recoletar os três estabelecimentos com a versão 2026.10.14-1 ("Refazer pendentes" já os inclui, pela busca de trem) e pôr os CSVs em `_data/raw/[B1] Estabelecimentos e cardapios/entorno_maps/` para conferência.
+- **Entorno no Maps, três primeiras extrações (14/10):** os CSVs ficaram só no Mac do autor e não foram conferidos linha a linha. Recoletar os três estabelecimentos com a versão 2026.10.14-2 ("Refazer pendentes" já os inclui, pela busca de trem) e rodar o `build_B1_entorno_maps.py`, que move os CSVs para `_data/raw/[B1] Estabelecimentos e cardapios/entorno_maps/`.
+- **Tabela de sistemas por metrópole (`SEM_SISTEMA` no `maps_entorno.user.js`):** montada sem fonte oficial conferida. Pontos de menor segurança: ausência de BRT em operação em Florianópolis, Manaus e Vitória; ausência de VLT em Salvador (obra em andamento; a busca de VLT foi mantida); trem só como metropolitano (o de passageiros da Vitória a Minas, intermunicipal, fica de fora). Conferir nos sites dos operadores antes da coleta em massa.
 - Perguntas abertas para a literatura (validação de avaliações online como medida de visitas, estabilidade da razão avaliações ÷ visitantes, limiar de concordância para variáveis raras, peso de comida, serviço e ambiente, taxa de desconto de negócio pequeno, termos de uso do Google Maps): `docs/bibliografia/lacunas-bibliograficas.md` §6.
 - Datas e horários das visitas: o roteiro de campo (`textos/instrumentos/roteiro_observacao_sao_jogue.md`) ainda marca 18h00 às 21h00 nas quatro visitas, e o cronograma (semana 4) chama a de 03/10 de "visita pré-teste". Confirmar se as primeiras visitas foram em 03/10 com entrada às 19h.
 
