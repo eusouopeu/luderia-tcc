@@ -8,11 +8,14 @@ Legenda: `Bn` = código do bloco de dados (B1 a B4); `<x>` = parte variável; `[
 
 | Objeto | Convenção atual | Exemplo |
 |---|---|---|
-| Bloco em `_src/` | `[Bn] <Fonte>`: o código do bloco e a fonte ou o instrumento dos scripts. Um bloco pode ter mais de uma pasta | `_src/[B1] Cardapios/` |
-| Subpastas de cada bloco em `_src/` | `collect/`, `build/`, `analise/` (scripts por etapa), `webscripts/` (Tampermonkey e testes), `logs/` (fora do git) e `outros/` (módulos auxiliares e arquivos de apoio). As seis existem em todo bloco; pasta vazia leva `.gitkeep` | `_src/[B1] Cardapios/outros/tessdata/` |
+| Bloco em `_src/` | `[Bn] <Nome>`, o mesmo nome da pasta do bloco em `dados/` | `_src/[B1] Estabelecimentos e cardapios/` |
+| Objeto dentro do bloco em `_src/` | `<Fonte> (<Objeto>)` quando a mesma fonte serve a mais de um objeto, senão só o objeto ou a fonte; maiúsculas e acento como na escrita normal | `Google Places (Negócios)`, `Google Places (Comentários)`, `Cardápios`, `CAGED` |
+| Subpastas de cada objeto | `collect/`, `build/`, `analise/` (scripts por etapa), `webscripts/` (Tampermonkey e testes), `logs/` (fora do git) e `outros/` (módulos auxiliares e arquivos de apoio). As seis existem em todo objeto; pasta vazia leva `.gitkeep` | `Cardápios/outros/tessdata/` |
+| Auxiliar comum a vários objetos do bloco | pasta `Comum/` no bloco, só com os módulos | `_src/[B4] Bases publicas/Comum/bases_comum.py` |
+| Utilitários gerais | `_src/extras/` | `_src/extras/log_execucao.py` |
 | Bloco em `dados/` | `[Bn] <Objeto>`: o código e o que os dados descrevem. Uma pasta por bloco | `dados/[B2] Avaliacoes recentes/` |
-| Dados brutos | `dados/[Bn] <Objeto>/dados-brutos/`; os processados ficam na raiz do bloco | `dados/[B4] Bases publicas/dados-brutos/bcb/` |
-| Subpastas dentro dos blocos de `dados/` | minúsculas, sem acento, palavras unidas por `_` (exceção: `dados-brutos/`) | `acervo_jogos/`, `redes_sociais/analise_legendas/` |
+| Dados brutos | `dados/[Bn] <Objeto>/_dados-brutos/` (o `_` põe a pasta no topo da listagem); os processados ficam na raiz do bloco | `dados/[B4] Bases publicas/_dados-brutos/bcb/` |
+| Subpastas dentro dos blocos de `dados/` | minúsculas, sem acento, palavras unidas por `_` (exceção: `_dados-brutos/`) | `acervo_jogos/`, `redes_sociais/analise_legendas/` |
 | Pastas fora de uso | `arquivados/<código>-<tema>/`, com a estrutura da época | `arquivados/B5-jogos/` |
 
 **Passadas**
@@ -24,6 +27,9 @@ Legenda: `Bn` = código do bloco de dados (B1 a B4); `<x>` = parte variável; `[
 | 14/10/2026 | `_data/raw/[Bn] Nome/` (brutos) e `_data/processed/[Bn] Nome/` (processados) | `dados/[Bn] Nome/dados-brutos/` e `dados/[Bn] Nome/` |
 | 14/10/2026 | `site-apresentacao/` e `app-observacao/` na raiz | dentro de `_src/` |
 | 14/10/2026 | Scripts soltos na pasta do bloco; webscripts juntos em `_src/Web scripts/`; logs em `_src/_logs/` | subpastas por etapa em cada bloco |
+| 14/10/2026 | Pastas de `_src/` por fonte: `[B1] Acervo de Jogos`, `[B1] Cardapios`, `[B1] Google Places (estabelecimentos)`, `[B1] Instagram`, `[B2] Google Places (comentarios)`, `[B3] Contagem direta de ocupacao`, `[B4] Bases publicas` (scripts de todas as fontes juntos) | `_src/[Bn] Nome/<Objeto>/`, com o nome do bloco igual ao de `dados/` |
+| 14/10/2026 | `dados/[Bn] Nome/dados-brutos/` | `dados/[Bn] Nome/_dados-brutos/` |
+| 14/10/2026 | Utilitários soltos na raiz de `_src/` (`gerar_carregadores.py`, `gerar_docx_*.js`, `log_execucao.py`, `sincronizar_vault.sh`, `carregadores/`) | `_src/extras/` |
 
 ## 2. Scripts
 
@@ -33,7 +39,7 @@ Legenda: `Bn` = código do bloco de dados (B1 a B4); `<x>` = parte variável; `[
 | Módulo auxiliar | `<tema>_<comum\|client>.py` ou nome do que faz, sem código de bloco nem etapa; fica em `outros/` | `outros/bases_comum.py`, `outros/places_client.py`, `outros/recorte_rm.py` |
 | Webscript (Tampermonkey) | `<site>_<objeto>.user.js`; teste ao lado, `<mesmo nome>.test.cjs` | `maps_avaliacoes.user.js`, `maps_avaliacoes.test.cjs` |
 | Versão do webscript (`@version`) | `AAAA.MM.DD-n` (n-ésima versão do dia) | `2026.10.13-7` |
-| Utilitário geral | verbo no infinitivo + objeto, na raiz de `_src/` | `gerar_carregadores.py`, `sincronizar_vault.sh`, `log_execucao.py` |
+| Utilitário geral | verbo no infinitivo + objeto, em `_src/extras/` | `gerar_carregadores.py`, `sincronizar_vault.sh`, `log_execucao.py` |
 
 Nomes com hífen não podem ser importados como módulo Python. Por isso, código usado por mais de um script vai para um módulo auxiliar em `outros/`, nunca para um script de etapa.
 
@@ -123,12 +129,12 @@ Valem para arquivos novos e para os existentes quando o script que os gera for a
 
 | Objeto | Convenção atual | Exemplo |
 |---|---|---|
-| Raiz do projeto | `ROOT = Path(__file__).resolve().parents[3]` em scripts de etapa e auxiliares (antes de 14/10/2026: `parents[2]`) | — |
-| Caminhos fixos | constantes em maiúsculas no topo do script, em português nos scripts novos: `BRUTOS` (pasta `dados-brutos/` do bloco), `PROCESSADOS` (raiz do bloco em `dados/`), `ENTRADA`, `SAIDA` | `SAIDA = PROCESSADOS / "B1_entorno.csv"` |
+| Raiz do projeto | `ROOT = Path(__file__).resolve().parents[4]` em scripts de etapa e auxiliares de `outros/` (`parents[3]` em `Comum/`; antes, em 14/10/2026, `parents[3]` e, até então, `parents[2]`) | — |
+| Caminhos fixos | constantes em maiúsculas no topo do script, em português nos scripts novos: `BRUTOS` (pasta `_dados-brutos/` do bloco), `PROCESSADOS` (raiz do bloco em `dados/`), `ENTRADA`, `SAIDA` | `SAIDA = PROCESSADOS / "B1_entorno.csv"` |
 | Nomes antigos equivalentes | `RAW`/`RAW_DIR`/`BRUTO` = brutos; `PROCESSED`/`PROCESSED_DIR`/`PASTA` = processados; `OUT_PATH`/`*_PATH` = arquivo de saída ou de entrada. Não são renomeados sem outra mudança no script | — |
 | Funções e variáveis | `snake_case`, em português | `caminho_saida`, `conferir_capitais` |
 | Classes | `CamelCase` | `PlacesClient`, `OverpassClient` |
-| Bloco de abertura dos scripts de etapa | inclui `_src/` e `outros/` no caminho de importação e liga o log (`registrar_execucao`) quando o script é executado diretamente | ver qualquer script de `collect/` |
+| Bloco de abertura dos scripts de etapa | inclui `_src/extras/`, `outros/` do objeto e, no B4, `Comum/` no caminho de importação e liga o log (`registrar_execucao`) quando o script é executado diretamente | ver qualquer script de `collect/` |
 
 ## 6. Outros nomes do projeto
 

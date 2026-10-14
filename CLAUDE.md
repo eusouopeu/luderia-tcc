@@ -21,17 +21,17 @@ Ler este arquivo e o [AGORA.md](AGORA.md) sempre; não carregar documentação o
 
 ## Estado do projeto
 
-- Pastas: `textos/` (`capitulos/`, `planejamento/`, `instrumentos/`), `arquivados/` (fora de uso, incluindo `recorte-antigo/`, B5 e B6), `bibliografia/`, `docs/`, `_instrucoes/`, `_src/` (scripts por bloco; `_src/dicionario.md` com as convenções de nomes; o atalho `_src/_shared`, `_src/site-apresentacao/` e `_src/app-observacao/`, app Android da contagem), `dados/` (uma pasta por bloco, com os processados na raiz e os brutos em `dados-brutos/`). Visão geral do pipeline no [README.md](README.md).
-- Prazos: `textos/planejamento/cronograma_luderia.md`, a única fonte do cronograma (o `.docx` é gerado por `_src/gerar_docx_cronograma.js` e não é versionado). Situação de cada capítulo: `textos/planejamento/status_capitulos.md`. Versão final para a banca em 16/11/2026.
+- Pastas: `textos/` (`capitulos/`, `planejamento/`, `instrumentos/`), `arquivados/` (fora de uso, incluindo `recorte-antigo/`, B5 e B6), `bibliografia/`, `docs/`, `_instrucoes/`, `_src/` (scripts por bloco e objeto; `_src/extras/` com utilitários gerais; `_src/dicionario.md` com as convenções de nomes; o atalho `_src/_shared`, `_src/site-apresentacao/` e `_src/app-observacao/`, app Android da contagem), `dados/` (uma pasta por bloco, com os processados na raiz e os brutos em `_dados-brutos/`). Visão geral do pipeline no [README.md](README.md).
+- Prazos: `textos/planejamento/cronograma_luderia.md`, a única fonte do cronograma (o `.docx` é gerado por `_src/extras/gerar_docx_cronograma.js` e não é versionado). Situação de cada capítulo: `textos/planejamento/status_capitulos.md`. Versão final para a banca em 16/11/2026.
 - Decisões tomadas: `docs/decisoes.md`. Dúvidas, ideias futuras, decisões a tomar e divergências abertas: `docs/pendencias.md`.
 - `arquivados/introducao_tcc_luderia.md` e `arquivados/metodologia_tcc_luderia.md` são do **desenho anterior** (pesquisa de mercado, hipóteses H1–H9): servem de insumo; hipóteses e testes vão para apêndice, salvo quando sustentam decisão do plano.
-- Pipeline: `_src/[Bn] Fonte/` → `dados/[Bn] Nome/dados-brutos/` → `dados/[Bn] Nome/`. Cada `_src/[Bn] Fonte/` tem `collect/`, `build/`, `analise/`, `webscripts/`, `logs/` e `outros/` (auxiliares). Scripts `Bn-<c|b|a>_<conteúdo>.py` (`c` collect → `b` build → `a` analise), saídas `Bn_<conteúdo>`; cada script define `ROOT = Path(__file__).resolve().parents[3]`, roda de qualquer diretório e grava log em `logs/` (`_src/log_execucao.py`). Convenções de nomes, atuais e passadas: `_src/dicionario.md`. Detalhes em `_instrucoes/4_metodologia.md`. Blocos, em ordem de relevância:
+- Pipeline: `_src/[Bn] Nome/<Objeto>/` → `dados/[Bn] Nome/_dados-brutos/` → `dados/[Bn] Nome/`. Os blocos têm o mesmo nome em `_src/` e `dados/`; dentro de cada bloco de `_src/`, uma pasta por objeto (ex.: `Google Places (Negócios)`, `Instagram`), cada uma com `collect/`, `build/`, `analise/`, `webscripts/`, `logs/` e `outros/` (auxiliares). Scripts `Bn-<c|b|a>_<conteúdo>.py` (`c` collect → `b` build → `a` analise), saídas `Bn_<conteúdo>`; cada script define `ROOT = Path(__file__).resolve().parents[4]`, roda de qualquer diretório e grava log em `logs/` (`_src/extras/log_execucao.py`). Convenções de nomes, atuais e passadas: `_src/dicionario.md`. Detalhes em `_instrucoes/4_metodologia.md`. Blocos, em ordem de relevância:
   - **B1** — concorrentes com mais de 100 avaliações nas 14 metrópoles da REGIC (IBGE) e seus cardápios → concorrência, preço, ticket.
   - **B2** — avaliações com texto publicadas até "3 meses atrás", inclusive (rótulo do Google Maps na data da coleta) → proposta de valor, reclamações, ticket, fluxo.
   - **B3** — contagem direta nas duas unidades da São Jogue (Salvador), com leitura da NFC-e → ocupação, giro, calibração.
   - **B4** — bases públicas (IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA) → demanda, custos, tributos, taxa de desconto. Subpastas por uso (`mercado_demanda`, `ponto_operacoes`, `juridico_tributario`, `financeiro`, `multiuso`) definidas em `USOS` no `bases_comum.py`.
   - **B6** — histórico dos avaliadores; retirado em 18/09/2026 (`arquivados/B6-avaliadores/`).
-  - Subpastas dentro de `dados/[Bn]…/` e `dados/[Bn]…/dados-brutos/`: minúsculas, sem acento, com `_` (ex.: `cardapios/`, `acervo_jogos/`, `redes_sociais/analise_legendas/`).
+  - Subpastas dentro de `dados/[Bn]…/` e `dados/[Bn]…/_dados-brutos/`: minúsculas, sem acento, com `_` (ex.: `cardapios/`, `acervo_jogos/`, `redes_sociais/analise_legendas/`).
 
 ## Versionamento
 
@@ -56,7 +56,7 @@ Antes do commit, atualizar:
 2. `docs/decisoes.md`: uma linha no topo para cada decisão tomada na sessão.
 3. `docs/pendencias.md`: dúvida, ideia ou decisão em aberto que surgiu; item resolvido sai.
 4. `textos/planejamento/status_capitulos.md`, se algum capítulo mudou; checklist do cronograma, se alguma tarefa terminou.
-5. Depois do commit, rodar `_src/sincronizar_vault.sh`: copia `docs/`, `textos/` e `bibliografia/` para o vault do Obsidian (só leitura no celular, sentido único).
+5. Depois do commit, rodar `_src/extras/sincronizar_vault.sh`: copia `docs/`, `textos/` e `bibliografia/` para o vault do Obsidian (só leitura no celular, sentido único).
 
 ## Princípios
 

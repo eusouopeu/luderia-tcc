@@ -23,14 +23,14 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 
 ### Correspondência entre blocos e arquivos do pipeline
 
-Cada bloco tem subpasta `[Bn] Nome` em `_src/` e em `dados/`; dentro de `dados/[Bn] Nome/` ficam os arquivos processados e a subpasta `dados-brutos/`. Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `Bn-<letra>_<conteúdo>.py` nos scripts, guardados na subpasta da etapa (`collect/` → `c`, `build/` → `b`, `analise/` → `a`); cada bloco de `_src/` tem ainda `webscripts/`, `logs/` e `outros/` (convenções em [`_src/dicionario.md`](../_src/dicionario.md)). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `jogos_comum.py`, `instagram_comum.py`, `bases_comum.py`) não levam código e ficam em `outros/` do bloco. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam em `arquivados/`.
+Cada bloco tem pasta `[Bn] Nome`, com o mesmo nome, em `_src/` e em `dados/`; em `_src/`, o bloco se divide em uma pasta por objeto (ex.: `Google Places (Negócios)`, `Instagram`, `CAGED`); dentro de `dados/[Bn] Nome/` ficam os arquivos processados e a subpasta `_dados-brutos/`. Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `Bn-<letra>_<conteúdo>.py` nos scripts, guardados na subpasta da etapa (`collect/` → `c`, `build/` → `b`, `analise/` → `a`); cada objeto tem ainda `webscripts/`, `logs/` e `outros/` (convenções em [`_src/dicionario.md`](../_src/dicionario.md)). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `jogos_comum.py`, `instagram_comum.py`, `bases_comum.py`) não levam código e ficam em `outros/` do bloco. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam em `arquivados/`.
 
 | Bloco | Conteúdo | Scripts | Pasta de dados |
 |---|---|---|---|
-| B1 | Estabelecimentos e cardápios | `_src/[B1] Google Places (estabelecimentos)/` | `[B1] Estabelecimentos e cardapios/` |
-| B2 | Avaliações recentes | `_src/[B2] Google Places (comentarios)/` | `[B2] Avaliacoes recentes/` |
-| B3 | Contagem direta de ocupação | `_src/[B3] Contagem direta de ocupacao/` | `[B3] Contagem direta de ocupacao/` |
-| B4 | Bases públicas | `_src/[B4] Bases publicas/` | `[B4] Bases publicas/` |
+| B1 | Estabelecimentos e cardápios | `_src/[B1] Estabelecimentos e cardapios/` (`Google Places (Negócios)/`, `Cardápios/`, `Acervo de Jogos/`, `Instagram/`) | `[B1] Estabelecimentos e cardapios/` |
+| B2 | Avaliações recentes | `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/` | `[B2] Avaliacoes recentes/` |
+| B3 | Contagem direta de ocupação | `_src/[B3] Contagem direta de ocupacao/Contagem direta/` | `[B3] Contagem direta de ocupacao/` |
+| B4 | Bases públicas | `_src/[B4] Bases publicas/` (uma pasta por fonte; `Comum/bases_comum.py`) | `[B4] Bases publicas/` |
 
 ## Divisão de subcapítulos
 
@@ -115,8 +115,8 @@ Scripts em `_src/[B4] Bases publicas/` (`B4-c_*` → `B4-b_*`); saídas `[B4] *.
 
 ### Pipeline
 
-- Scripts em `_src/[bloco]/collect/`, `build/` e `analise/`, seguindo o padrão `Bn-c_*` → `Bn-b_*` → `Bn-a_*` ([dicionário](../_src/dicionario.md)); saídas em `dados/[bloco]/` com o prefixo do bloco.
-- Dados brutos (textos integrais) ficam em `dados/[bloco]/dados-brutos/`, fora do repositório público. O TCC e o repositório divulgam **apenas dados processados**.
+- Scripts em `_src/[bloco]/<objeto>/collect/`, `build/` e `analise/`, seguindo o padrão `Bn-c_*` → `Bn-b_*` → `Bn-a_*` ([dicionário](../_src/dicionario.md)); saídas em `dados/[bloco]/` com o prefixo do bloco.
+- Dados brutos (textos integrais) ficam em `dados/[bloco]/_dados-brutos/`, fora do repositório público. O TCC e o repositório divulgam **apenas dados processados**.
 - Dicionário de dados com nome, descrição, tipo, unidade e origem de cada variável.
 - Todo sorteio (amostra de validação do dicionário, amostra de auditoria da coleta) usa semente fixa registrada no código.
 

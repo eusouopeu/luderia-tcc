@@ -4,19 +4,19 @@ __pycache__/
 .venv/
 venv/
 # Dados brutos: textos integrais, históricos e respostas de API não são publicados (_instrucoes/4_metodologia.md §3.4)
-dados/*/dados-brutos/**/*.jsonl
-_src/*/logs/*.log
+dados/*/_dados-brutos/**/*.jsonl
+_src/*/*/logs/*.log
 # Atalho (alias do macOS) para ~/Codigos/Apps/_shared, os padrões comuns aos apps; vale só nesta máquina
 _src/_shared
 # Bloco B4: arquivos originais grandes (microdados e agregados do Censo); regeneráveis pelos scripts de coleta
-dados/\[B4\]*/dados-brutos/**/*.7z
-dados/\[B4\]*/dados-brutos/**/*.zip
-dados/\[B4\]*/dados-brutos/caged/
+dados/\[B4\]*/_dados-brutos/**/*.7z
+dados/\[B4\]*/_dados-brutos/**/*.zip
+dados/\[B4\]*/_dados-brutos/caged/
 .DS_Store
 .tmp.driveupload/
 .tmp.drivedownload/
 # Bloco B1: curadoria manual e luderias aprovadas trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4)
-dados/\[B1\]*/dados-brutos/B1_curadoria_manual_*.xlsx
+dados/\[B1\]*/_dados-brutos/B1_curadoria_manual_*.xlsx
 dados/\[B1\]*/B1_luderias_aprovadas_*.xlsx
 dados/\[B1\]*/B1_comentarios_aprovadas_*.xlsx
 
@@ -24,11 +24,11 @@ dados/\[B1\]*/B1_comentarios_aprovadas_*.xlsx
 bibliografia/leituras-P1/
 
 # Bloco B1: cardápios originais (PDF, imagens, HTML de terceiros); só a transcrição em CSV é publicada
-dados/\[B1\]*/dados-brutos/cardapios/*
-!dados/\[B1\]*/dados-brutos/cardapios/transcricao/
+dados/\[B1\]*/_dados-brutos/cardapios/*
+!dados/\[B1\]*/_dados-brutos/cardapios/transcricao/
 
 # Bloco B3: fotos do app de observação (cardápio, estante: material de terceiros); só o texto transcrito é publicado
-dados/\[B3\]*/dados-brutos/app/fotos/
+dados/\[B3\]*/_dados-brutos/app/fotos/
 
 # Versões automáticas dos textos (mod tcc do Claude Code)
 .tcc-historico/
@@ -45,20 +45,20 @@ dados/\[B1\]*/cardapios/**/*.jpeg
 dados/\[B1\]*/cardapios/**/*.webp
 dados/\[B1\]*/cardapios/*.pdf
 # Modelo de idioma do Tesseract (OCR), baixado de tessdata_fast
-_src/\[B1\]*/outros/tessdata/
+_src/\[B1\]*/*/outros/tessdata/
 
 # Bloco B1: páginas HTML do Acervo de Jogos (material de terceiros, cache da coleta); só os CSV são publicados
-dados/\[B1\]*/dados-brutos/acervodejogos/*.html
-dados/\[B1\]*/dados-brutos/acervodejogos/lojas/
-dados/\[B1\]*/dados-brutos/acervos_luderias/*/
-dados/\[B1\]*/dados-brutos/lojas_venda/
+dados/\[B1\]*/_dados-brutos/acervodejogos/*.html
+dados/\[B1\]*/_dados-brutos/acervodejogos/lojas/
+dados/\[B1\]*/_dados-brutos/acervos_luderias/*/
+dados/\[B1\]*/_dados-brutos/lojas_venda/
 
-# Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/gerar_carregadores.py)
-_src/carregadores/
+# Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/extras/gerar_carregadores.py)
+_src/extras/carregadores/
 
 # Bloco B2: coletas do userscript e base consolidada trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4); cobertura e fila são publicadas
-dados/\[B2\]*/dados-brutos/coletas/
+dados/\[B2\]*/_dados-brutos/coletas/
 dados/\[B2\]*/B2_avaliacoes_periodo.csv
 
-# Cronograma: o .docx é gerado do .md quando for enviar (_src/gerar_docx_cronograma.js)
+# Cronograma: o .docx é gerado do .md quando for enviar (_src/extras/gerar_docx_cronograma.js)
 textos/planejamento/cronograma_luderia*.docx

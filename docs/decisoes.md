@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 14/10/2026 | `_src/` espelha os blocos de `dados/`, com uma pasta por objeto (B4: uma por fonte, auxiliar em `Comum/`); utilitários em `_src/extras/`; brutos em `_dados-brutos/` | `_src/dicionario.md` |
 | 14/10/2026 | Scripts por etapa em cada bloco de `_src/` (`collect/`, `build/`, `analise/`, `webscripts/`, `logs/`, `outros/`), nomes `Bn-<c\|b\|a>_<conteúdo>.py`, log automático fora do git e convenções de nomes e valores em `_src/dicionario.md` | `_src/dicionario.md` |
 | 14/10/2026 | Dados numa pasta por bloco, `dados/[Bn] Nome/`, com os processados na raiz e os brutos em `dados-brutos/`; site e app de observação dentro de `_src/` | `CLAUDE.md`, "Estado do projeto" |
 | 14/10/2026 | Skill de projeto `/traduza` (ou `==termo==`) gera notas de estudo em `docs/notas/`, fora do registro de alterações | `.claude/skills/traduza/SKILL.md` |

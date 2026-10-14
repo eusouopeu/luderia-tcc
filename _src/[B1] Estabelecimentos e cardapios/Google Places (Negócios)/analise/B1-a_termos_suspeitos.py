@@ -1,0 +1,166 @@
+"""
+Bloco B1 - conta, nas planilhas de curadoria e de descartados de cada grupo
+REGIC (B1-b_planilhas_regic.py), quantos estabelecimentos têm sinais
+de que não são espaço de jogo: categoria do Google `department_store` (loja
+de departamento) ou termo suspeito no nome. Serve para decidir quais termos
+viram regra de exclusão no filtro automático.
+
+Os termos são buscados só no nome, sem diferenciar maiúsculas nem acentos, e
+como trecho do nome (ex.: "eletronico" acha "Eletrônicos"; "fisio" acha
+"Fisioterapia"). A contagem por termo não é exclusiva: um nome com dois
+termos conta nos dois. A linha "qualquer condição" conta cada place_id uma vez.
+
+Saídas em dados/[B1] Estabelecimentos e cardapios/:
+  B1_termos_suspeitos.csv - condição x planilha
+  B1_planilha_curadoria_metropoles_filtrada.csv e
+  B1_planilha_curadoria_capitais_regionais_filtrada.csv - curadoria do
+      grupo sem as linhas com algum termo suspeito no nome ("store" e loja de
+      departamento não tiram a linha). A coluna capital_busca é trocada por
+      capital_endereco: a capital da UF do endereço.
+  B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv -
+      curadoria filtrada das metrópoles só com volume de avaliações > 100.
+  B1_planilha_curadoria_metropoles_filtrada_50_ou_mais_avaliacoes.csv -
+      mesma curadoria filtrada com volume >= 50, para avaliar a expansão
+      da população (pedido do autor em 13/10/2026).
+
+Uso:
+    python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_termos_suspeitos.py"
+"""
+# Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
+import sys
+from pathlib import Path
+_AQUI = Path(__file__).resolve()
+sys.path[:0] = [str(_AQUI.parents[3] / "extras"), str(_AQUI.parents[1] / "outros")]
+from log_execucao import registrar_execucao  # noqa: E402
+if __name__ == "__main__":
+    registrar_execucao(__file__)
+
+import csv
+import pathlib
+import unicodedata
+
+from recorte_rm import classifica
+
+ROOT = pathlib.Path(__file__).resolve().parents[4]
+PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
+OUT_PATH = PROCESSED / "B1_termos_suspeitos.csv"
+# Grupo REGIC -> planilha filtrada gerada a partir da curadoria dele.
+FILTRADAS = {
+    "metropoles": PROCESSED / "B1_planilha_curadoria_metropoles_filtrada.csv",
+    "capitais_regionais": PROCESSED / "B1_planilha_curadoria_capitais_regionais_filtrada.csv",
+}
+OUT_METROPOLES_100_PATH = PROCESSED / "B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv"
+OUT_METROPOLES_50_PATH = PROCESSED / "B1_planilha_curadoria_metropoles_filtrada_50_ou_mais_avaliacoes.csv"
+MINIMO_AVALIACOES = 100  # estritamente maior que
+MINIMO_AVALIACOES_EXPANSAO = 50  # maior ou igual
+
+PLANILHAS = {
+    "curadoria_metropoles": "B1_planilha_curadoria_metropoles.csv",
+    "curadoria_capitais_regionais": "B1_planilha_curadoria_capitais_regionais.csv",
+    "descartados_metropoles": "B1_descartados_por_filtro_metropoles.csv",
+    "descartados_capitais_regionais": "B1_descartados_por_filtro_capitais_regionais.csv",
+}
+# Termo -> grafias que contam para ele. Grafias que já contêm o termo (ex.:
+# "brinquedos" contém "brinquedo") entram por clareza, sem mudar a contagem.
+TERMOS = {
+    "assistência": ["assistência"],
+    "técnica": ["técnica"],
+    "eletrônico": ["eletrônico"],
+    "aluguel": ["aluguel"],
+    "brinquedo": ["brinquedo", "brinquedos", "brinquedoteca", "brinquedoteka"],
+    "locação": ["locação"],
+    "TCG": ["TCG"],
+    "Trading Cards": ["Trading Cards"],
+    "store": ["store"],
+    "video games": ["video games"],
+    "informática": ["informática"],
+    "imports": ["imports"],
+    "fisio": ["fisio"],
+    "fisioterapia": ["fisioterapia"],
+    "atacado": ["atacado", "atacadista", "atacadão"],
+}
+# Condições que não tiram a linha das planilhas filtradas.
+MANTIDAS_NO_FILTRO = {"tipo: loja de departamento", "termo: store"}
+TIPO_LOJA_DEPARTAMENTO = "department_store"
+
+
+def normaliza(texto):
+    sem_acento = unicodedata.normalize("NFKD", texto or "").encode("ascii", "ignore").decode("ascii")
+    return " ".join(sem_acento.lower().split())
+
+
+def condicoes(r):
+    """Lista das condições que a linha cumpre."""
+    achadas = []
+    if TIPO_LOJA_DEPARTAMENTO in r["categorias_google"].split(";"):
+        achadas.append("tipo: loja de departamento")
+    nome = normaliza(r["nome"])
+    achadas += [
+        f"termo: {t}" for t, grafias in TERMOS.items()
+        if any(normaliza(g) in nome for g in grafias)
+    ]
+    return achadas
+
+
+def main():
+    rotulos = ["tipo: loja de departamento"] + [f"termo: {t}" for t in TERMOS]
+    contagem = {p: dict.fromkeys(rotulos + ["qualquer condição", "total_da_planilha"], 0) for p in PLANILHAS}
+    for chave, arquivo in PLANILHAS.items():
+        with open(PROCESSED / arquivo, newline="", encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                achadas = condicoes(r)
+                for c in achadas:
+                    contagem[chave][c] += 1
+                contagem[chave]["qualquer condição"] += bool(achadas)
+                contagem[chave]["total_da_planilha"] += 1
+
+    with open(OUT_PATH, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["condicao"] + list(PLANILHAS))
+        for rotulo in rotulos + ["qualquer condição", "total_da_planilha"]:
+            writer.writerow([rotulo] + [contagem[p][rotulo] for p in PLANILHAS])
+    print(f"OK: {OUT_PATH.name}")
+    for grupo, out_path in FILTRADAS.items():
+        filtra(PROCESSED / PLANILHAS[f"curadoria_{grupo}"], out_path)
+    filtra_volume(FILTRADAS["metropoles"], OUT_METROPOLES_100_PATH)
+    filtra_volume(FILTRADAS["metropoles"], OUT_METROPOLES_50_PATH, MINIMO_AVALIACOES_EXPANSAO, inclusivo=True)
+
+
+def filtra_volume(entrada, out_path, minimo=MINIMO_AVALIACOES, inclusivo=False):
+    with open(entrada, newline="", encoding="utf-8") as f:
+        leitor = csv.DictReader(f)
+        colunas, linhas = leitor.fieldnames, list(leitor)
+    volume = lambda r: int(float(r["volume_avaliacoes"] or 0))  # noqa: E731
+    mantidas = [r for r in linhas if (volume(r) >= minimo if inclusivo else volume(r) > minimo)]
+    mantidas.sort(key=lambda r: (r["capital_endereco"], -int(float(r["volume_avaliacoes"]))))
+    with open(out_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=colunas)
+        writer.writeheader()
+        writer.writerows(mantidas)
+    criterio = f"{minimo} ou mais" if inclusivo else f"mais de {minimo}"
+    print(f"OK: {out_path.name} - {len(mantidas)} de {len(linhas)} com {criterio} avaliações")
+
+
+def filtra(entrada, out_path):
+    with open(entrada, newline="", encoding="utf-8") as f:
+        leitor = csv.DictReader(f)
+        colunas, linhas = leitor.fieldnames, list(leitor)
+    colunas = ["capital_endereco" if c == "capital_busca" else c for c in colunas]
+    mantidas, retiradas = [], 0
+    for r in linhas:
+        if set(condicoes(r)) - MANTIDAS_NO_FILTRO:
+            retiradas += 1
+            continue
+        r = {("capital_endereco" if c == "capital_busca" else c): v for c, v in r.items()}
+        r["capital_endereco"] = classifica(r["endereco"])["capital_referencia"]
+        mantidas.append(r)
+    assert len(mantidas) + retiradas == len(linhas)
+    with open(out_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=colunas)
+        writer.writeheader()
+        writer.writerows(mantidas)
+    print(f"OK: {out_path.name} - {len(mantidas)} mantidas, {retiradas} retiradas de {len(linhas)}")
+
+
+if __name__ == "__main__":
+    main()

@@ -13,8 +13,9 @@ Todo número do texto pode ser gerado de novo por um script deste repositório. 
 | `textos/planejamento/` | Cronograma, status dos capítulos, projeto de pesquisa e registro prévio |
 | `textos/instrumentos/` | Roteiro de observação, livro de códigos da análise de conteúdo e quadro de itens |
 | `_instrucoes/` | Instruções por capítulo (ver [CLAUDE.md](CLAUDE.md)) |
-| `_src/[Bn] Fonte/` | Scripts de um bloco: `collect/`, `build/`, `analise/`, `webscripts/` (Tampermonkey), `logs/` (fora do git) e `outros/` (auxiliares). Convenções de nomes em [`_src/dicionario.md`](_src/dicionario.md) |
-| `dados/[Bn] Nome/dados-brutos/` | Dados brutos (parte não publicada: ver `.gitignore`) |
+| `_src/[Bn] Nome/<Objeto>/` | Scripts de um objeto do bloco (ex.: `Google Places (Negócios)`, `Instagram`): `collect/`, `build/`, `analise/`, `webscripts/` (Tampermonkey), `logs/` (fora do git) e `outros/` (auxiliares). Convenções de nomes em [`_src/dicionario.md`](_src/dicionario.md) |
+| `_src/extras/` | Utilitários gerais: log comum, carregadores do Tampermonkey, `.docx` do cronograma e do projeto, cópia para o vault |
+| `dados/[Bn] Nome/_dados-brutos/` | Dados brutos (parte não publicada: ver `.gitignore`) |
 | `dados/[Bn] Nome/` | Tabelas e gráficos tratados |
 | `bibliografia/` | PDFs de leitura, lista de leitura e referências das bases públicas |
 | `docs/` | Decisões, pendências, registro de alterações, diagnóstico bibliográfico |
@@ -30,11 +31,11 @@ Abrir sempre o [AGORA.md](AGORA.md) primeiro. Depois, conforme a tarefa:
 |---|---|---|
 | Escrever o cap. N | `_instrucoes/` do capítulo (mapa no [CLAUDE.md](CLAUDE.md)); dados em `dados/[Bn]…`; skill `meu-estilo-escrita` | `textos/capitulos/`; atualizar `textos/planejamento/status_capitulos.md` |
 | Escrever o cap. 2 | `_instrucoes/2_ref-teorico.md` e `bibliografia/lista-de-leitura.md` | `textos/capitulos/` |
-| Coletar avaliações (B2) | `_src/[B2] Google Places (comentarios)/webscripts/maps_avaliacoes.user.js` (Tampermonkey), fila em `dados/[B2] Avaliacoes recentes/B2_fila_coleta.txt` | rodar `B2-b_avaliacoes.py`; situação em `B2_cobertura_coleta.csv` |
-| Ir a campo (B3) | `textos/instrumentos/roteiro_observacao_sao_jogue.md` e `_src/app-observacao/` | `dados/[B3] Contagem direta de ocupacao/dados-brutos/` |
-| Mexer em cardápios, acervos ou Instagram (B1) | `_src/[B1] Cardapios/`, `_src/[B1] Acervo de Jogos/`, `_src/[B1] Instagram/` | `dados/[B1] Estabelecimentos e cardapios/` (`cardapios/`, `acervo_jogos/`, `redes_sociais/`) |
+| Coletar avaliações (B2) | `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/webscripts/maps_avaliacoes.user.js` (Tampermonkey), fila em `dados/[B2] Avaliacoes recentes/B2_fila_coleta.txt` | rodar `B2-b_avaliacoes.py`; situação em `B2_cobertura_coleta.csv` |
+| Ir a campo (B3) | `textos/instrumentos/roteiro_observacao_sao_jogue.md` e `_src/app-observacao/` | `dados/[B3] Contagem direta de ocupacao/_dados-brutos/` |
+| Mexer em cardápios, acervos ou Instagram (B1) | `_src/[B1] Estabelecimentos e cardapios/Cardápios/`, `_src/[B1] Estabelecimentos e cardapios/Acervo de Jogos/`, `_src/[B1] Estabelecimentos e cardapios/Instagram/` | `dados/[B1] Estabelecimentos e cardapios/` (`cardapios/`, `acervo_jogos/`, `redes_sociais/`) |
 | Atualizar uma base pública (B4) | `_src/[B4] Bases publicas/`; referências em `bibliografia/referencias_bases_publicas.md` | `dados/[B4] Bases publicas/<uso>/` |
-| Ver ou mudar prazos | `textos/planejamento/cronograma_luderia.md` | `node _src/gerar_docx_cronograma.js` (`--resumo` para a versão curta) gera o `.docx` |
+| Ver ou mudar prazos | `textos/planejamento/cronograma_luderia.md` | `node _src/extras/gerar_docx_cronograma.js` (`--resumo` para a versão curta) gera o `.docx` |
 | Tomar ou consultar uma decisão | `docs/decisoes.md` e `docs/pendencias.md` | decisão tomada sai de pendências e entra em decisões |
 | Anotar dúvida ou ideia | `docs/pendencias.md` | — |
 
@@ -53,7 +54,7 @@ Cada script segue a sequência `collect` (coleta) → `build` (tratamento) → `
 Todo script roda a partir de qualquer diretório:
 
 ```bash
-python3 "_src/[B1] Google Places (estabelecimentos)/analise/B1-a_limiares.py"
+python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_limiares.py"
 ```
 
 ## Instalação
