@@ -6,6 +6,8 @@ Atualizado em 14/10/2026, 17h40. Semana 5 do cronograma (10/10 a 16/10). Próxim
 
 - **Coleta do B2** (avaliações até "3 meses atrás"): 46 de 51 luderias coletadas (1.948 avaliações no recorte, 1.213 com texto, todas no Notion "B - Comentários", com "ID da avaliação"). Faltam 5 (Flow Games, Machado Games, Ilusões Industriais, Dungeon Games Store, Paladino Hobbies; fila em `B2_fila_coleta.txt`) e refazer o Shelf Bar, que parou em 40 avaliações.
 
+- **Snowball do Instagram (pronto para coletar):** coletor 2026.10.14-1 captura a lista "seguindo" (bloco "Snowball" do painel). Salvar os CSV em `dados/[B1]…/_dados-brutos/redes_sociais/seguindo/`, rodar `B1-b_instagram_seguindo.py`, classificar `B1_snowball_candidatos.csv` e rodar `B1-a_instagram_snowball.py`. Prioridade abaixo do B2.
+
 - **Conferência de conceitos:** checklists em `bibliografia/leituras-P1/` (25 conceitos) e `leituras-P2/` (34), todos `[AV]`. Ao ler, trocar o `[AV]` da linha pela página; o vigia propaga. Situação em `bibliografia/relatorio-conceitos.md`.
 
 ## Próximos 3 passos

@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 14/10/2026 | Snowball pelo Instagram para checar a cobertura do B1: listas "seguindo" capturadas sem pedido próprio (só o que a página recebe ao rolar), conta seguida por k ou mais casas aprovadas vira candidata, classificação manual, precisão e sensibilidade por corte e captura e recaptura de Chapman como limite inferior; brutos com @ de pessoas fora do git, só agregados e perfis de negócio publicados | `_instrucoes/4_metodologia.md` §3 (Cobertura) |
 | 14/10/2026 | Marcador único `[AV]` (a verificar) no lugar de `[A VERIFICAR]`; citação de conceito com página a conferir leva `[AV-<ID>]`, ligado ao `checklist-conceitos.md` da leva | `_instrucoes/10_biblio-apendices.md` |
 | 14/10/2026 | Um `checklist-conceitos.md` por leva de leitura (`bibliografia/leituras-Pn/`), versionado; vigia do launchd roda `_src/extras/conceitos/verificar_conceitos.py` a cada mudança e propaga as páginas conferidas | `bibliografia/leituras-P1/checklist-conceitos.md` |
 | 14/10/2026 | Banco "B - Comentários" do Notion alimentado pelas coletas do userscript (só avaliações com texto no recorte), com a coluna "ID da avaliação" (`review_id`) como chave para não duplicar | `docs/registro-de-alteracoes.md`, 14/10 16:56 |

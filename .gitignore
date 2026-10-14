@@ -64,3 +64,6 @@ dados/\[B2\]*/B2_avaliacoes_periodo.csv
 # Cronograma: o .docx é gerado do .md quando for enviar (_src/extras/gerar_docx_cronograma.js)
 textos/planejamento/cronograma_luderia*.docx
 _src/extras/logs/
+
+# Bloco B1: listas "seguindo" do Instagram e candidatos do snowball trazem @ de pessoas físicas (LGPD); só agregados e perfis de negócio são publicados
+dados/\[B1\]*/_dados-brutos/redes_sociais/
