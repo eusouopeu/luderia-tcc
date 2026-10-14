@@ -4,7 +4,7 @@ TCC em formato **plano de negócios baseado em evidências** para uma luderia/lu
 
 ## Mapa dos arquivos de instrução
 
-Ler este arquivo e o [AGORA.md](AGORA.md) sempre. Ler os demais sob demanda, conforme a tarefa (roteiro por tarefa no [README.md](README.md), "Por onde começar"). A numeração é a ordem de leitura, não o número do capítulo.
+Ler este arquivo e o [AGORA.md](AGORA.md) sempre; não carregar documentação ou arquivos grandes por padrão. Estrutura da documentação segue `../_shared/docs-standards.md`. Ler os demais sob demanda, conforme a tarefa (roteiro por tarefa no [README.md](README.md), "Por onde começar"). A numeração é a ordem de leitura, não o número do capítulo.
 
 | Arquivo | Quando ler |
 |---|---|

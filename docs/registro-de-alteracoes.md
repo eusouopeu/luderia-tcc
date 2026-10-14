@@ -542,3 +542,11 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: tarefa "Elaboração do manual de codificação das avaliações :ma"; pendências com as decisões sobre o público casual e o horário das visitas e a dúvida sobre ":ma"; próximo passo 3 = decidir o recorte casual.
 **Depois**: ":ma" trocado por "?" (atalho do autor para o ponto de interrogação); as duas decisões foram para `decisoes.md`; nova dúvida sobre as datas e horas do roteiro de campo; próximo passo 3 = rascunho do cap. 3.
 **Justificativa**: respostas do autor às decisões pendentes.
+
+## 2026/10/14
+
+### 07:01
+**Objeto**: `CLAUDE.md`, `AGENTS.md`
+**Antes**: o `CLAUDE.md` não citava o padrão de documentação dos projetos; não havia `AGENTS.md`.
+**Depois**: o `CLAUDE.md` passa a citar `../_shared/docs-standards.md` (derivado deste projeto e do rotinas) e manda não carregar documentação por padrão; `AGENTS.md` criado como link simbólico para o `CLAUDE.md`, para outros agentes lerem as mesmas instruções.
+**Justificativa**: pedido do autor, para padronizar a documentação de todos os projetos.
