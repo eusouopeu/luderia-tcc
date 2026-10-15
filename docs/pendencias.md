@@ -18,6 +18,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 6. **Bibliografia v2 (15/10/2026).** Escolher, conceito a conceito, entre a obra original dos checklists P1/P2 e o substituto de `bibliografia/bibliografia-v2/bibliografia-v2.md`; ao adotar um substituto, trocar a linha no checklist da leva para o vigia propagar. R10, R28 e R29 seguem com o original.
 
+7. **Corte de shopping de porte no entorno.** Com o `…_entorno_shoppings.csv` (área no OSM e avaliações no Maps de cada shopping a até 1000 m), escolher o critério da coluna `qt_shoppings_porte` (área ≥ 5.000 m², mínimo de avaliações, ambos ou qualquer) e, se for por avaliações, o limiar e a fonte que o sustenta.
+
 7. **Cap. 2, conferências antes da versão final:** edição, ano e página dos livros marcados `[AV]` (Dornelas, Porter, Kotler e Keller, Kim e Mauborgne, Mintzberg et al., Marcellino, Pine e Gilmore, Oldenburg, Woods, Zeithaml et al., Fitzsimmons et al., Hillier e Lieberman, Brealey et al., Damodaran, Bruni, Bruni e Famá, Casarotto e Kopittke, Pfeffer e Sutton); as edições do texto são a mais recente provável, não conferida. Baixar pelo navegador o PDF do SEBRAE (2016), que veio como HTML, e decidir se entra em 2.1. Incluir no checklist da P1/P2 os conceitos que o cap. 2 tira de obras sem ID (Kano/PRC, ERRC, PESTEL, terceiro lugar, lei de Little pelos livros da v2).
 
 ## Divergências entre documentos, ainda sem correção

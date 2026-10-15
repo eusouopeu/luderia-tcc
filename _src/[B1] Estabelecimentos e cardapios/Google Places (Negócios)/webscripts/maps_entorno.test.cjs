@@ -8,7 +8,7 @@ const source = fs.readFileSync(__dirname + '/maps_entorno.user.js', 'utf8');
 function carregar() {
   const ambiente = { __test: {}, localStorage: { getItem: () => null, setItem() {}, removeItem() {} }, location: { href: '', pathname: '/maps/' }, document: { querySelector: () => null, querySelectorAll: () => [] } };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Entorno do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { classificar, suspeito, distancia, deslocar, mPorPx, planejarBusca, coberturaReal, lerCartao, lerFila, lerListaShoppings, cidadeDoEndereco, unir, nomesParecidos, marcarDuplicatas, mesmoShopping, areaCaixa, porteOsm, porteAbrasce, montarSaida, precisaSubdividir, quadrantes, colsResumo, nomesArquivos, dataLocal, foraDoMapa, tarefasIniciais, consultasDispensadas });})();';
+    + 'Object.assign(globalThis.__test, { classificar, suspeito, distancia, deslocar, mPorPx, planejarBusca, coberturaReal, lerCartao, lerFila, lerListaShoppings, cidadeDoEndereco, unir, nomesParecidos, marcarDuplicatas, mesmoShopping, areaCaixa, porteOsm, porteAbrasce, montarSaida, precisaSubdividir, quadrantes, colsResumo, nomesArquivos, dataLocal, foraDoMapa, tarefasIniciais, consultasDispensadas, classificarOsm, linhasOsm, resumirOsm, colsOsm, montarShoppings, decidir, distCaixa, elementoOsm, uniaoLocais });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_entorno.user.js' });
   return ambiente.__test;
 }
@@ -162,6 +162,9 @@ test('nome do arquivo: data local primeiro, depois o estabelecimento', () => {
   assert.deepEqual(json(t.nomesArquivos([{ nome: 'São Jogue - Rio Vermelho' }], '2026-10-14')), {
     resumo: '2026-10-14_sao_jogue_rio_vermelho_entorno_resumo.csv',
     resultados: '2026-10-14_sao_jogue_rio_vermelho_entorno_resultados.csv',
+    osm_resumo: '2026-10-14_sao_jogue_rio_vermelho_entorno_osm_resumo.csv',
+    osm_resultados: '2026-10-14_sao_jogue_rio_vermelho_entorno_osm_resultados.csv',
+    shoppings: '2026-10-14_sao_jogue_rio_vermelho_entorno_shoppings.csv',
   });
   assert.equal(t.nomesArquivos([{ nome: 'A' }, { nome: 'B' }, { nome: 'C' }], '2026-10-14', 'parcial-010').resumo, '2026-10-14_3_estabelecimentos_entorno_resumo_parcial-010.csv');
   assert.equal(t.dataLocal(new Date(2026, 9, 14, 23, 30)), '2026-10-14', 'às 23h30 ainda é dia 14');
@@ -232,4 +235,126 @@ test('resultado de outra região fica fora das distâncias; porte sem OSM aparec
   assert.equal(resultados.find((x) => x.nome === 'Lapa').fora_da_regiao, 'sim');
   assert.equal(l.qt_shoppings_porte_1000m, '');
   assert.equal(l.situacao, 'porte sem OSM');
+});
+
+const OP = { porte: 'osm', area_min_m2: 5000, limiar_aval: 1000, abrasce: [] };
+
+test('OSM: grupo pelas tags (metrô, trem, VLT, BRT, tubo, terminal, barca)', () => {
+  assert.equal(t.classificarOsm({ railway: 'station', station: 'subway' }, 'Consolação'), 'metro');
+  assert.equal(t.classificarOsm({ public_transport: 'station', subway: 'yes' }, 'Estação Lapa'), 'metro');
+  assert.equal(t.classificarOsm({ railway: 'station', station: 'monorail' }, 'Vila Prudente'), 'metro');
+  assert.equal(t.classificarOsm({ railway: 'station' }, 'Barra Funda'), 'trem');
+  assert.equal(t.classificarOsm({ railway: 'station', station: 'subway', operator: 'Trensurb' }, 'Mercado'), 'trem');
+  assert.equal(t.classificarOsm({ railway: 'station', operator: 'Companhia do Metropolitano de São Paulo;CPTM' }, 'Luz'), 'trem');
+  assert.equal(t.classificarOsm({ railway: 'tram_stop' }, 'Parada dos Navios'), 'vlt_brt');
+  assert.equal(t.classificarOsm({ railway: 'station', station: 'light_rail' }, 'Cinelândia'), 'vlt_brt');
+  assert.equal(t.classificarOsm({ public_transport: 'station', bus: 'yes', network: 'BRT Salvador' }, 'Estação Rodoviária'), 'vlt_brt');
+  assert.equal(t.classificarOsm({ highway: 'bus_stop' }, 'Estação Tubo Praça Osório'), 'vlt_brt');
+  assert.equal(t.classificarOsm({ amenity: 'bus_station' }, 'Terminal da Lapa'), 'outro');
+  assert.equal(t.classificarOsm({ public_transport: 'station', ferry: 'yes' }, 'Terminal de São Joaquim'), 'outro');
+  assert.equal(t.classificarOsm({ railway: 'station', station: 'funicular' }, 'Plano Inclinado'), 'outro');
+  assert.equal(t.classificarOsm({ railway: 'station' }, 'Futura estação Ipiranga'), 'outro');
+  assert.equal(t.classificarOsm({ shop: 'mall' }, 'Shopping da Bahia'), 'shopping');
+  assert.equal(t.classificarOsm({ leisure: 'park' }, 'Parque da Cidade'), 'praia_parque');
+  assert.equal(t.classificarOsm({ natural: 'beach' }, 'Praia do Farol'), 'praia_parque');
+});
+
+test('OSM: distância até a borda da caixa e elemento reduzido', () => {
+  const caixa = { minlat: -13.01, maxlat: -13.0, minlon: -38.5, maxlon: -38.49 };
+  assert.equal(t.distCaixa(-13.005, -38.495, caixa), 0, 'dentro da caixa');
+  const e = t.elementoOsm({ type: 'way', id: 5, center: { lat: -13.005, lon: -38.495 }, bounds: caixa, tags: { name: 'Praia X', natural: 'beach', source: 'bing' } }, { lat: -13.012, lng: -38.495 });
+  assert.equal(e.osm_id, 'way/5');
+  assert.ok(e.distancia_m > 200 && e.distancia_m < 250, `${e.distancia_m}`);
+  assert.deepEqual(json(e.tags), { natural: 'beach' }, 'só as tags usadas');
+  assert.equal(e.caixa, undefined, 'caixa só para shopping');
+});
+
+test('OSM: duplicatas, sistema sem operação e soma que fecha', () => {
+  const local = { place_id: 's', nome: 'S', cidade: 'Salvador', lat: -13, lng: -38.5 };
+  const el = (id, nome, tags, distancia_m, extra = {}) => ({ osm_id: id, nome, tags, lat: -13 + distancia_m / 111320, lng: -38.5, area_m2: null, distancia_m, ...extra });
+  const entrada = { consultado_em: 'h', elementos: [
+    el('node/1', 'Rio Vermelho', { railway: 'station', station: 'subway' }, 400),
+    el('way/2', 'Estação Rio Vermelho', { public_transport: 'station', subway: 'yes' }, 410, { area_m2: 900 }),
+    el('node/3', 'Calçada', { railway: 'station' }, 800),
+    el('way/4', 'Shopping X', { shop: 'mall' }, 300, { area_m2: 20000 }),
+    el('node/5', 'Galeria Y', { shop: 'mall' }, 600),
+    el('way/6', 'Praça A', { leisure: 'park' }, 100, { area_m2: 3000 }),
+    el('way/7', 'Praça B', { leisure: 'park' }, 150, { area_m2: 2000 }),
+    el('node/8', 'Terminal Z', { amenity: 'bus_station' }, 900),
+    el('node/9', 'Metrô longe', { railway: 'station', station: 'subway' }, 1700),
+  ] };
+  const rs = t.linhasOsm(local, entrada);
+  assert.equal(rs.find((r) => r.osm_id === 'node/1').duplicata_de, 'Estação Rio Vermelho', 'fica o polígono');
+  assert.equal(rs.find((r) => r.osm_id === 'node/3').grupo, 'outro', 'trem em Salvador: sem operação');
+  assert.equal(rs.find((r) => r.osm_id === 'node/3').observacao, 'sistema sem operação na cidade');
+  assert.equal(rs.find((r) => r.osm_id === 'way/7').duplicata_de, '', 'praças diferentes');
+  const l = t.resumirOsm(local, entrada, rs, OP);
+  assert.equal(l.qt_estacoes_metro_500m, 1);
+  assert.equal(l.qt_estacoes_metro_1000m, 1);
+  assert.equal(l.qt_estacoes_trem_1000m, 0);
+  assert.equal(l.qt_shoppings_1000m, 2);
+  assert.equal(l.qt_shoppings_area_min_1000m, 1);
+  assert.equal(l.qt_praias_parques_500m, 2);
+  assert.equal(l.dist_estacoes_metro_mais_proxima_m, 410);
+  assert.equal(l.estacao_mais_proxima, 'Estação Rio Vermelho');
+  assert.equal(l.sistemas_sem_operacao, 'trem');
+  assert.equal(l.qt_estacoes_metro_1000m + l.qt_estacoes_trem_1000m + l.qt_estacoes_vlt_brt_1000m + l.qt_shoppings_1000m + l.qt_praias_parques_1000m + l.qt_outros_1000m, l.elementos_ate_1000m);
+  for (const c of t.colsOsm()) assert.ok(c in l, c);
+  assert.equal(t.resumirOsm(local, undefined, [], OP).situacao, 'não coletado no OSM');
+  assert.equal(t.resumirOsm(local, { erro: 'HTTP 429' }, [], OP).situacao, 'erro no OSM: HTTP 429');
+});
+
+test('shoppings: área do OSM e avaliações do Maps na mesma linha', () => {
+  const local = { place_id: 'x', nome: 'X', cidade: 'Salvador', lat: -12.99, lng: -38.47 };
+  const malls = [
+    { id: 'way/1', nome: 'Shopping da Bahia', area_m2: 75000, distancia_m: 300, minlat: -12.9828, maxlat: -12.9806, minlon: -38.4657, maxlon: -38.4629 },
+    { id: 'way/2', nome: 'Galeria', area_m2: 1200, distancia_m: 700, minlat: -12.97, maxlat: -12.9699, minlon: -38.45, maxlon: -38.4499 },
+    { id: 'way/3', nome: 'Só no OSM', area_m2: 9000, distancia_m: 900, minlat: -12.96, maxlat: -12.959, minlon: -38.44, maxlon: -38.439 },
+  ];
+  const r = (nome, lat, lng, n, distancia_m) => ({ grupo: 'shopping', nome, categoria_maps: 'Shopping center', lat, lng, n_avaliacoes: String(n), distancia_m, place_id: nome });
+  const maps = [
+    r('Shopping da Bahia', -12.9815, -38.464, 90000, 300), r('Shopping da Bahia - Piso L2', -12.9816, -38.4641, 50, 305),
+    r('Galeria', -12.96995, -38.44995, 3000, 700), r('Empresarial 104', -12.98, -38.47, 20, 800),
+  ];
+  const s = t.montarShoppings(local, maps, malls, true, { ...OP, porte: 'ambos' });
+  const por = (n) => s.find((x) => (x.nome_maps || x.nome_osm) === n);
+  assert.equal(por('Shopping da Bahia').area_osm_m2, 75000);
+  assert.equal(por('Shopping da Bahia').porte, 'sim');
+  assert.equal(por('Shopping da Bahia - Piso L2').mesmo_poligono_de, 'Shopping da Bahia');
+  assert.equal(por('Galeria').porte_osm, 'não');
+  assert.equal(por('Galeria').porte_avaliacoes, 'sim');
+  assert.equal(por('Galeria').porte, 'não', 'ambos: falta a área');
+  assert.equal(por('Empresarial 104').fonte, 'só maps');
+  assert.equal(por('Só no OSM').fonte, 'só osm');
+  assert.equal(por('Só no OSM').porte_avaliacoes, 'não', 'o Maps cobriu o raio e não o trouxe');
+  assert.equal(s.length, 5);
+  assert.equal(t.montarShoppings(local, maps, malls, true, { ...OP, porte: 'qualquer' }).find((x) => x.nome_maps === 'Galeria').porte, 'sim');
+  // Sem OSM: área desconhecida; "ambos" fica em branco se a avaliação passa.
+  const semOsm = t.montarShoppings(local, maps, null, true, { ...OP, porte: 'ambos' });
+  assert.equal(semOsm.find((x) => x.nome_maps === 'Galeria').porte, '');
+  assert.equal(semOsm.find((x) => x.nome_maps === 'Empresarial 104').porte, 'não');
+  assert.equal(t.decidir(['sim', ''], 'ou'), 'sim');
+  assert.equal(t.decidir(['não', ''], 'ou'), '');
+});
+
+test('exportação pela lista: linha para quem falta e porte com OSM novo', () => {
+  const local = { consultas: ['estação de metrô', 'estação BRT', 'estação VLT', 'shopping center'], consultas_dispensadas: ['estação de trem'], chave: 'a', place_id: 'a', nome: 'A', cidade: 'Salvador', lat: -12.99, lng: -38.47, buscas: 4, falhas: [], censura: [], cobertura_insuf: [], subdivididas: [], coletado_em: 'h' };
+  const dados = { locais: [local], resultados: [{ origem: 'a', nome: 'Shopping X', categoria_maps: 'Shopping center', distancia_m: 300, lat: -12.99 + 300 / 111320, lng: -38.47, n_avaliacoes: '5000', place_id: 'sx' }] };
+  const osm = { a: { place_id: 'a', nome: 'A', cidade: 'Salvador', lat: -12.99, lng: -38.47, consultado_em: 'h', elementos: [
+    { osm_id: 'way/9', nome: 'Shopping X', tags: { shop: 'mall' }, lat: -12.99 + 300 / 111320, lng: -38.47, area_m2: 30000, distancia_m: 290, caixa: { minlat: -12.9875, maxlat: -12.9850, minlon: -38.4710, maxlon: -38.4690 } },
+  ] } };
+  const lista = [{ place_id: 'a', nome: 'A', cidade: 'Salvador', lat: -12.99, lng: -38.47 }, { place_id: 'b', nome: 'B', cidade: 'Recife', lat: -8.05, lng: -34.9 }];
+  const s = t.montarSaida(dados, {}, { ...OP, porte: 'ambos' }, osm, lista);
+  assert.equal(s.resumo.length, 2);
+  assert.equal(s.resumo[0].qt_shoppings_porte_1000m, 1);
+  assert.equal(s.resumo[0].qt_shoppings_porte_osm_1000m, 1);
+  assert.equal(s.resumo[0].qt_shoppings_porte_aval_1000m, 1);
+  assert.equal(s.resumo[0].situacao, 'ok');
+  assert.equal(s.resumo[1].situacao, 'não coletado no Maps');
+  assert.equal(s.osmResumo[1].situacao, 'não coletado no OSM');
+  assert.equal(s.shoppings.length, 1);
+  assert.equal(s.shoppings[0].fonte, 'maps e osm');
+  assert.equal(s.resultados[0].porte_shopping, 'sim');
+  // Sem lista: tudo o que está guardado, cada um uma vez.
+  assert.equal(t.montarSaida(dados, {}, OP, osm).universo.length, 1);
 });

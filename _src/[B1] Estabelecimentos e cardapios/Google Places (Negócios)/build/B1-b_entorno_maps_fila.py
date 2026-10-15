@@ -1,14 +1,16 @@
 """
-Bloco B1 - fila do coletor de entorno do Google Maps (maps_entorno.user.js).
+Bloco B1 - lista de estabelecimentos do coletor de entorno (maps_entorno.user.js),
+usada nas duas coletas do painel: Google Maps e OpenStreetMap.
 
 Objeto da fila: as luderias do B1 hoje, ou seja,
   - aprovadas na triagem manual das metrópoles (B1_triagem_manual_metro_av100.xlsx,
     resultado "aprovado"), menos as que saíram do objeto (EXCLUIDAS);
   - mais as "nova luderia" achadas pelo acervo de jogos
     (B1_acervodejogos_triagem.csv, decisão "nova luderia").
-Fora da fila ficam os estabelecimentos que já têm resumo de entorno coletado
-no Maps (maps_entorno_resumo_*.csv em _dados-brutos/estabelecimentos/), para
-não coletar duas vezes. Cada place_id aparece uma vez.
+A lista traz o objeto inteiro, já coletado ou não: o próprio coletor pula,
+em cada fonte, quem já está guardado no navegador (desde 15/10/2026; antes,
+este script tirava da fila quem já tinha resumo do Maps). Cada place_id
+aparece uma vez.
 
 Coordenadas: B1_localizacoes.jsonl. Os place_ids que ainda não estão lá são
 buscados na Places API (Place Details, só o campo location) e acrescentados ao
@@ -87,25 +89,14 @@ def completar_coordenadas(ids, loc):
             loc[det["id"]] = det["location"]
 
 
-def ja_coletados():
-    nomes = set()
-    for caminho in BRUTOS.glob("maps_entorno_resumo_*.csv"):
-        with open(caminho, newline="", encoding="utf-8-sig") as f:
-            nomes |= {r["nome"] for r in csv.DictReader(f, delimiter=";")}
-    return nomes
-
-
 def main():
     todos = alvos()
     loc = coordenadas()
     completar_coordenadas(list(todos), loc)
-    feitos = ja_coletados()
 
-    linhas, sem_coord, pulados = [], [], []
+    linhas, sem_coord = [], []
     for pid, (nome, capital) in todos.items():
-        if nome in feitos:
-            pulados.append(nome)
-        elif pid not in loc:
+        if pid not in loc:
             sem_coord.append(nome)
         else:
             linhas.append([pid, nome, capital, loc[pid]["latitude"], loc[pid]["longitude"]])
@@ -117,9 +108,9 @@ def main():
         w.writerow(["place_id", "nome", "capital_endereco", "lat", "lng"])
         w.writerows(linhas)
 
-    # conferência: objeto = fila + já coletados + sem coordenada
-    print(f"objeto: {len(todos)} | na fila: {len(linhas)} | já coletados: {len(pulados)} {pulados} | sem coordenada: {len(sem_coord)} {sem_coord}")
-    assert len(linhas) + len(pulados) + len(sem_coord) == len(todos), "soma não fecha"
+    # conferência: objeto = lista + sem coordenada
+    print(f"objeto: {len(todos)} | na lista: {len(linhas)} | sem coordenada: {len(sem_coord)} {sem_coord}")
+    assert len(linhas) + len(sem_coord) == len(todos), "soma não fecha"
     print(f"OK: {SAIDA}")
 
 

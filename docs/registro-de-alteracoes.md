@@ -817,3 +817,21 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: snowball dentro do coletor do Instagram. A fila de "seguindo" pulava as sementes sem abrir a lista (o link era procurado só pelo `href` exato `/<perfil>/following/`); "Parar" só valia na memória da página, e a fila, salva como ativa, voltava a rodar a cada recarga; o campo da fila era reescrito com a fila salva a cada carga, e não havia como apagá-la.
 **Depois**: snowball num userscript próprio, com painel à esquerda do coletor e armazenamento próprio (IndexedDB `igs-snowball`), que na primeira carga copia as listas, os ids e a fila do coletor (a fila entra parada). A lista é aberta pelo link (relativo, absoluto ou com parâmetros), pelo contador "seguindo" do cabeçalho ou, uma vez por semente, pelo endereço `/<perfil>/following/`; sem lista na tela, a página rola. "Parar" grava a fila como parada na hora, inclusive durante a troca de perfil; "Limpar fila" apaga a fila salva; o campo só recebe a fila salva quando está vazio. CSV com o mesmo nome e as mesmas colunas. O coletor perdeu o bloco do snowball e só lê a fila do outro script para não rolar sozinho durante ela. 21 testes passam.
 **Justificativa**: pedido do autor de corrigir a fila de "seguindo" (não abria a lista, não parava, não deixava apagar a fila) e de separar o snowball do coletor.
+
+### 10:34
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` (versão 2026.10.15-2) e `maps_entorno.test.cjs`
+**Antes**: painel com uma fila só do Google Maps; "Buscar áreas OSM que faltam" consultava a Overpass só para os estabelecimentos guardados com shopping do Maps a até 1000 m e sem resposta do OSM (não para os 55, nem para um só), e só trazia `shop=mall`; porte de shopping por um critério de cada vez (OSM, Abrasce ou avaliações); "Coletar fila" e "Exportar" sem dizer quantos estabelecimentos iam buscar ou exportar.
+**Depois**: painel em quatro passos sobre uma lista guardada (a população): 1. lista; 2. Google Maps ("Coletar no Maps os N que faltam", "Refazer N pendentes"); 3. OpenStreetMap ("Coletar no OSM os N que faltam", "Refazer OSM de todos"), uma consulta à Overpass por estabelecimento com estações de metrô, trem, VLT, BRT e tubo (até 2 km), shoppings com área, parques e praias (até 1.200 m); 4. "Exportar 5 CSVs": resumo e resultados do Maps, resumo e resultados do OSM e tabela de shoppings com área no OSM e avaliações no Maps na mesma linha (casamento espacial; dois cadastros no mesmo polígono contam uma vez). Critério de porte com "ambos" e "qualquer" além de OSM, avaliações e Abrasce; colunas `qt_shoppings_porte_osm_*` e `_aval_*` sempre presentes. Estabelecimento da lista sem coleta sai com linha e situação "não coletado". Espelho da Mail.ru na lista da Overpass (a principal respondia 406/429 em 15/10). A fila do Maps não consulta mais a Overpass. 24 testes passam.
+**Justificativa**: pedido do autor de deixar claro o que cada botão faz, refazer o entorno no OSM com a população atual (ex.: Bardo Mago) e com VLT, BRT e trem, e ter área e avaliações dos shoppings juntas para filtrar o ruído.
+
+### 10:34
+**Objeto**: `build/B1-b_entorno_maps_fila.py`, `entorno/B1_entorno_maps_fila.csv`
+**Antes**: a fila tirava quem já tinha `maps_entorno_resumo_*.csv` em `_dados-brutos/estabelecimentos/` (51 de 54).
+**Depois**: a lista traz o objeto inteiro (54 casas; soma = total); o coletor pula, em cada fonte, quem já está guardado.
+**Justificativa**: a mesma lista serve às duas coletas; o controle do que falta passou para o painel.
+
+### 10:34
+**Objeto**: `collect/B1-c_entorno_osm.py`, `collect/B1-c_entorno.py`, `build/B1-b_entorno.py`
+**Antes**: liam e gravavam `B1_entorno_osm_ancoras.jsonl` e `B1_entorno.jsonl` em `_dados-brutos/estabelecimentos/`.
+**Depois**: caminhos em `_dados-brutos/entornos/`, para onde o autor moveu os arquivos de entorno; `B1-c_entorno_osm.py` marcado como substituído pela coleta OSM do painel.
+**Justificativa**: os scripts quebravam depois da mudança de pasta.

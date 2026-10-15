@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 15/10/2026 | Entorno refeito no OSM pelo painel do `maps_entorno.user.js`, com a população atual e com trem, VLT e BRT; porte de shopping com área no OSM e avaliações no Maps lado a lado, critério escolhido na exportação (OSM, avaliações, ambos, qualquer ou Abrasce) | `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` |
 | 15/10/2026 | Snowball do Instagram em userscript próprio (`instagram_snowball.user.js`), separado do coletor de perfis; mesmo CSV de saída | `_src/[B1] Estabelecimentos e cardapios/Instagram/webscripts/` |
 | 15/10/2026 | Cardápios de prints, digitais e Takeat entram na planilha de itens e preços por conversão automática com regras de categoria; mesmo item em fotos de datas diferentes fica só na mais recente; jogos à venda ficam fora; couvert lúdico de print de práticas entra como couvert | `_src/[B1] Estabelecimentos e cardapios/Cardápios/build/B1-b_cardapios_transcricoes.py` |
 | 15/10/2026 | Horários de funcionamento pela Places API (`regularOpeningHours`, SKU Place Details Enterprise, o mesmo de nota e volume) só para as 54 casas do estudo | `B1-c_details.py --horarios`, `B1-b_horarios.py` |
