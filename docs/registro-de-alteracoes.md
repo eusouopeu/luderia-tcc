@@ -695,6 +695,12 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: a semente também é reconhecida pelo diálogo com título "Seguindo" (ou "Following") aberto sobre o perfil; o diálogo de seguidores, que tem "Seguindo" só nos botões das linhas, não conta. Dois testes novos (8 no total, todos passando).
 **Justificativa**: erro relatado pelo autor na primeira coleta (perfil da Flow Games).
 
+### 18:16
+**Objeto**: `_src/Web scripts/maps_entorno.user.js` (versão 2026.10.14-1) e `_src/Web scripts/maps_entorno.test.cjs`
+**Antes**: arquivos baixados como `maps_entorno_resumo_AAAA-MM-DD.csv` e `maps_entorno_resultados_AAAA-MM-DD.csv`, sempre com o mesmo nome e com a data em UTC (depois das 21h de Brasília, saía o dia seguinte); o fim de cada fila baixava tudo o que estava guardado, de modo que cada extração repetia as anteriores; buscas de metrô, BRT, VLT e shopping, com "Estação de trem" classificada como "outro"; classificação gravada na coleta e nunca refeita; lista lotada subdividida em quadrantes mesmo quando o Maps já completava a lista com lugares fora do mapa.
+**Depois**: nome começa pela data local e traz o estabelecimento, como no coletor de avaliações (`2026-10-14_sao_jogue_rio_vermelho_entorno_resumo.csv`; com mais de um, `..._3_estabelecimentos_entorno_...`); o fim da fila baixa só os estabelecimentos daquela fila, e "Exportar CSVs" segue baixando tudo; nova busca "estação de trem" e novo grupo `trem` (colunas `qt_estacoes_trem_500m`, `qt_estacoes_trem_1000m`, `dist_estacoes_trem_mais_proxima_lida_m`), com categorias de trem, ferroviária e nomes CPTM, SuperVia e Trensurb; classificação refeita na exportação; estabelecimento coletado antes da busca de trem fica com o grupo em branco, coluna `consultas_nao_feitas` e situação "busca nova não feita" (entra em "Refazer pendentes"); lista lotada com item fora do mapa visível não subdivide nem marca censura. Testes: 14 de 14 passando.
+**Justificativa**: pedido do autor ao revisar as três primeiras extrações: nomes de arquivo indistinguíveis e ausência dos trens metropolitanos, que em São Paulo, no Rio e em Porto Alegre funcionam como o metrô. O trem fica em coluna própria, sem somar ao metrô, para manter um grupo por resultado e deixar a soma "trilhos" para a análise.
+
 ## 2026/10/15
 
 ### 00:35
@@ -708,3 +714,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: a fila das 63 casas vinha do `B1_entorno.csv` (curadoria OSM antiga): incluía capitais regionais e reprovadas na triagem e omitia aprovadas.
 **Depois**: a fila sai da triagem manual das metrópoles (51 aprovadas, menos Machado Games e Ilusões Industriais) mais as 5 "nova luderia" do acervo (Bardo Mago, La Tabuleria, Toca do Rato, TabuClub, Tubaleria): 54 no objeto, 51 na fila (Ludus, Bodogami e Shelf já têm resumo de 14/10). As 26 coordenadas que faltavam foram buscadas na Places API (Place Details, só `location`) e acrescentadas ao jsonl. Script reproduzível, com conferência de soma (54 = 51 + 3 + 0).
 **Justificativa**: correção pedida pelo autor; a lista anterior estava desatualizada.
+
+### 01:23
+**Objeto**: merge de `origin/main` (PR #3, branch `claude/cool-einstein-qywu6n`) em `plano-de-negocios`: `maps_entorno.user.js` e `maps_entorno.test.cjs`, 4 CSVs `maps_entorno_*_2026-10-14*.csv`, `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`, este registro
+**Antes**: o GitHub tinha o coletor 2026.10.14-1 no caminho antigo `_src/Web scripts/` e os 4 CSVs soltos na raiz do repositório; o local tinha o coletor 2026.10.14-2 (não commitado) no caminho novo e os mesmos CSVs, idênticos byte a byte, sem versionar em `_dados-brutos/estabelecimentos/`.
+**Depois**: fica a versão local do coletor (contém tudo da 14-1); CSVs só em `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/`; decisões e registro do PR #3 mantidos, com o caminho novo do coletor; `AGORA.md` e a pendência do entorno apontam para os caminhos atuais. A branch `claude/gallant-cannon-bmcew0` (fila de 51, mesma do commit 714fee6) não entrou.
+**Justificativa**: pedido do autor de resolver a divergência entre o repositório local e o do GitHub.

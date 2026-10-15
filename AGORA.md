@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 14/10/2026, 18h15. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -9,6 +9,8 @@ Atualizado em 14/10/2026, 18h15. Semana 5 do cronograma (10/10 a 16/10). Próxim
 - **Snowball do Instagram (pronto para coletar):** coletor 2026.10.14-1 captura a lista "seguindo" (bloco "Snowball" do painel). Salvar os CSV em `dados/[B1]…/_dados-brutos/redes_sociais/seguindo/`, rodar `B1-b_instagram_seguindo.py`, classificar `B1_snowball_candidatos.csv` e rodar `B1-a_instagram_snowball.py`. Prioridade abaixo do B2.
 
 - **Conferência de conceitos:** checklists em `bibliografia/leituras-P1/` (25 conceitos) e `leituras-P2/` (34), todos `[AV]`. Ao ler, trocar o `[AV]` da linha pela página; o vigia propaga. Situação em `bibliografia/relatorio-conceitos.md`.
+
+- **Entorno no Maps** (`_src/[B1]…/Google Places (Negócios)/webscripts/maps_entorno.user.js`, versão 2026.10.14-2): busca de trem, buscas dispensadas onde o sistema não existe, estação mais próxima e nome de arquivo com data e estabelecimento. Fila das 51 casas em `entorno/B1_entorno_maps_fila.csv`; reinstalar o carregador (`python3 _src/extras/gerar_carregadores.py --abrir`) e rodar a fila.
 
 ## Próximos 3 passos
 

@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 14/10/2026 | Entorno no Maps: trem metropolitano em grupo próprio (`trem`), separado do metrô; a análise soma metro + trem quando quiser "trilhos" | `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` |
+| 14/10/2026 | CSVs do entorno nomeados `AAAA-MM-DD_<estabelecimento>_entorno_<resumo\|resultados>.csv`; o fim da fila baixa só os estabelecimentos daquela fila | `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` |
 | 14/10/2026 | Machado Games e Ilusões Industriais saem do objeto (não são luderias: loja de videogame e loja de TCG sem acervo de tabuleiro); Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria entram nos bancos do Notion | `docs/registro-de-alteracoes.md`, 14/10 18:14 |
 | 14/10/2026 | Snowball pelo Instagram para checar a cobertura do B1: listas "seguindo" capturadas sem pedido próprio (só o que a página recebe ao rolar), conta seguida por k ou mais casas aprovadas vira candidata, classificação manual, precisão e sensibilidade por corte e captura e recaptura de Chapman como limite inferior; brutos com @ de pessoas fora do git, só agregados e perfis de negócio publicados | `_instrucoes/4_metodologia.md` §3 (Cobertura) |
 | 14/10/2026 | Marcador único `[AV]` (a verificar) no lugar de `[A VERIFICAR]`; citação de conceito com página a conferir leva `[AV-<ID>]`, ligado ao `checklist-conceitos.md` da leva | `_instrucoes/10_biblio-apendices.md` |
