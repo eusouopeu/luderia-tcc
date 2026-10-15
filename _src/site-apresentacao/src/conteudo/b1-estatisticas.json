@@ -1492,7 +1492,8 @@
    "regiao": "Centro-Oeste",
    "baixa": 11.0,
    "mediana": 12.0,
-   "alta": 15.5
+   "alta": 15.5,
+   "completa": false
   },
   {
    "nome": "Flow Games - Burgers, Cards & Comunidade",
@@ -1500,7 +1501,8 @@
    "regiao": "Sudeste",
    "baixa": 17.0,
    "mediana": 20.0,
-   "alta": 41.9
+   "alta": 41.9,
+   "completa": false
   },
   {
    "nome": "Café Geek Cafeteria e Ludoteca",
@@ -1508,7 +1510,8 @@
    "regiao": "Sudeste",
    "baixa": 15.75,
    "mediana": 22.5,
-   "alta": 30.25
+   "alta": 30.25,
+   "completa": false
   },
   {
    "nome": "Alçapão Jogos",
@@ -1516,7 +1519,8 @@
    "regiao": "Sul",
    "baixa": 22.0,
    "mediana": 24.0,
-   "alta": 34.0
+   "alta": 34.0,
+   "completa": false
   },
   {
    "nome": "Chef on Play",
@@ -1524,7 +1528,8 @@
    "regiao": "Sul",
    "baixa": 28.4,
    "mediana": 32.7,
-   "alta": 37.6
+   "alta": 37.6,
+   "completa": false
   },
   {
    "nome": "FORTALÚDICA - BURGERS & JOGOS",
@@ -1532,7 +1537,8 @@
    "regiao": "Centro-Oeste",
    "baixa": 32.0,
    "mediana": 38.5,
-   "alta": 45.0
+   "alta": 45.0,
+   "completa": false
   },
   {
    "nome": "Place Games",
@@ -1540,7 +1546,8 @@
    "regiao": "Sudeste",
    "baixa": 18.18,
    "mediana": 39.5,
-   "alta": 53.5
+   "alta": 53.5,
+   "completa": false
   },
   {
    "nome": "Luderia Carioca",
@@ -1548,7 +1555,8 @@
    "regiao": "Sudeste",
    "baixa": 35.0,
    "mediana": 44.0,
-   "alta": 54.5
+   "alta": 54.5,
+   "completa": false
   },
   {
    "nome": "BoardZ Game Pub",
@@ -1556,7 +1564,8 @@
    "regiao": "Sul",
    "baixa": 43.0,
    "mediana": 47.5,
-   "alta": 58.0
+   "alta": 58.0,
+   "completa": false
   },
   {
    "nome": "Cineplay- Restaurante e Jogos",
@@ -1564,7 +1573,8 @@
    "regiao": "Sul",
    "baixa": 34.9,
    "mediana": 48.8,
-   "alta": 67.67
+   "alta": 67.67,
+   "completa": false
   },
   {
    "nome": "Covil Game Bar",
@@ -1572,7 +1582,8 @@
    "regiao": "Sudeste",
    "baixa": 43.0,
    "mediana": 52.0,
-   "alta": 60.0
+   "alta": 60.0,
+   "completa": false
   },
   {
    "nome": "Bardo Mago",
@@ -1580,7 +1591,8 @@
    "regiao": "Sudeste",
    "baixa": 40.5,
    "mediana": 54.0,
-   "alta": 71.5
+   "alta": 71.5,
+   "completa": false
   },
   {
    "nome": "Utopia Games & Food",
@@ -1588,7 +1600,8 @@
    "regiao": "Centro-Oeste",
    "baixa": 55.0,
    "mediana": 57.0,
-   "alta": 84.5
+   "alta": 84.5,
+   "completa": false
   },
   {
    "nome": "Bodogami Restaurante e Cafeteria",
@@ -1596,7 +1609,8 @@
    "regiao": "Sudeste",
    "baixa": 40.0,
    "mediana": 60.0,
-   "alta": 76.0
+   "alta": 76.0,
+   "completa": false
   },
   {
    "nome": "Arcadea Gaming Pub",
@@ -1604,7 +1618,8 @@
    "regiao": "Sul",
    "baixa": 52.75,
    "mediana": 65.0,
-   "alta": 84.0
+   "alta": 84.0,
+   "completa": false
   },
   {
    "nome": "Encounter | Jogos de Tabuleiro | Board Games",
@@ -1612,7 +1627,8 @@
    "regiao": "Sudeste",
    "baixa": 62.8,
    "mediana": 67.8,
-   "alta": 76.8
+   "alta": 76.8,
+   "completa": false
   },
   {
    "nome": "Arena BG | Jogos de Tabuleiro | Hamburgueria",
@@ -1620,7 +1636,8 @@
    "regiao": "Sudeste",
    "baixa": 52.25,
    "mediana": 68.5,
-   "alta": 96.75
+   "alta": 96.75,
+   "completa": true
   },
   {
    "nome": "Ludoteca BGC",
@@ -1628,7 +1645,8 @@
    "regiao": "Centro-Oeste",
    "baixa": 64.5,
    "mediana": 70.0,
-   "alta": 76.75
+   "alta": 76.75,
+   "completa": true
   },
   {
    "nome": "Castelos Bar & Boardgames",
@@ -1636,7 +1654,8 @@
    "regiao": "Sudeste",
    "baixa": 55.57,
    "mediana": 71.8,
-   "alta": 83.55
+   "alta": 83.55,
+   "completa": false
   },
   {
    "nome": "Toca do Rato - Pizzaria e Jogos de Tabuleiro",
@@ -1644,7 +1663,8 @@
    "regiao": "Sul",
    "baixa": 64.67,
    "mediana": 71.95,
-   "alta": 81.5
+   "alta": 81.5,
+   "completa": false
   },
   {
    "nome": "Ludoteca Sidequest",
@@ -1652,7 +1672,8 @@
    "regiao": "Norte",
    "baixa": 56.75,
    "mediana": 73.5,
-   "alta": 81.25
+   "alta": 81.25,
+   "completa": true
   },
   {
    "nome": "La Tabuleria",
@@ -1660,7 +1681,8 @@
    "regiao": "Sudeste",
    "baixa": 58.5,
    "mediana": 75.0,
-   "alta": 87.5
+   "alta": 87.5,
+   "completa": true
   },
   {
    "nome": "Cartola Luderia Bar",
@@ -1668,7 +1690,8 @@
    "regiao": "Sudeste",
    "baixa": 58.75,
    "mediana": 75.0,
-   "alta": 78.0
+   "alta": 78.0,
+   "completa": false
   },
   {
    "nome": "Ludus Luderia",
@@ -1676,7 +1699,8 @@
    "regiao": "Sudeste",
    "baixa": 63.0,
    "mediana": 82.0,
-   "alta": 92.5
+   "alta": 92.5,
+   "completa": true
   },
   {
    "nome": "Comdado Bar e Jogos",
@@ -1684,7 +1708,8 @@
    "regiao": "Sudeste",
    "baixa": 71.0,
    "mediana": 85.5,
-   "alta": 98.75
+   "alta": 98.75,
+   "completa": true
   },
   {
    "nome": "Shelf Bar e Jogos",
@@ -1692,7 +1717,8 @@
    "regiao": "Sudeste",
    "baixa": 74.0,
    "mediana": 97.0,
-   "alta": 121.0
+   "alta": 121.0,
+   "completa": true
   }
  ],
  "metropoles": [

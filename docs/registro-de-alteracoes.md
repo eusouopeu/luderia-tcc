@@ -931,3 +931,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: 2.218 avaliações no recorte e 1.440 com texto (build, sobre as 51 aprovadas do B1, juntando as coletas por `review_id` e mantendo a linha mais recente); Notion com 1.628 linhas.
 **Depois**: 2.423 avaliações no recorte e 1.593 com texto nos arquivos mais completos das 54 casas do `B1_resumo_estabelecimentos.xlsx`.
 **Efeitos colaterais**: os números do B2 citados fora da análise de conteúdo seguem a base do build até ela ser refeita com a triagem corrigida (próximo passo 1 do AGORA). A diferença vem do conjunto de casas (5 novas dentro, Machado e Ilusões fora) e da regra de escolha dos arquivos.
+
+### 12:00
+**Objeto**: `_src/site-apresentacao/src/sections/S8Panorama.jsx`, `src/conteudo/s8-b1-resultados.json`, `b1-estatisticas.json` e `B1-a_estatistica_descritiva.py` (campo `completa` nas cestas)
+**Antes**: o gráfico "Cesta por pessoa, casa a casa" mostrava as 26 casas com cardápio, inclusive as 19 sem couvert no cardápio, cuja cesta soma couvert 0; os cartões do resumo tinham seis indicadores.
+**Depois**: o gráfico mostra só as 7 casas com os três itens da cesta no cardápio (couvert, bebida, entrada ou prato), com a linha na mediana dessas casas; os cartões ganham itens no cardápio, posts de 01/09 a 01/10 e comentários nesses posts, por casa, em média ou mediana. As demais estatísticas da cesta seguem com as 26 casas. Planilhas recalculadas sem erro.
+**Justificativa**: pedido do autor.

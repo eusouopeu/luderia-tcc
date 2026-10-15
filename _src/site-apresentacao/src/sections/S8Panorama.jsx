@@ -14,6 +14,14 @@ const T = c.panorama;
 const G = D.geral;
 const GRUPOS = [...new Set(Object.values(G).map((v) => v.grupo))];
 const salvador = (p) => p.metropole === "Salvador";
+// Só cestas com os três itens no cardápio (couvert, bebida, entrada ou prato).
+const CESTAS = D.cestas.filter((p) => p.completa);
+const mediana = (xs) => {
+  const v = [...xs].sort((a, b) => a - b);
+  const m = Math.floor(v.length / 2);
+  return v.length % 2 ? v[m] : (v[m - 1] + v[m]) / 2;
+};
+const MEDIANA_CESTAS = mediana(CESTAS.map((p) => p.mediana));
 const MEDIDAS = [{ id: "media", rotulo: "Média" }, { id: "mediana", rotulo: "Mediana" }];
 const MODOS = [{ id: "simples", rotulo: "Simplificado" }, { id: "completo", rotulo: "Completo" }];
 const nomeMedida = { media: "média", mediana: "mediana" };
@@ -65,6 +73,9 @@ export default function S8Panorama() {
         <Kpi rotulo={`Cesta (${nomeMedida[medida]})`} valor={reais(G.cesta_mediana[medida])} detalhe={`cesta mediana de ${G.cesta_mediana.n} casas com cardápio`} />
         <Kpi rotulo={`Seguidores (${nomeMedida[medida]})`} valor={milhar(G.seguidores[medida])} detalhe="no Instagram" />
         <Kpi rotulo={`Horas por semana (${nomeMedida[medida]})`} valor={num(G.horas_semana[medida], medida === "media" ? 1 : 0)} detalhe="abertas" />
+        <Kpi rotulo={`Itens no cardápio (${nomeMedida[medida]})`} valor={num(G.itens_com_preco[medida], 1)} detalhe={`itens com preço, em ${G.itens_com_preco.n} casas`} />
+        <Kpi rotulo={`Posts de 01/09 a 01/10 (${nomeMedida[medida]})`} valor={num(G.n_posts_periodo[medida], 1)} detalhe={`por perfil, em ${G.n_posts_periodo.n} casas`} />
+        <Kpi rotulo={`Comentários de 01/09 a 01/10 (${nomeMedida[medida]})`} valor={num(G.comentarios_periodo[medida], medida === "media" ? 1 : 0)} detalhe="total nos posts do período, por perfil" />
       </div>
 
       <div className="mt-6">
@@ -104,16 +115,16 @@ export default function S8Panorama() {
         ))}
 
         <CartaoGrafico titulo={T.cestas.titulo} descricao={T.cestas.descricao} className="md:col-span-2">
-          <ResponsiveContainer width="100%" height={D.cestas.length * 22 + 40}>
-            <BarChart data={D.cestas} layout="vertical" margin={{ top: 4, right: 16, left: 0, bottom: 0 }}>
+          <ResponsiveContainer width="100%" height={CESTAS.length * 30 + 40}>
+            <BarChart data={CESTAS} layout="vertical" margin={{ top: 4, right: 16, left: 0, bottom: 0 }}>
               <CartesianGrid horizontal={false} stroke={COR.grade} />
               <XAxis type="number" tick={eixo} tickFormatter={(v) => `R$ ${v}`} />
               <YAxis type="category" dataKey="nome" tick={{ ...eixo, fontSize: 10 }} width={130}
                 tickFormatter={(v) => (v.length > 20 ? `${v.slice(0, 19)}…` : v)} interval={0} />
               <Tooltip content={<Dica formatar={(p) => [p.nome, p.metropole, `baixa ${reais(p.baixa)}`, `mediana ${reais(p.mediana)}`, `alta ${reais(p.alta)}`]} />} />
-              <ReferenceLine x={G.cesta_mediana.mediana} stroke={COR.rosa} strokeDasharray="4 3" />
+              <ReferenceLine x={MEDIANA_CESTAS} stroke={COR.rosa} strokeDasharray="4 3" />
               <Bar dataKey={(p) => [p.baixa, p.alta]} radius={3} barSize={12}>
-                {D.cestas.map((p) => <Cell key={p.nome} fill={salvador(p) ? COR.rosa : COR.azul} />)}
+                {CESTAS.map((p) => <Cell key={p.nome} fill={salvador(p) ? COR.rosa : COR.azul} />)}
               </Bar>
             </BarChart>
           </ResponsiveContainer>

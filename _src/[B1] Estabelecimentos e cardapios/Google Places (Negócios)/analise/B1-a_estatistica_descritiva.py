@@ -461,8 +461,11 @@ def site(d):
         "fechamento": contagem_hora("fecha_tarde_h"),
         "dispersao_instagram": pontos(["seguidores", "interacoes_por_post"]),
         "dispersao_google": pontos(["volume_avaliacoes", "avaliacao_media"]),
+        # completa = os três itens da cesta no cardápio (couvert, bebida, entrada ou prato);
+        # sem couvert no cardápio, a cesta soma couvert 0.
         "cestas": sorted(({"nome": r.nome, "metropole": r.metropole, "regiao": r.regiao,
-                           "baixa": float(r.cesta_baixa), "mediana": float(r.cesta_mediana), "alta": float(r.cesta_alta)}
+                           "baixa": float(r.cesta_baixa), "mediana": float(r.cesta_mediana), "alta": float(r.cesta_alta),
+                           "completa": bool(r.cobra_couvert == 1)}
                           for r in d.itertuples() if pd.notna(r.cesta_mediana)), key=lambda x: x["mediana"]),
         "metropoles": metro,
         "regioes": reg,
