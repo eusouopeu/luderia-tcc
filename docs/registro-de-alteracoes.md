@@ -914,6 +914,12 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: publicadas as abas 08 a 10 (estatística descritiva do B1: panorama, por metrópole e por região) com `pnpm run deploy`; conferido no endereço público, sem erro no console.
 **Justificativa**: pedido do autor.
 
+### 11:16
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/maps_entorno_resultados_2026-10-14.csv` e `maps_entorno_resumo_2026-10-14.csv`; cópias `(1)` removidas; `docs/pendencias.md`
+**Antes**: dois pares de CSVs do entorno de 14/10 (sem sufixo e com `(1)`). Os sem sufixo tinham Ludus e Shelf (499 linhas em resultados, 2 em resumo); os `(1)`, exportação cumulativa do coletor, tinham os mesmos e mais Bodogami (787 e 3 linhas). Todas as linhas dos sem sufixo estão nos `(1)` (conferido linha a linha, diferença zero). O `B1-b_entorno_maps_fila.py` lê `maps_entorno_resumo_*.csv` e via os dois resumos.
+**Depois**: um arquivo por tipo, com o conteúdo do `(1)` sob o nome sem sufixo; nenhuma linha perdida. A raiz do repositório já estava limpa desde o PR #4.
+**Justificativa**: pedido do autor de organizar os CSVs do entorno e resolver as duplicatas.
+
 ### 11:26
 **Objeto**: `_src/site-apresentacao/src/conteudo/` (`s1-estrutura.json` a `s7-contribuicoes.json`, `site.json`) e grades de `S3Metodologia.jsx`, `S5Modelo.jsx` e `S6Tecnicas.jsx`
 **Antes**: abas 01 a 07 com o desenho anterior: luderia para o público casual, blocos A (jogos da Ludopedia), B (estabelecimentos nas 27 capitais) e C (5 avaliações por casa), hipóteses H1-H9 e seis objetivos.
