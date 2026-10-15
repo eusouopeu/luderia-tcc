@@ -895,3 +895,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: abas 01 a 07 com o desenho anterior: luderia para o público casual, blocos A (jogos da Ludopedia), B (estabelecimentos nas 27 capitais) e C (5 avaliações por casa), hipóteses H1-H9 e seis objetivos.
 **Depois**: conteúdo do desenho atual: plano de negócios baseado em evidências para Salvador; questão de pesquisa, objetivo geral e sete objetivos da introdução; conceitos do rascunho do cap. 2 em quatro grupos; blocos B1 a B4 com recorte, tamanho e procedimento da metodologia; Quadro 03 de itens (A01-E08); modelo de análise por objetivo (Quadros 04 e 05), com H1, H3 e H5 como extras; técnicas por área do plano e situação da coleta em 15/10; contribuições, limitações da §3.9 e próximos passos do cronograma. Abas 04 e 05 renomeadas para "Quadro de itens" e "Modelo de análise", como no projeto. Build e lint sem erro; conferido no navegador.
 **Justificativa**: pedido do autor de atualizar as abas 01 a 07 com as informações vigentes de `textos/planejamento`, `docs` e `_instrucoes`.
+
+### 11:29
+**Objeto**: site de apresentação no GitHub Pages (https://eusouopeu.github.io/luderia-tcc/, branch `gh-pages`)
+**Antes**: abas 01 a 07 publicadas com o desenho anterior (público casual, blocos A a C).
+**Depois**: publicadas as abas 01 a 07 atualizadas (commit 475bb95) com `pnpm run deploy`; conferido no endereço público, sem erro no console.
+**Justificativa**: pedido do autor.
