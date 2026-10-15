@@ -159,7 +159,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 - [ ] Busca de dados secundários sobre o setor de bares, lanchonetes e espaços de jogos
 - [ ] Estatística descritiva dos concorrentes (preço, cardápio e avaliação por metrópole)
 - [ ] Cotações em Salvador (ponto, mobiliário e acervo)
-- [ ] Estrutura do modelo financeiro (premissas, cálculos e cenários)
+- [x] Estrutura do modelo financeiro (premissas, cálculos e cenários)
 
 ### Semana 5
 
@@ -169,7 +169,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 
 - [ ] Organização das bases e do dicionário de dados
 - [ ] Segunda codificação das 200 avaliações (a partir de 16/10)
-- [ ] Primeira versão do registro de premissas
+- [x] Primeira versão do registro de premissas
 
 ### Semana 6
 

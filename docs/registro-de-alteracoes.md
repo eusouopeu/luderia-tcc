@@ -1053,3 +1053,21 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: no OSM, mesmo nome, mesmo grupo e mesma rede até 400 m contam uma vez; bonde de Santa Teresa e parada ou plataforma sem nome vão para "outro" (com `observacao`); no Maps, busca "estação tubo" só em Curitiba (dispensada nas demais), o que deixa as 6 casas de Curitiba pendentes até a recoleta; `versao_script` nos dois resumos. Simulado sobre a coleta de 12h49: VLT/BRT a 1000 m cai de 88 para 59 e metrô de 45 para 44, somas fechando em 54/54.
 **Justificativa**: pedido do autor: analisar a última rodada do entorno e, se não tivesse extraído todas as variáveis em Maps e OSM, achar o problema e corrigir o extrator. A rodada não extraiu o VLT/BRT de forma confiável em nenhuma das duas fontes.
 
+
+### 16:26
+**Objeto**: branches `fix/entorno-maps-distantes` (Mac), `main` (cap. 3, PR #5) e `claude/project-thread-anqzoo` (PR #6), juntadas em `claude/project-thread-cc98ij`; `AGORA.md`, `docs/pendencias.md`, `docs/decisoes.md`, `docs/registro-de-alteracoes.md`, `textos/planejamento/status_capitulos.md`; cópias `(1)` dos CSVs do entorno de 14/10 em `_dados-brutos/entornos/`
+**Antes**: o Mac tinha 29 commits fora do main (caps. 2 e 5, Bardin, auditoria, site, entorno) e não tinha o cap. 3; o main não tinha os 29 commits; o PR #6 mexia nos mesmos documentos de controle e na pasta antiga `estabelecimentos/` dos CSVs do entorno.
+**Depois**: uma branch com os três; nos conflitos, mantidas as duas versões (registro na ordem da hora; status com cap. 2 do Mac e cap. 3 do main; divergências de estilo, triagem e 100 a 150 concorrentes devolvidas às pendências). As cópias `(1)`, idênticas aos arquivos sem sufixo (`cmp`), saíram também da pasta nova `entornos/`.
+**Justificativa**: pedido do autor (item 1 das melhorias de 15/10): evitar perda de texto e conflitos maiores.
+
+### 16:26
+**Objeto**: `_src/Modelo financeiro/analise/financeiro-a_modelo.py` (novo), `dados/Modelo financeiro/financeiro_premissas.csv` (novo), `dados/Modelo financeiro/financeiro_modelo.xlsx` (novo), `.gitignore` (logs do modelo)
+**Antes**: cap. 9 sem modelo nem registro de premissas; tarefas "Estrutura do modelo financeiro" (semana 4) e "Primeira versão do registro de premissas" (semana 5) abertas.
+**Depois**: registro com 53 premissas (R, C, I, M), cada uma com faixa, fonte, nível e justificativa; o script calcula investimento, receitas com rampa, Simples por anexo e RBT12, DRE e fluxo mensais de 60 meses, VPL, TIR, payback descontado, ponto de equilíbrio, tornado, ruptura das 5 premissas críticas, coerência e a conferência de 13 premissas contra os arquivos do B1 e do B4 (13 conferem). Provável: investimento de R$ 390 mil, VPL de R$ 465 mil a TMA real de 14,8%, payback de 30 meses; pessimista com VPL negativo (−R$ 1,7 milhão); otimista com VPL de R$ 5,5 milhões. Críticas: permanência, ocupação em dia útil, horas abertas, ticket de A&B e ocupação no fim de semana; três delas só em N6.
+**Justificativa**: pedido do autor (item 2 das melhorias de 15/10); rascunho do cap. 9 vence em 23/10.
+
+### 16:26
+**Objeto**: `textos/capitulos/8_aspectos_juridicos.md` (novo)
+**Antes**: cap. 8 não iniciado, prazo vencido em 09/10.
+**Depois**: rascunho com 8.1 (SLU, CNAE, Simples em dois anexos, Quadro 01 com a carga por cenário), 8.2 (Quadro 02 de licenças em Salvador, bebida alcoólica, LGPD) e 8.3 (locação, uso de jogos comprados, marca). Cerca de 3,9 páginas com as referências do capítulo; normas `[AV]`, exceto a LC 123/2006 conferida no texto compilado de 14/09/2026.
+**Justificativa**: pedido do autor (item 3 das melhorias de 15/10). Sem travessão e sem voz passiva, porque P5 e a skill de escrita ainda divergem (pendência aberta).

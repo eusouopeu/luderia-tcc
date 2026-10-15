@@ -26,18 +26,23 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 - **Status da coleta no Notion** ("Luderias – Status da coleta", 15/10): 54 casas com status por fonte e, em cada linha, o que falta e como fechar. Horários (54 casas) e cardápios de 27 casas consolidados em 15/10. Lacunas que restam: acervo sem lista (25), porte de shopping no entorno (22) e Instagram (18 casas parciais ou sem coleta).
 
+- **Modelo financeiro v0** (15/10): `_src/Modelo financeiro/analise/financeiro-a_modelo.py` lê o registro de premissas (`dados/Modelo financeiro/financeiro_premissas.csv`, 53 linhas com faixa, fonte e nível) e grava `financeiro_modelo.xlsx` (indicadores, DRE e fluxo por cenário, tornado, ruptura, coerência, conferência das fontes). Provável: investimento de R$ 390 mil, VPL de R$ 465 mil, payback descontado de 30 meses. Premissas críticas: permanência, ocupação em dia útil e no fim de semana (só N6 até o B3), horas abertas e ticket de A&B. Rodar de novo depois de cada premissa trocada.
+
+- **Cap. 8 (jurídico):** rascunho em 15/10 (`textos/capitulos/8_aspectos_juridicos.md`): SLU, CNAE 5611-2/05, Simples (A&B no anexo I, couvert e eventos no anexo III), licenças em Salvador, LGPD, locação, jogos e marca. Normas `[AV]` e três `[conferir]`.
+
 ## Próximos 3 passos
 
-1. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
-2. Preparar as visitas de retorno de **domingo, 18/10** (app de observação e `textos/instrumentos/roteiro_observacao_sao_jogue.md`).
-3. Revisar o rascunho do cap. 3 (`textos/capitulos/3_metodologia_plano_luderia.md`) e fechar os pontos `[conferir]`.
+1. Preparar as visitas de retorno de **domingo, 18/10** (app de observação e `textos/instrumentos/roteiro_observacao_sao_jogue.md`): permanência e ocupação são as premissas críticas do modelo financeiro e hoje estão só em N6.
+2. Trocar as premissas N6 de custo e investimento por cotações (aluguel do ponto, reforma, contador, utilidades) e rodar o modelo de novo.
+3. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
 
 ## Bloqueado ou aguardando
 
 - Coleta do B2 no navegador: os carregadores do Tampermonkey apontam para a pasta antiga `_src/Web scripts/`. Antes da próxima coleta, rodar `python3 _src/extras/gerar_carregadores.py --abrir --todos` e instalar os cinco no Vivaldi.
 - Validação do dicionário e cap. 5.2: aguardam a recodificação cega da amostra do Bardin (§2 do instrumento).
 - Estimativa de ocupação e fluxo (B3): aguarda as visitas de retorno (18/10).
-- Rascunhos atrasados frente ao cronograma: cap. 8 (o cap. 5 tem esboço, com lacunas) ([status](textos/planejamento/status_capitulos.md)).
+- Rascunhos: o cap. 5 tem esboço com lacunas; o cap. 9 tem o modelo, mas não o texto ([status](textos/planejamento/status_capitulos.md)).
+- Mac: está na branch `fix/entorno-maps-distantes`. Depois do merge do PR desta sessão, `git checkout main && git pull` para trazer o cap. 3, o cap. 8 e o modelo financeiro.
 
 ## Onde está o resto
 

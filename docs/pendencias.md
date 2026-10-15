@@ -14,7 +14,7 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 2. **Hipótese do público potencial** (30 anos ou mais, casado ou com filhos, que frequentaria luderias se o ambiente, o público ou o serviço mudassem): registrar como emenda ao registro prévio ou guardar como estudo futuro (cap. 11.5)? Formulações testáveis em `docs/bibliografia/diagnostico-teorico.md` §9.
 3. **PDFs da P2 que faltam:** Kimes e Robson (2004) no eCommons (bloqueou o download automático); Graham e Harvey, Delmar e Shane, Lambrecht e Skiera (SSRN), Li e Hitt (CORE), Anderson e Magruder (eScholarship), Xia et al. (UNAL) e Novaes e Kanyat (volume da revista) têm cópia aberta, mas só pelo navegador; os demais, pelo Portal CAPES ou pela biblioteca.
 4. **Snowball do Instagram: corte k e fundamentação.** Escolher o corte k depois de classificar os candidatos (`B1_snowball_corte.csv`: menor k com precisão aceitável sem perder sensibilidade) e decidir se faz uma segunda onda com as luderias novas como sementes. Conferir antes de citar: LGPD, art. 4º, II, b e art. 7º, §4º; Resolução CNS 510/2016, art. 1º, parágrafo único; Goodman (1961) e Biernacki e Waldorf (1981) para o snowball `[AV]`. Decidir também o que fazer com @arainhadosdados, semente coletada sem ser casa aprovada (sai do build ou a casa entra nas aprovadas).
-5. **Replanejar os rascunhos atrasados** (cap. 8; o cap. 5 tem esboço desde 15/10) ou acionar o plano de corte do cronograma?
+5. **Replanejar os rascunhos atrasados** (o cap. 5 tem esboço desde 15/10; cap. 8 com rascunho desde 15/10) ou acionar o plano de corte do cronograma?
 
 6. **Bibliografia v2 (15/10/2026).** Escolher, conceito a conceito, entre a obra original dos checklists P1/P2 e o substituto de `bibliografia/bibliografia-v2/bibliografia-v2.md`; ao adotar um substituto, trocar a linha no checklist da leva para o vigia propagar. R10, R28 e R29 seguem com o original.
 
@@ -42,6 +42,9 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 - **Fazer as auditorias.** As amostras estão em `_dados-brutos/<pasta>/auditoria/` (scripts `*-a_auditoria_*.py`, 15/10). Entorno: seguir `textos/instrumentos/roteiro_auditoria_entorno_B1.md`, primeiro os itens do Maps e, depois da recoleta, os do OSM. A amostra do B2 saiu da base do build de 14/10 (2.218 no recorte): rodar `B2-a_auditoria_avaliacoes.py` de novo depois de refazer o build com a triagem corrigida (a chave por `review_id` mantém as já sorteadas). Falta o script que lê as conferências e calcula a taxa de erro com o intervalo de Wilson.
 - **Entorno: corrigir o que o parecer apontou** (`docs/parecer_entorno_B1.md` §5 e §7): exportar de novo o arquivo de 51 casas (sem o filtro de 50 km); `B1-b_resumo.py` escolher a coleta pela data do nome, não pela data de modificação. BRT de Curitiba e versão nos CSVs resolvidos no coletor 2026.10.15-4, à espera da recoleta.
 - **Sumarização do B2.**
+
+12. **Modelo financeiro v0, escolhas a confirmar:** cobrar couvert de todos os clientes (R14 = 100%; só 7 de 26 concorrentes com cardápio cobram), equipe de 7 CLT mais o sócio gestor, 12 mesas em 150 m² e 300 títulos. Cada uma muda o VPL e pode virar decisão no cap. 6.3 ou 7.
+13. **Cap. 8, `[conferir]`:** anexo I para alimentos e bebidas (e não anexo II por preparo próprio), CNAE secundário 9329-8/99 para o couvert e o número da lei de uso do solo de Salvador; prazo de guarda dos dados de reserva (LGPD).
 
 ## Divergências entre documentos, ainda sem correção
 
@@ -73,7 +76,7 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 - **Rascunho do cap. 3, pontos `[conferir]`:** origem das 5 luderias novas (busca manual, Instagram ou outra); data e horário efetivos das visitas de 03/10; consulta à orientação sobre a dispensa do Comitê de Ética; números do B2 depois de incluir as 5 novas. A seção 3.5 (registro prévio, extra) ficou fora, e as seguintes subiram um número.
 
-- **Entorno no Maps, três primeiras extrações (14/10):** os CSVs estão em `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/maps_entorno_*_2026-10-14.csv` (um resumo e um resultados, com Ludus, Shelf e Bodogami) e não foram conferidos linha a linha; foram coletados antes da busca de trem. Recoletar os três estabelecimentos com a versão atual do coletor e conferir.
+- **Entorno no Maps, três primeiras extrações (14/10):** os CSVs estão em `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/entornos/maps_entorno_*_2026-10-14.csv` (um resumo e um resultados, com Ludus, Shelf e Bodogami) e não foram conferidos linha a linha; foram coletados antes da busca de trem. Recoletar os três estabelecimentos com a versão atual do coletor e conferir.
 - Perguntas abertas para a literatura (validação de avaliações online como medida de visitas, estabilidade da razão avaliações ÷ visitantes, limiar de concordância para variáveis raras, peso de comida, serviço e ambiente, taxa de desconto de negócio pequeno, termos de uso do Google Maps): `docs/bibliografia/lacunas-bibliograficas.md` §6.
 - Datas e horários das visitas: o roteiro de campo (`textos/instrumentos/roteiro_observacao_sao_jogue.md`) ainda marca 18h00 às 21h00 nas quatro visitas, e o cronograma (semana 4) chama a de 03/10 de "visita pré-teste". Confirmar se as primeiras visitas foram em 03/10 com entrada às 19h.
 

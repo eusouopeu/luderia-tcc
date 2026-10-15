@@ -1,0 +1,54 @@
+id,grupo,premissa,unidade,tipo,pessimista,provavel,otimista,fonte,nivel,justificativa_faixa,chave_fonte
+R01,receita,Mesas no salão,mesas,decisao,12,12,12,Decisão do autor (cap. 7.2),N6,Decisão de projeto; igual nos três cenários até o layout do cap. 7,
+R02,receita,Lugares por mesa,pessoas/mesa,decisao,4,4,4,Decisão do autor (cap. 7.2),N6,Mesa padrão de quatro lugares; igual nos três cenários,
+R03,receita,Horas abertas por dia,h/dia,premissa,6.5,7.55,9,"B1, horários do Places API (regularOpeningHours), 54 casas, 15/10/2026: horas por semana ÷ dias abertos",N3,"Percentis 25, 50 e 75 das 54 concorrentes",b1:horas_dia
+R04,receita,Permanência média por grupo,h,premissa,3,2.5,2,Estimativa do autor até a contagem do B3 (visitas de 03/10 e 18/10),N6,Faixa larga de propósito: o B3 substitui os três valores; permanência maior reduz o giro,
+R05,receita,Dias úteis abertos por semana,dias,decisao,4,4,4,"Decisão do autor; B1: mediana de 6 dias abertos por semana",N3,Terça a sexta; igual nos três cenários,
+R06,receita,Dias de fim de semana abertos por semana,dias,decisao,2,2,2,"Decisão do autor; B1: mediana de 6 dias abertos por semana",N3,Sábado e domingo; igual nos três cenários,
+R07,receita,Taxa de ocupação em dia útil (madura),%,premissa,15,25,35,Estimativa do autor até a contagem do B3,N6,Faixa larga até o B3; premissa crítica provável (ver tornado),
+R08,receita,Taxa de ocupação no fim de semana (madura),%,premissa,35,50,65,Estimativa do autor até a contagem do B3,N6,Faixa larga até o B3; premissa crítica provável (ver tornado),
+R09,receita,Meses até a ocupação madura,meses,premissa,12,9,6,"Faixa de 6 a 12 meses de _instrucoes/8_financeiro.md §5",N4,Rampa linear; pessimista mais lenta,
+R10,receita,Ocupação no mês 1 em relação à madura,%,premissa,30,40,50,Estimativa do autor,N6,Nenhum cenário abre com ocupação madura (§5),
+R11,receita,Crescimento real da receita após a maturação,% a.a.,premissa,-2,0,2,Estimativa do autor,N6,Valores em preços constantes; provável sem crescimento real,
+R12,receita,Ticket médio de alimentos e bebidas por cliente,R$,premissa,39.62,53.0,67.1,"B1, cardápios de 26 casas (B1_resumo_estabelecimentos.xlsx, aba cesta): bebida + entrada ou prato, medianas por casa",N3,"Percentis 25, 50 e 75 entre as casas",b1:ticket_ab
+R13,receita,Preço do couvert lúdico por pessoa,R$,premissa,18.13,20.0,24.13,"B1, cardápios das 6 casas que cobram couvert (aba cesta)",N3,"Percentis 25, 50 e 75 entre as casas que cobram",b1:couvert
+R14,receita,Clientes que pagam couvert,%,decisao,100,100,100,Decisão do autor (cap. 6.3); só 7 de 26 casas com cardápio cobram couvert,N3,Couvert único por pessoa; a cobrança em si é decisão a confirmar em 6.3,
+R15,receita,Eventos fechados por mês,eventos/mês,premissa,1,2,4,Estimativa do autor,N6,Aniversários e confraternizações com reserva do salão,
+R16,receita,Receita média por evento além do consumo,R$,premissa,300,500,800,Estimativa do autor,N6,Taxa de reserva; o consumo entra no ticket,
+C01,custo_variavel,CMV de alimentos e bebidas,% da receita de A&B,premissa,38,32,25.9,"IBGE, PAS 2023, restaurantes e outros serviços de alimentação e bebidas (Brasil): mercadorias e materiais ÷ receita bruta = 25,9%",N2 + N4,Otimista = PAS; provável e pessimista acima para negócio pequeno sem escala de compras,pas:cmv
+C02,custo_variavel,Taxas de meios de pagamento,% da receita,premissa,3.0,2.5,2.0,Estimativa do autor [AV: tabela de adquirentes],N6,"Mistura de débito, crédito e Pix",
+C03,custo_variavel,Reposição e desgaste do acervo,% do valor do acervo ao ano,premissa,20,15,10,Estimativa do autor,N6,Peças perdidas e jogos substituídos,
+C04,custo_fixo,Área do ponto,m²,decisao,150,150,150,Decisão do autor (cap. 7.1),N6,Igual nos três cenários até o layout do cap. 7,
+C05,custo_fixo,Aluguel comercial,R$/m²/mês,premissa,65.0,54.15,45.0,"FipeZAP, locação comercial, Salvador, 07/2026 (B4)",N2,Provável = FipeZAP; ±20% para ponto acima ou abaixo da média da cidade até as cotações (N1),fipezap:salvador
+C06,custo_fixo,IPTU e condomínio,R$/m²/mês,premissa,12,9,6,Estimativa do autor,N6,Até as cotações do ponto,
+C07,pessoal,Monitores de jogos,pessoas,decisao,2,2,2,Decisão do autor (cap. 7.5),N6,Um por turno sobreposto; igual nos três cenários,
+C08,pessoal,Salário do monitor de jogos (CBO 371410 recreador),R$/mês,premissa,1722.04,1653.75,1621.0,"Novo CAGED, salário de admissão, Salvador, 08/2025 a 07/2026, todas as atividades (B4)",N2,"Percentis 75, 50 e 25",caged:todas as atividades:371410
+C09,pessoal,Garçons,pessoas,decisao,2,2,2,Decisão do autor (cap. 7.5),N6,Igual nos três cenários,
+C10,pessoal,Salário do garçom (CBO 513405),R$/mês,premissa,1625.09,1625.09,1625.09,"Novo CAGED, salário de admissão, Salvador, 08/2025 a 07/2026, CNAE 56 (B4)",N2,"Percentis 75, 50 e 25 (iguais: piso)",caged:CNAE 56 - alimentação:513405
+C11,pessoal,Cozinheiros,pessoas,decisao,1,1,1,Decisão do autor (cap. 7.5),N6,Igual nos três cenários,
+C12,pessoal,Salário do cozinheiro (CBO 513205),R$/mês,premissa,1893.45,1700.0,1625.09,"Novo CAGED, salário de admissão, Salvador, 08/2025 a 07/2026, CNAE 56 (B4)",N2,"Percentis 75, 50 e 25",caged:CNAE 56 - alimentação:513205
+C13,pessoal,Auxiliares de cozinha,pessoas,decisao,1,1,1,Decisão do autor (cap. 7.5),N6,Igual nos três cenários,
+C14,pessoal,Salário do auxiliar de cozinha (CBO 513505),R$/mês,premissa,1650.0,1625.09,1625.09,"Novo CAGED, salário de admissão, Salvador, 08/2025 a 07/2026, CNAE 56 (B4)",N2,"Percentis 75, 50 e 25",caged:CNAE 56 - alimentação:513505
+C15,pessoal,Barmen,pessoas,decisao,1,1,1,Decisão do autor (cap. 7.5),N6,Igual nos três cenários,
+C16,pessoal,Salário do barman (CBO 513420),R$/mês,premissa,1702.96,1625.09,1625.09,"Novo CAGED, salário de admissão, Salvador, 08/2025 a 07/2026, CNAE 56 (B4)",N2,"Percentis 75, 50 e 25",caged:CNAE 56 - alimentação:513420
+C17,pessoal,Pró-labore do sócio gestor (referência: CBO 141510 gerente de restaurante),R$/mês,premissa,3151.18,2500.0,1985.0,"Novo CAGED, salário de admissão, Salvador, 08/2025 a 07/2026, CNAE 56 (B4)",N2,"Percentis 75, 50 e 25; sem CPP patronal nos anexos I e III do Simples",caged:CNAE 56 - alimentação:141510
+C18,pessoal,"Encargos e provisões sobre a folha CLT (FGTS, 13º, férias e 1/3, FGTS sobre provisões, multa rescisória)",% do salário,premissa,33,31,29,"Lei 8.036/1990 (FGTS 8%), Lei 4.090/1962 (13º), CLT art. 129 e CF art. 7º XVII (férias + 1/3); CPP no DAS (LC 123/2006, anexos I e III) [AV]",N1,29% sem provisão de multa; 33% com multa de 40% do FGTS provisionada,
+C19,pessoal,Benefícios (vale-transporte e alimentação),% do salário,premissa,14,10.6,8,"IBGE, PAS 2023, restaurantes: benefícios ÷ salários = 10,6%",N2,"Provável = PAS; pessimista +3,4 p.p. e otimista −2,6 p.p.",pas:beneficios
+C20,custo_fixo,"Utilidades (energia, água, gás, internet)",R$/mês,premissa,5000,4000,3000,Estimativa do autor [AV: cotação],N6,Até as contas de um ponto parecido,
+C21,custo_fixo,Marketing,R$/mês,premissa,3000,2000,1500,Estimativa do autor,N6,Redes sociais e impulsionamento (cap. 6),
+C22,custo_fixo,Contabilidade,R$/mês,premissa,1300,1000,800,Estimativa do autor [AV: cotação],N6,Até três cotações de escritórios,
+C23,custo_fixo,"Sistemas (PDV, reservas)",R$/mês,premissa,400,300,200,Estimativa do autor [AV: cotação],N6,,
+C24,custo_fixo,"Manutenção, limpeza terceirizada e materiais",R$/mês,premissa,2500,1800,1200,Estimativa do autor,N6,,
+C25,custo_fixo,ECAD (música ambiente),R$/mês,premissa,500,300,200,Estimativa do autor [AV: tabela do ECAD],N6,,
+C26,custo_fixo,Seguro do ponto,R$/mês,premissa,300,200,150,Estimativa do autor,N6,,
+I01,investimento,Reforma e adequação do ponto,R$/m²,premissa,1200,900,600,Estimativa do autor [AV: orçamento],N6,Inclui adequações do AVCB e da acessibilidade (cap. 8),
+I02,investimento,"Mobiliário (mesas, cadeiras, estantes)",R$,premissa,55000,40000,30000,Estimativa do autor [AV: orçamento],N6,,
+I03,investimento,Equipamentos de cozinha e bar,R$,premissa,75000,55000,40000,Estimativa do autor [AV: orçamento],N6,,
+I04,investimento,Títulos no acervo inicial,títulos,decisao,300,300,300,"Decisão do autor; B1: acervo declarado de 17 casas, percentil 25 de 239 e mediana de 468 títulos",N3,Igual nos três cenários,
+I05,investimento,Preço médio por título,R$,premissa,350,280,220,Estimativa do autor [AV: preços de lojas],N6,,
+I06,investimento,"Pré-operacional (registro, licenças, AVCB, projeto)",R$,premissa,20000,15000,10000,Estimativa do autor (cap. 8.2),N6,,
+I07,investimento,Caução do aluguel,meses de aluguel,premissa,3,3,2,"Lei 8.245/1991, art. 38, §2º (caução em dinheiro até 3 meses)",N1,,
+I08,investimento,Estoque inicial,R$,premissa,15000,10000,8000,Estimativa do autor,N6,,
+I09,investimento,Vida útil de reforma e mobiliário,anos,decisao,10,10,10,"RFB, IN 1.700/2017, anexo III (taxa de 10% a.a. para móveis e máquinas) [AV]",N1,Só para o valor residual,
+M01,macro,Selic real de longo prazo,% a.a.,premissa,7.3,6.3,5.3,"BCB, Focus, 11/09/2026, medianas para 2030: Selic 10,0% e IPCA 3,5% → (1,10 ÷ 1,035) − 1",N2,"±1 p.p. (desvio-padrão da Selic 2030 no Focus: 1,08 p.p.)",focus:selic_real
+M02,macro,Prêmio de risco de pequeno negócio,p.p. a.a.,premissa,10,8,6,Estimativa do autor [AV: Damodaran],N6,TMA real = (1 + M01)(1 + M02) − 1,
