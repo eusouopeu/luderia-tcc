@@ -8,7 +8,7 @@ const source = fs.readFileSync(__dirname + '/maps_entorno.user.js', 'utf8');
 function carregar() {
   const ambiente = { __test: {}, localStorage: { getItem: () => null, setItem() {}, removeItem() {} }, location: { href: '', pathname: '/maps/' }, document: { querySelector: () => null, querySelectorAll: () => [] } };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Entorno do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { classificar, suspeito, distancia, deslocar, mPorPx, planejarBusca, coberturaReal, lerCartao, lerFila, lerListaShoppings, cidadeDoEndereco, unir, nomesParecidos, marcarDuplicatas, mesmoShopping, areaCaixa, porteOsm, porteAbrasce, montarSaida, precisaSubdividir, quadrantes, colsResumo });})();';
+    + 'Object.assign(globalThis.__test, { classificar, suspeito, distancia, deslocar, mPorPx, planejarBusca, coberturaReal, lerCartao, lerFila, lerListaShoppings, cidadeDoEndereco, unir, nomesParecidos, marcarDuplicatas, mesmoShopping, areaCaixa, porteOsm, porteAbrasce, montarSaida, precisaSubdividir, quadrantes, colsResumo, nomesArquivos, dataLocal, foraDoMapa, tarefasIniciais, consultasDispensadas });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_entorno.user.js' });
   return ambiente.__test;
 }
@@ -22,13 +22,16 @@ test('classifica cada resultado pela própria categoria e nome', () => {
   assert.equal(t.classificar('Parada dos Navios', 'Estação de VLT'), 'vlt_brt');
   assert.equal(t.classificar('Salvador Shopping', 'Shopping center'), 'shopping');
   assert.equal(t.classificar('Lojas Renner', 'Loja de roupas'), 'outro');
-  assert.equal(t.classificar('Estação Barra Funda', 'Estação de trem'), 'outro');
+  assert.equal(t.classificar('Estação Barra Funda', 'Estação de trem'), 'trem');
+  assert.equal(t.classificar('Estação Central do Brasil', 'Estação ferroviária'), 'trem');
+  assert.equal(t.classificar('Estação Luz - CPTM', 'Estação de transporte público'), 'trem');
+  assert.equal(t.classificar('Trem Corcovado', 'Atração turística'), 'outro');
   assert.equal(t.classificar('Instituto X', 'Laboratório de metrologia'), 'outro');
 });
 
 test('estação classificada como outro dentro do raio vai para revisão', () => {
-  assert.equal(t.suspeito({ grupo_auto: 'outro', distancia_m: 400, nome: 'Estação Recife', categoria_maps: 'Estação de trem' }), true);
-  assert.equal(t.suspeito({ grupo_auto: 'outro', distancia_m: 1400, nome: 'Estação Recife', categoria_maps: 'Estação de trem' }), false);
+  assert.equal(t.suspeito({ grupo_auto: 'outro', distancia_m: 400, nome: 'Estação Recife', categoria_maps: 'Estação de transporte público' }), true);
+  assert.equal(t.suspeito({ grupo_auto: 'outro', distancia_m: 1400, nome: 'Estação Recife', categoria_maps: 'Estação de transporte público' }), false);
   assert.equal(t.suspeito({ grupo_auto: 'outro', distancia_m: 100, nome: 'Padaria', categoria_maps: 'Padaria' }), false);
 });
 
@@ -116,14 +119,16 @@ test('porte pelo OSM e pela Abrasce', () => {
 });
 
 test('resumo: revisão, duplicata, falha em branco e soma que fecha', () => {
-  const local = { chave: 'x', place_id: 'x', nome: 'X', cidade: 'Salvador', lat: -12.99, lng: -38.47, buscas: 5, falhas: ['estação VLT'], censura: [], cobertura_insuf: [], subdivididas: [], cobertura_min_m: 1200, osm: { malls: [] }, coletado_em: 'h' };
-  const r = (nome, grupo_auto, distancia_m, extra = {}) => ({ origem: 'x', nome, grupo_auto, distancia_m, lat: -12.99 + distancia_m / 111320, lng: -38.47, n_avaliacoes: '1', place_id: nome, ...extra });
+  const local = { consultas: ['estação de metrô', 'estação de trem', 'estação BRT', 'estação VLT', 'shopping center'], chave: 'x', place_id: 'x', nome: 'X', cidade: 'Salvador', lat: -12.99, lng: -38.47, buscas: 5, falhas: ['estação VLT'], censura: [], cobertura_insuf: [], subdivididas: [], cobertura_min_m: 1200, osm: { malls: [] }, coletado_em: 'h' };
+  const categoria = { metro: 'Estação de metrô', shopping: 'Shopping center', outro: 'Padaria' };
+  const r = (nome, grupo_auto, distancia_m, extra = {}) => ({ origem: 'x', nome, grupo_auto, categoria_maps: categoria[grupo_auto], distancia_m, lat: -12.99 + distancia_m / 111320, lng: -38.47, n_avaliacoes: '1', place_id: nome, ...extra });
   const dados = {
     locais: [local],
     resultados: [
       r('Pernambués', 'metro', 330), r('Iguatemi', 'metro', 950),
       r('Estação Pernambués - Linha 2', 'metro', 340),
-      r('Estação Recife', 'outro', 600, { categoria_maps: 'Estação de trem' }),
+      r('Estação Recife', 'outro', 600, { categoria_maps: 'Estação de transporte público' }),
+      r('Estação Luz', 'outro', 700, { categoria_maps: 'Estação de trem' }),
       r('Empresarial 104', 'shopping', 800),
       r('Padaria', 'outro', 200), r('Longe', 'metro', 2500),
     ],
@@ -134,11 +139,67 @@ test('resumo: revisão, duplicata, falha em branco e soma que fecha', () => {
   assert.equal(l.qt_estacoes_metro_1000m, 3, 'Pernambués, Iguatemi e a revisada');
   assert.equal(l.qt_estacoes_vlt_brt_1000m, '', 'consulta de VLT falhou: em branco, não zero');
   assert.equal(l.qt_shoppings_1000m, 1);
+  assert.equal(l.qt_estacoes_trem_1000m, 1, 'reclassificada na exportação');
   assert.equal(l.qt_shoppings_porte_1000m, 0);
   assert.equal(l.duplicatas_fundidas, 1);
   assert.equal(l.revisoes_manuais, 1);
   assert.equal(l.situacao, 'falhou');
-  assert.equal(l.qt_estacoes_metro_1000m + l.qt_shoppings_1000m + l.qt_outros_1000m, l.resultados_ate_1000m);
+  assert.equal(l.qt_estacoes_metro_1000m + l.qt_estacoes_trem_1000m + l.qt_shoppings_1000m + l.qt_outros_1000m, l.resultados_ate_1000m);
   assert.equal(resultados.find((x) => x.nome === 'Estação Recife').grupo, 'metro');
   for (const c of t.colsResumo()) assert.ok(c in l, c);
+});
+
+test('estabelecimento coletado antes da busca de trem: grupo trem em branco e pendente', () => {
+  const local = { chave: 'y', place_id: 'y', nome: 'Y', lat: -12.99, lng: -38.47, buscas: 4, falhas: [], censura: [], cobertura_insuf: [], subdivididas: [], osm: { malls: [] }, coletado_em: 'h' };
+  const { resumo } = t.montarSaida({ locais: [local], resultados: [] }, {}, { porte: 'osm', area_min_m2: 5000, abrasce: [] });
+  assert.equal(resumo[0].qt_estacoes_trem_1000m, '');
+  assert.equal(resumo[0].qt_estacoes_metro_1000m, 0);
+  assert.equal(resumo[0].consultas_nao_feitas, 'estação de trem');
+  assert.equal(resumo[0].situacao, 'busca nova não feita');
+});
+
+test('nome do arquivo: data local primeiro, depois o estabelecimento', () => {
+  assert.deepEqual(json(t.nomesArquivos([{ nome: 'São Jogue - Rio Vermelho' }], '2026-10-14')), {
+    resumo: '2026-10-14_sao_jogue_rio_vermelho_entorno_resumo.csv',
+    resultados: '2026-10-14_sao_jogue_rio_vermelho_entorno_resultados.csv',
+  });
+  assert.equal(t.nomesArquivos([{ nome: 'A' }, { nome: 'B' }, { nome: 'C' }], '2026-10-14', 'parcial-010').resumo, '2026-10-14_3_estabelecimentos_entorno_resumo_parcial-010.csv');
+  assert.equal(t.dataLocal(new Date(2026, 9, 14, 23, 30)), '2026-10-14', 'às 23h30 ainda é dia 14');
+});
+
+test('lista lotada com item fora do mapa visível não subdivide', () => {
+  const jan = { w: 1024, h: 768, painel: 480 };
+  const b = t.planejarBusca(-12.98, -38.46, 1000, jan);
+  assert.equal(t.foraDoMapa({ lat: -12.985, lng: -38.46 }, b, jan), false);
+  assert.equal(t.foraDoMapa({ lat: -12.90, lng: -38.46 }, b, jan), true, '9 km ao norte');
+});
+
+test('busca dispensada em cidade sem o sistema; cidade fora da tabela faz todas', () => {
+  const consultas = (cidade) => t.tarefasIniciais({ cidade }).map((x) => x.consulta);
+  assert.deepEqual(json(consultas('Salvador')), ['estação de metrô', 'estação BRT', 'estação VLT', 'shopping center']);
+  assert.deepEqual(json(consultas('São Paulo')), ['estação de metrô', 'estação de trem', 'estação BRT', 'shopping center']);
+  assert.deepEqual(json(consultas('Curitiba')), ['estação BRT', 'shopping center']);
+  assert.equal(consultas('Rio de Janeiro').length, 5);
+  assert.equal(consultas('Duque de Caxias').length, 5, 'fora da tabela: todas');
+  assert.equal(consultas('').length, 5);
+});
+
+test('dispensada sai zero, não branco; estação mais próxima entre metrô, trem e VLT/BRT', () => {
+  const local = { chave: 'c', place_id: 'c', nome: 'C', cidade: 'Curitiba', lat: -25.43, lng: -49.27, buscas: 2, falhas: [], censura: [], cobertura_insuf: [], subdivididas: [], osm: { malls: [] }, coletado_em: 'h',
+    consultas: ['estação BRT', 'shopping center'], consultas_dispensadas: ['estação de metrô', 'estação de trem', 'estação VLT'] };
+  const r = (nome, categoria_maps, distancia_m) => ({ origem: 'c', nome, categoria_maps, distancia_m, lat: -25.43 + distancia_m / 111320, lng: -49.27, n_avaliacoes: '1', place_id: nome });
+  const { resumo } = t.montarSaida({ locais: [local], resultados: [r('Estação Tubo Central', 'Estação BRT', 640), r('Estação Tubo Praça', 'Estação BRT', 900)] }, {}, { porte: 'osm', area_min_m2: 5000, abrasce: [] });
+  const l = resumo[0];
+  assert.equal(l.qt_estacoes_metro_1000m, 0);
+  assert.equal(l.qt_estacoes_trem_1000m, 0);
+  assert.equal(l.qt_estacoes_vlt_brt_1000m, 2);
+  assert.equal(l.situacao, 'ok');
+  assert.equal(l.consultas_dispensadas, 'estação de metrô | estação de trem | estação VLT');
+  assert.equal(l.dist_estacao_mais_proxima_lida_m, 640);
+  assert.equal(l.estacao_mais_proxima, 'Estação Tubo Central');
+  assert.equal(l.tipo_estacao_mais_proxima, 'vlt_brt');
+
+  // Busca de transporte que falhou deixa a estação mais próxima em branco.
+  const falhou = { ...local, falhas: ['estação BRT'] };
+  assert.equal(t.montarSaida({ locais: [falhou], resultados: [] }, {}, { porte: 'osm', area_min_m2: 5000, abrasce: [] }).resumo[0].dist_estacao_mais_proxima_lida_m, '');
 });
