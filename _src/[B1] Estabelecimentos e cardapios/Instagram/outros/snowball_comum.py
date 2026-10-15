@@ -8,6 +8,10 @@ BRUTOS = ic.PASTA_B1 / "_dados-brutos" / "redes_sociais"
 BRUTOS_SEGUINDO = BRUTOS / "seguindo"          # CSVs do coletor (fora do git)
 BRUTOS_SNOWBALL = BRUTOS / "snowball"          # candidatos com @ de pessoas (fora do git)
 CANDIDATOS = BRUTOS_SNOWBALL / "B1_snowball_candidatos.csv"
+# Recorte para leitura: seguidas por CORTE_LEITURA+ sementes; a classe preenchida
+# nele volta para a lista de candidatos na execução seguinte do build.
+CORTE_LEITURA = 3
+CANDIDATOS_LEITURA = BRUTOS_SNOWBALL / f"B1_snowball_candidatos_grau{CORTE_LEITURA}.csv"
 SAIDA = ic.PASTA_REDES / "snowball"            # só agregados e perfis de negócio (no git)
 
 CURADORIA = ic.PASTA_B1 / "estabelecimentos" / "2_recorte" / "B1_curadoria.csv"

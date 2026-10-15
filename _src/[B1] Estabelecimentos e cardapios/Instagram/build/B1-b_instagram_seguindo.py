@@ -29,8 +29,17 @@ Saídas:
       uma linha por conta com grau >= CORTE_GRAVAR, com as colunas de
       classificação manual (classe, metropole, avaliacoes_maps, observacao),
       preservadas de uma execução para a outra;
+  _dados-brutos/redes_sociais/snowball/B1_snowball_candidatos_grau3.csv  (fora do git)
+      recorte para leitura: candidatos seguidos por 3+ sementes, novas primeiro;
+      o que for classificado nele volta para a lista de candidatos (vale sobre ela);
   redes_sociais/snowball/B1_snowball_sementes.csv
-      uma linha por semente: capturados, declarados e % capturada;
+      uma linha por semente: capturados, declarados, % capturada e se a semente é
+      casa aprovada (a análise supõe sementes = casas aprovadas);
+  redes_sociais/snowball/B1_snowball_proximas_sementes.csv e .txt
+      casas aprovadas ainda sem lista coletada, na ordem sugerida de coleta:
+      rodízio entre capitais, começando pelas com menos sementes; dentro da
+      capital, a mais seguida primeiro. O .txt (um @ por linha) vai direto para
+      "Coletar fila de seguindo" do coletor;
   redes_sociais/snowball/B1_snowball_grau.csv
       nº de contas por grau de entrada (fecha com o total de contas distintas);
   redes_sociais/snowball/B1_snowball_grau_aprovadas.csv
@@ -124,8 +133,13 @@ def main():
         n_seguindo_declarado=("n_seguindo_declarado", "first"))
     decl = pd.to_numeric(sem["n_seguindo_declarado"], errors="coerce")
     sem["capturado_pct"] = (100 * sem["n_capturados"] / decl).round(1)
+    apr_perfis = set(ic.casas()["perfil"])
+    sem["semente_aprovada"] = ["sim" if s in apr_perfis else "não" for s in sem.index]
     sem.to_csv(sc.SAIDA / "B1_snowball_sementes.csv", sep=";")
     ic.conferir_soma(sem["n_capturados"], len(pares), "pares por semente")
+    fora = sem.index[sem["semente_aprovada"] == "não"].tolist()
+    if fora:
+        print(f"sementes fora das casas aprovadas (entram no grau; a análise supõe só aprovadas): {fora}")
     incompletas = sem[sem["capturado_pct"] < 95]
     if len(incompletas):
         print("sementes com menos de 95% da lista capturada:", incompletas["capturado_pct"].to_dict())
@@ -150,6 +164,7 @@ def main():
         n_sementes=("n_sementes", "max"), eh_semente=("eh_semente", "max"))
     por_casa["eh_semente"] = por_casa["eh_semente"].map({True: "sim", False: "não"})
     por_casa.to_csv(sc.SAIDA / "B1_snowball_grau_aprovadas.csv", sep=";")
+    proximas_sementes(casas, sementes)
 
     apr, cur_h, acv_h = conhecidos()
     cand = grau[grau["n_sementes"] >= CORTE_GRAVAR].copy()
@@ -161,12 +176,15 @@ def main():
         (m.group(0) if (m := TERMOS.search(ic.sem_acento(f"{u} {n}"))) else "") for u, n in zip(cand.index, cand["nome"])]
     for col in sc.COLS_MANUAIS:
         cand[col] = ""
-    # Preserva a classificação manual já feita.
-    if sc.CANDIDATOS.exists():
-        velho = pd.read_csv(sc.CANDIDATOS, sep=";", dtype=str).fillna("").set_index("seguido")
+    # Preserva a classificação manual já feita; a do recorte de leitura vale sobre a da lista.
+    for arq in (sc.CANDIDATOS, sc.CANDIDATOS_LEITURA):
+        if not arq.exists():
+            continue
+        velho = pd.read_csv(arq, sep=";", dtype=str, encoding="utf-8-sig").fillna("").set_index("seguido")
         for col in sc.COLS_MANUAIS:
             if col in velho.columns:
-                cand[col] = velho[col].reindex(cand.index).fillna("")
+                novo = velho[col].reindex(cand.index).fillna("")
+                cand[col] = novo.where(novo != "", cand[col])
     # Casa aprovada já tem tipo no B1: entra classificada.
     tipo_apr = casas.drop_duplicates("perfil").set_index("perfil")["tipo_casa"]
     vazia = (cand["classe"] == "") & cand.index.isin(tipo_apr.index)
@@ -174,12 +192,53 @@ def main():
     cand.index.name = "seguido"
     cand = cand.sort_values(["n_sementes", "situacao"], ascending=[False, True])
     cand.to_csv(sc.CANDIDATOS, sep=";")
+    recorte_leitura(cand)
     print(f"\ncandidatos (seguidos por {CORTE_GRAVAR}+ sementes): {len(cand)} | "
           f"classificados: {(cand['classe'] != '').sum()}")
     print(cand.groupby("situacao").size().to_string())
     novas = cand[(cand["situacao"] == "nova") & (cand["termo_no_nome"] != "")]
     print(f"\nnovas com termo do meio no nome: {len(novas)} (as 15 mais seguidas)")
     print(novas[["nome", "n_sementes", "termo_no_nome"]].head(15).to_string())
+
+
+def recorte_leitura(cand):
+    """Candidatos com grau >= CORTE_LEITURA, para leitura e classificação: novas primeiro."""
+    ordem_sit = {"nova": 0, "no Acervo de Jogos": 1, "na curadoria do Maps": 2, "aprovada no B1": 3}
+    r = cand[cand["n_sementes"] >= sc.CORTE_LEITURA].copy()
+    r["_o"] = r["situacao"].map(ordem_sit)
+    r = r.sort_values(["_o", "n_sementes", "termo_no_nome"], ascending=[True, False, False]).drop(columns="_o")
+    r["link"] = "https://www.instagram.com/" + r.index + "/"
+    cols = ["nome", "n_sementes", "situacao", "termo_no_nome", *sc.COLS_MANUAIS, "link", "sementes", "verificado", "eh_semente"]
+    r[cols].to_csv(sc.CANDIDATOS_LEITURA, sep=";", encoding="utf-8-sig")
+    print(f"\nrecorte para leitura (seguidas por {sc.CORTE_LEITURA}+ sementes): {len(r)} contas, "
+          f"{(r['classe'] == '').sum()} sem classe -> {sc.CANDIDATOS_LEITURA.name}")
+    print(r.groupby("situacao").size().to_string())
+
+
+def proximas_sementes(casas, sementes):
+    """Casas aprovadas sem lista coletada, em rodízio entre capitais (menos sementes primeiro)."""
+    feitas = set(casas.loc[casas["perfil"].isin(sementes), "estabelecimento"])
+    falta = casas[~casas["estabelecimento"].isin(feitas)]
+    # Casa com dois @: fica o mais seguido pelas sementes.
+    falta = falta.sort_values("n_sementes", ascending=False).drop_duplicates("estabelecimento")
+    ja = casas[casas["estabelecimento"].isin(feitas)].drop_duplicates("estabelecimento").groupby("capital").size()
+    grupos = {cap: g.sort_values(["n_sementes", "perfil"], ascending=[False, True])
+              for cap, g in falta.groupby("capital")}
+    caps = sorted(grupos, key=lambda c: (ja.get(c, 0), c))
+    linhas, rodada = [], 0
+    while any(rodada < len(g) for g in grupos.values()):
+        for cap in caps:
+            if rodada < len(grupos[cap]):
+                linhas.append(grupos[cap].iloc[rodada])
+        rodada += 1
+    prox = pd.DataFrame(linhas)[["perfil", "estabelecimento", "capital", "tipo_casa", "n_sementes"]]
+    prox.insert(0, "ordem", range(1, len(prox) + 1))
+    prox.to_csv(sc.SAIDA / "B1_snowball_proximas_sementes.csv", sep=";", index=False)
+    (sc.SAIDA / "B1_snowball_proximas_sementes.txt").write_text("\n".join(prox["perfil"]) + "\n", encoding="utf-8")
+    total = casas["estabelecimento"].nunique()
+    ic.conferir_soma(pd.Series([len(feitas), len(prox)]), total, "casas aprovadas (coletadas + próximas)")
+    print(f"próximas sementes: {len(prox)} casas aprovadas sem lista "
+          f"({len(feitas)} de {total} já coletadas) -> B1_snowball_proximas_sementes.txt")
 
 
 if __name__ == "__main__":

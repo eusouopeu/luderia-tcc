@@ -720,3 +720,22 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o GitHub tinha o coletor 2026.10.14-1 no caminho antigo `_src/Web scripts/` e os 4 CSVs soltos na raiz do repositório; o local tinha o coletor 2026.10.14-2 (não commitado) no caminho novo e os mesmos CSVs, idênticos byte a byte, sem versionar em `_dados-brutos/estabelecimentos/`.
 **Depois**: fica a versão local do coletor (contém tudo da 14-1); CSVs só em `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/`; decisões e registro do PR #3 mantidos, com o caminho novo do coletor; `AGORA.md` e a pendência do entorno apontam para os caminhos atuais. A branch `claude/gallant-cannon-bmcew0` (fila de 51, mesma do commit 714fee6) não entrou.
 **Justificativa**: pedido do autor de resolver a divergência entre o repositório local e o do GitHub.
+
+### 01:46
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Instagram/webscripts/instagram_coletor.user.js` (versão 2026.10.15-1) e `instagram_coletor.test.cjs`
+**Antes**: a resposta da lista "seguindo" ia para a semente da janela aberta no momento em que chegava (resposta atrasada após fechar a janela se perdia); a rolagem só parava após 8 voltas sem conta nova e o CSV era baixado à mão, perfil por perfil; cada semente exigia abrir o perfil, clicar em "seguindo", rolar e baixar.
+**Depois**: o coletor guarda o id numérico de cada perfil e atribui a resposta pela URL do pedido (`/friendships/<id>/following/`), com a janela aberta como reserva; a rolagem para 2 voltas depois de alcançar o total declarado e, com "Download automático", baixa o CSV; novo "Coletar fila de seguindo" (lista de sementes): abre o perfil, clica em "seguindo", rola, baixa, pausa 45-90 s e segue; o estado fica no localStorage, a fila continua sozinha após cada recarga e, parada, retoma da mesma lista; perfis sem link "seguindo" ou cuja janela não abre são pulados com o motivo; lista já rolada até o fim e baixada não é pedida de novo. Testes: 12 de 12 passando.
+**Justificativa**: revisão das 11 primeiras listas (dados íntegros, sem bug) e pedido do autor de implementar as melhorias que reduzem o trabalho manual.
+
+### 01:46
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Instagram/build/B1-b_instagram_seguindo.py` e `outros/snowball_comum.py`; saídas novas `redes_sociais/snowball/B1_snowball_proximas_sementes.csv` e `.txt` e `_dados-brutos/redes_sociais/snowball/B1_snowball_candidatos_grau3.csv` (fora do git); `B1_snowball_sementes.csv` com a coluna `semente_aprovada`
+**Antes**: só a lista de candidatos com grau 2+ (590 contas) para classificar; nenhuma indicação de que semente coletar a seguir nem de semente fora das casas aprovadas.
+**Depois**: recorte para leitura com as 237 contas seguidas por 3+ sementes (novas primeiro, com link e sementes que seguem); a classe preenchida nele volta para a lista de candidatos e vale sobre ela; lista das 41 casas aprovadas ainda sem lista coletada, em rodízio entre capitais (menos sementes primeiro; dentro da capital, a mais seguida), com o `.txt` pronto para a fila do coletor (conferência 10 + 41 = 51, diferença 0); aviso de semente fora das aprovadas (@arainhadosdados, A Rainha dos Dados, Vila Velha).
+**Justificativa**: pedido do autor de separar as seguidas por 3+ perfis para análise e de priorizar as próximas sementes.
+
+### 01:46 (divergência)
+**Objeto**: sementes do snowball
+**Antes**: `B1-a_instagram_snowball.py` supõe que as sementes são as casas aprovadas no B1.
+**Depois**: @arainhadosdados (A Rainha dos Dados) foi coletada como semente sem estar em `B1_instagram_aprovadas.csv`; entra no grau de entrada de 74 contas.
+**Efeitos colaterais**: infla levemente a precisão e a sensibilidade por corte; decidir se a semente sai do build ou se a casa entra nas aprovadas.
+

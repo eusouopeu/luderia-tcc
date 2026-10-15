@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.14-2
+// @version      2026.10.15-1
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis, captura a lista "seguindo" (snowball) e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -30,6 +30,11 @@
  *    bloco "Sugestões para você". "CSV de seguindo" baixa
  *    AAAA-MM-DD_<perfil>_instagram_seguindo.csv. A lista traz @ de pessoas físicas:
  *    o CSV fica em _dados-brutos, fora do git (ver B1-b_instagram_seguindo.py).
+ *    A resposta vai para a semente pelo id no endereço do pedido; a rolagem para
+ *    ao alcançar o total declarado e, com "Download automático", baixa o CSV.
+ *    "Coletar fila de seguindo" faz tudo para uma lista de sementes: abre o perfil,
+ *    clica em "seguindo", rola, baixa e pausa antes do próximo; continua sozinha
+ *    depois de cada recarga da página e, parada, retoma da mesma lista.
  *
  *  - Posts, dados de perfil e marcações ficam salvos no navegador (IndexedDB do
  *    instagram.com); recarregar não perde a coleta. "Apagar dados salvos" zera tudo.
@@ -74,7 +79,11 @@
   const validacao = new Map(); // shortcode -> 'sim' | 'não' (é evento? marcado à mão)
   // Snowball: semente (perfil cuja lista "seguindo" foi aberta) -> Map(@ seguido -> dados).
   const seguindo = new Map();
-  const seguindoMeta = new Map(); // semente -> { inicio, fim }
+  const seguindoMeta = new Map(); // semente -> { inicio, fim, fim_rolagem, baixado }
+  // id numérico do usuário -> @. O pedido da lista traz só o id
+  // (/friendships/<id>/following/); com ele, a resposta vai para a semente certa
+  // mesmo que a janela já tenha sido fechada ou trocada.
+  const ids = new Map();
   let seguindoSujo = false;
   let versaoValidacao = 0;
   let parar = false;
@@ -106,7 +115,7 @@
   function estadoKv() {
     return JSON.stringify({
       perfis: [...perfis], capturados: [...capturados], totais: [...totais],
-      totalPagina: [...totalPagina], validacao: [...validacao],
+      totalPagina: [...totalPagina], validacao: [...validacao], ids: [...ids],
     });
   }
 
@@ -134,6 +143,7 @@
         for (const [k, v] of e.totais || []) if (!totais.has(k)) totais.set(k, v);
         for (const [k, v] of e.totalPagina || []) if (!totalPagina.has(k)) totalPagina.set(k, v);
         for (const [k, v] of e.validacao || []) if (!validacao.has(k)) validacao.set(k, v);
+        for (const [k, v] of e.ids || []) if (!ids.has(k)) ids.set(k, v);
         versaoValidacao++;
       }
       const nPerfis = new Set(lista.map((p) => p.perfil).filter(Boolean)).size;
@@ -169,9 +179,9 @@
   async function apagarSalvos() {
     if (!confirm('Apagar todos os posts e perfis salvos neste navegador? Exporte antes o que quiser guardar.')) return;
     posts.clear(); perfis.clear(); capturados.clear(); totais.clear(); totalPagina.clear(); validacao.clear();
-    seguindo.clear(); seguindoMeta.clear();
+    seguindo.clear(); seguindoMeta.clear(); ids.clear();
     sujos.clear(); versaoValidacao++;
-    try { localStorage.removeItem(CHAVE_FILA); localStorage.removeItem(CHAVE_CURSORES); } catch (_) { /* ignora */ }
+    try { localStorage.removeItem(CHAVE_FILA); localStorage.removeItem(CHAVE_CURSORES); localStorage.removeItem(CHAVE_FILA_SEG); } catch (_) { /* ignora */ }
     if (banco) {
       const tx = banco.transaction(['posts', 'kv'], 'readwrite');
       tx.objectStore('posts').clear();
@@ -282,6 +292,8 @@
     if (novo.seguidores !== '' || novo.site) novo.coletado_em = dataHora(Date.now() / 1000);
     const chave = u.username.toLowerCase();
     capturados.set(chave, mesclar(capturados.get(chave) || {}, novo));
+    const id = String(u.pk ?? u.pk_id ?? u.id ?? '');
+    if (/^\d+$/.test(id)) ids.set(id, chave);
   }
 
   function mesclar(a, b) {
@@ -303,7 +315,7 @@
     try {
       const url = String(args[0]?.url || args[0]);
       if (/graphql|\/api\/v1\//.test(url)) resp.clone().text().then(ingerirTexto, () => {});
-      if (RE_SEGUINDO_URL.test(url)) resp.clone().json().then(ingerirSeguindo, () => {});
+      if (RE_SEGUINDO_URL.test(url)) resp.clone().json().then((j) => ingerirSeguindo(j, url), () => {});
     } catch (_) { /* ignora */ }
     return resp;
   };
@@ -315,7 +327,7 @@
         if (this.responseType === '' || this.responseType === 'text') ingerirTexto(this.responseText);
         else if (this.responseType === 'json') { ingerir(this.response); agendarSelos(); }
         if (RE_SEGUINDO_URL.test(this.responseURL || '')) {
-          ingerirSeguindo(this.responseType === 'json' ? this.response : JSON.parse(this.responseText));
+          ingerirSeguindo(this.responseType === 'json' ? this.response : JSON.parse(this.responseText), this.responseURL);
         }
       } catch (_) { /* ignora */ }
     });
@@ -325,7 +337,7 @@
   // ---------- snowball: lista "seguindo" ----------
 
   // Pedido que a própria página faz ao rolar a lista de quem um perfil segue.
-  const RE_SEGUINDO_URL = /\/friendships\/\d+\/following\//;
+  const RE_SEGUINDO_URL = /\/friendships\/(\d+)\/following\//;
   const RE_SUGESTOES = /^(sugest(ões|oes) para voc(ê|e)|suggested for you|sugerido para voc(ê|e))$/i;
   const RE_TITULO_SEGUINDO = /^(seguindo|following)$/i;
 
@@ -369,8 +381,15 @@
     seguindoSujo = true;
   }
 
-  function ingerirSeguindo(dado) {
-    const sem = sementeAtual();
+  // Semente da resposta: pelo id no endereço do pedido; sem o id conhecido, pela
+  // lista aberta na tela.
+  function sementeDoPedido(url) {
+    const id = String(url || '').match(RE_SEGUINDO_URL)?.[1];
+    return (id && ids.get(id)) || sementeAtual();
+  }
+
+  function ingerirSeguindo(dado, url = '') {
+    const sem = sementeDoPedido(url);
     if (!sem || !dado || !Array.isArray(dado.users)) return;
     for (const u of dado.users) if (u && typeof u.username === 'string') registrarSeguido(sem, u, 'api');
     mostrarSeguindo();
@@ -398,11 +417,21 @@
     return [...dlg.querySelectorAll('div')].find((d) => d.scrollHeight > d.clientHeight + 20 && /(auto|scroll)/.test(getComputedStyle(d).overflowY));
   }
 
-  async function rolarSeguindo() {
+  // Nº de contas que o perfil diz seguir (0 se desconhecido).
+  function declaradoSeguindo(sem) {
+    const v = [capturados.get(sem)?.seguindo, perfis.get(sem)?.seguindo].find((x) => x !== '' && x != null);
+    return Number(v) || 0;
+  }
+
+  // Rola a lista até ela parar de crescer: 8 voltas sem conta nova, ou 2 depois de
+  // alcançar o total declarado (a lista pode ganhar uma conta durante a rolagem).
+  // Devolve true se chegou ao fim sem ser interrompida; aí baixa o CSV, se pedido.
+  async function rolarSeguindo(baixarNoFim = autoBaixar) {
     const sem = sementeAtual();
-    if (!sem) { status('Abra a lista "seguindo" de um perfil (clique em "seguindo" no perfil).'); return; }
+    if (!sem) { status('Abra a lista "seguindo" de um perfil (clique em "seguindo" no perfil).'); return false; }
     let semMudanca = 0, n = -1, voltas = 0;
-    while (!parar && semMudanca < 8 && sementeAtual() === sem) {
+    const limite = () => { const dec = declaradoSeguindo(sem); return dec && n >= dec ? 2 : 8; };
+    while (!parar && semMudanca < limite() && sementeAtual() === sem) {
       const dlg = dialogoSeguindo();
       const area = dlg && areaRolavel(dlg);
       if (area) area.scrollTop = area.scrollHeight;
@@ -415,13 +444,24 @@
       if (++voltas % 25 === 0) { status(`@${sem}: ${atual} capturados; pausa curta…`); await esperar(sortear([20000, 40000])); }
       mostrarSeguindo();
     }
-    status(`@${sem}: ${seguindo.get(sem)?.size || 0} contas capturadas na lista "seguindo".`);
+    const completo = !parar && sementeAtual() === sem;
+    const total = seguindo.get(sem)?.size || 0;
+    const dec = declaradoSeguindo(sem);
+    status(`@${sem}: ${total}${dec ? ` de ${dec}` : ''} contas capturadas na lista "seguindo"${completo ? '' : ' (rolagem interrompida)'}.`);
+    if (completo && total) {
+      const meta = seguindoMeta.get(sem) || {};
+      meta.fim_rolagem = dataHora(Date.now() / 1000);
+      seguindoMeta.set(sem, meta);
+      seguindoSujo = true;
+      if (baixarNoFim) baixarSeguindo(sem);
+    }
+    return completo;
   }
 
   function linhasSeguindo(sem) {
     const m = seguindo.get(sem) || new Map();
     const meta = seguindoMeta.get(sem) || {};
-    const declarado = capturados.get(sem)?.seguindo ?? perfis.get(sem)?.seguindo ?? '';
+    const declarado = declaradoSeguindo(sem) || '';
     return [...m].map(([u, d]) => ({
       perfil_semente: sem, seguido: u, nome: d.nome, verificado: d.verificado, privado: d.privado,
       ordem: d.ordem, fonte: d.fonte, n_seguindo_declarado: declarado, n_capturados: m.size,
@@ -436,8 +476,16 @@
     const hoje = dataHora(Date.now() / 1000).slice(0, 10);
     const sementes = todas ? [...seguindo.keys()] : [sementeAtual() || ultimaSemente()].filter(Boolean);
     if (!sementes.length) { status('Nenhuma lista "seguindo" capturada.'); return; }
-    for (const sem of sementes) baixar(`${hoje}_${sem}_instagram_seguindo.csv`, csv(linhasSeguindo(sem), COLS_SEGUINDO), 'text/csv;charset=utf-8');
+    for (const sem of sementes) baixarSeguindo(sem, hoje);
     status(`CSV de seguindo: ${sementes.length} perfil(is).`);
+  }
+
+  function baixarSeguindo(sem, hoje = dataHora(Date.now() / 1000).slice(0, 10)) {
+    baixar(`${hoje}_${sem}_instagram_seguindo.csv`, csv(linhasSeguindo(sem), COLS_SEGUINDO), 'text/csv;charset=utf-8');
+    const meta = seguindoMeta.get(sem) || {};
+    meta.baixado = dataHora(Date.now() / 1000);
+    seguindoMeta.set(sem, meta);
+    seguindoSujo = true;
   }
 
   function ultimaSemente() {
@@ -449,12 +497,120 @@
     const sem = sementeAtual();
     const total = seguindo.size;
     if (!sem) {
-      el.seguindoInfo.textContent = `${total} lista(s) capturada(s). Abra a lista "seguindo" de uma luderia (clique em "seguindo" no perfil) para capturar.`;
+      el.seguindoInfo.textContent = `${total} lista(s) capturada(s). Abra a lista "seguindo" de uma luderia (clique em "seguindo" no perfil) ou cole as sementes na fila abaixo.${resumoFilaSeguindo()}`;
       return;
     }
     const n = seguindo.get(sem)?.size || 0;
-    const dec = capturados.get(sem)?.seguindo ?? perfis.get(sem)?.seguindo;
-    el.seguindoInfo.textContent = `@${sem}: ${n}${dec !== '' && dec != null ? ` de ${dec} declarados` : ''} capturados · ${total} lista(s) no total.`;
+    const dec = declaradoSeguindo(sem);
+    el.seguindoInfo.textContent = `@${sem}: ${n}${dec ? ` de ${dec} declarados` : ''} capturados · ${total} lista(s) no total.${resumoFilaSeguindo()}`;
+  }
+
+  // ---------- snowball: fila de sementes ----------
+
+  // Para cada semente: abre o perfil, clica em "seguindo", rola a lista até o fim,
+  // baixa o CSV e espera PAUSA_PERFIL antes da próxima. Abrir o perfil recarrega a
+  // página; o estado fica no localStorage e a fila continua sozinha após a carga.
+  // "Parar" interrompe e desliga a retomada; a mesma lista continua de onde parou.
+  const CHAVE_FILA_SEG = 'igc-fila-seguindo';
+  const ESPERA_LINK = 15000; // ms à espera do link "seguindo" ou da janela da lista
+
+  function lerFilaSeg() {
+    try { return JSON.parse(localStorage.getItem(CHAVE_FILA_SEG) || 'null'); } catch (_) { return null; }
+  }
+
+  function gravarFilaSeg(f) {
+    try { f ? localStorage.setItem(CHAVE_FILA_SEG, JSON.stringify(f)) : localStorage.removeItem(CHAVE_FILA_SEG); } catch (_) { /* ignora */ }
+    mostrarSeguindo();
+  }
+
+  const pendentesSeg = (f) => f.todos.filter((u) => !f.feitos.includes(u) && !(u in f.falhas));
+
+  function resumoFilaSeguindo() {
+    const f = lerFilaSeg();
+    if (!f) return '';
+    const falhas = Object.entries(f.falhas);
+    return `\nFila: ${f.feitos.length}/${f.todos.length} listas${f.ativa ? '' : ' (parada)'}` +
+      (falhas.length ? ` · sem lista: ${falhas.map(([u, m]) => `@${u} (${m})`).join(', ')}` : '');
+  }
+
+  function iniciarFilaSeguindo(usuarios) {
+    const salva = lerFilaSeg();
+    const mesma = salva && salva.todos.join(' ') === usuarios.join(' ');
+    const f = mesma ? { ...salva, falhas: {} } : { todos: usuarios, feitos: [], falhas: {} };
+    // Lista já capturada até o fim e baixada neste navegador não é pedida de novo.
+    for (const u of usuarios) if (!f.feitos.includes(u) && seguindoMeta.get(u)?.fim_rolagem && seguindoMeta.get(u)?.baixado) f.feitos.push(u);
+    f.ativa = true;
+    gravarFilaSeg(f);
+    executar(filaSeguindo);
+  }
+
+  async function esperarAte(cond, ms) {
+    const fim = Date.now() + ms;
+    while (Date.now() < fim) {
+      if (parar) throw new Error('interrompido');
+      const r = cond();
+      if (r) return r;
+      await esperar(500);
+    }
+    return null;
+  }
+
+  function linkSeguindo(u) {
+    return [...document.querySelectorAll('a[href]')].find((a) => a.getAttribute('href').toLowerCase().replace(/\/?$/, '/') === `/${u}/following/`);
+  }
+
+  async function filaSeguindo() {
+    try {
+      for (;;) {
+        const f = lerFilaSeg();
+        if (!f || !f.ativa) return;
+        const pend = pendentesSeg(f);
+        if (!pend.length) {
+          f.ativa = false;
+          gravarFilaSeg(f);
+          status(`Fila de seguindo concluída: ${f.feitos.length} listas; ${Object.keys(f.falhas).length} sem lista.`);
+          return;
+        }
+        const u = pend[0];
+        const pos = `${f.todos.length - pend.length + 1}/${f.todos.length}`;
+        const falhar = (motivo) => { f.falhas[u] = motivo; gravarFilaSeg(f); status(`Fila de seguindo ${pos}: @${u} pulado (${motivo}).`); };
+        if (sementeAtual() !== u) {
+          if (perfilAtual() !== u) {
+            status(`Fila de seguindo ${pos}: abrindo @${u}…`);
+            location.href = `https://www.instagram.com/${u}/`;
+            await esperar(60000); // a página recarrega antes disso
+            return;
+          }
+          status(`Fila de seguindo ${pos}: @${u}, abrindo a lista "seguindo"…`);
+          const link = await esperarAte(() => linkSeguindo(u), ESPERA_LINK);
+          if (!link) { falhar('sem link "seguindo": privado, inexistente ou página não carregou'); continue; }
+          if (declaradoSeguindo(u) === 0 && capturados.get(u)?.seguindo === 0) { falhar('não segue ninguém'); continue; }
+          link.click();
+          if (!(await esperarAte(() => sementeAtual() === u, ESPERA_LINK))) { falhar('a janela da lista não abriu'); continue; }
+          await esperar(sortear([1500, 3000]));
+        }
+        status(`Fila de seguindo ${pos}: @${u}, rolando a lista…`);
+        const ok = await rolarSeguindo(true);
+        if (parar) throw new Error('interrompido');
+        if (!ok) { falhar('a lista fechou durante a rolagem'); continue; }
+        const g = lerFilaSeg() || f;
+        if (!g.feitos.includes(u)) g.feitos.push(u);
+        gravarFilaSeg(g);
+        if (pendentesSeg(g).length) await esperarContando(sortear(PAUSA_PERFIL), `@${u} pronto (${pos}). Próxima lista em`);
+      }
+    } catch (e) {
+      const f = lerFilaSeg();
+      if (f) { f.ativa = false; gravarFilaSeg(f); }
+      throw e;
+    }
+  }
+
+  // Após recarregar a página no meio da fila, continua sozinha.
+  function retomarFilaSeguindo() {
+    const f = lerFilaSeg();
+    if (!f) return;
+    if (el.filaSeg) el.filaSeg.value = f.todos.join('\n');
+    if (f.ativa && !ocupado) executar(filaSeguindo);
   }
 
   // Os primeiros 12 posts vêm embutidos no HTML.
@@ -723,6 +879,7 @@
   async function coletarPerfil(user, modo = 'completo') {
     const info = (await apiPaciente(`/api/v1/users/web_profile_info/?username=${encodeURIComponent(user)}`)).data.user;
     if (typeof info.edge_owner_to_timeline_media?.count === 'number') totais.set(user, info.edge_owner_to_timeline_media.count);
+    if (/^\d+$/.test(String(info.id ?? ''))) ids.set(String(info.id), user);
     perfis.set(user, {
       perfil: user,
       nome: info.full_name,
@@ -1504,6 +1661,13 @@
     setTimeout(() => { if (perfilAtual() === u && !ocupado) executar(rolarAteOFim); }, 2000);
   }
 
+  // @ de uma lista colada (um por linha; aceita @, link ou nome).
+  function lerUsuarios(texto) {
+    return [...new Set(texto.split(/\s+/)
+      .map((s) => s.replace(/^.*instagram\.com\//, '').replace(/^@/, '').split(/[/?]/)[0].toLowerCase())
+      .filter(Boolean))];
+  }
+
   function montarPainel() {
     const botao = (texto, fn) => criar('button', { textContent: texto, onclick: fn });
 
@@ -1535,9 +1699,7 @@
       if (u) baixar(`instagram_${u}.json`, JSON.stringify({ perfil: linhaPerfil(u), posts: postsDe(u).map((p) => ({ ...p, evento_validado: validacao.get(p.shortcode) || '' })) }, null, 2), 'application/json');
     });
     const bFila = botao('Coletar fila', () => {
-      const us = [...new Set(el.fila.value.split(/\s+/)
-        .map((s) => s.replace(/^.*instagram\.com\//, '').replace(/^@/, '').split(/[/?]/)[0].toLowerCase())
-        .filter(Boolean))];
+      const us = lerUsuarios(el.fila.value);
       if (us.length) executar(() => coletarFila(us, el.modoFila.value));
     });
     el.modoFila = criar('select', {}, [
@@ -1545,14 +1707,22 @@
       criar('option', { value: 'completo', textContent: 'Fila: histórico completo (primeiro post)' }),
     ]);
     el.parar = botao('Parar', () => { parar = true; status('Parando…'); });
-    const bRolarSeg = botao('Rolar lista de seguindo', () => executar(rolarSeguindo));
-    el.acoes = [bRolar, bApi, bHistorico, bCsv, bJson, bFila, bRolarSeg];
+    const bRolarSeg = botao('Rolar lista de seguindo', () => executar(() => rolarSeguindo()));
+    el.filaSeg = criar('textarea', { placeholder: 'Fila de sementes: um @perfil ou link por linha' });
+    const bFilaSeg = botao('Coletar fila de seguindo', () => {
+      const us = lerUsuarios(el.filaSeg.value);
+      if (us.length) iniciarFilaSeguindo(us);
+    });
+    bFilaSeg.title = 'Abre cada perfil, clica em "seguindo", rola a lista e baixa o CSV; pausa entre perfis.';
+    el.acoes = [bRolar, bApi, bHistorico, bCsv, bJson, bFila, bRolarSeg, bFilaSeg];
     el.seguindoInfo = criar('p', { className: 'status info' });
     const blocoSeguindo = criar('details', {}, [
       criar('summary', { className: 'subtitulo', textContent: 'Snowball: lista "seguindo"' }),
       el.seguindoInfo,
       criar('div', { className: 'linha' }, [bRolarSeg]),
       criar('div', { className: 'linha' }, [botao('CSV de seguindo', () => exportarSeguindo(false)), botao('CSV de todas', () => exportarSeguindo(true))]),
+      el.filaSeg,
+      criar('div', { className: 'linha' }, [bFilaSeg]),
     ]);
 
     const toggle = (rotulo, ler, gravar) => {
@@ -1716,7 +1886,8 @@
     }, 1000);
     garantirPainel();
     atualizarResumo();
-    carregarSalvos();
+    // A fila de sementes espera os dados salvos (listas já capturadas) para seguir.
+    carregarSalvos().then(() => setTimeout(retomarFilaSeguindo, 2500));
     setInterval(salvar, 3000);
     addEventListener('pagehide', salvar);
     // Fila interrompida numa sessão anterior: repõe a lista para continuar.

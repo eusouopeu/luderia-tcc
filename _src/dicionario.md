@@ -60,7 +60,7 @@ Nomes com hífen não podem ser importados como módulo Python. Por isso, códig
 | Saída do B4 | `[B4] {dado principal} {período} ({fonte}).csv`, na subpasta de uso (`mercado_demanda/`, `ponto_operacoes/`, `juridico_tributario/`, `financeiro/`, `multiuso/`) | `[B4] Aluguel Comercial por Capital 2026-07 (FipeZap).csv` |
 | Resposta bruta de API do B4 | `<série>_<código>_<descrição>.json` ou `<fonte>_<conteúdo>.json`, na subpasta da fonte | `bcb/sgs_1619_salario_minimo.json` |
 | Cache bruto do Google Places e afins | `Bn_<conteúdo>.jsonl` (fora do git) | `B1_detalhes.jsonl` |
-| Coleta de rede social | `AAAA-MM-DD_<estabelecimento>_instagram_<perfis\|posts\|seguindo>.csv`; duplicata do mesmo dia leva `_2`. As listas `seguindo` (snowball) ficam em `_dados-brutos/redes_sociais/seguindo/`, fora do git | `2026-10-11_bodogami_instagram_posts.csv` |
+| Coleta de rede social | `AAAA-MM-DD_<estabelecimento>_instagram_<perfis\|posts\|seguindo>.csv`; duplicata do mesmo dia leva `_2`. As listas `seguindo` (snowball) ficam em `_dados-brutos/redes_sociais/seguindo/`, fora do git; o build gera `B1_snowball_candidatos_grau3.csv` (recorte para classificar) e `B1_snowball_proximas_sementes.{csv,txt}` (fila de sementes) | `2026-10-11_bodogami_instagram_posts.csv` |
 | Coleta de avaliações do Maps | `AAAA-MM-DD_<lugar>_maps_avaliacoes_<periodo\|filtros\|tudo>.csv` | `2026-10-13_boardz_game_pub_maps_avaliacoes_tudo.csv` |
 | Exportação do app de observação | `contagem_<conteúdo>.csv` | `contagem_visitas.csv`, `contagem_30min.csv` |
 | Log de execução | `<script>_AAAA-MM-DD_HHMM.log`, em `logs/` do bloco (fora do git) | `B1-b_planilha_2026-10-14_0930.log` |

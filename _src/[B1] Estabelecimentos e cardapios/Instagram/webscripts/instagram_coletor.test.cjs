@@ -21,7 +21,7 @@ function carregar(contexto = {}) {
   };
   ambiente.XMLHttpRequest.prototype.send = () => {};
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Coletor IG] carregado');"))
-    + 'Object.assign(globalThis.__test, { sementeAtual, registrarSeguido, ingerirSeguindo, lerSeguindoDom, linhasSeguindo, seguindo, csv, COLS_SEGUINDO, RE_SEGUINDO_URL });})();';
+    + 'Object.assign(globalThis.__test, { sementeAtual, registrarSeguido, ingerirSeguindo, capturarPerfil, lerUsuarios, declaradoSeguindo, pendentesSeg, lerSeguindoDom, linhasSeguindo, seguindo, csv, COLS_SEGUINDO, RE_SEGUINDO_URL });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'instagram_coletor.user.js' });
   return ambiente.__test;
 }
@@ -100,4 +100,30 @@ test('CSV de seguindo traz uma linha por seguido com a semente', () => {
   assert.equal(linhas[0], t.COLS_SEGUINDO.join(';'));
   assert.equal(linhas.length, 3);
   assert.ok(linhas[1].startsWith('ludusluderia;a;'));
+});
+
+test('a resposta vai para a semente do id no pedido, mesmo com outra lista aberta', () => {
+  const t = carregar();
+  t.capturarPerfil({ username: 'Alcapaojogos', pk: '555', follower_count: 10 });
+  t.ingerirSeguindo({ users: [{ username: 'x' }] }, 'https://www.instagram.com/api/v1/friendships/555/following/?count=12');
+  t.ingerirSeguindo({ users: [{ username: 'y' }] }, 'https://www.instagram.com/api/v1/friendships/999/following/?count=12');
+  assert.deepEqual([...t.seguindo.get('alcapaojogos').keys()], ['x']);
+  assert.deepEqual([...t.seguindo.get('ludusluderia').keys()], ['y']);
+});
+
+test('lê a lista colada na fila em @ únicos e minúsculos', () => {
+  const t = carregar();
+  assert.equal(t.lerUsuarios('@SaoJogue\nhttps://www.instagram.com/covilgb/?hl=pt\nsaojogue  bodogami/').join(' '), 'saojogue covilgb bodogami');
+});
+
+test('total declarado de seguindo vem do primeiro valor preenchido', () => {
+  const t = carregar();
+  t.capturarPerfil({ username: 'a', full_name: 'A', follower_count: 3, following_count: 42 });
+  assert.equal(t.declaradoSeguindo('a'), 42);
+  assert.equal(t.declaradoSeguindo('desconhecido'), 0);
+});
+
+test('fila de seguindo: pendentes excluem feitas e puladas', () => {
+  const t = carregar();
+  assert.equal(t.pendentesSeg({ todos: ['a', 'b', 'c', 'd'], feitos: ['a'], falhas: { c: 'privado' } }).join(' '), 'b d');
 });

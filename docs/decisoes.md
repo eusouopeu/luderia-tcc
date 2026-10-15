@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 15/10/2026 | Snowball: sementes coletadas em fila automática no coletor do Instagram, na ordem de `B1_snowball_proximas_sementes.txt` (rodízio entre capitais); classificação começa pelas contas seguidas por 3+ sementes (`B1_snowball_candidatos_grau3.csv`) | `_src/[B1] Estabelecimentos e cardapios/Instagram/build/B1-b_instagram_seguindo.py` |
 | 14/10/2026 | Entorno no Maps: trem metropolitano em grupo próprio (`trem`), separado do metrô; a análise soma metro + trem quando quiser "trilhos" | `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` |
 | 14/10/2026 | CSVs do entorno nomeados `AAAA-MM-DD_<estabelecimento>_entorno_<resumo\|resultados>.csv`; o fim da fila baixa só os estabelecimentos daquela fila | `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` |
 | 14/10/2026 | Machado Games e Ilusões Industriais saem do objeto (não são luderias: loja de videogame e loja de TCG sem acervo de tabuleiro); Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria entram nos bancos do Notion | `docs/registro-de-alteracoes.md`, 14/10 18:14 |
