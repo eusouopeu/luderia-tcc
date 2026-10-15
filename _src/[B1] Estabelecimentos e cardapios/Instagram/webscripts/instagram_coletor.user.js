@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.15-1
+// @version      2026.10.15-2
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis, captura a lista "seguindo" (snowball) e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -1542,7 +1542,9 @@
 
   let hospedeiro = null;
 
-  const PREF_ROLAR = 'igc-rolar-ao-abrir';
+  // Chave nova (v2): a rolagem ao abrir um perfil volta a começar desligada, mesmo
+  // para quem a tinha ligado; ela atrasava a fila de sementes, que abre perfis.
+  const PREF_ROLAR = 'igc-rolar-ao-abrir-v2';
   const PREF_COMPART = 'igc-contar-compartilhados';
   let contarCompartilhados = lerPref(PREF_COMPART, true);
   // Número do post (#N) nos selos: oculto por padrão, para o selo caber numa linha.
@@ -1650,13 +1652,13 @@
 
   const PREF_NUMERO = 'igc-numero-nos-selos';
   let mostrarNumero = lerPref(PREF_NUMERO, false);
-  let rolarAoAbrir = lerPref(PREF_ROLAR);
+  let rolarAoAbrir = lerPref(PREF_ROLAR, false);
   let ultimoAutoRolado = null;
 
   // Dispara a rolagem uma vez por perfil aberto (abrir um post e voltar não repete).
   function talvezRolarSozinho() {
     const u = perfilAtual();
-    if (!rolarAoAbrir || !u || u === ultimoAutoRolado || ocupado) return;
+    if (!rolarAoAbrir || !u || u === ultimoAutoRolado || ocupado || lerFilaSeg()?.ativa) return;
     ultimoAutoRolado = u;
     setTimeout(() => { if (perfilAtual() === u && !ocupado) executar(rolarAteOFim); }, 2000);
   }
@@ -1716,7 +1718,7 @@
     bFilaSeg.title = 'Abre cada perfil, clica em "seguindo", rola a lista e baixa o CSV; pausa entre perfis.';
     el.acoes = [bRolar, bApi, bHistorico, bCsv, bJson, bFila, bRolarSeg, bFilaSeg];
     el.seguindoInfo = criar('p', { className: 'status info' });
-    const blocoSeguindo = criar('details', {}, [
+    const blocoSeguindo = criar('details', { open: true }, [
       criar('summary', { className: 'subtitulo', textContent: 'Snowball: lista "seguindo"' }),
       el.seguindoInfo,
       criar('div', { className: 'linha' }, [bRolarSeg]),
@@ -1774,8 +1776,9 @@
     el.avisoPrimeiro = criar('span');
     el.avisoNome = criar('span');
     el.pronto = criar('p', { className: 'pronto' });
-    const blocoCampos = criar('div', {}, [
-      criar('p', { className: 'subtitulo', textContent: 'Dados do perfil' }),
+    // Recolhíveis: "Dados do perfil" começa fechado; o snowball, aberto.
+    const blocoCampos = criar('details', {}, [
+      criar('summary', { className: 'subtitulo', textContent: 'Dados do perfil' }),
       el.pronto,
       campo('primeiro', 'Data do primeiro post', el.avisoPrimeiro),
       campo('seguidores', 'Seguidores'),

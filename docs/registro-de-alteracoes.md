@@ -751,3 +751,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: os conceitos dos checklists P1 e P2 dependiam de cerca de 40 artigos internacionais, quase todos sem leitura e vários sem acesso aberto.
 **Depois**: tabela de substituição conceito a conceito por livros-texto consagrados ou artigos e dissertações de universidades brasileiras (USP, UFRJ, PUC-Rio, FGV, Mackenzie, UFABC), com aderência e local do conceito; 10 PDFs baixados com a página conferida no texto (ex.: Sampaio e Lycarião p. 89–92; Frezatti et al. p. 6 e 12; Picolo e Tontini p. 42–45 e 50–51); capítulo provável dos livros (sumário conferido para Fitzsimmons, Hillier e Lieberman e Colosimo e Giolo; os demais inferidos); lista priorizada de 22 obras para buscar à mão. R10, R28 e R29 ficam sem substituto. Os checklists e a lista de leitura não mudaram.
 **Justificativa**: pedido do autor de uma segunda versão da bibliografia com fontes nacionais ou livros-texto e de baixar o que estiver disponível.
+
+### 03:35
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Instagram/webscripts/instagram_coletor.user.js` (versão 2026.10.15-2)
+**Antes**: "Rolar até o fim ao abrir um perfil" guardado ligado no navegador; "Dados do perfil" sempre visível; bloco "Snowball" fechado ao abrir o painel.
+**Depois**: rolagem ao abrir um perfil desligada (preferência em chave nova, `igc-rolar-ao-abrir-v2`, que começa desligada; a caixa continua no painel) e nunca disparada com a fila de sementes ativa; "Dados do perfil" vira bloco recolhível, fechado ao abrir; "Snowball" abre expandido.
+**Justificativa**: pedido do autor; a rolagem automática atrasava a fila de sementes, que abre um perfil por vez.
