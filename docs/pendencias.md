@@ -24,6 +24,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 8. **Análise de conteúdo do B2: segundo codificador.** Quem faz a recodificação cega dos 131 comentários da amostra (autor ou outra pessoa) e quando; até lá, as categorias seguem sem medida de confiabilidade.
 
+10. **Escala de fontes do cap. 5 × P1 e N1–N6** (`docs/melhorias-texto.md`, D01): a ordem de fontes em 4 níveis decidida para o cap. 5 em 15/10 vira a P1 de `_instrucoes/1_estrutura.md` ou sai do capítulo? E que rótulo dar ao tipo de dado da P2, para não confundir com N1–N6?
+
 ## Tarefas a fazer (pedidas pelo autor em 15/10/2026)
 
 - **Instagram: aprimorar o coletor e refazer a coleta destes perfis** (status no Notion "Luderias – Status da coleta", 15/10):
@@ -40,6 +42,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 - **Sumarização do B2.**
 
 ## Divergências entre documentos, ainda sem correção
+
+- Divergências entre capítulos (e contra as instruções) ficam em `docs/melhorias-texto.md`, por gravidade (D01 a D18 em 15/10/2026).
 
 
 - Sarpa (2016): capa com *Experiências de consumo com jogos de tabuleiro modernos*; resumo com *Boardgames: um estudo sobre a experiência de consumo*. Conferir no repositório da UFRJ.

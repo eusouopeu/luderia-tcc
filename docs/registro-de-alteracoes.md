@@ -998,3 +998,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: esboço das seções 5.1 a 5.5, do maior para o menor (Brasil → Bahia → Salvador; serviços às famílias → alimentação fora do lar e lazer → luderias), com números do B4 (PAS, POF, PNAD Contínua, Censo, IPCA, BCB, FipeZAP) e do B1; 5.2 com números provisórios do B2. Lacunas marcadas `[script]`, `[AV]` e `[BUSCAR]`; quadro de fontes por nível de preferência no fim.
 **Justificativa**: pedido do autor: esboços do cap. 5 com fontes oficiais antes das setoriais e da imprensa.
 
+
+### 13:57
+**Objeto**: `CLAUDE.md` (seção "Melhorias do texto"), `docs/melhorias-texto.md` (novo), `docs/pendencias.md`, `docs/decisoes.md`, `AGORA.md`
+**Antes**: sem rotina de conferência cruzada entre capítulos; divergências e repetições entre os caps. 1, 2 e 5 sem registro.
+**Depois**: regra no `CLAUDE.md`: a cada capítulo gerado ou revisado, analisar todos os capítulos e atualizar `docs/melhorias-texto.md`, com divergências (grave, média, aceitável) e cortes em potencial (alto, médio, baixo ganho). Primeira análise sobre os caps. 1, 2 e 5: 18 divergências (D01 grave: escalas de fontes e de confiança misturadas no cap. 5) e 12 cortes (~930 palavras, cerca de 2,7 páginas). Pendência 10 aberta para a escala de fontes; linha nova em `decisoes.md`; link no `AGORA.md`.
+**Justificativa**: pedido do autor: manter um registro vivo das divergências e dos cortes possíveis para revisar o texto e respeitar o teto de páginas.
+
+### 13:57
+**Objeto**: `textos/capitulos/1_introducao_plano_luderia.md`, `2_referencial_teorico.md` e `5_analise_de_mercado.md`; `_instrucoes/1_estrutura.md` (P1, 1.3) e `_instrucoes/8_financeiro.md` (N1–N6)
+**Antes**: caps. 1 e 2 e as instruções (P1 em 7 níveis, N1–N6, P2; até 6 objetivos específicos).
+**Depois**: cap. 5 (15/10) com ordem de fontes em 4 níveis e rótulos de escalas misturados; cap. 1 com 7 objetivos; demais divergências D02 a D18 descritas em `docs/melhorias-texto.md`.
+**Efeitos colaterais**: a banca pode ler "N2" e "nível 2" como a mesma escala; objetivos a mais desalinham o 11.2. Nada foi corrigido nos capítulos.

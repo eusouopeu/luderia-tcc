@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 15/10/2026 | A cada capítulo gerado ou revisado, analisar todos os capítulos e atualizar `docs/melhorias-texto.md` (divergências por gravidade; cortes por ganho) | `CLAUDE.md`, "Melhorias do texto" |
 | 15/10/2026 | Cap. 5 exposto do maior para o menor (Brasil → Bahia → Salvador; serviços às famílias → alimentação fora do lar e lazer → luderias); fontes na ordem órgão oficial → fundação → entidade setorial e acadêmico → imprensa, esta só com marca de troca | `textos/capitulos/5_analise_de_mercado.md` |
 | 15/10/2026 | Site de apresentação em preto, cinza e branco; cor (vermelho) só para Salvador/Nordeste, críticas, amostras fora do critério e avisos | `_src/site-apresentacao/src/index.css` |
 | 15/10/2026 | Auditoria dos estabelecimentos do B1 sobre as 54 casas do objeto, e não sobre os 164 candidatos antes da curadoria: 20% estratificado por capital e faixa de volume = 11 casas | `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_auditoria_estabelecimentos.py` |
