@@ -694,3 +694,11 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: a captura da lista "seguindo" só reconhecia a semente pelo endereço `/<perfil>/following/`; no desktop a lista abre numa janela sobre o perfil, sem mudar o endereço, e nada era capturado.
 **Depois**: a semente também é reconhecida pelo diálogo com título "Seguindo" (ou "Following") aberto sobre o perfil; o diálogo de seguidores, que tem "Seguindo" só nos botões das linhas, não conta. Dois testes novos (8 no total, todos passando).
 **Justificativa**: erro relatado pelo autor na primeira coleta (perfil da Flow Games).
+
+## 2026/10/15
+
+### 00:35
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/entorno/B1_entorno_maps_fila.csv` (novo)
+**Antes**: o coletor `maps_entorno.user.js` aceitava o `B1_entorno.csv` (separador `,`, 66 estabelecimentos, inclusive 3 já coletados em 14/10).
+**Depois**: fila própria para o coletor, separador `;`, UTF-8 com BOM, colunas `place_id;nome;capital_endereco;lat;lng`, ordenada por capital e nome, sem os estabelecimentos já presentes nos resumos de 14/10.
+**Justificativa**: pedido do autor de um CSV para extração em fila dos entornos.
