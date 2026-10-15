@@ -30,14 +30,14 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 1. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
 2. Preparar as visitas de retorno de **domingo, 18/10** (app de observação e `textos/instrumentos/roteiro_observacao_sao_jogue.md`).
-3. Escrever o rascunho do cap. 3 (metodologia), o mais atrasado e com as instruções prontas.
+3. Revisar o rascunho do cap. 3 (`textos/capitulos/3_metodologia_plano_luderia.md`) e fechar os pontos `[conferir]`.
 
 ## Bloqueado ou aguardando
 
 - Coleta do B2 no navegador: os carregadores do Tampermonkey apontam para a pasta antiga `_src/Web scripts/`. Antes da próxima coleta, rodar `python3 _src/extras/gerar_carregadores.py --abrir --todos` e instalar os cinco no Vivaldi.
 - Validação do dicionário e cap. 5.2: aguardam a recodificação cega da amostra do Bardin (§2 do instrumento).
 - Estimativa de ocupação e fluxo (B3): aguarda as visitas de retorno (18/10).
-- Rascunhos atrasados frente ao cronograma: caps. 3 e 8 (o cap. 5 tem esboço, com lacunas) ([status](textos/planejamento/status_capitulos.md)).
+- Rascunhos atrasados frente ao cronograma: cap. 8 (o cap. 5 tem esboço, com lacunas) ([status](textos/planejamento/status_capitulos.md)).
 
 ## Onde está o resto
 

@@ -818,6 +818,30 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: snowball num userscript próprio, com painel à esquerda do coletor e armazenamento próprio (IndexedDB `igs-snowball`), que na primeira carga copia as listas, os ids e a fila do coletor (a fila entra parada). A lista é aberta pelo link (relativo, absoluto ou com parâmetros), pelo contador "seguindo" do cabeçalho ou, uma vez por semente, pelo endereço `/<perfil>/following/`; sem lista na tela, a página rola. "Parar" grava a fila como parada na hora, inclusive durante a troca de perfil; "Limpar fila" apaga a fila salva; o campo só recebe a fila salva quando está vazio. CSV com o mesmo nome e as mesmas colunas. O coletor perdeu o bloco do snowball e só lê a fila do outro script para não rolar sozinho durante ela. 21 testes passam.
 **Justificativa**: pedido do autor de corrigir a fila de "seguindo" (não abria a lista, não parava, não deixava apagar a fila) e de separar o snowball do coletor.
 
+### 10:23
+**Objeto**: `textos/capitulos/3_metodologia_plano_luderia.md` (novo)
+**Antes**: capítulo 3 não iniciado.
+**Depois**: rascunho completo (cerca de 2.470 palavras de prosa e 6 quadros, perto de 10 páginas): 3.1 caracterização e vocabulário controlado; 3.2 escala N1-N6 e hierarquia de dados; 3.3 quadro único dos blocos B1 a B4 (B4 detalhado no apêndice H), com B1/B2 e B3 em prosa curta; 3.4 tratamento, validação da coleta e do dicionário; 3.5 técnicas e calibração; 3.6 matriz de evidências resumida (completa no apêndice A); 3.7 ética; 3.8 limitações. O registro prévio (extra) ficou fora, e as seções seguintes subiram um número. Pontos a conferir marcados entre colchetes no texto; todas as referências com `[AV]`.
+**Justificativa**: passo 3 do AGORA.md; capítulo com prazo vencido em 02/10.
+
+### 10:23 — divergência
+**Objeto**: `_instrucoes/4_metodologia.md` ("Escopo adotado" e Bloco B1) e triagem do B1
+**Antes**: população final esperada de 100 a 150 estabelecimentos após a curadoria.
+**Depois**: `B1_triagem_manual_metro_av100.xlsx` tem 51 aprovadas (49 depois de tirar Machado e Ilusões) e, com as 5 novas, 54 concorrentes; 8 inconclusivos e 4 pendentes.
+**Efeitos colaterais**: o texto do cap. 3 usa 54; a estimativa de 100 a 150 nas instruções fica sem uso.
+
+### 10:23 — divergência
+**Objeto**: `B1_curadoria_metro_f_av100.csv` e `B1_triagem_manual_metro_av100.xlsx`
+**Antes**: 164 candidatos no recorte.
+**Depois**: 163 linhas na triagem; falta a Livraria Leitura Amazonas (Manaus, 5.271 avaliações).
+**Efeitos colaterais**: a triagem não fecha com o total do recorte (diferença 1) até a exclusão ser registrada com o motivo.
+
+### 10:23 — divergência
+**Objeto**: `_instrucoes/1_estrutura.md` (P5, itens 5 e 6) e skill `meu-estilo-escrita`
+**Antes**: P5 pede travessão (—) para aposto e voz passiva sintética ("adotou-se").
+**Depois**: a skill pede hífen com espaços ("-"), nunca travessão, e prefere a passiva analítica ("foi adotado"); o cap. 1 segue a skill.
+**Efeitos colaterais**: o rascunho do cap. 3 segue o cap. 1 e a skill (hífen; voz ativa, passiva analítica quando preciso); se valer a P5, os dois capítulos mudam juntos.
+
 ### 10:34
 **Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` (versão 2026.10.15-2) e `maps_entorno.test.cjs`
 **Antes**: painel com uma fila só do Google Maps; "Buscar áreas OSM que faltam" consultava a Overpass só para os estabelecimentos guardados com shopping do Maps a até 1000 m e sem resposta do OSM (não para os 55, nem para um só), e só trazia `shop=mall`; porte de shopping por um critério de cada vez (OSM, Abrasce ou avaliações); "Coletar fila" e "Exportar" sem dizer quantos estabelecimentos iam buscar ou exportar.
