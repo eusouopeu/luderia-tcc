@@ -22,6 +22,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 7. **Cap. 2, conferências antes da versão final:** edição, ano e página dos livros marcados `[AV]` (Dornelas, Porter, Kotler e Keller, Kim e Mauborgne, Mintzberg et al., Marcellino, Pine e Gilmore, Oldenburg, Woods, Zeithaml et al., Fitzsimmons et al., Hillier e Lieberman, Brealey et al., Damodaran, Bruni, Bruni e Famá, Casarotto e Kopittke, Pfeffer e Sutton); as edições do texto são a mais recente provável, não conferida. Baixar pelo navegador o PDF do SEBRAE (2016), que veio como HTML, e decidir se entra em 2.1. Incluir no checklist da P1/P2 os conceitos que o cap. 2 tira de obras sem ID (Kano/PRC, ERRC, PESTEL, terceiro lugar, lei de Little pelos livros da v2).
 
+8. **Análise de conteúdo do B2: segundo codificador.** Quem faz a recodificação cega dos 131 comentários da amostra (autor ou outra pessoa) e quando; até lá, as categorias seguem sem medida de confiabilidade.
+
 ## Tarefas a fazer (pedidas pelo autor em 15/10/2026)
 
 - **Instagram: aprimorar o coletor e refazer a coleta destes perfis** (status no Notion "Luderias – Status da coleta", 15/10):

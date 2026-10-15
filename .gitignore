@@ -62,6 +62,7 @@ _src/extras/carregadores/
 # Bloco B2: coletas do userscript e base consolidada trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4); cobertura e fila são publicadas
 dados/\[B2\]*/_dados-brutos/coletas/
 dados/\[B2\]*/B2_avaliacoes_periodo.csv
+dados/\[B2\]*/_dados-brutos/analise_conteudo/
 
 # Cronograma: o .docx é gerado do .md quando for enviar (_src/extras/gerar_docx_cronograma.js)
 textos/planejamento/cronograma_luderia*.docx

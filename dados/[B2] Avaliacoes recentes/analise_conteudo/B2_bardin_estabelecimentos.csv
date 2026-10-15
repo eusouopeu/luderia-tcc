@@ -1,49 +1,54 @@
-sigla;estabelecimento;capital;tipo;lote de coleta;comentarios;nota_media
-ALC;Alçapão Jogos;Curitiba;casa de jogos;formulário (até 3 meses);8;5.0
-ARC;Arcadea Gaming Pub;Porto Alegre;casa de jogos;planilha (até 1 mês);4;4.5
-ARE;Arena BG | Jogos de Tabuleiro | Hamburgueria;São Paulo;casa de jogos;formulário (até 3 meses);13;4.77
-ASG;Loja de Jogos - Asgard;Brasília;loja com espaço de jogo;planilha (até 1 mês);2;5.0
-BAL;Balboa's Hobby Games;Fortaleza;casa de jogos;planilha (até 1 mês);2;3.5
-BGC;Ludoteca BGC;Brasília;casa de jogos;planilha (até 1 mês);11;4.18
-BOD;Bodogami Restaurante e Cafeteria;São Paulo;casa de jogos;planilha (até 1 mês);34;4.29
-BRV;Bravo Jogos;São Paulo;loja com espaço de jogo;planilha (até 1 mês);14;4.43
-BRZ;BoardZ Game Pub;Curitiba;casa de jogos;planilha (até 1 mês);11;5.0
-CAR;Cartola Luderia Bar;São Paulo;casa de jogos;formulário (até 3 meses);36;4.69
-CAS;Castelos Bar & Boardgames;São Paulo;casa de jogos;planilha (até 1 mês);40;4.62
-CCG;CCG Floripa;Florianópolis;loja com espaço de jogo;formulário (até 3 meses);5;5.0
-CGK;Café Geek Cafeteria e Ludoteca;Vitória;casa de jogos;formulário (até 3 meses);5;5.0
-CHF;Chef on Play;Florianópolis;casa de jogos;planilha (até 1 mês);12;3.58
-CIN;Cineplay- Restaurante e Jogos;Florianópolis;casa de jogos;planilha (até 1 mês);18;4.39
-CMD;Comdado Bar e Jogos;Belo Horizonte;casa de jogos;formulário (até 3 meses);6;4.17
-COL;Coletivo Geek;São Paulo;loja com espaço de jogo;planilha (até 1 mês);2;4.5
-COV;Covil Game Bar;São Paulo;casa de jogos;planilha (até 1 mês);3;3.33
-DOM;Dominaria Cards & Games;Fortaleza;loja com espaço de jogo;planilha (até 1 mês);6;4.83
-ENC;Encounter | Jogos de Tabuleiro | Board Games;São Paulo;casa de jogos;planilha (até 1 mês);19;4.79
-FAN;Fan Hour Games and Burgers;São Paulo;casa de jogos;planilha (até 1 mês);16;4.38
-FLW;Flow Games - Burgers Cards & Comunidade;São Paulo;loja com espaço de jogo;planilha (até 1 mês);13;4.69
-FTL;FORTALÚDICA - BURGERS & JOGOS;Brasília;loja com espaço de jogo;formulário (até 3 meses);14;4.93
-GAR;Garagem do Nerd;Belo Horizonte;loja com espaço de jogo;formulário (até 3 meses);1;1.0
-GOB;Game Of Boards;Rio de Janeiro;casa de jogos;planilha (até 1 mês);4;4.0
-GRU;Gruta BSB;Brasília;loja com espaço de jogo;formulário (até 3 meses);8;4.5
-ILU;Ilusões Industriais;Porto Alegre;loja com espaço de jogo;planilha (até 1 mês);3;3.33
-INS;Inside Games;Brasília;loja com espaço de jogo;planilha (até 1 mês);3;3.67
-JGS;Jogasampa;São Paulo;casa de jogos;planilha (até 1 mês);2;3.5
-JOY;Joyjoy Café;Curitiba;casa de jogos;planilha (até 1 mês);7;3.29
-LCA;Luderia Carioca;Rio de Janeiro;casa de jogos;formulário (até 3 meses);69;4.52
-LCF;LudoCafé;Belo Horizonte;casa de jogos;planilha (até 1 mês);1;2.0
-LUD;Ludus Luderia;São Paulo;casa de jogos;planilha (até 1 mês);11;4.82
-MSB;Magic Store Brazil;Rio de Janeiro;loja com espaço de jogo;formulário (até 3 meses);38;4.92
-NAL;Nala Land - Bar de Jogos de Tabuleiro em Recife;Recife;casa de jogos;formulário (até 3 meses);7;5.0
-OMN;OMNIVERSE;São Paulo;loja com espaço de jogo;planilha (até 1 mês);7;5.0
-PAL;Paladins Game Store;Goiânia;loja com espaço de jogo;planilha (até 1 mês);3;5.0
-PEZ;Play Easy;São Paulo;loja com espaço de jogo;planilha (até 1 mês);16;4.5
-PIT;Pitta's Board Games;São Paulo;loja com espaço de jogo;planilha (até 1 mês);3;5.0
-PLC;Place Games;São Paulo;loja com espaço de jogo;formulário (até 3 meses);11;4.18
-RED;RED jogos;Rio de Janeiro;loja com espaço de jogo;planilha (até 1 mês);1;5.0
-SDQ;Ludoteca Sidequest;Belém;casa de jogos;planilha (até 1 mês);17;4.41
-SHF;Shelf Bar e Jogos;Belo Horizonte;casa de jogos;planilha (até 1 mês);30;4.7
-SJG;São Jogue - Bela Vista;Salvador;casa de jogos;formulário (até 3 meses);4;3.25
-TAV;Taverna Game House;Curitiba;loja com espaço de jogo;planilha (até 1 mês);5;4.2
-UTP;Utopia Games & Food;Brasília;loja com espaço de jogo;formulário (até 3 meses);22;4.32
-VCT;Vila Celta Hobby Store - Jogos e Café;Curitiba;loja com espaço de jogo;planilha (até 1 mês);3;5.0
-XPL;XPlace;São Paulo;loja com espaço de jogo;planilha (até 1 mês);5;4.0
+sigla;estabelecimento;capital;tipo;comentarios;nota_media
+ALC;Alçapão Jogos;Curitiba;casa de jogos;8;5.0
+ARC;Arcadea Gaming Pub;Porto Alegre;casa de jogos;11;3.55
+ARE;Arena BG | Jogos de Tabuleiro | Hamburgueria;São Paulo;casa de jogos;13;4.77
+ASG;Loja de Jogos - Asgard;Brasília;loja com espaço de jogo;4;4.75
+BAL;Balboa's Hobby Games;Fortaleza;casa de jogos;9;4.11
+BDM;Bardo Mago;Belo Horizonte;casa de jogos;100;4.81
+BGC;Ludoteca BGC;Brasília;casa de jogos;13;4.23
+BOD;Bodogami Restaurante e Cafeteria;São Paulo;casa de jogos;457;4.77
+BRV;Bravo Jogos;São Paulo;loja com espaço de jogo;23;4.61
+BRZ;BoardZ Game Pub;Curitiba;casa de jogos;24;5.0
+CAR;Cartola Luderia Bar;São Paulo;casa de jogos;38;4.71
+CAS;Castelos Bar & Boardgames;São Paulo;casa de jogos;48;4.27
+CCG;CCG Floripa;Florianópolis;loja com espaço de jogo;5;5.0
+CGK;Café Geek Cafeteria e Ludoteca;Vitória;casa de jogos;5;5.0
+CHF;Chef on Play;Florianópolis;casa de jogos;12;3.58
+CIN;Cineplay- Restaurante e Jogos;Florianópolis;casa de jogos;23;4.52
+CMD;Comdado Bar e Jogos;Belo Horizonte;casa de jogos;6;4.17
+COL;Coletivo Geek;São Paulo;loja com espaço de jogo;3;4.67
+COV;Covil Game Bar;São Paulo;casa de jogos;6;4.17
+DOM;Dominaria Cards & Games;Fortaleza;loja com espaço de jogo;14;4.57
+DUN;Dungeon Games Store;São Paulo;loja com espaço de jogo;4;3.0
+ENC;Encounter | Jogos de Tabuleiro | Board Games;São Paulo;casa de jogos;62;4.84
+FAN;Fan Hour Games and Burgers;São Paulo;casa de jogos;79;4.38
+FLW;Flow Games - Burgers, Cards & Comunidade;São Paulo;loja com espaço de jogo;16;4.75
+FTL;FORTALÚDICA - BURGERS & JOGOS;Brasília;loja com espaço de jogo;15;4.93
+GAR;Garagem do Nerd;Belo Horizonte;loja com espaço de jogo;1;1.0
+GOB;Game Of Boards;Rio de Janeiro;casa de jogos;6;4.17
+GRU;Gruta BSB;Brasília;loja com espaço de jogo;8;4.5
+INS;Inside Games;Brasília;loja com espaço de jogo;6;3.67
+JGS;Jogasampa;São Paulo;casa de jogos;3;3.33
+JOY;Joyjoy Café;Curitiba;casa de jogos;17;4.12
+LCA;Luderia Carioca;Rio de Janeiro;casa de jogos;69;4.52
+LCF;LudoCafé;Belo Horizonte;casa de jogos;6;4.17
+LTB;La Tabuleria;Belo Horizonte;casa de jogos;6;5.0
+LUD;Ludus Luderia;São Paulo;casa de jogos;27;4.56
+MSB;Magic Store Brazil;Rio de Janeiro;loja com espaço de jogo;7;4.57
+NAL;Nala Land - Bar de Jogos de Tabuleiro em Recife;Recife;casa de jogos;7;5.0
+OMN;OMNIVERSE;São Paulo;loja com espaço de jogo;18;4.94
+PAL;Paladins Game Store;Goiânia;loja com espaço de jogo;7;5.0
+PEZ;Play Easy;São Paulo;loja com espaço de jogo;21;4.57
+PIT;Pitta's Board Games;São Paulo;loja com espaço de jogo;6;5.0
+PLC;Place Games;São Paulo;loja com espaço de jogo;11;4.18
+RED;RED jogos;Rio de Janeiro;loja com espaço de jogo;6;3.5
+SDQ;Ludoteca Sidequest;Belém;casa de jogos;26;4.62
+SHF;Shelf Bar e Jogos;Belo Horizonte;casa de jogos;243;4.84
+SJG;São Jogue - Bela Vista;Salvador;casa de jogos;4;3.25
+TAV;Taverna Game House;Curitiba;loja com espaço de jogo;5;4.2
+TBC;TabuClub;Rio de Janeiro;casa de jogos;11;4.64
+TOC;Toca do Rato - Pizzaria e Jogos de Tabuleiro;Porto Alegre;casa de jogos;7;2.86
+TUB;Tubaleria;São Paulo;casa de jogos;24;5.0
+UTP;Utopia Games & Food;Brasília;loja com espaço de jogo;22;4.27
+VCT;Vila Celta Hobby Store - Jogos e Café;Curitiba;loja com espaço de jogo;8;3.12
+XPL;XPlace;São Paulo;loja com espaço de jogo;8;4.0

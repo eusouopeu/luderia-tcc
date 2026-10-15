@@ -1,81 +1,81 @@
 código;categoria;polaridade;total: comentários;total: % dos comentários;total: % ponderado por estabelecimento;total: estabelecimentos com menção;casa de jogos: comentários;casa de jogos: % dos comentários;casa de jogos: % ponderado por estabelecimento;casa de jogos: estabelecimentos com menção;loja com espaço de jogo: comentários;loja com espaço de jogo: % dos comentários;loja com espaço de jogo: % ponderado por estabelecimento;loja com espaço de jogo: estabelecimentos com menção
-ACV;Acervo de jogos;qualquer;168;29.2;25.2;31;143;36.7;38.4;24;25;13.5;9.6;7
-ACV;Acervo de jogos;positiva;157;27.3;24.0;31;132;33.8;36.2;24;25;13.5;9.6;7
-ACV;Acervo de jogos;negativa;11;1.9;1.2;8;11;2.8;2.2;8;0;0.0;0.0;0
-ACV;Acervo de jogos;mista;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-ACV;Acervo de jogos;neutra;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-MED;Mediação lúdica (monitoria);qualquer;95;16.5;12.6;24;83;21.3;19.3;19;12;6.5;4.8;5
-MED;Mediação lúdica (monitoria);positiva;83;14.4;10.5;20;74;19.0;16.1;17;9;4.9;4.0;3
-MED;Mediação lúdica (monitoria);negativa;12;2.1;2.1;9;9;2.3;3.1;7;3;1.6;0.8;2
-MED;Mediação lúdica (monitoria);mista;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-MED;Mediação lúdica (monitoria);neutra;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-ATD;Atendimento e hospitalidade;qualquer;323;56.2;51.8;44;227;58.2;52.5;24;96;51.9;51.1;20
-ATD;Atendimento e hospitalidade;positiva;276;48.0;41.7;40;190;48.7;38.1;21;86;46.5;46.0;19
-ATD;Atendimento e hospitalidade;negativa;37;6.4;6.5;23;28;7.2;9.1;15;9;4.9;3.5;8
-ATD;Atendimento e hospitalidade;mista;10;1.7;3.6;8;9;2.3;5.3;7;1;0.5;1.5;1
-ATD;Atendimento e hospitalidade;neutra;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-AB;Alimentos e bebidas;qualquer;230;40.0;37.3;35;184;47.2;52.8;26;46;24.9;18.9;9
-AB;Alimentos e bebidas;positiva;180;31.3;23.8;31;144;36.9;33.5;23;36;19.5;12.3;8
-AB;Alimentos e bebidas;negativa;32;5.6;9.2;17;27;6.9;15.9;15;5;2.7;1.2;2
-AB;Alimentos e bebidas;mista;8;1.4;0.9;6;7;1.8;1.5;5;1;0.5;0.2;1
-AB;Alimentos e bebidas;neutra;10;1.7;3.3;10;6;1.5;1.8;6;4;2.2;5.1;4
-TMP;Tempo de serviço e erros de pedido;qualquer;34;5.9;6.3;17;26;6.7;6.5;13;8;4.3;6.2;4
-TMP;Tempo de serviço e erros de pedido;positiva;9;1.6;3.5;7;7;1.8;2.3;5;2;1.1;4.9;2
-TMP;Tempo de serviço e erros de pedido;negativa;24;4.2;2.8;12;18;4.6;4.0;10;6;3.2;1.3;2
-TMP;Tempo de serviço e erros de pedido;mista;1;0.2;0.1;1;1;0.3;0.1;1;0;0.0;0.0;0
+ACV;Acervo de jogos;qualquer;427;26.9;27.5;42;391;28.5;38.8;31;36;16.5;11.5;11
+ACV;Acervo de jogos;positiva;400;25.2;25.6;40;367;26.8;36.7;31;33;15.1;10.0;9
+ACV;Acervo de jogos;negativa;20;1.3;1.2;9;18;1.3;1.1;7;2;0.9;1.3;2
+ACV;Acervo de jogos;mista;3;0.2;0.2;3;3;0.2;0.3;3;0;0.0;0.0;0
+ACV;Acervo de jogos;neutra;4;0.3;0.5;4;3;0.2;0.7;3;1;0.5;0.2;1
+MED;Mediação lúdica (monitoria);qualquer;261;16.4;15.7;32;251;18.3;24.9;27;10;4.6;2.8;5
+MED;Mediação lúdica (monitoria);positiva;236;14.9;13.7;28;229;16.7;22.0;25;7;3.2;2.0;3
+MED;Mediação lúdica (monitoria);negativa;23;1.4;1.9;13;20;1.5;2.7;11;3;1.4;0.8;2
+MED;Mediação lúdica (monitoria);mista;1;0.1;0.0;1;1;0.1;0.0;1;0;0.0;0.0;0
+MED;Mediação lúdica (monitoria);neutra;1;0.1;0.1;1;1;0.1;0.2;1;0;0.0;0.0;0
+ATD;Atendimento e hospitalidade;qualquer;885;55.7;56.1;52;757;55.3;55.8;31;128;58.7;56.4;21
+ATD;Atendimento e hospitalidade;positiva;787;49.6;44.8;49;677;49.4;43.2;29;110;50.5;47.2;20
+ATD;Atendimento e hospitalidade;negativa;80;5.0;8.9;33;63;4.6;8.8;21;17;7.8;8.9;12
+ATD;Atendimento e hospitalidade;mista;16;1.0;2.3;10;15;1.1;3.8;9;1;0.5;0.3;1
+ATD;Atendimento e hospitalidade;neutra;2;0.1;0.0;2;2;0.1;0.1;2;0;0.0;0.0;0
+AB;Alimentos e bebidas;qualquer;644;40.6;38.0;44;600;43.8;52.4;31;44;20.2;17.8;13
+AB;Alimentos e bebidas;positiva;535;33.7;28.1;41;499;36.4;38.4;29;36;16.5;13.5;12
+AB;Alimentos e bebidas;negativa;66;4.2;6.3;23;61;4.5;9.2;20;5;2.3;2.2;3
+AB;Alimentos e bebidas;mista;24;1.5;1.4;13;23;1.7;2.2;12;1;0.5;0.2;1
+AB;Alimentos e bebidas;neutra;20;1.3;2.4;14;18;1.3;2.7;12;2;0.9;1.9;2
+TMP;Tempo de serviço e erros de pedido;qualquer;86;5.4;6.3;25;77;5.6;8.9;20;9;4.1;2.6;5
+TMP;Tempo de serviço e erros de pedido;positiva;33;2.1;1.9;13;31;2.3;2.4;11;2;0.9;1.1;2
+TMP;Tempo de serviço e erros de pedido;negativa;52;3.3;4.4;20;45;3.3;6.5;17;7;3.2;1.6;3
+TMP;Tempo de serviço e erros de pedido;mista;1;0.1;0.0;1;1;0.1;0.0;1;0;0.0;0.0;0
 TMP;Tempo de serviço e erros de pedido;neutra;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-PRC;Preço e valor percebido;qualquer;99;17.2;21.0;36;63;16.2;21.8;21;36;19.5;20.1;15
-PRC;Preço e valor percebido;positiva;62;10.8;12.2;27;33;8.5;7.9;13;29;15.7;17.1;14
-PRC;Preço e valor percebido;negativa;28;4.9;7.1;18;24;6.2;11.7;14;4;2.2;1.6;4
-PRC;Preço e valor percebido;mista;4;0.7;0.9;4;4;1.0;1.7;4;0;0.0;0.0;0
-PRC;Preço e valor percebido;neutra;5;0.9;0.8;5;2;0.5;0.4;2;3;1.6;1.3;3
-AMB;Ambiente físico e conforto;qualquer;193;33.6;30.0;40;135;34.6;35.3;24;58;31.4;23.7;16
-AMB;Ambiente físico e conforto;positiva;172;29.9;26.6;39;119;30.5;31.4;23;53;28.6;20.9;16
-AMB;Ambiente físico e conforto;negativa;19;3.3;2.9;10;15;3.8;3.7;6;4;2.2;2.0;4
-AMB;Ambiente físico e conforto;mista;1;0.2;0.3;1;0;0.0;0.0;0;1;0.5;0.8;1
-AMB;Ambiente físico e conforto;neutra;1;0.2;0.1;1;1;0.3;0.2;1;0;0.0;0.0;0
-RUI;Ruído;qualquer;11;1.9;1.3;9;10;2.6;2.2;8;1;0.5;0.2;1
-RUI;Ruído;positiva;2;0.3;0.2;2;2;0.5;0.5;2;0;0.0;0.0;0
-RUI;Ruído;negativa;7;1.2;1.0;6;6;1.5;1.6;5;1;0.5;0.2;1
-RUI;Ruído;mista;2;0.3;0.1;2;2;0.5;0.2;2;0;0.0;0.0;0
-RUI;Ruído;neutra;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-CAP;Capacidade, reserva e fila;qualquer;42;7.3;4.8;17;39;10.0;8.2;15;3;1.6;0.8;2
-CAP;Capacidade, reserva e fila;positiva;4;0.7;0.8;4;4;1.0;1.4;4;0;0.0;0.0;0
-CAP;Capacidade, reserva e fila;negativa;27;4.7;2.7;11;25;6.4;4.7;10;2;1.1;0.4;1
-CAP;Capacidade, reserva e fila;mista;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-CAP;Capacidade, reserva e fila;neutra;11;1.9;1.3;9;10;2.6;2.1;8;1;0.5;0.4;1
-PRG;Programação e atrações;qualquer;40;7.0;5.9;16;22;5.6;5.2;8;18;9.7;6.8;8
-PRG;Programação e atrações;positiva;38;6.6;4.9;15;20;5.1;3.3;7;18;9.7;6.8;8
-PRG;Programação e atrações;negativa;2;0.3;1.0;1;2;0.5;1.9;1;0;0.0;0.0;0
+PRC;Preço e valor percebido;qualquer;203;12.8;19.9;46;149;10.9;17.9;27;54;24.8;22.7;19
+PRC;Preço e valor percebido;positiva;106;6.7;13.4;41;61;4.5;9.5;22;45;20.6;18.7;19
+PRC;Preço e valor percebido;negativa;75;4.7;5.0;22;68;5.0;6.3;16;7;3.2;3.2;6
+PRC;Preço e valor percebido;mista;6;0.4;0.2;4;5;0.4;0.2;3;1;0.5;0.2;1
+PRC;Preço e valor percebido;neutra;18;1.1;1.6;12;17;1.2;2.4;11;1;0.5;0.6;1
+AMB;Ambiente físico e conforto;qualquer;509;32.1;34.7;49;443;32.3;39.0;31;66;30.3;28.5;18
+AMB;Ambiente físico e conforto;positiva;471;29.7;30.5;49;410;29.9;33.4;31;61;28.0;26.5;18
+AMB;Ambiente físico e conforto;negativa;32;2.0;3.5;18;28;2.0;4.7;14;4;1.8;1.7;4
+AMB;Ambiente físico e conforto;mista;4;0.3;0.4;4;3;0.2;0.5;3;1;0.5;0.3;1
+AMB;Ambiente físico e conforto;neutra;4;0.3;0.5;4;4;0.3;0.8;4;0;0.0;0.0;0
+RUI;Ruído;qualquer;32;2.0;1.7;16;30;2.2;2.6;14;2;0.9;0.4;2
+RUI;Ruído;positiva;6;0.4;0.6;6;6;0.4;1.1;6;0;0.0;0.0;0
+RUI;Ruído;negativa;19;1.2;0.6;10;18;1.3;0.9;9;1;0.5;0.2;1
+RUI;Ruído;mista;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
+RUI;Ruído;neutra;7;0.4;0.4;5;6;0.4;0.6;4;1;0.5;0.2;1
+CAP;Capacidade, reserva e fila;qualquer;108;6.8;9.6;34;97;7.1;12.4;25;11;5.0;5.7;9
+CAP;Capacidade, reserva e fila;positiva;19;1.2;2.5;14;18;1.3;3.7;13;1;0.5;0.9;1
+CAP;Capacidade, reserva e fila;negativa;54;3.4;4.2;19;48;3.5;5.0;15;6;2.8;3.0;4
+CAP;Capacidade, reserva e fila;mista;1;0.1;0.0;1;1;0.1;0.0;1;0;0.0;0.0;0
+CAP;Capacidade, reserva e fila;neutra;34;2.1;2.9;19;30;2.2;3.7;15;4;1.8;1.8;4
+PRG;Programação e atrações;qualquer;75;4.7;7.6;26;56;4.1;6.1;13;19;8.7;9.7;13
+PRG;Programação e atrações;positiva;69;4.3;5.7;23;52;3.8;4.3;12;17;7.8;7.9;11
+PRG;Programação e atrações;negativa;5;0.3;1.8;4;3;0.2;1.8;2;2;0.9;1.9;2
 PRG;Programação e atrações;mista;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-PRG;Programação e atrações;neutra;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-COMU;Comunidade de jogadores;qualquer;29;5.0;5.9;13;5;1.3;1.5;5;24;13.0;11.0;8
-COMU;Comunidade de jogadores;positiva;26;4.5;5.4;12;5;1.3;1.5;5;21;11.4;9.9;7
-COMU;Comunidade de jogadores;negativa;2;0.3;0.2;2;0;0.0;0.0;0;2;1.1;0.5;2
-COMU;Comunidade de jogadores;mista;1;0.2;0.3;1;0;0.0;0.0;0;1;0.5;0.6;1
+PRG;Programação e atrações;neutra;1;0.1;0.0;1;1;0.1;0.1;1;0;0.0;0.0;0
+COMU;Comunidade de jogadores;qualquer;35;2.2;6.4;18;10;0.7;1.7;6;25;11.5;12.9;12
+COMU;Comunidade de jogadores;positiva;30;1.9;5.3;17;10;0.7;1.7;6;20;9.2;10.3;11
+COMU;Comunidade de jogadores;negativa;4;0.3;0.8;4;0;0.0;0.0;0;4;1.8;2.0;4
+COMU;Comunidade de jogadores;mista;1;0.1;0.2;1;0;0.0;0.0;0;1;0.5;0.6;1
 COMU;Comunidade de jogadores;neutra;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-VAR;Varejo e pós-venda;qualquer;78;13.6;18.9;22;5;1.3;1.6;4;73;39.5;39.4;18
-VAR;Varejo e pós-venda;positiva;70;12.2;16.0;21;3;0.8;0.5;3;67;36.2;34.4;18
-VAR;Varejo e pós-venda;negativa;7;1.2;2.7;6;2;0.5;1.1;1;5;2.7;4.5;5
-VAR;Varejo e pós-venda;mista;1;0.2;0.2;1;0;0.0;0.0;0;1;0.5;0.4;1
-VAR;Varejo e pós-venda;neutra;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-LOC;Localização e acesso;qualquer;12;2.1;1.2;9;9;2.3;1.8;7;3;1.6;0.4;2
-LOC;Localização e acesso;positiva;7;1.2;0.4;5;5;1.3;0.6;4;2;1.1;0.2;1
-LOC;Localização e acesso;negativa;3;0.5;0.4;3;2;0.5;0.6;2;1;0.5;0.2;1
-LOC;Localização e acesso;mista;1;0.2;0.2;1;1;0.3;0.3;1;0;0.0;0.0;0
-LOC;Localização e acesso;neutra;1;0.2;0.2;1;1;0.3;0.3;1;0;0.0;0.0;0
-INC;Segurança, inclusão e respeito;qualquer;13;2.3;1.2;7;11;2.8;1.7;5;2;1.1;0.6;2
-INC;Segurança, inclusão e respeito;positiva;6;1.0;0.7;5;5;1.3;0.9;4;1;0.5;0.3;1
-INC;Segurança, inclusão e respeito;negativa;6;1.0;0.4;2;6;1.5;0.8;2;0;0.0;0.0;0
-INC;Segurança, inclusão e respeito;mista;1;0.2;0.1;1;0;0.0;0.0;0;1;0.5;0.2;1
-INC;Segurança, inclusão e respeito;neutra;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-RET;Retorno declarado;qualquer;103;17.9;14.9;32;80;20.5;17.7;20;23;12.4;11.6;12
-RET;Retorno declarado;positiva;83;14.4;10.8;28;64;16.4;11.8;17;19;10.3;9.6;11
-RET;Retorno declarado;negativa;20;3.5;4.1;15;16;4.1;5.8;11;4;2.2;2.0;4
+VAR;Varejo e pós-venda;qualquer;109;6.9;18.2;29;22;1.6;2.8;10;87;39.9;40.0;19
+VAR;Varejo e pós-venda;positiva;85;5.4;13.5;27;16;1.2;1.9;8;69;31.7;29.9;19
+VAR;Varejo e pós-venda;negativa;13;0.8;2.5;12;4;0.3;0.5;3;9;4.1;5.4;9
+VAR;Varejo e pós-venda;mista;3;0.2;0.4;3;0;0.0;0.0;0;3;1.4;1.0;3
+VAR;Varejo e pós-venda;neutra;8;0.5;1.7;7;2;0.1;0.4;2;6;2.8;3.6;5
+LOC;Localização e acesso;qualquer;22;1.4;2.2;17;17;1.2;1.6;12;5;2.3;3.0;5
+LOC;Localização e acesso;positiva;12;0.8;1.3;11;8;0.6;0.5;7;4;1.8;2.3;4
+LOC;Localização e acesso;negativa;4;0.3;0.3;4;4;0.3;0.5;4;0;0.0;0.0;0
+LOC;Localização e acesso;mista;1;0.1;0.1;1;1;0.1;0.2;1;0;0.0;0.0;0
+LOC;Localização e acesso;neutra;5;0.3;0.5;5;4;0.3;0.3;4;1;0.5;0.8;1
+INC;Segurança, inclusão e respeito;qualquer;24;1.5;1.5;13;22;1.6;2.0;11;2;0.9;0.9;2
+INC;Segurança, inclusão e respeito;positiva;14;0.9;0.8;10;13;0.9;1.2;9;1;0.5;0.3;1
+INC;Segurança, inclusão e respeito;negativa;9;0.6;0.6;5;8;0.6;0.7;4;1;0.5;0.6;1
+INC;Segurança, inclusão e respeito;mista;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
+INC;Segurança, inclusão e respeito;neutra;1;0.1;0.0;1;1;0.1;0.1;1;0;0.0;0.0;0
+RET;Retorno declarado;qualquer;221;13.9;13.6;40;202;14.7;17.6;29;19;8.7;7.9;11
+RET;Retorno declarado;positiva;183;11.5;10.1;35;169;12.3;12.9;26;14;6.4;6.0;9
+RET;Retorno declarado;negativa;34;2.1;2.9;19;30;2.2;3.9;15;4;1.8;1.5;4
 RET;Retorno declarado;mista;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-RET;Retorno declarado;neutra;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-GEN;Avaliação genérica;qualquer;41;7.1;9.2;23;30;7.7;8.6;15;11;5.9;9.9;8
-GEN;Avaliação genérica;positiva;38;6.6;6.9;22;28;7.2;8.3;15;10;5.4;5.4;7
-GEN;Avaliação genérica;negativa;2;0.3;2.1;2;1;0.3;0.1;1;1;0.5;4.5;1
+RET;Retorno declarado;neutra;4;0.3;0.6;3;3;0.2;0.8;2;1;0.5;0.4;1
+GEN;Avaliação genérica;qualquer;140;8.8;8.0;29;131;9.6;7.2;20;9;4.1;9.0;9
+GEN;Avaliação genérica;positiva;137;8.6;6.0;28;129;9.4;7.2;20;8;3.7;4.5;8
+GEN;Avaliação genérica;negativa;2;0.1;1.9;2;1;0.1;0.1;1;1;0.5;4.5;1
 GEN;Avaliação genérica;mista;0;0.0;0.0;0;0;0.0;0.0;0;0;0.0;0.0;0
-GEN;Avaliação genérica;neutra;1;0.2;0.1;1;1;0.3;0.2;1;0;0.0;0.0;0
+GEN;Avaliação genérica;neutra;1;0.1;0.0;1;1;0.1;0.0;1;0;0.0;0.0;0

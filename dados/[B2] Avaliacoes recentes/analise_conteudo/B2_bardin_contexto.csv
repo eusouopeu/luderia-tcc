@@ -1,11 +1,11 @@
 código;categoria;total: comentários;total: % dos comentários;casa de jogos: comentários;casa de jogos: % dos comentários;loja com espaço de jogo: comentários;loja com espaço de jogo: % dos comentários
-OCA:ami;Ocasião: amigos;73;12.7;64;16.4;9;4.9
-OCA:fam;Ocasião: família ou crianças;52;9.0;44;11.3;8;4.3
-OCA:casal;Ocasião: casal;13;2.3;12;3.1;1;0.5
-OCA:aniv;Ocasião: aniversário ou comemoração;24;4.2;23;5.9;1;0.5
-NOV;Sinal de iniciante/não jogador;14;2.4;7;1.8;7;3.8
-HOB;Sinal de hobbyista;63;11.0;11;2.8;52;28.1
-DESC;Desconexão de telas;5;0.9;4;1.0;1;0.5
-DIV;Diversão como benefício;46;8.0;43;11.0;3;1.6
-GEEK;Identidade geek do espaço;5;0.9;4;1.0;1;0.5
-NOM;Funcionário citado pelo nome;82;14.3;59;15.1;23;12.4
+OCA:ami;Ocasião: amigos;192;12.1;178;13.0;14;6.4
+OCA:fam;Ocasião: família ou crianças;94;5.9;87;6.4;7;3.2
+OCA:casal;Ocasião: casal;25;1.6;24;1.8;1;0.5
+OCA:aniv;Ocasião: aniversário ou comemoração;50;3.1;49;3.6;1;0.5
+NOV;Sinal de iniciante/não jogador;22;1.4;13;0.9;9;4.1
+HOB;Sinal de hobbyista;79;5.0;20;1.5;59;27.1
+DESC;Desconexão de telas;7;0.4;6;0.4;1;0.5
+DIV;Diversão como benefício;134;8.4;133;9.7;1;0.5
+GEEK;Identidade geek do espaço;10;0.6;8;0.6;2;0.9
+NOM;Funcionário citado pelo nome;397;25.0;376;27.4;21;9.6
