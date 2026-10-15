@@ -20,7 +20,7 @@ function BarrasHorizontais({ dados, valor, rotulo, dica, cor = COR.azul, folga =
         <YAxis type="category" dataKey="grupo" tick={eixo} width={104} interval={0} />
         <Tooltip content={<Dica formatar={dica} />} />
         <Bar dataKey={valor} radius={[0, 4, 4, 0]} barSize={16}>
-          {dados.map((m) => <Cell key={m.grupo} fill={ehSsa(m) ? COR.rosa : cor} />)}
+          {dados.map((m) => <Cell key={m.grupo} fill={ehSsa(m) ? COR.destaque : cor} />)}
           <LabelList dataKey={rotulo} position="right" style={{ fontSize: 11, fill: COR.texto }} />
         </Bar>
       </BarChart>

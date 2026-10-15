@@ -59,12 +59,12 @@ export function Tabela({ colunas, linhas, destaque }) {
           {linhas.map((l, j) => {
             const marcada = destaque?.(l);
             return (
-              <tr key={j} className={`border-t border-papel-200 ${marcada ? "bg-lavanda-100" : ""}`}>
+              <tr key={j} className={`border-t border-papel-200 ${marcada ? "bg-destaque-50" : ""}`}>
                 {colunas.map((c, i) => (
                   <td
                     key={c.rotulo}
                     className={`px-3 py-2 tabular-nums ${
-                      i ? "text-right whitespace-nowrap" : `sticky left-0 z-10 min-w-[8rem] max-w-[11rem] font-semibold text-azul-950 sm:max-w-[16rem] ${marcada ? "bg-lavanda-100" : "bg-white"}`
+                      i ? "text-right whitespace-nowrap" : `sticky left-0 z-10 min-w-[8rem] max-w-[11rem] font-semibold text-azul-950 sm:max-w-[16rem] ${marcada ? "bg-destaque-50 text-destaque-700" : "bg-white"}`
                     }`}
                   >
                     {c.valor(l)}
@@ -107,7 +107,7 @@ export function Pilulas({ opcoes, valor, aoMudar, rotulo }) {
             aria-selected={ativo}
             onClick={() => aoMudar(o.id)}
             className={`cursor-pointer rounded-full px-3.5 py-1 text-xs font-semibold transition-colors sm:text-sm ${
-              ativo ? "bg-roxo-600 text-white shadow-sm" : "text-azul-800 hover:bg-papel-100"
+              ativo ? "bg-azul-900 text-white shadow-sm" : "text-azul-800 hover:bg-papel-100"
             }`}
           >
             {o.rotulo}

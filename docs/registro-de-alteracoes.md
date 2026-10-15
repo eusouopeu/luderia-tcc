@@ -985,3 +985,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: população da auditoria = 164 candidatos antes da curadoria (`B1_curadoria_metro_f_av100.csv`); amostra de 33 (limite de 10,4% com zero erros).
 **Depois**: população = as 54 casas do objeto (`B1_resumo_estabelecimentos.xlsx`), com a data de coleta da curadoria e do acervodejogos; amostra de 11 (20%, 9 estratos de capital e faixa de volume, limite de 25,9% com zero erros), sorteada de novo com a mesma semente. A aba 12 e a pendência sobre o tamanho das amostras foram atualizadas.
 **Justificativa**: pedido do autor: a auditoria deve considerar o total de 54 estabelecimentos.
+
+### 13:28
+**Objeto**: site de apresentação (`src/index.css`, `src/tema.js`, `src/formato.js`, `components/graficos.jsx` e seções 05, 08 a 12)
+**Antes**: paleta em azul e rosa em todo o site (texto, fundos, blocos, pílulas e séries dos gráficos).
+**Depois**: tokens de cor resolvem para preto, cinza e branco; as séries dos gráficos são cinza. Uma única cor (vermelho, token `destaque`) fica reservada a Salvador e ao Nordeste nos gráficos e linhas de tabela, às críticas na análise de conteúdo, às amostras de auditoria fora do critério de 5% e ao aviso "Atenção". Linhas de referência (mediana, critério) passam a cinza tracejado. O site não foi publicado.
+**Justificativa**: pedido do autor: paleta mais sóbria, com cor só nos casos pertinentes.

@@ -1,5 +1,5 @@
 import {
-  CartesianGrid, ComposedChart, LabelList, Line, ReferenceLine, ResponsiveContainer, Scatter, Tooltip, XAxis, YAxis,
+  CartesianGrid, Cell, ComposedChart, LabelList, Line, ReferenceLine, ResponsiveContainer, Scatter, Tooltip, XAxis, YAxis,
 } from "recharts";
 import D from "../conteudo/auditorias.json";
 import c from "../conteudo/s12-auditorias.json";
@@ -82,10 +82,11 @@ export default function S12Auditorias() {
               <XAxis dataKey="n" type="number" domain={[0, 250]} ticks={[0, 50, 73, 100, 150, 200, 250]} tick={eixo} />
               <YAxis type="number" domain={[0, 45]} tick={eixo} tickFormatter={(v) => `${v}%`} />
               <Tooltip content={<Dica formatar={(p) => [p.nome ?? `n = ${p.n}`, `limite com zero erros: ${p1(p.limite)}`]} />} />
-              <ReferenceLine y={D.criterio_pct} stroke={COR.rosa} strokeDasharray="4 3" />
-              <ReferenceLine x={D.n_minimo_zero_erros} stroke={COR.rosa} strokeDasharray="4 3" />
+              <ReferenceLine y={D.criterio_pct} stroke={COR.referencia} strokeDasharray="4 3" />
+              <ReferenceLine x={D.n_minimo_zero_erros} stroke={COR.referencia} strokeDasharray="4 3" />
               <Line dataKey="limite" stroke={COR.azul} dot={false} strokeWidth={2} isAnimationActive={false} />
-              <Scatter data={pontos} dataKey="limite" fill={COR.rosa}>
+              <Scatter data={pontos} dataKey="limite">
+                {pontos.map((p) => <Cell key={p.nome} fill={p.limite > D.criterio_pct ? COR.destaque : COR.texto} />)}
                 <LabelList dataKey="n" position="top" style={{ fontSize: 10, fill: COR.texto }} />
               </Scatter>
             </ComposedChart>
@@ -146,8 +147,8 @@ export default function S12Auditorias() {
                   {a.semente ? ` Semente ${a.semente}; sorteio de ${a.gerado_em ?? "15/10/2026"}.` : ""}
                 </p>
                 {x.ressalva && (
-                  <p className="rounded-lg border-l-4 border-roxo-600 bg-lavanda-100 px-4 py-3 text-sm leading-relaxed text-azul-950">
-                    <span className="font-semibold">Atenção: </span>
+                  <p className="rounded-lg border-l-4 border-destaque-600 bg-destaque-50 px-4 py-3 text-sm leading-relaxed text-azul-950">
+                    <span className="font-semibold text-destaque-700">Atenção: </span>
                     {x.ressalva}
                   </p>
                 )}

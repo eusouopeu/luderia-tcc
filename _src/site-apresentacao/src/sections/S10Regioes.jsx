@@ -41,7 +41,7 @@ export default function S10Regioes() {
               <YAxis tick={eixo} allowDecimals={false} />
               <Tooltip content={<Dica formatar={(r) => [r.grupo, `${r.casas} casas (${pct(r.pct)})`]} />} />
               <Bar dataKey="casas" radius={[4, 4, 0, 0]}>
-                {R.map((r) => <Cell key={r.grupo} fill={ehNe(r) ? COR.rosa : COR.azul} />)}
+                {R.map((r) => <Cell key={r.grupo} fill={ehNe(r) ? COR.destaque : COR.azul} />)}
                 <LabelList dataKey="pct" position="top" formatter={(v) => pct(v)} style={{ fontSize: 11, fill: COR.texto }} />
               </Bar>
             </BarChart>
@@ -56,7 +56,7 @@ export default function S10Regioes() {
               <YAxis tick={eixo} tickFormatter={(v) => `R$ ${v}`} />
               <Tooltip content={<Dica formatar={(r) => [r.grupo, `mediana ${reais(r.ponto)}`, `de ${reais(r.faixa[0])} a ${reais(r.faixa[1])}`, `${r.com_cardapio} casas com cardápio`]} />} />
               <Bar dataKey="faixa" fill={COR.azulClaro} radius={4} barSize={28} />
-              <Scatter dataKey="ponto" fill={COR.rosa}>
+              <Scatter dataKey="ponto" fill={COR.texto}>
                 <LabelList dataKey="ponto" position="right" formatter={(v) => reais(v)} style={{ fontSize: 10, fill: COR.texto }} />
               </Scatter>
             </ComposedChart>
@@ -73,7 +73,7 @@ export default function S10Regioes() {
               <Legend wrapperStyle={{ fontSize: 12 }} />
               <Bar dataKey="domingo" name="abre domingo" fill={COR.azul} radius={[3, 3, 0, 0]} />
               <Bar dataKey="segunda" name="abre segunda" fill={COR.azulClaro} radius={[3, 3, 0, 0]} />
-              <Bar dataKey="metro" name="metrô ≤ 1 km" fill={COR.rosa} radius={[3, 3, 0, 0]} />
+              <Bar dataKey="metro" name="metrô ≤ 1 km" fill={COR.azul} radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </CartaoGrafico>

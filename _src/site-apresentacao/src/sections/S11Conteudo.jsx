@@ -18,7 +18,6 @@ const MEDIDAS = [
   { id: "pct", rotulo: "% dos comentários" },
   { id: "pond", rotulo: "% ponderado" },
 ];
-const COR_NEUTRA = "#cbd5e1";
 const p1 = (v) => `${num(v, 1)}%`;
 
 export default function S11Conteudo() {
@@ -79,8 +78,8 @@ export default function S11Conteudo() {
               <Tooltip content={<Dica formatar={(p) => [p.nome, `${p1(p.total)} (${p.n} comentários, ${p.estab} casas)`, `elogio ${p1(p.pos)}`, `crítica ${p1(p.neg)}`]} />} />
               <Legend wrapperStyle={{ fontSize: 12 }} />
               <Bar dataKey="pos" name="elogio" stackId="a" fill={COR.azul} />
-              <Bar dataKey="neg" name="crítica" stackId="a" fill={COR.rosa} />
-              <Bar dataKey="outra" name="mista ou neutra" stackId="a" fill={COR_NEUTRA} radius={[0, 3, 3, 0]}>
+              <Bar dataKey="neg" name="crítica" stackId="a" fill={COR.destaque} />
+              <Bar dataKey="outra" name="mista ou neutra" stackId="a" fill={COR.neutra} radius={[0, 3, 3, 0]}>
                 <LabelList dataKey="total" position="right" formatter={(v) => `${num(v, 0)}%`} style={{ fontSize: 10, fill: COR.texto }} />
               </Bar>
             </BarChart>
@@ -94,7 +93,7 @@ export default function S11Conteudo() {
               <YAxis type="category" dataKey="nome" tick={{ ...eixo, fontSize: 10 }} width={130} interval={0}
                 tickFormatter={(v) => (v.length > 22 ? `${v.slice(0, 21)}…` : v)} />
               <Tooltip content={<Dica formatar={(p) => [p.nome, `${p1(p.parte)} das críticas`, `${p.n} menções negativas`]} />} />
-              <Bar dataKey="parte" fill={COR.rosa} radius={[0, 4, 4, 0]} barSize={14}>
+              <Bar dataKey="parte" fill={COR.azul} radius={[0, 4, 4, 0]} barSize={14}>
                 <LabelList dataKey="parte" position="right" formatter={p1} style={{ fontSize: 10, fill: COR.texto }} />
               </Bar>
             </BarChart>
@@ -111,7 +110,7 @@ export default function S11Conteudo() {
               <Tooltip content={<Dica formatar={(p) => [p.nome, `com elogio: ${num(p.elogio, 2)}`, `com crítica: ${num(p.critica, 2)} (${p.n} críticas)`]} />} />
               <Legend wrapperStyle={{ fontSize: 12 }} />
               <Bar dataKey="elogio" name="com elogio" fill={COR.azulClaro} barSize={9} />
-              <Bar dataKey="critica" name="com crítica" fill={COR.rosa} barSize={9}>
+              <Bar dataKey="critica" name="com crítica" fill={COR.destaque} barSize={9}>
                 <LabelList dataKey="critica" position="right" formatter={(v) => num(v, 1)} style={{ fontSize: 10, fill: COR.texto }} />
               </Bar>
             </BarChart>
@@ -128,7 +127,7 @@ export default function S11Conteudo() {
               <Tooltip formatter={(v) => p1(v)} />
               <Legend wrapperStyle={{ fontSize: 12 }} />
               <Bar dataKey="casas" name="casas de jogos" fill={COR.azul} barSize={9} />
-              <Bar dataKey="lojas" name="lojas" fill={COR.rosaClaro} barSize={9} />
+              <Bar dataKey="lojas" name="lojas" fill={COR.azulClaro} barSize={9} />
             </BarChart>
           </ResponsiveContainer>
         </CartaoGrafico>
@@ -144,7 +143,7 @@ export default function S11Conteudo() {
             <div className="space-y-3 p-5">
               <p className="text-sm leading-relaxed text-azul-900">{a.texto}</p>
               {a.decisao && (
-                <p className="rounded-lg border-l-4 border-roxo-600 bg-lavanda-100 px-4 py-3 text-sm leading-relaxed text-azul-950">
+                <p className="rounded-lg border-l-4 border-azul-800 bg-papel-100 px-4 py-3 text-sm leading-relaxed text-azul-950">
                   <span className="font-semibold">{c.achados.rotuloDecisao}: </span>
                   {a.decisao}
                 </p>

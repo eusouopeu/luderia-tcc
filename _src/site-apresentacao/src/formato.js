@@ -24,14 +24,16 @@ export function porUnidade(v, unidade) {
   return Math.abs(v) >= 100 ? num(v) : num(v, Number.isInteger(v) ? 0 : 1);
 }
 
-/* Cores fixas dos gráficos (SVG não lê as classes do Tailwind). */
+/* Cores fixas dos gráficos (SVG não lê as classes do Tailwind). Séries em cinza; `destaque`
+   só para o que importa à decisão: Salvador (ou o Nordeste), críticas, amostras fora do critério. */
 export const COR = {
-  azul: "#1d4ed8",
-  azulClaro: "#93c5fd",
-  rosa: "#f43f5e",
-  rosaClaro: "#fda4af",
-  grade: "#e2e8f0",
-  texto: "#1e3a8a",
+  azul: "#404040",
+  azulClaro: "#b5b5b5",
+  neutra: "#e0e0e0",
+  referencia: "#737373",
+  destaque: "#b91c1c",
+  grade: "#e5e5e5",
+  texto: "#262626",
 };
 
 export const eixo = { fontSize: 11, fill: COR.texto };

@@ -91,7 +91,7 @@ export default function S8Panorama() {
               <YAxis tick={eixo} domain={[0, 1]} tickFormatter={(v) => pct(v)} />
               <Tooltip content={<Dica formatar={(p) => [p.dia, `${p.casas} casas (${pct(p.pct)})`]} />} />
               <Bar dataKey="pct" radius={[4, 4, 0, 0]}>
-                {D.dias.map((d) => <Cell key={d.dia} fill={d.pct === 1 ? COR.azul : COR.rosa} />)}
+                {D.dias.map((d) => <Cell key={d.dia} fill={d.pct === 1 ? COR.azul : COR.azulClaro} />)}
                 <LabelList dataKey="pct" position="top" formatter={(v) => pct(v)} style={{ fontSize: 11, fill: COR.texto }} />
               </Bar>
             </BarChart>
@@ -122,9 +122,9 @@ export default function S8Panorama() {
               <YAxis type="category" dataKey="nome" tick={{ ...eixo, fontSize: 10 }} width={130}
                 tickFormatter={(v) => (v.length > 20 ? `${v.slice(0, 19)}…` : v)} interval={0} />
               <Tooltip content={<Dica formatar={(p) => [p.nome, p.metropole, `baixa ${reais(p.baixa)}`, `mediana ${reais(p.mediana)}`, `alta ${reais(p.alta)}`]} />} />
-              <ReferenceLine x={MEDIANA_CESTAS} stroke={COR.rosa} strokeDasharray="4 3" />
+              <ReferenceLine x={MEDIANA_CESTAS} stroke={COR.referencia} strokeDasharray="4 3" />
               <Bar dataKey={(p) => [p.baixa, p.alta]} radius={3} barSize={12}>
-                {CESTAS.map((p) => <Cell key={p.nome} fill={salvador(p) ? COR.rosa : COR.azul} />)}
+                {CESTAS.map((p) => <Cell key={p.nome} fill={salvador(p) ? COR.destaque : COR.azul} />)}
               </Bar>
             </BarChart>
           </ResponsiveContainer>
@@ -137,7 +137,7 @@ export default function S8Panorama() {
               <XAxis dataKey="faixa" tick={{ ...eixo, fontSize: 10 }} interval={0} />
               <YAxis tick={eixo} allowDecimals={false} />
               <Tooltip content={<Dica formatar={(p) => [`R$ ${p.faixa}`, `${p.casas} casas`]} />} />
-              <Bar dataKey="casas" fill={COR.rosa} radius={[4, 4, 0, 0]}>
+              <Bar dataKey="casas" fill={COR.azul} radius={[4, 4, 0, 0]}>
                 <LabelList dataKey="casas" position="top" style={{ fontSize: 11, fill: COR.texto }} />
               </Bar>
             </BarChart>
@@ -152,7 +152,7 @@ export default function S8Panorama() {
               <YAxis type="number" dataKey="avaliacao_media" domain={[4, 5]} tick={eixo} tickFormatter={(v) => num(v, 1)} />
               <Tooltip content={<Dica formatar={(p) => [p.nome, p.metropole, `nota ${num(p.avaliacao_media, 1)}`, `${num(p.volume_avaliacoes)} avaliações`]} />} />
               <Scatter data={D.dispersao_google}>
-                {D.dispersao_google.map((p) => <Cell key={p.nome} fill={salvador(p) ? COR.rosa : COR.azul} fillOpacity={0.75} />)}
+                {D.dispersao_google.map((p) => <Cell key={p.nome} fill={salvador(p) ? COR.destaque : COR.azul} fillOpacity={0.75} />)}
               </Scatter>
             </ScatterChart>
           </ResponsiveContainer>
@@ -166,7 +166,7 @@ export default function S8Panorama() {
               <YAxis type="number" dataKey="interacoes_por_post" scale="log" domain={[1, 10000]} ticks={[1, 10, 100, 1000, 10000]} tick={eixo} tickFormatter={(v) => num(v)} />
               <Tooltip content={<Dica formatar={(p) => [p.nome, p.metropole, `${milhar(p.seguidores)} seguidores`, `${num(p.interacoes_por_post)} interações por post`]} />} />
               <Scatter data={D.dispersao_instagram}>
-                {D.dispersao_instagram.map((p) => <Cell key={p.nome} fill={salvador(p) ? COR.rosa : COR.azul} fillOpacity={0.75} />)}
+                {D.dispersao_instagram.map((p) => <Cell key={p.nome} fill={salvador(p) ? COR.destaque : COR.azul} fillOpacity={0.75} />)}
               </Scatter>
             </ScatterChart>
           </ResponsiveContainer>
