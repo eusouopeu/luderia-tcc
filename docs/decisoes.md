@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 15/10/2026 | Contagem do B3 com dois observadores simultâneos (POV1 e POV2): originais de cada um guardados intactos; a análise dá uma linha por observador e a média dos dois por visita (tabela descartada ou ausente fica fora da média). Na visita de 10/10 ao Bela Vista, a tabela de mesas do POV2 foi descartada (registro interrompido às 19h27, sem saídas) e o fluxo da porta dos dois entra na média | `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py`, `outros/B3_descartes_app.csv` |
 | 15/10/2026 | Entorno no OSM: plataformas de cada sentido com o mesmo nome e rede contam como uma estação (até 400 m); bonde de Santa Teresa (linha turística) e paradas sem nome ficam em "outro"; no Maps, busca "estação tubo" só em Curitiba. Coletor 2026.10.15-4 | `docs/parecer_entorno_B1.md` §7 |
 | 15/10/2026 | A cada capítulo gerado ou revisado, analisar todos os capítulos e atualizar `docs/melhorias-texto.md` (divergências por gravidade; cortes por ganho) | `CLAUDE.md`, "Melhorias do texto" |
 | 15/10/2026 | Cap. 5 exposto do maior para o menor (Brasil → Bahia → Salvador; serviços às famílias → alimentação fora do lar e lazer → luderias); fontes na ordem órgão oficial → fundação → entidade setorial e acadêmico → imprensa, esta só com marca de troca | `textos/capitulos/5_analise_de_mercado.md` |

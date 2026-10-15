@@ -24,12 +24,14 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 - **Estatística descritiva do B1** (15/10): geral, por metrópole e por região em `dados/[B1]…/estabelecimentos/4_estatistica_descritiva/` e nas abas 08 a 10 do site (`_src/site-apresentacao`, publicado em 15/10; publicar de novo com `pnpm run deploy` quando os dados mudarem). Rodar de novo `B1-a_estatistica_descritiva.py` depois de cada atualização do `B1_resumo_estabelecimentos.xlsx`.
 
+- **Contagem do B3, Bela Vista** (visita de sábado, 10/10, 19h às 22h, dois observadores): CSVs do app guardados em `dados/[B3]…/_dados-brutos/app/originais/2026-10-10_SJBV/POV1|POV2/` e consolidados por `B3-b_importar_app.py`; `B3-a_contagem.py` dá uma linha por observador e a média. Mesas do POV2 descartadas. Resultado provisório: 20 pessoas por hora na porta (26 POV1, 14 POV2), permanência média de 116 min nas mesas (9 grupos, POV1). Dúvidas de lançamento para conferir com os observadores em `docs/pendencias.md`. Sem NFC-e nem contagem de mesas a cada 30 min.
+
 - **Status da coleta no Notion** ("Luderias – Status da coleta", 15/10): 54 casas com status por fonte e, em cada linha, o que falta e como fechar. Horários (54 casas) e cardápios de 27 casas consolidados em 15/10. Lacunas que restam: acervo sem lista (25), porte de shopping no entorno (22) e Instagram (18 casas parciais ou sem coleta).
 
 ## Próximos 3 passos
 
 1. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
-2. Preparar as visitas de retorno de **domingo, 18/10** (app de observação e `textos/instrumentos/roteiro_observacao_sao_jogue.md`).
+2. Preparar as visitas de retorno de **domingo, 18/10**: tirar as dúvidas da visita de 10/10 com os observadores (pendências do B3) e reforçar no roteiro o encerramento da visita no app, a NFC-e no início e no fim e as contagens de mesas a cada 30 min.
 3. Escrever o rascunho do cap. 3 (metodologia), o mais atrasado e com as instruções prontas.
 
 ## Bloqueado ou aguardando

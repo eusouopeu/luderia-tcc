@@ -1023,3 +1023,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: no OSM, mesmo nome, mesmo grupo e mesma rede até 400 m contam uma vez; bonde de Santa Teresa e parada ou plataforma sem nome vão para "outro" (com `observacao`); no Maps, busca "estação tubo" só em Curitiba (dispensada nas demais), o que deixa as 6 casas de Curitiba pendentes até a recoleta; `versao_script` nos dois resumos. Simulado sobre a coleta de 12h49: VLT/BRT a 1000 m cai de 88 para 59 e metrô de 45 para 44, somas fechando em 54/54.
 **Justificativa**: pedido do autor: analisar a última rodada do entorno e, se não tivesse extraído todas as variáveis em Maps e OSM, achar o problema e corrigir o extrator. A rodada não extraiu o VLT/BRT de forma confiável em nenhuma das duas fontes.
 
+### 18:03
+**Objeto**: `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/` (`originais/2026-10-10_SJBV/POV1/` e `POV2/`, novos; `contagem_*.csv`, novos), `dados/[B3] Contagem direta de ocupacao/contagem_resumo_visitas.csv` e `contagem_notas_intervalo.csv` (novos), `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py` (novo), `outros/B3_descartes_app.csv` (novo), `analise/B3-a_contagem.py`, `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`
+**Antes**: nenhum dado de visita no B3; a análise lia um único arquivo por conteúdo, sem observador, e exigia `visita_fim` para calcular as taxas.
+**Depois**: 19 CSVs exportados do app na visita de 10/10 ao Bela Vista (POV1: 9; POV2: 10) guardados intactos; consolidação com `visita_id` e `observador`, unidade tirada do nome da pasta (o POV2 digitou "BV 10.10") e descarte por lista (mesas do POV2: 5 grupos sem saída, registro até 19h27). A análise dá uma linha por observador e uma de média por visita; sem `visita_fim`, o fim é o maior entre o previsto e o último registro (`fim_estimado`). Fluxo: 52 linhas (32 + 20); mesas: 9 (POV1).
+**Justificativa**: pedido do autor: importar os dados da primeira visita presencial, com dois observadores simultâneos, tomando a média dos dois e sabendo que uma das rotinas do POV2 está errada.
+
+### 18:03
+**Objeto**: `docs/decisoes.md` (02/10 e 13/10), `textos/planejamento/cronograma_luderia.md` e `_instrucoes/4_metodologia.md` (B3) × CSVs da visita ao Bela Vista
+**Antes**: primeiras visitas no sábado, 03/10, entrada às 19h; retorno 15 dias depois, domingo, 18/10.
+**Depois**: a visita ao Bela Vista registrada no app começou em 10/10 (18h37 no POV1, 19h02 no POV2); o retorno de 18/10 fica 8 dias depois.
+**Efeitos colaterais**: o intervalo de notas fiscais entre as visitas (base das vendas no período) passa de 15 para 8 dias, e a visita deixa de cair na quinzena após o pagamento dos servidores estaduais (29 e 30/09). Nada foi corrigido nos documentos.
+
