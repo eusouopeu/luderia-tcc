@@ -740,11 +740,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Efeitos colaterais**: infla levemente a precisão e a sensibilidade por corte; decidir se a semente sai do build ou se a casa entra nas aprovadas.
 
 
-### 11:16
-**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/maps_entorno_resultados_2026-10-14.csv` e `maps_entorno_resumo_2026-10-14.csv`; cópias `(1)` removidas; `docs/pendencias.md`
-**Antes**: dois pares de CSVs do entorno de 14/10 (sem sufixo e com `(1)`). Os sem sufixo tinham Ludus e Shelf (499 linhas em resultados, 2 em resumo); os `(1)`, exportação cumulativa do coletor, tinham os mesmos e mais Bodogami (787 e 3 linhas). Todas as linhas dos sem sufixo estão nos `(1)` (conferido linha a linha, diferença zero). O `B1-b_entorno_maps_fila.py` lê `maps_entorno_resumo_*.csv` e via os dois resumos.
-**Depois**: um arquivo por tipo, com o conteúdo do `(1)` sob o nome sem sufixo; nenhuma linha perdida. A raiz do repositório já estava limpa desde o PR #4.
-**Justificativa**: pedido do autor de organizar os CSVs do entorno e resolver as duplicatas.
 ### 10:23
 **Objeto**: `textos/capitulos/3_metodologia_plano_luderia.md` (novo)
 **Antes**: capítulo 3 não iniciado.
@@ -768,3 +763,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: P5 pede travessão (—) para aposto e voz passiva sintética ("adotou-se").
 **Depois**: a skill pede hífen com espaços ("-"), nunca travessão, e prefere a passiva analítica ("foi adotado"); o cap. 1 segue a skill.
 **Efeitos colaterais**: o rascunho do cap. 3 segue o cap. 1 e a skill (hífen; voz ativa, passiva analítica quando preciso); se valer a P5, os dois capítulos mudam juntos.
+
+### 11:16
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/maps_entorno_resultados_2026-10-14.csv` e `maps_entorno_resumo_2026-10-14.csv`; cópias `(1)` removidas; `docs/pendencias.md`
+**Antes**: dois pares de CSVs do entorno de 14/10 (sem sufixo e com `(1)`). Os sem sufixo tinham Ludus e Shelf (499 linhas em resultados, 2 em resumo); os `(1)`, exportação cumulativa do coletor, tinham os mesmos e mais Bodogami (787 e 3 linhas). Todas as linhas dos sem sufixo estão nos `(1)` (conferido linha a linha, diferença zero). O `B1-b_entorno_maps_fila.py` lê `maps_entorno_resumo_*.csv` e via os dois resumos.
+**Depois**: um arquivo por tipo, com o conteúdo do `(1)` sob o nome sem sufixo; nenhuma linha perdida. A raiz do repositório já estava limpa desde o PR #4.
+**Justificativa**: pedido do autor de organizar os CSVs do entorno e resolver as duplicatas.
