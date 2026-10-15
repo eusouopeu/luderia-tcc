@@ -1,130 +1,143 @@
 {
-  "_leiaMe": "Aba 05. Cada entrada de 'objetivos' vira um botão no seletor e um bloco da matriz. O objetivo (vi) não testa hipótese estatística — é síntese estratégica.",
-  "introducao": "Cada objetivo específico governa um bloco de dados e testa um conjunto fechado de hipóteses, cada uma com uma técnica de análise definida a priori. Selecione um objetivo para percorrer a cadeia.",
+  "_leiaMe": "Aba 05. Quadro 04 (modelo de análise) e Quadro 05 (técnicas) do projeto. Cada objetivo vira um botão e uma linha da matriz; em 'hipoteses', 'id' traz os itens do Quadro 03, 'texto' as variáveis e 'tecnica' a técnica. Testes de hipótese H1, H3 e H5 são extras.",
+  "introducao": "Cada objetivo específico liga uma dimensão do plano às variáveis que a medem, aos itens dos instrumentos e às técnicas de análise. Selecione um objetivo para percorrer a cadeia.",
   "coresBloco": {
-    "Bloco A": "azul",
-    "Bloco B": "roxo",
-    "Ponte A ↔ B": "lavanda",
-    "Bloco C": "carmesim",
-    "Síntese": "azulEscuro"
+    "Mercado": "azul",
+    "Marketing": "roxo",
+    "Demanda": "roxoEscuro",
+    "Operação e jurídico": "lavanda",
+    "Financeiro": "azulEscuro",
+    "Riscos": "carmesim"
   },
   "rotulos": {
-    "hipoteses": "Hipóteses testadas",
+    "hipoteses": "Variáveis, itens e técnicas",
     "tecnica": "Técnica de análise",
-    "prefixoBloco": "bloco"
+    "prefixoBloco": "área:"
   },
   "matriz": {
-    "titulo": "A matriz completa",
+    "titulo": "O modelo completo",
     "colunas": [
       "OE",
-      "Bloco",
-      "Hipóteses",
-      "Técnica"
+      "Área",
+      "Itens",
+      "Técnicas"
     ]
   },
   "objetivos": [
     {
       "oe": "(i)",
-      "bloco": "Bloco A",
-      "pergunta": "Que jogos engajam, retêm e fidelizam mais — e por quê?",
+      "bloco": "Mercado",
+      "pergunta": "Como se posicionam as luderias das 14 metrópoles, e onde fica Salvador?",
       "hipoteses": [
         {
-          "id": "H1",
-          "texto": "Jogos com menor idade mínima e menor duração de partida têm mais partidas registradas (qt_jogou), controlando pela diversidade mecânica.",
-          "tecnica": "Regressão linear múltipla"
+          "id": "A01-A11",
+          "texto": "Desempenho percebido, porte, preço, variedade do cardápio, entorno, tipo de ponto e horário de cada concorrente.",
+          "tecnica": "Estatística descritiva por metrópole, com Salvador em destaque; comparação de cardápios; mapa de concorrentes"
         },
         {
-          "id": "H2",
-          "texto": "Jogos de mecânica cooperativa têm Taxa de Fidelização superior aos de mecânica competitiva.",
-          "tecnica": "ANCOVA"
-        },
-        {
-          "id": "H3",
-          "texto": "A Diversidade Mecânica está positivamente associada à Taxa de Fidelização.",
-          "tecnica": "Correlação de Spearman"
-        },
-        {
-          "id": "H4",
-          "texto": "O Índice de Desejo decai com o tempo desde a publicação do jogo (decaimento do hype).",
-          "tecnica": "Regressão linear"
+          "id": "E01-E02",
+          "texto": "Tamanho do mercado e poder de compra em Salvador e nas demais capitais.",
+          "tecnica": "Cinco forças; PESTEL"
         }
       ]
     },
     {
       "oe": "(ii)",
-      "bloco": "Bloco A",
-      "pergunta": "Que jogos são acessíveis ao público casual, e quais são hobbyistas?",
+      "bloco": "Marketing",
+      "pergunta": "Que atributos não podem faltar, e quais diferenciam uma luderia?",
       "hipoteses": [
         {
-          "id": "H5(A)",
-          "texto": "É possível identificar perfis distintos de sucesso entre os jogos a partir do Índice de Engajamento, da Taxa de Retenção e do Índice de Desejo, sem depender da nota média.",
-          "tecnica": "Clusterização"
+          "id": "B01-B03",
+          "texto": "Aspectos mencionados nas avaliações (ambiente, atendimento, explicação dos jogos, acervo, comida, preço...) e a polaridade de cada um.",
+          "tecnica": "Análise de conteúdo com dicionário validado (kappa e F1); análise de penalidade e recompensa"
+        },
+        {
+          "id": "A03, A06-A09, B06",
+          "texto": "Política de cobrança, cardápio, notas por aspecto e jogos citados.",
+          "tecnica": "Grade ERRC"
+        },
+        {
+          "id": "H1, H3 (extra)",
+          "texto": "Peso de atendimento e ambiente frente a comida e bebida na nota; reclamação de preço por política de cobrança.",
+          "tecnica": "Regressão com efeito fixo por estabelecimento; comparação de proporções. Só se sobrar tempo, em apêndice"
         }
       ]
     },
     {
       "oe": "(iii)",
-      "bloco": "Bloco B",
-      "pergunta": "Como os estabelecimentos concorrentes se posicionam nas 27 capitais?",
+      "bloco": "Demanda",
+      "pergunta": "Quantos visitantes por semana uma luderia comparável recebe?",
       "hipoteses": [
         {
-          "id": "H5(B)",
-          "texto": "A avaliação média dos estabelecimentos em Salvador difere da avaliação média nas demais capitais pesquisadas.",
-          "tecnica": "Kruskal-Wallis"
+          "id": "D01-D06",
+          "texto": "Fluxo, permanência, pessoas por mesa e notas fiscais emitidas na São Jogue.",
+          "tecnica": "Pessoas por hora e permanência; notas emitidas em 15 dias × pessoas por nota"
         },
         {
-          "id": "H6",
-          "texto": "O volume de avaliações difere entre categorias de política de precificação.",
-          "tecnica": "Kruskal-Wallis"
-        },
-        {
-          "id": "H6b",
-          "texto": "A avaliação média difere entre categorias de modelo de alimentação e bebidas.",
-          "tecnica": "Kruskal-Wallis"
+          "id": "B04, B07, E01",
+          "texto": "Tamanho do grupo citado, velocidade de avaliações e população.",
+          "tecnica": "Modelo de calibração: visitantes da São Jogue ÷ velocidade de avaliações → fluxo dos concorrentes, em faixa"
         }
       ]
     },
     {
       "oe": "(iv)",
-      "bloco": "Ponte A ↔ B",
-      "pergunta": "O acervo de um estabelecimento se relaciona com sua avaliação?",
+      "bloco": "Operação e jurídico",
+      "pergunta": "Quantas mesas, que equipe e que enquadramento legal?",
       "hipoteses": [
         {
-          "id": "H7",
-          "texto": "O alinhamento do acervo de um estabelecimento aos perfis de jogos acessíveis identificados no Bloco A está associado positivamente à sua avaliação média.",
-          "tecnica": "Correlação de Spearman onde o acervo é identificável; estudo de caso descritivo nos demais"
+          "id": "B02-B03, D01, D03-D04",
+          "texto": "Reclamações operacionais, capacidade e tamanho dos grupos.",
+          "tecnica": "Ranking de reclamações com intervalo de confiança; dimensionamento de mesas e equipe"
+        },
+        {
+          "id": "E05, E07",
+          "texto": "Custo de pessoal e tributos.",
+          "tecnica": "Levantamento documental da legislação"
         }
       ]
     },
     {
       "oe": "(v)",
-      "bloco": "Bloco C",
-      "pergunta": "O que preço e complexidade têm a ver com a nota do consumidor?",
+      "bloco": "Financeiro",
+      "pergunta": "O negócio remunera o capital investido?",
       "hipoteses": [
         {
-          "id": "H8'",
-          "texto": "A proporção de avaliações que mencionam preço é maior entre os detratores (1-3 estrelas) do que entre os promotores (5 estrelas), cruzando o agrupamento por nota individual com o agrupamento por nota média do estabelecimento.",
-          "tecnica": "Agrupamento descritivo (IQR/NPS) + teste exato de Fisher"
+          "id": "A07-A08, B05, D07",
+          "texto": "Ticket médio: preços do cardápio, valores citados e preço efetivo.",
+          "tecnica": "Cesta por pessoa (couvert + bebida + entrada ou prato), calibrada pelos valores citados e checada contra a POF"
         },
         {
-          "id": "H9'",
-          "texto": "A proporção de menções a fricção de complexidade é maior entre os detratores, e essa menção se concentra nos estabelecimentos de perfil hobbyista, cruzando o agrupamento por nota individual com o perfil de acervo do estabelecimento.",
-          "tecnica": "Agrupamento descritivo (IQR/NPS) + teste exato de Fisher"
+          "id": "E03-E08",
+          "texto": "Custos, benchmark setorial e taxa de desconto.",
+          "tecnica": "Registro de premissas com faixas e nível de evidência; DRE e fluxo de caixa; VPL, TIR, payback descontado e ponto de equilíbrio"
         }
       ]
     },
     {
       "oe": "(vi)",
-      "bloco": "Síntese",
-      "pergunta": "Como transformar os achados em posicionamento estratégico?",
+      "bloco": "Riscos",
+      "pergunta": "Que premissas decidem o resultado, e em que valor o negócio deixa de ser viável?",
       "hipoteses": [
         {
-          "id": "ERRC",
-          "texto": "Sem teste de hipótese estatística: a grade ERRC organiza os achados dos Blocos A e B em decisões de Eliminar, Reduzir, Elevar e Criar para o acervo e o modelo de alimentação e bebidas do estabelecimento proposto.",
-          "tecnica": "Grade ERRC — Estratégia do Oceano Azul"
+          "id": "Todos",
+          "texto": "Premissas do modelo financeiro, com faixa pessimista, provável e otimista e nível de evidência.",
+          "tecnica": "Análise de sensibilidade (tornado); ponto de ruptura. Monte Carlo só se sobrar tempo"
+        }
+      ]
+    },
+    {
+      "oe": "(vii)",
+      "bloco": "Riscos",
+      "pergunta": "O que fazer se as premissas críticas falharem?",
+      "hipoteses": [
+        {
+          "id": "Saídas de (vi)",
+          "texto": "Premissas críticas e limitações da evidência.",
+          "tecnica": "Matriz SWOT; cenários pessimista, provável e otimista; matriz de riscos"
         }
       ]
     }
   ],
-  "nota": "H = hipótese; A numeração segue a ordem de apresentação na metodologia deste trabalho, não a ordem de importância."
+  "nota": "Quadros 04 e 05 do projeto de pesquisa. O núcleo do plano usa estatística descritiva com intervalo de confiança, três cenários, tornado e ponto de ruptura; os testes de hipótese do registro prévio (H1, H3 e H5, após a emenda 2) são extras."
 }

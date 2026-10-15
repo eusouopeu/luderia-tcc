@@ -1,26 +1,26 @@
 {
-  "_leiaMe": "Aba 07. Os blocos abrem recolhidos; 'destaque' pinta o eixo principal.",
+  "_leiaMe": "Aba 07. Os blocos abrem recolhidos; 'destaque' pinta o eixo principal. Fontes: projeto de pesquisa §7, introdução §1.2, metodologia §3.9 e cronograma.",
   "numeros": [
-    {
-      "valor": 53,
-      "sufixo": " bi",
-      "decimais": 0,
-      "cor": "roxo",
-      "texto": "reais movimentados pelo mercado global de jogos de tabuleiro em 2024 (SEBRAE, 2026)"
-    },
     {
       "valor": 13.1,
       "sufixo": "%",
       "decimais": 1,
       "cor": "azulEscuro",
-      "texto": "de participação dos jogos de tabuleiro e cartas nas vendas da indústria de brinquedos em 2025 — ante 9,1% em 2017 (ABRINQ, 2026)"
+      "texto": "das vendas da indústria de brinquedos vêm de jogos de tabuleiro e cartas em 2025, ante 9,1% em 2017 (ABRINQ, 2026)"
     },
     {
-      "valor": 3,
-      "sufixo": "%",
+      "valor": 54,
+      "sufixo": "",
+      "decimais": 0,
+      "cor": "roxo",
+      "texto": "luderias com mais de 100 avaliações no Google nas metrópoles brasileiras, mapeadas pelo B1 até 15/10/2026"
+    },
+    {
+      "valor": 1,
+      "sufixo": "",
       "decimais": 0,
       "cor": "carmesim",
-      "texto": "dos respondentes do Censo Ludopedia têm menos de 18 anos — evidência da concentração hobbyista do mercado atual (LUDOPEDIA, 2020)"
+      "texto": "luderia em operação em Salvador: a São Jogue, com duas unidades, é a única concorrente direta"
     }
   ],
   "eixos": {
@@ -33,87 +33,87 @@
         "destaque": true,
         "itens": [
           {
-            "titulo": "Curadoria do acervo de jogos",
-            "texto": "Guiada pelos perfis identificados por clusterização e pelo Índice de Acessibilidade Family/Casual — não pela amplitude do catálogo."
+            "titulo": "Escolha do ponto",
+            "texto": "Bairro de Salvador escolhido por população, renda, aluguel, entorno e distância da concorrência direta."
           },
           {
-            "titulo": "Política de precificação",
-            "texto": "Orientada pela comparação entre categorias de preço praticadas nos estabelecimentos do Bloco B."
+            "titulo": "Modelo de cobrança e preço",
+            "texto": "Couvert, cobrança por hora ou consumação mínima, a partir do que o mercado pratica e do que gera menos reclamação de preço."
           },
           {
-            "titulo": "Modelo de alimentação e bebidas",
-            "texto": "Minimiza o investimento inicial em cozinha própria sem comprometer a experiência do público-alvo, com base na comparação entre modelos concorrentes."
+            "titulo": "Mesas e cardápio",
+            "texto": "Dimensionamento de mesas pelo tamanho dos grupos e pela permanência observada; cardápio pelo peso da comida na satisfação e pelos preços dos concorrentes."
           },
           {
-            "titulo": "Posicionamento de marca",
-            "texto": "Voltado à atração do público casual e ao afastamento controlado do público hobbyista exigente."
+            "titulo": "Valores mínimos de ocupação e ticket",
+            "texto": "Os pontos de ruptura indicam o mínimo de ocupação e de ticket que sustenta o negócio e servem de indicadores de monitoramento depois da abertura."
           },
           {
-            "titulo": "Processo replicável",
-            "texto": "A aplicação da grade ERRC documenta um processo de delimitação estratégica replicável por empreendedores em fase de estruturação de negócios similares."
+            "titulo": "Modelo atualizável",
+            "texto": "O registro de premissas e o modelo financeiro dirigido por parâmetros permitem ao empreendedor atualizar as projeções à medida que novos dados surgem."
           }
         ]
       },
       {
         "eixo": "Acadêmica",
         "itens": [
-          "Preenche lacuna na literatura de estudos de viabilidade do setor de entretenimento social presencial — os levantamentos disponíveis concentram-se no varejo e na indústria editorial, sem tratar o nível do estabelecimento.",
-          "Articula três blocos de dados de naturezas distintas: indicadores de jogos via API e scraping, perfil de estabelecimentos via Google Places API e avaliações individuais via análise de conteúdo e agrupamento descritivo.",
-          "Amplia o escopo metodológico ao aplicar correlação, regressão, comparação entre grupos, clusterização e agrupamento descritivo a um problema real de posicionamento de mercado."
+          "Primeiro mapeamento das luderias estabelecidas nas metrópoles brasileiras, com dados de avaliação, preço, cardápio, horário e entorno.",
+          "Método de plano de negócios baseado em evidências: premissas classificadas por nível de evidência (N1-N6), triangulação das premissas críticas e análise de sensibilidade.",
+          "Estimativa de ocupação por avaliações calibradas por observação direta e por notas fiscais, aplicável a outros negócios sem dados públicos de fluxo."
         ]
       },
       {
         "eixo": "Social",
         "itens": [
-          "Oferece um espaço de lazer social presencial, alternativo ao consumo de entretenimento mediado por telas.",
-          "Amplia esse benefício para além da comunidade já consolidada de jogadores, reduzindo a barreira de entrada representada pela cultura hobbyista.",
-          "Abre o formato a ocasiões sociais cotidianas — encontros entre amigos, aniversários, confraternizações corporativas."
+          "Oferece um espaço de lazer presencial, alternativo ao entretenimento mediado por telas.",
+          "Atende ocasiões sociais cotidianas, como encontros entre amigos, aniversários e confraternizações de trabalho, em torno de uma atividade compartilhada.",
+          "O repositório de coleta e análise, o dicionário de dados e este site ficam disponíveis para empreendedores e pesquisadores do setor."
         ]
       }
     ]
   },
   "limitacoes": {
     "titulo": "O que o estudo não vai permitir afirmar",
-    "subtitulo": "limitações reconhecidas",
+    "subtitulo": "limitações e como cada uma é tratada",
     "itens": [
-      "O Bloco C se reduz a até 5 avaliações por estabelecimento, selecionadas pelo algoritmo do Google como \"mais relevantes\" — nem as mais recentes, nem uma amostra aleatória —, restringindo H8' e H9' a um caráter exploratório e descritivo, sem pretensão de generalização estatística.",
-      "O corte transversal impede identificar variações temporais na adesão a jogos e no desempenho de estabelecimentos, e inviabiliza inferências causais.",
-      "A variável idade mínima, central para H1, tem confiabilidade reduzida: a própria Ludopedia reconhece que a classificação etária é frequentemente elevada por exigência legal, sem refletir a jogabilidade real.",
-      "O N reduzido do Bloco B (70 a 90 estabelecimentos) restringe o poder estatístico dos testes de comparação entre grupos, o que motivou a adoção de técnicas não paramétricas em todo esse bloco.",
-      "A hipótese-ponte H7 depende da identificação do acervo real de cada estabelecimento em canais públicos, nem sempre disponível ou atualizada — fragmentando o teste em um componente estatístico e um qualitativo.",
-      "O Índice de Acessibilidade Family/Casual é um proxy construído a partir de variáveis do próprio jogo, sem validação direta contra dados reais de adesão etária, indisponíveis nas fontes utilizadas.",
-      "As avaliações do Google Maps estão sujeitas a viés de autosseleção — representam quem se motivou a avaliar publicamente, o que pode superrepresentar experiências extremas em relação à experiência média."
+      "A contagem direta cobre um único estabelecimento, em uma cidade, com quatro visitas de fim de semana: a razão de calibração pode não valer para outros locais. A ocupação entra com faixa larga e no tornado, e a validação é recomendada antes do investimento.",
+      "As visitas cobrem o horário de maior fluxo provável e superestimam a média do dia. A média vem das notas fiscais dos 15 dias; a contagem entra como limite superior da faixa.",
+      "Quem avalia no Google se autosseleciona e superrepresenta experiências extremas. As análises ponderam por estabelecimento.",
+      "O recorte de três meses de avaliações cobre só parte do ano e não mede sazonalidade, que entra como premissa com faixa.",
+      "O corte de 100 avaliações exclui casas novas ou pequenas: o B1 descreve concorrentes estabelecidos.",
+      "Poucos textos citam valores em R$. O ticket é triangulado com a cesta de cardápio, os preços observados e a POF.",
+      "O FipeZap não distingue bairros e a POF é de 2017-2018. Aluguel e gasto entram com faixa larga e correção pelo IPCA; a cotação de pontos fica como validação antes do investimento."
     ]
   },
   "agenda": {
     "titulo": "Próximos passos",
-    "subtitulo": "do estado atual até a análise",
+    "subtitulo": "do estado atual até a versão final",
     "itens": [
       {
-        "titulo": "Fechar a curadoria do Bloco B",
-        "texto": "Confirmar a relevância de cada candidato identificado via Google Places API nas 27 capitais, descartando falsos positivos e duplicatas."
+        "titulo": "Fechar a contagem direta (18/10)",
+        "texto": "Visitas de retorno nas duas unidades da São Jogue, com a segunda leitura da NFC-e, para estimar visitantes por semana por dois caminhos."
       },
       {
-        "titulo": "Rodar os testes de hipótese do Bloco A",
-        "texto": "Aplicar regressão múltipla (H1), ANCOVA (H2) e regressão (H4) sobre os indicadores de engajamento, retenção e desejo — correlação e clusterização já processadas."
+        "titulo": "Codificar e analisar as avaliações",
+        "texto": "Validar o dicionário (kappa e F1), rodar a análise de penalidade e recompensa e o ranking de reclamações, e calibrar a velocidade de avaliações."
       },
       {
-        "titulo": "Testar o Bloco B",
-        "texto": "Aplicar Kruskal-Wallis para comparar avaliação média e volume de avaliações entre capitais e categorias de precificação e de alimentação e bebidas."
+        "titulo": "Escrever mercado, operação e finanças (até 30/10)",
+        "texto": "Capítulos 3, 5, 6, 7 e 8 a partir dos dados do B1, B2 e B4; modelo financeiro com o registro de premissas no capítulo 9."
       },
       {
-        "titulo": "Validar a codificação do Bloco C",
-        "texto": "Checar manualmente 10% da subamostra codificada pelo dicionário de termos-chave, e cruzar os agrupamentos descritivos (IQR/NPS) por teste exato de Fisher para H8' e H9'."
+        "titulo": "Testar o plano (até 06/11)",
+        "texto": "Tornado, pontos de ruptura, três cenários e matriz de riscos no capítulo 10; sumário executivo e considerações finais por último."
       },
       {
-        "titulo": "Consolidar a grade ERRC",
-        "texto": "Traduzir os achados estatísticos e qualitativos dos três blocos em decisões de Eliminar, Reduzir, Elevar e Criar."
+        "titulo": "Versão final para a banca (16/11)",
+        "texto": "Conferência das referências marcadas [AV], revisão do texto e publicação dos dados processados."
       }
     ]
   },
   "fecho": {
     "rotulo": "Em uma frase",
-    "texto": "A viabilidade de uma luderia casual se decide onde os dados dos jogos, dos estabelecimentos concorrentes e dos consumidores se encontram — e é esse encontro que a pesquisa está construindo."
+    "texto": "A viabilidade de uma luderia em Salvador depende de ocupação e ticket: o trabalho estima as duas com dados rastreáveis e diz em que valores o negócio deixa de se sustentar."
   },
-  "nota": "Fonte: Introdução, Justificativa e Limitações metodológicas deste trabalho."
+  "nota": "Fonte: projeto de pesquisa (§7), introdução (§1.2), metodologia (§3.9) e cronograma deste trabalho."
 }

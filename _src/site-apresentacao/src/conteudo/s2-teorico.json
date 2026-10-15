@@ -1,94 +1,116 @@
 {
-  "_leiaMe": "Aba 02. 'grupos' define as abas de filtro e a cor de cada camada; 'rotuloTodos' é o último filtro.",
-  "introducao": "O trabalho não constrói teoria nova: aplica instrumental de estudo de viabilidade e de estratégia a um caso real de entretenimento social presencial. Os conceitos abaixo organizam-se em três camadas — o negócio que se investiga, os índices que traduzem seus dados e as técnicas que os tratam.",
+  "_leiaMe": "Aba 02. 'grupos' define os filtros e a cor de cada camada; 'rotuloTodos' é o último filtro. Conceitos e fontes do rascunho do cap. 2 (textos/capitulos/2_referencial_teorico.md) e do Quadro 01 do projeto; [AV] = obra a conferir.",
+  "introducao": "O referencial não constrói teoria nova. Ele fornece os conceitos e as ferramentas que o plano usa nos capítulos 5 a 10. Os conceitos se organizam em quatro camadas: o plano e a evidência, a estratégia, a ocasião de consumo e a decisão de investir.",
   "grupos": [
     {
-      "nome": "O negócio e o público",
+      "nome": "Plano e evidência",
       "cor": "azul"
     },
     {
-      "nome": "Índices do Bloco A",
+      "nome": "Estratégia e mercado",
       "cor": "roxo"
     },
     {
-      "nome": "Instrumental analítico",
+      "nome": "Lazer e estabelecimento",
       "cor": "lavanda"
+    },
+    {
+      "nome": "Viabilidade e risco",
+      "cor": "carmesim"
     }
   ],
   "rotuloTodos": "Todos",
   "conceitos": [
     {
-      "termo": "Ludobar / luderia / quiz-bar",
-      "grupo": "O negócio e o público",
-      "definicao": "Bar temático com acervo de jogos de tabuleiro para consumo no local, cobrança por acesso ou por hora, com variações de posicionamento — do foco em jogos de tabuleiro ao quiz-bar. A Ludus Luderia, pioneira em São Paulo desde 2007, é a referência do formato no Brasil.",
-      "fonte": "Introdução deste trabalho; DIVERSÓRIO (2026)"
+      "termo": "Plano de negócios",
+      "grupo": "Plano e evidência",
+      "definicao": "Documento que descreve o empreendimento e testa, antes do investimento, se ele se sustenta. Orienta a gestão e comunica a oportunidade a sócios e financiadores. Seus componentes organizam os capítulos 5 a 9.",
+      "fonte": "DORNELAS (2021) [AV]"
     },
     {
-      "termo": "Público casual vs. hobbyista",
-      "grupo": "O negócio e o público",
-      "definicao": "O consumidor casual busca uma ocasião social pontual, sem envolvimento prévio com jogos de tabuleiro. O hobbyista já integra a comunidade consolidada de jogadores — 84% do Censo Ludopedia têm entre 19 e 40 anos, e apenas 3% têm menos de 18.",
-      "fonte": "LUDOPEDIA (2020)"
+      "termo": "Gestão baseada em evidências",
+      "grupo": "Plano e evidência",
+      "definicao": "Uso explícito das melhores evidências disponíveis na decisão. Um negócio ainda não aberto não tem dados próprios: o trabalho usa dados de estabelecimentos comparáveis e uma contagem direta em uma luderia em operação.",
+      "fonte": "FIGUEIREDO (2020, p. 31); PFEFFER; SUTTON (2006) [AV]"
     },
     {
-      "termo": "Decisão de baixo envolvimento",
-      "grupo": "O negócio e o público",
-      "definicao": "Lógica inspirada na expansão do Nintendo Wii do nicho hobbyista ao público casual pela eliminação da barreira de entrada — curva de aprendizado mínima e diversão rápida — e não pelo aprofundamento do catálogo. Referência conceitual do posicionamento proposto.",
-      "fonte": "Introdução deste trabalho"
-    },
-    {
-      "termo": "Estudo de viabilidade",
-      "grupo": "O negócio e o público",
-      "definicao": "Avaliação sistemática da atratividade de um negócio antes do investimento. Aqui, conduzida exclusivamente por dados secundários públicos, articulados em três blocos — jogos, estabelecimentos e avaliações.",
-      "fonte": "Metodologia deste trabalho; MALHOTRA (2019)"
-    },
-    {
-      "termo": "Taxa de Retenção",
-      "grupo": "Índices do Bloco A",
-      "definicao": "qt_tem / (qt_tem + qt_teve) — proporção de quem ainda possui o jogo entre todos os que já o possuíram. Mede a permanência do jogo na coleção do usuário.",
-      "fonte": "Metodologia — Quadro 02"
-    },
-    {
-      "termo": "Índice de Desejo",
-      "grupo": "Índices do Bloco A",
-      "definicao": "qt_quer / qt_tem — intensidade da demanda latente por um jogo em relação à sua base de posse atual. Usado para testar o efeito de decaimento do hype (H4).",
-      "fonte": "Metodologia — Quadro 02"
-    },
-    {
-      "termo": "Taxa de Fidelização",
-      "grupo": "Índices do Bloco A",
-      "definicao": "qt_favorito / qt_tem — proporção de possuidores que marcam o jogo como favorito. Testada contra a Diversidade Mecânica (H3) e o tipo de mecânica (H2).",
-      "fonte": "Metodologia — Quadro 02"
-    },
-    {
-      "termo": "Índice de Acessibilidade Family/Casual",
-      "grupo": "Índices do Bloco A",
-      "definicao": "Proxy construído a partir de idade mínima, duração, complexidade (weight do BoardGameGeek) e tipo de mecânica — sem validação direta contra dados reais de adesão etária, indisponíveis nas fontes utilizadas.",
-      "fonte": "Metodologia; Limitações metodológicas"
-    },
-    {
-      "termo": "Grade ERRC",
-      "grupo": "Instrumental analítico",
-      "definicao": "Ferramenta da Estratégia do Oceano Azul que reformula a curva de valor de um setor perguntando o que Eliminar, Reduzir, Elevar e Criar — aplicada aqui para delimitar acervo e modelo de alimentação e bebidas do estabelecimento proposto.",
-      "fonte": "Objetivo específico (vi)"
-    },
-    {
-      "termo": "Clusterização",
-      "grupo": "Instrumental analítico",
-      "definicao": "Agrupamento dos jogos do Bloco A por Índice de Engajamento, Taxa de Retenção e Índice de Desejo — e, em paralelo, pelo Índice de Acessibilidade — para identificar perfis de sucesso e o perfil hobbyista versus acessível.",
-      "fonte": "Metodologia — Técnicas de análise"
-    },
-    {
-      "termo": "Agrupamento descritivo",
-      "grupo": "Instrumental analítico",
-      "definicao": "Particiona as avaliações do Bloco C em três agrupamentos independentes — por nota média do estabelecimento, por volume de avaliações (regra do IQR) e por nota individual (corte fixo ao estilo NPS) —, comparados por teste exato de Fisher. Substitui, nesta fase, a modelagem multinível originalmente prevista, reservada para uma expansão futura da pesquisa.",
-      "fonte": "Metodologia — Técnicas de análise"
+      "termo": "Nível de evidência (N1-N6)",
+      "grupo": "Plano e evidência",
+      "definicao": "Escala de confiabilidade das premissas: N1 cotação, contrato ou tabela oficial; N2 dado público estruturado; N3 benchmark medido pelo autor; N4 relatório setorial; N5 coleta primária comportamental; N6 estimativa do autor.",
+      "fonte": "Elaborado pelo autor"
     },
     {
       "termo": "Análise de conteúdo",
-      "grupo": "Instrumental analítico",
-      "definicao": "Codificação categorial de avaliações em texto livre por dicionário de termos-chave, com validação manual em 10% da subamostra codificada, gerando as variáveis binárias do Bloco C.",
-      "fonte": "BARDIN (2011)"
+      "grupo": "Plano e evidência",
+      "definicao": "Codificação sistemática de textos em categorias definidas por regras explícitas. Gera, a partir das avaliações do B2, os aspectos mencionados, a polaridade, o tamanho do grupo, os valores citados e os jogos citados. O dicionário é validado por kappa e F1.",
+      "fonte": "BARDIN (2011); COHEN (1960) [AV]"
+    },
+    {
+      "termo": "Cinco forças e PESTEL",
+      "grupo": "Estratégia e mercado",
+      "definicao": "As cinco forças descrevem a estrutura competitiva do setor: rivalidade, novos entrantes, substitutos e poder de compradores e fornecedores. A PESTEL organiza o macroambiente em seis dimensões. Aplicadas no capítulo 5.",
+      "fonte": "PORTER (2004) [AV]; KOTLER; KELLER (2012) [AV]"
+    },
+    {
+      "termo": "Grade ERRC",
+      "grupo": "Estratégia e mercado",
+      "definicao": "Ferramenta da estratégia do oceano azul: define o posicionamento pelos atributos a eliminar, reduzir, elevar e criar em relação ao padrão do setor. Obriga a escolher onde ficar abaixo do padrão para financiar o que fica acima. Aplicada no capítulo 6.1.",
+      "fonte": "KIM; MAUBORGNE (2005) [AV]"
+    },
+    {
+      "termo": "Modelo Kano e PRC",
+      "grupo": "Estratégia e mercado",
+      "definicao": "Classificam atributos pela relação entre desempenho e satisfação. Obrigatórios geram insatisfação quando ausentes; atrativos geram satisfação quando presentes. A análise de penalidade e recompensa (PRC) faz essa leitura a partir das notas e dos aspectos citados nas avaliações.",
+      "fonte": "TONTINI; THEISS (2005, p. 35-36); PICOLO; TONTINI (2008, p. 42-51)"
+    },
+    {
+      "termo": "Matriz SWOT",
+      "grupo": "Estratégia e mercado",
+      "definicao": "Cruza forças e fraquezas internas com oportunidades e ameaças do ambiente. No capítulo 10.1, cada item da matriz aponta para o dado que o sustenta, e item sem dado sai.",
+      "fonte": "KOTLER; KELLER (2012) [AV]; MINTZBERG; AHLSTRAND; LAMPEL (2010) [AV]"
+    },
+    {
+      "termo": "Economia da experiência",
+      "grupo": "Lazer e estabelecimento",
+      "definicao": "A experiência é uma oferta econômica própria: o cliente paga pelo tempo que passa em um acontecimento memorável. Compras de experiências geram mais satisfação que compras de bens. A luderia vende uma ocasião social, e não o uso de um jogo.",
+      "fonte": "PINE; GILMORE (1999) [AV]; GILOVICH; KUMAR; JAMPOL (2015)"
+    },
+    {
+      "termo": "Competitive socialising",
+      "grupo": "Lazer e estabelecimento",
+      "definicao": "Segmento que combina uma atividade de jogo com alimentos e bebidas em uma ocasião social. No Reino Unido, os atributos mais exigidos são os mesmos de qualquer bar: segurança, preço e qualidade da comida.",
+      "fonte": "KAM INSIGHT (2022)"
+    },
+    {
+      "termo": "Terceiro lugar e servicescape",
+      "grupo": "Lazer e estabelecimento",
+      "definicao": "O terceiro lugar é o espaço de convívio entre a casa e o trabalho. O servicescape reúne ambiente, arranjo do espaço e sinais do local, que afetam a avaliação do cliente. Orientam a leitura de recorrência e ambiente nas avaliações.",
+      "fonte": "OLDENBURG (1989) [AV]; ZEITHAML; BITNER; GREMLER (2014) [AV]"
+    },
+    {
+      "termo": "Público de jogos de tabuleiro",
+      "grupo": "Lazer e estabelecimento",
+      "definicao": "O jogo de tabuleiro funciona como elo entre as pessoas. O Censo Ludopedia descreve o jogador engajado, dono de acervo, e aponta o preço como a maior barreira. Esses dados caracterizam o núcleo do mercado; o perfil do frequentador sai das avaliações do B2.",
+      "fonte": "SARPA (2016); FIGUEIREDO; MANTOVANI (2022)"
+    },
+    {
+      "termo": "Capacidade e lei de Little",
+      "grupo": "Viabilidade e risco",
+      "definicao": "A capacidade de um serviço é perecível: a mesa vazia em uma hora não é vendida na hora seguinte. A lei de Little liga clientes no local, taxa de chegada e permanência média. Dá consistência à contagem do B3 e ao dimensionamento de mesas.",
+      "fonte": "FITZSIMMONS et al. (2014) [AV]; HILLIER; LIEBERMAN (2013) [AV]"
+    },
+    {
+      "termo": "Indicadores de viabilidade",
+      "grupo": "Viabilidade e risco",
+      "definicao": "VPL, TIR, payback descontado e ponto de equilíbrio, calculados sobre o fluxo de caixa projetado. A taxa mínima de atratividade parte da Selic e do IPCA e soma um prêmio pelo risco de um negócio pequeno.",
+      "fonte": "ASSAF NETO (2005) [AV]; BRUNI; FAMÁ (2019) [AV]; DAMODARAN (2010) [AV]"
+    },
+    {
+      "termo": "Cenários, tornado e ponto de ruptura",
+      "grupo": "Viabilidade e risco",
+      "definicao": "Os cenários combinam valores pessimistas, prováveis e otimistas das premissas. O tornado ordena as premissas pelo efeito no VPL; as de maior efeito são as críticas. O ponto de ruptura é o valor de uma premissa crítica que zera o VPL.",
+      "fonte": "BRUNI (2018) [AV]; CASAROTTO FILHO; KOPITTKE (2020) [AV]"
     }
   ],
-  "nota": "Referências completas nas seções Introdução e Metodologia deste trabalho, em formato ABNT NBR 6023."
+  "nota": "Referências completas no capítulo 2 deste trabalho, em formato ABNT. Obras marcadas [AV] têm edição e página a conferir antes da versão final."
 }

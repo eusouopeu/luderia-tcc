@@ -66,7 +66,7 @@ export default function S3Metodologia() {
         <h2 className="mt-12 font-display text-2xl font-bold text-azul-800">{c.blocos.titulo}</h2>
         <p className="mt-1 mb-5 max-w-3xl text-sm text-azul-700/80">{c.blocos.descricao}</p>
       </Reveal>
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-2">
         {c.blocos.itens.map((b, i) => (
           <Reveal key={b.id} delay={i * 100}>
             <BlocoCard bloco={b} />

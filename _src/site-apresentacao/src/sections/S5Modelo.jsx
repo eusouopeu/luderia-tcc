@@ -20,7 +20,7 @@ export default function S5Modelo() {
       </Reveal>
 
       {/* Seletor de objetivos */}
-      <div className="mt-7 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+      <div className="mt-7 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
         {c.objetivos.map((m, i) => {
           const ativo = sel === i;
           return (
