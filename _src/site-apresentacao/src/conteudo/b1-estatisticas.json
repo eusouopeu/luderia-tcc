@@ -1493,7 +1493,7 @@
    "baixa": 11.0,
    "mediana": 12.0,
    "alta": 15.5,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Flow Games - Burgers, Cards & Comunidade",
@@ -1502,7 +1502,7 @@
    "baixa": 17.0,
    "mediana": 20.0,
    "alta": 41.9,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Café Geek Cafeteria e Ludoteca",
@@ -1511,7 +1511,7 @@
    "baixa": 15.75,
    "mediana": 22.5,
    "alta": 30.25,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Alçapão Jogos",
@@ -1520,7 +1520,7 @@
    "baixa": 22.0,
    "mediana": 24.0,
    "alta": 34.0,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Chef on Play",
@@ -1529,7 +1529,7 @@
    "baixa": 28.4,
    "mediana": 32.7,
    "alta": 37.6,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "FORTALÚDICA - BURGERS & JOGOS",
@@ -1538,7 +1538,7 @@
    "baixa": 32.0,
    "mediana": 38.5,
    "alta": 45.0,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Place Games",
@@ -1547,7 +1547,7 @@
    "baixa": 18.18,
    "mediana": 39.5,
    "alta": 53.5,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Luderia Carioca",
@@ -1556,7 +1556,7 @@
    "baixa": 35.0,
    "mediana": 44.0,
    "alta": 54.5,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "BoardZ Game Pub",
@@ -1565,7 +1565,7 @@
    "baixa": 43.0,
    "mediana": 47.5,
    "alta": 58.0,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Cineplay- Restaurante e Jogos",
@@ -1574,7 +1574,7 @@
    "baixa": 34.9,
    "mediana": 48.8,
    "alta": 67.67,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Covil Game Bar",
@@ -1583,7 +1583,7 @@
    "baixa": 43.0,
    "mediana": 52.0,
    "alta": 60.0,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Bardo Mago",
@@ -1592,7 +1592,7 @@
    "baixa": 40.5,
    "mediana": 54.0,
    "alta": 71.5,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Utopia Games & Food",
@@ -1601,7 +1601,7 @@
    "baixa": 55.0,
    "mediana": 57.0,
    "alta": 84.5,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Bodogami Restaurante e Cafeteria",
@@ -1610,7 +1610,7 @@
    "baixa": 40.0,
    "mediana": 60.0,
    "alta": 76.0,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Arcadea Gaming Pub",
@@ -1619,7 +1619,7 @@
    "baixa": 52.75,
    "mediana": 65.0,
    "alta": 84.0,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Encounter | Jogos de Tabuleiro | Board Games",
@@ -1628,7 +1628,7 @@
    "baixa": 62.8,
    "mediana": 67.8,
    "alta": 76.8,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Arena BG | Jogos de Tabuleiro | Hamburgueria",
@@ -1655,7 +1655,7 @@
    "baixa": 55.57,
    "mediana": 71.8,
    "alta": 83.55,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Toca do Rato - Pizzaria e Jogos de Tabuleiro",
@@ -1664,7 +1664,7 @@
    "baixa": 64.67,
    "mediana": 71.95,
    "alta": 81.5,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Ludoteca Sidequest",
@@ -1691,7 +1691,7 @@
    "baixa": 58.75,
    "mediana": 75.0,
    "alta": 78.0,
-   "completa": false
+   "completa": true
   },
   {
    "nome": "Ludus Luderia",

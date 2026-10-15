@@ -937,3 +937,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o gráfico "Cesta por pessoa, casa a casa" mostrava as 26 casas com cardápio, inclusive as 19 sem couvert no cardápio, cuja cesta soma couvert 0; os cartões do resumo tinham seis indicadores.
 **Depois**: o gráfico mostra só as 7 casas com os três itens da cesta no cardápio (couvert, bebida, entrada ou prato), com a linha na mediana dessas casas; os cartões ganham itens no cardápio, posts de 01/09 a 01/10 e comentários nesses posts, por casa, em média ou mediana. As demais estatísticas da cesta seguem com as 26 casas. Planilhas recalculadas sem erro.
 **Justificativa**: pedido do autor.
+
+### 12:01
+**Objeto**: regra de cesta completa do gráfico "Cesta por pessoa, casa a casa" (`B1-a_estatistica_descritiva.py`, `b1-estatisticas.json`, `S8Panorama.jsx`, `s8-b1-resultados.json`)
+**Antes**: só as 7 casas com couvert no cardápio.
+**Depois**: couvert não cobrado não conta como item faltando; saem só as casas sem bebida ou sem entrada ou prato. Nenhuma das 26 casas com cesta sai, porque a cesta só é calculada quando bebida e entrada ou prato existem. O gráfico volta a mostrar as 26 casas, com a linha na mediana delas (R$ 58,50).
+**Justificativa**: pedido do autor.

@@ -14,7 +14,7 @@ const T = c.panorama;
 const G = D.geral;
 const GRUPOS = [...new Set(Object.values(G).map((v) => v.grupo))];
 const salvador = (p) => p.metropole === "Salvador";
-// Só cestas com os três itens no cardápio (couvert, bebida, entrada ou prato).
+// Só cestas com bebida e entrada ou prato no cardápio (sem couvert, couvert 0).
 const CESTAS = D.cestas.filter((p) => p.completa);
 const mediana = (xs) => {
   const v = [...xs].sort((a, b) => a - b);
