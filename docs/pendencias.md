@@ -14,11 +14,15 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 2. **Hipótese do público potencial** (30 anos ou mais, casado ou com filhos, que frequentaria luderias se o ambiente, o público ou o serviço mudassem): registrar como emenda ao registro prévio ou guardar como estudo futuro (cap. 11.5)? Formulações testáveis em `docs/bibliografia/diagnostico-teorico.md` §9.
 3. **PDFs da P2 que faltam:** Kimes e Robson (2004) no eCommons (bloqueou o download automático); Graham e Harvey, Delmar e Shane, Lambrecht e Skiera (SSRN), Li e Hitt (CORE), Anderson e Magruder (eScholarship), Xia et al. (UNAL) e Novaes e Kanyat (volume da revista) têm cópia aberta, mas só pelo navegador; os demais, pelo Portal CAPES ou pela biblioteca.
 4. **Snowball do Instagram: corte k e fundamentação.** Escolher o corte k depois de classificar os candidatos (`B1_snowball_corte.csv`: menor k com precisão aceitável sem perder sensibilidade) e decidir se faz uma segunda onda com as luderias novas como sementes. Conferir antes de citar: LGPD, art. 4º, II, b e art. 7º, §4º; Resolução CNS 510/2016, art. 1º, parágrafo único; Goodman (1961) e Biernacki e Waldorf (1981) para o snowball `[AV]`. Decidir também o que fazer com @arainhadosdados, semente coletada sem ser casa aprovada (sai do build ou a casa entra nas aprovadas).
-5. **Replanejar os rascunhos atrasados** (caps. 2, 3 e 8 e seções 5.1, 5.4 e 5.5) ou acionar o plano de corte do cronograma?
+5. **Replanejar os rascunhos atrasados** (caps. 3 e 8 e seções 5.1, 5.4 e 5.5) ou acionar o plano de corte do cronograma?
 
 6. **Bibliografia v2 (15/10/2026).** Escolher, conceito a conceito, entre a obra original dos checklists P1/P2 e o substituto de `bibliografia/bibliografia-v2/bibliografia-v2.md`; ao adotar um substituto, trocar a linha no checklist da leva para o vigia propagar. R10, R28 e R29 seguem com o original.
 
+7. **Cap. 2, conferências antes da versão final:** edição, ano e página dos livros marcados `[AV]` (Dornelas, Porter, Kotler e Keller, Kim e Mauborgne, Mintzberg et al., Marcellino, Pine e Gilmore, Oldenburg, Woods, Zeithaml et al., Fitzsimmons et al., Hillier e Lieberman, Brealey et al., Damodaran, Bruni, Bruni e Famá, Casarotto e Kopittke, Pfeffer e Sutton); as edições do texto são a mais recente provável, não conferida. Baixar pelo navegador o PDF do SEBRAE (2016), que veio como HTML, e decidir se entra em 2.1. Incluir no checklist da P1/P2 os conceitos que o cap. 2 tira de obras sem ID (Kano/PRC, ERRC, PESTEL, terceiro lugar, lei de Little pelos livros da v2).
+
 ## Divergências entre documentos, ainda sem correção
+
+- Sarpa (2016): capa com *Experiências de consumo com jogos de tabuleiro modernos*; resumo com *Boardgames: um estudo sobre a experiência de consumo*. Conferir no repositório da UFRJ.
 
 - Damodaran: `_instrucoes/8_financeiro.md` cita *Avaliação de investimentos* (ed. brasileira); o roteiro e o checklist da P2 citam *Investment valuation* (Wiley). Definir a edição que será lida.
 

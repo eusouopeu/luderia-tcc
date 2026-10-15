@@ -757,3 +757,21 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: "Rolar até o fim ao abrir um perfil" guardado ligado no navegador; "Dados do perfil" sempre visível; bloco "Snowball" fechado ao abrir o painel.
 **Depois**: rolagem ao abrir um perfil desligada (preferência em chave nova, `igc-rolar-ao-abrir-v2`, que começa desligada; a caixa continua no painel) e nunca disparada com a fila de sementes ativa; "Dados do perfil" vira bloco recolhível, fechado ao abrir; "Snowball" abre expandido.
 **Justificativa**: pedido do autor; a rolagem automática atrasava a fila de sementes, que abre um perfil por vez.
+
+### 07:19
+**Objeto**: `textos/capitulos/2_referencial_teorico.md` (novo)
+**Antes**: cap. 2 não iniciado (prazo do rascunho em 25/09).
+**Depois**: rascunho com as seções 2.1 a 2.6 de `_instrucoes/2_ref-teorico.md`, cerca de 2.700 palavras e um quadro (cerca de 8,3 páginas, teto 10), com referências da bibliografia v2. Páginas conferidas nos PDFs: Figueiredo (2020, p. 31–32), Tontini e Theiss (2005, p. 35–36), Picolo e Tontini (2008, p. 42–45, 50–51 e 56), Sarpa (2016, p. 39–46), Figueiredo e Mantovani (2022, p. 4, 5 e 12), Vasconcellos (2016, p. 45–47), Frezatti et al. (2012, p. 12 e 18). Livros da v2 citados com `[AV]` (edição, ano e página a conferir); obras originais mantidas com `[AV-<ID>]` (Assaf Neto, KAM Insight, Asakura et al.). Fora da v2, vindas da lista de leitura: Kim e Mauborgne, Marcellino, Oldenburg, Woods e Gilovich et al. Canvas não entrou (não é usado no cap. 6).
+**Justificativa**: pedido do autor de escrever o referencial teórico com as instruções, o teto de páginas e a bibliografia v2.
+
+### 07:19 (divergência)
+**Objeto**: `bibliografia/bibliografia-v2/pdfs/SEBRAE - Sobrevivencia das empresas no Brasil (2016).pdf`
+**Antes**: `bibliografia-v2.md` e o registro de 02:32 contam o arquivo entre os PDFs baixados.
+**Depois**: o arquivo é uma página HTML, não um PDF (o `pdftotext` não o lê); `procurar-manualmente.md` já dizia que o site bloqueou o download.
+**Efeitos colaterais**: SEBRAE (2016) não entrou no cap. 2; baixar o PDF pelo navegador.
+
+### 07:19 (divergência)
+**Objeto**: título da dissertação de Sarpa (2016)
+**Antes**: capa e folha de rosto: *Experiências de consumo com jogos de tabuleiro modernos* (usado na v2 e no cap. 2).
+**Depois**: o resumo (p. 6) traz *Boardgames: um estudo sobre a experiência de consumo*.
+**Efeitos colaterais**: conferir o título no repositório da UFRJ antes da versão final.

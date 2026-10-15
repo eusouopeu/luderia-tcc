@@ -12,6 +12,8 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 - **Entorno no Maps** (`_src/[B1]…/Google Places (Negócios)/webscripts/maps_entorno.user.js`, versão 2026.10.15-1): fila das 51 casas coletada em 15/10. A versão nova descarta estações de outras cidades (> 50 km), conta as estações-tubo de Curitiba e tira estações futuras. Recarregar o Maps, clicar em "Buscar áreas OSM que faltam" (22 casas sem porte de shopping) e depois "Exportar CSVs": a reclassificação vale para o que já está guardado, sem recoletar.
 
+- **Cap. 2 (referencial teórico):** rascunho pronto em 15/10 (`textos/capitulos/2_referencial_teorico.md`, 8,3/10 páginas). Falta conferir edição e página dos livros `[AV]` na Minha Biblioteca da UFBA (`bibliografia/bibliografia-v2/procurar-manualmente.md`).
+
 ## Próximos 3 passos
 
 1. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
@@ -23,7 +25,7 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 - Coleta do B2 no navegador: os carregadores do Tampermonkey apontam para a pasta antiga `_src/Web scripts/`. Antes da próxima coleta, rodar `python3 _src/extras/gerar_carregadores.py --abrir --todos` e instalar os cinco no Vivaldi.
 - Validação do dicionário e cap. 5.2: aguardam a base do B2 completa.
 - Estimativa de ocupação e fluxo (B3): aguarda as visitas de retorno (18/10).
-- Rascunhos atrasados frente ao cronograma: caps. 2, 3 e 8 e seções 5.1, 5.4 e 5.5 ([status](textos/planejamento/status_capitulos.md)).
+- Rascunhos atrasados frente ao cronograma: caps. 3 e 8 e seções 5.1, 5.4 e 5.5 ([status](textos/planejamento/status_capitulos.md)).
 
 ## Onde está o resto
 

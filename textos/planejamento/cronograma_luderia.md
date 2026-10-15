@@ -234,7 +234,7 @@ Sem coleta ou análise prevista.
 | Capítulo | Rascunho | Versão completa |
 |---|---|---|
 | 1 Introdução | Concluído | 06/11 (revisão) |
-| 2 Referencial teórico | 25/09 | 06/11 |
+| 2 Referencial teórico | Concluído (15/10) | 06/11 |
 | 3 Metodologia | 02/10 | 06/11 |
 | 4 Sumário executivo | 06/11 | 06/11 |
 | 5 Análise de mercado | 09/10 (5.1, 5.4, 5.5); 16/10 (5.3); 30/10 (5.2) | 06/11 |
