@@ -739,3 +739,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: @arainhadosdados (A Rainha dos Dados) foi coletada como semente sem estar em `B1_instagram_aprovadas.csv`; entra no grau de entrada de 74 contas.
 **Efeitos colaterais**: infla levemente a precisão e a sensibilidade por corte; decidir se a semente sai do build ou se a casa entra nas aprovadas.
 
+
+### 11:16
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/maps_entorno_resultados_2026-10-14.csv` e `maps_entorno_resumo_2026-10-14.csv`; cópias `(1)` removidas; `docs/pendencias.md`
+**Antes**: dois pares de CSVs do entorno de 14/10 (sem sufixo e com `(1)`). Os sem sufixo tinham Ludus e Shelf (499 linhas em resultados, 2 em resumo); os `(1)`, exportação cumulativa do coletor, tinham os mesmos e mais Bodogami (787 e 3 linhas). Todas as linhas dos sem sufixo estão nos `(1)` (conferido linha a linha, diferença zero). O `B1-b_entorno_maps_fila.py` lê `maps_entorno_resumo_*.csv` e via os dois resumos.
+**Depois**: um arquivo por tipo, com o conteúdo do `(1)` sob o nome sem sufixo; nenhuma linha perdida. A raiz do repositório já estava limpa desde o PR #4.
+**Justificativa**: pedido do autor de organizar os CSVs do entorno e resolver as duplicatas.
