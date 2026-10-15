@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 15/10/2026 | Cap. 5 exposto do maior para o menor (Brasil → Bahia → Salvador; serviços às famílias → alimentação fora do lar e lazer → luderias); fontes na ordem órgão oficial → fundação → entidade setorial e acadêmico → imprensa, esta só com marca de troca | `textos/capitulos/5_analise_de_mercado.md` |
 | 15/10/2026 | Site de apresentação em preto, cinza e branco; cor (vermelho) só para Salvador/Nordeste, críticas, amostras fora do critério e avisos | `_src/site-apresentacao/src/index.css` |
 | 15/10/2026 | Auditoria dos estabelecimentos do B1 sobre as 54 casas do objeto, e não sobre os 164 candidatos antes da curadoria: 20% estratificado por capital e faixa de volume = 11 casas | `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_auditoria_estabelecimentos.py` |
 | 15/10/2026 | Amostras de auditoria por script com semente fixa (20261015) e chave SHA-256 por unidade; 200 unidades com mínimo de 3 por estrato (desenho do B2) para avaliações, posts, itens de cardápio e jogos; 20% estratificado para estabelecimentos e entorno; perfis do Instagram e completude do B2 exaustivos; B4 com uma linha sorteada por série. Saídas em `_dados-brutos/<pasta>/auditoria/`. Na auditoria do entorno, a distância conferida é em linha reta, de pino a pino, como no coletor; a distância a pé é anotada à parte | `_src/extras/amostrar_auditoria.py`, `textos/instrumentos/roteiro_auditoria_entorno_B1.md` |

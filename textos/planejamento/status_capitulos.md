@@ -8,7 +8,7 @@ Atualizado em 15/10/2026. Prazos do [cronograma](cronograma_luderia.md); tetos d
 | 2 Referencial teórico | Rascunho | 8,3/10 | Concluído | Lista de leitura, bibliografia v2 | Conferir edição e página dos livros `[AV]` (ver `docs/pendencias.md`, item 7) |
 | 3 Metodologia | Não iniciado ⚠ | 0/10 | 02/10 | Instruções prontas | Escrever a partir de `_instrucoes/4_metodologia.md` |
 | 4 Sumário executivo | Não iniciado | 0/2 | 06/11 | Todos | Escrito por último |
-| 5 Análise de mercado | Não iniciado ⚠ | 0/7 | 09/10 (5.1, 5.4, 5.5); 16/10 (5.3); 30/10 (5.2) | B1, B4; B2 para 5.2 | Dados secundários do setor (5.1) |
+| 5 Análise de mercado | Esboço ⚠ | ~6/7 | 09/10 (5.1, 5.4, 5.5); 16/10 (5.3); 30/10 (5.2) | B1, B4; B2 para 5.2 | Esboço de 15/10 com lacunas `[script]`, `[AV]` e `[BUSCAR]` (pendências, item 9); 5.2 aguarda o Bardin |
 | 6 Plano de marketing | Não iniciado | 0/8 | 16/10 (6.3, 6.4); 30/10 (demais) | B1, B2, B4 | Preço (6.3) e bairro (6.4) |
 | 7 Plano operacional | Não iniciado | 0/4 | 23/10 | B3 | Visitas de retorno (18/10) |
 | 8 Aspectos jurídicos | Não iniciado ⚠ | 0/3 | 09/10 | B4 (Simples, CNAE) | Rascunho atrasado |

@@ -991,3 +991,10 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: paleta em azul e rosa em todo o site (texto, fundos, blocos, pílulas e séries dos gráficos).
 **Depois**: tokens de cor resolvem para preto, cinza e branco; as séries dos gráficos são cinza. Uma única cor (vermelho, token `destaque`) fica reservada a Salvador e ao Nordeste nos gráficos e linhas de tabela, às críticas na análise de conteúdo, às amostras de auditoria fora do critério de 5% e ao aviso "Atenção". Linhas de referência (mediana, critério) passam a cinza tracejado. O site não foi publicado.
 **Justificativa**: pedido do autor: paleta mais sóbria, com cor só nos casos pertinentes.
+
+### 13:40
+**Objeto**: `textos/capitulos/5_analise_de_mercado.md` (novo), `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`, `textos/planejamento/status_capitulos.md`
+**Antes**: cap. 5 não iniciado.
+**Depois**: esboço das seções 5.1 a 5.5, do maior para o menor (Brasil → Bahia → Salvador; serviços às famílias → alimentação fora do lar e lazer → luderias), com números do B4 (PAS, POF, PNAD Contínua, Censo, IPCA, BCB, FipeZAP) e do B1; 5.2 com números provisórios do B2. Lacunas marcadas `[script]`, `[AV]` e `[BUSCAR]`; quadro de fontes por nível de preferência no fim.
+**Justificativa**: pedido do autor: esboços do cap. 5 com fontes oficiais antes das setoriais e da imprensa.
+

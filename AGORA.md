@@ -16,6 +16,8 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 - **Auditoria da coleta** (15/10): amostras sorteadas por script (`*-a_auditoria_*.py`, semente 20261015) em `_dados-brutos/<pasta>/auditoria/` de cada bloco: estabelecimentos, entorno, Instagram, cardápios, acervos, B2 e B4. Roteiro do entorno em `textos/instrumentos/roteiro_auditoria_entorno_B1.md`. Falta conferir e escrever o script que calcula a taxa de erro.
 
+- **Cap. 5 (análise de mercado):** esboço em 15/10 (`textos/capitulos/5_analise_de_mercado.md`), do nacional para Salvador, com B4 e B1; 5.2 provisória até o Bardin. Lacunas em `docs/pendencias.md`, item 9.
+
 - **Cap. 2 (referencial teórico):** rascunho pronto em 15/10 (`textos/capitulos/2_referencial_teorico.md`, 8,3/10 páginas). Falta conferir edição e página dos livros `[AV]` na Minha Biblioteca da UFBA (`bibliografia/bibliografia-v2/procurar-manualmente.md`).
 
 - **Estatística descritiva do B1** (15/10): geral, por metrópole e por região em `dados/[B1]…/estabelecimentos/4_estatistica_descritiva/` e nas abas 08 a 10 do site (`_src/site-apresentacao`, publicado em 15/10; publicar de novo com `pnpm run deploy` quando os dados mudarem). Rodar de novo `B1-a_estatistica_descritiva.py` depois de cada atualização do `B1_resumo_estabelecimentos.xlsx`.
@@ -33,7 +35,7 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 - Coleta do B2 no navegador: os carregadores do Tampermonkey apontam para a pasta antiga `_src/Web scripts/`. Antes da próxima coleta, rodar `python3 _src/extras/gerar_carregadores.py --abrir --todos` e instalar os cinco no Vivaldi.
 - Validação do dicionário e cap. 5.2: aguardam a recodificação cega da amostra do Bardin (§2 do instrumento).
 - Estimativa de ocupação e fluxo (B3): aguarda as visitas de retorno (18/10).
-- Rascunhos atrasados frente ao cronograma: caps. 3 e 8 e seções 5.1, 5.4 e 5.5 ([status](textos/planejamento/status_capitulos.md)).
+- Rascunhos atrasados frente ao cronograma: caps. 3 e 8 (o cap. 5 tem esboço, com lacunas) ([status](textos/planejamento/status_capitulos.md)).
 
 ## Onde está o resto
 
