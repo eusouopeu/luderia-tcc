@@ -67,7 +67,6 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 ## Ideias futuras
 
-- Publicar no GitHub Pages as abas 08 a 10 do site (estatística descritiva do B1) com `pnpm run deploy` em `_src/site-apresentacao/`, quando o autor quiser.
 
 - Extensões fora do escopo atual (durações citadas nos textos, contagem em outra capital, recoleta do volume total, teste da porta falsa): `_instrucoes/4_metodologia.md`, "Extensões fora do escopo atual".
 - Simulação de Monte Carlo e testes H1–H9, se sobrar tempo (apêndices L e M).

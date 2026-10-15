@@ -883,3 +883,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: sete abas, sem resultados de dados.
 **Depois**: três abas novas com a estatística descritiva do B1: panorama geral (indicadores, achados, dias e horários de funcionamento, cesta casa a casa, nota × volume, seguidores × interações e tabela por variável), por metrópole e por região (achados, gráficos e painel). Os números vêm do JSON gerado pelo script acima, e os achados são frases montadas sobre esses números. Build e lint sem erro; conferido no navegador em desktop e celular. Não publicado no GitHub Pages.
 **Justificativa**: pedido do autor de páginas com as sumarizações e os gráficos dos achados mais pertinentes.
+
+### 11:16
+**Objeto**: site de apresentação no GitHub Pages (https://eusouopeu.github.io/luderia-tcc/, branch `gh-pages`)
+**Antes**: site publicado com as sete abas de 01/09/2026.
+**Depois**: publicadas as abas 08 a 10 (estatística descritiva do B1: panorama, por metrópole e por região) com `pnpm run deploy`; conferido no endereço público, sem erro no console.
+**Justificativa**: pedido do autor.
