@@ -775,3 +775,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: capa e folha de rosto: *Experiências de consumo com jogos de tabuleiro modernos* (usado na v2 e no cap. 2).
 **Depois**: o resumo (p. 6) traz *Boardgames: um estudo sobre a experiência de consumo*.
 **Efeitos colaterais**: conferir o título no repositório da UFRJ antes da versão final.
+
+### 09:27
+**Objeto**: Notion, banco "Luderias – Status da coleta"
+**Antes**: 49 linhas (aprovadas do B1); "Acervo de jogos", "Google maps (...)", "O que ainda falta?" e "Como proceder..." vazias; status de cardápio, entorno e Instagram preenchidos antes dos exports de 15/10 (ex.: entorno "Não coletado" em 44 casas; Fan Hour com cardápio "completa" sem preços).
+**Depois**: 54 linhas, com as 5 casas vindas do acervodejogos (Bardo Mago, La Tabuleria, TabuClub, Toca do Rato, Tubaleria). Status recalculados a partir dos arquivos do B1: cardápio 26 completa / 18 parcial / 10 não coletado; acervo 16 / 13 / 25; entorno 26 / 28 / 0 (export do Maps de 15/10, 6 campos; parcial = sem porte de shopping, distância a estação de outra cidade ou só no export de 14/10); Instagram 36 / 9 / 9; Google Maps "parcial" em todas (endereço, nota e volume coletados; horários não). As duas colunas de texto trazem, por casa, a lacuna e o script ou passo para fechá-la. Critério do Instagram: grade com até 7 posts a menos que o declarado conta como primeiro post coletado.
+**Justificativa**: pedido do autor de atualizar o banco com as casas novas, os status e as lacunas de coleta com recomendação.
+
+### 09:27 (divergência)
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx`, coluna `avaliacao_media`
+**Antes**: nota média numérica (curadoria do B1).
+**Depois**: células gravadas como data (4,6 → 2026-06-04).
+**Efeitos colaterais**: qualquer leitura da nota a partir desse xlsx sai errada; usar a curadoria em CSV até corrigir.

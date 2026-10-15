@@ -32,11 +32,17 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 - Userscript `maps_avaliacoes`: `texto_original` vem "não" nas avaliações traduzidas (6 casos).
 - Notion "B - Comentários": as linhas digitadas à mão não têm "ID da avaliação"; depois das coletas de 14/10, 40 delas seguem sem par nas coletas (Magic Store 31, outras 1 cada), quase todas mais antigas que o recorte.
 
+- `B1_aprovadas_metro_av100.xlsx`: a coluna `avaliacao_media` está gravada como data (4,6 virou 04/06/2026; 5 ficou 5). Corrigir no `B1-b_triagem_manual.py` ou na planilha antes de usar a nota.
+- Export completo do entorno no Maps (51 casas, 15/10) só em `~/Downloads/2026-10-15_51_estabelecimentos_entorno_*.csv`; os parciais (10, 20 e 30 casas) caíram em `_dados-brutos/redes_sociais/seguindo/`. Mover para `_dados-brutos/estabelecimentos/` e apagar os parciais.
+- Instagram: `@ludocafe_editora` coletado para o LudoCafé (triagem: `@ludocafebh`) e `@dominariacg.sp` para a Dominaria de Fortaleza (`@dominariacg`). Sete perfis (Bodogami, Fan Hour, Bravo, Covil, Shelf, Ludoteca BGC, Cartola) vieram do coletor antigo, sem seguidores nem período.
+
 - `_instrucoes/1_estrutura.md` (3.5) fala em "metade exploratória e confirmatória", e o cronograma (semana 3) tem a tarefa "Divisão da base em parte exploratória e parte confirmatória"; a metodologia adotou a base única em 13/10.
 - `_instrucoes/1_estrutura.md` (11.5) cita "sem o recorte do último mês"; o recorte vigente é de 3 meses.
 - O cronograma ainda fala em "avaliações do último mês" (semana 2).
 
 ## Dúvidas
+
+- **Horários de funcionamento (Google Maps):** nenhuma casa tem horário coletado. Caminho sugerido: `regularOpeningHours` no `B1-c_details.py`, modo `--sem-reviews`. Conferir antes se o campo mantém a chamada no SKU sem custo.
 
 - **Entorno no Maps, três primeiras extrações (14/10):** os CSVs estão em `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/maps_entorno_*_2026-10-14*.csv` e não foram conferidos linha a linha; foram coletados antes da busca de trem. Recoletar os três estabelecimentos com a versão atual do coletor e conferir.
 - Perguntas abertas para a literatura (validação de avaliações online como medida de visitas, estabilidade da razão avaliações ÷ visitantes, limiar de concordância para variáveis raras, peso de comida, serviço e ambiente, taxa de desconto de negócio pequeno, termos de uso do Google Maps): `docs/bibliografia/lacunas-bibliograficas.md` §6.

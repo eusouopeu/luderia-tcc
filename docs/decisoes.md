@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 15/10/2026 | Status da coleta no Notion por campo preenchido: Instagram com grade quase completa (até 7 posts a menos) conta como completo; Google Maps só fica completo com horários; entorno com porte de shopping e distância ao metrô na mesma cidade | Notion "Luderias – Status da coleta"; `docs/registro-de-alteracoes.md` 15/10 09:27 |
 | 15/10/2026 | Cap. 2 cita substitutos da bibliografia v2 com a página quando conferida no PDF e `[AV]` quando não lida; originais mantidos (Assaf Neto, KAM, Asakura) seguem com `[AV-<ID>]`. Kano e PRC entram em 2.2 como ponte entre as avaliações do B2 e a grade ERRC; Canvas fica de fora | `textos/capitulos/2_referencial_teorico.md` |
 | 15/10/2026 | Snowball: sementes coletadas em fila automática no coletor do Instagram, na ordem de `B1_snowball_proximas_sementes.txt` (rodízio entre capitais); classificação começa pelas contas seguidas por 3+ sementes (`B1_snowball_candidatos_grau3.csv`) | `_src/[B1] Estabelecimentos e cardapios/Instagram/build/B1-b_instagram_seguindo.py` |
 | 14/10/2026 | Entorno no Maps: trem metropolitano em grupo próprio (`trem`), separado do metrô; a análise soma metro + trem quando quiser "trilhos" | `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` |
