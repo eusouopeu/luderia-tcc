@@ -22,6 +22,21 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 7. **Cap. 2, conferências antes da versão final:** edição, ano e página dos livros marcados `[AV]` (Dornelas, Porter, Kotler e Keller, Kim e Mauborgne, Mintzberg et al., Marcellino, Pine e Gilmore, Oldenburg, Woods, Zeithaml et al., Fitzsimmons et al., Hillier e Lieberman, Brealey et al., Damodaran, Bruni, Bruni e Famá, Casarotto e Kopittke, Pfeffer e Sutton); as edições do texto são a mais recente provável, não conferida. Baixar pelo navegador o PDF do SEBRAE (2016), que veio como HTML, e decidir se entra em 2.1. Incluir no checklist da P1/P2 os conceitos que o cap. 2 tira de obras sem ID (Kano/PRC, ERRC, PESTEL, terceiro lugar, lei de Little pelos livros da v2).
 
+## Tarefas a fazer (pedidas pelo autor em 15/10/2026)
+
+- **Instagram: aprimorar o coletor e refazer a coleta destes perfis** (status no Notion "Luderias – Status da coleta", 15/10):
+  - sem seguidores: Bardo Mago (@bardo.mago), Tubaleria (@tubaleria), La Tabuleria (@latabuleria), TabuClub (@tabuclubnit) e Toca do Rato (@tocadorato_oficial); as três últimas também sem o nº total de posts. Nas coletas de 15/10 veio só o CSV de posts; o coletor deve exportar sempre o CSV de perfil junto;
+  - Bardo Mago e Tubaleria: 1 post não carregou (615 de 616 e 339 de 340), e a data do primeiro post pode ser anterior à registrada;
+  - Bravo (@bravojogos): sem a data do primeiro post;
+  - Ludus (@ludusluderia): sem o nº total de posts;
+  - LudoCafé: confirmar o perfil do bar (coletado @ludocafe_editora; a triagem aponta @ludocafebh);
+  - Dominaria: coletado @dominariacg.sp (unidade de São Paulo); a casa aprovada fica em Fortaleza (@dominariacg).
+- **Entorno: completar e testar o banco.** Acrescentar ao banco de entornos os dados do OSM e os novos critérios de filtragem de shoppings (ver o item 7 das decisões a tomar) e, em seguida, testar a integridade e a confiabilidade dos dados.
+- **Amostras de auditoria por script.** Criar e rodar scripts que gerem a lista de amostragem de auditoria de cada conjunto de dados (entornos, redes sociais, comentários etc.), em linha com a validação proporcional do item 1 das decisões a tomar.
+- **Roteiro de auditoria do entorno (.md).** Escrever o passo a passo da auditoria manual do entorno no Google Maps: como buscar shoppings e estações a partir do endereço da casa, se a distância a conferir é a do trajeto (rotas) ou em linha reta, e, se for trajeto, a pé ou de carro (o coletor mede em linha reta, então a auditoria precisa medir do mesmo jeito ou registrar a diferença).
+- **Sumarização do B1 com parecer.** Sumarizar os dados do bloco 1: estabelecimentos, redes sociais (sem as listas "seguindo") e entornos. Depois, opinar sobre a integridade, a confiabilidade e a validade dos dados do script de entornos e apontar vulnerabilidades. Ponto de partida: `estabelecimentos/B1_resumo_estabelecimentos.xlsx` (`B1-b_resumo.py`, 15/10).
+- **Sumarização do B2.**
+
 ## Divergências entre documentos, ainda sem correção
 
 

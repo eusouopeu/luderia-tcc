@@ -865,3 +865,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: dados do B1 espalhados por triagem, horários, entorno, Instagram (Notion), cardápios, acervos e B2.
 **Depois**: planilha-resumo com uma linha por casa (54): Google Maps, horários, entorno (export mais recente do coletor; distância a estação de outra cidade vazia), Instagram (retrato do Notion "A" de 15/10, salvo em CSV), cesta por pessoa (couvert + bebida + entrada ou prato, P25/mediana/P75, em fórmulas; 26 casas com preços), acervo (17 casas com lista) e avaliações do B2 (49 casas, 2.218 no recorte). Abas: estabelecimentos, cesta, por_capital (fórmulas; total 54, conferência 0) e dicionario. 353 fórmulas, nenhum erro no recálculo.
 **Justificativa**: pedido do autor de uma planilha que resuma os dados do B1 coletados até agora.
+
+### 10:58
+**Objeto**: `docs/pendencias.md`, seção nova "Tarefas a fazer (pedidas pelo autor em 15/10/2026)"
+**Antes**: sem as tarefas abaixo.
+**Depois**: refazer a coleta do Instagram de 9 perfis (lacunas de seguidores, total, primeiro post e perfil errado) com o coletor aprimorado; completar o banco de entornos com OSM e o novo critério de shopping e testá-lo; scripts de amostragem de auditoria por conjunto de dados; roteiro .md da auditoria do entorno (linha reta, como o coletor, ou trajeto); sumarização do B1 com parecer sobre o script de entornos; sumarização do B2.
+**Justificativa**: pedido do autor.
