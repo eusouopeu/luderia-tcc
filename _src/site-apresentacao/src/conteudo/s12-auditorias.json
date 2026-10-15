@@ -45,10 +45,10 @@
       "pasta": "estabelecimentos/auditoria",
       "confere": "Nota média, número de avaliações e endereço de cada casa, na página do Google Maps.",
       "amostragem": "Amostra aleatória estratificada por capital do endereço e faixa de volume de avaliações (101 a 300, 301 a 1.000, mais de 1.000).",
-      "justificativa": "A população é a lista curada de 164 candidatos. Capital e volume são os dois eixos em que o comportamento da página muda: o layout e a carga variam com o número de avaliações, e cada capital teve uma busca própria. A estratificação garante que nenhum desses grupos fique de fora.",
-      "tamanho": "20% da população, arredondado para cima: 0,2 × 164 = 32,8 → 33 estabelecimentos, como prevê a metodologia (§3.4).",
+      "justificativa": "A população são as 54 luderias do objeto: as aprovadas na triagem manual, menos as que saíram do objeto, mais as cinco casas novas do acervodejogos. São as casas que entram nas análises, e não os 164 candidatos antes da curadoria. Capital e volume são os dois eixos em que o comportamento da página muda: o layout e a carga variam com o número de avaliações, e cada capital teve uma busca própria.",
+      "tamanho": "20% da população, arredondado para cima: 0,2 × 54 = 10,8 → 11 estabelecimentos, como prevê a metodologia (§3.4). Com 54 casas espalhadas em 29 combinações de capital e faixa de volume, a alocação pelos maiores restos cobre 9 estratos.",
       "comparacao": "Os números são anotados como aparecem na página, sem julgamento. A comparação é feita depois, por script, com os dias decorridos ao lado: nota igual com uma casa decimal; volume na página maior ou igual ao coletado.",
-      "ressalva": "Com 33 conferências, o limite com zero erros é de 10,4%: a amostra não cumpre o critério de 5% nem sem erros. Para cumpri-lo, a amostra precisa de 73 estabelecimentos (ou a conferência das 54 casas do objeto, que tornaria a auditoria exaustiva). A decisão está em aberto em docs/pendencias.md (item 1)."
+      "ressalva": "Com 11 conferências, o limite com zero erros é de 25,9%: a amostra não cumpre o critério de 5% nem sem erros. Para cumpri-lo, seriam necessárias 73 conferências, mais do que as 54 casas. Com essa população, a alternativa é conferir as 54 casas (auditoria exaustiva, em que a taxa observada é a da população). A decisão está em aberto em docs/pendencias.md (item 1)."
     },
     {
       "id": "entorno_casas",

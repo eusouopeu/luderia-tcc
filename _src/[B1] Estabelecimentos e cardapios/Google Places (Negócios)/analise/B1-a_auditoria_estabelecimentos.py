@@ -3,12 +3,20 @@ Bloco B1 - amostra de auditoria da lista de estabelecimentos (Google Places):
 fidelidade da nota média, do número de avaliações e do endereço à página do
 Google Maps (_instrucoes/4_metodologia.md §3.4, etapa 1 do B1).
 
-Desenho: 20% dos estabelecimentos curados (arredondado para cima), estratificado
+População: as 54 luderias do objeto (aprovadas na triagem manual, menos as que
+saíram do objeto, mais as luderias novas do acervodejogos), lidas de
+estabelecimentos/B1_resumo_estabelecimentos.xlsx. Até 15/10/2026 a população
+era a lista de 164 candidatos antes da curadoria; por decisão do autor, a
+auditoria cobre só as casas que entram nas análises.
+
+Desenho: 20% dos estabelecimentos da população (arredondado para cima), estratificado
 por capital do endereço e faixa de volume de avaliações (101 a 300, 301 a 1000,
 mais de 1000), alocação proporcional pelos maiores restos e, dentro do estrato,
 as menores chaves da semente (_src/extras/amostrar_auditoria.py).
 
-Entrada: estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv
+Entradas: estabelecimentos/B1_resumo_estabelecimentos.xlsx (aba estabelecimentos; população)
+          estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv e
+          acervo_jogos/B1_acervodejogos_luderias_novas.csv (data da coleta de cada casa)
 Saídas:
   _dados-brutos/estabelecimentos/auditoria/B1_auditoria_estabelecimentos.csv
   _dados-brutos/estabelecimentos/auditoria/auditoria_registro.csv (uma linha por sorteio)
@@ -40,7 +48,9 @@ import amostrar_auditoria as aa
 ROOT = Path(__file__).resolve().parents[4]
 PROCESSADOS = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 BRUTOS = PROCESSADOS / "_dados-brutos"
-ENTRADA = PROCESSADOS / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv"
+ENTRADA = PROCESSADOS / "estabelecimentos/B1_resumo_estabelecimentos.xlsx"
+CURADORIA = PROCESSADOS / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv"
+NOVAS = PROCESSADOS / "acervo_jogos/B1_acervodejogos_luderias_novas.csv"
 SAIDA = BRUTOS / "estabelecimentos/auditoria"
 
 SEMENTE = 20261015
@@ -55,7 +65,12 @@ def faixa(volume) -> str:
 
 
 def main():
-    pop = pd.read_csv(ENTRADA, sep=None, engine="python", dtype=str, encoding="utf-8-sig")
+    pop = pd.read_excel(ENTRADA, sheet_name="estabelecimentos", dtype=str)
+    assert pop.place_id.is_unique
+    datas = pd.concat([pd.read_csv(f, sep=None, engine="python", dtype=str, encoding="utf-8-sig")[["place_id", "data_coleta"]]
+                       for f in (CURADORIA, NOVAS)]).drop_duplicates("place_id", keep="last")
+    pop = pop.merge(datas, on="place_id", how="left")
+    assert pop.data_coleta.notna().all(), "casa sem data de coleta"
     pop["faixa_volume"] = pop["volume_avaliacoes"].map(faixa)
     pop["estrato"] = pop["capital_endereco"] + " · " + pop["faixa_volume"]
     n = math.ceil(FRACAO * len(pop))
@@ -63,7 +78,7 @@ def main():
     cols = ["estrato_sorteio", "chave_sorteio", "place_id", "nome", "capital_endereco", "faixa_volume",
             "avaliacao_media", "volume_avaliacoes", "endereco", "data_coleta", "link_google_maps"]
     caminho = aa.gravar(amostra[cols], SAIDA, "B1_auditoria_estabelecimentos.csv", CONFERIR,
-                        script=__file__, semente=SEMENTE, populacao=len(pop), origem=[ENTRADA],
+                        script=__file__, semente=SEMENTE, populacao=len(pop), origem=[ENTRADA, CURADORIA, NOVAS],
                         desenho=f"{FRACAO:.0%} estratificado por capital e faixa de volume, maiores restos")
     aa.resumo("B1 estabelecimentos", len(pop), amostra)
     print(amostra.groupby("capital_endereco").size().to_string())

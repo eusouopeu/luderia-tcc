@@ -979,3 +979,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: as amostras de auditoria (commit 08d9ac7) só estavam nas pastas `auditoria/` dos brutos e nos registros de sorteio.
 **Depois**: aba 12 "Auditoria da coleta" com as regras comuns (critério de Wilson ≤ 5%, sorteio por SHA-256 com semente 20261015, estratos com mínimo e maiores restos, registro com hash), o cálculo do tamanho (n mínimo de 73 com zero erros; 200 aceita até 3 erros), a curva do limite com as amostras do trabalho, a tabela com população, amostra, estratos e se cada uma cumpre o critério, e uma seção por conjunto (o que conferir, tipo de amostragem, justificativa, tamanho, comparação e ressalvas). Ficam declarados: estabelecimentos (33, limite de 10,4%) e entorno (11 casas, 25,9%; 61 itens, 5,9%) não cumprem o critério nem com zero erros; a amostra do entorno precisa ser sorteada de novo depois da nova coleta do OSM. Conferido no navegador, sem erro no console.
 **Justificativa**: pedido do autor.
+
+### 12:13
+**Objeto**: `B1-a_auditoria_estabelecimentos.py`, `_dados-brutos/estabelecimentos/auditoria/` (amostra e registro), aba 12 do site (`auditorias.json`, `s12-auditorias.json`), `docs/decisoes.md` e `docs/pendencias.md`
+**Antes**: população da auditoria = 164 candidatos antes da curadoria (`B1_curadoria_metro_f_av100.csv`); amostra de 33 (limite de 10,4% com zero erros).
+**Depois**: população = as 54 casas do objeto (`B1_resumo_estabelecimentos.xlsx`), com a data de coleta da curadoria e do acervodejogos; amostra de 11 (20%, 9 estratos de capital e faixa de volume, limite de 25,9% com zero erros), sorteada de novo com a mesma semente. A aba 12 e a pendência sobre o tamanho das amostras foram atualizadas.
+**Justificativa**: pedido do autor: a auditoria deve considerar o total de 54 estabelecimentos.

@@ -207,18 +207,18 @@
  ],
  "amostras": {
   "estabelecimentos": {
-   "n": 33,
-   "populacao": 164,
-   "pct_populacao": 20.1,
-   "wilson_zero": 10.4,
+   "n": 11,
+   "populacao": 54,
+   "pct_populacao": 20.4,
+   "wilson_zero": 25.9,
    "max_erros": null,
    "wilson_max_erros": null,
    "unidade": "estabelecimento",
-   "gerado_em": "2026-10-15 12:00",
+   "gerado_em": "2026-10-15 12:13",
    "semente": "20261015",
    "desenho": "20% estratificado por capital e faixa de volume, maiores restos",
    "alocacao": {
-    "estratos": 29,
+    "estratos": 9,
     "min": 1,
     "max": 2
    }
