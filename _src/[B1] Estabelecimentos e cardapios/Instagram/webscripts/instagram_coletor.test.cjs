@@ -11,7 +11,7 @@ function carregar(contexto = {}) {
     window: { fetch: async () => ({}) },
     XMLHttpRequest: function () {},
     localStorage: { getItem: () => null, setItem: () => {}, removeItem: () => {} },
-    location: { pathname: '/ludusluderia/following/' },
+    location: { pathname: '/ludusluderia/' },
     document: { querySelector: () => null, querySelectorAll: () => [] },
     Node: { DOCUMENT_POSITION_FOLLOWING: 4 },
     URL,
@@ -21,109 +21,29 @@ function carregar(contexto = {}) {
   };
   ambiente.XMLHttpRequest.prototype.send = () => {};
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Coletor IG] carregado');"))
-    + 'Object.assign(globalThis.__test, { sementeAtual, registrarSeguido, ingerirSeguindo, capturarPerfil, lerUsuarios, declaradoSeguindo, pendentesSeg, lerSeguindoDom, linhasSeguindo, seguindo, csv, COLS_SEGUINDO, RE_SEGUINDO_URL });})();';
+    + 'Object.assign(globalThis.__test, { capturarPerfil, capturados, lerUsuarios, csv, filaSnowballAtiva });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'instagram_coletor.user.js' });
   return ambiente.__test;
 }
-
-test('reconhece a semente pela URL da lista "seguindo"', () => {
-  assert.equal(carregar().sementeAtual(), 'ludusluderia');
-  assert.equal(carregar({ location: { pathname: '/ludusluderia/' } }).sementeAtual(), null);
-  assert.equal(carregar({ location: { pathname: '/explore/following/' } }).sementeAtual(), null);
-});
-
-function folha(texto, emBotao = false) {
-  return { childElementCount: 0, textContent: texto, closest: () => (emBotao ? {} : null) };
-}
-
-test('reconhece a semente com a lista "seguindo" aberta em janela sobre o perfil', () => {
-  const dialogo = { querySelectorAll: () => [folha('Seguindo'), folha('jeremycorbell')] };
-  const document = { querySelector: () => dialogo, querySelectorAll: (s) => (s === 'div[role="dialog"]' ? [dialogo] : []) };
-  assert.equal(carregar({ location: { pathname: '/flowg4mes/' }, document }).sementeAtual(), 'flowg4mes');
-});
-
-test('não confunde o diálogo de seguidores (botões "Seguindo" nas linhas) com a lista "seguindo"', () => {
-  const dialogo = { querySelectorAll: () => [folha('Seguidores'), folha('Seguindo', true)] };
-  const document = { querySelector: () => dialogo, querySelectorAll: (s) => (s === 'div[role="dialog"]' ? [dialogo] : []) };
-  assert.equal(carregar({ location: { pathname: '/flowg4mes/' }, document }).sementeAtual(), null);
-});
-
-test('só aceita o pedido de "seguindo" da própria página', () => {
-  const { RE_SEGUINDO_URL } = carregar();
-  assert.ok(RE_SEGUINDO_URL.test('https://www.instagram.com/api/v1/friendships/123/following/?count=12'));
-  assert.ok(!RE_SEGUINDO_URL.test('https://www.instagram.com/api/v1/friendships/123/followers/?count=12'));
-});
-
-test('guarda os seguidos da resposta da página, sem repetir e sem a própria semente', () => {
-  const t = carregar();
-  t.ingerirSeguindo({ users: [
-    { username: 'SaoJogue', full_name: 'São Jogue', is_verified: false, is_private: false },
-    { username: 'ludusluderia' },
-    { username: 'saojogue', full_name: 'São Jogue' },
-  ] });
-  const m = t.seguindo.get('ludusluderia');
-  assert.equal(m.size, 1);
-  assert.equal(m.get('saojogue').nome, 'São Jogue');
-  assert.equal(m.get('saojogue').fonte, 'api');
-  assert.equal(m.get('saojogue').verificado, 'não');
-});
-
-test('a resposta da página prevalece sobre a leitura do diálogo, mantendo a ordem', () => {
-  const t = carregar();
-  t.registrarSeguido('ludusluderia', { username: 'covilgb' }, 'dom');
-  t.registrarSeguido('ludusluderia', { username: 'covilgb', full_name: 'Covil' }, 'api');
-  t.registrarSeguido('ludusluderia', { username: 'covilgb' }, 'dom');
-  const d = t.seguindo.get('ludusluderia').get('covilgb');
-  assert.equal(d.fonte, 'api');
-  assert.equal(d.nome, 'Covil');
-  assert.equal(d.ordem, 1);
-});
-
-test('a leitura do diálogo para no bloco "Sugestões para você"', () => {
-  const corte = { childElementCount: 0, textContent: 'Sugestões para você', compareDocumentPosition: (a) => (a.depois ? 4 : 2) };
-  const links = [
-    { getAttribute: () => '/bodogami/', depois: false },
-    { getAttribute: () => '/p/abc/', depois: false },
-    { getAttribute: () => '/sugerida/', depois: true },
-  ];
-  const dialogo = { querySelectorAll: (s) => (s.startsWith('a') ? links : [corte]) };
-  const t = carregar({ document: { querySelector: () => dialogo, querySelectorAll: () => [] } });
-  t.lerSeguindoDom();
-  assert.deepEqual([...t.seguindo.get('ludusluderia').keys()], ['bodogami']);
-});
-
-test('CSV de seguindo traz uma linha por seguido com a semente', () => {
-  const t = carregar();
-  t.ingerirSeguindo({ users: [{ username: 'a' }, { username: 'b' }] });
-  const texto = t.csv(t.linhasSeguindo('ludusluderia'), t.COLS_SEGUINDO);
-  const linhas = texto.replace(/^﻿/, '').split('\r\n');
-  assert.equal(linhas[0], t.COLS_SEGUINDO.join(';'));
-  assert.equal(linhas.length, 3);
-  assert.ok(linhas[1].startsWith('ludusluderia;a;'));
-});
-
-test('a resposta vai para a semente do id no pedido, mesmo com outra lista aberta', () => {
-  const t = carregar();
-  t.capturarPerfil({ username: 'Alcapaojogos', pk: '555', follower_count: 10 });
-  t.ingerirSeguindo({ users: [{ username: 'x' }] }, 'https://www.instagram.com/api/v1/friendships/555/following/?count=12');
-  t.ingerirSeguindo({ users: [{ username: 'y' }] }, 'https://www.instagram.com/api/v1/friendships/999/following/?count=12');
-  assert.deepEqual([...t.seguindo.get('alcapaojogos').keys()], ['x']);
-  assert.deepEqual([...t.seguindo.get('ludusluderia').keys()], ['y']);
-});
 
 test('lê a lista colada na fila em @ únicos e minúsculos', () => {
   const t = carregar();
   assert.equal(t.lerUsuarios('@SaoJogue\nhttps://www.instagram.com/covilgb/?hl=pt\nsaojogue  bodogami/').join(' '), 'saojogue covilgb bodogami');
 });
 
-test('total declarado de seguindo vem do primeiro valor preenchido', () => {
+test('dados de perfil guardam o nº de seguindo para o CSV de perfis', () => {
   const t = carregar();
-  t.capturarPerfil({ username: 'a', full_name: 'A', follower_count: 3, following_count: 42 });
-  assert.equal(t.declaradoSeguindo('a'), 42);
-  assert.equal(t.declaradoSeguindo('desconhecido'), 0);
+  t.capturarPerfil({ username: 'A', full_name: 'A', follower_count: 3, following_count: 42 });
+  assert.equal(t.capturados.get('a').seguindo, 42);
 });
 
-test('fila de seguindo: pendentes excluem feitas e puladas', () => {
-  const t = carregar();
-  assert.equal(t.pendentesSeg({ todos: ['a', 'b', 'c', 'd'], feitos: ['a'], falhas: { c: 'privado' } }).join(' '), 'b d');
+test('reconhece a fila do Snowball em curso pelo localStorage do outro script', () => {
+  const ls = (v) => ({ getItem: (k) => (k === 'igs-fila-seguindo' ? v : null), setItem: () => {}, removeItem: () => {} });
+  assert.equal(carregar({ localStorage: ls(JSON.stringify({ ativa: true })) }).filaSnowballAtiva(), true);
+  assert.equal(carregar({ localStorage: ls(JSON.stringify({ ativa: false })) }).filaSnowballAtiva(), false);
+  assert.equal(carregar({ localStorage: ls(null) }).filaSnowballAtiva(), false);
+});
+
+test('o coletor não tem mais o snowball', () => {
+  assert.ok(!/RE_SEGUINDO_URL|filaSeguindo|rolarSeguindo/.test(source));
 });
