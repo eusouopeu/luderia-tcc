@@ -1,0 +1,1859 @@
+{
+ "_leiaMe": "Gerado por _src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_conteudo_site.py. Não editar à mão.",
+ "corpus": {
+  "comentarios": 1588,
+  "excluidos": 5,
+  "estabelecimentos": 53,
+  "por_tipo": {
+   "casas": {
+    "estabelecimentos": 31,
+    "comentarios": 1370
+   },
+   "lojas": {
+    "estabelecimentos": 22,
+    "comentarios": 218
+   }
+  },
+  "nota_media": 4.64,
+  "pct_nota5": 84.9,
+  "notas": {
+   "1": 62,
+   "2": 55,
+   "3": 37,
+   "4": 86,
+   "5": 1348
+  },
+  "concentracao": {
+   "nomes": [
+    "Bodogami Restaurante e Cafeteria",
+    "Shelf Bar e Jogos"
+   ],
+   "comentarios": 700,
+   "pct_casas": 51.1
+  },
+  "controle": {
+   "amostra": 131,
+   "recodificada": false
+  }
+ },
+ "total_negativas": {
+  "total": 492,
+  "casas": 419,
+  "lojas": 73
+ },
+ "categorias": [
+  {
+   "codigo": "ACV",
+   "categoria": "Acervo de jogos",
+   "total": {
+    "qualquer": {
+     "n": 427,
+     "pct": 26.9,
+     "pond": 27.5,
+     "estab": 42
+    },
+    "positiva": {
+     "n": 400,
+     "pct": 25.2,
+     "pond": 25.6,
+     "estab": 40
+    },
+    "negativa": {
+     "n": 20,
+     "pct": 1.3,
+     "pond": 1.2,
+     "estab": 9,
+     "parte_criticas": 4.1
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 391,
+     "pct": 28.5,
+     "pond": 38.8,
+     "estab": 31
+    },
+    "positiva": {
+     "n": 367,
+     "pct": 26.8,
+     "pond": 36.7,
+     "estab": 31
+    },
+    "negativa": {
+     "n": 18,
+     "pct": 1.3,
+     "pond": 1.1,
+     "estab": 7,
+     "parte_criticas": 4.3
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 36,
+     "pct": 16.5,
+     "pond": 11.5,
+     "estab": 11
+    },
+    "positiva": {
+     "n": 33,
+     "pct": 15.1,
+     "pond": 10.0,
+     "estab": 9
+    },
+    "negativa": {
+     "n": 2,
+     "pct": 0.9,
+     "pond": 1.3,
+     "estab": 2,
+     "parte_criticas": 2.7
+    }
+   },
+   "nota": {
+    "qualquer": 4.67,
+    "positiva": 4.8,
+    "negativa": 2.7
+   }
+  },
+  {
+   "codigo": "MED",
+   "categoria": "Mediação lúdica (monitoria)",
+   "total": {
+    "qualquer": {
+     "n": 261,
+     "pct": 16.4,
+     "pond": 15.7,
+     "estab": 32
+    },
+    "positiva": {
+     "n": 236,
+     "pct": 14.9,
+     "pond": 13.7,
+     "estab": 28
+    },
+    "negativa": {
+     "n": 23,
+     "pct": 1.4,
+     "pond": 1.9,
+     "estab": 13,
+     "parte_criticas": 4.7
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 251,
+     "pct": 18.3,
+     "pond": 24.9,
+     "estab": 27
+    },
+    "positiva": {
+     "n": 229,
+     "pct": 16.7,
+     "pond": 22.0,
+     "estab": 25
+    },
+    "negativa": {
+     "n": 20,
+     "pct": 1.5,
+     "pond": 2.7,
+     "estab": 11,
+     "parte_criticas": 4.8
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 10,
+     "pct": 4.6,
+     "pond": 2.8,
+     "estab": 5
+    },
+    "positiva": {
+     "n": 7,
+     "pct": 3.2,
+     "pond": 2.0,
+     "estab": 3
+    },
+    "negativa": {
+     "n": 3,
+     "pct": 1.4,
+     "pond": 0.8,
+     "estab": 2,
+     "parte_criticas": 4.1
+    }
+   },
+   "nota": {
+    "qualquer": 4.66,
+    "positiva": 4.86,
+    "negativa": 2.83
+   }
+  },
+  {
+   "codigo": "ATD",
+   "categoria": "Atendimento e hospitalidade",
+   "total": {
+    "qualquer": {
+     "n": 885,
+     "pct": 55.7,
+     "pond": 56.1,
+     "estab": 52
+    },
+    "positiva": {
+     "n": 787,
+     "pct": 49.6,
+     "pond": 44.8,
+     "estab": 49
+    },
+    "negativa": {
+     "n": 80,
+     "pct": 5.0,
+     "pond": 8.9,
+     "estab": 33,
+     "parte_criticas": 16.3
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 757,
+     "pct": 55.3,
+     "pond": 55.8,
+     "estab": 31
+    },
+    "positiva": {
+     "n": 677,
+     "pct": 49.4,
+     "pond": 43.2,
+     "estab": 29
+    },
+    "negativa": {
+     "n": 63,
+     "pct": 4.6,
+     "pond": 8.8,
+     "estab": 21,
+     "parte_criticas": 15.0
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 128,
+     "pct": 58.7,
+     "pond": 56.4,
+     "estab": 21
+    },
+    "positiva": {
+     "n": 110,
+     "pct": 50.5,
+     "pond": 47.2,
+     "estab": 20
+    },
+    "negativa": {
+     "n": 17,
+     "pct": 7.8,
+     "pond": 8.9,
+     "estab": 12,
+     "parte_criticas": 23.3
+    }
+   },
+   "nota": {
+    "qualquer": 4.58,
+    "positiva": 4.89,
+    "negativa": 1.74
+   }
+  },
+  {
+   "codigo": "AB",
+   "categoria": "Alimentos e bebidas",
+   "total": {
+    "qualquer": {
+     "n": 644,
+     "pct": 40.6,
+     "pond": 38.0,
+     "estab": 44
+    },
+    "positiva": {
+     "n": 535,
+     "pct": 33.7,
+     "pond": 28.1,
+     "estab": 41
+    },
+    "negativa": {
+     "n": 66,
+     "pct": 4.2,
+     "pond": 6.3,
+     "estab": 23,
+     "parte_criticas": 13.4
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 600,
+     "pct": 43.8,
+     "pond": 52.4,
+     "estab": 31
+    },
+    "positiva": {
+     "n": 499,
+     "pct": 36.4,
+     "pond": 38.4,
+     "estab": 29
+    },
+    "negativa": {
+     "n": 61,
+     "pct": 4.5,
+     "pond": 9.2,
+     "estab": 20,
+     "parte_criticas": 14.6
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 44,
+     "pct": 20.2,
+     "pond": 17.8,
+     "estab": 13
+    },
+    "positiva": {
+     "n": 36,
+     "pct": 16.5,
+     "pond": 13.5,
+     "estab": 12
+    },
+    "negativa": {
+     "n": 5,
+     "pct": 2.3,
+     "pond": 2.2,
+     "estab": 3,
+     "parte_criticas": 6.8
+    }
+   },
+   "nota": {
+    "qualquer": 4.58,
+    "positiva": 4.88,
+    "negativa": 2.56
+   }
+  },
+  {
+   "codigo": "TMP",
+   "categoria": "Tempo de serviço e erros de pedido",
+   "total": {
+    "qualquer": {
+     "n": 86,
+     "pct": 5.4,
+     "pond": 6.3,
+     "estab": 25
+    },
+    "positiva": {
+     "n": 33,
+     "pct": 2.1,
+     "pond": 1.9,
+     "estab": 13
+    },
+    "negativa": {
+     "n": 52,
+     "pct": 3.3,
+     "pond": 4.4,
+     "estab": 20,
+     "parte_criticas": 10.6
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 77,
+     "pct": 5.6,
+     "pond": 8.9,
+     "estab": 20
+    },
+    "positiva": {
+     "n": 31,
+     "pct": 2.3,
+     "pond": 2.4,
+     "estab": 11
+    },
+    "negativa": {
+     "n": 45,
+     "pct": 3.3,
+     "pond": 6.5,
+     "estab": 17,
+     "parte_criticas": 10.7
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 9,
+     "pct": 4.1,
+     "pond": 2.6,
+     "estab": 5
+    },
+    "positiva": {
+     "n": 2,
+     "pct": 0.9,
+     "pond": 1.1,
+     "estab": 2
+    },
+    "negativa": {
+     "n": 7,
+     "pct": 3.2,
+     "pond": 1.6,
+     "estab": 3,
+     "parte_criticas": 9.6
+    }
+   },
+   "nota": {
+    "qualquer": 3.33,
+    "positiva": 4.64,
+    "negativa": 2.48
+   }
+  },
+  {
+   "codigo": "PRC",
+   "categoria": "Preço e valor percebido",
+   "total": {
+    "qualquer": {
+     "n": 203,
+     "pct": 12.8,
+     "pond": 19.9,
+     "estab": 46
+    },
+    "positiva": {
+     "n": 106,
+     "pct": 6.7,
+     "pond": 13.4,
+     "estab": 41
+    },
+    "negativa": {
+     "n": 75,
+     "pct": 4.7,
+     "pond": 5.0,
+     "estab": 22,
+     "parte_criticas": 15.2
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 149,
+     "pct": 10.9,
+     "pond": 17.9,
+     "estab": 27
+    },
+    "positiva": {
+     "n": 61,
+     "pct": 4.5,
+     "pond": 9.5,
+     "estab": 22
+    },
+    "negativa": {
+     "n": 68,
+     "pct": 5.0,
+     "pond": 6.3,
+     "estab": 16,
+     "parte_criticas": 16.2
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 54,
+     "pct": 24.8,
+     "pond": 22.7,
+     "estab": 19
+    },
+    "positiva": {
+     "n": 45,
+     "pct": 20.6,
+     "pond": 18.7,
+     "estab": 19
+    },
+    "negativa": {
+     "n": 7,
+     "pct": 3.2,
+     "pond": 3.2,
+     "estab": 6,
+     "parte_criticas": 9.6
+    }
+   },
+   "nota": {
+    "qualquer": 4.16,
+    "positiva": 4.86,
+    "negativa": 3.11
+   }
+  },
+  {
+   "codigo": "AMB",
+   "categoria": "Ambiente físico e conforto",
+   "total": {
+    "qualquer": {
+     "n": 509,
+     "pct": 32.1,
+     "pond": 34.7,
+     "estab": 49
+    },
+    "positiva": {
+     "n": 471,
+     "pct": 29.7,
+     "pond": 30.5,
+     "estab": 49
+    },
+    "negativa": {
+     "n": 32,
+     "pct": 2.0,
+     "pond": 3.5,
+     "estab": 18,
+     "parte_criticas": 6.5
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 443,
+     "pct": 32.3,
+     "pond": 39.0,
+     "estab": 31
+    },
+    "positiva": {
+     "n": 410,
+     "pct": 29.9,
+     "pond": 33.4,
+     "estab": 31
+    },
+    "negativa": {
+     "n": 28,
+     "pct": 2.0,
+     "pond": 4.7,
+     "estab": 14,
+     "parte_criticas": 6.7
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 66,
+     "pct": 30.3,
+     "pond": 28.5,
+     "estab": 18
+    },
+    "positiva": {
+     "n": 61,
+     "pct": 28.0,
+     "pond": 26.5,
+     "estab": 18
+    },
+    "negativa": {
+     "n": 4,
+     "pct": 1.8,
+     "pond": 1.7,
+     "estab": 4,
+     "parte_criticas": 5.5
+    }
+   },
+   "nota": {
+    "qualquer": 4.66,
+    "positiva": 4.78,
+    "negativa": 2.69
+   }
+  },
+  {
+   "codigo": "RUI",
+   "categoria": "Ruído",
+   "total": {
+    "qualquer": {
+     "n": 32,
+     "pct": 2.0,
+     "pond": 1.7,
+     "estab": 16
+    },
+    "positiva": {
+     "n": 6,
+     "pct": 0.4,
+     "pond": 0.6,
+     "estab": 6
+    },
+    "negativa": {
+     "n": 19,
+     "pct": 1.2,
+     "pond": 0.6,
+     "estab": 10,
+     "parte_criticas": 3.9
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 30,
+     "pct": 2.2,
+     "pond": 2.6,
+     "estab": 14
+    },
+    "positiva": {
+     "n": 6,
+     "pct": 0.4,
+     "pond": 1.1,
+     "estab": 6
+    },
+    "negativa": {
+     "n": 18,
+     "pct": 1.3,
+     "pond": 0.9,
+     "estab": 9,
+     "parte_criticas": 4.3
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 2,
+     "pct": 0.9,
+     "pond": 0.4,
+     "estab": 2
+    },
+    "positiva": {
+     "n": 0,
+     "pct": 0.0,
+     "pond": 0.0,
+     "estab": 0
+    },
+    "negativa": {
+     "n": 1,
+     "pct": 0.5,
+     "pond": 0.2,
+     "estab": 1,
+     "parte_criticas": 1.4
+    }
+   },
+   "nota": {
+    "qualquer": 3.88,
+    "positiva": 4.83,
+    "negativa": 3.26
+   }
+  },
+  {
+   "codigo": "CAP",
+   "categoria": "Capacidade, reserva e fila",
+   "total": {
+    "qualquer": {
+     "n": 108,
+     "pct": 6.8,
+     "pond": 9.6,
+     "estab": 34
+    },
+    "positiva": {
+     "n": 19,
+     "pct": 1.2,
+     "pond": 2.5,
+     "estab": 14
+    },
+    "negativa": {
+     "n": 54,
+     "pct": 3.4,
+     "pond": 4.2,
+     "estab": 19,
+     "parte_criticas": 11.0
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 97,
+     "pct": 7.1,
+     "pond": 12.4,
+     "estab": 25
+    },
+    "positiva": {
+     "n": 18,
+     "pct": 1.3,
+     "pond": 3.7,
+     "estab": 13
+    },
+    "negativa": {
+     "n": 48,
+     "pct": 3.5,
+     "pond": 5.0,
+     "estab": 15,
+     "parte_criticas": 11.5
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 11,
+     "pct": 5.0,
+     "pond": 5.7,
+     "estab": 9
+    },
+    "positiva": {
+     "n": 1,
+     "pct": 0.5,
+     "pond": 0.9,
+     "estab": 1
+    },
+    "negativa": {
+     "n": 6,
+     "pct": 2.8,
+     "pond": 3.0,
+     "estab": 4,
+     "parte_criticas": 8.2
+    }
+   },
+   "nota": {
+    "qualquer": 3.4,
+    "positiva": 4.79,
+    "negativa": 2.31
+   }
+  },
+  {
+   "codigo": "PRG",
+   "categoria": "Programação e atrações",
+   "total": {
+    "qualquer": {
+     "n": 75,
+     "pct": 4.7,
+     "pond": 7.6,
+     "estab": 26
+    },
+    "positiva": {
+     "n": 69,
+     "pct": 4.3,
+     "pond": 5.7,
+     "estab": 23
+    },
+    "negativa": {
+     "n": 5,
+     "pct": 0.3,
+     "pond": 1.8,
+     "estab": 4,
+     "parte_criticas": 1.0
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 56,
+     "pct": 4.1,
+     "pond": 6.1,
+     "estab": 13
+    },
+    "positiva": {
+     "n": 52,
+     "pct": 3.8,
+     "pond": 4.3,
+     "estab": 12
+    },
+    "negativa": {
+     "n": 3,
+     "pct": 0.2,
+     "pond": 1.8,
+     "estab": 2,
+     "parte_criticas": 0.7
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 19,
+     "pct": 8.7,
+     "pond": 9.7,
+     "estab": 13
+    },
+    "positiva": {
+     "n": 17,
+     "pct": 7.8,
+     "pond": 7.9,
+     "estab": 11
+    },
+    "negativa": {
+     "n": 2,
+     "pct": 0.9,
+     "pond": 1.9,
+     "estab": 2,
+     "parte_criticas": 2.7
+    }
+   },
+   "nota": {
+    "qualquer": 4.6,
+    "positiva": 4.8,
+    "negativa": 2.0
+   }
+  },
+  {
+   "codigo": "COMU",
+   "categoria": "Comunidade de jogadores",
+   "total": {
+    "qualquer": {
+     "n": 35,
+     "pct": 2.2,
+     "pond": 6.4,
+     "estab": 18
+    },
+    "positiva": {
+     "n": 30,
+     "pct": 1.9,
+     "pond": 5.3,
+     "estab": 17
+    },
+    "negativa": {
+     "n": 4,
+     "pct": 0.3,
+     "pond": 0.8,
+     "estab": 4,
+     "parte_criticas": 0.8
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 10,
+     "pct": 0.7,
+     "pond": 1.7,
+     "estab": 6
+    },
+    "positiva": {
+     "n": 10,
+     "pct": 0.7,
+     "pond": 1.7,
+     "estab": 6
+    },
+    "negativa": {
+     "n": 0,
+     "pct": 0.0,
+     "pond": 0.0,
+     "estab": 0,
+     "parte_criticas": 0.0
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 25,
+     "pct": 11.5,
+     "pond": 12.9,
+     "estab": 12
+    },
+    "positiva": {
+     "n": 20,
+     "pct": 9.2,
+     "pond": 10.3,
+     "estab": 11
+    },
+    "negativa": {
+     "n": 4,
+     "pct": 1.8,
+     "pond": 2.0,
+     "estab": 4,
+     "parte_criticas": 5.5
+    }
+   },
+   "nota": {
+    "qualquer": 4.54,
+    "positiva": 4.9,
+    "negativa": 2.25
+   }
+  },
+  {
+   "codigo": "VAR",
+   "categoria": "Varejo e pós-venda",
+   "total": {
+    "qualquer": {
+     "n": 109,
+     "pct": 6.9,
+     "pond": 18.2,
+     "estab": 29
+    },
+    "positiva": {
+     "n": 85,
+     "pct": 5.4,
+     "pond": 13.5,
+     "estab": 27
+    },
+    "negativa": {
+     "n": 13,
+     "pct": 0.8,
+     "pond": 2.5,
+     "estab": 12,
+     "parte_criticas": 2.6
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 22,
+     "pct": 1.6,
+     "pond": 2.8,
+     "estab": 10
+    },
+    "positiva": {
+     "n": 16,
+     "pct": 1.2,
+     "pond": 1.9,
+     "estab": 8
+    },
+    "negativa": {
+     "n": 4,
+     "pct": 0.3,
+     "pond": 0.5,
+     "estab": 3,
+     "parte_criticas": 1.0
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 87,
+     "pct": 39.9,
+     "pond": 40.0,
+     "estab": 19
+    },
+    "positiva": {
+     "n": 69,
+     "pct": 31.7,
+     "pond": 29.9,
+     "estab": 19
+    },
+    "negativa": {
+     "n": 9,
+     "pct": 4.1,
+     "pond": 5.4,
+     "estab": 9,
+     "parte_criticas": 12.3
+    }
+   },
+   "nota": {
+    "qualquer": 4.24,
+    "positiva": 4.88,
+    "negativa": 1.23
+   }
+  },
+  {
+   "codigo": "LOC",
+   "categoria": "Localização e acesso",
+   "total": {
+    "qualquer": {
+     "n": 22,
+     "pct": 1.4,
+     "pond": 2.2,
+     "estab": 17
+    },
+    "positiva": {
+     "n": 12,
+     "pct": 0.8,
+     "pond": 1.3,
+     "estab": 11
+    },
+    "negativa": {
+     "n": 4,
+     "pct": 0.3,
+     "pond": 0.3,
+     "estab": 4,
+     "parte_criticas": 0.8
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 17,
+     "pct": 1.2,
+     "pond": 1.6,
+     "estab": 12
+    },
+    "positiva": {
+     "n": 8,
+     "pct": 0.6,
+     "pond": 0.5,
+     "estab": 7
+    },
+    "negativa": {
+     "n": 4,
+     "pct": 0.3,
+     "pond": 0.5,
+     "estab": 4,
+     "parte_criticas": 1.0
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 5,
+     "pct": 2.3,
+     "pond": 3.0,
+     "estab": 5
+    },
+    "positiva": {
+     "n": 4,
+     "pct": 1.8,
+     "pond": 2.3,
+     "estab": 4
+    },
+    "negativa": {
+     "n": 0,
+     "pct": 0.0,
+     "pond": 0.0,
+     "estab": 0,
+     "parte_criticas": 0.0
+    }
+   },
+   "nota": {
+    "qualquer": 4.59,
+    "positiva": 4.92,
+    "negativa": 3.25
+   }
+  },
+  {
+   "codigo": "INC",
+   "categoria": "Segurança, inclusão e respeito",
+   "total": {
+    "qualquer": {
+     "n": 24,
+     "pct": 1.5,
+     "pond": 1.5,
+     "estab": 13
+    },
+    "positiva": {
+     "n": 14,
+     "pct": 0.9,
+     "pond": 0.8,
+     "estab": 10
+    },
+    "negativa": {
+     "n": 9,
+     "pct": 0.6,
+     "pond": 0.6,
+     "estab": 5,
+     "parte_criticas": 1.8
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 22,
+     "pct": 1.6,
+     "pond": 2.0,
+     "estab": 11
+    },
+    "positiva": {
+     "n": 13,
+     "pct": 0.9,
+     "pond": 1.2,
+     "estab": 9
+    },
+    "negativa": {
+     "n": 8,
+     "pct": 0.6,
+     "pond": 0.7,
+     "estab": 4,
+     "parte_criticas": 1.9
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 2,
+     "pct": 0.9,
+     "pond": 0.9,
+     "estab": 2
+    },
+    "positiva": {
+     "n": 1,
+     "pct": 0.5,
+     "pond": 0.3,
+     "estab": 1
+    },
+    "negativa": {
+     "n": 1,
+     "pct": 0.5,
+     "pond": 0.6,
+     "estab": 1,
+     "parte_criticas": 1.4
+    }
+   },
+   "nota": {
+    "qualquer": 3.83,
+    "positiva": 4.93,
+    "negativa": 2.0
+   }
+  },
+  {
+   "codigo": "RET",
+   "categoria": "Retorno declarado",
+   "total": {
+    "qualquer": {
+     "n": 221,
+     "pct": 13.9,
+     "pond": 13.6,
+     "estab": 40
+    },
+    "positiva": {
+     "n": 183,
+     "pct": 11.5,
+     "pond": 10.1,
+     "estab": 35
+    },
+    "negativa": {
+     "n": 34,
+     "pct": 2.1,
+     "pond": 2.9,
+     "estab": 19,
+     "parte_criticas": 6.9
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 202,
+     "pct": 14.7,
+     "pond": 17.6,
+     "estab": 29
+    },
+    "positiva": {
+     "n": 169,
+     "pct": 12.3,
+     "pond": 12.9,
+     "estab": 26
+    },
+    "negativa": {
+     "n": 30,
+     "pct": 2.2,
+     "pond": 3.9,
+     "estab": 15,
+     "parte_criticas": 7.2
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 19,
+     "pct": 8.7,
+     "pond": 7.9,
+     "estab": 11
+    },
+    "positiva": {
+     "n": 14,
+     "pct": 6.4,
+     "pond": 6.0,
+     "estab": 9
+    },
+    "negativa": {
+     "n": 4,
+     "pct": 1.8,
+     "pond": 1.5,
+     "estab": 4,
+     "parte_criticas": 5.5
+    }
+   },
+   "nota": {
+    "qualquer": 4.34,
+    "positiva": 4.95,
+    "negativa": 1.38
+   }
+  },
+  {
+   "codigo": "GEN",
+   "categoria": "Avaliação genérica",
+   "total": {
+    "qualquer": {
+     "n": 140,
+     "pct": 8.8,
+     "pond": 8.0,
+     "estab": 29
+    },
+    "positiva": {
+     "n": 137,
+     "pct": 8.6,
+     "pond": 6.0,
+     "estab": 28
+    },
+    "negativa": {
+     "n": 2,
+     "pct": 0.1,
+     "pond": 1.9,
+     "estab": 2,
+     "parte_criticas": 0.4
+    }
+   },
+   "casas": {
+    "qualquer": {
+     "n": 131,
+     "pct": 9.6,
+     "pond": 7.2,
+     "estab": 20
+    },
+    "positiva": {
+     "n": 129,
+     "pct": 9.4,
+     "pond": 7.2,
+     "estab": 20
+    },
+    "negativa": {
+     "n": 1,
+     "pct": 0.1,
+     "pond": 0.1,
+     "estab": 1,
+     "parte_criticas": 0.2
+    }
+   },
+   "lojas": {
+    "qualquer": {
+     "n": 9,
+     "pct": 4.1,
+     "pond": 9.0,
+     "estab": 9
+    },
+    "positiva": {
+     "n": 8,
+     "pct": 3.7,
+     "pond": 4.5,
+     "estab": 8
+    },
+    "negativa": {
+     "n": 1,
+     "pct": 0.5,
+     "pond": 4.5,
+     "estab": 1,
+     "parte_criticas": 1.4
+    }
+   },
+   "nota": {
+    "qualquer": 4.91,
+    "positiva": 4.98,
+    "negativa": 1.0
+   }
+  }
+ ],
+ "contexto": [
+  {
+   "codigo": "OCA:ami",
+   "categoria": "Ocasião: amigos",
+   "total": {
+    "n": 192,
+    "pct": 12.1
+   },
+   "casas": {
+    "n": 178,
+    "pct": 13.0
+   },
+   "lojas": {
+    "n": 14,
+    "pct": 6.4
+   },
+   "nota": 4.68
+  },
+  {
+   "codigo": "OCA:fam",
+   "categoria": "Ocasião: família ou crianças",
+   "total": {
+    "n": 94,
+    "pct": 5.9
+   },
+   "casas": {
+    "n": 87,
+    "pct": 6.4
+   },
+   "lojas": {
+    "n": 7,
+    "pct": 3.2
+   },
+   "nota": 4.44
+  },
+  {
+   "codigo": "OCA:casal",
+   "categoria": "Ocasião: casal",
+   "total": {
+    "n": 25,
+    "pct": 1.6
+   },
+   "casas": {
+    "n": 24,
+    "pct": 1.8
+   },
+   "lojas": {
+    "n": 1,
+    "pct": 0.5
+   },
+   "nota": 4.76
+  },
+  {
+   "codigo": "OCA:aniv",
+   "categoria": "Ocasião: aniversário ou comemoração",
+   "total": {
+    "n": 50,
+    "pct": 3.1
+   },
+   "casas": {
+    "n": 49,
+    "pct": 3.6
+   },
+   "lojas": {
+    "n": 1,
+    "pct": 0.5
+   },
+   "nota": 3.96
+  },
+  {
+   "codigo": "NOV",
+   "categoria": "Sinal de iniciante/não jogador",
+   "total": {
+    "n": 22,
+    "pct": 1.4
+   },
+   "casas": {
+    "n": 13,
+    "pct": 0.9
+   },
+   "lojas": {
+    "n": 9,
+    "pct": 4.1
+   },
+   "nota": 4.41
+  },
+  {
+   "codigo": "HOB",
+   "categoria": "Sinal de hobbyista",
+   "total": {
+    "n": 79,
+    "pct": 5.0
+   },
+   "casas": {
+    "n": 20,
+    "pct": 1.5
+   },
+   "lojas": {
+    "n": 59,
+    "pct": 27.1
+   },
+   "nota": 4.42
+  },
+  {
+   "codigo": "DESC",
+   "categoria": "Desconexão de telas",
+   "total": {
+    "n": 7,
+    "pct": 0.4
+   },
+   "casas": {
+    "n": 6,
+    "pct": 0.4
+   },
+   "lojas": {
+    "n": 1,
+    "pct": 0.5
+   },
+   "nota": 5.0
+  },
+  {
+   "codigo": "DIV",
+   "categoria": "Diversão como benefício",
+   "total": {
+    "n": 134,
+    "pct": 8.4
+   },
+   "casas": {
+    "n": 133,
+    "pct": 9.7
+   },
+   "lojas": {
+    "n": 1,
+    "pct": 0.5
+   },
+   "nota": 4.93
+  },
+  {
+   "codigo": "GEEK",
+   "categoria": "Identidade geek do espaço",
+   "total": {
+    "n": 10,
+    "pct": 0.6
+   },
+   "casas": {
+    "n": 8,
+    "pct": 0.6
+   },
+   "lojas": {
+    "n": 2,
+    "pct": 0.9
+   },
+   "nota": 4.9
+  },
+  {
+   "codigo": "NOM",
+   "categoria": "Funcionário citado pelo nome",
+   "total": {
+    "n": 397,
+    "pct": 25.0
+   },
+   "casas": {
+    "n": 376,
+    "pct": 27.4
+   },
+   "lojas": {
+    "n": 21,
+    "pct": 9.6
+   },
+   "nota": 4.94
+  }
+ ],
+ "estabelecimentos": [
+  {
+   "sigla": "BOD",
+   "nome": "Bodogami Restaurante e Cafeteria",
+   "capital": "São Paulo",
+   "tipo": "casas",
+   "comentarios": 457,
+   "nota": 4.77
+  },
+  {
+   "sigla": "SHF",
+   "nome": "Shelf Bar e Jogos",
+   "capital": "Belo Horizonte",
+   "tipo": "casas",
+   "comentarios": 243,
+   "nota": 4.84
+  },
+  {
+   "sigla": "BDM",
+   "nome": "Bardo Mago",
+   "capital": "Belo Horizonte",
+   "tipo": "casas",
+   "comentarios": 100,
+   "nota": 4.81
+  },
+  {
+   "sigla": "FAN",
+   "nome": "Fan Hour Games and Burgers",
+   "capital": "São Paulo",
+   "tipo": "casas",
+   "comentarios": 79,
+   "nota": 4.38
+  },
+  {
+   "sigla": "LCA",
+   "nome": "Luderia Carioca",
+   "capital": "Rio de Janeiro",
+   "tipo": "casas",
+   "comentarios": 69,
+   "nota": 4.52
+  },
+  {
+   "sigla": "ENC",
+   "nome": "Encounter | Jogos de Tabuleiro | Board Games",
+   "capital": "São Paulo",
+   "tipo": "casas",
+   "comentarios": 62,
+   "nota": 4.84
+  },
+  {
+   "sigla": "CAS",
+   "nome": "Castelos Bar & Boardgames",
+   "capital": "São Paulo",
+   "tipo": "casas",
+   "comentarios": 48,
+   "nota": 4.27
+  },
+  {
+   "sigla": "CAR",
+   "nome": "Cartola Luderia Bar",
+   "capital": "São Paulo",
+   "tipo": "casas",
+   "comentarios": 38,
+   "nota": 4.71
+  },
+  {
+   "sigla": "LUD",
+   "nome": "Ludus Luderia",
+   "capital": "São Paulo",
+   "tipo": "casas",
+   "comentarios": 27,
+   "nota": 4.56
+  },
+  {
+   "sigla": "SDQ",
+   "nome": "Ludoteca Sidequest",
+   "capital": "Belém",
+   "tipo": "casas",
+   "comentarios": 26,
+   "nota": 4.62
+  },
+  {
+   "sigla": "TUB",
+   "nome": "Tubaleria",
+   "capital": "São Paulo",
+   "tipo": "casas",
+   "comentarios": 24,
+   "nota": 5.0
+  },
+  {
+   "sigla": "BRZ",
+   "nome": "BoardZ Game Pub",
+   "capital": "Curitiba",
+   "tipo": "casas",
+   "comentarios": 24,
+   "nota": 5.0
+  },
+  {
+   "sigla": "CIN",
+   "nome": "Cineplay- Restaurante e Jogos",
+   "capital": "Florianópolis",
+   "tipo": "casas",
+   "comentarios": 23,
+   "nota": 4.52
+  },
+  {
+   "sigla": "BRV",
+   "nome": "Bravo Jogos",
+   "capital": "São Paulo",
+   "tipo": "lojas",
+   "comentarios": 23,
+   "nota": 4.61
+  },
+  {
+   "sigla": "UTP",
+   "nome": "Utopia Games & Food",
+   "capital": "Brasília",
+   "tipo": "lojas",
+   "comentarios": 22,
+   "nota": 4.27
+  },
+  {
+   "sigla": "PEZ",
+   "nome": "Play Easy",
+   "capital": "São Paulo",
+   "tipo": "lojas",
+   "comentarios": 21,
+   "nota": 4.57
+  },
+  {
+   "sigla": "OMN",
+   "nome": "OMNIVERSE",
+   "capital": "São Paulo",
+   "tipo": "lojas",
+   "comentarios": 18,
+   "nota": 4.94
+  },
+  {
+   "sigla": "JOY",
+   "nome": "Joyjoy Café",
+   "capital": "Curitiba",
+   "tipo": "casas",
+   "comentarios": 17,
+   "nota": 4.12
+  },
+  {
+   "sigla": "FLW",
+   "nome": "Flow Games - Burgers, Cards & Comunidade",
+   "capital": "São Paulo",
+   "tipo": "lojas",
+   "comentarios": 16,
+   "nota": 4.75
+  },
+  {
+   "sigla": "FTL",
+   "nome": "FORTALÚDICA - BURGERS & JOGOS",
+   "capital": "Brasília",
+   "tipo": "lojas",
+   "comentarios": 15,
+   "nota": 4.93
+  },
+  {
+   "sigla": "DOM",
+   "nome": "Dominaria Cards & Games",
+   "capital": "Fortaleza",
+   "tipo": "lojas",
+   "comentarios": 14,
+   "nota": 4.57
+  },
+  {
+   "sigla": "BGC",
+   "nome": "Ludoteca BGC",
+   "capital": "Brasília",
+   "tipo": "casas",
+   "comentarios": 13,
+   "nota": 4.23
+  },
+  {
+   "sigla": "ARE",
+   "nome": "Arena BG | Jogos de Tabuleiro | Hamburgueria",
+   "capital": "São Paulo",
+   "tipo": "casas",
+   "comentarios": 13,
+   "nota": 4.77
+  },
+  {
+   "sigla": "CHF",
+   "nome": "Chef on Play",
+   "capital": "Florianópolis",
+   "tipo": "casas",
+   "comentarios": 12,
+   "nota": 3.58
+  },
+  {
+   "sigla": "TBC",
+   "nome": "TabuClub",
+   "capital": "Rio de Janeiro",
+   "tipo": "casas",
+   "comentarios": 11,
+   "nota": 4.64
+  },
+  {
+   "sigla": "PLC",
+   "nome": "Place Games",
+   "capital": "São Paulo",
+   "tipo": "lojas",
+   "comentarios": 11,
+   "nota": 4.18
+  },
+  {
+   "sigla": "ARC",
+   "nome": "Arcadea Gaming Pub",
+   "capital": "Porto Alegre",
+   "tipo": "casas",
+   "comentarios": 11,
+   "nota": 3.55
+  },
+  {
+   "sigla": "BAL",
+   "nome": "Balboa's Hobby Games",
+   "capital": "Fortaleza",
+   "tipo": "casas",
+   "comentarios": 9,
+   "nota": 4.11
+  },
+  {
+   "sigla": "VCT",
+   "nome": "Vila Celta Hobby Store - Jogos e Café",
+   "capital": "Curitiba",
+   "tipo": "lojas",
+   "comentarios": 8,
+   "nota": 3.12
+  },
+  {
+   "sigla": "ALC",
+   "nome": "Alçapão Jogos",
+   "capital": "Curitiba",
+   "tipo": "casas",
+   "comentarios": 8,
+   "nota": 5.0
+  },
+  {
+   "sigla": "XPL",
+   "nome": "XPlace",
+   "capital": "São Paulo",
+   "tipo": "lojas",
+   "comentarios": 8,
+   "nota": 4.0
+  },
+  {
+   "sigla": "GRU",
+   "nome": "Gruta BSB",
+   "capital": "Brasília",
+   "tipo": "lojas",
+   "comentarios": 8,
+   "nota": 4.5
+  },
+  {
+   "sigla": "TOC",
+   "nome": "Toca do Rato - Pizzaria e Jogos de Tabuleiro",
+   "capital": "Porto Alegre",
+   "tipo": "casas",
+   "comentarios": 7,
+   "nota": 2.86
+  },
+  {
+   "sigla": "MSB",
+   "nome": "Magic Store Brazil",
+   "capital": "Rio de Janeiro",
+   "tipo": "lojas",
+   "comentarios": 7,
+   "nota": 4.57
+  },
+  {
+   "sigla": "NAL",
+   "nome": "Nala Land - Bar de Jogos de Tabuleiro em Recife",
+   "capital": "Recife",
+   "tipo": "casas",
+   "comentarios": 7,
+   "nota": 5.0
+  },
+  {
+   "sigla": "PAL",
+   "nome": "Paladins Game Store",
+   "capital": "Goiânia",
+   "tipo": "lojas",
+   "comentarios": 7,
+   "nota": 5.0
+  },
+  {
+   "sigla": "RED",
+   "nome": "RED jogos",
+   "capital": "Rio de Janeiro",
+   "tipo": "lojas",
+   "comentarios": 6,
+   "nota": 3.5
+  },
+  {
+   "sigla": "LCF",
+   "nome": "LudoCafé",
+   "capital": "Belo Horizonte",
+   "tipo": "casas",
+   "comentarios": 6,
+   "nota": 4.17
+  },
+  {
+   "sigla": "CMD",
+   "nome": "Comdado Bar e Jogos",
+   "capital": "Belo Horizonte",
+   "tipo": "casas",
+   "comentarios": 6,
+   "nota": 4.17
+  },
+  {
+   "sigla": "COV",
+   "nome": "Covil Game Bar",
+   "capital": "São Paulo",
+   "tipo": "casas",
+   "comentarios": 6,
+   "nota": 4.17
+  },
+  {
+   "sigla": "GOB",
+   "nome": "Game Of Boards",
+   "capital": "Rio de Janeiro",
+   "tipo": "casas",
+   "comentarios": 6,
+   "nota": 4.17
+  },
+  {
+   "sigla": "PIT",
+   "nome": "Pitta's Board Games",
+   "capital": "São Paulo",
+   "tipo": "lojas",
+   "comentarios": 6,
+   "nota": 5.0
+  },
+  {
+   "sigla": "INS",
+   "nome": "Inside Games",
+   "capital": "Brasília",
+   "tipo": "lojas",
+   "comentarios": 6,
+   "nota": 3.67
+  },
+  {
+   "sigla": "LTB",
+   "nome": "La Tabuleria",
+   "capital": "Belo Horizonte",
+   "tipo": "casas",
+   "comentarios": 6,
+   "nota": 5.0
+  },
+  {
+   "sigla": "TAV",
+   "nome": "Taverna Game House",
+   "capital": "Curitiba",
+   "tipo": "lojas",
+   "comentarios": 5,
+   "nota": 4.2
+  },
+  {
+   "sigla": "CGK",
+   "nome": "Café Geek Cafeteria e Ludoteca",
+   "capital": "Vitória",
+   "tipo": "casas",
+   "comentarios": 5,
+   "nota": 5.0
+  },
+  {
+   "sigla": "CCG",
+   "nome": "CCG Floripa",
+   "capital": "Florianópolis",
+   "tipo": "lojas",
+   "comentarios": 5,
+   "nota": 5.0
+  },
+  {
+   "sigla": "DUN",
+   "nome": "Dungeon Games Store",
+   "capital": "São Paulo",
+   "tipo": "lojas",
+   "comentarios": 4,
+   "nota": 3.0
+  },
+  {
+   "sigla": "SJG",
+   "nome": "São Jogue - Bela Vista",
+   "capital": "Salvador",
+   "tipo": "casas",
+   "comentarios": 4,
+   "nota": 3.25
+  },
+  {
+   "sigla": "ASG",
+   "nome": "Loja de Jogos - Asgard",
+   "capital": "Brasília",
+   "tipo": "lojas",
+   "comentarios": 4,
+   "nota": 4.75
+  },
+  {
+   "sigla": "COL",
+   "nome": "Coletivo Geek",
+   "capital": "São Paulo",
+   "tipo": "lojas",
+   "comentarios": 3,
+   "nota": 4.67
+  },
+  {
+   "sigla": "JGS",
+   "nome": "Jogasampa",
+   "capital": "São Paulo",
+   "tipo": "casas",
+   "comentarios": 3,
+   "nota": 3.33
+  },
+  {
+   "sigla": "GAR",
+   "nome": "Garagem do Nerd",
+   "capital": "Belo Horizonte",
+   "tipo": "lojas",
+   "comentarios": 1,
+   "nota": 1.0
+  }
+ ],
+ "achados_intro": "Os percentuais são sobre os comentários de casas de jogos (n = 1.370, 31 estabelecimentos), salvo indicação. \"Ponderado\" é a média das proporções por estabelecimento. \"Negativas\" são as menções com polaridade -: 419 nas casas de jogos.",
+ "achados": [
+  {
+   "titulo": "O atendimento é o eixo da avaliação",
+   "texto": "O atendimento aparece em 55% dos comentários das casas de jogos, em todos os 31 estabelecimentos. É a categoria mais citada no elogio (677 menções positivas) e a segunda na crítica (63 negativas, 15% das negativas). Ponderada por estabelecimento, a crítica ao atendimento sobe de 4,6% para 8,8% dos comentários: o problema está espalhado pelas casas menores. Quando o atendimento é criticado, a nota média cai para 1,8: é a crítica de maior peso na nota. As queixas descrevem rispidez, funcionário ausente, gerente que não resolve o erro e cliente tratado como suspeito.",
+   "decisao": "equipe e treinamento de hospitalidade entram no plano operacional como item crítico, não como custo acessório."
+  },
+  {
+   "titulo": "Preço: a crítica mira a forma de cobrança",
+   "texto": "Preço passou a ser a categoria com mais menções negativas nas casas de jogos: 68 (16% das negativas), em 16 estabelecimentos. As queixas tratam da forma de cobrança: couvert lúdico somado à comida cara, valor maior no fim de semana ou no domingo, taxa de serviço calculada sobre a taxa de jogo, tempo de jogo limitado depois de pago. O elogio aparece quando a entrada é fixa e dá acesso ao acervo sem limite de tempo (Cartola, Luderia Carioca e Ludoteca BGC, R$ 20,00) ou quando parte da entrada vira consumo (Play Easy). Os valores de entrada citados vão de R$ 15,00 a R$ 38,00.",
+   "decisao": "a estrutura de preço deve ser simples e anunciada antes da entrada. Os valores citados nos comentários entram como evidência N3 na premissa de ticket."
+  },
+  {
+   "titulo": "A experiência vendida é \"jogo + comida\", e a comida divide opiniões",
+   "texto": "Alimentos e bebidas aparecem em 44% dos comentários das casas de jogos, contra 20% nas lojas. A comida é a terceira fonte de crítica (61 negativas, 15% das negativas), com nota média de 2,5 quando criticada. Ponderado por estabelecimento, o peso das críticas à comida sobe de 4,5% para 9,2% dos comentários. O Bodogami concentra 20 das 61 críticas, quase todas ao lámen e às frituras. As demais citam porção pequena para o preço, comida fria e uma única opção vegana.",
+   "decisao": "o modelo de A&B precisa ser decidido de forma explícita. Um cardápio curto e bem executado responde à crítica mais frequente sem exigir cozinha completa."
+  },
+  {
+   "titulo": "Capacidade, reserva e fila geram crítica grave",
+   "texto": "Capacidade, reserva e fila somam 48 menções negativas nas casas de jogos (11% das negativas), em 15 estabelecimentos, com nota média de 2,2. Os casos se dividem em três grupos. Na Fan Hour (9), o tempo máximo na mesa e a saída forçada no fechamento. Na Luderia Carioca (8), a fila de espera do lado de fora, sem reserva, em rua considerada perigosa. Em Castelos, Shelf, TabuClub e Cartola, a reserva não registrada ou cancelada e a recusa em juntar mesas para grupos.",
+   "decisao": "o projeto do salão precisa de área de espera interna e de política de reserva por escrito, com regra clara para grupos. A ocupação varia muito entre dias: esse dado reforça a contagem direta do Bloco B3."
+  },
+  {
+   "titulo": "Tempo de serviço pesa nos dias cheios",
+   "texto": "Demora e erro de pedido somam 45 menções negativas (11% das negativas), em 17 estabelecimentos, com nota média de 2,4. A queixa aparece em feriados e noites cheias: pedido de uma hora ou mais, comanda trocada, prato que chega depois da sobremesa. Shelf (7), Bodogami (5), Castelos (5) e Toca do Rato (4) concentram os casos.",
+   "decisao": "o dimensionamento da cozinha e da equipe de salão segue o pico de ocupação, não a média. O cardápio curto do §3.3 também reduz o tempo de preparo."
+  },
+  {
+   "titulo": "A mediação lúdica é o diferencial elogiado",
+   "texto": "A mediação aparece em 18% dos comentários das casas de jogos (25% ponderado), quase sempre positiva (229 positivas contra 20 negativas). O elogio descreve o monitor que recomenda o jogo pelo perfil do grupo e acompanha a primeira rodada. A crítica descreve monitor que não sabe a regra, ensina errado ou demora a aparecer, com nota média de 2,7. Nas lojas, a mediação aparece em 5% dos comentários.",
+   "decisao": "a monitoria é parte do produto. O acervo deve ser escolhido também pela facilidade de explicar, e o número de monitores segue o número de mesas ocupadas."
+  },
+  {
+   "titulo": "O acervo é valorizado pela variedade, mas raramente criticado",
+   "texto": "O acervo aparece em 29% dos comentários das casas de jogos (39% ponderado), em todos os 31 estabelecimentos. O elogio é genérico: \"muitos jogos\", \"variedade enorme\". A crítica é rara (18 menções) e trata de conservação e peças faltando; o Bodogami concentra 9 delas.",
+   "decisao": "um acervo médio, bem conservado e explicável atende ao público das luderias. Acervo muito grande não aparece como motivo de escolha nem a sua falta como motivo de queixa."
+  },
+  {
+   "titulo": "A ocasião é social: amigos, família e aniversário",
+   "texto": "Entre as ocasiões citadas nas casas de jogos, amigos aparecem em 13% dos comentários, família ou crianças em 6%, aniversário em 4% e casal em 2%. O aniversário concentra problemas: 43% dos comentários que citam aniversário trazem alguma crítica, e a nota média deles é 3,9. As queixas tratam de reserva de grupo, cobrança antecipada da entrada dos convidados e mesa trocada na última hora.",
+   "decisao": "o produto para grupos e aniversários (reserva, pacote, mesa para mais de 8 pessoas) entra no plano de marketing e no layout, com regra escrita de reserva."
+  },
+  {
+   "titulo": "Casas de jogos e lojas atendem públicos diferentes",
+   "texto": "Nas lojas, 27% dos comentários trazem sinais de hobbyista (TCG, torneio, coleção) e 40% tratam de varejo e pós-venda. Comunidade aparece em 12% dos comentários das lojas e em 1% dos das casas de jogos. Nas casas de jogos, os sinais de hobbyista (1,5%) e de iniciante (0,9%) são raros: o cliente comenta a ocasião e a experiência, não a sua relação com o hobby.",
+   "decisao": "lojas de TCG não são concorrentes diretas de uma luderia. Esse achado sustenta a separação dos dois tipos nas análises de concorrência e de preço."
+  },
+  {
+   "titulo": "Ruído e segurança são raros, mas graves",
+   "texto": "Ruído aparece em 2% dos comentários das casas de jogos, ligado a salões cheios, feriados e crianças; o Shelf concentra 7 das 18 críticas. Segurança e inclusão aparecem em 2%, com queixas de fila na rua, cliente tratado como suspeito e um relato de discriminação racial, todas com nota baixa; e com elogios a \"espaço seguro para mulheres\" e a acolhimento do público LGBTQIA+. A Luderia Carioca concentra 5 das 8 críticas.",
+   "decisao": "tratamento acústico, salas separadas para grupos e famílias com crianças e protocolo de conduta da equipe entram como medidas de mitigação na análise de riscos."
+  },
+  {
+   "titulo": "A nota média do Google não mede qualidade",
+   "texto": "A nota média do corpus é 4,64 e 85% dos comentários têm nota 5. Os comentários que citam funcionário pelo nome têm nota média de 4,94 e se concentram no Shelf e no Bardo Mago. O relato da Cineplay descreve a gerência oferecendo milkshake em troca de avaliação positiva. Quatro comentários com texto-modelo promocional foram excluídos (§1.5, regra 10).",
+   "decisao": "a nota média do Google não entra como medida de qualidade dos concorrentes. Nas próximas etapas, os comentários com código NOM são analisados à parte."
+  },
+  {
+   "titulo": "Salvador não tem base própria no B2",
+   "texto": "A São Jogue tem 4 comentários no recorte: dois elogios (ambiente, acervo, comida, preço e atendimento) e duas críticas ao karaokê (catálogo limitado, demora e pressão para sair no fim da reserva) e ao lanche.",
+   "decisao": "as conclusões do B2 valem para o conjunto das metrópoles. A leitura do mercado de Salvador depende do B3 e das fontes do cap. 5."
+  }
+ ]
+}

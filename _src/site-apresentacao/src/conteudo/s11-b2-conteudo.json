@@ -1,0 +1,29 @@
+{
+  "_leiaMe": "Aba 11: análise de conteúdo das avaliações do B2. Textos aqui; números em b2-conteudo.json (gerado por B2-a_conteudo_site.py, que lê também os achados do §3 de textos/instrumentos/analise_conteudo_bardin_B2.md).",
+  "intro": "Análise de conteúdo (Bardin) dos comentários com texto publicados no Google até \"3 meses atrás\" nas luderias do B1. Cada comentário foi codificado à mão por um livro de códigos com 16 categorias com polaridade e 10 códigos de contexto. O tema conta uma vez por comentário, e cada estabelecimento entra em um único tipo: casa de jogos ou loja com espaço de jogo.",
+  "temas": {
+    "titulo": "Temas mais citados",
+    "descricao": "Parte dos comentários que cita cada tema, com elogio, com crítica ou de forma mista ou neutra. O percentual ponderado dá peso igual a cada estabelecimento."
+  },
+  "criticas": {
+    "titulo": "De onde vêm as críticas",
+    "descricao": "Parte de cada tema no total de menções negativas do grupo selecionado."
+  },
+  "notas": {
+    "titulo": "Nota média com elogio e com crítica",
+    "descricao": "Nota média, no total do corpus, dos comentários que elogiam e dos que criticam cada tema. Só temas com cinco críticas ou mais. Quanto maior a distância, maior o peso do tema na nota."
+  },
+  "contexto": {
+    "titulo": "Ocasião e público citados",
+    "descricao": "Parte dos comentários com cada código de contexto, nas casas de jogos e nas lojas."
+  },
+  "achados": {
+    "titulo": "Principais achados e decisões do plano",
+    "rotuloDecisao": "Decisão do plano"
+  },
+  "estabelecimentos": {
+    "titulo": "Comentários por estabelecimento",
+    "descricao": "Comentários analisados e nota média de cada casa. Salvador em destaque."
+  },
+  "nota": "Fonte: avaliações públicas do Google Maps coletadas em outubro de 2026 (B2); codificação e livro de códigos em textos/instrumentos/analise_conteudo_bardin_B2.md. Elaboração própria."
+}

@@ -10,17 +10,51 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
    - B4, reconciliação: cada série usada no plano conferida com o portal de origem em ao menos um período e um recorte;
    - erro total da pesquisa (TSE) em uma frase com citação, não numa seção.
 
-   Antes de adotar, estudar: com zero erros, o limite superior de 95% de Wilson é 3,84 ÷ (n + 3,84), cerca de 11% com n = 30 e 3,7% com n = 100. Então 30 estabelecimentos não cumprem o critério de 5%: ou a amostra do B1 sobe para perto de 75, ou o critério muda. Falta ainda ver se a banca aceita a concordância de um codificador consigo mesmo e como estratificar uma amostra pequena (capital e faixa de volume).
+   Antes de adotar, estudar: com zero erros, o limite superior de 95% de Wilson é 3,84 ÷ (n + 3,84), cerca de 11% com n = 30 e 3,7% com n = 100. Então 30 estabelecimentos não cumprem o critério de 5%: ou a amostra do B1 sobe para perto de 75, ou o critério muda. Falta ainda ver se a banca aceita a concordância de um codificador consigo mesmo e como estratificar uma amostra pequena (capital e faixa de volume). Desde 15/10, a auditoria dos estabelecimentos também usa as 54 casas do objeto como população (11 sorteadas, limite de 25,9% com zero erros), e o mesmo dilema vale para ela. No entorno, a população tem 54 casas: nem a auditoria de todas chega às 73 que o critério de 5% exige com zero erros; decidir entre auditar as 54 e declarar o limite ou usar o item (estação, shopping) como unidade.
 2. **Hipótese do público potencial** (30 anos ou mais, casado ou com filhos, que frequentaria luderias se o ambiente, o público ou o serviço mudassem): registrar como emenda ao registro prévio ou guardar como estudo futuro (cap. 11.5)? Formulações testáveis em `docs/bibliografia/diagnostico-teorico.md` §9.
 3. **PDFs da P2 que faltam:** Kimes e Robson (2004) no eCommons (bloqueou o download automático); Graham e Harvey, Delmar e Shane, Lambrecht e Skiera (SSRN), Li e Hitt (CORE), Anderson e Magruder (eScholarship), Xia et al. (UNAL) e Novaes e Kanyat (volume da revista) têm cópia aberta, mas só pelo navegador; os demais, pelo Portal CAPES ou pela biblioteca.
 4. **Snowball do Instagram: corte k e fundamentação.** Escolher o corte k depois de classificar os candidatos (`B1_snowball_corte.csv`: menor k com precisão aceitável sem perder sensibilidade) e decidir se faz uma segunda onda com as luderias novas como sementes. Conferir antes de citar: LGPD, art. 4º, II, b e art. 7º, §4º; Resolução CNS 510/2016, art. 1º, parágrafo único; Goodman (1961) e Biernacki e Waldorf (1981) para o snowball `[AV]`. Decidir também o que fazer com @arainhadosdados, semente coletada sem ser casa aprovada (sai do build ou a casa entra nas aprovadas).
-5. **Replanejar os rascunhos atrasados** (caps. 2 e 8 e seções 5.1, 5.4 e 5.5) ou acionar o plano de corte do cronograma?
+5. **Replanejar os rascunhos atrasados** (o cap. 5 tem esboço desde 15/10; cap. 8 com rascunho desde 15/10) ou acionar o plano de corte do cronograma?
+
+6. **Bibliografia v2 (15/10/2026).** Escolher, conceito a conceito, entre a obra original dos checklists P1/P2 e o substituto de `bibliografia/bibliografia-v2/bibliografia-v2.md`; ao adotar um substituto, trocar a linha no checklist da leva para o vigia propagar. R10, R28 e R29 seguem com o original.
+
+7. **Corte de shopping de porte no entorno.** Com o `…_entorno_shoppings.csv` (área no OSM e avaliações no Maps de cada shopping a até 1000 m), escolher o critério da coluna `qt_shoppings_porte` (área ≥ 5.000 m², mínimo de avaliações, ambos ou qualquer) e, se for por avaliações, o limiar e a fonte que o sustenta.
+
+7. **Cap. 2, conferências antes da versão final:** edição, ano e página dos livros marcados `[AV]` (Dornelas, Porter, Kotler e Keller, Kim e Mauborgne, Mintzberg et al., Marcellino, Pine e Gilmore, Oldenburg, Woods, Zeithaml et al., Fitzsimmons et al., Hillier e Lieberman, Brealey et al., Damodaran, Bruni, Bruni e Famá, Casarotto e Kopittke, Pfeffer e Sutton); as edições do texto são a mais recente provável, não conferida. Baixar pelo navegador o PDF do SEBRAE (2016), que veio como HTML, e decidir se entra em 2.1. Incluir no checklist da P1/P2 os conceitos que o cap. 2 tira de obras sem ID (Kano/PRC, ERRC, PESTEL, terceiro lugar, lei de Little pelos livros da v2).
+
+8. **Análise de conteúdo do B2: segundo codificador.** Quem faz a recodificação cega dos 131 comentários da amostra (autor ou outra pessoa) e quando; até lá, as categorias seguem sem medida de confiabilidade.
+
+11. **Fonte do VLT/BRT no entorno.** O Maps não traz o BRT de Brasília (e, até a recoleta com "estação tubo", o de Curitiba); o OSM traz, mas ainda conta 4 paradas do bonde de Santa Teresa sem tag de rede. Usar o Maps, o OSM ou a maior das duas contagens no grupo VLT/BRT? Detalhe em `docs/parecer_entorno_B1.md` §7.
+
+10. **Escala de fontes do cap. 5 × P1 e N1–N6** (`docs/melhorias-texto.md`, D01): a ordem de fontes em 4 níveis decidida para o cap. 5 em 15/10 vira a P1 de `_instrucoes/1_estrutura.md` ou sai do capítulo? E que rótulo dar ao tipo de dado da P2, para não confundir com N1–N6?
+
+## Tarefas a fazer (pedidas pelo autor em 15/10/2026)
+
+- **Instagram: aprimorar o coletor e refazer a coleta destes perfis** (status no Notion "Luderias – Status da coleta", 15/10):
+  - sem seguidores: Bardo Mago (@bardo.mago), Tubaleria (@tubaleria), La Tabuleria (@latabuleria), TabuClub (@tabuclubnit) e Toca do Rato (@tocadorato_oficial); as três últimas também sem o nº total de posts. Nas coletas de 15/10 veio só o CSV de posts; o coletor deve exportar sempre o CSV de perfil junto;
+  - Bardo Mago e Tubaleria: 1 post não carregou (615 de 616 e 339 de 340), e a data do primeiro post pode ser anterior à registrada;
+  - Bravo (@bravojogos): sem a data do primeiro post;
+  - Ludus (@ludusluderia): sem o nº total de posts;
+  - LudoCafé: confirmar o perfil do bar (coletado @ludocafe_editora; a triagem aponta @ludocafebh);
+  - Dominaria: coletado @dominariacg.sp (unidade de São Paulo); a casa aprovada fica em Fortaleza (@dominariacg).
+- **Entorno: recoletar Curitiba no Maps e exportar tudo.** O OSM foi recoletado em 15/10 (12h49), íntegro, e o coletor passou à versão 2026.10.15-4 (busca "estação tubo" em Curitiba; plataformas de cada sentido, bonde de Santa Teresa e paradas sem nome fora da contagem do OSM; `versao_script` nos resumos). Recarregar o Maps, clicar em "Refazer pendentes" (as 6 casas de Curitiba) e exportar tudo. Conferir de novo (`docs/parecer_entorno_B1.md` §7) e só então levar ao resumo e ao site.
+- **Entorno: completar e testar o banco.** Acrescentar ao banco de entornos os dados do OSM e os novos critérios de filtragem de shoppings (ver o item 7 das decisões a tomar) e, em seguida, testar a integridade e a confiabilidade dos dados.
+- **Fazer as auditorias.** As amostras estão em `_dados-brutos/<pasta>/auditoria/` (scripts `*-a_auditoria_*.py`, 15/10). Entorno: seguir `textos/instrumentos/roteiro_auditoria_entorno_B1.md`, primeiro os itens do Maps e, depois da recoleta, os do OSM. A amostra do B2 saiu da base do build de 14/10 (2.218 no recorte): rodar `B2-a_auditoria_avaliacoes.py` de novo depois de refazer o build com a triagem corrigida (a chave por `review_id` mantém as já sorteadas). Falta o script que lê as conferências e calcula a taxa de erro com o intervalo de Wilson.
+- **Entorno: corrigir o que o parecer apontou** (`docs/parecer_entorno_B1.md` §5 e §7): exportar de novo o arquivo de 51 casas (sem o filtro de 50 km); `B1-b_resumo.py` escolher a coleta pela data do nome, não pela data de modificação. BRT de Curitiba e versão nos CSVs resolvidos no coletor 2026.10.15-4, à espera da recoleta.
+- **Sumarização do B2.**
+
+12. **Modelo financeiro v0, escolhas a confirmar:** cobrar couvert de todos os clientes (R14 = 100%; só 7 de 26 concorrentes com cardápio cobram), equipe de 7 CLT mais o sócio gestor, 12 mesas em 150 m² e 300 títulos. Cada uma muda o VPL e pode virar decisão no cap. 6.3 ou 7.
+13. **Cap. 8, `[conferir]`:** anexo I para alimentos e bebidas (e não anexo II por preparo próprio), CNAE secundário 9329-8/99 para o couvert e o número da lei de uso do solo de Salvador; prazo de guarda dos dados de reserva (LGPD).
 
 ## Divergências entre documentos, ainda sem correção
 
+- Divergências entre capítulos (e contra as instruções) ficam em `docs/melhorias-texto.md`, por gravidade (D01 a D18 em 15/10/2026).
 - Estilo: `_instrucoes/1_estrutura.md` P5 pede travessão e passiva sintética; a skill `meu-estilo-escrita` pede hífen e passiva analítica. Caps. 1 e 3 seguem a skill. Decidir qual vale e ajustar a outra.
 - `_instrucoes/4_metodologia.md` espera de 100 a 150 concorrentes; a triagem deu 54. Atualizar a instrução.
 - Triagem do B1 com 163 linhas para 164 candidatos (falta a Livraria Leitura Amazonas): registrar a exclusão e o motivo.
+
+
+- Sarpa (2016): capa com *Experiências de consumo com jogos de tabuleiro modernos*; resumo com *Boardgames: um estudo sobre a experiência de consumo*. Conferir no repositório da UFRJ.
 
 - Damodaran: `_instrucoes/8_financeiro.md` cita *Avaliação de investimentos* (ed. brasileira); o roteiro e o checklist da P2 citam *Investment valuation* (Wiley). Definir a edição que será lida.
 
@@ -30,21 +64,28 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 - Userscript `maps_avaliacoes`: `texto_original` vem "não" nas avaliações traduzidas (6 casos).
 - Notion "B - Comentários": as linhas digitadas à mão não têm "ID da avaliação"; depois das coletas de 14/10, 40 delas seguem sem par nas coletas (Magic Store 31, outras 1 cada), quase todas mais antigas que o recorte.
 
+- Instagram: `@ludocafe_editora` coletado para o LudoCafé (triagem: `@ludocafebh`) e `@dominariacg.sp` para a Dominaria de Fortaleza (`@dominariacg`). Sete perfis (Bodogami, Fan Hour, Bravo, Covil, Shelf, Ludoteca BGC, Cartola) vieram do coletor antigo, sem seguidores nem período.
+
 - `_instrucoes/1_estrutura.md` (3.5) fala em "metade exploratória e confirmatória", e o cronograma (semana 3) tem a tarefa "Divisão da base em parte exploratória e parte confirmatória"; a metodologia adotou a base única em 13/10.
 - `_instrucoes/1_estrutura.md` (11.5) cita "sem o recorte do último mês"; o recorte vigente é de 3 meses.
 - O cronograma ainda fala em "avaliações do último mês" (semana 2).
 
 ## Dúvidas
 
+- **Cardápios, conferir à mão:** categorias de 13 casas atribuídas por regra de palavra-chave (`B1-b_cardapios_transcricoes.py`); Cartola só tem entradas, sobremesas e drinks exportados da Takeat; TabuClub baixado e não transcrito; preços de La Tabuleria e Toca do Rato são de delivery (Saipos).
+
 - **Rascunho do cap. 3, pontos `[conferir]`:** origem das 5 luderias novas (busca manual, Instagram ou outra); data e horário efetivos das visitas de 03/10; consulta à orientação sobre a dispensa do Comitê de Ética; números do B2 depois de incluir as 5 novas. A seção 3.5 (registro prévio, extra) ficou fora, e as seguintes subiram um número.
 
-- **Entorno no Maps, três primeiras extrações (14/10):** os CSVs estão em `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/maps_entorno_*_2026-10-14*.csv` e não foram conferidos linha a linha; foram coletados antes da busca de trem. Recoletar os três estabelecimentos com a versão atual do coletor e conferir.
+- **Entorno no Maps, três primeiras extrações (14/10):** os CSVs estão em `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/entornos/maps_entorno_*_2026-10-14.csv` (um resumo e um resultados, com Ludus, Shelf e Bodogami) e não foram conferidos linha a linha; foram coletados antes da busca de trem. Recoletar os três estabelecimentos com a versão atual do coletor e conferir.
 - Perguntas abertas para a literatura (validação de avaliações online como medida de visitas, estabilidade da razão avaliações ÷ visitantes, limiar de concordância para variáveis raras, peso de comida, serviço e ambiente, taxa de desconto de negócio pequeno, termos de uso do Google Maps): `docs/bibliografia/lacunas-bibliograficas.md` §6.
 - Datas e horários das visitas: o roteiro de campo (`textos/instrumentos/roteiro_observacao_sao_jogue.md`) ainda marca 18h00 às 21h00 nas quatro visitas, e o cronograma (semana 4) chama a de 03/10 de "visita pré-teste". Confirmar se as primeiras visitas foram em 03/10 com entrada às 19h.
 
 ## Ideias futuras
 
+
 - Extensões fora do escopo atual (durações citadas nos textos, contagem em outra capital, recoleta do volume total, teste da porta falsa): `_instrucoes/4_metodologia.md`, "Extensões fora do escopo atual".
 - Simulação de Monte Carlo e testes H1–H9, se sobrar tempo (apêndices L e M).
 - Hipótese do público potencial, se não virar emenda (item 2).
 - Alinhar os valores dos CSV já gerados às regras de `_src/dicionario.md` §4.2 (`sim`/`nao` no lugar de `0`/`1` e `True`/`False`, ponto decimal nas transcrições de cardápio, rótulos de categoria com `_`) quando o script de cada um for alterado; conferir antes que nenhum script leitor dependa do formato antigo.
+
+9. **Cap. 5, lacunas do esboço:** (a) densidade de luderias por habitante: numerador pela capital da região metropolitana do endereço e denominador pelo município-sede; alinhar os recortes (população da RM) e gerar por script; (b) script para os números marcados `[script]` (PAS deflacionada pelo IPCA, receita por empresa, custos em % da receita, custo do acervo); (c) buscar Comex Stat (NCM 9504.90), dados abertos do CNPJ (CNAE 5611-2/05, sobrevivência), PNAD TIC da Bahia, legislação de Salvador sobre ruído e alvará e a fonte original do número do Sebrae; (d) renda por bairro do Censo 2022 para 5.2.1.

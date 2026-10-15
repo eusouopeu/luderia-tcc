@@ -23,6 +23,8 @@ dados/\[B1\]*/estabelecimentos/3_triagem/B1_comentarios_aprovadas_*.xlsx
 # PDFs de terceiros baixados para leitura (direitos autorais; repositório público)
 bibliografia/leituras-*/*
 !bibliografia/leituras-*/checklist-conceitos.md
+bibliografia/bibliografia-v2/pdfs/
+bibliografia/bibliografia-v2/amostras-sumarios/
 
 # Bloco B1: cardápios originais (PDF, imagens, HTML de terceiros); só a transcrição em CSV é publicada
 dados/\[B1\]*/_dados-brutos/cardapios/*
@@ -60,6 +62,7 @@ _src/extras/carregadores/
 # Bloco B2: coletas do userscript e base consolidada trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4); cobertura e fila são publicadas
 dados/\[B2\]*/_dados-brutos/coletas/
 dados/\[B2\]*/B2_avaliacoes_periodo.csv
+dados/\[B2\]*/_dados-brutos/analise_conteudo/
 
 # Cronograma: o .docx é gerado do .md quando for enviar (_src/extras/gerar_docx_cronograma.js)
 textos/planejamento/cronograma_luderia*.docx
@@ -67,3 +70,4 @@ _src/extras/logs/
 
 # Bloco B1: listas "seguindo" do Instagram e candidatos do snowball trazem @ de pessoas físicas (LGPD); só agregados e perfis de negócio são publicados
 dados/\[B1\]*/_dados-brutos/redes_sociais/
+_src/Modelo financeiro/logs/*.log

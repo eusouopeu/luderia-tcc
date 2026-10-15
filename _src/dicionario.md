@@ -11,11 +11,12 @@ Legenda: `Bn` = código do bloco de dados (B1 a B4); `<x>` = parte variável; `[
 | Bloco em `_src/` | `[Bn] <Nome>`, o mesmo nome da pasta do bloco em `dados/` | `_src/[B1] Estabelecimentos e cardapios/` |
 | Objeto dentro do bloco em `_src/` | `<Fonte> (<Objeto>)` quando a mesma fonte serve a mais de um objeto, senão só o objeto ou a fonte; maiúsculas e acento como na escrita normal | `Google Places (Negócios)`, `Google Places (Comentários)`, `Cardápios`, `CAGED` |
 | Subpastas de cada objeto | `collect/`, `build/`, `analise/` (scripts por etapa), `webscripts/` (Tampermonkey e testes), `logs/` (fora do git) e `outros/` (módulos auxiliares e arquivos de apoio). As seis existem em todo objeto; pasta vazia leva `.gitkeep` | `Cardápios/outros/tessdata/` |
-| Auxiliar comum a vários objetos do bloco | pasta `Comum/` no bloco, só com os módulos | `_src/[B4] Bases publicas/Comum/bases_comum.py` |
+| Auxiliar comum a vários objetos do bloco | pasta `Comum/` no bloco, com os módulos; script que vale para todas as fontes do bloco fica em `Comum/analise/` (log em `Comum/logs/`) | `_src/[B4] Bases publicas/Comum/bases_comum.py`, `Comum/analise/B4-a_auditoria_bases.py` |
 | Utilitários gerais | `_src/extras/` | `_src/extras/log_execucao.py` |
 | Bloco em `dados/` | `[Bn] <Objeto>`: o código e o que os dados descrevem. Uma pasta por bloco | `dados/[B2] Avaliacoes recentes/` |
 | Dados brutos | `dados/[Bn] <Objeto>/_dados-brutos/` (o `_` põe a pasta no topo da listagem); os processados ficam na raiz do bloco | `dados/[B4] Bases publicas/_dados-brutos/bcb/` |
 | Subpastas dentro dos blocos de `dados/` | minúsculas, sem acento, palavras unidas por `_` (exceção: `_dados-brutos/`) | `acervo_jogos/`, `redes_sociais/analise_legendas/` |
+| Amostras de auditoria | `auditoria/` dentro da pasta dos brutos que a amostra confere, com `<Bn>_auditoria_<objeto>.csv` e `auditoria_registro.csv` (uma linha por sorteio) | `_dados-brutos/entornos/auditoria/B1_auditoria_entorno_itens.csv` |
 | Etapas de uma seleção | número da ordem + `_` + etapa, dentro de uma pasta do objeto | `estabelecimentos/1_busca/`, `2_recorte/`, `3_triagem/` |
 | Pasta por estabelecimento | `<prefixo>_<estabelecimento>/`, agrupada em `<prefixo>_<cidade>/`. Prefixo pelo tipo de material: `rs` (redes sociais), `ca` (cardápios originais). `<estabelecimento>`: perfil do Instagram em `rs`, nome curto em `ca`; `<cidade>`: capital da região metropolitana do endereço (a mesma das tabelas do B1). Ambos em minúsculas, sem acento, com `_` | `redes_sociais/rs_sao_paulo/rs_bodogami/`, `_dados-brutos/cardapios/ca_sao_paulo/ca_cartola/` |
 | Pastas fora de uso | `arquivados/<código>-<tema>/`, com a estrutura da época | `arquivados/B5-jogos/` |

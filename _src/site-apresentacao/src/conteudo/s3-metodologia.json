@@ -1,96 +1,113 @@
 {
-  "_leiaMe": "Aba 03. 'blocos' é a unidade central da tela — cada bloco vira um cartão com fonte, N, função, critérios de amostra e instrumento de coleta.",
+  "_leiaMe": "Aba 03. 'blocos' é a unidade central da tela: cada bloco (B1 a B4) vira um cartão com fonte, tamanho, função, recorte e procedimento. Fonte: _instrucoes/4_metodologia.md e AGORA.md.",
   "ficha": [
     {
-      "rotulo": "Natureza",
-      "valor": "Descritivo-exploratória"
+      "rotulo": "Tipo de trabalho",
+      "valor": "Plano de negócios baseado em evidências"
+    },
+    {
+      "rotulo": "Natureza e objetivos",
+      "valor": "Pesquisa aplicada, descritivo-exploratória"
     },
     {
       "rotulo": "Abordagem",
-      "valor": "Quantitativa, com componente de análise de conteúdo complementar"
+      "valor": "Quantitativa, com análise de conteúdo das avaliações"
     },
     {
       "rotulo": "Delineamento",
-      "valor": "Transversal — coleta em janela concentrada de tempo"
+      "valor": "Transversal, com coleta concentrada em setembro e outubro de 2026"
     },
     {
       "rotulo": "Fontes de dados",
-      "valor": "Exclusivamente secundárias e públicas"
+      "valor": "Secundárias públicas e uma coleta primária comportamental; sem questionários"
     },
     {
-      "rotulo": "Recorte geográfico",
-      "valor": "27 capitais brasileiras"
-    },
-    {
-      "rotulo": "Unidade de análise",
-      "valor": "Jogo (A) · Estabelecimento (B) · Avaliação individual (C)"
+      "rotulo": "Praça do plano",
+      "valor": "Salvador (BA), com concorrentes das 14 metrópoles da REGIC como referência"
     }
   ],
   "blocos": {
-    "titulo": "Três blocos, ordenados do maior para o menor N",
-    "descricao": "Os blocos se articulam: A fundamenta os perfis de sucesso de jogos, B testa a associação desses perfis com o desempenho dos estabelecimentos, e C aprofunda essa associação no nível do consumidor individual.",
+    "titulo": "Quatro blocos, em ordem de relevância para o plano",
+    "descricao": "O B1 descreve a concorrência, o B2 explica o que pesa na satisfação, o B3 dá a âncora absoluta de fluxo e o B4 fornece custos, renda, tributos e taxa de desconto. Cada instrumento alimenta uma premissa ou uma decisão; instrumento que não alimenta nada sai.",
     "rotulos": {
       "fonte": "Fonte",
-      "n": "N estimado",
-      "funcao": "Função analítica",
-      "criterios": "População e critérios de amostra",
-      "instrumento": "Instrumento e procedimento de coleta"
+      "n": "Tamanho",
+      "funcao": "Uso no plano",
+      "criterios": "Recorte e critérios",
+      "instrumento": "Procedimento de coleta"
     },
     "itens": [
       {
-        "id": "A",
-        "titulo": "Bloco A — Jogos de tabuleiro",
+        "id": "B1",
+        "titulo": "B1 - Estabelecimentos e cardápios",
         "cor": "azul",
-        "fonte": "Ludopedia (API OAuth + scraping) e BoardGameGeek",
-        "n": "Alto",
-        "funcao": "Unidade quantitativa principal: engajamento, retenção, desejo e clusterização",
+        "fonte": "Google Places API; site, Instagram e cardápio de cada casa; OpenStreetMap",
+        "n": "54 luderias em 13 metrópoles; cardápio de 26",
+        "funcao": "Concorrência (5.3), preço (6.3), cardápio (6.2) e ticket médio (cap. 9)",
         "criterios": [
-          "qt_tem ≥ 100 registros de posse, para estabilidade estatística dos indicadores por razão",
-          "Jogos publicados a partir de 2010 — consolidação do mercado moderno no Brasil",
-          "Excluídos jogos sem mecânica registrada ou sem nota média disponível"
+          "Luderias, ludobares e quiz-bares com mais de 100 avaliações no Google, nas 14 capitais classificadas como metrópole pela REGIC (IBGE) e em suas regiões metropolitanas",
+          "164 candidatos da busca passam por curadoria manual; saem lojas e casas que não são luderias",
+          "Cinco casas entram pela checagem de cobertura no site acervodejogos e no Instagram",
+          "Cada casa é atribuída à metrópole pelo endereço"
         ],
-        "instrumento": "API /api/v1/jogos/{id} fornece jogadores, duração, idade mínima, mecânicas, categorias e os contadores de usuário (qt_tem, qt_teve, qt_favorito, qt_quer, qt_jogou). A raspagem de /jogo/* complementa com nota média, volume de avaliações e partidas registradas, com intervalo mínimo de 5s entre requisições, conforme o robots.txt. O BoardGameGeek acrescenta o weight de complexidade da comunidade internacional."
+        "instrumento": "A Places API fornece nota, volume de avaliações e horários. Cardápios são transcritos por categoria fixa (bebidas, entradas, pratos principais, sobremesas, couvert). O coletor de entorno conta estações e shoppings a 500 m e 1.000 m. O Instagram e o acervo publicado completam o perfil de cada casa."
       },
       {
-        "id": "B",
-        "titulo": "Bloco B — Estabelecimentos",
+        "id": "B2",
+        "titulo": "B2 - Avaliações recentes",
         "cor": "roxo",
-        "fonte": "Google Places API, redes sociais e sites próprios, nas 27 capitais",
-        "n": "70 a 90",
-        "funcao": "Unidade estratégica: desempenho comparado entre estabelecimentos",
+        "fonte": "Página pública de avaliações de cada casa no Google Maps",
+        "n": "2.218 avaliações no recorte, 1.440 com texto",
+        "funcao": "Marketing (6.1 e 6.2), operação (7.3) e premissas de ocupação e ticket (cap. 9)",
         "criterios": [
-          "Identificação combina busca estruturada via Google Places API (termos do formato cruzados com cada capital) e filtro de dois estágios: termo-chave no nome ou nas avaliações, e categoria de negócio compatível com alimentação e bebidas",
-          "O filtro de categoria exclui lojas de brinquedos, brinquedotecas e varejo correlato falsamente capturados pelo termo-chave",
-          "Candidatos aprovados no filtro automatizado passam por curadoria manual de relevância antes de compor a base final",
-          "Enumeração completa (censo) da população identificada — sem amostragem, dado o N estimado reduzido"
+          "Todas as avaliações publicadas até \"3 meses atrás\", inclusive, na data da coleta",
+          "O recorte por período descreve a operação atual e torna o número de avaliações uma medida do ritmo de cada casa",
+          "Base única: a etapa exploratória e a descritiva usam todas as avaliações coletadas",
+          "Análises agregadas ponderam por estabelecimento, para que casas movimentadas não dominem o resultado"
         ],
-        "instrumento": "Google Places API (textSearch e Place Details) fornece avaliação média, volume de avaliações, categoria de negócio, telefone, link do Google Maps e site/rede social declarado. Observação manual direta de canais públicos complementa com política de precificação (couvert, cobrança por hora ou consumo mínimo), modelo de alimentação e bebidas e, quando disponível, o acervo de jogos declarado."
+        "instrumento": "Cópia integral e automatizada do texto, da nota e da data relativa, com o autor substituído por código aleatório na própria coleta. Um dicionário gera aspectos mencionados, polaridade, tamanho do grupo, valores em R$ e jogos citados."
       },
       {
-        "id": "C",
-        "titulo": "Bloco C — Avaliações individuais",
-        "cor": "carmesim",
-        "fonte": "Google Places API — campo reviews dos estabelecimentos do Bloco B",
-        "n": "Até 5 por estabelecimento",
-        "funcao": "Elo entre A e B: análise de conteúdo e agrupamento descritivo",
+        "id": "B3",
+        "titulo": "B3 - Contagem direta de ocupação",
+        "cor": "lavanda",
+        "fonte": "Observação nas duas unidades da São Jogue (Salvador) e numeração da NFC-e",
+        "n": "4 visitas de 3 horas",
+        "funcao": "Ocupação, pessoas por mesa, giro e calibração do fluxo dos concorrentes (caps. 7 e 9)",
         "criterios": [
-          "População: avaliações públicas em português retornadas pelo campo reviews da Place Details — até 5 por estabelecimento, selecionadas pelo próprio Google como \"mais relevantes\"",
-          "Avaliações em outros idiomas são descartadas nesta fase, por o dicionário de análise de conteúdo ser específico do português",
-          "Redução em relação ao desenho original (enumeração completa / amostra de até 100 por estabelecimento), adotada porque a maioria dos estabelecimentos não acumula 100 avaliações públicas — ver Limitações"
+          "Única coleta primária: âncora absoluta de fluxo, tamanho de grupo e permanência",
+          "Primeiras visitas no sábado, 03/10/2026, com entrada às 19h; retornos no domingo, 18/10/2026, com entrada às 18h",
+          "Horários planejados para o pico de fluxo provável; a média do dia vem das notas fiscais",
+          "Observação do lado de fora, sem fotos nem registro de características individuais"
         ],
-        "instrumento": "Reaproveita, sem raspagem adicional, o campo reviews já obtido na mesma chamada de Place Details do Bloco B — texto, nota, data relativa e idioma de até 5 avaliações por estabelecimento. Identificadores pessoais do autor não são coletados nem armazenados, em conformidade com a LGPD."
+        "instrumento": "Formulário no celular registra a entrada e a saída de cada grupo e o saldo de pessoas a cada 30 minutos. O número da NFC-e no início e no fim de cada visita dá as notas emitidas durante a observação e nos 15 dias entre a primeira visita e o retorno."
+      },
+      {
+        "id": "B4",
+        "titulo": "B4 - Bases públicas",
+        "cor": "carmesim",
+        "fonte": "IBGE (Censo 2022, POF, PNAD Contínua, PAS, CONCLA), Novo CAGED, FipeZap, Simples Nacional e Banco Central",
+        "n": "Salvador e demais capitais",
+        "funcao": "Tamanho do mercado, ticket, aluguel, pessoal, tributos e taxa de desconto (caps. 5, 8 e 9)",
+        "criterios": [
+          "População e faixa etária por bairro de Salvador; renda por município",
+          "Gasto familiar com alimentação fora de casa e recreação (POF), corrigido pelo IPCA",
+          "Salário de admissão por ocupação (Novo CAGED) e aluguel comercial por m² (FipeZap)",
+          "Alíquotas do Simples Nacional; Selic e IPCA projetados (Focus)"
+        ],
+        "instrumento": "Scripts extraem as variáveis de cada base para Salvador e para as demais capitais, como comparação, e gravam tabelas com fonte e período no nome. Coleta concluída em 14/09/2026."
       }
     ]
   },
   "etica": {
     "titulo": "Garantias éticas",
     "itens": [
-      "Pesquisa baseada exclusivamente em dados secundários públicos, sem coleta direta com participantes humanos.",
-      "Raspagem do Bloco A conforme robots.txt da Ludopedia, com intervalo mínimo entre requisições.",
-      "Coleta dos Blocos B e C limitada a informações e avaliações públicas, sem identificadores pessoais do autor da avaliação — Lei nº 13.709/2018 (LGPD).",
-      "Verificado junto à orientadora: pesquisas com dados secundários públicos e anonimizados dispensam, em geral, submissão ao CEP/Plataforma Brasil (Resolução CNS nº 510/2016).",
-      "Por decisão metodológica, a pesquisa não coleta nem infere dados individuais de idade de usuários da Ludopedia ou de autores de avaliações — não há meio de acesso público a essa informação sem raspar perfis individuais."
+      "As avaliações usadas são informações de acesso público.",
+      "O nome do autor da avaliação é substituído por código aleatório na coleta; nome e link não são armazenados.",
+      "O trabalho e o repositório divulgam apenas dados processados; textos integrais não são publicados.",
+      "A contagem direta é observação agregada, feita do lado de fora de espaço comercial aberto ao público, sem fotos e sem interação com clientes. A NFC-e vem de compra do próprio autor.",
+      "Base legal: Lei nº 13.709/2018 (LGPD) e Resolução CNS nº 510/2016."
     ]
   },
-  "nota": "Fonte: Metodologia deste trabalho. Coleta e processamento concluídos nos três blocos; testes formais de hipótese em andamento."
+  "nota": "Fonte: metodologia deste trabalho (_instrucoes/4_metodologia.md). Situação da coleta em 15/10/2026: B1, B2 e B4 coletados; B3 com as visitas de retorno marcadas para 18/10."
 }

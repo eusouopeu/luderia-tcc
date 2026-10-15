@@ -2,7 +2,7 @@
   "_leiaMe": "Identificação do trabalho, abas da barra lateral e textos da moldura do site. Em cada seção: 'titulo' e 'subtitulo' aparecem na barra lateral; 'subtituloLongo' aparece no cabeçalho da aba; 'tempo' é a estimativa de fala.",
   "meta": {
     "titulo": "Luderia Casual",
-    "subtitulo": "Estudo de viabilidade de um ludobar/luderia/quiz-bar posicionado para o público casual, a partir de dados de jogos, estabelecimentos e avaliações nas 27 capitais brasileiras",
+    "subtitulo": "Plano de negócios baseado em evidências para uma luderia em Salvador, a partir de dados de concorrentes nas metrópoles brasileiras, de avaliações de clientes, de contagem direta e de bases públicas",
     "autor": "Pedro Caio Feitosa Teles",
     "curso": "Bacharelado em Administração — Escola de Administração, UFBA",
     "ano": "2026",
@@ -29,9 +29,9 @@
       "id": "estrutura",
       "n": 1,
       "titulo": "Estrutura da pesquisa",
-      "subtitulo": "Contexto, objetivos e justificativa",
+      "subtitulo": "Problema, objetivos e justificativa",
       "tempo": "1min30",
-      "subtituloLongo": "Contexto de mercado, objetivos e justificativa"
+      "subtituloLongo": "Problema, questão de pesquisa e objetivos"
     },
     {
       "id": "teorico",
@@ -39,39 +39,39 @@
       "titulo": "Quadro teórico",
       "subtitulo": "Conceitos e fontes adotadas",
       "tempo": "1min30",
-      "subtituloLongo": "Conceitos centrais e instrumental analítico"
+      "subtituloLongo": "Conceitos e ferramentas que o plano usa"
     },
     {
       "id": "metodologia",
       "n": 3,
       "titulo": "Caracterização metodológica",
-      "subtitulo": "Blocos de dados, população e coleta",
+      "subtitulo": "Blocos de dados B1 a B4",
       "tempo": "1min30",
-      "subtituloLongo": "Tipo, blocos de dados, população e instrumentos"
+      "subtituloLongo": "Tipo de trabalho, blocos de dados e coleta"
     },
     {
       "id": "indicadores",
       "n": 4,
-      "titulo": "Quadro de indicadores",
-      "subtitulo": "Do dado bruto ao indicador",
+      "titulo": "Quadro de itens",
+      "subtitulo": "Variáveis de cada instrumento",
       "tempo": "1min30",
-      "subtituloLongo": "Do dado bruto ao indicador composto, por bloco"
+      "subtituloLongo": "Itens registrados em cada instrumento de coleta"
     },
     {
       "id": "modelo",
       "n": 5,
-      "titulo": "Modelo de hipóteses",
-      "subtitulo": "Objetivo ↔ bloco ↔ hipótese ↔ técnica",
+      "titulo": "Modelo de análise",
+      "subtitulo": "Objetivo ↔ variáveis ↔ técnica",
       "tempo": "1min30",
-      "subtituloLongo": "Objetivo específico ↔ bloco ↔ hipótese ↔ técnica"
+      "subtituloLongo": "Objetivo específico ↔ variáveis ↔ itens ↔ técnica"
     },
     {
       "id": "tecnicas",
       "n": 6,
       "titulo": "Técnicas de análise",
-      "subtitulo": "Correlação, comparação, cluster, agrupamento descritivo",
+      "subtitulo": "Descritiva, PRC, calibração e sensibilidade",
       "tempo": "1min30",
-      "subtituloLongo": "Como os dados coletados viram evidência"
+      "subtituloLongo": "Como os dados coletados viram premissas"
     },
     {
       "id": "contribuicoes",
@@ -79,7 +79,47 @@
       "titulo": "Contribuições esperadas",
       "subtitulo": "Gerencial, acadêmica e social",
       "tempo": "1min",
-      "subtituloLongo": "Gerencial, acadêmica, social — e as limitações"
+      "subtituloLongo": "Gerencial, acadêmica, social e as limitações"
+    },
+    {
+      "id": "panorama",
+      "n": 8,
+      "titulo": "Panorama das luderias",
+      "subtitulo": "B1: estatística descritiva geral",
+      "tempo": "apoio",
+      "subtituloLongo": "B1: estatística descritiva das 54 luderias"
+    },
+    {
+      "id": "metropoles",
+      "n": 9,
+      "titulo": "Luderias por metrópole",
+      "subtitulo": "B1: comparação entre as 13 metrópoles",
+      "tempo": "apoio",
+      "subtituloLongo": "B1: estatística descritiva por metrópole"
+    },
+    {
+      "id": "regioes",
+      "n": 10,
+      "titulo": "Luderias por região",
+      "subtitulo": "B1: Norte, Nordeste, Centro-Oeste, Sudeste e Sul",
+      "tempo": "apoio",
+      "subtituloLongo": "B1: estatística descritiva por região do Brasil"
+    },
+    {
+      "id": "conteudo",
+      "n": 11,
+      "titulo": "Análise de conteúdo",
+      "subtitulo": "B2: o que os clientes comentam",
+      "tempo": "apoio",
+      "subtituloLongo": "B2: análise de conteúdo das avaliações recentes"
+    },
+    {
+      "id": "auditorias",
+      "n": 12,
+      "titulo": "Auditoria da coleta",
+      "subtitulo": "Amostras, critérios e cálculo",
+      "tempo": "apoio",
+      "subtituloLongo": "Auditoria dos dados coletados por script: amostras, critérios e cálculo"
     }
   ]
 }

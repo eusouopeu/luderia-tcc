@@ -1,8 +1,9 @@
 // Ponte entre os nomes de cor usados nos arquivos .json de conteúdo e os tokens
 // definidos em index.css. Nos JSON escreva apenas o nome ("azul", "roxo", …).
-// Paleta atual: só azul e rosa (mais claros que a versão anterior). Os nomes "roxo",
-// "lavanda" e "carmesim" são apelidos herdados para os três tons de rosa (médio, claro e
-// profundo) — mantidos para não obrigar a reescrever o conteúdo em src/conteudo/*.json.
+// Paleta atual: preto, cinza e branco. Os nomes "azul", "roxo", "lavanda", "rosa" e "carmesim"
+// são apelidos herdados para tons de cinza (do mais escuro ao mais claro), mantidos para não
+// obrigar a reescrever o conteúdo em src/conteudo/*.json. A cor de destaque (vermelho) fica fora
+// desta lista: é usada só nas seções, nos casos pertinentes (ver index.css).
 export const CORES = {
   azul: "var(--color-azul-800)",
   azulEscuro: "var(--color-azul-900)",

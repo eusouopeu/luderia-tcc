@@ -52,7 +52,7 @@ export default function S6Tecnicas() {
         <h2 className="mt-12 font-display text-2xl font-bold text-azul-800">{c.coleta.titulo}</h2>
         <p className="mt-1 mb-5 max-w-3xl text-sm text-azul-700/80">{c.coleta.descricao}</p>
       </Reveal>
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {c.coleta.itens.map((it, i) => (
           <Reveal key={it.bloco} delay={i * 90}>
             <Cartao className="h-full overflow-hidden p-0">

@@ -14,6 +14,11 @@ Sete seções, uma por aba da barra lateral, dimensionadas para uma apresentaç�
 | 5 | Modelo de hipóteses | 1min30 |
 | 6 | Técnicas de análise | 1min30 |
 | 7 | Contribuições esperadas | 1min |
+| 8 | Panorama das luderias (B1) | apoio |
+| 9 | Luderias por metrópole (B1) | apoio |
+| 10 | Luderias por região (B1) | apoio |
+| 11 | Análise de conteúdo (B2) | apoio |
+| 12 | Auditoria da coleta | apoio |
 
 Durante a apresentação, as setas **←** e **→** do teclado navegam entre as seções.
 
@@ -46,6 +51,23 @@ correspondente e salve; com `pnpm dev` rodando, a página recarrega sozinha.
 As cores não ficam nos `.json`: eles usam nomes (`"cor": "azul"`, `"roxo"`, `"rosa"`...) resolvidos em
 `src/tema.js`, que aponta para os tokens do `@theme` em `src/index.css` — uma paleta construída a partir
 das escalas `blue`, `purple` e `rose` do Tailwind.
+
+## Abas de resultados (08 a 10)
+
+Os números vêm de `src/conteudo/b1-estatisticas.json`, gerado por
+`_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_estatistica_descritiva.py`
+(não editar à mão). Títulos e descrições ficam em `src/conteudo/s8-b1-resultados.json`; os achados, em
+`src/conteudo/b1-achados.js`, como frases montadas sobre os números do JSON. Rodar o script de novo atualiza
+gráficos, tabelas e achados.
+
+A aba 11 lê `src/conteudo/b2-conteudo.json`, gerado por
+`_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_conteudo_site.py` a partir das tabelas
+de `dados/[B2] Avaliacoes recentes/analise_conteudo/` e dos achados do §3 de
+`textos/instrumentos/analise_conteudo_bardin_B2.md`. Rodar o script depois de refazer a análise.
+
+A aba 12 lê `src/conteudo/auditorias.json`, gerado por `_src/extras/auditorias_site.py` a partir dos
+registros de sorteio (`auditoria/auditoria_registro.csv`) de cada pasta de brutos; os textos de cada auditoria
+ficam em `src/conteudo/s12-auditorias.json`. Rodar o script depois de sortear uma amostra de novo.
 
 ## Origem do conteúdo
 

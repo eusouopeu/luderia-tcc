@@ -21,7 +21,7 @@ contra a realidade (0% de censura; capitais sem metrô retornam 0; São Paulo
 1-3 estações em 1000m; Salvador/Paralela 1, confirmado pelo autor).
 
 Resumível: cada (place_id, categoria, raio) já salvo em
-dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/B1_entorno.jsonl é pulado.
+dados/[B1] Estabelecimentos e cardapios/_dados-brutos/entornos/B1_entorno.jsonl é pulado.
 
 Uso:
     python3 src/B1-c_entorno.py
@@ -44,7 +44,7 @@ from places_client import PlacesClient
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 LOCALIZACOES_PATH = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos" / "estabelecimentos/B1_localizacoes.jsonl"
-OUT_PATH = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos" / "estabelecimentos/B1_entorno.jsonl"
+OUT_PATH = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos" / "entornos/B1_entorno.jsonl"
 
 RAIOS_M = [500, 1000]
 

@@ -9,7 +9,7 @@ no Google Maps (B1-a_instagram_snowball.py). Não é amostra probabilística.
 
 Entrada (fora do git: a lista traz @ de pessoas físicas):
   dados/[B1] Estabelecimentos e cardapios/_dados-brutos/redes_sociais/seguindo/**/
-      AAAA-MM-DD_<perfil>_instagram_seguindo.csv   (coletor do Instagram, bloco "Snowball")
+      AAAA-MM-DD_<perfil>_instagram_seguindo.csv   (webscripts/instagram_snowball.user.js)
 
 Regras:
   - unidade = par (semente, conta seguida); a mesma semente coletada em dois dias
@@ -39,7 +39,7 @@ Saídas:
       casas aprovadas ainda sem lista coletada, na ordem sugerida de coleta:
       rodízio entre capitais, começando pelas com menos sementes; dentro da
       capital, a mais seguida primeiro. O .txt (um @ por linha) vai direto para
-      "Coletar fila de seguindo" do coletor;
+      "Coletar fila" do Snowball do Instagram (instagram_snowball.user.js);
   redes_sociais/snowball/B1_snowball_grau.csv
       nº de contas por grau de entrada (fecha com o total de contas distintas);
   redes_sociais/snowball/B1_snowball_grau_aprovadas.csv

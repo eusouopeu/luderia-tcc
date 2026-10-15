@@ -35,13 +35,17 @@ contagem ingênua erra feio:
 A área vem da bounding box do polígono, que superestima footprint irregular.
 É proxy de porte, não medida de ABL, e só é usada contra um corte grosso.
 
-Saída: dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/B1_entorno_osm_ancoras.jsonl
+Saída: dados/[B1] Estabelecimentos e cardapios/_dados-brutos/entornos/B1_entorno_osm_ancoras.jsonl
        uma linha por (place_id, raio).
 
 Resumível: pares (place_id, raio) já salvos são pulados.
 
 A Overpass é um bem público mantido por doação. O cliente mantém intervalo
 entre requisições e o script faz uma consulta por par, não uma por categoria.
+
+Substituído em 15/10/2026 pela coleta OSM do painel maps_entorno.user.js
+(webscripts/), que cobre a lista atual de estabelecimentos e soma trem, VLT e
+BRT. Fica para reproduzir o B1_entorno.csv da coleta de 13/10/2026.
 
 Uso:
     python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/collect/B1-c_entorno_osm.py"
@@ -69,7 +73,7 @@ RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 CURADORIA_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria.csv"
 LOCALIZACOES_PATH = RAW / "estabelecimentos/B1_localizacoes.jsonl"
-OUT_PATH = RAW / "estabelecimentos/B1_entorno_osm_ancoras.jsonl"
+OUT_PATH = RAW / "entornos/B1_entorno_osm_ancoras.jsonl"
 
 RAIOS_M = [500, 1000]
 

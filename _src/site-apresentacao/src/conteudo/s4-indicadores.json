@@ -1,25 +1,27 @@
 {
-  "_leiaMe": "Aba 04. A ordem de 'colunas' define a ordem das colunas da tabela e deve casar com 'campos' de cada item em 'itens'.",
+  "_leiaMe": "Aba 04. Quadro 03 do projeto (itens dos instrumentos de coleta). A ordem de 'colunas' define a tabela e deve casar com os campos de cada item.",
   "introducao": {
-    "antes": "Cada indicador do Quadro 02 da metodologia nasce de variáveis brutas coletadas nos três blocos — contadores de usuário como",
+    "antes": "Como a pesquisa não usa questionários, os itens são as variáveis registradas em cada instrumento - da nota no Google ao número da nota fiscal, como",
     "exemplos": [
-      "qt_tem",
-      "qt_favorito",
-      "qt_quer"
+      "A07 preço do item",
+      "B05 valores citados",
+      "D05 NFC-e"
     ],
-    "depois": "— e se conecta a uma ou mais hipóteses do modelo de análise.",
+    "depois": "- e cada item se liga a um conceito do referencial e a uma premissa do plano.",
     "prefixoObservacao": "",
     "fim": ""
   },
   "dimensoes": [
-    "Bloco A",
-    "Bloco B",
-    "Bloco C"
+    "B1",
+    "B2",
+    "B3",
+    "B4"
   ],
   "coresDimensao": {
-    "Bloco A": "azul",
-    "Bloco B": "roxo",
-    "Bloco C": "carmesim"
+    "B1": "azul",
+    "B2": "roxo",
+    "B3": "lavanda",
+    "B4": "carmesim"
   },
   "rotuloTodas": "Todos",
   "colunas": [
@@ -28,113 +30,56 @@
       "campo": "dim"
     },
     {
-      "titulo": "Indicador",
+      "titulo": "Item",
       "campo": "indicador"
     },
     {
-      "titulo": "Definição / fórmula",
+      "titulo": "Mensuração",
       "campo": "definicao"
     },
     {
-      "titulo": "Uso analítico",
+      "titulo": "Fundamentação e uso",
       "campo": "uso"
     }
   ],
   "rotulosCartao": {
-    "definicao": "Definição",
-    "uso": "Uso analítico"
+    "definicao": "Mensuração",
+    "uso": "Fundamentação e uso"
   },
   "itens": [
-    {
-      "dim": "Bloco A",
-      "indicador": "Índice de Engajamento",
-      "definicao": "Combina os contadores de interação do jogo — posse, partidas jogadas, favoritos — num escore síntese da comunidade.",
-      "uso": "Unidade quantitativa principal; insumo da clusterização de perfis de sucesso (H5-A)"
-    },
-    {
-      "dim": "Bloco A",
-      "indicador": "Taxa de Retenção",
-      "definicao": "qt_tem / (qt_tem + qt_teve)",
-      "uso": "Insumo da clusterização de perfis de sucesso (H5-A)"
-    },
-    {
-      "dim": "Bloco A",
-      "indicador": "Índice de Desejo",
-      "definicao": "qt_quer / qt_tem",
-      "uso": "Variável dependente de H4 — decaimento do hype; insumo de H5-A"
-    },
-    {
-      "dim": "Bloco A",
-      "indicador": "Taxa de Fidelização",
-      "definicao": "qt_favorito / qt_tem",
-      "uso": "Variável dependente de H2 (mecânica cooperativa vs. competitiva) e H3 (diversidade mecânica)"
-    },
-    {
-      "dim": "Bloco A",
-      "indicador": "Diversidade Mecânica",
-      "definicao": "Número de mecânicas de jogo distintas associadas ao título.",
-      "uso": "Controle em H1; preditor ordinal de H3"
-    },
-    {
-      "dim": "Bloco A",
-      "indicador": "Amplitude de Público",
-      "definicao": "Intervalo entre o número mínimo e máximo de jogadores suportado pelo jogo.",
-      "uso": "Insumo do Índice de Acessibilidade Family/Casual"
-    },
-    {
-      "dim": "Bloco A",
-      "indicador": "Índice de Acessibilidade Family/Casual",
-      "definicao": "Proxy construído a partir de idade mínima, duração, complexidade (weight do BoardGameGeek) e tipo de mecânica.",
-      "uso": "Base da clusterização hobbyista / acessível (H5-A) e do escore de alinhamento de acervo (H7)"
-    },
-    {
-      "dim": "Bloco B",
-      "indicador": "Avaliação média",
-      "definicao": "Nota média do estabelecimento no Google Maps.",
-      "uso": "Variável dependente de H5(B), H6b e H7"
-    },
-    {
-      "dim": "Bloco B",
-      "indicador": "Volume de avaliações",
-      "definicao": "Contagem de avaliações públicas do estabelecimento no Google Maps.",
-      "uso": "Variável dependente de H6"
-    },
-    {
-      "dim": "Bloco B",
-      "indicador": "Preços praticados",
-      "definicao": "Categoria de política de precificação: couvert, cobrança por hora ou consumo mínimo.",
-      "uso": "Preditor categórico de H6"
-    },
-    {
-      "dim": "Bloco B",
-      "indicador": "Modelo de alimentação e bebidas",
-      "definicao": "Categoria: cozinha própria, parceria com food truck ou operação somente-bar.",
-      "uso": "Preditor categórico de H6b"
-    },
-    {
-      "dim": "Bloco B",
-      "indicador": "Escore de alinhamento de acervo",
-      "definicao": "Correspondência entre o acervo declarado do estabelecimento e os perfis de jogos acessíveis do Bloco A, quando o acervo é identificável em canais públicos.",
-      "uso": "Preditor de H7 (ponte A ↔ B); tratado qualitativamente quando o acervo não é identificável"
-    },
-    {
-      "dim": "Bloco C",
-      "indicador": "Menção a preço / \"caro\"",
-      "definicao": "Variável binária por análise de conteúdo — dicionário de termos-chave, com validação manual em 10% da subamostra.",
-      "uso": "Preditor de nível 1 em H8, controlando pela avaliação média do estabelecimento (nível 2)"
-    },
-    {
-      "dim": "Bloco C",
-      "indicador": "Menção a fricção de complexidade",
-      "definicao": "Variável binária — menção a dificuldade ou intimidação nas regras do jogo ou da mecânica.",
-      "uso": "Preditor de nível 1 em H9, cruzado com o perfil de acervo do estabelecimento (nível 2)"
-    },
-    {
-      "dim": "Bloco C",
-      "indicador": "Menção à ausência de fricção",
-      "definicao": "Variável binária — menção favorável, indicando acolhimento a iniciantes.",
-      "uso": "Complementa a leitura qualitativa de H9"
-    }
+    { "dim": "B1", "indicador": "A01 Avaliação média no Google", "definicao": "Escala de 1 a 5", "uso": "Cinco forças: desempenho percebido dos concorrentes" },
+    { "dim": "B1", "indicador": "A02 Volume de avaliações", "definicao": "Contagem", "uso": "Cinco forças: porte do concorrente" },
+    { "dim": "B1", "indicador": "A03 Política de cobrança", "definicao": "Categórica: couvert, por hora, consumação mínima, outra", "uso": "Composto de marketing: preço" },
+    { "dim": "B1", "indicador": "A04 Acervo declarado", "definicao": "Contagem de títulos", "uso": "Grade ERRC: posicionamento" },
+    { "dim": "B1", "indicador": "A05 Shoppings e estações no entorno", "definicao": "Contagem em 500 m e 1.000 m", "uso": "Cinco forças: praça" },
+    { "dim": "B1", "indicador": "A06 Itens do cardápio", "definicao": "Presença por categoria; contagem de itens e de itens que exigem preparo", "uso": "Grade ERRC: variedade" },
+    { "dim": "B1", "indicador": "A07 Preço de cada item", "definicao": "R$", "uso": "Composto de marketing: preço; cesta por pessoa" },
+    { "dim": "B1", "indicador": "A08 Couvert ou taxa de jogo", "definicao": "R$", "uso": "Composto de marketing: preço" },
+    { "dim": "B1", "indicador": "A09 Notas por aspecto", "definicao": "Escala de 1 a 5 para comida, ambiente e serviço", "uso": "Atributos obrigatórios e atrativos" },
+    { "dim": "B1", "indicador": "A10 Horário de funcionamento", "definicao": "Horas por semana; dias e horários", "uso": "Composto de marketing: praça" },
+    { "dim": "B1", "indicador": "A11 Endereço e tipo de ponto", "definicao": "Metrópole e bairro; shopping ou rua", "uso": "Cinco forças: praça" },
+    { "dim": "B2", "indicador": "B01 Nota da avaliação", "definicao": "Escala de 1 a 5", "uso": "Atributos obrigatórios e atrativos: satisfação" },
+    { "dim": "B2", "indicador": "B02 Aspectos mencionados", "definicao": "Binária por aspecto: ambiente, barulho, atendimento, explicação dos jogos, acervo, estado das peças, comida, bebida, preço, limpeza, conforto", "uso": "Análise de penalidade e recompensa; análise de conteúdo" },
+    { "dim": "B2", "indicador": "B03 Polaridade de cada aspecto", "definicao": "Positiva, negativa ou neutra", "uso": "Reclamações e satisfação por atributo" },
+    { "dim": "B2", "indicador": "B04 Tamanho do grupo citado", "definicao": "Número de pessoas", "uso": "Pessoas por mesa (taxa de ocupação)" },
+    { "dim": "B2", "indicador": "B05 Valores em R$ citados", "definicao": "R$; por pessoa, conta total ou item", "uso": "Ticket médio (indicadores de viabilidade)" },
+    { "dim": "B2", "indicador": "B06 Jogos citados", "definicao": "Binária por jogo", "uso": "Grade ERRC: acervo inicial" },
+    { "dim": "B2", "indicador": "B07 Data relativa e data da coleta", "definicao": "Avaliações com texto por mês", "uso": "Velocidade de avaliações, base da calibração do fluxo" },
+    { "dim": "B3", "indicador": "D01 Entrada e saída de cada grupo", "definicao": "Horário e pessoas; observação censurada sinalizada", "uso": "Fluxo e permanência; giro de mesa" },
+    { "dim": "B3", "indicador": "D02 Saldo de pessoas no interior", "definicao": "Contagem a cada 30 minutos", "uso": "Taxa de ocupação" },
+    { "dim": "B3", "indicador": "D03 Tamanho de cada grupo", "definicao": "Número de pessoas", "uso": "Pessoas por mesa" },
+    { "dim": "B3", "indicador": "D04 Mesas disponíveis e ocupadas", "definicao": "Contagem única (disponíveis) e a cada 30 minutos (ocupadas)", "uso": "Capacidade e ocupação" },
+    { "dim": "B3", "indicador": "D05 Número da NFC-e", "definicao": "Número sequencial no início e no fim da visita", "uso": "Transações: notas por dia e pessoas por nota" },
+    { "dim": "B3", "indicador": "D06 Unidade, data e horário", "definicao": "Categórica; horário", "uso": "Estrato da visita" },
+    { "dim": "B3", "indicador": "D07 Cobrança e preços na data", "definicao": "R$", "uso": "Preço efetivo" },
+    { "dim": "B4", "indicador": "E01 População por bairro e município", "definicao": "Pessoas", "uso": "Tamanho do mercado; escolha do bairro" },
+    { "dim": "B4", "indicador": "E02 Renda média", "definicao": "R$ por mês", "uso": "Poder de compra" },
+    { "dim": "B4", "indicador": "E03 Gasto com alimentação fora de casa e recreação", "definicao": "R$ por mês por família", "uso": "Checagem do ticket médio" },
+    { "dim": "B4", "indicador": "E04 Receita, custos e pessoal em alimentação", "definicao": "R$; pessoas", "uso": "Benchmark setorial de margem e pessoal" },
+    { "dim": "B4", "indicador": "E05 Remuneração por ocupação", "definicao": "R$ por mês", "uso": "Custo de pessoal" },
+    { "dim": "B4", "indicador": "E06 Aluguel comercial", "definicao": "R$/m² por mês", "uso": "Custo fixo" },
+    { "dim": "B4", "indicador": "E07 Simples Nacional e CNAE", "definicao": "% da receita; código", "uso": "Tributos" },
+    { "dim": "B4", "indicador": "E08 Selic e IPCA projetados", "definicao": "% ao ano", "uso": "Taxa de desconto e inflação do modelo" }
   ],
-  "nota": "Quadro 02 da metodologia deste trabalho. As variáveis binárias do Bloco C derivam de análise de conteúdo (BARDIN, 2011)."
+  "nota": "Quadro 03 do projeto de pesquisa. Os itens F01 e F02 (jogos da Ludopedia) saíram com o arquivamento do bloco de jogos em 12/10/2026: o acervo inicial vem dos jogos citados (B06) e do acervo declarado dos concorrentes (A04)."
 }

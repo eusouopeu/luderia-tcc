@@ -1,0 +1,408 @@
+{
+ "_leiaMe": "Gerado por _src/extras/auditorias_site.py. Não editar à mão.",
+ "criterio_pct": 5.0,
+ "z": 1.96,
+ "n_minimo_zero_erros": 73,
+ "curva_wilson_zero": [
+  {
+   "n": 5,
+   "limite": 43.45
+  },
+  {
+   "n": 10,
+   "limite": 27.75
+  },
+  {
+   "n": 15,
+   "limite": 20.39
+  },
+  {
+   "n": 20,
+   "limite": 16.11
+  },
+  {
+   "n": 25,
+   "limite": 13.32
+  },
+  {
+   "n": 30,
+   "limite": 11.35
+  },
+  {
+   "n": 35,
+   "limite": 9.89
+  },
+  {
+   "n": 40,
+   "limite": 8.76
+  },
+  {
+   "n": 45,
+   "limite": 7.87
+  },
+  {
+   "n": 50,
+   "limite": 7.14
+  },
+  {
+   "n": 55,
+   "limite": 6.53
+  },
+  {
+   "n": 60,
+   "limite": 6.02
+  },
+  {
+   "n": 65,
+   "limite": 5.58
+  },
+  {
+   "n": 70,
+   "limite": 5.2
+  },
+  {
+   "n": 75,
+   "limite": 4.87
+  },
+  {
+   "n": 80,
+   "limite": 4.58
+  },
+  {
+   "n": 85,
+   "limite": 4.32
+  },
+  {
+   "n": 90,
+   "limite": 4.09
+  },
+  {
+   "n": 95,
+   "limite": 3.89
+  },
+  {
+   "n": 100,
+   "limite": 3.7
+  },
+  {
+   "n": 105,
+   "limite": 3.53
+  },
+  {
+   "n": 110,
+   "limite": 3.37
+  },
+  {
+   "n": 115,
+   "limite": 3.23
+  },
+  {
+   "n": 120,
+   "limite": 3.1
+  },
+  {
+   "n": 125,
+   "limite": 2.98
+  },
+  {
+   "n": 130,
+   "limite": 2.87
+  },
+  {
+   "n": 135,
+   "limite": 2.77
+  },
+  {
+   "n": 140,
+   "limite": 2.67
+  },
+  {
+   "n": 145,
+   "limite": 2.58
+  },
+  {
+   "n": 150,
+   "limite": 2.5
+  },
+  {
+   "n": 155,
+   "limite": 2.42
+  },
+  {
+   "n": 160,
+   "limite": 2.34
+  },
+  {
+   "n": 165,
+   "limite": 2.28
+  },
+  {
+   "n": 170,
+   "limite": 2.21
+  },
+  {
+   "n": 175,
+   "limite": 2.15
+  },
+  {
+   "n": 180,
+   "limite": 2.09
+  },
+  {
+   "n": 185,
+   "limite": 2.03
+  },
+  {
+   "n": 190,
+   "limite": 1.98
+  },
+  {
+   "n": 195,
+   "limite": 1.93
+  },
+  {
+   "n": 200,
+   "limite": 1.88
+  },
+  {
+   "n": 205,
+   "limite": 1.84
+  },
+  {
+   "n": 210,
+   "limite": 1.8
+  },
+  {
+   "n": 215,
+   "limite": 1.76
+  },
+  {
+   "n": 220,
+   "limite": 1.72
+  },
+  {
+   "n": 225,
+   "limite": 1.68
+  },
+  {
+   "n": 230,
+   "limite": 1.64
+  },
+  {
+   "n": 235,
+   "limite": 1.61
+  },
+  {
+   "n": 240,
+   "limite": 1.58
+  },
+  {
+   "n": 245,
+   "limite": 1.54
+  },
+  {
+   "n": 250,
+   "limite": 1.51
+  }
+ ],
+ "amostras": {
+  "estabelecimentos": {
+   "n": 11,
+   "populacao": 54,
+   "pct_populacao": 20.4,
+   "wilson_zero": 25.9,
+   "max_erros": null,
+   "wilson_max_erros": null,
+   "unidade": "estabelecimento",
+   "gerado_em": "2026-10-15 12:13",
+   "semente": "20261015",
+   "desenho": "20% estratificado por capital e faixa de volume, maiores restos",
+   "alocacao": {
+    "estratos": 9,
+    "min": 1,
+    "max": 2
+   }
+  },
+  "entorno_casas": {
+   "n": 11,
+   "populacao": 54,
+   "pct_populacao": 20.4,
+   "wilson_zero": 25.9,
+   "max_erros": null,
+   "wilson_max_erros": null,
+   "unidade": "estabelecimento",
+   "gerado_em": "2026-10-15 12:00",
+   "semente": "20261015",
+   "desenho": "20% da fila, estratificado por capital, maiores restos",
+   "alocacao": {
+    "estratos": 8,
+    "min": 1,
+    "max": 4
+   }
+  },
+  "entorno_itens": {
+   "n": 61,
+   "populacao": 61,
+   "pct_populacao": 100.0,
+   "wilson_zero": 5.9,
+   "max_erros": null,
+   "wilson_max_erros": null,
+   "unidade": "item a até 1000 m",
+   "gerado_em": "2026-10-15 12:00",
+   "semente": "20261015",
+   "desenho": "todos os itens contados a até 1000 m nos estabelecimentos sorteados + estação mais próxima",
+   "alocacao": null
+  },
+  "instagram_perfis": {
+   "n": 47,
+   "populacao": 47,
+   "pct_populacao": 100.0,
+   "wilson_zero": 7.6,
+   "max_erros": null,
+   "wilson_max_erros": null,
+   "unidade": "perfil",
+   "gerado_em": "2026-10-15 12:00",
+   "semente": null,
+   "desenho": "todos os perfis (exaustivo)",
+   "alocacao": {
+    "estratos": 1,
+    "min": 47,
+    "max": 47
+   }
+  },
+  "instagram_posts": {
+   "n": 200,
+   "populacao": 60809,
+   "pct_populacao": 0.3,
+   "wilson_zero": 1.9,
+   "max_erros": 3,
+   "wilson_max_erros": 4.3,
+   "unidade": "post",
+   "gerado_em": "2026-10-15 12:00",
+   "semente": "20261015",
+   "desenho": "200 posts, estrato = perfil, mínimo 3, maiores restos",
+   "alocacao": {
+    "estratos": 56,
+    "min": 3,
+    "max": 6
+   }
+  },
+  "cardapios": {
+   "n": 200,
+   "populacao": 1825,
+   "pct_populacao": 11.0,
+   "wilson_zero": 1.9,
+   "max_erros": 3,
+   "wilson_max_erros": 4.3,
+   "unidade": "item com preço",
+   "gerado_em": "2026-10-15 12:00",
+   "semente": "20261015",
+   "desenho": "200 itens com preço, estrato = casa, mínimo 3, maiores restos",
+   "alocacao": {
+    "estratos": 26,
+    "min": 4,
+    "max": 14
+   }
+  },
+  "acervos": {
+   "n": 200,
+   "populacao": 8736,
+   "pct_populacao": 2.3,
+   "wilson_zero": 1.9,
+   "max_erros": 3,
+   "wilson_max_erros": 4.3,
+   "unidade": "jogo",
+   "gerado_em": "2026-10-15 12:00",
+   "semente": "20261015",
+   "desenho": "200 jogos, estrato = estabelecimento, mínimo 3, maiores restos",
+   "alocacao": {
+    "estratos": 16,
+    "min": 6,
+    "max": 27
+   }
+  },
+  "avaliacoes": {
+   "n": 200,
+   "populacao": 1440,
+   "pct_populacao": 13.9,
+   "wilson_zero": 1.9,
+   "max_erros": 3,
+   "wilson_max_erros": 4.3,
+   "unidade": "avaliação com texto",
+   "gerado_em": "2026-10-15 12:00",
+   "semente": "20261015",
+   "desenho": "200 avaliações com texto do recorte, estrato = estabelecimento, mínimo 3, maiores restos",
+   "alocacao": {
+    "estratos": 48,
+    "min": 1,
+    "max": 23
+   }
+  },
+  "completude": {
+   "n": 49,
+   "populacao": 49,
+   "pct_populacao": 100.0,
+   "wilson_zero": 7.3,
+   "max_erros": null,
+   "wilson_max_erros": null,
+   "unidade": "estabelecimento",
+   "gerado_em": "2026-10-15 12:00",
+   "semente": null,
+   "desenho": "todos os estabelecimentos (exaustivo)",
+   "alocacao": {
+    "estratos": 1,
+    "min": 49,
+    "max": 49
+   }
+  },
+  "bases": {
+   "n": 170,
+   "populacao": 170,
+   "pct_populacao": 100.0,
+   "wilson_zero": 2.2,
+   "max_erros": 2,
+   "wilson_max_erros": 4.2,
+   "unidade": "série",
+   "desenho": "uma linha sorteada por série (reconciliação exaustiva)",
+   "fontes": [
+    {
+     "fonte": "bcb",
+     "arquivos": 3,
+     "series": 13
+    },
+    {
+     "fonte": "caged",
+     "arquivos": 3,
+     "series": 3
+    },
+    {
+     "fonte": "concla",
+     "arquivos": 1,
+     "series": 1
+    },
+    {
+     "fonte": "fipezap",
+     "arquivos": 2,
+     "series": 2
+    },
+    {
+     "fonte": "ibge_censo_2022",
+     "arquivos": 4,
+     "series": 6
+    },
+    {
+     "fonte": "ibge_sidra",
+     "arquivos": 12,
+     "series": 135
+    },
+    {
+     "fonte": "legislacao",
+     "arquivos": 2,
+     "series": 10
+    }
+   ],
+   "arquivos": 27,
+   "semente": "20261015"
+  }
+ }
+}

@@ -1,79 +1,86 @@
 {
-  "_leiaMe": "Aba 06. 'tecnicas' são as cinco técnicas descritas na metodologia. 'coleta' descreve o estado de execução por bloco.",
+  "_leiaMe": "Aba 06. 'tecnicas' são os cinco grupos de técnicas da metodologia (§3.6); 'coleta' descreve a situação de cada bloco. Estágio 'Não iniciada' pinta a etiqueta de cinza.",
   "tecnicas": [
     {
-      "nome": "Correlação e regressão",
-      "resumo": "Testa as hipóteses do Bloco A relativas a variáveis contínuas.",
+      "nome": "Estatística descritiva dos concorrentes",
+      "resumo": "Descreve o mercado nas 14 metrópoles, com Salvador em destaque.",
       "detalhes": [
-        "H1 — regressão linear múltipla: qt_jogou como variável dependente, idade mínima e duração como preditores, controlando pela Diversidade Mecânica.",
-        "H3 — correlação de Spearman entre Diversidade Mecânica e Taxa de Fidelização, dada a natureza ordinal da primeira variável.",
-        "H4 — regressão: Índice de Desejo como variável dependente, tempo desde a publicação como preditor.",
-        "H7 (onde o acervo é identificável) — correlação de Spearman entre escore de alinhamento de acervo e avaliação média."
+        "Média, mediana, desvio padrão, quartis e amplitude de nota, volume, horários, entorno, Instagram e preços, para o conjunto e por metrópole e região (abas 08 a 10).",
+        "Cesta por pessoa: couvert + uma bebida + uma entrada ou prato, em três níveis (percentil 25, mediana e percentil 75 de cada categoria do cardápio).",
+        "Cada casa conta em um único grupo, pelo endereço; toda tabela agregada fecha com o total.",
+        "Base para as cinco forças e a PESTEL do capítulo 5."
       ]
     },
     {
-      "nome": "Comparação entre grupos",
-      "resumo": "Testa H2, H5(B) e H6/H6b.",
+      "nome": "Análise de conteúdo e PRC",
+      "resumo": "Transforma as avaliações do B2 em atributos de satisfação.",
       "detalhes": [
-        "H2 — ANCOVA: Taxa de Fidelização entre jogos de mecânica cooperativa e competitiva, controlando pelas demais variáveis do modelo.",
-        "H5(B) — Kruskal-Wallis: avaliação média do Google Maps entre Salvador e as demais capitais, não paramétrico dado o N reduzido do Bloco B.",
-        "H6 e H6b — Kruskal-Wallis: volume de avaliações e avaliação média entre categorias de política de precificação e de modelo de alimentação e bebidas."
+        "Dicionário de termos por aspecto (ambiente, atendimento, explicação dos jogos, acervo, comida, preço...), com tratamento de negações e ambiguidades.",
+        "Validação em 200 avaliações codificadas duas vezes: kappa e F1 iguais ou superiores a 0,70 por variável. Variável reprovada é reportada como exploratória.",
+        "Análise de penalidade e recompensa, ponderada por estabelecimento: separa atributos obrigatórios de atrativos e alimenta a grade ERRC.",
+        "Ranking de reclamações com intervalo de confiança, total e por estabelecimento."
       ]
     },
     {
-      "nome": "Clusterização",
-      "resumo": "Opera em dois níveis sobre o Bloco A.",
+      "nome": "Calibração da ocupação",
+      "resumo": "Converte avaliações em visitantes, a partir da contagem na São Jogue.",
       "detalhes": [
-        "Nível do jogo: agrupa os títulos por Índice de Engajamento, Taxa de Retenção e Índice de Desejo, testando H5(A) e identificando perfis de sucesso sem depender da nota média.",
-        "Índice de Acessibilidade Family/Casual: gera um segundo agrupamento, classificando os jogos entre o perfil hobbyista e o perfil acessível.",
-        "Esse segundo agrupamento fundamenta o escore de alinhamento de acervo usado no Bloco B (H7)."
+        "Visitantes por semana na São Jogue por dois caminhos: notas fiscais emitidas em 15 dias × pessoas por nota, e pessoas por hora observadas × horas de funcionamento.",
+        "Razão de calibração: avaliações com texto por semana ÷ visitantes por semana estimados.",
+        "Fluxo dos demais concorrentes: velocidade de avaliações ÷ razão de calibração, sempre em faixa.",
+        "A lei de Little liga fluxo, permanência e pessoas no salão e dá consistência à contagem."
       ]
     },
     {
-      "nome": "Agrupamento descritivo",
-      "resumo": "Particiona o Bloco C em três agrupamentos independentes, testa H8' e H9'.",
+      "nome": "Modelo financeiro",
+      "resumo": "Projeta o negócio a partir de premissas rastreáveis.",
       "detalhes": [
-        "Três agrupamentos por regra do IQR: por nota média do estabelecimento e por volume de avaliações (maiores/menores/outliers); por nota individual da avaliação, com corte fixo por estrelas ao estilo NPS (5 = promotor, 4 = neutro, 1-3 = detrator).",
-        "H8' — compara, entre promotor/neutro/detrator, a proporção de avaliações que mencionam preço, cruzada com o agrupamento por nota média do estabelecimento — teste exato de Fisher.",
-        "H9' — compara a proporção de menções a fricção de complexidade entre promotor/neutro/detrator, cruzada com o perfil de acervo do estabelecimento (hobbyista ou acessível) — teste exato de Fisher.",
-        "H7 (onde o acervo não é identificável) — tratada qualitativamente, por estudo de caso descritivo.",
-        "Substitui, nesta fase da pesquisa, a modelagem multinível originalmente prevista para H8 e H9, reservada para uma eventual expansão em que o Bloco C seja ampliado por raspagem."
+        "Registro de premissas: cada valor com faixa pessimista, provável e otimista, fonte e nível de evidência (N1-N6).",
+        "Triangulação das premissas críticas: ticket pela cesta de cardápio, pelos valores citados e pela POF; ocupação pela contagem, pelas notas fiscais e pelas avaliações.",
+        "DRE e fluxo de caixa projetados; VPL, TIR, payback descontado e ponto de equilíbrio em visitantes por semana.",
+        "Taxa mínima de atratividade a partir da Selic e do IPCA projetados (Focus)."
       ]
     },
     {
-      "nome": "Análise de conteúdo",
-      "resumo": "Gera as variáveis binárias do Bloco C.",
+      "nome": "Sensibilidade e cenários",
+      "resumo": "Responde sob quais condições o negócio se sustenta.",
       "detalhes": [
-        "Bardin (2011): pré-análise, exploração do material e tratamento dos resultados.",
-        "Dicionário de termos-chave orienta a codificação automatizada inicial das menções a preço e a fricção de complexidade.",
-        "Validação manual em subamostra de 10% das avaliações codificadas, para checagem de consistência.",
-        "Complementa a interpretação dos agrupamentos descritivos com exemplos ilustrativos de cada padrão identificado."
+        "Gráfico de tornado: varia uma premissa por vez e ordena as premissas pelo efeito no VPL.",
+        "Ponto de ruptura: o valor de cada premissa crítica que zera o VPL, como mínimo de ocupação e de ticket.",
+        "Três cenários (pessimista, provável e otimista), matriz SWOT e matriz de riscos no capítulo 10.",
+        "Monte Carlo e testes de hipótese do registro prévio são extras, só se sobrar tempo, em apêndice."
       ]
     }
   ],
   "coleta": {
-    "titulo": "Estado da coleta, por bloco",
-    "descricao": "Coleta e processamento concluídos nos três blocos. Correlação e clusterização já rodadas nos Blocos A e C; os testes formais de comparação entre grupos (Bloco B) e o cruzamento de agrupamentos com teste de Fisher (Bloco C) seguem em andamento.",
+    "titulo": "Situação da coleta, por bloco",
+    "descricao": "Situação em 15/10/2026. A coleta termina com as visitas de retorno da contagem direta, em 18/10; a análise segue o cronograma até a versão final, em 16/11/2026.",
     "itens": [
       {
-        "bloco": "Bloco A — Jogos",
+        "bloco": "B1 - Estabelecimentos e cardápios",
         "cor": "azul",
-        "estagio": "Coleta e análise concluídas",
-        "texto": "Coleta via API OAuth da Ludopedia, raspagem complementar e enriquecimento pelo weight de complexidade do BoardGameGeek concluídos. Correlações (Pearson e Spearman) e clusterização de perfis de sucesso já processadas."
+        "estagio": "Coletado; estatística descritiva pronta",
+        "texto": "54 luderias em 13 metrópoles, com nota, volume e horários de todas. Cardápio transcrito em 26, acervo em 17 e Instagram completo em 45. Falta completar o porte de shopping no entorno e refazer 9 perfis do Instagram."
       },
       {
-        "bloco": "Bloco B — Estabelecimentos",
+        "bloco": "B2 - Avaliações recentes",
         "cor": "roxo",
-        "estagio": "Curadoria em andamento",
-        "texto": "Identificação de candidatos via Google Places API nas 27 capitais concluída; curadoria manual da planilha de estabelecimentos, para confirmar relevância e descartar falsos positivos, em andamento."
+        "estagio": "Coletado",
+        "texto": "2.218 avaliações no recorte de \"3 meses atrás\", 1.440 com texto, das 54 casas. Próximos passos: validar o dicionário de codificação e rodar a análise de penalidade e recompensa."
       },
       {
-        "bloco": "Bloco C — Avaliações",
+        "bloco": "B3 - Contagem direta",
+        "cor": "lavanda",
+        "estagio": "Em campo",
+        "texto": "Primeiras visitas nas duas unidades da São Jogue em 03/10. As visitas de retorno, com a segunda leitura da NFC-e, estão marcadas para domingo, 18/10."
+      },
+      {
+        "bloco": "B4 - Bases públicas",
         "cor": "carmesim",
-        "estagio": "Coleta e análise concluídas",
-        "texto": "Avaliações reaproveitadas do campo reviews do Bloco B, filtradas por idioma e analisadas. Clusterização e correlações já processadas; codificação por análise de conteúdo e agrupamentos descritivos (H8', H9') em validação."
+        "estagio": "Coletado",
+        "texto": "IBGE, Novo CAGED, FipeZap, Simples Nacional e Banco Central extraídos em 14/09/2026, para Salvador e para as demais capitais."
       }
     ]
   },
-  "nota": "Nível de significância adotado em toda a pesquisa: p < 0,05. Fonte: Metodologia deste trabalho — seção Técnicas de análise."
+  "nota": "Fonte: metodologia deste trabalho, §3.6 (técnicas por área do plano) e §3.4 (tratamento dos dados); situação da coleta em 15/10/2026."
 }

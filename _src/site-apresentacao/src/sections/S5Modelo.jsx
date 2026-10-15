@@ -20,7 +20,7 @@ export default function S5Modelo() {
       </Reveal>
 
       {/* Seletor de objetivos */}
-      <div className="mt-7 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+      <div className="mt-7 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
         {c.objetivos.map((m, i) => {
           const ativo = sel === i;
           return (
@@ -96,7 +96,7 @@ export default function S5Modelo() {
                 key={m.oe}
                 onClick={() => setSel(i)}
                 className={`cursor-pointer transition-colors ${
-                  sel === i ? "bg-lavanda-100" : i % 2 ? "bg-papel-100" : "bg-white"
+                  sel === i ? "bg-lavanda-200" : i % 2 ? "bg-papel-100" : "bg-white"
                 } hover:bg-lavanda-100`}
               >
                 <td className="px-4 py-3 align-top font-display font-bold whitespace-nowrap" style={{ color: corBloco(m.bloco) }}>

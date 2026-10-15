@@ -1,0 +1,81 @@
+{
+  "_leiaMe": "Abas 08 a 10: estatística descritiva do B1. Títulos, descrições e notas ficam aqui; os números vêm de b1-estatisticas.json e os achados de b1-achados.js.",
+  "fonte": "Fontes: Google Places API (09/2026 e 15/10/2026), coletor de entorno no Google Maps (15/10/2026, distâncias em linha reta), Instagram (posts de 01/09 a 01/10/2026), cardápios publicados pelas casas e B2 (avaliações até \"3 meses atrás\"). Elaboração própria.",
+  "panorama": {
+    "intro": "Estatística descritiva das 54 luderias com mais de 100 avaliações no Google nas metrópoles da REGIC. Cada casa conta uma vez. Os valores servem de referência de mercado para preço, horário e localização da luderia de Salvador.",
+    "achados": "O que os dados mostram",
+    "dias": {
+      "titulo": "Casas abertas por dia da semana",
+      "descricao": "Proporção das 54 casas com expediente em cada dia."
+    },
+    "abertura": {
+      "titulo": "Horário de abertura mais cedo",
+      "descricao": "Nº de casas pela hora em que abrem no dia de abertura mais cedo da semana."
+    },
+    "fechamento": {
+      "titulo": "Horário de fechamento mais tarde",
+      "descricao": "Nº de casas pela hora em que fecham no dia de fechamento mais tarde da semana."
+    },
+    "cestas": {
+      "titulo": "Cesta por pessoa, casa a casa",
+      "descricao": "Faixa entre a cesta baixa (P25) e a alta (P75) das casas com bebida e entrada ou prato no cardápio. Casa sem couvert entra com couvert R$ 0,00. A linha marca a mediana da cesta mediana dessas casas. Toque numa barra para ver os três níveis."
+    },
+    "histCesta": {
+      "titulo": "Distribuição da cesta mediana",
+      "descricao": "Nº de casas por faixa de R$ 20,00."
+    },
+    "google": {
+      "titulo": "Nota × volume de avaliações no Google",
+      "descricao": "Cada ponto é uma casa; eixo horizontal em escala logarítmica."
+    },
+    "instagram": {
+      "titulo": "Seguidores × interações por post",
+      "descricao": "Interações = curtidas + comentários por post de 01/09 a 01/10/2026. Os dois eixos em escala logarítmica. LudoCafé e Dominaria ficam de fora: o perfil coletado não é o da casa."
+    },
+    "tabela": {
+      "titulo": "Estatística descritiva por variável",
+      "descricao": "n = casas com o dado. DP = desvio padrão amostral. CV = coeficiente de variação (DP ÷ média). Quartis pelo método inclusivo."
+    },
+    "nota": "Cardápio transcrito em 26 das 54 casas, acervo em 17 e Instagram com seguidores em 47. Os quartis e medianas de grupos pequenos descrevem as casas do grupo, e não o mercado."
+  },
+  "metropoles": {
+    "intro": "As mesmas variáveis, agrupadas pela metrópole do endereço de cada casa (capital da região metropolitana). A soma das casas por metrópole fecha com o total de 54.",
+    "achados": "O que muda entre metrópoles",
+    "casas": {
+      "titulo": "Casas por metrópole",
+      "descricao": "Nº de luderias com mais de 100 avaliações no Google. Salvador em destaque."
+    },
+    "cesta": {
+      "titulo": "Cesta mediana por metrópole",
+      "descricao": "Mediana da cesta mediana das casas com cardápio; o rótulo traz o nº de casas com cardápio."
+    },
+    "seguidores": {
+      "titulo": "Seguidores no Instagram por metrópole",
+      "descricao": "Mediana de seguidores das casas de cada metrópole."
+    },
+    "tabela": {
+      "titulo": "Painel por metrópole",
+      "descricao": "Medianas, salvo indicação. Proporções sobre as casas da metrópole."
+    }
+  },
+  "regioes": {
+    "intro": "As 13 metrópoles agrupadas pela região do Brasil da sua capital (IBGE). A soma das casas por região fecha com o total de 54.",
+    "achados": "O que muda entre regiões",
+    "casas": {
+      "titulo": "Casas por região",
+      "descricao": "Nº de luderias e participação no total."
+    },
+    "cesta": {
+      "titulo": "Cesta mediana por região",
+      "descricao": "Barra: da menor à maior cesta mediana da região. Ponto: mediana. O Nordeste não tem cardápio transcrito."
+    },
+    "operacao": {
+      "titulo": "Domingo, segunda e metrô por região",
+      "descricao": "Proporção das casas da região que abrem no domingo, que abrem na segunda e que têm estação de metrô a até 1 km."
+    },
+    "tabela": {
+      "titulo": "Painel por região",
+      "descricao": "Medianas, salvo indicação. Proporções sobre as casas da região."
+    }
+  }
+}

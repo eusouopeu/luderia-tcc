@@ -48,6 +48,15 @@ Arquivo: [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md) (forma
 
 Exceção: as notas de estudo em `docs/notas/` (skill `/traduza` ou `==termo==`) não entram no registro; entram só no commit de fim de sessão.
 
+## Melhorias do texto
+
+**TODA VEZ** que um capítulo for gerado, ou que o autor implementar ou pedir aprimoramento de um capítulo já escrito, analisar esse capítulo junto com os demais de `textos/capitulos/` (e as regras de `_instrucoes/`) e atualizar [docs/melhorias-texto.md](docs/melhorias-texto.md), no mesmo commit:
+
+- **# Divergências** (`## Grave`, `## Média`, `## Aceitável`): informações, citações ou uso de técnicas, modelos e métodos que divergem entre capítulos ou contra as instruções.
+- **# Cortes em potencial** (`## Alto ganho`, `## Médio ganho`, `## Baixo ganho`): trechos que podem sair sem perder qualidade, profundidade ou clareza (repetidos em vários pontos, ou que perderam importância no todo do trabalho).
+
+Item resolvido sai do arquivo. Listar uma divergência não autoriza corrigi-la no capítulo sem pedido do autor.
+
 ## Fim de sessão
 
 Antes do commit, atualizar:

@@ -41,7 +41,7 @@ RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 CURADORIA_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria.csv"
 LOCALIZACOES_PATH = RAW / "estabelecimentos/B1_localizacoes.jsonl"
-ENTORNO_PATH = RAW / "estabelecimentos/B1_entorno_osm_ancoras.jsonl"
+ENTORNO_PATH = RAW / "entornos/B1_entorno_osm_ancoras.jsonl"
 OUT_PATH = PROCESSED / "entorno/B1_entorno.csv"
 
 RAIOS_M = [500, 1000]

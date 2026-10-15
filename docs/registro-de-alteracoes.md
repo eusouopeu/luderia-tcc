@@ -740,6 +740,84 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Efeitos colaterais**: infla levemente a precisão e a sensibilidade por corte; decidir se a semente sai do build ou se a casa entra nas aprovadas.
 
 
+### 01:52
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` (2026.10.14-2 → 2026.10.15-1) e `maps_entorno.test.cjs`
+**Antes**: na fila das 51 casas de 15/10, a estação mais próxima em Curitiba saía a 653–669 km (BRT do Rio e de Salvador que o Maps põe na lista quando a área se esgota) e o metrô dispensado de Curitiba ganhava distância; as 109 estações-tubo de Curitiba caíam em "outro" (qt_estacoes_vlt_brt zero em todas as 6 casas); "Futura estação Rua do Grito (BRT ABC)" contava como BRT a 526 m da Arena BG; a sede do Metrô-DF ("Companhia ferroviária") contava como estação de trem a 767 m da Asgard; "Trensurb Estação Rodoviária" ia para metrô; 16 cartões tinham a nota no lugar da categoria; a Overpass falhou em 22 das 51 casas e o porte do shopping saiu em branco com situação "ok".
+**Depois**: resultado a mais de 50 km fica no CSV de resultados com `fora_da_regiao = sim` e sai das distâncias do resumo (695 resultados); estação-tubo → vlt_brt; futura estação, em obras ou desativada → outro; companhia ou empresa ferroviária não é trem; nome Trensurb, CPTM ou SuperVia vale sobre a categoria; categoria do cartão ignora nota e preço; Overpass com dois espelhos e pausa; fim da fila repete as consultas ao OSM antes do CSV; porte em branco aparece como "porte sem OSM" na situação. Reprocessando os resultados de 15/10: Curitiba passa a 170–1.998 m da estação mais próxima, com 1 a 3 estações-tubo a 1.000 m em 4 casas; Arena BG e Asgard perdem a estação inexistente.
+**Justificativa**: conferência dos resultados da fila de 15/10 pedida pelo autor. A classificação é refeita na exportação, então "Exportar CSVs" com a versão nova corrige o que já está guardado sem recoletar.
+
+### 02:32
+**Objeto**: `bibliografia/bibliografia-v2/` (novo: `bibliografia-v2.md`, `procurar-manualmente.md`, `pdfs/` e `amostras-sumarios/`, os dois últimos fora do git) e `.gitignore`
+**Antes**: os conceitos dos checklists P1 e P2 dependiam de cerca de 40 artigos internacionais, quase todos sem leitura e vários sem acesso aberto.
+**Depois**: tabela de substituição conceito a conceito por livros-texto consagrados ou artigos e dissertações de universidades brasileiras (USP, UFRJ, PUC-Rio, FGV, Mackenzie, UFABC), com aderência e local do conceito; 10 PDFs baixados com a página conferida no texto (ex.: Sampaio e Lycarião p. 89–92; Frezatti et al. p. 6 e 12; Picolo e Tontini p. 42–45 e 50–51); capítulo provável dos livros (sumário conferido para Fitzsimmons, Hillier e Lieberman e Colosimo e Giolo; os demais inferidos); lista priorizada de 22 obras para buscar à mão. R10, R28 e R29 ficam sem substituto. Os checklists e a lista de leitura não mudaram.
+**Justificativa**: pedido do autor de uma segunda versão da bibliografia com fontes nacionais ou livros-texto e de baixar o que estiver disponível.
+
+### 03:35
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Instagram/webscripts/instagram_coletor.user.js` (versão 2026.10.15-2)
+**Antes**: "Rolar até o fim ao abrir um perfil" guardado ligado no navegador; "Dados do perfil" sempre visível; bloco "Snowball" fechado ao abrir o painel.
+**Depois**: rolagem ao abrir um perfil desligada (preferência em chave nova, `igc-rolar-ao-abrir-v2`, que começa desligada; a caixa continua no painel) e nunca disparada com a fila de sementes ativa; "Dados do perfil" vira bloco recolhível, fechado ao abrir; "Snowball" abre expandido.
+**Justificativa**: pedido do autor; a rolagem automática atrasava a fila de sementes, que abre um perfil por vez.
+
+### 07:19
+**Objeto**: `textos/capitulos/2_referencial_teorico.md` (novo)
+**Antes**: cap. 2 não iniciado (prazo do rascunho em 25/09).
+**Depois**: rascunho com as seções 2.1 a 2.6 de `_instrucoes/2_ref-teorico.md`, cerca de 2.700 palavras e um quadro (cerca de 8,3 páginas, teto 10), com referências da bibliografia v2. Páginas conferidas nos PDFs: Figueiredo (2020, p. 31–32), Tontini e Theiss (2005, p. 35–36), Picolo e Tontini (2008, p. 42–45, 50–51 e 56), Sarpa (2016, p. 39–46), Figueiredo e Mantovani (2022, p. 4, 5 e 12), Vasconcellos (2016, p. 45–47), Frezatti et al. (2012, p. 12 e 18). Livros da v2 citados com `[AV]` (edição, ano e página a conferir); obras originais mantidas com `[AV-<ID>]` (Assaf Neto, KAM Insight, Asakura et al.). Fora da v2, vindas da lista de leitura: Kim e Mauborgne, Marcellino, Oldenburg, Woods e Gilovich et al. Canvas não entrou (não é usado no cap. 6).
+**Justificativa**: pedido do autor de escrever o referencial teórico com as instruções, o teto de páginas e a bibliografia v2.
+
+### 07:19 (divergência)
+**Objeto**: `bibliografia/bibliografia-v2/pdfs/SEBRAE - Sobrevivencia das empresas no Brasil (2016).pdf`
+**Antes**: `bibliografia-v2.md` e o registro de 02:32 contam o arquivo entre os PDFs baixados.
+**Depois**: o arquivo é uma página HTML, não um PDF (o `pdftotext` não o lê); `procurar-manualmente.md` já dizia que o site bloqueou o download.
+**Efeitos colaterais**: SEBRAE (2016) não entrou no cap. 2; baixar o PDF pelo navegador.
+
+### 07:19 (divergência)
+**Objeto**: título da dissertação de Sarpa (2016)
+**Antes**: capa e folha de rosto: *Experiências de consumo com jogos de tabuleiro modernos* (usado na v2 e no cap. 2).
+**Depois**: o resumo (p. 6) traz *Boardgames: um estudo sobre a experiência de consumo*.
+**Efeitos colaterais**: conferir o título no repositório da UFRJ antes da versão final.
+
+### 09:27
+**Objeto**: Notion, banco "Luderias – Status da coleta"
+**Antes**: 49 linhas (aprovadas do B1); "Acervo de jogos", "Google maps (...)", "O que ainda falta?" e "Como proceder..." vazias; status de cardápio, entorno e Instagram preenchidos antes dos exports de 15/10 (ex.: entorno "Não coletado" em 44 casas; Fan Hour com cardápio "completa" sem preços).
+**Depois**: 54 linhas, com as 5 casas vindas do acervodejogos (Bardo Mago, La Tabuleria, TabuClub, Toca do Rato, Tubaleria). Status recalculados a partir dos arquivos do B1: cardápio 26 completa / 18 parcial / 10 não coletado; acervo 16 / 13 / 25; entorno 26 / 28 / 0 (export do Maps de 15/10, 6 campos; parcial = sem porte de shopping, distância a estação de outra cidade ou só no export de 14/10); Instagram 36 / 9 / 9; Google Maps "parcial" em todas (endereço, nota e volume coletados; horários não). As duas colunas de texto trazem, por casa, a lacuna e o script ou passo para fechá-la. Critério do Instagram: grade com até 7 posts a menos que o declarado conta como primeiro post coletado.
+**Justificativa**: pedido do autor de atualizar o banco com as casas novas, os status e as lacunas de coleta com recomendação.
+
+### 09:27 (divergência)
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx`, coluna `avaliacao_media`
+**Antes**: nota média numérica (curadoria do B1).
+**Depois**: células gravadas como data (4,6 → 2026-06-04).
+**Efeitos colaterais**: qualquer leitura da nota a partir desse xlsx sai errada; usar a curadoria em CSV até corrigir.
+
+### 09:56
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/build/B1-b_triagem_manual.py` e `estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx`
+**Antes**: `avaliacao_media` copiada da planilha anotada à mão, onde o Excel gravou notas decimais como data (4,6 → 04/06/2026).
+**Depois**: nota lida da curadoria em CSV (`B1_curadoria_metro_f_av100.csv`) pelo place_id, com recurso de desfazer a data (dia + mês/10) para quem não tiver par; 163 de 163 vieram do CSV. Nota das 51 aprovadas entre 4,2 e 5,0; demais colunas iguais às da versão anterior.
+**Justificativa**: pedido do autor de corrigir a nota gravada como data.
+
+### 09:56
+**Objeto**: `B1-c_details.py` (modo `--horarios`), `outros/places_client.py`, `build/B1-b_horarios.py` (novo), `estabelecimentos/B1_horarios.csv` (novo)
+**Antes**: nenhum horário de funcionamento coletado.
+**Depois**: `regularOpeningHours` coletado pela Places API para as 56 casas (51 aprovadas e 5 novas; 56 chamadas no SKU Place Details Enterprise, o mesmo de nota e volume, conferido na documentação do Google em 15/10). Tabela com as 54 casas do estudo: turnos por dia, dias abertos, horas por semana, abertura mais cedo e fechamento mais tarde; 54 com horário, soma = total.
+**Justificativa**: pedido do autor de fechar a lacuna de horários do Google Maps.
+
+### 09:56
+**Objeto**: `Cardápios/build/B1-b_cardapios_transcricoes.py` (novo), `_dados-brutos/cardapios/transcricao/` (16 CSVs novos), `B1-b_cardapios_planilha.py`, `cardapios/B1_cardapios_itens_precos.xlsx`
+**Antes**: planilha com 11 casas (939 linhas); prints de 9 casas, cardápios digitais de 3, Cartola e OCR de 3 casas fora dela.
+**Depois**: 27 casas e 1.887 linhas (1.825 com preço). Prints, digitais e Cartola convertidos por regra de categoria (802 linhas; item repetido em fotos de datas diferentes fica na mais recente; jogos à venda e avisos fora; couvert lúdico dos prints de práticas incluído). Alçapão, Café Geek e Fortalúdica transcritos à mão das imagens/PDF (o OCR não servia). TabuClub entra nas fontes como "não extraído". Conferências de soma do resumo passaram.
+**Justificativa**: pedido do autor de incluir na planilha consolidada os cardápios extraídos fora dela.
+
+### 09:56
+**Objeto**: Notion, banco "Luderias – Status da coleta"
+**Antes**: Google Maps "Coleta parcial" nas 54 casas; 16 linhas com "Cardápio: ... fora do B1_cardapios_itens_precos.xlsx".
+**Depois**: Google Maps "Coleta completa" nas 54; linhas de horários e de cardápio fora do xlsx retiradas de "O que ainda falta?" e "Como proceder..."; Ludoteca Sidequest, Arena BG, Castelos e Comdado sem lacuna ("Nada: todas as fontes completas"); Cartola ganhou a lacuna das seções não exportadas da Takeat.
+**Justificativa**: refletir a coleta de horários e a consolidação dos cardápios.
+
+### 10:08
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Instagram/webscripts/instagram_snowball.user.js` (novo, versão 2026.10.15-1), `instagram_coletor.user.js` (versão 2026.10.15-3) e testes (`instagram_snowball.test.cjs`, `instagram_coletor.test.cjs`)
+**Antes**: snowball dentro do coletor do Instagram. A fila de "seguindo" pulava as sementes sem abrir a lista (o link era procurado só pelo `href` exato `/<perfil>/following/`); "Parar" só valia na memória da página, e a fila, salva como ativa, voltava a rodar a cada recarga; o campo da fila era reescrito com a fila salva a cada carga, e não havia como apagá-la.
+**Depois**: snowball num userscript próprio, com painel à esquerda do coletor e armazenamento próprio (IndexedDB `igs-snowball`), que na primeira carga copia as listas, os ids e a fila do coletor (a fila entra parada). A lista é aberta pelo link (relativo, absoluto ou com parâmetros), pelo contador "seguindo" do cabeçalho ou, uma vez por semente, pelo endereço `/<perfil>/following/`; sem lista na tela, a página rola. "Parar" grava a fila como parada na hora, inclusive durante a troca de perfil; "Limpar fila" apaga a fila salva; o campo só recebe a fila salva quando está vazio. CSV com o mesmo nome e as mesmas colunas. O coletor perdeu o bloco do snowball e só lê a fila do outro script para não rolar sozinho durante ela. 21 testes passam.
+**Justificativa**: pedido do autor de corrigir a fila de "seguindo" (não abria a lista, não parava, não deixava apagar a fila) e de separar o snowball do coletor.
+
 ### 10:23
 **Objeto**: `textos/capitulos/3_metodologia_plano_luderia.md` (novo)
 **Antes**: capítulo 3 não iniciado.
@@ -763,3 +841,233 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: P5 pede travessão (—) para aposto e voz passiva sintética ("adotou-se").
 **Depois**: a skill pede hífen com espaços ("-"), nunca travessão, e prefere a passiva analítica ("foi adotado"); o cap. 1 segue a skill.
 **Efeitos colaterais**: o rascunho do cap. 3 segue o cap. 1 e a skill (hífen; voz ativa, passiva analítica quando preciso); se valer a P5, os dois capítulos mudam juntos.
+
+### 10:34
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` (versão 2026.10.15-2) e `maps_entorno.test.cjs`
+**Antes**: painel com uma fila só do Google Maps; "Buscar áreas OSM que faltam" consultava a Overpass só para os estabelecimentos guardados com shopping do Maps a até 1000 m e sem resposta do OSM (não para os 55, nem para um só), e só trazia `shop=mall`; porte de shopping por um critério de cada vez (OSM, Abrasce ou avaliações); "Coletar fila" e "Exportar" sem dizer quantos estabelecimentos iam buscar ou exportar.
+**Depois**: painel em quatro passos sobre uma lista guardada (a população): 1. lista; 2. Google Maps ("Coletar no Maps os N que faltam", "Refazer N pendentes"); 3. OpenStreetMap ("Coletar no OSM os N que faltam", "Refazer OSM de todos"), uma consulta à Overpass por estabelecimento com estações de metrô, trem, VLT, BRT e tubo (até 2 km), shoppings com área, parques e praias (até 1.200 m); 4. "Exportar 5 CSVs": resumo e resultados do Maps, resumo e resultados do OSM e tabela de shoppings com área no OSM e avaliações no Maps na mesma linha (casamento espacial; dois cadastros no mesmo polígono contam uma vez). Critério de porte com "ambos" e "qualquer" além de OSM, avaliações e Abrasce; colunas `qt_shoppings_porte_osm_*` e `_aval_*` sempre presentes. Estabelecimento da lista sem coleta sai com linha e situação "não coletado". Espelho da Mail.ru na lista da Overpass (a principal respondia 406/429 em 15/10). A fila do Maps não consulta mais a Overpass. 24 testes passam.
+**Justificativa**: pedido do autor de deixar claro o que cada botão faz, refazer o entorno no OSM com a população atual (ex.: Bardo Mago) e com VLT, BRT e trem, e ter área e avaliações dos shoppings juntas para filtrar o ruído.
+
+### 10:34
+**Objeto**: `build/B1-b_entorno_maps_fila.py`, `entorno/B1_entorno_maps_fila.csv`
+**Antes**: a fila tirava quem já tinha `maps_entorno_resumo_*.csv` em `_dados-brutos/estabelecimentos/` (51 de 54).
+**Depois**: a lista traz o objeto inteiro (54 casas; soma = total); o coletor pula, em cada fonte, quem já está guardado.
+**Justificativa**: a mesma lista serve às duas coletas; o controle do que falta passou para o painel.
+
+### 10:34
+**Objeto**: `collect/B1-c_entorno_osm.py`, `collect/B1-c_entorno.py`, `build/B1-b_entorno.py`
+**Antes**: liam e gravavam `B1_entorno_osm_ancoras.jsonl` e `B1_entorno.jsonl` em `_dados-brutos/estabelecimentos/`.
+**Depois**: caminhos em `_dados-brutos/entornos/`, para onde o autor moveu os arquivos de entorno; `B1-c_entorno_osm.py` marcado como substituído pela coleta OSM do painel.
+**Justificativa**: os scripts quebravam depois da mudança de pasta.
+
+### 10:39
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/redes_sociais/` (8 coletas novas de posts do Instagram)
+**Antes**: arquivos soltos na raiz da pasta, no nome do export do coletor (`instagram_posts_<perfil>_2026-10-15.csv`).
+**Depois**: movidos para `rs_<cidade>/rs_<perfil>/2026-10-15_<perfil>_instagram_posts.csv` (Bardo Mago e La Tabuleria em BH; BoardZ em Curitiba; Encounter e Tubaleria em SP; Luderia Carioca e TabuClub no Rio; Toca do Rato em Porto Alegre). Conferência: sem shortcode repetido, data igual ao `taken_at`, curtidas e comentários preenchidos em todos os posts do período, `pagina_coleta` do próprio perfil (1 colaboração da Tubaleria lida na página da Arena BG). Ressalvas: só o CSV de posts, sem o de perfil (seguidores e nº de posts declarado); Bardo Mago (615 de 616) e Tubaleria (339 de 340) com 1 post não carregado, o que deixa a data do primeiro post incerta.
+**Justificativa**: pedido do autor de conferir as coletas e lançá-las no Notion; nome e pasta seguem a convenção de `CLAUDE.md`.
+
+### 10:39
+**Objeto**: Notion, bancos "A - Estabelecimentos" e "Luderias – Status da coleta"
+**Antes**: no "A", Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria sem dados de Instagram; BoardZ, Encounter e Luderia Carioca sem curtidas. No status, as 8 casas com Instagram "Não coletado".
+**Depois**: no "A", nº de posts, curtidas e comentários de 01/09 a 01/10/2026 (inclusive, contando colaborações compartilhadas, como nas linhas já preenchidas de Luderia Carioca, BoardZ e Encounter) e data do primeiro post das 8 casas; nº de posts total de Bardo Mago (616) e Tubaleria (340), declarado pelo Instagram na coleta. No status, Instagram "Coleta completa" para BoardZ, Encounter e Luderia Carioca (seguidores e total já estavam no "A") e "Coleta parcial" para as outras 5, com a lacuna e o modo de completar.
+**Justificativa**: pedido do autor de lançar as coletas novas e atualizar o status.
+
+### 10:39 (divergência)
+**Objeto**: Notion "A - Estabelecimentos" × status da coleta e arquivos `*_instagram_perfis.csv`
+**Antes**: o status de Instagram (15/10, 09:27) foi calculado só pelos arquivos do repositório; os perfis do coletor contam no período só os posts de que o perfil é dono.
+**Depois**: o "A" já tinha seguidores e totais de BoardZ, Encounter e Luderia Carioca (marcadas "Não coletado" no status); 30 casas do "A" estão sem curtidas do período; nº de posts e comentários do "A" ora contam colaborações compartilhadas (Cineplay, CCG, Omniverse, Dungeon, XPlace), ora não (Play Easy e as que batem com o CSV de perfis).
+**Efeitos colaterais**: o status de Instagram das outras 46 casas pode estar errado nos dois sentidos; uma regra única de contagem precisa ser escolhida antes de usar esses números no cap. 6.
+
+### 10:46
+**Objeto**: Notion "A - Estabelecimentos" (Instagram, período 01/09 a 01/10/2026) e "Luderias – Status da coleta" (coluna Instagram)
+**Antes**: 30 casas sem curtidas do período; nº de posts e comentários ora com, ora sem colaborações compartilhadas; Covil com o Linktree no campo Instagram; status de Instagram calculado pelos arquivos do repositório.
+**Depois**: nº de posts, curtidas e comentários das 54 casas recalculados pelos CSVs de posts com a regra do painel do coletor: posts próprios e colaborações que aparecem na grade do perfil, um por shortcode, de 01/09 a 01/10 inclusive (posts sem coluna `vinculo`, do export antigo da Ludus, ficam de fora porque o arquivo novo cobre o período). 29 casas mudaram: 26 só ganharam curtidas; Comdado (3/11 → 2/4 posts/comentários), Ludus (158 → 92 comentários), Paladins (3/1 → 1/3, colunas trocadas) e Play Easy (15/38 → 16/42) mudaram também posts ou comentários. Instagram da Covil corrigido para @covilgb. Status refeito pelos sete campos do "A": 45 completas, 8 parciais (Bardo Mago, Tubaleria, La Tabuleria, TabuClub e Toca do Rato sem seguidores; Bravo sem data do primeiro post; Ludus sem total; LudoCafé com perfil a confirmar) e Dominaria "Não coletado" (perfil da unidade errada).
+**Justificativa**: pedido do autor de uniformizar a regra de contagem com colaborações compartilhadas, preencher as curtidas e refazer o status pelo banco "A".
+
+### 10:53
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/build/B1-b_resumo.py` (novo), `estabelecimentos/B1_resumo_estabelecimentos.xlsx` (novo) e `redes_sociais/B1_instagram_resumo_notion.csv` (novo)
+**Antes**: dados do B1 espalhados por triagem, horários, entorno, Instagram (Notion), cardápios, acervos e B2.
+**Depois**: planilha-resumo com uma linha por casa (54): Google Maps, horários, entorno (export mais recente do coletor; distância a estação de outra cidade vazia), Instagram (retrato do Notion "A" de 15/10, salvo em CSV), cesta por pessoa (couvert + bebida + entrada ou prato, P25/mediana/P75, em fórmulas; 26 casas com preços), acervo (17 casas com lista) e avaliações do B2 (49 casas, 2.218 no recorte). Abas: estabelecimentos, cesta, por_capital (fórmulas; total 54, conferência 0) e dicionario. 353 fórmulas, nenhum erro no recálculo.
+**Justificativa**: pedido do autor de uma planilha que resuma os dados do B1 coletados até agora.
+
+### 10:58
+**Objeto**: `docs/pendencias.md`, seção nova "Tarefas a fazer (pedidas pelo autor em 15/10/2026)"
+**Antes**: sem as tarefas abaixo.
+**Depois**: refazer a coleta do Instagram de 9 perfis (lacunas de seguidores, total, primeiro post e perfil errado) com o coletor aprimorado; completar o banco de entornos com OSM e o novo critério de shopping e testá-lo; scripts de amostragem de auditoria por conjunto de dados; roteiro .md da auditoria do entorno (linha reta, como o coletor, ou trajeto); sumarização do B1 com parecer sobre o script de entornos; sumarização do B2.
+**Justificativa**: pedido do autor.
+
+### 11:14
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_estatistica_descritiva.py` (novo), `estabelecimentos/4_estatistica_descritiva/B1_estatistica_descritiva_geral.xlsx` e `…_por_grupo.xlsx` (novos)
+**Antes**: o B1 só tinha a planilha-resumo com uma linha por casa (`B1_resumo_estabelecimentos.xlsx`), sem estatísticas do conjunto.
+**Depois**: estatística descritiva de 35 variáveis e 10 proporções das 54 casas (n, média, mediana, desvio padrão amostral, mínimo, quartis, máximo, amplitude e coeficiente de variação), em fórmulas sobre a aba dados. Arquivo geral com abas geral, frequencias (casas por região e por metrópole: total 54, conferência 0), dados e dicionario; arquivo por grupo com painel e detalhe por metrópole (13) e por região do Brasil (5, IBGE pela UF da capital). Regras: Instagram de LudoCafé e Dominaria vazio (perfil coletado não é o da casa); couvert só nas casas que cobram; shoppings de porte só onde o porte foi buscado. 447 e 4.722 fórmulas, nenhum erro no recálculo; valores conferidos contra o pandas sem divergência.
+**Justificativa**: pedido do autor de uma sumarização com médias, medianas, amplitudes e desvios do conjunto, e de outra por metrópole e por região.
+
+### 11:14 (site)
+**Objeto**: `_src/site-apresentacao/` (abas 08 a 10, `src/sections/S8Panorama.jsx`, `S9Metropoles.jsx`, `S10Regioes.jsx`, `src/components/graficos.jsx`, `src/formato.js`, `src/conteudo/b1-estatisticas.json`, `b1-achados.js`, `s8-b1-resultados.json`, `site.json`, `App.jsx`)
+**Antes**: sete abas, sem resultados de dados.
+**Depois**: três abas novas com a estatística descritiva do B1: panorama geral (indicadores, achados, dias e horários de funcionamento, cesta casa a casa, nota × volume, seguidores × interações e tabela por variável), por metrópole e por região (achados, gráficos e painel). Os números vêm do JSON gerado pelo script acima, e os achados são frases montadas sobre esses números. Build e lint sem erro; conferido no navegador em desktop e celular. Não publicado no GitHub Pages.
+**Justificativa**: pedido do autor de páginas com as sumarizações e os gráficos dos achados mais pertinentes.
+
+### 11:16
+**Objeto**: site de apresentação no GitHub Pages (https://eusouopeu.github.io/luderia-tcc/, branch `gh-pages`)
+**Antes**: site publicado com as sete abas de 01/09/2026.
+**Depois**: publicadas as abas 08 a 10 (estatística descritiva do B1: panorama, por metrópole e por região) com `pnpm run deploy`; conferido no endereço público, sem erro no console.
+**Justificativa**: pedido do autor.
+
+### 11:16
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/maps_entorno_resultados_2026-10-14.csv` e `maps_entorno_resumo_2026-10-14.csv`; cópias `(1)` removidas; `docs/pendencias.md`
+**Antes**: dois pares de CSVs do entorno de 14/10 (sem sufixo e com `(1)`). Os sem sufixo tinham Ludus e Shelf (499 linhas em resultados, 2 em resumo); os `(1)`, exportação cumulativa do coletor, tinham os mesmos e mais Bodogami (787 e 3 linhas). Todas as linhas dos sem sufixo estão nos `(1)` (conferido linha a linha, diferença zero). O `B1-b_entorno_maps_fila.py` lê `maps_entorno_resumo_*.csv` e via os dois resumos.
+**Depois**: um arquivo por tipo, com o conteúdo do `(1)` sob o nome sem sufixo; nenhuma linha perdida. A raiz do repositório já estava limpa desde o PR #4.
+**Justificativa**: pedido do autor de organizar os CSVs do entorno e resolver as duplicatas.
+
+### 11:26
+**Objeto**: `_src/site-apresentacao/src/conteudo/` (`s1-estrutura.json` a `s7-contribuicoes.json`, `site.json`) e grades de `S3Metodologia.jsx`, `S5Modelo.jsx` e `S6Tecnicas.jsx`
+**Antes**: abas 01 a 07 com o desenho anterior: luderia para o público casual, blocos A (jogos da Ludopedia), B (estabelecimentos nas 27 capitais) e C (5 avaliações por casa), hipóteses H1-H9 e seis objetivos.
+**Depois**: conteúdo do desenho atual: plano de negócios baseado em evidências para Salvador; questão de pesquisa, objetivo geral e sete objetivos da introdução; conceitos do rascunho do cap. 2 em quatro grupos; blocos B1 a B4 com recorte, tamanho e procedimento da metodologia; Quadro 03 de itens (A01-E08); modelo de análise por objetivo (Quadros 04 e 05), com H1, H3 e H5 como extras; técnicas por área do plano e situação da coleta em 15/10; contribuições, limitações da §3.9 e próximos passos do cronograma. Abas 04 e 05 renomeadas para "Quadro de itens" e "Modelo de análise", como no projeto. Build e lint sem erro; conferido no navegador.
+**Justificativa**: pedido do autor de atualizar as abas 01 a 07 com as informações vigentes de `textos/planejamento`, `docs` e `_instrucoes`.
+
+### 11:29
+**Objeto**: site de apresentação no GitHub Pages (https://eusouopeu.github.io/luderia-tcc/, branch `gh-pages`)
+**Antes**: abas 01 a 07 publicadas com o desenho anterior (público casual, blocos A a C).
+**Depois**: publicadas as abas 01 a 07 atualizadas (commit 475bb95) com `pnpm run deploy`; conferido no endereço público, sem erro no console.
+**Justificativa**: pedido do autor.
+
+### 11:45
+**Objeto**: `_src/site-apresentacao/src/sections/S8Panorama.jsx` e `src/components/graficos.jsx` (componente `Pilulas`)
+**Antes**: cartões do panorama só com medianas; tabelas por variável sempre com as 11 colunas.
+**Depois**: seletor em pílulas nos cartões (média, padrão, ou mediana) e em cada grupo da tabela (simplificado, padrão, com n, média, mediana, DP e CV; ou completo, com mínimo, quartis, máximo e amplitude). Conferido no navegador, sem erro no console.
+**Justificativa**: pedido do autor.
+
+### 11:45 (divergência)
+**Objeto**: `_dados-brutos/entornos/2026-10-15_54_estabelecimentos_entorno_osm_*.csv` e `…_entorno_shoppings.csv` (coletor `maps_entorno.user.js`, versão 2026.10.15-2)
+**Antes**: coleta do Maps (51 + 3 casas) com metrô e shoppings lidos no próprio Maps.
+**Depois**: a coleta do OSM das 54 casas tem os 479 elementos como nós (`node/`), nenhum `way` ou `relation`; nenhum shopping tem área, então `qt_shoppings_area_min_*` dá 0 em todas as casas e o porte dá "não" nos 182 shoppings. Estações mapeadas como área ficam de fora: Eucaliptos, Moema, Campo Belo, Higienópolis-Mackenzie e Paulista aparecem no Maps a 555-820 m e não aparecem no OSM, e 9 casas de São Paulo divergem no nº de estações a 1.000 m. Na planilha de shoppings, um mesmo nó do OSM foi ligado a três shoppings do Maps (RED jogos) e a três (Ludus). Causa provável: a consulta termina em `out tags center bb`, e o filtro da linha 546 descarta elementos sem `center` (ways e relations voltam só com `bounds`). Contagens e distâncias do resumo batem com o arquivo de resultados, e as coordenadas batem com as do Maps.
+**Efeitos colaterais**: os dados do OSM não entram no site nem no resumo do B1 até a correção do coletor e uma nova coleta no OSM; o site segue com o entorno do Maps.
+
+### 11:51
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` (2026.10.15-2 → 2026.10.15-3) e `maps_entorno.test.cjs`
+**Antes**: a consulta à Overpass terminava em `out tags center bb`, que devolve ways e relations só com `bounds`, sem `center` (conferido na overpass-api.de em 15/10); o filtro exigia `center` e descartava todo polígono. Um nó `shop=mall` podia casar com vários shoppings do Maps a até 200 m, e os seguintes viravam "mesmo polígono" e saíam da contagem.
+**Depois**: consulta em `out tags bb`; o ponto de way e relation é o centro da caixa (`centroOsm`), e os polígonos voltam com área. Nó sem polígono casa com um único shopping do Maps: primeiro o de nome igual (reservado antes), depois o mais próximo ainda livre; "mesmo polígono" só vale para polígono. Dois testes novos; 26 testes passando.
+**Justificativa**: pedido do autor de corrigir o coletor do OSM antes de coletar de novo.
+
+### 11:58
+**Objeto**: análise de conteúdo do B2 - `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_conteudo_bardin.py`, `dados/[B2] Avaliacoes recentes/analise_conteudo/` (`B2_codificacao_bardin.csv`, `B2_bardin_*.csv`, novos `B2_bardin_arquivos_coleta.csv` e `B2_bardin_nota_por_categoria.csv`), `textos/instrumentos/analise_conteudo_bardin_B2.md` e `.gitignore`
+**Antes**: codificação de 10/10 sobre a base do Notion "B - Comentários (manual)": 589 comentários (575 analisados, 48 estabelecimentos), janelas diferentes entre lotes (planilha até "1 mês", formulário até "3 meses"), ids do Notion, siglas com Machado Games e Ilusões Industriais e sem as 5 casas novas; achados do §3 sobre 390 comentários de casas de jogos.
+**Depois**: o script monta o corpus direto das coletas (`--corpus`): um arquivo por estabelecimento, o mais completo (mais comentários com texto no recorte; 10 arquivos repetidos descartados), só avaliações até "3 meses atrás". Corpus de 1.593 comentários de 53 casas (texto em `_dados-brutos/analise_conteudo/`, fora do git), recodificados um a um pelo mesmo livro de códigos, com `id_avaliacao` (SHA-1 do `review_id`). 1.588 analisados (1.370 em 31 casas de jogos, 218 em 22 lojas); excluídos 1 fora do tema e 4 textos-modelo promocionais (regra 10 nova). Somas por tipo e corpus × arquivos fecham com diferença zero. Amostra de controle refeita: 131 comentários (alvo 128), semente 20261015. Instrumento reescrito (§0, §1, §2.1 e §3): preço passa a ser a maior fonte de crítica nas casas (16% das negativas), seguido de atendimento (15%), comida (15%), capacidade (11%) e tempo de serviço (11%, achado novo); São Jogue com só 4 comentários.
+**Justificativa**: pedido do autor de refazer a análise de Bardin com as amostras atualizadas, usando só o arquivo de extração mais completo de cada estabelecimento e só os comentários até "3 meses atrás".
+
+### 11:58 (divergência)
+**Objeto**: contagem do B2 em `AGORA.md` e `B2_avaliacoes_periodo.csv` (build `B2-b_avaliacoes.py`, 14/10 17:50) × corpus da análise de conteúdo (15/10) × Notion "B - Comentários"
+**Antes**: 2.218 avaliações no recorte e 1.440 com texto (build, sobre as 51 aprovadas do B1, juntando as coletas por `review_id` e mantendo a linha mais recente); Notion com 1.628 linhas.
+**Depois**: 2.423 avaliações no recorte e 1.593 com texto nos arquivos mais completos das 54 casas do `B1_resumo_estabelecimentos.xlsx`.
+**Efeitos colaterais**: os números do B2 citados fora da análise de conteúdo seguem a base do build até ela ser refeita com a triagem corrigida (próximo passo 1 do AGORA). A diferença vem do conjunto de casas (5 novas dentro, Machado e Ilusões fora) e da regra de escolha dos arquivos.
+
+### 12:00
+**Objeto**: `_src/site-apresentacao/src/sections/S8Panorama.jsx`, `src/conteudo/s8-b1-resultados.json`, `b1-estatisticas.json` e `B1-a_estatistica_descritiva.py` (campo `completa` nas cestas)
+**Antes**: o gráfico "Cesta por pessoa, casa a casa" mostrava as 26 casas com cardápio, inclusive as 19 sem couvert no cardápio, cuja cesta soma couvert 0; os cartões do resumo tinham seis indicadores.
+**Depois**: o gráfico mostra só as 7 casas com os três itens da cesta no cardápio (couvert, bebida, entrada ou prato), com a linha na mediana dessas casas; os cartões ganham itens no cardápio, posts de 01/09 a 01/10 e comentários nesses posts, por casa, em média ou mediana. As demais estatísticas da cesta seguem com as 26 casas. Planilhas recalculadas sem erro.
+**Justificativa**: pedido do autor.
+
+### 12:01
+**Objeto**: regra de cesta completa do gráfico "Cesta por pessoa, casa a casa" (`B1-a_estatistica_descritiva.py`, `b1-estatisticas.json`, `S8Panorama.jsx`, `s8-b1-resultados.json`)
+**Antes**: só as 7 casas com couvert no cardápio.
+**Depois**: couvert não cobrado não conta como item faltando; saem só as casas sem bebida ou sem entrada ou prato. Nenhuma das 26 casas com cesta sai, porque a cesta só é calculada quando bebida e entrada ou prato existem. O gráfico volta a mostrar as 26 casas, com a linha na mediana delas (R$ 58,50).
+**Justificativa**: pedido do autor.
+
+### 12:03
+**Objeto**: amostras de auditoria da coleta - `_src/extras/amostrar_auditoria.py` (novo), `B1-a_auditoria_estabelecimentos.py`, `B1-a_auditoria_entorno.py`, `B1-a_auditoria_instagram.py`, `B1-a_auditoria_cardapios.py`, `B1-a_auditoria_acervos.py`, `B2-a_auditoria_avaliacoes.py` e `_src/[B4] Bases publicas/Comum/analise/B4-a_auditoria_bases.py` (novos); saídas em `dados/[Bn]…/_dados-brutos/<pasta>/auditoria/`; `_src/dicionario.md`
+**Antes**: nenhuma amostra de auditoria gerada; o método (`_instrucoes/4_metodologia.md` §3.4) descrevia o sorteio só no texto.
+**Depois**: sete scripts geram as listas com as colunas de conferência em branco e registram semente, população, n, hash SHA-256 da origem e limite de Wilson com zero erros em `auditoria_registro.csv`. Tamanhos de 15/10: estabelecimentos 33 de 164; entorno 11 de 54 casas e 61 itens; Instagram 47 perfis e 200 de 60.809 posts; cardápios 200 de 1.825 itens; acervos 200 de 8.736 jogos; B2 200 de 1.440 avaliações com texto e completude das 49 casas (soma 2.218, diferença zero); B4 170 séries de 27 arquivos. Os arquivos ignorados pelo git (redes sociais, cardápios, acervos, coletas do B2, CAGED) ficam só na máquina. Dicionário: pasta `auditoria/` e `Comum/analise/`.
+**Justificativa**: pedido do autor de criar e rodar scripts de amostragem de auditoria para cada conjunto de dados, com as amostras em `auditoria/` dentro de cada pasta dos brutos.
+
+### 12:03
+**Objeto**: `textos/instrumentos/roteiro_auditoria_entorno_B1.md` (novo)
+**Antes**: sem roteiro de conferência do entorno.
+**Depois**: passo a passo da auditoria no Google Maps: distância em linha reta, de pino a pino, com a ferramenta Medir distância (a do coletor); distância a pé opcional, à parte, para medir o quanto a linha reta subestima o trajeto; rota de carro descartada; completude pelas buscas do Maps, pela camada de transporte público e pelo mapa do OSM; tolerância de 50 m.
+**Justificativa**: pedido do autor.
+
+### 12:03
+**Objeto**: `docs/parecer_entorno_B1.md` (novo)
+**Antes**: sem avaliação do coletor de entorno.
+**Depois**: parecer de integridade (somas fecham nas 54 casas; 695 de 3.828 resultados do arquivo de 51 casas a mais de 50 km), confiabilidade (concordância Maps × OSM por grupo) e validade (linha reta, contagem de estações, categoria de shopping), com 9 vulnerabilidades e a ordem de correção. Achado principal: as 6 casas de Curitiba têm zero estação de BRT no Maps, e o OSM acha de 2 a 7 estações-tubo a 1000 m de cada uma.
+**Justificativa**: pedido do autor de opinar sobre integridade, confiabilidade e validade dos dados do script de entornos.
+
+### 12:03 (divergência)
+**Objeto**: porte de shopping em `B1_resumo_estabelecimentos.xlsx` (via `B1-b_resumo.py`) × `docs/pendencias.md` (item 7 das decisões a tomar)
+**Antes**: o resumo traz `shopping_porte_*` com o critério "OSM shop=mall com área >= 5000 m²" para 29 casas (caixas do OSM consultadas pela fila do Maps) e vazio para 25.
+**Depois**: a pendência diz que o critério de porte ainda não foi escolhido.
+**Efeitos colaterais**: a estatística descritiva e o site mostram um porte de shopping com critério não decidido e incomparável entre casas.
+
+### 12:05
+**Objeto**: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_conteudo_site.py` (novo); aba 11 do site (`src/sections/S11Conteudo.jsx`, `src/conteudo/b2-conteudo.json`, `s11-b2-conteudo.json`, `site.json`, `App.jsx`, `README.md`)
+**Antes**: a análise de conteúdo do B2 (1.588 comentários de 53 casas, 15/10) só estava nos CSVs de `analise_conteudo/` e no documento do instrumento.
+**Depois**: aba 11 "Análise de conteúdo" com números do corpus, temas mais citados (elogio, crítica e mista ou neutra), composição das críticas, nota média com elogio e com crítica, ocasião e público citados, os 12 achados do §3 com a decisão do plano e a tabela por estabelecimento. Seletores de tipo (casas de jogos, lojas, total) e de medida (% dos comentários ou ponderado). O JSON sai do script novo, que lê os CSVs e o §3; a soma dos comentários por tipo fecha com 1.588. A nota avisa que a recodificação cega da amostra de 131 ainda não foi feita. Conferido no navegador, sem erro no console.
+**Justificativa**: pedido do autor.
+
+### 12:10
+**Objeto**: `_src/extras/auditorias_site.py` (novo); aba 12 do site (`src/sections/S12Auditorias.jsx`, `src/conteudo/auditorias.json`, `s12-auditorias.json`, `site.json`, `App.jsx`, `README.md`)
+**Antes**: as amostras de auditoria (commit 08d9ac7) só estavam nas pastas `auditoria/` dos brutos e nos registros de sorteio.
+**Depois**: aba 12 "Auditoria da coleta" com as regras comuns (critério de Wilson ≤ 5%, sorteio por SHA-256 com semente 20261015, estratos com mínimo e maiores restos, registro com hash), o cálculo do tamanho (n mínimo de 73 com zero erros; 200 aceita até 3 erros), a curva do limite com as amostras do trabalho, a tabela com população, amostra, estratos e se cada uma cumpre o critério, e uma seção por conjunto (o que conferir, tipo de amostragem, justificativa, tamanho, comparação e ressalvas). Ficam declarados: estabelecimentos (33, limite de 10,4%) e entorno (11 casas, 25,9%; 61 itens, 5,9%) não cumprem o critério nem com zero erros; a amostra do entorno precisa ser sorteada de novo depois da nova coleta do OSM. Conferido no navegador, sem erro no console.
+**Justificativa**: pedido do autor.
+
+### 12:13
+**Objeto**: `B1-a_auditoria_estabelecimentos.py`, `_dados-brutos/estabelecimentos/auditoria/` (amostra e registro), aba 12 do site (`auditorias.json`, `s12-auditorias.json`), `docs/decisoes.md` e `docs/pendencias.md`
+**Antes**: população da auditoria = 164 candidatos antes da curadoria (`B1_curadoria_metro_f_av100.csv`); amostra de 33 (limite de 10,4% com zero erros).
+**Depois**: população = as 54 casas do objeto (`B1_resumo_estabelecimentos.xlsx`), com a data de coleta da curadoria e do acervodejogos; amostra de 11 (20%, 9 estratos de capital e faixa de volume, limite de 25,9% com zero erros), sorteada de novo com a mesma semente. A aba 12 e a pendência sobre o tamanho das amostras foram atualizadas.
+**Justificativa**: pedido do autor: a auditoria deve considerar o total de 54 estabelecimentos.
+
+### 13:28
+**Objeto**: site de apresentação (`src/index.css`, `src/tema.js`, `src/formato.js`, `components/graficos.jsx` e seções 05, 08 a 12)
+**Antes**: paleta em azul e rosa em todo o site (texto, fundos, blocos, pílulas e séries dos gráficos).
+**Depois**: tokens de cor resolvem para preto, cinza e branco; as séries dos gráficos são cinza. Uma única cor (vermelho, token `destaque`) fica reservada a Salvador e ao Nordeste nos gráficos e linhas de tabela, às críticas na análise de conteúdo, às amostras de auditoria fora do critério de 5% e ao aviso "Atenção". Linhas de referência (mediana, critério) passam a cinza tracejado. O site não foi publicado.
+**Justificativa**: pedido do autor: paleta mais sóbria, com cor só nos casos pertinentes.
+
+### 13:40
+**Objeto**: `textos/capitulos/5_analise_de_mercado.md` (novo), `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`, `textos/planejamento/status_capitulos.md`
+**Antes**: cap. 5 não iniciado.
+**Depois**: esboço das seções 5.1 a 5.5, do maior para o menor (Brasil → Bahia → Salvador; serviços às famílias → alimentação fora do lar e lazer → luderias), com números do B4 (PAS, POF, PNAD Contínua, Censo, IPCA, BCB, FipeZAP) e do B1; 5.2 com números provisórios do B2. Lacunas marcadas `[script]`, `[AV]` e `[BUSCAR]`; quadro de fontes por nível de preferência no fim.
+**Justificativa**: pedido do autor: esboços do cap. 5 com fontes oficiais antes das setoriais e da imprensa.
+
+
+### 13:57
+**Objeto**: `CLAUDE.md` (seção "Melhorias do texto"), `docs/melhorias-texto.md` (novo), `docs/pendencias.md`, `docs/decisoes.md`, `AGORA.md`
+**Antes**: sem rotina de conferência cruzada entre capítulos; divergências e repetições entre os caps. 1, 2 e 5 sem registro.
+**Depois**: regra no `CLAUDE.md`: a cada capítulo gerado ou revisado, analisar todos os capítulos e atualizar `docs/melhorias-texto.md`, com divergências (grave, média, aceitável) e cortes em potencial (alto, médio, baixo ganho). Primeira análise sobre os caps. 1, 2 e 5: 18 divergências (D01 grave: escalas de fontes e de confiança misturadas no cap. 5) e 12 cortes (~930 palavras, cerca de 2,7 páginas). Pendência 10 aberta para a escala de fontes; linha nova em `decisoes.md`; link no `AGORA.md`.
+**Justificativa**: pedido do autor: manter um registro vivo das divergências e dos cortes possíveis para revisar o texto e respeitar o teto de páginas.
+
+### 13:57
+**Objeto**: `textos/capitulos/1_introducao_plano_luderia.md`, `2_referencial_teorico.md` e `5_analise_de_mercado.md`; `_instrucoes/1_estrutura.md` (P1, 1.3) e `_instrucoes/8_financeiro.md` (N1–N6)
+**Antes**: caps. 1 e 2 e as instruções (P1 em 7 níveis, N1–N6, P2; até 6 objetivos específicos).
+**Depois**: cap. 5 (15/10) com ordem de fontes em 4 níveis e rótulos de escalas misturados; cap. 1 com 7 objetivos; demais divergências D02 a D18 descritas em `docs/melhorias-texto.md`.
+**Efeitos colaterais**: a banca pode ler "N2" e "nível 2" como a mesma escala; objetivos a mais desalinham o 11.2. Nada foi corrigido nos capítulos.
+
+### 14:11
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/entornos/` (OSM de 54 casas, São Jogue Paralela, `versoes_superadas/`) e `redes_sociais/rs_<cidade>/rs_<perfil>/` (perfis de 8 casas)
+**Antes**: OSM de 15/10 (11h38) só com nós; perfis do Instagram de Bardo Mago, La Tabuleria, Tubaleria, Encounter, Toca do Rato, BoardZ, TabuClub e Luderia Carioca na pasta Downloads; coleta avulsa da São Jogue Paralela e versão de 13h28 do Maps de 14/10 na pasta Downloads.
+**Depois**: `2026-10-15_54_estabelecimentos_entorno_osm_resumo.csv`, `_osm_resultados.csv` e `_shoppings.csv` substituídos pela recoleta de 12h49 (versão 2026.10.15-3, com polígonos); `2026-10-15_sao_jogue_paralela_entorno_*.csv` nos brutos do entorno; a versão de 13h28 de `maps_entorno_*_2026-10-14.csv`, menor que a já guardada, em `versoes_superadas/` com sufixo `_1328`; perfis renomeados para `2026-10-15_<perfil>_instagram_perfis.csv`.
+**Justificativa**: pedido do autor: mover os arquivos de perfis e de entorno da pasta Downloads para os lugares do projeto.
+
+### 14:11
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` (2026.10.15-3 → 2026.10.15-4) e `docs/parecer_entorno_B1.md` (§7 novo)
+**Antes**: no OSM, plataformas de cada sentido da mesma estação (a 160-190 m) contavam como duas estações; paradas do bonde de Santa Teresa e paradas sem nome contavam como VLT; no Maps, sem busca que trouxesse as estações-tubo de Curitiba; versão do coletor fora dos CSVs.
+**Depois**: no OSM, mesmo nome, mesmo grupo e mesma rede até 400 m contam uma vez; bonde de Santa Teresa e parada ou plataforma sem nome vão para "outro" (com `observacao`); no Maps, busca "estação tubo" só em Curitiba (dispensada nas demais), o que deixa as 6 casas de Curitiba pendentes até a recoleta; `versao_script` nos dois resumos. Simulado sobre a coleta de 12h49: VLT/BRT a 1000 m cai de 88 para 59 e metrô de 45 para 44, somas fechando em 54/54.
+**Justificativa**: pedido do autor: analisar a última rodada do entorno e, se não tivesse extraído todas as variáveis em Maps e OSM, achar o problema e corrigir o extrator. A rodada não extraiu o VLT/BRT de forma confiável em nenhuma das duas fontes.
+
+
+### 16:26
+**Objeto**: branches `fix/entorno-maps-distantes` (Mac), `main` (cap. 3, PR #5) e `claude/project-thread-anqzoo` (PR #6), juntadas em `claude/project-thread-cc98ij`; `AGORA.md`, `docs/pendencias.md`, `docs/decisoes.md`, `docs/registro-de-alteracoes.md`, `textos/planejamento/status_capitulos.md`; cópias `(1)` dos CSVs do entorno de 14/10 em `_dados-brutos/entornos/`
+**Antes**: o Mac tinha 29 commits fora do main (caps. 2 e 5, Bardin, auditoria, site, entorno) e não tinha o cap. 3; o main não tinha os 29 commits; o PR #6 mexia nos mesmos documentos de controle e na pasta antiga `estabelecimentos/` dos CSVs do entorno.
+**Depois**: uma branch com os três; nos conflitos, mantidas as duas versões (registro na ordem da hora; status com cap. 2 do Mac e cap. 3 do main; divergências de estilo, triagem e 100 a 150 concorrentes devolvidas às pendências). As cópias `(1)`, idênticas aos arquivos sem sufixo (`cmp`), saíram também da pasta nova `entornos/`.
+**Justificativa**: pedido do autor (item 1 das melhorias de 15/10): evitar perda de texto e conflitos maiores.
+
+### 16:26
+**Objeto**: `_src/Modelo financeiro/analise/financeiro-a_modelo.py` (novo), `dados/Modelo financeiro/financeiro_premissas.csv` (novo), `dados/Modelo financeiro/financeiro_modelo.xlsx` (novo), `.gitignore` (logs do modelo)
+**Antes**: cap. 9 sem modelo nem registro de premissas; tarefas "Estrutura do modelo financeiro" (semana 4) e "Primeira versão do registro de premissas" (semana 5) abertas.
+**Depois**: registro com 53 premissas (R, C, I, M), cada uma com faixa, fonte, nível e justificativa; o script calcula investimento, receitas com rampa, Simples por anexo e RBT12, DRE e fluxo mensais de 60 meses, VPL, TIR, payback descontado, ponto de equilíbrio, tornado, ruptura das 5 premissas críticas, coerência e a conferência de 13 premissas contra os arquivos do B1 e do B4 (13 conferem). Provável: investimento de R$ 390 mil, VPL de R$ 465 mil a TMA real de 14,8%, payback de 30 meses; pessimista com VPL negativo (−R$ 1,7 milhão); otimista com VPL de R$ 5,5 milhões. Críticas: permanência, ocupação em dia útil, horas abertas, ticket de A&B e ocupação no fim de semana; três delas só em N6.
+**Justificativa**: pedido do autor (item 2 das melhorias de 15/10); rascunho do cap. 9 vence em 23/10.
+
+### 16:26
+**Objeto**: `textos/capitulos/8_aspectos_juridicos.md` (novo)
+**Antes**: cap. 8 não iniciado, prazo vencido em 09/10.
+**Depois**: rascunho com 8.1 (SLU, CNAE, Simples em dois anexos, Quadro 01 com a carga por cenário), 8.2 (Quadro 02 de licenças em Salvador, bebida alcoólica, LGPD) e 8.3 (locação, uso de jogos comprados, marca). Cerca de 3,9 páginas com as referências do capítulo; normas `[AV]`, exceto a LC 123/2006 conferida no texto compilado de 14/09/2026.
+**Justificativa**: pedido do autor (item 3 das melhorias de 15/10). Sem travessão e sem voz passiva, porque P5 e a skill de escrita ainda divergem (pendência aberta).

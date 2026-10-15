@@ -1,8 +1,8 @@
 {
-  "_leiaMe": "Aba 01. 'cascata' é a cadeia dedutiva; 'objetivosEspecificos' são os seis (i)-(vi) da introdução.",
+  "_leiaMe": "Aba 01. 'cascata' é a cadeia dedutiva do problema; 'objetivosEspecificos' são os sete objetivos (i)-(vii) da introdução (textos/capitulos/1_introducao_plano_luderia.md).",
   "cascata": {
-    "titulo": "Do crescimento do mercado à pergunta de pesquisa",
-    "descricao": "Do que se observa no mercado até o que este estudo consegue medir. Clique em cada nível.",
+    "titulo": "Do mercado à pergunta de pesquisa",
+    "descricao": "Do que se observa no mercado até o que o plano precisa responder. Clique em cada nível.",
     "cores": [
       "azulProfundo",
       "roxo",
@@ -12,65 +12,71 @@
       {
         "nivel": "Contexto de mercado",
         "escopo": "O que se observa",
-        "texto": "O mercado brasileiro de jogos de tabuleiro cresce acima da média do setor de brinquedos (16% no segmento contra a média geral, ABRINQ 2026) e sustenta um modelo de negócio consolidado — o ludobar/luderia/quiz-bar —, hoje operado majoritariamente para o público hobbyista: acervos extensos, cobrança por acesso ilimitado e jogos de regras complexas."
+        "texto": "O consumo de lazer se desloca da posse de bens para a vivência de experiências. Os jogos de tabuleiro e cartas passaram de 9,1% para 13,1% das vendas da indústria de brinquedos entre 2017 e 2025 (ABRINQ, 2026). A luderia combina alimentação, bebidas e um acervo de jogos em uma ocasião social: no exterior, o formato integra o setor de competitive socialising (KAM INSIGHT, 2022)."
       },
       {
         "nivel": "Lacuna identificada",
         "escopo": "O que falta",
-        "texto": "O Censo Ludopedia 2020 mostra que apenas 3% dos jogadores cadastrados têm menos de 18 anos, evidenciando um público já consolidado do hobby — não o consumidor casual, que busca uma ocasião social pontual sem envolvimento prévio com jogos de tabuleiro. Não há, na literatura brasileira de estudos de viabilidade, um recorte no nível do estabelecimento voltado a esse público."
+        "texto": "Não há levantamento setorial sobre luderias no Brasil. As premissas que concentram o risco do negócio - taxa de ocupação e ticket médio - costumam ser estimadas sem fonte. O único estudo de viabilidade identificado sobre o formato analisa um caso isolado, no interior paulista (ASAKURA; SILVA; MELLO, 2018). Em Salvador, a São Jogue, com duas unidades, é a única luderia em operação."
       },
       {
-        "nivel": "Problema de pesquisa",
-        "escopo": "Pergunta empírica",
-        "texto": "É viável um estabelecimento no formato ludobar/luderia/quiz-bar posicionado para o público casual — com curva de aprendizado mínima, diversão rápida e ocasião social em sessões de 20 a 30 minutos —, a partir de dados de jogos, de estabelecimentos concorrentes nas 27 capitais brasileiras e de avaliações de seus consumidores?"
+        "nivel": "Questão de pesquisa",
+        "escopo": "Pergunta do plano",
+        "texto": "Uma luderia em Salvador é viável, e sob quais condições de ponto, preço e ocupação?"
       }
     ]
   },
   "objetivoGeral": {
     "rotulo": "Objetivo geral",
-    "texto": "Avaliar a viabilidade de uma luderia posicionada para o público casual, a partir da análise de dados de jogos físicos, de estabelecimentos similares nas 27 capitais brasileiras e de avaliações de seus consumidores."
+    "texto": "Avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma luderia em Salvador, a partir de premissas sustentadas por dados secundários públicos e por observação direta."
   },
   "objetivosEspecificos": {
     "titulo": "Objetivos específicos",
-    "descricao": "Seis objetivos, do Bloco A ao Bloco C, fechando na síntese estratégica.",
+    "descricao": "Sete objetivos: cinco constroem o plano, e dois testam o plano construído.",
     "itens": [
       {
         "id": "(i)",
-        "dim": "Bloco A · Jogos",
+        "dim": "Mercado · cap. 5",
         "cor": "azul",
-        "texto": "Mapear indicadores de engajamento, retenção e fidelização de jogos de cartas e de tabuleiro a partir de dados da Ludopedia e do BoardGameGeek."
+        "texto": "Analisar o mercado e a concorrência de luderias nas 14 metrópoles brasileiras, com destaque para Salvador, quanto a avaliação, preço e cardápio."
       },
       {
         "id": "(ii)",
-        "dim": "Bloco A · Jogos",
-        "cor": "azul",
-        "texto": "Construir um índice de acessibilidade family/casual e identificar, por clusterização, perfis de jogos hobbyistas e perfis de jogos acessíveis."
+        "dim": "Marketing · cap. 6",
+        "cor": "roxo",
+        "texto": "Definir o posicionamento e o composto de marketing, incluindo a curadoria do acervo, a partir dos aspectos que mais pesam na satisfação dos clientes."
       },
       {
         "id": "(iii)",
-        "dim": "Bloco B · Estabelecimentos",
+        "dim": "Demanda · cap. 6",
         "cor": "roxo",
-        "texto": "Mapear e comparar estabelecimentos do formato ludobar/luderia/quiz-bar nas 27 capitais brasileiras quanto a avaliação, volume de avaliações, política de precificação e modelo de alimentação e bebidas."
+        "texto": "Estimar a demanda, a taxa de ocupação e o giro de mesas a partir de observação direta e de avaliações calibradas."
       },
       {
         "id": "(iv)",
-        "dim": "Ponte A ↔ B",
+        "dim": "Operação e jurídico · caps. 7 e 8",
         "cor": "lavanda",
-        "texto": "Testar a associação entre o alinhamento do acervo de cada estabelecimento aos perfis de jogos identificados e a avaliação recebida."
+        "texto": "Dimensionar a estrutura operacional e os requisitos jurídicos do negócio."
       },
       {
         "id": "(v)",
-        "dim": "Bloco C · Avaliações",
-        "cor": "carmesim",
-        "texto": "Analisar avaliações individuais de consumidores quanto a menções de preço e de fricção de complexidade ou intimidação, e sua associação com a nota atribuída."
+        "dim": "Financeiro · cap. 9",
+        "cor": "azulEscuro",
+        "texto": "Projetar investimentos, receitas, custos e indicadores de viabilidade a partir de premissas rastreáveis."
       },
       {
         "id": "(vi)",
-        "dim": "Síntese estratégica",
-        "cor": "azulEscuro",
-        "texto": "Aplicar a grade ERRC (Eliminar-Reduzir-Elevar-Criar) para delimitar o posicionamento estratégico do estabelecimento proposto, na curadoria do acervo e no modelo de alimentação e bebidas."
+        "dim": "Riscos · cap. 10",
+        "cor": "carmesim",
+        "texto": "Identificar as premissas críticas e os pontos de ruptura do negócio por meio de análise de sensibilidade."
+      },
+      {
+        "id": "(vii)",
+        "dim": "Riscos · caps. 10 e 11",
+        "cor": "carmesim",
+        "texto": "Propor um plano de contingência e as validações necessárias antes do investimento."
       }
     ]
   },
-  "nota": "Fonte: seção Introdução e Objetivos do relatório. A pesquisa combina exclusivamente dados secundários públicos, sem coleta direta com participantes humanos."
+  "nota": "Fonte: projeto de pesquisa e introdução deste trabalho (versão de 13/10/2026). Cada premissa do plano é ligada a um dado, e cada dado a uma fonte e a um nível de evidência (N1-N6)."
 }
