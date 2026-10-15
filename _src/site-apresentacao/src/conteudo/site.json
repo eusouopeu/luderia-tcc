@@ -112,6 +112,14 @@
       "subtitulo": "B2: o que os clientes comentam",
       "tempo": "apoio",
       "subtituloLongo": "B2: análise de conteúdo das avaliações recentes"
+    },
+    {
+      "id": "auditorias",
+      "n": 12,
+      "titulo": "Auditoria da coleta",
+      "subtitulo": "Amostras, critérios e cálculo",
+      "tempo": "apoio",
+      "subtituloLongo": "Auditoria dos dados coletados por script: amostras, critérios e cálculo"
     }
   ]
 }

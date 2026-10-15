@@ -18,6 +18,7 @@ Sete seções, uma por aba da barra lateral, dimensionadas para uma apresentaç�
 | 9 | Luderias por metrópole (B1) | apoio |
 | 10 | Luderias por região (B1) | apoio |
 | 11 | Análise de conteúdo (B2) | apoio |
+| 12 | Auditoria da coleta | apoio |
 
 Durante a apresentação, as setas **←** e **→** do teclado navegam entre as seções.
 
@@ -63,6 +64,10 @@ A aba 11 lê `src/conteudo/b2-conteudo.json`, gerado por
 `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_conteudo_site.py` a partir das tabelas
 de `dados/[B2] Avaliacoes recentes/analise_conteudo/` e dos achados do §3 de
 `textos/instrumentos/analise_conteudo_bardin_B2.md`. Rodar o script depois de refazer a análise.
+
+A aba 12 lê `src/conteudo/auditorias.json`, gerado por `_src/extras/auditorias_site.py` a partir dos
+registros de sorteio (`auditoria/auditoria_registro.csv`) de cada pasta de brutos; os textos de cada auditoria
+ficam em `src/conteudo/s12-auditorias.json`. Rodar o script depois de sortear uma amostra de novo.
 
 ## Origem do conteúdo
 

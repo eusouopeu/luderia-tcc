@@ -1,0 +1,122 @@
+{
+  "_leiaMe": "Aba 12: auditorias da coleta. Textos por conjunto aqui; números em auditorias.json (gerado por _src/extras/auditorias_site.py a partir dos registros de cada pasta auditoria/). Método em _instrucoes/4_metodologia.md §3.4.",
+  "intro": "Os scripts de coleta leem a fonte inteira: todos os estabelecimentos do recorte, todas as avaliações, todos os posts. Por isso, não há erro amostral na coleta. A auditoria não estima a população: ela estima a taxa de erro do instrumento, isto é, quanto o dado gravado difere da página de origem. O que se valida é o dado gerado, e não a autoria do código.",
+  "regras": {
+    "titulo": "Regras comuns a todas as auditorias",
+    "itens": [
+      {
+        "titulo": "Critério de aceitação",
+        "texto": "Para cada variável, a taxa de erro é estimada com intervalo de confiança de 95% pelo método de Wilson. A variável é aceita quando o limite superior do intervalo fica em 5% ou menos. Acima disso, o script é corrigido e o estrato afetado é coletado de novo. Sem recoleta, a variável é reportada com a taxa medida e alarga a faixa da premissa que alimenta."
+      },
+      {
+        "titulo": "Sorteio reprodutível",
+        "texto": "A chave de cada unidade é o SHA-256 de \"semente:id\", lido como número de 0 a 1. A semente é 20261015. A chave depende só da semente e do id: rodar o script de novo, com a base ampliada ou em outra ordem, mantém as unidades já sorteadas. Dentro de cada estrato, entram as unidades de menor chave."
+      },
+      {
+        "titulo": "Estratificação e alocação",
+        "texto": "Cada estrato recebe um mínimo de unidades (ou todas, se tiver menos), e o restante é dividido na proporção do tamanho do estrato descontado o mínimo. O arredondamento segue o método dos maiores restos, para que a soma feche com n (diferença zero)."
+      },
+      {
+        "titulo": "Registro antes da conferência",
+        "texto": "Cada sorteio grava uma linha em auditoria_registro.csv: data, script, semente, população, n, limite de Wilson com zero erros e o hash SHA-256 da base de origem. O registro prova que a amostra foi sorteada antes da conferência e sobre qual versão dos dados."
+      }
+    ]
+  },
+  "calculo": {
+    "titulo": "Quantos itens conferir: o cálculo",
+    "texto": [
+      "Com zero erros em n conferências, o limite superior de Wilson é z² ÷ (n + z²), com z = 1,96 (95%). Para esse limite ficar em 5% ou menos, n precisa ser de pelo menos 73.",
+      "O padrão adotado é n = 200. Com 200 conferências, a variável é aceita com até 3 erros (limite de 4,3%), o que dá folga para erros pontuais sem reprovar o instrumento. O tamanho quase não depende do tamanho da base: a correção para população finita muda o resultado em poucas unidades quando a base passa de mil itens.",
+      "O mínimo de 3 por estrato garante que todos os estabelecimentos ou perfis entrem na amostra. As falhas de coleta tendem a se concentrar em certas páginas (paginação, carregamento, limite de pedidos), e um estrato fora da amostra esconderia a falha. Erro concentrado em um grupo gera viés que o tamanho da base não dilui."
+    ],
+    "grafico": {
+      "titulo": "Limite superior da taxa de erro com zero erros",
+      "descricao": "Curva z² ÷ (n + z²). A linha tracejada marca o critério de 5%; os pontos são as amostras deste trabalho."
+    }
+  },
+  "tabela": {
+    "titulo": "As auditorias em números",
+    "descricao": "Limite com zero erros: o máximo que a taxa de erro pode ter, com 95% de confiança, se nenhum erro for encontrado. Erros aceitos: o maior número de erros que ainda cumpre o critério de 5%."
+  },
+  "conjuntos": [
+    {
+      "id": "estabelecimentos",
+      "titulo": "Estabelecimentos (B1)",
+      "pasta": "estabelecimentos/auditoria",
+      "confere": "Nota média, número de avaliações e endereço de cada casa, na página do Google Maps.",
+      "amostragem": "Amostra aleatória estratificada por capital do endereço e faixa de volume de avaliações (101 a 300, 301 a 1.000, mais de 1.000).",
+      "justificativa": "A população é a lista curada de 164 candidatos. Capital e volume são os dois eixos em que o comportamento da página muda: o layout e a carga variam com o número de avaliações, e cada capital teve uma busca própria. A estratificação garante que nenhum desses grupos fique de fora.",
+      "tamanho": "20% da população, arredondado para cima: 0,2 × 164 = 32,8 → 33 estabelecimentos, como prevê a metodologia (§3.4).",
+      "comparacao": "Os números são anotados como aparecem na página, sem julgamento. A comparação é feita depois, por script, com os dias decorridos ao lado: nota igual com uma casa decimal; volume na página maior ou igual ao coletado.",
+      "ressalva": "Com 33 conferências, o limite com zero erros é de 10,4%: a amostra não cumpre o critério de 5% nem sem erros. Para cumpri-lo, a amostra precisa de 73 estabelecimentos (ou a conferência das 54 casas do objeto, que tornaria a auditoria exaustiva). A decisão está em aberto em docs/pendencias.md (item 1)."
+    },
+    {
+      "id": "entorno_casas",
+      "titulo": "Entorno (B1)",
+      "pasta": "entornos/auditoria",
+      "confere": "Existência, grupo (metrô, trem, VLT/BRT, shopping, parque ou praia) e distância em linha reta de cada item contado a até 1.000 m, mais a estação mais próxima de cada fonte. Opcional: a distância a pé, para medir quanto a linha reta subestima o trajeto.",
+      "amostragem": "Amostragem em dois estágios: primeiro, estabelecimentos estratificados por capital; depois, todos os itens contados em volta de cada estabelecimento sorteado.",
+      "justificativa": "A unidade de erro do coletor é o item (estação ou shopping lido, classificado e medido). Os itens se agrupam por estabelecimento, porque saem da mesma busca. Conferir todos os itens de casas sorteadas mede, ao mesmo tempo, a fidelidade (item lido existe e está no grupo certo) e a completude (item que existe e não foi lido).",
+      "tamanho": "20% dos 54 estabelecimentos da fila, arredondado para cima: 0,2 × 54 = 10,8 → 11 casas, com 61 itens a conferir. O passo a passo está em textos/instrumentos/roteiro_auditoria_entorno_B1.md.",
+      "comparacao": "A distância é medida em linha reta, como no coletor. A distância a pé fica numa coluna à parte e não conta como erro.",
+      "ressalva": "Com 11 casas, o limite com zero erros é de 25,9% na taxa por estabelecimento; com 61 itens, de 5,9%, ainda acima do critério. A coleta do OSM de 15/10 (11:38) trouxe só nós, sem polígonos, e o coletor foi corrigido. Depois da nova coleta, o script deve ser rodado de novo: as mesmas 11 casas saem sorteadas, porque a chave depende só do place_id, e os itens do OSM são atualizados."
+    },
+    {
+      "id": "instagram_posts",
+      "titulo": "Instagram (B1)",
+      "pasta": "redes_sociais/auditoria",
+      "confere": "Perfis: seguidores, número de posts declarado, data do primeiro post e se o perfil é mesmo o da casa. Posts: existência, data, tipo, curtidas, comentários e início da legenda.",
+      "amostragem": "Perfis: conferência exaustiva. Posts: amostra estratificada por perfil, com mínimo de 3 por perfil e o restante na proporção do número de posts.",
+      "justificativa": "Os perfis são poucos e cada um leva cerca de um minuto, então todos são conferidos. Os posts somam dezenas de milhares e seguem o desenho padrão de 200; o estrato por perfil garante que cada coleta tenha posts conferidos, já que a falha de paginação acontece perfil a perfil.",
+      "tamanho": "Perfis: todos os 47 com coleta. Posts: 200 de 60.809, com 3 a 6 por perfil.",
+      "comparacao": "Curtidas e comentários mudam depois da coleta: o número é anotado e comparado depois, com os dias decorridos ao lado.",
+      "ressalva": "Na conferência exaustiva dos perfis, não há inferência: a taxa observada é a taxa da população."
+    },
+    {
+      "id": "cardapios",
+      "titulo": "Cardápios (B1)",
+      "pasta": "cardapios/auditoria",
+      "confere": "Se o item existe no cardápio original, se o preço é o mesmo e se a categoria atribuída (bebida, entrada, prato, sobremesa, couvert) está correta.",
+      "amostragem": "Amostra estratificada por casa, com mínimo de 3 por casa e o restante na proporção do número de itens.",
+      "justificativa": "O instrumento conferido é a transcrição (por OCR, regra de categoria ou à mão), e o erro tende a se concentrar no formato do cardápio de cada casa. Por isso, cada casa é um estrato.",
+      "tamanho": "200 de 1.825 itens com preço, com 4 a 14 itens por casa, nas 26 casas com cardápio.",
+      "comparacao": "O preço é anotado como está no original. A categoria é julgada pelo livro de categorias da planilha de itens e preços.",
+      "ressalva": "A auditoria mede a transcrição, e não a atualidade do cardápio: preço desatualizado na fonte não é erro de coleta."
+    },
+    {
+      "id": "acervos",
+      "titulo": "Acervos (B1)",
+      "pasta": "acervos_luderias/auditoria",
+      "confere": "Se o jogo está na fonte (Acervo de Jogos, Ludopedia, Rejoy ou cardápio de jogos) e, quando houver, o preço de aluguel.",
+      "amostragem": "Amostra estratificada por estabelecimento, com mínimo de 3 por estabelecimento e o restante na proporção do tamanho do acervo.",
+      "justificativa": "Cada acervo vem de uma fonte e de um raspador diferente; o estrato por estabelecimento cobre todas as fontes.",
+      "tamanho": "200 de 8.736 jogos, com 6 a 27 jogos por estabelecimento, nos 16 acervos com lista.",
+      "comparacao": "Jogo ausente vai com a observação \"saiu depois da coleta?\" e é conferido na cópia guardada, quando houver.",
+      "ressalva": "O acervo muda com o tempo (jogo vendido ou novo): a conferência deve ser feita perto da data da coleta."
+    },
+    {
+      "id": "avaliacoes",
+      "titulo": "Avaliações (B2)",
+      "pasta": "coletas/auditoria",
+      "confere": "Etapa 1: texto, nota e rótulo de data de cada avaliação sorteada. Etapa 2: em todos os estabelecimentos, o número de avaliações no recorte contado na página, comparado ao coletado.",
+      "amostragem": "Amostra estratificada por estabelecimento em duas etapas, pela regra de inspeção do controle de qualidade por atributos (ABNT NBR 5426 [AV]).",
+      "justificativa": "Todos os estabelecimentos entram, porque as falhas se concentram em certas páginas. Estabelecimento com erro numa variável tem essa variável conferida em mais avaliações (todas, se forem até 30; senão, as 20 seguintes na ordem da chave), para diagnosticar falha concentrada. A segunda etapa não entra na taxa geral.",
+      "tamanho": "Etapa 1: 200 de 1.440 avaliações com texto, com mínimo de 3 por estabelecimento (ou todas, se tiver menos), em 48 estabelecimentos com avaliação com texto no recorte. As 200 avaliações também servem à validação do dicionário. Etapa 2: os 49 estabelecimentos.",
+      "comparacao": "A taxa de erro é calculada sem ponderação e ponderada pelo peso de cada estabelecimento na base. O critério de 5% vale para as duas; se divergirem, prevalece a pior.",
+      "ressalva": "A conferência deve ser feita até sete dias após a coleta: o rótulo \"3 meses atrás\" muda com o tempo."
+    },
+    {
+      "id": "bases",
+      "titulo": "Bases públicas (B4)",
+      "pasta": "<fonte>/auditoria",
+      "confere": "O valor de cada série no portal da instituição, no mesmo período e recorte geográfico, atento a unidade (mil, milhão, %) e deflação.",
+      "amostragem": "Reconciliação exaustiva por série: uma linha sorteada de cada série de cada arquivo processado.",
+      "justificativa": "A extração por API copia tabelas inteiras: não há página lida por script nem erro de coleta no sentido do B1 e do B2. Os erros prováveis são de processamento (código de variável ou município trocado, filtro na série errada, unidade, índice de correção). Como são poucas séries, todas são conferidas em ao menos um ponto.",
+      "tamanho": "Uma linha por série, 170 no total, em sete fontes: IBGE SIDRA (135), Banco Central (13), legislação do Simples (10), Censo 2022 (6), Novo CAGED (3), FipeZap (2) e CONCLA (1).",
+      "comparacao": "Valor anotado como aparece no portal e marcado como confere ou não. Os totais dos arquivos também são conferidos com a soma das linhas.",
+      "ressalva": "A auditoria não mede o erro da própria base (amostra da POF e da PNAD, cobertura só do emprego formal no CAGED, preço anunciado no FipeZap), que fica declarado nas limitações."
+    }
+  ],
+  "b3": "A contagem direta (B3) não tem amostra de auditoria: não há gravação para conferir depois. A validação usa a consistência do próprio registro: fechamento do saldo de pessoas a cada 30 minutos, grupos sem saída contados à parte e comparação entre três caminhos independentes (porta, mesas e notas fiscais).",
+  "nota": "Fonte: metodologia deste trabalho (§3.4, validação da coleta), scripts B1-a_auditoria_*, B2-a_auditoria_avaliacoes.py e B4-a_auditoria_bases.py e registros de sorteio de 15/10/2026. Referências do modelo de erro total da pesquisa: Groves et al. (2009), Biemer (2010), Amaya, Biemer e Kinyon (2020) e Meng (2018)."
+}
