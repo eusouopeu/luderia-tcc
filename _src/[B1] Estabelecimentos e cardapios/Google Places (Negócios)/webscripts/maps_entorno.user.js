@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Entorno no Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.15-2
+// @version      2026.10.15-3
 // @description  Conta estações de metrô, de trem, de VLT/BRT, shoppings e parques a 500 m e 1000 m de cada estabelecimento, no Google Maps e no OpenStreetMap; coleta a lista de estabelecimentos e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -386,15 +386,21 @@
   }
 
   // Shopping do OSM que corresponde a um resultado do Maps: o ponto dentro da
-  // caixa (folga de 60 m; havendo várias, a maior) ou, sem isso, o shop=mall
-  // mais próximo a até 200 m (inclusive nó, sem área).
-  function casarOsm(r, malls) {
+  // caixa (folga de 60 m; havendo várias, a maior). Polígono pode valer para
+  // mais de um resultado (galeria dentro do shopping: mesmo_poligono_de). Sem
+  // polígono, o shop=mall a até 200 m que ainda não casou com outro resultado
+  // (`usados`) nem está reservado pelo nome a outro (`reservados`): primeiro o
+  // de nome igual, depois o mais próximo. Assim um nó do OSM fica com um único
+  // shopping do Maps.
+  function casarOsm(r, malls, usados = new Map(), reservados = new Map()) {
     const folga = 60 / 111320;
     const dentro = malls.filter((m) => m.area_m2 != null && r.lat >= m.minlat - folga && r.lat <= m.maxlat + folga && r.lng >= m.minlon - folga && r.lng <= m.maxlon + folga);
     if (dentro.length) return [...dentro].sort((a, b) => b.area_m2 - a.area_m2)[0];
-    return malls
+    const perto = malls
+      .filter((m) => !usados.has(m.id) && (!reservados.has(m.id) || reservados.get(m.id) === r))
       .map((m) => ({ m, d: distancia(r.lat, r.lng, (m.minlat + m.maxlat) / 2, (m.minlon + m.maxlon) / 2) }))
-      .filter((x) => x.d <= 200).sort((a, b) => a.d - b.d)[0]?.m || null;
+      .filter((x) => x.d <= 200).sort((a, b) => a.d - b.d);
+    return (perto.find((x) => mesmoShopping(r.nome, x.m.nome)) || perto[0])?.m || null;
   }
 
   function porteOsm(r, osm, areaMin) {
@@ -440,14 +446,24 @@
       `nwr${t}[railway~"^(station|halt|tram_stop)$"];nwr${t}[public_transport=station];nwr${t}[amenity=bus_station];` +
       `nwr${t}[highway=bus_stop][name~"BRT|tubo",i];nwr${t}[public_transport=platform][name~"BRT|tubo",i];` +
       `nwr${a}[shop=mall];nwr${a}[leisure=park];nwr${a}[natural=beach];` +
-      ');out tags center bb;';
+      ');out tags bb;';
+  }
+
+  // Ponto de referência do elemento: nó pelas coordenadas; way e relation pelo
+  // centro da caixa. Com `out bb` a Overpass não manda `center`: até a versão
+  // 2026.10.15-2 o filtro exigia `center` e descartava todo polígono (shoppings
+  // sem área, estações mapeadas como área ausentes).
+  function centroOsm(e) {
+    if (e.center) return { lat: e.center.lat, lng: e.center.lon };
+    if (e.lat != null) return { lat: e.lat, lng: e.lon };
+    const b = e.bounds;
+    return b ? { lat: (b.minlat + b.maxlat) / 2, lng: (b.minlon + b.maxlon) / 2 } : null;
   }
 
   // Elemento da Overpass reduzido ao que a classificação e a contagem usam
   // (o navegador guarda pouco: só as tags de TAGS_OSM e a caixa dos shoppings).
   function elementoOsm(e, local) {
-    const lat = e.center?.lat ?? e.lat;
-    const lng = e.center?.lon ?? e.lon;
+    const { lat, lng } = centroOsm(e);
     const tags = {};
     for (const k of TAGS_OSM) if (e.tags?.[k]) tags[k] = e.tags[k];
     const b = e.bounds;
@@ -543,7 +559,7 @@
         if (volta || i) await esperar(i ? 2000 * i : 20000);
         const r = await consultarOverpass(url, q);
         if (!r.erro) {
-          const elementos = r.elementos.filter((e) => (e.center?.lat ?? e.lat) != null).map((e) => elementoOsm(e, local));
+          const elementos = r.elementos.filter((e) => centroOsm(e)).map((e) => elementoOsm(e, local));
           return { elementos, consultado_em: agora(), servidor: new URL(url).host };
         }
         erros.push(`${new URL(url).host}: ${r.erro}`);
@@ -580,9 +596,16 @@
     const doMaps = (mapsRs || []).filter((r) => r.grupo === 'shopping' && !r.duplicata_de && !r.fora_da_regiao && r.distancia_m <= RAIO_MAX)
       .sort((a, b) => (+b.n_avaliacoes || 0) - (+a.n_avaliacoes || 0));
     const usados = new Map();
+    // Nó do OSM com o mesmo nome de um resultado do Maps fica reservado a ele.
+    const reservados = new Map();
+    for (const r of malls ? doMaps : []) {
+      const m = malls.find((x) => x.area_m2 == null && !reservados.has(x.id) && mesmoShopping(r.nome, x.nome)
+        && distancia(r.lat, r.lng, x.minlat, x.minlon) <= 200);
+      if (m) reservados.set(m.id, r);
+    }
     const linhas = [];
     for (const r of doMaps) {
-      const m = malls ? casarOsm(r, malls) : null;
+      const m = malls ? casarOsm(r, malls, usados, reservados) : null;
       const mesmo = m ? usados.get(m.id) || '' : '';
       if (m && !mesmo) usados.set(m.id, r.nome);
       linhas.push({

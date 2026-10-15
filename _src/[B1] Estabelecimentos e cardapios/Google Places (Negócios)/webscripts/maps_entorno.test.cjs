@@ -358,3 +358,29 @@ test('exportação pela lista: linha para quem falta e porte com OSM novo', () =
   // Sem lista: tudo o que está guardado, cada um uma vez.
   assert.equal(t.montarSaida(dados, {}, OP, osm).universo.length, 1);
 });
+
+test('OSM: way e relation sem center usam o centro da caixa (out bb)', () => {
+  const caixa = { minlat: -23.55, maxlat: -23.548, minlon: -46.652, maxlon: -46.65 };
+  const e = t.elementoOsm({ type: 'way', id: 7, bounds: caixa, tags: { name: 'Shopping Pátio Higienópolis', shop: 'mall' } }, { lat: -23.5487, lng: -46.651 });
+  assert.equal(e.osm_id, 'way/7');
+  assert.equal(e.lat, -23.549);
+  assert.equal(e.lng, -46.651);
+  assert.ok(e.area_m2 > 40000, 'polígono com área');
+  assert.equal(e.distancia_m, 0, 'local dentro da caixa');
+  const n = t.elementoOsm({ type: 'node', id: 8, lat: -23.5, lon: -46.6, tags: { name: 'Estação' } }, { lat: -23.5, lng: -46.6 });
+  assert.equal(n.area_m2, null);
+});
+
+test('shoppings: um nó do OSM casa com um único shopping do Maps', () => {
+  const local = { place_id: 'x', nome: 'RED', cidade: 'Rio de Janeiro', lat: -22.903, lng: -43.177 };
+  const no = (id, nome, lat, lng) => ({ id, nome, area_m2: null, distancia_m: 500, minlat: lat, maxlat: lat, minlon: lng, maxlon: lng });
+  const malls = [no('node/1', 'Paço do Ouvidor', -22.9031, -43.1771), no('node/2', '', -22.9045, -43.178)];
+  const r = (nome, lat, lng, n) => ({ grupo: 'shopping', nome, categoria_maps: 'Shopping center', lat, lng, n_avaliacoes: String(n), distancia_m: 500, place_id: nome });
+  const maps = [r('Galeria do Comércio', -22.9032, -43.1772, 900), r('Soho Mall', -22.9033, -43.1773, 500), r('Shopping Center Paço do Ouvidor', -22.9034, -43.1774, 300)];
+  const s = t.montarShoppings(local, maps, malls, true, { ...OP, porte: 'avaliacoes' });
+  const por = (n) => s.find((x) => x.nome_maps === n);
+  assert.equal(por('Shopping Center Paço do Ouvidor').osm_id, 'node/1', 'nome igual tem preferência');
+  assert.equal(por('Galeria do Comércio').osm_id, 'node/2', 'o mais próximo entre os livres');
+  assert.equal(por('Soho Mall').osm_id, '', 'sem nó livre a até 200 m');
+  assert.ok(s.every((x) => !x.mesmo_poligono_de), 'nó não vira "mesmo polígono"');
+});
