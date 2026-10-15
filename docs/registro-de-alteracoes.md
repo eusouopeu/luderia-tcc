@@ -901,3 +901,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: abas 01 a 07 publicadas com o desenho anterior (público casual, blocos A a C).
 **Depois**: publicadas as abas 01 a 07 atualizadas (commit 475bb95) com `pnpm run deploy`; conferido no endereço público, sem erro no console.
 **Justificativa**: pedido do autor.
+
+### 11:45
+**Objeto**: `_src/site-apresentacao/src/sections/S8Panorama.jsx` e `src/components/graficos.jsx` (componente `Pilulas`)
+**Antes**: cartões do panorama só com medianas; tabelas por variável sempre com as 11 colunas.
+**Depois**: seletor em pílulas nos cartões (média, padrão, ou mediana) e em cada grupo da tabela (simplificado, padrão, com n, média, mediana, DP e CV; ou completo, com mínimo, quartis, máximo e amplitude). Conferido no navegador, sem erro no console.
+**Justificativa**: pedido do autor.
+
+### 11:45 (divergência)
+**Objeto**: `_dados-brutos/entornos/2026-10-15_54_estabelecimentos_entorno_osm_*.csv` e `…_entorno_shoppings.csv` (coletor `maps_entorno.user.js`, versão 2026.10.15-2)
+**Antes**: coleta do Maps (51 + 3 casas) com metrô e shoppings lidos no próprio Maps.
+**Depois**: a coleta do OSM das 54 casas tem os 479 elementos como nós (`node/`), nenhum `way` ou `relation`; nenhum shopping tem área, então `qt_shoppings_area_min_*` dá 0 em todas as casas e o porte dá "não" nos 182 shoppings. Estações mapeadas como área ficam de fora: Eucaliptos, Moema, Campo Belo, Higienópolis-Mackenzie e Paulista aparecem no Maps a 555-820 m e não aparecem no OSM, e 9 casas de São Paulo divergem no nº de estações a 1.000 m. Na planilha de shoppings, um mesmo nó do OSM foi ligado a três shoppings do Maps (RED jogos) e a três (Ludus). Causa provável: a consulta termina em `out tags center bb`, e o filtro da linha 546 descarta elementos sem `center` (ways e relations voltam só com `bounds`). Contagens e distâncias do resumo batem com o arquivo de resultados, e as coordenadas batem com as do Maps.
+**Efeitos colaterais**: os dados do OSM não entram no site nem no resumo do B1 até a correção do coletor e uma nova coleta no OSM; o site segue com o entorno do Maps.

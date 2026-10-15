@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Bar, BarChart, CartesianGrid, Cell, LabelList, ReferenceLine, ResponsiveContainer,
   Scatter, ScatterChart, Tooltip, XAxis, YAxis,
@@ -6,15 +7,46 @@ import D from "../conteudo/b1-estatisticas.json";
 import c from "../conteudo/s8-b1-resultados.json";
 import { achadosGerais } from "../conteudo/b1-achados";
 import { TituloSecao, Reveal, Nota, Sanfona } from "../components/ui";
-import { Achados, CartaoGrafico, Dica, Kpi, Tabela } from "../components/graficos";
+import { Achados, CartaoGrafico, Dica, Kpi, Pilulas, Tabela } from "../components/graficos";
 import { COR, eixo, milhar, num, pct, porUnidade, reais } from "../formato";
 
 const T = c.panorama;
 const G = D.geral;
 const GRUPOS = [...new Set(Object.values(G).map((v) => v.grupo))];
 const salvador = (p) => p.metropole === "Salvador";
+const MEDIDAS = [{ id: "media", rotulo: "Média" }, { id: "mediana", rotulo: "Mediana" }];
+const MODOS = [{ id: "simples", rotulo: "Simplificado" }, { id: "completo", rotulo: "Completo" }];
+const nomeMedida = { media: "média", mediana: "mediana" };
+
+/* Tabela de um grupo de variáveis, com seletor entre o modo simplificado e o completo. */
+function TabelaGrupo({ linhas }) {
+  const [modo, setModo] = useState("simples");
+  const f = (campo) => (l) => porUnidade(l[campo], l.unidade);
+  const cv = { rotulo: "CV", valor: (l) => (l.cv == null ? "—" : num(l.cv, 2)) };
+  const base = [
+    { rotulo: "variável", valor: (l) => <span className="font-normal">{l.rotulo}</span> },
+    { rotulo: "n", valor: (l) => l.n },
+    { rotulo: "média", valor: f("media") },
+    { rotulo: "mediana", valor: f("mediana") },
+    { rotulo: "DP", valor: f("dp") },
+  ];
+  const extras = [
+    { rotulo: "mín.", valor: f("min") },
+    { rotulo: "P25", valor: f("p25") },
+    { rotulo: "P75", valor: f("p75") },
+    { rotulo: "máx.", valor: f("max") },
+    { rotulo: "amplitude", valor: f("amplitude") },
+  ];
+  return (
+    <div className="space-y-3 p-3 sm:p-4">
+      <Pilulas opcoes={MODOS} valor={modo} aoMudar={setModo} rotulo="Nível de detalhe da tabela" />
+      <Tabela linhas={linhas} colunas={modo === "simples" ? [...base, cv] : [...base, ...extras, cv]} />
+    </div>
+  );
+}
 
 export default function S8Panorama() {
+  const [medida, setMedida] = useState("media");
   return (
     <>
       <TituloSecao id="panorama" />
@@ -22,13 +54,17 @@ export default function S8Panorama() {
         <p className="mb-6 max-w-3xl text-sm leading-relaxed text-azul-800/85 sm:text-base">{T.intro}</p>
       </Reveal>
 
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+        <p className="text-xs font-semibold tracking-wide text-azul-700/70 uppercase">Resumo das 54 casas</p>
+        <Pilulas opcoes={MEDIDAS} valor={medida} aoMudar={setMedida} rotulo="Medida dos cartões" />
+      </div>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <Kpi rotulo="Luderias" valor={D.total_casas} detalhe={`${D.n_metropoles} metrópoles`} />
-        <Kpi rotulo="Nota mediana" valor={num(G.avaliacao_media.mediana, 1)} detalhe={`${num(G.avaliacao_media.min, 1)} a ${num(G.avaliacao_media.max, 1)}`} />
-        <Kpi rotulo="Avaliações (mediana)" valor={num(G.volume_avaliacoes.mediana)} detalhe="no Google" />
-        <Kpi rotulo="Cesta mediana" valor={reais(G.cesta_mediana.mediana)} detalhe={`${G.cesta_mediana.n} casas com cardápio`} />
-        <Kpi rotulo="Seguidores (mediana)" valor={milhar(G.seguidores.mediana)} detalhe="no Instagram" />
-        <Kpi rotulo="Horas por semana" valor={num(G.horas_semana.mediana)} detalhe="mediana" />
+        <Kpi rotulo={`Nota (${nomeMedida[medida]})`} valor={num(G.avaliacao_media[medida], medida === "media" ? 2 : 1)} detalhe={`${num(G.avaliacao_media.min, 1)} a ${num(G.avaliacao_media.max, 1)}`} />
+        <Kpi rotulo={`Avaliações (${nomeMedida[medida]})`} valor={num(G.volume_avaliacoes[medida])} detalhe="no Google" />
+        <Kpi rotulo={`Cesta (${nomeMedida[medida]})`} valor={reais(G.cesta_mediana[medida])} detalhe={`cesta mediana de ${G.cesta_mediana.n} casas com cardápio`} />
+        <Kpi rotulo={`Seguidores (${nomeMedida[medida]})`} valor={milhar(G.seguidores[medida])} detalhe="no Instagram" />
+        <Kpi rotulo={`Horas por semana (${nomeMedida[medida]})`} valor={num(G.horas_semana[medida], medida === "media" ? 1 : 0)} detalhe="abertas" />
       </div>
 
       <div className="mt-6">
@@ -133,25 +169,9 @@ export default function S8Panorama() {
       <div className="space-y-3">
         {GRUPOS.map((g, i) => {
           const linhas = Object.values(G).filter((v) => v.grupo === g);
-          const f = (campo) => (l) => porUnidade(l[campo], l.unidade);
           return (
             <Sanfona key={g} titulo={g} contagem={linhas.length} aberto={i === 0}>
-              <Tabela
-                linhas={linhas}
-                colunas={[
-                  { rotulo: "variável", valor: (l) => <span className="font-normal">{l.rotulo}</span> },
-                  { rotulo: "n", valor: (l) => l.n },
-                  { rotulo: "média", valor: f("media") },
-                  { rotulo: "mediana", valor: f("mediana") },
-                  { rotulo: "DP", valor: f("dp") },
-                  { rotulo: "mín.", valor: f("min") },
-                  { rotulo: "P25", valor: f("p25") },
-                  { rotulo: "P75", valor: f("p75") },
-                  { rotulo: "máx.", valor: f("max") },
-                  { rotulo: "amplitude", valor: f("amplitude") },
-                  { rotulo: "CV", valor: (l) => (l.cv == null ? "—" : num(l.cv, 2)) },
-                ]}
-              />
+              <TabelaGrupo linhas={linhas} />
             </Sanfona>
           );
         })}

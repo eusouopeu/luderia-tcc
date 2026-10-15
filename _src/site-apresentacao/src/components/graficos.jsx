@@ -93,3 +93,27 @@ export function Dica({ active, payload, formatar }) {
     </div>
   );
 }
+
+/* Seletor em pílulas (tab pill): `opcoes` = [{ id, rotulo }]. */
+export function Pilulas({ opcoes, valor, aoMudar, rotulo }) {
+  return (
+    <div role="tablist" aria-label={rotulo} className="inline-flex rounded-full border border-papel-200 bg-white p-1 shadow-sm">
+      {opcoes.map((o) => {
+        const ativo = o.id === valor;
+        return (
+          <button
+            key={o.id}
+            role="tab"
+            aria-selected={ativo}
+            onClick={() => aoMudar(o.id)}
+            className={`cursor-pointer rounded-full px-3.5 py-1 text-xs font-semibold transition-colors sm:text-sm ${
+              ativo ? "bg-roxo-600 text-white shadow-sm" : "text-azul-800 hover:bg-papel-100"
+            }`}
+          >
+            {o.rotulo}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
