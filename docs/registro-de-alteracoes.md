@@ -702,3 +702,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o coletor `maps_entorno.user.js` aceitava o `B1_entorno.csv` (separador `,`, 66 estabelecimentos, inclusive 3 já coletados em 14/10).
 **Depois**: fila própria para o coletor, separador `;`, UTF-8 com BOM, colunas `place_id;nome;capital_endereco;lat;lng`, ordenada por capital e nome, sem os estabelecimentos já presentes nos resumos de 14/10.
 **Justificativa**: pedido do autor de um CSV para extração em fila dos entornos.
+
+### 00:38
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/entorno/B1_entorno_maps_fila.csv` e `_src/[B1] …/Google Places (Negócios)/build/B1-b_entorno_maps_fila.py` (novo); `_dados-brutos/estabelecimentos/B1_localizacoes.jsonl` (+26 coordenadas)
+**Antes**: a fila das 63 casas vinha do `B1_entorno.csv` (curadoria OSM antiga): incluía capitais regionais e reprovadas na triagem e omitia aprovadas.
+**Depois**: a fila sai da triagem manual das metrópoles (51 aprovadas, menos Machado Games e Ilusões Industriais) mais as 5 "nova luderia" do acervo (Bardo Mago, La Tabuleria, Toca do Rato, TabuClub, Tubaleria): 54 no objeto, 51 na fila (Ludus, Bodogami e Shelf já têm resumo de 14/10). As 26 coordenadas que faltavam foram buscadas na Places API (Place Details, só `location`) e acrescentadas ao jsonl. Script reproduzível, com conferência de soma (54 = 51 + 3 + 0).
+**Justificativa**: correção pedida pelo autor; a lista anterior estava desatualizada.
