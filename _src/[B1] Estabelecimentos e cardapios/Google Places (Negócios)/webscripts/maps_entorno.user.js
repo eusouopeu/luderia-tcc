@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Entorno no Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.14-2
+// @version      2026.10.15-1
 // @description  Conta estações de metrô, de trem, de VLT/BRT e shoppings a 500 m e 1000 m de cada estabelecimento, buscando no Google Maps em volta da coordenada; coleta uma fila e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -47,7 +47,10 @@
  * entre metrô, trem e VLT/BRT, com o nome e o tipo da estação. Até 1000 m, é a
  * mais próxima de fato (a busca cobre o raio); acima, é a mais próxima entre
  * as lidas, e a verdadeira pode estar mais perto (limite superior). Fica em
- * branco se alguma busca de transporte falhou ou não foi feita.
+ * branco se alguma busca de transporte falhou ou não foi feita. Quando a área
+ * se esgota, o Maps completa a lista com estações de outras cidades (BRT de
+ * Salvador numa busca em Curitiba): resultado a mais de 50 km fica no CSV de
+ * resultados com fora_da_regiao = sim e não entra nas distâncias do resumo.
  *
  * Área coberta. A busca do Maps olha a parte visível do mapa. O ponto "@" da
  * URL é o centro da JANELA, e o painel lateral do Maps (cerca de 410 px)
@@ -126,6 +129,10 @@
   const PAINEL_MAPS_PADRAO_PX = 480;
   const TENTATIVAS = 2;
   const DIST_DUPLICATA_M = 150;
+  // Acima disso o resultado é de outra região (o Maps completa a lista com
+  // estações de outras cidades): fica no CSV de resultados, fora do resumo.
+  const DIST_REGIAO_M = 50000;
+  const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter', 'https://overpass.private.coffee/api/interpreter'];
   const PARCIAL_A_CADA = 10;
   const PAUSA_ENTRE_BUSCAS = [3000, 6000];
   const CONSULTAS = [
@@ -282,11 +289,18 @@
   function classificar(nome, categoria) {
     const n = semAcento(nome);
     const c = semAcento(categoria).trim();
+    // Estação ainda não inaugurada ("Futura estação Rua do Grito (BRT ABC)").
+    if (/\bfutura\b|em (obras|construcao)|desativad/.test(n)) return 'outro';
     if (/^(shopping|shopping center|shopping mall|outlet)$/.test(c)) return 'shopping';
+    // Nome do operador vale mais que a categoria: "Trensurb Estação Rodoviária" vem como metrô.
+    if (/\b(cptm|supervia|trensurb)\b/.test(n) && /estacao|transporte|metro/.test(c)) return 'trem';
     if (/\bmetro\b|subway/.test(c)) return 'metro';
+    // Estações-tubo do BRT de Curitiba (RIT), muitas sem categoria no Maps.
+    if (/^estacao tubo\b/.test(n)) return 'vlt_brt';
     const transporte = /transporte|estacao|parada|ponto|terminal|onibus|trem|bonde/.test(c);
     if (/\b(brt|vlt)\b|veiculo leve|light rail|bonde|tram\b/.test(c)) return 'vlt_brt';
-    if (/\btrem\b|\btrens\b|ferrovi|train station|railway/.test(c)) return 'trem';
+    // "Companhia ferroviária" é a sede do operador, não estação.
+    if (/\btrem\b|\btrens\b|ferrovi|train station|railway/.test(c) && !/^(companhia|empresa)\b/.test(c)) return 'trem';
     if (/\b(brt|vlt)\b/.test(n) && transporte) return 'vlt_brt';
     if (/\bmetro\b/.test(n) && /estacao|transporte/.test(c)) return 'metro';
     if (/\b(cptm|supervia|trensurb|trem)\b/.test(n) && /estacao|transporte/.test(c)) return 'trem';
@@ -376,13 +390,11 @@
     return `OSM shop=mall com área >= ${op.area_min_m2} m²`;
   }
 
-  async function buscarOsm(local) {
-    const raio = RAIO_MAX + 200;
-    const q = `[out:json][timeout:25];(way["shop"="mall"](around:${raio},${local.lat},${local.lng});relation["shop"="mall"](around:${raio},${local.lat},${local.lng}););out tags bb;`;
+  async function consultarOverpass(url, q) {
     const ctl = new AbortController();
     const relogio = setTimeout(() => ctl.abort(), 40000);
     try {
-      const resp = await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(q)}`, { signal: ctl.signal });
+      const resp = await fetch(`${url}?data=${encodeURIComponent(q)}`, { signal: ctl.signal });
       if (!resp.ok) return { erro: `HTTP ${resp.status}` };
       const j = await resp.json();
       const malls = (j.elements || []).filter((e) => e.bounds).map((e) => ({ nome: e.tags?.name || '', ...e.bounds, area_m2: areaCaixa(e.bounds) }));
@@ -392,6 +404,21 @@
     } finally {
       clearTimeout(relogio);
     }
+  }
+
+  // A Overpass principal recusa com frequência (429/504): tenta os espelhos,
+  // com pausa crescente, antes de desistir.
+  async function buscarOsm(local) {
+    const raio = RAIO_MAX + 200;
+    const q = `[out:json][timeout:25];(way["shop"="mall"](around:${raio},${local.lat},${local.lng});relation["shop"="mall"](around:${raio},${local.lat},${local.lng}););out tags bb;`;
+    const erros = [];
+    for (const [i, url] of OVERPASS.entries()) {
+      if (i) await esperar(2000 * i);
+      const r = await consultarOverpass(url, q);
+      if (!r.erro) return r;
+      erros.push(`${new URL(url).host}: ${r.erro}`);
+    }
+    return { erro: erros.join('; ') };
   }
 
   // ---------- leitura da lista de resultados ----------
@@ -409,8 +436,12 @@
   // Cartão da lista: "Nome\n4,5(77)\nShopping center ·  · Av. Santa Luzia, 656\n..."
   function lerCartao(nome, texto, href) {
     const linhas = String(texto || '').split('\n').map((l) => l.trim()).filter(Boolean);
-    const linhaCat = linhas.find((l) => l.includes('·')) || '';
-    const categoria = linhaCat.split('·')[0].trim();
+    // A categoria é o primeiro trecho entre "·" que não é nota, preço ou vazio
+    // (há cartões com "4,0(1.731) · $$" antes da linha da categoria).
+    const ehNota = (s) => /^\d[.,]\d\s*\(/.test(s) || /^\$+$|^R\$/.test(s) || !s;
+    const categoria = linhas.filter((l) => l.includes('·'))
+      .map((l) => l.split('·').map((s) => s.trim()).find((s) => !ehNota(s)) || '')
+      .find(Boolean) || '';
     const notaLinha = linhas.find((l) => /^\d[.,]\d\s*\(/.test(l)) || '';
     const avaliacoes = (notaLinha.match(/\(([\d.\s]+)\)/) || [])[1]?.replace(/\D/g, '') || '';
     return { nome: String(nome || '').trim(), categoria_maps: categoria, n_avaliacoes: avaliacoes, ...lerHref(href) };
@@ -543,13 +574,15 @@
     linha.criterio_porte_shopping = criterioPorte(op);
     linha.qt_outros_1000m = validos.filter((r) => r.grupo === 'outro' && r.distancia_m <= RAIO_MAX).length;
     linha.resultados_ate_1000m = validos.filter((r) => r.distancia_m <= RAIO_MAX).length;
+    // Distâncias só com resultados da região (o Maps completa listas com outras cidades).
+    const daRegiao = validos.filter((r) => !r.fora_da_regiao);
     for (const [grupo, col] of Object.entries(GRUPOS)) {
-      const d = validos.filter((r) => r.grupo === grupo).map((r) => r.distancia_m);
+      const d = daRegiao.filter((r) => r.grupo === grupo).map((r) => r.distancia_m);
       linha[`dist_${col}_mais_proxima_lida_m`] = d.length && !falhos.has(grupo) ? Math.min(...d) : '';
     }
     // Estação mais próxima de qualquer sistema; em branco se algum não foi medido.
     const estacao = TRANSPORTE.some((g) => falhos.has(g)) ? null
-      : validos.filter((r) => TRANSPORTE.includes(r.grupo)).sort((a, b) => a.distancia_m - b.distancia_m)[0];
+      : daRegiao.filter((r) => TRANSPORTE.includes(r.grupo)).sort((a, b) => a.distancia_m - b.distancia_m)[0];
     linha.dist_estacao_mais_proxima_lida_m = estacao ? estacao.distancia_m : '';
     linha.estacao_mais_proxima = estacao ? estacao.nome : '';
     linha.tipo_estacao_mais_proxima = estacao ? estacao.grupo : '';
@@ -563,7 +596,9 @@
     linha.consultas_dispensadas = juntar(local.consultas_dispensadas || []);
     linha.consultas_cobertura_insuficiente = juntar(local.cobertura_insuf || []);
     linha.consultas_censura = juntar(local.censura || []);
-    linha.situacao = problemas(local).join('; ') || 'ok';
+    // Porte sem resposta do OSM não refaz a coleta: resolve-se com "Buscar áreas OSM que faltam".
+    const semPorte = linha.qt_shoppings_porte_1000m === '' && !falhos.has('shopping') ? ['porte sem OSM'] : [];
+    linha.situacao = [...problemas(local), ...semPorte].join('; ') || 'ok';
     linha.coletado_em = local.coletado_em;
     return linha;
   }
@@ -575,7 +610,7 @@
       const rs = dados.resultados.filter((r) => r.origem === local.chave).map((r) => {
         const rev = revisoes[chave(r)];
         const grupo_auto = classificar(r.nome, r.categoria_maps);
-        return { ...r, grupo_auto, grupo: rev || grupo_auto, revisado: rev ? 'sim' : '' };
+        return { ...r, grupo_auto, grupo: rev || grupo_auto, revisado: rev ? 'sim' : '', fora_da_regiao: r.distancia_m > DIST_REGIAO_M ? 'sim' : '' };
       });
       marcarDuplicatas(rs);
       for (const r of rs) Object.assign(r, r.grupo === 'shopping' ? porte(r, local, op) : { porte_shopping: '', porte_base: '' });
@@ -750,7 +785,8 @@
       gravar(CHAVE_FILA, fila);
       status(parar ? 'Fila interrompida.' : `Fila concluída: ${fila.locais.length} estabelecimentos.`);
       atualizarPainel();
-      if (!parar) { tocar('fim'); baixarTudo('', fila.locais.map(chaveLocal)); }
+      // Antes do CSV final, repete as consultas ao OSM que falharam na fila.
+      if (!parar) { await completarOsm(); tocar('fim'); baixarTudo('', fila.locais.map(chaveLocal)); }
       return;
     }
     gravar(CHAVE_FILA, fila);
@@ -824,7 +860,7 @@
 
   // ---------- exportação ----------
 
-  const COLS_RESULTADOS = ['origem_place_id', 'origem_nome', 'nome', 'categoria_maps', 'grupo_auto', 'grupo', 'revisado', 'duplicata_de', 'distancia_m', 'n_avaliacoes', 'porte_shopping', 'porte_base', 'lat', 'lng', 'place_id', 'id_maps', 'consultas', 'coletado_em'];
+  const COLS_RESULTADOS = ['origem_place_id', 'origem_nome', 'nome', 'categoria_maps', 'grupo_auto', 'grupo', 'revisado', 'duplicata_de', 'fora_da_regiao', 'distancia_m', 'n_avaliacoes', 'porte_shopping', 'porte_base', 'lat', 'lng', 'place_id', 'id_maps', 'consultas', 'coletado_em'];
 
   function colsResumo() {
     const cols = ['place_id', 'nome', 'cidade', 'lat', 'lng'];

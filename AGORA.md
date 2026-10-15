@@ -10,7 +10,7 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 - **Conferência de conceitos:** checklists em `bibliografia/leituras-P1/` (25 conceitos) e `leituras-P2/` (34), todos `[AV]`. Ao ler, trocar o `[AV]` da linha pela página; o vigia propaga. Situação em `bibliografia/relatorio-conceitos.md`.
 
-- **Entorno no Maps** (`_src/[B1]…/Google Places (Negócios)/webscripts/maps_entorno.user.js`, versão 2026.10.14-2): busca de trem, buscas dispensadas onde o sistema não existe, estação mais próxima e nome de arquivo com data e estabelecimento. Fila das 51 casas em `entorno/B1_entorno_maps_fila.csv`; reinstalar o carregador (`python3 _src/extras/gerar_carregadores.py --abrir`) e rodar a fila.
+- **Entorno no Maps** (`_src/[B1]…/Google Places (Negócios)/webscripts/maps_entorno.user.js`, versão 2026.10.15-1): fila das 51 casas coletada em 15/10. A versão nova descarta estações de outras cidades (> 50 km), conta as estações-tubo de Curitiba e tira estações futuras. Recarregar o Maps, clicar em "Buscar áreas OSM que faltam" (22 casas sem porte de shopping) e depois "Exportar CSVs": a reclassificação vale para o que já está guardado, sem recoletar.
 
 ## Próximos 3 passos
 

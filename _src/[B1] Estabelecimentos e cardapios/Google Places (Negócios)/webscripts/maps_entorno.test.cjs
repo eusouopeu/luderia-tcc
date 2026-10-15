@@ -203,3 +203,33 @@ test('dispensada sai zero, não branco; estação mais próxima entre metrô, tr
   const falhou = { ...local, falhas: ['estação BRT'] };
   assert.equal(t.montarSaida({ locais: [falhou], resultados: [] }, {}, { porte: 'osm', area_min_m2: 5000, abrasce: [] }).resumo[0].dist_estacao_mais_proxima_lida_m, '');
 });
+
+test('coleta de 15/10: estação-tubo, operador, futura estação e sede de companhia', () => {
+  assert.equal(t.classificar('Estação Tubo Mariano Torres', ''), 'vlt_brt');
+  assert.equal(t.classificar('Estação Tubo Praça Osório', 'Estação de ônibus'), 'vlt_brt');
+  assert.equal(t.classificar('Trensurb Estação Rodoviária', 'Estação de metrô'), 'trem');
+  assert.equal(t.classificar('Futura estação Rua do Grito (BRT ABC)', 'Empresa de ônibus'), 'outro');
+  assert.equal(t.classificar('Companhia do Metropolitano do Distrito Federal', 'Companhia ferroviária'), 'outro');
+});
+
+test('categoria do cartão ignora a nota e o preço antes do "·"', () => {
+  assert.equal(t.lerCartao('Estação 102', 'Estação 102\n4,0(1.731) · $$\nRestaurante · Av. X, 10', '').categoria_maps, 'Restaurante');
+  assert.equal(t.lerCartao('Shopping Hauer', 'Shopping Hauer\n4,4(6.234) · \nShopping center ·  · R. Y', '').categoria_maps, 'Shopping center');
+});
+
+test('resultado de outra região fica fora das distâncias; porte sem OSM aparece na situação', () => {
+  const local = { chave: 'c', place_id: 'c', nome: 'C', cidade: 'Curitiba', lat: -25.43, lng: -49.27, buscas: 2, falhas: [], censura: [], cobertura_insuf: [], subdivididas: [], osm: { erro: 'HTTP 429' }, coletado_em: 'h',
+    consultas: ['estação BRT', 'shopping center'], consultas_dispensadas: ['estação de metrô', 'estação de trem', 'estação VLT'] };
+  const r = (nome, categoria_maps, distancia_m) => ({ origem: 'c', nome, categoria_maps, distancia_m, lat: -25.43 + distancia_m / 111320, lng: -49.27, n_avaliacoes: '1', place_id: nome });
+  const { resumo, resultados } = t.montarSaida({ locais: [local], resultados: [
+    r('Estação BRT Cidadela', 'Serviço de transporte', 1786000), r('Lapa', 'Estação de metrô', 1786280),
+    r('Estação Tubo Bigorrilho', '', 3775), r('Shopping Curitiba', 'Shopping center', 800),
+  ] }, {}, { porte: 'osm', area_min_m2: 5000, abrasce: [] });
+  const l = resumo[0];
+  assert.equal(l.dist_estacoes_vlt_brt_mais_proxima_lida_m, 3775);
+  assert.equal(l.dist_estacoes_metro_mais_proxima_lida_m, '');
+  assert.equal(l.estacao_mais_proxima, 'Estação Tubo Bigorrilho');
+  assert.equal(resultados.find((x) => x.nome === 'Lapa').fora_da_regiao, 'sim');
+  assert.equal(l.qt_shoppings_porte_1000m, '');
+  assert.equal(l.situacao, 'porte sem OSM');
+});
