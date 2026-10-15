@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 15/10/2026 | Estatística descritiva do B1: cada casa em uma metrópole (endereço) e em uma região (IBGE, UF da capital); Instagram de perfil errado (LudoCafé, Dominaria) fora das estatísticas; couvert só entre as casas que cobram; desvio padrão amostral e quartis inclusivos | `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_estatistica_descritiva.py` |
 | 15/10/2026 | Instagram, período 01/09 a 01/10: posts, curtidas e comentários contam posts próprios e colaborações que aparecem na grade do perfil (padrão do painel do coletor); status de Instagram lido do banco "A - Estabelecimentos" | Notion "A - Estabelecimentos"; `docs/registro-de-alteracoes.md` |
 | 15/10/2026 | Entorno refeito no OSM pelo painel do `maps_entorno.user.js`, com a população atual e com trem, VLT e BRT; porte de shopping com área no OSM e avaliações no Maps lado a lado, critério escolhido na exportação (OSM, avaliações, ambos, qualquer ou Abrasce) | `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` |
 | 15/10/2026 | Snowball do Instagram em userscript próprio (`instagram_snowball.user.js`), separado do coletor de perfis; mesmo CSV de saída | `_src/[B1] Estabelecimentos e cardapios/Instagram/webscripts/` |

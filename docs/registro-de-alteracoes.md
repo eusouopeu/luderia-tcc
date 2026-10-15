@@ -871,3 +871,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: sem as tarefas abaixo.
 **Depois**: refazer a coleta do Instagram de 9 perfis (lacunas de seguidores, total, primeiro post e perfil errado) com o coletor aprimorado; completar o banco de entornos com OSM e o novo critério de shopping e testá-lo; scripts de amostragem de auditoria por conjunto de dados; roteiro .md da auditoria do entorno (linha reta, como o coletor, ou trajeto); sumarização do B1 com parecer sobre o script de entornos; sumarização do B2.
 **Justificativa**: pedido do autor.
+
+### 11:14
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_estatistica_descritiva.py` (novo), `estabelecimentos/4_estatistica_descritiva/B1_estatistica_descritiva_geral.xlsx` e `…_por_grupo.xlsx` (novos)
+**Antes**: o B1 só tinha a planilha-resumo com uma linha por casa (`B1_resumo_estabelecimentos.xlsx`), sem estatísticas do conjunto.
+**Depois**: estatística descritiva de 35 variáveis e 10 proporções das 54 casas (n, média, mediana, desvio padrão amostral, mínimo, quartis, máximo, amplitude e coeficiente de variação), em fórmulas sobre a aba dados. Arquivo geral com abas geral, frequencias (casas por região e por metrópole: total 54, conferência 0), dados e dicionario; arquivo por grupo com painel e detalhe por metrópole (13) e por região do Brasil (5, IBGE pela UF da capital). Regras: Instagram de LudoCafé e Dominaria vazio (perfil coletado não é o da casa); couvert só nas casas que cobram; shoppings de porte só onde o porte foi buscado. 447 e 4.722 fórmulas, nenhum erro no recálculo; valores conferidos contra o pandas sem divergência.
+**Justificativa**: pedido do autor de uma sumarização com médias, medianas, amplitudes e desvios do conjunto, e de outra por metrópole e por região.
+
+### 11:14 (site)
+**Objeto**: `_src/site-apresentacao/` (abas 08 a 10, `src/sections/S8Panorama.jsx`, `S9Metropoles.jsx`, `S10Regioes.jsx`, `src/components/graficos.jsx`, `src/formato.js`, `src/conteudo/b1-estatisticas.json`, `b1-achados.js`, `s8-b1-resultados.json`, `site.json`, `App.jsx`)
+**Antes**: sete abas, sem resultados de dados.
+**Depois**: três abas novas com a estatística descritiva do B1: panorama geral (indicadores, achados, dias e horários de funcionamento, cesta casa a casa, nota × volume, seguidores × interações e tabela por variável), por metrópole e por região (achados, gráficos e painel). Os números vêm do JSON gerado pelo script acima, e os achados são frases montadas sobre esses números. Build e lint sem erro; conferido no navegador em desktop e celular. Não publicado no GitHub Pages.
+**Justificativa**: pedido do autor de páginas com as sumarizações e os gráficos dos achados mais pertinentes.

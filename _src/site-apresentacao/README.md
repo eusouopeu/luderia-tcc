@@ -14,6 +14,9 @@ Sete seções, uma por aba da barra lateral, dimensionadas para uma apresentaç�
 | 5 | Modelo de hipóteses | 1min30 |
 | 6 | Técnicas de análise | 1min30 |
 | 7 | Contribuições esperadas | 1min |
+| 8 | Panorama das luderias (B1) | apoio |
+| 9 | Luderias por metrópole (B1) | apoio |
+| 10 | Luderias por região (B1) | apoio |
 
 Durante a apresentação, as setas **←** e **→** do teclado navegam entre as seções.
 
@@ -46,6 +49,14 @@ correspondente e salve; com `pnpm dev` rodando, a página recarrega sozinha.
 As cores não ficam nos `.json`: eles usam nomes (`"cor": "azul"`, `"roxo"`, `"rosa"`...) resolvidos em
 `src/tema.js`, que aponta para os tokens do `@theme` em `src/index.css` — uma paleta construída a partir
 das escalas `blue`, `purple` e `rose` do Tailwind.
+
+## Abas de resultados (08 a 10)
+
+Os números vêm de `src/conteudo/b1-estatisticas.json`, gerado por
+`_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_estatistica_descritiva.py`
+(não editar à mão). Títulos e descrições ficam em `src/conteudo/s8-b1-resultados.json`; os achados, em
+`src/conteudo/b1-achados.js`, como frases montadas sobre os números do JSON. Rodar o script de novo atualiza
+gráficos, tabelas e achados.
 
 ## Origem do conteúdo
 

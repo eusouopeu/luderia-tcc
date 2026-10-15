@@ -80,6 +80,30 @@
       "subtitulo": "Gerencial, acadêmica e social",
       "tempo": "1min",
       "subtituloLongo": "Gerencial, acadêmica, social — e as limitações"
+    },
+    {
+      "id": "panorama",
+      "n": 8,
+      "titulo": "Panorama das luderias",
+      "subtitulo": "B1: estatística descritiva geral",
+      "tempo": "apoio",
+      "subtituloLongo": "B1: estatística descritiva das 54 luderias"
+    },
+    {
+      "id": "metropoles",
+      "n": 9,
+      "titulo": "Luderias por metrópole",
+      "subtitulo": "B1: comparação entre as 13 metrópoles",
+      "tempo": "apoio",
+      "subtituloLongo": "B1: estatística descritiva por metrópole"
+    },
+    {
+      "id": "regioes",
+      "n": 10,
+      "titulo": "Luderias por região",
+      "subtitulo": "B1: Norte, Nordeste, Centro-Oeste, Sudeste e Sul",
+      "tempo": "apoio",
+      "subtituloLongo": "B1: estatística descritiva por região do Brasil"
     }
   ]
 }

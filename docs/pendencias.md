@@ -34,7 +34,7 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 - **Entorno: completar e testar o banco.** Acrescentar ao banco de entornos os dados do OSM e os novos critérios de filtragem de shoppings (ver o item 7 das decisões a tomar) e, em seguida, testar a integridade e a confiabilidade dos dados.
 - **Amostras de auditoria por script.** Criar e rodar scripts que gerem a lista de amostragem de auditoria de cada conjunto de dados (entornos, redes sociais, comentários etc.), em linha com a validação proporcional do item 1 das decisões a tomar.
 - **Roteiro de auditoria do entorno (.md).** Escrever o passo a passo da auditoria manual do entorno no Google Maps: como buscar shoppings e estações a partir do endereço da casa, se a distância a conferir é a do trajeto (rotas) ou em linha reta, e, se for trajeto, a pé ou de carro (o coletor mede em linha reta, então a auditoria precisa medir do mesmo jeito ou registrar a diferença).
-- **Sumarização do B1 com parecer.** Sumarizar os dados do bloco 1: estabelecimentos, redes sociais (sem as listas "seguindo") e entornos. Depois, opinar sobre a integridade, a confiabilidade e a validade dos dados do script de entornos e apontar vulnerabilidades. Ponto de partida: `estabelecimentos/B1_resumo_estabelecimentos.xlsx` (`B1-b_resumo.py`, 15/10).
+- **Parecer sobre o script de entornos.** A estatística descritiva do B1 está feita (`estabelecimentos/4_estatistica_descritiva/`, `B1-a_estatistica_descritiva.py`, 15/10). Falta opinar sobre a integridade, a confiabilidade e a validade dos dados do script de entornos e apontar vulnerabilidades. Ao completar o entorno com OSM, rodar de novo `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py` (o site lê o JSON gerado).
 - **Sumarização do B2.**
 
 ## Divergências entre documentos, ainda sem correção
@@ -66,6 +66,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 - Datas e horários das visitas: o roteiro de campo (`textos/instrumentos/roteiro_observacao_sao_jogue.md`) ainda marca 18h00 às 21h00 nas quatro visitas, e o cronograma (semana 4) chama a de 03/10 de "visita pré-teste". Confirmar se as primeiras visitas foram em 03/10 com entrada às 19h.
 
 ## Ideias futuras
+
+- Publicar no GitHub Pages as abas 08 a 10 do site (estatística descritiva do B1) com `pnpm run deploy` em `_src/site-apresentacao/`, quando o autor quiser.
 
 - Extensões fora do escopo atual (durações citadas nos textos, contagem em outra capital, recoleta do volume total, teste da porta falsa): `_instrucoes/4_metodologia.md`, "Extensões fora do escopo atual".
 - Simulação de Monte Carlo e testes H1–H9, se sobrar tempo (apêndices L e M).

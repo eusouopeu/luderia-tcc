@@ -8,6 +8,9 @@ import S4Indicadores from "./sections/S4Indicadores";
 import S5Modelo from "./sections/S5Modelo";
 import S6Tecnicas from "./sections/S6Tecnicas";
 import S7Contribuicoes from "./sections/S7Contribuicoes";
+import S8Panorama from "./sections/S8Panorama";
+import S9Metropoles from "./sections/S9Metropoles";
+import S10Regioes from "./sections/S10Regioes";
 
 const { secoes: SECOES, meta: META, barraLateral: BARRA, rodape: RODAPE } = site;
 const FUNDO_BARRA = cor(BARRA.corFundo);
@@ -21,6 +24,9 @@ const COMPONENTES = {
   modelo: S5Modelo,
   tecnicas: S6Tecnicas,
   contribuicoes: S7Contribuicoes,
+  panorama: S8Panorama,
+  metropoles: S9Metropoles,
+  regioes: S10Regioes,
 };
 
 function idDoHash() {
