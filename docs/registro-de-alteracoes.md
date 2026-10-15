@@ -943,3 +943,28 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: só as 7 casas com couvert no cardápio.
 **Depois**: couvert não cobrado não conta como item faltando; saem só as casas sem bebida ou sem entrada ou prato. Nenhuma das 26 casas com cesta sai, porque a cesta só é calculada quando bebida e entrada ou prato existem. O gráfico volta a mostrar as 26 casas, com a linha na mediana delas (R$ 58,50).
 **Justificativa**: pedido do autor.
+
+### 12:03
+**Objeto**: amostras de auditoria da coleta - `_src/extras/amostrar_auditoria.py` (novo), `B1-a_auditoria_estabelecimentos.py`, `B1-a_auditoria_entorno.py`, `B1-a_auditoria_instagram.py`, `B1-a_auditoria_cardapios.py`, `B1-a_auditoria_acervos.py`, `B2-a_auditoria_avaliacoes.py` e `_src/[B4] Bases publicas/Comum/analise/B4-a_auditoria_bases.py` (novos); saídas em `dados/[Bn]…/_dados-brutos/<pasta>/auditoria/`; `_src/dicionario.md`
+**Antes**: nenhuma amostra de auditoria gerada; o método (`_instrucoes/4_metodologia.md` §3.4) descrevia o sorteio só no texto.
+**Depois**: sete scripts geram as listas com as colunas de conferência em branco e registram semente, população, n, hash SHA-256 da origem e limite de Wilson com zero erros em `auditoria_registro.csv`. Tamanhos de 15/10: estabelecimentos 33 de 164; entorno 11 de 54 casas e 61 itens; Instagram 47 perfis e 200 de 60.809 posts; cardápios 200 de 1.825 itens; acervos 200 de 8.736 jogos; B2 200 de 1.440 avaliações com texto e completude das 49 casas (soma 2.218, diferença zero); B4 170 séries de 27 arquivos. Os arquivos ignorados pelo git (redes sociais, cardápios, acervos, coletas do B2, CAGED) ficam só na máquina. Dicionário: pasta `auditoria/` e `Comum/analise/`.
+**Justificativa**: pedido do autor de criar e rodar scripts de amostragem de auditoria para cada conjunto de dados, com as amostras em `auditoria/` dentro de cada pasta dos brutos.
+
+### 12:03
+**Objeto**: `textos/instrumentos/roteiro_auditoria_entorno_B1.md` (novo)
+**Antes**: sem roteiro de conferência do entorno.
+**Depois**: passo a passo da auditoria no Google Maps: distância em linha reta, de pino a pino, com a ferramenta Medir distância (a do coletor); distância a pé opcional, à parte, para medir o quanto a linha reta subestima o trajeto; rota de carro descartada; completude pelas buscas do Maps, pela camada de transporte público e pelo mapa do OSM; tolerância de 50 m.
+**Justificativa**: pedido do autor.
+
+### 12:03
+**Objeto**: `docs/parecer_entorno_B1.md` (novo)
+**Antes**: sem avaliação do coletor de entorno.
+**Depois**: parecer de integridade (somas fecham nas 54 casas; 695 de 3.828 resultados do arquivo de 51 casas a mais de 50 km), confiabilidade (concordância Maps × OSM por grupo) e validade (linha reta, contagem de estações, categoria de shopping), com 9 vulnerabilidades e a ordem de correção. Achado principal: as 6 casas de Curitiba têm zero estação de BRT no Maps, e o OSM acha de 2 a 7 estações-tubo a 1000 m de cada uma.
+**Justificativa**: pedido do autor de opinar sobre integridade, confiabilidade e validade dos dados do script de entornos.
+
+### 12:03 (divergência)
+**Objeto**: porte de shopping em `B1_resumo_estabelecimentos.xlsx` (via `B1-b_resumo.py`) × `docs/pendencias.md` (item 7 das decisões a tomar)
+**Antes**: o resumo traz `shopping_porte_*` com o critério "OSM shop=mall com área >= 5000 m²" para 29 casas (caixas do OSM consultadas pela fila do Maps) e vazio para 25.
+**Depois**: a pendência diz que o critério de porte ainda não foi escolhido.
+**Efeitos colaterais**: a estatística descritiva e o site mostram um porte de shopping com critério não decidido e incomparável entre casas.
+
