@@ -23,14 +23,14 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 
 ### Correspondência entre blocos e arquivos do pipeline
 
-Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/`. Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `<etapa>_Bn_<conteúdo>.py` nos scripts (etapa = `collect`, `build` ou `analise`). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `bases_comum.py`, `ludopedia_client.py`) não levam código. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam em `arquivados/`.
+Cada bloco tem pasta `[Bn] Nome`, com o mesmo nome, em `_src/` e em `dados/`; em `_src/`, o bloco se divide em uma pasta por objeto (ex.: `Google Places (Negócios)`, `Instagram`, `CAGED`); dentro de `dados/[Bn] Nome/` ficam os arquivos processados e a subpasta `_dados-brutos/`. Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `Bn-<letra>_<conteúdo>.py` nos scripts, guardados na subpasta da etapa (`collect/` → `c`, `build/` → `b`, `analise/` → `a`); cada objeto tem ainda `webscripts/`, `logs/` e `outros/` (convenções em [`_src/dicionario.md`](../_src/dicionario.md)). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `jogos_comum.py`, `instagram_comum.py`, `bases_comum.py`) não levam código e ficam em `outros/` do bloco. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam em `arquivados/`.
 
 | Bloco | Conteúdo | Scripts | Pasta de dados |
 |---|---|---|---|
-| B1 | Estabelecimentos e cardápios | `_src/[B1] Google Places (estabelecimentos)/` | `[B1] Estabelecimentos e cardapios/` |
-| B2 | Avaliações recentes | `_src/[B2] Google Places (comentarios)/` | `[B2] Avaliacoes recentes/` |
-| B3 | Contagem direta de ocupação | `_src/[B3] Contagem direta de ocupacao/` | `[B3] Contagem direta de ocupacao/` |
-| B4 | Bases públicas | `_src/[B4] Bases publicas/` | `[B4] Bases publicas/` |
+| B1 | Estabelecimentos e cardápios | `_src/[B1] Estabelecimentos e cardapios/` (`Google Places (Negócios)/`, `Cardápios/`, `Acervo de Jogos/`, `Instagram/`) | `[B1] Estabelecimentos e cardapios/` |
+| B2 | Avaliações recentes | `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/` | `[B2] Avaliacoes recentes/` |
+| B3 | Contagem direta de ocupação | `_src/[B3] Contagem direta de ocupacao/Contagem direta/` | `[B3] Contagem direta de ocupacao/` |
+| B4 | Bases públicas | `_src/[B4] Bases publicas/` (uma pasta por fonte; `Comum/bases_comum.py`) | `[B4] Bases publicas/` |
 
 ## Divisão de subcapítulos
 
@@ -53,7 +53,7 @@ Cada bloco tem subpasta `[Bn] Nome` em `_src/`, `_data/raw/` e `_data/processed/
 | Item | Descrição |
 |---|---|
 | Fonte | Google Places API; site, Instagram e cardápio digital de cada estabelecimento; OpenStreetMap |
-| Recorte | Luderias, ludobares e quiz-bares com **mais de 100 avaliações** nas **14 capitais classificadas como metrópole** pela REGIC 2018 (IBGE) e em suas regiões metropolitanas; 164 candidatos antes da curadoria manual (`B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv`); população final esperada de 100 a 150. Cada estabelecimento é atribuído à metrópole pelo endereço |
+| Recorte | Luderias, ludobares e quiz-bares com **mais de 100 avaliações** nas **14 capitais classificadas como metrópole** pela REGIC 2018 (IBGE) e em suas regiões metropolitanas; 164 candidatos antes da curadoria manual (`estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv`); população final esperada de 100 a 150. Cada estabelecimento é atribuído à metrópole pelo endereço |
 | Variáveis | Avaliação média, volume de avaliações, política de preço, acervo declarado, entorno em 500 m e 1.000 m. O modelo de A&B não é registrado |
 | **Cardápios** | Itens oferecidos, preço por item, variedade por categoria e número de itens que exigem preparo (sem contar itens prontos, como balas, refrigerantes e água). Categorias fixas: **bebidas** (drinks, refrigerante, cerveja, não alcoólicas), **entradas** (batata, outras), **pratos principais** (hambúrguer, pizza, outros), **sobremesas**, **couvert ou taxa de jogo** |
 | Registro | Data da coleta e link do cardápio; preços em R$ com duas casas decimais |
@@ -83,7 +83,7 @@ O recorte por período descreve a operação atual de cada concorrente e torna o
 | Local | As duas unidades da São Jogue, única luderia de Salvador |
 | Visitas | 4 no total, 2 por unidade: a **primeira** e a de **retorno**, 15 dias depois, na mesma unidade |
 | Períodos | Primeiras visitas no **sábado, 03/10/2026**, as duas unidades no mesmo dia, na quinzena posterior ao pagamento dos servidores estaduais da Bahia (29/09 para inativos e pensionistas; 30/09 para ativos). Os retornos caem no **domingo, 18/10/2026**, na quinzena anterior ao pagamento de outubro (29/10). Fonte: Governo da Bahia, Tabela de Pagamentos 2026 |
-| Horário | Planejado, não sorteado: os horários cobrem os momentos de maior fluxo provável. Sábado, entrada às 19h; domingo, entrada às 18h; nas duas unidades. As reservas da São Jogue só abrem às 12h, 15h e 18h, e o início da noite é o horário de maior fluxo esperado. A planilha de sorteio (`build_B3_contagem_sorteio.py`, semente 20260916) fica como registro do desenho anterior |
+| Horário | Planejado, não sorteado: os horários cobrem os momentos de maior fluxo provável. Sábado, entrada às 19h; domingo, entrada às 18h; nas duas unidades. As reservas da São Jogue só abrem às 12h, 15h e 18h, e o início da noite é o horário de maior fluxo esperado. A planilha de sorteio (`B3-b_contagem_sorteio.py`, semente 20260916) fica como registro do desenho anterior |
 | Posição do observador | Do lado de fora do estabelecimento, com vista para a entrada |
 | Duração da visita | Fixa, de 3 horas. Horário de início e de fim registrados; todas as taxas são calculadas por hora observada |
 | Registro contínuo | Entrada e saída de cada grupo: horário e número de pessoas. Grupos identificados por código para ligar entrada e saída (permanência) |
@@ -109,14 +109,14 @@ O recorte por período descreve a operação atual de cada concorrente e torna o
 | Lei Complementar 123/2006 e anexos do Simples Nacional | Alíquotas por faixa de receita | Tributos (8.1 e cap. 9) |
 | Banco Central — SGS e relatório Focus | Selic e IPCA observados e projetados; salário mínimo | Taxa mínima de atratividade e inflação do modelo (cap. 9) |
 
-Scripts em `_src/[B4] Bases publicas/` (`collect_B4_*` → `build_B4_*`); saídas `[B4] *.csv` em `_data/processed/[B4] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
+Scripts em `_src/[B4] Bases publicas/` (`B4-c_*` → `B4-b_*`); saídas `[B4] *.csv` em `dados/[B4] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
 
 ## 3.4 Tratamento dos dados
 
 ### Pipeline
 
-- Scripts em `_src/[bloco]/` seguindo o padrão `collect_*` → `build_*` → `analise_*`; saídas em `_data/processed/` com o prefixo do bloco.
-- Dados brutos (textos integrais) ficam em `_data/raw/`, fora do repositório público. O TCC e o repositório divulgam **apenas dados processados**.
+- Scripts em `_src/[bloco]/<objeto>/collect/`, `build/` e `analise/`, seguindo o padrão `Bn-c_*` → `Bn-b_*` → `Bn-a_*` ([dicionário](../_src/dicionario.md)); saídas em `dados/[bloco]/` com o prefixo do bloco.
+- Dados brutos (textos integrais) ficam em `dados/[bloco]/_dados-brutos/`, fora do repositório público. O TCC e o repositório divulgam **apenas dados processados**.
 - Dicionário de dados com nome, descrição, tipo, unidade e origem de cada variável.
 - Todo sorteio (amostra de validação do dicionário, amostra de auditoria da coleta) usa semente fixa registrada no código.
 
@@ -160,13 +160,13 @@ A validação tem três etapas:
 |---|---|
 | 1. Fidelidade | No Bloco B1, amostra aleatória estratificada por capital e faixa de volume de avaliações: 20% dos estabelecimentos curados, com nota média, número de avaliações e endereço conferidos na página. No Bloco B2, amostra estratificada por estabelecimento em duas etapas (abaixo): texto, nota e rótulo de data conferidos na página. As 200 avaliações da primeira etapa são as mesmas da validação do dicionário. A conferência é feita até sete dias após a coleta, e a data de cada conferência é registrada |
 | 2. Completude | Em todos os estabelecimentos do Bloco B2, o número de avaliações com texto no recorte, contado na página, é comparado ao número coletado. Diferença indica avaliação perdida por paginação, tempo de espera ou limite de pedidos |
-| 3. Cobertura | A lista do Bloco B1 é comparada a fontes independentes: buscas manuais por termo nas capitais e perfis de luderias no Instagram. Estabelecimento encontrado fora da lista é registrado com o motivo da ausência |
+| 3. Cobertura | A lista do Bloco B1 é comparada a fontes independentes: buscas manuais por termo nas capitais e perfis de luderias no Instagram. No Instagram, snowball pelas listas "seguindo" das casas aprovadas (sementes): conta seguida por k ou mais sementes vira candidata, classificada à mão; o corte k sai da precisão e da sensibilidade medidas, e a cobertura da lista do B1 é estimada por captura e recaptura (Chapman), lida como limite inferior (a segunda lista nasce da primeira). Só agregados e perfis de negócio são publicados; as listas brutas, com @ de pessoas físicas, ficam fora do git (`B1-b_instagram_seguindo.py`, `B1-a_instagram_snowball.py`). Estabelecimento encontrado fora da lista é registrado com o motivo da ausência |
 
 O resultado é a taxa de erro por variável, com intervalo de confiança de 95% (método de Wilson). O critério de aceitação é limite superior do intervalo igual ou inferior a 5%. Variável acima do critério tem o script corrigido e o estrato afetado coletado de novo. Se a recoleta não for possível, a variável é reportada com a taxa de erro medida e entra no cálculo da faixa da premissa que ela alimenta.
 
 ##### Amostra de auditoria do Bloco B2
 
-O desenho combina um total calculado pelo critério de aceitação (Wilson) com a regra de inspeção em duas etapas usada no controle de qualidade por atributos (ABNT NBR 5426 `[A VERIFICAR]`). Cada estabelecimento é um estrato, e todos entram na amostra. O motivo é o padrão das falhas: elas tendem a se concentrar em certas páginas, e um estabelecimento fora da amostra esconderia a falha. Explicação em linguagem simples em `docs/estatidez.md`.
+O desenho combina um total calculado pelo critério de aceitação (Wilson) com a regra de inspeção em duas etapas usada no controle de qualidade por atributos (ABNT NBR 5426 `[AV]`). Cada estabelecimento é um estrato, e todos entram na amostra. O motivo é o padrão das falhas: elas tendem a se concentrar em certas páginas, e um estabelecimento fora da amostra esconderia a falha. Explicação em linguagem simples em `docs/estatidez.md`.
 
 | Passo | Procedimento |
 |---|---|
@@ -183,7 +183,7 @@ A validação cobre a relação entre o script e a página. A relação entre a 
 
 #### Bloco B4 - bases públicas
 
-A extração por API copia tabelas inteiras. Não há sorteio nem página a ser lida, e o volume de séries é pequeno. A validação, então, é exaustiva: cada série usada no plano é reconciliada com a tabela publicada no portal da instituição, em ao menos um período e um recorte geográfico. Os totais são conferidos com a soma das linhas, conforme a regra de tabela agregada do projeto. As funções de conferência ficam nos próprios scripts `build_B4_*`.
+A extração por API copia tabelas inteiras. Não há sorteio nem página a ser lida, e o volume de séries é pequeno. A validação, então, é exaustiva: cada série usada no plano é reconciliada com a tabela publicada no portal da instituição, em ao menos um período e um recorte geográfico. Os totais são conferidos com a soma das linhas, conforme a regra de tabela agregada do projeto. As funções de conferência ficam nos próprios scripts `B4-b_*`.
 
 Os erros mais prováveis são de processamento: código de variável ou de município trocado, filtro aplicado à série errada, unidade (mil, milhão, percentual) e índice de correção monetária. O erro da própria base não é validado pelo trabalho, e sim declarado em §3.9: amostra da POF e da PNAD Contínua, cobertura só do emprego formal no Novo CAGED e preço anunciado, não contratado, no FipeZap.
 
@@ -199,7 +199,7 @@ O instrumento é o próprio observador, e não há gravação para auditar depoi
 | Grupos sem saída | Grupos com entrada e sem saída registrada são contados à parte. Os que ainda estão no salão ao fim da visita são censurados; os demais são omissões |
 | Caminhos independentes | Pessoas pela porta, pessoas pelas mesas e notas fiscais emitidas: as três estimativas de fluxo são comparadas por visita |
 
-Dado não anotado é tratado como faltante. Não há imputação. A taxa de omissão de cada visita é reportada junto com as saídas. Quando a omissão for relevante, a estimativa de fluxo usa o caminho com menos falhas e a faixa da premissa aumenta. O script `analise_B3_contagem.py` já conta à parte os grupos sem saída e os pedidos sem chegada, sem imputação. O fechamento do saldo e a separação entre censura e omissão ainda precisam ser acrescentados a ele.
+Dado não anotado é tratado como faltante. Não há imputação. A taxa de omissão de cada visita é reportada junto com as saídas. Quando a omissão for relevante, a estimativa de fluxo usa o caminho com menos falhas e a faixa da premissa aumenta. O script `B3-a_contagem.py` já conta à parte os grupos sem saída e os pedidos sem chegada, sem imputação. O fechamento do saldo e a separação entre censura e omissão ainda precisam ser acrescentados a ele.
 
 ### Validação do dicionário
 
@@ -359,12 +359,12 @@ Entram no cap. 11 como validações recomendadas antes do investimento, ou são 
 
 ## Referências de apoio ao método
 
-- BARDIN, Laurence. *Análise de conteúdo*. Edições 70, 2011. — codificação dos textos. `[A VERIFICAR]`
-- COHEN, Jacob. A coefficient of agreement for nominal scales. *Educational and Psychological Measurement*, 1960. — kappa. `[A VERIFICAR]`
-- BENJAMINI, Yoav; HOCHBERG, Yosef. Controlling the false discovery rate. *Journal of the Royal Statistical Society: Series B*, 1995. — múltiplas comparações. `[A VERIFICAR]`
-- MALHOTRA, Naresh K. *Pesquisa de marketing*. 2019. `[A VERIFICAR]`
-- GROVES, Robert M. et al. *Survey methodology*. 2. ed. Wiley, 2009. — erro total da pesquisa. `[A VERIFICAR]`
-- BIEMER, Paul P. Total survey error: design, implementation, and evaluation. *Public Opinion Quarterly*, v. 74, n. 5, 2010. — erro amostral e não amostral. `[A VERIFICAR]`
-- AMAYA, Ashley; BIEMER, Paul P.; KINYON, David. Total error in a big data world: adapting the TSE framework to big data. *Journal of Survey Statistics and Methodology*, v. 8, n. 1, 2020. — erro total em dados de plataforma. `[A VERIFICAR]`
-- MENG, Xiao-Li. Statistical paradises and paradoxes in big data (I). *The Annals of Applied Statistics*, v. 12, n. 2, 2018. — viés de seleção em bases grandes. `[A VERIFICAR]`
-- WILSON, Edwin B. Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association*, v. 22, 1927. — intervalo da taxa de erro. `[A VERIFICAR]`
+- BARDIN, Laurence. *Análise de conteúdo*. Edições 70, 2011. — codificação dos textos. `[AV]`
+- COHEN, Jacob. A coefficient of agreement for nominal scales. *Educational and Psychological Measurement*, 1960. — kappa. `[AV]`
+- BENJAMINI, Yoav; HOCHBERG, Yosef. Controlling the false discovery rate. *Journal of the Royal Statistical Society: Series B*, 1995. — múltiplas comparações. `[AV]`
+- MALHOTRA, Naresh K. *Pesquisa de marketing*. 2019. `[AV]`
+- GROVES, Robert M. et al. *Survey methodology*. 2. ed. Wiley, 2009. — erro total da pesquisa. `[AV]`
+- BIEMER, Paul P. Total survey error: design, implementation, and evaluation. *Public Opinion Quarterly*, v. 74, n. 5, 2010. — erro amostral e não amostral. `[AV]`
+- AMAYA, Ashley; BIEMER, Paul P.; KINYON, David. Total error in a big data world: adapting the TSE framework to big data. *Journal of Survey Statistics and Methodology*, v. 8, n. 1, 2020. — erro total em dados de plataforma. `[AV]`
+- MENG, Xiao-Li. Statistical paradises and paradoxes in big data (I). *The Annals of Applied Statistics*, v. 12, n. 2, 2018. — viés de seleção em bases grandes. `[AV]`
+- WILSON, Edwin B. Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association*, v. 22, 1927. — intervalo da taxa de erro. `[AV]`

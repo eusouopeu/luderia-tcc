@@ -545,8 +545,197 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 
 ## 2026/10/14
 
+### 07:01
+**Objeto**: `CLAUDE.md`, `AGENTS.md`
+**Antes**: o `CLAUDE.md` não citava o padrão de documentação dos projetos; não havia `AGENTS.md`.
+**Depois**: o `CLAUDE.md` passa a citar `../_shared/docs-standards.md` (derivado deste projeto e do rotinas) e manda não carregar documentação por padrão; `AGENTS.md` criado como link simbólico para o `CLAUDE.md`, para outros agentes lerem as mesmas instruções.
+**Justificativa**: pedido do autor, para padronizar a documentação de todos os projetos.
+
+### 07:19
+**Objeto**: `.claude/skills/traduza/SKILL.md`, `docs/notas/` (`README.md`, `2026-10-14_vpl.md`), `CLAUDE.md` ("Registro de alterações")
+**Antes**: não havia forma padronizada de pedir e guardar explicações de conteúdos não entendidos nas respostas do Claude.
+**Depois**: skill de projeto `traduza`, acionada por `/traduza termos` ou `==termos==`, gera uma nota por termo em `docs/notas/` (explicação para criança de 5 a 10 anos, uso no TCC, exemplo com números e versão técnica), com índice em `docs/notas/README.md`; primeira nota (VPL) gerada como teste. O `CLAUDE.md` passa a dispensar as notas do registro de alterações.
+**Justificativa**: pedido do autor, para guardar as explicações fora do histórico da conversa e estudar para a banca; pasta em `docs/` para respeitar a regra de pastas enxutas na raiz.
+
+### 08:05
+**Objeto**: `_src/sincronizar_vault.sh`, `CLAUDE.md` ("Fim de sessão")
+**Antes**: não havia cópia das pastas do TCC para o vault do Obsidian; leitura no celular indisponível.
+**Depois**: script com `rsync` em sentido único copia `docs/`, `textos/` e `bibliografia/` (inclusive `leituras-P1/`, ignorada pelo git) para `~/Documents/2oCerebro/C4-Projetos/TCC Luderia/`; `--simular` mostra o que mudaria. O `CLAUDE.md` manda rodá-lo depois do commit de fim de sessão.
+**Justificativa**: pedido do autor, para ler o TCC no celular pela sincronização do vault; cópia em vez de mover pastas ou usar atalhos, para o git continuar versionando o conteúdo.
+
+### 08:20
+**Objeto**: `_src/sincronizar_vault.sh`
+**Antes**: destino da cópia em `~/Documents/2oCerebro/C4-Projetos/TCC Luderia/`.
+**Depois**: destino em `~/Documents/2oCerebro/1-Graduação/12-TCC/Luderia/` (subpastas `docs`, `textos`, `bibliografia`); a cópia antiga foi apagada. Os dois arquivos que já estavam na raiz de `Luderia/` não são tocados, pois o `--delete` age só dentro das três subpastas.
+**Justificativa**: pedido do autor, para manter o TCC junto das demais pastas da graduação no vault.
+
+### 08:25
+**Objeto**: pastas `_data/`, `Anexos/`, `site-apresentacao/`, `app-observacao/`; caminhos em todos os scripts de `_src/`, `.gitignore`, `.claude/launch.json`, `CLAUDE.md`, `README.md`, `AGORA.md`, `_instrucoes/`, `bibliografia/`, `textos/`, nos userscripts e nas colunas de caminho dos CSV de `dados/` (ex.: `B1_jogos_dos_acervos.csv`); `_src/app-observacao/scripts/gerar_jogos.py` e `CLAUDE.md` do app; versão do app (`versionCode` 9, `2026.10.14-1`)
+**Antes**: dados em `_data/raw/[Bn] Nome/` e `_data/processed/[Bn] Nome/`; `site-apresentacao/` e `app-observacao/` na raiz; `Anexos/` com uma subpasta vazia (`Cardápios (fotos)`).
+**Depois**: `dados/[Bn] Nome/` com os arquivos processados na raiz do bloco e os brutos em `dados/[Bn] Nome/dados-brutos/`; site e app em `_src/site-apresentacao/` e `_src/app-observacao/` (no app, `parents[3]` e `../../../_shared`); `Anexos/` apagada. As regras do `.gitignore` seguem os novos caminhos e deixam de fora os mesmos arquivos (244 arquivos de dados rastreados antes e depois). `arquivados/` e os registros antigos deste arquivo mantêm os caminhos da época.
+**Justificativa**: pedido do autor, para deixar a raiz mais enxuta e juntar processados e brutos de cada bloco numa só pasta; `Anexos/` não tinha mais conteúdo nem menção.
+
+### 08:57
+**Objeto**: `_src/` — pastas dos blocos, os 51 scripts de etapa, os 7 módulos auxiliares, `_src/Web scripts/` (5 webscripts, 2 testes, `gerar_carregadores.py`), `_src/_logs/`; novos `_src/dicionario.md`, `_src/log_execucao.py` e `[B1] Google Places (estabelecimentos)/outros/regic.py`; `.gitignore`; menções em `CLAUDE.md`, `README.md`, `_instrucoes/4_metodologia.md`, `bibliografia/referencias_bases_publicas.md`, `textos/instrumentos/analise_conteudo_bardin_B2.md`, `requirements.txt` e no `CLAUDE.md` do app; `dados/[B3] Contagem direta de ocupacao/B3_contagem_sorteio_visitas.xlsx`
+**Antes**: scripts soltos na pasta de cada bloco, com nomes `<etapa>_Bn_<conteúdo>.py` e `ROOT = …parents[2]`; webscripts juntos em `_src/Web scripts/`; `_src/_logs/` vazia e nenhum script gravava log; `B1-b_planilhas_regic` importava `load_regic` de `analise_B1_limiares.py` e `build_B4_caged_salarios` importava `CBOS` de `collect_B4_caged.py`; convenções de nomes espalhadas pelo registro de alterações; a aba "Instruções" do sorteio do B3 ainda citava "Bloco D" e `_src/[D] …/build_contagem_sorteio.py`.
+**Depois**: cada bloco de `_src/` tem `collect/`, `build/`, `analise/`, `webscripts/`, `logs/` e `outros/` (pasta vazia com `.gitkeep`); scripts renomeados para `Bn-<c|b|a>_<conteúdo>.py` (ex.: `build_B1_cardapios_ocr.py` → `build/B1-b_cardapios_ocr.py`), com `parents[3]` e um bloco de abertura que inclui `_src/` e `outros/` no caminho de importação e liga o log (`registrar_execucao`, só quando executado diretamente); auxiliares em `outros/`, `load_regic` e constantes da REGIC no novo `regic.py` e `CBOS` em `bases_comum.py`, porque nome com hífen não pode ser importado; webscripts em `webscripts/` do bloco (`maps_horarios_pico` e `maps_entorno` em `[B1] Google Places`), `gerar_carregadores.py` na raiz de `_src/`, varrendo `[B*]/webscripts/`, com carregadores em `_src/carregadores/`; logs em `logs/<script>_AAAA-MM-DD_HHMM.log`, fora do git; `_src/dicionario.md` com as convenções atuais e passadas de pastas, scripts, arquivos, colunas, valores e variáveis, incluindo regras novas para valores (`sim`/`nao`, célula vazia para ausente, ponto decimal, `;` com BOM) que não convertem arquivos já gerados. Conferência: 54 arquivos compilam; 60 caminhos de constantes existem, salvo `dados-brutos/app` do B3, ainda sem coleta; testes dos webscripts passam (14 e 11); 16 scripts sem API rodaram e geraram log, e só o `.xlsx` do sorteio do B3 mudou, nas duas linhas de texto da aba "Instruções" (números iguais, mesma semente).
+**Justificativa**: pedido do autor, para separar os scripts por etapa, encurtar os nomes, guardar o histórico das execuções e reunir as convenções de nomes num só lugar.
+
+### 09:29
+**Objeto**: `dados/[Bn] Nome/dados-brutos/` (4 pastas); estrutura de `_src/` (102 arquivos movidos); utilitários da raiz de `_src/`; caminhos nos scripts, `.gitignore`, `CLAUDE.md`, `README.md`, `AGORA.md`, `_instrucoes/4_metodologia.md`, `bibliografia/referencias_bases_publicas.md`, `textos/instrumentos/`, `_src/app-observacao/CLAUDE.md` e `_src/dicionario.md`; `dados/[B3] Contagem direta de ocupacao/B3_contagem_sorteio_visitas.xlsx`
+**Antes**: brutos em `dados/[Bn] Nome/dados-brutos/`; `_src/` com uma pasta por fonte (`[B1] Acervo de Jogos`, `[B1] Cardapios`, `[B1] Google Places (estabelecimentos)`, `[B1] Instagram`, `[B2] Google Places (comentarios)`, `[B3] Contagem direta de ocupacao`, `[B4] Bases publicas` com as sete fontes juntas); `gerar_carregadores.py`, `gerar_docx_cronograma.js`, `gerar_docx_projeto.js`, `log_execucao.py`, `sincronizar_vault.sh` e `carregadores/` soltos na raiz de `_src/`.
+**Depois**: brutos em `_dados-brutos/`. `_src/` com as pastas de bloco iguais às de `dados/` e, dentro, uma pasta por objeto, cada uma com `collect/`, `build/`, `analise/`, `webscripts/`, `logs/` e `outros/`: B1 → `Google Places (Negócios)`, `Cardápios`, `Acervo de Jogos`, `Instagram`; B2 → `Google Places (Comentários)`; B3 → `Contagem direta`; B4 → `BCB`, `CAGED`, `CONCLA`, `FipeZap`, `IBGE Censo`, `IBGE SIDRA`, `Simples Nacional`, com `bases_comum.py` em `Comum/`. Utilitários em `_src/extras/` (com `ROOT` e caminhos ajustados). Scripts com `parents[4]` e caminho de importação para `_src/extras/`, `outros/` e, no B4, `Comum/`. O `.xlsx` do sorteio do B3 mudou só no caminho do script, na aba "Instruções". Conferência: 60 arquivos Python compilam; 60 caminhos de constantes existem, salvo `_dados-brutos/app` do B3, ainda sem coleta; testes dos webscripts passam (14 e 11); 16 scripts sem API rodaram e gravaram log na pasta do objeto; o `.docx` do cronograma é gerado; 46 arquivos rastreados de `_dados-brutos/` e nenhum arquivo ignorado entrou no git.
+**Justificativa**: pedido do autor, para espelhar em `_src/` os blocos de `dados/`, separar os scripts por objeto e deixar a raiz de `_src/` só com as pastas de bloco, `extras/`, o app, o site e o dicionário.
+
+### 11:59
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/` (26 saídas da raiz, 7 brutos do Google Places, 98 coletas do Instagram, 21 pastas de cardápios); scripts do B1 e `B2-b_avaliacoes.py`; novo `_src/[B1] Estabelecimentos e cardapios/Cardápios/outros/cardapios_comum.py`; `.gitignore`; `CLAUDE.md`, `_instrucoes/10_biblio-apendices.md`, `_src/dicionario.md`, `docs/pendencias.md`
+**Antes**: 26 saídas soltas na raiz do B1, com nomes por extenso (ex.: `B1_planilha_curadoria_metropoles_filtrada_mais_100_avaliacoes.csv`); brutos do Google Places soltos em `_dados-brutos/`; 98 CSV do Instagram soltos em `redes_sociais/`; originais dos cardápios em `cardapios/<Nome>/` (com espaço, acento e às vezes `Cardápio ` na frente); `B1-b_cardapios_planilha.py` gravava `B1_cardapios_itens_precos.xlsx` na raiz do B1, embora o arquivo versionado estivesse em `cardapios/`.
+**Depois**: raiz do B1 só com pastas. Saídas em `estabelecimentos/1_busca/` (triagem, termos suspeitos, descartados, conferência da RM, cobertura da lista manual), `estabelecimentos/2_recorte/` (curadorias e limiares) e `estabelecimentos/3_triagem/` (triagem manual, aprovadas, comentários, base de amostragem, Instagram das aprovadas), e `entorno/`, com nomes curtos (`metro`, `regio`, `f`, `av50` = 50 ou mais, `av100` = mais de 100; ex.: `B1_curadoria_metro_f_av100.csv`, `B1_aprovadas_metro_av100.xlsx`, `B1_limiares_regio_f.png`). Brutos do Google Places em `_dados-brutos/estabelecimentos/`. Instagram em `redes_sociais/rs_<cidade>/rs_<perfil>/` (13 cidades; `coviljogos`, `dominariacg.sp` e `ludocafe_editora`, fora da lista de aprovadas, pela cidade do endereço na curadoria). Cardápios em `_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/` (19 pastas; `Alçapão` e `Alçapão Jogos` juntas em `ca_alcapao_jogos`), salvo `Cardapio de jogos Covil Game bar`, em `_dados-brutos/acervos_luderias/`; a pasta de cada nome fica em `PASTAS` (`cardapios_comum.py`), usada pela coleta e pelo OCR, que mantêm o nome antigo na coluna `estabelecimento`; coluna `arquivo` de `B1_cardapios_baixados.csv` com o caminho novo. Cidade = capital da região metropolitana do endereço. `.gitignore` aponta as aprovadas e os comentários para `estabelecimentos/3_triagem/`. Conferência: 16 scripts sem API rodaram; todos os CSV regenerados ficaram iguais (só renomeados); nos `.xlsx`, `B1_base_amostragem` mudou só o título das abas ("Bloco A" → "Bloco B1"); 61 arquivos Python compilam; testes dos webscripts passam (14 e 11); nenhum arquivo ignorado entrou no git.
+**Justificativa**: pedido do autor, para abrir a pasta do B1 sem ver dezenas de arquivos de uma vez e encurtar os nomes.
+
+### 13:06
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/cardapios/` (4 PDFs soltos) e `_dados-brutos/cardapios/` (arquivos soltos e pastas `boardz/`, `castelos/`, `placegames/`), todos fora do git; `B1-b_jogos_covil.py`, `cardapios_comum.py`, `_src/dicionario.md`
+**Antes**: 4 PDFs de cardápio soltos em `cardapios/` e originais transcritos à mão soltos em `_dados-brutos/cardapios/` ou em pastas sem o prefixo `ca_`.
+**Depois**: 34 arquivos movidos para `ca_<cidade>/ca_<estabelecimento>/` (novas `ca_sao_paulo/ca_arena_bg`, `ca_bodogami`, `ca_fan_hour`, `ca_place_games` e `ca_belo_horizonte/ca_shelf_bar`; `boardz` e `castelos` juntos com as pastas já existentes do BoardZ e do Castelos); o PDF de jogos do Covil foi para `_dados-brutos/acervos_luderias/Cardapio de jogos Covil Game bar/`, e `B1-b_jogos_covil.py` lê de lá (saída igual, 239 jogos). 9 arquivos idênticos byte a byte a outro da pasta de destino foram para a Lixeira do macOS (Arcadea, 2 do BoardZ, Bodogami, 2 do Castelos, Luderia Carioca, Ludus, Fortalúdica). `_dados-brutos/cardapios/` fica só com as pastas `ca_<cidade>/` e `transcricao/`; `cardapios/` só com as saídas e `transcricao/`.
+**Justificativa**: pedido do autor, para aplicar o padrão `ca_` a todos os originais de cardápio.
+
+### 16:56
+**Objeto**: `dados/[B2] Avaliacoes recentes/` (`B2_avaliacoes_periodo.csv`, fora do git; `B2_cobertura_coleta.csv`; `B2_fila_coleta.txt`), regerados por `B2-b_avaliacoes.py --sem-mover` com as 52 coletas coladas em `_dados-brutos/coletas/` em 13 e 14/10
+**Antes**: 2 de 51 luderias com coleta (BoardZ, Bodogami); 49 na fila.
+**Depois**: 46 ok e 5 a coletar (Flow Games, Machado Games, Ilusões Industriais, Dungeon Games Store, Paladino Hobbies); 1.948 avaliações no recorte, 1.213 com texto; soma da cobertura confere (diferença 0).
+**Justificativa**: pedido do autor: atualizar a base a partir das coletas novas e dizer o que falta coletar.
+
+### 16:56
+**Objeto**: banco "B - Comentários" do Notion (coluna nova "ID da avaliação"; 715 páginas novas; 1 página corrigida)
+**Antes**: 595 linhas digitadas à mão, sem identificador da avaliação.
+**Depois**: 1.310 linhas. Coluna "ID da avaliação" (texto, `review_id` do Google Maps) criada; entram as 715 avaliações com texto no recorte que ainda não estavam no banco (as outras 498 já estavam, conferidas pelos primeiros 16 caracteres do texto sem acento nem pontuação, por estabelecimento). 715 IDs distintos, sem repetição. Campos: Comentário original, Estabelecimento (nome do B1), Nota geral, notas de comida, serviço e ambiente, Data relativa no formato letra + número (h0 para "minutos atrás"), Data da coleta registrada, Preço por pessoa (faixa sem "R$"), Tamanho do grupo, Nível de barulho e Tempo de espera mapeados para as opções do banco, Nº do comentário (posição na lista do Maps). As linhas antigas ficaram como estavam, sem ID. A página do Play Easy com título "não" foi corrigida para o texto da avaliação.
+**Justificativa**: pedido do autor. A coluna de ID permite atualizar o banco depois sem duplicar.
+
+### 16:56 — divergência
+**Objeto**: coleta do Shelf Bar e Jogos (`2026-10-13_shelf_bar_e_jogos_maps_avaliacoes_tudo.csv`)
+**Antes**: `B2_cobertura_coleta.csv` classifica como "ok" (motivo de parada "fim da lista").
+**Depois**: a coleta leu só 40 avaliações, a mais antiga de "uma semana atrás", com `volume_na_coleta` = 31, enquanto o B1 registra 1.505 avaliações.
+**Efeitos colaterais**: o Shelf está incompleto no B2 e no Notion (só a última semana). O build trata "fim da lista" como coleta completa mesmo quando o volume lido fica muito abaixo do volume do B1.
+
+### 16:56 — divergência
+**Objeto**: coluna `texto_original` das avaliações traduzidas no CSV do userscript `maps_avaliacoes`
+**Antes**: esperado o texto no idioma original.
+**Depois**: nas 6 avaliações com `traduzida` = sim, a coluna traz "não".
+**Efeitos colaterais**: o texto original dessas avaliações não foi coletado; no Notion entrou a tradução do Google.
+
+### 16:56 — divergência
+**Objeto**: banco "B - Comentários" do Notion, Flow Games e Machado Games
+**Antes**: as 13 linhas de Machado Games.
+**Depois**: têm os mesmos textos das 13 linhas de Flow Games - Burgers Cards & Comunidade.
+**Efeitos colaterais**: um dos dois conjuntos foi lançado no estabelecimento errado; contagens por casa ficam infladas até a correção.
+
+### 17:32
+**Objeto**: `bibliografia/leituras-P2/`, `bibliografia/leituras-P1/` (PDFs de Asakura, Figueiredo e Mantovani e KAM Insight), `.gitignore`
+**Antes**: PDFs de Asakura, Figueiredo e Mantovani e KAM Insight soltos em `bibliografia/` (versionados); nenhum PDF da P2 baixado; `.gitignore` ignorava `leituras-P1/` inteira.
+**Depois**: os três PDFs em `leituras-P1/` (movidos pelo autor), fora do git. `leituras-P2/` com 5 PDFs abertos (Luca, McHugh, Cameron e Miller, Liddell e Kruschke, Fiesler et al.), indicados no roteiro de leitura. Kimes e Robson (2004) não baixou: o eCommons recusou o acesso automático (erro 429). `.gitignore` ignora o conteúdo de `bibliografia/leituras-*/`, menos o `checklist-conceitos.md`.
+**Justificativa**: pedido do autor de uma pasta com a segunda leva (P2); os checklists precisam ser versionados, os PDFs de terceiros não.
+
+### 17:32
+**Objeto**: `bibliografia/leituras-P1/checklist-conceitos.md`, `bibliografia/leituras-P2/checklist-conceitos.md`, `bibliografia/relatorio-conceitos.md`, `_src/extras/conceitos/` (`verificar_conceitos.py`, testes, `instalar_vigia.sh`), LaunchAgent `br.ufba.tcc-luderia.verificar-conceitos`
+**Antes**: sem lista dos conceitos tirados de cada obra; páginas a conferir marcadas só pelo status VM da matriz.
+**Depois**: checklist por leva com termo (com ID `Rnn-x`), definição atual (com arquivo de origem), definição real (em branco), autores e referência ABNT terminada em `[AV]`: 25 conceitos na P1 (R01–R16, R50, Figueiredo e Mantovani, KAM Insight) e 34 na P2 (R17–R49). Script troca `[AV-<ID>]` pela página quando o autor tira o `[AV]` da linha, tira o `[AV]` da obra nas listas de referências (completando o intervalo de páginas se faltar), muda VM para VT na matriz quando a obra fecha e grava o relatório de pendências e divergências; 7 testes passam. Vigia do launchd roda o script a cada mudança nas pastas `leituras-*`.
+**Justificativa**: pedido do autor: conferir conceito a conceito contra a obra e propagar a página sem edição manual.
+
+### 17:32
+**Objeto**: marcador de referência não conferida em `CLAUDE.md`, `.claude/skills/traduza/SKILL.md`, `_instrucoes/4_metodologia.md`, `_instrucoes/8_financeiro.md`, `_instrucoes/10_biblio-apendices.md`, `bibliografia/lista-de-leitura.md`, `bibliografia/referencias_bases_publicas.md`, `docs/estatidez.md`, `docs/bibliografia/diagnostico-teorico.md`, `docs/bibliografia/roteiro-leitura.md`, `textos/planejamento/projeto_pesquisa_luderia.md`, `textos/instrumentos/analise_conteudo_bardin_B2.md`
+**Antes**: `[A VERIFICAR]` (84 ocorrências, duas com nota após dois-pontos).
+**Depois**: `[AV]`, com as notas mantidas (`[AV: ...]`); novo marcador `[AV-<ID>]` para página de conceito, descrito no `CLAUDE.md` e em `_instrucoes/10_biblio-apendices.md`. Não alterados: este registro e `arquivados/` (históricos).
+**Justificativa**: pedido do autor de um marcador único e curto.
+
+### 17:32 — divergência
+**Objeto**: obra de Damodaran em `_instrucoes/8_financeiro.md` e `docs/bibliografia/roteiro-leitura.md` (R18)
+**Antes**: `8_financeiro.md` cita DAMODARAN, *Avaliação de investimentos* (edição brasileira).
+**Depois**: o roteiro (09/10) cita *Investment valuation* (Wiley, ISBN 1394254628), e o checklist da P2 seguiu o roteiro.
+**Efeitos colaterais**: edição e paginação diferentes; a página conferida no checklist só vale para a edição lida.
+
+### 18:04
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Instagram/`: `webscripts/instagram_coletor.user.js` (2026.10.14-1) e teste novo `instagram_coletor.test.cjs`; `build/B1-b_instagram_seguindo.py`, `analise/B1-a_instagram_snowball.py` e `outros/snowball_comum.py` (novos); `.gitignore`; `_instrucoes/4_metodologia.md` (Cobertura); `_src/dicionario.md`; `CLAUDE.md`; `docs/decisoes.md`; `docs/pendencias.md`; `AGORA.md`
+**Antes**: sem coleta da lista "seguindo"; checagem de cobertura do B1 pelo Instagram prevista só como busca manual de perfis.
+**Depois**: o coletor lê a lista "seguindo" de uma luderia sem pedido próprio: guarda as respostas que a página recebe ao rolar o diálogo (botão "Rolar lista de seguindo") e, como reserva, os @ visíveis antes de "Sugestões para você"; salva no navegador e exporta `AAAA-MM-DD_<perfil>_instagram_seguindo.csv`. O build junta as listas, conta o grau de entrada de cada conta (nº de sementes que a seguem), marca a situação (aprovada no B1, na curadoria do Maps, no Acervo de Jogos, nova) e grava a lista de candidatos com grau 2 ou mais e colunas de classificação manual, preservadas entre execuções; casas aprovadas entram já classificadas. A análise calcula, por corte k, precisão e sensibilidade com IC de Wilson, lista as casas novas (só perfis de negócio ou grupo) e estima a cobertura do B1 por captura e recaptura (Chapman, limite inferior). Brutos e candidatos em `_dados-brutos/redes_sociais/`, ignorados no git. Testado com listas sintéticas (somas fecham) e 6 testes do coletor.
+**Justificativa**: pedido do autor: usar o fato de as luderias se seguirem umas às outras para achar casas fora do Google Maps e do Acervo de Jogos, sem a API do Instagram e com a LGPD em mente (só perfis de negócio publicados).
+
+### 18:14
+**Objeto**: `dados/[B2] Avaliacoes recentes/B2_cobertura_coleta.csv`, `B2_fila_coleta.txt` e `B2_avaliacoes_periodo.csv` (fora do git), regerados por `B2-b_avaliacoes.py --sem-mover`
+**Antes**: 46 de 51 luderias "ok", 1.948 avaliações no recorte (1.213 com texto); fila com 5 lugares.
+**Depois**: 49 de 51 "ok" (entraram Flow Games, Dungeon Games Store, Paladino Hobbies e a coleta completa do Shelf Bar, 650 lidas até "8 meses atrás"); 2.218 avaliações no recorte (1.440 com texto); fila só com Machado Games e Ilusões Industriais. As coletas de Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria ficaram fora da base, por não estarem entre as aprovadas do B1.
+**Justificativa**: novas coletas do autor em `_dados-brutos/coletas/`.
+
+### 18:14
+**Objeto**: banco "B - Comentários" do Notion
+**Antes**: 1.310 linhas; opções de "Estabelecimento" com Machado Games e Ilusões Industriais e sem as 5 luderias novas.
+**Depois**: 1.628 linhas (1.049 com "ID da avaliação", todos distintos). Entraram 334 avaliações com texto no recorte (idade ≤ 90 dias), lidas direto da coleta mais recente de cada casa: Shelf Bar 179, Bardo Mago 100, Tubaleria 24, TabuClub 11, Toca do Rato 7, La Tabuleria 6, Dungeon 4, Flow 3 (Paladino não tem avaliação com texto no recorte). Antes de inserir, 64 do Shelf e 13 do Flow foram reconhecidas como já existentes (por ID ou pelos 16 primeiros caracteres do texto) e não repetidas. Saíram para a lixeira as 16 linhas de Machado Games (13) e Ilusões Industriais (3), e as duas opções; entraram as opções Bardo Mago, La Tabuleria, TabuClub, Toca do Rato - Pizzaria e Jogos de Tabuleiro e Tubaleria.
+**Justificativa**: pedido do autor: subir as novas coletas e excluir as duas casas que passaram pela triagem mas não são luderias (Machado Games é loja de videogame; Ilusões Industriais é loja e espaço de TCG sem acervo de jogos de tabuleiro).
+
+### 18:14
+**Objeto**: bancos "Status da coleta" e "A - Estabelecimentos" do Notion
+**Antes**: "Status da coleta" com Machado Games e Ilusões Industriais; "A - Estabelecimentos" com Ilusões Industriais.
+**Depois**: as três páginas na lixeira do Notion (recuperáveis).
+**Justificativa**: mesmo pedido do autor.
+
+### 18:14 — divergência
+**Objeto**: lista de luderias aprovadas do B1 e bancos do Notion
+**Antes**: `B1_aprovadas_metro_av100.xlsx` (e `B1_triagem_manual_metro_av100.xlsx`) mantém Machado Games e Ilusões Industriais como "aprovado" e não traz Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria (os quatro primeiros estão na base de sorteio; Toca do Rato, nem nela).
+**Depois**: no Notion, as duas primeiras foram excluídas e as cinco estão em "A - Estabelecimentos" e agora em "B - Comentários".
+**Efeitos colaterais**: o build do B2 continua pedindo coleta de Machado e Ilusões e deixa as cinco novas fora de `B2_avaliacoes_periodo.csv`; contagens do B1 e do B2 divergem das do Notion até a triagem do B1 ser corrigida.
+
+### 18:14 — divergência
+**Objeto**: coletas do userscript `maps_avaliacoes` do Shelf Bar e do Bardo Mago
+**Antes**: tentativas curtas marcadas "fim da lista": Shelf com 40 e 80 lidas (13/10 e 14/10); Bardo Mago com 130 lidas.
+**Depois**: coletas refeitas pelo autor com rolagem manual: Shelf com 650 lidas e Bardo Mago com 220, ambas "passou do período". As avaliações das tentativas curtas estão todas contidas nas longas; no Bardo, o recorte de 90 dias não mudou (126 nas duas).
+**Efeitos colaterais**: o motivo "fim da lista" não garante coleta completa; o build trata como "ok" uma coleta interrompida em silêncio. No Shelf, a contagem por rótulo cai em "2 meses atrás" (19) e "3 meses atrás" (14), entre "um mês atrás" (113) e "4 meses atrás" (110), sem inversão de ordem; pode ser sazonalidade ou falha de carregamento.
+
+### 18:35
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Instagram/webscripts/instagram_coletor.user.js` (2026.10.14-2) e `instagram_coletor.test.cjs`
+**Antes**: a captura da lista "seguindo" só reconhecia a semente pelo endereço `/<perfil>/following/`; no desktop a lista abre numa janela sobre o perfil, sem mudar o endereço, e nada era capturado.
+**Depois**: a semente também é reconhecida pelo diálogo com título "Seguindo" (ou "Following") aberto sobre o perfil; o diálogo de seguidores, que tem "Seguindo" só nos botões das linhas, não conta. Dois testes novos (8 no total, todos passando).
+**Justificativa**: erro relatado pelo autor na primeira coleta (perfil da Flow Games).
+
 ### 18:16
 **Objeto**: `_src/Web scripts/maps_entorno.user.js` (versão 2026.10.14-1) e `_src/Web scripts/maps_entorno.test.cjs`
 **Antes**: arquivos baixados como `maps_entorno_resumo_AAAA-MM-DD.csv` e `maps_entorno_resultados_AAAA-MM-DD.csv`, sempre com o mesmo nome e com a data em UTC (depois das 21h de Brasília, saía o dia seguinte); o fim de cada fila baixava tudo o que estava guardado, de modo que cada extração repetia as anteriores; buscas de metrô, BRT, VLT e shopping, com "Estação de trem" classificada como "outro"; classificação gravada na coleta e nunca refeita; lista lotada subdividida em quadrantes mesmo quando o Maps já completava a lista com lugares fora do mapa.
 **Depois**: nome começa pela data local e traz o estabelecimento, como no coletor de avaliações (`2026-10-14_sao_jogue_rio_vermelho_entorno_resumo.csv`; com mais de um, `..._3_estabelecimentos_entorno_...`); o fim da fila baixa só os estabelecimentos daquela fila, e "Exportar CSVs" segue baixando tudo; nova busca "estação de trem" e novo grupo `trem` (colunas `qt_estacoes_trem_500m`, `qt_estacoes_trem_1000m`, `dist_estacoes_trem_mais_proxima_lida_m`), com categorias de trem, ferroviária e nomes CPTM, SuperVia e Trensurb; classificação refeita na exportação; estabelecimento coletado antes da busca de trem fica com o grupo em branco, coluna `consultas_nao_feitas` e situação "busca nova não feita" (entra em "Refazer pendentes"); lista lotada com item fora do mapa visível não subdivide nem marca censura. Testes: 14 de 14 passando.
 **Justificativa**: pedido do autor ao revisar as três primeiras extrações: nomes de arquivo indistinguíveis e ausência dos trens metropolitanos, que em São Paulo, no Rio e em Porto Alegre funcionam como o metrô. O trem fica em coluna própria, sem somar ao metrô, para manter um grupo por resultado e deixar a soma "trilhos" para a análise.
+
+## 2026/10/15
+
+### 00:35
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/entorno/B1_entorno_maps_fila.csv` (novo)
+**Antes**: o coletor `maps_entorno.user.js` aceitava o `B1_entorno.csv` (separador `,`, 66 estabelecimentos, inclusive 3 já coletados em 14/10).
+**Depois**: fila própria para o coletor, separador `;`, UTF-8 com BOM, colunas `place_id;nome;capital_endereco;lat;lng`, ordenada por capital e nome, sem os estabelecimentos já presentes nos resumos de 14/10.
+**Justificativa**: pedido do autor de um CSV para extração em fila dos entornos.
+
+### 00:38
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/entorno/B1_entorno_maps_fila.csv` e `_src/[B1] …/Google Places (Negócios)/build/B1-b_entorno_maps_fila.py` (novo); `_dados-brutos/estabelecimentos/B1_localizacoes.jsonl` (+26 coordenadas)
+**Antes**: a fila das 63 casas vinha do `B1_entorno.csv` (curadoria OSM antiga): incluía capitais regionais e reprovadas na triagem e omitia aprovadas.
+**Depois**: a fila sai da triagem manual das metrópoles (51 aprovadas, menos Machado Games e Ilusões Industriais) mais as 5 "nova luderia" do acervo (Bardo Mago, La Tabuleria, Toca do Rato, TabuClub, Tubaleria): 54 no objeto, 51 na fila (Ludus, Bodogami e Shelf já têm resumo de 14/10). As 26 coordenadas que faltavam foram buscadas na Places API (Place Details, só `location`) e acrescentadas ao jsonl. Script reproduzível, com conferência de soma (54 = 51 + 3 + 0).
+**Justificativa**: correção pedida pelo autor; a lista anterior estava desatualizada.
+
+### 01:23
+**Objeto**: merge de `origin/main` (PR #3, branch `claude/cool-einstein-qywu6n`) em `plano-de-negocios`: `maps_entorno.user.js` e `maps_entorno.test.cjs`, 4 CSVs `maps_entorno_*_2026-10-14*.csv`, `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`, este registro
+**Antes**: o GitHub tinha o coletor 2026.10.14-1 no caminho antigo `_src/Web scripts/` e os 4 CSVs soltos na raiz do repositório; o local tinha o coletor 2026.10.14-2 (não commitado) no caminho novo e os mesmos CSVs, idênticos byte a byte, sem versionar em `_dados-brutos/estabelecimentos/`.
+**Depois**: fica a versão local do coletor (contém tudo da 14-1); CSVs só em `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/`; decisões e registro do PR #3 mantidos, com o caminho novo do coletor; `AGORA.md` e a pendência do entorno apontam para os caminhos atuais. A branch `claude/gallant-cannon-bmcew0` (fila de 51, mesma do commit 714fee6) não entrou.
+**Justificativa**: pedido do autor de resolver a divergência entre o repositório local e o do GitHub.
+
+### 01:46
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Instagram/webscripts/instagram_coletor.user.js` (versão 2026.10.15-1) e `instagram_coletor.test.cjs`
+**Antes**: a resposta da lista "seguindo" ia para a semente da janela aberta no momento em que chegava (resposta atrasada após fechar a janela se perdia); a rolagem só parava após 8 voltas sem conta nova e o CSV era baixado à mão, perfil por perfil; cada semente exigia abrir o perfil, clicar em "seguindo", rolar e baixar.
+**Depois**: o coletor guarda o id numérico de cada perfil e atribui a resposta pela URL do pedido (`/friendships/<id>/following/`), com a janela aberta como reserva; a rolagem para 2 voltas depois de alcançar o total declarado e, com "Download automático", baixa o CSV; novo "Coletar fila de seguindo" (lista de sementes): abre o perfil, clica em "seguindo", rola, baixa, pausa 45-90 s e segue; o estado fica no localStorage, a fila continua sozinha após cada recarga e, parada, retoma da mesma lista; perfis sem link "seguindo" ou cuja janela não abre são pulados com o motivo; lista já rolada até o fim e baixada não é pedida de novo. Testes: 12 de 12 passando.
+**Justificativa**: revisão das 11 primeiras listas (dados íntegros, sem bug) e pedido do autor de implementar as melhorias que reduzem o trabalho manual.
+
+### 01:46
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Instagram/build/B1-b_instagram_seguindo.py` e `outros/snowball_comum.py`; saídas novas `redes_sociais/snowball/B1_snowball_proximas_sementes.csv` e `.txt` e `_dados-brutos/redes_sociais/snowball/B1_snowball_candidatos_grau3.csv` (fora do git); `B1_snowball_sementes.csv` com a coluna `semente_aprovada`
+**Antes**: só a lista de candidatos com grau 2+ (590 contas) para classificar; nenhuma indicação de que semente coletar a seguir nem de semente fora das casas aprovadas.
+**Depois**: recorte para leitura com as 237 contas seguidas por 3+ sementes (novas primeiro, com link e sementes que seguem); a classe preenchida nele volta para a lista de candidatos e vale sobre ela; lista das 41 casas aprovadas ainda sem lista coletada, em rodízio entre capitais (menos sementes primeiro; dentro da capital, a mais seguida), com o `.txt` pronto para a fila do coletor (conferência 10 + 41 = 51, diferença 0); aviso de semente fora das aprovadas (@arainhadosdados, A Rainha dos Dados, Vila Velha).
+**Justificativa**: pedido do autor de separar as seguidas por 3+ perfis para análise e de priorizar as próximas sementes.
+
+### 01:46 (divergência)
+**Objeto**: sementes do snowball
+**Antes**: `B1-a_instagram_snowball.py` supõe que as sementes são as casas aprovadas no B1.
+**Depois**: @arainhadosdados (A Rainha dos Dados) foi coletada como semente sem estar em `B1_instagram_aprovadas.csv`; entra no grau de entrada de 74 contas.
+**Efeitos colaterais**: infla levemente a precisão e a sensibilidade por corte; decidir se a semente sai do build ou se a casa entra nas aprovadas.
+

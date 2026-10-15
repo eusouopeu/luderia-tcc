@@ -4,7 +4,7 @@ TCC em formato **plano de negócios baseado em evidências** para uma luderia/lu
 
 ## Mapa dos arquivos de instrução
 
-Ler este arquivo e o [AGORA.md](AGORA.md) sempre. Ler os demais sob demanda, conforme a tarefa (roteiro por tarefa no [README.md](README.md), "Por onde começar"). A numeração é a ordem de leitura, não o número do capítulo.
+Ler este arquivo e o [AGORA.md](AGORA.md) sempre; não carregar documentação ou arquivos grandes por padrão. Estrutura da documentação segue `../_shared/docs-standards.md`. Ler os demais sob demanda, conforme a tarefa (roteiro por tarefa no [README.md](README.md), "Por onde começar"). A numeração é a ordem de leitura, não o número do capítulo.
 
 | Arquivo | Quando ler |
 |---|---|
@@ -21,17 +21,17 @@ Ler este arquivo e o [AGORA.md](AGORA.md) sempre. Ler os demais sob demanda, con
 
 ## Estado do projeto
 
-- Pastas: `textos/` (`capitulos/`, `planejamento/`, `instrumentos/`), `arquivados/` (fora de uso, incluindo `recorte-antigo/`, B5 e B6), `bibliografia/`, `docs/`, `_instrucoes/`, `_src/` (scripts; `_src/_logs/` e o atalho `_src/_shared`), `_data/` (dados), `site-apresentacao/`, `app-observacao/` (app Android da contagem). Visão geral do pipeline no [README.md](README.md).
-- Prazos: `textos/planejamento/cronograma_luderia.md`, a única fonte do cronograma (o `.docx` é gerado por `_src/gerar_docx_cronograma.js` e não é versionado). Situação de cada capítulo: `textos/planejamento/status_capitulos.md`. Versão final para a banca em 16/11/2026.
+- Pastas: `textos/` (`capitulos/`, `planejamento/`, `instrumentos/`), `arquivados/` (fora de uso, incluindo `recorte-antigo/`, B5 e B6), `bibliografia/`, `docs/`, `_instrucoes/`, `_src/` (scripts por bloco e objeto; `_src/extras/` com utilitários gerais; `_src/dicionario.md` com as convenções de nomes; o atalho `_src/_shared`, `_src/site-apresentacao/` e `_src/app-observacao/`, app Android da contagem), `dados/` (uma pasta por bloco, com os processados na raiz e os brutos em `_dados-brutos/`). Visão geral do pipeline no [README.md](README.md).
+- Prazos: `textos/planejamento/cronograma_luderia.md`, a única fonte do cronograma (o `.docx` é gerado por `_src/extras/gerar_docx_cronograma.js` e não é versionado). Situação de cada capítulo: `textos/planejamento/status_capitulos.md`. Versão final para a banca em 16/11/2026.
 - Decisões tomadas: `docs/decisoes.md`. Dúvidas, ideias futuras, decisões a tomar e divergências abertas: `docs/pendencias.md`.
 - `arquivados/introducao_tcc_luderia.md` e `arquivados/metodologia_tcc_luderia.md` são do **desenho anterior** (pesquisa de mercado, hipóteses H1–H9): servem de insumo; hipóteses e testes vão para apêndice, salvo quando sustentam decisão do plano.
-- Pipeline: `_src/[Bn] Fonte/` → `_data/raw/[Bn] Nome/` → `_data/processed/[Bn] Nome/`. Scripts `<etapa>_Bn_<conteúdo>.py` (`collect` → `build` → `analise`), saídas `Bn_<conteúdo>`; cada script define `ROOT = Path(__file__).resolve().parents[2]` e roda de qualquer diretório. Detalhes em `_instrucoes/4_metodologia.md`. Blocos, em ordem de relevância:
+- Pipeline: `_src/[Bn] Nome/<Objeto>/` → `dados/[Bn] Nome/_dados-brutos/` → `dados/[Bn] Nome/`. Os blocos têm o mesmo nome em `_src/` e `dados/`; dentro de cada bloco de `_src/`, uma pasta por objeto (ex.: `Google Places (Negócios)`, `Instagram`), cada uma com `collect/`, `build/`, `analise/`, `webscripts/`, `logs/` e `outros/` (auxiliares). Scripts `Bn-<c|b|a>_<conteúdo>.py` (`c` collect → `b` build → `a` analise), saídas `Bn_<conteúdo>`; cada script define `ROOT = Path(__file__).resolve().parents[4]`, roda de qualquer diretório e grava log em `logs/` (`_src/extras/log_execucao.py`). Convenções de nomes, atuais e passadas: `_src/dicionario.md`. Detalhes em `_instrucoes/4_metodologia.md`. Blocos, em ordem de relevância:
   - **B1** — concorrentes com mais de 100 avaliações nas 14 metrópoles da REGIC (IBGE) e seus cardápios → concorrência, preço, ticket.
   - **B2** — avaliações com texto publicadas até "3 meses atrás", inclusive (rótulo do Google Maps na data da coleta) → proposta de valor, reclamações, ticket, fluxo.
   - **B3** — contagem direta nas duas unidades da São Jogue (Salvador), com leitura da NFC-e → ocupação, giro, calibração.
   - **B4** — bases públicas (IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA) → demanda, custos, tributos, taxa de desconto. Subpastas por uso (`mercado_demanda`, `ponto_operacoes`, `juridico_tributario`, `financeiro`, `multiuso`) definidas em `USOS` no `bases_comum.py`.
   - **B6** — histórico dos avaliadores; retirado em 18/09/2026 (`arquivados/B6-avaliadores/`).
-  - Subpastas dentro de `_data/raw/[Bn]…` e `_data/processed/[Bn]…`: minúsculas, sem acento, com `_` (ex.: `cardapios/`, `acervo_jogos/`, `redes_sociais/analise_legendas/`).
+  - Subpastas dentro de `dados/[Bn]…/` e `dados/[Bn]…/_dados-brutos/`: minúsculas, sem acento, com `_` (ex.: `cardapios/`, `acervo_jogos/`, `redes_sociais/analise_legendas/`).
 
 ## Versionamento
 
@@ -46,6 +46,8 @@ Arquivo: [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md) (forma
 1. **TODA VEZ** que uma ação mudar qualquer arquivo do projeto **ou qualquer banco de dados do Notion**, registrar data, hora, **Objeto**, **Antes**, **Depois** e **Justificativa**.
 2. **TODA VEZ** que aparecer informação divergente entre documentos ainda sem registro, registrar data, **Objeto**, **Antes** (arquivo mais antigo), **Depois** (mais recente) e **Efeitos colaterais**. Registrar a divergência não autoriza corrigi-la sem pedido do autor.
 
+Exceção: as notas de estudo em `docs/notas/` (skill `/traduza` ou `==termo==`) não entram no registro; entram só no commit de fim de sessão.
+
 ## Fim de sessão
 
 Antes do commit, atualizar:
@@ -54,6 +56,7 @@ Antes do commit, atualizar:
 2. `docs/decisoes.md`: uma linha no topo para cada decisão tomada na sessão.
 3. `docs/pendencias.md`: dúvida, ideia ou decisão em aberto que surgiu; item resolvido sai.
 4. `textos/planejamento/status_capitulos.md`, se algum capítulo mudou; checklist do cronograma, se alguma tarefa terminou.
+5. Depois do commit, rodar `_src/extras/sincronizar_vault.sh`: copia `docs/`, `textos/` e `bibliografia/` para o vault do Obsidian (só leitura no celular, sentido único).
 
 ## Princípios
 
@@ -61,10 +64,10 @@ Antes do commit, atualizar:
 - **Extensão:** no máximo 90 páginas, com teto por capítulo em `_instrucoes/1_estrutura.md`. Testes de hipótese H1–H9 e Monte Carlo são extras, só se sobrar tempo.
 - **Tabela agregada fecha com o total.** Cada unidade (place_id, avaliação, jogo) conta em **um único grupo**, atribuído por atributo próprio (ex.: UF do endereço), nunca pelo contexto da coleta. Antes de entregar, somar as linhas e comparar com o total (diferença zero); vale também ao rodar de novo um script existente. Contagem não exclusiva por desenho fica declarada no nome da coluna e na docstring, sem total como soma.
 - **Decisão antes de descrição:** todo resultado responde "que decisão do plano isso muda?". Se nenhuma, vai para apêndice ou sai.
-- **Nada de número sem fonte** (instituição, base, recorte, data). **Nada de referência inventada:** obra não conferida fica `[A VERIFICAR]`.
+- **Nada de número sem fonte** (instituição, base, recorte, data). **Nada de referência inventada:** obra não conferida fica `[AV]` (a verificar); citação de conceito com página a conferir leva `[AV-<ID>]`, com o ID do `checklist-conceitos.md` da leva em `bibliografia/leituras-*/`.
 - **Incerteza declarada:** estimativas com faixa (pessimista/provável/otimista) e nível de evidência.
 - **Sem questionários** de opinião ou intenção; preferir fontes secundárias e primárias comportamentais.
 - **Normas:** ABNT (detalhes em `_instrucoes/10_biblio-apendices.md`). Instituição: UFBA.
 - **Idioma:** português do Brasil no texto, nos comentários do código e nos nomes de arquivos de saída.
 - **Pastas enxutas:** nenhuma pasta com mais de cerca de 10 itens soltos na raiz; ao criar arquivos ou pastas, agrupar em subpastas por etapa ou tema (ex.: amostragem, curadoria, aprovadas, cardápios, redes sociais). Pedido do autor em 12/10/2026: abrir a pasta e ver dezenas de arquivos de uma vez sobrecarrega.
-- **Nome de arquivo de coleta de rede social:** `AAAA-MM-DD_<estabelecimento>_instagram_<perfis|posts>.csv`.
+- **Nome de arquivo de coleta de rede social:** `AAAA-MM-DD_<estabelecimento>_instagram_<perfis|posts>.csv`, em `redes_sociais/rs_<cidade>/rs_<perfil>/`; listas do snowball, `AAAA-MM-DD_<perfil>_instagram_seguindo.csv`, em `_dados-brutos/redes_sociais/seguindo/` (fora do git: trazem @ de pessoas físicas). Cardápios originais em `_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/`. A cidade é a capital da região metropolitana do endereço. Demais convenções: `_src/dicionario.md`.

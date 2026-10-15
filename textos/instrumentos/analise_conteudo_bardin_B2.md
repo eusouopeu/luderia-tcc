@@ -1,11 +1,11 @@
 # Análise de conteúdo das avaliações das luderias (Bloco B2)
 
-Versão parcial de 10/10/2026. Corpus: base do Notion "B - Comentários (manual)" na mesma data. A análise segue o modelo de análise de conteúdo de Bardin (2011) `[A VERIFICAR]` e tem caráter exploratório: identifica e define as categorias. A medição de intensidade dos achados fica para a etapa lexical/categórica posterior.
+Versão parcial de 10/10/2026. Corpus: base do Notion "B - Comentários (manual)" na mesma data. A análise segue o modelo de análise de conteúdo de Bardin (2011) `[AV]` e tem caráter exploratório: identifica e define as categorias. A medição de intensidade dos achados fica para a etapa lexical/categórica posterior.
 
 Arquivos:
 
-- codificação comentário a comentário: `_data/processed/[B2] Avaliacoes recentes/analise_conteudo/B2_codificacao_bardin.csv`;
-- contagens, tipologia e amostra de controle: `_src/[B2] Google Places (comentarios)/analise_B2_conteudo_bardin.py`;
+- codificação comentário a comentário: `dados/[B2] Avaliacoes recentes/analise_conteudo/B2_codificacao_bardin.csv`;
+- contagens, tipologia e amostra de controle: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_conteudo_bardin.py`;
 - saídas do script: `B2_bardin_*.csv`, na mesma pasta da codificação.
 
 ## 0. Corpus e situação dos dados
@@ -33,7 +33,7 @@ Pendências que afetam a análise:
 
 ### 1.1 Enquadramento
 
-A análise de conteúdo é organizada em três polos cronológicos: pré-análise, exploração do material e tratamento dos resultados com inferência e interpretação (Bardin, 2011 `[A VERIFICAR]`). A versão aplicada é categorial e temática: o texto é recortado em temas, cada tema é classificado numa categoria e a categoria é enumerada por presença.
+A análise de conteúdo é organizada em três polos cronológicos: pré-análise, exploração do material e tratamento dos resultados com inferência e interpretação (Bardin, 2011 `[AV]`). A versão aplicada é categorial e temática: o texto é recortado em temas, cada tema é classificado numa categoria e a categoria é enumerada por presença.
 
 A análise responde a uma pergunta do plano: quais atributos da experiência numa luderia o cliente comenta, em que direção e com que peso, para orientar as decisões de formato, A&B, acervo, equipe, preço e capacidade.
 
@@ -144,7 +144,7 @@ Conferência: a soma dos comentários por tipo (390 + 185) fecha com o total ana
 1. Exportar a base do Notion com a consulta do passo 1 de §1.3.
 2. Codificar cada comentário pelo livro de códigos (§1.4) e pelas regras (§1.5), sem consultar a codificação existente.
 3. Gravar o resultado no formato do CSV de codificação.
-4. Rodar `python3 "_src/[B2] Google Places (comentarios)/analise_B2_conteudo_bardin.py"`.
+4. Rodar `python3 "_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_conteudo_bardin.py"`.
 
 ### 1.9 Limitações
 
@@ -262,4 +262,4 @@ A nota média do corpus é 4,52 e 81% dos comentários têm nota 5. Os comentár
 
 ## Referência
 
-BARDIN, Laurence. *Análise de conteúdo*. São Paulo: Edições 70, 2011. `[A VERIFICAR]`
+BARDIN, Laurence. *Análise de conteúdo*. São Paulo: Edições 70, 2011. `[AV]`

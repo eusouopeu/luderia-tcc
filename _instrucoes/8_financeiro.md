@@ -111,10 +111,10 @@ Verificar antes de fechar o modelo e registrar o resultado em apêndice:
 - **Cenário como parâmetro:** um seletor (pessimista/provável/otimista) alimenta todo o modelo.
 - **Nenhum número digitado dentro de fórmula de cálculo.** Todo valor vem da aba de premissas.
 - Valores em termos reais (preços constantes) ou nominais — declarar a escolha e manter a TMA coerente com ela.
-- Se implementado em Python, seguir o padrão do pipeline em `_src/` e exportar resultados para `_data/processed/` com prefixo `financeiro_`.
+- Se implementado em Python, seguir o padrão do pipeline em `_src/` e exportar resultados para `dados/[Bn] Nome/` com prefixo `financeiro_`.
 
 ## Referências de apoio
 
-- ASSAF NETO, Alexandre. *Finanças corporativas e valor*. Atlas. `[A VERIFICAR]`
-- DAMODARAN, Aswath. *Avaliação de investimentos*. `[A VERIFICAR]`
-- SAVAGE, Sam L. *The flaw of averages*. Wiley, 2009. — por que usar distribuições em vez de médias. `[A VERIFICAR]`
+- ASSAF NETO, Alexandre. *Finanças corporativas e valor*. Atlas. `[AV]`
+- DAMODARAN, Aswath. *Avaliação de investimentos*. `[AV]`
+- SAVAGE, Sam L. *The flaw of averages*. Wiley, 2009. — por que usar distribuições em vez de médias. `[AV]`

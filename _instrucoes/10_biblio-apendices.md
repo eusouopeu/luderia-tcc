@@ -12,7 +12,7 @@
 | ABNT NBR 6028:2021 | Resumo |
 | IBGE. *Normas de apresentação tabular*. 3. ed., 1993 | Tabelas |
 
-Conferir o manual ou as normas complementares da UFBA e do curso, e as orientações da orientadora. Em caso de conflito, prevalece a norma da instituição. `[A VERIFICAR]`
+Conferir o manual ou as normas complementares da UFBA e do curso, e as orientações da orientadora. Em caso de conflito, prevalece a norma da instituição. `[AV]`
 
 ## Referências (NBR 6023:2018)
 
@@ -27,7 +27,8 @@ Conferir o manual ou as normas complementares da UFBA e do curso, e as orientaç
   - **Base de dados:** INSTITUIÇÃO. *Nome da base*. Local, ano. Disponível em: ... Acesso em: ...
   - **Legislação:** BRASIL. Lei nº X, de dia de mês de ano. Ementa. *Diário Oficial da União*, ...
   - **Repositório de código:** AUTOR. *Título do repositório*. Ano. Disponível em: URL. Acesso em: ...
-- Referência não conferida fica marcada `[A VERIFICAR]` nos arquivos de instrução e não entra na versão final.
+- Referência não conferida fica marcada `[AV]` (a verificar) e não entra na versão final.
+- Citação de conceito com página a conferir leva `[AV-<ID>]`, com o ID da linha do `checklist-conceitos.md` da leva (`bibliografia/leituras-*/`). Quando o autor troca o `[AV]` da linha pela página, o vigia de `_src/extras/conceitos/` põe a página no lugar do marcador em todo o projeto, tira o `[AV]` da obra nas listas de referências e muda VM para VT na matriz de fundamentação. Divergências entre a definição usada e a do autor vão para `bibliografia/relatorio-conceitos.md`.
 
 ## Tabelas, quadros e figuras
 
@@ -104,9 +105,9 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 | DRE e fluxo de caixa mensais | 9.5 | C |
 | Checagens de coerência | 9.8 | D |
 | Fluxograma de limpeza e critérios de curadoria (`textos/capitulos/figuras/fluxograma_limpeza_B1.*`) | 3.3 | E |
-| Tabela e gráfico de limiares de avaliações (`B1_limiares_avaliacoes*.csv`, `B1_grafico_limiares*.png`); no texto, uma frase com o número do corte | 3.3 | E |
-| Conferência da região metropolitana (`B1_conferencia_rm.csv`) e termos suspeitos (`B1_termos_suspeitos.csv`) | 3.4 | E |
-| Cobertura da lista manual (`B1_cobertura_lista_manual.csv`) | 3.4 | E |
+| Tabela e gráfico de limiares de avaliações (`estabelecimentos/2_recorte/B1_limiares*.csv` e `B1_limiares*.png`); no texto, uma frase com o número do corte | 3.3 | E |
+| Conferência da região metropolitana (`estabelecimentos/1_busca/B1_conferencia_rm.csv`) e termos suspeitos (`estabelecimentos/1_busca/B1_termos_suspeitos.csv`) | 3.4 | E |
+| Cobertura da lista manual (`estabelecimentos/1_busca/B1_cobertura_lista_manual.csv`) | 3.4 | E |
 | Lista dos concorrentes aprovados (nome, metrópole, avaliação, volume; sem texto de avaliações) | 5.3 | E |
 | Itens e preços dos cardápios (`B1_cardapios_itens_precos.xlsx`, resumido por categoria) | 6.2, 6.3 | E |
 | Livro de códigos da análise de conteúdo (`textos/instrumentos/analise_conteudo_bardin_B2.md`), validação e frequências completas por categoria | 3.4, 5.2 | F |
@@ -122,13 +123,13 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 | B | Registro de premissas completo | [8_financeiro.md](8_financeiro.md) |
 | C | Demonstrativos financeiros detalhados (DRE e fluxo de caixa mensais) | Modelo financeiro |
 | D | Checagens de coerência | [8_financeiro.md](8_financeiro.md) §5 |
-| E | Bloco B1 — curadoria, limiares, conferências, lista de concorrentes e cardápios | `_data/processed/[B1] Estabelecimentos e cardapios/B1_*` |
-| F | Bloco B2 — livro de códigos, validação da codificação, frequências por categoria | `_data/processed/[B2] Avaliacoes recentes/B2_*` |
-| G | Bloco B3 — protocolo, sorteio, registros da contagem direta e números das NFC-e | `_data/processed/[B3] Contagem direta de ocupacao/B3_*` |
-| H | Bloco B4 — tabelas de apoio das bases públicas | `_data/processed/[B4] Bases publicas/` |
+| E | Bloco B1 — curadoria, limiares, conferências, lista de concorrentes e cardápios | `dados/[B1] Estabelecimentos e cardapios/B1_*` |
+| F | Bloco B2 — livro de códigos, validação da codificação, frequências por categoria | `dados/[B2] Avaliacoes recentes/B2_*` |
+| G | Bloco B3 — protocolo, sorteio, registros da contagem direta e números das NFC-e | `dados/[B3] Contagem direta de ocupacao/B3_*` |
+| H | Bloco B4 — tabelas de apoio das bases públicas | `dados/[B4] Bases publicas/` |
 | I | Canvas e fluxograma dos processos | Caps. 6 e 7 |
 | J | Dicionário de variáveis | A criar no repositório |
-| K | Repositório e produto visual — links e instruções de reprodução | README do repositório; `site-apresentacao/` |
+| K | Repositório e produto visual — links e instruções de reprodução | README do repositório; `_src/site-apresentacao/` |
 | L | *Extra, se feito:* registro prévio, emendas e testes de hipótese H1–H9 | `textos/planejamento/registro_previo_luderia.md` |
 | M | *Extra, se feito:* simulação de Monte Carlo | [8_financeiro.md](8_financeiro.md) §4.4 |
 

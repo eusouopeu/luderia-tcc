@@ -51,23 +51,23 @@ As hipóteses H2 (comida) e H4 (jornada da ocasião) foram retiradas na emenda 2
 
 | Termo | Definição adotada | Fonte |
 |---|---|---|
-| Plano de negócios | Documento que descreve o negócio, seu mercado, sua operação e suas projeções financeiras, usado para orientar a decisão de investimento | DORNELAS [A VERIFICAR]; SEBRAE [A VERIFICAR] |
+| Plano de negócios | Documento que descreve o negócio, seu mercado, sua operação e suas projeções financeiras, usado para orientar a decisão de investimento | DORNELAS [AV]; SEBRAE [AV] |
 | Estudo de viabilidade econômica | Análise que verifica, por demonstrações projetadas e indicadores, se o investimento gera retorno financeiro | ASAKURA; SILVA; MELLO (2018) |
 | Luderia | Estabelecimento de alimentação e bebidas que oferece acesso a um acervo de jogos de tabuleiro e cartas como parte central da experiência | Elaborado pelo autor |
 | *Competitive socialising* | Segmento da hospitalidade que combina atividade de jogo, alimentação e bebidas em uma ocasião social | KAM INSIGHT (2022) |
-| Grade ERRC | Ferramenta que define o posicionamento pelos atributos a eliminar, reduzir, elevar e criar em relação ao padrão do setor | KIM; MAUBORGNE [A VERIFICAR] |
-| Atributos obrigatórios e atrativos | Obrigatórios: sua ausência gera insatisfação, sua presença não gera destaque. Atrativos: sua presença gera satisfação, sua ausência não gera reclamação. Base da análise de penalidade e recompensa | KANO et al. (1984) [A VERIFICAR] |
-| Cinco forças competitivas; PESTEL; SWOT | Diagnóstico da estrutura competitiva, do macroambiente e da posição do negócio | PORTER [A VERIFICAR]; SEBRAE [A VERIFICAR] |
+| Grade ERRC | Ferramenta que define o posicionamento pelos atributos a eliminar, reduzir, elevar e criar em relação ao padrão do setor | KIM; MAUBORGNE [AV] |
+| Atributos obrigatórios e atrativos | Obrigatórios: sua ausência gera insatisfação, sua presença não gera destaque. Atrativos: sua presença gera satisfação, sua ausência não gera reclamação. Base da análise de penalidade e recompensa | KANO et al. (1984) [AV] |
+| Cinco forças competitivas; PESTEL; SWOT | Diagnóstico da estrutura competitiva, do macroambiente e da posição do negócio | PORTER [AV]; SEBRAE [AV] |
 | Análise de conteúdo | Codificação sistemática de textos em categorias definidas por regras explícitas | BARDIN (2011) |
-| Concordância entre codificadores | Grau de acordo entre duas codificações independentes, descontado o acordo esperado ao acaso (kappa) | COHEN (1960) [A VERIFICAR] |
+| Concordância entre codificadores | Grau de acordo entre duas codificações independentes, descontado o acordo esperado ao acaso (kappa) | COHEN (1960) [AV] |
 | Registro prévio | Registro datado de hipóteses, variáveis e análises antes do acesso aos dados, que separa resultados confirmatórios de exploratórios | Elaborado pelo autor |
-| Taxa de descobertas falsas | Proporção esperada de falsos positivos entre os resultados significativos; controlada em testes múltiplos | BENJAMINI; HOCHBERG (1995) [A VERIFICAR] |
+| Taxa de descobertas falsas | Proporção esperada de falsos positivos entre os resultados significativos; controlada em testes múltiplos | BENJAMINI; HOCHBERG (1995) [AV] |
 | Velocidade de avaliações | Número de avaliações com texto por mês de um estabelecimento, no recorte das publicadas até "um mês atrás" | Elaborado pelo autor |
 | Taxa de ocupação | Proporção dos lugares disponíveis efetivamente ocupados em um período de funcionamento | Elaborado pelo autor |
 | Giro de mesa | Número de grupos que ocupam uma mesa em um período, inverso da permanência média | Elaborado pelo autor |
 | Nível de evidência (N1-N6) | Escala de confiabilidade das premissas: N1 cotação, contrato ou tabela oficial; N2 dado público estruturado; N3 benchmark medido pelo autor; N4 relatório setorial; N5 coleta primária comportamental; N6 estimativa do autor | Elaborado pelo autor |
-| Indicadores de viabilidade | VPL, TIR, payback descontado e ponto de equilíbrio | ASSAF NETO [A VERIFICAR] |
-| Premissa crítica e ponto de ruptura | Premissa crítica: a de maior impacto no VPL na análise de sensibilidade. Ponto de ruptura: valor da premissa que torna o VPL igual a zero | Elaborado pelo autor com base em ASSAF NETO [A VERIFICAR] |
+| Indicadores de viabilidade | VPL, TIR, payback descontado e ponto de equilíbrio | ASSAF NETO [AV] |
+| Premissa crítica e ponto de ruptura | Premissa crítica: a de maior impacto no VPL na análise de sensibilidade. Ponto de ruptura: valor da premissa que torna o VPL igual a zero | Elaborado pelo autor com base em ASSAF NETO [AV] |
 
 Fonte: elaborado pelo próprio autor
 
@@ -197,13 +197,13 @@ ABRINQ. *Anuário da Abrinq 2026*. Associação Brasileira dos Fabricantes de Br
 
 ASAKURA, P. N.; SILVA, A. R. da; MELLO, D. A. Estudo de viabilidade econômica de um boardgame café no município de Ourinhos/SP. *Anais do CIC - FIO*, Ourinhos, 2018. Disponível em: http://www.cic.fio.edu.br/anaisCIC/anais2018/pdf/05_01.pdf. [Completar data de acesso.]
 
-BARDIN, Laurence. *Análise de conteúdo*. São Paulo: Edições 70, 2011. [A VERIFICAR]
+BARDIN, Laurence. *Análise de conteúdo*. São Paulo: Edições 70, 2011. [AV]
 
-BENJAMINI, Yoav; HOCHBERG, Yosef. Controlling the false discovery rate: a practical and powerful approach to multiple testing. *Journal of the Royal Statistical Society: Series B*, 1995. [A VERIFICAR]
+BENJAMINI, Yoav; HOCHBERG, Yosef. Controlling the false discovery rate: a practical and powerful approach to multiple testing. *Journal of the Royal Statistical Society: Series B*, 1995. [AV]
 
-COHEN, Jacob. A coefficient of agreement for nominal scales. *Educational and Psychological Measurement*, 1960. [A VERIFICAR]
+COHEN, Jacob. A coefficient of agreement for nominal scales. *Educational and Psychological Measurement*, 1960. [AV]
 
-EVENTBRITE. *Millennials*: fueling the experience economy. Pesquisa conduzida pela Harris Poll, 2014. [A VERIFICAR: localizar o relatório original.]
+EVENTBRITE. *Millennials*: fueling the experience economy. Pesquisa conduzida pela Harris Poll, 2014. [AV: localizar o relatório original.]
 
 GILOVICH, Thomas; KUMAR, Amit; JAMPOL, Lily. A wonderful life: experiential consumption and the pursuit of happiness. *Journal of Consumer Psychology*, v. 25, n. 1, p. 152-165, 2015. DOI: 10.1016/j.jcps.2014.08.004.
 
@@ -211,4 +211,4 @@ KAM INSIGHT. *Competitive socialising*: winning a new customer occasion. KAM Med
 
 MERCADO&CONSUMO. Lazer é a segunda maior motivação de ida a shopping centers. *Mercado&Consumo*, 8 jan. 2025. Disponível em: https://mercadoeconsumo.com.br/08/01/2025/shopping-centers/lazer-e-a-segunda-maior-motivacao-de-ida-a-shopping-centers. Acesso em: 2 out. 2026. [Substituir pela publicação original da Abrasce, quando localizada.]
 
-Obras marcadas [A VERIFICAR] no Quadro 01 constam em `_instrucoes/2_ref-teorico.md` e devem ser conferidas antes da entrega.
+Obras marcadas [AV] no Quadro 01 constam em `_instrucoes/2_ref-teorico.md` e devem ser conferidas antes da entrega.

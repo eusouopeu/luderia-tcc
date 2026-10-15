@@ -100,37 +100,37 @@ Legenda do campo **Natureza**:
 
 | Conceito | Onde entra | Condicional? | Estado no projeto |
 |---|---|---|---|
-| Plano de negócios (função, estrutura) | 2.1 | não | Dornelas, Sebrae `[A VERIFICAR]` |
+| Plano de negócios (função, estrutura) | 2.1 | não | Dornelas, Sebrae `[AV]` |
 | Estudo de viabilidade (mercadológica, operacional, econômico-financeira) | Objetivo geral; 2.1 | não | Definido citando Asakura et al. (2018), que é fonte fraca para definir o conceito (§6.9) |
 | Plano de negócios "baseado em evidências" | Cap. 3 inteiro | não | **Sem fundamentação**; é a tese do trabalho |
 | Escala de níveis de evidência N1–N6 | Cap. 3, 9 | não | Criação do autor; sem referência a graduações de evidência existentes |
-| Modelo de negócio (Canvas) | 2.2, 6.1 | não | Osterwalder `[A VERIFICAR]` |
-| Estratégia do Oceano Azul e grade ERRC | 2.2, 6.1 | **sim**, se o recorte casual não voltar | Kim & Mauborgne `[A VERIFICAR]` |
-| Cinco forças | 2.2, 5.3 | não | Porter `[A VERIFICAR]`; ver a objeção de escala (§6.4) |
+| Modelo de negócio (Canvas) | 2.2, 6.1 | não | Osterwalder `[AV]` |
+| Estratégia do Oceano Azul e grade ERRC | 2.2, 6.1 | **sim**, se o recorte casual não voltar | Kim & Mauborgne `[AV]` |
+| Cinco forças | 2.2, 5.3 | não | Porter `[AV]`; ver a objeção de escala (§6.4) |
 | SWOT | 2.2, 10.1 | não | Sem fonte citada |
 | PESTEL | 2.2, 5.5 | não | Sem fonte citada |
 | Composto de marketing (4 Ps) | Cap. 6 | não | Sem fonte citada |
-| Lazer e lazer sério × casual | 2.3, 2.4 | **sim** | Stebbins, Marcellino `[A VERIFICAR]` |
-| Economia da experiência | 2.3; Problema (1.1) | não | Pine & Gilmore `[A VERIFICAR]`; Gilovich et al. (2015) citado |
-| Terceiro lugar | 2.5 | não | Oldenburg `[A VERIFICAR]` |
+| Lazer e lazer sério × casual | 2.3, 2.4 | **sim** | Stebbins, Marcellino `[AV]` |
+| Economia da experiência | 2.3; Problema (1.1) | não | Pine & Gilmore `[AV]`; Gilovich et al. (2015) citado |
+| Terceiro lugar | 2.5 | não | Oldenburg `[AV]` |
 | *Competitive socialising* | 2.5; 5.1 | não | Fontes de mercado (Savills, KAM); falta base acadêmica |
 | Luderia / board game café | 2.5; Quadro 01 | não | Definição "elaborado pelo autor"; falta literatura sobre o formato |
 | Perfil do jogador de jogos de tabuleiro | 2.4; 5.2 | parcial | Fontes listadas, mas autosselecionadas (hobbyista) |
-| Satisfação, qualidade de serviço, atributos obrigatórios × atrativos (Kano) | H1; penalidade-recompensa | não | Kano (1984) `[A VERIFICAR]` |
+| Satisfação, qualidade de serviço, atributos obrigatórios × atrativos (Kano) | H1; penalidade-recompensa | não | Kano (1984) `[AV]` |
 | Servicescape / ambiente físico | H1 ("ambiente") | não | **Sem fonte** |
 | Avaliações online como indicador de demanda e de qualidade | Bloco B2 inteiro | não | **Sem fonte** |
 | Análise de conteúdo e validade de dicionário | 3.4 | não | Bardin (2011) |
-| Concordância entre codificadores (kappa) | 3.4 | não | Cohen (1960) `[A VERIFICAR]` |
+| Concordância entre codificadores (kappa) | 3.4 | não | Cohen (1960) `[AV]` |
 | Registro prévio e divisão exploratória/confirmatória | 3.5 | não | **Sem fonte** |
-| Controle de falsas descobertas | 3.5 | não | Benjamini & Hochberg (1995) `[A VERIFICAR]` |
+| Controle de falsas descobertas | 3.5 | não | Benjamini & Hochberg (1995) `[AV]` |
 | Capacidade, giro e utilização de assentos em serviços | 7.2; 9.1 | não | **Sem fonte** |
 | Localização do estabelecimento e escolha de ponto | 6.4 | não | **Sem fonte** |
 | Preço, estruturas de cobrança | 6.3; H3 | não | **Sem fonte** |
 | Estimativa de demanda (top-down × bottom-up, penetração) | 6.6 | não | **Sem fonte** |
 | Curva de maturação de novos negócios (6–12 meses) | 6.6; 9.4 | não | Premissa N6 |
 | Sobrevivência e fracasso de restaurantes e pequenos negócios | 10.4 | não | Sebrae/CNPJ citados como fonte de dado |
-| Análise de investimentos (VPL, TIR, payback, TMA) | 2.6; 9.6 | não | Assaf Neto, Damodaran `[A VERIFICAR]` |
-| Sensibilidade, tornado, ponto de ruptura, Monte Carlo | 2.6; 9.7 | não | Savage (2009) `[A VERIFICAR]` |
+| Análise de investimentos (VPL, TIR, payback, TMA) | 2.6; 9.6 | não | Assaf Neto, Damodaran `[AV]` |
+| Sensibilidade, tornado, ponto de ruptura, Monte Carlo | 2.6; 9.7 | não | Savage (2009) `[AV]` |
 | Triangulação de evidências | 9.7; 3.7 | não | **Sem fonte** |
 
 ---
@@ -139,18 +139,18 @@ Legenda do campo **Natureza**:
 
 | Ferramenta | Capítulo | Sustentação atual |
 |---|---|---|
-| Plano de negócios | todos | Dornelas, Sebrae `[A VERIFICAR]` |
-| Canvas | 6.1 (apêndice) | Osterwalder `[A VERIFICAR]` |
-| ERRC / Oceano Azul | 6.1 | Kim & Mauborgne `[A VERIFICAR]` |
-| Cinco forças | 5.3 | Porter `[A VERIFICAR]` |
+| Plano de negócios | todos | Dornelas, Sebrae `[AV]` |
+| Canvas | 6.1 (apêndice) | Osterwalder `[AV]` |
+| ERRC / Oceano Azul | 6.1 | Kim & Mauborgne `[AV]` |
+| Cinco forças | 5.3 | Porter `[AV]` |
 | SWOT / cruzamento FO-FA-DO-DA | 10.1 | nenhuma |
 | PESTEL | 5.5 | nenhuma |
 | Composto de marketing | cap. 6 | nenhuma |
 | Matriz de critérios ponderados (escolha do bairro) | 6.4 | nenhuma |
 | Árvore de direcionadores | 9.1 | nenhuma |
 | DRE e fluxo de caixa projetados | 9.5 | nenhuma específica |
-| VPL, TIR, payback descontado, ponto de equilíbrio | 9.6 | Assaf Neto `[A VERIFICAR]` |
-| Tornado, ponto de ruptura, Monte Carlo | 9.7 | Savage `[A VERIFICAR]` |
+| VPL, TIR, payback descontado, ponto de equilíbrio | 9.6 | Assaf Neto `[AV]` |
+| Tornado, ponto de ruptura, Monte Carlo | 9.7 | Savage `[AV]` |
 | Matriz de riscos probabilidade × impacto | 10.4 | nenhuma |
 | Cenários | 10.2 | nenhuma |
 
@@ -246,7 +246,7 @@ Política de cobrança correlaciona com nível de preço, porte e público. Sem 
 
 ### 6.9 Definição do estudo de viabilidade
 
-O Quadro 01 define "estudo de viabilidade econômica" por Asakura, Silva & Mello (2018), que é um estudo de caso aplicado, não uma fonte conceitual. A definição precisa vir de obra de análise de projetos. O mesmo vale para "plano de negócios" (Dornelas e Sebrae, ambos `[A VERIFICAR]`).
+O Quadro 01 define "estudo de viabilidade econômica" por Asakura, Silva & Mello (2018), que é um estudo de caso aplicado, não uma fonte conceitual. A definição precisa vir de obra de análise de projetos. O mesmo vale para "plano de negócios" (Dornelas e Sebrae, ambos `[AV]`).
 
 ### 6.10 Limiares operacionais sem fonte
 

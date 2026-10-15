@@ -213,7 +213,7 @@ Diferenças deliberadas em relação a um plano de negócios comum. Aplicar semp
 4. **Modelo financeiro dirigido por premissas.** Premissas numa aba, cálculos em outra, cenários como parâmetros. Nenhum número digitado dentro de fórmula de cálculo.
 5. **Apêndices técnicos** com protocolos, dicionário de variáveis e link para o repositório (lista em [10_biblio-apendices.md](10_biblio-apendices.md)).
 6. **Pipeline reproduzível.** Repositório com coleta → tratamento → análise, README na raiz e dicionário de dados. Qualquer número do texto deve ser regenerável a partir de um script de `_src/`.
-7. **Produto visual.** Dashboard ou o próprio `site-apresentacao/` com mapa de concorrentes, cenários e sensibilidade.
+7. **Produto visual.** Dashboard ou o próprio `_src/site-apresentacao/` com mapa de concorrentes, cenários e sensibilidade.
 
 ### P5. Escrita
 

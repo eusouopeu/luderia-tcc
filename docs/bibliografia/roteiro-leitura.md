@@ -67,7 +67,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
   - Quando VPL e TIR divergem e qual prevalece?
   - Como se define a TMA de um negócio pequeno?
   - Como tratar fluxo real × nominal?
-- **Ressalva:** Já consta como `[A VERIFICAR]` no projeto; a existência da obra foi conferida, o conteúdo dos capítulos não.
+- **Ressalva:** Já consta como `[AV]` no projeto; a existência da obra foi conferida, o conteúdo dos capítulos não.
 
 ### R05 — Kimes et al. (1998)
 
@@ -328,6 +328,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** LUCA, Michael. Reviews, reputation, and revenue: the case of Yelp.com. Harvard Business School Working Paper 12-016, 2016. SSRN abstract=1928601. (Versão revisada de 2011.)
 - **Tipo:** Empírica. **Status:** **Verificado no texto** (páginas conferidas no arquivo).
+- **Acesso:** **Baixado:** `bibliografia/leituras-P2/Luca (HBS WP, 2016).pdf` (working paper no site da Harvard Business School).
 - **Páginas:** pp. 1–3 (introdução e resultados) e pp. 7–9 (dados), numeração do WP. Verificado na p. 1: aumento de uma estrela associa-se a 5–9% mais receita; efeito concentrado em restaurantes independentes, não em redes.
 - **Quantidade estimada:** 6 p. (verificada)
 - **Objetivo:** Ver evidência de que a nota online move a receita, e a diferença entre independentes e redes.
@@ -364,6 +365,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** McHUGH, Mary L. Interrater reliability: the kappa statistic. *Biochemia Medica*, v. 22, n. 3, p. 276–282, 2012. DOI 10.11613/bm.2012.031.
 - **Tipo:** Metodológica. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
+- **Acesso:** **Baixado:** `bibliografia/leituras-P2/McHugh (Biochemia Medica, 2012).pdf` (site da revista, acesso aberto).
 - **Páginas:** Páginas não verificadas. Artigo curto (7 p.); ler inteiro.
 - **Quantidade estimada:** 7 p. (teto; intervalo não verificado)
 - **Objetivo:** Apoio introdutório ao kappa e às suas limitações.
@@ -400,6 +402,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** CAMERON; MILLER. A practitioner's guide to cluster-robust inference. *Journal of Human Resources*, v. 50, n. 2, p. 317–372, 2015. DOI 10.3368/jhr.50.2.317.
 - **Tipo:** Metodológica. **Status:** **Verificado no texto** (páginas conferidas no arquivo).
+- **Acesso:** **Baixado:** `bibliografia/leituras-P2/Cameron & Miller (JHR, 2015) - preprint.pdf` (preprint na página do autor, UC Davis; numeração própria, ≠ JHR 317–372).
 - **Páginas:** Preprint, numeração própria (≠ JHR 317–372): pp. 2–7 (introdução e fundamento do erro agrupado), 17–18 (seção IV, o que agrupar) e 23–25 (seção VI.A, problemas com poucos agrupamentos).
 - **Quantidade estimada:** 11 p. (verificada)
 - **Objetivo:** Justificar erro-padrão agrupado por estabelecimento e saber quando o número de agrupamentos importa.
@@ -412,6 +415,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** LIDDELL; KRUSCHKE. Analyzing ordinal data with metric models: what could possibly go wrong? *Journal of Experimental Social Psychology*, v. 79, p. 328–348, 2018. DOI 10.1016/j.jesp.2018.08.009.
 - **Tipo:** Metodológica. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
+- **Acesso:** **Baixado:** `bibliografia/leituras-P2/Liddell & Kruschke (JESP, 2018) - preprint.pdf` (preprint no OSF, não a versão do JESP).
 - **Páginas:** Páginas não verificadas. Artigo tem 21 p.; ler introdução e a seção de problemas (máximo 12).
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Avaliar o risco de tratar a nota de 1 a 5 como medida contínua em regressão linear.
@@ -442,7 +446,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Fundamenta:** E17 (Monte Carlo e dependência entre premissas)
 - **Perguntas a responder depois de ler:**
   - Por que o plano com valores médios é sistematicamente enganoso?
-- **Ressalva:** Já citado no projeto como `[A VERIFICAR]`; existência conferida, conteúdo não lido.
+- **Ressalva:** Já citado no projeto como `[AV]`; existência conferida, conteúdo não lido.
 
 ### R34 — Ryu e Han
 
@@ -616,6 +620,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 - **Referência:** FIESLER; BEARD; KEEGAN. No robots, spiders, or scrapers: legal and ethical regulation of data collection methods in social media terms of service. *Proceedings of the International AAAI Conference on Web and Social Media*, v. 14, p. 187–196, 2020. DOI 10.1609/icwsm.v14i1.7290.
 - **Tipo:** Empírica / ética. **Status:** **Verificado no texto** (páginas conferidas no arquivo).
+- **Acesso:** **Baixado:** `bibliografia/leituras-P2/Fiesler et al. (ICWSM, 2020).pdf` (AAAI, acesso aberto).
 - **Páginas:** pp. 187–189 (introdução) e 195 (conclusão); PDF baixado. Resultados (pp. 190–194) não lidos seção a seção.
 - **Quantidade estimada:** 4 p. (verificada)
 - **Objetivo:** Ver como termos de serviço tratam a coleta automatizada.
@@ -638,7 +643,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 
 ### R50 — Asakura et al. (2018)
 
-- **Referência:** ASAKURA; SILVA; MELLO. Estudo de viabilidade econômica de um boardgame café em Ourinhos/SP. In: CIC, Faculdades Integradas de Ourinhos, 2018. Arquivo local `bibliografia/Asakura, Silva & Mello (FIO, 2018).pdf`.
+- **Referência:** ASAKURA; SILVA; MELLO. Estudo de viabilidade econômica de um boardgame café em Ourinhos/SP. In: CIC, Faculdades Integradas de Ourinhos, 2018. Arquivo local `bibliografia/leituras-P1/Asakura, Silva & Mello (FIO, 2018).pdf`.
 - **Tipo:** Empírica (estudo de caso). **Status:** **Verificado no texto** (páginas conferidas no arquivo).
 - **Páginas:** pp. 3–11 (material e métodos, resultados e indicadores), numeração por posição no arquivo (13 p.).
 - **Quantidade estimada:** 9 p. (verificada)
@@ -666,9 +671,9 @@ Leituras de contexto ou opcionais. Entradas curtas.
 - **R61** — KIM, W. Chan; MAUBORGNE, Renée. *Blue ocean strategy*. Harvard Business School Press, 2005 (catálogo: ISBN 9864175351 em edição local). *Páginas:* Páginas não verificadas. Sugestão: capítulo sobre a grade ERRC. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Fonte da grade ERRC, ainda prevista em 6.1. Com a retirada do recorte casual, o uso da grade ERRC deve ser reavaliado.
 - **R62** — OSTERWALDER; PIGNEUR. *Business model generation*. Hoboken: Wiley, 2010 (ISBN 0470876417 em catálogo). *Páginas:* Páginas não verificadas. Sugestão: apresentação do Canvas. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Fonte do Canvas, que pode ficar em apêndice. Opcional.
 - **R63** — CONSTANTINIDES, Efthymios. The marketing mix revisited: towards the 21st century marketing. *Journal of Marketing Management*, v. 22, n. 3–4, p. 407–438, 2006. DOI 10.1362/026725706776861190. *Páginas:* Páginas não verificadas. (~12 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Crítica e extensão do composto de marketing. Opcional.
-- **R64** — PINE, B. Joseph; GILMORE, James H. *The experience economy*. Harvard Business Review Press (edição de 2011 em catálogo; obra original de 1999). *Páginas:* Páginas não verificadas. Sugestão: capítulo introdutório. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Fonte de economia da experiência. Já listada como `[A VERIFICAR]`; existência conferida.
+- **R64** — PINE, B. Joseph; GILMORE, James H. *The experience economy*. Harvard Business Review Press (edição de 2011 em catálogo; obra original de 1999). *Páginas:* Páginas não verificadas. Sugestão: capítulo introdutório. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Fonte de economia da experiência. Já listada como `[AV]`; existência conferida.
 - **R65** — HOLBROOK; HIRSCHMAN. The experiential aspects of consumption: consumer fantasies, feelings, and fun. *Journal of Consumer Research*, v. 9, n. 2, p. 132–140, 1982. DOI 10.1086/208906. *Páginas:* Páginas não verificadas. Crossref traz só a página inicial; intervalo 132–140 a conferir. (~9 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Consumo experiencial. Complementa R64.
-- **R66** — OLDENBURG, Ray. *The great good place*. Marlowe & Co (1989; ISBN 9781557784582 em catálogo). *Páginas:* Páginas não verificadas. Sugestão: capítulo que define o terceiro lugar. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Conceito de terceiro lugar. Já listada como `[A VERIFICAR]`; existência conferida.
+- **R66** — OLDENBURG, Ray. *The great good place*. Marlowe & Co (1989; ISBN 9781557784582 em catálogo). *Páginas:* Páginas não verificadas. Sugestão: capítulo que define o terceiro lugar. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Conceito de terceiro lugar. Já listada como `[AV]`; existência conferida.
 - **R67** — GILOVICH; KUMAR; JAMPOL. A wonderful life: experiential consumption and the pursuit of happiness. *Journal of Consumer Psychology*, v. 25, n. 1, p. 152–165, 2015. DOI 10.1016/j.jcps.2014.08.004. *Páginas:* Páginas não verificadas. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Já citada no projeto (1.1). Ano de capa 2015; Crossref indica 2014 (online).
 - **R68** — HARRINGTON. Let's Meetup? Board game communities in Hong Kong. *Games and Culture*, v. 20, n. 3, p. 279–297, 2025. DOI 10.1177/15554120231202707. (Crossref: 2023 online; 2025 em volume.) *Páginas:* Páginas não verificadas. (~12 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Comunidades e cafés de jogos. Resolve a dúvida de data: o DOI de 2023 refere-se à publicação online.
 - **R69** — ROGERSON; GIBBS. Finding time for tabletop [subtítulo a conferir]. *Games and Culture*, v. 13, n. 3, p. 280–300, 2018. DOI 10.1177/1555412016656324. *Páginas:* Páginas não verificadas. (~12 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Jogadores que são pais; relevante a estudos futuros (público potencial). Ver lacunas, seção de estudos futuros.
