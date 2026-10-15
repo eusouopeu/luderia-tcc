@@ -23,6 +23,8 @@ dados/\[B1\]*/estabelecimentos/3_triagem/B1_comentarios_aprovadas_*.xlsx
 # PDFs de terceiros baixados para leitura (direitos autorais; repositório público)
 bibliografia/leituras-*/*
 !bibliografia/leituras-*/checklist-conceitos.md
+bibliografia/bibliografia-v2/pdfs/
+bibliografia/bibliografia-v2/amostras-sumarios/
 
 # Bloco B1: cardápios originais (PDF, imagens, HTML de terceiros); só a transcrição em CSV é publicada
 dados/\[B1\]*/_dados-brutos/cardapios/*

@@ -8,7 +8,7 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 - **Snowball do Instagram:** 11 listas coletadas (14-15/10), íntegras. Coletor 2026.10.15-1 tem "Coletar fila de seguindo": colar `dados/[B1]…/redes_sociais/snowball/B1_snowball_proximas_sementes.txt` (41 casas) e deixar rodar; CSVs vão para `_dados-brutos/redes_sociais/seguindo/`. Classificar primeiro `_dados-brutos/redes_sociais/snowball/B1_snowball_candidatos_grau3.csv` (237 contas) e rodar `B1-b_instagram_seguindo.py`. Prioridade abaixo do B2.
 
-- **Conferência de conceitos:** checklists em `bibliografia/leituras-P1/` (25 conceitos) e `leituras-P2/` (34), todos `[AV]`. Ao ler, trocar o `[AV]` da linha pela página; o vigia propaga. Situação em `bibliografia/relatorio-conceitos.md`.
+- **Conferência de conceitos:** checklists em `bibliografia/leituras-P1/` (25 conceitos) e `leituras-P2/` (34), todos `[AV]`. Ao ler, trocar o `[AV]` da linha pela página; o vigia propaga. Situação em `bibliografia/relatorio-conceitos.md`. Alternativa nacional em `bibliografia/bibliografia-v2/` (15/10): 10 PDFs com página conferida e lista do que buscar na Minha Biblioteca da UFBA.
 
 - **Entorno no Maps** (`_src/[B1]…/Google Places (Negócios)/webscripts/maps_entorno.user.js`, versão 2026.10.15-1): fila das 51 casas coletada em 15/10. A versão nova descarta estações de outras cidades (> 50 km), conta as estações-tubo de Curitiba e tira estações futuras. Recarregar o Maps, clicar em "Buscar áreas OSM que faltam" (22 casas sem porte de shopping) e depois "Exportar CSVs": a reclassificação vale para o que já está guardado, sem recoletar.
 
