@@ -24,6 +24,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 ## Divergências entre documentos, ainda sem correção
 
+- Instagram no Notion "A - Estabelecimentos": 30 casas sem curtidas do período; nº de posts e comentários ora contam colaborações compartilhadas, ora não; o status de Instagram das casas que não vieram nas coletas de 15/10 foi calculado pelo repositório, não pelo "A". Escolher a regra de contagem e recalcular.
+
 - Sarpa (2016): capa com *Experiências de consumo com jogos de tabuleiro modernos*; resumo com *Boardgames: um estudo sobre a experiência de consumo*. Conferir no repositório da UFRJ.
 
 - Damodaran: `_instrucoes/8_financeiro.md` cita *Avaliação de investimentos* (ed. brasileira); o roteiro e o checklist da P2 citam *Investment valuation* (Wiley). Definir a edição que será lida.

@@ -835,3 +835,21 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: liam e gravavam `B1_entorno_osm_ancoras.jsonl` e `B1_entorno.jsonl` em `_dados-brutos/estabelecimentos/`.
 **Depois**: caminhos em `_dados-brutos/entornos/`, para onde o autor moveu os arquivos de entorno; `B1-c_entorno_osm.py` marcado como substituído pela coleta OSM do painel.
 **Justificativa**: os scripts quebravam depois da mudança de pasta.
+
+### 10:39
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/redes_sociais/` (8 coletas novas de posts do Instagram)
+**Antes**: arquivos soltos na raiz da pasta, no nome do export do coletor (`instagram_posts_<perfil>_2026-10-15.csv`).
+**Depois**: movidos para `rs_<cidade>/rs_<perfil>/2026-10-15_<perfil>_instagram_posts.csv` (Bardo Mago e La Tabuleria em BH; BoardZ em Curitiba; Encounter e Tubaleria em SP; Luderia Carioca e TabuClub no Rio; Toca do Rato em Porto Alegre). Conferência: sem shortcode repetido, data igual ao `taken_at`, curtidas e comentários preenchidos em todos os posts do período, `pagina_coleta` do próprio perfil (1 colaboração da Tubaleria lida na página da Arena BG). Ressalvas: só o CSV de posts, sem o de perfil (seguidores e nº de posts declarado); Bardo Mago (615 de 616) e Tubaleria (339 de 340) com 1 post não carregado, o que deixa a data do primeiro post incerta.
+**Justificativa**: pedido do autor de conferir as coletas e lançá-las no Notion; nome e pasta seguem a convenção de `CLAUDE.md`.
+
+### 10:39
+**Objeto**: Notion, bancos "A - Estabelecimentos" e "Luderias – Status da coleta"
+**Antes**: no "A", Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria sem dados de Instagram; BoardZ, Encounter e Luderia Carioca sem curtidas. No status, as 8 casas com Instagram "Não coletado".
+**Depois**: no "A", nº de posts, curtidas e comentários de 01/09 a 01/10/2026 (inclusive, contando colaborações compartilhadas, como nas linhas já preenchidas de Luderia Carioca, BoardZ e Encounter) e data do primeiro post das 8 casas; nº de posts total de Bardo Mago (616) e Tubaleria (340), declarado pelo Instagram na coleta. No status, Instagram "Coleta completa" para BoardZ, Encounter e Luderia Carioca (seguidores e total já estavam no "A") e "Coleta parcial" para as outras 5, com a lacuna e o modo de completar.
+**Justificativa**: pedido do autor de lançar as coletas novas e atualizar o status.
+
+### 10:39 (divergência)
+**Objeto**: Notion "A - Estabelecimentos" × status da coleta e arquivos `*_instagram_perfis.csv`
+**Antes**: o status de Instagram (15/10, 09:27) foi calculado só pelos arquivos do repositório; os perfis do coletor contam no período só os posts de que o perfil é dono.
+**Depois**: o "A" já tinha seguidores e totais de BoardZ, Encounter e Luderia Carioca (marcadas "Não coletado" no status); 30 casas do "A" estão sem curtidas do período; nº de posts e comentários do "A" ora contam colaborações compartilhadas (Cineplay, CCG, Omniverse, Dungeon, XPlace), ora não (Play Easy e as que batem com o CSV de perfis).
+**Efeitos colaterais**: o status de Instagram das outras 46 casas pode estar errado nos dois sentidos; uma regra única de contagem precisa ser escolhida antes de usar esses números no cap. 6.
