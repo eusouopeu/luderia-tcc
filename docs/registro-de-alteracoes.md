@@ -968,3 +968,8 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: a pendência diz que o critério de porte ainda não foi escolhido.
 **Efeitos colaterais**: a estatística descritiva e o site mostram um porte de shopping com critério não decidido e incomparável entre casas.
 
+### 12:05
+**Objeto**: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_conteudo_site.py` (novo); aba 11 do site (`src/sections/S11Conteudo.jsx`, `src/conteudo/b2-conteudo.json`, `s11-b2-conteudo.json`, `site.json`, `App.jsx`, `README.md`)
+**Antes**: a análise de conteúdo do B2 (1.588 comentários de 53 casas, 15/10) só estava nos CSVs de `analise_conteudo/` e no documento do instrumento.
+**Depois**: aba 11 "Análise de conteúdo" com números do corpus, temas mais citados (elogio, crítica e mista ou neutra), composição das críticas, nota média com elogio e com crítica, ocasião e público citados, os 12 achados do §3 com a decisão do plano e a tabela por estabelecimento. Seletores de tipo (casas de jogos, lojas, total) e de medida (% dos comentários ou ponderado). O JSON sai do script novo, que lê os CSVs e o §3; a soma dos comentários por tipo fecha com 1.588. A nota avisa que a recodificação cega da amostra de 131 ainda não foi feita. Conferido no navegador, sem erro no console.
+**Justificativa**: pedido do autor.

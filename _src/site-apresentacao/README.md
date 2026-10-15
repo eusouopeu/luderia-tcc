@@ -17,6 +17,7 @@ Sete seções, uma por aba da barra lateral, dimensionadas para uma apresentaç�
 | 8 | Panorama das luderias (B1) | apoio |
 | 9 | Luderias por metrópole (B1) | apoio |
 | 10 | Luderias por região (B1) | apoio |
+| 11 | Análise de conteúdo (B2) | apoio |
 
 Durante a apresentação, as setas **←** e **→** do teclado navegam entre as seções.
 
@@ -57,6 +58,11 @@ Os números vêm de `src/conteudo/b1-estatisticas.json`, gerado por
 (não editar à mão). Títulos e descrições ficam em `src/conteudo/s8-b1-resultados.json`; os achados, em
 `src/conteudo/b1-achados.js`, como frases montadas sobre os números do JSON. Rodar o script de novo atualiza
 gráficos, tabelas e achados.
+
+A aba 11 lê `src/conteudo/b2-conteudo.json`, gerado por
+`_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_conteudo_site.py` a partir das tabelas
+de `dados/[B2] Avaliacoes recentes/analise_conteudo/` e dos achados do §3 de
+`textos/instrumentos/analise_conteudo_bardin_B2.md`. Rodar o script depois de refazer a análise.
 
 ## Origem do conteúdo
 

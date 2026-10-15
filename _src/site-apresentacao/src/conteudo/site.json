@@ -104,6 +104,14 @@
       "subtitulo": "B1: Norte, Nordeste, Centro-Oeste, Sudeste e Sul",
       "tempo": "apoio",
       "subtituloLongo": "B1: estatística descritiva por região do Brasil"
+    },
+    {
+      "id": "conteudo",
+      "n": 11,
+      "titulo": "Análise de conteúdo",
+      "subtitulo": "B2: o que os clientes comentam",
+      "tempo": "apoio",
+      "subtituloLongo": "B2: análise de conteúdo das avaliações recentes"
     }
   ]
 }

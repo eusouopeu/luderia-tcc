@@ -11,6 +11,7 @@ import S7Contribuicoes from "./sections/S7Contribuicoes";
 import S8Panorama from "./sections/S8Panorama";
 import S9Metropoles from "./sections/S9Metropoles";
 import S10Regioes from "./sections/S10Regioes";
+import S11Conteudo from "./sections/S11Conteudo";
 
 const { secoes: SECOES, meta: META, barraLateral: BARRA, rodape: RODAPE } = site;
 const FUNDO_BARRA = cor(BARRA.corFundo);
@@ -27,6 +28,7 @@ const COMPONENTES = {
   panorama: S8Panorama,
   metropoles: S9Metropoles,
   regioes: S10Regioes,
+  conteudo: S11Conteudo,
 };
 
 function idDoHash() {
