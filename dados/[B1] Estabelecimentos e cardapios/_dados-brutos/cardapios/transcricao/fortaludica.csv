@@ -1,0 +1,52 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao;data_cardapio
+Entradas;Bolinhos do Bárbaro;Bolinho de carne do blend do burger empanado com maionese verde e maionese de bacon;3 unidades;28;entradas;outras;S;;2025-12
+Entradas;Nuggets do Dragão Dourado;Nuggets de frango feitos na casa com maionese de bacon e molho honey mustard;3 unidades;22;entradas;outras;S;;2025-12
+Entradas;Fichas crocantes + buff de aioli;Chips de raízes (batata baroa, batata asterix e mandioca fritas) com maionese de aioli;160 g;15;entradas;batata;S;;2025-12
+Entradas;Torre de defesa com cheddar e bacon;Batata frita, cheddar derretido e bacon;250 g;31;entradas;batata;S;;2025-12
+Entradas;Linguicinhas do Ferreiro;Linguiças artesanais grelhadas com maionese de aioli e chips de raízes;250 g;29;entradas;outras;S;;2025-12
+Entradas;Batatinhas da Sorte;Batatas palito douradas e crocantes;110 g;9;entradas;batata;S;;2025-12
+Burguers grelhados na broiler;Broiler do Herói;Alface, cheddar, tomate, cebola roxa e maionese de bacon;160 g de blend;30;pratos principais;hambúrguer;S;adicional de blend grelhado na broiler: R$ 5;2025-12
+Burguers grelhados na broiler;Cheese Bacon Épico;Bacon, cheddar, picles de pepino e maionese de bacon;160 g de blend;32;pratos principais;hambúrguer;S;;2025-12
+Burguers grelhados na broiler;Vegano da Rebelião Verde;Burger 100% vegetal, alface, tomate e mostarda;100 g;35;pratos principais;hambúrguer;S;;2025-12
+Burguers grelhados na broiler;Queijão Supremo;Maionese verde, alface, tomate, cheddar, coalho, gorgonzola, bacon e picles de cebola roxa;160 g de blend;47;pratos principais;hambúrguer;S;;2025-12
+Burguers grelhados na broiler;Burger do Bardo Tropical;Abacaxi grelhado, coalho com mel, bacon e picles de cebola roxa;160 g de blend;35;pratos principais;hambúrguer;S;;2025-12
+Burguers smash;Crit Smash;Cheddar, alface, tomate, cebola roxa e maionese de bacon;70 g de blend;25;pratos principais;hambúrguer;S;adicional de blend smash: R$ 8 (faixa) ou R$ 6 (tabela de adicionais);2025-12
+Burguers smash;Smash Bacon +5;Cheddar, bacon crocante e molho especial;70 g de blend;27;pratos principais;hambúrguer;S;;2025-12
+Burguers smash;Mini Herói;Pão, cheddar, carne e ketchup;70 g de blend;20;pratos principais;hambúrguer;S;;2025-12
+Sanduba na baguete;Saladpan da Elfa Gourmet;Linguiça artesanal 100 g, rúcula, tomate, alface, picles de cebola roxa, maionese verde, crisp de bacon e chimichurri;;33;pratos principais;outros;S;;2025-12
+Chefão Final;Chefão Final;5 blends de 160 g (800 g), maionese verde, cheddar, coalho, ovo, bacon, picles, alface e tomate;;120;pratos principais;hambúrguer;S;desafio: sai de graça se comido em 5 minutos;2025-12
+Salada;Salada do Aventureiro;Alface, rúcula, tomate cereja, picles de cebola roxa, frango grelhado, mussarela e croutons, molho honey mustard;;30;pratos principais;outros;S;;2025-12
+Sobremesas;Brownie Mágico;Brownie com calda de chocolate e bola de sorvete de creme;;16;sobremesas;sobremesas;S;;2025-12
+Poção gelada 350 ml;Milkshake de Ovomaltine;;350 ml;22;bebidas;não alcoólicas;S;;2025-12
+Poção gelada 350 ml;Milkshake de Nutella;;350 ml;29;bebidas;não alcoólicas;S;;2025-12
+Poção gelada 350 ml;Milkshake de morango;;350 ml;22;bebidas;não alcoólicas;S;;2025-12
+Refrigerantes e bebidas não alcoólicas;Coca-Cola;;lata;7;bebidas;refrigerante;N;;2025-12
+Refrigerantes e bebidas não alcoólicas;Coca-Cola Zero;;lata;7;bebidas;refrigerante;N;;2025-12
+Refrigerantes e bebidas não alcoólicas;Fanta Laranja;;lata;7;bebidas;refrigerante;N;;2025-12
+Refrigerantes e bebidas não alcoólicas;Guaraná Antarctica;;lata;7;bebidas;refrigerante;N;;2025-12
+Refrigerantes e bebidas não alcoólicas;Guaraviton;Sabores diversos;;8;bebidas;não alcoólicas;N;;2025-12
+Refrigerantes e bebidas não alcoólicas;H2OH!;;;10;bebidas;refrigerante;N;;2025-12
+Refrigerantes e bebidas não alcoólicas;Schweppes Citrus;;;7;bebidas;refrigerante;N;;2025-12
+Refrigerantes e bebidas não alcoólicas;Monster;Sabores diversos;;15;bebidas;não alcoólicas;N;;2025-12
+Refrigerantes e bebidas não alcoólicas;Água sem gás;;;4;bebidas;não alcoólicas;N;;2025-12
+Refrigerantes e bebidas não alcoólicas;Água com gás;;;5;bebidas;não alcoólicas;N;;2025-12
+Refrigerantes e bebidas não alcoólicas;Chá Mate Leão;;;8;bebidas;não alcoólicas;N;;2025-12
+Refrigerantes e bebidas não alcoólicas;Café expresso;;;6;bebidas;não alcoólicas;S;;2025-12
+Refrigerantes e bebidas não alcoólicas;Sprite Lemon Fresh;;garrafa;9;bebidas;refrigerante;N;;2025-12
+Refrigerantes e bebidas não alcoólicas;Suco de laranja;;;12;bebidas;não alcoólicas;S;;2025-12
+Refrigerantes e bebidas não alcoólicas;Suco de limão;;;9;bebidas;não alcoólicas;S;;2025-12
+Refrigerantes e bebidas não alcoólicas;Suco de abacaxi com hortelã;;;12;bebidas;não alcoólicas;S;;2025-12
+Refrigerantes e bebidas não alcoólicas;Suco de morango;;;12;bebidas;não alcoólicas;S;;2025-12
+Cervejas;Amstel;;lata;7;bebidas;cerveja;N;;2025-12
+Cervejas;Eisenbahn Pilsen;;lata;8;bebidas;cerveja;N;;2025-12
+Cervejas;Heineken;;long neck;11;bebidas;cerveja;N;;2025-12
+Cervejas;Heineken 0.0;;long neck;11;bebidas;não alcoólicas;N;cerveja sem álcool;2025-12
+Molhos;Molho adicional;BBQ, maionese de bacon, maionese de aioli, maionese verde, chimichurri, honey mustard ou geleia de pimenta;;3;outros;adicionais;N;;2025-12
+Adicionais;Blend 160 g;;;15;outros;adicionais;S;;2025-12
+Adicionais;Blend smash 70 g;;;8;outros;adicionais;S;;2025-12
+Adicionais;Ovo;;1 unidade;4;outros;adicionais;S;;2025-12
+Adicionais;Bacon;;;3;outros;adicionais;S;;2025-12
+Adicionais;Queijo cheddar;;1 fatia;3;outros;adicionais;N;;2025-12
+Adicionais;Queijo coalho;;30 g;6;outros;adicionais;S;;2025-12
+Adicionais;Picles de cebola ou pepino;;;2;outros;adicionais;N;;2025-12
+Adicionais;Shot de limão;;;3;outros;adicionais;N;;2025-12

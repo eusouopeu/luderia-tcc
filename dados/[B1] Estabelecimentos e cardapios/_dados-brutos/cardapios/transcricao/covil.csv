@@ -1,0 +1,72 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao;data_cardapio
+Drinks especiais;Poção de Vida;vodka, suco de limão e morango, groselha e soda;;19.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Drinks especiais;Poção de Mana;vodka, suco de limão, abacaxi e soda;;19.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Drinks especiais;Avada Kedavra;vodka, xarope de maçã verde, suco de maçã e soda;;14.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Drinks especiais;Amortentia;vodka, suco de morango e maracujá e soda;;14.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Drinks especiais;Poção Polissuco;licor de doce de leite com leite;;14.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Drinks especiais;Felix Felicis;frutas silvestres, suco de maçã e maracujá;;14.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Destilados;Whiskey Red Label (shot);dose dupla R$ 32;;17.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Destilados;Whiskey Black Label (shot);dose dupla R$ 42;;22.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Destilados;Whiskey Jack Daniels (shot);dose dupla R$ 39;;20.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Destilados;Whiskey Jack Daniels Honey (shot);dose dupla R$ 40;;21.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Destilados;Vodka Absolut (shot);dose dupla R$ 32;;17.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Destilados;Vodka Grey Goose (shot);dose dupla R$ 42;;22.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Destilados;Tequila José Cuervo (shot);dose dupla R$ 34,80;;18.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Destilados;Jägermeister (shot);dose dupla R$ 34;;18.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Sobremesas;Sorvete;taça de sorvete com três bolas;;21.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Sobremesas;Petit gateau;nan;;24.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 20.53.22.png;2025-07
+Lanches;X-Burguer;"hambúrguer de 160 g com queijo; maionese à escolha";;22.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Lanches;X-Salada;X-Burguer com alface e tomate;;24.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Lanches;X-Bacon;X-Burguer com fatias de bacon;;27.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Lanches;X-Egg;X-Burguer com ovo frito;;24.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Lanches;X-Tudo;X-Burguer com bacon, ovo frito, alface, tomate;;29.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Lanches;Onion Ring Bacon;X-Burguer com bacon e anéis de cebola fritos;;29.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Lanches;Cheddar com cebola caramelizada;hambúrguer de 160 g com cheddar e cebola caramelizada;;30.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Lanches;Smaug;X-Burguer, costela de porco desfiada com requeijão, bacon, ovo, alface, tomate, onion rings;;39.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Lanches;Queijo Quente;hambúrguer de 170 g entre dois queijos quentes;;38.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Lanches;X-Frango;filé de frango empanado com requeijão cremoso e alface;;30.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Lanches;X-Costela;costela de porco desfiada com requeijão cremoso;;32.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Lanches;Vegetariano;hambúrguer de proteína de soja com queijo, alface e tomate;;24.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Lanches;Hambúrguer do mês;consultar Instagram;;33.0;pratos principais;hambúrguer;S;print: Captura de Tela 2026-10-12 às 20.53.33.png;2025-07
+Porções;Batata frita média;maionese à escolha;;32.0;entradas;batata;S;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Porções;Batata frita grande;nan;;54.0;entradas;batata;S;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Porções;Batata média + cheddar e bacon;nan;;46.0;entradas;batata;S;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Porções;Batata grande + cheddar e bacon;nan;;68.0;entradas;batata;S;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Porções;Batata rústica média;nan;;38.0;entradas;batata;S;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Porções;Batata rústica grande;nan;;64.0;entradas;batata;S;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Porções;Polenta;nan;;34.0;entradas;outras;S;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Porções;Dadinhos de tapioca;nan;;36.0;entradas;outras;S;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Porções;Onion rings;nan;;36.0;entradas;outras;S;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Porções;Calabresa acebolada;nan;;40.0;entradas;outras;S;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Porções;Provolone empanado;nan;;38.0;entradas;outras;S;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Porções;Porção do mês;nan;;34.0;entradas;outras;S;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Adicionais;Bacon;nan;;8.0;outros;adicionais;N;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Adicionais;Ovo frito;nan;;3.0;outros;adicionais;N;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Adicionais;Cheddar;nan;;6.0;outros;adicionais;N;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Adicionais;Hambúrguer (160 g) com queijo;nan;;9.0;outros;adicionais;N;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Adicionais;Maionese;nan;;3.5;outros;adicionais;N;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Adicionais;Alface e tomate / anéis de cebola / cebola caramelizada;nan;;3.5;outros;adicionais;N;print: Captura de Tela 2026-10-12 às 20.53.42.png;2025-07
+Drinks;Mojito;limão, rum, hortelã e água com gás;;28.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.47.png;2025-07
+Drinks;White Russian;licor de café com vodka e leite;;27.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.47.png;2025-07
+Drinks;Gin & Tônica;tônica com gin e limão siciliano;;25.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.47.png;2025-07
+Drinks;Gin Tropical;Red Bull Tropical com gin e laranja;;28.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.47.png;2025-07
+Drinks;Moscow Mule;vodka com limão, xarope de gengibre e água com gás, espuma de gengibre;;29.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.47.png;2025-07
+Drinks;Jager Bomb;shot de Jägermeister (50 ml) dentro do Red Bull (250 ml);;29.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.47.png;2025-07
+Bebidas;Refrigerante 350 ml;Coca, Coca Zero, Guaraná, Fanta Laranja, Itubaína, Schweppes Citrus, Soda;;8.0;bebidas;refrigerante;N;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Bebidas;Chá gelado;nan;;9.5;bebidas;não alcoólicas;S;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Bebidas;Energético Red Bull 250 ml;nan;;13.0;bebidas;não alcoólicas;N;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Bebidas;Sucos naturais;laranja, limão, abacaxi;;10.5;bebidas;não alcoólicas;S;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Bebidas;Pink lemonade / limonada suíça;nan;;12.0;bebidas;não alcoólicas;S;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Bebidas;Soda italiana;nan;;14.0;bebidas;não alcoólicas;S;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Bebidas;Água sem gás / com gás;nan;;5.5;bebidas;não alcoólicas;N;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Cervejas;Skol;nan;;16.0;bebidas;cerveja;N;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Cervejas;Budweiser / Stella;nan;;18.0;bebidas;cerveja;N;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Cervejas;Original;nan;;17.0;bebidas;cerveja;N;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Cervejas;Heineken;nan;;19.0;bebidas;cerveja;N;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Cervejas;Eisenbahn;nan;;17.0;bebidas;cerveja;N;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Cervejas;Skol Beats;nan;;13.0;bebidas;cerveja;N;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Cervejas;Heineken 0,0% (long neck);nan;;17.0;bebidas;cerveja;N;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Drinks;Caipirinha (pinga);drinks com duas frutas + R$ 2;;22.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Drinks;Caipiroska (vodka);nan;;24.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Drinks;Saquerinha (saquê);nan;;24.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07
+Drinks;Saquerinha com leite condensado;nan;;26.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 20.53.56.png;2025-07

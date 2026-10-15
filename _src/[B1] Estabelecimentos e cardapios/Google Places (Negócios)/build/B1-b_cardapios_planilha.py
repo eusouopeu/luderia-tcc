@@ -3,7 +3,11 @@ Bloco B1 - junta os cardápios transcritos das luderias aprovadas numa planilha
 de itens e preços.
 
 Fonte: os 12 aprovados na triagem final cujo link do Google Maps leva a um
-cardápio acessível (conferência de 10/10/2026). Cada cardápio foi transcrito
+cardápio acessível (conferência de 10/10/2026) e, desde 15/10/2026, mais 16
+casas com cardápio em prints do Maps/Instagram, cardápio digital (Saipos e VUCA
+Food), página Takeat ou imagem/PDF transcritos à mão. Os 13 primeiros desses
+são convertidos por Cardápios/build/B1-b_cardapios_transcricoes.py; Alçapão,
+Café Geek e Fortalúdica foram transcritos à mão das imagens. Cada cardápio foi transcrito
 para um CSV em dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/
 (um arquivo por estabelecimento, separador ";"). A transcrição é manual para
 imagens e PDFs e automática para páginas em texto (VUCA Food, Wix). As fontes
@@ -21,7 +25,9 @@ café, energético, milk-shake e drink sem álcool entram em "não alcoólicas".
 exige_preparo = "N" para item pronto (lata, garrafa, chopp, dose, água).
 
 Cada linha é uma combinação item x variação (tamanho, dia da semana, combo).
-Item sem preço no cardápio fica com preço vazio, não zero.
+Item sem preço no cardápio fica com preço vazio, não zero. Quando a
+transcrição traz a coluna data_cardapio (prints com datas diferentes), ela
+vale linha a linha; vazia, vale a data da fonte em FONTES.
 
 Saída em dados/[B1] Estabelecimentos e cardapios/:
   B1_cardapios_itens_precos.xlsx  (abas itens, resumo, precos_subcategoria, fontes)
@@ -49,6 +55,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[4]
 RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos" / "cardapios" / "transcricao"
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 TRIAGEM = PROCESSED / "estabelecimentos/3_triagem/B1_triagem_manual_metro_av100.xlsx"
+NOVAS = PROCESSED / "acervo_jogos/B1_acervodejogos_luderias_novas.csv"
 SAIDA = PROCESSED / "cardapios" / "B1_cardapios_itens_precos.xlsx"
 
 DATA_COLETA = "2026-10-10"
@@ -87,6 +94,40 @@ FONTES = {
     "luderia_carioca": dict(place_id="ChIJ90Gs_9rVmwAReA7MnIyPLTE", url="https://i.postimg.cc/T3qJVwfn/cardapio.jpg",
                             formato="imagem (botão Ver cardápio no site)", data_cardapio="",
                             status="extraído", nota=""),
+    # 15/10/2026: prints de fotos do Maps/Instagram (data por linha = data da foto)
+    **{arq: dict(place_id=pid, url="fotos do Google Maps / Instagram", formato="prints transcritos à mão",
+                 data_cardapio="", status="extraído", data_coleta="2026-10-12",
+                 nota="mesmo item em fotos de datas diferentes: fica a mais recente")
+       for arq, pid in [("chefonplay", "ChIJc3F7ka83J5URQZ1XTl-_iak"), ("cineplay", "ChIJJz8-gcY3J5URYdZrEXdHaAk"),
+                        ("comdado", "ChIJpzB8zc2XpgARoJTUu90J6Pw"), ("covil", "ChIJ7_DDAlH1zpQRJVJ0UHnItH8"),
+                        ("encounter", "ChIJZz29dnVXzpQRvRh7_YKyUN4"), ("flowgames", "ChIJa3UsDhRczpQRPPSuDl6acO8"),
+                        ("insidegames", "ChIJdUv4La46WpMRnBvNknmOqWo"), ("ludotecabgc", "ChIJ15nLgwAwWpMRY1whwD29ZSo"),
+                        ("utopia", "ChIJN8BZeb85WpMRgVKT05caxB4")]},
+    "bardomago": dict(place_id="ChIJRcWOaPabpgARDvX2Bad0qb0",
+                      url="https://www.vucafood.com.br/funminds/2219/cardapio-digital",
+                      formato="cardápio digital VUCA Food (texto)", data_cardapio="", status="extraído",
+                      data_coleta="2026-10-12", nota=""),
+    "latabuleria": dict(place_id="ChIJ-17ZQDG9pgARc-AxpXmaNRU", url="https://latabuleria.saipos.com/home",
+                        formato="cardápio de delivery Saipos (API)", data_cardapio="", status="extraído",
+                        data_coleta="2026-10-12", nota="preço de delivery; jogos à venda fora"),
+    "tocadorato": dict(place_id="ChIJ41pgHNFDGZURC7yTegyn7nU", url="https://tocadoratopizzasejogos.saipos.com/home",
+                       formato="cardápio de delivery Saipos (API)", data_cardapio="", status="extraído",
+                       data_coleta="2026-10-12", nota="preço de delivery"),
+    "cartola": dict(place_id="ChIJrT_EWwBZzpQRGAZzptZbtsY", url="cardápio Takeat (link do perfil)",
+                    formato="página Takeat exportada em CSV", data_cardapio="", status="extraído",
+                    data_coleta="2026-10-12", nota="só entradas, sobremesas e drinks foram exportados"),
+    "alcapao": dict(place_id="ChIJ3ekLtDjl3JQRHwtNgmINgLo",
+                    url="https://static.wixstatic.com/media/113cf2_d07290d78d5140cbaf4c18b47ceb4f4a~mv2.jpeg",
+                    formato="imagem no site (Wix), transcrita à mão", data_cardapio="", status="extraído",
+                    data_coleta="2026-10-12", nota="cafeteria: sem bebida alcoólica no cardápio"),
+    "cafegeek": dict(place_id="ChIJfyav9YI9uAARjwbBqcRm2_k", url="https://www.instagram.com/cafegeekvv/",
+                     formato="destaque 'Cardápio' do Instagram, transcrito à mão", data_cardapio="",
+                     status="extraído", data_coleta="2026-10-12",
+                     nota="sala medieval por hora e grupo na categoria couvert"),
+    "fortaludica": dict(place_id="ChIJyXjE650xWpMRJL-J6QbGkt4",
+                        url="https://drive.google.com/uc?export=download&id=1cl7YIKdJhuuhNCUKAO0-96czajLGInqJ",
+                        formato="PDF (Canva), transcrito à mão", data_cardapio="2025-12", status="extraído",
+                        data_coleta="2026-10-12", nota=""),
 }
 # aprovado com cardápio acessível, mas sem transcrição
 SEM_TRANSCRICAO = {
@@ -94,6 +135,10 @@ SEM_TRANSCRICAO = {
         url="https://linktr.ee/coletivogeekbr", formato="PDF no Linktree", data_cardapio="",
         status="não extraído",
         nota="o download do PDF exige preencher formulário com e-mail; não preenchido"),
+    "ChIJOcVssmeDmQARZZrnWu2mnwA": dict(
+        url="https://drive.google.com/file/d/1-KDTgvYRZKe4R9KCWVQHRD5xiWqjSgPW/view", formato="arquivo no Google Drive",
+        data_cardapio="", status="não extraído", data_coleta="2026-10-12",
+        nota="baixado em _dados-brutos/cardapios/ca_rio_de_janeiro/ca_tabuclub/, não transcrito"),
 }
 
 SUBCATEGORIAS = {
@@ -118,8 +163,9 @@ def ler_transcricoes(triagem):
         df.insert(2, "capital", nomes.loc[meta["place_id"], "capital_endereco"])
         df["url_cardapio"] = meta["url"]
         df["formato_fonte"] = meta["formato"]
-        df["data_cardapio"] = meta["data_cardapio"]
-        df["data_coleta"] = DATA_COLETA
+        por_linha = df["data_cardapio"] if "data_cardapio" in df else pd.Series("", index=df.index)
+        df["data_cardapio"] = por_linha.where(por_linha != "", meta["data_cardapio"])
+        df["data_coleta"] = meta.get("data_coleta", DATA_COLETA)
         partes.append(df)
     itens = pd.concat(partes, ignore_index=True)
     validar(itens)
@@ -181,14 +227,13 @@ def montar_fontes(itens, triagem):
     linhas = []
     contagem = itens.groupby("place_id").size()
     for meta in FONTES.values():
-        linhas.append({**meta, "linhas": int(contagem.get(meta["place_id"], 0))})
+        linhas.append({"data_coleta": DATA_COLETA, **meta, "linhas": int(contagem.get(meta["place_id"], 0))})
     for pid, meta in SEM_TRANSCRICAO.items():
-        linhas.append({"place_id": pid, **meta, "linhas": 0})
+        linhas.append({"data_coleta": DATA_COLETA, "place_id": pid, **meta, "linhas": 0})
     fontes = pd.DataFrame(linhas)
     nomes = triagem.set_index("place_id")[["nome", "capital_endereco"]]
     fontes.insert(1, "estabelecimento", fontes.place_id.map(nomes["nome"]))
     fontes.insert(2, "capital", fontes.place_id.map(nomes["capital_endereco"]))
-    fontes["data_coleta"] = DATA_COLETA
     return fontes[["place_id", "estabelecimento", "capital", "status", "linhas", "url", "formato",
                    "data_cardapio", "data_coleta", "nota"]]
 
@@ -215,7 +260,10 @@ def formatar(caminho):
 
 def main():
     triagem = pd.read_excel(TRIAGEM)
-    triagem = triagem[triagem["resultado da triagem"] == "aprovado"]
+    triagem = triagem[triagem["resultado da triagem"] == "aprovado"][["place_id", "nome", "capital_endereco"]]
+    # luderias novas do acervo de jogos (fora da triagem manual)
+    novas = pd.read_csv(NOVAS)[["place_id", "nome", "capital_endereco"]]
+    triagem = pd.concat([triagem, novas]).drop_duplicates("place_id")
     itens = ler_transcricoes(triagem)
     resumo = montar_resumo(itens)
     precos = montar_precos_subcategoria(itens)

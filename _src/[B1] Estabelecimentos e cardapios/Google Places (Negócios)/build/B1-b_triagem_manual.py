@@ -47,6 +47,7 @@ from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
 
+import datetime
 import pathlib
 import re
 
@@ -58,6 +59,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[4]
 RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 ENTRADA = RAW / "B1_curadoria_manual_metropoles_mais_100_avaliacoes.xlsx"
+CURADORIA = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv"
 SAIDA_TRIAGEM = PROCESSED / "estabelecimentos/3_triagem/B1_triagem_manual_metro_av100.xlsx"
 SAIDA_APROVADAS = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
 
@@ -99,6 +101,28 @@ def classifica(anotacao):
     return ("sim", "não", NA, NA, atividade, "reprovado")
 
 
+def corrige_nota(df):
+    """Nota média vinda da curadoria em CSV, não da planilha anotada.
+
+    Na planilha anotada à mão o Excel leu "4,6" como data (04/06/2026, formato
+    "d.m"); só notas inteiras ficaram como número. A nota volta da curadoria
+    (B1_curadoria_metro_f_av100.csv) pelo place_id; sem par, a data é desfeita
+    em dia + mês/10.
+    """
+    curadoria = pd.read_csv(CURADORIA, usecols=["place_id", "avaliacao_media"])
+    nota = df["place_id"].map(curadoria.drop_duplicates("place_id").set_index("place_id")["avaliacao_media"])
+
+    def desfaz_data(valor):
+        if isinstance(valor, (pd.Timestamp, datetime.datetime)):
+            return valor.day + valor.month / 10
+        return pd.to_numeric(valor, errors="coerce")
+
+    sem_par = nota.isna()
+    nota[sem_par] = df.loc[sem_par, "avaliacao_media"].map(desfaz_data)
+    print(f"nota média: {int((~sem_par).sum())} da curadoria em CSV, {int(sem_par.sum())} desfeitas da data")
+    return nota.astype(float).round(1)
+
+
 def formata(caminho, larguras):
     """Cabeçalho em negrito, filtro, painel congelado e larguras fixas."""
     from openpyxl import load_workbook
@@ -118,6 +142,7 @@ def formata(caminho, larguras):
 def main():
     df = pd.read_excel(ENTRADA)
     df = df[df["place_id"].notna()].copy()
+    df["avaliacao_media"] = corrige_nota(df)
     # Colunas extras sem nome que receberam comentários viram Comentário 31, 32...
     extras = [c for c in df.columns if str(c).startswith("Column ")]
     df = df.drop(columns=[c for c in extras if df[c].isna().all()])

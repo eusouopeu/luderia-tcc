@@ -787,3 +787,27 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: nota média numérica (curadoria do B1).
 **Depois**: células gravadas como data (4,6 → 2026-06-04).
 **Efeitos colaterais**: qualquer leitura da nota a partir desse xlsx sai errada; usar a curadoria em CSV até corrigir.
+
+### 09:56
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/build/B1-b_triagem_manual.py` e `estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx`
+**Antes**: `avaliacao_media` copiada da planilha anotada à mão, onde o Excel gravou notas decimais como data (4,6 → 04/06/2026).
+**Depois**: nota lida da curadoria em CSV (`B1_curadoria_metro_f_av100.csv`) pelo place_id, com recurso de desfazer a data (dia + mês/10) para quem não tiver par; 163 de 163 vieram do CSV. Nota das 51 aprovadas entre 4,2 e 5,0; demais colunas iguais às da versão anterior.
+**Justificativa**: pedido do autor de corrigir a nota gravada como data.
+
+### 09:56
+**Objeto**: `B1-c_details.py` (modo `--horarios`), `outros/places_client.py`, `build/B1-b_horarios.py` (novo), `estabelecimentos/B1_horarios.csv` (novo)
+**Antes**: nenhum horário de funcionamento coletado.
+**Depois**: `regularOpeningHours` coletado pela Places API para as 56 casas (51 aprovadas e 5 novas; 56 chamadas no SKU Place Details Enterprise, o mesmo de nota e volume, conferido na documentação do Google em 15/10). Tabela com as 54 casas do estudo: turnos por dia, dias abertos, horas por semana, abertura mais cedo e fechamento mais tarde; 54 com horário, soma = total.
+**Justificativa**: pedido do autor de fechar a lacuna de horários do Google Maps.
+
+### 09:56
+**Objeto**: `Cardápios/build/B1-b_cardapios_transcricoes.py` (novo), `_dados-brutos/cardapios/transcricao/` (16 CSVs novos), `B1-b_cardapios_planilha.py`, `cardapios/B1_cardapios_itens_precos.xlsx`
+**Antes**: planilha com 11 casas (939 linhas); prints de 9 casas, cardápios digitais de 3, Cartola e OCR de 3 casas fora dela.
+**Depois**: 27 casas e 1.887 linhas (1.825 com preço). Prints, digitais e Cartola convertidos por regra de categoria (802 linhas; item repetido em fotos de datas diferentes fica na mais recente; jogos à venda e avisos fora; couvert lúdico dos prints de práticas incluído). Alçapão, Café Geek e Fortalúdica transcritos à mão das imagens/PDF (o OCR não servia). TabuClub entra nas fontes como "não extraído". Conferências de soma do resumo passaram.
+**Justificativa**: pedido do autor de incluir na planilha consolidada os cardápios extraídos fora dela.
+
+### 09:56
+**Objeto**: Notion, banco "Luderias – Status da coleta"
+**Antes**: Google Maps "Coleta parcial" nas 54 casas; 16 linhas com "Cardápio: ... fora do B1_cardapios_itens_precos.xlsx".
+**Depois**: Google Maps "Coleta completa" nas 54; linhas de horários e de cardápio fora do xlsx retiradas de "O que ainda falta?" e "Como proceder..."; Ludoteca Sidequest, Arena BG, Castelos e Comdado sem lacuna ("Nada: todas as fontes completas"); Cartola ganhou a lacuna das seções não exportadas da Takeat.
+**Justificativa**: refletir a coleta de horários e a consolidação dos cardápios.

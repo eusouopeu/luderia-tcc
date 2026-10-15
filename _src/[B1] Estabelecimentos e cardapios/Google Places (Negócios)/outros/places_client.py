@@ -47,6 +47,11 @@ DETAILS_SEM_REVIEWS_FIELD_MASK = ",".join(
 
 LOCATION_FIELD_MASK = "id,location"
 
+# Horários de funcionamento. regularOpeningHours está no SKU "Place Details
+# Enterprise", o mesmo de rating e userRatingCount (documentação Place Details
+# New, conferida em 15/10/2026); não promove a chamada ao Atmosphere.
+HORARIOS_FIELD_MASK = "id,displayName,regularOpeningHours"
+
 # Nearby Search: só o id de cada resultado, suficiente para contagem no
 # entorno (SKU mais barata da Places API New).
 NEARBY_FIELD_MASK = "places.id"
@@ -127,6 +132,9 @@ class PlacesClient:
 
     def place_details_sem_reviews(self, place_id):
         return self._get(f"places/{place_id}", DETAILS_SEM_REVIEWS_FIELD_MASK)
+
+    def place_horarios(self, place_id):
+        return self._get(f"places/{place_id}", HORARIOS_FIELD_MASK)
 
     def place_location(self, place_id):
         return self._get(f"places/{place_id}", LOCATION_FIELD_MASK)

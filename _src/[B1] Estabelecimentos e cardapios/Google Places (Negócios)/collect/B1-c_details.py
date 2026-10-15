@@ -38,6 +38,13 @@ preenchidos com a data de modificação do arquivo (2026-09-01).
 Uso:
     python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/collect/B1-c_details.py"
     python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/collect/B1-c_details.py" --sem-reviews
+    python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/collect/B1-c_details.py" --horarios
+
+Modo --horarios (15/10/2026): só `regularOpeningHours`, para as casas que
+seguem no estudo (aprovadas da triagem manual mais as luderias novas do
+acervodejogos). Mesmo SKU "Place Details Enterprise" do modo --sem-reviews.
+Saída: B1_horarios.jsonl; pula os place_ids já presentes nele. Tabela em
+B1-b_horarios.py.
 """
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
 import sys
@@ -63,11 +70,23 @@ RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
 CANDIDATOS_PATH = RAW / "estabelecimentos/B1_candidatos.csv"
 DETALHES_PATH = RAW / "estabelecimentos/B1_detalhes.jsonl"
 SEM_REVIEWS_PATH = RAW / "estabelecimentos/B1_detalhes_sem_reviews.jsonl"
+HORARIOS_PATH = RAW / "estabelecimentos/B1_horarios.jsonl"
+PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
+APROVADAS_PATH = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
+NOVAS_PATH = PROCESSED / "acervo_jogos/B1_acervodejogos_luderias_novas.csv"
 
 
 def load_unique_place_ids():
     with open(CANDIDATOS_PATH, newline="", encoding="utf-8") as f:
         return sorted({row["place_id"] for row in DictReader(f) if row["place_id"]})
+
+
+def load_casas_do_estudo():
+    """place_ids das aprovadas na triagem manual e das luderias novas."""
+    import pandas as pd
+
+    ids = list(pd.read_excel(APROVADAS_PATH)["place_id"]) + list(pd.read_csv(NOVAS_PATH)["place_id"])
+    return sorted(set(ids))
 
 
 def load_done_ids(paths):
@@ -92,16 +111,23 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--sem-reviews", action="store_true",
                         help="coleta sem o campo reviews (SKU sem custo)")
+    parser.add_argument("--horarios", action="store_true",
+                        help="só horários de funcionamento das casas do estudo")
     args = parser.parse_args()
 
-    if args.sem_reviews:
+    if args.horarios:
+        out_path, ja_feitos = HORARIOS_PATH, (HORARIOS_PATH,)
+    elif args.sem_reviews:
         out_path, ja_feitos = SEM_REVIEWS_PATH, (DETALHES_PATH, SEM_REVIEWS_PATH)
     else:
         out_path, ja_feitos = DETALHES_PATH, (DETALHES_PATH,)
 
     client = PlacesClient()
-    buscar = client.place_details_sem_reviews if args.sem_reviews else client.place_details
-    place_ids = load_unique_place_ids()
+    if args.horarios:
+        buscar = client.place_horarios
+    else:
+        buscar = client.place_details_sem_reviews if args.sem_reviews else client.place_details
+    place_ids = load_casas_do_estudo() if args.horarios else load_unique_place_ids()
     done = load_done_ids(ja_feitos)
     pendentes = [p for p in place_ids if p not in done]
     print(f"{len(place_ids)} place_ids únicos, {len(done)} já coletados, {len(pendentes)} pendentes")

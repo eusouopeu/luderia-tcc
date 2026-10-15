@@ -4,6 +4,9 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 15/10/2026 | Cardápios de prints, digitais e Takeat entram na planilha de itens e preços por conversão automática com regras de categoria; mesmo item em fotos de datas diferentes fica só na mais recente; jogos à venda ficam fora; couvert lúdico de print de práticas entra como couvert | `_src/[B1] Estabelecimentos e cardapios/Cardápios/build/B1-b_cardapios_transcricoes.py` |
+| 15/10/2026 | Horários de funcionamento pela Places API (`regularOpeningHours`, SKU Place Details Enterprise, o mesmo de nota e volume) só para as 54 casas do estudo | `B1-c_details.py --horarios`, `B1-b_horarios.py` |
+| 15/10/2026 | Nota média das aprovadas vem da curadoria em CSV, não da planilha anotada à mão (o Excel gravou 4,6 como data) | `B1-b_triagem_manual.py` |
 | 15/10/2026 | Status da coleta no Notion por campo preenchido: Instagram com grade quase completa (até 7 posts a menos) conta como completo; Google Maps só fica completo com horários; entorno com porte de shopping e distância ao metrô na mesma cidade | Notion "Luderias – Status da coleta"; `docs/registro-de-alteracoes.md` 15/10 09:27 |
 | 15/10/2026 | Cap. 2 cita substitutos da bibliografia v2 com a página quando conferida no PDF e `[AV]` quando não lida; originais mantidos (Assaf Neto, KAM, Asakura) seguem com `[AV-<ID>]`. Kano e PRC entram em 2.2 como ponte entre as avaliações do B2 e a grade ERRC; Canvas fica de fora | `textos/capitulos/2_referencial_teorico.md` |
 | 15/10/2026 | Snowball: sementes coletadas em fila automática no coletor do Instagram, na ordem de `B1_snowball_proximas_sementes.txt` (rodízio entre capitais); classificação começa pelas contas seguidas por 3+ sementes (`B1_snowball_candidatos_grau3.csv`) | `_src/[B1] Estabelecimentos e cardapios/Instagram/build/B1-b_instagram_seguindo.py` |

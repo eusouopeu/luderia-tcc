@@ -1,0 +1,61 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao;data_cardapio
+Pizzas (La Partigiana);Abobrinha com pesto;molho de tomate, muçarela, abobrinha e pesto;;30.0;pratos principais;pizza;S;print: Captura de Tela 2026-10-12 às 21.08.39.png;2026-08
+Pizzas (La Partigiana);Margherita com pesto;molho de tomate, muçarela, tomate e pesto;;30.0;pratos principais;pizza;S;print: Captura de Tela 2026-10-12 às 21.08.39.png;2026-08
+Pizzas (La Partigiana);Vegetariana;molho de tomate, muçarela, tomate, pimentão, cebola, champignon e azeitona;;35.0;pratos principais;pizza;S;print: Captura de Tela 2026-10-12 às 21.08.39.png;2026-08
+Pizzas (La Partigiana);4 Queijos;molho de tomate, muçarela, gorgonzola, parmesão;;40.0;pratos principais;pizza;S;print: Captura de Tela 2026-10-12 às 21.08.39.png;2026-08
+Pizzas (La Partigiana);Calabresa;molho de tomate, muçarela, calabresa e cebola roxa;;35.0;pratos principais;pizza;S;print: Captura de Tela 2026-10-12 às 21.08.39.png;2026-08
+Pizzas (La Partigiana);Frango com Catupiry;molho de tomate, muçarela, frango e catupiry;;35.0;pratos principais;pizza;S;print: Captura de Tela 2026-10-12 às 21.08.39.png;2026-08
+Pizzas (La Partigiana);Pepperoni;molho de tomate, muçarela e pepperoni;;40.0;pratos principais;pizza;S;print: Captura de Tela 2026-10-12 às 21.08.39.png;2026-08
+Pizzas doces (La Partigiana);Banana;muçarela, banana, açúcar e canela;;30.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.08.39.png;2026-08
+Pizzas doces (La Partigiana);Creme de avelã;creme de avelã com morango;;35.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.08.39.png;2026-08
+Pizzas doces (La Partigiana);Churros;doce de leite e canela;;35.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.08.39.png;2026-08
+Bebidas;Sucos (500 ml);goiaba e maracujá;;5.0;bebidas;não alcoólicas;S;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Bebidas;Refrigerante (lata);nan;;4.0;bebidas;refrigerante;N;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Bebidas;Água (sem gás);nan;;3.0;bebidas;não alcoólicas;N;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Bebidas;Água (com gás);nan;;3.5;bebidas;não alcoólicas;N;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Bebidas;Limonada rosa (500 ml);refil por R$ 12;;5.0;bebidas;não alcoólicas;S;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Bebidas;Soda Prime (500 ml);maçã verde, morango, limão siciliano, melão, menta e laranja;;8.0;bebidas;não alcoólicas;S;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Cervejas;Budweiser long neck;nan;;7.0;bebidas;cerveja;N;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Cervejas;Heineken long neck;nan;;9.0;bebidas;cerveja;N;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Cervejas;Eisenbahn long neck;nan;;8.0;bebidas;cerveja;N;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Cervejas;Corona long neck;nan;;10.0;bebidas;cerveja;N;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Drinks;Piña colada;rum, suco de abacaxi, leite condensado e leite de coco;;14.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Drinks;Mojito;rum, hortelã, suco de limão e refrigerante de limão;;14.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Drinks;Caipiroska;vodka, limão, açúcar e gelo;;10.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Café;Café espresso;nan;;5.0;bebidas;não alcoólicas;S;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Shakes e sobremesas;Churros recheados com doce de leite;10 unidades;;12.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Shakes e sobremesas;Sorvete com churros;bola de sorvete com 8 churros recheados;;14.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Shakes e sobremesas;Milkshake;chocolate, Oreo e Ovomaltine;;17.0;bebidas;não alcoólicas;S;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Promoção;Laricão do Prime;"queijo quente; com 1 espresso R$ 10";;6.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.08.57.png;2019-03
+Bebidas;Vinho 750 ml;nan;;51.0;bebidas;drinks;S;print: Captura de Tela 2026-10-12 às 21.09.09.png;2025-03
+Bebidas;Vinho meia garrafa;nan;;42.0;bebidas;drinks;N;print: Captura de Tela 2026-10-12 às 21.09.09.png;2025-03
+Bebidas;Sucos naturais especiais 300 ml;sucupira e outros;;9.0;bebidas;não alcoólicas;S;print: Captura de Tela 2026-10-12 às 21.09.09.png;2025-03
+Bebidas;Refrigerante lata;Coca-Cola, Coca Zero, Guaraná, Guaraná Zero, Fanta Laranja, Sprite, Schweppes;;6.0;bebidas;refrigerante;N;print: Captura de Tela 2026-10-12 às 21.09.09.png;2025-03
+Bebidas;H2O ou Sprite Fresh;nan;;9.0;bebidas;refrigerante;N;print: Captura de Tela 2026-10-12 às 21.09.09.png;2025-03
+Bebidas;Energético Monster ou Red Bull;nan;;13.0;bebidas;não alcoólicas;N;print: Captura de Tela 2026-10-12 às 21.09.09.png;2025-03
+Bebidas;Soda italiana;nan;;18.0;bebidas;não alcoólicas;S;print: Captura de Tela 2026-10-12 às 21.09.09.png;2025-03
+Açaí (Frisson);Roxo Amarelo Preto (300 ml);"açaí com banana e mel; 500 ml R$ 27; 700 ml R$ 33";;23.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.10.49.png;2025-03
+Açaí (Frisson);Tradicional (300 ml);"açaí batido com banana e xarope de guaraná; 500 ml R$ 25; 700 ml R$ 29";;21.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.10.49.png;2025-03
+Açaí (Frisson);Mix de castanhas (300 ml);"açaí batido com banana, xarope de guaraná e castanhas; 500 ml R$ 29; 700 ml R$ 34";;25.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.10.49.png;2025-03
+Crepes salgados (Frisson);Frisson;"muçarela, calabresa, frango desfiado, tomate, orégano e batata palha; legibilidade média (preço pequeno na foto)";;29.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.11.06.png;2025-03
+Crepes salgados (Frisson);Prazer;"muçarela, frango desfiado, requeijão, batata palha e orégano; legibilidade média (preço pequeno na foto)";;27.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.11.06.png;2025-03
+Crepes salgados (Frisson);Encanto;"muçarela, calabresa, tomate e cebola frita; legibilidade média (preço pequeno na foto)";;26.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.11.06.png;2025-03
+Crepes salgados (Frisson);Forró;"muçarela, carne de sol, requeijão e cebola frita; legibilidade média (preço pequeno na foto)";;31.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.11.06.png;2025-03
+Crepes salgados (Frisson);Praia;"muçarela, atum, tomate e cebola frita; legibilidade média (preço pequeno na foto)";;32.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.11.06.png;2025-03
+Crepes salgados (Frisson);Arrepio;"queijo branco, peito de peru, abacaxi, tomate, orégano e coroa de queijo; legibilidade média (preço pequeno na foto)";;31.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.11.06.png;2025-03
+Crepes salgados (Frisson);Rock;"muçarela, presunto e orégano; legibilidade média (preço pequeno na foto)";;24.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.11.06.png;2025-03
+Crepes salgados (Frisson);Sertaneja;"muçarela, picadinho de carne, purê de banana-da-terra e cebola caramelizada; legibilidade média (preço pequeno na foto)";;31.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.11.06.png;2025-03
+Crepes salgados (Frisson);Survive;"camarão ao leite de coco e curry, cream cheese e alho poró; legibilidade média (preço pequeno na foto)";;33.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.11.02.png;2025-03
+Crepes doces (Frisson);Emoção;"muçarela, banana crispy, canela, açúcar e coroa de queijo; legibilidade média (preço pequeno na foto)";;25.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.11.02.png;2025-03
+Crepes doces (Frisson);Raro;"morango, creme de avelã (Nutella) e castanhas; legibilidade média (preço pequeno na foto)";;33.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.11.02.png;2025-03
+Crepes doces (Frisson);Doce Vida;"morango e chocolate ao leite; legibilidade média (preço pequeno na foto)";;26.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.11.02.png;2025-03
+Crepes doces (Frisson);Sorriso;"massa arco-íris, pasta de Kit Kat e marshmallow; legibilidade média (preço pequeno na foto)";;27.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.11.02.png;2025-03
+Crepes doces (Frisson);Galáctico;"banana crispy e creme de avelã; legibilidade média (preço pequeno na foto)";;26.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.11.02.png;2025-03
+Crepes doces (Frisson);Tentação;"banana crispy e chocolate ao leite; legibilidade média (preço pequeno na foto)";;24.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.11.02.png;2025-03
+Crepes doces (Frisson);Paixão;"muçarela e goiabada cascão; legibilidade média (preço pequeno na foto)";;25.0;sobremesas;sobremesas;S;print: Captura de Tela 2026-10-12 às 21.11.02.png;2025-03
+Crepes vegetarianos (Frisson);Flutuar;"provolone, gorgonzola, muçarela, parmesão, coroa de queijo e orégano; legibilidade média (preço pequeno na foto)";;30.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.10.58.png;2025-03
+Crepes vegetarianos (Frisson);Yoga;"muçarela, abacate, tomate, cebola frita, orégano e sal; legibilidade média (preço pequeno na foto)";;25.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.10.58.png;2025-03
+Crepes vegetarianos (Frisson);Lúdico;"muçarela, shitake no azeite ao limão siciliano e alho poró; legibilidade média (preço pequeno na foto)";;30.0;couvert ou taxa de jogo;couvert ou taxa de jogo;N;print: Captura de Tela 2026-10-12 às 21.10.58.png;2025-03
+Crepes veganos (Frisson);Abraço;"massa vegana, queijo vegano, peito de peru vegano, tomate, abacaxi e orégano; legibilidade média (preço pequeno na foto)";;33.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.10.58.png;2025-03
+Crepes veganos (Frisson);Divino;"massa vegana, queijo vegano, abacate, tomate, cebola frita, orégano, milho e sal rosa; legibilidade média (preço pequeno na foto)";;32.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.10.58.png;2025-03
+Crepes veganos (Frisson);Raiz;"massa vegana, queijo vegano, tomate seco, rúcula e manjericão; legibilidade média (preço pequeno na foto)";;30.0;pratos principais;outros;S;print: Captura de Tela 2026-10-12 às 21.10.58.png;2025-03
