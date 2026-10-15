@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 15/10/2026 | Entorno no OSM: plataformas de cada sentido com o mesmo nome e rede contam como uma estação (até 400 m); bonde de Santa Teresa (linha turística) e paradas sem nome ficam em "outro"; no Maps, busca "estação tubo" só em Curitiba. Coletor 2026.10.15-4 | `docs/parecer_entorno_B1.md` §7 |
 | 15/10/2026 | A cada capítulo gerado ou revisado, analisar todos os capítulos e atualizar `docs/melhorias-texto.md` (divergências por gravidade; cortes por ganho) | `CLAUDE.md`, "Melhorias do texto" |
 | 15/10/2026 | Cap. 5 exposto do maior para o menor (Brasil → Bahia → Salvador; serviços às famílias → alimentação fora do lar e lazer → luderias); fontes na ordem órgão oficial → fundação → entidade setorial e acadêmico → imprensa, esta só com marca de troca | `textos/capitulos/5_analise_de_mercado.md` |
 | 15/10/2026 | Site de apresentação em preto, cinza e branco; cor (vermelho) só para Salvador/Nordeste, críticas, amostras fora do critério e avisos | `_src/site-apresentacao/src/index.css` |

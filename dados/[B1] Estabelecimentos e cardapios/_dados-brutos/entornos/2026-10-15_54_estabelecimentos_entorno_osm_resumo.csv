@@ -1,55 +1,55 @@
 ﻿place_id;nome;cidade;lat;lng;qt_estacoes_metro_500m;qt_estacoes_metro_1000m;qt_estacoes_trem_500m;qt_estacoes_trem_1000m;qt_estacoes_vlt_brt_500m;qt_estacoes_vlt_brt_1000m;qt_shoppings_500m;qt_shoppings_1000m;qt_praias_parques_500m;qt_praias_parques_1000m;qt_shoppings_area_min_500m;qt_shoppings_area_min_1000m;area_min_shopping_m2;qt_outros_1000m;elementos_ate_1000m;dist_estacoes_metro_mais_proxima_m;dist_estacoes_trem_mais_proxima_m;dist_estacoes_vlt_brt_mais_proxima_m;dist_estacao_mais_proxima_m;estacao_mais_proxima;tipo_estacao_mais_proxima;sistemas_sem_operacao;duplicatas_fundidas;elementos_lidos;consultado_em;situacao
-ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;Belo Horizonte;-19.905169000000004;-43.9158352;1;1;0;0;0;0;0;0;0;0;0;0;5000;0;1;305;;;305;Estação Horto;metro;trem;0;3;2026-10-15 10:46;ok
-ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;Belo Horizonte;-19.9172418;-43.9012234;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;1197;;;1197;Estação Santa Tereza;metro;trem;0;2;2026-10-15 10:50;ok
-ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;Belo Horizonte;-19.976597299999998;-43.9773673;0;0;0;0;0;0;1;1;0;0;0;0;5000;0;1;;;;;;;trem;0;2;2026-10-15 10:51;ok
-ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;Belo Horizonte;-19.944717;-43.946234;0;0;0;0;0;0;0;0;0;1;0;0;5000;0;1;;;;;;;trem;0;1;2026-10-15 10:51;ok
-ChIJ-97tiEeNpJIRb_eV7a-sxBs;Ludoteca Sidequest;Belém;-1.4491599;-48.4864573;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;metro | trem;0;2;2026-10-15 10:55;ok
-ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;Brasília;-15.8331212;-47.9838145;0;1;0;0;0;0;0;0;0;0;0;0;5000;0;1;718;;;718;Guará;metro;trem;0;2;2026-10-15 10:55;ok
-ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;Brasília;-15.7664896;-47.877085799999996;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;trem;0;1;2026-10-15 10:56;ok
-ChIJzdFNP3AyWpMRH2P6HEuhE-I;Loja de Jogos - Asgard;Brasília;-15.843839500000001;-48.0292294;1;1;0;0;0;0;0;0;0;0;0;0;5000;0;1;439;;;439;Águas Claras;metro;trem;0;4;2026-10-15 11:00;ok
-ChIJ15nLgwAwWpMRY1whwD29ZSo;Ludoteca BGC;Brasília;-15.819414;-47.899706099999996;1;2;0;0;2;4;0;0;0;2;0;0;5000;0;8;459;;378;378;108 Sul - BRT Expresso DF;vlt_brt;trem;0;19;2026-10-15 11:00;ok
-ChIJN8BZeb85WpMRgVKT05caxB4;Utopia Games & Food;Brasília;-15.737604099999999;-47.8952344;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;trem;0;0;2026-10-15 11:01;ok
-ChIJ3ekLtDjl3JQRHwtNgmINgLo;Alçapão Jogos;Curitiba;-25.4180064;-49.265488;0;0;0;0;2;5;0;0;0;0;0;0;5000;0;5;;;180;180;Estação Tubo Maria Clara;vlt_brt;metro | trem;4;13;2026-10-15 11:01;ok
-ChIJY_lqHVLl3JQRvDHacOMDKuc;BoardZ Game Pub;Curitiba;-25.4521863;-49.268752799999994;0;0;0;0;1;2;0;0;0;0;0;0;5000;0;2;;;388;388;Estação Tubo Kennedy;vlt_brt;metro | trem;7;19;2026-10-15 11:03;ok
-ChIJOczn8z7l3JQRNBEL_ZJ3iQo;Joyjoy Café;Curitiba;-25.437043300000003;-49.241465399999996;0;0;0;0;2;5;0;0;0;0;0;0;5000;0;5;;;225;225;Estação Tubo Hospital Cajuru;vlt_brt;metro | trem;6;16;2026-10-15 11:03;ok
-ChIJK5Dhtunj3JQRniPWHB3haDU;Paladino Hobbies;Curitiba;-25.434155999999998;-49.302921999999995;0;0;0;0;2;3;0;0;0;1;0;0;5000;0;4;;;167;167;Estação Tubo Gastão Câmara;vlt_brt;metro | trem;8;18;2026-10-15 11:04;ok
-ChIJc66HomXk3JQRNl28jz_VsPc;Taverna Game House;Curitiba;-25.441604899999998;-49.270879;0;0;0;0;3;7;0;1;0;0;0;0;5000;0;8;;;169;169;Estação Tubo Sete de Setembro;vlt_brt;metro | trem;12;33;2026-10-15 11:05;ok
-ChIJ1wjBJD7k3JQRQi7trfp_0aQ;Vila Celta Hobby Store - Jogos e Café;Curitiba;-25.443019699999997;-49.266283099999995;0;0;0;0;1;6;0;1;0;0;0;0;5000;0;7;;;205;205;Estação Tubo Westphalen;vlt_brt;metro | trem;11;29;2026-10-15 11:07;ok
-ChIJawIVeV0JM0oR5BtnD_poQeA;CCG Floripa;Florianópolis;-27.581560399999997;-48.5262926;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;metro | trem | vlt_brt;0;0;2026-10-15 11:07;ok
-ChIJc3F7ka83J5URQZ1XTl-_iak;Chef on Play;Florianópolis;-27.587930999999998;-48.523132999999994;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;metro | trem | vlt_brt;0;0;2026-10-15 11:08;ok
-ChIJJz8-gcY3J5URYdZrEXdHaAk;Cineplay- Restaurante e Jogos;Florianópolis;-27.6115524;-48.6272253;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;metro | trem | vlt_brt;0;0;2026-10-15 11:08;ok
-ChIJ0yXbI35IxwcR0_jLi-uINUU;Balboa's Hobby Games;Fortaleza;-3.7346889;-38.5002607;0;0;0;0;0;0;4;7;0;0;0;0;5000;0;7;;;1583;1583;Papicu;vlt_brt;;0;10;2026-10-15 11:09;ok
-ChIJQURqeMZJxwcR95O-XLbS2mk;Dominaria Cards & Games;Fortaleza;-3.738413;-38.53968040000001;1;2;0;0;0;0;0;0;0;0;0;0;5000;0;2;125;;1633;125;Benfica;metro;;1;7;2026-10-15 11:10;ok
-ChIJ89uEICDxXpMRdaEvN0XiWK0;Paladins Game Store;Goiânia;-16.7127064;-49.2640193;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;metro | trem;0;0;2026-10-15 11:11;ok
-ChIJHSDPTgF5GZURKmSqKITyoGM;Arcadea Gaming Pub;Porto Alegre;-30.0215237;-51.206898599999995;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;1253;;1253;Rodoviária;trem;;0;4;2026-10-15 11:12;ok
-ChIJ41pgHNFDGZURC7yTegyn7nU;Toca do Rato - Pizzaria e Jogos de Tabuleiro;Porto Alegre;-29.6108104;-51.1663491;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;;0;0;2026-10-15 11:13;ok
-ChIJRUjwU66WoGgRzc9yJU7jkwM;Nala Land - Bar de Jogos de Tabuleiro em Recife;Recife;-8.023975799999999;-34.895067;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;;0;2;2026-10-15 11:13;ok
-ChIJu1yUroF_mQAR7qxqAfxKSw4;Game Of Boards;Rio de Janeiro;-22.954819;-43.180991;0;1;0;0;0;0;0;1;0;0;0;0;5000;1;3;594;;1374;594;Botafogo;metro;;4;15;2026-10-15 11:14;ok
-ChIJ90Gs_9rVmwAReA7MnIyPLTE;Luderia Carioca;Rio de Janeiro;-22.9232;-43.1774878;2;3;0;0;2;16;0;2;0;3;0;0;5000;0;24;299;;283;283;Outeiro da Glória;vlt_brt;;12;61;2026-10-15 11:14;ok
-ChIJYzHxUhR-mQARpqVtYD9th0c;Magic Store Brazil;Rio de Janeiro;-22.916492899999998;-43.2410724;0;0;0;1;0;0;0;0;0;0;0;0;5000;0;1;1053;988;;988;Mangueira / Jamelão;trem;;0;9;2026-10-15 11:15;ok
-ChIJ1SAzAGF_mQARQgP-yrPBxbQ;RED jogos;Rio de Janeiro;-22.909065599999998;-43.177219;2;3;0;0;5;17;0;2;0;0;0;0;5000;5;27;187;1579;187;187;Carioca / Centro;metro;;21;83;2026-10-15 11:16;ok
-ChIJOcVssmeDmQARZZrnWu2mnwA;TabuClub;Rio de Janeiro;-22.898584099999997;-43.102339699999995;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;;0;3;2026-10-15 11:16;ok
-ChIJoTlvBfMbFgcRHvuCKHBQrXQ;São Jogue - Bela Vista;Salvador;-12.9694361;-38.4736806;1;2;0;0;0;0;0;3;0;0;0;0;5000;0;5;366;;;366;Acesso Norte;metro;trem;0;6;2026-10-15 11:18;ok
-ChIJYTHwWgBbzpQRFenbJdM5cxU;Arena BG | Jogos de Tabuleiro | Hamburgueria;São Paulo;-23.599306799999997;-46.6016884;1;1;0;0;0;0;0;0;0;0;0;0;5000;2;3;237;1452;;237;Sacomã;metro;;0;7;2026-10-15 11:18;ok
-ChIJKeHwNv5ZzpQRlmzx9rCTWdM;Bodogami Restaurante e Cafeteria;São Paulo;-23.5568468;-46.6365999;1;3;0;0;0;0;0;1;0;0;0;0;5000;0;4;195;;;195;Japão - Liberdade;metro;;0;13;2026-10-15 11:20;ok
-ChIJ__9TTnxCzpQRwVSzrOijkRY;Bravo Jogos;São Paulo;-23.662974;-46.525197999999996;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;1246;;1246;Prefeito Celso Daniel - Santo André;trem;;1;2;2026-10-15 11:22;ok
-ChIJrT_EWwBZzpQRGAZzptZbtsY;Cartola Luderia Bar;São Paulo;-23.563561;-46.638520799999995;1;3;0;0;0;0;0;1;0;0;0;0;5000;0;4;195;;;195;São Joaquim;metro;;0;12;2026-10-15 11:22;ok
-ChIJbZRHQPRfzpQRz97-ZOg0yXA;Castelos Bar & Boardgames;São Paulo;-23.542591299999998;-46.5621838;0;1;0;0;0;0;0;0;0;0;0;0;5000;0;1;564;;;564;Carrão – Assaí Atacadista;metro;;0;4;2026-10-15 11:24;ok
-ChIJF9j3OCRbzpQRkk74_QtOk_0;Coletivo Geek;São Paulo;-23.614641799999998;-46.666278399999996;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;;0;0;2026-10-15 11:25;ok
-ChIJ7_DDAlH1zpQRJVJ0UHnItH8;Covil Game Bar;São Paulo;-23.4650359;-46.523386;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;;0;0;2026-10-15 11:25;ok
-ChIJiZJ_DnIDz5QRaVafFCXGkUE;Dungeon Games Store;São Paulo;-23.5090051;-46.873919400000005;0;0;1;1;0;0;0;0;1;1;0;0;5000;0;2;;418;;418;Barueri;trem;;0;4;2026-10-15 11:26;ok
-ChIJZz29dnVXzpQRvRh7_YKyUN4;Encounter | Jogos de Tabuleiro | Board Games;São Paulo;-23.606458399999998;-46.6738581;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;;0;0;2026-10-15 11:27;ok
-ChIJ_aN4OAxXzpQR0UH63sAeVCA;Fan Hour Games and Burgers;São Paulo;-23.5617043;-46.6804729;0;0;0;0;0;0;0;1;0;0;0;0;5000;0;1;1223;;;1223;Santuário Nossa Senhora de Fátima - Sumaré;metro;;0;4;2026-10-15 11:28;ok
-ChIJa3UsDhRczpQRPPSuDl6acO8;Flow Games - Burgers, Cards & Comunidade;São Paulo;-23.581556;-46.5848501;2;2;0;0;0;0;0;0;0;0;0;0;5000;0;2;367;1205;;367;Vila Prudente;metro;;0;6;2026-10-15 11:28;ok
-ChIJn7uU0RNbzpQRI4GI9KHOo_s;Jogasampa;São Paulo;-23.6124767;-46.6632458;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;;0;0;2026-10-15 11:29;ok
-ChIJTaG5ALpZzpQRUDErQ-RkfTs;Ludus Luderia;São Paulo;-23.5618382;-46.6462097;0;3;0;0;0;0;0;4;0;0;0;0;5000;0;7;767;;;767;Brigadeiro;metro;;0;13;2026-10-15 11:29;ok
-ChIJE43rt29ZzpQRnvADt6pXfto;OMNIVERSE;São Paulo;-23.6130376;-46.6769472;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;1908;;;1908;Brooklin;metro;;0;1;2026-10-15 11:30;ok
-ChIJo-6lZMlezpQRmgUpUPfmRIs;Pitta's Board Games;São Paulo;-23.5472751;-46.5924116;0;1;0;0;0;0;0;0;0;0;0;0;5000;0;1;567;2000;;567;Belém;metro;;0;4;2026-10-15 11:31;ok
-ChIJkWsGmd1czpQRGLydxc29vbw;Place Games;São Paulo;-23.621405199999998;-46.5615561;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;1530;;1530;São Caetano do Sul - Prefeito Walter Braido;trem;;0;3;2026-10-15 11:31;ok
-ChIJNcHw7jNYzpQRKRHPOrb4jEw;Play Easy;São Paulo;-23.551912899999998;-46.656811999999995;0;0;0;0;0;0;0;6;0;0;0;0;5000;0;6;1295;;;1295;Trianon-Masp;metro;;1;12;2026-10-15 11:32;ok
-ChIJsU5BAwBRzpQRAgLVvqg68os;Tubaleria;São Paulo;-23.6320583;-46.709815;0;0;0;1;0;0;0;0;1;1;0;0;5000;0;2;1502;550;;550;Granja Julieta;trem;;0;6;2026-10-15 11:32;ok
-ChIJi5zbZadgzpQRIYeuK_eqQio;XPlace;São Paulo;-23.5325071;-46.515814;1;1;0;0;0;0;0;0;0;0;0;0;5000;0;1;366;;;366;Guilhermina-Esperança;metro;;0;3;2026-10-15 11:34;ok
-ChIJfyav9YI9uAARjwbBqcRm2_k;Café Geek Cafeteria e Ludoteca;Vitória;-20.3447463;-40.3108461;0;0;0;0;0;0;0;0;0;0;0;0;5000;0;0;;;;;;;metro | trem | vlt_brt;0;0;2026-10-15 11:34;ok
-ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;Belo Horizonte;-19.9276457;-43.954388200000004;0;0;0;0;0;0;0;1;0;0;0;0;5000;0;1;1152;;;1152;Estação Carlos Prates;metro;trem;0;5;2026-10-15 11:36;ok
-ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;Belo Horizonte;-19.937802899999998;-43.9449477;0;0;0;0;0;0;0;0;0;1;0;0;5000;0;1;;;;;;;trem;0;3;2026-10-15 11:37;ok
-ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;Brasília;-15.822639899999997;-47.9197444;0;2;0;0;0;4;0;0;0;0;0;0;5000;0;6;704;;648;648;112 Sul - BRT Expresso DF;vlt_brt;trem;0;13;2026-10-15 11:38;ok
+ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;Belo Horizonte;-19.905169000000004;-43.9158352;1;1;0;0;0;0;0;1;1;7;0;0;5000;1;10;305;;;305;Estação Horto;metro;trem;0;21;2026-10-15 11:55;ok
+ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;Belo Horizonte;-19.9276457;-43.954388200000004;0;0;0;0;0;0;0;4;6;9;0;1;5000;0;13;1152;;;1152;Estação Carlos Prates;metro;trem;0;31;2026-10-15 11:56;ok
+ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;Belo Horizonte;-19.9172418;-43.9012234;0;0;0;0;0;0;0;0;2;6;0;0;5000;0;6;1197;;;1197;Estação Santa Tereza;metro;trem;0;11;2026-10-15 11:57;ok
+ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;Belo Horizonte;-19.976597299999998;-43.9773673;0;0;0;0;0;0;1;1;1;5;0;0;5000;0;6;;;;;;;trem;1;10;2026-10-15 11:58;ok
+ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;Belo Horizonte;-19.944717;-43.946234;0;0;0;0;0;0;0;0;3;10;0;0;5000;0;10;;;;;;;trem;1;17;2026-10-15 11:59;ok
+ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;Belo Horizonte;-19.937802899999998;-43.9449477;0;0;0;0;0;0;0;3;6;14;0;0;5000;0;17;;;;;;;trem;0;24;2026-10-15 12:00;ok
+ChIJ-97tiEeNpJIRb_eV7a-sxBs;Ludoteca Sidequest;Belém;-1.4491599;-48.4864573;0;0;0;0;0;0;1;1;1;11;1;1;5000;0;12;;;;;;;metro | trem;1;24;2026-10-15 12:01;ok
+ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;Brasília;-15.8331212;-47.9838145;0;1;0;0;0;0;0;0;3;9;0;0;5000;0;10;718;;;718;Guará;metro;trem;0;17;2026-10-15 12:01;ok
+ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;Brasília;-15.7664896;-47.877085799999996;0;0;0;0;0;0;0;0;3;13;0;0;5000;0;13;;;;;;;trem;5;26;2026-10-15 12:02;ok
+ChIJzdFNP3AyWpMRH2P6HEuhE-I;Loja de Jogos - Asgard;Brasília;-15.843839500000001;-48.0292294;1;1;0;0;0;0;0;0;9;29;0;0;5000;0;30;439;;;439;Águas Claras;metro;trem;2;44;2026-10-15 12:06;ok
+ChIJ15nLgwAwWpMRY1whwD29ZSo;Ludoteca BGC;Brasília;-15.819414;-47.899706099999996;1;2;0;0;2;4;0;0;3;13;0;0;5000;0;19;459;;378;378;108 Sul - BRT Expresso DF;vlt_brt;trem;1;34;2026-10-15 12:08;ok
+ChIJN8BZeb85WpMRgVKT05caxB4;Utopia Games & Food;Brasília;-15.737604099999999;-47.8952344;0;0;0;0;0;0;0;1;4;14;0;1;5000;0;15;;;;;;;trem;0;18;2026-10-15 12:08;ok
+ChIJ3ekLtDjl3JQRHwtNgmINgLo;Alçapão Jogos;Curitiba;-25.4180064;-49.265488;0;0;0;0;6;11;0;1;13;25;0;1;5000;0;37;;;180;180;Estação Tubo Maria Clara;vlt_brt;metro | trem;22;86;2026-10-15 12:09;ok
+ChIJY_lqHVLl3JQRvDHacOMDKuc;BoardZ Game Pub;Curitiba;-25.4521863;-49.268752799999994;0;0;0;0;1;6;1;1;2;10;0;0;5000;0;17;;;388;388;Estação Tubo Kennedy;vlt_brt;metro | trem;26;69;2026-10-15 12:09;ok
+ChIJOczn8z7l3JQRNBEL_ZJ3iQo;Joyjoy Café;Curitiba;-25.437043300000003;-49.241465399999996;0;0;0;0;2;6;1;1;4;25;0;0;5000;0;32;;;225;225;Estação Tubo Hospital Cajuru;vlt_brt;metro | trem;13;69;2026-10-15 12:10;ok
+ChIJK5Dhtunj3JQRniPWHB3haDU;Paladino Hobbies;Curitiba;-25.434155999999998;-49.302921999999995;0;0;0;0;2;3;0;0;4;19;0;0;5000;1;23;;;167;167;Estação Tubo Gastão Câmara;vlt_brt;metro | trem;8;42;2026-10-15 12:11;ok
+ChIJc66HomXk3JQRNl28jz_VsPc;Taverna Game House;Curitiba;-25.441604899999998;-49.270879;0;0;0;0;5;11;1;6;3;11;1;5;5000;0;28;;;169;169;Estação Tubo Sete de Setembro;vlt_brt;metro | trem;48;115;2026-10-15 12:12;ok
+ChIJ1wjBJD7k3JQRQi7trfp_0aQ;Vila Celta Hobby Store - Jogos e Café;Curitiba;-25.443019699999997;-49.266283099999995;0;0;0;0;4;10;1;3;1;12;1;2;5000;1;26;;;81;81;Estação Tubo Getúlio Vargas;vlt_brt;metro | trem;42;104;2026-10-15 12:13;ok
+ChIJawIVeV0JM0oR5BtnD_poQeA;CCG Floripa;Florianópolis;-27.581560399999997;-48.5262926;0;0;0;0;0;0;0;0;1;7;0;0;5000;1;8;;;;;;;metro | trem | vlt_brt;0;9;2026-10-15 12:13;ok
+ChIJc3F7ka83J5URQZ1XTl-_iak;Chef on Play;Florianópolis;-27.587930999999998;-48.523132999999994;0;0;0;0;0;0;0;3;3;8;0;2;5000;1;12;;;;;;;metro | trem | vlt_brt;0;14;2026-10-15 12:14;ok
+ChIJJz8-gcY3J5URYdZrEXdHaAk;Cineplay- Restaurante e Jogos;Florianópolis;-27.6115524;-48.6272253;0;0;0;0;0;0;0;0;4;7;0;0;5000;0;7;;;;;;;metro | trem | vlt_brt;0;8;2026-10-15 12:17;ok
+ChIJ0yXbI35IxwcR0_jLi-uINUU;Balboa's Hobby Games;Fortaleza;-3.7346889;-38.5002607;0;0;0;0;0;0;16;35;2;4;5;5;5000;0;39;;;1583;1583;Papicu;vlt_brt;;1;50;2026-10-15 12:18;ok
+ChIJQURqeMZJxwcR95O-XLbS2mk;Dominaria Cards & Games;Fortaleza;-3.738413;-38.53968040000001;1;2;0;0;0;0;1;1;5;17;1;1;5000;0;20;125;;1633;125;Benfica;metro;;1;30;2026-10-15 12:18;ok
+ChIJ89uEICDxXpMRdaEvN0XiWK0;Paladins Game Store;Goiânia;-16.7127064;-49.2640193;0;0;0;0;0;0;1;2;3;8;1;2;5000;0;10;;;1066;1066;HUGO;vlt_brt;metro | trem;0;19;2026-10-15 12:19;ok
+ChIJHSDPTgF5GZURKmSqKITyoGM;Arcadea Gaming Pub;Porto Alegre;-30.0215237;-51.206898599999995;0;0;0;0;0;0;0;8;6;13;0;3;5000;0;21;;1253;;1253;Rodoviária;trem;;1;39;2026-10-15 12:20;ok
+ChIJ41pgHNFDGZURC7yTegyn7nU;Toca do Rato - Pizzaria e Jogos de Tabuleiro;Porto Alegre;-29.6108104;-51.1663491;0;0;0;0;0;0;0;0;2;6;0;0;5000;0;6;;;;;;;;1;8;2026-10-15 12:20;ok
+ChIJRUjwU66WoGgRzc9yJU7jkwM;Nala Land - Bar de Jogos de Tabuleiro em Recife;Recife;-8.023975799999999;-34.895067;0;0;0;0;0;0;0;0;2;11;0;0;5000;0;11;;;;;;;;2;19;2026-10-15 12:21;ok
+ChIJu1yUroF_mQAR7qxqAfxKSw4;Game Of Boards;Rio de Janeiro;-22.954819;-43.180991;0;1;0;0;0;0;3;5;6;14;2;3;5000;1;21;594;;1374;594;Botafogo;metro;;4;43;2026-10-15 12:21;ok
+ChIJ90Gs_9rVmwAReA7MnIyPLTE;Luderia Carioca;Rio de Janeiro;-22.9232;-43.1774878;2;3;0;0;2;16;0;4;9;20;0;1;5000;0;43;299;;283;283;Outeiro da Glória;vlt_brt;;13;92;2026-10-15 12:23;ok
+ChIJYzHxUhR-mQARpqVtYD9th0c;Magic Store Brazil;Rio de Janeiro;-22.916492899999998;-43.2410724;0;0;0;1;0;0;1;3;3;18;0;2;5000;0;22;1053;988;;988;Mangueira / Jamelão;trem;;7;40;2026-10-15 12:24;ok
+ChIJ1SAzAGF_mQARQgP-yrPBxbQ;RED jogos;Rio de Janeiro;-22.909065599999998;-43.177219;2;3;0;0;5;17;2;6;16;42;2;3;5000;6;74;187;1579;187;187;Carioca / Centro;metro;;29;146;2026-10-15 12:24;ok
+ChIJOcVssmeDmQARZZrnWu2mnwA;TabuClub;Rio de Janeiro;-22.898584099999997;-43.102339699999995;0;0;0;0;0;0;0;2;2;7;0;0;5000;0;9;;;;;;;;0;17;2026-10-15 12:25;ok
+ChIJoTlvBfMbFgcRHvuCKHBQrXQ;São Jogue - Bela Vista;Salvador;-12.9694361;-38.4736806;1;2;0;0;0;0;1;4;2;5;1;1;5000;2;13;366;;1427;366;Acesso Norte;metro;trem;0;24;2026-10-15 12:26;ok
+ChIJYTHwWgBbzpQRFenbJdM5cxU;Arena BG | Jogos de Tabuleiro | Hamburgueria;São Paulo;-23.599306799999997;-46.6016884;1;1;0;0;0;0;0;0;3;8;0;0;5000;3;12;237;1452;;237;Sacomã;metro;;1;22;2026-10-15 12:26;ok
+ChIJKeHwNv5ZzpQRlmzx9rCTWdM;Bodogami Restaurante e Cafeteria;São Paulo;-23.5568468;-46.6365999;1;3;0;0;0;0;0;2;10;31;0;0;5000;1;37;195;;;195;Japão - Liberdade;metro;;13;74;2026-10-15 12:27;ok
+ChIJ__9TTnxCzpQRwVSzrOijkRY;Bravo Jogos;São Paulo;-23.662974;-46.525197999999996;0;0;0;0;0;0;0;3;5;14;0;2;5000;0;17;;1246;;1246;Prefeito Celso Daniel - Santo André;trem;;2;29;2026-10-15 12:29;ok
+ChIJrT_EWwBZzpQRGAZzptZbtsY;Cartola Luderia Bar;São Paulo;-23.563561;-46.638520799999995;1;3;0;0;0;0;0;1;1;21;0;1;5000;0;25;195;;;195;São Joaquim;metro;;5;50;2026-10-15 12:30;ok
+ChIJbZRHQPRfzpQRz97-ZOg0yXA;Castelos Bar & Boardgames;São Paulo;-23.542591299999998;-46.5621838;0;1;0;0;0;0;0;0;6;19;0;0;5000;3;23;564;;;564;Carrão – Assaí Atacadista;metro;;3;39;2026-10-15 12:30;ok
+ChIJF9j3OCRbzpQRkk74_QtOk_0;Coletivo Geek;São Paulo;-23.614641799999998;-46.666278399999996;0;1;0;0;0;0;1;1;3;12;1;1;5000;0;14;526;;;526;Eucaliptos;metro;;4;26;2026-10-15 12:31;ok
+ChIJ7_DDAlH1zpQRJVJ0UHnItH8;Covil Game Bar;São Paulo;-23.4650359;-46.523386;0;0;0;0;0;0;0;2;4;18;0;0;5000;0;20;;;;;;;;2;33;2026-10-15 12:32;ok
+ChIJiZJ_DnIDz5QRaVafFCXGkUE;Dungeon Games Store;São Paulo;-23.5090051;-46.873919400000005;0;0;1;1;0;0;1;1;16;33;0;0;5000;1;36;;418;;418;Barueri;trem;;1;48;2026-10-15 12:32;ok
+ChIJZz29dnVXzpQRvRh7_YKyUN4;Encounter | Jogos de Tabuleiro | Board Games;São Paulo;-23.606458399999998;-46.6738581;0;1;0;0;0;0;0;1;5;15;0;1;5000;0;17;578;;;578;Eucaliptos;metro;;8;35;2026-10-15 12:33;ok
+ChIJ_aN4OAxXzpQR0UH63sAeVCA;Fan Hour Games and Burgers;São Paulo;-23.5617043;-46.6804729;0;2;0;0;0;0;0;1;9;30;0;0;5000;1;34;611;;;611;Fradique Coutinho;metro;;16;68;2026-10-15 12:33;ok
+ChIJa3UsDhRczpQRPPSuDl6acO8;Flow Games - Burgers, Cards & Comunidade;São Paulo;-23.581556;-46.5848501;2;2;0;0;0;0;0;1;11;42;0;1;5000;2;47;367;1205;;367;Vila Prudente;metro;;8;74;2026-10-15 12:34;ok
+ChIJn7uU0RNbzpQRI4GI9KHOo_s;Jogasampa;São Paulo;-23.6124767;-46.6632458;0;2;0;0;0;0;1;1;1;11;1;1;5000;0;14;553;;;553;Eucaliptos;metro;;3;26;2026-10-15 12:34;ok
+ChIJTaG5ALpZzpQRUDErQ-RkfTs;Ludus Luderia;São Paulo;-23.5618382;-46.6462097;0;3;0;0;0;0;0;7;3;23;0;3;5000;0;33;767;;;767;Brigadeiro;metro;;10;63;2026-10-15 12:35;ok
+ChIJE43rt29ZzpQRnvADt6pXfto;OMNIVERSE;São Paulo;-23.6130376;-46.6769472;0;3;0;0;0;0;0;1;4;19;0;1;5000;0;23;860;;;860;Campo Belo;metro;;7;39;2026-10-15 12:36;ok
+ChIJo-6lZMlezpQRmgUpUPfmRIs;Pitta's Board Games;São Paulo;-23.5472751;-46.5924116;1;1;0;0;0;0;2;2;4;13;1;1;5000;2;18;475;2000;;475;Belém;metro;;4;34;2026-10-15 12:38;ok
+ChIJkWsGmd1czpQRGLydxc29vbw;Place Games;São Paulo;-23.621405199999998;-46.5615561;0;0;0;0;0;0;0;0;2;14;0;0;5000;0;14;;1530;;1530;São Caetano do Sul - Prefeito Walter Braido;trem;;0;22;2026-10-15 12:39;ok
+ChIJNcHw7jNYzpQRKRHPOrb4jEw;Play Easy;São Paulo;-23.551912899999998;-46.656811999999995;0;3;0;0;0;0;3;8;3;39;1;2;5000;0;50;553;;;553;Estação Higienópolis-Mackenzie;metro;;15;96;2026-10-15 12:40;ok
+ChIJi5zbZadgzpQRIYeuK_eqQio;XPlace;São Paulo;-23.5325071;-46.515814;1;1;0;0;0;0;0;0;27;53;0;0;5000;0;54;366;;;366;Guilhermina-Esperança;metro;;7;78;2026-10-15 12:43;ok
+ChIJfyav9YI9uAARjwbBqcRm2_k;Café Geek Cafeteria e Ludoteca;Vitória;-20.3447463;-40.3108461;0;0;0;0;0;0;1;1;2;9;0;0;5000;1;11;;;;;;;metro | trem | vlt_brt;3;22;2026-10-15 12:45;ok
+ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;Brasília;-15.822639899999997;-47.9197444;0;2;0;0;0;4;0;0;2;5;0;0;5000;0;11;704;;648;648;112 Sul - BRT Expresso DF;vlt_brt;trem;0;22;2026-10-15 12:48;ok
+ChIJsU5BAwBRzpQRAgLVvqg68os;Tubaleria;São Paulo;-23.6320583;-46.709815;0;0;0;1;0;0;1;2;9;22;1;2;5000;0;25;1231;550;;550;Granja Julieta;trem;;0;38;2026-10-15 12:49;ok

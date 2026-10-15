@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Entorno no Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.15-3
+// @version      2026.10.15-4
 // @description  Conta estações de metrô, de trem, de VLT/BRT, shoppings e parques a 500 m e 1000 m de cada estabelecimento, no Google Maps e no OpenStreetMap; coleta a lista de estabelecimentos e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -38,7 +38,8 @@
  * reta (haversine) e conta os que caem a até 500 m e 1000 m.
  *
  * Buscas: "estação de metrô", "estação de trem", "estação BRT", "estação VLT",
- * "shopping center". Cada resultado vai para UM grupo pela própria categoria e
+ * "estação tubo" (só em Curitiba: a busca "estação BRT" não devolve as
+ * estações-tubo da RIT) e "shopping center". Cada resultado vai para UM grupo pela própria categoria e
  * nome no Maps (classificar), nunca pela busca que o trouxe; repetido entre
  * buscas conta uma vez. Grupos: metro, trem, vlt_brt, shopping, outro. O grupo
  * trem cobre os trens metropolitanos (CPTM, SuperVia, Trensurb), em coluna
@@ -66,7 +67,10 @@
  * quadrantes; quadrante lotado marca censura possível.
  *
  * Duplicatas. Resultados do mesmo grupo a até 150 m e com nome parecido
- * contam uma vez (fica o de mais avaliações; no OSM, o de maior área).
+ * contam uma vez (fica o de mais avaliações; no OSM, o de maior área). No OSM,
+ * plataformas de cada sentido com o MESMO nome e a mesma rede contam uma vez
+ * até 400 m (estações-tubo de Curitiba e BRT de Brasília ficam a 150-200 m
+ * uma da outra; até a versão 2026.10.15-3 contavam duas vezes).
  *
  * Revisão. "Revisar classificação": resultados do Maps no grupo "outro" a até
  * 1000 m com cara de estação ou shopping, para reclassificar com um clique.
@@ -81,7 +85,9 @@
  * (classificarOsm): metro (station=subway|monorail), trem (railway=station
  * de trem, operadores CPTM, SuperVia, Trensurb), vlt_brt (light_rail, tram,
  * BRT e estações-tubo), shopping, praia_parque e outro (terminal de ônibus,
- * barca, funicular, estação futura). Distância: até a coordenada, para nós;
+ * barca, funicular, estação futura, bonde de Santa Teresa, que é linha
+ * turística, e parada ou plataforma sem nome, que não identifica a estação).
+ * Distância: até a coordenada, para nós;
  * até a borda da bounding box, para vias e relações (estar ao lado de uma
  * praia longa conta). Repete a operacionalização do B1-c_entorno_osm.py
  * (coleta de 13/10/2026), que só tinha metrô, shopping e praia/parque.
@@ -118,6 +124,8 @@
  *  - …_entorno_osm_resultados.csv: um elemento do OSM por linha;
  *  - …_entorno_shoppings.csv: um shopping por estabelecimento, com área e
  *    avaliações.
+ * Os dois resumos trazem versao_script, a versão que fez a coleta (em branco
+ * nas coletas anteriores a 2026.10.15-4).
  * O fim de cada coleta baixa só os arquivos daquela fonte e daquela fila;
  * a cada 10 estabelecimentos do Maps, CSVs parciais (opção no painel).
  */
@@ -125,6 +133,8 @@
 (function () {
   'use strict';
 
+  // Versão gravada nos CSVs. Não usa GM_info: pelo carregador, ele dá a versão do carregador.
+  const VERSAO = '2026.10.15-4';
   const CHAVE_DADOS = 'tcc-entorno-dados-v2';
   const CHAVE_FILA = 'tcc-entorno-fila-v2';
   const CHAVE_REVISOES = 'tcc-entorno-revisoes';
@@ -142,6 +152,8 @@
   const PAINEL_MAPS_PADRAO_PX = 480;
   const TENTATIVAS = 2;
   const DIST_DUPLICATA_M = 150;
+  // Plataformas de sentidos opostos da mesma estação (mesmo nome e rede, no OSM).
+  const DIST_PLATAFORMAS_M = 400;
   // Acima disso o resultado é de outra região (o Maps completa a lista com
   // estações de outras cidades): fica no CSV de resultados, fora do resumo.
   const DIST_REGIAO_M = 50000;
@@ -162,6 +174,7 @@
     { consulta: 'estação de trem', grupo: 'trem' },
     { consulta: 'estação BRT', grupo: 'vlt_brt' },
     { consulta: 'estação VLT', grupo: 'vlt_brt' },
+    { consulta: 'estação tubo', grupo: 'vlt_brt' },
     { consulta: 'shopping center', grupo: 'shopping' },
   ];
   // Consultas dos estabelecimentos guardados antes do campo "consultas" (até 13/10/2026).
@@ -172,6 +185,9 @@
   const TREM = 'estação de trem';
   const VLT = 'estação VLT';
   const BRT = 'estação BRT';
+  const TUBO = 'estação tubo';
+  // Buscas que só valem em algumas cidades; nas demais, dispensadas.
+  const SO_NAS_CIDADES = { [TUBO]: ['curitiba'] };
   const SEM_SISTEMA = {
     'sao paulo': [VLT],
     'rio de janeiro': [],
@@ -189,7 +205,11 @@
     vitoria: [METRO, TREM, VLT, BRT],
   };
   const TRANSPORTE = ['metro', 'trem', 'vlt_brt'];
-  const consultasDispensadas = (cidade) => SEM_SISTEMA[semAcento(cidade).trim()] || [];
+  function consultasDispensadas(cidade) {
+    const c = semAcento(cidade).trim();
+    const locais = Object.entries(SO_NAS_CIDADES).filter(([, cs]) => !cs.includes(c)).map(([q]) => q);
+    return [...(SEM_SISTEMA[c] || []), ...locais];
+  }
   const GRUPOS = { metro: 'estacoes_metro', trem: 'estacoes_trem', vlt_brt: 'estacoes_vlt_brt', shopping: 'shoppings' };
   const GRUPOS_OSM = { ...GRUPOS, praia_parque: 'praias_parques' };
   const consultasDoGrupo = (g) => CONSULTAS.filter((c) => c.grupo === g).map((c) => c.consulta);
@@ -491,6 +511,8 @@
     const ferroviaria = /^(station|halt)$/.test(tags.railway || '');
     const estacao = ferroviaria || tags.public_transport === 'station';
     if (tags.ferry === 'yes' && !ferroviaria) return 'outro';
+    // Bonde de Santa Teresa: linha turística, não transporte de massa.
+    if (/\bbonde\b/.test(operador)) return 'outro';
     // Operador de trem metropolitano vale mais que o tipo (como no Maps).
     if (estacao && /\b(cptm|supervia|trensurb)\b/.test(`${n} ${operador}`) && !/\bmetro\b/.test(operador)) return 'trem';
     if (st === 'subway' || st === 'monorail' || tags.subway === 'yes' || tags.monorail === 'yes') return 'metro';
@@ -503,14 +525,19 @@
   }
 
   // Mesma feição mapeada como nó e como polígono (ou estação e plataforma):
-  // mesmo grupo, nome parecido e até 150 m; sem nome, até 15 m. Fica a maior.
+  // mesmo grupo, nome parecido e até 150 m; sem nome, até 15 m. Mesmo nome e
+  // mesma rede (ou rede em branco), até 400 m: plataformas de cada sentido.
+  // Fica a maior.
+  const mesmaRede = (a, b) => !a.tags?.network || !b.tags?.network || a.tags.network === b.tags.network;
   function marcarDuplicatasOsm(rs) {
     const mantidos = [];
     for (const r of [...rs].sort((a, b) => (b.area_m2 || 0) - (a.area_m2 || 0))) {
       const igual = r.grupo !== 'outro' && mantidos.find((m) => {
         if (m.grupo !== r.grupo) return false;
         const d = distancia(m.lat, m.lng, r.lat, r.lng);
-        return m.nome && r.nome ? d <= DIST_DUPLICATA_M && nomesParecidos(m.nome, r.nome) : d <= 15;
+        if (!m.nome || !r.nome) return d <= 15;
+        if (TRANSPORTE.includes(r.grupo) && semAcento(m.nome).trim() === semAcento(r.nome).trim() && mesmaRede(m, r)) return d <= DIST_PLATAFORMAS_M;
+        return d <= DIST_DUPLICATA_M && nomesParecidos(m.nome, r.nome);
       });
       r.duplicata_de = igual ? igual.nome || igual.osm_id : '';
       if (!igual) mantidos.push(r);
@@ -522,10 +549,14 @@
     const rs = entrada.elementos.map((e) => {
       const grupo_auto = classificarOsm(e.tags, e.nome);
       const ausente = TRANSPORTE.includes(grupo_auto) && sistemaAusente(grupo_auto, local.cidade);
+      // Parada ou plataforma sem nome (ex.: VLT e bonde no Rio): não identifica
+      // a estação e costuma repetir a parada nomeada ao lado.
+      const semNome = TRANSPORTE.includes(grupo_auto) && !e.nome && /^(stop_position|platform)$/.test(e.tags.public_transport || '');
+      const observacao = ausente ? 'sistema sem operação na cidade' : semNome ? 'parada sem nome' : '';
       return {
         origem: chaveLocal(local), origem_place_id: local.place_id, origem_nome: local.nome, ...e,
         tags_osm: Object.entries(e.tags).map(([k, v]) => `${k}=${v}`).join(' '),
-        grupo_auto, grupo: ausente ? 'outro' : grupo_auto, observacao: ausente ? 'sistema sem operação na cidade' : '',
+        grupo_auto, grupo: observacao ? 'outro' : grupo_auto, observacao,
         area_m2: e.area_m2 ?? '',
       };
     });
@@ -560,7 +591,7 @@
         const r = await consultarOverpass(url, q);
         if (!r.erro) {
           const elementos = r.elementos.filter((e) => centroOsm(e)).map((e) => elementoOsm(e, local));
-          return { elementos, consultado_em: agora(), servidor: new URL(url).host };
+          return { elementos, consultado_em: agora(), servidor: new URL(url).host, versao_script: VERSAO };
         }
         erros.push(`${new URL(url).host}: ${r.erro}`);
       }
@@ -772,7 +803,7 @@
 
   const consultasDoLocal = (local) => local.consultas || CONSULTAS_ANTIGAS;
   const consultasFaltantes = (local) => CONSULTAS.map((c) => c.consulta)
-    .filter((c) => !consultasDoLocal(local).includes(c) && !(local.consultas_dispensadas || []).includes(c));
+    .filter((c) => !consultasDoLocal(local).includes(c) && !(local.consultas_dispensadas || []).includes(c) && !consultasDispensadas(local.cidade).includes(c));
 
   function problemas(local) {
     const p = [];
@@ -835,6 +866,7 @@
     const semPorte = linha.qt_shoppings_porte_1000m === '' && !semMaps ? [precisaOsm(op) && semOsm ? 'porte sem OSM' : 'porte em branco'] : [];
     linha.situacao = [...problemas(local), ...semPorte].join('; ') || 'ok';
     linha.coletado_em = local.coletado_em;
+    linha.versao_script = local.versao_script || '';
     return linha;
   }
 
@@ -861,6 +893,7 @@
     linha.duplicatas_fundidas = rs.filter((r) => r.duplicata_de).length;
     linha.elementos_lidos = rs.length;
     linha.consultado_em = entrada.consultado_em;
+    linha.versao_script = entrada.versao_script || '';
     linha.situacao = 'ok';
     return linha;
   }
@@ -1053,6 +1086,7 @@
       falhas: fila.falhas, cobertura_insuf: fila.cobertura_insuf, cobertura_min_m: fila.cobertura_min_m, coletado_em,
       consultas: tarefasIniciais(local).map((c) => c.consulta),
       consultas_dispensadas: consultasDispensadas(local.cidade),
+      versao_script: VERSAO,
     }]);
     gravar(CHAVE_DADOS, dados);
     fila.locais_fechados += 1;
@@ -1204,7 +1238,7 @@
     cols.push('criterio_porte_shopping', 'qt_outros_1000m', 'resultados_ate_1000m');
     for (const col of Object.values(GRUPOS)) cols.push(`dist_${col}_mais_proxima_lida_m`);
     cols.push('dist_estacao_mais_proxima_lida_m', 'estacao_mais_proxima', 'tipo_estacao_mais_proxima');
-    return [...cols, 'duplicatas_fundidas', 'revisoes_manuais', 'buscas', 'cobertura_min_m', 'consultas_subdivididas', 'consultas_falhas', 'consultas_nao_feitas', 'consultas_dispensadas', 'consultas_cobertura_insuficiente', 'consultas_censura', 'situacao', 'coletado_em'];
+    return [...cols, 'duplicatas_fundidas', 'revisoes_manuais', 'buscas', 'cobertura_min_m', 'consultas_subdivididas', 'consultas_falhas', 'consultas_nao_feitas', 'consultas_dispensadas', 'consultas_cobertura_insuficiente', 'consultas_censura', 'situacao', 'coletado_em', 'versao_script'];
   }
 
   function colsOsm() {
@@ -1213,7 +1247,7 @@
     for (const raio of RAIOS_M) cols.push(`qt_shoppings_area_min_${raio}m`);
     cols.push('area_min_shopping_m2', 'qt_outros_1000m', 'elementos_ate_1000m');
     for (const g of TRANSPORTE) cols.push(`dist_${GRUPOS[g]}_mais_proxima_m`);
-    return [...cols, 'dist_estacao_mais_proxima_m', 'estacao_mais_proxima', 'tipo_estacao_mais_proxima', 'sistemas_sem_operacao', 'duplicatas_fundidas', 'elementos_lidos', 'consultado_em', 'situacao'];
+    return [...cols, 'dist_estacao_mais_proxima_m', 'estacao_mais_proxima', 'tipo_estacao_mais_proxima', 'sistemas_sem_operacao', 'duplicatas_fundidas', 'elementos_lidos', 'consultado_em', 'situacao', 'versao_script'];
   }
 
   function celula(v) {

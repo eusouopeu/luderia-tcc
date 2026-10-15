@@ -24,6 +24,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 8. **Análise de conteúdo do B2: segundo codificador.** Quem faz a recodificação cega dos 131 comentários da amostra (autor ou outra pessoa) e quando; até lá, as categorias seguem sem medida de confiabilidade.
 
+11. **Fonte do VLT/BRT no entorno.** O Maps não traz o BRT de Brasília (e, até a recoleta com "estação tubo", o de Curitiba); o OSM traz, mas ainda conta 4 paradas do bonde de Santa Teresa sem tag de rede. Usar o Maps, o OSM ou a maior das duas contagens no grupo VLT/BRT? Detalhe em `docs/parecer_entorno_B1.md` §7.
+
 10. **Escala de fontes do cap. 5 × P1 e N1–N6** (`docs/melhorias-texto.md`, D01): a ordem de fontes em 4 níveis decidida para o cap. 5 em 15/10 vira a P1 de `_instrucoes/1_estrutura.md` ou sai do capítulo? E que rótulo dar ao tipo de dado da P2, para não confundir com N1–N6?
 
 ## Tarefas a fazer (pedidas pelo autor em 15/10/2026)
@@ -35,10 +37,10 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
   - Ludus (@ludusluderia): sem o nº total de posts;
   - LudoCafé: confirmar o perfil do bar (coletado @ludocafe_editora; a triagem aponta @ludocafebh);
   - Dominaria: coletado @dominariacg.sp (unidade de São Paulo); a casa aprovada fica em Fortaleza (@dominariacg).
-- **Entorno: coletar o OSM de novo.** O coletor foi corrigido em 15/10 (versão 2026.10.15-3: polígonos com centro e área; um nó do OSM por shopping). Recarregar o Maps, clicar em "Refazer OSM de todos (54)" e exportar; a coleta de 15/10 (11:38) não serve (só nós, sem área). Depois, conferir de novo e só então levar ao resumo e ao site.
+- **Entorno: recoletar Curitiba no Maps e exportar tudo.** O OSM foi recoletado em 15/10 (12h49), íntegro, e o coletor passou à versão 2026.10.15-4 (busca "estação tubo" em Curitiba; plataformas de cada sentido, bonde de Santa Teresa e paradas sem nome fora da contagem do OSM; `versao_script` nos resumos). Recarregar o Maps, clicar em "Refazer pendentes" (as 6 casas de Curitiba) e exportar tudo. Conferir de novo (`docs/parecer_entorno_B1.md` §7) e só então levar ao resumo e ao site.
 - **Entorno: completar e testar o banco.** Acrescentar ao banco de entornos os dados do OSM e os novos critérios de filtragem de shoppings (ver o item 7 das decisões a tomar) e, em seguida, testar a integridade e a confiabilidade dos dados.
 - **Fazer as auditorias.** As amostras estão em `_dados-brutos/<pasta>/auditoria/` (scripts `*-a_auditoria_*.py`, 15/10). Entorno: seguir `textos/instrumentos/roteiro_auditoria_entorno_B1.md`, primeiro os itens do Maps e, depois da recoleta, os do OSM. A amostra do B2 saiu da base do build de 14/10 (2.218 no recorte): rodar `B2-a_auditoria_avaliacoes.py` de novo depois de refazer o build com a triagem corrigida (a chave por `review_id` mantém as já sorteadas). Falta o script que lê as conferências e calcula a taxa de erro com o intervalo de Wilson.
-- **Entorno: corrigir o que o parecer apontou** (`docs/parecer_entorno_B1.md` §5): BRT de Curitiba ausente no Maps (as 6 casas com zero; o OSM acha estações-tubo a menos de 400 m); exportar de novo o arquivo de 51 casas (sem o filtro de 50 km); gravar a versão do coletor nos CSVs; `B1-b_resumo.py` escolher a coleta pela data do nome, não pela data de modificação.
+- **Entorno: corrigir o que o parecer apontou** (`docs/parecer_entorno_B1.md` §5 e §7): exportar de novo o arquivo de 51 casas (sem o filtro de 50 km); `B1-b_resumo.py` escolher a coleta pela data do nome, não pela data de modificação. BRT de Curitiba e versão nos CSVs resolvidos no coletor 2026.10.15-4, à espera da recoleta.
 - **Sumarização do B2.**
 
 ## Divergências entre documentos, ainda sem correção

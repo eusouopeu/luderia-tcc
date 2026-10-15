@@ -1010,3 +1010,16 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: caps. 1 e 2 e as instruções (P1 em 7 níveis, N1–N6, P2; até 6 objetivos específicos).
 **Depois**: cap. 5 (15/10) com ordem de fontes em 4 níveis e rótulos de escalas misturados; cap. 1 com 7 objetivos; demais divergências D02 a D18 descritas em `docs/melhorias-texto.md`.
 **Efeitos colaterais**: a banca pode ler "N2" e "nível 2" como a mesma escala; objetivos a mais desalinham o 11.2. Nada foi corrigido nos capítulos.
+
+### 14:11
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/entornos/` (OSM de 54 casas, São Jogue Paralela, `versoes_superadas/`) e `redes_sociais/rs_<cidade>/rs_<perfil>/` (perfis de 8 casas)
+**Antes**: OSM de 15/10 (11h38) só com nós; perfis do Instagram de Bardo Mago, La Tabuleria, Tubaleria, Encounter, Toca do Rato, BoardZ, TabuClub e Luderia Carioca na pasta Downloads; coleta avulsa da São Jogue Paralela e versão de 13h28 do Maps de 14/10 na pasta Downloads.
+**Depois**: `2026-10-15_54_estabelecimentos_entorno_osm_resumo.csv`, `_osm_resultados.csv` e `_shoppings.csv` substituídos pela recoleta de 12h49 (versão 2026.10.15-3, com polígonos); `2026-10-15_sao_jogue_paralela_entorno_*.csv` nos brutos do entorno; a versão de 13h28 de `maps_entorno_*_2026-10-14.csv`, menor que a já guardada, em `versoes_superadas/` com sufixo `_1328`; perfis renomeados para `2026-10-15_<perfil>_instagram_perfis.csv`.
+**Justificativa**: pedido do autor: mover os arquivos de perfis e de entorno da pasta Downloads para os lugares do projeto.
+
+### 14:11
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` (2026.10.15-3 → 2026.10.15-4) e `docs/parecer_entorno_B1.md` (§7 novo)
+**Antes**: no OSM, plataformas de cada sentido da mesma estação (a 160-190 m) contavam como duas estações; paradas do bonde de Santa Teresa e paradas sem nome contavam como VLT; no Maps, sem busca que trouxesse as estações-tubo de Curitiba; versão do coletor fora dos CSVs.
+**Depois**: no OSM, mesmo nome, mesmo grupo e mesma rede até 400 m contam uma vez; bonde de Santa Teresa e parada ou plataforma sem nome vão para "outro" (com `observacao`); no Maps, busca "estação tubo" só em Curitiba (dispensada nas demais), o que deixa as 6 casas de Curitiba pendentes até a recoleta; `versao_script` nos dois resumos. Simulado sobre a coleta de 12h49: VLT/BRT a 1000 m cai de 88 para 59 e metrô de 45 para 44, somas fechando em 54/54.
+**Justificativa**: pedido do autor: analisar a última rodada do entorno e, se não tivesse extraído todas as variáveis em Maps e OSM, achar o problema e corrigir o extrator. A rodada não extraiu o VLT/BRT de forma confiável em nenhuma das duas fontes.
+
