@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 15/10/2026 | Fila do entorno no Maps = as 51 luderias aprovadas do B1 (as mesmas do B2), não os 66 estabelecimentos da curadoria antiga do `B1_entorno.csv` | `_src/[B1] Google Places (estabelecimentos)/build_B1_fila_entorno_maps.py` |
 | 14/10/2026 | Entorno no Maps: trem metropolitano em grupo próprio (`trem`), separado do metrô; a análise soma metro + trem quando quiser "trilhos" | `_src/Web scripts/maps_entorno.user.js` |
 | 14/10/2026 | CSVs do entorno nomeados `AAAA-MM-DD_<estabelecimento>_entorno_<resumo\|resultados>.csv`; o fim da fila baixa só os estabelecimentos daquela fila | `_src/Web scripts/maps_entorno.user.js` |
 | 13/10/2026 | Público casual fora do objeto de pesquisa; retirado de instruções, introdução, projeto, cronograma, CLAUDE.md e README | `textos/capitulos/1_introducao_plano_luderia.md` |

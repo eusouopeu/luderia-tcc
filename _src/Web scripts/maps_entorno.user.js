@@ -70,7 +70,9 @@
  *     como CSV (colunas nome e, se houver, cidade);
  *   - avaliações: número mínimo de avaliações no Maps (proxy sem fonte).
  *
- * Uso: "Carregar CSV" (o B1_entorno.csv serve) ou cole linhas
+ * Uso: "Carregar CSV" (a fila das luderias aprovadas é o
+ * entorno_maps/B1_fila_entorno_maps.csv, gerado por
+ * build_B1_fila_entorno_maps.py; o B1_entorno.csv também serve) ou cole linhas
  * "place_id;nome;lat;lng"; "Coletar fila". "Refazer pendentes" recoleta os
  * estabelecimentos com falha, cobertura insuficiente, censura possível ou
  * busca nova ainda não feita. A cada 10 estabelecimentos, os CSVs parciais

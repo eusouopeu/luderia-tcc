@@ -22,6 +22,7 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 ## Dúvidas
 
+- **Entorno no Maps, 25 luderias aprovadas sem coordenada (15/10):** a fila `B1_fila_entorno_maps.csv` tem as 51 aprovadas, mas só 26 com lat e lng (vindas do `B1_entorno.csv`); as outras 25 não estão no repositório, e o coletor as pula. No Mac do autor, se o `B1_localizacoes.jsonl` já as tiver, basta rodar `build_B1_fila_entorno_maps.py`; se não, rodar antes `collect_B1_localizacoes.py` (chave da API no `.env`). Lista das 25 na saída do script.
 - **Entorno no Maps, três primeiras extrações (14/10):** os CSVs ficaram só no Mac do autor e não foram conferidos linha a linha. Recoletar os três estabelecimentos com a versão 2026.10.14-1 ("Refazer pendentes" já os inclui, pela busca de trem) e pôr os CSVs em `_data/raw/[B1] Estabelecimentos e cardapios/entorno_maps/` para conferência.
 - Perguntas abertas para a literatura (validação de avaliações online como medida de visitas, estabilidade da razão avaliações ÷ visitantes, limiar de concordância para variáveis raras, peso de comida, serviço e ambiente, taxa de desconto de negócio pequeno, termos de uso do Google Maps): `docs/bibliografia/lacunas-bibliograficas.md` §6.
 - Datas e horários das visitas: o roteiro de campo (`textos/instrumentos/roteiro_observacao_sao_jogue.md`) ainda marca 18h00 às 21h00 nas quatro visitas, e o cronograma (semana 4) chama a de 03/10 de "visita pré-teste". Confirmar se as primeiras visitas foram em 03/10 com entrada às 19h.
