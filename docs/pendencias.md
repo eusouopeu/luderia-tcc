@@ -72,7 +72,13 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 ## Dúvidas
 
-- **Cardápios, conferir à mão:** categorias de 13 casas atribuídas por regra de palavra-chave (`B1-b_cardapios_transcricoes.py`); Cartola só tem entradas, sobremesas e drinks exportados da Takeat; TabuClub baixado e não transcrito; preços de La Tabuleria e Toca do Rato são de delivery (Saipos).
+- **Cardápios, conferir à mão:** categorias de 13 casas atribuídas por regra de palavra-chave (`B1-b_cardapios_transcricoes.py`); Cartola só tem entradas, sobremesas e drinks exportados da Takeat; preços de La Tabuleria e Toca do Rato são de delivery (Saipos); preços da Fan Hour e do LudoCafé vêm de matéria e de legenda do TikTok, lidos por resumo automático da página: conferir contra a fonte antes de citar.
+
+- **Cardápios no navegador (busca profunda de 16/10):** abrir com o `cardapio_coletor.user.js` o Goomer da São Jogue (`sao-jogue.goomer.app`, concorrente direta em Salvador) e o iFood do Game Of Boards; abrir à mão `garagemdonerd.com.br/cardapio/`, o botão Cardápio do `beacons.ai/nalaland` e a aba de cardápio do Restaurant Guru do Joyjoy. Coletivo Geek: decidir se preenche o formulário do PDF. Lista completa e próximo passo por casa em `cardapios/B1_cardapios_busca_profunda.csv`.
+
+- **Couvert subestimado?** A imprensa cita couvert na Ludus (R$ 34 a R$ 44), na Bodogami (R$ 20 a R$ 35) e na Encounter (a partir de R$ 35), que a planilha registra sem couvert (`cardapios/B1_couvert_fontes_secundarias.csv`). Decidir se essas fontes entram na cesta e na premissa R14 ("só 7 de 26 cobram"), que pode mudar a decisão de cobrar couvert no cap. 6.3.
+
+- **Resumo do B1 desatualizado em relação à planilha de cardápios:** rodar no Mac `B1-b_resumo.py` e depois `B1-a_estatistica_descritiva.py` (dependem de arquivos fora do git); o resumo ainda conta 26 casas com cardápio.
 
 - **Rascunho do cap. 3, pontos `[conferir]`:** origem das 5 luderias novas (busca manual, Instagram ou outra); data e horário efetivos das visitas de 03/10; consulta à orientação sobre a dispensa do Comitê de Ética; números do B2 depois de incluir as 5 novas. A seção 3.5 (registro prévio, extra) ficou fora, e as seguintes subiram um número.
 

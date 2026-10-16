@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 16/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -23,6 +23,8 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 - **Cap. 2 (referencial teórico):** rascunho pronto em 15/10 (`textos/capitulos/2_referencial_teorico.md`, 8,3/10 páginas). Falta conferir edição e página dos livros `[AV]` na Minha Biblioteca da UFBA (`bibliografia/bibliografia-v2/procurar-manualmente.md`).
 
 - **Estatística descritiva do B1** (15/10): geral, por metrópole e por região em `dados/[B1]…/estabelecimentos/4_estatistica_descritiva/` e nas abas 08 a 10 do site (`_src/site-apresentacao`, publicado em 15/10; publicar de novo com `pnpm run deploy` quando os dados mudarem). Rodar de novo `B1-a_estatistica_descritiva.py` depois de cada atualização do `B1_resumo_estabelecimentos.xlsx`.
+
+- **Cardápios, busca profunda** (16/10): planilha com 34 casas e 1.991 linhas (TabuClub transcrito; Fan Hour com preços de imprensa; LudoCafé, São Jogue, Game Of Boards, Garagem do Nerd, Joyjoy e Asgard parciais). Das 28 casas que faltavam, 16 são lojas sem A&B localizado; o que só abre no navegador (Goomer da São Jogue, iFood do GOB e outros 3) está em `cardapios/B1_cardapios_busca_profunda.csv`. Falta rodar no Mac `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py`, e o Notion (Status da coleta) não foi atualizado.
 
 - **Status da coleta no Notion** ("Luderias – Status da coleta", 15/10): 54 casas com status por fonte e, em cada linha, o que falta e como fechar. Horários (54 casas) e cardápios de 27 casas consolidados em 15/10. Lacunas que restam: acervo sem lista (25), porte de shopping no entorno (22) e Instagram (18 casas parciais ou sem coleta).
 

@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 16/10/2026 | Cardápio parcial (só couvert ou poucos itens, de site, imprensa ou TikTok) entra na planilha de cardápios com status "parcial", a data e a fonte em cada linha; a cesta só se forma com couvert, bebida e prato da própria casa, então parcial não gera cesta. Couvert de imprensa para casa já transcrita fica em arquivo à parte, sem alterar a transcrição | `cardapios/B1_cardapios_busca_profunda.csv`, `B1-b_cardapios_planilha.py` |
+| 16/10/2026 | Lojas de jogos sem serviço de comida e bebida localizado (16 das 28 casas sem cardápio) ficam como "sem A&B localizado", sem nova busca | `cardapios/B1_cardapios_busca_profunda.csv` |
 | 15/10/2026 | Modelo financeiro em Python, dirigido pelo registro de premissas em CSV; preços constantes, TMA real (Selic real do Focus + prêmio de risco), horizonte de 5 anos sem perpetuidade; código em `_src/Modelo financeiro/` e saídas em `dados/Modelo financeiro/` (fora das pastas de bloco, porque cruza B1 a B4) | `_src/Modelo financeiro/analise/financeiro-a_modelo.py` |
 | 15/10/2026 | Cap. 8: SLU, CNAE principal 5611-2/05 e Simples Nacional, com A&B no anexo I e couvert e eventos no anexo III (a conferir) | `textos/capitulos/8_aspectos_juridicos.md` |
 | 15/10/2026 | Entorno no OSM: plataformas de cada sentido com o mesmo nome e rede contam como uma estação (até 400 m); bonde de Santa Teresa (linha turística) e paradas sem nome ficam em "outro"; no Maps, busca "estação tubo" só em Curitiba. Coletor 2026.10.15-4 | `docs/parecer_entorno_B1.md` §7 |

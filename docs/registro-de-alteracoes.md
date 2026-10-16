@@ -1071,3 +1071,17 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: cap. 8 não iniciado, prazo vencido em 09/10.
 **Depois**: rascunho com 8.1 (SLU, CNAE, Simples em dois anexos, Quadro 01 com a carga por cenário), 8.2 (Quadro 02 de licenças em Salvador, bebida alcoólica, LGPD) e 8.3 (locação, uso de jogos comprados, marca). Cerca de 3,9 páginas com as referências do capítulo; normas `[AV]`, exceto a LC 123/2006 conferida no texto compilado de 14/09/2026.
 **Justificativa**: pedido do autor (item 3 das melhorias de 15/10). Sem travessão e sem voz passiva, porque P5 e a skill de escrita ainda divergem (pendência aberta).
+
+## 2026/10/16
+
+### 02:47
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/` (novos `tabuclub.csv`, `ludocafe.csv`, `saojogue.csv`, `garagemdonerd.csv`, `gameofboards.csv`, `joyjoy.csv`, `asgard.csv`; `fanhour.csv` alterado), `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/build/B1-b_cardapios_planilha.py` (`FONTES`), `cardapios/B1_cardapios_itens_precos.xlsx`, novos `cardapios/B1_cardapios_busca_profunda.csv` e `cardapios/B1_couvert_fontes_secundarias.csv`
+**Antes**: planilha com 27 casas e 1.887 linhas (1.851 com preço); TabuClub baixado e não transcrito; Fan Hour com 50 itens sem preço; 28 das 54 casas sem cardápio com preço e sem registro de onde se procurou.
+**Depois**: planilha com 34 casas e 1.991 linhas (1.955 com preço). TabuClub transcrito do PDF (75 linhas, sem couvert). Fan Hour com 26 preços e a taxa de jogo (R$ 20) de matéria atualizada em 05/10/2026, 24 itens ainda sem preço. Parciais: LudoCafé (10 itens de legenda do TikTok de 16/11/2024 e couvert de R$ 30, ou R$ 15 com consumo de R$ 50), São Jogue (taxa de entrada de R$ 22 seg-qui e R$ 28 sex-dom, do site), Game Of Boards (passaporte de R$ 15 e R$ 25, do site), Garagem do Nerd (couvert de R$ 10), Joyjoy (taxa de R$ 10 e R$ 15) e Asgard (couvert de R$ 10 e R$ 20 e 3 petiscos). As linhas das 26 casas que já estavam ficaram iguais (comparação célula a célula). A busca profunda registra, casa a casa, as fontes consultadas, o achado e o próximo passo: 1 extraído, 7 parciais, 4 não achados e 16 lojas sem serviço de A&B localizado (total 28). O couvert citado pela imprensa para casas já transcritas ficou à parte, sem mexer nas transcrições.
+**Justificativa**: pedido do autor (16/10): nova busca, mais profunda, pelos cardápios que faltavam, em fontes ainda não usadas (Goomer, iFood, imprensa, TikTok, guias e agregadores). A maior parte das fontes de imagem e das plataformas de pedido (Goomer, iFood, Restaurant Guru, Instagram) não abre sem navegador; ficaram com o link e o passo no registro da busca.
+
+### 02:47
+**Objeto**: `cardapios/B1_cardapios_itens_precos.xlsx` (aba itens) × `cardapios/B1_couvert_fontes_secundarias.csv`
+**Antes**: a planilha registra Ludus Luderia com taxa de jogo 0 ("não cobra por tempo nem por jogo", página inicial do site) e Bodogami e Encounter sem couvert no cardápio.
+**Depois**: CNN Brasil (02/10/2024) e QuintoAndar (23/09/2025) citam couvert de R$ 34 a R$ 44 na Ludus, R$ 20 a R$ 35 na Bodogami (só para quem joga) e a partir de R$ 35 na Encounter.
+**Efeitos colaterais**: a premissa R14 do modelo financeiro ("só 7 de 26 casas com cardápio cobram couvert") e a cesta por pessoa dessas casas podem subestimar a cobrança de couvert. Não corrigido: aguarda decisão do autor.
