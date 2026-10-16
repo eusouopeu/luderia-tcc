@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 16/10/2026 | App de observação 2.4.0: CSVs com `visita_id`, `observador`, `versao_app` e `papel` em todas as tabelas; entrada na porta ligada à mesa; saída rápida com motivo (desistência = Lotado ou Só olhou); "Fechamento da casa" como censura, fora da permanência média; posição, papel e pausas do observador; condições do dia em lista; marca de estimado para pessoas e de incerto para jogos; roteiro da visita no Temporizador | `_src/app-observacao/src/domain/model.ts`, `B3-a_contagem.py` |
 | 15/10/2026 | Modelo financeiro em Python, dirigido pelo registro de premissas em CSV; preços constantes, TMA real (Selic real do Focus + prêmio de risco), horizonte de 5 anos sem perpetuidade; código em `_src/Modelo financeiro/` e saídas em `dados/Modelo financeiro/` (fora das pastas de bloco, porque cruza B1 a B4) | `_src/Modelo financeiro/analise/financeiro-a_modelo.py` |
 | 15/10/2026 | Cap. 8: SLU, CNAE principal 5611-2/05 e Simples Nacional, com A&B no anexo I e couvert e eventos no anexo III (a conferir) | `textos/capitulos/8_aspectos_juridicos.md` |
 | 15/10/2026 | Site de apresentação com visual editorial: papel creme, cinzas quentes e um único acento terracota (Salvador/Nordeste, críticas, amostras fora do critério, avisos e seção ativa); Fraunces nos títulos, Inter no corpo, JetBrains Mono nos números; barra lateral clara. Substitui a paleta preto/cinza/vermelho | `_src/site-apresentacao/src/index.css`, `src/formato.js` |

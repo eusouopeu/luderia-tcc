@@ -3,8 +3,10 @@ import {
   ArrowLeftIcon,
   ArrowPathIcon,
   ArrowRightIcon,
+  CheckCircleIcon,
   CheckIcon,
   ChevronDoubleRightIcon,
+  ChevronRightIcon,
   ClockIcon,
   PauseIcon,
   PencilSquareIcon,
@@ -13,7 +15,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { useLoja } from '../../store'
-import { agoraHora, novoId, registroAberto, visitaAtiva, visitaAtual, type Contagem, type Unidade } from '../../domain/model'
+import { agoraHora, MOTIVO_FECHAMENTO, novoId, registroAberto, visitaAtiva, visitaAtual, type Contagem, type Estado, type Unidade, type Visita } from '../../domain/model'
 import { etapas, nomeEtapa, situacaoTimer } from '../../domain/temporizador'
 
 const fmt = (ms: number) => {
@@ -23,9 +25,25 @@ const fmt = (ms: number) => {
   return h ? `${h} h ${String(m).padStart(2, '0')} m` : `${m} m ${String(s % 60).padStart(2, '0')} s`
 }
 
-/** Temporizador do roteiro: contagem inicial e uma a cada intervalo, marcando mesa a mesa. */
-export function AbaTemporizador({ unidade, onMesa }: { unidade: Unidade; onMesa: (mesaId: string) => void }) {
-  const { estado, mudar, comecar, encerrar, alternarPausa } = useLoja()
+export type Destino = 'visita' | 'acervo' | 'acustica' | 'fluxo' | 'mesas'
+
+/** Temporizador do roteiro: contagem inicial e uma a cada intervalo, marcando mesa a mesa, e as tarefas da visita. */
+export function AbaTemporizador({
+  unidade,
+  onMesa,
+  onComecar,
+  onEncerrar,
+  onFechamento,
+  onIr,
+}: {
+  unidade: Unidade
+  onMesa: (mesaId: string) => void
+  onComecar: () => void
+  onEncerrar: (visitaId: string) => void
+  onFechamento: (visitaId: string) => void
+  onIr: (d: Destino) => void
+}) {
+  const { estado, mudar, alternarPausa } = useLoja()
   const [agora, setAgora] = useState(() => new Date())
   const [idx, setIdx] = useState(0)
   useEffect(() => {
@@ -103,7 +121,7 @@ export function AbaTemporizador({ unidade, onMesa }: { unidade: Unidade; onMesa:
         <div className="absolute inset-0 flex flex-col items-center justify-center px-10 text-center">
           {!ativa ? (
             <>
-              <button onClick={() => comecar(unidade.id)} className="grid size-20 place-items-center rounded-full bg-caneta-700 text-sobre" aria-label="Começar visita">
+              <button onClick={onComecar} className="grid size-20 place-items-center rounded-full bg-caneta-700 text-sobre" aria-label="Começar visita">
                 <PlayIcon className="size-10" />
               </button>
               <p className="mt-3 font-bold">Começar</p>
@@ -119,7 +137,7 @@ export function AbaTemporizador({ unidade, onMesa }: { unidade: Unidade; onMesa:
           ) : (
             <>
               <p className="text-2xl font-extrabold">Tempo concluído</p>
-              <button onClick={() => confirm('Encerrar a visita agora?') && encerrar(ativa.id)} className="mt-3 rounded-lg bg-neutro-800 px-4 py-2 font-bold text-neutro-50">
+              <button onClick={() => confirm('Encerrar a visita agora?') && onEncerrar(ativa.id)} className="mt-3 rounded-lg bg-neutro-800 px-4 py-2 font-bold text-neutro-50">
                 Encerrar visita
               </button>
             </>
@@ -186,7 +204,82 @@ export function AbaTemporizador({ unidade, onMesa }: { unidade: Unidade; onMesa:
           </div>
         </>
       )}
+      {v && (
+        <Roteiro
+          tarefas={tarefas(estado, unidade, v, s?.decorridoMin ?? 0, {
+            ir: onIr,
+            fechamento: () => ativa && onFechamento(ativa.id),
+            encerrar: () => ativa && confirm('Encerrar a visita agora?') && onEncerrar(ativa.id),
+          })}
+        />
+      )}
     </div>
+  )
+}
+
+type Tarefa = { etapa: 'Início' | 'Durante' | 'Fim'; rotulo: string; feita: boolean; detalhe?: string; fazer: () => void }
+
+/** O que o roteiro pede além das contagens, com a situação de cada item na visita. */
+function tarefas(
+  e: Estado,
+  u: Unidade,
+  v: Visita,
+  decorridoMin: number,
+  acoes: { ir: (d: Destino) => void; fechamento: () => void; encerrar: () => void },
+): Tarefa[] {
+  const nota = (m: 'inicio' | 'fim') => v.notas.some((n) => n.momento === m)
+  const medicoes = e.medicoes.filter((m) => m.visitaId === v.id).length
+  const horas = Math.floor(decorridoMin / 60)
+  const fechou =
+    e.registros.some((r) => r.visitaId === v.id && r.saidaTipo === 'fechamento') || e.fluxos.some((f) => f.visitaId === v.id && f.motivo === MOTIVO_FECHAMENTO)
+  return [
+    { etapa: 'Início', rotulo: 'Observador, papel e posição', feita: !!(v.observador && v.papel && v.posicao), fazer: () => acoes.ir('visita') },
+    { etapa: 'Início', rotulo: 'NFC-e de início', feita: nota('inicio'), fazer: () => acoes.ir('visita') },
+    { etapa: 'Início', rotulo: 'Cobrança e condições do dia', feita: !!(v.ficha.cobranca && v.ficha.condicoes.length), fazer: () => acoes.ir('visita') },
+    {
+      etapa: 'Início',
+      rotulo: 'Foto do cardápio (Ambiente › Fotos)',
+      feita: e.fotos.some((f) => f.visitaId === v.id && f.categoria === 'Cardápio'),
+      fazer: () => acoes.ir('acustica'),
+    },
+    { etapa: 'Início', rotulo: 'Acervo e mesas (uma vez por unidade)', feita: u.acervo.estantes > 0, fazer: () => acoes.ir('acervo') },
+    {
+      etapa: 'Durante',
+      rotulo: 'Som uma vez por hora (Ambiente)',
+      feita: horas > 0 && medicoes >= horas,
+      detalhe: `${medicoes} de ${Math.max(1, horas)}`,
+      fazer: () => acoes.ir('acustica'),
+    },
+    { etapa: 'Fim', rotulo: 'Fechamento da casa, se fechar', feita: fechou, fazer: acoes.fechamento },
+    { etapa: 'Fim', rotulo: 'NFC-e do fim', feita: nota('fim'), fazer: () => acoes.ir('visita') },
+    { etapa: 'Fim', rotulo: 'Encerrar a visita', feita: !!v.fim, fazer: acoes.encerrar },
+  ]
+}
+
+function Roteiro({ tarefas }: { tarefas: Tarefa[] }) {
+  const feitas = tarefas.filter((t) => t.feita).length
+  return (
+    <section className="mt-8">
+      <h3 className="mb-2 flex items-center text-sm font-bold uppercase text-neutro-600">
+        <span className="flex-1">Roteiro da visita</span>
+        <span>
+          {feitas}/{tarefas.length}
+        </span>
+      </h3>
+      <ul className="divide-y divide-papel overflow-hidden rounded-xl bg-neutro-100">
+        {tarefas.map((t) => (
+          <li key={t.rotulo}>
+            <button onClick={t.fazer} className="flex w-full items-center gap-3 px-3 py-2.5 text-left">
+              {t.feita ? <CheckCircleIcon className="size-6 shrink-0 text-ok-600" /> : <span className="size-6 shrink-0 rounded-full border-2 border-neutro-300" />}
+              <span className="w-[68px] shrink-0 text-xs font-bold uppercase text-neutro-500">{t.etapa}</span>
+              <span className={`flex-1 text-[15px] ${t.feita ? 'text-neutro-500' : ''}`}>{t.rotulo}</span>
+              {t.detalhe && <span className="text-sm text-neutro-500">{t.detalhe}</span>}
+              <ChevronRightIcon className="size-5 shrink-0 text-neutro-400" />
+            </button>
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }
 

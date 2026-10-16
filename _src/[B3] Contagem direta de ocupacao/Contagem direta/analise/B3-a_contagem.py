@@ -29,7 +29,11 @@ Regras (_instrucoes/4_metodologia.md, Bloco B3):
     visita no app), o fim é o maior entre início + duração prevista e o último
     horário registrado pelo observador; a coluna `fim_estimado` marca o caso.
   - Permanência média só com grupos de entrada e saída vistas; os censurados
-    (sem saída) são contados à parte, não imputados.
+    (sem saída, ou com saída forçada pelo fechamento da casa: `censurada = sim`
+    nas mesas, `motivo = Fechamento` na porta) são contados à parte, não imputados.
+  - Desistências na porta: saídas com motivo "Lotado" ou "Só olhou" (o app
+    pergunta o motivo quando o grupo sai até 10 min depois de entrar, sem mesa).
+    Continuam em pessoas_entraram; a coluna à parte mostra quantas desistiram.
   - Espera dos pedidos: só pedidos com chegada registrada; os pendentes são
     contados à parte (censurados), não imputados.
   - Pessoas por nota = pessoas que entraram pela porta ÷ notas emitidas durante
@@ -122,8 +126,10 @@ def resumo_visitas() -> pd.DataFrame:
         ent = f[f["tipo"] == "entrada"] if not f.empty else f
         sai = f[f["tipo"] == "saida"] if not f.empty else f
         entraram = num(ent["pessoas"]).sum() if not f.empty else float("nan")
+        motivo = sai["motivo"] if "motivo" in sai.columns else pd.Series("", index=sai.index)
+        desist = sai[motivo.isin(["Lotado", "Só olhou"])]
         perm_porta = []
-        for _, s in sai.iterrows():
+        for _, s in sai[motivo != "Fechamento"].iterrows():
             e = ent[ent["codigo"] == s["codigo"]]
             if not e.empty:
                 d = minutos(s["hora"]) - minutos(e.iloc[0]["hora"])
@@ -131,7 +137,7 @@ def resumo_visitas() -> pd.DataFrame:
                     perm_porta.append(d)
 
         # mesas
-        perm_mesa = num(g["permanencia_min"]).dropna() if not g.empty else pd.Series(dtype=float)
+        perm_mesa = num(g.loc[g["censurada"] != "sim", "permanencia_min"]).dropna() if not g.empty else pd.Series(dtype=float)
         pessoas_mesa = num(g["pessoas"]).sum() if not g.empty else float("nan")
 
         # notas
@@ -157,6 +163,8 @@ def resumo_visitas() -> pd.DataFrame:
             "tamanho_grupo_porta": round(num(ent["pessoas"]).mean(), 2) if not ent.empty else float("nan"),
             "permanencia_porta_media_min": round(sum(perm_porta) / len(perm_porta), 1) if perm_porta else float("nan"),
             "censurados_porta": len(ent) - len(perm_porta) if not f.empty else float("nan"),
+            "desistencias_porta": len(desist) if not f.empty else float("nan"),
+            "pessoas_desistiram": num(desist["pessoas"]).sum() if not f.empty else float("nan"),
             "grupos_mesa": len(g) if not g.empty else float("nan"),
             "pessoas_mesa": pessoas_mesa,
             "tamanho_grupo_mesa": round(num(g["pessoas"]).mean(), 2) if not g.empty else float("nan"),

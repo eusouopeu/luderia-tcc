@@ -15,6 +15,11 @@ colunas `visita_id`, `observador` e `fonte_registro` (app, transcricao) à
 frente das do app.
 
 Regras:
+  - O app, desde a versão 2026.10.16, já exporta `visita_id`, `observador`,
+    `versao_app` e `papel` em todas as tabelas (e nomeia os arquivos no padrão
+    acima). `visita_id` e `observador` do arquivo têm de bater com a pasta; se
+    não batem, o script para. Exportações antigas, sem essas colunas, recebem
+    os valores da pasta.
   - `unidade` vem do nome da pasta da visita (SJBV → BV), não do campo digitado
     no app (o POV2 de 10/10 digitou "BV 10.10").
   - Tabelas de um observador listadas em outros/B3_descartes_app.csv saem da
@@ -85,6 +90,13 @@ def main():
             continue
         if m["fonte"] == "contagem":
             df = corrigir(df, visita_id, obs, conteudo, correcoes)
+        # exportação nova traz visita_id e observador: conferir com a pasta e reposicionar
+        for col, esperado in (("visita_id", visita_id), ("observador", obs)):
+            if col in df.columns:
+                diferentes = set(df[col]) - {esperado, ""}
+                if diferentes:
+                    raise SystemExit(f"{col} do arquivo ({', '.join(sorted(diferentes))}) difere da pasta ({esperado}): {arq}")
+                df = df.drop(columns=col)
         df["unidade"] = m["unidade"]
         df.insert(0, "fonte_registro", "app" if m["fonte"] == "contagem" else "transcricao")
         df.insert(0, "observador", obs)

@@ -134,6 +134,7 @@ export function FolhaAcoes({
   onFechar,
   onComecar,
   onEncerrar,
+  onFechamento,
   onRegistros,
   onEditar,
 }: {
@@ -141,6 +142,7 @@ export function FolhaAcoes({
   onFechar: () => void
   onComecar: () => void
   onEncerrar: () => void
+  onFechamento: () => void
   onRegistros: () => void
   onEditar: () => void
 }) {
@@ -148,7 +150,10 @@ export function FolhaAcoes({
   return (
     <Folha titulo="Ações" onFechar={onFechar}>
       {ativa ? (
-        <button onClick={onEncerrar} className={`${b} bg-neutro-800 text-neutro-50`}>Encerrar visita</button>
+        <>
+          <button onClick={onFechamento} className={`${b} bg-caneta-100 text-caneta-700`}>Fechamento da casa</button>
+          <button onClick={onEncerrar} className={`${b} bg-neutro-800 text-neutro-50`}>Encerrar visita</button>
+        </>
       ) : (
         <button onClick={onComecar} className={`${b} bg-caneta-600 text-sobre`}>Começar visita</button>
       )}

@@ -1107,3 +1107,29 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o site no ar tinha a paleta preto/cinza/vermelho e Montserrat.
 **Depois**: `pnpm run deploy` publicou o visual editorial (commit 095e81c); conferido no ar (Fraunces carregada, fundo creme).
 **Justificativa**: pedido do autor: publicar o novo visual.
+
+## 2026/10/16
+
+### 16:45
+**Objeto**: `_src/app-observacao/` (`src/domain/model.ts`, `resumo.ts`, `store.ts`, `App.tsx`, `screens/Visita.tsx`, `Ajustes.tsx`, `Folhas.tsx`, `FormMesa.tsx`, `abas/Fluxo.tsx`, `abas/Temporizador.tsx`, `ui/SeletorJogos.tsx`, testes, `package.json` 2.4.0, `android/app/build.gradle` 2026.10.16-1), APK `ObservacaoLuderia-2026.10.16-1.apk` (fora do git)
+**Antes**: cada CSV exportado saía sem identificar visita, observador ou versão do app (o importador tirava isso do nome da pasta); entrada na porta e grupo na mesa eram lançados à parte, sem ligação; saída rápida sem motivo; sem botão de fechamento (grupos ainda dentro às 22h ficavam sem saída ou com saída falsa); nada sobre a posição, as pausas e o papel do observador; condições do dia como texto livre; pessoas e jogos sem marca de incerteza; tarefas extras (NFC-e, som, foto do cardápio, acervo) espalhadas em módulos.
+**Depois**: (3) todos os CSVs começam com `visita_id`, `observador`, `versao_app`, `papel`, `unidade` e `visita_inicio`; o botão "Exportar esta visita" grava `<visita_id>_<observador>_contagem_<x>.csv`; código do observador e prefixo da casa em Ajustes. (6) Na porta, "Foi para" liga a entrada a uma mesa livre (abre o grupo com a hora da porta) ou ocupada (soma pessoas), ou a Balcão/loja, Retirada/delivery, Outro; saída em até 10 min sem mesa pede o motivo (Lotado, Só olhou, Balcão/loja, Retirada/delivery, Outro). (7) "Fechamento da casa" (Ações e Temporizador) dá saída a todos os grupos abertos com tipo `fechamento`, e o resumo e a análise tratam essa saída como censura. (8) Seção "Observador" na ficha: código, papel (porta, mesas, porta e mesas), posição e pausas registradas pelo temporizador. (10) "Condições do dia" como lista: Dia comum (exclusivo), feriado, véspera, feriado prolongado, evento (com nome), promoção e outras; encerrar sem marcar pergunta se foi dia comum. (13) "≈" marca pessoas estimadas na porta e na mesa, e "?" marca jogo incerto. (15) O Temporizador traz o "Roteiro da visita" (início, durante, fim) com as tarefas e o atalho para cada uma. 21 testes passam.
+**Justificativa**: pedido do autor: implementar os itens 3, 6, 7, 8, 10, 13 (também para jogos) e 15 da revisão da visita de 10/10, antes das visitas de retorno.
+
+### 16:45
+**Objeto**: `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py`, `analise/B3-a_contagem.py`
+**Antes**: o importador sempre inseria `visita_id` e `observador` a partir da pasta; a análise contava toda saída na permanência média e não separava desistências.
+**Depois**: arquivo do formato novo (com `visita_id` e `observador` próprios) é conferido contra a pasta e interrompe se divergir; o formato antigo continua lido. A permanência na porta exclui saídas com motivo "Fechamento" e a das mesas usa só `censurada != sim`; colunas novas `desistencias_porta` e `pessoas_desistiram` (motivo Lotado ou Só olhou). Rodado sobre a visita de 10/10: consolidados idênticos aos versionados; o resumo só ganha as duas colunas (zero).
+**Justificativa**: acompanhar o formato novo do app sem perder os originais de 10/10.
+
+### 16:45
+**Objeto**: `docs/registro-de-alteracoes.md` × anotação da revisão da visita de 10/10 (`/mnt/project-files/b3/revisao_visita_2026-10-10_e_app.md`)
+**Antes**: a revisão tratou a diferença de acervo entre os observadores (432 contra 350 caixas; 7 contra 0 instrutores) como erro de contagem.
+**Depois**: o autor explicou que um observador contou só o salão de jogos e o outro somou a sala separada (provavelmente de RPG).
+**Efeitos colaterais**: o acervo da unidade depende do ambiente contado; o protocolo precisa dizer se a sala de RPG entra (pendência aberta).
+
+### 16:50
+**Objeto**: `textos/instrumentos/recomendacoes_registro_consumo_B3.md` (novo), `docs/pendencias.md`
+**Antes**: o módulo de pedidos do app exigia categoria, hora do pedido e chegada, e ficou vazio na visita de 10/10.
+**Depois**: sete formas de registrar comidas e bebidas, da mais barata à mais cara, com a ordem sugerida (marca de comida e bebida na contagem de 30 min, consumo próprio com NFC-e e notas emitidas no intervalo primeiro); nada implementado no app.
+**Justificativa**: pedido do autor: recomendações para facilitar o registro de consumo de comidas e bebidas.
