@@ -1,0 +1,1242 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="817.328641pt" height="734.47875pt" viewBox="0 0 817.328641 734.47875" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-16T02:45:23.585501</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 734.47875 
+L 817.328641 734.47875 
+L 817.328641 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 200.123828 632.158125 
+L 702.323828 632.158125 
+L 702.323828 22.318125 
+L 200.123828 22.318125 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 200.123828 627.655087 
+L 203.240811 627.655087 
+L 203.240811 618.649011 
+L 200.123828 618.649011 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #7f7f7f"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 200.123828 614.789264 
+L 206.024765 614.789264 
+L 206.024765 605.783188 
+L 200.123828 605.783188 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #8e6bb0"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 200.123828 601.923441 
+L 206.070475 601.923441 
+L 206.070475 592.917366 
+L 200.123828 592.917366 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 200.123828 589.057619 
+L 206.270728 589.057619 
+L 206.270728 580.051543 
+L 200.123828 580.051543 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #8e6bb0"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 200.123828 576.191796 
+L 207.019501 576.191796 
+L 207.019501 567.18572 
+L 200.123828 567.18572 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #7f7f7f"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 200.123828 563.325973 
+L 213.109808 563.325973 
+L 213.109808 554.319897 
+L 200.123828 554.319897 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 200.123828 550.46015 
+L 213.310061 550.46015 
+L 213.310061 541.454074 
+L 200.123828 541.454074 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #8e6bb0"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 200.123828 537.594328 
+L 214.668299 537.594328 
+L 214.668299 528.588252 
+L 200.123828 528.588252 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 200.123828 524.728505 
+L 216.024361 524.728505 
+L 216.024361 515.722429 
+L 200.123828 515.722429 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #8e6bb0"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 200.123828 511.862682 
+L 216.733954 511.862682 
+L 216.733954 502.856606 
+L 200.123828 502.856606 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #8e6bb0"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 200.123828 498.996859 
+L 218.647242 498.996859 
+L 218.647242 489.990783 
+L 200.123828 489.990783 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 200.123828 486.131036 
+L 219.591914 486.131036 
+L 219.591914 477.12496 
+L 200.123828 477.12496 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 200.123828 473.265214 
+L 221.215706 473.265214 
+L 221.215706 464.259138 
+L 200.123828 464.259138 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #8e6bb0"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 200.123828 460.399391 
+L 223.351013 460.399391 
+L 223.351013 451.393315 
+L 200.123828 451.393315 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 200.123828 447.533568 
+L 223.499027 447.533568 
+L 223.499027 438.527492 
+L 200.123828 438.527492 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #7f7f7f"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 200.123828 434.667745 
+L 224.765845 434.667745 
+L 224.765845 425.661669 
+L 200.123828 425.661669 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #7f7f7f"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 200.123828 421.801922 
+L 225.155468 421.801922 
+L 225.155468 412.795847 
+L 200.123828 412.795847 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 200.123828 408.9361 
+L 225.614744 408.9361 
+L 225.614744 399.930024 
+L 200.123828 399.930024 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #7f7f7f"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 200.123828 396.070277 
+L 226.58989 396.070277 
+L 226.58989 387.064201 
+L 200.123828 387.064201 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 200.123828 383.204454 
+L 228.548888 383.204454 
+L 228.548888 374.198378 
+L 200.123828 374.198378 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 200.123828 370.338631 
+L 229.334664 370.338631 
+L 229.334664 361.332555 
+L 200.123828 361.332555 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 200.123828 357.472809 
+L 230.342459 357.472809 
+L 230.342459 348.466733 
+L 200.123828 348.466733 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #7f7f7f"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 200.123828 344.606986 
+L 230.642839 344.606986 
+L 230.642839 335.60091 
+L 200.123828 335.60091 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 200.123828 331.741163 
+L 232.773793 331.741163 
+L 232.773793 322.735087 
+L 200.123828 322.735087 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #8e6bb0"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 200.123828 318.87534 
+L 235.248661 318.87534 
+L 235.248661 309.869264 
+L 200.123828 309.869264 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 200.123828 306.009517 
+L 240.289815 306.009517 
+L 240.289815 297.003441 
+L 200.123828 297.003441 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 200.123828 293.143695 
+L 240.823098 293.143695 
+L 240.823098 284.137619 
+L 200.123828 284.137619 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #7f7f7f"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 200.123828 280.277872 
+L 246.525959 280.277872 
+L 246.525959 271.271796 
+L 200.123828 271.271796 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #e07b2a"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 200.123828 267.412049 
+L 246.586905 267.412049 
+L 246.586905 258.405973 
+L 200.123828 258.405973 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 200.123828 254.546226 
+L 246.969998 254.546226 
+L 246.969998 245.54015 
+L 200.123828 245.54015 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_33">
+    <path d="M 200.123828 241.680403 
+L 247.141955 241.680403 
+L 247.141955 232.674328 
+L 200.123828 232.674328 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #5a9e5a"/>
+   </g>
+   <g id="patch_34">
+    <path d="M 200.123828 228.814581 
+L 248.86152 228.814581 
+L 248.86152 219.808505 
+L 200.123828 219.808505 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_35">
+    <path d="M 200.123828 215.948758 
+L 250.979414 215.948758 
+L 250.979414 206.942682 
+L 200.123828 206.942682 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_36">
+    <path d="M 200.123828 203.082935 
+L 251.090424 203.082935 
+L 251.090424 194.076859 
+L 200.123828 194.076859 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_37">
+    <path d="M 200.123828 190.217112 
+L 255.748486 190.217112 
+L 255.748486 181.211036 
+L 200.123828 181.211036 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #7f7f7f"/>
+   </g>
+   <g id="patch_38">
+    <path d="M 200.123828 177.35129 
+L 260.358661 177.35129 
+L 260.358661 168.345214 
+L 200.123828 168.345214 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #e07b2a"/>
+   </g>
+   <g id="patch_39">
+    <path d="M 200.123828 164.485467 
+L 269.341755 164.485467 
+L 269.341755 155.479391 
+L 200.123828 155.479391 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_40">
+    <path d="M 200.123828 151.619644 
+L 275.584428 151.619644 
+L 275.584428 142.613568 
+L 200.123828 142.613568 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_41">
+    <path d="M 200.123828 138.753821 
+L 283.907992 138.753821 
+L 283.907992 129.747745 
+L 200.123828 129.747745 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #c0392b"/>
+   </g>
+   <g id="patch_42">
+    <path d="M 200.123828 125.887998 
+L 290.553349 125.887998 
+L 290.553349 116.881922 
+L 200.123828 116.881922 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_43">
+    <path d="M 200.123828 113.022176 
+L 299.893416 113.022176 
+L 299.893416 104.0161 
+L 200.123828 104.0161 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #7f7f7f"/>
+   </g>
+   <g id="patch_44">
+    <path d="M 200.123828 100.156353 
+L 341.922628 100.156353 
+L 341.922628 91.150277 
+L 200.123828 91.150277 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_45">
+    <path d="M 200.123828 87.29053 
+L 361.19699 87.29053 
+L 361.19699 78.284454 
+L 200.123828 78.284454 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_46">
+    <path d="M 200.123828 74.424707 
+L 391.515748 74.424707 
+L 391.515748 65.418631 
+L 200.123828 65.418631 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #7f7f7f"/>
+   </g>
+   <g id="patch_47">
+    <path d="M 200.123828 61.558884 
+L 396.894286 61.558884 
+L 396.894286 52.552809 
+L 200.123828 52.552809 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_48">
+    <path d="M 200.123828 48.693062 
+L 439.556907 48.693062 
+L 439.556907 39.686986 
+L 200.123828 39.686986 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="patch_49">
+    <path d="M 200.123828 35.827239 
+L 648.516685 35.827239 
+L 648.516685 26.821163 
+L 200.123828 26.821163 
+z
+" clip-path="url(#pe7c112a66d)" style="fill: #2c6e9e"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 200.123828 632.158125 
+L 200.123828 22.318125 
+" clip-path="url(#pe7c112a66d)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="mda42f424a8" d="M 0 0 
+L 0 3.5 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mda42f424a8" x="200.123828" y="632.158125" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="200.123828" y="646.755781" transform="rotate(-0 200.123828 646.755781)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 308.957046 632.158125 
+L 308.957046 22.318125 
+" clip-path="url(#pe7c112a66d)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mda42f424a8" x="308.957046" y="632.158125" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="308.957046" y="646.755781" transform="rotate(-0 308.957046 646.755781)">50</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 417.790264 632.158125 
+L 417.790264 22.318125 
+" clip-path="url(#pe7c112a66d)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mda42f424a8" x="417.790264" y="632.158125" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="417.790264" y="646.755781" transform="rotate(-0 417.790264 646.755781)">100</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 526.623481 632.158125 
+L 526.623481 22.318125 
+" clip-path="url(#pe7c112a66d)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mda42f424a8" x="526.623481" y="632.158125" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="526.623481" y="646.755781" transform="rotate(-0 526.623481 646.755781)">150</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 635.456699 632.158125 
+L 635.456699 22.318125 
+" clip-path="url(#pe7c112a66d)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#mda42f424a8" x="635.456699" y="632.158125" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="635.456699" y="646.755781" transform="rotate(-0 635.456699 646.755781)">200</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle" x="451.223828" y="661.516406" transform="rotate(-0 451.223828 661.516406)">Seguidores no Instagram (mil)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_11">
+      <defs>
+       <path id="m0ffc32af71" d="M 0 0 
+L -3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="623.152049" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="626.001463" transform="rotate(-0 193.123828 626.001463)">Paladino Hobbies (Curitiba)</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="610.286226" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="613.763765" transform="rotate(-0 193.123828 613.763765)">FORTALÚDICA - BURGERS &amp; JOGOS (Brasília)</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="597.420403" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="600.333685" transform="rotate(-0 193.123828 600.333685)">Dungeon Games Store (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="584.554581" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="587.553995" transform="rotate(-0 193.123828 587.553995)">Utopia Games &amp; Food (Brasília)</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="571.688758" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="574.538172" transform="rotate(-0 193.123828 574.538172)">Taverna Game House (Curitiba)</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="558.822935" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="561.736216" transform="rotate(-0 193.123828 561.736216)">Jogasampa (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="545.957112" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="548.956526" transform="rotate(-0 193.123828 548.956526)">Inside Games (Brasília)</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="533.09129" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="536.004571" transform="rotate(-0 193.123828 536.004571)">Arena BG | Jogos de Tabuleiro | Ha (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="520.225467" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="523.224881" transform="rotate(-0 193.123828 523.224881)">Loja de Jogos - Asgard (Brasília)</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="507.359644" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="510.359058" transform="rotate(-0 193.123828 510.359058)">Gruta BSB (Brasília)</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="494.493821" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="497.407102" transform="rotate(-0 193.123828 497.407102)">OMNIVERSE (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="481.627998" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="484.54128" transform="rotate(-0 193.123828 484.54128)">Flow Games - Burgers, Cards &amp; Comu (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="468.762176" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="471.76159" transform="rotate(-0 193.123828 471.76159)">Paladins Game Store (Goiânia)</text>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="455.896353" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="458.745767" transform="rotate(-0 193.123828 458.745767)">Comdado Bar e Jogos (Belo Horizonte)</text>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="443.03053" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="446.029944" transform="rotate(-0 193.123828 446.029944)">Chef on Play (Florianópolis)</text>
+     </g>
+    </g>
+    <g id="ytick_16">
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="430.164707" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="433.164121" transform="rotate(-0 193.123828 433.164121)">CCG Floripa (Florianópolis)</text>
+     </g>
+    </g>
+    <g id="ytick_17">
+     <g id="line2d_27">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="417.298884" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="420.212166" transform="rotate(-0 193.123828 420.212166)">Cartola Luderia Bar (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_18">
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="404.433062" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="407.282476" transform="rotate(-0 193.123828 407.282476)">Vila Celta Hobby Store - Jogos e C (Curitiba)</text>
+     </g>
+    </g>
+    <g id="ytick_19">
+     <g id="line2d_29">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="391.567239" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_25">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="394.566653" transform="rotate(-0 193.123828 394.566653)">Café Geek Cafeteria e Ludoteca (Vitória)</text>
+     </g>
+    </g>
+    <g id="ytick_20">
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="378.701416" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_26">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="381.614697" transform="rotate(-0 193.123828 381.614697)">Coletivo Geek (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_21">
+     <g id="line2d_31">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="365.835593" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_27">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="368.685007" transform="rotate(-0 193.123828 368.685007)">Garagem do Nerd (Belo Horizonte)</text>
+     </g>
+    </g>
+    <g id="ytick_22">
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="352.969771" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_28">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="355.883052" transform="rotate(-0 193.123828 355.883052)">Alçapão Jogos (Curitiba)</text>
+     </g>
+    </g>
+    <g id="ytick_23">
+     <g id="line2d_33">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="340.103948" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_29">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="343.017229" transform="rotate(-0 193.123828 343.017229)">Place Games (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_24">
+     <g id="line2d_34">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="327.238125" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_30">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="330.237539" transform="rotate(-0 193.123828 330.237539)">Ludoteca BGC (Brasília)</text>
+     </g>
+    </g>
+    <g id="ytick_25">
+     <g id="line2d_35">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="314.372302" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_31">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="317.221716" transform="rotate(-0 193.123828 317.221716)">Luderia Carioca (Rio de Janeiro)</text>
+     </g>
+    </g>
+    <g id="ytick_26">
+     <g id="line2d_36">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="301.506479" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_32">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="304.355893" transform="rotate(-0 193.123828 304.355893)">Game Of Boards (Rio de Janeiro)</text>
+     </g>
+    </g>
+    <g id="ytick_27">
+     <g id="line2d_37">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="288.640657" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_33">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="291.490071" transform="rotate(-0 193.123828 291.490071)">BoardZ Game Pub (Curitiba)</text>
+     </g>
+    </g>
+    <g id="ytick_28">
+     <g id="line2d_38">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="275.774834" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_34">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="278.624248" transform="rotate(-0 193.123828 278.624248)">Balboa's Hobby Games (Fortaleza)</text>
+     </g>
+    </g>
+    <g id="ytick_29">
+     <g id="line2d_39">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="262.909011" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_35">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="265.822292" transform="rotate(-0 193.123828 265.822292)">Play Easy (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_30">
+     <g id="line2d_40">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="250.043188" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_36">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="252.892602" transform="rotate(-0 193.123828 252.892602)">RED jogos (Rio de Janeiro)</text>
+     </g>
+    </g>
+    <g id="ytick_31">
+     <g id="line2d_41">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="237.177366" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_37">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="240.17678" transform="rotate(-0 193.123828 240.17678)">Ludoteca Sidequest (Belém)</text>
+     </g>
+    </g>
+    <g id="ytick_32">
+     <g id="line2d_42">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="224.311543" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_38">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="227.224824" transform="rotate(-0 193.123828 227.224824)">Encounter | Jogos de Tabuleiro | B (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_33">
+     <g id="line2d_43">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="211.44572" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_39">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="214.295134" transform="rotate(-0 193.123828 214.295134)">Magic Store Brazil (Rio de Janeiro)</text>
+     </g>
+    </g>
+    <g id="ytick_34">
+     <g id="line2d_44">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="198.579897" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_40">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="201.493178" transform="rotate(-0 193.123828 201.493178)">Pitta's Board Games (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_35">
+     <g id="line2d_45">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="185.714074" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_41">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="188.713488" transform="rotate(-0 193.123828 188.713488)">Joyjoy Café (Curitiba)</text>
+     </g>
+    </g>
+    <g id="ytick_36">
+     <g id="line2d_46">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="172.848252" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_42">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="175.697666" transform="rotate(-0 193.123828 175.697666)">Nala Land - Bar de Jogos de Tabule (Recife)</text>
+     </g>
+    </g>
+    <g id="ytick_37">
+     <g id="line2d_47">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="159.982429" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_43">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="162.831843" transform="rotate(-0 193.123828 162.831843)">Shelf Bar e Jogos (Belo Horizonte)</text>
+     </g>
+    </g>
+    <g id="ytick_38">
+     <g id="line2d_48">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="147.116606" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_44">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="150.029887" transform="rotate(-0 193.123828 150.029887)">XPlace (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_39">
+     <g id="line2d_49">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="134.250783" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_45">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="137.164064" transform="rotate(-0 193.123828 137.164064)">São Jogue - Bela Vista (Salvador)</text>
+     </g>
+    </g>
+    <g id="ytick_40">
+     <g id="line2d_50">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="121.38496" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_46">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="124.298242" transform="rotate(-0 193.123828 124.298242)">Castelos Bar &amp; Boardgames (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_41">
+     <g id="line2d_51">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="108.519138" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_47">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="111.368552" transform="rotate(-0 193.123828 111.368552)">Arcadea Gaming Pub (Porto Alegre)</text>
+     </g>
+    </g>
+    <g id="ytick_42">
+     <g id="line2d_52">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="95.653315" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_48">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="98.566596" transform="rotate(-0 193.123828 98.566596)">Bravo Jogos (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_43">
+     <g id="line2d_53">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="82.787492" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_49">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="85.700773" transform="rotate(-0 193.123828 85.700773)">Bodogami Restaurante e Cafeteria (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_44">
+     <g id="line2d_54">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="69.921669" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_50">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="72.921083" transform="rotate(-0 193.123828 72.921083)">Cineplay- Restaurante e Jogos (Florianópolis)</text>
+     </g>
+    </g>
+    <g id="ytick_45">
+     <g id="line2d_55">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="57.055847" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_51">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="59.969128" transform="rotate(-0 193.123828 59.969128)">Ludus Luderia (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_46">
+     <g id="line2d_56">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="44.190024" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_52">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="47.103305" transform="rotate(-0 193.123828 47.103305)">Fan Hour Games and Burgers (São Paulo)</text>
+     </g>
+    </g>
+    <g id="ytick_47">
+     <g id="line2d_57">
+      <g>
+       <use xlink:href="#m0ffc32af71" x="200.123828" y="31.324201" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_53">
+      <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="193.123828" y="34.237482" transform="rotate(-0 193.123828 34.237482)">Covil Game Bar (São Paulo)</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_58">
+    <path d="M 232.773793 632.158125 
+L 232.773793 22.318125 
+" clip-path="url(#pe7c112a66d)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #333333"/>
+   </g>
+   <g id="patch_50">
+    <path d="M 200.123828 632.158125 
+L 200.123828 22.318125 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_51">
+    <path d="M 200.123828 632.158125 
+L 702.323828 632.158125 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_54">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="204.111477" y="625.100291" transform="rotate(-0 204.111477 625.100291)">1,4</text>
+   </g>
+   <g id="text_55">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="206.895431" y="612.234468" transform="rotate(-0 206.895431 612.234468)">2,7</text>
+   </g>
+   <g id="text_56">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="206.941141" y="599.368646" transform="rotate(-0 206.941141 599.368646)">2,7</text>
+   </g>
+   <g id="text_57">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="207.141394" y="586.502823" transform="rotate(-0 207.141394 586.502823)">2,8</text>
+   </g>
+   <g id="text_58">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="207.890167" y="573.637" transform="rotate(-0 207.890167 573.637)">3,2</text>
+   </g>
+   <g id="text_59">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="213.980473" y="560.771177" transform="rotate(-0 213.980473 560.771177)">6,0</text>
+   </g>
+   <g id="text_60">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="214.180727" y="547.905355" transform="rotate(-0 214.180727 547.905355)">6,1</text>
+   </g>
+   <g id="text_61">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="215.538965" y="535.039532" transform="rotate(-0 215.538965 535.039532)">6,7</text>
+   </g>
+   <g id="text_62">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="216.895027" y="522.173709" transform="rotate(-0 216.895027 522.173709)">7,3</text>
+   </g>
+   <g id="text_63">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="217.60462" y="509.307886" transform="rotate(-0 217.60462 509.307886)">7,6</text>
+   </g>
+   <g id="text_64">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="219.517908" y="496.442063" transform="rotate(-0 219.517908 496.442063)">8,5</text>
+   </g>
+   <g id="text_65">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="220.46258" y="483.576241" transform="rotate(-0 220.46258 483.576241)">8,9</text>
+   </g>
+   <g id="text_66">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="222.086371" y="470.710418" transform="rotate(-0 222.086371 470.710418)">9,7</text>
+   </g>
+   <g id="text_67">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="224.221679" y="457.844595" transform="rotate(-0 224.221679 457.844595)">10,7</text>
+   </g>
+   <g id="text_68">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="224.369692" y="444.978772" transform="rotate(-0 224.369692 444.978772)">10,7</text>
+   </g>
+   <g id="text_69">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="225.636511" y="432.112949" transform="rotate(-0 225.636511 432.112949)">11,3</text>
+   </g>
+   <g id="text_70">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="226.026134" y="419.247127" transform="rotate(-0 226.026134 419.247127)">11,5</text>
+   </g>
+   <g id="text_71">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="226.48541" y="406.381304" transform="rotate(-0 226.48541 406.381304)">11,7</text>
+   </g>
+   <g id="text_72">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="227.460556" y="393.515481" transform="rotate(-0 227.460556 393.515481)">12,2</text>
+   </g>
+   <g id="text_73">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="229.419554" y="380.649658" transform="rotate(-0 229.419554 380.649658)">13,1</text>
+   </g>
+   <g id="text_74">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="230.20533" y="367.783836" transform="rotate(-0 230.20533 367.783836)">13,4</text>
+   </g>
+   <g id="text_75">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="231.213125" y="354.918013" transform="rotate(-0 231.213125 354.918013)">13,9</text>
+   </g>
+   <g id="text_76">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="231.513505" y="342.05219" transform="rotate(-0 231.513505 342.05219)">14,0</text>
+   </g>
+   <g id="text_77">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="233.644459" y="329.186367" transform="rotate(-0 233.644459 329.186367)">15,0</text>
+   </g>
+   <g id="text_78">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="236.119327" y="316.320544" transform="rotate(-0 236.119327 316.320544)">16,1</text>
+   </g>
+   <g id="text_79">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="241.160481" y="303.454722" transform="rotate(-0 241.160481 303.454722)">18,5</text>
+   </g>
+   <g id="text_80">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="241.693764" y="290.588899" transform="rotate(-0 241.693764 290.588899)">18,7</text>
+   </g>
+   <g id="text_81">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="247.396625" y="277.723076" transform="rotate(-0 247.396625 277.723076)">21,3</text>
+   </g>
+   <g id="text_82">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="247.457571" y="264.857253" transform="rotate(-0 247.457571 264.857253)">21,3</text>
+   </g>
+   <g id="text_83">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="247.840664" y="251.99143" transform="rotate(-0 247.840664 251.99143)">21,5</text>
+   </g>
+   <g id="text_84">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="248.012621" y="239.125608" transform="rotate(-0 248.012621 239.125608)">21,6</text>
+   </g>
+   <g id="text_85">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="249.732185" y="226.259785" transform="rotate(-0 249.732185 226.259785)">22,4</text>
+   </g>
+   <g id="text_86">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="251.85008" y="213.393962" transform="rotate(-0 251.85008 213.393962)">23,4</text>
+   </g>
+   <g id="text_87">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="251.96109" y="200.528139" transform="rotate(-0 251.96109 200.528139)">23,4</text>
+   </g>
+   <g id="text_88">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="256.619151" y="187.662317" transform="rotate(-0 256.619151 187.662317)">25,6</text>
+   </g>
+   <g id="text_89">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="261.229327" y="174.796494" transform="rotate(-0 261.229327 174.796494)">27,7</text>
+   </g>
+   <g id="text_90">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="270.21242" y="161.930671" transform="rotate(-0 270.21242 161.930671)">31,8</text>
+   </g>
+   <g id="text_91">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="276.455094" y="149.064848" transform="rotate(-0 276.455094 149.064848)">34,7</text>
+   </g>
+   <g id="text_92">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="284.778658" y="136.199025" transform="rotate(-0 284.778658 136.199025)">38,5</text>
+   </g>
+   <g id="text_93">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="291.424014" y="123.333203" transform="rotate(-0 291.424014 123.333203)">41,5</text>
+   </g>
+   <g id="text_94">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="300.764081" y="110.46738" transform="rotate(-0 300.764081 110.46738)">45,8</text>
+   </g>
+   <g id="text_95">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="342.793293" y="97.601557" transform="rotate(-0 342.793293 97.601557)">65,1</text>
+   </g>
+   <g id="text_96">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="362.067656" y="84.735734" transform="rotate(-0 362.067656 84.735734)">74,0</text>
+   </g>
+   <g id="text_97">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="392.386414" y="71.869911" transform="rotate(-0 392.386414 71.869911)">87,9</text>
+   </g>
+   <g id="text_98">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="397.764952" y="59.004089" transform="rotate(-0 397.764952 59.004089)">90,4</text>
+   </g>
+   <g id="text_99">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="440.427573" y="46.138266" transform="rotate(-0 440.427573 46.138266)">110,0</text>
+   </g>
+   <g id="text_100">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="649.387351" y="33.272443" transform="rotate(-0 649.387351 33.272443)">206,0</text>
+   </g>
+   <g id="text_101">
+    <g id="patch_52">
+     <path d="M 232.624459 613.348218 
+L 311.930787 613.348218 
+L 311.930787 602.807554 
+L 232.624459 602.807554 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="233.644459" y="610.286226" transform="rotate(-0 233.644459 610.286226)">mediana: 15,0 mil</text>
+   </g>
+   <g id="text_102">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle" x="451.223828" y="16.318125" transform="rotate(-0 451.223828 16.318125)">Seguidores no Instagram: mediana de 15,0 mil</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_53">
+     <path d="M 709.345828 131.511016 
+L 808.128641 131.511016 
+Q 810.128641 131.511016 810.128641 129.511016 
+L 810.128641 24.318125 
+Q 810.128641 22.318125 808.128641 22.318125 
+L 709.345828 22.318125 
+Q 707.345828 22.318125 707.345828 24.318125 
+L 707.345828 129.511016 
+Q 707.345828 131.511016 709.345828 131.511016 
+z
+" style="fill: #ffffff; opacity: 0.8; stroke: #cccccc; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_103">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start" x="740.022625" y="34.86375" transform="rotate(-0 740.022625 34.86375)">Região</text>
+    </g>
+    <g id="patch_54">
+     <path d="M 711.345828 50.104766 
+L 731.345828 50.104766 
+L 731.345828 43.104766 
+L 711.345828 43.104766 
+z
+" style="fill: #5a9e5a; stroke: #5a9e5a; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_104">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start" x="739.345828" y="50.104766" transform="rotate(-0 739.345828 50.104766)">Norte</text>
+    </g>
+    <g id="patch_55">
+     <path d="M 711.345828 65.105547 
+L 731.345828 65.105547 
+L 731.345828 58.105547 
+L 711.345828 58.105547 
+z
+" style="fill: #e07b2a; stroke: #e07b2a; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_105">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start" x="739.345828" y="65.105547" transform="rotate(-0 739.345828 65.105547)">Nordeste</text>
+    </g>
+    <g id="patch_56">
+     <path d="M 711.345828 80.106328 
+L 731.345828 80.106328 
+L 731.345828 73.106328 
+L 711.345828 73.106328 
+z
+" style="fill: #8e6bb0; stroke: #8e6bb0; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_106">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start" x="739.345828" y="80.106328" transform="rotate(-0 739.345828 80.106328)">Centro-Oeste</text>
+    </g>
+    <g id="patch_57">
+     <path d="M 711.345828 95.107109 
+L 731.345828 95.107109 
+L 731.345828 88.107109 
+L 711.345828 88.107109 
+z
+" style="fill: #2c6e9e; stroke: #2c6e9e; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_107">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start" x="739.345828" y="95.107109" transform="rotate(-0 739.345828 95.107109)">Sudeste</text>
+    </g>
+    <g id="patch_58">
+     <path d="M 711.345828 110.107891 
+L 731.345828 110.107891 
+L 731.345828 103.107891 
+L 711.345828 103.107891 
+z
+" style="fill: #7f7f7f; stroke: #7f7f7f; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_108">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start" x="739.345828" y="110.107891" transform="rotate(-0 739.345828 110.107891)">Sul</text>
+    </g>
+    <g id="patch_59">
+     <path d="M 711.345828 125.108672 
+L 731.345828 125.108672 
+L 731.345828 118.108672 
+L 711.345828 118.108672 
+z
+" style="fill: #c0392b; stroke: #c0392b; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_109">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start" x="739.345828" y="125.108672" transform="rotate(-0 739.345828 125.108672)">Salvador</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_110">
+   <text style="font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #555555" x="119.123828" y="725.356875" transform="rotate(-0 119.123828 725.356875)">Fonte: Instagram, perfis coletados de 11 a 15/10/2026 (B1). 47 de 54 casas com perfil coletado.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe7c112a66d">
+   <rect x="200.123828" y="22.318125" width="502.2" height="609.84"/>
+  </clipPath>
+ </defs>
+</svg>
