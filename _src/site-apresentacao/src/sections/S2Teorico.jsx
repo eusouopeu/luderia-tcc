@@ -25,7 +25,7 @@ export default function S2Teorico() {
               key={g}
               onClick={() => setFiltro(g)}
               className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm font-semibold transition-all ${
-                ativo ? "border-transparent text-white shadow-sm" : "border-papel-200 bg-white text-azul-800 hover:border-rosa-400"
+                ativo ? "border-transparent text-white" : "border-papel-200 bg-white text-azul-800 hover:border-rosa-400"
               }`}
               style={ativo ? { backgroundColor: COR_GRUPO[g] ?? cor("azulEscuro") } : undefined}
             >
@@ -38,7 +38,7 @@ export default function S2Teorico() {
       <div className="grid gap-4 md:grid-cols-2">
         {lista.map((x, i) => (
           <Reveal key={x.termo} delay={i * 50}>
-            <Cartao className="group h-full overflow-hidden p-0 transition-shadow hover:shadow-md">
+            <Cartao className="group h-full overflow-hidden p-0 transition-shadow hover:shadow-sm">
               <div className="h-1 w-full" style={{ backgroundColor: COR_GRUPO[x.grupo] }} />
               <div className="p-5">
                 <h3 className="font-display text-lg leading-snug font-bold text-azul-950">{x.termo}</h3>

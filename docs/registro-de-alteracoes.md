@@ -1071,3 +1071,39 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: cap. 8 não iniciado, prazo vencido em 09/10.
 **Depois**: rascunho com 8.1 (SLU, CNAE, Simples em dois anexos, Quadro 01 com a carga por cenário), 8.2 (Quadro 02 de licenças em Salvador, bebida alcoólica, LGPD) e 8.3 (locação, uso de jogos comprados, marca). Cerca de 3,9 páginas com as referências do capítulo; normas `[AV]`, exceto a LC 123/2006 conferida no texto compilado de 14/09/2026.
 **Justificativa**: pedido do autor (item 3 das melhorias de 15/10). Sem travessão e sem voz passiva, porque P5 e a skill de escrita ainda divergem (pendência aberta).
+### 18:03
+**Objeto**: `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/` (`originais/2026-10-10_SJBV/POV1/` e `POV2/`, novos; `contagem_*.csv`, novos), `dados/[B3] Contagem direta de ocupacao/contagem_resumo_visitas.csv` e `contagem_notas_intervalo.csv` (novos), `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py` (novo), `outros/B3_descartes_app.csv` (novo), `analise/B3-a_contagem.py`, `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`
+**Antes**: nenhum dado de visita no B3; a análise lia um único arquivo por conteúdo, sem observador, e exigia `visita_fim` para calcular as taxas.
+**Depois**: 19 CSVs exportados do app na visita de 10/10 ao Bela Vista (POV1: 9; POV2: 10) guardados intactos; consolidação com `visita_id` e `observador`, unidade tirada do nome da pasta (o POV2 digitou "BV 10.10") e descarte por lista (mesas do POV2: 5 grupos sem saída, registro até 19h27). A análise dá uma linha por observador e uma de média por visita; sem `visita_fim`, o fim é o maior entre o previsto e o último registro (`fim_estimado`). Fluxo: 52 linhas (32 + 20); mesas: 9 (POV1).
+**Justificativa**: pedido do autor: importar os dados da primeira visita presencial, com dois observadores simultâneos, tomando a média dos dois e sabendo que uma das rotinas do POV2 está errada.
+
+### 18:03
+**Objeto**: `docs/decisoes.md` (02/10 e 13/10), `textos/planejamento/cronograma_luderia.md` e `_instrucoes/4_metodologia.md` (B3) × CSVs da visita ao Bela Vista
+**Antes**: primeiras visitas no sábado, 03/10, entrada às 19h; retorno 15 dias depois, domingo, 18/10.
+**Depois**: a visita ao Bela Vista registrada no app começou em 10/10 (18h37 no POV1, 19h02 no POV2); o retorno de 18/10 fica 8 dias depois.
+**Efeitos colaterais**: o intervalo de notas fiscais entre as visitas (base das vendas no período) passa de 15 para 8 dias, e a visita deixa de cair na quinzena após o pagamento dos servidores estaduais (29 e 30/09). Nada foi corrigido nos documentos.
+
+
+### 18:19
+**Objeto**: `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py`, `outros/B3_descartes_app.csv`, `outros/B3_correcoes_app.csv` (novo), `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/originais/2026-10-10_SJBV/POV1/2026-10-10_SJBV_POV1_transcricao_precos.csv` (novo), `_dados-brutos/app/contagem_*.csv`, `contagem_resumo_visitas.csv`, `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`
+**Antes**: média dos dois observadores, com só as mesas do POV2 descartadas; o POV1 contava como entrada as 24 pessoas que já estavam dentro (B-1, 18h39, e B-7, 19h14): 86 entradas, 25,9 por hora; sem NFC-e.
+**Depois**: todo o POV2 ignorado na visita; B-1 e B-7 excluídos do fluxo como estoque inicial; NFC-e final (série 2, nº 77977, 22h08:04, CNPJ 34.128.755/0001-98) e seus 4 itens mais o acréscimo de serviço (R$ 8,19, 10% sobre o consumo sem a taxa de entrada) transcritos da foto da nota. Resultado: 38 pessoas em 14 grupos, 11,4 por hora, permanência de 99 min na porta. A foto fica em `_dados-brutos/app/fotos/` (fora do git: traz CPF e nome do consumidor; CPF não transcrito).
+**Justificativa**: pedido do autor: ignorar o POV2 nesta visita; as 24 pessoas eram as que já estavam dentro na chegada; incluir a nota fiscal final.
+
+### 21:56
+**Objeto**: `_src/extras/ler_notion_offline.py` (novo), `README.md` (linha de `_src/extras/`), `AGORA.md`
+**Antes**: os bancos do Notion só eram lidos com internet (conector ou exportação manual).
+**Depois**: leitor do cache SQLite do app desktop (`~/Library/Application Support/Notion/notion.db`), aberto só para leitura e copiado antes de ler: sem argumento lista os bancos com o número de linhas; com o nome do banco, exporta CSV com as colunas pelo nome, menções e relações resolvidas para o título da página e datas em ISO. Fórmulas e rollups vêm vazios (calculados no servidor). Em 15/10, o cache tinha 55 linhas em "A - Estabelecimentos", 54 em "Luderias – Status da coleta", 650 em "B - Jogos", 889 em "B - Comentários" (o banco tem 1.628: o cache guarda só o que o app baixou), 19 em "Bibliografia" e 590 em "B1_snowball_candidatos.csv".
+**Justificativa**: pedido do autor: engenharia reversa do Notion desktop (skill REA) para ler os bancos do TCC offline. A análise do `app.asar` (7.38.1) mostrou o cache em `notion.db`, servido ao app pelo processo "Sqlite Server".
+
+### 22:46
+**Objeto**: `_src/site-apresentacao/` (`index.html`, `src/index.css`, `src/App.jsx`, `src/components/ui.jsx`, `src/components/graficos.jsx`, `src/formato.js`, `src/tema.js`, `src/conteudo/site.json`, `src/sections/*.jsx`, `README.md`), `docs/decisoes.md`, `AGORA.md`
+**Antes**: paleta neutra (preto, cinza e branco) com vermelho de destaque; Montserrat em tudo; barra lateral preta com aba ativa cinza; cartões com cantos de 12 px e sombra; `site.json` definia `corFundo` e `corAbaAtiva` da barra.
+**Depois**: visual editorial: fundo creme com grade de pontos quase invisível, cinzas quentes e um único acento terracota (`destaque`, também nos gráficos); títulos em Fraunces, corpo em Inter, números tabulares em JetBrains Mono; barra lateral clara com marcador terracota na seção ativa e subtítulo só nela; cabeçalho de seção com "NN / 12", régua e tempo previsto; cartões planos (cantos de 8 px, sem sombra); barra inferior do celular clara. `corFundo` e `corAbaAtiva` saíram do `site.json`.
+**Justificativa**: pedido do autor: design sóbrio, bonito e inovador para o site-apresentação; direção "Editorial" escolhida entre três propostas.
+
+### 22:49
+**Objeto**: site de apresentação publicado (branch `gh-pages`, https://eusouopeu.github.io/luderia-tcc/), `AGORA.md`
+**Antes**: o site no ar tinha a paleta preto/cinza/vermelho e Montserrat.
+**Depois**: `pnpm run deploy` publicou o visual editorial (commit 095e81c); conferido no ar (Fraunces carregada, fundo creme).
+**Justificativa**: pedido do autor: publicar o novo visual.

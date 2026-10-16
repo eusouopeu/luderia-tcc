@@ -1,37 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  /* Paleta sóbria: preto, cinza e branco. Os nomes de token (azul/roxo/lavanda/rosa/carmesim/papel)
-     foram mantidos por compatibilidade com src/conteudo/*.json e com as classes das seções; hoje todos
-     resolvem para tons neutros. A única cor é `destaque`, reservada aos casos pertinentes: Salvador
-     (e o Nordeste) nos gráficos e tabelas, críticas na análise de conteúdo, amostras que não cumprem o
-     critério e avisos. */
-  --color-azul-950: #0a0a0a;
-  --color-azul-900: #171717;
-  --color-azul-800: #262626;
-  --color-azul-700: #404040;
-  --color-roxo-700: #333333;
-  --color-roxo-600: #525252;
-  --color-roxo-500: #737373;
-  --color-lavanda-400: #a3a3a3;
-  --color-lavanda-300: #d4d4d4;
-  --color-lavanda-200: #e5e5e5;
-  --color-lavanda-100: #f5f5f5;
-  --color-rosa-500: #8a8a8a;
-  --color-rosa-400: #a3a3a3;
-  --color-carmesim-600: #6b6b6b;
-  --color-carmesim-500: #737373;
-  --color-papel-50: #fafafa;
-  --color-papel-100: #f4f4f4;
-  --color-papel-200: #e5e5e5;
-  --color-destaque-700: #9f1d1d;
-  --color-destaque-600: #b91c1c;
-  --color-destaque-100: #fbeaea;
-  --color-destaque-50: #fdf5f5;
+  /* Paleta editorial: papel creme, tinta grafite quente e um único acento terracota. Os nomes de token
+     (azul/roxo/lavanda/rosa/carmesim/papel) foram mantidos por compatibilidade com src/conteudo/*.json e
+     com as classes das seções; hoje resolvem para uma escala de cinzas quentes, da tinta (azul-950) ao
+     papel (papel-50). A única cor é `destaque` (terracota), reservada aos casos pertinentes: Salvador (e o
+     Nordeste) nos gráficos e tabelas, críticas na análise de conteúdo, amostras que não cumprem o
+     critério, avisos e o marcador da seção ativa. */
+  --color-azul-950: #1c1b19;
+  --color-azul-900: #262420;
+  --color-azul-800: #34312c;
+  --color-azul-700: #4a4640;
+  --color-roxo-700: #3d3a35;
+  --color-roxo-600: #5c5750;
+  --color-roxo-500: #7a746b;
+  --color-lavanda-400: #a8a197;
+  --color-lavanda-300: #cfc8bc;
+  --color-lavanda-200: #e3ddd2;
+  --color-lavanda-100: #efeae0;
+  --color-rosa-500: #8c857a;
+  --color-rosa-400: #a8a197;
+  --color-carmesim-600: #6e685f;
+  --color-carmesim-500: #7a746b;
+  --color-papel-50: #f5f1e8;
+  --color-papel-100: #ede7db;
+  --color-papel-200: #ddd5c6;
+  --color-destaque-700: #93411f;
+  --color-destaque-600: #b4532a;
+  --color-destaque-100: #f3dfd3;
+  --color-destaque-50: #f9eee6;
+  /* "Branco" dos cartões e do texto sobre fundo escuro: um marfim que conversa com o papel. */
+  --color-white: #fcfaf5;
 
-  /* Fonte única do site. `font-display` existe só para separar títulos de corpo de texto. */
-  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  /* Títulos em serifa de contraste (Fraunces), corpo em Inter, números em JetBrains Mono. */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --animate-fade-up: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-grow-x: grow-x 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -48,16 +52,40 @@
 
 html { scroll-behavior: smooth; }
 
-/* Montserrat é mais larga que a fonte condensada anterior. */
-.font-display { letter-spacing: -0.015em; }
-body { background: var(--color-papel-50); }
+/* Fraunces em corte de título: eixo óptico alto, um pouco de "suavidade" e peso médio. */
+.font-display {
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 30, "WONK" 0;
+  letter-spacing: -0.02em;
+}
+.font-display.font-bold { font-weight: 600; }
+
+/* Números tabulares saem em mono: contagens, percentuais e tempos ficam alinhados como em tabela. */
+.tabular-nums { font-family: var(--font-mono); letter-spacing: -0.02em; }
+.font-display.tabular-nums { font-family: var(--font-display); }
+
+body {
+  background-color: var(--color-papel-50);
+  color: var(--color-azul-950);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Papel milimetrado: grade de pontos quase invisível no fundo da área de conteúdo. */
+.papel-milimetrado {
+  background-image: radial-gradient(circle at 1px 1px, rgb(28 27 25 / 0.07) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+::selection { background: var(--color-destaque-100); color: var(--color-azul-950); }
 
 /* trilha de rolagem discreta */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--color-papel-100); }
-::-webkit-scrollbar-thumb { background: var(--color-lavanda-400); border-radius: 99px; }
+::-webkit-scrollbar-thumb { background: var(--color-lavanda-300); border-radius: 99px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-roxo-500); }
 
 @media print {
   .no-print { display: none !important; }
+  .papel-milimetrado { background: none; }
 }
