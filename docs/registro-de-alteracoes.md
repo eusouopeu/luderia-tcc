@@ -1053,3 +1053,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: paleta neutra (preto, cinza e branco) com vermelho de destaque; Montserrat em tudo; barra lateral preta com aba ativa cinza; cartões com cantos de 12 px e sombra; `site.json` definia `corFundo` e `corAbaAtiva` da barra.
 **Depois**: visual editorial: fundo creme com grade de pontos quase invisível, cinzas quentes e um único acento terracota (`destaque`, também nos gráficos); títulos em Fraunces, corpo em Inter, números tabulares em JetBrains Mono; barra lateral clara com marcador terracota na seção ativa e subtítulo só nela; cabeçalho de seção com "NN / 12", régua e tempo previsto; cartões planos (cantos de 8 px, sem sombra); barra inferior do celular clara. `corFundo` e `corAbaAtiva` saíram do `site.json`.
 **Justificativa**: pedido do autor: design sóbrio, bonito e inovador para o site-apresentação; direção "Editorial" escolhida entre três propostas.
+
+### 22:49
+**Objeto**: site de apresentação publicado (branch `gh-pages`, https://eusouopeu.github.io/luderia-tcc/), `AGORA.md`
+**Antes**: o site no ar tinha a paleta preto/cinza/vermelho e Montserrat.
+**Depois**: `pnpm run deploy` publicou o visual editorial (commit 095e81c); conferido no ar (Fraunces carregada, fundo creme).
+**Justificativa**: pedido do autor: publicar o novo visual.
