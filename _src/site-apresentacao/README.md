@@ -49,8 +49,10 @@ Todo o conteúdo textual está em `src/conteudo/`, um arquivo `.json` por aba. O
 correspondente e salve; com `pnpm dev` rodando, a página recarrega sozinha.
 
 As cores não ficam nos `.json`: eles usam nomes (`"cor": "azul"`, `"roxo"`, `"rosa"`...) resolvidos em
-`src/tema.js`, que aponta para os tokens do `@theme` em `src/index.css` — uma paleta construída a partir
-das escalas `blue`, `purple` e `rose` do Tailwind.
+`src/tema.js`, que aponta para os tokens do `@theme` em `src/index.css`. Visual editorial: papel creme,
+tinta grafite quente e um único acento terracota (`destaque`, só para Salvador/Nordeste, críticas, amostras
+fora do critério, avisos e a seção ativa); títulos em Fraunces, corpo em Inter, números em JetBrains Mono.
+Os gráficos (SVG) usam as cores fixas de `COR` em `src/formato.js`, espelho dessa paleta.
 
 ## Abas de resultados (08 a 10)
 

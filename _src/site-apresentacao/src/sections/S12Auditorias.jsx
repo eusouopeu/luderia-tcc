@@ -137,7 +137,7 @@ export default function S12Auditorias() {
                     </div>
                   ))}
                 </dl>
-                <p className="rounded-lg bg-papel-100 px-4 py-3 text-sm text-azul-900 tabular-nums">
+                <p className="rounded-lg bg-papel-100 px-4 py-3 text-sm text-azul-900 [font-variant-numeric:tabular-nums]">
                   Com zero erros, limite de {p1(a.wilson_zero)}.{" "}
                   {EXAUSTIVAS.has(x.id)
                     ? "Conferência exaustiva: a taxa observada é a da população."

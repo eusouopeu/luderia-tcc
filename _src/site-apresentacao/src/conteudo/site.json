@@ -13,9 +13,6 @@
     "texto": "Aponte a câmera para o código ou acesse o link para abrir esta apresentação no seu smartphone."
   },
   "barraLateral": {
-    "_leiaMe": "corFundo e corAbaAtiva aceitam qualquer nome listado em src/tema.js.",
-    "corFundo": "azulProfundo",
-    "corAbaAtiva": "roxoEscuro",
     "chapeu": "TCC · Administração · UFBA",
     "dicaTeclado": "Use ← → para navegar entre as seções",
     "rotuloNavegacao": "Navegação entre seções"

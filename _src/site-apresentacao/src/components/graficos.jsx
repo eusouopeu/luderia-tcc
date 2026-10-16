@@ -44,7 +44,7 @@ export function Achados({ titulo, itens }) {
 /* Tabela com rolagem horizontal própria (a página nunca rola de lado). */
 export function Tabela({ colunas, linhas, destaque }) {
   return (
-    <div className="overflow-x-auto rounded-xl border border-papel-200 bg-white">
+    <div className="overflow-x-auto rounded-lg border border-papel-200 bg-white">
       <table className="w-full text-left text-xs sm:text-sm">
         <thead className="bg-papel-100 text-azul-900">
           <tr>
@@ -84,7 +84,7 @@ export function Dica({ active, payload, formatar }) {
   if (!active || !payload?.length) return null;
   const p = payload[0].payload;
   return (
-    <div className="rounded-lg border border-papel-200 bg-white px-3 py-2 text-xs shadow-md">
+    <div className="rounded-lg border border-papel-200 bg-white px-3 py-2 text-xs shadow-sm">
       {formatar(p).map((linha, i) => (
         <p key={i} className={i ? "text-azul-800" : "font-semibold text-azul-950"}>
           {linha}
@@ -97,7 +97,7 @@ export function Dica({ active, payload, formatar }) {
 /* Seletor em pílulas (tab pill): `opcoes` = [{ id, rotulo }]. */
 export function Pilulas({ opcoes, valor, aoMudar, rotulo }) {
   return (
-    <div role="tablist" aria-label={rotulo} className="inline-flex rounded-full border border-papel-200 bg-white p-1 shadow-sm">
+    <div role="tablist" aria-label={rotulo} className="inline-flex rounded-full border border-papel-200 bg-white p-1">
       {opcoes.map((o) => {
         const ativo = o.id === valor;
         return (
@@ -107,7 +107,7 @@ export function Pilulas({ opcoes, valor, aoMudar, rotulo }) {
             aria-selected={ativo}
             onClick={() => aoMudar(o.id)}
             className={`cursor-pointer rounded-full px-3.5 py-1 text-xs font-semibold transition-colors sm:text-sm ${
-              ativo ? "bg-azul-900 text-white shadow-sm" : "text-azul-800 hover:bg-papel-100"
+              ativo ? "bg-azul-900 text-white" : "text-azul-800 hover:bg-papel-100"
             }`}
           >
             {o.rotulo}
