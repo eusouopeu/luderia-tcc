@@ -3,7 +3,7 @@ import { App as CapApp } from '@capacitor/app'
 import { ArrowUpTrayIcon, ChevronRightIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { useLoja } from './store'
 import {
-  agoraHora, arquivosCsv, fecharCasa, novasMesas, novoId, registroAberto, siglaDe, visitaAtiva, visitaAtual, acervoVazio,
+  agoraHora, arquivosCsv, entradasParaMesa, fecharCasa, sincronizarPortaMesas, novasMesas, novoId, registroAberto, siglaDe, visitaAtiva, visitaAtual, acervoVazio,
   type Estado, type Registro, type Unidade as TUnidade,
 } from './domain/model'
 import { compartilhar } from './storage/exportar'
@@ -134,9 +134,17 @@ export function App() {
   }
 
   const mesaDoForm = tela.form && unidade.mesas.find((m) => m.id === tela.form!.registro.mesaId)
+  // gravar ou tirar um grupo acerta o destino das entradas da porta ligadas a ele
   const gravarRegistro = (r: Registro) =>
-    mudar((e) => ({ ...e, registros: e.registros.some((x) => x.id === r.id) ? e.registros.map((x) => (x.id === r.id ? r : x)) : [...e.registros, r] }))
-  const tirarRegistro = (id: string) => mudar((e) => ({ ...e, registros: e.registros.filter((x) => x.id !== id) }))
+    mudar((e) =>
+      sincronizarPortaMesas({ ...e, registros: e.registros.some((x) => x.id === r.id) ? e.registros.map((x) => (x.id === r.id ? r : x)) : [...e.registros, r] }, r.visitaId),
+    )
+  const tirarRegistro = (id: string) =>
+    mudar((e) => {
+      const r = e.registros.find((x) => x.id === id)
+      const sem = { ...e, registros: e.registros.filter((x) => x.id !== id) }
+      return r ? sincronizarPortaMesas(sem, r.visitaId) : sem
+    })
   const mudarUnidade = (u: TUnidade) => mudar((e) => ({ ...e, unidades: e.unidades.map((x) => (x.id === u.id ? u : x)) }))
   const ativa = visitaAtiva(estado, unidade.id)
 
@@ -247,6 +255,8 @@ export function App() {
           titulo={mesaDoForm?.nome ?? 'Mesa'}
           registro={tela.form.registro}
           acervo={unidade.acervo.jogos}
+          novo={tela.form.novo}
+          entradas={entradasParaMesa(estado, estado.registros.find((x) => x.id === tela.form!.registro.id) ?? tela.form.registro)}
           onMudar={gravarRegistro}
           onFechar={(r) => {
             const { novo, registro: original } = tela.form!
