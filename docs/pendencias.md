@@ -44,7 +44,7 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 - **Sumarização do B2.**
 
 12. **Modelo financeiro v0, escolhas a confirmar:** cobrar couvert de todos os clientes (R14 = 100%; só 7 de 26 concorrentes com cardápio cobram), equipe de 7 CLT mais o sócio gestor, 12 mesas em 150 m² e 300 títulos. Cada uma muda o VPL e pode virar decisão no cap. 6.3 ou 7.
-13. **Cap. 8, `[conferir]`:** anexo I para alimentos e bebidas (e não anexo II por preparo próprio), CNAE secundário 9329-8/99 para o couvert e o número da lei de uso do solo de Salvador; prazo de guarda dos dados de reserva (LGPD).
+13. **Cap. 8, `[conferir]`:** anexo I para alimentos e bebidas (e não anexo II por preparo próprio), CNAE secundário 9329-8/99 para o couvert e o número da lei de uso do solo de Salvador; prazo de guarda dos dados de reserva (LGPD). Também: efeito da LC 214/2025 no Simples e regulação de ruído de Salvador (D19 em `docs/melhorias-texto.md`).
 
 ## Divergências entre documentos, ainda sem correção
 

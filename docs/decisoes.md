@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 16/10/2026 | Cap. 8 cabe em 2,8 páginas: bebida alcoólica e LGPD viram linhas do Quadro 02, sem subtítulos 8.1.x; estilo do rascunho mantido (voz ativa, sem travessão) até decidir a pendência de estilo | `textos/capitulos/8_aspectos_juridicos.md` |
 | 15/10/2026 | Modelo financeiro em Python, dirigido pelo registro de premissas em CSV; preços constantes, TMA real (Selic real do Focus + prêmio de risco), horizonte de 5 anos sem perpetuidade; código em `_src/Modelo financeiro/` e saídas em `dados/Modelo financeiro/` (fora das pastas de bloco, porque cruza B1 a B4) | `_src/Modelo financeiro/analise/financeiro-a_modelo.py` |
 | 15/10/2026 | Cap. 8: SLU, CNAE principal 5611-2/05 e Simples Nacional, com A&B no anexo I e couvert e eventos no anexo III (a conferir) | `textos/capitulos/8_aspectos_juridicos.md` |
 | 15/10/2026 | Entorno no OSM: plataformas de cada sentido com o mesmo nome e rede contam como uma estação (até 400 m); bonde de Santa Teresa (linha turística) e paradas sem nome ficam em "outro"; no Maps, busca "estação tubo" só em Curitiba. Coletor 2026.10.15-4 | `docs/parecer_entorno_B1.md` §7 |

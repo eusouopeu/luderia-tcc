@@ -1071,3 +1071,12 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: cap. 8 não iniciado, prazo vencido em 09/10.
 **Depois**: rascunho com 8.1 (SLU, CNAE, Simples em dois anexos, Quadro 01 com a carga por cenário), 8.2 (Quadro 02 de licenças em Salvador, bebida alcoólica, LGPD) e 8.3 (locação, uso de jogos comprados, marca). Cerca de 3,9 páginas com as referências do capítulo; normas `[AV]`, exceto a LC 123/2006 conferida no texto compilado de 14/09/2026.
 **Justificativa**: pedido do autor (item 3 das melhorias de 15/10). Sem travessão e sem voz passiva, porque P5 e a skill de escrita ainda divergem (pendência aberta).
+
+## 2026/10/16
+
+### 02:34
+**Objeto**: `textos/capitulos/8_aspectos_juridicos.md`; `docs/melhorias-texto.md` (D19, D20, C13); `textos/planejamento/status_capitulos.md`; `AGORA.md`; `docs/decisoes.md`; `docs/pendencias.md` (item 13)
+**Antes**: cap. 8 com 3,9 páginas contando as referências (teto de 3), subtítulos 8.1.1 a 8.1.3, bebida alcoólica e LGPD em parágrafos próprios; o texto dizia que o maior RBT12 do modelo era de R$ 2,9 milhões (receita do ano 2 do cenário otimista).
+**Depois**: 2,8 páginas (622 palavras de prosa e dois quadros, sem as referências do capítulo); bebida alcoólica e LGPD viraram linhas do Quadro 02; frases repetidas cortadas; o maior RBT12 corrigido para R$ 3,0 milhões (ano 5 do otimista; `coerencia` do `financeiro_modelo.xlsx`: R$ 3.030.719). Quadro 01 conferido contra as abas `dre_fluxo_*` do modelo (ano 2): bate. Estilo do rascunho mantido (voz ativa, sem travessão), sinalizado na nota de abertura.
+**Justificativa**: pedido do autor (item 4 da mensagem de 16/10: rascunho do cap. 8), com o rascunho de 15/10 já no main acima do teto.
+

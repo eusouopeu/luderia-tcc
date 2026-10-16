@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 16/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -28,7 +28,7 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 - **Modelo financeiro v0** (15/10): `_src/Modelo financeiro/analise/financeiro-a_modelo.py` lê o registro de premissas (`dados/Modelo financeiro/financeiro_premissas.csv`, 53 linhas com faixa, fonte e nível) e grava `financeiro_modelo.xlsx` (indicadores, DRE e fluxo por cenário, tornado, ruptura, coerência, conferência das fontes). Provável: investimento de R$ 390 mil, VPL de R$ 465 mil, payback descontado de 30 meses. Premissas críticas: permanência, ocupação em dia útil e no fim de semana (só N6 até o B3), horas abertas e ticket de A&B. Rodar de novo depois de cada premissa trocada.
 
-- **Cap. 8 (jurídico):** rascunho em 15/10 (`textos/capitulos/8_aspectos_juridicos.md`): SLU, CNAE 5611-2/05, Simples (A&B no anexo I, couvert e eventos no anexo III), licenças em Salvador, LGPD, locação, jogos e marca. Normas `[AV]` e três `[conferir]`.
+- **Cap. 8 (jurídico):** rascunho enxugado em 16/10 para 2,8/3 páginas (`textos/capitulos/8_aspectos_juridicos.md`): SLU, CNAE 5611-2/05, Simples (A&B no anexo I, couvert e eventos no anexo III), Quadro 02 com licenças, bebida alcoólica e LGPD, locação, jogos e marca. Normas `[AV]`, quatro `[conferir]` e a lacuna D19 (reforma tributária e ruído).
 
 ## Próximos 3 passos
 

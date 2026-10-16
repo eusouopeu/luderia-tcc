@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 15/10/2026, sobre os caps. 1 (rascunho), 2 (rascunho) e 5 (esboço).
+Última análise: 16/10/2026, com o cap. 8 enxugado, sobre os caps. 1, 2, 3 e 8 (rascunhos) e 5 (esboço).
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -40,6 +40,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D13 — Perfil do frequentador "sai das avaliações".** Cap. 2 (2.4) × cap. 5 (5.2). O cap. 2 diz que o perfil do frequentador sai das avaliações do B2 (cap. 5.2). As avaliações não trazem idade, gênero ou renda; o 5.2.1 usa o IBGE para população e renda, e o B2 dá temas e ocasiões. Sugestão: no cap. 2, "as ocasiões de consumo e os atributos valorizados saem do B2; o tamanho do público, do IBGE".
 
+**D19 — Reforma tributária e ruído: o cap. 5 manda para o cap. 8, que não trata.** Cap. 5 (5.5, fator legal) × cap. 8 (8.1 e Quadro 02). O cap. 5 diz que o enquadramento tributário fica no cap. 8 e cita a transição da LC 214/2025 e a regulação municipal de ruído e horário noturno. O cap. 8 projeta o Simples por cinco anos sem citar a transição para CBS e IBS e não tem linha de ruído ou alvará noturno no Quadro 02. Sugestão: uma frase em 8.1 sobre o efeito da LC 214/2025 no Simples (após conferir o texto da lei) e uma linha de ruído no Quadro 02, ou tirar a remissão do cap. 5.
+
 ## Aceitável
 
 **D14 — Formatação de referências repetidas.** Caps. 1, 2 e 5. Sebrae: "Agência de Notícias do Sebrae" (cap. 1) × "Agência Sebrae de Notícias" (cap. 5). Abrinq e Savills sem local no cap. 1 e com local no cap. 5. Resolve-se na lista única de referências.
@@ -51,6 +53,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D17 — Mercado&Consumo como sustentação.** Cap. 1 (contextualização). Dado de shopping (1,4% → 2,2% das lojas) vem de imprensa (P1, nível 6), que pela P1 não sustenta argumento. Já marcado para troca pela Abrasce.
 
 **D18 — Triangulação anunciada sem base teórica.** Cap. 1 (1.2) cita "triangulação" como teste das premissas; o cap. 2 não trata do conceito. Pode ficar só para o cap. 3 (metodologia).
+
+**D20 — Numeração de quadros em três formatos.** Caps. 2 e 3 usam "Quadro 1"; o cap. 5, "Quadro 5.2"; o cap. 8, "Quadro 01" (dois dígitos, padrão de `10_biblio-apendices.md`). Padronizar na revisão de forma, com numeração contínua no trabalho todo.
 
 ---
 
@@ -85,3 +89,5 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **C11 — Percentuais da KAM Insight no 2.3 e no 2.5.** Dados de um painel do Reino Unido (88%; 41% a 69%; ocasiões e atributos) que não viram premissa. Manter um só, o dos atributos básicos (segurança, preço, comida), que sustenta o argumento do 2.5. Ganho: ~50 palavras.
 
 **C12 — Detalhes que não mudam decisão no cap. 5.** Queda de 21,2% em 2020 (5.1.1) e expectativa do PIB (5.5.1). Ganho: ~25 palavras.
+
+**C13 — CNAE explicado no cap. 5 e no cap. 8.** Cap. 5 (5.1, luderia sem código próprio, 5611-2/05 ou 5611-2/01) repete o 8.1, que já escolhe a 5611-2/05. Sugestão: no cap. 5, só remeter ao 8.1. Ganho: ~30 palavras.
