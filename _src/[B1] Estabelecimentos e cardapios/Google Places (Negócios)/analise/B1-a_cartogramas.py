@@ -38,16 +38,16 @@ import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 from matplotlib.colors import Normalize, to_hex  # noqa: E402
-from matplotlib.lines import Line2D  # noqa: E402
 
 from dados_graficos import casas  # noqa: E402
-from graficos_comum import COR_REGIAO, CORES, ORDEM_REGIAO, REGIAO, fonte_rodape, salvar  # noqa: E402
+from graficos_comum import (BASE, HALO, ORDEM_REGIAO, SEQUENCIAL, TINTA, TINTA2, TINTA3, VERMELHO, br,  # noqa: E402
+                            figura, salvar)
 
 ROOT = _AQUI.parents[4]
 PASTA = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos" / "5_graficos" / "cartogramas"
 MALHA = _AQUI.parents[1] / "outros" / "malha_uf_ibge.geojson"
-FONTE = ("Fonte: Google Maps, Instagram, horários e cardápios coletados em 09 e 10/2026 (B1, 54 casas); "
-         "malha das UFs: IBGE.")
+FONTE = ("Fonte: elaboração própria com dados do Google Maps, do Instagram e dos cardápios das casas (set. e out. "
+         "2026), recorte B1; malha das UFs: IBGE.")
 
 # Capitais das 14 metrópoles da REGIC (IBGE, 2018): latitude, longitude.
 CAPITAIS = {
@@ -57,34 +57,31 @@ CAPITAIS = {
     "São Paulo": (-23.551, -46.633), "Vitória": (-20.316, -40.313), "Curitiba": (-25.428, -49.273),
     "Florianópolis": (-27.595, -48.548), "Porto Alegre": (-30.035, -51.218),
 }
-# Deslocamento do rótulo (graus de lon, lat) para não encavalar no Sudeste e no Sul.
+# Rótulo de cada capital: deslocamento (graus de lon, lat) e alinhamento, para não encavalar no Sudeste e no Sul.
 ROTULO = {
-    "São Paulo": (-1.2, -0.2, "right"), "Rio de Janeiro": (1.0, -1.2, "left"), "Belo Horizonte": (1.0, 0.4, "left"),
-    "Vitória": (1.0, 0.0, "left"), "Curitiba": (-1.2, 0.0, "right"), "Florianópolis": (1.0, -0.4, "left"),
-    "Porto Alegre": (-1.2, -0.3, "right"), "Brasília": (1.0, 0.5, "left"), "Goiânia": (-1.0, -0.5, "right"),
-    "Salvador": (1.0, 0.0, "left"), "Recife": (0.8, -0.6, "left"), "Fortaleza": (0.8, 0.4, "left"),
-    "Belém": (0.8, 0.5, "left"), "Manaus": (0.8, 0.5, "left"),
+    "São Paulo": (-1.6, 0.9, "right"), "Rio de Janeiro": (1.1, -1.3, "left"), "Belo Horizonte": (1.3, 0.6, "left"),
+    "Vitória": (0.9, -0.3, "left"), "Curitiba": (-1.4, 0.0, "right"), "Florianópolis": (1.0, -0.3, "left"),
+    "Porto Alegre": (-1.0, -0.6, "right"), "Brasília": (1.5, 0.6, "left"), "Goiânia": (-1.0, -0.4, "right"),
+    "Salvador": (0.9, 0.0, "left"), "Recife": (0.7, -0.7, "left"), "Fortaleza": (0.8, 0.5, "left"),
+    "Belém": (0.8, 0.5, "left"), "Manaus": (0.9, 0.4, "left"),
 }
+# Nome da região no mapa (lon, lat) e posição do rótulo de valor nos painéis.
+NOME_REGIAO = {"Norte": (-62, -6.5), "Nordeste": (-41.5, -9.0), "Centro-Oeste": (-54, -12.5),
+               "Sudeste": (-42.3, -16.8), "Sul": (-54.5, -29.5)}
+POS_REGIAO = {"Norte": (-61, -4), "Nordeste": (-40.5, -7.5), "Centro-Oeste": (-53, -14),
+              "Sudeste": (-45.5, -20.5), "Sul": (-52, -28)}
 
-# Posição do rótulo de cada região nos painéis (lon, lat).
-POS_REGIAO = {"Norte": (-61, -3), "Nordeste": (-40.5, -7), "Centro-Oeste": (-53, -14),
-              "Sudeste": (-44, -21), "Sul": (-55, -28.5)}
-
-# variável -> (coluna, agregação, rótulo, formato, mapa de cor)
+# variável -> (coluna, agregação, nome curto, formatador)
 VARS = {
-    "nota": ("nota_media", "mean", "Nota média no Google (média das casas)", "{:.2f}", "Blues"),
-    "avaliacoes": ("volume_avaliacoes", "median", "Avaliações no Google por casa (mediana)", "{:,.0f}", "Blues"),
-    "seguidores": ("seguidores", "median", "Seguidores no Instagram por casa (mediana, mil)", "{:.1f} mil", "Oranges"),
-    "horas": ("horas_semana", "median", "Horas abertas por semana (mediana)", "{:.0f} h", "Greens"),
+    "nota": ("nota_media", "mean", "Nota média no Google", lambda v: br(v, 2)),
+    "avaliacoes": ("volume_avaliacoes", "median", "Avaliações por casa (mediana)", lambda v: br(v)),
+    "seguidores": ("seguidores", "median", "Seguidores no Instagram por casa (mediana)", lambda v: f"{br(v, 1)} mil"),
+    "horas": ("horas_semana", "median", "Horas abertas por semana (mediana)", lambda v: f"{br(v)} h"),
     "comentarios_post": ("comentarios_por_post", "median", "Comentários por post no Instagram (mediana)",
-                         "{:.1f}", "Oranges"),
-    "cesta": ("cesta_mediana", "median", "Cesta por pessoa em R$ (mediana)", "R$ {:.0f}", "Purples"),
+                         lambda v: br(v, 1)),
+    "cesta": ("cesta_mediana", "median", "Cesta por pessoa (mediana)", lambda v: f"R$ {br(v)}"),
 }
-
-
-def br(txt):
-    """Número no padrão brasileiro: 1.234,5."""
-    return txt.replace(",", "X").replace(".", ",").replace("X", ".")
+AREA = 70  # área do círculo (pontos²) por casa
 
 
 def base():
@@ -98,7 +95,7 @@ def agrega(d, por):
     linhas = []
     for g, s in d.groupby(por):
         r = {por: g, "casas": len(s)}
-        for k, (col, ag, *_rest) in VARS.items():
+        for k, (col, ag, *_r) in VARS.items():
             v = s[col].dropna()
             r[f"{k}_n"] = len(v)
             r[k] = round(float(getattr(v, ag)()), 3) if len(v) else np.nan
@@ -109,120 +106,125 @@ def agrega(d, por):
     return t
 
 
-def fundo(ax, uf, por_regiao=True):
-    if por_regiao:
-        uf.plot(ax=ax, color=[COR_REGIAO[r] for r in uf.regiao], alpha=0.12, edgecolor="white", linewidth=0.6)
-    else:
-        uf.plot(ax=ax, color="#f2f2f2", edgecolor="white", linewidth=0.6)
-    uf.dissolve(by="regiao").boundary.plot(ax=ax, color="#9a9a9a", linewidth=0.8)
-    ax.set_xlim(-74.5, -26)
+def mapa(fig, ax, uf, nomes_regiao=True):
+    uf.plot(ax=ax, color="#f0f0f0", edgecolor="white", linewidth=0.9)
+    uf.dissolve(by="regiao").boundary.plot(ax=ax, color="#c8c8c8", linewidth=0.9)
+    if nomes_regiao:
+        for r, (x, y) in NOME_REGIAO.items():
+            ax.text(x, y, r.upper(), fontsize=8.5, color="#a8a8a8", ha="center", fontweight="bold", zorder=2)
+    ax.set_xlim(-74.5, -32)
     ax.set_ylim(-34.2, 5.8)
-    ax.set_axis_off()
     ax.set_aspect("equal")
+    ax.set_axis_off()
 
 
-def raio(n):
-    return 60 * n  # área (pontos²) proporcional ao número de casas
+def legenda_tamanho(ax, ns=(1, 5, 20)):
+    ax.text(-71.5, -24.4, "Casas", fontsize=9.5, color=TINTA2, fontweight="semibold")
+    for i, k in enumerate(ns):
+        y = -26.6 - i * 2.4 - (0.7 if k >= 20 else 0)
+        ax.scatter(-70, y, s=AREA * k, facecolor="none", edgecolor=TINTA3, lw=0.8)
+        ax.text(-67.4, y, f"{k}", va="center", fontsize=9, color=TINTA2)
 
 
-def legenda_tamanho(ax, ns=(1, 5, 10, 20)):
-    h = [plt.scatter([], [], s=raio(n), color="#bbbbbb", edgecolor="#555555", label=f"{n}") for n in ns]
-    return ax.legend(handles=h, title="Casas", loc="lower left", bbox_to_anchor=(0.0, 0.0), frameon=True,
-                     labelspacing=1.6, borderpad=1.0, scatterpoints=1)
+def rotulo(ax, m, lat, lon, linha2, cor=None):
+    dx, dy, ha = ROTULO[m]
+    sal = m == "Salvador"
+    ax.text(lon + dx, lat + dy, m, fontsize=10, ha=ha, va="bottom", color=VERMELHO if sal else TINTA,
+            fontweight="semibold", path_effects=HALO, zorder=6)
+    ax.text(lon + dx, lat + dy - 0.15, linha2, fontsize=9, ha=ha, va="top", color=VERMELHO if sal else TINTA2,
+            path_effects=HALO, zorder=6)
 
 
 def mapa_casas(d, t, uf):
-    fig, ax = plt.subplots(figsize=(8.5, 8.5))
-    fundo(ax, uf)
+    n = t.set_index("metropole").casas
+    reg = d.groupby("regiao").size()
+    ne = int(reg.get("Nordeste", 0))
+    lider = reg.idxmax()
+    fig, ax = figura(8, 8.6, f"As luderias do estudo se concentram no {lider}; o Nordeste tem {ne}",
+                     "Casas com mais de 100 avaliações no Google, por metrópole da REGIC; área do círculo "
+                     "proporcional ao número de casas.", FONTE, esq=0.05, dir=0.05, base=0.3)
+    mapa(fig, ax, uf)
     for m, (lat, lon) in CAPITAIS.items():
-        n = int(t.set_index("metropole").casas.get(m, 0))
-        cor = CORES["destaque"] if m == "Salvador" else COR_REGIAO[REGIAO[m]]
-        if n:
-            ax.scatter(lon, lat, s=raio(n), color=cor, alpha=0.85, edgecolor="white", linewidth=0.8, zorder=3)
+        k = int(n.get(m, 0))
+        if k:
+            ax.scatter(lon, lat, s=AREA * k, color=VERMELHO if m == "Salvador" else BASE, alpha=0.88,
+                       edgecolor="white", linewidth=1.2, zorder=3)
         else:
-            ax.scatter(lon, lat, s=raio(1), facecolor="none", edgecolor="#555555", linewidth=1, zorder=3)
-        dx, dy, ha = ROTULO[m]
-        ax.text(lon + dx, lat + dy, f"{m} ({n})", fontsize=8.5, ha=ha, va="center", zorder=4,
-                color=CORES["destaque"] if m == "Salvador" else "#222222")
-    leg = legenda_tamanho(ax)
-    ax.add_artist(leg)
-    hreg = [Line2D([], [], marker="s", ls="", color=COR_REGIAO[r], alpha=0.5, markersize=10, label=r)
-            for r in ORDEM_REGIAO]
-    ax.legend(handles=hreg, title="Região", loc="upper left", bbox_to_anchor=(1.0, 1.0), frameon=True)
-    ax.set_title(f"Casas do estudo por metrópole: {int(t.casas.max())} em São Paulo, nenhuma em Manaus")
-    fonte_rodape(fig, FONTE, y=0.06)
+            ax.scatter(lon, lat, s=AREA, facecolor="white", edgecolor=TINTA3, linewidth=1, zorder=3)
+        rotulo(ax, m, lat, lon, f"{k} casa{'s' if k != 1 else ''}")
+    legenda_tamanho(ax)
     salvar(fig, PASTA, "B1_mapa_casas_metro", t[["metropole", "casas"]].sort_values("casas", ascending=False))
 
 
 def mapa_variavel(t, uf, chave):
-    col, ag, rot, fmt, cmap = VARS[chave]
+    col, ag, nome, fmt = VARS[chave]
     tt = t.set_index("metropole")
     vals = tt[chave].dropna()
     norm = Normalize(vmin=vals.min(), vmax=vals.max())
-    cm = plt.get_cmap(cmap)
-    fig, ax = plt.subplots(figsize=(8.5, 8.5))
-    fundo(ax, uf, por_regiao=False)
-    for m, (lat, lon) in CAPITAIS.items():
-        n = int(tt.casas.get(m, 0))
-        v = tt[chave].get(m, np.nan)
-        dx, dy, ha = ROTULO[m]
-        if n and not pd.isna(v):
-            ax.scatter(lon, lat, s=raio(n), color=cm(0.2 + 0.8 * norm(v)), edgecolor="#444444", linewidth=0.6,
-                       zorder=3)
-            txt = f"{m}: {br(fmt.format(v))}"
-        else:
-            ax.scatter(lon, lat, s=raio(max(n, 1)), facecolor="none", edgecolor="#777777", linewidth=1, zorder=3)
-            txt = f"{m}: sem dado" if n else f"{m}: sem casa"
-        ax.text(lon + dx, lat + dy, txt, fontsize=8.5, ha=ha, va="center", zorder=4,
-                color=CORES["destaque"] if m == "Salvador" else "#222222",
-                fontweight="bold" if m == "Salvador" else "normal")
-    sm = plt.cm.ScalarMappable(norm=Normalize(vmin=vals.min(), vmax=vals.max()),
-                               cmap=plt.matplotlib.colors.LinearSegmentedColormap.from_list(
-                                   "c", [cm(0.2 + 0.8 * i / 9) for i in range(10)]))
-    cb = fig.colorbar(sm, ax=ax, shrink=0.5, pad=0.0, orientation="horizontal", aspect=30)
-    cb.set_label(rot)
-    ax.add_artist(legenda_tamanho(ax))
+    hi, lo = vals.idxmax(), vals.idxmin()
     sal = tt[chave].get("Salvador", np.nan)
-    ax.set_title(f"{rot.split(' (')[0]}, por metrópole" + (f"; Salvador: {br(fmt.format(sal))}" if not pd.isna(sal)
-                                                         else ""))
-    fonte_rodape(fig, FONTE + " Área do círculo proporcional ao número de casas.", y=0.06)
+    titulo = f"{nome.split(' (')[0]}: maior em {hi} ({fmt(vals[hi])}), menor em {lo} ({fmt(vals[lo])})"
+    sub = (f"{nome}, por metrópole; cor mais escura, valor maior; área do círculo proporcional ao número de casas. "
+           + (f"Salvador: {fmt(sal)}." if not pd.isna(sal) else "Salvador ainda sem o dado."))
+    fig, ax = figura(8, 8.9, titulo, sub, FONTE, esq=0.05, dir=0.05, base=0.3)
+    mapa(fig, ax, uf, nomes_regiao=False)
+    for m, (lat, lon) in CAPITAIS.items():
+        k = int(tt.casas.get(m, 0))
+        v = tt[chave].get(m, np.nan)
+        if k and not pd.isna(v):
+            ax.scatter(lon, lat, s=AREA * k, color=SEQUENCIAL(0.1 + 0.9 * norm(v)),
+                       edgecolor=VERMELHO if m == "Salvador" else "white", linewidth=2 if m == "Salvador" else 1.2,
+                       zorder=3)
+            txt = fmt(v)
+        else:
+            ax.scatter(lon, lat, s=AREA * max(k, 1), facecolor="white", edgecolor=TINTA3, linewidth=1, zorder=3)
+            txt = "sem dado" if k else "sem casa"
+        rotulo(ax, m, lat, lon, txt)
+    legenda_tamanho(ax)
+    # escala de cor, embaixo à direita, sobre o oceano (abaixo de Florianópolis)
+    cax = fig.add_axes([0.66, 0.105, 0.27, 0.014])
+    sm = plt.cm.ScalarMappable(norm=norm, cmap=plt.matplotlib.colors.LinearSegmentedColormap.from_list(
+        "c", [SEQUENCIAL(0.1 + 0.9 * i / 9) for i in range(10)]))
+    cb = fig.colorbar(sm, cax=cax, orientation="horizontal")
+    cb.outline.set_visible(False)
+    cb.set_ticks([vals.min(), vals.max()], labels=[fmt(vals.min()), fmt(vals.max())])
+    cb.ax.tick_params(labelsize=8.5, colors=TINTA2, length=0)
+    cax.set_title(nome, fontsize=9, color=TINTA2, loc="left")
     salvar(fig, PASTA, f"B1_mapa_{chave}_metro",
            t[["metropole", "casas", f"{chave}_n", chave]].rename(columns={f"{chave}_n": "casas_com_dado"}))
 
 
 def painel_regiao(t, uf):
     tt = t.set_index("regiao")
-    curto = {"nota": "Nota média no Google", "avaliacoes": "Avaliações por casa (mediana)",
-             "seguidores": "Seguidores no Instagram (mediana)", "horas": "Horas abertas na semana (mediana)",
-             "cesta": "Cesta por pessoa (mediana)"}
-    paineis = [("casas", "Casas no estudo", "{:.0f}", "Greys")] + [
-        (k, curto[k], VARS[k][3], VARS[k][4]) for k in curto]
-    fig, axs = plt.subplots(2, 3, figsize=(13, 9))
-    fig.subplots_adjust(wspace=0.02, hspace=0.08, top=0.92)
-    for ax, (k, rot, fmt, cmap) in zip(axs.flat, paineis):
+    paineis = [("casas", "Casas no estudo", lambda v: br(v))] + [
+        (k, VARS[k][2].replace(" por casa", "").replace(" no Instagram", ""), VARS[k][3])
+        for k in ("nota", "avaliacoes", "seguidores", "horas", "cesta")]
+    fig, _ = figura(12, 9.4, "O Sul e o Sudeste têm mais casas; o Nordeste, mais seguidores por casa"
+                    if tt.seguidores.idxmax() == "Nordeste" else "Luderias do estudo por região do Brasil",
+                    "Seis indicadores por região (UF pela capital da metrópole do endereço); cor mais escura, valor "
+                    "maior; n = casas com o dado.", FONTE, esq=0.1, dir=0.1, base=0.3)
+    fig.axes[0].remove()
+    for i, (k, rot, fmt) in enumerate(paineis):
+        ax = fig.add_axes([0.01 + (i % 3) * 0.33, 0.5 - (i // 3) * 0.44, 0.32, 0.37])
         vals = tt[k]
         norm = Normalize(vmin=vals.min(), vmax=vals.max())
-        cm = plt.get_cmap(cmap)
-        cor = {r: (to_hex(cm(0.15 + 0.7 * norm(v))) if not pd.isna(v) else "#eeeeee") for r, v in vals.items()}
-        uf.plot(ax=ax, color=[cor[r] for r in uf.regiao], edgecolor="white", linewidth=0.4)
-        reg = uf.dissolve(by="regiao")
-        reg.boundary.plot(ax=ax, color="#555555", linewidth=0.7)
-        for r in reg.index:
+        cor = {r: (to_hex(SEQUENCIAL(0.08 + 0.75 * norm(v))) if not pd.isna(v) else "#f7f7f7")
+               for r, v in vals.items()}
+        uf.plot(ax=ax, color=[cor[r] for r in uf.regiao], edgecolor="white", linewidth=0.3)
+        uf.dissolve(by="regiao").boundary.plot(ax=ax, color="white", linewidth=1.2)
+        for r in ORDEM_REGIAO:
             x, y = POS_REGIAO[r]
             v = vals.get(r)
-            n = int(tt.casas.get(r, 0))
-            nn = int(tt[f"{k}_n"].get(r, n)) if f"{k}_n" in tt else n
-            txt = f"{r}: {br(fmt.format(v)) if not pd.isna(v) else 'sem dado'}" + ("" if k == "casas" else
-                                                                                   f"\nn = {nn}")
-            ax.text(x, y, txt, ha="center", va="center", fontsize=7.5, color="#222222",
-                    bbox=dict(facecolor="white", edgecolor="#999999", alpha=0.85, pad=1.5, linewidth=0.5))
-        ax.set_xlim(-74.5, -31.5)
+            nn = int(tt[f"{k}_n"].get(r, 0)) if f"{k}_n" in tt else int(tt.casas.get(r, 0))
+            ax.text(x, y + 0.9, "sem dado" if pd.isna(v) else fmt(v), ha="center", va="bottom", fontsize=10,
+                    fontweight="semibold", color=TINTA, path_effects=HALO)
+            ax.text(x, y + 0.6, f"{r}" + ("" if k == "casas" else f" · n = {nn}"), ha="center", va="top",
+                    fontsize=7.8, color=TINTA2, path_effects=HALO)
+        ax.set_xlim(-74.5, -33)
         ax.set_ylim(-34.2, 5.8)
-        ax.set_axis_off()
         ax.set_aspect("equal")
-        ax.set_title(rot, fontsize=10.5)
-    fig.suptitle("Luderias do estudo por região do Brasil", fontsize=13, fontweight="bold", y=0.97)
-    fonte_rodape(fig, FONTE + " n = casas com o dado; cor mais escura, valor maior.", y=0.1)
+        ax.set_axis_off()
+        ax.set_title(rot, fontsize=11, fontweight="semibold", color=TINTA, loc="left")
     cols = ["regiao", "casas"] + [c for k in ("nota", "avaliacoes", "seguidores", "horas", "cesta")
                                    for c in (f"{k}_n", k)]
     salvar(fig, PASTA, "B1_mapa_painel_regiao", t[cols].assign(
@@ -235,7 +237,7 @@ def main():
     tm = agrega(d, "metropole")
     tr = agrega(d, "regiao")
     mapa_casas(d, tm, uf)
-    for k in ("nota", "avaliacoes", "seguidores", "horas", "comentarios_post", "cesta"):
+    for k in VARS:
         mapa_variavel(tm, uf, k)
     painel_regiao(tr, uf)
 

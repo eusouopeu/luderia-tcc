@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="705.404812pt" height="426.534375pt" viewBox="0 0 705.404812 426.534375" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="576pt" height="532.8pt" viewBox="0 0 576 532.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-10-16T02:45:19.023314</dc:date>
+    <dc:date>2026-10-16T03:23:36.603115</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -21,537 +21,251 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 426.534375 
-L 705.404812 426.534375 
-L 705.404812 0 
+   <path d="M 0 532.8 
+L 576 532.8 
+L 576 0 
 L 0 0 
 z
 " style="fill: #ffffff"/>
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 88.2 355.17375 
-L 590.4 355.17375 
-L 590.4 22.53375 
-L 88.2 22.53375 
+    <path d="M 126 481.68 
+L 540 481.68 
+L 540 91.44 
+L 126 91.44 
 z
 " style="fill: #ffffff"/>
    </g>
+   <g id="line2d_1">
+    <path d="M 226.877193 481.68 
+L 226.877193 91.44 
+" clip-path="url(#pce92256b67)" style="fill: none; stroke: #ececec; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 327.754386 481.68 
+L 327.754386 91.44 
+" clip-path="url(#pce92256b67)" style="fill: none; stroke: #ececec; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 428.631579 481.68 
+L 428.631579 91.44 
+" clip-path="url(#pce92256b67)" style="fill: none; stroke: #ececec; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
    <g id="patch_3">
-    <path d="M 88.2 340.05375 
-L 111.799624 340.05375 
-L 111.799624 324.51541 
-L 88.2 324.51541 
+    <path d="M 126 472.071075 
+L 166.350877 472.071075 
+L 166.350877 459.912844 
+L 126 459.912844 
 z
-" clip-path="url(#p3f6239f01a)" style="fill: #2c6e9e"/>
+" clip-path="url(#pce92256b67)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="469.69896" transform="rotate(-0 121.032 469.69896)">Porto Alegre</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="171.394737" y="469.69896" transform="rotate(-0 171.394737 469.69896)">2</text>
    </g>
    <g id="patch_4">
-    <path d="M 88.2 316.148612 
-L 111.799624 316.148612 
-L 111.799624 300.610272 
-L 88.2 300.610272 
+    <path d="M 126 452.461025 
+L 186.526316 452.461025 
+L 186.526316 440.302794 
+L 126 440.302794 
 z
-" clip-path="url(#p3f6239f01a)" style="fill: #8e6bb0"/>
+" clip-path="url(#pce92256b67)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="450.08891" transform="rotate(-0 121.032 450.08891)">Florianópolis</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="191.570175" y="450.08891" transform="rotate(-0 191.570175 450.08891)">3</text>
    </g>
    <g id="patch_5">
-    <path d="M 88.2 292.243473 
-L 111.799624 292.243473 
-L 111.799624 276.705133 
-L 88.2 276.705133 
+    <path d="M 126 432.850975 
+L 247.052632 432.850975 
+L 247.052632 420.692744 
+L 126 420.692744 
 z
-" clip-path="url(#p3f6239f01a)" style="fill: #e07b2a"/>
+" clip-path="url(#pce92256b67)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="430.478859" transform="rotate(-0 121.032 430.478859)">Curitiba</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="252.096491" y="430.478859" transform="rotate(-0 252.096491 430.478859)">6</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="411.343812" transform="rotate(-0 14.4 411.343812)">SUL  ·  11 casas</text>
    </g>
    <g id="patch_6">
-    <path d="M 88.2 268.338335 
-L 111.799624 268.338335 
-L 111.799624 252.799995 
-L 88.2 252.799995 
+    <path d="M 126 387.747859 
+L 146.175439 387.747859 
+L 146.175439 375.589628 
+L 126 375.589628 
 z
-" clip-path="url(#p3f6239f01a)" style="fill: #c0392b"/>
+" clip-path="url(#pce92256b67)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="385.375744" transform="rotate(-0 121.032 385.375744)">Vitória</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="151.219298" y="385.375744" transform="rotate(-0 151.219298 385.375744)">1</text>
    </g>
    <g id="patch_7">
-    <path d="M 88.2 244.433197 
-L 111.799624 244.433197 
-L 111.799624 228.894857 
-L 88.2 228.894857 
+    <path d="M 126 368.137809 
+L 226.877193 368.137809 
+L 226.877193 355.979578 
+L 126 355.979578 
 z
-" clip-path="url(#p3f6239f01a)" style="fill: #5a9e5a"/>
+" clip-path="url(#pce92256b67)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="365.765693" transform="rotate(-0 121.032 365.765693)">Rio de Janeiro</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="231.921053" y="365.765693" transform="rotate(-0 231.921053 365.765693)">5</text>
    </g>
    <g id="patch_8">
-    <path d="M 88.2 220.528058 
-L 135.399248 220.528058 
-L 135.399248 204.989718 
-L 88.2 204.989718 
+    <path d="M 126 348.527759 
+L 247.052632 348.527759 
+L 247.052632 336.369528 
+L 126 336.369528 
 z
-" clip-path="url(#p3f6239f01a)" style="fill: #7f7f7f"/>
+" clip-path="url(#pce92256b67)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="346.155643" transform="rotate(-0 121.032 346.155643)">Belo Horizonte</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="252.096491" y="346.155643" transform="rotate(-0 252.096491 346.155643)">6</text>
    </g>
    <g id="patch_9">
-    <path d="M 88.2 196.62292 
-L 135.399248 196.62292 
-L 135.399248 181.08458 
-L 88.2 181.08458 
+    <path d="M 126 328.917709 
+L 509.333333 328.917709 
+L 509.333333 316.759477 
+L 126 316.759477 
 z
-" clip-path="url(#p3f6239f01a)" style="fill: #e07b2a"/>
+" clip-path="url(#pce92256b67)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="326.545593" transform="rotate(-0 121.032 326.545593)">São Paulo</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="514.377193" y="326.545593" transform="rotate(-0 514.377193 326.545593)">19</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="307.410545" transform="rotate(-0 14.4 307.410545)">SUDESTE  ·  31 casas</text>
    </g>
    <g id="patch_10">
-    <path d="M 88.2 172.717782 
-L 158.998872 172.717782 
-L 158.998872 157.179442 
-L 88.2 157.179442 
+    <path d="M 126 283.814593 
+L 146.175439 283.814593 
+L 146.175439 271.656362 
+L 126 271.656362 
 z
-" clip-path="url(#p3f6239f01a)" style="fill: #7f7f7f"/>
+" clip-path="url(#pce92256b67)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="281.442477" transform="rotate(-0 121.032 281.442477)">Goiânia</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="151.219298" y="281.442477" transform="rotate(-0 151.219298 281.442477)">1</text>
    </g>
    <g id="patch_11">
-    <path d="M 88.2 148.812643 
-L 206.19812 148.812643 
-L 206.19812 133.274303 
-L 88.2 133.274303 
+    <path d="M 126 264.204543 
+L 247.052632 264.204543 
+L 247.052632 252.046312 
+L 126 252.046312 
 z
-" clip-path="url(#p3f6239f01a)" style="fill: #2c6e9e"/>
+" clip-path="url(#pce92256b67)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="261.832427" transform="rotate(-0 121.032 261.832427)">Brasília</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="252.096491" y="261.832427" transform="rotate(-0 252.096491 261.832427)">6</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="242.697379" transform="rotate(-0 14.4 242.697379)">CENTRO-OESTE  ·  7 casas</text>
    </g>
    <g id="patch_12">
-    <path d="M 88.2 124.907505 
-L 229.797744 124.907505 
-L 229.797744 109.369165 
-L 88.2 109.369165 
+    <path d="M 126 219.101427 
+L 146.175439 219.101427 
+L 146.175439 206.943196 
+L 126 206.943196 
 z
-" clip-path="url(#p3f6239f01a)" style="fill: #7f7f7f"/>
+" clip-path="url(#pce92256b67)" style="fill: #4d4d4d"/>
    </g>
-   <g id="patch_13">
-    <path d="M 88.2 101.002367 
-L 229.797744 101.002367 
-L 229.797744 85.464027 
-L 88.2 85.464027 
-z
-" clip-path="url(#p3f6239f01a)" style="fill: #2c6e9e"/>
-   </g>
-   <g id="patch_14">
-    <path d="M 88.2 77.097228 
-L 229.797744 77.097228 
-L 229.797744 61.558888 
-L 88.2 61.558888 
-z
-" clip-path="url(#p3f6239f01a)" style="fill: #8e6bb0"/>
-   </g>
-   <g id="patch_15">
-    <path d="M 88.2 53.19209 
-L 536.592857 53.19209 
-L 536.592857 37.65375 
-L 88.2 37.65375 
-z
-" clip-path="url(#p3f6239f01a)" style="fill: #2c6e9e"/>
-   </g>
-   <g id="matplotlib.axis_1">
-    <g id="xtick_1">
-     <g id="line2d_1">
-      <path d="M 88.2 355.17375 
-L 88.2 22.53375 
-" clip-path="url(#p3f6239f01a)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
-     </g>
-     <g id="line2d_2">
-      <defs>
-       <path id="m49fbd488be" d="M 0 0 
-L 0 3.5 
-" style="stroke: #000000; stroke-width: 0.8"/>
-      </defs>
-      <g>
-       <use xlink:href="#m49fbd488be" x="88.2" y="355.17375" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_1">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="88.2" y="369.771406" transform="rotate(-0 88.2 369.771406)">0</text>
-     </g>
-    </g>
-    <g id="xtick_2">
-     <g id="line2d_3">
-      <path d="M 158.998872 355.17375 
-L 158.998872 22.53375 
-" clip-path="url(#p3f6239f01a)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
-     </g>
-     <g id="line2d_4">
-      <g>
-       <use xlink:href="#m49fbd488be" x="158.998872" y="355.17375" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_2">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="158.998872" y="369.771406" transform="rotate(-0 158.998872 369.771406)">3</text>
-     </g>
-    </g>
-    <g id="xtick_3">
-     <g id="line2d_5">
-      <path d="M 229.797744 355.17375 
-L 229.797744 22.53375 
-" clip-path="url(#p3f6239f01a)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
-     </g>
-     <g id="line2d_6">
-      <g>
-       <use xlink:href="#m49fbd488be" x="229.797744" y="355.17375" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_3">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="229.797744" y="369.771406" transform="rotate(-0 229.797744 369.771406)">6</text>
-     </g>
-    </g>
-    <g id="xtick_4">
-     <g id="line2d_7">
-      <path d="M 300.596617 355.17375 
-L 300.596617 22.53375 
-" clip-path="url(#p3f6239f01a)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
-     </g>
-     <g id="line2d_8">
-      <g>
-       <use xlink:href="#m49fbd488be" x="300.596617" y="355.17375" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_4">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="300.596617" y="369.771406" transform="rotate(-0 300.596617 369.771406)">9</text>
-     </g>
-    </g>
-    <g id="xtick_5">
-     <g id="line2d_9">
-      <path d="M 371.395489 355.17375 
-L 371.395489 22.53375 
-" clip-path="url(#p3f6239f01a)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
-     </g>
-     <g id="line2d_10">
-      <g>
-       <use xlink:href="#m49fbd488be" x="371.395489" y="355.17375" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_5">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="371.395489" y="369.771406" transform="rotate(-0 371.395489 369.771406)">12</text>
-     </g>
-    </g>
-    <g id="xtick_6">
-     <g id="line2d_11">
-      <path d="M 442.194361 355.17375 
-L 442.194361 22.53375 
-" clip-path="url(#p3f6239f01a)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
-     </g>
-     <g id="line2d_12">
-      <g>
-       <use xlink:href="#m49fbd488be" x="442.194361" y="355.17375" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_6">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="442.194361" y="369.771406" transform="rotate(-0 442.194361 369.771406)">15</text>
-     </g>
-    </g>
-    <g id="xtick_7">
-     <g id="line2d_13">
-      <path d="M 512.993233 355.17375 
-L 512.993233 22.53375 
-" clip-path="url(#p3f6239f01a)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
-     </g>
-     <g id="line2d_14">
-      <g>
-       <use xlink:href="#m49fbd488be" x="512.993233" y="355.17375" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_7">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="512.993233" y="369.771406" transform="rotate(-0 512.993233 369.771406)">18</text>
-     </g>
-    </g>
-    <g id="xtick_8">
-     <g id="line2d_15">
-      <path d="M 583.792105 355.17375 
-L 583.792105 22.53375 
-" clip-path="url(#p3f6239f01a)" style="fill: none; stroke: #dddddd; stroke-width: 0.6; stroke-linecap: square"/>
-     </g>
-     <g id="line2d_16">
-      <g>
-       <use xlink:href="#m49fbd488be" x="583.792105" y="355.17375" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_8">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="583.792105" y="369.771406" transform="rotate(-0 583.792105 369.771406)">21</text>
-     </g>
-    </g>
-    <g id="text_9">
-     <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle" x="339.3" y="384.719375" transform="rotate(-0 339.3 384.719375)">Casas no estudo (mais de 100 avaliações no Google)</text>
-    </g>
-   </g>
-   <g id="matplotlib.axis_2">
-    <g id="ytick_1">
-     <g id="line2d_17">
-      <defs>
-       <path id="m6c8142844a" d="M 0 0 
-L -3.5 0 
-" style="stroke: #000000; stroke-width: 0.8"/>
-      </defs>
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="332.28458" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_10">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="336.283799" transform="rotate(-0 81.2 336.283799)">Vitória</text>
-     </g>
-    </g>
-    <g id="ytick_2">
-     <g id="line2d_18">
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="308.379442" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_11">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="312.37866" transform="rotate(-0 81.2 312.37866)">Goiânia</text>
-     </g>
-    </g>
-    <g id="ytick_3">
-     <g id="line2d_19">
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="284.474303" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_12">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="288.273522" transform="rotate(-0 81.2 288.273522)">Recife</text>
-     </g>
-    </g>
-    <g id="ytick_4">
-     <g id="line2d_20">
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="260.569165" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_13">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="264.368384" transform="rotate(-0 81.2 264.368384)">Salvador</text>
-     </g>
-    </g>
-    <g id="ytick_5">
-     <g id="line2d_21">
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="236.664027" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_14">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="240.663245" transform="rotate(-0 81.2 240.663245)">Belém</text>
-     </g>
-    </g>
-    <g id="ytick_6">
-     <g id="line2d_22">
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="212.758888" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_15">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="216.558107" transform="rotate(-0 81.2 216.558107)">Porto Alegre</text>
-     </g>
-    </g>
-    <g id="ytick_7">
-     <g id="line2d_23">
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="188.85375" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_16">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="192.652969" transform="rotate(-0 81.2 192.652969)">Fortaleza</text>
-     </g>
-    </g>
-    <g id="ytick_8">
-     <g id="line2d_24">
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="164.948612" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_17">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="168.94783" transform="rotate(-0 81.2 168.94783)">Florianópolis</text>
-     </g>
-    </g>
-    <g id="ytick_9">
-     <g id="line2d_25">
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="141.043473" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_18">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="144.842692" transform="rotate(-0 81.2 144.842692)">Rio de Janeiro</text>
-     </g>
-    </g>
-    <g id="ytick_10">
-     <g id="line2d_26">
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="117.138335" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_19">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="120.937554" transform="rotate(-0 81.2 120.937554)">Curitiba</text>
-     </g>
-    </g>
-    <g id="ytick_11">
-     <g id="line2d_27">
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="93.233197" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_20">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="97.032415" transform="rotate(-0 81.2 97.032415)">Belo Horizonte</text>
-     </g>
-    </g>
-    <g id="ytick_12">
-     <g id="line2d_28">
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="69.328058" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_21">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="73.327277" transform="rotate(-0 81.2 73.327277)">Brasília</text>
-     </g>
-    </g>
-    <g id="ytick_13">
-     <g id="line2d_29">
-      <g>
-       <use xlink:href="#m6c8142844a" x="88.2" y="45.42292" style="stroke: #000000; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_22">
-      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="81.2" y="49.307295" transform="rotate(-0 81.2 49.307295)">São Paulo</text>
-     </g>
-    </g>
-   </g>
-   <g id="patch_16">
-    <path d="M 88.2 355.17375 
-L 88.2 22.53375 
-" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
-   </g>
-   <g id="patch_17">
-    <path d="M 88.2 355.17375 
-L 590.4 355.17375 
-" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   <g id="text_22">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="216.729312" transform="rotate(-0 121.032 216.729312)">Recife</text>
    </g>
    <g id="text_23">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="117.69953" y="334.622471" transform="rotate(-0 117.69953 334.622471)">1</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="151.219298" y="216.729312" transform="rotate(-0 151.219298 216.729312)">1</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 126 199.491377 
+L 146.175439 199.491377 
+L 146.175439 187.333146 
+L 126 187.333146 
+z
+" clip-path="url(#pce92256b67)" style="fill: #b91c1c"/>
    </g>
    <g id="text_24">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="117.69953" y="310.717332" transform="rotate(-0 117.69953 310.717332)">1</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #b91c1c" x="121.032" y="197.119261" transform="rotate(-0 121.032 197.119261)">Salvador</text>
    </g>
    <g id="text_25">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="117.69953" y="286.812194" transform="rotate(-0 117.69953 286.812194)">1</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="151.219298" y="197.119261" transform="rotate(-0 151.219298 197.119261)">1</text>
+   </g>
+   <g id="patch_14">
+    <path d="M 126 179.881327 
+L 166.350877 179.881327 
+L 166.350877 167.723095 
+L 126 167.723095 
+z
+" clip-path="url(#pce92256b67)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_26">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="117.69953" y="262.907056" transform="rotate(-0 117.69953 262.907056)">1</text>
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="177.509211" transform="rotate(-0 121.032 177.509211)">Fortaleza</text>
    </g>
    <g id="text_27">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="117.69953" y="239.001917" transform="rotate(-0 117.69953 239.001917)">1</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="171.394737" y="177.509211" transform="rotate(-0 171.394737 177.509211)">2</text>
    </g>
    <g id="text_28">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="141.299154" y="215.096779" transform="rotate(-0 141.299154 215.096779)">2</text>
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="158.374163" transform="rotate(-0 14.4 158.374163)">NORDESTE  ·  4 casas</text>
+   </g>
+   <g id="patch_15">
+    <path d="M 126 134.778211 
+L 146.175439 134.778211 
+L 146.175439 122.61998 
+L 126 122.61998 
+z
+" clip-path="url(#pce92256b67)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_29">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="141.299154" y="191.191641" transform="rotate(-0 141.299154 191.191641)">2</text>
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="132.406095" transform="rotate(-0 121.032 132.406095)">Belém</text>
    </g>
    <g id="text_30">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="164.898778" y="167.286502" transform="rotate(-0 164.898778 167.286502)">3</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="151.219298" y="132.406095" transform="rotate(-0 151.219298 132.406095)">1</text>
    </g>
    <g id="text_31">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="212.098026" y="143.381364" transform="rotate(-0 212.098026 143.381364)">5</text>
-   </g>
-   <g id="text_32">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="235.69765" y="119.476226" transform="rotate(-0 235.69765 119.476226)">6</text>
-   </g>
-   <g id="text_33">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="235.69765" y="95.571087" transform="rotate(-0 235.69765 95.571087)">6</text>
-   </g>
-   <g id="text_34">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="235.69765" y="71.665949" transform="rotate(-0 235.69765 71.665949)">6</text>
-   </g>
-   <g id="text_35">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="542.492763" y="47.760811" transform="rotate(-0 542.492763 47.760811)">19</text>
-   </g>
-   <g id="text_36">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle" x="339.3" y="16.53375" transform="rotate(-0 339.3 16.53375)">São Paulo concentra 19 das 54 casas; Salvador tem uma</text>
-   </g>
-   <g id="legend_1">
-    <g id="patch_18">
-     <path d="M 597.422 131.726641 
-L 696.204813 131.726641 
-Q 698.204813 131.726641 698.204813 129.726641 
-L 698.204813 24.53375 
-Q 698.204813 22.53375 696.204813 22.53375 
-L 597.422 22.53375 
-Q 595.422 22.53375 595.422 24.53375 
-L 595.422 129.726641 
-Q 595.422 131.726641 597.422 131.726641 
-z
-" style="fill: #ffffff; opacity: 0.8; stroke: #cccccc; stroke-linejoin: miter"/>
-    </g>
-    <g id="text_37">
-     <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start" x="628.098797" y="35.079375" transform="rotate(-0 628.098797 35.079375)">Região</text>
-    </g>
-    <g id="patch_19">
-     <path d="M 599.422 50.320391 
-L 619.422 50.320391 
-L 619.422 43.320391 
-L 599.422 43.320391 
-z
-" style="fill: #5a9e5a; stroke: #5a9e5a; stroke-linejoin: miter"/>
-    </g>
-    <g id="text_38">
-     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start" x="627.422" y="50.320391" transform="rotate(-0 627.422 50.320391)">Norte</text>
-    </g>
-    <g id="patch_20">
-     <path d="M 599.422 65.321172 
-L 619.422 65.321172 
-L 619.422 58.321172 
-L 599.422 58.321172 
-z
-" style="fill: #e07b2a; stroke: #e07b2a; stroke-linejoin: miter"/>
-    </g>
-    <g id="text_39">
-     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start" x="627.422" y="65.321172" transform="rotate(-0 627.422 65.321172)">Nordeste</text>
-    </g>
-    <g id="patch_21">
-     <path d="M 599.422 80.321953 
-L 619.422 80.321953 
-L 619.422 73.321953 
-L 599.422 73.321953 
-z
-" style="fill: #8e6bb0; stroke: #8e6bb0; stroke-linejoin: miter"/>
-    </g>
-    <g id="text_40">
-     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start" x="627.422" y="80.321953" transform="rotate(-0 627.422 80.321953)">Centro-Oeste</text>
-    </g>
-    <g id="patch_22">
-     <path d="M 599.422 95.322734 
-L 619.422 95.322734 
-L 619.422 88.322734 
-L 599.422 88.322734 
-z
-" style="fill: #2c6e9e; stroke: #2c6e9e; stroke-linejoin: miter"/>
-    </g>
-    <g id="text_41">
-     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start" x="627.422" y="95.322734" transform="rotate(-0 627.422 95.322734)">Sudeste</text>
-    </g>
-    <g id="patch_23">
-     <path d="M 599.422 110.323516 
-L 619.422 110.323516 
-L 619.422 103.323516 
-L 599.422 103.323516 
-z
-" style="fill: #7f7f7f; stroke: #7f7f7f; stroke-linejoin: miter"/>
-    </g>
-    <g id="text_42">
-     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start" x="627.422" y="110.323516" transform="rotate(-0 627.422 110.323516)">Sul</text>
-    </g>
-    <g id="patch_24">
-     <path d="M 599.422 125.324297 
-L 619.422 125.324297 
-L 619.422 118.324297 
-L 599.422 118.324297 
-z
-" style="fill: #c0392b; stroke: #c0392b; stroke-linejoin: miter"/>
-    </g>
-    <g id="text_43">
-     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start" x="627.422" y="125.324297" transform="rotate(-0 627.422 125.324297)">Salvador</text>
-    </g>
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="113.271048" transform="rotate(-0 14.4 113.271048)">NORTE  ·  1 casa</text>
    </g>
   </g>
-  <g id="text_44">
-   <text style="font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #555555" x="7.2" y="417.4125" transform="rotate(-0 7.2 417.4125)">Fonte: Google Maps (Places API, 09/2026; casas novas em 12/10/2026), recorte B1 (54 casas).</text>
+  <g id="text_32">
+   <text style="font-weight: 600; font-size: 15.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="12.96" y="27.189967" transform="rotate(-0 12.96 27.189967)">São Paulo concentra um terço das luderias do estudo</text>
+  </g>
+  <g id="text_33">
+   <text style="font-size: 11.5px; font-family: 'Source Sans 3'; fill: #525252" transform="translate(12.96 50.617734)">Casas com mais de 100 avaliações no Google, por metrópole do endereço (54 casas). Salvador tem</text>
+   <text style="font-size: 11.5px; font-family: 'Source Sans 3'; fill: #525252" transform="translate(12.96 70.351016)">1.</text>
+  </g>
+  <g id="text_34">
+   <text style="font-size: 8.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="12.96" y="519.279141" transform="rotate(-0 12.96 519.279141)">Fonte: elaboração própria com dados do Google Maps (Places API, set. 2026; casas novas em 12/10/2026), recorte B1.</text>
   </g>
  </g>
  <defs>
-  <clipPath id="p3f6239f01a">
-   <rect x="88.2" y="22.53375" width="502.2" height="332.64"/>
+  <clipPath id="pce92256b67">
+   <rect x="126" y="91.44" width="414" height="390.24"/>
   </clipPath>
  </defs>
 </svg>

@@ -13,6 +13,9 @@ com as colunas do Instagram de B1_instagram_resumo_notion.csv; posts de
 01/09 a 01/10/2026. Instagram de LudoCafé e Dominaria fica vazio (perfil
 errado coletado).
 
+Estilo editorial (`graficos_comum`): fileiras em cinza, Salvador em vermelho,
+título com a comparação de Salvador contra a mediana de todas as casas.
+
 Regras:
 - cada casa entra numa única região (UF da capital da metrópole do endereço);
   a soma das casas com dado nas linhas de região é conferida contra a linha
@@ -37,32 +40,33 @@ from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
 
-import matplotlib.pyplot as plt  # noqa: E402
 import pandas as pd  # noqa: E402
 
 from dados_graficos import casas  # noqa: E402
-from graficos_comum import COR_REGIAO, CORES, ICONES, ORDEM_REGIAO, fileira, fonte_rodape, salvar  # noqa: E402
+from graficos_comum import BASE, ORDEM_REGIAO, TINTA, VERMELHO, br, pictograma_linhas, salvar  # noqa: E402
 
 ROOT = _AQUI.parents[4]
 PASTA = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos" / "5_graficos" / "pictogramas"
-FONTE = "Fonte: Instagram, perfis e posts coletados de 11 a 15/10/2026; posts de 01/09 a 01/10/2026 (B1)."
+FONTE = ("Fonte: elaboração própria com perfis e posts do Instagram coletados de 11 a 15/10/2026; "
+         "posts de 01/09 a 01/10/2026 (B1).")
 
-# chave -> (coluna, ícone, valor por ícone, ícones na linha, título, legenda do ícone, formato)
+# chave -> (coluna, ícone, valor por ícone, ícones na fileira, o que a casa "faz" no título,
+#           subtítulo, legenda do ícone, casas decimais)
 FIGURAS = {
-    "comentarios_post": ("comentarios_por_post", "balao", 1, 10,
-                         "Comentários por post no Instagram (mediana das casas)", "1 comentário por post", "{:.1f}"),
-    "curtidas_post": ("curtidas_por_post", "coracao", 25, 14,
-                      "Curtidas por post no Instagram (mediana das casas)", "25 curtidas por post", "{:.0f}"),
-    "seguidores": ("seguidores", "pessoa", 2500, 16,
-                   "Seguidores no Instagram (mediana das casas)", "2.500 seguidores", "{:,.0f}"),
+    "comentarios_post": ("comentarios_por_post", "balao", 1, 10, "recebe {v} comentários por post",
+                         "Comentários por post no Instagram, mediana das casas de cada região",
+                         "1 comentário por post", 1),
+    "curtidas_post": ("curtidas_por_post", "coracao", 25, 14, "recebe {v} curtidas por post",
+                      "Curtidas por post no Instagram, mediana das casas de cada região",
+                      "25 curtidas por post", 0),
+    "seguidores": ("seguidores", "pessoa", 2500, 16, "tem {v} seguidores no Instagram",
+                   "Seguidores no Instagram, mediana das casas de cada região",
+                   "2.500 seguidores", 0),
     "engajamento": ("interacoes_mil_seguidores", "pessoa", 1, 20,
-                    "Interações (curtidas + comentários) por post a cada 1.000 seguidores (mediana das casas)",
-                    "1 interação por post a cada 1.000 seguidores", "{:.1f}"),
+                    "soma {v} interações por post a cada mil seguidores",
+                    "Interações (curtidas + comentários) por post a cada 1.000 seguidores, mediana das casas de cada região",
+                    "1 interação por post a cada 1.000 seguidores", 1),
 }
-
-
-def br(txt):
-    return txt.replace(",", "X").replace(".", ",").replace("X", ".")
 
 
 def base():
@@ -92,46 +96,50 @@ def tabela(d, col):
     return pd.DataFrame(linhas)
 
 
-def figura(d, chave):
-    col, icone, por, total, titulo, leg, fmt = FIGURAS[chave]
+def fmt(v, casas_dec):
+    return "sem dado" if pd.isna(v) else br(v, casas_dec)
+
+
+def comparacao(sv, todas, dec):
+    """Trecho do título que compara Salvador com a mediana de todas as casas."""
+    r = sv / todas
+    if r <= 0.87:
+        return f"abaixo da mediana das casas ({br(todas, dec)})"
+    if r < 1.15:
+        return f"perto da mediana das casas ({br(todas, dec)})"
+    vezes = {2: "o dobro", 3: "o triplo", 4: "o quádruplo"}.get(round(r)) if abs(r - round(r)) < 0.2 else None
+    quanto = f"{vezes} da" if vezes else f"{br(r, 1)} vezes a"
+    return f"{quanto} mediana das casas ({br(todas, dec)})"
+
+
+def desenhar(d, chave):
+    col, icone, por, total, faz, sub, leg, dec = FIGURAS[chave]
     t = tabela(d, col)
-    fig, ax = plt.subplots(figsize=(5.5 + 0.32 * total, 0.62 * len(t) + 1.6))
-    passo = 1.1
-    for i, r in enumerate(t.iloc[::-1].itertuples()):
-        y = i * 1.45
-        if r.grupo.startswith("Salvador"):
-            cor = CORES["destaque"]
-        elif r.grupo == "Todas as casas":
-            cor = "#333333"
-        else:
-            cor = COR_REGIAO[r.grupo]
-        if pd.isna(r.mediana):
-            fileira(ax, y, 0, total, cor, icone=icone, passo=passo)
-            txt = "sem dado"
-        else:
-            fileira(ax, y, min(r.mediana / por, total), total, cor, icone=icone, passo=passo)
-            txt = br(fmt.format(r.mediana))
-        ax.text(-0.4, y + 0.5, r.grupo, ha="right", va="center", fontsize=10,
-                fontweight="bold" if not r.grupo in ORDEM_REGIAO else "normal",
-                color=CORES["destaque"] if r.grupo.startswith("Salvador") else "#222222")
-        ax.text(total * passo + 0.3, y + 0.5, f"{txt}  (n = {r.casas_com_dado})", ha="left", va="center",
-                fontsize=9.5, color="#333333")
-    leg_y = -1.6
-    ICONES[icone](ax, 0, leg_y, "#555555", s=0.8)
-    ax.text(1.0, leg_y + 0.4, f"= {leg}", va="center", fontsize=9)
-    ax.set_xlim(-0.2, total * passo + 0.2)
-    ax.set_ylim(leg_y - 0.3, len(t) * 1.45)
-    ax.set_aspect("equal")
-    ax.set_axis_off()
-    fig.suptitle(titulo, fontsize=12, fontweight="bold", x=0.02, ha="left")
-    fonte_rodape(fig, FONTE + " n = casas com o dado. Salvador repete a casa já contada no Nordeste.", y=0.0)
+    sv = t.iloc[-1]
+    todas = t.loc[t.grupo == "Todas as casas", "mediana"].iloc[0]
+    casa = sv.grupo.split("(")[-1].rstrip(")")
+    if pd.notna(sv.mediana):
+        titulo = f"A {casa}, em Salvador, {faz.format(v=fmt(sv.mediana, dec))}: {comparacao(sv.mediana, todas, dec)}"
+    else:
+        titulo = f"{sub.split(',')[0]}: mediana de {fmt(todas, dec)} nas casas do estudo"
+    linhas = []
+    for r in t.itertuples():
+        sal = r.grupo.startswith("Salvador")
+        linhas.append({
+            "rotulo": r.grupo, "icones": 0 if pd.isna(r.mediana) else r.mediana / por,
+            "valor": fmt(r.mediana, dec), "extra": f"{r.casas_com_dado} casa" + ("s" if r.casas_com_dado != 1 else ""),
+            "cor": VERMELHO if sal else (TINTA if r.grupo == "Todas as casas" else BASE),
+            "destaque": sal or r.grupo == "Todas as casas", "espaco": r.grupo == "Todas as casas",
+        })
+    fig, _ = pictograma_linhas(linhas, total, icone, titulo, sub + ".", FONTE,
+                               nota=f"Cada ícone = {leg}. Salvador repete a casa já contada no Nordeste.")
     salvar(fig, PASTA, f"B1_pict_{chave}", t.assign(valor_por_icone=por).round(3))
 
 
 def main():
     d = base()
     for k in FIGURAS:
-        figura(d, k)
+        desenhar(d, k)
 
 
 if __name__ == "__main__":
