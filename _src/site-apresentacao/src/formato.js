@@ -27,13 +27,13 @@ export function porUnidade(v, unidade) {
 /* Cores fixas dos gráficos (SVG não lê as classes do Tailwind). Séries em cinza; `destaque`
    só para o que importa à decisão: Salvador (ou o Nordeste), críticas, amostras fora do critério. */
 export const COR = {
-  azul: "#404040",
-  azulClaro: "#b5b5b5",
-  neutra: "#e0e0e0",
-  referencia: "#737373",
-  destaque: "#b91c1c",
-  grade: "#e5e5e5",
-  texto: "#262626",
+  azul: "#34312c",
+  azulClaro: "#b9b2a6",
+  neutra: "#e3ddd2",
+  referencia: "#7a746b",
+  destaque: "#b4532a",
+  grade: "#e6e0d5",
+  texto: "#34312c",
 };
 
-export const eixo = { fontSize: 11, fill: COR.texto };
+export const eixo = { fontSize: 11, fill: COR.texto, fontFamily: "Inter, sans-serif" };

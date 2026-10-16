@@ -51,7 +51,7 @@ export default function S3Metodologia() {
 
       {/* Ficha */}
       <Reveal>
-        <div className="grid gap-px overflow-hidden rounded-xl border border-papel-200 bg-papel-200 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-px overflow-hidden rounded-lg border border-papel-200 bg-papel-200 sm:grid-cols-2 lg:grid-cols-3">
           {c.ficha.map((f) => (
             <div key={f.rotulo} className="bg-white p-4">
               <p className="text-xs font-semibold tracking-wider text-azul-700/60 uppercase">{f.rotulo}</p>

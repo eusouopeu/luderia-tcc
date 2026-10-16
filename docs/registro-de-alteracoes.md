@@ -1091,3 +1091,80 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: casa sem couvert no cardápio coletado era tratada como casa que não cobra: `couvert_no_cardapio` = "não", couvert 0 na cesta, rótulo "Cobra couvert", cap. 5 com "19 não cobram" e "o couvert não é a regra"; R14 com "só 7 de 26 cobram". Na Fan Hour, o Nintendo Switch 2 (R$ 40) contava como taxa de jogo.
 **Depois**: "não encontrado" no lugar de "não"; preços de couvert vazios e cesta vazia quando o couvert não foi encontrado (a cesta passa a exigir couvert, bebida e entrada ou prato); rótulo "Couvert ou taxa de jogo encontrado"; cap. 5 diz que nas outras 19 o couvert não foi encontrado, o que não basta para afirmar que não cobram; R14 cita couvert encontrado em 13 das 34 casas com cardápio. Switch 2 passou a adicional, e a mediana de couvert da Fan Hour fica em R$ 20. O resumo do B1, a estatística descritiva e o site só mudam depois de rodar `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py` no Mac (dependem de arquivos fora do git).
 **Justificativa**: pedido do autor (16/10): em vez de assumir que as casas sem dado de couvert não cobram, assumir só que não foi possível encontrar o dado.
+### 18:03
+**Objeto**: `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/` (`originais/2026-10-10_SJBV/POV1/` e `POV2/`, novos; `contagem_*.csv`, novos), `dados/[B3] Contagem direta de ocupacao/contagem_resumo_visitas.csv` e `contagem_notas_intervalo.csv` (novos), `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py` (novo), `outros/B3_descartes_app.csv` (novo), `analise/B3-a_contagem.py`, `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`
+**Antes**: nenhum dado de visita no B3; a análise lia um único arquivo por conteúdo, sem observador, e exigia `visita_fim` para calcular as taxas.
+**Depois**: 19 CSVs exportados do app na visita de 10/10 ao Bela Vista (POV1: 9; POV2: 10) guardados intactos; consolidação com `visita_id` e `observador`, unidade tirada do nome da pasta (o POV2 digitou "BV 10.10") e descarte por lista (mesas do POV2: 5 grupos sem saída, registro até 19h27). A análise dá uma linha por observador e uma de média por visita; sem `visita_fim`, o fim é o maior entre o previsto e o último registro (`fim_estimado`). Fluxo: 52 linhas (32 + 20); mesas: 9 (POV1).
+**Justificativa**: pedido do autor: importar os dados da primeira visita presencial, com dois observadores simultâneos, tomando a média dos dois e sabendo que uma das rotinas do POV2 está errada.
+
+### 18:03
+**Objeto**: `docs/decisoes.md` (02/10 e 13/10), `textos/planejamento/cronograma_luderia.md` e `_instrucoes/4_metodologia.md` (B3) × CSVs da visita ao Bela Vista
+**Antes**: primeiras visitas no sábado, 03/10, entrada às 19h; retorno 15 dias depois, domingo, 18/10.
+**Depois**: a visita ao Bela Vista registrada no app começou em 10/10 (18h37 no POV1, 19h02 no POV2); o retorno de 18/10 fica 8 dias depois.
+**Efeitos colaterais**: o intervalo de notas fiscais entre as visitas (base das vendas no período) passa de 15 para 8 dias, e a visita deixa de cair na quinzena após o pagamento dos servidores estaduais (29 e 30/09). Nada foi corrigido nos documentos.
+
+
+### 18:19
+**Objeto**: `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py`, `outros/B3_descartes_app.csv`, `outros/B3_correcoes_app.csv` (novo), `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/originais/2026-10-10_SJBV/POV1/2026-10-10_SJBV_POV1_transcricao_precos.csv` (novo), `_dados-brutos/app/contagem_*.csv`, `contagem_resumo_visitas.csv`, `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`
+**Antes**: média dos dois observadores, com só as mesas do POV2 descartadas; o POV1 contava como entrada as 24 pessoas que já estavam dentro (B-1, 18h39, e B-7, 19h14): 86 entradas, 25,9 por hora; sem NFC-e.
+**Depois**: todo o POV2 ignorado na visita; B-1 e B-7 excluídos do fluxo como estoque inicial; NFC-e final (série 2, nº 77977, 22h08:04, CNPJ 34.128.755/0001-98) e seus 4 itens mais o acréscimo de serviço (R$ 8,19, 10% sobre o consumo sem a taxa de entrada) transcritos da foto da nota. Resultado: 38 pessoas em 14 grupos, 11,4 por hora, permanência de 99 min na porta. A foto fica em `_dados-brutos/app/fotos/` (fora do git: traz CPF e nome do consumidor; CPF não transcrito).
+**Justificativa**: pedido do autor: ignorar o POV2 nesta visita; as 24 pessoas eram as que já estavam dentro na chegada; incluir a nota fiscal final.
+
+### 21:56
+**Objeto**: `_src/extras/ler_notion_offline.py` (novo), `README.md` (linha de `_src/extras/`), `AGORA.md`
+**Antes**: os bancos do Notion só eram lidos com internet (conector ou exportação manual).
+**Depois**: leitor do cache SQLite do app desktop (`~/Library/Application Support/Notion/notion.db`), aberto só para leitura e copiado antes de ler: sem argumento lista os bancos com o número de linhas; com o nome do banco, exporta CSV com as colunas pelo nome, menções e relações resolvidas para o título da página e datas em ISO. Fórmulas e rollups vêm vazios (calculados no servidor). Em 15/10, o cache tinha 55 linhas em "A - Estabelecimentos", 54 em "Luderias – Status da coleta", 650 em "B - Jogos", 889 em "B - Comentários" (o banco tem 1.628: o cache guarda só o que o app baixou), 19 em "Bibliografia" e 590 em "B1_snowball_candidatos.csv".
+**Justificativa**: pedido do autor: engenharia reversa do Notion desktop (skill REA) para ler os bancos do TCC offline. A análise do `app.asar` (7.38.1) mostrou o cache em `notion.db`, servido ao app pelo processo "Sqlite Server".
+
+### 22:46
+**Objeto**: `_src/site-apresentacao/` (`index.html`, `src/index.css`, `src/App.jsx`, `src/components/ui.jsx`, `src/components/graficos.jsx`, `src/formato.js`, `src/tema.js`, `src/conteudo/site.json`, `src/sections/*.jsx`, `README.md`), `docs/decisoes.md`, `AGORA.md`
+**Antes**: paleta neutra (preto, cinza e branco) com vermelho de destaque; Montserrat em tudo; barra lateral preta com aba ativa cinza; cartões com cantos de 12 px e sombra; `site.json` definia `corFundo` e `corAbaAtiva` da barra.
+**Depois**: visual editorial: fundo creme com grade de pontos quase invisível, cinzas quentes e um único acento terracota (`destaque`, também nos gráficos); títulos em Fraunces, corpo em Inter, números tabulares em JetBrains Mono; barra lateral clara com marcador terracota na seção ativa e subtítulo só nela; cabeçalho de seção com "NN / 12", régua e tempo previsto; cartões planos (cantos de 8 px, sem sombra); barra inferior do celular clara. `corFundo` e `corAbaAtiva` saíram do `site.json`.
+**Justificativa**: pedido do autor: design sóbrio, bonito e inovador para o site-apresentação; direção "Editorial" escolhida entre três propostas.
+
+### 22:49
+**Objeto**: site de apresentação publicado (branch `gh-pages`, https://eusouopeu.github.io/luderia-tcc/), `AGORA.md`
+**Antes**: o site no ar tinha a paleta preto/cinza/vermelho e Montserrat.
+**Depois**: `pnpm run deploy` publicou o visual editorial (commit 095e81c); conferido no ar (Fraunces carregada, fundo creme).
+**Justificativa**: pedido do autor: publicar o novo visual.
+
+## 2026/10/16
+
+### 16:45
+**Objeto**: `_src/app-observacao/` (`src/domain/model.ts`, `resumo.ts`, `store.ts`, `App.tsx`, `screens/Visita.tsx`, `Ajustes.tsx`, `Folhas.tsx`, `FormMesa.tsx`, `abas/Fluxo.tsx`, `abas/Temporizador.tsx`, `ui/SeletorJogos.tsx`, testes, `package.json` 2.4.0, `android/app/build.gradle` 2026.10.16-1), APK `ObservacaoLuderia-2026.10.16-1.apk` (fora do git)
+**Antes**: cada CSV exportado saía sem identificar visita, observador ou versão do app (o importador tirava isso do nome da pasta); entrada na porta e grupo na mesa eram lançados à parte, sem ligação; saída rápida sem motivo; sem botão de fechamento (grupos ainda dentro às 22h ficavam sem saída ou com saída falsa); nada sobre a posição, as pausas e o papel do observador; condições do dia como texto livre; pessoas e jogos sem marca de incerteza; tarefas extras (NFC-e, som, foto do cardápio, acervo) espalhadas em módulos.
+**Depois**: (3) todos os CSVs começam com `visita_id`, `observador`, `versao_app`, `papel`, `unidade` e `visita_inicio`; o botão "Exportar esta visita" grava `<visita_id>_<observador>_contagem_<x>.csv`; código do observador e prefixo da casa em Ajustes. (6) Na porta, "Foi para" liga a entrada a uma mesa livre (abre o grupo com a hora da porta) ou ocupada (soma pessoas), ou a Balcão/loja, Retirada/delivery, Outro; saída em até 10 min sem mesa pede o motivo (Lotado, Só olhou, Balcão/loja, Retirada/delivery, Outro). (7) "Fechamento da casa" (Ações e Temporizador) dá saída a todos os grupos abertos com tipo `fechamento`, e o resumo e a análise tratam essa saída como censura. (8) Seção "Observador" na ficha: código, papel (porta, mesas, porta e mesas), posição e pausas registradas pelo temporizador. (10) "Condições do dia" como lista: Dia comum (exclusivo), feriado, véspera, feriado prolongado, evento (com nome), promoção e outras; encerrar sem marcar pergunta se foi dia comum. (13) "≈" marca pessoas estimadas na porta e na mesa, e "?" marca jogo incerto. (15) O Temporizador traz o "Roteiro da visita" (início, durante, fim) com as tarefas e o atalho para cada uma. 21 testes passam.
+**Justificativa**: pedido do autor: implementar os itens 3, 6, 7, 8, 10, 13 (também para jogos) e 15 da revisão da visita de 10/10, antes das visitas de retorno.
+
+### 16:45
+**Objeto**: `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py`, `analise/B3-a_contagem.py`
+**Antes**: o importador sempre inseria `visita_id` e `observador` a partir da pasta; a análise contava toda saída na permanência média e não separava desistências.
+**Depois**: arquivo do formato novo (com `visita_id` e `observador` próprios) é conferido contra a pasta e interrompe se divergir; o formato antigo continua lido. A permanência na porta exclui saídas com motivo "Fechamento" e a das mesas usa só `censurada != sim`; colunas novas `desistencias_porta` e `pessoas_desistiram` (motivo Lotado ou Só olhou). Rodado sobre a visita de 10/10: consolidados idênticos aos versionados; o resumo só ganha as duas colunas (zero).
+**Justificativa**: acompanhar o formato novo do app sem perder os originais de 10/10.
+
+### 16:45
+**Objeto**: `docs/registro-de-alteracoes.md` × anotação da revisão da visita de 10/10 (`/mnt/project-files/b3/revisao_visita_2026-10-10_e_app.md`)
+**Antes**: a revisão tratou a diferença de acervo entre os observadores (432 contra 350 caixas; 7 contra 0 instrutores) como erro de contagem.
+**Depois**: o autor explicou que um observador contou só o salão de jogos e o outro somou a sala separada (provavelmente de RPG).
+**Efeitos colaterais**: o acervo da unidade depende do ambiente contado; o protocolo precisa dizer se a sala de RPG entra (pendência aberta).
+
+### 16:50
+**Objeto**: `textos/instrumentos/recomendacoes_registro_consumo_B3.md` (novo), `docs/pendencias.md`
+**Antes**: o módulo de pedidos do app exigia categoria, hora do pedido e chegada, e ficou vazio na visita de 10/10.
+**Depois**: sete formas de registrar comidas e bebidas, da mais barata à mais cara, com a ordem sugerida (marca de comida e bebida na contagem de 30 min, consumo próprio com NFC-e e notas emitidas no intervalo primeiro); nada implementado no app.
+**Justificativa**: pedido do autor: recomendações para facilitar o registro de consumo de comidas e bebidas.
+
+## 2026/10/16
+
+### 16:48
+**Objeto**: Notion, banco "Luderias – Status da coleta" (54 linhas: Cardápio, Entornos, Instagram, Acervo de jogos, Google maps, "O que ainda falta?" e "Como proceder para conseguir os dados que faltam?")
+**Antes**: status de 15/10 (Instagram 45 completas; Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria parciais por falta de seguidores; Taverna e Encounter com acervo "Coleta parcial"; lojas sem A&B com cardápio ora "Coleta parcial", ora "Não coletado").
+**Depois**: recalculado pelos arquivos do B1 (main + PR #10): cardápio 26 completa / 8 parcial / 20 não coletado (15 delas com "A&B não encontrado" na busca profunda de 16/10); entorno 26 / 28 / 0; Instagram 51 / 2 / 1 (perfis de 15/10 das casas novas trazem seguidores; Bravo completa pelo CSV de 12/10); acervo 16 / 9 / 29 (Taverna e Encounter caem para "Não coletado": o subdomínio foi ligado por nome com similaridade baixa); Google Maps 54 completas. As colunas de texto trazem uma linha por lacuna (cardápio, entorno, Instagram, snowball, acervo, B2) e o passo para fechá-la. Gerador e CSV em `/mnt/project-files/notion/` (fora do repositório).
+**Justificativa**: pedido do autor de atualizar o banco com as casas do acervodejogos, os status e as lacunas com recomendação.
+
+### 16:48 (divergência)
+**Objeto**: `B1_resumo_estabelecimentos.xlsx` × perfis do Instagram de 15/10 (`redes_sociais/rs_<cidade>/rs_<perfil>/2026-10-15_*_perfis.csv`)
+**Antes**: resumo sem seguidores de Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria, e sem total de posts de La Tabuleria, TabuClub e Toca do Rato.
+**Depois**: os perfis de 15/10 trazem esses números (ex.: Bardo Mago, 31.314 seguidores).
+**Efeitos colaterais**: estatística descritiva e site leem o resumo e seguem sem essas casas no Instagram até rodar `B1-b_resumo.py`.
+

@@ -1,6 +1,6 @@
 import { useRef, useState, type ReactNode } from 'react'
 import { useLoja } from '../store'
-import { ContadorH, Opcao, Secao } from '../ui/comum'
+import { campo, ContadorH, Opcao, Secao } from '../ui/comum'
 import { arquivosCsv, hojeIso, type Config, type Unidade } from '../domain/model'
 import { gravarBackup, lerBackup, ultimoBackup } from '../storage/backup'
 import { compartilhar } from '../storage/exportar'
@@ -25,6 +25,16 @@ export function PaginaAjustes({ unidade, onEditar, onApagar }: { unidade: Unidad
               {t === 'sistema' ? 'Do sistema' : t === 'claro' ? 'Claro' : 'Escuro'}
             </Opcao>
           ))}
+        </div>
+      </Secao>
+
+      <Secao
+        titulo="Observador deste celular"
+        ajuda="Código que vai em todas as exportações e no nome dos arquivos (ex.: 2026-10-17_SJBV_POV1_contagem_fluxo.csv). Prefixo da casa: SJ = São Jogue."
+      >
+        <div className="flex gap-2">
+          <input value={c.observador} onChange={(e) => muda({ observador: e.target.value.toUpperCase() })} placeholder="POV1" aria-label="Código do observador" className={campo} />
+          <input value={c.prefixoCasa} onChange={(e) => muda({ prefixoCasa: e.target.value.toUpperCase() })} placeholder="SJ" aria-label="Prefixo da casa" maxLength={4} className={`${campo} !w-20 text-center`} />
         </div>
       </Secao>
 

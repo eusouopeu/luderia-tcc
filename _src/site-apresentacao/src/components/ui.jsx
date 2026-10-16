@@ -41,21 +41,23 @@ export function Reveal({ children, delay = 0, className = "" }) {
 export function TituloSecao({ id }) {
   const s = site.secoes.find((x) => x.id === id);
   if (!s) return null;
+  const total = site.secoes.length;
   return (
-    <header className="mb-8 border-b-2 border-azul-800/15 pb-5 sm:mb-10 sm:pb-6">
-      <div className="flex flex-wrap items-baseline gap-3 sm:gap-4">
-        <span className="font-display text-4xl leading-none font-bold text-roxo-600 tabular-nums sm:text-5xl md:text-6xl">
+    <header className="mb-10 sm:mb-12">
+      <div className="flex items-center gap-3 font-mono text-[11px] font-medium tracking-[0.14em] text-azul-700/70 uppercase">
+        <span className="text-destaque-600">
           {String(s.n).padStart(2, "0")}
+          <span className="text-azul-700/40"> / {String(total).padStart(2, "0")}</span>
         </span>
-        <div className="min-w-0">
-          <h1 className="font-display text-2xl leading-tight font-bold tracking-tight text-azul-950 sm:text-3xl md:text-4xl lg:text-5xl">
-            {s.titulo}
-          </h1>
-          <p className="mt-1 text-xs font-medium tracking-wide text-azul-700/70 uppercase sm:text-sm">
-            {s.subtituloLongo ?? s.subtitulo}
-          </p>
-        </div>
+        <span className="h-px flex-1 bg-azul-950/15" />
+        {s.tempo && <span>{s.tempo}</span>}
       </div>
+      <h1 className="mt-5 font-display text-4xl leading-[1.02] font-semibold text-azul-950 sm:text-5xl md:text-6xl">
+        {s.titulo}
+      </h1>
+      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-azul-700/80 sm:text-base">
+        {s.subtituloLongo ?? s.subtitulo}
+      </p>
     </header>
   );
 }
@@ -68,7 +70,7 @@ export function Cartao({ children, className = "", tom = "claro" }) {
     brasa: "bg-roxo-600 border-roxo-700 text-white",
   };
   return (
-    <div className={`rounded-xl border shadow-sm ${tons[tom]} ${className}`}>
+    <div className={`rounded-lg border ${tons[tom]} ${className}`}>
       {children}
     </div>
   );
@@ -123,7 +125,7 @@ export function Contador({ valor, sufixo = "", decimais = 0, duracao = 900 }) {
 
 export function Nota({ children }) {
   return (
-    <p className="mt-4 border-l-2 border-rosa-400 pl-3 text-xs leading-relaxed text-azul-700/70 italic">
+    <p className="mt-4 border-l-2 border-destaque-600/50 pl-3 text-xs leading-relaxed text-azul-700/75 italic">
       {children}
     </p>
   );
@@ -132,11 +134,11 @@ export function Nota({ children }) {
 /* Bloco recolhível. `aberto` define apenas o estado inicial. */
 export function Sanfona({ titulo, subtitulo, children, aberto = false, cor, corTexto = "#fff", contagem }) {
   const [ativo, setAtivo] = useState(aberto);
-  const fundo = cor ?? "var(--color-papel-200)";
+  const fundo = cor ?? "var(--color-papel-100)";
   const tinta = cor ? corTexto : "var(--color-azul-950)";
 
   return (
-    <div className="overflow-hidden rounded-xl border border-papel-200 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-lg border border-papel-200 bg-white">
       <button
         onClick={() => setAtivo((v) => !v)}
         aria-expanded={ativo}
@@ -144,7 +146,7 @@ export function Sanfona({ titulo, subtitulo, children, aberto = false, cor, corT
         style={{ backgroundColor: fundo }}
       >
         <span className="min-w-0">
-          <span className="block font-display text-xl leading-tight font-bold" style={{ color: tinta }}>
+          <span className="block font-display text-xl leading-tight font-semibold" style={{ color: tinta }}>
             {titulo}
           </span>
           {subtitulo && (
