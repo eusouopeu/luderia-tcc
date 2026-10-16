@@ -43,7 +43,7 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 - **Entorno: corrigir o que o parecer apontou** (`docs/parecer_entorno_B1.md` §5 e §7): exportar de novo o arquivo de 51 casas (sem o filtro de 50 km); `B1-b_resumo.py` escolher a coleta pela data do nome, não pela data de modificação. BRT de Curitiba e versão nos CSVs resolvidos no coletor 2026.10.15-4, à espera da recoleta.
 - **Sumarização do B2.**
 
-12. **Modelo financeiro v0, escolhas a confirmar:** cobrar couvert de todos os clientes (R14 = 100%; só 7 de 26 concorrentes com cardápio cobram), equipe de 7 CLT mais o sócio gestor, 12 mesas em 150 m² e 300 títulos. Cada uma muda o VPL e pode virar decisão no cap. 6.3 ou 7.
+12. **Modelo financeiro v0, escolhas a confirmar:** cobrar couvert de todos os clientes (R14 = 100%; couvert encontrado em 13 das 34 casas com cardápio, sem dado nas demais), equipe de 7 CLT mais o sócio gestor, 12 mesas em 150 m² e 300 títulos. Cada uma muda o VPL e pode virar decisão no cap. 6.3 ou 7.
 13. **Cap. 8, `[conferir]`:** anexo I para alimentos e bebidas (e não anexo II por preparo próprio), CNAE secundário 9329-8/99 para o couvert e o número da lei de uso do solo de Salvador; prazo de guarda dos dados de reserva (LGPD).
 
 ## Divergências entre documentos, ainda sem correção
@@ -76,7 +76,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 - **Cardápios no navegador (busca profunda de 16/10):** abrir com o `cardapio_coletor.user.js` o Goomer da São Jogue (`sao-jogue.goomer.app`, concorrente direta em Salvador) e o iFood do Game Of Boards; abrir à mão `garagemdonerd.com.br/cardapio/`, o botão Cardápio do `beacons.ai/nalaland` e a aba de cardápio do Restaurant Guru do Joyjoy. Coletivo Geek: decidir se preenche o formulário do PDF. Lista completa e próximo passo por casa em `cardapios/B1_cardapios_busca_profunda.csv`.
 
-- **Couvert subestimado?** A imprensa cita couvert na Ludus (R$ 34 a R$ 44), na Bodogami (R$ 20 a R$ 35) e na Encounter (a partir de R$ 35), que a planilha registra sem couvert (`cardapios/B1_couvert_fontes_secundarias.csv`). Decidir se essas fontes entram na cesta e na premissa R14 ("só 7 de 26 cobram"), que pode mudar a decisão de cobrar couvert no cap. 6.3.
+- **Couvert de imprensa a confirmar (autor confirmando):** a imprensa cita couvert na Ludus (R$ 34 a R$ 44), na Bodogami (R$ 20 a R$ 35) e na Encounter (a partir de R$ 35), sem couvert no cardápio coletado; na Ludus, a página inicial do site diz que não cobra (`cardapios/B1_couvert_fontes_secundarias.csv`). Confirmado, entra na planilha e no R13.
+- **R13 a recalcular:** depois de rodar no Mac `B1-b_resumo.py`, o modelo financeiro recalcula os percentis do couvert sobre as 13 casas com couvert encontrado (eram 6).
 
 - **Resumo do B1 desatualizado em relação à planilha de cardápios:** rodar no Mac `B1-b_resumo.py` e depois `B1-a_estatistica_descritiva.py` (dependem de arquivos fora do git); o resumo ainda conta 26 casas com cardápio.
 
