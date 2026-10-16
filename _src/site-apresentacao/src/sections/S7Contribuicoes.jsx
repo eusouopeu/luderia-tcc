@@ -13,7 +13,7 @@ export default function S7Contribuicoes() {
           {c.numeros.map((x, i) => (
             <div
               key={x.texto}
-              className="rounded-xl border p-6 shadow-sm"
+              className="rounded-lg border p-6"
               style={{
                 backgroundColor: cor(x.cor),
                 borderColor: cor(x.cor),

@@ -15,7 +15,7 @@ export default function S1Estrutura() {
       {/* QR code — acesso pelo celular */}
       <Reveal>
         <Cartao tom="areia" className="mb-10 flex flex-col items-center gap-4 p-5 sm:flex-row sm:gap-6">
-          <div className="shrink-0 rounded-lg bg-white p-2.5 shadow-sm">
+          <div className="shrink-0 rounded-lg bg-white p-2.5">
             <QRCodeSVG value={site.meta.url} size={104} bgColor="#ffffff" fgColor="var(--color-azul-950)" level="M" />
           </div>
           <div className="min-w-0 text-center sm:text-left">
@@ -49,7 +49,7 @@ export default function S1Estrutura() {
               >
                 <div
                   className={`rounded-lg border-l-4 px-5 py-4 transition-all duration-300 ${
-                    ativo ? "shadow-md" : "shadow-sm hover:shadow"
+                    ativo ? "shadow-sm" : "shadow-sm hover:shadow"
                   }`}
                   style={{
                     borderLeftColor: cor(c.cascata.cores[i] ?? "azul"),

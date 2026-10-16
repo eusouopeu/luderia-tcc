@@ -48,9 +48,9 @@ describe('resumoVisita', () => {
       ...base,
       visitas: [visita({ fim: '2026-10-18T17:00:00' })],
       fluxos: [
-        { id: 'f1', visitaId: 'v1', codigo: 'BV-1', tipo: 'entrada', hora: '14:10', pessoas: 4, criancas: 1 },
-        { id: 'f2', visitaId: 'v1', codigo: 'BV-2', tipo: 'entrada', hora: '14:30', pessoas: 2, criancas: 0 },
-        { id: 'f3', visitaId: 'v1', codigo: 'BV-1', tipo: 'saida', hora: '16:40', pessoas: 4, criancas: 1 },
+        { id: 'f1', visitaId: 'v1', codigo: 'BV-1', tipo: 'entrada', hora: '14:10', pessoas: 4, criancas: 1, estimado: false, destino: '', motivo: '' },
+        { id: 'f2', visitaId: 'v1', codigo: 'BV-2', tipo: 'entrada', hora: '14:30', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: '' },
+        { id: 'f3', visitaId: 'v1', codigo: 'BV-1', tipo: 'saida', hora: '16:40', pessoas: 4, criancas: 1, estimado: false, destino: '', motivo: '' },
       ],
     }
     e.visitas[0].notas = [
