@@ -1,4 +1,4 @@
-import { CATEGORIAS_PEDIDO, esperaPedido, minutos, permanenciaMin, type CategoriaPedido, type Estado } from './model'
+import { CATEGORIAS_PEDIDO, censurado, esperaPedido, minutos, MOTIVO_FECHAMENTO, permanenciaMin, type CategoriaPedido, type Estado } from './model'
 import { notasEmitidas } from './nfce'
 import { situacaoTimer } from './temporizador'
 
@@ -24,7 +24,9 @@ export function resumoVisita(e: Estado, visitaId: string) {
   const sai = fl.filter((f) => f.tipo === 'saida')
   const entraram = ent.reduce((s, f) => s + f.pessoas, 0)
   const sairam = sai.reduce((s, f) => s + f.pessoas, 0)
+  // saída no fechamento é censura (o grupo ficaria mais): fora da permanência média
   const permsFluxo = sai
+    .filter((s) => s.motivo !== MOTIVO_FECHAMENTO)
     .map((s) => {
       const en = ent.find((x) => x.codigo === s.codigo)
       const a = en && minutos(en.hora)
@@ -46,7 +48,10 @@ export function resumoVisita(e: Estado, visitaId: string) {
 
   // mesas
   const regs = e.registros.filter((r) => r.visitaId === visitaId)
-  const perms = regs.map((r) => permanenciaMin(r.entrada, r.saida)).filter((x): x is number => x !== null)
+  const perms = regs
+    .filter((r) => !censurado(r))
+    .map((r) => permanenciaMin(r.entrada, r.saida))
+    .filter((x): x is number => x !== null)
   const contJogos = new Map<string, number>()
   regs.forEach((r) => r.jogos.forEach((j) => contJogos.set(j, (contJogos.get(j) ?? 0) + 1)))
   const mesas = {

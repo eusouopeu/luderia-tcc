@@ -21,6 +21,9 @@ import { agoraHora, dataBr, dataIso, mascaraData, permanenciaMin, type Registro 
 
 type Rascunho = Omit<Registro, 'data'> & { dataTexto: string }
 
+/** Jogo visto sem certeza aparece com "?". */
+const rotuloJogo = (j: string, incertos: string[]) => (incertos.includes(j) ? `${j} ?` : j)
+
 /** Converte o rascunho em registro; campo inválido fica com o último valor válido. */
 function paraRegistro(r: Rascunho, ultimo: Registro): Registro {
   const { dataTexto, ...resto } = r
@@ -108,19 +111,19 @@ export function FormMesa({
             )}
           </div>
 
-          {modo === 'editar' ? <Edicao r={r} muda={muda} onSaida={() => (muda({ saida: agoraHora() }), setModo('resumo'))} /> : <Resumo r={r} />}
+          {modo === 'editar' ? <Edicao r={r} muda={muda} onSaida={() => (muda({ saida: agoraHora(), saidaTipo: 'grupo' }), setModo('resumo'))} /> : <Resumo r={r} />}
 
           <Rotulo icone={<ListBulletIcon className="size-5" />}>Jogos</Rotulo>
           {modo === 'editar' ? (
             <button onClick={() => setEscolher(true)} className="flex min-h-11 w-full items-center gap-2 rounded-lg bg-papel px-3 py-2 text-left">
               <span className="flex flex-1 flex-wrap gap-2">
-                {r.jogos.length ? r.jogos.map((j) => <Chip key={j}>{j}</Chip>) : <span className="text-neutro-400">Escolher jogos…</span>}
+                {r.jogos.length ? r.jogos.map((j) => <Chip key={j}>{rotuloJogo(j, r.jogosIncertos)}</Chip>) : <span className="text-neutro-400">Escolher jogos…</span>}
               </span>
               <ChevronDownIcon className="size-6 shrink-0" />
             </button>
           ) : (
             <div className="flex flex-wrap gap-2">
-              {r.jogos.length ? r.jogos.map((j) => <Chip key={j}>{j}</Chip>) : <span className="pl-2.5 text-neutro-500">—</span>}
+              {r.jogos.length ? r.jogos.map((j) => <Chip key={j}>{rotuloJogo(j, r.jogosIncertos)}</Chip>) : <span className="pl-2.5 text-neutro-500">—</span>}
             </div>
           )}
 
@@ -150,7 +153,14 @@ export function FormMesa({
         </div>
       </div>
       {escolher && (
-        <SeletorJogos selecionados={r.jogos} destaque={acervo} onFechar={() => setEscolher(false)} onMudar={(jogos) => muda({ jogos })} />
+        <SeletorJogos
+          selecionados={r.jogos}
+          incertos={r.jogosIncertos}
+          destaque={acervo}
+          onFechar={() => setEscolher(false)}
+          onMudar={(jogos) => muda({ jogos, jogosIncertos: r.jogosIncertos.filter((j) => jogos.includes(j)) })}
+          onIncertos={(jogosIncertos) => muda({ jogosIncertos })}
+        />
       )}
     </div>
   )
@@ -189,7 +199,7 @@ function Edicao({ r, muda, onSaida }: { r: Rascunho; muda: (p: Partial<Rascunho>
           <div className="relative w-28 shrink-0">
             <span className="absolute -top-5 left-0 text-sm font-bold">SAÍDA</span>
             <input type="time" value={r.saida} onChange={(e) => muda({ saida: e.target.value })} className={campo} />
-            <button onClick={() => muda({ saida: null })} className="absolute -right-2 -top-2 rounded-full bg-neutro-800 p-0.5 text-neutro-50" aria-label="Desfazer saída">
+            <button onClick={() => muda({ saida: null, saidaTipo: '' })} className="absolute -right-2 -top-2 rounded-full bg-neutro-800 p-0.5 text-neutro-50" aria-label="Desfazer saída">
               <XMarkIcon className="size-4" />
             </button>
           </div>
@@ -198,7 +208,17 @@ function Edicao({ r, muda, onSaida }: { r: Rascunho; muda: (p: Partial<Rascunho>
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <Rotulo icone={<UserGroupIcon className="size-5" />}>Pessoas</Rotulo>
+          <Rotulo icone={<UserGroupIcon className="size-5" />}>
+            Pessoas
+            <button
+              onClick={() => muda({ pessoasEstimado: !r.pessoasEstimado })}
+              aria-pressed={r.pessoasEstimado}
+              title="Número estimado (não deu para contar)"
+              className={`ml-auto rounded px-1.5 text-[12px] normal-case ${r.pessoasEstimado ? 'bg-alerta-100 text-alerta-700' : 'text-neutro-600'}`}
+            >
+              ≈ estimado
+            </button>
+          </Rotulo>
           <Contador valor={r.pessoas} onChange={(v) => muda({ pessoas: v })} />
         </div>
         <div>
@@ -241,10 +261,11 @@ function Resumo({ r }: { r: Rascunho }) {
         <Valor icone={<ClockIcon className="size-5" />} rotulo="Entrada">
           {r.entrada || '—'}
         </Valor>
-        <Valor icone={<ClockIcon className="size-5" />} rotulo="Saída">
+        <Valor icone={<ClockIcon className="size-5" />} rotulo={r.saidaTipo === 'fechamento' ? 'Saída (fechamento)' : 'Saída'}>
           {r.saida ?? '—'}
         </Valor>
-        <Valor icone={<UserGroupIcon className="size-5" />} rotulo="Pessoas">
+        <Valor icone={<UserGroupIcon className="size-5" />} rotulo={r.pessoasEstimado ? 'Pessoas (estimado)' : 'Pessoas'}>
+          {r.pessoasEstimado && '≈'}
           {r.pessoas}
         </Valor>
         <Valor icone={<UserGroupIcon className="size-5" />} rotulo="Crianças">

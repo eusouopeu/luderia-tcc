@@ -72,7 +72,7 @@ export default function S4Indicadores() {
               key={d}
               onClick={() => setDim(d)}
               className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm font-semibold transition-all ${
-                ativo ? "border-transparent shadow-sm" : "border-papel-200 bg-white text-azul-800 hover:border-rosa-400"
+                ativo ? "border-transparent" : "border-papel-200 bg-white text-azul-800 hover:border-rosa-400"
               }`}
               style={
                 ativo
@@ -93,7 +93,7 @@ export default function S4Indicadores() {
       </div>
 
       {/* Tabela em telas largas */}
-      <div className="hidden overflow-x-auto rounded-xl border border-papel-200 lg:block">
+      <div className="hidden overflow-x-auto rounded-lg border border-papel-200 lg:block">
         <table className="w-full border-collapse text-sm">
           <thead>
             <tr className="bg-azul-900 text-left text-papel-50">

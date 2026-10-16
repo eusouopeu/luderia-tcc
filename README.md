@@ -14,7 +14,7 @@ Todo número do texto pode ser gerado de novo por um script deste repositório. 
 | `textos/instrumentos/` | Roteiro de observação, livro de códigos da análise de conteúdo e quadro de itens |
 | `_instrucoes/` | Instruções por capítulo (ver [CLAUDE.md](CLAUDE.md)) |
 | `_src/[Bn] Nome/<Objeto>/` | Scripts de um objeto do bloco (ex.: `Google Places (Negócios)`, `Instagram`): `collect/`, `build/`, `analise/`, `webscripts/` (Tampermonkey), `logs/` (fora do git) e `outros/` (auxiliares). Convenções de nomes em [`_src/dicionario.md`](_src/dicionario.md) |
-| `_src/extras/` | Utilitários gerais: log comum, carregadores do Tampermonkey, `.docx` do cronograma e do projeto, cópia para o vault |
+| `_src/extras/` | Utilitários gerais: log comum, carregadores do Tampermonkey, `.docx` do cronograma e do projeto, cópia para o vault, leitura offline dos bancos do Notion (`ler_notion_offline.py`) |
 | `dados/[Bn] Nome/_dados-brutos/` | Dados brutos (parte não publicada: ver `.gitignore`) |
 | `dados/[Bn] Nome/` | Tabelas e gráficos tratados |
 | `bibliografia/` | PDFs de leitura, lista de leitura e referências das bases públicas |

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { acervoVazio, dataIso, estadoInicial, normalizar, novasMesas, paraCsv, permanenciaMin, proximoCodigo, type Estado, type Fluxo } from './model'
+import { acervoVazio, arquivosCsv, dataIso, estadoInicial, fecharCasa, MOTIVO_FECHAMENTO, normalizar, novasMesas, paraCsv, permanenciaMin, proximoCodigo, type Estado, type Fluxo } from './model'
 
 describe('permanenciaMin', () => {
   it('conta os minutos entre entrada e saída', () => {
@@ -33,10 +33,12 @@ describe('paraCsv', () => {
         {
           id: 'r1', visitaId: 'v1', unidadeId: 'u1', mesaId: 'm1', data: '2026-10-18', aniversario: true,
           entrada: '14:05', saida: '16:35', pessoas: 4, criancas: 2, instrutor: 4, jogos: ['Dixit'], pedidos: [], notas: 'jogo "Dixit"; ótimo',
+          pessoasEstimado: false, saidaTipo: 'grupo', fluxos: [], jogosIncertos: [],
         },
         {
           id: 'r2', visitaId: 'v1', unidadeId: 'u1', mesaId: 'm1', data: '2026-10-18', aniversario: false,
           entrada: '16:50', saida: null, pessoas: 2, criancas: 0, instrutor: 0, jogos: [], pedidos: [], notas: '',
+          pessoasEstimado: false, saidaTipo: '', fluxos: [], jogosIncertos: [],
         },
       ],
     }
@@ -63,8 +65,54 @@ describe('novasMesas', () => {
 
 describe('proximoCodigo', () => {
   it('não repete código depois de apagar um grupo do meio', () => {
-    const f = (codigo: string): Fluxo => ({ id: codigo, visitaId: 'v', codigo, tipo: 'entrada', hora: '14:00', pessoas: 2, criancas: 0 })
+    const f = (codigo: string): Fluxo => ({ id: codigo, visitaId: 'v', codigo, tipo: 'entrada', hora: '14:00', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: '' })
     expect(proximoCodigo([f('BV-1'), f('BV-3')], 'v', 'BV')).toBe('BV-4')
     expect(proximoCodigo([], 'v', 'BV')).toBe('BV-1')
+  })
+})
+
+describe('fecharCasa e exportação por visita', () => {
+  const base = (): Estado => ({
+    ...estadoInicial(),
+    config: { ...estadoInicial().config, observador: 'POV1' },
+    unidades: [{ id: 'u1', nome: 'Bela Vista', sigla: 'BV', acervo: acervoVazio(), mesas: [{ id: 'm1', nome: 'Mesa 1' }] }],
+    visitas: normalizar({ visitas: [{ id: 'v1', unidadeId: 'u1', inicio: '2026-10-17T18:30:00', fim: null, observador: 'POV1', papel: 'porta e mesas' }] as Estado['visitas'] }).visitas,
+    registros: [
+      {
+        id: 'r1', visitaId: 'v1', unidadeId: 'u1', mesaId: 'm1', data: '2026-10-17', aniversario: false, entrada: '19:00', saida: null, saidaTipo: '',
+        pessoas: 3, criancas: 0, pessoasEstimado: true, fluxos: ['BV-1'], instrutor: 0, jogos: ['Dixit', 'Dobble'], jogosIncertos: ['Dobble'], notas: '', pedidos: [],
+      },
+    ],
+    fluxos: [
+      { id: 'f1', visitaId: 'v1', codigo: 'BV-1', tipo: 'entrada', hora: '19:00', pessoas: 3, criancas: 0, estimado: false, destino: 'mesa:m1', motivo: '' },
+      { id: 'f2', visitaId: 'v1', codigo: 'BV-2', tipo: 'entrada', hora: '19:10', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: '' },
+      { id: 'f3', visitaId: 'v1', codigo: 'BV-2', tipo: 'saida', hora: '19:12', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: 'Lotado' },
+    ],
+  })
+
+  it('fecha mesas e porta como saída por fechamento (censura)', () => {
+    const r = fecharCasa(base(), 'v1', '21:57')
+    expect(r.mesas).toBe(1)
+    expect(r.porta).toBe(1)
+    expect(r.estado.registros[0]).toMatchObject({ saida: '21:57', saidaTipo: 'fechamento' })
+    expect(r.estado.fluxos.filter((f) => f.motivo === MOTIVO_FECHAMENTO).map((f) => f.codigo)).toEqual(['BV-1'])
+    const linha = paraCsv(r.estado).replace(/^﻿/, '').trim().split('\r\n')[1].split(';')
+    const cab = paraCsv(r.estado).replace(/^﻿/, '').split('\r\n')[0].split(';')
+    expect(linha[cab.indexOf('censurada')]).toBe('sim')
+    expect(linha[cab.indexOf('saida_tipo')]).toBe('fechamento')
+    expect(linha[cab.indexOf('pessoas_estimado')]).toBe('sim')
+    expect(linha[cab.indexOf('jogos_incertos')]).toBe('Dobble')
+  })
+
+  it('exporta a visita com visita_id, observador e nomes do pipeline', () => {
+    const arqs = arquivosCsv(base(), 'u1', 'v1')
+    expect(arqs.map((a) => a.nome)).toContain('2026-10-17_SJBV_POV1_contagem_fluxo.csv')
+    const fluxo = arqs.find((a) => a.nome.endsWith('fluxo.csv'))!.conteudo.replace(/^﻿/, '').trim().split('\r\n')
+    const cab = fluxo[0].split(';')
+    expect(cab.slice(0, 4)).toEqual(['visita_id', 'observador', 'versao_app', 'papel'])
+    const l1 = fluxo[1].split(';')
+    expect(l1[cab.indexOf('visita_id')]).toBe('2026-10-17_SJBV')
+    expect(l1[cab.indexOf('destino')]).toBe('Mesa 1')
+    expect(fluxo[3].split(';')[cab.indexOf('motivo')]).toBe('Lotado')
   })
 })

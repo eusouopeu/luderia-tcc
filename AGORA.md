@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 16/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -22,7 +22,11 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 - **Cap. 2 (referencial teórico):** rascunho pronto em 15/10 (`textos/capitulos/2_referencial_teorico.md`, 8,3/10 páginas). Falta conferir edição e página dos livros `[AV]` na Minha Biblioteca da UFBA (`bibliografia/bibliografia-v2/procurar-manualmente.md`).
 
-- **Estatística descritiva do B1** (15/10): geral, por metrópole e por região em `dados/[B1]…/estabelecimentos/4_estatistica_descritiva/` e nas abas 08 a 10 do site (`_src/site-apresentacao`, publicado em 15/10; publicar de novo com `pnpm run deploy` quando os dados mudarem). Rodar de novo `B1-a_estatistica_descritiva.py` depois de cada atualização do `B1_resumo_estabelecimentos.xlsx`.
+- **Estatística descritiva do B1** (15/10): geral, por metrópole e por região em `dados/[B1]…/estabelecimentos/4_estatistica_descritiva/` e nas abas 08 a 10 do site (`_src/site-apresentacao`, publicado em 15/10; visual editorial novo publicado em 15/10; publicar de novo com `pnpm run deploy` quando os dados mudarem). Rodar de novo `B1-a_estatistica_descritiva.py` depois de cada atualização do `B1_resumo_estabelecimentos.xlsx`.
+
+- **Contagem do B3, Bela Vista** (visita de sábado, 10/10, 19h às 22h): CSVs do app guardados em `dados/[B3]…/_dados-brutos/app/originais/2026-10-10_SJBV/` e consolidados por `B3-b_importar_app.py`, com descartes e correções em `outros/` do objeto. Só o POV1 vale (o POV2 foi ignorado a pedido do autor). Resultado provisório: 38 pessoas entraram em 14 grupos (11,4 por hora), além das 24 que já estavam dentro; permanência média de 99 min na porta e 116 min nas mesas (9 grupos). NFC-e final (nº 77977) transcrita da foto; falta a inicial.
+
+- **App de observação 2.4.0** (16/10): CSVs com visita, observador e versão em todas as tabelas, entrada da porta ligada à mesa, motivo da saída rápida, "Fechamento da casa", posição e pausas do observador, condições do dia em lista, marcas de estimado e incerto e roteiro da visita no Temporizador. APK `ObservacaoLuderia-2026.10.16-1.apk`: antes de instalar por cima, fazer backup em Ajustes (o APK da nuvem tem outra assinatura de depuração e pode exigir desinstalar). Antes de 18/10, preencher o código do observador em Ajustes de cada celular.
 
 - **Status da coleta no Notion** ("Luderias – Status da coleta", 16/10): 54 casas recalculadas com o PR #10; em cada linha, o que falta e como fechar. Lacunas que restam: acervo sem lista (38), porte de shopping no entorno (25), VLT/BRT de Curitiba (6), cardápio parcial ou sem preço (13) e Instagram (Ludus, LudoCafé, Dominaria). Rodar `B1-b_resumo.py` para levar ao resumo os perfis de 15/10 das 5 casas novas.
 
@@ -30,9 +34,11 @@ Atualizado em 15/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 - **Cap. 8 (jurídico):** rascunho em 15/10 (`textos/capitulos/8_aspectos_juridicos.md`): SLU, CNAE 5611-2/05, Simples (A&B no anexo I, couvert e eventos no anexo III), licenças em Salvador, LGPD, locação, jogos e marca. Normas `[AV]` e três `[conferir]`.
 
+- **Notion offline** (15/10): `python3 _src/extras/ler_notion_offline.py` lista os bancos do cache do app; com o nome do banco e `--saida`, exporta CSV. O cache é parcial (B - Comentários: 889 de 1.628 linhas) e não traz fórmulas; serve para consulta, não como fonte.
+
 ## Próximos 3 passos
 
-1. Preparar as visitas de retorno de **domingo, 18/10** (app de observação e `textos/instrumentos/roteiro_observacao_sao_jogue.md`): permanência e ocupação são as premissas críticas do modelo financeiro e hoje estão só em N6.
+1. Preparar as visitas de retorno de **domingo, 18/10**: tirar as dúvidas da visita de 10/10 com os observadores (pendências do B3) e reforçar no roteiro o encerramento da visita no app, a NFC-e no início e no fim e as contagens de mesas a cada 30 min.
 2. Trocar as premissas N6 de custo e investimento por cotações (aluguel do ponto, reforma, contador, utilidades) e rodar o modelo de novo.
 3. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
 

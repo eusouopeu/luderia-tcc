@@ -2,7 +2,9 @@
 Bloco B3 - análise das visitas registradas no app de observação (_src/app-observacao/).
 
 Entrada: os CSVs exportados pelo app (Ajustes › Exportar, ou o botão de envio da
-unidade), copiados para `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/`:
+unidade), consolidados por build/B3-b_importar_app.py em
+`dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/`, com as colunas
+`visita_id` e `observador` (POV1, POV2):
   contagem_grupos_mesa.csv, contagem_fluxo.csv, contagem_rodadas.csv,
   contagem_acustica.csv, contagem_visitas.csv, contagem_precos.csv,
   contagem_unidades.csv, contagem_pedidos.csv, contagem_medidas.csv,
@@ -10,7 +12,10 @@ unidade), copiados para `dados/[B3] Contagem direta de ocupacao/_dados-brutos/ap
 Separador ";" com BOM (o app grava assim para o Excel).
 
 Saídas em `dados/[B3] Contagem direta de ocupacao/`:
-  contagem_resumo_visitas.csv  - uma linha por visita: pessoas por hora (porta),
+  contagem_resumo_visitas.csv  - uma linha por observador de cada visita e uma
+      linha `observador = media` por visita, com a média dos observadores
+      (cada observador com registro válido conta uma vez; tabela ausente ou
+      descartada não entra na média): pessoas por hora (porta),
       tamanho do grupo, permanência (mesas e porta, com contagem de censurados),
       ocupação média das mesas nas contagens, notas emitidas na visita e pessoas
       por nota, pedidos por grupo e espera média (pedido → chegada) por categoria.
@@ -20,9 +25,15 @@ Saídas em `dados/[B3] Contagem direta de ocupacao/`:
 
 Regras (_instrucoes/4_metodologia.md, Bloco B3):
   - Taxas por hora observada: a duração vem de visita_inicio/visita_fim menos o
-    tempo pausado no temporizador.
+    tempo pausado no temporizador. Sem visita_fim (o observador não encerrou a
+    visita no app), o fim é o maior entre início + duração prevista e o último
+    horário registrado pelo observador; a coluna `fim_estimado` marca o caso.
   - Permanência média só com grupos de entrada e saída vistas; os censurados
-    (sem saída) são contados à parte, não imputados.
+    (sem saída, ou com saída forçada pelo fechamento da casa: `censurada = sim`
+    nas mesas, `motivo = Fechamento` na porta) são contados à parte, não imputados.
+  - Desistências na porta: saídas com motivo "Lotado" ou "Só olhou" (o app
+    pergunta o motivo quando o grupo sai até 10 min depois de entrar, sem mesa).
+    Continuam em pessoas_entraram; a coluna à parte mostra quantas desistiram.
   - Espera dos pedidos: só pedidos com chegada registrada; os pendentes são
     contados à parte (censurados), não imputados.
   - Pessoas por nota = pessoas que entraram pela porta ÷ notas emitidas durante
@@ -81,8 +92,6 @@ def resumo_visitas() -> pd.DataFrame:
     for _, v in visitas.iterrows():
         chave = (v["unidade"], v["visita_inicio"])
         ini = pd.Timestamp(v["visita_inicio"])
-        fim = pd.Timestamp(v["visita_fim"]) if v["visita_fim"] else pd.NaT
-        horas = ((fim - ini).total_seconds() / 60 - float(v["pausado_min"] or 0)) / 60 if pd.notna(fim) else float("nan")
 
         g = grupos[(grupos["unidade"] == chave[0]) & (grupos["visita_inicio"] == chave[1])] if not grupos.empty else grupos
         f = fluxo[(fluxo["unidade"] == chave[0]) & (fluxo["visita_inicio"] == chave[1])] if not fluxo.empty else fluxo
@@ -95,12 +104,32 @@ def resumo_visitas() -> pd.DataFrame:
             esperas[f"espera_{cat}_media_min"] = round(e.mean(), 1) if len(e) else float("nan")
             esperas[f"pedidos_{cat}"] = int((p["categoria"] == cat).sum()) if not p.empty else 0
 
+        # duração: fim registrado ou, sem ele, o maior entre o previsto e o último registro
+        fim_estimado = not v["visita_fim"]
+        if not fim_estimado:
+            fim = pd.Timestamp(v["visita_fim"])
+        else:
+            horarios = [minutos(h) for h in pd.concat([
+                f["hora"] if not f.empty else pd.Series(dtype=str),
+                g["entrada"] if not g.empty else pd.Series(dtype=str),
+                g["saida"] if not g.empty else pd.Series(dtype=str),
+            ]) if h]
+            ultimo = max(horarios) if horarios else float("nan")
+            previsto = ini + pd.Timedelta(minutes=float(v["duracao_prevista_min"] or 0))
+            fim = previsto
+            if pd.notna(ultimo):
+                visto = ini.normalize() + pd.Timedelta(minutes=ultimo)
+                fim = max(previsto, visto)
+        horas = ((fim - ini).total_seconds() / 60 - float(v["pausado_min"] or 0)) / 60
+
         # porta
         ent = f[f["tipo"] == "entrada"] if not f.empty else f
         sai = f[f["tipo"] == "saida"] if not f.empty else f
-        entraram = num(ent["pessoas"]).sum() if not ent.empty else 0
+        entraram = num(ent["pessoas"]).sum() if not f.empty else float("nan")
+        motivo = sai["motivo"] if "motivo" in sai.columns else pd.Series("", index=sai.index)
+        desist = sai[motivo.isin(["Lotado", "Só olhou"])]
         perm_porta = []
-        for _, s in sai.iterrows():
+        for _, s in sai[motivo != "Fechamento"].iterrows():
             e = ent[ent["codigo"] == s["codigo"]]
             if not e.empty:
                 d = minutos(s["hora"]) - minutos(e.iloc[0]["hora"])
@@ -108,8 +137,8 @@ def resumo_visitas() -> pd.DataFrame:
                     perm_porta.append(d)
 
         # mesas
-        perm_mesa = num(g["permanencia_min"]).dropna() if not g.empty else pd.Series(dtype=float)
-        pessoas_mesa = num(g["pessoas"]).sum() if not g.empty else 0
+        perm_mesa = num(g.loc[g["censurada"] != "sim", "permanencia_min"]).dropna() if not g.empty else pd.Series(dtype=float)
+        pessoas_mesa = num(g["pessoas"]).sum() if not g.empty else float("nan")
 
         # notas
         emitidas = float("nan")
@@ -122,21 +151,26 @@ def resumo_visitas() -> pd.DataFrame:
         ocup = num(r["mesas_ocupadas"]) if not r.empty else pd.Series(dtype=float)
 
         linhas.append({
+            "visita_id": v["visita_id"],
+            "observador": v["observador"],
             "unidade": chave[0],
             "visita_inicio": chave[1],
+            "fim_estimado": "sim" if fim_estimado else "nao",
             "horas_observadas": round(horas, 2),
-            "grupos_porta": len(ent),
+            "grupos_porta": len(ent) if not f.empty else float("nan"),
             "pessoas_entraram": entraram,
             "pessoas_por_hora": round(entraram / horas, 2) if horas and horas > 0 and not f.empty else float("nan"),
             "tamanho_grupo_porta": round(num(ent["pessoas"]).mean(), 2) if not ent.empty else float("nan"),
             "permanencia_porta_media_min": round(sum(perm_porta) / len(perm_porta), 1) if perm_porta else float("nan"),
-            "censurados_porta": len(ent) - len(perm_porta),
-            "grupos_mesa": len(g),
+            "censurados_porta": len(ent) - len(perm_porta) if not f.empty else float("nan"),
+            "desistencias_porta": len(desist) if not f.empty else float("nan"),
+            "pessoas_desistiram": num(desist["pessoas"]).sum() if not f.empty else float("nan"),
+            "grupos_mesa": len(g) if not g.empty else float("nan"),
             "pessoas_mesa": pessoas_mesa,
             "tamanho_grupo_mesa": round(num(g["pessoas"]).mean(), 2) if not g.empty else float("nan"),
             "permanencia_mesa_media_min": round(perm_mesa.mean(), 1) if len(perm_mesa) else float("nan"),
             "permanencia_mesa_mediana_min": perm_mesa.median() if len(perm_mesa) else float("nan"),
-            "censurados_mesa": int((g["censurada"] == "sim").sum()) if not g.empty else 0,
+            "censurados_mesa": int((g["censurada"] == "sim").sum()) if not g.empty else float("nan"),
             "contagens": len(r),
             "ocupacao_media_pct": round(100 * ocup.mean() / n_mesas, 1) if len(ocup) and n_mesas else float("nan"),
             "pico_mesas_ocupadas": ocup.max() if len(ocup) else float("nan"),
@@ -149,12 +183,26 @@ def resumo_visitas() -> pd.DataFrame:
             "cobranca": v["cobranca"],
             "condicoes": v["condicoes"],
         })
-    return pd.DataFrame(linhas)
+    r = pd.DataFrame(linhas)
+    # média dos observadores de cada visita (NaN = tabela ausente ou descartada, fora da média)
+    medias = []
+    for visita_id, rv in r.groupby("visita_id", sort=False):
+        m = rv.mean(numeric_only=True).round(2).to_dict()
+        m.update({"visita_id": visita_id, "observador": "media", "unidade": rv["unidade"].iloc[0],
+                  "visita_inicio": rv["visita_inicio"].min(),
+                  "fim_estimado": "sim" if (rv["fim_estimado"] == "sim").any() else "nao",
+                  "cobranca": "", "condicoes": ""})
+        medias.append(m)
+    return pd.concat([r, pd.DataFrame(medias)], ignore_index=True)[r.columns]
 
 
 def notas_intervalo() -> pd.DataFrame:
     """Notas entre a visita sorteada (primeira) e a de retorno (segunda) de cada unidade."""
     visitas = ler("contagem_visitas.csv")
+    # uma linha por visita: a do observador que registrou a NFC-e (os dois leem a mesma nota)
+    visitas = (visitas.assign(_com_nota=visitas["nfce_inicio_numero"] != "")
+               .sort_values(["_com_nota", "visita_inicio"], ascending=[False, True])
+               .drop_duplicates("visita_id"))
     linhas = []
     for unidade, vs in visitas.sort_values("visita_inicio").groupby("unidade"):
         if len(vs) < 2:

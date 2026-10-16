@@ -28,7 +28,7 @@ export default function S5Modelo() {
               key={m.oe}
               onClick={() => setSel(i)}
               className={`cursor-pointer rounded-lg border-2 px-3 py-3 text-left transition-all ${
-                ativo ? "shadow-md" : "border-papel-200 bg-white hover:border-rosa-400"
+                ativo ? "shadow-sm" : "border-papel-200 bg-white hover:border-rosa-400"
               }`}
               style={ativo ? { borderColor: corBloco(m.bloco), backgroundColor: "#fff" } : undefined}
             >
@@ -81,7 +81,7 @@ export default function S5Modelo() {
       <Reveal>
         <h2 className="mt-12 font-display text-2xl font-bold text-azul-800">{c.matriz.titulo}</h2>
       </Reveal>
-      <div className="mt-4 overflow-x-auto rounded-xl border border-papel-200">
+      <div className="mt-4 overflow-x-auto rounded-lg border border-papel-200">
         <table className="w-full min-w-[46rem] border-collapse text-sm">
           <thead>
             <tr className="bg-azul-900 text-left text-papel-50">

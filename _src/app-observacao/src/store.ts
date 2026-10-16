@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { agoraIso, estadoInicial, normalizar, novoId, type Estado, type Visita } from './domain/model'
+import { agoraHora, agoraIso, estadoInicial, fichaVazia, normalizar, novoId, type Estado, type Visita } from './domain/model'
 import { abrirRepo, type Repo } from './storage/repo'
 import { agendarBackup } from './storage/backup'
 import { agendarLembretes } from './storage/lembretes'
@@ -43,7 +43,7 @@ export const useLoja = create<Loja>((set, get) => ({
     const { config } = get().estado
     const v: Visita = {
       id: novoId(), unidadeId, inicio: agoraIso(), fim: null, duracaoMin: config.duracaoMin, intervaloMin: config.intervaloMin,
-      pausadoMs: 0, pausaDesde: null, ficha: { cobranca: '', valorCobranca: '', precos: [], condicoes: [], observacoes: '' }, notas: [],
+      pausadoMs: 0, pausaDesde: null, pausas: [], observador: get().estado.config.observador, papel: '', posicao: '', ficha: fichaVazia(), notas: [],
     }
     get().mudar((e) => ({ ...e, visitas: [...e.visitas, v] }))
     void agendarLembretes(v, nomeU(get().estado, v))
@@ -56,7 +56,8 @@ export const useLoja = create<Loja>((set, get) => ({
       visitas: e.visitas.map((v) => {
         if (v.id !== visitaId) return v
         const extra = v.pausaDesde ? Date.now() - new Date(v.pausaDesde).getTime() : 0
-        return { ...v, fim: agora, pausaDesde: null, pausadoMs: v.pausadoMs + extra }
+        const pausas = v.pausaDesde ? v.pausas.map((p) => (p.ate === null ? { ...p, ate: agora.slice(11, 16) } : p)) : v.pausas
+        return { ...v, fim: agora, pausaDesde: null, pausadoMs: v.pausadoMs + extra, pausas }
       }),
     }))
     void agendarLembretes(null)
@@ -66,8 +67,14 @@ export const useLoja = create<Loja>((set, get) => ({
       ...e,
       visitas: e.visitas.map((v) => {
         if (v.id !== visitaId) return v
-        if (v.pausaDesde) return { ...v, pausaDesde: null, pausadoMs: v.pausadoMs + (Date.now() - new Date(v.pausaDesde).getTime()) }
-        return { ...v, pausaDesde: agoraIso() }
+        if (v.pausaDesde)
+          return {
+            ...v,
+            pausaDesde: null,
+            pausadoMs: v.pausadoMs + (Date.now() - new Date(v.pausaDesde).getTime()),
+            pausas: v.pausas.map((p) => (p.ate === null ? { ...p, ate: agoraHora() } : p)),
+          }
+        return { ...v, pausaDesde: agoraIso(), pausas: [...v.pausas, { de: agoraHora(), ate: null }] }
       }),
     }))
     const v = get().estado.visitas.find((x) => x.id === visitaId)!

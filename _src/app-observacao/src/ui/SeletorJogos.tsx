@@ -11,9 +11,11 @@ const sem = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCas
 export function SeletorJogos({
   titulo = 'Jogos',
   selecionados,
+  incertos = [],
   destaque = [],
   onFechar,
   onMudar,
+  onIncertos,
 }: {
   titulo?: string
   selecionados: string[]
@@ -21,6 +23,9 @@ export function SeletorJogos({
   destaque?: string[]
   onFechar: () => void
   onMudar: (lista: string[]) => void
+  /** jogos marcados sem certeza (vistos de longe, caixa não identificada) */
+  incertos?: string[]
+  onIncertos?: (lista: string[]) => void
 }) {
   const [busca, setBusca] = useState('')
   const lista = useMemo(() => {
@@ -49,9 +54,10 @@ export function SeletorJogos({
       <ul className="divide-y divide-neutro-100">
         {lista.slice(0, 120).map((j) => {
           const on = selecionados.includes(j.n)
+          const incerto = incertos.includes(j.n)
           return (
-            <li key={j.n}>
-              <button onClick={() => alternar(j.n)} className="flex w-full items-center gap-3 py-2.5 text-left">
+            <li key={j.n} className="flex items-center">
+              <button onClick={() => alternar(j.n)} className="flex flex-1 items-center gap-3 py-2.5 text-left">
                 <span className={`grid size-6 shrink-0 place-items-center rounded border ${on ? 'border-caneta-600 bg-caneta-600 text-sobre' : 'border-neutro-300'}`}>
                   {on && <CheckIcon className="size-4 stroke-[3]" />}
                 </span>
@@ -65,6 +71,17 @@ export function SeletorJogos({
                   </span>
                 )}
               </button>
+              {on && onIncertos && (
+                <button
+                  onClick={() => onIncertos(incerto ? incertos.filter((x) => x !== j.n) : [...incertos, j.n])}
+                  aria-pressed={incerto}
+                  aria-label={`${j.n}: sem certeza`}
+                  title="Sem certeza (visto de longe)"
+                  className={`ml-2 h-8 rounded px-2 text-sm font-bold ${incerto ? 'bg-alerta-100 text-alerta-700' : 'text-neutro-400'}`}
+                >
+                  ?
+                </button>
+              )}
             </li>
           )
         })}

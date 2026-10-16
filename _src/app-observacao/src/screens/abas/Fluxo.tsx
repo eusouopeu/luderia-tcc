@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
 import { ChevronDownIcon, TrashIcon } from '@heroicons/react/24/outline'
 import { useLoja } from '../../store'
-import { Fab, ContadorH } from '../../ui/comum'
+import { Fab, ContadorH, Folha, Opcao } from '../../ui/comum'
+import { Ajuda } from '../../ui/Ajuda'
 import { avisar } from '../../ui/aviso'
-import { agoraHora, gruposDentro, novoId, pessoasDentro, proximoCodigo, visitaAtiva, type Fluxo, type Unidade } from '../../domain/model'
+import {
+  agoraHora, destinoMesa, DESTINOS, gruposDentro, mesaDoDestino, minutos, MOTIVOS_SAIDA, novoId, pessoasDentro, proximoCodigo, registroAberto,
+  SAIDA_RAPIDA_MIN, visitaAtiva, type Estado, type Fluxo, type Registro, type Unidade,
+} from '../../domain/model'
 
 const numero = (codigo: string) => Number(/-(\d+)$/.exec(codigo)?.[1] ?? 0)
 /** ordem de chegada: hora da entrada, depois o número do código */
@@ -14,6 +18,8 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
   const { estado, mudar } = useLoja()
   const [novoId_, setNovo] = useState<string | null>(null)
   const [verSaidas, setVerSaidas] = useState(false)
+  /** código do grupo cuja saída pede motivo */
+  const [motivoDe, setMotivoDe] = useState<string | null>(null)
   const visita = visitaAtiva(estado, unidade.id)
   const fl = visita ? estado.fluxos.filter((f) => f.visitaId === visita.id) : []
   const entradas = fl.filter((f) => f.tipo === 'entrada')
@@ -35,6 +41,7 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
     const v = visitaAtiva(useLoja.getState().estado, unidade.id)!
     const f: Fluxo = {
       id: novoId(), visitaId: v.id, codigo: proximoCodigo(useLoja.getState().estado.fluxos, v.id, unidade.sigla), tipo: 'entrada', hora: agoraHora(), pessoas: 2, criancas: 0,
+      estimado: false, destino: '', motivo: '',
     }
     mudar((e) => ({ ...e, fluxos: [...e.fluxos, f] }))
     setNovo(f.id)
@@ -59,11 +66,67 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
     mudar((e) => ({
       ...e,
       fluxos: sim
-        ? [...e.fluxos, { ...en, id: novoId(), tipo: 'saida', hora: agoraHora() }]
+        ? [...e.fluxos, { ...en, id: novoId(), tipo: 'saida', hora: agoraHora(), destino: '', motivo: '' }]
         : e.fluxos.filter((f) => !(f.visitaId === en.visitaId && f.codigo === en.codigo && f.tipo === 'saida')),
     }))
     navigator.vibrate?.(40)
-    if (sim) avisar(`Saída de ${en.codigo} às ${agoraHora()}.`, { rotulo: 'Desfazer', fazer: () => sair(en, false) })
+    if (!sim) return
+    // saída logo depois da entrada, sem ter ido a uma mesa: pergunta o motivo (lotado, só olhou…)
+    const rapida = (minutos(agoraHora()) ?? 0) - (minutos(en.hora) ?? 0) <= SAIDA_RAPIDA_MIN
+    if (rapida && !mesaDoDestino(en.destino)) setMotivoDe(en.codigo)
+    else avisar(`Saída de ${en.codigo} às ${agoraHora()}.`, { rotulo: 'Desfazer', fazer: () => sair(en, false) })
+  }
+  const motivo = (codigo: string, m: string) => {
+    muda(codigo, { motivo: m }, 'saida')
+    setMotivoDe(null)
+  }
+
+  /**
+   * Liga o grupo da porta a uma mesa (abre o grupo na mesa livre ou junta ao que já está nela)
+   * ou a outro destino (balcão, retirada). Tocar no destino marcado desfaz a ligação.
+   */
+  const destinar = (en: Fluxo, destino: string) => {
+    const antes = useLoja.getState().estado
+    const desfazer = () => mudar((e) => ({ ...e, registros: antes.registros, fluxos: antes.fluxos }))
+    const marcarDestino = (e: Estado, d: string): Estado => ({
+      ...e,
+      fluxos: e.fluxos.map((f) => (f.visitaId === en.visitaId && f.codigo === en.codigo && f.tipo === 'entrada' ? { ...f, destino: d } : f)),
+    })
+    // desliga a mesa anterior, se havia
+    const soltar = (e: Estado): Estado => ({
+      ...e,
+      registros: e.registros.map((r) => (r.visitaId === en.visitaId && r.fluxos.includes(en.codigo) ? { ...r, fluxos: r.fluxos.filter((c) => c !== en.codigo) } : r)),
+    })
+    if (destino === en.destino) {
+      mudar((e) => marcarDestino(soltar(e), ''))
+      return
+    }
+    const mesaId = mesaDoDestino(destino)
+    if (!mesaId) {
+      mudar((e) => marcarDestino(soltar(e), destino))
+      return
+    }
+    const nome = unidade.mesas.find((m) => m.id === mesaId)?.nome ?? 'mesa'
+    const aberto = registroAberto(antes, en.visitaId, mesaId)
+    if (aberto && !confirm(`${nome} já tem um grupo de ${aberto.pessoas}. Juntar ${en.codigo} a ele (soma ${en.pessoas} pessoas)?`)) return
+    mudar((e) => {
+      const base = marcarDestino(soltar(e), destino)
+      if (aberto)
+        return {
+          ...base,
+          registros: base.registros.map((r) =>
+            r.id === aberto.id ? { ...r, pessoas: r.pessoas + en.pessoas, criancas: r.criancas + en.criancas, fluxos: [...r.fluxos, en.codigo] } : r,
+          ),
+        }
+      const novo: Registro = {
+        id: novoId(), visitaId: en.visitaId, unidadeId: unidade.id, mesaId, data: (visita?.inicio ?? '').slice(0, 10), aniversario: false,
+        entrada: en.hora, saida: null, saidaTipo: '', pessoas: en.pessoas, criancas: en.criancas, pessoasEstimado: en.estimado, fluxos: [en.codigo],
+        instrutor: 0, jogos: [], jogosIncertos: [], notas: '', pedidos: [],
+      }
+      return { ...base, registros: [...base.registros, novo] }
+    })
+    navigator.vibrate?.(40)
+    avisar(aberto ? `${en.codigo} juntou-se ao grupo da ${nome}.` : `Grupo ${en.codigo} aberto na ${nome}, entrada ${en.hora}.`, { rotulo: 'Desfazer', fazer: desfazer })
   }
   const apagar = (en: Fluxo) => {
     if (!confirm(`Apagar o grupo ${en.codigo} (entrada e saída)?`)) return
@@ -98,16 +161,33 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
         {sa ? (
           <div className="mt-2 flex items-center text-[15px] text-neutro-600">
             <span className="flex-1">
+              {en.estimado && '≈'}
               {en.pessoas} pessoas{en.criancas ? ` (${en.criancas} crianças)` : ''} · entrou {en.hora}
+              {en.destino && ` · ${mesaDoDestino(en.destino) ? unidade.mesas.find((m) => m.id === mesaDoDestino(en.destino))?.nome : en.destino}`}
+              <button onClick={() => setMotivoDe(en.codigo)} className="ml-1 font-semibold text-caneta-700 underline">
+                {sa!.motivo || 'motivo?'}
+              </button>
             </span>
             <button onClick={() => apagar(en)} className="p-1 text-neutro-400" aria-label={`Apagar grupo ${en.codigo}`}>
               <TrashIcon className="size-5" />
             </button>
           </div>
         ) : (
+          <>
           <div className="mt-3 grid grid-cols-[1fr_1fr_auto] items-end gap-3">
             <div>
-              <div className="mb-1 text-[13px] font-bold uppercase">Pessoas</div>
+              <div className="mb-1 flex items-center justify-between text-[13px] font-bold uppercase">
+                Pessoas
+                <button
+                  onClick={() => muda(en.codigo, { estimado: !en.estimado })}
+                  aria-pressed={en.estimado}
+                  title="Número estimado (não deu para contar)"
+                  aria-label="Número estimado"
+                  className={`rounded px-2 text-[15px] leading-5 ${en.estimado ? 'bg-alerta-100 text-alerta-700' : 'text-neutro-500'}`}
+                >
+                  ≈
+                </button>
+              </div>
               <ContadorH valor={en.pessoas} onChange={(v) => muda(en.codigo, { pessoas: v })} />
             </div>
             <div>
@@ -118,6 +198,34 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
               <TrashIcon className="size-5" />
             </button>
           </div>
+          <div className="mt-3 flex flex-wrap items-center gap-1.5">
+            <span className="mr-1 text-[13px] font-bold uppercase">Foi para</span>
+            {unidade.mesas.map((m) => {
+              const d = destinoMesa(m.id)
+              const ocupada = !!visita && !!registroAberto(estado, visita.id, m.id) && en.destino !== d
+              return (
+                <button
+                  key={m.id}
+                  onClick={() => destinar(en, d)}
+                  aria-pressed={en.destino === d}
+                  className={`rounded-full px-2.5 py-1 text-[13px] font-semibold ${en.destino === d ? 'bg-caneta-600 text-sobre' : ocupada ? 'bg-neutro-300 text-neutro-500' : 'bg-papel'}`}
+                >
+                  {m.nome.replace(/^Mesa\s*/i, 'M')}
+                </button>
+              )
+            })}
+            {DESTINOS.map((d) => (
+              <button
+                key={d}
+                onClick={() => destinar(en, d)}
+                aria-pressed={en.destino === d}
+                className={`rounded-full px-2.5 py-1 text-[13px] font-semibold ${en.destino === d ? 'bg-caneta-600 text-sobre' : 'bg-papel'}`}
+              >
+                {d}
+              </button>
+            ))}
+          </div>
+          </>
         )}
       </div>
     )
@@ -147,6 +255,23 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
       <div className="space-y-3">{dentro.map(cartao)}</div>
       {visita && entradas.length > 0 && !dentro.length && <p className="mt-6 text-center text-neutro-500">Ninguém dentro agora.</p>}
       <Fab onClick={novo} rotulo="Nova entrada" />
+      {motivoDe && (
+        <Folha titulo={`Por que ${motivoDe} saiu?`} onFechar={() => setMotivoDe(null)}>
+          <div className="flex flex-wrap gap-2">
+            {MOTIVOS_SAIDA.map((m) => (
+              <Opcao key={m} ativo={saidaDe(motivoDe)?.motivo === m} onClick={() => motivo(motivoDe, m)}>
+                {m}
+              </Opcao>
+            ))}
+            <Opcao ativo={false} onClick={() => motivo(motivoDe, '')}>
+              Saída comum
+            </Opcao>
+            <Ajuda rotulo="Sobre o motivo">
+              Saída até {SAIDA_RAPIDA_MIN} min depois da entrada, sem passar por mesa. Separa quem desistiu (lotado, só olhou) de quem só usou o balcão ou retirou um pedido.
+            </Ajuda>
+          </div>
+        </Folha>
+      )}
     </div>
   )
 }

@@ -18,8 +18,8 @@ export default function S6Tecnicas() {
             <Reveal key={t.nome} delay={i * 70}>
               <button
                 onClick={() => setAba(i)}
-                className={`h-full w-full cursor-pointer rounded-xl border-2 p-4 text-left transition-all ${
-                  ativo ? "border-roxo-600 bg-white shadow-md" : "border-papel-200 bg-papel-100 hover:border-rosa-400"
+                className={`h-full w-full cursor-pointer rounded-lg border-2 p-4 text-left transition-all ${
+                  ativo ? "border-roxo-600 bg-white shadow-sm" : "border-papel-200 bg-papel-100 hover:border-rosa-400"
                 }`}
               >
                 <span className="font-display text-xs font-bold tracking-wider text-roxo-600 uppercase">

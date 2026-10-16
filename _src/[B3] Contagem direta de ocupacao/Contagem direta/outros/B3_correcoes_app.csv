@@ -1,0 +1,8 @@
+visita_id;observador;tabela;coluna_chave;valor_chave;acao;coluna;valor;motivo
+2026-10-10_SJBV;POV1;fluxo;codigo;B-1;excluir;;;"Autor, 15/10/2026: as 24 pessoas lançadas às 18h39 já estavam dentro quando o observador chegou (estoque inicial), não são entrada."
+2026-10-10_SJBV;POV1;fluxo;codigo;B-7;excluir;;;"Autor, 15/10/2026: lançamento das mesmas 24 pessoas que já estavam dentro (estoque inicial), com a saída anotada logo depois; não é entrada nem saída de grupo novo."
+2026-10-10_SJBV;POV1;visitas;;;preencher;nfce_fim_serie;2;"NFC-e final transcrita da foto da nota (série 2, nº 77977, emitida em 10/10/2026 22:08:04); o app não leu a nota."
+2026-10-10_SJBV;POV1;visitas;;;preencher;nfce_fim_numero;77977;"Idem."
+2026-10-10_SJBV;POV1;visitas;;;preencher;nfce_fim_emissao;2026-10-10T22:08:04;"Idem."
+2026-10-10_SJBV;POV1;visitas;;;preencher;cnpj;34128755000198;"CNPJ da nota (São Jogue Board Game Lanchonete Ltda, Alameda Euvaldo Luz, 92, Horto Bela Vista), no formato do app (14 dígitos)."
+2026-10-10_SJBV;POV1;visitas;;;preencher;valor_cobranca;R$ 28,00 (Taxa de Entrada Salão FDS);"Item da NFC-e 77977; a nota não diz se a taxa é por pessoa."
