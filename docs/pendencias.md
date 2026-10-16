@@ -72,12 +72,7 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 - **Entorno no Maps, três primeiras extrações (14/10):** os CSVs estão em `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/maps_entorno_*_2026-10-14*.csv` e não foram conferidos linha a linha; foram coletados antes da busca de trem. Recoletar os três estabelecimentos com a versão atual do coletor e conferir.
 - Perguntas abertas para a literatura (validação de avaliações online como medida de visitas, estabilidade da razão avaliações ÷ visitantes, limiar de concordância para variáveis raras, peso de comida, serviço e ambiente, taxa de desconto de negócio pequeno, termos de uso do Google Maps): `docs/bibliografia/lacunas-bibliograficas.md` §6.
 - Datas e horários das visitas: o roteiro de campo (`textos/instrumentos/roteiro_observacao_sao_jogue.md`) ainda marca 18h00 às 21h00 nas quatro visitas, e o cronograma (semana 4) chama a de 03/10 de "visita pré-teste". A primeira visita ao Bela Vista com dados no app foi no sábado, **10/10**, das 19h às 22h (não 03/10); o retorno em 18/10 fica a 8 dias, não 15. Confirmar a data da primeira visita à outra unidade e se o desenho (03/10, retorno 15 dias depois) muda em `_instrucoes/4_metodologia.md` e no cronograma.
-- **B3, visita de 10/10 ao Bela Vista (conferir com os observadores):**
-  - Descarte da tabela de mesas do POV2 (e não do fluxo da porta) feito pelos indícios no arquivo; confirmar com o POV2.
-  - POV1 lançou 24 pessoas na porta às 18h39 (grupo B-1, antes do início do POV2), com saída às 20h13: é o estoque de quem já estava dentro? Se for, não é entrada e infla as pessoas por hora (86 entraram no POV1 contra 42 no POV2).
-  - POV1 lançou 24 pessoas entrando e saindo no mesmo minuto (B-7, 19h14), quando chegou o grupo de 10 do aniversário à Mesa 1: erro de lançamento?
-  - Estrutura da unidade diverge: estantes 27 × 4 prateleiras × 4 caixas (432) no POV1 contra 5 × 14 × 5 (350) no POV2; instrutores 7 contra 0.
-  - Nenhum dos dois encerrou a visita no app (sem `visita_fim`) nem registrou NFC-e, contagens de mesas a cada 30 min, acústica ou preços. A duração foi estimada pelo maior entre o previsto (180 min) e o último registro.
+- **B3, visita de 10/10 ao Bela Vista:** só o POV1 vale. Faltam a NFC-e do início (sem ela, não há notas emitidas nem pessoas por nota na visita; a do fim, nº 77977, entra no intervalo até o retorno), o encerramento da visita no app (duração estimada), as contagens de mesas a cada 30 min, a acústica e os preços do cardápio. As 24 pessoas que estavam dentro na chegada não têm campo próprio no app: hoje viram correção de lançamento. Avaliar um campo "pessoas dentro no início" no app antes de 18/10.
 
 ## Ideias futuras
 

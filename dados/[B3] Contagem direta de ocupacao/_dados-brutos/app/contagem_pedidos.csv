@@ -1,2 +1,1 @@
-﻿visita_id;observador;unidade;visita_inicio;mesa;grupo_entrada;pessoas;categoria;descricao;pedido;chegada;espera_min;pendente
-2026-10-10_SJBV;POV2;BV;2026-10-10T19:02:35;Mesa 1;19:02;3;bebida;;19:03;19:03;0;nao
+﻿visita_id;observador;fonte_registro;unidade;visita_inicio;mesa;grupo_entrada;pessoas;categoria;descricao;pedido;chegada;espera_min;pendente

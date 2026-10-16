@@ -1035,3 +1035,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: a visita ao Bela Vista registrada no app começou em 10/10 (18h37 no POV1, 19h02 no POV2); o retorno de 18/10 fica 8 dias depois.
 **Efeitos colaterais**: o intervalo de notas fiscais entre as visitas (base das vendas no período) passa de 15 para 8 dias, e a visita deixa de cair na quinzena após o pagamento dos servidores estaduais (29 e 30/09). Nada foi corrigido nos documentos.
 
+
+### 18:19
+**Objeto**: `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py`, `outros/B3_descartes_app.csv`, `outros/B3_correcoes_app.csv` (novo), `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/originais/2026-10-10_SJBV/POV1/2026-10-10_SJBV_POV1_transcricao_precos.csv` (novo), `_dados-brutos/app/contagem_*.csv`, `contagem_resumo_visitas.csv`, `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`
+**Antes**: média dos dois observadores, com só as mesas do POV2 descartadas; o POV1 contava como entrada as 24 pessoas que já estavam dentro (B-1, 18h39, e B-7, 19h14): 86 entradas, 25,9 por hora; sem NFC-e.
+**Depois**: todo o POV2 ignorado na visita; B-1 e B-7 excluídos do fluxo como estoque inicial; NFC-e final (série 2, nº 77977, 22h08:04, CNPJ 34.128.755/0001-98) e seus 4 itens mais o acréscimo de serviço (R$ 8,19, 10% sobre o consumo sem a taxa de entrada) transcritos da foto da nota. Resultado: 38 pessoas em 14 grupos, 11,4 por hora, permanência de 99 min na porta. A foto fica em `_dados-brutos/app/fotos/` (fora do git: traz CPF e nome do consumidor; CPF não transcrito).
+**Justificativa**: pedido do autor: ignorar o POV2 nesta visita; as 24 pessoas eram as que já estavam dentro na chegada; incluir a nota fiscal final.

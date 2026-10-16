@@ -5,18 +5,27 @@ de cada observador numa tabela única por conteúdo, entrada do B3-a_contagem.py
 Cada visita tem dois observadores simultâneos (POV1 e POV2), para que um cubra
 as lacunas do outro. Os CSVs exportados pelo app ficam intactos em:
   dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/originais/<visita_id>/<observador>/
-    AAAA-MM-DD_SJ<unidade>_<observador>_contagem_<conteúdo>.csv
+    AAAA-MM-DD_SJ<unidade>_<observador>_contagem_<conteúdo>.csv     (exportado pelo app)
+    AAAA-MM-DD_SJ<unidade>_<observador>_transcricao_<conteúdo>.csv  (digitado depois, nas
+        mesmas colunas do app; ex.: itens da NFC-e transcritos da foto da nota)
 com <visita_id> = AAAA-MM-DD_SJ<unidade> (ex.: 2026-10-10_SJBV).
 
 Saída em `_dados-brutos/app/`: um contagem_<conteúdo>.csv por conteúdo, com as
-colunas `visita_id` e `observador` à frente das do app.
+colunas `visita_id`, `observador` e `fonte_registro` (app, transcricao) à
+frente das do app.
 
 Regras:
   - `unidade` vem do nome da pasta da visita (SJBV → BV), não do campo digitado
     no app (o POV2 de 10/10 digitou "BV 10.10").
   - Tabelas de um observador listadas em outros/B3_descartes_app.csv saem da
-    consolidação, com o motivo registrado ali; os originais continuam guardados.
-  - Nenhum valor é editado. A média entre observadores é feita na análise.
+    consolidação (`*` = todas as tabelas do observador na visita), com o motivo
+    registrado ali; os originais continuam guardados.
+  - Correções de lançamento ficam em outros/B3_correcoes_app.csv, uma por linha,
+    com o motivo: `excluir` tira as linhas em que coluna_chave = valor_chave;
+    `preencher` grava `valor` em `coluna` (nas linhas da chave ou, sem chave,
+    em todas as da tabela do observador). Correção que não acha linha para o
+    script. Os originais não são editados. A média entre observadores é feita
+    na análise.
 Uso: python3 "_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py"
 """
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
@@ -36,12 +45,30 @@ ROOT = Path(__file__).resolve().parents[4]
 APP = ROOT / "dados" / "[B3] Contagem direta de ocupacao" / "_dados-brutos" / "app"
 ORIGINAIS = APP / "originais"
 DESCARTES = _AQUI.parents[1] / "outros" / "B3_descartes_app.csv"
-PADRAO = re.compile(r"^\d{4}-\d{2}-\d{2}_SJ(?P<unidade>[A-Z]+)_(?P<obs>POV\d)_contagem_(?P<conteudo>\w+)\.csv$")
+CORRECOES = _AQUI.parents[1] / "outros" / "B3_correcoes_app.csv"
+PADRAO = re.compile(r"^\d{4}-\d{2}-\d{2}_SJ(?P<unidade>[A-Z]+)_(?P<obs>POV\d)_(?P<fonte>contagem|transcricao)_(?P<conteudo>\w+)\.csv$")
+
+
+def corrigir(df: pd.DataFrame, visita_id: str, obs: str, conteudo: str, correcoes: pd.DataFrame) -> pd.DataFrame:
+    sel = correcoes[(correcoes["visita_id"] == visita_id) & (correcoes["observador"] == obs) & (correcoes["tabela"] == conteudo)]
+    for _, c in sel.iterrows():
+        alvo = df[c["coluna_chave"]] == c["valor_chave"] if c["coluna_chave"] else pd.Series(True, index=df.index)
+        if not alvo.any():
+            raise SystemExit(f"Correção sem linha correspondente: {c.to_dict()}")
+        if c["acao"] == "excluir":
+            df = df[~alvo]
+        elif c["acao"] == "preencher":
+            df.loc[alvo, c["coluna"]] = c["valor"]
+        else:
+            raise SystemExit(f"Ação desconhecida: {c['acao']}")
+        print(f"Corrigido: {visita_id} {obs} {conteudo} {c['acao']} {c['coluna_chave'] or c['coluna']}={c['valor_chave'] or c['valor']} ({int(alvo.sum())} linha(s))")
+    return df
 
 
 def main():
     descartes = pd.read_csv(DESCARTES, sep=";", encoding="utf-8-sig", dtype=str)
     descartar = set(zip(descartes["visita_id"], descartes["observador"], descartes["tabela"]))
+    correcoes = pd.read_csv(CORRECOES, sep=";", encoding="utf-8-sig", dtype=str, keep_default_na=False)
 
     tabelas: dict[str, list[pd.DataFrame]] = {}
     for arq in sorted(ORIGINAIS.glob("*/POV*/*.csv")):
@@ -53,10 +80,13 @@ def main():
         if obs != arq.parent.name:
             raise SystemExit(f"Observador do nome difere da pasta: {arq}")
         df = pd.read_csv(arq, sep=";", encoding="utf-8-sig", dtype=str, keep_default_na=False)
-        if (visita_id, obs, conteudo) in descartar:
-            print(f"Descartado: {visita_id} {obs} {conteudo} ({len(df)} linhas)")
+        if (visita_id, obs, conteudo) in descartar or (visita_id, obs, "*") in descartar:
+            print(f"Descartado: {visita_id} {obs} {m['fonte']}_{conteudo} ({len(df)} linhas)")
             continue
+        if m["fonte"] == "contagem":
+            df = corrigir(df, visita_id, obs, conteudo, correcoes)
         df["unidade"] = m["unidade"]
+        df.insert(0, "fonte_registro", "app" if m["fonte"] == "contagem" else "transcricao")
         df.insert(0, "observador", obs)
         df.insert(0, "visita_id", visita_id)
         tabelas.setdefault(conteudo, []).append(df)

@@ -1,1 +1,6 @@
-﻿visita_id;observador;unidade;visita_inicio;origem;item;qtd;un;valor
+﻿visita_id;observador;fonte_registro;unidade;visita_inicio;origem;item;qtd;un;valor
+2026-10-10_SJBV;POV1;transcricao;BV;2026-10-10T18:37:31;nfce_fim_77977;Taxa de Entrada SALAO FDS;1;un;28.00
+2026-10-10_SJBV;POV1;transcricao;BV;2026-10-10T18:37:31;nfce_fim_77977;Quartz BOVINO;1;un;45.00
+2026-10-10_SJBV;POV1;transcricao;BV;2026-10-10T18:37:31;nfce_fim_77977;Coca Zero;1;un;8.90
+2026-10-10_SJBV;POV1;transcricao;BV;2026-10-10T18:37:31;nfce_fim_77977;Brownie em Pedacos com Sorvete e Nutella;1;un;28.00
+2026-10-10_SJBV;POV1;transcricao;BV;2026-10-10T18:37:31;nfce_fim_77977;Acréscimo (serviço);1;un;8.19
