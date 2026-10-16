@@ -1071,3 +1071,18 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: cap. 8 não iniciado, prazo vencido em 09/10.
 **Depois**: rascunho com 8.1 (SLU, CNAE, Simples em dois anexos, Quadro 01 com a carga por cenário), 8.2 (Quadro 02 de licenças em Salvador, bebida alcoólica, LGPD) e 8.3 (locação, uso de jogos comprados, marca). Cerca de 3,9 páginas com as referências do capítulo; normas `[AV]`, exceto a LC 123/2006 conferida no texto compilado de 14/09/2026.
 **Justificativa**: pedido do autor (item 3 das melhorias de 15/10). Sem travessão e sem voz passiva, porque P5 e a skill de escrita ainda divergem (pendência aberta).
+
+## 2026/10/16
+
+### 16:48
+**Objeto**: Notion, banco "Luderias – Status da coleta" (54 linhas: Cardápio, Entornos, Instagram, Acervo de jogos, Google maps, "O que ainda falta?" e "Como proceder para conseguir os dados que faltam?")
+**Antes**: status de 15/10 (Instagram 45 completas; Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria parciais por falta de seguidores; Taverna e Encounter com acervo "Coleta parcial"; lojas sem A&B com cardápio ora "Coleta parcial", ora "Não coletado").
+**Depois**: recalculado pelos arquivos do B1 (main + PR #10): cardápio 26 completa / 8 parcial / 20 não coletado (15 delas com "A&B não encontrado" na busca profunda de 16/10); entorno 26 / 28 / 0; Instagram 51 / 2 / 1 (perfis de 15/10 das casas novas trazem seguidores; Bravo completa pelo CSV de 12/10); acervo 16 / 9 / 29 (Taverna e Encounter caem para "Não coletado": o subdomínio foi ligado por nome com similaridade baixa); Google Maps 54 completas. As colunas de texto trazem uma linha por lacuna (cardápio, entorno, Instagram, snowball, acervo, B2) e o passo para fechá-la. Gerador e CSV em `/mnt/project-files/notion/` (fora do repositório).
+**Justificativa**: pedido do autor de atualizar o banco com as casas do acervodejogos, os status e as lacunas com recomendação.
+
+### 16:48 (divergência)
+**Objeto**: `B1_resumo_estabelecimentos.xlsx` × perfis do Instagram de 15/10 (`redes_sociais/rs_<cidade>/rs_<perfil>/2026-10-15_*_perfis.csv`)
+**Antes**: resumo sem seguidores de Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria, e sem total de posts de La Tabuleria, TabuClub e Toca do Rato.
+**Depois**: os perfis de 15/10 trazem esses números (ex.: Bardo Mago, 31.314 seguidores).
+**Efeitos colaterais**: estatística descritiva e site leem o resumo e seguem sem essas casas no Instagram até rodar `B1-b_resumo.py`.
+
