@@ -1121,3 +1121,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: 723 jogos em 4 ou mais casas, sobre 16 acervos.
 **Depois**: 1.207 jogos em 4 ou mais casas, sobre 30 acervos (1.193 identificados na Ludopedia, 914 com nota, 568 com preço de venda); 160 buscas e 218 detalhes novos na API. Notion "B - Jogos" não foi atualizado.
 **Justificativa**: rodar de novo o banco de jogos com os acervos de 17/10.
+
+### 17:52
+**Objeto**: site de apresentação publicado (branch `gh-pages`, https://eusouopeu.github.io/luderia-tcc/)
+**Antes**: abas 08 a 10 com os dados de 15/10 (27 cestas de cardápio).
+**Depois**: `pnpm run deploy` publicou os dados de 17/10 (commit b192014 do `gh-pages`): 33 cestas; conferido no ar (Balboa's, Coletivo Geek e Nala Land no pacote publicado).
+**Justificativa**: pedido do autor: republicar o site com os cardápios e acervos novos.
