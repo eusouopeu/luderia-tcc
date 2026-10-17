@@ -1079,3 +1079,45 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: as seis propriedades vazias em todas as linhas.
 **Depois**: preenchidas nas 54 casas com a coleta do OSM de 15/10 (12h49), `2026-10-15_54_estabelecimentos_entorno_osm_resumo.csv` e `_shoppings.csv`. Metro = estações de metrô do OSM (sem trem nem VLT/BRT); "em metros reais" = distância em linha reta, de pino a pino, à estação mais próxima, em branco nas 26 casas sem estação na área consultada. Shopping = shoppings a até 1000 m com 1000 avaliações ou mais no Maps **ou** polígono de 5.000 m² ou mais no OSM, sem contar duas vezes o mesmo polígono (`mesmo_poligono_de`); distância ao mais próximo desses, em branco nas 22 casas sem nenhum a até 1000 m. "Jogo de Tabuleiro • Board Game" casou com Encounter (mesmo endereço) e "São Jogue" com São Jogue - Bela Vista. Conferência no Notion: 54 linhas; metrô 16 (500 m) e 45 (1000 m), igual ao resumo do OSM; shoppings 21 e 70, igual ao cálculo sobre o CSV; 28 distâncias de metrô e 32 de shopping. Flow Games conta 2 estações a 500 m (metrô e monotrilho em Vila Prudente), que a regra de 2026.10.15-4 fundiria em uma.
 **Justificativa**: pedido do autor: inserir no Notion os dados do entorno; critério de porte do shopping escolhido por ele nesta sessão.
+
+### 17:44
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/` (7 arquivos novos: `asgard`, `dungeon`, `nalaland`, `balboas`, `saojogue`, `coletivogeek`, `playeasy`), originais em `ca_<cidade>/ca_<casa>/`, `B1-b_cardapios_planilha.py` e `cardapios/B1_cardapios_itens_precos.xlsx`
+**Antes**: 27 casas na planilha de itens e preços (1.934 linhas); Coletivo Geek em "não extraído" (PDF atrás de formulário); os PDFs de Balboa's, São Jogue e Coletivo Geek e os CSVs de Asgard, Dungeon e Nala Land (exportados pelo autor com o `cardapio_coletor`) soltos na raiz de `_dados-brutos/cardapios/`.
+**Depois**: 34 casas e 2.173 linhas (2.111 com preço). PDFs transcritos à mão, com a página conferida em imagem (data pelo metadado do PDF: Balboa's jan/2026, São Jogue out/2026, Coletivo Geek mai/2026); cardápio da Playeasy lido do texto do design no Canva; os três CSVs exportados revisados à mão (categorias erradas corrigidas: cachorros-quentes e sanduíches da Asgard estavam em "entradas/batata", Monster em "drinks", molhos da Nala em "hambúrguer"; na Dungeon, quatro doces avulsos vinham como variações de um item). Passaporte da Asgard (R$ 10 e R$ 25) na categoria couvert. Originais movidos para `ca_brasilia/ca_asgard/`, `ca_sao_paulo/ca_dungeon_games_store/`, `ca_recife/ca_nala_land/` e `ca_sao_paulo/ca_coletivo_geek/`.
+**Justificativa**: pedido do autor: inserir no trabalho os cardápios que ele achou (PDFs baixados e links salvos nos favoritos, pasta "Luderias", 17/10).
+
+### 17:44
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Acervo de Jogos/collect/B1-c_jogos_dos_acervos.py`, `acervo_jogos/B1_jogos_dos_acervos.csv`, `_dados-brutos/acervos_luderias/` (`ludopedia_jogasampa.txt`, `lista_playeasy.txt`, `ludus_luderia/`, caches novos)
+**Antes**: 16 casas, só as com dados de comida no Notion (8.736 linhas); Tubaleria só com a contagem da página (217).
+**Depois**: 30 casas (14.552 linhas). Novas fontes no script: Acervo de Jogos para Dungeon (90 títulos), Paladins (214), Pitta's (227), Tubaleria (221), Balboa's (1.833), São Jogue (370), Joyjoy (1.010, conferida pelo endereço da página) e LudoCafé (362); rejoy para Nala Land (312); payload Next.js de asgard.app.br/jogos (150); JSON do blog Squarespace da Omniverse (59, lista parcial: o blog para na letra D); lista 20376 da Ludopedia para a Jogasampa (331, lida no navegador); catálogo da Playeasy no Canva (438, lido no navegador); "cardápio de jogos" da Ludus em PDF de 2020 (199, títulos pela altura da fonte). O PDF da Ludus saiu de `_dados-brutos/cardapios/` para `acervos_luderias/ludus_luderia/`. As 16 casas antigas ficaram idênticas (conferido por contagem). Fora: Vila Celta (o subdomínio `reidascartinhas` redireciona para a página de Curitiba) e a loja "Taverna" do Acervo de Jogos (telefone diferente do da Taverna Game House).
+**Justificativa**: pedido do autor: inserir os acervos achados por ele; o acervo passa a valer para qualquer das 54 casas, com ou sem cardápio.
+
+### 17:44
+**Objeto**: `estabelecimentos/B1_resumo_estabelecimentos.xlsx`, `estabelecimentos/4_estatistica_descritiva/`, `_src/site-apresentacao/src/conteudo/b1-estatisticas.json`
+**Antes**: 27 casas com cardápio e 18 com acervo (uma só pela contagem da página).
+**Depois**: 33 casas com cardápio (TabuClub segue sem transcrição) e 29 com lista de acervo; soma por capital = 54. Site não republicado.
+**Justificativa**: rodar de novo o resumo e a estatística descritiva depois da atualização dos cardápios e acervos (regra do `AGORA.md`).
+
+### 17:44
+**Objeto**: Notion, banco "A - Estabelecimentos" (visualização "CARDAPIO")
+**Antes**: Balboa's, São Jogue, Coletivo Geek, Playeasy, Dungeon e Nala Land sem campos de cardápio; "Jogos do acervo" vazio fora das 16 casas antigas.
+**Depois**: nas 6 casas, Cardápio (link, ou "cardápio baixado" para PDF), quantidades por categoria (entradas, pratos principais, sobremesas, drinks, combos) e o item mais barato de cada referência (batata, hambúrguer, sobremesa, refrigerante, cerveja, caipirinha ou o drink mais barato quando não há caipirinha), com nota de fonte em "Outras anotações". "Jogos do acervo" (títulos na ordem da fonte até cerca de 1.950 caracteres, como nas linhas antigas) em 14 casas: Asgard, Balboa's, Dungeon, JogaSampa, Joyjoy, LudoCafé, Ludus, Nala Land, Omniverse, Paladins, Pitta's, Playeasy, São Jogue e Tubaleria; Acervo (link) preenchido onde faltava (Asgard, JogaSampa, Ludus, Omniverse, Playeasy). Os campos de cardápio da Asgard, digitados antes pelo autor, ficaram como estavam.
+**Justificativa**: pedido do autor: levar os dados novos ao Notion.
+
+### 17:44
+**Objeto**: Notion, banco "Luderias – Status da coleta"
+**Antes**: Cardápio parcial ou não coletado em Asgard, Balboa's, Coletivo Geek, Dungeon, Nala Land, Playeasy e São Jogue; acervo parcial nas casas com lista achada e não coletada.
+**Depois**: Cardápio "Coleta completa" nas 7; Acervo "Coleta completa" em 13 (Asgard, Balboa's, Dungeon, Jogasampa, Joyjoy, LudoCafé, Ludus, Nala Land, Paladins, Pitta's, Playeasy, São Jogue, Tubaleria) e "Coleta parcial" na Omniverse; Vila Celta volta a "Não coletado" (acervo inacessível); "O que ainda falta?" e "Como proceder" reescritos nessas casas e na Taverna, com a data e o volume da coleta de 17/10.
+**Justificativa**: pedido do autor: atualizar o status com os dados novos.
+
+### 17:44
+**Objeto**: Notion "Luderias – Status da coleta" (Asgard, 15/10) × cardápio de asgard.app.br/cardapio (17/10)
+**Antes**: couvert R$ 10 (seg-qui) e R$ 20 (sex-dom), isento com consumo de R$ 50.
+**Depois**: passaporte R$ 10 (seg-qui) e R$ 25 (sex-dom, feriados), um isento a cada R$ 60 de consumo.
+**Efeitos colaterais**: a planilha de cardápios usa o valor do site (couvert mínimo R$ 10, igual ao do Notion "A"); só a cesta alta da Asgard muda se o valor de 15/10 for o certo.
+
+### 18:20
+**Objeto**: `acervo_jogos/B1_banco_jogos.csv`, caches da API da Ludopedia (`ludopedia_api_busca.json`, `ludopedia_api_jogos.json`), docstring do `B1-b_banco_jogos.py`
+**Antes**: 723 jogos em 4 ou mais casas, sobre 16 acervos.
+**Depois**: 1.207 jogos em 4 ou mais casas, sobre 30 acervos (1.193 identificados na Ludopedia, 914 com nota, 568 com preço de venda); 160 buscas e 218 detalhes novos na API. Notion "B - Jogos" não foi atualizado.
+**Justificativa**: rodar de novo o banco de jogos com os acervos de 17/10.

@@ -12,9 +12,9 @@ Entradas:
   identificação do jogo em jogos_comum.py.
 
 Regras das colunas:
-- Acervo no local: todas as casas do grupo. As 16 casas têm comida e bebida, e
-  o que alugam pelo Acervo de Jogos ou rejoy também fica na mesa (decisão do
-  autor em 13/10/2026).
+- Acervo no local: todas as casas do grupo. O que as casas alugam pelo Acervo
+  de Jogos ou rejoy também fica na mesa (decisão do autor em 13/10/2026). Desde
+  17/10/2026 o grupo inclui as casas sem cardápio (30 acervos).
 - Aluguel pago: casas que mostram preço de aluguel do jogo (Acervo de Jogos,
   rejoy). Média, mediana e desvio-padrão amostral (n-1) do preço por locação,
   um preço por casa. O período da locação varia entre casas (1, 3 ou 7 dias) e

@@ -1,0 +1,26 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao;data_cardapio
+Bebidas;Budweiser long neck;;330 ml;11;bebidas;cerveja;N;;
+Bebidas;Heineken long neck;;330 ml;13;bebidas;cerveja;N;;
+Sobremesas;Brigadeiro de colher;;;13;sobremesas;sobremesas;N;;
+Sobremesas;Pudim;;;13;sobremesas;sobremesas;N;;
+Sobremesas;Torta;;;13;sobremesas;sobremesas;N;;
+Hambúrgueres;Vegetariano;Hambúrguer de falafel com maionese verde;120 g;33;pratos principais;hambúrguer;S;;
+Hambúrgueres;X-Bacon;Hambúrguer bovino com maionese verde e cebola;120 g;34;pratos principais;hambúrguer;S;;
+Hambúrgueres;X-Egg;Hambúrguer bovino, mussarela, ovo e farofa de bacon;120 g;35;pratos principais;hambúrguer;S;;
+Porções;Batata frita;Acompanha 1 molho da casa;;19;entradas;batata;S;;
+Lanches;Corn dog;Salsicha envolta em mussarela e massa;;16;pratos principais;outros;S;;
+Salgados;Coxinha de salmão;;;22;entradas;outras;S;;
+Salgados;Coxinha de tomate seco;;;14;entradas;outras;S;;
+Salgados;Coxinha grande;Camarão com catupiry ou costela;;25;entradas;outras;S;;
+Salgados;Empanada de camarão;;;25;entradas;outras;S;;
+Salgados;Empanadas;2 unidades;;22;entradas;outras;S;;
+Salgados;Mini coxinha especial;;;22;entradas;outras;S;;
+Salgados;Mini coxinhas;8 unidades;;18;entradas;outras;S;;
+Pizzas;Pizza brotinho;Frango, mussarela ou calabresa;individual;15;pratos principais;pizza;S;três sabores ao mesmo preço;
+Porções;Pão de queijo;8 unidades;;18;entradas;outras;S;;
+Porções;Pastel;5 pastéis sortidos;;22;entradas;outras;S;;
+Molhos;Geleia de bacon;;;5;outros;adicionais;S;;
+Molhos;Ketchup especial;;;4;outros;adicionais;S;;
+Molhos;Maionese de bacon;;;4;outros;adicionais;S;;
+Molhos;Maionese verde;;;4;outros;adicionais;S;;
+Molhos;Sour cream;;;4;outros;adicionais;S;;

@@ -1,0 +1,17 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao;data_cardapio
+Porções;Coxinha de frango;6 unidades médias;;25;entradas;outras;S;;
+Porções;Bolinha de queijo;6 unidades médias;;25;entradas;outras;S;;
+Porções;Quibe;6 unidades médias;;25;entradas;outras;S;;
+Porções;Croquete de costela;6 unidades médias;;25;entradas;outras;S;;
+Pringles;Batata Pringles;;;16;entradas;batata;N;;
+Salgadinhos;Amendoim;;;6;entradas;outras;N;;
+Salgadinhos;Cheez-It;;;6;entradas;outras;N;;
+Doces;Pão de mel;;;10;sobremesas;sobremesas;N;;
+Doces;M&M's ou Bis Xtra;;;5;sobremesas;sobremesas;N;;
+Bebidas;Café Nespresso;;;6;bebidas;não alcoólicas;S;;
+Bebidas;Água;;500 ml;3;bebidas;não alcoólicas;N;;
+Bebidas;Refrigerante;;lata;6;bebidas;refrigerante;N;;
+Bebidas;Chá gelado;;;8;bebidas;não alcoólicas;N;;
+Bebidas;Energético;;;12;bebidas;não alcoólicas;N;;
+Bebidas;Cerveja;;long neck;10;bebidas;cerveja;N;;
+Taxa de rolha;Taxa de rolha;Para comidas e bebidas de fora;;50;outros;adicionais;N;;

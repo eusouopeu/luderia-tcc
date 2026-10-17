@@ -1,0 +1,73 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao;data_cardapio
+Café;O Flautista;Café especial;;16;bebidas;não alcoólicas;S;;2026-05
+Café;Coado da casa;;;7;bebidas;não alcoólicas;S;;2026-05
+Milk-shakes;Ovomaltine;Batido com creme americano;;31;bebidas;não alcoólicas;S;;2026-05
+Milk-shakes;Nutella;Batido com creme americano;;34;bebidas;não alcoólicas;S;;2026-05
+Milk-shakes;Chocolate;Batido com creme americano;;31;bebidas;não alcoólicas;S;;2026-05
+Milk-shakes;Morango;Calda de morango batida com creme americano;;31;bebidas;não alcoólicas;S;;2026-05
+Smoothies;Frutas vermelhas;Batido com iogurte e gelo;;28;bebidas;não alcoólicas;S;;2026-05
+Smoothies;Maracujá;Batido com iogurte e gelo;;28;bebidas;não alcoólicas;S;;2026-05
+Smoothies;Limão yuzu;Batido com iogurte e gelo;;28;bebidas;não alcoólicas;S;;2026-05
+Soft drinks;Monster;;;16;bebidas;não alcoólicas;N;;2026-05
+Soft drinks;Refrigerante lata;;;8;bebidas;refrigerante;N;;2026-05
+Soft drinks;Suco lata;;;8;bebidas;não alcoólicas;N;;2026-05
+Soft drinks;Água ou água com gás;;;5;bebidas;não alcoólicas;N;;2026-05
+Soft drinks;Mate da casa;Limão e pêssego;;17;bebidas;não alcoólicas;S;;2026-05
+Soft drinks;Soda italiana;Morango, curaçao blue, tangerina ou maçã verde;;12;bebidas;não alcoólicas;S;;2026-05
+Chopp;IPA;;;22;bebidas;cerveja;N;;2026-05
+Chopp;Lager;;;20;bebidas;cerveja;N;;2026-05
+Chopp;New England IPA;;;27;bebidas;cerveja;N;;2026-05
+Drinks autorais;Jack Mate;Mate, Jack Daniel's, hortelã, limão siciliano e xarope de açúcar;;35;bebidas;drinks;S;;2026-05
+Drinks autorais;Heisenberg;Vodka, curaçau blue, limão e tônica;;30;bebidas;drinks;S;;2026-05
+Drinks autorais;Hi-Chu;Rum, xarope de kiwi, laranja, gengibre e limão;;30;bebidas;drinks;S;;2026-05
+Drinks autorais;Ordem 66;Mate, limão siciliano, xarope de guaraná e rum;;25;bebidas;drinks;S;;2026-05
+Drinks autorais;Café Sem Nome;Café, licor de café, Ramazzotti e vodka;;30;bebidas;drinks;S;;2026-05
+Drinks autorais;Dark Lord;Gin, licor de morango, limão, Nero e xarope de açúcar;;30;bebidas;drinks;S;;2026-05
+Drinks clássicos;Negroni;;;35;bebidas;drinks;S;;2026-05
+Drinks clássicos;Aperol spritz;;;35;bebidas;drinks;S;;2026-05
+Drinks clássicos;Fitzgerald;;;30;bebidas;drinks;S;;2026-05
+Drinks clássicos;Moscow mule;;;30;bebidas;drinks;S;;2026-05
+Drinks clássicos;Cosmopolitan;;;30;bebidas;drinks;S;;2026-05
+Drinks clássicos;Penicillin;;;35;bebidas;drinks;S;;2026-05
+Drinks clássicos;Caipirinha de limão;Cachaça, saquê ou vodka;;25;bebidas;drinks;S;;2026-05
+Não alcoólicos;Mate Atômico;Mate, abacaxi, hortelã, xarope de guaraná e de açúcar;;21;bebidas;não alcoólicas;S;;2026-05
+Não alcoólicos;Rato Amarelo;Xarope de kiwi, laranja, gengibre e limão;;21;bebidas;não alcoólicas;S;;2026-05
+Não alcoólicos;Café Lover;Café, xarope de caramelo salgado, de gengibre e ginger ale;;21;bebidas;não alcoólicas;S;;2026-05
+Estufa;Pão de queijo;;;12;entradas;outras;S;;2026-05
+Estufa;Salgado do dia;;;16;entradas;outras;S;;2026-05
+Estufa;Cookies;Nutella, Nutella com Ninho, chocolate ou café;;21;sobremesas;sobremesas;N;;2026-05
+Entradas;Frango Dorama;Frango empanado com molho agridoce e togarashi;;39;entradas;outras;S;;2026-05
+Entradas;Frango Dorama com fritas;Frango empanado com molho agridoce e batata frita;;47;entradas;outras;S;;2026-05
+Entradas;Fritas;Acompanha maionese;P;28;entradas;batata;S;;2026-05
+Entradas;Fritas;Acompanha maionese;G;38;entradas;batata;S;;2026-05
+Entradas;Pastel de queijo;10 pastéis, com maionese;;37;entradas;outras;S;;2026-05
+Entradas;Gyoza;Gyozas de legumes com molho ponzu;;35;entradas;outras;S;;2026-05
+Entradas;Dadinhos de tapioca;Com geleia de pimenta com maçã verde e limão siciliano;;38;entradas;outras;S;;2026-05
+Sanduíches;Tamago Sando;Pão de miga, pasta de ovos com maionese japonesa e togarashi;;28;pratos principais;outros;S;;2026-05
+Sanduíches;Tamago Bacon;Pão de miga, pasta de ovos, bacon, maionese japonesa e togarashi;;32;pratos principais;outros;S;;2026-05
+Sanduíches;Katsu sando de frango;Pão de miga, frango empanado, maionese japonesa e picles;;32;pratos principais;outros;S;;2026-05
+Sanduíches;Misto-quente;;;25;pratos principais;outros;S;;2026-05
+Sanduíches;Queijo-quente;;;22;pratos principais;outros;S;;2026-05
+Sanduíches;Pão na chapa;;;9;entradas;outras;S;;2026-05
+Pizzas;Pepperoni;Pepperoni, fior di latte, alho fermentado e cebola roxa;;39;pratos principais;pizza;S;;2026-05
+Pizzas;Tamago Pizza;Ovo estilo tamago sando, fior di latte, tarê e cebolinha;;39;pratos principais;pizza;S;;2026-05
+Pizzas;Tamago Pizza Bacon;Ovo, bacon, fior di latte, tarê e cebolinha;;42;pratos principais;pizza;S;;2026-05
+Pizzas;Shimeji;Shimeji, fior di latte, rúcula, tarê e cebolinha;;39;pratos principais;pizza;S;;2026-05
+Pizzas;Margherita;Fior di latte e manjericão;;35;pratos principais;pizza;S;;2026-05
+Pizzas;Três queijos;Fior di latte, blue cheese e cheddar;;39;pratos principais;pizza;S;;2026-05
+Pizzas;Cheddar & bacon;;;39;pratos principais;pizza;S;;2026-05
+Pizzas doces;Nutella;;;42;sobremesas;sobremesas;S;;2026-05
+Pizzas doces;Chocolate;;;39;sobremesas;sobremesas;S;;2026-05
+Pizzas doces;Romeu & Julieta;Goiabada e fior di latte;;39;sobremesas;sobremesas;S;;2026-05
+Pizzas doces;Prestígio;Chocolate e coco ralado;;39;sobremesas;sobremesas;S;;2026-05
+Burgers;Caprese;Pão, carne, fior di latte, molho de tomate e manjericão;;27;pratos principais;hambúrguer;S;;2026-05
+Burgers;Royale;Pão, carne, blue cheese, picles, cebola, ketchup e mostarda;;28;pratos principais;hambúrguer;S;;2026-05
+Burgers;Chicken to Ride;Pão, frango empanado, american cheese, bacon, rúcula e maionese;;32;pratos principais;hambúrguer;S;;2026-05
+Burgers;Pepperoni Evil;Pão, 2x carne, american cheese, pepperoni e molho de tomate;;35;pratos principais;hambúrguer;S;;2026-05
+Burgers;Bacon of Paradise;Pão, carne, cheddar, bacon e cebola caramelizada;;32;pratos principais;hambúrguer;S;;2026-05
+Burgers;Kamigawa;Pão, carne, fior di latte, shimeji, tarê e maionese japonesa;;28;pratos principais;hambúrguer;S;;2026-05
+Burgers;Hot Hot Hot;Pão, 3x carne, cheddar, american cheese, blue cheese, maionese japonesa e pimenta;;39;pratos principais;hambúrguer;S;;2026-05
+Burgers;Cheese salada;Pão, carne, american cheese, alface, tomate e maionese;;27;pratos principais;hambúrguer;S;;2026-05
+Burgers;Cheese burger;Pão, carne e american cheese;;22;pratos principais;hambúrguer;S;;2026-05
+Burgers;Combo;Adicione fritas e soda italiana;;12;outros;adicionais;S;acréscimo ao burger;2026-05
+Burgers;Opção vegetariana;;;7;outros;adicionais;S;acréscimo em qualquer lanche;2026-05

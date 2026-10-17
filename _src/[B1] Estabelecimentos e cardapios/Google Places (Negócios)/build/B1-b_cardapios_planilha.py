@@ -124,6 +124,27 @@ FONTES = {
                      formato="destaque 'Cardápio' do Instagram, transcrito à mão", data_cardapio="",
                      status="extraído", data_coleta="2026-10-12",
                      nota="sala medieval por hora e grupo na categoria couvert"),
+    # 17/10/2026: cardápios achados pelo autor (PDFs baixados e links salvos nos favoritos)
+    **{arq: dict(place_id=pid, url=url, formato=formato, data_cardapio=data, status="extraído",
+                 data_coleta="2026-10-17", nota=nota)
+       for arq, pid, url, formato, data, nota in [
+           ("asgard", "ChIJzdFNP3AyWpMRH2P6HEuhE-I", "https://asgard.app.br/cardapio",
+            "página do site (texto), exportada pelo cardapio_coletor", "", "passaporte de jogo na categoria couvert"),
+           ("dungeon", "ChIJiZJ_DnIDz5QRaVafFCXGkUE", "https://dungeongamesstore.goomer.app/menu",
+            "cardápio digital Goomer, exportado pelo cardapio_coletor", "",
+            "doces avulsos vinham como variações de um item; corrigido"),
+           ("nalaland", "ChIJRUjwU66WoGgRzc9yJU7jkwM", "https://nalaland.menudino.com/",
+            "cardápio de delivery Menudino, exportado pelo cardapio_coletor", "", "preço de delivery"),
+           ("balboas", "ChIJ0yXbI35IxwcR0_jLi-uINUU", "PDF baixado pelo autor (Canva)",
+            "PDF (Canva), transcrito à mão", "2026-01", "data pelo metadado do PDF"),
+           ("saojogue", "ChIJoTlvBfMbFgcRHvuCKHBQrXQ", "PDF baixado pelo autor (Canva)",
+            "PDF (Canva), transcrito à mão", "2026-10", "unidade Bela Vista; data pelo metadado do PDF"),
+           ("coletivogeek", "ChIJF9j3OCRbzpQRkk74_QtOk_0", "PDF baixado pelo autor (Linktree)",
+            "PDF (Canva), transcrito à mão", "2026-05", "data pelo metadado do PDF"),
+           ("playeasy", "ChIJNcHw7jNYzpQRKRHPOrb4jEw",
+            "https://www.canva.com/design/DAGT9cLv7FI/Vey8vkMqP5ilBVHe0H8n7w/view",
+            "design no Canva, transcrito da tela", "", "só lanches prontos; sem taxa de jogo no cardápio"),
+       ]},
     "fortaludica": dict(place_id="ChIJyXjE650xWpMRJL-J6QbGkt4",
                         url="https://drive.google.com/uc?export=download&id=1cl7YIKdJhuuhNCUKAO0-96czajLGInqJ",
                         formato="PDF (Canva), transcrito à mão", data_cardapio="2025-12", status="extraído",
@@ -131,10 +152,6 @@ FONTES = {
 }
 # aprovado com cardápio acessível, mas sem transcrição
 SEM_TRANSCRICAO = {
-    "ChIJF9j3OCRbzpQRkk74_QtOk_0": dict(
-        url="https://linktr.ee/coletivogeekbr", formato="PDF no Linktree", data_cardapio="",
-        status="não extraído",
-        nota="o download do PDF exige preencher formulário com e-mail; não preenchido"),
     "ChIJOcVssmeDmQARZZrnWu2mnwA": dict(
         url="https://drive.google.com/file/d/1-KDTgvYRZKe4R9KCWVQHRD5xiWqjSgPW/view", formato="arquivo no Google Drive",
         data_cardapio="", status="não extraído", data_coleta="2026-10-12",

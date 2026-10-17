@@ -1,0 +1,37 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao;data_cardapio
+Entradas;Jenga;Batata frita com tempero especial da casa;200 g;25;entradas;batata;S;;2026-01
+Entradas;Jenga Extra;Batata frita com bacon e molho cheddar;200 g;28;entradas;batata;S;;2026-01
+Entradas;Verdant;Bolinhas de falafel da casa com limão;240 g;28;entradas;outras;S;vegetariano;2026-01
+Entradas;Splendor;17 unidades de pastel (carne, frango ou queijo);220 g;30;entradas;outras;S;;2026-01
+Entradas;Flash Point;6 bolinhas de pepperoni com parmesão, levemente picante;180 g;30;entradas;outras;S;;2026-01
+Entradas;Carcassonne;Bolinhas de carne seca com massa de macaxeira;180 g;30;entradas;outras;S;;2026-01
+Entradas;7 Wonders;7 sticks de mussarela crocantes;220 g;30;entradas;outras;S;;2026-01
+Lanches;Feld;Burger da casa, queijo cheddar e maionese temperada;130 g;27;pratos principais;hambúrguer;S;;2026-01
+Lanches;Rosenberg;Burger da casa, cheddar, mix de folhas, tomate, cebola refogada e maionese temperada;130 g;29;pratos principais;hambúrguer;S;;2026-01
+Lanches;Friese;Burger de falafel, cheddar, mix de folhas, tomate, cebola refogada e barbecue;100 g;29;pratos principais;hambúrguer;S;vegetariano;2026-01
+Lanches;Vlaada;Burger da casa, cheddar, bacon, cebola crispy e barbecue;130 g;30;pratos principais;hambúrguer;S;;2026-01
+Lanches;Cathala;Blend de porco desfiado com barbecue, cream cheese, cheddar, abacaxi caramelizado e cebola crispy no pão australiano;80 g;32;pratos principais;hambúrguer;S;;2026-01
+Lanches;Knizia;Burger de frango, cream cheese, bacon, mix de folhas, cebola crispy e barbecue;120 g;32;pratos principais;hambúrguer;S;;2026-01
+Combo;Combo do sanduíche;Refrigerante + batata (100 g);;15;outros;adicionais;S;acréscimo ao sanduíche;2026-01
+Adicionais;Molho (maionese temperada, cheddar, barbecue ou geleia de pimenta);;;3;outros;adicionais;S;;2026-01
+Adicionais;Bacon, salada ou queijo;;;4;outros;adicionais;S;;2026-01
+Adicionais;Falafel;;;8;outros;adicionais;S;;2026-01
+Adicionais;Frango ou carne;;;10;outros;adicionais;S;;2026-01
+Sobremesas;Espeon;Cheesecake com cream cheese, chocolate branco e geleia de morango;;24;sobremesas;sobremesas;S;;2026-01
+Sobremesas;Flareon;Cheesecake com cream cheese, chocolate branco e goiabada cremosa;;24;sobremesas;sobremesas;S;;2026-01
+Sobremesas;Umbreon;Cheesecake de biscoito de chocolate com café coado e cobertura de chocolate;;24;sobremesas;sobremesas;S;;2026-01
+Sobremesas;Leafeon;Torta de limão;;24;sobremesas;sobremesas;S;;2026-01
+Sobremesas;Jolteon;Banoffee;;24;sobremesas;sobremesas;S;;2026-01
+Soft drinks;Água com ou sem gás;;500 ml;4;bebidas;não alcoólicas;N;;2026-01
+Soft drinks;Refrigerante;;350 ml;7;bebidas;refrigerante;N;;2026-01
+Soft drinks;Café;;120 ml;6;bebidas;não alcoólicas;S;;2026-01
+Soft drinks;Café especial;;180 ml;9;bebidas;não alcoólicas;S;;2026-01
+Soft drinks;Suco Del Valle;;290 ml;8;bebidas;não alcoólicas;N;;2026-01
+Soft drinks;Suco Kapo;;200 ml;5;bebidas;não alcoólicas;N;;2026-01
+Soft drinks;Chá gelado;;290 ml;7;bebidas;não alcoólicas;N;;2026-01
+Soft drinks;Sprite Fresh;;500 ml;8;bebidas;refrigerante;N;;2026-01
+Soft drinks;Monster;;473 ml;16;bebidas;não alcoólicas;N;;2026-01
+Alcoólicos;Chopp lager;;300 ml;12;bebidas;cerveja;N;chopp em dobro de quarta a sexta e até 17h nos fins de semana e feriados;2026-01
+Alcoólicos;Chopp especial;;300 ml;15;bebidas;cerveja;N;chopp em dobro de quarta a sexta e até 17h nos fins de semana e feriados;2026-01
+Alcoólicos;Schweppes + gin ou Sprite;;269 ml;15;bebidas;drinks;S;;2026-01
+Alcoólicos;Cervejas especiais;;473 ml;30;bebidas;cerveja;N;;2026-01
