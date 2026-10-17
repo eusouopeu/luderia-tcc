@@ -1154,3 +1154,21 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o vínculo entre porta e mesa só se fazia pela aba Fluxo ("Foi para"); o grupo aberto direto na mesa não dizia de que entrada veio, a porta não ficava sabendo, e a lista de registros das mesas não mostrava o código da porta.
 **Depois**: o grupo da mesa tem a seção "Da porta", com as entradas sem destino e as já ligadas; tocar liga ou solta, e a aba Fluxo passa a mostrar a mesa no "Foi para". Grupo novo ligado à primeira entrada herda hora e pessoas da porta; entradas seguintes somam pessoas. Gravar ou apagar o grupo acerta o destino na porta (`sincronizarPortaMesas`); destinos fora das mesas não mudam. A lista de registros das mesas mostra os códigos da porta. 24 testes passam.
 **Justificativa**: pedido do autor: contabilizar automaticamente nos registros das mesas a marcação de destino feita no fluxo da porta, e vice-versa.
+
+### 23:52
+**Objeto**: `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/originais/2026-10-16_SJBV/` (novo: POV1 e POV2, 10 CSVs cada, e `POV2/2026-10-16_SJBV_POV2_transcricao_precos.csv`), `_dados-brutos/app/fotos/2026-10-16_SJBV_nfce_78160.jpg` (fora do git), `outros/B3_correcoes_app.csv`, consolidados `_dados-brutos/app/contagem_*.csv`, `contagem_resumo_visitas.csv`, `contagem_notas_intervalo.csv`
+**Antes**: o B3 tinha só a visita de sábado, 10/10, ao Bela Vista; o intervalo de notas estava vazio (faltava a segunda leitura de NFC-e). No Mac, o autor deixou os CSVs da visita de sexta, 16/10, em `_dados-brutos/originais/Visita SJBV - Sexta 16.10 - POV 1|2/`, com nomes `2026-10-16_SJBV_16-10_*` e `2026-10-16_SJBVBV_POV2_*`.
+**Depois**: originais copiados intactos para a pasta de visita do padrão (`2026-10-16_SJBV/POV1|POV2/`, nomes `2026-10-16_SJBV_POVn_contagem_*.csv`). Treze correções novas, com motivo: código do observador "16-10" → POV1 e `visita_id` "SJBVBV" → SJBV (gravados assim pelo app); fim da observação às 22h00 nos dois (inferido: última anotação do POV2 às 22:00 e NFC-e paga às 21:59:48; o app foi encerrado às 23:40); todos os grupos de mesa do POV1 e os quatro do POV2 lançados até 3 min após a chegada marcados como censurados; NFC-e 78160 (série 2) transcrita da foto, com CNPJ e taxa de R$ 28,00 por pessoa. Resultado de 16/10 (POV2): 10 pessoas entraram em 4 grupos (4,0 por hora, uma desistência "Só olhou"), permanência média de 96 min em 3 grupos de mesa com entrada e saída vistas, 66,7 dB médios. Intervalo 10/10 22:08 → 16/10 21:59: 183 notas em 5,99 dias (30,5 por dia).
+**Justificativa**: pedido do autor: analisar, organizar e inserir os dados da visita de 16/10 ao Bela Vista.
+
+### 23:52
+**Objeto**: `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py`, `analise/B3-a_contagem.py`
+**Antes**: a correção valia para uma tabela por vez; o intervalo de notas só ligava a primeira e a última visita de cada unidade e usava apenas a NFC-e do início da segunda.
+**Depois**: correção com `tabela = *` vale para todas as tabelas do observador na visita (pula as vazias). O intervalo de notas sai para cada par de visitas consecutivas da unidade, com a primeira leitura da seguinte (início ou, sem ela, fim) e as colunas `visita_de`, `visita_ate`, `nota_de` e `nota_ate`. Rodado de novo: consolidados de 10/10 idênticos aos anteriores.
+**Justificativa**: a visita de 16/10 é extra (fora do sorteio) e não tem NFC-e do início; sem a mudança, o intervalo 10/10 → 16/10 se perderia.
+
+### 23:52 (divergência)
+**Objeto**: `contagem_unidades.csv` (16/10, POV1 × POV2) e 10/10 × 16/10; `textos/capitulos/3_metodologia_plano_luderia.md` (§3.2 e Quadro 2) × dados do B3
+**Antes**: 10/10, POV1: 6 mesas e 7 instrutores. Cap. 3: quatro visitas de 3 horas, em 03/10 e 18/10, "só fim de semana".
+**Depois**: 16/10: POV1 conta 12 mesas e 2 instrutores; POV2, 15 mesas e 3 instrutores. Há uma visita extra numa sexta (16/10), e a nota de 16/10 cobra a "Taxa de Entrada Salão FDS" também na sexta.
+**Efeitos colaterais**: a ocupação percentual depende do total de mesas da unidade, ainda sem número único; o cap. 3 precisa dizer se a sexta conta como fim de semana ou como dia útil (premissas R07 e R08).

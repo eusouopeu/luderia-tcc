@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 16/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 17/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -24,7 +24,7 @@ Atualizado em 16/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 - **Estatística descritiva do B1** (15/10): geral, por metrópole e por região em `dados/[B1]…/estabelecimentos/4_estatistica_descritiva/` e nas abas 08 a 10 do site (`_src/site-apresentacao`, publicado em 15/10; visual editorial novo publicado em 15/10; publicar de novo com `pnpm run deploy` quando os dados mudarem). Rodar de novo `B1-a_estatistica_descritiva.py` depois de cada atualização do `B1_resumo_estabelecimentos.xlsx`.
 
-- **Contagem do B3, Bela Vista** (visita de sábado, 10/10, 19h às 22h): CSVs do app guardados em `dados/[B3]…/_dados-brutos/app/originais/2026-10-10_SJBV/` e consolidados por `B3-b_importar_app.py`, com descartes e correções em `outros/` do objeto. Só o POV1 vale (o POV2 foi ignorado a pedido do autor). Resultado provisório: 38 pessoas entraram em 14 grupos (11,4 por hora), além das 24 que já estavam dentro; permanência média de 99 min na porta e 116 min nas mesas (9 grupos). NFC-e final (nº 77977) transcrita da foto; falta a inicial.
+- **Contagem do B3, Bela Vista:** duas visitas consolidadas por `B3-b_importar_app.py` (originais em `_dados-brutos/app/originais/<visita>/POVn/`, correções com motivo em `outros/`). Sábado, 10/10 (só o POV1): 38 pessoas em 14 grupos (11,4 por hora), permanência de 99 min na porta e 116 min nas mesas. Sexta, 16/10 (extra, 19h15 às 22h): 10 pessoas em 4 grupos (4,0 por hora, POV2), permanência de 96 min em 3 grupos de mesa vistos do início ao fim; o POV1 só registrou grupos já sentados. NFC-e 77977 (10/10) e 78160 (16/10): 183 notas em 6 dias, 30,5 por dia. Dúvidas para os observadores em `docs/pendencias.md`.
 
 - **App de observação 2.4.0** (16/10): CSVs com visita, observador e versão em todas as tabelas, entrada da porta ligada à mesa, motivo da saída rápida, "Fechamento da casa", posição e pausas do observador, condições do dia em lista, marcas de estimado e incerto e roteiro da visita no Temporizador. Em 2.4.1, a porta e a mesa se ligam nos dois sentidos (seção "Da porta" no grupo da mesa). APK `ObservacaoLuderia-2026.10.16-2.apk`: antes de instalar por cima, fazer backup em Ajustes (o APK da nuvem tem outra assinatura de depuração e pode exigir desinstalar). Antes de 18/10, preencher o código do observador em Ajustes de cada celular.
 
@@ -38,7 +38,7 @@ Atualizado em 16/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 ## Próximos 3 passos
 
-1. Preparar as visitas de retorno de **domingo, 18/10**: tirar as dúvidas da visita de 10/10 com os observadores (pendências do B3) e reforçar no roteiro o encerramento da visita no app, a NFC-e no início e no fim e as contagens de mesas a cada 30 min.
+1. Preparar as visitas de retorno de **domingo, 18/10**: tirar as dúvidas das visitas de 10/10 e 16/10 com os observadores (pendências do B3) e reforçar no roteiro o código do observador em Ajustes, o encerramento no app na hora em que a observação acaba, a NFC-e no início e no fim e as contagens de mesas a cada 30 min.
 2. Trocar as premissas N6 de custo e investimento por cotações (aluguel do ponto, reforma, contador, utilidades) e rodar o modelo de novo.
 3. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
 

@@ -1,0 +1,5 @@
+﻿visita_id;observador;versao_app;papel;unidade;visita_inicio;mesa;grupo_entrada;pessoas;categoria;descricao;pedido;chegada;espera_min;pendente
+2026-10-16_SJBV;16-10;2.4.0;porta;Bela Vista;2026-10-16T19:14:30;Mesa 1;19:14;4;bebida;Cerveja, drinks e soda;19:18;19:19;1;nao
+2026-10-16_SJBV;16-10;2.4.0;porta;Bela Vista;2026-10-16T19:14:30;Mesa 1;19:14;4;comida;Batata frita;19:18;19:19;1;nao
+2026-10-16_SJBV;16-10;2.4.0;porta;Bela Vista;2026-10-16T19:14:30;Mesa 4;19:24;3;bebida;Água ;19:24;19:25;1;nao
+2026-10-16_SJBV;16-10;2.4.0;porta;Bela Vista;2026-10-16T19:14:30;Mesa 4;19:24;3;comida;Embalagem de salgado ;19:24;19:25;1;nao
