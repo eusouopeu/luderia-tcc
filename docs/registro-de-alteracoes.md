@@ -1140,3 +1140,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: banco com os 200 posts sorteados (semente 20261015, 56 perfis), um por linha, título `perfil_coleta/shortcode`; colunas da amostra (estrato_sorteio, chave_sorteio, perfil_coleta, perfil, url, data_hora, tipo, curtidas, comentarios, n_midias, fixado, legenda_inicio, arquivo) e de conferência em branco (conferido_em, conferente, post_existe, data_confere, tipo_confere, curtidas_na_pagina, comentarios_na_pagina, legenda_confere, observacao; as de conferência sim/não como seleção Sim/Não). Relação de mão única com "A - Estabelecimentos" (o A não ganhou coluna) e rollups só de leitura: Instagram (A), Seguidores (A), No posts total (A), Data do primeiro post (A). 193 posts ligados à casa pelo @ do Instagram; os 7 de coviljogos (3) e ilusoesindustriais (4) ficam sem relação, por não terem página no A.
 **Justificativa**: pedido do autor: banco de auditoria dos posts ligado às casas, com propriedades do A só para leitura.
 
+
+### 17:58
+**Objeto**: Notion, banco "A - Estabelecimentos", propriedades "Metro (em metros reais)" e "Shopping (em metros reais)"
+**Antes**: nomes de quando guardavam distâncias.
+**Depois**: renomeadas para "Estações (até 1000m)" e "Shoppings (até 1000m)"; conteúdo e opções iguais.
+**Justificativa**: pedido do autor: nomes que digam o que as propriedades guardam agora.
