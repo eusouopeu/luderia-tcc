@@ -28,6 +28,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 10. **Escala de fontes do cap. 5 × P1 e N1–N6** (`docs/melhorias-texto.md`, D01): a ordem de fontes em 4 níveis decidida para o cap. 5 em 15/10 vira a P1 de `_instrucoes/1_estrutura.md` ou sai do capítulo? E que rótulo dar ao tipo de dado da P2, para não confundir com N1–N6?
 
+12. **Cesta de jogos, premissas do cap. 9.3** (`B1_cesta_jogos.xlsx`, 17/10): tamanho do acervo inicial (p25 = 222, mediana = 322 ou p75 = 622 títulos); desconto de distribuidora sobre o varejo online; frete e reposição por desgaste. A faixa por jogo é estreita porque muitos jogos estão à venda em uma loja só (menor = maior).
+
 ## Tarefas a fazer (pedidas pelo autor em 15/10/2026)
 
 - **Instagram: aprimorar o coletor e refazer a coleta destes perfis** (status no Notion "Luderias – Status da coleta", 15/10):
