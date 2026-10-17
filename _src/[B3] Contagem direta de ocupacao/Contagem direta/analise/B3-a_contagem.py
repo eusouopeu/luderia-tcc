@@ -19,9 +19,11 @@ Saídas em `dados/[B3] Contagem direta de ocupacao/`:
       tamanho do grupo, permanência (mesas e porta, com contagem de censurados),
       ocupação média das mesas nas contagens, notas emitidas na visita e pessoas
       por nota, pedidos por grupo e espera média (pedido → chegada) por categoria.
-  contagem_notas_intervalo.csv - por unidade: notas emitidas entre a visita
-      sorteada e a de retorno (última NFC-e da primeira × primeira NFC-e da
-      segunda, mesma série e CNPJ) e notas por dia no intervalo.
+  contagem_notas_intervalo.csv - por unidade, uma linha por par de visitas
+      consecutivas (sorteada, extras, retorno): notas emitidas entre elas
+      (última NFC-e lida na anterior × primeira lida na seguinte, mesma série)
+      e notas por dia no intervalo. O intervalo inclui dias úteis e fins de
+      semana na proporção do calendário; não é a taxa de um dia típico.
 
 Regras (_instrucoes/4_metodologia.md, Bloco B3):
   - Taxas por hora observada: a duração vem de visita_inicio/visita_fim menos o
@@ -197,30 +199,31 @@ def resumo_visitas() -> pd.DataFrame:
 
 
 def notas_intervalo() -> pd.DataFrame:
-    """Notas entre a visita sorteada (primeira) e a de retorno (segunda) de cada unidade."""
+    """Notas entre visitas consecutivas de cada unidade (sorteada, extras e retorno)."""
     visitas = ler("contagem_visitas.csv")
     # uma linha por visita: a do observador que registrou a NFC-e (os dois leem a mesma nota)
-    visitas = (visitas.assign(_com_nota=visitas["nfce_inicio_numero"] != "")
+    visitas = (visitas.assign(_com_nota=(visitas["nfce_inicio_numero"] != "") | (visitas["nfce_fim_numero"] != ""))
                .sort_values(["_com_nota", "visita_inicio"], ascending=[False, True])
                .drop_duplicates("visita_id"))
     linhas = []
     for unidade, vs in visitas.sort_values("visita_inicio").groupby("unidade"):
-        if len(vs) < 2:
-            continue
-        a, b = vs.iloc[0], vs.iloc[-1]
-        # última leitura da primeira visita e primeira leitura da segunda
-        serie_a, num_a, em_a = (a["nfce_fim_serie"], a["nfce_fim_numero"], a["nfce_fim_emissao"]) if a["nfce_fim_numero"] else (a["nfce_inicio_serie"], a["nfce_inicio_numero"], a["nfce_inicio_emissao"])
-        serie_b, num_b, em_b = b["nfce_inicio_serie"], b["nfce_inicio_numero"], b["nfce_inicio_emissao"]
-        if not (num_a and num_b) or serie_a != serie_b:
-            continue
-        t_a = pd.Timestamp(em_a or a["visita_fim"] or a["visita_inicio"])
-        t_b = pd.Timestamp(em_b or b["visita_inicio"])
-        dias = (t_b - t_a).total_seconds() / 86400
-        notas = int(num_b) - int(num_a)
-        linhas.append({
-            "unidade": unidade, "de": t_a, "ate": t_b, "dias": round(dias, 2), "serie": serie_a,
-            "notas_emitidas": notas, "notas_por_dia": round(notas / dias, 1) if dias > 0 else float("nan"),
-        })
+        for i in range(len(vs) - 1):
+            a, b = vs.iloc[i], vs.iloc[i + 1]
+            # última leitura da visita anterior e primeira leitura da seguinte (início ou, sem ele, fim)
+            serie_a, num_a, em_a = (a["nfce_fim_serie"], a["nfce_fim_numero"], a["nfce_fim_emissao"]) if a["nfce_fim_numero"] else (a["nfce_inicio_serie"], a["nfce_inicio_numero"], a["nfce_inicio_emissao"])
+            serie_b, num_b, em_b = (b["nfce_inicio_serie"], b["nfce_inicio_numero"], b["nfce_inicio_emissao"]) if b["nfce_inicio_numero"] else (b["nfce_fim_serie"], b["nfce_fim_numero"], b["nfce_fim_emissao"])
+            if not (num_a and num_b) or serie_a != serie_b:
+                continue
+            t_a = pd.Timestamp(em_a or a["visita_fim"] or a["visita_inicio"])
+            t_b = pd.Timestamp(em_b or b["visita_inicio"])
+            dias = (t_b - t_a).total_seconds() / 86400
+            notas = int(num_b) - int(num_a)
+            linhas.append({
+                "unidade": unidade, "visita_de": a["visita_id"], "visita_ate": b["visita_id"],
+                "de": t_a, "ate": t_b, "dias": round(dias, 2), "serie": serie_a,
+                "nota_de": int(num_a), "nota_ate": int(num_b),
+                "notas_emitidas": notas, "notas_por_dia": round(notas / dias, 1) if dias > 0 else float("nan"),
+            })
     return pd.DataFrame(linhas)
 
 

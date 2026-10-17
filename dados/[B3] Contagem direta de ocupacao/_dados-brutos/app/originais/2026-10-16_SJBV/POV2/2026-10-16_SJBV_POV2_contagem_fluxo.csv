@@ -1,0 +1,9 @@
+﻿visita_id;observador;versao_app;papel;unidade;visita_inicio;codigo;tipo;hora;pessoas;pessoas_estimado;criancas;destino;motivo
+2026-10-16_SJBVBV;POV2;2.4.0;;Bela Vista;2026-10-16T19:31:04;BV-1;entrada;19:49;2;nao;0;Mesa 10;
+2026-10-16_SJBVBV;POV2;2.4.0;;Bela Vista;2026-10-16T19:31:04;BV-2;entrada;20:22;4;nao;0;Mesa 11;
+2026-10-16_SJBVBV;POV2;2.4.0;;Bela Vista;2026-10-16T19:31:04;BV-3;entrada;21:14;2;nao;0;Balcão/loja;
+2026-10-16_SJBVBV;POV2;2.4.0;;Bela Vista;2026-10-16T19:31:04;BV-4;entrada;21:32;2;nao;0;Balcão/loja;
+2026-10-16_SJBVBV;POV2;2.4.0;;Bela Vista;2026-10-16T19:31:04;BV-3;saida;21:32;2;nao;0;;
+2026-10-16_SJBVBV;POV2;2.4.0;;Bela Vista;2026-10-16T19:31:04;BV-4;saida;21:32;2;nao;0;;Só olhou
+2026-10-16_SJBVBV;POV2;2.4.0;;Bela Vista;2026-10-16T19:31:04;BV-2;saida;22:00;4;nao;0;;
+2026-10-16_SJBVBV;POV2;2.4.0;;Bela Vista;2026-10-16T19:31:04;BV-1;saida;22:00;2;nao;0;;
