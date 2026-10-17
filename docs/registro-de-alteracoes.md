@@ -1158,3 +1158,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: sem campos de cardápio; status de cardápio parcial ou não coletado.
 **Depois**: no banco A, quantidades por categoria, itens de referência (mais barato da subcategoria; na Jogasampa, brownie em vez de bala), combo da Tubaleria (Harry Potter + batata, R$ 37; 13 combos) e nota de fonte. No status, "Coleta completa" no cardápio das três, com o que falta (bebidas na CCG e na Tubaleria; comida na Jogasampa).
 **Justificativa**: pedido do autor: levar os prints ao Notion.
+
+### 18:09
+**Objeto**: Notion, banco "A - Estabelecimentos", propriedades "Tamanho do acervo" e "Preço médio (aluguel)"
+**Antes**: as duas propriedades vazias nas 54 casas.
+**Depois**: "Tamanho do acervo" preenchido nas 30 casas com lista em `B1_jogos_dos_acervos.csv` (títulos por casa; soma 14.552 = linhas do CSV). "Preço médio (aluguel)" nas 18 casas com preço de aluguel na lista (média simples de `aluguel_rs` dos títulos com preço, R$, 2 casas decimais; de R$ 8,05 na Toca do Rato a R$ 46,36 na Ludoteca BGC). As 12 casas sem preço (listas da Ludopedia, PDF, Canva, blog e acervos sem aluguel) ficam em branco. O prazo do aluguel varia por casa (1, 3 ou 7 dias) e não entra na média.
+**Justificativa**: pedido do autor: levar ao Notion o tamanho dos acervos e o preço médio de aluguel.
