@@ -1059,3 +1059,11 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o site no ar tinha a paleta preto/cinza/vermelho e Montserrat.
 **Depois**: `pnpm run deploy` publicou o visual editorial (commit 095e81c); conferido no ar (Fraunces carregada, fundo creme).
 **Justificativa**: pedido do autor: publicar o novo visual.
+
+## 2026/10/17
+
+### 15:32
+**Objeto**: Notion, banco "A - Estabelecimentos" (esquema, 54 linhas com Instagram e visualização "PERFIL BASICO")
+**Antes**: Posts, Endereço, Nota média, N de avaliações e Categoria (maps) vazios em todas as linhas; Seguidores vazio em 5 casas e No posts total em 4; Site vazio em 10; horários só numa propriedade multisseleção vazia ("Horários de funcionamento"), sem opções.
+**Depois**: 12 propriedades novas para o horário: "Dias de funcionamento" (multisseleção Seg–Dom), "Seg" a "Dom" (texto, "HH:MM – HH:MM", turnos separados por ";", "fechado" quando sem horário), "Dias abertos (qtd)", "Horas por semana", "Abre mais cedo" e "Fecha mais tarde" ("(+1)" = madrugada do dia seguinte). Categoria (maps) com 12 opções: primeiro tipo reconhecido do campo `types` do Google Places, traduzido. Preenchidos nas 54 casas: endereço, nota, avaliações, horários (de `B1_resumo_estabelecimentos.xlsx` e `B1_horarios.csv`, coleta de 15/10); Posts com o mesmo valor de "No posts total" (53 casas; Ludus sem total de posts); Seguidores e No posts total das casas novas (Bardo Mago, La Tabuleria, TabuClub, Toca do Rato, Tubaleria) pelos `*_instagram_perfis.csv` de 15/10; categoria em 53 (Toca do Rato sem `types` na coleta); Site em 3 (Comdado, do Places; La Tabuleria e TabuClub, página do acervodejogos). Na visualização, os campos de horário entram no lugar de "Horários de funcionamento", que ficou oculta e sem uso. Conferência: 54/54 linhas com endereço, nota, avaliações, seguidores e horário.
+**Justificativa**: pedido do autor: completar o perfil básico no Notion e dar ao horário um formato que permita filtrar por dia e comparar carga semanal.
