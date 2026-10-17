@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 16/10/2026 | Porta e mesa ligadas nos dois sentidos no app (2.4.1): o código da porta em `Registro.fluxos` manda no destino da entrada; grupo novo ligado à primeira entrada herda hora e pessoas da porta, e as seguintes somam | `_src/app-observacao/src/domain/model.ts` (`sincronizarPortaMesas`) |
 | 16/10/2026 | App de observação 2.4.0: CSVs com `visita_id`, `observador`, `versao_app` e `papel` em todas as tabelas; entrada na porta ligada à mesa; saída rápida com motivo (desistência = Lotado ou Só olhou); "Fechamento da casa" como censura, fora da permanência média; posição, papel e pausas do observador; condições do dia em lista; marca de estimado para pessoas e de incerto para jogos; roteiro da visita no Temporizador | `_src/app-observacao/src/domain/model.ts`, `B3-a_contagem.py` |
 | 15/10/2026 | Modelo financeiro em Python, dirigido pelo registro de premissas em CSV; preços constantes, TMA real (Selic real do Focus + prêmio de risco), horizonte de 5 anos sem perpetuidade; código em `_src/Modelo financeiro/` e saídas em `dados/Modelo financeiro/` (fora das pastas de bloco, porque cruza B1 a B4) | `_src/Modelo financeiro/analise/financeiro-a_modelo.py` |
 | 15/10/2026 | Cap. 8: SLU, CNAE principal 5611-2/05 e Simples Nacional, com A&B no anexo I e couvert e eventos no anexo III (a conferir) | `textos/capitulos/8_aspectos_juridicos.md` |

@@ -1148,3 +1148,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: os perfis de 15/10 trazem esses números (ex.: Bardo Mago, 31.314 seguidores).
 **Efeitos colaterais**: estatística descritiva e site leem o resumo e seguem sem essas casas no Instagram até rodar `B1-b_resumo.py`.
 
+
+### 19:30
+**Objeto**: `_src/app-observacao/` (`src/domain/model.ts`, `App.tsx`, `screens/FormMesa.tsx`, `screens/Folhas.tsx`, `model.test.ts`, `package.json` 2.4.1, `android/app/build.gradle` 2026.10.16-2, `CLAUDE.md`), `AGORA.md`, `docs/decisoes.md`, APK `ObservacaoLuderia-2026.10.16-2.apk` (fora do git)
+**Antes**: o vínculo entre porta e mesa só se fazia pela aba Fluxo ("Foi para"); o grupo aberto direto na mesa não dizia de que entrada veio, a porta não ficava sabendo, e a lista de registros das mesas não mostrava o código da porta.
+**Depois**: o grupo da mesa tem a seção "Da porta", com as entradas sem destino e as já ligadas; tocar liga ou solta, e a aba Fluxo passa a mostrar a mesa no "Foi para". Grupo novo ligado à primeira entrada herda hora e pessoas da porta; entradas seguintes somam pessoas. Gravar ou apagar o grupo acerta o destino na porta (`sincronizarPortaMesas`); destinos fora das mesas não mudam. A lista de registros das mesas mostra os códigos da porta. 24 testes passam.
+**Justificativa**: pedido do autor: contabilizar automaticamente nos registros das mesas a marcação de destino feita no fluxo da porta, e vice-versa.
