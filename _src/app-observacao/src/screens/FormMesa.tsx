@@ -1,5 +1,6 @@
 import { useRef, useState, type ReactNode } from 'react'
 import {
+  ArrowRightEndOnRectangleIcon,
   BellAlertIcon,
   CalendarIcon,
   ChevronLeftIcon,
@@ -17,7 +18,7 @@ import { Chip, ContadorH, ContadorV as Contador, Rotulo, campoClaro as campo } f
 import { SeletorJogos } from '../ui/SeletorJogos'
 import { ListaPedidos } from '../ui/Pedidos'
 import { useVoltar } from '../ui/voltar'
-import { agoraHora, dataBr, dataIso, mascaraData, permanenciaMin, type Registro } from '../domain/model'
+import { agoraHora, dataBr, dataIso, mascaraData, permanenciaMin, type Fluxo, type Registro } from '../domain/model'
 
 type Rascunho = Omit<Registro, 'data'> & { dataTexto: string }
 
@@ -51,10 +52,16 @@ export function FormMesa({
   onDesfazer,
   onApagar,
   acervo = [],
+  entradas = [],
+  novo = false,
 }: {
   titulo: string
   registro: Registro
   acervo?: string[]
+  /** entradas da porta que este grupo pode ligar (as já ligadas e as sem destino) */
+  entradas?: Fluxo[]
+  /** grupo aberto agora: a primeira entrada ligada traz hora e pessoas da porta */
+  novo?: boolean
   /** fecha devolvendo o registro como ficou */
   onFechar: (r: Registro) => void
   onMudar: (r: Registro) => void
@@ -73,6 +80,14 @@ export function FormMesa({
     setR(prox)
     ultimo.current = paraRegistro(prox, ultimo.current)
     onMudar(ultimo.current)
+  }
+  /** Liga ou solta uma entrada da porta; a aba Fluxo passa a mostrar esta mesa como destino. */
+  const alternarPorta = (f: Fluxo) => {
+    const atuais = atual.current.fluxos
+    if (atuais.includes(f.codigo)) return muda({ fluxos: atuais.filter((c) => c !== f.codigo) })
+    if (!atuais.length && novo)
+      return muda({ fluxos: [f.codigo], entrada: f.hora, pessoas: f.pessoas, criancas: f.criancas, pessoasEstimado: f.estimado })
+    muda({ fluxos: [...atuais, f.codigo], pessoas: atual.current.pessoas + f.pessoas, criancas: atual.current.criancas + f.criancas })
   }
   const fechar = () => onFechar(ultimo.current)
   useVoltar(fechar)
@@ -112,6 +127,30 @@ export function FormMesa({
           </div>
 
           {modo === 'editar' ? <Edicao r={r} muda={muda} onSaida={() => (muda({ saida: agoraHora(), saidaTipo: 'grupo' }), setModo('resumo'))} /> : <Resumo r={r} />}
+
+          {(modo === 'editar' ? entradas.length > 0 : r.fluxos.length > 0) && (
+            <>
+              <Rotulo icone={<ArrowRightEndOnRectangleIcon className="size-5" />}>Da porta</Rotulo>
+              <div className="flex flex-wrap gap-2">
+                {modo === 'editar'
+                  ? entradas.map((f) => {
+                      const ligada = r.fluxos.includes(f.codigo)
+                      return (
+                        <button
+                          key={f.id}
+                          onClick={() => alternarPorta(f)}
+                          aria-pressed={ligada}
+                          className={`rounded-full px-3 py-1 text-sm font-semibold ${ligada ? 'bg-caneta-600 text-sobre' : 'bg-papel text-neutro-700'}`}
+                        >
+                          {f.codigo} · {f.hora} · {f.estimado && '≈'}
+                          {f.pessoas}
+                        </button>
+                      )
+                    })
+                  : r.fluxos.map((c) => <Chip key={c}>{c}</Chip>)}
+              </div>
+            </>
+          )}
 
           <Rotulo icone={<ListBulletIcon className="size-5" />}>Jogos</Rotulo>
           {modo === 'editar' ? (

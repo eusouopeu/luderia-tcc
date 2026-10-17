@@ -58,6 +58,7 @@ Nomes com hífen não podem ser importados como módulo Python. Por isso, códig
 | Objeto | Convenção atual | Exemplo |
 |---|---|---|
 | Saída de script (B1 a B3) | `Bn_<objeto>[_<recorte>][_<filtro>][_<limiar>].<ext>`, com os códigos da tabela abaixo; sem palavras que a pasta ou a extensão já dizem (`planilha_`, `grafico_`, `por_filtro`, `avaliacoes`) | `B1_curadoria_metro_f_av100.csv`, `B1_limiares_regio_f.png` |
+| Figura de script (B1 e B2) | `Bn_<objeto>` para gráficos, `Bn_mapa_<variável>_<metro\|regiao>` para cartogramas e `Bn_pict_<variável>` para pictogramas; cada figura em três subpastas: `png/` (300 dpi, para o .docx), `svg/` (texto editável) e `valores/` (CSV com os números desenhados). No B1, em `estabelecimentos/5_graficos/<graficos\|cartogramas\|pictogramas>/`; no B2, em `graficos/` | `5_graficos/cartogramas/png/B1_mapa_nota_metro.png`, `graficos/svg/B2_pict_temas.svg` |
 | Saída do B4 | `[B4] {dado principal} {período} ({fonte}).csv`, na subpasta de uso (`mercado_demanda/`, `ponto_operacoes/`, `juridico_tributario/`, `financeiro/`, `multiuso/`) | `[B4] Aluguel Comercial por Capital 2026-07 (FipeZap).csv` |
 | Resposta bruta de API do B4 | `<série>_<código>_<descrição>.json` ou `<fonte>_<conteúdo>.json`, na subpasta da fonte | `bcb/sgs_1619_salario_minimo.json` |
 | Cache bruto do Google Places e afins | `Bn_<conteúdo>.jsonl` (fora do git) | `B1_detalhes.jsonl` |

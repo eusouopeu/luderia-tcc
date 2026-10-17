@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 16/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 17/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -22,23 +22,28 @@ Atualizado em 16/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 
 - **Cap. 2 (referencial teórico):** rascunho pronto em 15/10 (`textos/capitulos/2_referencial_teorico.md`, 8,3/10 páginas). Falta conferir edição e página dos livros `[AV]` na Minha Biblioteca da UFBA (`bibliografia/bibliografia-v2/procurar-manualmente.md`).
 
+- **Gráficos, cartogramas e pictogramas** (16/10): 25 figuras em estilo editorial (título com a conclusão, cinza e Salvador em vermelho, fonte Source Sans 3), geradas por 4 scripts (`B1-a_graficos.py`, `B1-a_cartogramas.py`, `B1-a_pictogramas_instagram.py`, `B2-a_pictogramas.py`), cada uma em PNG de 300 dpi, SVG editável e CSV dos valores, em `dados/[B1]…/estabelecimentos/5_graficos/` e `dados/[B2]…/graficos/`. Depois de corrigir uma coleta (auditoria), rodar o script de novo. No Mac, os cartogramas pedem `python3 -m pip install geopandas`. Falta escolher quais figuras entram em cada capítulo.
+
+- **Estatística descritiva do B1** (15/10): geral, por metrópole e por região em `dados/[B1]…/estabelecimentos/4_estatistica_descritiva/` e nas abas 08 a 10 do site (`_src/site-apresentacao`, publicado em 15/10; publicar de novo com `pnpm run deploy` quando os dados mudarem). Rodar de novo `B1-a_estatistica_descritiva.py` depois de cada atualização do `B1_resumo_estabelecimentos.xlsx`.
 - **Estatística descritiva do B1** (15/10): geral, por metrópole e por região em `dados/[B1]…/estabelecimentos/4_estatistica_descritiva/` e nas abas 08 a 10 do site (`_src/site-apresentacao`, publicado em 15/10; visual editorial novo publicado em 15/10; publicar de novo com `pnpm run deploy` quando os dados mudarem). Rodar de novo `B1-a_estatistica_descritiva.py` depois de cada atualização do `B1_resumo_estabelecimentos.xlsx`.
 
-- **Contagem do B3, Bela Vista** (visita de sábado, 10/10, 19h às 22h): CSVs do app guardados em `dados/[B3]…/_dados-brutos/app/originais/2026-10-10_SJBV/` e consolidados por `B3-b_importar_app.py`, com descartes e correções em `outros/` do objeto. Só o POV1 vale (o POV2 foi ignorado a pedido do autor). Resultado provisório: 38 pessoas entraram em 14 grupos (11,4 por hora), além das 24 que já estavam dentro; permanência média de 99 min na porta e 116 min nas mesas (9 grupos). NFC-e final (nº 77977) transcrita da foto; falta a inicial.
+- **Cardápios, busca profunda** (16/10): planilha com 34 casas e 1.991 linhas (TabuClub transcrito; Fan Hour com preços de imprensa; LudoCafé, São Jogue, Game Of Boards, Garagem do Nerd, Joyjoy e Asgard parciais). Das 28 casas que faltavam, 16 são lojas sem A&B localizado; o que só abre no navegador (Goomer da São Jogue, iFood do GOB e outros 3) está em `cardapios/B1_cardapios_busca_profunda.csv`. Falta rodar no Mac `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py`.
 
-- **App de observação 2.4.0** (16/10): CSVs com visita, observador e versão em todas as tabelas, entrada da porta ligada à mesa, motivo da saída rápida, "Fechamento da casa", posição e pausas do observador, condições do dia em lista, marcas de estimado e incerto e roteiro da visita no Temporizador. APK `ObservacaoLuderia-2026.10.16-1.apk`: antes de instalar por cima, fazer backup em Ajustes (o APK da nuvem tem outra assinatura de depuração e pode exigir desinstalar). Antes de 18/10, preencher o código do observador em Ajustes de cada celular.
+- **Contagem do B3, Bela Vista:** duas visitas consolidadas por `B3-b_importar_app.py` (originais em `_dados-brutos/app/originais/<visita>/POVn/`, correções com motivo em `outros/`). Sábado, 10/10 (só o POV1): 38 pessoas em 14 grupos (11,4 por hora), permanência de 99 min na porta e 116 min nas mesas. Sexta, 16/10 (extra, 19h15 às 22h): 10 pessoas em 4 grupos (4,0 por hora, POV2), permanência de 96 min em 3 grupos de mesa vistos do início ao fim; o POV1 só registrou grupos já sentados. NFC-e 77977 (10/10) e 78160 (16/10): 183 notas em 6 dias, 30,5 por dia. Dúvidas para os observadores em `docs/pendencias.md`.
+
+- **App de observação 2.4.0** (16/10): CSVs com visita, observador e versão em todas as tabelas, entrada da porta ligada à mesa, motivo da saída rápida, "Fechamento da casa", posição e pausas do observador, condições do dia em lista, marcas de estimado e incerto e roteiro da visita no Temporizador. Em 2.4.1, a porta e a mesa se ligam nos dois sentidos (seção "Da porta" no grupo da mesa). APK `ObservacaoLuderia-2026.10.16-2.apk`: antes de instalar por cima, fazer backup em Ajustes (o APK da nuvem tem outra assinatura de depuração e pode exigir desinstalar). Antes de 18/10, preencher o código do observador em Ajustes de cada celular.
 
 - **Status da coleta no Notion** ("Luderias – Status da coleta", 16/10): 54 casas recalculadas com o PR #10; em cada linha, o que falta e como fechar. Lacunas que restam: acervo sem lista (38), porte de shopping no entorno (25), VLT/BRT de Curitiba (6), cardápio parcial ou sem preço (13) e Instagram (Ludus, LudoCafé, Dominaria). Rodar `B1-b_resumo.py` para levar ao resumo os perfis de 15/10 das 5 casas novas.
 
 - **Modelo financeiro v0** (15/10): `_src/Modelo financeiro/analise/financeiro-a_modelo.py` lê o registro de premissas (`dados/Modelo financeiro/financeiro_premissas.csv`, 53 linhas com faixa, fonte e nível) e grava `financeiro_modelo.xlsx` (indicadores, DRE e fluxo por cenário, tornado, ruptura, coerência, conferência das fontes). Provável: investimento de R$ 390 mil, VPL de R$ 465 mil, payback descontado de 30 meses. Premissas críticas: permanência, ocupação em dia útil e no fim de semana (só N6 até o B3), horas abertas e ticket de A&B. Rodar de novo depois de cada premissa trocada.
 
-- **Cap. 8 (jurídico):** rascunho em 15/10 (`textos/capitulos/8_aspectos_juridicos.md`): SLU, CNAE 5611-2/05, Simples (A&B no anexo I, couvert e eventos no anexo III), licenças em Salvador, LGPD, locação, jogos e marca. Normas `[AV]` e três `[conferir]`.
+- **Cap. 8 (jurídico):** rascunho enxugado em 16/10 para 2,8/3 páginas (`textos/capitulos/8_aspectos_juridicos.md`): SLU, CNAE 5611-2/05, Simples (A&B no anexo I, couvert e eventos no anexo III), Quadro 02 com licenças, bebida alcoólica e LGPD, locação, jogos e marca. Normas `[AV]`, quatro `[conferir]` e a lacuna D19 (reforma tributária e ruído).
 
 - **Notion offline** (15/10): `python3 _src/extras/ler_notion_offline.py` lista os bancos do cache do app; com o nome do banco e `--saida`, exporta CSV. O cache é parcial (B - Comentários: 889 de 1.628 linhas) e não traz fórmulas; serve para consulta, não como fonte.
 
 ## Próximos 3 passos
 
-1. Preparar as visitas de retorno de **domingo, 18/10**: tirar as dúvidas da visita de 10/10 com os observadores (pendências do B3) e reforçar no roteiro o encerramento da visita no app, a NFC-e no início e no fim e as contagens de mesas a cada 30 min.
+1. Preparar as visitas de retorno de **domingo, 18/10**: tirar as dúvidas das visitas de 10/10 e 16/10 com os observadores (pendências do B3) e reforçar no roteiro o código do observador em Ajustes, o encerramento no app na hora em que a observação acaba, a NFC-e no início e no fim e as contagens de mesas a cada 30 min.
 2. Trocar as premissas N6 de custo e investimento por cotações (aluguel do ponto, reforma, contador, utilidades) e rodar o modelo de novo.
 3. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
 

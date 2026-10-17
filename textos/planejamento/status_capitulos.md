@@ -1,6 +1,6 @@
 # Status dos capítulos
 
-Atualizado em 15/10/2026. Prazos do [cronograma](cronograma_luderia.md); tetos de [_instrucoes/1_estrutura.md](../../_instrucoes/1_estrutura.md). Páginas estimadas a 350 palavras por página. Situação: **não iniciado** (sem arquivo em `textos/capitulos/`), **rascunho**, **revisado**, **final**.
+Atualizado em 16/10/2026. Prazos do [cronograma](cronograma_luderia.md); tetos de [_instrucoes/1_estrutura.md](../../_instrucoes/1_estrutura.md). Páginas estimadas a 350 palavras por página. Situação: **não iniciado** (sem arquivo em `textos/capitulos/`), **rascunho**, **revisado**, **final**.
 
 | Cap. | Situação | Páginas (usadas/teto) | Prazo do rascunho | Depende de | Pendência principal |
 |---|---|---|---|---|---|
@@ -11,7 +11,7 @@ Atualizado em 15/10/2026. Prazos do [cronograma](cronograma_luderia.md); tetos d
 | 5 Análise de mercado | Esboço ⚠ | ~6/7 | 09/10 (5.1, 5.4, 5.5); 16/10 (5.3); 30/10 (5.2) | B1, B4; B2 para 5.2 | Esboço de 15/10 com lacunas `[script]`, `[AV]` e `[BUSCAR]` (pendências, item 9); 5.2 aguarda o Bardin |
 | 6 Plano de marketing | Não iniciado | 0/8 | 16/10 (6.3, 6.4); 30/10 (demais) | B1, B2, B4 | Preço (6.3) e bairro (6.4) |
 | 7 Plano operacional | Não iniciado | 0/4 | 23/10 | B3 | Visitas de retorno (18/10) |
-| 8 Aspectos jurídicos | Rascunho | 3,9/3 | Concluído | B4 (Simples, CNAE) | Conferir normas `[AV]` e os três `[conferir]` (anexo de A&B, CNAE secundário, lei de uso do solo de Salvador); acima do teto por 0,9 página com as referências do capítulo |
+| 8 Aspectos jurídicos | Rascunho | 2,8/3 | Concluído | B4 (Simples, CNAE), modelo financeiro | Enxugado em 16/10 (sem as referências do capítulo, que vão para a lista geral). Conferir normas `[AV]` e os `[conferir]` (anexo de A&B, CNAE secundário, lei de uso do solo de Salvador, prazo LGPD); ver D19 em `docs/melhorias-texto.md` |
 | 9 Plano financeiro | Modelo v0 | 0/12 | 23/10 | B1 a B4 | Modelo e registro de premissas em `dados/Modelo financeiro/` (15/10); falta o texto e trocar N6 por B3 e cotações |
 | 10 Riscos | Não iniciado | 0/4 | 30/10 | Cap. 9 | — |
 | 11 Considerações finais | Não iniciado | 0/2 | 06/11 | Todos | — |

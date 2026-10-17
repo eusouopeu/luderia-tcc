@@ -1,2 +1,4 @@
-﻿visita_id;observador;fonte_registro;unidade;mesas;estantes;prateleiras_por_estante;caixas_por_prateleira;capacidade_caixas;instrutores;atendentes;jogos_vistos
-2026-10-10_SJBV;POV1;app;BV;6;27;4;4;432;7;0;
+﻿visita_id;observador;fonte_registro;unidade;mesas;estantes;prateleiras_por_estante;caixas_por_prateleira;capacidade_caixas;instrutores;atendentes;jogos_vistos;versao_app;papel;visita_inicio
+2026-10-10_SJBV;POV1;app;BV;6;27;4;4;432;7;0;;;;
+2026-10-16_SJBV;POV1;app;BV;12;0;0;0;0;2;0;;2.4.0;porta;2026-10-16T19:14:30
+2026-10-16_SJBV;POV2;app;BV;15;0;0;0;0;3;0;;2.4.0;;2026-10-16T19:31:04

@@ -1,10 +1,23 @@
-﻿visita_id;observador;fonte_registro;unidade;visita_inicio;visita_fim;mesa;data;entrada;saida;permanencia_min;censurada;pessoas;criancas;aniversario;instrutor_vezes;jogos;notas
-2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 1;2026-10-10;18:37;19:13;36;nao;6;0;nao;0;;
-2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 2;2026-10-10;18:38;19:09;31;nao;3;0;nao;0;Cai cai;3 meninas
-2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 5;2026-10-10;18:38;21:57;199;nao;3;0;nao;2;Quem eu sou | Abstract | Hitster;
-2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 4;2026-10-10;19:07;21:57;170;nao;4;0;nao;0;Nem a pato | Dobble | Cash guns;
-2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 3;2026-10-10;19:07;21:18;131;nao;7;0;nao;0;Dobble | Dixit | Trolley | Quem sou eu;
-2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 6;2026-10-10;19:08;20:37;89;nao;2;0;nao;2;;Muito longe pra contar
-2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 1;2026-10-10;19:14;21:57;163;nao;10;0;sim;1;Dobble | Uno | Nem a pato | Taboo;
-2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 2;2026-10-10;19:27;21:18;111;nao;4;0;nao;1;Fdp | Jamaica | Quem sou eu | Cai nao cai;
-2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 2;2026-10-10;20:18;;;sim;2;0;nao;0;;
+﻿visita_id;observador;fonte_registro;unidade;visita_inicio;visita_fim;mesa;data;entrada;saida;permanencia_min;censurada;pessoas;criancas;aniversario;instrutor_vezes;jogos;notas;versao_app;papel;saida_tipo;pessoas_estimado;fluxos_porta;jogos_incertos
+2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 1;2026-10-10;18:37;19:13;36;nao;6;0;nao;0;;;;;;;;
+2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 2;2026-10-10;18:38;19:09;31;nao;3;0;nao;0;Cai cai;3 meninas;;;;;;
+2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 5;2026-10-10;18:38;21:57;199;nao;3;0;nao;2;Quem eu sou | Abstract | Hitster;;;;;;;
+2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 4;2026-10-10;19:07;21:57;170;nao;4;0;nao;0;Nem a pato | Dobble | Cash guns;;;;;;;
+2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 3;2026-10-10;19:07;21:18;131;nao;7;0;nao;0;Dobble | Dixit | Trolley | Quem sou eu;;;;;;;
+2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 6;2026-10-10;19:08;20:37;89;nao;2;0;nao;2;;Muito longe pra contar;;;;;;
+2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 1;2026-10-10;19:14;21:57;163;nao;10;0;sim;1;Dobble | Uno | Nem a pato | Taboo;;;;;;;
+2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 2;2026-10-10;19:27;21:18;111;nao;4;0;nao;1;Fdp | Jamaica | Quem sou eu | Cai nao cai;;;;;;;
+2026-10-10_SJBV;POV1;app;BV;2026-10-10T18:37:31;;Mesa 2;2026-10-10;20:18;;;sim;2;0;nao;0;;;;;;;;
+2026-10-16_SJBV;POV1;app;BV;2026-10-16T19:14:30;2026-10-16T23:42:06;Mesa 1;2026-10-16;19:14;23:41;267;sim;4;0;nao;0;;;2.4.0;porta;grupo;nao;;
+2026-10-16_SJBV;POV1;app;BV;2026-10-16T19:14:30;2026-10-16T23:42:06;Mesa 2;2026-10-16;19:18;23:41;263;sim;2;0;nao;1;;Um casal;2.4.0;porta;grupo;nao;;
+2026-10-16_SJBV;POV1;app;BV;2026-10-16T19:14:30;2026-10-16T23:42:06;Mesa 3;2026-10-16;19:19;23:41;262;sim;4;0;nao;0;;Mesa dentro da sala fechada. Dois casais;2.4.0;porta;grupo;nao;;
+2026-10-16_SJBV;POV1;app;BV;2026-10-16T19:14:30;2026-10-16T23:42:06;Mesa 4;2026-10-16;19:22;19:23;1;sim;1;3;nao;0;;3 adolescentes que estavam numa mesa com outros de outra mesa (de uma festa) e eles saíram 19h20 com um senhor, que deveria ser o responsável ;2.4.0;porta;grupo;nao;;
+2026-10-16_SJBV;POV1;app;BV;2026-10-16T19:14:30;2026-10-16T23:42:06;Mesa 4;2026-10-16;19:24;23:42;258;sim;3;2;nao;0;;Está é a mesa maior que tinha o bolo, duas adultas e duas crianças. ;2.4.0;porta;grupo;nao;;
+2026-10-16_SJBV;POV1;app;BV;2026-10-16T19:14:30;2026-10-16T23:42:06;Mesa 5;2026-10-16;19:32;23:42;250;sim;2;0;nao;1;;Um casal;2.4.0;porta;grupo;nao;;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;2026-10-16T23:40:18;Mesa 2;2026-10-16;19:32;19:49;17;sim;1;1;nao;0;;;2.4.0;;grupo;nao;;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;2026-10-16T23:40:18;Mesa 3;2026-10-16;19:33;21:45;132;sim;4;0;nao;0;Dixit | Codenome;;2.4.0;;grupo;nao;;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;2026-10-16T23:40:18;Mesa 9;2026-10-16;19:33;21:40;127;sim;2;0;nao;1;Calico | Patchwork | Cacao | Isso é meu | Dobble;;2.4.0;;grupo;nao;;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;2026-10-16T23:40:18;Mesa 12;2026-10-16;19:34;19:51;17;sim;2;0;nao;1;;;2.4.0;;grupo;nao;;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;2026-10-16T23:40:18;Mesa 5;2026-10-16;19:49;21:45;116;nao;2;0;nao;0;;;2.4.0;;grupo;nao;;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;2026-10-16T23:40:18;Mesa 10;2026-10-16;19:49;21:05;76;nao;2;0;nao;1;Tetris;;2.4.0;;grupo;nao;BV-1;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;2026-10-16T23:40:18;Mesa 11;2026-10-16;20:22;21:57;95;nao;4;0;nao;1;Medium | Nem a pato | Dixit | Quem sou eu;;2.4.0;;grupo;nao;BV-2;

@@ -39,6 +39,7 @@ export function FolhaRegistros({
                       <span className="w-20 shrink-0 font-bold">{nomeMesa(r.mesaId)}</span>
                       <span className="flex-1 text-[15px]">
                         {r.entrada}–{r.saida ?? '…'} · {r.pessoas} pess. ({r.criancas} cr.)
+                        {r.fluxos.length > 0 && ` · ${r.fluxos.join(', ')}`}
                         {r.aniversario && ' · 🎂'}
                       </span>
                       <span className={`text-sm font-semibold ${p === null ? 'text-caneta-600' : 'text-neutro-500'}`}>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { acervoVazio, arquivosCsv, dataIso, estadoInicial, fecharCasa, MOTIVO_FECHAMENTO, normalizar, novasMesas, paraCsv, permanenciaMin, proximoCodigo, type Estado, type Fluxo } from './model'
+import { acervoVazio, arquivosCsv, dataIso, entradasParaMesa, estadoInicial, fecharCasa, sincronizarPortaMesas, MOTIVO_FECHAMENTO, normalizar, novasMesas, paraCsv, permanenciaMin, proximoCodigo, type Estado, type Fluxo } from './model'
 
 describe('permanenciaMin', () => {
   it('conta os minutos entre entrada e saída', () => {
@@ -114,5 +114,43 @@ describe('fecharCasa e exportação por visita', () => {
     expect(l1[cab.indexOf('visita_id')]).toBe('2026-10-17_SJBV')
     expect(l1[cab.indexOf('destino')]).toBe('Mesa 1')
     expect(fluxo[3].split(';')[cab.indexOf('motivo')]).toBe('Lotado')
+  })
+})
+
+describe('porta e mesas ligadas nos dois sentidos', () => {
+  const base = (): Estado => ({
+    ...estadoInicial(),
+    unidades: [{ id: 'u1', nome: 'Bela Vista', sigla: 'BV', acervo: acervoVazio(), mesas: [{ id: 'm1', nome: 'Mesa 1' }, { id: 'm2', nome: 'Mesa 2' }] }],
+    registros: [
+      {
+        id: 'r1', visitaId: 'v1', unidadeId: 'u1', mesaId: 'm2', data: '2026-10-17', aniversario: false, entrada: '19:05', saida: null, saidaTipo: '',
+        pessoas: 4, criancas: 0, pessoasEstimado: false, fluxos: ['BV-2'], instrutor: 0, jogos: [], jogosIncertos: [], notas: '', pedidos: [],
+      },
+    ],
+    fluxos: [
+      { id: 'f1', visitaId: 'v1', codigo: 'BV-1', tipo: 'entrada', hora: '19:00', pessoas: 3, criancas: 0, estimado: false, destino: 'mesa:m1', motivo: '' },
+      { id: 'f2', visitaId: 'v1', codigo: 'BV-2', tipo: 'entrada', hora: '19:04', pessoas: 4, criancas: 0, estimado: false, destino: '', motivo: '' },
+      { id: 'f3', visitaId: 'v1', codigo: 'BV-3', tipo: 'entrada', hora: '19:06', pessoas: 2, criancas: 0, estimado: false, destino: 'Balcão/loja', motivo: '' },
+      { id: 'f4', visitaId: 'v1', codigo: 'BV-4', tipo: 'entrada', hora: '19:08', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: '' },
+    ],
+  })
+
+  it('o código ligado na mesa vira destino na porta; vínculo perdido volta a vazio; balcão fica', () => {
+    const e = sincronizarPortaMesas(base(), 'v1')
+    const destino = (c: string) => e.fluxos.find((f) => f.codigo === c)!.destino
+    expect(destino('BV-2')).toBe('mesa:m2')
+    expect(destino('BV-1')).toBe('')
+    expect(destino('BV-3')).toBe('Balcão/loja')
+    expect(destino('BV-4')).toBe('')
+  })
+
+  it('apagar o grupo da mesa solta a entrada da porta', () => {
+    const e = sincronizarPortaMesas({ ...base(), registros: [] }, 'v1')
+    expect(e.fluxos.find((f) => f.codigo === 'BV-2')!.destino).toBe('')
+  })
+
+  it('a mesa oferece as entradas dela e as sem destino', () => {
+    const e = sincronizarPortaMesas(base(), 'v1')
+    expect(entradasParaMesa(e, e.registros[0]).map((f) => f.codigo)).toEqual(['BV-1', 'BV-2', 'BV-4'])
   })
 })

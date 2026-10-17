@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="576pt" height="360pt" viewBox="0 0 576 360" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-16T03:23:38.017703</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 360 
+L 576 360 
+L 576 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 21.6 312.48 
+L 554.4 312.48 
+L 554.4 75.6 
+L 21.6 75.6 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="69.818182" y="326.98" transform="rotate(-0 69.818182 326.98)">Segunda</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="142.545455" y="326.98" transform="rotate(-0 142.545455 326.98)">Terça</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="215.272727" y="326.98" transform="rotate(-0 215.272727 326.98)">Quarta</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="288" y="326.98" transform="rotate(-0 288 326.98)">Quinta</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="360.727273" y="326.98" transform="rotate(-0 360.727273 326.98)">Sexta</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="433.454545" y="326.98" transform="rotate(-0 433.454545 326.98)">Sábado</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7"/>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="506.181818" y="326.98" transform="rotate(-0 506.181818 326.98)">Domingo</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_8">
+    <path d="M 21.6 312.48 
+L 554.4 312.48 
+" clip-path="url(#p8a21f8f0ae)" style="fill: none; stroke: #c4c4c4; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 45.818182 312.48 
+L 93.818182 312.48 
+L 93.818182 258.502426 
+L 45.818182 258.502426 
+z
+" clip-path="url(#p8a21f8f0ae)" style="fill: #c4c4c4"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 118.545455 312.48 
+L 166.545455 312.48 
+L 166.545455 190.156721 
+L 118.545455 190.156721 
+z
+" clip-path="url(#p8a21f8f0ae)" style="fill: #8f8f8f"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 191.272727 312.48 
+L 239.272727 312.48 
+L 239.272727 132.684197 
+L 191.272727 132.684197 
+z
+" clip-path="url(#p8a21f8f0ae)" style="fill: #8f8f8f"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 264 312.48 
+L 312 312.48 
+L 312 118.316066 
+L 264 118.316066 
+z
+" clip-path="url(#p8a21f8f0ae)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 336.727273 312.48 
+L 384.727273 312.48 
+L 384.727273 118.316066 
+L 336.727273 118.316066 
+z
+" clip-path="url(#p8a21f8f0ae)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 409.454545 312.48 
+L 457.454545 312.48 
+L 457.454545 118.316066 
+L 409.454545 118.316066 
+z
+" clip-path="url(#p8a21f8f0ae)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 482.181818 312.48 
+L 530.181818 312.48 
+L 530.181818 161.420459 
+L 482.181818 161.420459 
+z
+" clip-path="url(#p8a21f8f0ae)" style="fill: #8f8f8f"/>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="69.818182" y="250.707148" transform="rotate(-0 69.818182 250.707148)">28%</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="69.818182" y="238.093672" transform="rotate(-0 69.818182 238.093672)">15 casas</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="142.545455" y="182.361443" transform="rotate(-0 142.545455 182.361443)">63%</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="142.545455" y="169.747967" transform="rotate(-0 142.545455 169.747967)">34 casas</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="215.272727" y="124.888918" transform="rotate(-0 215.272727 124.888918)">93%</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="215.272727" y="112.275443" transform="rotate(-0 215.272727 112.275443)">50 casas</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="288" y="110.520787" transform="rotate(-0 288 110.520787)">100%</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="288" y="97.907311" transform="rotate(-0 288 97.907311)">54 casas</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="360.727273" y="110.520787" transform="rotate(-0 360.727273 110.520787)">100%</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="360.727273" y="97.907311" transform="rotate(-0 360.727273 97.907311)">54 casas</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="433.454545" y="110.520787" transform="rotate(-0 433.454545 110.520787)">100%</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="433.454545" y="97.907311" transform="rotate(-0 433.454545 97.907311)">54 casas</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="506.181818" y="153.62518" transform="rotate(-0 506.181818 153.62518)">78%</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="506.181818" y="141.011705" transform="rotate(-0 506.181818 141.011705)">42 casas</text>
+   </g>
+  </g>
+  <g id="text_22">
+   <text style="font-weight: 600; font-size: 15.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="12.96" y="27.422467" transform="rotate(-0 12.96 27.422467)">Todas as casas abrem de quinta a sábado; na segunda, só 28%</text>
+  </g>
+  <g id="text_23">
+   <text style="font-size: 11.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #525252" x="12.96" y="50.888164" transform="rotate(-0 12.96 50.888164)">Casas abertas em cada dia da semana (54 casas).</text>
+  </g>
+  <g id="text_24">
+   <text style="font-size: 8.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="12.96" y="346.479141" transform="rotate(-0 12.96 346.479141)">Fonte: elaboração própria com horários do Google Maps e dos perfis das casas (15/10/2026), recorte B1.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p8a21f8f0ae">
+   <rect x="21.6" y="75.6" width="532.8" height="236.88"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -579,7 +579,7 @@
    "n": 54
   },
   "cobra_couvert": {
-   "rotulo": "Cobra couvert ou taxa de jogo (entre as com cardápio)",
+   "rotulo": "Couvert ou taxa de jogo encontrado (entre as com cardápio)",
    "casas": 7,
    "n": 26
   },

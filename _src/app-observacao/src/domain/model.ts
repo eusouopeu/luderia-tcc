@@ -395,6 +395,36 @@ export function destinoTexto(e: Estado, unidadeId: string, destino: string): str
   return m ? nomeMesa(e, unidadeId, m) : destino
 }
 
+/**
+ * Mantém a porta e as mesas de acordo: a entrada cujo código está em `Registro.fluxos` aponta
+ * para a mesa desse grupo; a que apontava para uma mesa e perdeu o vínculo (grupo apagado,
+ * código tirado na mesa) volta a ficar sem destino. Destinos fora das mesas não mudam.
+ */
+export function sincronizarPortaMesas(e: Estado, visitaId: string): Estado {
+  const mesaDe = new Map<string, string>()
+  e.registros
+    .filter((r) => r.visitaId === visitaId)
+    .sort((a, b) => a.entrada.localeCompare(b.entrada))
+    .forEach((r) => (r.fluxos ?? []).forEach((c) => mesaDe.set(c, r.mesaId)))
+  let mudou = false
+  const fluxos = e.fluxos.map((f) => {
+    if (f.visitaId !== visitaId || f.tipo !== 'entrada') return f
+    const m = mesaDe.get(f.codigo)
+    const destino = m ? destinoMesa(m) : mesaDoDestino(f.destino ?? '') ? '' : f.destino
+    if (destino === f.destino) return f
+    mudou = true
+    return { ...f, destino }
+  })
+  return mudou ? { ...e, fluxos } : e
+}
+
+/** Entradas da porta que a mesa pode ligar: as já ligadas a ela e as que ainda não têm destino. */
+export function entradasParaMesa(e: Estado, r: Registro): Fluxo[] {
+  return e.fluxos
+    .filter((f) => f.visitaId === r.visitaId && f.tipo === 'entrada' && ((r.fluxos ?? []).includes(f.codigo) || !f.destino))
+    .sort((a, b) => a.hora.localeCompare(b.hora))
+}
+
 type Filtro = { unidadeId?: string; visitaId?: string }
 const naVisita = (e: Estado, f: Filtro) => (vId: string | null) => {
   if (f.visitaId) return vId === f.visitaId

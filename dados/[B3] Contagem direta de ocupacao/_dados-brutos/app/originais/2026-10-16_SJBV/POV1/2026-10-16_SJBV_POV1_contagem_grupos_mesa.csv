@@ -1,0 +1,7 @@
+﻿visita_id;observador;versao_app;papel;unidade;visita_inicio;visita_fim;mesa;data;entrada;saida;saida_tipo;permanencia_min;censurada;pessoas;pessoas_estimado;criancas;aniversario;instrutor_vezes;fluxos_porta;jogos;jogos_incertos;notas
+2026-10-16_SJBV;16-10;2.4.0;porta;Bela Vista;2026-10-16T19:14:30;2026-10-16T23:42:06;Mesa 1;2026-10-16;19:14;23:41;grupo;267;nao;4;nao;0;nao;0;;;;
+2026-10-16_SJBV;16-10;2.4.0;porta;Bela Vista;2026-10-16T19:14:30;2026-10-16T23:42:06;Mesa 2;2026-10-16;19:18;23:41;grupo;263;nao;2;nao;0;nao;1;;;;Um casal
+2026-10-16_SJBV;16-10;2.4.0;porta;Bela Vista;2026-10-16T19:14:30;2026-10-16T23:42:06;Mesa 3;2026-10-16;19:19;23:41;grupo;262;nao;4;nao;0;nao;0;;;;Mesa dentro da sala fechada. Dois casais
+2026-10-16_SJBV;16-10;2.4.0;porta;Bela Vista;2026-10-16T19:14:30;2026-10-16T23:42:06;Mesa 4;2026-10-16;19:22;19:23;grupo;1;nao;1;nao;3;nao;0;;;;3 adolescentes que estavam numa mesa com outros de outra mesa (de uma festa) e eles saíram 19h20 com um senhor, que deveria ser o responsável 
+2026-10-16_SJBV;16-10;2.4.0;porta;Bela Vista;2026-10-16T19:14:30;2026-10-16T23:42:06;Mesa 4;2026-10-16;19:24;23:42;grupo;258;nao;3;nao;2;nao;0;;;;Está é a mesa maior que tinha o bolo, duas adultas e duas crianças. 
+2026-10-16_SJBV;16-10;2.4.0;porta;Bela Vista;2026-10-16T19:14:30;2026-10-16T23:42:06;Mesa 5;2026-10-16;19:32;23:42;grupo;250;nao;2;nao;0;nao;1;;;;Um casal
