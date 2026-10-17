@@ -45,6 +45,7 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 12. **Modelo financeiro v0, escolhas a confirmar:** cobrar couvert de todos os clientes (R14 = 100%; couvert encontrado em 13 das 34 casas com cardápio, sem dado nas demais), equipe de 7 CLT mais o sócio gestor, 12 mesas em 150 m² e 300 títulos. Cada uma muda o VPL e pode virar decisão no cap. 6.3 ou 7.
 13. **Cap. 8, `[conferir]`:** anexo I para alimentos e bebidas (e não anexo II por preparo próprio), CNAE secundário 9329-8/99 para o couvert e o número da lei de uso do solo de Salvador; prazo de guarda dos dados de reserva (LGPD).
+14. **Figuras nos capítulos (15/10):** escolher, entre as 29 figuras de `5_graficos/` e `[B2]…/graficos/`, as que respondem a uma decisão do plano (cap. 5: casas por metrópole, nota, horários; cap. 6: pictogramas do B2 e do Instagram; cap. 7: horários) e mandar as demais para apêndice. Lacunas que as figuras mostram: São Jogue sem cardápio transcrito (Salvador e Nordeste ficam sem cesta), 5 casas novas sem seguidores no resumo do Instagram e Manaus sem casa no recorte.
 
 ## Divergências entre documentos, ainda sem correção
 
