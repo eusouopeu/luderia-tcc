@@ -145,6 +145,17 @@ FONTES = {
             "https://www.canva.com/design/DAGT9cLv7FI/Vey8vkMqP5ilBVHe0H8n7w/view",
             "design no Canva, transcrito da tela", "", "só lanches prontos; sem taxa de jogo no cardápio"),
        ]},
+    # 17/10/2026: prints enviados pelo autor (data por linha: foto do Maps ou idade do story)
+    **{arq: dict(place_id=pid, url=url, formato="prints transcritos à mão", data_cardapio="", status="extraído",
+                 data_coleta="2026-10-17", nota=nota)
+       for arq, pid, url, nota in [
+           ("ccgfloripa", "ChIJawIVeV0JM0oR5BtnD_poQeA", "foto do Google Maps (jul. 2023)",
+            "logo da Taverna Nerd Store, loja da própria CCG; só lanches e fritas"),
+           ("jogasampa", "ChIJn7uU0RNbzpQRI4GI9KHOo_s", "foto do Google Maps (out. 2023)",
+            "quadro de letras: bebidas sem álcool e doces"),
+           ("tubaleria", "ChIJsU5BAwBRzpQRAgLVvqg68os", "destaque \"Cardápio\" do Instagram",
+            "data do story pela idade exibida (45, 38, 31 e 21 semanas); sem bebidas nos prints"),
+       ]},
     "fortaludica": dict(place_id="ChIJyXjE650xWpMRJL-J6QbGkt4",
                         url="https://drive.google.com/uc?export=download&id=1cl7YIKdJhuuhNCUKAO0-96czajLGInqJ",
                         formato="PDF (Canva), transcrito à mão", data_cardapio="2025-12", status="extraído",

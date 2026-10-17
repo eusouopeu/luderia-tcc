@@ -1146,3 +1146,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: nomes de quando guardavam distâncias.
 **Depois**: renomeadas para "Estações (até 1000m)" e "Shoppings (até 1000m)"; conteúdo e opções iguais.
 **Justificativa**: pedido do autor: nomes que digam o que as propriedades guardam agora.
+
+### 18:07
+**Objeto**: `_dados-brutos/cardapios/transcricao/` (`ccgfloripa.csv`, `jogasampa.csv`, `tubaleria.csv`), prints em `ca_florianopolis/ca_ccg_floripa/`, `ca_sao_paulo/ca_jogasampa/` e `ca_sao_paulo/ca_tubaleria/`, `B1-b_cardapios_planilha.py`, planilha de cardápios, resumo, estatística descritiva e site (`gh-pages` 170acc4)
+**Antes**: 34 casas na planilha (2.173 linhas); CCG Floripa, Jogasampa e Tubaleria sem cardápio.
+**Depois**: 37 casas e 2.218 linhas (soma por casa = total). CCG Floripa: foto do Maps de jul/2023 (5 xis e 4 fritas; o logo é da Taverna Nerd Store, que o Notion registra como loja da própria CCG). Jogasampa: quadro de letras do Maps de out/2023 (5 bebidas sem álcool e 2 doces). Tubaleria: 15 prints do destaque "Cardápio" do Instagram (bolotas, 9 hambúrgueres, salada e batata; combo com batata como variação do item, como na Arena BG), com a data do story estimada pela idade exibida (45, 38, 31 e 21 semanas antes de 17/10). 36 casas com cesta no resumo; site republicado.
+**Justificativa**: pedido do autor: incluir os prints de cardápio que ele tinha esquecido de enviar.
+
+### 18:07
+**Objeto**: Notion, "A - Estabelecimentos" e "Luderias – Status da coleta" (CCG Floripa, JogaSampa, Tubaleria)
+**Antes**: sem campos de cardápio; status de cardápio parcial ou não coletado.
+**Depois**: no banco A, quantidades por categoria, itens de referência (mais barato da subcategoria; na Jogasampa, brownie em vez de bala), combo da Tubaleria (Harry Potter + batata, R$ 37; 13 combos) e nota de fonte. No status, "Coleta completa" no cardápio das três, com o que falta (bebidas na CCG e na Tubaleria; comida na Jogasampa).
+**Justificativa**: pedido do autor: levar os prints ao Notion.
