@@ -18,7 +18,7 @@
     },
     "cestas": {
       "titulo": "Cesta por pessoa, casa a casa",
-      "descricao": "Faixa entre a cesta baixa (P25) e a alta (P75) das casas com bebida e entrada ou prato no cardápio. Casa sem couvert entra com couvert R$ 0,00. A linha marca a mediana da cesta mediana dessas casas. Toque numa barra para ver os três níveis."
+      "descricao": "Faixa entre a cesta baixa (P25) e a alta (P75) das casas com couvert, bebida e entrada ou prato no cardápio. Casa sem couvert encontrado fica de fora: não achar o couvert não quer dizer que a casa não cobra. A linha marca a mediana da cesta mediana dessas casas. Toque numa barra para ver os três níveis."
     },
     "histCesta": {
       "titulo": "Distribuição da cesta mediana",

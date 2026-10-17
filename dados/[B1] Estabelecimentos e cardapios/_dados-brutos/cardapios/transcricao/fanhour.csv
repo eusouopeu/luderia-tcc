@@ -1,51 +1,55 @@
-secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao
-Starters;Fan Hour Fries;fritas com tempero da casa;completa 280 g;;entradas;batata;S;site sem preços
-Starters;Fan Hour Fries;fritas com tempero da casa;individual 140 g;;entradas;batata;S;site sem preços
-Starters;MB Fries;fritas com cheddar e bacon;completa 280 g;;entradas;batata;S;site sem preços
-Starters;MB Fries;fritas com cheddar e bacon;individual 140 g;;entradas;batata;S;site sem preços
-Starters;Pastrami Fries;fritas com pastrami e sour cream;completa 280 g;;entradas;batata;S;site sem preços
-Starters;Pastrami Fries;fritas com pastrami e sour cream;individual 140 g;;entradas;batata;S;site sem preços
-Starters;Balloon Fight;queijo gouda empanado com maionese verde;6 unidades;;entradas;outras;S;site sem preços
-Starters;Cuccos;coxinhas sem massa de frango com catupiry;6 unidades;;entradas;outras;S;site sem preços
-Regular burgers;G.A. Choice;blend 150 g, american cheese, cebola caramelizada, bacon e cebola crispy;;;pratos principais;hambúrguer;S;site sem preços
-Regular burgers;Zelda's Banquet;blend 150 g, american cheese, tomate, picles de cebola e salada;;;pratos principais;hambúrguer;S;site sem preços
-Regular burgers;Harvest Burger;burger de grão-de-bico com amêndoas e american cheese;;;pratos principais;hambúrguer;S;site sem preços
-Regular burgers;Mamma Mia Deluxe;blend 150 g, mussarela empanada e pesto rosso;;;pratos principais;hambúrguer;S;site sem preços
-Regular burgers;One Ring;angus 150 g, anel de bacon com catupiry e picles;;;pratos principais;hambúrguer;S;site sem preços
-Regular burgers;Fan Chicken;sobrecoxa empanada com molho picante e alface;;;pratos principais;hambúrguer;S;site sem preços
-Regular burgers;Double Melt;dois angus de 150 g, cheddar e farofa de bacon;;;pratos principais;hambúrguer;S;site sem preços
-Regular burgers;Cheddar of the Colossus;blend 150 g, anéis de cebola, bacon, cheddar e salada;;;pratos principais;hambúrguer;S;site sem preços
-Menu kids;Cheeseburger;smash 80 g e american cheese;;;pratos principais;hambúrguer;S;site sem preços
-Menu kids;Cheesebacon;smash 80 g, american cheese e bacon;;;pratos principais;hambúrguer;S;site sem preços
-Menu kids;Cheesesalad;smash 80 g, american cheese e salada;;;pratos principais;hambúrguer;S;site sem preços
-Monte seu burger;Monte seu burger;angus 150 g, queijo e acompanhamentos à escolha;1 burger;;pratos principais;hambúrguer;S;site sem preços
-Monte seu burger;Monte seu burger;angus 150 g, queijo e acompanhamentos à escolha;2 burgers;;pratos principais;hambúrguer;S;site sem preços
-Salad;Leaf Green;salada com burger bovino, vegetariano ou sobrecoxa empanada;;;pratos principais;outros;S;site sem preços
-Milk shakes;Ice CB;creme com calda de chocolate;;;bebidas;não alcoólicas;S;site sem preços
-Milk shakes;Dreamland;morango;;;bebidas;não alcoólicas;S;site sem preços
-Milk shakes;Chocolate Island;chocolate;;;bebidas;não alcoólicas;S;site sem preços
-Milk shakes;Candy Shake;sorvete de creme com Nutella;;;bebidas;não alcoólicas;S;site sem preços
-Milk shakes;Unishake;sorvete de creme, marshmallow e casquinha;;;bebidas;não alcoólicas;S;site sem preços
-Sobremesas;Aeris' Dream;brownie com sorvete de creme;;;sobremesas;sobremesas;S;site sem preços
-Sobremesas;Great Balls;3 bolas de sorvete;;;sobremesas;sobremesas;S;site sem preços
-Sobremesas;Mr. Cookie;cookie com Nutella e sorvete;;;sobremesas;sobremesas;S;site sem preços
-Cervejas;Eisenbahn IPA;;;;bebidas;cerveja;N;site sem preços
-Cervejas;Patagonia IPA;;;;bebidas;cerveja;N;site sem preços
-Cervejas;Stella Artois;;;;bebidas;cerveja;N;site sem preços
-Cervejas;Heineken;;;;bebidas;cerveja;N;site sem preços
-Drinks;Tifa's Blend;caipirinha de vodca ou cachaça (limão ou morango);;;bebidas;drinks;S;site sem preços
-Drinks;Duke's Mix;gim tônica com limão siciliano;;;bebidas;drinks;S;site sem preços
-Drinks;Conker's Bad Drink;negroni;;;bebidas;drinks;S;site sem preços
-Drinks;Wonder Drink;gim com morango, curaçau blue e grenadine;;;bebidas;drinks;S;site sem preços
-Drinks;Gummy Bear;groselha e Schweppes Citrus com balas de gelatina;;;bebidas;não alcoólicas;S;site sem preços
-Drinks;PP Nectar;vodca, Schweppes Citrus e maçã verde;;;bebidas;drinks;S;site sem preços
-Drinks;PP Nectar sem álcool;água com gás e xarope de maçã verde;;;bebidas;não alcoólicas;S;site sem preços
-Drinks;Rainbow;frutas vermelhas, laranja, curaçau blue e rum prata;;;bebidas;drinks;S;site sem preços
-Drinks;Rainbow sem álcool;frutas vermelhas, laranja e Powerade;;;bebidas;não alcoólicas;S;site sem preços
-Drinks;Vodca;;dose;;bebidas;drinks;N;site sem preços
-Drinks;Red Label;;dose;;bebidas;drinks;N;site sem preços
-Soft drinks;Refrigerante;;;;bebidas;refrigerante;N;site sem preços
-Soft drinks;Suco Del Valle;;;;bebidas;não alcoólicas;N;site sem preços
-Soft drinks;Ice tea pêssego;;;;bebidas;não alcoólicas;N;site sem preços
-Soft drinks;Café expresso;;;;bebidas;não alcoólicas;S;site sem preços
-Soft drinks;Água com ou sem gás;;;;bebidas;não alcoólicas;N;site sem preços
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao;data_cardapio
+Starters;Fan Hour Fries;fritas com tempero da casa;completa 280 g;27.7;entradas;batata;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Starters;Fan Hour Fries;fritas com tempero da casa;individual 140 g;19.9;entradas;batata;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Starters;MB Fries;fritas com cheddar e bacon;completa 280 g;37.7;entradas;batata;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Starters;MB Fries;fritas com cheddar e bacon;individual 140 g;26.7;entradas;batata;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Starters;Pastrami Fries;fritas com pastrami e sour cream;completa 280 g;44.9;entradas;batata;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Starters;Pastrami Fries;fritas com pastrami e sour cream;individual 140 g;31.9;entradas;batata;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Starters;Balloon Fight;queijo gouda empanado com maionese verde;6 unidades;38.7;entradas;outras;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Starters;Cuccos;coxinhas sem massa de frango com catupiry;6 unidades;38.9;entradas;outras;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Regular burgers;G.A. Choice;blend 150 g, american cheese, cebola caramelizada, bacon e cebola crispy;;;pratos principais;hambúrguer;S;site sem preços;
+Regular burgers;Zelda's Banquet;blend 150 g, american cheese, tomate, picles de cebola e salada;;50.3;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Regular burgers;Harvest Burger;burger de grão-de-bico com amêndoas e american cheese;;52.7;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Regular burgers;Mamma Mia Deluxe;blend 150 g, mussarela empanada e pesto rosso;;;pratos principais;hambúrguer;S;site sem preços;
+Regular burgers;One Ring;angus 150 g, anel de bacon com catupiry e picles;;57.3;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Regular burgers;Fan Chicken;sobrecoxa empanada com molho picante e alface;;;pratos principais;hambúrguer;S;site sem preços;
+Regular burgers;Double Melt;dois angus de 150 g, cheddar e farofa de bacon;;69.1;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Regular burgers;Cheddar of the Colossus;blend 150 g, anéis de cebola, bacon, cheddar e salada;;;pratos principais;hambúrguer;S;site sem preços;
+Menu kids;Cheeseburger;smash 80 g e american cheese;;32.3;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Menu kids;Cheesebacon;smash 80 g, american cheese e bacon;;35.9;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Menu kids;Cheesesalad;smash 80 g, american cheese e salada;;34.9;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Monte seu burger;Monte seu burger;angus 150 g, queijo e acompanhamentos à escolha;1 burger;;pratos principais;hambúrguer;S;site sem preços;
+Monte seu burger;Monte seu burger;angus 150 g, queijo e acompanhamentos à escolha;2 burgers;;pratos principais;hambúrguer;S;site sem preços;
+Salad;Leaf Green;salada com burger bovino, vegetariano ou sobrecoxa empanada;;;pratos principais;outros;S;site sem preços;
+Milk shakes;Ice CB;creme com calda de chocolate;;36.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Milk shakes;Dreamland;morango;;36.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Milk shakes;Chocolate Island;chocolate;;36.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Milk shakes;Candy Shake;sorvete de creme com Nutella;;46.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Milk shakes;Unishake;sorvete de creme, marshmallow e casquinha;;38.3;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Sobremesas;Aeris' Dream;brownie com sorvete de creme;;30.9;sobremesas;sobremesas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Sobremesas;Great Balls;3 bolas de sorvete;;24.9;sobremesas;sobremesas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Sobremesas;Mr. Cookie;cookie com Nutella e sorvete;;29.9;sobremesas;sobremesas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Cervejas;Eisenbahn IPA;;;;bebidas;cerveja;N;site sem preços;
+Cervejas;Patagonia IPA;;;;bebidas;cerveja;N;site sem preços;
+Cervejas;Stella Artois;;;;bebidas;cerveja;N;site sem preços;
+Cervejas;Heineken;;;;bebidas;cerveja;N;site sem preços;
+Drinks;Tifa's Blend;caipirinha de vodca ou cachaça (limão ou morango);;;bebidas;drinks;S;site sem preços;
+Drinks;Duke's Mix;gim tônica com limão siciliano;;;bebidas;drinks;S;site sem preços;
+Drinks;Conker's Bad Drink;negroni;;;bebidas;drinks;S;site sem preços;
+Drinks;Wonder Drink;gim com morango, curaçau blue e grenadine;;;bebidas;drinks;S;site sem preços;
+Drinks;Gummy Bear;groselha e Schweppes Citrus com balas de gelatina;;24.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Drinks;PP Nectar;vodca, Schweppes Citrus e maçã verde;;;bebidas;drinks;S;site sem preços;
+Drinks;PP Nectar sem álcool;água com gás e xarope de maçã verde;;27.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Drinks;Rainbow;frutas vermelhas, laranja, curaçau blue e rum prata;;;bebidas;drinks;S;site sem preços;
+Drinks;Rainbow sem álcool;frutas vermelhas, laranja e Powerade;;26.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Drinks;Vodca;;dose;;bebidas;drinks;N;site sem preços;
+Drinks;Red Label;;dose;;bebidas;drinks;N;site sem preços;
+Soft drinks;Refrigerante;;;;bebidas;refrigerante;N;site sem preços;
+Soft drinks;Suco Del Valle;;;;bebidas;não alcoólicas;N;site sem preços;
+Soft drinks;Ice tea pêssego;;;;bebidas;não alcoólicas;N;site sem preços;
+Soft drinks;Café expresso;;;;bebidas;não alcoólicas;S;site sem preços;
+Soft drinks;Água com ou sem gás;;;;bebidas;não alcoólicas;N;site sem preços;
+Drinks;Soda Pop;soda sem álcool;;25.9;bebidas;não alcoólicas;S;"preço da matéria São Paulo para Crianças (atualizada em 05/10/2026); item fora do site";2026-10-05
+Soft drinks;Arcane Tea;chá gelado;;14.9;bebidas;não alcoólicas;S;"preço da matéria São Paulo para Crianças (atualizada em 05/10/2026); item fora do site";2026-10-05
+Jogos;Jogos (tabuleiro, videogame e monitoria);por pessoa;;20.0;couvert ou taxa de jogo;couvert ou taxa de jogo;N;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Jogos;Nintendo Switch 2;por pessoa, no lugar da taxa de jogo comum;;40.0;outros;adicionais;N;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05

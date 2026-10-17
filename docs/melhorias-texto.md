@@ -46,7 +46,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D15 — Travessão e linha de fonte.** O cap. 1 usa hífen com espaços ( - ) como travessão; os caps. 2 e 5 usam travessão (—). O cap. 2 escreve "Fonte: elaborado pelo autor."; o cap. 5, "Fonte: elaborado pelo próprio autor com base em…". Padronizar na revisão de forma.
 
-**D16 — Couvert lúdico tratado como dado.** Cap. 2 (2.4, Quadro 1) × cap. 5 (5.3.4). O cap. 2 fala na "definição do couvert lúdico" como se o plano fosse cobrá-lo; o cap. 5 mostra que só 7 de 26 casas cobram e que o couvert não é a regra. Não é contradição, mas o cap. 2 pode dizer "a cobrança ou não de couvert lúdico".
+**D16 — Couvert lúdico tratado como dado.** Cap. 2 (2.4, Quadro 1) × cap. 5 (5.3.4). O cap. 2 fala na "definição do couvert lúdico" como se o plano fosse cobrá-lo; o cap. 5 mostra couvert no cardápio de 7 das 26 casas, sem dado nas demais. Não é contradição, mas o cap. 2 pode dizer "a cobrança ou não de couvert lúdico".
 
 **D17 — Mercado&Consumo como sustentação.** Cap. 1 (contextualização). Dado de shopping (1,4% → 2,2% das lojas) vem de imprensa (P1, nível 6), que pela P1 não sustenta argumento. Já marcado para troca pela Abrasce.
 
