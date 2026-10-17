@@ -1127,3 +1127,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: abas 08 a 10 com os dados de 15/10 (27 cestas de cardápio).
 **Depois**: `pnpm run deploy` publicou os dados de 17/10 (commit b192014 do `gh-pages`): 33 cestas; conferido no ar (Balboa's, Coletivo Geek e Nala Land no pacote publicado).
 **Justificativa**: pedido do autor: republicar o site com os cardápios e acervos novos.
+
+### 17:55
+**Objeto**: Notion, banco "A - Estabelecimentos", propriedades "Metro (em metros reais)" e "Shopping (em metros reais)"
+**Antes**: tipo número, com a distância à estação de metrô e ao shopping de porte mais próximos (preenchidas às 17:38).
+**Depois**: tipo multisseleção, com os nomes, do mais próximo ao mais distante, a até 1000 m (OSM e `_shoppings.csv` de 15/10). Metro: estações de metrô, trem e VLT/BRT, com o tipo entre parênteses e cor por tipo (azul, verde, laranja); fora as duplicatas do coletor, as paradas sem nome e as do bonde de Santa Teresa com a tag de rede. Ficam 4 paradas do bonde sem a tag (Outeiro da Glória, Russel, Portinha, Francisco Muratori) e variantes de nome do mesmo tubo em Curitiba (Viaduto Capanema, Jardim Botânico), como no parecer do entorno §7. Shopping: os mesmos 70 shoppings de porte das contagens; o OSM sem nome sai como "sem nome (way/…)" e o nome genérico "shopping" como "Shopping (sem nome próprio)". Vírgulas nos nomes viraram " -". As distâncias numéricas saíram do Notion (continuam nos CSVs). Conferência: 107 estações em 33 casas e 70 shoppings em 32 casas, igual ao cálculo sobre os CSVs; soma de shoppings = soma de "Shopping (1000m)".
+**Justificativa**: pedido do autor: converter as duas propriedades em multisseleção com os nomes das estações e dos shoppings.
