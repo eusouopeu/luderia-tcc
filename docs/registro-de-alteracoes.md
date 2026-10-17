@@ -1211,3 +1211,11 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: 10/10, POV1: 6 mesas e 7 instrutores. Cap. 3: quatro visitas de 3 horas, em 03/10 e 18/10, "só fim de semana".
 **Depois**: 16/10: POV1 conta 12 mesas e 2 instrutores; POV2, 15 mesas e 3 instrutores. Há uma visita extra numa sexta (16/10), e a nota de 16/10 cobra a "Taxa de Entrada Salão FDS" também na sexta.
 **Efeitos colaterais**: a ocupação percentual depende do total de mesas da unidade, ainda sem número único; o cap. 3 precisa dizer se a sexta conta como fim de semana ou como dia útil (premissas R07 e R08).
+
+## 2026/10/17
+
+### 13:38
+**Objeto**: `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`, `docs/registro-de-alteracoes.md` (merge dos PRs #8, #9, #10, #13 e #14)
+**Antes**: cinco PRs abertos, cada um com sua versão dos quatro arquivos de controle, em conflito entre si.
+**Depois**: conflitos resolvidos mantendo os dois lados. `decisoes.md` com as linhas de todos os PRs; `registro-de-alteracoes.md` com as entradas em ordem de hora; `pendencias.md` com o item 13 do PR #8 (traz LC 214/2025 e ruído); `AGORA.md` com o B3 das duas visitas (PR #14), a busca profunda de cardápios (PR #10) e o cap. 8 enxugado (PR #8), sem as linhas antigas de 15/10 do Notion e do B3.
+**Justificativa**: pedido do autor: revisar e fazer o merge de todos os PRs abertos.
