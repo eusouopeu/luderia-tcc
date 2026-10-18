@@ -6,3 +6,8 @@ visita_id;observador;tabela;coluna_chave;valor_chave;acao;coluna;valor;motivo
 2026-10-10_SJBV;POV1;visitas;;;preencher;nfce_fim_emissao;2026-10-10T22:08:04;"Idem."
 2026-10-10_SJBV;POV1;visitas;;;preencher;cnpj;34128755000198;"CNPJ da nota (São Jogue Board Game Lanchonete Ltda, Alameda Euvaldo Luz, 92, Horto Bela Vista), no formato do app (14 dígitos)."
 2026-10-10_SJBV;POV1;visitas;;;preencher;valor_cobranca;R$ 28,00 (Taxa de Entrada Salão FDS);"Item da NFC-e 77977; a nota não diz se a taxa é por pessoa."
+2026-10-17_SJPA;POV2;visitas;;;preencher;nfce_fim_serie;1;"NFC-e final transcrita da foto da nota (série 1, nº 12200, emitida em 17/10/2026 21:31:22); o app não leu a nota."
+2026-10-17_SJPA;POV2;visitas;;;preencher;nfce_fim_numero;12200;"Idem."
+2026-10-17_SJPA;POV2;visitas;;;preencher;nfce_fim_emissao;2026-10-17T21:31:22;"Idem."
+2026-10-17_SJPA;POV2;visitas;;;preencher;cnpj;59848429000186;"CNPJ da nota (Sao Jogue Paralela Ltda, Av. Luis Viana Filho, 8544, Paralela), no formato do app (14 dígitos)."
+2026-10-17_SJPA;POV2;visitas;;;preencher;valor_cobranca;R$ 28,00 (Taxa de Entrada Salão FDS);"Item da NFC-e 12200 (2 un., R$ 56,00): indica cobrança por pessoa."

@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 18/10/2026 (11h29). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 18/10/2026 (12h12). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -25,6 +25,8 @@ Atualizado em 18/10/2026 (11h29). Semana 5 do cronograma (10/10 a 16/10). Próxi
 - **Estatística descritiva do B1** (15/10): geral, por metrópole e por região em `dados/[B1]…/estabelecimentos/4_estatistica_descritiva/` e nas abas 08 a 10 do site (`_src/site-apresentacao`, publicado em 15/10; visual editorial novo publicado em 15/10; publicar de novo com `pnpm run deploy` quando os dados mudarem). Rodar de novo `B1-a_estatistica_descritiva.py` depois de cada atualização do `B1_resumo_estabelecimentos.xlsx`.
 
 - **Contagem do B3, Bela Vista** (visita de sábado, 10/10, 19h às 22h): CSVs do app guardados em `dados/[B3]…/_dados-brutos/app/originais/2026-10-10_SJBV/` e consolidados por `B3-b_importar_app.py`, com descartes e correções em `outros/` do objeto. Só o POV1 vale (o POV2 foi ignorado a pedido do autor). Resultado provisório: 38 pessoas entraram em 14 grupos (11,4 por hora), além das 24 que já estavam dentro; permanência média de 99 min na porta e 116 min nas mesas (9 grupos). NFC-e final (nº 77977) transcrita da foto; falta a inicial.
+
+- **Contagem do B3, Paralela** (sábado, 17/10, 19h10 às 21h38; terceira visita): só o POV2, em `originais/2026-10-17_SJPA/` (o app ficou com "Bela Vista"; a unidade vem da pasta). Provisório: 13 pessoas em 3 grupos pela porta (5,3 por hora), 4 grupos de mesa com permanência média de 99,5 min; NFC-e final nº 12200 transcrita. Dúvidas para o observador em `docs/pendencias.md`. A visita de 16/10 (Bela Vista) segue sem importar.
 
 - **Status da coleta no Notion** ("Luderias – Status da coleta", 15/10): 54 casas com status por fonte e, em cada linha, o que falta e como fechar. Horários (54 casas) e cardápios de 27 casas consolidados em 15/10. Em 17/10, "A - Estabelecimentos" completo no perfil básico (endereço, nota, avaliações, categoria, seguidores, posts e horários por dia nas 54 casas). Em 17/10, também o entorno (metrô e shoppings de porte a 500 m e 1000 m, com distância, coleta do OSM de 15/10). Lacunas que restam: acervo sem lista (25) e Instagram (18 casas parciais ou sem coleta); o status do entorno no banco de status ainda não foi atualizado.
 

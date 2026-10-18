@@ -16,7 +16,9 @@ frente das do app.
 
 Regras:
   - `unidade` vem do nome da pasta da visita (SJBV → BV), não do campo digitado
-    no app (o POV2 de 10/10 digitou "BV 10.10").
+    no app (o POV2 de 10/10 digitou "BV 10.10"; o de 17/10, na Paralela,
+    deixou "Bela Vista"). Pelo mesmo motivo, `visita_id` e `observador`
+    gravados pelo app 2.4 são trocados pelos da pasta e do nome do arquivo.
   - Tabelas de um observador listadas em outros/B3_descartes_app.csv saem da
     consolidação (`*` = todas as tabelas do observador na visita), com o motivo
     registrado ali; os originais continuam guardados.
@@ -86,6 +88,8 @@ def main():
         if m["fonte"] == "contagem":
             df = corrigir(df, visita_id, obs, conteudo, correcoes)
         df["unidade"] = m["unidade"]
+        # o app 2.4 já grava visita_id e observador; valem os da pasta e do nome
+        df = df.drop(columns=["visita_id", "observador"], errors="ignore")
         df.insert(0, "fonte_registro", "app" if m["fonte"] == "contagem" else "transcricao")
         df.insert(0, "observador", obs)
         df.insert(0, "visita_id", visita_id)

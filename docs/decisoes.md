@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 18/10/2026 | Unidade Paralela da São Jogue = código SJPA (`visita_id` AAAA-MM-DD_SJPA, unidade PA). O importador do B3 usa sempre a unidade, a visita e o observador da pasta, nunca os digitados no app | `docs/registro-de-alteracoes.md` (18/10 12:12) |
 | 18/10/2026 | Todas as amostras de auditoria (B1, B2 e B4) conferidas no Notion, um banco "B - Auditoria …" por amostra, no desenho do banco dos posts (relação de mão única com o A, rollups só de leitura, conferência Sim/Não em seleção); B4 sem relação | `docs/registro-de-alteracoes.md` (18/10 11:29) |
 | 17/10/2026 | Cesta de jogos = jogos presentes em 15 ou mais dos 30 acervos. Preço em faixa entre as lojas (menor, mediana, p75 ou máximo). Índice por loja = média de preço/mediana do jogo, só para lojas com 10 ou mais jogos comparáveis. Para estender a cesta ao acervo inicial, os títulos restantes valem o preço médio por título (média, não mediana, porque o custo é uma soma) | `_src/[B1]…/Acervo de Jogos/analise/B1-a_cesta_jogos.py`; `docs/registro-de-alteracoes.md` (17/10 18:20) |
 | 17/10/2026 | Auditoria dos posts do Instagram conferida no Notion "B - Auditoria Instagram (posts)": uma linha por post sorteado, relação de mão única com "A - Estabelecimentos" e dados da casa por rollup (só leitura); conferência sim/não em seleção Sim/Não, para distinguir "não" de "não conferido" | `docs/registro-de-alteracoes.md` (17/10 17:57) |

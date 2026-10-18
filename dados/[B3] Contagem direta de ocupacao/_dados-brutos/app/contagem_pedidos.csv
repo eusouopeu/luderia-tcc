@@ -1,1 +1,3 @@
-﻿visita_id;observador;fonte_registro;unidade;visita_inicio;mesa;grupo_entrada;pessoas;categoria;descricao;pedido;chegada;espera_min;pendente
+﻿visita_id;observador;fonte_registro;unidade;visita_inicio;mesa;grupo_entrada;pessoas;categoria;descricao;pedido;chegada;espera_min;pendente;versao_app;papel
+2026-10-17_SJPA;POV2;app;PA;2026-10-17T19:10:41;Mesa 1;19:10;2;bebida;;19:10;;;sim;2.4.0;
+2026-10-17_SJPA;POV2;app;PA;2026-10-17T19:10:41;Mesa 1;19:10;2;bebida;;19:10;;;sim;2.4.0;

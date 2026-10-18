@@ -1184,3 +1184,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: 213 páginas: 200 da amostra e 13 de teste da montagem (teste, t-url, t-rel, t-num-data, t-full, t-full-rel, t-e, t-f, t-g, t-h, x2 e cópias parciais de "Mr. Jack" e "Wanted - One Piece").
 **Depois**: as 13 de teste na lixeira do Notion (restauráveis); 200 páginas, 200 chaves de sorteio distintas.
 **Justificativa**: pedido do autor: apagar as páginas de teste.
+
+### 12:12
+**Objeto**: B3, terceira visita (sábado, 17/10, 19h10 às 21h38, São Jogue Paralela, só o POV2): `dados/[B3]…/_dados-brutos/app/originais/2026-10-17_SJPA/POV2/` (novo), `_src/[B3]…/Contagem direta/outros/B3_correcoes_app.csv`, `build/B3-b_importar_app.py`, consolidados em `_dados-brutos/app/contagem_*.csv` e `contagem_resumo_visitas.csv`
+**Antes**: CSVs do app só em Downloads, com `visita_id` 2026-10-17_SJBVBV e unidade "Bela Vista" (o observador não trocou a unidade no app). O importador quebrava com o app 2.4, que já grava `visita_id` e `observador`.
+**Depois**: os 10 CSVs copiados sem edição, renomeados para `2026-10-17_SJPA_POV2_contagem_*.csv` (SJPA = Paralela; a unidade vem do nome da pasta, PA). NFC-e final (série 1, nº 12200, 17/10/2026 21:31:22, CNPJ 59.848.429/0001-86, São Jogue Paralela Ltda) transcrita da foto em `transcricao_precos.csv` (2 taxas de entrada salão FDS a R$ 28,00, água com gás R$ 6,90, brownie R$ 28,00, Dobble R$ 35,00, Coca Zero R$ 8,90, acréscimo R$ 7,88 = 10% do consumo sem a taxa; total R$ 142,68) e em 5 correções `preencher` da tabela visitas. Foto em `_dados-brutos/app/fotos/` (fora do git; traz CPF). O importador descarta o `visita_id` e o `observador` do app e usa os da pasta. Resultado provisório: 13 pessoas em 3 grupos pela porta (5,3 por hora, em 2,47 h), 4 grupos de mesa com 12 pessoas e permanência média de 99,5 min (mediana 91,5); 68 dB; 15 mesas, 10 estantes × 10 × 5 (500 caixas), 5 instrutores.
+**Justificativa**: pedido do autor: inserir os dados da terceira visita, na unidade Paralela, não no Bela Vista.
+
+### 12:12
+**Objeto**: divergência, unidade da visita de 17/10
+**Antes**: CSVs do app (`unidade` = "Bela Vista", `visita_id` 2026-10-17_SJBVBV).
+**Depois**: NFC-e 12200 e o autor (18/10): São Jogue Paralela.
+**Efeitos colaterais**: nenhum nos consolidados, que tomam a unidade da pasta (SJPA). Os originais seguem com o rótulo errado.
