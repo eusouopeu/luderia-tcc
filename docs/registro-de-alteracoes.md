@@ -1219,3 +1219,11 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: cinco PRs abertos, cada um com sua versão dos quatro arquivos de controle, em conflito entre si.
 **Depois**: conflitos resolvidos mantendo os dois lados. `decisoes.md` com as linhas de todos os PRs; `registro-de-alteracoes.md` com as entradas em ordem de hora; `pendencias.md` com o item 13 do PR #8 (traz LC 214/2025 e ruído); `AGORA.md` com o B3 das duas visitas (PR #14), a busca profunda de cardápios (PR #10) e o cap. 8 enxugado (PR #8), sem as linhas antigas de 15/10 do Notion e do B3.
 **Justificativa**: pedido do autor: revisar e fazer o merge de todos os PRs abertos.
+
+## 2026/10/18
+
+### 13:44
+**Objeto**: Notion, bancos "1A - Auditoria Estabelecimentos", "1A - Auditoria Instagram (perfis)" e "1A - Auditoria Entorno (estabelecimentos)" (propriedades e visão padrão)
+**Antes**: 11 colunas da amostra com nome do CSV (`endereco`, `avaliacao_media`, `volume_avaliacoes`; `seguidores`, `primeiro_post`, `n_posts_declarado`, `link_perfil`; `osm_qt_estacoes_metro_500m`/`_1000m`, `osm_qt_shoppings_500m`/`_1000m`) ao lado de rollups do A com o mesmo dado; `endereco_confere` como seleção Sim/Não, vazia nas 11 linhas.
+**Depois**: as 11 colunas renomeadas com o nome do rollup sem "(A)" (Endereço, Nota média, N de avaliações; Seguidores, Data do primeiro post, No posts total, Instagram; Metro (500m), Metro (1000m), Shopping (500m), Shopping (1000m)), cada uma seguida de uma seleção "<nome> confere" com as opções correta/incorreta; `endereco_confere` (vazia) trocada por "Endereço confere" com as novas opções. Os 11 rollups continuam no banco, ocultos na visão padrão. No Entorno, a coluna renomeada é a do OSM, fonte do Metro do A; o Shopping do A junta Maps e OSM, então "Shopping (500m/1000m)" (OSM) pode diferir do rollup.
+**Justificativa**: pedido do autor: colunas repetidas com o nome do rollup, rollups ocultos e uma seleção correta/incorreta ao lado de cada uma.

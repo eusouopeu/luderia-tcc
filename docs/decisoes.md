@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 18/10/2026 | Bancos de auditoria do Notion: a coluna da amostra (valor congelado no sorteio) é a que se confere, com o nome do rollup do A sem "(A)" e uma seleção "<nome> confere" (correta/incorreta) ao lado; o rollup fica oculto, só como consulta ao valor atual do A | `docs/registro-de-alteracoes.md` (18/10 13:44) |
 | 17/10/2026 | B3, visita extra de sexta, 16/10, ao Bela Vista (fora do sorteio): entra no consolidado com os dois observadores. Grupos lançados na chegada do observador ou fechados no encerramento do app contam como censurados (fora da permanência média); o fim da observação é a última anotação ou a NFC-e, não a hora em que o app foi encerrado. O intervalo de notas passa a sair para cada par de visitas consecutivas da unidade | `outros/B3_correcoes_app.csv`, `B3-a_contagem.py` |
 | 16/10/2026 | Porta e mesa ligadas nos dois sentidos no app (2.4.1): o código da porta em `Registro.fluxos` manda no destino da entrada; grupo novo ligado à primeira entrada herda hora e pessoas da porta, e as seguintes somam | `_src/app-observacao/src/domain/model.ts` (`sincronizarPortaMesas`) |
 | 16/10/2026 | Casa sem couvert no cardápio coletado é "couvert não encontrado", nunca "não cobra" (salvo quando a fonte diz que não cobra); a cesta por pessoa só se forma com couvert, bebida e entrada ou prato encontrados | `B1-b_resumo.py`, registro de 16/10 |
