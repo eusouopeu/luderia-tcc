@@ -30,6 +30,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 12. **Cesta de jogos, premissas do cap. 9.3** (`B1_cesta_jogos.xlsx`, 17/10): tamanho do acervo inicial (p25 = 222, mediana = 322 ou p75 = 622 títulos); desconto de distribuidora sobre o varejo online; frete e reposição por desgaste. A faixa por jogo é estreita porque muitos jogos estão à venda em uma loja só (menor = maior).
 
+13. **Auditoria de cardápios: "Lúdico" da ludotecabgc** (um crepe) aparece como "couvert ou taxa de jogo" na amostra (Notion "B - Auditoria Cardápios"). Provável erro de categoria na transcrição; conferir na auditoria e corrigir a planilha se for o caso.
+
 ## Tarefas a fazer (pedidas pelo autor em 15/10/2026)
 
 - **Instagram: aprimorar o coletor e refazer a coleta destes perfis** (status no Notion "Luderias – Status da coleta", 15/10):

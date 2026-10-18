@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 17/10/2026 (17h57). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 18/10/2026 (11h29). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -16,7 +16,7 @@ Atualizado em 17/10/2026 (17h57). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Entorno (Maps + OSM)** (`maps_entorno.user.js`, versão 2026.10.15-4): OSM recoletado em 15/10 (12h49) para as 54 casas, íntegro (somas e recontagens batem em 54/54, polígonos com área). Incompleto no VLT/BRT: o Maps zera Curitiba e Brasília, e o OSM contava plataformas de cada sentido e o bonde de Santa Teresa. Coletor corrigido; falta "Refazer pendentes" no Maps (6 casas de Curitiba) e exportar tudo. Parecer em `docs/parecer_entorno_B1.md` §7. O entorno ainda não sustenta decisão do plano.
 
-- **Auditoria da coleta** (15/10): amostras sorteadas por script (`*-a_auditoria_*.py`, semente 20261015) em `_dados-brutos/<pasta>/auditoria/` de cada bloco: estabelecimentos, entorno, Instagram, cardápios, acervos, B2 e B4. Roteiro do entorno em `textos/instrumentos/roteiro_auditoria_entorno_B1.md`. Os 200 posts do Instagram estão no Notion "B - Auditoria Instagram (posts)" (17/10), ligados às casas do A, para conferir direto lá. Falta conferir e escrever o script que calcula a taxa de erro.
+- **Auditoria da coleta** (15/10): amostras sorteadas por script (`*-a_auditoria_*.py`, semente 20261015) em `_dados-brutos/<pasta>/auditoria/` de cada bloco: estabelecimentos, entorno, Instagram, cardápios, acervos, B2 e B4. Roteiro do entorno em `textos/instrumentos/roteiro_auditoria_entorno_B1.md`. Todas as amostras estão no Notion, um banco "B - Auditoria …" por amostra (posts em 17/10; as outras 9 em 18/10), ligadas às casas do A, para conferir direto lá. No "B - Auditoria Acervos" restam 13 páginas de teste a apagar. Falta conferir e escrever o script que calcula a taxa de erro.
 
 - **Cap. 5 (análise de mercado):** esboço em 15/10 (`textos/capitulos/5_analise_de_mercado.md`), do nacional para Salvador, com B4 e B1; 5.2 provisória até o Bardin. Lacunas em `docs/pendencias.md`, item 9.
 
