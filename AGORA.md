@@ -36,6 +36,8 @@ Atualizado em 18/10/2026 (12h12). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Cardápios e acervos achados pelo autor** (17/10): 10 cardápios novos transcritos (Asgard, Dungeon, Nala Land, Balboa's, São Jogue, Coletivo Geek, Playeasy e, de prints, CCG Floripa, Jogasampa e Tubaleria) e acervos de 14 casas a mais (Acervo de Jogos, rejoy, Ludopedia, Canva, blog e PDF). Agora são 36 casas com cardápio e 29 com lista de acervo; resumo, estatística descritiva e Notion ("A - Estabelecimentos" e "Status da coleta") atualizados. Site republicado em 17/10 (18h07). Falta limpar os marcadores de cópia das listagens do Acervo de Jogos (pendências, Dúvidas). Tamanho do acervo (30 casas) e preço médio de aluguel (18) no Notion em 17/10 (18h09); jogos mais frequentes: Catan (28 casas), Saboteur (27), Potion Explosion (26). Cesta de jogos (`B1-a_cesta_jogos.py`, 18h20): núcleo de 90 jogos em 15 ou mais casas, R$ 16,9 mil provável para os 77 com preço; acervo inicial de R$ 42,9 mil a R$ 114,8 mil, conforme o tamanho; loja mais barata, Flow Games (índice 0,947).
 
+- **B4 no Notion** (18/10): 8 bancos "4 - …" com as tabelas-resumo das bases públicas (988 linhas, conferidas contra os CSVs); séries longas só nos CSVs.
+
 - **Notion offline** (15/10): `python3 _src/extras/ler_notion_offline.py` lista os bancos do cache do app; com o nome do banco e `--saida`, exporta CSV. O cache é parcial (B - Comentários: 889 de 1.628 linhas) e não traz fórmulas; serve para consulta, não como fonte.
 
 ## Próximos 3 passos

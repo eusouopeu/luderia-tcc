@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 18/10/2026 | B4 no Notion só com as tabelas-resumo (8 bancos "4 - …", 988 linhas): população e renda e aluguel por capital, Simples (faixas e repartição), CNAE, Focus, BCB último valor e salário de admissão por capital; séries longas ficam só nos CSVs | `docs/registro-de-alteracoes.md` (18/10 12:43) |
 | 18/10/2026 | Visitas do B3 no Notion em "3 - Visitas presenciais": uma linha por visita, só com o observador válido, valores do `contagem_resumo_visitas.csv`; atualizar a cada visita nova | `docs/registro-de-alteracoes.md` (18/10 12:41) |
 | 18/10/2026 | B3, visita de 16/10 ao Bela Vista: vale só o POV2, o observador com mais dados preenchidos; fim da visita às 22h00, hora em que os observadores saíram, não o encerramento no app (23h40) | `docs/registro-de-alteracoes.md` (18/10 12:20) |
 | 18/10/2026 | Unidade Paralela da São Jogue = código SJPA (`visita_id` AAAA-MM-DD_SJPA, unidade PA). O importador do B3 usa sempre a unidade, a visita e o observador da pasta, nunca os digitados no app | `docs/registro-de-alteracoes.md` (18/10 12:12) |
