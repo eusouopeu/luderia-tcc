@@ -1,3 +1,6 @@
 ﻿visita_id;observador;fonte_registro;unidade;visita_inicio;hora;db_leq10s_estimado;db_pico;pessoas_dentro;calibracao_db;versao_app;papel
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;19:35;69;72;9;90;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;20:23;71;78;6;90;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;21:35;60;64;6;90;2.4.0;
 2026-10-17_SJPA;POV2;app;PA;2026-10-17T19:10:41;19:41;68;74;5;90;2.4.0;
 2026-10-17_SJPA;POV2;app;PA;2026-10-17T19:10:41;19:41;68;74;5;90;2.4.0;

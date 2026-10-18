@@ -1196,3 +1196,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: CSVs do app (`unidade` = "Bela Vista", `visita_id` 2026-10-17_SJBVBV).
 **Depois**: NFC-e 12200 e o autor (18/10): São Jogue Paralela.
 **Efeitos colaterais**: nenhum nos consolidados, que tomam a unidade da pasta (SJPA). Os originais seguem com o rótulo errado.
+
+### 12:20
+**Objeto**: B3, visita de sexta, 16/10, ao Bela Vista: `dados/[B3]…/_dados-brutos/app/originais/2026-10-16_SJBV/POV1|POV2/`, `_src/[B3]…/Contagem direta/outros/B3_descartes_app.csv` e `B3_correcoes_app.csv`, consolidados em `_dados-brutos/app/contagem_*.csv` e `contagem_resumo_visitas.csv`
+**Antes**: CSVs soltos em `originais/Visita SJBV - Sexta 16.10 - POV 1|2/`, fora do padrão de pasta e de nome (POV1 rotulado "16-10"; POV2 com `visita_id` 2026-10-16_SJBVBV), sem importar.
+**Depois**: arquivos movidos sem edição para `2026-10-16_SJBV/POV1|POV2/`, renomeados para `2026-10-16_SJBV_POV<n>_contagem_*.csv`. POV1 descartado inteiro (a pedido do autor, vale o observador com mais dados: o POV1 só tem 6 grupos de mesa e 4 pedidos, com todas as saídas às 23h41-23h42, no encerramento do app). Fim da visita do POV2 corrigido de 23h40 para 22h00 (o autor informou que os observadores saíram por volta das 22h; último registro, 22h00). Resultado provisório (POV2, 19h31 às 22h00, 2,48 h): 10 pessoas em 4 grupos pela porta (4,0 por hora), 7 grupos de mesa com 17 pessoas e permanência média de 82,9 min (mediana 95), 12 pedidos todos sem chegada registrada, 66,7 dB, 15 mesas. Somas conferidas: porta 2+4+2+2 = 10; mesas 1+4+2+2+2+2+4 = 17.
+**Justificativa**: pedido do autor: organizar e importar a visita de 16/10 ao Bela Vista.

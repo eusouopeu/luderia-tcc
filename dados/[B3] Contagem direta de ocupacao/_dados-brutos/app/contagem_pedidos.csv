@@ -1,3 +1,15 @@
 ﻿visita_id;observador;fonte_registro;unidade;visita_inicio;mesa;grupo_entrada;pessoas;categoria;descricao;pedido;chegada;espera_min;pendente;versao_app;papel
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 3;19:33;4;bebida;;19:50;;;sim;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 3;19:33;4;bebida;;19:50;;;sim;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 3;19:33;4;bebida;;19:50;;;sim;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 3;19:33;4;bebida;;19:50;;;sim;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 9;19:33;2;comida;Hamburger;20:31;;;sim;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 9;19:33;2;comida;Batata;20:31;;;sim;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 9;19:33;2;comida;Isca de frango;20:31;;;sim;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 9;19:33;2;comida;Hamburger;21:40;;;sim;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 10;19:49;2;comida;Combo batata e hamburger;20:24;;;sim;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 10;19:49;2;comida;Combo batata e hamburger;20:24;;;sim;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 10;19:49;2;bebida;Coca;20:24;;;sim;2.4.0;
+2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 10;19:49;2;bebida;Coca;20:24;;;sim;2.4.0;
 2026-10-17_SJPA;POV2;app;PA;2026-10-17T19:10:41;Mesa 1;19:10;2;bebida;;19:10;;;sim;2.4.0;
 2026-10-17_SJPA;POV2;app;PA;2026-10-17T19:10:41;Mesa 1;19:10;2;bebida;;19:10;;;sim;2.4.0;
