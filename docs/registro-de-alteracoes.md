@@ -1178,3 +1178,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: amostras de auditoria (semente 20261015) só nos CSVs `_dados-brutos/<pasta>/auditoria/` de cada bloco; no Notion, só a dos posts do Instagram (17/10 17:57).
 **Depois**: um banco por amostra, uma linha por item sorteado: Estabelecimentos 11, Entorno (casas) 11, Entorno (itens) 61, Instagram (perfis) 47, Cardápios 200, Acervos 200, Completude (B2) 49, Avaliações (B2) 200 e Bases públicas (B4) 170 (bcb 13, caged 3, concla 1, fipezap 2, ibge_censo_2022 6, ibge_sidra 135, legislacao 10; soma = 170). Contagens conferidas por SQL no Notion. Mesmo desenho do banco dos posts: colunas da amostra, colunas de conferência em branco (sim/não como seleção Sim/Não), relação de mão única com o A e rollups só de leitura (B4 sem relação, por não ser de casa). Ajustes de esquema: rollups de "Metro/Shopping (em metros reais)" e "Acervo" recusados pelo Notion, trocados pelos numéricos de 500 m/1000 m e por "Aluguel de jogos"/"Venda de jogos"; no Acervos, a coluna de texto "estabelecimento" virou "estabelecimento_fonte" (colidia com a relação "Estabelecimento"); opções de seleção criadas antes da carga (fonte, categoria, subcategoria, grupo, base). Perfis coviljogos e ilusoesindustriais ficam sem relação, como nos posts. No Acervos ficaram 13 páginas de teste da montagem, a apagar.
 **Justificativa**: pedido do autor: gerar os bancos das demais auditorias.
+
+### 11:35
+**Objeto**: Notion, "B - Auditoria Acervos"
+**Antes**: 213 páginas: 200 da amostra e 13 de teste da montagem (teste, t-url, t-rel, t-num-data, t-full, t-full-rel, t-e, t-f, t-g, t-h, x2 e cópias parciais de "Mr. Jack" e "Wanted - One Piece").
+**Depois**: as 13 de teste na lixeira do Notion (restauráveis); 200 páginas, 200 chaves de sorteio distintas.
+**Justificativa**: pedido do autor: apagar as páginas de teste.
