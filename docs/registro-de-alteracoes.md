@@ -1214,3 +1214,17 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: bases públicas do B4 só nos CSVs de `dados/[B4] Bases publicas/`; no Notion, só a amostra de auditoria ("4A - Auditoria Bases públicas").
 **Depois**: um banco por tabela-resumo, com as colunas e os valores do CSV (nomes de coluna iguais, sem arredondar), a fonte, o recorte e o arquivo de origem na descrição do banco. Linhas: população e renda 27, aluguel 27, faixas do Simples 30, repartição 191, CNAE 10, Focus 25, BCB 6, salário de admissão 672 (336 por recorte). Contagens e somas conferidas por SQL no Notion contra os CSVs: salário de admissão com 336 + 336 linhas, admissões 3.019.106 (todas as atividades) e 872.446 (CNAE 56), amostra pequena 24 e 42; repartição com 36, 42, 42, 35 e 36 linhas por anexo (191) e soma dos percentuais igual. Seleções com opções criadas antes da carga (Indicador, fonte da locação, tributo, capital, ocupação). Na repartição, as 11 linhas das faixas 5 com alíquota efetiva acima do limite (anexos III e IV) ganharam "(efetiva > …)" no título, para não repetir o título da faixa comum. Tabelas longas (séries mensais e anuais do CAGED, BCB e FipeZap, POF, IPCA, PAS, Censo por idade e por bairro, PNADC) ficaram fora, por escolha do autor.
 **Justificativa**: pedido do autor: bancos no Notion com os dados do B4; recorte "só os resumos" escolhido por ele nesta sessão (o conector grava 100 linhas por chamada e o B4 tem cerca de 70 mil).
+
+## 2026/10/19
+
+### 18:39
+**Objeto**: `_src/[B1]…/Google Places (Negócios)/build/B1-b_cardapios_planilha.py` (função `so_preco_unitario`) e `cardapios/B1_cardapios_itens_precos.xlsx`
+**Antes**: preço por quantidade do mesmo item virava uma linha por quantidade: BoardZ, Chopp pilsen 475 ml a R$ 16, 2 x a R$ 30 e 3 x a R$ 42; Chopp IPA a R$ 20 e 2 x a R$ 38; Castelos, Licor artesanal 1 shot a R$ 9,90 e 2 shots a R$ 16,90. As linhas de 2 e 3 unidades entravam na mediana de cerveja e de drinks da cesta. Planilha com 2.218 linhas.
+**Depois**: fica só a linha de 1 unidade; os preços de 2 ou mais unidades vão para a observação dessa linha ("2 x 475 ml: R$ 30,00; 3 x 475 ml: R$ 42,00"). Item vendido só em pacote, sem preço unitário (drink game do Castelos, 4, 8 ou 9 shots), fica como está. Planilha com 2.214 linhas; conferido contra a versão anterior: saíram só essas 4 linhas e mudaram só as observações das 3 linhas de 1 unidade. As transcrições em `_dados-brutos/cardapios/transcricao/` não mudaram, porque são o instrumento que a auditoria confere.
+**Justificativa**: pedido do autor na auditoria do cardápio da BoardZ: considerar só o valor de 1 unidade.
+
+### 18:39
+**Objeto**: coluna `linha_arquivo` da auditoria de cardápios: `_src/[B1]…/Cardápios/analise/B1-a_auditoria_cardapios.py`, `_dados-brutos/cardapios/auditoria/B1_auditoria_cardapios.csv` (no Mac) e banco "1A - Auditoria Cardápios" do Notion (200 linhas)
+**Antes**: `linha_arquivo` = linha do CSV de transcrição contando o cabeçalho (primeiro item = 2). Soma da coluna no Notion = 8.958, igual à do CSV da amostra; as 200 linhas batiam com o CSV, ou seja, nenhuma tinha sido subtraída ainda.
+**Depois**: `linha_arquivo` = posição do item na transcrição (primeiro item = 1). Script grava `range(1, n + 1)`; a chave do sorteio (`id_item`) segue na linha do CSV, para que rodar de novo não mude a amostra de 15/10. CSV da amostra e Notion com 1 a menos nas 200 linhas (soma 8.758, mínimo 1); conferido linha a linha contra o CSV.
+**Justificativa**: pedido do autor: o número deve apontar a linha do cardápio, não a do CSV.

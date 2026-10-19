@@ -32,6 +32,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 13. **Auditoria de cardápios: "Lúdico" da ludotecabgc** (um crepe) aparece como "couvert ou taxa de jogo" na amostra (Notion "B - Auditoria Cardápios"). Provável erro de categoria na transcrição; conferir na auditoria e corrigir a planilha se for o caso.
 
+14. **Cardápios: item com mais de um tamanho ou com combo.** Hoje cada tamanho é uma linha (BoardZ: burger 150 g e smash 75 g; Alçapão: pão de queijo 6 e 12 unidades), e o combo também (Arena BG e Tubaleria: burger e burger com batata e bebida). Já o coletor do Saipos guarda só o menor preço entre tamanhos. Na cesta, item com dois tamanhos pesa duas vezes na mediana, e o combo puxa a mediana de hambúrguer para cima. Proposta: manter todas as linhas na planilha e marcar uma linha de referência por item (menor tamanho; sem combo) para a cesta e a estatística. Falta o autor decidir.
+
 ## Tarefas a fazer (pedidas pelo autor em 15/10/2026)
 
 - **Instagram: aprimorar o coletor e refazer a coleta destes perfis** (status no Notion "Luderias – Status da coleta", 15/10):

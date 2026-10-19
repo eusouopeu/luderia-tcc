@@ -1,8 +1,10 @@
 # AGORA
 
-Atualizado em 18/10/2026 (12h12). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 19/10/2026 (18h39). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
+
+- **Auditoria dos cardápios no Notion** ("1A - Auditoria Cardápios", 19/10): `linha_arquivo` passou a ser a linha do item no cardápio (1 = primeiro item), nas 200 linhas e no script. Chopp e licor com preço por quantidade ficam só com o preço de 1 unidade na planilha. Em aberto: regra para tamanhos e combos (`docs/pendencias.md`, item 14). Rodar no Mac `B1-b_resumo.py` para levar a planilha nova à cesta.
 
 - **Coleta do B2** (avaliações até "3 meses atrás"): completa para as 49 luderias do B1 que seguem no objeto (2.218 avaliações no recorte, 1.440 com texto) e para as 5 novas (Bardo Mago, La Tabuleria, TabuClub, Toca do Rato, Tubaleria). Notion "B - Comentários" com 1.628 linhas; Machado Games e Ilusões Industriais excluídas por não serem luderias.
 

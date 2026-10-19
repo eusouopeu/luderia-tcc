@@ -25,6 +25,10 @@ café, energético, milk-shake e drink sem álcool entram em "não alcoólicas".
 exige_preparo = "N" para item pronto (lata, garrafa, chopp, dose, água).
 
 Cada linha é uma combinação item x variação (tamanho, dia da semana, combo).
+Preço por quantidade do mesmo item (chopp "2 x 475 ml", licor "2 shots"): fica
+só o preço de 1 unidade; os preços de 2 ou mais unidades vão para a observação
+da linha de 1 unidade (pedido do autor, 19/10/2026). A transcrição em
+_dados-brutos/ continua fiel ao cardápio, porque é ela que a auditoria confere.
 Item sem preço no cardápio fica com preço vazio, não zero. Quando a
 transcrição traz a coluna data_cardapio (prints com datas diferentes), ela
 vale linha a linha; vazia, vale a data da fonte em FONTES.
@@ -45,6 +49,7 @@ if __name__ == "__main__":
     registrar_execucao(__file__)
 
 import pathlib
+import re
 
 import pandas as pd
 from openpyxl import load_workbook
@@ -186,6 +191,7 @@ def ler_transcricoes(triagem):
     for arquivo, meta in FONTES.items():
         df = pd.read_csv(RAW / f"{arquivo}.csv", sep=";", dtype=str, keep_default_na=False)
         df["preco"] = pd.to_numeric(df["preco"].str.replace(",", "."), errors="raise")
+        df = so_preco_unitario(df)
         df.insert(0, "place_id", meta["place_id"])
         df.insert(1, "estabelecimento", nomes.loc[meta["place_id"], "nome"])
         df.insert(2, "capital", nomes.loc[meta["place_id"], "capital_endereco"])
@@ -198,6 +204,33 @@ def ler_transcricoes(triagem):
     itens = pd.concat(partes, ignore_index=True)
     validar(itens)
     return itens
+
+
+# "2 x 475 ml", "3x", "2 shots de 25 ml": quantidade de unidades na variação
+QUANTIDADE = re.compile(r"^\s*(\d+)\s*(?:x\b|shots?\b)", re.IGNORECASE)
+
+
+def so_preco_unitario(df):
+    """Tira as linhas de 2 ou mais unidades de um item que também tem a linha de 1 unidade.
+
+    O preço tirado vai para a observação da linha de 1 unidade. Item vendido só em
+    pacote (ex.: drink game de 4, 8 ou 9 shots) fica como está, porque não há preço unitário."""
+    if "variacao" not in df:
+        return df
+    qtd = df["variacao"].str.extract(QUANTIDADE, expand=False).astype(float).fillna(1)
+    tirar, notas = [], {}
+    for _, g in df.groupby(["secao_original", "item"], sort=False):
+        unidade = g.index[qtd[g.index] == 1]
+        multiplos = g.index[qtd[g.index] > 1]
+        if len(unidade) != 1 or not len(multiplos):
+            continue
+        tirar += list(multiplos)
+        notas[unidade[0]] = "; ".join(
+            f"{df.at[i, 'variacao']}: R$ {df.at[i, 'preco']:.2f}".replace(".", ",") for i in multiplos)
+    for i, nota in notas.items():
+        obs = df.at[i, "observacao"]
+        df.at[i, "observacao"] = f"{obs}; {nota}" if obs else nota
+    return df.drop(index=tirar).reset_index(drop=True)
 
 
 def validar(itens):
