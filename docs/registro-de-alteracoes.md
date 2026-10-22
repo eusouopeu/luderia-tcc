@@ -1219,3 +1219,11 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: cinco PRs abertos, cada um com sua versão dos quatro arquivos de controle, em conflito entre si.
 **Depois**: conflitos resolvidos mantendo os dois lados. `decisoes.md` com as linhas de todos os PRs; `registro-de-alteracoes.md` com as entradas em ordem de hora; `pendencias.md` com o item 13 do PR #8 (traz LC 214/2025 e ruído); `AGORA.md` com o B3 das duas visitas (PR #14), a busca profunda de cardápios (PR #10) e o cap. 8 enxugado (PR #8), sem as linhas antigas de 15/10 do Notion e do B3.
 **Justificativa**: pedido do autor: revisar e fazer o merge de todos os PRs abertos.
+
+## 2026/10/22
+
+### 13:46
+**Objeto**: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_nuvem_palavras.py` (novo); `dados/[B2] Avaliacoes recentes/graficos/{png,svg,valores}/B2_nuvem_palavras` e `B2_nuvem_palavras_criticas` (novos); `_src/dicionario.md`; `AGORA.md`; `docs/decisoes.md`
+**Antes**: o B2 tinha só os três pictogramas da análise de conteúdo; não havia nuvem de palavras.
+**Depois**: duas nuvens no estilo editorial (Source Sans 3, PNG 300 dpi, SVG e CSV das 150 palavras com % simples e ponderado por casa). Geral, em cinza, com as 1.588 avaliações "analisada" de 53 casas: lideram "jogos" (37,8%), "atendimento" (29,2%) e "lugar" (22,0%). Notas 1 a 3, em vermelho, com 154 avaliações de 40 casas: "jogos" (42,2%), "atendimento" (38,3%), "experiência" e "comida" (27,3%), com "mesa", "ruim", "hora" e "espera" subindo. Fora: palavras vazias do português e 76 formas dos nomes próprios das casas. Cópia dos PNGs em `graficos/` da pasta do projeto. No dicionário, o padrão `Bn_nuvem_palavras[_<recorte>]`.
+**Justificativa**: pedido do autor: nuvem de palavras dos dados dos comentários.
