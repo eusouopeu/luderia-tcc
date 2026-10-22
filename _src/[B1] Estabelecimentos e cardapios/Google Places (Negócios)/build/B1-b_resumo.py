@@ -29,6 +29,9 @@ categoria), mediana e alta (percentil 75). Sem couvert no cardápio, o couvert
 entra como 0 e a coluna couvert_no_cardapio diz "não". Cobrança por sala ou por
 hora (Café Geek) não é couvert por pessoa e fica de fora. Na planilha, as
 cestas são fórmulas sobre as colunas de preço.
+Só entram as linhas de referência do cardápio (linha_referencia = "S": cardápio
+mais recente, sem combo, menor tamanho; decisão do autor, 22/10/2026), para que
+um item com dois tamanhos não pese duas vezes nem o combo puxe a mediana.
 
 Saída: dados/[B1] Estabelecimentos e cardapios/estabelecimentos/B1_resumo_estabelecimentos.xlsx
   abas estabelecimentos, cesta, por_capital (fórmulas sobre estabelecimentos),
@@ -110,7 +113,7 @@ def instagram():
 
 def cesta():
     it = pd.read_excel(B1 / "cardapios/B1_cardapios_itens_precos.xlsx", sheet_name="itens")
-    it = it.dropna(subset=["preco"])
+    it = it[it.linha_referencia == "S"].dropna(subset=["preco"])
     linhas = []
     for pid, g in it.groupby("place_id"):
         cov = g[(g.categoria == "couvert ou taxa de jogo") & ~g["item"].str.contains("sala", case=False)]
@@ -178,7 +181,7 @@ DIC = {
     "curtidas_periodo": ("Instagram", "Curtidas desses posts", "idem"),
     "comentarios_periodo": ("Instagram", "Comentários desses posts", "idem"),
     "obs_instagram": ("Instagram", "Ressalva da coleta", "B1"),
-    "itens_com_preco": ("Cardápio", "Linhas item × variação com preço no cardápio", "B1_cardapios_itens_precos.xlsx"),
+    "itens_com_preco": ("Cardápio", "Linhas de referência com preço no cardápio (uma por item, tamanho e combo à parte)", "B1_cardapios_itens_precos.xlsx"),
     "couvert_no_cardapio": ("Cardápio", "Há couvert ou taxa de jogo por pessoa no cardápio", "idem"),
     "cesta_baixa": ("Cardápio", "Couvert + bebida + entrada ou prato, percentil 25 de cada categoria (R$)", "fórmula na aba cesta"),
     "cesta_mediana": ("Cardápio", "Idem, medianas (R$)", "fórmula na aba cesta"),
