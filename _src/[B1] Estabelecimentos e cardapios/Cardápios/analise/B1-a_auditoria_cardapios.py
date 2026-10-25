@@ -13,6 +13,11 @@ Saídas em _dados-brutos/cardapios/auditoria/ (fora do git, como a pasta):
   B1_auditoria_cardapios.csv  com a pasta do original (ca_<cidade>/ca_<casa>/), quando houver
   auditoria_registro.csv
 
+linha_arquivo é a posição do item na transcrição (1 = primeiro item, sem contar
+o cabeçalho do CSV), para achar o item no cardápio; até 19/10/2026 contava a
+linha do CSV com o cabeçalho (um a mais). A chave do sorteio (id_item) segue na
+linha do CSV, para que rodar de novo dê a mesma amostra de 15/10/2026.
+
 Conferência: abrir o original e marcar item_no_original e categoria_confere
 (sim/nao) e anotar preco_no_original como está no cardápio.
 
@@ -59,11 +64,11 @@ def main():
     for f in arquivos:
         d = pd.read_csv(f, sep=None, engine="python", dtype=str, encoding="utf-8-sig")
         d["casa"] = f.stem
-        d["linha_arquivo"] = range(2, len(d) + 2)
+        d["linha_arquivo"] = range(1, len(d) + 1)
         partes.append(d)
     itens = pd.concat(partes, ignore_index=True)
     itens = itens[itens.preco.fillna("").str.strip() != ""].copy()
-    itens["id_item"] = itens.casa + ":" + itens.linha_arquivo.astype(str)
+    itens["id_item"] = itens.casa + ":" + (itens.linha_arquivo + 1).astype(str)
     amostra = aa.sortear(itens, "id_item", N_ITENS, SEMENTE, estrato="casa", minimo=MINIMO_POR_CASA)
     originais = {c: pasta_original(c) for c in amostra.casa.unique()}
     amostra["pasta_original"] = amostra.casa.map(originais)
