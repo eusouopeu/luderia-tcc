@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de avaliações do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.30-1
+// @version      2026.10.30-2
 // @description  Abre as avaliações de um lugar, ordena por mais recentes, rola até o fim do período, expande os textos (no idioma original), filtra por tema, opinião, componentes e busca, salva o progresso, coleta em fila, confere amostras e exporta CSV com autor pseudonimizado.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -335,8 +335,11 @@
   function infoLugar() {
     const url = location.href;
     const painelLugar = document.querySelector('[role="main"]');
-    const resumo = document.querySelector('div.F7nice')?.innerText || painelLugar?.innerText || '';
-    const volume = (resumo.match(/\(([\d.,\s]+)\)/) || resumo.match(/([\d.]+)\s+(?:avalia|review)/i) || [])[1] || '';
+    const cabecalho = document.querySelector('div.F7nice')?.innerText || '';
+    const resumo = cabecalho || painelLugar?.innerText || '';
+    // Número entre parênteses só no cabeçalho: no painel inteiro ele pega o DDD
+    // de um telefone numa resposta do dono ("(31)") e encerra a coleta cedo.
+    const volume = ((cabecalho && cabecalho.match(/\(([\d.,\s]+)\)/)) || resumo.match(/([\d.]+)\s+(?:avalia|review)/i) || [])[1] || '';
     return {
       place_id: (url.match(/!19s(ChIJ[\w-]+)/) || url.match(/place_id:(ChIJ[\w-]+)/) || [])[1] || placeIdFila || el.placeId?.value.trim() || '',
       id_maps: (url.match(/!1s(0x[0-9a-f]+:0x[0-9a-f]+)/i) || [])[1] || '',
@@ -346,6 +349,10 @@
       volume_avaliacoes_estabelecimento: volume.replace(/\D/g, ''),
     };
   }
+
+  // O volume do lugar só encerra a coleta se a lista também parou de crescer:
+  // um volume lido errado não pode cortar a lista no meio.
+  const fimPeloVolume = (carregadas, volume, semCrescer) => volume > 0 && carregadas >= volume && semCrescer >= 2;
 
   // Chave do lugar no registro de ids: o id do Maps é o mais estável na URL.
   const chaveLugar = (l) => l.id_maps || l.place_id || l.nome_estabelecimento;
@@ -402,10 +409,12 @@
 
   // Clica em "Ver original" (para ler o texto no idioma do autor) e em "Mais", e
   // repete enquanto sobrar "Mais": o original volta cortado, e o Maps às vezes
-  // ignora o clique ou redesenha o cartão recolhido.
+  // ignora o clique ou redesenha o cartão recolhido. Cartão recém-carregado pode
+  // ainda não responder: a espera cresce a cada rodada. Botão que não abre depois
+  // de 6 cliques fica de lado (a coluna texto_expandido marca o cartão).
   async function expandirTextos() {
     let n = 0;
-    for (let rodada = 0; rodada < 3; rodada++) {
+    for (let rodada = 0; rodada < 4; rodada++) {
       let cliques = 0;
       for (const c of cartoes()) {
         for (const b of c.querySelectorAll('button, [role="button"]')) {
@@ -418,6 +427,9 @@
       if (cliques) await esperar(400);
       for (const c of cartoes()) {
         for (const b of botoesMais(c)) {
+          const tentativas = +(b.dataset.tccCliques || 0);
+          if (tentativas >= 6) continue;
+          b.dataset.tccCliques = tentativas + 1;
           if (rodada) b.scrollIntoView?.({ block: 'nearest' });
           b.click();
           cliques++;
@@ -425,7 +437,7 @@
       }
       if (!cliques) break;
       n += cliques;
-      await esperar(400);
+      await esperar(400 * (rodada + 1));
     }
     return n;
   }
@@ -882,10 +894,9 @@
       if (motivo) return motivo;
       const ultimas = cs.slice(-5).map((c) => lerCartao(c).idade_dias_aprox);
       if (usarPeriodo && periodo.ate !== Infinity && ultimas.length === 5 && ultimas.every((d) => d !== '' && d > periodo.ate)) return 'passou do período';
-      const volume = +infoLugar().volume_avaliacoes_estabelecimento;
-      if (volume && cs.length >= volume) return 'fim da lista';
       const noFim = caixa.scrollTop + caixa.clientHeight >= caixa.scrollHeight - 20;
       semCrescer = cs.length === ultimoN && noFim ? semCrescer + 1 : 0;
+      if (fimPeloVolume(cs.length, +infoLugar().volume_avaliacoes_estabelecimento, semCrescer)) return 'fim da lista';
       if (semCrescer >= 8) return 'lista parou de crescer';
       ultimoN = cs.length;
       if (semCrescer) {

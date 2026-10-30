@@ -40,7 +40,7 @@ Atualizado em 30/10/2026 (14h30). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Codificação do B2 no Notion** (30/10): "2 - Comentários" com a mesma lista de 22 temas em Itens positivos e negativos (definições na descrição do banco); as 40 linhas já marcadas foram reclassificadas. "Costuma ir" e "Voltará" seguem como estavam (pendências, item 14).
 
-- **Coletor do B2 corrigido** (30/10, versão 2026.10.30-1): expande todos os "Mais" antes de ler e marca em `texto_expandido` o que ficou cortado. Os 33 "Incompleto" do Notion vêm da versão anterior; recoletar os lugares afetados resolve (pendências, item 14d). Atualizar o script no Tampermonkey antes.
+- **Coletor do B2 corrigido** (30/10, versão 2026.10.30-2): expande todos os "Mais" antes de ler, marca em `texto_expandido` o que ficou cortado e não para mais cedo por volume lido errado (Shelf parava em 40). Os 33 "Incompleto" do Notion vêm da versão anterior; recoletar os lugares afetados resolve (pendências, item 14d). Atualizar o script no Tampermonkey antes.
 
 - **B4 no Notion** (18/10): 8 bancos "4 - …" com as tabelas-resumo das bases públicas (988 linhas, conferidas contra os CSVs); séries longas só nos CSVs.
 

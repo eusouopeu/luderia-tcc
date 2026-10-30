@@ -25,7 +25,7 @@ function carregar(contexto = {}) {
     ...contexto,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Avaliações do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { infoLugar, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, leituraMelhor, checarSeletores, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros, reciboExportacao, aplicarForaDoFiltro, filtros });})();';
+    + 'Object.assign(globalThis.__test, { infoLugar, fimPeloVolume, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, leituraMelhor, checarSeletores, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros, reciboExportacao, aplicarForaDoFiltro, filtros });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_avaliacoes.user.js' });
   return ambiente.__test;
 }
@@ -43,6 +43,29 @@ test('lê nome e volume na aba de avaliações sem cabeçalho h1', () => {
   assert.equal(lugar.nome_estabelecimento, 'Bodogami Restaurante e Cafeteria');
   assert.equal(lugar.volume_avaliacoes_estabelecimento, '3615');
   assert.equal(lugar.avaliacao_media_estabelecimento, '4.6');
+});
+
+test('volume na aba de avaliações ignora número entre parênteses nos cartões (DDD numa resposta)', () => {
+  const principal = { innerText: 'Avaliações\n4,6\n1.742 avaliações\nOrdenar\nResposta do proprietário\nLigue (31) 99999-0000\n',
+    getAttribute: () => 'Shelf Bar e Jogos' };
+  const document = { querySelector: (s) => s === '[role="main"]' ? principal : null };
+  assert.equal(carregar({ document }).infoLugar().volume_avaliacoes_estabelecimento, '1742');
+});
+
+test('volume na visão geral vem do cabeçalho com parênteses', () => {
+  const principal = { innerText: 'Shelf\n(31) 3333-0000\n', getAttribute: () => 'Shelf Bar e Jogos' };
+  const cabecalho = { innerText: '4,6\n(1.742)' };
+  const document = { querySelector: (s) => (s === '[role="main"]' ? principal : s === 'div.F7nice' ? cabecalho : null) };
+  assert.equal(carregar({ document }).infoLugar().volume_avaliacoes_estabelecimento, '1742');
+});
+
+test('volume só encerra a coleta quando a lista também parou de crescer', () => {
+  const { fimPeloVolume } = carregar();
+  assert.equal(fimPeloVolume(40, 31, 0), false);
+  assert.equal(fimPeloVolume(40, 31, 1), false);
+  assert.equal(fimPeloVolume(40, 31, 2), true);
+  assert.equal(fimPeloVolume(20, 31, 5), false);
+  assert.equal(fimPeloVolume(40, 0, 5), false);
 });
 
 test('abre avaliações por botão comum e espera os cartões surgirem', async () => {
@@ -96,6 +119,16 @@ test('clica de novo no "Mais" quando o primeiro clique não expande', async () =
   await carregar({ document }).expandirTextos();
   assert.equal(mais.cliques, 2);
   assert.equal(botoes.length, 0);
+});
+
+test('desiste do "Mais" que não abre depois de 6 cliques', async () => {
+  const botoes = [];
+  const mais = botaoMais(botoes, Infinity);
+  botoes.push(mais);
+  const api = carregar({ document: { querySelectorAll: () => [cartaoCom(botoes)] } });
+  await api.expandirTextos();
+  await api.expandirTextos();
+  assert.equal(mais.cliques, 6);
 });
 
 test('expande o texto original que volta cortado depois de "Ver original"', async () => {
