@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 30/10/2026 (17h05). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 30/10/2026 (17h10). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -40,7 +40,7 @@ Atualizado em 30/10/2026 (17h05). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Codificação do B2 no Notion** (30/10): 166 linhas codificadas pelo autor (Fórmula ≥ 5). Dicionário reconstruído a partir delas em `textos/instrumentos/dicionario_temas_B2.md` (resumo na descrição do banco "2 - Comentários"), com 27 linhas a rever e o que falta para seguir Bardin (pendências, item 15). "Costuma ir" e "Voltará" seguem como estavam (pendências, item 14).
 
-- **Coletor do B2 corrigido** (30/10, versão 2026.10.30-2): expande todos os "Mais" antes de ler, marca em `texto_expandido` o que ficou cortado e não para mais cedo por volume lido errado (Shelf parava em 40). Os 33 "Incompleto" do Notion vêm da versão anterior; recoletar os lugares afetados resolve (pendências, item 14d). Atualizar o script no Tampermonkey antes.
+- **Coletor do B2 corrigido** (30/10, versão 2026.10.30-2): expande todos os "Mais" antes de ler, marca em `texto_expandido` o que ficou cortado e não para mais cedo por volume lido errado (Shelf parava em 40). Bodogami e Shelf recoletadas com ela em 30/10 (Bodogami: 120 comentários sem campos extras viraram 23). Próximas: Encounter, Utopia e Luderia Carioca (pendências, item 14d).
 
 - **B4 no Notion** (18/10): 8 bancos "4 - …" com as tabelas-resumo das bases públicas (988 linhas, conferidas contra os CSVs); séries longas só nos CSVs.
 

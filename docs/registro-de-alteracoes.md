@@ -1309,3 +1309,8 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois** (30/10): 25 temas no Notion, polaridade só positiva ou negativa, sem códigos de contexto e sem tema de segurança e inclusão.
 **Efeitos colaterais**: os achados do §3 do instrumento usam a grade de 15/10; contagens feitas no Notion não são comparáveis a eles sem uma tabela de correspondência. Nada foi corrigido (pendências, item 15c).
 
+### 17:10
+**Objeto**: coletas do B2 de 30/10 (Bodogami e Shelf, versão 2026.10.30-2), `docs/pendencias.md` (item 14d) e `AGORA.md`
+**Antes**: três CSVs novos soltos na raiz de `_dados-brutos/` (Bodogami, 16:55; Shelf, 14:38 e 16:57); pendência pedia completar a Bodogami e recoletar a Shelf.
+**Depois**: CSVs movidos para `_dados-brutos/coletas/` com sufixo (1) e (2), sem sobrescrever as coletas de mesmo nome. Comparação com as coletas escolhidas (13/10 e 14/10) registrada no item 14d: Bodogami com 23 comentários sem nenhum dos 7 campos no recorte, contra 120; Shelf igual à antiga nos 241 comuns. Próximas recoletas: Encounter, Utopia Games & Food e Luderia Carioca.
+**Justificativa**: pedido do autor: conferir se as coletas do script novo vieram mais completas e indicar as 3 próximas casas a recoletar.
