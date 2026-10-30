@@ -25,7 +25,7 @@ function carregar(contexto = {}) {
     ...contexto,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Avaliações do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { infoLugar, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros, reciboExportacao, aplicarForaDoFiltro, filtros });})();';
+    + 'Object.assign(globalThis.__test, { infoLugar, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, leituraMelhor, checarSeletores, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros, reciboExportacao, aplicarForaDoFiltro, filtros });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_avaliacoes.user.js' });
   return ambiente.__test;
 }
@@ -69,15 +69,61 @@ test('ordena por recentes e produz CSV com identificador e texto escapado', asyn
   assert.match(conteudo, /r1;"bom; ""jogo"""/);
 });
 
+// Botão "Mais" que some ao expandir, como no Maps; `ignorar` cliques não pegam.
+function botaoMais(botoes, ignorar = 0) {
+  const b = { innerText: 'Mais', dataset: {}, classList: { contains: (c) => c === 'w8nwRe' }, cliques: 0,
+    click: () => { b.cliques++; if (b.cliques > ignorar) botoes.splice(botoes.indexOf(b), 1); } };
+  return b;
+}
+
+const cartaoCom = (botoes) => ({ parentElement: { closest: () => null }, querySelectorAll: () => [...botoes] });
+
 test('expande texto e restaura idioma original no cartão', async () => {
-  let expansoes = 0;
-  const mais = { innerText: 'Mais', dataset: {}, classList: { contains: () => false }, click: () => { expansoes++; } };
-  const original = { innerText: 'Ver original', dataset: {}, classList: { contains: () => false },
-    click: () => { expansoes++; } };
-  const cartao = { parentElement: { closest: () => null }, querySelectorAll: () => [mais, original] };
-  const document = { querySelectorAll: () => [cartao] };
+  const botoes = [];
+  const mais = botaoMais(botoes);
+  const original = { innerText: 'Ver original', dataset: {}, classList: { contains: () => false }, click: () => {} };
+  botoes.push(mais, original);
+  const document = { querySelectorAll: () => [cartaoCom(botoes)] };
   assert.equal(await carregar({ document }).expandirTextos(), 2);
-  assert.equal(expansoes, 2);
+  assert.equal(mais.cliques, 1);
+});
+
+test('clica de novo no "Mais" quando o primeiro clique não expande', async () => {
+  const botoes = [];
+  const mais = botaoMais(botoes, 1);
+  botoes.push(mais);
+  const document = { querySelectorAll: () => [cartaoCom(botoes)] };
+  await carregar({ document }).expandirTextos();
+  assert.equal(mais.cliques, 2);
+  assert.equal(botoes.length, 0);
+});
+
+test('expande o texto original que volta cortado depois de "Ver original"', async () => {
+  const botoes = [];
+  const maisOriginal = botaoMais(botoes);
+  const original = { innerText: 'Ver original', dataset: {}, classList: { contains: () => false },
+    click: () => { original.innerText = 'Ver tradução'; botoes.push(maisOriginal); } };
+  botoes.push(original);
+  const document = { querySelectorAll: () => [cartaoCom(botoes)] };
+  await carregar({ document }).expandirTextos();
+  assert.equal(maisOriginal.cliques, 1);
+  assert.equal(botoes.includes(maisOriginal), false);
+});
+
+test('leitura com "Mais" pendente não substitui leitura expandida', () => {
+  const { leituraMelhor } = carregar();
+  const cheia = { texto_avaliacao: 'texto inteiro', texto_expandido: 'sim' };
+  const cortada = { texto_avaliacao: 'texto …', texto_expandido: 'não' };
+  assert.equal(leituraMelhor(cheia, cortada), cheia);
+  assert.equal(leituraMelhor(cortada, cheia), cheia);
+  assert.equal(leituraMelhor(undefined, cortada), cortada);
+});
+
+test('avisa na exportação quando sobra avaliação com texto cortado', () => {
+  const { checarSeletores } = carregar();
+  const linha = { nota_avaliacao: '5', idade_dias_aprox: 3, origem_pseudonimo: 'contrib', tem_texto: 'sim', texto_expandido: 'sim' };
+  assert.equal(checarSeletores([linha, linha]), '');
+  assert.match(checarSeletores([linha, { ...linha, texto_expandido: 'não' }]), /1 avaliação.*cortad/);
 });
 
 test('dispara download do CSV criado', () => {

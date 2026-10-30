@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de avaliações do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.13-7
+// @version      2026.10.30-1
 // @description  Abre as avaliações de um lugar, ordena por mais recentes, rola até o fim do período, expande os textos (no idioma original), filtra por tema, opinião, componentes e busca, salva o progresso, coleta em fila, confere amostras e exporta CSV com autor pseudonimizado.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -99,6 +99,10 @@
  * "data_min" e "data_max" dão a faixa coberta pelo rótulo. "Editado há…" conta
  * pela data da edição, que é o que o Google mostra; a coluna "editada" marca esses
  * casos.
+ *
+ * Texto cortado: o "Mais" esconde o fim do texto e também as notas, o preço e os
+ * demais detalhes. "texto_expandido" = não marca o cartão que ficou com "Mais"
+ * sem expandir (a coleta avisa ao terminar e na exportação); recolete o lugar.
  *
  * Som: o navegador só libera áudio depois de um clique na página. Na fila, depois
  * que a página muda, clique uma vez no painel para o aviso final tocar.
@@ -392,30 +396,43 @@
     return true;
   }
 
-  // Clica em "Mais" e em "Ver original" (para ler o texto no idioma do autor).
+  // "Mais" ainda por clicar: texto, notas, preço ou resposta do dono cortados.
+  const botoesMais = (c) => [...c.querySelectorAll('button, [role="button"]')]
+    .filter((b) => b.classList.contains('w8nwRe') || /^(mais|more|ver mais|see more)$/i.test(textoControle(b)));
+
+  // Clica em "Ver original" (para ler o texto no idioma do autor) e em "Mais", e
+  // repete enquanto sobrar "Mais": o original volta cortado, e o Maps às vezes
+  // ignora o clique ou redesenha o cartão recolhido.
   async function expandirTextos() {
     let n = 0;
-    for (const c of cartoes()) {
-      for (const b of c.querySelectorAll('button, [role="button"]')) {
-        const rotulo = textoControle(b);
-        if (/^(mais|more|ver mais|see more)$/i.test(rotulo) || b.classList.contains('w8nwRe')) {
+    for (let rodada = 0; rodada < 3; rodada++) {
+      let cliques = 0;
+      for (const c of cartoes()) {
+        for (const b of c.querySelectorAll('button, [role="button"]')) {
+          if (b.dataset.tccOriginal || !/^(ver original|see original)/i.test(textoControle(b))) continue;
+          b.dataset.tccOriginal = '1';
           b.click();
-          n++;
+          cliques++;
         }
       }
-    }
-    for (const c of cartoes()) {
-      for (const b of c.querySelectorAll('button, [role="button"]')) {
-        if (b.dataset.tccOriginal) continue;
-        if (!/^(ver original|see original)/i.test(textoControle(b))) continue;
-        b.dataset.tccOriginal = '1';
-        b.click();
-        n++;
+      if (cliques) await esperar(400);
+      for (const c of cartoes()) {
+        for (const b of botoesMais(c)) {
+          if (rodada) b.scrollIntoView?.({ block: 'nearest' });
+          b.click();
+          cliques++;
+        }
       }
+      if (!cliques) break;
+      n += cliques;
+      await esperar(400);
     }
-    if (n) await esperar(400);
     return n;
   }
+
+  // A leitura expandida vale mais que uma releitura do cartão recolhido.
+  const leituraMelhor = (antiga, nova) =>
+    (antiga?.texto_expandido === 'sim' && nova.texto_expandido !== 'sim' ? antiga : nova);
 
   function corpoDoCartao(c) {
     const resposta = c.querySelector('.CDe7pd');
@@ -475,6 +492,7 @@
       texto_avaliacao: texto,
       traduzida: traduzida ? 'sim' : 'não',
       texto_original: !traduzida || originalVisivel ? 'sim' : 'não',
+      texto_expandido: botoesMais(c).length ? 'não' : 'sim',
       detalhes,
       tipo_servico: campos.tipo_servico || '',
       tipo_refeicao: campos.tipo_refeicao || '',
@@ -507,16 +525,21 @@
     return inversoes > 1;
   }
 
-  // Aviso quando as classes do Google mudam e a leitura sai vazia.
+  // Aviso quando as classes do Google mudam e a leitura sai vazia, ou quando
+  // sobra "Mais" sem expandir.
   function checarSeletores(linhas) {
     const n = linhas.length;
-    if (n < 5) return '';
+    const cortadas = linhas.filter((r) => r.texto_expandido === 'não').length;
+    const avisoCortadas = cortadas
+      ? `${cortadas} avaliação(ões) com texto cortado ("Mais" sem expandir; texto_expandido = não). Colete o lugar de novo.` : '';
+    if (n < 5) return avisoCortadas;
     const falhas = [];
     if (linhas.filter((r) => !r.nota_avaliacao).length / n > 0.5) falhas.push('nota');
     if (linhas.filter((r) => r.idade_dias_aprox === '').length / n > 0.5) falhas.push('data');
     if (n >= 20 && !linhas.some((r) => r.tem_texto === 'sim')) falhas.push('texto');
     if (linhas.filter((r) => !r.origem_pseudonimo).length / n > 0.5) falhas.push('autor');
-    return falhas.length ? `Seletores quebrados? Mais da metade sem ${falhas.join(', ')}. Confira a página antes de usar o CSV.` : '';
+    const avisoSeletores = falhas.length ? `Seletores quebrados? Mais da metade sem ${falhas.join(', ')}. Confira a página antes de usar o CSV.` : '';
+    return [avisoSeletores, avisoCortadas].filter(Boolean).join(' ');
   }
 
   // ---------- registro de ids por lugar (retomada e conferência) ----------
@@ -1000,7 +1023,7 @@
     const guardarVisiveis = (cs) => {
       for (const c of cs) {
         const r = lerCartao(c);
-        if (r.review_id) lidosPorId.set(r.review_id, r);
+        if (r.review_id) lidosPorId.set(r.review_id, leituraMelhor(lidosPorId.get(r.review_id), r));
       }
     };
 
@@ -1363,7 +1386,7 @@
   const COLS = ['place_id', 'id_maps', 'nome_estabelecimento', 'avaliacao_media_estabelecimento', 'volume_avaliacoes_estabelecimento',
     'review_index', 'review_id', 'ja_coletada', 'autor_pseudonimo', 'origem_pseudonimo', 'nota_avaliacao', 'data_relativa', 'editada',
     'idade_dias_aprox', 'data_min', 'data_max', 'no_periodo', 'tem_texto', 'texto_avaliacao', 'traduzida', 'texto_original',
-    'detalhes', 'tipo_servico', 'tipo_refeicao', 'preco_por_pessoa', 'tamanho_grupo', 'tempo_espera', 'reserva', 'estacionamento',
+    'texto_expandido', 'detalhes', 'tipo_servico', 'tipo_refeicao', 'preco_por_pessoa', 'tamanho_grupo', 'tempo_espera', 'reserva', 'estacionamento',
     'pratos_recomendados', 'notas_por_aspecto', 'n_fotos', 'urls_fotos', 'provavel_cardapio', 'valor_rs_no_texto', 'temas', 'opiniao',
     'resposta_dono', 'texto_resposta', 'periodo_de_dias', 'periodo_ate_dias', 'motivo_parada', 'coleta_completa', 'versao_script',
     'coletado_em', 'url',
