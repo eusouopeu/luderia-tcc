@@ -16,25 +16,24 @@ Este dicionário vale para as colunas "Itens positivos" e "Itens negativos". O l
 
 ## 2. Temas
 
-A lista é a mesma nas duas colunas. Hoje faltam opções no Notion: "curadoria dos jogos" e "aluguel" só existem em Itens positivos; "horário de funcionamento", só em Itens negativos.
+A lista é a mesma nas duas colunas. Hoje faltam opções no Notion: "curadoria dos jogos" só existe em Itens positivos; "horário de funcionamento", só em Itens negativos.
 
 ### Jogos
 
 | Tema | Entra | Não entra |
 |---|---|---|
-| variedade do acervo | Quantidade de jogos: "muitos", "vários", "diversos", "acervo enorme", "grande variedade", consoles e fliperamas; pedido de mais jogos | Qualidade ou escolha dos títulos (curadoria) |
-| curadoria dos jogos | Qualidade e atualização dos títulos: "jogos ótimos", "jogos legais", "jogos diferentes", "boa opção de jogos", jogos desatualizados | Quantidade (variedade) |
+| variedade do acervo | Quantidade de jogos: "muitos", "vários", "diversos", "acervo enorme", "grande variedade", consoles e fliperamas; pedido de mais jogos; acervo atualizado ou desatualizado | Jogos bons de jogar (curadoria) |
+| curadoria dos jogos | Jogos muito bons de se jogar: "jogos ótimos", "jogos divertidos", "jogos excelentes", "boa opção de jogos" | Quantidade (variedade); estado das peças (conservação) |
 | conservação do acervo | Peças faltando, jogos danificados ou em bom estado | - |
 | explicação de jogos | Serviço de jogo à mesa: ensinar regras, recomendar jogo pelo perfil do grupo, trazer e trocar jogos, monitor disponível ou ausente | Cordialidade sem ato ligado ao jogo (atendimento presencial) |
-| aluguel | Aluguel de jogos para levar | Venda (loja) |
 
 ### Equipe e serviço
 
 | Tema | Entra | Não entra |
 |---|---|---|
-| atendimento presencial | Cordialidade, atenção, paciência, educação, rispidez, descaso; "serviço" e "atendimento" genéricos; funcionário elogiado pelo nome; decisões da gerência sobre o cliente | Demora ou pedido errado (rapidez do serviço); ato de explicar ou recomendar jogo (explicação de jogos) |
+| atendimento presencial | Cordialidade, atenção, paciência, educação, rispidez, descaso; "serviço" e "atendimento" genéricos; funcionário elogiado pelo nome; decisões da gerência sobre o cliente; pedido errado, esquecido ou trocado | Demora (rapidez do serviço); ato de explicar ou recomendar jogo (explicação de jogos) |
 | atendimento online | WhatsApp, telefone, redes sociais, reserva a distância | - |
-| rapidez do serviço | Tempo e acerto do pedido: demora, agilidade, pedido errado ou esquecido | Espera para entrar (lotação e reserva) |
+| rapidez do serviço | Tempo do pedido: demora, agilidade | Pedido errado (atendimento presencial); espera para entrar (lotação e reserva) |
 
 ### Alimentos e bebidas
 
@@ -72,13 +71,23 @@ Regra: "tudo caro" e equivalentes, com escopo total, entram nos dois temas de pr
 | barulho | Queixa ou elogio ao ruído escrito no texto | O atributo do Google (Nível de barulho) |
 | localização e acesso | Metrô, estacionamento (inclusive pedido de convênio), facilidade de chegar | Fila na rua (lotação e reserva) |
 
-### Ocasião, programação e varejo
+### Ocasião e programação
 
 | Tema | Entra | Não entra |
 |---|---|---|
-| comemorações e grupos | Juízo sobre o serviço a aniversários, festas e grupos grandes ("não deram nem parabéns", "a casa recebeu bem nosso grupo de 10") | Só citar a ocasião ("comemorei meu aniversário lá"): não é codificado (ver §6, ocasião) |
+| comemorações e grupos | Juízo sobre o serviço a aniversários, festas e grupos grandes ("não deram nem parabéns", "a casa recebeu bem nosso grupo de 10") | Só citar a ocasião ("comemorei meu aniversário lá"): vai para o contexto (§2.1) |
 | eventos e comunidade | Trívia, quiz, torneios, eventos; público frequente e acolhimento de novatos | - |
-| loja | Venda de jogos e produtos | Aluguel |
+
+### 2.1 Contexto (sem polaridade)
+
+Decisão do autor de 30/10: o que descreve a visita, e não avalia a casa, sai das colunas de polaridade e vai para uma coluna de contexto. A coluna ainda não existe no Notion; até ser criada, "aluguel" e "loja" seguem nas colunas de temas e são lidos como contexto na contagem.
+
+| Código | Entra |
+|---|---|
+| ocasião | Amigos, família ou crianças, casal ou encontro, aniversário ou comemoração, citados de forma explícita |
+| público | Iniciante ou não jogador; hobbyista (frequenta luderias, TCG, coleção) |
+| aluguel | Aluguel de jogos para levar |
+| loja | Compra de jogos e produtos na casa |
 
 ## 3. Regras de decisão
 
@@ -102,10 +111,9 @@ Antes de contar, conferir por SQL: nenhuma opção fora desta lista, as duas col
 
 | Página no Notion | Casa | Ajuste |
 |---|---|---|
-| 3f9cde2e8c24819e93bad42d202cd1cd | Arcadea | Drink errado: rapidez do serviço −, não atendimento −; 10% sem aviso: regras da casa − |
+| 3f9cde2e8c24819e93bad42d202cd1cd | Arcadea | 10% sem aviso: regras da casa − |
 | 3f9cde2e8c24815799a1cf0d3fd4c3a6 | Bardo Mago | "Preços extremamente altos" da comida: preço do consumo − |
 | 3f9cde2e8c24812089b1f84a1e797ead | Bodogami | Idosos em pé mais de 1 hora: lotação e reserva − |
-| 3f9cde2e8c248170b50ed3ef5656c7c6 | Bodogami | Jogos "não atualizados": curadoria −, não variedade − |
 | 3f9cde2e8c2481ccbf2fd00f53105a33 | Bodogami | Não jogou "devido o horário": horário de funcionamento − |
 | 3f9cde2e8c2481388b6de45d5e8ed6d3 | Bodogami | "Diversos jogos": variedade +; "pelo tempo que quiser": regras da casa + |
 | 3f9cde2e8c24819791b9f20b0c1e2d48 | Bodogami | "Pricy for an hour of play": preço da entrada − |
@@ -121,7 +129,7 @@ Antes de contar, conferir por SQL: nenhuma opção fora desta lista, as duas col
 | 3f5cde2e8c2481289b48ce6701eee62d | Cartola | Jogo pedido e levado à mesa: regras da casa +, não curadoria (curadoria fica pelo "portfólio incrível") |
 | 3f9cde2e8c2481a5873ade636c393967 | Fan Hour | "Não há estacionamentos": localização −; "ambiente pequeno": conforto − |
 | 3f9cde2e8c248148aac2ce694eac6571 | Fan Hour | "Taxa de serviço": regras da casa −, salvo se for a taxa de jogo (regra 9) |
-| 3f4cde2e8c24812da8b0c84a0f23ebca | Ludoteca Sidequest | "Possível alugar": aluguel +; taxa por pessoa que só vale cedo: preço da entrada − |
+| 3f4cde2e8c24812da8b0c84a0f23ebca | Ludoteca Sidequest | "Possível alugar": aluguel no contexto; taxa por pessoa que só vale cedo: preço da entrada − |
 | 3f9cde2e8c24811195a3e1ab9d486a17 | Ludus | "Todos foram educados": atendimento + |
 | 3f9cde2e8c248107be46dd270b2b5ed7 | Shelf | "Exceto a batata com queijo, ótima": comida também + |
 | 3f9cde2e8c2481029fa2d5a4e12ffb8a | Shelf | "Ambiente muito bom": ambiente + |
@@ -129,15 +137,15 @@ Antes de contar, conferir por SQL: nenhuma opção fora desta lista, as duas col
 | 3f9cde2e8c2481328f12e486934faf8a e 3f9cde2e8c248176a271db7697f61de8 | Shelf | Mesmo grupo, aniversário, explicadores e hambúrguer trocado: provável duplicata (regra 11); só a segunda tem limpeza + |
 | 3f9cde2e8c248120b4e8d0de20688910 | Shelf | "Jogos trocados quase no mesmo momento": explicação + |
 
-São 27 linhas em 166 (16%) com ao menos um ajuste. A maior parte é omissão de tema, não troca de sinal.
+São 26 linhas em 166 (16%) com ao menos um ajuste. A maior parte é omissão de tema, não troca de sinal.
 
 ## 6. O que falta para a grade seguir Bardin
 
 Bardin (2011 `[AV]`) exige categorias com exclusão mútua, homogeneidade (um só princípio de classificação na grade), pertinência, objetividade e fidelidade (codificadores diferentes chegam ao mesmo resultado) e produtividade. Frente a isso, faltam seis pontos:
 
-1. **Homogeneidade.** "Comemorações e grupos" e "eventos e comunidade" misturam atributo avaliado com ocasião e público. A ocasião (amigos, família, casal, aniversário) e o tipo de público (iniciante, hobbyista) devem virar códigos de contexto, sem polaridade, em uma coluna própria. "Costuma ir" e "Voltará" já cumprem esse papel para a recorrência (pendências, item 14a).
+1. **Homogeneidade.** Decidida em 30/10 (§2.1): ocasião, público, aluguel e loja vão para uma coluna de contexto, sem polaridade. Falta criar a coluna no Notion e mover as marcações de "aluguel", "loja" e "comemorações e grupos" que só citam a ocasião. "Costuma ir" e "Voltará" já cumprem esse papel para a recorrência (pendências, item 14a).
 2. **Exaustividade.** Não há tema para segurança, acessibilidade e respeito (idosos sem prioridade na fila, "ambiente seguro", adolescentes barrados). O livro de 15/10 tem esse tema (INC).
 3. **Polaridade neutra e mista.** As duas colunas não registram o mediano. Hoje a regra 4 descarta esses casos; o livro de 15/10 previa `~` e `±`.
 4. **Regras escritas com exemplo-âncora.** Cada tema precisa de um trecho real do corpus como exemplo de inclusão e outro de exclusão. A descrição do banco no Notion só traz a definição curta.
 5. **Uma grade só.** O livro de 15/10 (16 categorias, códigos ACV, MED etc.) e a lista do Notion (25 temas) descrevem o mesmo corpus com recortes diferentes. A análise do capítulo precisa de uma delas, com a tabela de correspondência.
-6. **Fidelidade medida.** A recodificação cega (§2 do instrumento de 15/10) segue sem fazer. Sem ela, nenhuma categoria tem kappa. As 166 linhas desta revisão servem de pré-teste da grade, não de corpus: o recorte por Fórmula ≥ 5 precisa ser declarado (o que a fórmula mede) e o restante das linhas codificado ou amostrado por regra escrita.
+6. **Fidelidade medida.** Um segundo codificador revisou as linhas, presencialmente, por cima da codificação do autor. Essa revisão melhora a codificação por consenso, mas não mede fidelidade: o segundo codificador viu as marcações e não decidiu de forma independente. O teste de Bardin pede duas codificações independentes do mesmo material e a comparação delas (kappa por tema). O procedimento possível: o segundo codificador marca uma amostra sorteada (ex.: 30 a 50 linhas ainda não codificadas, ou cópias das 166 com as colunas ocultas) sem ver as marcações, depois de ler este dicionário; o kappa sai da comparação, e as divergências viram regras novas. As 166 linhas desta revisão servem de pré-teste da grade, não de corpus: o recorte por Fórmula ≥ 5 precisa ser declarado (o que a fórmula mede) e o restante das linhas codificado ou amostrado por regra escrita.

@@ -1314,3 +1314,10 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: três CSVs novos soltos na raiz de `_dados-brutos/` (Bodogami, 16:55; Shelf, 14:38 e 16:57); pendência pedia completar a Bodogami e recoletar a Shelf.
 **Depois**: CSVs movidos para `_dados-brutos/coletas/` com sufixo (1) e (2), sem sobrescrever as coletas de mesmo nome. Comparação com as coletas escolhidas (13/10 e 14/10) registrada no item 14d: Bodogami com 23 comentários sem nenhum dos 7 campos no recorte, contra 120; Shelf igual à antiga nos 241 comuns. Próximas recoletas: Encounter, Utopia Games & Food e Luderia Carioca.
 **Justificativa**: pedido do autor: conferir se as coletas do script novo vieram mais completas e indicar as 3 próximas casas a recoletar.
+
+### 17:10
+**Objeto**: `textos/instrumentos/dicionario_temas_B2.md` e descrição do banco "2 - Comentários" no Notion
+**Antes**: pedido errado em rapidez do serviço; curadoria com "jogos diferentes" e jogos desatualizados; aluguel e loja como temas com polaridade; ocasião e público como proposta; 27 linhas a rever; a fidelidade dependia da recodificação cega ainda não feita.
+**Depois**: pedido errado em atendimento presencial; curadoria só para jogos muito bons de se jogar; acervo desatualizado em variedade do acervo; coluna de contexto, sem polaridade, com ocasião, público, aluguel e loja (ainda não criada no Notion); 26 linhas a rever (saiu a do Bodogami com jogos desatualizados, que já estava certa; na do Arcadea fica só o 10%). A revisão presencial do segundo codificador, feita por cima das marcações do autor, é registrada como revisão por consenso, sem medida de fidelidade.
+**Justificativa**: correções do autor ao dicionário de 30/10.
+
