@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 30/10/2026 | B2, temas dos comentários no Notion: dicionário reconstruído a partir das 166 linhas codificadas pelo autor (variedade = quantidade, curadoria = qualidade dos títulos; explicação de jogos = serviço de jogo à mesa; 10% em regras da casa; preço sem objeto = preço do consumo; mediano e ocasião citada sem juízo não são codificados) | `textos/instrumentos/dicionario_temas_B2.md` |
 | 30/10/2026 | Entorno (B1) só com o Google Maps: o OSM sai do coletor e da análise; shopping de porte só pelo número de avaliações no Maps (limiar padrão 1.000, com contagens a 500 e 5.000 para sensibilidade); distância da estação ou shopping mais próximo só até 1000 m | `docs/registro-de-alteracoes.md` (30/10 14:30) |
 | 30/10/2026 | B2, coletor do Maps: avaliação só conta como lida com o "Mais" expandido; coluna `texto_expandido` marca as que ficaram cortadas, e o lugar é recoletado | `docs/registro-de-alteracoes.md` (30/10 13:40) |
 | 30/10/2026 | B2, codificação dos comentários no Notion ("2 - Comentários"): mesma lista de 22 temas em Itens positivos e Itens negativos, a coluna dá a polaridade; definições na descrição do banco | `docs/registro-de-alteracoes.md` (30/10 13:04) |

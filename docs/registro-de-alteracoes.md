@@ -1296,3 +1296,16 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes** (CSV das coletas, base do Bardin, 1.593 comentários): 19 casas com campo extra (1.140 comentários); 177 sem nenhum dos 7 campos, 827 abaixo do comentário mais completo da casa, 973 com campo vazio que outro comentário da casa preenche.
 **Depois** (Notion, consulta SQL de 30/10, 1.628 linhas): as mesmas 19 casas (1.137 linhas; as outras 34 casas têm 491; soma 1.628); 134 sem nenhum campo, 864 abaixo do máximo, 1.008 com campo vazio visto em outro comentário. Maior diferença em Bodogami: 39 linhas sem campo no Notion contra 120 no CSV; também Castelos (12 contra 4) e Chef on Play (6 contra 1). "Sobras" está vazio em 1.627 linhas: os rótulos raros do Google (Opções vegetarianas, Acessibilidade etc.) não foram importados.
 **Efeitos colaterais**: o Notion pode ter sido preenchido a partir de outro arquivo de coleta de algumas casas (Bodogami tem 4 arquivos em `_dados-brutos/coletas/`), então a contagem do CSV não substitui a do Notion. Nada foi alterado.
+
+### 17:05
+**Objeto**: `textos/instrumentos/dicionario_temas_B2.md` (novo) e descrição do banco "2 - Comentários" no Notion
+**Antes**: definições de uma linha por tema na descrição do banco, sem regras de decisão; 21 temas descritos ("comida / bebidas" juntos) contra 25 opções nas colunas ("curadoria dos jogos" e "aluguel" só em Itens positivos, "horário de funcionamento" só em Itens negativos, nenhuma das três descrita).
+**Depois**: dicionário com 25 temas (entra / não entra), 11 regras de decisão e 27 linhas a rever, reconstruído a partir das 166 linhas que o autor codificou (Fórmula ≥ 5; 356 linhas no filtro, 190 ainda sem tema). Descrição do banco com as definições novas e as regras curtas. Nenhuma célula das colunas de temas foi alterada.
+**Justificativa**: pedido do autor: corrigir as regras do dicionário a partir das classificações já feitas e avaliar a aderência a Bardin.
+
+### 17:05
+**Objeto**: divergência entre `textos/instrumentos/analise_conteudo_bardin_B2.md` (§1.4, 15/10) e o dicionário do Notion (30/10)
+**Antes** (15/10): 16 categorias com código (ACV, MED, ATD, AB, TMP, PRC, AMB, RUI, CAP, PRG, COMU, VAR, LOC, INC, RET, GEN), polaridade `+ - ± ~` e códigos de contexto (ocasião, público, desconexão, nome de funcionário).
+**Depois** (30/10): 25 temas no Notion, polaridade só positiva ou negativa, sem códigos de contexto e sem tema de segurança e inclusão.
+**Efeitos colaterais**: os achados do §3 do instrumento usam a grade de 15/10; contagens feitas no Notion não são comparáveis a eles sem uma tabela de correspondência. Nada foi corrigido (pendências, item 15c).
+
