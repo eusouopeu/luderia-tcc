@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 30/10/2026 (18h13). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 30/10/2026 (19h27). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -40,7 +40,7 @@ Atualizado em 30/10/2026 (18h13). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Codificação do B2 no Notion** (30/10): 166 linhas codificadas pelo autor (Fórmula ≥ 5). Dicionário reconstruído a partir delas em `textos/instrumentos/dicionario_temas_B2.md` (resumo na descrição do banco "2 - Comentários"), com 26 linhas a rever, a coluna de contexto a criar e o que falta para seguir Bardin (pendências, item 15). "Costuma ir" e "Voltará" seguem como estavam (pendências, item 14).
 
-- **Temas do B2 em todas as linhas** (30/10, 18:13): as 1.273 linhas sem tema codificadas por Claude nas cópias exportadas do "2 - Comentários" (arquivos do projeto `b2/notion_comentarios/`), com Contexto e "Análise de temas". Falta levar ao Notion (cota esgotada) e a recodificação cega do autor (139 linhas).
+- **Temas do B2 em todas as linhas** (30/10, 18:13): as 1.273 linhas sem tema codificadas por Claude nas cópias exportadas do "2 - Comentários" (arquivos do projeto `b2/notion_comentarios/`), com Contexto e "Análise de temas". Levadas ao Notion às 19:27 (1.296 páginas, totais iguais aos do CSV). Falta a recodificação cega do autor (139 linhas).
 
 - **Coletor do B2 corrigido** (30/10, versão 2026.10.30-2): expande todos os "Mais" antes de ler, marca em `texto_expandido` o que ficou cortado e não para mais cedo por volume lido errado (Shelf parava em 40). Bodogami e Shelf recoletadas com ela em 30/10 (Bodogami: 120 comentários sem campos extras viraram 23). Próximas: Encounter, Utopia e Luderia Carioca (pendências, item 14d).
 
