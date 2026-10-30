@@ -1250,3 +1250,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: 2 linhas marcadas "Incompleto" pelo autor (Bardo Mago); 1.626 sem status.
 **Depois**: 6 linhas "Incompleto", todas do Bardo Mago: as 2 do autor e 4 novas, em que o texto termina em reticências no meio da frase ("(especialmente os …", "mais caro no domingo do que …", "muito simpáticos, …", "passei mal neste meio tempo e a …"). Varredura das 1.628 linhas: 42 terminam em reticências ("…" ou "..."); as outras 36 terminam em frase completa e ficaram sem status. Dessas, 27 trazem o marcador do Google (espaço + "…"), o mesmo de uma das linhas que o autor marcou, e podem ter texto oculto depois de uma quebra de linha; as 9 com "..." são reticências do próprio autor da avaliação.
 **Justificativa**: pedido do autor: marcar os comentários cortados pelo coletor (texto depois do botão "Mais" não extraído).
+
+### 13:24
+**Objeto**: Notion, banco "2 - Comentários", propriedade "Status"
+**Antes**: 6 linhas "Incompleto" (Bardo Mago, cortadas no meio da frase); 27 linhas terminadas no marcador do Google (espaço + "…") depois de frase completa, sem status.
+**Depois**: as 27 também marcadas "Incompleto"; total de 33 de 1.628 linhas. Por casa: Bardo Mago 9, Luderia Carioca 4, Encounter 3, Ludoteca Sidequest 2, Bravo Jogos 2, Bodogami 2 e 1 em cada uma de outras 11 casas (Tubaleria, TabuClub, Play Easy, Nala Land, Ludoteca BGC, Flow Games, Fortalúdica, Castelos, BoardZ, Arena BG, Alçapão). Soma conferida: 9+4+3+2+2+2+11 = 33. As 9 linhas com "..." do próprio autor da avaliação seguem sem status.
+**Justificativa**: pedido do autor: tratar o marcador do Google como sinal de texto oculto depois do botão "Mais".
