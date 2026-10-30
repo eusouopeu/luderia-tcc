@@ -1,9 +1,12 @@
 """
-Planilha única com os dados agregados da pesquisa (B1, B3 e B4) e gráficos.
+Planilhas com os dados agregados da pesquisa (B1, B3 e B4) e gráficos, uma por bloco.
 
-Lê só arquivos processados de `dados/` e grava
-`dados/Dados agregados/dados_agregados.xlsx`, uma aba por tabela, com a figura
-ao lado, e os gráficos em PNG (300 dpi) em `dados/Dados agregados/graficos/`.
+Lê só arquivos processados de `dados/` e grava em `dados/Dados agregados/`:
+`B1_dados_agregados_completo.xlsx`, `B1_dados_agregados_resumido.xlsx` (sem
+eventos, dias e temas do Instagram e sem o custo do acervo),
+`B3_dados_agregados.xlsx` e `B4_dados_agregados.xlsx`, uma aba por tabela,
+com a figura ao lado, e os gráficos em PNG (300 dpi) em `graficos/`. Monta
+tudo numa pasta só e depois separa, renumerando as tabelas de cada arquivo.
 
 Fora por pedido do autor (30/10/2026): os comentários do B2 (texto, temas e
 contagens de avaliações) e, no entorno, tudo o que vem do OpenStreetMap
@@ -564,38 +567,29 @@ for j in range(1, len(COLS) + 1):
 ws.cell(ult + 1, 1, f"Fonte: {FONTE_B1}; arquivo B1_estatistica_descritiva_geral.xlsx (aba dados).").font = ARIAL
 ws.cell(ult + 2, 1, "Nota: 1 = sim, 0 = não nas colunas de dia e de cardápio; \"couvert encontrado\" 0 = não encontrado no cardápio, não \"não cobra\".").font = ARIAL
 
-ind = wb.create_sheet("Índice", 0)
-ind.sheet_view.showGridLines = False
-ind.cell(1, 1, "Dados agregados da pesquisa – TCC Luderia (B1, B3 e B4)")
-ind.merge_cells("A1:C1")
-for j, c in enumerate(["Aba", "Tabela", "Fonte"], 1):
-    ind.cell(2, j, c)
-for i, (a, t, f) in enumerate(INDICE + [(ABA_BASE, "Base das 54 casas do B1", FONTE_B1)], 3):
-    ind.cell(i, 1, a).hyperlink = f"#'{a}'!A1"
-    ind.cell(i, 2, t)
-    ind.cell(i, 3, f)
-ult = 2 + len(INDICE) + 1
-for rr in range(1, ult + 1):
-    for j in range(1, 4):
-        cel = ind.cell(rr, j)
-        cel.fill = BRANCO
-        cel.font = ARIAL_N if rr <= 2 else ARIAL
-        cel.alignment = Alignment(horizontal="center" if rr <= 2 else "left", vertical="center", wrap_text=rr > 2)
-        if rr == 2:
-            cel.border = Border(top=FINA, bottom=FINA, left=SEM, right=SEM)
-        elif rr > 2:
-            cel.border = Border(top=SEM, left=SEM, right=SEM, bottom=FINA if rr == ult else SEM)
-for j, w in enumerate([10, 90, 70], 1):
-    ind.column_dimensions[get_column_letter(j)].width = w
-notas_ind = [
-    "Fora desta planilha, por pedido do autor (30/10/2026): comentários do B2 e dados do OpenStreetMap no entorno.",
-    "Gráficos em PNG de 300 dpi em dados/Dados agregados/graficos/. Gerado por _src/extras/gerar_planilha_agregada.py.",
-]
-for k, t in enumerate(notas_ind, ult + 2):
-    ind.cell(k, 1, t).font = ARIAL
-
 SAIDA.mkdir(parents=True, exist_ok=True)
-arq = SAIDA / "dados_agregados.xlsx"
-wb.save(arq)
-print(f"{arq.relative_to(ROOT)}: {len(INDICE)} tabelas + base; {len(list(GRAF.glob('*.png')))} gráficos em {GRAF.relative_to(ROOT)}")
+for velho in ("dados_agregados.xlsx",):  # pasta única de antes da divisão por bloco (30/10/2026)
+    (SAIDA / velho).unlink(missing_ok=True)
+total = SAIDA / "_todas_as_tabelas.tmp.xlsx"
+wb.save(total)
+TABS = [a for a, _, _ in INDICE]
+B1_TABS, B3_TABS, B4_TABS = TABS[:14], TABS[14:15], TABS[15:]
+B1_FORA = {"Tab 10", "Tab 11", "Tab 12", "Tab 14"}  # eventos, dias e temas do Instagram e custo do acervo
+BASE_B1 = [(ABA_BASE, "Base das 54 casas do B1", FONTE_B1)]
+NOTA_GRAF = "Gráficos em PNG de 300 dpi em dados/Dados agregados/graficos/. Gerado por _src/extras/gerar_planilha_agregada.py."
+NOTA_FORA = "Fora, por pedido do autor (30/10/2026): comentários do B2 (planilha própria) e dados do OpenStreetMap no entorno."
+feitos = dividir(total, INDICE, [
+    (SAIDA / "B1_dados_agregados_completo.xlsx", "Dados agregados do B1 (estabelecimentos) – TCC Luderia, versão completa",
+     B1_TABS, BASE_B1, [NOTA_FORA, NOTA_GRAF]),
+    (SAIDA / "B1_dados_agregados_resumido.xlsx", "Dados agregados do B1 (estabelecimentos) – TCC Luderia, versão resumida",
+     [a for a in B1_TABS if a not in B1_FORA], BASE_B1,
+     [NOTA_FORA, "Versão resumida: sem eventos por categoria, dias citados nos eventos e temas das legendas do Instagram, "
+      "e sem o custo do acervo inicial (tabelas 10, 11, 12 e 14 da versão completa).", NOTA_GRAF]),
+    (SAIDA / "B3_dados_agregados.xlsx", "Dados agregados do B3 (contagem direta) – TCC Luderia", B3_TABS, [], [NOTA_GRAF]),
+    (SAIDA / "B4_dados_agregados.xlsx", "Dados agregados do B4 (bases públicas) – TCC Luderia", B4_TABS, [], [NOTA_GRAF]),
+])
+total.unlink()
+for caminho, n in feitos:
+    print(f"{caminho.relative_to(ROOT)}: {n} tabelas")
+print(f"{len(list(GRAF.glob('*.png')))} gráficos em {GRAF.relative_to(ROOT)}")
 print(f"Conferência: {N} casas na base; soma por metrópole = {int(cont.n.sum())} (diferença {N - int(cont.n.sum())})")

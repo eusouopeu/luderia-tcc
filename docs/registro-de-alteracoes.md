@@ -1352,3 +1352,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: só tons das paletas slate e purple do Tailwind CSS (purple-800, 500, 300 e 700; slate-300, 400, 600 e 700; grade em slate-200). Salvador em purple-700, com as demais barras em slate-400; rótulos de séries claras em slate-700 para ficarem legíveis.
 **Justificativa**: pedido do autor.
 
+### 18:32
+**Objeto**: planilhas de `dados/Dados agregados/` e `_src/extras/` (`gerar_planilha_agregada.py`, `gerar_planilha_comentarios.py`, `planilha_estilo.py`)
+**Antes**: `dados_agregados.xlsx` com as 21 tabelas de B1, B3 e B4 juntas e `dados_agregados_comentarios.xlsx` com o B2; títulos com o nome da tabela seguido de dois-pontos e da conclusão (ex.: "Tabela 1 – Casas do B1 por região e metrópole: São Paulo concentra 19 das 54; Salvador tem uma").
+**Depois**: um arquivo por bloco, com tabelas e abas renumeradas a partir de 1 em cada um: `B1_dados_agregados_completo.xlsx` (14 tabelas), `B1_dados_agregados_resumido.xlsx` (10 tabelas: sem eventos por categoria, dias citados nos eventos e temas das legendas do Instagram e sem o custo do acervo inicial, que eram as tabelas 10, 11, 12 e 14), `B2_dados_agregados.xlsx` (11), `B3_dados_agregados.xlsx` (1) e `B4_dados_agregados.xlsx` (6). Títulos só com a parte antes dos dois-pontos. Os dois arquivos antigos saíram. Gráficos iguais.
+**Justificativa**: pedido do autor: nomes das tabelas sem a conclusão ("o resto só polui") e tabelas separadas por bloco de dados, com duas versões do B1.
+

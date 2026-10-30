@@ -242,6 +242,7 @@ def nova_aba(aba, titulo, cabecalho, linhas_, tipos, fonte, larguras=None, grafi
 
     tipos: um por coluna ("txt", "int", "dec", "pct"); célula que começa com "=" vira fórmula.
     """
+    titulo = titulo.split(":")[0].rstrip()  # só o nome da tabela (pedido do autor, 30/10/2026)
     ws = wb.create_sheet(aba)
     ws.sheet_view.showGridLines = False
     nc = len(cabecalho)
@@ -294,3 +295,65 @@ def nova_aba(aba, titulo, cabecalho, linhas_, tipos, fonte, larguras=None, grafi
     return ws
 
 
+
+
+def escrever_indice(wb_, titulo, itens, notas=()):
+    """Aba "Índice" na frente: aba (com link), tabela e fonte; notas abaixo."""
+    if "Índice" in wb_.sheetnames:
+        del wb_["Índice"]
+    ind = wb_.create_sheet("Índice", 0)
+    ind.sheet_view.showGridLines = False
+    ind.cell(1, 1, titulo)
+    ind.merge_cells("A1:C1")
+    for j, c in enumerate(["Aba", "Tabela", "Fonte"], 1):
+        ind.cell(2, j, c)
+    for i, (a, t, f) in enumerate(itens, 3):
+        ind.cell(i, 1, a).hyperlink = f"#'{a}'!A1"
+        ind.cell(i, 2, t)
+        ind.cell(i, 3, f)
+    ult = 2 + len(itens)
+    for rr in range(1, ult + 1):
+        for j in range(1, 4):
+            cel = ind.cell(rr, j)
+            cel.fill = BRANCO
+            cel.font = ARIAL_N if rr <= 2 else ARIAL
+            cel.alignment = Alignment(horizontal="center" if rr <= 2 else "left", vertical="center", wrap_text=rr > 2)
+            if rr == 2:
+                cel.border = Border(top=FINA, bottom=FINA, left=SEM, right=SEM)
+            elif rr > 2:
+                cel.border = Border(top=SEM, left=SEM, right=SEM, bottom=FINA if rr == ult else SEM)
+    for j, w in enumerate([10, 70, 70], 1):
+        ind.column_dimensions[get_column_letter(j)].width = w
+    for k, t in enumerate(notas, ult + 2):
+        ind.cell(k, 1, t).font = ARIAL
+
+
+def dividir(arq_total, indice, saidas):
+    """Separa a pasta completa em arquivos (um por bloco), renumerando tabelas e abas a partir de 1.
+
+    indice: lista (aba, título, fonte) da pasta completa.
+    saidas: lista (caminho, título do índice, abas de tabela, abas extras, notas do índice).
+    """
+    import re
+    from openpyxl import load_workbook
+
+    por_aba = {a: (t, f) for a, t, f in indice}
+    feitos = []
+    for caminho, titulo, abas, extras, notas in saidas:
+        wb_ = load_workbook(arq_total)
+        for nome in list(wb_.sheetnames):
+            if nome not in abas and nome not in [e for e, _, _ in extras]:
+                del wb_[nome]
+        itens = []
+        for k, aba in enumerate(abas, 1):
+            ws = wb_[aba]
+            novo_t = re.sub(r"^Tabela \d+", f"Tabela {k}", por_aba[aba][0])
+            ws.cell(1, 1).value = novo_t
+            ws.title = f"Tab {k}"
+            itens.append((ws.title, novo_t, por_aba[aba][1]))
+        for e, t, f in extras:
+            itens.append((e, t, f))
+        escrever_indice(wb_, titulo, itens, notas)
+        wb_.save(caminho)
+        feitos.append((caminho, len(abas)))
+    return feitos
