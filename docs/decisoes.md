@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 30/10/2026 | B2, codificação dos comentários no Notion ("2 - Comentários"): mesma lista de 22 temas em Itens positivos e Itens negativos, a coluna dá a polaridade; definições na descrição do banco | `docs/registro-de-alteracoes.md` (30/10 13:04) |
 | 22/10/2026 | Cardápios: item com mais de uma linha (tamanho, combo ou print de outra data) fica todo na planilha, mas só a linha de referência (`linha_referencia` = S) entra na cesta e nas medianas: cardápio mais recente, sem combo, menor tamanho. Sabor e dia da semana não são tamanho e ficam todos | `docs/registro-de-alteracoes.md` (22/10 11:14) |
 | 19/10/2026 | Cardápios: item com preço por quantidade (chopp 1x, 2x, 3x; licor 1 ou 2 shots) entra na planilha só com o preço de 1 unidade; os demais vão para a observação. `linha_arquivo` da auditoria = posição do item na transcrição (1 = primeiro item) | `docs/registro-de-alteracoes.md` (19/10 18:39) |
 | 18/10/2026 | B4 no Notion só com as tabelas-resumo (8 bancos "4 - …", 988 linhas): população e renda e aluguel por capital, Simples (faixas e repartição), CNAE, Focus, BCB último valor e salário de admissão por capital; séries longas ficam só nos CSVs | `docs/registro-de-alteracoes.md` (18/10 12:43) |

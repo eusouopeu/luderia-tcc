@@ -32,6 +32,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 13. **Auditoria de cardápios: "Lúdico" da ludotecabgc** (um crepe) aparece como "couvert ou taxa de jogo" na amostra (Notion "B - Auditoria Cardápios"). Provável erro de categoria na transcrição; conferir na auditoria e corrigir a planilha se for o caso.
 
+14. **"2 - Comentários" no Notion, campos ainda não revistos (30/10/2026).** (a) "Costuma ir" e "Voltará": proposta de trocar por "Recorrência" (primeira visita, já foi antes, frequenta, não dito) e "Intenção de voltar" (sim, não, condicional, não dito), mais um campo "Recomenda"; não aplicada. (b) Na recodificação dos temas, só se trocaram os itens já marcados: textos com temas evidentes e não marcados (ex.: couvert lúdico caro, demora e porções pequenas no Bardo Mago; tempo adicional pago no Balboa's) seguem sem o tema. (c) "Preço justo, bom acervo…" virou preço do consumo, mas pode ser o preço da entrada.
+
 ## Tarefas a fazer (pedidas pelo autor em 15/10/2026)
 
 - **Instagram: aprimorar o coletor e refazer a coleta destes perfis** (status no Notion "Luderias – Status da coleta", 15/10):
