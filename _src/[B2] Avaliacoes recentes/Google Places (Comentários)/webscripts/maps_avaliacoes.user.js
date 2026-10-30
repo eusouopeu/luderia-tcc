@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de avaliações do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.30-2
+// @version      2026.10.30-3
 // @description  Abre as avaliações de um lugar, ordena por mais recentes, rola até o fim do período, expande os textos (no idioma original), filtra por tema, opinião, componentes e busca, salva o progresso, coleta em fila, confere amostras e exporta CSV com autor pseudonimizado.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -102,7 +102,8 @@
  *
  * Texto cortado: o "Mais" esconde o fim do texto e também as notas, o preço e os
  * demais detalhes. "texto_expandido" = não marca o cartão que ficou com "Mais"
- * sem expandir (a coleta avisa ao terminar e na exportação); recolete o lugar.
+ * sem expandir ou com texto (ou resposta do dono) terminado no marcador " …" do
+ * Google (a coleta avisa ao terminar e na exportação); recolete o lugar.
  *
  * Som: o navegador só libera áudio depois de um clique na página. Na fila, depois
  * que a página muda, clique uma vez no painel para o aviso final tocar.
@@ -404,8 +405,16 @@
   }
 
   // "Mais" ainda por clicar: texto, notas, preço ou resposta do dono cortados.
-  const botoesMais = (c) => [...c.querySelectorAll('button, [role="button"]')]
-    .filter((b) => b.classList.contains('w8nwRe') || /^(mais|more|ver mais|see more)$/i.test(textoControle(b)));
+  // Nem todo "Mais" é <button>: nos textos cortados depois de um emoji ele chegou
+  // como "… Mais" dentro do próprio texto. Vale o elemento mais interno: o <span>
+  // "Mais" que embrulha o botão não abre nada, e o clique no interno sobe até ele.
+  const ehMais = (b) => b.classList.contains('w8nwRe') || /^(mais|more|ver mais|see more)$/i.test(textoControle(b));
+  const botoesMais = (c) => {
+    const achados = [...c.querySelectorAll('button, [role="button"], a, span')].filter(ehMais);
+    return achados.filter((b) => !achados.some((o) => o !== b && b.contains?.(o)));
+  };
+  // Marcador do Google no fim do texto cortado: espaço + "…".
+  const terminaCortado = (t) => /\s…$/.test((t || '').trim());
 
   // Clica em "Ver original" (para ler o texto no idioma do autor) e em "Mais", e
   // repete enquanto sobrar "Mais": o original volta cortado, e o Maps às vezes
@@ -504,7 +513,8 @@
       texto_avaliacao: texto,
       traduzida: traduzida ? 'sim' : 'não',
       texto_original: !traduzida || originalVisivel ? 'sim' : 'não',
-      texto_expandido: botoesMais(c).length ? 'não' : 'sim',
+      texto_expandido: botoesMais(c).length || terminaCortado(texto)
+        || terminaCortado(resposta?.querySelector('.wiI7pd')?.innerText) ? 'não' : 'sim',
       detalhes,
       tipo_servico: campos.tipo_servico || '',
       tipo_refeicao: campos.tipo_refeicao || '',

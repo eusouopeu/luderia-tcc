@@ -25,7 +25,7 @@ function carregar(contexto = {}) {
     ...contexto,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Avaliações do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { infoLugar, fimPeloVolume, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, leituraMelhor, checarSeletores, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros, reciboExportacao, aplicarForaDoFiltro, filtros });})();';
+    + 'Object.assign(globalThis.__test, { infoLugar, fimPeloVolume, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, terminaCortado, leituraMelhor, checarSeletores, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros, reciboExportacao, aplicarForaDoFiltro, filtros });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_avaliacoes.user.js' });
   return ambiente.__test;
 }
@@ -141,6 +141,29 @@ test('expande o texto original que volta cortado depois de "Ver original"', asyn
   await carregar({ document }).expandirTextos();
   assert.equal(maisOriginal.cliques, 1);
   assert.equal(botoes.includes(maisOriginal), false);
+});
+
+test('clica no "Mais" que vem como <span> solto no texto, sem role de botão', async () => {
+  const botoes = [];
+  const span = botaoMais(botoes);
+  span.classList = { contains: () => false };
+  botoes.push(span);
+  await carregar({ document: { querySelectorAll: () => [cartaoCom(botoes)] } }).expandirTextos();
+  assert.equal(span.cliques, 1);
+});
+
+test('clica no botão "Mais", não no <span> "Mais" que o embrulha', async () => {
+  const botoes = [];
+  const botao = botaoMais(botoes);
+  const embrulho = { innerText: 'Mais', dataset: {}, classList: { contains: () => false }, cliques: 0,
+    click: () => { embrulho.cliques++; }, contains: (e) => e === botao };
+  // No Maps o <span> some junto com o botão quando o texto abre.
+  const abrir = botao.click;
+  botao.click = () => { abrir(); if (!botoes.includes(botao)) botoes.splice(botoes.indexOf(embrulho), 1); };
+  botoes.push(embrulho, botao);
+  await carregar({ document: { querySelectorAll: () => [cartaoCom(botoes)] } }).expandirTextos();
+  assert.equal(botao.cliques, 1);
+  assert.equal(embrulho.cliques, 0);
 });
 
 test('leitura com "Mais" pendente não substitui leitura expandida', () => {
@@ -260,4 +283,13 @@ test('colunas do recibo existem no CSV e as linhas da coleta gravam as entradas'
   assert.equal(linha.coleta_parar_em_conhecidas, 'não');
   assert.equal(linha.coleta_ordenacao_manual, 'não');
   assert.equal(linha.periodo_ate_dias, 30);
+});
+
+test('reconhece o marcador " …" do Google no fim do texto cortado', () => {
+  const { terminaCortado } = carregar();
+  assert.equal(terminaCortado('Super recomendo 👏🏼👏🏼 …'), true);
+  assert.equal(terminaCortado('Obrigado pela avaliação! 🎲 …\n'), true);
+  assert.equal(terminaCortado('Voltarei…'), false);
+  assert.equal(terminaCortado('texto inteiro'), false);
+  assert.equal(terminaCortado(undefined), false);
 });

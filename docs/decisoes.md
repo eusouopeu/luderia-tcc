@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 30/10/2026 | B2, coletor do Maps: texto ou resposta do dono terminando no marcador " …" do Google conta como cortado (`texto_expandido` = não), mesmo sem botão "Mais" à vista | `docs/registro-de-alteracoes.md` (30/10 17:26) |
 | 30/10/2026 | B2, temas: pedido errado vai para atendimento presencial (rapidez do serviço é só tempo); curadoria dos jogos = jogos muito bons de se jogar, não quantidade nem conservação; ocasião, público, aluguel e loja vão para uma coluna de contexto, sem polaridade | `textos/instrumentos/dicionario_temas_B2.md` |
 | 30/10/2026 | B2, temas dos comentários no Notion: dicionário reconstruído a partir das 166 linhas codificadas pelo autor (variedade = quantidade, curadoria = qualidade dos títulos; explicação de jogos = serviço de jogo à mesa; 10% em regras da casa; preço sem objeto = preço do consumo; mediano e ocasião citada sem juízo não são codificados) | `textos/instrumentos/dicionario_temas_B2.md` |
 | 30/10/2026 | Entorno (B1) só com o Google Maps: o OSM sai do coletor e da análise; shopping de porte só pelo número de avaliações no Maps (limiar padrão 1.000, com contagens a 500 e 5.000 para sensibilidade); distância da estação ou shopping mais próximo só até 1000 m | `docs/registro-de-alteracoes.md` (30/10 14:30) |
