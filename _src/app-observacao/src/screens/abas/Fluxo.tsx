@@ -1,26 +1,29 @@
 import { useEffect, useState } from 'react'
-import { ChevronDownIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { ChevronDownIcon, HomeIcon, TrashIcon } from '@heroicons/react/24/outline'
 import { useLoja } from '../../store'
 import { Fab, ContadorH, Folha, Opcao } from '../../ui/comum'
 import { Ajuda } from '../../ui/Ajuda'
 import { avisar } from '../../ui/aviso'
 import {
-  agoraHora, destinoMesa, DESTINOS, gruposDentro, mesaDoDestino, minutos, MOTIVOS_SAIDA, novoId, pessoasDentro, proximoCodigo, registroAberto,
+  agoraHora, destinoMesa, DESTINOS, difMin, gruposDentro, mesaDoDestino, minutosNaVisita, MOTIVOS_SAIDA, novoId, pessoasDentro, proximoCodigo, registroAberto,
   SAIDA_RAPIDA_MIN, visitaAtiva, type Estado, type Fluxo, type Registro, type Unidade,
 } from '../../domain/model'
 
 const numero = (codigo: string) => Number(/-(\d+)$/.exec(codigo)?.[1] ?? 0)
-/** ordem de chegada: hora da entrada, depois o número do código */
-const porChegada = (a: Fluxo, b: Fluxo) => a.hora.localeCompare(b.hora) || numero(a.codigo) - numero(b.codigo)
 
 /** Entradas e saídas na porta: um cartão por grupo, com código que liga a entrada à saída. */
-export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: () => boolean }) {
+export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: (depois: () => void) => boolean }) {
   const { estado, mudar } = useLoja()
   const [novoId_, setNovo] = useState<string | null>(null)
   const [verSaidas, setVerSaidas] = useState(false)
   /** código do grupo cuja saída pede motivo */
   const [motivoDe, setMotivoDe] = useState<string | null>(null)
   const visita = visitaAtiva(estado, unidade.id)
+  /** ordem de chegada: estoque inicial primeiro, depois a hora na visita (vira a meia-noite) e o número do código */
+  const porChegada = (a: Fluxo, b: Fluxo) =>
+    Number(b.inicial) - Number(a.inicial) ||
+    (visita ? (minutosNaVisita(visita, a.hora) ?? 0) - (minutosNaVisita(visita, b.hora) ?? 0) : a.hora.localeCompare(b.hora)) ||
+    numero(a.codigo) - numero(b.codigo)
   const fl = visita ? estado.fluxos.filter((f) => f.visitaId === visita.id) : []
   const entradas = fl.filter((f) => f.tipo === 'entrada')
   const saidaDe = (codigo: string) => fl.find((f) => f.tipo === 'saida' && f.codigo === codigo)
@@ -36,17 +39,18 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
     return () => clearTimeout(t)
   }, [novoId_])
 
-  const novo = () => {
-    if (!visita && !semVisita()) return
+  /** Nova entrada; `inicial` = grupo que já estava dentro quando a visita começou (não conta como entrada). */
+  const novo = (inicial = false) => {
+    if (!visitaAtiva(useLoja.getState().estado, unidade.id) && !semVisita(() => novo(inicial))) return
     const v = visitaAtiva(useLoja.getState().estado, unidade.id)!
     const f: Fluxo = {
-      id: novoId(), visitaId: v.id, codigo: proximoCodigo(useLoja.getState().estado.fluxos, v.id, unidade.sigla), tipo: 'entrada', hora: agoraHora(), pessoas: 2, criancas: 0,
-      estimado: false, destino: '', motivo: '',
+      id: novoId(), visitaId: v.id, codigo: proximoCodigo(useLoja.getState().estado.fluxos, v.id, unidade.sigla), tipo: 'entrada',
+      hora: inicial ? v.inicio.slice(11, 16) : agoraHora(), pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: '', inicial,
     }
     mudar((e) => ({ ...e, fluxos: [...e.fluxos, f] }))
     setNovo(f.id)
     navigator.vibrate?.(40)
-    avisar(`Entrada ${f.codigo} lançada às ${f.hora}.`, { rotulo: 'Desfazer', fazer: () => mudar((e) => ({ ...e, fluxos: e.fluxos.filter((x) => !(x.visitaId === f.visitaId && x.codigo === f.codigo)) })) })
+    avisar(inicial ? `${f.codigo}: grupo que já estava dentro.` : `Entrada ${f.codigo} lançada às ${f.hora}.`, { rotulo: 'Desfazer', fazer: () => mudar((e) => ({ ...e, fluxos: e.fluxos.filter((x) => !(x.visitaId === f.visitaId && x.codigo === f.codigo)) })) })
   }
   /** Muda o grupo; a saída acompanha pessoas e crianças da entrada. */
   const muda = (codigo: string, p: Partial<Fluxo>, tipo: Fluxo['tipo'] = 'entrada') =>
@@ -72,7 +76,7 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
     navigator.vibrate?.(40)
     if (!sim) return
     // saída logo depois da entrada, sem ter ido a uma mesa: pergunta o motivo (lotado, só olhou…)
-    const rapida = (minutos(agoraHora()) ?? 0) - (minutos(en.hora) ?? 0) <= SAIDA_RAPIDA_MIN
+    const rapida = !en.inicial && (difMin(en.hora, agoraHora()) ?? Infinity) <= SAIDA_RAPIDA_MIN
     if (rapida && !mesaDoDestino(en.destino)) setMotivoDe(en.codigo)
     else avisar(`Saída de ${en.codigo} às ${agoraHora()}.`, { rotulo: 'Desfazer', fazer: () => sair(en, false) })
   }
@@ -121,7 +125,7 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
       const novo: Registro = {
         id: novoId(), visitaId: en.visitaId, unidadeId: unidade.id, mesaId, data: (visita?.inicio ?? '').slice(0, 10), aniversario: false,
         entrada: en.hora, saida: null, saidaTipo: '', pessoas: en.pessoas, criancas: en.criancas, pessoasEstimado: en.estimado, fluxos: [en.codigo],
-        instrutor: 0, jogos: [], jogosIncertos: [], notas: '', pedidos: [],
+        inicial: en.inicial, instrutor: 0, jogos: [], jogosIncertos: [], notas: '', pedidos: [],
       }
       return { ...base, registros: [...base.registros, novo] }
     })
@@ -141,6 +145,7 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
         <div className="flex items-center gap-2">
           <span className={`w-[92px] shrink-0 text-base font-bold ${sa ? 'text-neutro-500' : ''}`}>
             <span className="text-caneta-700">ID</span> {en.codigo}
+            {en.inicial && <span className="block text-[11px] font-bold uppercase text-alerta-700">já dentro</span>}
           </span>
           <div className="flex h-9 flex-1 overflow-hidden rounded-md bg-neutro-300 text-[13px] font-bold">
             <button onClick={() => sa && sair(en, false)} aria-pressed={!sa} className={`flex-1 ${!sa ? 'bg-caneta-600 text-sobre' : 'text-neutro-700'}`}>
@@ -198,8 +203,15 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
               <TrashIcon className="size-5" />
             </button>
           </div>
+          <button
+            onClick={() => muda(en.codigo, en.inicial ? { inicial: false } : { inicial: true, hora: visita!.inicio.slice(11, 16) })}
+            aria-pressed={en.inicial}
+            className={`mt-3 flex items-center gap-1.5 rounded-full px-3 py-1 text-[13px] font-semibold ${en.inicial ? 'bg-alerta-100 text-alerta-700' : 'bg-papel text-neutro-600'}`}
+          >
+            <HomeIcon className="size-4" /> Já estava dentro na chegada
+          </button>
           <div className="mt-3 flex flex-wrap items-center gap-1.5">
-            <span className="mr-1 text-[13px] font-bold uppercase">Foi para</span>
+            <span className="mr-1 text-[13px] font-bold uppercase">{en.inicial ? 'Está em' : 'Foi para'}</span>
             {unidade.mesas.map((m) => {
               const d = destinoMesa(m.id)
               const ocupada = !!visita && !!registroAberto(estado, visita.id, m.id) && en.destino !== d
@@ -237,11 +249,22 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
         <p className="my-4 text-center" title={`${gruposDentro(estado, visita.id).length} grupos dentro · ${entradas.length} entradas`}>
           <b className="text-3xl text-caneta-700">{pessoasDentro(estado, visita.id)}</b> <span className="text-base text-neutro-600">pessoas dentro</span>
           <span className="block text-sm text-neutro-500">
-            {dentro.length} grupos dentro · {entradas.length} entradas · {sairam.length} {sairam.length === 1 ? 'saída' : 'saídas'}
+            {dentro.length} grupos dentro · {entradas.filter((f) => !f.inicial).length} entradas
+            {entradas.some((f) => f.inicial) && ` · ${entradas.filter((f) => f.inicial).reduce((s, f) => s + f.pessoas, 0)} já estavam`} · {sairam.length}{' '}
+            {sairam.length === 1 ? 'saída' : 'saídas'}
           </span>
         </p>
       ) : (
         <p className="mt-16 px-6 text-center text-neutro-500">Toque em + para lançar a primeira entrada (a visita começa junto).</p>
+      )}
+      {/* estoque inicial: quem já estava dentro quando o observador chegou; lança-se no começo, antes das entradas */}
+      {(!visita || !entradas.some((f) => !f.inicial)) && (
+        <button
+          onClick={() => novo(true)}
+          className="mb-3 flex h-11 w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-alerta-300 text-[15px] font-semibold text-alerta-700"
+        >
+          <HomeIcon className="size-5" /> Grupo que já estava dentro
+        </button>
       )}
       {sairam.length > 0 && (
         <div className="mb-3">
@@ -254,7 +277,7 @@ export function AbaFluxo({ unidade, semVisita }: { unidade: Unidade; semVisita: 
       )}
       <div className="space-y-3">{dentro.map(cartao)}</div>
       {visita && entradas.length > 0 && !dentro.length && <p className="mt-6 text-center text-neutro-500">Ninguém dentro agora.</p>}
-      <Fab onClick={novo} rotulo="Nova entrada" />
+      <Fab onClick={() => novo()} rotulo="Nova entrada" />
       {motivoDe && (
         <Folha titulo={`Por que ${motivoDe} saiu?`} onFechar={() => setMotivoDe(null)}>
           <div className="flex flex-wrap gap-2">

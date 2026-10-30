@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { estadoInicial, normalizar, type Estado, type Fluxo } from './model'
 import { juntar } from './juntar'
 
-const fl = (id: string, pessoas: number): Fluxo => ({ id, visitaId: 'v1', codigo: 'BV-1', tipo: 'entrada', hora: '14:00', pessoas, criancas: 0, estimado: false, destino: '', motivo: '' })
+const fl = (id: string, pessoas: number): Fluxo => ({ id, visitaId: 'v1', codigo: 'BV-1', tipo: 'entrada', hora: '14:00', pessoas, criancas: 0, estimado: false, destino: '', motivo: '', inicial: false })
 
 describe('juntar', () => {
   it('soma o que é novo e mantém a versão local quando o id já existe', () => {
@@ -18,7 +18,7 @@ describe('juntar', () => {
       ['a', 2],
       ['b', 3],
     ])
-    expect(estado.unidades.map((u) => u.id)).toEqual(['bela-vista', 'outra'])
+    expect(estado.unidades.map((u) => u.id)).toEqual(['bela-vista', 'paralela', 'outra'])
     expect(novos).toBe(2)
   })
 })

@@ -33,6 +33,12 @@ Regras (_instrucoes/4_metodologia.md, Bloco B3):
   - Permanência média só com grupos de entrada e saída vistas; os censurados
     (sem saída, ou com saída forçada pelo fechamento da casa: `censurada = sim`
     nas mesas, `motivo = Fechamento` na porta) são contados à parte, não imputados.
+  - Estoque inicial (app 2.5, `estoque_inicial = sim`): grupos que já estavam
+    dentro quando a visita começou. Na porta, saem de pessoas_entraram (vão
+    para pessoas_ja_dentro) e da permanência; nas mesas, a permanência deles
+    começa antes da visita e fica fora da média (grupos_mesa_ja_sentados).
+  - Horas depois da meia-noite: a permanência e o último registro somam um dia
+    quando a hora fica antes da entrada (ou do início), até 12 h.
   - Desistências na porta: saídas com motivo "Lotado" ou "Só olhou" (o app
     pergunta o motivo quando o grupo sai até 10 min depois de entrar, sem mesa).
     Continuam em pessoas_entraram; a coluna à parte mostra quantas desistiram.
@@ -75,6 +81,27 @@ def minutos(hora: str) -> float:
         return float("nan")
 
 
+def dif_min(de: str, ate: str) -> float:
+    """Minutos de `de` até `ate` (HH:MM); saída "antes" da entrada é a virada da meia-noite
+    quando o intervalo assim contado fica em até 12 h (mesma regra do app, `difMin`)."""
+    a, b = minutos(de), minutos(ate)
+    if pd.isna(a) or pd.isna(b):
+        return float("nan")
+    d = b - a if b >= a else b + 1440 - a
+    return d if b >= a or d <= 720 else float("nan")
+
+
+def min_na_visita(hora: str, ini: pd.Timestamp) -> float:
+    """Minutos desde o início da visita; depois da meia-noite soma um dia (até 2 h antes do início fica negativo)."""
+    d = minutos(hora) - (ini.hour * 60 + ini.minute)
+    return d + 1440 if d < -120 else d
+
+
+def sim(df: pd.DataFrame, coluna: str) -> pd.Series:
+    """Marca sim/nao como booleano; coluna ausente (app antes da 2.5) = nao."""
+    return df[coluna].eq("sim") if coluna in df.columns else pd.Series(False, index=df.index)
+
+
 def num(s: pd.Series) -> pd.Series:
     return pd.to_numeric(s, errors="coerce")
 
@@ -111,7 +138,7 @@ def resumo_visitas() -> pd.DataFrame:
         if not fim_estimado:
             fim = pd.Timestamp(v["visita_fim"])
         else:
-            horarios = [minutos(h) for h in pd.concat([
+            horarios = [min_na_visita(h, ini) for h in pd.concat([
                 f["hora"] if not f.empty else pd.Series(dtype=str),
                 g["entrada"] if not g.empty else pd.Series(dtype=str),
                 g["saida"] if not g.empty else pd.Series(dtype=str),
@@ -120,13 +147,15 @@ def resumo_visitas() -> pd.DataFrame:
             previsto = ini + pd.Timedelta(minutes=float(v["duracao_prevista_min"] or 0))
             fim = previsto
             if pd.notna(ultimo):
-                visto = ini.normalize() + pd.Timedelta(minutes=ultimo)
+                visto = ini.replace(second=0) + pd.Timedelta(minutes=ultimo)
                 fim = max(previsto, visto)
         horas = ((fim - ini).total_seconds() / 60 - float(v["pausado_min"] or 0)) / 60
 
-        # porta
-        ent = f[f["tipo"] == "entrada"] if not f.empty else f
-        sai = f[f["tipo"] == "saida"] if not f.empty else f
+        # porta; estoque inicial (já dentro na chegada) fica fora das entradas e da permanência
+        ent_todas = f[f["tipo"] == "entrada"] if not f.empty else f
+        inic = ent_todas[sim(ent_todas, "estoque_inicial")] if not f.empty else f
+        ent = ent_todas[~sim(ent_todas, "estoque_inicial")] if not f.empty else f
+        sai = f[(f["tipo"] == "saida") & ~f["codigo"].isin(inic["codigo"])] if not f.empty else f
         entraram = num(ent["pessoas"]).sum() if not f.empty else float("nan")
         motivo = sai["motivo"] if "motivo" in sai.columns else pd.Series("", index=sai.index)
         desist = sai[motivo.isin(["Lotado", "Só olhou"])]
@@ -134,12 +163,12 @@ def resumo_visitas() -> pd.DataFrame:
         for _, s in sai[motivo != "Fechamento"].iterrows():
             e = ent[ent["codigo"] == s["codigo"]]
             if not e.empty:
-                d = minutos(s["hora"]) - minutos(e.iloc[0]["hora"])
-                if d >= 0:
+                d = dif_min(e.iloc[0]["hora"], s["hora"])
+                if pd.notna(d):
                     perm_porta.append(d)
 
         # mesas
-        perm_mesa = num(g.loc[g["censurada"] != "sim", "permanencia_min"]).dropna() if not g.empty else pd.Series(dtype=float)
+        perm_mesa = num(g.loc[(g["censurada"] != "sim") & ~sim(g, "estoque_inicial"), "permanencia_min"]).dropna() if not g.empty else pd.Series(dtype=float)
         pessoas_mesa = num(g["pessoas"]).sum() if not g.empty else float("nan")
 
         # notas
@@ -161,6 +190,7 @@ def resumo_visitas() -> pd.DataFrame:
             "horas_observadas": round(horas, 2),
             "grupos_porta": len(ent) if not f.empty else float("nan"),
             "pessoas_entraram": entraram,
+            "pessoas_ja_dentro": num(inic["pessoas"]).sum() if not f.empty else float("nan"),
             "pessoas_por_hora": round(entraram / horas, 2) if horas and horas > 0 and not f.empty else float("nan"),
             "tamanho_grupo_porta": round(num(ent["pessoas"]).mean(), 2) if not ent.empty else float("nan"),
             "permanencia_porta_media_min": round(sum(perm_porta) / len(perm_porta), 1) if perm_porta else float("nan"),
@@ -173,6 +203,7 @@ def resumo_visitas() -> pd.DataFrame:
             "permanencia_mesa_media_min": round(perm_mesa.mean(), 1) if len(perm_mesa) else float("nan"),
             "permanencia_mesa_mediana_min": perm_mesa.median() if len(perm_mesa) else float("nan"),
             "censurados_mesa": int((g["censurada"] == "sim").sum()) if not g.empty else float("nan"),
+            "grupos_mesa_ja_sentados": int(sim(g, "estoque_inicial").sum()) if not g.empty else float("nan"),
             "contagens": len(r),
             "ocupacao_media_pct": round(100 * ocup.mean() / n_mesas, 1) if len(ocup) and n_mesas else float("nan"),
             "pico_mesas_ocupadas": ocup.max() if len(ocup) else float("nan"),

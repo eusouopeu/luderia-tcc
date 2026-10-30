@@ -3,7 +3,8 @@ import { ArrowPathIcon, ArrowUpTrayIcon, PlusIcon, QrCodeIcon, TrashIcon, XMarkI
 import { useLoja } from '../store'
 import { useLeitorQr } from '../ui/useLeitorQr'
 import { areaTexto, campo, Opcao, Secao } from '../ui/comum'
-import { agoraIso, arquivosCsv, dataBr, idVisita, novoId, PAPEIS, pausasTexto, POSICOES, visitaAtual, type Ficha, type NotaFiscal, type Unidade, type Visita } from '../domain/model'
+import { avisar } from '../ui/aviso'
+import { agoraIso, arquivosCsv, dataBr, idVisita, novoId, PAPEIS, pausasTexto, POSICOES, unidadeDoCnpj, visitaAtual, type Ficha, type NotaFiscal, type Unidade, type Visita } from '../domain/model'
 import { compartilhar } from '../storage/exportar'
 import { chaveDoQr, consultarNfce, dadosDaChave, notasEmitidas, pareceQrNfce } from '../domain/nfce'
 
@@ -45,6 +46,18 @@ export function PaginaVisita({ unidade }: { unidade: Unidade }) {
   function lida(url: string) {
     const chave = chaveDoQr(url)!
     const d = dadosDaChave(chave)
+    // a nota confere a unidade: CNPJ de outra unidade cadastrada, ou diferente do desta, é sinal de cadastro trocado (17/10)
+    const atual = useLoja.getState().estado
+    const dona = unidadeDoCnpj(atual, d.cnpj)
+    if (dona && dona.id !== unidade.id) {
+      if (!confirm(`Esta nota é da unidade ${dona.nome} (CNPJ ${d.cnpj}), mas a visita está em ${unidade.nome}. Se você está em ${dona.nome}, encerre esta visita e comece outra lá. Guardar a nota mesmo assim?`))
+        return setLendo(null)
+    } else if (unidade.cnpj && unidade.cnpj !== d.cnpj) {
+      if (!confirm(`O CNPJ desta nota (${d.cnpj}) não é o da unidade ${unidade.nome} (${unidade.cnpj}). Guardar mesmo assim?`)) return setLendo(null)
+    } else if (!unidade.cnpj) {
+      mudar((e) => ({ ...e, unidades: e.unidades.map((u) => (u.id === unidade.id ? { ...u, cnpj: d.cnpj } : u)) }))
+      avisar(`CNPJ ${d.cnpj} gravado como da unidade ${unidade.nome}.`)
+    }
     const n: NotaFiscal = {
       id: novoId(), momento: lendo!, lidaEm: agoraIso(), chave, url, cnpj: d.cnpj, serie: d.serie, numero: d.numero, emissao: null, total: null, itens: [],
     }

@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 17/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 30/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -32,6 +32,8 @@ Atualizado em 17/10/2026. Semana 5 do cronograma (10/10 a 16/10). Próxima entre
 - **Contagem do B3, Bela Vista:** duas visitas consolidadas por `B3-b_importar_app.py` (originais em `_dados-brutos/app/originais/<visita>/POVn/`, correções com motivo em `outros/`). Sábado, 10/10 (só o POV1): 38 pessoas em 14 grupos (11,4 por hora), permanência de 99 min na porta e 116 min nas mesas. Sexta, 16/10 (extra, 19h15 às 22h): 10 pessoas em 4 grupos (4,0 por hora, POV2), permanência de 96 min em 3 grupos de mesa vistos do início ao fim; o POV1 só registrou grupos já sentados. NFC-e 77977 (10/10) e 78160 (16/10): 183 notas em 6 dias, 30,5 por dia. Dúvidas para os observadores em `docs/pendencias.md`.
 
 - **App de observação 2.4.0** (16/10): CSVs com visita, observador e versão em todas as tabelas, entrada da porta ligada à mesa, motivo da saída rápida, "Fechamento da casa", posição e pausas do observador, condições do dia em lista, marcas de estimado e incerto e roteiro da visita no Temporizador. Em 2.4.1, a porta e a mesa se ligam nos dois sentidos (seção "Da porta" no grupo da mesa). APK `ObservacaoLuderia-2026.10.16-2.apk`: antes de instalar por cima, fazer backup em Ajustes (o APK da nuvem tem outra assinatura de depuração e pode exigir desinstalar). Antes de 18/10, preencher o código do observador em Ajustes de cada celular.
+
+- **App de observação 2.5.0** (30/10, branch `app-observacao-2.5`): estoque inicial (grupo que já estava dentro), começo da visita com unidade e observador confirmados, CNPJ da NFC-e conferido com a unidade (Paralela cadastrada, sigla PA), fim sugerido pelo último registro, virada da meia-noite e backup em versões a cada 15 min. APK `ObservacaoLuderia-2026.10.30-1.apk`; fazer backup em Ajustes antes de instalar por cima.
 
 - **Status da coleta no Notion** ("Luderias – Status da coleta", 16/10): 54 casas recalculadas com o PR #10; em cada linha, o que falta e como fechar. Lacunas que restam: acervo sem lista (38), porte de shopping no entorno (25), VLT/BRT de Curitiba (6), cardápio parcial ou sem preço (13) e Instagram (Ludus, LudoCafé, Dominaria). Rodar `B1-b_resumo.py` para levar ao resumo os perfis de 15/10 das 5 casas novas.
 

@@ -1,7 +1,7 @@
 import { create } from 'zustand'
-import { agoraHora, agoraIso, estadoInicial, fichaVazia, normalizar, novoId, type Estado, type Visita } from './domain/model'
+import { agoraHora, agoraIso, estadoInicial, fichaVazia, normalizar, novoId, type Estado, type Papel, type Visita } from './domain/model'
 import { abrirRepo, type Repo } from './storage/repo'
-import { agendarBackup } from './storage/backup'
+import { agendarBackup, gravarBackup } from './storage/backup'
 import { agendarLembretes } from './storage/lembretes'
 
 type Loja = {
@@ -10,8 +10,11 @@ type Loja = {
   iniciar(): Promise<void>
   mudar(f: (e: Estado) => Estado): void
   substituir(e: Partial<Estado>): void
-  comecar(unidadeId: string): Visita
-  encerrar(visitaId: string): void
+  comecar(unidadeId: string, quem: { observador: string; papel: Papel }): Visita
+  /** `fim` (ISO local): hora em que a observação acabou de fato; padrão, agora */
+  encerrar(visitaId: string, fim?: string): void
+  /** grava já (app indo para o fundo), sem esperar o agrupamento */
+  gravarJa(): Promise<void>
   alternarPausa(visitaId: string): void
 }
 
@@ -39,28 +42,35 @@ export const useLoja = create<Loja>((set, get) => ({
   substituir(e) {
     get().mudar(() => normalizar(e))
   },
-  comecar(unidadeId) {
+  comecar(unidadeId, { observador, papel }) {
     const { config } = get().estado
     const v: Visita = {
       id: novoId(), unidadeId, inicio: agoraIso(), fim: null, duracaoMin: config.duracaoMin, intervaloMin: config.intervaloMin,
-      pausadoMs: 0, pausaDesde: null, pausas: [], observador: get().estado.config.observador, papel: '', posicao: '', ficha: fichaVazia(), notas: [],
+      pausadoMs: 0, pausaDesde: null, pausas: [], observador, papel, posicao: '', ficha: fichaVazia(), notas: [],
     }
-    get().mudar((e) => ({ ...e, visitas: [...e.visitas, v] }))
+    // o código escolhido fica como padrão deste celular nas próximas visitas
+    get().mudar((e) => ({ ...e, config: { ...e.config, observador }, visitas: [...e.visitas, v] }))
     void agendarLembretes(v, nomeU(get().estado, v))
     return v
   },
-  encerrar(visitaId) {
-    const agora = agoraIso()
+  encerrar(visitaId, fim = agoraIso()) {
     get().mudar((e) => ({
       ...e,
       visitas: e.visitas.map((v) => {
         if (v.id !== visitaId) return v
-        const extra = v.pausaDesde ? Date.now() - new Date(v.pausaDesde).getTime() : 0
-        const pausas = v.pausaDesde ? v.pausas.map((p) => (p.ate === null ? { ...p, ate: agora.slice(11, 16) } : p)) : v.pausas
-        return { ...v, fim: agora, pausaDesde: null, pausadoMs: v.pausadoMs + extra, pausas }
+        // pausa aberta termina no fim escolhido (nada, se o fim é anterior à pausa)
+        const extra = v.pausaDesde ? Math.max(0, new Date(fim).getTime() - new Date(v.pausaDesde).getTime()) : 0
+        const pausas = v.pausaDesde ? v.pausas.map((p) => (p.ate === null ? { ...p, ate: fim.slice(11, 16) } : p)) : v.pausas
+        return { ...v, fim, pausaDesde: null, pausadoMs: v.pausadoMs + extra, pausas }
       }),
     }))
     void agendarLembretes(null)
+  },
+  async gravarJa() {
+    clearTimeout(timer)
+    const { estado } = get()
+    await repo?.salvar(estado)
+    await gravarBackup(estado)
   },
   alternarPausa(visitaId) {
     get().mudar((e) => ({

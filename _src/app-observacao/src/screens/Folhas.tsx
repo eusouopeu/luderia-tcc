@@ -91,6 +91,17 @@ export function FolhaEditar({
         <input value={u.sigla} aria-label="Sigla" placeholder="Sigla" maxLength={4} onChange={(e) => onMudar({ ...u, sigla: e.target.value.toUpperCase() })} className={`${campo} !w-20 text-center`} />
         <Ajuda rotulo="Sobre a sigla">A sigla abre o código dos grupos no fluxo da porta: {u.sigla || 'BV'}-1, {u.sigla || 'BV'}-2…</Ajuda>
       </div>
+      <div className="mt-2 flex items-center gap-2">
+        <input
+          value={u.cnpj}
+          aria-label="CNPJ"
+          placeholder="CNPJ (14 dígitos; a 1ª NFC-e grava)"
+          inputMode="numeric"
+          onChange={(e) => onMudar({ ...u, cnpj: e.target.value.replace(/\D/g, '').slice(0, 14) })}
+          className={campo}
+        />
+        <Ajuda rotulo="Sobre o CNPJ">O app confere o CNPJ de cada NFC-e lida com o da unidade e avisa se a nota é de outra casa.</Ajuda>
+      </div>
       <ul ref={lista} className="mt-4 space-y-2">
         {u.mesas.map((m, i) => (
           <li key={m.id} className="flex gap-2">

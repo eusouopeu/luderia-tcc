@@ -36,7 +36,7 @@ function paraRegistro(r: Rascunho, ultimo: Registro): Registro {
 function erroDe(r: Rascunho): string {
   if (!dataIso(r.dataTexto)) return 'Data incompleta ou inválida (dd/mm/aaaa): fica a anterior até corrigir.'
   if (!/^\d{2}:\d{2}$/.test(r.entrada)) return 'Preencha a hora de entrada.'
-  if (r.saida && permanenciaMin(r.entrada, r.saida) === null) return 'A saída está antes da entrada: fica a anterior até corrigir.'
+  if (r.saida && permanenciaMin(r.entrada, r.saida) === null) return 'A saída está antes da entrada (ou mais de 12 h depois, pela meia-noite): fica a anterior até corrigir.'
   return ''
 }
 
@@ -227,7 +227,17 @@ function Edicao({ r, muda, onSaida }: { r: Rascunho; muda: (p: Partial<Rascunho>
         </button>
       </div>
 
-      <Rotulo icone={<ClockIcon className="size-5" />}>Entrada</Rotulo>
+      <Rotulo icone={<ClockIcon className="size-5" />}>
+        Entrada
+        <button
+          onClick={() => muda({ inicial: !r.inicial })}
+          aria-pressed={r.inicial}
+          title="Grupo que já estava na mesa quando a visita começou: a entrada não foi vista"
+          className={`ml-auto rounded px-1.5 text-[12px] normal-case ${r.inicial ? 'bg-alerta-100 text-alerta-700' : 'text-neutro-600'}`}
+        >
+          já estava na chegada
+        </button>
+      </Rotulo>
       <div className="flex items-center gap-4">
         <input type="time" value={r.entrada} onChange={(e) => muda({ entrada: e.target.value })} className={`${campo} flex-1`} />
         {r.saida === null ? (
@@ -253,9 +263,10 @@ function Edicao({ r, muda, onSaida }: { r: Rascunho; muda: (p: Partial<Rascunho>
               onClick={() => muda({ pessoasEstimado: !r.pessoasEstimado })}
               aria-pressed={r.pessoasEstimado}
               title="Número estimado (não deu para contar)"
-              className={`ml-auto rounded px-1.5 text-[12px] normal-case ${r.pessoasEstimado ? 'bg-alerta-100 text-alerta-700' : 'text-neutro-600'}`}
+              aria-label="Número estimado"
+              className={`ml-auto rounded px-2 text-[15px] leading-5 ${r.pessoasEstimado ? 'bg-alerta-100 text-alerta-700' : 'text-neutro-600'}`}
             >
-              ≈ estimado
+              ≈
             </button>
           </Rotulo>
           <Contador valor={r.pessoas} onChange={(v) => muda({ pessoas: v })} />
@@ -297,7 +308,7 @@ function Resumo({ r }: { r: Rascunho }) {
         )}
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <Valor icone={<ClockIcon className="size-5" />} rotulo="Entrada">
+        <Valor icone={<ClockIcon className="size-5" />} rotulo={r.inicial ? 'Já estava (início)' : 'Entrada'}>
           {r.entrada || '—'}
         </Valor>
         <Valor icone={<ClockIcon className="size-5" />} rotulo={r.saidaTipo === 'fechamento' ? 'Saída (fechamento)' : 'Saída'}>
@@ -315,7 +326,8 @@ function Resumo({ r }: { r: Rascunho }) {
           <span className="text-base">x</span>
         </Valor>
         {p !== null && (
-          <Valor icone={<ClockIcon className="size-5" />} rotulo="Permanência">
+          <Valor icone={<ClockIcon className="size-5" />} rotulo={r.inicial ? 'Permanência (no mínimo)' : 'Permanência'}>
+            {r.inicial && '≥'}
             {Math.floor(p / 60)}h{String(p % 60).padStart(2, '0')}
           </Valor>
         )}

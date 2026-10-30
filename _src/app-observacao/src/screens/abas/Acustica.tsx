@@ -8,7 +8,7 @@ import { arcos, classificar, comparar, leq } from '../../domain/acustica'
 import { agoraHora, novoId, pessoasDentro, visitaAtiva, type Unidade } from '../../domain/model'
 
 /** Nível sonoro estimado pelo microfone; o + guarda a medição (Leq dos últimos 10 s). */
-export function AbaAcustica({ unidade, semVisita }: { unidade: Unidade; semVisita: () => boolean }) {
+export function AbaAcustica({ unidade, semVisita }: { unidade: Unidade; semVisita: (depois: () => void) => boolean }) {
   const { estado, mudar } = useLoja()
   const { nivel, erro, janela } = useMicrofone(true, estado.config.calibracaoDb)
   const [, tick] = useState(0)
@@ -27,7 +27,7 @@ export function AbaAcustica({ unidade, semVisita }: { unidade: Unidade; semVisit
 
   const salvar = () => {
     if (media === null || pico === null) return
-    if (!visita && !semVisita()) return
+    if (!visitaAtiva(useLoja.getState().estado, unidade.id) && !semVisita(salvar)) return
     const v = visitaAtiva(useLoja.getState().estado, unidade.id)!
     mudar((e) => ({ ...e, medicoes: [...e.medicoes, { id: novoId(), visitaId: v.id, hora: agoraHora(), db: media, pico, pessoas: pessoasDentro(e, v.id) }] }))
     navigator.vibrate?.(60)

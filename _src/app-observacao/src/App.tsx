@@ -3,13 +3,14 @@ import { App as CapApp } from '@capacitor/app'
 import { ArrowUpTrayIcon, ChevronRightIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { useLoja } from './store'
 import {
-  agoraHora, arquivosCsv, entradasParaMesa, fecharCasa, sincronizarPortaMesas, novasMesas, novoId, registroAberto, siglaDe, visitaAtiva, visitaAtual, acervoVazio,
+  agoraHora, arquivosCsv, entradasParaMesa, fecharCasa, hojeIso, sincronizarPortaMesas, novasMesas, novoId, registroAberto, visitaAtiva, visitaAtual, acervoVazio,
   type Estado, type Registro, type Unidade as TUnidade,
 } from './domain/model'
 import { compartilhar } from './storage/exportar'
 import { BotaoTema, useTemaEfetivo } from './ui/tema'
 import { voltarCamada } from './ui/voltar'
 import { Avisos, avisar } from './ui/aviso'
+import { BarraVisita } from './ui/BarraVisita'
 import { Unidade, type Aba, type Pagina } from './screens/Unidade'
 import { FormMesa } from './screens/FormMesa'
 import { FormAcervo } from './screens/FormAcervo'
@@ -21,6 +22,7 @@ import { AbaTemporizador } from './screens/abas/Temporizador'
 import { PaginaVisita } from './screens/Visita'
 import { PaginaResumo } from './screens/Resumo'
 import { PaginaAjustes } from './screens/Ajustes'
+import { FolhaComecar, FolhaEncerrar, FolhaNovaUnidade } from './screens/FolhasVisita'
 
 type Tela = {
   unidadeId?: string
@@ -30,10 +32,15 @@ type Tela = {
   form?: { registro: Registro; novo: boolean }
   acervo?: boolean
   folha?: 'registros' | 'editar' | 'acoes'
+  /** folha de começar a visita aberta; `depois` = o que o observador tocou e esperava a visita */
+  comecar?: { depois?: () => void }
+  /** visita na folha de encerrar */
+  encerrar?: string
+  novaUnidade?: boolean
 }
 
 export function App() {
-  const { pronto, estado, iniciar, mudar, comecar, encerrar } = useLoja()
+  const { pronto, estado, iniciar, mudar, comecar, encerrar, gravarJa } = useLoja()
   useTemaEfetivo()
   const [tela, setTela] = useState<Tela>({ aba: 'mesas', pagina: 'inicio' })
   const telaRef = useRef(tela)
@@ -58,56 +65,52 @@ export function App() {
     return () => void h.then((x) => x.remove())
   }, [])
 
+  // app indo para o fundo (tela apagada, outro app): grava já, sem esperar o agrupamento
+  useEffect(() => {
+    const h = CapApp.addListener('appStateChange', ({ isActive }) => !isActive && void gravarJa())
+    const oculto = () => document.visibilityState === 'hidden' && void gravarJa()
+    document.addEventListener('visibilitychange', oculto)
+    return () => {
+      void h.then((x) => x.remove())
+      document.removeEventListener('visibilitychange', oculto)
+    }
+  }, [gravarJa])
+
   if (!pronto) return null
   const unidade = estado.unidades.find((u) => u.id === tela.unidadeId)
 
   if (!unidade) {
     return (
-      <Inicio
-        estado={estado}
-        onAbrir={(id) => setTela({ unidadeId: id, aba: 'mesas', pagina: 'inicio' })}
-        onNova={() => {
-          const nome = prompt('Nome da unidade')?.trim()
-          if (!nome) return
-          const id = novoId()
-          mudar((e) => ({
-            ...e,
-            unidades: [
-              ...e.unidades,
-              { id, nome, sigla: siglaDe(nome), acervo: acervoVazio(), mesas: novasMesas([], 6) },
-            ],
-          }))
-          setTela({ unidadeId: id, aba: 'mesas', pagina: 'inicio' })
-        }}
-        onExportar={() => void compartilhar(arquivosCsv(estado))}
-      />
+      <>
+        <Inicio
+          estado={estado}
+          onAbrir={(id) => setTela({ unidadeId: id, aba: 'mesas', pagina: 'inicio' })}
+          onNova={() => muda({ novaUnidade: true })}
+          onExportar={() => void compartilhar(arquivosCsv(estado))}
+        />
+        {tela.novaUnidade && (
+          <FolhaNovaUnidade
+            onFechar={() => muda({ novaUnidade: false })}
+            onCriar={({ nome, sigla, cnpj }) => {
+              const id = novoId()
+              mudar((e) => ({ ...e, unidades: [...e.unidades, { id, nome, sigla, cnpj, acervo: acervoVazio(), mesas: novasMesas([], 6) }] }))
+              setTela({ unidadeId: id, aba: 'mesas', pagina: 'inicio' })
+            }}
+          />
+        )}
+      </>
     )
   }
 
-  /** Começa a visita; sem código de observador nos Ajustes, pergunta antes (vai em todas as exportações). */
-  const comecarVisita = () => {
-    if (!useLoja.getState().estado.config.observador) {
-      const obs = prompt('Código deste observador (ex.: POV1)')?.trim().toUpperCase()
-      if (!obs) return false
-      mudar((e) => ({ ...e, config: { ...e.config, observador: obs } }))
-    }
-    comecar(unidade!.id)
-    avisar('Visita começada. Leia a NFC-e de início na página Visita.')
-    return true
+  /** Abre a folha de começar (unidade, observador e papel). `depois` roda quando a visita começar. */
+  const comecarVisita = (depois?: () => void) => {
+    muda({ comecar: { depois }, folha: undefined })
+    return false
   }
-  /** Sem visita em andamento: pergunta e começa. Devolve se há visita agora. */
-  const garantirVisita = () => {
-    if (visitaAtiva(useLoja.getState().estado, unidade.id)) return true
-    if (!confirm('Nenhuma visita em andamento. Começar a visita agora?')) return false
-    return comecarVisita()
-  }
-  /** Encerra a visita; sem condição do dia marcada, pergunta se foi um dia comum. */
-  const encerrarVisita = (visitaId: string) => {
-    const v = useLoja.getState().estado.visitas.find((x) => x.id === visitaId)
-    if (v && !v.ficha.condicoes.length && confirm('Nenhuma condição do dia marcada. Foi um dia comum (sem feriado, evento, chuva ou jogo)?'))
-      mudar((e) => ({ ...e, visitas: e.visitas.map((x) => (x.id === visitaId ? { ...x, ficha: { ...x.ficha, condicoes: ['Dia comum'] } } : x)) }))
-    encerrar(visitaId)
-  }
+  /** Sem visita em andamento: abre a folha de começar e devolve false; `depois` roda ao começar. */
+  const garantirVisita = (depois?: () => void) => visitaAtiva(useLoja.getState().estado, unidade.id) ? true : comecarVisita(depois)
+  /** Abre a folha de encerrar (hora do fim, condição do dia). */
+  const encerrarVisita = (visitaId: string) => muda({ encerrar: visitaId, folha: undefined })
   /** Fechamento da casa: todos os grupos saem agora, marcados como saída por fechamento. */
   const fechamento = (visitaId: string) => {
     const antes = useLoja.getState().estado
@@ -121,14 +124,15 @@ export function App() {
     })
   }
 
-  function abrirMesa(mesaId: string) {
-    if (!garantirVisita()) return
+  /** Abre o grupo da mesa; `inicial` = grupo que já estava sentado quando a visita começou (contagem inicial). */
+  function abrirMesa(mesaId: string, inicial = false) {
+    if (!garantirVisita(() => abrirMesa(mesaId, inicial))) return
     const visita = visitaAtiva(useLoja.getState().estado, unidade!.id)!
     const aberto = registroAberto(useLoja.getState().estado, visita.id, mesaId)
     const registro: Registro = aberto ?? {
-      id: novoId(), visitaId: visita.id, unidadeId: unidade!.id, mesaId, data: visita.inicio.slice(0, 10), aniversario: false,
-      entrada: agoraHora(), saida: null, saidaTipo: '', pessoas: 2, criancas: 0, pessoasEstimado: false, fluxos: [], instrutor: 0, jogos: [], jogosIncertos: [],
-      notas: '', pedidos: [],
+      id: novoId(), visitaId: visita.id, unidadeId: unidade!.id, mesaId, data: inicial ? visita.inicio.slice(0, 10) : hojeIso(), aniversario: false,
+      entrada: inicial ? visita.inicio.slice(11, 16) : agoraHora(), saida: null, saidaTipo: '', pessoas: 2, criancas: 0, pessoasEstimado: false, fluxos: [], inicial,
+      instrutor: 0, jogos: [], jogosIncertos: [], notas: '', pedidos: [],
     }
     muda({ form: { registro, novo: !aberto } })
   }
@@ -157,6 +161,7 @@ export function App() {
         onAba={(aba) => muda({ aba })}
         onPagina={(pagina) => muda({ pagina })}
         onVoltar={() => setTela({ aba: 'mesas', pagina: 'inicio' })}
+        barra={<BarraVisita unidade={unidade} onComecar={() => comecarVisita()} onTemporizador={() => muda({ aba: 'timer' })} />}
         onExportar={() => {
           // exporta a visita atual com os nomes do pipeline (AAAA-MM-DD_SJBV_POV1_contagem_*.csv)
           const v = visitaAtual(estado, unidade.id)
@@ -168,7 +173,6 @@ export function App() {
             unidade={unidade}
             onMesa={abrirMesa}
             onAcervo={() => muda({ acervo: true })}
-            onRegistros={() => muda({ folha: 'registros' })}
             onAcoes={() => muda({ folha: 'acoes' })}
           />
         )}
@@ -178,7 +182,7 @@ export function App() {
           <AbaTemporizador
             unidade={unidade}
             onMesa={abrirMesa}
-            onComecar={comecarVisita}
+            onComecar={() => comecarVisita()}
             onEncerrar={encerrarVisita}
             onFechamento={fechamento}
             onIr={(destino) =>
@@ -215,11 +219,8 @@ export function App() {
         <FolhaAcoes
           ativa={!!ativa}
           onFechar={() => muda({ folha: undefined })}
-          onComecar={() => (comecarVisita(), muda({ folha: undefined }))}
-          onEncerrar={() => {
-            muda({ folha: undefined })
-            if (ativa && confirm('Encerrar a visita agora? Grupos ainda nas mesas ficam sem hora de saída (censurados).')) encerrarVisita(ativa.id)
-          }}
+          onComecar={() => comecarVisita()}
+          onEncerrar={() => ativa && encerrarVisita(ativa.id)}
           onFechamento={() => {
             muda({ folha: undefined })
             if (ativa) fechamento(ativa.id)
@@ -279,6 +280,36 @@ export function App() {
           }}
         />
       )}
+      {tela.comecar && (
+        <FolhaComecar
+          estado={estado}
+          unidade={unidade}
+          onFechar={() => muda({ comecar: undefined })}
+          onTrocar={() => setTela({ aba: 'mesas', pagina: 'inicio' })}
+          onComecar={(quem) => {
+            const { depois } = tela.comecar!
+            comecar(unidade.id, quem)
+            muda({ comecar: undefined })
+            avisar(`Visita começada em ${unidade.nome} (${quem.observador}). Leia a NFC-e de início na página Visita.`)
+            depois?.()
+          }}
+        />
+      )}
+      {tela.encerrar && estado.visitas.find((v) => v.id === tela.encerrar) && (
+        <FolhaEncerrar
+          estado={estado}
+          visita={estado.visitas.find((v) => v.id === tela.encerrar)!}
+          onFechar={() => muda({ encerrar: undefined })}
+          onFechamento={() => fechamento(tela.encerrar!)}
+          onEncerrar={(fim, diaComum) => {
+            const id = tela.encerrar!
+            if (diaComum) mudar((e) => ({ ...e, visitas: e.visitas.map((x) => (x.id === id ? { ...x, ficha: { ...x.ficha, condicoes: ['Dia comum'] } } : x)) }))
+            encerrar(id, fim)
+            muda({ encerrar: undefined })
+            avisar(`Visita encerrada às ${fim.slice(11, 16)}. Exporte os CSVs pelo botão de envio no topo.`)
+          }}
+        />
+      )}
       <Avisos />
     </>
   )
@@ -303,9 +334,17 @@ function Inicio({ estado, onAbrir, onNova, onExportar }: { estado: Estado; onAbr
           return (
             <li key={u.id}>
               <button onClick={() => onAbrir(u.id)} className="flex w-full items-center gap-3 rounded-xl bg-neutro-100 p-4 text-left">
-                <span className="flex-1 text-lg font-bold uppercase">{u.nome}</span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-lg font-bold uppercase">{u.nome}</span>
+                  <span className="block text-xs text-neutro-500">
+                    {u.sigla}
+                    {u.cnpj ? ' · CNPJ cadastrado' : ' · sem CNPJ'}
+                  </span>
+                </span>
                 {ativa ? (
-                  <span className="rounded-full bg-caneta-600 px-2 py-0.5 text-[13px] font-bold text-sobre">ao vivo</span>
+                  <span className="rounded-full bg-caneta-600 px-2 py-0.5 text-[13px] font-bold text-sobre">
+                    {ativa.observador} desde {ativa.inicio.slice(11, 16)}
+                  </span>
                 ) : (
                   <span className="text-sm text-neutro-500">{n} grupos · {u.mesas.length} mesas</span>
                 )}
