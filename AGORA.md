@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 19/10/2026 (18h39). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 30/10/2026 (14h30). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -16,7 +16,7 @@ Atualizado em 19/10/2026 (18h39). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Conferência de conceitos:** checklists em `bibliografia/leituras-P1/` (25 conceitos) e `leituras-P2/` (34), todos `[AV]`. Ao ler, trocar o `[AV]` da linha pela página; o vigia propaga. Situação em `bibliografia/relatorio-conceitos.md`. Alternativa nacional em `bibliografia/bibliografia-v2/` (15/10): 10 PDFs com página conferida e lista do que buscar na Minha Biblioteca da UFBA.
 
-- **Entorno (Maps + OSM)** (`maps_entorno.user.js`, versão 2026.10.15-4): OSM recoletado em 15/10 (12h49) para as 54 casas, íntegro (somas e recontagens batem em 54/54, polígonos com área). Incompleto no VLT/BRT: o Maps zera Curitiba e Brasília, e o OSM contava plataformas de cada sentido e o bonde de Santa Teresa. Coletor corrigido; falta "Refazer pendentes" no Maps (6 casas de Curitiba) e exportar tudo. Parecer em `docs/parecer_entorno_B1.md` §7. O entorno ainda não sustenta decisão do plano.
+- **Entorno (só Google Maps)** (`maps_entorno.user.js`, versão 2026.10.30-1, 30/10): o OSM saiu do coletor e da análise; shopping de porte só pelas avaliações do Maps (padrão 1.000, com 500 e 5.000 ao lado); distância só até 1000 m. Falta recarregar o script, "Refazer pendentes" (6 casas de Curitiba e 5 com avaliação de shopping não lida), exportar os 3 CSVs e rodar `B1-b_resumo.py`. BRT de Brasília sem fonte (pendências, item 11). O entorno ainda não sustenta decisão do plano.
 
 - **Auditoria da coleta** (15/10): amostras sorteadas por script (`*-a_auditoria_*.py`, semente 20261015) em `_dados-brutos/<pasta>/auditoria/` de cada bloco: estabelecimentos, entorno, Instagram, cardápios, acervos, B2 e B4. Roteiro do entorno em `textos/instrumentos/roteiro_auditoria_entorno_B1.md`. Todas as amostras estão no Notion, um banco "B - Auditoria …" por amostra (posts em 17/10; as outras 9 em 18/10), ligadas às casas do A, para conferir direto lá. Falta conferir e escrever o script que calcula a taxa de erro.
 

@@ -94,14 +94,21 @@ def entorno():
             continue
         d = pd.read_csv(f, sep=";", encoding="utf-8-sig")
         d["_arquivo"] = f.stat().st_mtime
+        # Até a versão 2026.10.15-4 (colunas *_lida_m): distância "mais próxima
+        # lida", sem garantia acima de 1000 m, e porte pelo OSM. Desde 30/10 o
+        # entorno usa só o Maps: distância só até 1000 m e porte pelas avaliações.
+        if "dist_estacoes_metro_mais_proxima_m" not in d:
+            for g in ("estacoes_metro", "shoppings"):
+                lida = d[f"dist_{g}_mais_proxima_lida_m"]
+                d[f"dist_{g}_mais_proxima_m"] = lida.where(lida <= 1000)
+            d["qt_shoppings_porte_500m"] = d["qt_shoppings_porte_1000m"] = float("nan")
         partes.append(d)
     e = pd.concat(partes).sort_values("_arquivo").drop_duplicates("place_id", keep="last")
-    dist = e["dist_estacoes_metro_mais_proxima_lida_m"]
-    e["dist_metro_m"] = dist.where(dist <= 50000)
     return e.rename(columns={
         "qt_estacoes_metro_500m": "metro_500m", "qt_estacoes_metro_1000m": "metro_1000m",
+        "dist_estacoes_metro_mais_proxima_m": "dist_metro_m",
         "qt_shoppings_porte_500m": "shopping_porte_500m", "qt_shoppings_porte_1000m": "shopping_porte_1000m",
-        "dist_shoppings_mais_proxima_lida_m": "dist_shopping_m"})[
+        "dist_shoppings_mais_proxima_m": "dist_shopping_m"})[
         ["place_id", "metro_500m", "metro_1000m", "dist_metro_m", "shopping_porte_500m", "shopping_porte_1000m",
          "dist_shopping_m"]]
 
@@ -169,10 +176,10 @@ DIC = {
     **{d: ("Horários", f"Turnos de {d} (vazio = fechado)", "idem") for d in DIAS},
     "metro_500m": ("Entorno", "Estações de metrô até 500 m", "coletor de entorno do Maps, 15/10/2026"),
     "metro_1000m": ("Entorno", "Estações de metrô até 1000 m", "idem"),
-    "dist_metro_m": ("Entorno", "Distância (m) à estação de metrô mais próxima lida; vazio = nenhuma na cidade ou leitura de outra cidade (> 50 km)", "idem"),
-    "shopping_porte_500m": ("Entorno", "Shoppings de porte (OSM shop=mall, área ≥ 5.000 m²) até 500 m; vazio = porte não buscado", "idem + OpenStreetMap"),
-    "shopping_porte_1000m": ("Entorno", "Shoppings de porte até 1000 m; vazio = porte não buscado", "idem + OpenStreetMap"),
-    "dist_shopping_m": ("Entorno", "Distância (m) ao shopping mais próximo lido (qualquer porte)", "idem"),
+    "dist_metro_m": ("Entorno", "Distância (m) à estação de metrô mais próxima, só até 1000 m; vazio com metro_1000m = 0: nenhuma até 1000 m", "idem"),
+    "shopping_porte_500m": ("Entorno", "Shoppings de porte (1.000 avaliações ou mais no Maps) até 500 m; vazio = coleta anterior a 30/10/2026 ou avaliações não lidas", "idem"),
+    "shopping_porte_1000m": ("Entorno", "Shoppings de porte até 1000 m; vazio = coleta anterior a 30/10/2026 ou avaliações não lidas", "idem"),
+    "dist_shopping_m": ("Entorno", "Distância (m) ao shopping mais próximo (qualquer porte), só até 1000 m", "idem"),
     "perfil_instagram": ("Instagram", "@ do perfil", "Notion A - Estabelecimentos, 15/10/2026"),
     "seguidores": ("Instagram", "Seguidores", "idem (cabeçalho do perfil ou coletor)"),
     "n_posts_total": ("Instagram", "Nº de posts declarado pelo perfil", "idem"),

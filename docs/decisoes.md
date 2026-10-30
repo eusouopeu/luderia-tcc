@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 30/10/2026 | Entorno (B1) só com o Google Maps: o OSM sai do coletor e da análise; shopping de porte só pelo número de avaliações no Maps (limiar padrão 1.000, com contagens a 500 e 5.000 para sensibilidade); distância da estação ou shopping mais próximo só até 1000 m | `docs/registro-de-alteracoes.md` (30/10 14:30) |
 | 30/10/2026 | B2, coletor do Maps: avaliação só conta como lida com o "Mais" expandido; coluna `texto_expandido` marca as que ficaram cortadas, e o lugar é recoletado | `docs/registro-de-alteracoes.md` (30/10 13:40) |
 | 30/10/2026 | B2, codificação dos comentários no Notion ("2 - Comentários"): mesma lista de 22 temas em Itens positivos e Itens negativos, a coluna dá a polaridade; definições na descrição do banco | `docs/registro-de-alteracoes.md` (30/10 13:04) |
 | 22/10/2026 | Cardápios: item com mais de uma linha (tamanho, combo ou print de outra data) fica todo na planilha, mas só a linha de referência (`linha_referencia` = S) entra na cesta e nas medianas: cardápio mais recente, sem combo, menor tamanho. Sabor e dia da semana não são tamanho e ficam todos | `docs/registro-de-alteracoes.md` (22/10 11:14) |
