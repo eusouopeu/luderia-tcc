@@ -1339,3 +1339,16 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: logs dos scripts de `_src/extras/` (gravados em `_src/logs/` por `log_execucao.py`) apareciam como arquivos não versionados.
 **Depois**: `_src/logs/` ignorado, como os logs dos blocos.
 **Justificativa**: logs de execução não são publicados; a pasta ficava solta no `git status` depois de rodar `gerar_planilha_agregada.py`.
+
+### 18:26
+**Objeto**: `_src/extras/gerar_planilha_comentarios.py` (novo), `_src/extras/planilha_estilo.py` (novo) e `dados/Dados agregados/` (novos: `dados_agregados_comentarios.xlsx` e 11 gráficos em `graficos_comentarios/`)
+**Antes**: sem planilha dos dados agregados dos comentários do B2; estilo das tabelas e dos gráficos só dentro de `gerar_planilha_agregada.py`.
+**Depois**: planilha separada com 11 tabelas (comentários por metrópole, nota geral, notas por aspecto, temas elogiados e criticados, críticas nas notas 1 a 3, contexto, gasto por pessoa, tempo de espera, barulho, tamanho do grupo e situação da codificação) e a base de 1.628 comentários sem o texto, com uma coluna 0/1 por tema, contexto e tamanho de grupo; tabelas por fórmula, conferência com diferença 0. Fonte: cópia atualizada do "2 - Comentários" de 30/10 (arquivos do projeto `b2/notion_comentarios/`, temas do commit 1c13d6a), não o Notion. Estilo comum das duas planilhas movido para `planilha_estilo.py` (os gráficos da planilha geral saíram idênticos antes da troca de cores).
+**Justificativa**: pedido do autor: planilha e gráficos separados para os dados agregados dos comentários.
+
+### 18:26
+**Objeto**: cores dos gráficos das duas planilhas de dados agregados (`_src/extras/planilha_estilo.py`, 31 PNGs e as duas planilhas)
+**Antes**: marrom, laranja, laranja claro, amarelo e vermelho, como no trabalho de marketing do autor; Salvador em laranja.
+**Depois**: só tons das paletas slate e purple do Tailwind CSS (purple-800, 500, 300 e 700; slate-300, 400, 600 e 700; grade em slate-200). Salvador em purple-700, com as demais barras em slate-400; rótulos de séries claras em slate-700 para ficarem legíveis.
+**Justificativa**: pedido do autor.
+

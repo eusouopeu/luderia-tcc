@@ -4,7 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
-| 30/10/2026 | Planilha de dados agregados da pesquisa sem os comentários do B2 e sem dados do OpenStreetMap no entorno, com gráficos no estilo do trabalho de marketing do autor (marrom, laranja, amarelo e vermelho) | `docs/registro-de-alteracoes.md` (30/10 18:18) |
+| 30/10/2026 | Gráficos das planilhas de dados agregados só com tons das paletas slate e purple do Tailwind CSS; comentários do B2 em planilha separada, a partir da cópia atualizada do "2 - Comentários" (temas de 30/10) | `docs/registro-de-alteracoes.md` (30/10 18:26) |
+| 30/10/2026 | Planilha de dados agregados da pesquisa sem os comentários do B2 e sem dados do OpenStreetMap no entorno, com gráficos no desenho do trabalho de marketing do autor | `docs/registro-de-alteracoes.md` (30/10 18:18) |
 | 30/10/2026 | B2, coletor do Maps: texto ou resposta do dono terminando no marcador " …" do Google conta como cortado (`texto_expandido` = não), mesmo sem botão "Mais" à vista | `docs/registro-de-alteracoes.md` (30/10 17:26) |
 | 30/10/2026 | B2, temas: pedido errado vai para atendimento presencial (rapidez do serviço é só tempo); curadoria dos jogos = jogos muito bons de se jogar, não quantidade nem conservação; ocasião, público, aluguel e loja vão para uma coluna de contexto, sem polaridade | `textos/instrumentos/dicionario_temas_B2.md` |
 | 30/10/2026 | B2, temas dos comentários no Notion: dicionário reconstruído a partir das 166 linhas codificadas pelo autor (variedade = quantidade, curadoria = qualidade dos títulos; explicação de jogos = serviço de jogo à mesa; 10% em regras da casa; preço sem objeto = preço do consumo; mediano e ocasião citada sem juízo não são codificados) | `textos/instrumentos/dicionario_temas_B2.md` |

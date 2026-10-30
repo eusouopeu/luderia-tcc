@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 30/10/2026 (18h20). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 30/10/2026 (18h26). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -42,7 +42,7 @@ Atualizado em 30/10/2026 (18h20). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Coletor do B2 corrigido** (30/10, versão 2026.10.30-2): expande todos os "Mais" antes de ler, marca em `texto_expandido` o que ficou cortado e não para mais cedo por volume lido errado (Shelf parava em 40). Bodogami e Shelf recoletadas com ela em 30/10 (Bodogami: 120 comentários sem campos extras viraram 23). Próximas: Encounter, Utopia e Luderia Carioca (pendências, item 14d).
 
-- **Planilha de dados agregados** (30/10): `dados/Dados agregados/dados_agregados.xlsx`, 21 tabelas (B1, Instagram, acervo, B3 e B4) no padrão das tabelas do TCC, cada uma com o gráfico ao lado no estilo do trabalho de marketing do autor (PNGs em `graficos/`). Sem os comentários do B2 e sem OSM no entorno. Tabelas 1 a 8 calculam por fórmula sobre a aba "Dados B1". Gerada por `_src/extras/gerar_planilha_agregada.py`; rodar de novo depois do novo `B1-b_resumo.py` e do `B1-a_estatistica_descritiva.py` (o entorno ainda é o do Maps de 15/10).
+- **Planilhas de dados agregados** (30/10): `dados/Dados agregados/dados_agregados.xlsx` (21 tabelas: B1, Instagram, acervo, B3 e B4; sem B2 e sem OSM) e `dados_agregados_comentarios.xlsx` (11 tabelas do B2, base sem texto), cada tabela com o gráfico ao lado, em tons de slate e purple do Tailwind (PNGs em `graficos/` e `graficos_comentarios/`). Tabelas por fórmula sobre as abas "Dados B1" e "Dados B2". Scripts em `_src/extras/` (`gerar_planilha_agregada.py`, `gerar_planilha_comentarios.py`, estilo em `planilha_estilo.py`). Rodar de novo depois do novo `B1-b_resumo.py` (o entorno ainda é o do Maps de 15/10) e depois de levar os temas ao Notion ou da recodificação cega; o CSV dos comentários fica fora do git (copiar para `dados/[B2]…/_dados-brutos/notion_comentarios/`).
 
 - **B4 no Notion** (18/10): 8 bancos "4 - …" com as tabelas-resumo das bases públicas (988 linhas, conferidas contra os CSVs); séries longas só nos CSVs.
 
