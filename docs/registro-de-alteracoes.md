@@ -1333,3 +1333,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: planilha com índice, 21 tabelas (casas por metrópole, descritiva, dias de funcionamento, painéis por região e metrópole, entorno pelo Maps, preços e couvert dos cardápios, modelos de cobrança, eventos e temas do Instagram, jogos mais presentes e custo do acervo, contagem do B3, população e renda, aluguel comercial, salário de admissão, Simples Nacional, Selic e IPCA, IPCA de alimentação fora do domicílio) e a base das 54 casas. Tabelas do B1 por fórmula sobre a base, com linha de conferência (diferença 0 nas tabelas que fecham com o total); Arial 10, fundo branco, bordas só no cabeçalho e no fim. Fora: comentários do B2 (inclusive contagens de avaliações e a comparação legendas × B2) e porte de shopping do OSM. Dados lidos da branch `fix/entorno-maps-distantes` (a do Mac).
 **Justificativa**: pedido do autor: arquivo Excel com os dados agregados da pesquisa atual, sem comentários e sem OSM no entorno, com gráficos como os do documento anexo (Dance Forrónejo).
 
+
+### 18:25
+**Objeto**: `.gitignore`
+**Antes**: logs dos scripts de `_src/extras/` (gravados em `_src/logs/` por `log_execucao.py`) apareciam como arquivos não versionados.
+**Depois**: `_src/logs/` ignorado, como os logs dos blocos.
+**Justificativa**: logs de execução não são publicados; a pasta ficava solta no `git status` depois de rodar `gerar_planilha_agregada.py`.
