@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 30/10/2026 | B2, temas: as 1.273 linhas sem tema do "2 - Comentários" codificadas por Claude em 30/10 com o dicionário de 30/10; a coluna "Análise de temas" marca quem codificou e quando, para separar "sem tema" de "não analisado" | `docs/registro-de-alteracoes.md` (30/10 18:13) |
+| 30/10/2026 | B2, fidelidade: recodificação cega pelo autor de 139 linhas (20 das 80 de Fórmula ≥ 5 e 10% das 1.193, estratificada), comparada depois ao gabarito | `b2/notion_comentarios/2026-10-30_B2_amostra_recodificacao.csv` (arquivos do projeto) |
 | 30/10/2026 | B2, coletor do Maps: texto ou resposta do dono terminando no marcador " …" do Google conta como cortado (`texto_expandido` = não), mesmo sem botão "Mais" à vista | `docs/registro-de-alteracoes.md` (30/10 17:26) |
 | 30/10/2026 | B2, temas: pedido errado vai para atendimento presencial (rapidez do serviço é só tempo); curadoria dos jogos = jogos muito bons de se jogar, não quantidade nem conservação; ocasião, público, aluguel e loja vão para uma coluna de contexto, sem polaridade | `textos/instrumentos/dicionario_temas_B2.md` |
 | 30/10/2026 | B2, temas dos comentários no Notion: dicionário reconstruído a partir das 166 linhas codificadas pelo autor (variedade = quantidade, curadoria = qualidade dos títulos; explicação de jogos = serviço de jogo à mesa; 10% em regras da casa; preço sem objeto = preço do consumo; mediano e ocasião citada sem juízo não são codificados) | `textos/instrumentos/dicionario_temas_B2.md` |

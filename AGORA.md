@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 30/10/2026 (17h10). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 30/10/2026 (18h13). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -39,6 +39,8 @@ Atualizado em 30/10/2026 (17h10). Semana 5 do cronograma (10/10 a 16/10). Próxi
 - **Cardápios e acervos achados pelo autor** (17/10): 10 cardápios novos transcritos (Asgard, Dungeon, Nala Land, Balboa's, São Jogue, Coletivo Geek, Playeasy e, de prints, CCG Floripa, Jogasampa e Tubaleria) e acervos de 14 casas a mais (Acervo de Jogos, rejoy, Ludopedia, Canva, blog e PDF). Agora são 36 casas com cardápio e 29 com lista de acervo; resumo, estatística descritiva e Notion ("A - Estabelecimentos" e "Status da coleta") atualizados. Site republicado em 17/10 (18h07). Falta limpar os marcadores de cópia das listagens do Acervo de Jogos (pendências, Dúvidas). Tamanho do acervo (30 casas) e preço médio de aluguel (18) no Notion em 17/10 (18h09); jogos mais frequentes: Catan (28 casas), Saboteur (27), Potion Explosion (26). Cesta de jogos (`B1-a_cesta_jogos.py`, 18h20): núcleo de 90 jogos em 15 ou mais casas, R$ 16,9 mil provável para os 77 com preço; acervo inicial de R$ 42,9 mil a R$ 114,8 mil, conforme o tamanho; loja mais barata, Flow Games (índice 0,947).
 
 - **Codificação do B2 no Notion** (30/10): 166 linhas codificadas pelo autor (Fórmula ≥ 5). Dicionário reconstruído a partir delas em `textos/instrumentos/dicionario_temas_B2.md` (resumo na descrição do banco "2 - Comentários"), com 26 linhas a rever, a coluna de contexto a criar e o que falta para seguir Bardin (pendências, item 15). "Costuma ir" e "Voltará" seguem como estavam (pendências, item 14).
+
+- **Temas do B2 em todas as linhas** (30/10, 18:13): as 1.273 linhas sem tema codificadas por Claude nas cópias exportadas do "2 - Comentários" (arquivos do projeto `b2/notion_comentarios/`), com Contexto e "Análise de temas". Falta levar ao Notion (cota esgotada) e a recodificação cega do autor (139 linhas).
 
 - **Coletor do B2 corrigido** (30/10, versão 2026.10.30-2): expande todos os "Mais" antes de ler, marca em `texto_expandido` o que ficou cortado e não para mais cedo por volume lido errado (Shelf parava em 40). Bodogami e Shelf recoletadas com ela em 30/10 (Bodogami: 120 comentários sem campos extras viraram 23). Próximas: Encounter, Utopia e Luderia Carioca (pendências, item 14d).
 
