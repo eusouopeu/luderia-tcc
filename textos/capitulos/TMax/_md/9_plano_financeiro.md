@@ -160,7 +160,7 @@ Quatro premissas de demanda concentram o risco: permanência média, pessoas por
 
 **Figura 9.1 – Tornado: VPL com cada premissa no extremo da faixa e as demais no provável**
 
-![Tornado do VPL](figuras/9_tornado.png)
+![Tornado do VPL](../../figuras/9_tornado.png)
 
 Fonte: elaboração própria (aba sensibilidade do modelo). Dez premissas de maior amplitude.
 

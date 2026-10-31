@@ -80,7 +80,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 # Cortes em potencial
 
-Aplicados no TMin v1 (31/10/2026, `textos/capitulos/TMin/`): C03, C05, C06, C07, C08, C09, C11, C12, C13 (CNAE no cap. 5), C13 (capacidade no cap. 9), C14, C15 e C16. Seguem valendo para o TMax; C01, C02, C04, C10 e C17 (caps. 1 e 10) não foram aplicados em nenhuma versão.
+Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, C07, C08, C09, C11, C12, C13 (CNAE no cap. 5), C13 (capacidade no cap. 9), C14, C15 e C16. Seguem valendo para o TMax; C01, C02, C04, C10 e C17 (caps. 1 e 10) não foram aplicados em nenhuma versão.
 
 ## Alto ganho
 

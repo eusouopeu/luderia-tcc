@@ -9,7 +9,7 @@ Todo número do texto pode ser gerado de novo por um script deste repositório. 
 | Pasta | Conteúdo |
 |---|---|
 | [`AGORA.md`](AGORA.md) | O que está em andamento, os próximos 3 passos e o que está bloqueado |
-| `textos/capitulos/` | Capítulos do TCC e suas figuras |
+| `textos/capitulos/` | Capítulos do TCC (TMin, padrão: `.md` em `_md/`, `.docx` e PDF na raiz), suas figuras e o TMax em `TMax/` (só os capítulos que diferem) |
 | `textos/planejamento/` | Cronograma, status dos capítulos, projeto de pesquisa e registro prévio |
 | `textos/instrumentos/` | Roteiro de observação, livro de códigos da análise de conteúdo e quadro de itens |
 | `_instrucoes/` | Instruções por capítulo (ver [CLAUDE.md](CLAUDE.md)) |

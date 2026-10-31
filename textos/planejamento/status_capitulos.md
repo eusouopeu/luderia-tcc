@@ -1,6 +1,6 @@
 # Status dos capítulos
 
-Atualizado em 31/10/2026. Prazos do [cronograma](cronograma_luderia.md); tetos de [_instrucoes/1_estrutura.md](../../_instrucoes/1_estrutura.md). Páginas estimadas a 350 palavras por página. Situação: **não iniciado** (sem arquivo em `textos/capitulos/`), **rascunho**, **revisado**, **final**.
+Atualizado em 31/10/2026. Prazos do [cronograma](cronograma_luderia.md); tetos de [_instrucoes/1_estrutura.md](../../_instrucoes/1_estrutura.md). Páginas estimadas a 350 palavras por página. Situação: **não iniciado** (sem arquivo em `textos/capitulos/_md/`), **rascunho**, **revisado**, **final**.
 
 | Cap. | Situação | Páginas (usadas/teto) | Prazo do rascunho | Depende de | Pendência principal |
 |---|---|---|---|---|---|

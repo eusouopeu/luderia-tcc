@@ -12,14 +12,17 @@
 // parágrafo no corpo e nas referências; células centradas na vertical; coluna de
 // quadro só com palavras únicas centrada; legenda e fonte centralizadas.
 //
-// Versões (_instrucoes/1c_versoes.md): a saída leva o texto
-// (TMax, ou TMin quando o .md está em textos/capitulos/TMin/) e o número da versão,
-// <nome>_<TMax|TMin>_v<n>.docx, com n = maior versão já existente + 1; a versão
-// anterior vai para a pasta _arquivo/ ao lado.
+// Versões (_instrucoes/1c_versoes.md): o TMin é o padrão, com os .md em
+// textos/capitulos/_md/ e as saídas em textos/capitulos/; o TMax fica em
+// textos/capitulos/TMax/ (.md em TMax/_md/, só dos capítulos que diferem). A saída
+// leva o texto só quando o capítulo difere entre as versões (<nome>_<TMin|TMax>_v<n>;
+// senão, <nome>_v<n>), com n = maior versão já existente + 1; a anterior vai para
+// a pasta _arquivo/ ao lado.
 //
-// Uso: node "_src/extras/gerar_docx_capitulo.js" textos/capitulos/9_plano_financeiro.md
-// Vários capítulos num só arquivo (cada um começa em página nova), com PDF:
-//   node "_src/extras/gerar_docx_capitulo.js" cap1.md cap2.md ... --saida textos/capitulos/TCC_luderia --texto TMin --pdf
+// Uso: node "_src/extras/gerar_docx_capitulo.js" textos/capitulos/_md/6_plano_de_marketing.md
+// Trabalho inteiro (cada capítulo começa em página nova), com PDF:
+//   node "_src/extras/gerar_docx_capitulo.js" --trabalho TMin --pdf
+//   node "_src/extras/gerar_docx_capitulo.js" --trabalho TMax --pdf
 const fs = require("fs");
 const path = require("path");
 const {
@@ -28,25 +31,43 @@ const {
 } = require("docx");
 
 const ROOT = path.resolve(__dirname, "..", "..");
+const CAP = path.join(ROOT, "textos", "capitulos");
+const MD_TMIN = path.join(CAP, "_md"), MD_TMAX = path.join(CAP, "TMax", "_md");
 const ARGS = process.argv.slice(2);
 const opcao = (nome) => { const i = ARGS.indexOf(nome); return i < 0 ? null : ARGS[i + 1]; };
 const PDF = ARGS.includes("--pdf");
-const MDS = ARGS.filter((a, i) => a.endsWith(".md") && !["--saida", "--texto"].includes(ARGS[i - 1]))
-  .map((a) => path.resolve(ROOT, a));
-if (!MDS.length || !MDS.every((m) => fs.existsSync(m))) { console.error("Informe o .md do capítulo."); process.exit(1); }
-const TEXTO = opcao("--texto") || (MDS[0].split(path.sep).includes("TMin") ? "TMin" : "TMax");
-const BASE = opcao("--saida") ? path.resolve(ROOT, opcao("--saida")) : MDS[0].replace(/\.md$/, "");
+const TRABALHO = opcao("--trabalho");
+const numero = (f) => Number(path.basename(f).match(/^\d+/)?.[0] ?? 99);
 
-// Próxima versão de <BASE>_<TEXTO>: procura na pasta e em _arquivo/ e arquiva as atuais.
+let MDS, TEXTO, BASE;
+if (TRABALHO) {
+  // TMin: todos os .md de _md/; TMax: os mesmos, trocados pelos de TMax/_md/ quando houver.
+  MDS = fs.readdirSync(MD_TMIN).filter((f) => /^\d+_.*\.md$/.test(f)).sort((a, b) => numero(a) - numero(b))
+    .map((f) => (TRABALHO === "TMax" && fs.existsSync(path.join(MD_TMAX, f)) ? path.join(MD_TMAX, f) : path.join(MD_TMIN, f)));
+  TEXTO = TRABALHO;
+  BASE = path.join(TRABALHO === "TMax" ? path.join(CAP, "TMax") : CAP, "TCC_luderia");
+} else {
+  MDS = ARGS.filter((a, i) => a.endsWith(".md") && !["--saida", "--texto"].includes(ARGS[i - 1]))
+    .map((a) => path.resolve(ROOT, a));
+  if (!MDS.length || !MDS.every((m) => fs.existsSync(m))) { console.error("Informe o .md do capítulo ou --trabalho TMin|TMax."); process.exit(1); }
+  const md = MDS[0], dir = path.dirname(md), nome = path.basename(md, ".md");
+  const tmax = dir === MD_TMAX, tmin = dir === MD_TMIN;
+  TEXTO = opcao("--texto") ?? (tmax ? "TMax" : tmin && fs.existsSync(path.join(MD_TMAX, `${nome}.md`)) ? "TMin" : "");
+  BASE = opcao("--saida") ? path.resolve(ROOT, opcao("--saida"))
+    : path.join(path.basename(dir) === "_md" ? path.dirname(dir) : dir, nome);
+}
+
+// Próxima versão de <BASE>[_<TEXTO>]: procura na pasta e em _arquivo/ e arquiva as atuais.
 function versionar(base, texto) {
   const dir = path.dirname(base), arq = path.join(dir, "_arquivo");
-  const re = new RegExp(`^${path.basename(base).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}_${texto}_v(\\d+)\\.(docx|pdf)$`);
+  const sufixo = texto ? `_${texto}` : "";
+  const re = new RegExp(`^${path.basename(base).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}${sufixo}_v(\\d+)\\.(docx|pdf)$`);
   const achados = [dir, arq].filter(fs.existsSync).flatMap((d) => fs.readdirSync(d).map((f) => [d, f, f.match(re)]))
     .filter(([, , m]) => m);
   const n = Math.max(0, ...achados.map(([, , m]) => Number(m[1]))) + 1;
   fs.mkdirSync(arq, { recursive: true });
   for (const [d, f] of achados) if (d === dir) fs.renameSync(path.join(d, f), path.join(arq, f));
-  return `${base}_${texto}_v${n}`;
+  return `${base}${sufixo}_v${n}`;
 }
 const OUT = versionar(BASE, TEXTO) + ".docx";
 

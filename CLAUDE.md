@@ -54,7 +54,7 @@ Exceção: as notas de estudo em `docs/notas/` (skill `/traduza` ou `==termo==`)
 
 ## Melhorias do texto
 
-**TODA VEZ** que um capítulo for gerado, ou que o autor implementar ou pedir aprimoramento de um capítulo já escrito, analisar esse capítulo junto com os demais de `textos/capitulos/` (e as regras de `_instrucoes/`) e atualizar [docs/melhorias-texto.md](docs/melhorias-texto.md), no mesmo commit:
+**TODA VEZ** que um capítulo for gerado, ou que o autor implementar ou pedir aprimoramento de um capítulo já escrito, analisar esse capítulo junto com os demais de `textos/capitulos/_md/` (e `TMax/_md/`) (e as regras de `_instrucoes/`) e atualizar [docs/melhorias-texto.md](docs/melhorias-texto.md), no mesmo commit:
 
 - **# Divergências** (`## Grave`, `## Média`, `## Aceitável`): informações, citações ou uso de técnicas, modelos e métodos que divergem entre capítulos ou contra as instruções.
 - **# Cortes em potencial** (`## Alto ganho`, `## Médio ganho`, `## Baixo ganho`): trechos que podem sair sem perder qualidade, profundidade ou clareza (repetidos em vários pontos, ou que perderam importância no todo do trabalho).
@@ -83,6 +83,6 @@ Antes do commit, atualizar:
 - **Sem questionários** de opinião ou intenção; preferir fontes secundárias e primárias comportamentais.
 - **Normas:** ABNT (detalhes em `_instrucoes/10_biblio-apendices.md`). Instituição: UFBA.
 - **Idioma:** português do Brasil no texto, nos comentários do código e nos nomes de arquivos de saída.
-- **Versões:** TMax (texto completo, `textos/capitulos/`) e TMin (conciso, `textos/capitulos/TMin/`); DMax e DMin para os dados agregados; `.docx` e `.pdf` numerados `_v<n>`, com as versões antigas em `_arquivo/`. Regras em `_instrucoes/1c_versoes.md`. Formatação dos `.docx` e `.pdf`: skill `formatacao-texto-ufba` mais `_instrucoes/1d_formatacao.md`, que prevalece. Escolha de obras citadas: `_instrucoes/2_ref-teorico.md`.
+- **Versões:** TMin (conciso, padrão, `textos/capitulos/`, com os `.md` em `_md/`) e TMax (completo, `textos/capitulos/TMax/`, só os capítulos que diferem); DMax e DMin para os dados agregados; `.docx` e `.pdf` numerados `_v<n>`, com as versões antigas em `_arquivo/`. Regras em `_instrucoes/1c_versoes.md`. Formatação dos `.docx` e `.pdf`: skill `formatacao-texto-ufba` mais `_instrucoes/1d_formatacao.md`, que prevalece. Escolha de obras citadas: `_instrucoes/2_ref-teorico.md`.
 - **Pastas enxutas:** nenhuma pasta com mais de cerca de 10 itens soltos na raiz; ao criar arquivos ou pastas, agrupar em subpastas por etapa ou tema (ex.: amostragem, curadoria, aprovadas, cardápios, redes sociais). Pedido do autor em 12/10/2026: abrir a pasta e ver dezenas de arquivos de uma vez sobrecarrega.
 - **Nome de arquivo de coleta de rede social:** `AAAA-MM-DD_<estabelecimento>_instagram_<perfis|posts>.csv`, em `redes_sociais/rs_<cidade>/rs_<perfil>/`; listas do snowball, `AAAA-MM-DD_<perfil>_instagram_seguindo.csv`, em `_dados-brutos/redes_sociais/seguindo/` (fora do git: trazem @ de pessoas físicas). Cardápios originais em `_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/`. A cidade é a capital da região metropolitana do endereço. Demais convenções: `_src/dicionario.md`.

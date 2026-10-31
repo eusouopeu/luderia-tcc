@@ -1886,3 +1886,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: versões no formato antigo (TMax v2 com 62 páginas; TMin v1 com 49).
 **Depois**: regerados no formato da `1d_formatacao.md`, versões anteriores em `_arquivo/`; TMax v3 com 67 páginas, TMin v2 com 53. Conteúdo igual.
 **Justificativa**: pedido do autor.
+
+### 13:49
+**Objeto**: `textos/capitulos/` (estrutura de pastas e nomes), `_src/extras/gerar_docx_capitulo.js`, `_instrucoes/1c_versoes.md`; referências em `CLAUDE.md`, `README.md`, `AGORA.md`, `_src/dicionario.md`, `docs/decisoes.md`, `docs/melhorias-texto.md`, `textos/planejamento/status_capitulos.md` e no `_leiaMe` de `s1-estrutura.json` e `s2-teorico.json` do site
+**Antes**: TMax como padrão (`.md`, `.docx` e PDF em `textos/capitulos/`) e TMin em `textos/capitulos/TMin/` (só os caps. 2, 3, 5 e 9); todo `.docx` com `_TMax` ou `_TMin` no nome; `.md` soltos na pasta.
+**Depois**: TMin como padrão em `textos/capitulos/` (`.md` de todos os capítulos em `_md/`; `.docx`, PDF e `_arquivo/` na raiz); TMax em `textos/capitulos/TMax/` (`_md/` com os caps. 2, 3, 5 e 9, `.docx` desses capítulos, `TCC_luderia_TMax_v3` e `_arquivo/`). Capítulos iguais nas duas versões (6, 7, 8 e 10) perderam o `_TMax` do nome, inclusive as versões arquivadas (`6_plano_de_marketing_v2.docx`). `3_metodologia_plano_luderia.md` (rascunho anterior do cap. 3, substituído por `3_metodologia.md`) foi para `_arquivo/`. O gerador acha o texto e a pasta de saída pelo lugar do `.md` e ganhou `--trabalho TMin|TMax`, que monta a lista de capítulos sozinho; testado numa cópia (53 e 67 páginas, iguais às atuais). Nenhum arquivo regerado.
+**Justificativa**: pedido do autor: o TMin é a versão padrão; nomes com TMin/TMax só quando o capítulo difere; pasta `_md/` para os `.md` atuais de cada versão.
