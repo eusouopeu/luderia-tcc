@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 31/10/2026 | Comentário do B2 cujo texto só termina em emoji + " …" (marcador do Maps) conta como texto inteiro: Status "Completo" no Notion | `docs/registro-de-alteracoes.md` (31/10/2026, 20:09) |
 | 31/10/2026 | Citação de livro com o intervalo de 5 páginas da edição consultada; a referência passa para essa edição (Assaf Neto 7. ed. 2014, Fitzsimmons 7. ed. 2014, Bardin Lisboa 2002); Porter fica na edição brasileira (Elsevier, 2004), sem página até conferir no livro; EPUB sem paginação cita a seção | `docs/registro-de-alteracoes.md` (31/10/2026, 19:59) |
 | 31/10/2026 | TMin é a versão padrão em `textos/capitulos/` (`.md` em `_md/`); TMax em `textos/capitulos/TMax/` só com os capítulos que diferem; TMin/TMax no nome do arquivo só quando o capítulo difere; versões antigas de `.md`, `.docx`, `.pdf` e `.xlsx` juntas em `_arquivo/` | `_instrucoes/1c_versoes.md` |
 | 31/10/2026 | Recuo de primeira linha de 1,00 cm e referências alinhadas à esquerda (não justificadas) | `_instrucoes/1d_formatacao.md` |

@@ -1911,3 +1911,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: as três colunas vazias.
 **Depois**: Comida 5, Serviço 5 e Ambiente 5, da coleta de 31/10 (`2026-10-31_ludoteca_sidequest_maps_avaliacoes_tudo.csv`, versão 2026.10.30-2).
 **Justificativa**: conferência pedida pelo autor dos comentários com Status "Incompleto" ou terminados em "…" nas 6 casas recoletadas em 31/10 (Bravo, Encounter, Luderia Carioca, Ludoteca BGC, Sidequest, OMNIVERSE): os 13 estão nas coletas novas (6 pelo ID da avaliação, 7 pelo texto), com o mesmo texto do Notion; 11 terminam em emoji + " …" (forma do Maps com o texto inteiro) e o da Encounter "Ambiente muito legal…" tem reticências do próprio avaliador. Nenhum texto ganhou trecho novo; o único ganho foi o desta linha.
+
+### 20:12
+**Objeto**: Notion "2 - Comentários", coluna Status dos 13 comentários conferidos às 20:09 (Bravo 2, Encounter 4, Luderia Carioca 4, Ludoteca BGC 1, Sidequest 2)
+**Antes**: "Incompleto" em 12; vazio em 1 (Encounter, "Ambiente muito legal…").
+**Depois**: "Completo" nos 13.
+**Justificativa**: decisão do autor depois da conferência com as coletas de 31/10: o texto dos 13 é o inteiro (o "…" final é o marcador do Maps depois de emoji ou reticências do avaliador).
