@@ -48,7 +48,7 @@ O modelo tem 38 premissas, cada uma com faixa pessimista, provável e otimista, 
 
 Fonte: elaboração própria, com dados dos Blocos B1, B3 e B4 (out/2026).
 
-As premissas de demanda vêm da contagem direta na São Jogue (B3). Nas quatro visitas — duas em cada unidade, sempre na noite de sexta ou sábado —, os grupos de mesa tiveram de 2,4 a 4,6 pessoas (média de 3,6) e permanência média de 83 a 137 minutos (média de 109). A taxa de ocupação, medida minuto a minuto pelos registros de entrada e saída de cada grupo, ficou entre 26,9% e 60,3% das mesas, com média de 41,7%. As visitas mediram o pico da semana, por orientação: o objetivo foi conhecer a ocupação máxima e o comportamento de clientes e equipe. Por isso, a ocupação de fim de semana do dia inteiro entra abaixo da noite (35% no provável), e a de dia útil é estimativa do autor (N6), fixada em cerca de metade da de fim de semana.
+As premissas de demanda vêm da contagem direta na São Jogue (B3). Nas quatro visitas — duas em cada unidade, sempre na noite de sexta ou sábado —, os grupos de mesa tiveram de 2,4 a 4,6 pessoas (média de 3,6) e permanência média de 83 a 137 minutos (média de 109). A taxa de ocupação, medida minuto a minuto pelos registros de entrada e saída de cada grupo, sem contar a mesa do observador, ficou entre 29,9% e 66,9% das mesas, com média de 46,1%. As visitas mediram o pico da semana, por orientação: o objetivo foi conhecer a ocupação máxima e o comportamento de clientes e equipe. Por isso, a ocupação de fim de semana do dia inteiro entra abaixo da noite (35% no provável), e a de dia útil é estimativa do autor (N6), fixada em cerca de metade da de fim de semana.
 
 Os preços seguem os da São Jogue. A taxa de entrada é de R$ 28,00 por pessoa de sexta a domingo e de R$ 22,00 de segunda a quinta, por um turno de 3 horas no salão. O gasto com A&B parte das quatro NFC-e das mesas dos observadores: R$ 23,91 por pessoa, sem taxa, jogos comprados e serviço. O cardápio confirma a ordem de grandeza: hambúrguer a R$ 45,00, batata a R$ 35,00 e drinque a R$ 28,00 (B1).
 
@@ -168,7 +168,7 @@ A permanência pesa mais que a ocupação porque a taxa de entrada é cobrada po
 
 ### 9.7.3 Ponto de ruptura
 
-O negócio é viável enquanto a taxa de ocupação de fim de semana ficar acima de 49,5%, com as demais premissas no provável (Tabela 9.5). Esse valor está acima do provável (35%), mas abaixo do pico medido na Paralela em 30/10 (60,3%) e acima da média das quatro noites (41,7%). No dia útil, a ruptura é de 29,7%, acima do otimista da faixa.
+O negócio é viável enquanto a taxa de ocupação de fim de semana ficar acima de 49,5%, com as demais premissas no provável (Tabela 9.5). Esse valor está acima do provável (35%), mas abaixo do pico medido na Paralela em 30/10 (66,9%) e acima da média das quatro noites (46,1%). No dia útil, a ruptura é de 29,7%, acima do otimista da faixa.
 
 **Tabela 9.5 – Ponto de ruptura das premissas críticas (VPL = 0)**
 

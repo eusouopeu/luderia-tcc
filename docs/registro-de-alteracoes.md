@@ -1396,3 +1396,10 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: CNAE principal 5611-2/01 "proposto", a confirmar pelo autor; na base da CONCLA, 5611-2/05 rotulada "principal candidata" e 5611-2/01 "alternativa" (melhorias, D23).
 **Depois**: 5611-2/01 é o CNAE principal no cap. 8; na base, 5611-2/01 "principal", 5611-2/03 "alternativa (principal da São Jogue)" e 5611-2/05 "descartada"; CONCLA coletada de novo (10 subclasses) para levar os rótulos à tabela. D23 sai das melhorias; a pendência do CNAE sai.
 **Justificativa**: decisão do autor em 31/10/2026: CNAE principal 5611-2/01 (restaurante).
+
+### 02:03
+**Objeto**: cap. 9 (`textos/capitulos/9_plano_financeiro.md` e `.docx`) e modelo `textos/capitulos/9_plano_financeiro_modelo.xlsx`
+**Antes**: ocupação das quatro noites de 26,9% a 60,3% das mesas, média de 41,7% (9.2, premissas de demanda; 9.7, ponto de ruptura; justificativa da R04 na aba premissas).
+**Depois**: 29,9% a 66,9%, média de 46,1%, sem contar a mesa do observador; modelo gerado de novo por `gerar_modelo_financeiro.py` (VPL, tornado e ruptura iguais: R04 rompe em 49,5%, ainda acima da média e abaixo do pico) e .docx por `gerar_docx_capitulo.js`. Análise do cap. 9 com os demais capítulos: nenhuma divergência ou corte novo em `docs/melhorias-texto.md`.
+**Justificativa**: pedido do autor em 31/10, depois de tirar a mesa do observador do denominador da ocupação.
+
