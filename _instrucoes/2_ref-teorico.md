@@ -32,6 +32,17 @@ Padrão de parágrafo: **afirmação → sustentação (citação ou dado) → l
 - Toda citação no texto tem entrada correspondente nas referências, e vice-versa.
 - Dado de reportagem que cita outra fonte (ex.: Circana via O Povo): buscar a fonte original; se inacessível, citar a reportagem e declarar a origem do dado.
 
+## Escolha das obras (pedido do autor em 31/10/2026)
+
+- **Só o necessário:** cada conceito tem uma obra, a que sustenta a decisão do plano em que o conceito é usado. Obra que repete outra ou que não liga a nenhuma decisão sai.
+- **Ordem de preferência** entre obras que sustentam o mesmo ponto, aplicada nesta ordem:
+  1. com acesso gratuito em PDF, na internet ou na biblioteca do autor no Google Drive;
+  2. livro, depois artigo, depois relatório, depois TCC, dissertação ou tese;
+  3. autor mais renomado na literatura da área;
+  4. autor brasileiro.
+- **Finanças:** VPL, TIR, payback e taxa de desconto só com Assaf Neto e Bruni. Damodaran fica reservado para o cálculo do beta e do risco-país (CRP) da taxa de desconto, se essa etapa for feita no cap. 9. Ponto de equilíbrio com Bruni e Famá.
+- Obras retiradas no TMin de 31/10/2026: Brealey, Myers e Allen; Casarotto Filho e Kopittke; Hillier e Lieberman; Zeithaml, Bitner e Gremler (o *servicescape* e a lei de Little passam a Fitzsimmons); Mintzberg, Ahlstrand e Lampel; Pfeffer e Sutton; Oldenburg; Marcellino; Kim e Mauborgne; Woods; Gilovich, Kumar e Jampol; Frezatti et al.; no cap. 3, Biemer, Amaya, Biemer e Kinyon e Meng; no cap. 5, Sebrae (notícia) e Savills.
+
 ## Divisão de subcapítulos
 
 Teto do capítulo: **10 páginas** ([1_estrutura.md](1_estrutura.md), "Extensão"). Cada subcapítulo existe para justificar uma ferramenta ou um conceito que o plano usa depois; o que só contextualiza fica em uma página ou menos.

@@ -3,7 +3,7 @@ Planilha separada com os dados agregados dos comentários do B2, com gráficos.
 
 Lê a cópia exportada e atualizada do banco "2 - Comentários" do Notion
 (`2026-10-30_2_comentarios_all_atualizado.csv`, temas codificados em 30/10) e
-grava `dados/Dados agregados/B2_dados_agregados.xlsx`, uma aba por
+grava `dados/Dados agregados/B2_dados_agregados_DMax.xlsx`, uma aba por
 tabela com o gráfico ao lado, e os PNGs em `graficos_comentarios/`.
 
 A aba "Dados B2" traz uma linha por comentário, sem o texto (texto integral não
@@ -380,7 +380,7 @@ ind.cell(ult + 3, 1, "Gráficos em PNG de 300 dpi em dados/Dados agregados/grafi
 
 SAIDA.mkdir(parents=True, exist_ok=True)
 (SAIDA / "dados_agregados_comentarios.xlsx").unlink(missing_ok=True)  # nome de antes da divisão por bloco
-saida = SAIDA / "B2_dados_agregados.xlsx"
+saida = SAIDA / "B2_dados_agregados_DMax.xlsx"
 est.wb.save(saida)
 print(f"{saida.relative_to(ROOT)}: {len(INDICE)} tabelas + base; {len(list(GRAF.glob('*.png')))} gráficos")
 print(f"Conferência: {N} comentários; soma por metrópole = {int(mt.n.sum())} (diferença {N - int(mt.n.sum())}); "

@@ -1814,3 +1814,39 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o gerador fazia um .docx por capítulo; não havia arquivo do trabalho inteiro.
 **Depois**: o gerador aceita vários .md e `--saida`, com cada capítulo em página nova e listas numeradas recomeçando por capítulo (o .docx de um capítulo só sai igual). PDF do trabalho com os caps. 1 a 11 (62 páginas), convertido pelo LibreOffice; notas de rascunho (linhas com ">") omitidas, sem capa nem sumário.
 **Justificativa**: pedido do autor: PDF do trabalho atual com todos os capítulos.
+
+### 12:24
+**Objeto**: `CLAUDE.md`, `_instrucoes/1_estrutura.md` (seção nova "Versões do texto e dos dados"), `_instrucoes/2_ref-teorico.md` (seção nova "Escolha das obras")
+**Antes**: uma só versão do texto e dos dados; `.docx` sem número de versão; sem regra para escolher entre obras.
+**Depois**: TMax (texto completo, `textos/capitulos/`) e TMin (conciso, `textos/capitulos/TMin/`); DMax e DMin (a definir) nos dados agregados; `.docx` e `.pdf` como `<nome>_<TMax|TMin>_v<n>`, com as versões antigas em `_arquivo/`; obras escolhidas por PDF gratuito, livro > artigo > relatório > TCC e tese, renome e autor brasileiro; finanças só com Assaf Neto e Bruni, e Damodaran para beta e CRP.
+**Justificativa**: pedido do autor em 31/10/2026.
+
+### 12:24
+**Objeto**: pastas `_arquivo/` (com `.gitkeep`) nas pastas de saída de `dados/`, em `textos/capitulos`, `textos/capitulos/TMin`, `textos/instrumentos`, `textos/planejamento` e nas três subpastas de `bibliografia/`; `.docx` dos caps. 3, 6, 7, 8, 9 e 10; PDF do trabalho
+**Antes**: sem `_arquivo/`; `.docx` como `<cap>.docx`; PDF em `textos/TCC_luderia_completo_2026-10-31.pdf`.
+**Depois**: `.docx` renomeados para `<cap>_TMax_v1.docx`; o PDF virou `textos/capitulos/_arquivo/TCC_luderia_TMax_v1.pdf`, e o v2 (mesmo conteúdo, sem os comentários HTML do cap. 2, que vazavam) está em `textos/capitulos/`. As subpastas de `bibliografia/leituras-P1` e `-P2` estão no `.gitignore`: a `_arquivo/` delas existe só no disco.
+**Justificativa**: pedido do autor.
+
+### 12:24
+**Objeto**: `dados/Dados agregados/` e `_src/extras/gerar_planilha_agregada.py`, `gerar_planilha_comentarios.py`
+**Antes**: `B1_dados_agregados_completo.xlsx`, `B2_dados_agregados.xlsx`, `B3_dados_agregados.xlsx`, `B4_dados_agregados.xlsx`.
+**Depois**: `B1_dados_agregados_DMax.xlsx`, `B2_…_DMax`, `B3_…_DMax`, `B4_…_DMax`, nos arquivos e nos scripts. A `B1_dados_agregados_resumido.xlsx` fica como está: não é a DMin.
+**Justificativa**: pedido do autor (bifurcação DMax/DMin).
+
+### 12:24
+**Objeto**: `_src/extras/gerar_docx_capitulo.js`
+**Antes**: saída `<cap>.docx`; comentários HTML (`<!-- -->`) impressos no texto.
+**Depois**: saída `<nome>_<TMax|TMin>_v<n>.docx` (TMin quando o `.md` está em `TMin/`), com a versão anterior movida para `_arquivo/`; opção `--texto` e `--pdf` (converte pelo LibreOffice); comentários HTML omitidos.
+**Justificativa**: regra de versões do autor; o cap. 2 imprimia o comentário de rascunho no PDF.
+
+### 12:24
+**Objeto**: `textos/capitulos/TMin/2_referencial_teorico.md`, `3_metodologia.md`, `5_analise_de_mercado.md`, `9_plano_financeiro.md` (novos) e seus `.docx` `_TMin_v1`; `textos/capitulos/TMin/TCC_luderia_TMin_v1.pdf`
+**Antes**: só o TMax. Páginas no PDF do trabalho: cap. 2, 10; cap. 3, 11; cap. 5, 9; cap. 9, 8 (62 no total).
+**Depois**: TMin com cap. 2 em 7 páginas e 17 obras (eram 29; saem as listadas em `2_ref-teorico.md`, e Fitzsimmons passa a sustentar *servicescape* e lei de Little, e Bruni, a TMA); cap. 3 em 6 (sem a matriz de evidências, que vai para apêndice; 4 obras, sem Biemer, Amaya et al. e Meng; seções 3.5 a 3.8 viram 3.5 a 3.7); cap. 5 em 5 (sem nota de abertura, quadro de fontes, linhas de fonte na prosa, 5.5.3 Social, Sebrae, Savills e Gilovich; lacunas em marcas curtas); cap. 9 em 7 (sem repetições de 6.3, 7 e 8.1). PDF TMin com 49 páginas, contra 62 do TMax v2. Números iguais aos do TMax.
+**Justificativa**: pedido do autor: versão reduzida dos caps. 2, 3, 5 e 9 e PDF do TMin.
+
+### 12:24
+**Objeto**: `docs/melhorias-texto.md`, `docs/pendencias.md` (item 16), `docs/decisoes.md`, `AGORA.md`, `textos/planejamento/status_capitulos.md`
+**Antes**: D34 (couvert 13 × 11); sem D35; cortes sem indicação de versão.
+**Depois**: D34 sai (contagens alinhadas em 31/10); D35 nova (cap. 5 TMax: preço abaixo da média × cap. 6: acima da mediana); cortes aplicados no TMin indicados; pendência 16 (DMin, grade ERRC, versão para a banca, biblioteca do Drive); duas decisões novas.
+**Justificativa**: fim de sessão (CLAUDE.md).

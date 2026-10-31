@@ -6,11 +6,16 @@
 // só com bordas horizontais no cabeçalho e no fim, números à direita (skill
 // formatacao-tabelas-xlsx, seções 4 e 5); quadro de texto com grade completa;
 // imagem em linha própria no formato ![texto](caminho relativo ao .md);
-// linhas de citação (>) de rascunho são omitidas.
+// linhas de citação (>) e comentários HTML de rascunho são omitidos.
+//
+// Versões (_instrucoes/1_estrutura.md, "Versões do texto"): a saída leva o texto
+// (TMax, ou TMin quando o .md está em textos/capitulos/TMin/) e o número da versão,
+// <nome>_<TMax|TMin>_v<n>.docx, com n = maior versão já existente + 1; a versão
+// anterior vai para a pasta _arquivo/ ao lado.
 //
 // Uso: node "_src/extras/gerar_docx_capitulo.js" textos/capitulos/9_plano_financeiro.md
-// Vários capítulos num só arquivo (cada um começa em página nova):
-//   node "_src/extras/gerar_docx_capitulo.js" cap1.md cap2.md ... --saida caminho.docx
+// Vários capítulos num só arquivo (cada um começa em página nova), com PDF:
+//   node "_src/extras/gerar_docx_capitulo.js" cap1.md cap2.md ... --saida textos/capitulos/TCC_luderia --texto TMin --pdf
 const fs = require("fs");
 const path = require("path");
 const {
@@ -20,10 +25,26 @@ const {
 
 const ROOT = path.resolve(__dirname, "..", "..");
 const ARGS = process.argv.slice(2);
-const iSaida = ARGS.indexOf("--saida");
-const MDS = (iSaida < 0 ? ARGS : ARGS.slice(0, iSaida)).map((a) => path.resolve(ROOT, a));
+const opcao = (nome) => { const i = ARGS.indexOf(nome); return i < 0 ? null : ARGS[i + 1]; };
+const PDF = ARGS.includes("--pdf");
+const MDS = ARGS.filter((a, i) => a.endsWith(".md") && !["--saida", "--texto"].includes(ARGS[i - 1]))
+  .map((a) => path.resolve(ROOT, a));
 if (!MDS.length || !MDS.every((m) => fs.existsSync(m))) { console.error("Informe o .md do capítulo."); process.exit(1); }
-const OUT = iSaida < 0 ? MDS[0].replace(/\.md$/, ".docx") : path.resolve(ROOT, ARGS[iSaida + 1]);
+const TEXTO = opcao("--texto") || (MDS[0].split(path.sep).includes("TMin") ? "TMin" : "TMax");
+const BASE = opcao("--saida") ? path.resolve(ROOT, opcao("--saida")) : MDS[0].replace(/\.md$/, "");
+
+// Próxima versão de <BASE>_<TEXTO>: procura na pasta e em _arquivo/ e arquiva as atuais.
+function versionar(base, texto) {
+  const dir = path.dirname(base), arq = path.join(dir, "_arquivo");
+  const re = new RegExp(`^${path.basename(base).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}_${texto}_v(\\d+)\\.(docx|pdf)$`);
+  const achados = [dir, arq].filter(fs.existsSync).flatMap((d) => fs.readdirSync(d).map((f) => [d, f, f.match(re)]))
+    .filter(([, , m]) => m);
+  const n = Math.max(0, ...achados.map(([, , m]) => Number(m[1]))) + 1;
+  fs.mkdirSync(arq, { recursive: true });
+  for (const [d, f] of achados) if (d === dir) fs.renameSync(path.join(d, f), path.join(arq, f));
+  return `${base}_${texto}_v${n}`;
+}
+const OUT = versionar(BASE, TEXTO) + ".docx";
 
 const FONTE = "Arial";
 const TAM = 24;        // 12 pt
@@ -118,6 +139,7 @@ function converte(md, MD, blocos = []) {
   let anteriorNumerada = false;
   for (let i = 0; i < linhas.length; i++) {
     const l = linhas[i];
+    if (l.trim().startsWith("<!--")) { while (i < linhas.length && !linhas[i].includes("-->")) i++; continue; }
     if (!l.trim() || /^-{3,}$/.test(l.trim()) || l.startsWith(">")) continue;
     const numerada = /^\d+\. /.test(l);
     if (numerada && !anteriorNumerada) instancia++;
@@ -211,4 +233,10 @@ const doc = new Document({
 Packer.toBuffer(doc).then((buf) => {
   fs.writeFileSync(OUT, buf);
   console.log(`OK: ${path.relative(ROOT, OUT)}`);
+  if (PDF) {
+    const soffice = "/Applications/LibreOffice.app/Contents/MacOS/soffice";
+    require("child_process").execFileSync(soffice, ["--headless", "--convert-to", "pdf", "--outdir", path.dirname(OUT), OUT],
+      { stdio: "ignore" });
+    console.log(`OK: ${path.relative(ROOT, OUT.replace(/\.docx$/, ".pdf"))}`);
+  }
 });

@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 31/10/2026 | Duas versões do texto (TMax completo, TMin conciso) e dos dados agregados (DMax completo, DMin essencial, a definir); `.docx` e `.pdf` numerados `_v<n>`, versões antigas em `_arquivo/` | `_instrucoes/1_estrutura.md` ("Versões do texto e dos dados") |
+| 31/10/2026 | Obras citadas: uma por conceito, preferindo PDF gratuito, livro, autor renomado e autor brasileiro, nessa ordem; finanças só com Assaf Neto e Bruni, Damodaran reservado ao beta e ao CRP | `_instrucoes/2_ref-teorico.md` ("Escolha das obras") |
 | 31/10/2026 | Precedência entre capítulos: em divergência, valem os caps. 6 (marketing) e 8 (jurídico); 7, 9 e dependentes se ajustam a eles; mudança nos caps. 6 ou 8 gera alerta imediato ao autor | `_instrucoes/1_estrutura.md` (P3); `CLAUDE.md` |
 | 31/10/2026 | Passe do dia de casa sem entrada (BoardZ, Day Pass) conta como taxa de jogo por pessoa no B1 e na Tabela 6.1; no LudoCafé, o cartaz fotografado em jul/2024 (Google Maps) substitui a matéria de jun/2024, por ser mais recente | `boardz_couvert.csv`, `ludocafe_couvert.csv`; `textos/capitulos/6_plano_de_marketing.md` (6.3) |
 | 31/10/2026 | Couvert ou taxa de entrada que não está no cardápio vem de site, imprensa ou Instagram (post ou destaque), transcrito num arquivo `<casa>_couvert` com a data da publicação; na Tabela 6.1, a mediana usa o maior valor de cada casa no dia útil e no fim de semana. O crepe "Lúdico" da Ludoteca BGC sai do couvert (prato principal) | `docs/registro-de-alteracoes.md` (31/10 03:40) |

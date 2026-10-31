@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 31/10/2026 (11h), merge do PR #23 (rascunhos dos caps. 4, 7, 10 e 11) com o couvert novo do B1 nos caps. 5, 6, 9 e 11.
+Última análise: 31/10/2026 (12h24), TMin v1 dos caps. 2, 3, 5 e 9 contra o TMax e os demais capítulos.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -54,7 +54,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D33 — Equipe de 12 no modelo × 8 no cap. 7.** Cap. 9 (9.4, C06, Tabela 9.2) × caps. 7 (7.5, Quadro 7.2), 10 (Quadros 10.2 e 10.3), 4 (Quadro 4.1) e 11 (11.1). O modelo usa o quadro de referência de 12 pessoas; o cap. 7 dimensiona 8 pelo fluxo do B3, e os caps. 4, 10 e 11 trazem as duas versões. Sugestão: quando o autor decidir a equipe, levar a escolha ao `gerar_modelo_financeiro.py` e deixar uma só versão nos cinco capítulos.
 
-**D34 — Couvert encontrado: 13 casas na base × 11 nos capítulos.** Base do B1 regerada em 31/10 (`B1_cardapios_itens_precos.xlsx`, estatística descritiva) × caps. 5 (5.3) e 6 (6.3). A base conta como couvert a pizza "Lúdico" da Ludoteca BGC (R$ 30,00) e a taxa de R$ 0,00 da Ludus ("não cobra"); os capítulos tiram as duas. A mediana não muda (R$ 20,00). Sugestão: corrigir a classificação da BGC no `B1-b_cardapios_planilha.py` e tratar a Ludus como "não cobra" fora da mediana, e rodar de novo.
+**D35 — Preço de entrada abaixo ou acima da média.** Cap. 5 (5.2.1, TMax: "o preço de entrada da luderia precisa ficar abaixo da média das metrópoles") × cap. 6 (6.3: R$ 28,00 no fim de semana, acima da mediana de R$ 25,00). Pela precedência, vale o cap. 6. O TMin do cap. 5 já diz só que a renda menor pesa na definição do preço. Sugestão: no TMax, a mesma redação do TMin.
 
 ## Aceitável
 
@@ -79,6 +79,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D25 — Normas estaduais e municipais sem conferência.** Cap. 8 (Tabela 8.1 e Quadro 8.1) × `6_juridico.md` ("toda informação legal deve citar a norma e ter a vigência conferida"). LOUOS de Salvador, Lei estadual 12.929/2013 (bombeiros), RICMS-BA, ICMS de 4% sobre o A&B, ISS de 5% e contribuição patronal de 27,8% estão `[AV]`. A conclusão (Simples mais barato) não muda com eles: a diferença é de R$ 103 mil por ano.
 
 # Cortes em potencial
+
+Aplicados no TMin v1 (31/10/2026, `textos/capitulos/TMin/`): C03, C05, C06, C07, C08, C09, C11, C12, C13 (CNAE no cap. 5), C13 (capacidade no cap. 9), C14, C15 e C16. Seguem valendo para o TMax; C01, C02, C04, C10 e C17 (caps. 1 e 10) não foram aplicados em nenhuma versão.
 
 ## Alto ganho
 

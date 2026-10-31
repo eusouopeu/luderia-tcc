@@ -1,10 +1,12 @@
 """
 Planilhas com os dados agregados da pesquisa (B1, B3 e B4) e gráficos, uma por bloco.
 
-Lê só arquivos processados de `dados/` e grava em `dados/Dados agregados/`:
-`B1_dados_agregados_completo.xlsx`, `B1_dados_agregados_resumido.xlsx` (sem
+Lê só arquivos processados de `dados/` e grava em `dados/Dados agregados/`
+(DMax = versão completa, com todos os dados coletados; a DMin, essencial, será
+definida pelo autor; ver _instrucoes/1_estrutura.md, "Versões do texto e dos dados"):
+`B1_dados_agregados_DMax.xlsx`, `B1_dados_agregados_resumido.xlsx` (sem
 eventos, dias e temas do Instagram e sem o custo do acervo),
-`B3_dados_agregados.xlsx` e `B4_dados_agregados.xlsx`, uma aba por tabela,
+`B3_dados_agregados_DMax.xlsx` e `B4_dados_agregados_DMax.xlsx`, uma aba por tabela,
 com a figura ao lado, e os gráficos em PNG (300 dpi) em `graficos/`. Monta
 tudo numa pasta só e depois separa, renumerando as tabelas de cada arquivo.
 
@@ -594,14 +596,14 @@ BASE_B1 = [(ABA_BASE, "Base das 54 casas do B1", FONTE_B1)]
 NOTA_GRAF = "Gráficos em PNG de 300 dpi em dados/Dados agregados/graficos/. Gerado por _src/extras/gerar_planilha_agregada.py."
 NOTA_FORA = "Fora, por pedido do autor (30/10/2026): comentários do B2 (planilha própria) e dados do OpenStreetMap no entorno."
 feitos = dividir(total, INDICE, [
-    (SAIDA / "B1_dados_agregados_completo.xlsx", "Dados agregados do B1 (estabelecimentos) – TCC Luderia, versão completa",
+    (SAIDA / "B1_dados_agregados_DMax.xlsx", "Dados agregados do B1 (estabelecimentos) – TCC Luderia, versão completa",
      B1_TABS, BASE_B1, [NOTA_FORA, NOTA_GRAF]),
     (SAIDA / "B1_dados_agregados_resumido.xlsx", "Dados agregados do B1 (estabelecimentos) – TCC Luderia, versão resumida",
      [a for a in B1_TABS if a not in B1_FORA], BASE_B1,
      [NOTA_FORA, "Versão resumida: sem eventos por categoria, dias citados nos eventos e temas das legendas do Instagram, "
       "e sem o custo do acervo inicial (tabelas 10, 11, 12 e 14 da versão completa).", NOTA_GRAF]),
-    (SAIDA / "B3_dados_agregados.xlsx", "Dados agregados do B3 (contagem direta) – TCC Luderia", B3_TABS, [], [NOTA_GRAF]),
-    (SAIDA / "B4_dados_agregados.xlsx", "Dados agregados do B4 (bases públicas) – TCC Luderia", B4_TABS, [], [NOTA_GRAF]),
+    (SAIDA / "B3_dados_agregados_DMax.xlsx", "Dados agregados do B3 (contagem direta) – TCC Luderia", B3_TABS, [], [NOTA_GRAF]),
+    (SAIDA / "B4_dados_agregados_DMax.xlsx", "Dados agregados do B4 (bases públicas) – TCC Luderia", B4_TABS, [], [NOTA_GRAF]),
 ])
 total.unlink()
 for caminho, n in feitos:
