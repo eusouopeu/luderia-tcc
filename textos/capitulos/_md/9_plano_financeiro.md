@@ -1,8 +1,10 @@
 # 9 PLANO FINANCEIRO
 
+O plano financeiro converte as decisões dos capítulos 5 a 8 em receitas, custos e indicadores de viabilidade. O capítulo parte da estrutura do modelo e do registro de premissas, projeta investimento, resultado e fluxo de caixa e termina na sensibilidade e nas checagens de coerência.
+
 ## 9.1 ÁRVORE DE DIRECIONADORES
 
-A receita da luderia depende de quatro grandezas físicas e de dois preços. As pessoas atendidas saem das mesas, do tamanho do grupo, do giro e da taxa de ocupação, e a receita sai dessas pessoas multiplicadas pela taxa de entrada e pelo gasto com alimentos e bebidas (A&B). A ocupação separa-se em dia útil (segunda a quinta) e fim de semana (sexta a domingo), porque a taxa de entrada também muda. Cada folha da árvore corresponde a uma linha do registro de premissas (Quadro 9.1).
+A receita da luderia depende de quatro grandezas físicas e de dois preços. As pessoas atendidas saem das mesas, do tamanho do grupo, do giro e da taxa de ocupação, e a receita sai dessas pessoas multiplicadas pela taxa de entrada e pelo gasto com alimentos e bebidas (A&B). A ocupação se separa em dia útil (segunda a quinta) e fim de semana (sexta a domingo), porque a taxa de entrada também muda. Cada folha da árvore corresponde a uma linha do registro de premissas (Quadro 9.1).
 
 **Quadro 9.1 – Árvore de direcionadores do modelo financeiro**
 
@@ -48,9 +50,9 @@ As premissas de demanda vêm da contagem direta na São Jogue (B3): grupos de 3,
 
 Os preços seguem os da São Jogue (6.3): R$ 28,00 por pessoa de sexta a domingo e R$ 22,00 de segunda a quinta, por um turno de 3 horas. O gasto com A&B de R$ 24,00 parte das NFC-e das mesas dos observadores (6.3). O valor fica abaixo do consumo por pessoa nos cardápios (R$ 50,25 na mediana dos concorrentes), porque os grupos fizeram de 0,5 a 1,7 pedidos por mesa (B3); o consumo de cardápio fica como teto, acima do otimista.
 
-Os custos vêm de bases públicas sempre que possível: o aluguel do FipeZap, os salários das medianas de admissão em Salvador no Novo CAGED, quase todas no piso de R$ 1.625,09, e o CMV de 30% da PAS 2023. Área, reforma, mobiliário, cozinha e despesas gerais não têm cotação e ficam em N6.
+Do lado dos custos, o modelo usa bases públicas sempre que possível: o aluguel do FipeZap, os salários das medianas de admissão em Salvador no Novo CAGED, quase todas no piso de R$ 1.625,09, e o CMV de 30% da PAS 2023. Área, reforma, mobiliário, cozinha e despesas gerais não têm cotação e ficam em N6.
 
-A TMA real provável é de 15% ao ano. A Selic meta de 14,0% (BCB, set/2026), descontado o IPCA esperado de 4,3% para 2027 (Focus), dá juro real de 9,3%, somado a um prêmio de 3 a 9 pontos percentuais pelo risco de pequeno negócio novo.
+Falta a taxa que desconta esses fluxos. A TMA real provável é de 15% ao ano. A Selic meta de 14,0% (BCB, set/2026), descontado o IPCA esperado de 4,3% para 2027 (Focus), dá juro real de 9,3%, somado a um prêmio de 3 a 9 pontos percentuais pelo risco de pequeno negócio novo.
 
 ## 9.3 INVESTIMENTO INICIAL
 
@@ -172,7 +174,7 @@ O negócio é viável enquanto a taxa de ocupação de fim de semana ficar acima
 
 Fonte: elaboração própria (aba sensibilidade do modelo).
 
-Só a permanência tem ruptura dentro da faixa testada. O VPL fica positivo pela combinação de premissas: ocupação de 45% no fim de semana e de 23% no dia útil (VPL de R$ 55 mil), ou permanência de 95 minutos com ocupação de 42% no fim de semana (VPL de R$ 65 mil). A plausibilidade dessas combinações é discutida no cap. 10.
+Nas demais premissas, o ponto de ruptura cai fora da faixa testada: só a permanência tem ruptura dentro dela. O VPL fica positivo pela combinação de premissas: ocupação de 45% no fim de semana e de 23% no dia útil (VPL de R$ 55 mil), ou permanência de 95 minutos com ocupação de 42% no fim de semana (VPL de R$ 65 mil). A plausibilidade dessas combinações é discutida no cap. 10.
 
 ## 9.8 CHECAGENS DE COERÊNCIA
 
@@ -180,6 +182,6 @@ A capacidade comporta a demanda com folga: as 48 pessoas por dia usam 25% da cap
 
 A equipe e o ponto pesam mais que no setor. A folha com encargos custa 38,6% da receita, contra 25,1% de gastos com pessoal nos serviços de alimentação, e o aluguel com condomínio, 16,0%, contra 4,0% (IBGE, PAS 2024). Os dois custos explicam a margem baixa e indicam onde o cap. 7 pode cortar: quadro menor no dia útil ou ponto menor.
 
-A taxa de entrada de fim de semana, de R$ 28,00, supera a mediana de R$ 25,00 dos concorrentes (6.3). A São Jogue pratica esse preço com 4,8 estrelas em 787 avaliações, o que sustenta o posicionamento, desde que o plano reproduza a mesma experiência.
+No preço, a taxa de entrada de fim de semana, de R$ 28,00, supera a mediana de R$ 25,00 dos concorrentes (6.3). A São Jogue pratica esse preço com 4,8 estrelas em 787 avaliações, o que sustenta o posicionamento, desde que o plano reproduza a mesma experiência.
 
-A demanda projetada equivale a 17,5 mil visitas por ano, ou 0,7% da população de Salvador em 2026 (IBGE), abaixo da penetração que exigiria um mercado novo.
+Por fim, a demanda projetada equivale a 17,5 mil visitas por ano, ou 0,7% da população de Salvador em 2026 (IBGE), abaixo da penetração que exigiria um mercado novo.

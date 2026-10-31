@@ -16,7 +16,7 @@ Conferir o manual ou as normas complementares da UFBA e do curso, e as orientaç
 
 ## Referências (NBR 6023:2018)
 
-- Lista única, em ordem alfabética, alinhada à margem esquerda, espaço simples, separada por uma linha em branco.
+- Lista única, no fim do trabalho, em ordem alfabética. Alinhamento e espaçamento seguem `1d_formatacao.md` (justificada, espaço 1,5), que prevalece sobre a NBR 6023 (esquerda, espaço simples).
 - Título em destaque (itálico ou negrito — escolher um e manter).
 - Documentos online: incluir "Disponível em: URL. Acesso em: dia mês abreviado ano."
 - Incluir apenas obras citadas no texto. Leituras não citadas não entram.

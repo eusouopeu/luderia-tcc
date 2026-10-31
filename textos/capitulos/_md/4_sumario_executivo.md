@@ -2,6 +2,8 @@
 
 > **Rascunho (31/10/2026).** Resume os caps. 5 a 11 sem informação nova. As seções 4.2 e 4.3 dependem do autor `[preencher]`; a proposta de valor (4.1) é provisória até o 6.1.
 
+O sumário executivo condensa o plano em uma decisão de investimento. As seções apresentam o conceito do negócio, o empreendedor, as sínteses de mercado e financeira e, por fim, o parecer de viabilidade, sem informação que não esteja nos capítulos 5 a 11.
+
 ## 4.1 CONCEITO DO NEGÓCIO
 
 A luderia é um salão de jogos de tabuleiro com cozinha e bar, na Pituba, em Salvador. O cliente paga uma taxa de entrada por pessoa, por turno de 3 horas, escolhe entre 322 títulos com a ajuda de um instrutor e consome alimentos e bebidas na mesa. `[proposta de valor em uma frase, do 6.1]`

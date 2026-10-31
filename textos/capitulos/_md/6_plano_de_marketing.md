@@ -2,6 +2,8 @@
 
 > **Rascunho parcial (31/10/2026).** Só as seções 6.3 e 6.4; as demais ficam para depois do Bardin (6.1, 6.2, 6.5) e da calibração da demanda (6.6). Números de preço do B1 (cardápios; couvert também de site, imprensa e Instagram, atualizado em 31/10/2026), B2 (avaliações até "3 meses atrás", no Notion "2 - Comentários" em 31/10/2026) e B3 (NFC-e); números de praça do Censo 2022 (`B4-a_matriz_bairros.py`) e do entorno do B1.
 
+O plano de marketing define como a luderia se posiciona e se apresenta ao público de Salvador. As decisões seguem o composto de marketing: preço, praça e comunicação, a partir da proposta de valor, com a estimativa de demanda ao fim.
+
 ## 6.3 PREÇO
 
 A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor maior de sexta a domingo. É o modelo da São Jogue e o mais comum entre os concorrentes que divulgam a taxa: 15 dos 22 que cobram diferenciam o preço pelo dia da semana (Tabela 6.1). O turno de 3 horas fica acima da permanência média medida no B3, de 109 minutos, e não limita o grupo típico; serve para liberar a mesa nos horários de reserva.
@@ -49,7 +51,7 @@ O plano adota os preços da São Jogue como provável. A taxa de entrada fica em
 
 A Pituba é o bairro indicado para a luderia. Ela lidera a matriz de critérios em todos os conjuntos de pesos testados (Tabela 6.2): tem a 5ª maior população de 20 a 39 anos de Salvador, 15.276 pessoas, e 95,1% dos domicílios em apartamento (IBGE, Censo 2022).
 
-O Censo 2022 não publica renda por bairro. A proporção de domicílios em apartamento entra como substituta da renda: em Salvador, a média é de 28,1%, e só 19 dos 170 bairros passam de 80%. A substituição tem limite: conjuntos habitacionais também são apartamentos, e Cajazeiras II (90,9%) é o exemplo. A matriz considera só os bairros com pelo menos 80% de apartamentos e 3.500 pessoas de 20 a 39 anos — 10 dos 170 bairros.
+A matriz precisa de uma medida de renda que o Censo 2022 não oferece, já que ele não publica renda por bairro. A proporção de domicílios em apartamento entra como substituta da renda: em Salvador, a média é de 28,1%, e só 19 dos 170 bairros passam de 80%. A substituição tem limite: conjuntos habitacionais também são apartamentos, e Cajazeiras II (90,9%) é o exemplo. A matriz considera só os bairros com pelo menos 80% de apartamentos e 3.500 pessoas de 20 a 39 anos — 10 dos 170 bairros.
 
 **Tabela 6.2 – Matriz de critérios ponderados para o bairro, Salvador**
 
@@ -70,6 +72,6 @@ Fonte: elaboração própria, com base no IBGE (Censo 2022, agregados por bairro
 
 Os pesos são do autor (N6) e não mudam a escolha. Com pesos de 40%, 40% e 20%, de 60%, 20% e 20% ou iguais, a Pituba fica em 1º; Graça, Imbuí e Vila Laura alternam do 2º ao 5º lugar. Nenhuma das duas unidades da São Jogue está entre os candidatos: a Bela Vista fica em Pernambués, e a Paralela, na Avenida Paralela.
 
-O ponto, dentro do bairro, deve ficar a até 1.000 m de uma estação de metrô. Entre os 54 concorrentes do B1, os 24 com estação a até 1.000 m têm mediana de 770 avaliações no Google Maps, contra 396 dos 30 sem estação (Bloco B1, entorno pelo Google Maps). O shopping de porte não mostra a mesma vantagem: os 10 concorrentes com shopping a até 1.000 m têm mediana de 396 avaliações, contra 663 dos 19 sem (25 sem dado). O número de avaliações mede fluxo de forma indireta, e a associação não prova causa. A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica a 387 m do metrô e a 118 m de um shopping.
+Escolhido o bairro, falta definir o ponto. Ele deve ficar a até 1.000 m de uma estação de metrô. Entre os 54 concorrentes do B1, os 24 com estação a até 1.000 m têm mediana de 770 avaliações no Google Maps, contra 396 dos 30 sem estação (Bloco B1, entorno pelo Google Maps). O shopping de porte não mostra a mesma vantagem: os 10 concorrentes com shopping a até 1.000 m têm mediana de 396 avaliações, contra 663 dos 19 sem (25 sem dado). O número de avaliações mede fluxo de forma indireta, e a associação não prova causa. A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica a 387 m do metrô e a 118 m de um shopping.
 
 Falta o custo do ponto por bairro. O FipeZap dá o aluguel comercial só para Salvador inteira (R$ 54,15 por m² em jul/2026), sem recorte de bairro; o cap. 9 usa esse valor, e o pessimista (R$ 64,36) cobre parte do prêmio de um bairro como a Pituba. A cotação de pontos na Pituba, junto ao metrô, fecha a decisão `[BUSCAR — anúncios de locação comercial]`.

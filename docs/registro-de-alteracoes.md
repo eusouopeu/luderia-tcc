@@ -1917,3 +1917,10 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: "Incompleto" em 12; vazio em 1 (Encounter, "Ambiente muito legal…").
 **Depois**: "Completo" nos 13.
 **Justificativa**: decisão do autor depois da conferência com as coletas de 31/10: o texto dos 13 é o inteiro (o "…" final é o marcador do Maps depois de emoji ou reticências do avaliador).
+
+### 20:48
+**Objeto**: `textos/capitulos/_md/*.md` (caps. 1 a 11), `_src/extras/gerar_docx_capitulo.js`, `_instrucoes/1d_formatacao.md`, `_instrucoes/10_biblio-apendices.md`; `TCC_luderia_TMin_v5.{docx,pdf}` (v4 em `_arquivo/`, com as edições do autor)
+**Antes**: capítulos 2 a 11 abriam direto na primeira seção; ênclise em sete pontos ("liga-se", "organiza-se", "espera-se" etc.); saltos de nexo entre frases de alguns parágrafos; referências ao fim de cada capítulo, alinhadas à esquerda e com espaço simples.
+**Depois**: edições do autor no `.docx` v4 levadas aos `.md` (abertura dos caps. 2 e 3; frase incompleta do 2º parágrafo do cap. 2 completada); seções 2.1 e 3.1 viraram a abertura dos capítulos, com as seções seguintes renumeradas (2.2→2.1 … 2.6→2.5; 3.2→3.1 … 3.7→3.6; remissão "seção 3.4.3" → "3.3.3"); parágrafo de abertura novo nos caps. 4 a 11; frases de ligação nos parágrafos com salto de nexo; próclise no lugar da ênclise; no trabalho inteiro, uma lista única "REFERÊNCIAS" no fim (37 obras, ordem alfabética, sem repetição), justificada e com espaçamento 1,5. ASAKURA e ABRINQ do cap. 1 igualadas às dos caps. 2 e 5.
+**Justificativa**: pedido do autor (estilo e formatação da TMin v5).
+

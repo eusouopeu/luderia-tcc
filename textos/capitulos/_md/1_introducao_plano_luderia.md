@@ -8,7 +8,7 @@ O formato acompanha uma mudança no consumo de lazer, que se desloca da posse de
 
 Um investimento nesse formato enfrenta, contudo, um problema de evidência. Não há levantamento setorial sobre luderias no Brasil. As premissas que concentram o risco do negócio - taxa de ocupação e ticket médio - costumam ser estimadas sem fonte. O único estudo de viabilidade identificado sobre o formato analisa um caso isolado, em uma cidade do interior paulista (ASAKURA; SILVA; MELLO, 2018).
 
-Em Salvador, a São Jogue, com duas unidades, é a única luderia em operação. Este trabalho avalia se a cidade comporta um novo estabelecimento e sob quais condições de ponto, preço e ocupação. Cada premissa do plano é ligada a um dado, e cada dado a uma fonte e a um nível de confiança.
+Em Salvador, o problema se repete com um mercado ainda pequeno: a São Jogue, com duas unidades, é a única luderia em operação. Este trabalho avalia se a cidade comporta um novo estabelecimento e sob quais condições de ponto, preço e ocupação. Cada premissa do plano é ligada a um dado, e cada dado a uma fonte e a um nível de confiança.
 
 ## 1.1 OBJETIVOS
 
@@ -16,13 +16,13 @@ Este trabalho tem como objetivo principal avaliar a viabilidade mercadológica, 
 
 Para atingir esse propósito, foram traçados os seguintes objetivos específicos: (i) analisar o mercado e a concorrência de luderias nas 14 metrópoles brasileiras, com destaque para Salvador, quanto a avaliação, preço e cardápio; (ii) definir o posicionamento e o composto de marketing, incluindo a curadoria do acervo, a partir dos aspectos que mais pesam na satisfação dos clientes; (iii) estimar a demanda, a taxa de ocupação e o giro de mesas a partir de observação direta e de avaliações calibradas; (iv) dimensionar a estrutura operacional e os requisitos jurídicos do negócio; e (v) projetar investimentos, receitas, custos e indicadores de viabilidade a partir de premissas rastreáveis.
 
-A partir dos resultados obtidos no cumprimento dos objetivos anteriores, espera-se ainda: (vi) identificar as premissas críticas e os pontos de ruptura do negócio por meio de análise de sensibilidade; e (vii) propor um plano de contingência e as validações necessárias antes do investimento.
+A partir dos resultados obtidos no cumprimento dos objetivos anteriores, o trabalho ainda pretende: (vi) identificar as premissas críticas e os pontos de ruptura do negócio por meio de análise de sensibilidade; e (vii) propor um plano de contingência e as validações necessárias antes do investimento.
 
 ## 1.2 JUSTIFICATIVA
 
-A relevância de um plano de negócios para uma luderia em Salvador sustenta-se em três frentes complementares: a acadêmica, a social e a gerencial.
+A relevância de um plano de negócios para uma luderia em Salvador se sustenta em três frentes complementares: a acadêmica, a social e a gerencial.
 
-Do ponto de vista acadêmico, este trabalho preenche uma lacuna na literatura sobre negócios de entretenimento social presencial. Os levantamentos sobre o mercado brasileiro de jogos de tabuleiro concentram-se no varejo e na indústria, sem tratar o nível do estabelecimento. O único estudo de viabilidade identificado sobre o formato analisa um caso isolado, em uma cidade do interior paulista (ASAKURA; SILVA; MELLO, 2018). Além disso, planos de negócios costumam apoiar suas projeções em premissas pouco justificadas. Este trabalho sustenta cada premissa em dados secundários e comportamentais, classificados por nível de evidência e testados por triangulação e análise de sensibilidade. Essa abordagem amplia o rigor metodológico da aplicação do instrumental de plano de negócios - análise PESTEL, Cinco Forças de Porter, matriz SWOT, grade ERRC e indicadores de viabilidade - a um caso real.
+Do ponto de vista acadêmico, este trabalho preenche uma lacuna na literatura sobre negócios de entretenimento social presencial. Os levantamentos sobre o mercado brasileiro de jogos de tabuleiro se concentram no varejo e na indústria, sem tratar o nível do estabelecimento. O único estudo de viabilidade identificado sobre o formato analisa um caso isolado, em uma cidade do interior paulista (ASAKURA; SILVA; MELLO, 2018). Além disso, planos de negócios costumam apoiar suas projeções em premissas pouco justificadas. Este trabalho sustenta cada premissa em dados secundários e comportamentais, classificados por nível de evidência e testados por triangulação e análise de sensibilidade. Essa abordagem amplia o rigor metodológico da aplicação do instrumental de plano de negócios - análise PESTEL, Cinco Forças de Porter, matriz SWOT, grade ERRC e indicadores de viabilidade - a um caso real.
 
 Do ponto de vista social, a luderia oferece um espaço de lazer presencial, alternativo ao entretenimento mediado por telas. O formato atende ocasiões sociais cotidianas, como encontros entre amigos, aniversários e confraternizações corporativas, em torno de uma atividade compartilhada.
 
@@ -30,7 +30,7 @@ Por fim, do ponto de vista gerencial, os resultados deste trabalho orientam deci
 
 ## 1.3 ESTRUTURA DO RELATÓRIO
 
-O relatório organiza-se em onze capítulos. O capítulo 2 apresenta o referencial teórico: os conceitos de plano de negócios e de estratégia, os estudos sobre lazer e sobre o público de jogos de tabuleiro, as referências sobre estabelecimentos de entretenimento e os fundamentos de análise de viabilidade.
+O relatório se organiza em onze capítulos. O capítulo 2 apresenta o referencial teórico: os conceitos de plano de negócios e de estratégia, os estudos sobre lazer e sobre o público de jogos de tabuleiro, as referências sobre estabelecimentos de entretenimento e os fundamentos de análise de viabilidade.
 
 O capítulo 3 descreve a metodologia utilizada - fontes e instrumentos de coleta, tratamento dos dados, hierarquia de evidências e limitações. O capítulo inclui a matriz de evidências, que vincula cada decisão do plano ao dado que a sustenta. O capítulo 4 traz o sumário executivo, com a síntese do negócio e dos indicadores de viabilidade.
 
@@ -44,9 +44,9 @@ Por fim, o capítulo 11 reúne as considerações finais, com o parecer de viabi
 
 **Referências citadas nesta introdução**
 
-ABRINQ. *Anuário da Abrinq 2026*. Associação Brasileira dos Fabricantes de Brinquedos, 2026.
+ABRINQ. *Anuário da Abrinq 2026*. São Paulo: Associação Brasileira dos Fabricantes de Brinquedos, 2026. `[AV]`
 
-ASAKURA; SILVA; MELLO. Estudo de viabilidade econômica de um boardgame café em Ourinhos/SP. *Anais do CIC - FIO*, 2018. Disponível em: http://www.cic.fio.edu.br/anaisCIC/anais2018/pdf/05_01.pdf. [Completar prenomes dos autores e data de acesso.]
+ASAKURA, P. N.; SILVA, A. R. da; MELLO, D. A. Estudo de viabilidade econômica de um boardgame café no município de Ourinhos/SP. *Anais do CIC - FIO*, Ourinhos, 2018. Disponível em: http://www.cic.fio.edu.br/anaisCIC/anais2018/pdf/05_01.pdf. [AV]
 
 GILOVICH, Thomas; KUMAR, Amit; JAMPOL, Lily. A wonderful life: experiential consumption and the pursuit of happiness. *Journal of Consumer Psychology*, v. 25, n. 1, p. 152-165, 2015. DOI: 10.1016/j.jcps.2014.08.004.
 

@@ -2,6 +2,8 @@
 
 > **Rascunho (31/10/2026).** Números do modelo do cap. 9 (`gerar_modelo_financeiro.py`, 31/10/2026). A linha "equipe do cap. 7" foi calculada com o mesmo modelo, trocando só o quadro de 12 pessoas pela equipe de 8 do Quadro 7.2; entra no cap. 9 quando o autor decidir a equipe. Itens da SWOT com remissão à seção que os sustenta.
 
+A análise estratégica e de riscos reúne os resultados dos capítulos 5 a 9 para responder sob quais condições o negócio se sustenta. O capítulo parte do diagnóstico SWOT, compara os cenários, identifica as premissas críticas e termina na matriz de riscos e no plano de contingência.
+
 ## 10.1 MATRIZ SWOT
 
 A luderia entra num mercado com uma referência forte e um custo fixo alto. O Quadro 10.1 resume os pontos internos e externos que sustentam essa leitura.
@@ -60,11 +62,11 @@ Fonte: elaborado pelo próprio autor com base no modelo do cap. 9 e no Bloco B3 
 
 A ocupação de fim de semana tem a menor distância até a ruptura: 6,5 pontos percentuais. A média das noites medidas (46,1%) fica acima da ruptura, mas mede só o horário de pico; o dia inteiro de sábado e domingo fica abaixo. A ocupação de dia útil é a fraqueza de evidência do plano: é premissa crítica sustentada só por estimativa do autor (N6), o que viola a regra de robustez (`_instrucoes/8_financeiro.md`). Nenhuma visita foi feita em dia útil.
 
-Combinações pequenas tornam o VPL positivo. Com a equipe do cap. 7, ocupação de 40% no fim de semana e de 20% no dia útil dá VPL de R$ 33 mil; gasto com A&B de R$ 32,00, com as demais no provável, dá R$ 33 mil; área de 150 m² com gasto de R$ 28,00 dá R$ 23 mil. Com o quadro de 12 pessoas, nenhuma dessas combinações basta.
+A viabilidade também não depende de uma premissa isolada: combinações pequenas tornam o VPL positivo. Com a equipe do cap. 7, ocupação de 40% no fim de semana e de 20% no dia útil dá VPL de R$ 33 mil; gasto com A&B de R$ 32,00, com as demais no provável, dá R$ 33 mil; área de 150 m² com gasto de R$ 28,00 dá R$ 23 mil. Com o quadro de 12 pessoas, nenhuma dessas combinações basta.
 
 ## 10.4 MATRIZ DE RISCOS
 
-Os riscos de maior impacto são os de demanda e de custo fixo. O Quadro 10.4 classifica cada risco pela probabilidade e pelo impacto, com a evidência que sustenta a classificação.
+As premissas críticas se traduzem em riscos do negócio, e os de maior impacto são os de demanda e de custo fixo. O Quadro 10.4 classifica cada risco pela probabilidade e pelo impacto, com a evidência que sustenta a classificação.
 
 **Quadro 10.4 – Matriz de riscos**
 

@@ -2,6 +2,8 @@
 
 > **Rascunho (31/10/2026).** Normas federais citadas pelo número e ano; normas da Bahia e de Salvador, alíquotas de ICMS e ISS, taxas e prazos das licenças marcados `[AV]` até a conferência do texto vigente. Valores de receita e folha do cenário provável do cap. 9 (ano 2).
 
+Os aspectos jurídicos definem a forma da empresa, o regime de tributos e as licenças que condicionam a abertura. Por isso, eles moldam o negócio antes dos números: o ponto, a lotação e a carga tributária do plano financeiro dependem das escolhas deste capítulo.
+
 ## 8.1 FORMA JURÍDICA E ENQUADRAMENTO TRIBUTÁRIO
 
 A luderia deve ser uma sociedade limitada, unipessoal se tiver um só sócio. A forma limita a responsabilidade do sócio ao capital (Lei n. 10.406/2002, art. 1.052) e, desde a Lei n. 13.874/2019, admite um único sócio. O empresário individual não separa o patrimônio pessoal, e o MEI não comporta a receita projetada nem o quadro de 12 empregados (LC n. 123/2006, art. 18-A) `[AV]`. As duas unidades da São Jogue são sociedades empresárias limitadas, com capital social de R$ 50 mil (Bela Vista, 2019) e R$ 150 mil (Paralela, 2025), ambas no Simples Nacional (Receita Federal, consulta ao CNPJ em 31/10/2026).
@@ -26,7 +28,7 @@ Fonte: elaboração própria, com LC n. 123/2006 (anexos I e III), Lei n. 9.249/
 
 A carga do Simples entra no cap. 9 como 8,1% sobre o A&B e 11,9% sobre os serviços no ano maduro, calculada pela tabela do anexo sobre a receita do ano. A reforma do consumo (EC n. 132/2023 e LC n. 214/2025) mantém o Simples e abre a opção de recolher IBS e CBS por fora a partir de 2027 `[AV]`; a opção só vale se a luderia vender para empresas que usem o crédito, o que não é o caso.
 
-O CNAE principal é 5611-2/01 (restaurantes e similares), pela cozinha própria com refeições, com 9329-8/99 (recreação e lazer), 4763-6/01 (venda de jogos), 7729-2/02 (locação de jogos) e 8230-0/01 (eventos) como secundários. A São Jogue usa 5611-2/03 (lanchonete) como principal e lista 5611-2/01, 9329-8/99, 4763-6/01 e 8230-0/01 entre os secundários (Receita Federal, 2026); as duas escolhas caem no anexo I. Descartou-se 5611-2/05 (bar com entretenimento): a CONCLA define o entretenimento dessa subclasse como música e apresentações, não jogos de mesa (CONCLA, 2026).
+O anexo de cada receita depende também do código de atividade. O CNAE principal é 5611-2/01 (restaurantes e similares), pela cozinha própria com refeições, com 9329-8/99 (recreação e lazer), 4763-6/01 (venda de jogos), 7729-2/02 (locação de jogos) e 8230-0/01 (eventos) como secundários. A São Jogue usa 5611-2/03 (lanchonete) como principal e lista 5611-2/01, 9329-8/99, 4763-6/01 e 8230-0/01 entre os secundários (Receita Federal, 2026); as duas escolhas caem no anexo I. O código 5611-2/05 foi descartado (bar com entretenimento): a CONCLA define o entretenimento dessa subclasse como música e apresentações, não jogos de mesa (CONCLA, 2026).
 
 ## 8.2 LICENÇAS, ALVARÁS E OBRIGAÇÕES
 
@@ -54,6 +56,6 @@ A emissão da NFC-e em toda venda muda a prática observada no setor. Nas visita
 
 O contrato de locação deve ter prazo escrito de 5 anos. Esse prazo dá direito à ação renovatória (Lei n. 8.245/1991, art. 51) e coincide com o horizonte do cap. 9 e com a amortização da reforma. A garantia por caução fica limitada a três aluguéis (art. 38, § 2º), o valor da premissa I07. Em shopping, prevalecem as condições do contrato com o empreendedor (art. 54), o que explica a faixa pessimista de condomínio (C05). O reajuste anual por índice de preços é neutro no modelo, que usa preços constantes.
 
-O uso dos jogos comprados no salão não depende de licença. A Lei n. 9.610/1998 protege a reprodução da obra (art. 29); o exemplar adquirido pode ser emprestado à mesa e alugado como bem móvel. Copiar ou imprimir componentes e usar a marca de um jogo para divulgar torneio pago exige autorização do titular `[AV — conferir termos das editoras do acervo]`.
+O acervo traz uma questão própria de propriedade intelectual, mas o uso dos jogos comprados no salão não depende de licença. A Lei n. 9.610/1998 protege a reprodução da obra (art. 29); o exemplar adquirido pode ser emprestado à mesa e alugado como bem móvel. Copiar ou imprimir componentes e usar a marca de um jogo para divulgar torneio pago exige autorização do titular `[AV — conferir termos das editoras do acervo]`.
 
 O nome da luderia deve ser registrado no INPI antes da fachada e das redes sociais. A propriedade da marca vem do registro (Lei n. 9.279/1996, art. 129), nas classes de serviços de alimentação e de entretenimento `[AV]`. A busca de anterioridade precede a escolha do nome no cap. 6.

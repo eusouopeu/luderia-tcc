@@ -9,8 +9,9 @@
 // linhas de citação (>) e comentários HTML de rascunho são omitidos.
 // Regras suplementares de _instrucoes/1d_formatacao.md: título 1 e título de
 // referências à esquerda; título 2 em caixa alta sem negrito; 0,5 cm depois do
-// parágrafo no corpo e nas referências; células centradas na vertical; coluna de
-// quadro só com palavras únicas centrada; legenda e fonte centralizadas.
+// parágrafo no corpo e nas referências; referências justificadas, com espaçamento
+// 1,5, e reunidas no fim no trabalho inteiro; células centradas na vertical; coluna
+// de quadro só com palavras únicas centrada; legenda e fonte centralizadas.
 //
 // Versões (_instrucoes/1c_versoes.md): o TMin é o padrão, com os .md em
 // textos/capitulos/_md/ e as saídas em textos/capitulos/; o TMax fica em
@@ -174,6 +175,15 @@ function titulo1(texto, quebra) {
     spacing: { line: ENTRELINHA, after: 480 } });
 }
 
+// Referências: espaçamento 1,5, justificadas, sem recuo (_instrucoes/1d_formatacao.md).
+function referencia(texto) {
+  return new Paragraph({ children: runs(texto), alignment: AlignmentType.JUSTIFIED,
+    indent: { firstLine: 0 }, spacing: { line: ENTRELINHA, after: DEPOIS } });
+}
+
+// No trabalho inteiro, as listas de cada capítulo viram uma só, no fim, em ordem alfabética e sem repetição.
+const REFS = new Set();
+
 let instancia = 0; // contínua entre capítulos, para cada lista numerada recomeçar em 1
 function converte(md, MD, blocos = []) {
   const linhas = md.split("\n");
@@ -196,9 +206,9 @@ function converte(md, MD, blocos = []) {
       blocos.push(new Paragraph({ heading: HeadingLevel.HEADING_2, keepNext: true,
         children: runs(l.slice(4), { bold: true }), spacing: { line: ENTRELINHA, before: 240, after: 120 } }));
     } else if (/^\*\*Refer[êe]ncias[^*]*\*\*/.test(l.trim())) {
-      // "Referências citadas neste capítulo": como o título 1, sem número.
+      // "Referências citadas neste capítulo": como o título 1, sem número (só no capítulo avulso).
       referencias = true;
-      blocos.push(titulo1(l.trim().replace(/\*\*/g, "").toUpperCase(), true));
+      if (!TRABALHO) blocos.push(titulo1(l.trim().replace(/\*\*/g, "").toUpperCase(), true));
     } else if (/^\*\*(Quadro|Tabela|Figura) [\d.]+/.test(l)) {
       blocos.push(legenda(l));
     } else if (/^!\[[^\]]*\]\([^)]+\)/.test(l.trim())) {
@@ -228,13 +238,21 @@ function converte(md, MD, blocos = []) {
         alignment: AlignmentType.JUSTIFIED,
         numbering: { reference: "numerada", level: 0, instance: instancia }, spacing: { line: ENTRELINHA, after: 0 } }));
     } else if (referencias) {
-      blocos.push(new Paragraph({ children: runs(l), alignment: AlignmentType.LEFT,
-        indent: { firstLine: 0 }, spacing: { line: SIMPLES, after: DEPOIS } }));
+      if (TRABALHO) REFS.add(l.trim()); else blocos.push(referencia(l));
     } else {
       blocos.push(corpo(l));
     }
   }
   return blocos;
+}
+
+function trabalho() {
+  const blocos = MDS.reduce((b, md) => converte(fs.readFileSync(md, "utf-8"), md, b), []);
+  if (!TRABALHO || !REFS.size) return blocos;
+  const chave = (r) => r.replace(/[*`]/g, "").normalize("NFD").replace(/[̀-ͯ]/g, "");
+  // Comparação por caractere: o "." do autor sozinho vem antes do ";" da coautoria.
+  const ordem = [...REFS].sort((a, b) => (chave(a).toUpperCase() < chave(b).toUpperCase() ? -1 : 1));
+  return [...blocos, titulo1("REFERÊNCIAS", true), ...ordem.map(referencia)];
 }
 
 const doc = new Document({
@@ -267,7 +285,7 @@ const doc = new Document({
     } },
     footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.RIGHT,
       children: [new TextRun({ children: [PageNumber.CURRENT], font: FONTE, size: TAM_QUADRO })] })] }) },
-    children: MDS.reduce((blocos, md) => converte(fs.readFileSync(md, "utf-8"), md, blocos), []),
+    children: trabalho(),
   }],
 });
 

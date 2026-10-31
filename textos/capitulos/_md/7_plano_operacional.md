@@ -2,6 +2,8 @@
 
 > **Rascunho (31/10/2026).** Capacidade e fluxo do Bloco B3 (quatro visitas à São Jogue, 10, 16, 17 e 30/10/2026) e premissas do modelo do cap. 9 no cenário provável. A equipe enxuta da seção 7.5 ainda não está no modelo, que usa o quadro de 12 pessoas (decisão do autor pendente). Área, layout e reforma ficam em N6 até haver ponto cotado.
 
+O plano operacional traduz a demanda estimada em espaço, processos e pessoas. O capítulo parte do local e do layout, verifica a capacidade instalada e descreve os processos, a gestão do acervo e a equipe.
+
 ## 7.1 LOCALIZAÇÃO E LAYOUT
 
 A luderia ocupa um salão térreo de cerca de 180 m² na Pituba, a até 1.000 m de uma estação de metrô (seção 6.4). A área é estimativa do autor (N6), com faixa de 150 a 220 m² no cap. 9. O ponto precisa de zona que admita serviço de alimentação e lazer na LOUOS de Salvador e de licença do Corpo de Bombeiros compatível com a lotação do salão (Quadro 8.1).
@@ -28,15 +30,15 @@ Fonte: elaborado pelo próprio autor com base no Bloco B3 (2026) e no modelo do 
 
 A demanda provável usa 25% da capacidade. O teto físico, portanto, não limita a receita: o que limita é a ocupação. Nas noites de sexta e sábado observadas, a ocupação média das mesas foi de 29,9% a 66,9%, com pico de 77,8% na Paralela, em 30/10 (B3). Mesmo no pico, sobraram duas mesas livres.
 
-A lotação aprovada pelo Corpo de Bombeiros pode reduzir o número de assentos. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto.
+Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros pode reduzir o número de assentos. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto.
 
 ## 7.3 PROCESSOS OPERACIONAIS
 
-A jornada do cliente tem cinco etapas. Na chegada, o caixa registra o grupo e cobra a taxa de entrada por pessoa, válida por um turno de 3 horas; a reserva antecipada segue os turnos da São Jogue (12h, 15h30 e 19h). Na mesa, o instrutor de jogos sugere títulos pelo perfil do grupo e explica as regras. O pedido de A&B é feito ao mesmo instrutor, que acumula a função de garçom no salão. No fim, a conta é paga no caixa, com NFC-e para toda venda, como o cap. 8 assume. Por último, o instrutor confere as peças do jogo devolvido antes de guardá-lo `[figura: fluxograma da jornada do cliente]`.
+A jornada do cliente tem cinco etapas. Na chegada, o caixa registra o grupo e cobra a taxa de entrada por pessoa, válida por um turno de 3 horas; a reserva antecipada segue os turnos da São Jogue (12h, 15h30 e 19h). Na mesa, o instrutor de jogos sugere títulos pelo perfil do grupo e explica as regras. O pedido de A&B é feito ao mesmo instrutor, que acumula a função de garçom no salão. No fim, a conta é paga no caixa, com NFC-e para toda venda, como o cap. 8 assume. Por último, o instrutor confere as peças do jogo devolvido antes de guardar a caixa `[figura: fluxograma da jornada do cliente]`.
 
 A explicação de regras é o processo que mais pesa na avaliação. A mediação lúdica aparece em 16,4% das avaliações dos concorrentes e, quando negativa, acompanha nota média de 2,83 (B2, codificação provisória de 15/10/2026, cap. 5). O plano trata a explicação como serviço de mesa, com instrutor dedicado ao salão em todas as horas abertas, e não como tarefa de quem estiver livre.
 
-O A&B segue cardápio curto, de preparo rápido. Nas visitas, os pedidos foram poucos: de 0,5 a 1,7 por grupo, entre bebidas, comidas e sobremesas (B3, registro de pedidos, extra descritivo). Um cardápio de lanches, porções e bebidas atende esse volume com um cozinheiro por turno.
+O serviço de mesa inclui alimentos e bebidas, com cardápio curto e de preparo rápido. Nas visitas, os pedidos foram poucos: de 0,5 a 1,7 por grupo, entre bebidas, comidas e sobremesas (B3, registro de pedidos, extra descritivo). Um cardápio de lanches, porções e bebidas atende esse volume com um cozinheiro por turno.
 
 ## 7.4 GESTÃO DO ACERVO
 
@@ -67,4 +69,4 @@ A equipe proposta tem 8 pessoas, contra 12 no quadro de referência que o modelo
 
 Contratar instrutores como jovens aprendizes reduz pouco o custo. Os salários já estão no piso, e o aprendiz trabalha no máximo 6 horas por dia, o que exige mais pessoas para cobrir as mesmas horas; menores de 18 anos não podem trabalhar depois das 22h (CLT, art. 404 e art. 432). O estágio exige relação com o curso do estudante (Lei n. 11.788/2008) e não cabe na função de atendimento. As duas formas ficam fora do provável.
 
-O contador é terceirizado (R$ 1.200,00 por mês, C11).
+Fora da equipe fixa, o contador é terceirizado (R$ 1.200,00 por mês, C11).

@@ -1,64 +1,62 @@
 # 2 REFERENCIAL TEÓRICO
 
-## 2.1 PLANO DE NEGÓCIOS E DECISÃO BASEADA EM EVIDÊNCIAS
+O plano de negócios é uma ferramenta de gestão que descreve um empreendimento e delineia sua estratégia de atuação futura. No âmbito de novos empreendimentos, ele também serve para testar a viabilidade econômica do negócio antes do investimento, como também para comunicar valor e credibilidade para investidores e sócios em potencial (DORNELAS, 2021, p. 6–10). Os componentes do plano organizam os capítulos 5 a 9, e o sumário executivo (capítulo 4) condensa a análise dos resultados da pesquisa em uma decisão: investir ou não.
 
-O plano de negócios descreve o empreendimento e testa, antes do investimento, se ele se sustenta. Dornelas (2021, p. 6–10, [AV]) atribui ao plano duas funções: orientar a gestão e comunicar a oportunidade a sócios e financiadores. Os componentes do plano organizam os capítulos 5 a 9, e o sumário executivo (capítulo 4) condensa o resultado em uma decisão: investir ou não.
-
-O valor do plano depende da qualidade das premissas. A gestão baseada em evidências é o uso consciente, explícito e criterioso das melhores evidências disponíveis na tomada de decisão (FIGUEIREDO, 2020, p. 31). As evidências vêm de pesquisas científicas, de dados da própria organização, da experiência profissional e dos valores das partes afetadas (FIGUEIREDO, 2020, p. 31). Um negócio ainda não aberto não tem dados próprios: o trabalho usa dados de estabelecimentos comparáveis, ordenados pela escala de confiança N1–N6 (capítulo 3).
+A qualidade do plano proposto depende, em grande parte, da qualidade das premissas adotadas. Diante disso, as premissas devem se apoiar nas melhores evidências disponíveis, como propõe a gestão baseada em evidências. Essa abordagem é o uso consciente, explícito e criterioso das melhores evidências disponíveis na tomada de decisão (FIGUEIREDO, 2020, p. 31). As evidências vêm de pesquisas científicas, de dados da própria organização, da experiência profissional e dos valores das partes afetadas (FIGUEIREDO, 2020, p. 31). Um negócio ainda não aberto não tem dados próprios: o trabalho usa dados de estabelecimentos comparáveis, ordenados pela escala de confiança N1–N6 (capítulo 3).
 
 Quando a evidência é insuficiente, a decisão trabalha com a evidência limitada e a complementa com testes piloto (FIGUEIREDO, 2020, p. 32). Por isso, as premissas de maior incerteza recebem faixa pessimista, provável e otimista (capítulo 9) e indicam as validações a fazer antes do investimento (capítulo 11).
 
-## 2.2 ESTRATÉGIA E MODELO DE NEGÓCIO
+## 2.1 ESTRATÉGIA E MODELO DE NEGÓCIO
 
-### 2.2.1 Ambiente competitivo e macroambiente
+### 2.1.1 Ambiente competitivo e macroambiente
 
 A rentabilidade de um setor depende de cinco forças: a rivalidade entre concorrentes, a ameaça de novos entrantes, a ameaça de substitutos e o poder de negociação de compradores e de fornecedores (PORTER, 2004, [AV]). No caso da luderia, os substitutos são bares, restaurantes e outras formas de lazer noturno, e os fornecedores críticos são as editoras de jogos e os de alimentos e bebidas. O capítulo 5.3 aplica as cinco forças aos concorrentes do Bloco B1.
 
-O macroambiente reúne as forças externas que a empresa não controla (KOTLER; KELLER, 2012, [AV]). O capítulo 5.5 organiza essas forças pela análise PESTEL, em seis dimensões: política, econômica, social, tecnológica, ambiental e legal.
+Além da estrutura do setor, o negócio responde a um ambiente mais amplo. O macroambiente reúne as forças externas que a empresa não controla (KOTLER; KELLER, 2012, [AV]). O capítulo 5.5 organiza essas forças pela análise PESTEL, em seis dimensões: política, econômica, social, tecnológica, ambiental e legal.
 
-### 2.2.2 Atributos de satisfação
+### 2.1.2 Atributos de satisfação
 
 O modelo Kano classifica os atributos de um serviço pela relação entre desempenho e satisfação. Atributos obrigatórios geram insatisfação quando ausentes, mas não geram satisfação quando presentes; atributos atrativos geram satisfação quando presentes, sem gerar insatisfação quando ausentes (TONTINI; THEISS, 2005, p. 35–36).
 
-A análise do contraste da penalidade e da recompensa (PRC) faz essa classificação a partir de dados de satisfação. A satisfação geral é regredida contra indicadores de desempenho abaixo e acima de uma referência: o coeficiente de penalidade mede a perda de satisfação no primeiro caso, e o de recompensa, o ganho no segundo (PICOLO; TONTINI, 2008, p. 42–45). Atributo com penalidade maior que a recompensa é obrigatório; com recompensa maior, atrativo (PICOLO; TONTINI, 2008, p. 50–51). O capítulo 6 aplica a lógica às avaliações do Bloco B2, comparando a nota de quem elogia, de quem critica e de quem não menciona cada aspecto.
+Para aplicar o modelo, é preciso medir essa relação em clientes reais. A análise do contraste da penalidade e da recompensa (PRC) faz essa classificação a partir de dados de satisfação. A satisfação geral é regredida contra indicadores de desempenho abaixo e acima de uma referência: o coeficiente de penalidade mede a perda de satisfação no primeiro caso, e o de recompensa, o ganho no segundo (PICOLO; TONTINI, 2008, p. 42–45). Atributo com penalidade maior que a recompensa é obrigatório; com recompensa maior, atrativo (PICOLO; TONTINI, 2008, p. 50–51). O capítulo 6 aplica a lógica às avaliações do Bloco B2, comparando a nota de quem elogia, de quem critica e de quem não menciona cada aspecto.
 
 A PRC tem um limite: só identifica atributos que o cliente já experimentou, e atributos inovadores tendem a sair como não significativos (PICOLO; TONTINI, 2008, p. 56). O posicionamento usa a PRC para decidir o que não pode ser reduzido; o que a luderia cria de novo precisa de outra evidência, como a oferta de luderias de outras metrópoles.
 
-### 2.2.3 Diagnóstico estratégico
+### 2.1.3 Diagnóstico estratégico
 
-A análise SWOT cruza as forças e fraquezas internas do negócio com as oportunidades e ameaças do ambiente (KOTLER; KELLER, 2012, [AV]). No capítulo 10.1, cada item da matriz aponta para o dado do capítulo 5 ou 6 que o sustenta, e item sem dado sai.
+As análises do setor e do cliente se juntam no diagnóstico estratégico. A análise SWOT cruza as forças e fraquezas internas do negócio com as oportunidades e ameaças do ambiente (KOTLER; KELLER, 2012, [AV]). No capítulo 10.1, cada item da matriz aponta para o dado do capítulo 5 ou 6 que o sustenta, e item sem dado sai.
 
-## 2.3 ECONOMIA DA EXPERIÊNCIA
+## 2.2 ECONOMIA DA EXPERIÊNCIA
 
 Pine e Gilmore (1999, [AV]) tratam a experiência como uma oferta econômica própria, distinta de bens e serviços: a empresa encena um acontecimento memorável, e o cliente paga pelo tempo que passa nele. A luderia vende uma ocasião social, e não o uso de um jogo: o jogo é o meio, e o produto é o encontro em torno da mesa. A distinção orienta a proposta de valor (capítulo 6.1) e a leitura das ocasiões de consumo nas avaliações (capítulo 5.2).
 
-## 2.4 PÚBLICO DE JOGOS DE TABULEIRO
+## 2.3 PÚBLICO DE JOGOS DE TABULEIRO
 
-O jogo de tabuleiro moderno valoriza a interação presencial. Em entrevistas com jogadores adultos, Sarpa (2016, p. 39–40) encontrou o jogo descrito como o elo que reúne as pessoas, mais importante que o próprio jogo, e situado no fim de semana, com amigos.
+O jogo de tabuleiro moderno valoriza a interação presencial. Em entrevistas com jogadores adultos, Sarpa (2016, p. 39–40) encontrou o jogo descrito como o elo que reúne as pessoas: o convívio importa mais que a partida e se concentra no fim de semana, com amigos.
 
-Os levantamentos de perfil do público, como o Censo Ludopedia, usam amostras autosselecionadas de usuários de portais especializados (FIGUEIREDO; MANTOVANI, 2022, p. 4–5). Eles descrevem o jogador engajado, dono de acervo, e não o frequentador médio de uma luderia. Por isso, o perfil do frequentador sai das avaliações do Bloco B2 (capítulo 5.2).
+Para dimensionar esse público, os dados disponíveis têm um viés. Os levantamentos de perfil, como o Censo Ludopedia, usam amostras autosselecionadas de usuários de portais especializados (FIGUEIREDO; MANTOVANI, 2022, p. 4–5). Eles descrevem o jogador engajado, dono de acervo, e não o frequentador médio de uma luderia. Por isso, o perfil do frequentador sai das avaliações do Bloco B2 (capítulo 5.2).
 
-O preço é a barreira mais citada: 57% dos respondentes do Censo Ludopedia apontam o preço elevado como a maior preocupação com os jogos fabricados no Brasil (FIGUEIREDO; MANTOVANI, 2022, p. 4). O dado tem leitura dupla. O acervo da luderia dá acesso a jogos que o cliente não compraria; o jogador que já tem acervo, porém, compara o gasto no bar com a compra de um jogo, e entrevistados de Sarpa (2016, p. 41) descrevem esse gasto como "desperdício de dinheiro". A tensão entra na definição da taxa de entrada (capítulo 6.3).
+Os mesmos levantamentos mostram o preço como a barreira mais citada: 57% dos respondentes do Censo Ludopedia apontam o preço elevado como a maior preocupação com os jogos fabricados no Brasil (FIGUEIREDO; MANTOVANI, 2022, p. 4). O dado tem leitura dupla. O acervo da luderia dá acesso a jogos que o cliente não compraria; o jogador que já tem acervo, porém, compara o gasto no bar com a compra de um jogo, e entrevistados de Sarpa (2016, p. 41) descrevem esse gasto como "desperdício de dinheiro". A tensão entra na definição da taxa de entrada (capítulo 6.3).
 
-Mecânicas de fácil apreensão aumentam a probabilidade de sucesso de um título entre usuários brasileiros, e jogos de guerra e de cartas colecionáveis a reduzem (FIGUEIREDO; MANTOVANI, 2022, p. 12). O capítulo 6.2 cruza o resultado com os jogos citados nas avaliações do Bloco B2.
+A escolha do acervo também encontra apoio nesses dados. Mecânicas de fácil apreensão aumentam a probabilidade de sucesso de um título entre usuários brasileiros, e jogos de guerra e de cartas colecionáveis a reduzem (FIGUEIREDO; MANTOVANI, 2022, p. 12). O capítulo 6.2 cruza o resultado com os jogos citados nas avaliações do Bloco B2.
 
-## 2.5 ESTABELECIMENTOS DE LAZER E ENTRETENIMENTO
+## 2.4 ESTABELECIMENTOS DE LAZER E ENTRETENIMENTO
 
 A luderia pertence ao segmento de *competitive socialising*: estabelecimentos que combinam uma atividade de jogo com alimentos e bebidas em uma ocasião social. No Reino Unido, os atributos mais exigidos nesses locais são os mesmos de qualquer bar: segurança (70%), preço (69%) e qualidade da comida (63%) (KAM INSIGHT, 2022, [AV-X02-a]). O jogo diferencia o local, mas não dispensa o básico da hospitalidade.
 
 O ambiente físico também compõe o serviço: as condições ambientais, o arranjo do espaço e os sinais do local afetam a avaliação do cliente (FITZSIMMONS; FITZSIMMONS, 2014, p. 152–156). Ainda assim, o ambiente não é o fator de maior peso. Em clientes do Outback Steakhouse no Brasil, a qualidade da comida teve o maior efeito sobre a imagem do restaurante (coeficiente padronizado de 0,866), acima do serviço (0,223) e do ambiente (0,107) (VASCONCELLOS, 2016, p. 45–47). Comida, serviço e ambiente formam categorias da análise de conteúdo do Bloco B2, ao lado do acervo e do preço.
 
-A capacidade de um serviço é perecível: a mesa vazia em uma hora não pode ser vendida na hora seguinte. A lei de Little liga as medidas de ocupação: o número médio de clientes no estabelecimento é igual à taxa de chegada multiplicada pela permanência média (FITZSIMMONS; FITZSIMMONS, 2014, p. 406–410). A relação dá consistência à contagem do Bloco B3 e ao dimensionamento da capacidade (capítulo 7.2).
+Além do ambiente, o serviço depende da capacidade, que é perecível: a mesa vazia em uma hora não pode ser vendida na hora seguinte. A lei de Little liga as medidas de ocupação: o número médio de clientes no estabelecimento é igual à taxa de chegada multiplicada pela permanência média (FITZSIMMONS; FITZSIMMONS, 2014, p. 406–410). A relação dá consistência à contagem do Bloco B3 e ao dimensionamento da capacidade (capítulo 7.2).
 
-## 2.6 VIABILIDADE E DECISÃO SOB INCERTEZA
+## 2.5 VIABILIDADE E DECISÃO SOB INCERTEZA
 
 O valor presente líquido (VPL) é a soma dos fluxos de caixa futuros descontados pela taxa mínima de atratividade (TMA), menos o investimento inicial; VPL positivo indica que o projeto remunera o capital acima da TMA (ASSAF NETO, 2014, p. 388–392). A taxa interna de retorno (TIR) é a taxa que torna o VPL igual a zero, e o projeto é aceito quando a TIR supera a TMA (ASSAF NETO, 2014, p. 378–382). O payback descontado é o prazo em que os fluxos descontados recuperam o investimento (ASSAF NETO, 2014, p. 374–378).
 
-A TMA parte de uma taxa livre de risco e soma um prêmio pelo risco do projeto (BRUNI, 2018, [AV]). Um negócio pequeno, de capital fechado e sem liquidez exige prêmio maior que o de uma empresa listada (DAMODARAN, 2010, [AV]). No capítulo 9, a TMA parte da Selic e do IPCA divulgados pelo Banco Central.
+A escolha da TMA, portanto, decide boa parte do resultado. Ela parte de uma taxa livre de risco e soma um prêmio pelo risco do projeto (BRUNI, 2018, [AV]). Um negócio pequeno, de capital fechado e sem liquidez exige prêmio maior que o de uma empresa listada (DAMODARAN, 2010, [AV]). No capítulo 9, a TMA parte da Selic e do IPCA divulgados pelo Banco Central.
 
-O ponto de equilíbrio é o volume de vendas em que a receita cobre os custos fixos e variáveis (BRUNI; FAMÁ, 2019, [AV]). Na luderia, ele se expressa em visitantes por semana e pode ser comparado com o fluxo estimado.
+Os três indicadores respondem se o projeto vale o investimento; o ponto de equilíbrio responde quanto o negócio precisa vender. Ele é o volume de vendas em que a receita cobre os custos fixos e variáveis (BRUNI; FAMÁ, 2019, [AV]). Na luderia, ele se expressa em visitantes por semana e pode ser comparado com o fluxo estimado.
 
-O único estudo de viabilidade localizado sobre o formato, de um *board game café* em Ourinhos (SP), declara o negócio viável pelo payback simples e não testa a sensibilidade às premissas de receita (ASAKURA; SILVA; MELLO, 2018, [AV-R50-a]). O trabalho trata a incerteza de forma explícita. A análise de sensibilidade varia uma premissa por vez e mede o efeito sobre o VPL; ordenadas pelo efeito, as premissas formam o gráfico de tornado, e as de maior impacto são as premissas críticas (BRUNI, 2018, [AV]). O ponto de ruptura é o valor de uma premissa crítica que torna o VPL igual a zero (BRUNI, 2018, [AV]). Ele converte o resultado em condição: o negócio é viável enquanto a taxa de ocupação ficar acima de um valor determinado.
+O único estudo de viabilidade localizado sobre o formato, de um *board game café* em Ourinhos (SP), declara o negócio viável pelo payback simples e não testa a sensibilidade às premissas de receita (ASAKURA; SILVA; MELLO, 2018, [AV-R50-a]). Ao contrário desse estudo, o presente trabalho trata a incerteza de forma explícita. A análise de sensibilidade varia uma premissa por vez e mede o efeito sobre o VPL; ordenadas pelo efeito, as premissas formam o gráfico de tornado, e as de maior impacto são as premissas críticas (BRUNI, 2018, [AV]). O ponto de ruptura é o valor de uma premissa crítica que torna o VPL igual a zero (BRUNI, 2018, [AV]). Ele converte o resultado em condição: o negócio é viável enquanto a taxa de ocupação ficar acima de um valor determinado.
 
 **Quadro 1 — Conceitos do referencial teórico e sua aplicação no plano**
 

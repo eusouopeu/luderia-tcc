@@ -7,14 +7,15 @@ Regras suplementares à skill `formatacao-texto-ufba`, pedido do autor em 31/10/
 | Elemento | No `.md` | Formatação |
 |---|---|---|
 | Título 1 (capítulo) | `# 5 ANÁLISE DE MERCADO` | Caixa alta, negrito, alinhado à esquerda, sem recuo na primeira linha, começa em página nova |
-| Título de referências do capítulo | `**Referências citadas neste capítulo**` | Igual ao título 1 (caixa alta, negrito, à esquerda, sem recuo, página nova), mas **sem número** |
+| Título de referências | `**Referências citadas neste capítulo**` no `.md` de cada capítulo | No trabalho inteiro, as listas dos capítulos viram uma só, "REFERÊNCIAS", depois do último capítulo: igual ao título 1, mas **sem número**, em ordem alfabética e sem repetição (pedido do autor em 31/10/2026). O `.docx` de um capítulo avulso mantém a lista própria |
 | Título 2 (seção) | `## 5.1 ANÁLISE DO SETOR` | Caixa alta, **sem negrito**, alinhado à esquerda |
 | Título 3 (subseção) | `### 5.1.1 Serviços às famílias` | Como na skill: negrito, só a inicial maiúscula |
 
 ## Parágrafos
 
 - **Corpo do texto:** recuo de 1,00 cm na primeira linha e espaçamento de 0,5 cm depois do parágrafo (no lugar da linha em branco da skill). Os demais atributos seguem a skill.
-- **Referências bibliográficas:** alinhadas à esquerda (não justificadas), **sem recuo na primeira linha** e com espaçamento de 0,5 cm depois de cada referência.
+- **Referências bibliográficas:** justificadas, com espaçamento de 1,5, **sem recuo na primeira linha** e com espaçamento de 0,5 cm depois de cada referência (pedido do autor em 31/10/2026; a NBR 6023 pede espaço simples e alinhamento à esquerda, e esta regra prevalece).
+- **Abertura de capítulo:** todo capítulo começa com texto, antes da primeira seção numerada.
 
 ## Tabelas e quadros
 

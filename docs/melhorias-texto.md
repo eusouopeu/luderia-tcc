@@ -16,6 +16,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
+- **Seções renumeradas no TMin (31/10/2026).** No TMin, o cap. 2 vai de 2.1 a 2.5 e o cap. 3 de 3.1 a 3.6; no TMax, seguem de 2.1 a 2.6 e de 3.1 a 3.7. Remissões entre capítulos a essas seções ficam diferentes nas duas versões.
 **D02 — Objetivos e seções da introdução fora da estrutura.** Cap. 1 (1.1) × `1_estrutura.md` (1.3). O cap. 1 tem 7 objetivos específicos; a instrução permite no máximo 6, um por decisão, cada um respondido em 11.2. Os itens (vi) e (vii) cabem em um só (o (vi) da proposta da instrução). As seções também divergem: o cap. 1 tem 1.1 Objetivos, 1.2 Justificativa e 1.3 Estrutura; a instrução prevê 1.1 Contextualização, 1.2 Problema e oportunidade, 1.3 Objetivos, 1.4 Justificativa e 1.5 Estrutura. Sugestão: fundir (vi) e (vii) e renumerar, ou ajustar a instrução.
 
 **D03 — "Única luderia em operação" × "única no recorte".** Cap. 1 (contextualização) × cap. 5 (5.3.3, Tabela 5.1). O cap. 1 afirma que a São Jogue é a única luderia em operação em Salvador; o cap. 5 diz "única no recorte", com 13 resultados na busca, 7 acima de 100 avaliações e 1 aprovado na curadoria. A afirmação do cap. 1 é mais forte que o dado. Sugestão: "a única luderia de Salvador com mais de 100 avaliações no Google Maps (Bloco B1, 2026)". Em 31/10, o cap. 3 (3.3.3) também diz "única luderia de Salvador".
