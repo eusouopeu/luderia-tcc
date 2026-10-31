@@ -1,8 +1,10 @@
 # AGORA
 
-Atualizado em 30/10/2026 (18h26). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 30/10/2026 (22h35). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
+
+- **Auditoria das planilhas agregadas** (30/10): relatório em https://claude.ai/artifact/TPFC3JNScg7u4e73y9hwK8. A cesta virou duas medidas: consumo (bebida + prato, 33 casas, R$ 48,80) e cesta completa (com couvert encontrado, 8 casas, R$ 74,25). Próximo: rodar no Mac `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py` (base parada em 17/10) e gerar de novo as planilhas; os demais achados estão em `docs/pendencias.md`.
 
 - **Auditoria dos cardápios no Notion** ("1A - Auditoria Cardápios", 19/10): `linha_arquivo` passou a ser a linha do item no cardápio (1 = primeiro item), nas 200 linhas e no script. Chopp e licor com preço por quantidade ficam só com o preço de 1 unidade na planilha. Tamanhos, combos e prints de datas diferentes (22/10): só a linha de referência (`linha_referencia` = S) entra na cesta. Rodar no Mac `B1-b_resumo.py` para levar a planilha nova à cesta.
 

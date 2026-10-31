@@ -51,6 +51,10 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 ## Divergências entre documentos, ainda sem correção
 
+- **Auditoria das planilhas agregadas (30/10/2026)**, relatório em https://claude.ai/artifact/TPFC3JNScg7u4e73y9hwK8. Abertos: base do B1 parada em 17/10 (rodar no Mac `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py` para levar a linha de referência dos cardápios e o entorno até 1000 m); Ludus com couvert R$ 0 contada como "cobra"; Dominaria pelo perfil errado nas legendas do Instagram; cerca de 11 avaliações repetidas (digitada e coletada) no B2; autoria das 355 linhas codificadas antes de 30/10 (o registro fala em 166 do autor); 407 linhas digitadas sem nota de aspecto; e 13 ajustes de rótulo, nota e gráfico.
+- Site (`b1-estatisticas.json`): a cesta casa a casa ainda soma couvert 0; trocar o rótulo para "consumo" ou usar a cesta completa.
+- Cap. 5, linha 79: "cesta" (bebida + entrada ou prato, R$ 58,50, 26 casas) é o que a planilha agora chama de consumo (R$ 48,80, 33 casas).
+
 - Divergências entre capítulos (e contra as instruções) ficam em `docs/melhorias-texto.md`, por gravidade (D01 a D18 em 15/10/2026).
 
 

@@ -69,8 +69,10 @@ COLS = [
     ("itens_com_preco", "itens com preço", "int"), ("tem_cardapio", "cardápio transcrito", "int"),
     ("cobra_couvert", "couvert encontrado", "int"),
     ("couvert_mediana", "couvert (R$)", "dec"), ("bebida_mediana", "bebida (R$)", "dec"),
-    ("entrada_ou_prato_mediana", "entrada ou prato (R$)", "dec"), ("cesta_baixa", "cesta baixa (R$)", "dec"),
-    ("cesta_mediana", "cesta mediana (R$)", "dec"), ("cesta_alta", "cesta alta (R$)", "dec"),
+    ("entrada_ou_prato_mediana", "entrada ou prato (R$)", "dec"), ("consumo_baixa", "consumo baixo (R$)", "dec"),
+    ("consumo_mediana", "consumo mediano (R$)", "dec"), ("consumo_alta", "consumo alto (R$)", "dec"),
+    ("cesta_baixa", "cesta completa baixa (R$)", "dec"),
+    ("cesta_mediana", "cesta completa mediana (R$)", "dec"), ("cesta_alta", "cesta completa alta (R$)", "dec"),
     ("hamburguer_mediana", "hambúrguer (R$)", "dec"), ("batata_mediana", "batata (R$)", "dec"),
     ("cerveja_mediana", "cerveja (R$)", "dec"), ("refrigerante_mediana", "refrigerante (R$)", "dec"),
     ("drinks_mediana", "drinks (R$)", "dec"), ("titulos_acervo", "títulos no acervo", "int"),
@@ -133,9 +135,12 @@ VARS_DESC = [
     ("Cardápio", "couvert_mediana", "Couvert ou taxa de jogo (R$, casas que cobram)"),
     ("Cardápio", "bebida_mediana", "Bebida, mediana do cardápio (R$)"),
     ("Cardápio", "entrada_ou_prato_mediana", "Entrada ou prato, mediana (R$)"),
-    ("Cardápio", "cesta_baixa", "Cesta por pessoa, nível baixo (R$)"),
-    ("Cardápio", "cesta_mediana", "Cesta por pessoa, nível mediano (R$)"),
-    ("Cardápio", "cesta_alta", "Cesta por pessoa, nível alto (R$)"),
+    ("Cardápio", "consumo_baixa", "Consumo por pessoa (bebida + entrada ou prato), nível baixo (R$)"),
+    ("Cardápio", "consumo_mediana", "Consumo por pessoa (bebida + entrada ou prato), nível mediano (R$)"),
+    ("Cardápio", "consumo_alta", "Consumo por pessoa (bebida + entrada ou prato), nível alto (R$)"),
+    ("Cardápio", "cesta_baixa", "Cesta completa (consumo + couvert encontrado), nível baixo (R$)"),
+    ("Cardápio", "cesta_mediana", "Cesta completa (consumo + couvert encontrado), nível mediano (R$)"),
+    ("Cardápio", "cesta_alta", "Cesta completa (consumo + couvert encontrado), nível alto (R$)"),
     ("Acervo", "titulos_acervo", "Títulos no acervo publicado"),
 ]
 linhas_t2 = []
@@ -167,8 +172,9 @@ nova_aba("Tab 3", "Tabela 3 – Dias de funcionamento: todas abrem de quinta a s
 # Tab 4 e 5: painéis por região e por metrópole
 PAINEL_CAB = ["casas", "nota (mediana)", "horas abertas por semana (média)", "abre domingo (%)",
               "abre segunda (%)", "metrô até 1000 m (% das casas)", "seguidores (mediana)",
-              "casas com cesta", "cesta mediana (mediana, R$)"]
-PAINEL_TIPOS = ["int", "dec", "dec", "pct", "pct", "pct", "int", "int", "dec"]
+              "casas com consumo", "consumo mediano (mediana, R$)", "casas com cesta completa",
+              "cesta completa mediana (mediana, R$)"]
+PAINEL_TIPOS = ["int", "dec", "dec", "pct", "pct", "pct", "int", "int", "dec", "int", "dec"]
 
 
 def painel(chave, ref):
@@ -180,6 +186,8 @@ def painel(chave, ref):
         f'=IFERROR(AVERAGEIFS({R("abre_segunda")},{R(chave)},{ref}),"")',
         f'=IFERROR(COUNTIFS({R(chave)},{ref},{R("metro_1000m")},">0")/COUNTIF({R(chave)},{ref}),"")',
         mediana_se("seguidores", chave, ref),
+        f'=COUNTIFS({R(chave)},{ref},{R("consumo_mediana")},"<>")',
+        mediana_se("consumo_mediana", chave, ref),
         f'=COUNTIFS({R(chave)},{ref},{R("cesta_mediana")},"<>")',
         mediana_se("cesta_mediana", chave, ref),
     ]
@@ -189,6 +197,7 @@ linhas_t4 = [[r] + painel("regiao", f"$A{k}") for k, r in enumerate(ORDEM_REG, 3
 linhas_t4.append(["Total", f"=SUM(B3:B7)", f'=MEDIAN({R("avaliacao_media")})', f'=AVERAGE({R("horas_semana")})',
                   f'=AVERAGE({R("abre_domingo")})', f'=AVERAGE({R("abre_segunda")})',
                   f'=COUNTIF({R("metro_1000m")},">0")/COUNTA({R("nome")})', f'=MEDIAN({R("seguidores")})',
+                  f'=COUNT({R("consumo_mediana")})', f'=MEDIAN({R("consumo_mediana")})',
                   f'=COUNT({R("cesta_mediana")})', f'=MEDIAN({R("cesta_mediana")})'])
 por_reg = base.groupby("regiao")
 g4 = barras_h("04_regiao_funcionamento_metro", ORDEM_REG, {
@@ -196,9 +205,11 @@ g4 = barras_h("04_regiao_funcionamento_metro", ORDEM_REG, {
     "abre segunda": [por_reg.abre_segunda.mean()[r] for r in ORDEM_REG],
     "metrô até 1000 m": [(por_reg.metro_1000m.apply(lambda s: (s > 0).sum()) / por_reg.size())[r] for r in ORDEM_REG],
 }, lambda v: br(v * 100, 1, suf="%"), eixo_pct=True, xmax=1.18)
+NOTA_CESTA = ("Consumo = bebida + entrada ou prato, nas casas com os dois no cardápio; cesta completa = consumo + couvert, "
+              "só nas casas com couvert encontrado (couvert não encontrado não entra como 0).")
 nova_aba("Tab 4", "Tabela 4 – Painel por região: o Sudeste reúne 31 das 54 casas; no Sul nenhuma tem metrô a até 1 km",
-         ["Região"] + PAINEL_CAB, linhas_t4, ["txt"] + PAINEL_TIPOS, FONTE_B1, [16] + [13] * 9, g4,
-         ["Nota: medianas calculadas só entre as casas com dado; cesta só nas casas com couvert, bebida e prato encontrados."])
+         ["Região"] + PAINEL_CAB, linhas_t4, ["txt"] + PAINEL_TIPOS, FONTE_B1, [16] + [13] * 11, g4,
+         ["Nota: medianas calculadas só entre as casas com dado. " + NOTA_CESTA])
 
 metros = cont.sort_values(["ord", "metropole"])
 linhas_t5 = [[r.metropole, r.regiao] + painel("metropole", f"$A{k}") for k, r in enumerate(metros.itertuples(), 3)]
@@ -206,14 +217,16 @@ fim5 = 2 + len(linhas_t5)
 linhas_t5.append(["Total", "", f"=SUM(C3:C{fim5})", f'=MEDIAN({R("avaliacao_media")})', f'=AVERAGE({R("horas_semana")})',
                   f'=AVERAGE({R("abre_domingo")})', f'=AVERAGE({R("abre_segunda")})',
                   f'=COUNTIF({R("metro_1000m")},">0")/COUNTA({R("nome")})', f'=MEDIAN({R("seguidores")})',
+                  f'=COUNT({R("consumo_mediana")})', f'=MEDIAN({R("consumo_mediana")})',
                   f'=COUNT({R("cesta_mediana")})', f'=MEDIAN({R("cesta_mediana")})'])
-cm = base.groupby("metropole").cesta_mediana.median().dropna().sort_values(ascending=False)
-g5 = barras_h("05_cesta_por_metropole", cm.index.tolist(), {"cesta mediana": cm.tolist()},
+cm = base.groupby("metropole").consumo_mediana.median().dropna().sort_values(ascending=False)
+g5 = barras_h("05_consumo_por_metropole", cm.index.tolist(), {"consumo mediano": cm.tolist()},
               lambda v: br(v, 2, pre="R$ "), destaque="Salvador")
-nova_aba("Tab 5", "Tabela 5 – Painel por metrópole: a cesta por pessoa varia de metrópole para metrópole",
+nova_aba("Tab 5", "Tabela 5 – Painel por metrópole: o consumo por pessoa varia de metrópole para metrópole",
          ["Metrópole", "Região"] + PAINEL_CAB, linhas_t5, ["txt", "txt"] + PAINEL_TIPOS, FONTE_B1,
-         [18, 14] + [13] * 9, g5,
-         ["Nota: o gráfico mostra a mediana da cesta mediana das casas com cesta em cada metrópole; metrópoles sem cesta ficam fora."])
+         [18, 14] + [13] * 11, g5,
+         ["Nota: o gráfico mostra a mediana do consumo mediano das casas com consumo em cada metrópole; metrópoles sem consumo ficam fora.",
+          NOTA_CESTA])
 
 # Tab 6: entorno (só Google Maps)
 FAIXAS = [("Até 500 m", '"<=500"', None), ("De 501 a 1000 m", '">500"', '"<=1000"'),
@@ -252,18 +265,20 @@ nova_aba("Tab 6", "Tabela 6 – Entorno pelo Google Maps: a maioria das casas te
 CATS = [("couvert_mediana", "Couvert ou taxa de jogo (casas que cobram)"), ("bebida_mediana", "Bebida"),
         ("entrada_ou_prato_mediana", "Entrada ou prato"), ("hamburguer_mediana", "Hambúrguer"),
         ("batata_mediana", "Batata"), ("cerveja_mediana", "Cerveja"), ("refrigerante_mediana", "Refrigerante"),
-        ("drinks_mediana", "Drinks"), ("cesta_baixa", "Cesta por pessoa, nível baixo"),
-        ("cesta_mediana", "Cesta por pessoa, nível mediano"), ("cesta_alta", "Cesta por pessoa, nível alto")]
+        ("drinks_mediana", "Drinks"), ("consumo_baixa", "Consumo por pessoa, nível baixo"),
+        ("consumo_mediana", "Consumo por pessoa, nível mediano"), ("consumo_alta", "Consumo por pessoa, nível alto"),
+        ("cesta_baixa", "Cesta completa, nível baixo"), ("cesta_mediana", "Cesta completa, nível mediano"),
+        ("cesta_alta", "Cesta completa, nível alto")]
 linhas_t7 = [[d, f"=COUNT({R(c)})", f'=IFERROR(PERCENTILE({R(c)},0.25),"")', f'=IFERROR(MEDIAN({R(c)}),"")',
               f'=IFERROR(PERCENTILE({R(c)},0.75),"")'] for c, d in CATS]
 g7 = barras_h("07_precos_cardapio", [d for _, d in CATS], {"mediana entre as casas": [base[c].median() for c, _ in CATS]},
               lambda v: br(v, 2, pre="R$ "), larg_rotulo=26)
-nova_aba("Tab 7", "Tabela 7 – Preços nos cardápios: a cesta mediana por pessoa fica em R$ 54 (metade das casas entre R$ 38,50 e R$ 70)",
+nova_aba("Tab 7", "Tabela 7 – Preços nos cardápios",
          ["Categoria", "Casas com preço", "1º quartil (R$)", "Mediana (R$)", "3º quartil (R$)"], linhas_t7,
          ["txt", "int", "dec", "dec", "dec"], "B1, cardápios transcritos (B1_cardapios_itens_precos.xlsx)",
          [42, 14, 14, 14, 14], g7,
          ["Nota: cada casa entra com a mediana do próprio cardápio na categoria; quartis entre as casas.",
-          "Cesta = couvert + bebida + entrada ou prato, só nas casas em que os três foram encontrados."])
+          NOTA_CESTA])
 
 # Tab 8: couvert
 linhas_t8 = [

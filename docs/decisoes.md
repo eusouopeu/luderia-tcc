@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 30/10/2026 | Cardápio do B1 com duas medidas: consumo por pessoa (bebida + entrada ou prato, 33 casas) e cesta completa (consumo + couvert, só nas 8 casas com couvert encontrado). Couvert não encontrado não entra como 0. O site mantém a cesta casa a casa antiga até trocar o rótulo | `docs/registro-de-alteracoes.md` (30/10, cesta por pessoa) |
 | 30/10/2026 | Planilhas de dados agregados separadas por bloco (B1 completo e resumido, B2, B3, B4), com tabelas renumeradas em cada arquivo e títulos só com o nome da tabela | `docs/registro-de-alteracoes.md` (30/10 18:32) |
 | 30/10/2026 | Gráficos das planilhas de dados agregados só com tons das paletas slate e purple do Tailwind CSS; comentários do B2 em planilha separada, a partir da cópia atualizada do "2 - Comentários" (temas de 30/10) | `docs/registro-de-alteracoes.md` (30/10 18:26) |
 | 30/10/2026 | Planilha de dados agregados da pesquisa sem os comentários do B2 e sem dados do OpenStreetMap no entorno, com gráficos no desenho do trabalho de marketing do autor | `docs/registro-de-alteracoes.md` (30/10 18:18) |
