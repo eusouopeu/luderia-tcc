@@ -39,6 +39,7 @@ export function FolhaRegistros({
                       <span className="w-20 shrink-0 font-bold">{nomeMesa(r.mesaId)}</span>
                       <span className="flex-1 text-[15px]">
                         {r.entrada}–{r.saida ?? '…'} · {r.pessoas} pess. ({r.criancas} cr.)
+                        {r.fluxos.length > 0 && ` · ${r.fluxos.join(', ')}`}
                         {r.aniversario && ' · 🎂'}
                       </span>
                       <span className={`text-sm font-semibold ${p === null ? 'text-caneta-600' : 'text-neutro-500'}`}>
@@ -134,6 +135,7 @@ export function FolhaAcoes({
   onFechar,
   onComecar,
   onEncerrar,
+  onFechamento,
   onRegistros,
   onEditar,
 }: {
@@ -141,6 +143,7 @@ export function FolhaAcoes({
   onFechar: () => void
   onComecar: () => void
   onEncerrar: () => void
+  onFechamento: () => void
   onRegistros: () => void
   onEditar: () => void
 }) {
@@ -148,7 +151,10 @@ export function FolhaAcoes({
   return (
     <Folha titulo="Ações" onFechar={onFechar}>
       {ativa ? (
-        <button onClick={onEncerrar} className={`${b} bg-neutro-800 text-neutro-50`}>Encerrar visita</button>
+        <>
+          <button onClick={onFechamento} className={`${b} bg-caneta-100 text-caneta-700`}>Fechamento da casa</button>
+          <button onClick={onEncerrar} className={`${b} bg-neutro-800 text-neutro-50`}>Encerrar visita</button>
+        </>
       ) : (
         <button onClick={onComecar} className={`${b} bg-caneta-600 text-sobre`}>Começar visita</button>
       )}

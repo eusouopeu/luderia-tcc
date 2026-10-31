@@ -739,7 +739,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: @arainhadosdados (A Rainha dos Dados) foi coletada como semente sem estar em `B1_instagram_aprovadas.csv`; entra no grau de entrada de 74 contas.
 **Efeitos colaterais**: infla levemente a precisão e a sensibilidade por corte; decidir se a semente sai do build ou se a casa entra nas aprovadas.
 
-
 ### 01:52
 **Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` (2026.10.14-2 → 2026.10.15-1) e `maps_entorno.test.cjs`
 **Antes**: na fila das 51 casas de 15/10, a estação mais próxima em Curitiba saía a 653–669 km (BRT do Rio e de Salvador que o Maps põe na lista quando a área se esgota) e o metrô dispensado de Curitiba ganhava distância; as 109 estações-tubo de Curitiba caíam em "outro" (qt_estacoes_vlt_brt zero em todas as 6 casas); "Futura estação Rua do Grito (BRT ABC)" contava como BRT a 526 m da Arena BG; a sede do Metrô-DF ("Companhia ferroviária") contava como estação de trem a 767 m da Asgard; "Trensurb Estação Rodoviária" ia para metrô; 16 cartões tinham a nota no lugar da categoria; a Overpass falhou em 22 das 51 casas e o porte do shopping saiu em branco com situação "ok".
@@ -818,6 +817,30 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: snowball num userscript próprio, com painel à esquerda do coletor e armazenamento próprio (IndexedDB `igs-snowball`), que na primeira carga copia as listas, os ids e a fila do coletor (a fila entra parada). A lista é aberta pelo link (relativo, absoluto ou com parâmetros), pelo contador "seguindo" do cabeçalho ou, uma vez por semente, pelo endereço `/<perfil>/following/`; sem lista na tela, a página rola. "Parar" grava a fila como parada na hora, inclusive durante a troca de perfil; "Limpar fila" apaga a fila salva; o campo só recebe a fila salva quando está vazio. CSV com o mesmo nome e as mesmas colunas. O coletor perdeu o bloco do snowball e só lê a fila do outro script para não rolar sozinho durante ela. 21 testes passam.
 **Justificativa**: pedido do autor de corrigir a fila de "seguindo" (não abria a lista, não parava, não deixava apagar a fila) e de separar o snowball do coletor.
 
+### 10:23
+**Objeto**: `textos/capitulos/3_metodologia_plano_luderia.md` (novo)
+**Antes**: capítulo 3 não iniciado.
+**Depois**: rascunho completo (cerca de 2.470 palavras de prosa e 6 quadros, perto de 10 páginas): 3.1 caracterização e vocabulário controlado; 3.2 escala N1-N6 e hierarquia de dados; 3.3 quadro único dos blocos B1 a B4 (B4 detalhado no apêndice H), com B1/B2 e B3 em prosa curta; 3.4 tratamento, validação da coleta e do dicionário; 3.5 técnicas e calibração; 3.6 matriz de evidências resumida (completa no apêndice A); 3.7 ética; 3.8 limitações. O registro prévio (extra) ficou fora, e as seções seguintes subiram um número. Pontos a conferir marcados entre colchetes no texto; todas as referências com `[AV]`.
+**Justificativa**: passo 3 do AGORA.md; capítulo com prazo vencido em 02/10.
+
+### 10:23 — divergência
+**Objeto**: `_instrucoes/4_metodologia.md` ("Escopo adotado" e Bloco B1) e triagem do B1
+**Antes**: população final esperada de 100 a 150 estabelecimentos após a curadoria.
+**Depois**: `B1_triagem_manual_metro_av100.xlsx` tem 51 aprovadas (49 depois de tirar Machado e Ilusões) e, com as 5 novas, 54 concorrentes; 8 inconclusivos e 4 pendentes.
+**Efeitos colaterais**: o texto do cap. 3 usa 54; a estimativa de 100 a 150 nas instruções fica sem uso.
+
+### 10:23 — divergência
+**Objeto**: `B1_curadoria_metro_f_av100.csv` e `B1_triagem_manual_metro_av100.xlsx`
+**Antes**: 164 candidatos no recorte.
+**Depois**: 163 linhas na triagem; falta a Livraria Leitura Amazonas (Manaus, 5.271 avaliações).
+**Efeitos colaterais**: a triagem não fecha com o total do recorte (diferença 1) até a exclusão ser registrada com o motivo.
+
+### 10:23 — divergência
+**Objeto**: `_instrucoes/1_estrutura.md` (P5, itens 5 e 6) e skill `meu-estilo-escrita`
+**Antes**: P5 pede travessão (—) para aposto e voz passiva sintética ("adotou-se").
+**Depois**: a skill pede hífen com espaços ("-"), nunca travessão, e prefere a passiva analítica ("foi adotado"); o cap. 1 segue a skill.
+**Efeitos colaterais**: o rascunho do cap. 3 segue o cap. 1 e a skill (hífen; voz ativa, passiva analítica quando preciso); se valer a P5, os dois capítulos mudam juntos.
+
 ### 10:34
 **Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` (versão 2026.10.15-2) e `maps_entorno.test.cjs`
 **Antes**: painel com uma fila só do Google Maps; "Buscar áreas OSM que faltam" consultava a Overpass só para os estabelecimentos guardados com shopping do Maps a até 1000 m e sem resposta do OSM (não para os 55, nem para um só), e só trazia `shop=mall`; porte de shopping por um critério de cada vez (OSM, Abrasce ou avaliações); "Coletar fila" e "Exportar" sem dizer quantos estabelecimentos iam buscar ou exportar.
@@ -889,6 +912,12 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: site publicado com as sete abas de 01/09/2026.
 **Depois**: publicadas as abas 08 a 10 (estatística descritiva do B1: panorama, por metrópole e por região) com `pnpm run deploy`; conferido no endereço público, sem erro no console.
 **Justificativa**: pedido do autor.
+
+### 11:16
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/estabelecimentos/maps_entorno_resultados_2026-10-14.csv` e `maps_entorno_resumo_2026-10-14.csv`; cópias `(1)` removidas; `docs/pendencias.md`
+**Antes**: dois pares de CSVs do entorno de 14/10 (sem sufixo e com `(1)`). Os sem sufixo tinham Ludus e Shelf (499 linhas em resultados, 2 em resumo); os `(1)`, exportação cumulativa do coletor, tinham os mesmos e mais Bodogami (787 e 3 linhas). Todas as linhas dos sem sufixo estão nos `(1)` (conferido linha a linha, diferença zero). O `B1-b_entorno_maps_fila.py` lê `maps_entorno_resumo_*.csv` e via os dois resumos.
+**Depois**: um arquivo por tipo, com o conteúdo do `(1)` sob o nome sem sufixo; nenhuma linha perdida. A raiz do repositório já estava limpa desde o PR #4.
+**Justificativa**: pedido do autor de organizar os CSVs do entorno e resolver as duplicatas.
 
 ### 11:26
 **Objeto**: `_src/site-apresentacao/src/conteudo/` (`s1-estrutura.json` a `s7-contribuicoes.json`, `site.json`) e grades de `S3Metodologia.jsx`, `S5Modelo.jsx` e `S6Tecnicas.jsx`
@@ -998,7 +1027,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: esboço das seções 5.1 a 5.5, do maior para o menor (Brasil → Bahia → Salvador; serviços às famílias → alimentação fora do lar e lazer → luderias), com números do B4 (PAS, POF, PNAD Contínua, Censo, IPCA, BCB, FipeZAP) e do B1; 5.2 com números provisórios do B2. Lacunas marcadas `[script]`, `[AV]` e `[BUSCAR]`; quadro de fontes por nível de preferência no fim.
 **Justificativa**: pedido do autor: esboços do cap. 5 com fontes oficiais antes das setoriais e da imprensa.
 
-
 ### 13:57
 **Objeto**: `CLAUDE.md` (seção "Melhorias do texto"), `docs/melhorias-texto.md` (novo), `docs/pendencias.md`, `docs/decisoes.md`, `AGORA.md`
 **Antes**: sem rotina de conferência cruzada entre capítulos; divergências e repetições entre os caps. 1, 2 e 5 sem registro.
@@ -1023,6 +1051,62 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: no OSM, mesmo nome, mesmo grupo e mesma rede até 400 m contam uma vez; bonde de Santa Teresa e parada ou plataforma sem nome vão para "outro" (com `observacao`); no Maps, busca "estação tubo" só em Curitiba (dispensada nas demais), o que deixa as 6 casas de Curitiba pendentes até a recoleta; `versao_script` nos dois resumos. Simulado sobre a coleta de 12h49: VLT/BRT a 1000 m cai de 88 para 59 e metrô de 45 para 44, somas fechando em 54/54.
 **Justificativa**: pedido do autor: analisar a última rodada do entorno e, se não tivesse extraído todas as variáveis em Maps e OSM, achar o problema e corrigir o extrator. A rodada não extraiu o VLT/BRT de forma confiável em nenhuma das duas fontes.
 
+### 16:26
+**Objeto**: branches `fix/entorno-maps-distantes` (Mac), `main` (cap. 3, PR #5) e `claude/project-thread-anqzoo` (PR #6), juntadas em `claude/project-thread-cc98ij`; `AGORA.md`, `docs/pendencias.md`, `docs/decisoes.md`, `docs/registro-de-alteracoes.md`, `textos/planejamento/status_capitulos.md`; cópias `(1)` dos CSVs do entorno de 14/10 em `_dados-brutos/entornos/`
+**Antes**: o Mac tinha 29 commits fora do main (caps. 2 e 5, Bardin, auditoria, site, entorno) e não tinha o cap. 3; o main não tinha os 29 commits; o PR #6 mexia nos mesmos documentos de controle e na pasta antiga `estabelecimentos/` dos CSVs do entorno.
+**Depois**: uma branch com os três; nos conflitos, mantidas as duas versões (registro na ordem da hora; status com cap. 2 do Mac e cap. 3 do main; divergências de estilo, triagem e 100 a 150 concorrentes devolvidas às pendências). As cópias `(1)`, idênticas aos arquivos sem sufixo (`cmp`), saíram também da pasta nova `entornos/`.
+**Justificativa**: pedido do autor (item 1 das melhorias de 15/10): evitar perda de texto e conflitos maiores.
+
+### 16:26
+**Objeto**: `_src/Modelo financeiro/analise/financeiro-a_modelo.py` (novo), `dados/Modelo financeiro/financeiro_premissas.csv` (novo), `dados/Modelo financeiro/financeiro_modelo.xlsx` (novo), `.gitignore` (logs do modelo)
+**Antes**: cap. 9 sem modelo nem registro de premissas; tarefas "Estrutura do modelo financeiro" (semana 4) e "Primeira versão do registro de premissas" (semana 5) abertas.
+**Depois**: registro com 53 premissas (R, C, I, M), cada uma com faixa, fonte, nível e justificativa; o script calcula investimento, receitas com rampa, Simples por anexo e RBT12, DRE e fluxo mensais de 60 meses, VPL, TIR, payback descontado, ponto de equilíbrio, tornado, ruptura das 5 premissas críticas, coerência e a conferência de 13 premissas contra os arquivos do B1 e do B4 (13 conferem). Provável: investimento de R$ 390 mil, VPL de R$ 465 mil a TMA real de 14,8%, payback de 30 meses; pessimista com VPL negativo (−R$ 1,7 milhão); otimista com VPL de R$ 5,5 milhões. Críticas: permanência, ocupação em dia útil, horas abertas, ticket de A&B e ocupação no fim de semana; três delas só em N6.
+**Justificativa**: pedido do autor (item 2 das melhorias de 15/10); rascunho do cap. 9 vence em 23/10.
+
+### 16:26
+**Objeto**: `textos/capitulos/8_aspectos_juridicos.md` (novo)
+**Antes**: cap. 8 não iniciado, prazo vencido em 09/10.
+**Depois**: rascunho com 8.1 (SLU, CNAE, Simples em dois anexos, Quadro 01 com a carga por cenário), 8.2 (Quadro 02 de licenças em Salvador, bebida alcoólica, LGPD) e 8.3 (locação, uso de jogos comprados, marca). Cerca de 3,9 páginas com as referências do capítulo; normas `[AV]`, exceto a LC 123/2006 conferida no texto compilado de 14/09/2026.
+**Justificativa**: pedido do autor (item 3 das melhorias de 15/10). Sem travessão e sem voz passiva, porque P5 e a skill de escrita ainda divergem (pendência aberta).
+
+### 23:47
+**Objeto**: `_src/extras/graficos_comum.py` (novo); `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_graficos.py` e `B1-a_cartogramas.py` (novos); `…/Google Places (Negócios)/outros/dados_graficos.py` e `malha_uf_ibge.geojson` (novos); `_src/[B1] Estabelecimentos e cardapios/Instagram/analise/B1-a_pictogramas_instagram.py` (novo); `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_pictogramas.py` (novo); `dados/[B1] Estabelecimentos e cardapios/estabelecimentos/5_graficos/` e `dados/[B2] Avaliacoes recentes/graficos/` (novos); `_src/dicionario.md` (linha "Figura de script")
+**Antes**: só o gráfico de limiares do B1 (`B1_limiares*.png`); estatística descritiva só em planilha e no site.
+**Depois**: 10 gráficos do B1 (casas por metrópole, nota por região, avaliações por casa, nota × volume, dias abertos, mapa de calor dos horários, horas por semana, seguidores por casa, seguidores × avaliações, cesta por pessoa), 8 cartogramas (casas, nota, avaliações, seguidores, horas, comentários por post e cesta por metrópole; painel de 6 variáveis por região) e 7 pictogramas (comentários, curtidas, seguidores e interações por 1.000 seguidores no Instagram, por região e Salvador; temas, reclamações e ocasião/perfil nas avaliações do B2). Cada figura em PNG de 300 dpi, SVG com texto editável e CSV dos valores. Somas por grupo conferidas contra o total: 54 casas por metrópole e por região; 51, 47 e 46 casas com dado no Instagram; 1.588 avaliações de 53 casas no B2, com contagens e percentuais iguais aos do `B2-a_conteudo_bardin.py`.
+**Justificativa**: pedido do autor (15/10, 23h32): gerar os principais gráficos, pictogramas para dados de público e cartogramas por capital e região, editáveis para o caso de a auditoria corrigir coletas. Nota e volume vêm do CSV da curadoria (iguais aos da planilha nas 54 casas). Malha das UFs: IBGE, por cópia em github.com/fititnt/gis-dataset-brasil, simplificada (134 KB).
+
+## 2026/10/16
+
+### 00:24
+**Objeto**: `_src/extras/graficos_comum.py` (refeito; funções novas `margens` e `pictograma_linhas`); `_src/extras/fontes/` (novo: Source Sans 3 Regular, Semibold e Bold, licença OFL); `B1-a_graficos.py`, `B1-a_cartogramas.py`, `B1-a_pictogramas_instagram.py` e `B2-a_pictogramas.py` (desenho refeito); as 25 figuras em `dados/[B1] Estabelecimentos e cardapios/estabelecimentos/5_graficos/` e `dados/[B2] Avaliacoes recentes/graficos/`
+**Antes**: figuras com o visual padrão do matplotlib: título descritivo, legenda em caixa, eixos e grade cheios, uma cor por região, fonte DejaVu Sans.
+**Depois**: estilo editorial de jornal de dados: título que diz a conclusão (calculado dos dados, muda sozinho se a coleta mudar), subtítulo com o recorte, rodapé com a fonte, valores escritos na marca, grade quase invisível, tudo em cinza com Salvador (e as reclamações do B2) em vermelho, fonte Source Sans 3 guardada no repositório. Mesmos números: somas conferidas de novo (54 casas por metrópole, por região e por faixa de horas; 51, 47 e 46 casas com dado no Instagram; 1.588 avaliações de 53 casas no B2).
+**Justificativa**: pedido do autor (15/10): os gráficos estavam corretos, mas básicos demais. Comparadas as ferramentas (Plotly, Altair, Datawrapper, Flourish), ficou o matplotlib com tema próprio, porque mantém a regeneração por script e o SVG editável; os CSVs de `valores/` servem para refazer qualquer figura no Datawrapper, se o autor quiser.
+
+### 02:34
+**Objeto**: `textos/capitulos/8_aspectos_juridicos.md`; `docs/melhorias-texto.md` (D19, D20, C13); `textos/planejamento/status_capitulos.md`; `AGORA.md`; `docs/decisoes.md`; `docs/pendencias.md` (item 13)
+**Antes**: cap. 8 com 3,9 páginas contando as referências (teto de 3), subtítulos 8.1.1 a 8.1.3, bebida alcoólica e LGPD em parágrafos próprios; o texto dizia que o maior RBT12 do modelo era de R$ 2,9 milhões (receita do ano 2 do cenário otimista).
+**Depois**: 2,8 páginas (622 palavras de prosa e dois quadros, sem as referências do capítulo); bebida alcoólica e LGPD viraram linhas do Quadro 02; frases repetidas cortadas; o maior RBT12 corrigido para R$ 3,0 milhões (ano 5 do otimista; `coerencia` do `financeiro_modelo.xlsx`: R$ 3.030.719). Quadro 01 conferido contra as abas `dre_fluxo_*` do modelo (ano 2): bate. Estilo do rascunho mantido (voz ativa, sem travessão), sinalizado na nota de abertura.
+**Justificativa**: pedido do autor (item 4 da mensagem de 16/10: rascunho do cap. 8), com o rascunho de 15/10 já no main acima do teto.
+
+### 02:47
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/` (novos `tabuclub.csv`, `ludocafe.csv`, `saojogue.csv`, `garagemdonerd.csv`, `gameofboards.csv`, `joyjoy.csv`, `asgard.csv`; `fanhour.csv` alterado), `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/build/B1-b_cardapios_planilha.py` (`FONTES`), `cardapios/B1_cardapios_itens_precos.xlsx`, novos `cardapios/B1_cardapios_busca_profunda.csv` e `cardapios/B1_couvert_fontes_secundarias.csv`
+**Antes**: planilha com 27 casas e 1.887 linhas (1.851 com preço); TabuClub baixado e não transcrito; Fan Hour com 50 itens sem preço; 28 das 54 casas sem cardápio com preço e sem registro de onde se procurou.
+**Depois**: planilha com 34 casas e 1.991 linhas (1.955 com preço). TabuClub transcrito do PDF (75 linhas, sem couvert). Fan Hour com 26 preços e a taxa de jogo (R$ 20) de matéria atualizada em 05/10/2026, 24 itens ainda sem preço. Parciais: LudoCafé (10 itens de legenda do TikTok de 16/11/2024 e couvert de R$ 30, ou R$ 15 com consumo de R$ 50), São Jogue (taxa de entrada de R$ 22 seg-qui e R$ 28 sex-dom, do site), Game Of Boards (passaporte de R$ 15 e R$ 25, do site), Garagem do Nerd (couvert de R$ 10), Joyjoy (taxa de R$ 10 e R$ 15) e Asgard (couvert de R$ 10 e R$ 20 e 3 petiscos). As linhas das 26 casas que já estavam ficaram iguais (comparação célula a célula). A busca profunda registra, casa a casa, as fontes consultadas, o achado e o próximo passo: 1 extraído, 7 parciais, 4 não achados e 16 lojas sem serviço de A&B localizado (total 28). O couvert citado pela imprensa para casas já transcritas ficou à parte, sem mexer nas transcrições.
+**Justificativa**: pedido do autor (16/10): nova busca, mais profunda, pelos cardápios que faltavam, em fontes ainda não usadas (Goomer, iFood, imprensa, TikTok, guias e agregadores). A maior parte das fontes de imagem e das plataformas de pedido (Goomer, iFood, Restaurant Guru, Instagram) não abre sem navegador; ficaram com o link e o passo no registro da busca.
+
+### 02:47
+**Objeto**: `cardapios/B1_cardapios_itens_precos.xlsx` (aba itens) × `cardapios/B1_couvert_fontes_secundarias.csv`
+**Antes**: a planilha registra Ludus Luderia com taxa de jogo 0 ("não cobra por tempo nem por jogo", página inicial do site) e Bodogami e Encounter sem couvert no cardápio.
+**Depois**: CNN Brasil (02/10/2024) e QuintoAndar (23/09/2025) citam couvert de R$ 34 a R$ 44 na Ludus, R$ 20 a R$ 35 na Bodogami (só para quem joga) e a partir de R$ 35 na Encounter.
+**Efeitos colaterais**: a premissa R14 do modelo financeiro ("só 7 de 26 casas com cardápio cobram couvert") e a cesta por pessoa dessas casas podem subestimar a cobrança de couvert. Não corrigido: aguarda decisão do autor.
+
+### 03:05
+**Objeto**: `B1-b_resumo.py` (couvert e cesta), `B1-a_estatistica_descritiva.py` (cesta, rótulo e regras), `dados/Modelo financeiro/financeiro_premissas.csv` (R14), `textos/capitulos/5_analise_de_mercado.md` (5.3.4), `docs/melhorias-texto.md` (D16), `docs/pendencias.md`, `_src/site-apresentacao/src/conteudo/s8-b1-resultados.json` e `b1-estatisticas.json`, `transcricao/fanhour.csv` (Switch 2) e `cardapios/B1_cardapios_itens_precos.xlsx`
+**Antes**: casa sem couvert no cardápio coletado era tratada como casa que não cobra: `couvert_no_cardapio` = "não", couvert 0 na cesta, rótulo "Cobra couvert", cap. 5 com "19 não cobram" e "o couvert não é a regra"; R14 com "só 7 de 26 cobram". Na Fan Hour, o Nintendo Switch 2 (R$ 40) contava como taxa de jogo.
+**Depois**: "não encontrado" no lugar de "não"; preços de couvert vazios e cesta vazia quando o couvert não foi encontrado (a cesta passa a exigir couvert, bebida e entrada ou prato); rótulo "Couvert ou taxa de jogo encontrado"; cap. 5 diz que nas outras 19 o couvert não foi encontrado, o que não basta para afirmar que não cobram; R14 cita couvert encontrado em 13 das 34 casas com cardápio. Switch 2 passou a adicional, e a mediana de couvert da Fan Hour fica em R$ 20. O resumo do B1, a estatística descritiva e o site só mudam depois de rodar `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py` no Mac (dependem de arquivos fora do git).
+**Justificativa**: pedido do autor (16/10): em vez de assumir que as casas sem dado de couvert não cobram, assumir só que não foi possível encontrar o dado.
+
 ### 18:03
 **Objeto**: `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/` (`originais/2026-10-10_SJBV/POV1/` e `POV2/`, novos; `contagem_*.csv`, novos), `dados/[B3] Contagem direta de ocupacao/contagem_resumo_visitas.csv` e `contagem_notas_intervalo.csv` (novos), `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py` (novo), `outros/B3_descartes_app.csv` (novo), `analise/B3-a_contagem.py`, `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`
 **Antes**: nenhum dado de visita no B3; a análise lia um único arquivo por conteúdo, sem observador, e exigia `visita_fim` para calcular as taxas.
@@ -1034,7 +1118,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: primeiras visitas no sábado, 03/10, entrada às 19h; retorno 15 dias depois, domingo, 18/10.
 **Depois**: a visita ao Bela Vista registrada no app começou em 10/10 (18h37 no POV1, 19h02 no POV2); o retorno de 18/10 fica 8 dias depois.
 **Efeitos colaterais**: o intervalo de notas fiscais entre as visitas (base das vendas no período) passa de 15 para 8 dias, e a visita deixa de cair na quinzena após o pagamento dos servidores estaduais (29 e 30/09). Nada foi corrigido nos documentos.
-
 
 ### 18:19
 **Objeto**: `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py`, `outros/B3_descartes_app.csv`, `outros/B3_correcoes_app.csv` (novo), `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/originais/2026-10-10_SJBV/POV1/2026-10-10_SJBV_POV1_transcricao_precos.csv` (novo), `_dados-brutos/app/contagem_*.csv`, `contagem_resumo_visitas.csv`, `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`
@@ -1059,6 +1142,66 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o site no ar tinha a paleta preto/cinza/vermelho e Montserrat.
 **Depois**: `pnpm run deploy` publicou o visual editorial (commit 095e81c); conferido no ar (Fraunces carregada, fundo creme).
 **Justificativa**: pedido do autor: publicar o novo visual.
+
+### 16:45
+**Objeto**: `_src/app-observacao/` (`src/domain/model.ts`, `resumo.ts`, `store.ts`, `App.tsx`, `screens/Visita.tsx`, `Ajustes.tsx`, `Folhas.tsx`, `FormMesa.tsx`, `abas/Fluxo.tsx`, `abas/Temporizador.tsx`, `ui/SeletorJogos.tsx`, testes, `package.json` 2.4.0, `android/app/build.gradle` 2026.10.16-1), APK `ObservacaoLuderia-2026.10.16-1.apk` (fora do git)
+**Antes**: cada CSV exportado saía sem identificar visita, observador ou versão do app (o importador tirava isso do nome da pasta); entrada na porta e grupo na mesa eram lançados à parte, sem ligação; saída rápida sem motivo; sem botão de fechamento (grupos ainda dentro às 22h ficavam sem saída ou com saída falsa); nada sobre a posição, as pausas e o papel do observador; condições do dia como texto livre; pessoas e jogos sem marca de incerteza; tarefas extras (NFC-e, som, foto do cardápio, acervo) espalhadas em módulos.
+**Depois**: (3) todos os CSVs começam com `visita_id`, `observador`, `versao_app`, `papel`, `unidade` e `visita_inicio`; o botão "Exportar esta visita" grava `<visita_id>_<observador>_contagem_<x>.csv`; código do observador e prefixo da casa em Ajustes. (6) Na porta, "Foi para" liga a entrada a uma mesa livre (abre o grupo com a hora da porta) ou ocupada (soma pessoas), ou a Balcão/loja, Retirada/delivery, Outro; saída em até 10 min sem mesa pede o motivo (Lotado, Só olhou, Balcão/loja, Retirada/delivery, Outro). (7) "Fechamento da casa" (Ações e Temporizador) dá saída a todos os grupos abertos com tipo `fechamento`, e o resumo e a análise tratam essa saída como censura. (8) Seção "Observador" na ficha: código, papel (porta, mesas, porta e mesas), posição e pausas registradas pelo temporizador. (10) "Condições do dia" como lista: Dia comum (exclusivo), feriado, véspera, feriado prolongado, evento (com nome), promoção e outras; encerrar sem marcar pergunta se foi dia comum. (13) "≈" marca pessoas estimadas na porta e na mesa, e "?" marca jogo incerto. (15) O Temporizador traz o "Roteiro da visita" (início, durante, fim) com as tarefas e o atalho para cada uma. 21 testes passam.
+**Justificativa**: pedido do autor: implementar os itens 3, 6, 7, 8, 10, 13 (também para jogos) e 15 da revisão da visita de 10/10, antes das visitas de retorno.
+
+### 16:45
+**Objeto**: `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py`, `analise/B3-a_contagem.py`
+**Antes**: o importador sempre inseria `visita_id` e `observador` a partir da pasta; a análise contava toda saída na permanência média e não separava desistências.
+**Depois**: arquivo do formato novo (com `visita_id` e `observador` próprios) é conferido contra a pasta e interrompe se divergir; o formato antigo continua lido. A permanência na porta exclui saídas com motivo "Fechamento" e a das mesas usa só `censurada != sim`; colunas novas `desistencias_porta` e `pessoas_desistiram` (motivo Lotado ou Só olhou). Rodado sobre a visita de 10/10: consolidados idênticos aos versionados; o resumo só ganha as duas colunas (zero).
+**Justificativa**: acompanhar o formato novo do app sem perder os originais de 10/10.
+
+### 16:45
+**Objeto**: `docs/registro-de-alteracoes.md` × anotação da revisão da visita de 10/10 (`/mnt/project-files/b3/revisao_visita_2026-10-10_e_app.md`)
+**Antes**: a revisão tratou a diferença de acervo entre os observadores (432 contra 350 caixas; 7 contra 0 instrutores) como erro de contagem.
+**Depois**: o autor explicou que um observador contou só o salão de jogos e o outro somou a sala separada (provavelmente de RPG).
+**Efeitos colaterais**: o acervo da unidade depende do ambiente contado; o protocolo precisa dizer se a sala de RPG entra (pendência aberta).
+
+### 16:50
+**Objeto**: `textos/instrumentos/recomendacoes_registro_consumo_B3.md` (novo), `docs/pendencias.md`
+**Antes**: o módulo de pedidos do app exigia categoria, hora do pedido e chegada, e ficou vazio na visita de 10/10.
+**Depois**: sete formas de registrar comidas e bebidas, da mais barata à mais cara, com a ordem sugerida (marca de comida e bebida na contagem de 30 min, consumo próprio com NFC-e e notas emitidas no intervalo primeiro); nada implementado no app.
+**Justificativa**: pedido do autor: recomendações para facilitar o registro de consumo de comidas e bebidas.
+
+### 16:48
+**Objeto**: Notion, banco "Luderias – Status da coleta" (54 linhas: Cardápio, Entornos, Instagram, Acervo de jogos, Google maps, "O que ainda falta?" e "Como proceder para conseguir os dados que faltam?")
+**Antes**: status de 15/10 (Instagram 45 completas; Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria parciais por falta de seguidores; Taverna e Encounter com acervo "Coleta parcial"; lojas sem A&B com cardápio ora "Coleta parcial", ora "Não coletado").
+**Depois**: recalculado pelos arquivos do B1 (main + PR #10): cardápio 26 completa / 8 parcial / 20 não coletado (15 delas com "A&B não encontrado" na busca profunda de 16/10); entorno 26 / 28 / 0; Instagram 51 / 2 / 1 (perfis de 15/10 das casas novas trazem seguidores; Bravo completa pelo CSV de 12/10); acervo 16 / 9 / 29 (Taverna e Encounter caem para "Não coletado": o subdomínio foi ligado por nome com similaridade baixa); Google Maps 54 completas. As colunas de texto trazem uma linha por lacuna (cardápio, entorno, Instagram, snowball, acervo, B2) e o passo para fechá-la. Gerador e CSV em `/mnt/project-files/notion/` (fora do repositório).
+**Justificativa**: pedido do autor de atualizar o banco com as casas do acervodejogos, os status e as lacunas com recomendação.
+
+### 16:48 (divergência)
+**Objeto**: `B1_resumo_estabelecimentos.xlsx` × perfis do Instagram de 15/10 (`redes_sociais/rs_<cidade>/rs_<perfil>/2026-10-15_*_perfis.csv`)
+**Antes**: resumo sem seguidores de Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria, e sem total de posts de La Tabuleria, TabuClub e Toca do Rato.
+**Depois**: os perfis de 15/10 trazem esses números (ex.: Bardo Mago, 31.314 seguidores).
+**Efeitos colaterais**: estatística descritiva e site leem o resumo e seguem sem essas casas no Instagram até rodar `B1-b_resumo.py`.
+
+### 19:30
+**Objeto**: `_src/app-observacao/` (`src/domain/model.ts`, `App.tsx`, `screens/FormMesa.tsx`, `screens/Folhas.tsx`, `model.test.ts`, `package.json` 2.4.1, `android/app/build.gradle` 2026.10.16-2, `CLAUDE.md`), `AGORA.md`, `docs/decisoes.md`, APK `ObservacaoLuderia-2026.10.16-2.apk` (fora do git)
+**Antes**: o vínculo entre porta e mesa só se fazia pela aba Fluxo ("Foi para"); o grupo aberto direto na mesa não dizia de que entrada veio, a porta não ficava sabendo, e a lista de registros das mesas não mostrava o código da porta.
+**Depois**: o grupo da mesa tem a seção "Da porta", com as entradas sem destino e as já ligadas; tocar liga ou solta, e a aba Fluxo passa a mostrar a mesa no "Foi para". Grupo novo ligado à primeira entrada herda hora e pessoas da porta; entradas seguintes somam pessoas. Gravar ou apagar o grupo acerta o destino na porta (`sincronizarPortaMesas`); destinos fora das mesas não mudam. A lista de registros das mesas mostra os códigos da porta. 24 testes passam.
+**Justificativa**: pedido do autor: contabilizar automaticamente nos registros das mesas a marcação de destino feita no fluxo da porta, e vice-versa.
+
+### 23:52
+**Objeto**: `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/originais/2026-10-16_SJBV/` (novo: POV1 e POV2, 10 CSVs cada, e `POV2/2026-10-16_SJBV_POV2_transcricao_precos.csv`), `_dados-brutos/app/fotos/2026-10-16_SJBV_nfce_78160.jpg` (fora do git), `outros/B3_correcoes_app.csv`, consolidados `_dados-brutos/app/contagem_*.csv`, `contagem_resumo_visitas.csv`, `contagem_notas_intervalo.csv`
+**Antes**: o B3 tinha só a visita de sábado, 10/10, ao Bela Vista; o intervalo de notas estava vazio (faltava a segunda leitura de NFC-e). No Mac, o autor deixou os CSVs da visita de sexta, 16/10, em `_dados-brutos/originais/Visita SJBV - Sexta 16.10 - POV 1|2/`, com nomes `2026-10-16_SJBV_16-10_*` e `2026-10-16_SJBVBV_POV2_*`.
+**Depois**: originais copiados intactos para a pasta de visita do padrão (`2026-10-16_SJBV/POV1|POV2/`, nomes `2026-10-16_SJBV_POVn_contagem_*.csv`). Treze correções novas, com motivo: código do observador "16-10" → POV1 e `visita_id` "SJBVBV" → SJBV (gravados assim pelo app); fim da observação às 22h00 nos dois (inferido: última anotação do POV2 às 22:00 e NFC-e paga às 21:59:48; o app foi encerrado às 23:40); todos os grupos de mesa do POV1 e os quatro do POV2 lançados até 3 min após a chegada marcados como censurados; NFC-e 78160 (série 2) transcrita da foto, com CNPJ e taxa de R$ 28,00 por pessoa. Resultado de 16/10 (POV2): 10 pessoas entraram em 4 grupos (4,0 por hora, uma desistência "Só olhou"), permanência média de 96 min em 3 grupos de mesa com entrada e saída vistas, 66,7 dB médios. Intervalo 10/10 22:08 → 16/10 21:59: 183 notas em 5,99 dias (30,5 por dia).
+**Justificativa**: pedido do autor: analisar, organizar e inserir os dados da visita de 16/10 ao Bela Vista.
+
+### 23:52
+**Objeto**: `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py`, `analise/B3-a_contagem.py`
+**Antes**: a correção valia para uma tabela por vez; o intervalo de notas só ligava a primeira e a última visita de cada unidade e usava apenas a NFC-e do início da segunda.
+**Depois**: correção com `tabela = *` vale para todas as tabelas do observador na visita (pula as vazias). O intervalo de notas sai para cada par de visitas consecutivas da unidade, com a primeira leitura da seguinte (início ou, sem ela, fim) e as colunas `visita_de`, `visita_ate`, `nota_de` e `nota_ate`. Rodado de novo: consolidados de 10/10 idênticos aos anteriores.
+**Justificativa**: a visita de 16/10 é extra (fora do sorteio) e não tem NFC-e do início; sem a mudança, o intervalo 10/10 → 16/10 se perderia.
+
+### 23:52 (divergência)
+**Objeto**: `contagem_unidades.csv` (16/10, POV1 × POV2) e 10/10 × 16/10; `textos/capitulos/3_metodologia_plano_luderia.md` (§3.2 e Quadro 2) × dados do B3
+**Antes**: 10/10, POV1: 6 mesas e 7 instrutores. Cap. 3: quatro visitas de 3 horas, em 03/10 e 18/10, "só fim de semana".
+**Depois**: 16/10: POV1 conta 12 mesas e 2 instrutores; POV2, 15 mesas e 3 instrutores. Há uma visita extra numa sexta (16/10), e a nota de 16/10 cobra a "Taxa de Entrada Salão FDS" também na sexta.
+**Efeitos colaterais**: a ocupação percentual depende do total de mesas da unidade, ainda sem número único; o cap. 3 precisa dizer se a sexta conta como fim de semana ou como dia útil (premissas R07 e R08).
 
 ## 2026/10/17
 
@@ -1140,7 +1283,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: banco com os 200 posts sorteados (semente 20261015, 56 perfis), um por linha, título `perfil_coleta/shortcode`; colunas da amostra (estrato_sorteio, chave_sorteio, perfil_coleta, perfil, url, data_hora, tipo, curtidas, comentarios, n_midias, fixado, legenda_inicio, arquivo) e de conferência em branco (conferido_em, conferente, post_existe, data_confere, tipo_confere, curtidas_na_pagina, comentarios_na_pagina, legenda_confere, observacao; as de conferência sim/não como seleção Sim/Não). Relação de mão única com "A - Estabelecimentos" (o A não ganhou coluna) e rollups só de leitura: Instagram (A), Seguidores (A), No posts total (A), Data do primeiro post (A). 193 posts ligados à casa pelo @ do Instagram; os 7 de coviljogos (3) e ilusoesindustriais (4) ficam sem relação, por não terem página no A.
 **Justificativa**: pedido do autor: banco de auditoria dos posts ligado às casas, com propriedades do A só para leitura.
 
-
 ### 17:58
 **Objeto**: Notion, banco "A - Estabelecimentos", propriedades "Metro (em metros reais)" e "Shopping (em metros reais)"
 **Antes**: nomes de quando guardavam distâncias.
@@ -1170,6 +1312,12 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: sem cesta de jogos. Preço de venda e aluguel por jogo só no `B1_banco_jogos.csv`, sem custo de acervo nem comparação entre lojas.
 **Depois**: cesta com os 90 jogos presentes em 15 ou mais das 30 casas com acervo. 77 têm preço de venda e 13 não aparecem em nenhuma loja. Os jogos se dividem em três perfis pela duração (35 rápidos, 46 médios e 9 longos; a soma fecha em 90). Faixa por jogo entre as lojas: menor preço, mediana e p75 (ou o maior, com menos de 4 lojas). O núcleo custa R$ 15.276 / R$ 16.893 / R$ 17.836. Índice de preço por loja = média de preço/mediana do jogo, contando os jogos vendidos em 2 ou mais lojas: Flow 0,947, Place Games 0,957, Asgard 0,976, TabuClub 1,024, Inside 1,053. Utopia, Fortalúdica e La Tabuleria ficam fora do ranking, com menos de 10 jogos comparáveis. Custo do acervo inicial, provável: R$ 42,9 mil para 222 títulos (p25), R$ 60,9 mil para 322 (mediana) e R$ 114,8 mil para 622 (p75). Preço de varejo online de 13/10, sem desconto de distribuidora nem frete. Coluna com quantos aluguéis pagam cada jogo (mediana de 6,7).
 **Justificativa**: pedido do autor: cesta de jogos com corte de 15 ou mais casas, faixa de preço e índice por loja, base do custo do acervo (cap. 9.3) e da composição do acervo (cap. 6).
+
+### 13:38
+**Objeto**: `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`, `docs/registro-de-alteracoes.md` (merge dos PRs #8, #9, #10, #13 e #14)
+**Antes**: cinco PRs abertos, cada um com sua versão dos quatro arquivos de controle, em conflito entre si.
+**Depois**: conflitos resolvidos mantendo os dois lados. `decisoes.md` com as linhas de todos os PRs; `registro-de-alteracoes.md` com as entradas em ordem de hora; `pendencias.md` com o item 13 do PR #8 (traz LC 214/2025 e ruído); `AGORA.md` com o B3 das duas visitas (PR #14), a busca profunda de cardápios (PR #10) e o cap. 8 enxugado (PR #8), sem as linhas antigas de 15/10 do Notion e do B3.
+**Justificativa**: pedido do autor: revisar e fazer o merge de todos os PRs abertos.
 
 ## 2026/10/18
 
@@ -1215,6 +1363,12 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: um banco por tabela-resumo, com as colunas e os valores do CSV (nomes de coluna iguais, sem arredondar), a fonte, o recorte e o arquivo de origem na descrição do banco. Linhas: população e renda 27, aluguel 27, faixas do Simples 30, repartição 191, CNAE 10, Focus 25, BCB 6, salário de admissão 672 (336 por recorte). Contagens e somas conferidas por SQL no Notion contra os CSVs: salário de admissão com 336 + 336 linhas, admissões 3.019.106 (todas as atividades) e 872.446 (CNAE 56), amostra pequena 24 e 42; repartição com 36, 42, 42, 35 e 36 linhas por anexo (191) e soma dos percentuais igual. Seleções com opções criadas antes da carga (Indicador, fonte da locação, tributo, capital, ocupação). Na repartição, as 11 linhas das faixas 5 com alíquota efetiva acima do limite (anexos III e IV) ganharam "(efetiva > …)" no título, para não repetir o título da faixa comum. Tabelas longas (séries mensais e anuais do CAGED, BCB e FipeZap, POF, IPCA, PAS, Censo por idade e por bairro, PNADC) ficaram fora, por escolha do autor.
 **Justificativa**: pedido do autor: bancos no Notion com os dados do B4; recorte "só os resumos" escolhido por ele nesta sessão (o conector grava 100 linhas por chamada e o B4 tem cerca de 70 mil).
 
+### 13:44
+**Objeto**: Notion, bancos "1A - Auditoria Estabelecimentos", "1A - Auditoria Instagram (perfis)" e "1A - Auditoria Entorno (estabelecimentos)" (propriedades e visão padrão)
+**Antes**: 11 colunas da amostra com nome do CSV (`endereco`, `avaliacao_media`, `volume_avaliacoes`; `seguidores`, `primeiro_post`, `n_posts_declarado`, `link_perfil`; `osm_qt_estacoes_metro_500m`/`_1000m`, `osm_qt_shoppings_500m`/`_1000m`) ao lado de rollups do A com o mesmo dado; `endereco_confere` como seleção Sim/Não, vazia nas 11 linhas.
+**Depois**: as 11 colunas renomeadas com o nome do rollup sem "(A)" (Endereço, Nota média, N de avaliações; Seguidores, Data do primeiro post, No posts total, Instagram; Metro (500m), Metro (1000m), Shopping (500m), Shopping (1000m)), cada uma seguida de uma seleção "<nome> confere" com as opções correta/incorreta; `endereco_confere` (vazia) trocada por "Endereço confere" com as novas opções. Os 11 rollups continuam no banco, ocultos na visão padrão. No Entorno, a coluna renomeada é a do OSM, fonte do Metro do A; o Shopping do A junta Maps e OSM, então "Shopping (500m/1000m)" (OSM) pode diferir do rollup.
+**Justificativa**: pedido do autor: colunas repetidas com o nome do rollup, rollups ocultos e uma seleção correta/incorreta ao lado de cada uma.
+
 ## 2026/10/19
 
 ### 18:39
@@ -1236,6 +1390,12 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: cada tamanho, combo ou print de outra data do mesmo item era uma linha, e todas entravam na cesta e nas medianas. Ex.: BoardZ, burgers de 150 g e smash 75 g (mediana de hambúrguer R$ 32,00); Arena BG, burger e combo com batata e lata (R$ 52,50); Tubaleria, burger e combo com batata (R$ 48,00); Chef on Play e Cineplay, o mesmo item em prints de 2022 a 2025.
 **Depois**: as 2.214 linhas continuam na planilha; 2.106 são de referência e 108 ficam fora da cesta (52 de cardápio mais antigo, 30 de tamanho maior, 26 de combo). Regra por item (casa, seção e nome): fica o cardápio mais recente, depois sai o combo quando há a versão sem combo, depois fica o menor tamanho (menor preço; sem preço, o menor número da variação). Sabor, dia da semana e com ou sem álcool não são tamanho e ficam todos. Medianas que mudam (bebida / entrada ou prato / hambúrguer, R$): Arena BG 11,00 / 45,00 / 52,50 → 11,00 / 39,50 / 42,00; BoardZ 16,00 / 30,00 / 32,00 → 16,00 / 28,00 / 28,00; Castelos 29,90 → 26,90 na bebida; Cineplay 30,90 → 31,90 em entrada ou prato; Place Games 10,50 → 9,00 na bebida; Tubaleria 48,00 → 38,00 no hambúrguer. As transcrições não mudaram. `B1-b_resumo.py` não foi rodado (precisa de arquivos que só estão no Mac).
 **Justificativa**: decisão do autor (22/10/2026), na auditoria do cardápio da BoardZ: item com dois tamanhos pesava duas vezes na mediana e o combo puxava a de hambúrguer para cima.
+
+### 13:46
+**Objeto**: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_nuvem_palavras.py` (novo); `dados/[B2] Avaliacoes recentes/graficos/{png,svg,valores}/B2_nuvem_palavras` e `B2_nuvem_palavras_criticas` (novos); `_src/dicionario.md`; `AGORA.md`; `docs/decisoes.md`
+**Antes**: o B2 tinha só os três pictogramas da análise de conteúdo; não havia nuvem de palavras.
+**Depois**: duas nuvens no estilo editorial (Source Sans 3, PNG 300 dpi, SVG e CSV das 150 palavras com % simples e ponderado por casa). Geral, em cinza, com as 1.588 avaliações "analisada" de 53 casas: lideram "jogos" (37,8%), "atendimento" (29,2%) e "lugar" (22,0%). Notas 1 a 3, em vermelho, com 154 avaliações de 40 casas: "jogos" (42,2%), "atendimento" (38,3%), "experiência" e "comida" (27,3%), com "mesa", "ruim", "hora" e "espera" subindo. Fora: palavras vazias do português e 76 formas dos nomes próprios das casas. Cópia dos PNGs em `graficos/` da pasta do projeto. No dicionário, o padrão `Bn_nuvem_palavras[_<recorte>]`.
+**Justificativa**: pedido do autor: nuvem de palavras dos dados dos comentários.
 
 ## 2026/10/30
 
@@ -1339,7 +1499,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: planilha com índice, 21 tabelas (casas por metrópole, descritiva, dias de funcionamento, painéis por região e metrópole, entorno pelo Maps, preços e couvert dos cardápios, modelos de cobrança, eventos e temas do Instagram, jogos mais presentes e custo do acervo, contagem do B3, população e renda, aluguel comercial, salário de admissão, Simples Nacional, Selic e IPCA, IPCA de alimentação fora do domicílio) e a base das 54 casas. Tabelas do B1 por fórmula sobre a base, com linha de conferência (diferença 0 nas tabelas que fecham com o total); Arial 10, fundo branco, bordas só no cabeçalho e no fim. Fora: comentários do B2 (inclusive contagens de avaliações e a comparação legendas × B2) e porte de shopping do OSM. Dados lidos da branch `fix/entorno-maps-distantes` (a do Mac).
 **Justificativa**: pedido do autor: arquivo Excel com os dados agregados da pesquisa atual, sem comentários e sem OSM no entorno, com gráficos como os do documento anexo (Dance Forrónejo).
 
-
 ### 18:25
 **Objeto**: `.gitignore`
 **Antes**: logs dos scripts de `_src/extras/` (gravados em `_src/logs/` por `log_execucao.py`) apareciam como arquivos não versionados.
@@ -1363,7 +1522,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: `dados_agregados.xlsx` com as 21 tabelas de B1, B3 e B4 juntas e `dados_agregados_comentarios.xlsx` com o B2; títulos com o nome da tabela seguido de dois-pontos e da conclusão (ex.: "Tabela 1 – Casas do B1 por região e metrópole: São Paulo concentra 19 das 54; Salvador tem uma").
 **Depois**: um arquivo por bloco, com tabelas e abas renumeradas a partir de 1 em cada um: `B1_dados_agregados_completo.xlsx` (14 tabelas), `B1_dados_agregados_resumido.xlsx` (10 tabelas: sem eventos por categoria, dias citados nos eventos e temas das legendas do Instagram e sem o custo do acervo inicial, que eram as tabelas 10, 11, 12 e 14), `B2_dados_agregados.xlsx` (11), `B3_dados_agregados.xlsx` (1) e `B4_dados_agregados.xlsx` (6). Títulos só com a parte antes dos dois-pontos. Os dois arquivos antigos saíram. Gráficos iguais.
 **Justificativa**: pedido do autor: nomes das tabelas sem a conclusão ("o resto só polui") e tabelas separadas por bloco de dados, com duas versões do B1.
-
 
 ### 19:27
 **Objeto**: banco do Notion "2 - Comentários" (collection://c168e99a-a668-40b6-a0b4-1f64b5e15c06): propriedades "Itens positivos", "Itens negativos", "Contexto", notas por aspecto e a propriedade nova "Análise de temas" (seleção: "Claude 30/10/2026" e "anterior a 30/10/2026")
@@ -1421,7 +1579,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: instruções de 31/10: observação dentro do salão, com a mesa do observador fora dos registros.
 **Efeitos colaterais**: o roteiro (apêndice G) descreve um procedimento que não foi o usado; corrigir só a pedido do autor (`docs/pendencias.md`).
 
-
 ### 01:59
 **Objeto**: cap. 8 (`textos/capitulos/8_aspectos_juridicos.md` e `.docx`, novos); B4: objeto novo `_src/[B4] Bases publicas/Receita Federal CNPJ/` (`B4-c_cnpj_referencias.py`, `B4-b_cnpj_referencias.py`), `_dados-brutos/receita_cnpj/` e `juridico_tributario/[B4] CNPJ de Referência 2026-10 (Receita Federal).csv`; `bibliografia/referencias_bases_publicas.md`; `docs/melhorias-texto.md`, `decisoes.md`, `pendencias.md`, `status_capitulos.md` e `AGORA.md`
 **Antes**: cap. 8 não iniciado; sem dado da forma jurídica e do CNAE dos concorrentes de Salvador.
@@ -1433,7 +1590,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: ocupação dividida por todas as mesas do salão (11 no Bela Vista, 10 na Paralela) e pelos 48 assentos. Mesas, média (pico): 10/10 44,1% (54,5%); 16/10 35,6% (45,5%); 17/10 26,9% (40,0%); 30/10 60,3% (70,0%). Assentos: 51,7% (66,7%); 22,5% (29,2%); 18,8% (25,0%); 56,1% (64,6%). Nota da Tab 1 dizia "do lado de fora".
 **Depois**: denominador sem a mesa do observador (10 e 9 mesas; 45 ou 46 assentos). Mesas: 48,5% (60,0%); 39,2% (50,0%); 29,9% (44,4%); 66,9% (77,8%). Assentos: 55,1% (71,1%); 23,5% (30,4%); 19,7% (26,1%); 58,6% (67,4%). Colunas novas `mesas_denominador` e `assentos_denominador`; as demais colunas do resumo não mudaram. Nota da Tab 1: dentro do salão, sem a mesa do observador. Notion "3 - Visitas presenciais" sem colunas de ocupação: nada a mudar.
 **Justificativa**: decisão do autor em 31/10: a mesa do observador, que fica fora dos registros, sai também do denominador.
-
 
 ### 02:01
 **Objeto**: cap. 8 (8.1, `.md` e `.docx`), `B4-c_concla_cnae.py`, `_dados-brutos/concla/cnae_subclasses.json`, `[B4] Subclasses CNAE 2026 (CONCLA).csv`, `docs/decisoes.md`, `pendencias.md`, `melhorias-texto.md`, `status_capitulos.md` e `AGORA.md`
@@ -1464,7 +1620,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: P5.5 pedia voz ativa ou passiva sintética ("adotou-se"), contra a skill `meu-estilo-escrita`, que pede a analítica. Cap. 3 com duas passivas sintéticas ("registram-se", "contam-se ... mede-se"). Divergência D27 e pendência abertas.
 **Depois**: P5.5 pede voz ativa ou passiva analítica ("foi adotado"). Cap. 3 com as duas frases na analítica e .docx gerado de novo. D27 e a pendência saem. Busca nos demais capítulos: nenhuma passiva sintética de verbo de procedimento (só pronominais, como "dividem-se").
 **Justificativa**: escolha do autor em 31/10: vale a regra da skill.
-
 
 ### 02:26
 **Objeto**: cap. 6, seções 6.3 e 6.4 (`textos/capitulos/6_plano_de_marketing.md` e `.docx`, novos); B4: `B4-c_ibge_censo_bairros.py` (tema características do domicílio, parte 1), `B4-b_ibge_censo_bairros.py` (colunas `domicilios_apartamento` e `pct_apartamento`), zip novo em `_dados-brutos/ibge_censo_2022/`, `[B4] População por Bairro 2022 (IBGE Censo).csv`, `B4-a_matriz_bairros.py` e `B4_matriz_bairros_salvador.csv` (novos); `_src/extras/gerar_docx_capitulo.js` (larguras de colunas); `bibliografia/referencias_bases_publicas.md`; `docs/melhorias-texto.md`, `decisoes.md`, `pendencias.md`, `status_capitulos.md` e `AGORA.md`

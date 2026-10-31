@@ -15,7 +15,8 @@ Regras:
   na região da UF dessa capital (IBGE);
 - Instagram de LudoCafé e Dominaria fica vazio: o perfil coletado não é o da
   casa aprovada (editora e unidade de São Paulo);
-- couvert entra só nas casas com couvert encontrado (sem couvert = vazio, não 0);
+- couvert entra só nas casas com couvert encontrado (não encontrado = vazio, não 0;
+  não encontrar o couvert não quer dizer que a casa não cobra);
   a cesta completa também: couvert não encontrado não entra como 0;
 - shoppings de porte só nas casas em que o porte foi buscado;
 - interações por post = (curtidas + comentários) ÷ posts do período; taxa de
@@ -124,7 +125,7 @@ SITE = ["cesta_site_baixa", "cesta_site_mediana", "cesta_site_alta"]
 FLAGS = {
     "tem_metro_1000m": "Com estação de metrô até 1000 m",
     "tem_cardapio": "Com cardápio transcrito",
-    "cobra_couvert": "Cobra couvert ou taxa de jogo (entre as com cardápio)",
+    "cobra_couvert": "Couvert ou taxa de jogo encontrado (entre as com cardápio)",
     **{f"abre_{d}": f"Abre {NOME_DIA[d]}" for d in DIAS},
 }
 CORES = {"Google Maps": "DDEBF7", "Horários": "E2EFDA", "Entorno": "FFF2CC", "Instagram": "FCE4D6",
@@ -174,7 +175,7 @@ def montar_dados():
     d["engajamento_pct"] = (d.interacoes_por_post / d.seguidores).round(5)
     d["tem_metro_1000m"] = (d.metro_1000m > 0).astype(int)
     d["tem_cardapio"] = d.itens_com_preco.notna().astype(int)
-    d["cobra_couvert"] = d.couvert_no_cardapio.map({"sim": 1, "não": 0})
+    d["cobra_couvert"] = d.couvert_no_cardapio.map({"sim": 1, "não encontrado": 0, "não": 0})
     for dia in DIAS:
         d[f"abre_{dia}"] = d[dia].notna().astype(int)
     cols = ["place_id", "nome", "metropole", "regiao", *VARS, *FLAGS, *SITE]
@@ -303,7 +304,7 @@ def aba_dicionario(wb):
         ws.append([c, "Proporção", rot + " (1 = sim, 0 = não)", "0 ou 1"])
     ws.append(["regiao", "Identificação", "Região do Brasil da capital da metrópole (IBGE)", "—"])
     ws.append(["—", "Regras", "Cada casa conta uma vez, na metrópole do endereço. Instagram de LudoCafé e Dominaria "
-               "vazio (perfil coletado não é o da casa). Couvert só nas casas que cobram. Shoppings de porte só onde "
+               "vazio (perfil coletado não é o da casa). Couvert só nas casas com couvert encontrado. Shoppings de porte só onde "
                "o porte foi buscado. Distâncias em linha reta (coletor de entorno). Desvio padrão amostral; quartis "
                "pelo método inclusivo.", "—"])
     estilo(ws, 4, "A2")
@@ -477,8 +478,8 @@ def site(d):
         "fechamento": contagem_hora("fecha_tarde_h"),
         "dispersao_instagram": pontos(["seguidores", "interacoes_por_post"]),
         "dispersao_google": pontos(["volume_avaliacoes", "avaliacao_media"]),
-        # completa = bebida e entrada ou prato no cardápio. Couvert não cobrado não
-        # é item faltando: a cesta soma couvert 0.
+        # completa = couvert, bebida e entrada ou prato no cardápio. Couvert não
+        # encontrado não é couvert 0: a casa fica sem cesta.
         "cestas": sorted(({"nome": r.nome, "metropole": r.metropole, "regiao": r.regiao,
                            "baixa": float(r.cesta_site_baixa), "mediana": float(r.cesta_site_mediana),
                            "alta": float(r.cesta_site_alta),

@@ -169,7 +169,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 
 - [ ] Organização das bases e do dicionário de dados
 - [ ] Segunda codificação das 200 avaliações (a partir de 16/10)
-- [ ] Primeira versão do registro de premissas
+- [x] Primeira versão do registro de premissas
 
 ### Semana 6
 

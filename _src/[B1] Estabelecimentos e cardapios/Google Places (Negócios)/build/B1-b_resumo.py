@@ -25,8 +25,10 @@ Fontes (dados/[B1] Estabelecimentos e cardapios/, salvo indicação):
 Cesta por pessoa (textos/planejamento/registro_previo_luderia.md): couvert ou
 taxa de jogo + uma bebida + uma entrada ou um prato principal, com os preços do
 cardápio da própria casa, em três níveis: baixa (percentil 25 de cada
-categoria), mediana e alta (percentil 75). Sem couvert no cardápio, o couvert
-entra como 0 e a coluna couvert_no_cardapio diz "não". Cobrança por sala ou por
+categoria), mediana e alta (percentil 75). Couvert que não aparece no cardápio
+coletado não quer dizer que a casa não cobra: a coluna couvert_no_cardapio diz
+"não encontrado", os preços de couvert ficam vazios e a cesta também (decisão do
+autor, 16/10/2026). Cobrança por sala ou por
 hora (Café Geek) não é couvert por pessoa e fica de fora. Na planilha, as
 cestas são fórmulas sobre as colunas de preço.
 Só entram as linhas de referência do cardápio (linha_referencia = "S": cardápio
@@ -128,9 +130,8 @@ def cesta():
         com = g[g.categoria.isin(["entradas", "pratos principais"])].preco
         q = lambda s, p: round(float(s.quantile(p)), 2) if len(s) else None
         linhas.append(dict(
-            place_id=pid, itens_com_preco=len(g), couvert_no_cardapio="sim" if len(cov) else "não",
-            couvert_p25=q(cov.preco, .25) if len(cov) else 0, couvert_mediana=q(cov.preco, .5) if len(cov) else 0,
-            couvert_p75=q(cov.preco, .75) if len(cov) else 0,
+            place_id=pid, itens_com_preco=len(g), couvert_no_cardapio="sim" if len(cov) else "não encontrado",
+            couvert_p25=q(cov.preco, .25), couvert_mediana=q(cov.preco, .5), couvert_p75=q(cov.preco, .75),
             bebida_p25=q(beb, .25), bebida_mediana=q(beb, .5), bebida_p75=q(beb, .75),
             entrada_ou_prato_p25=q(com, .25), entrada_ou_prato_mediana=q(com, .5), entrada_ou_prato_p75=q(com, .75),
             hamburguer_mediana=q(g[g.subcategoria == "hambúrguer"].preco, .5),
@@ -189,7 +190,7 @@ DIC = {
     "comentarios_periodo": ("Instagram", "Comentários desses posts", "idem"),
     "obs_instagram": ("Instagram", "Ressalva da coleta", "B1"),
     "itens_com_preco": ("Cardápio", "Linhas de referência com preço no cardápio (uma por item, tamanho e combo à parte)", "B1_cardapios_itens_precos.xlsx"),
-    "couvert_no_cardapio": ("Cardápio", "Há couvert ou taxa de jogo por pessoa no cardápio", "idem"),
+    "couvert_no_cardapio": ("Cardápio", "Couvert ou taxa de jogo por pessoa encontrado no cardápio: sim ou não encontrado (não quer dizer que não cobra)", "idem"),
     "cesta_baixa": ("Cardápio", "Couvert + bebida + entrada ou prato, percentil 25 de cada categoria (R$)", "fórmula na aba cesta"),
     "cesta_mediana": ("Cardápio", "Idem, medianas (R$)", "fórmula na aba cesta"),
     "cesta_alta": ("Cardápio", "Idem, percentil 75 (R$)", "fórmula na aba cesta"),
@@ -259,7 +260,7 @@ def main():
     col = {c: get_column_letter(i + 1) for i, c in enumerate(CESTA_COLS)}
     for r in range(2, len(tc) + 2):
         for nivel, suf in [("cesta_baixa", "p25"), ("cesta_mediana", "mediana"), ("cesta_alta", "p75")]:
-            wc[f"{col[nivel]}{r}"] = (f"=IF(OR({col['bebida_' + suf]}{r}=\"\",{col['entrada_ou_prato_' + suf]}{r}=\"\"),\"\","
+            wc[f"{col[nivel]}{r}"] = (f"=IF(OR({col['couvert_' + suf]}{r}=\"\",{col['bebida_' + suf]}{r}=\"\",{col['entrada_ou_prato_' + suf]}{r}=\"\"),\"\","
                                       f"{col['couvert_' + suf]}{r}+{col['bebida_' + suf]}{r}+{col['entrada_ou_prato_' + suf]}{r})")
         for c in CESTA_COLS[5:22]:
             wc[f"{col[c]}{r}"].number_format = REAIS
@@ -332,7 +333,7 @@ def main():
         wd.append(["estabelecimentos", c, g, d, f])
     for c in CESTA_COLS[3:]:
         if c not in df.columns:
-            wd.append(["cesta", c, "Cardápio", "Preço da categoria no cardápio da casa (percentil indicado no nome; couvert 0 = sem couvert)" if c != "data_cardapio" else "Data do cardápio, quando a fonte informa",
+            wd.append(["cesta", c, "Cardápio", "Preço da categoria no cardápio da casa (percentil indicado no nome; vazio = sem preço no cardápio coletado; no couvert, não encontrado, o que não quer dizer que a casa não cobra)" if c != "data_cardapio" else "Data do cardápio, quando a fonte informa",
                        "B1_cardapios_itens_precos.xlsx (aba itens)"])
     wd.append(["por_capital", "—", "Resumo", "Contagens e médias por capital, com fórmulas sobre a aba estabelecimentos; média das cestas só entre casas com cardápio", "—"])
     estilo_cabecalho(wd, 5)

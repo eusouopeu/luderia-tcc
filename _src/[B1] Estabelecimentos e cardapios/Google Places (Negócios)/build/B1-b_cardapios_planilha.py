@@ -7,7 +7,11 @@ cardápio acessível (conferência de 10/10/2026) e, desde 15/10/2026, mais 16
 casas com cardápio em prints do Maps/Instagram, cardápio digital (Saipos e VUCA
 Food), página Takeat ou imagem/PDF transcritos à mão. Os 13 primeiros desses
 são convertidos por Cardápios/build/B1-b_cardapios_transcricoes.py; Alçapão,
-Café Geek e Fortalúdica foram transcritos à mão das imagens. Cada cardápio foi transcrito
+Café Geek e Fortalúdica foram transcritos à mão das imagens. Em 16/10/2026, a busca
+profunda (cardapios/B1_cardapios_busca_profunda.csv) trouxe o TabuClub (PDF transcrito à
+mão), preços de imprensa para a Fan Hour e cardápios parciais (couvert ou poucos itens,
+de site, imprensa ou TikTok) de LudoCafé, Game Of Boards, Garagem do Nerd e Joyjoy
+(São Jogue e Asgard ganharam cardápio completo em 17/10). Cada cardápio foi transcrito
 para um CSV em dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/
 (um arquivo por estabelecimento, separador ";"). A transcrição é manual para
 imagens e PDFs e automática para páginas em texto (VUCA Food, Wix). As fontes
@@ -83,8 +87,10 @@ FONTES = {
                      url="https://www.bodogami.com.br/wp-content/uploads/2025/03/cardapio_bodogami_19mar2025.pdf",
                      formato="PDF (site)", data_cardapio="2025-03-19", status="extraído", nota=""),
     "fanhour": dict(place_id="ChIJ_aN4OAxXzpQR0UH63sAeVCA", url="https://fanhour.com.br/menu",
-                    formato="página do site (texto)", data_cardapio="", status="sem preços",
-                    nota="o site lista os itens sem preço"),
+                    formato="página do site (texto) + preços de matéria de imprensa", data_cardapio="",
+                    status="parcial", data_coleta="2026-10-16",
+                    nota="itens do site (sem preço); 26 preços e a taxa de jogo da matéria São Paulo para "
+                         "Crianças, atualizada em 05/10/2026; 24 itens seguem sem preço"),
     "shelf": dict(place_id="ChIJ6ZLMZw-XpgAR_OR6SwY5xKo",
                   url="https://www.vucafood.com.br/funminds/2365/cardapio-digital",
                   formato="cardápio digital VUCA Food (texto)", data_cardapio="", status="extraído", nota=""),
@@ -172,13 +178,33 @@ FONTES = {
                         url="https://drive.google.com/uc?export=download&id=1cl7YIKdJhuuhNCUKAO0-96czajLGInqJ",
                         formato="PDF (Canva), transcrito à mão", data_cardapio="2025-12", status="extraído",
                         data_coleta="2026-10-12", nota=""),
+    # Busca profunda de 16/10/2026 (registro em cardapios/B1_cardapios_busca_profunda.csv)
+    "tabuclub": dict(place_id="ChIJOcVssmeDmQARZZrnWu2mnwA",
+                     url="https://drive.google.com/file/d/1-KDTgvYRZKe4R9KCWVQHRD5xiWqjSgPW/view",
+                     formato="PDF no Google Drive (link do Linktree), transcrito à mão", data_cardapio="",
+                     status="extraído", data_coleta="2026-10-16", nota="sem couvert no cardápio"),
+    "ludocafe": dict(place_id="ChIJx5jr3zGXpgARQGx9eX7TDmY",
+                     url="https://www.tiktok.com/@ossaboresdomundo/video/7437960404552224056",
+                     formato="legenda de vídeo do TikTok + matéria do Diário do Comércio (couvert)",
+                     data_cardapio="", status="parcial", data_coleta="2026-10-16",
+                     nota="10 itens de destaque (nov/2024) e couvert (jun/2024); sem refrigerante nem cerveja"),
+    "garagemdonerd": dict(place_id="ChIJsUAT-dObpgARCT2C5QpnVKU",
+                          url="https://diariodocomercio.com.br/negocios/bares-jogos-luderias-belo-horizonte/",
+                          formato="matéria de imprensa", data_cardapio="", status="parcial",
+                          data_coleta="2026-10-16",
+                          nota="só o couvert; garagemdonerd.com.br/cardapio existe, mas bloqueia leitura automática"),
+    "gameofboards": dict(place_id="ChIJu1yUroF_mQAR7qxqAfxKSw4", url="https://www.gameofboards.com.br/",
+                         formato="página do site (texto)", data_cardapio="", status="parcial",
+                         data_coleta="2026-10-16",
+                         nota="só o passaporte; cardápio no iFood (Game of Boards - Ludobar & Pizzaria), "
+                              "que só abre no navegador"),
+    "joyjoy": dict(place_id="ChIJOczn8z7l3JQRNBEL_ZJ3iQo",
+                   url="https://curitibandoemfamilia.com.br/experiencias/ctba-indoor/joyjoy-cafe/",
+                   formato="guia on-line", data_cardapio="", status="parcial", data_coleta="2026-10-16",
+                   nota="só a taxa de jogo (página de ago/2024)"),
 }
 # aprovado com cardápio acessível, mas sem transcrição
 SEM_TRANSCRICAO = {
-    "ChIJOcVssmeDmQARZZrnWu2mnwA": dict(
-        url="https://drive.google.com/file/d/1-KDTgvYRZKe4R9KCWVQHRD5xiWqjSgPW/view", formato="arquivo no Google Drive",
-        data_cardapio="", status="não extraído", data_coleta="2026-10-12",
-        nota="baixado em _dados-brutos/cardapios/ca_rio_de_janeiro/ca_tabuclub/, não transcrito"),
 }
 
 SUBCATEGORIAS = {

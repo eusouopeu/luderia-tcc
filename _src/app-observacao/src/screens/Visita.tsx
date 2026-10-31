@@ -1,13 +1,19 @@
 import { useState } from 'react'
-import { ArrowPathIcon, PlusIcon, QrCodeIcon, TrashIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { ArrowPathIcon, ArrowUpTrayIcon, PlusIcon, QrCodeIcon, TrashIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useLoja } from '../store'
 import { useLeitorQr } from '../ui/useLeitorQr'
 import { areaTexto, campo, Opcao, Secao } from '../ui/comum'
-import { agoraIso, dataBr, novoId, visitaAtual, type Ficha, type NotaFiscal, type Unidade, type Visita } from '../domain/model'
+import { agoraIso, arquivosCsv, dataBr, idVisita, novoId, PAPEIS, pausasTexto, POSICOES, visitaAtual, type Ficha, type NotaFiscal, type Unidade, type Visita } from '../domain/model'
+import { compartilhar } from '../storage/exportar'
 import { chaveDoQr, consultarNfce, dadosDaChave, notasEmitidas, pareceQrNfce } from '../domain/nfce'
 
 const COBRANCAS = ['Por pessoa', 'Por hora', 'Couvert lúdico', 'Consumação mínima', 'Sem cobrança', 'Outro']
-const CONDICOES = ['Chuva', 'Evento ou torneio', 'Jogo de futebol', 'Feriado ou véspera', 'Aniversário na casa', 'Promoção', 'Lotação esgotada', 'Obra ou falta de luz']
+const DIA_COMUM = 'Dia comum'
+const EVENTO = 'Evento ou torneio'
+const CONDICOES = [
+  DIA_COMUM, 'Feriado', 'Véspera de feriado', 'Feriado prolongado', EVENTO, 'Promoção', 'Jogo de futebol', 'Chuva', 'Aniversário na casa',
+  'Lotação esgotada', 'Obra ou falta de luz',
+]
 
 /** Ficha da visita: notas fiscais (QR), cobrança, preços e condições atípicas. */
 export function PaginaVisita({ unidade }: { unidade: Unidade }) {
@@ -60,9 +66,51 @@ export function PaginaVisita({ unidade }: { unidade: Unidade }) {
           ))}
         </div>
       )}
-      <h2 className="mt-4 text-xl font-extrabold">
-        Visita de {dataBr(v.inicio.slice(0, 10))}, {v.inicio.slice(11, 16)}–{v.fim ? v.fim.slice(11, 16) : 'em andamento'}
-      </h2>
+      <div className="mt-4 flex items-start gap-2">
+        <h2 className="flex-1 text-xl font-extrabold">
+          Visita de {dataBr(v.inicio.slice(0, 10))}, {v.inicio.slice(11, 16)}–{v.fim ? v.fim.slice(11, 16) : 'em andamento'}
+          <span className="block text-sm font-semibold text-neutro-500">
+            {idVisita(estado, v)} · {v.observador || 'sem observador'}
+          </span>
+        </h2>
+        <button
+          onClick={() => void compartilhar(arquivosCsv(estado, unidade.id, v.id), `Visita ${idVisita(estado, v)}`)}
+          className="p-2 text-caneta-700"
+          aria-label="Exportar esta visita"
+          title="Exportar esta visita"
+        >
+          <ArrowUpTrayIcon className="size-6" />
+        </button>
+      </div>
+
+      <Secao
+        titulo="Observador"
+        ajuda="Quem registrou, o que cobriu e de onde. Com dois observadores, combinem antes: um na porta e outro nas mesas, ou os dois na mesma tarefa para medir a concordância. As pausas do temporizador marcam quando o registro parou."
+      >
+        <input
+          value={v.observador}
+          onChange={(e) => mudaV((x) => ({ ...x, observador: e.target.value.toUpperCase() }))}
+          placeholder="Código (ex.: POV1)"
+          className={campo}
+        />
+        <p className="mb-1 mt-3 text-sm font-semibold">Papel</p>
+        <div className="flex flex-wrap gap-2">
+          {PAPEIS.map((p) => (
+            <Opcao key={p} ativo={v.papel === p} onClick={() => mudaV((x) => ({ ...x, papel: x.papel === p ? '' : p }))}>
+              {p[0].toUpperCase() + p.slice(1)}
+            </Opcao>
+          ))}
+        </div>
+        <p className="mb-1 mt-3 text-sm font-semibold">Posição</p>
+        <div className="flex flex-wrap gap-2">
+          {POSICOES.map((p) => (
+            <Opcao key={p} ativo={v.posicao === p} onClick={() => mudaV((x) => ({ ...x, posicao: x.posicao === p ? '' : p }))}>
+              {p}
+            </Opcao>
+          ))}
+        </div>
+        {v.pausas.length > 0 && <p className="mt-3 text-sm text-neutro-600">Pausas: {pausasTexto(v)}</p>}
+      </Secao>
 
       <Secao
         titulo="Notas fiscais (NFC-e)"
@@ -133,17 +181,25 @@ export function PaginaVisita({ unidade }: { unidade: Unidade }) {
         </button>
       </Secao>
 
-      <Secao titulo="Condições atípicas">
+      <Secao titulo="Condições do dia" ajuda="Marque tudo o que pode ter mudado o movimento. Dia comum quando não houve nada; ele exclui as outras opções.">
         <div className="flex flex-wrap gap-2">
           {CONDICOES.map((c) => {
             const on = v.ficha.condicoes.includes(c)
+            const proxima = on
+              ? v.ficha.condicoes.filter((x) => x !== c)
+              : c === DIA_COMUM
+                ? [DIA_COMUM]
+                : [...v.ficha.condicoes.filter((x) => x !== DIA_COMUM), c]
             return (
-              <Opcao key={c} ativo={on} onClick={() => mudaFicha({ condicoes: on ? v.ficha.condicoes.filter((x) => x !== c) : [...v.ficha.condicoes, c] })}>
+              <Opcao key={c} ativo={on} onClick={() => mudaFicha({ condicoes: proxima })}>
                 {c}
               </Opcao>
             )
           })}
         </div>
+        {v.ficha.condicoes.includes(EVENTO) && (
+          <input value={v.ficha.evento} onChange={(e) => mudaFicha({ evento: e.target.value })} placeholder="Qual evento? (ex.: RPG às 18h, 2 mesas)" className={`${campo} mt-3`} />
+        )}
         <textarea
           value={v.ficha.observacoes}
           onChange={(e) => mudaFicha({ observacoes: e.target.value })}

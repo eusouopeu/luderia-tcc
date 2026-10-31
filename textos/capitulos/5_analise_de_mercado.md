@@ -76,7 +76,7 @@ O aluguel de jogos para levar para casa é o substituto mais próximo. A platafo
 
 ### 5.3.4 Posicionamento: acervo e preço
 
-O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. Das 26 casas com cardápio coletado, 7 cobram couvert lúdico no cardápio e 19 não cobram. A cesta mediana — uma bebida e uma entrada ou prato — custa R$ 58,50 (média das medianas por casa), com faixa interquartil de R$ 40,62 a R$ 71,91. Fonte: elaborado pelo próprio autor com base nos cardápios e acervos (Bloco B1, 2026). O couvert não é a regra entre os concorrentes: o modelo de preço de referência é a venda de alimentos e bebidas, com couvert como opção (retomado em 6.3).
+O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. Das 26 casas com cardápio coletado, 7 trazem couvert lúdico no cardápio. Nas outras 19, o couvert não foi encontrado, o que não basta para afirmar que não cobram. A cesta mediana — uma bebida e uma entrada ou prato — custa R$ 58,50 (média das medianas por casa), com faixa interquartil de R$ 40,62 a R$ 71,91. Fonte: elaborado pelo próprio autor com base nos cardápios e acervos (Bloco B1, 2026). Como o couvert pode existir fora do cardápio, os dados não mostram se ele é a regra entre os concorrentes (retomado em 6.3).
 
 ### 5.3.5 Cinco forças
 
