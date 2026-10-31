@@ -5,7 +5,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 | Data | Decisão | Detalhe em |
 |---|---|---|
 | 31/10/2026 | B3: a mesa do observador sai do denominador da ocupação (mesas da unidade − 1; 48 assentos − pessoas da mesa do observador: 3 em 10/10, 2 nas demais) | `outros/B3_mesa_observador.csv`; `B3-a_contagem.py` |
-| 31/10/2026 | Cap. 8: sociedade limitada (unipessoal se houver um sócio) no Simples Nacional como EPP; A&B no anexo I, taxa de entrada e aluguel de jogos no anexo III; CNAE principal proposto 5611-2/01, a confirmar pelo autor; o plano assume NFC-e em toda venda | `textos/capitulos/8_aspectos_juridicos.md` |
+| 31/10/2026 | CNAE principal 5611-2/01 (restaurantes e similares), escolhido pelo autor; 5611-2/03 (lanchonete, o da São Jogue) fica como alternativa e 5611-2/05 é descartada | `textos/capitulos/8_aspectos_juridicos.md` (8.1) |
+| 31/10/2026 | Cap. 8: sociedade limitada (unipessoal se houver um sócio) no Simples Nacional como EPP; A&B no anexo I, taxa de entrada e aluguel de jogos no anexo III; CNAE principal 5611-2/01; o plano assume NFC-e em toda venda | `textos/capitulos/8_aspectos_juridicos.md` |
 | 31/10/2026 | B4: cadastro público do CNPJ das duas unidades da São Jogue (Receita Federal, via BrasilAPI) como referência de forma jurídica e CNAE, sem o quadro de sócios nem contatos | `_src/[B4] Bases publicas/Receita Federal CNPJ/` |
 | 31/10/2026 | B3: observação feita dentro do salão, com o observador sentado como cliente; a mesa do próprio observador (3 pessoas em 10/10 no Bela Vista, 2 nas demais) não entra nos registros | `_instrucoes/4_metodologia.md` §3.3 B3 |
 | 31/10/2026 | B3: pedidos (categoria, quantidade, chegada, espera) viram extra, só descritivo, porque não foram coletados em todas as visitas | `_instrucoes/4_metodologia.md` §3.3 B3 |

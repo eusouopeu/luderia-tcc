@@ -1390,3 +1390,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: denominador sem a mesa do observador (10 e 9 mesas; 45 ou 46 assentos). Mesas: 48,5% (60,0%); 39,2% (50,0%); 29,9% (44,4%); 66,9% (77,8%). Assentos: 55,1% (71,1%); 23,5% (30,4%); 19,7% (26,1%); 58,6% (67,4%). Colunas novas `mesas_denominador` e `assentos_denominador`; as demais colunas do resumo não mudaram. Nota da Tab 1: dentro do salão, sem a mesa do observador. Notion "3 - Visitas presenciais" sem colunas de ocupação: nada a mudar.
 **Justificativa**: decisão do autor em 31/10: a mesa do observador, que fica fora dos registros, sai também do denominador.
 
+
+### 02:01
+**Objeto**: cap. 8 (8.1, `.md` e `.docx`), `B4-c_concla_cnae.py`, `_dados-brutos/concla/cnae_subclasses.json`, `[B4] Subclasses CNAE 2026 (CONCLA).csv`, `docs/decisoes.md`, `pendencias.md`, `melhorias-texto.md`, `status_capitulos.md` e `AGORA.md`
+**Antes**: CNAE principal 5611-2/01 "proposto", a confirmar pelo autor; na base da CONCLA, 5611-2/05 rotulada "principal candidata" e 5611-2/01 "alternativa" (melhorias, D23).
+**Depois**: 5611-2/01 é o CNAE principal no cap. 8; na base, 5611-2/01 "principal", 5611-2/03 "alternativa (principal da São Jogue)" e 5611-2/05 "descartada"; CONCLA coletada de novo (10 subclasses) para levar os rótulos à tabela. D23 sai das melhorias; a pendência do CNAE sai.
+**Justificativa**: decisão do autor em 31/10/2026: CNAE principal 5611-2/01 (restaurante).

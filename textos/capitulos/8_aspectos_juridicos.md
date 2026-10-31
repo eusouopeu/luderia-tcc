@@ -26,7 +26,7 @@ Fonte: elaboração própria, com LC n. 123/2006 (anexos I e III), Lei n. 9.249/
 
 A carga do Simples entra no cap. 9 como 8,1% sobre o A&B e 11,9% sobre os serviços no ano maduro, calculada pela tabela do anexo sobre a receita do ano. A reforma do consumo (EC n. 132/2023 e LC n. 214/2025) mantém o Simples e abre a opção de recolher IBS e CBS por fora a partir de 2027 `[AV]`; a opção só vale se a luderia vender para empresas que usem o crédito, o que não é o caso.
 
-O CNAE principal proposto é 5611-2/01 (restaurantes e similares), com 9329-8/99 (recreação e lazer), 4763-6/01 (venda de jogos), 7729-2/02 (locação de jogos) e 8230-0/01 (eventos) como secundários. A São Jogue usa 5611-2/03 (lanchonete) como principal e lista 5611-2/01, 9329-8/99, 4763-6/01 e 8230-0/01 entre os secundários (Receita Federal, 2026); as duas escolhas caem no anexo I. Descartou-se 5611-2/05 (bar com entretenimento): a CONCLA define o entretenimento dessa subclasse como música e apresentações, não jogos de mesa (CONCLA, 2026).
+O CNAE principal é 5611-2/01 (restaurantes e similares), pela cozinha própria com refeições, com 9329-8/99 (recreação e lazer), 4763-6/01 (venda de jogos), 7729-2/02 (locação de jogos) e 8230-0/01 (eventos) como secundários. A São Jogue usa 5611-2/03 (lanchonete) como principal e lista 5611-2/01, 9329-8/99, 4763-6/01 e 8230-0/01 entre os secundários (Receita Federal, 2026); as duas escolhas caem no anexo I. Descartou-se 5611-2/05 (bar com entretenimento): a CONCLA define o entretenimento dessa subclasse como música e apresentações, não jogos de mesa (CONCLA, 2026).
 
 ## 8.2 LICENÇAS, ALVARÁS E OBRIGAÇÕES
 

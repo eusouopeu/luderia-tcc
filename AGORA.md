@@ -36,7 +36,7 @@ Atualizado em 31/10/2026 (01h59). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Contagem do B3, Paralela, sexta 30/10** (quarta visita, 19h20 às 21h59): só o POV2, em `originais/2026-10-30_SJPA/`; NFC-e final nº 12409 transcrita. Com as respostas do autor de 31/10: 13 pessoas em 7 grupos pela porta (4,9 por hora, permanência de 103,8 min), 7 grupos de mesa com 31 pessoas (136,9 min, piso: 4 mesas já estavam no salão), 7 pedidos (3 bebidas, 3 comidas, 1 sobremesa). Na Tab 1 do agregado do B3 e no Notion "3 - Visitas presenciais" (linha 4).
 
-- **Cap. 8, aspectos jurídicos** (31/10): rascunho em `textos/capitulos/8_aspectos_juridicos.md` e `.docx` (3/3 páginas). Sociedade limitada no Simples como EPP; Simples custa 10,1% da receita contra 21,9% no Lucro Presumido. CNPJ das duas unidades da São Jogue coletados (B4). Faltam a decisão do CNAE principal e a conferência das normas `[AV]` (pendências).
+- **Cap. 8, aspectos jurídicos** (31/10): rascunho em `textos/capitulos/8_aspectos_juridicos.md` e `.docx` (3/3 páginas). Sociedade limitada no Simples como EPP; Simples custa 10,1% da receita contra 21,9% no Lucro Presumido. CNPJ das duas unidades da São Jogue coletados (B4). CNAE principal 5611-2/01 (decisão do autor). Falta conferir as normas `[AV]` (pendências).
 
 - **Cap. 9, plano financeiro** (31/10): rascunho em `textos/capitulos/9_plano_financeiro.md` (e `.docx`, gerado por `node _src/extras/gerar_docx_capitulo.js <md>`) e modelo `9_plano_financeiro_modelo.xlsx` (gerado e conferido por `_src/extras/gerar_modelo_financeiro.py`). Provável: investimento de R$ 503 mil, VPL de −R$ 479 mil; ruptura com ocupação de fim de semana de 49,5%. O que falta firmar está nas pendências.
 

@@ -44,8 +44,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D20 — Ocupação de dia útil em N6 entre as premissas críticas.** Cap. 9 (9.2 e 9.7) × `8_financeiro.md` (§2, regra de robustez). A taxa de ocupação de dia útil é a 4ª do tornado e só tem estimativa do autor. A regra admite isso com faixa larga e destaque no cap. 10, que ainda não existe. Sugestão: buscar fonte N3 (curva de horários de pico do Google Maps das luderias do B1) ou manter e levar ao cap. 10.
 
-**D23 — CNAE principal: candidata da coleta × proposta do cap. 8.** `[B4] Subclasses CNAE 2026 (CONCLA).csv` e `B4-c_concla_cnae.py` rotulam 5611-2/05 (bar com entretenimento) como "principal candidata"; o cap. 8 (8.1) propõe 5611-2/01 e descarta 5611-2/05 pela definição de entretenimento da CONCLA (música e apresentações); a São Jogue usa 5611-2/03. O cap. 9 (9.4) já cita 5611-2/01. Sugestão: o autor decide e o rótulo do script segue a decisão.
-
 **D24 — Reforma tributária: data de efeito.** Cap. 5 (5.4/PESTEL) diz que a LC 214/2025 "muda a tributação de bares e restaurantes a partir de 2026"; o cap. 8 (8.1) diz que o Simples continua e que a opção de recolher IBS e CBS por fora vale a partir de 2027. Os dois trechos têm `[AV]`; conferir no texto da lei e alinhar.
 
 ## Aceitável

@@ -21,10 +21,10 @@ OUT_PATH = RAW_DIR / "concla" / "cnae_subclasses.json"
 
 # Subclasse -> papel no enquadramento
 SUBCLASSES = {
-    "5611205": "Principal candidata: bar com entretenimento",
+    "5611205": "Descartada: bar com entretenimento (música e apresentações)",
     "5611204": "Alternativa: bar sem entretenimento",
-    "5611201": "Alternativa: restaurante (cozinha própria)",
-    "5611203": "Alternativa: lanchonete",
+    "5611201": "Principal: restaurante (cozinha própria), decisão do autor em 31/10/2026",
+    "5611203": "Alternativa: lanchonete (principal da São Jogue)",
     "9329899": "Secundária: recreação e lazer não especificados (jogos de mesa)",
     "9329804": "Secundária: exploração de jogos eletrônicos recreativos",
     "8230001": "Secundária: organização de festas e eventos",

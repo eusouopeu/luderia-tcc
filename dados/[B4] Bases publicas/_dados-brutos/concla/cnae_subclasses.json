@@ -1,9 +1,9 @@
 {
  "fonte": "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses/{}",
- "data_coleta": "2026-09-14",
+ "data_coleta": "2026-10-31",
  "subclasses": {
   "5611205": {
-   "papel_no_plano": "Principal candidata: bar com entretenimento",
+   "papel_no_plano": "Descartada: bar com entretenimento (música e apresentações)",
    "resposta": {
     "id": "5611205",
     "descricao": "BARES E OUTROS ESTABELECIMENTOS ESPECIALIZADOS EM SERVIR BEBIDAS, COM ENTRETENIMENTO ",
@@ -90,7 +90,7 @@
    }
   },
   "5611201": {
-   "papel_no_plano": "Alternativa: restaurante (cozinha própria)",
+   "papel_no_plano": "Principal: restaurante (cozinha própria), decisão do autor em 31/10/2026",
    "resposta": {
     "id": "5611201",
     "descricao": "RESTAURANTES E SIMILARES",
@@ -139,7 +139,7 @@
    }
   },
   "5611203": {
-   "papel_no_plano": "Alternativa: lanchonete",
+   "papel_no_plano": "Alternativa: lanchonete (principal da São Jogue)",
    "resposta": {
     "id": "5611203",
     "descricao": "LANCHONETES, CASAS DE CHÁ, DE SUCOS E SIMILARES",
