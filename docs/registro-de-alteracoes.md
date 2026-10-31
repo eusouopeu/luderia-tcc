@@ -1705,3 +1705,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: sem colunas de recorrência e intenção de voltar.
 **Depois**: colunas "Costuma ir" (sim, não, não foi dito, segunda vez) e "Voltará" (sim, não, não foi dito), vazias, com as mesmas opções do "2 - Comentários".
 **Justificativa**: pedido do autor: recodificar também esses dois campos, como no banco original.
+
+### 04:15
+**Objeto**: Notion, "2R - Recodificação cega", linha 136 (Bardo Mago)
+**Antes**: texto cortado em "fizeram questão de que todo mundo …".
+**Depois**: texto completo da coleta de 14/10 (`2026-10-14_bardo_mago_maps_avaliacoes_tudo.csv`), terminado em "Voltaria sem pensar duas vezes! ⭐⭐⭐⭐⭐".
+**Justificativa**: pedido do autor de checar comentários incompletos. Na amostra, só essa linha estava cortada; as outras 4 terminadas em "…" (n. 44, 60, 95 e 100) terminam em emoji + "…", forma que o Maps mostra mesmo com o texto inteiro.
+
+### 04:15 (divergência)
+**Objeto**: textos cortados no "2 - Comentários"
+**Antes**: 42 linhas terminam em "…"; 24 delas em emoji + "…" (texto inteiro) e 18 sem emoji (cortadas ou com reticências do próprio autor).
+**Depois**: as coletas de 13, 14 e 30/10 têm o texto completo de 15 das 18 (Bardo Mago 6, Cartola 2, Encounter, Shelf, XPlace, Balboa's, Utopia, Arena BG, Vila Celta, esta só com reticências do avaliador). Sem versão completa em nenhuma coleta: Arena BG ("...com a gente. …") e Tubaleria (termina em "playdanmager …").
+**Efeitos colaterais**: as 15 linhas foram codificadas sobre o texto cortado (12 por Claude em 30/10, 6 antes, entre as 18). Trocar o texto no Notion pede rever os temas dessas linhas; não feito sem pedido do autor.
