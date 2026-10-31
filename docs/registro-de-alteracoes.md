@@ -1693,3 +1693,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: rascunhos. Cap. 7 com capacidade (193 pessoas por dia; demanda provável de 48), processos, acervo e equipe de 8 pelo fluxo do B3. Cap. 10 com SWOT, cenários, ruptura com a equipe do cap. 7 (ocupação de fim de semana de 41,5%), matriz de riscos e indicadores. Caps. 4 e 11 com o parecer (inviável no provável; viável com a equipe de 8 e ocupação de 41,5% ou mais); 4.2, 4.3 e os objetivos (ii) e (iii) marcados para depois.
 **Justificativa**: pedido do autor: escrever os caps. 7, 10, 4 e 11. A equipe de 8 está só no texto; o modelo segue com 12 até a decisão do autor (melhorias D33).
 
+### 03:55
+**Objeto**: Notion, banco novo "2R - Recodificação cega" (https://app.notion.com/p/94ebc5a5d6b748feb2204ec91c442fb0)
+**Antes**: amostra da recodificação só em CSV (`b2/notion_comentarios/2026-10-30_B2_amostra_recodificacao.csv`, 139 linhas); nenhum banco próprio no Notion.
+**Depois**: banco com as 139 linhas (Nº da amostra, comentário, estabelecimento, nota geral), colunas vazias de Itens positivos e Itens negativos (23 temas cada, os mesmos do "2 - Comentários"), Contexto (8 opções), caixa "Lido" e relação de mão única "Avaliação original" com a linha do "2 - Comentários" (75 ligadas pelo ID da avaliação, 64 pelo texto; 139 de 139). O "2 - Comentários" não mudou.
+**Justificativa**: pedido do autor: banco da recodificação ligado ao da codificação, mas independente, para codificar sem ver a primeira codificação. A relação abre a página original, que mostra os temas do Claude: só consultar depois de terminar.
+

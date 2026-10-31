@@ -1,13 +1,13 @@
 # AGORA
 
-Atualizado em 31/10/2026 (03h05). Semana 8 do cronograma (31/10 a 06/11). Próxima entrega: **06/11, versão completa**; versão final para a banca em 16/11.
+Atualizado em 31/10/2026 (03h55). Semana 8 do cronograma (31/10 a 06/11). Próxima entrega: **06/11, versão completa**; versão final para a banca em 16/11.
 
 ## Fazendo agora
 
 - **Capítulos:** todos têm arquivo. Rascunhos novos em 31/10: caps. 4, 7, 10 e 11. Cap. 5 segue esboço de 15/10 (5.2 provisório); cap. 6 só com 6.3 e 6.4 ([status](textos/planejamento/status_capitulos.md)).
 - **Viabilidade:** inviável no provável (VPL -R$ 479 mil com 12 pessoas; -R$ 214 mil com a equipe de 8 do cap. 7). Viável com a equipe de 8 e ocupação de fim de semana de 41,5% ou mais (cap. 10).
 - **Main unificada** (PR #22): branch do Mac, main antiga, app 2.5 e PRs #20 e #21. Mac na `main`; base do B1 regerada (a2ff9fa): 42 casas com cardápio, consumo por pessoa de R$ 50,25 (36 casas), cesta completa de R$ 78,50 (10). Números levados aos caps. 3, 5, 6 e 9.
-- **B2:** falta a recodificação cega do autor (139 linhas, `b2/notion_comentarios/2026-10-30_B2_amostra_recodificacao.csv`; o gabarito só depois).
+- **B2:** falta a recodificação cega do autor, no banco "2R - Recodificação cega" do Notion (139 linhas; não abrir a relação "Avaliação original" nem o gabarito antes de terminar).
 
 ## Próximos 3 passos
 
