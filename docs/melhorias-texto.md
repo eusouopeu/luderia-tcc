@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 16/10/2026, com o cap. 8 enxugado, sobre os caps. 1, 2, 3 e 8 (rascunhos) e 5 (esboço).
+Última análise: 31/10/2026 (05h), revisão geral dos caps. 1, 2, 3, 5, 6, 8 e 9 depois dos PRs #20 e #21 (consumo por pessoa e cesta completa).
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -18,11 +18,11 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D02 — Objetivos e seções da introdução fora da estrutura.** Cap. 1 (1.1) × `1_estrutura.md` (1.3). O cap. 1 tem 7 objetivos específicos; a instrução permite no máximo 6, um por decisão, cada um respondido em 11.2. Os itens (vi) e (vii) cabem em um só (o (vi) da proposta da instrução). As seções também divergem: o cap. 1 tem 1.1 Objetivos, 1.2 Justificativa e 1.3 Estrutura; a instrução prevê 1.1 Contextualização, 1.2 Problema e oportunidade, 1.3 Objetivos, 1.4 Justificativa e 1.5 Estrutura. Sugestão: fundir (vi) e (vii) e renumerar, ou ajustar a instrução.
 
-**D03 — "Única luderia em operação" × "única no recorte".** Cap. 1 (contextualização) × cap. 5 (5.3.3, Tabela 5.1). O cap. 1 afirma que a São Jogue é a única luderia em operação em Salvador; o cap. 5 diz "única no recorte", com 13 resultados na busca, 7 acima de 100 avaliações e 1 aprovado na curadoria. A afirmação do cap. 1 é mais forte que o dado. Sugestão: "a única luderia de Salvador com mais de 100 avaliações no Google Maps (Bloco B1, 2026)".
+**D03 — "Única luderia em operação" × "única no recorte".** Cap. 1 (contextualização) × cap. 5 (5.3.3, Tabela 5.1). O cap. 1 afirma que a São Jogue é a única luderia em operação em Salvador; o cap. 5 diz "única no recorte", com 13 resultados na busca, 7 acima de 100 avaliações e 1 aprovado na curadoria. A afirmação do cap. 1 é mais forte que o dado. Sugestão: "a única luderia de Salvador com mais de 100 avaliações no Google Maps (Bloco B1, 2026)". Em 31/10, o cap. 3 (3.3.3) também diz "única luderia de Salvador".
 
-**D04 — Categorias da análise de conteúdo do B2.** Cap. 2 (2.5) × cap. 5 (5.2.2). O cap. 2 diz que as categorias são comida, serviço, ambiente, acervo e preço, e que a análise está no cap. 6.2. O cap. 5.2.2 usa atendimento, alimentos e bebidas, acervo, mediação lúdica e preço: a mediação lúdica não está no cap. 2, e o ambiente não aparece no cap. 5. Sugestão: alinhar as duas listas ao dicionário de `textos/instrumentos/analise_conteudo_bardin_B2.md` e dizer, no cap. 2, que a análise aparece em 5.2 (ocasiões e temas) e 6.2 (acervo e atributos).
+**D04 — Categorias da análise de conteúdo do B2.** Cap. 2 (2.5) × cap. 5 (5.2.2). O cap. 2 diz que as categorias são comida, serviço, ambiente, acervo e preço, e que a análise está no cap. 6.2. O cap. 5.2.2 usa atendimento, alimentos e bebidas, acervo, mediação lúdica e preço: a mediação lúdica não está no cap. 2, e o ambiente não aparece no cap. 5. Sugestão: alinhar as duas listas ao dicionário de `textos/instrumentos/analise_conteudo_bardin_B2.md` e dizer, no cap. 2, que a análise aparece em 5.2 (ocasiões e temas) e 6.2 (acervo e atributos). Em 31/10, o cap. 3 (3.4.2) entra com uma terceira lista: os 22 temas do dicionário de 30/10 (`textos/instrumentos/dicionario_temas_B2.md`), que ainda não foi unificado com o livro do Bardin (pendências, item 15).
 
-**D05 — PRC anunciada e aplicada pela metade.** Cap. 2 (2.2.2) × cap. 5 (5.2.2). O cap. 2 define a PRC pela comparação da nota de quem elogia, de quem critica e de quem não menciona o aspecto (penalidade e recompensa contra uma referência). O cap. 5.2.2 traz só a nota média das menções negativas (2,83 na mediação; 3,11 no preço), sem a referência nem as positivas. Lido isolado, parece que a classificação Kano já saiu. Sugestão: no cap. 5 dar as três notas (ou a diferença para a referência) ou dizer que a classificação fica para o cap. 6.
+**D05 — PRC anunciada e aplicada pela metade.** Cap. 2 (2.2.2) × cap. 5 (5.2.2). O cap. 2 define a PRC pela comparação da nota de quem elogia, de quem critica e de quem não menciona o aspecto (penalidade e recompensa contra uma referência). O cap. 5.2.2 traz só a nota média das menções negativas (2,83 na mediação; 3,11 no preço), sem a referência nem as positivas. Lido isolado, parece que a classificação Kano já saiu. Sugestão: no cap. 5 dar as três notas (ou a diferença para a referência) ou dizer que a classificação fica para o cap. 6. Em 31/10, o cap. 3 (3.5.1) define a PRC como a nota média com e sem crítica a cada tema, sem o grupo de quem elogia; alinhar com a definição do cap. 2.
 
 **D06 — PESTEL: o que o cap. 2 promete e o que o cap. 5 entrega.** Cap. 2 (2.2.1) × cap. 5 (5.5). O cap. 2 diz que o 5.5 usa "renda por bairro, tributos e taxa de juros". No cap. 5, a renda por bairro está em 5.2.1 e ainda não foi coletada, os tributos foram para o cap. 8 e o fator ambiental foi excluído (o cap. 2 lista seis dimensões). Sugestão: no cap. 2, citar os exemplos que de fato entram (juros, IPCA da alimentação fora do lar, aluguel comercial) e dizer que só entram dimensões com efeito mensurável.
 
@@ -40,7 +40,25 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D13 — Perfil do frequentador "sai das avaliações".** Cap. 2 (2.4) × cap. 5 (5.2). O cap. 2 diz que o perfil do frequentador sai das avaliações do B2 (cap. 5.2). As avaliações não trazem idade, gênero ou renda; o 5.2.1 usa o IBGE para população e renda, e o B2 dá temas e ocasiões. Sugestão: no cap. 2, "as ocasiões de consumo e os atributos valorizados saem do B2; o tamanho do público, do IBGE".
 
-**D19 — Reforma tributária e ruído: o cap. 5 manda para o cap. 8, que não trata.** Cap. 5 (5.5, fator legal) × cap. 8 (8.1 e Quadro 02). O cap. 5 diz que o enquadramento tributário fica no cap. 8 e cita a transição da LC 214/2025 e a regulação municipal de ruído e horário noturno. O cap. 8 projeta o Simples por cinco anos sem citar a transição para CBS e IBS e não tem linha de ruído ou alvará noturno no Quadro 02. Sugestão: uma frase em 8.1 sobre o efeito da LC 214/2025 no Simples (após conferir o texto da lei) e uma linha de ruído no Quadro 02, ou tirar a remissão do cap. 5.
+**D19 — Proporção de mercadorias da PAS em dois anos.** Cap. 5 (5.1.1) × cap. 9 (9.2). O cap. 5 dá 26,8% da receita líquida para mercadorias e materiais (PAS 2024, tabela 10758) e diz que o número entra no cap. 9; o cap. 9 usa 29,6% (PAS 2023, tabela 2613, a base que está no B4) para o CMV provável de 30%. Sugestão: baixar a PAS 2024 para o B4 e usar o mesmo ano nos dois capítulos.
+
+**D20 — Ocupação de dia útil em N6 entre as premissas críticas.** Cap. 9 (9.2 e 9.7) × `8_financeiro.md` (§2, regra de robustez). A taxa de ocupação de dia útil é a 4ª do tornado e só tem estimativa do autor. A regra admite isso com faixa larga e destaque no cap. 10, que ainda não existe. Sugestão: buscar fonte N3 (curva de horários de pico do Google Maps das luderias do B1) ou manter e levar ao cap. 10.
+
+**D24 — Reforma tributária: data de efeito.** Cap. 5 (5.4/PESTEL) diz que a LC 214/2025 "muda a tributação de bares e restaurantes a partir de 2026"; o cap. 8 (8.1) diz que o Simples continua e que a opção de recolher IBS e CBS por fora vale a partir de 2027. Os dois trechos têm `[AV]`; conferir no texto da lei e alinhar.
+
+**D26 — Codificação do B2: cap. 3 × instrução.** Cap. 3 (3.4.2 e 3.4.3) × `4_metodologia.md` §3.4. O cap. 3 descreve a prática atual — codificação temática com 22 temas, feita com apoio de inteligência artificial e validada por recodificação cega de 139 avaliações com kappa ≥ 0,70. A instrução ainda prevê dicionário automático de 11 aspectos, validado por kappa e F1 em 200 avaliações. Sugestão: decidir o instrumento (pendências, item 15, e "Instruções ainda desatualizadas") e alinhar a instrução ou o capítulo.
+
+**D28 — Mediana da taxa de entrada dos concorrentes: 18,75 × 25,00.** Cap. 9 (9.8 e aba checagens) × cap. 6 (6.3). O cap. 9 usa R$ 18,75, mediana da coluna "couvert ou taxa de jogo" de `B1_cardapios_itens_precos.xlsx`, que inclui uma pizza chamada "Lúdico" (Ludoteca BGC, R$ 30,00) e a sala do Café Geek cobrada por hora e por grupo, e mistura dia útil e fim de semana. O cap. 6 separa os dias e dá R$ 25,00 no fim de semana e R$ 17,50 no dia útil, com 6 concorrentes. A conclusão (São Jogue acima da mediana) não muda. Sugestão: corrigir a classificação no B1 e rodar de novo o modelo do cap. 9.
+
+**D27 — Frequência de preço nas avaliações: 12,8% × 2,7% e 9,3%.** Cap. 5 (5.2.2, Bardin provisório de 15/10: "preço e valor percebido" em 12,8%) × cap. 6 (6.3, temas do Notion de 30/10: preço da entrada em 44 e preço do consumo em 152 das 1.628 avaliações). São codificações diferentes; alinhar quando o 5.2 for refeito com o dicionário de 30/10.
+
+**D29 — Cardápios: cesta, consumo e couvert com quatro bases diferentes.** Cap. 5 (5.3, "cesta mediana" de R$ 58,50 com bebida e prato, 26 casas com cardápio, 7 com couvert) × cap. 6 (6.3: 36 casas com cardápio, 6 cobram taxa, mediana de R$ 25,00) × cap. 9 (9.8: 8 concorrentes, mediana de R$ 18,75) × decisão de 30/10 e PR #21 (consumo por pessoa de R$ 48,80 em 33 casas; cesta completa de R$ 74,25 só nas 8 casas com couvert encontrado). O cap. 5 chama de "cesta" o que agora é "consumo", e o cap. 3 (3.5) ainda define o ticket como "cesta por pessoa — couvert, bebida e prato". Sugestão: depois de rodar de novo `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py` no Mac, reescrever os três capítulos com os mesmos números e os nomes "consumo por pessoa" e "cesta completa" (já nas instruções em 31/10).
+
+**D30 — CNAE do cap. 5 contra a decisão do cap. 8.** Cap. 5 (5.1, "bar com entretenimento, subclasse 5611-2/05", e a lacuna de contar CNPJ ativos na 5611-2/05) × cap. 8 (8.1) e decisão de 31/10 (CNAE principal 5611-2/01; 5611-2/05 descartada). Sugestão: no 5.1, citar 5611-2/01 como a subclasse do plano e, se a contagem de CNPJ for feita, usar as duas (5611-2/01 e 5611-2/03) e dizer que nenhuma isola luderias.
+
+**D31 — Gasto com A&B: R$ 24,00 contra consumo de R$ 48,80 dos concorrentes.** Caps. 6 (6.3) e 9 (R08, 9.2) × cap. 5 (5.3) e PR #21. O plano projeta R$ 24,00 por pessoa (quatro NFC-e das mesas dos observadores), metade do consumo mediano por pessoa nos cardápios dos concorrentes (R$ 48,80, uma bebida e uma entrada ou prato). As duas medidas não são a mesma coisa (gasto observado × preço de cardápio), mas o texto não explica a distância, e R08 é premissa crítica do VPL. Sugestão: no cap. 9, dizer por que o gasto observado fica abaixo da cesta de cardápio (grupo dividindo pratos, quem só bebe) e usar o consumo do B1 como teto do otimista.
+
+**D32 — Reforma tributária e ruído: o cap. 5 manda para o cap. 8, que não trata.** Cap. 5 (5.5, fator legal) × cap. 8 (8.1 e Quadro 02). O cap. 5 diz que o enquadramento tributário fica no cap. 8 e cita a transição da LC 214/2025 e a regulação municipal de ruído e horário noturno. O cap. 8 projeta o Simples por cinco anos sem citar a transição para CBS e IBS e não tem linha de ruído ou alvará noturno no Quadro 02. Sugestão: uma frase em 8.1 sobre o efeito da LC 214/2025 no Simples (após conferir o texto da lei) e uma linha de ruído no Quadro 02, ou tirar a remissão do cap. 5. (Item trazido da `main` em 31/10; conferir se o cap. 8 de 31/10 já trata.)
 
 ## Aceitável
 
@@ -57,6 +75,12 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D20 — Numeração de quadros em três formatos.** Caps. 2 e 3 usam "Quadro 1"; o cap. 5, "Quadro 5.2"; o cap. 8, "Quadro 01" (dois dígitos, padrão de `10_biblio-apendices.md`). Padronizar na revisão de forma, com numeração contínua no trabalho todo.
 
 ---
+
+**D21 — Árvore de direcionadores como quadro.** Cap. 9 (9.1) × `8_financeiro.md` (§1, "a árvore aparece como figura"). O rascunho usa o Quadro 9.1. Trocar por figura na revisão de forma, se couber no teto.
+
+**D22 — Registro completo de premissas sem apêndice.** Cap. 9 (9.2) × `10_biblio-apendices.md`. O texto remete ao "Apêndice `[letra]`"; o registro completo (38 linhas) está só na aba premissas do modelo. Definir a letra e gerar o apêndice a partir da planilha.
+
+**D25 — Normas estaduais e municipais sem conferência.** Cap. 8 (Tabela 8.1 e Quadro 8.1) × `6_juridico.md` ("toda informação legal deve citar a norma e ter a vigência conferida"). LOUOS de Salvador, Lei estadual 12.929/2013 (bombeiros), RICMS-BA, ICMS de 4% sobre o A&B, ISS de 5% e contribuição patronal de 27,8% estão `[AV]`. A conclusão (Simples mais barato) não muda com eles: a diferença é de R$ 103 mil por ano.
 
 # Cortes em potencial
 
@@ -80,7 +104,15 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **C08 — Perfil do jogador que o próprio texto não usa (cap. 2, 2.4).** O 2.4 descreve o Censo Ludopedia (39% mulheres, 75% superior, 59% jogam mais de duas vezes por mês, 35% com mais de 50 jogos) e o Woods (96% homens) e depois diz que esses números não entram como premissa. Ficar com a conclusão (amostra autosselecionada, núcleo engajado) e o dado de preço, que entra no 6.3. Ganho: ~60 palavras.
 
+**C15 — Matriz de evidências no corpo do cap. 3 (3.6).** O cap. 3 fecha em cerca de 10,2 páginas, acima do teto de 10. A matriz (Quadro 3.5, meia página) pode ir para apêndice, com uma frase no 3.6, como a P4.2 permite. Ganho: cerca de 175 palavras.
+
 ## Baixo ganho
+
+**C13 — Estrutura das unidades da São Jogue repetida (cap. 9, 9.2 e 9.8).** Mesas, assentos e turnos do site de reservas aparecem nas premissas e de novo na checagem de capacidade; quando o cap. 3 descrever o B3, os dois trechos viram remissão. Ganho: ~40 palavras.
+
+**C14 — Carga do Simples dita duas vezes (caps. 8 e 9).** O 8.1 e o 9.4 repetem as alíquotas de 8,1% e 11,9%; no 9.4 basta remeter ao 8.1. Ganho: ~40 palavras.
+
+**C16 — Consumo nas NFC-e da São Jogue em dois capítulos (6.3 e 9.2).** O gasto de R$ 23,91 por pessoa e o cardápio da São Jogue aparecem nos dois; no 9.2 basta remeter ao 6.3. Ganho: ~50 palavras.
 
 **C09 — Duas listas de seis forças do macroambiente (cap. 2, 2.2.1).** A lista de Kotler e Keller e a do PESTEL dizem o mesmo; ficar só com a do PESTEL, que é a usada no 5.5. Ganho: ~25 palavras.
 

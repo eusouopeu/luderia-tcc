@@ -25,11 +25,13 @@ BRASIL. Ministério do Trabalho e Emprego. **Microdados do Novo CAGED**: movimen
 
 COMISSÃO NACIONAL DE CLASSIFICAÇÃO (CONCLA). **Classificação Nacional de Atividades Econômicas (CNAE)**: subclasses 4763-6/01, 5611-2/01, 5611-2/03, 5611-2/04, 5611-2/05, 5620-1/02, 7729-2/02, 8230-0/01, 9329-8/04 e 9329-8/99. Rio de Janeiro: IBGE, 2026. Base de dados. Disponível em: https://servicodados.ibge.gov.br/api/v2/cnae/subclasses. Acesso em: 14 set. 2026.
 
+RECEITA FEDERAL DO BRASIL. **Cadastro Nacional da Pessoa Jurídica (CNPJ)**: CNPJ 34.128.755/0001-98 e 59.848.429/0001-86. Brasília, DF: RFB, 2026. Base de dados consultada pela BrasilAPI. Disponível em: https://brasilapi.com.br/api/cnpj/v1/. Acesso em: 31 out. 2026.
+
 FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). **Índice FipeZAP**: notas metodológicas (atualização). São Paulo: Fipe, jun. 2020. 31 p. Disponível em: http://downloads.fipe.org.br/indices/fipezap/metodologia/indice-fipezap-metodologia-2019.pdf. Acesso em: 14 set. 2026. [AV: título principal, pois a capa extraída só traz "Notas metodológicas (atualização)"]
 
 FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). **Índice FipeZAP**: séries históricas: imóveis residenciais e comerciais: até jul. 2026. São Paulo: Fipe, 2026. Planilha eletrônica. Disponível em: https://downloads.fipe.org.br/indices/fipezap/fipezap-serieshistoricas.xlsx. Acesso em: 14 set. 2026.
 
-INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE). **Censo Demográfico 2022**: agregados por bairros: básico e demografia. Rio de Janeiro: IBGE, 2026. Arquivos CSV e dicionário de dados. Disponível em: https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Agregados_por_Setores_Censitarios/. Acesso em: 14 set. 2026.
+INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE). **Censo Demográfico 2022**: agregados por bairros: básico, demografia e características do domicílio (parte 1). Rio de Janeiro: IBGE, 2026. Arquivos CSV e dicionário de dados. Disponível em: https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Agregados_por_Setores_Censitarios/. Acesso em: 14 set. 2026.
 
 INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE). **Censo Demográfico 2022**: tabela 4709: população residente, variação absoluta de população residente e taxa de crescimento geométrico. Rio de Janeiro: IBGE, 2026. Base de dados SIDRA. Disponível em: https://sidra.ibge.gov.br/tabela/4709. Acesso em: 14 set. 2026.
 
@@ -79,8 +81,9 @@ A coluna "Saída tratada" abaixo traz o caminho a partir de `dados/[B4] Bases pu
 | IBGE, POF 2017-2018, tabs. 6715 e 6972 | (IBGE, 2026) | API | `B4-c_ibge_sidra.py` | `ibge_sidra/pof_*.json` | `multiuso/[B4] Despesa Total por Renda 2018 (IBGE POF).csv`, `multiuso/[B4] Despesa com Alimentação por Renda 2018 (IBGE POF).csv` | 6.3, cap. 9 (ticket) | N2 |
 | IBGE, IPCA, tab. 7060 | (IBGE, 2026) | API | `B4-c_ibge_sidra.py` | `ibge_sidra/ipca_alimentacao_fora.json` | `multiuso/[B4] IPCA Alimentação Fora do Domicílio 2023-2026 (IBGE).csv` | cap. 9 (correção de preços) | N2 |
 | IBGE, PAS, tabs. 10758, 2611, 2613, 2618, 2619 | (IBGE, 2026) | API | `B4-c_ibge_sidra.py` | `ibge_sidra/pas_*.json` | `financeiro/[B4] Serviços Dados Gerais 2024 (IBGE PAS).csv`, `financeiro/[B4] Serviços às Famílias Receita/Custos/Pessoal/Empresas 2019-2023 (IBGE PAS).csv` | 9.8 (coerência) | N2 |
-| IBGE, Censo 2022, agregados por bairros | (IBGE, 2026) | Documento (CSV) | `B4-c_ibge_censo_bairros.py` | `ibge_censo_2022/*.zip`, `dicionario_*.xlsx` | `ponto_operacoes/[B4] População por Bairro 2022 (IBGE Censo).csv` | 6.4, 7.1 | N2 |
+| IBGE, Censo 2022, agregados por bairros | (IBGE, 2026) | Documento (CSV) | `B4-c_ibge_censo_bairros.py` | `ibge_censo_2022/*.zip`, `dicionario_*.xlsx` | `ponto_operacoes/[B4] População por Bairro 2022 (IBGE Censo).csv` (com a proporção de apartamentos, substituta da renda); `B4-a_matriz_bairros.py` → `ponto_operacoes/B4_matriz_bairros_salvador.csv` | 6.4, 7.1 | N2 |
 | CONCLA, CNAE | (CONCLA, 2026) | API | `B4-c_concla_cnae.py` | `concla/cnae_subclasses.json` | `juridico_tributario/[B4] Subclasses CNAE 2026 (CONCLA).csv` | 8.1 | N1 |
+| Receita Federal, CNPJ (São Jogue) | (RECEITA FEDERAL DO BRASIL, 2026) | API (BrasilAPI) | `B4-c_cnpj_referencias.py` | `receita_cnpj/cnpj_*.json` (sem sócios e contatos) | `juridico_tributario/[B4] CNPJ de Referência 2026-10 (Receita Federal).csv` | 8.1 | N1 |
 | BCB, SGS | (BCB, 2026) | API | `B4-c_bcb.py` | `bcb/sgs_*.json` | `financeiro/[B4] Selic IPCA e Salário Mínimo 2017-2026 (BCB).csv`, `financeiro/[B4] Selic IPCA e Salário Mínimo Último Valor 2026 (BCB).csv` | cap. 9 (TMA, inflação, salário mínimo) | N2 |
 | BCB, Focus | (BCB, 2026) | API | `B4-c_bcb.py` | `bcb/focus_anuais.json` | `financeiro/[B4] Expectativas Focus 2026-2030 (BCB).csv` | cap. 9 (TMA, inflação projetada) | N2 |
 | MTE, Novo CAGED | (BRASIL, 2026) | Microdados (FTP) | `B4-c_caged.py` | `caged/caged_mov_*_admissoes.csv` (recorte), `layout_novo_caged_movimentacao.xlsx` | `multiuso/[B4] Salário Admissão por Capital 2025-2026 (CAGED).csv`, `multiuso/[B4] Salário Admissão Mensal 2021-2026 (CAGED).csv`, `multiuso/[B4] Salário Admissão Anual 2021-2026 (CAGED).csv` | 7.5, cap. 9 | N2 |

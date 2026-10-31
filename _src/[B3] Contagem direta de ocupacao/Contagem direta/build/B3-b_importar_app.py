@@ -15,23 +15,19 @@ colunas `visita_id`, `observador` e `fonte_registro` (app, transcricao) à
 frente das do app.
 
 Regras:
-  - O app, desde a versão 2026.10.16, já exporta `visita_id`, `observador`,
-    `versao_app` e `papel` em todas as tabelas (e nomeia os arquivos no padrão
-    acima). `visita_id` e `observador` do arquivo têm de bater com a pasta; se
-    não batem, o script para. Exportações antigas, sem essas colunas, recebem
-    os valores da pasta.
   - `unidade` vem do nome da pasta da visita (SJBV → BV), não do campo digitado
-    no app (o POV2 de 10/10 digitou "BV 10.10").
+    no app (o POV2 de 10/10 digitou "BV 10.10"; o de 17/10, na Paralela,
+    deixou "Bela Vista"). Pelo mesmo motivo, `visita_id` e `observador`
+    gravados pelo app 2.4 são trocados pelos da pasta e do nome do arquivo.
   - Tabelas de um observador listadas em outros/B3_descartes_app.csv saem da
     consolidação (`*` = todas as tabelas do observador na visita), com o motivo
     registrado ali; os originais continuam guardados.
   - Correções de lançamento ficam em outros/B3_correcoes_app.csv, uma por linha,
     com o motivo: `excluir` tira as linhas em que coluna_chave = valor_chave;
     `preencher` grava `valor` em `coluna` (nas linhas da chave ou, sem chave,
-    em todas as da tabela do observador). `tabela = *` aplica a correção a todas
-    as tabelas do observador na visita (ex.: código do observador ou visita_id
-    gravados errados pelo app), pulando as vazias. Correção que não acha linha
-    para o script. Os originais não são editados. A média entre observadores é feita
+    em todas as da tabela do observador). Chave composta com "+" nas duas
+    colunas (ex.: codigo+tipo = P-1+saida). Correção que não acha linha para o
+    script. Os originais não são editados. A média entre observadores é feita
     na análise.
 Uso: python3 "_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py"
 """
@@ -57,11 +53,13 @@ PADRAO = re.compile(r"^\d{4}-\d{2}-\d{2}_SJ(?P<unidade>[A-Z]+)_(?P<obs>POV\d)_(?
 
 
 def corrigir(df: pd.DataFrame, visita_id: str, obs: str, conteudo: str, correcoes: pd.DataFrame) -> pd.DataFrame:
-    sel = correcoes[(correcoes["visita_id"] == visita_id) & (correcoes["observador"] == obs) & correcoes["tabela"].isin([conteudo, "*"])]
+    sel = correcoes[(correcoes["visita_id"] == visita_id) & (correcoes["observador"] == obs) & (correcoes["tabela"] == conteudo)]
     for _, c in sel.iterrows():
-        if c["tabela"] == "*" and df.empty:
-            continue
-        alvo = df[c["coluna_chave"]] == c["valor_chave"] if c["coluna_chave"] else pd.Series(True, index=df.index)
+        # chave composta: colunas e valores separados por "+" (ex.: codigo+tipo = P-1+saida)
+        alvo = pd.Series(True, index=df.index)
+        if c["coluna_chave"]:
+            for col, val in zip(c["coluna_chave"].split("+"), c["valor_chave"].split("+"), strict=True):
+                alvo &= df[col] == val
         if not alvo.any():
             raise SystemExit(f"Correção sem linha correspondente: {c.to_dict()}")
         if c["acao"] == "excluir":
@@ -94,14 +92,9 @@ def main():
             continue
         if m["fonte"] == "contagem":
             df = corrigir(df, visita_id, obs, conteudo, correcoes)
-        # exportação nova traz visita_id e observador: conferir com a pasta e reposicionar
-        for col, esperado in (("visita_id", visita_id), ("observador", obs)):
-            if col in df.columns:
-                diferentes = set(df[col]) - {esperado, ""}
-                if diferentes:
-                    raise SystemExit(f"{col} do arquivo ({', '.join(sorted(diferentes))}) difere da pasta ({esperado}): {arq}")
-                df = df.drop(columns=col)
         df["unidade"] = m["unidade"]
+        # o app 2.4 já grava visita_id e observador; valem os da pasta e do nome
+        df = df.drop(columns=["visita_id", "observador"], errors="ignore")
         df.insert(0, "fonte_registro", "app" if m["fonte"] == "contagem" else "transcricao")
         df.insert(0, "observador", obs)
         df.insert(0, "visita_id", visita_id)

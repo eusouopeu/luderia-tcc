@@ -35,6 +35,7 @@ export function PaginaResumo({ unidade }: { unidade: Unidade }) {
       <Bloco titulo="Porta" destaque={n(r.fluxo.pessoasHora)} unidadeDestaque="pessoas/h">
         <Item rotulo="Grupos que entraram" valor={n(r.fluxo.grupos)} />
         <Item rotulo="Pessoas que entraram" valor={n(r.fluxo.entraram)} />
+        <Item rotulo="Já dentro na chegada (pessoas)" valor={n(r.fluxo.jaDentro)} />
         <Item rotulo="Tamanho médio do grupo" valor={n(r.fluxo.tamanhoGrupo)} />
         <Item rotulo="Permanência média (saídas vistas)" valor={n(r.fluxo.permanenciaMedia, ' min')} />
         <Item rotulo="Sem saída (censurados)" valor={n(r.fluxo.censurados)} />
@@ -47,6 +48,7 @@ export function PaginaResumo({ unidade }: { unidade: Unidade }) {
         <Item rotulo="Pessoas por mesa" valor={n(r.mesas.tamanhoGrupo)} />
         <Item rotulo="Permanência mediana" valor={n(r.mesas.permanenciaMediana, ' min')} />
         <Item rotulo="Sem saída (censurados)" valor={n(r.mesas.censurados)} />
+        <Item rotulo="Já sentados na chegada" valor={n(r.mesas.iniciais)} />
         <Item rotulo="Aniversários" valor={n(r.mesas.aniversarios)} />
         <Item rotulo="Instrutor por grupo" valor={n(r.mesas.instrutorPorGrupo)} />
         {r.mesas.jogos.length > 0 && <Item rotulo="Jogos mais jogados" valor={r.mesas.jogos.map(([j, c]) => `${j} (${c})`).join(', ')} />}

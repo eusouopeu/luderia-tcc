@@ -12,7 +12,7 @@ const SUBS: [Sub, string][] = [
 ]
 
 /** Aba de sensores: som (microfone), medidas e fotos (câmera). */
-export function AbaAmbiente({ unidade, semVisita }: { unidade: Unidade; semVisita: () => boolean }) {
+export function AbaAmbiente({ unidade, semVisita }: { unidade: Unidade; semVisita: (depois: () => void) => boolean }) {
   const [sub, setSub] = useState<Sub>('acustica')
   return (
     <div className="px-4 pb-28">

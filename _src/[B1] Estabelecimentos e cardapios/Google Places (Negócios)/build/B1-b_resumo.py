@@ -31,6 +31,9 @@ coletado não quer dizer que a casa não cobra: a coluna couvert_no_cardapio diz
 autor, 16/10/2026). Cobrança por sala ou por
 hora (Café Geek) não é couvert por pessoa e fica de fora. Na planilha, as
 cestas são fórmulas sobre as colunas de preço.
+Só entram as linhas de referência do cardápio (linha_referencia = "S": cardápio
+mais recente, sem combo, menor tamanho; decisão do autor, 22/10/2026), para que
+um item com dois tamanhos não pese duas vezes nem o combo puxe a mediana.
 
 Saída: dados/[B1] Estabelecimentos e cardapios/estabelecimentos/B1_resumo_estabelecimentos.xlsx
   abas estabelecimentos, cesta, por_capital (fórmulas sobre estabelecimentos),
@@ -93,14 +96,21 @@ def entorno():
             continue
         d = pd.read_csv(f, sep=";", encoding="utf-8-sig")
         d["_arquivo"] = f.stat().st_mtime
+        # Até a versão 2026.10.15-4 (colunas *_lida_m): distância "mais próxima
+        # lida", sem garantia acima de 1000 m, e porte pelo OSM. Desde 30/10 o
+        # entorno usa só o Maps: distância só até 1000 m e porte pelas avaliações.
+        if "dist_estacoes_metro_mais_proxima_m" not in d:
+            for g in ("estacoes_metro", "shoppings"):
+                lida = d[f"dist_{g}_mais_proxima_lida_m"]
+                d[f"dist_{g}_mais_proxima_m"] = lida.where(lida <= 1000)
+            d["qt_shoppings_porte_500m"] = d["qt_shoppings_porte_1000m"] = float("nan")
         partes.append(d)
     e = pd.concat(partes).sort_values("_arquivo").drop_duplicates("place_id", keep="last")
-    dist = e["dist_estacoes_metro_mais_proxima_lida_m"]
-    e["dist_metro_m"] = dist.where(dist <= 50000)
     return e.rename(columns={
         "qt_estacoes_metro_500m": "metro_500m", "qt_estacoes_metro_1000m": "metro_1000m",
+        "dist_estacoes_metro_mais_proxima_m": "dist_metro_m",
         "qt_shoppings_porte_500m": "shopping_porte_500m", "qt_shoppings_porte_1000m": "shopping_porte_1000m",
-        "dist_shoppings_mais_proxima_lida_m": "dist_shopping_m"})[
+        "dist_shoppings_mais_proxima_m": "dist_shopping_m"})[
         ["place_id", "metro_500m", "metro_1000m", "dist_metro_m", "shopping_porte_500m", "shopping_porte_1000m",
          "dist_shopping_m"]]
 
@@ -112,7 +122,7 @@ def instagram():
 
 def cesta():
     it = pd.read_excel(B1 / "cardapios/B1_cardapios_itens_precos.xlsx", sheet_name="itens")
-    it = it.dropna(subset=["preco"])
+    it = it[it.linha_referencia == "S"].dropna(subset=["preco"])
     linhas = []
     for pid, g in it.groupby("place_id"):
         cov = g[(g.categoria == "couvert ou taxa de jogo") & ~g["item"].str.contains("sala", case=False)]
@@ -167,10 +177,10 @@ DIC = {
     **{d: ("Horários", f"Turnos de {d} (vazio = fechado)", "idem") for d in DIAS},
     "metro_500m": ("Entorno", "Estações de metrô até 500 m", "coletor de entorno do Maps, 15/10/2026"),
     "metro_1000m": ("Entorno", "Estações de metrô até 1000 m", "idem"),
-    "dist_metro_m": ("Entorno", "Distância (m) à estação de metrô mais próxima lida; vazio = nenhuma na cidade ou leitura de outra cidade (> 50 km)", "idem"),
-    "shopping_porte_500m": ("Entorno", "Shoppings de porte (OSM shop=mall, área ≥ 5.000 m²) até 500 m; vazio = porte não buscado", "idem + OpenStreetMap"),
-    "shopping_porte_1000m": ("Entorno", "Shoppings de porte até 1000 m; vazio = porte não buscado", "idem + OpenStreetMap"),
-    "dist_shopping_m": ("Entorno", "Distância (m) ao shopping mais próximo lido (qualquer porte)", "idem"),
+    "dist_metro_m": ("Entorno", "Distância (m) à estação de metrô mais próxima, só até 1000 m; vazio com metro_1000m = 0: nenhuma até 1000 m", "idem"),
+    "shopping_porte_500m": ("Entorno", "Shoppings de porte (1.000 avaliações ou mais no Maps) até 500 m; vazio = coleta anterior a 30/10/2026 ou avaliações não lidas", "idem"),
+    "shopping_porte_1000m": ("Entorno", "Shoppings de porte até 1000 m; vazio = coleta anterior a 30/10/2026 ou avaliações não lidas", "idem"),
+    "dist_shopping_m": ("Entorno", "Distância (m) ao shopping mais próximo (qualquer porte), só até 1000 m", "idem"),
     "perfil_instagram": ("Instagram", "@ do perfil", "Notion A - Estabelecimentos, 15/10/2026"),
     "seguidores": ("Instagram", "Seguidores", "idem (cabeçalho do perfil ou coletor)"),
     "n_posts_total": ("Instagram", "Nº de posts declarado pelo perfil", "idem"),
@@ -179,7 +189,7 @@ DIC = {
     "curtidas_periodo": ("Instagram", "Curtidas desses posts", "idem"),
     "comentarios_periodo": ("Instagram", "Comentários desses posts", "idem"),
     "obs_instagram": ("Instagram", "Ressalva da coleta", "B1"),
-    "itens_com_preco": ("Cardápio", "Linhas item × variação com preço no cardápio", "B1_cardapios_itens_precos.xlsx"),
+    "itens_com_preco": ("Cardápio", "Linhas de referência com preço no cardápio (uma por item, tamanho e combo à parte)", "B1_cardapios_itens_precos.xlsx"),
     "couvert_no_cardapio": ("Cardápio", "Couvert ou taxa de jogo por pessoa encontrado no cardápio: sim ou não encontrado (não quer dizer que não cobra)", "idem"),
     "cesta_baixa": ("Cardápio", "Couvert + bebida + entrada ou prato, percentil 25 de cada categoria (R$)", "fórmula na aba cesta"),
     "cesta_mediana": ("Cardápio", "Idem, medianas (R$)", "fórmula na aba cesta"),

@@ -17,13 +17,12 @@ Saídas em `dados/[B3] Contagem direta de ocupacao/`:
       (cada observador com registro válido conta uma vez; tabela ausente ou
       descartada não entra na média): pessoas por hora (porta),
       tamanho do grupo, permanência (mesas e porta, com contagem de censurados),
-      ocupação média das mesas nas contagens, notas emitidas na visita e pessoas
-      por nota, pedidos por grupo e espera média (pedido → chegada) por categoria.
-  contagem_notas_intervalo.csv - por unidade, uma linha por par de visitas
-      consecutivas (sorteada, extras, retorno): notas emitidas entre elas
-      (última NFC-e lida na anterior × primeira lida na seguinte, mesma série)
-      e notas por dia no intervalo. O intervalo inclui dias úteis e fins de
-      semana na proporção do calendário; não é a taxa de um dia típico.
+      ocupação média das mesas nas contagens, ocupação minuto a minuto do salão
+      (mesas e assentos, média e pico), notas emitidas na visita e pessoas por
+      nota, pedidos por grupo e espera média (pedido → chegada) por categoria.
+  contagem_notas_intervalo.csv - por unidade: notas emitidas entre a visita
+      sorteada e a de retorno (última NFC-e da primeira × primeira NFC-e da
+      segunda, mesma série e CNPJ) e notas por dia no intervalo.
 
 Regras (_instrucoes/4_metodologia.md, Bloco B3):
   - Taxas por hora observada: a duração vem de visita_inicio/visita_fim menos o
@@ -31,15 +30,31 @@ Regras (_instrucoes/4_metodologia.md, Bloco B3):
     visita no app), o fim é o maior entre início + duração prevista e o último
     horário registrado pelo observador; a coluna `fim_estimado` marca o caso.
   - Permanência média só com grupos de entrada e saída vistas; os censurados
-    (sem saída, ou com saída forçada pelo fechamento da casa: `censurada = sim`
-    nas mesas, `motivo = Fechamento` na porta) são contados à parte, não imputados.
-  - Desistências na porta: saídas com motivo "Lotado" ou "Só olhou" (o app
-    pergunta o motivo quando o grupo sai até 10 min depois de entrar, sem mesa).
-    Continuam em pessoas_entraram; a coluna à parte mostra quantas desistiram.
+    (sem saída) são contados à parte, não imputados.
+  - Estoque inicial (app 2.5, `estoque_inicial = sim`): grupos que já estavam
+    dentro quando a visita começou. Na porta, saem de pessoas_entraram (vão
+    para pessoas_ja_dentro) e da permanência; nas mesas, a permanência deles
+    começa antes da visita e fica fora da média (grupos_mesa_ja_sentados).
+  - Horas depois da meia-noite: a permanência e o último registro somam um dia
+    quando a hora fica antes da entrada (ou do início), até 12 h.
   - Espera dos pedidos: só pedidos com chegada registrada; os pendentes são
     contados à parte (censurados), não imputados.
   - Pessoas por nota = pessoas que entraram pela porta ÷ notas emitidas durante
     a visita; sem registro de porta, usa as pessoas das mesas.
+  - Ocupação minuto a minuto: o app registra cada grupo de mesa ao sentar e ao
+    sair, então a ocupação sai dos intervalos [entrada, saída) dos grupos (sem
+    saída, até o fim da visita), minuto a minuto entre o início e o fim da
+    visita. Mesas e assentos do salão vêm de outros/B3_estrutura_unidades.csv
+    (informados pelo autor e pelo site de reservas), não do campo do app.
+    Grupo que juntou mesas conta como uma mesa: a ocupação de mesas é um piso.
+    A mesa do observador não entra nos registros e sai do denominador: mesas
+    menos as do observador e assentos menos as pessoas da mesa dele, por visita
+    (outros/B3_mesa_observador.csv; colunas mesas_denominador e
+    assentos_denominador).
+  - Notas no intervalo: entre a última NFC-e lida na primeira visita e a
+    primeira lida na seguinte da mesma unidade (sem a do início, vale a do fim).
+    As casas só emitem NFC-e quando o cliente pede: as notas são um piso das
+    vendas, não o número de atendimentos.
 Uso: python3 "_src/[B3] Contagem direta de ocupacao/Contagem direta/analise/B3-a_contagem.py"
 """
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
@@ -57,6 +72,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
 ENTRADA = ROOT / "dados" / "[B3] Contagem direta de ocupacao" / "_dados-brutos" / "app"
+ESTRUTURA = _AQUI.parents[1] / "outros" / "B3_estrutura_unidades.csv"
+OBSERVADOR = _AQUI.parents[1] / "outros" / "B3_mesa_observador.csv"
 SAIDA = ROOT / "dados" / "[B3] Contagem direta de ocupacao"
 
 
@@ -75,8 +92,54 @@ def minutos(hora: str) -> float:
         return float("nan")
 
 
+def dif_min(de: str, ate: str) -> float:
+    """Minutos de `de` até `ate` (HH:MM); saída "antes" da entrada é a virada da meia-noite
+    quando o intervalo assim contado fica em até 12 h (mesma regra do app, `difMin`)."""
+    a, b = minutos(de), minutos(ate)
+    if pd.isna(a) or pd.isna(b):
+        return float("nan")
+    d = b - a if b >= a else b + 1440 - a
+    return d if b >= a or d <= 720 else float("nan")
+
+
+def min_na_visita(hora: str, ini: pd.Timestamp) -> float:
+    """Minutos desde o início da visita; depois da meia-noite soma um dia (até 2 h antes do início fica negativo)."""
+    d = minutos(hora) - (ini.hour * 60 + ini.minute)
+    return d + 1440 if d < -120 else d
+
+
+def sim(df: pd.DataFrame, coluna: str) -> pd.Series:
+    """Marca sim/nao como booleano; coluna ausente (app antes da 2.5) = nao."""
+    return df[coluna].eq("sim") if coluna in df.columns else pd.Series(False, index=df.index)
+
+
 def num(s: pd.Series) -> pd.Series:
     return pd.to_numeric(s, errors="coerce")
+
+
+def ocupacao_minuto(g: pd.DataFrame, ini: pd.Timestamp, fim: pd.Timestamp, mesas: float, assentos: float) -> dict:
+    """Média e pico de mesas e de pessoas sentadas, minuto a minuto, entre o início e o fim da visita."""
+    vazio = {"ocupacao_mesas_media_pct": float("nan"), "ocupacao_mesas_pico_pct": float("nan"),
+             "ocupacao_assentos_media_pct": float("nan"), "ocupacao_assentos_pico_pct": float("nan"),
+             "pessoas_sentadas_media": float("nan"), "pessoas_sentadas_pico": float("nan")}
+    if g.empty or not mesas:
+        return vazio
+    m_ini = ini.hour * 60 + ini.minute
+    m_fim = m_ini + int((fim - ini).total_seconds() // 60)
+    mesas_min, pessoas_min = [], []
+    for t in range(m_ini, m_fim):
+        dentro = g[(g["_e"] <= t) & (t < g["_s"])]
+        mesas_min.append(dentro["mesa"].nunique())
+        pessoas_min.append(num(dentro["pessoas"]).sum())
+    mesas_min, pessoas_min = pd.Series(mesas_min, dtype=float), pd.Series(pessoas_min, dtype=float)
+    return {
+        "ocupacao_mesas_media_pct": round(100 * mesas_min.mean() / mesas, 1),
+        "ocupacao_mesas_pico_pct": round(100 * mesas_min.max() / mesas, 1),
+        "ocupacao_assentos_media_pct": round(100 * pessoas_min.mean() / assentos, 1) if assentos else float("nan"),
+        "ocupacao_assentos_pico_pct": round(100 * pessoas_min.max() / assentos, 1) if assentos else float("nan"),
+        "pessoas_sentadas_media": round(pessoas_min.mean(), 1),
+        "pessoas_sentadas_pico": pessoas_min.max(),
+    }
 
 
 def resumo_visitas() -> pd.DataFrame:
@@ -89,6 +152,9 @@ def resumo_visitas() -> pd.DataFrame:
     unidades = ler("contagem_unidades.csv")
     acustica = ler("contagem_acustica.csv")
     pedidos = ler("contagem_pedidos.csv")
+    estrutura = pd.read_csv(ESTRUTURA, sep=";", encoding="utf-8-sig", dtype=str)
+    salao = estrutura[estrutura["ambiente"] == "salao_jogos"].set_index("unidade")
+    obs = pd.read_csv(OBSERVADOR, sep=";", encoding="utf-8-sig", dtype=str).set_index("visita_id")
 
     linhas = []
     for _, v in visitas.iterrows():
@@ -111,7 +177,7 @@ def resumo_visitas() -> pd.DataFrame:
         if not fim_estimado:
             fim = pd.Timestamp(v["visita_fim"])
         else:
-            horarios = [minutos(h) for h in pd.concat([
+            horarios = [min_na_visita(h, ini) for h in pd.concat([
                 f["hora"] if not f.empty else pd.Series(dtype=str),
                 g["entrada"] if not g.empty else pd.Series(dtype=str),
                 g["saida"] if not g.empty else pd.Series(dtype=str),
@@ -120,26 +186,39 @@ def resumo_visitas() -> pd.DataFrame:
             previsto = ini + pd.Timedelta(minutes=float(v["duracao_prevista_min"] or 0))
             fim = previsto
             if pd.notna(ultimo):
-                visto = ini.normalize() + pd.Timedelta(minutes=ultimo)
+                visto = ini.replace(second=0) + pd.Timedelta(minutes=ultimo)
                 fim = max(previsto, visto)
         horas = ((fim - ini).total_seconds() / 60 - float(v["pausado_min"] or 0)) / 60
 
-        # porta
-        ent = f[f["tipo"] == "entrada"] if not f.empty else f
-        sai = f[f["tipo"] == "saida"] if not f.empty else f
+        # porta; estoque inicial (já dentro na chegada) fica fora das entradas e da permanência
+        ent_todas = f[f["tipo"] == "entrada"] if not f.empty else f
+        inic = ent_todas[sim(ent_todas, "estoque_inicial")] if not f.empty else f
+        ent = ent_todas[~sim(ent_todas, "estoque_inicial")] if not f.empty else f
+        sai = f[(f["tipo"] == "saida") & ~f["codigo"].isin(inic["codigo"])] if not f.empty else f
         entraram = num(ent["pessoas"]).sum() if not f.empty else float("nan")
-        motivo = sai["motivo"] if "motivo" in sai.columns else pd.Series("", index=sai.index)
-        desist = sai[motivo.isin(["Lotado", "Só olhou"])]
         perm_porta = []
-        for _, s in sai[motivo != "Fechamento"].iterrows():
+        for _, s in sai.iterrows():
             e = ent[ent["codigo"] == s["codigo"]]
             if not e.empty:
-                d = minutos(s["hora"]) - minutos(e.iloc[0]["hora"])
-                if d >= 0:
+                d = dif_min(e.iloc[0]["hora"], s["hora"])
+                if pd.notna(d):
                     perm_porta.append(d)
 
+        # ocupação minuto a minuto do salão
+        m_fim_visita = ini.hour * 60 + ini.minute + int((fim - ini).total_seconds() // 60)
+        if not g.empty:
+            g = g.assign(_e=g["entrada"].map(minutos),
+                         _s=g["saida"].map(minutos).fillna(m_fim_visita))
+        # denominador sem a mesa e as pessoas do observador
+        mesas_obs = float(obs.at[v["visita_id"], "mesas"]) if v["visita_id"] in obs.index else 0.0
+        pessoas_obs = float(obs.at[v["visita_id"], "pessoas"]) if v["visita_id"] in obs.index else 0.0
+        mesas_den = float(salao.at[chave[0], "mesas"]) - mesas_obs if chave[0] in salao.index else float("nan")
+        assentos_den = float(salao.at[chave[0], "assentos"]) - pessoas_obs if chave[0] in salao.index else float("nan")
+        ocupacao = ocupacao_minuto(g, ini, fim, mesas_den, assentos_den)
+        ocupacao.update({"mesas_denominador": mesas_den, "assentos_denominador": assentos_den})
+
         # mesas
-        perm_mesa = num(g.loc[g["censurada"] != "sim", "permanencia_min"]).dropna() if not g.empty else pd.Series(dtype=float)
+        perm_mesa = num(g.loc[~sim(g, "estoque_inicial"), "permanencia_min"]).dropna() if not g.empty else pd.Series(dtype=float)
         pessoas_mesa = num(g["pessoas"]).sum() if not g.empty else float("nan")
 
         # notas
@@ -161,18 +240,19 @@ def resumo_visitas() -> pd.DataFrame:
             "horas_observadas": round(horas, 2),
             "grupos_porta": len(ent) if not f.empty else float("nan"),
             "pessoas_entraram": entraram,
+            "pessoas_ja_dentro": num(inic["pessoas"]).sum() if not f.empty else float("nan"),
             "pessoas_por_hora": round(entraram / horas, 2) if horas and horas > 0 and not f.empty else float("nan"),
             "tamanho_grupo_porta": round(num(ent["pessoas"]).mean(), 2) if not ent.empty else float("nan"),
             "permanencia_porta_media_min": round(sum(perm_porta) / len(perm_porta), 1) if perm_porta else float("nan"),
             "censurados_porta": len(ent) - len(perm_porta) if not f.empty else float("nan"),
-            "desistencias_porta": len(desist) if not f.empty else float("nan"),
-            "pessoas_desistiram": num(desist["pessoas"]).sum() if not f.empty else float("nan"),
             "grupos_mesa": len(g) if not g.empty else float("nan"),
             "pessoas_mesa": pessoas_mesa,
             "tamanho_grupo_mesa": round(num(g["pessoas"]).mean(), 2) if not g.empty else float("nan"),
             "permanencia_mesa_media_min": round(perm_mesa.mean(), 1) if len(perm_mesa) else float("nan"),
             "permanencia_mesa_mediana_min": perm_mesa.median() if len(perm_mesa) else float("nan"),
             "censurados_mesa": int((g["censurada"] == "sim").sum()) if not g.empty else float("nan"),
+            **ocupacao,
+            "grupos_mesa_ja_sentados": int(sim(g, "estoque_inicial").sum()) if not g.empty else float("nan"),
             "contagens": len(r),
             "ocupacao_media_pct": round(100 * ocup.mean() / n_mesas, 1) if len(ocup) and n_mesas else float("nan"),
             "pico_mesas_ocupadas": ocup.max() if len(ocup) else float("nan"),
@@ -199,31 +279,30 @@ def resumo_visitas() -> pd.DataFrame:
 
 
 def notas_intervalo() -> pd.DataFrame:
-    """Notas entre visitas consecutivas de cada unidade (sorteada, extras e retorno)."""
+    """Notas entre a visita sorteada (primeira) e a de retorno (segunda) de cada unidade."""
     visitas = ler("contagem_visitas.csv")
     # uma linha por visita: a do observador que registrou a NFC-e (os dois leem a mesma nota)
-    visitas = (visitas.assign(_com_nota=(visitas["nfce_inicio_numero"] != "") | (visitas["nfce_fim_numero"] != ""))
+    visitas = (visitas.assign(_com_nota=visitas["nfce_inicio_numero"] != "")
                .sort_values(["_com_nota", "visita_inicio"], ascending=[False, True])
                .drop_duplicates("visita_id"))
     linhas = []
     for unidade, vs in visitas.sort_values("visita_inicio").groupby("unidade"):
-        for i in range(len(vs) - 1):
-            a, b = vs.iloc[i], vs.iloc[i + 1]
-            # última leitura da visita anterior e primeira leitura da seguinte (início ou, sem ele, fim)
-            serie_a, num_a, em_a = (a["nfce_fim_serie"], a["nfce_fim_numero"], a["nfce_fim_emissao"]) if a["nfce_fim_numero"] else (a["nfce_inicio_serie"], a["nfce_inicio_numero"], a["nfce_inicio_emissao"])
-            serie_b, num_b, em_b = (b["nfce_inicio_serie"], b["nfce_inicio_numero"], b["nfce_inicio_emissao"]) if b["nfce_inicio_numero"] else (b["nfce_fim_serie"], b["nfce_fim_numero"], b["nfce_fim_emissao"])
-            if not (num_a and num_b) or serie_a != serie_b:
-                continue
-            t_a = pd.Timestamp(em_a or a["visita_fim"] or a["visita_inicio"])
-            t_b = pd.Timestamp(em_b or b["visita_inicio"])
-            dias = (t_b - t_a).total_seconds() / 86400
-            notas = int(num_b) - int(num_a)
-            linhas.append({
-                "unidade": unidade, "visita_de": a["visita_id"], "visita_ate": b["visita_id"],
-                "de": t_a, "ate": t_b, "dias": round(dias, 2), "serie": serie_a,
-                "nota_de": int(num_a), "nota_ate": int(num_b),
-                "notas_emitidas": notas, "notas_por_dia": round(notas / dias, 1) if dias > 0 else float("nan"),
-            })
+        if len(vs) < 2:
+            continue
+        a, b = vs.iloc[0], vs.iloc[-1]
+        # última leitura da primeira visita e primeira leitura da segunda
+        serie_a, num_a, em_a = (a["nfce_fim_serie"], a["nfce_fim_numero"], a["nfce_fim_emissao"]) if a["nfce_fim_numero"] else (a["nfce_inicio_serie"], a["nfce_inicio_numero"], a["nfce_inicio_emissao"])
+        serie_b, num_b, em_b = (b["nfce_inicio_serie"], b["nfce_inicio_numero"], b["nfce_inicio_emissao"]) if b["nfce_inicio_numero"] else (b["nfce_fim_serie"], b["nfce_fim_numero"], b["nfce_fim_emissao"])
+        if not (num_a and num_b) or serie_a != serie_b:
+            continue
+        t_a = pd.Timestamp(em_a or a["visita_fim"] or a["visita_inicio"])
+        t_b = pd.Timestamp(em_b or b["visita_inicio"])
+        dias = (t_b - t_a).total_seconds() / 86400
+        notas = int(num_b) - int(num_a)
+        linhas.append({
+            "unidade": unidade, "de": t_a, "ate": t_b, "dias": round(dias, 2), "serie": serie_a,
+            "notas_emitidas": notas, "notas_por_dia": round(notas / dias, 1) if dias > 0 else float("nan"),
+        })
     return pd.DataFrame(linhas)
 
 

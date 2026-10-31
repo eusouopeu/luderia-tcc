@@ -1,70 +1,59 @@
 # 8 ASPECTOS JURÍDICOS E LEGAIS
 
-> **Rascunho (16/10/2026), enxugado para o teto de 3 páginas.** Normas citadas pela data de vigência conferida no texto compilado do Planalto, quando indicada; as demais ficam `[AV]` até a conferência. `[conferir]` marca enquadramento que depende de interpretação ou de consulta ao município. Os valores de tributos vêm do modelo financeiro (`dados/Modelo financeiro/financeiro_modelo.xlsx`, cenário provável, ano 2). Voz ativa e sem travessão, como no rascunho de 15/10: a regra de estilo segue em aberto (`docs/pendencias.md`).
+> **Rascunho (31/10/2026).** Normas federais citadas pelo número e ano; normas da Bahia e de Salvador, alíquotas de ICMS e ISS, taxas e prazos das licenças marcados `[AV]` até a conferência do texto vigente. Valores de receita e folha do cenário provável do cap. 9 (ano 2).
 
 ## 8.1 FORMA JURÍDICA E ENQUADRAMENTO TRIBUTÁRIO
 
-O plano adota a sociedade limitada unipessoal (SLU). A SLU separa o patrimônio do sócio do patrimônio da empresa e dispensa um segundo sócio (BRASIL, 2002, art. 1.052, §§ 1º e 2º) [AV]. O microempreendedor individual não cabe: o limite é de R$ 81 mil de receita bruta por ano (BRASIL, 2006, art. 18-A, § 1º) [AV], e o cenário pessimista projeta R$ 405 mil no ano 2. A sociedade limitada com dois sócios fica como alternativa se houver investidor, sem mudar o regime tributário.
+A luderia deve ser uma sociedade limitada, unipessoal se tiver um só sócio. A forma limita a responsabilidade do sócio ao capital (Lei n. 10.406/2002, art. 1.052) e, desde a Lei n. 13.874/2019, admite um único sócio. O empresário individual não separa o patrimônio pessoal, e o MEI não comporta a receita projetada nem o quadro de 12 empregados (LC n. 123/2006, art. 18-A) `[AV]`. As duas unidades da São Jogue são sociedades empresárias limitadas, com capital social de R$ 50 mil (Bela Vista, 2019) e R$ 150 mil (Paralela, 2025), ambas no Simples Nacional (Receita Federal, consulta ao CNPJ em 31/10/2026).
 
-A atividade principal é a 5611-2/05, bares e outros estabelecimentos especializados em servir bebidas, com entretenimento (IBGE, CONCLA, 2026). A receita principal da luderia vem de alimentos e bebidas, e o jogo é o entretenimento. Os secundários são a 5611-2/01 (restaurantes e similares), pela cozinha, e a 9329-8/99 (outras atividades de recreação e lazer), pelo couvert lúdico e pelos eventos `[conferir]`. A CONCLA exclui dessa subclasse os jogos de azar e apostas (9200-3/99), o que afasta a leitura do jogo de mesa como aposta.
+A empresa entra no Simples Nacional como empresa de pequeno porte. A receita provável do ano 2, de R$ 877 mil, passa do teto da microempresa (R$ 360 mil) e fica abaixo do limite de R$ 4,8 milhões (LC n. 123/2006, art. 3º). Cada receita segue o anexo da atividade: o A&B é revenda de mercadoria, no anexo I; a taxa de entrada é serviço de recreação, no anexo III, pela regra geral do art. 18, § 5º-F; o aluguel de jogos é locação de bem móvel, no anexo III sem a parcela do ISS (art. 18, § 4º, V). O modelo do cap. 9 tributa o aluguel pelo anexo III cheio, o que superestima o imposto em cerca de R$ 420,00 por ano (a parcela do ISS é 32,5% da alíquota do anexo III na 4ª faixa).
 
-O plano adota o Simples Nacional. O maior RBT12 do modelo, no ano 5 do cenário otimista, é de R$ 3,0 milhões, abaixo do teto de R$ 4,8 milhões por ano (BRASIL, 2006, art. 3º, II). A receita é tributada em dois anexos: alimentos e bebidas são revenda de mercadorias e seguem o anexo I (BRASIL, 2006, art. 18, § 4º, I) `[conferir: restaurante como comércio e não como industrialização, anexo II]`; o couvert lúdico e a taxa de eventos seguem o anexo III (BRASIL, 2006, art. 18, § 5º-F). A faixa de cada anexo depende do RBT12 da empresa toda, proporcional aos meses de atividade no primeiro ano (BRASIL, 2006, art. 18, § 2º). A carga estimada é de 9,7% da receita bruta no ano 2 do cenário provável e sobe com a receita, porque a faixa sobe (Quadro 01).
+O Simples custa menos da metade do Lucro Presumido (Tabela 8.1). A diferença vem sobretudo da contribuição patronal sobre a folha: no Simples, ela está dentro do DAS dos anexos I e III; no Lucro Presumido, soma 8,7% da receita.
 
-**Quadro 01 -** Simples Nacional projetado no ano 2, por cenário
+**Tabela 8.1 – Tributos no ano maduro, cenário provável: Simples Nacional × Lucro Presumido (R$)**
 
-| Cenário | Receita bruta (R$) | A&B no anexo I (R$) | Couvert e eventos no anexo III (R$) | DAS (R$) | Carga efetiva |
-|---|---|---|---|---|---|
-| Pessimista | 405 mil | 276 mil | 130 mil | 27 mil | 6,6% |
-| Provável | 1,1 milhão | 799 mil | 314 mil | 108 mil | 9,7% |
-| Otimista | 2,9 milhões | 2,1 milhões | 785 mil | 361 mil | 12,6% |
+| Tributo | Simples Nacional | Lucro Presumido |
+|---|---|---|
+| IRPJ e CSLL (presunção de 8% e 12% no A&B, 32% nos serviços) | no DAS | 44.666,64 |
+| PIS e Cofins cumulativos (3,65%) | no DAS | 32.018,15 |
+| ICMS sobre o A&B (4%) `[AV]` | no DAS | 16.817,09 |
+| ISS sobre a taxa de entrada (5%) `[AV]` | no DAS | 22.299,13 |
+| Contribuição patronal sobre a folha (27,8%) `[AV]` | no DAS | 76.294,80 |
+| Total | 88.729,00 | 192.095,81 |
+| % da receita bruta de R$ 877.210,00 | 10,1% | 21,9% |
 
-Fonte: elaborado pelo próprio autor com base em Brasil (2006), anexos I e III, e no modelo financeiro (premissas R07 a R16).
+Fonte: elaboração própria, com LC n. 123/2006 (anexos I e III), Lei n. 9.249/1995 (arts. 15 e 20), Lei n. 9.718/1998 e Lei n. 8.212/1991 (art. 22); receita e folha do modelo do cap. 9.
 
-O Lucro Presumido não compensa nessa escala. Com sete empregados CLT, a empresa pagaria fora do Simples a contribuição patronal de 20% sobre a folha (BRASIL, 1991, art. 22, I) [AV], além de PIS e Cofins sobre a receita; no Simples, essa contribuição já está no DAS dos anexos I e III. A comparação numérica entre os dois regimes fica para a revisão do modelo `[conferir]`.
+A carga do Simples entra no cap. 9 como 8,1% sobre o A&B e 11,9% sobre os serviços no ano maduro, calculada pela tabela do anexo sobre a receita do ano. A reforma do consumo (EC n. 132/2023 e LC n. 214/2025) mantém o Simples e abre a opção de recolher IBS e CBS por fora a partir de 2027 `[AV]`; a opção só vale se a luderia vender para empresas que usem o crédito, o que não é o caso.
+
+O CNAE principal é 5611-2/01 (restaurantes e similares), pela cozinha própria com refeições, com 9329-8/99 (recreação e lazer), 4763-6/01 (venda de jogos), 7729-2/02 (locação de jogos) e 8230-0/01 (eventos) como secundários. A São Jogue usa 5611-2/03 (lanchonete) como principal e lista 5611-2/01, 9329-8/99, 4763-6/01 e 8230-0/01 entre os secundários (Receita Federal, 2026); as duas escolhas caem no anexo I. Descartou-se 5611-2/05 (bar com entretenimento): a CONCLA define o entretenimento dessa subclasse como música e apresentações, não jogos de mesa (CONCLA, 2026).
 
 ## 8.2 LICENÇAS, ALVARÁS E OBRIGAÇÕES
 
-A abertura depende de seis licenças e registros, todos antes da inauguração, e de duas obrigações de operação (Quadro 02). O custo das licenças entra no investimento pré-operacional (premissa I06: R$ 10 mil a R$ 20 mil, nível N6 até as cotações). O prazo mais longo é o do Corpo de Bombeiros, porque depende da obra pronta.
+A abertura e a operação dependem de nove obrigações (Quadro 8.1). O custo total entra no investimento pré-operacional do cap. 9 (premissa I06, R$ 20 mil no provável), ainda sem cotação.
 
-**Quadro 02 -** Licenças e obrigações da luderia em Salvador
+**Quadro 8.1 – Obrigações legais para abrir e operar a luderia em Salvador**
 
-| Item | Órgão ou exigência | Norma | Efeito no plano |
+| Obrigação | Órgão | Norma | Efeito no plano |
 |---|---|---|---|
-| Registro e CNPJ | Junta Comercial da Bahia e Receita Federal, pela Redesim | Lei 11.598/2007 [AV] | Prazo da abertura |
-| Consulta de viabilidade e alvará de funcionamento | Prefeitura de Salvador | Lei de ordenamento do uso e da ocupação do solo de Salvador [AV] `[conferir número]` | Restringe os bairros de 6.4 |
-| Auto de Vistoria do Corpo de Bombeiros (AVCB) | Corpo de Bombeiros Militar da Bahia | Lei 13.425/2017 [AV] | Lotação máxima (7.2) e reforma (I01) |
-| Licença sanitária | Vigilância Sanitária de Salvador | Anvisa, RDC 216/2004 [AV] | Layout da cozinha (7.1) |
-| Música ambiente | ECAD | Lei 9.610/1998, art. 68 [AV] | Custo mensal (C25) |
-| Acessibilidade | Prefeitura, na aprovação da obra | Lei 13.146/2015 e ABNT NBR 9050 [AV] | Banheiro e acesso (7.1) |
-| Bebida alcoólica | Venda a menor de 18 anos é crime | Lei 8.069/1990, art. 243 [AV] | Conferência de documento no atendimento (7.2) |
-| Dados de clientes | Base legal: execução do contrato | Lei 13.709/2018, art. 7º, V [AV] | Aviso de privacidade nas reservas; exclusão após 12 meses sem visita `[conferir prazo]` |
+| Registro da empresa e CNPJ | JUCEB e Receita Federal, pela Redesim | Lei n. 11.598/2007 | Primeiro passo; custo a cotar com o contador |
+| Viabilidade de localização e alvará de funcionamento | Prefeitura de Salvador (Sedur) | LOUOS de Salvador `[AV]` | Condiciona o ponto (cap. 7): zona que admita serviço de alimentação e lazer |
+| Licença do Corpo de Bombeiros e lotação | CBMBA | Lei estadual n. 12.929/2013 `[AV]` | Lotação do salão define o teto de mesas (R01) |
+| Licença sanitária | Vigilância sanitária municipal | RDC Anvisa n. 216/2004 | Cozinha com fluxo, materiais e manual de boas práticas (cap. 7) |
+| Venda de bebida alcoólica | — | Lei n. 8.069/1990, art. 243 (Lei n. 13.106/2015) | Proibida a menores de 18 anos; conferência de idade no caixa |
+| Música ambiente | ECAD | Lei n. 9.610/1998, art. 68 | Retribuição mensal, só se houver música |
+| Acessibilidade | Prefeitura, no alvará | Lei n. 13.146/2015; ABNT NBR 9050 | Rota acessível, sanitário adaptado e mesa acessível no projeto |
+| Dados de clientes | ANPD | Lei n. 13.709/2018 | Reserva e cadastro com finalidade declarada e base legal de execução de contrato (art. 7º, V) |
+| Nota fiscal ao consumidor (NFC-e) | Sefaz-BA | RICMS-BA `[AV]` | Emissão em toda venda |
 
-Fonte: elaborado pelo próprio autor.
+Fonte: elaboração própria.
+
+A emissão da NFC-e em toda venda muda a prática observada no setor. Nas visitas do B3, as duas unidades da São Jogue só emitiam a nota quando o cliente pedia; no restante, entregavam o comprovante da maquininha. O plano assume a emissão integral: a carga tributária do cap. 9 já incide sobre toda a receita.
 
 ## 8.3 CONTRATOS E PROPRIEDADE INTELECTUAL
 
-O contrato de locação define o risco do ponto. O plano busca prazo de cinco anos, que dá direito à ação renovatória (BRASIL, 1991b, art. 51) [AV] e cobre o horizonte do modelo financeiro. A garantia é a caução em dinheiro, limitada a três meses de aluguel (BRASIL, 1991b, art. 38, § 2º): R$ 24 mil no cenário provável (premissa I07). A carência do aluguel durante a obra, se obtida, reduz o capital de giro.
+O contrato de locação deve ter prazo escrito de 5 anos. Esse prazo dá direito à ação renovatória (Lei n. 8.245/1991, art. 51) e coincide com o horizonte do cap. 9 e com a amortização da reforma. A garantia por caução fica limitada a três aluguéis (art. 38, § 2º), o valor da premissa I07. Em shopping, prevalecem as condições do contrato com o empreendedor (art. 54), o que explica a faixa pessimista de condomínio (C05). O reajuste anual por índice de preços é neutro no modelo, que usa preços constantes.
 
-O uso de jogos comprados no salão não exige licença do editor: o direito autoral protege o texto das regras e a arte, não o uso do exemplar adquirido (BRASIL, 1998, art. 29) [AV] `[conferir]`. O limite é a reprodução de cartas, tabuleiros ou manuais. Torneios oficiais com marca de editora dependem de acordo com ela.
+O uso dos jogos comprados no salão não depende de licença. A Lei n. 9.610/1998 protege a reprodução da obra (art. 29); o exemplar adquirido pode ser emprestado à mesa e alugado como bem móvel. Copiar ou imprimir componentes e usar a marca de um jogo para divulgar torneio pago exige autorização do titular `[AV — conferir termos das editoras do acervo]`.
 
-O nome da luderia deve ser registrado como marca no INPI antes da divulgação, o que dá uso exclusivo em todo o país na classe do serviço (BRASIL, 1996, art. 129) [AV]. A busca prévia evita investir em marketing com um nome já registrado.
-
-## Referências deste capítulo `[AV]`
-
-BRASIL. Lei nº 8.069, de 13 de julho de 1990. Estatuto da Criança e do Adolescente. [AV]
-
-BRASIL. Lei nº 8.212, de 24 de julho de 1991. Organização da Seguridade Social. [AV]
-
-BRASIL. Lei nº 8.245, de 18 de outubro de 1991. Locações dos imóveis urbanos (1991b). [AV]
-
-BRASIL. Lei nº 9.279, de 14 de maio de 1996. Propriedade industrial. [AV]
-
-BRASIL. Lei nº 9.610, de 19 de fevereiro de 1998. Direitos autorais. [AV]
-
-BRASIL. Lei nº 10.406, de 10 de janeiro de 2002. Código Civil. [AV]
-
-BRASIL. Lei Complementar nº 123, de 14 de dezembro de 2006. Estatuto Nacional da Microempresa e da Empresa de Pequeno Porte. Texto compilado, consultado em 14/09/2026.
-
-BRASIL. Lei nº 13.709, de 14 de agosto de 2018. Lei Geral de Proteção de Dados Pessoais. [AV]
-
-IBGE. Comissão Nacional de Classificação (CONCLA). Subclasses CNAE 2.3. Consulta em 14/09/2026.
+O nome da luderia deve ser registrado no INPI antes da fachada e das redes sociais. A propriedade da marca vem do registro (Lei n. 9.279/1996, art. 129), nas classes de serviços de alimentação e de entretenimento `[AV]`. A busca de anterioridade precede a escolha do nome no cap. 6.

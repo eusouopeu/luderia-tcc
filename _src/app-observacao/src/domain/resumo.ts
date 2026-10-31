@@ -1,4 +1,4 @@
-import { CATEGORIAS_PEDIDO, censurado, esperaPedido, minutos, MOTIVO_FECHAMENTO, permanenciaMin, type CategoriaPedido, type Estado } from './model'
+import { CATEGORIAS_PEDIDO, censurado, difMin, esperaPedido, MOTIVO_FECHAMENTO, permanenciaMin, type CategoriaPedido, type Estado } from './model'
 import { notasEmitidas } from './nfce'
 import { situacaoTimer } from './temporizador'
 
@@ -20,25 +20,29 @@ export function resumoVisita(e: Estado, visitaId: string) {
 
   // porta
   const fl = e.fluxos.filter((f) => f.visitaId === visitaId)
-  const ent = fl.filter((f) => f.tipo === 'entrada')
+  // estoque inicial (já dentro na chegada) não é entrada: fica fora das entradas e da permanência (entrada não vista)
+  const iniciais = fl.filter((f) => f.tipo === 'entrada' && f.inicial)
+  const codIniciais = new Set(iniciais.map((f) => f.codigo))
+  const ent = fl.filter((f) => f.tipo === 'entrada' && !f.inicial)
   const sai = fl.filter((f) => f.tipo === 'saida')
+  const jaDentro = iniciais.reduce((s, f) => s + f.pessoas, 0)
   const entraram = ent.reduce((s, f) => s + f.pessoas, 0)
   const sairam = sai.reduce((s, f) => s + f.pessoas, 0)
   // saída no fechamento é censura (o grupo ficaria mais): fora da permanência média
   const permsFluxo = sai
-    .filter((s) => s.motivo !== MOTIVO_FECHAMENTO)
+    .filter((s) => s.motivo !== MOTIVO_FECHAMENTO && !codIniciais.has(s.codigo))
     .map((s) => {
       const en = ent.find((x) => x.codigo === s.codigo)
-      const a = en && minutos(en.hora)
-      const b = minutos(s.hora)
-      return a != null && b != null && b >= a ? b - a : null
+      return en ? difMin(en.hora, s.hora) : null
     })
     .filter((x): x is number => x !== null)
   const fluxo = {
     grupos: ent.length,
     entraram,
+    jaDentro,
+    gruposJaDentro: iniciais.length,
     sairam,
-    saldo: entraram - sairam,
+    saldo: jaDentro + entraram - sairam,
     criancas: ent.reduce((s, f) => s + f.criancas, 0),
     pessoasHora: horas > 0 ? r1(entraram / horas) : null,
     tamanhoGrupo: r1(media(ent.map((f) => f.pessoas))),
@@ -49,7 +53,7 @@ export function resumoVisita(e: Estado, visitaId: string) {
   // mesas
   const regs = e.registros.filter((r) => r.visitaId === visitaId)
   const perms = regs
-    .filter((r) => !censurado(r))
+    .filter((r) => !censurado(r) && !r.inicial)
     .map((r) => permanenciaMin(r.entrada, r.saida))
     .filter((x): x is number => x !== null)
   const contJogos = new Map<string, number>()
@@ -62,6 +66,7 @@ export function resumoVisita(e: Estado, visitaId: string) {
     permanenciaMedia: r1(media(perms)),
     permanenciaMediana: mediana(perms),
     censurados: regs.length - perms.length,
+    iniciais: regs.filter((r) => r.inicial).length,
     aniversarios: regs.filter((r) => r.aniversario).length,
     instrutorPorGrupo: r1(media(regs.map((r) => r.instrutor))),
     jogos: [...contJogos].sort((a, b) => b[1] - a[1]).slice(0, 8),

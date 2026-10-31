@@ -75,7 +75,7 @@ Cada capítulo com arquivo de instrução próprio aponta para ele. Capítulos s
 - **3.2 Hierarquia de evidências** — escala N1–N6 e hierarquia de tipos de dados.
 - **3.3 Fontes e instrumentos de coleta** — Blocos B1, B2, B3 e B4, em ordem de relevância.
 - **3.4 Tratamento dos dados** — pipeline, pseudonimização, variáveis, validação do dicionário.
-- **3.5 Registro prévio e testes de hipótese** — *Extra, só se sobrar tempo no fim (ver [4_metodologia.md](4_metodologia.md) §3.5).* H1–H9, metade exploratória e confirmatória. Se não for feito, a seção sai e as seguintes sobem um número.
+- **3.5 Registro prévio e testes de hipótese** — *Extra, só se sobrar tempo no fim (ver [4_metodologia.md](4_metodologia.md) §3.5).* H1–H9, na base inteira (sem divisão em metades). Se não for feito, a seção sai e as seguintes sobem um número.
 - **3.6 Técnicas de análise e controles** — técnicas por área, calibração da ocupação, controles estatísticos.
 - **3.7 Matriz de evidências** — decisão → pergunta → dado → fonte → confiança.
 - **3.8 Aspectos éticos e legais** — base legal, pseudonimização, observação sem identificação.
@@ -146,9 +146,9 @@ Escrito por último, em até duas páginas. Não traz informação que não este
 
 - **11.1 Parecer de viabilidade** — resposta direta à pergunta central, com as condições que a sustentam.
 - **11.2 Síntese dos objetivos** — um parágrafo por objetivo específico, na ordem de 1.3, cada um respondendo explicitamente a decisão que o objetivo anunciou.
-- **11.3 Limitações** — principalmente das premissas de maior incerteza.
+- **11.3 Limitações** — principalmente das premissas de maior incerteza. Explicitar, entre elas, as do Bloco B3: a NFC-e só é emitida a pedido do cliente, então as notas emitidas são piso das vendas e o caminho das notas fiscais dá limite inferior do fluxo; e houve um único intervalo entre as visitas de cada unidade, abaixo dos 15 dias planejados (Paralela, 17/10 a 30/10/2026, 13 dias; Bela Vista, 6 dias), que não capta a variação do mês nem a sazonalidade ([4_metodologia.md](4_metodologia.md) §3.9).
 - **11.4 Próximos passos** — validações a fazer antes de investir (ex.: evento piloto, cotação de ponto).
-- **11.5 Estudos futuros** — pesquisa que ficou fora do escopo (ex.: histórico completo de avaliações, sem o recorte do último mês; histórico dos avaliadores; comparação entre modelos de alimentos e bebidas).
+- **11.5 Estudos futuros** — pesquisa que ficou fora do escopo (ex.: histórico completo de avaliações, sem o recorte de três meses; histórico dos avaliadores; comparação entre modelos de alimentos e bebidas).
 
 ### Referências, Apêndices e Anexos → [10_biblio-apendices.md](10_biblio-apendices.md)
 
@@ -223,7 +223,7 @@ Vale para todos os capítulos, junto com a skill `meu-estilo-escrita`.
 2. **Sem metadiscurso.** Corta-se a frase que anuncia o que o texto vai fazer em vez de fazê-lo. Exemplos a evitar: "Esta seção apresenta…", "Para atingir esse propósito, foram traçados…", "A relevância… sustenta-se em três frentes complementares", "Do ponto de vista X,". O título da seção já diz do que ela trata.
 3. **Adjetivo vira número ou sai.** Expressões como "crescimento estrutural", "público amplo", "majoritariamente", "preenche uma lacuna" e "fundamental" afirmam sem medir. Cada uma vira um número com fonte ("13,1% das vendas em 2025 (ABRINQ, 2026)") ou uma afirmação delimitada ("o único estudo de viabilidade localizado…"). Se não houver número, a frase sai.
 4. **Números em formato único:** "R$ 53 bilhões" (não "R$ 53 bi"); percentuais com vírgula decimal ("13,1%"); faixa com "a" ("de 20 a 30 minutos"); unidade, recorte e data junto do número.
-5. **Voz ativa ou passiva sintética**, nunca a analítica: "adotou-se", não "foi adotado"; "o trabalho estima", não "foi estimado pelo trabalho".
+5. **Voz ativa ou passiva analítica**, como na skill `meu-estilo-escrita`, evitando a sintética: "foi adotado", não "adotou-se"; "o trabalho estima", não "estima-se" (decisão do autor, 31/10/2026).
 6. **Travessão (—) para aposto e intercalação**, nunca hífen com espaços.
 
 ### P6. Vocabulário controlado

@@ -739,7 +739,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: @arainhadosdados (A Rainha dos Dados) foi coletada como semente sem estar em `B1_instagram_aprovadas.csv`; entra no grau de entrada de 74 contas.
 **Efeitos colaterais**: infla levemente a precisão e a sensibilidade por corte; decidir se a semente sai do build ou se a casa entra nas aprovadas.
 
-
 ### 01:52
 **Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` (2026.10.14-2 → 2026.10.15-1) e `maps_entorno.test.cjs`
 **Antes**: na fila das 51 casas de 15/10, a estação mais próxima em Curitiba saía a 653–669 km (BRT do Rio e de Salvador que o Maps põe na lista quando a área se esgota) e o metrô dispensado de Curitiba ganhava distância; as 109 estações-tubo de Curitiba caíam em "outro" (qt_estacoes_vlt_brt zero em todas as 6 casas); "Futura estação Rua do Grito (BRT ABC)" contava como BRT a 526 m da Arena BG; a sede do Metrô-DF ("Companhia ferroviária") contava como estação de trem a 767 m da Asgard; "Trensurb Estação Rodoviária" ia para metrô; 16 cartões tinham a nota no lugar da categoria; a Overpass falhou em 22 das 51 casas e o porte do shopping saiu em branco com situação "ok".
@@ -1028,7 +1027,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: esboço das seções 5.1 a 5.5, do maior para o menor (Brasil → Bahia → Salvador; serviços às famílias → alimentação fora do lar e lazer → luderias), com números do B4 (PAS, POF, PNAD Contínua, Censo, IPCA, BCB, FipeZAP) e do B1; 5.2 com números provisórios do B2. Lacunas marcadas `[script]`, `[AV]` e `[BUSCAR]`; quadro de fontes por nível de preferência no fim.
 **Justificativa**: pedido do autor: esboços do cap. 5 com fontes oficiais antes das setoriais e da imprensa.
 
-
 ### 13:57
 **Objeto**: `CLAUDE.md` (seção "Melhorias do texto"), `docs/melhorias-texto.md` (novo), `docs/pendencias.md`, `docs/decisoes.md`, `AGORA.md`
 **Antes**: sem rotina de conferência cruzada entre capítulos; divergências e repetições entre os caps. 1, 2 e 5 sem registro.
@@ -1052,7 +1050,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: no OSM, plataformas de cada sentido da mesma estação (a 160-190 m) contavam como duas estações; paradas do bonde de Santa Teresa e paradas sem nome contavam como VLT; no Maps, sem busca que trouxesse as estações-tubo de Curitiba; versão do coletor fora dos CSVs.
 **Depois**: no OSM, mesmo nome, mesmo grupo e mesma rede até 400 m contam uma vez; bonde de Santa Teresa e parada ou plataforma sem nome vão para "outro" (com `observacao`); no Maps, busca "estação tubo" só em Curitiba (dispensada nas demais), o que deixa as 6 casas de Curitiba pendentes até a recoleta; `versao_script` nos dois resumos. Simulado sobre a coleta de 12h49: VLT/BRT a 1000 m cai de 88 para 59 e metrô de 45 para 44, somas fechando em 54/54.
 **Justificativa**: pedido do autor: analisar a última rodada do entorno e, se não tivesse extraído todas as variáveis em Maps e OSM, achar o problema e corrigir o extrator. A rodada não extraiu o VLT/BRT de forma confiável em nenhuma das duas fontes.
-
 
 ### 16:26
 **Objeto**: branches `fix/entorno-maps-distantes` (Mac), `main` (cap. 3, PR #5) e `claude/project-thread-anqzoo` (PR #6), juntadas em `claude/project-thread-cc98ij`; `AGORA.md`, `docs/pendencias.md`, `docs/decisoes.md`, `docs/registro-de-alteracoes.md`, `textos/planejamento/status_capitulos.md`; cópias `(1)` dos CSVs do entorno de 14/10 em `_dados-brutos/entornos/`
@@ -1122,7 +1119,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: a visita ao Bela Vista registrada no app começou em 10/10 (18h37 no POV1, 19h02 no POV2); o retorno de 18/10 fica 8 dias depois.
 **Efeitos colaterais**: o intervalo de notas fiscais entre as visitas (base das vendas no período) passa de 15 para 8 dias, e a visita deixa de cair na quinzena após o pagamento dos servidores estaduais (29 e 30/09). Nada foi corrigido nos documentos.
 
-
 ### 18:19
 **Objeto**: `_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py`, `outros/B3_descartes_app.csv`, `outros/B3_correcoes_app.csv` (novo), `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/originais/2026-10-10_SJBV/POV1/2026-10-10_SJBV_POV1_transcricao_precos.csv` (novo), `_dados-brutos/app/contagem_*.csv`, `contagem_resumo_visitas.csv`, `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`
 **Antes**: média dos dois observadores, com só as mesas do POV2 descartadas; o POV1 contava como entrada as 24 pessoas que já estavam dentro (B-1, 18h39, e B-7, 19h14): 86 entradas, 25,9 por hora; sem NFC-e.
@@ -1146,8 +1142,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o site no ar tinha a paleta preto/cinza/vermelho e Montserrat.
 **Depois**: `pnpm run deploy` publicou o visual editorial (commit 095e81c); conferido no ar (Fraunces carregada, fundo creme).
 **Justificativa**: pedido do autor: publicar o novo visual.
-
-## 2026/10/16
 
 ### 16:45
 **Objeto**: `_src/app-observacao/` (`src/domain/model.ts`, `resumo.ts`, `store.ts`, `App.tsx`, `screens/Visita.tsx`, `Ajustes.tsx`, `Folhas.tsx`, `FormMesa.tsx`, `abas/Fluxo.tsx`, `abas/Temporizador.tsx`, `ui/SeletorJogos.tsx`, testes, `package.json` 2.4.0, `android/app/build.gradle` 2026.10.16-1), APK `ObservacaoLuderia-2026.10.16-1.apk` (fora do git)
@@ -1173,8 +1167,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: sete formas de registrar comidas e bebidas, da mais barata à mais cara, com a ordem sugerida (marca de comida e bebida na contagem de 30 min, consumo próprio com NFC-e e notas emitidas no intervalo primeiro); nada implementado no app.
 **Justificativa**: pedido do autor: recomendações para facilitar o registro de consumo de comidas e bebidas.
 
-## 2026/10/16
-
 ### 16:48
 **Objeto**: Notion, banco "Luderias – Status da coleta" (54 linhas: Cardápio, Entornos, Instagram, Acervo de jogos, Google maps, "O que ainda falta?" e "Como proceder para conseguir os dados que faltam?")
 **Antes**: status de 15/10 (Instagram 45 completas; Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria parciais por falta de seguidores; Taverna e Encounter com acervo "Coleta parcial"; lojas sem A&B com cardápio ora "Coleta parcial", ora "Não coletado").
@@ -1186,7 +1178,6 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: resumo sem seguidores de Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria, e sem total de posts de La Tabuleria, TabuClub e Toca do Rato.
 **Depois**: os perfis de 15/10 trazem esses números (ex.: Bardo Mago, 31.314 seguidores).
 **Efeitos colaterais**: estatística descritiva e site leem o resumo e seguem sem essas casas no Instagram até rodar `B1-b_resumo.py`.
-
 
 ### 19:30
 **Objeto**: `_src/app-observacao/` (`src/domain/model.ts`, `App.tsx`, `screens/FormMesa.tsx`, `screens/Folhas.tsx`, `model.test.ts`, `package.json` 2.4.1, `android/app/build.gradle` 2026.10.16-2, `CLAUDE.md`), `AGORA.md`, `docs/decisoes.md`, APK `ObservacaoLuderia-2026.10.16-2.apk` (fora do git)
@@ -1214,23 +1205,467 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 
 ## 2026/10/17
 
+### 15:32
+**Objeto**: Notion, banco "A - Estabelecimentos" (esquema, 54 linhas com Instagram e visualização "PERFIL BASICO")
+**Antes**: Posts, Endereço, Nota média, N de avaliações e Categoria (maps) vazios em todas as linhas; Seguidores vazio em 5 casas e No posts total em 4; Site vazio em 10; horários só numa propriedade multisseleção vazia ("Horários de funcionamento"), sem opções.
+**Depois**: 12 propriedades novas para o horário: "Dias de funcionamento" (multisseleção Seg–Dom), "Seg" a "Dom" (texto, "HH:MM – HH:MM", turnos separados por ";", "fechado" quando sem horário), "Dias abertos (qtd)", "Horas por semana", "Abre mais cedo" e "Fecha mais tarde" ("(+1)" = madrugada do dia seguinte). Categoria (maps) com 12 opções: primeiro tipo reconhecido do campo `types` do Google Places, traduzido. Preenchidos nas 54 casas: endereço, nota, avaliações, horários (de `B1_resumo_estabelecimentos.xlsx` e `B1_horarios.csv`, coleta de 15/10); Posts com o mesmo valor de "No posts total" (53 casas; Ludus sem total de posts); Seguidores e No posts total das casas novas (Bardo Mago, La Tabuleria, TabuClub, Toca do Rato, Tubaleria) pelos `*_instagram_perfis.csv` de 15/10; categoria em 53 (Toca do Rato sem `types` na coleta); Site em 3 (Comdado, do Places; La Tabuleria e TabuClub, página do acervodejogos). Na visualização, os campos de horário entram no lugar de "Horários de funcionamento", que ficou oculta e sem uso. Conferência: 54/54 linhas com endereço, nota, avaliações, seguidores e horário.
+**Justificativa**: pedido do autor: completar o perfil básico no Notion e dar ao horário um formato que permita filtrar por dia e comparar carga semanal.
+
+### 15:34
+**Objeto**: Notion, banco "A - Estabelecimentos"
+**Antes**: propriedade "Horários de funcionamento" (multisseleção vazia, já oculta); 3 linhas sem dados de casa: duas "Nova página" sem nome e um "Bodogami" duplicado sem Instagram. A descrição de "Seg" dizia que os turnos vinham separados por "|".
+**Depois**: propriedade apagada. A "Nova página" de 12/10 foi para a lixeira; a outra "Nova página" e o Bodogami duplicado já estavam lá. O duplicado trazia um cardápio diferente do da linha principal (batata R$ 25 contra R$ 39, hambúrguer R$ 45 contra R$ 43, 17 contra 20 entradas, combo Donburi R$ 49 só nele); a linha principal ficou como está. A descrição de "Seg" agora diz ";", o separador usado de fato.
+**Justificativa**: pedido do autor: limpar a propriedade antiga e as linhas vazias.
+
+### 17:38
+**Objeto**: Notion, banco "A - Estabelecimentos" (54 linhas, propriedades da visualização "GEO": Metro e Shopping a 500 m, a 1000 m e em metros reais)
+**Antes**: as seis propriedades vazias em todas as linhas.
+**Depois**: preenchidas nas 54 casas com a coleta do OSM de 15/10 (12h49), `2026-10-15_54_estabelecimentos_entorno_osm_resumo.csv` e `_shoppings.csv`. Metro = estações de metrô do OSM (sem trem nem VLT/BRT); "em metros reais" = distância em linha reta, de pino a pino, à estação mais próxima, em branco nas 26 casas sem estação na área consultada. Shopping = shoppings a até 1000 m com 1000 avaliações ou mais no Maps **ou** polígono de 5.000 m² ou mais no OSM, sem contar duas vezes o mesmo polígono (`mesmo_poligono_de`); distância ao mais próximo desses, em branco nas 22 casas sem nenhum a até 1000 m. "Jogo de Tabuleiro • Board Game" casou com Encounter (mesmo endereço) e "São Jogue" com São Jogue - Bela Vista. Conferência no Notion: 54 linhas; metrô 16 (500 m) e 45 (1000 m), igual ao resumo do OSM; shoppings 21 e 70, igual ao cálculo sobre o CSV; 28 distâncias de metrô e 32 de shopping. Flow Games conta 2 estações a 500 m (metrô e monotrilho em Vila Prudente), que a regra de 2026.10.15-4 fundiria em uma.
+**Justificativa**: pedido do autor: inserir no Notion os dados do entorno; critério de porte do shopping escolhido por ele nesta sessão.
+
+### 17:44
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/` (7 arquivos novos: `asgard`, `dungeon`, `nalaland`, `balboas`, `saojogue`, `coletivogeek`, `playeasy`), originais em `ca_<cidade>/ca_<casa>/`, `B1-b_cardapios_planilha.py` e `cardapios/B1_cardapios_itens_precos.xlsx`
+**Antes**: 27 casas na planilha de itens e preços (1.934 linhas); Coletivo Geek em "não extraído" (PDF atrás de formulário); os PDFs de Balboa's, São Jogue e Coletivo Geek e os CSVs de Asgard, Dungeon e Nala Land (exportados pelo autor com o `cardapio_coletor`) soltos na raiz de `_dados-brutos/cardapios/`.
+**Depois**: 34 casas e 2.173 linhas (2.111 com preço). PDFs transcritos à mão, com a página conferida em imagem (data pelo metadado do PDF: Balboa's jan/2026, São Jogue out/2026, Coletivo Geek mai/2026); cardápio da Playeasy lido do texto do design no Canva; os três CSVs exportados revisados à mão (categorias erradas corrigidas: cachorros-quentes e sanduíches da Asgard estavam em "entradas/batata", Monster em "drinks", molhos da Nala em "hambúrguer"; na Dungeon, quatro doces avulsos vinham como variações de um item). Passaporte da Asgard (R$ 10 e R$ 25) na categoria couvert. Originais movidos para `ca_brasilia/ca_asgard/`, `ca_sao_paulo/ca_dungeon_games_store/`, `ca_recife/ca_nala_land/` e `ca_sao_paulo/ca_coletivo_geek/`.
+**Justificativa**: pedido do autor: inserir no trabalho os cardápios que ele achou (PDFs baixados e links salvos nos favoritos, pasta "Luderias", 17/10).
+
+### 17:44
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Acervo de Jogos/collect/B1-c_jogos_dos_acervos.py`, `acervo_jogos/B1_jogos_dos_acervos.csv`, `_dados-brutos/acervos_luderias/` (`ludopedia_jogasampa.txt`, `lista_playeasy.txt`, `ludus_luderia/`, caches novos)
+**Antes**: 16 casas, só as com dados de comida no Notion (8.736 linhas); Tubaleria só com a contagem da página (217).
+**Depois**: 30 casas (14.552 linhas). Novas fontes no script: Acervo de Jogos para Dungeon (90 títulos), Paladins (214), Pitta's (227), Tubaleria (221), Balboa's (1.833), São Jogue (370), Joyjoy (1.010, conferida pelo endereço da página) e LudoCafé (362); rejoy para Nala Land (312); payload Next.js de asgard.app.br/jogos (150); JSON do blog Squarespace da Omniverse (59, lista parcial: o blog para na letra D); lista 20376 da Ludopedia para a Jogasampa (331, lida no navegador); catálogo da Playeasy no Canva (438, lido no navegador); "cardápio de jogos" da Ludus em PDF de 2020 (199, títulos pela altura da fonte). O PDF da Ludus saiu de `_dados-brutos/cardapios/` para `acervos_luderias/ludus_luderia/`. As 16 casas antigas ficaram idênticas (conferido por contagem). Fora: Vila Celta (o subdomínio `reidascartinhas` redireciona para a página de Curitiba) e a loja "Taverna" do Acervo de Jogos (telefone diferente do da Taverna Game House).
+**Justificativa**: pedido do autor: inserir os acervos achados por ele; o acervo passa a valer para qualquer das 54 casas, com ou sem cardápio.
+
+### 17:44
+**Objeto**: `estabelecimentos/B1_resumo_estabelecimentos.xlsx`, `estabelecimentos/4_estatistica_descritiva/`, `_src/site-apresentacao/src/conteudo/b1-estatisticas.json`
+**Antes**: 27 casas com cardápio e 18 com acervo (uma só pela contagem da página).
+**Depois**: 33 casas com cardápio (TabuClub segue sem transcrição) e 29 com lista de acervo; soma por capital = 54. Site não republicado.
+**Justificativa**: rodar de novo o resumo e a estatística descritiva depois da atualização dos cardápios e acervos (regra do `AGORA.md`).
+
+### 17:44
+**Objeto**: Notion, banco "A - Estabelecimentos" (visualização "CARDAPIO")
+**Antes**: Balboa's, São Jogue, Coletivo Geek, Playeasy, Dungeon e Nala Land sem campos de cardápio; "Jogos do acervo" vazio fora das 16 casas antigas.
+**Depois**: nas 6 casas, Cardápio (link, ou "cardápio baixado" para PDF), quantidades por categoria (entradas, pratos principais, sobremesas, drinks, combos) e o item mais barato de cada referência (batata, hambúrguer, sobremesa, refrigerante, cerveja, caipirinha ou o drink mais barato quando não há caipirinha), com nota de fonte em "Outras anotações". "Jogos do acervo" (títulos na ordem da fonte até cerca de 1.950 caracteres, como nas linhas antigas) em 14 casas: Asgard, Balboa's, Dungeon, JogaSampa, Joyjoy, LudoCafé, Ludus, Nala Land, Omniverse, Paladins, Pitta's, Playeasy, São Jogue e Tubaleria; Acervo (link) preenchido onde faltava (Asgard, JogaSampa, Ludus, Omniverse, Playeasy). Os campos de cardápio da Asgard, digitados antes pelo autor, ficaram como estavam.
+**Justificativa**: pedido do autor: levar os dados novos ao Notion.
+
+### 17:44
+**Objeto**: Notion, banco "Luderias – Status da coleta"
+**Antes**: Cardápio parcial ou não coletado em Asgard, Balboa's, Coletivo Geek, Dungeon, Nala Land, Playeasy e São Jogue; acervo parcial nas casas com lista achada e não coletada.
+**Depois**: Cardápio "Coleta completa" nas 7; Acervo "Coleta completa" em 13 (Asgard, Balboa's, Dungeon, Jogasampa, Joyjoy, LudoCafé, Ludus, Nala Land, Paladins, Pitta's, Playeasy, São Jogue, Tubaleria) e "Coleta parcial" na Omniverse; Vila Celta volta a "Não coletado" (acervo inacessível); "O que ainda falta?" e "Como proceder" reescritos nessas casas e na Taverna, com a data e o volume da coleta de 17/10.
+**Justificativa**: pedido do autor: atualizar o status com os dados novos.
+
+### 17:44
+**Objeto**: Notion "Luderias – Status da coleta" (Asgard, 15/10) × cardápio de asgard.app.br/cardapio (17/10)
+**Antes**: couvert R$ 10 (seg-qui) e R$ 20 (sex-dom), isento com consumo de R$ 50.
+**Depois**: passaporte R$ 10 (seg-qui) e R$ 25 (sex-dom, feriados), um isento a cada R$ 60 de consumo.
+**Efeitos colaterais**: a planilha de cardápios usa o valor do site (couvert mínimo R$ 10, igual ao do Notion "A"); só a cesta alta da Asgard muda se o valor de 15/10 for o certo.
+
+### 18:20
+**Objeto**: `acervo_jogos/B1_banco_jogos.csv`, caches da API da Ludopedia (`ludopedia_api_busca.json`, `ludopedia_api_jogos.json`), docstring do `B1-b_banco_jogos.py`
+**Antes**: 723 jogos em 4 ou mais casas, sobre 16 acervos.
+**Depois**: 1.207 jogos em 4 ou mais casas, sobre 30 acervos (1.193 identificados na Ludopedia, 914 com nota, 568 com preço de venda); 160 buscas e 218 detalhes novos na API. Notion "B - Jogos" não foi atualizado.
+**Justificativa**: rodar de novo o banco de jogos com os acervos de 17/10.
+
+### 17:52
+**Objeto**: site de apresentação publicado (branch `gh-pages`, https://eusouopeu.github.io/luderia-tcc/)
+**Antes**: abas 08 a 10 com os dados de 15/10 (27 cestas de cardápio).
+**Depois**: `pnpm run deploy` publicou os dados de 17/10 (commit b192014 do `gh-pages`): 33 cestas; conferido no ar (Balboa's, Coletivo Geek e Nala Land no pacote publicado).
+**Justificativa**: pedido do autor: republicar o site com os cardápios e acervos novos.
+
+### 17:55
+**Objeto**: Notion, banco "A - Estabelecimentos", propriedades "Metro (em metros reais)" e "Shopping (em metros reais)"
+**Antes**: tipo número, com a distância à estação de metrô e ao shopping de porte mais próximos (preenchidas às 17:38).
+**Depois**: tipo multisseleção, com os nomes, do mais próximo ao mais distante, a até 1000 m (OSM e `_shoppings.csv` de 15/10). Metro: estações de metrô, trem e VLT/BRT, com o tipo entre parênteses e cor por tipo (azul, verde, laranja); fora as duplicatas do coletor, as paradas sem nome e as do bonde de Santa Teresa com a tag de rede. Ficam 4 paradas do bonde sem a tag (Outeiro da Glória, Russel, Portinha, Francisco Muratori) e variantes de nome do mesmo tubo em Curitiba (Viaduto Capanema, Jardim Botânico), como no parecer do entorno §7. Shopping: os mesmos 70 shoppings de porte das contagens; o OSM sem nome sai como "sem nome (way/…)" e o nome genérico "shopping" como "Shopping (sem nome próprio)". Vírgulas nos nomes viraram " -". As distâncias numéricas saíram do Notion (continuam nos CSVs). Conferência: 107 estações em 33 casas e 70 shoppings em 32 casas, igual ao cálculo sobre os CSVs; soma de shoppings = soma de "Shopping (1000m)".
+**Justificativa**: pedido do autor: converter as duas propriedades em multisseleção com os nomes das estações e dos shoppings.
+
+### 17:57
+**Objeto**: Notion, banco novo "B - Auditoria Instagram (posts)" (relacionado a "A - Estabelecimentos")
+**Antes**: amostra de auditoria dos posts só no CSV `_dados-brutos/redes_sociais/auditoria/B1_auditoria_instagram_posts.csv`.
+**Depois**: banco com os 200 posts sorteados (semente 20261015, 56 perfis), um por linha, título `perfil_coleta/shortcode`; colunas da amostra (estrato_sorteio, chave_sorteio, perfil_coleta, perfil, url, data_hora, tipo, curtidas, comentarios, n_midias, fixado, legenda_inicio, arquivo) e de conferência em branco (conferido_em, conferente, post_existe, data_confere, tipo_confere, curtidas_na_pagina, comentarios_na_pagina, legenda_confere, observacao; as de conferência sim/não como seleção Sim/Não). Relação de mão única com "A - Estabelecimentos" (o A não ganhou coluna) e rollups só de leitura: Instagram (A), Seguidores (A), No posts total (A), Data do primeiro post (A). 193 posts ligados à casa pelo @ do Instagram; os 7 de coviljogos (3) e ilusoesindustriais (4) ficam sem relação, por não terem página no A.
+**Justificativa**: pedido do autor: banco de auditoria dos posts ligado às casas, com propriedades do A só para leitura.
+
+### 17:58
+**Objeto**: Notion, banco "A - Estabelecimentos", propriedades "Metro (em metros reais)" e "Shopping (em metros reais)"
+**Antes**: nomes de quando guardavam distâncias.
+**Depois**: renomeadas para "Estações (até 1000m)" e "Shoppings (até 1000m)"; conteúdo e opções iguais.
+**Justificativa**: pedido do autor: nomes que digam o que as propriedades guardam agora.
+
+### 18:07
+**Objeto**: `_dados-brutos/cardapios/transcricao/` (`ccgfloripa.csv`, `jogasampa.csv`, `tubaleria.csv`), prints em `ca_florianopolis/ca_ccg_floripa/`, `ca_sao_paulo/ca_jogasampa/` e `ca_sao_paulo/ca_tubaleria/`, `B1-b_cardapios_planilha.py`, planilha de cardápios, resumo, estatística descritiva e site (`gh-pages` 170acc4)
+**Antes**: 34 casas na planilha (2.173 linhas); CCG Floripa, Jogasampa e Tubaleria sem cardápio.
+**Depois**: 37 casas e 2.218 linhas (soma por casa = total). CCG Floripa: foto do Maps de jul/2023 (5 xis e 4 fritas; o logo é da Taverna Nerd Store, que o Notion registra como loja da própria CCG). Jogasampa: quadro de letras do Maps de out/2023 (5 bebidas sem álcool e 2 doces). Tubaleria: 15 prints do destaque "Cardápio" do Instagram (bolotas, 9 hambúrgueres, salada e batata; combo com batata como variação do item, como na Arena BG), com a data do story estimada pela idade exibida (45, 38, 31 e 21 semanas antes de 17/10). 36 casas com cesta no resumo; site republicado.
+**Justificativa**: pedido do autor: incluir os prints de cardápio que ele tinha esquecido de enviar.
+
+### 18:07
+**Objeto**: Notion, "A - Estabelecimentos" e "Luderias – Status da coleta" (CCG Floripa, JogaSampa, Tubaleria)
+**Antes**: sem campos de cardápio; status de cardápio parcial ou não coletado.
+**Depois**: no banco A, quantidades por categoria, itens de referência (mais barato da subcategoria; na Jogasampa, brownie em vez de bala), combo da Tubaleria (Harry Potter + batata, R$ 37; 13 combos) e nota de fonte. No status, "Coleta completa" no cardápio das três, com o que falta (bebidas na CCG e na Tubaleria; comida na Jogasampa).
+**Justificativa**: pedido do autor: levar os prints ao Notion.
+
+### 18:09
+**Objeto**: Notion, banco "A - Estabelecimentos", propriedades "Tamanho do acervo" e "Preço médio (aluguel)"
+**Antes**: as duas propriedades vazias nas 54 casas.
+**Depois**: "Tamanho do acervo" preenchido nas 30 casas com lista em `B1_jogos_dos_acervos.csv` (títulos por casa; soma 14.552 = linhas do CSV). "Preço médio (aluguel)" nas 18 casas com preço de aluguel na lista (média simples de `aluguel_rs` dos títulos com preço, R$, 2 casas decimais; de R$ 8,05 na Toca do Rato a R$ 46,36 na Ludoteca BGC). As 12 casas sem preço (listas da Ludopedia, PDF, Canva, blog e acervos sem aluguel) ficam em branco. O prazo do aluguel varia por casa (1, 3 ou 7 dias) e não entra na média.
+**Justificativa**: pedido do autor: levar ao Notion o tamanho dos acervos e o preço médio de aluguel.
+
+### 18:20
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Acervo de Jogos/analise/B1-a_cesta_jogos.py` (novo) e `dados/[B1] Estabelecimentos e cardapios/acervo_jogos/B1_cesta_jogos.xlsx` (novo)
+**Antes**: sem cesta de jogos. Preço de venda e aluguel por jogo só no `B1_banco_jogos.csv`, sem custo de acervo nem comparação entre lojas.
+**Depois**: cesta com os 90 jogos presentes em 15 ou mais das 30 casas com acervo. 77 têm preço de venda e 13 não aparecem em nenhuma loja. Os jogos se dividem em três perfis pela duração (35 rápidos, 46 médios e 9 longos; a soma fecha em 90). Faixa por jogo entre as lojas: menor preço, mediana e p75 (ou o maior, com menos de 4 lojas). O núcleo custa R$ 15.276 / R$ 16.893 / R$ 17.836. Índice de preço por loja = média de preço/mediana do jogo, contando os jogos vendidos em 2 ou mais lojas: Flow 0,947, Place Games 0,957, Asgard 0,976, TabuClub 1,024, Inside 1,053. Utopia, Fortalúdica e La Tabuleria ficam fora do ranking, com menos de 10 jogos comparáveis. Custo do acervo inicial, provável: R$ 42,9 mil para 222 títulos (p25), R$ 60,9 mil para 322 (mediana) e R$ 114,8 mil para 622 (p75). Preço de varejo online de 13/10, sem desconto de distribuidora nem frete. Coluna com quantos aluguéis pagam cada jogo (mediana de 6,7).
+**Justificativa**: pedido do autor: cesta de jogos com corte de 15 ou mais casas, faixa de preço e índice por loja, base do custo do acervo (cap. 9.3) e da composição do acervo (cap. 6).
+
 ### 13:38
 **Objeto**: `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md`, `docs/registro-de-alteracoes.md` (merge dos PRs #8, #9, #10, #13 e #14)
 **Antes**: cinco PRs abertos, cada um com sua versão dos quatro arquivos de controle, em conflito entre si.
 **Depois**: conflitos resolvidos mantendo os dois lados. `decisoes.md` com as linhas de todos os PRs; `registro-de-alteracoes.md` com as entradas em ordem de hora; `pendencias.md` com o item 13 do PR #8 (traz LC 214/2025 e ruído); `AGORA.md` com o B3 das duas visitas (PR #14), a busca profunda de cardápios (PR #10) e o cap. 8 enxugado (PR #8), sem as linhas antigas de 15/10 do Notion e do B3.
 **Justificativa**: pedido do autor: revisar e fazer o merge de todos os PRs abertos.
 
-## 2026/10/22
-
-### 13:46
-**Objeto**: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_nuvem_palavras.py` (novo); `dados/[B2] Avaliacoes recentes/graficos/{png,svg,valores}/B2_nuvem_palavras` e `B2_nuvem_palavras_criticas` (novos); `_src/dicionario.md`; `AGORA.md`; `docs/decisoes.md`
-**Antes**: o B2 tinha só os três pictogramas da análise de conteúdo; não havia nuvem de palavras.
-**Depois**: duas nuvens no estilo editorial (Source Sans 3, PNG 300 dpi, SVG e CSV das 150 palavras com % simples e ponderado por casa). Geral, em cinza, com as 1.588 avaliações "analisada" de 53 casas: lideram "jogos" (37,8%), "atendimento" (29,2%) e "lugar" (22,0%). Notas 1 a 3, em vermelho, com 154 avaliações de 40 casas: "jogos" (42,2%), "atendimento" (38,3%), "experiência" e "comida" (27,3%), com "mesa", "ruim", "hora" e "espera" subindo. Fora: palavras vazias do português e 76 formas dos nomes próprios das casas. Cópia dos PNGs em `graficos/` da pasta do projeto. No dicionário, o padrão `Bn_nuvem_palavras[_<recorte>]`.
-**Justificativa**: pedido do autor: nuvem de palavras dos dados dos comentários.
 ## 2026/10/18
+
+### 11:29
+**Objeto**: Notion, 9 bancos novos de auditoria relacionados a "A - Estabelecimentos": "B - Auditoria Estabelecimentos", "Entorno (casas)", "Entorno (itens)", "Instagram (perfis)", "Cardápios", "Acervos", "Completude (B2)", "Avaliações (B2)" e "Bases públicas (B4)"
+**Antes**: amostras de auditoria (semente 20261015) só nos CSVs `_dados-brutos/<pasta>/auditoria/` de cada bloco; no Notion, só a dos posts do Instagram (17/10 17:57).
+**Depois**: um banco por amostra, uma linha por item sorteado: Estabelecimentos 11, Entorno (casas) 11, Entorno (itens) 61, Instagram (perfis) 47, Cardápios 200, Acervos 200, Completude (B2) 49, Avaliações (B2) 200 e Bases públicas (B4) 170 (bcb 13, caged 3, concla 1, fipezap 2, ibge_censo_2022 6, ibge_sidra 135, legislacao 10; soma = 170). Contagens conferidas por SQL no Notion. Mesmo desenho do banco dos posts: colunas da amostra, colunas de conferência em branco (sim/não como seleção Sim/Não), relação de mão única com o A e rollups só de leitura (B4 sem relação, por não ser de casa). Ajustes de esquema: rollups de "Metro/Shopping (em metros reais)" e "Acervo" recusados pelo Notion, trocados pelos numéricos de 500 m/1000 m e por "Aluguel de jogos"/"Venda de jogos"; no Acervos, a coluna de texto "estabelecimento" virou "estabelecimento_fonte" (colidia com a relação "Estabelecimento"); opções de seleção criadas antes da carga (fonte, categoria, subcategoria, grupo, base). Perfis coviljogos e ilusoesindustriais ficam sem relação, como nos posts. No Acervos ficaram 13 páginas de teste da montagem, a apagar.
+**Justificativa**: pedido do autor: gerar os bancos das demais auditorias.
+
+### 11:35
+**Objeto**: Notion, "B - Auditoria Acervos"
+**Antes**: 213 páginas: 200 da amostra e 13 de teste da montagem (teste, t-url, t-rel, t-num-data, t-full, t-full-rel, t-e, t-f, t-g, t-h, x2 e cópias parciais de "Mr. Jack" e "Wanted - One Piece").
+**Depois**: as 13 de teste na lixeira do Notion (restauráveis); 200 páginas, 200 chaves de sorteio distintas.
+**Justificativa**: pedido do autor: apagar as páginas de teste.
+
+### 12:12
+**Objeto**: B3, terceira visita (sábado, 17/10, 19h10 às 21h38, São Jogue Paralela, só o POV2): `dados/[B3]…/_dados-brutos/app/originais/2026-10-17_SJPA/POV2/` (novo), `_src/[B3]…/Contagem direta/outros/B3_correcoes_app.csv`, `build/B3-b_importar_app.py`, consolidados em `_dados-brutos/app/contagem_*.csv` e `contagem_resumo_visitas.csv`
+**Antes**: CSVs do app só em Downloads, com `visita_id` 2026-10-17_SJBVBV e unidade "Bela Vista" (o observador não trocou a unidade no app). O importador quebrava com o app 2.4, que já grava `visita_id` e `observador`.
+**Depois**: os 10 CSVs copiados sem edição, renomeados para `2026-10-17_SJPA_POV2_contagem_*.csv` (SJPA = Paralela; a unidade vem do nome da pasta, PA). NFC-e final (série 1, nº 12200, 17/10/2026 21:31:22, CNPJ 59.848.429/0001-86, São Jogue Paralela Ltda) transcrita da foto em `transcricao_precos.csv` (2 taxas de entrada salão FDS a R$ 28,00, água com gás R$ 6,90, brownie R$ 28,00, Dobble R$ 35,00, Coca Zero R$ 8,90, acréscimo R$ 7,88 = 10% do consumo sem a taxa; total R$ 142,68) e em 5 correções `preencher` da tabela visitas. Foto em `_dados-brutos/app/fotos/` (fora do git; traz CPF). O importador descarta o `visita_id` e o `observador` do app e usa os da pasta. Resultado provisório: 13 pessoas em 3 grupos pela porta (5,3 por hora, em 2,47 h), 4 grupos de mesa com 12 pessoas e permanência média de 99,5 min (mediana 91,5); 68 dB; 15 mesas, 10 estantes × 10 × 5 (500 caixas), 5 instrutores.
+**Justificativa**: pedido do autor: inserir os dados da terceira visita, na unidade Paralela, não no Bela Vista.
+
+### 12:12
+**Objeto**: divergência, unidade da visita de 17/10
+**Antes**: CSVs do app (`unidade` = "Bela Vista", `visita_id` 2026-10-17_SJBVBV).
+**Depois**: NFC-e 12200 e o autor (18/10): São Jogue Paralela.
+**Efeitos colaterais**: nenhum nos consolidados, que tomam a unidade da pasta (SJPA). Os originais seguem com o rótulo errado.
+
+### 12:20
+**Objeto**: B3, visita de sexta, 16/10, ao Bela Vista: `dados/[B3]…/_dados-brutos/app/originais/2026-10-16_SJBV/POV1|POV2/`, `_src/[B3]…/Contagem direta/outros/B3_descartes_app.csv` e `B3_correcoes_app.csv`, consolidados em `_dados-brutos/app/contagem_*.csv` e `contagem_resumo_visitas.csv`
+**Antes**: CSVs soltos em `originais/Visita SJBV - Sexta 16.10 - POV 1|2/`, fora do padrão de pasta e de nome (POV1 rotulado "16-10"; POV2 com `visita_id` 2026-10-16_SJBVBV), sem importar.
+**Depois**: arquivos movidos sem edição para `2026-10-16_SJBV/POV1|POV2/`, renomeados para `2026-10-16_SJBV_POV<n>_contagem_*.csv`. POV1 descartado inteiro (a pedido do autor, vale o observador com mais dados: o POV1 só tem 6 grupos de mesa e 4 pedidos, com todas as saídas às 23h41-23h42, no encerramento do app). Fim da visita do POV2 corrigido de 23h40 para 22h00 (o autor informou que os observadores saíram por volta das 22h; último registro, 22h00). Resultado provisório (POV2, 19h31 às 22h00, 2,48 h): 10 pessoas em 4 grupos pela porta (4,0 por hora), 7 grupos de mesa com 17 pessoas e permanência média de 82,9 min (mediana 95), 12 pedidos todos sem chegada registrada, 66,7 dB, 15 mesas. Somas conferidas: porta 2+4+2+2 = 10; mesas 1+4+2+2+2+2+4 = 17.
+**Justificativa**: pedido do autor: organizar e importar a visita de 16/10 ao Bela Vista.
+
+### 12:41
+**Objeto**: Notion, banco novo "3 - Visitas presenciais" (B3), relacionado a "1 - Estabelecimentos" (São Jogue)
+**Antes**: visitas do B3 só em `dados/[B3]…/contagem_resumo_visitas.csv` e nos consolidados do app.
+**Depois**: uma linha por visita, com o observador válido: 2026-10-10_SJBV (POV1), 2026-10-16_SJBV (POV2) e 2026-10-17_SJPA (POV2). Colunas: unidade, dia, período, horas observadas, fim estimado, observador descartado e motivo, porta (pessoas, grupos, por hora, tamanho, permanência), mesas (grupos, pessoas, crianças, tamanho, permanência média e mediana, sem saída), pedidos e pedidos sem chegada, dB médio, mesas e instrutores na unidade, taxa de entrada, NFC-e final, condições e pendências. Somas conferidas por SQL no Notion contra os consolidados: pessoas pela porta 38+10+13 = 61; nas mesas 41+17+12 = 70; grupos de mesa 9+7+4 = 20; pedidos 0+12+2 = 14.
+**Justificativa**: pedido do autor: banco no Notion com os dados das visitas presenciais.
+
+### 12:43
+**Objeto**: Notion, 8 bancos novos do B4: "4 - População e Renda por Capital", "4 - Aluguel Comercial por Capital", "4 - Simples Nacional (faixas e alíquotas)", "4 - Simples Nacional (repartição dos tributos)", "4 - Subclasses CNAE", "4 - Expectativas Focus", "4 - Selic, IPCA e Salário Mínimo (último valor)" e "4 - Salário de Admissão por Capital"
+**Antes**: bases públicas do B4 só nos CSVs de `dados/[B4] Bases publicas/`; no Notion, só a amostra de auditoria ("4A - Auditoria Bases públicas").
+**Depois**: um banco por tabela-resumo, com as colunas e os valores do CSV (nomes de coluna iguais, sem arredondar), a fonte, o recorte e o arquivo de origem na descrição do banco. Linhas: população e renda 27, aluguel 27, faixas do Simples 30, repartição 191, CNAE 10, Focus 25, BCB 6, salário de admissão 672 (336 por recorte). Contagens e somas conferidas por SQL no Notion contra os CSVs: salário de admissão com 336 + 336 linhas, admissões 3.019.106 (todas as atividades) e 872.446 (CNAE 56), amostra pequena 24 e 42; repartição com 36, 42, 42, 35 e 36 linhas por anexo (191) e soma dos percentuais igual. Seleções com opções criadas antes da carga (Indicador, fonte da locação, tributo, capital, ocupação). Na repartição, as 11 linhas das faixas 5 com alíquota efetiva acima do limite (anexos III e IV) ganharam "(efetiva > …)" no título, para não repetir o título da faixa comum. Tabelas longas (séries mensais e anuais do CAGED, BCB e FipeZap, POF, IPCA, PAS, Censo por idade e por bairro, PNADC) ficaram fora, por escolha do autor.
+**Justificativa**: pedido do autor: bancos no Notion com os dados do B4; recorte "só os resumos" escolhido por ele nesta sessão (o conector grava 100 linhas por chamada e o B4 tem cerca de 70 mil).
 
 ### 13:44
 **Objeto**: Notion, bancos "1A - Auditoria Estabelecimentos", "1A - Auditoria Instagram (perfis)" e "1A - Auditoria Entorno (estabelecimentos)" (propriedades e visão padrão)
 **Antes**: 11 colunas da amostra com nome do CSV (`endereco`, `avaliacao_media`, `volume_avaliacoes`; `seguidores`, `primeiro_post`, `n_posts_declarado`, `link_perfil`; `osm_qt_estacoes_metro_500m`/`_1000m`, `osm_qt_shoppings_500m`/`_1000m`) ao lado de rollups do A com o mesmo dado; `endereco_confere` como seleção Sim/Não, vazia nas 11 linhas.
 **Depois**: as 11 colunas renomeadas com o nome do rollup sem "(A)" (Endereço, Nota média, N de avaliações; Seguidores, Data do primeiro post, No posts total, Instagram; Metro (500m), Metro (1000m), Shopping (500m), Shopping (1000m)), cada uma seguida de uma seleção "<nome> confere" com as opções correta/incorreta; `endereco_confere` (vazia) trocada por "Endereço confere" com as novas opções. Os 11 rollups continuam no banco, ocultos na visão padrão. No Entorno, a coluna renomeada é a do OSM, fonte do Metro do A; o Shopping do A junta Maps e OSM, então "Shopping (500m/1000m)" (OSM) pode diferir do rollup.
 **Justificativa**: pedido do autor: colunas repetidas com o nome do rollup, rollups ocultos e uma seleção correta/incorreta ao lado de cada uma.
+
+## 2026/10/19
+
+### 18:39
+**Objeto**: `_src/[B1]…/Google Places (Negócios)/build/B1-b_cardapios_planilha.py` (função `so_preco_unitario`) e `cardapios/B1_cardapios_itens_precos.xlsx`
+**Antes**: preço por quantidade do mesmo item virava uma linha por quantidade: BoardZ, Chopp pilsen 475 ml a R$ 16, 2 x a R$ 30 e 3 x a R$ 42; Chopp IPA a R$ 20 e 2 x a R$ 38; Castelos, Licor artesanal 1 shot a R$ 9,90 e 2 shots a R$ 16,90. As linhas de 2 e 3 unidades entravam na mediana de cerveja e de drinks da cesta. Planilha com 2.218 linhas.
+**Depois**: fica só a linha de 1 unidade; os preços de 2 ou mais unidades vão para a observação dessa linha ("2 x 475 ml: R$ 30,00; 3 x 475 ml: R$ 42,00"). Item vendido só em pacote, sem preço unitário (drink game do Castelos, 4, 8 ou 9 shots), fica como está. Planilha com 2.214 linhas; conferido contra a versão anterior: saíram só essas 4 linhas e mudaram só as observações das 3 linhas de 1 unidade. As transcrições em `_dados-brutos/cardapios/transcricao/` não mudaram, porque são o instrumento que a auditoria confere.
+**Justificativa**: pedido do autor na auditoria do cardápio da BoardZ: considerar só o valor de 1 unidade.
+
+### 18:39
+**Objeto**: coluna `linha_arquivo` da auditoria de cardápios: `_src/[B1]…/Cardápios/analise/B1-a_auditoria_cardapios.py`, `_dados-brutos/cardapios/auditoria/B1_auditoria_cardapios.csv` (no Mac) e banco "1A - Auditoria Cardápios" do Notion (200 linhas)
+**Antes**: `linha_arquivo` = linha do CSV de transcrição contando o cabeçalho (primeiro item = 2). Soma da coluna no Notion = 8.958, igual à do CSV da amostra; as 200 linhas batiam com o CSV, ou seja, nenhuma tinha sido subtraída ainda.
+**Depois**: `linha_arquivo` = posição do item na transcrição (primeiro item = 1). Script grava `range(1, n + 1)`; a chave do sorteio (`id_item`) segue na linha do CSV, para que rodar de novo não mude a amostra de 15/10. CSV da amostra e Notion com 1 a menos nas 200 linhas (soma 8.758, mínimo 1); conferido linha a linha contra o CSV.
+**Justificativa**: pedido do autor: o número deve apontar a linha do cardápio, não a do CSV.
+
+## 2026/10/22
+
+### 11:14
+**Objeto**: `_src/[B1]…/Google Places (Negócios)/build/B1-b_cardapios_planilha.py` (função `marcar_referencia`, colunas `linha_referencia` e `motivo_fora_referencia`, `linhas_referencia` na aba resumo, aba precos_subcategoria), `B1-b_resumo.py` (função `cesta`) e `cardapios/B1_cardapios_itens_precos.xlsx`
+**Antes**: cada tamanho, combo ou print de outra data do mesmo item era uma linha, e todas entravam na cesta e nas medianas. Ex.: BoardZ, burgers de 150 g e smash 75 g (mediana de hambúrguer R$ 32,00); Arena BG, burger e combo com batata e lata (R$ 52,50); Tubaleria, burger e combo com batata (R$ 48,00); Chef on Play e Cineplay, o mesmo item em prints de 2022 a 2025.
+**Depois**: as 2.214 linhas continuam na planilha; 2.106 são de referência e 108 ficam fora da cesta (52 de cardápio mais antigo, 30 de tamanho maior, 26 de combo). Regra por item (casa, seção e nome): fica o cardápio mais recente, depois sai o combo quando há a versão sem combo, depois fica o menor tamanho (menor preço; sem preço, o menor número da variação). Sabor, dia da semana e com ou sem álcool não são tamanho e ficam todos. Medianas que mudam (bebida / entrada ou prato / hambúrguer, R$): Arena BG 11,00 / 45,00 / 52,50 → 11,00 / 39,50 / 42,00; BoardZ 16,00 / 30,00 / 32,00 → 16,00 / 28,00 / 28,00; Castelos 29,90 → 26,90 na bebida; Cineplay 30,90 → 31,90 em entrada ou prato; Place Games 10,50 → 9,00 na bebida; Tubaleria 48,00 → 38,00 no hambúrguer. As transcrições não mudaram. `B1-b_resumo.py` não foi rodado (precisa de arquivos que só estão no Mac).
+**Justificativa**: decisão do autor (22/10/2026), na auditoria do cardápio da BoardZ: item com dois tamanhos pesava duas vezes na mediana e o combo puxava a de hambúrguer para cima.
+
+### 13:46
+**Objeto**: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_nuvem_palavras.py` (novo); `dados/[B2] Avaliacoes recentes/graficos/{png,svg,valores}/B2_nuvem_palavras` e `B2_nuvem_palavras_criticas` (novos); `_src/dicionario.md`; `AGORA.md`; `docs/decisoes.md`
+**Antes**: o B2 tinha só os três pictogramas da análise de conteúdo; não havia nuvem de palavras.
+**Depois**: duas nuvens no estilo editorial (Source Sans 3, PNG 300 dpi, SVG e CSV das 150 palavras com % simples e ponderado por casa). Geral, em cinza, com as 1.588 avaliações "analisada" de 53 casas: lideram "jogos" (37,8%), "atendimento" (29,2%) e "lugar" (22,0%). Notas 1 a 3, em vermelho, com 154 avaliações de 40 casas: "jogos" (42,2%), "atendimento" (38,3%), "experiência" e "comida" (27,3%), com "mesa", "ruim", "hora" e "espera" subindo. Fora: palavras vazias do português e 76 formas dos nomes próprios das casas. Cópia dos PNGs em `graficos/` da pasta do projeto. No dicionário, o padrão `Bn_nuvem_palavras[_<recorte>]`.
+**Justificativa**: pedido do autor: nuvem de palavras dos dados dos comentários.
+
+## 2026/10/30
+
+### 16:24
+**Objeto**: `_src/app-observacao/` (versão 2.5.0, APK `ObservacaoLuderia-2026.10.30-1.apk`): `src/domain/model.ts`, `resumo.ts`, `temporizador.ts`, `src/store.ts`, `src/storage/backup.ts`, `src/App.tsx`, `src/screens/FolhasVisita.tsx` (novo), `src/ui/BarraVisita.tsx` (novo), `Visita.tsx`, `Ajustes.tsx`, `Folhas.tsx`, `FormMesa.tsx`, `Resumo.tsx`, `Unidade.tsx`, `abas/Fluxo.tsx`, `abas/Mesas.tsx`, `abas/Temporizador.tsx`, `abas/Acustica.tsx`, `abas/Ambiente.tsx`, testes (`virada.test.ts` novo); `_src/[B3] Contagem direta de ocupacao/Contagem direta/analise/B3-a_contagem.py`; `dados/[B3] Contagem direta de ocupacao/contagem_resumo_visitas.csv`
+**Antes**: sem campo para quem já estava dentro na chegada (as 24 pessoas de 10/10 e as mesas de 17/10 viraram correção manual); visita começava sem escolha explícita da unidade e com o observador por `prompt`; nenhuma conferência do CNPJ da NFC-e (17/10 ficou como "Bela Vista" na Paralela); encerrar gravava a hora do toque (16/10: 23h40 para observação até 22h); saída depois da meia-noite dava permanência vazia; backup só em um arquivo por dia, sobrescrito a cada mudança; abas só com ícone e situação da visita só na aba Mesas.
+**Depois**: `Fluxo.inicial` e `Registro.inicial` (estoque inicial), lançados pelo botão "Grupo que já estava dentro" na porta, pela marca "já estava na chegada" no grupo da mesa e, na contagem inicial, ao marcar ocupada uma mesa sem grupo; coluna `estoque_inicial` nos CSVs de fluxo e de grupos; o resumo do app e o `B3-a_contagem.py` tiram esses grupos das entradas e da permanência (colunas novas `pessoas_ja_dentro` e `grupos_mesa_ja_sentados`; os valores das três visitas não mudaram). Folha "Começar visita" com a unidade em destaque (sigla, CNPJ, trocar de unidade, aviso de visita aberta em outra), código do observador obrigatório (POV1/POV2) e papel. `Unidade.cnpj`, com Bela Vista e Paralela (sigla PA) cadastradas; a NFC-e de outra unidade ou de outro CNPJ pede confirmação, e a primeira nota grava o CNPJ da unidade sem cadastro. Folha "Encerrar visita" com o fim em último registro, agora ou outra hora (sugere o último registro quando passou de 15 min), aviso dos grupos que ficam censurados e a condição do dia. `difMin`: saída antes da entrada é a virada da meia-noite quando o intervalo fica em até 12 h (mesma regra no script). Backup com versões a cada 15 min em `Documentos/ObservacaoLuderia/versoes/` (ficam as 40 mais recentes), restauráveis em Ajustes, com cópia do estado atual antes de restaurar; gravação imediata quando o app vai para o fundo. Interface: abas com rótulo (Mesas, Porta, Ambiente, Tempo), barra da visita sob as abas (observador, desde quando, pessoas dentro, contagem vencida ou NFC-e de início faltando) ou botão "Começar visita", nova unidade em folha, unidade com sigla e situação do CNPJ na tela inicial.
+**Justificativa**: pedido do autor: implementar seis melhorias da revisão do app (estoque inicial, unidade explícita com CNPJ, observador obrigatório, encerramento pelo último registro, virada da meia-noite, backup em versões) e melhorar a interface.
+
+### 13:04
+**Objeto**: Notion, banco "2 - Comentários", propriedades "Itens positivos" e "Itens negativos" e as 40 linhas já preenchidas nelas
+**Antes**: listas diferentes nas duas colunas (16 opções positivas, 14 negativas), com sobreposições (`localização` e `localização (metrô)`; `público`, `comunidade legal` e `bons eventos`), nomes vagos (`ambiente`, `comemoração/niver`, `instruções de funcionamento`) e sem opção positiva para a explicação de jogos.
+**Depois**: a mesma lista de 22 temas nas duas colunas (verde nos positivos, vermelho nos negativos; a coluna dá a polaridade): variedade do acervo, conservação do acervo, explicação de jogos, atendimento presencial, atendimento online, rapidez do serviço, comida, bebidas, variedade do cardápio, porções, preço do consumo, preço da entrada, regras da casa, ambiente e decoração, conforto e espaço, limpeza, barulho, lotação e reserva, comemorações e grupos, eventos e comunidade, localização e acesso, loja. Definições na descrição do banco. As 40 linhas reclassificadas tema a tema (ex.: `acervo/jogos diverso` e `acervo/jogos escasso` → variedade do acervo; `comida boa`/`comida ruim` → comida; `comida cara` → preço do consumo; `pagamento adiantado` e `instruções de funcionamento` → regras da casa; `público`, `comunidade legal` e `bons eventos` → eventos e comunidade). Onde o antigo `atendimento` era sobre ensinar jogos, entrou explicação de jogos (com atendimento presencial só quando o texto também elogia a equipe); 1 linha de `ambiente` virou conforto e espaço + lotação e reserva (mesas com reserva, confortáveis); 1 linha de `acervo/jogos diverso` ganhou conservação do acervo ("jogos em bom estado"). Nenhuma célula ficou com opção antiga (conferido por SQL) e as opções antigas foram removidas.
+**Justificativa**: pedido do autor: lista mais clara, abrangente e sem sobreposição, aplicada também às células já preenchidas.
+
+### 13:22
+**Objeto**: Notion, banco "2 - Comentários", propriedade "Status" (criada pelo autor)
+**Antes**: 2 linhas marcadas "Incompleto" pelo autor (Bardo Mago); 1.626 sem status.
+**Depois**: 6 linhas "Incompleto", todas do Bardo Mago: as 2 do autor e 4 novas, em que o texto termina em reticências no meio da frase ("(especialmente os …", "mais caro no domingo do que …", "muito simpáticos, …", "passei mal neste meio tempo e a …"). Varredura das 1.628 linhas: 42 terminam em reticências ("…" ou "..."); as outras 36 terminam em frase completa e ficaram sem status. Dessas, 27 trazem o marcador do Google (espaço + "…"), o mesmo de uma das linhas que o autor marcou, e podem ter texto oculto depois de uma quebra de linha; as 9 com "..." são reticências do próprio autor da avaliação.
+**Justificativa**: pedido do autor: marcar os comentários cortados pelo coletor (texto depois do botão "Mais" não extraído).
+
+### 13:24
+**Objeto**: Notion, banco "2 - Comentários", propriedade "Status"
+**Antes**: 6 linhas "Incompleto" (Bardo Mago, cortadas no meio da frase); 27 linhas terminadas no marcador do Google (espaço + "…") depois de frase completa, sem status.
+**Depois**: as 27 também marcadas "Incompleto"; total de 33 de 1.628 linhas. Por casa: Bardo Mago 9, Luderia Carioca 4, Encounter 3, Ludoteca Sidequest 2, Bravo Jogos 2, Bodogami 2 e 1 em cada uma de outras 11 casas (Tubaleria, TabuClub, Play Easy, Nala Land, Ludoteca BGC, Flow Games, Fortalúdica, Castelos, BoardZ, Arena BG, Alçapão). Soma conferida: 9+4+3+2+2+2+11 = 33. As 9 linhas com "..." do próprio autor da avaliação seguem sem status.
+**Justificativa**: pedido do autor: tratar o marcador do Google como sinal de texto oculto depois do botão "Mais".
+
+### 13:40
+**Objeto**: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/webscripts/maps_avaliacoes.user.js` (funções `expandirTextos`, `botoesMais`, `leituraMelhor`, `lerCartao`, `checarSeletores`; coluna nova `texto_expandido`; versão 2026.10.13-7 → 2026.10.30-1) e `maps_avaliacoes.test.cjs`
+**Antes**: o coletor clicava uma vez em cada "Mais" e não conferia se o cartão abriu; cada releitura do cartão substituía a anterior, e o Maps às vezes ignora o clique ou redesenha o cartão recolhido. "Ver original" vinha depois do "Mais", e o texto original volta cortado. Resultado: 28 avaliações da base processada (`B2_avaliacoes_periodo.csv`) terminam no marcador do Google (espaço + "…"), e nelas o fim do texto, as notas por aspecto, o preço por pessoa e os demais detalhes ficaram de fora (o "Mais" esconde também esses campos). Nenhuma coluna marcava o corte.
+**Depois**: "Ver original" primeiro, depois "Mais", em até 3 rodadas, até nenhum cartão ficar com "Mais"; nas rodadas extras o botão é trazido à vista antes do clique. Uma leitura com o cartão recolhido não substitui a leitura expandida do mesmo `review_id`. Coluna `texto_expandido` (sim/não) depois de `texto_original`; a coleta e a exportação avisam quantas ficaram cortadas. Testado no Maps (Luderia Carioca, visualização limitada): 5 "Mais" pendentes em 5 cartões, inclusive a resposta do dono, todos expandidos. 18 testes passam. As coletas antigas não mudam: os lugares afetados precisam ser coletados de novo.
+**Justificativa**: pedido do autor: o coletor deixava de extrair texto, preço e notas de comida, serviço e ambiente dos comentários com "…" e botão "Mais".
+
+### 13:55
+**Objeto**: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_completude_campos.py` (novo) e `dados/[B2] Avaliacoes recentes/B2_completude_campos.csv` (novo)
+**Antes**: só os 33 comentários terminados no marcador do Google (espaço + "…") estavam marcados como incompletos; não havia medida dos campos extras (preço, notas por aspecto, barulho etc.) perdidos atrás do "Mais".
+**Depois**: base do corpus do Bardin (um arquivo por casa, comentários com texto até "3 meses atrás"): 1.593 comentários de 53 casas; 19 casas têm ao menos um comentário com campo extra (1.140 comentários; as outras 34 casas, com 453, não têm nenhum). Nessas 19, contando todos os rótulos do Google: 148 sem nenhum campo extra, 1.112 com menos campos que o comentário mais completo da casa, 1.132 com algum campo vazio que outro comentário da casa preenche. Só com os 7 campos do Notion (comida, serviço, ambiente, preço por pessoa, nível de barulho, tamanho do grupo, tempo de espera): 177, 827 e 973. As três contagens são aninhadas e são teto do corte: o avaliador pode não ter preenchido o campo, e o Google não pergunta tudo a todos (em Bodogami, nenhum comentário tem os 7). Soma das 19 linhas = TOTAL (conferida por assert).
+**Justificativa**: pedido do autor: medir quantos comentários podem ter campos incompletos além dos 33 marcados no Notion. Feito no CSV das coletas porque a cota de SQL do Notion se esgotou.
+
+### 14:25
+**Objeto**: `dados/[B2] Avaliacoes recentes/_dados-brutos/coletas/` (3 coletas novas do autor, de 30/10, com o coletor 2026.10.30-1: Bardo Mago, Bodogami e Shelf) e `docs/pendencias.md` (item 14d)
+**Antes**: as 3 coletas estavam soltas na raiz de `_dados-brutos/`; o item 14d só dizia que o coletor tinha sido corrigido.
+**Depois**: coletas movidas para `coletas/`, ao lado das antigas. Comparação por `review_id` com cada coleta antiga (só nas avaliações presentes nas duas):
+- Bardo Mago, contra a coleta de 14/10 com 220 linhas (128 em comum): dos 9 textos que terminavam no marcador do Google (espaço + "…"), 6 voltaram inteiros (os 6 cortados no meio da frase, marcados "Incompleto" no Notion); 25 avaliações ganharam detalhes, 13 o preço por pessoa e 22 as notas por aspecto; 16 ganharam resposta do dono (também contra a outra coleta de 14/10, sem corte; provavelmente respostas publicadas depois de 14/10). Nenhum campo perdido.
+- Bodogami: as coletas da versão 2026.10.13-7, uma delas a da base `B2_avaliacoes_periodo.csv`, já estavam inteiras (843 em comum, nenhum ganho nem perda). Contra a coleta mais antiga (versão 2026.10.13-4, 729 em comum): 13 dos 15 cortes resolvidos, e 65, 101 e 110 avaliações ganharam detalhes, preço e notas, mas essa versão também lia os detalhes de outro jeito. A coleta nova foi interrompida em 930 de cerca de 1.450 avaliações.
+- Shelf: a coleta nova parou em 40 avaliações ("fim da lista"; o volume lido do lugar é 31), todas mais novas que as coletas antigas. Nenhum `review_id` em comum: não dá para comparar.
+- Restam 5 textos com o marcador (Bodogami 2, Bardo Mago 3), iguais em todas as coletas, antigas e nova, sempre depois de emoji ou de frase completa ("Excelente 💖 …"). Na coleta nova esses cartões já não tinham botão "Mais" (`texto_expandido` = sim): o texto exibido pelo Maps termina assim, e o coletor não teria mais o que expandir. Não conferido na página logada. 2 cartões do Bodogami ficaram com `texto_expandido` = não, mas com o texto inteiro.
+**Justificativa**: pedido do autor: medir o quanto a correção do coletor resolveu nesses 3 lugares.
+
+### 14:30
+**Objeto**: `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/webscripts/maps_entorno.user.js` (versão 2026.10.15-4 → 2026.10.30-1; 1.643 → 1.224 linhas), `maps_entorno.test.cjs` e `build/B1-b_resumo.py` (função `entorno` e descrição das colunas)
+**Antes**: o coletor tinha duas fontes, Maps e OSM (consulta à Overpass, cinco CSVs), e o porte do shopping pela área no OSM (padrão `porte: 'osm'`; sem a coleta do OSM, `qt_shoppings_porte_*` saía em branco). Shopping sem avaliação lida contava como "não é de porte" (`+''` = 0; 11 dos 157 shoppings de 15/10). O número de avaliações não aceitava "mil". A distância da mais próxima era a "lida", sem limite (18 de 51 casas com 3 a 16 km; 1.785 km antes do filtro de 50 km). Os cadastros do mesmo shopping eram juntados pelo polígono do OSM; sem ele, só a regra de 150 m. Três dos 26 testes falhavam (esperavam Curitiba sem "estação tubo").
+**Depois**: só o Maps. O OSM saiu inteiro (coleta, critérios `osm`, `ambos`, `qualquer` e `abrasce`, praias e parques, dois CSVs e as colunas de área); o painel tem um botão para apagar a coleta antiga do OSM do navegador. Porte = avaliações no Maps ≥ limiar (padrão 1.000), com `qt_shoppings_aval_min_{500,1000,5000}_{500,1000}m` lado a lado. Avaliação não lida deixa o porte do shopping em branco (nunca "não"), o total do raio em branco, a situação "avaliações não lidas" e o estabelecimento nos pendentes; "Nenhuma avaliação" vale 0; "(1,2 mil)" vale 1.200. Distância (`dist_*_mais_proxima_m`, sem o "_lida") só até 1000 m; em branco com contagem zero = nenhuma até 1000 m. Shoppings duplicados até 400 m: mesmo nome sem "shopping", "mall" e espaços ("DiamondMall" = "Diamond Mall") ou parte do shopping (entrada, estacionamento, garagem, sala, piso, torre, bloco, acesso, portaria). Exportação com 3 CSVs (resumo, resultados, shoppings); o fim da fila baixa os três. 21 testes, todos passam. Simulação sobre a coleta de 15/10 (54 casas): 24 cadastros de shopping fundidos, 160 shoppings a até 1000 m, 50 de porte (59 com 500 avaliações, 39 com 5.000), porte em branco em 5 casas por avaliação não lida, distância da estação mais próxima em 30 casas (máximo de 820 m). `B1-b_resumo.py` lê as colunas novas; nas coletas antigas, corta a distância acima de 1000 m e deixa o porte em branco. O resumo não foi rodado de novo: espera a exportação com a versão nova.
+**Justificativa**: decisão do autor: o entorno usa só os dados do Google Maps, e o porte do shopping, só o número de avaliações.
+
+### 14:34
+**Objeto**: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/webscripts/maps_avaliacoes.user.js` (funções `infoLugar`, `fimPeloVolume`, `rolarLista`, `expandirTextos`; versão 2026.10.30-1 → 2026.10.30-2) e `maps_avaliacoes.test.cjs`
+**Antes**: na aba de avaliações não há o cabeçalho `div.F7nice`, e o volume do lugar era o primeiro número entre parênteses do painel inteiro, cartões incluídos. Na Shelf, uma resposta do dono traz o DDD "(31)": volume lido 31 (o real é 1.742), e a coleta parava ao carregar 31 cartões com "fim da lista" e `coleta_completa` = sim, mesmo com período de 5 meses. Coletas afetadas: Shelf de 13/10 e 14/10 (40 e 80 linhas) e de 30/10 (40 linhas, até "2 semanas atrás"); Bardo Mago de 14/10 (130 linhas, volume 31); Cineplay de 13/10 (80 linhas, volume 3). A base `B2_avaliacoes_periodo.csv` não foi afetada: a Shelf vem da coleta de 650 linhas, e Cineplay e Bardo Mago pararam depois de "3 meses atrás". Na expansão, os 2 últimos cartões da coleta interrompida do Bodogami ficaram com "Mais" fechado (`texto_expandido` = não; detalhes "Serviço: 3…" e "Comida: 5…").
+**Depois**: número entre parênteses só vale no cabeçalho; fora dele, só "N avaliações", que no painel vem antes dos cartões. O volume só encerra a coleta quando a lista também parou de crescer em 2 voltas seguidas (`fimPeloVolume`). Na expansão, 4 rodadas com espera crescente (0,4 s a 1,6 s) para cartão recém-carregado; botão que não abre depois de 6 cliques fica de lado, para não atrasar cada volta da rolagem. Conferido no Maps (Shelf): volume 1742 na visão geral e na aba de avaliações. 22 testes passam.
+**Justificativa**: pedido do autor: a coleta da Shelf parou sozinha dizendo que tinha terminado, com período de 5 meses.
+
+### 14:53
+**Objeto**: divergência entre o Notion ("2 - Comentários") e `B2_completude_campos.csv` na completude dos 7 campos extras
+**Antes** (CSV das coletas, base do Bardin, 1.593 comentários): 19 casas com campo extra (1.140 comentários); 177 sem nenhum dos 7 campos, 827 abaixo do comentário mais completo da casa, 973 com campo vazio que outro comentário da casa preenche.
+**Depois** (Notion, consulta SQL de 30/10, 1.628 linhas): as mesmas 19 casas (1.137 linhas; as outras 34 casas têm 491; soma 1.628); 134 sem nenhum campo, 864 abaixo do máximo, 1.008 com campo vazio visto em outro comentário. Maior diferença em Bodogami: 39 linhas sem campo no Notion contra 120 no CSV; também Castelos (12 contra 4) e Chef on Play (6 contra 1). "Sobras" está vazio em 1.627 linhas: os rótulos raros do Google (Opções vegetarianas, Acessibilidade etc.) não foram importados.
+**Efeitos colaterais**: o Notion pode ter sido preenchido a partir de outro arquivo de coleta de algumas casas (Bodogami tem 4 arquivos em `_dados-brutos/coletas/`), então a contagem do CSV não substitui a do Notion. Nada foi alterado.
+
+### 17:05
+**Objeto**: `textos/instrumentos/dicionario_temas_B2.md` (novo) e descrição do banco "2 - Comentários" no Notion
+**Antes**: definições de uma linha por tema na descrição do banco, sem regras de decisão; 21 temas descritos ("comida / bebidas" juntos) contra 25 opções nas colunas ("curadoria dos jogos" e "aluguel" só em Itens positivos, "horário de funcionamento" só em Itens negativos, nenhuma das três descrita).
+**Depois**: dicionário com 25 temas (entra / não entra), 11 regras de decisão e 27 linhas a rever, reconstruído a partir das 166 linhas que o autor codificou (Fórmula ≥ 5; 356 linhas no filtro, 190 ainda sem tema). Descrição do banco com as definições novas e as regras curtas. Nenhuma célula das colunas de temas foi alterada.
+**Justificativa**: pedido do autor: corrigir as regras do dicionário a partir das classificações já feitas e avaliar a aderência a Bardin.
+
+### 17:05
+**Objeto**: divergência entre `textos/instrumentos/analise_conteudo_bardin_B2.md` (§1.4, 15/10) e o dicionário do Notion (30/10)
+**Antes** (15/10): 16 categorias com código (ACV, MED, ATD, AB, TMP, PRC, AMB, RUI, CAP, PRG, COMU, VAR, LOC, INC, RET, GEN), polaridade `+ - ± ~` e códigos de contexto (ocasião, público, desconexão, nome de funcionário).
+**Depois** (30/10): 25 temas no Notion, polaridade só positiva ou negativa, sem códigos de contexto e sem tema de segurança e inclusão.
+**Efeitos colaterais**: os achados do §3 do instrumento usam a grade de 15/10; contagens feitas no Notion não são comparáveis a eles sem uma tabela de correspondência. Nada foi corrigido (pendências, item 15c).
+
+### 17:10
+**Objeto**: coletas do B2 de 30/10 (Bodogami e Shelf, versão 2026.10.30-2), `docs/pendencias.md` (item 14d) e `AGORA.md`
+**Antes**: três CSVs novos soltos na raiz de `_dados-brutos/` (Bodogami, 16:55; Shelf, 14:38 e 16:57); pendência pedia completar a Bodogami e recoletar a Shelf.
+**Depois**: CSVs movidos para `_dados-brutos/coletas/` com sufixo (1) e (2), sem sobrescrever as coletas de mesmo nome. Comparação com as coletas escolhidas (13/10 e 14/10) registrada no item 14d: Bodogami com 23 comentários sem nenhum dos 7 campos no recorte, contra 120; Shelf igual à antiga nos 241 comuns. Próximas recoletas: Encounter, Utopia Games & Food e Luderia Carioca.
+**Justificativa**: pedido do autor: conferir se as coletas do script novo vieram mais completas e indicar as 3 próximas casas a recoletar.
+
+### 17:10
+**Objeto**: `textos/instrumentos/dicionario_temas_B2.md` e descrição do banco "2 - Comentários" no Notion
+**Antes**: pedido errado em rapidez do serviço; curadoria com "jogos diferentes" e jogos desatualizados; aluguel e loja como temas com polaridade; ocasião e público como proposta; 27 linhas a rever; a fidelidade dependia da recodificação cega ainda não feita.
+**Depois**: pedido errado em atendimento presencial; curadoria só para jogos muito bons de se jogar; acervo desatualizado em variedade do acervo; coluna de contexto, sem polaridade, com ocasião, público, aluguel e loja (ainda não criada no Notion); 26 linhas a rever (saiu a do Bodogami com jogos desatualizados, que já estava certa; na do Arcadea fica só o 10%). A revisão presencial do segundo codificador, feita por cima das marcações do autor, é registrada como revisão por consenso, sem medida de fidelidade.
+**Justificativa**: correções do autor ao dicionário de 30/10.
+
+### 17:26
+**Objeto**: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/webscripts/maps_avaliacoes.user.js` (versão 2026.10.30-3) e testes; coletas de 30/10 de Encounter, Utopia, Luderia Carioca, Flow Games, Fan Hour e Bravo Jogos
+**Antes**: "Mais" procurado só em `<button>` e `[role="button"]`; `texto_expandido` = sim sempre que não sobrava botão, mesmo com texto ou resposta do dono terminando em " …". As 6 recoletas de 30/10 (versão 2026.10.30-2) vieram iguais às de 13 e 14/10 nos comentários comuns: nenhum campo ou texto ganho, os mesmos 30 textos e respostas terminando em " …" (todos depois de um emoji), todos com `texto_expandido` = sim. CSVs soltos na raiz de `_dados-brutos/`.
+**Depois**: "Mais" procurado também em `<a>` e `<span>` cujo texto é só "Mais"/"Ver mais", clicando sempre o elemento mais interno (no Maps o `<span>` que embrulha o botão não abre nada; conferido na página da Fan Hour: 10 botões, 10 aberturas, nenhum texto cortado depois). `texto_expandido` = não também quando o texto ou a resposta do dono termina no marcador " …", e o aviso de fim de coleta passa a contar esses casos. 25 testes passam. CSVs movidos para `_dados-brutos/coletas/`, sem sobrescrever.
+**Justificativa**: pedido do autor: analisar as 6 recoletas; ele viu "Mais" em comentários que o coletor deu como expandidos. Não foi possível ver o DOM desses casos (o navegador do Claude está deslogado e mostra 5 avaliações), então a correção cobre a hipótese mais provável e torna o caso visível na coluna.
+
+### 18:13
+**Objeto**: cópias exportadas do banco "2 - Comentários" (arquivos do projeto `b2/notion_comentarios/`: `2026-10-30_2_comentarios_all_atualizado.csv`, `..._visao_atualizado.csv`, `..._mudancas.csv`, `2026-10-30_B2_amostra_recodificacao.csv` e o gabarito). O banco do Notion não foi alterado (cota de consultas esgotada).
+**Antes**: exportação de 30/10 com 1.628 linhas; 74 linhas manuais sem os campos que a recoleta de 30/10 trouxe; 355 linhas com tema e 1.273 sem tema, sem marca de que tinham sido lidas (80 com Fórmula ≥ 5 e 1.193 com Fórmula < 5); aluguel e loja como temas; visão sem coluna Contexto.
+**Depois**: 210 campos preenchidos a partir das recoletas de 30/10 (casadas pelo ID ou pelo texto), mais 62 notas por aspecto pela convenção do autor ("5 (comida 3)": aspecto não citado = nota geral); as 1.273 linhas sem tema codificadas por Claude em 30/10 com o dicionário de 30/10 (1.037 ganharam tema; 236 ficaram sem tema por não citarem atributo, como "Excelente" ou só o nome do atendente; 4 modelos de propaganda excluídos); aluguel, loja e a ocasião em Contexto; coluna nova "Análise de temas" ("Claude 30/10/2026" em 1.273 linhas, "anterior a 30/10/2026" em 355), que separa "sem tema" de "não analisado". As 1.821 trocas, célula a célula e com a origem, no `..._mudancas.csv`. Nenhum dado existente apagado; dado ausente segue vazio. Amostra para a recodificação cega do autor: 139 linhas (20 das 80 de Fórmula ≥ 5 e 10% das 1.193, estratificada por com/sem tema, sementes 20261030 e 20261031), com as colunas de tema vazias.
+**Justificativa**: pedidos do autor em 30/10: levar as recoletas ao banco, codificar todas as linhas ainda sem tema, criar a coluna de contexto e separar uma amostra para a recodificação independente (Bardin).
+
+### 18:18
+**Objeto**: `_src/extras/gerar_planilha_agregada.py` (novo) e `dados/Dados agregados/` (novo: `dados_agregados.xlsx` e 20 gráficos em `graficos/`)
+**Antes**: dados agregados espalhados por bloco (`B1_estatistica_descritiva_*.xlsx`, CSVs da análise de legendas, `B1_cesta_jogos.xlsx`, `contagem_resumo_visitas.csv` e CSVs do B4), sem uma planilha única com tabelas formatadas e gráficos.
+**Depois**: planilha com índice, 21 tabelas (casas por metrópole, descritiva, dias de funcionamento, painéis por região e metrópole, entorno pelo Maps, preços e couvert dos cardápios, modelos de cobrança, eventos e temas do Instagram, jogos mais presentes e custo do acervo, contagem do B3, população e renda, aluguel comercial, salário de admissão, Simples Nacional, Selic e IPCA, IPCA de alimentação fora do domicílio) e a base das 54 casas. Tabelas do B1 por fórmula sobre a base, com linha de conferência (diferença 0 nas tabelas que fecham com o total); Arial 10, fundo branco, bordas só no cabeçalho e no fim. Fora: comentários do B2 (inclusive contagens de avaliações e a comparação legendas × B2) e porte de shopping do OSM. Dados lidos da branch `fix/entorno-maps-distantes` (a do Mac).
+**Justificativa**: pedido do autor: arquivo Excel com os dados agregados da pesquisa atual, sem comentários e sem OSM no entorno, com gráficos como os do documento anexo (Dance Forrónejo).
+
+### 18:25
+**Objeto**: `.gitignore`
+**Antes**: logs dos scripts de `_src/extras/` (gravados em `_src/logs/` por `log_execucao.py`) apareciam como arquivos não versionados.
+**Depois**: `_src/logs/` ignorado, como os logs dos blocos.
+**Justificativa**: logs de execução não são publicados; a pasta ficava solta no `git status` depois de rodar `gerar_planilha_agregada.py`.
+
+### 18:26
+**Objeto**: `_src/extras/gerar_planilha_comentarios.py` (novo), `_src/extras/planilha_estilo.py` (novo) e `dados/Dados agregados/` (novos: `dados_agregados_comentarios.xlsx` e 11 gráficos em `graficos_comentarios/`)
+**Antes**: sem planilha dos dados agregados dos comentários do B2; estilo das tabelas e dos gráficos só dentro de `gerar_planilha_agregada.py`.
+**Depois**: planilha separada com 11 tabelas (comentários por metrópole, nota geral, notas por aspecto, temas elogiados e criticados, críticas nas notas 1 a 3, contexto, gasto por pessoa, tempo de espera, barulho, tamanho do grupo e situação da codificação) e a base de 1.628 comentários sem o texto, com uma coluna 0/1 por tema, contexto e tamanho de grupo; tabelas por fórmula, conferência com diferença 0. Fonte: cópia atualizada do "2 - Comentários" de 30/10 (arquivos do projeto `b2/notion_comentarios/`, temas do commit 1c13d6a), não o Notion. Estilo comum das duas planilhas movido para `planilha_estilo.py` (os gráficos da planilha geral saíram idênticos antes da troca de cores).
+**Justificativa**: pedido do autor: planilha e gráficos separados para os dados agregados dos comentários.
+
+### 18:26
+**Objeto**: cores dos gráficos das duas planilhas de dados agregados (`_src/extras/planilha_estilo.py`, 31 PNGs e as duas planilhas)
+**Antes**: marrom, laranja, laranja claro, amarelo e vermelho, como no trabalho de marketing do autor; Salvador em laranja.
+**Depois**: só tons das paletas slate e purple do Tailwind CSS (purple-800, 500, 300 e 700; slate-300, 400, 600 e 700; grade em slate-200). Salvador em purple-700, com as demais barras em slate-400; rótulos de séries claras em slate-700 para ficarem legíveis.
+**Justificativa**: pedido do autor.
+
+### 18:32
+**Objeto**: planilhas de `dados/Dados agregados/` e `_src/extras/` (`gerar_planilha_agregada.py`, `gerar_planilha_comentarios.py`, `planilha_estilo.py`)
+**Antes**: `dados_agregados.xlsx` com as 21 tabelas de B1, B3 e B4 juntas e `dados_agregados_comentarios.xlsx` com o B2; títulos com o nome da tabela seguido de dois-pontos e da conclusão (ex.: "Tabela 1 – Casas do B1 por região e metrópole: São Paulo concentra 19 das 54; Salvador tem uma").
+**Depois**: um arquivo por bloco, com tabelas e abas renumeradas a partir de 1 em cada um: `B1_dados_agregados_completo.xlsx` (14 tabelas), `B1_dados_agregados_resumido.xlsx` (10 tabelas: sem eventos por categoria, dias citados nos eventos e temas das legendas do Instagram e sem o custo do acervo inicial, que eram as tabelas 10, 11, 12 e 14), `B2_dados_agregados.xlsx` (11), `B3_dados_agregados.xlsx` (1) e `B4_dados_agregados.xlsx` (6). Títulos só com a parte antes dos dois-pontos. Os dois arquivos antigos saíram. Gráficos iguais.
+**Justificativa**: pedido do autor: nomes das tabelas sem a conclusão ("o resto só polui") e tabelas separadas por bloco de dados, com duas versões do B1.
+
+### 19:27
+**Objeto**: banco do Notion "2 - Comentários" (collection://c168e99a-a668-40b6-a0b4-1f64b5e15c06): propriedades "Itens positivos", "Itens negativos", "Contexto", notas por aspecto e a propriedade nova "Análise de temas" (seleção: "Claude 30/10/2026" e "anterior a 30/10/2026")
+**Antes**: banco conferido igual à exportação de 30/10 antes da primeira escrita (1.628 linhas; 327 com Itens positivos, 95 com Itens negativos, 39 com Contexto). Sem a coluna "Análise de temas". Aluguel e loja ainda como temas.
+**Depois**: 1.296 páginas atualizadas com as trocas das cópias de 18:13. Uma consulta SQL depois das escritas bate com `2026-10-30_2_comentarios_all_atualizado.csv` em todos os totais (diferença zero): 1.628 linhas, 1.286 com Itens positivos, 294 com Itens negativos, 420 com Contexto, 915 com Comida, 925 com Serviço, 920 com Ambiente e 1.273 com "Claude 30/10/2026" em "Análise de temas". No Notion, "Análise de temas" vazio quer dizer "anterior a 30/10/2026". O nome da opção não leva vírgula, porque o Notion não aceita vírgula em opção de seleção. Nenhum dado apagado. O único "Itens positivos" esvaziado (Bardo Mago, nº 41, "comemorações e grupos" de um aniversário) foi a ocasião levada para Contexto, que já trazia "aniversário".
+**Justificativa**: pedido do autor de 30/10. As cópias já atualizadas foram levadas ao Notion quando a cota de consultas voltou.
+
+### 22:31
+**Objeto**: cesta por pessoa do B1: `B1-a_estatistica_descritiva.py`, `B1_estatistica_descritiva_geral.xlsx`, `B1_estatistica_descritiva_por_grupo.xlsx`, `b1-estatisticas.json` do site, `gerar_planilha_agregada.py` e as planilhas e gráficos de `dados/Dados agregados/` (`05_cesta_por_metropole.png` substituído por `05_consumo_por_metropole.png`)
+**Antes**: cesta = couvert + bebida + entrada ou prato, com couvert 0 quando não encontrado no cardápio: 33 cestas, das quais 25 sem couvert; mediana de R$ 54. As notas das Tabelas 4 e 7 do B1 diziam "só nas casas com couvert, bebida e prato encontrados", o que os valores não seguiam.
+**Depois**: duas medidas. Consumo por pessoa = bebida + entrada ou prato (33 casas; mediana R$ 48,80, P25 R$ 38,50, P75 R$ 60). Cesta completa = consumo + couvert, só com couvert encontrado (8 casas; mediana R$ 74,25). Couvert não encontrado não entra como 0. Planilha agregada do B1 com as duas medidas nas Tabelas 2, 4, 5 e 7; gráfico da Tabela 5 passa a mostrar o consumo. O site mantém a cesta casa a casa de antes (colunas `cesta_site_*`, fora das planilhas) até trocar o rótulo; o JSON só ganhou as chaves `consumo_*`.
+**Justificativa**: escolha do autor (30/10, opção "duas colunas") depois da auditoria das planilhas agregadas, que achou o couvert 0 contra a regra de 16/10 (dado ausente é "não encontrado", nunca 0).
+
+### 22:31
+**Objeto**: divergências achadas na auditoria das planilhas agregadas (relatório: https://claude.ai/artifact/TPFC3JNScg7u4e73y9hwK8)
+**Antes**: (1) decisão de 15/10 "cesta casa a casa mantém casas sem couvert" (soma 0); (2) `B1_estatistica_descritiva_geral.xlsx` gerado em 17/10 a partir do `B1_resumo_estabelecimentos.xlsx` de 17/10; (3) registro de 30/10 (codificação do B2): 166 linhas codificadas pelo autor.
+**Depois**: (1) regra de 16/10 (couvert ausente não entra como 0), agora aplicada; (2) `B1_cardapios_itens_precos.xlsx` de 22/10 (linha de referência) e decisão de 30/10 (entorno só até 1000 m), ainda fora da base; (3) planilha do B2 e gráfico 11 dizem "355 linhas pelo autor".
+**Efeitos colaterais**: (2) medianas de cardápio de 14 casas e distâncias acima de 1 km da base do B1 ainda são as de 17/10 e 15/10; (3) autoria da codificação anterior a 30/10 a confirmar antes de descrever o método. Cap. 5 (5_analise_de_mercado.md, linha 79) chama de "cesta" o que agora é "consumo" (bebida + prato) e usa números de 26 casas.
+
+## 2026/10/31
+
+### 00:14
+**Objeto**: visita de 30/10 à Paralela (B3): CSVs do app, fotos da NFC-e, `outros/B3_correcoes_app.csv`, `contagem_*.csv`, `contagem_resumo_visitas.csv` e `dados/Coleta em estágio avançado/2026-10-30_B3_dados_agregados.xlsx`
+**Antes**: CSVs do POV2 em `originais/Visita 30-10-2026 São Jogue Paralela (sex)/`, com prefixo `SJBVP`, fora do padrão do importador; fotos `photo_2026-10-31 00.09.13.jpeg` e `00.09.16.jpeg` (a mesma nota, duas fotos); Tab 1 do agregado com três visitas (10/10, 16/10 e 17/10).
+**Depois**: CSVs em `originais/2026-10-30_SJPA/POV2/` com prefixo `2026-10-30_SJPA_POV2_` (conteúdo intacto); fotos renomeadas `2026-10-30_SJPA_POV2_nfce_fim_12409.jpg` e `..._foto2.jpg`; itens da NFC-e 12409 (série 1, 30/10/2026 21:49:13) transcritos em `..._transcricao_precos.csv` (2 taxas de entrada de R$ 28,00, água com gás, Oreo com Ovomaltine, brownie e acréscimo de R$ 5,69, 10% sobre os R$ 56,90 fora as taxas); NFC-e final, CNPJ e cobrança como correções. Importação e análise rodadas: 7 grupos e 13 pessoas pela porta em 2,65 h (4,9 por hora), 7 grupos e 31 pessoas nas mesas, permanência média na mesa de 136,9 min (mediana 144), 73,3 dB médios. Coluna "30/10 Paralela" na Tab 1, com fonte, nota e índice atualizados. Somas conferidas: pessoas da porta (3+2+2+2+2+1+1 = 13) e das mesas (2+4+11+5+3+4+2 = 31).
+**Justificativa**: pedido do autor: inserir a visita de 30/10 nos dados agregados da coleta em estágio avançado.
+
+### 00:21
+**Objeto**: visita de 30/10 à Paralela (B3): `B3-b_importar_app.py`, `outros/B3_correcoes_app.csv`, `contagem_*.csv`, `contagem_resumo_visitas.csv`, Tab 1 de `dados/Coleta em estágio avançado/2026-10-30_B3_dados_agregados.xlsx` e banco do Notion "3 - Visitas presenciais"
+**Antes**: saídas pela porta de P-1, P-2, P-3, P-4, P-6 e P-7 às 21h59 (encerramento do app), permanência pela porta de 120,1 min; mesas sem marca de que já estavam no salão; pedidos com hora de pedido igual à de chegada (espera 0); correções só com chave de uma coluna; Tab 1 sem pedidos; visita fora do Notion.
+**Depois**: importador aceita chave composta (`codigo+tipo` = `P-1+saida`). Saídas pela porta trocadas pela saída da mesa de cada grupo (P-1 21h48, P-2 21h16, P-3 21h26, P-6 21h48, P-7 21h47); saída de P-4, sem mesa, excluída (grupo censurado); permanência pela porta de 103,8 min (6 grupos). Mesas 1, 2, 3 e 5 marcadas como censuradas (já estavam no salão). Hora do pedido e espera apagadas nos 7 pedidos. Tab 1 com a permanência nova e três linhas de pedidos por tipo nas quatro visitas (10/10 sem registro; 16/10: 6, 6, 0; 17/10: 2, 0, 0; 30/10: 3, 3, 1; somas iguais aos totais de pedidos), nota revista. Linha "2026-10-30_SJPA" (nº 4) criada no Notion, ligada à São Jogue.
+**Justificativa**: respostas do autor em 31/10: esqueceu de marcar as saídas na aba da porta; as entradas estão corretas e só os grupos que já estavam dentro foram lançados direto nas mesas; a hora do pedido não vale, só a chegada, a quantidade e o tipo dos itens. Pedido de acrescentar a visita ao Notion.
+
+### 01:27
+**Objeto**: `B3-a_contagem.py`, `outros/B3_estrutura_unidades.csv` (novo), `contagem_resumo_visitas.csv`, `contagem_notas_intervalo.csv`, Tab 1 de `dados/Coleta em estágio avançado/2026-10-30_B3_dados_agregados.xlsx`, cardápios da São Jogue em `_dados-brutos/cardapios/ca_salvador/ca_sao_jogue/` (B1) e banco do Notion "3 - Visitas presenciais"
+**Antes**: ocupação só pelas contagens de mesas a cada 30 min (vazias nas 4 visitas); mesas da unidade só pelo campo do app (15 na Bela Vista em 16/10, 15 na Paralela em 17/10, 10 em 30/10; no Notion, 6, 15, 15 e 10); notas no intervalo exigiam a NFC-e do início da segunda visita (nenhum par); só o cardápio da Bela Vista de 05/10.
+**Depois**: ocupação minuto a minuto pelos intervalos dos grupos de mesa, sobre mesas e assentos do salão: Bela Vista 10/10 44,1% das mesas (pico 54,5%) e 51,7% dos assentos (pico 66,7%); 16/10 35,6% (45,5%) e 22,5% (29,2%); Paralela 17/10 26,9% (40,0%) e 18,8% (25,0%); 30/10 60,3% (70,0%) e 56,1% (64,6%). Estrutura do salão informada pelo autor (Bela Vista 11 mesas, Paralela 10) e 48 assentos por turno de 3 h no site de reservas; karaokê e RPG com 6 lugares estimados (N6); horário 12h-22h, domingo 13h-21h. Notas no intervalo aceitam a NFC-e do fim: Paralela, 209 notas em 13 dias (16,1 por dia), piso das vendas. Tab 1 com 5 linhas de estrutura e ocupação. Notion: "Mesas na unidade" 11, 11, 10 e 10. Cardápios de 23/10 (Bela Vista, só o energético mudou) e 26/10 (Paralela, novo) guardados sem sobrescrever o de 05/10.
+**Justificativa**: informações do autor de 31/10: a ocupação foi registrada minuto a minuto nas mesas; as visitas vão a sexta e sábado por orientação do orientador, para medir o movimento máximo; as NFC-e servem para comparar visitas da mesma unidade; a nota só é emitida a pedido do cliente; estrutura, horário, mobiliário e cardápios das duas unidades.
+
+### 01:52
+**Objeto**: cap. 9 (`textos/capitulos/9_plano_financeiro.md` e `.docx`, novos), modelo `textos/capitulos/9_plano_financeiro_modelo.xlsx` e figura `figuras/9_tornado.png` (novos), scripts `_src/extras/gerar_modelo_financeiro.py` e `gerar_docx_capitulo.js` (novos); B3: NFC-e de 16/10 (`outros/B3_correcoes_app.csv`, `originais/2026-10-16_SJBV/POV2/..._transcricao_precos.csv`, foto renomeada), `contagem_*.csv`, `contagem_notas_intervalo.csv` e nota da Tab 1 do agregado do B3; `docs/melhorias-texto.md`, `status_capitulos.md` e cronograma
+**Antes**: cap. 9 não iniciado; sem modelo financeiro. A foto `photo_2026-10-16 23.44.21.jpeg` (NFC-e final da Bela Vista em 16/10) não estava transcrita, e a Bela Vista não tinha par de notas para comparar.
+**Depois**: modelo com 38 premissas (faixa, fonte e nível), 60 meses, DRE e fluxo de caixa de 5 anos, indicadores, tornado, ponto de ruptura e checagens; o script recalcula a planilha no LibreOffice nos três cenários e confere o VPL com o Python (diferença zero). Provável: investimento de R$ 503 mil, receita madura de R$ 73,1 mil por mês, VPL de −R$ 479 mil a 15% real, TIR de −21,0%; ruptura com ocupação de fim de semana de 49,5%. Rascunho do cap. 9 (seções 9.1 a 9.8, ~9,3 páginas). NFC-e 78160 (série 2, 16/10/2026 21:59:48) transcrita: Bela Vista emitiu 183 notas em 6 dias (30,5 por dia). Melhorias: D19 a D22 e C13. Cronograma: "Estrutura do modelo financeiro" e "Modelo financeiro versão 1" marcados.
+**Justificativa**: pedido do autor em 31/10 para gerar o .xlsx e o .docx do plano financeiro, com as informações de taxa de entrada (R$ 28,00 sex a dom, R$ 22,00 seg a qui, por 3 h no salão ou 2 h no karaokê), aluguel de jogos (R$ 15,00 a R$ 60,00 por 4 dias; combo de 7 dias) e a pergunta sobre as notas da Bela Vista.
+
+### 01:57
+**Objeto**: `_instrucoes/4_metodologia.md`, `_instrucoes/1_estrutura.md`, `_instrucoes/5_marketing.md`, `_instrucoes/10_biblio-apendices.md`
+**Antes**: instruções sem mudança desde 14/10. B3 com 4 visitas em sábado 03/10 e domingo 18/10, retorno a 15 dias, observador do lado de fora, ocupação pelo saldo da porta e contagens a cada 30 min, NFC-e sem ressalva de emissão a pedido; nada sobre o app de observação nem o formato dos dados. B1 com população esperada de 100 a 150 casas, OpenStreetMap como fonte do entorno, sem as regras de cardápio de 15, 19 e 22/10, sem acervos e cesta de jogos. Validação só com estabelecimentos e B2. 1_estrutura com "metade exploratória e confirmatória" (3.5) e "recorte do último mês" (11.5); 11.3 sem as limitações do B3. Apêndice G com "sorteio" e origem `B3_*`.
+**Depois**: B3 reescrito: visitas de 10/10, 16/10, 17/10 e 30/10, só sexta e sábado à noite; observação dentro do salão, sem a mesa do observador; ocupação minuto a minuto pelos grupos de mesa (11 ou 10 mesas, 48 assentos); NFC-e como piso e caminho (a) da calibração como limite inferior; pedidos como extra; nova subseção com o formato dos CSVs do app (`contagem_<conteúdo>.csv`, originais, importador, correções e saídas). B1 com 54 casas, entorno só pelo Google Maps em 500 m e 1.000 m (shopping de porte por avaliações: 1.000, com 500 e 5.000), regras de cardápio, acervos e cesta de jogos; auditoria de todas as coletas (semente 20261015, SHA-256, Notion "B - Auditoria") e `texto_expandido` na completude do B2. Limitações (§3.9) e ética (§3.8) ajustadas. 1_estrutura: base única em 3.5, recorte de três meses em 11.5 e, em 11.3, NFC-e só a pedido e intervalo único entre visitas (Paralela 13 dias, Bela Vista 6). 5_marketing: entorno pelo Google Maps. Apêndices E e G atualizados.
+**Justificativa**: pedido do autor em 31/10: atualizar as instruções às mudanças de 15 a 31/10, com as ressalvas dele (sem a parte dos dois observadores; app e formato dos dados; pedidos como extra; limitações da NFC-e e do intervalo no cap. 11; observação por dentro, sem a mesa do observador; entorno em 500 m e 1.000 m).
+
+### 01:57
+**Objeto**: divergência entre `textos/instrumentos/roteiro_observacao_sao_jogue.md` e `_instrucoes/4_metodologia.md` §3.3 B3
+**Antes**: roteiro: observador do lado de fora, com vista para a entrada, e mesas contadas "se visíveis de fora".
+**Depois**: instruções de 31/10: observação dentro do salão, com a mesa do observador fora dos registros.
+**Efeitos colaterais**: o roteiro (apêndice G) descreve um procedimento que não foi o usado; corrigir só a pedido do autor (`docs/pendencias.md`).
+
+### 01:59
+**Objeto**: cap. 8 (`textos/capitulos/8_aspectos_juridicos.md` e `.docx`, novos); B4: objeto novo `_src/[B4] Bases publicas/Receita Federal CNPJ/` (`B4-c_cnpj_referencias.py`, `B4-b_cnpj_referencias.py`), `_dados-brutos/receita_cnpj/` e `juridico_tributario/[B4] CNPJ de Referência 2026-10 (Receita Federal).csv`; `bibliografia/referencias_bases_publicas.md`; `docs/melhorias-texto.md`, `decisoes.md`, `pendencias.md`, `status_capitulos.md` e `AGORA.md`
+**Antes**: cap. 8 não iniciado; sem dado da forma jurídica e do CNAE dos concorrentes de Salvador.
+**Depois**: rascunho do cap. 8 (8.1 a 8.3, 3 páginas): sociedade limitada no Simples Nacional como EPP; A&B no anexo I, taxa de entrada (art. 18, § 5º-F) e aluguel de jogos (art. 18, § 4º, V) no anexo III, conferidos no texto compilado da LC 123/2006 de 14/09/2026; Simples de R$ 88.729,00 (10,1%) contra Lucro Presumido de R$ 192.095,81 (21,9%) no ano maduro provável; CNAE principal proposto 5611-2/01; quadro de nove obrigações; locação, jogos e marca. CNPJ das duas unidades da São Jogue: sociedades empresárias limitadas no Simples, CNAE principal 5611-2/03, com 12 e 7 secundários (21 linhas na tabela; JSON bruto sem quadro de sócios e contatos). Melhorias: D23 a D25 e C14.
+**Justificativa**: pedido do autor em 31/10 para gerar o cap. 8 e atualizar os arquivos de acompanhamento.
+
+### 02:01
+**Objeto**: `B3-a_contagem.py`, `outros/B3_mesa_observador.csv` (novo), `contagem_resumo_visitas.csv`, Tab 1 de `dados/Coleta em estágio avançado/2026-10-30_B3_dados_agregados.xlsx`, `_instrucoes/4_metodologia.md` (B3)
+**Antes**: ocupação dividida por todas as mesas do salão (11 no Bela Vista, 10 na Paralela) e pelos 48 assentos. Mesas, média (pico): 10/10 44,1% (54,5%); 16/10 35,6% (45,5%); 17/10 26,9% (40,0%); 30/10 60,3% (70,0%). Assentos: 51,7% (66,7%); 22,5% (29,2%); 18,8% (25,0%); 56,1% (64,6%). Nota da Tab 1 dizia "do lado de fora".
+**Depois**: denominador sem a mesa do observador (10 e 9 mesas; 45 ou 46 assentos). Mesas: 48,5% (60,0%); 39,2% (50,0%); 29,9% (44,4%); 66,9% (77,8%). Assentos: 55,1% (71,1%); 23,5% (30,4%); 19,7% (26,1%); 58,6% (67,4%). Colunas novas `mesas_denominador` e `assentos_denominador`; as demais colunas do resumo não mudaram. Nota da Tab 1: dentro do salão, sem a mesa do observador. Notion "3 - Visitas presenciais" sem colunas de ocupação: nada a mudar.
+**Justificativa**: decisão do autor em 31/10: a mesa do observador, que fica fora dos registros, sai também do denominador.
+
+### 02:01
+**Objeto**: cap. 8 (8.1, `.md` e `.docx`), `B4-c_concla_cnae.py`, `_dados-brutos/concla/cnae_subclasses.json`, `[B4] Subclasses CNAE 2026 (CONCLA).csv`, `docs/decisoes.md`, `pendencias.md`, `melhorias-texto.md`, `status_capitulos.md` e `AGORA.md`
+**Antes**: CNAE principal 5611-2/01 "proposto", a confirmar pelo autor; na base da CONCLA, 5611-2/05 rotulada "principal candidata" e 5611-2/01 "alternativa" (melhorias, D23).
+**Depois**: 5611-2/01 é o CNAE principal no cap. 8; na base, 5611-2/01 "principal", 5611-2/03 "alternativa (principal da São Jogue)" e 5611-2/05 "descartada"; CONCLA coletada de novo (10 subclasses) para levar os rótulos à tabela. D23 sai das melhorias; a pendência do CNAE sai.
+**Justificativa**: decisão do autor em 31/10/2026: CNAE principal 5611-2/01 (restaurante).
+
+### 02:03
+**Objeto**: cap. 9 (`textos/capitulos/9_plano_financeiro.md` e `.docx`) e modelo `textos/capitulos/9_plano_financeiro_modelo.xlsx`
+**Antes**: ocupação das quatro noites de 26,9% a 60,3% das mesas, média de 41,7% (9.2, premissas de demanda; 9.7, ponto de ruptura; justificativa da R04 na aba premissas).
+**Depois**: 29,9% a 66,9%, média de 46,1%, sem contar a mesa do observador; modelo gerado de novo por `gerar_modelo_financeiro.py` (VPL, tornado e ruptura iguais: R04 rompe em 49,5%, ainda acima da média e abaixo do pico) e .docx por `gerar_docx_capitulo.js`. Análise do cap. 9 com os demais capítulos: nenhuma divergência ou corte novo em `docs/melhorias-texto.md`.
+**Justificativa**: pedido do autor em 31/10, depois de tirar a mesa do observador do denominador da ocupação.
+
+### 02:09
+**Objeto**: cap. 3 (`textos/capitulos/3_metodologia.md` e `.docx`, novos), `docs/melhorias-texto.md`, `textos/planejamento/status_capitulos.md`
+**Antes**: cap. 3 não iniciado. `melhorias-texto.md` com a última análise em 15/10, sem itens do cap. 3.
+**Depois**: rascunho do cap. 3 com as seções 3.1 a 3.8 (o extra de registro prévio não foi escrito, e as seções seguintes subiram um número), 5 quadros e cerca de 2.700 palavras (~10,2 páginas pelo critério de `1_estrutura.md`). Segue as instruções de 31/10: 54 concorrentes, entorno pelo Google Maps em 500 m e 1.000 m, B3 dentro do salão com a mesa do observador fora do denominador, NFC-e como piso, pedidos como descrição, auditorias com Wilson e kappa. A tabela das bases públicas foi para o Apêndice H, para caber no teto. `melhorias-texto.md`: D03, D04 e D05 estendidos ao cap. 3; novos D26 (codificação do B2 × instrução), D27 (voz passiva × P5.5) e C15 (matriz para apêndice).
+**Justificativa**: pedido do autor em 31/10 para gerar o capítulo de metodologia.
+
+### 02:12
+**Objeto**: `docs/decisoes.md`, `docs/pendencias.md`, `AGORA.md`
+**Antes**: pendência sobre como o cap. 3 descreve a codificação do B2 com apoio de inteligência artificial.
+**Depois**: decisão registrada: o texto mantém a menção ao apoio de IA; pendência fica só com a voz passiva.
+**Justificativa**: resposta do autor em 31/10 ("Manter").
+
+### 02:18
+**Objeto**: `_instrucoes/1_estrutura.md` (P5.5), cap. 3 (`3_metodologia.md` e `.docx`), `docs/melhorias-texto.md`, `docs/pendencias.md`, `docs/decisoes.md`
+**Antes**: P5.5 pedia voz ativa ou passiva sintética ("adotou-se"), contra a skill `meu-estilo-escrita`, que pede a analítica. Cap. 3 com duas passivas sintéticas ("registram-se", "contam-se ... mede-se"). Divergência D27 e pendência abertas.
+**Depois**: P5.5 pede voz ativa ou passiva analítica ("foi adotado"). Cap. 3 com as duas frases na analítica e .docx gerado de novo. D27 e a pendência saem. Busca nos demais capítulos: nenhuma passiva sintética de verbo de procedimento (só pronominais, como "dividem-se").
+**Justificativa**: escolha do autor em 31/10: vale a regra da skill.
+
+### 02:26
+**Objeto**: cap. 6, seções 6.3 e 6.4 (`textos/capitulos/6_plano_de_marketing.md` e `.docx`, novos); B4: `B4-c_ibge_censo_bairros.py` (tema características do domicílio, parte 1), `B4-b_ibge_censo_bairros.py` (colunas `domicilios_apartamento` e `pct_apartamento`), zip novo em `_dados-brutos/ibge_censo_2022/`, `[B4] População por Bairro 2022 (IBGE Censo).csv`, `B4-a_matriz_bairros.py` e `B4_matriz_bairros_salvador.csv` (novos); `_src/extras/gerar_docx_capitulo.js` (larguras de colunas); `bibliografia/referencias_bases_publicas.md`; `docs/melhorias-texto.md`, `decisoes.md`, `pendencias.md`, `status_capitulos.md` e `AGORA.md`
+**Antes**: cap. 6 não iniciado; sem renda nem substituta por bairro no B4.
+**Depois**: 6.3 com a taxa de entrada de 7 concorrentes que a publicam (mediana de R$ 25,00 no fim de semana e R$ 17,50 no dia útil, contra R$ 28,00 e R$ 22,00 da São Jogue), menções a preço no B2 (Notion, 31/10: entrada 20 positivas e 24 negativas; consumo 91 e 61, em 1.628 avaliações; gasto declarado com mediana de R$ 80,00 a R$ 100,00 em 352 declarações sem a Bodogami), consumo nas NFC-e (R$ 23,91 por pessoa) e POF; faixas R06 a R08 confirmadas. 6.4 com a matriz de 10 bairros candidatos (≥ 80% de apartamentos e ≥ 3.500 pessoas de 20 a 39 anos): Pituba em 1º com os pesos do autor e com três outros conjuntos; ponto a até 1.000 m de metrô pela mediana de avaliações dos concorrentes do B1 (770 com estação × 396 sem). Melhorias: D26, D27 e C15.
+**Justificativa**: pedido do autor em 31/10 para gerar o cap. 6 parcial, só com 6.3 e 6.4.
+
+### 02:26 (divergência)
+**Objeto**: categoria "couvert ou taxa de jogo" do B1 (`B1_cardapios_itens_precos.xlsx`) × checagem de preço do cap. 9
+**Antes**: a mediana de R$ 18,75 (cap. 9, 9.8) inclui a pizza "Lúdico" da Ludoteca BGC (R$ 30,00) e a sala do Café Geek (R$ 10,00 por hora e por grupo).
+**Depois**: o cap. 6 (6.3) exclui os dois itens e separa os dias da semana.
+**Efeitos colaterais**: a checagem de preço do cap. 9 e a estatística descritiva de cardápios do B1 usam a categoria com os dois erros; a conclusão (São Jogue acima da mediana) não muda. Não corrigido no B1 sem pedido do autor.
+
+### 02:34
+**Objeto**: branch `claude/project-thread-uta3tr` (merge de `fix/entorno-maps-distantes` com os PRs #20 e #21); `AGORA.md`, `docs/decisoes.md`, `docs/registro-de-alteracoes.md`
+**Antes**: os PRs #20 (planilhas agregadas) e #21 (consumo por pessoa e cesta completa) encadeados sobre uma versão de 30/10 da branch do Mac, que andou depois (caps. 3, 6, 8 e 9, B3); os três arquivos de controle em conflito.
+**Depois**: as duas linhas de trabalho juntas, com as entradas dos dois lados mantidas em ordem de data no registro e nas decisões.
+**Justificativa**: pedido do autor: revisar o TCC inteiro; a revisão precisa do estado com os dois lados.
+
+### 02:34
+**Objeto**: `_instrucoes/4_metodologia.md` (ticket médio, matriz de decisões), `_instrucoes/5_marketing.md` (A&B), `_instrucoes/10_biblio-apendices.md` (Tabela 6.3)
+**Antes**: "cesta por pessoa = couvert + bebida + entrada ou prato" e "cesta de cardápio" como medida do ticket.
+**Depois**: "consumo por pessoa" (bebida + entrada ou prato) e "cesta completa" (consumo + couvert, só nas casas com couvert encontrado; couvert não encontrado não entra como 0).
+**Justificativa**: alinhar as instruções à decisão de 30/10 (PR #21); os capítulos não foram mexidos.
+
+### 02:34
+**Objeto**: `docs/melhorias-texto.md`
+**Antes**: dois itens com o ID D26 e dois com o C15; sem as divergências de cardápio, CNAE e gasto com A&B.
+**Depois**: o segundo D26 vira D28 e o segundo C15 vira C16; novos D29 (cesta, consumo e couvert com quatro bases nos caps. 3, 5, 6 e 9), D30 (CNAE 5611-2/05 no cap. 5 × 5611-2/01 no cap. 8) e D31 (gasto com A&B de R$ 24,00 × consumo de R$ 48,80 dos concorrentes).
+**Justificativa**: revisão geral dos capítulos pedida pelo autor; IDs repetidos impediam citar o item certo.
+
+### 02:34
+**Objeto**: `docs/pendencias.md`, `AGORA.md`, `textos/planejamento/status_capitulos.md`
+**Antes**: item 5 com os caps. 3 e 8 como atrasados; item 8 com a amostra de 131 ids; AGORA com 89 linhas e cabeçalho da semana 5 (entrega de 16/10); status do cap. 7 aguardando "visitas de retorno (18/10)".
+**Depois**: item 5 com os caps. 4, 7, 10 e 11 sem arquivo e o plano de corte sem efeito na escrita; item 8 com a amostra de 139 linhas de 30/10 e a regra de não lançar a codificação de 30/10 com outra data; novas divergências (cópias NFD no Mac, descrição do repositório com "público casual", branches); AGORA reescrito em uma tela, semana 8; status do cap. 7 com as quatro visitas feitas.
+**Justificativa**: fim de sessão (CLAUDE.md) e revisão geral pedida pelo autor.
+
+### 02:34 (divergência)
+**Objeto**: data da codificação dos temas do B2
+**Antes**: livro do Bardin (`analise_conteudo_bardin_B2.md`, 15/10): codificação por Claude em 15/10, com 16 categorias, sobre 1.588 comentários.
+**Depois**: registro de 30/10 (18:13 e 19:27): as 1.273 linhas sem tema do "2 - Comentários" codificadas por Claude em 30/10, com o dicionário de 30/10 (25 temas).
+**Efeitos colaterais**: são duas codificações diferentes, em datas diferentes. A de 30/10 não pode ser registrada como de 15/10 no Notion, no cap. 3 nem em nenhum outro documento. O cap. 5 (5.2) ainda usa a de 15/10 (D27).
+

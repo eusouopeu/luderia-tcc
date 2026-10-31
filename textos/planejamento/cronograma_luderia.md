@@ -133,7 +133,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 - [ ] Teste da coleta das avaliações do último mês em uma amostra
 - [x] Início da coleta das avaliações com texto
 - [ ] Elaboração do manual de codificação das avaliações?
-- [ ] Início da coleta dos cardápios (preços e itens com preparo)
+- [x] Início da coleta dos cardápios (preços e itens com preparo)
 - [x] Sorteio das visitas e visitas fora
 
 ### Semana 3
@@ -182,7 +182,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 - [ ] Concordância entre as duas codificações e revisão do dicionário
 - [ ] Análises da parte exploratória
 - [ ] Emenda ao registro prévio (até 23/10)
-- [ ] Modelo financeiro versão 1
+- [x] Modelo financeiro versão 1
 
 ### Semana 7
 

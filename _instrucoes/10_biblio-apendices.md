@@ -82,7 +82,7 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 | 5.5 | Quadro — PESTEL | Fator, efeito no plano, fonte |
 | 6.1 | Quadro — grade ERRC | Eliminar, reduzir, elevar, criar, com a evidência de cada item |
 | 6.2–6.5 | Quadro — composto de marketing | Produto, preço, praça, promoção: decisão e evidência |
-| 6.3 | Tabela — preços praticados | Couvert e cesta por pessoa por metrópole, Salvador em destaque |
+| 6.3 | Tabela — preços praticados | Couvert, consumo por pessoa e cesta completa por metrópole, Salvador em destaque |
 | 6.4 | Quadro — critérios do bairro | Matriz de critérios ponderados, com fonte por critério |
 | 6.6 | Tabela — estimativa de demanda | Visitantes por semana nos três cenários e caminho de cálculo |
 | 7.2 | Tabela — capacidade | Mesas × lugares × giros, comparadas à demanda |
@@ -110,8 +110,9 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 | Cobertura da lista manual (`estabelecimentos/1_busca/B1_cobertura_lista_manual.csv`) | 3.4 | E |
 | Lista dos concorrentes aprovados (nome, metrópole, avaliação, volume; sem texto de avaliações) | 5.3 | E |
 | Itens e preços dos cardápios (`B1_cardapios_itens_precos.xlsx`, resumido por categoria) | 6.2, 6.3 | E |
+| Cesta de jogos e custo do acervo inicial (`B1_cesta_jogos.xlsx`) | 7.2, 9.3 | E |
 | Livro de códigos da análise de conteúdo (`textos/instrumentos/analise_conteudo_bardin_B2.md`), validação e frequências completas por categoria | 3.4, 5.2 | F |
-| Protocolo de observação (`textos/instrumentos/roteiro_observacao_sao_jogue.md`), sorteio, registros por visita, números das NFC-e e checagens de consistência | 3.3, 6.6 | G |
+| Protocolo de observação (`textos/instrumentos/roteiro_observacao_sao_jogue.md`), formato dos dados do app de observação, estrutura das unidades, registros por visita, ocupação do salão, números das NFC-e e checagens de consistência; pedidos como extra | 3.3, 6.6 | G |
 | Tabelas de apoio das bases públicas: população por bairro, salários de admissão por CBO, faixas do Simples Nacional, Selic e IPCA | 6.4, 7.5, 8, 9 | H |
 | Canvas do modelo de negócio e fluxograma dos processos operacionais | 6.1, 7.3 | I |
 
@@ -123,9 +124,9 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 | B | Registro de premissas completo | [8_financeiro.md](8_financeiro.md) |
 | C | Demonstrativos financeiros detalhados (DRE e fluxo de caixa mensais) | Modelo financeiro |
 | D | Checagens de coerência | [8_financeiro.md](8_financeiro.md) §5 |
-| E | Bloco B1 — curadoria, limiares, conferências, lista de concorrentes e cardápios | `dados/[B1] Estabelecimentos e cardapios/B1_*` |
+| E | Bloco B1 — curadoria, limiares, conferências, lista de concorrentes, cardápios, cesta de jogos e entorno | `dados/[B1] Estabelecimentos e cardapios/B1_*` |
 | F | Bloco B2 — livro de códigos, validação da codificação, frequências por categoria | `dados/[B2] Avaliacoes recentes/B2_*` |
-| G | Bloco B3 — protocolo, sorteio, registros da contagem direta e números das NFC-e | `dados/[B3] Contagem direta de ocupacao/B3_*` |
+| G | Bloco B3 — protocolo, formato dos dados do app, registros da contagem direta, ocupação do salão e números das NFC-e | `dados/[B3] Contagem direta de ocupacao/contagem_*`; `_src/[B3]…/Contagem direta/outros/B3_estrutura_unidades.csv` |
 | H | Bloco B4 — tabelas de apoio das bases públicas | `dados/[B4] Bases publicas/` |
 | I | Canvas e fluxograma dos processos | Caps. 6 e 7 |
 | J | Dicionário de variáveis | A criar no repositório |

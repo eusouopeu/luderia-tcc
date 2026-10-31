@@ -10,8 +10,8 @@ são convertidos por Cardápios/build/B1-b_cardapios_transcricoes.py; Alçapão,
 Café Geek e Fortalúdica foram transcritos à mão das imagens. Em 16/10/2026, a busca
 profunda (cardapios/B1_cardapios_busca_profunda.csv) trouxe o TabuClub (PDF transcrito à
 mão), preços de imprensa para a Fan Hour e cardápios parciais (couvert ou poucos itens,
-de site, imprensa ou TikTok) de LudoCafé, São Jogue, Game Of Boards, Garagem do Nerd,
-Joyjoy e Asgard: 34 casas. Cada cardápio foi transcrito
+de site, imprensa ou TikTok) de LudoCafé, Game Of Boards, Garagem do Nerd e Joyjoy
+(São Jogue e Asgard ganharam cardápio completo em 17/10). Cada cardápio foi transcrito
 para um CSV em dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/
 (um arquivo por estabelecimento, separador ";"). A transcrição é manual para
 imagens e PDFs e automática para páginas em texto (VUCA Food, Wix). As fontes
@@ -29,6 +29,17 @@ café, energético, milk-shake e drink sem álcool entram em "não alcoólicas".
 exige_preparo = "N" para item pronto (lata, garrafa, chopp, dose, água).
 
 Cada linha é uma combinação item x variação (tamanho, dia da semana, combo).
+Preço por quantidade do mesmo item (chopp "2 x 475 ml", licor "2 shots"): fica
+só o preço de 1 unidade; os preços de 2 ou mais unidades vão para a observação
+da linha de 1 unidade (pedido do autor, 19/10/2026). A transcrição em
+_dados-brutos/ continua fiel ao cardápio, porque é ela que a auditoria confere.
+Linha de referência (decisão do autor, 22/10/2026): o mesmo item (casa, seção e
+nome) pode ter várias linhas, por tamanho, combo ou print de outra data. Todas
+ficam na planilha, mas só uma entra na cesta e nas medianas (linha_referencia =
+"S"): a do cardápio mais recente, sem combo e no menor tamanho (o menor preço;
+sem preço, o menor número da variação). Variações de sabor ou de dia da semana
+não são tamanho e ficam todas como referência. motivo_fora_referencia diz por
+que uma linha ficou de fora.
 Item sem preço no cardápio fica com preço vazio, não zero. Quando a
 transcrição traz a coluna data_cardapio (prints com datas diferentes), ela
 vale linha a linha; vazia, vale a data da fonte em FONTES.
@@ -49,6 +60,7 @@ if __name__ == "__main__":
     registrar_execucao(__file__)
 
 import pathlib
+import re
 
 import pandas as pd
 from openpyxl import load_workbook
@@ -130,6 +142,38 @@ FONTES = {
                      formato="destaque 'Cardápio' do Instagram, transcrito à mão", data_cardapio="",
                      status="extraído", data_coleta="2026-10-12",
                      nota="sala medieval por hora e grupo na categoria couvert"),
+    # 17/10/2026: cardápios achados pelo autor (PDFs baixados e links salvos nos favoritos)
+    **{arq: dict(place_id=pid, url=url, formato=formato, data_cardapio=data, status="extraído",
+                 data_coleta="2026-10-17", nota=nota)
+       for arq, pid, url, formato, data, nota in [
+           ("asgard", "ChIJzdFNP3AyWpMRH2P6HEuhE-I", "https://asgard.app.br/cardapio",
+            "página do site (texto), exportada pelo cardapio_coletor", "", "passaporte de jogo na categoria couvert"),
+           ("dungeon", "ChIJiZJ_DnIDz5QRaVafFCXGkUE", "https://dungeongamesstore.goomer.app/menu",
+            "cardápio digital Goomer, exportado pelo cardapio_coletor", "",
+            "doces avulsos vinham como variações de um item; corrigido"),
+           ("nalaland", "ChIJRUjwU66WoGgRzc9yJU7jkwM", "https://nalaland.menudino.com/",
+            "cardápio de delivery Menudino, exportado pelo cardapio_coletor", "", "preço de delivery"),
+           ("balboas", "ChIJ0yXbI35IxwcR0_jLi-uINUU", "PDF baixado pelo autor (Canva)",
+            "PDF (Canva), transcrito à mão", "2026-01", "data pelo metadado do PDF"),
+           ("saojogue", "ChIJoTlvBfMbFgcRHvuCKHBQrXQ", "PDF baixado pelo autor (Canva)",
+            "PDF (Canva), transcrito à mão", "2026-10", "unidade Bela Vista; data pelo metadado do PDF"),
+           ("coletivogeek", "ChIJF9j3OCRbzpQRkk74_QtOk_0", "PDF baixado pelo autor (Linktree)",
+            "PDF (Canva), transcrito à mão", "2026-05", "data pelo metadado do PDF"),
+           ("playeasy", "ChIJNcHw7jNYzpQRKRHPOrb4jEw",
+            "https://www.canva.com/design/DAGT9cLv7FI/Vey8vkMqP5ilBVHe0H8n7w/view",
+            "design no Canva, transcrito da tela", "", "só lanches prontos; sem taxa de jogo no cardápio"),
+       ]},
+    # 17/10/2026: prints enviados pelo autor (data por linha: foto do Maps ou idade do story)
+    **{arq: dict(place_id=pid, url=url, formato="prints transcritos à mão", data_cardapio="", status="extraído",
+                 data_coleta="2026-10-17", nota=nota)
+       for arq, pid, url, nota in [
+           ("ccgfloripa", "ChIJawIVeV0JM0oR5BtnD_poQeA", "foto do Google Maps (jul. 2023)",
+            "logo da Taverna Nerd Store, loja da própria CCG; só lanches e fritas"),
+           ("jogasampa", "ChIJn7uU0RNbzpQRI4GI9KHOo_s", "foto do Google Maps (out. 2023)",
+            "quadro de letras: bebidas sem álcool e doces"),
+           ("tubaleria", "ChIJsU5BAwBRzpQRAgLVvqg68os", "destaque \"Cardápio\" do Instagram",
+            "data do story pela idade exibida (45, 38, 31 e 21 semanas); sem bebidas nos prints"),
+       ]},
     "fortaludica": dict(place_id="ChIJyXjE650xWpMRJL-J6QbGkt4",
                         url="https://drive.google.com/uc?export=download&id=1cl7YIKdJhuuhNCUKAO0-96czajLGInqJ",
                         formato="PDF (Canva), transcrito à mão", data_cardapio="2025-12", status="extraído",
@@ -144,11 +188,6 @@ FONTES = {
                      formato="legenda de vídeo do TikTok + matéria do Diário do Comércio (couvert)",
                      data_cardapio="", status="parcial", data_coleta="2026-10-16",
                      nota="10 itens de destaque (nov/2024) e couvert (jun/2024); sem refrigerante nem cerveja"),
-    "saojogue": dict(place_id="ChIJoTlvBfMbFgcRHvuCKHBQrXQ", url="https://saojogue.com.br/",
-                     formato="página do site (texto)", data_cardapio="", status="parcial",
-                     data_coleta="2026-10-16",
-                     nota="só a taxa de entrada; o cardápio fica no Goomer (sao-jogue.goomer.app), "
-                          "que só abre no navegador"),
     "garagemdonerd": dict(place_id="ChIJsUAT-dObpgARCT2C5QpnVKU",
                           url="https://diariodocomercio.com.br/negocios/bares-jogos-luderias-belo-horizonte/",
                           formato="matéria de imprensa", data_cardapio="", status="parcial",
@@ -163,17 +202,9 @@ FONTES = {
                    url="https://curitibandoemfamilia.com.br/experiencias/ctba-indoor/joyjoy-cafe/",
                    formato="guia on-line", data_cardapio="", status="parcial", data_coleta="2026-10-16",
                    nota="só a taxa de jogo (página de ago/2024)"),
-    "asgard": dict(place_id="ChIJzdFNP3AyWpMRH2P6HEuhE-I",
-                   url="https://www.metropoles.com/gastronomia/board-games-seis-lugares-no-df-que-unem-jogos-e-gastronomia",
-                   formato="matéria de imprensa", data_cardapio="", status="parcial", data_coleta="2026-10-16",
-                   nota="couvert e 3 petiscos (out/2024)"),
 }
 # aprovado com cardápio acessível, mas sem transcrição
 SEM_TRANSCRICAO = {
-    "ChIJF9j3OCRbzpQRkk74_QtOk_0": dict(
-        url="https://linktr.ee/coletivogeekbr", formato="PDF no Linktree", data_cardapio="",
-        status="não extraído",
-        nota="o download do PDF exige preencher formulário com e-mail; não preenchido"),
 }
 
 SUBCATEGORIAS = {
@@ -193,6 +224,7 @@ def ler_transcricoes(triagem):
     for arquivo, meta in FONTES.items():
         df = pd.read_csv(RAW / f"{arquivo}.csv", sep=";", dtype=str, keep_default_na=False)
         df["preco"] = pd.to_numeric(df["preco"].str.replace(",", "."), errors="raise")
+        df = so_preco_unitario(df)
         df.insert(0, "place_id", meta["place_id"])
         df.insert(1, "estabelecimento", nomes.loc[meta["place_id"], "nome"])
         df.insert(2, "capital", nomes.loc[meta["place_id"], "capital_endereco"])
@@ -204,7 +236,76 @@ def ler_transcricoes(triagem):
         partes.append(df)
     itens = pd.concat(partes, ignore_index=True)
     validar(itens)
+    marcar_referencia(itens)
     return itens
+
+
+# "2 x 475 ml", "3x", "2 shots de 25 ml": quantidade de unidades na variação
+QUANTIDADE = re.compile(r"^\s*(\d+)\s*(?:x\b|shots?\b)", re.IGNORECASE)
+
+
+def so_preco_unitario(df):
+    """Tira as linhas de 2 ou mais unidades de um item que também tem a linha de 1 unidade.
+
+    O preço tirado vai para a observação da linha de 1 unidade. Item vendido só em
+    pacote (ex.: drink game de 4, 8 ou 9 shots) fica como está, porque não há preço unitário."""
+    if "variacao" not in df:
+        return df
+    qtd = df["variacao"].str.extract(QUANTIDADE, expand=False).astype(float).fillna(1)
+    tirar, notas = [], {}
+    for _, g in df.groupby(["secao_original", "item"], sort=False):
+        unidade = g.index[qtd[g.index] == 1]
+        multiplos = g.index[qtd[g.index] > 1]
+        if len(unidade) != 1 or not len(multiplos):
+            continue
+        tirar += list(multiplos)
+        notas[unidade[0]] = "; ".join(
+            f"{df.at[i, 'variacao']}: R$ {df.at[i, 'preco']:.2f}".replace(".", ",") for i in multiplos)
+    for i, nota in notas.items():
+        obs = df.at[i, "observacao"]
+        df.at[i, "observacao"] = f"{obs}; {nota}" if obs else nota
+    return df.drop(index=tirar).reset_index(drop=True)
+
+
+# variação que é tamanho ou porção (concorre pela linha de referência); o resto
+# (sabor, dia da semana, com ou sem álcool) é variante e fica sempre como referência
+TAMANHO = re.compile(r"\d+(?:,\d+)?\s*(?:g|kg|ml|l)\b|^[pmg]$|pequen|médi|grande|individual|completa|"
+                     r"porção|unidades|bolas?\b|burgers?\b|shots?\b|smash|^lata$|^hambúrguer$", re.IGNORECASE)
+NUMERO = re.compile(r"(\d+(?:,\d+)?)")
+
+
+def marcar_referencia(itens):
+    """Marca uma linha de referência por item: cardápio mais recente, sem combo, menor tamanho."""
+    itens["linha_referencia"] = "S"
+    itens["motivo_fora_referencia"] = ""
+    var = itens["variacao"].fillna("").astype(str) if "variacao" in itens else pd.Series("", index=itens.index)
+    data = itens["data_cardapio"].fillna("").astype(str)
+
+    def fora(idx, motivo):
+        itens.loc[idx, "linha_referencia"] = "N"
+        itens.loc[idx, "motivo_fora_referencia"] = motivo
+
+    for _, g in itens.groupby(["place_id", "secao_original", "item"], sort=False):
+        if len(g) < 2:
+            continue
+        datas = data[g.index]
+        if datas.nunique() > 1 and (datas != "").all():
+            antigas = g.index[datas < datas.max()]
+            fora(antigas, "cardápio mais antigo")
+            g = g.drop(antigas)
+        v = var[g.index]
+        combo = v.str.contains("combo", case=False)
+        if combo.any() and not combo.all():
+            fora(g.index[combo], "combo")
+            g = g[~combo]
+            v = v[~combo]
+        tamanho = g.index[(v == "") | v.str.contains(TAMANHO)]
+        if len(tamanho) < 2:
+            continue
+        num = v[tamanho].str.extract(NUMERO, expand=False).str.replace(",", ".").astype(float)
+        chave = pd.DataFrame({"preco": itens.loc[tamanho, "preco"], "num": num}).sort_values(
+            ["preco", "num"], na_position="last", kind="stable")
+        fora(chave.index[1:], "tamanho maior")
 
 
 def validar(itens):
@@ -228,6 +329,7 @@ def montar_resumo(itens):
         "com_preco": g["preco"].count(),
         "sem_preco": g["preco"].apply(lambda s: s.isna().sum()),
         "exige_preparo": g["exige_preparo"].apply(lambda s: (s == "S").sum()),
+        "linhas_referencia": g["linha_referencia"].apply(lambda s: (s == "S").sum()),
     })
     por_cat = itens.pivot_table(index=["estabelecimento", "capital"], columns="categoria",
                                 values="item", aggfunc="count", fill_value=0)
@@ -247,8 +349,8 @@ def montar_resumo(itens):
 
 
 def montar_precos_subcategoria(itens):
-    """Mediana do preço por estabelecimento e subcategoria (só linhas com preço)."""
-    com_preco = itens.dropna(subset=["preco"])
+    """Mediana do preço por estabelecimento e subcategoria (só linhas de referência com preço)."""
+    com_preco = itens[itens.linha_referencia == "S"].dropna(subset=["preco"])
     tab = com_preco.pivot_table(index=["estabelecimento", "capital"],
                                 columns=["categoria", "subcategoria"],
                                 values="preco", aggfunc="median")
@@ -305,7 +407,8 @@ def main():
     fontes = montar_fontes(itens, triagem)
 
     colunas = ["place_id", "estabelecimento", "capital", "secao_original", "item", "descricao",
-               "variacao", "preco", "categoria", "subcategoria", "exige_preparo", "observacao",
+               "variacao", "preco", "linha_referencia", "motivo_fora_referencia", "categoria", "subcategoria",
+               "exige_preparo", "observacao",
                "url_cardapio", "formato_fonte", "data_cardapio", "data_coleta"]
     with pd.ExcelWriter(SAIDA) as w:
         itens[colunas].to_excel(w, sheet_name="itens", index=False)

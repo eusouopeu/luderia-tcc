@@ -1,4 +1,57 @@
 secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao;data_cardapio
-Taxa de entrada;Salão de jogos;por pessoa, 3 horas, 12h às 22h;segunda a quinta;22.0;couvert ou taxa de jogo;couvert ou taxa de jogo;N;site saojogue.com.br (igual nas unidades Bela Vista e Paralela);2026-10-16
-Taxa de entrada;Salão de jogos;por pessoa, 3 horas, 12h às 22h;sexta e sábado;28.0;couvert ou taxa de jogo;couvert ou taxa de jogo;N;site saojogue.com.br (igual nas unidades Bela Vista e Paralela);2026-10-16
-Taxa de entrada;Salão de jogos;por pessoa, 3 horas, 13h às 21h;domingo;28.0;couvert ou taxa de jogo;couvert ou taxa de jogo;N;site saojogue.com.br (igual nas unidades Bela Vista e Paralela);2026-10-16
+Porções;Dragões e Galinhas;Peito de frango frito empanado com molho barbecue;130 g;22;entradas;outras;S;;2026-10
+Porções;Bolinha de queijo;7 unidades;;20;entradas;outras;S;;2026-10
+Porções;Bolinho de calabresa;7 unidades, com queijo;;20;entradas;outras;S;;2026-10
+Porções;Dadinho de tapioca;7 unidades, com melaço;;20;entradas;outras;S;;2026-10
+Porções;Batata frita;;160 g;22;entradas;batata;S;;2026-10
+Burger + fritas;Quartz!;Burger, mussarela empanada, maionese de alho, cebola no barbecue, pão australiano, com batata frita;;45;pratos principais;hambúrguer;S;burger bovino, frango empanado ou vegetariano (130 g);2026-10
+Burger + fritas;Ticket to Ride;Burger, queijo coalho, cebola caramelizada, maionese picante, pão australiano, com batata frita;;45;pratos principais;hambúrguer;S;burger bovino, frango empanado ou vegetariano (130 g);2026-10
+Burger + fritas;Munchkin de Queijo!;Burger, creme de três queijos, maionese, cebola crispy, pão de batata, com batata frita;;45;pratos principais;hambúrguer;S;burger bovino, frango empanado ou vegetariano (130 g);2026-10
+Burger + fritas;Wingspan;Filé de peito de frango empanado, maionese verde e alface no pão de batata, com batata frita;130 g;45;pratos principais;hambúrguer;S;;2026-10
+Burger + fritas;Cash'n'Guns;Burger, creme de cheddar, farofa de bacon e maionese no pão de batata, com batata frita;;45;pratos principais;hambúrguer;S;burger bovino, frango empanado ou vegetariano (130 g);2026-10
+Smash burger;É Top!;Pão, burger smash (vegetariano ou bovino), cheddar e maionese;;25;pratos principais;hambúrguer;S;;2026-10
+Smash burger;É Top! Dobro;Pão, burger smash duplo, cheddar em dobro e maionese;;30;pratos principais;hambúrguer;S;;2026-10
+Batatas;Dobble!;Batata frita com creme de três queijos;;35;entradas;batata;S;;2026-10
+Batatas;Cubos Mágicos;Batata frita com queijo coalho na chapa e melaço;;35;entradas;batata;S;;2026-10
+Batatas;Smash Up!;Batata frita com cream cheese, bacon e parmesão;;35;entradas;batata;S;;2026-10
+Batatas;Por favor, não corte minha cabeça!;Batata frita com bolonhesa vegana e tomate;;35;entradas;batata;S;;2026-10
+Batatas;Batata Uno;Batata frita com cheddar e farofa de bacon;;35;entradas;batata;S;;2026-10
+Hot dog;Hot dog vegetariano;Maionese, linguiça vegetal, molho de tomate, mussarela maçaricada e batata palha;;25;pratos principais;outros;S;;2026-10
+Hot dog;Hot dog vegano;Linguiça vegetal, bolonhesa vegana e batata palha;;25;pratos principais;outros;S;;2026-10
+Hot dog;Hot dog de salsicha suína;Maionese, salsicha suína, molho de tomate, mussarela maçaricada e batata palha;;25;pratos principais;outros;S;;2026-10
+Sobremesas;Brownie com sorvete;Brownie em pedaços com sorvete de creme e calda de Nutella;;28;sobremesas;sobremesas;S;;2026-10
+Sobremesas;Sorvete com Nutella e Oreo;Bola de sorvete de creme com calda de Nutella e Oreo;;20;sobremesas;sobremesas;S;;2026-10
+Sobremesas;Churros com doce de leite;5 unidades;;19;sobremesas;sobremesas;S;;2026-10
+Sobremesas;Waffle com sorvete;Sorvete de creme e calda de Nutella;;19;sobremesas;sobremesas;S;;2026-10
+Super sodas;Colt Express;Maçã verde, gengibre e água com gás;300 ml;18;bebidas;não alcoólicas;S;;2026-10
+Super sodas;Poção Vida;Frutas vermelhas, pêssego, água com gás e limão;300 ml;18;bebidas;não alcoólicas;S;;2026-10
+Super sodas;Poção Mana;Laranja, limão e água com gás;300 ml;18;bebidas;não alcoólicas;S;;2026-10
+Super sodas;Nem a Pato;Maracujá, manga e água com gás;300 ml;18;bebidas;não alcoólicas;S;;2026-10
+Super sodas;Dixit;Framboesa, limão siciliano e água com gás, com pirulito;300 ml;18;bebidas;não alcoólicas;S;;2026-10
+Refrescantes;Pink lemonade de morango;;400 ml;16;bebidas;não alcoólicas;S;;2026-10
+Refrescantes;Chá mate com limão;;400 ml;16;bebidas;não alcoólicas;S;;2026-10
+Refrescantes;Chá de hibisco com framboesa;;400 ml;16;bebidas;não alcoólicas;S;;2026-10
+Milkshake;Milkshake;Oreo com Ovomaltine, Nutella com Ninho, morango com Ninho, café creme ou maracujá com Ninho;300 ml;22;bebidas;não alcoólicas;S;;2026-10
+Quentes;Expresso;;80 ml;7.9;bebidas;não alcoólicas;S;;2026-10
+Quentes;Café latte;;200 ml;12;bebidas;não alcoólicas;S;;2026-10
+Quentes;Chocolate quente;;200 ml;16;bebidas;não alcoólicas;S;;2026-10
+Quentes;Dalgona coffee quente;;200 ml;16;bebidas;não alcoólicas;S;;2026-10
+Quentes;Cappuccino;;80 ml;9;bebidas;não alcoólicas;S;;2026-10
+Gelados;Chocolate gelado cremoso;;300 ml;15;bebidas;não alcoólicas;S;;2026-10
+Gelados;Café gelado;;350 ml;12;bebidas;não alcoólicas;S;;2026-10
+Gelados;Iced vanilla coffee latte;;350 ml;14;bebidas;não alcoólicas;S;;2026-10
+Bebidas;Água com ou sem gás;;500 ml;6.9;bebidas;não alcoólicas;N;;2026-10
+Bebidas;Refrigerante lata;;350 ml;8.9;bebidas;refrigerante;N;;2026-10
+Bebidas;Suco natural limão ou morango;;300 ml;10;bebidas;não alcoólicas;S;;2026-10
+Bebidas;Suco Del Valle lata;;290 ml;8.9;bebidas;não alcoólicas;N;;2026-10
+Bebidas;Energético Monster;;473 ml;16;bebidas;não alcoólicas;N;;2026-10
+Bebidas;Cerveja;;350 ml;12;bebidas;cerveja;N;;2026-10
+Drinks;Caipirinha ou caipiroska;Cachaça ou vodka, limão, morango ou maracujá;350 ml;22;bebidas;drinks;S;;2026-10
+Drinks;Moranguinho;Batida de morango com vodka e leite condensado;300 ml;26;bebidas;drinks;S;;2026-10
+Drinks;Gin tônica;Tradicional ou com xarope de morango e frutas vermelhas;400 ml;30;bebidas;drinks;S;;2026-10
+Drinks;One Piece;Gin, licor de cereja e xarope de jabuticaba;300 ml;28;bebidas;drinks;S;;2026-10
+Drinks;Moscow mule;Vodka, gengibre, limão e espuma de gengibre;350 ml;29;bebidas;drinks;S;;2026-10
+Drinks;Vampire Diaries;Chá de hibisco, groselha, vodka e limão;150 ml;28;bebidas;drinks;S;;2026-10
+Drinks;Round 6;Soju de uva verde, xarope de maçã verde e espuma de gengibre;300 ml;28;bebidas;drinks;S;;2026-10
+Drinks;Quem na Roda;Batida de maracujá com vodka e leite condensado;400 ml;30;bebidas;drinks;S;;2026-10
+Drinks;Patuscada;Versão da casa de Cuba Libre;400 ml;26;bebidas;drinks;S;;2026-10

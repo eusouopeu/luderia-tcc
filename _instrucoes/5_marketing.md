@@ -15,7 +15,7 @@ Traduzir a análise de mercado em decisões de posicionamento, produto, preço, 
 ### 6.2 Produto/serviço
 - Experiência: formato de sessão (20 a 30 minutos), monitoria, recomendação de jogos.
 - Acervo: composição a partir dos jogos mais citados nas avaliações (Bloco B2) e do acervo declarado dos concorrentes (Bloco B1); tamanho do acervo inicial; custo (vai para 9.3).
-- Alimentos e bebidas: cardápio e itens da cesta de referência (Bloco B1). O modelo de operação (cozinha própria, parceria ou só bar) é premissa do autor, com custo no cap. 9; não há comparação empírica entre modelos.
+- Alimentos e bebidas: cardápio e itens da linha de referência, com o consumo por pessoa (Bloco B1). O modelo de operação (cozinha própria, parceria ou só bar) é premissa do autor, com custo no cap. 9; não há comparação empírica entre modelos.
 - Produtos complementares: eventos corporativos, aniversários, venda de jogos.
 
 ### 6.3 Preço
@@ -28,7 +28,7 @@ Traduzir a análise de mercado em decisões de posicionamento, produto, preço, 
 ### 6.4 Praça
 - A cidade é dada: Salvador. A decisão é o bairro e o ponto.
 - Critérios do bairro: população na faixa etária do público-alvo e renda (IBGE), distância das unidades da São Jogue (Bloco B1), aluguel (FipeZap Salvador).
-- Critérios do ponto: fluxo, acesso, perfil do entorno (OpenStreetMap), custo.
+- Critérios do ponto: fluxo, acesso, perfil do entorno (Google Maps: estações e shoppings de porte em 500 m e 1.000 m, Bloco B1), custo.
 - Evidência de apoio: fluxo das unidades da São Jogue (Bloco B3) e perfil de entorno dos concorrentes de maior fluxo nas metrópoles (Blocos B1 e B2).
 - Apresentar a escolha como matriz de critérios ponderados com fonte por critério.
 

@@ -23,7 +23,7 @@ import re
 from bases_comum import RAW_DIR, baixar
 
 BASE = "https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Agregados_por_Setores_Censitarios/"
-TEMAS = ["basico", "demografia"]
+TEMAS = ["basico", "demografia", "caracteristicas_domicilio1"]
 OUT_DIR = RAW_DIR / "ibge_censo_2022"
 
 
