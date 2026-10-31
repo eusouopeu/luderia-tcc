@@ -1699,3 +1699,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: banco com as 139 linhas (Nº da amostra, comentário, estabelecimento, nota geral), colunas vazias de Itens positivos e Itens negativos (23 temas cada, os mesmos do "2 - Comentários"), Contexto (8 opções), caixa "Lido" e relação de mão única "Avaliação original" com a linha do "2 - Comentários" (75 ligadas pelo ID da avaliação, 64 pelo texto; 139 de 139). O "2 - Comentários" não mudou.
 **Justificativa**: pedido do autor: banco da recodificação ligado ao da codificação, mas independente, para codificar sem ver a primeira codificação. A relação abre a página original, que mostra os temas do Claude: só consultar depois de terminar.
 
+
+### 03:59
+**Objeto**: Notion, banco "2R - Recodificação cega"
+**Antes**: sem colunas de recorrência e intenção de voltar.
+**Depois**: colunas "Costuma ir" (sim, não, não foi dito, segunda vez) e "Voltará" (sim, não, não foi dito), vazias, com as mesmas opções do "2 - Comentários".
+**Justificativa**: pedido do autor: recodificar também esses dois campos, como no banco original.
