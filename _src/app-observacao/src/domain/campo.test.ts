@@ -23,7 +23,7 @@ describe('pedidos', () => {
     const v = normalizar({ visitas: [{ id: 'v1', unidadeId: 'bela-vista', inicio: '2026-10-18T14:00:00', fim: null }] as Estado['visitas'] }).visitas[0]
     const r = (id: string, pedidos: Registro['pedidos']): Registro => ({
       id, visitaId: 'v1', unidadeId: 'bela-vista', mesaId: 'm1', data: '2026-10-18', aniversario: false, entrada: '14:00', saida: null,
-      pessoas: 2, criancas: 0, instrutor: 0, jogos: [], notas: '', pedidos, pessoasEstimado: false, saidaTipo: '' as const, fluxos: [], jogosIncertos: [],
+      pessoas: 2, criancas: 0, instrutor: 0, jogos: [], notas: '', pedidos, pessoasEstimado: false, saidaTipo: '' as const, fluxos: [], jogosIncertos: [], inicial: false,
     })
     const e: Estado = {
       ...base,

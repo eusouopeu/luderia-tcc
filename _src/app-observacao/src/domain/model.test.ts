@@ -27,18 +27,18 @@ describe('paraCsv', () => {
   it('uma linha por grupo, censura marcada e texto escapado', () => {
     const e: Estado = {
       ...estadoInicial(),
-      unidades: [{ id: 'u1', nome: 'Bela Vista', sigla: 'BV', acervo: acervoVazio(), mesas: [{ id: 'm1', nome: 'Mesa 1' }] }],
+      unidades: [{ id: 'u1', nome: 'Bela Vista', sigla: 'BV', cnpj: '', acervo: acervoVazio(), mesas: [{ id: 'm1', nome: 'Mesa 1' }] }],
       visitas: normalizar({ visitas: [{ id: 'v1', unidadeId: 'u1', inicio: '2026-10-18T14:00:00', fim: '2026-10-18T17:00:00' }] as Estado['visitas'] }).visitas,
       registros: [
         {
           id: 'r1', visitaId: 'v1', unidadeId: 'u1', mesaId: 'm1', data: '2026-10-18', aniversario: true,
           entrada: '14:05', saida: '16:35', pessoas: 4, criancas: 2, instrutor: 4, jogos: ['Dixit'], pedidos: [], notas: 'jogo "Dixit"; ótimo',
-          pessoasEstimado: false, saidaTipo: 'grupo', fluxos: [], jogosIncertos: [],
+          pessoasEstimado: false, saidaTipo: 'grupo', fluxos: [], jogosIncertos: [], inicial: false,
         },
         {
           id: 'r2', visitaId: 'v1', unidadeId: 'u1', mesaId: 'm1', data: '2026-10-18', aniversario: false,
           entrada: '16:50', saida: null, pessoas: 2, criancas: 0, instrutor: 0, jogos: [], pedidos: [], notas: '',
-          pessoasEstimado: false, saidaTipo: '', fluxos: [], jogosIncertos: [],
+          pessoasEstimado: false, saidaTipo: '', fluxos: [], jogosIncertos: [], inicial: false,
         },
       ],
     }
@@ -65,7 +65,7 @@ describe('novasMesas', () => {
 
 describe('proximoCodigo', () => {
   it('não repete código depois de apagar um grupo do meio', () => {
-    const f = (codigo: string): Fluxo => ({ id: codigo, visitaId: 'v', codigo, tipo: 'entrada', hora: '14:00', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: '' })
+    const f = (codigo: string): Fluxo => ({ id: codigo, visitaId: 'v', codigo, tipo: 'entrada', hora: '14:00', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: '', inicial: false })
     expect(proximoCodigo([f('BV-1'), f('BV-3')], 'v', 'BV')).toBe('BV-4')
     expect(proximoCodigo([], 'v', 'BV')).toBe('BV-1')
   })
@@ -75,18 +75,18 @@ describe('fecharCasa e exportação por visita', () => {
   const base = (): Estado => ({
     ...estadoInicial(),
     config: { ...estadoInicial().config, observador: 'POV1' },
-    unidades: [{ id: 'u1', nome: 'Bela Vista', sigla: 'BV', acervo: acervoVazio(), mesas: [{ id: 'm1', nome: 'Mesa 1' }] }],
+    unidades: [{ id: 'u1', nome: 'Bela Vista', sigla: 'BV', cnpj: '', acervo: acervoVazio(), mesas: [{ id: 'm1', nome: 'Mesa 1' }] }],
     visitas: normalizar({ visitas: [{ id: 'v1', unidadeId: 'u1', inicio: '2026-10-17T18:30:00', fim: null, observador: 'POV1', papel: 'porta e mesas' }] as Estado['visitas'] }).visitas,
     registros: [
       {
         id: 'r1', visitaId: 'v1', unidadeId: 'u1', mesaId: 'm1', data: '2026-10-17', aniversario: false, entrada: '19:00', saida: null, saidaTipo: '',
-        pessoas: 3, criancas: 0, pessoasEstimado: true, fluxos: ['BV-1'], instrutor: 0, jogos: ['Dixit', 'Dobble'], jogosIncertos: ['Dobble'], notas: '', pedidos: [],
+        pessoas: 3, criancas: 0, pessoasEstimado: true, fluxos: ['BV-1'], instrutor: 0, jogos: ['Dixit', 'Dobble'], jogosIncertos: ['Dobble'], inicial: false, notas: '', pedidos: [],
       },
     ],
     fluxos: [
-      { id: 'f1', visitaId: 'v1', codigo: 'BV-1', tipo: 'entrada', hora: '19:00', pessoas: 3, criancas: 0, estimado: false, destino: 'mesa:m1', motivo: '' },
-      { id: 'f2', visitaId: 'v1', codigo: 'BV-2', tipo: 'entrada', hora: '19:10', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: '' },
-      { id: 'f3', visitaId: 'v1', codigo: 'BV-2', tipo: 'saida', hora: '19:12', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: 'Lotado' },
+      { id: 'f1', visitaId: 'v1', codigo: 'BV-1', tipo: 'entrada', hora: '19:00', pessoas: 3, criancas: 0, estimado: false, destino: 'mesa:m1', motivo: '', inicial: false },
+      { id: 'f2', visitaId: 'v1', codigo: 'BV-2', tipo: 'entrada', hora: '19:10', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: '', inicial: false },
+      { id: 'f3', visitaId: 'v1', codigo: 'BV-2', tipo: 'saida', hora: '19:12', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: 'Lotado', inicial: false },
     ],
   })
 
@@ -120,18 +120,18 @@ describe('fecharCasa e exportação por visita', () => {
 describe('porta e mesas ligadas nos dois sentidos', () => {
   const base = (): Estado => ({
     ...estadoInicial(),
-    unidades: [{ id: 'u1', nome: 'Bela Vista', sigla: 'BV', acervo: acervoVazio(), mesas: [{ id: 'm1', nome: 'Mesa 1' }, { id: 'm2', nome: 'Mesa 2' }] }],
+    unidades: [{ id: 'u1', nome: 'Bela Vista', sigla: 'BV', cnpj: '', acervo: acervoVazio(), mesas: [{ id: 'm1', nome: 'Mesa 1' }, { id: 'm2', nome: 'Mesa 2' }] }],
     registros: [
       {
         id: 'r1', visitaId: 'v1', unidadeId: 'u1', mesaId: 'm2', data: '2026-10-17', aniversario: false, entrada: '19:05', saida: null, saidaTipo: '',
-        pessoas: 4, criancas: 0, pessoasEstimado: false, fluxos: ['BV-2'], instrutor: 0, jogos: [], jogosIncertos: [], notas: '', pedidos: [],
+        pessoas: 4, criancas: 0, pessoasEstimado: false, fluxos: ['BV-2'], instrutor: 0, jogos: [], jogosIncertos: [], inicial: false, notas: '', pedidos: [],
       },
     ],
     fluxos: [
-      { id: 'f1', visitaId: 'v1', codigo: 'BV-1', tipo: 'entrada', hora: '19:00', pessoas: 3, criancas: 0, estimado: false, destino: 'mesa:m1', motivo: '' },
-      { id: 'f2', visitaId: 'v1', codigo: 'BV-2', tipo: 'entrada', hora: '19:04', pessoas: 4, criancas: 0, estimado: false, destino: '', motivo: '' },
-      { id: 'f3', visitaId: 'v1', codigo: 'BV-3', tipo: 'entrada', hora: '19:06', pessoas: 2, criancas: 0, estimado: false, destino: 'Balcão/loja', motivo: '' },
-      { id: 'f4', visitaId: 'v1', codigo: 'BV-4', tipo: 'entrada', hora: '19:08', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: '' },
+      { id: 'f1', visitaId: 'v1', codigo: 'BV-1', tipo: 'entrada', hora: '19:00', pessoas: 3, criancas: 0, estimado: false, destino: 'mesa:m1', motivo: '', inicial: false },
+      { id: 'f2', visitaId: 'v1', codigo: 'BV-2', tipo: 'entrada', hora: '19:04', pessoas: 4, criancas: 0, estimado: false, destino: '', motivo: '', inicial: false },
+      { id: 'f3', visitaId: 'v1', codigo: 'BV-3', tipo: 'entrada', hora: '19:06', pessoas: 2, criancas: 0, estimado: false, destino: 'Balcão/loja', motivo: '', inicial: false },
+      { id: 'f4', visitaId: 'v1', codigo: 'BV-4', tipo: 'entrada', hora: '19:08', pessoas: 2, criancas: 0, estimado: false, destino: '', motivo: '', inicial: false },
     ],
   })
 

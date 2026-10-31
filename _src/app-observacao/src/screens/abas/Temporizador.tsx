@@ -16,7 +16,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { useLoja } from '../../store'
 import { agoraHora, MOTIVO_FECHAMENTO, novoId, registroAberto, visitaAtiva, visitaAtual, type Contagem, type Estado, type Unidade, type Visita } from '../../domain/model'
-import { etapas, nomeEtapa, situacaoTimer } from '../../domain/temporizador'
+import { contagemPendente, etapas, nomeEtapa, situacaoTimer } from '../../domain/temporizador'
 
 const fmt = (ms: number) => {
   const s = Math.max(0, Math.round(ms / 1000))
@@ -37,7 +37,8 @@ export function AbaTemporizador({
   onIr,
 }: {
   unidade: Unidade
-  onMesa: (mesaId: string) => void
+  /** `inicial` = grupo já sentado quando a visita começou (marcado na contagem inicial) */
+  onMesa: (mesaId: string, inicial?: boolean) => void
   onComecar: () => void
   onEncerrar: (visitaId: string) => void
   onFechamento: (visitaId: string) => void
@@ -56,9 +57,7 @@ export function AbaTemporizador({
   const s = v ? situacaoTimer(v, agora) : null
   const lista = v ? etapas(v) : []
   const feitas = new Set(estado.contagens.filter((c) => c.visitaId === v?.id && c.hora).map((c) => c.etapa))
-  // contagem a fazer: a primeira já vencida e não concluída
-  const limite = s?.proxima ?? lista.length
-  const pendente = ativa ? lista.findIndex((_, i) => i < limite && !feitas.has(i)) : -1
+  const pendente = ativa ? contagemPendente(ativa, estado.contagens, agora) : -1
   const rascunho = estado.contagens.find((c) => c.visitaId === v?.id && c.etapa === pendente && !c.hora)
 
   // vibra quando uma contagem vence
@@ -85,6 +84,8 @@ export function AbaTemporizador({
     })
     if (idx < mesas.length - 1) setIdx(idx + 1)
     else setIdx(0)
+    // contagem inicial: mesa ocupada sem grupo é estoque inicial; abre o grupo para contar as pessoas
+    if (pendente === 0 && m === 'ocupada' && !reg) onMesa(mesa.id, true)
   }
   const limpar = () => ativa && rascunho && mudar((e) => ({ ...e, contagens: e.contagens.filter((c) => c.id !== rascunho.id) }))
   const concluir = () => {
@@ -137,7 +138,7 @@ export function AbaTemporizador({
           ) : (
             <>
               <p className="text-2xl font-extrabold">Tempo concluído</p>
-              <button onClick={() => confirm('Encerrar a visita agora?') && onEncerrar(ativa.id)} className="mt-3 rounded-lg bg-neutro-800 px-4 py-2 font-bold text-neutro-50">
+              <button onClick={() => onEncerrar(ativa.id)} className="mt-3 rounded-lg bg-neutro-800 px-4 py-2 font-bold text-neutro-50">
                 Encerrar visita
               </button>
             </>
@@ -209,7 +210,7 @@ export function AbaTemporizador({
           tarefas={tarefas(estado, unidade, v, s?.decorridoMin ?? 0, {
             ir: onIr,
             fechamento: () => ativa && onFechamento(ativa.id),
-            encerrar: () => ativa && confirm('Encerrar a visita agora?') && onEncerrar(ativa.id),
+            encerrar: () => ativa && onEncerrar(ativa.id),
           })}
         />
       )}
@@ -235,6 +236,14 @@ function tarefas(
   return [
     { etapa: 'Início', rotulo: 'Observador, papel e posição', feita: !!(v.observador && v.papel && v.posicao), fazer: () => acoes.ir('visita') },
     { etapa: 'Início', rotulo: 'NFC-e de início', feita: nota('inicio'), fazer: () => acoes.ir('visita') },
+    {
+      etapa: 'Início',
+      rotulo: 'Contagem inicial (quem já estava dentro)',
+      feita: e.contagens.some((c) => c.visitaId === v.id && c.etapa === 0 && c.hora),
+      detalhe: `${e.registros.filter((r) => r.visitaId === v.id && r.inicial).length + e.fluxos.filter((f) => f.visitaId === v.id && f.inicial).length || ''}`,
+      // a contagem fica no alto desta mesma aba
+      fazer: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+    },
     { etapa: 'Início', rotulo: 'Cobrança e condições do dia', feita: !!(v.ficha.cobranca && v.ficha.condicoes.length), fazer: () => acoes.ir('visita') },
     {
       etapa: 'Início',

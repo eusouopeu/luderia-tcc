@@ -11,7 +11,15 @@ export type Acervo = {
   atendentes: number
   jogos: string[]
 }
-export type Unidade = { id: string; nome: string; sigla: string; mesas: Mesa[]; acervo: Acervo }
+/** `cnpj`: 14 dígitos da NFC-e da unidade (vazio = ainda não conhecido); confere a unidade ao ler a nota. */
+export type Unidade = { id: string; nome: string; sigla: string; cnpj: string; mesas: Mesa[]; acervo: Acervo }
+/** Unidades da São Jogue já conhecidas: nome, sigla do pipeline e CNPJ das notas (B3_correcoes_app.csv). */
+export const UNIDADES_CONHECIDAS = [
+  { nome: 'Bela Vista', sigla: 'BV', cnpj: '34128755000198' },
+  { nome: 'Paralela', sigla: 'PA', cnpj: '59848429000186' },
+]
+const semAcento = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
+const conhecida = (nome: string) => UNIDADES_CONHECIDAS.find((c) => semAcento(c.nome) === semAcento(nome))
 
 export type ItemNota = { nome: string; qtd: number; un: string; valor: number }
 export type NotaFiscal = {
@@ -86,6 +94,8 @@ export type Registro = {
   saidaTipo: TipoSaida
   /** códigos da porta (fluxo) ligados a este grupo */
   fluxos: string[]
+  /** grupo que já estava na mesa quando a visita começou (estoque inicial): entrada não vista */
+  inicial: boolean
   /** vezes que o instrutor foi à mesa */
   instrutor: number
   jogos: string[]
@@ -139,6 +149,8 @@ export type Fluxo = {
   destino: string
   /** só na saída: motivo (MOTIVOS_SAIDA); vazio = saída comum */
   motivo: string
+  /** grupo que já estava dentro quando a visita começou (estoque inicial): não conta como entrada */
+  inicial: boolean
 }
 /** Destinos de quem entra pela porta, além das mesas. */
 export const DESTINOS = ['Balcão/loja', 'Retirada/delivery', 'Outro']
@@ -222,15 +234,14 @@ export const siglaDe = (nome: string) =>
 
 export function estadoInicial(): Estado {
   return {
-    unidades: [
-      {
-        id: 'bela-vista',
-        nome: 'Bela Vista',
-        sigla: 'BV',
-        mesas: Array.from({ length: 6 }, (_, i) => ({ id: `m${i + 1}`, nome: `Mesa ${i + 1}` })),
-        acervo: acervoVazio(),
-      },
-    ],
+    unidades: UNIDADES_CONHECIDAS.map((c) => ({
+      id: c.sigla === 'BV' ? 'bela-vista' : semAcento(c.nome).replace(/\s+/g, '-'),
+      nome: c.nome,
+      sigla: c.sigla,
+      cnpj: c.cnpj,
+      mesas: Array.from({ length: 6 }, (_, i) => ({ id: `m${i + 1}`, nome: `Mesa ${i + 1}` })),
+      acervo: acervoVazio(),
+    })),
     visitas: [],
     registros: [],
     fluxos: [],
@@ -246,7 +257,12 @@ export function estadoInicial(): Estado {
 export function normalizar(e: Partial<Estado>): Estado {
   const config = { ...configPadrao(), ...e.config }
   return {
-    unidades: (e.unidades ?? []).map((u) => ({ ...u, sigla: u.sigla || siglaDe(u.nome), acervo: { ...acervoVazio(), ...u.acervo } })),
+    unidades: (e.unidades ?? []).map((u) => ({
+      ...u,
+      sigla: u.sigla || conhecida(u.nome)?.sigla || siglaDe(u.nome),
+      cnpj: u.cnpj ?? conhecida(u.nome)?.cnpj ?? '',
+      acervo: { ...acervoVazio(), ...u.acervo },
+    })),
     visitas: (e.visitas ?? []).map((v) => ({
       ...v,
       duracaoMin: v.duracaoMin ?? config.duracaoMin,
@@ -268,8 +284,9 @@ export function normalizar(e: Partial<Estado>): Estado {
       pessoasEstimado: r.pessoasEstimado ?? false,
       saidaTipo: r.saidaTipo ?? (r.saida ? 'grupo' : ''),
       fluxos: r.fluxos ?? [],
+      inicial: r.inicial ?? false,
     })),
-    fluxos: (e.fluxos ?? []).map((f) => ({ ...f, estimado: f.estimado ?? false, destino: f.destino ?? '', motivo: f.motivo ?? '' })),
+    fluxos: (e.fluxos ?? []).map((f) => ({ ...f, estimado: f.estimado ?? false, destino: f.destino ?? '', motivo: f.motivo ?? '', inicial: f.inicial ?? false })),
     contagens: e.contagens ?? [],
     medicoes: e.medicoes ?? [],
     fotos: e.fotos ?? [],
@@ -299,14 +316,73 @@ export const minutos = (h: string) => {
   return m ? Number(m[1]) * 60 + Number(m[2]) : null
 }
 
-/** Minutos na mesa; null se o grupo não saiu ou se a saída é anterior à entrada. */
-export function permanenciaMin(entrada: string, saida: string | null): number | null {
-  if (saida === null) return null
-  const a = minutos(entrada)
-  const b = minutos(saida)
-  if (a === null || b === null || b < a) return null
-  return b - a
+/** Intervalo maior que este, contado pela virada da meia-noite, é erro de digitação e não permanência. */
+export const MAX_VIRADA_MIN = 12 * 60
+
+/**
+ * Minutos de `de` até `ate` (HH:MM). Saída "antes" da entrada é a virada da meia-noite
+ * (23:30 → 00:40 = 70 min) quando o intervalo assim contado fica em até 12 h; mais que isso é erro.
+ */
+export function difMin(de: string, ate: string): number | null {
+  const a = minutos(de)
+  const b = minutos(ate)
+  if (a === null || b === null) return null
+  const d = b >= a ? b - a : b + 1440 - a
+  return b >= a || d <= MAX_VIRADA_MIN ? d : null
 }
+
+/** Minutos na mesa; null se o grupo não saiu ou se a saída é inválida (ver `difMin`). */
+export function permanenciaMin(entrada: string, saida: string | null): number | null {
+  return saida === null ? null : difMin(entrada, saida)
+}
+
+/** Minutos desde o início da visita até a hora HH:MM; depois da meia-noite soma um dia. */
+export function minutosNaVisita(v: Pick<Visita, 'inicio'>, hora: string): number | null {
+  const a = minutos(v.inicio.slice(11, 16))
+  const b = minutos(hora)
+  if (a === null || b === null) return null
+  // até 2 h antes do início (lançamento retroativo) fica negativo; antes disso é o dia seguinte
+  return b - a < -120 ? b - a + 1440 : b - a
+}
+
+/** ISO local da hora HH:MM dentro da visita (data do dia seguinte depois da meia-noite). */
+export function isoNaVisita(v: Pick<Visita, 'inicio'>, hora: string): string | null {
+  const m = minutosNaVisita(v, hora)
+  if (m === null) return null
+  const base = new Date(v.inicio)
+  base.setSeconds(0, 0)
+  return agoraIso(new Date(base.getTime() + m * 60000))
+}
+
+/** Hora (ISO local) e origem do último lançamento da visita: base para sugerir o fim. */
+export function ultimoRegistro(e: Estado, visitaId: string): { iso: string; origem: string } | null {
+  const v = e.visitas.find((x) => x.id === visitaId)
+  if (!v) return null
+  const horas: [string | null | undefined, string][] = [
+    ...e.registros.filter((r) => r.visitaId === visitaId).flatMap((r) => [
+      [r.entrada, 'mesa'] as [string, string],
+      [r.saida, 'mesa'] as [string | null, string],
+      ...r.pedidos.flatMap((p) => [[p.pedido, 'pedido'], [p.chegada, 'pedido']] as [string | null, string][]),
+    ]),
+    ...e.fluxos.filter((f) => f.visitaId === visitaId && !f.inicial && f.motivo !== MOTIVO_FECHAMENTO).map((f) => [f.hora, 'porta'] as [string, string]),
+    ...e.contagens.filter((c) => c.visitaId === visitaId).map((c) => [c.hora, 'contagem'] as [string | null, string]),
+    ...e.medicoes.filter((m) => m.visitaId === visitaId).map((m) => [m.hora, 'som'] as [string, string]),
+    ...e.fotos.filter((f) => f.visitaId === visitaId).map((f) => [f.hora, 'foto'] as [string, string]),
+  ]
+  let melhor: { iso: string; origem: string } | null = null
+  for (const [h, origem] of horas) {
+    const iso = h ? isoNaVisita(v, h.slice(0, 5)) : null
+    if (iso && (!melhor || iso > melhor.iso)) melhor = { iso, origem }
+  }
+  for (const n of v.notas) if (!melhor || n.lidaEm > melhor.iso) melhor = { iso: n.lidaEm, origem: 'NFC-e' }
+  return melhor
+}
+
+/** Unidade cadastrada com este CNPJ, se houver. */
+export const unidadeDoCnpj = (e: Estado, cnpj: string) => (cnpj ? e.unidades.find((u) => u.cnpj === cnpj) : undefined)
+
+/** Visita em andamento em outra unidade (um celular observa uma casa por vez). */
+export const ativaEmOutra = (e: Estado, unidadeId: string) => e.visitas.find((v) => v.unidadeId !== unidadeId && v.fim === null)
 
 /** Minutos entre o pedido e a chegada; null se não chegou. */
 export const esperaPedido = (p: Pedido) => permanenciaMin(p.pedido, p.chegada)
@@ -337,7 +413,7 @@ export function gruposDentro(e: Estado, visitaId: string): Fluxo[] {
   return fl.filter((f) => f.tipo === 'entrada' && !saiu.has(f.codigo))
 }
 
-/** Pessoas no interior agora: saldo do fluxo; sem fluxo, soma das mesas ocupadas. */
+/** Pessoas no interior agora (estoque inicial incluído): saldo do fluxo; sem fluxo, soma das mesas ocupadas. */
 export function pessoasDentro(e: Estado, visitaId: string): number {
   const fl = e.fluxos.filter((f) => f.visitaId === visitaId)
   if (fl.length) return fl.reduce((s, f) => s + (f.tipo === 'entrada' ? f.pessoas : -f.pessoas), 0)
@@ -448,13 +524,14 @@ export function paraCsv(e: Estado, filtro: Filtro | string = {}): string {
     .sort((a, b) => (a.data + a.entrada).localeCompare(b.data + b.entrada))
   return csv(
     [...ID_COLS, 'visita_fim', 'mesa', 'data', 'entrada', 'saida', 'saida_tipo', 'permanencia_min', 'censurada', 'pessoas', 'pessoas_estimado', 'criancas',
-      'aniversario', 'instrutor_vezes', 'fluxos_porta', 'jogos', 'jogos_incertos', 'notas'],
+      'aniversario', 'instrutor_vezes', 'fluxos_porta', 'jogos', 'jogos_incertos', 'notas', 'estoque_inicial'],
     regs.map((r) => {
       const v = e.visitas.find((x) => x.id === r.visitaId)
       return [
         ...idDe(e, v), v?.fim, nomeMesa(e, r.unidadeId, r.mesaId), r.data, r.entrada, r.saida, r.saidaTipo ?? '',
         permanenciaMin(r.entrada, r.saida), censurado(r) ? 'sim' : 'nao', r.pessoas, r.pessoasEstimado ? 'sim' : 'nao', r.criancas,
         r.aniversario ? 'sim' : 'nao', r.instrutor, (r.fluxos ?? []).join(' | '), (r.jogos ?? []).join(' | '), (r.jogosIncertos ?? []).join(' | '), r.notas,
+        r.inicial ? 'sim' : 'nao',
       ]
     }),
   )
@@ -478,10 +555,10 @@ export function arquivosCsv(e: Estado, unidadeId?: string, visitaId?: string): {
     {
       nome: 'fluxo',
       conteudo: csv(
-        [...ID_COLS, 'codigo', 'tipo', 'hora', 'pessoas', 'pessoas_estimado', 'criancas', 'destino', 'motivo'],
+        [...ID_COLS, 'codigo', 'tipo', 'hora', 'pessoas', 'pessoas_estimado', 'criancas', 'destino', 'motivo', 'estoque_inicial'],
         e.fluxos.filter((f) => ok(f.visitaId)).map((f) => {
           const v = vis(f.visitaId)!
-          return [...idDe(e, v), f.codigo, f.tipo, f.hora, f.pessoas, f.estimado ? 'sim' : 'nao', f.criancas, destinoTexto(e, v.unidadeId, f.destino ?? ''), f.motivo ?? '']
+          return [...idDe(e, v), f.codigo, f.tipo, f.hora, f.pessoas, f.estimado ? 'sim' : 'nao', f.criancas, destinoTexto(e, v.unidadeId, f.destino ?? ''), f.motivo ?? '', f.inicial ? 'sim' : 'nao']
         }),
       ),
     },

@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { ChevronRightIcon, PlusIcon } from '@heroicons/react/24/outline'
+import { PlusIcon } from '@heroicons/react/24/outline'
 import { MesaDesenho } from '../../ui/MesaDesenho'
 import { Fab, Folha } from '../../ui/comum'
 import { ListaPedidos } from '../../ui/Pedidos'
 import { useLoja } from '../../store'
-import { novasMesas, pessoasDentro, registroAberto, visitaAtiva, type Registro, type Unidade } from '../../domain/model'
+import { novasMesas, registroAberto, visitaAtiva, type Registro, type Unidade } from '../../domain/model'
 import { avisar } from '../../ui/aviso'
 
 /** Planta: mesas e o acervo de jogos (mockup "Bela Vista"). */
@@ -12,13 +12,11 @@ export function AbaMesas({
   unidade,
   onMesa,
   onAcervo,
-  onRegistros,
   onAcoes,
 }: {
   unidade: Unidade
   onMesa: (mesaId: string) => void
   onAcervo: () => void
-  onRegistros: () => void
   onAcoes: () => void
 }) {
   const { estado, mudar } = useLoja()
@@ -26,25 +24,9 @@ export function AbaMesas({
   const mudaReg = (id: string, f: (r: Registro) => Registro) => mudar((e) => ({ ...e, registros: e.registros.map((r) => (r.id === id ? f(r) : r)) }))
   const regPedidos = estado.registros.find((r) => r.id === pedidosDe)
   const visita = visitaAtiva(estado, unidade.id)
-  const daVisita = visita ? estado.registros.filter((r) => r.visitaId === visita.id) : []
 
   return (
     <>
-      <button onClick={onRegistros} className="mx-4 mt-3 flex w-[calc(100%-2rem)] items-center justify-between rounded-lg bg-neutro-100 px-3 py-2.5 text-left text-[15px] text-neutro-700">
-        <span>
-          {visita ? (
-            <>
-              <b className="text-caneta-700">Visita desde {visita.inicio.slice(11, 16)}</b>
-              <span className="ml-2 rounded-full bg-caneta-100 px-2 py-0.5 text-[13px] font-bold text-caneta-700" title={`${daVisita.length} grupos nas mesas`}>
-                {pessoasDentro(estado, visita.id)} dentro
-              </span>
-            </>
-          ) : (
-            <>Sem visita em andamento</>
-          )}
-        </span>
-        <ChevronRightIcon className="size-5 shrink-0" />
-      </button>
       <div className="flex gap-3 px-4 pb-32 pt-5">
         <div className="grid flex-1 grid-cols-[repeat(auto-fill,minmax(88px,1fr))] content-start gap-x-3 gap-y-4">
           {unidade.mesas.map((m) => {

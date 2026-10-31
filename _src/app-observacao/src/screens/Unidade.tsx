@@ -21,9 +21,9 @@ type Icone = ComponentType<SVGProps<SVGSVGElement>>
 
 const ABAS: [Aba, Icone, string][] = [
   ['mesas', Squares2X2Icon, 'Mesas'],
-  ['fluxo', ArrowsRightLeftIcon, 'Fluxo'],
+  ['fluxo', ArrowsRightLeftIcon, 'Porta'],
   ['acustica', MicrophoneIcon, 'Ambiente'],
-  ['timer', ClockIcon, 'Temporizador'],
+  ['timer', ClockIcon, 'Tempo'],
 ]
 const PAGINAS: [Pagina, Icone, Icone, string][] = [
   ['inicio', HomeIcon, HomeSolid, 'Início'],
@@ -41,6 +41,7 @@ export function Unidade({
   onPagina,
   onVoltar,
   onExportar,
+  barra,
   children,
 }: {
   unidade: TUnidade
@@ -50,6 +51,8 @@ export function Unidade({
   onPagina: (p: Pagina) => void
   onVoltar: () => void
   onExportar: () => void
+  /** situação da visita, fixa sob as abas */
+  barra?: ReactNode
   children: ReactNode
 }) {
   return (
@@ -67,14 +70,23 @@ export function Unidade({
         </button>
       </header>
       {pagina === 'inicio' && (
-        <nav role="tablist" className="mx-4 mt-1 flex h-12 overflow-hidden rounded-lg bg-neutro-300">
+        <nav role="tablist" className="mx-4 mt-1 flex h-14 overflow-hidden rounded-lg bg-neutro-300">
           {ABAS.map(([id, I, rot]) => (
-            <button key={id} onClick={() => onAba(id)} aria-label={rot} title={rot} aria-selected={aba === id} role="tab" className={`grid flex-1 place-items-center rounded-lg ${aba === id ? 'bg-caneta-600 text-sobre' : 'text-neutro-900'}`}>
-              <I className="size-6" />
+            <button
+              key={id}
+              onClick={() => onAba(id)}
+              title={rot}
+              aria-selected={aba === id}
+              role="tab"
+              className={`flex flex-1 flex-col items-center justify-center gap-0.5 rounded-lg ${aba === id ? 'bg-caneta-600 text-sobre' : 'text-neutro-900'}`}
+            >
+              <I className="size-5" />
+              <span className="text-[12px] font-bold">{rot}</span>
             </button>
           ))}
         </nav>
       )}
+      {pagina === 'inicio' && barra}
       </div>
       {children}
       <nav className="fixed inset-x-0 bottom-0 z-10 flex border-t border-neutro-100 bg-papel safe-bottom">

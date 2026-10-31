@@ -1,8 +1,8 @@
-import { useRef, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { useLoja } from '../store'
 import { campo, ContadorH, Opcao, Secao } from '../ui/comum'
 import { arquivosCsv, hojeIso, type Config, type Unidade } from '../domain/model'
-import { gravarBackup, lerBackup, ultimoBackup } from '../storage/backup'
+import { gravarBackup, lerBackup, lerVersao, listarVersoes, MAX_VERSOES, rotuloVersao, ultimoBackup, VERSAO_MIN } from '../storage/backup'
 import { compartilhar } from '../storage/exportar'
 import { uriDaFoto } from '../storage/fotos'
 import { Transferir } from './Transferir'
@@ -15,6 +15,18 @@ export function PaginaAjustes({ unidade, onEditar, onApagar }: { unidade: Unidad
   const c = estado.config
   const muda = (p: Partial<Config>) => mudar((e) => ({ ...e, config: { ...e.config, ...p } }))
   const ult = ultimoBackup()
+  const [versoes, setVersoes] = useState<string[]>([])
+  const [todas, setTodas] = useState(false)
+  useEffect(() => void listarVersoes().then(setVersoes), [])
+  /** Substitui pelo backup; antes guarda uma versão do estado atual, para poder voltar. */
+  const restaurar = async (e: Partial<typeof estado> | null, origem: string) => {
+    if (!e) return setMsg('Arquivo não reconhecido.')
+    if (!confirm(`Substituir os dados atuais por ${origem} (${e.registros?.length ?? 0} grupos, ${e.visitas?.length ?? 0} visitas)? O estado atual fica guardado como versão.`)) return
+    await gravarBackup(estado, true)
+    substituir(e)
+    setMsg('Backup restaurado.')
+    setVersoes(await listarVersoes())
+  }
 
   return (
     <div className="px-4 pb-10">
@@ -79,8 +91,42 @@ export function PaginaAjustes({ unidade, onEditar, onApagar }: { unidade: Unidad
         <Transferir />
       </Secao>
 
-      <Secao titulo="Backup" ajuda={<>Automático a cada mudança, em Documentos/ObservacaoLuderia (um arquivo por dia). {ult ? `Último: ${ult.quando}, em ${ult.onde}.` : ''}</>}>
-        <Botao onClick={async () => setMsg((await gravarBackup(estado)) ? 'Backup gravado.' : 'Backup só funciona no celular.')}>Fazer backup agora</Botao>
+      <Secao
+        titulo="Backup"
+        ajuda={
+          <>
+            Automático a cada mudança, em Documentos/ObservacaoLuderia (um arquivo por dia), mais uma versão a cada {VERSAO_MIN} min em versoes/ (ficam as {MAX_VERSOES} mais
+            recentes). {ult ? `Último: ${ult.quando}, em ${ult.onde}.` : ''}
+          </>
+        }
+      >
+        <Botao
+          onClick={async () => {
+            setMsg((await gravarBackup(estado, true)) ? 'Backup gravado.' : 'Backup só funciona no celular.')
+            setVersoes(await listarVersoes())
+          }}
+        >
+          Fazer backup agora
+        </Botao>
+        {versoes.length > 0 && (
+          <ul className="mt-2 divide-y divide-papel overflow-hidden rounded-lg bg-neutro-100">
+            {(todas ? versoes : versoes.slice(0, 5)).map((n) => (
+              <li key={n} className="flex items-center px-3 py-2">
+                <span className="flex-1 text-[15px] tabular-nums">{rotuloVersao(n)}</span>
+                <button onClick={async () => restaurar(await lerVersao(n), `a versão de ${rotuloVersao(n)}`)} className="px-2 py-1 text-sm font-bold text-caneta-700">
+                  Restaurar
+                </button>
+              </li>
+            ))}
+            {versoes.length > 5 && (
+              <li>
+                <button onClick={() => setTodas(!todas)} className="w-full px-3 py-2 text-left text-sm font-semibold text-neutro-600">
+                  {todas ? 'Mostrar menos' : `Ver as ${versoes.length} versões`}
+                </button>
+              </li>
+            )}
+          </ul>
+        )}
         <Botao onClick={() => arquivo.current?.click()}>Restaurar backup…</Botao>
         <input
           ref={arquivo}
@@ -90,12 +136,8 @@ export function PaginaAjustes({ unidade, onEditar, onApagar }: { unidade: Unidad
           onChange={async (ev) => {
             const f = ev.target.files?.[0]
             if (!f) return
-            const e = lerBackup(await f.text())
-            if (!e) return setMsg('Arquivo não reconhecido.')
-            if (confirm(`Substituir os dados atuais pelo backup (${e.registros?.length ?? 0} grupos, ${e.visitas?.length ?? 0} visitas)?`)) {
-              substituir(e)
-              setMsg('Backup restaurado.')
-            }
+            await restaurar(lerBackup(await f.text()), 'o backup')
+            ev.target.value = ''
           }}
         />
         {msg && <p className="mt-2 text-sm font-semibold text-ok-700">{msg}</p>}

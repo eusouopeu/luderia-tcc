@@ -1,4 +1,4 @@
-import { agoraHora, type Visita } from './model'
+import { agoraHora, type Contagem, type Visita } from './model'
 
 /** Minutos (desde o início efetivo) de cada contagem: a inicial (0) e uma a cada intervalo até o fim. */
 export function etapas(v: Visita): number[] {
@@ -56,4 +56,13 @@ export function horariosRestantes(v: Visita, agora = new Date()): { etapa: numbe
   return etapas(v)
     .map((m, i) => ({ etapa: i, quando: new Date(agora.getTime() + (m * 60000 - s.decorridoMs)) }))
     .filter((x) => x.quando.getTime() > agora.getTime())
+}
+
+/** Contagem a fazer: a primeira já vencida e não concluída (-1 se nenhuma ou visita encerrada). */
+export function contagemPendente(v: Visita, contagens: Contagem[], agora = new Date()): number {
+  if (v.fim) return -1
+  const lista = etapas(v)
+  const feitas = new Set(contagens.filter((c) => c.visitaId === v.id && c.hora).map((c) => c.etapa))
+  const limite = situacaoTimer(v, agora).proxima ?? lista.length
+  return lista.findIndex((_, i) => i < limite && !feitas.has(i))
 }
