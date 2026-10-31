@@ -1477,3 +1477,34 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: a mediana de R$ 18,75 (cap. 9, 9.8) inclui a pizza "Lúdico" da Ludoteca BGC (R$ 30,00) e a sala do Café Geek (R$ 10,00 por hora e por grupo).
 **Depois**: o cap. 6 (6.3) exclui os dois itens e separa os dias da semana.
 **Efeitos colaterais**: a checagem de preço do cap. 9 e a estatística descritiva de cardápios do B1 usam a categoria com os dois erros; a conclusão (São Jogue acima da mediana) não muda. Não corrigido no B1 sem pedido do autor.
+
+### 02:34
+**Objeto**: branch `claude/project-thread-uta3tr` (merge de `fix/entorno-maps-distantes` com os PRs #20 e #21); `AGORA.md`, `docs/decisoes.md`, `docs/registro-de-alteracoes.md`
+**Antes**: os PRs #20 (planilhas agregadas) e #21 (consumo por pessoa e cesta completa) encadeados sobre uma versão de 30/10 da branch do Mac, que andou depois (caps. 3, 6, 8 e 9, B3); os três arquivos de controle em conflito.
+**Depois**: as duas linhas de trabalho juntas, com as entradas dos dois lados mantidas em ordem de data no registro e nas decisões.
+**Justificativa**: pedido do autor: revisar o TCC inteiro; a revisão precisa do estado com os dois lados.
+
+### 02:34
+**Objeto**: `_instrucoes/4_metodologia.md` (ticket médio, matriz de decisões), `_instrucoes/5_marketing.md` (A&B), `_instrucoes/10_biblio-apendices.md` (Tabela 6.3)
+**Antes**: "cesta por pessoa = couvert + bebida + entrada ou prato" e "cesta de cardápio" como medida do ticket.
+**Depois**: "consumo por pessoa" (bebida + entrada ou prato) e "cesta completa" (consumo + couvert, só nas casas com couvert encontrado; couvert não encontrado não entra como 0).
+**Justificativa**: alinhar as instruções à decisão de 30/10 (PR #21); os capítulos não foram mexidos.
+
+### 02:34
+**Objeto**: `docs/melhorias-texto.md`
+**Antes**: dois itens com o ID D26 e dois com o C15; sem as divergências de cardápio, CNAE e gasto com A&B.
+**Depois**: o segundo D26 vira D28 e o segundo C15 vira C16; novos D29 (cesta, consumo e couvert com quatro bases nos caps. 3, 5, 6 e 9), D30 (CNAE 5611-2/05 no cap. 5 × 5611-2/01 no cap. 8) e D31 (gasto com A&B de R$ 24,00 × consumo de R$ 48,80 dos concorrentes).
+**Justificativa**: revisão geral dos capítulos pedida pelo autor; IDs repetidos impediam citar o item certo.
+
+### 02:34
+**Objeto**: `docs/pendencias.md`, `AGORA.md`, `textos/planejamento/status_capitulos.md`
+**Antes**: item 5 com os caps. 3 e 8 como atrasados; item 8 com a amostra de 131 ids; AGORA com 89 linhas e cabeçalho da semana 5 (entrega de 16/10); status do cap. 7 aguardando "visitas de retorno (18/10)".
+**Depois**: item 5 com os caps. 4, 7, 10 e 11 sem arquivo e o plano de corte sem efeito na escrita; item 8 com a amostra de 139 linhas de 30/10 e a regra de não lançar a codificação de 30/10 com outra data; novas divergências (cópias NFD no Mac, descrição do repositório com "público casual", branches); AGORA reescrito em uma tela, semana 8; status do cap. 7 com as quatro visitas feitas.
+**Justificativa**: fim de sessão (CLAUDE.md) e revisão geral pedida pelo autor.
+
+### 02:34 (divergência)
+**Objeto**: data da codificação dos temas do B2
+**Antes**: livro do Bardin (`analise_conteudo_bardin_B2.md`, 15/10): codificação por Claude em 15/10, com 16 categorias, sobre 1.588 comentários.
+**Depois**: registro de 30/10 (18:13 e 19:27): as 1.273 linhas sem tema do "2 - Comentários" codificadas por Claude em 30/10, com o dicionário de 30/10 (25 temas).
+**Efeitos colaterais**: são duas codificações diferentes, em datas diferentes. A de 30/10 não pode ser registrada como de 15/10 no Notion, no cap. 3 nem em nenhum outro documento. O cap. 5 (5.2) ainda usa a de 15/10 (D27).
+

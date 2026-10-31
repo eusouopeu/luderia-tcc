@@ -15,7 +15,7 @@ Traduzir a análise de mercado em decisões de posicionamento, produto, preço, 
 ### 6.2 Produto/serviço
 - Experiência: formato de sessão (20 a 30 minutos), monitoria, recomendação de jogos.
 - Acervo: composição a partir dos jogos mais citados nas avaliações (Bloco B2) e do acervo declarado dos concorrentes (Bloco B1); tamanho do acervo inicial; custo (vai para 9.3).
-- Alimentos e bebidas: cardápio e itens da cesta de referência (Bloco B1). O modelo de operação (cozinha própria, parceria ou só bar) é premissa do autor, com custo no cap. 9; não há comparação empírica entre modelos.
+- Alimentos e bebidas: cardápio e itens da linha de referência, com o consumo por pessoa (Bloco B1). O modelo de operação (cozinha própria, parceria ou só bar) é premissa do autor, com custo no cap. 9; não há comparação empírica entre modelos.
 - Produtos complementares: eventos corporativos, aniversários, venda de jogos.
 
 ### 6.3 Preço

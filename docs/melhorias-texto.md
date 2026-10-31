@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 31/10/2026, com o cap. 3 (rascunho) sobre os caps. 1, 2, 5, 8 e 9.
+Última análise: 31/10/2026 (05h), revisão geral dos caps. 1, 2, 3, 5, 6, 8 e 9 depois dos PRs #20 e #21 (consumo por pessoa e cesta completa).
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -48,9 +48,15 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D26 — Codificação do B2: cap. 3 × instrução.** Cap. 3 (3.4.2 e 3.4.3) × `4_metodologia.md` §3.4. O cap. 3 descreve a prática atual — codificação temática com 22 temas, feita com apoio de inteligência artificial e validada por recodificação cega de 139 avaliações com kappa ≥ 0,70. A instrução ainda prevê dicionário automático de 11 aspectos, validado por kappa e F1 em 200 avaliações. Sugestão: decidir o instrumento (pendências, item 15, e "Instruções ainda desatualizadas") e alinhar a instrução ou o capítulo.
 
-**D26 — Mediana da taxa de entrada dos concorrentes: 18,75 × 25,00.** Cap. 9 (9.8 e aba checagens) × cap. 6 (6.3). O cap. 9 usa R$ 18,75, mediana da coluna "couvert ou taxa de jogo" de `B1_cardapios_itens_precos.xlsx`, que inclui uma pizza chamada "Lúdico" (Ludoteca BGC, R$ 30,00) e a sala do Café Geek cobrada por hora e por grupo, e mistura dia útil e fim de semana. O cap. 6 separa os dias e dá R$ 25,00 no fim de semana e R$ 17,50 no dia útil, com 6 concorrentes. A conclusão (São Jogue acima da mediana) não muda. Sugestão: corrigir a classificação no B1 e rodar de novo o modelo do cap. 9.
+**D28 — Mediana da taxa de entrada dos concorrentes: 18,75 × 25,00.** Cap. 9 (9.8 e aba checagens) × cap. 6 (6.3). O cap. 9 usa R$ 18,75, mediana da coluna "couvert ou taxa de jogo" de `B1_cardapios_itens_precos.xlsx`, que inclui uma pizza chamada "Lúdico" (Ludoteca BGC, R$ 30,00) e a sala do Café Geek cobrada por hora e por grupo, e mistura dia útil e fim de semana. O cap. 6 separa os dias e dá R$ 25,00 no fim de semana e R$ 17,50 no dia útil, com 6 concorrentes. A conclusão (São Jogue acima da mediana) não muda. Sugestão: corrigir a classificação no B1 e rodar de novo o modelo do cap. 9.
 
 **D27 — Frequência de preço nas avaliações: 12,8% × 2,7% e 9,3%.** Cap. 5 (5.2.2, Bardin provisório de 15/10: "preço e valor percebido" em 12,8%) × cap. 6 (6.3, temas do Notion de 30/10: preço da entrada em 44 e preço do consumo em 152 das 1.628 avaliações). São codificações diferentes; alinhar quando o 5.2 for refeito com o dicionário de 30/10.
+
+**D29 — Cardápios: cesta, consumo e couvert com quatro bases diferentes.** Cap. 5 (5.3, "cesta mediana" de R$ 58,50 com bebida e prato, 26 casas com cardápio, 7 com couvert) × cap. 6 (6.3: 36 casas com cardápio, 6 cobram taxa, mediana de R$ 25,00) × cap. 9 (9.8: 8 concorrentes, mediana de R$ 18,75) × decisão de 30/10 e PR #21 (consumo por pessoa de R$ 48,80 em 33 casas; cesta completa de R$ 74,25 só nas 8 casas com couvert encontrado). O cap. 5 chama de "cesta" o que agora é "consumo", e o cap. 3 (3.5) ainda define o ticket como "cesta por pessoa — couvert, bebida e prato". Sugestão: depois de rodar de novo `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py` no Mac, reescrever os três capítulos com os mesmos números e os nomes "consumo por pessoa" e "cesta completa" (já nas instruções em 31/10).
+
+**D30 — CNAE do cap. 5 contra a decisão do cap. 8.** Cap. 5 (5.1, "bar com entretenimento, subclasse 5611-2/05", e a lacuna de contar CNPJ ativos na 5611-2/05) × cap. 8 (8.1) e decisão de 31/10 (CNAE principal 5611-2/01; 5611-2/05 descartada). Sugestão: no 5.1, citar 5611-2/01 como a subclasse do plano e, se a contagem de CNPJ for feita, usar as duas (5611-2/01 e 5611-2/03) e dizer que nenhuma isola luderias.
+
+**D31 — Gasto com A&B: R$ 24,00 contra consumo de R$ 48,80 dos concorrentes.** Caps. 6 (6.3) e 9 (R08, 9.2) × cap. 5 (5.3) e PR #21. O plano projeta R$ 24,00 por pessoa (quatro NFC-e das mesas dos observadores), metade do consumo mediano por pessoa nos cardápios dos concorrentes (R$ 48,80, uma bebida e uma entrada ou prato). As duas medidas não são a mesma coisa (gasto observado × preço de cardápio), mas o texto não explica a distância, e R08 é premissa crítica do VPL. Sugestão: no cap. 9, dizer por que o gasto observado fica abaixo da cesta de cardápio (grupo dividindo pratos, quem só bebe) e usar o consumo do B1 como teto do otimista.
 
 ## Aceitável
 
@@ -102,7 +108,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **C14 — Carga do Simples dita duas vezes (caps. 8 e 9).** O 8.1 e o 9.4 repetem as alíquotas de 8,1% e 11,9%; no 9.4 basta remeter ao 8.1. Ganho: ~40 palavras.
 
-**C15 — Consumo nas NFC-e da São Jogue em dois capítulos (6.3 e 9.2).** O gasto de R$ 23,91 por pessoa e o cardápio da São Jogue aparecem nos dois; no 9.2 basta remeter ao 6.3. Ganho: ~50 palavras.
+**C16 — Consumo nas NFC-e da São Jogue em dois capítulos (6.3 e 9.2).** O gasto de R$ 23,91 por pessoa e o cardápio da São Jogue aparecem nos dois; no 9.2 basta remeter ao 6.3. Ganho: ~50 palavras.
 
 **C09 — Duas listas de seis forças do macroambiente (cap. 2, 2.2.1).** A lista de Kotler e Keller e a do PESTEL dizem o mesmo; ficar só com a do PESTEL, que é a usada no 5.5. Ganho: ~25 palavras.
 

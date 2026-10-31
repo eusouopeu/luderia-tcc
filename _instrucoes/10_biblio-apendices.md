@@ -82,7 +82,7 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 | 5.5 | Quadro — PESTEL | Fator, efeito no plano, fonte |
 | 6.1 | Quadro — grade ERRC | Eliminar, reduzir, elevar, criar, com a evidência de cada item |
 | 6.2–6.5 | Quadro — composto de marketing | Produto, preço, praça, promoção: decisão e evidência |
-| 6.3 | Tabela — preços praticados | Couvert e cesta por pessoa por metrópole, Salvador em destaque |
+| 6.3 | Tabela — preços praticados | Couvert, consumo por pessoa e cesta completa por metrópole, Salvador em destaque |
 | 6.4 | Quadro — critérios do bairro | Matriz de critérios ponderados, com fonte por critério |
 | 6.6 | Tabela — estimativa de demanda | Visitantes por semana nos três cenários e caminho de cálculo |
 | 7.2 | Tabela — capacidade | Mesas × lugares × giros, comparadas à demanda |

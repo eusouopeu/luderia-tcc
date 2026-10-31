@@ -285,8 +285,8 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 | **Ocupação** | Velocidade de avaliações calibrada (Blocos B2 e B3) | Modelo de calibração (abaixo) | Razão avaliações/visitantes pode variar entre estabelecimentos |
 | **Pessoas por mesa** | Tamanho do grupo citado (Bloco B2) e observado (Bloco B3) | Distribuição e comparação entre as duas fontes | Relato espontâneo × poucas observações |
 | **Giro de mesa** | Permanência observada (Bloco B3) e política de cobrança (Bloco B1) | Permanência média; comparação descritiva dos modelos de cobrança | Permanência censurada pelo início e fim da visita |
-| **Ticket médio** | Valores citados × cardápio × metrópole | Mediana e intervalo interquartil dos valores por pessoa; comparação com a cesta de cardápio | Poucos textos citam valores |
-| **Ticket médio** | Itens fixos do cardápio (bebidas, entradas, principal, sobremesa, couvert) | **Cesta por pessoa** = couvert + bebida + entrada ou prato, por metrópole, com Salvador em destaque; calibrada pelos valores citados e pelos preços observados na São Jogue; checada contra a POF | Consumo por pessoa é premissa com faixa |
+| **Ticket médio** | Valores citados × cardápio × metrópole | Mediana e intervalo interquartil dos valores por pessoa; comparação com o consumo por pessoa do cardápio | Poucos textos citam valores |
+| **Ticket médio** | Itens fixos do cardápio (bebidas, entradas, principal, sobremesa, couvert) | **Consumo por pessoa** = bebida + entrada ou prato; **cesta completa** = consumo + couvert, só nas casas com couvert encontrado (couvert não encontrado não entra como 0; decisão de 30/10); por metrópole, com Salvador em destaque; calibrada pelos valores citados e pelos preços observados na São Jogue; checada contra a POF | Consumo por pessoa é premissa com faixa |
 
 ### Modelo de calibração da ocupação
 
@@ -318,7 +318,7 @@ Custos (aluguel, pessoal, tributos) e indicadores seguem [8_financeiro.md](8_fin
 | Em que bairro de Salvador abrir? | Onde está o público-alvo, longe da concorrência direta e com aluguel compatível? | População e faixa etária por bairro; renda; localização da São Jogue; aluguel; entorno | Censo 2022; PNAD Contínua; Bloco B1 (Google Maps); FipeZap | N2 + N3 |
 | Qual modelo de cobrança? | Qual modelo o mercado pratica e qual gera menos reclamação de preço? | Política de preço; reclamações de preço | Blocos B1 e B2 | N3 |
 | Que cardápio oferecer? | Qual o peso da comida na satisfação e que itens e preços o mercado pratica? | Menções a comida × nota; cardápios | Blocos B1 e B2 | N3 |
-| Qual ticket médio projetar? | Quanto uma pessoa gasta por visita? | Valores citados; cesta de cardápio; preços observados; gasto familiar | Blocos B1, B2 e B3; POF | N3 + N5 + N2 |
+| Qual ticket médio projetar? | Quanto uma pessoa gasta por visita? | Valores citados; consumo por pessoa do cardápio; preços observados; gasto familiar | Blocos B1, B2 e B3; POF | N3 + N5 + N2 |
 | Qual ocupação projetar? | Quantos visitantes por semana um estabelecimento comparável recebe? | Notas fiscais emitidas entre visitas (piso); ocupação do salão e contagem direta; velocidade de avaliações calibrada | Blocos B2 e B3 | N5 + N3 |
 | Qual giro projetar? | Quanto tempo uma mesa fica ocupada? | Permanência observada; modelos de cobrança | Blocos B1 e B3 | N5 |
 | Quantas mesas e de que tamanho? | Quantas pessoas ocupam cada mesa? | Tamanho do grupo citado e observado | Blocos B2 e B3 | N3 + N5 |

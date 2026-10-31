@@ -8,12 +8,12 @@ Atualizado em 31/10/2026. Prazos do [cronograma](cronograma_luderia.md); tetos d
 | 2 Referencial teórico | Rascunho | 8,3/10 | Concluído | Lista de leitura, bibliografia v2 | Conferir edição e página dos livros `[AV]` (ver `docs/pendencias.md`, item 7) |
 | 3 Metodologia | Rascunho | ~10,2/10 | 02/10 (rascunho em 31/10) | B1 a B4; instruções de 31/10 | Rascunho de 31/10 (`3_metodologia.md` e `.docx`). Faltam os resultados das auditorias e da recodificação cega; números do B2 provisórios; codificação do B2 a decidir (melhorias D26); 0,2 página acima do teto (C15) |
 | 4 Sumário executivo | Não iniciado | 0/2 | 06/11 | Todos | Escrito por último |
-| 5 Análise de mercado | Esboço ⚠ | ~6/7 | 09/10 (5.1, 5.4, 5.5); 16/10 (5.3); 30/10 (5.2) | B1, B4; B2 para 5.2 | Esboço de 15/10 com lacunas `[script]`, `[AV]` e `[BUSCAR]` (pendências, item 9); 5.2 aguarda o Bardin |
+| 5 Análise de mercado | Esboço ⚠ | ~6/7 | 09/10 (5.1, 5.4, 5.5); 16/10 (5.3); 30/10 (5.2) | B1, B4; B2 para 5.2 | Esboço de 15/10 com lacunas `[script]`, `[AV]` e `[BUSCAR]` (pendências, item 9); 5.2 aguarda o Bardin; "cesta" e CNAE a alinhar (melhorias D29 e D30) |
 | 6 Plano de marketing | Rascunho parcial | ~3/8 | 16/10 (6.3, 6.4); 30/10 (demais) | B1, B2, B4 | 6.3 e 6.4 em 31/10 (Pituba indicada). Faltam 6.1, 6.2 e 6.5 (Bardin) e 6.6 (calibração da demanda); cotar pontos na Pituba |
-| 7 Plano operacional | Não iniciado | 0/4 | 23/10 | B3 | Visitas de retorno (18/10) |
+| 7 Plano operacional | Não iniciado ⚠ | 0/4 | 23/10 | B3 | As quatro visitas foram feitas (10, 16, 17 e 30/10) e a ocupação está calculada (31/10); falta escrever |
 | 8 Aspectos jurídicos | Rascunho | 3/3 | 09/10 (rascunho em 31/10) | B4 (Simples, CNAE, CNPJ de referência) | Conferir as normas estaduais e municipais e as alíquotas de ICMS e ISS marcadas `[AV]` |
 | 9 Plano financeiro | Rascunho | ~9,3/12 | 23/10 (rascunho em 31/10) | B1 a B4; caps. 7 e 8 | Rascunho e modelo em 31/10: inviável no provável (VPL −R$ 479 mil). Faltam cotações (N6), ocupação de dia útil, enquadramento do Simples (cap. 8), apêndice do registro e triangulação com o cap. 6 |
-| 10 Riscos | Não iniciado | 0/4 | 30/10 | Cap. 9 | — |
+| 10 Riscos | Não iniciado ⚠ | 0/4 | 30/10 | Cap. 9 | O cap. 9 dá inviável no provável: o cap. 10 precisa partir disso |
 | 11 Considerações finais | Não iniciado | 0/2 | 06/11 | Todos | — |
 
 ⚠ = prazo do rascunho já passou.

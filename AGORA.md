@@ -1,81 +1,27 @@
 # AGORA
 
-Atualizado em 31/10/2026 (02h26). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 31/10/2026 (02h34). Semana 8 do cronograma (31/10 a 06/11). Próxima entrega: **06/11, versão completa**; versão final para a banca em 16/11.
 
 ## Fazendo agora
 
-- **Instruções atualizadas** (31/10): `_instrucoes/4_metodologia.md` com o B3 atual (dentro do salão, sexta e sábado à noite, formato dos dados do app, NFC-e como piso, pedidos como extra), entorno só pelo Maps em 500 m e 1.000 m, 54 casas, cardápios, cesta de jogos e auditoria; limitações do B3 previstas em 11.3. Ainda desatualizados: codificação do B2, Instagram e saída do modelo financeiro (pendências).
-
-- **Auditoria das planilhas agregadas** (30/10): relatório em https://claude.ai/artifact/TPFC3JNScg7u4e73y9hwK8. A cesta virou duas medidas: consumo (bebida + prato, 33 casas, R$ 48,80) e cesta completa (com couvert encontrado, 8 casas, R$ 74,25). Próximo: rodar no Mac `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py` (base parada em 17/10) e gerar de novo as planilhas; os demais achados estão em `docs/pendencias.md`.
-
-- **Auditoria dos cardápios no Notion** ("1A - Auditoria Cardápios", 19/10): `linha_arquivo` passou a ser a linha do item no cardápio (1 = primeiro item), nas 200 linhas e no script. Chopp e licor com preço por quantidade ficam só com o preço de 1 unidade na planilha. Tamanhos, combos e prints de datas diferentes (22/10): só a linha de referência (`linha_referencia` = S) entra na cesta. Rodar no Mac `B1-b_resumo.py` para levar a planilha nova à cesta.
-
-- **Coleta do B2** (avaliações até "3 meses atrás"): completa para as 49 luderias do B1 que seguem no objeto (2.218 avaliações no recorte, 1.440 com texto) e para as 5 novas (Bardo Mago, La Tabuleria, TabuClub, Toca do Rato, Tubaleria). Notion "B - Comentários" com 1.628 linhas; Machado Games e Ilusões Industriais excluídas por não serem luderias.
-
-- **Análise de conteúdo do B2** (15/10): refeita sobre as coletas (1.588 comentários de 53 casas, um arquivo por casa, até "3 meses atrás"), em `textos/instrumentos/analise_conteudo_bardin_B2.md`. Falta a recodificação cega da amostra de controle (131 ids em `B2_bardin_amostra_controle.csv`, textos em `_dados-brutos/analise_conteudo/B2_bardin_corpus.csv`).
-
-- **Instagram, casas novas** (15/10): perfis de 8 casas (Bardo Mago, La Tabuleria, Tubaleria, Encounter, Toca do Rato, BoardZ, TabuClub, Luderia Carioca) guardados em `redes_sociais/rs_<cidade>/rs_<perfil>/`, ao lado dos posts.
-
-- **Snowball do Instagram:** 11 listas coletadas (14-15/10), íntegras. O snowball saiu do coletor em 15/10 e virou um userscript próprio (`instagram_snowball.user.js`; instalar com `python3 _src/extras/gerar_carregadores.py --abrir`). Nele, "Coletar fila": colar `dados/[B1]…/redes_sociais/snowball/B1_snowball_proximas_sementes.txt` (41 casas) e deixar rodar; CSVs vão para `_dados-brutos/redes_sociais/seguindo/`. Classificar primeiro `_dados-brutos/redes_sociais/snowball/B1_snowball_candidatos_grau3.csv` (237 contas) e rodar `B1-b_instagram_seguindo.py`. Prioridade abaixo do B2.
-
-- **Conferência de conceitos:** checklists em `bibliografia/leituras-P1/` (25 conceitos) e `leituras-P2/` (34), todos `[AV]`. Ao ler, trocar o `[AV]` da linha pela página; o vigia propaga. Situação em `bibliografia/relatorio-conceitos.md`. Alternativa nacional em `bibliografia/bibliografia-v2/` (15/10): 10 PDFs com página conferida e lista do que buscar na Minha Biblioteca da UFBA.
-
-- **Entorno (só Google Maps)** (`maps_entorno.user.js`, versão 2026.10.30-1, 30/10): o OSM saiu do coletor e da análise; shopping de porte só pelas avaliações do Maps (padrão 1.000, com 500 e 5.000 ao lado); distância só até 1000 m. Falta recarregar o script, "Refazer pendentes" (6 casas de Curitiba e 5 com avaliação de shopping não lida), exportar os 3 CSVs e rodar `B1-b_resumo.py`. BRT de Brasília sem fonte (pendências, item 11). O entorno ainda não sustenta decisão do plano.
-
-- **Auditoria da coleta** (15/10): amostras sorteadas por script (`*-a_auditoria_*.py`, semente 20261015) em `_dados-brutos/<pasta>/auditoria/` de cada bloco: estabelecimentos, entorno, Instagram, cardápios, acervos, B2 e B4. Roteiro do entorno em `textos/instrumentos/roteiro_auditoria_entorno_B1.md`. Todas as amostras estão no Notion, um banco "B - Auditoria …" por amostra (posts em 17/10; as outras 9 em 18/10), ligadas às casas do A, para conferir direto lá. Falta conferir e escrever o script que calcula a taxa de erro.
-
-- **Cap. 5 (análise de mercado):** esboço em 15/10 (`textos/capitulos/5_analise_de_mercado.md`), do nacional para Salvador, com B4 e B1; 5.2 provisória até o Bardin. Lacunas em `docs/pendencias.md`, item 9.
-
-- **Cap. 2 (referencial teórico):** rascunho pronto em 15/10 (`textos/capitulos/2_referencial_teorico.md`, 8,3/10 páginas). Falta conferir edição e página dos livros `[AV]` na Minha Biblioteca da UFBA (`bibliografia/bibliografia-v2/procurar-manualmente.md`).
-
-- **Estatística descritiva do B1** (15/10): geral, por metrópole e por região em `dados/[B1]…/estabelecimentos/4_estatistica_descritiva/` e nas abas 08 a 10 do site (`_src/site-apresentacao`, publicado em 15/10; visual editorial novo publicado em 15/10; publicar de novo com `pnpm run deploy` quando os dados mudarem). Rodar de novo `B1-a_estatistica_descritiva.py` depois de cada atualização do `B1_resumo_estabelecimentos.xlsx`.
-
-- **Contagem do B3, Bela Vista** (visita de sábado, 10/10, 19h às 22h): CSVs do app guardados em `dados/[B3]…/_dados-brutos/app/originais/2026-10-10_SJBV/` e consolidados por `B3-b_importar_app.py`, com descartes e correções em `outros/` do objeto. Só o POV1 vale (o POV2 foi ignorado a pedido do autor). Resultado provisório: 38 pessoas entraram em 14 grupos (11,4 por hora), além das 24 que já estavam dentro; permanência média de 99 min na porta e 116 min nas mesas (9 grupos). NFC-e final (nº 77977) transcrita da foto; falta a inicial.
-
-- **Contagem do B3, Paralela** (sábado, 17/10, 19h10 às 21h38; terceira visita): só o POV2, em `originais/2026-10-17_SJPA/` (o app ficou com "Bela Vista"; a unidade vem da pasta). Provisório: 13 pessoas em 3 grupos pela porta (5,3 por hora), 4 grupos de mesa com permanência média de 99,5 min; NFC-e final nº 12200 transcrita. Dúvidas para o observador em `docs/pendencias.md`.
-
-- **Contagem do B3, Bela Vista, sexta 16/10** (segunda visita, 19h31 às 22h00): só o POV2, o de mais dados. Provisório: 10 pessoas em 4 grupos pela porta (4,0 por hora), 7 grupos de mesa com 17 pessoas e permanência média de 82,9 min; pedidos sem chegada registrada.
-
-- **Contagem do B3, Paralela, sexta 30/10** (quarta visita, 19h20 às 21h59): só o POV2, em `originais/2026-10-30_SJPA/`; NFC-e final nº 12409 transcrita. Com as respostas do autor de 31/10: 13 pessoas em 7 grupos pela porta (4,9 por hora, permanência de 103,8 min), 7 grupos de mesa com 31 pessoas (136,9 min, piso: 4 mesas já estavam no salão), 7 pedidos (3 bebidas, 3 comidas, 1 sobremesa). Na Tab 1 do agregado do B3 e no Notion "3 - Visitas presenciais" (linha 4).
-
-- **Cap. 6, 6.3 e 6.4** (31/10): rascunho parcial em `textos/capitulos/6_plano_de_marketing.md` e `.docx`. Preço: taxa por pessoa por turno de 3 h (R$ 28,00/22,00), acima da mediana dos concorrentes (R$ 25,00/17,50). Praça: Pituba, 1ª da matriz do Censo 2022 (`B4-a_matriz_bairros.py`), com ponto a até 1.000 m do metrô. Faltam 6.1, 6.2, 6.5 e 6.6.
-
-- **Cap. 8, aspectos jurídicos** (31/10): rascunho em `textos/capitulos/8_aspectos_juridicos.md` e `.docx` (3/3 páginas). Sociedade limitada no Simples como EPP; Simples custa 10,1% da receita contra 21,9% no Lucro Presumido. CNPJ das duas unidades da São Jogue coletados (B4). CNAE principal 5611-2/01 (decisão do autor). Falta conferir as normas `[AV]` (pendências).
-
-- **Cap. 9, plano financeiro** (31/10): rascunho em `textos/capitulos/9_plano_financeiro.md` (e `.docx`, gerado por `node _src/extras/gerar_docx_capitulo.js <md>`) e modelo `9_plano_financeiro_modelo.xlsx` (gerado e conferido por `_src/extras/gerar_modelo_financeiro.py`). Provável: investimento de R$ 503 mil, VPL de −R$ 479 mil; ruptura com ocupação de fim de semana de 49,5%. O que falta firmar está nas pendências.
-
-- **B3, ocupação do salão** (31/10): calculada minuto a minuto pelos grupos de mesa, sem a mesa do observador no denominador (10 mesas no Bela Vista, 9 na Paralela; 48 assentos menos 2 ou 3): de 30% a 67% das mesas em média, pico de 78% (Paralela, 30/10). Cap. 9 já atualizado. Estrutura das unidades em `outros/B3_estrutura_unidades.csv`. Paralela emitiu 209 NFC-e entre 17/10 e 30/10 (piso: nota só a pedido).
-
-- **Notion, "3 - Visitas presenciais"** (18/10): as 3 visitas do B3, uma linha cada, ligadas à São Jogue em "1 - Estabelecimentos". Acrescentar uma linha a cada visita nova (retorno de 18/10).
-
-- **Status da coleta no Notion** ("Luderias – Status da coleta", 15/10): 54 casas com status por fonte e, em cada linha, o que falta e como fechar. Horários (54 casas) e cardápios de 27 casas consolidados em 15/10. Em 17/10, "A - Estabelecimentos" completo no perfil básico (endereço, nota, avaliações, categoria, seguidores, posts e horários por dia nas 54 casas). Em 17/10, também o entorno (metrô e shoppings de porte a 500 m e 1000 m, com distância, coleta do OSM de 15/10). Lacunas que restam: acervo sem lista (25) e Instagram (18 casas parciais ou sem coleta); o status do entorno no banco de status ainda não foi atualizado.
-
-- **Cardápios e acervos achados pelo autor** (17/10): 10 cardápios novos transcritos (Asgard, Dungeon, Nala Land, Balboa's, São Jogue, Coletivo Geek, Playeasy e, de prints, CCG Floripa, Jogasampa e Tubaleria) e acervos de 14 casas a mais (Acervo de Jogos, rejoy, Ludopedia, Canva, blog e PDF). Agora são 36 casas com cardápio e 29 com lista de acervo; resumo, estatística descritiva e Notion ("A - Estabelecimentos" e "Status da coleta") atualizados. Site republicado em 17/10 (18h07). Falta limpar os marcadores de cópia das listagens do Acervo de Jogos (pendências, Dúvidas). Tamanho do acervo (30 casas) e preço médio de aluguel (18) no Notion em 17/10 (18h09); jogos mais frequentes: Catan (28 casas), Saboteur (27), Potion Explosion (26). Cesta de jogos (`B1-a_cesta_jogos.py`, 18h20): núcleo de 90 jogos em 15 ou mais casas, R$ 16,9 mil provável para os 77 com preço; acervo inicial de R$ 42,9 mil a R$ 114,8 mil, conforme o tamanho; loja mais barata, Flow Games (índice 0,947).
-
-- **Codificação do B2 no Notion** (30/10): 166 linhas codificadas pelo autor (Fórmula ≥ 5). Dicionário reconstruído a partir delas em `textos/instrumentos/dicionario_temas_B2.md` (resumo na descrição do banco "2 - Comentários"), com 26 linhas a rever, a coluna de contexto a criar e o que falta para seguir Bardin (pendências, item 15). "Costuma ir" e "Voltará" seguem como estavam (pendências, item 14).
-
-- **Temas do B2 em todas as linhas** (30/10, 18:13): as 1.273 linhas sem tema codificadas por Claude nas cópias exportadas do "2 - Comentários" (arquivos do projeto `b2/notion_comentarios/`), com Contexto e "Análise de temas". Levadas ao Notion às 19:27 (1.296 páginas, totais iguais aos do CSV). Falta a recodificação cega do autor (139 linhas).
-
-- **Coletor do B2 corrigido** (30/10, versão 2026.10.30-2): expande todos os "Mais" antes de ler, marca em `texto_expandido` o que ficou cortado e não para mais cedo por volume lido errado (Shelf parava em 40). Bodogami e Shelf recoletadas com ela em 30/10 (Bodogami: 120 comentários sem campos extras viraram 23). Próximas: Encounter, Utopia e Luderia Carioca (pendências, item 14d).
-
-- **Planilhas de dados agregados** (30/10): um arquivo por bloco em `dados/Dados agregados/`: `B1_dados_agregados_completo.xlsx` (14 tabelas) e `_resumido.xlsx` (10, sem eventos, dias e temas do Instagram e sem o custo do acervo), `B2_dados_agregados.xlsx` (11, comentários, base sem texto), `B3_` (1) e `B4_` (6). Cada tabela com o gráfico ao lado, em tons de slate e purple do Tailwind (PNGs em `graficos/` e `graficos_comentarios/`); tabelas do B1 e do B2 por fórmula sobre as abas "Dados B1" e "Dados B2"; sem OSM no entorno. Scripts em `_src/extras/` (`gerar_planilha_agregada.py`, `gerar_planilha_comentarios.py`, estilo em `planilha_estilo.py`). Rodar de novo depois do novo `B1-b_resumo.py` (o entorno ainda é o do Maps de 15/10) e depois de levar os temas ao Notion ou da recodificação cega; o CSV dos comentários fica fora do git (copiar para `dados/[B2]…/_dados-brutos/notion_comentarios/`).
-
-- **B4 no Notion** (18/10): 8 bancos "4 - …" com as tabelas-resumo das bases públicas (988 linhas, conferidas contra os CSVs); séries longas só nos CSVs.
-
-- **Notion offline** (15/10): `python3 _src/extras/ler_notion_offline.py` lista os bancos do cache do app; com o nome do banco e `--saida`, exporta CSV. O cache é parcial (B - Comentários: 889 de 1.628 linhas) e não traz fórmulas; serve para consulta, não como fonte.
+- **Capítulos:** rascunho nos caps. 1, 2, 3, 8 e 9; cap. 5 é esboço de 15/10; cap. 6 só com 6.3 e 6.4; caps. 4, 7, 10 e 11 sem arquivo ([status](textos/planejamento/status_capitulos.md)). O cap. 9 dá **inviável no provável** (VPL −R$ 479 mil; ruptura com 49,5% de ocupação no fim de semana).
+- **Cardápios do B1** (PR #21, 30/10): "cesta" virou consumo por pessoa (bebida + prato, 33 casas, R$ 48,80) e cesta completa (com couvert encontrado, 8 casas, R$ 74,25). Instruções alinhadas em 31/10; caps. 3, 5, 6 e 9 ainda com números e nomes antigos (melhorias D29). A base do B1 está parada em 17/10.
+- **B2:** 1.273 linhas codificadas por Claude em 30/10 e levadas ao Notion. Falta a recodificação cega do autor (139 linhas, `b2/notion_comentarios/2026-10-30_B2_amostra_recodificacao.csv`; o gabarito só depois).
+- **B3:** quatro visitas feitas (10, 16, 17 e 30/10), ocupação do salão calculada sem a mesa do observador. App 2.5.0 no PR #19.
+- **Branches:** `main` parou em 24/10; o Mac está em `fix/entorno-maps-distantes`. Esta revisão juntou a branch do Mac com os PRs #20 e #21.
 
 ## Próximos 3 passos
 
-1. Firmar as premissas críticas do cap. 9: ocupação de dia útil (horários de pico do Google Maps ou visita em dia útil) e cotações de reforma, mobiliário e cozinha.
-2. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
-3. Rever o rascunho do cap. 3 (31/10): alinhar a instrução da codificação do B2 ao texto (D26) (voz passiva analítica decidida em 31/10).
+1. No Mac: rodar `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py`, gerar de novo as planilhas e corrigir os números de cardápio nos caps. 3, 5, 6 e 9 (D28, D29, D31) e o CNAE do cap. 5 (D30).
+2. Fazer a recodificação cega das 139 linhas e comparar com o gabarito; com isso, refazer o 5.2 e escrever 6.1, 6.2 e 6.5.
+3. Escrever o cap. 7 (com o B3) e o cap. 10 (a partir do resultado inviável do cap. 9); depois, 4 e 11.
 
 ## Bloqueado ou aguardando
 
-- Coleta do B2 no navegador: os carregadores do Tampermonkey apontam para a pasta antiga `_src/Web scripts/`. Antes da próxima coleta, rodar `python3 _src/extras/gerar_carregadores.py --abrir --todos` e instalar os cinco no Vivaldi.
-- Validação do dicionário e cap. 5.2: aguardam a recodificação cega da amostra do Bardin (§2 do instrumento).
-- Estimativa de ocupação e fluxo (B3): aguarda as visitas de retorno (18/10).
-- Rascunhos atrasados frente ao cronograma: cap. 3 (o cap. 5 tem esboço, com lacunas; caps. 8 e 9 com rascunho em 31/10) ([status](textos/planejamento/status_capitulos.md)).
+- Validação do dicionário do B2 e cap. 5.2: aguardam a recodificação cega do autor.
+- Premissas N6 do cap. 9 (reforma, mobiliário, cozinha, ocupação de dia útil): aguardam cotações.
+- Merge em `main`: PRs #19 a #22 abertos; o Mac deve voltar a `main` depois.
+- Mac: 23 cópias de arquivos com nome em Unicode decomposto não rastreadas e uma edição não enviada no dicionário do B2 (pendências, divergências).
 
 ## Onde está o resto
 
@@ -87,3 +33,4 @@ Atualizado em 31/10/2026 (02h26). Semana 5 do cronograma (10/10 a 16/10). Próxi
 | O que já foi decidido | [docs/decisoes.md](docs/decisoes.md) |
 | Dúvidas, ideias e decisões a tomar | [docs/pendencias.md](docs/pendencias.md) |
 | Que arquivo abrir para cada tarefa | [README.md](README.md), "Por onde começar" |
+| Histórico detalhado de cada frente | [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md) |
