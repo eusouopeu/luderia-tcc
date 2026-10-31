@@ -1409,3 +1409,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: rascunho do cap. 3 com as seções 3.1 a 3.8 (o extra de registro prévio não foi escrito, e as seções seguintes subiram um número), 5 quadros e cerca de 2.700 palavras (~10,2 páginas pelo critério de `1_estrutura.md`). Segue as instruções de 31/10: 54 concorrentes, entorno pelo Google Maps em 500 m e 1.000 m, B3 dentro do salão com a mesa do observador fora do denominador, NFC-e como piso, pedidos como descrição, auditorias com Wilson e kappa. A tabela das bases públicas foi para o Apêndice H, para caber no teto. `melhorias-texto.md`: D03, D04 e D05 estendidos ao cap. 3; novos D26 (codificação do B2 × instrução), D27 (voz passiva × P5.5) e C15 (matriz para apêndice).
 **Justificativa**: pedido do autor em 31/10 para gerar o capítulo de metodologia.
 
+### 02:12
+**Objeto**: `docs/decisoes.md`, `docs/pendencias.md`, `AGORA.md`
+**Antes**: pendência sobre como o cap. 3 descreve a codificação do B2 com apoio de inteligência artificial.
+**Depois**: decisão registrada: o texto mantém a menção ao apoio de IA; pendência fica só com a voz passiva.
+**Justificativa**: resposta do autor em 31/10 ("Manter").
+
