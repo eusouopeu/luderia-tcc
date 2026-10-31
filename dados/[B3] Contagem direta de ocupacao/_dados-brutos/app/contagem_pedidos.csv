@@ -13,10 +13,10 @@
 2026-10-16_SJBV;POV2;app;BV;2026-10-16T19:31:04;Mesa 10;19:49;2;bebida;Coca;20:24;;;sim;2.4.0;
 2026-10-17_SJPA;POV2;app;PA;2026-10-17T19:10:41;Mesa 1;19:10;2;bebida;;19:10;;;sim;2.4.0;
 2026-10-17_SJPA;POV2;app;PA;2026-10-17T19:10:41;Mesa 1;19:10;2;bebida;;19:10;;;sim;2.4.0;
-2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 2;19:20;2;comida;Batata;20:03;20:03;0;nao;2.4.0;
-2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 3;19:22;4;sobremesa;Sorvete com brownie;20:34;20:34;0;nao;2.4.0;
-2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 5;19:23;11;bebida;Drink nao alcoólico ;20:03;20:03;0;nao;2.4.0;
-2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 5;19:23;11;bebida;Cerveja;20:03;20:03;0;nao;2.4.0;
-2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 1;19:23;5;comida;Combo hamburger;20:03;20:03;0;nao;2.4.0;
-2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 1;19:23;5;bebida;Agua;20:03;20:03;0;nao;2.4.0;
-2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 1;19:23;5;comida;Combo hamburger;20:07;20:07;0;nao;2.4.0;
+2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 2;19:20;2;comida;Batata;;20:03;;nao;2.4.0;
+2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 3;19:22;4;sobremesa;Sorvete com brownie;;20:34;;nao;2.4.0;
+2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 5;19:23;11;bebida;Drink nao alcoólico ;;20:03;;nao;2.4.0;
+2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 5;19:23;11;bebida;Cerveja;;20:03;;nao;2.4.0;
+2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 1;19:23;5;comida;Combo hamburger;;20:03;;nao;2.4.0;
+2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 1;19:23;5;bebida;Agua;;20:03;;nao;2.4.0;
+2026-10-30_SJPA;POV2;app;PA;2026-10-30T19:20:23;Mesa 1;19:23;5;comida;Combo hamburger;;20:07;;nao;2.4.0;

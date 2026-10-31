@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 31/10/2026 | B3, visita de 30/10: saída pela porta esquecida no app vem da saída da mesa do grupo; hora do pedido não vale (só chegada, quantidade e tipo dos itens) | `docs/registro-de-alteracoes.md` (31/10 00:21) |
 | 30/10/2026 | B2, Notion: "Análise de temas" vazio quer dizer "anterior a 30/10/2026" (1.273 páginas com "Claude 30/10/2026"); nos CSVs exportados, as duas opções vão por extenso | `docs/registro-de-alteracoes.md` (30/10 19:27) |
 | 30/10/2026 | B2, temas: as 1.273 linhas sem tema do "2 - Comentários" codificadas por Claude em 30/10 com o dicionário de 30/10; a coluna "Análise de temas" marca quem codificou e quando, para separar "sem tema" de "não analisado" | `docs/registro-de-alteracoes.md` (30/10 18:13) |
 | 30/10/2026 | B2, fidelidade: recodificação cega pelo autor de 139 linhas (20 das 80 de Fórmula ≥ 5 e 10% das 1.193, estratificada), comparada depois ao gabarito | `b2/notion_comentarios/2026-10-30_B2_amostra_recodificacao.csv` (arquivos do projeto) |

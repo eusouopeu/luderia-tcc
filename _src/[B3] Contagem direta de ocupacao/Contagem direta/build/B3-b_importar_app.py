@@ -25,7 +25,8 @@ Regras:
   - Correções de lançamento ficam em outros/B3_correcoes_app.csv, uma por linha,
     com o motivo: `excluir` tira as linhas em que coluna_chave = valor_chave;
     `preencher` grava `valor` em `coluna` (nas linhas da chave ou, sem chave,
-    em todas as da tabela do observador). Correção que não acha linha para o
+    em todas as da tabela do observador). Chave composta com "+" nas duas
+    colunas (ex.: codigo+tipo = P-1+saida). Correção que não acha linha para o
     script. Os originais não são editados. A média entre observadores é feita
     na análise.
 Uso: python3 "_src/[B3] Contagem direta de ocupacao/Contagem direta/build/B3-b_importar_app.py"
@@ -54,7 +55,11 @@ PADRAO = re.compile(r"^\d{4}-\d{2}-\d{2}_SJ(?P<unidade>[A-Z]+)_(?P<obs>POV\d)_(?
 def corrigir(df: pd.DataFrame, visita_id: str, obs: str, conteudo: str, correcoes: pd.DataFrame) -> pd.DataFrame:
     sel = correcoes[(correcoes["visita_id"] == visita_id) & (correcoes["observador"] == obs) & (correcoes["tabela"] == conteudo)]
     for _, c in sel.iterrows():
-        alvo = df[c["coluna_chave"]] == c["valor_chave"] if c["coluna_chave"] else pd.Series(True, index=df.index)
+        # chave composta: colunas e valores separados por "+" (ex.: codigo+tipo = P-1+saida)
+        alvo = pd.Series(True, index=df.index)
+        if c["coluna_chave"]:
+            for col, val in zip(c["coluna_chave"].split("+"), c["valor_chave"].split("+"), strict=True):
+                alvo &= df[col] == val
         if not alvo.any():
             raise SystemExit(f"Correção sem linha correspondente: {c.to_dict()}")
         if c["acao"] == "excluir":

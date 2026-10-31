@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 31/10/2026 (00h14). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 31/10/2026 (00h21). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -32,7 +32,7 @@ Atualizado em 31/10/2026 (00h14). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Contagem do B3, Bela Vista, sexta 16/10** (segunda visita, 19h31 às 22h00): só o POV2, o de mais dados. Provisório: 10 pessoas em 4 grupos pela porta (4,0 por hora), 7 grupos de mesa com 17 pessoas e permanência média de 82,9 min; pedidos sem chegada registrada.
 
-- **Contagem do B3, Paralela, sexta 30/10** (quarta visita, 19h20 às 21h59): só o POV2, em `originais/2026-10-30_SJPA/`; NFC-e final nº 12409 transcrita. Provisório: 13 pessoas em 7 grupos pela porta (4,9 por hora), 7 grupos de mesa com 31 pessoas e permanência média de 136,9 min, com ressalvas (pendências do B3). Já na Tab 1 de `dados/Coleta em estágio avançado/2026-10-30_B3_dados_agregados.xlsx`. Falta a linha no Notion "3 - Visitas presenciais".
+- **Contagem do B3, Paralela, sexta 30/10** (quarta visita, 19h20 às 21h59): só o POV2, em `originais/2026-10-30_SJPA/`; NFC-e final nº 12409 transcrita. Com as respostas do autor de 31/10: 13 pessoas em 7 grupos pela porta (4,9 por hora, permanência de 103,8 min), 7 grupos de mesa com 31 pessoas (136,9 min, piso: 4 mesas já estavam no salão), 7 pedidos (3 bebidas, 3 comidas, 1 sobremesa). Na Tab 1 do agregado do B3 e no Notion "3 - Visitas presenciais" (linha 4).
 
 - **Notion, "3 - Visitas presenciais"** (18/10): as 3 visitas do B3, uma linha cada, ligadas à São Jogue em "1 - Estabelecimentos". Acrescentar uma linha a cada visita nova (retorno de 18/10).
 
