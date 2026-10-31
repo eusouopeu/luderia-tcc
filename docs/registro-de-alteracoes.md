@@ -1675,3 +1675,21 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: saídas regeradas na main unificada: 2.310 linhas de 42 cardápios (2.274 com preço); 54 casas em 13 metrópoles, 42 com cardápio; consumo por pessoa (bebida + entrada ou prato) em 36 casas, mediana de R$ 50,25; cesta completa em 10 casas, mediana de R$ 78,50; couvert ou taxa encontrado em 13 casas, mediana de R$ 20,00. Salvador (São Jogue Bela Vista): consumo mediano de R$ 48,50, sem couvert encontrado. VPL provável do modelo: −R$ 478.829. Somas por metrópole, região e capital fecham com 54 (diferença 0).
 **Justificativa**: base de cardápios, resumo, estatística descritiva, planilha agregada e modelo financeiro precisavam refletir a main com a branch do Mac e os PRs #19 a #21. Dois pontos ficam para o autor: a pizza "Lúdico" da Ludoteca BGC (R$ 30) está na categoria couvert e entra no couvert da casa; a "Taxa de jogo" de R$ 0 da Ludus Luderia ("não cobra") conta como couvert encontrado. A mediana do couvert segue em R$ 20,00 sem as duas. A sala do Café Geek fica fora, como previsto no script.
 
+### 03:05
+**Objeto**: GitHub, PRs #19 a #22 e branch `main`; `docs/decisoes.md`, `docs/pendencias.md`, `docs/melhorias-texto.md`, `docs/registro-de-alteracoes.md`, `textos/planejamento/status_capitulos.md`, scripts do B1 e do B3
+**Antes**: `main` em 24/10 (PR #18), sem o trabalho do Mac de 15 a 31/10; app 2.5 no PR #19; PRs #20 e #21 encadeados sobre a branch do Mac.
+**Depois**: PR #22 mergeado na `main` com as três linhas de trabalho. Conflitos: B3 (scripts, correções e dados) e dados gerados como no Mac; `B3-a_contagem.py` com a regra do Mac e o estoque inicial e a virada da meia-noite do app 2.5 (resumo das quatro visitas igual, com duas colunas novas zeradas); cap. 8 com o rascunho de 31/10; cardápios com as duas listas (São Jogue e Asgard com o cardápio completo de 17/10); arquivos de controle unidos por data. PRs #20 e #21 fechados (conteúdo na `main`); #19 mergeado junto.
+**Justificativa**: pedido do autor: merge dos PRs em `main` e Mac de volta à `main`.
+
+### 03:05
+**Objeto**: `textos/capitulos/3_metodologia.md` (3.5 e matriz), `5_analise_de_mercado.md` (5.1 e 5.3), `6_plano_de_marketing.md` (6.3, Tabela 6.1), `9_plano_financeiro.md` (9.2 e 9.8)
+**Antes**: cap. 5 com "cesta" de R$ 58,50 em 26 casas, 7 com couvert, e CNAE 5611-2/05; cap. 6 com 36 cardápios, 6 que cobram e dia útil a R$ 17,50; cap. 9 com mediana de R$ 18,75 de 8 concorrentes e sem explicar o gasto com A&B abaixo do cardápio; cap. 3 com ticket pela cesta com couvert.
+**Depois**: números da base regerada em 31/10 (a2ff9fa): 42 casas com cardápio, couvert encontrado em 11 (sem a pizza da BGC e a Ludus), consumo por pessoa de R$ 50,25 em 36 casas (R$ 48,50 na São Jogue), cesta completa de R$ 78,50 em 10; Tabela 6.1 com os 11 que cobram (mediana de R$ 25,00 no fim de semana e R$ 15,00 no dia útil); CNAE 5611-2/01 no cap. 5; cap. 9 com o consumo de cardápio como teto do gasto com A&B e os pedidos por grupo do B3 como explicação.
+**Justificativa**: pedido do autor: corrigir os caps. 3, 5, 6 e 9 com os números novos (melhorias D28 a D31, resolvidas).
+
+### 03:05
+**Objeto**: `textos/capitulos/4_sumario_executivo.md`, `7_plano_operacional.md`, `10_analise_estrategica_riscos.md`, `11_consideracoes_finais.md` (novos)
+**Antes**: caps. 4, 7, 10 e 11 sem arquivo.
+**Depois**: rascunhos. Cap. 7 com capacidade (193 pessoas por dia; demanda provável de 48), processos, acervo e equipe de 8 pelo fluxo do B3. Cap. 10 com SWOT, cenários, ruptura com a equipe do cap. 7 (ocupação de fim de semana de 41,5%), matriz de riscos e indicadores. Caps. 4 e 11 com o parecer (inviável no provável; viável com a equipe de 8 e ocupação de 41,5% ou mais); 4.2, 4.3 e os objetivos (ii) e (iii) marcados para depois.
+**Justificativa**: pedido do autor: escrever os caps. 7, 10, 4 e 11. A equipe de 8 está só no texto; o modelo segue com 12 até a decisão do autor (melhorias D33).
+

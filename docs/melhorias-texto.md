@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 31/10/2026 (05h), revisão geral dos caps. 1, 2, 3, 5, 6, 8 e 9 depois dos PRs #20 e #21 (consumo por pessoa e cesta completa).
+Última análise: 31/10/2026 (03h), com os rascunhos dos caps. 4, 7, 10 e 11 sobre os demais, depois da base do B1 regerada na main unificada.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -48,17 +48,13 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D26 — Codificação do B2: cap. 3 × instrução.** Cap. 3 (3.4.2 e 3.4.3) × `4_metodologia.md` §3.4. O cap. 3 descreve a prática atual — codificação temática com 22 temas, feita com apoio de inteligência artificial e validada por recodificação cega de 139 avaliações com kappa ≥ 0,70. A instrução ainda prevê dicionário automático de 11 aspectos, validado por kappa e F1 em 200 avaliações. Sugestão: decidir o instrumento (pendências, item 15, e "Instruções ainda desatualizadas") e alinhar a instrução ou o capítulo.
 
-**D28 — Mediana da taxa de entrada dos concorrentes: 18,75 × 25,00.** Cap. 9 (9.8 e aba checagens) × cap. 6 (6.3). O cap. 9 usa R$ 18,75, mediana da coluna "couvert ou taxa de jogo" de `B1_cardapios_itens_precos.xlsx`, que inclui uma pizza chamada "Lúdico" (Ludoteca BGC, R$ 30,00) e a sala do Café Geek cobrada por hora e por grupo, e mistura dia útil e fim de semana. O cap. 6 separa os dias e dá R$ 25,00 no fim de semana e R$ 17,50 no dia útil, com 6 concorrentes. A conclusão (São Jogue acima da mediana) não muda. Sugestão: corrigir a classificação no B1 e rodar de novo o modelo do cap. 9.
-
 **D27 — Frequência de preço nas avaliações: 12,8% × 2,7% e 9,3%.** Cap. 5 (5.2.2, Bardin provisório de 15/10: "preço e valor percebido" em 12,8%) × cap. 6 (6.3, temas do Notion de 30/10: preço da entrada em 44 e preço do consumo em 152 das 1.628 avaliações). São codificações diferentes; alinhar quando o 5.2 for refeito com o dicionário de 30/10.
 
-**D29 — Cardápios: cesta, consumo e couvert com quatro bases diferentes.** Cap. 5 (5.3, "cesta mediana" de R$ 58,50 com bebida e prato, 26 casas com cardápio, 7 com couvert) × cap. 6 (6.3: 36 casas com cardápio, 6 cobram taxa, mediana de R$ 25,00) × cap. 9 (9.8: 8 concorrentes, mediana de R$ 18,75) × decisão de 30/10 e PR #21 (consumo por pessoa de R$ 48,80 em 33 casas; cesta completa de R$ 74,25 só nas 8 casas com couvert encontrado). O cap. 5 chama de "cesta" o que agora é "consumo", e o cap. 3 (3.5) ainda define o ticket como "cesta por pessoa — couvert, bebida e prato". Sugestão: depois de rodar de novo `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py` no Mac, reescrever os três capítulos com os mesmos números e os nomes "consumo por pessoa" e "cesta completa" (já nas instruções em 31/10).
-
-**D30 — CNAE do cap. 5 contra a decisão do cap. 8.** Cap. 5 (5.1, "bar com entretenimento, subclasse 5611-2/05", e a lacuna de contar CNPJ ativos na 5611-2/05) × cap. 8 (8.1) e decisão de 31/10 (CNAE principal 5611-2/01; 5611-2/05 descartada). Sugestão: no 5.1, citar 5611-2/01 como a subclasse do plano e, se a contagem de CNPJ for feita, usar as duas (5611-2/01 e 5611-2/03) e dizer que nenhuma isola luderias.
-
-**D31 — Gasto com A&B: R$ 24,00 contra consumo de R$ 48,80 dos concorrentes.** Caps. 6 (6.3) e 9 (R08, 9.2) × cap. 5 (5.3) e PR #21. O plano projeta R$ 24,00 por pessoa (quatro NFC-e das mesas dos observadores), metade do consumo mediano por pessoa nos cardápios dos concorrentes (R$ 48,80, uma bebida e uma entrada ou prato). As duas medidas não são a mesma coisa (gasto observado × preço de cardápio), mas o texto não explica a distância, e R08 é premissa crítica do VPL. Sugestão: no cap. 9, dizer por que o gasto observado fica abaixo da cesta de cardápio (grupo dividindo pratos, quem só bebe) e usar o consumo do B1 como teto do otimista.
-
 **D32 — Reforma tributária e ruído: o cap. 5 manda para o cap. 8, que não trata.** Cap. 5 (5.5, fator legal) × cap. 8 (8.1 e Quadro 02). O cap. 5 diz que o enquadramento tributário fica no cap. 8 e cita a transição da LC 214/2025 e a regulação municipal de ruído e horário noturno. O cap. 8 projeta o Simples por cinco anos sem citar a transição para CBS e IBS e não tem linha de ruído ou alvará noturno no Quadro 02. Sugestão: uma frase em 8.1 sobre o efeito da LC 214/2025 no Simples (após conferir o texto da lei) e uma linha de ruído no Quadro 02, ou tirar a remissão do cap. 5. (Item trazido da `main` em 31/10; conferir se o cap. 8 de 31/10 já trata.)
+
+**D33 — Equipe de 12 no modelo × 8 no cap. 7.** Cap. 9 (9.4, C06, Tabela 9.2) × caps. 7 (7.5, Quadro 7.2), 10 (Quadros 10.2 e 10.3), 4 (Quadro 4.1) e 11 (11.1). O modelo usa o quadro de referência de 12 pessoas; o cap. 7 dimensiona 8 pelo fluxo do B3, e os caps. 4, 10 e 11 trazem as duas versões. Sugestão: quando o autor decidir a equipe, levar a escolha ao `gerar_modelo_financeiro.py` e deixar uma só versão nos cinco capítulos.
+
+**D34 — Couvert encontrado: 13 casas na base × 11 nos capítulos.** Base do B1 regerada em 31/10 (`B1_cardapios_itens_precos.xlsx`, estatística descritiva) × caps. 5 (5.3) e 6 (6.3). A base conta como couvert a pizza "Lúdico" da Ludoteca BGC (R$ 30,00) e a taxa de R$ 0,00 da Ludus ("não cobra"); os capítulos tiram as duas. A mediana não muda (R$ 20,00). Sugestão: corrigir a classificação da BGC no `B1-b_cardapios_planilha.py` e tratar a Ludus como "não cobra" fora da mediana, e rodar de novo.
 
 ## Aceitável
 
@@ -93,6 +89,9 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **C03 — 5.5.3 Social só repete o que já foi dito.** Cap. 5: o peso da alimentação fora do lar na Bahia (5.1.3) e os 30,5% de 20 a 39 anos (5.2.1) voltam no 5.5.3, junto de uma nota sobre Gilovich. O último parágrafo do 5.5.1 repete a renda do 5.2.1. Reduzir o 5.5.3 a uma linha no quadro PESTEL com remissão, ou fundi-lo ao 5.5.1. Ganho: ~80 palavras.
 
 ## Médio ganho
+
+**C17 — Cap. 10 acima do teto e Quadro 10.2 repetido.** O cap. 10 tem cerca de 1.400 palavras e 4 quadros, o que dá perto de 6 páginas contra o teto de 4. O Quadro 10.2 repete a Tabela 9.4 e o Quadro 4.1, com uma coluna a mais. Sugestão: tirar o Quadro 10.2 e citar a Tabela 9.4; juntar a matriz de riscos (Quadro 10.4) com os indicadores do 10.5. Ganho: cerca de 1,5 página.
+
 
 **C04 — Gilovich e "a luderia vende uma ocasião social" em três lugares.** A mesma frase de Gilovich, Kumar e Jampol (2015) está no cap. 1 e no 2.3; a nota do 5.5.3 sugere usá-la de novo. "A luderia vende uma ocasião social, e não um produto/o uso de um jogo" está no cap. 1 e no 2.3. Manter no cap. 2. Ganho: ~50 palavras.
 

@@ -4,9 +4,9 @@
 
 ## 6.3 PREÇO
 
-A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor maior de sexta a domingo. É o modelo da São Jogue e o mais comum entre os concorrentes que divulgam a taxa: cinco dos seis que cobram diferenciam o preço pelo dia da semana (Tabela 6.1). O turno de 3 horas fica acima da permanência média medida no B3, de 109 minutos, e não limita o grupo típico; serve para liberar a mesa nos horários de reserva.
+A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor maior de sexta a domingo. É o modelo da São Jogue e o mais comum entre os concorrentes que divulgam a taxa: sete dos 11 que cobram diferenciam o preço pelo dia da semana (Tabela 6.1). O turno de 3 horas fica acima da permanência média medida no B3, de 109 minutos, e não limita o grupo típico; serve para liberar a mesa nos horários de reserva.
 
-**Tabela 6.1 – Taxa de entrada por pessoa nos concorrentes que a divulgam no cardápio (R$)**
+**Tabela 6.1 – Taxa de entrada por pessoa nos concorrentes que a divulgam (R$)**
 
 | Concorrente | Capital | Dia útil | Fim de semana |
 |---|---|---|---|
@@ -17,11 +17,16 @@ A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor 
 | Loja de Jogos - Asgard | Brasília | 10,00 | 25,00 |
 | Comdado Bar e Jogos | Belo Horizonte | 15,00 | 20,00 |
 | La Tabuleria | Belo Horizonte | 20,00 | 20,00 |
+| Fan Hour Games and Burgers | São Paulo | 20,00 | 20,00 |
+| Game Of Boards | Rio de Janeiro | 15,00 | 25,00 |
+| Joyjoy Café | Curitiba | 10,00 | 15,00 |
+| LudoCafé | Belo Horizonte | 30,00 (15,00 com consumo) | 30,00 (15,00 com consumo) |
+| Garagem do Nerd | Belo Horizonte | 10,00 | 10,00 |
 | Ludus Luderia | São Paulo | 0,00 | 0,00 |
 
-Fonte: elaboração própria, com base nos cardápios do Bloco B1 (out/2026) e nas NFC-e da São Jogue (Bloco B3). Fim de semana: sexta a domingo e feriados; Shelf, Arena e Comdado incluem a sexta no valor mais alto ou intermediário.
+Fonte: elaboração própria, com base nos cardápios do Bloco B1 (out/2026; Fan Hour, LudoCafé, Garagem do Nerd e Joyjoy por imprensa e guias de 2024 a 2026) e nas NFC-e da São Jogue (Bloco B3). Fim de semana: sexta a domingo e feriados; Shelf, Arena e Comdado incluem a sexta no valor mais alto ou intermediário.
 
-A taxa da São Jogue está no alto da faixa. No fim de semana, a mediana dos seis concorrentes que cobram é de R$ 25,00, e só a Shelf cobra mais (R$ 30,00); no dia útil, a mediana é de R$ 17,50, contra R$ 22,00. Dos 36 concorrentes com cardápio no B1, só 7 publicam a taxa; nos demais, a cobrança não aparece no cardápio e não foi observada. A contagem exclui dois itens que a classificação do B1 pôs na categoria de taxa: uma pizza chamada "Lúdico" (Ludoteca BGC) e uma sala privativa cobrada por hora e por grupo (Café Geek).
+A taxa da São Jogue está no alto da faixa. No fim de semana, a mediana dos 11 concorrentes que publicam a taxa é de R$ 25,00; só a Shelf e o LudoCafé cobram mais (R$ 30,00), e a Sidequest cobra o mesmo (R$ 28,00). No dia útil, a mediana é de R$ 15,00, contra R$ 22,00. Dos 42 concorrentes com cardápio no B1, 12 publicam a política de cobrança: 11 cobram e a Ludus informa que não cobra; nos demais, a cobrança não aparece no cardápio e não foi observada. A contagem exclui dois itens que a classificação do B1 pôs na categoria de taxa: uma pizza chamada "Lúdico" (Ludoteca BGC) e uma sala privativa cobrada por hora e por grupo (Café Geek).
 
 As avaliações confirmam que o preço da entrada pesa, mas pouco. Das 1.628 avaliações com texto do B2, 44 citam a taxa de entrada — 24 de forma negativa e 20 positiva — e 152 citam o preço do consumo, 61 de forma negativa. Na Sidequest, que cobra o mesmo que a São Jogue no fim de semana, um cliente chamou os R$ 28,00 de "um preço um pouco alto" e deu nota 4. O gasto declarado pelos avaliadores no campo de preço por pessoa do Google Maps tem mediana na faixa de R$ 80,00 a R$ 100,00 (352 declarações, sem a Bodogami, que soma 250 das 602).
 
