@@ -1899,3 +1899,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: intervalos de 5 páginas tirados dos PDFs que o autor pôs em `bibliografia/`: VPL (ASSAF NETO, 2014, p. 388–392), TIR (p. 378–382), payback descontado (p. 374–378); cinco forças (PORTER, 2008, p. 19–23); *servicescape* (FITZSIMMONS; FITZSIMMONS, 2014, p. 152–156) e lei de Little (p. 406–410); unidade de registro e enumeração (BARDIN, 2002, p. 104–108); erro total (GROVES et al., 2009, seç. 2.3, EPUB sem paginação); Dornelas (2021, p. 6–10, [AV], edição do PDF não identificada). Referências trocadas para a edição consultada: Assaf Neto, 7. ed., Atlas, 2014; Fitzsimmons e Fitzsimmons, 7. ed., AMGH, 2014 (sem Bordoloi); Bardin, Lisboa, Edições 70, 2002; Porter, edição mexicana (Patria, 2008). Bruni e Famá sem página: o PDF é só o arquivo de transparências de 2002. TMin v3 regerado; TMax só nos `.md`, sem `.docx` novo.
 **Justificativa**: pedido do autor; a página só vale para a edição consultada (ABNT).
 
+### 20:04
+**Objeto**: `textos/capitulos/_md/2_referencial_teorico.md`, `TMax/_md/2_referencial_teorico.md`; `TCC_luderia_TMin_v4.{docx,pdf}`, `2_referencial_teorico_TMin_v4.docx` (v3 em `_arquivo/`)
+**Antes**: Porter na edição mexicana (PORTER, 2008, p. 19–23; Grupo Editorial Patria, 2008).
+**Depois**: Porter de volta à edição brasileira (PORTER, 2004, [AV]; Elsevier, 2. ed., 2004), sem página até conferir no livro.
+**Justificativa**: decisão do autor: manter a obra em português.
+

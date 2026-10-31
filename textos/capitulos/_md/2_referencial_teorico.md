@@ -12,7 +12,7 @@ Quando a evidência é insuficiente, a decisão trabalha com a evidência limita
 
 ### 2.2.1 Ambiente competitivo e macroambiente
 
-A rentabilidade de um setor depende de cinco forças: a rivalidade entre concorrentes, a ameaça de novos entrantes, a ameaça de substitutos e o poder de negociação de compradores e de fornecedores (PORTER, 2008, p. 19–23). No caso da luderia, os substitutos são bares, restaurantes e outras formas de lazer noturno, e os fornecedores críticos são as editoras de jogos e os de alimentos e bebidas. O capítulo 5.3 aplica as cinco forças aos concorrentes do Bloco B1.
+A rentabilidade de um setor depende de cinco forças: a rivalidade entre concorrentes, a ameaça de novos entrantes, a ameaça de substitutos e o poder de negociação de compradores e de fornecedores (PORTER, 2004, [AV]). No caso da luderia, os substitutos são bares, restaurantes e outras formas de lazer noturno, e os fornecedores críticos são as editoras de jogos e os de alimentos e bebidas. O capítulo 5.3 aplica as cinco forças aos concorrentes do Bloco B1.
 
 O macroambiente reúne as forças externas que a empresa não controla (KOTLER; KELLER, 2012, [AV]). O capítulo 5.5 organiza essas forças pela análise PESTEL, em seis dimensões: política, econômica, social, tecnológica, ambiental e legal.
 
@@ -104,7 +104,7 @@ PICOLO, Jaime Dagostim; TONTINI, Gérson. Análise do contraste da penalidade e 
 
 PINE, B. Joseph; GILMORE, James H. *O espetáculo dos negócios*. Rio de Janeiro: Campus, 1999. [AV]
 
-PORTER, Michael E. *Estrategia competitiva*: técnicas para el análisis de los sectores industriales y de la competencia. 38. reimpr. México: Grupo Editorial Patria, 2008.
+PORTER, Michael E. *Estratégia competitiva*: técnicas para análise de indústrias e da concorrência. 2. ed. Rio de Janeiro: Elsevier, 2004. [AV]
 
 SARPA, Bernard Calvert. *Experiências de consumo com jogos de tabuleiro modernos*. 2016. Dissertação (Mestrado em Administração) – Instituto COPPEAD de Administração, Universidade Federal do Rio de Janeiro, Rio de Janeiro, 2016.
 

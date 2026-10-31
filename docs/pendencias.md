@@ -4,7 +4,7 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 ## Decisões a tomar
 
-- **Páginas das obras sem PDF útil (31/10/2026).** Faltam páginas de Bruni (2018), Damodaran (2010) e Pine e Gilmore (1999), sem PDF; Bruni e Famá (2019), cujo PDF é só o arquivo de transparências de 2002; e Dornelas, cujo PDF digitalizado não mostra a edição (p. 6–10 valem para ele, conferir se é a 3. ed. de 2021). Decidir também se Porter fica na edição mexicana (único PDF disponível) ou volta à brasileira com página conferida no livro físico. O `.docx` do TMax não foi regerado com as páginas.
+- **Páginas das obras sem PDF útil (31/10/2026).** Faltam páginas de Bruni (2018), Damodaran (2010) e Pine e Gilmore (1999), sem PDF; Bruni e Famá (2019), cujo PDF é só o arquivo de transparências de 2002; e Dornelas, cujo PDF digitalizado não mostra a edição (p. 6–10 valem para ele, conferir se é a 3. ed. de 2021). Porter voltou à edição brasileira (Elsevier, 2004): falta a página, conferida no livro (cap. 1, as cinco forças). O `.docx` do TMax não foi regerado com as páginas.
 
 1. **Validação proporcional da coleta (em estudo, não adotada).** Até decidir, vale o procedimento de `_instrucoes/4_metodologia.md` §3.4, e a proposta não entra no texto. A proposta:
    - B1 e B2, fidelidade: amostra aleatória de 30 estabelecimentos e 100 avaliações, conferidos na página (nota, volume, endereço; texto, nota e rótulo de data);

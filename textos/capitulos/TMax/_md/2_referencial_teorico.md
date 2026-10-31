@@ -18,7 +18,7 @@ A evidência disponível nem sempre é suficiente. Nesse caso, a decisão trabal
 
 ### 2.2.1 Ambiente competitivo e macroambiente
 
-A rentabilidade de um setor depende da sua estrutura competitiva. Porter (2008, p. 19–23) descreve essa estrutura por cinco forças: a rivalidade entre concorrentes, a ameaça de novos entrantes, a ameaça de produtos substitutos, o poder de negociação dos compradores e o poder de negociação dos fornecedores. Quanto mais intensas as forças, menor o retorno médio do setor. No caso da luderia, os substitutos incluem bares, restaurantes e outras formas de lazer noturno, e os fornecedores críticos são as editoras de jogos e os fornecedores de alimentos e bebidas. O capítulo 5.3 aplica as cinco forças aos concorrentes do Bloco B1.
+A rentabilidade de um setor depende da sua estrutura competitiva. Porter (2004, [AV]) descreve essa estrutura por cinco forças: a rivalidade entre concorrentes, a ameaça de novos entrantes, a ameaça de produtos substitutos, o poder de negociação dos compradores e o poder de negociação dos fornecedores. Quanto mais intensas as forças, menor o retorno médio do setor. No caso da luderia, os substitutos incluem bares, restaurantes e outras formas de lazer noturno, e os fornecedores críticos são as editoras de jogos e os fornecedores de alimentos e bebidas. O capítulo 5.3 aplica as cinco forças aos concorrentes do Bloco B1.
 
 O macroambiente reúne as forças externas que a empresa não controla. Kotler e Keller (2012, [AV]) agrupam essas forças em demográficas, econômicas, socioculturais, naturais, tecnológicas e político-legais. A análise PESTEL organiza o mesmo conteúdo em seis dimensões: política, econômica, social, tecnológica, ambiental e legal. O capítulo 5.5 usa a análise PESTEL com dados das bases públicas do Bloco B4, como renda por bairro, tributos e taxa de juros.
 
@@ -151,7 +151,7 @@ PICOLO, Jaime Dagostim; TONTINI, Gérson. Análise do contraste da penalidade e 
 
 PINE, B. Joseph; GILMORE, James H. *O espetáculo dos negócios*. Rio de Janeiro: Campus, 1999. [AV]
 
-PORTER, Michael E. *Estrategia competitiva*: técnicas para el análisis de los sectores industriales y de la competencia. 38. reimpr. México: Grupo Editorial Patria, 2008.
+PORTER, Michael E. *Estratégia competitiva*: técnicas para análise de indústrias e da concorrência. 2. ed. Rio de Janeiro: Elsevier, 2004. [AV]
 
 SARPA, Bernard Calvert. *Experiências de consumo com jogos de tabuleiro modernos*. 2016. Dissertação (Mestrado em Administração) – Instituto COPPEAD de Administração, Universidade Federal do Rio de Janeiro, Rio de Janeiro, 2016.
 
