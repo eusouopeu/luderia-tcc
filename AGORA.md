@@ -5,7 +5,7 @@ Atualizado em 31/10/2026 (03h40). Semana 8 do cronograma (31/10 a 06/11). Próxi
 ## Fazendo agora
 
 - **Capítulos:** rascunho nos caps. 1, 2, 3, 8 e 9; cap. 5 é esboço de 15/10; cap. 6 só com 6.3 e 6.4; caps. 4, 7, 10 e 11 sem arquivo ([status](textos/planejamento/status_capitulos.md)). O cap. 9 dá **inviável no provável** (VPL −R$ 479 mil; ruptura com 49,5% de ocupação no fim de semana).
-- **Cardápios do B1** (regerados em 31/10): couvert de 10 casas a partir de prints do Instagram; 21 dos 53 concorrentes cobram (mediana de R$ 20,00; R$ 25,00 no fim de semana), já nos caps. 3, 5, 6 e 9 e no Notion. Consumo por pessoa de R$ 50,82 (36 casas) e cesta completa em 18 casas; o consumo do cap. 5 segue com o número antigo (melhorias D29).
+- **Cardápios do B1** (regerados em 31/10): couvert de 10 casas a partir de prints do Instagram, mais BoardZ (Day Pass) e LudoCafé (cartaz); 22 dos 53 concorrentes cobram (mediana de R$ 20,00; R$ 25,00 no fim de semana), já nos caps. 3, 5, 6 e 9 e no Notion. Consumo por pessoa de R$ 50,82 (36 casas) e cesta completa em 18 casas; o consumo do cap. 5 segue com o número antigo (melhorias D29).
 - **B2:** 1.273 linhas codificadas por Claude em 30/10 e levadas ao Notion. Falta a recodificação cega do autor (139 linhas, `b2/notion_comentarios/2026-10-30_B2_amostra_recodificacao.csv`; o gabarito só depois).
 - **B3:** quatro visitas feitas (10, 16, 17 e 30/10), ocupação do salão calculada sem a mesa do observador. App 2.5.0 no PR #19.
 - **Branches:** `main` parou em 24/10; o Mac está em `fix/entorno-maps-distantes`. Esta revisão juntou a branch do Mac com os PRs #20 e #21.

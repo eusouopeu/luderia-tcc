@@ -291,30 +291,30 @@
    "rotulo": "Itens com preço no cardápio",
    "unidade": "itens",
    "n": 42.0,
-   "media": 52.119,
+   "media": 52.2143,
    "mediana": 50.5,
-   "dp": 37.4649,
+   "dp": 37.4645,
    "min": 1.0,
    "p25": 26.0,
    "p75": 71.75,
    "max": 161.0,
    "amplitude": 160.0,
-   "cv": 0.7188
+   "cv": 0.7175
   },
   "couvert_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Couvert ou taxa de jogo (só casas que cobram)",
    "unidade": "R$",
-   "n": 22.0,
-   "media": 18.1136,
+   "n": 23.0,
+   "media": 17.8696,
    "mediana": 20.0,
-   "dp": 8.3551,
+   "dp": 8.2465,
    "min": 0.0,
    "p25": 12.5,
-   "p75": 21.875,
+   "p75": 21.25,
    "max": 40.0,
    "amplitude": 40.0,
-   "cv": 0.4613
+   "cv": 0.4615
   },
   "bebida_mediana": {
    "grupo": "Cardápio",
@@ -396,45 +396,45 @@
    "rotulo": "Cesta por pessoa, nível baixo (P25)",
    "unidade": "R$",
    "n": 36.0,
-   "media": 48.7325,
-   "mediana": 53.075,
-   "dp": 20.6024,
+   "media": 49.0103,
+   "mediana": 53.575,
+   "dp": 20.512,
    "min": 11.0,
    "p25": 34.9375,
    "p75": 58.875,
    "max": 101.55,
    "amplitude": 90.55,
-   "cv": 0.4228
+   "cv": 0.4185
   },
   "cesta_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Cesta por pessoa, nível mediano",
    "unidade": "R$",
    "n": 36.0,
-   "media": 59.9319,
+   "media": 60.2792,
    "mediana": 61.5,
-   "dp": 23.0542,
+   "dp": 22.901,
    "min": 12.0,
    "p25": 43.0,
    "p75": 75.0,
    "max": 107.8,
    "amplitude": 95.8,
-   "cv": 0.3847
+   "cv": 0.3799
   },
   "cesta_alta": {
    "grupo": "Cardápio",
    "rotulo": "Cesta por pessoa, nível alto (P75)",
    "unidade": "R$",
    "n": 36.0,
-   "media": 72.315,
+   "media": 72.7317,
    "mediana": 77.75,
-   "dp": 25.3214,
+   "dp": 25.2296,
    "min": 15.5,
    "p25": 51.0625,
    "p75": 86.75,
    "max": 121.0,
    "amplitude": 105.5,
-   "cv": 0.3502
+   "cv": 0.3469
   },
   "hamburguer_mediana": {
    "grupo": "Cardápio",
@@ -607,7 +607,7 @@
   },
   "cobra_couvert": {
    "rotulo": "Couvert ou taxa de jogo encontrado (entre as com cardápio)",
-   "casas": 22,
+   "casas": 23,
    "n": 42
   },
   "abre_segunda": {
@@ -1608,15 +1608,6 @@
    "completa": true
   },
   {
-   "nome": "BoardZ Game Pub",
-   "metropole": "Curitiba",
-   "regiao": "Sul",
-   "baixa": 41.75,
-   "mediana": 44.0,
-   "alta": 57.0,
-   "completa": true
-  },
-  {
    "nome": "São Jogue - Bela Vista",
    "metropole": "Salvador",
    "regiao": "Nordeste",
@@ -1641,6 +1632,15 @@
    "baixa": 24.15,
    "mediana": 50.5,
    "alta": 71.47,
+   "completa": true
+  },
+  {
+   "nome": "BoardZ Game Pub",
+   "metropole": "Curitiba",
+   "regiao": "Sul",
+   "baixa": 53.0,
+   "mediana": 56.5,
+   "alta": 70.75,
    "completa": true
   },
   {
@@ -1818,9 +1818,9 @@
    "nome": "LudoCafé",
    "metropole": "Belo Horizonte",
    "regiao": "Sudeste",
-   "baixa": 88.05,
+   "baixa": 86.8,
    "mediana": 95.8,
-   "alta": 102.05,
+   "alta": 103.3,
    "completa": true
   },
   {
@@ -2363,15 +2363,15 @@
    },
    "cesta_mediana": {
     "n": 2.0,
-    "media": 34.0,
-    "mediana": 34.0,
-    "dp": 14.1421,
+    "media": 40.25,
+    "mediana": 40.25,
+    "dp": 22.981,
     "min": 24.0,
-    "p25": 29.0,
-    "p75": 39.0,
-    "max": 44.0,
-    "amplitude": 20.0,
-    "cv": 0.4159
+    "p25": 32.125,
+    "p75": 48.375,
+    "max": 56.5,
+    "amplitude": 32.5,
+    "cv": 0.571
    },
    "fecha_tarde_h": {
     "n": 6.0,
@@ -2437,16 +2437,16 @@
     "cv": 0.5657
    },
    "couvert_mediana": {
-    "n": 1.0,
+    "n": 2.0,
     "media": 12.5,
     "mediana": 12.5,
-    "dp": null,
+    "dp": 0.0,
     "min": 12.5,
     "p25": 12.5,
     "p75": 12.5,
     "max": 12.5,
     "amplitude": 0.0,
-    "cv": null
+    "cv": 0.0
    },
    "tem_metro_1000m": 0.0,
    "abre_domingo": 0.6667,
@@ -4395,15 +4395,15 @@
    },
    "cesta_mediana": {
     "n": 6.0,
-    "media": 48.7417,
-    "mediana": 46.9,
-    "dp": 19.7643,
+    "media": 50.825,
+    "mediana": 53.15,
+    "dp": 19.8232,
     "min": 24.0,
-    "p25": 35.525,
-    "p75": 61.2,
+    "p25": 36.975,
+    "p75": 62.875,
     "max": 76.95,
     "amplitude": 52.95,
-    "cv": 0.4055
+    "cv": 0.39
    },
    "fecha_tarde_h": {
     "n": 11.0,
@@ -4469,16 +4469,16 @@
     "cv": 0.4733
    },
    "couvert_mediana": {
-    "n": 2.0,
-    "media": 8.75,
-    "mediana": 8.75,
-    "dp": 5.3033,
+    "n": 3.0,
+    "media": 10.0,
+    "mediana": 12.5,
+    "dp": 4.3301,
     "min": 5.0,
-    "p25": 6.875,
-    "p75": 10.625,
+    "p25": 8.75,
+    "p75": 12.5,
     "max": 12.5,
     "amplitude": 7.5,
-    "cv": 0.6061
+    "cv": 0.433
    },
    "tem_metro_1000m": 0.0,
    "abre_domingo": 0.6364,

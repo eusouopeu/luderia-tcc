@@ -13,7 +13,9 @@ mão), preços de imprensa para a Fan Hour e cardápios parciais (couvert ou pou
 de site, imprensa ou TikTok) de LudoCafé, Game Of Boards, Garagem do Nerd e Joyjoy
 (São Jogue e Asgard ganharam cardápio completo em 17/10). Em 31/10/2026, prints do
 Instagram trouxeram o couvert de 10 casas que não o tinham no cardápio (arquivos
-<casa>_couvert). Cada cardápio foi transcrito
+<casa>_couvert); no mesmo dia, o Day Pass da BoardZ (página "Como funciona" do
+site) e o cartaz do couvert do LudoCafé (foto sem data, que substitui o valor de 2024
+da imprensa). Cada cardápio foi transcrito
 para um CSV em dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/
 (um arquivo por estabelecimento, separador ";"). A transcrição é manual para
 imagens e PDFs e automática para páginas em texto (VUCA Food, Wix). As fontes
@@ -102,6 +104,9 @@ FONTES = {
                     nota="data aproximada pela pasta de upload"),
     "boardz": dict(place_id="ChIJY_lqHVLl3JQRvDHacOMDKuc", url="https://www.boardzgamepub.com.br/cardápio",
                    formato="imagens no site (Wix)", data_cardapio="", status="extraído", nota=""),
+    "boardz_couvert": dict(place_id="ChIJY_lqHVLl3JQRvDHacOMDKuc", url="https://www.boardzgamepub.com.br/",
+                           formato="página \"Como funciona\" do site", data_cardapio="", status="extraído",
+                           data_coleta="2026-10-31", nota="só o Day Pass; sem entrada, jogo avulso pago por título"),
     "castelos": dict(place_id="ChIJbZRHQPRfzpQRz97-ZOg0yXA", url="https://www.castelosbar.com.br/cardapio",
                      formato="carrossel de imagens no site (Wix)", data_cardapio="", status="extraído", nota=""),
     "placegames": dict(place_id="ChIJkWsGmd1czpQRGLydxc29vbw", url="https://www.placegames.com.br/cardapio",
@@ -187,9 +192,13 @@ FONTES = {
                      status="extraído", data_coleta="2026-10-16", nota="sem couvert no cardápio"),
     "ludocafe": dict(place_id="ChIJx5jr3zGXpgARQGx9eX7TDmY",
                      url="https://www.tiktok.com/@ossaboresdomundo/video/7437960404552224056",
-                     formato="legenda de vídeo do TikTok + matéria do Diário do Comércio (couvert)",
+                     formato="legenda de vídeo do TikTok",
                      data_cardapio="", status="parcial", data_coleta="2026-10-16",
-                     nota="10 itens de destaque (nov/2024) e couvert (jun/2024); sem refrigerante nem cerveja"),
+                     nota="10 itens de destaque (nov/2024); couvert em ludocafe_couvert; sem refrigerante nem cerveja"),
+    "ludocafe_couvert": dict(place_id="ChIJx5jr3zGXpgARQGx9eX7TDmY", url="",
+                             formato="foto do cartaz na casa, enviada pelo autor", data_cardapio="",
+                             status="extraído", data_coleta="2026-10-31",
+                             nota="só o couvert; substitui o do Diário do Comércio (jun/2024)"),
     "garagemdonerd": dict(place_id="ChIJsUAT-dObpgARCT2C5QpnVKU",
                           url="https://diariodocomercio.com.br/negocios/bares-jogos-luderias-belo-horizonte/",
                           formato="matéria de imprensa", data_cardapio="", status="parcial",

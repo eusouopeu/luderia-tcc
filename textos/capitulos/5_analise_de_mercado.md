@@ -76,7 +76,7 @@ O aluguel de jogos para levar para casa é o substituto mais próximo. A platafo
 
 ### 5.3.4 Posicionamento: acervo e preço
 
-O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert lúdico ou taxa de entrada foi encontrado em 21 dos 53 concorrentes, no cardápio, no site, na imprensa ou no Instagram. A mediana é de R$ 20,00 por pessoa, de R$ 5,00 a R$ 40,00 pela mediana de cada casa. A Ludus declara que não cobra; nos outros 31, o couvert não foi encontrado, o que não basta para afirmar que não cobram. A cesta mediana — uma bebida e uma entrada ou prato — custa R$ 58,50 (média das medianas por casa), com faixa interquartil de R$ 40,62 a R$ 71,91. Fonte: elaborado pelo próprio autor com base nos cardápios e acervos (Bloco B1, 2026). Das 22 casas com a política de cobrança conhecida, 21 cobram: entre as que divulgam preço, o couvert é a regra (retomado em 6.3).
+O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert lúdico ou taxa de entrada foi encontrado em 22 dos 53 concorrentes, no cardápio, no site, na imprensa ou no Instagram. A mediana é de R$ 20,00 por pessoa, de R$ 5,00 a R$ 40,00 pela mediana de cada casa. A Ludus declara que não cobra; nos outros 30, o couvert não foi encontrado, o que não basta para afirmar que não cobram. A cesta mediana — uma bebida e uma entrada ou prato — custa R$ 58,50 (média das medianas por casa), com faixa interquartil de R$ 40,62 a R$ 71,91. Fonte: elaborado pelo próprio autor com base nos cardápios e acervos (Bloco B1, 2026). Das 23 casas com a política de cobrança conhecida, 22 cobram: entre as que divulgam preço, o couvert é a regra (retomado em 6.3).
 
 ### 5.3.5 Cinco forças
 

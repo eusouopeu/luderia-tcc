@@ -1711,3 +1711,33 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: story do Instagram de 04/10/2025: R$ 5,00 por pessoa, a noite toda, a partir de 8 anos.
 **Efeitos colaterais**: a Toca do Rato é o menor valor da Tabela 6.1 e puxa o mínimo da faixa do cap. 5 (R$ 5,00). Se o valor do Notion for o mais recente, a faixa sobe e as medianas não mudam.
 
+
+### 11:05
+**Objeto**: `_dados-brutos/cardapios/transcricao/boardz_couvert.csv` e `ludocafe_couvert.csv` (novos), `ludocafe.csv`, `B1-b_cardapios_planilha.py` (FONTES e docstring)
+**Antes**: BoardZ sem couvert; LudoCafé com o couvert do Diário do Comércio de 23/06/2024 (R$ 30 sem consumo mínimo ou R$ 15 com consumo a partir de R$ 50), no `ludocafe.csv`.
+**Depois**: BoardZ com o Day Pass (R$ 10 de terça a quinta, R$ 15 de sexta a domingo; a casa não cobra entrada), da página "Como funciona" do site; LudoCafé com o cartaz do couvert lúdico (R$ 25 ou R$ 10 com consumo mínimo de R$ 50 de terça a quinta; R$ 35 ou R$ 20 de sexta a domingo), foto sem data enviada pelo autor; as duas linhas de 2024 saem do `ludocafe.csv` e ficam citadas na observação. Game of Boards: o print do passaporte confirma os valores já transcritos (R$ 15 e R$ 25).
+**Justificativa**: prints enviados pelo autor em 31/10/2026.
+
+### 11:05
+**Objeto**: `B1_cardapios_itens_precos.xlsx`, `B1_resumo_estabelecimentos.xlsx`, estatística descritiva, auditoria, `b1-estatisticas.json`, planilhas agregadas e gráficos 07 e 08, `9_plano_financeiro_modelo.xlsx`
+**Antes**: 2.333 linhas; couvert em 22 casas, 21 cobram (mediana de R$ 20,00); cesta completa em 18 casas, mediana de R$ 74,50.
+**Depois**: 2.337 linhas; couvert em 23 casas, 22 cobram (mediana de R$ 20,00, de R$ 5,00 a R$ 40,00); cesta completa em 18 casas, mediana de R$ 73,75; consumo sem mudança (R$ 50,82 em 36 casas). Soma por metrópole = 54.
+**Justificativa**: levar o couvert novo a todas as saídas do B1.
+
+### 11:05
+**Objeto**: Notion "1 - Estabelecimentos", coluna "Taxa couvert" (BoardZ, LudoCafé, Game of Boards)
+**Antes**: BoardZ e LudoCafé vazias; Game of Boards "15".
+**Depois**: BoardZ "sem entrada; Day Pass 10 ter–qui; 15 sex–dom (ou pagamento por jogo)"; LudoCafé "25 ter–qui (ou 10 com consumo mínimo de 50); 35 sex–dom (ou 20 com consumo mínimo de 50)"; Game of Boards "15 ter–qui; 25 sex–dom (passaporte luderia)".
+**Justificativa**: mesma fonte da planilha de itens.
+
+### 11:05
+**Objeto**: `textos/capitulos/6_plano_de_marketing.md` (6.3), `5_analise_de_mercado.md` (5.3.4), `9_plano_financeiro.md` (9.8)
+**Antes**: cap. 6: 13 de 21 com preço por dia; LudoCafé com R$ 15,00 a R$ 30,00 nos dois períodos, de 2024; acima da São Jogue, "Encounter, Shelf e LudoCafé (R$ 30,00)"; 21 de 53 com taxa e 31 sem. Cap. 5: 21 de 53, 31 sem dado, 21 de 22 cobram. Cap. 9: 21 concorrentes.
+**Depois**: cap. 6: 15 de 22 com preço por dia; LudoCafé com R$ 10,00 a R$ 25,00 no dia útil e R$ 20,00 a R$ 35,00 no fim de semana; BoardZ na tabela (R$ 10,00 e R$ 15,00); acima da São Jogue, Encounter (R$ 45,00), LudoCafé (R$ 35,00) e Shelf (R$ 30,00); 22 de 53 e 30 sem; medianas sem mudança (R$ 25,00 e R$ 15,00). Cap. 5: 22 de 53, 30 sem dado, 22 de 23 cobram. Cap. 9: 22 concorrentes.
+**Justificativa**: couvert novo do B1. A conclusão não muda.
+
+### 11:05
+**Objeto**: `AGORA.md`, `docs/decisoes.md`, `docs/pendencias.md` (itens 12 e divergência do couvert), `docs/melhorias-texto.md` (D16, D29), `textos/planejamento/status_capitulos.md`
+**Antes**: contagens de 21 de 53 e cesta de R$ 74,50.
+**Depois**: 22 de 53 e cesta de R$ 73,75; decisão nova (passe do dia como taxa de jogo; fonte sem data substitui imprensa antiga); pendências sobre a data do cartaz do LudoCafé e o Day Pass da BoardZ.
+**Justificativa**: fim de sessão (CLAUDE.md).
