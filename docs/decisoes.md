@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 31/10/2026 | Voz passiva analítica ("foi adotado") em todo o TCC, como na skill `meu-estilo-escrita`; a sintética ("adotou-se") é evitada | `_instrucoes/1_estrutura.md` (P5.5) |
 | 31/10/2026 | Cap. 3: a codificação dos temas do B2 entra no texto como feita com apoio de inteligência artificial, pelo dicionário, e validada pela recodificação cega do autor | `textos/capitulos/3_metodologia.md` (3.4.2) |
 | 31/10/2026 | B3: a mesa do observador sai do denominador da ocupação (mesas da unidade − 1; 48 assentos − pessoas da mesa do observador: 3 em 10/10, 2 nas demais) | `outros/B3_mesa_observador.csv`; `B3-a_contagem.py` |
 | 31/10/2026 | CNAE principal 5611-2/01 (restaurantes e similares), escolhido pelo autor; 5611-2/03 (lanchonete, o da São Jogue) fica como alternativa e 5611-2/05 é descartada | `textos/capitulos/8_aspectos_juridicos.md` (8.1) |

@@ -54,11 +54,11 @@ A busca pela Google Places API levantou 164 candidatos com mais de 100 avaliaç�
 
 O corte de 100 avaliações delimita concorrentes estabelecidos. Casas novas ou pequenas ficam fora: o recorte descreve quem já opera com volume, que é a referência de preço e de fluxo para o plano.
 
-De cada concorrente, registram-se a avaliação média, o volume de avaliações, o horário de funcionamento (Places API), a política de cobrança, o cardápio, o acervo de jogos e o entorno. Os cardápios têm categorias fixas — bebidas, entradas, pratos principais, sobremesas e couvert ou taxa de jogo — e preço em reais na data da coleta. Item com vários tamanhos ou combos entra nas medianas só pela linha de referência: cardápio mais recente, sem combo, no menor tamanho.
+De cada concorrente, são registrados a avaliação média, o volume de avaliações, o horário de funcionamento (Places API), a política de cobrança, o cardápio, o acervo de jogos e o entorno. Os cardápios têm categorias fixas — bebidas, entradas, pratos principais, sobremesas e couvert ou taxa de jogo — e preço em reais na data da coleta. Item com vários tamanhos ou combos entra nas medianas só pela linha de referência: cardápio mais recente, sem combo, no menor tamanho.
 
 Os acervos vêm de qualquer concorrente que publique a lista de jogos, em plataformas como Acervo de Jogos e Ludopedia, no site ou em PDF. A cesta de jogos reúne os títulos presentes em 15 ou mais dos 30 acervos coletados. O preço de cada título é levantado em lojas online e expresso em faixa, do menor preço ao máximo, com a mediana como valor provável. A cesta sustenta o custo do acervo inicial (cap. 9).
 
-O entorno é medido no Google Maps. Contam-se as estações de metrô, trem, VLT e BRT e os shoppings de porte num raio de 500 m e de 1.000 m de cada concorrente, e mede-se a distância em linha reta até a estação e o shopping mais próximos. Shopping de porte é o que tem 1.000 avaliações ou mais no Maps; os limiares de 500 e 5.000 avaliações servem de sensibilidade.
+O entorno é medido no Google Maps. São contados as estações de metrô, trem, VLT e BRT e os shoppings de porte num raio de 500 m e de 1.000 m de cada concorrente, e é medida a distância em linha reta até a estação e o shopping mais próximos. Shopping de porte é o que tem 1.000 avaliações ou mais no Maps; os limiares de 500 e 5.000 avaliações servem de sensibilidade.
 
 ### 3.3.2 Bloco B2 — Avaliações recentes
 

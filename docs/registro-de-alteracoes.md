@@ -1415,3 +1415,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: decisão registrada: o texto mantém a menção ao apoio de IA; pendência fica só com a voz passiva.
 **Justificativa**: resposta do autor em 31/10 ("Manter").
 
+### 02:18
+**Objeto**: `_instrucoes/1_estrutura.md` (P5.5), cap. 3 (`3_metodologia.md` e `.docx`), `docs/melhorias-texto.md`, `docs/pendencias.md`, `docs/decisoes.md`
+**Antes**: P5.5 pedia voz ativa ou passiva sintética ("adotou-se"), contra a skill `meu-estilo-escrita`, que pede a analítica. Cap. 3 com duas passivas sintéticas ("registram-se", "contam-se ... mede-se"). Divergência D27 e pendência abertas.
+**Depois**: P5.5 pede voz ativa ou passiva analítica ("foi adotado"). Cap. 3 com as duas frases na analítica e .docx gerado de novo. D27 e a pendência saem. Busca nos demais capítulos: nenhuma passiva sintética de verbo de procedimento (só pronominais, como "dividem-se").
+**Justificativa**: escolha do autor em 31/10: vale a regra da skill.
+

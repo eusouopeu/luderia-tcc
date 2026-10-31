@@ -62,7 +62,7 @@ Atualizado em 31/10/2026 (01h59). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 1. Firmar as premissas críticas do cap. 9: ocupação de dia útil (horários de pico do Google Maps ou visita em dia útil) e cotações de reforma, mobiliário e cozinha.
 2. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
-3. Rever o rascunho do cap. 3 (31/10): alinhar a instrução da codificação do B2 ao texto (D26) e decidir qual voz passiva vale (D27).
+3. Rever o rascunho do cap. 3 (31/10): alinhar a instrução da codificação do B2 ao texto (D26) (voz passiva analítica decidida em 31/10).
 
 ## Bloqueado ou aguardando
 

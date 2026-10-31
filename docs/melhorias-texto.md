@@ -68,8 +68,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D25 — Normas estaduais e municipais sem conferência.** Cap. 8 (Tabela 8.1 e Quadro 8.1) × `6_juridico.md` ("toda informação legal deve citar a norma e ter a vigência conferida"). LOUOS de Salvador, Lei estadual 12.929/2013 (bombeiros), RICMS-BA, ICMS de 4% sobre o A&B, ISS de 5% e contribuição patronal de 27,8% estão `[AV]`. A conclusão (Simples mais barato) não muda com eles: a diferença é de R$ 103 mil por ano.
 
-**D27 — Voz passiva no cap. 3.** Cap. 3 × `1_estrutura.md` (P5.5). O cap. 3 usa a passiva analítica ("são conferidas", "é trocado"), como pede a skill `meu-estilo-escrita`; a P5.5 pede a sintética ("confere-se"). As duas regras se contradizem. Sugestão: o autor decide qual vale e a outra é ajustada.
-
 # Cortes em potencial
 
 ## Alto ganho

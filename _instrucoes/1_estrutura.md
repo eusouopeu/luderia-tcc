@@ -223,7 +223,7 @@ Vale para todos os capítulos, junto com a skill `meu-estilo-escrita`.
 2. **Sem metadiscurso.** Corta-se a frase que anuncia o que o texto vai fazer em vez de fazê-lo. Exemplos a evitar: "Esta seção apresenta…", "Para atingir esse propósito, foram traçados…", "A relevância… sustenta-se em três frentes complementares", "Do ponto de vista X,". O título da seção já diz do que ela trata.
 3. **Adjetivo vira número ou sai.** Expressões como "crescimento estrutural", "público amplo", "majoritariamente", "preenche uma lacuna" e "fundamental" afirmam sem medir. Cada uma vira um número com fonte ("13,1% das vendas em 2025 (ABRINQ, 2026)") ou uma afirmação delimitada ("o único estudo de viabilidade localizado…"). Se não houver número, a frase sai.
 4. **Números em formato único:** "R$ 53 bilhões" (não "R$ 53 bi"); percentuais com vírgula decimal ("13,1%"); faixa com "a" ("de 20 a 30 minutos"); unidade, recorte e data junto do número.
-5. **Voz ativa ou passiva sintética**, nunca a analítica: "adotou-se", não "foi adotado"; "o trabalho estima", não "foi estimado pelo trabalho".
+5. **Voz ativa ou passiva analítica**, como na skill `meu-estilo-escrita`, evitando a sintética: "foi adotado", não "adotou-se"; "o trabalho estima", não "estima-se" (decisão do autor, 31/10/2026).
 6. **Travessão (—) para aposto e intercalação**, nunca hífen com espaços.
 
 ### P6. Vocabulário controlado
