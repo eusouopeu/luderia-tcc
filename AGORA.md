@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 31/10/2026 (01h52). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 31/10/2026 (01h59). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -36,6 +36,8 @@ Atualizado em 31/10/2026 (01h52). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Contagem do B3, Paralela, sexta 30/10** (quarta visita, 19h20 às 21h59): só o POV2, em `originais/2026-10-30_SJPA/`; NFC-e final nº 12409 transcrita. Com as respostas do autor de 31/10: 13 pessoas em 7 grupos pela porta (4,9 por hora, permanência de 103,8 min), 7 grupos de mesa com 31 pessoas (136,9 min, piso: 4 mesas já estavam no salão), 7 pedidos (3 bebidas, 3 comidas, 1 sobremesa). Na Tab 1 do agregado do B3 e no Notion "3 - Visitas presenciais" (linha 4).
 
+- **Cap. 8, aspectos jurídicos** (31/10): rascunho em `textos/capitulos/8_aspectos_juridicos.md` e `.docx` (3/3 páginas). Sociedade limitada no Simples como EPP; Simples custa 10,1% da receita contra 21,9% no Lucro Presumido. CNPJ das duas unidades da São Jogue coletados (B4). Faltam a decisão do CNAE principal e a conferência das normas `[AV]` (pendências).
+
 - **Cap. 9, plano financeiro** (31/10): rascunho em `textos/capitulos/9_plano_financeiro.md` (e `.docx`, gerado por `node _src/extras/gerar_docx_capitulo.js <md>`) e modelo `9_plano_financeiro_modelo.xlsx` (gerado e conferido por `_src/extras/gerar_modelo_financeiro.py`). Provável: investimento de R$ 503 mil, VPL de −R$ 479 mil; ruptura com ocupação de fim de semana de 49,5%. O que falta firmar está nas pendências.
 
 - **B3, ocupação do salão** (31/10): calculada minuto a minuto pelos grupos de mesa, sobre 11 mesas (Bela Vista) ou 10 (Paralela) e 48 assentos: de 27% a 60% das mesas em média, pico de 70% (Paralela, 30/10). Estrutura das unidades em `outros/B3_estrutura_unidades.csv`. Paralela emitiu 209 NFC-e entre 17/10 e 30/10 (piso: nota só a pedido).
@@ -67,7 +69,7 @@ Atualizado em 31/10/2026 (01h52). Semana 5 do cronograma (10/10 a 16/10). Próxi
 - Coleta do B2 no navegador: os carregadores do Tampermonkey apontam para a pasta antiga `_src/Web scripts/`. Antes da próxima coleta, rodar `python3 _src/extras/gerar_carregadores.py --abrir --todos` e instalar os cinco no Vivaldi.
 - Validação do dicionário e cap. 5.2: aguardam a recodificação cega da amostra do Bardin (§2 do instrumento).
 - Estimativa de ocupação e fluxo (B3): aguarda as visitas de retorno (18/10).
-- Rascunhos atrasados frente ao cronograma: caps. 3 e 8 (o cap. 5 tem esboço, com lacunas) ([status](textos/planejamento/status_capitulos.md)).
+- Rascunhos atrasados frente ao cronograma: cap. 3 (o cap. 5 tem esboço, com lacunas; caps. 8 e 9 com rascunho em 31/10) ([status](textos/planejamento/status_capitulos.md)).
 
 ## Onde está o resto
 

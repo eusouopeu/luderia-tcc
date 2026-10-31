@@ -1377,3 +1377,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: instruções de 31/10: observação dentro do salão, com a mesa do observador fora dos registros.
 **Efeitos colaterais**: o roteiro (apêndice G) descreve um procedimento que não foi o usado; corrigir só a pedido do autor (`docs/pendencias.md`).
 
+
+### 01:59
+**Objeto**: cap. 8 (`textos/capitulos/8_aspectos_juridicos.md` e `.docx`, novos); B4: objeto novo `_src/[B4] Bases publicas/Receita Federal CNPJ/` (`B4-c_cnpj_referencias.py`, `B4-b_cnpj_referencias.py`), `_dados-brutos/receita_cnpj/` e `juridico_tributario/[B4] CNPJ de Referência 2026-10 (Receita Federal).csv`; `bibliografia/referencias_bases_publicas.md`; `docs/melhorias-texto.md`, `decisoes.md`, `pendencias.md`, `status_capitulos.md` e `AGORA.md`
+**Antes**: cap. 8 não iniciado; sem dado da forma jurídica e do CNAE dos concorrentes de Salvador.
+**Depois**: rascunho do cap. 8 (8.1 a 8.3, 3 páginas): sociedade limitada no Simples Nacional como EPP; A&B no anexo I, taxa de entrada (art. 18, § 5º-F) e aluguel de jogos (art. 18, § 4º, V) no anexo III, conferidos no texto compilado da LC 123/2006 de 14/09/2026; Simples de R$ 88.729,00 (10,1%) contra Lucro Presumido de R$ 192.095,81 (21,9%) no ano maduro provável; CNAE principal proposto 5611-2/01; quadro de nove obrigações; locação, jogos e marca. CNPJ das duas unidades da São Jogue: sociedades empresárias limitadas no Simples, CNAE principal 5611-2/03, com 12 e 7 secundários (21 linhas na tabela; JSON bruto sem quadro de sócios e contatos). Melhorias: D23 a D25 e C14.
+**Justificativa**: pedido do autor em 31/10 para gerar o cap. 8 e atualizar os arquivos de acompanhamento.
