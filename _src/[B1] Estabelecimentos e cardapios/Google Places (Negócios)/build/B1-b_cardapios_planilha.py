@@ -14,8 +14,8 @@ de site, imprensa ou TikTok) de LudoCafé, Game Of Boards, Garagem do Nerd e Joy
 (São Jogue e Asgard ganharam cardápio completo em 17/10). Em 31/10/2026, prints do
 Instagram trouxeram o couvert de 10 casas que não o tinham no cardápio (arquivos
 <casa>_couvert); no mesmo dia, o Day Pass da BoardZ (página "Como funciona" do
-site) e o cartaz do couvert do LudoCafé (foto sem data, que substitui o valor de 2024
-da imprensa). Cada cardápio foi transcrito
+site) e o cartaz do couvert do LudoCafé (foto do Google Maps de jul/2024, que substitui
+o valor de jun/2024 da imprensa). Cada cardápio foi transcrito
 para um CSV em dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/
 (um arquivo por estabelecimento, separador ";"). A transcrição é manual para
 imagens e PDFs e automática para páginas em texto (VUCA Food, Wix). As fontes
@@ -196,7 +196,7 @@ FONTES = {
                      data_cardapio="", status="parcial", data_coleta="2026-10-16",
                      nota="10 itens de destaque (nov/2024); couvert em ludocafe_couvert; sem refrigerante nem cerveja"),
     "ludocafe_couvert": dict(place_id="ChIJx5jr3zGXpgARQGx9eX7TDmY", url="",
-                             formato="foto do cartaz na casa, enviada pelo autor", data_cardapio="",
+                             formato="foto do cartaz na casa (Google Maps), enviada pelo autor", data_cardapio="2024-07",
                              status="extraído", data_coleta="2026-10-31",
                              nota="só o couvert; substitui o do Diário do Comércio (jun/2024)"),
     "garagemdonerd": dict(place_id="ChIJsUAT-dObpgARCT2C5QpnVKU",

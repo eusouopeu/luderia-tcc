@@ -30,7 +30,7 @@ A POF é de 2017-2018 e não tem recorte para Salvador nesta tabela. O dado entr
 
 ### 5.1.4 Luderias
 
-Não há levantamento oficial nem setorial sobre luderias no Brasil. O formato não tem código próprio na CNAE: enquadra-se como bar com entretenimento (subclasse 5611-2/05) ou restaurante (5611-2/01) (CONCLA, 2026). Por isso, o tamanho do segmento é medido pelo levantamento próprio do Bloco B1 (seção 5.3), e não por estatística pública. `[Dados abertos do CNPJ: contar estabelecimentos ativos na 5611-2/05 em Salvador e nas metrópoles, com abertura e baixa por ano — sobrevivência; ver 3_mercado.md.]`
+Não há levantamento oficial nem setorial sobre luderias no Brasil. O formato não tem código próprio na CNAE: o plano adota a subclasse de restaurantes e similares (5611-2/01), e a São Jogue está na de lanchonetes (5611-2/03) (CONCLA, 2026; cap. 8). Por isso, o tamanho do segmento é medido pelo levantamento próprio do Bloco B1 (seção 5.3), e não por estatística pública. `[Dados abertos do CNPJ: contar estabelecimentos ativos nas subclasses 5611-2/01 e 5611-2/03 em Salvador, sabendo que nenhuma isola luderias e nas metrópoles, com abertura e baixa por ano — sobrevivência; ver 3_mercado.md.]`
 
 ## 5.2 PÚBLICO-ALVO E SEGMENTAÇÃO
 
@@ -76,7 +76,7 @@ O aluguel de jogos para levar para casa é o substituto mais próximo. A platafo
 
 ### 5.3.4 Posicionamento: acervo e preço
 
-O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert lúdico ou taxa de entrada foi encontrado em 22 dos 53 concorrentes, no cardápio, no site, na imprensa ou no Instagram. A mediana é de R$ 20,00 por pessoa, de R$ 5,00 a R$ 40,00 pela mediana de cada casa. A Ludus declara que não cobra; nos outros 30, o couvert não foi encontrado, o que não basta para afirmar que não cobram. A cesta mediana — uma bebida e uma entrada ou prato — custa R$ 58,50 (média das medianas por casa), com faixa interquartil de R$ 40,62 a R$ 71,91. Fonte: elaborado pelo próprio autor com base nos cardápios e acervos (Bloco B1, 2026). Das 23 casas com a política de cobrança conhecida, 22 cobram: entre as que divulgam preço, o couvert é a regra (retomado em 6.3).
+O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. Das 54 casas, 42 têm cardápio coletado. O couvert lúdico ou taxa de entrada foi encontrado em 22 dos 53 concorrentes, no cardápio, no site, na imprensa ou no Instagram. A mediana é de R$ 20,00 por pessoa, de R$ 5,00 a R$ 40,00 pela mediana de cada casa. A Ludus declara que não cobra; nos outros 30, o couvert não foi encontrado, o que não basta para afirmar que não cobram. O consumo por pessoa (uma bebida e uma entrada ou prato) tem mediana de R$ 50,25 em 36 casas, com faixa interquartil de R$ 38,38 a R$ 65,70; na São Jogue, é de R$ 48,50. Somado o couvert, a cesta completa tem mediana de R$ 73,75 nas 18 casas com as três partes. Fonte: elaborado pelo próprio autor com base nos cardápios e acervos (Bloco B1, 2026). Das 23 casas com a política de cobrança conhecida, 22 cobram: entre as que divulgam preço, o couvert é a regra (retomado em 6.3).
 
 ### 5.3.5 Cinco forças
 

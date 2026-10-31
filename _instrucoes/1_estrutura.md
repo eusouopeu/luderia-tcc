@@ -203,6 +203,12 @@ Onde investir tempo, texto e rigor, em ordem de prioridade:
 
 Na dúvida entre aprofundar um item de nível baixo ou fortalecer um de nível alto, fortalecer o de nível alto.
 
+**Precedência entre capítulos** (pedido do autor em 31/10/2026). Os caps. 6 (Plano de Marketing) e 8 (Aspectos Jurídicos e Legais) moldam o negócio: definem o que a luderia é, a quem atende, por quanto e dentro de que regras. Os demais capítulos de plano, em especial o 7 (Plano Operacional) e o 9 (Plano Financeiro), só tornam esse negócio viável. Por isso:
+
+1. Em informação divergente entre capítulos, valem os caps. 6 e 8; os outros se ajustam a eles, e não o contrário.
+2. Toda mudança nos caps. 6 ou 8 leva a um alerta imediato ao autor, na mesma resposta, com os capítulos a ajustar (7, 9, 10, 4, 11 e, se for o caso, 3 e 5) e o que muda em cada um. O alerta não autoriza ajustar os outros capítulos sem pedido do autor.
+3. Se a viabilidade (caps. 7 e 9) pedir mudança no negócio, a proposta vai ao autor como mudança nos caps. 6 ou 8, e não como ajuste silencioso no operacional ou no financeiro.
+
 ### P4. Personalização da estrutura
 
 Diferenças deliberadas em relação a um plano de negócios comum. Aplicar sempre.

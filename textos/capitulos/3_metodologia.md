@@ -130,7 +130,7 @@ No marketing, a análise de penalidade e recompensa — nota média com e sem cr
 
 No operacional, as reclamações são ordenadas pela frequência de cada tema negativo; o tamanho dos grupos e a permanência do Bloco B3 dimensionam as mesas.
 
-No financeiro, cada premissa crítica tem técnica e limitação próprias. A taxa de ocupação de fim de semana vem da contagem direta. O ticket médio vem da cesta por pessoa — couvert, bebida e uma entrada ou prato, por metrópole —, calibrada pelos valores citados nas avaliações e pelos preços da São Jogue e checada contra a POF. A **permanência** — tempo entre a entrada e a saída de um grupo — sai das visitas; o **giro**, número de grupos que uma mesa recebe por dia, é o horário de funcionamento dividido pela permanência média.
+No financeiro, cada premissa crítica tem técnica e limitação próprias. A taxa de ocupação de fim de semana vem da contagem direta. O ticket médio vem do consumo por pessoa — uma bebida e uma entrada ou prato, por metrópole, com o couvert somado só onde foi encontrado (cesta completa) —, calibrada pelos valores citados nas avaliações e pelos preços da São Jogue e checada contra a POF. A **permanência** — tempo entre a entrada e a saída de um grupo — sai das visitas; o **giro**, número de grupos que uma mesa recebe por dia, é o horário de funcionamento dividido pela permanência média.
 
 ### 3.5.2 Calibração do fluxo
 
@@ -153,7 +153,7 @@ A matriz liga cada decisão do plano à pergunta que ela responde, ao dado usado
 | Em que bairro abrir? | Onde está o público, longe da concorrência e com aluguel compatível? | População, idade e renda; localização da São Jogue; aluguel; entorno | Censo 2022; PNAD Contínua; B1; FipeZap | N2 + N3 |
 | Qual modelo de cobrança? | Qual modelo o mercado pratica e qual gera menos reclamação de preço? | Política de cobrança; críticas a preço | B1 e B2 | N3 |
 | Que cardápio oferecer? | Qual o peso da comida na nota e que itens e preços o mercado pratica? | Temas de comida × nota; cardápios | B1 e B2 | N3 |
-| Qual ticket médio projetar? | Quanto uma pessoa gasta por visita? | Cesta de cardápio; valores citados; NFC-e; POF | B1, B2, B3 e B4 | N3 + N5 + N2 |
+| Qual ticket médio projetar? | Quanto uma pessoa gasta por visita? | Consumo por pessoa do cardápio; valores citados; NFC-e; POF | B1, B2, B3 e B4 | N3 + N5 + N2 |
 | Qual taxa de ocupação projetar? | Quantas mesas um concorrente comparável ocupa? | Ocupação minuto a minuto; notas emitidas (piso); velocidade de avaliações calibrada | B2 e B3 | N5 + N3 |
 | Qual giro projetar? | Quanto tempo uma mesa fica ocupada? | Permanência observada; modelos de cobrança | B1 e B3 | N5 |
 | Quantas mesas e de que tamanho? | Quantas pessoas ocupam cada mesa? | Tamanho do grupo citado e observado | B2 e B3 | N3 + N5 |

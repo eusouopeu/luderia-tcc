@@ -1675,6 +1675,24 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: saídas regeradas na main unificada: 2.310 linhas de 42 cardápios (2.274 com preço); 54 casas em 13 metrópoles, 42 com cardápio; consumo por pessoa (bebida + entrada ou prato) em 36 casas, mediana de R$ 50,25; cesta completa em 10 casas, mediana de R$ 78,50; couvert ou taxa encontrado em 13 casas, mediana de R$ 20,00. Salvador (São Jogue Bela Vista): consumo mediano de R$ 48,50, sem couvert encontrado. VPL provável do modelo: −R$ 478.829. Somas por metrópole, região e capital fecham com 54 (diferença 0).
 **Justificativa**: base de cardápios, resumo, estatística descritiva, planilha agregada e modelo financeiro precisavam refletir a main com a branch do Mac e os PRs #19 a #21. Dois pontos ficam para o autor: a pizza "Lúdico" da Ludoteca BGC (R$ 30) está na categoria couvert e entra no couvert da casa; a "Taxa de jogo" de R$ 0 da Ludus Luderia ("não cobra") conta como couvert encontrado. A mediana do couvert segue em R$ 20,00 sem as duas. A sala do Café Geek fica fora, como previsto no script.
 
+### 03:05
+**Objeto**: GitHub, PRs #19 a #22 e branch `main`; `docs/decisoes.md`, `docs/pendencias.md`, `docs/melhorias-texto.md`, `docs/registro-de-alteracoes.md`, `textos/planejamento/status_capitulos.md`, scripts do B1 e do B3
+**Antes**: `main` em 24/10 (PR #18), sem o trabalho do Mac de 15 a 31/10; app 2.5 no PR #19; PRs #20 e #21 encadeados sobre a branch do Mac.
+**Depois**: PR #22 mergeado na `main` com as três linhas de trabalho. Conflitos: B3 (scripts, correções e dados) e dados gerados como no Mac; `B3-a_contagem.py` com a regra do Mac e o estoque inicial e a virada da meia-noite do app 2.5 (resumo das quatro visitas igual, com duas colunas novas zeradas); cap. 8 com o rascunho de 31/10; cardápios com as duas listas (São Jogue e Asgard com o cardápio completo de 17/10); arquivos de controle unidos por data. PRs #20 e #21 fechados (conteúdo na `main`); #19 mergeado junto.
+**Justificativa**: pedido do autor: merge dos PRs em `main` e Mac de volta à `main`.
+
+### 03:05
+**Objeto**: `textos/capitulos/3_metodologia.md` (3.5 e matriz), `5_analise_de_mercado.md` (5.1 e 5.3), `6_plano_de_marketing.md` (6.3, Tabela 6.1), `9_plano_financeiro.md` (9.2 e 9.8)
+**Antes**: cap. 5 com "cesta" de R$ 58,50 em 26 casas, 7 com couvert, e CNAE 5611-2/05; cap. 6 com 36 cardápios, 6 que cobram e dia útil a R$ 17,50; cap. 9 com mediana de R$ 18,75 de 8 concorrentes e sem explicar o gasto com A&B abaixo do cardápio; cap. 3 com ticket pela cesta com couvert.
+**Depois**: números da base regerada em 31/10 (a2ff9fa): 42 casas com cardápio, couvert encontrado em 11 (sem a pizza da BGC e a Ludus), consumo por pessoa de R$ 50,25 em 36 casas (R$ 48,50 na São Jogue), cesta completa de R$ 78,50 em 10; Tabela 6.1 com os 11 que cobram (mediana de R$ 25,00 no fim de semana e R$ 15,00 no dia útil); CNAE 5611-2/01 no cap. 5; cap. 9 com o consumo de cardápio como teto do gasto com A&B e os pedidos por grupo do B3 como explicação.
+**Justificativa**: pedido do autor: corrigir os caps. 3, 5, 6 e 9 com os números novos (melhorias D28 a D31, resolvidas).
+
+### 03:05
+**Objeto**: `textos/capitulos/4_sumario_executivo.md`, `7_plano_operacional.md`, `10_analise_estrategica_riscos.md`, `11_consideracoes_finais.md` (novos)
+**Antes**: caps. 4, 7, 10 e 11 sem arquivo.
+**Depois**: rascunhos. Cap. 7 com capacidade (193 pessoas por dia; demanda provável de 48), processos, acervo e equipe de 8 pelo fluxo do B3. Cap. 10 com SWOT, cenários, ruptura com a equipe do cap. 7 (ocupação de fim de semana de 41,5%), matriz de riscos e indicadores. Caps. 4 e 11 com o parecer (inviável no provável; viável com a equipe de 8 e ocupação de 41,5% ou mais); 4.2, 4.3 e os objetivos (ii) e (iii) marcados para depois.
+**Justificativa**: pedido do autor: escrever os caps. 7, 10, 4 e 11. A equipe de 8 está só no texto; o modelo segue com 12 até a decisão do autor (melhorias D33).
+
 ### 03:40
 **Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/` (10 arquivos `<casa>_couvert.csv` novos e `ludotecabgc.csv`), `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/build/B1-b_cardapios_planilha.py`
 **Antes**: couvert ou taxa de entrada só no cardápio, no site ou na imprensa: 13 casas com couvert encontrado. TabuClub, Café Geek (só a sala), Tubaleria, Place Games, Encounter, Covil, Luderia Carioca, Bardo Mago, Toca do Rato e Nala Land sem valor. O crepe "Lúdico" da Ludoteca BGC (R$ 30) na categoria "couvert ou taxa de jogo".
@@ -1712,6 +1730,31 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Efeitos colaterais**: a Toca do Rato é o menor valor da Tabela 6.1 e puxa o mínimo da faixa do cap. 5 (R$ 5,00). Se o valor do Notion for o mais recente, a faixa sobe e as medianas não mudam.
 
 
+### 03:55
+**Objeto**: Notion, banco novo "2R - Recodificação cega" (https://app.notion.com/p/94ebc5a5d6b748feb2204ec91c442fb0)
+**Antes**: amostra da recodificação só em CSV (`b2/notion_comentarios/2026-10-30_B2_amostra_recodificacao.csv`, 139 linhas); nenhum banco próprio no Notion.
+**Depois**: banco com as 139 linhas (Nº da amostra, comentário, estabelecimento, nota geral), colunas vazias de Itens positivos e Itens negativos (23 temas cada, os mesmos do "2 - Comentários"), Contexto (8 opções), caixa "Lido" e relação de mão única "Avaliação original" com a linha do "2 - Comentários" (75 ligadas pelo ID da avaliação, 64 pelo texto; 139 de 139). O "2 - Comentários" não mudou.
+**Justificativa**: pedido do autor: banco da recodificação ligado ao da codificação, mas independente, para codificar sem ver a primeira codificação. A relação abre a página original, que mostra os temas do Claude: só consultar depois de terminar.
+
+
+### 03:59
+**Objeto**: Notion, banco "2R - Recodificação cega"
+**Antes**: sem colunas de recorrência e intenção de voltar.
+**Depois**: colunas "Costuma ir" (sim, não, não foi dito, segunda vez) e "Voltará" (sim, não, não foi dito), vazias, com as mesmas opções do "2 - Comentários".
+**Justificativa**: pedido do autor: recodificar também esses dois campos, como no banco original.
+
+### 04:15
+**Objeto**: Notion, "2R - Recodificação cega", linha 136 (Bardo Mago)
+**Antes**: texto cortado em "fizeram questão de que todo mundo …".
+**Depois**: texto completo da coleta de 14/10 (`2026-10-14_bardo_mago_maps_avaliacoes_tudo.csv`), terminado em "Voltaria sem pensar duas vezes! ⭐⭐⭐⭐⭐".
+**Justificativa**: pedido do autor de checar comentários incompletos. Na amostra, só essa linha estava cortada; as outras 4 terminadas em "…" (n. 44, 60, 95 e 100) terminam em emoji + "…", forma que o Maps mostra mesmo com o texto inteiro.
+
+### 04:15 (divergência)
+**Objeto**: textos cortados no "2 - Comentários"
+**Antes**: 42 linhas terminam em "…"; 24 delas em emoji + "…" (texto inteiro) e 18 sem emoji (cortadas ou com reticências do próprio autor).
+**Depois**: as coletas de 13, 14 e 30/10 têm o texto completo de 15 das 18 (Bardo Mago 6, Cartola 2, Encounter, Shelf, XPlace, Balboa's, Utopia, Arena BG, Vila Celta, esta só com reticências do avaliador). Sem versão completa em nenhuma coleta: Arena BG ("...com a gente. …") e Tubaleria (termina em "playdanmager …").
+**Efeitos colaterais**: as 15 linhas foram codificadas sobre o texto cortado (12 por Claude em 30/10, 6 antes, entre as 18). Trocar o texto no Notion pede rever os temas dessas linhas; não feito sem pedido do autor.
+
 ### 11:05
 **Objeto**: `_dados-brutos/cardapios/transcricao/boardz_couvert.csv` e `ludocafe_couvert.csv` (novos), `ludocafe.csv`, `B1-b_cardapios_planilha.py` (FONTES e docstring)
 **Antes**: BoardZ sem couvert; LudoCafé com o couvert do Diário do Comércio de 23/06/2024 (R$ 30 sem consumo mínimo ou R$ 15 com consumo a partir de R$ 50), no `ludocafe.csv`.
@@ -1741,3 +1784,27 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: contagens de 21 de 53 e cesta de R$ 74,50.
 **Depois**: 22 de 53 e cesta de R$ 73,75; decisão nova (passe do dia como taxa de jogo; fonte sem data substitui imprensa antiga); pendências sobre a data do cartaz do LudoCafé e o Day Pass da BoardZ.
 **Justificativa**: fim de sessão (CLAUDE.md).
+
+### 11:25
+**Objeto**: GitHub, PR #23 (`claude/project-thread-uta3tr`) e `main`; caps. 5, 6, 9 e 11; `AGORA.md`, `docs/melhorias-texto.md`, `docs/pendencias.md`, `docs/registro-de-alteracoes.md`, `textos/planejamento/status_capitulos.md`
+**Antes**: PR #23 aberto, criado sobre a2ff9fa, antes do couvert novo: Tabela 6.1 com 11 concorrentes, cesta completa de R$ 78,50 (10 casas), cap. 11 com "11 concorrentes que a publicam".
+**Depois**: PR mergeado na `main`. Conflitos: caps. 6 e 9 com o couvert novo (22 concorrentes); cap. 5 com o texto do PR (42 casas com cardápio, consumo por pessoa de R$ 50,25 em 36 casas, R$ 48,50 na São Jogue) e o couvert novo (22 de 53; cesta completa de R$ 73,75 em 18); cap. 11 com 22 concorrentes; AGORA e status com os rascunhos dos caps. 4, 7, 10 e 11 e o couvert novo; D29 a D31 saem de melhorias (resolvidas no PR); registro unido por hora.
+**Justificativa**: pedido do autor: resolver os PRs abertos.
+
+### 11:25
+**Objeto**: `ludocafe_couvert.csv`, `B1-b_cardapios_planilha.py`, saídas do B1 regeradas, cap. 6 (fonte da Tabela 6.1 e 6.3), `docs/pendencias.md`, `docs/decisoes.md`
+**Antes**: cartaz do couvert do LudoCafé sem data.
+**Depois**: data_cardapio 2024-07 (foto publicada no Google Maps em jul/2024); fonte da Tabela 6.1 com fotos do Google Maps e só a BoardZ sem data; LudoCafé de volta à lista de valores de 2024 que podem estar defasados; pendência da data sai. Números sem mudança (2.337 linhas; soma por metrópole = 54).
+**Justificativa**: o autor informou a data da foto.
+
+### 11:25
+**Objeto**: `CLAUDE.md` (Princípios) e `_instrucoes/1_estrutura.md` (P3)
+**Antes**: sem regra de precedência entre capítulos.
+**Depois**: em divergência, valem os caps. 6 (marketing) e 8 (jurídico), que moldam o negócio; os demais (7, 9 e dependentes) só o tornam viável. Toda mudança nos caps. 6 ou 8 gera alerta imediato ao autor com os capítulos a ajustar; o alerta não autoriza ajustá-los sem pedido.
+**Justificativa**: pedido do autor em 31/10/2026.
+
+### 11:25
+**Objeto**: `textos/capitulos/3_metodologia.docx`, `6_plano_de_marketing.docx`, `9_plano_financeiro.docx` (regerados), `7_plano_operacional.docx` e `10_analise_estrategica_riscos.docx` (novos)
+**Antes**: .docx dos caps. 3, 6 e 9 de 31/10 (02h26), sem o couvert novo nem as correções do PR #23; caps. 7 e 10 sem .docx.
+**Depois**: gerados por `_src/extras/gerar_docx_capitulo.js` a partir dos .md atuais. O cap. 8 não mudou e manteve o .docx.
+**Justificativa**: pedido do autor.
