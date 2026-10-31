@@ -1,0 +1,15 @@
+﻿visita_id;observador;versao_app;papel;unidade;visita_inicio;codigo;tipo;hora;pessoas;pessoas_estimado;criancas;destino;motivo
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-1;entrada;19:23;3;nao;0;Mesa 7;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-2;entrada;19:23;2;nao;0;Mesa 6;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-3;entrada;19:23;2;nao;0;Mesa 8;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-4;entrada;20:11;2;nao;0;;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-5;entrada;20:13;2;nao;0;Mesa 5;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-6;entrada;20:19;1;nao;0;Mesa 5;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-7;entrada;20:27;1;nao;0;Mesa 1;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-5;saida;21:26;2;nao;0;;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-1;saida;21:59;3;nao;0;;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-2;saida;21:59;2;nao;0;;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-3;saida;21:59;2;nao;0;;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-4;saida;21:59;2;nao;0;;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-6;saida;21:59;1;nao;0;;
+2026-10-30_SJBVP;POV2;2.4.0;;Paralela;2026-10-30T19:20:23;P-7;saida;21:59;1;nao;0;;
