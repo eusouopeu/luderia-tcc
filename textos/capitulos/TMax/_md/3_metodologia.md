@@ -94,7 +94,7 @@ Os dados percorrem três etapas, cada uma com scripts próprios: coleta, tratame
 
 ### 3.4.2 Codificação das avaliações
 
-As avaliações são codificadas por análise de conteúdo (BARDIN, 2011) `[AV]`. A unidade de registro é o tema: trecho que expressa um juízo sobre um atributo do concorrente. A unidade de contexto é a avaliação inteira, mais as notas por aspecto do Google quando o texto é ambíguo. A enumeração é por presença: tema citado duas vezes na mesma avaliação conta uma vez.
+As avaliações são codificadas por análise de conteúdo (BARDIN, 2002, p. 104–108). A unidade de registro é o tema: trecho que expressa um juízo sobre um atributo do concorrente. A unidade de contexto é a avaliação inteira, mais as notas por aspecto do Google quando o texto é ambíguo. A enumeração é por presença: tema citado duas vezes na mesma avaliação conta uma vez.
 
 O dicionário de temas tem 22 temas, os mesmos para elogio e crítica: a coluna em que o tema entra dá a polaridade. Os temas cobrem jogos (variedade e curadoria do acervo, conservação, explicação dos jogos), equipe e serviço, comida e bebida, preço, ambiente e regras da casa. Cada tema tem definição, exemplos do que entra e do que não entra e regra para os casos de fronteira. Ocasião da visita, público e aluguel de jogos vão para uma coluna de contexto, sem polaridade. A codificação foi feita com apoio de inteligência artificial, pelo dicionário, e é validada contra a recodificação do autor (seção 3.4.3). Do texto saem ainda o tamanho do grupo, os valores em reais e os jogos citados.
 

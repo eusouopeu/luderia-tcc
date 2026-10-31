@@ -58,6 +58,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Aceitável
 
+- **Fitzsimmons no TMax, cap. 2 (31/10/2026).** A citação da capacidade perecível (§ do 2.x) segue sem página, enquanto o TMin cita as p. 152–156 e 406–410; e Porter passou à edição mexicana, única entre obras em português.
 **D14 — Formatação de referências repetidas.** Caps. 1, 2 e 5. Sebrae: "Agência de Notícias do Sebrae" (cap. 1) × "Agência Sebrae de Notícias" (cap. 5). Abrinq e Savills sem local no cap. 1 e com local no cap. 5. Resolve-se na lista única de referências.
 
 **D15 — Travessão e linha de fonte.** O cap. 1 usa hífen com espaços ( - ) como travessão; os caps. 2 e 5 usam travessão (—). O cap. 2 escreve "Fonte: elaborado pelo autor."; o cap. 5, "Fonte: elaborado pelo próprio autor com base em…". Padronizar na revisão de forma.

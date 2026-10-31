@@ -74,11 +74,11 @@ Os dados passam por coleta, tratamento e análise, cada etapa com scripts própr
 
 ### 3.4.2 Codificação das avaliações
 
-As avaliações são codificadas por análise de conteúdo (BARDIN, 2011) `[AV]`. A unidade de registro é o tema, trecho que expressa um juízo sobre um atributo do concorrente, e a enumeração é por presença. O dicionário tem 22 temas, os mesmos para elogio e crítica: jogos, equipe e serviço, comida e bebida, preço, ambiente e regras da casa. Ocasião da visita e público vão para uma coluna de contexto. A codificação foi feita com apoio de inteligência artificial, pelo dicionário, e é validada pela recodificação do autor (seção 3.4.3).
+As avaliações são codificadas por análise de conteúdo (BARDIN, 2002, p. 104–108). A unidade de registro é o tema, trecho que expressa um juízo sobre um atributo do concorrente, e a enumeração é por presença. O dicionário tem 22 temas, os mesmos para elogio e crítica: jogos, equipe e serviço, comida e bebida, preço, ambiente e regras da casa. Ocasião da visita e público vão para uma coluna de contexto. A codificação foi feita com apoio de inteligência artificial, pelo dicionário, e é validada pela recodificação do autor (seção 3.4.3).
 
 ### 3.4.3 Validação da coleta e da codificação
 
-A validação estima o erro não amostral de cobertura, medida e processamento (GROVES et al., 2009) `[AV]`, com procedimento próprio para cada bloco (Quadro 3.3).
+A validação estima o erro não amostral de cobertura, medida e processamento (GROVES et al., 2009, seç. 2.3), com procedimento próprio para cada bloco (Quadro 3.3).
 
 **Quadro 3.3 – Validação por bloco**
 
@@ -127,10 +127,10 @@ Fonte: elaboração própria.
 
 **Referências citadas neste capítulo**
 
-BARDIN, Laurence. *Análise de conteúdo*. São Paulo: Edições 70, 2011. [AV]
+BARDIN, Laurence. *Análise de conteúdo*. Tradução de Luís Antero Reto e Augusto Pinheiro. Lisboa: Edições 70, 2002.
 
 COHEN, Jacob. A coefficient of agreement for nominal scales. *Educational and Psychological Measurement*, v. 20, n. 1, p. 37–46, 1960. [AV]
 
-GROVES, Robert M. et al. *Survey methodology*. 2. ed. Hoboken: Wiley, 2009. [AV]
+GROVES, Robert M. et al. *Survey methodology*. 2. ed. Hoboken: Wiley, 2009.
 
 WILSON, Edwin B. Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association*, v. 22, n. 158, p. 209–212, 1927. [AV]

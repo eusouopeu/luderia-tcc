@@ -2,7 +2,7 @@
 
 ## 2.1 PLANO DE NEGÓCIOS E DECISÃO BASEADA EM EVIDÊNCIAS
 
-O plano de negócios descreve o empreendimento e testa, antes do investimento, se ele se sustenta. Dornelas (2021, [AV]) atribui ao plano duas funções: orientar a gestão e comunicar a oportunidade a sócios e financiadores. Os componentes do plano organizam os capítulos 5 a 9, e o sumário executivo (capítulo 4) condensa o resultado em uma decisão: investir ou não.
+O plano de negócios descreve o empreendimento e testa, antes do investimento, se ele se sustenta. Dornelas (2021, p. 6–10, [AV]) atribui ao plano duas funções: orientar a gestão e comunicar a oportunidade a sócios e financiadores. Os componentes do plano organizam os capítulos 5 a 9, e o sumário executivo (capítulo 4) condensa o resultado em uma decisão: investir ou não.
 
 O valor do plano depende da qualidade das premissas. A gestão baseada em evidências é o uso consciente, explícito e criterioso das melhores evidências disponíveis na tomada de decisão (FIGUEIREDO, 2020, p. 31). As evidências vêm de pesquisas científicas, de dados da própria organização, da experiência profissional e dos valores das partes afetadas (FIGUEIREDO, 2020, p. 31). Um negócio ainda não aberto não tem dados próprios: o trabalho usa dados de estabelecimentos comparáveis, ordenados pela escala de confiança N1–N6 (capítulo 3).
 
@@ -12,7 +12,7 @@ Quando a evidência é insuficiente, a decisão trabalha com a evidência limita
 
 ### 2.2.1 Ambiente competitivo e macroambiente
 
-A rentabilidade de um setor depende de cinco forças: a rivalidade entre concorrentes, a ameaça de novos entrantes, a ameaça de substitutos e o poder de negociação de compradores e de fornecedores (PORTER, 2004, [AV]). No caso da luderia, os substitutos são bares, restaurantes e outras formas de lazer noturno, e os fornecedores críticos são as editoras de jogos e os de alimentos e bebidas. O capítulo 5.3 aplica as cinco forças aos concorrentes do Bloco B1.
+A rentabilidade de um setor depende de cinco forças: a rivalidade entre concorrentes, a ameaça de novos entrantes, a ameaça de substitutos e o poder de negociação de compradores e de fornecedores (PORTER, 2008, p. 19–23). No caso da luderia, os substitutos são bares, restaurantes e outras formas de lazer noturno, e os fornecedores críticos são as editoras de jogos e os de alimentos e bebidas. O capítulo 5.3 aplica as cinco forças aos concorrentes do Bloco B1.
 
 O macroambiente reúne as forças externas que a empresa não controla (KOTLER; KELLER, 2012, [AV]). O capítulo 5.5 organiza essas forças pela análise PESTEL, em seis dimensões: política, econômica, social, tecnológica, ambiental e legal.
 
@@ -46,13 +46,13 @@ Mecânicas de fácil apreensão aumentam a probabilidade de sucesso de um títul
 
 A luderia pertence ao segmento de *competitive socialising*: estabelecimentos que combinam uma atividade de jogo com alimentos e bebidas em uma ocasião social. No Reino Unido, os atributos mais exigidos nesses locais são os mesmos de qualquer bar: segurança (70%), preço (69%) e qualidade da comida (63%) (KAM INSIGHT, 2022, [AV-X02-a]). O jogo diferencia o local, mas não dispensa o básico da hospitalidade.
 
-O ambiente físico também compõe o serviço: as condições ambientais, o arranjo do espaço e os sinais do local afetam a avaliação do cliente (FITZSIMMONS; FITZSIMMONS; BORDOLOI, 2014, [AV]). Ainda assim, o ambiente não é o fator de maior peso. Em clientes do Outback Steakhouse no Brasil, a qualidade da comida teve o maior efeito sobre a imagem do restaurante (coeficiente padronizado de 0,866), acima do serviço (0,223) e do ambiente (0,107) (VASCONCELLOS, 2016, p. 45–47). Comida, serviço e ambiente formam categorias da análise de conteúdo do Bloco B2, ao lado do acervo e do preço.
+O ambiente físico também compõe o serviço: as condições ambientais, o arranjo do espaço e os sinais do local afetam a avaliação do cliente (FITZSIMMONS; FITZSIMMONS, 2014, p. 152–156). Ainda assim, o ambiente não é o fator de maior peso. Em clientes do Outback Steakhouse no Brasil, a qualidade da comida teve o maior efeito sobre a imagem do restaurante (coeficiente padronizado de 0,866), acima do serviço (0,223) e do ambiente (0,107) (VASCONCELLOS, 2016, p. 45–47). Comida, serviço e ambiente formam categorias da análise de conteúdo do Bloco B2, ao lado do acervo e do preço.
 
-A capacidade de um serviço é perecível: a mesa vazia em uma hora não pode ser vendida na hora seguinte. A lei de Little liga as medidas de ocupação: o número médio de clientes no estabelecimento é igual à taxa de chegada multiplicada pela permanência média (FITZSIMMONS; FITZSIMMONS; BORDOLOI, 2014, [AV]). A relação dá consistência à contagem do Bloco B3 e ao dimensionamento da capacidade (capítulo 7.2).
+A capacidade de um serviço é perecível: a mesa vazia em uma hora não pode ser vendida na hora seguinte. A lei de Little liga as medidas de ocupação: o número médio de clientes no estabelecimento é igual à taxa de chegada multiplicada pela permanência média (FITZSIMMONS; FITZSIMMONS, 2014, p. 406–410). A relação dá consistência à contagem do Bloco B3 e ao dimensionamento da capacidade (capítulo 7.2).
 
 ## 2.6 VIABILIDADE E DECISÃO SOB INCERTEZA
 
-O valor presente líquido (VPL) é a soma dos fluxos de caixa futuros descontados pela taxa mínima de atratividade (TMA), menos o investimento inicial; VPL positivo indica que o projeto remunera o capital acima da TMA (ASSAF NETO, 2005, [AV-R04-a]). A taxa interna de retorno (TIR) é a taxa que torna o VPL igual a zero, e o projeto é aceito quando a TIR supera a TMA (ASSAF NETO, 2005, [AV-R04-b]). O payback descontado é o prazo em que os fluxos descontados recuperam o investimento (ASSAF NETO, 2005, [AV-R04-c]).
+O valor presente líquido (VPL) é a soma dos fluxos de caixa futuros descontados pela taxa mínima de atratividade (TMA), menos o investimento inicial; VPL positivo indica que o projeto remunera o capital acima da TMA (ASSAF NETO, 2014, p. 388–392). A taxa interna de retorno (TIR) é a taxa que torna o VPL igual a zero, e o projeto é aceito quando a TIR supera a TMA (ASSAF NETO, 2014, p. 378–382). O payback descontado é o prazo em que os fluxos descontados recuperam o investimento (ASSAF NETO, 2014, p. 374–378).
 
 A TMA parte de uma taxa livre de risco e soma um prêmio pelo risco do projeto (BRUNI, 2018, [AV]). Um negócio pequeno, de capital fechado e sem liquidez exige prêmio maior que o de uma empresa listada (DAMODARAN, 2010, [AV]). No capítulo 9, a TMA parte da Selic e do IPCA divulgados pelo Banco Central.
 
@@ -80,7 +80,7 @@ Fonte: elaborado pelo autor.
 
 ASAKURA, P. N.; SILVA, A. R. da; MELLO, D. A. Estudo de viabilidade econômica de um boardgame café no município de Ourinhos/SP. *Anais do CIC - FIO*, Ourinhos, 2018. Disponível em: http://www.cic.fio.edu.br/anaisCIC/anais2018/pdf/05_01.pdf. [AV]
 
-ASSAF NETO, Alexandre. *Finanças corporativas e valor*. São Paulo: Atlas, 2005. [AV]
+ASSAF NETO, Alexandre. *Finanças corporativas e valor*. 7. ed. São Paulo: Atlas, 2014.
 
 BRUNI, Adriano Leal. *Avaliação de investimentos*. 3. ed. São Paulo: Atlas, 2018. [AV]
 
@@ -94,7 +94,7 @@ FIGUEIREDO, Américo Rodrigues de. Gestão baseada em evidências. *GV-executivo
 
 FIGUEIREDO, Caio Moretti de; MANTOVANI, Daielly Melina Nassif. Jogos de tabuleiro modernos e o consumidor brasileiro: uma análise das características desejáveis no produto via modelos estatístico-preditivos. In: SEMINÁRIOS EM ADMINISTRAÇÃO, 25., 2022, São Paulo. *Anais* [...]. São Paulo: FEA-USP, 2022. Disponível em: https://login.semead.com.br/25semead/anais/arquivos/1057.pdf. [AV: data de acesso]
 
-FITZSIMMONS, James A.; FITZSIMMONS, Mona J.; BORDOLOI, Sanjeev K. *Administração de serviços*: operações, estratégia e tecnologia da informação. 8. ed. Porto Alegre: AMGH, 2014. [AV]
+FITZSIMMONS, James A.; FITZSIMMONS, Mona J. *Administração de serviços*: operações, estratégia e tecnologia da informação. 7. ed. Porto Alegre: AMGH, 2014.
 
 KAM INSIGHT. *Competitive socialising*: winning a new customer occasion. KAM Media, 2022. Disponível em: https://kaminsight.com/wp-content/uploads/sites/2044/2023/07/KAM-Competitive-Socialising-Feb-22.pdf. [AV: data de acesso]
 
@@ -104,7 +104,7 @@ PICOLO, Jaime Dagostim; TONTINI, Gérson. Análise do contraste da penalidade e 
 
 PINE, B. Joseph; GILMORE, James H. *O espetáculo dos negócios*. Rio de Janeiro: Campus, 1999. [AV]
 
-PORTER, Michael E. *Estratégia competitiva*: técnicas para análise de indústrias e da concorrência. 2. ed. Rio de Janeiro: Elsevier, 2004. [AV]
+PORTER, Michael E. *Estrategia competitiva*: técnicas para el análisis de los sectores industriales y de la competencia. 38. reimpr. México: Grupo Editorial Patria, 2008.
 
 SARPA, Bernard Calvert. *Experiências de consumo com jogos de tabuleiro modernos*. 2016. Dissertação (Mestrado em Administração) – Instituto COPPEAD de Administração, Universidade Federal do Rio de Janeiro, Rio de Janeiro, 2016.
 
