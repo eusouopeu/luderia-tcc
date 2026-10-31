@@ -12,7 +12,7 @@ Atualizado em 15/10/2026. Prazos do [cronograma](cronograma_luderia.md); tetos d
 | 6 Plano de marketing | Não iniciado | 0/8 | 16/10 (6.3, 6.4); 30/10 (demais) | B1, B2, B4 | Preço (6.3) e bairro (6.4) |
 | 7 Plano operacional | Não iniciado | 0/4 | 23/10 | B3 | Visitas de retorno (18/10) |
 | 8 Aspectos jurídicos | Não iniciado ⚠ | 0/3 | 09/10 | B4 (Simples, CNAE) | Rascunho atrasado |
-| 9 Plano financeiro | Não iniciado | 0/12 | 23/10 | B1 a B4 | Estrutura do modelo financeiro (semana 4) |
+| 9 Plano financeiro | Rascunho | ~9,3/12 | 23/10 (rascunho em 31/10) | B1 a B4; caps. 7 e 8 | Rascunho e modelo em 31/10: inviável no provável (VPL −R$ 479 mil). Faltam cotações (N6), ocupação de dia útil, enquadramento do Simples (cap. 8), apêndice do registro e triangulação com o cap. 6 |
 | 10 Riscos | Não iniciado | 0/4 | 30/10 | Cap. 9 | — |
 | 11 Considerações finais | Não iniciado | 0/2 | 06/11 | Todos | — |
 

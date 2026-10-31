@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 31/10/2026 (00h21). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 31/10/2026 (01h52). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -34,6 +34,8 @@ Atualizado em 31/10/2026 (00h21). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Contagem do B3, Paralela, sexta 30/10** (quarta visita, 19h20 às 21h59): só o POV2, em `originais/2026-10-30_SJPA/`; NFC-e final nº 12409 transcrita. Com as respostas do autor de 31/10: 13 pessoas em 7 grupos pela porta (4,9 por hora, permanência de 103,8 min), 7 grupos de mesa com 31 pessoas (136,9 min, piso: 4 mesas já estavam no salão), 7 pedidos (3 bebidas, 3 comidas, 1 sobremesa). Na Tab 1 do agregado do B3 e no Notion "3 - Visitas presenciais" (linha 4).
 
+- **Cap. 9, plano financeiro** (31/10): rascunho em `textos/capitulos/9_plano_financeiro.md` (e `.docx`, gerado por `node _src/extras/gerar_docx_capitulo.js <md>`) e modelo `9_plano_financeiro_modelo.xlsx` (gerado e conferido por `_src/extras/gerar_modelo_financeiro.py`). Provável: investimento de R$ 503 mil, VPL de −R$ 479 mil; ruptura com ocupação de fim de semana de 49,5%. O que falta firmar está nas pendências.
+
 - **B3, ocupação do salão** (31/10): calculada minuto a minuto pelos grupos de mesa, sobre 11 mesas (Bela Vista) ou 10 (Paralela) e 48 assentos: de 27% a 60% das mesas em média, pico de 70% (Paralela, 30/10). Estrutura das unidades em `outros/B3_estrutura_unidades.csv`. Paralela emitiu 209 NFC-e entre 17/10 e 30/10 (piso: nota só a pedido).
 
 - **Notion, "3 - Visitas presenciais"** (18/10): as 3 visitas do B3, uma linha cada, ligadas à São Jogue em "1 - Estabelecimentos". Acrescentar uma linha a cada visita nova (retorno de 18/10).
@@ -54,8 +56,8 @@ Atualizado em 31/10/2026 (00h21). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 ## Próximos 3 passos
 
-1. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
-2. Preparar as visitas de retorno de **domingo, 18/10**: tirar as dúvidas da visita de 10/10 com os observadores (pendências do B3) e reforçar no roteiro o encerramento da visita no app, a NFC-e no início e no fim e as contagens de mesas a cada 30 min.
+1. Firmar as premissas críticas do cap. 9: ocupação de dia útil (horários de pico do Google Maps ou visita em dia útil) e cotações de reforma, mobiliário e cozinha.
+2. Corrigir a triagem do B1 (tirar Machado e Ilusões, incluir as 5 novas) e rodar de novo `B2-b_avaliacoes.py`, para a base do B2 bater com o Notion.
 3. Escrever o rascunho do cap. 3 (metodologia), o mais atrasado e com as instruções prontas.
 
 ## Bloqueado ou aguardando

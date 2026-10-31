@@ -40,6 +40,10 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D13 — Perfil do frequentador "sai das avaliações".** Cap. 2 (2.4) × cap. 5 (5.2). O cap. 2 diz que o perfil do frequentador sai das avaliações do B2 (cap. 5.2). As avaliações não trazem idade, gênero ou renda; o 5.2.1 usa o IBGE para população e renda, e o B2 dá temas e ocasiões. Sugestão: no cap. 2, "as ocasiões de consumo e os atributos valorizados saem do B2; o tamanho do público, do IBGE".
 
+**D19 — Proporção de mercadorias da PAS em dois anos.** Cap. 5 (5.1.1) × cap. 9 (9.2). O cap. 5 dá 26,8% da receita líquida para mercadorias e materiais (PAS 2024, tabela 10758) e diz que o número entra no cap. 9; o cap. 9 usa 29,6% (PAS 2023, tabela 2613, a base que está no B4) para o CMV provável de 30%. Sugestão: baixar a PAS 2024 para o B4 e usar o mesmo ano nos dois capítulos.
+
+**D20 — Ocupação de dia útil em N6 entre as premissas críticas.** Cap. 9 (9.2 e 9.7) × `8_financeiro.md` (§2, regra de robustez). A taxa de ocupação de dia útil é a 4ª do tornado e só tem estimativa do autor. A regra admite isso com faixa larga e destaque no cap. 10, que ainda não existe. Sugestão: buscar fonte N3 (curva de horários de pico do Google Maps das luderias do B1) ou manter e levar ao cap. 10.
+
 ## Aceitável
 
 **D14 — Formatação de referências repetidas.** Caps. 1, 2 e 5. Sebrae: "Agência de Notícias do Sebrae" (cap. 1) × "Agência Sebrae de Notícias" (cap. 5). Abrinq e Savills sem local no cap. 1 e com local no cap. 5. Resolve-se na lista única de referências.
@@ -53,6 +57,10 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D18 — Triangulação anunciada sem base teórica.** Cap. 1 (1.2) cita "triangulação" como teste das premissas; o cap. 2 não trata do conceito. Pode ficar só para o cap. 3 (metodologia).
 
 ---
+
+**D21 — Árvore de direcionadores como quadro.** Cap. 9 (9.1) × `8_financeiro.md` (§1, "a árvore aparece como figura"). O rascunho usa o Quadro 9.1. Trocar por figura na revisão de forma, se couber no teto.
+
+**D22 — Registro completo de premissas sem apêndice.** Cap. 9 (9.2) × `10_biblio-apendices.md`. O texto remete ao "Apêndice `[letra]`"; o registro completo (38 linhas) está só na aba premissas do modelo. Definir a letra e gerar o apêndice a partir da planilha.
 
 # Cortes em potencial
 
@@ -77,6 +85,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **C08 — Perfil do jogador que o próprio texto não usa (cap. 2, 2.4).** O 2.4 descreve o Censo Ludopedia (39% mulheres, 75% superior, 59% jogam mais de duas vezes por mês, 35% com mais de 50 jogos) e o Woods (96% homens) e depois diz que esses números não entram como premissa. Ficar com a conclusão (amostra autosselecionada, núcleo engajado) e o dado de preço, que entra no 6.3. Ganho: ~60 palavras.
 
 ## Baixo ganho
+
+**C13 — Estrutura das unidades da São Jogue repetida (cap. 9, 9.2 e 9.8).** Mesas, assentos e turnos do site de reservas aparecem nas premissas e de novo na checagem de capacidade; quando o cap. 3 descrever o B3, os dois trechos viram remissão. Ganho: ~40 palavras.
 
 **C09 — Duas listas de seis forças do macroambiente (cap. 2, 2.2.1).** A lista de Kotler e Keller e a do PESTEL dizem o mesmo; ficar só com a do PESTEL, que é a usada no 5.5. Ganho: ~25 palavras.
 

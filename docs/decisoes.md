@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 31/10/2026 | Cap. 9: modelo em preços constantes de out/2026 com TMA real de 15% (Selic menos IPCA esperado, mais prêmio de 3 a 9 p.p.); sem valor residual; formato de referência igual a uma unidade da São Jogue (10 mesas, taxa de R$ 28,00/22,00); A&B no anexo I e taxa de entrada no anexo III do Simples, até o cap. 8 | `textos/capitulos/9_plano_financeiro.md`; aba premissas do modelo |
+| 31/10/2026 | Cap. 9: o tornado e o ponto de ruptura saem do script, que recalcula a planilha no LibreOffice e para se o VPL divergir | `_src/extras/gerar_modelo_financeiro.py` |
 | 31/10/2026 | B3: visitas só em sexta e sábado à noite (orientador), para medir o movimento máximo; ocupação do salão sai dos grupos de mesa minuto a minuto, sobre as mesas informadas pelo autor e os 48 assentos do site de reservas; NFC-e entre visitas da mesma unidade é piso das vendas (nota só a pedido do cliente) | `docs/registro-de-alteracoes.md` (31/10 01:27) |
 | 31/10/2026 | B3, visita de 30/10: saída pela porta esquecida no app vem da saída da mesa do grupo; hora do pedido não vale (só chegada, quantidade e tipo dos itens) | `docs/registro-de-alteracoes.md` (31/10 00:21) |
 | 30/10/2026 | B2, Notion: "Análise de temas" vazio quer dizer "anterior a 30/10/2026" (1.273 páginas com "Claude 30/10/2026"); nos CSVs exportados, as duas opções vão por extenso | `docs/registro-de-alteracoes.md` (30/10 19:27) |
