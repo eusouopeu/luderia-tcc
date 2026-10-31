@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 31/10/2026 (01h59). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
+Atualizado em 31/10/2026 (02h26). Semana 5 do cronograma (10/10 a 16/10). Próxima entrega: **16/10, coleta em estágio avançado**.
 
 ## Fazendo agora
 
@@ -35,6 +35,8 @@ Atualizado em 31/10/2026 (01h59). Semana 5 do cronograma (10/10 a 16/10). Próxi
 - **Contagem do B3, Bela Vista, sexta 16/10** (segunda visita, 19h31 às 22h00): só o POV2, o de mais dados. Provisório: 10 pessoas em 4 grupos pela porta (4,0 por hora), 7 grupos de mesa com 17 pessoas e permanência média de 82,9 min; pedidos sem chegada registrada.
 
 - **Contagem do B3, Paralela, sexta 30/10** (quarta visita, 19h20 às 21h59): só o POV2, em `originais/2026-10-30_SJPA/`; NFC-e final nº 12409 transcrita. Com as respostas do autor de 31/10: 13 pessoas em 7 grupos pela porta (4,9 por hora, permanência de 103,8 min), 7 grupos de mesa com 31 pessoas (136,9 min, piso: 4 mesas já estavam no salão), 7 pedidos (3 bebidas, 3 comidas, 1 sobremesa). Na Tab 1 do agregado do B3 e no Notion "3 - Visitas presenciais" (linha 4).
+
+- **Cap. 6, 6.3 e 6.4** (31/10): rascunho parcial em `textos/capitulos/6_plano_de_marketing.md` e `.docx`. Preço: taxa por pessoa por turno de 3 h (R$ 28,00/22,00), acima da mediana dos concorrentes (R$ 25,00/17,50). Praça: Pituba, 1ª da matriz do Censo 2022 (`B4-a_matriz_bairros.py`), com ponto a até 1.000 m do metrô. Faltam 6.1, 6.2, 6.5 e 6.6.
 
 - **Cap. 8, aspectos jurídicos** (31/10): rascunho em `textos/capitulos/8_aspectos_juridicos.md` e `.docx` (3/3 páginas). Sociedade limitada no Simples como EPP; Simples custa 10,1% da receita contra 21,9% no Lucro Presumido. CNPJ das duas unidades da São Jogue coletados (B4). CNAE principal 5611-2/01 (decisão do autor). Falta conferir as normas `[AV]` (pendências).
 

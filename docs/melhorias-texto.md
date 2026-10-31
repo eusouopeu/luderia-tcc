@@ -48,6 +48,10 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D26 — Codificação do B2: cap. 3 × instrução.** Cap. 3 (3.4.2 e 3.4.3) × `4_metodologia.md` §3.4. O cap. 3 descreve a prática atual — codificação temática com 22 temas, feita com apoio de inteligência artificial e validada por recodificação cega de 139 avaliações com kappa ≥ 0,70. A instrução ainda prevê dicionário automático de 11 aspectos, validado por kappa e F1 em 200 avaliações. Sugestão: decidir o instrumento (pendências, item 15, e "Instruções ainda desatualizadas") e alinhar a instrução ou o capítulo.
 
+**D26 — Mediana da taxa de entrada dos concorrentes: 18,75 × 25,00.** Cap. 9 (9.8 e aba checagens) × cap. 6 (6.3). O cap. 9 usa R$ 18,75, mediana da coluna "couvert ou taxa de jogo" de `B1_cardapios_itens_precos.xlsx`, que inclui uma pizza chamada "Lúdico" (Ludoteca BGC, R$ 30,00) e a sala do Café Geek cobrada por hora e por grupo, e mistura dia útil e fim de semana. O cap. 6 separa os dias e dá R$ 25,00 no fim de semana e R$ 17,50 no dia útil, com 6 concorrentes. A conclusão (São Jogue acima da mediana) não muda. Sugestão: corrigir a classificação no B1 e rodar de novo o modelo do cap. 9.
+
+**D27 — Frequência de preço nas avaliações: 12,8% × 2,7% e 9,3%.** Cap. 5 (5.2.2, Bardin provisório de 15/10: "preço e valor percebido" em 12,8%) × cap. 6 (6.3, temas do Notion de 30/10: preço da entrada em 44 e preço do consumo em 152 das 1.628 avaliações). São codificações diferentes; alinhar quando o 5.2 for refeito com o dicionário de 30/10.
+
 ## Aceitável
 
 **D14 — Formatação de referências repetidas.** Caps. 1, 2 e 5. Sebrae: "Agência de Notícias do Sebrae" (cap. 1) × "Agência Sebrae de Notícias" (cap. 5). Abrinq e Savills sem local no cap. 1 e com local no cap. 5. Resolve-se na lista única de referências.
@@ -97,6 +101,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **C13 — Estrutura das unidades da São Jogue repetida (cap. 9, 9.2 e 9.8).** Mesas, assentos e turnos do site de reservas aparecem nas premissas e de novo na checagem de capacidade; quando o cap. 3 descrever o B3, os dois trechos viram remissão. Ganho: ~40 palavras.
 
 **C14 — Carga do Simples dita duas vezes (caps. 8 e 9).** O 8.1 e o 9.4 repetem as alíquotas de 8,1% e 11,9%; no 9.4 basta remeter ao 8.1. Ganho: ~40 palavras.
+
+**C15 — Consumo nas NFC-e da São Jogue em dois capítulos (6.3 e 9.2).** O gasto de R$ 23,91 por pessoa e o cardápio da São Jogue aparecem nos dois; no 9.2 basta remeter ao 6.3. Ganho: ~50 palavras.
 
 **C09 — Duas listas de seis forças do macroambiente (cap. 2, 2.2.1).** A lista de Kotler e Keller e a do PESTEL dizem o mesmo; ficar só com a do PESTEL, que é a usada no 5.5. Ganho: ~25 palavras.
 

@@ -36,6 +36,7 @@ const PESOS = {
   "Código": 8, "Item": 22, "Variável ou categoria": 18, "Fundamentação": 20, "Mensuração ou codificação": 32,
   "Objetivo específico": 26, "Dimensão": 18, "Variáveis ou categorias": 36, "Itens": 20,
   "Técnicas": 74,
+  "Posição": 9, "Bairro": 24, "Concorrente": 30, "Capital": 18, "Dia útil": 14, "Fim de semana": 16, "Nota": 9,
   "ID": 7, "Premissa": 30, "Nível": 10, "Conta": 34, "Indicador": 34, "Direcionador": 20, "Cálculo": 52, "Premissas": 18, "Faixa testada": 16,
 };
 

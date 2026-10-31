@@ -1421,3 +1421,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: P5.5 pede voz ativa ou passiva analítica ("foi adotado"). Cap. 3 com as duas frases na analítica e .docx gerado de novo. D27 e a pendência saem. Busca nos demais capítulos: nenhuma passiva sintética de verbo de procedimento (só pronominais, como "dividem-se").
 **Justificativa**: escolha do autor em 31/10: vale a regra da skill.
 
+
+### 02:26
+**Objeto**: cap. 6, seções 6.3 e 6.4 (`textos/capitulos/6_plano_de_marketing.md` e `.docx`, novos); B4: `B4-c_ibge_censo_bairros.py` (tema características do domicílio, parte 1), `B4-b_ibge_censo_bairros.py` (colunas `domicilios_apartamento` e `pct_apartamento`), zip novo em `_dados-brutos/ibge_censo_2022/`, `[B4] População por Bairro 2022 (IBGE Censo).csv`, `B4-a_matriz_bairros.py` e `B4_matriz_bairros_salvador.csv` (novos); `_src/extras/gerar_docx_capitulo.js` (larguras de colunas); `bibliografia/referencias_bases_publicas.md`; `docs/melhorias-texto.md`, `decisoes.md`, `pendencias.md`, `status_capitulos.md` e `AGORA.md`
+**Antes**: cap. 6 não iniciado; sem renda nem substituta por bairro no B4.
+**Depois**: 6.3 com a taxa de entrada de 7 concorrentes que a publicam (mediana de R$ 25,00 no fim de semana e R$ 17,50 no dia útil, contra R$ 28,00 e R$ 22,00 da São Jogue), menções a preço no B2 (Notion, 31/10: entrada 20 positivas e 24 negativas; consumo 91 e 61, em 1.628 avaliações; gasto declarado com mediana de R$ 80,00 a R$ 100,00 em 352 declarações sem a Bodogami), consumo nas NFC-e (R$ 23,91 por pessoa) e POF; faixas R06 a R08 confirmadas. 6.4 com a matriz de 10 bairros candidatos (≥ 80% de apartamentos e ≥ 3.500 pessoas de 20 a 39 anos): Pituba em 1º com os pesos do autor e com três outros conjuntos; ponto a até 1.000 m de metrô pela mediana de avaliações dos concorrentes do B1 (770 com estação × 396 sem). Melhorias: D26, D27 e C15.
+**Justificativa**: pedido do autor em 31/10 para gerar o cap. 6 parcial, só com 6.3 e 6.4.
+
+### 02:26 (divergência)
+**Objeto**: categoria "couvert ou taxa de jogo" do B1 (`B1_cardapios_itens_precos.xlsx`) × checagem de preço do cap. 9
+**Antes**: a mediana de R$ 18,75 (cap. 9, 9.8) inclui a pizza "Lúdico" da Ludoteca BGC (R$ 30,00) e a sala do Café Geek (R$ 10,00 por hora e por grupo).
+**Depois**: o cap. 6 (6.3) exclui os dois itens e separa os dias da semana.
+**Efeitos colaterais**: a checagem de preço do cap. 9 e a estatística descritiva de cardápios do B1 usam a categoria com os dois erros; a conclusão (São Jogue acima da mediana) não muda. Não corrigido no B1 sem pedido do autor.

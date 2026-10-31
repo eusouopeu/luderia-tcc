@@ -4,7 +4,11 @@ Trata os Agregados por Bairros do Censo 2022 (IBGE) para as 27 capitais.
 Entrada: zips e dicionário em dados/[B4] Bases publicas/_dados-brutos/ibge_censo_2022/
 Saída: ponto_operacoes/"[B4] População por Bairro 2022 (IBGE Censo).csv"
   uma linha por bairro: população, domicílios, média de moradores, área, densidade,
-  população por faixa etária e participação da faixa de 20 a 39 anos.
+  população por faixa etária, participação da faixa de 20 a 39 anos e participação
+  dos apartamentos nos domicílios ocupados (V00049 ÷ domicílios particulares
+  permanentes ocupados, do tema Características do Domicílio - Parte 1). O Censo
+  2022 não publica renda por bairro; a proporção de apartamentos entra no 6.4
+  como substituta declarada da renda.
 
 Só entram capitais com divisão oficial de bairros cadastrada no IBGE.
 Uso no plano: escolha do bairro e perfil do entorno (6.4, 7.1).
@@ -74,8 +78,11 @@ def main() -> None:
     demo = ler_zip("Agregados_por_bairros_demografia_*.zip")
     demo = demo[["CD_BAIRRO"] + list(rotulos)].rename(columns=rotulos)
 
+    dom = ler_zip("Agregados_por_bairros_caracteristicas_domicilio1_*.zip")
+    dom = dom[["CD_BAIRRO", "V00049"]].rename(columns={"V00049": "domicilios_apartamento"})
+
     df = basico[["CD_BAIRRO", "NM_BAIRRO", "CD_MUN", "AREA_KM2"] + list(BASICO)].rename(columns=BASICO)
-    df = df.merge(demo, on="CD_BAIRRO", how="left")
+    df = df.merge(demo, on="CD_BAIRRO", how="left").merge(dom, on="CD_BAIRRO", how="left")
     for c in df.columns:
         if c not in ("CD_BAIRRO", "NM_BAIRRO", "CD_MUN"):
             df[c] = numero(df[c])
@@ -86,6 +93,7 @@ def main() -> None:
     print("faixas somadas em pop_20_39:", faixas_20_39)
     df["pop_20_39"] = df[faixas_20_39].sum(axis=1, min_count=len(faixas_20_39))
     df["pct_pop_20_39"] = (df["pop_20_39"] / df["pessoas"] * 100).round(1)
+    df["pct_apartamento"] = (df["domicilios_apartamento"] / df["domicilios_particulares_ocupados"] * 100).round(1)
     df.columns = [c.lower() for c in df.columns]
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
