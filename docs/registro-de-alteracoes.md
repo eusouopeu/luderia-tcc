@@ -1403,3 +1403,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: 29,9% a 66,9%, média de 46,1%, sem contar a mesa do observador; modelo gerado de novo por `gerar_modelo_financeiro.py` (VPL, tornado e ruptura iguais: R04 rompe em 49,5%, ainda acima da média e abaixo do pico) e .docx por `gerar_docx_capitulo.js`. Análise do cap. 9 com os demais capítulos: nenhuma divergência ou corte novo em `docs/melhorias-texto.md`.
 **Justificativa**: pedido do autor em 31/10, depois de tirar a mesa do observador do denominador da ocupação.
 
+### 02:09
+**Objeto**: cap. 3 (`textos/capitulos/3_metodologia.md` e `.docx`, novos), `docs/melhorias-texto.md`, `textos/planejamento/status_capitulos.md`
+**Antes**: cap. 3 não iniciado. `melhorias-texto.md` com a última análise em 15/10, sem itens do cap. 3.
+**Depois**: rascunho do cap. 3 com as seções 3.1 a 3.8 (o extra de registro prévio não foi escrito, e as seções seguintes subiram um número), 5 quadros e cerca de 2.700 palavras (~10,2 páginas pelo critério de `1_estrutura.md`). Segue as instruções de 31/10: 54 concorrentes, entorno pelo Google Maps em 500 m e 1.000 m, B3 dentro do salão com a mesa do observador fora do denominador, NFC-e como piso, pedidos como descrição, auditorias com Wilson e kappa. A tabela das bases públicas foi para o Apêndice H, para caber no teto. `melhorias-texto.md`: D03, D04 e D05 estendidos ao cap. 3; novos D26 (codificação do B2 × instrução), D27 (voz passiva × P5.5) e C15 (matriz para apêndice).
+**Justificativa**: pedido do autor em 31/10 para gerar o capítulo de metodologia.
+

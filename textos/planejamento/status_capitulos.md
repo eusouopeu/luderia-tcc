@@ -6,7 +6,7 @@ Atualizado em 31/10/2026. Prazos do [cronograma](cronograma_luderia.md); tetos d
 |---|---|---|---|---|---|
 | 1 Introdução | Rascunho | 3,7/4 | Concluído | — | Revisado em 13/10 sem o público casual; falta conferir os 7 objetivos contra o teto de 6 de `1_estrutura.md` |
 | 2 Referencial teórico | Rascunho | 8,3/10 | Concluído | Lista de leitura, bibliografia v2 | Conferir edição e página dos livros `[AV]` (ver `docs/pendencias.md`, item 7) |
-| 3 Metodologia | Não iniciado ⚠ | 0/10 | 02/10 | Instruções prontas | Escrever a partir de `_instrucoes/4_metodologia.md` |
+| 3 Metodologia | Rascunho | ~10,2/10 | 02/10 (rascunho em 31/10) | B1 a B4; instruções de 31/10 | Rascunho de 31/10 (`3_metodologia.md` e `.docx`). Faltam os resultados das auditorias e da recodificação cega; números do B2 provisórios; codificação do B2 a decidir (melhorias D26); 0,2 página acima do teto (C15) |
 | 4 Sumário executivo | Não iniciado | 0/2 | 06/11 | Todos | Escrito por último |
 | 5 Análise de mercado | Esboço ⚠ | ~6/7 | 09/10 (5.1, 5.4, 5.5); 16/10 (5.3); 30/10 (5.2) | B1, B4; B2 para 5.2 | Esboço de 15/10 com lacunas `[script]`, `[AV]` e `[BUSCAR]` (pendências, item 9); 5.2 aguarda o Bardin |
 | 6 Plano de marketing | Não iniciado | 0/8 | 16/10 (6.3, 6.4); 30/10 (demais) | B1, B2, B4 | Preço (6.3) e bairro (6.4) |

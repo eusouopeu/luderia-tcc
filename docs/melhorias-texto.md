@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 15/10/2026, sobre os caps. 1 (rascunho), 2 (rascunho) e 5 (esboço).
+Última análise: 31/10/2026, com o cap. 3 (rascunho) sobre os caps. 1, 2, 5, 8 e 9.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -18,11 +18,11 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D02 — Objetivos e seções da introdução fora da estrutura.** Cap. 1 (1.1) × `1_estrutura.md` (1.3). O cap. 1 tem 7 objetivos específicos; a instrução permite no máximo 6, um por decisão, cada um respondido em 11.2. Os itens (vi) e (vii) cabem em um só (o (vi) da proposta da instrução). As seções também divergem: o cap. 1 tem 1.1 Objetivos, 1.2 Justificativa e 1.3 Estrutura; a instrução prevê 1.1 Contextualização, 1.2 Problema e oportunidade, 1.3 Objetivos, 1.4 Justificativa e 1.5 Estrutura. Sugestão: fundir (vi) e (vii) e renumerar, ou ajustar a instrução.
 
-**D03 — "Única luderia em operação" × "única no recorte".** Cap. 1 (contextualização) × cap. 5 (5.3.3, Tabela 5.1). O cap. 1 afirma que a São Jogue é a única luderia em operação em Salvador; o cap. 5 diz "única no recorte", com 13 resultados na busca, 7 acima de 100 avaliações e 1 aprovado na curadoria. A afirmação do cap. 1 é mais forte que o dado. Sugestão: "a única luderia de Salvador com mais de 100 avaliações no Google Maps (Bloco B1, 2026)".
+**D03 — "Única luderia em operação" × "única no recorte".** Cap. 1 (contextualização) × cap. 5 (5.3.3, Tabela 5.1). O cap. 1 afirma que a São Jogue é a única luderia em operação em Salvador; o cap. 5 diz "única no recorte", com 13 resultados na busca, 7 acima de 100 avaliações e 1 aprovado na curadoria. A afirmação do cap. 1 é mais forte que o dado. Sugestão: "a única luderia de Salvador com mais de 100 avaliações no Google Maps (Bloco B1, 2026)". Em 31/10, o cap. 3 (3.3.3) também diz "única luderia de Salvador".
 
-**D04 — Categorias da análise de conteúdo do B2.** Cap. 2 (2.5) × cap. 5 (5.2.2). O cap. 2 diz que as categorias são comida, serviço, ambiente, acervo e preço, e que a análise está no cap. 6.2. O cap. 5.2.2 usa atendimento, alimentos e bebidas, acervo, mediação lúdica e preço: a mediação lúdica não está no cap. 2, e o ambiente não aparece no cap. 5. Sugestão: alinhar as duas listas ao dicionário de `textos/instrumentos/analise_conteudo_bardin_B2.md` e dizer, no cap. 2, que a análise aparece em 5.2 (ocasiões e temas) e 6.2 (acervo e atributos).
+**D04 — Categorias da análise de conteúdo do B2.** Cap. 2 (2.5) × cap. 5 (5.2.2). O cap. 2 diz que as categorias são comida, serviço, ambiente, acervo e preço, e que a análise está no cap. 6.2. O cap. 5.2.2 usa atendimento, alimentos e bebidas, acervo, mediação lúdica e preço: a mediação lúdica não está no cap. 2, e o ambiente não aparece no cap. 5. Sugestão: alinhar as duas listas ao dicionário de `textos/instrumentos/analise_conteudo_bardin_B2.md` e dizer, no cap. 2, que a análise aparece em 5.2 (ocasiões e temas) e 6.2 (acervo e atributos). Em 31/10, o cap. 3 (3.4.2) entra com uma terceira lista: os 22 temas do dicionário de 30/10 (`textos/instrumentos/dicionario_temas_B2.md`), que ainda não foi unificado com o livro do Bardin (pendências, item 15).
 
-**D05 — PRC anunciada e aplicada pela metade.** Cap. 2 (2.2.2) × cap. 5 (5.2.2). O cap. 2 define a PRC pela comparação da nota de quem elogia, de quem critica e de quem não menciona o aspecto (penalidade e recompensa contra uma referência). O cap. 5.2.2 traz só a nota média das menções negativas (2,83 na mediação; 3,11 no preço), sem a referência nem as positivas. Lido isolado, parece que a classificação Kano já saiu. Sugestão: no cap. 5 dar as três notas (ou a diferença para a referência) ou dizer que a classificação fica para o cap. 6.
+**D05 — PRC anunciada e aplicada pela metade.** Cap. 2 (2.2.2) × cap. 5 (5.2.2). O cap. 2 define a PRC pela comparação da nota de quem elogia, de quem critica e de quem não menciona o aspecto (penalidade e recompensa contra uma referência). O cap. 5.2.2 traz só a nota média das menções negativas (2,83 na mediação; 3,11 no preço), sem a referência nem as positivas. Lido isolado, parece que a classificação Kano já saiu. Sugestão: no cap. 5 dar as três notas (ou a diferença para a referência) ou dizer que a classificação fica para o cap. 6. Em 31/10, o cap. 3 (3.5.1) define a PRC como a nota média com e sem crítica a cada tema, sem o grupo de quem elogia; alinhar com a definição do cap. 2.
 
 **D06 — PESTEL: o que o cap. 2 promete e o que o cap. 5 entrega.** Cap. 2 (2.2.1) × cap. 5 (5.5). O cap. 2 diz que o 5.5 usa "renda por bairro, tributos e taxa de juros". No cap. 5, a renda por bairro está em 5.2.1 e ainda não foi coletada, os tributos foram para o cap. 8 e o fator ambiental foi excluído (o cap. 2 lista seis dimensões). Sugestão: no cap. 2, citar os exemplos que de fato entram (juros, IPCA da alimentação fora do lar, aluguel comercial) e dizer que só entram dimensões com efeito mensurável.
 
@@ -46,6 +46,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D24 — Reforma tributária: data de efeito.** Cap. 5 (5.4/PESTEL) diz que a LC 214/2025 "muda a tributação de bares e restaurantes a partir de 2026"; o cap. 8 (8.1) diz que o Simples continua e que a opção de recolher IBS e CBS por fora vale a partir de 2027. Os dois trechos têm `[AV]`; conferir no texto da lei e alinhar.
 
+**D26 — Codificação do B2: cap. 3 × instrução.** Cap. 3 (3.4.2 e 3.4.3) × `4_metodologia.md` §3.4. O cap. 3 descreve a prática atual — codificação temática com 22 temas, feita com apoio de inteligência artificial e validada por recodificação cega de 139 avaliações com kappa ≥ 0,70. A instrução ainda prevê dicionário automático de 11 aspectos, validado por kappa e F1 em 200 avaliações. Sugestão: decidir o instrumento (pendências, item 15, e "Instruções ainda desatualizadas") e alinhar a instrução ou o capítulo.
+
 ## Aceitável
 
 **D14 — Formatação de referências repetidas.** Caps. 1, 2 e 5. Sebrae: "Agência de Notícias do Sebrae" (cap. 1) × "Agência Sebrae de Notícias" (cap. 5). Abrinq e Savills sem local no cap. 1 e com local no cap. 5. Resolve-se na lista única de referências.
@@ -65,6 +67,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D22 — Registro completo de premissas sem apêndice.** Cap. 9 (9.2) × `10_biblio-apendices.md`. O texto remete ao "Apêndice `[letra]`"; o registro completo (38 linhas) está só na aba premissas do modelo. Definir a letra e gerar o apêndice a partir da planilha.
 
 **D25 — Normas estaduais e municipais sem conferência.** Cap. 8 (Tabela 8.1 e Quadro 8.1) × `6_juridico.md` ("toda informação legal deve citar a norma e ter a vigência conferida"). LOUOS de Salvador, Lei estadual 12.929/2013 (bombeiros), RICMS-BA, ICMS de 4% sobre o A&B, ISS de 5% e contribuição patronal de 27,8% estão `[AV]`. A conclusão (Simples mais barato) não muda com eles: a diferença é de R$ 103 mil por ano.
+
+**D27 — Voz passiva no cap. 3.** Cap. 3 × `1_estrutura.md` (P5.5). O cap. 3 usa a passiva analítica ("são conferidas", "é trocado"), como pede a skill `meu-estilo-escrita`; a P5.5 pede a sintética ("confere-se"). As duas regras se contradizem. Sugestão: o autor decide qual vale e a outra é ajustada.
 
 # Cortes em potencial
 
@@ -87,6 +91,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **C07 — Prática de mercado dos indicadores (cap. 2, 2.6).** Os percentuais de Frezatti et al. (54% VPL, 38% TIR) e o uso do payback simples não mudam decisão do plano; o que importa é a crítica ao estudo de Ourinhos (sem sensibilidade). Reduzir o parágrafo a duas frases. Ganho: ~60 palavras.
 
 **C08 — Perfil do jogador que o próprio texto não usa (cap. 2, 2.4).** O 2.4 descreve o Censo Ludopedia (39% mulheres, 75% superior, 59% jogam mais de duas vezes por mês, 35% com mais de 50 jogos) e o Woods (96% homens) e depois diz que esses números não entram como premissa. Ficar com a conclusão (amostra autosselecionada, núcleo engajado) e o dado de preço, que entra no 6.3. Ganho: ~60 palavras.
+
+**C15 — Matriz de evidências no corpo do cap. 3 (3.6).** O cap. 3 fecha em cerca de 10,2 páginas, acima do teto de 10. A matriz (Quadro 3.5, meia página) pode ir para apêndice, com uma frase no 3.6, como a P4.2 permite. Ganho: cerca de 175 palavras.
 
 ## Baixo ganho
 
