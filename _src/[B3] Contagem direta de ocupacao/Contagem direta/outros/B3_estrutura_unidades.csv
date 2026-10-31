@@ -1,0 +1,7 @@
+unidade;ambiente;mesas;assentos;composicao;horario_seg_sab;horario_dom;fonte;nivel;observacao
+BV;salao_jogos;11;48;"8 mesas de até 6 lugares e 3 de 3 ou 4 lugares";12:00-22:00;13:00-21:00;"Mesas e composição: autor, 31/10/2026 (visitas). Assentos: site de reservas da São Jogue (48 por turno de 3 h, turnos de 12:00, 15:30 e 19:00), print de 31/10/2026. Horário: autor e B1_horarios.csv";N5 + N3;"Cadeiras de metal preto; mesas e estantes de pinus envernizado com estrutura de metal preto. Um caixa (1 computador, 1 impressora de nota) e 2 maquininhas de cartão. Os 48 assentos do site ficam abaixo da soma das mesas (até 60): vale o site."
+PA;salao_jogos;10;48;"8 mesas de até 6 lugares (um lado com banco único estofado para 3) e 2 de 2 ou 3 lugares";12:00-22:00;13:00-21:00;"Idem (autor, 31/10/2026; site de reservas, print de 31/10/2026)";N5 + N3;"Mesmo padrão de mobiliário e de caixa da Bela Vista. Os 48 assentos do site ficam abaixo da soma das mesas (até 54): vale o site."
+BV;sala_karaoke;1;6;"estimativa do autor";12:00-22:00;13:00-21:00;"Autor, 31/10/2026: não conferido no local nem no site";N6;"Ambiente reservável à parte do salão (site de reservas)."
+BV;sala_rpg;1;6;"estimativa do autor";12:00-22:00;13:00-21:00;"Idem";N6;"Idem."
+PA;sala_karaoke;1;6;"estimativa do autor";12:00-22:00;13:00-21:00;"Idem";N6;"Idem."
+PA;sala_rpg;1;6;"estimativa do autor";12:00-22:00;13:00-21:00;"Idem";N6;"Idem."

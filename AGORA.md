@@ -34,6 +34,8 @@ Atualizado em 31/10/2026 (00h21). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Contagem do B3, Paralela, sexta 30/10** (quarta visita, 19h20 às 21h59): só o POV2, em `originais/2026-10-30_SJPA/`; NFC-e final nº 12409 transcrita. Com as respostas do autor de 31/10: 13 pessoas em 7 grupos pela porta (4,9 por hora, permanência de 103,8 min), 7 grupos de mesa com 31 pessoas (136,9 min, piso: 4 mesas já estavam no salão), 7 pedidos (3 bebidas, 3 comidas, 1 sobremesa). Na Tab 1 do agregado do B3 e no Notion "3 - Visitas presenciais" (linha 4).
 
+- **B3, ocupação do salão** (31/10): calculada minuto a minuto pelos grupos de mesa, sobre 11 mesas (Bela Vista) ou 10 (Paralela) e 48 assentos: de 27% a 60% das mesas em média, pico de 70% (Paralela, 30/10). Estrutura das unidades em `outros/B3_estrutura_unidades.csv`. Paralela emitiu 209 NFC-e entre 17/10 e 30/10 (piso: nota só a pedido).
+
 - **Notion, "3 - Visitas presenciais"** (18/10): as 3 visitas do B3, uma linha cada, ligadas à São Jogue em "1 - Estabelecimentos". Acrescentar uma linha a cada visita nova (retorno de 18/10).
 
 - **Status da coleta no Notion** ("Luderias – Status da coleta", 15/10): 54 casas com status por fonte e, em cada linha, o que falta e como fechar. Horários (54 casas) e cardápios de 27 casas consolidados em 15/10. Em 17/10, "A - Estabelecimentos" completo no perfil básico (endereço, nota, avaliações, categoria, seguidores, posts e horários por dia nas 54 casas). Em 17/10, também o entorno (metrô e shoppings de porte a 500 m e 1000 m, com distância, coleta do OSM de 15/10). Lacunas que restam: acervo sem lista (25) e Instagram (18 casas parciais ou sem coleta); o status do entorno no banco de status ainda não foi atualizado.
