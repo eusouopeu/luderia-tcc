@@ -1383,3 +1383,10 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: cap. 8 não iniciado; sem dado da forma jurídica e do CNAE dos concorrentes de Salvador.
 **Depois**: rascunho do cap. 8 (8.1 a 8.3, 3 páginas): sociedade limitada no Simples Nacional como EPP; A&B no anexo I, taxa de entrada (art. 18, § 5º-F) e aluguel de jogos (art. 18, § 4º, V) no anexo III, conferidos no texto compilado da LC 123/2006 de 14/09/2026; Simples de R$ 88.729,00 (10,1%) contra Lucro Presumido de R$ 192.095,81 (21,9%) no ano maduro provável; CNAE principal proposto 5611-2/01; quadro de nove obrigações; locação, jogos e marca. CNPJ das duas unidades da São Jogue: sociedades empresárias limitadas no Simples, CNAE principal 5611-2/03, com 12 e 7 secundários (21 linhas na tabela; JSON bruto sem quadro de sócios e contatos). Melhorias: D23 a D25 e C14.
 **Justificativa**: pedido do autor em 31/10 para gerar o cap. 8 e atualizar os arquivos de acompanhamento.
+
+### 02:01
+**Objeto**: `B3-a_contagem.py`, `outros/B3_mesa_observador.csv` (novo), `contagem_resumo_visitas.csv`, Tab 1 de `dados/Coleta em estágio avançado/2026-10-30_B3_dados_agregados.xlsx`, `_instrucoes/4_metodologia.md` (B3)
+**Antes**: ocupação dividida por todas as mesas do salão (11 no Bela Vista, 10 na Paralela) e pelos 48 assentos. Mesas, média (pico): 10/10 44,1% (54,5%); 16/10 35,6% (45,5%); 17/10 26,9% (40,0%); 30/10 60,3% (70,0%). Assentos: 51,7% (66,7%); 22,5% (29,2%); 18,8% (25,0%); 56,1% (64,6%). Nota da Tab 1 dizia "do lado de fora".
+**Depois**: denominador sem a mesa do observador (10 e 9 mesas; 45 ou 46 assentos). Mesas: 48,5% (60,0%); 39,2% (50,0%); 29,9% (44,4%); 66,9% (77,8%). Assentos: 55,1% (71,1%); 23,5% (30,4%); 19,7% (26,1%); 58,6% (67,4%). Colunas novas `mesas_denominador` e `assentos_denominador`; as demais colunas do resumo não mudaram. Nota da Tab 1: dentro do salão, sem a mesa do observador. Notion "3 - Visitas presenciais" sem colunas de ocupação: nada a mudar.
+**Justificativa**: decisão do autor em 31/10: a mesa do observador, que fica fora dos registros, sai também do denominador.
+

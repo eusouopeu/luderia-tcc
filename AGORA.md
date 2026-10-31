@@ -40,7 +40,7 @@ Atualizado em 31/10/2026 (01h59). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 - **Cap. 9, plano financeiro** (31/10): rascunho em `textos/capitulos/9_plano_financeiro.md` (e `.docx`, gerado por `node _src/extras/gerar_docx_capitulo.js <md>`) e modelo `9_plano_financeiro_modelo.xlsx` (gerado e conferido por `_src/extras/gerar_modelo_financeiro.py`). Provável: investimento de R$ 503 mil, VPL de −R$ 479 mil; ruptura com ocupação de fim de semana de 49,5%. O que falta firmar está nas pendências.
 
-- **B3, ocupação do salão** (31/10): calculada minuto a minuto pelos grupos de mesa, sobre 11 mesas (Bela Vista) ou 10 (Paralela) e 48 assentos: de 27% a 60% das mesas em média, pico de 70% (Paralela, 30/10). Estrutura das unidades em `outros/B3_estrutura_unidades.csv`. Paralela emitiu 209 NFC-e entre 17/10 e 30/10 (piso: nota só a pedido).
+- **B3, ocupação do salão** (31/10): calculada minuto a minuto pelos grupos de mesa, sem a mesa do observador no denominador (10 mesas no Bela Vista, 9 na Paralela; 48 assentos menos 2 ou 3): de 30% a 67% das mesas em média, pico de 78% (Paralela, 30/10). O cap. 9 ainda cita os valores antigos (pendências). Estrutura das unidades em `outros/B3_estrutura_unidades.csv`. Paralela emitiu 209 NFC-e entre 17/10 e 30/10 (piso: nota só a pedido).
 
 - **Notion, "3 - Visitas presenciais"** (18/10): as 3 visitas do B3, uma linha cada, ligadas à São Jogue em "1 - Estabelecimentos". Acrescentar uma linha a cada visita nova (retorno de 18/10).
 

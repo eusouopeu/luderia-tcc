@@ -41,6 +41,10 @@ Regras (_instrucoes/4_metodologia.md, Bloco B3):
     visita. Mesas e assentos do salão vêm de outros/B3_estrutura_unidades.csv
     (informados pelo autor e pelo site de reservas), não do campo do app.
     Grupo que juntou mesas conta como uma mesa: a ocupação de mesas é um piso.
+    A mesa do observador não entra nos registros e sai do denominador: mesas
+    menos as do observador e assentos menos as pessoas da mesa dele, por visita
+    (outros/B3_mesa_observador.csv; colunas mesas_denominador e
+    assentos_denominador).
   - Notas no intervalo: entre a última NFC-e lida na primeira visita e a
     primeira lida na seguinte da mesma unidade (sem a do início, vale a do fim).
     As casas só emitem NFC-e quando o cliente pede: as notas são um piso das
@@ -63,6 +67,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[4]
 ENTRADA = ROOT / "dados" / "[B3] Contagem direta de ocupacao" / "_dados-brutos" / "app"
 ESTRUTURA = _AQUI.parents[1] / "outros" / "B3_estrutura_unidades.csv"
+OBSERVADOR = _AQUI.parents[1] / "outros" / "B3_mesa_observador.csv"
 SAIDA = ROOT / "dados" / "[B3] Contagem direta de ocupacao"
 
 
@@ -122,6 +127,7 @@ def resumo_visitas() -> pd.DataFrame:
     pedidos = ler("contagem_pedidos.csv")
     estrutura = pd.read_csv(ESTRUTURA, sep=";", encoding="utf-8-sig", dtype=str)
     salao = estrutura[estrutura["ambiente"] == "salao_jogos"].set_index("unidade")
+    obs = pd.read_csv(OBSERVADOR, sep=";", encoding="utf-8-sig", dtype=str).set_index("visita_id")
 
     linhas = []
     for _, v in visitas.iterrows():
@@ -174,9 +180,13 @@ def resumo_visitas() -> pd.DataFrame:
         if not g.empty:
             g = g.assign(_e=g["entrada"].map(minutos),
                          _s=g["saida"].map(minutos).fillna(m_fim_visita))
-        ocupacao = ocupacao_minuto(g, ini, fim,
-                                   float(salao.at[chave[0], "mesas"]) if chave[0] in salao.index else float("nan"),
-                                   float(salao.at[chave[0], "assentos"]) if chave[0] in salao.index else float("nan"))
+        # denominador sem a mesa e as pessoas do observador
+        mesas_obs = float(obs.at[v["visita_id"], "mesas"]) if v["visita_id"] in obs.index else 0.0
+        pessoas_obs = float(obs.at[v["visita_id"], "pessoas"]) if v["visita_id"] in obs.index else 0.0
+        mesas_den = float(salao.at[chave[0], "mesas"]) - mesas_obs if chave[0] in salao.index else float("nan")
+        assentos_den = float(salao.at[chave[0], "assentos"]) - pessoas_obs if chave[0] in salao.index else float("nan")
+        ocupacao = ocupacao_minuto(g, ini, fim, mesas_den, assentos_den)
+        ocupacao.update({"mesas_denominador": mesas_den, "assentos_denominador": assentos_den})
 
         # mesas
         perm_mesa = num(g["permanencia_min"]).dropna() if not g.empty else pd.Series(dtype=float)
