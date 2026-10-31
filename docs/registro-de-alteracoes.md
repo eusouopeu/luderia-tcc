@@ -1333,11 +1333,55 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: 210 campos preenchidos a partir das recoletas de 30/10 (casadas pelo ID ou pelo texto), mais 62 notas por aspecto pela convenção do autor ("5 (comida 3)": aspecto não citado = nota geral); as 1.273 linhas sem tema codificadas por Claude em 30/10 com o dicionário de 30/10 (1.037 ganharam tema; 236 ficaram sem tema por não citarem atributo, como "Excelente" ou só o nome do atendente; 4 modelos de propaganda excluídos); aluguel, loja e a ocasião em Contexto; coluna nova "Análise de temas" ("Claude 30/10/2026" em 1.273 linhas, "anterior a 30/10/2026" em 355), que separa "sem tema" de "não analisado". As 1.821 trocas, célula a célula e com a origem, no `..._mudancas.csv`. Nenhum dado existente apagado; dado ausente segue vazio. Amostra para a recodificação cega do autor: 139 linhas (20 das 80 de Fórmula ≥ 5 e 10% das 1.193, estratificada por com/sem tema, sementes 20261030 e 20261031), com as colunas de tema vazias.
 **Justificativa**: pedidos do autor em 30/10: levar as recoletas ao banco, codificar todas as linhas ainda sem tema, criar a coluna de contexto e separar uma amostra para a recodificação independente (Bardin).
 
+### 18:18
+**Objeto**: `_src/extras/gerar_planilha_agregada.py` (novo) e `dados/Dados agregados/` (novo: `dados_agregados.xlsx` e 20 gráficos em `graficos/`)
+**Antes**: dados agregados espalhados por bloco (`B1_estatistica_descritiva_*.xlsx`, CSVs da análise de legendas, `B1_cesta_jogos.xlsx`, `contagem_resumo_visitas.csv` e CSVs do B4), sem uma planilha única com tabelas formatadas e gráficos.
+**Depois**: planilha com índice, 21 tabelas (casas por metrópole, descritiva, dias de funcionamento, painéis por região e metrópole, entorno pelo Maps, preços e couvert dos cardápios, modelos de cobrança, eventos e temas do Instagram, jogos mais presentes e custo do acervo, contagem do B3, população e renda, aluguel comercial, salário de admissão, Simples Nacional, Selic e IPCA, IPCA de alimentação fora do domicílio) e a base das 54 casas. Tabelas do B1 por fórmula sobre a base, com linha de conferência (diferença 0 nas tabelas que fecham com o total); Arial 10, fundo branco, bordas só no cabeçalho e no fim. Fora: comentários do B2 (inclusive contagens de avaliações e a comparação legendas × B2) e porte de shopping do OSM. Dados lidos da branch `fix/entorno-maps-distantes` (a do Mac).
+**Justificativa**: pedido do autor: arquivo Excel com os dados agregados da pesquisa atual, sem comentários e sem OSM no entorno, com gráficos como os do documento anexo (Dance Forrónejo).
+
+
+### 18:25
+**Objeto**: `.gitignore`
+**Antes**: logs dos scripts de `_src/extras/` (gravados em `_src/logs/` por `log_execucao.py`) apareciam como arquivos não versionados.
+**Depois**: `_src/logs/` ignorado, como os logs dos blocos.
+**Justificativa**: logs de execução não são publicados; a pasta ficava solta no `git status` depois de rodar `gerar_planilha_agregada.py`.
+
+### 18:26
+**Objeto**: `_src/extras/gerar_planilha_comentarios.py` (novo), `_src/extras/planilha_estilo.py` (novo) e `dados/Dados agregados/` (novos: `dados_agregados_comentarios.xlsx` e 11 gráficos em `graficos_comentarios/`)
+**Antes**: sem planilha dos dados agregados dos comentários do B2; estilo das tabelas e dos gráficos só dentro de `gerar_planilha_agregada.py`.
+**Depois**: planilha separada com 11 tabelas (comentários por metrópole, nota geral, notas por aspecto, temas elogiados e criticados, críticas nas notas 1 a 3, contexto, gasto por pessoa, tempo de espera, barulho, tamanho do grupo e situação da codificação) e a base de 1.628 comentários sem o texto, com uma coluna 0/1 por tema, contexto e tamanho de grupo; tabelas por fórmula, conferência com diferença 0. Fonte: cópia atualizada do "2 - Comentários" de 30/10 (arquivos do projeto `b2/notion_comentarios/`, temas do commit 1c13d6a), não o Notion. Estilo comum das duas planilhas movido para `planilha_estilo.py` (os gráficos da planilha geral saíram idênticos antes da troca de cores).
+**Justificativa**: pedido do autor: planilha e gráficos separados para os dados agregados dos comentários.
+
+### 18:26
+**Objeto**: cores dos gráficos das duas planilhas de dados agregados (`_src/extras/planilha_estilo.py`, 31 PNGs e as duas planilhas)
+**Antes**: marrom, laranja, laranja claro, amarelo e vermelho, como no trabalho de marketing do autor; Salvador em laranja.
+**Depois**: só tons das paletas slate e purple do Tailwind CSS (purple-800, 500, 300 e 700; slate-300, 400, 600 e 700; grade em slate-200). Salvador em purple-700, com as demais barras em slate-400; rótulos de séries claras em slate-700 para ficarem legíveis.
+**Justificativa**: pedido do autor.
+
+### 18:32
+**Objeto**: planilhas de `dados/Dados agregados/` e `_src/extras/` (`gerar_planilha_agregada.py`, `gerar_planilha_comentarios.py`, `planilha_estilo.py`)
+**Antes**: `dados_agregados.xlsx` com as 21 tabelas de B1, B3 e B4 juntas e `dados_agregados_comentarios.xlsx` com o B2; títulos com o nome da tabela seguido de dois-pontos e da conclusão (ex.: "Tabela 1 – Casas do B1 por região e metrópole: São Paulo concentra 19 das 54; Salvador tem uma").
+**Depois**: um arquivo por bloco, com tabelas e abas renumeradas a partir de 1 em cada um: `B1_dados_agregados_completo.xlsx` (14 tabelas), `B1_dados_agregados_resumido.xlsx` (10 tabelas: sem eventos por categoria, dias citados nos eventos e temas das legendas do Instagram e sem o custo do acervo inicial, que eram as tabelas 10, 11, 12 e 14), `B2_dados_agregados.xlsx` (11), `B3_dados_agregados.xlsx` (1) e `B4_dados_agregados.xlsx` (6). Títulos só com a parte antes dos dois-pontos. Os dois arquivos antigos saíram. Gráficos iguais.
+**Justificativa**: pedido do autor: nomes das tabelas sem a conclusão ("o resto só polui") e tabelas separadas por bloco de dados, com duas versões do B1.
+
+
 ### 19:27
 **Objeto**: banco do Notion "2 - Comentários" (collection://c168e99a-a668-40b6-a0b4-1f64b5e15c06): propriedades "Itens positivos", "Itens negativos", "Contexto", notas por aspecto e a propriedade nova "Análise de temas" (seleção: "Claude 30/10/2026" e "anterior a 30/10/2026")
 **Antes**: banco conferido igual à exportação de 30/10 antes da primeira escrita (1.628 linhas; 327 com Itens positivos, 95 com Itens negativos, 39 com Contexto). Sem a coluna "Análise de temas". Aluguel e loja ainda como temas.
 **Depois**: 1.296 páginas atualizadas com as trocas das cópias de 18:13. Uma consulta SQL depois das escritas bate com `2026-10-30_2_comentarios_all_atualizado.csv` em todos os totais (diferença zero): 1.628 linhas, 1.286 com Itens positivos, 294 com Itens negativos, 420 com Contexto, 915 com Comida, 925 com Serviço, 920 com Ambiente e 1.273 com "Claude 30/10/2026" em "Análise de temas". No Notion, "Análise de temas" vazio quer dizer "anterior a 30/10/2026". O nome da opção não leva vírgula, porque o Notion não aceita vírgula em opção de seleção. Nenhum dado apagado. O único "Itens positivos" esvaziado (Bardo Mago, nº 41, "comemorações e grupos" de um aniversário) foi a ocasião levada para Contexto, que já trazia "aniversário".
 **Justificativa**: pedido do autor de 30/10. As cópias já atualizadas foram levadas ao Notion quando a cota de consultas voltou.
+
+### 22:31
+**Objeto**: cesta por pessoa do B1: `B1-a_estatistica_descritiva.py`, `B1_estatistica_descritiva_geral.xlsx`, `B1_estatistica_descritiva_por_grupo.xlsx`, `b1-estatisticas.json` do site, `gerar_planilha_agregada.py` e as planilhas e gráficos de `dados/Dados agregados/` (`05_cesta_por_metropole.png` substituído por `05_consumo_por_metropole.png`)
+**Antes**: cesta = couvert + bebida + entrada ou prato, com couvert 0 quando não encontrado no cardápio: 33 cestas, das quais 25 sem couvert; mediana de R$ 54. As notas das Tabelas 4 e 7 do B1 diziam "só nas casas com couvert, bebida e prato encontrados", o que os valores não seguiam.
+**Depois**: duas medidas. Consumo por pessoa = bebida + entrada ou prato (33 casas; mediana R$ 48,80, P25 R$ 38,50, P75 R$ 60). Cesta completa = consumo + couvert, só com couvert encontrado (8 casas; mediana R$ 74,25). Couvert não encontrado não entra como 0. Planilha agregada do B1 com as duas medidas nas Tabelas 2, 4, 5 e 7; gráfico da Tabela 5 passa a mostrar o consumo. O site mantém a cesta casa a casa de antes (colunas `cesta_site_*`, fora das planilhas) até trocar o rótulo; o JSON só ganhou as chaves `consumo_*`.
+**Justificativa**: escolha do autor (30/10, opção "duas colunas") depois da auditoria das planilhas agregadas, que achou o couvert 0 contra a regra de 16/10 (dado ausente é "não encontrado", nunca 0).
+
+### 22:31
+**Objeto**: divergências achadas na auditoria das planilhas agregadas (relatório: https://claude.ai/artifact/TPFC3JNScg7u4e73y9hwK8)
+**Antes**: (1) decisão de 15/10 "cesta casa a casa mantém casas sem couvert" (soma 0); (2) `B1_estatistica_descritiva_geral.xlsx` gerado em 17/10 a partir do `B1_resumo_estabelecimentos.xlsx` de 17/10; (3) registro de 30/10 (codificação do B2): 166 linhas codificadas pelo autor.
+**Depois**: (1) regra de 16/10 (couvert ausente não entra como 0), agora aplicada; (2) `B1_cardapios_itens_precos.xlsx` de 22/10 (linha de referência) e decisão de 30/10 (entorno só até 1000 m), ainda fora da base; (3) planilha do B2 e gráfico 11 dizem "355 linhas pelo autor".
+**Efeitos colaterais**: (2) medianas de cardápio de 14 casas e distâncias acima de 1 km da base do B1 ainda são as de 17/10 e 15/10; (3) autoria da codificação anterior a 30/10 a confirmar antes de descrever o método. Cap. 5 (5_analise_de_mercado.md, linha 79) chama de "cesta" o que agora é "consumo" (bebida + prato) e usa números de 26 casas.
 
 ## 2026/10/31
 

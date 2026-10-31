@@ -5,16 +5,18 @@ cada variável, para o conjunto inteiro (54 casas em 15/10/2026), por metrópole
 e por região do Brasil.
 
 Entrada: estabelecimentos/B1_resumo_estabelecimentos.xlsx (B1-b_resumo.py),
-abas estabelecimentos e cesta. As cestas são somadas aqui a partir das colunas
-de preço da aba cesta (couvert + bebida + entrada ou prato, mesmo critério da
-fórmula da planilha), para não depender dos valores em cache.
+abas estabelecimentos e cesta. Consumo e cesta são somados aqui a partir das
+colunas de preço da aba cesta, para não depender dos valores em cache:
+consumo por pessoa = bebida + entrada ou prato; cesta completa = consumo +
+couvert, só nas casas com couvert encontrado no cardápio (decisão de 30/10/2026).
 
 Regras:
 - cada place_id conta uma vez, na metrópole do endereço (capital_endereco) e
   na região da UF dessa capital (IBGE);
 - Instagram de LudoCafé e Dominaria fica vazio: o perfil coletado não é o da
   casa aprovada (editora e unidade de São Paulo);
-- couvert entra só nas casas que cobram couvert (sem couvert = vazio, não 0);
+- couvert entra só nas casas com couvert encontrado (sem couvert = vazio, não 0);
+  a cesta completa também: couvert não encontrado não entra como 0;
 - shoppings de porte só nas casas em que o porte foi buscado;
 - interações por post = (curtidas + comentários) ÷ posts do período; taxa de
   engajamento = interações por post ÷ seguidores;
@@ -101,9 +103,12 @@ VARS = {
     "couvert_mediana": ("Cardápio", "Couvert ou taxa de jogo (só casas que cobram)", "R$", REAIS),
     "bebida_mediana": ("Cardápio", "Bebida, mediana do cardápio", "R$", REAIS),
     "entrada_ou_prato_mediana": ("Cardápio", "Entrada ou prato, mediana do cardápio", "R$", REAIS),
-    "cesta_baixa": ("Cardápio", "Cesta por pessoa, nível baixo (P25)", "R$", REAIS),
-    "cesta_mediana": ("Cardápio", "Cesta por pessoa, nível mediano", "R$", REAIS),
-    "cesta_alta": ("Cardápio", "Cesta por pessoa, nível alto (P75)", "R$", REAIS),
+    "consumo_baixa": ("Cardápio", "Consumo por pessoa (bebida + entrada ou prato), nível baixo (P25)", "R$", REAIS),
+    "consumo_mediana": ("Cardápio", "Consumo por pessoa (bebida + entrada ou prato), nível mediano", "R$", REAIS),
+    "consumo_alta": ("Cardápio", "Consumo por pessoa (bebida + entrada ou prato), nível alto (P75)", "R$", REAIS),
+    "cesta_baixa": ("Cardápio", "Cesta completa (consumo + couvert encontrado), nível baixo (P25)", "R$", REAIS),
+    "cesta_mediana": ("Cardápio", "Cesta completa (consumo + couvert encontrado), nível mediano", "R$", REAIS),
+    "cesta_alta": ("Cardápio", "Cesta completa (consumo + couvert encontrado), nível alto (P75)", "R$", REAIS),
     "hamburguer_mediana": ("Cardápio", "Hambúrguer, mediana", "R$", REAIS),
     "batata_mediana": ("Cardápio", "Batata, mediana", "R$", REAIS),
     "cerveja_mediana": ("Cardápio", "Cerveja, mediana", "R$", REAIS),
@@ -113,6 +118,8 @@ VARS = {
     "avaliacoes_b2": ("B2", "Avaliações no recorte do B2 (até '3 meses atrás')", "avaliações", INT),
     "avaliacoes_b2_com_texto": ("B2", "Dessas, com texto", "avaliações", INT),
 }
+# Só para o site (cesta casa a casa com couvert não encontrado = 0); fora das planilhas.
+SITE = ["cesta_site_baixa", "cesta_site_mediana", "cesta_site_alta"]
 # Proporções (0/1 por casa): a média é a proporção de casas.
 FLAGS = {
     "tem_metro_1000m": "Com estação de metrô até 1000 m",
@@ -134,12 +141,17 @@ def hora(txt):
 def montar_dados():
     e = pd.read_excel(RESUMO, sheet_name="estabelecimentos")
     c = pd.read_excel(RESUMO, sheet_name="cesta")
-    for nivel, suf in [("cesta_baixa", "p25"), ("cesta_mediana", "mediana"), ("cesta_alta", "p75")]:
+    achou = c["couvert_no_cardapio"] == "sim"  # B1-b_resumo grava couvert 0 quando não acha
+    for nivel, suf in [("baixa", "p25"), ("mediana", "mediana"), ("alta", "p75")]:
         ok = c[f"bebida_{suf}"].notna() & c[f"entrada_ou_prato_{suf}"].notna()
-        c[nivel] = (c[f"couvert_{suf}"] + c[f"bebida_{suf}"] + c[f"entrada_ou_prato_{suf}"]).where(ok).round(2)
-    c["couvert_mediana"] = c["couvert_mediana"].where(c["couvert_no_cardapio"] == "sim")
-    precos = ["couvert_mediana", "bebida_mediana", "entrada_ou_prato_mediana", "cesta_baixa", "cesta_mediana",
-              "cesta_alta", "hamburguer_mediana", "batata_mediana", "cerveja_mediana", "refrigerante_mediana",
+        c[f"consumo_{nivel}"] = (c[f"bebida_{suf}"] + c[f"entrada_ou_prato_{suf}"]).where(ok).round(2)
+        c[f"cesta_{nivel}"] = (c[f"consumo_{nivel}"] + c[f"couvert_{suf}"]).where(ok & achou).round(2)
+        # site: cesta casa a casa de antes (couvert não encontrado soma 0), até o site trocar o rótulo
+        c[f"cesta_site_{nivel}"] = (c[f"consumo_{nivel}"] + c[f"couvert_{suf}"].where(achou, 0)).where(ok).round(2)
+    c["couvert_mediana"] = c["couvert_mediana"].where(achou)
+    precos = ["couvert_mediana", "bebida_mediana", "entrada_ou_prato_mediana", "consumo_baixa", "consumo_mediana",
+              "consumo_alta", "cesta_baixa", "cesta_mediana", "cesta_alta", "cesta_site_baixa", "cesta_site_mediana",
+              "cesta_site_alta", "hamburguer_mediana", "batata_mediana", "cerveja_mediana", "refrigerante_mediana",
               "drinks_mediana"]
     d = e.drop(columns=["cesta_baixa", "cesta_mediana", "cesta_alta"]).merge(
         c[["place_id", *precos]], on="place_id", how="left")
@@ -165,7 +177,7 @@ def montar_dados():
     d["cobra_couvert"] = d.couvert_no_cardapio.map({"sim": 1, "não": 0})
     for dia in DIAS:
         d[f"abre_{dia}"] = d[dia].notna().astype(int)
-    cols = ["place_id", "nome", "metropole", "regiao", *VARS, *FLAGS]
+    cols = ["place_id", "nome", "metropole", "regiao", *VARS, *FLAGS, *SITE]
     return d[cols].sort_values(["regiao", "metropole", "nome"]).reset_index(drop=True)
 
 
@@ -315,7 +327,8 @@ PAINEL = [
     ("posts no período (média)", "media", "n_posts_periodo", DEC1),
     ("interações por post (mediana)", "mediana", "interacoes_por_post", DEC1),
     ("com cardápio (casas)", "soma", "tem_cardapio", INT),
-    ("cesta mediana (mediana, R$)", "mediana", "cesta_mediana", REAIS),
+    ("consumo mediano (mediana, R$)", "mediana", "consumo_mediana", REAIS),
+    ("cesta completa mediana (mediana, R$)", "mediana", "cesta_mediana", REAIS),
     ("cesta mediana (mín., R$)", "min", "cesta_mediana", REAIS),
     ("cesta mediana (máx., R$)", "max", "cesta_mediana", REAIS),
     ("avaliações no B2 (soma)", "soma", "avaliacoes_b2", INT),
@@ -402,6 +415,9 @@ def aba_detalhe(wb, R, grp, grupos, nome, rotulo):
 def site(d):
     num = lambda s: pd.to_numeric(s, errors="coerce")
     geral = {c: {"grupo": g, "rotulo": rot, "unidade": uni, **resumo(d[c])} for c, (g, rot, uni, _) in VARS.items()}
+    for nivel, rot in (("baixa", "nível baixo (P25)"), ("mediana", "nível mediano"), ("alta", "nível alto (P75)")):
+        geral[f"cesta_{nivel}"] = {"grupo": "Cardápio", "rotulo": f"Cesta por pessoa, {rot}", "unidade": "R$",
+                                   **resumo(d[f"cesta_site_{nivel}"])}
 
     def painel(grp, grupos):
         out = []
@@ -413,7 +429,7 @@ def site(d):
             for c in ["avaliacao_media", "volume_avaliacoes", "seguidores", "interacoes_por_post", "cesta_mediana",
                       "fecha_tarde_h", "horas_semana", "n_posts_periodo", "dist_metro_m", "bebida_mediana",
                       "entrada_ou_prato_mediana", "couvert_mediana"]:
-                item[c] = resumo(s[c])
+                item[c] = resumo(s["cesta_site_mediana" if c == "cesta_mediana" else c])
             for c in ["tem_metro_1000m", "abre_domingo", "abre_segunda"]:
                 item[c] = round(float(s[c].mean()), 4)
             item["com_cardapio"] = int(s.tem_cardapio.sum())
@@ -453,7 +469,7 @@ def site(d):
                   "casas": int(d[f"abre_{x}"].sum())} for x in DIAS],
         "proporcoes": {c: {"rotulo": FLAGS[c], "casas": int(num(d[c]).sum()), "n": int(num(d[c]).notna().sum())}
                        for c in FLAGS},
-        "hist_cesta": faixas(d.cesta_mediana, 20),
+        "hist_cesta": faixas(d.cesta_site_mediana, 20),
         "hist_horas": faixas(d.horas_semana, 10),
         "hist_nota": [{"faixa": f"{a:.1f}", "casas": int((num(d.avaliacao_media).round(1) == round(a, 1)).sum())}
                       for a in [x / 10 for x in range(int(num(d.avaliacao_media).min() * 10), 51)]],
@@ -464,9 +480,10 @@ def site(d):
         # completa = bebida e entrada ou prato no cardápio. Couvert não cobrado não
         # é item faltando: a cesta soma couvert 0.
         "cestas": sorted(({"nome": r.nome, "metropole": r.metropole, "regiao": r.regiao,
-                           "baixa": float(r.cesta_baixa), "mediana": float(r.cesta_mediana), "alta": float(r.cesta_alta),
+                           "baixa": float(r.cesta_site_baixa), "mediana": float(r.cesta_site_mediana),
+                           "alta": float(r.cesta_site_alta),
                            "completa": bool(pd.notna(r.bebida_mediana) and pd.notna(r.entrada_ou_prato_mediana))}
-                          for r in d.itertuples() if pd.notna(r.cesta_mediana)), key=lambda x: x["mediana"]),
+                          for r in d.itertuples() if pd.notna(r.cesta_site_mediana)), key=lambda x: x["mediana"]),
         "metropoles": metro,
         "regioes": reg,
     }
@@ -474,7 +491,8 @@ def site(d):
 
 
 def main():
-    d = montar_dados()
+    d_site = montar_dados()
+    d = d_site.drop(columns=SITE)
     PASTA.mkdir(parents=True, exist_ok=True)
 
     wb = Workbook()
@@ -496,7 +514,7 @@ def main():
     wb.move_sheet("dados", offset=len(wb.sheetnames))
     wb.save(SAIDA_GRUPO)
 
-    site(d)
+    site(d_site)
     print(f"{len(d)} casas, {d.metropole.nunique()} metrópoles, {len(VARS)} variáveis + {len(FLAGS)} proporções")
     print(d.regiao.value_counts().reindex(ORDEM_REGIAO).to_string())
     print("soma por região:", d.regiao.value_counts().sum(), "| soma por metrópole:", d.metropole.value_counts().sum())
