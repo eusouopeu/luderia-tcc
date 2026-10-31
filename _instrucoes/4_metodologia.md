@@ -12,11 +12,11 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 
 - **Praça do plano:** Salvador (BA). A decisão de localização é o bairro e o ponto, não a cidade.
 - **Sem questionários.** Dados secundários públicos e uma única coleta primária comportamental (contagem direta de ocupação, com leitura do número da NFC-e).
-- **Estabelecimentos (Bloco B1):** concorrentes com **mais de 100 avaliações** no Google Maps nas **14 capitais classificadas como metrópole pela REGIC** (IBGE); população final esperada de 100 a 150 estabelecimentos após a curadoria.
+- **Estabelecimentos (Bloco B1):** concorrentes com **mais de 100 avaliações** no Google Maps nas **14 capitais classificadas como metrópole pela REGIC** (IBGE); **54 estabelecimentos** após a curadoria (164 candidatos; Machado Games e Ilusões Industriais excluídas por não serem luderias; Bardo Mago, La Tabuleria, TabuClub, Toca do Rato e Tubaleria incluídas em 14/10/2026).
 - **Avaliações (Bloco B2):** **todas as avaliações com texto publicadas até "3 meses atrás"** (rótulo relativo do Google Maps na data da coleta), por estabelecimento, com texto integral. O número de avaliações varia entre estabelecimentos. Não há divisão da base: a etapa exploratória e a descritiva usam a população inteira de avaliações coletadas.
 - **Modelo de alimentos e bebidas:** não é avaliado. Cozinha própria, parceria ou só bar deixa de ser variável do Bloco B1 e passa a premissa do autor no cap. 9.
 - **Cardápios** de cada estabelecimento.
-- **Contagem direta de ocupação** nas duas unidades da São Jogue (única luderia de Salvador), feita do lado de fora: 4 visitas de 3 horas, 2 por unidade, em horários planejados para os momentos de maior fluxo provável. Em cada unidade, a primeira visita é num sábado (03/10/2026), com entrada às 19h, e a segunda num domingo, 15 dias depois (18/10/2026), com entrada às 18h. O número da NFC-e lido nas duas visitas dá as notas emitidas no intervalo.
+- **Contagem direta de ocupação** nas duas unidades da São Jogue (única luderia de Salvador), feita dentro do salão, com o app de observação: 4 visitas de cerca de 3 horas, 2 por unidade, só em sexta e sábado à noite, para medir o movimento máximo (orientação de 31/10/2026). Bela Vista em 10/10 (sábado) e 16/10 (sexta); Paralela em 17/10 (sábado) e 30/10 (sexta). O número da NFC-e lido nas duas visitas da mesma unidade dá as notas emitidas no intervalo, piso das vendas.
 - **Bases públicas:** IBGE (Censo 2022 por setor censitário, estimativas populacionais, POF 2017–2018, PNAD Contínua, PAS, CONCLA), RAIS e Novo CAGED, FipeZap comercial, Lei Complementar 123/2006 e anexos do Simples Nacional, Banco Central (SGS e Focus).
 - **Garantias de robustez (núcleo):** validação da coleta e da codificação; ponderação por estabelecimento; registro de premissas com faixas e nível de evidência; três cenários; tornado; ponto de ruptura.
 - **Extras, só se sobrar tempo no fim:** testes de hipótese H1–H9 com registro prévio e correção para múltiplas comparações, na base inteira (§3.5); simulação de Monte Carlo ([8_financeiro.md](8_financeiro.md) §4.4). Se feitos, vão para apêndice. A banca de um plano de negócios avalia se a premissa se sustenta; os três cenários, o tornado e o ponto de ruptura já respondem sob quais condições o negócio é viável.
@@ -52,12 +52,14 @@ Cada bloco tem pasta `[Bn] Nome`, com o mesmo nome, em `_src/` e em `dados/`; em
 
 | Item | Descrição |
 |---|---|
-| Fonte | Google Places API; site, Instagram e cardápio digital de cada estabelecimento; OpenStreetMap |
-| Recorte | Luderias, ludobares e quiz-bares com **mais de 100 avaliações** nas **14 capitais classificadas como metrópole** pela REGIC 2018 (IBGE) e em suas regiões metropolitanas; 164 candidatos antes da curadoria manual (`estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv`); população final esperada de 100 a 150. Cada estabelecimento é atribuído à metrópole pelo endereço |
-| Variáveis | Avaliação média, volume de avaliações, política de preço, acervo declarado, entorno em 500 m e 1.000 m. O modelo de A&B não é registrado |
+| Fonte | Google Places API; Google Maps (entorno); site, Instagram, cardápio digital e lista de acervo de cada estabelecimento |
+| Recorte | Luderias, ludobares e quiz-bares com **mais de 100 avaliações** nas **14 capitais classificadas como metrópole** pela REGIC 2018 (IBGE) e em suas regiões metropolitanas; 164 candidatos antes da curadoria manual (`estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv`); **54 estabelecimentos** no objeto. Cada estabelecimento é atribuído à metrópole pelo endereço |
+| Variáveis | Avaliação média, volume de avaliações, política de preço, acervo declarado, horário de funcionamento (Places API, `regularOpeningHours`), entorno em 500 m e 1.000 m. O modelo de A&B não é registrado |
+| **Entorno** | Só pelo Google Maps (o OpenStreetMap saiu do coletor e da análise em 30/10/2026): estações de metrô, trem, VLT e BRT e shoppings de porte em 500 m e 1.000 m, e distância da estação e do shopping mais próximos, até 1.000 m, em linha reta de pino a pino. Shopping de porte = 1.000 avaliações ou mais no Maps; contagens com 500 e 5.000 avaliações para sensibilidade (`maps_entorno.user.js`) |
 | **Cardápios** | Itens oferecidos, preço por item, variedade por categoria e número de itens que exigem preparo (sem contar itens prontos, como balas, refrigerantes e água). Categorias fixas: **bebidas** (drinks, refrigerante, cerveja, não alcoólicas), **entradas** (batata, outras), **pratos principais** (hambúrguer, pizza, outros), **sobremesas**, **couvert ou taxa de jogo** |
-| Registro | Data da coleta e link do cardápio; preços em R$ com duas casas decimais |
-| Uso no plano | Concorrência (5.3), preço (6.3), cardápio (6.2), ticket médio (cap. 9) |
+| Registro | Data da coleta e link do cardápio; preços em R$ com duas casas decimais. Cardápios de prints, digitais e Takeat convertidos por regras de categoria; jogos à venda ficam fora. Item com preço por quantidade (chopp 1x, 2x, 3x) entra só com o preço de 1 unidade. Item com mais de uma linha (tamanho, combo ou print de outra data) fica todo na planilha, mas só a linha de referência (`linha_referencia` = S) entra na cesta e nas medianas: cardápio mais recente, sem combo, menor tamanho |
+| **Acervos** | Lista de jogos de qualquer das 54 casas que publique uma (Acervo de Jogos, rejoy, Ludopedia, site, Canva ou PDF), com ou sem cardápio. **Cesta de jogos** = jogos presentes em 15 ou mais dos 30 acervos; preço em faixa entre lojas (menor, mediana, p75, máximo); índice por loja só com 10 ou mais jogos comparáveis; custo do acervo inicial estendido pelo preço médio por título (`B1-a_cesta_jogos.py`) |
+| Uso no plano | Concorrência (5.3), preço (6.3), cardápio (6.2), ponto (6.4), acervo inicial e investimento (7.2, 9.3), ticket médio (cap. 9) |
 | Limitação | O corte de 100 avaliações exclui casas novas ou pequenas: o recorte descreve concorrentes estabelecidos. Cardápios desatualizados ou indisponíveis; preço de cardápio não informa quanto cada pessoa consome |
 
 ### Bloco B2 — Avaliações recentes
@@ -76,24 +78,40 @@ O recorte por período descreve a operação atual de cada concorrente e torna o
 
 ### Bloco B3 — Contagem direta de ocupação
 
-Única coleta primária do trabalho. Fornece a **âncora absoluta** de fluxo, tamanho de grupo e permanência, usada para calibrar a velocidade de avaliações (§3.6). A leitura do número da NFC-e acrescenta um registro transacional (tipo 2 na hierarquia de dados) ao que é observado na porta.
+Única coleta primária do trabalho. Fornece a **âncora absoluta** de fluxo, tamanho de grupo, permanência e ocupação do salão, usada para calibrar a velocidade de avaliações (§3.6). A leitura do número da NFC-e acrescenta um registro transacional (tipo 2 na hierarquia de dados) ao que é observado no salão.
 
 | Item | Descrição |
 |---|---|
-| Local | As duas unidades da São Jogue, única luderia de Salvador |
-| Visitas | 4 no total, 2 por unidade: a **primeira** e a de **retorno**, 15 dias depois, na mesma unidade |
-| Períodos | Primeiras visitas no **sábado, 03/10/2026**, as duas unidades no mesmo dia, na quinzena posterior ao pagamento dos servidores estaduais da Bahia (29/09 para inativos e pensionistas; 30/09 para ativos). Os retornos caem no **domingo, 18/10/2026**, na quinzena anterior ao pagamento de outubro (29/10). Fonte: Governo da Bahia, Tabela de Pagamentos 2026 |
-| Horário | Planejado, não sorteado: os horários cobrem os momentos de maior fluxo provável. Sábado, entrada às 19h; domingo, entrada às 18h; nas duas unidades. As reservas da São Jogue só abrem às 12h, 15h e 18h, e o início da noite é o horário de maior fluxo esperado. A planilha de sorteio (`B3-b_contagem_sorteio.py`, semente 20260916) fica como registro do desenho anterior |
-| Posição do observador | Do lado de fora do estabelecimento, com vista para a entrada |
-| Duração da visita | Fixa, de 3 horas. Horário de início e de fim registrados; todas as taxas são calculadas por hora observada |
-| Registro contínuo | Entrada e saída de cada grupo: horário e número de pessoas. Grupos identificados por código para ligar entrada e saída (permanência) |
-| Registro a cada 30 minutos | Saldo de pessoas no interior (entradas − saídas, a partir da contagem inicial) e mesas ocupadas, quando visíveis de fora |
-| NFC-e | Número da nota fiscal de uma compra no início e no fim de cada visita, com data, hora e série. A diferença entre a primeira visita e o retorno dá as notas emitidas em 15 dias; a diferença dentro da mesma visita dá as notas emitidas durante a observação |
-| Registro complementar | Mesas disponíveis (contagem única por unidade), política de cobrança aplicada, preços do cardápio na data, dia, horário e condições atípicas (evento, chuva, jogo de futebol) |
-| Instrumento | Formulário padronizado preenchido no celular; sem fotos de pessoas; sem registro de características individuais |
-| Saídas | Pessoas por hora; tamanho dos grupos; permanência média (com observações censuradas); pessoas por nota fiscal (entradas ÷ notas emitidas durante a visita); notas por dia no intervalo de 15 dias; estimativa de visitantes por semana, em faixa |
+| Local | As duas unidades da São Jogue, única luderia de Salvador: Bela Vista (`SJBV`, unidade `BV`) e Paralela (`SJPA`, unidade `PA`) |
+| Visitas | 4 no total, 2 por unidade, só em **sexta e sábado à noite**, para medir o movimento máximo (orientação de 31/10/2026): Bela Vista em 10/10 (sábado) e 16/10 (sexta); Paralela em 17/10 (sábado) e 30/10 (sexta). Início entre 18h30 e 19h30. O desenho anterior (sábado 03/10 e domingo 18/10, retorno a 15 dias, horários sorteados por `B3-b_contagem_sorteio.py`, semente 20260916) fica só como registro |
+| Posição do observador | **Dentro do salão**, sentado a uma mesa como cliente. A mesa do próprio observador não entra nos registros: nem o grupo, nem as pessoas, nem o comportamento (3 pessoas na visita de 10/10 ao Bela Vista; 2 nas demais) |
+| Duração da visita | Prevista de 3 horas; observada de 2,5 a 3,3 horas. Horário de início e de fim registrados; todas as taxas são calculadas por hora observada |
+| Registro contínuo | Entrada e saída de cada grupo na porta (horário, pessoas, crianças), com código para ligar entrada e saída; e cada grupo de mesa: mesa, entrada, saída, permanência, pessoas, crianças, jogos e chamadas do instrutor. Grupo que já estava no salão na chegada é estoque inicial, e grupo ainda no salão no fim tem permanência censurada |
+| Contagens periódicas | Mesas ocupadas e vazias a cada 30 minutos, a partir da contagem inicial |
+| NFC-e | Série, número e emissão de uma nota no início e no fim de cada visita, lidos pelo QR ou transcritos da foto. A diferença entre as duas visitas da mesma unidade dá as notas emitidas no intervalo; a diferença dentro da visita, as notas emitidas durante a observação. A nota só é emitida a pedido do cliente: as notas emitidas são **piso** das vendas |
+| Registro complementar | Estrutura da unidade (mesas, assentos, estantes, capacidade do acervo, instrutores, atendentes; `outros/B3_estrutura_unidades.csv`, com mesas informadas pelo autor e os 48 assentos do site de reservas), política de cobrança aplicada, preços da NFC-e e do cardápio na data, condições atípicas (evento, chuva, jogo de futebol), nível de som e medidas do ambiente |
+| **Extra: pedidos** | Pedidos por mesa (categoria, quantidade, chegada e espera). Não foram coletados em todas as visitas: entram só como extra, descritivo, e não sustentam premissa. Hora do pedido da visita de 30/10 desconsiderada |
+| Instrumento | **App de observação** (Android, `_src/app-observacao/`), no celular, com gravação automática, backup diário e exportação em CSV; sem fotos de pessoas; sem registro de características individuais |
+| Saídas | Pessoas por hora; tamanho dos grupos; permanência média e mediana (com observações censuradas); ocupação das mesas e dos assentos, média e pico, minuto a minuto; pessoas por nota fiscal (entradas ÷ notas emitidas durante a visita); notas por dia no intervalo entre visitas; estimativa de visitantes por semana, em faixa |
 | Uso no plano | Premissas de ocupação, pessoas por mesa e giro (cap. 9); calibração do fluxo dos demais concorrentes; capacidade (7.2) |
-| Limitação | Quatro visitas em um único estabelecimento e uma única cidade, em um sábado e um domingo: a contagem não observa dias úteis, que entram pelo caminho das notas fiscais; observação de fora não vê o salão inteiro; numeração da NFC-e pode incluir delivery e vendas de balcão, e uma nota pode cobrir um grupo inteiro; permanência censurada pelo início e fim da visita |
+| Limitação | Quatro visitas em um único estabelecimento e uma única cidade, só em sexta e sábado à noite: a contagem não observa dias úteis nem horários de menor movimento, que entram pelo caminho das notas fiscais; NFC-e só a pedido do cliente (piso das vendas), podendo incluir delivery e balcão, e uma nota pode cobrir um grupo inteiro; um único intervalo entre visitas por unidade (Bela Vista, 10/10 a 16/10, 6 dias; Paralela, 17/10 a 30/10, 13 dias, abaixo dos 15 dias planejados); permanência censurada pelo início e fim da visita; a mesa do observador ocupa um lugar do salão durante a visita |
+
+#### Dados do app de observação
+
+O app exporta um CSV por conteúdo, `contagem_<conteúdo>.csv` (separador `;`, UTF-8 com BOM), guardado intacto em `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/originais/AAAA-MM-DD_<SJBV|SJPA>/`. O `B3-b_importar_app.py` consolida as visitas em `_dados-brutos/app/contagem_<conteúdo>.csv`, sempre com a unidade e a visita tiradas da pasta, nunca as digitadas no app. Correções de lançamento e descartes ficam em `outros/B3_correcoes_app.csv` e `outros/B3_descartes_app.csv`, com motivo, sem editar os originais; a NFC-e lida da foto entra com `fonte_registro` = `transcricao`. Toda linha leva `visita_id` (`AAAA-MM-DD_<SJBV|SJPA>`), `unidade` (`BV` ou `PA`), `visita_inicio` e `versao_app`.
+
+| Arquivo | Uma linha por | Conteúdo principal |
+|---|---|---|
+| `contagem_visitas.csv` | Visita | Início, fim, pausas, cobrança e valor, condições, NFC-e de início e de fim (série, número, emissão), CNPJ |
+| `contagem_grupos_mesa.csv` | Grupo de mesa | Mesa, entrada, saída, `permanencia_min`, `censurada`, pessoas, crianças, aniversário, `instrutor_vezes`, jogos |
+| `contagem_fluxo.csv` | Entrada ou saída na porta | Código do grupo (`BV-n`), tipo, hora, pessoas, crianças |
+| `contagem_rodadas.csv` | Contagem periódica | Etapa, hora, mesas no total, ocupadas e vazias |
+| `contagem_unidades.csv` | Unidade na visita | Mesas, estantes, capacidade em caixas, instrutores, atendentes |
+| `contagem_precos.csv` | Item de preço | Origem (NFC-e ou cardápio), item, quantidade, valor |
+| `contagem_pedidos.csv` | Pedido (extra) | Mesa, categoria, hora do pedido, chegada, `espera_min`, pendente |
+| `contagem_acustica.csv`, `contagem_medidas.csv`, `contagem_fotos.csv` | Medição | Nível de som estimado (dB), medidas por objeto de referência, fotos do ambiente sem pessoas |
+
+O `B3-a_contagem.py` gera as saídas em `dados/[B3] Contagem direta de ocupacao/`: `contagem_resumo_visitas.csv` (uma linha por visita: pessoas por hora, grupos, permanência, ocupação das mesas e dos assentos, notas e pessoas por nota) e `contagem_notas_intervalo.csv` (notas emitidas e notas por dia entre as visitas da mesma unidade). A ocupação é calculada minuto a minuto pelos grupos de mesa: mesas com grupo ÷ mesas da unidade (11 no Bela Vista, 10 na Paralela) e pessoas sentadas ÷ 48 assentos. As visitas também são lançadas no Notion "3 - Visitas presenciais", uma linha por visita, com os valores do resumo.
 
 ### Bloco B4 — Bases públicas
 
@@ -146,7 +164,7 @@ O procedimento muda conforme a natureza de cada bloco. Os Blocos B1 e B2 são ce
 |---|---|---|---|---|
 | B1 e B2 | Censo da fonte (Google Maps), extraído por script | Não há | Cobertura da fonte; fidelidade do script à página | Amostra de auditoria; checagem de cobertura; padrão das falhas |
 | B4 | Extração integral de tabelas oficiais por API | Não há na extração; há no desenho de algumas bases (POF, PNAD Contínua) | Processamento: código, filtro, unidade, deflação, junção | Reconciliação com a tabela publicada; conferência de totais |
-| B3 | Períodos de maior fluxo provável, escolhidos e observados pelo autor | Há: quatro visitas no pico representam a operação da unidade | Omissão de registro; erro de contagem | Fechamento do saldo; comparação entre caminhos independentes; dado faltante declarado |
+| B3 | Sexta e sábado à noite, escolhidos e observados pelo autor dentro do salão | Há: quatro visitas no pico representam a operação da unidade | Omissão de registro; erro de contagem | Fechamento do saldo; comparação entre caminhos independentes; dado faltante declarado |
 
 Fonte: elaborado pelo próprio autor
 
@@ -158,8 +176,8 @@ A validação tem três etapas:
 
 | Etapa | Procedimento |
 |---|---|
-| 1. Fidelidade | No Bloco B1, amostra aleatória estratificada por capital e faixa de volume de avaliações: 20% dos estabelecimentos curados, com nota média, número de avaliações e endereço conferidos na página. No Bloco B2, amostra estratificada por estabelecimento em duas etapas (abaixo): texto, nota e rótulo de data conferidos na página. As 200 avaliações da primeira etapa são as mesmas da validação do dicionário. A conferência é feita até sete dias após a coleta, e a data de cada conferência é registrada |
-| 2. Completude | Em todos os estabelecimentos do Bloco B2, o número de avaliações com texto no recorte, contado na página, é comparado ao número coletado. Diferença indica avaliação perdida por paginação, tempo de espera ou limite de pedidos |
+| 1. Fidelidade | No Bloco B1, amostra aleatória estratificada por capital e faixa de volume de avaliações: 20% dos estabelecimentos curados, com nota média, número de avaliações e endereço conferidos na página. No Bloco B2, amostra estratificada por estabelecimento em duas etapas (abaixo): texto, nota e rótulo de data conferidos na página. As 200 avaliações da primeira etapa são as mesmas da validação do dicionário. A conferência é feita até sete dias após a coleta, e a data de cada conferência é registrada. As demais coletas do B1 seguem o mesmo desenho: entorno, 20% estratificado (distância conferida em linha reta, de pino a pino, como no coletor); posts do Instagram, itens de cardápio e jogos dos acervos, 200 unidades com mínimo de 3 por estrato, como no B2; perfis do Instagram, exaustivo. No B4, uma linha sorteada por série. Todas as amostras saem de script (`*-a_auditoria_*.py`, `_src/extras/amostrar_auditoria.py`), com semente fixa (20261015) e chave SHA-256 por unidade, em `_dados-brutos/<pasta>/auditoria/`, e são conferidas no Notion, um banco "B - Auditoria …" por amostra |
+| 2. Completude | Em todos os estabelecimentos do Bloco B2, o número de avaliações com texto no recorte, contado na página, é comparado ao número coletado. Diferença indica avaliação perdida por paginação, tempo de espera ou limite de pedidos. Avaliação só conta como lida com o "Mais" expandido; a coluna `texto_expandido` marca as que ficaram cortadas (inclusive texto terminado no marcador " …" do Google), e o estabelecimento é recoletado |
 | 3. Cobertura | A lista do Bloco B1 é comparada a fontes independentes: buscas manuais por termo nas capitais e perfis de luderias no Instagram. No Instagram, snowball pelas listas "seguindo" das casas aprovadas (sementes): conta seguida por k ou mais sementes vira candidata, classificada à mão; o corte k sai da precisão e da sensibilidade medidas, e a cobertura da lista do B1 é estimada por captura e recaptura (Chapman), lida como limite inferior (a segunda lista nasce da primeira). Só agregados e perfis de negócio são publicados; as listas brutas, com @ de pessoas físicas, ficam fora do git (`B1-b_instagram_seguindo.py`, `B1-a_instagram_snowball.py`). Estabelecimento encontrado fora da lista é registrado com o motivo da ausência |
 
 O resultado é a taxa de erro por variável, com intervalo de confiança de 95% (método de Wilson). O critério de aceitação é limite superior do intervalo igual ou inferior a 5%. Variável acima do critério tem o script corrigido e o estrato afetado coletado de novo. Se a recoleta não for possível, a variável é reportada com a taxa de erro medida e entra no cálculo da faixa da premissa que ela alimenta.
@@ -189,7 +207,7 @@ Os erros mais prováveis são de processamento: código de variável ou de munic
 
 #### Bloco B3 - contagem direta
 
-A contagem não é censo. As quatro visitas são uma amostra de períodos, escolhidos para observar o pico de fluxo provável. A escolha é deliberada: a contagem mede a ocupação no pico, não a média do dia. O erro amostral existe e é tratado pela faixa larga da premissa de ocupação e pela análise de sensibilidade (§3.6).
+A contagem não é censo. As quatro visitas são uma amostra de períodos, só em sexta e sábado à noite, para observar o movimento máximo. A escolha é deliberada: a contagem mede a ocupação no pico, não a média do dia. O erro amostral existe e é tratado pela faixa larga da premissa de ocupação e pela análise de sensibilidade (§3.6).
 
 O instrumento é o próprio observador, e não há gravação para auditar depois. A validação usa a consistência interna do registro e a comparação entre caminhos independentes:
 
@@ -197,9 +215,9 @@ O instrumento é o próprio observador, e não há gravação para auditar depoi
 |---|---|
 | Fechamento do saldo | Contagem inicial + entradas - saídas, comparada à contagem feita a cada 30 minutos. A diferença acumulada mede a omissão de registros na porta |
 | Grupos sem saída | Grupos com entrada e sem saída registrada são contados à parte. Os que ainda estão no salão ao fim da visita são censurados; os demais são omissões |
-| Caminhos independentes | Pessoas pela porta, pessoas pelas mesas e notas fiscais emitidas: as três estimativas de fluxo são comparadas por visita |
+| Caminhos independentes | Pessoas pela porta, pessoas pelos grupos de mesa e notas fiscais emitidas (piso, porque a nota só sai a pedido): as três estimativas de fluxo são comparadas por visita |
 
-Dado não anotado é tratado como faltante. Não há imputação. A taxa de omissão de cada visita é reportada junto com as saídas. Quando a omissão for relevante, a estimativa de fluxo usa o caminho com menos falhas e a faixa da premissa aumenta. O script `B3-a_contagem.py` já conta à parte os grupos sem saída e os pedidos sem chegada, sem imputação. O fechamento do saldo e a separação entre censura e omissão ainda precisam ser acrescentados a ele.
+Dado não anotado é tratado como faltante. Não há imputação. A taxa de omissão de cada visita é reportada junto com as saídas. Quando a omissão for relevante, a estimativa de fluxo usa o caminho com menos falhas e a faixa da premissa aumenta. O script `B3-a_contagem.py` já conta à parte os grupos sem saída e os pedidos sem chegada (extra), sem imputação. O fechamento do saldo e a separação entre censura e omissão ainda precisam ser acrescentados a ele.
 
 ### Validação do dicionário
 
@@ -262,8 +280,8 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 
 | Premissa | Evidência | Técnica | Limitação declarada |
 |---|---|---|---|
-| **Ocupação** | Contagem direta na São Jogue (Bloco B3) | Pessoas por hora e saldo no interior por hora do dia; média e amplitude entre as quatro visitas; comparação descritiva entre a primeira visita e o retorno | Um estabelecimento, quatro visitas, só fim de semana |
-| **Fluxo** | NFC-e emitidas em 15 dias (Bloco B3) | Notas por dia no intervalo × pessoas por nota observadas nas visitas → visitantes por semana, por unidade | Numeração pode incluir delivery e balcão |
+| **Ocupação** | Contagem direta na São Jogue (Bloco B3) | Ocupação das mesas e dos assentos minuto a minuto, pelos grupos de mesa (média e pico por visita); pessoas por hora; média e amplitude entre as quatro visitas | Um estabelecimento, quatro visitas, só sexta e sábado à noite |
+| **Fluxo** | NFC-e emitidas entre as duas visitas da unidade (Bloco B3) | Notas por dia no intervalo × pessoas por nota observadas nas visitas → visitantes por semana, por unidade | Nota só a pedido do cliente (piso das vendas); numeração pode incluir delivery e balcão; um único intervalo por unidade (6 e 13 dias) |
 | **Ocupação** | Velocidade de avaliações calibrada (Blocos B2 e B3) | Modelo de calibração (abaixo) | Razão avaliações/visitantes pode variar entre estabelecimentos |
 | **Pessoas por mesa** | Tamanho do grupo citado (Bloco B2) e observado (Bloco B3) | Distribuição e comparação entre as duas fontes | Relato espontâneo × poucas observações |
 | **Giro de mesa** | Permanência observada (Bloco B3) e política de cobrança (Bloco B1) | Permanência média; comparação descritiva dos modelos de cobrança | Permanência censurada pelo início e fim da visita |
@@ -273,9 +291,9 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 ### Modelo de calibração da ocupação
 
 1. **Visitantes por semana na São Jogue, por dois caminhos:**
-   - **(a) Notas fiscais:** notas emitidas entre a primeira visita e a de retorno ÷ dias do intervalo × 7 × pessoas por nota (entradas contadas ÷ notas emitidas durante as visitas);
+   - **(a) Notas fiscais:** notas emitidas entre as duas visitas da unidade ÷ dias do intervalo × 7 × pessoas por nota (entradas contadas ÷ notas emitidas durante as visitas). Como a nota só sai a pedido do cliente, as notas emitidas são piso das vendas: com pessoas por grupo no lugar de pessoas por nota, o caminho (a) dá **limite inferior**; com pessoas por nota medida na visita, a proporção de clientes que pedem nota só se compensa se for a mesma na visita e no intervalo, o que é premissa declarada;
    - **(b) Contagem:** pessoas por hora observadas × horas de funcionamento de fim de semana; os dias úteis entram pela razão entre dia útil e fim de semana implícita no caminho (a), declarada como premissa com faixa.
-   Os dois caminhos são comparados; a divergência entra na faixa (mínimo, provável e máximo).
+   Os dois caminhos são comparados; a divergência entra na faixa (mínimo, provável e máximo). O caminho (a) informa o mínimo; o (b), medido no movimento máximo, o máximo.
 2. **Razão de calibração:** avaliações com texto por semana da São Jogue (velocidade do Bloco B2) ÷ visitantes por semana estimados.
 3. **Fluxo dos demais concorrentes:** velocidade de avaliações de cada estabelecimento ÷ razão de calibração. Resultado em faixa.
 4. **Uso no plano:** faixa de visitantes por semana para estabelecimentos comparáveis ao proposto → premissa de ocupação no registro de premissas (N5 + N3).
@@ -297,14 +315,14 @@ Custos (aluguel, pessoal, tributos) e indicadores seguem [8_financeiro.md](8_fin
 
 | Decisão | Pergunta | Dado usado | Fonte | Confiança |
 |---|---|---|---|---|
-| Em que bairro de Salvador abrir? | Onde está o público-alvo, longe da concorrência direta e com aluguel compatível? | População e faixa etária por bairro; renda; localização da São Jogue; aluguel; entorno | Censo 2022; PNAD Contínua; Bloco B1; FipeZap; OpenStreetMap | N2 + N3 |
+| Em que bairro de Salvador abrir? | Onde está o público-alvo, longe da concorrência direta e com aluguel compatível? | População e faixa etária por bairro; renda; localização da São Jogue; aluguel; entorno | Censo 2022; PNAD Contínua; Bloco B1 (Google Maps); FipeZap | N2 + N3 |
 | Qual modelo de cobrança? | Qual modelo o mercado pratica e qual gera menos reclamação de preço? | Política de preço; reclamações de preço | Blocos B1 e B2 | N3 |
 | Que cardápio oferecer? | Qual o peso da comida na satisfação e que itens e preços o mercado pratica? | Menções a comida × nota; cardápios | Blocos B1 e B2 | N3 |
 | Qual ticket médio projetar? | Quanto uma pessoa gasta por visita? | Valores citados; cesta de cardápio; preços observados; gasto familiar | Blocos B1, B2 e B3; POF | N3 + N5 + N2 |
-| Qual ocupação projetar? | Quantos visitantes por semana um estabelecimento comparável recebe? | Notas fiscais emitidas em 15 dias; contagem direta; velocidade de avaliações calibrada | Blocos B2 e B3 | N5 + N3 |
+| Qual ocupação projetar? | Quantos visitantes por semana um estabelecimento comparável recebe? | Notas fiscais emitidas entre visitas (piso); ocupação do salão e contagem direta; velocidade de avaliações calibrada | Blocos B2 e B3 | N5 + N3 |
 | Qual giro projetar? | Quanto tempo uma mesa fica ocupada? | Permanência observada; modelos de cobrança | Blocos B1 e B3 | N5 |
 | Quantas mesas e de que tamanho? | Quantas pessoas ocupam cada mesa? | Tamanho do grupo citado e observado | Blocos B2 e B3 | N3 + N5 |
-| Qual acervo inicial? | Quais jogos o público cita e quais os concorrentes oferecem? | Jogos citados; acervo declarado | Blocos B1 e B2 | N3 |
+| Qual acervo inicial? | Quais jogos o público cita, quais os concorrentes oferecem e quanto custam? | Jogos citados; acervos declarados; cesta de jogos e preço nas lojas | Blocos B1 e B2 | N3 |
 | Qual regime tributário? | Qual a carga sobre a receita projetada? | Alíquotas | LC 123/2006; CONCLA | N1 |
 | Qual taxa de desconto? | Qual o custo de oportunidade do capital? | Selic e IPCA projetados | Banco Central (Focus) | N2 |
 
@@ -320,7 +338,7 @@ Registrar no texto a base legal da coleta:
 2. O único dado potencialmente identificável (nome do usuário) é substituído por **código aleatório na coleta**; nome e link não são armazenados.
 3. O conjunto das demais variáveis (nota, data relativa, texto processado) não permite identificar o usuário.
 4. O TCC e o repositório divulgam **apenas dados processados**; textos integrais não são publicados. Trechos ilustrativos, se usados, são curtos e sem elemento identificador.
-5. A contagem direta é **observação agregada, feita do lado de fora de espaço comercial aberto ao público**: não há fotos de pessoas, registro de características individuais nem interação com clientes. O número da NFC-e vem de nota emitida para compra do próprio autor.
+5. A contagem direta é **observação agregada, feita dentro de espaço comercial aberto ao público**, com o observador sentado como cliente: não há fotos de pessoas, registro de características individuais nem interação com clientes, e a mesa do próprio observador fica fora dos registros. O número da NFC-e vem de nota emitida para compra do próprio autor.
 
 Citar a Lei nº 13.709/2018 (LGPD) e a Resolução CNS nº 510/2016. Registrar a consulta à orientadora sobre a dispensa de submissão ao Comitê de Ética.
 
@@ -331,11 +349,12 @@ Citar a Lei nº 13.709/2018 (LGPD) e a Resolução CNS nº 510/2016. Registrar a
 | Autosseleção de quem avalia | Superrepresenta experiências extremas e usuários ativos | Declarada; efeito fixo por estabelecimento; sem controle do grau de exigência de cada avaliador |
 | Recorte de três meses de avaliações | Cobre só parte do ano e não mede sazonalidade; rótulo "3 meses atrás" sem limite exato | Declarada; data da coleta registrada; sazonalidade tratada como premissa com faixa |
 | Corte de 100 avaliações no Bloco B1 | Exclui casas novas ou pequenas | Declarada; total da busca apresentado ao lado do total acima do corte |
-| Datas relativas | Impossibilita dia da semana e dia do mês das avaliações | Curva semanal vem da contagem direta |
-| Visitas no horário de maior fluxo provável | Pessoas por hora do pico superestimam a média do dia | O caminho das notas fiscais (15 dias inteiros) dá a média; o caminho da contagem entra como limite superior da faixa |
+| Datas relativas | Impossibilita dia da semana e dia do mês das avaliações | Fim de semana vem da contagem direta; dia útil, das notas fiscais |
+| Visitas só em sexta e sábado à noite | Ocupação e pessoas por hora do movimento máximo superestimam a média da semana | O caminho das notas fiscais (dias inteiros entre as visitas) dá o piso; o caminho da contagem entra como limite superior da faixa |
 | Contagem em um único estabelecimento e cidade, com quatro visitas | Razão de calibração pode não valer para outros locais; sem sazonalidade | Faixa larga; sensibilidade da ocupação no tornado; validação recomendada antes do investimento |
-| Observação do lado de fora | Não vê o salão inteiro; saldo de pessoas acumula erros de contagem | Contagem inicial e final conferidas; comparação com o caminho das notas fiscais |
-| Numeração da NFC-e | Pode incluir delivery e balcão; uma nota cobre um grupo | Pessoas por nota medidas nas próprias visitas; série e unidade registradas |
+| Observação dentro do salão | A mesa do observador (2 ou 3 pessoas) ocupa um lugar e fica fora dos registros; o observador pode não ver todas as mesas ao mesmo tempo | Mesa do observador declarada por visita; contagens periódicas de mesas; comparação entre porta, mesas e notas fiscais |
+| NFC-e só a pedido do cliente | Notas emitidas são piso das vendas; numeração pode incluir delivery e balcão; uma nota cobre um grupo | Caminho (a) lido como limite inferior; pessoas por nota medidas nas próprias visitas; série e unidade registradas. Volta em 11.3 |
+| Um único intervalo entre visitas por unidade | Bela Vista com 6 dias e Paralela com 13, abaixo dos 15 planejados; não capta a variação do mês (pagamento de salários) nem a sazonalidade | Declarada; notas por dia em faixa. Volta em 11.3 |
 | Permanência censurada pelo início e fim da visita | Subestima a permanência de grupos longos | Declarada; observações censuradas sinalizadas |
 | Cobertura do Google Maps | Estabelecimentos fora da plataforma ou cortados pela busca não entram no censo da fonte | Checagem de cobertura com buscas manuais e Instagram; ausências registradas com o motivo |
 | Falhas do script de coleta | Registros perdidos ou campos errados, possivelmente concentrados em um grupo | Amostra de auditoria com taxa de erro e IC 95%; comparação entre registros com falha e completos; recoleta do estrato afetado |

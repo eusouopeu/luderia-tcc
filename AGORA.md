@@ -4,6 +4,8 @@ Atualizado em 31/10/2026 (01h52). Semana 5 do cronograma (10/10 a 16/10). Próxi
 
 ## Fazendo agora
 
+- **Instruções atualizadas** (31/10): `_instrucoes/4_metodologia.md` com o B3 atual (dentro do salão, sexta e sábado à noite, formato dos dados do app, NFC-e como piso, pedidos como extra), entorno só pelo Maps em 500 m e 1.000 m, 54 casas, cardápios, cesta de jogos e auditoria; limitações do B3 previstas em 11.3. Ainda desatualizados: codificação do B2, Instagram e saída do modelo financeiro (pendências).
+
 - **Auditoria dos cardápios no Notion** ("1A - Auditoria Cardápios", 19/10): `linha_arquivo` passou a ser a linha do item no cardápio (1 = primeiro item), nas 200 linhas e no script. Chopp e licor com preço por quantidade ficam só com o preço de 1 unidade na planilha. Tamanhos, combos e prints de datas diferentes (22/10): só a linha de referência (`linha_referencia` = S) entra na cesta. Rodar no Mac `B1-b_resumo.py` para levar a planilha nova à cesta.
 
 - **Coleta do B2** (avaliações até "3 meses atrás"): completa para as 49 luderias do B1 que seguem no objeto (2.218 avaliações no recorte, 1.440 com texto) e para as 5 novas (Bardo Mago, La Tabuleria, TabuClub, Toca do Rato, Tubaleria). Notion "B - Comentários" com 1.628 linhas; Machado Games e Ilusões Industriais excluídas por não serem luderias.

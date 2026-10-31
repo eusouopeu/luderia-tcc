@@ -4,6 +4,10 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 31/10/2026 | B3: observação feita dentro do salão, com o observador sentado como cliente; a mesa do próprio observador (3 pessoas em 10/10 no Bela Vista, 2 nas demais) não entra nos registros | `_instrucoes/4_metodologia.md` §3.3 B3 |
+| 31/10/2026 | B3: pedidos (categoria, quantidade, chegada, espera) viram extra, só descritivo, porque não foram coletados em todas as visitas | `_instrucoes/4_metodologia.md` §3.3 B3 |
+| 31/10/2026 | B3: NFC-e só a pedido (piso das vendas, caminho das notas como limite inferior) e o intervalo único entre visitas de cada unidade, abaixo dos 15 dias, entram como limitações no cap. 11.3 | `_instrucoes/1_estrutura.md` 11.3; `4_metodologia.md` §3.9 |
+| 31/10/2026 | Entorno segue com contagens em 500 m e 1.000 m, por enquanto, só pelo Google Maps | `_instrucoes/4_metodologia.md` §3.3 B1 |
 | 31/10/2026 | Cap. 9: modelo em preços constantes de out/2026 com TMA real de 15% (Selic menos IPCA esperado, mais prêmio de 3 a 9 p.p.); sem valor residual; formato de referência igual a uma unidade da São Jogue (10 mesas, taxa de R$ 28,00/22,00); A&B no anexo I e taxa de entrada no anexo III do Simples, até o cap. 8 | `textos/capitulos/9_plano_financeiro.md`; aba premissas do modelo |
 | 31/10/2026 | Cap. 9: o tornado e o ponto de ruptura saem do script, que recalcula a planilha no LibreOffice e para se o VPL divergir | `_src/extras/gerar_modelo_financeiro.py` |
 | 31/10/2026 | B3: visitas só em sexta e sábado à noite (orientador), para medir o movimento máximo; ocupação do salão sai dos grupos de mesa minuto a minuto, sobre as mesas informadas pelo autor e os 48 assentos do site de reservas; NFC-e entre visitas da mesma unidade é piso das vendas (nota só a pedido do cliente) | `docs/registro-de-alteracoes.md` (31/10 01:27) |

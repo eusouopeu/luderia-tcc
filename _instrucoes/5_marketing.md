@@ -28,7 +28,7 @@ Traduzir a análise de mercado em decisões de posicionamento, produto, preço, 
 ### 6.4 Praça
 - A cidade é dada: Salvador. A decisão é o bairro e o ponto.
 - Critérios do bairro: população na faixa etária do público-alvo e renda (IBGE), distância das unidades da São Jogue (Bloco B1), aluguel (FipeZap Salvador).
-- Critérios do ponto: fluxo, acesso, perfil do entorno (OpenStreetMap), custo.
+- Critérios do ponto: fluxo, acesso, perfil do entorno (Google Maps: estações e shoppings de porte em 500 m e 1.000 m, Bloco B1), custo.
 - Evidência de apoio: fluxo das unidades da São Jogue (Bloco B3) e perfil de entorno dos concorrentes de maior fluxo nas metrópoles (Blocos B1 e B2).
 - Apresentar a escolha como matriz de critérios ponderados com fonte por critério.
 
