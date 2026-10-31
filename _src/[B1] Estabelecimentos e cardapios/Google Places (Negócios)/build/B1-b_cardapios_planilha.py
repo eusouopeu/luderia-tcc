@@ -11,7 +11,9 @@ Café Geek e Fortalúdica foram transcritos à mão das imagens. Em 16/10/2026, 
 profunda (cardapios/B1_cardapios_busca_profunda.csv) trouxe o TabuClub (PDF transcrito à
 mão), preços de imprensa para a Fan Hour e cardápios parciais (couvert ou poucos itens,
 de site, imprensa ou TikTok) de LudoCafé, Game Of Boards, Garagem do Nerd e Joyjoy
-(São Jogue e Asgard ganharam cardápio completo em 17/10). Cada cardápio foi transcrito
+(São Jogue e Asgard ganharam cardápio completo em 17/10). Em 31/10/2026, prints do
+Instagram trouxeram o couvert de 10 casas que não o tinham no cardápio (arquivos
+<casa>_couvert). Cada cardápio foi transcrito
 para um CSV em dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/
 (um arquivo por estabelecimento, separador ";"). A transcrição é manual para
 imagens e PDFs e automática para páginas em texto (VUCA Food, Wix). As fontes
@@ -202,6 +204,23 @@ FONTES = {
                    url="https://curitibandoemfamilia.com.br/experiencias/ctba-indoor/joyjoy-cafe/",
                    formato="guia on-line", data_cardapio="", status="parcial", data_coleta="2026-10-16",
                    nota="só a taxa de jogo (página de ago/2024)"),
+    # 31/10/2026: couvert de prints do Instagram (posts e destaques) enviados pelo autor,
+    # um arquivo <casa>_couvert por casa (data por linha = data do post ou do story)
+    **{f"{arq}_couvert": dict(place_id=pid, url=f"https://www.instagram.com/{perfil}/",
+                              formato="print do Instagram (post ou destaque), transcrito à mão", data_cardapio="",
+                              status="extraído", data_coleta="2026-10-31", nota="só o couvert ou a taxa de entrada")
+       for arq, pid, perfil in [
+           ("tabuclub", "ChIJOcVssmeDmQARZZrnWu2mnwA", "tabuclubnit"),
+           ("cafegeek", "ChIJfyav9YI9uAARjwbBqcRm2_k", "cafegeekvv"),
+           ("tubaleria", "ChIJsU5BAwBRzpQRAgLVvqg68os", "tubaleria"),
+           ("placegames", "ChIJkWsGmd1czpQRGLydxc29vbw", "lojaplacegames"),
+           ("encounter", "ChIJZz29dnVXzpQRvRh7_YKyUN4", "encounter.bg"),
+           ("covil", "ChIJ7_DDAlH1zpQRJVJ0UHnItH8", "covilgb"),
+           ("luderia_carioca", "ChIJ90Gs_9rVmwAReA7MnIyPLTE", "luderiacariocajogos"),
+           ("bardomago", "ChIJRcWOaPabpgARDvX2Bad0qb0", "bardo.mago"),
+           ("tocadorato", "ChIJ41pgHNFDGZURC7yTegyn7nU", "tocadorato_oficial"),
+           ("nalaland", "ChIJRUjwU66WoGgRzc9yJU7jkwM", "nalaland.jogos"),
+       ]},
 }
 # aprovado com cardápio acessível, mas sem transcrição
 SEM_TRANSCRICAO = {

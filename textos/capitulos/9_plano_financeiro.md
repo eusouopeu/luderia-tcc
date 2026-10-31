@@ -190,6 +190,6 @@ A capacidade comporta a demanda projetada com folga. As 48 pessoas por dia usam 
 
 A equipe é larga para o fluxo provável. Cada funcionário atende 4 pessoas por dia. A folha com encargos custa 38,6% da receita, contra 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024, citada no cap. 5). O aluguel com condomínio custa 16,0% da receita, contra 4,0% no setor. Os dois custos fixos explicam a margem baixa e indicam onde o cap. 7 pode cortar: quadro menor no dia útil ou ponto menor.
 
-O preço está acima dos concorrentes. A taxa de entrada de fim de semana, de R$ 28,00, supera a mediana de R$ 18,75 do couvert ou taxa de jogo nos cardápios de 8 concorrentes do B1. A São Jogue pratica esse preço com 4,8 estrelas em 787 avaliações no Google Maps (B1), o que sustenta o posicionamento, mas o plano depende de reproduzir a mesma experiência.
+O preço está acima dos concorrentes. A taxa de entrada de fim de semana, de R$ 28,00, supera a mediana de R$ 20,00 do couvert ou taxa de entrada de 21 concorrentes do B1 e a de R$ 25,00 no fim de semana (cap. 6.3). A São Jogue pratica esse preço com 4,8 estrelas em 787 avaliações no Google Maps (B1), o que sustenta o posicionamento, mas o plano depende de reproduzir a mesma experiência.
 
 A rampa de 9 meses fica dentro da faixa de 6 a 12 meses, sem ocupação madura no mês 1. A demanda projetada equivale a 17,5 mil visitas por ano, ou 0,7% da população estimada de Salvador em 2026 (IBGE). O número soma visitas, não pessoas distintas, e fica abaixo da penetração que exigiria um mercado novo.

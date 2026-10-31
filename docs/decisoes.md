@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 31/10/2026 | Couvert ou taxa de entrada que não está no cardápio vem de site, imprensa ou Instagram (post ou destaque), transcrito num arquivo `<casa>_couvert` com a data da publicação; na Tabela 6.1, a mediana usa o maior valor de cada casa no dia útil e no fim de semana. O crepe "Lúdico" da Ludoteca BGC sai do couvert (prato principal) | `docs/registro-de-alteracoes.md` (31/10 03:40) |
 | 31/10/2026 | Cap. 6, preço: taxa de entrada por pessoa por turno de 3 h, R$ 28,00 de sexta a domingo e R$ 22,00 de segunda a quinta (São Jogue), acima da mediana dos concorrentes; A&B de R$ 24,00 por pessoa | `textos/capitulos/6_plano_de_marketing.md` (6.3) |
 | 31/10/2026 | Cap. 6, praça: Pituba indicada, 1ª da matriz em todos os pesos testados; proporção de domicílios em apartamento (Censo 2022) como substituta da renda por bairro, que o Censo não publica; ponto a até 1.000 m de metrô | `textos/capitulos/6_plano_de_marketing.md` (6.4); `B4-a_matriz_bairros.py` |
 | 31/10/2026 | Voz passiva analítica ("foi adotado") em todo o TCC, como na skill `meu-estilo-escrita`; a sintética ("adotou-se") é evitada | `_instrucoes/1_estrutura.md` (P5.5) |

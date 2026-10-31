@@ -1675,3 +1675,39 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: saídas regeradas na main unificada: 2.310 linhas de 42 cardápios (2.274 com preço); 54 casas em 13 metrópoles, 42 com cardápio; consumo por pessoa (bebida + entrada ou prato) em 36 casas, mediana de R$ 50,25; cesta completa em 10 casas, mediana de R$ 78,50; couvert ou taxa encontrado em 13 casas, mediana de R$ 20,00. Salvador (São Jogue Bela Vista): consumo mediano de R$ 48,50, sem couvert encontrado. VPL provável do modelo: −R$ 478.829. Somas por metrópole, região e capital fecham com 54 (diferença 0).
 **Justificativa**: base de cardápios, resumo, estatística descritiva, planilha agregada e modelo financeiro precisavam refletir a main com a branch do Mac e os PRs #19 a #21. Dois pontos ficam para o autor: a pizza "Lúdico" da Ludoteca BGC (R$ 30) está na categoria couvert e entra no couvert da casa; a "Taxa de jogo" de R$ 0 da Ludus Luderia ("não cobra") conta como couvert encontrado. A mediana do couvert segue em R$ 20,00 sem as duas. A sala do Café Geek fica fora, como previsto no script.
 
+### 03:40
+**Objeto**: `dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/` (10 arquivos `<casa>_couvert.csv` novos e `ludotecabgc.csv`), `_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/build/B1-b_cardapios_planilha.py`
+**Antes**: couvert ou taxa de entrada só no cardápio, no site ou na imprensa: 13 casas com couvert encontrado. TabuClub, Café Geek (só a sala), Tubaleria, Place Games, Encounter, Covil, Luderia Carioca, Bardo Mago, Toca do Rato e Nala Land sem valor. O crepe "Lúdico" da Ludoteca BGC (R$ 30) na categoria "couvert ou taxa de jogo".
+**Depois**: 23 linhas de couvert transcritas de 16 prints do Instagram enviados pelo autor (posts e destaques de 29/04/2024 a 31/07/2026), um arquivo por casa, com data por linha e fonte na observação; `FONTES` do script com as 10 entradas (coleta em 31/10/2026). O "Lúdico" passa a prato principal (outros). Planilha de itens com 2.333 linhas (eram 2.310).
+**Justificativa**: o autor achou no Instagram o couvert das casas que estavam sem valor. O "Lúdico" é um crepe, como já diziam o cap. 6 e as pendências (item 13 de 15/10).
+
+### 03:40
+**Objeto**: `B1_cardapios_itens_precos.xlsx`, `B1_resumo_estabelecimentos.xlsx`, `4_estatistica_descritiva/B1_estatistica_descritiva_geral.xlsx` e `_por_grupo.xlsx`, `_dados-brutos/estabelecimentos/auditoria/auditoria_registro.csv`, `_src/site-apresentacao/src/conteudo/b1-estatisticas.json`, `dados/Dados agregados/` (B1, B3, B4 e gráficos 07 e 08), `textos/capitulos/9_plano_financeiro_modelo.xlsx`
+**Antes**: couvert encontrado em 13 casas (12 cobram, mediana de R$ 20,00, com o "Lúdico" da BGC); cesta completa em 10 casas, mediana de R$ 78,50.
+**Depois**: couvert em 22 casas, das quais 21 cobram (mediana de R$ 20,00 pela mediana de cada casa, de R$ 5,00 a R$ 40,00) e a Ludus não cobra; cesta completa em 18 casas, mediana de R$ 74,50; consumo por pessoa sem mudança (36 casas, média das medianas de R$ 50,82). Modelo financeiro: mediana do couvert de R$ 20,00 em 21 concorrentes (antes R$ 18,75 em 8 no texto). Somas por metrópole, região e capital fecham com 54 (diferença 0). `financeiro-a_modelo.py` falha ao ler o CSV de premissas (erro anterior, sem relação com o couvert).
+**Justificativa**: levar o couvert novo a todas as saídas do B1.
+
+### 03:40
+**Objeto**: Notion "1 - Estabelecimentos", coluna "Taxa couvert" (TabuClub, Café Geek, Tubaleria, Place Games, Encounter BG, Covil Game Bar, Luderia Carioca, Bardo Mago, Toca do Rato e Nala Land)
+**Antes**: vazia nas 10 casas, menos a Toca do Rato ("15 o dia inteiro; nos sábados, 15 por 4 horas, ou 25 o dia inteiro", sem fonte).
+**Depois**: valor por pessoa e por dia da semana, com a data do post ou story; na Toca do Rato, R$ 5 (story de 04/10/2025), com o valor anterior mantido no texto.
+**Justificativa**: mesma fonte da planilha de itens.
+
+### 03:40
+**Objeto**: `textos/capitulos/6_plano_de_marketing.md` (6.3 e nota de abertura), `5_analise_de_mercado.md` (5.3.4), `9_plano_financeiro.md` (9.8), `3_metodologia.md` (3.3, cardápios)
+**Antes**: cap. 6: Tabela 6.1 com a São Jogue e 7 concorrentes "que a divulgam no cardápio", 5 de 6 com preço por dia, medianas de R$ 25,00 (fim de semana) e R$ 17,50 (dia útil), La Tabuleria com R$ 20,00 no dia útil. Cap. 5: couvert em 7 das 26 casas com cardápio. Cap. 9: mediana de R$ 18,75 em 8 concorrentes. Cap. 3: couvert só pelo cardápio.
+**Depois**: cap. 6: Tabela 6.1 com a São Jogue e 22 concorrentes (cardápio, site, imprensa e Instagram, abr/2024 a jul/2026), 13 de 21 com preço por dia, medianas de R$ 25,00 e R$ 15,00 pelo maior valor de cada casa, La Tabuleria com R$ 10,00 no dia útil (o próprio cardápio diz quarta e quinta R$ 10). Cap. 5: couvert em 21 dos 53 concorrentes, mediana de R$ 20,00, e 21 de 22 com política conhecida cobram. Cap. 9: mediana de R$ 20,00 em 21 concorrentes e R$ 25,00 no fim de semana. Cap. 3: busca do couvert fora do cardápio, com a data da publicação.
+**Justificativa**: couvert novo do B1 (registros anteriores). A conclusão não muda: a São Jogue fica acima da mediana.
+
+### 03:40
+**Objeto**: `docs/melhorias-texto.md`, `docs/pendencias.md`, `docs/decisoes.md`, `AGORA.md`, `textos/planejamento/status_capitulos.md`
+**Antes**: D28 (mediana de R$ 18,75 × R$ 25,00) e D29 com o couvert em quatro bases; pendência do "Lúdico" da BGC; R13 a recalcular com 13 casas.
+**Depois**: D28 sai (resolvida); D29 fica só com o consumo do cap. 5 e o ticket do cap. 3; D16 com 21 de 53; pendências novas: Covil (perfil de mais de uma unidade), Toca do Rato (R$ 5 × valor antigo do Notion), Ludoporte do Café Geek, local dos prints, site com contagens antigas e `financeiro-a_modelo.py` quebrado; decisão nova sobre o couvert fora do cardápio.
+**Justificativa**: fim de sessão (CLAUDE.md).
+
+### 03:40 (divergência)
+**Objeto**: couvert da Toca do Rato
+**Antes**: Notion "1 - Estabelecimentos" (data e fonte não registradas): 15 o dia inteiro; nos sábados, 15 por 4 horas, ou 25 o dia inteiro.
+**Depois**: story do Instagram de 04/10/2025: R$ 5,00 por pessoa, a noite toda, a partir de 8 anos.
+**Efeitos colaterais**: a Toca do Rato é o menor valor da Tabela 6.1 e puxa o mínimo da faixa do cap. 5 (R$ 5,00). Se o valor do Notion for o mais recente, a faixa sobe e as medianas não mudam.
+

@@ -291,30 +291,30 @@
    "rotulo": "Itens com preço no cardápio",
    "unidade": "itens",
    "n": 42.0,
-   "media": 51.5714,
+   "media": 52.119,
    "mediana": 50.5,
-   "dp": 37.4473,
+   "dp": 37.4649,
    "min": 1.0,
-   "p25": 24.25,
-   "p75": 71.0,
+   "p25": 26.0,
+   "p75": 71.75,
    "max": 161.0,
    "amplitude": 160.0,
-   "cv": 0.7261
+   "cv": 0.7188
   },
   "couvert_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Couvert ou taxa de jogo (só casas que cobram)",
    "unidade": "R$",
-   "n": 13.0,
-   "media": 17.5385,
+   "n": 22.0,
+   "media": 18.1136,
    "mediana": 20.0,
-   "dp": 7.5428,
+   "dp": 8.3551,
    "min": 0.0,
    "p25": 12.5,
-   "p75": 20.0,
-   "max": 30.0,
-   "amplitude": 30.0,
-   "cv": 0.4301
+   "p75": 21.875,
+   "max": 40.0,
+   "amplitude": 40.0,
+   "cv": 0.4613
   },
   "bebida_mediana": {
    "grupo": "Cardápio",
@@ -351,15 +351,15 @@
    "rotulo": "Consumo por pessoa (bebida + entrada ou prato), nível baixo (P25)",
    "unidade": "R$",
    "n": 36.0,
-   "media": 40.6353,
+   "media": 40.6422,
    "mediana": 40.25,
-   "dp": 15.3249,
+   "dp": 15.3221,
    "min": 11.0,
    "p25": 31.6,
    "p75": 54.8125,
    "max": 69.3,
    "amplitude": 58.3,
-   "cv": 0.3771
+   "cv": 0.377
   },
   "consumo_mediana": {
    "grupo": "Cardápio",
@@ -396,45 +396,45 @@
    "rotulo": "Cesta por pessoa, nível baixo (P25)",
    "unidade": "R$",
    "n": 36.0,
-   "media": 45.2672,
-   "mediana": 42.375,
-   "dp": 19.0859,
+   "media": 48.7325,
+   "mediana": 53.075,
+   "dp": 20.6024,
    "min": 11.0,
-   "p25": 34.25,
-   "p75": 58.5625,
-   "max": 88.05,
-   "amplitude": 77.05,
-   "cv": 0.4216
+   "p25": 34.9375,
+   "p75": 58.875,
+   "max": 101.55,
+   "amplitude": 90.55,
+   "cv": 0.4228
   },
   "cesta_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Cesta por pessoa, nível mediano",
    "unidade": "R$",
    "n": 36.0,
-   "media": 55.9736,
-   "mediana": 58.5,
-   "dp": 21.7595,
+   "media": 59.9319,
+   "mediana": 61.5,
+   "dp": 23.0542,
    "min": 12.0,
-   "p25": 38.375,
-   "p75": 70.7125,
-   "max": 97.0,
-   "amplitude": 85.0,
-   "cv": 0.3887
+   "p25": 43.0,
+   "p75": 75.0,
+   "max": 107.8,
+   "amplitude": 95.8,
+   "cv": 0.3847
   },
   "cesta_alta": {
    "grupo": "Cardápio",
    "rotulo": "Cesta por pessoa, nível alto (P75)",
    "unidade": "R$",
    "n": 36.0,
-   "media": 67.9539,
-   "mediana": 73.625,
-   "dp": 24.2161,
+   "media": 72.315,
+   "mediana": 77.75,
+   "dp": 25.3214,
    "min": 15.5,
-   "p25": 50.625,
-   "p75": 83.6,
+   "p25": 51.0625,
+   "p75": 86.75,
    "max": 121.0,
    "amplitude": 105.5,
-   "cv": 0.3564
+   "cv": 0.3502
   },
   "hamburguer_mediana": {
    "grupo": "Cardápio",
@@ -607,7 +607,7 @@
   },
   "cobra_couvert": {
    "rotulo": "Couvert ou taxa de jogo encontrado (entre as com cardápio)",
-   "casas": 13,
+   "casas": 22,
    "n": 42
   },
   "abre_segunda": {
@@ -653,7 +653,7 @@
   },
   {
    "faixa": "20–40",
-   "casas": 9
+   "casas": 7
   },
   {
    "faixa": "40–60",
@@ -665,7 +665,11 @@
   },
   {
    "faixa": "80–100",
-   "casas": 5
+   "casas": 6
+  },
+  {
+   "faixa": "100–120",
+   "casas": 1
   }
  ],
  "hist_horas": [
@@ -1532,15 +1536,6 @@
    "completa": true
   },
   {
-   "nome": "Café Geek Cafeteria e Ludoteca",
-   "metropole": "Vitória",
-   "regiao": "Sudeste",
-   "baixa": 15.75,
-   "mediana": 22.5,
-   "alta": 30.25,
-   "completa": true
-  },
-  {
    "nome": "Alçapão Jogos",
    "metropole": "Curitiba",
    "regiao": "Sul",
@@ -1559,21 +1554,21 @@
    "completa": true
   },
   {
+   "nome": "Café Geek Cafeteria e Ludoteca",
+   "metropole": "Vitória",
+   "regiao": "Sudeste",
+   "baixa": 22.75,
+   "mediana": 32.5,
+   "alta": 42.25,
+   "completa": true
+  },
+  {
    "nome": "Chef on Play",
    "metropole": "Florianópolis",
    "regiao": "Sul",
    "baixa": 30.4,
    "mediana": 32.7,
    "alta": 43.6,
-   "completa": true
-  },
-  {
-   "nome": "Nala Land - Bar de Jogos de Tabuleiro em Recife",
-   "metropole": "Recife",
-   "regiao": "Nordeste",
-   "baixa": 29.5,
-   "mediana": 34.0,
-   "alta": 37.5,
    "completa": true
   },
   {
@@ -1586,15 +1581,6 @@
    "completa": true
   },
   {
-   "nome": "Place Games",
-   "metropole": "São Paulo",
-   "regiao": "Sudeste",
-   "baixa": 17.9,
-   "mediana": 38.0,
-   "alta": 52.72,
-   "completa": true
-  },
-  {
    "nome": "FORTALÚDICA - BURGERS & JOGOS",
    "metropole": "Brasília",
    "regiao": "Centro-Oeste",
@@ -1604,12 +1590,12 @@
    "completa": true
   },
   {
-   "nome": "Luderia Carioca",
-   "metropole": "Rio de Janeiro",
-   "regiao": "Sudeste",
-   "baixa": 35.0,
-   "mediana": 44.0,
-   "alta": 54.5,
+   "nome": "Ludoteca BGC",
+   "metropole": "Brasília",
+   "regiao": "Centro-Oeste",
+   "baixa": 34.75,
+   "mediana": 40.0,
+   "alta": 46.75,
    "completa": true
   },
   {
@@ -1649,21 +1635,12 @@
    "completa": true
   },
   {
-   "nome": "Covil Game Bar",
+   "nome": "Place Games",
    "metropole": "São Paulo",
    "regiao": "Sudeste",
-   "baixa": 43.0,
-   "mediana": 52.0,
-   "alta": 60.0,
-   "completa": true
-  },
-  {
-   "nome": "Bardo Mago",
-   "metropole": "Belo Horizonte",
-   "regiao": "Sudeste",
-   "baixa": 40.5,
-   "mediana": 54.0,
-   "alta": 71.5,
+   "baixa": 24.15,
+   "mediana": 50.5,
+   "alta": 71.47,
    "completa": true
   },
   {
@@ -1673,6 +1650,15 @@
    "baixa": 55.0,
    "mediana": 57.0,
    "alta": 84.5,
+   "completa": true
+  },
+  {
+   "nome": "Nala Land - Bar de Jogos de Tabuleiro em Recife",
+   "metropole": "Recife",
+   "regiao": "Nordeste",
+   "baixa": 52.0,
+   "mediana": 59.0,
+   "alta": 62.5,
    "completa": true
   },
   {
@@ -1694,21 +1680,21 @@
    "completa": true
   },
   {
-   "nome": "TabuClub",
-   "metropole": "Rio de Janeiro",
-   "regiao": "Sudeste",
-   "baixa": 41.0,
-   "mediana": 61.0,
-   "alta": 75.75,
-   "completa": true
-  },
-  {
    "nome": "Arena BG | Jogos de Tabuleiro | Hamburgueria",
    "metropole": "São Paulo",
    "regiao": "Sudeste",
    "baixa": 49.5,
    "mediana": 63.0,
    "alta": 83.75,
+   "completa": true
+  },
+  {
+   "nome": "Luderia Carioca",
+   "metropole": "Rio de Janeiro",
+   "regiao": "Sudeste",
+   "baixa": 55.0,
+   "mediana": 64.0,
+   "alta": 74.5,
    "completa": true
   },
   {
@@ -1730,21 +1716,12 @@
    "completa": true
   },
   {
-   "nome": "Encounter | Jogos de Tabuleiro | Board Games",
+   "nome": "Covil Game Bar",
    "metropole": "São Paulo",
    "regiao": "Sudeste",
-   "baixa": 62.8,
-   "mediana": 67.8,
-   "alta": 76.8,
-   "completa": true
-  },
-  {
-   "nome": "Ludoteca BGC",
-   "metropole": "Brasília",
-   "regiao": "Centro-Oeste",
-   "baixa": 64.5,
-   "mediana": 70.0,
-   "alta": 76.75,
+   "baixa": 59.25,
+   "mediana": 69.5,
+   "alta": 78.75,
    "completa": true
   },
   {
@@ -1757,21 +1734,21 @@
    "completa": true
   },
   {
-   "nome": "Toca do Rato - Pizzaria e Jogos de Tabuleiro",
-   "metropole": "Porto Alegre",
-   "regiao": "Sul",
-   "baixa": 64.67,
-   "mediana": 71.95,
-   "alta": 81.5,
-   "completa": true
-  },
-  {
    "nome": "Ludoteca Sidequest",
    "metropole": "Belém",
    "regiao": "Norte",
    "baixa": 54.25,
    "mediana": 73.5,
    "alta": 81.25,
+   "completa": true
+  },
+  {
+   "nome": "Bardo Mago",
+   "metropole": "Belo Horizonte",
+   "regiao": "Sudeste",
+   "baixa": 58.0,
+   "mediana": 74.0,
+   "alta": 94.0,
    "completa": true
   },
   {
@@ -1793,12 +1770,30 @@
    "completa": true
   },
   {
+   "nome": "Toca do Rato - Pizzaria e Jogos de Tabuleiro",
+   "metropole": "Porto Alegre",
+   "regiao": "Sul",
+   "baixa": 69.67,
+   "mediana": 76.95,
+   "alta": 86.5,
+   "completa": true
+  },
+  {
    "nome": "Ludus Luderia",
    "metropole": "São Paulo",
    "regiao": "Sudeste",
    "baixa": 63.0,
    "mediana": 82.0,
    "alta": 92.5,
+   "completa": true
+  },
+  {
+   "nome": "TabuClub",
+   "metropole": "Rio de Janeiro",
+   "regiao": "Sudeste",
+   "baixa": 62.25,
+   "mediana": 83.5,
+   "alta": 99.5,
    "completa": true
   },
   {
@@ -1835,6 +1830,15 @@
    "baixa": 74.0,
    "mediana": 97.0,
    "alta": 121.0,
+   "completa": true
+  },
+  {
+   "nome": "Encounter | Jogos de Tabuleiro | Board Games",
+   "metropole": "São Paulo",
+   "regiao": "Sudeste",
+   "baixa": 101.55,
+   "mediana": 107.8,
+   "alta": 118.05,
    "completa": true
   }
  ],
@@ -1894,15 +1898,15 @@
    },
    "cesta_mediana": {
     "n": 13.0,
-    "media": 57.9846,
-    "mediana": 60.0,
-    "dp": 20.2118,
+    "media": 63.3692,
+    "mediana": 63.0,
+    "dp": 23.5654,
     "min": 20.0,
-    "p25": 44.0,
-    "p75": 70.3,
-    "max": 89.7,
-    "amplitude": 69.7,
-    "cv": 0.3486
+    "p25": 50.5,
+    "p75": 75.0,
+    "max": 107.8,
+    "amplitude": 87.8,
+    "cv": 0.3719
    },
    "fecha_tarde_h": {
     "n": 19.0,
@@ -1977,16 +1981,16 @@
     "cv": 0.2482
    },
    "couvert_mediana": {
-    "n": 3.0,
-    "media": 10.8333,
-    "mediana": 12.5,
-    "dp": 10.1036,
+    "n": 7.0,
+    "media": 18.6429,
+    "mediana": 17.5,
+    "dp": 12.7139,
     "min": 0.0,
-    "p25": 6.25,
-    "p75": 16.25,
-    "max": 20.0,
-    "amplitude": 20.0,
-    "cv": 0.9326
+    "p25": 12.5,
+    "p75": 24.0,
+    "max": 40.0,
+    "amplitude": 40.0,
+    "cv": 0.682
    },
    "tem_metro_1000m": 0.7368,
    "abre_domingo": 0.7368,
@@ -2049,15 +2053,15 @@
    },
    "cesta_mediana": {
     "n": 5.0,
-    "media": 49.0,
-    "mediana": 57.0,
-    "dp": 24.1169,
+    "media": 43.0,
+    "mediana": 40.0,
+    "dp": 21.1335,
     "min": 12.0,
     "p25": 38.5,
-    "p75": 67.5,
-    "max": 70.0,
-    "amplitude": 58.0,
-    "cv": 0.4922
+    "p75": 57.0,
+    "max": 67.5,
+    "amplitude": 55.5,
+    "cv": 0.4915
    },
    "fecha_tarde_h": {
     "n": 6.0,
@@ -2132,16 +2136,16 @@
     "cv": 0.5233
    },
    "couvert_mediana": {
-    "n": 2.0,
-    "media": 23.75,
-    "mediana": 23.75,
-    "dp": 8.8388,
+    "n": 1.0,
+    "media": 17.5,
+    "mediana": 17.5,
+    "dp": null,
     "min": 17.5,
-    "p25": 20.625,
-    "p75": 26.875,
-    "max": 30.0,
-    "amplitude": 12.5,
-    "cv": 0.3722
+    "p25": 17.5,
+    "p75": 17.5,
+    "max": 17.5,
+    "amplitude": 0.0,
+    "cv": null
    },
    "tem_metro_1000m": 0.6667,
    "abre_domingo": 0.8333,
@@ -2204,15 +2208,15 @@
    },
    "cesta_mediana": {
     "n": 5.0,
-    "media": 81.46,
+    "media": 85.46,
     "mediana": 85.5,
-    "dp": 17.7428,
-    "min": 54.0,
+    "dp": 10.9639,
+    "min": 74.0,
     "p25": 75.0,
     "p75": 95.8,
     "max": 97.0,
-    "amplitude": 43.0,
-    "cv": 0.2178
+    "amplitude": 23.0,
+    "cv": 0.1283
    },
    "fecha_tarde_h": {
     "n": 6.0,
@@ -2287,16 +2291,16 @@
     "cv": 0.2016
    },
    "couvert_mediana": {
-    "n": 5.0,
-    "media": 18.0,
+    "n": 6.0,
+    "media": 18.3333,
     "mediana": 20.0,
-    "dp": 4.8088,
+    "dp": 4.378,
     "min": 10.0,
-    "p25": 17.5,
+    "p25": 18.125,
     "p75": 20.0,
     "max": 22.5,
     "amplitude": 12.5,
-    "cv": 0.2672
+    "cv": 0.2388
    },
    "tem_metro_1000m": 0.1667,
    "abre_domingo": 0.8333,
@@ -2505,15 +2509,15 @@
    },
    "cesta_mediana": {
     "n": 2.0,
-    "media": 52.5,
-    "mediana": 52.5,
-    "dp": 12.0208,
-    "min": 44.0,
-    "p25": 48.25,
-    "p75": 56.75,
-    "max": 61.0,
-    "amplitude": 17.0,
-    "cv": 0.229
+    "media": 73.75,
+    "mediana": 73.75,
+    "dp": 13.7886,
+    "min": 64.0,
+    "p25": 68.875,
+    "p75": 78.625,
+    "max": 83.5,
+    "amplitude": 19.5,
+    "cv": 0.187
    },
    "fecha_tarde_h": {
     "n": 5.0,
@@ -2588,16 +2592,16 @@
     "cv": 0.0832
    },
    "couvert_mediana": {
-    "n": 1.0,
-    "media": 20.0,
+    "n": 3.0,
+    "media": 20.8333,
     "mediana": 20.0,
-    "dp": null,
+    "dp": 1.4434,
     "min": 20.0,
     "p25": 20.0,
-    "p75": 20.0,
-    "max": 20.0,
-    "amplitude": 0.0,
-    "cv": null
+    "p75": 21.25,
+    "max": 22.5,
+    "amplitude": 2.5,
+    "cv": 0.0693
    },
    "tem_metro_1000m": 0.6,
    "abre_domingo": 0.8,
@@ -2943,15 +2947,15 @@
    },
    "cesta_mediana": {
     "n": 2.0,
-    "media": 68.475,
-    "mediana": 68.475,
-    "dp": 4.9144,
+    "media": 70.975,
+    "mediana": 70.975,
+    "dp": 8.4499,
     "min": 65.0,
-    "p25": 66.7375,
-    "p75": 70.2125,
-    "max": 71.95,
-    "amplitude": 6.95,
-    "cv": 0.0718
+    "p25": 67.9875,
+    "p75": 73.9625,
+    "max": 76.95,
+    "amplitude": 11.95,
+    "cv": 0.1191
    },
    "fecha_tarde_h": {
     "n": 2.0,
@@ -3017,7 +3021,16 @@
     "cv": 0.331
    },
    "couvert_mediana": {
-    "n": 0
+    "n": 1.0,
+    "media": 5.0,
+    "mediana": 5.0,
+    "dp": null,
+    "min": 5.0,
+    "p25": 5.0,
+    "p75": 5.0,
+    "max": 5.0,
+    "amplitude": 0.0,
+    "cv": null
    },
    "tem_metro_1000m": 0.0,
    "abre_domingo": 0.5,
@@ -3190,13 +3203,13 @@
    },
    "cesta_mediana": {
     "n": 1.0,
-    "media": 34.0,
-    "mediana": 34.0,
+    "media": 59.0,
+    "mediana": 59.0,
     "dp": null,
-    "min": 34.0,
-    "p25": 34.0,
-    "p75": 34.0,
-    "max": 34.0,
+    "min": 59.0,
+    "p25": 59.0,
+    "p75": 59.0,
+    "max": 59.0,
     "amplitude": 0.0,
     "cv": null
    },
@@ -3264,7 +3277,16 @@
     "cv": null
    },
    "couvert_mediana": {
-    "n": 0
+    "n": 1.0,
+    "media": 25.0,
+    "mediana": 25.0,
+    "dp": null,
+    "min": 25.0,
+    "p25": 25.0,
+    "p75": 25.0,
+    "max": 25.0,
+    "amplitude": 0.0,
+    "cv": null
    },
    "tem_metro_1000m": 0.0,
    "abre_domingo": 1.0,
@@ -3619,13 +3641,13 @@
    },
    "cesta_mediana": {
     "n": 1.0,
-    "media": 22.5,
-    "mediana": 22.5,
+    "media": 32.5,
+    "mediana": 32.5,
     "dp": null,
-    "min": 22.5,
-    "p25": 22.5,
-    "p75": 22.5,
-    "max": 22.5,
+    "min": 32.5,
+    "p25": 32.5,
+    "p75": 32.5,
+    "max": 32.5,
     "amplitude": 0.0,
     "cv": null
    },
@@ -3693,7 +3715,16 @@
     "cv": null
    },
    "couvert_mediana": {
-    "n": 0
+    "n": 1.0,
+    "media": 10.0,
+    "mediana": 10.0,
+    "dp": null,
+    "min": 10.0,
+    "p25": 10.0,
+    "p75": 10.0,
+    "max": 10.0,
+    "amplitude": 0.0,
+    "cv": null
    },
    "tem_metro_1000m": 0.0,
    "abre_domingo": 1.0,
@@ -3902,15 +3933,15 @@
    },
    "cesta_mediana": {
     "n": 3.0,
-    "media": 40.1667,
-    "mediana": 38.0,
-    "dp": 7.4889,
-    "min": 34.0,
-    "p25": 36.0,
-    "p75": 43.25,
-    "max": 48.5,
-    "amplitude": 14.5,
-    "cv": 0.1864
+    "media": 48.5,
+    "mediana": 48.5,
+    "dp": 10.5,
+    "min": 38.0,
+    "p25": 43.25,
+    "p75": 53.75,
+    "max": 59.0,
+    "amplitude": 21.0,
+    "cv": 0.2165
    },
    "fecha_tarde_h": {
     "n": 4.0,
@@ -3985,7 +4016,16 @@
     "cv": 0.1947
    },
    "couvert_mediana": {
-    "n": 0
+    "n": 1.0,
+    "media": 25.0,
+    "mediana": 25.0,
+    "dp": null,
+    "min": 25.0,
+    "p25": 25.0,
+    "p75": 25.0,
+    "max": 25.0,
+    "amplitude": 0.0,
+    "cv": null
    },
    "tem_metro_1000m": 0.5,
    "abre_domingo": 1.0,
@@ -4047,15 +4087,15 @@
    },
    "cesta_mediana": {
     "n": 5.0,
-    "media": 49.0,
-    "mediana": 57.0,
-    "dp": 24.1169,
+    "media": 43.0,
+    "mediana": 40.0,
+    "dp": 21.1335,
     "min": 12.0,
     "p25": 38.5,
-    "p75": 67.5,
-    "max": 70.0,
-    "amplitude": 58.0,
-    "cv": 0.4922
+    "p75": 57.0,
+    "max": 67.5,
+    "amplitude": 55.5,
+    "cv": 0.4915
    },
    "fecha_tarde_h": {
     "n": 7.0,
@@ -4130,16 +4170,16 @@
     "cv": 0.5233
    },
    "couvert_mediana": {
-    "n": 2.0,
-    "media": 23.75,
-    "mediana": 23.75,
-    "dp": 8.8388,
+    "n": 1.0,
+    "media": 17.5,
+    "mediana": 17.5,
+    "dp": null,
     "min": 17.5,
-    "p25": 20.625,
-    "p75": 26.875,
-    "max": 30.0,
-    "amplitude": 12.5,
-    "cv": 0.3722
+    "p25": 17.5,
+    "p75": 17.5,
+    "max": 17.5,
+    "amplitude": 0.0,
+    "cv": null
    },
    "tem_metro_1000m": 0.5714,
    "abre_domingo": 0.8571,
@@ -4201,15 +4241,15 @@
    },
    "cesta_mediana": {
     "n": 21.0,
-    "media": 61.3619,
-    "mediana": 61.0,
-    "dp": 22.518,
+    "media": 68.1476,
+    "mediana": 70.3,
+    "dp": 22.8734,
     "min": 20.0,
-    "p25": 44.0,
-    "p75": 75.0,
-    "max": 97.0,
-    "amplitude": 77.0,
-    "cv": 0.367
+    "p25": 60.0,
+    "p75": 83.5,
+    "max": 107.8,
+    "amplitude": 87.8,
+    "cv": 0.3356
    },
    "fecha_tarde_h": {
     "n": 31.0,
@@ -4284,16 +4324,16 @@
     "cv": 0.2854
    },
    "couvert_mediana": {
-    "n": 9.0,
-    "media": 15.8333,
+    "n": 17.0,
+    "media": 18.4118,
     "mediana": 20.0,
-    "dp": 7.1807,
+    "dp": 8.5096,
     "min": 0.0,
     "p25": 12.5,
     "p75": 20.0,
-    "max": 22.5,
-    "amplitude": 22.5,
-    "cv": 0.4535
+    "max": 40.0,
+    "amplitude": 40.0,
+    "cv": 0.4622
    },
    "tem_metro_1000m": 0.5806,
    "abre_domingo": 0.7742,
@@ -4355,15 +4395,15 @@
    },
    "cesta_mediana": {
     "n": 6.0,
-    "media": 47.9083,
+    "media": 48.7417,
     "mediana": 46.9,
-    "dp": 18.395,
+    "dp": 19.7643,
     "min": 24.0,
     "p25": 35.525,
     "p75": 61.2,
-    "max": 71.95,
-    "amplitude": 47.95,
-    "cv": 0.384
+    "max": 76.95,
+    "amplitude": 52.95,
+    "cv": 0.4055
    },
    "fecha_tarde_h": {
     "n": 11.0,
@@ -4429,16 +4469,16 @@
     "cv": 0.4733
    },
    "couvert_mediana": {
-    "n": 1.0,
-    "media": 12.5,
-    "mediana": 12.5,
-    "dp": null,
-    "min": 12.5,
-    "p25": 12.5,
-    "p75": 12.5,
+    "n": 2.0,
+    "media": 8.75,
+    "mediana": 8.75,
+    "dp": 5.3033,
+    "min": 5.0,
+    "p25": 6.875,
+    "p75": 10.625,
     "max": 12.5,
-    "amplitude": 0.0,
-    "cv": null
+    "amplitude": 7.5,
+    "cv": 0.6061
    },
    "tem_metro_1000m": 0.0,
    "abre_domingo": 0.6364,

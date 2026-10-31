@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 31/10/2026 (05h), revisão geral dos caps. 1, 2, 3, 5, 6, 8 e 9 depois dos PRs #20 e #21 (consumo por pessoa e cesta completa).
+Última análise: 31/10/2026 (03h40), couvert de 10 casas a partir de prints do Instagram nos caps. 3, 5, 6 e 9; antes, 31/10 (05h), revisão geral dos caps. 1, 2, 3, 5, 6, 8 e 9 depois dos PRs #20 e #21.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -48,11 +48,9 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D26 — Codificação do B2: cap. 3 × instrução.** Cap. 3 (3.4.2 e 3.4.3) × `4_metodologia.md` §3.4. O cap. 3 descreve a prática atual — codificação temática com 22 temas, feita com apoio de inteligência artificial e validada por recodificação cega de 139 avaliações com kappa ≥ 0,70. A instrução ainda prevê dicionário automático de 11 aspectos, validado por kappa e F1 em 200 avaliações. Sugestão: decidir o instrumento (pendências, item 15, e "Instruções ainda desatualizadas") e alinhar a instrução ou o capítulo.
 
-**D28 — Mediana da taxa de entrada dos concorrentes: 18,75 × 25,00.** Cap. 9 (9.8 e aba checagens) × cap. 6 (6.3). O cap. 9 usa R$ 18,75, mediana da coluna "couvert ou taxa de jogo" de `B1_cardapios_itens_precos.xlsx`, que inclui uma pizza chamada "Lúdico" (Ludoteca BGC, R$ 30,00) e a sala do Café Geek cobrada por hora e por grupo, e mistura dia útil e fim de semana. O cap. 6 separa os dias e dá R$ 25,00 no fim de semana e R$ 17,50 no dia útil, com 6 concorrentes. A conclusão (São Jogue acima da mediana) não muda. Sugestão: corrigir a classificação no B1 e rodar de novo o modelo do cap. 9.
-
 **D27 — Frequência de preço nas avaliações: 12,8% × 2,7% e 9,3%.** Cap. 5 (5.2.2, Bardin provisório de 15/10: "preço e valor percebido" em 12,8%) × cap. 6 (6.3, temas do Notion de 30/10: preço da entrada em 44 e preço do consumo em 152 das 1.628 avaliações). São codificações diferentes; alinhar quando o 5.2 for refeito com o dicionário de 30/10.
 
-**D29 — Cardápios: cesta, consumo e couvert com quatro bases diferentes.** Cap. 5 (5.3, "cesta mediana" de R$ 58,50 com bebida e prato, 26 casas com cardápio, 7 com couvert) × cap. 6 (6.3: 36 casas com cardápio, 6 cobram taxa, mediana de R$ 25,00) × cap. 9 (9.8: 8 concorrentes, mediana de R$ 18,75) × decisão de 30/10 e PR #21 (consumo por pessoa de R$ 48,80 em 33 casas; cesta completa de R$ 74,25 só nas 8 casas com couvert encontrado). O cap. 5 chama de "cesta" o que agora é "consumo", e o cap. 3 (3.5) ainda define o ticket como "cesta por pessoa — couvert, bebida e prato". Sugestão: depois de rodar de novo `B1-b_resumo.py` e `B1-a_estatistica_descritiva.py` no Mac, reescrever os três capítulos com os mesmos números e os nomes "consumo por pessoa" e "cesta completa" (já nas instruções em 31/10).
+**D29 — Cardápios: consumo e cesta com bases diferentes.** Cap. 5 (5.3.4, "cesta mediana" de R$ 58,50 com bebida e prato, faixa de R$ 40,62 a R$ 71,91) × base regerada em 31/10 (consumo por pessoa de R$ 50,82 em 36 casas, média das medianas, faixa de R$ 38,38 a R$ 65,70; cesta completa em 18 casas, mediana de R$ 74,50). O cap. 5 chama de "cesta" o que agora é "consumo", e o cap. 3 (3.5) ainda define o ticket como "cesta por pessoa — couvert, bebida e prato". O couvert já está alinhado nos caps. 5, 6 e 9 desde 31/10 (21 concorrentes, mediana de R$ 20,00; R$ 25,00 no fim de semana). Sugestão: reescrever o consumo do cap. 5 e o ticket do cap. 3 com os nomes "consumo por pessoa" e "cesta completa".
 
 **D30 — CNAE do cap. 5 contra a decisão do cap. 8.** Cap. 5 (5.1, "bar com entretenimento, subclasse 5611-2/05", e a lacuna de contar CNPJ ativos na 5611-2/05) × cap. 8 (8.1) e decisão de 31/10 (CNAE principal 5611-2/01; 5611-2/05 descartada). Sugestão: no 5.1, citar 5611-2/01 como a subclasse do plano e, se a contagem de CNPJ for feita, usar as duas (5611-2/01 e 5611-2/03) e dizer que nenhuma isola luderias.
 
@@ -66,7 +64,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D15 — Travessão e linha de fonte.** O cap. 1 usa hífen com espaços ( - ) como travessão; os caps. 2 e 5 usam travessão (—). O cap. 2 escreve "Fonte: elaborado pelo autor."; o cap. 5, "Fonte: elaborado pelo próprio autor com base em…". Padronizar na revisão de forma.
 
-**D16 — Couvert lúdico tratado como dado.** Cap. 2 (2.4, Quadro 1) × cap. 5 (5.3.4). O cap. 2 fala na "definição do couvert lúdico" como se o plano fosse cobrá-lo; o cap. 5 mostra couvert no cardápio de 7 das 26 casas, sem dado nas demais. Não é contradição, mas o cap. 2 pode dizer "a cobrança ou não de couvert lúdico".
+**D16 — Couvert lúdico tratado como dado.** Cap. 2 (2.4, Quadro 1) × cap. 5 (5.3.4). O cap. 2 fala na "definição do couvert lúdico" como se o plano fosse cobrá-lo; o cap. 5 mostra couvert em 21 dos 53 concorrentes, sem dado em 31. Não é contradição, mas o cap. 2 pode dizer "a cobrança ou não de couvert lúdico".
 
 **D17 — Mercado&Consumo como sustentação.** Cap. 1 (contextualização). Dado de shopping (1,4% → 2,2% das lojas) vem de imprensa (P1, nível 6), que pela P1 não sustenta argumento. Já marcado para troca pela Abrasce.
 
