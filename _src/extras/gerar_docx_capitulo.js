@@ -9,6 +9,8 @@
 // linhas de citação (>) de rascunho são omitidas.
 //
 // Uso: node "_src/extras/gerar_docx_capitulo.js" textos/capitulos/9_plano_financeiro.md
+// Vários capítulos num só arquivo (cada um começa em página nova):
+//   node "_src/extras/gerar_docx_capitulo.js" cap1.md cap2.md ... --saida caminho.docx
 const fs = require("fs");
 const path = require("path");
 const {
@@ -17,9 +19,11 @@ const {
 } = require("docx");
 
 const ROOT = path.resolve(__dirname, "..", "..");
-const MD = path.resolve(ROOT, process.argv[2] || "");
-if (!process.argv[2] || !fs.existsSync(MD)) { console.error("Informe o .md do capítulo."); process.exit(1); }
-const OUT = MD.replace(/\.md$/, ".docx");
+const ARGS = process.argv.slice(2);
+const iSaida = ARGS.indexOf("--saida");
+const MDS = (iSaida < 0 ? ARGS : ARGS.slice(0, iSaida)).map((a) => path.resolve(ROOT, a));
+if (!MDS.length || !MDS.every((m) => fs.existsSync(m))) { console.error("Informe o .md do capítulo."); process.exit(1); }
+const OUT = iSaida < 0 ? MDS[0].replace(/\.md$/, ".docx") : path.resolve(ROOT, ARGS[iSaida + 1]);
 
 const FONTE = "Arial";
 const TAM = 24;        // 12 pt
@@ -107,11 +111,10 @@ function quadro(linhas) {
   });
 }
 
-function converte(md) {
-  const blocos = [];
+let instancia = 0; // contínua entre capítulos, para cada lista numerada recomeçar em 1
+function converte(md, MD, blocos = []) {
   const linhas = md.split("\n");
   let referencias = false;
-  let instancia = 0;
   let anteriorNumerada = false;
   for (let i = 0; i < linhas.length; i++) {
     const l = linhas[i];
@@ -122,7 +125,7 @@ function converte(md) {
 
     if (l.startsWith("# ")) {
       blocos.push(new Paragraph({ heading: HeadingLevel.TITLE, alignment: AlignmentType.CENTER,
-        children: runs(l.slice(2), { bold: true }), spacing: { line: ENTRELINHA, after: 480 } }));
+        pageBreakBefore: blocos.length > 0, children: runs(l.slice(2), { bold: true }), spacing: { line: ENTRELINHA, after: 480 } }));
     } else if (l.startsWith("## ")) {
       blocos.push(new Paragraph({ heading: HeadingLevel.HEADING_1, keepNext: true,
         children: runs(l.slice(3).toUpperCase(), { bold: true }), spacing: { line: ENTRELINHA, before: 360, after: 240 } }));
@@ -201,7 +204,7 @@ const doc = new Document({
     } },
     footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.RIGHT,
       children: [new TextRun({ children: [PageNumber.CURRENT], font: FONTE, size: TAM_QUADRO })] })] }) },
-    children: converte(fs.readFileSync(MD, "utf-8")),
+    children: MDS.reduce((blocos, md) => converte(fs.readFileSync(md, "utf-8"), md, blocos), []),
   }],
 });
 

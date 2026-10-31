@@ -1808,3 +1808,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: .docx dos caps. 3, 6 e 9 de 31/10 (02h26), sem o couvert novo nem as correções do PR #23; caps. 7 e 10 sem .docx.
 **Depois**: gerados por `_src/extras/gerar_docx_capitulo.js` a partir dos .md atuais. O cap. 8 não mudou e manteve o .docx.
 **Justificativa**: pedido do autor.
+
+### 11:30
+**Objeto**: `_src/extras/gerar_docx_capitulo.js` e `textos/TCC_luderia_completo_2026-10-31.pdf` (novo)
+**Antes**: o gerador fazia um .docx por capítulo; não havia arquivo do trabalho inteiro.
+**Depois**: o gerador aceita vários .md e `--saida`, com cada capítulo em página nova e listas numeradas recomeçando por capítulo (o .docx de um capítulo só sai igual). PDF do trabalho com os caps. 1 a 11 (62 páginas), convertido pelo LibreOffice; notas de rascunho (linhas com ">") omitidas, sem capa nem sumário.
+**Justificativa**: pedido do autor: PDF do trabalho atual com todos os capítulos.
