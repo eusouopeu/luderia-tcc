@@ -1,7 +1,7 @@
 // Gera o .docx de um capítulo a partir do .md (textos/capitulos/).
 //
 // Mesmo formato ABNT de gerar_docx_projeto.js (A4, margens 3/2 cm, Arial 12,
-// espaçamento 1,5, recuo de 1,25 cm). Diferenças: legenda acima de Quadro,
+// espaçamento 1,5, recuo de 1,00 cm). Diferenças: legenda acima de Quadro,
 // Tabela e Figura; tabela com número (alguma célula numérica fora da 1ª coluna)
 // só com bordas horizontais no cabeçalho e no fim, números à direita (skill
 // formatacao-tabelas-xlsx, seções 4 e 5); quadro de texto com grade completa;
@@ -86,7 +86,7 @@ function corpo(texto) {
   return new Paragraph({
     children: runs(texto),
     alignment: AlignmentType.JUSTIFIED,
-    indent: { firstLine: Math.round(1.25 * CM) },
+    indent: { firstLine: Math.round(1.0 * CM) },
     spacing: { line: ENTRELINHA, after: DEPOIS },
   });
 }

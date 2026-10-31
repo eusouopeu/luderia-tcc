@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 31/10/2026 | Recuo de primeira linha de 1,00 cm e referências alinhadas à esquerda (não justificadas) | `_instrucoes/1d_formatacao.md` |
 | 31/10/2026 | Formatação suplementar dos `.docx` e `.pdf`, que prevalece sobre a skill `formatacao-texto-ufba`: título 1 e título de referências à esquerda; título 2 sem negrito; 0,5 cm depois do parágrafo; células centradas na vertical; legendas e fontes centralizadas | `_instrucoes/1d_formatacao.md` |
 | 31/10/2026 | `1_estrutura.md` dividido em `1_estrutura` (estrutura e teto), `1a_principios` (P1 a P4), `1b_escrita` (P5 e P6) e `1c_versoes`, com a numeração P mantida | `_instrucoes/1_estrutura.md` |
 | 31/10/2026 | Duas versões do texto (TMax completo, TMin conciso) e dos dados agregados (DMax completo, DMin essencial, a definir); `.docx` e `.pdf` numerados `_v<n>`, versões antigas em `_arquivo/` | `_instrucoes/1c_versoes.md` |

@@ -13,8 +13,8 @@ Regras suplementares à skill `formatacao-texto-ufba`, pedido do autor em 31/10/
 
 ## Parágrafos
 
-- **Corpo do texto:** espaçamento de 0,5 cm depois do parágrafo (no lugar da linha em branco da skill). Os demais atributos seguem a skill.
-- **Referências bibliográficas:** espaçamento de 0,5 cm depois de cada referência e **sem recuo na primeira linha**.
+- **Corpo do texto:** recuo de 1,00 cm na primeira linha e espaçamento de 0,5 cm depois do parágrafo (no lugar da linha em branco da skill). Os demais atributos seguem a skill.
+- **Referências bibliográficas:** alinhadas à esquerda (não justificadas), **sem recuo na primeira linha** e com espaçamento de 0,5 cm depois de cada referência.
 
 ## Tabelas e quadros
 

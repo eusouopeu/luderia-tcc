@@ -1874,3 +1874,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: sem as decisões de divisão das instruções e de formatação suplementar.
 **Depois**: duas decisões novas; AGORA com a formatação nova e a regeração dos arquivos como passo.
 **Justificativa**: fim de sessão (CLAUDE.md).
+
+### 13:06
+**Objeto**: `_instrucoes/1d_formatacao.md` e `_src/extras/gerar_docx_capitulo.js` (divergência de 13:00 com a skill `formatacao-texto-ufba`, resolvida)
+**Antes**: gerador com recuo de 1,25 cm; a skill pede 1,00 cm e referências justificadas.
+**Depois**: recuo de 1,00 cm no gerador e na instrução; referências alinhadas à esquerda, regra registrada na `1d_formatacao.md` (prevalece sobre a skill).
+**Justificativa**: decisão do autor.
+
+### 13:06
+**Objeto**: `textos/capitulos/{3,6,7,8,9,10}_*_TMax_v2.docx`, `TMin/{2,3,5,9}_*_TMin_v2.docx`, `TCC_luderia_TMax_v3.{docx,pdf}`, `TMin/TCC_luderia_TMin_v2.{docx,pdf}`
+**Antes**: versões no formato antigo (TMax v2 com 62 páginas; TMin v1 com 49).
+**Depois**: regerados no formato da `1d_formatacao.md`, versões anteriores em `_arquivo/`; TMax v3 com 67 páginas, TMin v2 com 53. Conteúdo igual.
+**Justificativa**: pedido do autor.
