@@ -37,7 +37,7 @@ Cada bloco tem pasta `[Bn] Nome`, com o mesmo nome, em `_src/` e em `dados/`; em
 | Subcapítulo | Conteúdo |
 |---|---|
 | **3.1 Caracterização do trabalho** | Plano de negócios baseado em evidências; pesquisa aplicada, descritivo-exploratória, quantitativa com análise de conteúdo; delineamento transversal |
-| **3.2 Hierarquia de evidências** | Escala N1–N6 ([8_financeiro.md](8_financeiro.md) §2) e hierarquia de tipos de dados ([1_estrutura.md](1_estrutura.md), "Princípios do plano", P2); justificativa da exclusão de questionários |
+| **3.2 Hierarquia de evidências** | Escala N1–N6 ([8_financeiro.md](8_financeiro.md) §2) e hierarquia de tipos de dados ([1a_principios.md](1a_principios.md), P2); justificativa da exclusão de questionários |
 | **3.3 Fontes e instrumentos de coleta** | Blocos B1, B2, B3 e B4: o que mede, procedimento, recorte, período, limitação |
 | **3.4 Tratamento dos dados** | Pipeline; pseudonimização; validação da coleta (auditoria dos censos da fonte, reconciliação das bases públicas, consistência da contagem); construção das variáveis; dicionário de codificação e sua validação |
 | **3.5 Registro prévio e testes de hipótese** | **Extra, só se sobrar tempo.** Hipóteses H1–H9 e registro prévio, na base inteira. Se não for feito, a seção sai e as seguintes sobem um número |

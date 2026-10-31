@@ -26,7 +26,7 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 11. **BRT de Brasília no entorno.** Sem o OSM (30/10), o Maps é a única fonte, e a busca "estação BRT" não devolve as paradas do BRT Expresso DF. Testar outra busca (ex.: "parada BRT" ou o nome da linha) ou declarar a limitação, com o grupo VLT/BRT das 2 casas de Brasília em branco em vez de zero.
 
-10. **Escala de fontes do cap. 5 × P1 e N1–N6** (`docs/melhorias-texto.md`, D01): a ordem de fontes em 4 níveis decidida para o cap. 5 em 15/10 vira a P1 de `_instrucoes/1_estrutura.md` ou sai do capítulo? E que rótulo dar ao tipo de dado da P2, para não confundir com N1–N6?
+10. **Escala de fontes do cap. 5 × P1 e N1–N6** (`docs/melhorias-texto.md`, D01): a ordem de fontes em 4 níveis decidida para o cap. 5 em 15/10 vira a P1 de `_instrucoes/1a_principios.md` ou sai do capítulo? E que rótulo dar ao tipo de dado da P2, para não confundir com N1–N6?
 
 12. **Cesta de jogos, premissas do cap. 9.3** (`B1_cesta_jogos.xlsx`, 17/10): tamanho do acervo inicial (p25 = 222, mediana = 322 ou p75 = 622 títulos); desconto de distribuidora sobre o varejo online; frete e reposição por desgaste. A faixa por jogo é estreita porque muitos jogos estão à venda em uma loja só (menor = maior).
 

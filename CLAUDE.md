@@ -8,7 +8,11 @@ Ler este arquivo e o [AGORA.md](AGORA.md) sempre; não carregar documentação o
 
 | Arquivo | Quando ler |
 |---|---|
-| [_instrucoes/1_estrutura.md](_instrucoes/1_estrutura.md) | Visão do todo; tarefa com mais de um capítulo; caps. 1, 4 e 11 (sem arquivo próprio); teto de páginas; hierarquias de fontes, dados e focos; escrita e vocabulário |
+| [_instrucoes/1_estrutura.md](_instrucoes/1_estrutura.md) | Visão do todo; tarefa com mais de um capítulo; caps. 1, 4 e 11 (sem arquivo próprio); teto de páginas |
+| [_instrucoes/1a_principios.md](_instrucoes/1a_principios.md) | Hierarquias de fontes, dados e focos (P1 a P3); precedência dos caps. 6 e 8; personalização da estrutura (P4) |
+| [_instrucoes/1b_escrita.md](_instrucoes/1b_escrita.md) | Qualquer prosa do TCC: regras de escrita (P5) e vocabulário controlado (P6) |
+| [_instrucoes/1c_versoes.md](_instrucoes/1c_versoes.md) | TMax/TMin, DMax/DMin, numeração `_v<n>` e `_arquivo/` |
+| [_instrucoes/1d_formatacao.md](_instrucoes/1d_formatacao.md) | Gerar ou revisar `.docx` e `.pdf` (suplementar à skill `formatacao-texto-ufba`) |
 | [_instrucoes/2_ref-teorico.md](_instrucoes/2_ref-teorico.md) | Cap. 2 — escrita, citação, subcapítulos (lista de leitura em `bibliografia/lista-de-leitura.md`) |
 | [_instrucoes/4_metodologia.md](_instrucoes/4_metodologia.md) | Cap. 3 — instrumentos de coleta, blocos de dados, matriz de evidências |
 | [_instrucoes/3_mercado.md](_instrucoes/3_mercado.md) | Cap. 5 — análise de mercado |
@@ -69,16 +73,16 @@ Antes do commit, atualizar:
 
 ## Princípios
 
-- **Escrita:** skill `meu-estilo-escrita` para qualquer prosa do TCC, mais as regras de escrita e o vocabulário controlado de `_instrucoes/1_estrutura.md` (P5 e P6).
+- **Escrita:** skill `meu-estilo-escrita` para qualquer prosa do TCC, mais as regras de escrita e o vocabulário controlado de `_instrucoes/1b_escrita.md` (P5 e P6).
 - **Extensão:** no máximo 90 páginas, com teto por capítulo em `_instrucoes/1_estrutura.md`. Testes de hipótese H1–H9 e Monte Carlo são extras, só se sobrar tempo.
 - **Tabela agregada fecha com o total.** Cada unidade (place_id, avaliação, jogo) conta em **um único grupo**, atribuído por atributo próprio (ex.: UF do endereço), nunca pelo contexto da coleta. Antes de entregar, somar as linhas e comparar com o total (diferença zero); vale também ao rodar de novo um script existente. Contagem não exclusiva por desenho fica declarada no nome da coluna e na docstring, sem total como soma.
-- **Precedência dos caps. 6 e 8:** em divergência entre capítulos, valem o Plano de Marketing (cap. 6) e os Aspectos Jurídicos (cap. 8), que moldam o negócio; os demais (7, 9 e os que dependem deles) só o tornam viável. Toda mudança nos caps. 6 ou 8 gera alerta imediato ao autor sobre os capítulos a ajustar. Detalhes em `_instrucoes/1_estrutura.md` (P3).
+- **Precedência dos caps. 6 e 8:** em divergência entre capítulos, valem o Plano de Marketing (cap. 6) e os Aspectos Jurídicos (cap. 8), que moldam o negócio; os demais (7, 9 e os que dependem deles) só o tornam viável. Toda mudança nos caps. 6 ou 8 gera alerta imediato ao autor sobre os capítulos a ajustar. Detalhes em `_instrucoes/1a_principios.md` (P3).
 - **Decisão antes de descrição:** todo resultado responde "que decisão do plano isso muda?". Se nenhuma, vai para apêndice ou sai.
 - **Nada de número sem fonte** (instituição, base, recorte, data). **Nada de referência inventada:** obra não conferida fica `[AV]` (a verificar); citação de conceito com página a conferir leva `[AV-<ID>]`, com o ID do `checklist-conceitos.md` da leva em `bibliografia/leituras-*/`.
 - **Incerteza declarada:** estimativas com faixa (pessimista/provável/otimista) e nível de evidência.
 - **Sem questionários** de opinião ou intenção; preferir fontes secundárias e primárias comportamentais.
 - **Normas:** ABNT (detalhes em `_instrucoes/10_biblio-apendices.md`). Instituição: UFBA.
 - **Idioma:** português do Brasil no texto, nos comentários do código e nos nomes de arquivos de saída.
-- **Versões:** TMax (texto completo, `textos/capitulos/`) e TMin (conciso, `textos/capitulos/TMin/`); DMax e DMin para os dados agregados; `.docx` e `.pdf` numerados `_v<n>`, com as versões antigas em `_arquivo/`. Regras em `_instrucoes/1_estrutura.md` ("Versões do texto e dos dados"). Escolha de obras citadas: `_instrucoes/2_ref-teorico.md`.
+- **Versões:** TMax (texto completo, `textos/capitulos/`) e TMin (conciso, `textos/capitulos/TMin/`); DMax e DMin para os dados agregados; `.docx` e `.pdf` numerados `_v<n>`, com as versões antigas em `_arquivo/`. Regras em `_instrucoes/1c_versoes.md`. Formatação dos `.docx` e `.pdf`: skill `formatacao-texto-ufba` mais `_instrucoes/1d_formatacao.md`, que prevalece. Escolha de obras citadas: `_instrucoes/2_ref-teorico.md`.
 - **Pastas enxutas:** nenhuma pasta com mais de cerca de 10 itens soltos na raiz; ao criar arquivos ou pastas, agrupar em subpastas por etapa ou tema (ex.: amostragem, curadoria, aprovadas, cardápios, redes sociais). Pedido do autor em 12/10/2026: abrir a pasta e ver dezenas de arquivos de uma vez sobrecarrega.
 - **Nome de arquivo de coleta de rede social:** `AAAA-MM-DD_<estabelecimento>_instagram_<perfis|posts>.csv`, em `redes_sociais/rs_<cidade>/rs_<perfil>/`; listas do snowball, `AAAA-MM-DD_<perfil>_instagram_seguindo.csv`, em `_dados-brutos/redes_sociais/seguindo/` (fora do git: trazem @ de pessoas físicas). Cardápios originais em `_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/`. A cidade é a capital da região metropolitana do endereço. Demais convenções: `_src/dicionario.md`.

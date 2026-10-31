@@ -3,7 +3,7 @@ Planilhas com os dados agregados da pesquisa (B1, B3 e B4) e gráficos, uma por 
 
 Lê só arquivos processados de `dados/` e grava em `dados/Dados agregados/`
 (DMax = versão completa, com todos os dados coletados; a DMin, essencial, será
-definida pelo autor; ver _instrucoes/1_estrutura.md, "Versões do texto e dos dados"):
+definida pelo autor; ver _instrucoes/1c_versoes.md):
 `B1_dados_agregados_DMax.xlsx`, `B1_dados_agregados_resumido.xlsx` (sem
 eventos, dias e temas do Instagram e sem o custo do acervo),
 `B3_dados_agregados_DMax.xlsx` e `B4_dados_agregados_DMax.xlsx`, uma aba por tabela,

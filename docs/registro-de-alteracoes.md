@@ -1850,3 +1850,27 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: D34 (couvert 13 × 11); sem D35; cortes sem indicação de versão.
 **Depois**: D34 sai (contagens alinhadas em 31/10); D35 nova (cap. 5 TMax: preço abaixo da média × cap. 6: acima da mediana); cortes aplicados no TMin indicados; pendência 16 (DMin, grade ERRC, versão para a banca, biblioteca do Drive); duas decisões novas.
 **Justificativa**: fim de sessão (CLAUDE.md).
+
+### 13:00
+**Objeto**: `_instrucoes/1_estrutura.md`; `_instrucoes/1a_principios.md`, `1b_escrita.md`, `1c_versoes.md` (novos); referências em `CLAUDE.md`, `_instrucoes/4_metodologia.md`, `docs/decisoes.md`, `docs/pendencias.md`, `docs/melhorias-texto.md`, `_src/extras/gerar_docx_capitulo.js` e `gerar_planilha_agregada.py`
+**Antes**: um arquivo de 262 linhas com descrição geral, versões, extensão, estrutura dos capítulos e os princípios P1 a P6.
+**Depois**: `1_estrutura.md` (160 linhas) fica com descrição geral, extensão e estrutura, e um quadro que aponta os demais; `1a_principios.md` com P1 a P4 (hierarquias, precedência dos caps. 6 e 8, personalização); `1b_escrita.md` com P5 e P6; `1c_versoes.md` com TMax/TMin, DMax/DMin, numeração e `_arquivo/`. Numeração P1 a P6 e texto das regras mantidos.
+**Justificativa**: pedido do autor: o arquivo estava grande demais.
+
+### 13:00
+**Objeto**: `_instrucoes/1d_formatacao.md` (novo) e `_src/extras/gerar_docx_capitulo.js`
+**Antes**: título 1 centralizado; "Referências citadas neste capítulo" saía como parágrafo do corpo, em negrito e com recuo, e as referências como corpo (o gerador só reconhecia `**Referências**`); título 2 em negrito; corpo sem espaço depois do parágrafo; referências com 12 pt depois; células sem alinhamento vertical; legenda e fonte à esquerda.
+**Depois**: regras suplementares à skill `formatacao-texto-ufba`, que prevalecem sobre ela: título 1 à esquerda, sem recuo; título de referências como o título 1, sem número e em página nova; título 2 em caixa alta sem negrito; 0,5 cm depois do parágrafo no corpo e nas referências; referências sem recuo; células centradas na vertical; coluna de quadro só com palavras únicas centrada na horizontal; legenda e fonte de tabelas e quadros centralizadas. O gerador aplica todas; teste no PDF do TMin: 53 páginas, contra 49 do TMin v1 (o espaço depois do parágrafo e as referências em página nova). Os `.docx` e `.pdf` do projeto não foram regerados.
+**Justificativa**: pedido do autor, antes de mudar a skill.
+
+### 13:00
+**Objeto**: divergência entre a skill `formatacao-texto-ufba` e `_src/extras/gerar_docx_capitulo.js`
+**Antes** (skill): recuo de primeira linha de 1,00 cm; referências justificadas, com uma linha em branco entre elas.
+**Depois** (gerador): recuo de 1,25 cm; referências alinhadas à esquerda (o espaço entre elas passa a 0,5 cm pela `1d_formatacao.md`).
+**Efeitos colaterais**: os `.docx` e `.pdf` saem com recuo e alinhamento das referências diferentes da skill. Não corrigido: aguarda o autor.
+
+### 13:00
+**Objeto**: `docs/decisoes.md`, `AGORA.md`
+**Antes**: sem as decisões de divisão das instruções e de formatação suplementar.
+**Depois**: duas decisões novas; AGORA com a formatação nova e a regeração dos arquivos como passo.
+**Justificativa**: fim de sessão (CLAUDE.md).

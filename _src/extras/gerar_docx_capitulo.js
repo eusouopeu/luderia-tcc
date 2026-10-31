@@ -7,8 +7,12 @@
 // formatacao-tabelas-xlsx, seções 4 e 5); quadro de texto com grade completa;
 // imagem em linha própria no formato ![texto](caminho relativo ao .md);
 // linhas de citação (>) e comentários HTML de rascunho são omitidos.
+// Regras suplementares de _instrucoes/1d_formatacao.md: título 1 e título de
+// referências à esquerda; título 2 em caixa alta sem negrito; 0,5 cm depois do
+// parágrafo no corpo e nas referências; células centradas na vertical; coluna de
+// quadro só com palavras únicas centrada; legenda e fonte centralizadas.
 //
-// Versões (_instrucoes/1_estrutura.md, "Versões do texto"): a saída leva o texto
+// Versões (_instrucoes/1c_versoes.md): a saída leva o texto
 // (TMax, ou TMin quando o .md está em textos/capitulos/TMin/) e o número da versão,
 // <nome>_<TMax|TMin>_v<n>.docx, com n = maior versão já existente + 1; a versão
 // anterior vai para a pasta _arquivo/ ao lado.
@@ -20,7 +24,7 @@ const fs = require("fs");
 const path = require("path");
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, ImageRun,
-  AlignmentType, HeadingLevel, LevelFormat, BorderStyle, ShadingType, PageNumber, Footer,
+  AlignmentType, HeadingLevel, LevelFormat, BorderStyle, ShadingType, PageNumber, Footer, VerticalAlign,
 } = require("docx");
 
 const ROOT = path.resolve(__dirname, "..", "..");
@@ -53,6 +57,7 @@ const CM = 567;        // DXA por centímetro
 const LARGURA = 11906 - 3 * CM - 2 * CM; // A4 menos margens esquerda e direita
 const ENTRELINHA = 360; // 1,5
 const SIMPLES = 240;
+const DEPOIS = Math.round(0.5 * CM); // 0,5 cm depois do parágrafo
 
 // Larguras relativas por cabeçalho de quadro.
 const PESOS = {
@@ -82,14 +87,14 @@ function corpo(texto) {
     children: runs(texto),
     alignment: AlignmentType.JUSTIFIED,
     indent: { firstLine: Math.round(1.25 * CM) },
-    spacing: { line: ENTRELINHA, after: 0 },
+    spacing: { line: ENTRELINHA, after: DEPOIS },
   });
 }
 
 function legenda(texto, depois = 0) {
   return new Paragraph({
     children: runs(texto, { size: TAM_QUADRO }),
-    alignment: AlignmentType.LEFT,
+    alignment: AlignmentType.CENTER,
     keepNext: depois === 0,
     spacing: { line: SIMPLES, before: depois ? 0 : 240, after: depois },
   });
@@ -101,6 +106,14 @@ function quadro(linhas) {
   const cab = linhas[0];
   const numerica = linhas.slice(1).some((l) => l.slice(1).some((c) => NUM.test(c)));
   const pesos = cab.map((c, j) => PESOS[c] || (j === 0 ? 34 : (numerica ? 14 : 20)));
+  // Quadro: coluna em que toda célula tem uma só palavra fica centrada.
+  const palavra = (c) => /^\S+$/.test(c.replace(/\*/g, ""));
+  const centrada = cab.map((_, j) => !numerica && linhas.slice(1).every((l) => !l[j] || palavra(l[j]))
+    && linhas.slice(1).some((l) => l[j]));
+  const alinha = (celula, i, j) => {
+    if (i === 0 || centrada[j]) return AlignmentType.CENTER;
+    return numerica && NUM.test(celula) ? AlignmentType.RIGHT : AlignmentType.LEFT;
+  };
   const soma = pesos.reduce((a, b) => a + b, 0);
   const larguras = pesos.map((p) => Math.floor((p / soma) * LARGURA));
   larguras[larguras.length - 1] += LARGURA - larguras.reduce((a, b) => a + b, 0);
@@ -121,15 +134,23 @@ function quadro(linhas) {
         width: { size: larguras[j], type: WidthType.DXA },
         borders: bordas(i),
         margins: { top: 40, bottom: 40, left: 80, right: 80 },
+        verticalAlign: VerticalAlign.CENTER,
         shading: { type: ShadingType.CLEAR, fill: "FFFFFF", color: "auto" },
         children: [new Paragraph({
           children: runs(celula, { bold: i === 0, size: TAM_QUADRO }),
-          alignment: i === 0 ? AlignmentType.CENTER : (numerica && NUM.test(celula) ? AlignmentType.RIGHT : AlignmentType.LEFT),
+          alignment: alinha(celula, i, j),
           spacing: { line: SIMPLES, after: 0 },
         })],
       })),
     })),
   });
+}
+
+// Título 1 (capítulo) e título de referências: caixa alta, negrito, à esquerda, sem recuo.
+function titulo1(texto, quebra) {
+  return new Paragraph({ heading: HeadingLevel.TITLE, alignment: AlignmentType.LEFT, indent: { firstLine: 0 },
+    pageBreakBefore: quebra, keepNext: true, children: runs(texto.toUpperCase(), { bold: true }),
+    spacing: { line: ENTRELINHA, after: 480 } });
 }
 
 let instancia = 0; // contínua entre capítulos, para cada lista numerada recomeçar em 1
@@ -146,18 +167,17 @@ function converte(md, MD, blocos = []) {
     anteriorNumerada = numerada;
 
     if (l.startsWith("# ")) {
-      blocos.push(new Paragraph({ heading: HeadingLevel.TITLE, alignment: AlignmentType.CENTER,
-        pageBreakBefore: blocos.length > 0, children: runs(l.slice(2), { bold: true }), spacing: { line: ENTRELINHA, after: 480 } }));
+      blocos.push(titulo1(l.slice(2), blocos.length > 0));
     } else if (l.startsWith("## ")) {
       blocos.push(new Paragraph({ heading: HeadingLevel.HEADING_1, keepNext: true,
-        children: runs(l.slice(3).toUpperCase(), { bold: true }), spacing: { line: ENTRELINHA, before: 360, after: 240 } }));
+        children: runs(l.slice(3).toUpperCase(), { bold: false }), spacing: { line: ENTRELINHA, before: 360, after: 240 } }));
     } else if (l.startsWith("### ")) {
       blocos.push(new Paragraph({ heading: HeadingLevel.HEADING_2, keepNext: true,
         children: runs(l.slice(4), { bold: true }), spacing: { line: ENTRELINHA, before: 240, after: 120 } }));
-    } else if (/^\*\*Refer[êe]ncias\*\*$/.test(l.trim())) {
+    } else if (/^\*\*Refer[êe]ncias[^*]*\*\*/.test(l.trim())) {
+      // "Referências citadas neste capítulo": como o título 1, sem número.
       referencias = true;
-      blocos.push(new Paragraph({ heading: HeadingLevel.HEADING_1, alignment: AlignmentType.CENTER,
-        pageBreakBefore: true, children: runs("REFERÊNCIAS", { bold: true }), spacing: { after: 240 } }));
+      blocos.push(titulo1(l.trim().replace(/\*\*/g, "").toUpperCase(), true));
     } else if (/^\*\*(Quadro|Tabela|Figura) [\d.]+/.test(l)) {
       blocos.push(legenda(l));
     } else if (/^!\[[^\]]*\]\([^)]+\)/.test(l.trim())) {
@@ -188,7 +208,7 @@ function converte(md, MD, blocos = []) {
         numbering: { reference: "numerada", level: 0, instance: instancia }, spacing: { line: ENTRELINHA, after: 0 } }));
     } else if (referencias) {
       blocos.push(new Paragraph({ children: runs(l), alignment: AlignmentType.LEFT,
-        spacing: { line: SIMPLES, after: 240 } }));
+        indent: { firstLine: 0 }, spacing: { line: SIMPLES, after: DEPOIS } }));
     } else {
       blocos.push(corpo(l));
     }
@@ -202,7 +222,7 @@ const doc = new Document({
     paragraphStyles: [
       { id: "Title", name: "Title", basedOn: "Normal", run: { font: FONTE, size: TAM, bold: true, color: "000000" } },
       { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true,
-        run: { font: FONTE, size: TAM, bold: true, color: "000000" }, paragraph: { outlineLevel: 0 } },
+        run: { font: FONTE, size: TAM, bold: false, color: "000000" }, paragraph: { outlineLevel: 0 } },
       { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true,
         run: { font: FONTE, size: TAM, bold: true, color: "000000" }, paragraph: { outlineLevel: 1 } },
     ],
