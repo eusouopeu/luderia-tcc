@@ -1941,3 +1941,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: R$ 23,91 de A&B por pessoa pelas NFC-e dos observadores (6.3); de 0,5 a 1,7 pedidos por grupo (7.3); pedidos registrados em parte das visitas, como descrição (TMax 3.3.3); NFC-e e B3 como fonte do ticket (matriz); 11.3 dizia só que a nota sai a pedido.
 **Depois**: 6.3 usa a taxa e a cesta médias do B1 (R$ 44,09 a R$ 69,50 por pessoa; R$ 158,72 a R$ 250,20 por grupo; 35% a 56% do gasto mensal da POF); 7.3 sem os pedidos; TMax 3.3.3 diz que o registro de pedidos, ruído e jogos foi tentado e abandonado; 11.3 ganha um parágrafo sobre a inviabilidade dessa coleta (mesas distantes demais e processamento) e explicita que a São Jogue não emite NFC-e para todos os clientes, quase ninguém pede, e as notas ficam abaixo do número real de clientes.
 **Justificativa**: pedido do autor: a coleta de pedidos, ruído e jogos por mesa foi falha e sai do trabalho.
+
+### 22:04
+**Objeto**: `_src/extras/gerar_modelo_financeiro.py` (R15, giros por mesa por dia); `textos/capitulos/9_plano_financeiro_modelo.xlsx`; figuras `9_tornado.png` e `9_monte_carlo.png`
+**Antes**: giros de 3,61 (pessimista, NFC-e), 2 (provável) e 3 (otimista): pessimista acima dos outros dois. VPL de -R$ 2,88 mi / -R$ 1,63 mi / +R$ 2,79 mi; P(VPL > 0) de 2,9%.
+**Depois**: otimista de 5,51 (10 h abertas, das 12h às 22h, ÷ permanência média de 109 min das 4 visitas); provável de 4,56 (média do pessimista e do otimista); pessimista mantido em 3,61. Provável com 51,2 clientes por dia, acima dos dois pisos da NFC-e. VPL de -R$ 2,88 mi / -R$ 638 mil / +R$ 6,64 mi; -R$ 377 mil com a equipe de 8 do cap. 7; P(VPL > 0) de 25,2%.
+**Justificativa**: pedido do autor, para pôr a faixa do giro em ordem.

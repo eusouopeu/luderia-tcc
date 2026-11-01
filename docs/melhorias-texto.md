@@ -12,7 +12,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Grave
 
-**D36 — Números do cap. 9 × modelo novo (31/10/2026).** Caps. 4 (sumário), 9 (9.1 a 9.7), 10 (10.2, 10.3, 10.5) e 11 (11.1, 11.2) × `9_plano_financeiro_modelo.xlsx`. Os textos ainda trazem a árvore antiga (ocupação × horas ÷ permanência), o A&B de R$ 24,00 das NFC-e, a taxa de R$ 28,00 e o VPL provável de -R$ 479 mil; o modelo passou a mesas ocupadas × giros, taxa e cesta médias do B1, VPL provável de -R$ 1,63 mi e Monte Carlo. Reescrever depois das decisões de giro e preço (pendências).
+**D36 — Números do cap. 9 × modelo novo (31/10/2026).** Caps. 4 (sumário), 9 (9.1 a 9.7), 10 (10.2, 10.3, 10.5) e 11 (11.1, 11.2) × `9_plano_financeiro_modelo.xlsx`. Os textos ainda trazem a árvore antiga (ocupação × horas ÷ permanência), o A&B de R$ 24,00 das NFC-e, a taxa de R$ 28,00 e o VPL provável de -R$ 479 mil; o modelo passou a mesas ocupadas × giros, taxa e cesta médias do B1, VPL provável de -R$ 638 mil e Monte Carlo. Reescrever depois da decisão do preço (pendências).
 
 **D37 — Preço da entrada no cap. 6.3 × cap. 9 (31/10/2026).** Cap. 6.3 (R$ 28,00 e R$ 22,00, São Jogue) × modelo do cap. 9 (R$ 18,68, média do B1). O cap. 6 prevalece; o 6.3 também ainda diz que os valores entram como R06, R07 e R08, IDs que mudaram de sentido.
 

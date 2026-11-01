@@ -163,6 +163,11 @@ def premissas(f) -> list[dict]:
     piso = float(nf.loc["PA", "notas_emitidas"] / nf.loc["PA", "dias"])
     pess = dict(R02=2.5, R04=mo.mean() * (1 - x), R05=0.40, R16=3, R17=4)
     giro_pess = piso * 7 / (pess["R04"] * pess["R02"] * (pess["R16"] + pess["R17"] * pess["R05"]))
+    # giro otimista: horas abertas por dia (12h às 22h) ÷ permanência média das visitas;
+    # provável: média do pessimista e do otimista (decisão do autor, 31/10/2026)
+    HORAS_DIA = 10
+    giro_otim = HORAS_DIA * 60 / pm.mean()
+    giro_prov = (giro_pess + giro_otim) / 2
     a = f["acervo"]
     R = lambda *x: dict(zip(("id", "nome", "unidade", "pess", "prov", "otim", "fonte", "nivel", "just"), x))
     return [
@@ -208,9 +213,9 @@ def premissas(f) -> list[dict]:
         R("R14", "Horas abertas por semana, dia útil", "h", 40, 40, 40,
           "Horário da São Jogue (B1 e autor)", "N3",
           "Segunda a quinta das 12h às 22h."),
-        R("R15", "Giros por mesa por dia", "grupos por mesa ocupada", round(giro_pess, 2), 2, 3,
-          "Pessimista: NFC-e da São Jogue Paralela (B3); provável e otimista: decisão do autor", "N5 + N6",
-          f"Pessimista calibrado para o cenário atender {piso:.2f} clientes por dia, as NFC-e por dia da Paralela (17/10 a 30/10/2026): uma comanda e uma nota por pessoa, emitida só a pedido, então piso. Dois grupos no provável e três no otimista; conferido com a permanência e o horário (aba checagens)."),
+        R("R15", "Giros por mesa por dia", "grupos por mesa ocupada", round(giro_pess, 2), round(giro_prov, 2), round(giro_otim, 2),
+          "B3: NFC-e da São Jogue Paralela (pessimista) e permanência das 4 visitas (otimista)", "N5",
+          f"Pessimista calibrado para o cenário atender {piso:.2f} clientes por dia, as NFC-e por dia da Paralela (17/10 a 30/10/2026): uma comanda e uma nota por pessoa, emitida só a pedido, então piso. Otimista: {HORAS_DIA} h abertas por dia (12h às 22h) ÷ permanência média de {pm.mean():.0f} min. Provável: média dos dois."),
         R("R16", "Dias abertos por semana, fim de semana", "dias", 3, 3, 3,
           "Horário da São Jogue (B1 e autor)", "N3", "Sexta a domingo."),
         R("R17", "Dias abertos por semana, dia útil", "dias", 4, 4, 4,

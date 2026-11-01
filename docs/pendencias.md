@@ -4,7 +4,6 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 ## Decisões a tomar
 
-- **Giros do provável e do otimista abaixo do pessimista (31/10/2026).** O giro pessimista calibrado pela NFC-e (3,61) ficou acima do provável (2) e do otimista (3), e o provável atende 22,5 clientes por dia, abaixo do piso da Bela Vista (30,5 NFC-e por dia). O tornado mostra o giro pessimista melhorando o VPL. Decidir se o provável e o otimista sobem (ex.: piso da Bela Vista no provável e horas ÷ permanência no otimista).
 - **Preço da entrada: cap. 6.3 × modelo (31/10/2026).** O 6.3 adota os preços da São Jogue (R$ 28,00 e R$ 22,00); o modelo usa a taxa média do B1 (R$ 18,68). O cap. 6 prevalece: decidir o preço e alinhar.
 - **Caps. 4, 9, 10 e 11 com os números do modelo anterior (31/10/2026).** Reescrever depois das duas decisões acima; o Monte Carlo vai para apêndice, com a probabilidade de VPL > 0 no corpo.
 - **Referências que faltam na lista única (31/10/2026).** Os caps. 6 a 11 citam fontes sem entrada em nenhuma lista (CONCLA, 2026; Receita Federal, 2026; leis, LCs e a RDC citadas pelo número; Novo CAGED; FipeZap no cap. 7). Conferir e incluir antes da versão final. O cap. 10 cita o caminho interno `_instrucoes/8_financeiro.md` no texto.
