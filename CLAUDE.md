@@ -13,7 +13,7 @@ Ler este arquivo e o [AGORA.md](AGORA.md) sempre; não carregar documentação o
 | [_instrucoes/1b_escrita.md](_instrucoes/1b_escrita.md) | Qualquer prosa do TCC: regras de escrita (P5) e vocabulário controlado (P6) |
 | [_instrucoes/1c_versoes.md](_instrucoes/1c_versoes.md) | TMax/TMin, DMax/DMin, numeração `_v<n>` e `_arquivo/` |
 | [_instrucoes/1d_formatacao.md](_instrucoes/1d_formatacao.md) | Gerar ou revisar `.docx` e `.pdf` (suplementar à skill `formatacao-texto-ufba`) |
-| [_instrucoes/2_ref-teorico.md](_instrucoes/2_ref-teorico.md) | Cap. 2 — escrita, citação, subcapítulos (lista de leitura em `bibliografia/lista-de-leitura.md`) |
+| [_instrucoes/2_ref-teorico.md](_instrucoes/2_ref-teorico.md) | Cap. 2 — escrita, citação, subcapítulos (lista de leitura em `bibliografia/_lista-de-leitura_TMin_v2.md`) |
 | [_instrucoes/4_metodologia.md](_instrucoes/4_metodologia.md) | Cap. 3 — instrumentos de coleta, blocos de dados, matriz de evidências |
 | [_instrucoes/3_mercado.md](_instrucoes/3_mercado.md) | Cap. 5 — análise de mercado |
 | [_instrucoes/5_marketing.md](_instrucoes/5_marketing.md) | Cap. 6 — marketing e estimativa de demanda |

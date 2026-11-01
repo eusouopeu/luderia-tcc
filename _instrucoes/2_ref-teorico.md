@@ -61,4 +61,4 @@ Teto do capítulo: **10 páginas** ([1_estrutura.md](1_estrutura.md), "Extensão
 
 ## Lista de leitura
 
-A lista de obras por tema (perfil do público, lazer, estabelecimentos), as lacunas encontradas e as referências de apoio ficam em [../bibliografia/lista-de-leitura.md](../bibliografia/lista-de-leitura.md). Referências de método ficam em [4_metodologia.md](4_metodologia.md) e [8_financeiro.md](8_financeiro.md).
+As obras citadas no TMin, por assunto e com checklist de leitura e de conferência das páginas, ficam em [../bibliografia/_lista-de-leitura_TMin_v2.md](../bibliografia/_lista-de-leitura_TMin_v2.md). A lista ampla de busca (perfil do público, lazer, estabelecimentos), com as lacunas encontradas, está arquivada em [../bibliografia/_arquivo/_lista-de-leitura_v1.md](../bibliografia/_arquivo/_lista-de-leitura_v1.md). Referências de método ficam em [4_metodologia.md](4_metodologia.md) e [8_financeiro.md](8_financeiro.md).

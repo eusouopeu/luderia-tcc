@@ -30,7 +30,7 @@ Abrir sempre o [AGORA.md](AGORA.md) primeiro. Depois, conforme a tarefa:
 | Vou… | Abrir | Saída ou registro |
 |---|---|---|
 | Escrever o cap. N | `_instrucoes/` do capítulo (mapa no [CLAUDE.md](CLAUDE.md)); dados em `dados/[Bn]…`; skill `meu-estilo-escrita` | `textos/capitulos/`; atualizar `textos/planejamento/status_capitulos.md` |
-| Escrever o cap. 2 | `_instrucoes/2_ref-teorico.md` e `bibliografia/lista-de-leitura.md` | `textos/capitulos/` |
+| Escrever o cap. 2 | `_instrucoes/2_ref-teorico.md` e `bibliografia/_lista-de-leitura_TMin_v2.md` | `textos/capitulos/` |
 | Coletar avaliações (B2) | `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/webscripts/maps_avaliacoes.user.js` (Tampermonkey), fila em `dados/[B2] Avaliacoes recentes/B2_fila_coleta.txt` | rodar `B2-b_avaliacoes.py`; situação em `B2_cobertura_coleta.csv` |
 | Ir a campo (B3) | `textos/instrumentos/roteiro_observacao_sao_jogue.md` e `_src/app-observacao/` | `dados/[B3] Contagem direta de ocupacao/_dados-brutos/` |
 | Mexer em cardápios, acervos ou Instagram (B1) | `_src/[B1] Estabelecimentos e cardapios/Cardápios/`, `_src/[B1] Estabelecimentos e cardapios/Acervo de Jogos/`, `_src/[B1] Estabelecimentos e cardapios/Instagram/` | `dados/[B1] Estabelecimentos e cardapios/` (`cardapios/`, `acervo_jogos/`, `redes_sociais/`) |

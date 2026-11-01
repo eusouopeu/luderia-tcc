@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 01/11/2026 | Lista de leitura passa a ser a do TMin: só obras citadas, por assunto, em checklist de leitura e de conferência por citação; a lista ampla de busca vai para `_arquivo/` como v1 | `bibliografia/_lista-de-leitura_TMin_v2.md` |
 | 01/11/2026 | Kotler e Keller citados pela 14. ed. brasileira (Pearson Education do Brasil, 2013), edição do PDF do Drive; artigos e relatórios curtos (Asakura, KAM) também levam intervalo de páginas | `docs/registro-de-alteracoes.md` (01/11/2026) |
 | 31/10/2026 | Taxa de entrada do plano = média dos concorrentes que a cobram (R$ 18,68, 22 casas do B1), em todos os dias e cenários; os preços da São Jogue saem do provável | `textos/capitulos/_md/6_plano_de_marketing.md` (6.3) |
 | 31/10/2026 | Giro por mesa: pessimista pelo piso da NFC-e da Paralela (3,61); otimista = 10 h abertas ÷ permanência média das visitas (5,51); provável = média dos dois (4,56) | `docs/registro-de-alteracoes.md` (31/10/2026, 22:04) |

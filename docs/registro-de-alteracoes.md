@@ -1961,3 +1961,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: Asakura, Silva e Mello sem página (cap. 1) ou com `[AV-R50-a]` (cap. 2); KAM Insight com `[AV-X02-a]`; Kotler e Keller com `[AV]` e ano 2012; Groves só em EPUB.
 **Depois**: Asakura p. 1–5 (cap. 1) e p. 9–13 (cap. 2, payback e conclusão); KAM p. 17–21 (TMin, atributos) e, no TMax, p. 4–8, 2–6 e 15–19; Kotler e Keller com a edição do PDF do Drive (14. ed., trad. Sônia Midori Yamamoto, Pearson Education do Brasil, 2013), macroambiente p. 9–13 e SWOT p. 49–53. Groves convertido para PDF, sem a paginação impressa (o EPUB não traz lista de páginas), e segue citado pela seção 2.3. O PDF do Kotler não desceu do Drive (tempo esgotado na cópia); as páginas foram conferidas no texto extraído pelo conector do Drive.
 **Justificativa**: pedido do autor: copiar os PDFs da bibliografia TMin que estão no Drive, converter EPUB em PDF e pôr o intervalo de 5 páginas nas citações que não o tinham.
+
+### 18:29
+**Objeto**: `bibliografia/_lista-de-leitura.md` → `bibliografia/_arquivo/_lista-de-leitura_v1.md`; `bibliografia/_lista-de-leitura_TMin_v2.md` (novo); links em `CLAUDE.md`, `README.md` e `_instrucoes/2_ref-teorico.md`
+**Antes**: uma lista ampla de busca do referencial teórico, com obras por tema em tópicos, muitas fora do texto.
+**Depois**: v1 arquivada; a v2 traz só as 36 obras e bases citadas no TMin v9, em nove assuntos (plano de negócios e estratégia; experiência e lazer; público de jogos; mercado e entretenimento social; qualidade de serviço; operações; viabilidade; métodos; bases públicas), em checklist: uma caixa por obra, para a leitura, e uma por citação, com o capítulo, o conteúdo e a página, para a conferência. Cada obra indica se o PDF está na pasta, só no Drive ou em lugar nenhum.
+**Justificativa**: pedido do autor, para marcar as obras lidas e as citações conferidas.

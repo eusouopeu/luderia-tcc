@@ -6,6 +6,7 @@ Atualizado em 01/11/2026 (18h16). Semana 8 do cronograma (31/10 a 06/11). Próxi
 
 - **Capítulos:** todos têm arquivo. Rascunhos novos em 31/10: caps. 4, 7, 10 e 11. Cap. 5 segue esboço de 15/10 (5.2 provisório); cap. 6 só com 6.3 e 6.4 ([status](textos/planejamento/status_capitulos.md)).
 - **Versões (31/10):** TMax (completo) e TMin (conciso) do texto; TMin dos caps. 2, 3, 5 e 9 escrito; PDF TMax v3 com 67 páginas e TMin v2 com 53 (TMin em `textos/capitulos/`, padrão; TMax em `textos/capitulos/TMax/`, só com os caps. que diferem; `.md` em `_md/`). Dados agregados como DMax; a DMin espera a descrição do autor (pendências, item 16).
+- **Lista de leitura (01/11):** `bibliografia/_lista-de-leitura_TMin_v2.md`, só com as obras do TMin, por assunto, em checklist de leitura e de conferência das citações; a v1 foi para `_arquivo/`.
 - **Páginas das citações (01/11):** Asakura, KAM e Kotler e Keller (14. ed., 2013) com páginas; Groves convertido para PDF; TMin v9 (59 páginas). 8 recomendações de texto em `docs/melhorias-texto.md` (D12 a D14, C18, C19).
 - **Páginas das citações (31/10):** Assaf Neto, Fitzsimmons, Bardin, Groves (seção) e Dornelas com intervalo de 5 páginas, referências na edição consultada; TMin v4 regerado. Faltam Porter (edição brasileira), Bruni, Bruni e Famá, Damodaran e Pine e Gilmore (pendências).
 - **TMin v5 (31/10):** abertura de texto em todos os capítulos, próclise, frases de ligação e referências numa lista única no fim (justificada, espaço 1,5); 54 páginas. TMax ainda sem essas mudanças nos caps. 2 e 3.
