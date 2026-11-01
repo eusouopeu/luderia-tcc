@@ -9,8 +9,8 @@ premissas!D2: 1 pessimista, 2 provável, 3 otimista) pelos nomes definidos
 P_<ID> (ex.: P_R04). Nenhum número fica digitado dentro de fórmula.
 
 O mesmo modelo é calculado em Python para o tornado (§4.2), o ponto de ruptura
-(§4.3) e a tabela dos três cenários, gravados como valores na aba
-sensibilidade. A planilha é recalculada no LibreOffice nos três cenários e o
+(§4.3), a tabela dos três cenários e a simulação de Monte Carlo (§4.4),
+gravados como valores nas abas sensibilidade e monte_carlo. A planilha é recalculada no LibreOffice nos três cenários e o
 VPL de cada um tem de bater com o do Python (diferença < R$ 1,00); senão o
 script para.
 
@@ -18,12 +18,20 @@ Modelo em preços constantes (out/2026), com TMA real. Mensal nos 60 meses
 (rampa de maturação no ano 1), anual na DRE e no fluxo de caixa. Sem valor
 residual: no ano 5 voltam só a caução e o capital de giro.
 
-Entradas: B1 (cesta de jogos), B3 (contagem_resumo_visitas.csv,
-contagem_precos.csv, contagem_notas_intervalo.csv), B4 (FipeZap, CAGED, BCB,
+Receita (decisão do autor, 31/10/2026): pessoas = mesas ocupadas × pessoas
+por mesa × giros por mesa por dia × dias abertos; receita por pessoa = taxa de
+entrada média + cesta de consumo média ÷ pessoas por cesta (uma cesta por
+pessoa no otimista, por dupla no provável, por trio no pessimista). Os dados de
+pedidos da coleta presencial (B3) ficam fora do modelo: a coleta se mostrou
+inviável.
+
+Entradas: B1 (cesta de jogos; couvert e cesta de consumo dos cardápios), B3
+(contagem_resumo_visitas.csv, contagem_notas_intervalo.csv), B4 (FipeZap, CAGED, BCB,
 Simples Nacional, IBGE PAS e população). As premissas N6 ficam em PREMISSAS,
 com a justificativa da faixa.
 
-Saídas: o .xlsx e a figura textos/capitulos/figuras/9_tornado.png; imprime os
+Saídas: o .xlsx e as figuras 9_tornado.png e 9_monte_carlo.png em
+textos/capitulos/figuras/; imprime os
 números citados no texto do capítulo.
 Uso: python3 _src/extras/gerar_modelo_financeiro.py
 """
@@ -35,6 +43,7 @@ from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
 
+import random
 import shutil
 import subprocess
 import tempfile
@@ -56,12 +65,18 @@ B3 = DADOS / "[B3] Contagem direta de ocupacao"
 B4 = DADOS / "[B4] Bases publicas"
 SAIDA = ROOT / "textos" / "capitulos" / "9_plano_financeiro_modelo.xlsx"
 FIGURA = ROOT / "textos" / "capitulos" / "figuras" / "9_tornado.png"
+FIGURA_MC = ROOT / "textos" / "capitulos" / "figuras" / "9_monte_carlo.png"
 SOFFICE = "/Applications/LibreOffice.app/Contents/MacOS/soffice"
 
 MESES = 60
 ANOS = 5
 CENARIOS = ("pessimista", "provavel", "otimista")
-JOGOS_NA_NOTA = {"Quartz BOVINO", "Dobble"}  # jogos comprados na loja, fora do consumo
+N_SIMULACOES = 10_000
+SEMENTE = 20261031
+# Monte Carlo: faixas próprias pedidas pelo autor (2 ou 3 pessoas por mesa no
+# pessimista, 5 ou 6 no otimista) e premissas discretas (giros e pessoas por cesta)
+MC_TRIANGULAR = {"R02": (2.0, 6.0)}
+MC_DISCRETA = {"R15": (0.25, 0.50, 0.25), "R08": (0.25, 0.50, 0.25)}  # pesos de pess., prov. e otim.
 
 
 # ---------------------------------------------------------------- dados-fonte
@@ -71,20 +86,9 @@ def ler_fontes() -> dict:
     r = pd.read_csv(B3 / "contagem_resumo_visitas.csv", sep=";", encoding="utf-8-sig")
     r = r[r["observador"] != "media"]
     f["visitas"] = r
+    # mesas ocupadas em média em cada visita (ocupação média × mesas da unidade)
+    f["mesas_ocupadas"] = r["ocupacao_mesas_media_pct"] / 100 * r["mesas_denominador"]
     f["notas"] = pd.read_csv(B3 / "contagem_notas_intervalo.csv", sep=";", encoding="utf-8-sig")
-    p = pd.read_csv(B3 / "_dados-brutos" / "app" / "contagem_precos.csv", sep=";", encoding="utf-8-sig")
-    p = p[p["fonte_registro"] == "transcricao"].copy()
-    p["total"] = p["qtd"] * p["valor"]
-    eh_taxa = p["item"].str.startswith("Taxa de Entrada")
-    eh_ab = ~eh_taxa & ~p["item"].isin(JOGOS_NA_NOTA) & ~p["item"].str.startswith("Acréscimo")
-    notas = p.groupby("origem").apply(lambda g: pd.Series({
-        "pessoas": g.loc[eh_taxa[g.index], "qtd"].sum(),
-        "taxa": g.loc[eh_taxa[g.index], "total"].sum(),
-        "ab": g.loc[eh_ab[g.index], "total"].sum(),
-    }), include_groups=False)
-    f["nfce"] = notas
-    f["ab_por_pessoa"] = notas["ab"].sum() / notas["pessoas"].sum()
-    f["valor_por_nota"] = (notas["taxa"] + notas["ab"]).mean()
     # B1: cesta de jogos (acervo inicial) e taxas de jogo dos concorrentes
     ai = pd.read_excel(B1 / "acervo_jogos" / "B1_cesta_jogos.xlsx", sheet_name="acervo_inicial")
     f["acervo"] = dict(zip(ai["tamanho"], ai["custo_provavel_rs"]))
@@ -93,6 +97,15 @@ def ler_fontes() -> dict:
     taxa = ps["couvert ou taxa de jogo | couvert ou taxa de jogo"].dropna()
     taxa = taxa[taxa > 0]
     f["taxa_b1_mediana"], f["taxa_b1_n"] = taxa.median(), len(taxa)
+    # couvert e cesta de consumo por casa (B1_resumo_estabelecimentos, aba cesta):
+    # couvert só nas casas que cobram (encontrado e > 0); cesta de consumo =
+    # bebida + entrada ou prato (medianas da casa), só nas casas com os dois
+    ce = pd.read_excel(B1 / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx", sheet_name="cesta")
+    cv = ce.loc[ce["couvert_no_cardapio"] == "sim", "couvert_mediana"]
+    cv = cv[cv > 0]
+    co = (ce["bebida_mediana"] + ce["entrada_ou_prato_mediana"]).dropna()
+    f["couvert_media"], f["couvert_n"], f["couvert_mediana"] = cv.mean(), len(cv), cv.median()
+    f["cesta_consumo_media"], f["cesta_consumo_n"], f["cesta_consumo_mediana"] = co.mean(), len(co), co.median()
     # B4
     fz = pd.read_csv(B4 / "financeiro" / "[B4] Aluguel Comercial por Capital 2026-07 (FipeZap).csv")
     fz = fz[fz["capital"] == "Salvador"].iloc[0]
@@ -140,34 +153,43 @@ def quadro_pessoal(f) -> list[tuple]:
 def premissas(f) -> list[dict]:
     """Registro de premissas (§3). Percentuais como fração. Ordem = ordem da aba."""
     vis = f["visitas"]
-    pg, pm, oc = vis["tamanho_grupo_mesa"], vis["permanencia_mesa_media_min"], vis["ocupacao_mesas_media_pct"]
+    pg, pm, mo = vis["tamanho_grupo_mesa"], vis["permanencia_mesa_media_min"], f["mesas_ocupadas"]
+    # x% do cenário de mesas ocupadas: distância média dos extremos observados à média
+    x = ((mo.max() - mo.mean()) + (mo.mean() - mo.min())) / 2 / mo.mean()
+    cv, cc = f["couvert_media"], f["cesta_consumo_media"]
+    # giro pessimista: o cenário pessimista atende o piso de clientes da NFC-e
+    # (uma comanda e uma nota por pessoa; a nota sai só a pedido), na Paralela
+    nf = f["notas"].set_index("unidade")
+    piso = float(nf.loc["PA", "notas_emitidas"] / nf.loc["PA", "dias"])
+    pess = dict(R02=2.5, R04=mo.mean() * (1 - x), R05=0.40, R16=3, R17=4)
+    giro_pess = piso * 7 / (pess["R04"] * pess["R02"] * (pess["R16"] + pess["R17"] * pess["R05"]))
     a = f["acervo"]
     R = lambda *x: dict(zip(("id", "nome", "unidade", "pess", "prov", "otim", "fonte", "nivel", "just"), x))
     return [
-        R("R01", "Mesas do salão", "mesas", 8, 10, 11,
-          "B3: São Jogue Paralela (10) e Bela Vista (11), informação do autor", "N5",
-          "Formato de referência igual a uma unidade da São Jogue; 8 se o ponto for menor."),
-        R("R02", "Pessoas por grupo de mesa", "pessoas", 2.8, round(pg.mean(), 1), 4.4,
-          "B3, 4 visitas (out/2026)", "N5",
-          f"Média das visitas {pg.mean():.1f}, de {pg.min():.1f} a {pg.max():.1f}."),
+        R("R01", "Mesas do salão", "mesas", 10, 10, 10,
+          "B3: São Jogue Paralela (9 a 10) e Bela Vista (10 a 11); cap. 7", "N5",
+          "Capacidade do salão; limita as mesas ocupadas (aba checagens), sem entrar na receita."),
+        R("R02", "Pessoas por mesa ocupada", "pessoas", 2.5, round(pg.mean(), 1), 5.5,
+          "B3, 4 visitas (out/2026); faixa do autor", "N5 + N6",
+          f"Média das visitas {pg.mean():.1f} (de {pg.min():.1f} a {pg.max():.1f}); pessimista de 2 ou 3 e otimista de 5 ou 6 pessoas (ponto médio); Monte Carlo de 2 a 6."),
         R("R03", "Permanência média", "min", 137, round(pm.mean()), 83,
           "B3, 4 visitas (out/2026)", "N5",
-          f"Médias por visita de {pm.min():.0f} a {pm.max():.0f} min; permanência maior reduz o giro."),
-        R("R04", "Taxa de ocupação, fim de semana (sex a dom)", "% das mesas", 0.25, 0.35, 0.45,
-          "B3, noites de sexta e sábado (out/2026)", "N5 + N6",
-          f"Noite de sexta e sábado: {oc.min():.1f}% a {oc.max():.1f}% (média {oc.mean():.1f}%). O dia inteiro fica abaixo do pico da noite."),
-        R("R05", "Taxa de ocupação, dia útil (seg a qui)", "% das mesas", 0.10, 0.18, 0.25,
+          f"Médias por visita de {pm.min():.0f} a {pm.max():.0f} min; não entra na receita, só confere se os giros cabem no horário."),
+        R("R04", "Mesas ocupadas em média, fim de semana", "mesas", round(mo.mean() * (1 - x), 2), round(mo.mean(), 2), round(mo.mean() * (1 + x), 2),
+          "B3, 4 visitas nas noites de sexta e sábado (out/2026)", "N5",
+          f"Média das visitas ({mo.min():.1f} a {mo.max():.1f} mesas); ± {x:.0%}, distância média dos extremos observados à média."),
+        R("R05", "Mesas ocupadas em dia útil", "% do fim de semana", 0.40, 0.50, 0.60,
           "Estimativa do autor", "N6",
-          "Cerca de metade do fim de semana. As visitas medem o pico, por orientação; sem dado de dia útil."),
-        R("R06", "Taxa de entrada, fim de semana", "R$ por pessoa", 25, 28, 30,
-          "São Jogue: NFC-e de out/2026 e informação do autor", "N3 + N5",
-          "R$ 28,00 por 3 h de sexta a domingo na São Jogue; faixa de ± R$ 3,00."),
-        R("R07", "Taxa de entrada, dia útil", "R$ por pessoa", 20, 22, 25,
-          "São Jogue: informação do autor", "N3",
-          "R$ 22,00 de segunda a quinta na São Jogue."),
-        R("R08", "Gasto com alimentos e bebidas", "R$ por pessoa", 18, round(f["ab_por_pessoa"]), 32,
-          "B3, 4 NFC-e das mesas dos observadores; cardápio da São Jogue (B1)", "N3 + N5",
-          f"Média de R$ {f['ab_por_pessoa']:.2f} por pessoa nas notas (sem taxa, jogos e serviço); hambúrguer a R$ 45,00 e drinque a R$ 28,00 no cardápio."),
+          "Cerca de metade do fim de semana; sem visita em dia útil."),
+        R("R06", "Taxa de entrada", "R$ por pessoa", round(cv, 2), round(cv, 2), round(cv, 2),
+          f"B1, couvert ou taxa de jogo das {f['couvert_n']} casas que cobram", "N3",
+          f"Média das casas que cobram (mediana R$ {f['couvert_mediana']:.2f}); cobrada de todos os clientes, nos três cenários."),
+        R("R07", "Cesta de consumo", "R$ por cesta", round(cc, 2), round(cc, 2), round(cc, 2),
+          f"B1, cardápios de {f['cesta_consumo_n']} casas (uma bebida e uma entrada ou prato)", "N3",
+          f"Média das casas (mediana R$ {f['cesta_consumo_mediana']:.2f}); a variação entra pelas pessoas por cesta (R08)."),
+        R("R08", "Pessoas por cesta de consumo", "pessoas", 3, 2, 1,
+          "Decisão do autor", "N6",
+          "Uma cesta por trio no pessimista, por dupla no provável e por pessoa no otimista."),
         R("R09", "Aluguéis de jogos", "aluguéis por mês", 10, 30, 60,
           "Estimativa do autor", "N6",
           "Serviço oferecido pela São Jogue; volume não observado."),
@@ -186,6 +208,13 @@ def premissas(f) -> list[dict]:
         R("R14", "Horas abertas por semana, dia útil", "h", 40, 40, 40,
           "Horário da São Jogue (B1 e autor)", "N3",
           "Segunda a quinta das 12h às 22h."),
+        R("R15", "Giros por mesa por dia", "grupos por mesa ocupada", round(giro_pess, 2), 2, 3,
+          "Pessimista: NFC-e da São Jogue Paralela (B3); provável e otimista: decisão do autor", "N5 + N6",
+          f"Pessimista calibrado para o cenário atender {piso:.2f} clientes por dia, as NFC-e por dia da Paralela (17/10 a 30/10/2026): uma comanda e uma nota por pessoa, emitida só a pedido, então piso. Dois grupos no provável e três no otimista; conferido com a permanência e o horário (aba checagens)."),
+        R("R16", "Dias abertos por semana, fim de semana", "dias", 3, 3, 3,
+          "Horário da São Jogue (B1 e autor)", "N3", "Sexta a domingo."),
+        R("R17", "Dias abertos por semana, dia útil", "dias", 4, 4, 4,
+          "Horário da São Jogue (B1 e autor)", "N3", "Segunda a quinta."),
         R("C01", "CMV de alimentos e bebidas", "% do A&B", 0.35, 0.30, 0.26,
           "IBGE PAS 2023, serviços de alimentação (B4)", "N2",
           f"Mercadorias e materiais = {f['pas_mercadorias_pct']:.1f}% da receita líquida do setor."),
@@ -239,15 +268,13 @@ def aliquota(f, anexo: str, rbt: float) -> float:
 
 
 def calcula(f, v: dict, folha: float) -> dict:
-    giro_fds = v["R13"] * 60 / v["R03"]
-    giro_du = v["R14"] * 60 / v["R03"]
     m = []
     for mes in range(1, MESES + 1):
         rampa = min(1.0, v["R11"] + (1 - v["R11"]) * (mes - 1) / (v["R12"] - 1))
-        p_fds = v["R01"] * v["R02"] * giro_fds * v["R04"] * rampa * v["M02"]
-        p_du = v["R01"] * v["R02"] * giro_du * v["R05"] * rampa * v["M02"]
-        taxa_fds, taxa_du = p_fds * v["R06"], p_du * v["R07"]
-        ab = (p_fds + p_du) * v["R08"]
+        p_fds = v["R04"] * v["R02"] * v["R15"] * v["R16"] * rampa * v["M02"]
+        p_du = v["R04"] * v["R05"] * v["R02"] * v["R15"] * v["R17"] * rampa * v["M02"]
+        taxa_fds, taxa_du = p_fds * v["R06"], p_du * v["R06"]
+        ab = (p_fds + p_du) * v["R07"] / v["R08"]
         alug = v["R09"] * v["R10"] * rampa
         m.append(dict(ano=(mes - 1) // 12 + 1, pessoas=p_fds + p_du, taxa=taxa_fds + taxa_du,
                       ab=ab, alug=alug, bruta=taxa_fds + taxa_du + ab + alug))
@@ -311,7 +338,7 @@ def ruptura(f, prem, folha, pid: str):
         return calcula(f, v, folha)["vpl"]
     p0 = base[pid]
     lo, hi = p0 * 0.05, p0 * 6
-    if pid in ("R04", "R05"):
+    if pid == "R05":
         lo, hi = 0.001, 1.0
     if vpl(lo) * vpl(hi) > 0:
         return float("nan")
@@ -322,6 +349,32 @@ def ruptura(f, prem, folha, pid: str):
         else:
             lo = mid
     return (lo + hi) / 2
+
+
+def monte_carlo(f, prem, folha) -> dict:
+    """Simulação de Monte Carlo (§4.4): triangular com os três valores do
+    registro, salvo MC_TRIANGULAR (faixa própria) e MC_DISCRETA (giros e pessoas
+    por cesta); premissas independentes entre si."""
+    rng = random.Random(SEMENTE)
+    base = valores(prem, "provavel")
+    vpls, paybacks = [], []
+    for _ in range(N_SIMULACOES):
+        v = dict(base)
+        for p in prem:
+            if p["id"] in MC_DISCRETA:
+                vals = (p["pess"], p["prov"], p["otim"])
+                v[p["id"]] = rng.choices(vals, MC_DISCRETA[p["id"]])[0]
+            elif p["pess"] != p["otim"]:
+                lo, hi = MC_TRIANGULAR.get(p["id"], (min(p["pess"], p["otim"]), max(p["pess"], p["otim"])))
+                v[p["id"]] = rng.triangular(lo, hi, p["prov"])
+        r = calcula(f, v, folha)
+        vpls.append(r["vpl"])
+        paybacks.append(r["payback"])
+    s = pd.Series(vpls)
+    pb = pd.Series(paybacks)
+    return dict(vpls=vpls, prob_positivo=(s > 0).mean(), media=s.mean(), p05=s.quantile(.05),
+                p25=s.quantile(.25), mediana=s.median(), p75=s.quantile(.75), p95=s.quantile(.95),
+                payback_5anos=pb.notna().mean(), payback_mediana=pb.dropna().median() if pb.notna().any() else float("nan"))
 
 
 # --------------------------------------------------------------- planilha
@@ -366,7 +419,7 @@ def nota(ws, linha, texto, ncol):
     ws.row_dimensions[linha].height = 15 * max(1, len(texto) // 110 + 1)
 
 
-def planilha(f, prem, quadro, resultados, tornado, rupt):
+def planilha(f, prem, quadro, resultados, tornado, rupt, mc):
     wb = openpyxl.Workbook()
     # ---- premissas
     ws = wb.active
@@ -485,12 +538,12 @@ def planilha(f, prem, quadro, resultados, tornado, rupt):
         ws[f"{c}2"] = i + 1
         ws[f"{c}3"] = f"=ROUNDUP({c}2/12,0)"
         ws[f"{c}4"] = f"=MIN(1,P_R11+(1-P_R11)*({c}2-1)/(P_R12-1))"
-        ws[f"{c}5"] = f"=P_R01*P_R02*(P_R13*60/P_R03)*P_R04*{c}4*P_M02"
-        ws[f"{c}6"] = f"=P_R01*P_R02*(P_R14*60/P_R03)*P_R05*{c}4*P_M02"
+        ws[f"{c}5"] = f"=P_R04*P_R02*P_R15*P_R16*{c}4*P_M02"
+        ws[f"{c}6"] = f"=P_R04*P_R05*P_R02*P_R15*P_R17*{c}4*P_M02"
         ws[f"{c}7"] = f"={c}5+{c}6"
         ws[f"{c}8"] = f"={c}5*P_R06"
-        ws[f"{c}9"] = f"={c}6*P_R07"
-        ws[f"{c}10"] = f"={c}7*P_R08"
+        ws[f"{c}9"] = f"={c}6*P_R06"
+        ws[f"{c}10"] = f"={c}7*P_R07/P_R08"
         ws[f"{c}11"] = f"=P_R09*P_R10*{c}4"
         ws[f"{c}12"] = f"=SUM({c}8:{c}11)"
     estilo(ws, 2, 12, 2 + MESES)
@@ -646,8 +699,8 @@ def planilha(f, prem, quadro, resultados, tornado, rupt):
            ("Margem de contribuição (ano 5)", "=dre!F9/dre!F4", "% da receita bruta"),
            ("Receita bruta mensal de equilíbrio", "=B9/B10", "R$"),
            ("Receita madura ÷ receita de equilíbrio", "=B8/B11", "vezes"),
-           ("Ocupação de equilíbrio, fim de semana (dia útil na mesma proporção)", "=P_R04*(B11-receitas!BJ11)/(B8-receitas!BJ11)", "% das mesas"),
-           ("Ocupação de equilíbrio, dia útil (mesma proporção)", "=P_R05*(B11-receitas!BJ11)/(B8-receitas!BJ11)", "% das mesas")]
+           ("Mesas ocupadas de equilíbrio, fim de semana (dia útil na mesma proporção)", "=P_R04*(B11-receitas!BJ11)/(B8-receitas!BJ11)", "mesas"),
+           ("Mesas ocupadas de equilíbrio, dia útil", "=B13*P_R05", "mesas")]
     for i, (n, fo, u) in enumerate(ind):
         ws.cell(3 + i, 1, n); ws.cell(3 + i, 2, fo); ws.cell(3 + i, 3, u)
     rt = 2 + len(ind)
@@ -656,10 +709,11 @@ def planilha(f, prem, quadro, resultados, tornado, rupt):
     ws["B6"].number_format = PCT
     ws["B7"].number_format = DEC2
     ws["B11"].number_format = MOEDA
-    ws["B10"].number_format = ws["B13"].number_format = ws["B14"].number_format = PCT
+    ws["B10"].number_format = PCT
+    ws["B13"].number_format = ws["B14"].number_format = DEC2
     ws["B12"].number_format = DEC2
     ws["B3"].alignment = Alignment(horizontal="right")
-    nota(ws, rt + 2, "Fonte: abas fluxo_caixa, dre, receitas e custos. Ocupação de equilíbrio por aproximação linear: a receita sem o aluguel de jogos cresce na proporção da ocupação.", 3)
+    nota(ws, rt + 2, "Fonte: abas fluxo_caixa, dre, receitas e custos. Mesas ocupadas de equilíbrio por aproximação linear: a receita sem o aluguel de jogos cresce na proporção das mesas ocupadas.", 3)
     ws.column_dimensions["A"].width = 58
     ws.column_dimensions["B"].width = 18
     ws.column_dimensions["C"].width = 20
@@ -730,6 +784,31 @@ def planilha(f, prem, quadro, resultados, tornado, rupt):
     for col, w in zip("ABCDEFG", (12, 44, 18, 18, 18, 18, 18)):
         ws.column_dimensions[col].width = w
 
+    # ---- monte carlo (valores do Python)
+    ws = wb.create_sheet("monte_carlo")
+    titulo(ws, f"Simulação de Monte Carlo: {N_SIMULACOES:,} cenários".replace(",", "."), 2)
+    for j, h in enumerate(["Medida", "Valor"], 1):
+        ws.cell(2, j, h)
+    medidas = [("Probabilidade de VPL > 0", mc["prob_positivo"], PCT), ("VPL médio (R$)", mc["media"], MOEDA),
+               ("VPL, percentil 5 (R$)", mc["p05"], MOEDA), ("VPL, percentil 25 (R$)", mc["p25"], MOEDA),
+               ("VPL, mediana (R$)", mc["mediana"], MOEDA), ("VPL, percentil 75 (R$)", mc["p75"], MOEDA),
+               ("VPL, percentil 95 (R$)", mc["p95"], MOEDA),
+               ("Probabilidade de payback descontado em até 5 anos", mc["payback_5anos"], PCT),
+               ("Payback descontado mediano, entre os que se pagam (anos)", mc["payback_mediana"], DEC2)]
+    for i, (n, x, fmt) in enumerate(medidas):
+        ws.cell(3 + i, 1, n)
+        ws.cell(3 + i, 2, x if x == x else "não há")
+        ws.cell(3 + i, 2).number_format = fmt
+    rt = 2 + len(medidas)
+    estilo(ws, 2, rt, 2)
+    for i, (_, _, fmt) in enumerate(medidas):
+        ws.cell(3 + i, 2).number_format = fmt
+    nota(ws, rt + 2, "Fonte: elaboração própria. Distribuição triangular com os três valores da aba premissas, salvo: pessoas por mesa de 2 a 6 "
+         "(moda no provável); giros por mesa por dia de 1, 2 ou 3 e pessoas por cesta de 3, 2 ou 1, com probabilidade de 25%, 50% e 25%. "
+         f"Premissas independentes entre si; semente {SEMENTE}. Valores gravados pelo script.", 2)
+    ws.column_dimensions["A"].width = 58
+    ws.column_dimensions["B"].width = 18
+
     # ---- checagens de coerência (§5) e triangulação (§4.1)
     ws = wb.create_sheet("checagens")
     titulo(ws, "Triangulação da receita e checagens de coerência (cenário ativo, mês 60)", 4)
@@ -740,19 +819,17 @@ def planilha(f, prem, quadro, resultados, tornado, rupt):
         ("Pessoas atendidas por dia", "=receitas!BJ7/(P_M02*7)", "=P_R01*P_R02*(P_R13+P_R14)*60/P_R03/7",
          "Capacidade: todas as mesas ocupadas todas as horas, com a permanência média"),
         ("Uso da capacidade", "=B3/C3", "", "Tem de ficar abaixo de 100%"),
-        ("Grupos atendidos por dia", "=B3/P_R02", float(notas.loc["BV", "notas_por_dia"]),
-         "NFC-e emitidas por dia, São Jogue Bela Vista, 10/10 a 16/10/2026 (B3); piso, pois a nota sai só a pedido"),
-        ("Grupos atendidos por dia (Paralela)", "=B3/P_R02", float(notas.loc["PA", "notas_por_dia"]),
-         "NFC-e por dia, São Jogue Paralela, 17/10 a 30/10/2026 (B3), com o fim de semana da eleição"),
-        ("Receita mensal madura × piso de vendas da Bela Vista (R$)", "=receitas!BJ12",
-         float(notas.loc["BV", "notas_por_dia"]) * f["valor_por_nota"] * 365 / 12,
-         f"NFC-e por dia × R$ {f['valor_por_nota']:.2f} por nota (média das 4 notas das mesas dos observadores, sem jogos e serviço) × 30,4 dias"),
-        ("Receita mensal madura × piso de vendas da Paralela (R$)", "=receitas!BJ12",
-         float(notas.loc["PA", "notas_por_dia"]) * f["valor_por_nota"] * 365 / 12, "Idem, Paralela"),
-        ("Receita por pessoa (R$)", "=receitas!BJ12/receitas!BJ7", f["valor_por_nota"] / 2,
-         "Notas das mesas dos observadores: taxa e consumo por pessoa"),
-        ("Taxa de entrada de fim de semana (R$)", "=P_R06", float(f["taxa_b1_mediana"]),
-         f"Mediana do couvert ou taxa de jogo nos cardápios de {f['taxa_b1_n']} concorrentes (B1); acima dela, o posicionamento tem de justificar"),
+        ("Mesas ocupadas no fim de semana ÷ mesas do salão", "=P_R04/P_R01", "", "Tem de ficar abaixo de 100%"),
+        ("Horas de mesa por dia de fim de semana (giros × permanência)", "=P_R15*P_R03/60", "=P_R13/P_R16",
+         "Horas abertas por dia de fim de semana: os giros têm de caber no horário"),
+        ("Pessoas atendidas por dia × NFC-e da Bela Vista", "=B3", float(notas.loc["BV", "notas_emitidas"] / notas.loc["BV", "dias"]),
+         "NFC-e emitidas por dia, São Jogue Bela Vista, 10/10 a 16/10/2026 (B3); uma nota por pessoa, emitida só a pedido: piso de clientes"),
+        ("Pessoas atendidas por dia × NFC-e da Paralela", "=B3", float(notas.loc["PA", "notas_emitidas"] / notas.loc["PA", "dias"]),
+         "NFC-e por dia, São Jogue Paralela, 17/10 a 30/10/2026 (B3), com o fim de semana da eleição; calibra o giro pessimista"),
+        ("Receita por pessoa (R$)", "=receitas!BJ12/receitas!BJ7", float(f["couvert_media"] + f["cesta_consumo_media"]),
+         "Taxa de entrada média mais uma cesta de consumo média por pessoa (B1): teto do otimista"),
+        ("Taxa de entrada (R$)", "=P_R06", float(f["taxa_b1_mediana"]),
+         f"Mediana do couvert ou taxa de jogo nos cardápios de {f['taxa_b1_n']} concorrentes (B1)"),
         ("Pessoas atendidas por dia por funcionário", "=B3/(12*P_C06)", "",
          "Quadro de referência de 12 em dois turnos (aba pessoal)"),
         ("Visitas por ano ÷ população de Salvador", "=receitas!BJ7*12/C12", float(f["pop_salvador"]),
@@ -764,8 +841,8 @@ def planilha(f, prem, quadro, resultados, tornado, rupt):
         ws.cell(r, 1, n); ws.cell(r, 2, mo); ws.cell(r, 3, ref if ref != "" else None); ws.cell(r, 4, fonte)
     rt = 2 + len(ch)
     estilo(ws, 2, rt, 4, DEC2)
-    ws["B4"].number_format = ws["B12"].number_format = "0.000%"
-    for r in (7, 8, 9, 10):
+    ws["B4"].number_format = ws["B5"].number_format = ws["B12"].number_format = "0.000%"
+    for r in (9, 10):
         ws[f"B{r}"].number_format = ws[f"C{r}"].number_format = MOEDA
     ws["C12"].number_format = INT
     nota(ws, rt + 2, "Fonte: abas do modelo e Blocos B1, B3 e B4. A comparação com as notas é de ordem de grandeza: a NFC-e só é emitida quando o cliente pede.", 4)
@@ -820,6 +897,25 @@ def figura_tornado(tornado, base_vpl):
     plt.close(fig)
 
 
+def figura_monte_carlo(mc):
+    fig, ax = plt.subplots(figsize=(6.3, 3.6), dpi=300)
+    mil = [x / 1000 for x in mc["vpls"]]
+    ax.hist(mil, bins=60, color="#7f7f7f", edgecolor="white", linewidth=0.3)
+    ax.axvline(0, color="black", linewidth=0.8, linestyle=":")
+    ax.axvline(mc["mediana"] / 1000, color="black", linewidth=0.8)
+    ax.set_xlabel("VPL (R$ mil)", fontsize=8, fontname="Arial")
+    ax.set_ylabel("Cenários simulados", fontsize=8, fontname="Arial")
+    ax.tick_params(labelsize=7)
+    for s in ("top", "right"):
+        ax.spines[s].set_visible(False)
+    for t in ax.get_xticklabels() + ax.get_yticklabels():
+        t.set_fontname("Arial")
+    ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, _: f"{x:,.0f}".replace(",", ".")))
+    fig.tight_layout()
+    fig.savefig(FIGURA_MC, facecolor="white")
+    plt.close(fig)
+
+
 def main():
     f = ler_fontes()
     prem = premissas(f)
@@ -833,12 +929,15 @@ def main():
             continue
         vp = calcula(f, dict(valores(prem, "provavel"), **{p["id"]: p["pess"]}), folha)["vpl"]
         vo = calcula(f, dict(valores(prem, "provavel"), **{p["id"]: p["otim"]}), folha)["vpl"]
+        if abs(vo - vp) < 1:  # premissa só de checagem (ex.: permanência)
+            continue
         tornado.append(dict(id=p["id"], nome=p["nome"], vpl_pess=vp, vpl_otim=vo, amplitude=abs(vo - vp)))
     tornado.sort(key=lambda t: -t["amplitude"])
     por_id = {p["id"]: p for p in prem}
     rupt = [dict(por_id[t["id"]], ruptura=ruptura(f, prem, folha, t["id"])) for t in tornado[:5]]
+    mc = monte_carlo(f, prem, folha)
 
-    wb = planilha(f, prem, quadro, resultados, tornado, rupt)
+    wb = planilha(f, prem, quadro, resultados, tornado, rupt, mc)
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     wb.save(SAIDA)
     for i, cen in enumerate(CENARIOS, 1):
@@ -848,9 +947,12 @@ def main():
         if dif >= 1:
             raise SystemExit("VPL da planilha diverge do Python")
     figura_tornado(tornado, base["vpl"])
+    figura_monte_carlo(mc)
 
     # números citados no capítulo
-    print(f"\nA&B por pessoa nas notas: R$ {f['ab_por_pessoa']:.2f}; valor médio por nota: R$ {f['valor_por_nota']:.2f}")
+    print(f"\nTaxa de entrada média: R$ {f['couvert_media']:.2f} (n={f['couvert_n']}, mediana {f['couvert_mediana']:.2f});"
+          f" cesta de consumo média: R$ {f['cesta_consumo_media']:.2f} (n={f['cesta_consumo_n']}, mediana {f['cesta_consumo_mediana']:.2f})")
+    print("Mesas ocupadas por visita:", [round(x, 2) for x in f["mesas_ocupadas"]])
     print(f"Folha de referência: R$ {folha:,.2f} ({sum(q for _, _, q, _, _ in quadro)} pessoas)")
     print(f"Juro real: {f['juro_real']:.2f}%; PAS mercadorias: {f['pas_mercadorias_pct']:.1f}%; taxa B1 mediana {f['taxa_b1_mediana']} (n={f['taxa_b1_n']})")
     for cen in CENARIOS:
@@ -866,7 +968,10 @@ def main():
     print("\nRuptura:")
     for rp in rupt:
         print(f"  {rp['id']} {rp['nome']}: provável {rp['prov']} → ruptura {rp['ruptura']}")
-    print(f"\nOK: {SAIDA.relative_to(ROOT)} e {FIGURA.relative_to(ROOT)}")
+    print(f"\nMonte Carlo ({N_SIMULACOES}): P(VPL>0) {mc['prob_positivo']:.1%} | média {mc['media']:,.0f} | P5 {mc['p05']:,.0f}"
+          f" | P25 {mc['p25']:,.0f} | mediana {mc['mediana']:,.0f} | P75 {mc['p75']:,.0f} | P95 {mc['p95']:,.0f}"
+          f" | payback em 5 anos {mc['payback_5anos']:.1%} | payback mediano {mc['payback_mediana']:.2f}")
+    print(f"\nOK: {SAIDA.relative_to(ROOT)}, {FIGURA.relative_to(ROOT)} e {FIGURA_MC.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

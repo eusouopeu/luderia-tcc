@@ -38,7 +38,7 @@ A jornada do cliente tem cinco etapas. Na chegada, o caixa registra o grupo e co
 
 A explicação de regras é o processo que mais pesa na avaliação. A mediação lúdica aparece em 16,4% das avaliações dos concorrentes e, quando negativa, acompanha nota média de 2,83 (B2, codificação provisória de 15/10/2026, cap. 5). O plano trata a explicação como serviço de mesa, com instrutor dedicado ao salão em todas as horas abertas, e não como tarefa de quem estiver livre.
 
-O serviço de mesa inclui alimentos e bebidas, com cardápio curto e de preparo rápido. Nas visitas, os pedidos foram poucos: de 0,5 a 1,7 por grupo, entre bebidas, comidas e sobremesas (B3, registro de pedidos, extra descritivo). Um cardápio de lanches, porções e bebidas atende esse volume com um cozinheiro por turno.
+O serviço de mesa inclui alimentos e bebidas, com cardápio curto e de preparo rápido. Um cardápio de lanches, porções e bebidas funciona com um cozinheiro por turno.
 
 ## 7.4 GESTÃO DO ACERVO
 

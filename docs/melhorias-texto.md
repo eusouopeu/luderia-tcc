@@ -12,6 +12,10 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Grave
 
+**D36 — Números do cap. 9 × modelo novo (31/10/2026).** Caps. 4 (sumário), 9 (9.1 a 9.7), 10 (10.2, 10.3, 10.5) e 11 (11.1, 11.2) × `9_plano_financeiro_modelo.xlsx`. Os textos ainda trazem a árvore antiga (ocupação × horas ÷ permanência), o A&B de R$ 24,00 das NFC-e, a taxa de R$ 28,00 e o VPL provável de -R$ 479 mil; o modelo passou a mesas ocupadas × giros, taxa e cesta médias do B1, VPL provável de -R$ 1,63 mi e Monte Carlo. Reescrever depois das decisões de giro e preço (pendências).
+
+**D37 — Preço da entrada no cap. 6.3 × cap. 9 (31/10/2026).** Cap. 6.3 (R$ 28,00 e R$ 22,00, São Jogue) × modelo do cap. 9 (R$ 18,68, média do B1). O cap. 6 prevalece; o 6.3 também ainda diz que os valores entram como R06, R07 e R08, IDs que mudaram de sentido.
+
 **D01 — Três escalas de confiança com os mesmos rótulos.** Cap. 5 (nota de abertura, 5.1.2, 5.1.3, 5.2.3, 5.4.2 e quadro "Fontes por nível de preferência") × cap. 2 (2.1) × `_instrucoes/1a_principios.md` (P1, P2) e `8_financeiro.md` (N1–N6). O cap. 5 usa uma ordem própria de fontes em 4 níveis (oficial → fundação → entidade setorial → imprensa), decidida em 15/10 (`decisoes.md`), que não bate com a P1 (7 níveis: legislação, artigos revisados, teses, relatórios oficiais e setoriais…). Além disso, mistura as escalas no texto: a POF é "N2" (escala N1–N6, correto), o Savills é "nível 3" (da ordem própria; na N1–N6 seria N4), o público do Meta Ads é "N5, rastros digitais" (rastro digital é o tipo 5 da P2; N5 é coleta primária comportamental própria) e a cotação é "N2 na hierarquia de dados" (tipo 2 da P2, não N2). O cap. 2 anuncia só a N1–N6 e a P2 para o cap. 3. A banca lê "N2" e "nível 2" como a mesma coisa. Sugestão: no texto, usar só a N1–N6 para dados e premissas; a ordem de fontes do cap. 5 vira a P1 (atualizar a instrução) ou sai do capítulo; o tipo de dado da P2 ganha rótulo próprio (ex.: "tipo 5").
 
 ## Média

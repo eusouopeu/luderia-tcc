@@ -30,7 +30,9 @@ O objetivo (vii) foi propor contingência e validações. O plano define quatro 
 
 A ocupação de dia útil é a maior limitação. Ela é premissa crítica e só tem estimativa do autor (N6), porque as visitas foram feitas em noites de sexta e sábado, por orientação, para medir o movimento máximo.
 
-A estimativa das vendas tem um limite parecido: as notas fiscais dão só um piso delas. A São Jogue emite a NFC-e a pedido do cliente, então as notas emitidas entre as visitas subestimam o fluxo. Houve ainda um único intervalo entre as visitas de cada unidade, abaixo dos 15 dias planejados: 13 dias na Paralela (17/10 a 30/10/2026) e 6 dias na Bela Vista (10/10 a 16/10/2026). Esse intervalo não capta a variação do mês nem a sazonalidade.
+A estimativa das vendas tem um limite parecido: as notas fiscais dão só um piso delas. A São Jogue não emite a NFC-e para todos os clientes: a nota sai só quando o cliente pede, e quase nenhum pede. As notas emitidas entre as visitas ficam, portanto, abaixo do número real de clientes, e o giro do cenário pessimista, calibrado por elas, também subestima o fluxo. Houve ainda um único intervalo entre as visitas de cada unidade, abaixo dos 15 dias planejados: 13 dias na Paralela (17/10 a 30/10/2026) e 6 dias na Bela Vista (10/10 a 16/10/2026). Esse intervalo não capta a variação do mês nem a sazonalidade.
+
+Três registros planejados para a contagem direta ficaram fora do trabalho: os pedidos de alimentos e bebidas de cada mesa, o nível de ruído e os jogos em uso em cada mesa. A coleta foi tentada e se mostrou inviável por dois motivos. O primeiro é físico: de qualquer lugar em que o observador sentasse, várias mesas ficavam longe demais para identificar os jogos e os pedidos. O segundo é de processamento: anotar e tratar esses registros junto com a entrada e a saída dos grupos excedeu a capacidade de um único observador. Por isso, o consumo de alimentos e bebidas do plano vem dos cardápios dos concorrentes (B1), não do consumo observado.
 
 O investimento, por sua vez, não tem cotação. Área, reforma, mobiliário e cozinha são estimativas do autor (N6), e o aluguel usa o FipeZap de Salvador inteira, sem o recorte da Pituba.
 

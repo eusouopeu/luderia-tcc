@@ -80,7 +80,7 @@ A **taxa de ocupação** é a proporção das mesas ocupadas, em média, no per�
 
 A NFC-e de uma compra do autor no início e no fim de cada visita dá a série e o número da nota. A diferença entre as duas visitas da mesma unidade dá as notas emitidas no intervalo: 183 na Bela Vista, de 10/10 a 16/10 (6 dias), e 209 na Paralela, de 17/10 a 30/10/2026 (13 dias). As duas unidades só emitem a nota quando o cliente pede. As notas emitidas são, portanto, um piso das vendas.
 
-Os pedidos de cada mesa — categoria, quantidade e hora de chegada — foram registrados em parte das visitas. Como não cobrem as quatro, entram só como descrição, sem sustentar premissa.
+O registro dos pedidos de cada mesa, do ruído e dos jogos em uso foi tentado e abandonado: de qualquer ponto do salão, várias mesas ficavam longe demais para a identificação (seção 11.3). Esses dados não entram no trabalho.
 
 ### 3.3.4 Bloco B4 — Bases públicas
 
@@ -153,7 +153,7 @@ A matriz liga cada decisão do plano à pergunta que ela responde, ao dado usado
 | Em que bairro abrir? | Onde está o público, longe da concorrência e com aluguel compatível? | População, idade e renda; localização da São Jogue; aluguel; entorno | Censo 2022; PNAD Contínua; B1; FipeZap | N2 + N3 |
 | Qual modelo de cobrança? | Qual modelo o mercado pratica e qual gera menos reclamação de preço? | Política de cobrança; críticas a preço | B1 e B2 | N3 |
 | Que cardápio oferecer? | Qual o peso da comida na nota e que itens e preços o mercado pratica? | Temas de comida × nota; cardápios | B1 e B2 | N3 |
-| Qual ticket médio projetar? | Quanto uma pessoa gasta por visita? | Consumo por pessoa do cardápio; valores citados; NFC-e; POF | B1, B2, B3 e B4 | N3 + N5 + N2 |
+| Qual ticket médio projetar? | Quanto uma pessoa gasta por visita? | Taxa de entrada e cesta de consumo dos cardápios; valores citados; POF | B1, B2 e B4 | N3 + N2 |
 | Qual taxa de ocupação projetar? | Quantas mesas um concorrente comparável ocupa? | Ocupação minuto a minuto; notas emitidas (piso); velocidade de avaliações calibrada | B2 e B3 | N5 + N3 |
 | Qual giro projetar? | Quanto tempo uma mesa fica ocupada? | Permanência observada; modelos de cobrança | B1 e B3 | N5 |
 | Quantas mesas e de que tamanho? | Quantas pessoas ocupam cada mesa? | Tamanho do grupo citado e observado | B2 e B3 | N3 + N5 |

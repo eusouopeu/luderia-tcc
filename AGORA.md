@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 31/10/2026 (20h48). Semana 8 do cronograma (31/10 a 06/11). Próxima entrega: **06/11, versão completa**; versão final para a banca em 16/11.
+Atualizado em 31/10/2026 (21h48). Semana 8 do cronograma (31/10 a 06/11). Próxima entrega: **06/11, versão completa**; versão final para a banca em 16/11.
 
 ## Fazendo agora
 
@@ -10,15 +10,16 @@ Atualizado em 31/10/2026 (20h48). Semana 8 do cronograma (31/10 a 06/11). Próxi
 - **TMin v5 (31/10):** abertura de texto em todos os capítulos, próclise, frases de ligação e referências numa lista única no fim (justificada, espaço 1,5); 54 páginas. TMax ainda sem essas mudanças nos caps. 2 e 3.
 - **Figuras (31/10):** seis gráficos das planilhas agregadas nos caps. 5, 6 e 9 (TMin v6, 58 páginas); gráficos do B2, do cardápio, do entorno e do B3 esperam dados atualizados.
 - **Formatação (31/10):** regras suplementares em `_instrucoes/1d_formatacao.md`, já no gerador; `.docx` e PDFs regerados (TMax v3 com 67 páginas, TMin v2 com 53). Instruções gerais divididas em `1_estrutura`, `1a_principios`, `1b_escrita`, `1c_versoes` e `1d_formatacao`.
-- **Viabilidade:** inviável no provável (VPL -R$ 479 mil com 12 pessoas; -R$ 214 mil com a equipe de 8 do cap. 7). Viável com a equipe de 8 e ocupação de fim de semana de 41,5% ou mais (cap. 10).
+- **Viabilidade (modelo refeito às 21h48):** receita por mesas ocupadas × pessoas por mesa × giros, com taxa e cesta médias do B1; VPL de -R$ 2,88 mi / -R$ 1,63 mi / +R$ 2,79 mi; P(VPL > 0) de 2,9% no Monte Carlo. Giro pessimista (3,61) calibrado pela NFC-e da Paralela, acima do provável (2). Caps. 4, 9, 10 e 11 ainda com os números antigos. Dados de pedidos, ruído e jogos do B3 fora do trabalho (11.3).
 - **Main unificada** (PR #22): branch do Mac, main antiga, app 2.5 e PRs #20 e #21. Mac na `main`; base do B1 regerada: 42 casas com cardápio; couvert de 12 casas a partir de prints (Instagram, site da BoardZ, cartaz do LudoCafé), e 22 dos 53 concorrentes cobram (mediana de R$ 20,00; R$ 25,00 no fim de semana); consumo por pessoa de R$ 50,25 (36 casas), cesta completa de R$ 73,75 (18). Números nos caps. 3, 5, 6, 9 e 11 e no Notion.
 - **B2:** falta a recodificação cega do autor, no banco "2R - Recodificação cega" do Notion (139 linhas; não abrir a relação "Avaliação original" nem o gabarito antes de terminar).
 
 ## Próximos 3 passos
 
-1. Decidir a equipe (card no thread; pendências, item 5) e levar a escolha ao modelo e aos caps. 4, 7, 9, 10 e 11.
-2. Fazer a recodificação cega; depois, refazer o 5.2 e escrever 6.1, 6.2 e 6.5.
-3. Cortar o cap. 10 até o teto (melhorias C17), escrever o 6.6 e preencher 4.2 e 4.3.
+1. Decidir o giro do provável e do otimista e o preço da entrada (6.3 × B1) e reescrever os números dos caps. 4, 9, 10 e 11 (pendências).
+2. Decidir a equipe (card no thread; pendências, item 5) e levar a escolha ao modelo e aos caps. 4, 7, 9, 10 e 11.
+3. Fazer a recodificação cega; depois, refazer o 5.2 e escrever 6.1, 6.2 e 6.5.
+- Depois: cortar o cap. 10 até o teto (melhorias C17), escrever o 6.6 e preencher 4.2 e 4.3.
 
 ## Bloqueado ou aguardando
 

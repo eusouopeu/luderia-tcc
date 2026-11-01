@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 31/10/2026 | Receita do modelo: mesas ocupadas × pessoas por mesa × giros por dia; receita por pessoa = taxa de entrada média + cesta de consumo média do B1 ÷ pessoas por cesta (3, 2 e 1 nos cenários pessimista, provável e otimista); giro pessimista calibrado pela NFC-e da Paralela, com uma nota por cliente; Monte Carlo com 10 mil cenários | `docs/registro-de-alteracoes.md` (31/10/2026, 21:48) |
+| 31/10/2026 | Dados de pedidos, ruído e jogos por mesa da contagem direta (B3) saem do trabalho; a tentativa e a inviabilidade ficam em 11.3 | `textos/capitulos/_md/11_consideracoes_finais.md` |
 | 31/10/2026 | Referências numa lista única no fim do trabalho, justificadas e com espaçamento 1,5 (prevalece sobre a NBR 6023); todo capítulo abre com texto antes da primeira seção; próclise sempre que aceitável | `_instrucoes/1d_formatacao.md` |
 | 31/10/2026 | Comentário do B2 cujo texto só termina em emoji + " …" (marcador do Maps) conta como texto inteiro: Status "Completo" no Notion | `docs/registro-de-alteracoes.md` (31/10/2026, 20:09) |
 | 31/10/2026 | Citação de livro com o intervalo de 5 páginas da edição consultada; a referência passa para essa edição (Assaf Neto 7. ed. 2014, Fitzsimmons 7. ed. 2014, Bardin Lisboa 2002); Porter fica na edição brasileira (Elsevier, 2004), sem página até conferir no livro; EPUB sem paginação cita a seção | `docs/registro-de-alteracoes.md` (31/10/2026, 19:59) |
