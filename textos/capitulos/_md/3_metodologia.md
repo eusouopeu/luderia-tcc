@@ -96,7 +96,7 @@ A codificação é validada por recodificação cega de 139 avaliações sortead
 
 Cada capítulo do plano usa os dados com uma técnica própria. No marketing, a análise de penalidade e recompensa compara a nota média com e sem crítica a cada tema, com peso igual por concorrente, e separa os atributos obrigatórios dos que diferenciam. No operacional, as reclamações são ordenadas pela frequência, e o tamanho dos grupos e a permanência dimensionam as mesas.
 
-No financeiro, a taxa de ocupação de fim de semana vem da contagem direta. O ticket médio vem do consumo por pessoa no cardápio, uma bebida e uma entrada ou prato, calibrado pelos preços da São Jogue. O **giro**, número de grupos que uma mesa recebe por dia, é o horário de funcionamento dividido pela permanência média.
+No financeiro, as mesas ocupadas no fim de semana vêm da contagem direta. O ticket médio soma a taxa de entrada média dos concorrentes que a cobram e a cesta de consumo média dos cardápios, uma bebida e uma entrada ou prato, dividida pelas pessoas que a compartilham. O **giro**, número de grupos que uma mesa recebe por dia, vai do piso das notas fiscais ao horário de funcionamento dividido pela permanência média.
 
 O **fluxo**, em visitantes por semana, é estimado na São Jogue por dois caminhos. As notas fiscais dão o limite inferior, e a contagem no movimento máximo, estendida às horas de fim de semana, dá o limite superior. A razão entre a velocidade de avaliações e o fluxo da São Jogue estende a estimativa aos demais concorrentes, sempre em faixa (N5 + N3). Toda proporção usada em premissa vem com intervalo de confiança.
 

@@ -130,7 +130,7 @@ No marketing, a análise de penalidade e recompensa — nota média com e sem cr
 
 No operacional, as reclamações são ordenadas pela frequência de cada tema negativo; o tamanho dos grupos e a permanência do Bloco B3 dimensionam as mesas.
 
-No financeiro, cada premissa crítica tem técnica e limitação próprias. A taxa de ocupação de fim de semana vem da contagem direta. O ticket médio vem do consumo por pessoa — uma bebida e uma entrada ou prato, por metrópole, com o couvert somado só onde foi encontrado (cesta completa) —, calibrada pelos valores citados nas avaliações e pelos preços da São Jogue e checada contra a POF. A **permanência** — tempo entre a entrada e a saída de um grupo — sai das visitas; o **giro**, número de grupos que uma mesa recebe por dia, é o horário de funcionamento dividido pela permanência média.
+No financeiro, cada premissa crítica tem técnica e limitação próprias. As mesas ocupadas no fim de semana vêm da contagem direta. O ticket médio soma a taxa de entrada média dos concorrentes que a cobram e a cesta de consumo média dos cardápios — uma bebida e uma entrada ou prato —, dividida pelas pessoas que a compartilham, e é checado contra os valores citados nas avaliações e a POF. A **permanência** — tempo entre a entrada e a saída de um grupo — sai das visitas; o **giro**, número de grupos que uma mesa recebe por dia, vai do piso das notas fiscais, com uma nota por cliente, ao horário de funcionamento dividido pela permanência média.
 
 ### 3.5.2 Calibração do fluxo
 

@@ -4,8 +4,6 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 ## Decisões a tomar
 
-- **Preço da entrada: cap. 6.3 × modelo (31/10/2026).** O 6.3 adota os preços da São Jogue (R$ 28,00 e R$ 22,00); o modelo usa a taxa média do B1 (R$ 18,68). O cap. 6 prevalece: decidir o preço e alinhar.
-- **Caps. 4, 9, 10 e 11 com os números do modelo anterior (31/10/2026).** Reescrever depois das duas decisões acima; o Monte Carlo vai para apêndice, com a probabilidade de VPL > 0 no corpo.
 - **Referências que faltam na lista única (31/10/2026).** Os caps. 6 a 11 citam fontes sem entrada em nenhuma lista (CONCLA, 2026; Receita Federal, 2026; leis, LCs e a RDC citadas pelo número; Novo CAGED; FipeZap no cap. 7). Conferir e incluir antes da versão final. O cap. 10 cita o caminho interno `_instrucoes/8_financeiro.md` no texto.
 - **TMax dos caps. 2 e 3 sem as mudanças da TMin v5 (31/10/2026).** A abertura do autor, a renumeração e as frases de ligação estão só no TMin; decidir se o TMax recebe as mesmas mudanças.
 - **Páginas das obras sem PDF útil (31/10/2026).** Faltam páginas de Bruni (2018), Damodaran (2010) e Pine e Gilmore (1999), sem PDF; Bruni e Famá (2019), cujo PDF é só o arquivo de transparências de 2002; e Dornelas, cujo PDF digitalizado não mostra a edição (p. 6–10 valem para ele, conferir se é a 3. ed. de 2021). Porter voltou à edição brasileira (Elsevier, 2004): falta a página, conferida no livro (cap. 1, as cinco forças). O `.docx` do TMax não foi regerado com as páginas.

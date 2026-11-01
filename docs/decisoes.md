@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 31/10/2026 | Taxa de entrada do plano = média dos concorrentes que a cobram (R$ 18,68, 22 casas do B1), em todos os dias e cenários; os preços da São Jogue saem do provável | `textos/capitulos/_md/6_plano_de_marketing.md` (6.3) |
 | 31/10/2026 | Giro por mesa: pessimista pelo piso da NFC-e da Paralela (3,61); otimista = 10 h abertas ÷ permanência média das visitas (5,51); provável = média dos dois (4,56) | `docs/registro-de-alteracoes.md` (31/10/2026, 22:04) |
 | 31/10/2026 | Receita do modelo: mesas ocupadas × pessoas por mesa × giros por dia; receita por pessoa = taxa de entrada média + cesta de consumo média do B1 ÷ pessoas por cesta (3, 2 e 1 nos cenários pessimista, provável e otimista); giro pessimista calibrado pela NFC-e da Paralela, com uma nota por cliente; Monte Carlo com 10 mil cenários | `docs/registro-de-alteracoes.md` (31/10/2026, 21:48) |
 | 31/10/2026 | Dados de pedidos, ruído e jogos por mesa da contagem direta (B3) saem do trabalho; a tentativa e a inviabilidade ficam em 11.3 | `textos/capitulos/_md/11_consideracoes_finais.md` |

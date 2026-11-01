@@ -22,13 +22,13 @@ A capacidade do salão supera a demanda projetada com folga. O Quadro 7.1 traz o
 | Pessoas por grupo de mesa | 3,6 | B3, média das quatro visitas (R02) |
 | Permanência média | 109 min | B3, média das quatro visitas (R03) |
 | Horas abertas por semana | 68 h: 40 h de segunda a quinta e 28 h de sexta a domingo | Horário da São Jogue, 12h às 22h (domingo, 13h às 21h) (R13, R14) |
-| Giro por mesa | 22,0 por semana no dia útil e 15,4 no fim de semana | Horas abertas ÷ permanência |
+| Giro por mesa ocupada | 3,61 a 5,51 por dia; 4,56 no provável | Piso das NFC-e a 10 horas abertas ÷ permanência (R15) |
 | Capacidade máxima | 193 pessoas por dia | Todas as mesas ocupadas em todas as horas abertas |
-| Demanda provável no ano maduro | 48 pessoas por dia | Ocupação de 35% no fim de semana e 18% no dia útil (R04, R05) |
+| Demanda provável no ano maduro | 51 pessoas por dia | 4,37 mesas ocupadas no fim de semana e metade disso no dia útil, com 4,56 giros (R04, R05, R15) |
 
 Fonte: elaborado pelo próprio autor com base no Bloco B3 (2026) e no modelo do cap. 9.
 
-A demanda provável usa 25% da capacidade. O teto físico, portanto, não limita a receita: o que limita é a ocupação. Nas noites de sexta e sábado observadas, a ocupação média das mesas foi de 29,9% a 66,9%, com pico de 77,8% na Paralela, em 30/10 (B3). Mesmo no pico, sobraram duas mesas livres.
+A demanda provável usa 27% da capacidade. O teto físico, portanto, não limita a receita: o que limita são as mesas ocupadas. Nas noites de sexta e sábado observadas, de 2,69 a 6,02 mesas ficaram ocupadas em média (29,9% a 66,9% das mesas), com pico de 77,8% na Paralela, em 30/10 (B3). Mesmo no pico, sobraram duas mesas livres.
 
 Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros pode reduzir o número de assentos. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto.
 
@@ -65,7 +65,7 @@ Esse fluxo cabe numa equipe de 8 pessoas, com funções acumuladas (Quadro 7.2).
 
 Fonte: elaborado pelo próprio autor com base no Bloco B3 (2026) e no Novo CAGED (Salvador, admissões de ago/2025 a jul/2026, mediana).
 
-A equipe proposta tem 8 pessoas, contra 12 no quadro de referência que o modelo do cap. 9 usa hoje. Com 8, a folha com encargos cai de 38,6% para cerca de 30% da receita do ano maduro, ainda acima dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). A São Jogue opera com mais gente: de três a sete instrutores no salão durante as visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
+A equipe proposta tem 8 pessoas, contra 12 no quadro de referência que o modelo do cap. 9 usa hoje. Com 8, a folha com encargos cai de 40,6% para 27,8% da receita do ano maduro, ainda acima dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). A São Jogue opera com mais gente: de três a sete instrutores no salão durante as visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
 
 Contratar instrutores como jovens aprendizes reduz pouco o custo. Os salários já estão no piso, e o aprendiz trabalha no máximo 6 horas por dia, o que exige mais pessoas para cobrir as mesmas horas; menores de 18 anos não podem trabalhar depois das 22h (CLT, art. 404 e art. 432). O estágio exige relação com o curso do estudante (Lei n. 11.788/2008) e não cabe na função de atendimento. As duas formas ficam fora do provável.
 

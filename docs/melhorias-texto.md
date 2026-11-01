@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 31/10/2026 (12h24), TMin v1 dos caps. 2, 3, 5 e 9 contra o TMax e os demais capítulos.
+Última análise: 31/10/2026 (22h13), caps. 3, 4, 6, 7, 9, 10 e 11 depois do modelo novo do cap. 9.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -12,14 +12,11 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Grave
 
-**D36 — Números do cap. 9 × modelo novo (31/10/2026).** Caps. 4 (sumário), 9 (9.1 a 9.7), 10 (10.2, 10.3, 10.5) e 11 (11.1, 11.2) × `9_plano_financeiro_modelo.xlsx`. Os textos ainda trazem a árvore antiga (ocupação × horas ÷ permanência), o A&B de R$ 24,00 das NFC-e, a taxa de R$ 28,00 e o VPL provável de -R$ 479 mil; o modelo passou a mesas ocupadas × giros, taxa e cesta médias do B1, VPL provável de -R$ 638 mil e Monte Carlo. Reescrever depois da decisão do preço (pendências).
-
-**D37 — Preço da entrada no cap. 6.3 × cap. 9 (31/10/2026).** Cap. 6.3 (R$ 28,00 e R$ 22,00, São Jogue) × modelo do cap. 9 (R$ 18,68, média do B1). O cap. 6 prevalece; o 6.3 também ainda diz que os valores entram como R06, R07 e R08, IDs que mudaram de sentido.
-
 **D01 — Três escalas de confiança com os mesmos rótulos.** Cap. 5 (nota de abertura, 5.1.2, 5.1.3, 5.2.3, 5.4.2 e quadro "Fontes por nível de preferência") × cap. 2 (2.1) × `_instrucoes/1a_principios.md` (P1, P2) e `8_financeiro.md` (N1–N6). O cap. 5 usa uma ordem própria de fontes em 4 níveis (oficial → fundação → entidade setorial → imprensa), decidida em 15/10 (`decisoes.md`), que não bate com a P1 (7 níveis: legislação, artigos revisados, teses, relatórios oficiais e setoriais…). Além disso, mistura as escalas no texto: a POF é "N2" (escala N1–N6, correto), o Savills é "nível 3" (da ordem própria; na N1–N6 seria N4), o público do Meta Ads é "N5, rastros digitais" (rastro digital é o tipo 5 da P2; N5 é coleta primária comportamental própria) e a cotação é "N2 na hierarquia de dados" (tipo 2 da P2, não N2). O cap. 2 anuncia só a N1–N6 e a P2 para o cap. 3. A banca lê "N2" e "nível 2" como a mesma coisa. Sugestão: no texto, usar só a N1–N6 para dados e premissas; a ordem de fontes do cap. 5 vira a P1 (atualizar a instrução) ou sai do capítulo; o tipo de dado da P2 ganha rótulo próprio (ex.: "tipo 5").
 
 ## Média
 
+- **Giro: vocabulário × modelo (31/10/2026).** `_instrucoes/1b_escrita.md` (P6) define giro como horas de funcionamento ÷ permanência média; no modelo do cap. 9, só o otimista segue a definição, o pessimista sai das NFC-e e o provável é a média dos dois. Ajustar a definição do P6 (giro por mesa ocupada, com a faixa) ou declarar a diferença no cap. 3. A "taxa de ocupação" do P6 também deixou de ser premissa: o modelo usa mesas ocupadas.
 - **Figuras só no TMin (31/10/2026).** O TMin tem as Figuras 5.1 a 5.4, 6.1 e 9.1 (Selic), com o tornado como Figura 9.2; o TMax segue só com o tornado como Figura 9.1, mas o cap. 10, comum às duas versões, já remete à "Figura 9.2".
 - **Seções renumeradas no TMin (31/10/2026).** No TMin, o cap. 2 vai de 2.1 a 2.5 e o cap. 3 de 3.1 a 3.6; no TMax, seguem de 2.1 a 2.6 e de 3.1 a 3.7. Remissões entre capítulos a essas seções ficam diferentes nas duas versões.
 **D02 — Objetivos e seções da introdução fora da estrutura.** Cap. 1 (1.1) × `1_estrutura.md` (1.3). O cap. 1 tem 7 objetivos específicos; a instrução permite no máximo 6, um por decisão, cada um respondido em 11.2. Os itens (vi) e (vii) cabem em um só (o (vi) da proposta da instrução). As seções também divergem: o cap. 1 tem 1.1 Objetivos, 1.2 Justificativa e 1.3 Estrutura; a instrução prevê 1.1 Contextualização, 1.2 Problema e oportunidade, 1.3 Objetivos, 1.4 Justificativa e 1.5 Estrutura. Sugestão: fundir (vi) e (vii) e renumerar, ou ajustar a instrução.
