@@ -7,6 +7,8 @@ Como usar:
 - marcar a obra (`[x]`) quando terminar de ler;
 - marcar cada citação quando conferir, na página indicada, que o texto do TCC diz o que a obra diz.
 
+Os trechos com só as páginas citadas de cada PDF estão em [trechos_citados/](trechos_citados/), um arquivo por obra, com as páginas impressas no nome.
+
 A obra citada em mais de um capítulo tem a caixa de leitura só na primeira vez; nos demais capítulos, aparecem só as citações dele. As bases públicas não exigem leitura: a caixa é para conferir a tabela, o recorte e a data citados.
 
 Legenda, no fim de cada referência:

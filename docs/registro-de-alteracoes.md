@@ -1973,3 +1973,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: lista da v2 agrupada só por assunto, com o ícone de acesso no início da referência e o ⛔ também para sites; sem banco no Notion.
 **Depois**: lista por capítulo (1, 2, 3 e 5, os que têm referências próprias) e, dentro dele, por assunto; ícone no fim da referência; 🌐 para publicação em site ou base on-line (Sebrae, Diversório, Savills, Mercado&Consumo e as dez bases públicas) e ⛔ só para obra que existe em PDF sem acesso. Obra citada em mais de um capítulo (Asakura, Abrinq) tem a caixa de leitura só na primeira vez; as bases públicas ficam no cap. 5, com os demais capítulos que as citam. Banco do Notion com Obra, Referência, Capítulos, Assunto, Acesso (PDF na pasta, Só no Drive, Site, Sem acesso), Citações, Pendência e as caixas Lido e Citações conferidas.
 **Justificativa**: pedido do autor.
+
+### 19:05
+**Objeto**: `bibliografia/trechos_citados/` (14 PDFs novos, fora do git); `bibliografia/_lista-de-leitura_TMin_v2.md`
+**Antes**: para conferir uma citação, era preciso abrir o PDF inteiro e achar a página impressa.
+**Depois**: um PDF por obra com só as páginas citadas no TMin, nomeado com as páginas impressas: Asakura (p. 1–5 e 9–13), Assaf Neto (p. 374–392, união dos três intervalos), Bardin (p. 104–108), Dornelas (p. 6–10, PDF 11–15 pelo OCR), Figueiredo (p. 31–32), Figueiredo e Mantovani (p. 4–5 e 12), Fitzsimmons (p. 152–156 e 406–410), KAM (p. 17–21), Picolo e Tontini (p. 42–45, 50–51 e 56), Porter (ed. mexicana, p. 19–23), Sarpa (p. 39–43), Tontini e Theiss (p. 35–36), Vasconcellos (p. 45–47) e Groves (seç. 2.3 inteira, 10 páginas do PDF convertido). Sem trecho: Kotler (PDF só no Drive) e Bruni e Famá (PDF de transparências). A lista de leitura aponta para a pasta.
+**Justificativa**: pedido do autor, para ler e conferir só as páginas citadas.
