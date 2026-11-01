@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 31/10/2026 (22h13), caps. 3, 4, 6, 7, 9, 10 e 11 depois do modelo novo do cap. 9.
+Última análise: 01/11/2026 (18h16), TMin v9 inteiro (caps. 1 a 11), com as 8 recomendações pedidas pelo autor.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -15,6 +15,13 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D01 — Três escalas de confiança com os mesmos rótulos.** Cap. 5 (nota de abertura, 5.1.2, 5.1.3, 5.2.3, 5.4.2 e quadro "Fontes por nível de preferência") × cap. 2 (2.1) × `_instrucoes/1a_principios.md` (P1, P2) e `8_financeiro.md` (N1–N6). O cap. 5 usa uma ordem própria de fontes em 4 níveis (oficial → fundação → entidade setorial → imprensa), decidida em 15/10 (`decisoes.md`), que não bate com a P1 (7 níveis: legislação, artigos revisados, teses, relatórios oficiais e setoriais…). Além disso, mistura as escalas no texto: a POF é "N2" (escala N1–N6, correto), o Savills é "nível 3" (da ordem própria; na N1–N6 seria N4), o público do Meta Ads é "N5, rastros digitais" (rastro digital é o tipo 5 da P2; N5 é coleta primária comportamental própria) e a cotação é "N2 na hierarquia de dados" (tipo 2 da P2, não N2). O cap. 2 anuncia só a N1–N6 e a P2 para o cap. 3. A banca lê "N2" e "nível 2" como a mesma coisa. Sugestão: no texto, usar só a N1–N6 para dados e premissas; a ordem de fontes do cap. 5 vira a P1 (atualizar a instrução) ou sai do capítulo; o tipo de dado da P2 ganha rótulo próprio (ex.: "tipo 5").
 
 ## Média
+
+**D12 — Condição de viabilidade dita de três jeitos (01/11/2026).** Cap. 4 (4.6) × cap. 11 (11.1) × cap. 9 (9.7.3). O 4.6 diz que o negócio fica viável com a equipe de 8 e duas premissas juntas (5,0 mesas e cesta para 1,5 pessoa); o 11.1, com uma de três condições isoladas (5,3 mesas, 4,4 pessoas por mesa ou cesta para 1,4 pessoa); o 9.7.3, com 5,98 mesas e o quadro de 12. Sugestão: uma só formulação, com o mesmo quadro de pessoal, repetida igual nos três.
+
+**D13 — Taxa de entrada fixa fora da sensibilidade (01/11/2026).** Cap. 6 (6.3) × cap. 9 (Quadro 9.2) × cap. 5 (Figura 5.1). A taxa é a média nacional (R$ 18,68) em todos os cenários, embora a única concorrente de Salvador cobre R$ 28,00 no fim de semana e a renda da cidade seja a penúltima entre as capitais com luderia. O preço não entra no tornado nem no Monte Carlo. Sugestão: dar faixa à taxa (ex.: R$ 15,00 / 18,68 / 28,00) e mostrar o ponto de ruptura dela; justificar no 6.3 por que a média nacional e não o preço local.
+
+**D14 — Extremos que desacreditam o modelo (01/11/2026).** Cap. 4 (Quadro 4.1) × cap. 10 (10.2). O otimista mostra TIR de 579,5% e payback de 0,2 ano; o pessimista, VPL de -R$ 2,9 mi. O próprio 10.2 diz que os extremos são limite, não previsão, mas o sumário os põe lado a lado com o provável. Sugestão: no cap. 4, trocar as colunas extremas pelos percentis 10, 50 e 90 do Monte Carlo; os extremos ficam só no cap. 10.
+
 
 - **Giro: vocabulário × modelo (31/10/2026).** `_instrucoes/1b_escrita.md` (P6) define giro como horas de funcionamento ÷ permanência média; no modelo do cap. 9, só o otimista segue a definição, o pessimista sai das NFC-e e o provável é a média dos dois. Ajustar a definição do P6 (giro por mesa ocupada, com a faixa) ou declarar a diferença no cap. 3. A "taxa de ocupação" do P6 também deixou de ser premissa: o modelo usa mesas ocupadas.
 - **Figuras só no TMin (31/10/2026).** O TMin tem as Figuras 5.1 a 5.4, 6.1 e 9.1 (Selic), com o tornado como Figura 9.2; o TMax segue só com o tornado como Figura 9.1, mas o cap. 10, comum às duas versões, já remete à "Figura 9.2".
@@ -95,6 +102,11 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 **C03 — 5.5.3 Social só repete o que já foi dito.** Cap. 5: o peso da alimentação fora do lar na Bahia (5.1.3) e os 30,5% de 20 a 39 anos (5.2.1) voltam no 5.5.3, junto de uma nota sobre Gilovich. O último parágrafo do 5.5.1 repete a renda do 5.2.1. Reduzir o 5.5.3 a uma linha no quadro PESTEL com remissão, ou fundi-lo ao 5.5.1. Ganho: ~80 palavras.
 
 ## Médio ganho
+
+**C18 — Aberturas de capítulo que descrevem o capítulo (01/11/2026).** Caps. 4, 5, 7, 9 e 11 abrem com "O capítulo parte de…", "As seções apresentam…", repetindo o 1.3. Sugestão: abrir com a tese ou o resultado do capítulo em uma frase (ex.: cap. 9, "O negócio não é viável nas premissas prováveis; esta seção mostra de onde vem o número") e cortar o roteiro das seções. Ganho: cerca de 250 palavras.
+
+**C19 — Siglas internas na prosa (01/11/2026).** B1 a B4 aparecem cerca de 95 vezes e N1 a N6 cerca de 55, inclusive nos caps. 4 e 11, que a banca lê isolados. Sugestão: nome por extenso na primeira menção de cada capítulo ("a contagem direta na São Jogue (B3)") e nenhuma sigla nos caps. 4 e 11; nas tabelas, as siglas ficam.
+
 
 **C17 — Cap. 10 acima do teto e Quadro 10.2 repetido.** O cap. 10 tem cerca de 1.400 palavras e 4 quadros, o que dá perto de 6 páginas contra o teto de 4. O Quadro 10.2 repete a Tabela 9.4 e o Quadro 4.1, com uma coluna a mais. Sugestão: tirar o Quadro 10.2 e citar a Tabela 9.4; juntar a matriz de riscos (Quadro 10.4) com os indicadores do 10.5. Ganho: cerca de 1,5 página.
 

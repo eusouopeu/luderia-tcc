@@ -34,13 +34,13 @@ A ligação entre as duas ferramentas define o uso de cada uma. Um atributo obri
 
 ### 2.2.3 Diagnóstico estratégico
 
-A análise SWOT cruza as forças e fraquezas internas do negócio com as oportunidades e ameaças do ambiente (KOTLER; KELLER, 2012, [AV]). O cruzamento gera estratégias: usar forças para aproveitar oportunidades, corrigir fraquezas que expõem o negócio a ameaças. Mintzberg, Ahlstrand e Lampel (2010, [AV]) criticam a ferramenta na escola do design: a lista de forças e fraquezas tende a ser feita sem verificação e separa o pensar do agir. O capítulo 10.1 responde à crítica com uma regra: cada item da matriz aponta para o dado do capítulo 5 ou 6 que o sustenta, e item sem dado sai.
+A análise SWOT cruza as forças e fraquezas internas do negócio com as oportunidades e ameaças do ambiente (KOTLER; KELLER, 2013, p. 49–53). O cruzamento gera estratégias: usar forças para aproveitar oportunidades, corrigir fraquezas que expõem o negócio a ameaças. Mintzberg, Ahlstrand e Lampel (2010, [AV]) criticam a ferramenta na escola do design: a lista de forças e fraquezas tende a ser feita sem verificação e separa o pensar do agir. O capítulo 10.1 responde à crítica com uma regra: cada item da matriz aponta para o dado do capítulo 5 ou 6 que o sustenta, e item sem dado sai.
 
 ## 2.3 LAZER E ECONOMIA DA EXPERIÊNCIA
 
 O lazer é a cultura vivida no tempo disponível, escolhida pelo próprio indivíduo e sem obrigação profissional ou doméstica (MARCELLINO, 2012, [AV]). A definição tem duas dimensões: o tempo livre e a atitude de escolha. A luderia disputa a segunda dimensão: o cliente escolhe entre ela e outras formas de passar a noite ou o fim de semana com outras pessoas.
 
-Pine e Gilmore (1999, [AV]) tratam a experiência como uma oferta econômica própria, distinta de bens e serviços: a empresa encena um acontecimento memorável, e o cliente paga pelo tempo que passa nele. Compras de experiências geram mais satisfação que compras de bens materiais (GILOVICH; KUMAR; JAMPOL, 2015). Em pesquisa com 500 adultos do Reino Unido (janeiro de 2022), 88% disseram querer que bares ofereçam uma experiência que não conseguem ter em casa; a preferência por gastar com experiências em vez de bens vai de 41% entre maiores de 55 anos a 69% entre 18 e 24 anos (KAM INSIGHT, 2022, [AV-X02-a]).
+Pine e Gilmore (1999, [AV]) tratam a experiência como uma oferta econômica própria, distinta de bens e serviços: a empresa encena um acontecimento memorável, e o cliente paga pelo tempo que passa nele. Compras de experiências geram mais satisfação que compras de bens materiais (GILOVICH; KUMAR; JAMPOL, 2015). Em pesquisa com 500 adultos do Reino Unido (janeiro de 2022), 88% disseram querer que bares ofereçam uma experiência que não conseguem ter em casa; a preferência por gastar com experiências em vez de bens vai de 41% entre maiores de 55 anos a 69% entre 18 e 24 anos (KAM INSIGHT, 2022, p. 4–8).
 
 A luderia vende uma ocasião social, e não o uso de um jogo. O jogo é o meio; o produto é o encontro em torno da mesa. A distinção orienta a proposta de valor (capítulo 6.1) e a leitura das ocasiões de consumo nas avaliações (capítulo 5.2).
 
@@ -58,7 +58,7 @@ A preferência por regras simples também orienta o acervo. Entre os jogos avali
 
 ## 2.5 ESTABELECIMENTOS DE LAZER E ENTRETENIMENTO
 
-A luderia pertence ao segmento de *competitive socialising*: estabelecimentos que combinam uma atividade de jogo com alimentos e bebidas em uma ocasião social (KAM INSIGHT, 2022, [AV-X02-a]). No Reino Unido, as ocasiões que levam a esses locais são encontrar amigos (67%), diversão em família (59%), datas especiais (36%), a substituição de uma saída comum a bar ou restaurante (29%) e eventos de trabalho (22%). Os atributos mais exigidos são os mesmos de qualquer bar: segurança (70%), preço (69%) e qualidade da comida (63%) (KAM INSIGHT, 2022, [AV-X02-a]). O jogo diferencia o local, mas não dispensa o básico da hospitalidade.
+A luderia pertence ao segmento de *competitive socialising*: estabelecimentos que combinam uma atividade de jogo com alimentos e bebidas em uma ocasião social (KAM INSIGHT, 2022, p. 2–6). No Reino Unido, as ocasiões que levam a esses locais são encontrar amigos (67%), diversão em família (59%), datas especiais (36%), a substituição de uma saída comum a bar ou restaurante (29%) e eventos de trabalho (22%). Os atributos mais exigidos são os mesmos de qualquer bar: segurança (70%), preço (69%) e qualidade da comida (63%) (KAM INSIGHT, 2022, p. 15–19). O jogo diferencia o local, mas não dispensa o básico da hospitalidade.
 
 Oldenburg (1989, [AV]) chama de terceiro lugar o espaço de convívio entre a casa e o trabalho, com acesso fácil, frequentadores habituais e a conversa como atividade principal. A luderia se aproxima do conceito pela mesa compartilhada e se afasta dele pelo couvert e pela permanência longa, que reduzem a visita espontânea. O conceito orienta a leitura das avaliações sobre recorrência e sensação de pertencimento (capítulo 5.2).
 
@@ -74,7 +74,7 @@ A TMA é o retorno mínimo exigido do investimento. Ela parte de uma taxa livre 
 
 O payback descontado é o prazo em que os fluxos descontados pela TMA recuperam o investimento inicial (ASSAF NETO, 2014, p. 374–378). O ponto de equilíbrio é o volume de vendas em que a receita cobre os custos fixos e variáveis, com lucro igual a zero (BRUNI; FAMÁ, 2019, [AV]). Para a luderia, o ponto de equilíbrio se expressa em visitantes por semana, o que permite compará-lo diretamente com o fluxo estimado.
 
-Os mesmos indicadores dominam a prática. Em empresas brasileiras, o VPL foi apontado como o método mais importante por 54% dos respondentes e a TIR por 38%, com o payback simples em terceiro lugar (FREZATTI et al., 2012, p. 12). O payback simples foi mais usado que o payback ajustado pelo custo de oportunidade, o que indica descuido com o horizonte de retorno do investimento (FREZATTI et al., 2012, p. 18). O único estudo de viabilidade localizado sobre o formato, de um *board game café* em Ourinhos (SP), usa esse indicador: o investimento de R$ 38.705,06 seria recuperado em três anos e cinco meses, e o negócio é declarado viável (ASAKURA; SILVA; MELLO, 2018, [AV-R50-a]). O estudo não testa a sensibilidade do resultado às premissas de receita. O trabalho usa o payback descontado e trata a incerteza de forma explícita.
+Os mesmos indicadores dominam a prática. Em empresas brasileiras, o VPL foi apontado como o método mais importante por 54% dos respondentes e a TIR por 38%, com o payback simples em terceiro lugar (FREZATTI et al., 2012, p. 12). O payback simples foi mais usado que o payback ajustado pelo custo de oportunidade, o que indica descuido com o horizonte de retorno do investimento (FREZATTI et al., 2012, p. 18). O único estudo de viabilidade localizado sobre o formato, de um *board game café* em Ourinhos (SP), usa esse indicador: o investimento de R$ 38.705,06 seria recuperado em três anos e cinco meses, e o negócio é declarado viável (ASAKURA; SILVA; MELLO, 2018, p. 9–13). O estudo não testa a sensibilidade do resultado às premissas de receita. O trabalho usa o payback descontado e trata a incerteza de forma explícita.
 
 A incerteza é tratada por cenários e por análise de sensibilidade. Os cenários combinam valores pessimistas, prováveis e otimistas das premissas. A análise de sensibilidade varia uma premissa por vez, mantendo as demais no valor provável, e mede o efeito sobre o VPL (BRUNI, 2018, [AV]; CASAROTTO FILHO; KOPITTKE, 2020, [AV]). Ordenadas pelo efeito, as premissas formam o gráfico de tornado; as de maior impacto são as premissas críticas. O ponto de ruptura é o valor de uma premissa crítica que torna o VPL igual a zero (BRUNI, 2018, [AV]). Ele converte o resultado em condição: o negócio é viável enquanto a taxa de ocupação ficar acima de um valor determinado. Os capítulos 9.7 e 10.3 aplicam essas ferramentas.
 
@@ -137,7 +137,7 @@ KAM INSIGHT. *Competitive socialising*: winning a new customer occasion. KAM Med
 
 KIM, W. Chan; MAUBORGNE, Renée. *A estratégia do oceano azul*: como criar novos mercados e tornar a concorrência irrelevante. Rio de Janeiro: Elsevier, 2005. [AV]
 
-KOTLER, Philip; KELLER, Kevin Lane. *Administração de marketing*. 14. ed. São Paulo: Pearson, 2012. [AV]
+KOTLER, Philip; KELLER, Kevin Lane. *Administração de marketing*. 14. ed. Tradução de Sônia Midori Yamamoto. São Paulo: Pearson Education do Brasil, 2013.
 
 MARCELLINO, Nelson Carvalho. *Estudos do lazer*: uma introdução. 5. ed. Campinas: Autores Associados, 2012. [AV]
 

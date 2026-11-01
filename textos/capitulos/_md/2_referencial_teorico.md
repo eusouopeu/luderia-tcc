@@ -12,7 +12,7 @@ Quando a evidência é insuficiente, a decisão trabalha com a evidência limita
 
 A rentabilidade de um setor depende de cinco forças: a rivalidade entre concorrentes, a ameaça de novos entrantes, a ameaça de substitutos e o poder de negociação de compradores e de fornecedores (PORTER, 2004, [AV]). No caso da luderia, os substitutos são bares, restaurantes e outras formas de lazer noturno, e os fornecedores críticos são as editoras de jogos e os de alimentos e bebidas. O capítulo 5.3 aplica as cinco forças aos concorrentes do Bloco B1.
 
-Além da estrutura do setor, o negócio responde a um ambiente mais amplo. O macroambiente reúne as forças externas que a empresa não controla (KOTLER; KELLER, 2012, [AV]). O capítulo 5.5 organiza essas forças pela análise PESTEL, em seis dimensões: política, econômica, social, tecnológica, ambiental e legal.
+Além da estrutura do setor, o negócio responde a um ambiente mais amplo. O macroambiente reúne as forças externas que a empresa não controla (KOTLER; KELLER, 2013, p. 9–13). O capítulo 5.5 organiza essas forças pela análise PESTEL, em seis dimensões: política, econômica, social, tecnológica, ambiental e legal.
 
 ### 2.1.2 Atributos de satisfação
 
@@ -24,7 +24,7 @@ A PRC tem um limite: só identifica atributos que o cliente já experimentou, e 
 
 ### 2.1.3 Diagnóstico estratégico
 
-As análises do setor e do cliente se juntam no diagnóstico estratégico. A análise SWOT cruza as forças e fraquezas internas do negócio com as oportunidades e ameaças do ambiente (KOTLER; KELLER, 2012, [AV]). No capítulo 10.1, cada item da matriz aponta para o dado do capítulo 5 ou 6 que o sustenta, e item sem dado sai.
+As análises do setor e do cliente se juntam no diagnóstico estratégico. A análise SWOT cruza as forças e fraquezas internas do negócio com as oportunidades e ameaças do ambiente (KOTLER; KELLER, 2013, p. 49–53). No capítulo 10.1, cada item da matriz aponta para o dado do capítulo 5 ou 6 que o sustenta, e item sem dado sai.
 
 ## 2.2 ECONOMIA DA EXPERIÊNCIA
 
@@ -42,7 +42,7 @@ A escolha do acervo também encontra apoio nesses dados. Mecânicas de fácil ap
 
 ## 2.4 ESTABELECIMENTOS DE LAZER E ENTRETENIMENTO
 
-A luderia pertence ao segmento de *competitive socialising*: estabelecimentos que combinam uma atividade de jogo com alimentos e bebidas em uma ocasião social. No Reino Unido, os atributos mais exigidos nesses locais são os mesmos de qualquer bar: segurança (70%), preço (69%) e qualidade da comida (63%) (KAM INSIGHT, 2022, [AV-X02-a]). O jogo diferencia o local, mas não dispensa o básico da hospitalidade.
+A luderia pertence ao segmento de *competitive socialising*: estabelecimentos que combinam uma atividade de jogo com alimentos e bebidas em uma ocasião social. No Reino Unido, os atributos mais exigidos nesses locais são os mesmos de qualquer bar: segurança (70%), preço (69%) e qualidade da comida (63%) (KAM INSIGHT, 2022, p. 17–21). O jogo diferencia o local, mas não dispensa o básico da hospitalidade.
 
 O ambiente físico também compõe o serviço: as condições ambientais, o arranjo do espaço e os sinais do local afetam a avaliação do cliente (FITZSIMMONS; FITZSIMMONS, 2014, p. 152–156). Ainda assim, o ambiente não é o fator de maior peso. Em clientes do Outback Steakhouse no Brasil, a qualidade da comida teve o maior efeito sobre a imagem do restaurante (coeficiente padronizado de 0,866), acima do serviço (0,223) e do ambiente (0,107) (VASCONCELLOS, 2016, p. 45–47). Comida, serviço e ambiente formam categorias da análise de conteúdo do Bloco B2, ao lado do acervo e do preço.
 
@@ -56,7 +56,7 @@ A escolha da TMA, portanto, decide boa parte do resultado. Ela parte de uma taxa
 
 Os três indicadores respondem se o projeto vale o investimento; o ponto de equilíbrio responde quanto o negócio precisa vender. Ele é o volume de vendas em que a receita cobre os custos fixos e variáveis (BRUNI; FAMÁ, 2019, [AV]). Na luderia, ele se expressa em visitantes por semana e pode ser comparado com o fluxo estimado.
 
-O único estudo de viabilidade localizado sobre o formato, de um *board game café* em Ourinhos (SP), declara o negócio viável pelo payback simples e não testa a sensibilidade às premissas de receita (ASAKURA; SILVA; MELLO, 2018, [AV-R50-a]). Ao contrário desse estudo, o presente trabalho trata a incerteza de forma explícita. A análise de sensibilidade varia uma premissa por vez e mede o efeito sobre o VPL; ordenadas pelo efeito, as premissas formam o gráfico de tornado, e as de maior impacto são as premissas críticas (BRUNI, 2018, [AV]). O ponto de ruptura é o valor de uma premissa crítica que torna o VPL igual a zero (BRUNI, 2018, [AV]). Ele converte o resultado em condição: o negócio é viável enquanto a taxa de ocupação ficar acima de um valor determinado.
+O único estudo de viabilidade localizado sobre o formato, de um *board game café* em Ourinhos (SP), declara o negócio viável pelo payback simples e não testa a sensibilidade às premissas de receita (ASAKURA; SILVA; MELLO, 2018, p. 9–13). Ao contrário desse estudo, o presente trabalho trata a incerteza de forma explícita. A análise de sensibilidade varia uma premissa por vez e mede o efeito sobre o VPL; ordenadas pelo efeito, as premissas formam o gráfico de tornado, e as de maior impacto são as premissas críticas (BRUNI, 2018, [AV]). O ponto de ruptura é o valor de uma premissa crítica que torna o VPL igual a zero (BRUNI, 2018, [AV]). Ele converte o resultado em condição: o negócio é viável enquanto a taxa de ocupação ficar acima de um valor determinado.
 
 **Quadro 1 — Conceitos do referencial teórico e sua aplicação no plano**
 
@@ -96,7 +96,7 @@ FITZSIMMONS, James A.; FITZSIMMONS, Mona J. *Administração de serviços*: oper
 
 KAM INSIGHT. *Competitive socialising*: winning a new customer occasion. KAM Media, 2022. Disponível em: https://kaminsight.com/wp-content/uploads/sites/2044/2023/07/KAM-Competitive-Socialising-Feb-22.pdf. [AV: data de acesso]
 
-KOTLER, Philip; KELLER, Kevin Lane. *Administração de marketing*. 14. ed. São Paulo: Pearson, 2012. [AV]
+KOTLER, Philip; KELLER, Kevin Lane. *Administração de marketing*. 14. ed. Tradução de Sônia Midori Yamamoto. São Paulo: Pearson Education do Brasil, 2013.
 
 PICOLO, Jaime Dagostim; TONTINI, Gérson. Análise do contraste da penalidade e da recompensa (PRC): identificando oportunidades de melhoria em um serviço. *RAM – Revista de Administração Mackenzie*, São Paulo, v. 9, n. 5, p. 35–58, 2008.
 
