@@ -1967,3 +1967,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: uma lista ampla de busca do referencial teórico, com obras por tema em tópicos, muitas fora do texto.
 **Depois**: v1 arquivada; a v2 traz só as 36 obras e bases citadas no TMin v9, em nove assuntos (plano de negócios e estratégia; experiência e lazer; público de jogos; mercado e entretenimento social; qualidade de serviço; operações; viabilidade; métodos; bases públicas), em checklist: uma caixa por obra, para a leitura, e uma por citação, com o capítulo, o conteúdo e a página, para a conferência. Cada obra indica se o PDF está na pasta, só no Drive ou em lugar nenhum.
 **Justificativa**: pedido do autor, para marcar as obras lidas e as citações conferidas.
+
+### 18:41
+**Objeto**: `bibliografia/_lista-de-leitura_TMin_v2.md`; Notion, banco novo "Bibliografia TMin" (página TCC Luderia, 37 linhas)
+**Antes**: lista da v2 agrupada só por assunto, com o ícone de acesso no início da referência e o ⛔ também para sites; sem banco no Notion.
+**Depois**: lista por capítulo (1, 2, 3 e 5, os que têm referências próprias) e, dentro dele, por assunto; ícone no fim da referência; 🌐 para publicação em site ou base on-line (Sebrae, Diversório, Savills, Mercado&Consumo e as dez bases públicas) e ⛔ só para obra que existe em PDF sem acesso. Obra citada em mais de um capítulo (Asakura, Abrinq) tem a caixa de leitura só na primeira vez; as bases públicas ficam no cap. 5, com os demais capítulos que as citam. Banco do Notion com Obra, Referência, Capítulos, Assunto, Acesso (PDF na pasta, Só no Drive, Site, Sem acesso), Citações, Pendência e as caixas Lido e Citações conferidas.
+**Justificativa**: pedido do autor.
