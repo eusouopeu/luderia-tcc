@@ -41,7 +41,13 @@ Fonte: elaboração própria, com base nos cardápios, sites, matérias de impre
 
 A taxa da São Jogue está no alto da faixa. Pelo maior valor de cada casa, a mediana dos 22 concorrentes que cobram é de R$ 25,00 no fim de semana, e só três cobram mais que a São Jogue: Encounter (R$ 45,00 no sábado), LudoCafé (R$ 35,00 sem consumo mínimo) e Shelf (R$ 30,00). No dia útil, a mediana é de R$ 15,00, contra R$ 22,00. Dos 53 concorrentes do B1, 22 têm a taxa encontrada no cardápio, no site, na imprensa ou no Instagram, e a Ludus declara que não cobra; nos outros 30, a cobrança não foi encontrada. Os valores de Covil, LudoCafé, Garagem do Nerd e Joyjoy são de 2024 e podem estar defasados. A contagem exclui a sala privativa do Café Geek, cobrada por hora e por grupo.
 
-As avaliações confirmam que o preço da entrada pesa, mas pouco. Das 1.628 avaliações com texto do B2, 44 citam a taxa de entrada — 24 de forma negativa e 20 positiva — e 152 citam o preço do consumo, 61 de forma negativa. Na Sidequest, que cobra o mesmo que a São Jogue no fim de semana, um cliente chamou os R$ 28,00 de "um preço um pouco alto" e deu nota 4. O gasto declarado pelos avaliadores no campo de preço por pessoa do Google Maps tem mediana na faixa de R$ 80,00 a R$ 100,00 (352 declarações, sem a Bodogami, que soma 250 das 602).
+As avaliações confirmam que o preço da entrada pesa, mas pouco. Das 1.628 avaliações com texto do B2, 44 citam a taxa de entrada — 24 de forma negativa e 20 positiva — e 152 citam o preço do consumo, 61 de forma negativa. Na Sidequest, que cobra o mesmo que a São Jogue no fim de semana, um cliente chamou os R$ 28,00 de "um preço um pouco alto" e deu nota 4. O gasto declarado pelos avaliadores no campo de preço por pessoa do Google Maps tem mediana na faixa de R$ 80,00 a R$ 100,00 (352 declarações, sem a Bodogami, que soma 250 das 602; Figura 6.1).
+
+**Figura 6.1 – Gasto por pessoa declarado pelos avaliadores no Google Maps**
+
+![Gasto por pessoa declarado pelos avaliadores no Google Maps](../figuras/6_gasto_declarado_por_pessoa.png)
+
+Fonte: elaboração própria, com base no Bloco B2 (avaliações até "3 meses atrás", coletas de 09 a 30/10/2026).
 
 O consumo efetivo na São Jogue fica bem abaixo desse gasto declarado. Nas quatro NFC-e das mesas dos observadores, a pessoa gastou em média R$ 23,91 com alimentos e bebidas, além da taxa (Bloco B3). A soma, perto de R$ 50,00 por pessoa, equivale a R$ 180,00 por grupo de 3,6 pessoas. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018): uma visita consome cerca de 40% desse orçamento, a preços de 2018 `[script — corrigir pelo IPCA]`. A luderia é ocasião de saída, não hábito semanal.
 

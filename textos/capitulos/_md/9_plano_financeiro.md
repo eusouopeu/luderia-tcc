@@ -52,7 +52,13 @@ Os preços seguem os da São Jogue (6.3): R$ 28,00 por pessoa de sexta a domingo
 
 Do lado dos custos, o modelo usa bases públicas sempre que possível: o aluguel do FipeZap, os salários das medianas de admissão em Salvador no Novo CAGED, quase todas no piso de R$ 1.625,09, e o CMV de 30% da PAS 2023. Área, reforma, mobiliário, cozinha e despesas gerais não têm cotação e ficam em N6.
 
-Falta a taxa que desconta esses fluxos. A TMA real provável é de 15% ao ano. A Selic meta de 14,0% (BCB, set/2026), descontado o IPCA esperado de 4,3% para 2027 (Focus), dá juro real de 9,3%, somado a um prêmio de 3 a 9 pontos percentuais pelo risco de pequeno negócio novo.
+Falta a taxa que desconta esses fluxos. A TMA real provável é de 15% ao ano. A Selic meta de 14,0% (BCB, set/2026), descontado o IPCA esperado de 4,3% para 2027 (Focus), dá juro real de 9,3%, somado a um prêmio de 3 a 9 pontos percentuais pelo risco de pequeno negócio novo. A curva do Focus prevê queda da Selic até 2029 (Figura 9.1), o que favorece a TMA otimista.
+
+**Figura 9.1 – Selic meta e IPCA em 12 meses, com projeção do Relatório Focus**
+
+![Selic meta e IPCA em 12 meses, com projeção do Relatório Focus](../figuras/9_selic_ipca.png)
+
+Fonte: elaboração própria, com base no Banco Central do Brasil, SGS (séries 432 e 13522) e Relatório Focus de 11/09/2026.
 
 ## 9.3 INVESTIMENTO INICIAL
 
@@ -148,9 +154,9 @@ A receita provável fica entre os pisos de venda das duas unidades da São Jogue
 
 ### 9.7.2 Sensibilidade
 
-Quatro premissas de demanda concentram o risco: permanência média, pessoas por grupo e taxa de ocupação de fim de semana e de dia útil. Cada uma move o VPL em mais de R$ 600 mil entre os extremos da faixa (Figura 9.1). As três primeiras têm dado próprio (N5); a ocupação de dia útil é N6, o que viola a regra de robustez e exige destaque no cap. 10.
+Quatro premissas de demanda concentram o risco: permanência média, pessoas por grupo e taxa de ocupação de fim de semana e de dia útil. Cada uma move o VPL em mais de R$ 600 mil entre os extremos da faixa (Figura 9.2). As três primeiras têm dado próprio (N5); a ocupação de dia útil é N6, o que viola a regra de robustez e exige destaque no cap. 10.
 
-**Figura 9.1 – Tornado: VPL com cada premissa no extremo da faixa e as demais no provável**
+**Figura 9.2 – Tornado: VPL com cada premissa no extremo da faixa e as demais no provável**
 
 ![Tornado do VPL](../figuras/9_tornado.png)
 

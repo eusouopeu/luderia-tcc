@@ -47,7 +47,7 @@ Os cenários extremos põem todas as premissas do mesmo lado da faixa e servem d
 
 ## 10.3 PREMISSAS CRÍTICAS E PONTOS DE RUPTURA
 
-Quatro premissas de demanda decidem a viabilidade: permanência, pessoas por grupo e ocupação de fim de semana e de dia útil (Figura 9.1). O Quadro 10.3 compara o provável com o ponto de ruptura de cada uma, com a equipe do cap. 7.
+Quatro premissas de demanda decidem a viabilidade: permanência, pessoas por grupo e ocupação de fim de semana e de dia útil (Figura 9.2). O Quadro 10.3 compara o provável com o ponto de ruptura de cada uma, com a equipe do cap. 7.
 
 **Quadro 10.3 – Ruptura das premissas críticas com a equipe do cap. 7**
 

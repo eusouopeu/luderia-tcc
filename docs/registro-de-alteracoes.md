@@ -1924,3 +1924,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Depois**: edições do autor no `.docx` v4 levadas aos `.md` (abertura dos caps. 2 e 3; frase incompleta do 2º parágrafo do cap. 2 completada); seções 2.1 e 3.1 viraram a abertura dos capítulos, com as seções seguintes renumeradas (2.2→2.1 … 2.6→2.5; 3.2→3.1 … 3.7→3.6; remissão "seção 3.4.3" → "3.3.3"); parágrafo de abertura novo nos caps. 4 a 11; frases de ligação nos parágrafos com salto de nexo; próclise no lugar da ênclise; no trabalho inteiro, uma lista única "REFERÊNCIAS" no fim (37 obras, ordem alfabética, sem repetição), justificada e com espaçamento 1,5. ASAKURA e ABRINQ do cap. 1 igualadas às dos caps. 2 e 5.
 **Justificativa**: pedido do autor (estilo e formatação da TMin v5).
 
+### 21:08
+**Objeto**: `textos/capitulos/_md/5_analise_de_mercado.md`, `6_plano_de_marketing.md`, `9_plano_financeiro.md`, `10_analise_estrategica_riscos.md`; `textos/capitulos/figuras/` (6 PNG novos); `TCC_luderia_TMin_v6.{docx,pdf}`, `5_analise_de_mercado_TMin_v3.docx`, `6_plano_de_marketing_v3.docx`, `9_plano_financeiro_TMin_v3.docx` (anteriores em `_arquivo/`)
+**Antes**: só uma figura no texto (tornado, Figura 9.1).
+**Depois**: seis gráficos das planilhas de `dados/Coleta em estágio avançado/` (30/10/2026) no texto, com legenda, fonte e remissão na prosa: renda do trabalho nas capitais (Figura 5.1, 5.2.1), luderias por metrópole (5.2, 5.3.1), consumo por pessoa por metrópole (5.3, 5.3.3), IPCA geral e alimentação fora (5.4, 5.5.1), gasto declarado por pessoa (6.1, 6.3) e Selic e IPCA com o Focus (9.1, 9.2); tornado renumerado para Figura 9.2 (caps. 9 e 10). Ficaram fora os gráficos cujos números divergem do texto atual: temas e quedas de nota do B2 (dicionário anterior à recodificação), preços do cardápio, entorno de shopping e permanência do B3 (sem a visita de 30/10). TMin com 58 páginas.
+**Justificativa**: pedido do autor.
+

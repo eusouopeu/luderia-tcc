@@ -16,6 +16,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
+- **Figuras só no TMin (31/10/2026).** O TMin tem as Figuras 5.1 a 5.4, 6.1 e 9.1 (Selic), com o tornado como Figura 9.2; o TMax segue só com o tornado como Figura 9.1, mas o cap. 10, comum às duas versões, já remete à "Figura 9.2".
 - **Seções renumeradas no TMin (31/10/2026).** No TMin, o cap. 2 vai de 2.1 a 2.5 e o cap. 3 de 3.1 a 3.6; no TMax, seguem de 2.1 a 2.6 e de 3.1 a 3.7. Remissões entre capítulos a essas seções ficam diferentes nas duas versões.
 **D02 — Objetivos e seções da introdução fora da estrutura.** Cap. 1 (1.1) × `1_estrutura.md` (1.3). O cap. 1 tem 7 objetivos específicos; a instrução permite no máximo 6, um por decisão, cada um respondido em 11.2. Os itens (vi) e (vii) cabem em um só (o (vi) da proposta da instrução). As seções também divergem: o cap. 1 tem 1.1 Objetivos, 1.2 Justificativa e 1.3 Estrutura; a instrução prevê 1.1 Contextualização, 1.2 Problema e oportunidade, 1.3 Objetivos, 1.4 Justificativa e 1.5 Estrutura. Sugestão: fundir (vi) e (vii) e renumerar, ou ajustar a instrução.
 

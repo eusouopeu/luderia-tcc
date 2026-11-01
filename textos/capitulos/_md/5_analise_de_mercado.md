@@ -24,7 +24,13 @@ O consumo fora do domicílio pesa mais no orçamento baiano que na média nacion
 
 ### 5.2.1 População e renda
 
-Do setor, a análise passa ao público da cidade. Salvador tem público em número, mas com renda menor. A população estimada em 2026 é de 2.559.945 habitantes (IBGE, Estimativas da População), e 30,5% dos residentes tinham de 20 a 39 anos no Censo 2022. O rendimento médio do trabalho, de R$ 3.417,00 no 2º trimestre de 2026, coloca Salvador em 22º lugar entre as 27 capitais, e o rendimento domiciliar per capita caiu de R$ 1.985,00, em 2023, para R$ 1.900,00, em 2025 (IBGE, PNAD Contínua). A renda menor pesa na definição do preço de entrada (6.3), e o ponto precisa estar onde a renda se concentra (6.4).
+Do setor, a análise passa ao público da cidade. Salvador tem público em número, mas com renda menor. A população estimada em 2026 é de 2.559.945 habitantes (IBGE, Estimativas da População), e 30,5% dos residentes tinham de 20 a 39 anos no Censo 2022. O rendimento médio do trabalho, de R$ 3.417,00 no 2º trimestre de 2026, coloca Salvador em 22º lugar entre as 27 capitais e em penúltimo entre as que têm luderia no B1 (Figura 5.1), e o rendimento domiciliar per capita caiu de R$ 1.985,00, em 2023, para R$ 1.900,00, em 2025 (IBGE, PNAD Contínua). A renda menor pesa na definição do preço de entrada (6.3), e o ponto precisa estar onde a renda se concentra (6.4).
+
+**Figura 5.1 – Rendimento médio do trabalho nas capitais com luderia no B1, 2º trimestre de 2026 (R$)**
+
+![Rendimento médio do trabalho nas capitais com luderia no B1, 2º trimestre de 2026](../figuras/5_renda_trabalho_capitais.png)
+
+Fonte: elaboração própria, com base no IBGE, PNAD Contínua (2º trimestre de 2026).
 
 ### 5.2.2 O que o público valoriza
 
@@ -36,7 +42,13 @@ O tamanho do público não diz o que ele espera de uma luderia; essa resposta ve
 
 ### 5.3.1 Concorrentes nas 14 metrópoles
 
-O Bloco B1 identificou 54 luderias com mais de 100 avaliações no Google Maps nas 14 metrópoles da REGIC (IBGE, 2020), em outubro de 2026. São Paulo concentra 19; Belo Horizonte, Brasília e Curitiba têm seis cada; Rio de Janeiro, cinco; Florianópolis, três; Fortaleza e Porto Alegre, duas; Belém, Goiânia, Recife, Salvador e Vitória, uma; Manaus não tem nenhuma (Bloco B1, 2026).
+O Bloco B1 identificou 54 luderias com mais de 100 avaliações no Google Maps nas 14 metrópoles da REGIC (IBGE, 2020), em outubro de 2026. São Paulo concentra 19; Belo Horizonte, Brasília e Curitiba têm seis cada; Rio de Janeiro, cinco; Florianópolis, três; Fortaleza e Porto Alegre, duas; Belém, Goiânia, Recife, Salvador e Vitória, uma; Manaus não tem nenhuma (Figura 5.2).
+
+**Figura 5.2 – Luderias com mais de 100 avaliações por metrópole**
+
+![Luderias com mais de 100 avaliações por metrópole](../figuras/5_casas_por_metropole.png)
+
+Fonte: elaboração própria, com base no Bloco B1 (Google Places API, 15/10/2026).
 
 A nota mediana é 4,7 (de 4,2 a 5,0), e o volume mediano de avaliações é 621 (de 105 a 5.137). Nota alta é condição de entrada no mercado, não diferencial; o volume de avaliações separa as casas e alimenta a estimativa de fluxo.
 
@@ -48,7 +60,13 @@ Na prática, a concorrência local se resume a uma casa. A São Jogue é a únic
 
 ### 5.3.3 Acervo e preço
 
-O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 22 dos 53 concorrentes, com mediana de R$ 20,00 por pessoa (de R$ 5,00 a R$ 40,00); a Ludus declara que não cobra, e nos outros 30 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (6.3). O consumo por pessoa, uma bebida e uma entrada ou prato, tem mediana de R$ 50,25 em 36 casas, com faixa interquartil de R$ 38,38 a R$ 65,70, e de R$ 48,50 na São Jogue (Bloco B1, 2026).
+O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 22 dos 53 concorrentes, com mediana de R$ 20,00 por pessoa (de R$ 5,00 a R$ 40,00); a Ludus declara que não cobra, e nos outros 30 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (6.3). O consumo por pessoa, uma bebida e uma entrada ou prato, tem mediana de R$ 50,25 em 36 casas, com faixa interquartil de R$ 38,38 a R$ 65,70, e de R$ 48,50 na São Jogue (Bloco B1, 2026). Salvador fica no meio da distribuição por metrópole (Figura 5.3).
+
+**Figura 5.3 – Consumo por pessoa (uma bebida e uma entrada ou prato), mediana por metrópole (R$)**
+
+![Consumo por pessoa uma bebida e uma entrada ou prato, mediana por metrópole](../figuras/5_consumo_por_metropole.png)
+
+Fonte: elaboração própria, com base nos cardápios do Bloco B1 (2026).
 
 ### 5.3.4 Cinco forças
 
@@ -76,7 +94,13 @@ O principal insumo próprio da luderia é o acervo. Em oito lojas especializadas
 
 Os juros altos encarecem o capital. A meta da Selic estava em 14,00% ao ano em setembro de 2026, e o mercado espera 12,00% no fim de 2027 (BCB, SGS e Focus). A taxa de desconto do cap. 9 parte dessa curva.
 
-A inflação da alimentação fora do domicílio corre acima da geral, e mais em Salvador. Em 12 meses até agosto de 2026, o IPCA subiu 3,64% em Salvador, e a alimentação fora do domicílio, 6,55% (IBGE, IPCA). Por isso, o reajuste de preço do cap. 9 usa o subitem de Salvador.
+A inflação da alimentação fora do domicílio corre acima da geral, e mais em Salvador. Em 12 meses até agosto de 2026, o IPCA subiu 3,64% em Salvador, e a alimentação fora do domicílio, 6,55% (IBGE, IPCA). Em Salvador, a alimentação fora subiu mais que o índice geral em 2025 e em 2026 (Figura 5.4). Por isso, o reajuste de preço do cap. 9 usa o subitem de Salvador.
+
+**Figura 5.4 – IPCA acumulado em 12 meses até agosto: geral e alimentação fora do domicílio**
+
+![IPCA acumulado em 12 meses até agosto: geral e alimentação fora do domicílio](../figuras/5_ipca_alimentacao_fora.png)
+
+Fonte: elaboração própria, com base no IBGE, IPCA (tabela 7060).
 
 O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvador chegou a R$ 54,15 por m² em julho de 2026, alta de 18,9% em 12 meses, contra 7,8% em São Paulo (FIPE, Índice FipeZAP). O aluguel é o principal custo fixo e entra como premissa de risco na escolha do ponto (6.4) e na sensibilidade (cap. 9).
 
