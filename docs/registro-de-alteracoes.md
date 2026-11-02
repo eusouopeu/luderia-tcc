@@ -2003,3 +2003,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o `2_ref-teorico.md` pede voz passiva sintética ("observa-se", "adota-se").
 **Depois**: o `1b_escrita.md`, mais recente (31/10/2026), pede voz ativa ou passiva analítica e veta a sintética.
 **Efeitos colaterais**: quem seguir só a instrução do cap. 2 escreve na voz que o resto do texto evita.
+
+### 23:16
+**Objeto**: `textos/capitulos/TCC_luderia_TMin_v9.docx`, salvo pelo WordCraft
+**Antes**: o documento aberto no WordCraft estava na versão da primeira rodada (6 parágrafos e a referência FOODBIZ em verde), diferente do arquivo em disco, que já tinha os parágrafos com "*".
+**Depois**: as revisões com "*" foram refeitas no documento aberto, os verdes apagados, e o arquivo salvo pelo próprio app; o texto é o mesmo da versão em disco anterior (comentários e destaques do autor intactos).
+**Justificativa**: pedido do autor, para que as mudanças apareçam no documento aberto sem fechar e reabrir.
