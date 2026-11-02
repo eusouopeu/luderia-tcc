@@ -80,6 +80,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D41 — Cap. 9 sem o valor residual do modelo (02/11/2026).** O 9.5 diz "sem valor residual dos demais ativos" e o 9.7.2 e o 4.6 dão P(VPL > 0) de 25,2% e 35,4%; o modelo passou a ter valor residual (M03), com P(VPL > 0) de 31,9% no quadro de 12 e VPL otimista de R$ 15,98 milhões. Sugestão: atualizar os caps. 4, 9, 10 e 11 junto com o pacote de mudanças do financeiro.
 
+**D42 — Taxa da São Jogue fora da média do modelo (02/11/2026).** O B1 (aba cesta) marca a taxa da São Jogue como "não encontrada", embora a Tabela 6.1 e a NFC-e do B3 a tragam (R$ 22,00 e R$ 28,00). A média de R$ 18,68 (caps. 4, 6, 9 e 11) não inclui a única casa de Salvador, e as 22 casas da média não são as 22 da Tabela 6.1. A Ludus tem taxa zero na Tabela 6.1 e couvert de R$ 34,00/44,00 numa fonte secundária de 2024. Sugestão: corrigir o B1 e regerar a média e o modelo.
+
 ## Aceitável
 
 **D37 — Erros de digitação no cap. 1 (02/11/2026).** §2 da introdução: "São Paul" (São Paulo).

@@ -2128,3 +2128,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Depois**: correção com 3 instrutores e 0 atendentes (os instrutores faziam balcão, caixa e serviço de mesa); importação refeita, com as quatro visitas: 7, 3, 5 e 3 instrutores.
 **Justificativa**: informação do autor, que não registrou a equipe no app nessa visita.
 
+### 06:09
+**Objeto**: divergência entre `dados/[B1] Estabelecimentos e cardapios/estabelecimentos/B1_resumo_estabelecimentos.xlsx` (aba cesta) e a Tabela 6.1 do TMin v9 / NFC-e do B3
+**Antes** (B1, aba cesta): São Jogue com couvert "não encontrado"; por isso fica fora da taxa média de R$ 18,68 (22 casas) usada no modelo do cap. 9.
+**Depois** (Tabela 6.1 e NFC-e de 10/10/2026): taxa da São Jogue de R$ 22,00 no dia útil e R$ 28,00 no fim de semana (R$ 28,00 na NFC-e "Taxa de Entrada Salão FDS").
+**Efeitos colaterais**: as "22 casas que cobram" da média do modelo não são as mesmas 22 da Tabela 6.1; a média de R$ 18,68 e o cálculo de gasto declarado ÷ cesta ampliada deixam a casa de Salvador de fora. A Ludus também diverge: Tabela 6.1 com taxa zero ("declara que não cobra"), `B1_couvert_fontes_secundarias.csv` com couvert de R$ 34,00 e R$ 44,00 (CNN Brasil, 02/10/2024).
+
