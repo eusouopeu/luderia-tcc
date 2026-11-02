@@ -78,5 +78,14 @@ Decisão do autor em 02/11/2026. O plano não projeta uma casa do porte da São 
 - **Horário:** 8 horas contínuas por dia, de terça a domingo, na janela com mais luderias abertas em cada dia (B1, 49 casas, horário do Google Maps). O texto declara essa regra como simplificação. Resultado: **de terça a sexta, das 15h às 23h; sábado e domingo, das 14h às 22h** (48 h por semana). A casa fecha na segunda, o dia em que mais concorrentes fecham (71% das casas).
 - **Equipe:** dois cozinheiros-chefes, sem auxiliar de cozinha: pelo menos um em cada dia útil (terça a quinta) e os dois nos dias de pico (sexta a domingo). Três instrutores de tempo integral, que folgam na segunda e em um dia entre terça e quinta, cada um num dia diferente. Um instrutor de meio período, 20 h por semana: das 17h às 22h na quinta e na sexta e das 15h às 20h no sábado e no domingo. Equipe de 6: 2 cozinheiros-chefes e 4 instrutores. Ficam 2 instrutores na terça e na quarta, 3 na quinta (com o meio período) e 3 de sexta a domingo, 4 nas horas do meio período.
 - **Tudo o que depende do horário, do salão e da equipe é recalculado:** giros possíveis (horas abertas ÷ permanência), capacidade, equipe, cozinha, área, aluguel, investimento e checagens de coerência.
-- **Crescimento é etapa posterior,** condicionada ao desempenho observado (mais mesas, horas ou dias). Não entra no fluxo de caixa base; pode aparecer como opção no cap. 10 ou 11.
+- **Investimento por etapas.** A casa abre na etapa 1 e só passa à seguinte quando o gatilho dispara e o caixa gerado paga a etapa, com reserva de 2 meses de custo fixo; não há aporte novo. O fluxo de caixa base (cap. 9) é o da etapa 1; as etapas 2 a 4 entram no cap. 10 como opções de expansão, com investimento e efeito estimados.
+
+  | Etapa | O que muda | Gatilho (3 meses seguidos, depois da maturação) |
+  |---|---|---|
+  | 1. Abertura | 6 mesas; acervo enxuto: jogos presentes em pelo menos 50% das luderias com elogio de variedade ou curadoria do acervo no B2 (98 títulos, cerca de R$ 18 mil a preço de loja); cardápio só com comidas recebidas prontas (salgados como coxinha e quibe, doces, bebidas), sem preparo no local | — |
+  | 2. Acervo | Acervo até a mediana do B1 (322 títulos), pelos jogos mais pedidos e pelos citados nas avaliações | Pedidos de jogos fora do acervo registrados no caixa em pelo menos 10% das mesas, ou fila pelo mesmo jogo em 1 dia de pico por semana |
+  | 3. Cardápio | Cozinha de preparo no local (pratos e lanches feitos na casa) | Consumo de A&B por pessoa igual ou acima da cesta do provável e cardápio criticado em avaliações (variedade ou comida) |
+  | 4. Mesas | +2 mesas por vez, até 10, sempre com no máximo 2 mesas por instrutor no pico | Ocupação de pico acima de 80% das mesas, ou grupos recusados por lotação em todos os fins de semana |
+
+  Os limites dos gatilhos são proposta do autor (N6); o texto declara isso.
 - **Ao escrever:** apresentar o porte reduzido como escolha de gestão de risco, com a justificativa, e não como limitação de capital.

@@ -23,11 +23,12 @@ Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e
 
 ### 7.3 Processos operacionais
 - Jornada do cliente: chegada, recepção, escolha e explicação do jogo, consumo, pagamento, saída.
-- Processos de A&B: compras, estoque, preparo ou recebimento de parceiros.
+- Processos de A&B: na etapa 1, só comidas recebidas prontas (fornecedor, estoque, aquecimento e validade); preparo no local a partir da etapa 3 (P7).
 - Reservas e eventos.
 - Fluxograma dos processos principais (figura).
 
 ### 7.4 Gestão do acervo
+- Etapas (P7): abertura com o acervo enxuto (jogos em pelo menos 50% das luderias com elogio de variedade ou curadoria no B2); ampliação até a mediana do B1 quando o gatilho da etapa 2 disparar. Registro, no caixa, dos jogos pedidos e não disponíveis (alimenta o gatilho).
 - Composição inicial (de 6.2) e critérios de curadoria (jogos citados nas avaliações e acervo declarado dos concorrentes).
 - Conferência de peças após uso, reposição e desgaste (taxa de reposição vai para as premissas).
 - Renovação periódica do acervo.

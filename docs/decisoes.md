@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Gatilhos de perda máxima no cap. 10 (G1 a G6: demanda, pessoas por mesa, consumo, dia útil, caixa, saída), com medidas de taxa alternativas como contingência: sessão curta com taxa menor, taxa por mesa, taxa revertida em consumação, desconto progressivo por pessoa na mesa e passaporte mensal | `_instrucoes/9_anal-riscos.md`, §10.6 |
+| 02/11/2026 | Investimento por etapas: abertura com 6 mesas, acervo enxuto (jogos em ≥ 50% das luderias com elogio ao acervo) e só comidas recebidas prontas; acervo, cozinha de preparo e mesas crescem por gatilho, pagos com o caixa gerado; o fluxo base é o da etapa 1 | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Equipe de 6: 2 cozinheiros-chefes, 3 instrutores de tempo integral (folgas em dias diferentes de terça a quinta) e 1 de meio período | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Horário: as 8 h contínuas com mais luderias abertas em cada dia (B1), como simplificação declarada: terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h; segunda fechada | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Equipe: 2 cozinheiros-chefes no lugar do cozinheiro e do auxiliar (um nos dias úteis, os dois no pico); instrutores de tempo integral com folga na segunda e em um dia de terça a quinta; meio período de 20 h (quinta e sexta das 17h às 22h, sábado e domingo das 15h às 20h) | `_instrucoes/1a_principios.md` (P7) |

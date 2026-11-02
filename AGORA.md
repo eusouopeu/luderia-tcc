@@ -4,6 +4,8 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora
 
+- **Etapas e gatilhos (02/11, 09h):** investimento por etapas na P7 (acervo enxuto, comidas prontas e 6 mesas na abertura; acervo, cozinha e mesas crescem por gatilho) e gatilhos de perda máxima G1 a G6 com as taxas alternativas no 10.6 das instruções. Falta levar a etapa 1 ao modelo (pendências).
+
 - **Desenho enxuto (02/11, 07h):** P7 nas instruções: 6 mesas; terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h (8 h com mais luderias abertas no B1); 2 cozinheiros-chefes, instrutores com folga na segunda e de terça a quinta, meio período de 20 h; salários de 0% a +x% sobre o CAGED no Monte Carlo. Modelo refeito (08h): VPL provável de -R$ 47 mil (-R$ 156 mil sem valor residual), P(VPL > 0) de 41,6%, ruptura colada no provável. Falta alinhar os caps. 4, 7, 9, 10 e 11 e definir o x (provisório de 11,4%).
 
 - **São Jogue dentro dos shoppings (02/11, 06h50):** 6.4 e 5 corrigidos nos `.md` e `.docx` (antes, "a 118 m de um shopping"); pela Places API, só a Paladins (Galeria Free Shop) também fica dentro de shopping; dado do entorno a corrigir (pendências).
