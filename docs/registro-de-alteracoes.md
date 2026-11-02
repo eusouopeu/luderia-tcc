@@ -2165,7 +2165,7 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Depois**: horário pelas 8 h contínuas com mais luderias abertas em cada dia (B1, 49 casas), declarado como simplificação: terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h (48 h por semana), segunda fechada. Dois cozinheiros-chefes (um nos dias úteis, os dois de sexta a domingo); instrutores de tempo integral com folga na segunda e em um dia de terça a quinta; instrutor de meio período de 20 h (quinta e sexta das 17h às 22h, sábado e domingo das 15h às 20h). Monte Carlo com cada salário de 0% a +x% sobre o salário de admissão do Novo CAGED (x a definir).
 **Justificativa**: pedido do autor. A janela de 8 h foi conferida na contagem de casas abertas por hora: na terça, 15h às 23h somam 187 casas-hora contra 186 das 14h às 22h; no sábado, 14h às 22h somam 318 contra 307 das 15h às 23h. O CAGED registra salário de admissão, que tende a ficar abaixo do praticado; por isso a variação só sobe.
 
-### 08:09
+### 08:07
 **Objeto**: `_instrucoes/1a_principios.md` (P7), `_instrucoes/7_operacional.md` (abertura)
 **Antes**: número de instrutores de tempo integral em aberto.
 **Depois**: 3 instrutores de tempo integral (folgas na segunda e em dias diferentes de terça a quinta) e 1 de meio período; equipe de 6 com os 2 cozinheiros-chefes. Cobertura: 2 instrutores na terça e na quarta, 3 na quinta e 3 de sexta a domingo (4 nas horas do meio período).
