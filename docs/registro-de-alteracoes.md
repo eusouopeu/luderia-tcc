@@ -2302,3 +2302,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: três preços (entrada, consumo e jogos), com preço sem objeto no consumo e "tudo caro" em entrada e consumo; "estacionamento" e "conservação do acervo" como temas próprios; "acervo excelente" sem regra; "familiar" sem regra; 14 linhas com dúvida sem resolução. As codificações da rodada 1 só existiam no Notion.
 **Depois**: preço da entrada, do cardápio e de outros itens (sem objeto, jogos e aluguel em "outros"; "tudo caro" nos três); estacionamento dentro de localização e acesso; "curadoria e conservação do acervo"; regras 16 a 21; §5.1 com os exemplos-âncora das 14 linhas (resolução do autor); 24 temas. Codificações da rodada 1 (autor e Claude, sem "público") guardadas em CSV, sem texto dos comentários. O Notion ainda tem a grade antiga.
 **Justificativa**: decisões do autor sobre as propostas da comparação da rodada 1; o CSV preserva a rodada 1 antes da migração das opções no Notion, que apagaria as marcações antigas.
+
+### 15:37
+**Objeto**: `textos/instrumentos/dicionario_temas_B2.md`; `B2_plano_grade2.json` (novo); Notion "2 - Comentários" (opções novas em Itens positivos e negativos); `docs/pendencias.md`, `AGORA.md`
+**Antes**: grade 2 com 24 temas e "conforto e espaço", "barulho", "lotação e reserva" e "horário de funcionamento" em aberto.
+**Depois**: 22 temas ("conforto e barulho", "espaço e lotação", horário em regras da casa); opções novas criadas no Notion, sem apagar as antigas; plano das 652 páginas a regravar guardado em JSON (sem texto).
+**Justificativa**: decisão do autor; a gravação no Notion ficou para a próxima sessão por limite de uso.

@@ -1,6 +1,6 @@
 # Dicionário de temas dos comentários (Bloco B2, Notion)
 
-Versão de 30/10/2026, com o tema "estacionamento" separado de "localização e acesso" em 02/11/2026 (pedido do autor, que o criou no banco da recodificação). Em 02/11/2026 entraram também "indicações de jogos" (separada de "explicação de jogos"), "preço de jogos" e o contexto "apenas loja", criados pelo autor no banco da recodificação. Ainda em 02/11/2026, depois da primeira comparação com a recodificação cega, o autor decidiu as regras 12 a 21 do §3 e a grade 2: preços passam a entrada, cardápio e outros itens; "estacionamento" volta para "localização e acesso"; "conservação do acervo" entra em "curadoria e conservação do acervo". Reconstruído a partir das 166 linhas já codificadas pelo autor no Notion ("2 - Comentários", Fórmula ≥ 5, 14 casas, 87 do Bodogami e 37 do Shelf). As regras abaixo descrevem o que o autor já faz na maioria dos casos e decidem os casos em que a prática variou. Os casos que fogem das regras estão no §5.
+Versão de 30/10/2026, com o tema "estacionamento" separado de "localização e acesso" em 02/11/2026 (pedido do autor, que o criou no banco da recodificação). Em 02/11/2026 entraram também "indicações de jogos" (separada de "explicação de jogos"), "preço de jogos" e o contexto "apenas loja", criados pelo autor no banco da recodificação. Ainda em 02/11/2026, depois da primeira comparação com a recodificação cega, o autor decidiu as regras 12 a 21 do §3 e a grade 2: preços passam a entrada, cardápio e outros itens; "estacionamento" volta para "localização e acesso"; "conservação do acervo" entra em "curadoria e conservação do acervo"; "conforto e espaço" se divide em "conforto e barulho" e "espaço e lotação"; "horário de funcionamento" entra em "regras da casa" (22 temas). Reconstruído a partir das 166 linhas já codificadas pelo autor no Notion ("2 - Comentários", Fórmula ≥ 5, 14 casas, 87 do Bodogami e 37 do Shelf). As regras abaixo descrevem o que o autor já faz na maioria dos casos e decidem os casos em que a prática variou. Os casos que fogem das regras estão no §5.
 
 Este dicionário vale para as colunas "Itens positivos" e "Itens negativos". O livro de códigos de `analise_conteudo_bardin_B2.md` (§1.4, 15/10) é outro e ainda não foi unificado com este (pendências, item 15).
 
@@ -33,7 +33,7 @@ A lista é a mesma nas duas colunas.
 |---|---|---|
 | atendimento presencial | Cordialidade, atenção, paciência, educação, rispidez, descaso; "serviço" e "atendimento" genéricos; funcionário citado pelo nome com adjetivo de serviço; decisões da gerência sobre o cliente; pedido errado, esquecido ou trocado; "bem atendido" no pedido ou na comida (o garçom, não o prato) | Demora (rapidez do serviço); ato de explicar jogo (explicação de jogos) ou de recomendar jogo (indicações de jogos); funcionário elogiado sem adjetivo de serviço ("Alex muito resenha", "a Miranda é uma fofaaaa") |
 | atendimento online | WhatsApp, telefone, redes sociais, reserva a distância | - |
-| rapidez do serviço | Tempo do pedido: demora, agilidade | Pedido errado (atendimento presencial); espera para entrar (lotação e reserva) |
+| rapidez do serviço | Tempo do pedido: demora, agilidade | Pedido errado (atendimento presencial); espera para entrar (espaço e lotação) |
 
 ### Alimentos e bebidas
 
@@ -58,19 +58,17 @@ Regra: "tudo caro" e equivalentes, com escopo total, entram nos três temas de p
 
 | Tema | Entra | Não entra |
 |---|---|---|
-| regras da casa | Políticas que condicionam o uso: 10% cobrado, pagamento antecipado, limite de tempo na mesa, idade mínima, comanda única, abertura de áreas, prioridade na fila, regra não informada; formato do pedido (QR code, pedido online, jogo pedido pelo cardápio) | Horário (horário de funcionamento) |
-| horário de funcionamento | Horário de abertura e fechamento; não conseguir jogar pelo horário | - |
-| lotação e reserva | Conseguir mesa, fila, espera para entrar, reserva, casa cheia que prejudicou o cliente | Aviso neutro de casa cheia ("enche rápido, reserve"): não é codificado |
+| regras da casa | Políticas que condicionam o uso: 10% cobrado, pagamento antecipado, limite de tempo na mesa, idade mínima, comanda única, abertura de áreas, prioridade na fila, regra não informada; formato do pedido (QR code, pedido online, jogo pedido pelo cardápio); horário de abertura e fechamento, não conseguir jogar pelo horário | - |
 
 ### Espaço
 
 | Tema | Entra | Não entra |
 |---|---|---|
 | ambiente e decoração | Atmosfera, aconchego, tema, decoração, iluminação, trilha sonora, "ambiente agradável", "familiar" | "Lugar incrível" e "experiência no lugar" sem atributo: avaliação geral, sem tema |
-| conforto e espaço | Mesas, cadeiras, tamanho, temperatura, organização do salão, espaço apertado | Aconchego (ambiente e decoração) |
+| conforto e barulho | Como se fica na mesa: cadeiras, mesa confortável ou desconfortável, temperatura, ventilação; queixa ou elogio ao ruído escrito no texto | Aconchego (ambiente e decoração); o atributo do Google (Nível de barulho) |
+| espaço e lotação | Tamanho do salão e das mesas, número de mesas, salas, organização do salão, espaço apertado ou amplo; conseguir mesa, fila, espera para entrar, reserva, casa cheia que prejudicou o cliente | Aviso neutro de casa cheia ("enche rápido, reserve"): não é codificado |
 | limpeza | Higiene, banheiro, cheiro, retirada de louça e lixo da mesa | - |
-| barulho | Queixa ou elogio ao ruído escrito no texto | O atributo do Google (Nível de barulho) |
-| localização e acesso | Metrô, ônibus, região, facilidade de chegar ou de achar a casa; estacionamento: vaga própria ou na rua, valet, preço, flanelinha, pedido de convênio | Fila na rua (lotação e reserva) |
+| localização e acesso | Metrô, ônibus, região, facilidade de chegar ou de achar a casa; estacionamento: vaga própria ou na rua, valet, preço, flanelinha, pedido de convênio | Fila na rua (espaço e lotação) |
 
 ### Ocasião e programação
 
@@ -99,7 +97,7 @@ Decisão do autor de 30/10: o que descreve a visita, e não avalia a casa, sai d
 5. **Nota geral não define a polaridade.** Nota 5 com crítica à comida recebe comida negativo.
 6. **Problema resolvido pela equipe** (hambúrguer fora do ponto trocado na hora) → atendimento presencial positivo; a comida não recebe negativo.
 7. **Adjetivo de pessoa sem sujeito** ("receptivo", "simpático") → atendimento presencial. "Acolhedor" ligado ao lugar → ambiente e decoração.
-8. **"Organizado"** → conforto e espaço. "Bonito", "aconchegante", "agradável" → ambiente e decoração.
+8. **"Organizado"** → espaço e lotação. "Bonito", "aconchegante", "agradável" → ambiente e decoração.
 9. **Taxa de serviço (10%)** → regras da casa. Se o texto chama de "taxa" o valor para jogar, vale preço da entrada.
 10. **Promoção e brinde** ("ganhei uma raspadinha", "ganhei um jogo") → não codificados.
 11. **Comentário duplicado** (mesmo autor e mesma visita, com texto reescrito) → codificar um só e marcar o outro para exclusão.
@@ -124,12 +122,12 @@ Antes de contar, conferir por SQL: nenhuma opção fora desta lista, as duas col
 |---|---|---|
 | 3f9cde2e8c24819e93bad42d202cd1cd | Arcadea | 10% sem aviso: regras da casa − |
 | 3f9cde2e8c24815799a1cf0d3fd4c3a6 | Bardo Mago | "Preços extremamente altos" da comida: preço do cardápio − |
-| 3f9cde2e8c24812089b1f84a1e797ead | Bodogami | Idosos em pé mais de 1 hora: lotação e reserva − |
-| 3f9cde2e8c2481ccbf2fd00f53105a33 | Bodogami | Não jogou "devido o horário": horário de funcionamento − |
+| 3f9cde2e8c24812089b1f84a1e797ead | Bodogami | Idosos em pé mais de 1 hora: espaço e lotação − |
+| 3f9cde2e8c2481ccbf2fd00f53105a33 | Bodogami | Não jogou "devido o horário": regras da casa − |
 | 3f9cde2e8c2481388b6de45d5e8ed6d3 | Bodogami | "Diversos jogos": variedade +; "pelo tempo que quiser": regras da casa + |
 | 3f9cde2e8c24819791b9f20b0c1e2d48 | Bodogami | "Pricy for an hour of play": preço da entrada − |
 | 3f9cde2e8c2481db99b1c12e0ce0f652 | Bodogami | Lucas "indicando novos jogos": indicações + (regra 2) |
-| 3f9cde2e8c2481039788d69b018f85cc | Bodogami | "Lugar" sem atributo: tirar conforto e espaço |
+| 3f9cde2e8c2481039788d69b018f85cc | Bodogami | "Lugar" sem atributo: tirar espaço e lotação |
 | 3f9cde2e8c248154a3cccfb79cb231bf | Bodogami | Cardápio e pedido online: regras da casa +, não atendimento + |
 | 3f9cde2e8c2481649c0dfdb5e0e2516d | Bodogami | "Tem trívia": eventos + |
 | 3f9cde2e8c248115a1b9d634eda3ebe4 | Bodogami | "Menu do Sanji incrível": comida + |
@@ -138,7 +136,7 @@ Antes de contar, conferir por SQL: nenhuma opção fora desta lista, as duas col
 | 3f9cde2e8c24816ea05cd0be97117dba | Bodogami | "Experiência no lugar": tirar ambiente |
 | 3f5cde2e8c2481b698cffc407adc74f2 | Cartola | Recomendação pelo perfil do grupo: indicações +; "fills up quickly": não codificar lotação |
 | 3f5cde2e8c2481289b48ce6701eee62d | Cartola | Jogo pedido e levado à mesa: regras da casa +, não curadoria (curadoria fica pelo "portfólio incrível") |
-| 3f9cde2e8c2481a5873ade636c393967 | Fan Hour | "Não há estacionamentos": localização e acesso −; "ambiente pequeno": conforto − |
+| 3f9cde2e8c2481a5873ade636c393967 | Fan Hour | "Não há estacionamentos": localização e acesso −; "ambiente pequeno": espaço e lotação − |
 | 3f9cde2e8c248148aac2ce694eac6571 | Fan Hour | "Taxa de serviço": regras da casa −, salvo se for a taxa de jogo (regra 9) |
 | 3f4cde2e8c24812da8b0c84a0f23ebca | Ludoteca Sidequest | "Possível alugar": aluguel no contexto; taxa por pessoa que só vale cedo: preço da entrada − |
 | 3f9cde2e8c24811195a3e1ab9d486a17 | Ludus | "Todos foram educados": atendimento + |
@@ -158,12 +156,12 @@ São 26 linhas em 166 (16%) com ao menos um ajuste. A maior parte é omissão de
 | 29 | "atendimento de jogos muito legal… excelentes profissionais" | atendimento +, explicação + | 1 |
 | 46 | Compra de cartas; "material chegou intacto" | atendimento online +; contexto apenas loja; costuma ir: segunda vez | 20 |
 | 68 | "bem atendido, tanto nas explicações dos jogos e a comida" | atendimento +, explicação + | 17 |
-| 69 | "Acervo e atendimento excelentes"; salas menores e menos barulhentas | variedade +, curadoria +, atendimento +, conforto +; voltará: sim | 18 |
+| 69 | "Acervo e atendimento excelentes"; salas menores e menos barulhentas | variedade +, curadoria +, atendimento +, espaço e lotação + (salas), conforto e barulho + (menos barulho); voltará: sim | 18 |
 | 72 | "muitos produtos. Muito familiar… Família Soares" | variedade +, ambiente +; contexto família (pela assinatura) e loja | Contexto, §2.1 |
 | 78 | "loja profissional, acolhedora… dono gente boa" | ambiente +, atendimento +; contexto loja; costuma ir: sim | 21 |
 | 79 | "preços bons… galera tranquila… conhecer novas pessoas no seu hobby" | preço de outros itens +, eventos e comunidade + | 19 |
 | 80 | "já fui várias vezes com amigos… valor fixo de entrada… opções veganas" | atendimento +, comida +, preço da entrada +, regras da casa +, variedade do cardápio −; contexto amigos; costuma ir e voltará: sim | Contexto, §2.1 |
-| 98 | "Variedade e preço bom… um pessoal joga RPG… atendimento top" | variedade +, preço de outros itens +, conforto +, eventos +, atendimento +; contexto loja | Preço |
+| 98 | "Variedade e preço bom… um pessoal joga RPG… atendimento top" | variedade +, preço de outros itens +, espaço e lotação + ("boa estrutura"), eventos +, atendimento +; contexto loja | Preço |
 | 126, 133 | "Alex muito resenha"; "A Miranda é uma fofaaaa" | Sem tema | 13 |
 
 ## 6. O que falta para a grade seguir Bardin
@@ -174,5 +172,5 @@ Bardin (2011 `[AV]`) exige categorias com exclusão mútua, homogeneidade (um s�
 2. **Exaustividade.** Não há tema para segurança, acessibilidade e respeito (idosos sem prioridade na fila, "ambiente seguro", adolescentes barrados). O livro de 15/10 tem esse tema (INC).
 3. **Polaridade neutra e mista.** As duas colunas não registram o mediano. Hoje a regra 4 descarta esses casos; o livro de 15/10 previa `~` e `±`.
 4. **Regras escritas com exemplo-âncora.** Cada tema precisa de um trecho real do corpus como exemplo de inclusão e outro de exclusão. A descrição do banco no Notion só traz a definição curta.
-5. **Uma grade só.** O livro de 15/10 (16 categorias, códigos ACV, MED etc.) e a lista do Notion (24 temas) descrevem o mesmo corpus com recortes diferentes. A análise do capítulo precisa de uma delas, com a tabela de correspondência.
+5. **Uma grade só.** O livro de 15/10 (16 categorias, códigos ACV, MED etc.) e a lista do Notion (22 temas) descrevem o mesmo corpus com recortes diferentes. A análise do capítulo precisa de uma delas, com a tabela de correspondência.
 6. **Fidelidade medida.** O teste de Bardin pede duas codificações independentes do mesmo material e a comparação delas (kappa por tema). Procedimento: uma amostra sorteada é recodificada do zero, sem ver as marcações, depois da leitura deste dicionário; o kappa sai da comparação, e as divergências viram regras novas. As 166 linhas desta revisão servem de pré-teste da grade, não de corpus: o recorte por Fórmula ≥ 5 precisa ser declarado (o que a fórmula mede) e o restante das linhas codificado ou amostrado por regra escrita.
