@@ -4,7 +4,7 @@
 
 Responder se o negócio é viável e sob quais condições. O capítulo não vale pelos indicadores em si, mas pela **rastreabilidade e pelo teste das premissas** que os geram.
 
-**Desenho enxuto (P7 em [1a_principios.md](1a_principios.md)):** o modelo projeta a versão menor do negócio (6 mesas, 16h às 22h, 2 instrutores nos dias úteis e 3 de sexta a domingo), não uma casa do porte da São Jogue. Premissas de horas e dias abertos, giro otimista (horas abertas ÷ permanência), equipe, área, aluguel e investimento saem desse desenho. Expansão não entra no fluxo de caixa base.
+**Desenho enxuto (P7 em [1a_principios.md](1a_principios.md)):** o modelo projeta a versão menor do negócio (6 mesas; terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h, 48 h por semana; 2 cozinheiros-chefes, instrutores de tempo integral e um de meio período de 20 h), não uma casa do porte da São Jogue. Premissas de horas e dias abertos, giro otimista (horas abertas ÷ permanência), equipe, área, aluguel e investimento saem desse desenho. Expansão não entra no fluxo de caixa base.
 
 ## Divisão de subcapítulos
 
@@ -95,6 +95,7 @@ Para cada premissa crítica, calcular o valor que zera o VPL. Redação padrão:
 ### 4.4 Simulação de Monte Carlo — extra, só se sobrar tempo
 Só depois de o plano estar completo; se feita, o resultado vai para apêndice e o corpo cita só a probabilidade de VPL > 0.
 Distribuições triangulares com os três valores do registro; 10 mil simulações; resultado como probabilidade de VPL > 0 e distribuição do payback. Declarar a hipótese de independência entre premissas ou modelar correlações relevantes (ex.: ocupação × ticket).
+**Salários:** cada cargo varia de 0% a +x% sobre o salário de admissão do Novo CAGED (o CAGED é o piso da faixa; nunca abaixo dele). O x é premissa própria, com fonte e nível, ainda a definir (pendências).
 
 ## 5. Checagens de coerência
 

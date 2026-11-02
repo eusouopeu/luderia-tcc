@@ -4,7 +4,7 @@
 
 Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e estrutura física. Os números daqui (lugares, giros, equipe, horário) entram na árvore de direcionadores do cap. 9 e nas checagens de coerência.
 
-**Desenho enxuto (P7 em [1a_principios.md](1a_principios.md)):** 6 mesas; funcionamento das 16h às 22h, com 2 instrutores nos dias úteis e 3 de sexta a domingo; dias de menor movimento podem fechar. A São Jogue entra como referência de comportamento (ocupação, permanência, giro), não de porte.
+**Desenho enxuto (P7 em [1a_principios.md](1a_principios.md)):** 6 mesas; funcionamento de terça a sexta das 15h às 23h e sábado e domingo das 14h às 22h (8 h contínuas com mais luderias abertas no B1), fechado na segunda; 2 cozinheiros-chefes, instrutores de tempo integral com folga na segunda e em um dia de terça a quinta, e um instrutor de meio período de 20 h (quinta e sexta das 17h às 22h, sábado e domingo das 15h às 20h). A São Jogue entra como referência de comportamento (ocupação, permanência, giro), não de porte.
 
 ## Divisão de subcapítulos
 
@@ -16,7 +16,7 @@ Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e
 
 ### 7.2 Capacidade instalada
 - Número de mesas e lugares; pessoas por mesa.
-- Horário de funcionamento por dia da semana (16h às 22h; dias fechados justificados pelo B1).
+- Horário de funcionamento por dia da semana: as 8 h contínuas com mais luderias abertas em cada dia (B1), declaradas como simplificação; segunda fechada.
 - Giros possíveis por dia, a partir da duração média da sessão (permanência observada na contagem direta, Bloco B3).
 - Capacidade máxima teórica (clientes/dia) — teto para a demanda projetada.
 - Lotação máxima permitida pelo AVCB, quando conhecida.

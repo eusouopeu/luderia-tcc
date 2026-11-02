@@ -4,6 +4,9 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Horário: as 8 h contínuas com mais luderias abertas em cada dia (B1), como simplificação declarada: terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h; segunda fechada | `_instrucoes/1a_principios.md` (P7) |
+| 02/11/2026 | Equipe: 2 cozinheiros-chefes no lugar do cozinheiro e do auxiliar (um nos dias úteis, os dois no pico); instrutores de tempo integral com folga na segunda e em um dia de terça a quinta; meio período de 20 h (quinta e sexta das 17h às 22h, sábado e domingo das 15h às 20h) | `_instrucoes/1a_principios.md` (P7) |
+| 02/11/2026 | Monte Carlo com salários de 0% a +x% sobre o salário de admissão do Novo CAGED, por cargo (x a definir) | `_instrucoes/8_financeiro.md`, §4.4 |
 | 02/11/2026 | Desenho enxuto (MVP): o plano projeta uma casa menor que a São Jogue, com 6 mesas, funcionamento das 16h às 22h, 2 instrutores nos dias úteis e 3 de sexta a domingo; a São Jogue vale como referência de comportamento, não de porte; expansão fora do fluxo de caixa base | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Aluguel por bairro vem de anúncios (OLX, ZAP, Viva Real, QuintoAndar) coletados no navegador por userscript; é preço pedido, ao lado do FipeZap e das cotações; saídas em `financeiro/` | `_src/[B4] Bases publicas/Anuncios de aluguel/` |
 | 02/11/2026 | Sem novas visitas presenciais: a validação das premissas de dia útil, fluxo e consumo usa só dados secundários e já coletados (B1, B2, B3, B4) | pedido do autor; `docs/pendencias.md` |

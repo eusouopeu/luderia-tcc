@@ -4,7 +4,7 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora
 
-- **Desenho enxuto (02/11, 07h):** P7 nas instruções: 6 mesas, 16h às 22h, 2 instrutores nos dias úteis e 3 de sexta a domingo; São Jogue só como referência de comportamento. Falta levar ao modelo e aos caps. 4, 7, 9, 10 e 11 e decidir os dias fechados (pendências).
+- **Desenho enxuto (02/11, 07h):** P7 nas instruções: 6 mesas; terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h (8 h com mais luderias abertas no B1); 2 cozinheiros-chefes, instrutores com folga na segunda e de terça a quinta, meio período de 20 h; salários de 0% a +x% sobre o CAGED no Monte Carlo. Falta levar ao modelo e aos caps. 4, 7, 9, 10 e 11 e definir o x e o número de instrutores (pendências).
 
 - **São Jogue dentro dos shoppings (02/11, 06h50):** 6.4 e 5 corrigidos nos `.md` e `.docx` (antes, "a 118 m de um shopping"); pela Places API, só a Paladins (Galeria Free Shop) também fica dentro de shopping; dado do entorno a corrigir (pendências).
 - **Aluguel por anúncios (02/11, 06h):** coletor no Tampermonkey para OLX, ZAP, Viva Real e QuintoAndar e build com resumo do R$/m² por bairro (`_src/[B4] Bases publicas/Anuncios de aluguel/`); falta rodar a coleta (pendências).

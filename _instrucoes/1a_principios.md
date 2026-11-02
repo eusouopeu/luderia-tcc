@@ -75,7 +75,8 @@ Decisão do autor em 02/11/2026. O plano não projeta uma casa do porte da São 
 
 - **A São Jogue é referência de comportamento, não de porte.** Dela vêm ocupação de pico, pessoas por mesa, permanência e giro (B3); não vêm número de mesas, área, horário nem equipe.
 - **Salão:** 6 mesas, a maior ocupação vista nas visitas. Teto de carga de 2 mesas (cerca de 10 clientes) por instrutor no pico.
-- **Horário:** só a faixa de maior movimento, das 16h às 22h. Dias úteis com 2 instrutores; dias de pico (sexta a domingo) com 3. Dias de menor movimento podem ficar fechados; no B1, segunda (71% das casas) e terça (35%) são os dias em que mais concorrentes fecham.
-- **Tudo o que depende do horário e do salão é recalculado:** giros possíveis (horas abertas ÷ permanência), capacidade, equipe, cozinha, área, aluguel, investimento e checagens de coerência.
+- **Horário:** 8 horas contínuas por dia, de terça a domingo, na janela com mais luderias abertas em cada dia (B1, 49 casas, horário do Google Maps). O texto declara essa regra como simplificação. Resultado: **de terça a sexta, das 15h às 23h; sábado e domingo, das 14h às 22h** (48 h por semana). A casa fecha na segunda, o dia em que mais concorrentes fecham (71% das casas).
+- **Equipe:** dois cozinheiros-chefes, sem auxiliar de cozinha: pelo menos um em cada dia útil (terça a quinta) e os dois nos dias de pico (sexta a domingo). Instrutores de tempo integral folgam na segunda e em um dia entre terça e quinta. Um instrutor de meio período, 20 h por semana: das 17h às 22h na quinta e na sexta e das 15h às 20h no sábado e no domingo. Dias úteis com 2 instrutores e dias de pico com 3, no mínimo.
+- **Tudo o que depende do horário, do salão e da equipe é recalculado:** giros possíveis (horas abertas ÷ permanência), capacidade, equipe, cozinha, área, aluguel, investimento e checagens de coerência.
 - **Crescimento é etapa posterior,** condicionada ao desempenho observado (mais mesas, horas ou dias). Não entra no fluxo de caixa base; pode aparecer como opção no cap. 10 ou 11.
 - **Ao escrever:** apresentar o porte reduzido como escolha de gestão de risco, com a justificativa, e não como limitação de capital.
