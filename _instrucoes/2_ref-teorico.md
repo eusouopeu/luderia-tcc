@@ -9,7 +9,9 @@ O referencial não é revisão de literatura exaustiva. Ele fornece **conceitos 
 Padrão de parágrafo: **afirmação → sustentação (citação ou dado) → ligação com o plano**.
 
 - Uma ideia por parágrafo; 3 a 6 frases.
-- A primeira frase enuncia a ideia; as seguintes sustentam; a última conecta com o objeto (luderia em Salvador) ou anuncia onde o conceito é aplicado.
+- A primeira frase enuncia a ideia; as seguintes sustentam; a última conecta com o objeto (luderia em Salvador): o que o conceito diz sobre o negócio.
+- Sem remissão a capítulo ou seção no texto corrido ("o capítulo 6.3 aplica…", "(capítulo 5.2)"): o Quadro 1, no fim do capítulo, é o único mapa conceito → decisão → capítulo. Remissões em quase todo parágrafo fazem do capítulo uma "estrutura do relatório" expandida (crítica do autor, 01/11/2026).
+- Sem detalhe de método (blocos B1 a B4, como a coleta ou o cálculo é feito): isso é do cap. 3. O referencial traz o conceito e o porquê.
 - Não abrir parágrafo com citação. O argumento é do autor; a citação o sustenta.
 - Confrontar autores quando divergirem, em vez de empilhar citações concordantes.
 - Evitar parágrafos-lista ("Segundo A... Já para B... Por sua vez, C...") sem síntese.

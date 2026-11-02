@@ -1991,3 +1991,15 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: parágrafo revisado em verde, logo abaixo do original.
 **Depois**: parágrafo revisado com um asterisco no começo, sem realce, mudando só o trecho comentado.
 **Justificativa**: pedido do autor, para as próximas rodadas de comentários.
+
+### 23:07
+**Objeto**: `textos/capitulos/TCC_luderia_TMin_v9.docx` (caps. 1 e 2 e referências); `_instrucoes/2_ref-teorico.md` ("Estruturação de parágrafos")
+**Antes**: 6 parágrafos revisados em verde e reescritos por inteiro; 11 parágrafos do cap. 2 terminavam com remissão a capítulo ou seção ("o capítulo 5.3 aplica…", "(capítulo 6.3)") ou com detalhe de método (Blocos B1 a B3), repetindo o mapa do Quadro 1; a instrução permitia que a última frase "anunciasse onde o conceito é aplicado".
+**Depois**: os verdes saíram. Abaixo de cada original, uma cópia com "*" no começo, sem realce nem comentários, que muda só o trecho comentado (comentários 0 a 6 e 8) ou a frase final com remissão ou método (12 parágrafos do cap. 2: as remissões saem ou viram ligação com a luderia; o último parágrafo antes do Quadro 1 passa a apresentá-lo). Referência FOODBIZ (2025) também com "*". A instrução passa a pedir a ligação com o objeto, sem remissão no texto corrido (o Quadro 1 é o único mapa) e sem detalhe de método. O "conhecido" do cap. 1 ficou como estava, por estar fora do trecho comentado.
+**Justificativa**: pedido do autor: o cap. 2 parecia uma "estrutura do relatório" expandida; revisões marcadas com asterisco e restritas ao trecho comentado.
+
+### 23:07
+**Objeto**: `_instrucoes/2_ref-teorico.md` ("Linguagem e estilo") × `_instrucoes/1b_escrita.md` (P5, item 5)
+**Antes**: o `2_ref-teorico.md` pede voz passiva sintética ("observa-se", "adota-se").
+**Depois**: o `1b_escrita.md`, mais recente (31/10/2026), pede voz ativa ou passiva analítica e veta a sintética.
+**Efeitos colaterais**: quem seguir só a instrução do cap. 2 escreve na voz que o resto do texto evita.
