@@ -2320,3 +2320,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: base codificada na grade 1 (26 temas, "público" já retirado); "Costuma ir" e "Voltará" quase vazios (20 e 32 marcações); dicionário com 24 temas e "conforto e espaço", "barulho", "lotação e reserva" e "horário de funcionamento" em aberto.
 **Depois**: grade 2 com 22 temas no dicionário e na descrição do banco; 652 comentários regravados pelo Claude com a grade 2 e as regras 12 a 21 (preços, fusões, conforto ou espaço, ocasião só quando o cliente foi, aniversário em comemorações, atendimento sem adjetivo, acervo bom, "Costuma ir" e "Voltará" lidos no texto). Opções antigas ainda no esquema, até a conferência por SQL. Banco novo para a rodada 2 com 60 comentários sorteados fora da rodada 1.
 **Justificativa**: decisões do autor sobre a grade 2 e pedido para concluir a recodificação e montar a rodada 2.
+
+### 18:03
+**Objeto**: Notion "2 - Comentários" (opções de Itens positivos e Itens negativos); `docs/pendencias.md`
+**Antes**: esquema com as opções da grade 1 e da grade 2 juntas.
+**Depois**: só as 22 opções da grade 2. Conferência por SQL adiada: o índice de consulta do Notion ainda devolve o estado anterior às gravações; duas páginas lidas uma a uma batem com o plano.
+**Justificativa**: concluir a migração para a grade 2.
