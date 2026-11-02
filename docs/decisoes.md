@@ -4,7 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
-| 01/11/2026 | Revisões pedidas em comentário no `.docx` entram como parágrafo novo, em verde, logo abaixo do original, que fica intacto até o autor escolher | `docs/registro-de-alteracoes.md` (01/11/2026, 22:50) |
+| 01/11/2026 | Revisões pedidas em comentário no `.docx` entram como parágrafo novo logo abaixo do original, que fica intacto até o autor escolher; o novo leva um asterisco no começo, sem realce, e muda só o trecho comentado (a rodada de 01/11 saiu em verde e com parágrafos inteiros reescritos) | `docs/registro-de-alteracoes.md` (01/11/2026, 22:50) |
 | 01/11/2026 | Lista de leitura do TMin por capítulo e assunto, com ícone de acesso no fim (🌐 site, ⛔ PDF sem acesso) e espelho no banco "Bibliografia TMin" do Notion | `bibliografia/_lista-de-leitura_TMin_v2.md` |
 | 01/11/2026 | Lista de leitura passa a ser a do TMin: só obras citadas, por assunto, em checklist de leitura e de conferência por citação; a lista ampla de busca vai para `_arquivo/` como v1 | `bibliografia/_lista-de-leitura_TMin_v2.md` |
 | 01/11/2026 | Kotler e Keller citados pela 14. ed. brasileira (Pearson Education do Brasil, 2013), edição do PDF do Drive; artigos e relatórios curtos (Asakura, KAM) também levam intervalo de páginas | `docs/registro-de-alteracoes.md` (01/11/2026) |

@@ -1985,3 +1985,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: 9 comentários do autor (feitos no WordCraft) sobre 6 parágrafos dos caps. 1 e 2, sem resposta no texto.
 **Depois**: abaixo de cada parágrafo comentado, um parágrafo revisado, destacado em verde; os originais e os comentários ficam intactos. Respostas: definição de *competitive socialising* (Savills; KAM, p. 17–21) e concordância "conhecidos" (§2 do cap. 1); ligação das frases soltas e dado novo de shoppings, conveniência e serviços de 9,8% para 10,4% das lojas e lazer de 2,2% para 2,4% em 2024, do Censo Abrasce 2024–2025 pela FoodBiz (§3); "Estrutura do relatório" reescrita (§1.3, 1º parágrafo); apêndice do repositório explicado (§1.3, último parágrafo); gestão baseada em evidências reescrita, com as mesmas citações (cap. 2, abertura); definição da análise de cenário completada (cap. 2, abertura). Referência FOODBIZ (2025) incluída, também em verde. O comentário 7 (excesso de citações de Figueiredo) ficou de fora, à espera da conferência das fontes pelo autor. Os `.md` de `_md/` não mudaram.
 **Justificativa**: pedido do autor: aplicar os comentários do TMin v9, exceto o 7, sem apagar os parágrafos originais.
+
+### 22:56
+**Objeto**: `docs/decisoes.md` (linha de 01/11/2026 sobre revisões em comentário)
+**Antes**: parágrafo revisado em verde, logo abaixo do original.
+**Depois**: parágrafo revisado com um asterisco no começo, sem realce, mudando só o trecho comentado.
+**Justificativa**: pedido do autor, para as próximas rodadas de comentários.
