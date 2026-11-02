@@ -28,6 +28,14 @@ pessoa no otimista, por dupla no provável, por trio no pessimista). Os dados de
 pedidos da coleta presencial (B3) ficam fora do modelo: a coleta se mostrou
 inviável.
 
+Desenho enxuto (P7 de _instrucoes/1a_principios.md, 02/11/2026): 6 mesas;
+terça a sexta das 15h às 23h e sábado e domingo das 14h às 22h (as 8 h
+contínuas com mais luderias abertas no B1), segunda fechada; equipe de 6 (2
+cozinheiros-chefes, 3 instrutores de tempo integral e 1 de meio período, 20 h).
+A São Jogue entra como referência de comportamento (ocupação, pessoas por mesa,
+permanência, giro), não de porte. As mesas ocupadas ficam limitadas ao salão:
+média ≤ mesas do salão ÷ razão pico/média das visitas (B3).
+
 Entradas: B1 (cesta de jogos; couvert e cesta de consumo dos cardápios), B3
 (contagem_resumo_visitas.csv, contagem_notas_intervalo.csv), B4 (FipeZap, CAGED, BCB,
 Simples Nacional, IBGE PAS e população). As premissas N6 ficam em PREMISSAS,
@@ -72,6 +80,7 @@ FIGURA_MC = ROOT / "textos" / "capitulos" / "figuras" / "9_monte_carlo.png"
 SOFFICE = "/Applications/LibreOffice.app/Contents/MacOS/soffice"
 
 MESES = 60
+JORNADA_H, MEIO_PERIODO_H = 44, 20  # jornada semanal da CLT e do instrutor de meio período
 # vida útil (anos) dos itens depreciáveis, a mesma da aba investimento
 VIDA_UTIL = dict(reforma=5, mobiliario=10, cozinha=10, ti=5, acervo=5, preop=5)
 ANOS = 5
@@ -140,18 +149,17 @@ def salario(f, ocupacao: str, recorte: str = "CNAE 56 - alimentação") -> float
 
 
 def quadro_pessoal(f) -> list[tuple]:
-    """(cargo, CBO, quantidade, salário, fonte). Quadro de referência: dois turnos, 68 h por semana."""
+    """(cargo, CBO, quantidade, salário, fonte). Equipe do desenho enxuto (P7): 48 h abertas
+    por semana, de terça a domingo; a gestão fica com o sócio (pró-labore, C08)."""
     cn56 = "CAGED, admissões ago/2025-jul/2026, Salvador, CNAE 56, mediana"
     todas = "CAGED, admissões ago/2025-jul/2026, Salvador, todas as atividades, mediana (CNAE 56 com amostra pequena)"
+    rec = salario(f, "Recreador", "todas as atividades")
     return [
-        ("Gerente", "141510", 1, salario(f, "Gerente de restaurante"), cn56),
-        ("Cozinheiro", "513205", 2, salario(f, "Cozinheiro geral"), cn56),
-        ("Auxiliar de cozinha", "513505", 1, salario(f, "Auxiliar nos serviços de alimentação"), cn56),
-        ("Garçom", "513405", 3, salario(f, "Garçom"), cn56),
-        ("Atendente de bar e balcão", "513435", 1, salario(f, "Atendente de lanchonete"), cn56),
-        ("Operador de caixa", "421125", 1, salario(f, "Operador de caixa"), cn56),
-        ("Instrutor de jogos (recreador)", "371410", 2, salario(f, "Recreador", "todas as atividades"), todas),
-        ("Auxiliar de limpeza", "514320", 1, salario(f, "Faxineiro"), cn56),
+        ("Cozinheiro-chefe", "513205", 2, salario(f, "Cozinheiro geral"),
+         cn56 + "; cozinheiro geral, sem chefe de cozinha no recorte"),
+        ("Instrutor de jogos (recreador), tempo integral", "371410", 3, rec, todas),
+        ("Instrutor de jogos (recreador), meio período de 20 h", "371410", 1, rec * MEIO_PERIODO_H / JORNADA_H,
+         todas + f"; proporcional a {MEIO_PERIODO_H} h de {JORNADA_H} h"),
     ]
 
 
@@ -166,28 +174,39 @@ def premissas(f) -> list[dict]:
     # (uma comanda e uma nota por pessoa; a nota sai só a pedido), na Paralela
     nf = f["notas"].set_index("unidade")
     piso = float(nf.loc["PA", "notas_emitidas"] / nf.loc["PA", "dias"])
+    # teto das mesas ocupadas em média: mesas do salão ÷ razão pico/média das visitas
+    MESAS = 6
+    vis_pico = vis["ocupacao_mesas_pico_pct"] / vis["ocupacao_mesas_media_pct"]
+    teto = MESAS / vis_pico.mean()
+    r04 = [min(teto, mo.mean() * k) for k in (1 - x, 1, 1 + x)]
+    # semana da São Jogue (3 dias de fim de semana e 4 úteis) na calibração do giro pessimista
     pess = dict(R02=2.5, R04=mo.mean() * (1 - x), R05=0.40, R16=3, R17=4)
     giro_pess = piso * 7 / (pess["R04"] * pess["R02"] * (pess["R16"] + pess["R17"] * pess["R05"]))
-    # giro otimista: horas abertas por dia (12h às 22h) ÷ permanência média das visitas;
+    # giro otimista: horas abertas por dia (8 h, desenho enxuto) ÷ permanência média das visitas;
     # provável: média do pessimista e do otimista (decisão do autor, 31/10/2026)
-    HORAS_DIA = 10
+    HORAS_DIA = 8
+    # acréscimo salarial máximo (C06), provisório: maior distância entre o 3º quartil
+    # e a mediana do salário de admissão entre os cargos do quadro
+    c = f["caged"]
+    acr = max(float(c[(c["ocupacao"] == o) & (c["recorte"] == rc)].eval("salario_p75 / salario_mediana - 1").iloc[0])
+              for o, rc in (("Cozinheiro geral", "CNAE 56 - alimentação"), ("Recreador", "todas as atividades")))
     giro_otim = HORAS_DIA * 60 / pm.mean()
     giro_prov = (giro_pess + giro_otim) / 2
     a = f["acervo"]
     R = lambda *x: dict(zip(("id", "nome", "unidade", "pess", "prov", "otim", "fonte", "nivel", "just"), x))
     return [
-        R("R01", "Mesas do salão", "mesas", 10, 10, 10,
-          "B3: São Jogue Paralela (9 a 10) e Bela Vista (10 a 11); cap. 7", "N5",
-          "Capacidade do salão; limita as mesas ocupadas (aba checagens), sem entrar na receita."),
+        R("R01", "Mesas do salão", "mesas", MESAS, MESAS, MESAS,
+          "Decisão do autor (desenho enxuto); B3: maior ocupação vista nas visitas", "N5 + N6",
+          f"Capacidade do salão; limita as mesas ocupadas em média a {teto:.2f} (mesas ÷ razão pico/média de {vis_pico.mean():.2f} das visitas)."),
         R("R02", "Pessoas por mesa ocupada", "pessoas", 2.5, round(pg.mean(), 1), 5.5,
           "B3, 4 visitas (out/2026); faixa do autor", "N5 + N6",
           f"Média das visitas {pg.mean():.1f} (de {pg.min():.1f} a {pg.max():.1f}); pessimista de 2 ou 3 e otimista de 5 ou 6 pessoas (ponto médio); Monte Carlo de 2 a 6."),
         R("R03", "Permanência média", "min", 137, round(pm.mean()), 83,
           "B3, 4 visitas (out/2026)", "N5",
           f"Médias por visita de {pm.min():.0f} a {pm.max():.0f} min; não entra na receita, só confere se os giros cabem no horário."),
-        R("R04", "Mesas ocupadas em média, fim de semana", "mesas", round(mo.mean() * (1 - x), 2), round(mo.mean(), 2), round(mo.mean() * (1 + x), 2),
+        R("R04", "Mesas ocupadas em média, fim de semana", "mesas", *[round(z, 2) for z in r04],
           "B3, 4 visitas nas noites de sexta e sábado (out/2026)", "N5",
-          f"Média das visitas ({mo.min():.1f} a {mo.max():.1f} mesas); ± {x:.0%}, distância média dos extremos observados à média."),
+          f"Média das visitas ({mo.min():.1f} a {mo.max():.1f} mesas); ± {x:.0%}, distância média dos extremos observados à média; limitada a {teto:.2f} pelo salão de {MESAS} mesas (R01)."),
         R("R05", "Mesas ocupadas em dia útil", "% do fim de semana", 0.40, 0.50, 0.60,
           "Estimativa do autor", "N6",
           "Cerca de metade do fim de semana; sem visita em dia útil."),
@@ -212,36 +231,36 @@ def premissas(f) -> list[dict]:
         R("R12", "Meses até a maturidade", "meses", 12, 9, 6,
           "Estimativa do autor (_instrucoes, §5)", "N6",
           "Rampa de 6 a 12 meses."),
-        R("R13", "Horas abertas por semana, fim de semana", "h", 28, 28, 28,
-          "Horário da São Jogue (B1 e autor)", "N3",
-          "Sexta e sábado das 12h às 22h; domingo das 13h às 21h."),
-        R("R14", "Horas abertas por semana, dia útil", "h", 40, 40, 40,
-          "Horário da São Jogue (B1 e autor)", "N3",
-          "Segunda a quinta das 12h às 22h."),
+        R("R13", "Horas abertas por semana, fim de semana", "h", 3 * HORAS_DIA, 3 * HORAS_DIA, 3 * HORAS_DIA,
+          "B1: horário de 49 concorrentes (Google Maps, out/2026); decisão do autor", "N3",
+          "Sexta das 15h às 23h; sábado e domingo das 14h às 22h: as 8 h contínuas com mais luderias abertas em cada dia."),
+        R("R14", "Horas abertas por semana, dia útil", "h", 3 * HORAS_DIA, 3 * HORAS_DIA, 3 * HORAS_DIA,
+          "B1: horário de 49 concorrentes (Google Maps, out/2026); decisão do autor", "N3",
+          "Terça a quinta das 15h às 23h; segunda fechada (71% dos concorrentes fecham)."),
         R("R15", "Giros por mesa por dia", "grupos por mesa ocupada", round(giro_pess, 2), round(giro_prov, 2), round(giro_otim, 2),
           "B3: NFC-e da São Jogue Paralela (pessimista) e permanência das 4 visitas (otimista)", "N5",
-          f"Pessimista calibrado para o cenário atender {piso:.2f} clientes por dia, as NFC-e por dia da Paralela (17/10 a 30/10/2026): uma comanda e uma nota por pessoa, emitida só a pedido, então piso. Otimista: {HORAS_DIA} h abertas por dia (12h às 22h) ÷ permanência média de {pm.mean():.0f} min. Provável: média dos dois."),
+          f"Pessimista calibrado para o cenário atender {piso:.2f} clientes por dia, as NFC-e por dia da Paralela (17/10 a 30/10/2026): uma comanda e uma nota por pessoa, emitida só a pedido, então piso. Otimista: {HORAS_DIA} h abertas por dia ÷ permanência média de {pm.mean():.0f} min. Provável: média dos dois."),
         R("R16", "Dias abertos por semana, fim de semana", "dias", 3, 3, 3,
-          "Horário da São Jogue (B1 e autor)", "N3", "Sexta a domingo."),
-        R("R17", "Dias abertos por semana, dia útil", "dias", 4, 4, 4,
-          "Horário da São Jogue (B1 e autor)", "N3", "Segunda a quinta."),
+          "Decisão do autor (desenho enxuto)", "N3", "Sexta a domingo."),
+        R("R17", "Dias abertos por semana, dia útil", "dias", 3, 3, 3,
+          "Decisão do autor (desenho enxuto); B1", "N3", "Terça a quinta; segunda fechada."),
         R("C01", "CMV de alimentos e bebidas", "% do A&B", 0.35, 0.30, 0.26,
           "IBGE PAS 2023, serviços de alimentação (B4)", "N2",
           f"Mercadorias e materiais = {f['pas_mercadorias_pct']:.1f}% da receita líquida do setor."),
         R("C02", "Taxa de cartão", "% da receita", 0.035, 0.030, 0.025,
           "Estimativa do autor", "N6",
           "Mistura de débito, crédito e Pix."),
-        R("C03", "Área do ponto", "m²", 220, 180, 150,
-          "Estimativa do autor", "N6",
-          "Salão de 10 mesas, cozinha, caixa e uma sala reservável."),
+        R("C03", "Área do ponto", "m²", 150, 130, 110,
+          "Estimativa do autor; fotos da São Jogue Bela Vista", "N6",
+          "Salão de 6 mesas (cerca de 12 m² por mesa) mais 60 m² de cozinha, balcão, acervo e banheiros; a Bela Vista tem salão de 75 a 95 m² para 10 mesas."),
         R("C04", "Aluguel comercial", "R$ por m² ao mês", round(f["aluguel_m2"] * (1 + f["aluguel_var12m"] / 100), 2), round(f["aluguel_m2"], 2), 45,
           "FipeZap, locação comercial, Salvador, jul/2026 (B4)", "N2",
           f"Pessimista com a alta de {f['aluguel_var12m']:.1f}% em 12 meses; otimista para ponto fora de shopping."),
         R("C05", "Condomínio e IPTU", "% do aluguel", 0.30, 0.20, 0.10,
           "Estimativa do autor", "N6", "Maior em shopping."),
-        R("C06", "Fator do quadro de pessoal", "× quadro de 12", 14 / 12, 1.0, 10 / 12,
-          "Quadro de referência (aba pessoal)", "N6",
-          "14, 12 ou 10 pessoas em dois turnos; a São Jogue tinha de 3 a 7 instrutores nas visitas."),
+        R("C06", "Acréscimo sobre o salário de admissão", "% do salário do CAGED", round(acr, 4), 0.0, 0.0,
+          "Novo CAGED, Salvador, 3º quartil ÷ mediana do salário de admissão (B4)", "N2 + N6",
+          f"O CAGED registra a admissão, que tende a pagar menos que o estoque; variação só para cima, de 0% a {acr:.1%} (provisório: maior distância do 3º quartil à mediana entre os cargos; x a definir pelo autor)."),
         R("C07", "Encargos e provisões sobre a folha", "% do salário", 0.45, 0.37, 0.30,
           "CLT (FGTS, 13º, férias) e estimativa de benefícios", "N1 + N6",
           "No Simples, a contribuição patronal fica no DAS dos anexos I e III."),
@@ -252,7 +271,7 @@ def premissas(f) -> list[dict]:
         R("C12", "Sistemas (caixa, reservas, nota fiscal)", "R$ por mês", 600, 450, 300, "Estimativa do autor", "N6", "Assinaturas."),
         R("C13", "Reposição do acervo", "% do acervo ao ano", 0.15, 0.10, 0.05, "Estimativa do autor", "N6", "Peças perdidas e jogos novos."),
         R("I01", "Reforma e instalações", "R$ por m²", 1400, 1000, 600, "Estimativa do autor", "N6", "Sem cotação; ponto alugado sem obra estrutural."),
-        R("I02", "Mobiliário (mesas, cadeiras, estantes)", "R$", 60000, 45000, 30000, "Estimativa do autor; descrição das unidades da São Jogue", "N6", "10 mesas, 48 assentos e estantes de pinus com metal."),
+        R("I02", "Mobiliário (mesas, cadeiras, estantes)", "R$", 44000, 33000, 22000, "Estimativa do autor; descrição das unidades da São Jogue", "N6", "6 mesas, cerca de 30 assentos e estantes de pinus com metal: R$ 15 mil de base mais R$ 3 mil por mesa no provável, ± 1/3."),
         R("I03", "Cozinha e bar", "R$", 80000, 60000, 40000, "Estimativa do autor", "N6", "Cozinha própria, como a da São Jogue."),
         R("I04", "Caixa e informática", "R$", 8000, 6000, 4000, "Estimativa do autor", "N6", "1 computador, 1 impressora de nota e 2 maquininhas."),
         R("I05", "Acervo inicial de jogos", "R$", round(a["p75"], 2), round(a["mediana"], 2), round(a["p25"], 2),
@@ -298,7 +317,7 @@ def calcula(f, v: dict, folha: float) -> dict:
     m["cmv"] = m["ab"] * v["C01"]
     m["cartao"] = m["bruta"] * v["C02"]
     aluguel = v["C03"] * v["C04"]
-    fixos = (aluguel * (1 + v["C05"]) + folha * v["C06"] * (1 + v["C07"]) + v["C08"] + v["C09"]
+    fixos = (aluguel * (1 + v["C05"]) + folha * (1 + v["C06"]) * (1 + v["C07"]) + v["C08"] + v["C09"]
              + v["C10"] + v["C11"] + v["C12"] + v["I05"] * v["C13"] / 12)
     m["fixos"] = fixos
     m["ebitda"] = m["bruta"] - m["simples"] - m["cmv"] - m["cartao"] - m["fixos"]
@@ -484,7 +503,8 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
         ws.cell(r, 3).number_format = INT
         ws.cell(r, 4).number_format = ws.cell(r, 5).number_format = MOEDA
     wb.defined_names["FOLHA_REF"] = DefinedName("FOLHA_REF", attr_text=f"pessoal!$E${rt}")
-    nota(ws, rt + 2, "Fonte: Novo CAGED (MTE), salário de admissão, mediana, ago/2025 a jul/2026 (B4). Encargos e fator do quadro na aba premissas (C06 e C07).", 6)
+    wb.defined_names["QUADRO_N"] = DefinedName("QUADRO_N", attr_text=f"pessoal!$C${rt}")
+    nota(ws, rt + 2, "Fonte: Novo CAGED (MTE), salário de admissão, mediana, ago/2025 a jul/2026 (B4). Acréscimo salarial e encargos na aba premissas (C06 e C07).", 6)
     for col, w in zip("ABCDEF", (30, 9, 11, 16, 16, 60)):
         ws.column_dimensions[col].width = w
 
@@ -591,7 +611,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
         ws[f"{c}7"] = f"=SUM({c}4:{c}6)"
         ws[f"{c}8"] = "=P_C03*P_C04"
         ws[f"{c}9"] = f"={c}8*P_C05"
-        ws[f"{c}10"] = "=FOLHA_REF*P_C06*(1+P_C07)"
+        ws[f"{c}10"] = "=FOLHA_REF*(1+P_C06)*(1+P_C07)"
         ws[f"{c}11"] = "=P_C08"
         ws[f"{c}12"] = "=P_C09"
         ws[f"{c}13"] = "=P_C10"
@@ -857,8 +877,8 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
          "Taxa de entrada média mais uma cesta de consumo média por pessoa (B1): teto do otimista"),
         ("Taxa de entrada (R$)", "=P_R06", float(f["taxa_b1_mediana"]),
          f"Mediana do couvert ou taxa de jogo nos cardápios de {f['taxa_b1_n']} concorrentes (B1)"),
-        ("Pessoas atendidas por dia por funcionário", "=B3/(12*P_C06)", "",
-         "Quadro de referência de 12 em dois turnos (aba pessoal)"),
+        ("Pessoas atendidas por dia por funcionário", "=B3/QUADRO_N", "",
+         "Equipe do desenho enxuto (aba pessoal)"),
         ("Visitas por ano ÷ população de Salvador", "=receitas!BJ7*12/C12", float(f["pop_salvador"]),
          "População estimada de Salvador em 2026 (IBGE, B4); visitas, não pessoas distintas"),
         ("Meses até a maturidade", "=P_R12", "", "Entre 6 e 12 meses (_instrucoes, §5)"),

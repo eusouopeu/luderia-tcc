@@ -4,7 +4,7 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora
 
-- **Desenho enxuto (02/11, 07h):** P7 nas instruções: 6 mesas; terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h (8 h com mais luderias abertas no B1); 2 cozinheiros-chefes, instrutores com folga na segunda e de terça a quinta, meio período de 20 h; salários de 0% a +x% sobre o CAGED no Monte Carlo. Falta levar ao modelo e aos caps. 4, 7, 9, 10 e 11 e definir o x e o número de instrutores (pendências).
+- **Desenho enxuto (02/11, 07h):** P7 nas instruções: 6 mesas; terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h (8 h com mais luderias abertas no B1); 2 cozinheiros-chefes, instrutores com folga na segunda e de terça a quinta, meio período de 20 h; salários de 0% a +x% sobre o CAGED no Monte Carlo. Modelo refeito (08h): VPL provável de -R$ 47 mil (-R$ 156 mil sem valor residual), P(VPL > 0) de 41,6%, ruptura colada no provável. Falta alinhar os caps. 4, 7, 9, 10 e 11 e definir o x (provisório de 11,4%).
 
 - **São Jogue dentro dos shoppings (02/11, 06h50):** 6.4 e 5 corrigidos nos `.md` e `.docx` (antes, "a 118 m de um shopping"); pela Places API, só a Paladins (Galeria Free Shop) também fica dentro de shopping; dado do entorno a corrigir (pendências).
 - **Aluguel por anúncios (02/11, 06h):** coletor no Tampermonkey para OLX, ZAP, Viva Real e QuintoAndar e build com resumo do R$/m² por bairro (`_src/[B4] Bases publicas/Anuncios de aluguel/`); falta rodar a coleta (pendências).
@@ -27,7 +27,7 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Próximos 3 passos
 
-1. Aplicar o desenho enxuto (P7) ao modelo e aos caps. 4, 7, 9, 10 e 11, com as demais recomendações do financeiro (pendências).
+1. Alinhar os caps. 4, 7, 9, 10 e 11 ao modelo do desenho enxuto e decidir as demais recomendações do financeiro (pendências).
 2. Fazer a recodificação cega; depois, refazer o 5.2 e escrever 6.1, 6.2 e 6.5.
 3. Cortar o cap. 10 até o teto (melhorias C17), escrever o 6.6 e preencher 4.2 e 4.3.
 
