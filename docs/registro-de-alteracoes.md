@@ -2266,3 +2266,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: recodificação cega do autor ("2R", 139 linhas) sem comparação com a codificação do Claude.
 **Depois**: comparação preliminar registrada: temas com kappa agrupado 0,83 (72% das marcas em comum); 0,87 sem 11 linhas que parecem não lidas; Contexto com kappa 0,55; "Costuma ir" e "Voltará" sem comparação (o Claude não os codificou).
 **Justificativa**: pedido do autor (medir quanto a recodificação dele se parece com a do Claude). Resultado interno; não entra nos textos oficiais.
+
+### 13:26
+**Objeto**: `textos/capitulos/TCC_luderia_TMin_v16.docx` e `.pdf` (novos; v15 em `_arquivo/`); `textos/capitulos/TCC_luderia_TMin_apendices_v16.docx` e `.pdf` (novos); `_src/extras/gerar_apendices_tmin.py` (novo); `textos/capitulos/_md/` (referências e letras dos apêndices); `CLAUDE.md`; `_instrucoes/1c_versoes.md` e `10_biblio-apendices.md`; `docs/melhorias-texto.md` (D48)
+**Antes**: 12 das 70 referências com link. Apêndices citados como E, G, H e três "[letra]", sem arquivo de apêndices.
+**Depois**: mais 36 referências com "Disponível em" e "Acesso em: 2 nov. 2026", cada link aberto e conferido (leis federais no Planalto, RDC 216 na BVS, Resolução CNS 510 no gov.br, Focus e SGS no BCB, FipeZap de jul/2026, tabelas do SIDRA, REGIC, Figueiredo, Picolo e Tontini, Tontini e Theiss, Novaes e Kanyat, Sarpa e Vasconcellos). Apêndices A a F na ordem de citação (A concorrentes do B1, B contagem do B3, C bases do B4, D matriz de evidências refeita para o desenho atual, E registro das 41 premissas, F Monte Carlo) num .docx separado de 11 páginas, gerado dos dados e do modelo e conferido com o principal (letras, 54 concorrentes, 41 premissas, P(VPL > 0) de 44,9%). Principal com 69 páginas (referências mais longas).
+**Justificativa**: pedido do autor (links públicos nas referências; apêndices num arquivo separado, mantido congruente com o principal a cada atualização).

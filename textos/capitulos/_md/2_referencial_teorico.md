@@ -73,7 +73,7 @@ DAMODARAN, Aswath. *Avaliação de investimentos*: ferramentas e técnicas para 
 
 DORNELAS, José. *Plano de negócios*: seu guia definitivo. 3. ed. São Paulo: Empreende, 2021. [AV]
 
-FIGUEIREDO, Américo Rodrigues de. Gestão baseada em evidências. *GV-executivo*, São Paulo, v. 19, n. 1, p. 30–32, jan./fev. 2020.
+FIGUEIREDO, Américo Rodrigues de. Gestão baseada em evidências. *GV-executivo*, São Paulo, v. 19, n. 1, p. 30–32, jan./fev. 2020. Disponível em: https://periodicos.fgv.br/gvexecutivo/article/download/81435/77745/173459. Acesso em: 2 nov. 2026.
 
 FITZSIMMONS, James A.; FITZSIMMONS, Mona J. *Administração de serviços*: operações, estratégia e tecnologia da informação. 7. ed. Porto Alegre: AMGH, 2014. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv101844.pdf. Acesso em: 2 nov. 2026.
 
@@ -81,9 +81,9 @@ KAM INSIGHT. *Competitive socialising*: winning a new customer occasion. KAM Med
 
 KOTLER, Philip; KELLER, Kevin Lane. *Administração de marketing*. 14. ed. Tradução de Sônia Midori Yamamoto. São Paulo: Pearson Education do Brasil, 2013.
 
-NOVAES, Allan; KANYAT, Lizbeth. From play to belonging: board game cafes as mediators for social wellness and community building in Japan. *Acta Ludologica*, v. 8, n. 1, p. 78–97, 2025. DOI: 10.34135/actaludologica.2025-8-1.78-97.
+NOVAES, Allan; KANYAT, Lizbeth. From play to belonging: board game cafes as mediators for social wellness and community building in Japan. *Acta Ludologica*, v. 8, n. 1, p. 78–97, 2025. DOI: 10.34135/actaludologica.2025-8-1.78-97. Disponível em: https://doi.org/10.34135/actaludologica.2025-8-1.78-97. Acesso em: 2 nov. 2026.
 
-PICOLO, Jaime Dagostim; TONTINI, Gérson. Análise do contraste da penalidade e da recompensa (PRC): identificando oportunidades de melhoria em um serviço. *RAM – Revista de Administração Mackenzie*, São Paulo, v. 9, n. 5, p. 35–58, 2008.
+PICOLO, Jaime Dagostim; TONTINI, Gérson. Análise do contraste da penalidade e da recompensa (PRC): identificando oportunidades de melhoria em um serviço. *RAM – Revista de Administração Mackenzie*, São Paulo, v. 9, n. 5, p. 35–58, 2008. Disponível em: https://www.redalyc.org/articulo.oa?id=195416780003. Acesso em: 2 nov. 2026.
 
 PINE, B. Joseph; GILMORE, James H. *O espetáculo dos negócios*. Rio de Janeiro: Campus, 1999. [AV]
 
@@ -93,6 +93,6 @@ SAVILLS. Competitive socialising. Savills UK, [s.d.]. Disponível em: https://ww
 
 SEBRAE. *Sobrevivência das empresas mercantis brasileiras (2019–2023)*: relatório técnico. Brasília: Sebrae, 2024. Disponível em: https://datasebrae.com.br/wp-content/uploads/2024/09/2024-08-13-Relatorio-tecnico-Sobrevivencia-das-empresas-mercantis-brasileiras.pdf. Acesso em: 2 nov. 2026.
 
-TONTINI, Gérson; THEISS, Juscelene. Estudo sobre a confiabilidade da classificação dos atributos de um serviço pelo modelo Kano de qualidade atrativa e obrigatória. *RAI – Revista de Administração e Inovação*, São Paulo, v. 2, n. 1, p. 34–50, 2005.
+TONTINI, Gérson; THEISS, Juscelene. Estudo sobre a confiabilidade da classificação dos atributos de um serviço pelo modelo Kano de qualidade atrativa e obrigatória. *RAI – Revista de Administração e Inovação*, São Paulo, v. 2, n. 1, p. 34–50, 2005. Disponível em: https://revistas.usp.br/rai/article/view/79037. Acesso em: 2 nov. 2026.
 
-VASCONCELLOS, Pedro Henrique da Silva Carvalho de Barros e. *A influência da qualidade de serviço na imagem, satisfação e intenções comportamentais em restaurantes*: uma análise do Outback Steakhouse Brasil. 2016. Dissertação (Mestrado em Administração de Empresas) – Pontifícia Universidade Católica do Rio de Janeiro, Rio de Janeiro, 2016.
+VASCONCELLOS, Pedro Henrique da Silva Carvalho de Barros e. *A influência da qualidade de serviço na imagem, satisfação e intenções comportamentais em restaurantes*: uma análise do Outback Steakhouse Brasil. 2016. Dissertação (Mestrado em Administração de Empresas) – Pontifícia Universidade Católica do Rio de Janeiro, Rio de Janeiro, 2016. Disponível em: https://www.maxwell.vrac.puc-rio.br/27909/27909.PDF. Acesso em: 2 nov. 2026.

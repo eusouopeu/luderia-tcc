@@ -60,40 +60,40 @@ O acervo traz uma questão própria de propriedade intelectual, mas o uso dos jo
 
 BAHIA. Lei nº 12.929, de 2013. Dispõe sobre a segurança contra incêndio e pânico no Estado da Bahia. *Diário Oficial do Estado da Bahia*, Salvador, 2013. [AV: dia, mês e ementa]
 
-BRASIL. Lei nº 8.069, de 13 de julho de 1990. Dispõe sobre o Estatuto da Criança e do Adolescente e dá outras providências. *Diário Oficial da União*: seção 1, Brasília, DF, 16 jul. 1990. [AV]
+BRASIL. Lei nº 8.069, de 13 de julho de 1990. Dispõe sobre o Estatuto da Criança e do Adolescente e dá outras providências. *Diário Oficial da União*: seção 1, Brasília, DF, 16 jul. 1990. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/l8069.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei nº 8.212, de 24 de julho de 1991. Dispõe sobre a organização da Seguridade Social, institui Plano de Custeio, e dá outras providências. *Diário Oficial da União*: seção 1, Brasília, DF, 25 jul. 1991. [AV]
+BRASIL. Lei nº 8.212, de 24 de julho de 1991. Dispõe sobre a organização da Seguridade Social, institui Plano de Custeio, e dá outras providências. *Diário Oficial da União*: seção 1, Brasília, DF, 25 jul. 1991. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei nº 8.245, de 18 de outubro de 1991. Dispõe sobre as locações dos imóveis urbanos e os procedimentos a elas pertinentes. *Diário Oficial da União*: seção 1, Brasília, DF, 21 out. 1991. [AV]
+BRASIL. Lei nº 8.245, de 18 de outubro de 1991. Dispõe sobre as locações dos imóveis urbanos e os procedimentos a elas pertinentes. *Diário Oficial da União*: seção 1, Brasília, DF, 21 out. 1991. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/l8245.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei nº 9.249, de 26 de dezembro de 1995. Altera a legislação do imposto de renda das pessoas jurídicas, bem como da contribuição social sobre o lucro líquido, e dá outras providências. *Diário Oficial da União*: seção 1, Brasília, DF, 27 dez. 1995. [AV]
+BRASIL. Lei nº 9.249, de 26 de dezembro de 1995. Altera a legislação do imposto de renda das pessoas jurídicas, bem como da contribuição social sobre o lucro líquido, e dá outras providências. *Diário Oficial da União*: seção 1, Brasília, DF, 27 dez. 1995. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/l9249.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei nº 9.279, de 14 de maio de 1996. Regula direitos e obrigações relativos à propriedade industrial. *Diário Oficial da União*: seção 1, Brasília, DF, 15 maio 1996. [AV]
+BRASIL. Lei nº 9.279, de 14 de maio de 1996. Regula direitos e obrigações relativos à propriedade industrial. *Diário Oficial da União*: seção 1, Brasília, DF, 15 maio 1996. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/l9279.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei nº 9.610, de 19 de fevereiro de 1998. Altera, atualiza e consolida a legislação sobre direitos autorais e dá outras providências. *Diário Oficial da União*: seção 1, Brasília, DF, 20 fev. 1998. [AV]
+BRASIL. Lei nº 9.610, de 19 de fevereiro de 1998. Altera, atualiza e consolida a legislação sobre direitos autorais e dá outras providências. *Diário Oficial da União*: seção 1, Brasília, DF, 20 fev. 1998. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/l9610.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei nº 9.718, de 27 de novembro de 1998. Altera a Legislação Tributária Federal. *Diário Oficial da União*: seção 1, Brasília, DF, 28 nov. 1998. [AV]
+BRASIL. Lei nº 9.718, de 27 de novembro de 1998. Altera a Legislação Tributária Federal. *Diário Oficial da União*: seção 1, Brasília, DF, 28 nov. 1998. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/l9718.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei nº 10.406, de 10 de janeiro de 2002. Institui o Código Civil. *Diário Oficial da União*: seção 1, Brasília, DF, 11 jan. 2002. [AV]
+BRASIL. Lei nº 10.406, de 10 de janeiro de 2002. Institui o Código Civil. *Diário Oficial da União*: seção 1, Brasília, DF, 11 jan. 2002. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Agência Nacional de Vigilância Sanitária. Resolução RDC nº 216, de 15 de setembro de 2004. Dispõe sobre Regulamento Técnico de Boas Práticas para Serviços de Alimentação. *Diário Oficial da União*: seção 1, Brasília, DF, 16 set. 2004. [AV]
+BRASIL. Agência Nacional de Vigilância Sanitária. Resolução RDC nº 216, de 15 de setembro de 2004. Dispõe sobre Regulamento Técnico de Boas Práticas para Serviços de Alimentação. *Diário Oficial da União*: seção 1, Brasília, DF, 16 set. 2004. Disponível em: https://bvsms.saude.gov.br/bvs/saudelegis/anvisa/2004/res0216_15_09_2004.html. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei Complementar nº 123, de 14 de dezembro de 2006. Institui o Estatuto Nacional da Microempresa e da Empresa de Pequeno Porte. *Diário Oficial da União*: seção 1, Brasília, DF, 15 dez. 2006. [AV]
+BRASIL. Lei Complementar nº 123, de 14 de dezembro de 2006. Institui o Estatuto Nacional da Microempresa e da Empresa de Pequeno Porte. *Diário Oficial da União*: seção 1, Brasília, DF, 15 dez. 2006. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei nº 11.598, de 3 de dezembro de 2007. Estabelece diretrizes e procedimentos para a simplificação e integração do processo de registro e legalização de empresários e de pessoas jurídicas e cria a Redesim. *Diário Oficial da União*: seção 1, Brasília, DF, 4 dez. 2007. [AV]
+BRASIL. Lei nº 11.598, de 3 de dezembro de 2007. Estabelece diretrizes e procedimentos para a simplificação e integração do processo de registro e legalização de empresários e de pessoas jurídicas e cria a Redesim. *Diário Oficial da União*: seção 1, Brasília, DF, 4 dez. 2007. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/lei/l11598.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei nº 13.106, de 17 de março de 2015. Altera a Lei nº 8.069, de 13 de julho de 1990, para tornar crime vender, fornecer, servir, ministrar ou entregar bebida alcoólica a criança ou a adolescente. *Diário Oficial da União*: seção 1, Brasília, DF, 18 mar. 2015. [AV]
+BRASIL. Lei nº 13.106, de 17 de março de 2015. Altera a Lei nº 8.069, de 13 de julho de 1990, para tornar crime vender, fornecer, servir, ministrar ou entregar bebida alcoólica a criança ou a adolescente. *Diário Oficial da União*: seção 1, Brasília, DF, 18 mar. 2015. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13106.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei nº 13.146, de 6 de julho de 2015. Institui a Lei Brasileira de Inclusão da Pessoa com Deficiência (Estatuto da Pessoa com Deficiência). *Diário Oficial da União*: seção 1, Brasília, DF, 7 jul. 2015. [AV]
+BRASIL. Lei nº 13.146, de 6 de julho de 2015. Institui a Lei Brasileira de Inclusão da Pessoa com Deficiência (Estatuto da Pessoa com Deficiência). *Diário Oficial da União*: seção 1, Brasília, DF, 7 jul. 2015. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei nº 13.709, de 14 de agosto de 2018. Lei Geral de Proteção de Dados Pessoais (LGPD). *Diário Oficial da União*: seção 1, Brasília, DF, 15 ago. 2018. [AV]
+BRASIL. Lei nº 13.709, de 14 de agosto de 2018. Lei Geral de Proteção de Dados Pessoais (LGPD). *Diário Oficial da União*: seção 1, Brasília, DF, 15 ago. 2018. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei nº 13.874, de 20 de setembro de 2019. Institui a Declaração de Direitos de Liberdade Econômica. *Diário Oficial da União*: seção 1, Brasília, DF, 20 set. 2019. [AV]
+BRASIL. Lei nº 13.874, de 20 de setembro de 2019. Institui a Declaração de Direitos de Liberdade Econômica. *Diário Oficial da União*: seção 1, Brasília, DF, 20 set. 2019. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/lei/l13874.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Constituição (1988). Emenda Constitucional nº 132, de 20 de dezembro de 2023. Altera o Sistema Tributário Nacional. *Diário Oficial da União*: seção 1, Brasília, DF, 21 dez. 2023. [AV]
+BRASIL. Constituição (1988). Emenda Constitucional nº 132, de 20 de dezembro de 2023. Altera o Sistema Tributário Nacional. *Diário Oficial da União*: seção 1, Brasília, DF, 21 dez. 2023. Disponível em: https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc132.htm. Acesso em: 2 nov. 2026. [AV]
 
-BRASIL. Lei Complementar nº 214, de 16 de janeiro de 2025. Institui o Imposto sobre Bens e Serviços (IBS), a Contribuição Social sobre Bens e Serviços (CBS) e o Imposto Seletivo (IS). *Diário Oficial da União*: seção 1, Brasília, DF, 16 jan. 2025. [AV]
+BRASIL. Lei Complementar nº 214, de 16 de janeiro de 2025. Institui o Imposto sobre Bens e Serviços (IBS), a Contribuição Social sobre Bens e Serviços (CBS) e o Imposto Seletivo (IS). *Diário Oficial da União*: seção 1, Brasília, DF, 16 jan. 2025. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm. Acesso em: 2 nov. 2026. [AV]
 
 COMISSÃO NACIONAL DE CLASSIFICAÇÃO (CONCLA). *CNAE 2.3*: subclasse 5611-2/05. Rio de Janeiro: IBGE, 2026. Disponível em: https://concla.ibge.gov.br/busca-online-cnae.html. [AV: data de acesso]
 
-IBGE. *Pesquisa Anual de Serviços (PAS)*: tabelas 2611, 2619 e 10758. Rio de Janeiro: IBGE, 2025-2026. `[AV ano de cada edição]`
+IBGE. *Pesquisa Anual de Serviços (PAS)*: tabelas 2611, 2619 e 10758. Rio de Janeiro: IBGE, 2025-2026. `[AV ano de cada edição]` Disponível em: https://sidra.ibge.gov.br/tabela/2611, https://sidra.ibge.gov.br/tabela/2619 e https://sidra.ibge.gov.br/tabela/10758. Acesso em: 2 nov. 2026.

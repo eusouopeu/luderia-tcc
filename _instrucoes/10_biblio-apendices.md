@@ -18,7 +18,7 @@ Conferir o manual ou as normas complementares da UFBA e do curso, e as orientaç
 
 - Lista única, no fim do trabalho, em ordem alfabética. Alinhamento e espaçamento seguem `1d_formatacao.md` (justificada, espaço 1,5), que prevalece sobre a NBR 6023 (esquerda, espaço simples).
 - Título em destaque (itálico ou negrito — escolher um e manter).
-- Documentos online: incluir "Disponível em: URL. Acesso em: dia mês abreviado ano."
+- Documentos online: incluir "Disponível em: URL. Acesso em: dia mês abreviado ano." Toda referência com versão de acesso público (lei, base pública, artigo em acesso aberto, dissertação em repositório) leva o link, conferido antes de entrar; obra paga ou sem versão aberta (livros, periódicos fechados, ABNT) fica sem link (02/11/2026, pedido do autor).
 - Incluir apenas obras citadas no texto. Leituras não citadas não entram.
 - Modelos:
   - **Livro:** SOBRENOME, Nome. *Título*: subtítulo. Edição. Local: Editora, ano.
@@ -115,6 +115,10 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 | Protocolo de observação (`textos/instrumentos/roteiro_observacao_sao_jogue.md`), formato dos dados do app de observação, estrutura das unidades, registros por visita, ocupação do salão, números das NFC-e e checagens de consistência; pedidos como extra | 3.3, 6.6 | G |
 | Tabelas de apoio das bases públicas: população por bairro, salários de admissão por CBO, faixas do Simples Nacional, Selic e IPCA | 6.4, 7.5, 8, 9 | H |
 | Canvas do modelo de negócio e fluxograma dos processos operacionais | 6.1, 7.3 | I |
+
+### Apêndices do TMin (02/11/2026)
+
+No TMin, só os apêndices citados no texto, com letras na ordem de citação: A, concorrentes do B1; B, contagem direta do B3; C, tabelas de apoio do B4; D, matriz de evidências; E, registro de premissas; F, Monte Carlo. Arquivo separado (`1c_versoes.md`). A lista abaixo é o plano completo, do TMax.
 
 ### Apêndices previstos
 

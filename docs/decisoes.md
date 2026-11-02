@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Apêndices do TMin num .docx separado, com o número de versão do principal, regerado e conferido a cada nova versão; letras na ordem de citação (A a F) | `_instrucoes/1c_versoes.md` |
+| 02/11/2026 | Referência com versão de acesso público leva "Disponível em" e "Acesso em", com o link conferido; obra paga fica sem link | `_instrucoes/10_biblio-apendices.md` |
 | 02/11/2026 | Tabelas: resumo em reais inteiros (sem "mil") e detalhe com centavos reais; "n.a." para célula sem número; unidade no cabeçalho; fonte única "elaboração própria", com ressalvas numa "Nota"; negrito só em títulos, legendas e cabeçalhos (no texto, itálico ou aspas) | `_instrucoes/1d_formatacao.md` |
 | 02/11/2026 | Indicadores numa só tabela (9.5); o cap. 4 resume só o provável (Tabela 4.1); a ruptura fica na 9.6 com o medido no B3; o cap. 10 remete às duas, sem quadros próprios | `docs/registro-de-alteracoes.md` (02/11/2026) |
 | 02/11/2026 | Matriz de riscos: impacto pelo VPL com a premissa no pessimista (alto abaixo de -R$ 250 mil; médio até -R$ 50 mil); probabilidade por critério do autor (N6); cada risco ligado ao seu gatilho | Quadro 10.2 do TMin v15 |
