@@ -21,7 +21,7 @@ Todo número do texto pode ser gerado de novo por um script deste repositório. 
 | `docs/` | Decisões, pendências, registro de alterações, diagnóstico bibliográfico |
 | `_src/app-observacao/` | App Android usado na contagem direta (Bloco B3) |
 | `_src/site-apresentacao/` | Site da apresentação oral |
-| `arquivados/` | Rascunhos, saídas do desenho anterior e blocos retirados do escopo (antigo B5 de jogos, B6), guardados para uso futuro |
+| `arquivados/` | Rascunhos, saídas do desenho anterior e blocos retirados do escopo (antigo B5 de jogos, B6) e o modelo financeiro v0, guardados para uso futuro |
 
 ## Por onde começar
 

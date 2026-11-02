@@ -2374,3 +2374,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes** (`dados/Modelo financeiro/financeiro_premissas.csv` e `financeiro_modelo.xlsx`, de 31/10, gerados por `_src/Modelo financeiro/analise/financeiro-a_modelo.py`, de 15/10): C04 = área, C05 = aluguel, C06 = IPTU e condomínio em R$/m², C07 = monitores.
 **Depois** (`_src/extras/gerar_modelo_financeiro.py`, 02/11, gera `textos/capitulos/9_plano_financeiro_modelo.xlsx`): C03 = área, C04 = aluguel, C05 = condomínio e IPTU em % do aluguel, C07 = encargos.
 **Efeitos colaterais**: quem abrir `dados/Modelo financeiro/` lê premissas e IDs que o texto não usa; foi o que levou ao erro de numeração no build do aluguel. Não corrigido (sem pedido do autor).
+
+### 19:24
+**Objeto**: `dados/Modelo financeiro/financeiro_premissas.csv` e `financeiro_modelo.xlsx` (movidos para `dados/Modelo financeiro/_arquivo/`, com sufixo `_v0`); `_src/Modelo financeiro/analise/financeiro-a_modelo.py` (movido para `arquivados/modelo-financeiro-v0/_src/`, com o log em `_logs/`); `arquivados/modelo-financeiro-v0/LEIAME.md` (novo); `README.md`; `docs/pendencias.md`, `docs/decisoes.md`
+**Antes**: modelo v0 (15/10, gerado em 31/10) em `dados/Modelo financeiro/` e `_src/Modelo financeiro/`, com numeração de premissas diferente da do modelo atual (C05 = aluguel), sem nenhum script ou texto que ainda o use.
+**Depois**: v0 fora das pastas de uso; `_src/Modelo financeiro/` removida (só restava um `.DS_Store`); `dados/Modelo financeiro/` só com `_arquivo/`. O modelo é o `_src/extras/gerar_modelo_financeiro.py`.
+**Justificativa**: pedido do autor; o CSV antigo levou a um erro de numeração no build do aluguel.

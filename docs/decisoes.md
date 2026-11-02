@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Modelo financeiro v0 (script de 15/10 e premissas em CSV) arquivado; o modelo é só o `gerar_modelo_financeiro.py` | `arquivados/modelo-financeiro-v0/LEIAME.md` |
 | 02/11/2026 | Numeração das premissas: vale a do modelo atual (`gerar_modelo_financeiro.py`): C03 área, C04 aluguel, C05 condomínio e IPTU (% do aluguel), C07 encargos | `_src/extras/gerar_modelo_financeiro.py` |
 | 02/11/2026 | Aluguel por anúncios: C04 e C05 saem só de lojas e pontos (sem salas em prédio nem galpões) com 100 a 200 m² (cobre a C03, de 110 a 150 m²; faixa N6), por área do 6.4; quase-duplicatas vão para conferência, não saem | `_src/[B5] Ativos fixos/Anuncios de aluguel/build/B5-b_anuncios_aluguel.py` |
 | 02/11/2026 | Coleta de preços do B5: frete não informado é estimado (mediana do item; senão, razão frete/preço da categoria), e não mais zero; cada oferta vale pela última exportação, e a excluída no painel sai do orçamento | `_src/[B5] Ativos fixos/Lista de itens/build/B5-b_orcamento_itens.py` |
