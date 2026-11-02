@@ -2041,3 +2041,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: Brinckmann e Pine e Gilmore (1998) como fontes sem PDF.
 **Depois**: Brinckmann conferido (46 estudos, 11.046 organizações; planejamento melhora o desempenho, mais nas pequenas empresas estabelecidas, p. 25). Pine e Gilmore (1998) acessível por Fitzsimmons e Fitzsimmons (2014, p. 11–12), que reproduz as quatro esferas da experiência (Figura 1.6) e a evolução até a economia da experiência (Tabela 1.3), com a referência completa na nota 5 (p. 16).
 **Justificativa**: pedido do autor: conferir o PDF que baixou e achar citação indireta de Pine e Gilmore.
+
+### 02:34
+**Objeto**: Notion, banco "2 - Comentários" (Castelos e BoardZ), a partir das coletas de 02/11 em `dados/[B2] Avaliacoes recentes/_dados-brutos/2026-11-02_*_tudo.csv` (Arena BG, BoardZ, Castelos, Flow Games, Nala Land, Play Easy)
+**Antes**: 1 comentário do Castelos ("Bem, fui comemorar meu aniversário lá em família…") cortado em 1.990 caracteres, no limite da importação; 39 comentários do Castelos e do BoardZ com notas de comida, serviço e ambiente, tamanho do grupo ou tempo de espera vazios, embora o Google os traga.
+**Depois**: texto inteiro (2.598 caracteres) no comentário do Castelos; campos vazios preenchidos nos 39 (31 com as três notas, 17 com tamanho do grupo, 10 com tempo de espera); valores já preenchidos não mudaram e "Não sei" não foi lançado. Nos 130 comentários das 6 casas, os outros 90 têm texto e campos iguais aos do CSV, e 1 linha digitada à mão ("(espanhol) Monte engraçado") não tem par. Os 6 "Incompleto" dessas casas voltaram com o mesmo texto. Temas não mexidos.
+**Justificativa**: pedido do autor, depois de comparar as coletas de 02/11 com o Notion.
