@@ -2152,3 +2152,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes** (B1, coletor de entorno): São Jogue Bela Vista a 118 m do Shopping Bela Vista; Paladins Game Store a 5 m da Galeria Free Shop.
 **Depois** (Places API, `containingPlaces`, 02/11/2026; informação do autor): as duas ficam dentro desses shoppings (distância 0).
 **Efeitos colaterais**: a mediana de `dist_shopping_m` (site de apresentação, Tabela 6 da planilha agregada) usa os 118 m e os 5 m; as contagens de shoppings a 500 m e 1.000 m não mudam.
+
+### 07:10
+**Objeto**: `_instrucoes/1a_principios.md` (P7 nova), `_instrucoes/7_operacional.md` (abertura, 7.2, 7.5), `_instrucoes/8_financeiro.md` (abertura), `CLAUDE.md` (Princípios e mapa)
+**Antes**: sem diretriz de porte; caps. 7 e 9 dimensionados pelo porte da São Jogue (10 mesas, das 12h às 22h, 68 h por semana, equipe de 12).
+**Depois**: princípio P7, desenho enxuto (MVP): 6 mesas (maior ocupação vista nas visitas), funcionamento das 16h às 22h, 2 instrutores nos dias úteis e 3 de sexta a domingo, no máximo 2 mesas por instrutor no pico; dias de menor movimento podem fechar; a São Jogue vira referência de comportamento, não de porte; giros, capacidade, equipe, cozinha, área, aluguel e investimento recalculados pelo novo desenho; expansão fora do fluxo de caixa base. Horários do B1 (49 casas aprovadas, `B1_horarios.csv`): 5,6 dias e 44,2 h abertas por semana em média; segunda (35 casas) e terça (17) são os dias mais fechados; fechamento mais frequente às 23h de segunda a quinta e às 22h de sexta a domingo; abertura mais frequente às 12h de segunda a quinta (17h e 18h logo atrás) e às 14h de sexta a domingo.
+**Justificativa**: pedido do autor: projetar um projeto menor, otimizado para reduzir o impacto do giro, da ocupação e do movimento fora do pico, em vez de uma casa consolidada como a São Jogue. Modelo e capítulos ainda não alterados (melhorias D43, pendências).

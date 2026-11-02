@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Desenho enxuto (MVP): o plano projeta uma casa menor que a São Jogue, com 6 mesas, funcionamento das 16h às 22h, 2 instrutores nos dias úteis e 3 de sexta a domingo; a São Jogue vale como referência de comportamento, não de porte; expansão fora do fluxo de caixa base | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Aluguel por bairro vem de anúncios (OLX, ZAP, Viva Real, QuintoAndar) coletados no navegador por userscript; é preço pedido, ao lado do FipeZap e das cotações; saídas em `financeiro/` | `_src/[B4] Bases publicas/Anuncios de aluguel/` |
 | 02/11/2026 | Sem novas visitas presenciais: a validação das premissas de dia útil, fluxo e consumo usa só dados secundários e já coletados (B1, B2, B3, B4) | pedido do autor; `docs/pendencias.md` |
 | 02/11/2026 | Modelo financeiro com valor residual no ano 5 (perpetuidade sem crescimento, reinvestimento igual à depreciação, piso zero), declarado e mostrado com e sem na aba sensibilidade | `docs/registro-de-alteracoes.md` (02/11/2026, 05:20) |

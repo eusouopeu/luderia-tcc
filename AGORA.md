@@ -4,6 +4,8 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora
 
+- **Desenho enxuto (02/11, 07h):** P7 nas instruções: 6 mesas, 16h às 22h, 2 instrutores nos dias úteis e 3 de sexta a domingo; São Jogue só como referência de comportamento. Falta levar ao modelo e aos caps. 4, 7, 9, 10 e 11 e decidir os dias fechados (pendências).
+
 - **São Jogue dentro dos shoppings (02/11, 06h50):** 6.4 e 5 corrigidos nos `.md` e `.docx` (antes, "a 118 m de um shopping"); pela Places API, só a Paladins (Galeria Free Shop) também fica dentro de shopping; dado do entorno a corrigir (pendências).
 - **Aluguel por anúncios (02/11, 06h):** coletor no Tampermonkey para OLX, ZAP, Viva Real e QuintoAndar e build com resumo do R$/m² por bairro (`_src/[B4] Bases publicas/Anuncios de aluguel/`); falta rodar a coleta (pendências).
 - **Financeiro (02/11, 05h):** valor residual no modelo (M03; provável inalterado, P(VPL > 0) de 31,9%); taxas de entrada alternativas, gasto declarado ÷ cesta e área da Bela Vista calculados; sem novas visitas presenciais (decisão do autor). Falta escolher o pacote de mudanças (pendências) e levar aos caps. 4, 9, 10 e 11.
@@ -25,7 +27,7 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Próximos 3 passos
 
-1. Decidir a equipe e as demais recomendações do financeiro (pendências) e levar ao modelo e aos caps. 4, 7, 9, 10 e 11.
+1. Aplicar o desenho enxuto (P7) ao modelo e aos caps. 4, 7, 9, 10 e 11, com as demais recomendações do financeiro (pendências).
 2. Fazer a recodificação cega; depois, refazer o 5.2 e escrever 6.1, 6.2 e 6.5.
 3. Cortar o cap. 10 até o teto (melhorias C17), escrever o 6.6 e preencher 4.2 e 4.3.
 

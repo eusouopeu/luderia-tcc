@@ -9,7 +9,7 @@ Ler este arquivo e o [AGORA.md](AGORA.md) sempre; não carregar documentação o
 | Arquivo | Quando ler |
 |---|---|
 | [_instrucoes/1_estrutura.md](_instrucoes/1_estrutura.md) | Visão do todo; tarefa com mais de um capítulo; caps. 1, 4 e 11 (sem arquivo próprio); teto de páginas |
-| [_instrucoes/1a_principios.md](_instrucoes/1a_principios.md) | Hierarquias de fontes, dados e focos (P1 a P3); precedência dos caps. 6 e 8; personalização da estrutura (P4) |
+| [_instrucoes/1a_principios.md](_instrucoes/1a_principios.md) | Hierarquias de fontes, dados e focos (P1 a P3); precedência dos caps. 6 e 8; personalização da estrutura (P4); desenho enxuto, MVP (P7) |
 | [_instrucoes/1b_escrita.md](_instrucoes/1b_escrita.md) | Qualquer prosa do TCC: regras de escrita (P5) e vocabulário controlado (P6) |
 | [_instrucoes/1c_versoes.md](_instrucoes/1c_versoes.md) | TMax/TMin, DMax/DMin, numeração `_v<n>` e `_arquivo/` |
 | [_instrucoes/1d_formatacao.md](_instrucoes/1d_formatacao.md) | Gerar ou revisar `.docx` e `.pdf` (suplementar à skill `formatacao-texto-ufba`) |
@@ -79,6 +79,7 @@ Antes do commit, atualizar:
 - **Precedência dos caps. 6 e 8:** em divergência entre capítulos, valem o Plano de Marketing (cap. 6) e os Aspectos Jurídicos (cap. 8), que moldam o negócio; os demais (7, 9 e os que dependem deles) só o tornam viável. Toda mudança nos caps. 6 ou 8 gera alerta imediato ao autor sobre os capítulos a ajustar. Detalhes em `_instrucoes/1a_principios.md` (P3).
 - **Decisão antes de descrição:** todo resultado responde "que decisão do plano isso muda?". Se nenhuma, vai para apêndice ou sai.
 - **Nada de número sem fonte** (instituição, base, recorte, data). **Nada de referência inventada:** obra não conferida fica `[AV]` (a verificar); citação de conceito com página a conferir leva `[AV-<ID>]`, com o ID do `checklist-conceitos.md` da leva em `bibliografia/leituras-*/`.
+- **Desenho enxuto (MVP):** o plano projeta uma versão menor que a São Jogue (6 mesas, 16h às 22h, 2 instrutores nos dias úteis e 3 de sexta a domingo), para reduzir o risco de giro, ocupação e horário fora do pico; a São Jogue é referência de comportamento, não de porte. Detalhes em `_instrucoes/1a_principios.md` (P7).
 - **Incerteza declarada:** estimativas com faixa (pessimista/provável/otimista) e nível de evidência.
 - **Sem questionários** de opinião ou intenção; preferir fontes secundárias e primárias comportamentais.
 - **Normas:** ABNT (detalhes em `_instrucoes/10_biblio-apendices.md`). Instituição: UFBA.

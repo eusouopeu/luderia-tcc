@@ -1,6 +1,6 @@
 # Princípios do plano
 
-Hierarquias e personalizações que valem para todos os capítulos. Parte de [1_estrutura.md](1_estrutura.md), separada em 31/10/2026; a numeração P1 a P4 foi mantida. Escrita e vocabulário (P5 e P6): [1b_escrita.md](1b_escrita.md).
+Hierarquias e personalizações que valem para todos os capítulos. Parte de [1_estrutura.md](1_estrutura.md), separada em 31/10/2026; a numeração P1 a P4 foi mantida. P7 (desenho enxuto) entrou em 02/11/2026. Escrita e vocabulário (P5 e P6): [1b_escrita.md](1b_escrita.md).
 
 ## P1. Hierarquia de fontes
 
@@ -68,3 +68,14 @@ Diferenças deliberadas em relação a um plano de negócios comum. Aplicar semp
 5. **Apêndices técnicos** com protocolos, dicionário de variáveis e link para o repositório (lista em [10_biblio-apendices.md](10_biblio-apendices.md)).
 6. **Pipeline reproduzível.** Repositório com coleta → tratamento → análise, README na raiz e dicionário de dados. Qualquer número do texto deve ser regenerável a partir de um script de `_src/`.
 7. **Produto visual.** Dashboard ou o próprio `_src/site-apresentacao/` com mapa de concorrentes, cenários e sensibilidade.
+
+## P7. Desenho enxuto (MVP)
+
+Decisão do autor em 02/11/2026. O plano não projeta uma casa do porte da São Jogue, que tem anos de mercado e clientela formada. Projeta uma versão menor, desenhada para reduzir a exposição aos riscos que o tornado aponta: giro de mesa, ocupação e movimento fora do pico. Vale para todos os capítulos.
+
+- **A São Jogue é referência de comportamento, não de porte.** Dela vêm ocupação de pico, pessoas por mesa, permanência e giro (B3); não vêm número de mesas, área, horário nem equipe.
+- **Salão:** 6 mesas, a maior ocupação vista nas visitas. Teto de carga de 2 mesas (cerca de 10 clientes) por instrutor no pico.
+- **Horário:** só a faixa de maior movimento, das 16h às 22h. Dias úteis com 2 instrutores; dias de pico (sexta a domingo) com 3. Dias de menor movimento podem ficar fechados; no B1, segunda (71% das casas) e terça (35%) são os dias em que mais concorrentes fecham.
+- **Tudo o que depende do horário e do salão é recalculado:** giros possíveis (horas abertas ÷ permanência), capacidade, equipe, cozinha, área, aluguel, investimento e checagens de coerência.
+- **Crescimento é etapa posterior,** condicionada ao desempenho observado (mais mesas, horas ou dias). Não entra no fluxo de caixa base; pode aparecer como opção no cap. 10 ou 11.
+- **Ao escrever:** apresentar o porte reduzido como escolha de gestão de risco, com a justificativa, e não como limitação de capital.

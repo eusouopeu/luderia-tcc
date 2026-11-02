@@ -4,6 +4,8 @@
 
 Responder se o negócio é viável e sob quais condições. O capítulo não vale pelos indicadores em si, mas pela **rastreabilidade e pelo teste das premissas** que os geram.
 
+**Desenho enxuto (P7 em [1a_principios.md](1a_principios.md)):** o modelo projeta a versão menor do negócio (6 mesas, 16h às 22h, 2 instrutores nos dias úteis e 3 de sexta a domingo), não uma casa do porte da São Jogue. Premissas de horas e dias abertos, giro otimista (horas abertas ÷ permanência), equipe, área, aluguel e investimento saem desse desenho. Expansão não entra no fluxo de caixa base.
+
 ## Divisão de subcapítulos
 
 | Subcapítulo | Conteúdo |
