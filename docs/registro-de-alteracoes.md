@@ -2059,3 +2059,18 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: comentários 9 a 17 do autor sem resposta; parágrafo da POF chamava de "pequeno" um gasto com lazer medido sem bares e restaurantes.
 **Depois**: cópias com "*" abaixo dos originais, mudando só o trecho comentado: §1 do cap. 1 (o dado da Abrinq não prova crescimento estrutural, e vender jogos não garante público fora de casa; com. 11); §2 (termo "bares temáticos" trocado pela definição do formato, sem "bar", e dado de 18 a 34 anos retirado; com. 9 e 10); abertura do cap. 2 (efeito do planejamento em números: 0,20 desvio-padrão, 0,13 nas novas e 0,24 nas estabelecidas, Brinckmann, Grichnik e Kapsa, 2010, p. 33–34; com. 15); 2.1 (citação narrativa de Fitzsimmons e frase final reescrita; com. 16 e 17); 2.3 (frase de Sarpa refeita; com. 13); 2.4.2 (exemplo concreto da PRC; com. 12). Parágrafo da POF, ainda proposta minha com "*", corrigido no lugar: lazer em sentido estrito e alimentação fora do domicílio (R$ 61,68, IBGE, 2021, p. 63 e 65). Comentários 14 e 18 ("fonte conferida") sem ação. Documento reaberto no WordCraft. D37 em melhorias-texto.
 **Justificativa**: pedido do autor: aplicar os comentários e a correção do parágrafo da POF.
+
+### 03:50
+**Objeto**: Notion, banco "2 - Comentários": Status de 4 comentários; temas de 7 comentários completados em 02/11; nova opção "Claude 02/11/2026" em "Análise de temas"
+**Antes**: Status "Incompleto" em 1 comentário de cada uma destas casas: Fortalúdica, TabuClub, Tubaleria e Alçapão. 14 comentários "Incompleto" no banco. Os temas dos 6 comentários do Bardo Mago e do comentário do Castelos completados hoje tinham sido codificados sobre o texto cortado.
+**Depois**: os 4 passaram a "Completo": a coleta de 02/11 trouxe o mesmo texto, e o Google não traz campos extras nessas casas. Temas revistos pelo dicionário de 30/10, com "Análise de temas" = "Claude 02/11/2026":
+- "Ambiente e serviço agradável…": curadoria + no lugar de variedade + ("boas opções de jogo"); preço do consumo − e porções − (milkshake).
+- "Os preços de comida são MUITO ALTOS…": ambiente e decoração + ("bonito"); regras da casa − (10% e couvert não convertido); conforto e espaço − (salão aberto que atrapalha a concentração).
+- "A comida e drinks estavam incríveis…": atendimento presencial − ("cara fechada").
+- "⭐ Fui ao Bar do Mago para um aniversário…": rapidez do serviço + e ambiente e decoração +; contexto: aniversário.
+- "Fui ao Bar do Mago para comemorar…": comemorações e grupos + ("todo mundo bem atendido").
+- "Escolhemos um lugar para comer domingo…": atendimento presencial − e regras da casa − (pedido do Duo não podia ser levado).
+- Castelos, "Bem, fui comemorar meu aniversário…": variedade do cardápio + ("proposta criativa"); limpeza − (banheiro entupido) e comemorações e grupos − (convidados mal servidos).
+
+Restam 10 "Incompleto": Arena BG, BoardZ, Castelos, Flow Games, Nala Land e Play Easy (1 em cada), Bardo Mago (2) e Bodogami (2).
+**Justificativa**: pedido do autor.
