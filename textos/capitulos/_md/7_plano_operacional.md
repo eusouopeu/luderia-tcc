@@ -8,7 +8,7 @@ O plano operacional traduz a demanda estimada em espaço, processos e pessoas. O
 
 A luderia ocupa um salão térreo de cerca de 130 m² na Pituba, a até 1.000 m de uma estação de metrô (seção 6.4). A área é estimativa do autor (N6), com faixa de 110 a 150 m² no cap. 9: cerca de 12 m² por mesa, mais 60 m² de balcão, acervo, cozinha e sanitários. O ponto precisa de zona que admita serviço de alimentação e lazer na LOUOS de Salvador e de licença do Corpo de Bombeiros compatível com a lotação do salão (Quadro 8.1).
 
-O salão de jogos recebe 6 mesas, de 4 a 6 lugares, com cerca de 30 assentos. O número de mesas é o maior número de mesas ocupadas visto nas visitas: 6,02 em média na noite mais cheia, na Paralela, em 30/10 (B3). As estantes do acervo ficam no próprio salão, à vista das mesas, porque a escolha do jogo faz parte do serviço. Completam a área o balcão com o caixa, a cozinha, o depósito de A&B, dois sanitários, um deles adaptado, e uma rota acessível da entrada às mesas (Lei n. 13.146/2015; ABNT NBR 9050). `[figura: croqui do salão]`
+O salão de jogos recebe 6 mesas, de 4 a 6 lugares, com cerca de 30 assentos. O número de mesas é o maior número de mesas ocupadas visto nas visitas: 6,02 em média na noite mais cheia, na Paralela, em 30/10 (B3). As estantes do acervo ficam no próprio salão, à vista das mesas, porque a escolha do jogo faz parte do serviço. Completam a área o balcão com o caixa, a cozinha, o depósito de A&B, dois sanitários, um deles adaptado, e uma rota acessível da entrada às mesas (Lei n. 13.146/2015; ABNT NBR 9050). [figura: croqui do salão]
 
 ## 7.2 CAPACIDADE INSTALADA
 
@@ -28,31 +28,27 @@ O horário segue uma regra simples: as 8 horas contínuas com mais luderias aber
 
 Fonte: elaborado pelo próprio autor com base nos Blocos B1 e B3 (2026) e no modelo do cap. 9.
 
-A demanda provável usa 50% da capacidade. As mesas ocupadas em média ficam limitadas pelo salão: nas visitas, o pico de mesas ocupadas foi 1,29 vez a média. Com 6 mesas, a média do fim de semana pode chegar a 4,65 mesas sem que o pico passe do salão. O provável, de 4,37 mesas, fica abaixo desse teto; o otimista é cortado nele.
-
-Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto.
+A demanda provável usa 50% da capacidade. As mesas ocupadas em média ficam limitadas pelo salão: nas visitas, o pico de mesas ocupadas foi 1,29 vez a média. Com 6 mesas, a média do fim de semana pode chegar a 4,65 mesas sem que o pico passe do salão. O provável, de 4,37 mesas, fica abaixo desse teto; o otimista é cortado nele. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto.
 
 ## 7.3 PROCESSOS OPERACIONAIS
 
-A jornada do cliente tem cinco etapas. Na chegada, o instrutor no balcão registra o grupo e cobra a taxa de entrada por pessoa, válida por um turno de 3 horas; a reserva antecipada segue os mesmos turnos. Na mesa, o instrutor sugere títulos pelo perfil do grupo e explica as regras. O pedido de A&B é feito ao mesmo instrutor. No fim, a conta é paga no balcão, com NFC-e para toda venda, como o cap. 8 assume. Por último, o instrutor confere as peças do jogo devolvido antes de guardar a caixa `[figura: fluxograma da jornada do cliente]`.
+A jornada do cliente tem cinco etapas. Na chegada, o instrutor no balcão registra o grupo e cobra a taxa de entrada por pessoa, válida por um turno de 3 horas; a reserva antecipada segue os mesmos turnos. Na mesa, o instrutor sugere títulos pelo perfil do grupo e explica as regras. O pedido de A&B é feito ao mesmo instrutor. No fim, a conta é paga no balcão, com NFC-e para toda venda, como o cap. 8 assume. Por último, o instrutor confere as peças do jogo devolvido antes de guardar a caixa [figura: fluxograma da jornada do cliente].
 
 O acúmulo de funções vem da referência medida. Em todas as visitas à São Jogue, os instrutores também atendiam as mesas, cuidavam do balcão e operavam o caixa: não havia caixa, garçom nem atendente separados (B3). A luderia repete esse arranjo.
 
 A explicação de regras é o processo que mais pesa na avaliação. A mediação lúdica aparece em 16,4% das avaliações dos concorrentes e, quando negativa, acompanha nota média de 2,83 (B2, codificação provisória de 15/10/2026, cap. 5). O plano trata a explicação como serviço de mesa, com no máximo 2 mesas por instrutor no pico, e não como tarefa de quem estiver livre.
 
-Um site de recomendação apoia esse serviço. O cliente ou o instrutor informa o número de pessoas, o tempo disponível, a idade do mais novo, o peso das regras e o estilo do grupo; o site lista os jogos do acervo que combinam e traz um tutorial rápido de cada um. As buscas, os jogos escolhidos e os jogos procurados que não estão no acervo ficam gravados e alimentam os gatilhos de expansão (seção 7.4) e de contingência (seção 10.5).
+Um site de recomendação apoia esse serviço. O cliente ou o instrutor informa o número de pessoas, o tempo disponível, a idade do mais novo, o peso das regras e o estilo do grupo; o site lista os jogos do acervo que combinam e traz um tutorial rápido de cada um. As buscas, os jogos escolhidos e os jogos procurados que não estão no acervo ficam gravados e alimentam os gatilhos de expansão (seção 7.4) e de contingência (seção 10.4).
 
-O A&B tem cozinha completa desde a abertura, com lanches, porções e pratos de preparo rápido, além de bebidas. É o modelo da maioria dos concorrentes e a maior fonte de receita do plano: 56,7% da receita bruta no provável (cap. 9). Os cardápios do B1 dão a base de preço e de composição. Um cardápio só com comidas recebidas prontas, como salgados (coxinha e quibe), fica como medida de perda máxima: entra se o caixa ficar negativo ou se a saída for avaliada (gatilhos G5 e G6, seção 10.5), e corta um cozinheiro e parte do custo fixo.
+O A&B tem cozinha completa desde a abertura, com lanches, porções e pratos de preparo rápido, além de bebidas. É o modelo da maioria dos concorrentes e a maior fonte de receita do plano: 56,7% da receita bruta no provável (cap. 9). Os cardápios do B1 dão a base de preço e de composição. Um cardápio só com comidas recebidas prontas, como salgados (coxinha e quibe), fica como medida de perda máxima: entra se o caixa ficar negativo ou se a saída for avaliada (gatilhos G5 e G6, seção 10.4), e corta um cozinheiro e parte do custo fixo.
 
 ## 7.4 GESTÃO DO ACERVO
 
 O acervo inicial tem 175 títulos, ao custo provável de R$ 35 mil (I05). São os jogos presentes em 12 ou mais dos 30 acervos publicados pelos concorrentes do B1 (17/10/2026). O corte está no joelho da curva de presença: abaixo de 12 casas, cada casa a menos acrescenta cada vez mais jogos raros. O preço de cada jogo é a mediana da venda nas lojas online de 8 concorrentes do B1; os 40 títulos sem preço entram pelo preço médio por título. A faixa do cap. 9 é de 15% para cima e para baixo, a variação típica do preço do mesmo jogo entre as lojas. A São Jogue lista 370 títulos, e uma das visitas contou 350 caixas só no salão da Bela Vista (B3, 10/10/2026).
 
-Todas as cartas do acervo recebem sleeves (protetores) desde a abertura, e os jogos novos de cada ampliação também. O sleeve reduz o desgaste, que é o principal custo de reposição de jogos de cartas.
-
 O acervo cresce por gatilho. A ampliação até 322 títulos, a mediana dos acervos do B1, acontece quando, por três meses seguidos, ao menos 10% das mesas pedem jogos fora do acervo, ou quando o site de recomendação registra buscas frequentes por jogos para um número de pessoas ou de uma mecânica com pouca oferta no acervo. A escolha dos títulos segue esses pedidos e os jogos citados nas avaliações (B2), depois da recodificação da seção 5.2.
 
-A conferência de peças acontece na devolução de cada jogo, pelo instrutor. Jogo com peça faltando sai da estante até a reposição. A reposição por desgaste e perda, sleeves incluídos, consome 10% do valor do acervo por ano (C13, N6, faixa de 5% a 15%). A mesma verba renova o acervo.
+A conferência de peças acontece na devolução de cada jogo, pelo instrutor. Jogo com peça faltando sai da estante até a reposição. Todas as cartas do acervo recebem sleeves (protetores) desde a abertura, e os jogos novos de cada ampliação também, porque o desgaste é o principal custo de reposição de jogos de cartas. A reposição por desgaste e perda, sleeves incluídos, consome 10% do valor do acervo por ano (C13, N6, faixa de 5% a 15%). A mesma verba renova o acervo.
 
 ## 7.5 ESTRUTURA ORGANIZACIONAL E PESSOAL
 
@@ -72,6 +68,26 @@ Fonte: elaborado pelo próprio autor com base no Bloco B3 (2026) e no Novo CAGED
 
 A folha com encargos fica em 22,6% da receita do ano maduro provável, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). O salário de admissão do Novo CAGED tende a ficar abaixo do salário pago a quem já está no cargo; por isso, o cap. 9 testa um acréscimo de até 11,4% sobre ele. A São Jogue opera com mais gente: de três a sete instrutores no salão nas visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
 
-Contratar instrutores como jovens aprendizes reduz pouco o custo. Os salários já estão no piso, e o aprendiz trabalha no máximo 6 horas por dia, o que exige mais pessoas para cobrir as mesmas horas; menores de 18 anos não podem trabalhar depois das 22h (CLT, art. 404 e art. 432). O estágio exige relação com o curso do estudante (Lei n. 11.788/2008) e não cabe na função de atendimento. As duas formas ficam fora do provável.
+Contratar instrutores como jovens aprendizes reduz pouco o custo. Os salários já estão no piso, e o aprendiz trabalha no máximo 6 horas por dia, o que exige mais pessoas para cobrir as mesmas horas; menores de 18 anos não podem trabalhar depois das 22h (CLT, art. 404 e art. 432). O estágio exige relação com o curso do estudante (Lei n. 11.788/2008) e não cabe na função de atendimento. As duas formas ficam fora do provável. Fora da equipe fixa, o contador é terceirizado (R$ 1.200,00 por mês, C11). A limpeza diária entra nas tarefas de abertura e fechamento da equipe.
 
-Fora da equipe fixa, o contador é terceirizado (R$ 1.200,00 por mês, C11). A limpeza diária entra nas tarefas de abertura e fechamento da equipe.
+**Referências citadas neste capítulo**
+
+BRASIL. Lei nº 11.788, de 25 de setembro de 2008. Dispõe sobre o estágio de estudantes. *Diário Oficial da União*: seção 1, Brasília, DF, 26 set. 2008. [AV]
+
+BRASIL. Lei nº 13.146, de 6 de julho de 2015. Institui a Lei Brasileira de Inclusão da Pessoa com Deficiência (Estatuto da Pessoa com Deficiência). *Diário Oficial da União*: seção 1, Brasília, DF, 7 jul. 2015. [AV]
+
+IBGE. *Censo Demográfico 2022*: população residente por idade. Rio de Janeiro: IBGE, 2023. `[AV ano]`
+
+IBGE. *Estimativas da população residente*: 2026. Rio de Janeiro: IBGE, 2026.
+
+IBGE. *Pesquisa Anual de Serviços (PAS)*: tabelas 2611, 2619 e 10758. Rio de Janeiro: IBGE, 2025-2026. `[AV ano de cada edição]`
+
+IBGE. *Pesquisa de Orçamentos Familiares 2017-2018*: perfil das despesas no Brasil: indicadores selecionados de alimentação, transporte, lazer e inclusão financeira. Rio de Janeiro: IBGE, 2021. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv101844.pdf. Acesso em: 2 nov. 2026.
+
+IBGE. *Pesquisa de Orçamentos Familiares 2017-2018*: tabelas 6715 e 6972. Rio de Janeiro: IBGE, 2019.
+
+IBGE. *Pesquisa Nacional por Amostra de Domicílios Contínua*: tabelas 5436 e 7395. Rio de Janeiro: IBGE, 2026.
+
+IBGE. *Regiões de influência das cidades 2018*. Rio de Janeiro: IBGE, 2020.
+
+IBGE. *Sistema Nacional de Índices de Preços ao Consumidor*: IPCA, tabela 7060. Rio de Janeiro: IBGE, 2026.

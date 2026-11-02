@@ -8,6 +8,8 @@ Responder se o negócio é viável e sob quais condições. O capítulo não val
 
 ## Divisão de subcapítulos
 
+No TMin, desde 02/11/2026, a numeração é outra: ver [1_estrutura.md](1_estrutura.md), cap. 9.
+
 | Subcapítulo | Conteúdo |
 |---|---|
 | **9.1 Árvore de direcionadores** | Decomposição de receita e custo (§1) |

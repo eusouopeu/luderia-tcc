@@ -1,8 +1,8 @@
 # 3 METODOLOGIA
 
-Este trabalho consiste em um plano de negócios baseado em evidências. Cada decisão do plano se baseia em um dado, obtido por fonte documental ou observacional e classificado em uma escala de confiança elaborada pelo próprio autor. A fundamentação do plano de negócios se deu por meio de uma etapa de pesquisa descritivo-exploratória, de abordagem mista (quali-quanti) e delineamento transversal, realizada em outubro de 2026.
+Este trabalho consiste em um plano de negócios baseado em evidências. Cada decisão do plano se baseia em um dado, obtido por fonte documental ou observacional e classificado em uma escala de confiança elaborada pelo próprio autor. A fundamentação do plano de negócios se deu por meio de uma pesquisa descritivo-exploratória, de abordagem mista (quali-quanti) e delineamento transversal, realizada em outubro de 2026.
 
-Três termos têm sentido fixo ao longo do texto. **Luderia** é o estabelecimento que combina alimentos e bebidas com acervo de jogos de mesa para uso no local, incluídos os formatos ludobar e quiz-bar. **Concorrente** é a luderia aprovada na curadoria do Bloco B1. **Avaliação** é a avaliação com texto publicada no Google Maps.
+Três termos têm sentido fixo ao longo do texto. Luderia é o estabelecimento que combina alimentos e bebidas com acervo de jogos de mesa para uso no local, incluídos os formatos ludobar e quiz-bar. Concorrente é a luderia aprovada na curadoria do Bloco B1. Avaliação é a avaliação com texto publicada no Google Maps.
 
 Visando mitigar as distorções entre o que é dito e o que ocorre na realidade, o trabalho não faz uso de questionários de opinião ou de intenção de compra. Em vez disso, todas as premissas vêm de bases públicas, de rastros digitais reais dos concorrentes e de contagens diretas realizadas em visitas presenciais.
 
@@ -33,7 +33,7 @@ Os dados que alimentam essa escala vêm de quatro blocos de coleta (Quadro 3.2).
 
 | Bloco | Fonte | Recorte | Uso no plano |
 |---|---|---|---|
-| B1 — Concorrentes | Google Places API; Google Maps; site, Instagram, cardápio e acervo de cada concorrente | Luderias com mais de 100 avaliações nas 14 metrópoles da REGIC 2018 (IBGE): 54 concorrentes | Concorrência, preço, cardápio, ponto, acervo, ticket médio |
+| B1 — Concorrentes | Google Places API; Google Maps; Instagram; Ludopedia; Acervo de Jogos; sites próprios de cada concorrente | Luderias com mais de 100 avaliações nas 14 metrópoles da REGIC 2018 (IBGE): 54 concorrentes | Concorrência, preço, cardápio, ponto, acervo, ticket médio |
 | B2 — Avaliações recentes | Página de avaliações de cada concorrente no Google Maps | Avaliações com rótulo de data até "3 meses atrás", inclusive | Proposta de valor, reclamações, tamanho do grupo, jogos citados |
 | B3 — Contagem direta | Observação nas duas unidades da São Jogue, com leitura da NFC-e | 4 visitas, sexta e sábado à noite, out/2026 | Taxa de ocupação, permanência, tamanho do grupo, fluxo |
 | B4 — Bases públicas | IBGE, Novo CAGED, FipeZap, Simples Nacional, Banco Central, CONCLA | Salvador e demais capitais; 2017 a 2026 | Público, aluguel, salários, tributos, taxa de desconto |
@@ -50,13 +50,13 @@ A cesta de jogos reúne os títulos presentes em 15 ou mais dos 30 acervos publi
 
 ### 3.2.2 Bloco B2 — Avaliações recentes
 
-O Bloco B2 usa o rótulo de data que o Google Maps mostra em cada avaliação. O rótulo "3 meses atrás" cobre de 90 a 119 dias. O número de avaliações no recorte, dividido pela duração da janela, dá a **velocidade de avaliações**, em avaliações com texto por mês. A coleta foi feita por script no navegador, em outubro de 2026, com o nome do autor trocado por um código. Avaliação com texto cortado é marcada, e o concorrente é coletado de novo. A base de codificação tem 1.628 avaliações.
+O Bloco B2 usa o rótulo de data que o Google Maps mostra em cada avaliação. O rótulo "3 meses atrás" cobre de 90 a 119 dias. O número de avaliações no recorte, dividido pela duração da janela, dá a velocidade de avaliações, em avaliações com texto por mês. A coleta foi feita por script no navegador, em outubro de 2026, com o nome do avaliador trocado por um código. Avaliação com texto cortado é marcada, e o concorrente é coletado de novo. A base de codificação tem 1.628 avaliações.
 
 ### 3.2.3 Bloco B3 — Contagem direta de ocupação
 
 A contagem direta é a âncora absoluta do trabalho. Foram quatro visitas à São Jogue, única luderia de Salvador, sempre na noite de sexta ou sábado: Bela Vista em 10/10 e 16/10 e Paralela em 17/10 e 30/10/2026, com 10,9 horas observadas e 27 grupos de mesa, com 101 pessoas.
 
-O observador fica sentado a uma mesa como cliente, e essa mesa sai dos registros e do denominador. Um aplicativo para Android, desenvolvido para o trabalho, grava a entrada e a saída de cada grupo, o número de pessoas, os jogos e as chamadas ao instrutor (Apêndice G). A **taxa de ocupação** é a proporção média das mesas ocupadas, calculada minuto a minuto, sobre 10 mesas na Bela Vista e 9 na Paralela.
+O observador fica sentado a uma mesa como cliente, e essa mesa sai dos registros e do denominador. Um aplicativo para Android, desenvolvido para o trabalho, grava a entrada e a saída de cada grupo, o número de pessoas, os jogos e as chamadas ao instrutor (Apêndice G). A taxa de ocupação é a proporção média das mesas ocupadas, calculada minuto a minuto, sobre 10 mesas na Bela Vista e 9 na Paralela.
 
 A contagem cobre só as horas observadas; para estimar as vendas fora delas, o trabalho usa a numeração das notas fiscais. A NFC-e de uma compra do autor no início e no fim de cada visita dá o número da nota. A diferença entre as visitas da mesma unidade dá as notas emitidas no intervalo: 183 na Bela Vista, em 6 dias, e 209 na Paralela, em 13 dias. Como as duas unidades só emitem a nota a pedido do cliente, as notas são um piso das vendas.
 
@@ -68,9 +68,7 @@ As bases públicas dão o público e a renda (Censo 2022, estimativas de popula�
 
 Os dados passam por coleta, tratamento e análise, cada etapa com scripts próprios. Os brutos com nomes de pessoas ficam fora do repositório público, todo sorteio usa semente fixa, e qualquer número do texto pode ser gerado de novo a partir dos scripts.
 
-As avaliações são codificadas por análise de conteúdo (BARDIN, 2002, p. 104–108). A unidade de registro é o tema, trecho que expressa um juízo sobre um atributo do concorrente, e a enumeração é por presença. O dicionário tem 22 temas, os mesmos para elogio e crítica: jogos, equipe e serviço, comida e bebida, preço, ambiente e regras da casa. Ocasião da visita e público vão para uma coluna de contexto. A codificação foi feita com apoio de inteligência artificial, pelo dicionário, e é validada pela recodificação do autor, descrita adiante.
-
-A validação estima o erro não amostral de cobertura, medida e processamento (GROVES et al., 2009, seç. 2.3), com procedimento próprio para cada bloco (Quadro 3.3).
+As avaliações são codificadas por análise de conteúdo (BARDIN, 2002, p. 104–108). A unidade de registro é o tema, trecho que expressa um juízo sobre um atributo do concorrente, e a enumeração é por presença. O dicionário tem 22 temas, os mesmos para elogio e crítica: jogos, equipe e serviço, comida e bebida, preço, ambiente e regras da casa. Ocasião da visita e público vão para uma coluna de contexto. A codificação foi feita com apoio de inteligência artificial, pelo dicionário, e é validada pela recodificação do autor, descrita adiante. A validação estima o erro não amostral de cobertura, medida e processamento (GROVES et al., 2009, seç. 2.3), com procedimento próprio para cada bloco (Quadro 3.3).
 
 **Quadro 3.3 – Validação por bloco**
 
@@ -82,23 +80,21 @@ A validação estima o erro não amostral de cobertura, medida e processamento (
 
 Fonte: elaboração própria.
 
-Nos Blocos B1 e B2, uma amostra de auditoria sorteada com semente fixa é conferida na página: 20% dos concorrentes e 200 unidades de cada variável. A taxa de erro sai com intervalo de confiança de 95% pelo método de Wilson (1927) `[AV]`, e a variável é aceita quando o limite superior fica em 5% ou menos. A completude das avaliações é conferida em todos os concorrentes, porque as falhas se concentram em certas páginas.
+Nos Blocos B1 e B2, uma amostra de auditoria sorteada com semente fixa é conferida na página: 20% dos concorrentes e 200 unidades de cada variável. A taxa de erro sai com intervalo de confiança de 95% pelo método de Wilson (1927) [AV], e a variável é aceita quando o limite superior fica em 5% ou menos. A completude das avaliações é conferida em todos os concorrentes, porque as falhas se concentram em certas páginas.
 
-A codificação é validada por recodificação cega de 139 avaliações sorteadas com estratificação. A concordância é medida pelo kappa de Cohen (COHEN, 1960) `[AV]`, por tema, com aceitação a partir de 0,70; tema abaixo do critério é reportado como exploratório e não sustenta premissa sozinho. No Bloco B3, a contagem inicial mais as entradas e menos as saídas é comparada às contagens periódicas de mesas.
+A codificação é validada por recodificação cega de 139 avaliações sorteadas com estratificação. A concordância é medida pelo kappa de Cohen (COHEN, 1960) [AV], por tema, com aceitação a partir de 0,70; tema abaixo do critério é reportado como exploratório e não sustenta premissa sozinho. No Bloco B3, a contagem inicial mais as entradas e menos as saídas é comparada às contagens periódicas de mesas.
 
 ## 3.4 TÉCNICAS DE ANÁLISE
 
 Cada capítulo do plano usa os dados com uma técnica própria. No marketing, a análise de penalidade e recompensa compara a nota média com e sem crítica a cada tema, com peso igual por concorrente, e separa os atributos obrigatórios dos que diferenciam. No operacional, as reclamações são ordenadas pela frequência, e o tamanho dos grupos e a permanência dimensionam as mesas.
 
-No financeiro, as mesas ocupadas no fim de semana vêm da contagem direta. O ticket médio soma a taxa de entrada média dos concorrentes que a cobram e a cesta de consumo média dos cardápios, uma bebida e uma entrada ou prato, dividida pelas pessoas que a compartilham. O **giro**, número de grupos que uma mesa recebe por dia, vai do piso das notas fiscais ao horário de funcionamento dividido pela permanência média.
+No financeiro, as mesas ocupadas no fim de semana vêm da contagem direta. O ticket médio soma a taxa de entrada média dos concorrentes que a cobram e a cesta de consumo média dos cardápios, uma bebida e uma entrada ou prato, dividida pelas pessoas que a compartilham. O giro, número de grupos que uma mesa recebe por dia, vai do piso das notas fiscais ao horário de funcionamento dividido pela permanência média.
 
-O **fluxo**, em visitantes por semana, é estimado na São Jogue por dois caminhos. As notas fiscais dão o limite inferior, e a contagem no movimento máximo, estendida às horas de fim de semana, dá o limite superior. A razão entre a velocidade de avaliações e o fluxo da São Jogue estende a estimativa aos demais concorrentes, sempre em faixa (N5 + N3). Toda proporção usada em premissa vem com intervalo de confiança.
-
-A matriz de evidências, que liga cada decisão do plano à pergunta, ao dado, à fonte e ao nível, está no Apêndice `[letra]`.
+O fluxo, em visitantes por semana, é estimado na São Jogue por dois caminhos. As notas fiscais dão o limite inferior, e a contagem no movimento máximo, estendida às horas de fim de semana, dá o limite superior. A razão entre a velocidade de avaliações e o fluxo da São Jogue estende a estimativa aos demais concorrentes, sempre em faixa (N5 + N3). Toda proporção usada em premissa vem com intervalo de confiança. A matriz de evidências, que liga cada decisão do plano à pergunta, ao dado, à fonte e ao nível, está no Apêndice [letra].
 
 ## 3.5 ASPECTOS ÉTICOS E LEGAIS
 
-As avaliações são informações de acesso público, e o nome de usuário é trocado por um código na coleta. A contagem direta é observação agregada em espaço comercial aberto ao público, sem fotos nem interação com clientes. O tratamento segue a Lei nº 13.709/2018 (LGPD) e a Resolução CNS nº 510/2016 `[AV]`, e a dispensa de submissão ao Comitê de Ética foi consultada com a orientação.
+As avaliações são informações de acesso público, e o nome de usuário é trocado por um código na coleta. A contagem direta é observação agregada em espaço comercial aberto ao público, sem fotos nem interação com clientes. O tratamento segue a Lei nº 13.709/2018 (LGPD) e a Resolução CNS nº 510/2016 [AV], e a dispensa de submissão ao Comitê de Ética foi consultada com a orientação.
 
 ## 3.6 LIMITAÇÕES
 

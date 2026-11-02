@@ -2,8 +2,6 @@
 
 O plano financeiro converte as decisões dos capítulos 5 a 8 em receitas, custos e indicadores de viabilidade. O modelo projeta o desenho enxuto do cap. 7 na etapa de abertura: 6 mesas, 48 horas por semana, equipe de 6 e acervo de 175 títulos. As etapas de expansão ficam fora do fluxo de caixa base e entram no cap. 10 como opções. O capítulo parte da estrutura do modelo e do registro de premissas, projeta investimento, resultado e fluxo de caixa e termina na sensibilidade e nas checagens de coerência.
 
-## 9.1 ÁRVORE DE DIRECIONADORES
-
 A receita da luderia depende de três grandezas físicas e de dois preços. As pessoas atendidas saem das mesas ocupadas, das pessoas por mesa e dos giros por dia, e a receita sai dessas pessoas multiplicadas pela taxa de entrada e pelo consumo de alimentos e bebidas (A&B). O consumo por pessoa é a cesta de consumo, uma bebida e uma entrada ou prato, dividida pelas pessoas que a compartilham. As mesas ocupadas se separam em fim de semana (sexta a domingo) e dia útil (terça a quinta). Cada folha da árvore corresponde a uma linha do registro de premissas (Quadro 9.1).
 
 **Quadro 9.1 – Árvore de direcionadores do modelo financeiro**
@@ -20,13 +18,11 @@ A receita da luderia depende de três grandezas físicas e de dois preços. As p
 
 Fonte: elaboração própria.
 
-As mesas do salão (R01), a permanência (R03) e o horário (R13 e R14) não entram na receita: conferem se as mesas ocupadas e os giros cabem no salão e no horário (seção 9.8).
+As mesas do salão (R01), a permanência (R03) e o horário (R13 e R14) não entram na receita: conferem se as mesas ocupadas e os giros cabem no salão e no horário (seção 9.6). O modelo usa preços constantes de outubro de 2026 e taxa mínima de atratividade (TMA) real. A projeção é mensal nos 60 meses, para capturar a rampa do ano 1, e anual nos demonstrativos.
 
-O modelo usa preços constantes de outubro de 2026 e taxa mínima de atratividade (TMA) real. A projeção é mensal nos 60 meses, para capturar a rampa do ano 1, e anual nos demonstrativos.
+## 9.1 REGISTRO DE PREMISSAS
 
-## 9.2 REGISTRO DE PREMISSAS
-
-O modelo tem 41 premissas, cada uma com faixa pessimista, provável e otimista, fonte e nível de evidência (Apêndice `[letra]`). O Quadro 9.2 traz as que movem o VPL em mais de R$ 100 mil entre os extremos da faixa.
+O modelo tem 41 premissas, cada uma com faixa pessimista, provável e otimista, fonte e nível de evidência (Apêndice [letra]). O Quadro 9.2 traz as que movem o VPL em mais de R$ 100 mil entre os extremos da faixa.
 
 **Quadro 9.2 – Premissas de maior impacto no VPL**
 
@@ -52,7 +48,7 @@ Fonte: elaboração própria, com dados dos Blocos B1, B3 e B4 (out/2026).
 
 As premissas de demanda vêm da contagem direta na São Jogue (B3). Nas quatro noites, os grupos tiveram 3,6 pessoas em média, a permanência média foi de 109 minutos, e 4,37 mesas ficaram ocupadas em média, de 2,69 a 6,02 por visita. A faixa das mesas ocupadas vai 38% para cada lado: é a distância média dos extremos observados até a média. O salão de 6 mesas corta o otimista em 4,65 mesas: nas visitas, o pico foi 1,29 vez a média, e uma média maior faria o pico passar do salão. As mesas ocupadas em dia útil são estimativa do autor (N6), em cerca de metade das do fim de semana, porque não houve visita em dia útil.
 
-Os giros partem de dois limites medidos. O pessimista, de 3,61 grupos por mesa ocupada por dia, é calibrado para atender as NFC-e emitidas por dia na Paralela, 16,1, com a semana de funcionamento da São Jogue; como cada cliente recebe uma nota, mas a nota só sai a pedido, esse número é piso (seção 9.7.1). O otimista, de 4,41, divide as 8 horas abertas por dia pela permanência média de 109 minutos. O provável fica na média dos dois: 4,01. As horas de menor movimento das concorrentes ficam fora do horário (cap. 7), o que sustenta o giro calibrado num dia de 10 horas.
+Os giros partem de dois limites medidos. O pessimista, de 3,61 grupos por mesa ocupada por dia, é calibrado para atender as NFC-e emitidas por dia na Paralela, 16,1, com a semana de funcionamento da São Jogue; como cada cliente recebe uma nota, mas a nota só sai a pedido, esse número é piso (seção 9.5). O otimista, de 4,41, divide as 8 horas abertas por dia pela permanência média de 109 minutos. O provável fica na média dos dois: 4,01. As horas de menor movimento das concorrentes ficam fora do horário (cap. 7), o que sustenta o giro calibrado num dia de 10 horas.
 
 Os preços vêm dos cardápios dos concorrentes (seção 6.3). A taxa de entrada é a média das 22 casas que a cobram, R$ 18,68 por pessoa, em todos os dias. O consumo parte da cesta média de 36 casas, R$ 50,82, dividida por três pessoas no pessimista, duas no provável e uma no otimista: de R$ 16,94 a R$ 50,82 por pessoa. Taxa e cesta são iguais nos três cenários; a variação do consumo entra pelas pessoas por cesta.
 
@@ -66,9 +62,9 @@ Falta a taxa que desconta esses fluxos. A TMA real provável é de 15% ao ano. A
 
 Fonte: elaboração própria, com base no Banco Central do Brasil, SGS (séries 432 e 13522) e Relatório Focus de 11/09/2026.
 
-## 9.3 INVESTIMENTO INICIAL
+## 9.2 INVESTIMENTO INICIAL
 
-O investimento inicial provável é de R$ 369 mil, com a reforma (35%) e o capital de giro (17%) como maiores itens (Tabela 9.1). O acervo de 175 títulos custa R$ 35 mil, com faixa de 15% para cada lado: a variação típica do preço do mesmo jogo entre as lojas do B1. O acervo também recebe sleeves em todas as cartas, ainda sem custo levantado `[pendente]`.
+O investimento inicial provável é de R$ 369 mil, com a reforma (35%) e o capital de giro (17%) como maiores itens (Tabela 9.1). O acervo de 175 títulos custa R$ 35 mil, com faixa de 15% para cada lado: a variação típica do preço do mesmo jogo entre as lojas do B1. O acervo também recebe sleeves em todas as cartas, ainda sem custo levantado [pendente].
 
 **Tabela 9.1 – Investimento inicial por cenário (R$)**
 
@@ -88,7 +84,7 @@ Fonte: elaboração própria (aba investimento do modelo).
 
 O A&B tem cozinha completa desde a abertura: R$ 60 mil de investimento e CMV de 30%. O capital de giro cobre dois meses de custos fixos, R$ 64 mil, e absorve o EBITDA negativo de R$ 14 mil do ano 1. O modelo supõe capital próprio, sem financiamento.
 
-## 9.4 RECEITAS, CUSTOS E DESPESAS PROJETADOS
+## 9.3 RECEITAS, CUSTOS E RESULTADOS PROJETADOS
 
 Na maturidade, o cenário provável atende 1.230 pessoas por mês, cerca de 47 por dia aberto, e a receita bruta mensal chega a R$ 55,1 mil (Tabela 9.2). A rampa começa em 40% do fluxo maduro e chega a 100% no mês 9.
 
@@ -112,9 +108,7 @@ Fonte: elaboração própria (abas receitas e custos do modelo).
 
 O pessoal é o maior custo fixo: 6 pessoas, com folha de R$ 9,1 mil e encargos de 37%. O A&B é a maior receita, com 56,7%, porque a taxa média dos concorrentes é menor que a cesta dividida por dupla. O Simples Nacional custa 8,9% da receita, com o enquadramento da seção 8.1.
 
-## 9.5 DEMONSTRATIVOS PROJETADOS
-
-O cenário provável dá prejuízo só no ano 1, durante a rampa. A partir do ano 2, o EBITDA é de R$ 88 mil por ano, e o lucro, depois da depreciação de R$ 48 mil, de R$ 40 mil (Tabela 9.3).
+O cenário provável dá prejuízo só no ano 1, durante a rampa. A partir do ano 2, o EBITDA é de R$ 88 mil por ano, e o lucro, depois da depreciação de R$ 48 mil, de R$ 40 mil (Tabela 9.3). O fluxo de caixa repete o EBITDA, com o investimento no ano 0. No ano 5 voltam a caução e o capital de giro e entra o valor residual: a perpetuidade, sem crescimento, do EBITDA do ano 5 menos um reinvestimento igual à depreciação, descontada à TMA (ASSAF NETO, 2014). No provável, o valor residual é de R$ 270 mil.
 
 **Tabela 9.3 – Demonstração do resultado projetada, cenário provável (R$)**
 
@@ -131,11 +125,9 @@ O cenário provável dá prejuízo só no ano 1, durante a rampa. A partir do an
 
 Fonte: elaboração própria (aba dre do modelo).
 
-O fluxo de caixa repete o EBITDA, com o investimento no ano 0. No ano 5 voltam a caução e o capital de giro e entra o valor residual: a perpetuidade, sem crescimento, do EBITDA do ano 5 menos um reinvestimento igual à depreciação, descontada à TMA (ASSAF NETO, 2014). No provável, o valor residual é de R$ 270 mil.
+## 9.4 INDICADORES DE VIABILIDADE
 
-## 9.6 INDICADORES DE VIABILIDADE
-
-O negócio fica no limite da viabilidade no cenário provável. O VPL a 15% real é de R$ 13 mil, a TIR real é de 16,0% ao ano, um ponto acima da TMA, e o investimento se paga em 4,9 anos (Tabela 9.4). A receita madura fica 23% acima do ponto de equilíbrio operacional, de R$ 44,8 mil por mês. O resultado depende do valor residual: sem ele, o VPL provável é negativo em R$ 121 mil.
+O negócio fica no limite da viabilidade no cenário provável. O VPL a 15% real é de R$ 13 mil, a TIR real é de 16,0% ao ano, um ponto acima da TMA, e o investimento se paga em 4,9 anos (Tabela 9.4). A receita madura fica 23% acima do ponto de equilíbrio operacional, de R$ 44,8 mil por mês. O resultado depende do valor residual: sem ele, o VPL provável é negativo em R$ 121 mil. Os cenários extremos põem todas as premissas no mesmo lado da faixa ao mesmo tempo: servem de limite, não de previsão. A decisão depende de onde as premissas críticas ficam (seção 9.5).
 
 **Tabela 9.4 – Indicadores de viabilidade por cenário**
 
@@ -151,15 +143,9 @@ O negócio fica no limite da viabilidade no cenário provável. O VPL a 15% real
 
 Fonte: elaboração própria (aba sensibilidade do modelo).
 
-Os cenários extremos põem todas as premissas no mesmo lado da faixa ao mesmo tempo: servem de limite, não de previsão. A decisão depende de onde as premissas críticas ficam (seção 9.7).
+## 9.5 TRIANGULAÇÃO, SENSIBILIDADE E PONTO DE RUPTURA
 
-## 9.7 TRIANGULAÇÃO, SENSIBILIDADE E PONTO DE RUPTURA
-
-### 9.7.1 Triangulação da receita
-
-O fluxo provável fica acima dos dois pisos de clientes da São Jogue. Pela numeração das NFC-e (B3), a Bela Vista emitiu 30,5 notas por dia e a Paralela, 16,1. Cada cliente recebe uma comanda e uma nota, mas a nota só sai quando o cliente pede: as notas são piso do número de clientes. O modelo atende 40,5 pessoas por dia de calendário no provável, 1,3 vez o piso da Bela Vista; o pessimista foi calibrado no piso da Paralela. A estimativa de demanda do cap. 6 completa a triangulação `[pendente]`.
-
-### 9.7.2 Sensibilidade
+O fluxo provável fica acima dos dois pisos de clientes da São Jogue. Pela numeração das NFC-e (B3), a Bela Vista emitiu 30,5 notas por dia e a Paralela, 16,1. Cada cliente recebe uma comanda e uma nota, mas a nota só sai quando o cliente pede: as notas são piso do número de clientes. O modelo atende 40,5 pessoas por dia de calendário no provável, 1,3 vez o piso da Bela Vista; o pessimista foi calibrado no piso da Paralela. A estimativa de demanda do cap. 6 completa a triangulação [pendente].
 
 Quatro premissas de demanda concentram o risco: pessoas por mesa, pessoas por cesta de consumo, mesas ocupadas no fim de semana e giros por dia. Cada uma move o VPL em mais de R$ 500 mil entre os extremos da faixa (Figura 9.2). Três têm dado próprio (N5); as pessoas por cesta são decisão do autor (N6), o que viola a regra de robustez e exige destaque no cap. 10.
 
@@ -169,9 +155,7 @@ Quatro premissas de demanda concentram o risco: pessoas por mesa, pessoas por ce
 
 Fonte: elaboração própria (aba sensibilidade do modelo).
 
-As pessoas por mesa e as mesas ocupadas pesam mais porque multiplicam a taxa e a cesta ao mesmo tempo; as pessoas por cesta pesam só sobre o A&B. O teto do salão encurta o lado otimista das mesas ocupadas: o ganho máximo é de R$ 185 mil, contra uma perda de R$ 669 mil no pessimista. Na simulação de Monte Carlo, com 10 mil cenários sorteados dentro das faixas, o VPL fica positivo em 44,9% deles (Apêndice `[letra]`).
-
-### 9.7.3 Ponto de ruptura
+As pessoas por mesa e as mesas ocupadas pesam mais porque multiplicam a taxa e a cesta ao mesmo tempo; as pessoas por cesta pesam só sobre o A&B. O teto do salão encurta o lado otimista das mesas ocupadas: o ganho máximo é de R$ 185 mil, contra uma perda de R$ 669 mil no pessimista. Na simulação de Monte Carlo, com 10 mil cenários sorteados dentro das faixas, o VPL fica positivo em 44,9% deles (Apêndice [letra]).
 
 As cinco premissas críticas têm ruptura colada no provável (Tabela 9.5). O negócio é viável enquanto as mesas ocupadas no fim de semana ficarem acima de 4,35 em média, com as demais premissas no provável: 0,5% abaixo do provável.
 
@@ -189,12 +173,38 @@ Fonte: elaboração própria (aba sensibilidade do modelo).
 
 Todas as rupturas ficam dentro das faixas e a menos de 2% do provável. O provável é o ponto de equilíbrio econômico do negócio: qualquer desvio das premissas críticas decide o sinal do VPL. A plausibilidade de ficar acima das rupturas, os gatilhos de contingência e as opções de expansão são discutidos no cap. 10.
 
-## 9.8 CHECAGENS DE COERÊNCIA
+## 9.6 CHECAGENS DE COERÊNCIA
 
 A capacidade comporta a demanda: as 47 pessoas por dia aberto usam 50% da capacidade do salão, de 95 pessoas por dia aberto (cap. 7). Os giros também cabem no horário: 4,01 grupos de 109 minutos ocupam 7,3 horas de mesa, contra 8 horas abertas por dia.
 
 A equipe pesa menos que no setor, e o ponto, mais. A folha com encargos custa 22,6% da receita, contra 25,1% de gastos com pessoal nos serviços de alimentação, e o aluguel com condomínio, 15,3%, contra 4,0% (IBGE, PAS 2024). O ponto é o custo que mais se afasta do setor e o primeiro a cotar.
 
-No preço, a taxa de entrada de R$ 18,68 fica abaixo da mediana de R$ 20,00 dos concorrentes que cobram e da São Jogue, de R$ 28,00 no fim de semana (seção 6.3). O preço não exige posicionamento acima do mercado.
+No preço, a taxa de entrada de R$ 18,68 fica abaixo da mediana de R$ 20,00 dos concorrentes que cobram e da São Jogue, de R$ 28,00 no fim de semana (seção 6.3). O preço não exige posicionamento acima do mercado. Por fim, a demanda projetada equivale a 14,8 mil visitas por ano, ou 0,6% da população de Salvador em 2026 (IBGE), abaixo da penetração que exigiria um mercado novo.
 
-Por fim, a demanda projetada equivale a 14,8 mil visitas por ano, ou 0,6% da população de Salvador em 2026 (IBGE), abaixo da penetração que exigiria um mercado novo.
+**Referências citadas neste capítulo**
+
+ASSAF NETO, Alexandre. *Finanças corporativas e valor*. 7. ed. São Paulo: Atlas, 2014.
+
+BANCO CENTRAL DO BRASIL (BCB). *Relatório Focus*: expectativas de mercado de 11 set. 2026. Brasília, 2026.
+
+BANCO CENTRAL DO BRASIL (BCB). *Sistema Gerenciador de Séries Temporais (SGS)*: séries 432, 1619 e 13522. Brasília, 2026. Acesso em: 14 out. 2026.
+
+BRASIL. Constituição (1988). Emenda Constitucional nº 132, de 20 de dezembro de 2023. Altera o Sistema Tributário Nacional. *Diário Oficial da União*: seção 1, Brasília, DF, 21 dez. 2023. [AV]
+
+FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). *Índice FipeZAP*: locação comercial, julho de 2026. São Paulo, 2026.
+
+IBGE. *Censo Demográfico 2022*: população residente por idade. Rio de Janeiro: IBGE, 2023. `[AV ano]`
+
+IBGE. *Estimativas da população residente*: 2026. Rio de Janeiro: IBGE, 2026.
+
+IBGE. *Pesquisa Anual de Serviços (PAS)*: tabelas 2611, 2619 e 10758. Rio de Janeiro: IBGE, 2025-2026. `[AV ano de cada edição]`
+
+IBGE. *Pesquisa de Orçamentos Familiares 2017-2018*: perfil das despesas no Brasil: indicadores selecionados de alimentação, transporte, lazer e inclusão financeira. Rio de Janeiro: IBGE, 2021. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv101844.pdf. Acesso em: 2 nov. 2026.
+
+IBGE. *Pesquisa de Orçamentos Familiares 2017-2018*: tabelas 6715 e 6972. Rio de Janeiro: IBGE, 2019.
+
+IBGE. *Pesquisa Nacional por Amostra de Domicílios Contínua*: tabelas 5436 e 7395. Rio de Janeiro: IBGE, 2026.
+
+IBGE. *Regiões de influência das cidades 2018*. Rio de Janeiro: IBGE, 2020.
+
+IBGE. *Sistema Nacional de Índices de Preços ao Consumidor*: IPCA, tabela 7060. Rio de Janeiro: IBGE, 2026.

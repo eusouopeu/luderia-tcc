@@ -76,7 +76,7 @@ Os levantamentos de jogadores mostram o preço como a barreira mais citada: 57% 
 
 ### 5.3.3 Cinco forças
 
-Os dados das seções anteriores alimentam a análise das cinco forças, resumida no Quadro 5.1.
+Os dados das seções anteriores alimentam a análise das cinco forças (Quadro 5.1). A pressão mais forte vem dos substitutos – bares, aluguel de jogos e lazer em casa –, e a rivalidade é baixa no formato de luderia, mas alta diante do bar comum. Entrantes e clientes exercem pressão média.
 
 **Quadro 5.1 – Cinco forças aplicadas à luderia em Salvador**
 

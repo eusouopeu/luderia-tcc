@@ -12,6 +12,7 @@ Vale para todos os capítulos, junto com a skill `meu-estilo-escrita`.
 4. **Números em formato único:** "R$ 53 bilhões" (não "R$ 53 bi"); percentuais com vírgula decimal ("13,1%"); faixa com "a" ("de 20 a 30 minutos"); unidade, recorte e data junto do número.
 5. **Voz ativa ou passiva analítica**, como na skill `meu-estilo-escrita`, evitando a sintética: "foi adotado", não "adotou-se"; "o trabalho estima", não "estima-se" (decisão do autor, 31/10/2026).
 6. **Travessão (—) para aposto e intercalação**, nunca hífen com espaços.
+7. **Parágrafo com pelo menos 3 linhas (cerca de 250 caracteres).** Frase que só anuncia um quadro junta-se ao parágrafo que traz o dado, com o "(Quadro X)" nessa frase; frase que fecha um assunto já tratado junta-se ao parágrafo anterior do mesmo tema. Não juntar assuntos diferentes: a regra 1 continua valendo. Antes de gerar o `.docx`, listar os parágrafos curtos e os de última linha com até 25% da largura (pedido do autor em 02/11/2026).
 
 ## P6. Vocabulário controlado
 

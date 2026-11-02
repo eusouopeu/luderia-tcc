@@ -6,6 +6,8 @@ Consolidar forças, fraquezas e riscos, e mostrar **o que acontece se as premiss
 
 ## Divisão de subcapítulos
 
+No TMin, desde 02/11/2026: matriz de riscos dentro da 10.3 e contingência e gatilhos na 10.4 (ver [1_estrutura.md](1_estrutura.md), cap. 10).
+
 ### 10.1 Matriz SWOT
 - Forças e fraquezas: internas, ligadas às decisões dos caps. 6 a 8.
 - Oportunidades e ameaças: externas, ligadas aos achados do cap. 5.

@@ -12,9 +12,9 @@ Atualizado em 02/11/2026. Prazos do [cronograma](cronograma_luderia.md); tetos d
 | 6 Plano de marketing | Rascunho parcial | ~3/8 | 16/10 (6.3, 6.4); 30/10 (demais) | B1, B2, B4 | 6.3 e 6.4 em 31/10 (Pituba indicada); Tabela 6.1 com a taxa de 22 concorrentes (prints do Instagram, site da BoardZ e cartaz do LudoCafé, 31/10). Faltam 6.1, 6.2 e 6.5 (Bardin) e 6.6 (calibração da demanda); cotar pontos na Pituba |
 | 7 Plano operacional | Rascunho ⚠ acima do teto | ~5,6/4 | 23/10 (rascunho em 31/10; desenho enxuto em 02/11) | B3; caps. 6 e 8 | Desenho enxuto em 02/11 (6 mesas, 48 h, equipe de 6, etapas); croqui e fluxograma; A&B da etapa 1 no modelo (D44) |
 | 8 Aspectos jurídicos | Rascunho | 3/3 | 09/10 (rascunho em 31/10) | B4 (Simples, CNAE, CNPJ de referência) | Conferir as normas estaduais e municipais e as alíquotas de ICMS e ISS marcadas `[AV]` |
-| 9 Plano financeiro | Rascunho | ~9,5/12 | 23/10 (rascunho em 31/10; desenho enxuto em 02/11) | B1 a B4; caps. 7 e 8 | Modelo do desenho enxuto (VPL provável de R$ 13 mil, com valor residual); A&B da etapa 1 e sleeves pendentes |
-| 10 Riscos | Rascunho | ~7/4 | 30/10 (rascunho em 31/10; gatilhos em 02/11) | Cap. 9 | Acima do teto (C17, D45); efeito das etapas de expansão no VPL não calculado |
-| 11 Considerações finais | Rascunho | ~2,5/2 | 06/11 (rascunho em 31/10) | Todos | Objetivos (ii) e (iii) aguardam a recodificação cega e o 6.6; um pouco acima do teto |
+| 9 Plano financeiro | Rascunho | ~9,5/12 | 23/10 (rascunho em 31/10; desenho enxuto em 02/11) | B1 a B4; caps. 7 e 8 | Modelo do desenho enxuto (VPL provável de R$ 13 mil, com valor residual); A&B da etapa 1 e sleeves pendentes. TMin v13 (02/11): 9.1 a 9.6, sem subseções; árvore na abertura |
+| 10 Riscos | Rascunho | ~7/4 | 30/10 (rascunho em 31/10; gatilhos em 02/11) | Cap. 9 | Acima do teto (C17, D45); efeito das etapas de expansão no VPL não calculado. TMin v13 (02/11): matriz de riscos dentro da 10.3; contingência na 10.4 |
+| 11 Considerações finais | Rascunho | ~2,5/2 | 06/11 (rascunho em 31/10) | Todos | Objetivos (ii) e (iii) aguardam a recodificação cega e o 6.6; um pouco acima do teto. TMin v13 (02/11): parecer na abertura; 11.1 objetivos e 11.2 limitações e próximos passos |
 
 ⚠ = prazo do rascunho já passou.
 

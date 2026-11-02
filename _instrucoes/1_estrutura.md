@@ -147,6 +147,8 @@ No TMin, 5.2 e 5.5 não têm subseções, e a 5.3 abre com os concorrentes das 1
 - **9.7 Triangulação, sensibilidade e ponto de ruptura** — Monte Carlo é extra, só se sobrar tempo.
 - **9.8 Checagens de coerência**
 
+No TMin, desde 02/11/2026 (pedido do autor): 9.1 Registro de premissas (a árvore de direcionadores abre o capítulo, sem título), 9.2 Investimento inicial, 9.3 Receitas, custos e resultados projetados (com a DRE e o fluxo de caixa), 9.4 Indicadores de viabilidade, 9.5 Triangulação, sensibilidade e ponto de ruptura (sem subseções), 9.6 Checagens de coerência. O TMax segue a numeração acima.
+
 ### 10. Análise Estratégica e de Riscos → [9_anal-riscos.md](9_anal-riscos.md)
 
 - **10.1 Matriz SWOT**
@@ -155,6 +157,8 @@ No TMin, 5.2 e 5.5 não têm subseções, e a 5.3 abre com os concorrentes das 1
 - **10.4 Matriz de riscos**
 - **10.5 Plano de contingência e indicadores de monitoramento**
 
+No TMin, desde 02/11/2026: a matriz de riscos entra na 10.3 (Premissas críticas, ruptura e riscos), e a contingência vira 10.4.
+
 ### 11. Considerações Finais — *sem arquivo próprio*
 
 - **11.1 Parecer de viabilidade** — resposta direta à pergunta central, com as condições que a sustentam.
@@ -162,5 +166,7 @@ No TMin, 5.2 e 5.5 não têm subseções, e a 5.3 abre com os concorrentes das 1
 - **11.3 Limitações** — principalmente das premissas de maior incerteza. Explicitar, entre elas, as do Bloco B3: a NFC-e só é emitida a pedido do cliente, então as notas emitidas são piso das vendas e o caminho das notas fiscais dá limite inferior do fluxo; e houve um único intervalo entre as visitas de cada unidade, abaixo dos 15 dias planejados (Paralela, 17/10 a 30/10/2026, 13 dias; Bela Vista, 6 dias), que não capta a variação do mês nem a sazonalidade ([4_metodologia.md](4_metodologia.md) §3.9).
 - **11.4 Próximos passos** — validações a fazer antes de investir (ex.: evento piloto, cotação de ponto).
 - **11.5 Estudos futuros** — pesquisa que ficou fora do escopo (ex.: histórico completo de avaliações, sem o recorte de três meses; histórico dos avaliadores; comparação entre modelos de alimentos e bebidas).
+
+No TMin, desde 02/11/2026: o parecer abre o capítulo, sem título; 11.1 Síntese dos objetivos; 11.2 Limitações e próximos passos (próximos passos em uma frase com remissão à 10.4, estudos futuros num parágrafo).
 
 ### Referências, Apêndices e Anexos → [10_biblio-apendices.md](10_biblio-apendices.md)
