@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.02-2
+// @version      2026.11.02-3
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -56,8 +56,17 @@
  *  Frete vazio = o card não informa (o build estima); 0 = frete grátis.
  *
  * Saída: CSV com ";" e UTF-8 com BOM. Colunas id_item; categoria; fonte; produto; preco;
- * frete; preco_anuncio; unidades; tipo_preco (padrao, pix ou cupom); cep; url; busca;
- * data_coleta; excluida (0 ou 1). preco = preco_anuncio ÷ unidades.
+ * frete; preco_anuncio; unidades; tipo_preco (padrao, pix ou cupom); cep; avaliacoes (só
+ * Amazon); leitor (proprio, jsonld ou generico); url; busca; data_coleta; excluida (0 ou 1).
+ * preco = preco_anuncio ÷ unidades.
+ *
+ * Filtros da marcação inicial (desligáveis no painel; cada oferta desmarcada mostra o motivo):
+ * faixa de preço (fora de 0,3× a 3× a mediana do que já está guardado do item), medida (o
+ * título traz a mesma grandeza do termo com outro valor: "12000 btus" para "30000 btus") e
+ * sem avaliações (card da Amazon sem nenhuma). "Só preço padrão" desmarca Pix e cupom.
+ * Atestados: funil da leitura (cards → com preço → sem patrocinado → no termo → nos filtros)
+ * e leitor usado; cobertura da categoria; quartis e dispersão P75/P25 do item (alerta acima
+ * de 3×); coleta mais antiga (alerta acima de 30 dias); ofertas mudadas desde o último CSV.
  */
 
 (function () {
@@ -67,7 +76,13 @@
   const CHAVE = 'tcc_precos_v1';
   const CHAVE_ITEM = 'tcc_precos_item';
   const CHAVE_CEP = 'tcc_precos_cep';
+  const CHAVE_FILTROS = 'tcc_precos_filtros';
+  const CHAVE_EXPORTACAO = 'tcc_precos_exportado_em';
   const MIN_OFERTAS = 3; // o build usa P25, mediana e P75: abaixo disso o item fica frágil
+  const FAIXA = [0.3, 3]; // F2: oferta fora de 0,3× a 3× a mediana do item fica desmarcada
+  const DISPERSAO_MAX = 3; // A4: P75/P25 acima disso sugere produtos diferentes no mesmo item
+  const IDADE_MAX = 30; // A7: dias até a coleta mais antiga do item pedir revisão
+  const FILTROS_PADRAO = { faixa: true, medida: true, avaliacoes: true };
 
   // Itens de fonte "coleta" da lista da etapa 1: [id, categoria, item, termo de busca].
   // O teste (precos_itens.test.cjs) confere esta lista com o CSV.
@@ -174,6 +189,63 @@
     return doTermo.filter(casa).length / doTermo.length;
   }
 
+  // Unidade de medida normalizada ("litros" -> "l", "BTUs" -> "btu", "bocas" -> "boca").
+  const UNIDADES = { l: 'l', litro: 'l', litros: 'l', ml: 'ml', btu: 'btu', btus: 'btu', cm: 'cm', mm: 'mm', m: 'm',
+    boca: 'boca', bocas: 'boca', porta: 'porta', portas: 'porta', prateleira: 'prateleira', prateleiras: 'prateleira',
+    cuba: 'cuba', cubas: 'cuba', tampa: 'tampa', tampas: 'tampa', gb: 'gb', tb: 'tb', w: 'w', kg: 'kg', polegadas: 'pol', pol: 'pol',
+    lugar: 'lugar', lugares: 'lugar', cameras: 'camera', camera: 'camera', canais: 'canal', canal: 'canal' };
+
+  // Medidas de um texto: pares número + unidade ("30000 btu") e dimensões ("160x90", em ordem crescente).
+  function medidas(t) {
+    const ps = palavras(t);
+    const pares = {};
+    ps.forEach((p, i) => {
+      const u = UNIDADES[ps[i + 1]];
+      if (/^\d+$/.test(p) && u) (pares[u] ||= new Set()).add(p);
+    });
+    const dims = new Set(ps.filter((p) => /^\d+(x\d+)+$/.test(p)).map((p) => p.split('x').map(Number).sort((a, b) => a - b).join('x')));
+    return { pares, dims };
+  }
+
+  // F3: o título traz a mesma grandeza do termo com outro valor (e não traz o do termo).
+  // Devolve o motivo ("12000 btu, termo 30000 btu") ou ''.
+  function medidaConflita(titulo, termo) {
+    const mt = medidas(termo);
+    const mo = medidas(titulo);
+    for (const [u, valores] of Object.entries(mt.pares)) {
+      const doTitulo = mo.pares[u];
+      if (doTitulo && ![...valores].some((v) => doTitulo.has(v))) return `${[...doTitulo].join('/')} ${u}, termo ${[...valores].join('/')} ${u}`;
+    }
+    if (mt.dims.size && mo.dims.size && ![...mt.dims].some((d) => mo.dims.has(d))) return `${[...mo.dims].join('/')}, termo ${[...mt.dims].join('/')}`;
+    return '';
+  }
+
+  // Motivos para uma oferta lida não vir marcada, na ordem do funil: patrocinado, termo e os
+  // filtros ligados (F2 faixa de preço, F3 medida, F5 sem avaliações). Vazio = marcada.
+  // ref = { mediana (preço + frete por unidade das guardadas do item), unidades, filtros }.
+  function motivosOferta(o, termo, ref = {}) {
+    const f = { ...FILTROS_PADRAO, ...(ref.filtros || {}) };
+    const m = [];
+    if (o.patrocinado) m.push('patrocinado');
+    if (relevancia(o.produto, termo) < 0.5) m.push('termo');
+    if (f.faixa && ref.mediana > 0) {
+      const v = (o.preco + (o.frete || 0)) / Math.max(1, Number(ref.unidades) || 1);
+      if (v < FAIXA[0] * ref.mediana || v > FAIXA[1] * ref.mediana) m.push(`faixa: ${(v / ref.mediana).toFixed(1).replace('.', ',')}× a mediana`);
+    }
+    const conflito = f.medida ? medidaConflita(o.produto, termo) : '';
+    if (conflito) m.push(`medida: ${conflito}`);
+    if (f.avaliacoes && o.avaliacoes === 0) m.push('sem avaliações');
+    return m;
+  }
+
+  // A1: funil da leitura: cards → com preço → sem patrocinado → no termo → nos filtros.
+  function funil(ofertas, cards, termo, ref) {
+    const ms = ofertas.map((o) => motivosOferta(o, termo, ref));
+    const semPat = ms.filter((m) => !m.includes('patrocinado'));
+    const noTermo = semPat.filter((m) => !m.includes('termo'));
+    return { cards, comPreco: ofertas.length, semPatrocinado: semPat.length, noTermo: noTermo.length, nosFiltros: ms.filter((m) => !m.length).length };
+  }
+
   // CEP de um texto ("Salvador 40170-110" -> "40170-110") e se é de Salvador (40000 a 42599).
   function cepDe(texto) {
     const m = String(texto || '').match(/\b(\d{5})-?(\d{3})\b/);
@@ -203,6 +275,17 @@
     const m = Math.floor(s.length / 2);
     return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
   };
+
+  // Quantil com interpolação linear, como o pandas no build.
+  const quantil = (vs, q) => {
+    const s = vs.filter((v) => Number.isFinite(v)).sort((a, b) => a - b);
+    if (!s.length) return null;
+    const pos = (s.length - 1) * q;
+    const i = Math.floor(pos);
+    return s[i] + (s[Math.min(i + 1, s.length - 1)] - s[i]) * (pos - i);
+  };
+
+  const diasEntre = (de, ate) => Math.round((Date.parse(ate) - Date.parse(de)) / 86400000);
 
   // ---------- site, busca e armazenamento ----------
 
@@ -240,7 +323,9 @@
         id_item: item.id, categoria: item.categoria, fonte: contexto.fonte, produto: o.produto,
         preco: Math.round((o.preco / u) * 100) / 100, frete: o.frete == null ? null : Math.round((o.frete / u) * 100) / 100,
         preco_anuncio: o.preco, unidades: u, tipo_preco: o.tipo_preco || 'padrao', cep: contexto.cep || '',
+        avaliacoes: o.avaliacoes ?? null, leitor: o.leitor || '',
         url: o.url, busca: o.busca || contexto.busca, data_coleta: contexto.data_coleta, excluida: 0,
+        alterado_em: contexto.agora || Date.now(),
       };
     }
     return novas;
@@ -248,31 +333,51 @@
 
   // Exclusão lógica: a linha fica guardada e sai no CSV com excluida = 1, para o build
   // descartar também as cópias de exportações anteriores.
-  function excluir(guardados, k) {
+  function excluir(guardados, k, agora = Date.now()) {
     if (!guardados[k]) return false;
     guardados[k].excluida = 1;
+    guardados[k].alterado_em = agora;
     return true;
+  }
+
+  // A8: linhas guardadas ou excluídas depois da última exportação do CSV.
+  const pendentes = (guardados, exportadoEm) => Object.values(guardados).filter((l) => (l.alterado_em || Infinity) > (exportadoEm || 0)).length;
+
+  // A2: cobertura da categoria: itens com o mínimo de ofertas sobre os itens da categoria.
+  function coberturaCategoria(guardados, categoria) {
+    const itens = ITENS.filter((i) => i.categoria === categoria);
+    const n = (id) => ativas(guardados).filter((l) => l.id_item === id).length;
+    return { itens: itens.length, completos: itens.filter((i) => n(i.id) >= MIN_OFERTAS).length, comPreco: itens.filter((i) => n(i.id) > 0).length };
   }
 
   const ativas = (guardados) => Object.values(guardados).filter((l) => !l.excluida);
 
-  // Atestado de um item: ofertas ativas, sites, mediana e faixa do preço mais frete, fretes sem
-  // informação e preços de Pix ou cupom.
-  function resumoItem(guardados, idItem) {
+  // Atestado de um item: ofertas ativas, sites, mediana, faixa e quartis do preço mais frete
+  // (A4: dispersão P75/P25), fretes sem informação, preços de Pix ou cupom, leitores usados e
+  // a coleta mais antiga (A7, em dias até hoje).
+  function resumoItem(guardados, idItem, hoje = dataLocal()) {
     const ls = ativas(guardados).filter((l) => l.id_item === idItem);
     const totais = ls.map((l) => l.preco + (l.frete || 0));
+    const p25 = quantil(totais, 0.25);
+    const p75 = quantil(totais, 0.75);
+    const datas = ls.map((l) => l.data_coleta).filter(Boolean).sort();
     return {
       n: ls.length,
       sites: new Set(ls.map((l) => l.fonte)).size,
       mediana: mediana(totais),
       min: ls.length ? Math.min(...totais) : null,
       max: ls.length ? Math.max(...totais) : null,
+      p25, p75,
+      dispersao: p25 > 0 && ls.length > 1 ? Math.round((p75 / p25) * 100) / 100 : null,
       semFrete: ls.filter((l) => l.frete == null).length,
       pixCupom: ls.filter((l) => l.tipo_preco && l.tipo_preco !== 'padrao').length,
+      leitores: [...new Set(ls.map((l) => l.leitor).filter(Boolean))].sort(),
+      maisAntiga: datas[0] || null,
+      idade: datas[0] ? diasEntre(datas[0], hoje) : null,
     };
   }
 
-  const COLS = ['id_item', 'categoria', 'fonte', 'produto', 'preco', 'frete', 'preco_anuncio', 'unidades', 'tipo_preco', 'cep', 'url', 'busca', 'data_coleta', 'excluida'];
+  const COLS = ['id_item', 'categoria', 'fonte', 'produto', 'preco', 'frete', 'preco_anuncio', 'unidades', 'tipo_preco', 'cep', 'avaliacoes', 'leitor', 'url', 'busca', 'data_coleta', 'excluida'];
 
   function celula(v) {
     const s = typeof v === 'number' ? String(v).replace('.', ',') : String(v ?? '');
@@ -294,6 +399,17 @@
 
   const texto = (raiz, sel) => limpar(raiz.querySelector(sel)?.textContent);
 
+  // F5: número de avaliações do card da Amazon ("(4)", "(1,2 mil)"); 0 se o card não mostra.
+  function avaliacoesAmazon(c) {
+    for (const n of c.querySelectorAll('span, a')) {
+      const t = limpar(n.textContent);
+      const m = t.match(/^\(([\d.,]+)\s*(mil)?\)$/i);
+      if (m) return Math.round((m[2] ? parseFloat(m[1].replace(/\./g, '').replace(',', '.')) * 1000 : numeroBR(m[1])) || 0);
+    }
+    const rotulo = c.querySelector('[aria-label*="avalia"]')?.getAttribute('aria-label');
+    return rotulo ? numeroBR(rotulo) || 0 : 0;
+  }
+
   function lerAmazon() {
     return [...document.querySelectorAll('[data-component-type="s-search-result"][data-asin]')].map((c) => {
       const asin = c.dataset.asin;
@@ -305,6 +421,7 @@
         url: asin ? `https://www.amazon.com.br/dp/${asin}` : '',
         patrocinado: /patrocinado/i.test(c.textContent) || c.classList.contains('AdHolder'),
         tipo_preco: tipoPreco(texto(c, '.s-price-instructions-style') || c.textContent),
+        avaliacoes: avaliacoesAmazon(c),
       };
     });
   }
@@ -363,14 +480,18 @@
     return [...vistos.values()];
   }
 
-  // Ofertas válidas da página e o total de cards lidos antes do filtro (com e sem preço).
+  // Ofertas válidas da página, o total de cards lidos antes do filtro (com e sem preço) e o
+  // leitor que as achou (A6): proprio (seletor do site), jsonld, generico ou nenhum.
+  const TEM_LEITOR_PROPRIO = ['amazon', 'mercadolivre'];
   function lerOfertas(site) {
+    let leitor = 'proprio';
     let brutas = site === 'amazon' ? lerAmazon() : site === 'mercadolivre' ? lerMercadoLivre() : [];
-    if (!brutas.length) brutas = lerJsonLd();
-    if (!brutas.length) brutas = lerGenerico();
+    if (!brutas.length) { leitor = 'jsonld'; brutas = lerJsonLd(); }
+    if (!brutas.length) { leitor = 'generico'; brutas = lerGenerico(); }
+    if (!brutas.length) leitor = 'nenhum';
     const busca = location.href;
-    const ofertas = brutas.filter((o) => o.url && o.preco > 0 && o.produto).map((o) => ({ ...o, busca }));
-    return { ofertas, cards: brutas.length };
+    const ofertas = brutas.filter((o) => o.url && o.preco > 0 && o.produto).map((o) => ({ ...o, busca, leitor }));
+    return { ofertas, cards: brutas.length, leitor };
   }
 
   // Soma ofertas novas às já lidas, sem repetir URL.
@@ -392,9 +513,11 @@
   let ofertasLidas = [];
   let cardsLidos = 0;
   let urlLida = '';
+  let leitorLido = '';
 
   const itemAtual = () => ITENS.find((i) => i.id === GM_getValue(CHAVE_ITEM, ITENS[0].id)) || ITENS[0];
   const cepAtual = () => cepDoSite() || GM_getValue(CHAVE_CEP, '');
+  const filtrosAtuais = () => ({ ...FILTROS_PADRAO, ...GM_getValue(CHAVE_FILTROS, {}) });
 
   function baixar(nome, conteudo, tipo, atraso = 0) {
     setTimeout(() => {
@@ -415,6 +538,7 @@
       linhas.sort((a, b) => a.id_item.localeCompare(b.id_item) || a.preco - b.preco);
       baixar(nomeArquivo(categoria, dataLocal(agora), horaLocal(agora)), csv(linhas), 'text/csv;charset=utf-8', i * 800);
     });
+    GM_setValue(CHAVE_EXPORTACAO, agora.getTime());
     return Object.keys(porCategoria).length;
   }
 
@@ -450,6 +574,10 @@
     ul{list-style:none;margin:6px 0;padding:0;max-height:40vh;overflow:auto}
     li{display:flex;gap:6px;align-items:flex-start;padding:3px 0;border-bottom:1px solid rgba(128,128,128,.25);font-size:12px}
     li span{flex:1} li b{white-space:nowrap}
+    li i{display:block;font-style:normal;font-size:11px;opacity:.75}
+    label{font-size:12px;display:flex;gap:3px;align-items:center}
+    .barra{display:inline-block;width:80px;height:8px;border:1px solid #888;border-radius:4px;vertical-align:middle;overflow:hidden}
+    .barra>span{display:block;height:100%;background:currentColor}
     details{margin:6px 0} summary{cursor:pointer;font-size:12px}
     .resumo{font-size:12px} .alerta{color:#b45309} .ok{color:#15803d}
     @media (prefers-color-scheme:dark){.alerta{color:#fbbf24}.ok{color:#4ade80}}
@@ -458,6 +586,9 @@
   const status = (t) => { if (el.status) el.status.textContent = t; };
   const reais = (v) => (v == null ? '–' : `R$ ${v.toFixed(2).replace('.', ',')}`);
   const ROTULO_TIPO = { pix: ' [Pix]', cupom: ' [cupom]', padrao: '' };
+  const ROTULO_LEITOR = { proprio: `próprio do site`, jsonld: 'JSON-LD', generico: 'genérico', nenhum: 'nenhum' };
+  const decimal = (v) => String(v).replace('.', ',');
+  const quando = (ms) => { const d = new Date(ms); return `${doisDig(d.getDate())}/${doisDig(d.getMonth() + 1)} ${doisDig(d.getHours())}h${doisDig(d.getMinutes())}`; };
 
   function mostrarCep() {
     const doSite = cepDoSite();
@@ -478,11 +609,37 @@
     const itensComPreco = new Set(lista.map((l) => l.id_item)).size;
     const itensFracos = ITENS.filter((i) => { const n = resumoItem(guardados, i.id).n; return n > 0 && n < MIN_OFERTAS; }).length;
     el.contagem.textContent = `${itensComPreco} de ${ITENS.length} itens com preço · ${itensFracos} com menos de ${MIN_OFERTAS} ofertas · ${lista.length} ofertas no total`;
-    el.resumo.className = r.n >= MIN_OFERTAS ? 'resumo ok' : 'resumo alerta';
+
+    // A8: o que mudou desde o último CSV
+    const exportadoEm = GM_getValue(CHAVE_EXPORTACAO, 0);
+    const pend = pendentes(guardados, exportadoEm);
+    el.pendentes.className = pend ? 'resumo alerta' : 'resumo ok';
+    el.pendentes.textContent = pend
+      ? `${pend} oferta(s) guardadas ou excluídas desde o último CSV${exportadoEm ? ` (${quando(exportadoEm)})` : ' (nenhum baixado ainda)'}`
+      : exportadoEm ? `CSV em dia (baixado em ${quando(exportadoEm)})` : 'Nada guardado ainda.';
+
+    // A2: cobertura da categoria do item
+    const c = coberturaCategoria(guardados, item.categoria);
+    el.categoria.className = c.completos === c.itens ? 'resumo ok' : 'resumo';
+    const preenchido = criar('span');
+    preenchido.style.width = `${Math.round((100 * c.completos) / c.itens)}%`;
+    el.categoria.replaceChildren(
+      criar('span', { textContent: `Categoria ${item.categoria}: ${c.completos} de ${c.itens} itens com ${MIN_OFERTAS}+ ofertas (${c.comPreco} com alguma) ` }),
+      criar('span', { className: 'barra' }, [preenchido]),
+    );
+
+    // A4 e A7: dispersão e idade da coleta do item
+    const alertas = [];
+    if (r.n && r.n < MIN_OFERTAS) alertas.push(`faltam ${MIN_OFERTAS - r.n} para o mínimo`);
+    if (r.dispersao > DISPERSAO_MAX) alertas.push(`P75/P25 de ${decimal(r.dispersao)}×: produtos diferentes?`);
+    if (r.idade > IDADE_MAX) alertas.push(`coleta mais antiga com ${r.idade} dias`);
+    el.resumo.className = r.n >= MIN_OFERTAS && !alertas.length ? 'resumo ok' : 'resumo alerta';
     el.resumo.textContent = r.n
       ? `Este item: ${r.n} ofertas de ${r.sites} site(s) · mediana ${reais(r.mediana)} (${reais(r.min)} a ${reais(r.max)}, preço + frete)`
+        + `${r.n > 1 ? ` · P25 ${reais(r.p25)}, P75 ${reais(r.p75)} (${decimal(r.dispersao)}×)` : ''}`
         + `${r.semFrete ? ` · ${r.semFrete} sem frete informado` : ''}${r.pixCupom ? ` · ${r.pixCupom} no Pix ou cupom` : ''}`
-        + `${r.n < MIN_OFERTAS ? ` · faltam ${MIN_OFERTAS - r.n} para o mínimo` : ''}`
+        + `${r.leitores.length ? ` · leitor ${r.leitores.map((l) => ROTULO_LEITOR[l] || l).join(', ')}` : ''}`
+        + ` · desde ${r.maisAntiga}${alertas.length ? ` · ⚠ ${alertas.join('; ')}` : ''}`
       : 'Este item ainda não tem ofertas guardadas.';
     listarGuardadas(guardados, item);
     if (t) status(t);
@@ -503,31 +660,49 @@
     }));
   }
 
+  // Referência dos filtros: mediana do item guardado, unidades por embalagem e filtros ligados.
+  const referencia = () => ({ mediana: resumoItem(carregar(), itemAtual().id).mediana, unidades: el.unidades.value, filtros: filtrosAtuais() });
+
   function listarOfertas() {
     const item = itemAtual();
+    const ref = referencia();
     el.lista.replaceChildren(...ofertasLidas.map((o, i) => {
-      const marca = criar('input', { type: 'checkbox', checked: !o.patrocinado && relevancia(o.produto, item.termo) >= 0.5 });
+      const motivos = motivosOferta(o, item.termo, ref);
+      const marca = criar('input', { type: 'checkbox', checked: !motivos.length });
       marca.dataset.i = i;
       const frete = o.frete == null ? '' : o.frete === 0 ? ' + frete grátis' : ` + ${reais(o.frete)}`;
-      return criar('li', {}, [marca, criar('span', { textContent: `${o.patrocinado ? '[patrocinado] ' : ''}${o.produto}` }),
-        criar('b', { textContent: `${reais(o.preco)}${frete}${ROTULO_TIPO[o.tipo_preco] || ''}` })]);
+      const avaliacoes = o.avaliacoes == null ? '' : ` · ${o.avaliacoes} avaliações`;
+      return criar('li', {}, [marca, criar('span', { textContent: o.produto }, motivos.length ? [criar('i', { textContent: `desmarcada: ${motivos.join('; ')}` })] : []),
+        criar('b', { textContent: `${reais(o.preco)}${frete}${ROTULO_TIPO[o.tipo_preco] || ''}${avaliacoes}` })]);
     }));
     el.bGuardar.disabled = !ofertasLidas.length;
+    mostrarFunil();
+  }
+
+  // A1 e A6: funil da leitura e leitor usado, com alerta se o site tem leitor próprio e ele falhou.
+  function mostrarFunil() {
+    if (!ofertasLidas.length && !cardsLidos) { el.funil.textContent = ''; return; }
+    const f = funil(ofertasLidas, cardsLidos, itemAtual().termo, referencia());
+    const falhou = TEM_LEITOR_PROPRIO.includes(site) && leitorLido !== 'proprio';
+    el.funil.className = falhou || !f.nosFiltros ? 'resumo alerta' : 'resumo';
+    el.funil.textContent = `Funil: ${f.cards} cards → ${f.comPreco} com preço → ${f.semPatrocinado} sem patrocinado → ${f.noTermo} no termo → ${f.nosFiltros} nos filtros`
+      + ` · leitor ${ROTULO_LEITOR[leitorLido] || leitorLido}${falhou ? ' ⚠ o seletor do site não leu: o layout pode ter mudado' : ''}`;
   }
 
   const caixasMarcadas = () => [...el.lista.querySelectorAll('input[type=checkbox]')].filter((m) => m.checked);
 
   function ler(somar) {
-    const { ofertas, cards } = lerOfertas(site);
+    const { ofertas, cards, leitor } = lerOfertas(site);
     const antes = ofertasLidas.length;
     ofertasLidas = somar ? somarOfertas(ofertasLidas, ofertas) : ofertas;
     cardsLidos = somar ? cardsLidos + cards : cards;
+    leitorLido = somar && leitorLido && leitorLido !== leitor ? `${leitorLido}+${leitor}` : leitor;
     urlLida = location.href;
     listarOfertas();
     const marcadas = caixasMarcadas().length;
     const novas = ofertasLidas.length - (somar ? antes : 0);
     status(!ofertasLidas.length ? 'Nenhuma oferta com preço nesta página.'
-      : `${somar ? `+${novas} novas; ` : ''}${ofertasLidas.length} ofertas com preço de ${cardsLidos} cards lidos, ${marcadas} marcadas pelo termo. Desmarque o que não é o item.`);
+      : `${somar ? `+${novas} novas; ` : ''}${ofertasLidas.length} ofertas com preço de ${cardsLidos} cards lidos, ${marcadas} marcadas pelo termo e pelos filtros. Desmarque o que não é o item.`);
   }
 
   function montarPainel() {
@@ -541,9 +716,21 @@
     });
     el.cepAviso = criar('p');
     el.contagem = criar('p', { className: 'resumo' });
+    el.pendentes = criar('p');
+    el.categoria = criar('p');
     el.resumo = criar('p');
+    el.funil = criar('p');
+    // F2, F3 e F5: filtros da marcação inicial, guardados no Tampermonkey
+    const ROTULO_FILTRO = { faixa: 'faixa de preço', medida: 'medida', avaliacoes: 'sem avaliações (Amazon)' };
+    const filtros = criar('div', { className: 'linha' }, [criar('span', { textContent: 'Filtros:' }), ...Object.keys(FILTROS_PADRAO).map((k) => {
+      const caixa = criar('input', {
+        type: 'checkbox', checked: filtrosAtuais()[k],
+        onchange: () => { GM_setValue(CHAVE_FILTROS, { ...filtrosAtuais(), [k]: caixa.checked }); listarOfertas(); },
+      });
+      return criar('label', {}, [caixa, criar('span', { textContent: ROTULO_FILTRO[k] })]);
+    })]);
     el.status = criar('p', { className: 'status', textContent: 'Escolha o item, busque e leia as ofertas.' });
-    el.unidades = criar('input', { type: 'number', min: 1, value: 1 });
+    el.unidades = criar('input', { type: 'number', min: 1, value: 1, onchange: () => listarOfertas() });
     el.lista = criar('ul');
     el.guardadas = criar('ul');
     el.guardadasTitulo = criar('summary');
@@ -553,6 +740,16 @@
       onclick: () => { location.href = urlBusca(site, itemAtual().termo); },
     });
     const bLer = criar('button', { textContent: 'Ler ofertas', onclick: () => ler(false) });
+    // F4: desmarca as ofertas de Pix ou cupom, para comparar só preços padrão
+    const bPadrao = criar('button', {
+      textContent: 'Só preço padrão',
+      title: 'Desmarca as ofertas com preço de Pix ou cupom',
+      onclick: () => {
+        let n = 0;
+        for (const m of caixasMarcadas()) if ((ofertasLidas[m.dataset.i].tipo_preco || 'padrao') !== 'padrao') { m.checked = false; n++; }
+        status(`${n} oferta(s) de Pix ou cupom desmarcadas; ${caixasMarcadas().length} marcadas.`);
+      },
+    });
     const bSomar = criar('button', { textContent: 'Somar página', title: 'Acrescenta as ofertas desta página (ou das que carregaram ao rolar) às já lidas', onclick: () => ler(true) });
     el.bGuardar = criar('button', {
       textContent: 'Guardar marcadas',
@@ -561,7 +758,7 @@
         const marcadas = caixasMarcadas().map((m) => ofertasLidas[m.dataset.i]);
         const guardados = carregar();
         const novas = guardar(guardados, itemAtual(), marcadas, el.unidades.value,
-          { fonte: site, busca: location.href, data_coleta: dataLocal(), cep: cepAtual() });
+          { fonte: site, busca: location.href, data_coleta: dataLocal(), cep: cepAtual(), agora: Date.now() });
         salvar(guardados);
         mostrar(`${marcadas.length} guardadas (${novas} novas).${cepAtual() && ehSalvador(cepAtual()) ? '' : ' Atenção: sem CEP de Salvador.'}`);
       },
@@ -570,7 +767,8 @@
     const bLimpar = criar('button', {
       textContent: 'Limpar',
       onclick: () => {
-        if (!confirm('Apagar todas as ofertas guardadas? Um backup JSON será baixado antes.')) return;
+        const pend = pendentes(carregar(), GM_getValue(CHAVE_EXPORTACAO, 0));
+        if (!confirm(`Apagar todas as ofertas guardadas?${pend ? ` ${pend} ainda não estão em nenhum CSV.` : ''} Um backup JSON será baixado antes.`)) return;
         const agora = new Date();
         baixar(`${dataLocal(agora)}_${horaLocal(agora)}_precos_backup.json`, JSON.stringify(carregar(), null, 1), 'application/json');
         GM_deleteValue(CHAVE);
@@ -586,9 +784,13 @@
       el.cepAviso,
       el.item,
       el.contagem,
+      el.pendentes,
+      el.categoria,
       el.resumo,
       criar('details', {}, [el.guardadasTitulo, el.guardadas]),
-      criar('div', { className: 'linha' }, [bBuscar, bLer, bSomar]),
+      filtros,
+      criar('div', { className: 'linha' }, [bBuscar, bLer, bSomar, bPadrao]),
+      el.funil,
       el.lista,
       criar('div', { className: 'linha' }, [criar('span', { textContent: 'Unidades por embalagem:' }), el.unidades, el.bGuardar]),
       criar('div', { className: 'linha' }, [bCsv, bLimpar]),
