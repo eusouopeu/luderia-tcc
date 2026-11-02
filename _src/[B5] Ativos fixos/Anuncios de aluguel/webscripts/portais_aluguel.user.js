@@ -13,7 +13,7 @@
 // ==/UserScript==
 
 /*
- * Uso pessoal, para o Bloco B4: preço pedido de aluguel de pontos comerciais em
+ * Uso pessoal, para o Bloco B5 (ativos fixos): preço pedido de aluguel de pontos comerciais em
  * Salvador (cap. 9, premissa C07, e 6.4, escolha do bairro). Os portais bloqueiam
  * requisições fora do navegador (Cloudflare), por isso a coleta roda na página.
  *
@@ -39,7 +39,7 @@
  * Saída: CSV com ";" e UTF-8 com BOM, uma linha por anúncio. Valores em R$ por mês;
  * condomínio e IPTU vazios quando o anúncio não informa e 0 quando diz "isento".
  * O tratamento (duplicatas entre portais, R$/m², resumo por bairro) fica em
- * build/B4-b_anuncios_aluguel.py.
+ * build/B5-b_anuncios_aluguel.py.
  */
 
 (function () {

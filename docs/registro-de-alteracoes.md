@@ -2194,3 +2194,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: gatilhos G1 demanda, G2 pessoas por mesa, G3 consumo, G4 dia útil, G5 caixa, G6 saída, sem ordem declarada; gatilho da etapa 2 só com pedidos no caixa e fila; sem sleeves no investimento.
 **Depois**: gatilhos em ordem de análise: G1 pessoas por mesa, G2 consumo, G3 dia útil (passaporte e eventos antes de fechar a terça), G4 demanda baixa (alarme geral, só sem causa em G1 a G3), G5 caixa, G6 saída. Gatilho da etapa 2 com buscas frequentes por número de pessoas ou mecânica; monitoramento por um site de recomendação no molde do app Tabulado (clientes ou instrutores; recomendações e tutoriais rápidos). Sleeves para todas as cartas no investimento em acervo e na reposição.
 **Justificativa**: pedido do autor; a ordem foi proposta por ele e conferida (causas específicas e medidas baratas antes do alarme geral).
+
+### 09:19
+**Objeto**: `_src/[B4] Bases publicas/Anuncios de aluguel/` → `_src/[B5] Ativos fixos/Anuncios de aluguel/`; `B4-b_anuncios_aluguel.py` → `B5-b_anuncios_aluguel.py`; `dados/[B4] Bases publicas/_dados-brutos/anuncios_aluguel/` (removida); `portais_aluguel.user.js` (cabeçalho); `README.md`, `AGORA.md`, `docs/pendencias.md`
+**Antes**: coletor e build no B4; entrada em `[B4] …/_dados-brutos/anuncios_aluguel/`, saídas "[B4] …" em `[B4] Bases publicas/financeiro/` pelo `bases_comum`.
+**Depois**: tudo no B5; entrada em `dados/[B5] Ativos fixos/_dados-brutos/aluguel/`, saídas "[B5] Anúncios de Aluguel …" e "[B5] Aluguel Pedido por Bairro …" em `dados/[B5] Ativos fixos/aluguel/`, com caminhos próprios (sem `bases_comum`). Testes do userscript (7) e build com dados sintéticos conferidos.
+**Justificativa**: pedido do autor; anúncio de portal não é base pública e o aluguel é uma das categorias do B5.

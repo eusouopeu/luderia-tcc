@@ -2,9 +2,9 @@
 Junta os CSVs do coletor de anúncios (webscripts/portais_aluguel.user.js) num
 cadastro único de anúncios de aluguel e num resumo do preço pedido por bairro.
 
-Entrada: dados/[B4] Bases publicas/_dados-brutos/anuncios_aluguel/AAAA-MM-DD_<portal>_anuncios_aluguel.csv
+Entrada: dados/[B5] Ativos fixos/_dados-brutos/aluguel/AAAA-MM-DD_<portal>_anuncios_aluguel.csv
          (os CSVs baixados pelo coletor, um por portal e data)
-Saídas em financeiro/, no padrão "[B4] {dado} {período} ({fonte}).csv":
+Saídas em dados/[B5] Ativos fixos/aluguel/, no padrão "[B5] {dado} {período} ({fonte}).csv":
   "Anúncios de Aluguel"            um anúncio por linha: aluguel, condomínio + IPTU, área, R$/m², segmento
   "Aluguel Pedido por Bairro"      por segmento e bairro: anúncios, mediana e quartis do R$/m² e do aluguel
 
@@ -23,7 +23,7 @@ Regras:
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [str(_AQUI.parents[3] / "extras"), str(_AQUI.parents[1] / "outros"), str(_AQUI.parents[2] / "Comum")]
+sys.path[:0] = [str(_AQUI.parents[3] / "extras"), str(_AQUI.parents[1] / "outros")]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
@@ -33,9 +33,10 @@ import unicodedata
 
 import pandas as pd
 
-from bases_comum import RAW_DIR, caminho_saida
-
-IN_DIR = RAW_DIR / "anuncios_aluguel"
+ROOT = Path(__file__).resolve().parents[4]
+BLOCO = ROOT / "dados" / "[B5] Ativos fixos"
+IN_DIR = BLOCO / "_dados-brutos" / "aluguel"
+OUT_DIR = BLOCO / "aluguel"
 FONTE = {"olx": "OLX", "zap": "ZAP", "vivareal": "Viva Real", "quintoandar": "QuintoAndar"}
 ALUGUEL_MIN, ALUGUEL_MAX = 300, 100_000
 RE_COMERCIAL = re.compile(r"\b(loja|sala|salao|ponto|galpao|deposito|armazem|comerci|conjunto|box|predio|escritorio|consultorio|andar corporativo)")
@@ -116,9 +117,10 @@ def main() -> None:
     periodo = meses[0] if len(meses) == 1 else f"{meses[0]} a {meses[-1]}"
     fonte = ", ".join(FONTE[p] for p in FONTE if any(FONTE[p] in s for s in df["portais"]))
     resumo = resumo_por_bairro(df)
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     for dado, tabela in [("Anúncios de Aluguel", df), ("Aluguel Pedido por Bairro", resumo)]:
-        destino = caminho_saida("financeiro", dado, periodo, fonte)
+        destino = OUT_DIR / f"[B5] {dado} {periodo} ({fonte}).csv"
         tabela.to_csv(destino, sep=";", decimal=",", index=False, encoding="utf-8-sig")
         print(f"gravado: {destino.name} ({len(tabela)} linhas)")
     for seg, n in df["segmento"].value_counts().items():

@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Coletor de anúncios de aluguel passa do B4 (bases públicas) para o B5 (ativos fixos): portal de anúncios não é base pública; saídas em `dados/[B5] Ativos fixos/aluguel/` | `_src/[B5] Ativos fixos/Anuncios de aluguel/` |
 | 02/11/2026 | Gatilhos de perda máxima em ordem de análise: G1 pessoas por mesa, G2 consumo, G3 dia útil, G4 demanda baixa (alarme geral, só sem causa apontada por G1 a G3), G5 caixa, G6 saída | `_instrucoes/9_anal-riscos.md`, §10.6 |
 | 02/11/2026 | Monitoramento por um site de recomendação de jogos no molde do app Tabulado (clientes ou instrutores preenchem; recomendações e tutoriais rápidos); buscas por número de pessoas e mecânica entram no gatilho da etapa 2 | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Sleeves para todas as cartas do acervo previstos no investimento (abertura e cada ampliação) e na reposição | `_instrucoes/8_financeiro.md` |
