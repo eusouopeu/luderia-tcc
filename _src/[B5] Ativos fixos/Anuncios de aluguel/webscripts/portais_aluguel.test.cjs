@@ -15,7 +15,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo });})();';
+    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'portais_aluguel.user.js' });
   return ambiente.__test;
 }
@@ -117,6 +117,22 @@ test('card do OLX: cidade antes do bairro e operação pelo título', () => {
   assert.equal(t.operacaoDe('VENDA OU ALUGUEL DE LOJA COMERCIAL 310m²', 1000000), 'venda');
   assert.equal(t.operacaoDe('VENDA OU ALUGUEL DE LOJA COMERCIAL 310m²', 9000), 'aluguel');
   assert.equal(t.operacaoDe('Sala Comercial para Venda em Salvador, Graça', 900), 'venda');
+  // Sem pista no título e com área: pelo R$/m² (venda nos milhares, aluguel nas dezenas).
+  assert.equal(t.operacaoDe('Box 20 m² no Comércio', 80000, 20), 'venda');
+  assert.equal(t.operacaoDe('Loja ampla na Paralela', 120000, 2000), 'aluguel');
+  assert.equal(t.operacaoDe('Loja ampla na Paralela', 120000, null), 'venda');
+  const olx = t.normalizarOlx({ titulo: 'Box no Comércio', href: 'https://ba.olx.com.br/x-1234567892', preco: 'R$ 80.000', detalhes: ['20 metros quadrados'], caminho: '/imoveis/comercio-e-industria/' });
+  assert.equal(olx.operacao, 'venda');
+});
+
+test('total de resultados da busca e desafio do Cloudflare', () => {
+  assert.equal(t.totalDeTexto('1.234 Lojas/Salões para alugar em Salvador - BA'), 1234);
+  assert.equal(t.totalDeTexto('Resultados 1-50 de 2.345 resultados'), 2345);
+  assert.equal(t.totalDeTexto('Mais de 87 imóveis'), null);
+  assert.equal(t.totalDeTexto('Aluguel de lojas em Salvador'), null);
+  assert.equal(t.desafioDeTexto('Just a moment...'), true);
+  assert.equal(t.desafioDeTexto('Um momento…'), true);
+  assert.equal(t.desafioDeTexto('Lojas para alugar em Salvador | ZAP Imóveis'), false);
 });
 
 test('QuintoAndar: estado inicial e resposta de busca dão o mesmo formato', () => {

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.02-2
+// @version      2026.11.02-3
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas seguintes e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -25,7 +25,10 @@
  * refazer uma busca já guardada percorre todas as páginas de novo. No fim, toca
  * um som e baixa o CSV. Os anúncios ficam guardados no navegador (localStorage,
  * um por portal) até "Limpar"; o CSV traz tudo o que foi guardado. Se o
- * localStorage encher, a rodada para e o CSV sai na hora com o que foi lido.
+ * localStorage encher, a rodada para e o CSV sai na hora com o que foi lido. Se
+ * aparecer o desafio do Cloudflare, a rodada pausa e retoma da mesma página depois
+ * que ele for resolvido. Cada anúncio leva o total de resultados que o portal diz
+ * ter na busca (total_busca), para o build medir a cobertura.
  *
  * Buscas que funcionam (02/11/2026):
  *  - OLX:       /imoveis/comercio-e-industria/estado-ba/grande-salvador/salvador
@@ -80,13 +83,15 @@
   const area = (t) => { const m = String(t || '').match(/(\d[\d.,]*)\s*m(?:²|2|etros quadrados)/i); return m ? numeroBR(m[1]) : null; };
   const inteiro = (t) => { const m = String(t || '').match(/\d+/); return m ? parseInt(m[0], 10) : null; };
 
-  // Pelo título; se ele cita as duas ("venda ou aluguel") ou nenhuma, pelo preço:
-  // aluguel comercial raramente passa de R$ 100 mil/mês, e venda raramente fica abaixo.
-  function operacaoDe(titulo, preco) {
+  // Pelo título; se ele cita as duas ("venda ou aluguel") ou nenhuma, pelo preço por m²:
+  // aluguel comercial em Salvador fica na casa das dezenas de R$/m² ao mês, venda nos
+  // milhares. Sem área, pelo preço: aluguel raramente passa de R$ 100 mil/mês.
+  function operacaoDe(titulo, preco, areaM2) {
     const t = semAcento(titulo);
     const aluga = /\b(alug|locac|loca-se)/.test(t);
     const vende = /\b(vend|venda)/.test(t);
     if (aluga !== vende) return aluga ? 'aluguel' : 'venda';
+    if (preco != null && areaM2 > 0) return preco / areaM2 >= 1000 ? 'venda' : 'aluguel';
     if (preco != null) return preco >= 100000 ? 'venda' : 'aluguel';
     return '';
   }
@@ -109,7 +114,7 @@
       url: String(c.href || '').split('?')[0],
       titulo,
       tipo: mTipo ? mTipo[1] : '',
-      operacao: aluga ? 'aluguel' : /para alugar/i.test(titulo) ? 'aluguel' : operacaoDe(titulo, preco),
+      operacao: aluga ? 'aluguel' : /para alugar/i.test(titulo) ? 'aluguel' : operacaoDe(titulo, preco, area(c.area)),
       aluguel: preco,
       condominio,
       iptu,
@@ -137,18 +142,19 @@
     const condominio = valorRotulado(c.extras, 'Condom[ií]nio');
     const iptu = valorRotulado(c.extras, 'IPTU');
     const caminho = String(c.caminho || '');
+    const areaM2 = area(achar(/metros quadrados|m2|m²/));
     return {
       portal: 'olx',
       id: (String(c.href || '').match(/-(\d{6,})(?:[/?#]|$)/) || [])[1] || '',
       url: String(c.href || '').split('?')[0],
       titulo,
       tipo: '',
-      operacao: /\/aluguel(\/|$)/.test(caminho) ? 'aluguel' : /\/venda(\/|$)/.test(caminho) ? 'venda' : operacaoDe(titulo, preco),
+      operacao: /\/aluguel(\/|$)/.test(caminho) ? 'aluguel' : /\/venda(\/|$)/.test(caminho) ? 'venda' : operacaoDe(titulo, preco, areaM2),
       aluguel: preco,
       condominio,
       iptu,
       condominio_iptu: condominio != null && iptu != null ? condominio + iptu : null,
-      area_m2: area(achar(/metros quadrados|m2|m²/)),
+      area_m2: areaM2,
       quartos: inteiro(achar(/quarto/)),
       banheiros: inteiro(achar(/banheiro/)),
       vagas: inteiro(achar(/vaga/)),
@@ -250,7 +256,7 @@
 
   const COLS = ['portal', 'id', 'url', 'titulo', 'tipo', 'operacao', 'aluguel', 'condominio', 'iptu', 'condominio_iptu',
     'area_m2', 'quartos', 'banheiros', 'vagas', 'bairro', 'cidade', 'endereco', 'anunciante', 'publicado',
-    'busca_url', 'pagina', 'data_coleta'];
+    'busca_url', 'pagina', 'total_busca', 'data_coleta'];
 
   function celula(v) {
     const s = typeof v === 'number' ? String(v).replace('.', ',') : String(v ?? '');
@@ -338,6 +344,31 @@
     };
   }
 
+  // Total de resultados que o portal diz ter na busca ("1.234 imóveis", "Resultados 1-50 de
+  // 1.234"), para o build medir a cobertura. Leitura genérica do título e do contador:
+  // null se não achar. Seletores não conferidos em todos os portais.
+  function totalDeTexto(t) {
+    const s = limpar(t);
+    // "Mais de 87" é limite inferior, não total: fica null.
+    const m = s.match(/(?<!mais\s)\bde\s+(\d[\d.]*)\s*(?:resultados|an[uú]ncios|im[oó]veis)/i)
+      || s.match(/^(\d[\d.]*)\s+(?:resultados|an[uú]ncios|im[oó]veis|lojas|salas|pontos|galp|pr[eé]dios|conjuntos|casas|apartamentos)/i);
+    return m ? numeroBR(m[1]) : null;
+  }
+
+  function totalResultados() {
+    const candidatos = document.querySelectorAll('h1, h2, [data-cy*="title"], [data-testid*="result"], [class*="result"], [class*="Result"]');
+    for (const n of candidatos) {
+      const v = totalDeTexto(n.textContent);
+      if (v != null) return v;
+    }
+    return null;
+  }
+
+  // Desafio do Cloudflare ("Just a moment…"): a página não tem cards, mas não está vazia.
+  const desafioDeTexto = (titulo) => /just a moment|um momento|attention required|verifica(?:ndo|ção)/i.test(String(titulo || ''));
+  const desafioCloudflare = () => desafioDeTexto(document.title)
+    || !!document.querySelector('#challenge-form, #challenge-running, #cf-challenge-running, iframe[src*="challenges.cloudflare.com"]');
+
   // QuintoAndar: a lista cresce pelo botão "Ver mais", sem trocar de URL.
   const botaoVerMais = () => [...document.querySelectorAll('button, a')]
     .find((b) => /^\s*ver mais\b/i.test(b.textContent || '') && !b.disabled && b.offsetParent !== null);
@@ -380,7 +411,7 @@
     await rolarAteOFim();
     const anuncios = lerPagina(portal);
     guardados = carregar();
-    const novos = guardar(guardados, anuncios, { busca_url: location.href, pagina, data_coleta: dataLocal() });
+    const novos = guardar(guardados, anuncios, { busca_url: location.href, pagina, total_busca: totalResultados(), data_coleta: dataLocal() });
     const gravou = salvar(guardados);
     return { anuncios, lidos: anuncios.length, novos, gravou };
   }
@@ -437,6 +468,12 @@
     const { anuncios, lidos, novos, gravou } = await coletarPagina(pagina);
     if (!gravou) { avisarCheio(); return; }
     if (!lerAuto()) return; // parado durante a leitura
+    if (lidos === 0 && desafioCloudflare()) {
+      // Não conta como página vazia: espera o desafio e retoma desta mesma página.
+      iniciouAuto = false;
+      status('Bloqueio do Cloudflare: resolva o desafio na página; a coleta retoma desta página.');
+      return;
+    }
     const inedit = ineditas(anuncios, auto.vistos);
     auto.vistos.push(...inedit);
     auto.paginas += 1;
@@ -564,15 +601,18 @@
   let iniciouAuto = false;
   let tentativas = 0;
 
+  // Durante o desafio do Cloudflare, o painel aparece com o aviso e a contagem de 20 s não corre.
   function verificar() {
     if (!document.body) return;
+    const desafio = !!lerAuto() && desafioCloudflare() && lerPagina(portal).length === 0;
     if (!ehBusca) {
-      ehBusca = lerPagina(portal).length > 0 || (!!lerAuto() && ++tentativas > 13);
+      ehBusca = lerPagina(portal).length > 0 || desafio || (!!lerAuto() && ++tentativas > 13);
       if (!ehBusca) return;
       console.info(NOME, 'página de busca');
     }
     if (!hospedeiro) montarPainel();
     if (!hospedeiro.isConnected) document.documentElement.appendChild(hospedeiro);
+    if (desafio) { status('Bloqueio do Cloudflare: resolva o desafio na página; a coleta retoma desta página.'); return; }
     if (!iniciouAuto && lerAuto()) { iniciouAuto = true; passoAutomatico(); }
   }
 
