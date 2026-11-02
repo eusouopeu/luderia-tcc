@@ -171,6 +171,7 @@ Citadas em parágrafos com "*" do cap. 2 do TMin v9 (02/11/2026), à espera da e
   - [ ] MPE de serviços: 74,1% em cinco anos (Tabela 17, p. 30).
 - [ ] IBGE. *Pesquisa de Orçamentos Familiares 2017-2018*: perfil das despesas no Brasil: indicadores selecionados de alimentação, transporte, lazer e inclusão financeira. Rio de Janeiro: IBGE, 2021. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv101844.pdf. 📄
   - [ ] despesa per capita com lazer de R$ 14,87 por mês, 63,8% em eventos culturais, esportivos e recreação (p. 102 e 107).
+  - [ ] o lazer da POF exclui bares e restaurantes (p. 101); alimentação fora do domicílio: R$ 61,68 por pessoa por mês (Tabela 7.3, p. 63; texto, p. 65).
   - [ ] o décimo de maior renda responde por 49,0% das despesas com lazer e viagens; razão 10/40 de 5,67 (p. 107).
 - [ ] NOVAES, Allan; KANYAT, Lizbeth. From play to belonging: board game cafes as mediators for social wellness and community building in Japan. *Acta Ludologica*, v. 8, n. 1, p. 78–97, 2025. DOI: 10.34135/actaludologica.2025-8-1.78-97. 📄
   - [ ] etnografia em nove *board game cafés* de Tóquio (p. 80).
@@ -186,6 +187,7 @@ Citadas em parágrafos com "*" do cap. 2 do TMin v9 (02/11/2026), à espera da e
 
 - [ ] BRINCKMANN, Jan; GRICHNIK, Dietmar; KAPSA, Diana. Should entrepreneurs plan or just storm the castle? A meta-analysis on contextual factors impacting the business planning–performance relationship in small firms. *Journal of Business Venturing*, v. 25, n. 1, p. 24–40, 2010. DOI: 10.1016/j.jbusvent.2008.10.007. PDF obtido pelo autor (02/11/2026). 📄
   - [ ] meta-análise de 46 estudos e 11.046 organizações: o planejamento aumenta o desempenho de pequenas empresas novas e estabelecidas, com efeito maior nas estabelecidas (p. 25).
+  - [ ] diferença média padronizada de 0,20 no desempenho (0,13 nas empresas novas e 0,24 nas estabelecidas) (Tabelas 2 e 3, p. 33–34).
   - [ ] incerteza e pouca informação prévia reduzem o retorno do planejamento; os autores propõem planejar, aprender e fazer ao mesmo tempo (p. 24–25).
 - [ ] PINE, B. Joseph; GILMORE, James H. Welcome to the experience economy. *Harvard Business Review*, jul./ago. 1998, p. 97–105 (páginas pela nota 5 de Fitzsimmons e Fitzsimmons, 2014, p. 16). Sem acesso: citar por *apud* (abaixo). ⛔
 - [ ] FITZSIMMONS e FITZSIMMONS (2014), já na lista, cap. 1 (trecho novo: p. 11–12 e 16). 📄
