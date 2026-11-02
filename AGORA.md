@@ -4,6 +4,7 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora
 
+- **Revisão do TMin v9 (02/11, 04h):** recomendações 1, 6, 9 e 10 aplicadas no `.docx` (pares originais apagados, 26 referências novas com [AV], "seção N.N", erros de redação); 3, 4 e 5 (números, alertas e ocupação de pico) esperam a decisão sobre o financeiro (pendências); 2, 7 e 8 ficam para depois. Os `.md` de `_md/` ainda não têm essas mudanças.
 - **Cap. 2 reordenado (02/11):** contexto (2.1 experiência, 2.2 estabelecimentos, 2.3 público) → 2.4 estratégia e gestão do serviço → 2.5 viabilidade, no TMin v9; três parágrafos novos com "*". Depois dos caps. 2 e 3, reescrever o início do cap. 1 (pendências).
 - **Comentários do TMin v9 (01/11, 23h):** 8 dos 9 comentários e as remissões do cap. 2 respondidos em 18 parágrafos com "*", abaixo dos originais; a regra do cap. 2 mudou (sem remissão a capítulo no texto). Falta o autor escolher a versão de cada um e conferir Figueiredo para o comentário 7.
 - **Capítulos:** todos têm arquivo. Rascunhos novos em 31/10: caps. 4, 7, 10 e 11. Cap. 5 segue esboço de 15/10 (5.2 provisório); cap. 6 só com 6.3 e 6.4 ([status](textos/planejamento/status_capitulos.md)).
@@ -21,7 +22,7 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Próximos 3 passos
 
-1. Decidir a equipe (card no thread; pendências, item 5) e levar a escolha ao modelo e aos caps. 4, 7, 9, 10 e 11.
+1. Decidir a equipe e as demais recomendações do financeiro (pendências) e levar ao modelo e aos caps. 4, 7, 9, 10 e 11.
 2. Fazer a recodificação cega; depois, refazer o 5.2 e escrever 6.1, 6.2 e 6.5.
 3. Cortar o cap. 10 até o teto (melhorias C17), escrever o 6.6 e preencher 4.2 e 4.3.
 

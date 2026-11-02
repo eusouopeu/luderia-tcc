@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Remissão a subdivisão escrita "seção N.N" (e "cap. N" só para capítulo inteiro); legislação nas Referências sob a jurisdição (BRASIL, BAHIA, SALVADOR), e a consulta ao CNPJ citada como (BRASIL, 2026) | `docs/registro-de-alteracoes.md` (02/11/2026, 04:33) |
 | 02/11/2026 | Comentário do B2 cujo texto termina em emoji antes do "…" do Google, com frase de sentido completo, conta como inteiro (Status "Completo") | `docs/pendencias.md`, item 14 |
 | 02/11/2026 | Comentário resolvido no `.docx`: o parágrafo revisado (com "*" no começo, só o trecho comentado mudado) substitui o original, que é apagado; os pares de rodadas anteriores ficam até a escolha do autor | memória `revisao-comentarios-docx` |
 | 02/11/2026 | Cap. 2 na ordem contexto → administração → viabilidade: 2.1 economia da experiência, 2.2 estabelecimentos de lazer, 2.3 público de jogos, 2.4 estratégia e gestão do serviço, 2.5 viabilidade (com a gestão baseada em evidências); a definição de *competitive socialising* fica no cap. 2 | `_instrucoes/2_ref-teorico.md` |

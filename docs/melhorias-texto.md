@@ -72,6 +72,12 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D35 — Preço de entrada abaixo ou acima da média.** Cap. 5 (5.2.1, TMax: "o preço de entrada da luderia precisa ficar abaixo da média das metrópoles") × cap. 6 (6.3: R$ 28,00 no fim de semana, acima da mediana de R$ 25,00). Pela precedência, vale o cap. 6. O TMin do cap. 5 já diz só que a renda menor pesa na definição do preço. Sugestão: no TMax, a mesma redação do TMin.
 
+**D38 — Números que mudam entre capítulos (02/11/2026).** 7.5 (48 pessoas por dia) × 4.5, 7.2 e 9.4 (51); 5.3.3 e 6.3 ("22 dos 53") × B1 com 54; 5.3.3 (taxa de R$ 5,00 a R$ 40,00) × Tabela 6.1 (Encounter a R$ 45,00); 8.1 (receita do ano 2 de R$ 877 mil, base da Tabela 8.1) × Tabela 9.3 (R$ 833 mil); carga do Simples de 10,1% (Tabela 8.1), 9,6% (9.4 e 11.2) e 8,1%/11,9% (8.1); aluguel pessimista de R$ 64,36 (6.4) × R$ 64,35 (Quadro 9.2); "15 dos 22" que diferenciam o preço (6.3) × 16 na Tabela 6.1 (17 com a BoardZ, que não cobra entrada), que tem 24 linhas. Sugestão: tirar todos do modelo do cap. 9 e do B1 regerados.
+
+**D39 — Alertas do 10.5 acima do provável (02/11/2026).** Os limites de alerta saem do ponto de ruptura, acima do provável: pessoas por mesa abaixo de 4,4 (provável 3,6) e giros abaixo de 5,5 (teto físico de 5,51). A luderia abriria com todos os indicadores em alerta. Sugestão: limites a partir da combinação confirmada na validação, com margem abaixo dela.
+
+**D40 — Ocupação de pico aplicada ao dia inteiro (02/11/2026).** 3.6 trata a contagem como limite superior, mas o 9.2 usa as 4,37 mesas ocupadas (noites de sexta e sábado, cerca de 2,7 h por visita) como provável para o dia inteiro, multiplicadas por 4,56 giros. O giro otimista (5,51) supõe 10 h abertas; o fim de semana tem 9,3 h (9.8), com teto de 5,14 giros, abaixo da ruptura (5,55). Sugestão: ocupação por faixa de horário e giro do fim de semana pelo horário do fim de semana.
+
 ## Aceitável
 
 **D37 — Erros de digitação no cap. 1 (02/11/2026).** §2 da introdução: "São Paul" (São Paulo).

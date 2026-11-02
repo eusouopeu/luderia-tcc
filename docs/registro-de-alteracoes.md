@@ -2092,3 +2092,10 @@ Restam 10 "Incompleto": Arena BG, BoardZ, Castelos, Flow Games, Nala Land e Play
 **Antes**: Status "Incompleto" nos 5, todos terminados em emoji seguido do marcador "…" do Google.
 **Depois**: Status "Completo" nos 5. A frase de cada um tem sentido completo e termina em emoji. O da Arena BG segue "Incompleto": a frase fecha com ponto, sem emoji, antes do "…". Restam 5 "Incompleto": Arena BG, Bardo Mago (2) e Bodogami (2). Os 4 do Bardo Mago e do Bodogami também têm frase completa e terminam em emoji.
 **Justificativa**: regra do autor: frase com sentido completo e terminada em emoji = comentário inteiro.
+
+### 04:33
+**Objeto**: `textos/capitulos/TCC_luderia_TMin_v9.docx` (caps. 1 a 10 e Referências)
+**Antes**: quatro pares de original + revisado com "*" (2.4.1, 2.4.3 e dois no 2.5); leis, resoluções, NBR 9050, CONCLA e Receita Federal citadas sem entrada nas Referências; remissões a seção escritas como "Caps. 5.2", "cap. 8.1" ou só "(6.3)"; "Os capítulos 4 a 8 tratam do plano"; caminho interno `(_instrucoes/8_financeiro.md)` no 10.3; aspas abertas sem fechar antes de "Luderia é" (cap. 3); "25,8% das micro e pequenas empresas fecha"; espaço duplo em "maior incerteza  recebem"; "com o nome do autor trocado por um código" (3.2.2).
+**Depois**: originais apagados, ficam só os revisados com "*"; 26 referências novas com "*" no começo (20 de legislação federal sob BRASIL, 2 da Bahia, 1 de Salvador, NBR 9050, CONCLA e Receita Federal), 25 delas com [AV] porque as datas e ementas não foram conferidas na fonte; citação "(Receita Federal, …)" trocada por "(BRASIL, 2026)" nos dois pontos do cap. 8; remissões a subdivisão como "seção N.N" (Quadro 1, caps. 4 a 9); "capítulos 4 a 10"; "(seção 3.1)" no lugar do caminho interno; aspas tiradas; "fecham"; espaço único; "nome do avaliador". Documento reaberto no WordCraft (1.270 parágrafos).
+**Justificativa**: pedido do autor (recomendações 1, 6, 9 e 10 da revisão de 02/11/2026).
+
