@@ -148,21 +148,17 @@ UNIDADE = {"BV": "Bela Vista", "PA": "Paralela"}
 # --------------------------------------------------------------- apêndices
 def apendice_a(d):
     est = d["est"]
-    por = est.groupby("capital_endereco").size().sort_values(ascending=False)
-    assert por.sum() == len(est)
-    t1 = [["Metrópole", "Concorrentes"]] + [[c, str(n)] for c, n in por.items()] + [["Total", str(len(est))]]
+    por = est.groupby("capital_endereco").size()
     lista = est.sort_values(["capital_endereco", "volume_avaliacoes"], ascending=[True, False])
     t2 = [["Concorrente", "Metrópole", "Nota (1 a 5)", "Avaliações"]] + [
         [r.nome, r.capital_endereco, num(r.avaliacao_media), brl(r.volume_avaliacoes, 0)] for r in lista.itertuples()]
-    fonte_b1 = "Fonte: elaboração própria, com base no Bloco B1 (Google Places API, set/2026; casas incluídas em 12/10/2026)."
+    fonte_b1 = "Fonte: elaboração própria, com base no Bloco B1 (Google Places API, 09/2026 e 12/10/2026)."
     return [titulo("APÊNDICE A – CONCORRENTES DO BLOCO B1"),
             par(f"A busca pela Google Places API levantou 164 candidatos com mais de 100 avaliações nas 14 metrópoles da REGIC 2018 "
                 f"e em suas regiões metropolitanas, e a curadoria manual aprovou {len(est)}. Cada concorrente pertence a uma única "
-                f"metrópole: a capital da região metropolitana do seu endereço. {len(por)} das 14 metrópoles têm ao menos um concorrente "
-                "(Tabela A.1), e a Tabela A.2 lista os concorrentes, com a nota e o número de avaliações no Google Maps."),
-            legenda("Tabela A.1 – Concorrentes aprovados por metrópole"), tabela("Tabela", [6071, 3000], t1, ["left", "right"]),
-            fonte(fonte_b1),
-            legenda("Tabela A.2 – Concorrentes aprovados"),
+                f"metrópole: a capital da região metropolitana do seu endereço. {len(por)} das 14 metrópoles têm ao menos um concorrente, "
+                "com a contagem por metrópole na Figura 5.2. A Tabela A.1 lista os concorrentes, com a nota e o número de avaliações no Google Maps."),
+            legenda("Tabela A.1 – Concorrentes aprovados"),
             tabela("Tabela", [4271, 2300, 1300, 1200], t2, ["left", "left", "right", "right"], sz=18),
             fonte(fonte_b1)], dict(concorrentes=len(est))
 
@@ -188,7 +184,7 @@ def apendice_b(d):
                 "Bela Vista e 9 na Paralela (Tabela B.1)."),
             legenda("Tabela B.1 – Registros por visita"),
             tabela("Tabela", [800, 1171, 1050, 1050, 1050, 1350, 1300, 1300], t1, ["left", "left"] + ["right"] * 6),
-            fonte("Fonte: elaboração própria, com base no Bloco B3 (out/2026).", fim=False),
+            fonte("Fonte: elaboração própria, com base no Bloco B3 (10/10/2026 a 30/10/2026).", fim=False),
             nota("Nota: visita pela data de início. Mesas ocupadas em média = ocupação média × mesas da unidade; pessoas por grupo e "
                  "permanência só dos grupos sentados durante a visita."),
             par("As vendas fora das horas observadas vêm da numeração das notas fiscais. A NFC-e de uma compra do autor no início e no "
@@ -196,7 +192,7 @@ def apendice_b(d):
                 "intervalo (Tabela B.2). Como nem toda venda gera nota, o valor é um piso."),
             legenda("Tabela B.2 – Notas fiscais emitidas entre visitas"),
             tabela("Tabela", [1771, 1800, 1800, 1000, 1350, 1350], t2, ["left", "left", "left", "right", "right", "right"]),
-            fonte("Fonte: elaboração própria, com base no Bloco B3 (NFC-e da São Jogue, out/2026).")], {}
+            fonte("Fonte: elaboração própria, com base no Bloco B3 (NFC-e da São Jogue, 10/10/2026 a 30/10/2026).")], {}
 
 
 def apendice_c(d):
@@ -223,13 +219,13 @@ def apendice_c(d):
                 "As faixas do Simples Nacional (Tabela C.2) e os salários de admissão (Tabela C.3) entram direto no modelo financeiro."),
             legenda("Quadro C.1 – Séries das bases públicas usadas no plano"),
             tabela("Quadro", [2200, 2300, 2271, 2300], q, ["left"] * 4),
-            fonte("Fonte: elaboração própria, com base no Bloco B4 (out/2026)."),
+            fonte("Fonte: elaboração própria, com base no Bloco B4 (10/2026)."),
             legenda("Tabela C.2 – Faixas do Simples Nacional, anexos I e III"),
             tabela("Tabela", [900, 800, 3371, 1900, 2100], t2, ["center", "center", "right", "right", "right"]),
             fonte("Fonte: elaboração própria, com base na LC n. 123/2006 (anexos I e III)."),
             legenda("Tabela C.3 – Salários de admissão da equipe"),
             tabela("Tabela", [4371, 1200, 1200, 2300], t3, ["left", "center", "right", "right"]),
-            fonte("Fonte: elaboração própria, com base no Novo CAGED (Salvador, admissões de ago/2025 a jul/2026, mediana).", fim=False),
+            fonte("Fonte: elaboração própria, com base no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana).", fim=False),
             nota("Nota: recreador em todas as atividades e cozinheiro geral na CNAE 56; meio período proporcional a 20 h de 44 h.")], {}
 
 
@@ -271,7 +267,7 @@ def apendice_e(d):
             legenda("Quadro E.1 – Registro de premissas do modelo financeiro"),
             tabela("Quadro", [550, 2450, 1050, 1050, 1050, 2221, 700], linhas,
                    ["center", "left", "center", "center", "center", "left", "center"], sz=18),
-            fonte("Fonte: elaboração própria (aba premissas do modelo), com dados dos Blocos B1, B3 e B4 (out/2026).")], \
+            fonte("Fonte: elaboração própria, com base no modelo financeiro e nos Blocos B1, B3 e B4 (10/2026).")], \
         dict(premissas=len(d["prem"]))
 
 
@@ -298,10 +294,10 @@ def apendice_f(d):
                 "faixas melhor que os cenários extremos, que põem todas as premissas no mesmo lado ao mesmo tempo (Tabela F.1 e Figura F.1)."),
             legenda("Tabela F.1 – Resultados da simulação de Monte Carlo"),
             tabela("Tabela", [6071, 3000], t, ["left", "right"]),
-            fonte("Fonte: elaboração própria (aba monte_carlo do modelo)."),
+            fonte("Fonte: elaboração própria, com base no modelo financeiro (02/11/2026)."),
             legenda("Figura F.1 – Distribuição do VPL na simulação de Monte Carlo"),
             figura("rIdApF1", FIG_MC, "Figura F.1 – Distribuição do VPL na simulação de Monte Carlo"),
-            fonte("Fonte: elaboração própria (aba monte_carlo do modelo).")], dict(prob=pct(mc["prob_positivo"]))
+            fonte("Fonte: elaboração própria, com base no modelo financeiro (02/11/2026).")], dict(prob=pct(mc["prob_positivo"]))
 
 
 # --------------------------------------------------------------- conferência com o principal
@@ -329,7 +325,7 @@ def main():
     x = z.read("word/document.xml").decode()
     i_body = x.find("<w:body>") + len("<w:body>")
     sect = x[x.rfind("<w:sectPr"):x.rfind("</w:body>")]
-    texto = html.unescape(" ".join(re.findall(r"<w:t[^>]*>([^<]*)</w:t>", x[:x.find("REFERÊNCIAS")])))
+    texto = html.unescape(" ".join(re.findall(r"<w:t[^>]*>([^<]*)</w:t>", x[:x.rfind("REFERÊNCIAS")])))
 
     d = dados()
     corpo, chaves = [], {}

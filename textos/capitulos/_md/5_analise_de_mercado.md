@@ -6,13 +6,13 @@ A análise de mercado verifica se Salvador comporta mais uma luderia e em que co
 
 ### 5.1.1 Serviços às famílias no Brasil
 
-Os serviços prestados às famílias cresceram acima da inflação depois da pandemia. A receita bruta do segmento passou de R$ 223,9 bilhões, em 2019, para R$ 388,9 bilhões, em 2023, com ganho real em torno de 36% (IBGE, PAS, tabela 2611) [script]. O lazer cresceu mais que a alimentação e atraiu novas empresas. Entre 2019 e 2023, a receita das atividades culturais, recreativas e esportivas subiu 95,4%, e a dos serviços de alimentação, 67,7% (IBGE, PAS, tabela 2611). No mesmo período, o número de empresas de alimentação caiu 8,7%, e o de atividades culturais e recreativas cresceu 35,1% (IBGE, PAS, tabela 2619). A luderia disputa clientes como bar, onde a concorrência é por escala, e se diferencia como lazer, onde há espaço para entrantes.
+Os serviços prestados às famílias cresceram acima da inflação depois da pandemia. A receita bruta do segmento passou de R$ 223,9 bilhões, em 2019, para R$ 388,9 bilhões, em 2023, com ganho real de 36,4%, descontado o Índice Nacional de Preços ao Consumidor Amplo (IPCA) acumulado de 2020 a 2023 (IBGE, PAS, tabela 2611; BCB, SGS). O lazer cresceu mais que a alimentação e atraiu novas empresas. Entre 2019 e 2023, a receita das atividades culturais, recreativas e esportivas subiu 95,4%, e a dos serviços de alimentação, 67,7% (IBGE, PAS, tabela 2611). No mesmo período, o número de empresas de alimentação caiu 8,7%, e o de atividades culturais e recreativas cresceu 35,1% (IBGE, PAS, tabela 2619). A luderia disputa clientes como bar, onde a concorrência é por escala, e se diferencia como lazer, onde há espaço para entrantes.
 
-A mesma pesquisa mostra a estrutura de custos dos serviços de alimentação. Em 2024, os gastos com pessoal equivaleram a 25,1% da receita operacional líquida dos serviços de alimentação, o consumo de mercadorias a 26,8% e o aluguel a 4,0% (IBGE, PAS 2024, tabela 10758) [script]. Esses percentuais são o teto de comparação das premissas de custo do cap. 9.
+A mesma pesquisa mostra a estrutura de custos dos serviços de alimentação. Em 2024, os gastos com pessoal equivaleram a 25,1% da receita operacional líquida dos serviços de alimentação, o consumo de mercadorias a 26,8% e o aluguel a 4,0% (IBGE, PAS 2024, tabela 10758). Esses percentuais são o teto de comparação das premissas de custo do cap. 9.
 
 ### 5.1.2 Jogos de tabuleiro e luderias
 
-Os jogos de tabuleiro e cartas passaram de 9,1% para 13,1% das vendas da indústria de brinquedos entre 2017 e 2025 (ABRINQ, 2026). O número sustenta o crescimento do hábito de jogar, não a demanda por luderias. Não há levantamento oficial nem setorial sobre luderias, e o formato não tem código próprio na CNAE (seção 8.1): o tamanho do segmento é medido pelo Bloco B1 (seção 5.3).
+Os jogos de tabuleiro e cartas passaram de 9,1% para 13,1% das vendas da indústria de brinquedos entre 2017 e 2025 (ABRINQ, 2026). O número sustenta o crescimento do hábito de jogar, não a demanda por luderias. Não há levantamento oficial nem setorial sobre luderias, e o formato não tem código próprio na Classificação Nacional de Atividades Econômicas (CNAE) (seção 8.1): o tamanho do segmento é medido pelo Bloco B1 (seção 5.3).
 
 O formato já tem escala fora do Brasil. No Reino Unido, o número de locais de *competitive socialising* cresceu 38% entre 2018 e 2023, e os locais que combinam várias atividades cresceram 455% no mesmo período (SAVILLS, 2023). A procura por experiências presenciais depois da pandemia de covid-19 sustentou esse crescimento (SAVILLS, 2023). O dado mostra um formato em alta, mas medido fora do Brasil: a demanda em Salvador precisa de evidência própria.
 
@@ -28,7 +28,7 @@ Do setor, a análise passa ao público da cidade. Salvador tem público em núme
 
 ![Rendimento médio do trabalho nas capitais com luderia no B1, 2º trimestre de 2026](../figuras/5_renda_trabalho_capitais.png)
 
-Fonte: elaboração própria, com base no IBGE, PNAD Contínua (2º trimestre de 2026).
+Fonte: elaboração própria, com base no IBGE, PNAD Contínua (04/2026 a 06/2026).
 
 O jogo de tabuleiro moderno valoriza a interação presencial. Em entrevistas com jogadores adultos, Sarpa (2016, p. 39–40) mostra que eles descrevem o jogo como o elo que reúne as pessoas: o convívio importa mais que a partida e se concentra no fim de semana, com amigos.
 
@@ -42,7 +42,7 @@ Os estudos de fora do Brasil apontam na mesma direção. Em nove *board game caf
 
 ## 5.3 ANÁLISE DA CONCORRÊNCIA
 
-O Bloco B1 identificou 54 luderias com mais de 100 avaliações no Google Maps nas 14 metrópoles da REGIC (IBGE, 2020), em outubro de 2026. São Paulo concentra 19; Belo Horizonte, Brasília e Curitiba têm seis cada; Rio de Janeiro, cinco; Florianópolis, três; Fortaleza e Porto Alegre, duas; Belém, Goiânia, Recife, Salvador e Vitória, uma; Manaus não tem nenhuma (Figura 5.2).
+O Bloco B1 identificou 54 luderias com mais de 100 avaliações no Google Maps nas 14 metrópoles da pesquisa Regiões de Influência das Cidades (REGIC) (IBGE, 2020), em outubro de 2026. São Paulo concentra 19; Belo Horizonte, Brasília e Curitiba têm seis cada; Rio de Janeiro, cinco; Florianópolis, três; Fortaleza e Porto Alegre, duas; Belém, Goiânia, Recife, Salvador e Vitória, uma; Manaus não tem nenhuma (Figura 5.2).
 
 **Figura 5.2 – Luderias com mais de 100 avaliações por metrópole**
 
@@ -54,7 +54,7 @@ A nota mediana é 4,7 (de 4,2 a 5,0), e o volume mediano de avaliações é 621 
 
 ### 5.3.1 Densidade e concorrência em Salvador
 
-Salvador tem a menor oferta de luderias por habitante entre as metrópoles com ao menos uma casa: cerca de 0,04 por 100 mil habitantes, contra 0,16 em São Paulo e 0,33 em Curitiba [script]. A baixa densidade indica espaço para um segundo concorrente, mas também pode refletir a renda menor, e a ocupação observada na São Jogue (Bloco B3) testa as duas leituras.
+Salvador tem a menor oferta de luderias por habitante entre as metrópoles com ao menos uma casa: cerca de 0,04 por 100 mil habitantes, contra 0,16 em São Paulo e 0,33 em Curitiba (Bloco B1; IBGE, estimativas de 2026). A baixa densidade indica espaço para um segundo concorrente, mas também pode refletir a renda menor, e a ocupação observada na São Jogue (Bloco B3) testa as duas leituras.
 
 Na prática, a concorrência local se resume a uma casa. A São Jogue é a única luderia de Salvador no recorte. A unidade Bela Vista tem nota 4,8, 787 avaliações e abre 68 horas por semana; a Paralela, mais nova, tem 16 avaliações. As duas ficam dentro de shoppings (Bela Vista e Paralela), no eixo da Avenida Paralela, o que orienta a escolha de bairro (seção 6.4). O aluguel de jogos para levar para casa é o substituto mais próximo, com seis acervos em Salvador na plataforma Acervo de Jogos, mas não compete com a ocasião social.
 
@@ -66,7 +66,7 @@ O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 c
 
 ![Consumo por pessoa uma bebida e uma entrada ou prato, mediana por metrópole](../figuras/5_consumo_por_metropole.png)
 
-Fonte: elaboração própria, com base nos cardápios do Bloco B1 (2026).
+Fonte: elaboração própria, com base nos cardápios do Bloco B1 (04/2024 a 07/2026).
 
 Fora do Brasil, a cobrança segue dois modelos. Nos estabelecimentos especializados do Reino Unido, o cliente paga uma taxa fixa de acesso ao acervo, e comida e bebida são opcionais (KVIAT, 2024, p. 77); em Tóquio, a cobrança é por hora, em média 470 ienes, com preço menor nas tardes de dia útil (NOVAES; KANYAT, 2025, p. 87). Os dois modelos, com o couvert dos concorrentes, são as referências da taxa de entrada.
 
@@ -90,13 +90,13 @@ Fonte: elaboração própria.
 
 ## 5.4 FORNECEDORES
 
-O principal insumo próprio da luderia é o acervo. Em oito lojas especializadas, 2.342 jogos tinham preço mediano de R$ 130,00, com faixa interquartil de R$ 69,90 a R$ 249,88 (Bloco B1, 2026). Um acervo do tamanho mediano dos concorrentes custaria cerca de R$ 61 mil [script]. [Pendente: alimentos e bebidas, mobiliário e equipamentos.] A composição do acervo também encontra apoio nos levantamentos de jogadores. Mecânicas de fácil apreensão aumentam a probabilidade de sucesso de um título entre usuários brasileiros, e jogos de guerra e de cartas colecionáveis a reduzem (FIGUEIREDO; MANTOVANI, 2022, p. 12). Para a luderia, o resultado favorece um acervo de jogos de regras simples (seção 7.4).
+O principal insumo próprio da luderia é o acervo. Em oito lojas especializadas, 2.342 jogos tinham preço mediano de R$ 130,00, com faixa interquartil de R$ 69,90 a R$ 249,88 (Bloco B1, 2026). Um acervo do tamanho mediano dos concorrentes custaria cerca de R$ 61 mil, para 322 títulos (Bloco B1, 2026). [Pendente: alimentos e bebidas, mobiliário e equipamentos.] A composição do acervo também encontra apoio nos levantamentos de jogadores. Mecânicas de fácil apreensão aumentam a probabilidade de sucesso de um título entre usuários brasileiros, e jogos de guerra e de cartas colecionáveis a reduzem (FIGUEIREDO; MANTOVANI, 2022, p. 12). Para a luderia, o resultado favorece um acervo de jogos de regras simples (seção 7.4).
 
 ## 5.5 MACROAMBIENTE (PESTEL)
 
 A análise PESTEL lê o macroambiente em seis dimensões: política, econômica, social, tecnológica, ambiental e legal (seção 2.2). Cada dimensão entra pelo fator que muda uma decisão do plano.
 
-No campo político, o fator de maior efeito é a reforma tributária do consumo. A Emenda Constitucional n. 132/2023 e a Lei Complementar n. 214/2025 trocam os tributos sobre o consumo pelo IBS e pela CBS, com transição a partir de 2026 [AV]. A reforma mantém o Simples Nacional e abre a opção de recolher IBS e CBS por fora a partir de 2027, que a luderia não usa, por vender ao consumidor final (seção 8.1).
+No campo político, o fator de maior efeito é a reforma tributária do consumo. A Emenda Constitucional n. 132/2023 e a Lei Complementar n. 214/2025 trocam os tributos sobre o consumo pelo Imposto sobre Bens e Serviços (IBS) e pela Contribuição Social sobre Bens e Serviços (CBS), com transição a partir de 2026 [AV]. A reforma mantém o Simples Nacional e abre a opção de recolher IBS e CBS por fora a partir de 2027, que a luderia não usa, por vender ao consumidor final (seção 8.1).
 
 No campo econômico, os juros altos encarecem o capital. A meta da Selic estava em 14,00% ao ano em setembro de 2026, e o mercado espera 12,00% no fim de 2027 (BCB, SGS e Focus). A taxa de desconto do cap. 9 parte dessa curva.
 
@@ -106,7 +106,7 @@ A inflação da alimentação fora do domicílio corre acima da geral, e mais em
 
 ![IPCA acumulado em 12 meses até agosto: geral e alimentação fora do domicílio](../figuras/5_ipca_alimentacao_fora.png)
 
-Fonte: elaboração própria, com base no IBGE, IPCA (tabela 7060).
+Fonte: elaboração própria, com base no IBGE, IPCA, tabela 7060 (08/2023 a 08/2026).
 
 O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvador chegou a R$ 54,15 por m² em julho de 2026, alta de 18,9% em 12 meses, contra 7,8% em São Paulo (FIPE, Índice FipeZAP). O aluguel é o principal custo fixo e entra como premissa de risco na escolha do ponto (seção 6.4) e na sensibilidade (cap. 9). A cotação na Pituba substitui o índice antes do investimento.
 
@@ -118,7 +118,7 @@ No campo tecnológico, o efeito mais direto está na divulgação, que acontece 
 
 No campo ambiental, o efeito sobre o negócio é residual. O acervo é um bem durável, usado por muitos clientes ao longo de anos, e o manejo dos resíduos da cozinha entra na licença sanitária (seção 8.2). Por isso, a dimensão não é detalhada.
 
-Por fim, no campo legal, as normas de maior efeito são as de licença e de venda. O alvará depende de a zona do ponto admitir serviço de alimentação e lazer (Lei municipal n. 9.148/2016) [AV], e a lotação aprovada pelo Corpo de Bombeiros fixa o teto de mesas. A venda de bebida alcoólica a menores de 18 anos é crime (Lei n. 8.069/1990, art. 243), o que exige conferência de idade no caixa, e a música ambiente gera retribuição ao ECAD (Lei n. 9.610/1998, art. 68). As obrigações e o custo de cada uma estão no cap. 8; a regulação municipal de ruído e horário ainda precisa ser conferida [BUSCAR]. Cada norma vira custo ou processo.
+Por fim, no campo legal, as normas de maior efeito são as de licença e de venda. O alvará depende de a zona do ponto admitir serviço de alimentação e lazer (Lei municipal n. 9.148/2016) [AV], e a lotação aprovada pelo Corpo de Bombeiros fixa o teto de mesas. A venda de bebida alcoólica a menores de 18 anos é crime (Lei n. 8.069/1990, art. 243), o que exige conferência de idade no caixa, e a música ambiente gera retribuição ao Escritório Central de Arrecadação e Distribuição (ECAD) (Lei n. 9.610/1998, art. 68). As obrigações e o custo de cada uma estão no cap. 8; a regulação municipal de ruído e horário ainda precisa ser conferida [BUSCAR]. Cada norma vira custo ou processo.
 
 **Referências citadas neste capítulo**
 
@@ -126,7 +126,7 @@ ABRINQ. *Anuário da Abrinq 2026*. São Paulo: Associação Brasileira dos Fabri
 
 BANCO CENTRAL DO BRASIL (BCB). *Relatório Focus*: expectativas de mercado de 11 set. 2026. Brasília, 2026. Disponível em: https://www.bcb.gov.br/content/focus/focus/R20260911.pdf. Acesso em: 2 nov. 2026.
 
-BANCO CENTRAL DO BRASIL (BCB). *Sistema Gerenciador de Séries Temporais (SGS)*: séries 432, 1619 e 13522. Brasília, 2026. Disponível em: https://www3.bcb.gov.br/sgspub/. Acesso em: 14 out. 2026.
+BANCO CENTRAL DO BRASIL (BCB). *Sistema Gerenciador de Séries Temporais (SGS)*: séries 432, 433, 1619 e 13522. Brasília, 2026. Disponível em: https://www3.bcb.gov.br/sgspub/. Acesso em: 14 out. 2026.
 
 BRASIL. Lei nº 8.069, de 13 de julho de 1990. Dispõe sobre o Estatuto da Criança e do Adolescente e dá outras providências. *Diário Oficial da União*: seção 1, Brasília, DF, 16 jul. 1990. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/l8069.htm. Acesso em: 2 nov. 2026. [AV]
 

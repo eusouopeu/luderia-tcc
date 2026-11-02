@@ -6,9 +6,9 @@ O plano operacional traduz a demanda estimada em espaço, processos e pessoas. O
 
 ## 7.1 LOCALIZAÇÃO E LAYOUT
 
-A luderia ocupa um salão térreo de cerca de 130 m² na Pituba, a até 1.000 m de uma estação de metrô (seção 6.4). A área é estimativa do autor (N6), com faixa de 110 a 150 m² no cap. 9: cerca de 12 m² por mesa, mais 60 m² de balcão, acervo, cozinha e sanitários. O ponto precisa de zona que admita serviço de alimentação e lazer na LOUOS de Salvador e de licença do Corpo de Bombeiros compatível com a lotação do salão (Quadro 8.1).
+A luderia ocupa um salão térreo de cerca de 130 m² na Pituba, a até 1.000 m de uma estação de metrô (seção 6.4). A área é estimativa do autor (N6), com faixa de 110 a 150 m² no cap. 9: cerca de 12 m² por mesa, mais 60 m² de balcão, acervo, cozinha e sanitários. O ponto precisa de zona que admita serviço de alimentação e lazer na Lei de Ordenamento do Uso e da Ocupação do Solo (LOUOS) de Salvador e de licença do Corpo de Bombeiros compatível com a lotação do salão (Quadro 8.1).
 
-O salão de jogos recebe 6 mesas, de 4 a 6 lugares, com cerca de 30 assentos. O número de mesas é o maior número de mesas ocupadas visto nas visitas: 6,02 em média na noite mais cheia, na Paralela, em 30/10 (B3). As estantes do acervo ficam no próprio salão, à vista das mesas, porque a escolha do jogo faz parte do serviço. Completam a área o balcão com o caixa, a cozinha, o depósito de A&B, dois sanitários, um deles adaptado, e uma rota acessível da entrada às mesas (Lei n. 13.146/2015; ABNT NBR 9050). [figura: croqui do salão]
+O salão de jogos recebe 6 mesas, de 4 a 6 lugares, com cerca de 30 assentos. O número de mesas é o maior número de mesas ocupadas visto nas visitas: 6,02 em média na noite mais cheia, na Paralela, em 30/10 (B3). As estantes do acervo ficam no próprio salão, à vista das mesas, porque a escolha do jogo faz parte do serviço. Completam a área o balcão com o caixa, a cozinha, o depósito de alimentos e bebidas (A&B), dois sanitários, um deles adaptado, e uma rota acessível da entrada às mesas (Lei n. 13.146/2015; ABNT NBR 9050). [figura: croqui do salão]
 
 ## 7.2 CAPACIDADE INSTALADA
 
@@ -26,9 +26,9 @@ O horário segue uma regra simples: as 8 horas contínuas com mais luderias aber
 | Capacidade máxima | 95 pessoas por dia aberto | Todas as mesas ocupadas em todas as horas abertas |
 | Demanda provável no ano maduro | 47 pessoas por dia aberto | 4,37 mesas ocupadas no fim de semana e metade disso no dia útil, com 4,01 giros (R04, R05, R15) |
 
-Fonte: elaboração própria, com base nos Blocos B1 e B3 (2026) e no modelo do cap. 9.
+Fonte: elaboração própria, com base nos Blocos B1 (10/2026) e B3 (10/10/2026 a 30/10/2026) e no modelo financeiro (Apêndice E).
 
-A demanda provável usa 50% da capacidade. As mesas ocupadas em média ficam limitadas pelo salão: nas visitas, o pico de mesas ocupadas foi 1,29 vez a média. Com 6 mesas, a média do fim de semana pode chegar a 4,65 mesas sem que o pico passe do salão. O provável, de 4,37 mesas, fica abaixo desse teto; o otimista é cortado nele. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto. Teto abaixo de 6 mesas exclui o imóvel.
+A demanda provável usa 50% da capacidade (Quadro 7.1). As mesas ocupadas em média ficam limitadas pelo salão: nas visitas, o pico de mesas ocupadas foi 1,29 vez a média. Com 6 mesas, a média do fim de semana pode chegar a 4,65 mesas sem que o pico passe do salão. O provável, de 4,37 mesas, fica abaixo desse teto; o otimista é cortado nele. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto. Teto abaixo de 6 mesas exclui o imóvel.
 
 ## 7.3 PROCESSOS OPERACIONAIS
 
@@ -65,7 +65,7 @@ Esse fluxo cabe numa equipe de 6 pessoas (Quadro 7.2). O salão tem 2 instrutore
 | Cozinheiro-chefe | 2 | 5 dias de 8 h (40 h); folgas na segunda e na terça ou na quarta | 1.700,00 |
 | Total (folha mensal) | 6 | n.a. | 9.112,95 |
 
-Fonte: elaboração própria, com base no Bloco B3 (2026) e no Novo CAGED (Salvador, admissões de ago/2025 a jul/2026, mediana; recreador em todas as atividades e cozinheiro geral na CNAE 56).
+Fonte: elaboração própria, com base no Bloco B3 (10/10/2026 a 30/10/2026) e no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana; recreador em todas as atividades e cozinheiro geral na CNAE 56).
 
 Nota: total = pessoas × salário de admissão. Com encargos de 37% (premissa C07), a folha vai a R$ 12.484,75 por mês (Tabela 9.2). n.a.: não se aplica.
 

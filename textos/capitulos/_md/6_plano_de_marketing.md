@@ -37,7 +37,7 @@ A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor 
 | Toca do Rato | Porto Alegre | 5,00 | 5,00 |
 | Ludus Luderia | São Paulo | 0,00 | 0,00 |
 
-Fonte: elaboração própria, com base nos cardápios, sites, matérias de imprensa, posts do Instagram e fotos do Google Maps do Bloco B1 (abr/2024 a jul/2026; BoardZ sem data, coletada em out/2026) e nas NFC-e da São Jogue (Bloco B3).
+Fonte: elaboração própria, com base nos cardápios, sites, matérias de imprensa, posts do Instagram e fotos do Google Maps do Bloco B1 (04/2024 a 07/2026; BoardZ sem data, coletada em 10/2026) e nas NFC-e da São Jogue (Bloco B3, 10/10/2026 a 30/10/2026).
 
 Nota: em negrito, a São Jogue, única luderia de Salvador no B1. Linhas em ordem decrescente do valor de fim de semana. Fim de semana: sexta a domingo e feriados. Faixa: menor e maior valor do período. LudoCafé: menor valor com consumo mínimo de R$ 50,00. BoardZ: passe do dia; a casa não cobra entrada, e o jogo avulso é pago por título. Place Games: R$ 10,00 da entrada valem como consumo, e a entrada é grátis na confraria de quinta. Café Geek: passaporte por nível de jogo. A taxa de entrada do plano, de R$ 18,68, é a média do couvert ou da taxa de jogo nos cardápios das 22 casas que a cobram (mediana de R$ 20,00), e não a média desta tabela, que reúne também sites, imprensa e redes sociais (seção 6.3).
 
@@ -49,9 +49,9 @@ As avaliações confirmam que o preço da entrada pesa, mas pouco. Das 1.628 ava
 
 ![Gasto por pessoa declarado pelos avaliadores no Google Maps](../figuras/6_gasto_declarado_por_pessoa.png)
 
-Fonte: elaboração própria, com base no Bloco B2 (avaliações até "3 meses atrás", coletas de 09 a 30/10/2026).
+Fonte: elaboração própria, com base no Bloco B2 (avaliações até "3 meses atrás", coletadas de 09/10/2026 a 30/10/2026).
 
-Pelos cardápios, uma visita custa de R$ 44,09 a R$ 69,50 por pessoa. A taxa de entrada média é de R$ 18,68, nas 22 casas que a cobram, e a cesta de consumo, uma bebida e uma entrada ou prato, custa em média R$ 50,82, em 36 casas (Bloco B1). O valor menor supõe uma cesta dividida por dupla; o maior, uma cesta por pessoa. Num grupo de 3,6 pessoas, a visita custa de R$ 158,72 a R$ 250,20. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018): uma visita consome de 35% a 56% desse orçamento, a preços de 2018 [script — corrigir pelo IPCA]. A luderia é ocasião de saída, não hábito semanal.
+Pelos cardápios, uma visita custa de R$ 44,09 a R$ 69,50 por pessoa. A taxa de entrada média é de R$ 18,68, nas 22 casas que a cobram, e a cesta de consumo, uma bebida e uma entrada ou prato, custa em média R$ 50,82, em 36 casas (Bloco B1). O valor menor supõe uma cesta dividida por dupla; o maior, uma cesta por pessoa. Num grupo de 3,6 pessoas, a visita custa de R$ 158,72 a R$ 250,20. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018), ou R$ 694,55 a preços de agosto de 2026, corrigidos pelo IPCA (BCB, SGS): uma visita consome de 23% a 36% desse orçamento. A luderia é ocasião de saída, não hábito semanal.
 
 O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 18,68 por pessoa, em todos os dias e nos três cenários. O valor fica perto da mediana dos concorrentes (R$ 20,00) e abaixo da São Jogue (R$ 28,00 no fim de semana e R$ 22,00 no dia útil). O consumo segue a cesta média dos cardápios, R$ 50,82, dividida por uma, duas ou três pessoas nos cenários otimista, provável e pessimista. Os valores entram no registro de premissas do cap. 9 como R06, R07 e R08. Com a entrada mais barata que a da São Jogue, o preço atrai o cliente da concorrente, e o serviço de mesa — explicação de jogos e acervo grande — sustenta a volta, o que liga o preço à proposta de valor (seção 6.1).
 
@@ -85,6 +85,8 @@ Escolhido o bairro, falta definir o ponto. Ele deve ficar a até 1.000 m de uma 
 Falta o custo do ponto por bairro. O FipeZap dá o aluguel comercial só para Salvador inteira (R$ 54,15 por m² em jul/2026), sem recorte de bairro; o cap. 9 usa esse valor, e o pessimista (R$ 64,36) cobre parte do prêmio de um bairro como a Pituba. A cotação de pontos na Pituba, junto ao metrô, fecha a decisão [BUSCAR — anúncios de locação comercial].
 
 **Referências citadas neste capítulo**
+
+BANCO CENTRAL DO BRASIL (BCB). *Sistema Gerenciador de Séries Temporais (SGS)*: séries 432, 433, 1619 e 13522. Brasília, 2026. Disponível em: https://www3.bcb.gov.br/sgspub/. Acesso em: 14 out. 2026.
 
 FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). *Índice FipeZAP*: locação comercial, julho de 2026. São Paulo, 2026. Disponível em: https://downloads.fipe.org.br/indices/fipezap/fipezap-202607-comercial.pdf. Acesso em: 2 nov. 2026.
 

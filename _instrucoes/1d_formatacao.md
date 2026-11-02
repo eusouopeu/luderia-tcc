@@ -27,5 +27,7 @@ Regras suplementares à skill `formatacao-texto-ufba`, pedido do autor em 31/10/
 - **Célula sem número (02/11/2026):** "n.a." (não se aplica), centralizado na horizontal, explicado na nota. Zero é "0".
 - **Unidade no cabeçalho (02/11/2026):** a unidade vai no título, no cabeçalho da coluna ou no rótulo da linha ("(R$)", "(%)", "(anos)", "(0 a 1)"), e não repetida em cada célula.
 - **Negrito (02/11/2026):** só em títulos, legendas e cabeçalhos de tabela e quadro; no texto corrido, termo definido ou destacado vai em itálico, e expressão citada, entre aspas.
+- **Datas nas fontes (02/11/2026):** sempre em números: dia, "10/10/2026"; mês, "07/2026"; período, "10/10/2026 a 30/10/2026". Dados do modelo: "com base no modelo financeiro (Apêndice E)".
+- **Siglas (02/11/2026):** desdobradas na primeira ocorrência do texto corrido ("forma por extenso (SIGLA)"; dentro de parênteses, "forma por extenso, SIGLA") e reunidas na lista de abreviações e siglas.
 - **Fonte e nota (02/11/2026):** a fonte tem uma só redação: "Fonte: elaboração própria" (", com base em ..." quando houver base). Ressalvas, critérios e siglas vão numa linha "Nota: ..." logo abaixo da fonte, justificada, em Arial 10.
 - **Figuras do modelo financeiro:** tons da paleta purple (pessimista #54278f, otimista #bcbddc no tornado).

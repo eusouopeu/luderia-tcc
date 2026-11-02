@@ -54,11 +54,11 @@ O Bloco B2 usa o rótulo de data que o Google Maps mostra em cada avaliação. O
 
 A contagem direta é a âncora absoluta do trabalho. Foram quatro visitas à São Jogue, única luderia de Salvador, sempre na noite de sexta ou sábado: Bela Vista em 10/10 e 16/10 e Paralela em 17/10 e 30/10/2026, com 10,9 horas observadas e 27 grupos de mesa, com 101 pessoas.
 
-O observador fica sentado a uma mesa como cliente, e essa mesa sai dos registros e do denominador. Um aplicativo para Android, desenvolvido para o trabalho, grava a entrada e a saída de cada grupo, o número de pessoas, os jogos e as chamadas ao instrutor (Apêndice B). A *taxa de ocupação* é a proporção média das mesas ocupadas, calculada minuto a minuto, sobre 10 mesas na Bela Vista e 9 na Paralela. A contagem cobre só as horas observadas; para estimar as vendas fora delas, o trabalho usa a numeração das notas fiscais. A NFC-e de uma compra do autor no início e no fim de cada visita dá o número da nota. A diferença entre as visitas da mesma unidade dá as notas emitidas no intervalo: 183 na Bela Vista, em 6 dias, e 209 na Paralela, em 13 dias. Como as duas unidades só emitem a nota a pedido do cliente, as notas são um piso das vendas.
+O observador fica sentado a uma mesa como cliente, e essa mesa sai dos registros e do denominador. Um aplicativo para Android, desenvolvido para o trabalho, grava a entrada e a saída de cada grupo, o número de pessoas, os jogos e as chamadas ao instrutor (Apêndice B). A *taxa de ocupação* é a proporção média das mesas ocupadas, calculada minuto a minuto, sobre 10 mesas na Bela Vista e 9 na Paralela. A contagem cobre só as horas observadas; para estimar as vendas fora delas, o trabalho usa a numeração das notas fiscais. A nota fiscal de consumidor eletrônica (NFC-e) de uma compra do autor no início e no fim de cada visita dá o número da nota. A diferença entre as visitas da mesma unidade dá as notas emitidas no intervalo: 183 na Bela Vista, em 6 dias, e 209 na Paralela, em 13 dias. Como as duas unidades só emitem a nota a pedido do cliente, as notas são um piso das vendas.
 
 ### 3.2.4 Bloco B4 — Bases públicas
 
-As bases públicas dão o público e a renda (Censo 2022, estimativas de população e PNAD Contínua), o aluguel (FipeZap), os salários (Novo CAGED), os tributos (Simples Nacional e CONCLA), as margens do setor (PAS), o gasto das famílias (POF 2017-2018) e a taxa de desconto (Banco Central), cada série com recorte e data de referência (Apêndice C).
+As bases públicas dão o público e a renda (Censo 2022, estimativas de população e Pesquisa Nacional por Amostra de Domicílios, PNAD Contínua), o aluguel (FipeZap), os salários (Novo Cadastro Geral de Empregados e Desempregados, Novo CAGED), os tributos (Simples Nacional e Comissão Nacional de Classificação, CONCLA), as margens do setor (Pesquisa Anual de Serviços, PAS), o gasto das famílias (Pesquisa de Orçamentos Familiares, POF 2017-2018) e a taxa de desconto (Banco Central), cada série com recorte e data de referência (Apêndice C).
 
 ## 3.3 TRATAMENTO DOS DADOS
 
@@ -86,7 +86,7 @@ No financeiro, as mesas ocupadas no fim de semana vêm da contagem direta. O tic
 
 ## 3.5 ASPECTOS ÉTICOS E LEGAIS
 
-As avaliações são informações de acesso público, e o nome de usuário é trocado por um código na coleta. A contagem direta é observação agregada em espaço comercial aberto ao público, sem fotos nem interação com clientes. O tratamento segue a Lei nº 13.709/2018 (LGPD) e a Resolução CNS nº 510/2016 [AV], e a dispensa de submissão ao Comitê de Ética foi consultada com a orientação.
+As avaliações são informações de acesso público, e o nome de usuário é trocado por um código na coleta. A contagem direta é observação agregada em espaço comercial aberto ao público, sem fotos nem interação com clientes. O tratamento segue a Lei nº 13.709/2018 (LGPD) e a Resolução do Conselho Nacional de Saúde (CNS) nº 510/2016 [AV], e a dispensa de submissão ao Comitê de Ética foi consultada com a orientação.
 
 ## 3.6 LIMITAÇÕES
 

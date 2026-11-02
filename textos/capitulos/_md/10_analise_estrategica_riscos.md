@@ -31,13 +31,13 @@ Fonte: elaboração própria, com base nos caps. 5 a 9.
 
 ## 10.2 CENÁRIOS
 
-O plano fica no limite da viabilidade no cenário provável: o VPL é de R$ 13 mil, e a TIR, de 16,0%, contra a TMA de 15% (seção 9.4). A receita madura, de R$ 55,1 mil por mês, cobre o ponto de equilíbrio operacional, de R$ 44,8 mil, com 23% de folga. O VPL positivo depende do valor residual: sem ele, o provável fica negativo em R$ 121 mil (Tabela 9.6).
+O plano fica no limite da viabilidade no cenário provável: o VPL é de R$ 13 mil, e a TIR, de 16,0%, contra a TMA de 15% (seção 9.4). A receita madura, de R$ 55,1 mil por mês, cobre o ponto de equilíbrio operacional, de R$ 44,8 mil, com 23% de folga. O VPL positivo depende do valor residual: sem ele, o provável fica negativo em R$ 121 mil (Tabela 9.5).
 
 Os cenários extremos põem todas as premissas do mesmo lado da faixa e servem de limite, não de previsão. O pessimista descreve 2,7 mesas ocupadas com grupos de 2,5 pessoas, 3,6 giros por dia e uma cesta de consumo para cada trio: 17 clientes por dia aberto, perto do piso das NFC-e da Paralela. O otimista descreve 4,65 mesas ocupadas, o teto do salão, com grupos de 5,5 pessoas, cada pessoa com a sua cesta: 90 clientes por dia aberto.
 
 ## 10.3 PREMISSAS CRÍTICAS, RUPTURA E RISCOS
 
-Cinco premissas de demanda decidem a viabilidade: pessoas por mesa, pessoas por cesta de consumo, mesas ocupadas no fim de semana, giros por dia e mesas ocupadas em dia útil (Figura 9.2). A Tabela 9.6 compara o provável com o ponto de ruptura de cada uma e com o valor medido no B3.
+Cinco premissas de demanda decidem a viabilidade: pessoas por mesa, pessoas por cesta de consumo, mesas ocupadas no fim de semana, giros por dia e mesas ocupadas em dia útil (Figura 9.2). A Tabela 9.5 compara o provável com o ponto de ruptura de cada uma e com o valor medido no B3.
 
 Todas as rupturas ficam a menos de 2% do provável. O negócio é viável se as premissas críticas ficarem no provável ou acima dele, e o risco está na simetria: um desvio pequeno para cima ou para baixo decide o sinal do VPL. Grupos de 4,0 pessoas dão VPL de R$ 332 mil; grupos de 3,3 pessoas, de -R$ 227 mil. Uma cesta para 1,5 pessoa dá R$ 470 mil; uma cesta para 2,5 pessoas, -R$ 256 mil. As pessoas por cesta são a fraqueza de evidência do plano: premissa crítica sem medida (N6), porque a coleta dos pedidos foi inviável (seção 11.2), o que viola a regra de robustez (seção 3.1). O lado otimista das mesas ocupadas é curto. O salão de 6 mesas limita a média do fim de semana a 4,65 mesas, e esse teto dá VPL de R$ 198 mil. O ganho acima disso vem das etapas de expansão (seção 10.4), não do salão inicial. Na simulação de Monte Carlo, o VPL fica positivo em 44,9% dos 10 mil cenários.
 
@@ -97,7 +97,7 @@ Fonte: elaboração própria. Limites propostos pelo autor (N6), salvo o equilí
 
 BANCO CENTRAL DO BRASIL (BCB). *Relatório Focus*: expectativas de mercado de 11 set. 2026. Brasília, 2026. Disponível em: https://www.bcb.gov.br/content/focus/focus/R20260911.pdf. Acesso em: 2 nov. 2026.
 
-BANCO CENTRAL DO BRASIL (BCB). *Sistema Gerenciador de Séries Temporais (SGS)*: séries 432, 1619 e 13522. Brasília, 2026. Disponível em: https://www3.bcb.gov.br/sgspub/. Acesso em: 14 out. 2026.
+BANCO CENTRAL DO BRASIL (BCB). *Sistema Gerenciador de Séries Temporais (SGS)*: séries 432, 433, 1619 e 13522. Brasília, 2026. Disponível em: https://www3.bcb.gov.br/sgspub/. Acesso em: 14 out. 2026.
 
 FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). *Índice FipeZAP*: locação comercial, julho de 2026. São Paulo, 2026. Disponível em: https://downloads.fipe.org.br/indices/fipezap/fipezap-202607-comercial.pdf. Acesso em: 2 nov. 2026.
 
