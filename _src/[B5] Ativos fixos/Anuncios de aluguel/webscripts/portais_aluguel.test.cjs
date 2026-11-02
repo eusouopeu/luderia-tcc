@@ -15,7 +15,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto });})();';
+    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'portais_aluguel.user.js' });
   return ambiente.__test;
 }
@@ -163,3 +163,60 @@ test('guardar conta só os novos e o CSV usa vírgula decimal', () => {
   assert.ok(linhas[1].startsWith('zap;1;;"Loja; esquina";;;10,5'));
   assert.equal(t.nomeArquivo('zap', '2026-11-02', '1846'), '2026-11-02_1846_zap_anuncios_aluguel.csv');
 });
+
+const LOJA = 'https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador/';
+const OLX = 'https://www.olx.com.br/imoveis/estado-ba/grande-salvador/salvador';
+const base = { portal: 'zap', operacao: 'aluguel', cidade: 'Salvador', busca_url: LOJA, data_coleta: '2026-11-02' };
+const amostra = [
+  { ...base, id: '1', aluguel: 9000, area_m2: 150, bairro: 'Pituba', condominio_iptu: 1500 },
+  { ...base, id: '2', aluguel: 8000, area_m2: 120, bairro: 'Itaigara', busca_url: LOJA + '?pagina=2' },
+  { ...base, id: '3', aluguel: 200, area_m2: 50, bairro: 'Graça' },                       // preço baixo
+  { ...base, id: '4', aluguel: 5000, area_m2: null, bairro: 'Barra' },                    // sem área
+  { ...base, id: '5', aluguel: 600000, area_m2: 300, bairro: 'Pituba', operacao: 'venda' },
+  { ...base, id: '6', aluguel: 3000, area_m2: 80, bairro: 'Centro', cidade: 'Lauro de Freitas' },
+  { ...base, id: '7', aluguel: 2500, area_m2: 70, bairro: 'Rio Vermelho', busca_url: OLX, titulo: 'Apartamento com sala ampla' },
+];
+
+test('busca sem a página e buscas guardadas', () => {
+  assert.equal(t.buscaBase('zap', LOJA + '?pagina=3'), LOJA);
+  assert.equal(t.buscaBase('olx', OLX + '?o=2&sf=1'), OLX + '?sf=1');
+  const g = json(t.agruparBuscas('zap', Object.fromEntries(amostra.map((a) => [a.id, a]))));
+  assert.deepEqual(g.map((b) => [b.busca, b.n]), [[LOJA, 6], [OLX, 1]]);
+});
+
+test('classificação e filtros iguais aos do build', () => {
+  assert.deepEqual(json(t.classificar(amostra[0])), { segmento: 'comercial', subtipo: 'loja_ponto' });
+  assert.deepEqual(json(t.classificar(amostra[6])), { segmento: 'residencial', subtipo: 'residencial' });
+  assert.equal(t.classificar({ busca_url: OLX, titulo: 'Aluga-se sala comercial' }).subtipo, 'sala');
+  assert.equal(t.areaDe6_4('Graça'), 'Barra/Graça');
+  assert.equal(t.areaDe6_4('Centro'), '');
+  assert.equal(t.passaFiltros(amostra[4], { soAluguel: true }), false);
+  assert.equal(t.passaFiltros(amostra[6], { soComercial: true }), false);
+  assert.equal(t.passaFiltros(amostra[5], { soAreas: true }), false);
+  assert.equal(t.passaFiltros(amostra[0], { soAluguel: true, soComercial: true, soLoja: true, soAreas: true }), true);
+});
+
+test('funil, preenchimento e mistura', () => {
+  const pagina = [{ id: '1', aluguel: 10, area_m2: 5 }, { id: '2', aluguel: 10, area_m2: null }, { id: '3', aluguel: null }, { id: '' }];
+  assert.deepEqual(json(t.funil(pagina, 5)), { cards: 5, comId: 3, comPreco: 2, comArea: 1 });
+  const q = t.qualidade(amostra);
+  assert.equal(q.n, 7);
+  assert.equal(q.pct.area_m2, 6 / 7);
+  assert.equal(q.pct.condominio_iptu, 1 / 7);
+  const m = json(t.mistura(amostra));
+  assert.equal(m.pctVenda, 1 / 7);
+  assert.equal(m.pctFora, 1 / 7);
+  assert.equal(m.tipos.residencial, 1);
+  assert.equal(m.alertas.length, 3);
+});
+
+test('prévia do descarte e anúncios no alvo', () => {
+  const d = json(t.previaDescarte(amostra));
+  assert.equal(d.aluguel, 6);
+  assert.deepEqual(d.motivos, { semArea: 1, preco: 1, foraSalvador: 1, m2: 0 });
+  assert.equal(d.total, 3);
+  const alvo = json(t.noAlvo(amostra));
+  assert.equal(alvo.porte, 2);
+  assert.deepEqual(alvo.porArea, { 'Pituba/Itaigara': 2, 'Barra/Graça': 0, 'Rio Vermelho': 0 });
+});
+

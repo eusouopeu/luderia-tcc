@@ -2380,3 +2380,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: modelo v0 (15/10, gerado em 31/10) em `dados/Modelo financeiro/` e `_src/Modelo financeiro/`, com numeração de premissas diferente da do modelo atual (C05 = aluguel), sem nenhum script ou texto que ainda o use.
 **Depois**: v0 fora das pastas de uso; `_src/Modelo financeiro/` removida (só restava um `.DS_Store`); `dados/Modelo financeiro/` só com `_arquivo/`. O modelo é o `_src/extras/gerar_modelo_financeiro.py`.
 **Justificativa**: pedido do autor; o CSV antigo levou a um erro de numeração no build do aluguel.
+
+### 19:38
+**Objeto**: `_src/[B5] Ativos fixos/Anuncios de aluguel/webscripts/portais_aluguel.user.js` (versão 2026.11.02-4) e `portais_aluguel.test.cjs`; `docs/pendencias.md`, `docs/decisoes.md`, `AGORA.md`
+**Antes**: painel com contagem de guardados, botões de coleta, "Baixar CSV" e "Limpar" (apagava o portal inteiro); nenhum indicador da qualidade da leitura.
+**Depois**: painel em seções: cobertura da busca (lidos ÷ total do portal, com barra), funil da última página (cards → com id → com preço → com área, com alerta de card sem id), preenchimento de preço, área, bairro e condomínio + IPTU, mistura de operação, cidade e tipo estimado (com alertas acima de 10%), prévia do que o build descarta, anúncios no alvo (porte de 100 a 200 m² e lojas por área do 6.4, com ✓ a partir de 5), histórico da rodada automática (página, lidos, inéditos, novos, segundos), filtros que mudam os indicadores e destacam os cards (só aluguel, só comercial, só loja ou ponto, só áreas do 6.4) e buscas guardadas com "Baixar" e "Apagar" por busca. Classificação e porte iguais aos do build. 13 testes passando; painel conferido no navegador com uma página de teste no formato do ZAP (modo claro e escuro), não nos portais.
+**Justificativa**: pedido do autor (recomendações 1, 2, 3, 5, 6, 7, 8, 12 e 14 sobre atestadores e filtros do painel).
