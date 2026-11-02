@@ -2099,3 +2099,19 @@ Restam 10 "Incompleto": Arena BG, BoardZ, Castelos, Flow Games, Nala Land e Play
 **Depois**: originais apagados, ficam só os revisados com "*"; 26 referências novas com "*" no começo (20 de legislação federal sob BRASIL, 2 da Bahia, 1 de Salvador, NBR 9050, CONCLA e Receita Federal), 25 delas com [AV] porque as datas e ementas não foram conferidas na fonte; citação "(Receita Federal, …)" trocada por "(BRASIL, 2026)" nos dois pontos do cap. 8; remissões a subdivisão como "seção N.N" (Quadro 1, caps. 4 a 9); "capítulos 4 a 10"; "(seção 3.1)" no lugar do caminho interno; aspas tiradas; "fecham"; espaço único; "nome do avaliador". Documento reaberto no WordCraft (1.270 parágrafos).
 **Justificativa**: pedido do autor (recomendações 1, 6, 9 e 10 da revisão de 02/11/2026).
 
+
+### 04:40
+**Objeto**: Notion, banco "2 - Comentários" (opções de Itens positivos e Itens negativos, descrição do banco e 11 comentários); `textos/instrumentos/dicionario_temas_B2.md`
+**Antes**: estacionamento era codificado dentro de "localização e acesso". Os comentários de Fan Hour ("Não há estacionamentos") e Shelf (convênio com o estacionamento) estavam sem o tema.
+**Depois**: o tema "estacionamento" entrou nas duas colunas, como o autor já tinha feito no banco "2R - Recodificação cega". O dicionário e a descrição do banco passaram a definir os dois temas:
+- localização e acesso: metrô, ônibus, região, facilidade de chegar.
+- estacionamento: vaga própria ou na rua, valet, preço do estacionamento, flanelinha, convênio.
+
+A busca por estaciona, vaga, valet, manobrista, parking, flanelinha, zona azul e carro achou 13 comentários. Dois falam de vaga de mesa ou de reserva e ficaram de fora. Nos 11 sobre estacionamento, o tema ficou assim:
+- 5 com estacionamento +: Ludus, Castelos (valet), Cartola, Bardo Mago e XPlace.
+- 6 com estacionamento −: Cineplay, BoardZ (flanelinha), Arena BG, TabuClub, Fan Hour e Shelf.
+- "localização e acesso" saiu de 6 comentários, onde só tratava de estacionamento: Castelos, Cineplay, BoardZ, Cartola, Bardo Mago e TabuClub.
+- "localização e acesso" ficou em 2 comentários que também falam de localização: Arena BG ("ótima localização") e XPlace (metrô).
+
+A edição do autor no §6 do dicionário continua fora do commit.
+**Justificativa**: pedido do autor, para alinhar as duas grades antes da comparação da recodificação cega.

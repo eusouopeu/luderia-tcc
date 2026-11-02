@@ -1,6 +1,6 @@
 # Dicionário de temas dos comentários (Bloco B2, Notion)
 
-Versão de 30/10/2026. Reconstruído a partir das 166 linhas já codificadas pelo autor no Notion ("2 - Comentários", Fórmula ≥ 5, 14 casas, 87 do Bodogami e 37 do Shelf). As regras abaixo descrevem o que o autor já faz na maioria dos casos e decidem os casos em que a prática variou. Os casos que fogem das regras estão no §5.
+Versão de 30/10/2026, com o tema "estacionamento" separado de "localização e acesso" em 02/11/2026 (pedido do autor, que o criou no banco da recodificação). Reconstruído a partir das 166 linhas já codificadas pelo autor no Notion ("2 - Comentários", Fórmula ≥ 5, 14 casas, 87 do Bodogami e 37 do Shelf). As regras abaixo descrevem o que o autor já faz na maioria dos casos e decidem os casos em que a prática variou. Os casos que fogem das regras estão no §5.
 
 Este dicionário vale para as colunas "Itens positivos" e "Itens negativos". O livro de códigos de `analise_conteudo_bardin_B2.md` (§1.4, 15/10) é outro e ainda não foi unificado com este (pendências, item 15).
 
@@ -69,7 +69,8 @@ Regra: "tudo caro" e equivalentes, com escopo total, entram nos dois temas de pr
 | conforto e espaço | Mesas, cadeiras, tamanho, temperatura, organização do salão, espaço apertado | Aconchego (ambiente e decoração) |
 | limpeza | Higiene, banheiro, cheiro, retirada de louça e lixo da mesa | - |
 | barulho | Queixa ou elogio ao ruído escrito no texto | O atributo do Google (Nível de barulho) |
-| localização e acesso | Metrô, estacionamento (inclusive pedido de convênio), facilidade de chegar | Fila na rua (lotação e reserva) |
+| localização e acesso | Metrô, ônibus, região, facilidade de chegar ou de achar a casa | Fila na rua (lotação e reserva); estacionamento |
+| estacionamento | Vaga própria ou na rua, facilidade ou dificuldade de estacionar, valet, preço do estacionamento, flanelinha, pedido de convênio | Acesso a pé, metrô, região (localização e acesso) |
 
 ### Ocasião e programação
 
@@ -127,13 +128,13 @@ Antes de contar, conferir por SQL: nenhuma opção fora desta lista, as duas col
 | 3f9cde2e8c24816ea05cd0be97117dba | Bodogami | "Experiência no lugar": tirar ambiente |
 | 3f5cde2e8c2481b698cffc407adc74f2 | Cartola | Recomendação pelo perfil do grupo: explicação +; "fills up quickly": não codificar lotação |
 | 3f5cde2e8c2481289b48ce6701eee62d | Cartola | Jogo pedido e levado à mesa: regras da casa +, não curadoria (curadoria fica pelo "portfólio incrível") |
-| 3f9cde2e8c2481a5873ade636c393967 | Fan Hour | "Não há estacionamentos": localização −; "ambiente pequeno": conforto − |
+| 3f9cde2e8c2481a5873ade636c393967 | Fan Hour | "Não há estacionamentos": estacionamento −; "ambiente pequeno": conforto − |
 | 3f9cde2e8c248148aac2ce694eac6571 | Fan Hour | "Taxa de serviço": regras da casa −, salvo se for a taxa de jogo (regra 9) |
 | 3f4cde2e8c24812da8b0c84a0f23ebca | Ludoteca Sidequest | "Possível alugar": aluguel no contexto; taxa por pessoa que só vale cedo: preço da entrada − |
 | 3f9cde2e8c24811195a3e1ab9d486a17 | Ludus | "Todos foram educados": atendimento + |
 | 3f9cde2e8c248107be46dd270b2b5ed7 | Shelf | "Exceto a batata com queijo, ótima": comida também + |
 | 3f9cde2e8c2481029fa2d5a4e12ffb8a | Shelf | "Ambiente muito bom": ambiente + |
-| 3f9cde2e8c2481d38c1dc036b479cf02 | Shelf | Parceria com o estacionamento: localização − (regra 3) |
+| 3f9cde2e8c2481d38c1dc036b479cf02 | Shelf | Parceria com o estacionamento: estacionamento − (regra 3) |
 | 3f9cde2e8c2481328f12e486934faf8a e 3f9cde2e8c248176a271db7697f61de8 | Shelf | Mesmo grupo, aniversário, explicadores e hambúrguer trocado: provável duplicata (regra 11); só a segunda tem limpeza + |
 | 3f9cde2e8c248120b4e8d0de20688910 | Shelf | "Jogos trocados quase no mesmo momento": explicação + |
 
