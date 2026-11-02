@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 02/11/2026 (13h), TMin v14: nenhum parágrafo de corpo termina com a última linha até 25% (C21 resolvido). 9 a 11 com menos seções, 19 parágrafos curtos tratados e figuras de volta. Itens anteriores a esta data citam a numeração antiga dos caps. 9 a 11; no TMin v13, 9.2→9.1, 9.3→9.2, 9.4 e 9.5→9.3, 9.6→9.4, 9.7 (e 9.7.x)→9.5, 9.8→9.6, 10.4→10.3, 10.5→10.4, 11.2→11.1, 11.3 a 11.5→11.2; o 9.1 e o 11.1 viraram a abertura dos capítulos.
+Última análise: 02/11/2026 (13h), TMin v15: tabelas revistas (Tabela 8.1 com o modelo atual, fluxo de caixa na 9.4, indicadores só na 9.5, ruptura com o medido no B3 na 9.6, matriz de riscos com critério, VPL e gatilho); Quadros 10.2 e 10.3 antigos fora; Quadro 10.4 a 10.6 viram 10.2 a 10.4; POF no campo social da PESTEL (D46, D14 e D20 resolvidos). Itens anteriores citam a numeração antiga.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -18,8 +18,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
-**D46 — POF no referencial teórico (02/11/2026).** Cap. 2 (2.1, parágrafo com "*") × `_instrucoes/2_ref-teorico.md` (evidência empírica vai para o cap. 5). O parágrafo da POF 2017-2018 (lazer de R$ 14,87 por pessoa; 49,0% do gasto no décimo mais rico) é dado, não conceito, como os antigos 2.2 e 2.3, levados ao cap. 5 em 02/11. Sugestão: levá-lo à 5.2 (renda) ou ao campo social da PESTEL (5.5), que hoje só remete à 5.1.3 e à 5.2.
-
 **D47 — Quadro 1 remete a seções que o TMin não tem (02/11/2026).** Cap. 2 (Quadro 1) × cap. 6. O Quadro 1 aplica economia da experiência e Kano/PRC nas seções 6.1 e 6.2, e o cap. 4 cita a proposta de valor "da seção 6.1"; o cap. 6 do TMin só tem 6.3 e 6.4. Sugestão: manter enquanto o 6.1 e o 6.2 não forem escritos, e conferir a numeração quando entrarem.
 
 **D36 — Duas páginas da Savills com datas diferentes (02/11/2026).** O 2.1 cita SAVILLS, [s.d.] (definição) e a 5.1.2 cita SAVILLS, 2023 (alta de 38% desde 2018); o TMax cita a [s.d.] pelos mais de 800 locais. As duas contagens são de momentos diferentes; a de [s.d.] precisa da data para o leitor entender a sequência (ver D16).
@@ -31,8 +29,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D12 — Condição de viabilidade dita de três jeitos (01/11/2026).** Cap. 4 (4.6) × cap. 11 (11.1) × cap. 9 (9.7.3). O 4.6 diz que o negócio fica viável com a equipe de 8 e duas premissas juntas (5,0 mesas e cesta para 1,5 pessoa); o 11.1, com uma de três condições isoladas (5,3 mesas, 4,4 pessoas por mesa ou cesta para 1,4 pessoa); o 9.7.3, com 5,98 mesas e o quadro de 12. Sugestão: uma só formulação, com o mesmo quadro de pessoal, repetida igual nos três.
 
 **D13 — Taxa de entrada fixa fora da sensibilidade (01/11/2026).** Cap. 6 (6.3) × cap. 9 (Quadro 9.2) × cap. 5 (Figura 5.1). A taxa é a média nacional (R$ 18,68) em todos os cenários, embora a única concorrente de Salvador cobre R$ 28,00 no fim de semana e a renda da cidade seja a penúltima entre as capitais com luderia. O preço não entra no tornado nem no Monte Carlo. Sugestão: dar faixa à taxa (ex.: R$ 15,00 / 18,68 / 28,00) e mostrar o ponto de ruptura dela; justificar no 6.3 por que a média nacional e não o preço local.
-
-**D14 — Extremos que desacreditam o modelo (01/11/2026).** Cap. 4 (Quadro 4.1) × cap. 10 (10.2). O otimista mostra TIR de 579,5% e payback de 0,2 ano; o pessimista, VPL de -R$ 2,9 mi. O próprio 10.2 diz que os extremos são limite, não previsão, mas o sumário os põe lado a lado com o provável. Sugestão: no cap. 4, trocar as colunas extremas pelos percentis 10, 50 e 90 do Monte Carlo; os extremos ficam só no cap. 10.
 
 
 - **Giro: vocabulário × modelo (31/10/2026).** `_instrucoes/1b_escrita.md` (P6) define giro como horas de funcionamento ÷ permanência média; no modelo do cap. 9, só o otimista segue a definição, o pessimista sai das NFC-e e o provável é a média dos dois. Ajustar a definição do P6 (giro por mesa ocupada, com a faixa) ou declarar a diferença no cap. 3. A "taxa de ocupação" do P6 também deixou de ser premissa: o modelo usa mesas ocupadas.
@@ -72,7 +68,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D35 — Preço de entrada abaixo ou acima da média.** Cap. 5 (5.2.1, TMax: "o preço de entrada da luderia precisa ficar abaixo da média das metrópoles") × cap. 6 (6.3: R$ 28,00 no fim de semana, acima da mediana de R$ 25,00). Pela precedência, vale o cap. 6. O TMin do cap. 5 já diz só que a renda menor pesa na definição do preço. Sugestão: no TMax, a mesma redação do TMin.
 
-**D38 — Números que mudam entre capítulos (02/11/2026).** 7.5 (48 pessoas por dia) × 4.5, 7.2 e 9.4 (51); 5.3.3 e 6.3 ("22 dos 53") × B1 com 54; 5.3.3 (taxa de R$ 5,00 a R$ 40,00) × Tabela 6.1 (Encounter a R$ 45,00); 8.1 (receita do ano 2 de R$ 877 mil, base da Tabela 8.1) × Tabela 9.3 (R$ 833 mil); carga do Simples de 10,1% (Tabela 8.1), 9,6% (9.4 e 11.2) e 8,1%/11,9% (8.1); aluguel pessimista de R$ 64,36 (6.4) × R$ 64,35 (Quadro 9.2); "15 dos 22" que diferenciam o preço (6.3) × 16 na Tabela 6.1 (17 com a BoardZ, que não cobra entrada), que tem 24 linhas. Sugestão: tirar todos do modelo do cap. 9 e do B1 regerados.
+**D38 — Números que mudam entre capítulos (02/11/2026).** 7.5 (48 pessoas por dia) × 4.5, 7.2 e 9.4 (51); 5.3.3 e 6.3 ("22 dos 53") × B1 com 54; 5.3.3 (taxa de R$ 5,00 a R$ 40,00) × Tabela 6.1 (Encounter a R$ 45,00); 8.1 (o MEI "não comporta [...] o quadro de 12 empregados") × Quadro 7.2 (6 pessoas); aluguel pessimista de R$ 64,36 (6.4) × R$ 64,35 (Quadro 9.2); "15 dos 22" que diferenciam o preço (6.3) × 16 na Tabela 6.1 (17 com a BoardZ, que não cobra entrada), que tem 24 linhas. Sugestão: tirar todos do modelo do cap. 9 e do B1 regerados.
 
 **D39 — Alertas do 10.5 acima do provável (02/11/2026).** Os limites de alerta saem do ponto de ruptura, acima do provável: pessoas por mesa abaixo de 4,4 (provável 3,6) e giros abaixo de 5,5 (teto físico de 5,51). A luderia abriria com todos os indicadores em alerta. Sugestão: limites a partir da combinação confirmada na validação, com margem abaixo dela.
 
@@ -94,8 +90,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D17 — Mercado&Consumo como sustentação.** Cap. 1 (contextualização). Dado de shopping (1,4% → 2,2% das lojas) vem de imprensa (P1, nível 6), que pela P1 não sustenta argumento. Já marcado para troca pela Abrasce.
 
 **D18 — Triangulação anunciada sem base teórica.** Cap. 1 (1.2) cita "triangulação" como teste das premissas; o cap. 2 não trata do conceito. Pode ficar só para o cap. 3 (metodologia).
-
-**D20 — Numeração de quadros em três formatos.** Caps. 2 e 3 usam "Quadro 1"; o cap. 5, "Quadro 5.2"; o cap. 8, "Quadro 01" (dois dígitos, padrão de `10_biblio-apendices.md`). Padronizar na revisão de forma, com numeração contínua no trabalho todo.
 
 ---
 
@@ -122,7 +116,7 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 **C19 — Siglas internas na prosa (01/11/2026).** B1 a B4 aparecem cerca de 95 vezes e N1 a N6 cerca de 55, inclusive nos caps. 4 e 11, que a banca lê isolados. Sugestão: nome por extenso na primeira menção de cada capítulo ("a contagem direta na São Jogue (B3)") e nenhuma sigla nos caps. 4 e 11; nas tabelas, as siglas ficam.
 
 
-**C17 — Cap. 10 acima do teto e Quadro 10.2 repetido.** O cap. 10 tem cerca de 1.400 palavras e 4 quadros, o que dá perto de 6 páginas contra o teto de 4. O Quadro 10.2 repete a Tabela 9.4 e o Quadro 4.1, com uma coluna a mais. Sugestão: tirar o Quadro 10.2 e citar a Tabela 9.4; juntar a matriz de riscos (Quadro 10.4) com os indicadores do 10.5. Ganho: cerca de 1,5 página.
+**C17 — Cap. 10 acima do teto.** No TMin v15, o cap. 10 tem a SWOT e três quadros (riscos, etapas e gatilhos), perto de 5 páginas contra o teto de 4; os indicadores e a ruptura saíram para as Tabelas 9.5 e 9.6. Sugestão: levar o Quadro 10.3 (etapas de expansão) para apêndice. Ganho: cerca de meia página.
 
 
 **C04 — Gilovich e "a luderia vende uma ocasião social" em três lugares.** A mesma frase de Gilovich, Kumar e Jampol (2015) está no cap. 1 e no 2.3; a nota do 5.5.3 sugere usá-la de novo. "A luderia vende uma ocasião social, e não um produto/o uso de um jogo" está no cap. 1 e no 2.3. Manter no cap. 2. Ganho: ~50 palavras.

@@ -112,6 +112,8 @@ O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvad
 
 No campo social, dois fatores atuam em sentidos opostos. O hábito de comer e beber fora de casa pesa mais no orçamento baiano que na média nacional (seção 5.1.3) e favorece um modelo de receita apoiado em alimentos e bebidas. A renda menor de Salvador (seção 5.2) limita a taxa de entrada e o consumo por pessoa.
 
+O gasto com lazer se concentra na renda. A Pesquisa de Orçamentos Familiares (POF) 2017-2018 mede o lazer em sentido estrito – leitura, ingressos, eventos esportivos, recreação, brinquedos e jogos –, sem bares e restaurantes: nesse recorte, a despesa média foi de R$ 14,87 por pessoa por mês (IBGE, 2021, p. 101–102). Comer e beber fora de casa entra em outro grupo da pesquisa, com despesa média de R$ 61,68 por pessoa por mês (IBGE, 2021, p. 63, 65). O décimo de maior rendimento respondeu por 49,0% das despesas com lazer e viagens, mais de cinco vezes o gasto dos quatro décimos de menor rendimento somados (IBGE, 2021, p. 107). Para a luderia, a concentração indica que a demanda depende da renda do entorno, e não só do tamanho da população.
+
 No campo tecnológico, o efeito mais direto está na divulgação, que acontece nas redes sociais. As 49 luderias com perfil no Instagram têm mediana de 14.021 seguidores, e a São Jogue tem 38.492 (Bloco B1, 2026). O Instagram é o canal principal do plano de comunicação (cap. 6).
 
 No campo ambiental, o efeito sobre o negócio é residual. O acervo é um bem durável, usado por muitos clientes ao longo de anos, e o manejo dos resíduos da cozinha entra na licença sanitária (seção 8.2). Por isso, a dimensão não é detalhada.
@@ -145,6 +147,8 @@ IBGE. *Estimativas da população residente*: 2026. Rio de Janeiro: IBGE, 2026.
 IBGE. *Pesquisa Anual de Serviços (PAS)*: tabelas 2611, 2619 e 10758. Rio de Janeiro: IBGE, 2025-2026. `[AV ano de cada edição]`
 
 IBGE. *Pesquisa de Orçamentos Familiares 2017-2018*: tabelas 6715 e 6972. Rio de Janeiro: IBGE, 2019.
+
+IBGE. *Pesquisa de Orçamentos Familiares 2017-2018*: perfil das despesas no Brasil: indicadores selecionados de alimentação, transporte, lazer e inclusão financeira. Rio de Janeiro: IBGE, 2021.
 
 IBGE. *Pesquisa Nacional por Amostra de Domicílios Contínua*: tabelas 5436 e 7395. Rio de Janeiro: IBGE, 2026.
 

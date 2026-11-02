@@ -12,32 +12,34 @@ A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor 
 
 | Concorrente | Capital | Dia útil | Fim de semana |
 |---|---|---|---|
-| São Jogue (turno de 3 h) | Salvador | 22,00 | 28,00 |
 | Encounter | São Paulo | 35,00 | 40,00 a 45,00 |
 | LudoCafé | Belo Horizonte | 10,00 a 25,00 | 20,00 a 35,00 |
 | Shelf Bar e Jogos | Belo Horizonte | 15,00 a 20,00 | 30,00 |
-| Ludoteca Sidequest | Belém | 23,00 | 28,00 |
 | Tubaleria | São Paulo | 28,00 | 28,00 |
-| Arena BG | São Paulo | 0,00 | 12,50 a 25,00 |
-| Loja de Jogos - Asgard | Brasília | 10,00 | 25,00 |
+| Ludoteca Sidequest | Belém | 23,00 | 28,00 |
+| São Jogue (turno de 3 h) | Salvador | 22,00 | 28,00 |
+| Place Games | São Paulo | 0,00 a 25,00 | 25,00 |
 | Bardo Mago | Belo Horizonte | 15,00 | 25,00 |
 | Game Of Boards | Rio de Janeiro | 15,00 | 25,00 |
+| Loja de Jogos - Asgard | Brasília | 10,00 | 25,00 |
 | Nala Land | Recife | 20,00 | 20,00 a 25,00 |
 | TabuClub | Rio de Janeiro | 20,00 | 20,00 a 25,00 |
-| Place Games | São Paulo | 0,00 a 25,00 | 25,00 |
-| Comdado Bar e Jogos | Belo Horizonte | 15,00 | 20,00 |
-| La Tabuleria | Belo Horizonte | 10,00 | 15,00 a 20,00 |
-| Covil Game Bar | São Paulo | 15,00 | 15,00 a 20,00 |
+| Arena BG | São Paulo | 0,00 | 12,50 a 25,00 |
 | Fan Hour | São Paulo | 20,00 | 20,00 |
 | Luderia Carioca | Rio de Janeiro | 20,00 | 20,00 |
+| Comdado Bar e Jogos | Belo Horizonte | 15,00 | 20,00 |
+| Covil Game Bar | São Paulo | 15,00 | 15,00 a 20,00 |
+| La Tabuleria | Belo Horizonte | 10,00 | 15,00 a 20,00 |
+| BoardZ Game Pub | Curitiba | 10,00 | 15,00 |
 | Joyjoy Café | Curitiba | 10,00 | 10,00 a 15,00 |
 | Café Geek | Vitória | 0,00 a 15,00 | 0,00 a 15,00 |
-| BoardZ Game Pub | Curitiba | 10,00 | 15,00 |
 | Garagem do Nerd | Belo Horizonte | 10,00 | 10,00 |
 | Toca do Rato | Porto Alegre | 5,00 | 5,00 |
 | Ludus Luderia | São Paulo | 0,00 | 0,00 |
 
-Fonte: elaboração própria, com base nos cardápios, sites, matérias de imprensa, posts do Instagram e fotos do Google Maps do Bloco B1 (abr/2024 a jul/2026; BoardZ sem data, coletada em out/2026) e nas NFC-e da São Jogue (Bloco B3). Fim de semana: sexta a domingo e feriados. Faixa: menor e maior valor do período. LudoCafé: menor valor com consumo mínimo de R$ 50,00. BoardZ: passe do dia; a casa não cobra entrada, e o jogo avulso é pago por título. Place Games: R$ 10,00 da entrada valem como consumo, e a entrada é grátis na confraria de quinta. Café Geek: passaporte por nível de jogo.
+Fonte: elaboração própria, com base nos cardápios, sites, matérias de imprensa, posts do Instagram e fotos do Google Maps do Bloco B1 (abr/2024 a jul/2026; BoardZ sem data, coletada em out/2026) e nas NFC-e da São Jogue (Bloco B3).
+
+Nota: em negrito, a São Jogue, única luderia de Salvador no B1. Linhas em ordem decrescente do valor de fim de semana. Fim de semana: sexta a domingo e feriados. Faixa: menor e maior valor do período. LudoCafé: menor valor com consumo mínimo de R$ 50,00. BoardZ: passe do dia; a casa não cobra entrada, e o jogo avulso é pago por título. Place Games: R$ 10,00 da entrada valem como consumo, e a entrada é grátis na confraria de quinta. Café Geek: passaporte por nível de jogo. A taxa de entrada do plano, de R$ 18,68, é a média do couvert ou da taxa de jogo nos cardápios das 22 casas que a cobram (mediana de R$ 20,00), e não a média desta tabela, que reúne também sites, imprensa e redes sociais (seção 6.3).
 
 A taxa da São Jogue está no alto da faixa. Pelo maior valor de cada casa, a mediana dos 22 concorrentes que cobram é de R$ 25,00 no fim de semana, e só três cobram mais que a São Jogue: Encounter (R$ 45,00 no sábado), LudoCafé (R$ 35,00 sem consumo mínimo) e Shelf (R$ 30,00). No dia útil, a mediana é de R$ 15,00, contra R$ 22,00. Dos 53 concorrentes do B1, 22 têm a taxa encontrada no cardápio, no site, na imprensa ou no Instagram, e a Ludus declara que não cobra; nos outros 30, a cobrança não foi encontrada. Os valores de Covil, LudoCafé, Garagem do Nerd e Joyjoy são de 2024 e podem estar defasados. A contagem exclui a sala privativa do Café Geek, cobrada por hora e por grupo.
 
@@ -59,20 +61,22 @@ A Pituba é o bairro indicado para a luderia. Ela lidera a matriz de critérios 
 
 **Tabela 6.2 – Matriz de critérios ponderados para o bairro, Salvador**
 
-| Posição | Bairro | Pessoas de 20 a 39 anos | Domicílios em apartamento | Pessoas de 20 a 39 anos por km² | Nota |
+| Posição | Bairro | Pessoas de 20 a 39 anos | Domicílios em apartamento (%) | Pessoas de 20 a 39 anos por km² | Nota (0 a 1) |
 |---|---|---|---|---|---|
-| 1 | Pituba | 15.276 | 95,1% | 3.353 | 0,864 |
-| 2 | Graça | 3.756 | 97,2% | 4.380 | 0,473 |
-| 3 | Imbuí | 9.127 | 88,3% | 3.431 | 0,437 |
-| 4 | Vila Laura | 4.070 | 93,0% | 4.861 | 0,412 |
-| 5 | Costa Azul | 4.996 | 92,6% | 3.857 | 0,386 |
-| 6 | Caminho das Árvores | 4.037 | 93,8% | 2.013 | 0,270 |
-| 7 | Jardim das Margaridas | 7.018 | 84,8% | 2.744 | 0,222 |
-| 8 | Barra | 3.862 | 89,5% | 2.742 | 0,199 |
-| 9 | Patamares | 5.969 | 88,7% | 1.307 | 0,190 |
-| 10 | STIEP | 4.034 | 86,6% | 3.265 | 0,166 |
+| 1 | Pituba | 15.276 | 95,1 | 3.353 | 0,864 |
+| 2 | Graça | 3.756 | 97,2 | 4.380 | 0,473 |
+| 3 | Imbuí | 9.127 | 88,3 | 3.431 | 0,437 |
+| 4 | Vila Laura | 4.070 | 93,0 | 4.861 | 0,412 |
+| 5 | Costa Azul | 4.996 | 92,6 | 3.857 | 0,386 |
+| 6 | Caminho das Árvores | 4.037 | 93,8 | 2.013 | 0,270 |
+| 7 | Jardim das Margaridas | 7.018 | 84,8 | 2.744 | 0,222 |
+| 8 | Barra | 3.862 | 89,5 | 2.742 | 0,199 |
+| 9 | Patamares | 5.969 | 88,7 | 1.307 | 0,190 |
+| 10 | STIEP | 4.034 | 86,6 | 3.265 | 0,166 |
 
-Fonte: elaboração própria, com base no IBGE (Censo 2022, agregados por bairro). Pesos: público de 20 a 39 anos, 50%; apartamentos, 30%; público por km², 20%; cada critério normalizado de 0 a 1 entre os candidatos.
+Fonte: elaboração própria, com base no IBGE (Censo 2022, agregados por bairro).
+
+Nota: pesos de 50% para o público de 20 a 39 anos, 30% para os domicílios em apartamento e 20% para o público por km²; cada critério normalizado de 0 a 1 entre os candidatos. Com pesos de 40%, 40% e 20%, de 60%, 20% e 20% ou iguais, a Pituba segue em 1º.
 
 Os pesos são do autor (N6) e não mudam a escolha. Com pesos de 40%, 40% e 20%, de 60%, 20% e 20% ou iguais, a Pituba fica em 1º; Graça, Imbuí e Vila Laura alternam do 2º ao 5º lugar. Nenhuma das duas unidades da São Jogue está entre os candidatos: a Bela Vista fica no Shopping Bela Vista, em Pernambués, e a Paralela, no Shopping Paralela.
 

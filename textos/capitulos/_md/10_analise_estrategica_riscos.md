@@ -27,69 +27,48 @@ A luderia entra num mercado com uma referência forte e com margem estreita no p
 |  | Aluguel comercial de Salvador com alta de 18,9% em 12 meses | FipeZap, jul/2026 |
 |  | Reação da São Jogue com uma terceira unidade ou preço menor | Seções 5.3 e 6.3 |
 
-Fonte: elaborado pelo próprio autor com base nos caps. 5 a 9.
+Fonte: elaboração própria, com base nos caps. 5 a 9.
 
 ## 10.2 CENÁRIOS
 
-O plano fica no limite da viabilidade no cenário provável: o VPL é de R$ 13 mil, e a TIR, de 16,0%, contra a TMA de 15% (seção 9.4). A receita madura, de R$ 55,1 mil por mês, cobre o ponto de equilíbrio operacional, de R$ 44,8 mil, com 23% de folga. O VPL positivo depende do valor residual: sem ele, o provável fica negativo em R$ 121 mil (Quadro 10.2).
-
-**Quadro 10.2 – Indicadores por cenário (R$)**
-
-| Indicador | Pessimista | Provável | Otimista |
-|---|---|---|---|
-| Investimento inicial | 566.851,00 | 368.898,00 | 221.350,00 |
-| VPL | -1.664.176,00 | 13.248,00 | 8.190.297,00 |
-| VPL sem valor residual | -1.664.176,00 | -120.849,00 | 3.411.062,00 |
-| Receita mensal madura | 16.006,00 | 55.138,00 | 165.443,00 |
-| Ponto de equilíbrio mensal | 56.063,00 | 44.828,00 | 37.193,00 |
-
-Fonte: elaborado pelo próprio autor com base no modelo do cap. 9 (02/11/2026).
+O plano fica no limite da viabilidade no cenário provável: o VPL é de R$ 13 mil, e a TIR, de 16,0%, contra a TMA de 15% (seção 9.4). A receita madura, de R$ 55,1 mil por mês, cobre o ponto de equilíbrio operacional, de R$ 44,8 mil, com 23% de folga. O VPL positivo depende do valor residual: sem ele, o provável fica negativo em R$ 121 mil (Tabela 9.6).
 
 Os cenários extremos põem todas as premissas do mesmo lado da faixa e servem de limite, não de previsão. O pessimista descreve 2,7 mesas ocupadas com grupos de 2,5 pessoas, 3,6 giros por dia e uma cesta de consumo para cada trio: 17 clientes por dia aberto, perto do piso das NFC-e da Paralela. O otimista descreve 4,65 mesas ocupadas, o teto do salão, com grupos de 5,5 pessoas, cada pessoa com a sua cesta: 90 clientes por dia aberto.
 
 ## 10.3 PREMISSAS CRÍTICAS, RUPTURA E RISCOS
 
-Cinco premissas de demanda decidem a viabilidade: pessoas por mesa, pessoas por cesta de consumo, mesas ocupadas no fim de semana, giros por dia e mesas ocupadas em dia útil (Figura 9.2). O Quadro 10.3 compara o provável com o ponto de ruptura de cada uma.
-
-**Quadro 10.3 – Ruptura das premissas críticas**
-
-| Premissa | Provável | Ruptura (VPL = 0) | Medido no B3 | Nível |
-|---|---|---|---|---|
-| Pessoas por mesa ocupada (R02) | 3,6 | 3,58 | 2,4 a 4,6 por visita | N5 + N6 |
-| Pessoas por cesta de consumo (R08) | 2 | 2,02 | não medida | N6 |
-| Mesas ocupadas no fim de semana (R04) | 4,37 | 4,35 | 2,69 a 6,02 por visita | N5 |
-| Giros por mesa por dia (R15) | 4,01 | 3,99 | 3,61 (NFC-e) a 4,41 (horário ÷ permanência) | N5 |
-| Mesas ocupadas em dia útil (R05) | 50% | 49,3% | não medida | N6 |
-
-Fonte: elaborado pelo próprio autor com base no modelo do cap. 9 e no Bloco B3 (2026).
+Cinco premissas de demanda decidem a viabilidade: pessoas por mesa, pessoas por cesta de consumo, mesas ocupadas no fim de semana, giros por dia e mesas ocupadas em dia útil (Figura 9.2). A Tabela 9.6 compara o provável com o ponto de ruptura de cada uma e com o valor medido no B3.
 
 Todas as rupturas ficam a menos de 2% do provável. O negócio é viável se as premissas críticas ficarem no provável ou acima dele, e o risco está na simetria: um desvio pequeno para cima ou para baixo decide o sinal do VPL. Grupos de 4,0 pessoas dão VPL de R$ 332 mil; grupos de 3,3 pessoas, de -R$ 227 mil. Uma cesta para 1,5 pessoa dá R$ 470 mil; uma cesta para 2,5 pessoas, -R$ 256 mil. As pessoas por cesta são a fraqueza de evidência do plano: premissa crítica sem medida (N6), porque a coleta dos pedidos foi inviável (seção 11.2), o que viola a regra de robustez (seção 3.1). O lado otimista das mesas ocupadas é curto. O salão de 6 mesas limita a média do fim de semana a 4,65 mesas, e esse teto dá VPL de R$ 198 mil. O ganho acima disso vem das etapas de expansão (seção 10.4), não do salão inicial. Na simulação de Monte Carlo, o VPL fica positivo em 44,9% dos 10 mil cenários.
 
-As premissas críticas se traduzem em riscos do negócio, e os de maior impacto são os de demanda e de custo fixo. O Quadro 10.4 classifica cada risco pela probabilidade e pelo impacto, com a evidência que sustenta a classificação.
+As premissas críticas se traduzem em riscos do negócio, e os de maior impacto são os de demanda e de custo fixo. O Quadro 10.2 classifica cada risco pela probabilidade e pelo impacto, com o VPL da premissa no pessimista, o gatilho que trata o risco e a evidência.
 
-**Quadro 10.4 – Matriz de riscos**
+**Quadro 10.2 – Matriz de riscos**
 
-| Risco | Tipo | Probabilidade | Impacto | Evidência |
-|---|---|---|---|---|
-| Mesas ocupadas no fim de semana abaixo de 4,35 | Mercado | Média | Alto | Média de 4,37 nas visitas, de 2,69 a 6,02 (B3) |
-| Consumo abaixo de uma cesta para 2 pessoas | Mercado | Média | Alto | N6; pedidos não medidos (seção 11.2) |
-| Mesas ocupadas em dia útil abaixo de 50% das do fim de semana | Mercado | Alta | Médio | N6; nenhuma visita em dia útil |
-| Aluguel acima de R$ 54,15 por m² na Pituba | Financeiro | Alta | Alto | FipeZap só para Salvador inteira; alta de 18,9% em 12 meses; com o aluguel e a área do pessimista, o VPL cai para -R$ 274 mil |
-| Reforma e cozinha acima do provável | Financeiro | Média | Médio | Sem cotação (N6) |
-| Abertura de unidade da São Jogue perto do ponto | Mercado | Média | Alto | Rede com duas unidades (B3) |
-| Lotação dos bombeiros abaixo de 30 assentos | Legal | Baixa | Médio | Depende do projeto do imóvel (seção 7.2) |
-| Salários acima da admissão do Novo CAGED | Financeiro | Média | Baixo | Acréscimo de 11,4% no pessimista (seção 9.1) |
-| Perda e desgaste do acervo acima de 10% ao ano | Operacional | Média | Baixo | N6 (C13) |
+| Risco | Probabilidade | Impacto | VPL com a premissa no pessimista (R$) | Gatilho | Evidência |
+|---|---|---|---|---|---|
+| Aluguel acima de R$ 54,15 por m² na Pituba | Alta | Alto | -274.076 | G5 | FipeZap só para Salvador inteira; alta de 18,9% em 12 meses |
+| Mesas ocupadas no fim de semana abaixo de 4,35 | Média | Alto | -656.231 | G4 | Média de 4,37 nas visitas, de 2,69 a 6,02 (B3) |
+| Pessoas por mesa ocupada abaixo de 3,58 | Média | Alto | -550.925 | G1 | Média de 3,6 nas visitas, de 2,4 a 4,6 (B3) |
+| Consumo abaixo de uma cesta para 2 pessoas | Média | Alto | -346.505 | G2 | N6; pedidos não medidos (seção 11.2) |
+| Abertura de unidade da São Jogue perto do ponto | Média | Alto | n.a. | G4 | Rede com duas unidades (B3) |
+| Mesas ocupadas em dia útil abaixo de 50% das do fim de semana | Alta | Médio | -179.113 | G3 | N6; nenhuma visita em dia útil |
+| Salários acima da admissão do Novo CAGED | Média | Médio | -101.841 | G5 | Acréscimo de 11,4% no pessimista (seção 9.1) |
+| Reforma e cozinha acima do provável | Média | Médio | -99.852 | n.a. | Sem cotação (N6) |
+| Lotação dos bombeiros abaixo de 30 assentos | Baixa | Médio | n.a. | n.a. | Depende do projeto do imóvel (seção 7.2) |
+| Perda e desgaste do acervo acima de 10% ao ano | Média | Baixo | 1.425 | n.a. | N6 (C13) |
 
-Fonte: elaborado pelo próprio autor com base nos caps. 5 a 9.
+Fonte: elaboração própria, com base nos caps. 5 a 9.
+
+Nota: riscos do mais para o menos grave. Probabilidade, pelo critério do autor (N6): alta, se a evidência disponível já aponta para o valor adverso; média, se a faixa medida ou estimada inclui o valor adverso; baixa, se o risco depende de um fato que o projeto controla antes da abertura. Impacto, pelo VPL com a premissa no pessimista e as demais no provável (Figura 9.2): alto, abaixo de -R$ 250 mil; médio, de -R$ 250 mil a -R$ 50 mil; baixo, acima de -R$ 50 mil. Aluguel: área e preço por m² no pessimista; reforma e cozinha: premissas I01 e I03. Gatilhos G1 a G6 no Quadro 10.4. n.a.: risco sem premissa própria no modelo (a São Jogue atua sobre as mesas ocupadas e as pessoas por mesa; a lotação, sobre o número de mesas) ou sem gatilho na operação.
 
 ## 10.4 CONTINGÊNCIA E MONITORAMENTO
 
 O investimento depende de duas validações feitas sem nova ida a campo. Primeiro, o ponto e a reforma precisam de cotação na Pituba, com área de 110 a 150 m²: os anúncios dos portais de aluguel dão o preço pedido por bairro, e o orçamento da reforma sai do imóvel escolhido. Na sequência, o consumo por pessoa precisa de uma segunda fonte: o gasto por pessoa declarado nas avaliações do Google Maps (B2) é comparado com a cesta de consumo e a taxa de entrada dos concorrentes. O plano só segue se as duas confirmarem as premissas na altura do provável.
 
-Depois da abertura, o caixa, a NFC-e e o site de recomendação de jogos (seção 7.3) dão os indicadores mensais. Eles alimentam dois conjuntos de gatilhos: os de expansão, que liberam investimento, e os de perda máxima, que cortam receita perdida e custo. As etapas de expansão são opções: só são exercidas se a demanda medida pedir e se o caixa gerado pagar a etapa, com reserva de dois meses de custo fixo. O Quadro 10.5 resume as etapas.
+Depois da abertura, o caixa, a NFC-e e o site de recomendação de jogos (seção 7.3) dão os indicadores mensais. Eles alimentam dois conjuntos de gatilhos: os de expansão, que liberam investimento, e os de perda máxima, que cortam receita perdida e custo. As etapas de expansão são opções: só são exercidas se a demanda medida pedir e se o caixa gerado pagar a etapa, com reserva de dois meses de custo fixo. O Quadro 10.3 resume as etapas.
 
-**Quadro 10.5 – Etapas de expansão**
+**Quadro 10.3 – Etapas de expansão**
 
 | Etapa | O que muda | Gatilho (3 meses seguidos, depois da maturação) |
 |---|---|---|
@@ -97,11 +76,11 @@ Depois da abertura, o caixa, a NFC-e e o site de recomendação de jogos (seçã
 | 2. Acervo | Acervo até 322 títulos, a mediana do B1 | Jogos fora do acervo pedidos em pelo menos 10% das mesas; fila pelo mesmo jogo em um dia de pico por semana; ou buscas frequentes no site por jogos para um número de pessoas ou de uma mecânica com pouca oferta |
 | 3. Mesas | Mais 2 mesas por vez, até 10, com no máximo 2 mesas por instrutor no pico | Ocupação de pico acima de 80% das mesas, ou grupos recusados por lotação em todos os fins de semana |
 
-Fonte: elaborado pelo próprio autor. Limites dos gatilhos propostos pelo autor (N6).
+Fonte: elaboração própria. Limites dos gatilhos propostos pelo autor (N6).
 
-Os gatilhos de perda máxima seguem uma ordem de análise (Quadro 10.6). Os três primeiros apontam uma causa específica e pedem medida dirigida e barata. O G4 é o alarme geral: quando ele dispara, a análise começa pelo G1, e as medidas do G4 só entram se nenhuma das três causas explicar a queda. O G5 e o G6 cortam custo e limitam a perda. As medidas de preço são contingência: o preço base continua o da seção 6.3. Cada gatilho tem um limite e uma medida no Quadro 10.6.
+Os gatilhos de perda máxima seguem uma ordem de análise (Quadro 10.4). Os três primeiros apontam uma causa específica e pedem medida dirigida e barata. O G4 é o alarme geral: quando ele dispara, a análise começa pelo G1, e as medidas do G4 só entram se nenhuma das três causas explicar a queda. O G5 e o G6 cortam custo e limitam a perda. As medidas de preço são contingência: o preço base continua o da seção 6.3. Cada gatilho tem um limite e uma medida no Quadro 10.4.
 
-**Quadro 10.6 – Gatilhos de perda máxima, em ordem de análise**
+**Quadro 10.4 – Gatilhos de perda máxima, em ordem de análise**
 
 | Gatilho | Condição | Medidas |
 |---|---|---|
@@ -112,7 +91,7 @@ Os gatilhos de perda máxima seguem uma ordem de análise (Quadro 10.6). Os trê
 | G5. Caixa negativo | EBITDA negativo por 3 meses seguidos, ou caixa abaixo de 1 mês de custo fixo | Corte do meio período; renegociação do aluguel; suspensão das etapas de expansão; passaporte mensal e pré-venda para antecipar caixa; troca do cardápio por comidas recebidas prontas (salgados como coxinha e quibe), com corte de um cozinheiro |
 | G6. Saída | EBITDA acumulado de 6 meses negativo depois do mês 12, com G5 ativo e as medidas de G1 a G4 já aplicadas | Troca de formato (só eventos, aluguel e venda de jogos, com comidas recebidas prontas) ou encerramento, com venda do acervo e do mobiliário para limitar a perda ao investimento menos o valor de revenda |
 
-Fonte: elaborado pelo próprio autor. Limites propostos pelo autor (N6), salvo o equilíbrio operacional, do modelo do cap. 9.
+Fonte: elaboração própria. Limites propostos pelo autor (N6), salvo o equilíbrio operacional, do modelo do cap. 9.
 
 **Referências citadas neste capítulo**
 

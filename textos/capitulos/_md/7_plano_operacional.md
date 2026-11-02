@@ -26,7 +26,7 @@ O horário segue uma regra simples: as 8 horas contínuas com mais luderias aber
 | Capacidade máxima | 95 pessoas por dia aberto | Todas as mesas ocupadas em todas as horas abertas |
 | Demanda provável no ano maduro | 47 pessoas por dia aberto | 4,37 mesas ocupadas no fim de semana e metade disso no dia útil, com 4,01 giros (R04, R05, R15) |
 
-Fonte: elaborado pelo próprio autor com base nos Blocos B1 e B3 (2026) e no modelo do cap. 9.
+Fonte: elaboração própria, com base nos Blocos B1 e B3 (2026) e no modelo do cap. 9.
 
 A demanda provável usa 50% da capacidade. As mesas ocupadas em média ficam limitadas pelo salão: nas visitas, o pico de mesas ocupadas foi 1,29 vez a média. Com 6 mesas, a média do fim de semana pode chegar a 4,65 mesas sem que o pico passe do salão. O provável, de 4,37 mesas, fica abaixo desse teto; o otimista é cortado nele. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto. Teto abaixo de 6 mesas exclui o imóvel.
 
@@ -63,8 +63,11 @@ Esse fluxo cabe numa equipe de 6 pessoas (Quadro 7.2). O salão tem 2 instrutore
 | Instrutor de jogos, tempo integral | 3 | 5 dias de 8 h (40 h); folga na segunda e em um dia de terça a quinta, cada um num dia | 1.653,75 |
 | Instrutor de jogos, meio período | 1 | 20 h: quinta e sexta das 17h às 22h; sábado e domingo das 15h às 20h | 751,70 |
 | Cozinheiro-chefe | 2 | 5 dias de 8 h (40 h); folgas na segunda e na terça ou na quarta | 1.700,00 |
+| Total (folha mensal) | 6 | n.a. | 9.112,95 |
 
-Fonte: elaborado pelo próprio autor com base no Bloco B3 (2026) e no Novo CAGED (Salvador, admissões de ago/2025 a jul/2026, mediana; recreador em todas as atividades e cozinheiro geral na CNAE 56).
+Fonte: elaboração própria, com base no Bloco B3 (2026) e no Novo CAGED (Salvador, admissões de ago/2025 a jul/2026, mediana; recreador em todas as atividades e cozinheiro geral na CNAE 56).
+
+Nota: total = pessoas × salário de admissão. Com encargos de 37% (premissa C07), a folha vai a R$ 12.484,75 por mês (Tabela 9.2). n.a.: não se aplica.
 
 A folha com encargos fica em 22,6% da receita do ano maduro provável, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). O salário de admissão do Novo CAGED tende a ficar abaixo do salário pago a quem já está no cargo; por isso, o cap. 9 testa um acréscimo de até 11,4% sobre ele. A São Jogue opera com mais gente: de três a sete instrutores no salão nas visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
 

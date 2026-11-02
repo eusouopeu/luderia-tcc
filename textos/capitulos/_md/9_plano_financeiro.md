@@ -88,58 +88,78 @@ Na maturidade, o cenário provável atende 1.230 pessoas por mês, cerca de 47 p
 
 **Tabela 9.2 – Receita e custos mensais no cenário provável, mês maduro (R$)**
 
-| Conta | Valor mensal | % da receita bruta |
+| Conta | Valor mensal | Participação na receita bruta (%) |
 |---|---|---|
-| Taxa de entrada | 22.979,46 | 41,7% |
-| Alimentos e bebidas | 31.258,46 | 56,7% |
-| Aluguel de jogos | 900,00 | 1,6% |
-| Receita bruta | 55.137,92 | 100,0% |
-| Simples Nacional | 4.901,86 | 8,9% |
-| CMV de A&B | 9.377,54 | 17,0% |
-| Taxa de cartão | 1.654,14 | 3,0% |
-| Pessoal com encargos (6 pessoas) | 12.484,75 | 22,6% |
-| Aluguel, condomínio e IPTU | 8.447,40 | 15,3% |
-| Pró-labore e despesas gerais | 10.941,92 | 19,8% |
-| Resultado operacional (EBITDA) | 7.330,31 | 13,3% |
+| Taxa de entrada | 22.979,46 | 41,7 |
+| Alimentos e bebidas | 31.258,46 | 56,7 |
+| Aluguel de jogos | 900,00 | 1,6 |
+| Receita bruta | 55.137,92 | 100,0 |
+| Simples Nacional | 4.901,86 | 8,9 |
+| CMV de A&B | 9.377,54 | 17,0 |
+| Taxa de cartão | 1.654,14 | 3,0 |
+| Pessoal com encargos (6 pessoas) | 12.484,75 | 22,6 |
+| Aluguel, condomínio e IPTU | 8.447,40 | 15,3 |
+| Pró-labore e despesas gerais | 10.941,92 | 19,8 |
+| Subtotal: custos fixos (as três linhas anteriores) | 31.874,07 | 57,8 |
+| Resultado operacional (EBITDA) | 7.330,31 | 13,3 |
 
 Fonte: elaboração própria (abas receitas e custos do modelo).
 
 O pessoal é o maior custo fixo: 6 pessoas, com folha de R$ 9,1 mil e encargos de 37%. O A&B é a maior receita, com 56,7%, porque a taxa média dos concorrentes é menor que a cesta dividida por dupla. O Simples Nacional custa 8,9% da receita, com o enquadramento da seção 8.1.
 
-O cenário provável dá prejuízo só no ano 1, durante a rampa. A partir do ano 2, o EBITDA é de R$ 88 mil por ano, e o lucro, depois da depreciação de R$ 48 mil, de R$ 40 mil (Tabela 9.3). O fluxo de caixa repete o EBITDA, com o investimento no ano 0. No ano 5 voltam a caução e o capital de giro e entra o valor residual: a perpetuidade, sem crescimento, do EBITDA do ano 5 menos um reinvestimento igual à depreciação, descontada à TMA (ASSAF NETO, 2014). No provável, o valor residual é de R$ 270 mil. Sem ele, o VPL provável fica negativo (seção 9.4).
+O cenário provável dá prejuízo só no ano 1, durante a rampa. A partir do ano 2, o EBITDA é de R$ 88 mil por ano, e o lucro, depois da depreciação de R$ 48 mil, de R$ 40 mil (Tabela 9.3). O fluxo de caixa (Tabela 9.4) repete o EBITDA, com o investimento no ano 0. No ano 5 voltam a caução e o capital de giro e entra o valor residual: a perpetuidade, sem crescimento, do EBITDA do ano 5 menos um reinvestimento igual à depreciação, descontada à TMA (ASSAF NETO, 2014). No provável, o valor residual é de R$ 270 mil. Sem ele, o VPL provável fica negativo (seção 9.4).
 
 **Tabela 9.3 – Demonstração do resultado projetada, cenário provável (R$)**
 
 | Conta | Ano 1 | Anos 2 a 5 (cada) |
 |---|---|---|
-| Receita bruta | 512.783,00 | 661.655,00 |
-| (-) Simples Nacional | -42.100,00 | -58.822,00 |
-| (-) CMV e taxa de cartão | -102.594,00 | -132.380,00 |
-| Margem de contribuição | 368.089,00 | 470.453,00 |
-| (-) Custos fixos | -382.489,00 | -382.489,00 |
-| EBITDA | -14.401,00 | 87.964,00 |
-| (-) Depreciação e amortização | -47.506,00 | -47.506,00 |
-| Lucro líquido | -61.907,00 | 40.458,00 |
+| Receita bruta | 512.783 | 661.655 |
+| (-) Simples Nacional | -42.100 | -58.822 |
+| (-) CMV e taxa de cartão | -102.595 | -132.380 |
+| Margem de contribuição | 368.088 | 470.453 |
+| (-) Custos fixos | -382.489 | -382.489 |
+| EBITDA | -14.401 | 87.964 |
+| (-) Depreciação e amortização | -47.506 | -47.506 |
+| Lucro líquido | -61.907 | 40.458 |
 
 Fonte: elaboração própria (aba dre do modelo).
 
+**Tabela 9.4 – Fluxo de caixa projetado, cenário provável (R$)**
+
+| Conta | Ano 0 | Ano 1 | Ano 2 | Ano 3 | Ano 4 | Ano 5 |
+|---|---|---|---|---|---|---|
+| Investimento inicial | -368.898 | 0 | 0 | 0 | 0 | 0 |
+| EBITDA | 0 | -14.401 | 87.964 | 87.964 | 87.964 | 87.964 |
+| Caução e capital de giro devolvidos | 0 | 0 | 0 | 0 | 0 | 84.867 |
+| Valor residual | 0 | 0 | 0 | 0 | 0 | 269.717 |
+| Fluxo de caixa | -368.898 | -14.401 | 87.964 | 87.964 | 87.964 | 442.548 |
+| Fluxo descontado a 15% | -368.898 | -12.523 | 66.513 | 57.838 | 50.294 | 220.024 |
+| Descontado acumulado | -368.898 | -381.421 | -314.908 | -257.070 | -206.776 | 13.248 |
+
+Fonte: elaboração própria (aba fluxo_caixa do modelo).
+
+Nota: valor residual = (EBITDA do ano 5 - depreciação de R$ 47.506) ÷ TMA de 15%. O VPL é a soma do fluxo descontado, R$ 13.248; sem o valor residual, é de R$ -120.849.
+
 ## 9.4 INDICADORES DE VIABILIDADE
 
-O negócio fica no limite da viabilidade no cenário provável. O VPL a 15% real é de R$ 13 mil, a TIR real é de 16,0% ao ano, um ponto acima da TMA, e o investimento se paga em 4,9 anos (Tabela 9.4). A receita madura fica 23% acima do ponto de equilíbrio operacional, de R$ 44,8 mil por mês. O resultado depende do valor residual: sem ele, o VPL provável é negativo em R$ 121 mil. Os cenários extremos põem todas as premissas no mesmo lado da faixa ao mesmo tempo: servem de limite, não de previsão. A decisão depende de onde as premissas críticas ficam (seção 9.5).
+O negócio fica no limite da viabilidade no cenário provável. O VPL a 15% real é de R$ 13 mil, a TIR real é de 16,0% ao ano, um ponto acima da TMA, e o investimento se paga em 4,9 anos (Tabela 9.5). A receita madura fica 23% acima do ponto de equilíbrio operacional, de R$ 44,8 mil por mês. O resultado depende do valor residual: sem ele, o VPL provável é negativo em R$ 121 mil. Os cenários extremos põem todas as premissas no mesmo lado da faixa ao mesmo tempo: servem de limite, não de previsão. A decisão depende de onde as premissas críticas ficam (seção 9.5).
 
-**Tabela 9.4 – Indicadores de viabilidade por cenário**
+**Tabela 9.5 – Indicadores de viabilidade por cenário**
 
 | Indicador | Pessimista | Provável | Otimista |
 |---|---|---|---|
-| Investimento inicial (R$) | 566.851,00 | 368.897,52 | 221.350,11 |
-| Receita bruta mensal madura (R$) | 16.006,00 | 55.138,00 | 165.443,00 |
-| EBITDA do ano 5 (R$) | -358.991,00 | 87.964,00 | 1.039.273,00 |
-| VPL (R$) | -1.664.176,00 | 13.248,00 | 8.190.297,00 |
-| VPL sem valor residual (R$) | -1.664.176,00 | -120.849,00 | 3.411.062,00 |
-| TIR real | não há | 16,0% | 416,2% |
-| Payback descontado | mais de 5 anos | 4,9 anos | 0,3 ano |
+| Investimento inicial (R$) | 566.851 | 368.898 | 221.350 |
+| Receita bruta mensal madura (R$) | 16.006 | 55.138 | 165.443 |
+| Ponto de equilíbrio mensal (R$) | 56.063 | 44.828 | 37.193 |
+| EBITDA do ano 5 (R$) | -358.991 | 87.964 | 1.039.273 |
+| VPL a 15% real (R$) | -1.664.176 | 13.248 | 8.190.297 |
+| VPL sem valor residual (R$) | -1.664.176 | -120.849 | 3.411.062 |
+| TIR real (%) | n.a. | 16,0 | 416,2 |
+| Payback descontado (anos) | mais de 5 | 4,9 | 0,3 |
 
 Fonte: elaboração própria (aba sensibilidade do modelo).
+
+Nota: cada cenário põe todas as premissas no mesmo extremo ao mesmo tempo, uma combinação pouco provável: o pessimista e o otimista marcam os limites da faixa, e não previsões. A distribuição conjunta está na simulação de Monte Carlo (seção 9.5). n.a.: não há TIR, porque o fluxo do pessimista não muda de sinal.
 
 ## 9.5 TRIANGULAÇÃO, SENSIBILIDADE E PONTO DE RUPTURA
 
@@ -155,19 +175,21 @@ Fonte: elaboração própria (aba sensibilidade do modelo).
 
 As pessoas por mesa e as mesas ocupadas pesam mais porque multiplicam a taxa e a cesta ao mesmo tempo; as pessoas por cesta pesam só sobre o A&B. O teto do salão encurta o lado otimista das mesas ocupadas: o ganho máximo é de R$ 185 mil, contra uma perda de R$ 669 mil no pessimista. Na simulação de Monte Carlo, com 10 mil cenários sorteados dentro das faixas, o VPL fica positivo em 44,9% deles (Apêndice [letra]). O risco, portanto, pende para o lado da perda.
 
-As cinco premissas críticas têm ruptura colada no provável (Tabela 9.5). O negócio é viável enquanto as mesas ocupadas no fim de semana ficarem acima de 4,35 em média, com as demais premissas no provável: 0,5% abaixo do provável.
+As cinco premissas críticas têm ruptura colada no provável (Tabela 9.6). O negócio é viável enquanto as mesas ocupadas no fim de semana ficarem acima de 4,35 em média, com as demais premissas no provável: 0,5% abaixo do provável.
 
-**Tabela 9.5 – Ponto de ruptura das premissas críticas (VPL = 0)**
+**Tabela 9.6 – Ponto de ruptura das premissas críticas (VPL = 0)**
 
-| ID | Premissa | Provável | Ruptura | Faixa testada |
-|---|---|---|---|---|
-| R02 | Pessoas por mesa ocupada | 3,6 | 3,58 | 2,5 a 5,5 |
-| R08 | Pessoas por cesta de consumo | 2 | 2,02 | 3 a 1 |
-| R04 | Mesas ocupadas em média, fim de semana | 4,37 | 4,35 | 2,71 a 4,65 |
-| R15 | Giros por mesa por dia | 4,01 | 3,99 | 3,61 a 4,41 |
-| R05 | Mesas ocupadas em dia útil (% do fim de semana) | 50% | 49,3% | 40% a 60% |
+| ID | Premissa | Provável | Ruptura | Faixa testada | Medido no B3 | Nível |
+|---|---|---|---|---|---|---|
+| R02 | Pessoas por mesa ocupada | 3,6 | 3,58 | 2,5 a 5,5 | 2,4 a 4,6 por visita | N5 + N6 |
+| R08 | Pessoas por cesta de consumo | 2 | 2,02 | 3 a 1 | n.a. | N6 |
+| R04 | Mesas ocupadas em média, fim de semana | 4,37 | 4,35 | 2,71 a 4,65 | 2,69 a 6,02 por visita | N5 |
+| R15 | Giros por mesa por dia | 4,01 | 3,99 | 3,61 a 4,41 | 3,61 (NFC-e) a 4,41 (horário ÷ permanência) | N5 |
+| R05 | Mesas ocupadas em dia útil (% do fim de semana) | 50 | 49,3 | 40 a 60 | n.a. | N6 |
 
-Fonte: elaboração própria (aba sensibilidade do modelo).
+Fonte: elaboração própria (aba sensibilidade do modelo e Bloco B3, 2026).
+
+Nota: n.a.: premissa sem medida no B3.
 
 Todas as rupturas ficam dentro das faixas e a menos de 2% do provável. O provável é o ponto de equilíbrio econômico do negócio: qualquer desvio das premissas críticas decide o sinal do VPL. A plausibilidade de ficar acima das rupturas, os gatilhos de contingência e as opções de expansão são discutidos no cap. 10.
 

@@ -4,6 +4,10 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Tabelas: resumo em reais inteiros (sem "mil") e detalhe com centavos reais; "n.a." para célula sem número; unidade no cabeçalho; fonte única "elaboração própria", com ressalvas numa "Nota"; negrito só em títulos, legendas e cabeçalhos (no texto, itálico ou aspas) | `_instrucoes/1d_formatacao.md` |
+| 02/11/2026 | Indicadores numa só tabela (9.5); o cap. 4 resume só o provável (Tabela 4.1); a ruptura fica na 9.6 com o medido no B3; o cap. 10 remete às duas, sem quadros próprios | `docs/registro-de-alteracoes.md` (02/11/2026) |
+| 02/11/2026 | Matriz de riscos: impacto pelo VPL com a premissa no pessimista (alto abaixo de -R$ 250 mil; médio até -R$ 50 mil); probabilidade por critério do autor (N6); cada risco ligado ao seu gatilho | Quadro 10.2 do TMin v15 |
+| 02/11/2026 | POF 2017-2018 (lazer concentrado na renda) sai do 2.1 e vai para o campo social da PESTEL (5.5) | `_instrucoes/2_ref-teorico.md` |
 | 02/11/2026 | Última linha com até 25% da largura: fundir com o parágrafo seguinte quando o assunto é o mesmo; nos demais, usar o espaço livre para completar ou esclarecer o parágrafo, sem criar linha nova | `docs/registro-de-alteracoes.md` (02/11/2026, 12:40) |
 | 02/11/2026 | TMin: caps. 9 a 11 com menos seções (árvore e parecer viram abertura; 9.5 dentro da 9.3; 9.7.x, 10.4, 11.4 e 11.5 sem título); a SWOT mantém a 10.1 | `_instrucoes/1_estrutura.md` |
 | 02/11/2026 | Parágrafo com pelo menos 3 linhas (~250 caracteres); anúncio de quadro e frase de fecho juntam-se ao parágrafo do mesmo tema (P5, regra 7) | `_instrucoes/1b_escrita.md` |

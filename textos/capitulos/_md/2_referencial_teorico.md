@@ -12,8 +12,6 @@ De acordo com Fitzsimmons e Fitzsimmons (2014), a experiência é o estágio mai
 
 A luderia pertence ao segmento de *competitive socialising*: locais de lazer em que grupos se reúnem em torno de um jogo ou de uma atividade competitiva – como minigolfe, boliche, salas de fuga e realidade virtual –, em geral acompanhada de comida e bebida (SAVILLS, [s.d.]; KAM INSIGHT, 2022, p. 17–21). O formato também cumpre uma função social. Oldenburg chama de terceiro lugar o ambiente distinto da casa e do trabalho em que as pessoas se encontram com regularidade para conviver de maneira informal (OLDENBURG, 1989 apud NOVAES; KANYAT, 2025, p. 83). A luderia disputa esse lugar na rotina do cliente.
 
-No Brasil, o gasto com lazer se concentra na renda. A Pesquisa de Orçamentos Familiares (POF) 2017-2018 mede o lazer em sentido estrito – leitura, ingressos, eventos esportivos, recreação, brinquedos e jogos –, sem bares e restaurantes: nesse recorte, a despesa média foi de R$ 14,87 por pessoa por mês (IBGE, 2021, p. 101–102). Comer e beber fora de casa entra em outro grupo da pesquisa, com despesa média de R$ 61,68 por pessoa por mês (IBGE, 2021, p. 63, 65). O décimo de maior rendimento respondeu por 49,0% das despesas com lazer e viagens, mais de cinco vezes o gasto dos quatro décimos de menor rendimento somados (IBGE, 2021, p. 107). Para a luderia, a concentração indica que a demanda depende da renda do entorno, e não só do tamanho da população.
-
 ## 2.2 ANÁLISE ESTRATÉGICA
 
 Definido o produto, a análise passa ao ambiente em que ele compete. A rentabilidade de um setor é majoritariamente determinada por um conjunto de cinco forças: a rivalidade entre concorrentes, a ameaça de novos entrantes, a ameaça de substitutos e o poder de negociação de compradores e de fornecedores (PORTER, 2004, [AV]). No caso das luderias, os substitutos são bares, restaurantes e outras formas de lazer noturno, e os fornecedores críticos são as editoras de jogos e os de alimentos e bebidas. Além da estrutura do setor, o negócio responde a um ambiente mais amplo, denominado de macroambiente, que reúne as forças externas que a empresa não controla (KOTLER; KELLER, 2013, p. 9–13). A análise PESTEL organiza as forças desse ambiente em seis dimensões: política, econômica, social, tecnológica, ambiental e legal.
@@ -42,9 +40,9 @@ Os três indicadores respondem se o projeto vale o investimento; o ponto de equi
 
 A qualidade de um plano de negócios depende, em grande parte, da qualidade das premissas adotadas. Por isso, o plano segue a gestão baseada em evidências: as decisões usam, de forma consciente, explícita e criteriosa, as melhores evidências disponíveis (FIGUEIREDO, 2020, p. 31). Essas evidências vêm de quatro fontes: pesquisas científicas, dados da própria organização – ou de organizações comparáveis –, experiência profissional e valores das partes afetadas (FIGUEIREDO, 2020, p. 31).  Quando as evidências são insuficientes, as premissas partem das evidências disponíveis e as complementam com análises de cenário e testes piloto (FIGUEIREDO, 2020, p. 32). Nas análises de cenário, as premissas de maior incerteza recebem três valores – pessimista, provável e otimista –, e o modelo financeiro é calculado com cada conjunto. O resultado é uma faixa de VPL, TIR e payback, em vez de um número único, que mostra sob quais condições o negócio se sustenta. Para além das análises, há ainda validações que podem ser realizadas antes do investimento integral.
 
-O único estudo de viabilidade localizado sobre o formato, de um *board game café* em Ourinhos (SP), declara o negócio viável pelo payback simples e não testa a sensibilidade às premissas de receita (ASAKURA; SILVA; MELLO, 2018, p. 9–13). Ao contrário desse estudo, o presente trabalho trata a incerteza de forma explícita. A análise de sensibilidade varia uma premissa por vez e mede o efeito sobre o VPL; ordenadas pelo efeito, as premissas formam o gráfico de tornado, e as de maior impacto são as premissas críticas (BRUNI, 2018, [AV]). O ponto de ruptura é o valor de uma premissa crítica que torna o VPL igual a zero (BRUNI, 2018, [AV]). Ele converte o resultado em condição: o negócio é viável enquanto a taxa de ocupação ficar acima de um valor determinado. O Quadro 1 resume os conceitos do capítulo, a decisão que cada um apoia e o capítulo em que é aplicado.
+O único estudo de viabilidade localizado sobre o formato, de um *board game café* em Ourinhos (SP), declara o negócio viável pelo payback simples e não testa a sensibilidade às premissas de receita (ASAKURA; SILVA; MELLO, 2018, p. 9–13). Ao contrário desse estudo, o presente trabalho trata a incerteza de forma explícita. A análise de sensibilidade varia uma premissa por vez e mede o efeito sobre o VPL; ordenadas pelo efeito, as premissas formam o gráfico de tornado, e as de maior impacto são as premissas críticas (BRUNI, 2018, [AV]). O ponto de ruptura é o valor de uma premissa crítica que torna o VPL igual a zero (BRUNI, 2018, [AV]). Ele converte o resultado em condição: o negócio é viável enquanto a taxa de ocupação ficar acima de um valor determinado. O Quadro 2.1 resume os conceitos do capítulo, a decisão que cada um apoia e o capítulo em que é aplicado.
 
-**Quadro 1 — Conceitos do referencial teórico e sua aplicação no plano**
+**Quadro 2.1 – Conceitos do referencial teórico e sua aplicação no plano**
 
 | Conceito ou ferramenta | Decisão que apoia | Aplicação |
 |---|---|---|
@@ -57,7 +55,7 @@ O único estudo de viabilidade localizado sobre o formato, de um *board game caf
 | Gestão baseada em evidências | Que dado sustenta cada premissa | Cap. 3; cap. 11 |
 | Sensibilidade, tornado e ponto de ruptura | Sob quais condições o negócio se sustenta | Seções 9.5 e 10.3 |
 
-Fonte: elaborado pelo autor.
+Fonte: elaboração própria.
 
 **Referências citadas neste capítulo**
 
@@ -77,9 +75,7 @@ DORNELAS, José. *Plano de negócios*: seu guia definitivo. 3. ed. São Paulo: E
 
 FIGUEIREDO, Américo Rodrigues de. Gestão baseada em evidências. *GV-executivo*, São Paulo, v. 19, n. 1, p. 30–32, jan./fev. 2020.
 
-FITZSIMMONS, James A.; FITZSIMMONS, Mona J. *Administração de serviços*: operações, estratégia e tecnologia da informação. 7. ed. Porto Alegre: AMGH, 2014.
-
-IBGE. *Pesquisa de Orçamentos Familiares 2017-2018*: perfil das despesas no Brasil: indicadores selecionados de alimentação, transporte, lazer e inclusão financeira. Rio de Janeiro: IBGE, 2021. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv101844.pdf. Acesso em: 2 nov. 2026.
+FITZSIMMONS, James A.; FITZSIMMONS, Mona J. *Administração de serviços*: operações, estratégia e tecnologia da informação. 7. ed. Porto Alegre: AMGH, 2014. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv101844.pdf. Acesso em: 2 nov. 2026.
 
 KAM INSIGHT. *Competitive socialising*: winning a new customer occasion. KAM Media, 2022. Disponível em: https://kaminsight.com/wp-content/uploads/sites/2044/2023/07/KAM-Competitive-Socialising-Feb-22.pdf. [AV: data de acesso]
 
