@@ -162,7 +162,7 @@ Legenda, no fim de cada referência:
 
 ## Fontes candidatas para a abertura, o 2.1 e o 2.2 (02/11/2026, aguardando decisão do autor)
 
-Ainda não citadas no TMin. Entram só se o autor aprovar os parágrafos novos do cap. 2.
+Citadas em parágrafos com "*" do cap. 2 do TMin v9 (02/11/2026), à espera da escolha do autor; Pine e Gilmore (1998) por *apud* de Fitzsimmons e Fitzsimmons (2014, p. 11), e Oldenburg (1989) por *apud* de Novaes e Kanyat (2025, p. 83).
 
 ### Com PDF e trecho recortado
 
