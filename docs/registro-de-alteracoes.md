@@ -2080,3 +2080,9 @@ Restam 10 "Incompleto": Arena BG, BoardZ, Castelos, Flow Games, Nala Land e Play
 **Antes**: cópia com "*" do §1 do cap. 1 (resposta ao comentário 11) abaixo do original.
 **Depois**: cópia apagada no documento aberto, a pedido do autor; o original ficou intacto. Nova regra: comentário resolvido substitui o parágrafo original.
 **Justificativa**: pedido do autor.
+
+### 04:13
+**Objeto**: `textos/capitulos/TCC_luderia_TMin_v9.docx` (§2 do cap. 1)
+**Antes**: "Os estabelecimentos que oferecem um acervo de jogos de mesa para uso no local, em geral junto com bebidas e alimentos, conhecidos no Brasil como luderias ou ludobares, integram um ramo recente mais amplo dentro do setor de entretenimento denominado *competitive socialising*".
+**Depois**: "*As luderias, também chamadas de ludobares, são estabelecimentos que oferecem jogos de mesa para uso no local. Elas integram um ramo recente mais amplo do setor de entretenimento, denominado *competitive socialising*" (parágrafo revisado no lugar do original, pela regra de 02/11). Documento reaberto no WordCraft.
+**Justificativa**: comentário 9 do autor; opção 1 escolhida: "luderia" como termo (P6), definição curta e frase dividida em duas.
