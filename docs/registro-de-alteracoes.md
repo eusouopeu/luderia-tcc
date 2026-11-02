@@ -2074,3 +2074,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 
 Restam 10 "Incompleto": Arena BG, BoardZ, Castelos, Flow Games, Nala Land e Play Easy (1 em cada), Bardo Mago (2) e Bodogami (2).
 **Justificativa**: pedido do autor.
+
+### 04:10
+**Objeto**: `textos/capitulos/TCC_luderia_TMin_v9.docx` (documento aberto no WordCraft, não salvo); `docs/decisoes.md`
+**Antes**: cópia com "*" do §1 do cap. 1 (resposta ao comentário 11) abaixo do original.
+**Depois**: cópia apagada no documento aberto, a pedido do autor; o original ficou intacto. Nova regra: comentário resolvido substitui o parágrafo original.
+**Justificativa**: pedido do autor.
