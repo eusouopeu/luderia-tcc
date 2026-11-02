@@ -75,7 +75,7 @@ DORNELAS, José. *Plano de negócios*: seu guia definitivo. 3. ed. São Paulo: E
 
 FIGUEIREDO, Américo Rodrigues de. Gestão baseada em evidências. *GV-executivo*, São Paulo, v. 19, n. 1, p. 30–32, jan./fev. 2020. Disponível em: https://periodicos.fgv.br/gvexecutivo/article/download/81435/77745/173459. Acesso em: 2 nov. 2026.
 
-FITZSIMMONS, James A.; FITZSIMMONS, Mona J. *Administração de serviços*: operações, estratégia e tecnologia da informação. 7. ed. Porto Alegre: AMGH, 2014. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv101844.pdf. Acesso em: 2 nov. 2026.
+FITZSIMMONS, James A.; FITZSIMMONS, Mona J. *Administração de serviços*: operações, estratégia e tecnologia da informação. 7. ed. Porto Alegre: AMGH, 2014.
 
 KAM INSIGHT. *Competitive socialising*: winning a new customer occasion. KAM Media, 2022. Disponível em: https://kaminsight.com/wp-content/uploads/sites/2044/2023/07/KAM-Competitive-Socialising-Feb-22.pdf. [AV: data de acesso]
 

@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 02/11/2026 (13h), TMin v15: tabelas revistas (Tabela 8.1 com o modelo atual, fluxo de caixa na 9.4, indicadores só na 9.5, ruptura com o medido no B3 na 9.6, matriz de riscos com critério, VPL e gatilho); Quadros 10.2 e 10.3 antigos fora; Quadro 10.4 a 10.6 viram 10.2 a 10.4; POF no campo social da PESTEL (D46, D14 e D20 resolvidos). Itens anteriores citam a numeração antiga.
+Última análise: 02/11/2026 (tarde), TMin v16 e apêndices: 10 itens novos (D49 a D55, C22 a C24); D22 resolvido pelo Apêndice E. Itens anteriores citam a numeração antiga.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -12,11 +12,21 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Grave
 
+**D49 — Marcadores pendentes a duas semanas da banca (02/11/2026).** TMin v16: 15 `[AV]` no texto corrido, 4 `[script]` (5.1: receita da PAS e margens; 5.3.1: densidade por 100 mil habitantes; 5.3.2: acervo mediano de R$ 61 mil), `[script — corrigir pelo IPCA]` (6.3), `[pendente]` (9.2: sleeves; 9.5: triangulação com o cap. 6), `[figura: croqui do salão]` e `[figura: fluxograma da jornada do cliente]` (7.2 e 7.3), `[resultado do kappa]` (11.2) e a proposta de valor entre colchetes no cap. 4. Sugestão: fechar já os que dependem só de conta sobre dados que existem (os `[script]` e o IPCA); gerar ou cortar as duas figuras do cap. 7; deixar para o fim só o kappa e a proposta de valor, que dependem da recodificação e do 6.1.
+
 **D45 — Páginas do TMin v10 (02/11/2026).** O TMin passou de 59 para 69 páginas: os quadros 10.5 e 10.6 e o Quadro 9.2 com 15 premissas. O cap. 10 já estava acima do teto (C17). Sugestão: levar o Quadro 10.6 ou o 10.5 para apêndice.
 
 **D01 — Três escalas de confiança com os mesmos rótulos.** Cap. 5 (nota de abertura, 5.1.2, 5.1.3, 5.2.3, 5.4.2 e quadro "Fontes por nível de preferência") × cap. 2 (2.1) × `_instrucoes/1a_principios.md` (P1, P2) e `8_financeiro.md` (N1–N6). O cap. 5 usa uma ordem própria de fontes em 4 níveis (oficial → fundação → entidade setorial → imprensa), decidida em 15/10 (`decisoes.md`), que não bate com a P1 (7 níveis: legislação, artigos revisados, teses, relatórios oficiais e setoriais…). Além disso, mistura as escalas no texto: a POF é "N2" (escala N1–N6, correto), o Savills é "nível 3" (da ordem própria; na N1–N6 seria N4), o público do Meta Ads é "N5, rastros digitais" (rastro digital é o tipo 5 da P2; N5 é coleta primária comportamental própria) e a cotação é "N2 na hierarquia de dados" (tipo 2 da P2, não N2). O cap. 2 anuncia só a N1–N6 e a P2 para o cap. 3. A banca lê "N2" e "nível 2" como a mesma coisa. Sugestão: no texto, usar só a N1–N6 para dados e premissas; a ordem de fontes do cap. 5 vira a P1 (atualizar a instrução) ou sai do capítulo; o tipo de dado da P2 ganha rótulo próprio (ex.: "tipo 5").
 
 ## Média
+
+**D50 — Tabela 4.1 e Quadro 7.1 sem chamada no texto (02/11/2026).** Caps. 4 e 7 × ABNT (`10_biblio-apendices.md`: toda tabela e quadro citados no texto). São os dois únicos sem remissão. Sugestão: "(Tabela 4.1)" na frase do VPL do cap. 4 e "(Quadro 7.1)" na frase da capacidade de 95 pessoas do 7.2.
+
+**D51 — SWOT sem o cruzamento que o 2.2 anuncia (02/11/2026).** Cap. 2 (2.2: "O cruzamento dos quadrantes indica a estratégia") × cap. 10 (Quadro 10.1, só os quatro quadrantes, com evidência que remete a seções). Sugestão: trocar a coluna "Evidência" por uma linha de estratégias cruzadas (forças × oportunidades, fraquezas × ameaças), ligada às etapas e aos gatilhos do 10.4; ou tirar a frase do 2.2.
+
+**D52 — Quadro 3.2 atribui ao B2 usos que vêm de outros blocos (02/11/2026).** Cap. 3 (Quadro 3.2: B2 para "tamanho do grupo, jogos citados") × caps. 7 e 9 (tamanho do grupo pela contagem do B3, R02; acervo pelos acervos do B1, I05). O cap. 9 não cita o B2. Sugestão: deixar no B2 só proposta de valor e reclamações, como no Apêndice D.
+
+**D53 — Siglas sem desdobramento e sem lista (02/11/2026).** Caps. 1 a 11 × ABNT NBR 14724 (lista de siglas opcional, mas sigla desdobrada na primeira ocorrência). A&B, CMV, EBITDA, NFC-e, REGIC, CAGED, PAS, CNAE, LOUOS, DAS, IPCA, SWOT e PESTEL aparecem pela primeira vez sem a forma por extenso; VPL, TIR, TMA e PRC já são desdobradas. Sugestão: desdobrar na primeira ocorrência e incluir a lista de siglas nos elementos pré-textuais.
 
 **D47 — Quadro 1 remete a seções que o TMin não tem (02/11/2026).** Cap. 2 (Quadro 1) × cap. 6. O Quadro 1 aplica economia da experiência e Kano/PRC nas seções 6.1 e 6.2, e o cap. 4 cita a proposta de valor "da seção 6.1"; o cap. 6 do TMin só tem 6.3 e 6.4. Sugestão: manter enquanto o 6.1 e o 6.2 não forem escritos, e conferir a numeração quando entrarem.
 
@@ -80,6 +90,10 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Aceitável
 
+**D54 — Linhas de fonte com datas e formas variadas (02/11/2026).** 32 fontes no TMin v16: datas como "02/11/2026", "out/2026", "2026", "15/10/2026" e "coletas de 09 a 30/10/2026"; seis remetem a "aba ... do modelo", que o leitor não acessa. Sugestão: "Fonte: elaboração própria, com base em <bloco ou base> (<mês/ano>)" em todas, e "modelo financeiro (Apêndice E)" no lugar das abas.
+
+**D55 — Parágrafos acima de 1.100 caracteres (02/11/2026).** Cap. 1 (objetivo e estrutura do trabalho, cerca de 1.240 cada) e 2.3 (modelo Kano, 1.143) × P5 (parágrafo curto, uma ideia). Sugestão: dividir cada um na troca de ideia (objetivo geral × específicos; estrutura × método; Kano × PRC).
+
 **D37 — Erros de digitação no cap. 1 (02/11/2026).** §2 da introdução: "São Paul" (São Paulo).
 
 - **Fitzsimmons no TMax, cap. 2 (31/10/2026).** A citação da capacidade perecível (§ do 2.x) segue sem página, enquanto o TMin cita as p. 152–156 e 406–410.
@@ -97,8 +111,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D21 — Árvore de direcionadores como quadro.** Cap. 9 (9.1) × `8_financeiro.md` (§1, "a árvore aparece como figura"). O rascunho usa o Quadro 9.1. Trocar por figura na revisão de forma, se couber no teto.
 
-**D22 — Registro completo de premissas sem apêndice.** Cap. 9 (9.2) × `10_biblio-apendices.md`. O texto remete ao "Apêndice `[letra]`"; o registro completo (38 linhas) está só na aba premissas do modelo. Definir a letra e gerar o apêndice a partir da planilha.
-
 **D25 — Normas estaduais e municipais sem conferência.** Cap. 8 (Tabela 8.1 e Quadro 8.1) × `6_juridico.md` ("toda informação legal deve citar a norma e ter a vigência conferida"). LOUOS de Salvador, Lei estadual 12.929/2013 (bombeiros), RICMS-BA, ICMS de 4% sobre o A&B, ISS de 5% e contribuição patronal de 27,8% estão `[AV]`. A conclusão (Simples mais barato) não muda com eles: a diferença é de R$ 103 mil por ano.
 
 # Cortes em potencial
@@ -112,6 +124,10 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 **C02 — Justificativa acadêmica repete a contextualização.** Cap. 1: "O único estudo de viabilidade identificado… (ASAKURA; SILVA; MELLO, 2018)" aparece duas vezes com a mesma redação (contextualização e 1.2), e "não há levantamento setorial" volta no 1.2 e no 5.1.4. O cap. 2 (2.6) cita o mesmo estudo com mais detalhe. Manter a menção do cap. 2 e uma só no cap. 1. Ganho: ~70 palavras.
 
 ## Médio ganho
+
+**C22 — Quadro 9.2 com 15 premissas, agora que o Apêndice E traz as 41 (02/11/2026).** O Quadro 9.2 lista 15; a Figura 9.2 (tornado), 10; a Tabela 9.6, as 5 críticas. Sugestão: o Quadro 9.2 fica com as 10 do tornado, na mesma ordem e com a amplitude no VPL, e remete o resto ao Apêndice E. Ganho: cerca de 1/3 de página.
+
+**C23 — DRE e fluxo de caixa repetem o EBITDA (02/11/2026).** Tabelas 9.3 e 9.4: o EBITDA dos anos 1 a 5 aparece nas duas. Sugestão: uma tabela só, com as linhas da DRE até o EBITDA e, abaixo, investimento, caução e giro, valor residual, fluxo, descontado e acumulado. Ganho: cerca de 1/4 de página e uma legenda.
 
 **C18 — Aberturas de capítulo que descrevem o capítulo (01/11/2026).** Caps. 4, 5, 7, 9 e 11 abrem com "O capítulo parte de…", "As seções apresentam…", repetindo o 1.3. Sugestão: abrir com a tese ou o resultado do capítulo em uma frase (ex.: cap. 9, "O negócio não é viável nas premissas prováveis; esta seção mostra de onde vem o número") e cortar o roteiro das seções. Ganho: cerca de 250 palavras.
 
@@ -132,6 +148,8 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 **C15 — Matriz de evidências no corpo do cap. 3 (3.6).** O cap. 3 fecha em cerca de 10,2 páginas, acima do teto de 10. A matriz (Quadro 3.5, meia página) pode ir para apêndice, com uma frase no 3.6, como a P4.2 permite. Ganho: cerca de 175 palavras.
 
 ## Baixo ganho
+
+**C24 — Tabela A.1 repete a Figura 5.2 (02/11/2026).** Apêndice A (concorrentes por metrópole) × cap. 5 (Figura 5.2, as mesmas contagens). O arquivo de apêndices tem 11 páginas, contra o teto de 9. Sugestão: tirar a Tabela A.1 e remeter à Figura 5.2. Ganho: cerca de 1/3 de página nos apêndices.
 
 **C20 — *Competitive socialising* definido duas vezes (01/11/2026; decidido em 02/11).** Cap. 1 (parágrafo revisado com "*") e cap. 2 (2.1, parágrafo com "*", com a definição completa; antes na 2.2). O autor decidiu que a definição fica no cap. 2: sai da introdução quando o início do cap. 1 for reescrito, depois dos caps. 2 e 3. Ganho: cerca de 40 palavras.
 
