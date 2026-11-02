@@ -1,9 +1,10 @@
 # AGORA
 
-Atualizado em 01/11/2026 (23h). Semana 8 do cronograma (31/10 a 06/11). Próxima entrega: **06/11, versão completa**; versão final para a banca em 16/11.
+Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entrega: **06/11, versão completa**; versão final para a banca em 16/11.
 
 ## Fazendo agora
 
+- **Cap. 2 reordenado (02/11):** contexto (2.1 experiência, 2.2 estabelecimentos, 2.3 público) → 2.4 estratégia e gestão do serviço → 2.5 viabilidade, no TMin v9; três parágrafos novos com "*". Depois dos caps. 2 e 3, reescrever o início do cap. 1 (pendências).
 - **Comentários do TMin v9 (01/11, 23h):** 8 dos 9 comentários e as remissões do cap. 2 respondidos em 18 parágrafos com "*", abaixo dos originais; a regra do cap. 2 mudou (sem remissão a capítulo no texto). Falta o autor escolher a versão de cada um e conferir Figueiredo para o comentário 7.
 - **Capítulos:** todos têm arquivo. Rascunhos novos em 31/10: caps. 4, 7, 10 e 11. Cap. 5 segue esboço de 15/10 (5.2 provisório); cap. 6 só com 6.3 e 6.4 ([status](textos/planejamento/status_capitulos.md)).
 - **Versões (31/10):** TMax (completo) e TMin (conciso) do texto; TMin dos caps. 2, 3, 5 e 9 escrito; PDF TMax v3 com 67 páginas e TMin v2 com 53 (TMin em `textos/capitulos/`, padrão; TMax em `textos/capitulos/TMax/`, só com os caps. que diferem; `.md` em `_md/`). Dados agregados como DMax; a DMin espera a descrição do autor (pendências, item 16).

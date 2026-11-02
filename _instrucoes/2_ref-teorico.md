@@ -49,14 +49,16 @@ Padrão de parágrafo: **afirmação → sustentação (citação ou dado) → l
 
 Teto do capítulo: **10 páginas** ([1_estrutura.md](1_estrutura.md), "Extensão"). Cada subcapítulo existe para justificar uma ferramenta ou um conceito que o plano usa depois; o que só contextualiza fica em uma página ou menos.
 
+Ordem (pedido do autor em 02/11/2026): primeiro o contexto do negócio (experiência, formato, público), depois as ferramentas de administração e, por fim, a viabilidade. O leitor conhece o negócio antes das ferramentas que o analisam, na mesma sequência do plano (mercado e cliente → operação → finanças).
+
 | Subcapítulo | Conteúdo | Ferramenta ou conceito que justifica | Usado em | Teto (páginas) |
 |---|---|---|---|---|
-| **2.1 Empreendedorismo e plano de negócios** | Função e componentes do plano de negócios | Estrutura do trabalho | Estrutura geral | 1,5 |
-| **2.2 Estratégia e modelo de negócio** | Oceano Azul e grade ERRC; cinco forças; SWOT; PESTEL. Canvas só se for usado no cap. 6 | Ferramentas de análise dos caps. 5, 6 e 10 | Caps. 5, 6, 10 | 3 |
-| **2.3 Lazer, jogo e economia da experiência** | Lazer; economia da experiência | Proposta de valor do formato: a ocasião social | Caps. 5.2, 6.1 | 1 |
-| **2.4 Público de jogos de tabuleiro e cartas** | Perfil do jogador de jogos de tabuleiro; barreiras de entrada | Segmentação e proposta de valor | Caps. 5.2, 6.2 | 1,5 |
-| **2.5 Estabelecimentos de lazer e entretenimento** | Bares temáticos; *competitive socialising*; terceiro lugar | Modelo de negócio e concorrência | Caps. 5.3, 7 | 1 |
-| **2.6 Viabilidade e decisão sob incerteza** | VPL, TIR, payback, ponto de equilíbrio; cenários; tornado; ponto de ruptura. Monte Carlo só se o extra for feito | Modelo financeiro e análise de riscos | Caps. 9, 10 | 2 |
+| **Abertura** | Função do plano de negócios (um parágrafo) | Estrutura do trabalho | Estrutura geral | 0,5 |
+| **2.1 Economia da experiência** | Experiência como oferta econômica | Proposta de valor do formato: a ocasião social | Caps. 5.2, 6.1 | 1 |
+| **2.2 Estabelecimentos de lazer e entretenimento** | *Competitive socialising* (a definição do termo fica aqui, e não na introdução); atributos exigidos | Modelo de negócio e concorrência | Caps. 5.3, 6.1 | 1 |
+| **2.3 Público de jogos de tabuleiro** | Perfil do jogador; viés das amostras; barreira de preço; acervo | Segmentação, taxa de entrada e acervo | Caps. 5.2, 6.2, 6.3 | 1,5 |
+| **2.4 Estratégia e gestão do serviço** | Cinco forças e PESTEL; Kano e PRC; ambiente de serviço e lei de Little; SWOT (fecha a seção, porque junta as análises) | Ferramentas de análise dos caps. 5, 6, 7 e 10 | Caps. 5, 6, 7, 10 | 3,5 |
+| **2.5 Viabilidade e decisão sob incerteza** | VPL, TIR, payback, TMA, ponto de equilíbrio; gestão baseada em evidências e cenários; sensibilidade, tornado e ponto de ruptura. Monte Carlo só se o extra for feito | Modelo financeiro e análise de riscos | Caps. 3, 9, 10 | 2,5 |
 
 - A história das luderias (pioneiras, difusão no Brasil, números do setor) não entra no cap. 2: vai para a introdução, em um parágrafo.
 - Conceito sem ferramenta correspondente nos caps. 5 a 10 sai, mesmo que bem fundamentado.

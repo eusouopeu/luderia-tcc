@@ -129,7 +129,7 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 
 ## Baixo ganho
 
-**C20 — *Competitive socialising* definido duas vezes (01/11/2026).** Cap. 1 (parágrafo revisado em verde) e cap. 2 (2.4, "A luderia pertence ao segmento de *competitive socialising*…"). Com a definição na introdução, o cap. 2 pode só retomar o termo. Ganho: cerca de 20 palavras.
+**C20 — *Competitive socialising* definido duas vezes (01/11/2026; decidido em 02/11).** Cap. 1 (parágrafo revisado com "*") e cap. 2 (2.2, parágrafo com "*", com a definição completa). O autor decidiu que a definição fica no cap. 2: sai da introdução quando o início do cap. 1 for reescrito, depois dos caps. 2 e 3. Ganho: cerca de 40 palavras.
 
 **C13 — Estrutura das unidades da São Jogue repetida (cap. 9, 9.2 e 9.8).** Mesas, assentos e turnos do site de reservas aparecem nas premissas e de novo na checagem de capacidade; quando o cap. 3 descrever o B3, os dois trechos viram remissão. Ganho: ~40 palavras.
 

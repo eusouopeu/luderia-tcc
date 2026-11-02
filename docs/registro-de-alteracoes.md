@@ -2015,3 +2015,11 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: a versão salva pelo WordCraft levou a formatação dos parágrafos verdes apagados para os parágrafos seguintes: "2 REFERENCIAL TEÓRICO" e "2.1" perderam os estilos Title e Heading1 (e a quebra de página), e sete marcas de parágrafo ficaram com realce verde.
 **Depois**: arquivo restaurado à versão do commit b16ecba (mesmo texto, formatação original) e reaberto no WordCraft por comando (fechar e abrir), já com os parágrafos com "*".
 **Justificativa**: corrigir o efeito colateral da edição feita dentro do app.
+
+## 2026/11/02
+
+### 01:39
+**Objeto**: `textos/capitulos/TCC_luderia_TMin_v9.docx` (cap. 2 e Quadro 1); `_instrucoes/2_ref-teorico.md`
+**Antes**: cap. 2 na ordem 2.1 estratégia e modelo de negócio, 2.2 economia da experiência, 2.3 público de jogos, 2.4 estabelecimentos de lazer, 2.5 viabilidade; gestão baseada em evidências na abertura do capítulo; ambiente físico e lei de Little no 2.4; *competitive socialising* definido como "estabelecimentos que combinam uma atividade de jogo com alimentos e bebidas".
+**Depois**: 2.1 economia da experiência, 2.2 estabelecimentos de lazer e entretenimento, 2.3 público de jogos, 2.4 estratégia e gestão do serviço (2.4.1 ambiente competitivo, 2.4.2 atributos de satisfação, 2.4.3 ambiente de serviço e capacidade, 2.4.4 diagnóstico estratégico), 2.5 viabilidade (indicadores, depois gestão baseada em evidências e cenários, depois sensibilidade). Parágrafos movidos inteiros, com os comentários; três cópias novas com "*" (abertura do 2.1, definição completa de *competitive socialising* no 2.2, frase de ligação no 2.4.1); linhas do Quadro 1 na mesma ordem; tabela de subcapítulos da instrução refeita.
+**Justificativa**: pedido do autor: o leitor conhece o setor, o formato e o público antes das ferramentas de administração, e a viabilidade fecha o capítulo. A definição de *competitive socialising* fica no cap. 2 (decisão do autor).
