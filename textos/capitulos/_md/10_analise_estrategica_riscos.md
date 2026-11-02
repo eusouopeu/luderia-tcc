@@ -63,9 +63,7 @@ Cinco premissas de demanda decidem a viabilidade: pessoas por mesa, pessoas por 
 
 Fonte: elaborado pelo próprio autor com base no modelo do cap. 9 e no Bloco B3 (2026).
 
-Todas as rupturas ficam a menos de 2% do provável. O negócio é viável se as premissas críticas ficarem no provável ou acima dele, e o risco está na simetria: um desvio pequeno para cima ou para baixo decide o sinal do VPL. Grupos de 4,0 pessoas dão VPL de R$ 332 mil; grupos de 3,3 pessoas, de -R$ 227 mil. Uma cesta para 1,5 pessoa dá R$ 470 mil; uma cesta para 2,5 pessoas, -R$ 256 mil. As pessoas por cesta são a fraqueza de evidência do plano: premissa crítica sem medida (N6), porque a coleta dos pedidos foi inviável (seção 11.2), o que viola a regra de robustez (seção 3.1).
-
-O lado otimista das mesas ocupadas é curto. O salão de 6 mesas limita a média do fim de semana a 4,65 mesas, e esse teto dá VPL de R$ 198 mil. O ganho acima disso vem das etapas de expansão (seção 10.4), não do salão inicial. Na simulação de Monte Carlo, o VPL fica positivo em 44,9% dos 10 mil cenários.
+Todas as rupturas ficam a menos de 2% do provável. O negócio é viável se as premissas críticas ficarem no provável ou acima dele, e o risco está na simetria: um desvio pequeno para cima ou para baixo decide o sinal do VPL. Grupos de 4,0 pessoas dão VPL de R$ 332 mil; grupos de 3,3 pessoas, de -R$ 227 mil. Uma cesta para 1,5 pessoa dá R$ 470 mil; uma cesta para 2,5 pessoas, -R$ 256 mil. As pessoas por cesta são a fraqueza de evidência do plano: premissa crítica sem medida (N6), porque a coleta dos pedidos foi inviável (seção 11.2), o que viola a regra de robustez (seção 3.1). O lado otimista das mesas ocupadas é curto. O salão de 6 mesas limita a média do fim de semana a 4,65 mesas, e esse teto dá VPL de R$ 198 mil. O ganho acima disso vem das etapas de expansão (seção 10.4), não do salão inicial. Na simulação de Monte Carlo, o VPL fica positivo em 44,9% dos 10 mil cenários.
 
 As premissas críticas se traduzem em riscos do negócio, e os de maior impacto são os de demanda e de custo fixo. O Quadro 10.4 classifica cada risco pela probabilidade e pelo impacto, com a evidência que sustenta a classificação.
 
@@ -101,7 +99,7 @@ Depois da abertura, o caixa, a NFC-e e o site de recomendação de jogos (seçã
 
 Fonte: elaborado pelo próprio autor. Limites dos gatilhos propostos pelo autor (N6).
 
-Os gatilhos de perda máxima seguem uma ordem de análise (Quadro 10.6). Os três primeiros apontam uma causa específica e pedem medida dirigida e barata. O G4 é o alarme geral: quando ele dispara, a análise começa pelo G1, e as medidas do G4 só entram se nenhuma das três causas explicar a queda. O G5 e o G6 cortam custo e limitam a perda. As medidas de preço são contingência: o preço base continua o da seção 6.3.
+Os gatilhos de perda máxima seguem uma ordem de análise (Quadro 10.6). Os três primeiros apontam uma causa específica e pedem medida dirigida e barata. O G4 é o alarme geral: quando ele dispara, a análise começa pelo G1, e as medidas do G4 só entram se nenhuma das três causas explicar a queda. O G5 e o G6 cortam custo e limitam a perda. As medidas de preço são contingência: o preço base continua o da seção 6.3. Cada gatilho tem um limite e uma medida no Quadro 10.6.
 
 **Quadro 10.6 – Gatilhos de perda máxima, em ordem de análise**
 

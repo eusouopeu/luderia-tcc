@@ -8,9 +8,7 @@ Os aspectos jurídicos definem a forma da empresa, o regime de tributos e as lic
 
 A luderia deve ser uma sociedade limitada, unipessoal se tiver um só sócio. A forma limita a responsabilidade do sócio ao capital (Lei n. 10.406/2002, art. 1.052) e, desde a Lei n. 13.874/2019, admite um único sócio. O empresário individual não separa o patrimônio pessoal, e o MEI não comporta a receita projetada nem o quadro de 12 empregados (LC n. 123/2006, art. 18-A) [AV]. As duas unidades da São Jogue são sociedades empresárias limitadas, com capital social de R$ 50 mil (Bela Vista, 2019) e R$ 150 mil (Paralela, 2025), ambas no Simples Nacional (BRASIL, 2026).
 
-A empresa entra no Simples Nacional como empresa de pequeno porte. A receita provável do ano 2, de R$ 877 mil, passa do teto da microempresa (R$ 360 mil) e fica abaixo do limite de R$ 4,8 milhões (LC n. 123/2006, art. 3º). Cada receita segue o anexo da atividade: o A&B é revenda de mercadoria, no anexo I; a taxa de entrada é serviço de recreação, no anexo III, pela regra geral do art. 18, § 5º-F; o aluguel de jogos é locação de bem móvel, no anexo III sem a parcela do ISS (art. 18, § 4º, V). O modelo do cap. 9 tributa o aluguel pelo anexo III cheio, o que superestima o imposto em cerca de R$ 420,00 por ano (a parcela do ISS é 32,5% da alíquota do anexo III na 4ª faixa).
-
-O Simples custa menos da metade do Lucro Presumido (Tabela 8.1). A diferença vem sobretudo da contribuição patronal sobre a folha: no Simples, ela está dentro do DAS dos anexos I e III; no Lucro Presumido, soma 8,7% da receita.
+A empresa entra no Simples Nacional como empresa de pequeno porte. A receita provável do ano 2, de R$ 877 mil, passa do teto da microempresa (R$ 360 mil) e fica abaixo do limite de R$ 4,8 milhões (LC n. 123/2006, art. 3º). Cada receita segue o anexo da atividade: o A&B é revenda de mercadoria, no anexo I; a taxa de entrada é serviço de recreação, no anexo III, pela regra geral do art. 18, § 5º-F; o aluguel de jogos é locação de bem móvel, no anexo III sem a parcela do ISS (art. 18, § 4º, V). O modelo do cap. 9 tributa o aluguel pelo anexo III cheio, o que superestima o imposto em cerca de R$ 420,00 por ano (a parcela do ISS é 32,5% da alíquota do anexo III na 4ª faixa). O Simples custa menos da metade do Lucro Presumido (Tabela 8.1). A diferença vem sobretudo da contribuição patronal sobre a folha: no Simples, ela está dentro do DAS dos anexos I e III; no Lucro Presumido, soma 8,7% da receita.
 
 **Tabela 8.1 – Tributos no ano maduro, cenário provável: Simples Nacional × Lucro Presumido (R$)**
 
@@ -32,7 +30,7 @@ O anexo de cada receita depende também do código de atividade. O CNAE principa
 
 ## 8.2 LICENÇAS, ALVARÁS E OBRIGAÇÕES
 
-A abertura e a operação dependem de nove obrigações (Quadro 8.1). O custo total entra no investimento pré-operacional do cap. 9 (premissa I06, R$ 20 mil no provável), ainda sem cotação. A emissão da NFC-e em toda venda muda a prática observada no setor. Nas visitas do B3, as duas unidades da São Jogue só emitiam a nota quando o cliente pedia; no restante, entregavam o comprovante da maquininha. O plano assume a emissão integral: a carga tributária do cap. 9 já incide sobre toda a receita.
+A abertura e a operação dependem de nove obrigações (Quadro 8.1). O custo total entra no investimento pré-operacional do cap. 9 (premissa I06, R$ 20 mil no provável), ainda sem cotação. A emissão da NFC-e em toda venda muda a prática observada no setor. Nas visitas do B3, as duas unidades da São Jogue só emitiam a nota quando o cliente pedia; no restante, entregavam o comprovante da maquininha. O plano assume a emissão integral: a carga tributária do cap. 9 já incide sobre toda a receita. Essa escolha deixa o plano do lado conservador.
 
 **Quadro 8.1 – Obrigações legais para abrir e operar a luderia em Salvador**
 
@@ -54,9 +52,7 @@ Fonte: elaboração própria.
 
 O contrato de locação deve ter prazo escrito de 5 anos. Esse prazo dá direito à ação renovatória (Lei n. 8.245/1991, art. 51) e coincide com o horizonte do cap. 9 e com a amortização da reforma. A garantia por caução fica limitada a três aluguéis (art. 38, § 2º), o valor da premissa I07. Em shopping, prevalecem as condições do contrato com o empreendedor (art. 54), o que explica a faixa pessimista de condomínio (C05). O reajuste anual por índice de preços é neutro no modelo, que usa preços constantes.
 
-O acervo traz uma questão própria de propriedade intelectual, mas o uso dos jogos comprados no salão não depende de licença. A Lei n. 9.610/1998 protege a reprodução da obra (art. 29); o exemplar adquirido pode ser emprestado à mesa e alugado como bem móvel. Copiar ou imprimir componentes e usar a marca de um jogo para divulgar torneio pago exige autorização do titular [AV — conferir termos das editoras do acervo].
-
-O nome da luderia deve ser registrado no INPI antes da fachada e das redes sociais. A propriedade da marca vem do registro (Lei n. 9.279/1996, art. 129), nas classes de serviços de alimentação e de entretenimento [AV]. A busca de anterioridade precede a escolha do nome no cap. 6.
+O acervo traz uma questão própria de propriedade intelectual, mas o uso dos jogos comprados no salão não depende de licença. A Lei n. 9.610/1998 protege a reprodução da obra (art. 29); o exemplar adquirido pode ser emprestado à mesa e alugado como bem móvel. Copiar ou imprimir componentes e usar a marca de um jogo para divulgar torneio pago exige autorização do titular [AV — conferir termos das editoras do acervo]. O nome da luderia deve ser registrado no INPI antes da fachada e das redes sociais. A propriedade da marca vem do registro (Lei n. 9.279/1996, art. 129), nas classes de serviços de alimentação e de entretenimento [AV]. A busca de anterioridade precede a escolha do nome no cap. 6.
 
 **Referências citadas neste capítulo**
 

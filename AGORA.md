@@ -4,7 +4,8 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora
 
-- **TMin v13 (02/11, 12h30):** caps. 9 a 11 com menos seções (10.1 da SWOT mantida); 19 parágrafos de até 200 caracteres fundidos, reescritos ou cortados; Figuras 5.1 a 5.4, 6.1 e 9.1 de volta ao `.docx` (tinham sumido desde o v10); 67 páginas (as seis figuras somam ~2). Todos os `.md` alinhados ao `.docx`. Próximo ganho: 18 fusões de última linha curta e enxugar o fim de 27 parágrafos (melhorias, C21; ~1,7 página).
+- **TMin v14 (02/11, 12:40):** 18 fusões de parágrafos de mesmo tema e uma frase curta no fim de outros 25 parágrafos; nenhum parágrafo termina com a última linha até 25%; 67 páginas (19 linhas a menos, espalhadas pelos 11 capítulos, que começam em página nova).
+- **TMin v13 (02/11, 12h30):** caps. 9 a 11 com menos seções (10.1 da SWOT mantida); 19 parágrafos de até 200 caracteres fundidos, reescritos ou cortados; Figuras 5.1 a 5.4, 6.1 e 9.1 de volta ao `.docx` (tinham sumido desde o v10); 67 páginas (as seis figuras somam ~2). Todos os `.md` alinhados ao `.docx`.
 - **TMin v12 (02/11, 12h):** menos subseções (2.4.x, 3.3.x, 5.2.x, 5.3.1 e 5.5.x) e cap. 4 sem títulos; antigos 2.2 e 2.3 (estudos do segmento e de jogadores) levados ao cap. 5, e o cap. 2 ficou só com conceitos (2.1 experiência, 2.2 análise estratégica, 2.3 atributos, 2.4 serviço e capacidade, 2.5 viabilidade); PESTEL nas seis dimensões, no modelo do Dance Forrónejo; 65 páginas. `.md` dos caps. 2 a 5 alinhados ao `.docx`.
 - **TMin v11 (02/11, 10h):** caps. 4, 7, 9, 10 e 11 no desenho enxuto, cozinha completa na abertura; VPL provável de R$ 13 mil; P(VPL > 0) de 44,9%.
 

@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Última linha com até 25% da largura: fundir com o parágrafo seguinte quando o assunto é o mesmo; nos demais, usar o espaço livre para completar ou esclarecer o parágrafo, sem criar linha nova | `docs/registro-de-alteracoes.md` (02/11/2026, 12:40) |
 | 02/11/2026 | TMin: caps. 9 a 11 com menos seções (árvore e parecer viram abertura; 9.5 dentro da 9.3; 9.7.x, 10.4, 11.4 e 11.5 sem título); a SWOT mantém a 10.1 | `_instrucoes/1_estrutura.md` |
 | 02/11/2026 | Parágrafo com pelo menos 3 linhas (~250 caracteres); anúncio de quadro e frase de fecho juntam-se ao parágrafo do mesmo tema (P5, regra 7) | `_instrucoes/1b_escrita.md` |
 | 02/11/2026 | Menos divisões no TMin: saem 2.4.1 a 2.4.4 (viram as seções 2.2 a 2.4), 3.3.1 a 3.3.3, 5.2.1, 5.2.2, 5.3.1 e 5.5.1 a 5.5.3; cap. 4 em texto corrido, sem títulos | `docs/registro-de-alteracoes.md` (02/11/2026, 12:03) |

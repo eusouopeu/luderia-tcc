@@ -2,7 +2,7 @@
 
 > **Rascunho (02/11/2026).** Desenho enxuto (P7 de `_instrucoes/1a_principios.md`): 6 mesas, 48 horas por semana, equipe de 6 e investimento por etapas. Capacidade e fluxo do Bloco B3 (quatro visitas à São Jogue, 10, 16, 17 e 30/10/2026) e premissas do modelo do cap. 9 no cenário provável. Área, layout e reforma ficam em N6 até haver ponto cotado.
 
-O plano operacional traduz a demanda estimada em espaço, processos e pessoas. O desenho é enxuto: a luderia abre menor que a São Jogue, que tem anos de mercado e clientela formada, e cresce por etapas. A São Jogue serve de referência de comportamento (ocupação, tamanho dos grupos, permanência e giro), não de porte. O porte menor reduz a exposição aos riscos que o cap. 9 aponta como críticos: mesas ocupadas, giro e movimento fora do pico. O capítulo parte do local e do layout, verifica a capacidade instalada e descreve os processos, a gestão do acervo e a equipe.
+O plano operacional traduz a demanda estimada em espaço, processos e pessoas. O desenho é enxuto: a luderia abre menor que a São Jogue, que tem anos de mercado e clientela formada, e cresce por etapas. A São Jogue serve de referência de comportamento (ocupação, tamanho dos grupos, permanência e giro), não de porte. O porte menor reduz a exposição aos riscos que o cap. 9 aponta como críticos: mesas ocupadas, giro e movimento fora do pico. O capítulo parte do local e do layout, verifica a capacidade instalada e descreve os processos, a gestão do acervo e a equipe. Cada etapa de crescimento depende de um gatilho de demanda.
 
 ## 7.1 LOCALIZAÇÃO E LAYOUT
 
@@ -12,7 +12,7 @@ O salão de jogos recebe 6 mesas, de 4 a 6 lugares, com cerca de 30 assentos. O 
 
 ## 7.2 CAPACIDADE INSTALADA
 
-O horário segue uma regra simples: as 8 horas contínuas com mais luderias abertas em cada dia da semana, pelo horário publicado no Google Maps por 49 concorrentes do B1 (out/2026). Pela regra, a luderia abre de terça a sexta das 15h às 23h e no sábado e no domingo das 14h às 22h, 48 horas por semana. A segunda fica fechada: é o dia em que mais concorrentes fecham (71% deles). O horário deixa de fora as horas de menor movimento das concorrentes: de terça a sexta, no máximo 18 das 49 casas estão abertas antes das 15h; no domingo, só 7 ficam abertas depois das 22h (B1).
+O horário segue uma regra simples: as 8 horas contínuas com mais luderias abertas em cada dia da semana, pelo horário publicado no Google Maps por 49 concorrentes do B1 (out/2026). Pela regra, a luderia abre de terça a sexta das 15h às 23h e no sábado e no domingo das 14h às 22h, 48 horas por semana. A segunda fica fechada: é o dia em que mais concorrentes fecham (71% deles). O horário deixa de fora as horas de menor movimento das concorrentes: de terça a sexta, no máximo 18 das 49 casas estão abertas antes das 15h; no domingo, só 7 ficam abertas depois das 22h (B1). A equipe fica nas horas de maior demanda.
 
 **Quadro 7.1 – Capacidade instalada e demanda provável**
 
@@ -28,13 +28,13 @@ O horário segue uma regra simples: as 8 horas contínuas com mais luderias aber
 
 Fonte: elaborado pelo próprio autor com base nos Blocos B1 e B3 (2026) e no modelo do cap. 9.
 
-A demanda provável usa 50% da capacidade. As mesas ocupadas em média ficam limitadas pelo salão: nas visitas, o pico de mesas ocupadas foi 1,29 vez a média. Com 6 mesas, a média do fim de semana pode chegar a 4,65 mesas sem que o pico passe do salão. O provável, de 4,37 mesas, fica abaixo desse teto; o otimista é cortado nele. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto.
+A demanda provável usa 50% da capacidade. As mesas ocupadas em média ficam limitadas pelo salão: nas visitas, o pico de mesas ocupadas foi 1,29 vez a média. Com 6 mesas, a média do fim de semana pode chegar a 4,65 mesas sem que o pico passe do salão. O provável, de 4,37 mesas, fica abaixo desse teto; o otimista é cortado nele. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto. Teto abaixo de 6 mesas exclui o imóvel.
 
 ## 7.3 PROCESSOS OPERACIONAIS
 
 A jornada do cliente tem cinco etapas. Na chegada, o instrutor no balcão registra o grupo e cobra a taxa de entrada por pessoa, válida por um turno de 3 horas; a reserva antecipada segue os mesmos turnos. Na mesa, o instrutor sugere títulos pelo perfil do grupo e explica as regras. O pedido de A&B é feito ao mesmo instrutor. No fim, a conta é paga no balcão, com NFC-e para toda venda, como o cap. 8 assume. Por último, o instrutor confere as peças do jogo devolvido antes de guardar a caixa [figura: fluxograma da jornada do cliente].
 
-O acúmulo de funções vem da referência medida. Em todas as visitas à São Jogue, os instrutores também atendiam as mesas, cuidavam do balcão e operavam o caixa: não havia caixa, garçom nem atendente separados (B3). A luderia repete esse arranjo.
+O acúmulo de funções vem da referência medida. Em todas as visitas à São Jogue, os instrutores também atendiam as mesas, cuidavam do balcão e operavam o caixa: não havia caixa, garçom nem atendente separados (B3). A luderia repete esse arranjo. Com isso, os instrutores cobrem salão, balcão e caixa.
 
 A explicação de regras é o processo que mais pesa na avaliação. A mediação lúdica aparece em 16,4% das avaliações dos concorrentes e, quando negativa, acompanha nota média de 2,83 (B2, codificação provisória de 15/10/2026, cap. 5). O plano trata a explicação como serviço de mesa, com no máximo 2 mesas por instrutor no pico, e não como tarefa de quem estiver livre.
 

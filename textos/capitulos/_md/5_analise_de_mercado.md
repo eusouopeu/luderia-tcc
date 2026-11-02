@@ -1,14 +1,12 @@
 # 5 ANÁLISE DE MERCADO
 
-A análise de mercado verifica se Salvador comporta mais uma luderia e em que condições. O capítulo parte do setor, passa pelo público e pela concorrência e termina nos fornecedores e no macroambiente. Cada seção fecha com a decisão do plano que o dado afeta.
+A análise de mercado verifica se Salvador comporta mais uma luderia e em que condições. O capítulo parte do setor, passa pelo público e pela concorrência e termina nos fornecedores e no macroambiente. Cada seção fecha com a decisão do plano que o dado afeta. Os Blocos B1, B2 e B4 sustentam as análises.
 
 ## 5.1 ANÁLISE DO SETOR
 
 ### 5.1.1 Serviços às famílias no Brasil
 
-Os serviços prestados às famílias cresceram acima da inflação depois da pandemia. A receita bruta do segmento passou de R$ 223,9 bilhões, em 2019, para R$ 388,9 bilhões, em 2023, com ganho real em torno de 36% (IBGE, PAS, tabela 2611) [script].
-
-O lazer cresceu mais que a alimentação e atraiu novas empresas. Entre 2019 e 2023, a receita das atividades culturais, recreativas e esportivas subiu 95,4%, e a dos serviços de alimentação, 67,7% (IBGE, PAS, tabela 2611). No mesmo período, o número de empresas de alimentação caiu 8,7%, e o de atividades culturais e recreativas cresceu 35,1% (IBGE, PAS, tabela 2619). A luderia disputa clientes como bar, onde a concorrência é por escala, e se diferencia como lazer, onde há espaço para entrantes.
+Os serviços prestados às famílias cresceram acima da inflação depois da pandemia. A receita bruta do segmento passou de R$ 223,9 bilhões, em 2019, para R$ 388,9 bilhões, em 2023, com ganho real em torno de 36% (IBGE, PAS, tabela 2611) [script]. O lazer cresceu mais que a alimentação e atraiu novas empresas. Entre 2019 e 2023, a receita das atividades culturais, recreativas e esportivas subiu 95,4%, e a dos serviços de alimentação, 67,7% (IBGE, PAS, tabela 2611). No mesmo período, o número de empresas de alimentação caiu 8,7%, e o de atividades culturais e recreativas cresceu 35,1% (IBGE, PAS, tabela 2619). A luderia disputa clientes como bar, onde a concorrência é por escala, e se diferencia como lazer, onde há espaço para entrantes.
 
 A mesma pesquisa mostra a estrutura de custos dos serviços de alimentação. Em 2024, os gastos com pessoal equivaleram a 25,1% da receita operacional líquida dos serviços de alimentação, o consumo de mercadorias a 26,8% e o aluguel a 4,0% (IBGE, PAS 2024, tabela 10758) [script]. Esses percentuais são o teto de comparação das premissas de custo do cap. 9.
 
@@ -92,9 +90,7 @@ Fonte: elaboração própria.
 
 ## 5.4 FORNECEDORES
 
-O principal insumo próprio da luderia é o acervo. Em oito lojas especializadas, 2.342 jogos tinham preço mediano de R$ 130,00, com faixa interquartil de R$ 69,90 a R$ 249,88 (Bloco B1, 2026). Um acervo do tamanho mediano dos concorrentes custaria cerca de R$ 61 mil [script]. [Pendente: alimentos e bebidas, mobiliário e equipamentos.]
-
-A composição do acervo também encontra apoio nos levantamentos de jogadores. Mecânicas de fácil apreensão aumentam a probabilidade de sucesso de um título entre usuários brasileiros, e jogos de guerra e de cartas colecionáveis a reduzem (FIGUEIREDO; MANTOVANI, 2022, p. 12). Para a luderia, o resultado favorece um acervo de jogos de regras simples (seção 7.4).
+O principal insumo próprio da luderia é o acervo. Em oito lojas especializadas, 2.342 jogos tinham preço mediano de R$ 130,00, com faixa interquartil de R$ 69,90 a R$ 249,88 (Bloco B1, 2026). Um acervo do tamanho mediano dos concorrentes custaria cerca de R$ 61 mil [script]. [Pendente: alimentos e bebidas, mobiliário e equipamentos.] A composição do acervo também encontra apoio nos levantamentos de jogadores. Mecânicas de fácil apreensão aumentam a probabilidade de sucesso de um título entre usuários brasileiros, e jogos de guerra e de cartas colecionáveis a reduzem (FIGUEIREDO; MANTOVANI, 2022, p. 12). Para a luderia, o resultado favorece um acervo de jogos de regras simples (seção 7.4).
 
 ## 5.5 MACROAMBIENTE (PESTEL)
 
@@ -112,7 +108,7 @@ A inflação da alimentação fora do domicílio corre acima da geral, e mais em
 
 Fonte: elaboração própria, com base no IBGE, IPCA (tabela 7060).
 
-O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvador chegou a R$ 54,15 por m² em julho de 2026, alta de 18,9% em 12 meses, contra 7,8% em São Paulo (FIPE, Índice FipeZAP). O aluguel é o principal custo fixo e entra como premissa de risco na escolha do ponto (seção 6.4) e na sensibilidade (cap. 9).
+O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvador chegou a R$ 54,15 por m² em julho de 2026, alta de 18,9% em 12 meses, contra 7,8% em São Paulo (FIPE, Índice FipeZAP). O aluguel é o principal custo fixo e entra como premissa de risco na escolha do ponto (seção 6.4) e na sensibilidade (cap. 9). A cotação na Pituba substitui o índice antes do investimento.
 
 No campo social, dois fatores atuam em sentidos opostos. O hábito de comer e beber fora de casa pesa mais no orçamento baiano que na média nacional (seção 5.1.3) e favorece um modelo de receita apoiado em alimentos e bebidas. A renda menor de Salvador (seção 5.2) limita a taxa de entrada e o consumo por pessoa.
 
@@ -120,7 +116,7 @@ No campo tecnológico, o efeito mais direto está na divulgação, que acontece 
 
 No campo ambiental, o efeito sobre o negócio é residual. O acervo é um bem durável, usado por muitos clientes ao longo de anos, e o manejo dos resíduos da cozinha entra na licença sanitária (seção 8.2). Por isso, a dimensão não é detalhada.
 
-Por fim, no campo legal, as normas de maior efeito são as de licença e de venda. O alvará depende de a zona do ponto admitir serviço de alimentação e lazer (Lei municipal n. 9.148/2016) [AV], e a lotação aprovada pelo Corpo de Bombeiros fixa o teto de mesas. A venda de bebida alcoólica a menores de 18 anos é crime (Lei n. 8.069/1990, art. 243), o que exige conferência de idade no caixa, e a música ambiente gera retribuição ao ECAD (Lei n. 9.610/1998, art. 68). As obrigações e o custo de cada uma estão no cap. 8; a regulação municipal de ruído e horário ainda precisa ser conferida [BUSCAR].
+Por fim, no campo legal, as normas de maior efeito são as de licença e de venda. O alvará depende de a zona do ponto admitir serviço de alimentação e lazer (Lei municipal n. 9.148/2016) [AV], e a lotação aprovada pelo Corpo de Bombeiros fixa o teto de mesas. A venda de bebida alcoólica a menores de 18 anos é crime (Lei n. 8.069/1990, art. 243), o que exige conferência de idade no caixa, e a música ambiente gera retribuição ao ECAD (Lei n. 9.610/1998, art. 68). As obrigações e o custo de cada uma estão no cap. 8; a regulação municipal de ruído e horário ainda precisa ser conferida [BUSCAR]. Cada norma vira custo ou processo.
 
 **Referências citadas neste capítulo**
 

@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 02/11/2026 (13h), TMin v13: caps. 9 a 11 com menos seções, 19 parágrafos curtos tratados e figuras de volta. Itens anteriores a esta data citam a numeração antiga dos caps. 9 a 11; no TMin v13, 9.2→9.1, 9.3→9.2, 9.4 e 9.5→9.3, 9.6→9.4, 9.7 (e 9.7.x)→9.5, 9.8→9.6, 10.4→10.3, 10.5→10.4, 11.2→11.1, 11.3 a 11.5→11.2; o 9.1 e o 11.1 viraram a abertura dos capítulos.
+Última análise: 02/11/2026 (13h), TMin v14: nenhum parágrafo de corpo termina com a última linha até 25% (C21 resolvido). 9 a 11 com menos seções, 19 parágrafos curtos tratados e figuras de volta. Itens anteriores a esta data citam a numeração antiga dos caps. 9 a 11; no TMin v13, 9.2→9.1, 9.3→9.2, 9.4 e 9.5→9.3, 9.6→9.4, 9.7 (e 9.7.x)→9.5, 9.8→9.6, 10.4→10.3, 10.5→10.4, 11.2→11.1, 11.3 a 11.5→11.2; o 9.1 e o 11.1 viraram a abertura dos capítulos.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -116,8 +116,6 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 **C02 — Justificativa acadêmica repete a contextualização.** Cap. 1: "O único estudo de viabilidade identificado… (ASAKURA; SILVA; MELLO, 2018)" aparece duas vezes com a mesma redação (contextualização e 1.2), e "não há levantamento setorial" volta no 1.2 e no 5.1.4. O cap. 2 (2.6) cita o mesmo estudo com mais detalhe. Manter a menção do cap. 2 e uma só no cap. 1. Ganho: ~70 palavras.
 
 ## Médio ganho
-
-**C21 — Última linha curta em 47 parágrafos (02/11/2026, TMin v13).** 47 dos 182 parágrafos de corpo terminam com a última linha preenchida até 25%. Fundir com o parágrafo seguinte, quando o assunto é o mesmo, resolve 20 (18 fusões; ~16 linhas, ~22 cm, 0,9 página): 1 (evidência + Salvador), 1.1 (objetivos, três parágrafos), 1.3 (estrutura, três), 2.2 (cinco forças + macroambiente), 2.3 (Kano + PRC), 2.5 (evidências + cenários), 3.2.1, 3.2.3, 3.3 (auditoria + recodificação), 3.4 (financeiro + fluxo), 5.1.1, 5.4, 6.4, 8.1, 8.3, 9 (abertura + árvore), 10.3 e 11 (parecer + margem). Nos outros 27, a última linha tem uns 22 caracteres (mediana): enxugar duas ou três palavras tira a linha (~20 cm, 0,8 página). Script: `ultima_linha.py` (scratchpad da sessão; levar para `_src/extras/` se for usado de novo).
 
 **C18 — Aberturas de capítulo que descrevem o capítulo (01/11/2026).** Caps. 4, 5, 7, 9 e 11 abrem com "O capítulo parte de…", "As seções apresentam…", repetindo o 1.3. Sugestão: abrir com a tese ou o resultado do capítulo em uma frase (ex.: cap. 9, "O negócio não é viável nas premissas prováveis; esta seção mostra de onde vem o número") e cortar o roteiro das seções. Ganho: cerca de 250 palavras.
 

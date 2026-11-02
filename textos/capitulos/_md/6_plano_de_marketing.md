@@ -6,7 +6,7 @@ O plano de marketing define como a luderia se posiciona e se apresenta ao públi
 
 ## 6.3 PREÇO
 
-A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor maior de sexta a domingo. É o modelo da São Jogue e o mais comum entre os concorrentes que divulgam a taxa: 15 dos 22 que cobram diferenciam o preço pelo dia da semana (Tabela 6.1). O turno de 3 horas fica acima da permanência média medida no B3, de 109 minutos, e não limita o grupo típico; serve para liberar a mesa nos horários de reserva.
+A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor maior de sexta a domingo. É o modelo da São Jogue e o mais comum entre os concorrentes que divulgam a taxa: 15 dos 22 que cobram diferenciam o preço pelo dia da semana (Tabela 6.1). O turno de 3 horas fica acima da permanência média medida no B3, de 109 minutos, e não limita o grupo típico; serve para liberar a mesa nos horários de reserva. A São Jogue usa o mesmo turno de 3 horas (Tabela 6.1).
 
 **Tabela 6.1 – Taxa de entrada por pessoa nos concorrentes que a divulgam (R$)**
 
@@ -49,15 +49,13 @@ As avaliações confirmam que o preço da entrada pesa, mas pouco. Das 1.628 ava
 
 Fonte: elaboração própria, com base no Bloco B2 (avaliações até "3 meses atrás", coletas de 09 a 30/10/2026).
 
-Pelos cardápios, uma visita custa de R$ 44,09 a R$ 69,50 por pessoa. A taxa de entrada média é de R$ 18,68, nas 22 casas que a cobram, e a cesta de consumo, uma bebida e uma entrada ou prato, custa em média R$ 50,82, em 36 casas (Bloco B1). O valor menor supõe uma cesta dividida por dupla; o maior, uma cesta por pessoa. Num grupo de 3,6 pessoas, a visita custa de R$ 158,72 a R$ 250,20. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018): uma visita consome de 35% a 56% desse orçamento, a preços de 2018 `[script — corrigir pelo IPCA]`. A luderia é ocasião de saída, não hábito semanal.
+Pelos cardápios, uma visita custa de R$ 44,09 a R$ 69,50 por pessoa. A taxa de entrada média é de R$ 18,68, nas 22 casas que a cobram, e a cesta de consumo, uma bebida e uma entrada ou prato, custa em média R$ 50,82, em 36 casas (Bloco B1). O valor menor supõe uma cesta dividida por dupla; o maior, uma cesta por pessoa. Num grupo de 3,6 pessoas, a visita custa de R$ 158,72 a R$ 250,20. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018): uma visita consome de 35% a 56% desse orçamento, a preços de 2018 [script — corrigir pelo IPCA]. A luderia é ocasião de saída, não hábito semanal.
 
 O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 18,68 por pessoa, em todos os dias e nos três cenários. O valor fica perto da mediana dos concorrentes (R$ 20,00) e abaixo da São Jogue (R$ 28,00 no fim de semana e R$ 22,00 no dia útil). O consumo segue a cesta média dos cardápios, R$ 50,82, dividida por uma, duas ou três pessoas nos cenários otimista, provável e pessimista. Os valores entram no registro de premissas do cap. 9 como R06, R07 e R08. Com a entrada mais barata que a da São Jogue, o preço atrai o cliente da concorrente, e o serviço de mesa — explicação de jogos e acervo grande — sustenta a volta, o que liga o preço à proposta de valor (seção 6.1).
 
 ## 6.4 PRAÇA
 
-A Pituba é o bairro indicado para a luderia. Ela lidera a matriz de critérios em todos os conjuntos de pesos testados (Tabela 6.2): tem a 5ª maior população de 20 a 39 anos de Salvador, 15.276 pessoas, e 95,1% dos domicílios em apartamento (IBGE, Censo 2022).
-
-A matriz precisa de uma medida de renda que o Censo 2022 não oferece, já que ele não publica renda por bairro. A proporção de domicílios em apartamento entra como substituta da renda: em Salvador, a média é de 28,1%, e só 19 dos 170 bairros passam de 80%. A substituição tem limite: conjuntos habitacionais também são apartamentos, e Cajazeiras II (90,9%) é o exemplo. A matriz considera só os bairros com pelo menos 80% de apartamentos e 3.500 pessoas de 20 a 39 anos — 10 dos 170 bairros.
+A Pituba é o bairro indicado para a luderia. Ela lidera a matriz de critérios em todos os conjuntos de pesos testados (Tabela 6.2): tem a 5ª maior população de 20 a 39 anos de Salvador, 15.276 pessoas, e 95,1% dos domicílios em apartamento (IBGE, Censo 2022). A matriz precisa de uma medida de renda que o Censo 2022 não oferece, já que ele não publica renda por bairro. A proporção de domicílios em apartamento entra como substituta da renda: em Salvador, a média é de 28,1%, e só 19 dos 170 bairros passam de 80%. A substituição tem limite: conjuntos habitacionais também são apartamentos, e Cajazeiras II (90,9%) é o exemplo. A matriz considera só os bairros com pelo menos 80% de apartamentos e 3.500 pessoas de 20 a 39 anos — 10 dos 170 bairros.
 
 **Tabela 6.2 – Matriz de critérios ponderados para o bairro, Salvador**
 
@@ -80,4 +78,24 @@ Os pesos são do autor (N6) e não mudam a escolha. Com pesos de 40%, 40% e 20%,
 
 Escolhido o bairro, falta definir o ponto. Ele deve ficar a até 1.000 m de uma estação de metrô. Entre os 54 concorrentes do B1, os 24 com estação a até 1.000 m têm mediana de 770 avaliações no Google Maps, contra 396 dos 30 sem estação (Bloco B1, entorno pelo Google Maps). O shopping de porte não mostra a mesma vantagem: os 10 concorrentes com shopping a até 1.000 m têm mediana de 396 avaliações, contra 663 dos 19 sem (25 sem dado). O número de avaliações mede fluxo de forma indireta, e a associação não prova causa. A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica dentro do Shopping Bela Vista, a 387 m do metrô.
 
-Falta o custo do ponto por bairro. O FipeZap dá o aluguel comercial só para Salvador inteira (R$ 54,15 por m² em jul/2026), sem recorte de bairro; o cap. 9 usa esse valor, e o pessimista (R$ 64,36) cobre parte do prêmio de um bairro como a Pituba. A cotação de pontos na Pituba, junto ao metrô, fecha a decisão `[BUSCAR — anúncios de locação comercial]`.
+Falta o custo do ponto por bairro. O FipeZap dá o aluguel comercial só para Salvador inteira (R$ 54,15 por m² em jul/2026), sem recorte de bairro; o cap. 9 usa esse valor, e o pessimista (R$ 64,36) cobre parte do prêmio de um bairro como a Pituba. A cotação de pontos na Pituba, junto ao metrô, fecha a decisão [BUSCAR — anúncios de locação comercial].
+
+**Referências citadas neste capítulo**
+
+FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). *Índice FipeZAP*: locação comercial, julho de 2026. São Paulo, 2026.
+
+IBGE. *Censo Demográfico 2022*: população residente por idade. Rio de Janeiro: IBGE, 2023. `[AV ano]`
+
+IBGE. *Estimativas da população residente*: 2026. Rio de Janeiro: IBGE, 2026.
+
+IBGE. *Pesquisa Anual de Serviços (PAS)*: tabelas 2611, 2619 e 10758. Rio de Janeiro: IBGE, 2025-2026. `[AV ano de cada edição]`
+
+IBGE. *Pesquisa de Orçamentos Familiares 2017-2018*: perfil das despesas no Brasil: indicadores selecionados de alimentação, transporte, lazer e inclusão financeira. Rio de Janeiro: IBGE, 2021. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv101844.pdf. Acesso em: 2 nov. 2026.
+
+IBGE. *Pesquisa de Orçamentos Familiares 2017-2018*: tabelas 6715 e 6972. Rio de Janeiro: IBGE, 2019.
+
+IBGE. *Pesquisa Nacional por Amostra de Domicílios Contínua*: tabelas 5436 e 7395. Rio de Janeiro: IBGE, 2026.
+
+IBGE. *Regiões de influência das cidades 2018*. Rio de Janeiro: IBGE, 2020.
+
+IBGE. *Sistema Nacional de Índices de Preços ao Consumidor*: IPCA, tabela 7060. Rio de Janeiro: IBGE, 2026.

@@ -1,8 +1,6 @@
 # 9 PLANO FINANCEIRO
 
-O plano financeiro converte as decisões dos capítulos 5 a 8 em receitas, custos e indicadores de viabilidade. O modelo projeta o desenho enxuto do cap. 7 na etapa de abertura: 6 mesas, 48 horas por semana, equipe de 6 e acervo de 175 títulos. As etapas de expansão ficam fora do fluxo de caixa base e entram no cap. 10 como opções. O capítulo parte da estrutura do modelo e do registro de premissas, projeta investimento, resultado e fluxo de caixa e termina na sensibilidade e nas checagens de coerência.
-
-A receita da luderia depende de três grandezas físicas e de dois preços. As pessoas atendidas saem das mesas ocupadas, das pessoas por mesa e dos giros por dia, e a receita sai dessas pessoas multiplicadas pela taxa de entrada e pelo consumo de alimentos e bebidas (A&B). O consumo por pessoa é a cesta de consumo, uma bebida e uma entrada ou prato, dividida pelas pessoas que a compartilham. As mesas ocupadas se separam em fim de semana (sexta a domingo) e dia útil (terça a quinta). Cada folha da árvore corresponde a uma linha do registro de premissas (Quadro 9.1).
+O plano financeiro converte as decisões dos capítulos 5 a 8 em receitas, custos e indicadores de viabilidade. O modelo projeta o desenho enxuto do cap. 7 na etapa de abertura: 6 mesas, 48 horas por semana, equipe de 6 e acervo de 175 títulos. As etapas de expansão ficam fora do fluxo de caixa base e entram no cap. 10 como opções. O capítulo parte da estrutura do modelo e do registro de premissas, projeta investimento, resultado e fluxo de caixa e termina na sensibilidade e nas checagens de coerência. A receita da luderia depende de três grandezas físicas e de dois preços. As pessoas atendidas saem das mesas ocupadas, das pessoas por mesa e dos giros por dia, e a receita sai dessas pessoas multiplicadas pela taxa de entrada e pelo consumo de alimentos e bebidas (A&B). O consumo por pessoa é a cesta de consumo, uma bebida e uma entrada ou prato, dividida pelas pessoas que a compartilham. As mesas ocupadas se separam em fim de semana (sexta a domingo) e dia útil (terça a quinta). Cada folha da árvore corresponde a uma linha do registro de premissas (Quadro 9.1).
 
 **Quadro 9.1 – Árvore de direcionadores do modelo financeiro**
 
@@ -50,7 +48,7 @@ As premissas de demanda vêm da contagem direta na São Jogue (B3). Nas quatro n
 
 Os giros partem de dois limites medidos. O pessimista, de 3,61 grupos por mesa ocupada por dia, é calibrado para atender as NFC-e emitidas por dia na Paralela, 16,1, com a semana de funcionamento da São Jogue; como cada cliente recebe uma nota, mas a nota só sai a pedido, esse número é piso (seção 9.5). O otimista, de 4,41, divide as 8 horas abertas por dia pela permanência média de 109 minutos. O provável fica na média dos dois: 4,01. As horas de menor movimento das concorrentes ficam fora do horário (cap. 7), o que sustenta o giro calibrado num dia de 10 horas.
 
-Os preços vêm dos cardápios dos concorrentes (seção 6.3). A taxa de entrada é a média das 22 casas que a cobram, R$ 18,68 por pessoa, em todos os dias. O consumo parte da cesta média de 36 casas, R$ 50,82, dividida por três pessoas no pessimista, duas no provável e uma no otimista: de R$ 16,94 a R$ 50,82 por pessoa. Taxa e cesta são iguais nos três cenários; a variação do consumo entra pelas pessoas por cesta.
+Os preços vêm dos cardápios dos concorrentes (seção 6.3). A taxa de entrada é a média das 22 casas que a cobram, R$ 18,68 por pessoa, em todos os dias. O consumo parte da cesta média de 36 casas, R$ 50,82, dividida por três pessoas no pessimista, duas no provável e uma no otimista: de R$ 16,94 a R$ 50,82 por pessoa. Taxa e cesta são iguais nos três cenários; a variação do consumo entra pelas pessoas por cesta. Com isso, o cenário muda o volume, e não o preço.
 
 Do lado dos custos, o modelo usa bases públicas sempre que possível: o aluguel do FipeZap, os salários das medianas de admissão em Salvador no Novo CAGED e o CMV de 30% da PAS 2023. O salário de admissão tende a ficar abaixo do pago a quem já está no cargo; por isso, o pessimista soma 11,4% aos salários, a maior distância entre o 3º quartil e a mediana de admissão entre os cargos da equipe. Área, reforma, mobiliário, cozinha e despesas gerais não têm cotação e ficam em N6.
 
@@ -82,7 +80,7 @@ O investimento inicial provável é de R$ 369 mil, com a reforma (35%) e o capit
 
 Fonte: elaboração própria (aba investimento do modelo).
 
-O A&B tem cozinha completa desde a abertura: R$ 60 mil de investimento e CMV de 30%. O capital de giro cobre dois meses de custos fixos, R$ 64 mil, e absorve o EBITDA negativo de R$ 14 mil do ano 1. O modelo supõe capital próprio, sem financiamento.
+O A&B tem cozinha completa desde a abertura: R$ 60 mil de investimento e CMV de 30%. O capital de giro cobre dois meses de custos fixos, R$ 64 mil, e absorve o EBITDA negativo de R$ 14 mil do ano 1. O modelo supõe capital próprio, sem financiamento. Por isso, não há juros nem parcelas no fluxo de caixa.
 
 ## 9.3 RECEITAS, CUSTOS E RESULTADOS PROJETADOS
 
@@ -108,7 +106,7 @@ Fonte: elaboração própria (abas receitas e custos do modelo).
 
 O pessoal é o maior custo fixo: 6 pessoas, com folha de R$ 9,1 mil e encargos de 37%. O A&B é a maior receita, com 56,7%, porque a taxa média dos concorrentes é menor que a cesta dividida por dupla. O Simples Nacional custa 8,9% da receita, com o enquadramento da seção 8.1.
 
-O cenário provável dá prejuízo só no ano 1, durante a rampa. A partir do ano 2, o EBITDA é de R$ 88 mil por ano, e o lucro, depois da depreciação de R$ 48 mil, de R$ 40 mil (Tabela 9.3). O fluxo de caixa repete o EBITDA, com o investimento no ano 0. No ano 5 voltam a caução e o capital de giro e entra o valor residual: a perpetuidade, sem crescimento, do EBITDA do ano 5 menos um reinvestimento igual à depreciação, descontada à TMA (ASSAF NETO, 2014). No provável, o valor residual é de R$ 270 mil.
+O cenário provável dá prejuízo só no ano 1, durante a rampa. A partir do ano 2, o EBITDA é de R$ 88 mil por ano, e o lucro, depois da depreciação de R$ 48 mil, de R$ 40 mil (Tabela 9.3). O fluxo de caixa repete o EBITDA, com o investimento no ano 0. No ano 5 voltam a caução e o capital de giro e entra o valor residual: a perpetuidade, sem crescimento, do EBITDA do ano 5 menos um reinvestimento igual à depreciação, descontada à TMA (ASSAF NETO, 2014). No provável, o valor residual é de R$ 270 mil. Sem ele, o VPL provável fica negativo (seção 9.4).
 
 **Tabela 9.3 – Demonstração do resultado projetada, cenário provável (R$)**
 
@@ -155,7 +153,7 @@ Quatro premissas de demanda concentram o risco: pessoas por mesa, pessoas por ce
 
 Fonte: elaboração própria (aba sensibilidade do modelo).
 
-As pessoas por mesa e as mesas ocupadas pesam mais porque multiplicam a taxa e a cesta ao mesmo tempo; as pessoas por cesta pesam só sobre o A&B. O teto do salão encurta o lado otimista das mesas ocupadas: o ganho máximo é de R$ 185 mil, contra uma perda de R$ 669 mil no pessimista. Na simulação de Monte Carlo, com 10 mil cenários sorteados dentro das faixas, o VPL fica positivo em 44,9% deles (Apêndice [letra]).
+As pessoas por mesa e as mesas ocupadas pesam mais porque multiplicam a taxa e a cesta ao mesmo tempo; as pessoas por cesta pesam só sobre o A&B. O teto do salão encurta o lado otimista das mesas ocupadas: o ganho máximo é de R$ 185 mil, contra uma perda de R$ 669 mil no pessimista. Na simulação de Monte Carlo, com 10 mil cenários sorteados dentro das faixas, o VPL fica positivo em 44,9% deles (Apêndice [letra]). O risco, portanto, pende para o lado da perda.
 
 As cinco premissas críticas têm ruptura colada no provável (Tabela 9.5). O negócio é viável enquanto as mesas ocupadas no fim de semana ficarem acima de 4,35 em média, com as demais premissas no provável: 0,5% abaixo do provável.
 
