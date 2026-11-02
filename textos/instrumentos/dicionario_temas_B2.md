@@ -1,6 +1,6 @@
 # Dicionário de temas dos comentários (Bloco B2, Notion)
 
-Versão de 30/10/2026, com o tema "estacionamento" separado de "localização e acesso" em 02/11/2026 (pedido do autor, que o criou no banco da recodificação). Reconstruído a partir das 166 linhas já codificadas pelo autor no Notion ("2 - Comentários", Fórmula ≥ 5, 14 casas, 87 do Bodogami e 37 do Shelf). As regras abaixo descrevem o que o autor já faz na maioria dos casos e decidem os casos em que a prática variou. Os casos que fogem das regras estão no §5.
+Versão de 30/10/2026, com o tema "estacionamento" separado de "localização e acesso" em 02/11/2026 (pedido do autor, que o criou no banco da recodificação). Em 02/11/2026 entraram também "indicações de jogos" (separada de "explicação de jogos"), "preço de jogos" e o contexto "apenas loja", criados pelo autor no banco da recodificação. Reconstruído a partir das 166 linhas já codificadas pelo autor no Notion ("2 - Comentários", Fórmula ≥ 5, 14 casas, 87 do Bodogami e 37 do Shelf). As regras abaixo descrevem o que o autor já faz na maioria dos casos e decidem os casos em que a prática variou. Os casos que fogem das regras estão no §5.
 
 Este dicionário vale para as colunas "Itens positivos" e "Itens negativos". O livro de códigos de `analise_conteudo_bardin_B2.md` (§1.4, 15/10) é outro e ainda não foi unificado com este (pendências, item 15).
 
@@ -25,13 +25,14 @@ A lista é a mesma nas duas colunas. Hoje faltam opções no Notion: "curadoria 
 | variedade do acervo | Quantidade de jogos: "muitos", "vários", "diversos", "acervo enorme", "grande variedade", consoles e fliperamas; pedido de mais jogos; acervo atualizado ou desatualizado | Jogos bons de jogar (curadoria) |
 | curadoria dos jogos | Jogos muito bons de se jogar: "jogos ótimos", "jogos divertidos", "jogos excelentes", "boa opção de jogos" | Quantidade (variedade); estado das peças (conservação) |
 | conservação do acervo | Peças faltando, jogos danificados ou em bom estado | - |
-| explicação de jogos | Serviço de jogo à mesa: ensinar regras, recomendar jogo pelo perfil do grupo, trazer e trocar jogos, monitor disponível ou ausente | Cordialidade sem ato ligado ao jogo (atendimento presencial) |
+| explicação de jogos | Serviço de jogo à mesa: ensinar regras, trazer e trocar jogos, monitor disponível ou ausente | Recomendar jogo (indicações de jogos); cordialidade sem ato ligado ao jogo (atendimento presencial) |
+| indicações de jogos | Recomendar ou sugerir jogo: pelo perfil do grupo, novidades, "ótima recomendação de jogo", "indicando novos jogos"; indicação ruim ou ausente | Ensinar regras, trazer e trocar jogos (explicação de jogos) |
 
 ### Equipe e serviço
 
 | Tema | Entra | Não entra |
 |---|---|---|
-| atendimento presencial | Cordialidade, atenção, paciência, educação, rispidez, descaso; "serviço" e "atendimento" genéricos; funcionário elogiado pelo nome; decisões da gerência sobre o cliente; pedido errado, esquecido ou trocado | Demora (rapidez do serviço); ato de explicar ou recomendar jogo (explicação de jogos) |
+| atendimento presencial | Cordialidade, atenção, paciência, educação, rispidez, descaso; "serviço" e "atendimento" genéricos; funcionário elogiado pelo nome; decisões da gerência sobre o cliente; pedido errado, esquecido ou trocado | Demora (rapidez do serviço); ato de explicar jogo (explicação de jogos) ou de recomendar jogo (indicações de jogos) |
 | atendimento online | WhatsApp, telefone, redes sociais, reserva a distância | - |
 | rapidez do serviço | Tempo do pedido: demora, agilidade | Pedido errado (atendimento presencial); espera para entrar (lotação e reserva) |
 
@@ -49,9 +50,10 @@ A lista é a mesma nas duas colunas. Hoje faltam opções no Notion: "curadoria 
 | Tema | Entra | Não entra |
 |---|---|---|
 | preço da entrada | Couvert lúdico, taxa de jogo, diária, tempo adicional, valor "para jogar" | Taxa de serviço de 10% (regras da casa) |
-| preço do consumo | Preço de comida e bebida; preço sem objeto declarado ("preço justo", "custo-benefício") | - |
+| preço do consumo | Preço de comida e bebida; preço sem objeto declarado ("preço justo", "custo-benefício") | Preço de jogos e produtos à venda (preço de jogos) |
+| preço de jogos | Preço de jogos e produtos vendidos na loja da casa ("jogos com bom preço", "loja cara") | Aluguel de jogos; valor para jogar (preço da entrada) |
 
-Regra: "tudo caro" e equivalentes, com escopo total, entram nos dois temas de preço.
+Regra: "tudo caro" e equivalentes, com escopo total, entram em preço da entrada e preço do consumo; preço de jogos só entra se o texto citar a loja ou a venda de jogos.
 
 ### Funcionamento
 
@@ -88,12 +90,13 @@ Decisão do autor de 30/10: o que descreve a visita, e não avalia a casa, sai d
 | ocasião | Amigos, família ou crianças, casal ou encontro, aniversário ou comemoração, citados de forma explícita |
 | público | Iniciante ou não jogador; hobbyista (frequenta luderias, TCG, coleção) |
 | aluguel | Aluguel de jogos para levar |
-| loja | Compra de jogos e produtos na casa |
+| loja | Compra de jogos e produtos na casa, junto com a visita para jogar ou consumir |
+| apenas loja | A avaliação trata só da loja: comprou, sem visita para jogar ou consumir. Esses textos saem da leitura da experiência de luderia |
 
 ## 3. Regras de decisão
 
-1. **Explicador elogiado:** ato ligado ao jogo (explicar, recomendar, trazer) → explicação de jogos. Se o texto também elogia a cordialidade ("simpático", "atencioso", "educado"), entra também atendimento presencial. Nome do explicador sem atributo ("adorei o Guilherme, dos jogos") → só explicação de jogos.
-2. **Atendimento que ajudou com os jogos** ("o atendimento nos ajudou com os jogos", "atendimento do Lucas indicando jogos") → explicação de jogos; atendimento presencial só com adjetivo de cordialidade.
+1. **Explicador elogiado:** explicar ou trazer jogo → explicação de jogos; recomendar jogo → indicações de jogos; texto que faz as duas coisas leva os dois temas. Se o texto também elogia a cordialidade ("simpático", "atencioso", "educado"), entra também atendimento presencial. Nome do explicador sem atributo ("adorei o Guilherme, dos jogos") → só explicação de jogos.
+2. **Atendimento que ajudou com os jogos** ("o atendimento nos ajudou com os jogos") → explicação de jogos; "atendimento do Lucas indicando jogos" → indicações de jogos; atendimento presencial só com adjetivo de cordialidade.
 3. **Sugestão de melhoria** ("poderia ter mais sobremesas", "parceria com o estacionamento") → negativo do tema.
 4. **Avaliação mediana** ("OK", "padrão", "nada demais") → não codificada. Ressalva leve com sinal claro ("um pouco caro") → negativo.
 5. **Nota geral não define a polaridade.** Nota 5 com crítica à comida recebe comida negativo.
@@ -118,7 +121,7 @@ Antes de contar, conferir por SQL: nenhuma opção fora desta lista, as duas col
 | 3f9cde2e8c2481ccbf2fd00f53105a33 | Bodogami | Não jogou "devido o horário": horário de funcionamento − |
 | 3f9cde2e8c2481388b6de45d5e8ed6d3 | Bodogami | "Diversos jogos": variedade +; "pelo tempo que quiser": regras da casa + |
 | 3f9cde2e8c24819791b9f20b0c1e2d48 | Bodogami | "Pricy for an hour of play": preço da entrada − |
-| 3f9cde2e8c2481db99b1c12e0ce0f652 | Bodogami | Lucas "indicando novos jogos": explicação + (regra 2) |
+| 3f9cde2e8c2481db99b1c12e0ce0f652 | Bodogami | Lucas "indicando novos jogos": indicações + (regra 2) |
 | 3f9cde2e8c2481039788d69b018f85cc | Bodogami | "Lugar" sem atributo: tirar conforto e espaço |
 | 3f9cde2e8c248154a3cccfb79cb231bf | Bodogami | Cardápio e pedido online: regras da casa +, não atendimento + |
 | 3f9cde2e8c2481649c0dfdb5e0e2516d | Bodogami | "Tem trívia": eventos + |
@@ -126,7 +129,7 @@ Antes de contar, conferir por SQL: nenhuma opção fora desta lista, as duas col
 | 3f9cde2e8c24816686aadcde451a530d | Bodogami | "Aconchegante": ambiente, não conforto (regra 8) |
 | 3f9cde2e8c2481e48ae3df2aadc9dd78 | Bodogami | "Nos ajudou com os jogos": explicação + |
 | 3f9cde2e8c24816ea05cd0be97117dba | Bodogami | "Experiência no lugar": tirar ambiente |
-| 3f5cde2e8c2481b698cffc407adc74f2 | Cartola | Recomendação pelo perfil do grupo: explicação +; "fills up quickly": não codificar lotação |
+| 3f5cde2e8c2481b698cffc407adc74f2 | Cartola | Recomendação pelo perfil do grupo: indicações +; "fills up quickly": não codificar lotação |
 | 3f5cde2e8c2481289b48ce6701eee62d | Cartola | Jogo pedido e levado à mesa: regras da casa +, não curadoria (curadoria fica pelo "portfólio incrível") |
 | 3f9cde2e8c2481a5873ade636c393967 | Fan Hour | "Não há estacionamentos": estacionamento −; "ambiente pequeno": conforto − |
 | 3f9cde2e8c248148aac2ce694eac6571 | Fan Hour | "Taxa de serviço": regras da casa −, salvo se for a taxa de jogo (regra 9) |
@@ -148,5 +151,5 @@ Bardin (2011 `[AV]`) exige categorias com exclusão mútua, homogeneidade (um s�
 2. **Exaustividade.** Não há tema para segurança, acessibilidade e respeito (idosos sem prioridade na fila, "ambiente seguro", adolescentes barrados). O livro de 15/10 tem esse tema (INC).
 3. **Polaridade neutra e mista.** As duas colunas não registram o mediano. Hoje a regra 4 descarta esses casos; o livro de 15/10 previa `~` e `±`.
 4. **Regras escritas com exemplo-âncora.** Cada tema precisa de um trecho real do corpus como exemplo de inclusão e outro de exclusão. A descrição do banco no Notion só traz a definição curta.
-5. **Uma grade só.** O livro de 15/10 (16 categorias, códigos ACV, MED etc.) e a lista do Notion (25 temas) descrevem o mesmo corpus com recortes diferentes. A análise do capítulo precisa de uma delas, com a tabela de correspondência.
-6. **Fidelidade medida.** Um segundo codificador revisou as linhas, presencialmente, por cima da codificação do autor. Essa revisão melhora a codificação por consenso, mas não mede fidelidade: o segundo codificador viu as marcações e não decidiu de forma independente. O teste de Bardin pede duas codificações independentes do mesmo material e a comparação delas (kappa por tema). O procedimento possível: o segundo codificador marca uma amostra sorteada (ex.: 30 a 50 linhas ainda não codificadas, ou cópias das 166 com as colunas ocultas) sem ver as marcações, depois de ler este dicionário; o kappa sai da comparação, e as divergências viram regras novas. As 166 linhas desta revisão servem de pré-teste da grade, não de corpus: o recorte por Fórmula ≥ 5 precisa ser declarado (o que a fórmula mede) e o restante das linhas codificado ou amostrado por regra escrita.
+5. **Uma grade só.** O livro de 15/10 (16 categorias, códigos ACV, MED etc.) e a lista do Notion (26 temas) descrevem o mesmo corpus com recortes diferentes. A análise do capítulo precisa de uma delas, com a tabela de correspondência.
+6. **Fidelidade medida.** O teste de Bardin pede duas codificações independentes do mesmo material e a comparação delas (kappa por tema). Procedimento: uma amostra sorteada é recodificada do zero, sem ver as marcações, depois da leitura deste dicionário; o kappa sai da comparação, e as divergências viram regras novas. As 166 linhas desta revisão servem de pré-teste da grade, não de corpus: o recorte por Fórmula ≥ 5 precisa ser declarado (o que a fórmula mede) e o restante das linhas codificado ou amostrado por regra escrita.

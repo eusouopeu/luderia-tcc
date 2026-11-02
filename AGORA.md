@@ -29,6 +29,7 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 - **Viabilidade (22:13):** receita por mesas ocupadas × pessoas por mesa × giros (3,61 / 4,56 / 5,51), taxa média do B1 (R$ 18,68) e cesta média (R$ 50,82) por 3, 2 ou 1 pessoas; VPL de -R$ 2,88 mi / -R$ 638 mil / +R$ 6,64 mi (-R$ 377 mil com a equipe de 8); P(VPL > 0) de 25,2% (35,4% com a equipe de 8). Caps. 3, 4, 6, 7, 9, 10 e 11 alinhados; TMin v8 (59 páginas) e TMax v5 (71). Dados de pedidos, ruído e jogos do B3 fora do trabalho (11.3).
 - **Main unificada** (PR #22): branch do Mac, main antiga, app 2.5 e PRs #20 e #21. Mac na `main`; base do B1 regerada: 42 casas com cardápio; couvert de 12 casas a partir de prints (Instagram, site da BoardZ, cartaz do LudoCafé), e 22 dos 53 concorrentes cobram (mediana de R$ 20,00; R$ 25,00 no fim de semana); consumo por pessoa de R$ 50,25 (36 casas), cesta completa de R$ 73,75 (18). Números nos caps. 3, 5, 6, 9 e 11 e no Notion.
 - **B2, comentários incompletos (02/11):** 6 do Bardo Mago completados no Notion a partir das coletas de 14/10 e 30/10; os 14 "Incompleto" restantes têm o mesmo texto em todas as coletas (pendências, item 14). Coletas de 02/11 de 6 casas: 1 texto do Castelos completado e campos extras em 39 comentários (Castelos e BoardZ). Temas dos 7 completados revistos; restam 5 "Incompleto" (Arena BG, Bardo Mago 2, Bodogami 2).
+- **B2, temas novos (02/11, 10h40):** "indicações de jogos" separada de "explicação de jogos", "preço de jogos" (venda na loja) e contexto "apenas loja", no dicionário e no "2 - Comentários"; minha codificação ainda sem revisão com eles (pendências, item 15f).
 - **B2:** falta a recodificação cega do autor, no banco "2R - Recodificação cega" do Notion (139 linhas; não abrir a relação "Avaliação original" nem o gabarito antes de terminar).
 
 ## Próximos 3 passos
@@ -41,7 +42,6 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 - 5.2, 6.1, 6.2, 6.5 e objetivos (ii) e (iii) do 11.2: aguardam a recodificação cega do autor.
 - Ocupação de dia útil (N6) e investimento (N6): aguardam visita em dia útil e cotações na Pituba.
-- Edição do autor no §6 do `dicionario_temas_B2.md`, ainda só no Mac (fora do commit).
 
 ## Onde está o resto
 
