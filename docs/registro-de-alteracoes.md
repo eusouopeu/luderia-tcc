@@ -2122,3 +2122,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Depois**: premissa M03 (valor residual no ano 5): perpetuidade sem crescimento do EBITDA do ano 5 menos o reinvestimento anual igual à depreciação, à TMA, com piso zero; linha 12 da aba fluxo_caixa e bloco "VPL com e sem valor residual" na aba sensibilidade. Provável e pessimista sem mudança (perpetuidade negativa, valor residual zero: VPL de -R$ 638 mil e -R$ 2,88 milhões); otimista de R$ 15,98 milhões (R$ 6,64 milhões sem); P(VPL > 0) de 31,9%. VPL da planilha igual ao do Python nos três cenários.
 **Justificativa**: pedido do autor (recomendação 10 do financeiro, 02/11/2026): declarar o valor residual e mostrar a sensibilidade com e sem.
 
+### 05:40
+**Objeto**: `_src/[B3] Contagem direta de ocupacao/Contagem direta/outros/B3_correcoes_app.csv`; `dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/` (importação refeita)
+**Antes**: visita de 30/10/2026 (Paralela) com 0 instrutores e 0 atendentes, lançados por engano no app; `contagem_unidades.csv` só com as duas visitas da Bela Vista.
+**Depois**: correção com 3 instrutores e 0 atendentes (os instrutores faziam balcão, caixa e serviço de mesa); importação refeita, com as quatro visitas: 7, 3, 5 e 3 instrutores.
+**Justificativa**: informação do autor, que não registrou a equipe no app nessa visita.
+

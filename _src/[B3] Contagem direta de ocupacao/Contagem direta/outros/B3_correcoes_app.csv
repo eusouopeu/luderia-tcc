@@ -34,3 +34,5 @@ visita_id;observador;tabela;coluna_chave;valor_chave;acao;coluna;valor;motivo
 2026-10-16_SJBV;POV2;visitas;;;preencher;nfce_fim_emissao;2026-10-16T21:59:48;"Idem."
 2026-10-16_SJBV;POV2;visitas;;;preencher;cnpj;34128755000198;"CNPJ da nota (São Jogue Board Game Lanchonete Ltda, Alameda Euvaldo Luz, 92, Horto Bela Vista)."
 2026-10-16_SJBV;POV2;visitas;;;preencher;valor_cobranca;R$ 28,00 (Taxa de Entrada Salão FDS);"Item da NFC-e 78160 (2 un., R$ 56,00): cobrança por pessoa."
+2026-10-30_SJPA;POV2;unidades;;;preencher;instrutores;3;"Autor, 02/11/2026: não registrado no app (lançou 0); havia 3 instrutores no salão, que também faziam o balcão, o caixa e o serviço de mesa."
+2026-10-30_SJPA;POV2;unidades;;;preencher;atendentes;0;"Autor, 02/11/2026: sem atendentes à parte; as funções de balcão, caixa e garçom eram dos 3 instrutores."
