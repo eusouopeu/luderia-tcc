@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.02-3
+// @version      2026.11.02-4
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -490,9 +490,24 @@
     if (!brutas.length) { leitor = 'generico'; brutas = lerGenerico(); }
     if (!brutas.length) leitor = 'nenhum';
     const busca = location.href;
-    const ofertas = brutas.filter((o) => o.url && o.preco > 0 && o.produto).map((o) => ({ ...o, busca, leitor }));
+    const ofertas = semRepetidas(brutas.filter((o) => o.url && o.preco > 0 && o.produto).map((o) => ({ ...o, busca, leitor })));
     return { ofertas, cards: brutas.length, leitor };
   }
+
+  // Uma oferta por URL. Na Amazon o patrocinado do topo repete produtos da lista normal: fica a
+  // versão normal, na posição dela na página.
+  function semRepetidas(ofertas) {
+    const porUrl = new Map();
+    for (const o of ofertas) {
+      const antes = porUrl.get(o.url);
+      if (!antes) porUrl.set(o.url, o);
+      else if (antes.patrocinado && !o.patrocinado) { porUrl.delete(o.url); porUrl.set(o.url, o); }
+    }
+    return [...porUrl.values()];
+  }
+
+  // Assinatura das ofertas de uma leitura (as URLs em ordem), para saber se a página mudou.
+  const assinatura = (ofertas) => ofertas.map((o) => o.url).join('|');
 
   // Soma ofertas novas às já lidas, sem repetir URL.
   function somarOfertas(lidas, novas) {
@@ -514,6 +529,8 @@
   let cardsLidos = 0;
   let urlLida = '';
   let leitorLido = '';
+  let assinaturaLida = ''; // ofertas da última leitura da página (não do acumulado)
+  let somando = false; // a última leitura foi "Somar página"
 
   const itemAtual = () => ITENS.find((i) => i.id === GM_getValue(CHAVE_ITEM, ITENS[0].id)) || ITENS[0];
   const cepAtual = () => cepDoSite() || GM_getValue(CHAVE_CEP, '');
@@ -691,23 +708,25 @@
 
   const caixasMarcadas = () => [...el.lista.querySelectorAll('input[type=checkbox]')].filter((m) => m.checked);
 
-  function ler(somar) {
+  function ler(somar, motivo = '') {
     const { ofertas, cards, leitor } = lerOfertas(site);
     const antes = ofertasLidas.length;
     ofertasLidas = somar ? somarOfertas(ofertasLidas, ofertas) : ofertas;
     cardsLidos = somar ? cardsLidos + cards : cards;
     leitorLido = somar && leitorLido && leitorLido !== leitor ? `${leitorLido}+${leitor}` : leitor;
     urlLida = location.href;
+    assinaturaLida = assinatura(ofertas);
+    somando = somar;
     listarOfertas();
     const marcadas = caixasMarcadas().length;
     const novas = ofertasLidas.length - (somar ? antes : 0);
-    status(!ofertasLidas.length ? 'Nenhuma oferta com preço nesta página.'
-      : `${somar ? `+${novas} novas; ` : ''}${ofertasLidas.length} ofertas com preço de ${cardsLidos} cards lidos, ${marcadas} marcadas pelo termo e pelos filtros. Desmarque o que não é o item.`);
+    status(!ofertasLidas.length ? `${motivo}Nenhuma oferta com preço nesta página.`
+      : `${motivo}${somar ? `+${novas} novas; ` : ''}${ofertasLidas.length} ofertas com preço de ${cardsLidos} cards lidos, ${marcadas} marcadas pelo termo e pelos filtros. Desmarque o que não é o item.`);
   }
 
   function montarPainel() {
     el.item = criar('select', {
-      onchange: () => { GM_setValue(CHAVE_ITEM, el.item.value); ofertasLidas = []; cardsLidos = 0; listarOfertas(); mostrar(); },
+      onchange: () => { GM_setValue(CHAVE_ITEM, el.item.value); ofertasLidas = []; cardsLidos = 0; assinaturaLida = ''; listarOfertas(); mostrar(); },
     }, ITENS.map((i) => criar('option', { value: i.id, textContent: `${i.id} · ${i.item}` })));
     el.item.value = itemAtual().id;
     el.cep = criar('input', {
@@ -806,10 +825,30 @@
     mostrar();
   }
 
-  // O painel é reposto se o site refizer a página. Em site que troca de página sem recarregar
-  // (Magalu, Leroy Merlin), avisa que as ofertas lidas são da página anterior: cada uma guarda
-  // a URL de onde foi lida, e "Somar página" acrescenta as da página nova.
+  // O painel é reposto se o site refizer a página. Amazon (próxima página, ordenação, filtros),
+  // Magalu e Leroy Merlin trocam a busca sem recarregar: o script segue de pé com as ofertas da
+  // página anterior. Depois de uma troca de URL, a página é lida a cada verificação até as
+  // ofertas pararem de mudar (duas leituras iguais); se forem outras, a lista é relida sozinha,
+  // somando se a última leitura foi "Somar página".
   let urlVista = location.href;
+  let espera = null; // { tentativas, ultima } enquanto a página nova carrega
+  const ESPERA_MAX = 10; // verificações (15 s) até desistir
+
+  function acompanharTroca() {
+    espera.tentativas++;
+    const agora = assinatura(lerOfertas(site).ofertas);
+    if (agora && agora === espera.ultima) {
+      espera = null;
+      if (agora !== assinaturaLida) ler(somando, somando ? 'A página mudou: ofertas dela somadas às já lidas. ' : 'A página mudou: lista relida. ');
+      return;
+    }
+    espera.ultima = agora;
+    if (espera.tentativas >= ESPERA_MAX) {
+      espera = null;
+      status(`A página mudou e não terminou de carregar: as ${ofertasLidas.length} ofertas da lista são da anterior. Clique em "Ler ofertas".`);
+    }
+  }
+
   function verificar() {
     if (!document.body) return;
     if (!hospedeiro) montarPainel();
@@ -817,7 +856,9 @@
     if (location.href !== urlVista) {
       urlVista = location.href;
       mostrarCep();
-      if (ofertasLidas.length && urlLida !== location.href) status(`A página mudou: as ${ofertasLidas.length} ofertas lidas são da anterior. "Ler ofertas" para recomeçar ou "Somar página" para acrescentar.`);
+      if (ofertasLidas.length) espera = { tentativas: 0, ultima: '' };
+    } else if (espera) {
+      acompanharTroca();
     }
   }
 

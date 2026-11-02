@@ -135,6 +135,13 @@ test('excluir: some das ativas e do resumo, e volta se guardada de novo', () => 
   assert.equal(g['MO03|https://l/1'].excluida, 0);
 });
 
+test('uma oferta por URL: patrocinado repetido dá lugar à versão normal, na posição dela', () => {
+  const d = carregar(`<html><body>${['B1', 'B2', 'B1'].map((asin, i) => `<div data-component-type="s-search-result" data-asin="${asin}" class="${i === 0 ? 'AdHolder' : ''}"><h2>Fogão Industrial ${asin}</h2><span class="a-price"><span class="a-offscreen">R$ 1.000,00</span></span></div>`).join('')}</body></html>`);
+  const { ofertas, cards } = d.lerOfertas('amazon');
+  assert.equal(cards, 3);
+  assert.deepEqual(json(ofertas.map((o) => [o.url.slice(-2), o.patrocinado])), [['B2', false], ['B1', false]]);
+});
+
 test('somar ofertas sem repetir URL', () => {
   const a = [{ url: 'u1' }, { url: 'u2' }];
   assert.deepEqual(json(t.somarOfertas(a, [{ url: 'u2' }, { url: 'u3' }, { url: 'u3' }]).map((o) => o.url)), ['u1', 'u2', 'u3']);
@@ -280,7 +287,17 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   r.querySelector('button.x').onclick();
   assert.match(textos(), /Este item: 1 ofertas/);
   assert.equal(Object.values(JSON.parse(memoria.tcc_precos_v1)).filter((l) => l.excluida).length, 1);
-  ambiente.location.href = 'https://www.amazon.com.br/s?k=outra';
+  // Próxima página sem recarregar (como a Amazon faz): a URL muda e os cards trocam depois
+  ambiente.location.href = 'https://www.amazon.com.br/s?k=mesa+inox&page=2';
+  tique(); // vê a URL nova
+  tique(); // 1ª leitura da página nova (ainda igual à antiga)
+  tique(); // 2ª leitura igual à lida: nada a reler
+  assert.equal(r.querySelectorAll('ul')[1].querySelectorAll('li').length, 3);
+  ambiente.location.href = 'https://www.amazon.com.br/s?k=mesa+inox&page=3';
   tique();
-  assert.match(r.querySelector('.status').textContent, /^A página mudou/);
+  document.querySelector('[data-asin="B0DK7V4QHY"]').remove(); // o site troca os cards
+  tique();
+  tique();
+  assert.match(r.querySelector('.status').textContent, /^A página mudou: lista relida\. 2 ofertas com preço de 2 cards/);
+  assert.equal(r.querySelectorAll('ul')[1].querySelectorAll('li').length, 2);
 });
