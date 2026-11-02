@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Coleta de preços do B5: frete não informado é estimado (mediana do item; senão, razão frete/preço da categoria), e não mais zero; cada oferta vale pela última exportação, e a excluída no painel sai do orçamento | `_src/[B5] Ativos fixos/Lista de itens/build/B5-b_orcamento_itens.py` |
 | 02/11/2026 | Aluguel por anúncios: segmento pela categoria da busca antes do título; R$/m² fora de 3·IQR do segmento sai; bairro com menos de 5 anúncios sem quartis | `_src/[B5] Ativos fixos/Anuncios de aluguel/build/B5-b_anuncios_aluguel.py` |
 | 02/11/2026 | B2, grade 2 fechada em 22 temas: "conforto e barulho", "espaço e lotação" (com lotação e reserva) e horário em regras da casa; aplicada à base inteira; rodada 2 da recodificação cega com 60 comentários novos | `textos/instrumentos/dicionario_temas_B2.md` |
 | 02/11/2026 | Investimento da etapa 1 orçado por lista de itens: reforma pelo SINAPI da Bahia (sem desoneração) mais BDI do TCU nos quartis por cenário; demais itens por coleta em sites (P25, mediana e P75 de preço mais frete) | `_src/[B5] Ativos fixos/Lista de itens/build/B5-b_orcamento_itens.py` |

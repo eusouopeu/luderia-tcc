@@ -74,3 +74,7 @@ _src/extras/logs/
 dados/\[B1\]*/_dados-brutos/redes_sociais/
 _src/logs/
 _src/Modelo financeiro/logs/*.log
+
+# Dependências Node dos testes dos webscripts e ícones de pasta do macOS ("Icon\r")
+node_modules/
+Icon?

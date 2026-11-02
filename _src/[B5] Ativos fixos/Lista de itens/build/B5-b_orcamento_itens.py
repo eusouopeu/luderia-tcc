@@ -9,8 +9,9 @@ Entradas em dados/[B5] Ativos fixos/:
       fonte da quantidade, fonte do preço (sinapi ou coleta), código SINAPI e termo de busca
   obra_reforma/"[B5] SINAPI Composições BA AAAA-MM (Caixa).csv"   (B5-c_sinapi.py; o mês mais recente)
   _dados-brutos/<categoria>/*_precos.csv                          (coletas em sites, quando houver)
-      do webscripts/precos_itens.user.js; usa id_item, preco (por unidade da lista) e frete
-      (vazio = não informado, conta como 0), com vírgula decimal
+      do webscripts/precos_itens.user.js; usa id_item, url, preco (por unidade da lista), frete
+      (vazio = não informado) e excluida, com vírgula decimal. Cada exportação traz tudo o que
+      estava guardado no navegador, então os arquivos se repetem entre si.
 Saídas em dados/[B5] Ativos fixos/orcamento/:
   "[B5] Orçamento por Item Etapa 1 {mês} (SINAPI e coletas).csv"
       quantidade, preço unitário e total de cada item nos três cenários, com o nível de evidência
@@ -22,8 +23,12 @@ Regras:
   - SINAPI: custo da composição na Bahia (sem desoneração) mais o BDI de construção de
     edifícios do TCU (Acórdão 2.622/2013-Plenário): 1º quartil no otimista, médio no
     provável e 3º quartil no pessimista.
-  - Coleta: preço mais frete de cada oferta; P75 no pessimista, mediana no provável e P25
-    no otimista, entre as ofertas do item.
+  - Coleta: uma linha por item e URL, a do arquivo mais recente (o nome começa por
+    AAAA-MM-DD_HHmm); a oferta cuja última linha tem excluida = 1 sai. Frete não informado é
+    estimado: mediana dos fretes informados do item; sem eles, a mediana da razão frete/preço
+    da categoria vezes o preço; sem nenhum frete na categoria, 0. Depois, preço mais frete de
+    cada oferta; P75 no pessimista, mediana no provável e P25 no otimista, entre as ofertas
+    do item.
   - Item sem preço fica com total vazio e sai da soma: a cobertura (itens com preço sobre
     itens da lista) acompanha o total de cada premissa, que só substitui a estimativa do
     autor no modelo quando a cobertura for completa.
@@ -85,14 +90,36 @@ def ler_sinapi() -> tuple[str, pd.DataFrame]:
 
 
 def ler_coletas() -> pd.DataFrame:
-    arquivos = sorted(RAW_DIR.glob("*/*_precos.csv"))
+    arquivos = sorted(RAW_DIR.glob("*/*_precos.csv"), key=lambda a: a.name)
     if not arquivos:
         print("coletas em sites: nenhuma ainda")
-        return pd.DataFrame(columns=["id_item", "fonte", "produto", "preco", "frete", "url", "data_coleta"])
-    df = pd.concat([pd.read_csv(a, sep=";", decimal=",", encoding="utf-8-sig") for a in arquivos], ignore_index=True)
-    df["frete"] = df["frete"].fillna(0)
-    df = df[df["preco"].gt(0)]
-    print(f"coletas em sites: {len(arquivos)} arquivos, {len(df)} ofertas de {df['id_item'].nunique()} itens")
+        return pd.DataFrame(columns=["id_item", "categoria", "fonte", "produto", "preco", "frete", "url", "data_coleta"])
+    df = pd.concat([pd.read_csv(a, sep=";", decimal=",", encoding="utf-8-sig", dtype={"cep": str})
+                    .assign(arquivo=a.name) for a in arquivos], ignore_index=True)
+    if "excluida" not in df:  # exportações anteriores à exclusão no painel
+        df["excluida"] = 0
+    df["excluida"] = df["excluida"].fillna(0).astype(int)
+    linhas = len(df)
+    # Arquivos em ordem de nome (data e hora da exportação): fica a última linha de cada oferta.
+    df = df.drop_duplicates(["id_item", "url"], keep="last")
+    excluidas = int(df["excluida"].sum())
+    df = df[df["excluida"].eq(0) & df["preco"].gt(0)].copy()
+    df = estimar_frete(df)
+    print(f"coletas em sites: {len(arquivos)} arquivos, {linhas} linhas, {len(df)} ofertas de {df['id_item'].nunique()} itens "
+          f"({linhas - len(df) - excluidas} repetidas entre exportações ou sem preço, {excluidas} excluídas no painel; "
+          f"frete estimado em {int(df['frete_estimado'].sum())})")
+    return df
+
+
+def estimar_frete(df: pd.DataFrame) -> pd.DataFrame:
+    """Frete vazio (o anúncio não informa): mediana do item; senão, razão frete/preço da categoria."""
+    df["frete_estimado"] = df["frete"].isna()
+    informado = df[~df["frete_estimado"]]
+    por_item = informado.groupby("id_item")["frete"].median()
+    razao_categoria = (informado["frete"] / informado["preco"]).groupby(informado["categoria"]).median()
+    estimado = df["id_item"].map(por_item)
+    estimado = estimado.fillna(df["categoria"].map(razao_categoria) * df["preco"]).fillna(0)
+    df["frete"] = df["frete"].fillna(estimado.round(2))
     return df
 
 
