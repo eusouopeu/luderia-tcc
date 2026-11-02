@@ -925,8 +925,8 @@ def figura_tornado(tornado, base_vpl):
     y = range(len(top))
     mil = lambda x: x / 1000
     for i, t in enumerate(top):
-        ax.barh(i, mil(t["vpl_pess"] - base_vpl), left=mil(base_vpl), height=0.6, color="#4d4d4d", label="Premissa no pessimista" if i == 0 else None)
-        ax.barh(i, mil(t["vpl_otim"] - base_vpl), left=mil(base_vpl), height=0.6, color="#bdbdbd", label="Premissa no otimista" if i == 0 else None)
+        ax.barh(i, mil(t["vpl_pess"] - base_vpl), left=mil(base_vpl), height=0.6, color="#54278f", label="Premissa no pessimista" if i == 0 else None)
+        ax.barh(i, mil(t["vpl_otim"] - base_vpl), left=mil(base_vpl), height=0.6, color="#bcbddc", label="Premissa no otimista" if i == 0 else None)
     ax.axvline(mil(base_vpl), color="black", linewidth=0.8)
     ax.axvline(0, color="black", linewidth=0.8, linestyle=":")
     ax.set_yticks(list(y))

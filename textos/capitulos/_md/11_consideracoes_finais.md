@@ -34,7 +34,7 @@ A estimativa das vendas tem um limite parecido: as notas fiscais dão só um pis
 
 Três registros planejados para a contagem direta ficaram fora do trabalho: os pedidos de alimentos e bebidas de cada mesa, o nível de ruído e os jogos em uso em cada mesa. A coleta foi tentada e se mostrou inviável por dois motivos. O primeiro é físico: de qualquer lugar em que o observador sentasse, várias mesas ficavam longe demais para identificar os jogos e os pedidos. O segundo é de processamento: anotar e tratar esses registros junto com a entrada e a saída dos grupos excedeu a capacidade de um único observador. Por isso, o consumo de alimentos e bebidas do plano vem dos cardápios dos concorrentes (B1), não do consumo observado.
 
-O investimento, por sua vez, não tem cotação. Área, reforma, mobiliário e cozinha são estimativas do autor (N6), e o aluguel usa o FipeZap de Salvador inteira, sem o recorte da Pituba. O modelo também mantém a cozinha completa na abertura, embora o cap. 7 preveja só comidas recebidas prontas nessa etapa.
+O investimento, por sua vez, não tem cotação. Área, reforma, mobiliário e cozinha são estimativas do autor (N6), e o aluguel usa o FipeZap de Salvador inteira, sem o recorte da Pituba.
 
 Por fim, a codificação dos temas das avaliações foi feita com apoio de inteligência artificial e validada por uma amostra recodificada pelo autor `[resultado do kappa]`. O B2 cobre só as avaliações dos últimos três meses de cada concorrente.
 

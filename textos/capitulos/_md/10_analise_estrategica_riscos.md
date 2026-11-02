@@ -29,7 +29,7 @@ A luderia entra num mercado com uma referência forte e com margem estreita no p
 
 Fonte: elaborado pelo próprio autor com base nos caps. 5 a 9.
 
-O cruzamento da matriz aponta uma estratégia. A luderia usa as forças de preço e ponto para ocupar um bairro sem luderia (FO) e reduz a margem estreita com o desenho enxuto e as etapas (DO): só investe em acervo, cozinha e mesas quando a demanda medida pede. Contra a reação da concorrente, que pode baixar a própria taxa, o diferencial é o serviço de mesa (FA).
+O cruzamento da matriz aponta uma estratégia. A luderia usa as forças de preço e ponto para ocupar um bairro sem luderia (FO) e reduz a margem estreita com o desenho enxuto e as etapas (DO): só investe em acervo e mesas quando a demanda medida pede. Contra a reação da concorrente, que pode baixar a própria taxa, o diferencial é o serviço de mesa (FA).
 
 ## 10.2 CENÁRIOS
 
@@ -101,10 +101,9 @@ As etapas de expansão são opções: só são exercidas se a demanda medida ped
 
 | Etapa | O que muda | Gatilho (3 meses seguidos, depois da maturação) |
 |---|---|---|
-| 1. Abertura | 6 mesas; acervo de 175 títulos; só comidas recebidas prontas | - |
+| 1. Abertura | 6 mesas; acervo de 175 títulos; cozinha completa | - |
 | 2. Acervo | Acervo até 322 títulos, a mediana do B1 | Jogos fora do acervo pedidos em pelo menos 10% das mesas; fila pelo mesmo jogo em um dia de pico por semana; ou buscas frequentes no site por jogos para um número de pessoas ou de uma mecânica com pouca oferta |
-| 3. Cardápio | Cozinha com preparo no local | Consumo de A&B por pessoa na cesta do provável ou acima, com críticas à comida ou à variedade do cardápio nas avaliações |
-| 4. Mesas | Mais 2 mesas por vez, até 10, com no máximo 2 mesas por instrutor no pico | Ocupação de pico acima de 80% das mesas, ou grupos recusados por lotação em todos os fins de semana |
+| 3. Mesas | Mais 2 mesas por vez, até 10, com no máximo 2 mesas por instrutor no pico | Ocupação de pico acima de 80% das mesas, ou grupos recusados por lotação em todos os fins de semana |
 
 Fonte: elaborado pelo próprio autor. Limites dos gatilhos propostos pelo autor (N6).
 
@@ -118,8 +117,8 @@ Os gatilhos de perda máxima seguem uma ordem de análise (Quadro 10.6). Os trê
 | G2. Consumo baixo | Gasto de A&B por pessoa abaixo da metade da cesta de consumo por 3 meses | Taxa de entrada mais cara, revertida em consumação; combos de entrada com bebida |
 | G3. Dia útil fraco | Ocupação de terça a quinta abaixo de 40% da do fim de semana por 3 meses | Passaporte mensal com direito a um número de dias e de acompanhantes, vendido para os dias úteis; eventos fechados e aluguel do espaço; se persistir, fechar a terça e refazer a escala |
 | G4. Demanda baixa | Receita abaixo do equilíbrio operacional (R$ 44,8 mil por mês no provável) por 2 meses, sem causa apontada de G1 a G3 | Marketing dirigido a escolas, empresas e grupos de jogos; eventos de comunidade nos dias fracos; reserva com sinal; taxa de entrada menor, com sessão limitada à permanência média das visitas (cerca de 1h50) |
-| G5. Caixa negativo | EBITDA negativo por 3 meses seguidos, ou caixa abaixo de 1 mês de custo fixo | Corte do meio período; renegociação do aluguel; suspensão das etapas de expansão; passaporte mensal e pré-venda para antecipar caixa |
-| G6. Saída | EBITDA acumulado de 6 meses negativo depois do mês 12, com G5 ativo e as medidas de G1 a G4 já aplicadas | Troca de formato (só eventos, aluguel e venda de jogos) ou encerramento, com venda do acervo e do mobiliário para limitar a perda ao investimento menos o valor de revenda |
+| G5. Caixa negativo | EBITDA negativo por 3 meses seguidos, ou caixa abaixo de 1 mês de custo fixo | Corte do meio período; renegociação do aluguel; suspensão das etapas de expansão; passaporte mensal e pré-venda para antecipar caixa; troca do cardápio por comidas recebidas prontas (salgados como coxinha e quibe), com corte de um cozinheiro |
+| G6. Saída | EBITDA acumulado de 6 meses negativo depois do mês 12, com G5 ativo e as medidas de G1 a G4 já aplicadas | Troca de formato (só eventos, aluguel e venda de jogos, com comidas recebidas prontas) ou encerramento, com venda do acervo e do mobiliário para limitar a perda ao investimento menos o valor de revenda |
 
 Fonte: elaborado pelo próprio autor. Limites propostos pelo autor (N6), salvo o equilíbrio operacional, do modelo do cap. 9.
 

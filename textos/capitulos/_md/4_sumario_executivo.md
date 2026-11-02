@@ -6,7 +6,7 @@ O sumário executivo condensa o plano em uma decisão de investimento. As seçõ
 
 ## 4.1 CONCEITO DO NEGÓCIO
 
-A luderia é um salão de jogos de tabuleiro com 6 mesas, na Pituba, em Salvador, aberto de terça a domingo nas 8 horas de maior movimento das concorrentes. O cliente paga uma taxa de entrada por pessoa, por turno de 3 horas, escolhe entre 175 títulos com a ajuda de um instrutor e consome alimentos e bebidas na mesa. O desenho é enxuto: acervo, cozinha e mesas crescem por etapas, quando a demanda medida pede. `[proposta de valor em uma frase, da seção 6.1]`
+A luderia é um salão de jogos de tabuleiro com 6 mesas, na Pituba, em Salvador, aberto de terça a domingo nas 8 horas de maior movimento das concorrentes. O cliente paga uma taxa de entrada por pessoa, por turno de 3 horas, escolhe entre 175 títulos com a ajuda de um instrutor e consome alimentos e bebidas na mesa. O desenho é enxuto: acervo e mesas crescem por etapas, quando a demanda medida pede. `[proposta de valor em uma frase, da seção 6.1]`
 
 ## 4.2 EMPREENDEDOR
 

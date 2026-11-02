@@ -42,7 +42,7 @@ A explicação de regras é o processo que mais pesa na avaliação. A mediaçã
 
 Um site de recomendação apoia esse serviço. O cliente ou o instrutor informa o número de pessoas, o tempo disponível, a idade do mais novo, o peso das regras e o estilo do grupo; o site lista os jogos do acervo que combinam e traz um tutorial rápido de cada um. As buscas, os jogos escolhidos e os jogos procurados que não estão no acervo ficam gravados e alimentam os gatilhos de expansão (seção 7.4) e de contingência (seção 10.5).
 
-O A&B cresce por etapas. Na abertura, o cardápio só tem comidas recebidas prontas, como salgados (coxinha e quibe) e doces, aquecidas no balcão, além de bebidas. A cozinha com preparo no local entra quando o consumo de A&B por pessoa chega à cesta do cenário provável e as avaliações da casa passam a criticar a comida ou a variedade do cardápio. A etapa evita o investimento e o risco de uma cozinha completa antes de a demanda estar provada.
+O A&B tem cozinha completa desde a abertura, com lanches, porções e pratos de preparo rápido, além de bebidas. É o modelo da maioria dos concorrentes e a maior fonte de receita do plano: 56,7% da receita bruta no provável (cap. 9). Os cardápios do B1 dão a base de preço e de composição. Um cardápio só com comidas recebidas prontas, como salgados (coxinha e quibe), fica como medida de perda máxima: entra se o caixa ficar negativo ou se a saída for avaliada (gatilhos G5 e G6, seção 10.5), e corta um cozinheiro e parte do custo fixo.
 
 ## 7.4 GESTÃO DO ACERVO
 

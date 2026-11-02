@@ -4,7 +4,8 @@
 // espaçamento 1,5, recuo de 1,00 cm). Diferenças: legenda acima de Quadro,
 // Tabela e Figura; tabela com número (alguma célula numérica fora da 1ª coluna)
 // só com bordas horizontais no cabeçalho e no fim, números à direita (skill
-// formatacao-tabelas-xlsx, seções 4 e 5); quadro de texto com grade completa;
+// formatacao-tabelas-xlsx, seções 4 e 5); quadro (legenda "Quadro") sempre com
+// grade completa, preta e de mesma espessura (ABNT), mesmo com números;
 // imagem em linha própria no formato ![texto](caminho relativo ao .md);
 // linhas de citação (>) e comentários HTML de rascunho são omitidos.
 // Regras suplementares de _instrucoes/1d_formatacao.md: título 1 e título de
@@ -124,7 +125,7 @@ function legenda(texto, depois = 0) {
 
 const NUM = /^[-−]?(R\$ ?)?[\d.]+(,\d+)?%?$/;
 
-function quadro(linhas) {
+function quadro(linhas, tipo) {
   const cab = linhas[0];
   const numerica = linhas.slice(1).some((l) => l.slice(1).some((c) => NUM.test(c)));
   const pesos = cab.map((c, j) => PESOS[c] || (j === 0 ? 34 : (numerica ? 14 : 20)));
@@ -142,7 +143,8 @@ function quadro(linhas) {
   const borda = { style: BorderStyle.SINGLE, size: 6, color: "000000" }; // 0,75 pt
   const nada = { style: BorderStyle.NONE, size: 0, color: "FFFFFF" };
   const grade = { top: borda, bottom: borda, left: borda, right: borda };
-  const bordas = (i) => !numerica ? grade : {
+  // Quadro: grade completa sempre; tabela numérica: só bordas horizontais.
+  const bordas = (i) => (!numerica || tipo === "Quadro") ? grade : {
     top: i === 0 ? borda : nada, left: nada, right: nada,
     bottom: (i === 0 || i === linhas.length - 1) ? borda : nada,
   };
@@ -189,6 +191,7 @@ function converte(md, MD, blocos = []) {
   const linhas = md.split("\n");
   let referencias = false;
   let anteriorNumerada = false;
+  let tipoLegenda = null;
   for (let i = 0; i < linhas.length; i++) {
     const l = linhas[i];
     if (l.trim().startsWith("<!--")) { while (i < linhas.length && !linhas[i].includes("-->")) i++; continue; }
@@ -210,6 +213,7 @@ function converte(md, MD, blocos = []) {
       referencias = true;
       if (!TRABALHO) blocos.push(titulo1(l.trim().replace(/\*\*/g, "").toUpperCase(), true));
     } else if (/^\*\*(Quadro|Tabela|Figura) [\d.]+/.test(l)) {
+      tipoLegenda = l.match(/^\*\*(Quadro|Tabela|Figura)/)[1];
       blocos.push(legenda(l));
     } else if (/^!\[[^\]]*\]\([^)]+\)/.test(l.trim())) {
       const arq = path.resolve(path.dirname(MD), l.trim().match(/\(([^)]+)\)/)[1]);
@@ -228,7 +232,8 @@ function converte(md, MD, blocos = []) {
         i++;
       }
       i--;
-      blocos.push(quadro(tab));
+      blocos.push(quadro(tab, tipoLegenda));
+      tipoLegenda = null;
     } else if (/^\s*- /.test(l)) {
       blocos.push(new Paragraph({ children: runs(l.replace(/^\s*- /, "")),
         alignment: AlignmentType.JUSTIFIED,

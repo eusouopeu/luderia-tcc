@@ -34,7 +34,7 @@ Conferir o manual ou as normas complementares da UFBA e do curso, e as orientaç
 
 ### Diferença entre tabela e quadro
 - **Tabela:** dado **numérico** tratado estatisticamente. Laterais abertas; traços horizontais apenas no topo, abaixo do cabeçalho e no fim (IBGE, 1993).
-- **Quadro:** conteúdo **textual** ou esquemático (ex.: matriz de evidências, registro de premissas quando textual, SWOT). Bordas fechadas.
+- **Quadro:** conteúdo **textual** ou esquemático (ex.: matriz de evidências, registro de premissas quando textual, SWOT). Todas as bordas visíveis, pretas e da mesma espessura, mesmo com números (`1d_formatacao.md`).
 - **Figura:** gráficos, mapas, fluxogramas, plantas, fotografias.
 
 ### Padrão de identificação

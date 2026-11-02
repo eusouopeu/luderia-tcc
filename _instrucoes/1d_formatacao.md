@@ -22,3 +22,5 @@ Regras suplementares à skill `formatacao-texto-ufba`, pedido do autor em 31/10/
 - **Alinhamento vertical:** o texto de toda célula fica centralizado na vertical.
 - **Alinhamento horizontal nos quadros:** coluna em que toda célula tem uma só palavra (ex.: "Tipo", "Probabilidade" e "Impacto" no Quadro 10.4, Matriz de riscos) fica centralizada na horizontal. As demais colunas do quadro ficam à esquerda; nas tabelas, os números continuam à direita.
 - **Legenda e fonte:** o título ("Tabela 5.1 – ...", "Quadro 10.4 – ...") e a linha "Fonte: ..." ficam centralizados.
+- **Quadros (02/11/2026):** todo quadro (legenda "Quadro") tem TODAS as bordas visíveis, pretas e da mesma espessura (0,75 pt), mesmo com números; só a tabela (legenda "Tabela") usa bordas horizontais no cabeçalho e no fim. O `gerar_docx_capitulo.js` decide pela legenda.
+- **Figuras do modelo financeiro:** tons da paleta purple (pessimista #54278f, otimista #bcbddc no tornado).

@@ -86,7 +86,7 @@ O investimento inicial provável é de R$ 369 mil, com a reforma (35%) e o capit
 
 Fonte: elaboração própria (aba investimento do modelo).
 
-O modelo ainda trata o A&B com cozinha completa: R$ 60 mil de investimento e CMV de 30%. Na etapa de abertura, com comidas recebidas prontas (cap. 7), o investimento cai e o CMV de revenda tende a subir `[pendente]`. O capital de giro cobre dois meses de custos fixos, R$ 64 mil, e absorve o EBITDA negativo de R$ 14 mil do ano 1. O modelo supõe capital próprio, sem financiamento.
+O A&B tem cozinha completa desde a abertura: R$ 60 mil de investimento e CMV de 30%. O capital de giro cobre dois meses de custos fixos, R$ 64 mil, e absorve o EBITDA negativo de R$ 14 mil do ano 1. O modelo supõe capital próprio, sem financiamento.
 
 ## 9.4 RECEITAS, CUSTOS E DESPESAS PROJETADOS
 

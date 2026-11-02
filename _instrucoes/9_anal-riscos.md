@@ -32,7 +32,7 @@ Consolidar forças, fraquezas e riscos, e mostrar **o que acontece se as premiss
 - Para cada risco alto: gatilho observável, ação e responsável.
 - Indicadores de monitoramento ligados às premissas críticas (ex.: ocupação semanal, ticket médio), com limite de alerta derivado do ponto de ruptura; fontes: caixa, NFC-e e site de recomendação de jogos (P7).
 - Validações a fazer antes de investir (ex.: evento piloto, cotação do ponto), que reduzem a incerteza das premissas críticas.
-- Opções de expansão: etapas 2 a 4 da P7 ([1a_principios.md](1a_principios.md)), com gatilho, investimento e efeito estimado.
+- Opções de expansão: etapas 2 e 3 da P7 ([1a_principios.md](1a_principios.md)), com gatilho, investimento e efeito estimado.
 
 ### 10.6 Gatilhos de perda máxima
 
@@ -44,5 +44,5 @@ Indicadores medidos todo mês a partir da maturação (mês 9 no provável), com
 | G2. Consumo baixo | Gasto de A&B por pessoa abaixo da metade da cesta de consumo por 3 meses | Taxa de entrada mais cara, revertida em consumação; combos de entrada com bebida |
 | G3. Dia útil fraco | Ocupação de terça a quinta abaixo de 40% da do fim de semana por 3 meses | Passaporte mensal com direito a um número de dias e de acompanhantes, vendido para os dias úteis; eventos fechados e aluguel do espaço; se persistir, fechar a terça (ou terça e quarta) e refazer a escala |
 | G4. Demanda baixa | Receita mensal abaixo do equilíbrio operacional (custo fixo ÷ margem de contribuição; cerca de R$ 45 mil no provável) por 2 meses seguidos, sem causa apontada por G1 a G3 | Marketing dirigido (parcerias com escolas, empresas e grupos de jogos); eventos de comunidade nos dias fracos; reserva com sinal; taxa de entrada reduzida com sessão limitada à permanência média das visitas (cerca de 1h50) |
-| G5. Caixa negativo | EBITDA negativo por 3 meses seguidos, ou caixa abaixo de 1 mês de custo fixo | Corte do meio período; renegociação do aluguel; suspensão das etapas de expansão; passaporte mensal e pré-venda para antecipar caixa |
-| G6. Saída | EBITDA acumulado de 6 meses negativo depois do mês 12, com G5 ativo e as medidas de G1 a G4 já aplicadas | Encerrar ou trocar o formato (só eventos, aluguel e venda de jogos); venda do acervo e do mobiliário para limitar a perda ao investimento menos o valor de revenda |
+| G5. Caixa negativo | EBITDA negativo por 3 meses seguidos, ou caixa abaixo de 1 mês de custo fixo | Corte do meio período; renegociação do aluguel; suspensão das etapas de expansão; passaporte mensal e pré-venda para antecipar caixa; troca do cardápio por comidas recebidas prontas (salgados como coxinha e quibe), com corte de um cozinheiro |
+| G6. Saída | EBITDA acumulado de 6 meses negativo depois do mês 12, com G5 ativo e as medidas de G1 a G4 já aplicadas | Encerrar ou trocar o formato (só eventos, aluguel e venda de jogos, com comidas recebidas prontas); venda do acervo e do mobiliário para limitar a perda ao investimento menos o valor de revenda |

@@ -23,7 +23,7 @@ Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e
 
 ### 7.3 Processos operacionais
 - Jornada do cliente: chegada, recepção, escolha e explicação do jogo, consumo, pagamento, saída.
-- Processos de A&B: na etapa 1, só comidas recebidas prontas (fornecedor, estoque, aquecimento e validade); preparo no local a partir da etapa 3 (P7).
+- Processos de A&B: cozinha completa desde a abertura (preparo no local); cardápio só com comidas recebidas prontas apenas como medida de perda máxima (G5 ou G6, cap. 10).
 - Reservas e eventos.
 - Fluxograma dos processos principais (figura).
 

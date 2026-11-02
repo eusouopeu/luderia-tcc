@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | A&B com cozinha completa desde a abertura (modelo da maioria dos concorrentes, maior fonte de receita, dados mais sólidos no B1); cardápio só com comidas recebidas prontas vira medida de perda máxima do G5 e do G6; etapas de expansão passam a ser 3 (abertura, acervo, mesas) | `_instrucoes/1a_principios.md` (P7) |
+| 02/11/2026 | Quadros com todas as bordas visíveis, pretas e da mesma espessura, mesmo com números; tornado em tons de roxo | `_instrucoes/1d_formatacao.md` |
 | 02/11/2026 | Acervo inicial = joelho da curva de presença: 175 jogos em 12 ou mais dos 30 acervos do B1, R$ 35 mil no provável, ± 15% nos cenários (3º quartil da variação do preço do mesmo jogo entre lojas) | `_instrucoes/1a_principios.md` (P7); `B1-a_cesta_jogos.py` |
 | 02/11/2026 | TMin v10 montado do v9 (caps. 1 a 3 e referências, com as edições do autor) com os caps. 4 a 11 gerados dos `.md` atualizados | `docs/registro-de-alteracoes.md` (02/11/2026) |
 | 02/11/2026 | Coletor de anúncios de aluguel passa do B4 (bases públicas) para o B5 (ativos fixos): portal de anúncios não é base pública; saídas em `dados/[B5] Ativos fixos/aluguel/` | `_src/[B5] Ativos fixos/Anuncios de aluguel/` |
