@@ -16,7 +16,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
-**D17 — Duas páginas da Savills com datas diferentes (02/11/2026).** O 2.2 cita SAVILLS, [s.d.] (definição e mais de 800 locais) e SAVILLS, 2023 (alta de 38% desde 2018). As duas contagens são de momentos diferentes; a de [s.d.] precisa da data para o leitor entender a sequência (ver D16).
+**D36 — Duas páginas da Savills com datas diferentes (02/11/2026).** O 2.2 cita SAVILLS, [s.d.] (definição e mais de 800 locais) e SAVILLS, 2023 (alta de 38% desde 2018). As duas contagens são de momentos diferentes; a de [s.d.] precisa da data para o leitor entender a sequência (ver D16).
 
 **D15 — Fontes da gestão baseada em evidências (01/11/2026).** Cap. 2 (abertura), parágrafo original e o revisado em verde no TMin v9. O texto põe as quatro fontes de evidência em Figueiredo (2020, p. 31) e inclui "organizações comparáveis"; no artigo, a quarta fonte (valores das partes interessadas) está na p. 32 e não há menção a organizações comparáveis, só a dados da própria organização. Sugestão: citar p. 31–32 e tirar "ou de organizações comparáveis", junto com o corte de citações pedido no comentário 7.
 
