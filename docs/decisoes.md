@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | B2: contexto "público" (iniciante e hobbyista) retirado da codificação, do Notion, da análise de Bardin e dos arquivos; resquício de premissa abandonada | `textos/instrumentos/dicionario_temas_B2.md` |
+| 02/11/2026 | B2: ocasião só quando o cliente foi com eles; não-elogio não é crítica; funcionário sem adjetivo de serviço não é atendimento; aniversário também marca comemorações e grupos; "explicam poucos jogos" é explicação negativa | `textos/instrumentos/dicionario_temas_B2.md`, §3 |
 | 02/11/2026 | Pré-textuais no padrão do Dance Forrónejo: listas de figuras, de quadros, de tabelas e de abreviações e siglas, e sumário, numa seção sem número de página; refeitos por script a cada versão | `_instrucoes/1c_versoes.md` |
 | 02/11/2026 | Datas das linhas de fonte sempre em números (10/10/2026, 07/2026); siglas desdobradas na primeira ocorrência | `_instrucoes/1d_formatacao.md` |
 | 02/11/2026 | DRE e fluxo de caixa numa só tabela (9.3); Quadro 9.2 com as 10 premissas do tornado e a amplitude no VPL; Tabela A.1 fora dos apêndices (repetia a Figura 5.2) | `docs/registro-de-alteracoes.md` (02/11/2026) |

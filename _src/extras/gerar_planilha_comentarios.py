@@ -130,7 +130,7 @@ def itens(v):
 
 
 TEMAS = sorted({t for c in ("Itens positivos", "Itens negativos") for v in d[c] for t in itens(v)})
-CONTEXTOS = ["amigos", "família", "casal", "aniversário", "hobbyista", "iniciante", "loja", "aluguel"]
+CONTEXTOS = ["amigos", "família", "casal", "aniversário", "loja", "aluguel"]
 pos = pd.DataFrame({t: d["Itens positivos"].map(lambda v, t=t: int(t in itens(v))) for t in TEMAS})
 neg = pd.DataFrame({t: d["Itens negativos"].map(lambda v, t=t: int(t in itens(v))) for t in TEMAS})
 ctx = pd.DataFrame({c: d.Contexto.map(lambda v, c=c: int(c in itens(v))) for c in CONTEXTOS})

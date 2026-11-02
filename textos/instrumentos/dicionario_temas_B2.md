@@ -1,6 +1,6 @@
 # Dicionário de temas dos comentários (Bloco B2, Notion)
 
-Versão de 30/10/2026, com o tema "estacionamento" separado de "localização e acesso" em 02/11/2026 (pedido do autor, que o criou no banco da recodificação). Em 02/11/2026 entraram também "indicações de jogos" (separada de "explicação de jogos"), "preço de jogos" e o contexto "apenas loja", criados pelo autor no banco da recodificação. Reconstruído a partir das 166 linhas já codificadas pelo autor no Notion ("2 - Comentários", Fórmula ≥ 5, 14 casas, 87 do Bodogami e 37 do Shelf). As regras abaixo descrevem o que o autor já faz na maioria dos casos e decidem os casos em que a prática variou. Os casos que fogem das regras estão no §5.
+Versão de 30/10/2026, com o tema "estacionamento" separado de "localização e acesso" em 02/11/2026 (pedido do autor, que o criou no banco da recodificação). Em 02/11/2026 entraram também "indicações de jogos" (separada de "explicação de jogos"), "preço de jogos" e o contexto "apenas loja", criados pelo autor no banco da recodificação. Ainda em 02/11/2026, depois da primeira comparação com a recodificação cega, o autor decidiu as regras 12 a 15 do §3. Reconstruído a partir das 166 linhas já codificadas pelo autor no Notion ("2 - Comentários", Fórmula ≥ 5, 14 casas, 87 do Bodogami e 37 do Shelf). As regras abaixo descrevem o que o autor já faz na maioria dos casos e decidem os casos em que a prática variou. Os casos que fogem das regras estão no §5.
 
 Este dicionário vale para as colunas "Itens positivos" e "Itens negativos". O livro de códigos de `analise_conteudo_bardin_B2.md` (§1.4, 15/10) é outro e ainda não foi unificado com este (pendências, item 15).
 
@@ -25,14 +25,14 @@ A lista é a mesma nas duas colunas. Hoje faltam opções no Notion: "curadoria 
 | variedade do acervo | Quantidade de jogos: "muitos", "vários", "diversos", "acervo enorme", "grande variedade", consoles e fliperamas; pedido de mais jogos; acervo atualizado ou desatualizado | Jogos bons de jogar (curadoria) |
 | curadoria dos jogos | Jogos muito bons de se jogar: "jogos ótimos", "jogos divertidos", "jogos excelentes", "boa opção de jogos" | Quantidade (variedade); estado das peças (conservação) |
 | conservação do acervo | Peças faltando, jogos danificados ou em bom estado | - |
-| explicação de jogos | Serviço de jogo à mesa: ensinar regras, trazer e trocar jogos, monitor disponível ou ausente | Recomendar jogo (indicações de jogos); cordialidade sem ato ligado ao jogo (atendimento presencial) |
+| explicação de jogos | Serviço de jogo à mesa: ensinar regras, trazer e trocar jogos, monitor disponível ou ausente; "explicam poucos jogos" (negativo) | Recomendar jogo (indicações de jogos); cordialidade sem ato ligado ao jogo (atendimento presencial) |
 | indicações de jogos | Recomendar ou sugerir jogo: pelo perfil do grupo, novidades, "ótima recomendação de jogo", "indicando novos jogos"; indicação ruim ou ausente | Ensinar regras, trazer e trocar jogos (explicação de jogos) |
 
 ### Equipe e serviço
 
 | Tema | Entra | Não entra |
 |---|---|---|
-| atendimento presencial | Cordialidade, atenção, paciência, educação, rispidez, descaso; "serviço" e "atendimento" genéricos; funcionário elogiado pelo nome; decisões da gerência sobre o cliente; pedido errado, esquecido ou trocado | Demora (rapidez do serviço); ato de explicar jogo (explicação de jogos) ou de recomendar jogo (indicações de jogos) |
+| atendimento presencial | Cordialidade, atenção, paciência, educação, rispidez, descaso; "serviço" e "atendimento" genéricos; funcionário citado pelo nome com adjetivo de serviço; decisões da gerência sobre o cliente; pedido errado, esquecido ou trocado | Demora (rapidez do serviço); ato de explicar jogo (explicação de jogos) ou de recomendar jogo (indicações de jogos); funcionário elogiado sem adjetivo de serviço ("Alex muito resenha", "a Miranda é uma fofaaaa") |
 | atendimento online | WhatsApp, telefone, redes sociais, reserva a distância | - |
 | rapidez do serviço | Tempo do pedido: demora, agilidade | Pedido errado (atendimento presencial); espera para entrar (lotação e reserva) |
 
@@ -78,7 +78,7 @@ Regra: "tudo caro" e equivalentes, com escopo total, entram em preço da entrada
 
 | Tema | Entra | Não entra |
 |---|---|---|
-| comemorações e grupos | Juízo sobre o serviço a aniversários, festas e grupos grandes ("não deram nem parabéns", "a casa recebeu bem nosso grupo de 10") | Só citar a ocasião ("comemorei meu aniversário lá"): vai para o contexto (§2.1) |
+| comemorações e grupos | Juízo sobre o serviço a aniversários, festas e grupos grandes ("não deram nem parabéns", "a casa recebeu bem nosso grupo de 10"); aniversário marcado no contexto (§2.1) também marca este tema, positivo salvo crítica ao serviço da ocasião (decisão de 02/11) | - |
 | eventos e comunidade | Trívia, quiz, torneios, eventos; público frequente e acolhimento de novatos | - |
 
 ### 2.1 Contexto (sem polaridade)
@@ -87,8 +87,7 @@ Decisão do autor de 30/10: o que descreve a visita, e não avalia a casa, sai d
 
 | Código | Entra |
 |---|---|
-| ocasião | Amigos, família ou crianças, casal ou encontro, aniversário ou comemoração, citados de forma explícita |
-| público | Iniciante ou não jogador; hobbyista (frequenta luderias, TCG, coleção) |
+| ocasião | Amigos, família ou crianças, casal ou encontro, aniversário ou comemoração, só quando o cliente diz que foi com eles ou na ocasião ("fui com meus amigos", assinatura "Família Soares"). Recomendação ("bom lugar para ir com amigos") não entra |
 | aluguel | Aluguel de jogos para levar |
 | loja | Compra de jogos e produtos na casa, junto com a visita para jogar ou consumir |
 | apenas loja | A avaliação trata só da loja: comprou, sem visita para jogar ou consumir. Esses textos saem da leitura da experiência de luderia |
@@ -106,6 +105,10 @@ Decisão do autor de 30/10: o que descreve a visita, e não avalia a casa, sai d
 9. **Taxa de serviço (10%)** → regras da casa. Se o texto chama de "taxa" o valor para jogar, vale preço da entrada.
 10. **Promoção e brinde** ("ganhei uma raspadinha", "ganhei um jogo") → não codificados.
 11. **Comentário duplicado** (mesmo autor e mesma visita, com texto reescrito) → codificar um só e marcar o outro para exclusão.
+12. **Não-elogio não é crítica** ("a comida não é das melhores", "pena esse elogio não ser para todos", "o atendimento não foi nada demais") → não codificado.
+13. **Funcionário elogiado sem adjetivo de serviço** ("Alex muito resenha", "a Miranda é uma fofaaaa") → não é atendimento presencial; sem tema, salvo outro atributo no texto.
+14. **Aniversário** no contexto → também comemorações e grupos (ver §2).
+15. **"Explicam poucos jogos"** → explicação de jogos negativa.
 
 ## 4. Conferência
 
@@ -147,7 +150,7 @@ São 26 linhas em 166 (16%) com ao menos um ajuste. A maior parte é omissão de
 
 Bardin (2011 `[AV]`) exige categorias com exclusão mútua, homogeneidade (um só princípio de classificação na grade), pertinência, objetividade e fidelidade (codificadores diferentes chegam ao mesmo resultado) e produtividade. Frente a isso, faltam seis pontos:
 
-1. **Homogeneidade.** Decidida em 30/10 (§2.1): ocasião, público, aluguel e loja vão para uma coluna de contexto, sem polaridade. Falta criar a coluna no Notion e mover as marcações de "aluguel", "loja" e "comemorações e grupos" que só citam a ocasião. "Costuma ir" e "Voltará" já cumprem esse papel para a recorrência (pendências, item 14a).
+1. **Homogeneidade.** Decidida em 30/10 (§2.1): ocasião, aluguel e loja vão para uma coluna de contexto, sem polaridade. Coluna criada no Notion; falta mover as marcações antigas de "aluguel" e "loja" das colunas de temas. "Costuma ir" e "Voltará" já cumprem esse papel para a recorrência (pendências, item 14a).
 2. **Exaustividade.** Não há tema para segurança, acessibilidade e respeito (idosos sem prioridade na fila, "ambiente seguro", adolescentes barrados). O livro de 15/10 tem esse tema (INC).
 3. **Polaridade neutra e mista.** As duas colunas não registram o mediano. Hoje a regra 4 descarta esses casos; o livro de 15/10 previa `~` e `±`.
 4. **Regras escritas com exemplo-âncora.** Cada tema precisa de um trecho real do corpus como exemplo de inclusão e outro de exclusão. A descrição do banco no Notion só traz a definição curta.

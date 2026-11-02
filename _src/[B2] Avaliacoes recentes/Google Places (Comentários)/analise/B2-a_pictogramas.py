@@ -6,13 +6,13 @@ Três figuras, todas em "de cada N avaliações com texto":
 - temas: quantas falam de cada categoria, qualquer polaridade (1 ícone = 5 em 100);
 - reclamações: quantas trazem a categoria com polaridade negativa (1 ícone = 1 em 100);
 - ocasião e perfil: com quem e para que o público vai (amigos, família,
-  aniversário...), perfil declarado e funcionário citado pelo nome
+  aniversário...) e funcionário citado pelo nome
   (grade de 100 ícones, 1 ícone = 1 avaliação em 100).
 
 Entradas (saídas do B2-a_conteudo_bardin.py, em dados/[B2] Avaliacoes recentes/analise_conteudo/):
   B2_codificacao_bardin.csv          uma linha por avaliação; o total (n) é o das "analisada"
   B2_bardin_frequencia_categorias.csv  contagem por categoria e polaridade
-  B2_bardin_contexto.csv             ocasião e sinais de perfil
+  B2_bardin_contexto.csv             ocasião e outros códigos de contexto
 
 Estilo editorial (`graficos_comum`): temas e ocasiões em cinza, reclamações
 em vermelho; o título diz a categoria que lidera.
@@ -174,7 +174,7 @@ def main():
                    f"{br(primeira.pct, 0)} de cada 100 avaliações",
               f"Com quem e por que o público vai, de cada 100 avaliações da casa típica (média do percentual "
               f"das {casas} casas).", "B2_pict_ocasiao_perfil", n, casas,
-              "Cada pessoa = 1 avaliação em 100. Ocasião e perfil só contam quando a avaliação os declara; "
+              "Cada pessoa = 1 avaliação em 100. A ocasião só conta quando a avaliação a declara; "
               f"o resto não é \"não\", é \"não dito\". n = {milhar(n)} avaliações de {casas} casas.")
 
 

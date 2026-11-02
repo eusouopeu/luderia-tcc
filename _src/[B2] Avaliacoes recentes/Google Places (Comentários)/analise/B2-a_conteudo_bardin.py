@@ -21,8 +21,8 @@ em dados/[B2] Avaliacoes recentes/_dados-brutos/coletas/.
 A codificação foi feita à mão, comentário por comentário, pelo livro de códigos
 de textos/instrumentos/analise_conteudo_bardin_B2.md (§1.4). Os códigos de uma
 linha vêm separados por espaço; o sinal final é a polaridade (+ positiva,
-- negativa, ± mista, ~ neutra). Códigos de contexto (OCA:*, NOV, HOB, DESC,
-GEEK, NOM, DIV) não têm polaridade.
+- negativa, ± mista, ~ neutra). Códigos de contexto (OCA:*, DESC, GEEK,
+NOM, DIV) não têm polaridade.
 
 Regras de contagem:
   - unidade de enumeração = comentário (presença/ausência do tema; um tema
@@ -158,8 +158,8 @@ CATEGORIAS = {  # códigos com polaridade
 }
 CONTEXTO = {  # códigos sem polaridade
     "OCA:ami": "Ocasião: amigos", "OCA:fam": "Ocasião: família ou crianças", "OCA:casal": "Ocasião: casal",
-    "OCA:aniv": "Ocasião: aniversário ou comemoração", "NOV": "Sinal de iniciante/não jogador",
-    "HOB": "Sinal de hobbyista", "DESC": "Desconexão de telas", "DIV": "Diversão como benefício",
+    "OCA:aniv": "Ocasião: aniversário ou comemoração",
+    "DESC": "Desconexão de telas", "DIV": "Diversão como benefício",
     "GEEK": "Identidade geek do espaço", "NOM": "Funcionário citado pelo nome",
 }
 RE_CODIGO = re.compile(r"^(?P<cat>[A-Z]+(?::[a-z]+)?)(?P<pol>[+\-±~]?)$")

@@ -107,8 +107,6 @@ Códigos de contexto, sem polaridade:
 | Código | Definição |
 |---|---|
 | OCA:ami / OCA:fam / OCA:casal / OCA:aniv | Ocasião ou companhia citada: amigos; família ou crianças; casal ou encontro; aniversário ou comemoração |
-| NOV | Sinal de público iniciante ou não jogador: "não conheço muito de jogos", "para quem nunca jogou", "voltando ao hobby" |
-| HOB | Sinal de público hobbyista: frequenta luderias há anos, jogo competitivo, TCG, coleção, comparação técnica com outras casas |
 | DESC | Desconexão de telas: "zero tela", "esquecer o celular" |
 | DIV | Diversão ou sociabilidade como benefício principal, sem outro atributo |
 | GEEK | Identidade geek ou nerd do espaço citada |
@@ -260,7 +258,7 @@ Entre as ocasiões citadas nas casas de jogos, amigos aparecem em 13% dos coment
 
 ### 3.9 Casas de jogos e lojas atendem públicos diferentes
 
-Nas lojas, 27% dos comentários trazem sinais de hobbyista (TCG, torneio, coleção) e 40% tratam de varejo e pós-venda. Comunidade aparece em 12% dos comentários das lojas e em 1% dos das casas de jogos. Nas casas de jogos, os sinais de hobbyista (1,5%) e de iniciante (0,9%) são raros: o cliente comenta a ocasião e a experiência, não a sua relação com o hobby.
+Nas lojas, 40% dos comentários tratam de varejo e pós-venda. Comunidade aparece em 12% dos comentários das lojas e em 1% dos das casas de jogos. Nas casas de jogos, o cliente comenta a ocasião e a experiência.
 
 **Decisão do plano:** lojas de TCG não são concorrentes diretas de uma luderia. Esse achado sustenta a separação dos dois tipos nas análises de concorrência e de preço.
 

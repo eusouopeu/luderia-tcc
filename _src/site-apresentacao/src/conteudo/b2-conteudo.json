@@ -1265,40 +1265,6 @@
    "nota": 3.96
   },
   {
-   "codigo": "NOV",
-   "categoria": "Sinal de iniciante/não jogador",
-   "total": {
-    "n": 22,
-    "pct": 1.4
-   },
-   "casas": {
-    "n": 13,
-    "pct": 0.9
-   },
-   "lojas": {
-    "n": 9,
-    "pct": 4.1
-   },
-   "nota": 4.41
-  },
-  {
-   "codigo": "HOB",
-   "categoria": "Sinal de hobbyista",
-   "total": {
-    "n": 79,
-    "pct": 5.0
-   },
-   "casas": {
-    "n": 20,
-    "pct": 1.5
-   },
-   "lojas": {
-    "n": 59,
-    "pct": 27.1
-   },
-   "nota": 4.42
-  },
-  {
    "codigo": "DESC",
    "categoria": "Desconexão de telas",
    "total": {
@@ -1837,7 +1803,7 @@
   },
   {
    "titulo": "Casas de jogos e lojas atendem públicos diferentes",
-   "texto": "Nas lojas, 27% dos comentários trazem sinais de hobbyista (TCG, torneio, coleção) e 40% tratam de varejo e pós-venda. Comunidade aparece em 12% dos comentários das lojas e em 1% dos das casas de jogos. Nas casas de jogos, os sinais de hobbyista (1,5%) e de iniciante (0,9%) são raros: o cliente comenta a ocasião e a experiência, não a sua relação com o hobby.",
+   "texto": "Nas lojas, 40% dos comentários tratam de varejo e pós-venda. Comunidade aparece em 12% dos comentários das lojas e em 1% dos das casas de jogos. Nas casas de jogos, o cliente comenta a ocasião e a experiência.",
    "decisao": "lojas de TCG não são concorrentes diretas de uma luderia. Esse achado sustenta a separação dos dois tipos nas análises de concorrência e de preço."
   },
   {
