@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Bloco B5 (ativos fixos): preços de obra, aluguel, mobiliário, cozinha e bar, equipamentos e jogos coletados em sites e e-commerces, numa pasta por categoria | `CLAUDE.md`, Estado do projeto |
 | 02/11/2026 | Gatilhos de perda máxima no cap. 10 (G1 a G6: demanda, pessoas por mesa, consumo, dia útil, caixa, saída), com medidas de taxa alternativas como contingência: sessão curta com taxa menor, taxa por mesa, taxa revertida em consumação, desconto progressivo por pessoa na mesa e passaporte mensal | `_instrucoes/9_anal-riscos.md`, §10.6 |
 | 02/11/2026 | Investimento por etapas: abertura com 6 mesas, acervo enxuto (jogos em ≥ 50% das luderias com elogio ao acervo) e só comidas recebidas prontas; acervo, cozinha de preparo e mesas crescem por gatilho, pagos com o caixa gerado; o fluxo base é o da etapa 1 | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Equipe de 6: 2 cozinheiros-chefes, 3 instrutores de tempo integral (folgas em dias diferentes de terça a quinta) e 1 de meio período | `_instrucoes/1a_principios.md` (P7) |

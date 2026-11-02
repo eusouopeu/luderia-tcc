@@ -21,7 +21,7 @@ Todo número do texto pode ser gerado de novo por um script deste repositório. 
 | `docs/` | Decisões, pendências, registro de alterações, diagnóstico bibliográfico |
 | `_src/app-observacao/` | App Android usado na contagem direta (Bloco B3) |
 | `_src/site-apresentacao/` | Site da apresentação oral |
-| `arquivados/` | Rascunhos, saídas do desenho anterior e blocos retirados do escopo (B5, B6), guardados para uso futuro |
+| `arquivados/` | Rascunhos, saídas do desenho anterior e blocos retirados do escopo (antigo B5 de jogos, B6), guardados para uso futuro |
 
 ## Por onde começar
 
@@ -49,6 +49,7 @@ Cada script segue a sequência `collect` (coleta) → `build` (tratamento) → `
 | **B2** Avaliações recentes | Google Maps (avaliações até "3 meses atrás", inclusive) | userscript `maps_avaliacoes` → `B2-b_avaliacoes` (consolida, confere cobertura, gera a fila) → `B2-a_conteudo_bardin` | Proposta de valor, reclamações, fluxo |
 | **B3** Contagem direta de ocupação | Observação na São Jogue (app) e NFC-e | `B3-b_contagem_sorteio` → `B3-a_contagem`, `B3-b_ocr_fotos` | Ocupação, giro, calibração |
 | **B4** Bases públicas | IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA | `B4-c_*` → `B4-b_*` | Demanda, custos, tributos, taxa de desconto |
+| **B5** Ativos fixos | Sites e e-commerces (orçamentos de obra, aluguel, mobiliário, cozinha e bar, equipamentos, jogos) | a criar | Investimento inicial, aluguel |
 | **B6** Histórico dos avaliadores | — | — | Retirado em 18/09/2026 (`arquivados/B6-avaliadores/`) |
 
 Todo script roda a partir de qualquer diretório:
