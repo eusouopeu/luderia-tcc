@@ -39,6 +39,7 @@ A matriz SWOT não fica neste capítulo: está em 10.1.
 - Setor de bares e entretenimento social presencial.
 - Tendências: lazer fora das telas, consumo de experiências.
 - Fontes: Abrinq, Sebrae, Abrasel, IBGE (PAS). Aproveitar dados da introdução.
+- Estudos sobre o segmento fora do Brasil (Savills) entram aqui, e não no cap. 2.
 
 ### 5.2 Público-alvo e segmentação
 - Perfil demográfico e de renda do público-alvo em Salvador, por bairro quando houver dado (IBGE).
@@ -46,6 +47,7 @@ A matriz SWOT não fica neste capítulo: está em 10.1.
 - O que o público valoriza e o que o afasta: Bloco B2 (menções a preço, fricção de complexidade).
 - Tamanho do público-alvo em Salvador: Meta Ads, planejador de palavras-chave, Censo.
 - Escrita depois do fim da análise do Bloco B2.
+- Estudos de jogadores e de luderias (Sarpa, Censo Ludopedia, Novaes e Kanyat, Kviat, KAM Insight) entram ao lado do B2, como evidência externa; os modelos de cobrança e a barreira de preço, na 5.3; as mecânicas simples, na 5.4.
 
 ### 5.3 Análise da concorrência
 - Mapeamento: Bloco B1 (localização, avaliação, volume de avaliações, preço, acervo declarado). Recorte: estabelecimentos com mais de 100 avaliações nas 14 metrópoles da REGIC. O recorte descreve concorrentes estabelecidos; casas novas ou pequenas ficam de fora, e isso é declarado.
@@ -63,5 +65,5 @@ A matriz SWOT não fica neste capítulo: está em 10.1.
 - Mobiliário e equipamentos.
 
 ### 5.5 Macroambiente (PESTEL)
-- Político-legal, econômico (renda, inflação, juros), social, tecnológico, ambiental.
-- Só fatores com efeito concreto sobre o negócio, cada um com fonte.
+- As seis dimensões, na ordem político, econômico, social, tecnológico, ambiental e legal, sem subseções: um parágrafo de abertura lista as dimensões, e o primeiro parágrafo de cada uma começa por "No campo <dimensão>" (modelo do trabalho final do Dance Forrónejo, pedido do autor em 02/11/2026). Dimensão sem efeito relevante tem um parágrafo curto que diz isso (hoje, a ambiental).
+- Só fatores com efeito concreto sobre o negócio, cada um com fonte; o detalhe jurídico fica no cap. 8.

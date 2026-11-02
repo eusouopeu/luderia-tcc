@@ -4,7 +4,8 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora
 
-- **TMin v11 (02/11, 10h):** caps. 4, 7, 9, 10 e 11 no desenho enxuto, com cozinha completa na abertura (comida pronta só no G5 e no G6), quadros com grade completa e tornado em roxo; VPL provável de R$ 13 mil, positivo só com o valor residual; P(VPL > 0) de 44,9%; caps. 1 a 3 e referências do v9; 69 páginas.
+- **TMin v12 (02/11, 12h):** menos subseções (2.4.x, 3.3.x, 5.2.x, 5.3.1 e 5.5.x) e cap. 4 sem títulos; antigos 2.2 e 2.3 (estudos do segmento e de jogadores) levados ao cap. 5, e o cap. 2 ficou só com conceitos (2.1 experiência, 2.2 análise estratégica, 2.3 atributos, 2.4 serviço e capacidade, 2.5 viabilidade); PESTEL nas seis dimensões, no modelo do Dance Forrónejo; 65 páginas. `.md` dos caps. 2 a 5 alinhados ao `.docx`; o do cap. 1 segue atrás (pendências).
+- **TMin v11 (02/11, 10h):** caps. 4, 7, 9, 10 e 11 no desenho enxuto, cozinha completa na abertura; VPL provável de R$ 13 mil; P(VPL > 0) de 44,9%.
 
 - **Bloco B5, ativos fixos (02/11, 09h):** pastas por categoria em `dados/[B5] Ativos fixos/` para orçamentos e preços de sites e e-commerces; o coletor de aluguel já está nele; coletas por fazer (pendências).
 
@@ -16,7 +17,6 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 - **Aluguel por anúncios (02/11, 06h):** coletor no Tampermonkey para OLX, ZAP, Viva Real e QuintoAndar e build com resumo do R$/m² por bairro (`_src/[B5] Ativos fixos/Anuncios de aluguel/`, movido do B4 para o B5 às 09h); falta rodar a coleta (pendências).
 - **Financeiro (02/11, 05h):** valor residual no modelo (M03; provável inalterado, P(VPL > 0) de 31,9%); taxas de entrada alternativas, gasto declarado ÷ cesta e área da Bela Vista calculados; sem novas visitas presenciais (decisão do autor). Falta escolher o pacote de mudanças (pendências) e levar aos caps. 4, 9, 10 e 11.
 - **Revisão do TMin v9 (02/11, 04h):** recomendações 1, 6, 9 e 10 aplicadas no `.docx` (pares originais apagados, 26 referências novas com [AV], "seção N.N", erros de redação); 3, 4 e 5 (números, alertas e ocupação de pico) esperam a decisão sobre o financeiro (pendências); 2, 7 e 8 ficam para depois. Os `.md` de `_md/` ainda não têm essas mudanças.
-- **Cap. 2 reordenado (02/11):** contexto (2.1 experiência, 2.2 estabelecimentos, 2.3 público) → 2.4 estratégia e gestão do serviço → 2.5 viabilidade, no TMin v9; três parágrafos novos com "*". Depois dos caps. 2 e 3, reescrever o início do cap. 1 (pendências).
 - **Comentários do TMin v9 (01/11, 23h):** 8 dos 9 comentários e as remissões do cap. 2 respondidos em 18 parágrafos com "*", abaixo dos originais; a regra do cap. 2 mudou (sem remissão a capítulo no texto). Falta o autor escolher a versão de cada um e conferir Figueiredo para o comentário 7.
 - **Capítulos:** todos têm arquivo. Rascunhos novos em 31/10: caps. 4, 7, 10 e 11. Cap. 5 segue esboço de 15/10 (5.2 provisório); cap. 6 só com 6.3 e 6.4 ([status](textos/planejamento/status_capitulos.md)).
 - **Versões (31/10):** TMax (completo) e TMin (conciso) do texto; TMin dos caps. 2, 3, 5 e 9 escrito; PDF TMax v3 com 67 páginas e TMin v2 com 53 (TMin em `textos/capitulos/`, padrão; TMax em `textos/capitulos/TMax/`, só com os caps. que diferem; `.md` em `_md/`). Dados agregados como DMax; a DMin espera a descrição do autor (pendências, item 16).
@@ -36,7 +36,7 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 1. Alinhar os caps. 4, 7, 9, 10 e 11 ao modelo do desenho enxuto e decidir as demais recomendações do financeiro (pendências).
 2. Fazer a recodificação cega; depois, refazer o 5.2 e escrever 6.1, 6.2 e 6.5.
-3. Cortar o cap. 10 até o teto (melhorias C17), escrever o 6.6 e preencher 4.2 e 4.3.
+3. Cortar o cap. 10 até o teto (melhorias C17), escrever o 6.6 e decidir os itens D46 e D47 de `docs/melhorias-texto.md` (POF no cap. 2; remissões ao 6.1 e ao 6.2).
 
 ## Bloqueado ou aguardando
 

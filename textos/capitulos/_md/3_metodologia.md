@@ -66,15 +66,9 @@ As bases públicas dão o público e a renda (Censo 2022, estimativas de popula�
 
 ## 3.3 TRATAMENTO DOS DADOS
 
-### 3.3.1 Pipeline
-
 Os dados passam por coleta, tratamento e análise, cada etapa com scripts próprios. Os brutos com nomes de pessoas ficam fora do repositório público, todo sorteio usa semente fixa, e qualquer número do texto pode ser gerado de novo a partir dos scripts.
 
-### 3.3.2 Codificação das avaliações
-
-As avaliações são codificadas por análise de conteúdo (BARDIN, 2002, p. 104–108). A unidade de registro é o tema, trecho que expressa um juízo sobre um atributo do concorrente, e a enumeração é por presença. O dicionário tem 22 temas, os mesmos para elogio e crítica: jogos, equipe e serviço, comida e bebida, preço, ambiente e regras da casa. Ocasião da visita e público vão para uma coluna de contexto. A codificação foi feita com apoio de inteligência artificial, pelo dicionário, e é validada pela recodificação do autor (seção 3.3.3).
-
-### 3.3.3 Validação da coleta e da codificação
+As avaliações são codificadas por análise de conteúdo (BARDIN, 2002, p. 104–108). A unidade de registro é o tema, trecho que expressa um juízo sobre um atributo do concorrente, e a enumeração é por presença. O dicionário tem 22 temas, os mesmos para elogio e crítica: jogos, equipe e serviço, comida e bebida, preço, ambiente e regras da casa. Ocasião da visita e público vão para uma coluna de contexto. A codificação foi feita com apoio de inteligência artificial, pelo dicionário, e é validada pela recodificação do autor, descrita adiante.
 
 A validação estima o erro não amostral de cobertura, medida e processamento (GROVES et al., 2009, seç. 2.3), com procedimento próprio para cada bloco (Quadro 3.3).
 

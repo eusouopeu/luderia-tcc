@@ -69,12 +69,14 @@ Cada capítulo com arquivo de instrução próprio aponta para ele. Capítulos s
 
 ### 2. Referencial Teórico → [2_ref-teorico.md](2_ref-teorico.md)
 
-- **2.1 Empreendedorismo e plano de negócios** — função e componentes do plano.
-- **2.2 Estratégia e modelo de negócio** — Canvas, Oceano Azul e grade ERRC, cinco forças, SWOT, PESTEL.
-- **2.3 Lazer, jogo e economia da experiência** — conceito de lazer, consumo de experiências.
-- **2.4 Público de jogos de tabuleiro e cartas** — perfil do jogador de jogos de tabuleiro, Brasil e exterior.
-- **2.5 Estabelecimentos de lazer e entretenimento** — bares temáticos, terceiro lugar, luderias.
-- **2.6 Viabilidade econômico-financeira e decisão sob incerteza** — VPL, TIR, payback, ponto de equilíbrio, cenários, sensibilidade, simulação.
+- **Abertura** — função do plano de negócios e risco de abrir um negócio.
+- **2.1 Economia da experiência** — experiência como oferta, *competitive socialising*, terceiro lugar.
+- **2.2 Análise estratégica** — cinco forças, PESTEL, SWOT.
+- **2.3 Atributos de satisfação** — Kano e PRC.
+- **2.4 Ambiente de serviço e capacidade** — ambiente físico, capacidade perecível, lei de Little.
+- **2.5 Viabilidade e decisão sob incerteza** — VPL, TIR, payback, ponto de equilíbrio, gestão baseada em evidências, cenários, sensibilidade.
+
+Evidência empírica de outros contextos (estudos de luderias, de jogadores e do segmento) vai para o cap. 5, não para o cap. 2 (pedido do autor em 02/11/2026).
 
 ### 3. Metodologia → [4_metodologia.md](4_metodologia.md)
 
@@ -92,12 +94,14 @@ Cada capítulo com arquivo de instrução próprio aponta para ele. Capítulos s
 
 Escrito por último, em até duas páginas. Não traz informação que não esteja no restante do plano.
 
-- **4.1 Conceito do negócio** — o que é, para quem, proposta de valor em uma frase.
-- **4.2 Empreendedor** — perfil e competências relevantes.
-- **4.3 Missão, visão e valores**
-- **4.4 Síntese de mercado** — tamanho, concorrência, oportunidade.
-- **4.5 Síntese financeira** — investimento, VPL, TIR, payback, ponto de equilíbrio nos três cenários.
-- **4.6 Parecer de viabilidade** — veredito e condições críticas (pontos de ruptura).
+Texto corrido, sem títulos de seção (pedido do autor em 02/11/2026). Empreendedor e missão, visão e valores saíram do TMin. Conteúdo, em ordem:
+
+- **Conceito do negócio** — o que é, para quem, proposta de valor em uma frase.
+- **Empreendedor** — perfil e competências relevantes.
+- **Missão, visão e valores**
+- **Síntese de mercado** — tamanho, concorrência, oportunidade.
+- **Síntese financeira** — investimento, VPL, TIR, payback, ponto de equilíbrio nos três cenários.
+- **Parecer de viabilidade** — veredito e condições críticas (pontos de ruptura).
 
 ### 5. Análise de Mercado → [3_mercado.md](3_mercado.md)
 
@@ -105,7 +109,9 @@ Escrito por último, em até duas páginas. Não traz informação que não este
 - **5.2 Público-alvo e segmentação** — perfil do público; ocasiões de consumo; público em Salvador. Escrito depois do fim da análise do Bloco B2.
 - **5.3 Análise da concorrência** — Bloco B1 (14 metrópoles, mais de 100 avaliações), com destaque para Salvador.
 - **5.4 Fornecedores** — jogos, A&B, mobiliário.
-- **5.5 Macroambiente (PESTEL)**
+- **5.5 Macroambiente (PESTEL)** — as seis dimensões, sem subseções.
+
+No TMin, 5.2 e 5.5 não têm subseções, e a 5.3 abre com os concorrentes das 14 metrópoles antes das subseções (pedido do autor em 02/11/2026).
 
 ### 6. Plano de Marketing → [5_marketing.md](5_marketing.md)
 

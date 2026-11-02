@@ -49,15 +49,17 @@ Padrão de parágrafo: **afirmação → sustentação (citação ou dado) → l
 
 Teto do capítulo: **10 páginas** ([1_estrutura.md](1_estrutura.md), "Extensão"). Cada subcapítulo existe para justificar uma ferramenta ou um conceito que o plano usa depois; o que só contextualiza fica em uma página ou menos.
 
-Ordem (pedido do autor em 02/11/2026): primeiro o contexto do negócio (experiência, formato, público), depois as ferramentas de administração e, por fim, a viabilidade. O leitor conhece o negócio antes das ferramentas que o analisam, na mesma sequência do plano (mercado e cliente → operação → finanças).
+Ordem (pedido do autor em 02/11/2026): primeiro o conceito do negócio (experiência e formato), depois as ferramentas de administração e, por fim, a viabilidade. O leitor conhece o negócio antes das ferramentas que o analisam, na mesma sequência do plano (mercado e cliente → operação → finanças).
+
+Mudança de 02/11/2026 (pedido do autor): os antigos 2.2 (estabelecimentos de lazer e entretenimento) e 2.3 (público de jogos de tabuleiro) eram quase só evidência empírica de outros contextos e foram para o cap. 5: a expansão do segmento na 5.1.2, o perfil do jogador, o viés do Censo Ludopedia, Tóquio, Kviat e os atributos do KAM Insight na 5.2, os modelos de cobrança e a barreira de preço na 5.3.2, as mecânicas simples na 5.4. No cap. 2 ficam só os conceitos (*competitive socialising* e terceiro lugar, na 2.1). As subseções da antiga 2.4 viraram seções, e o cap. 2 não tem mais subseções de terceiro nível.
 
 | Subcapítulo | Conteúdo | Ferramenta ou conceito que justifica | Usado em | Teto (páginas) |
 |---|---|---|---|---|
 | **Abertura** | Função do plano de negócios (um parágrafo) | Estrutura do trabalho | Estrutura geral | 0,5 |
-| **2.1 Economia da experiência** | Experiência como oferta econômica | Proposta de valor do formato: a ocasião social | Caps. 5.2, 6.1 | 1 |
-| **2.2 Estabelecimentos de lazer e entretenimento** | *Competitive socialising* (a definição do termo fica aqui, e não na introdução); atributos exigidos | Modelo de negócio e concorrência | Caps. 5.3, 6.1 | 1 |
-| **2.3 Público de jogos de tabuleiro** | Perfil do jogador; viés das amostras; barreira de preço; acervo | Segmentação, taxa de entrada e acervo | Caps. 5.2, 6.2, 6.3 | 1,5 |
-| **2.4 Estratégia e gestão do serviço** | Cinco forças e PESTEL; Kano e PRC; ambiente de serviço e lei de Little; SWOT (fecha a seção, porque junta as análises) | Ferramentas de análise dos caps. 5, 6, 7 e 10 | Caps. 5, 6, 7, 10 | 3,5 |
+| **2.1 Economia da experiência** | Experiência como oferta econômica; *competitive socialising* (a definição do termo fica aqui, e não na introdução) e terceiro lugar; concentração do gasto com lazer na renda (POF) | Proposta de valor do formato: a ocasião social | Caps. 5.2, 6.1 | 1,5 |
+| **2.2 Análise estratégica** | Cinco forças e PESTEL; SWOT | Ferramentas de análise dos caps. 5 e 10 | Caps. 5.3, 5.5, 10.1 | 1,5 |
+| **2.3 Atributos de satisfação** | Kano e PRC | Atributos que não podem ser reduzidos | Caps. 6.1, 6.2 | 1,5 |
+| **2.4 Ambiente de serviço e capacidade** | Ambiente físico; capacidade perecível e lei de Little | Ambiente, mesas, giro e equipe | Caps. 7, 9.2 | 1 |
 | **2.5 Viabilidade e decisão sob incerteza** | VPL, TIR, payback, TMA, ponto de equilíbrio; gestão baseada em evidências e cenários; sensibilidade, tornado e ponto de ruptura. Monte Carlo só se o extra for feito | Modelo financeiro e análise de riscos | Caps. 3, 9, 10 | 2,5 |
 
 - A história das luderias (pioneiras, difusão no Brasil, números do setor) não entra no cap. 2: vai para a introdução, em um parágrafo.

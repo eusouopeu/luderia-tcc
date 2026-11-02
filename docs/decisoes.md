@@ -4,6 +4,9 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Menos divisões no TMin: saem 2.4.1 a 2.4.4 (viram as seções 2.2 a 2.4), 3.3.1 a 3.3.3, 5.2.1, 5.2.2, 5.3.1 e 5.5.1 a 5.5.3; cap. 4 em texto corrido, sem títulos | `docs/registro-de-alteracoes.md` (02/11/2026, 12:03) |
+| 02/11/2026 | Evidência empírica de outros contextos (antigos 2.2 e 2.3: Savills, Sarpa, Censo Ludopedia, Tóquio, Kviat, KAM Insight) sai do cap. 2 e vai para o cap. 5; o cap. 2 fica só com conceitos e ferramentas | `_instrucoes/2_ref-teorico.md` |
+| 02/11/2026 | PESTEL nas seis dimensões, sem subseções, cada uma aberta por "No campo <dimensão>" (modelo do Dance Forrónejo) | `_instrucoes/3_mercado.md` |
 | 02/11/2026 | B2: "indicações de jogos" vira tema próprio, separado de "explicação de jogos"; "preço de jogos" (preço de venda na loja da casa) entra como terceiro tema de preço; os dois nas duas colunas; contexto "apenas loja" para avaliação só de compra | `textos/instrumentos/dicionario_temas_B2.md` |
 | 02/11/2026 | A&B com cozinha completa desde a abertura (modelo da maioria dos concorrentes, maior fonte de receita, dados mais sólidos no B1); cardápio só com comidas recebidas prontas vira medida de perda máxima do G5 e do G6; etapas de expansão passam a ser 3 (abertura, acervo, mesas) | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Quadros com todas as bordas visíveis, pretas e da mesma espessura, mesmo com números; tornado em tons de roxo | `_instrucoes/1d_formatacao.md` |

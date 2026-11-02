@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 01/11/2026 (22h50), caps. 1 e 2 do TMin v9, com os parágrafos revisados a partir dos comentários do autor.
+Última análise: 02/11/2026 (12h05), caps. 2 a 5 do TMin v12, depois da redução de subseções e da ida dos antigos 2.2 e 2.3 para o cap. 5.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -18,7 +18,11 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
-**D36 — Duas páginas da Savills com datas diferentes (02/11/2026).** O 2.2 cita SAVILLS, [s.d.] (definição e mais de 800 locais) e SAVILLS, 2023 (alta de 38% desde 2018). As duas contagens são de momentos diferentes; a de [s.d.] precisa da data para o leitor entender a sequência (ver D16).
+**D46 — POF no referencial teórico (02/11/2026).** Cap. 2 (2.1, parágrafo com "*") × `_instrucoes/2_ref-teorico.md` (evidência empírica vai para o cap. 5). O parágrafo da POF 2017-2018 (lazer de R$ 14,87 por pessoa; 49,0% do gasto no décimo mais rico) é dado, não conceito, como os antigos 2.2 e 2.3, levados ao cap. 5 em 02/11. Sugestão: levá-lo à 5.2 (renda) ou ao campo social da PESTEL (5.5), que hoje só remete à 5.1.3 e à 5.2.
+
+**D47 — Quadro 1 remete a seções que o TMin não tem (02/11/2026).** Cap. 2 (Quadro 1) × cap. 6. O Quadro 1 aplica economia da experiência e Kano/PRC nas seções 6.1 e 6.2, e o cap. 4 cita a proposta de valor "da seção 6.1"; o cap. 6 do TMin só tem 6.3 e 6.4. Sugestão: manter enquanto o 6.1 e o 6.2 não forem escritos, e conferir a numeração quando entrarem.
+
+**D36 — Duas páginas da Savills com datas diferentes (02/11/2026).** O 2.1 cita SAVILLS, [s.d.] (definição) e a 5.1.2 cita SAVILLS, 2023 (alta de 38% desde 2018); o TMax cita a [s.d.] pelos mais de 800 locais. As duas contagens são de momentos diferentes; a de [s.d.] precisa da data para o leitor entender a sequência (ver D16).
 
 **D15 — Fontes da gestão baseada em evidências (01/11/2026).** Cap. 2 (abertura), parágrafo original e o revisado em verde no TMin v9. O texto põe as quatro fontes de evidência em Figueiredo (2020, p. 31) e inclui "organizações comparáveis"; no artigo, a quarta fonte (valores das partes interessadas) está na p. 32 e não há menção a organizações comparáveis, só a dados da própria organização. Sugestão: citar p. 31–32 e tirar "ou de organizações comparáveis", junto com o corte de citações pedido no comentário 7.
 
@@ -42,11 +46,9 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D05 — PRC anunciada e aplicada pela metade.** Cap. 2 (2.2.2) × cap. 5 (5.2.2). O cap. 2 define a PRC pela comparação da nota de quem elogia, de quem critica e de quem não menciona o aspecto (penalidade e recompensa contra uma referência). O cap. 5.2.2 traz só a nota média das menções negativas (2,83 na mediação; 3,11 no preço), sem a referência nem as positivas. Lido isolado, parece que a classificação Kano já saiu. Sugestão: no cap. 5 dar as três notas (ou a diferença para a referência) ou dizer que a classificação fica para o cap. 6. Em 31/10, o cap. 3 (3.5.1) define a PRC como a nota média com e sem crítica a cada tema, sem o grupo de quem elogia; alinhar com a definição do cap. 2.
 
-**D06 — PESTEL: o que o cap. 2 promete e o que o cap. 5 entrega.** Cap. 2 (2.2.1) × cap. 5 (5.5). O cap. 2 diz que o 5.5 usa "renda por bairro, tributos e taxa de juros". No cap. 5, a renda por bairro está em 5.2.1 e ainda não foi coletada, os tributos foram para o cap. 8 e o fator ambiental foi excluído (o cap. 2 lista seis dimensões). Sugestão: no cap. 2, citar os exemplos que de fato entram (juros, IPCA da alimentação fora do lar, aluguel comercial) e dizer que só entram dimensões com efeito mensurável.
+**D07 — Bares: rival ou substituto?** Cap. 2 (2.2) × cap. 5 (Quadro 5.2). O cap. 2 põe bares e restaurantes entre os substitutos. O Quadro 5.2 põe o "bar comum" na rivalidade ("alta no bar comum") e de novo nos substitutos. A mesma unidade em duas forças contraria a lógica de um grupo por unidade. Sugestão: decidir uma posição (ex.: bar com jogo ou quiz = rival; bar comum = substituto) e usá-la nos dois capítulos.
 
-**D07 — Bares: rival ou substituto?** Cap. 2 (2.2.1) × cap. 5 (Quadro 5.2). O cap. 2 põe bares e restaurantes entre os substitutos. O Quadro 5.2 põe o "bar comum" na rivalidade ("alta no bar comum") e de novo nos substitutos. A mesma unidade em duas forças contraria a lógica de um grupo por unidade. Sugestão: decidir uma posição (ex.: bar com jogo ou quiz = rival; bar comum = substituto) e usá-la nos dois capítulos.
-
-**D08 — "Principal custo fixo" sem dado e contra o próprio capítulo.** Cap. 5 (5.5.1 × 5.1.1). O 5.5.1 afirma que o aluguel é o principal custo fixo da luderia; o 5.1.1 mostra, na PAS 2024, pessoal em 25,1% e aluguel em 4,0% da receita da alimentação. Sugestão: tirar "principal" ou sustentar com cotação (N1) e FipeZAP; a frase orienta a sensibilidade do cap. 9.
+**D08 — "Principal custo fixo" sem dado e contra o próprio capítulo.** Cap. 5 (5.5, campo econômico × 5.1.1). A 5.5 afirma que o aluguel é o principal custo fixo da luderia; o 5.1.1 mostra, na PAS 2024, pessoal em 25,1% e aluguel em 4,0% da receita da alimentação. Sugestão: tirar "principal" ou sustentar com cotação (N1) e FipeZAP; a frase orienta a sensibilidade do cap. 9.
 
 **D09 — Fonte do IPCA.** Cap. 2 (2.6) × cap. 5 (5.5.1). O cap. 2 diz que a TMA parte "da Selic e do IPCA divulgados pelo Banco Central"; o IPCA é do IBGE (o BCB divulga a expectativa, no Focus), como o cap. 5 cita. Sugestão: "da Selic (BCB) e do IPCA (IBGE), com as expectativas do Focus".
 
@@ -56,19 +58,15 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D12 — Contagens do cap. 5 diferentes das do AGORA.** Cap. 5 × `AGORA.md` (15/10). Cardápio coletado: 26 casas no 5.3.4, 27 no AGORA. B2: "1.588 avaliações de 53 casas" no 5.2.2, contra 54 casas no objeto do B1 (5.3.1). Instagram: "49 luderias com perfil coletado" no 5.5.4, contra 18 casas parciais ou sem coleta no Notion. Sugestão: tirar os números dos arquivos de `dados/` na hora de revisar e dizer qual casa falta e por quê (a soma deve fechar com 54).
 
-**D13 — Perfil do frequentador "sai das avaliações".** Cap. 2 (2.4) × cap. 5 (5.2). O cap. 2 diz que o perfil do frequentador sai das avaliações do B2 (cap. 5.2). As avaliações não trazem idade, gênero ou renda; o 5.2.1 usa o IBGE para população e renda, e o B2 dá temas e ocasiões. Sugestão: no cap. 2, "as ocasiões de consumo e os atributos valorizados saem do B2; o tamanho do público, do IBGE".
-
 **D19 — Proporção de mercadorias da PAS em dois anos.** Cap. 5 (5.1.1) × cap. 9 (9.2). O cap. 5 dá 26,8% da receita líquida para mercadorias e materiais (PAS 2024, tabela 10758) e diz que o número entra no cap. 9; o cap. 9 usa 29,6% (PAS 2023, tabela 2613, a base que está no B4) para o CMV provável de 30%. Sugestão: baixar a PAS 2024 para o B4 e usar o mesmo ano nos dois capítulos.
 
 **D20 — Ocupação de dia útil em N6 entre as premissas críticas.** Cap. 9 (9.2 e 9.7) × `8_financeiro.md` (§2, regra de robustez). A taxa de ocupação de dia útil é a 4ª do tornado e só tem estimativa do autor. A regra admite isso com faixa larga e destaque no cap. 10, que ainda não existe. Sugestão: buscar fonte N3 (curva de horários de pico do Google Maps das luderias do B1) ou manter e levar ao cap. 10.
-
-**D24 — Reforma tributária: data de efeito.** Cap. 5 (5.4/PESTEL) diz que a LC 214/2025 "muda a tributação de bares e restaurantes a partir de 2026"; o cap. 8 (8.1) diz que o Simples continua e que a opção de recolher IBS e CBS por fora vale a partir de 2027. Os dois trechos têm `[AV]`; conferir no texto da lei e alinhar.
 
 **D26 — Codificação do B2: cap. 3 × instrução.** Cap. 3 (3.4.2 e 3.4.3) × `4_metodologia.md` §3.4. O cap. 3 descreve a prática atual — codificação temática com 22 temas, feita com apoio de inteligência artificial e validada por recodificação cega de 139 avaliações com kappa ≥ 0,70. A instrução ainda prevê dicionário automático de 11 aspectos, validado por kappa e F1 em 200 avaliações. Sugestão: decidir o instrumento (pendências, item 15, e "Instruções ainda desatualizadas") e alinhar a instrução ou o capítulo.
 
 **D27 — Frequência de preço nas avaliações: 12,8% × 2,7% e 9,3%.** Cap. 5 (5.2.2, Bardin provisório de 15/10: "preço e valor percebido" em 12,8%) × cap. 6 (6.3, temas do Notion de 30/10: preço da entrada em 44 e preço do consumo em 152 das 1.628 avaliações). São codificações diferentes; alinhar quando o 5.2 for refeito com o dicionário de 30/10.
 
-**D32 — Reforma tributária e ruído: o cap. 5 manda para o cap. 8, que não trata.** Cap. 5 (5.5, fator legal) × cap. 8 (8.1 e Quadro 02). O cap. 5 diz que o enquadramento tributário fica no cap. 8 e cita a transição da LC 214/2025 e a regulação municipal de ruído e horário noturno. O cap. 8 projeta o Simples por cinco anos sem citar a transição para CBS e IBS e não tem linha de ruído ou alvará noturno no Quadro 02. Sugestão: uma frase em 8.1 sobre o efeito da LC 214/2025 no Simples (após conferir o texto da lei) e uma linha de ruído no Quadro 02, ou tirar a remissão do cap. 5. (Item trazido da `main` em 31/10; conferir se o cap. 8 de 31/10 já trata.)
+**D32 — Ruído e horário: nenhum capítulo trata.** Cap. 5 (5.5, campo legal) × cap. 8 (Quadro 8.1). A reforma tributária já está no 8.1, e a PESTEL agora a resume no campo político. A regulação municipal de ruído e horário noturno segue `[BUSCAR]` na 5.5 e sem linha no Quadro 8.1. Sugestão: buscar a norma de Salvador e pôr uma linha no Quadro 8.1, ou tirar a menção da 5.5.
 
 **D33 — Equipe de 12 no modelo × 8 no cap. 7.** Cap. 9 (9.4, C06, Tabela 9.2) × caps. 7 (7.5, Quadro 7.2), 10 (Quadros 10.2 e 10.3), 4 (Quadro 4.1) e 11 (11.1). O modelo usa o quadro de referência de 12 pessoas; o cap. 7 dimensiona 8 pelo fluxo do B3, e os caps. 4, 10 e 11 trazem as duas versões. Sugestão: quando o autor decidir a equipe, levar a escolha ao `gerar_modelo_financeiro.py` e deixar uma só versão nos cinco capítulos.
 
@@ -117,8 +115,6 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 
 **C02 — Justificativa acadêmica repete a contextualização.** Cap. 1: "O único estudo de viabilidade identificado… (ASAKURA; SILVA; MELLO, 2018)" aparece duas vezes com a mesma redação (contextualização e 1.2), e "não há levantamento setorial" volta no 1.2 e no 5.1.4. O cap. 2 (2.6) cita o mesmo estudo com mais detalhe. Manter a menção do cap. 2 e uma só no cap. 1. Ganho: ~70 palavras.
 
-**C03 — 5.5.3 Social só repete o que já foi dito.** Cap. 5: o peso da alimentação fora do lar na Bahia (5.1.3) e os 30,5% de 20 a 39 anos (5.2.1) voltam no 5.5.3, junto de uma nota sobre Gilovich. O último parágrafo do 5.5.1 repete a renda do 5.2.1. Reduzir o 5.5.3 a uma linha no quadro PESTEL com remissão, ou fundi-lo ao 5.5.1. Ganho: ~80 palavras.
-
 ## Médio ganho
 
 **C18 — Aberturas de capítulo que descrevem o capítulo (01/11/2026).** Caps. 4, 5, 7, 9 e 11 abrem com "O capítulo parte de…", "As seções apresentam…", repetindo o 1.3. Sugestão: abrir com a tese ou o resultado do capítulo em uma frase (ex.: cap. 9, "O negócio não é viável nas premissas prováveis; esta seção mostra de onde vem o número") e cortar o roteiro das seções. Ganho: cerca de 250 palavras.
@@ -137,13 +133,11 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 
 **C07 — Prática de mercado dos indicadores (cap. 2, 2.6).** Os percentuais de Frezatti et al. (54% VPL, 38% TIR) e o uso do payback simples não mudam decisão do plano; o que importa é a crítica ao estudo de Ourinhos (sem sensibilidade). Reduzir o parágrafo a duas frases. Ganho: ~60 palavras.
 
-**C08 — Perfil do jogador que o próprio texto não usa (cap. 2, 2.4).** O 2.4 descreve o Censo Ludopedia (39% mulheres, 75% superior, 59% jogam mais de duas vezes por mês, 35% com mais de 50 jogos) e o Woods (96% homens) e depois diz que esses números não entram como premissa. Ficar com a conclusão (amostra autosselecionada, núcleo engajado) e o dado de preço, que entra no 6.3. Ganho: ~60 palavras.
-
 **C15 — Matriz de evidências no corpo do cap. 3 (3.6).** O cap. 3 fecha em cerca de 10,2 páginas, acima do teto de 10. A matriz (Quadro 3.5, meia página) pode ir para apêndice, com uma frase no 3.6, como a P4.2 permite. Ganho: cerca de 175 palavras.
 
 ## Baixo ganho
 
-**C20 — *Competitive socialising* definido duas vezes (01/11/2026; decidido em 02/11).** Cap. 1 (parágrafo revisado com "*") e cap. 2 (2.2, parágrafo com "*", com a definição completa). O autor decidiu que a definição fica no cap. 2: sai da introdução quando o início do cap. 1 for reescrito, depois dos caps. 2 e 3. Ganho: cerca de 40 palavras.
+**C20 — *Competitive socialising* definido duas vezes (01/11/2026; decidido em 02/11).** Cap. 1 (parágrafo revisado com "*") e cap. 2 (2.1, parágrafo com "*", com a definição completa; antes na 2.2). O autor decidiu que a definição fica no cap. 2: sai da introdução quando o início do cap. 1 for reescrito, depois dos caps. 2 e 3. Ganho: cerca de 40 palavras.
 
 **C13 — Estrutura das unidades da São Jogue repetida (cap. 9, 9.2 e 9.8).** Mesas, assentos e turnos do site de reservas aparecem nas premissas e de novo na checagem de capacidade; quando o cap. 3 descrever o B3, os dois trechos viram remissão. Ganho: ~40 palavras.
 
@@ -151,11 +145,7 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 
 **C16 — Consumo nas NFC-e da São Jogue em dois capítulos (6.3 e 9.2).** O gasto de R$ 23,91 por pessoa e o cardápio da São Jogue aparecem nos dois; no 9.2 basta remeter ao 6.3. Ganho: ~50 palavras.
 
-**C09 — Duas listas de seis forças do macroambiente (cap. 2, 2.2.1).** A lista de Kotler e Keller e a do PESTEL dizem o mesmo; ficar só com a do PESTEL, que é a usada no 5.5. Ganho: ~25 palavras.
-
 **C10 — Estrutura do relatório (cap. 1, 1.3).** Os parágrafos repetem o sumário e o Quadro 1 do cap. 2 (que já liga cada conceito ao capítulo). Uma frase por capítulo basta. Ganho: ~80 palavras.
-
-**C11 — Percentuais da KAM Insight no 2.3 e no 2.5.** Dados de um painel do Reino Unido (88%; 41% a 69%; ocasiões e atributos) que não viram premissa. Manter um só, o dos atributos básicos (segurança, preço, comida), que sustenta o argumento do 2.5. Ganho: ~50 palavras.
 
 **C12 — Detalhes que não mudam decisão no cap. 5.** Queda de 21,2% em 2020 (5.1.1) e expectativa do PIB (5.5.1). Ganho: ~25 palavras.
 
