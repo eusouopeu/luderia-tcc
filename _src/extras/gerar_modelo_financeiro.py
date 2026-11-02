@@ -89,8 +89,13 @@ N_SIMULACOES = 10_000
 SEMENTE = 20261031
 # Monte Carlo: faixas próprias pedidas pelo autor (2 ou 3 pessoas por mesa no
 # pessimista, 5 ou 6 no otimista) e premissas discretas (giros e pessoas por cesta)
-MC_TRIANGULAR = {"R02": (2.0, 6.0)}
-MC_DISCRETA = {"R15": (0.25, 0.50, 0.25), "R08": (0.25, 0.50, 0.25)}  # pesos de pess., prov. e otim.
+# Monte Carlo (02/11/2026, pedido do autor): distribuição PERT contínua entre o pessimista e o
+# otimista, com moda no provável; faixa própria onde indicado. A TMA fica fora do sorteio (o risco já
+# está no fluxo). As mesas ocupadas sorteiam a demanda, que pode passar do salão: o excedente aciona
+# a etapa de mesas (MC_EXPANSAO). Os gatilhos G5 e G6 do cap. 10 agem na simulação (calcula_mc).
+MC_FAIXA = {"R02": (2.0, 6.0)}
+MC_FIXAS = {"M01"}
+MC_EXPANSAO = 2  # mesas a mais na etapa 3, a partir do ano 2
 
 
 # ---------------------------------------------------------------- dados-fonte
@@ -121,6 +126,7 @@ def ler_fontes() -> dict:
     co = (ce["bebida_mediana"] + ce["entrada_ou_prato_mediana"]).dropna()
     f["couvert_media"], f["couvert_n"], f["couvert_mediana"] = cv.mean(), len(cv), cv.median()
     f["cesta_consumo_media"], f["cesta_consumo_n"], f["cesta_consumo_mediana"] = co.mean(), len(co), co.median()
+    f["couvert_q"], f["cesta_q"] = cv.quantile([.25, .75]).tolist(), co.quantile([.25, .75]).tolist()
     # B4
     fz = pd.read_csv(B4 / "financeiro" / "[B4] Aluguel Comercial por Capital 2026-07 (FipeZap).csv")
     fz = fz[fz["capital"] == "Salvador"].iloc[0]
@@ -179,6 +185,7 @@ def premissas(f) -> list[dict]:
     MESAS = 6
     vis_pico = vis["ocupacao_mesas_pico_pct"] / vis["ocupacao_mesas_media_pct"]
     teto = MESAS / vis_pico.mean()
+    f["razao_pico"], f["mesas_max"] = vis_pico.mean(), mo.max()
     r04 = [min(teto, mo.mean() * k) for k in (1 - x, 1, 1 + x)]
     # semana da São Jogue (3 dias de fim de semana e 4 úteis) na calibração do giro pessimista
     pess = dict(R02=2.5, R04=mo.mean() * (1 - x), R05=0.40, R16=3, R17=4)
@@ -211,12 +218,12 @@ def premissas(f) -> list[dict]:
         R("R05", "Mesas ocupadas em dia útil", "% do fim de semana", 0.40, 0.50, 0.60,
           "Estimativa do autor", "N6",
           "Cerca de metade do fim de semana; sem visita em dia útil."),
-        R("R06", "Taxa de entrada", "R$ por pessoa", round(cv, 2), round(cv, 2), round(cv, 2),
+        R("R06", "Taxa de entrada", "R$ por pessoa", round(f["couvert_q"][0], 2), round(cv, 2), round(f["couvert_q"][1], 2),
           f"B1, couvert ou taxa de jogo das {f['couvert_n']} casas que cobram", "N3",
-          f"Média das casas que cobram (mediana R$ {f['couvert_mediana']:.2f}); cobrada de todos os clientes, nos três cenários."),
-        R("R07", "Cesta de consumo", "R$ por cesta", round(cc, 2), round(cc, 2), round(cc, 2),
+          f"Média das casas que cobram (mediana R$ {f['couvert_mediana']:.2f}); pessimista e otimista no 1º e no 3º quartil (02/11/2026)."),
+        R("R07", "Cesta de consumo", "R$ por cesta", round(f["cesta_q"][0], 2), round(cc, 2), round(f["cesta_q"][1], 2),
           f"B1, cardápios de {f['cesta_consumo_n']} casas (uma bebida e uma entrada ou prato)", "N3",
-          f"Média das casas (mediana R$ {f['cesta_consumo_mediana']:.2f}); a variação entra pelas pessoas por cesta (R08)."),
+          f"Média das casas (mediana R$ {f['cesta_consumo_mediana']:.2f}); pessimista e otimista no 1º e no 3º quartil (02/11/2026)."),
         R("R08", "Pessoas por cesta de consumo", "pessoas", 3, 2, 1,
           "Decisão do autor", "N6",
           "Uma cesta por trio no pessimista, por dupla no provável e por pessoa no otimista."),
@@ -245,6 +252,9 @@ def premissas(f) -> list[dict]:
           "Decisão do autor (desenho enxuto)", "N3", "Sexta a domingo."),
         R("R17", "Dias abertos por semana, dia útil", "dias", 3, 3, 3,
           "Decisão do autor (desenho enxuto); B1", "N3", "Terça a quinta; segunda fechada."),
+        R("R18", "Variação anual da demanda a partir do ano 3", "% ao ano", -0.05, 0.0, 0.02,
+          "Estimativa do autor", "N6",
+          "Pessimista: fim da novidade e reação da São Jogue; otimista: boca a boca, até o teto do salão (02/11/2026)."),
         R("C01", "CMV de alimentos e bebidas", "% do A&B", 0.35, 0.30, 0.26,
           "IBGE PAS 2023, serviços de alimentação (B4)", "N2",
           f"Mercadorias e materiais = {f['pas_mercadorias_pct']:.1f}% da receita líquida do setor."),
@@ -281,6 +291,8 @@ def premissas(f) -> list[dict]:
         R("I06", "Gastos pré-operacionais", "R$", 30000, 20000, 12000, "Estimativa do autor", "N6", "Projeto, licenças, contratação e lançamento."),
         R("I07", "Caução do aluguel", "meses de aluguel", 3, 3, 2, "Estimativa do autor", "N6", "Prática de locação comercial."),
         R("I08", "Capital de giro", "meses de custo fixo", 3, 2, 1.5, "Estimativa do autor", "N6", "Cobre a rampa de maturação."),
+        R("I09", "Revenda dos ativos na saída (G6)", "% de mobiliário, cozinha, informática e acervo", 0.20, 0.30, 0.40,
+          "Estimativa do autor", "N6", "Só no Monte Carlo: valor recuperado quando o gatilho G6 encerra o negócio (02/11/2026)."),
         R("M01", "Taxa mínima de atratividade (real)", "% ao ano", 0.18, 0.15, 0.12,
           "BCB: Selic meta e Focus (B4); prêmio de risco do autor", "N2 + N6",
           f"Juro real de {f['juro_real']:.1f}% (Selic {f['selic']:.1f}% e IPCA esperado de {f['ipca_2027']:.1f}% para 2027) mais 3 a 9 p.p. de risco de pequeno negócio."),
@@ -302,12 +314,18 @@ def aliquota(f, anexo: str, rbt: float) -> float:
 def calcula(f, v: dict, folha: float) -> dict:
     m = []
     for mes in range(1, MESES + 1):
+        ano_ = (mes - 1) // 12 + 1
         rampa = min(1.0, v["R11"] + (1 - v["R11"]) * (mes - 1) / (v["R12"] - 1))
-        p_fds = v["R04"] * v["R02"] * v["R15"] * v["R16"] * rampa * v["M02"]
-        p_du = v["R04"] * v["R05"] * v["R02"] * v["R15"] * v["R17"] * rampa * v["M02"]
+        # tendência da demanda a partir do ano 3 (R18), limitada pelo salão: mesas ÷ razão pico/média;
+        # R01_exp só existe no Monte Carlo (etapa de mesas a partir do ano 2)
+        tend = (1 + v["R18"]) ** max(0, ano_ - 2)
+        mesas = v["R01"] if ano_ == 1 else v.get("R01_exp", v["R01"])
+        r04 = min(mesas / f["razao_pico"], v["R04"] * tend)
+        p_fds = r04 * v["R02"] * v["R15"] * v["R16"] * rampa * v["M02"]
+        p_du = r04 * v["R05"] * v["R02"] * v["R15"] * v["R17"] * rampa * v["M02"]
         taxa_fds, taxa_du = p_fds * v["R06"], p_du * v["R06"]
         ab = (p_fds + p_du) * v["R07"] / v["R08"]
-        alug = v["R09"] * v["R10"] * rampa
+        alug = v["R09"] * v["R10"] * rampa * tend
         m.append(dict(ano=(mes - 1) // 12 + 1, pessoas=p_fds + p_du, taxa=taxa_fds + taxa_du,
                       ab=ab, alug=alug, bruta=taxa_fds + taxa_du + ab + alug))
     m = pd.DataFrame(m)
@@ -385,30 +403,86 @@ def ruptura(f, prem, folha, pid: str):
     return (lo + hi) / 2
 
 
-def monte_carlo(f, prem, folha) -> dict:
-    """Simulação de Monte Carlo (§4.4): triangular com os três valores do
-    registro, salvo MC_TRIANGULAR (faixa própria) e MC_DISCRETA (giros e pessoas
-    por cesta); premissas independentes entre si."""
+def pert(rng, lo, moda, hi):
+    """Sorteio da distribuição PERT (beta com moda e extremos dados)."""
+    if hi <= lo:
+        return lo
+    a = 1 + 4 * (moda - lo) / (hi - lo)
+    b = 1 + 4 * (hi - moda) / (hi - lo)
+    return lo + (hi - lo) * rng.betavariate(a, b)
+
+
+def calcula_mc(f, v: dict, folha: float, quadro) -> dict:
+    """Um cenário do Monte Carlo com as decisões de gestão do cap. 10 (02/11/2026):
+    - etapa de mesas: se a demanda sorteada (R04) passa do teto do salão, a luderia abre mais
+      MC_EXPANSAO mesas a partir do ano 2, com mobiliário proporcional (I02) pago no fim do ano 1;
+    - G5: ano (a partir do 2) com EBITDA negativo corta, no ano seguinte, o meio período e um
+      cozinheiro (cardápio de comidas recebidas prontas), com encargos;
+    - G6: se o EBITDA segue negativo com o G5 ativo, a luderia fecha no fim desse ano e recupera
+      caução, capital de giro e a revenda dos ativos (I09); sem valor residual."""
+    teto = v["R01"] / f["razao_pico"]
+    expande = v["R04"] > teto
+    w = dict(v, R01_exp=v["R01"] + MC_EXPANSAO) if expande else v
+    r = calcula(f, w, folha)
+    inv, ano = r["inv"], r["ano"]
+    deprec = sum(inv[k] / VIDA_UTIL[k] for k in VIDA_UTIL)
+    sal = {fn: s_ for fn, _, _, s_, _ in quadro}
+    corte = (sal["Instrutor de jogos (recreador), meio período de 20 h"] + sal["Cozinheiro-chefe"]) * 12 * (1 + v["C06"]) * (1 + v["C07"])
+    revenda = v["I09"] * (inv["mobiliario"] + inv["cozinha"] + inv["ti"] + inv["acervo"])
+    fc = [-r["investimento"], float(ano.loc[1, "ebitda"])]
+    if expande:
+        fc[1] -= v["I02"] * MC_EXPANSAO / v["R01"]
+    g5, fechou, e = False, False, 0.0
+    for t in range(2, ANOS + 1):
+        e = float(ano.loc[t, "ebitda"]) + (corte if g5 else 0.0)
+        if g5 and e < 0:
+            fc.append(e + inv["caucao"] + inv["giro"] + revenda)
+            fc += [0.0] * (ANOS - t)
+            fechou = True
+            break
+        fc.append(e)
+        g5 = g5 or e < 0
+    if not fechou:
+        fc[-1] += inv["caucao"] + inv["giro"] + v["M03"] * max(0.0, (e - deprec) / v["M01"])
+    desc = [x / (1 + v["M01"]) ** t for t, x in enumerate(fc)]
+    acum, payback = 0.0, float("nan")
+    for t, dsc in enumerate(desc):
+        if t and acum < 0 <= acum + dsc:
+            payback = t - 1 + (-acum) / dsc
+            break
+        acum += dsc
+    return dict(vpl=sum(desc), payback=payback, expande=expande, g5=g5, fechou=fechou)
+
+
+def monte_carlo(f, prem, folha, quadro) -> dict:
+    """Simulação de Monte Carlo (§4.4): PERT entre o pessimista e o otimista, moda no provável, salvo
+    MC_FAIXA (faixa própria), MC_FIXAS (fora do sorteio) e as mesas ocupadas, que sorteiam a demanda até
+    o maior valor visto nas visitas; premissas independentes entre si; gatilhos e etapa em calcula_mc."""
     rng = random.Random(SEMENTE)
     base = valores(prem, "provavel")
-    vpls, paybacks = [], []
+    vpls, paybacks, exp, g5, fech = [], [], 0, 0, 0
     for _ in range(N_SIMULACOES):
         v = dict(base)
         for p in prem:
-            if p["id"] in MC_DISCRETA:
-                vals = (p["pess"], p["prov"], p["otim"])
-                v[p["id"]] = rng.choices(vals, MC_DISCRETA[p["id"]])[0]
-            elif p["pess"] != p["otim"]:
-                lo, hi = MC_TRIANGULAR.get(p["id"], (min(p["pess"], p["otim"]), max(p["pess"], p["otim"])))
-                v[p["id"]] = rng.triangular(lo, hi, p["prov"])
-        r = calcula(f, v, folha)
+            if p["id"] in MC_FIXAS or p["pess"] == p["otim"]:
+                continue
+            if p["id"] == "R04":
+                lo, hi = p["pess"], max(p["otim"], f["mesas_max"])
+            else:
+                lo, hi = MC_FAIXA.get(p["id"], (min(p["pess"], p["otim"]), max(p["pess"], p["otim"])))
+            v[p["id"]] = pert(rng, lo, p["prov"], hi)
+        r = calcula_mc(f, v, folha, quadro)
         vpls.append(r["vpl"])
         paybacks.append(r["payback"])
+        exp += r["expande"]; g5 += r["g5"]; fech += r["fechou"]
     s = pd.Series(vpls)
     pb = pd.Series(paybacks)
-    return dict(vpls=vpls, prob_positivo=(s > 0).mean(), media=s.mean(), p05=s.quantile(.05),
-                p25=s.quantile(.25), mediana=s.median(), p75=s.quantile(.75), p95=s.quantile(.95),
-                payback_5anos=pb.notna().mean(), payback_mediana=pb.dropna().median() if pb.notna().any() else float("nan"))
+    n = N_SIMULACOES
+    return dict(vpls=vpls, prob_positivo=(s > 0).mean(), media=s.mean(), p05=s.quantile(.05), p10=s.quantile(.10),
+                p25=s.quantile(.25), mediana=s.median(), p75=s.quantile(.75), p90=s.quantile(.90), p95=s.quantile(.95),
+                payback_5anos=pb.notna().mean(), payback_mediana=pb.dropna().median() if pb.notna().any() else float("nan"),
+                expansao=exp / n, g5=g5 / n, fechamento=fech / n,
+                erro_prob=((s > 0).mean() * (1 - (s > 0).mean()) / n) ** 0.5)
 
 
 # --------------------------------------------------------------- planilha
@@ -566,24 +640,32 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
     ws["A2"], ws["A3"] = "Mês", "Ano"
     linhas = {4: "Fator de rampa (% da ocupação madura)", 5: "Pessoas, fim de semana", 6: "Pessoas, dia útil",
               7: "Pessoas atendidas", 8: "Taxa de entrada, fim de semana (R$)", 9: "Taxa de entrada, dia útil (R$)",
-              10: "Alimentos e bebidas (R$)", 11: "Aluguel de jogos (R$)", 12: "Receita bruta (R$)"}
+              10: "Alimentos e bebidas (R$)", 11: "Aluguel de jogos (R$)", 12: "Receita bruta (R$)",
+              13: "Fator de tendência da demanda (R18, a partir do ano 3)", 14: "Mesas ocupadas, fim de semana (limitadas ao salão)",
+              16: "Teto de mesas ocupadas em média (R01 ÷ razão pico/média)", 17: "Razão pico/média das mesas ocupadas nas visitas (B3)"}
     for r, t in linhas.items():
         ws.cell(r, 1, t)
+    ws["B17"] = float(f["razao_pico"])
+    ws["B16"] = "=P_R01/B17"
     for i, c in enumerate(COL_MES):
         ws[f"{c}2"] = i + 1
         ws[f"{c}3"] = f"=ROUNDUP({c}2/12,0)"
         ws[f"{c}4"] = f"=MIN(1,P_R11+(1-P_R11)*({c}2-1)/(P_R12-1))"
-        ws[f"{c}5"] = f"=P_R04*P_R02*P_R15*P_R16*{c}4*P_M02"
-        ws[f"{c}6"] = f"=P_R04*P_R05*P_R02*P_R15*P_R17*{c}4*P_M02"
+        ws[f"{c}13"] = f"=(1+P_R18)^MAX(0,{c}3-2)"
+        ws[f"{c}14"] = f"=MIN($B$16,P_R04*{c}13)"
+        ws[f"{c}5"] = f"={c}14*P_R02*P_R15*P_R16*{c}4*P_M02"
+        ws[f"{c}6"] = f"={c}14*P_R05*P_R02*P_R15*P_R17*{c}4*P_M02"
         ws[f"{c}7"] = f"={c}5+{c}6"
         ws[f"{c}8"] = f"={c}5*P_R06"
         ws[f"{c}9"] = f"={c}6*P_R06"
         ws[f"{c}10"] = f"={c}7*P_R07/P_R08"
-        ws[f"{c}11"] = f"=P_R09*P_R10*{c}4"
+        ws[f"{c}11"] = f"=P_R09*P_R10*{c}4*{c}13"
         ws[f"{c}12"] = f"=SUM({c}8:{c}11)"
-    estilo(ws, 2, 12, 2 + MESES)
+    estilo(ws, 2, 14, 2 + MESES)
+    ws["B16"].number_format = ws["B17"].number_format = DEC2
     for c in COL_MES:
-        ws[f"{c}4"].number_format = PCT
+        ws[f"{c}4"].number_format = ws[f"{c}13"].number_format = PCT
+        ws[f"{c}14"].number_format = DEC2
         for r in (5, 6, 7):
             ws[f"{c}{r}"].number_format = DEC1
         for r in range(8, 13):
@@ -842,7 +924,11 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
                ("VPL, mediana (R$)", mc["mediana"], MOEDA), ("VPL, percentil 75 (R$)", mc["p75"], MOEDA),
                ("VPL, percentil 95 (R$)", mc["p95"], MOEDA),
                ("Probabilidade de payback descontado em até 5 anos", mc["payback_5anos"], PCT),
-               ("Payback descontado mediano, entre os que se pagam (anos)", mc["payback_mediana"], DEC2)]
+               ("Payback descontado mediano, entre os que se pagam (anos)", mc["payback_mediana"], DEC2),
+               ("VPL, percentil 10 (R$)", mc["p10"], MOEDA), ("VPL, percentil 90 (R$)", mc["p90"], MOEDA),
+               ("Cenários com a etapa de mesas", mc["expansao"], PCT), ("Cenários com o gatilho G5", mc["g5"], PCT),
+               ("Cenários encerrados pelo gatilho G6", mc["fechamento"], PCT),
+               ("Erro padrão da probabilidade de VPL > 0", mc["erro_prob"], PCT)]
     for i, (n, x, fmt) in enumerate(medidas):
         ws.cell(3 + i, 1, n)
         ws.cell(3 + i, 2, x if x == x else "não há")
@@ -851,8 +937,10 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
     estilo(ws, 2, rt, 2)
     for i, (_, _, fmt) in enumerate(medidas):
         ws.cell(3 + i, 2).number_format = fmt
-    nota(ws, rt + 2, "Fonte: elaboração própria. Distribuição triangular com os três valores da aba premissas, salvo: pessoas por mesa de 2 a 6 "
-         "(moda no provável); giros por mesa por dia de 1, 2 ou 3 e pessoas por cesta de 3, 2 ou 1, com probabilidade de 25%, 50% e 25%. "
+    nota(ws, rt + 2, "Fonte: elaboração própria. Distribuição PERT contínua entre o pessimista e o otimista da aba premissas, com moda no "
+         "provável, salvo: pessoas por mesa de 2 a 6; mesas ocupadas no fim de semana como demanda, até o maior valor das visitas; TMA fixa "
+         "no provável. Demanda acima do salão abre mais 2 mesas a partir do ano 2; EBITDA anual negativo a partir do ano 2 aciona o G5 "
+         "(corte do meio período e de um cozinheiro) e, se persistir, o G6 (encerramento com revenda dos ativos, I09). "
          f"Premissas independentes entre si; semente {SEMENTE}. Valores gravados pelo script.", 2)
     ws.column_dimensions["A"].width = 58
     ws.column_dimensions["B"].width = 18
@@ -983,7 +1071,7 @@ def main():
     tornado.sort(key=lambda t: -t["amplitude"])
     por_id = {p["id"]: p for p in prem}
     rupt = [dict(por_id[t["id"]], ruptura=ruptura(f, prem, folha, t["id"])) for t in tornado[:5]]
-    mc = monte_carlo(f, prem, folha)
+    mc = monte_carlo(f, prem, folha, quadro)
 
     sem_residual = {c: calcula(f, dict(valores(prem, c), M03=0), folha) for c in CENARIOS}
     wb = planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual)
@@ -1018,7 +1106,8 @@ def main():
     print("\nRuptura:")
     for rp in rupt:
         print(f"  {rp['id']} {rp['nome']}: provável {rp['prov']} → ruptura {rp['ruptura']}")
-    print(f"\nMonte Carlo ({N_SIMULACOES}): P(VPL>0) {mc['prob_positivo']:.1%} | média {mc['media']:,.0f} | P5 {mc['p05']:,.0f}"
+    print(f"\nMonte Carlo ({N_SIMULACOES}): etapa {mc['expansao']:.1%} | G5 {mc['g5']:.1%} | G6 {mc['fechamento']:.1%} | P10 {mc['p10']:,.0f} | P90 {mc['p90']:,.0f} | erro {mc['erro_prob']:.2%}")
+    print(f"Monte Carlo: P(VPL>0) {mc['prob_positivo']:.1%} | média {mc['media']:,.0f} | P5 {mc['p05']:,.0f}"
           f" | P25 {mc['p25']:,.0f} | mediana {mc['mediana']:,.0f} | P75 {mc['p75']:,.0f} | P95 {mc['p95']:,.0f}"
           f" | payback em 5 anos {mc['payback_5anos']:.1%} | payback mediano {mc['payback_mediana']:.2f}")
     print(f"\nOK: {SAIDA.relative_to(ROOT)}, {FIGURA.relative_to(ROOT)} e {FIGURA_MC.relative_to(ROOT)}")

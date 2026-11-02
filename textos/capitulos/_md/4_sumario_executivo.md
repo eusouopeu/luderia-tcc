@@ -24,7 +24,7 @@ Fonte: elaboração própria, com base no modelo financeiro (Apêndice E, 02/11/
 
 Nota: cenários pessimista e otimista na Tabela 9.4.
 
-O negócio fica no limite da viabilidade nas premissas prováveis: o VPL é de R$ 13 mil (Tabela 4.1), positivo só com o valor residual, e as cinco premissas críticas têm ruptura a menos de 2% do provável (seção 10.3). Na simulação de Monte Carlo, o VPL fica positivo em 44,9% dos cenários. O desenho enxuto reduz a perda máxima: a expansão só acontece quando a demanda medida pede, e seis gatilhos de perda definem as medidas, da troca da forma de cobrança ao encerramento (seção 10.4). O consumo por pessoa e as mesas ocupadas em dia útil não foram medidos e são as premissas que mais precisam de validação antes do investimento, junto com a cotação do ponto e da reforma.
+O negócio fica no limite da viabilidade nas premissas prováveis: o VPL é de R$ 13 mil (Tabela 4.1), positivo só com o valor residual, e as cinco premissas críticas têm ruptura a menos de 2% do provável (seção 10.3). Na simulação de Monte Carlo, o VPL fica positivo em 49,1% dos cenários. O desenho enxuto reduz a perda máxima: a expansão só acontece quando a demanda medida pede, e seis gatilhos de perda definem as medidas, da troca da forma de cobrança ao encerramento (seção 10.4). O consumo por pessoa e as mesas ocupadas em dia útil não foram medidos e são as premissas que mais precisam de validação antes do investimento, junto com a cotação do ponto e da reforma.
 
 **Referências citadas neste capítulo**
 

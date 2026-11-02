@@ -1,5 +1,8 @@
 # Estrutura do TCC
 
+
+**Título do trabalho (02/11/2026, decisão do autor):** *Dados em jogo: plano de negócios baseado em evidências para uma luderia em Salvador*.
+
 ## Descrição geral
 
 **Tipo:** TCC plano de negócios baseado em evidências.

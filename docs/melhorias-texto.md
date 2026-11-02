@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 02/11/2026 (noite), TMin v17: D50, D53, D54, D55, C22, C23 e C24 resolvidos; D49 reduzido (sem `[script]` nem a correção pelo IPCA); D51 corrigido (o texto do 10.1 já cruza FO, DO e FA). Itens anteriores citam a numeração antiga.
+Última análise: 02/11/2026 (noite), TMin v18: modelo com faixa na taxa e na cesta, tendência da demanda, PERT, TMA fixa no Monte Carlo e gatilhos na simulação; as cinco premissas críticas passam a ser pessoas por mesa, pessoas por cesta, mesas ocupadas no fim de semana, cesta e taxa de entrada (D13 resolvido). Itens anteriores citam a numeração antiga.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -33,8 +33,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D16 — Savills sem data (01/11/2026).** Cap. 1 e referências. A página da Savills citada como [s.d.] traz a data de 19 mar. 2024. Sugestão: SAVILLS, 2024, no texto e na referência.
 
 **D12 — Condição de viabilidade dita de três jeitos (01/11/2026).** Cap. 4 (4.6) × cap. 11 (11.1) × cap. 9 (9.7.3). O 4.6 diz que o negócio fica viável com a equipe de 8 e duas premissas juntas (5,0 mesas e cesta para 1,5 pessoa); o 11.1, com uma de três condições isoladas (5,3 mesas, 4,4 pessoas por mesa ou cesta para 1,4 pessoa); o 9.7.3, com 5,98 mesas e o quadro de 12. Sugestão: uma só formulação, com o mesmo quadro de pessoal, repetida igual nos três.
-
-**D13 — Taxa de entrada fixa fora da sensibilidade (01/11/2026).** Cap. 6 (6.3) × cap. 9 (Quadro 9.2) × cap. 5 (Figura 5.1). A taxa é a média nacional (R$ 18,68) em todos os cenários, embora a única concorrente de Salvador cobre R$ 28,00 no fim de semana e a renda da cidade seja a penúltima entre as capitais com luderia. O preço não entra no tornado nem no Monte Carlo. Sugestão: dar faixa à taxa (ex.: R$ 15,00 / 18,68 / 28,00) e mostrar o ponto de ruptura dela; justificar no 6.3 por que a média nacional e não o preço local.
 
 
 - **Giro: vocabulário × modelo (31/10/2026).** `_instrucoes/1b_escrita.md` (P6) define giro como horas de funcionamento ÷ permanência média; no modelo do cap. 9, só o otimista segue a definição, o pessimista sai das NFC-e e o provável é a média dos dois. Ajustar a definição do P6 (giro por mesa ocupada, com a faixa) ou declarar a diferença no cap. 3. A "taxa de ocupação" do P6 também deixou de ser premissa: o modelo usa mesas ocupadas.

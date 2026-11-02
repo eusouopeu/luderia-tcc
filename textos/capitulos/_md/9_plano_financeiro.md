@@ -20,7 +20,7 @@ As mesas do salão (R01), a permanência (R03) e o horário (R13 e R14) não ent
 
 ## 9.1 REGISTRO DE PREMISSAS
 
-O modelo tem 41 premissas, cada uma com faixa pessimista, provável e otimista, fonte e nível de evidência (Apêndice E). O Quadro 9.2 traz as dez que mais movem o VPL entre os extremos da faixa, na ordem do tornado (Figura 9.2).
+O modelo tem 43 premissas, cada uma com faixa pessimista, provável e otimista, fonte e nível de evidência (Apêndice E). O Quadro 9.2 traz as dez que mais movem o VPL entre os extremos da faixa, na ordem do tornado (Figura 9.2).
 
 **Quadro 9.2 – Premissas de maior impacto no VPL**
 
@@ -29,13 +29,13 @@ O modelo tem 41 premissas, cada uma com faixa pessimista, provável e otimista, 
 | R02 | Pessoas por mesa ocupada | 2,5 | 3,6 | 5,5 | 2.057.106 | N5 + N6 |
 | R08 | Pessoas por cesta de consumo | 3 | 2 | 1 | 1.721.730 | N6 |
 | R04 | Mesas ocupadas em média, fim de semana | 2,71 | 4,37 | 4,65 | 854.360 | N5 |
-| R15 | Giros por mesa por dia | 3,61 | 4,01 | 4,41 | 561.648 | N5 |
+| R07 | Cesta de consumo (R$ por cesta) | 38,38 | 50,82 | 65,70 | 701.943 | N3 |
+| R06 | Taxa de entrada (R$ por pessoa) | 12,50 | 18,68 | 21,88 | 631.891 | N3 |
+| R15 | Giros por mesa por dia (grupos por mesa ocupada) | 3,61 | 4,01 | 4,41 | 561.648 | N5 |
 | R05 | Mesas ocupadas em dia útil (% do fim de semana) | 40% | 50% | 60% | 384.725 | N6 |
+| R18 | Variação anual da demanda a partir do ano 3 (% ao ano) | -5% | 0% | 2% | 329.312 | N6 |
 | C03 | Área do ponto (m²) | 150 | 130 | 110 | 280.333 | N6 |
-| C04 | Aluguel comercial (R$/m² ao mês) | 64,35 | 54,15 | 45,00 | 248.318 | N2 |
-| C01 | CMV de A&B | 35% | 30% | 26% | 218.456 | N2 |
-| C09 | Utilidades (R$ por mês) | 6.000,00 | 4.500,00 | 3.500,00 | 202.514 | N6 |
-| I01 | Reforma (R$/m²) | 1.400,00 | 1.000,00 | 600,00 | 172.942 | N6 |
+| C04 | Aluguel comercial (R$ por m² ao mês) | 64,35 | 54,15 | 45,00 | 248.318 | N2 |
 
 Fonte: elaboração própria, com base no modelo financeiro (Apêndice E) e nos Blocos B1, B3 e B4 (10/2026).
 
@@ -43,7 +43,7 @@ As premissas de demanda vêm da contagem direta na São Jogue (B3). Nas quatro n
 
 Os giros partem de dois limites medidos. O pessimista, de 3,61 grupos por mesa ocupada por dia, é calibrado para atender as NFC-e emitidas por dia na Paralela, 16,1, com a semana de funcionamento da São Jogue; como cada cliente recebe uma nota, mas a nota só sai a pedido, esse número é piso (seção 9.5). O otimista, de 4,41, divide as 8 horas abertas por dia pela permanência média de 109 minutos. O provável fica na média dos dois: 4,01. As horas de menor movimento das concorrentes ficam fora do horário (cap. 7), o que sustenta o giro calibrado num dia de 10 horas.
 
-Os preços vêm dos cardápios dos concorrentes (seção 6.3). A taxa de entrada é a média das 22 casas que a cobram, R$ 18,68 por pessoa, em todos os dias. O consumo parte da cesta média de 36 casas, R$ 50,82, dividida por três pessoas no pessimista, duas no provável e uma no otimista: de R$ 16,94 a R$ 50,82 por pessoa. Taxa e cesta são iguais nos três cenários; a variação do consumo entra pelas pessoas por cesta. Com isso, o cenário muda o volume, e não o preço.
+Os preços vêm dos cardápios dos concorrentes (seção 6.3). A taxa de entrada é a média das 22 casas que a cobram, R$ 18,68 por pessoa, em todos os dias. O consumo parte da cesta média de 36 casas, R$ 50,82, dividida por três pessoas no pessimista, duas no provável e uma no otimista: de R$ 16,94 a R$ 50,82 por pessoa. Nos cenários, taxa e cesta vão do 1º ao 3º quartil dos concorrentes: de R$ 12,50 a R$ 21,88 e de R$ 38,38 a R$ 65,70. Com isso, o cenário muda o volume e o preço.
 
 Do lado dos custos, o modelo usa bases públicas sempre que possível: o aluguel do FipeZap, os salários das medianas de admissão em Salvador no Novo CAGED e o custo das mercadorias vendidas (CMV) de 30% da PAS 2023. O salário de admissão tende a ficar abaixo do pago a quem já está no cargo; por isso, o pessimista soma 11,4% aos salários, a maior distância entre o 3º quartil e a mediana de admissão entre os cargos da equipe. Área, reforma, mobiliário, cozinha e despesas gerais não têm cotação e ficam em N6.
 
@@ -136,13 +136,13 @@ O negócio fica no limite da viabilidade no cenário provável. O VPL a 15% real
 | Indicador | Pessimista | Provável | Otimista |
 |---|---|---|---|
 | Investimento inicial (R$) | 566.851 | 368.898 | 221.350 |
-| Receita bruta mensal madura (R$) | 16.006 | 55.138 | 165.443 |
-| Ponto de equilíbrio mensal (R$) | 56.063 | 44.828 | 37.193 |
-| EBITDA do ano 5 (R$) | -358.991 | 87.964 | 1.039.273 |
-| VPL a 15% real (R$) | -1.664.176 | 13.248 | 8.190.297 |
-| VPL sem valor residual (R$) | -1.664.176 | -120.849 | 3.411.062 |
-| TIR real (%) | n.a. | 16,0 | 416,2 |
-| Payback descontado (anos) | mais de 5 | 4,9 | 0,3 |
+| Receita bruta mensal madura (R$) | 9.782 | 55.138 | 208.036 |
+| Ponto de equilíbrio mensal (R$) | 56.559 | 44.828 | 38.000 |
+| EBITDA do ano 5 (R$) | -415.538 | 87.964 | 1.348.594 |
+| VPL a 15% real (R$) | -1.798.104 | 13.248 | 10.732.121 |
+| VPL sem valor residual (R$) | -1.798.104 | -120.849 | 4.490.243 |
+| TIR real (%) | n.a. | 16,0 | 537,2 |
+| Payback descontado (anos) | mais de 5 | 4,9 | 0,2 |
 
 Fonte: elaboração própria, com base no modelo financeiro (Apêndice E).
 
@@ -152,7 +152,7 @@ Nota: cada cenário põe todas as premissas no mesmo extremo ao mesmo tempo, uma
 
 O fluxo provável fica acima dos dois pisos de clientes da São Jogue. Pela numeração das NFC-e (B3), a Bela Vista emitiu 30,5 notas por dia e a Paralela, 16,1. Cada cliente recebe uma comanda e uma nota, mas a nota só sai quando o cliente pede: as notas são piso do número de clientes. O modelo atende 40,5 pessoas por dia de calendário no provável, 1,3 vez o piso da Bela Vista; o pessimista foi calibrado no piso da Paralela. A estimativa de demanda do cap. 6 completa a triangulação [pendente].
 
-Quatro premissas de demanda concentram o risco: pessoas por mesa, pessoas por cesta de consumo, mesas ocupadas no fim de semana e giros por dia. Cada uma move o VPL em mais de R$ 500 mil entre os extremos da faixa (Figura 9.2). Três têm dado próprio (N5); as pessoas por cesta são decisão do autor (N6), o que viola a regra de robustez e exige destaque no cap. 10.
+Seis premissas concentram o risco, cada uma com efeito de mais de R$ 500 mil sobre o VPL entre os extremos da faixa (Figura 9.2): quatro de demanda (pessoas por mesa, pessoas por cesta de consumo, mesas ocupadas no fim de semana e giros por dia) e duas de preço (cesta de consumo e taxa de entrada). As de demanda têm dado próprio (N5), salvo as pessoas por cesta, decisão do autor (N6), o que viola a regra de robustez e exige destaque no cap. 10; as de preço vêm dos cardápios do B1 (N3).
 
 **Figura 9.2 – Tornado: VPL com cada premissa no extremo da faixa e as demais no provável**
 
@@ -160,23 +160,23 @@ Quatro premissas de demanda concentram o risco: pessoas por mesa, pessoas por ce
 
 Fonte: elaboração própria, com base no modelo financeiro (Apêndice E).
 
-As pessoas por mesa e as mesas ocupadas pesam mais porque multiplicam a taxa e a cesta ao mesmo tempo; as pessoas por cesta pesam só sobre o A&B. O teto do salão encurta o lado otimista das mesas ocupadas: o ganho máximo é de R$ 185 mil, contra uma perda de R$ 669 mil no pessimista. Na simulação de Monte Carlo, com 10 mil cenários sorteados dentro das faixas, o VPL fica positivo em 44,9% deles (Apêndice F). O risco, portanto, pende para o lado da perda.
+As pessoas por mesa e as mesas ocupadas pesam mais porque multiplicam a taxa e a cesta ao mesmo tempo; as pessoas por cesta pesam só sobre o A&B. O teto do salão encurta o lado otimista das mesas ocupadas: o ganho máximo é de R$ 185 mil, contra uma perda de R$ 669 mil no pessimista. Na simulação de Monte Carlo, com 10 mil cenários sorteados dentro das faixas e com os gatilhos de contingência e a etapa de mesas agindo como decisões de gestão, o VPL fica positivo em 49,1% deles, com mediana de -R$ 19 mil (Apêndice F). O risco, portanto, pende para o lado da perda.
 
 As cinco premissas críticas têm ruptura colada no provável (Tabela 9.5). O negócio é viável enquanto as mesas ocupadas no fim de semana ficarem acima de 4,35 em média, com as demais premissas no provável: 0,5% abaixo do provável.
 
 **Tabela 9.5 – Ponto de ruptura das premissas críticas (VPL = 0)**
 
-| ID | Premissa | Provável | Ruptura | Faixa testada | Medido no B3 | Nível |
+| ID | Premissa | Provável | Ruptura | Faixa testada | Valor medido | Nível |
 |---|---|---|---|---|---|---|
-| R02 | Pessoas por mesa ocupada | 3,6 | 3,58 | 2,5 a 5,5 | 2,4 a 4,6 por visita | N5 + N6 |
+| R02 | Pessoas por mesa ocupada | 3,6 | 3,58 | 2,5 a 5,5 | 2,4 a 4,6 por visita (B3) | N5 + N6 |
 | R08 | Pessoas por cesta de consumo | 2 | 2,02 | 3 a 1 | n.a. | N6 |
-| R04 | Mesas ocupadas em média, fim de semana | 4,37 | 4,35 | 2,71 a 4,65 | 2,69 a 6,02 por visita | N5 |
-| R15 | Giros por mesa por dia | 4,01 | 3,99 | 3,61 a 4,41 | 3,61 (NFC-e) a 4,41 (horário ÷ permanência) | N5 |
-| R05 | Mesas ocupadas em dia útil (% do fim de semana) | 50 | 49,3 | 40 a 60 | n.a. | N6 |
+| R04 | Mesas ocupadas em média, fim de semana | 4,37 | 4,35 | 2,71 a 4,65 | 2,69 a 6,02 por visita (B3) | N5 |
+| R07 | Cesta de consumo (R$) | 50,82 | 50,34 | 38,38 a 65,70 | 38,38 a 65,70, quartis de 36 casas (B1) | N3 |
+| R06 | Taxa de entrada (R$ por pessoa) | 18,68 | 18,51 | 12,50 a 21,88 | 12,50 a 21,88, quartis de 22 casas (B1) | N3 |
 
-Fonte: elaboração própria, com base no modelo financeiro (Apêndice E) e no Bloco B3 (10/10/2026 a 30/10/2026).
+Fonte: elaboração própria, com base no modelo financeiro (Apêndice E) e nos Blocos B1 e B3 (10/10/2026 a 30/10/2026).
 
-Nota: n.a.: premissa sem medida no B3.
+Nota: n.a.: premissa sem medida. Cesta e taxa variam entre o 1º e o 3º quartil dos concorrentes do B1.
 
 Todas as rupturas ficam dentro das faixas e a menos de 2% do provável. O provável é o ponto de equilíbrio econômico do negócio: qualquer desvio das premissas críticas decide o sinal do VPL. A plausibilidade de ficar acima das rupturas, os gatilhos de contingência e as opções de expansão são discutidos no cap. 10.
 

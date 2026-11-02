@@ -2,7 +2,7 @@
 
 > **Rascunho (02/11/2026).** Escrito antes da recodificação cega do B2, com o desenho enxuto do cap. 7. Os parágrafos dos objetivos (ii) e (iii) dependem do 5.2, do 6.1 e do 6.6 e estão marcados `[após a recodificação]`.
 
-A luderia em Salvador fica no limite da viabilidade nas premissas prováveis deste plano. Com o desenho enxuto do cap. 7 (6 mesas, 48 horas por semana e equipe de 6), o VPL é de R$ 13 mil à TMA real de 15%, e a TIR, de 16,0% (Tabela 9.5). A receita madura cobre a operação com 23% de folga sobre o equilíbrio operacional, mas o investimento só é remunerado com o valor residual: sem ele, o VPL é negativo em R$ 121 mil. A margem é estreita. As cinco premissas críticas têm ruptura a menos de 2% do provável: grupos de 3,58 pessoas, uma cesta de consumo para 2,02 pessoas, 4,35 mesas ocupadas no fim de semana, 3,99 giros por dia e dia útil com 49,3% da ocupação do fim de semana (seção 10.3). Na simulação de Monte Carlo, o VPL fica positivo em 44,9% dos cenários. A decisão de investir depende de confirmar o consumo por pessoa e o fluxo fora das noites de pico, que este trabalho não mediu. O investimento por etapas e os gatilhos de perda máxima limitam a perda se a demanda ficar abaixo do provável (seção 10.4).
+A luderia em Salvador fica no limite da viabilidade nas premissas prováveis deste plano. Com o desenho enxuto do cap. 7 (6 mesas, 48 horas por semana e equipe de 6), o VPL é de R$ 13 mil à TMA real de 15%, e a TIR, de 16,0% (Tabela 9.5). A receita madura cobre a operação com 23% de folga sobre o equilíbrio operacional, mas o investimento só é remunerado com o valor residual: sem ele, o VPL é negativo em R$ 121 mil. A margem é estreita. As cinco premissas críticas têm ruptura a menos de 2% do provável: grupos de 3,58 pessoas, uma cesta de consumo para 2,02 pessoas, 4,35 mesas ocupadas no fim de semana, cesta de R$ 50,34 e taxa de entrada de R$ 18,51 (seção 10.3). Na simulação de Monte Carlo, o VPL fica positivo em 49,1% dos cenários. A decisão de investir depende de confirmar o consumo por pessoa e o fluxo fora das noites de pico, que este trabalho não mediu. O investimento por etapas e os gatilhos de perda máxima limitam a perda se a demanda ficar abaixo do provável (seção 10.4).
 
 ## 11.1 SÍNTESE DOS OBJETIVOS
 
@@ -14,7 +14,7 @@ O objetivo (iii) foi estimar a demanda, a ocupação e o giro. As quatro visitas
 
 O objetivo (iv) foi dimensionar a operação e os requisitos jurídicos. O salão de 6 mesas tem capacidade de 95 pessoas por dia aberto, e a demanda provável usa 50% dela; uma equipe de 6 pessoas atende o fluxo medido, com no máximo 2 mesas por instrutor no pico (cap. 7). A empresa é uma sociedade limitada no Simples Nacional, que custa 8,9% da receita (cap. 8).
 
-O objetivo (v) foi projetar investimento, receitas, custos e indicadores com premissas rastreáveis. O investimento provável é de R$ 369 mil, e as 41 premissas do modelo têm faixa, fonte e nível de evidência (cap. 9).
+O objetivo (v) foi projetar investimento, receitas, custos e indicadores com premissas rastreáveis. O investimento provável é de R$ 369 mil, e as 43 premissas do modelo têm faixa, fonte e nível de evidência (cap. 9).
 
 O objetivo (vi) foi identificar as premissas críticas e os pontos de ruptura. São cinco, todas de demanda: pessoas por mesa, pessoas por cesta de consumo, mesas ocupadas no fim de semana, giros por dia e mesas ocupadas em dia útil. Todas têm ruptura a menos de 2% do provável, e as pessoas por cesta não têm medida (cap. 10). É a premissa de evidência mais fraca do plano.
 

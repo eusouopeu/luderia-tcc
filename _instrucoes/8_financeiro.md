@@ -97,6 +97,8 @@ Para cada premissa crítica, calcular o valor que zera o VPL. Redação padrão:
 ### 4.4 Simulação de Monte Carlo — extra, só se sobrar tempo
 Só depois de o plano estar completo; se feita, o resultado vai para apêndice e o corpo cita só a probabilidade de VPL > 0.
 Distribuições triangulares com os três valores do registro; 10 mil simulações; resultado como probabilidade de VPL > 0 e distribuição do payback. Declarar a hipótese de independência entre premissas ou modelar correlações relevantes (ex.: ocupação × ticket).
+
+**Desde 02/11/2026 (pedido do autor):** distribuição PERT contínua entre o pessimista e o otimista, moda no provável (também para giros e pessoas por cesta, antes discretos); TMA fora do sorteio (fixa no provável); mesas ocupadas sorteadas como demanda até o maior valor das visitas; taxa de entrada e cesta com faixa nos quartis do B1; tendência anual da demanda a partir do ano 3 (R18); etapa de mesas e gatilhos G5 e G6 dentro da simulação (`calcula_mc`, com revenda I09). Saídas: P(VPL > 0) com erro padrão, percentis 5 a 95, frequência da etapa e dos gatilhos. Correlação entre premissas e valor residual incerto ficam em aberto (`docs/pendencias.md`).
 **Salários:** cada cargo varia de 0% a +x% sobre o salário de admissão do Novo CAGED (o CAGED é o piso da faixa; nunca abaixo dele). O x é premissa própria, com fonte e nível, ainda a definir (pendências).
 
 ## 5. Checagens de coerência

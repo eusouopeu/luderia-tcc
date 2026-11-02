@@ -134,7 +134,7 @@ def dados():
     prem = g.premissas(f)
     quadro = g.quadro_pessoal(f)
     folha = sum(q * s for _, _, q, s, _ in quadro)
-    mc = g.monte_carlo(f, prem, folha)
+    mc = g.monte_carlo(f, prem, folha, quadro)
     est = pd.read_excel(B1 / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx", sheet_name="estabelecimentos")
     vis = pd.read_csv(B3 / "contagem_resumo_visitas.csv", sep=";", encoding="utf-8-sig")
     vis = vis[vis["observador"] != "media"]
@@ -276,22 +276,34 @@ def apendice_f(d):
     pct = lambda x: num(round(100 * x, 1))
     t = [["Medida", "Valor"],
          ["Probabilidade de VPL > 0 (%)", pct(mc["prob_positivo"])],
+         ["Erro padrão da probabilidade (pontos percentuais)", num(round(100 * mc["erro_prob"], 1))],
          ["VPL médio (R$)", brl(mc["media"], 0)],
          ["VPL, percentil 5 (R$)", brl(mc["p05"], 0)],
+         ["VPL, percentil 10 (R$)", brl(mc["p10"], 0)],
          ["VPL, percentil 25 (R$)", brl(mc["p25"], 0)],
          ["VPL, mediana (R$)", brl(mc["mediana"], 0)],
          ["VPL, percentil 75 (R$)", brl(mc["p75"], 0)],
+         ["VPL, percentil 90 (R$)", brl(mc["p90"], 0)],
          ["VPL, percentil 95 (R$)", brl(mc["p95"], 0)],
+         ["Cenários com a etapa de mesas (%)", pct(mc["expansao"])],
+         ["Cenários com o gatilho G5 (%)", pct(mc["g5"])],
+         ["Cenários encerrados pelo gatilho G6 (%)", pct(mc["fechamento"])],
          ["Cenários com payback em até 5 anos (%)", pct(mc["payback_5anos"])],
          ["Payback descontado mediano (anos)", num(round(mc["payback_mediana"], 1))]]
     return [titulo("APÊNDICE F – SIMULAÇÃO DE MONTE CARLO"),
             par(f"A simulação sorteia {brl(g.N_SIMULACOES, 0)} cenários do modelo do cap. 9. Em cada cenário, toda premissa com faixa "
-                "recebe um valor de uma distribuição triangular entre o pessimista e o otimista, com moda no provável. Há duas "
-                "exceções: as pessoas por mesa (R02) vão de 2 a 6, e os giros por dia (R15) e as pessoas por cesta (R08) assumem só "
-                "os três valores do registro, com pesos de 25%, 50% e 25%. A semente é fixa, e o resultado se repete a cada execução."),
-            par("As premissas são sorteadas de forma independente. A simulação não capta, por exemplo, que um mês de pouca ocupação "
-                "tende a ter também grupos menores, o que estreita a distribuição. Mesmo assim, ela mede o efeito conjunto das "
-                "faixas melhor que os cenários extremos, que põem todas as premissas no mesmo lado ao mesmo tempo (Tabela F.1 e Figura F.1)."),
+                "recebe um valor contínuo de uma distribuição PERT entre o pessimista e o otimista, com moda no provável: a PERT dá menos "
+                "peso às pontas que a triangular. Há três exceções. As pessoas por mesa (R02) vão de 2 a 6. As mesas ocupadas no fim de "
+                "semana (R04) representam a demanda e vão até 6,02, o maior valor das visitas, mesmo acima do que o salão comporta. A taxa "
+                "mínima de atratividade fica no provável, 15%: o risco já está no fluxo de caixa, e sorteá-la contaria o risco duas vezes."),
+            par("A simulação inclui as decisões de gestão do cap. 10. Se a demanda sorteada passa do salão, a luderia abre mais 2 mesas a "
+                "partir do ano 2, com o mobiliário proporcional pago no fim do ano 1. Se o EBITDA de um ano, a partir do ano 2, fica "
+                "negativo, o gatilho G5 corta o meio período e um cozinheiro no ano seguinte. Se o EBITDA segue negativo, o gatilho G6 "
+                "encerra o negócio no fim desse ano, com a devolução da caução e do capital de giro e a revenda dos ativos (I09), sem valor "
+                "residual. A semente é fixa, e o resultado se repete a cada execução."),
+            par("As premissas são sorteadas de forma independente. A simulação mede o efeito conjunto das faixas melhor que os cenários "
+                "extremos, que põem todas as premissas no mesmo lado ao mesmo tempo (Tabela F.1 e Figura F.1). Com 10 mil cenários, a "
+                "probabilidade de VPL positivo tem erro padrão de 0,5 ponto percentual."),
             legenda("Tabela F.1 – Resultados da simulação de Monte Carlo"),
             tabela("Tabela", [6071, 3000], t, ["left", "right"]),
             fonte("Fonte: elaboração própria, com base no modelo financeiro (02/11/2026)."),

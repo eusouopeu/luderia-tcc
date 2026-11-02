@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Título: *Dados em jogo: plano de negócios baseado em evidências para uma luderia em Salvador* | `_instrucoes/1_estrutura.md` |
+| 02/11/2026 | Modelo: taxa de entrada e cesta com faixa nos quartis do B1; tendência anual da demanda a partir do ano 3 (R18, de -5% a +2%); Monte Carlo com PERT contínua, TMA fixa, demanda acima do salão abrindo 2 mesas e gatilhos G5 e G6 com revenda dos ativos (I09) | `_instrucoes/8_financeiro.md` §4.4 |
 | 02/11/2026 | B2: contexto "público" (iniciante e hobbyista) retirado da codificação, do Notion, da análise de Bardin e dos arquivos; resquício de premissa abandonada | `textos/instrumentos/dicionario_temas_B2.md` |
 | 02/11/2026 | B2: ocasião só quando o cliente foi com eles; não-elogio não é crítica; funcionário sem adjetivo de serviço não é atendimento; aniversário também marca comemorações e grupos; "explicam poucos jogos" é explicação negativa | `textos/instrumentos/dicionario_temas_B2.md`, §3 |
 | 02/11/2026 | Pré-textuais no padrão do Dance Forrónejo: listas de figuras, de quadros, de tabelas e de abreviações e siglas, e sumário, numa seção sem número de página; refeitos por script a cada versão | `_instrucoes/1c_versoes.md` |
