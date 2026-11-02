@@ -68,7 +68,7 @@ Salvador tem a menor oferta de luderias por habitante entre as metrópoles com a
 
 ### 5.3.3 Concorrência em Salvador
 
-A São Jogue é a única luderia de Salvador no recorte. A unidade Bela Vista (Pernambués) tem nota 4,8, 787 avaliações e abre 68 horas por semana — a quinta maior carga horária do recorte; a unidade Paralela, aberta há menos tempo, tem 16 avaliações e fica abaixo do corte. Fonte: elaborado pelo próprio autor com base no Google Maps (Bloco B1, 2026). A localização das duas unidades, no eixo da Avenida Paralela, define a área já atendida e orienta a escolha de bairro em 6.4.
+A São Jogue é a única luderia de Salvador no recorte. A unidade Bela Vista, no Shopping Bela Vista (Pernambués), tem nota 4,8, 787 avaliações e abre 68 horas por semana — a quinta maior carga horária do recorte; a unidade Paralela, no Shopping Paralela, aberta há menos tempo, tem 16 avaliações e fica abaixo do corte. Fonte: elaborado pelo próprio autor com base no Google Maps (Bloco B1, 2026). A localização das duas unidades, no eixo da Avenida Paralela, define a área já atendida e orienta a escolha de bairro em 6.4.
 
 O aluguel de jogos para levar para casa é o substituto mais próximo. A plataforma Acervo de Jogos lista seis acervos em Salvador, entre eles Boar Games (549 títulos), Coliseu dos Jogos (373) e a própria São Jogue (351). Fonte: elaborado pelo próprio autor com base em Acervo de Jogos (2026). O aluguel compete com o jogo na mesa, mas não com a ocasião social e o consumo de alimentos e bebidas.
 

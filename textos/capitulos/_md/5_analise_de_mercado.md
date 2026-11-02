@@ -56,7 +56,7 @@ A nota mediana é 4,7 (de 4,2 a 5,0), e o volume mediano de avaliações é 621 
 
 Salvador tem a menor oferta de luderias por habitante entre as metrópoles com ao menos uma casa: cerca de 0,04 por 100 mil habitantes, contra 0,16 em São Paulo e 0,33 em Curitiba `[script]`. A baixa densidade indica espaço para um segundo concorrente, mas também pode refletir a renda menor, e a ocupação observada na São Jogue (Bloco B3) testa as duas leituras.
 
-Na prática, a concorrência local se resume a uma casa. A São Jogue é a única luderia de Salvador no recorte. A unidade Bela Vista tem nota 4,8, 787 avaliações e abre 68 horas por semana; a Paralela, mais nova, tem 16 avaliações. As duas ficam no eixo da Avenida Paralela, o que orienta a escolha de bairro (6.4). O aluguel de jogos para levar para casa é o substituto mais próximo, com seis acervos em Salvador na plataforma Acervo de Jogos, mas não compete com a ocasião social.
+Na prática, a concorrência local se resume a uma casa. A São Jogue é a única luderia de Salvador no recorte. A unidade Bela Vista tem nota 4,8, 787 avaliações e abre 68 horas por semana; a Paralela, mais nova, tem 16 avaliações. As duas ficam dentro de shoppings (Bela Vista e Paralela), no eixo da Avenida Paralela, o que orienta a escolha de bairro (6.4). O aluguel de jogos para levar para casa é o substituto mais próximo, com seis acervos em Salvador na plataforma Acervo de Jogos, mas não compete com a ocasião social.
 
 ### 5.3.3 Acervo e preço
 

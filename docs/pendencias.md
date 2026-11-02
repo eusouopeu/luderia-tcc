@@ -68,6 +68,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 ## Divergências entre documentos, ainda sem correção
 
+- **Distância ao shopping de quem fica dentro dele (02/11/2026).** O coletor de entorno mede do pino da casa ao pino do shopping: a São Jogue Bela Vista aparece a 118 m do Shopping Bela Vista e a Paladins Game Store a 5 m da Galeria Free Shop, onde ficam (Places API, `containingPlaces`). Decidir se o `B1-b_resumo.py` lê o `containingPlaces` e grava `dentro_de_shopping` com distância 0. Os PDFs do TMin v9 e do TMax v5 ainda têm a frase antiga do 6.4.
+
 - **Couvert por prints do Instagram (31/10/2026), a conferir:** (1) Covil: o print de 29/04/2024 é do perfil @covilgb, que atende mais de uma unidade, e um reel marcado em Covil Game Bar SBC anuncia R$ 20; a casa do B1 fica em Guarulhos; (2) Toca do Rato: o Notion trazia, sem fonte, "15 o dia inteiro; nos sábados, 15 por 4 horas, ou 25 o dia inteiro"; o story de 04/10/2025 diz R$ 5 por pessoa, valor que entrou na planilha; (3) Café Geek: o Ludoporte é "individual", mas o print não diz se cada pessoa do grupo compra o seu; entrou como por pessoa; (4) os 16 prints estão em `dados/[B1] Estabelecimentos e cardapios/Precificação e promoções/Couverts : Entradas/`, fora do git; pela convenção, iriam para `_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/`; (5) BoardZ: o Day Pass entrou como taxa de jogo, mas a casa não cobra entrada, e quem joga pouco paga só por jogo, com valor por título não divulgado.
 - **Site de apresentação, couvert:** `b1-achados.js`, `s8-b1-resultados.json` e outros textos do site ainda trazem as contagens de couvert anteriores a 31/10 (só o `b1-estatisticas.json` foi regerado).
 
