@@ -2260,3 +2260,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: totais dos temas novos no "2 - Comentários" pendentes de conferência por SQL (cota do Notion esgotada).
 **Depois**: conferidos por SQL: 55 + 4 "indicações de jogos", 29 + 6 "preço de jogos", 35 "apenas loja", em 1.628 comentários; iguais aos da revisão (diferença zero).
 **Justificativa**: fechar a conferência pendente da revisão de 02/11.
+
+### 13:22
+**Objeto**: `docs/pendencias.md` (item 15e) e `AGORA.md`
+**Antes**: recodificação cega do autor ("2R", 139 linhas) sem comparação com a codificação do Claude.
+**Depois**: comparação preliminar registrada: temas com kappa agrupado 0,83 (72% das marcas em comum); 0,87 sem 11 linhas que parecem não lidas; Contexto com kappa 0,55; "Costuma ir" e "Voltará" sem comparação (o Claude não os codificou).
+**Justificativa**: pedido do autor (medir quanto a recodificação dele se parece com a do Claude). Resultado interno; não entra nos textos oficiais.
