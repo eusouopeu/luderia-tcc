@@ -14,7 +14,7 @@ A mesma pesquisa mostra a estrutura de custos dos serviços de alimentação. Em
 
 ### 5.1.2 Jogos de tabuleiro e luderias
 
-Os jogos de tabuleiro e cartas passaram de 9,1% para 13,1% das vendas da indústria de brinquedos entre 2017 e 2025 (ABRINQ, 2026). O número sustenta o crescimento do hábito de jogar, não a demanda por luderias. Não há levantamento oficial nem setorial sobre luderias, e o formato não tem código próprio na CNAE (cap. 8.1): o tamanho do segmento é medido pelo Bloco B1 (seção 5.3).
+Os jogos de tabuleiro e cartas passaram de 9,1% para 13,1% das vendas da indústria de brinquedos entre 2017 e 2025 (ABRINQ, 2026). O número sustenta o crescimento do hábito de jogar, não a demanda por luderias. Não há levantamento oficial nem setorial sobre luderias, e o formato não tem código próprio na CNAE (seção 8.1): o tamanho do segmento é medido pelo Bloco B1 (seção 5.3).
 
 ### 5.1.3 Alimentação fora do lar na Bahia
 
@@ -24,7 +24,7 @@ O consumo fora do domicílio pesa mais no orçamento baiano que na média nacion
 
 ### 5.2.1 População e renda
 
-Do setor, a análise passa ao público da cidade. Salvador tem público em número, mas com renda menor. A população estimada em 2026 é de 2.559.945 habitantes (IBGE, Estimativas da População), e 30,5% dos residentes tinham de 20 a 39 anos no Censo 2022. O rendimento médio do trabalho, de R$ 3.417,00 no 2º trimestre de 2026, coloca Salvador em 22º lugar entre as 27 capitais e em penúltimo entre as que têm luderia no B1 (Figura 5.1), e o rendimento domiciliar per capita caiu de R$ 1.985,00, em 2023, para R$ 1.900,00, em 2025 (IBGE, PNAD Contínua). A renda menor pesa na definição do preço de entrada (6.3), e o ponto precisa estar onde a renda se concentra (6.4).
+Do setor, a análise passa ao público da cidade. Salvador tem público em número, mas com renda menor. A população estimada em 2026 é de 2.559.945 habitantes (IBGE, Estimativas da População), e 30,5% dos residentes tinham de 20 a 39 anos no Censo 2022. O rendimento médio do trabalho, de R$ 3.417,00 no 2º trimestre de 2026, coloca Salvador em 22º lugar entre as 27 capitais e em penúltimo entre as que têm luderia no B1 (Figura 5.1), e o rendimento domiciliar per capita caiu de R$ 1.985,00, em 2023, para R$ 1.900,00, em 2025 (IBGE, PNAD Contínua). A renda menor pesa na definição do preço de entrada (seção 6.3), e o ponto precisa estar onde a renda se concentra (seção 6.4).
 
 **Figura 5.1 – Rendimento médio do trabalho nas capitais com luderia no B1, 2º trimestre de 2026 (R$)**
 
@@ -56,11 +56,11 @@ A nota mediana é 4,7 (de 4,2 a 5,0), e o volume mediano de avaliações é 621 
 
 Salvador tem a menor oferta de luderias por habitante entre as metrópoles com ao menos uma casa: cerca de 0,04 por 100 mil habitantes, contra 0,16 em São Paulo e 0,33 em Curitiba `[script]`. A baixa densidade indica espaço para um segundo concorrente, mas também pode refletir a renda menor, e a ocupação observada na São Jogue (Bloco B3) testa as duas leituras.
 
-Na prática, a concorrência local se resume a uma casa. A São Jogue é a única luderia de Salvador no recorte. A unidade Bela Vista tem nota 4,8, 787 avaliações e abre 68 horas por semana; a Paralela, mais nova, tem 16 avaliações. As duas ficam dentro de shoppings (Bela Vista e Paralela), no eixo da Avenida Paralela, o que orienta a escolha de bairro (6.4). O aluguel de jogos para levar para casa é o substituto mais próximo, com seis acervos em Salvador na plataforma Acervo de Jogos, mas não compete com a ocasião social.
+Na prática, a concorrência local se resume a uma casa. A São Jogue é a única luderia de Salvador no recorte. A unidade Bela Vista tem nota 4,8, 787 avaliações e abre 68 horas por semana; a Paralela, mais nova, tem 16 avaliações. As duas ficam dentro de shoppings (Bela Vista e Paralela), no eixo da Avenida Paralela, o que orienta a escolha de bairro (seção 6.4). O aluguel de jogos para levar para casa é o substituto mais próximo, com seis acervos em Salvador na plataforma Acervo de Jogos, mas não compete com a ocasião social.
 
 ### 5.3.3 Acervo e preço
 
-O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 22 dos 53 concorrentes, com mediana de R$ 20,00 por pessoa (de R$ 5,00 a R$ 40,00); a Ludus declara que não cobra, e nos outros 30 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (6.3). O consumo por pessoa, uma bebida e uma entrada ou prato, tem mediana de R$ 50,25 em 36 casas, com faixa interquartil de R$ 38,38 a R$ 65,70, e de R$ 48,50 na São Jogue (Bloco B1, 2026). Salvador fica no meio da distribuição por metrópole (Figura 5.3).
+O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 22 dos 53 concorrentes, com mediana de R$ 20,00 por pessoa (de R$ 5,00 a R$ 40,00); a Ludus declara que não cobra, e nos outros 30 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (seção 6.3). O consumo por pessoa, uma bebida e uma entrada ou prato, tem mediana de R$ 50,25 em 36 casas, com faixa interquartil de R$ 38,38 a R$ 65,70, e de R$ 48,50 na São Jogue (Bloco B1, 2026). Salvador fica no meio da distribuição por metrópole (Figura 5.3).
 
 **Figura 5.3 – Consumo por pessoa (uma bebida e uma entrada ou prato), mediana por metrópole (R$)**
 
@@ -79,8 +79,8 @@ Os dados das seções anteriores alimentam a análise das cinco forças, resumid
 | Rivalidade | Baixa no formato, alta no bar comum | 1 luderia no recorte (B1); alimentação concentra receita (PAS) |
 | Ameaça de entrantes | Média | Acervo barato frente à cozinha; barreira na curadoria e na explicação de jogos (B2) |
 | Substitutos | Alta | Bares, aluguel de jogos, lazer em casa |
-| Poder dos fornecedores | Baixo a médio | Jogos com várias lojas (5.4); A&B com muitos distribuidores |
-| Poder dos clientes | Médio | Renda abaixo da média das capitais (5.2.1); custo de troca baixo |
+| Poder dos fornecedores | Baixo a médio | Jogos com várias lojas (seção 5.4); A&B com muitos distribuidores |
+| Poder dos clientes | Médio | Renda abaixo da média das capitais (seção 5.2.1); custo de troca baixo |
 
 Fonte: elaboração própria.
 
@@ -102,7 +102,7 @@ A inflação da alimentação fora do domicílio corre acima da geral, e mais em
 
 Fonte: elaboração própria, com base no IBGE, IPCA (tabela 7060).
 
-O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvador chegou a R$ 54,15 por m² em julho de 2026, alta de 18,9% em 12 meses, contra 7,8% em São Paulo (FIPE, Índice FipeZAP). O aluguel é o principal custo fixo e entra como premissa de risco na escolha do ponto (6.4) e na sensibilidade (cap. 9).
+O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvador chegou a R$ 54,15 por m² em julho de 2026, alta de 18,9% em 12 meses, contra 7,8% em São Paulo (FIPE, Índice FipeZAP). O aluguel é o principal custo fixo e entra como premissa de risco na escolha do ponto (seção 6.4) e na sensibilidade (cap. 9).
 
 ### 5.5.2 Político-legal
 

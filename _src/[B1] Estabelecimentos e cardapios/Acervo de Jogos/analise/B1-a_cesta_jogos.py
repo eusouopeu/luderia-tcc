@@ -29,9 +29,17 @@ Regras:
   otimista, provável e pessimista de cada jogo, pela mesma regra da cesta;
   média e não mediana porque o custo é uma soma). Preço de varejo online em 13/10/2026; sem desconto de
   distribuidora, frete nem reposição (premissas do cap. 9).
+- Acervo do joelho (decisão do autor, 02/11/2026, acervo inicial do plano):
+  jogos presentes em k ou mais das 30 casas, com k no joelho da curva
+  "jogos × casas mínimas" (ponto mais distante da reta entre os extremos; abaixo
+  dele, cada casa a menos traz cada vez mais jogos raros). Custo provável = soma
+  das medianas de venda; jogo sem loja entra pelo preço médio por título
+  (provável). Pessimista e otimista = provável × (1 ± x), com x = 3º quartil do
+  coeficiente de variação do preço do mesmo jogo entre as lojas (jogos vendidos
+  em 2 ou mais lojas), arredondado para o ponto percentual.
 
 Saída: acervo_jogos/B1_cesta_jogos.xlsx (abas cesta, perfis, indice_lojas,
-acervo_inicial).
+acervo_inicial e acervo_joelho; acervo_inicial ganha a linha "joelho").
 
 Uso:
     python3 "_src/[B1] Estabelecimentos e cardapios/Acervo de Jogos/analise/B1-a_cesta_jogos.py"
@@ -150,13 +158,33 @@ def main():
         for cen in ["otimista", "provavel", "pessimista"]:
             linha[f"custo_{cen}_rs"] = round(soma_nucleo[cen] + resto * preco_titulo[cen], 2)
         acervo.append(linha)
+    # Acervo do joelho
+    ks = list(range(int(banco.n_casas_acervo.max()), 0, -1))
+    n_jogos = [int((banco.n_casas_acervo >= k).sum()) for k in ks]
+    x_rel = [i / (len(ks) - 1) for i in range(len(ks))]
+    k_joelho = ks[max(range(len(ks)), key=lambda i: x_rel[i] - n_jogos[i] / n_jogos[-1])]
+    joelho = banco[banco.n_casas_acervo >= k_joelho].copy()
+    joelho["preco_provavel_rs"] = [faixa(list(precos_por_loja(d).values()))[1] for d in joelho.venda_detalhe]
+    joelho["com_preco"] = joelho.preco_provavel_rs.notna()
+    joelho["preco_provavel_rs"] = joelho.preco_provavel_rs.fillna(round(preco_titulo["provavel"], 2))
+    cv = [pd.Series(list(v.values())).std() / pd.Series(list(v.values())).mean()
+          for v in map(precos_por_loja, banco.venda_detalhe) if len(v) >= 2]
+    x_preco = round(pd.Series(cv).quantile(0.75), 2)
+    prov_j = joelho.preco_provavel_rs.sum()
+    acervo.append({"tamanho": "joelho", "titulos": len(joelho), "nucleo_com_preco": int(joelho.com_preco.sum()),
+                   "titulos_restantes": int((~joelho.com_preco).sum()),
+                   "custo_otimista_rs": round(prov_j * (1 - x_preco), 2), "custo_provavel_rs": round(prov_j, 2),
+                   "custo_pessimista_rs": round(prov_j * (1 + x_preco), 2)})
     acervo = pd.DataFrame(acervo)
+    joelho = joelho[["jogo", "n_casas_acervo", "com_preco", "preco_provavel_rs", "jogadores_min", "jogadores_max",
+                     "duracao_min", "mecanicas"]].sort_values(["n_casas_acervo", "jogo"], ascending=[False, True])
 
     with pd.ExcelWriter(SAIDA) as w:
         cesta.to_excel(w, sheet_name="cesta", index=False)
         perfis.to_excel(w, sheet_name="perfis", index=False)
         indice.to_excel(w, sheet_name="indice_lojas", index=False)
         acervo.to_excel(w, sheet_name="acervo_inicial", index=False)
+        joelho.to_excel(w, sheet_name="acervo_joelho", index=False)
 
     print(f"Cesta: {len(cesta)} jogos em {MIN_CASAS}+ casas; {len(com)} com preço de venda, "
           f"{len(cesta) - len(com)} sem loja.")
@@ -167,6 +195,8 @@ def main():
     print("Preço por título (venda mediana, " f"{len(por_titulo)} jogos): "
           + ", ".join(f"{k} R$ {v:.2f}" for k, v in preco_titulo.items()))
     print(acervo.to_string(index=False))
+    print(f"Joelho: {k_joelho}+ casas, {len(joelho)} jogos ({int(joelho.com_preco.sum())} com preço); "
+          f"x de preço = {x_preco:.0%} (3º quartil do CV entre lojas, {len(cv)} jogos)")
     print(f"\n-> {SAIDA}")
 
 

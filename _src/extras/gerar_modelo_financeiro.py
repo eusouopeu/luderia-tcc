@@ -106,6 +106,7 @@ def ler_fontes() -> dict:
     # B1: cesta de jogos (acervo inicial) e taxas de jogo dos concorrentes
     ai = pd.read_excel(B1 / "acervo_jogos" / "B1_cesta_jogos.xlsx", sheet_name="acervo_inicial")
     f["acervo"] = dict(zip(ai["tamanho"], ai["custo_provavel_rs"]))
+    f["acervo_faixa"] = ai.set_index("tamanho")[["custo_pessimista_rs", "custo_provavel_rs", "custo_otimista_rs"]].to_dict("index")
     f["acervo_titulos"] = dict(zip(ai["tamanho"], ai["titulos"]))
     ps = pd.read_excel(B1 / "cardapios" / "B1_cardapios_itens_precos.xlsx", sheet_name="precos_subcategoria")
     taxa = ps["couvert ou taxa de jogo | couvert ou taxa de jogo"].dropna()
@@ -274,9 +275,9 @@ def premissas(f) -> list[dict]:
         R("I02", "Mobiliário (mesas, cadeiras, estantes)", "R$", 44000, 33000, 22000, "Estimativa do autor; descrição das unidades da São Jogue", "N6", "6 mesas, cerca de 30 assentos e estantes de pinus com metal: R$ 15 mil de base mais R$ 3 mil por mesa no provável, ± 1/3."),
         R("I03", "Cozinha e bar", "R$", 80000, 60000, 40000, "Estimativa do autor", "N6", "Cozinha própria, como a da São Jogue."),
         R("I04", "Caixa e informática", "R$", 8000, 6000, 4000, "Estimativa do autor", "N6", "1 computador, 1 impressora de nota e 2 maquininhas."),
-        R("I05", "Acervo inicial de jogos", "R$", round(a["p75"], 2), round(a["mediana"], 2), round(a["p25"], 2),
-          "B1, cesta de jogos dos concorrentes, preço provável nas lojas", "N3",
-          f"Acervo do 3º quartil ({f['acervo_titulos']['p75']} títulos), da mediana ({f['acervo_titulos']['mediana']}) e do 1º quartil ({f['acervo_titulos']['p25']}); a São Jogue lista 370."),
+        R("I05", "Acervo inicial de jogos", "R$", *[round(f["acervo_faixa"]["joelho"][c], 2) for c in ("custo_pessimista_rs", "custo_provavel_rs", "custo_otimista_rs")],
+          "B1, acervos de 30 concorrentes e preço de venda nas lojas online de 8 deles (out/2026)", "N3",
+          f"Joelho da curva de presença: os {f['acervo_titulos']['joelho']} jogos presentes em 12 ou mais das 30 casas (decisão do autor; etapa 1 da P7); provável pela mediana de venda de cada jogo, ± 15% (3º quartil da variação do preço do mesmo jogo entre lojas); a São Jogue lista 370."),
         R("I06", "Gastos pré-operacionais", "R$", 30000, 20000, 12000, "Estimativa do autor", "N6", "Projeto, licenças, contratação e lançamento."),
         R("I07", "Caução do aluguel", "meses de aluguel", 3, 3, 2, "Estimativa do autor", "N6", "Prática de locação comercial."),
         R("I08", "Capital de giro", "meses de custo fixo", 3, 2, 1.5, "Estimativa do autor", "N6", "Cobre a rampa de maturação."),

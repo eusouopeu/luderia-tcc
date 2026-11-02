@@ -49,7 +49,7 @@ A matriz SWOT não fica neste capítulo: está em 10.1.
 
 ### 5.3 Análise da concorrência
 - Mapeamento: Bloco B1 (localização, avaliação, volume de avaliações, preço, acervo declarado). Recorte: estabelecimentos com mais de 100 avaliações nas 14 metrópoles da REGIC. O recorte descreve concorrentes estabelecidos; casas novas ou pequenas ficam de fora, e isso é declarado.
-- Concorrência em Salvador: localização das unidades da São Jogue e de outros espaços com jogos, por bairro.
+- Concorrência em Salvador: localização das unidades da São Jogue e de outros espaços com jogos, por bairro. As duas unidades da São Jogue ficam dentro dos shoppings Bela Vista (Pernambués) e Paralela, e não perto deles.
 - Densidade por metrópole: total da busca e total acima do corte de 100 avaliações, lado a lado.
 - Posicionamento dos concorrentes pelo acervo declarado (tamanho, presença dos jogos mais citados nas avaliações) e pela política de cobrança (Bloco B1).
 - Desempenho estimado: velocidade de avaliações calibrada (ver [4_metodologia.md](4_metodologia.md)).

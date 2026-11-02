@@ -4,13 +4,15 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Acervo inicial = joelho da curva de presença: 175 jogos em 12 ou mais dos 30 acervos do B1, R$ 35 mil no provável, ± 15% nos cenários (3º quartil da variação do preço do mesmo jogo entre lojas) | `_instrucoes/1a_principios.md` (P7); `B1-a_cesta_jogos.py` |
+| 02/11/2026 | TMin v10 montado do v9 (caps. 1 a 3 e referências, com as edições do autor) com os caps. 4 a 11 gerados dos `.md` atualizados | `docs/registro-de-alteracoes.md` (02/11/2026) |
 | 02/11/2026 | Coletor de anúncios de aluguel passa do B4 (bases públicas) para o B5 (ativos fixos): portal de anúncios não é base pública; saídas em `dados/[B5] Ativos fixos/aluguel/` | `_src/[B5] Ativos fixos/Anuncios de aluguel/` |
 | 02/11/2026 | Gatilhos de perda máxima em ordem de análise: G1 pessoas por mesa, G2 consumo, G3 dia útil, G4 demanda baixa (alarme geral, só sem causa apontada por G1 a G3), G5 caixa, G6 saída | `_instrucoes/9_anal-riscos.md`, §10.6 |
 | 02/11/2026 | Monitoramento por um site de recomendação de jogos no molde do app Tabulado (clientes ou instrutores preenchem; recomendações e tutoriais rápidos); buscas por número de pessoas e mecânica entram no gatilho da etapa 2 | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Sleeves para todas as cartas do acervo previstos no investimento (abertura e cada ampliação) e na reposição | `_instrucoes/8_financeiro.md` |
 | 02/11/2026 | Bloco B5 (ativos fixos): preços de obra, aluguel, mobiliário, cozinha e bar, equipamentos e jogos coletados em sites e e-commerces, numa pasta por categoria | `CLAUDE.md`, Estado do projeto |
 | 02/11/2026 | Gatilhos de perda máxima no cap. 10 (G1 a G6: demanda, pessoas por mesa, consumo, dia útil, caixa, saída), com medidas de taxa alternativas como contingência: sessão curta com taxa menor, taxa por mesa, taxa revertida em consumação, desconto progressivo por pessoa na mesa e passaporte mensal | `_instrucoes/9_anal-riscos.md`, §10.6 |
-| 02/11/2026 | Investimento por etapas: abertura com 6 mesas, acervo enxuto (jogos em ≥ 50% das luderias com elogio ao acervo) e só comidas recebidas prontas; acervo, cozinha de preparo e mesas crescem por gatilho, pagos com o caixa gerado; o fluxo base é o da etapa 1 | `_instrucoes/1a_principios.md` (P7) |
+| 02/11/2026 | Investimento por etapas: abertura com 6 mesas, acervo enxuto e só comidas recebidas prontas; acervo, cozinha de preparo e mesas crescem por gatilho, pagos com o caixa gerado; o fluxo base é o da etapa 1 | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Equipe de 6: 2 cozinheiros-chefes, 3 instrutores de tempo integral (folgas em dias diferentes de terça a quinta) e 1 de meio período | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Horário: as 8 h contínuas com mais luderias abertas em cada dia (B1), como simplificação declarada: terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h; segunda fechada | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Equipe: 2 cozinheiros-chefes no lugar do cozinheiro e do auxiliar (um nos dias úteis, os dois no pico); instrutores de tempo integral com folga na segunda e em um dia de terça a quinta; meio período de 20 h (quinta e sexta das 17h às 22h, sábado e domingo das 15h às 20h) | `_instrucoes/1a_principios.md` (P7) |

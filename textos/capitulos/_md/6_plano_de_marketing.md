@@ -1,6 +1,6 @@
 # 6 PLANO DE MARKETING
 
-> **Rascunho parcial (31/10/2026).** Só as seções 6.3 e 6.4; as demais ficam para depois do Bardin (6.1, 6.2, 6.5) e da calibração da demanda (6.6). Números de preço do B1 (cardápios; couvert também de site, imprensa e Instagram, atualizado em 31/10/2026), B2 (avaliações até "3 meses atrás", no Notion "2 - Comentários" em 31/10/2026) e B3 (contagem direta); números de praça do Censo 2022 (`B4-a_matriz_bairros.py`) e do entorno do B1.
+> **Rascunho parcial (31/10/2026).** Só as seções 6.3 e 6.4; as demais ficam para depois do Bardin (6.1, 6.2, 6.5) e da calibração da demanda (seção 6.6). Números de preço do B1 (cardápios; couvert também de site, imprensa e Instagram, atualizado em 31/10/2026), B2 (avaliações até "3 meses atrás", no Notion "2 - Comentários" em 31/10/2026) e B3 (contagem direta); números de praça do Censo 2022 (`B4-a_matriz_bairros.py`) e do entorno do B1.
 
 O plano de marketing define como a luderia se posiciona e se apresenta ao público de Salvador. As decisões seguem o composto de marketing: preço, praça e comunicação, a partir da proposta de valor, com a estimativa de demanda ao fim.
 
@@ -51,7 +51,7 @@ Fonte: elaboração própria, com base no Bloco B2 (avaliações até "3 meses a
 
 Pelos cardápios, uma visita custa de R$ 44,09 a R$ 69,50 por pessoa. A taxa de entrada média é de R$ 18,68, nas 22 casas que a cobram, e a cesta de consumo, uma bebida e uma entrada ou prato, custa em média R$ 50,82, em 36 casas (Bloco B1). O valor menor supõe uma cesta dividida por dupla; o maior, uma cesta por pessoa. Num grupo de 3,6 pessoas, a visita custa de R$ 158,72 a R$ 250,20. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018): uma visita consome de 35% a 56% desse orçamento, a preços de 2018 `[script — corrigir pelo IPCA]`. A luderia é ocasião de saída, não hábito semanal.
 
-O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 18,68 por pessoa, em todos os dias e nos três cenários. O valor fica perto da mediana dos concorrentes (R$ 20,00) e abaixo da São Jogue (R$ 28,00 no fim de semana e R$ 22,00 no dia útil). O consumo segue a cesta média dos cardápios, R$ 50,82, dividida por uma, duas ou três pessoas nos cenários otimista, provável e pessimista. Os valores entram no registro de premissas do cap. 9 como R06, R07 e R08. Com a entrada mais barata que a da São Jogue, o preço atrai o cliente da concorrente, e o serviço de mesa — explicação de jogos e acervo grande — sustenta a volta, o que liga o preço à proposta de valor (6.1).
+O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 18,68 por pessoa, em todos os dias e nos três cenários. O valor fica perto da mediana dos concorrentes (R$ 20,00) e abaixo da São Jogue (R$ 28,00 no fim de semana e R$ 22,00 no dia útil). O consumo segue a cesta média dos cardápios, R$ 50,82, dividida por uma, duas ou três pessoas nos cenários otimista, provável e pessimista. Os valores entram no registro de premissas do cap. 9 como R06, R07 e R08. Com a entrada mais barata que a da São Jogue, o preço atrai o cliente da concorrente, e o serviço de mesa — explicação de jogos e acervo grande — sustenta a volta, o que liga o preço à proposta de valor (seção 6.1).
 
 ## 6.4 PRAÇA
 

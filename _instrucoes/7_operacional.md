@@ -28,7 +28,7 @@ Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e
 - Fluxograma dos processos principais (figura).
 
 ### 7.4 Gestão do acervo
-- Etapas (P7): abertura com o acervo enxuto (jogos em pelo menos 50% das luderias com elogio de variedade ou curadoria no B2); ampliação até a mediana do B1 quando o gatilho da etapa 2 disparar. Jogos pedidos e não disponíveis, e buscas por número de pessoas e mecânica, registrados no site de recomendação (P7), que também traz os tutoriais rápidos; esses dados alimentam o gatilho.
+- Etapas (P7): abertura com os 175 jogos do joelho da curva de presença (12 ou mais dos 30 acervos do B1); ampliação até a mediana do B1 quando o gatilho da etapa 2 disparar. Jogos pedidos e não disponíveis, e buscas por número de pessoas e mecânica, registrados no site de recomendação (P7), que também traz os tutoriais rápidos; esses dados alimentam o gatilho.
 - Sleeves (protetores) em todas as cartas do acervo desde a abertura, e nos jogos novos de cada ampliação.
 - Composição inicial (de 6.2) e critérios de curadoria (jogos citados nas avaliações e acervo declarado dos concorrentes).
 - Conferência de peças após uso, reposição e desgaste (taxa de reposição vai para as premissas).
@@ -36,7 +36,7 @@ Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e
 
 ### 7.5 Estrutura organizacional e pessoal
 - Organograma.
-- Cargos, funções, quantidade por turno (monitor de jogos, atendimento, bar, caixa, gestão).
+- Cargos, funções, quantidade por turno (monitor de jogos, atendimento, bar, caixa, gestão). Na São Jogue, em todas as visitas, os instrutores também atendiam as mesas, o balcão e o caixa (B3); a equipe do plano segue esse acúmulo.
 - Dimensionamento da equipe coerente com a ocupação projetada: no máximo 2 mesas (cerca de 10 clientes) por instrutor no pico; escala semanal que respeite 8 h por dia, 44 h por semana e uma folga, cozinha incluída.
 - Salários e encargos com fonte (RAIS/CAGED, convenção coletiva) → premissas do cap. 9.
 - Terceirizados: contador, limpeza, segurança.

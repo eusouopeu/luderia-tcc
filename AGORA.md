@@ -4,6 +4,8 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora
 
+- **TMin v10 (02/11, 09h40):** caps. 4, 7, 9, 10 e 11 reescritos no desenho enxuto (VPL provável de R$ 13 mil, positivo só com o valor residual; rupturas a menos de 2% do provável; P(VPL > 0) de 44,9%); acervo do joelho (175 jogos) no modelo; v10 montado sobre o v9 (caps. 1 a 3 e referências do v9), com 69 páginas. Falta o A&B da etapa 1 no modelo (D44).
+
 - **Bloco B5, ativos fixos (02/11, 09h):** pastas por categoria em `dados/[B5] Ativos fixos/` para orçamentos e preços de sites e e-commerces; o coletor de aluguel já está nele; coletas por fazer (pendências).
 
 - **Etapas e gatilhos (02/11, 09h):** investimento por etapas na P7 (acervo enxuto, comidas prontas e 6 mesas na abertura; acervo, cozinha e mesas crescem por gatilho) e gatilhos de perda máxima G1 a G6, em ordem de análise (pessoas por mesa, consumo, dia útil, demanda, caixa, saída), no 10.6; sleeves no investimento; site de recomendação no molde do Tabulado para o monitoramento. Falta levar a etapa 1 ao modelo (pendências).
