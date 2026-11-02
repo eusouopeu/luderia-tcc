@@ -1,0 +1,140 @@
+n_amostra;pagina_notion;duvida_autor;autor_positivos;autor_negativos;autor_contexto;autor_costuma_ir;autor_voltara;claude_positivos;claude_negativos;claude_contexto
+1;3f4cde2e8c24816b88f7d180d64ef175;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;
+2;3f9cde2e8c24818abd6fdfa8e369d79d;não;;;;sim;não foi dito;;;família
+3;3f9cde2e8c24817eb66dcdb6f64d5052;não;;;;não foi dito;não foi dito;;;
+4;3f9cde2e8c248174acdccdf1e29fa57f;não;;;;não foi dito;não foi dito;;;
+5;3f9cde2e8c2481a0af99c2d13268960e;não;;;;não foi dito;sim;;;
+6;3f9cde2e8c248159a398e7930c23032c;não;;;;não foi dito;não foi dito;;;
+7;3f9cde2e8c2481649b9fd3ad57c5259b;não;;;;não foi dito;não foi dito;;;
+8;3f9cde2e8c248175a037f4b040d38afb;não;;;;não foi dito;não foi dito;;;
+9;3f9cde2e8c2481d8a9aace52cefd7fd0;não;;;;não foi dito;não foi dito;;;
+10;3f9cde2e8c2481a3ab37f347a2ca8b59;não;;;;não foi dito;sim;;;
+11;3f9cde2e8c2481a68fa2c65859c16b22;não;comida;;;não foi dito;não foi dito;comida;;
+12;3f9cde2e8c2481c0ad66c7508ec11719;não;atendimento presencial | comida | variedade do acervo;;;não foi dito;não foi dito;atendimento presencial | comida | variedade do acervo;;
+13;3f9cde2e8c2481d88dd0c3975b2bd08c;não;ambiente e decoração | atendimento presencial | comida;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | comida;;
+14;3f9cde2e8c24811fa3ecedea22dc084a;não;;;;não foi dito;não foi dito;;;
+15;3f9cde2e8c2481c5a82ad166553be591;não;;;;não foi dito;não foi dito;;;
+16;3f9cde2e8c2481c685aacfba9481e6a0;sim;;;;não foi dito;não foi dito;;;
+17;3f9cde2e8c248136b31ae494483fad28;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;
+18;3f9cde2e8c24816db15fdadddceed36c;não;atendimento presencial | comida | variedade do acervo;;;não foi dito;não foi dito;atendimento presencial | comida | variedade do acervo;;
+19;3f9cde2e8c24818a8235d2eab4484e6d;não;atendimento presencial | indicações de jogos;;aniversário;não foi dito;sim;atendimento presencial | explicação de jogos | indicações de jogos;;amigos | aniversário
+20;3f9cde2e8c248198a624ec34b3f27baf;não;atendimento presencial | explicação de jogos;;;não foi dito;não foi dito;atendimento presencial | explicação de jogos;;
+21;3f4cde2e8c2481dcb61ce047b279ceda;não;ambiente e decoração | comida | variedade do acervo;;;não foi dito;não foi dito;ambiente e decoração | comida | variedade do acervo;;
+22;3f4cde2e8c24817db60ef50c334c1c92;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;
+23;3f4cde2e8c2481fd93a1c5871655db9a;não;atendimento presencial | comida;;;sim;não foi dito;atendimento presencial | comida;;
+24;3f4cde2e8c24811ab5b3da57545ab7c9;não;atendimento presencial | comida;;;não foi dito;não foi dito;atendimento presencial | comida;;
+25;3f4cde2e8c248126a4e0f98b280e8aa3;não;comida;;;não foi dito;não foi dito;comida;;família
+26;3f4cde2e8c2481e2a042cfe664044ea8;não;;;;não foi dito;sim;;;
+27;3f4cde2e8c24819cbe69fde4a60045d6;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;
+28;3f4cde2e8c2481aca3c3df8272488faf;não;atendimento presencial | comida | preço da entrada;;;não foi dito;não foi dito;atendimento presencial | comida | preço do consumo;;
+29;3f4cde2e8c2481c2a4c7dad542321538;sim;atendimento presencial | explicação de jogos;;;não foi dito;não foi dito;atendimento presencial | explicação de jogos;;
+30;3f4cde2e8c24811dbf1aeeb07e57274c;não;ambiente e decoração | atendimento presencial | comida | variedade do acervo;;amigos;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | comida | variedade do acervo;;amigos
+31;3f4cde2e8c24813ab831e2dd7af3fba1;não;comida | variedade do acervo;;;não foi dito;não foi dito;comida | variedade do acervo;;
+32;3f4cde2e8c248145be8ad7898cefe8c8;não;;atendimento presencial | regras da casa;amigos | aniversário;não foi dito;não;;atendimento presencial | regras da casa;aniversário
+33;3f4cde2e8c2481e4b048d339cc7d52d1;não;variedade do acervo;;;não foi dito;não foi dito;variedade do acervo;;amigos
+34;3f4cde2e8c248116b350dd45df145413;não;;;;não foi dito;não foi dito;;comida;amigos
+35;3f4cde2e8c24818d9097f7d9257a091b;não;ambiente e decoração | comida;comida;;não foi dito;não foi dito;ambiente e decoração | comida;comida;
+36;3f4cde2e8c248195ab96ef45d7b53bb1;não;ambiente e decoração;;;não foi dito;não foi dito;ambiente e decoração;;
+37;3f4cde2e8c2481a4bff1df4696318a80;não;atendimento presencial;;;não foi dito;sim;atendimento presencial;;
+38;3f4cde2e8c2481e08d2ffbbfebc94153;não;;;;não foi dito;não foi dito;;;
+39;3f4cde2e8c248117ba0bf0c751f819b1;não;ambiente e decoração | atendimento presencial | comida | variedade do acervo;;;sim;não foi dito;ambiente e decoração | atendimento presencial | comida | variedade do acervo;;
+40;3f4cde2e8c248128bcb4f97955764336;não;;;;não foi dito;não foi dito;;;
+41;3f4cde2e8c24817d9027c27dc8ca7e92;não;conforto e espaço;;loja;não foi dito;não foi dito;;;loja
+42;3f4cde2e8c2481949bedcf343dbe0aab;não;atendimento presencial | variedade do acervo;;loja;não foi dito;não foi dito;indicações de jogos | variedade do acervo;;loja
+43;3f4cde2e8c2481abb6e1eb946fd4548d;não;atendimento presencial | curadoria dos jogos;comida;;não foi dito;não foi dito;atendimento presencial | curadoria dos jogos;comida;
+44;3f4cde2e8c248110a500fcb54c48c6a5;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;
+45;3f4cde2e8c2481bd98c0c8397b36247b;não;atendimento presencial;;amigos | aniversário;não foi dito;não foi dito;atendimento presencial | comemorações e grupos;;amigos | aniversário
+46;3f4cde2e8c2481018e57f1190f64f325;sim;;;loja;segunda vez;não foi dito;atendimento online;;apenas loja
+47;3f4cde2e8c24814e8962faca8afe6b3f;não;;atendimento presencial;loja;sim;não foi dito;;atendimento presencial;apenas loja
+48;3f4cde2e8c2481bcbefdd7533874f1ce;não;atendimento online | rapidez do serviço;;apenas loja;não foi dito;não foi dito;atendimento online;;apenas loja
+49;3f4cde2e8c2481158f74e9370059c701;não;ambiente e decoração | atendimento presencial | comida | preço do consumo;;;não foi dito;não foi dito;atendimento presencial | comida | preço do consumo;;
+50;3f4cde2e8c2481599794c13e5fe816d3;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;
+51;3f4cde2e8c2481e486d6e9f48131dfa1;não;;;;não foi dito;não foi dito;;;amigos | família
+52;3f4cde2e8c24811b9774f58e533a08b2;não;atendimento presencial | comida;;;não foi dito;não foi dito;atendimento presencial | comida;;
+53;3f4cde2e8c24812cb772d12495e0c3ca;não;atendimento presencial | eventos e comunidade;;loja;não;não foi dito;atendimento presencial | eventos e comunidade;;
+54;3f4cde2e8c24817599fbc9c4665dbf3e;não;ambiente e decoração | atendimento presencial | comida;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | comida;;
+55;3f4cde2e8c2481078f25fa2ed8c9dfdd;não;;;;não foi dito;não foi dito;;;amigos
+56;3f4cde2e8c24818a9142e3d388ccc6e1;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;
+57;3f4cde2e8c248195af77ecb0b0da3db1;não;ambiente e decoração | atendimento presencial;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | conforto e espaço;;
+58;3f4cde2e8c2481f88700cf3d61755f18;não;;;loja;não foi dito;sim;bebidas | comida | preço do consumo;;loja
+59;3f4cde2e8c248127a0cecf8ed8877d1e;não;variedade do acervo;;;não foi dito;não foi dito;variedade do acervo;;loja
+60;3f4cde2e8c2481448598fb3a5401026c;não;ambiente e decoração;;;não foi dito;sim;ambiente e decoração;;
+61;3f4cde2e8c248170990cec9605c23961;não;;conforto e espaço;loja;não foi dito;não foi dito;;conforto e espaço;loja
+62;3f4cde2e8c2481d1ae7fe7559735d400;não;ambiente e decoração | atendimento presencial;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial;;
+63;3f5cde2e8c2481d1bfb9cc07597e7235;não;atendimento presencial | comida | conforto e espaço | variedade do acervo;;loja;não foi dito;não foi dito;atendimento presencial | comida | conforto e espaço | variedade do acervo;;loja
+64;3f5cde2e8c24814ebab4fb936be9b1ca;não;comida | conforto e espaço;;;não foi dito;não foi dito;comida | conforto e espaço;;
+65;3f5cde2e8c24815ca5e9e2b25eb6c385;não;;;;não foi dito;não foi dito;;;
+66;3f5cde2e8c2481618949e54759f00ca8;não;ambiente e decoração | comida | curadoria dos jogos | variedade do acervo;;;não foi dito;não foi dito;ambiente e decoração | comida | curadoria dos jogos | variedade do acervo;;
+67;3f5cde2e8c2481368345f752efa01ebc;não;ambiente e decoração | atendimento presencial | bebidas | comida;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | bebidas | comida;;amigos | família
+68;3f5cde2e8c2481d7a132ff81c4fe3755;sim;atendimento presencial | explicação de jogos;;;não foi dito;não foi dito;comida | explicação de jogos;;
+69;3f5cde2e8c24813393f4eb743e7f1f39;sim;atendimento presencial | conforto e espaço | curadoria dos jogos | variedade do acervo;;;não foi dito;sim;atendimento presencial | conforto e espaço | variedade do acervo;;
+70;3f5cde2e8c24816084c2f6c34f096b9a;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;
+71;3f5cde2e8c248186b7f2ef29d5e356a5;não;ambiente e decoração | atendimento presencial | eventos e comunidade | variedade do acervo;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | eventos e comunidade | variedade do acervo;;família | loja
+72;3f5cde2e8c2481709bf3c22bde1537bb;sim;;;família | loja;não foi dito;não foi dito;ambiente e decoração | variedade do acervo;;família | loja
+73;3f5cde2e8c2481e1bd33e3503140dcc3;não;conforto e espaço | variedade do acervo;;loja;não foi dito;não foi dito;conforto e espaço | variedade do acervo;;loja
+74;3f5cde2e8c24812983ffc22cb5ca471b;não;ambiente e decoração;;família;sim;não foi dito;ambiente e decoração;;família
+75;3f5cde2e8c2481b3b669c8c2645dec59;não;ambiente e decoração | atendimento presencial | comida | eventos e comunidade | explicação de jogos | localização e acesso | variedade do acervo | variedade do cardápio;;loja;sim;não foi dito;ambiente e decoração | atendimento online | atendimento presencial | comida | eventos e comunidade | localização e acesso | variedade do acervo | variedade do cardápio;;loja
+76;3f5cde2e8c2481ffb886d524c2f3df37;não;;;;não foi dito;não foi dito;;;
+77;3f5cde2e8c2481688440d306e3b7fd48;não;comida | eventos e comunidade;;;não foi dito;não foi dito;comida | eventos e comunidade;;
+78;3f5cde2e8c2481ffbeaef587782ba943;sim;ambiente e decoração;;loja;sim;não foi dito;ambiente e decoração | atendimento presencial;;loja
+79;3f5cde2e8c248120bd64c4c047ae5476;sim;atendimento presencial | eventos e comunidade | preço de jogos;;;não foi dito;não foi dito;atendimento presencial | eventos e comunidade | preço do consumo;;
+80;3f5cde2e8c248119ab65c4e55f3415cd;sim;atendimento presencial | comida | preço da entrada | regras da casa;variedade do cardápio;;sim;sim;atendimento presencial | comida | preço da entrada | regras da casa;variedade do cardápio;amigos
+81;3f5cde2e8c24810ea302c99b6f2b19f1;não;atendimento presencial | comida;;;não foi dito;sim;atendimento presencial | comida;;amigos
+82;3f5cde2e8c248147ac03debfc4065d9b;não;atendimento presencial | comida | preço de jogos;;loja;não foi dito;não foi dito;atendimento presencial | comida | preço do consumo;;loja
+83;3f5cde2e8c2481119c65f67620b76815;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;
+84;3f9cde2e8c248168b395f4b0137fa2fc;não;rapidez do serviço | variedade do acervo;regras da casa;;sim;não foi dito;rapidez do serviço | variedade do acervo;atendimento presencial | conforto e espaço | lotação e reserva | regras da casa;
+85;3f9cde2e8c248108951af24cb139d965;não;ambiente e decoração | comida;;;não foi dito;não foi dito;comida | conforto e espaço;;
+86;3f9cde2e8c24810fb930d348218c2fe1;não;atendimento presencial | indicações de jogos | variedade do acervo;;;não foi dito;não foi dito;atendimento presencial | explicação de jogos | indicações de jogos | variedade do acervo;;
+87;3f9cde2e8c24819e8ed7dabbf03d35d8;não;comida;;;não foi dito;não foi dito;comida;;
+88;3f9cde2e8c248145b016df051624b838;não;ambiente e decoração | comida;conforto e espaço;;não foi dito;não foi dito;ambiente e decoração | comida;conforto e espaço;
+89;3f9cde2e8c24814ba14fd1dcf5d5b113;não;comida | conforto e espaço | limpeza;;;não foi dito;não foi dito;comida | conforto e espaço | limpeza;;
+90;3f9cde2e8c2481cbb771d07b46a449d4;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;
+91;3f9cde2e8c2481248a11df150da861a4;não;ambiente e decoração | atendimento presencial | conforto e espaço;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | conforto e espaço;;
+92;3f9cde2e8c248139a613cb978e143b9d;não;ambiente e decoração;;;não foi dito;não foi dito;ambiente e decoração;;
+93;3f9cde2e8c24815ab956e2f918dbb34e;não;;regras da casa;família;não foi dito;não foi dito;;atendimento presencial | regras da casa;família
+94;3f9cde2e8c248168a8ebc1c4f6d2102d;não;atendimento online;;apenas loja | loja;não foi dito;não foi dito;atendimento online;;apenas loja
+95;3f9cde2e8c248170b320d86a1fc58a94;não;atendimento presencial | explicação de jogos | indicações de jogos | preço da entrada | variedade do acervo;;loja;não;não foi dito;atendimento presencial | explicação de jogos | indicações de jogos | preço de jogos | variedade do acervo;;loja
+96;3f9cde2e8c2481a380cce7127747a2dc;não;preço da entrada | variedade do acervo;atendimento presencial;;não foi dito;não foi dito;atendimento presencial | preço da entrada | variedade do acervo;atendimento presencial;loja
+97;3f9cde2e8c2481d2aa75e261b2fc736d;não;;atendimento presencial | conforto e espaço | preço da entrada | variedade do acervo;loja;não;não;;atendimento presencial | limpeza | preço de jogos | variedade do acervo;loja
+98;3f9cde2e8c2481dd8c04d2a8e5463e14;sim;atendimento presencial | conforto e espaço | eventos e comunidade | preço de jogos | variedade do acervo;;loja;não foi dito;não foi dito;atendimento presencial | conforto e espaço | eventos e comunidade | preço de jogos | variedade do acervo;;loja
+99;3f9cde2e8c24815ab4d9ee8af9fc32a5;não;ambiente e decoração;variedade do cardápio;;não foi dito;não foi dito;ambiente e decoração;variedade do cardápio;
+100;3f9cde2e8c248184bac3feccf4ff8d0f;não;atendimento presencial | comida;;amigos;não foi dito;não foi dito;atendimento presencial | comida;;amigos
+101;3f9cde2e8c2481a2820fe0f2bfe1268e;não;;;;não foi dito;não foi dito;comida | variedade do acervo;;
+102;3f9cde2e8c2481c08934ea4ac58556f1;não;;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial;;
+103;3f9cde2e8c2481ce8dcafc5f2ca54fa6;não;;;;não foi dito;não foi dito;;;
+104;3f9cde2e8c2481d8b106e76a493df216;não;;;;não foi dito;não foi dito;atendimento presencial;;
+105;3f9cde2e8c248113ab12ca9d0e85ee42;não;;;;não foi dito;não foi dito;;;
+106;3f9cde2e8c24811ab1d4da6699f6a4ed;não;;;;não foi dito;não foi dito;ambiente e decoração;;amigos
+107;3f9cde2e8c2481278d93c45e58dca270;não;atendimento presencial | comida;;;não foi dito;não foi dito;atendimento presencial | comida;;
+108;3f9cde2e8c2481788143f44924a11478;não;ambiente e decoração | bebidas;;;não foi dito;não foi dito;atendimento presencial | bebidas;;
+109;3f9cde2e8c2481ed801cd25e04c4c2a4;não;;;;não;sim;;;amigos
+110;3f9cde2e8c24811cad45e4f3fe70163b;não;;;;não foi dito;não foi dito;;explicação de jogos;
+111;3f9cde2e8c2481c8a057f6f626abbeb1;não;ambiente e decoração | atendimento presencial | comida;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | comida;;
+112;3f9cde2e8c2481cfbef6c9022fb59d09;não;;;;não foi dito;não foi dito;;;
+113;3f9cde2e8c2481549c28c0aa98c18335;não;;;;não foi dito;não foi dito;;;
+114;3f9cde2e8c2481b79773d2427a8715e2;sim;;;;não foi dito;não foi dito;;;
+115;3f9cde2e8c2481c7ab01e19a85fd6319;não;ambiente e decoração | bebidas | comida | variedade do acervo;;;não foi dito;não foi dito;ambiente e decoração | bebidas | comida | variedade do acervo;;
+116;3f9cde2e8c2481069faff6a70b2ec70e;não;;;;não foi dito;não foi dito;;;
+117;3f9cde2e8c248130902bc3528e069fcb;não;atendimento presencial | comida | porções;;;não foi dito;não foi dito;atendimento presencial | comida | porções;;
+118;3f9cde2e8c2481cf93c2d1a5c8b837f3;não;;;;não foi dito;não foi dito;ambiente e decoração;;amigos
+119;3f9cde2e8c2481e2b368fe99a7f7bb5b;não;;;;não foi dito;não foi dito;;;
+120;3f9cde2e8c2481268ee6d31f7301a4a2;não;atendimento presencial | explicação de jogos;bebidas | porções | preço do consumo;;não foi dito;sim;atendimento presencial | explicação de jogos;bebidas | porções | preço do consumo;
+121;3f9cde2e8c2481839345ea606fcc1a5a;não;ambiente e decoração | atendimento presencial | comida;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | comida;;
+122;3f9cde2e8c24818facb7db4f22a81aac;não;;;;não foi dito;não foi dito;;;
+123;3f9cde2e8c2481c1832be084327215cd;não;;bebidas | comida;;não foi dito;não foi dito;;comida;
+124;3f9cde2e8c248141a81eea34319b56f7;não;;;;não foi dito;não foi dito;atendimento presencial;;
+125;3f9cde2e8c24815ebc85e2d1db9352b5;não;atendimento presencial | curadoria dos jogos;;;não;sim;atendimento presencial | curadoria dos jogos | localização e acesso;;
+126;3f9cde2e8c248183a1e2eb339343930c;sim;;;;não foi dito;não foi dito;atendimento presencial;;
+127;3f9cde2e8c24812db854dde33d4b7682;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;
+128;3f9cde2e8c24817d9e40dad2cb2f4a21;não;;;;não foi dito;não foi dito;atendimento presencial | comida | explicação de jogos;atendimento presencial;amigos
+129;3f9cde2e8c24819eadd6f6c08e586167;não;;atendimento presencial | bebidas | rapidez do serviço;;não foi dito;não foi dito;;bebidas | explicação de jogos | rapidez do serviço;amigos
+130;3f9cde2e8c2481079e9fdce364c66af2;não;;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial;preço do consumo | variedade do cardápio;
+131;3f9cde2e8c248108ac97da2a66e21fc7;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;
+132;3f9cde2e8c2481c58ce8d09bfd49bbfd;não;ambiente e decoração | atendimento presencial;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial;;
+133;3f9cde2e8c2481fc9208c745186199f6;sim;;;;não foi dito;não foi dito;atendimento presencial;;
+134;3f9cde2e8c248106a9bde80a184e80fd;sim;;;;não foi dito;não foi dito;;;
+135;3f9cde2e8c2481599720d1357c64b6ad;não;explicação de jogos | rapidez do serviço;estacionamento;;não foi dito;não foi dito;atendimento presencial | explicação de jogos;estacionamento | rapidez do serviço;aluguel | amigos
+136;3f9cde2e8c248166aa63c977c7b126ce;não;atendimento presencial;;aniversário;não;sim;atendimento presencial | comemorações e grupos;;amigos | aniversário
+137;3f9cde2e8c248111b347c6a21dc21c9a;não;;;;não foi dito;não foi dito;;;família
+138;3f9cde2e8c248110a9a3eb80a5a1f35e;não;atendimento presencial | comida | conforto e espaço | explicação de jogos | limpeza;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | comida | curadoria dos jogos | explicação de jogos | indicações de jogos | limpeza;;
+139;3f9cde2e8c2481f0b451d6707e47300d;não;;;;não foi dito;não foi dito;atendimento presencial;atendimento presencial;amigos

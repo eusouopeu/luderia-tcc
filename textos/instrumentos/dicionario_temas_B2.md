@@ -1,6 +1,6 @@
 # Dicionário de temas dos comentários (Bloco B2, Notion)
 
-Versão de 30/10/2026, com o tema "estacionamento" separado de "localização e acesso" em 02/11/2026 (pedido do autor, que o criou no banco da recodificação). Em 02/11/2026 entraram também "indicações de jogos" (separada de "explicação de jogos"), "preço de jogos" e o contexto "apenas loja", criados pelo autor no banco da recodificação. Ainda em 02/11/2026, depois da primeira comparação com a recodificação cega, o autor decidiu as regras 12 a 15 do §3. Reconstruído a partir das 166 linhas já codificadas pelo autor no Notion ("2 - Comentários", Fórmula ≥ 5, 14 casas, 87 do Bodogami e 37 do Shelf). As regras abaixo descrevem o que o autor já faz na maioria dos casos e decidem os casos em que a prática variou. Os casos que fogem das regras estão no §5.
+Versão de 30/10/2026, com o tema "estacionamento" separado de "localização e acesso" em 02/11/2026 (pedido do autor, que o criou no banco da recodificação). Em 02/11/2026 entraram também "indicações de jogos" (separada de "explicação de jogos"), "preço de jogos" e o contexto "apenas loja", criados pelo autor no banco da recodificação. Ainda em 02/11/2026, depois da primeira comparação com a recodificação cega, o autor decidiu as regras 12 a 21 do §3 e a grade 2: preços passam a entrada, cardápio e outros itens; "estacionamento" volta para "localização e acesso"; "conservação do acervo" entra em "curadoria e conservação do acervo". Reconstruído a partir das 166 linhas já codificadas pelo autor no Notion ("2 - Comentários", Fórmula ≥ 5, 14 casas, 87 do Bodogami e 37 do Shelf). As regras abaixo descrevem o que o autor já faz na maioria dos casos e decidem os casos em que a prática variou. Os casos que fogem das regras estão no §5.
 
 Este dicionário vale para as colunas "Itens positivos" e "Itens negativos". O livro de códigos de `analise_conteudo_bardin_B2.md` (§1.4, 15/10) é outro e ainda não foi unificado com este (pendências, item 15).
 
@@ -16,15 +16,14 @@ Este dicionário vale para as colunas "Itens positivos" e "Itens negativos". O l
 
 ## 2. Temas
 
-A lista é a mesma nas duas colunas. Hoje faltam opções no Notion: "curadoria dos jogos" só existe em Itens positivos; "horário de funcionamento", só em Itens negativos.
+A lista é a mesma nas duas colunas.
 
 ### Jogos
 
 | Tema | Entra | Não entra |
 |---|---|---|
-| variedade do acervo | Quantidade de jogos: "muitos", "vários", "diversos", "acervo enorme", "grande variedade", consoles e fliperamas; pedido de mais jogos; acervo atualizado ou desatualizado | Jogos bons de jogar (curadoria) |
-| curadoria dos jogos | Jogos muito bons de se jogar: "jogos ótimos", "jogos divertidos", "jogos excelentes", "boa opção de jogos" | Quantidade (variedade); estado das peças (conservação) |
-| conservação do acervo | Peças faltando, jogos danificados ou em bom estado | - |
+| variedade do acervo | Quantidade de jogos: "muitos", "vários", "diversos", "acervo enorme", "grande acervo", "grande variedade", consoles e fliperamas; pedido de mais jogos; acervo atualizado ou desatualizado; "acervo bom", "excelente" ou "top" (com curadoria) | Jogos bons de jogar, sem falar de quantidade (curadoria) |
+| curadoria e conservação do acervo | Jogos muito bons de se jogar: "jogos ótimos", "jogos divertidos", "jogos excelentes", "boa opção de jogos"; "acervo bom", "excelente" ou "top" (com variedade); peças faltando, jogos danificados ou em bom estado | Só quantidade ("acervo enorme", "muitos jogos"): variedade |
 | explicação de jogos | Serviço de jogo à mesa: ensinar regras, trazer e trocar jogos, monitor disponível ou ausente; "explicam poucos jogos" (negativo) | Recomendar jogo (indicações de jogos); cordialidade sem ato ligado ao jogo (atendimento presencial) |
 | indicações de jogos | Recomendar ou sugerir jogo: pelo perfil do grupo, novidades, "ótima recomendação de jogo", "indicando novos jogos"; indicação ruim ou ausente | Ensinar regras, trazer e trocar jogos (explicação de jogos) |
 
@@ -32,7 +31,7 @@ A lista é a mesma nas duas colunas. Hoje faltam opções no Notion: "curadoria 
 
 | Tema | Entra | Não entra |
 |---|---|---|
-| atendimento presencial | Cordialidade, atenção, paciência, educação, rispidez, descaso; "serviço" e "atendimento" genéricos; funcionário citado pelo nome com adjetivo de serviço; decisões da gerência sobre o cliente; pedido errado, esquecido ou trocado | Demora (rapidez do serviço); ato de explicar jogo (explicação de jogos) ou de recomendar jogo (indicações de jogos); funcionário elogiado sem adjetivo de serviço ("Alex muito resenha", "a Miranda é uma fofaaaa") |
+| atendimento presencial | Cordialidade, atenção, paciência, educação, rispidez, descaso; "serviço" e "atendimento" genéricos; funcionário citado pelo nome com adjetivo de serviço; decisões da gerência sobre o cliente; pedido errado, esquecido ou trocado; "bem atendido" no pedido ou na comida (o garçom, não o prato) | Demora (rapidez do serviço); ato de explicar jogo (explicação de jogos) ou de recomendar jogo (indicações de jogos); funcionário elogiado sem adjetivo de serviço ("Alex muito resenha", "a Miranda é uma fofaaaa") |
 | atendimento online | WhatsApp, telefone, redes sociais, reserva a distância | - |
 | rapidez do serviço | Tempo do pedido: demora, agilidade | Pedido errado (atendimento presencial); espera para entrar (lotação e reserva) |
 
@@ -50,10 +49,10 @@ A lista é a mesma nas duas colunas. Hoje faltam opções no Notion: "curadoria 
 | Tema | Entra | Não entra |
 |---|---|---|
 | preço da entrada | Couvert lúdico, taxa de jogo, diária, tempo adicional, valor "para jogar" | Taxa de serviço de 10% (regras da casa) |
-| preço do consumo | Preço de comida e bebida; preço sem objeto declarado ("preço justo", "custo-benefício") | Preço de jogos e produtos à venda (preço de jogos) |
-| preço de jogos | Preço de jogos e produtos vendidos na loja da casa ("jogos com bom preço", "loja cara") | Aluguel de jogos; valor para jogar (preço da entrada) |
+| preço do cardápio | Preço de comida e bebida, com o objeto declarado | Preço sem objeto (preço de outros itens) |
+| preço de outros itens | Preço de jogos e produtos da loja, aluguel de jogos e preço sem objeto declarado ("preço justo", "custo-benefício", "preços bons") | Valor para jogar (preço da entrada); comida e bebida (preço do cardápio) |
 
-Regra: "tudo caro" e equivalentes, com escopo total, entram em preço da entrada e preço do consumo; preço de jogos só entra se o texto citar a loja ou a venda de jogos.
+Regra: "tudo caro" e equivalentes, com escopo total, entram nos três temas de preço.
 
 ### Funcionamento
 
@@ -67,12 +66,11 @@ Regra: "tudo caro" e equivalentes, com escopo total, entram em preço da entrada
 
 | Tema | Entra | Não entra |
 |---|---|---|
-| ambiente e decoração | Atmosfera, aconchego, tema, decoração, iluminação, trilha sonora, "ambiente agradável" | "Lugar incrível" e "experiência no lugar" sem atributo: avaliação geral, sem tema |
+| ambiente e decoração | Atmosfera, aconchego, tema, decoração, iluminação, trilha sonora, "ambiente agradável", "familiar" | "Lugar incrível" e "experiência no lugar" sem atributo: avaliação geral, sem tema |
 | conforto e espaço | Mesas, cadeiras, tamanho, temperatura, organização do salão, espaço apertado | Aconchego (ambiente e decoração) |
 | limpeza | Higiene, banheiro, cheiro, retirada de louça e lixo da mesa | - |
 | barulho | Queixa ou elogio ao ruído escrito no texto | O atributo do Google (Nível de barulho) |
-| localização e acesso | Metrô, ônibus, região, facilidade de chegar ou de achar a casa | Fila na rua (lotação e reserva); estacionamento |
-| estacionamento | Vaga própria ou na rua, facilidade ou dificuldade de estacionar, valet, preço do estacionamento, flanelinha, pedido de convênio | Acesso a pé, metrô, região (localização e acesso) |
+| localização e acesso | Metrô, ônibus, região, facilidade de chegar ou de achar a casa; estacionamento: vaga própria ou na rua, valet, preço, flanelinha, pedido de convênio | Fila na rua (lotação e reserva) |
 
 ### Ocasião e programação
 
@@ -87,7 +85,7 @@ Decisão do autor de 30/10: o que descreve a visita, e não avalia a casa, sai d
 
 | Código | Entra |
 |---|---|
-| ocasião | Amigos, família ou crianças, casal ou encontro, aniversário ou comemoração, só quando o cliente diz que foi com eles ou na ocasião ("fui com meus amigos", assinatura "Família Soares"). Recomendação ("bom lugar para ir com amigos") não entra |
+| ocasião | Amigos, família ou crianças, casal ou encontro, aniversário ou comemoração, só quando o cliente diz que foi com eles ou na ocasião ("fui com meus amigos", assinatura "Família Soares"). Recomendação ("bom lugar para ir com amigos") e o adjetivo "familiar" (ambiente) não entram |
 | aluguel | Aluguel de jogos para levar |
 | loja | Compra de jogos e produtos na casa, junto com a visita para jogar ou consumir |
 | apenas loja | A avaliação trata só da loja: comprou, sem visita para jogar ou consumir. Esses textos saem da leitura da experiência de luderia |
@@ -109,6 +107,12 @@ Decisão do autor de 30/10: o que descreve a visita, e não avalia a casa, sai d
 13. **Funcionário elogiado sem adjetivo de serviço** ("Alex muito resenha", "a Miranda é uma fofaaaa") → não é atendimento presencial; sem tema, salvo outro atributo no texto.
 14. **Aniversário** no contexto → também comemorações e grupos (ver §2).
 15. **"Explicam poucos jogos"** → explicação de jogos negativa.
+16. **Elogio geral sem atributo** ("tudo 10/10", "melhor casa da cidade", "vocês vão rir muito") → sem tema.
+17. **"Bem atendido" no pedido ou na comida** → atendimento presencial; comida só com juízo sobre o prato.
+18. **Acervo:** "acervo bom", "excelente" ou "top" → variedade e curadoria; "grande acervo", "acervo enorme", "muitos jogos" → só variedade.
+19. **"Galera" ou "pessoal" sem dizer se é a equipe** → eventos e comunidade, não atendimento.
+20. **Compra com entrega** ("material chegou intacto") → apenas loja no contexto e atendimento online.
+21. **"Profissional" dito da loja ou da casa** → atendimento presencial. "Gente boa", sem outro adjetivo de serviço, não basta (regra 13).
 
 ## 4. Conferência
 
@@ -119,7 +123,7 @@ Antes de contar, conferir por SQL: nenhuma opção fora desta lista, as duas col
 | Página no Notion | Casa | Ajuste |
 |---|---|---|
 | 3f9cde2e8c24819e93bad42d202cd1cd | Arcadea | 10% sem aviso: regras da casa − |
-| 3f9cde2e8c24815799a1cf0d3fd4c3a6 | Bardo Mago | "Preços extremamente altos" da comida: preço do consumo − |
+| 3f9cde2e8c24815799a1cf0d3fd4c3a6 | Bardo Mago | "Preços extremamente altos" da comida: preço do cardápio − |
 | 3f9cde2e8c24812089b1f84a1e797ead | Bodogami | Idosos em pé mais de 1 hora: lotação e reserva − |
 | 3f9cde2e8c2481ccbf2fd00f53105a33 | Bodogami | Não jogou "devido o horário": horário de funcionamento − |
 | 3f9cde2e8c2481388b6de45d5e8ed6d3 | Bodogami | "Diversos jogos": variedade +; "pelo tempo que quiser": regras da casa + |
@@ -134,17 +138,33 @@ Antes de contar, conferir por SQL: nenhuma opção fora desta lista, as duas col
 | 3f9cde2e8c24816ea05cd0be97117dba | Bodogami | "Experiência no lugar": tirar ambiente |
 | 3f5cde2e8c2481b698cffc407adc74f2 | Cartola | Recomendação pelo perfil do grupo: indicações +; "fills up quickly": não codificar lotação |
 | 3f5cde2e8c2481289b48ce6701eee62d | Cartola | Jogo pedido e levado à mesa: regras da casa +, não curadoria (curadoria fica pelo "portfólio incrível") |
-| 3f9cde2e8c2481a5873ade636c393967 | Fan Hour | "Não há estacionamentos": estacionamento −; "ambiente pequeno": conforto − |
+| 3f9cde2e8c2481a5873ade636c393967 | Fan Hour | "Não há estacionamentos": localização e acesso −; "ambiente pequeno": conforto − |
 | 3f9cde2e8c248148aac2ce694eac6571 | Fan Hour | "Taxa de serviço": regras da casa −, salvo se for a taxa de jogo (regra 9) |
 | 3f4cde2e8c24812da8b0c84a0f23ebca | Ludoteca Sidequest | "Possível alugar": aluguel no contexto; taxa por pessoa que só vale cedo: preço da entrada − |
 | 3f9cde2e8c24811195a3e1ab9d486a17 | Ludus | "Todos foram educados": atendimento + |
 | 3f9cde2e8c248107be46dd270b2b5ed7 | Shelf | "Exceto a batata com queijo, ótima": comida também + |
 | 3f9cde2e8c2481029fa2d5a4e12ffb8a | Shelf | "Ambiente muito bom": ambiente + |
-| 3f9cde2e8c2481d38c1dc036b479cf02 | Shelf | Parceria com o estacionamento: estacionamento − (regra 3) |
+| 3f9cde2e8c2481d38c1dc036b479cf02 | Shelf | Parceria com o estacionamento: localização e acesso − (regra 3) |
 | 3f9cde2e8c2481328f12e486934faf8a e 3f9cde2e8c248176a271db7697f61de8 | Shelf | Mesmo grupo, aniversário, explicadores e hambúrguer trocado: provável duplicata (regra 11); só a segunda tem limpeza + |
 | 3f9cde2e8c248120b4e8d0de20688910 | Shelf | "Jogos trocados quase no mesmo momento": explicação + |
 
 São 26 linhas em 166 (16%) com ao menos um ajuste. A maior parte é omissão de tema, não troca de sinal.
+
+### 5.1 Exemplos-âncora da rodada 1 (linhas com dúvida do autor)
+
+| Nº da amostra | Trecho | Codificação | Regra |
+|---|---|---|---|
+| 16, 114, 134 | "tudo 10/10"; "vocês vão rir muito"; "melhor casa de jogos desta cidade" | Sem tema | 16 |
+| 29 | "atendimento de jogos muito legal… excelentes profissionais" | atendimento +, explicação + | 1 |
+| 46 | Compra de cartas; "material chegou intacto" | atendimento online +; contexto apenas loja; costuma ir: segunda vez | 20 |
+| 68 | "bem atendido, tanto nas explicações dos jogos e a comida" | atendimento +, explicação + | 17 |
+| 69 | "Acervo e atendimento excelentes"; salas menores e menos barulhentas | variedade +, curadoria +, atendimento +, conforto +; voltará: sim | 18 |
+| 72 | "muitos produtos. Muito familiar… Família Soares" | variedade +, ambiente +; contexto família (pela assinatura) e loja | Contexto, §2.1 |
+| 78 | "loja profissional, acolhedora… dono gente boa" | ambiente +, atendimento +; contexto loja; costuma ir: sim | 21 |
+| 79 | "preços bons… galera tranquila… conhecer novas pessoas no seu hobby" | preço de outros itens +, eventos e comunidade + | 19 |
+| 80 | "já fui várias vezes com amigos… valor fixo de entrada… opções veganas" | atendimento +, comida +, preço da entrada +, regras da casa +, variedade do cardápio −; contexto amigos; costuma ir e voltará: sim | Contexto, §2.1 |
+| 98 | "Variedade e preço bom… um pessoal joga RPG… atendimento top" | variedade +, preço de outros itens +, conforto +, eventos +, atendimento +; contexto loja | Preço |
+| 126, 133 | "Alex muito resenha"; "A Miranda é uma fofaaaa" | Sem tema | 13 |
 
 ## 6. O que falta para a grade seguir Bardin
 
@@ -154,5 +174,5 @@ Bardin (2011 `[AV]`) exige categorias com exclusão mútua, homogeneidade (um s�
 2. **Exaustividade.** Não há tema para segurança, acessibilidade e respeito (idosos sem prioridade na fila, "ambiente seguro", adolescentes barrados). O livro de 15/10 tem esse tema (INC).
 3. **Polaridade neutra e mista.** As duas colunas não registram o mediano. Hoje a regra 4 descarta esses casos; o livro de 15/10 previa `~` e `±`.
 4. **Regras escritas com exemplo-âncora.** Cada tema precisa de um trecho real do corpus como exemplo de inclusão e outro de exclusão. A descrição do banco no Notion só traz a definição curta.
-5. **Uma grade só.** O livro de 15/10 (16 categorias, códigos ACV, MED etc.) e a lista do Notion (26 temas) descrevem o mesmo corpus com recortes diferentes. A análise do capítulo precisa de uma delas, com a tabela de correspondência.
+5. **Uma grade só.** O livro de 15/10 (16 categorias, códigos ACV, MED etc.) e a lista do Notion (24 temas) descrevem o mesmo corpus com recortes diferentes. A análise do capítulo precisa de uma delas, com a tabela de correspondência.
 6. **Fidelidade medida.** O teste de Bardin pede duas codificações independentes do mesmo material e a comparação delas (kappa por tema). Procedimento: uma amostra sorteada é recodificada do zero, sem ver as marcações, depois da leitura deste dicionário; o kappa sai da comparação, e as divergências viram regras novas. As 166 linhas desta revisão servem de pré-teste da grade, não de corpus: o recorte por Fórmula ≥ 5 precisa ser declarado (o que a fórmula mede) e o restante das linhas codificado ou amostrado por regra escrita.
