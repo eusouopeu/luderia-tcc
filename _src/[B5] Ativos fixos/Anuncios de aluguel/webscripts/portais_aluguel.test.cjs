@@ -15,7 +15,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, csv, nomeArquivo });})();';
+    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'portais_aluguel.user.js' });
   return ambiente.__test;
 }
@@ -37,6 +37,16 @@ test('condomínio e IPTU: valor, isento (0) ou ausente (null)', () => {
   const q = 'R$ 4.000/mês | Cond. isento • IPTU não informado';
   assert.equal(t.valorRotulado(q, 'Cond'), 0);
   assert.equal(t.valorRotulado(q, 'IPTU'), null);
+  const r = 'R$ 30.000/mês | Cond. R$ 1,2 mil • IPTU R$ 2 mil';
+  assert.equal(t.valorRotulado(r, 'Cond'), 1200);
+  assert.equal(t.valorRotulado(r, 'IPTU'), 2000);
+});
+
+test('parada da rodada: inéditos contam só os ids vistos nesta rodada', () => {
+  const pagina = [{ portal: 'zap', id: '1' }, { portal: 'zap', id: '2' }, { portal: 'zap', id: '2' }, { portal: 'zap', id: '' }];
+  assert.deepEqual(json(t.ineditas(pagina, [])), ['zap:1', 'zap:2']);
+  assert.deepEqual(json(t.ineditas(pagina, ['zap:1'])), ['zap:2']);
+  assert.deepEqual(json(t.ineditas(pagina, ['zap:1', 'zap:2'])), []);
 });
 
 test('card do ZAP e do Viva Real', () => {
@@ -135,5 +145,5 @@ test('guardar conta só os novos e o CSV usa vírgula decimal', () => {
   const linhas = t.csv([{ portal: 'zap', id: '1', titulo: 'Loja; esquina', aluguel: 10.5 }]).split('\r\n');
   assert.ok(linhas[0].startsWith('﻿portal;id;url;titulo'));
   assert.ok(linhas[1].startsWith('zap;1;;"Loja; esquina";;;10,5'));
-  assert.equal(t.nomeArquivo('zap', '2026-11-02'), '2026-11-02_zap_anuncios_aluguel.csv');
+  assert.equal(t.nomeArquivo('zap', '2026-11-02', '1846'), '2026-11-02_1846_zap_anuncios_aluguel.csv');
 });

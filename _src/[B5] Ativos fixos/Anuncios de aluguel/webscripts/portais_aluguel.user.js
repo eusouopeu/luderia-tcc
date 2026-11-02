@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.02-1
+// @version      2026.11.02-2
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas seguintes e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -19,10 +19,13 @@
  *
  * Como usar: abrir a busca no portal, já filtrada (tipo, cidade, bairro), e clicar
  * em "Coletar todas as páginas". O script lê a página, rola até o fim, guarda os
- * anúncios e vai para a página seguinte (?o=N no OLX, ?pagina=N nos demais) até
- * uma página não trazer anúncio novo ou chegar ao limite. No fim, toca um som e
- * baixa o CSV. Os anúncios ficam guardados no navegador (localStorage, um por
- * portal) até "Limpar"; o CSV traz tudo o que foi guardado.
+ * anúncios e vai para a página seguinte (?o=N no OLX, ?pagina=N no ZAP e no Viva
+ * Real, botão "Ver mais" no QuintoAndar) até uma página vir vazia, não trazer
+ * anúncio inédito nesta rodada ou chegar ao limite. "Inédito" conta só a rodada:
+ * refazer uma busca já guardada percorre todas as páginas de novo. No fim, toca
+ * um som e baixa o CSV. Os anúncios ficam guardados no navegador (localStorage,
+ * um por portal) até "Limpar"; o CSV traz tudo o que foi guardado. Se o
+ * localStorage encher, a rodada para e o CSV sai na hora com o que foi lido.
  *
  * Buscas que funcionam (02/11/2026):
  *  - OLX:       /imoveis/comercio-e-industria/estado-ba/grande-salvador/salvador
@@ -68,7 +71,7 @@
   // Valor depois de um rótulo ("Cond. R$ 1.135", "IPTU R$ 180"); 0 se "isento"; null se ausente.
   function valorRotulado(texto, rotulo) {
     const t = String(texto || '');
-    const re = new RegExp(rotulo + '\\.?\\s*(?:R\\$\\s*([\\d.,]+)|(isent[oa]))', 'i');
+    const re = new RegExp(rotulo + '\\.?\\s*(?:R\\$\\s*([\\d.,]+(?:\\s*mil\\b)?)|(isent[oa]))', 'i');
     const m = t.match(re);
     if (!m) return null;
     return m[2] ? 0 : numeroBR(m[1]);
@@ -225,9 +228,13 @@
     try { return JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) { return {}; }
   }
 
+  // Devolve false se o localStorage recusar (cheio): quem chama avisa e baixa o CSV.
   function salvar(dados) {
-    try { localStorage.setItem(CHAVE, JSON.stringify(dados)); } catch (e) { console.error(NOME, 'localStorage cheio', e); }
+    try { localStorage.setItem(CHAVE, JSON.stringify(dados)); return true; } catch (e) { console.error(NOME, 'localStorage cheio', e); return false; }
   }
+
+  // Chaves lidas nesta página que a rodada ainda não tinha visto.
+  const ineditas = (anuncios, vistos) => [...new Set(anuncios.filter((a) => a.id).map((a) => `${a.portal}:${a.id}`))].filter((k) => !vistos.includes(k));
 
   // Junta os anúncios lidos aos guardados; devolve quantos são novos.
   function guardar(guardados, anuncios, contexto) {
@@ -253,9 +260,11 @@
   const csv = (ls) => '﻿' + [COLS.join(';'), ...ls.map((l) => COLS.map((c) => celula(l[c])).join(';'))].join('\r\n');
 
   const dataLocal = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const horaLocal = (d = new Date()) => `${String(d.getHours()).padStart(2, '0')}${String(d.getMinutes()).padStart(2, '0')}`;
 
-  // AAAA-MM-DD_<portal>_anuncios_aluguel.csv
-  const nomeArquivo = (portal, data) => `${data}_${portal}_anuncios_aluguel.csv`;
+  // AAAA-MM-DD_HHmm_<portal>_anuncios_aluguel.csv: a hora evita o "(1)" do navegador
+  // quando o CSV sai duas vezes no mesmo dia.
+  const nomeArquivo = (portal, data, hora) => `${data}_${hora}_${portal}_anuncios_aluguel.csv`;
 
   // ---------- leitura da página (DOM) ----------
 
@@ -329,6 +338,10 @@
     };
   }
 
+  // QuintoAndar: a lista cresce pelo botão "Ver mais", sem trocar de URL.
+  const botaoVerMais = () => [...document.querySelectorAll('button, a')]
+    .find((b) => /^\s*ver mais\b/i.test(b.textContent || '') && !b.disabled && b.offsetParent !== null);
+
   const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
 
   // Rola aos poucos para os cards preguiçosos renderizarem; volta ao topo no fim.
@@ -361,21 +374,29 @@
   const portal = portalDe(location.hostname);
   let guardados = carregar();
 
-  async function coletarPagina() {
+  // No QuintoAndar a "página" é o número de cliques em "Ver mais" mais um (a URL não muda).
+  async function coletarPagina(pagina = paginaAtual(portal, location.href)) {
     await esperarCards(portal);
     await rolarAteOFim();
     const anuncios = lerPagina(portal);
     guardados = carregar();
-    const novos = guardar(guardados, anuncios, { busca_url: location.href, pagina: paginaAtual(portal, location.href), data_coleta: dataLocal() });
-    salvar(guardados);
-    return { lidos: anuncios.length, novos };
+    const novos = guardar(guardados, anuncios, { busca_url: location.href, pagina, data_coleta: dataLocal() });
+    const gravou = salvar(guardados);
+    return { anuncios, lidos: anuncios.length, novos, gravou };
   }
 
-  function baixarCsv() {
-    const linhas = Object.values(carregar()).sort((a, b) => (a.pagina - b.pagina) || String(a.id).localeCompare(String(b.id)));
+  function avisarCheio() {
+    gravarAuto(null);
+    atualizarBotoes();
+    baixarCsv(guardados);
+    status('Armazenamento do navegador cheio: o CSV saiu com tudo o que foi lido. Confira o arquivo, clique em "Limpar" e retome a busca.');
+  }
+
+  function baixarCsv(dados = carregar()) {
+    const linhas = Object.values(dados).sort((a, b) => (a.pagina - b.pagina) || String(a.id).localeCompare(String(b.id)));
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([csv(linhas)], { type: 'text/csv;charset=utf-8' }));
-    a.download = nomeArquivo(portal, dataLocal());
+    a.download = nomeArquivo(portal, dataLocal(), horaLocal());
     (document.body || document.documentElement).appendChild(a);
     a.click();
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
@@ -395,29 +416,47 @@
   const lerAuto = () => { try { return JSON.parse(sessionStorage.getItem(CHAVE_AUTO) || 'null'); } catch (e) { return null; } };
   const gravarAuto = (v) => { try { v ? sessionStorage.setItem(CHAVE_AUTO, JSON.stringify(v)) : sessionStorage.removeItem(CHAVE_AUTO); } catch (e) { /* sem modo automático */ } };
 
-  // Modo automático: sobrevive à troca de página pelo sessionStorage da aba.
+  function concluir(auto, motivo) {
+    gravarAuto(null);
+    atualizarBotoes();
+    som();
+    baixarCsv();
+    status(`Concluído: ${auto.paginas} páginas, ${auto.total} anúncios novos (${motivo}).`);
+  }
+
+  // Modo automático: sobrevive à troca de página pelo sessionStorage da aba. A parada
+  // compara com os ids vistos nesta rodada (auto.vistos), não com tudo o que está
+  // guardado: refazer uma busca já coletada não para na primeira página.
   async function passoAutomatico() {
     const auto = lerAuto();
     if (!auto) return;
+    auto.vistos = auto.vistos || [];
+    const pagina = portal === 'quintoandar' ? auto.paginas + 1 : paginaAtual(portal, location.href);
     atualizarBotoes();
-    status(`Página ${paginaAtual(portal, location.href)}: lendo…`);
-    const { lidos, novos } = await coletarPagina();
+    status(`Página ${pagina}: lendo…`);
+    const { anuncios, lidos, novos, gravou } = await coletarPagina(pagina);
+    if (!gravou) { avisarCheio(); return; }
     if (!lerAuto()) return; // parado durante a leitura
+    const inedit = ineditas(anuncios, auto.vistos);
+    auto.vistos.push(...inedit);
     auto.paginas += 1;
     auto.total += novos;
-    const fim = lidos === 0 || novos === 0 || auto.paginas >= auto.limite;
-    mostrar(`Página ${paginaAtual(portal, location.href)}: ${lidos} lidos, ${novos} novos.`);
-    if (fim) {
-      gravarAuto(null);
-      atualizarBotoes();
-      som();
-      baixarCsv();
-      status(`Concluído: ${auto.paginas} páginas, ${auto.total} anúncios novos (${lidos === 0 ? 'página vazia' : novos === 0 ? 'sem novos' : 'limite de páginas'}).`);
-      return;
-    }
+    mostrar(`Página ${pagina}: ${lidos} lidos, ${inedit.length} inéditos na rodada, ${novos} novos no navegador.`);
+    if (lidos === 0) return concluir(auto, 'página vazia');
+    if (inedit.length === 0) return concluir(auto, 'página sem anúncio inédito');
+    if (auto.paginas >= auto.limite) return concluir(auto, 'limite de páginas');
     gravarAuto(auto);
     await esperar(1500 + Math.random() * 1500);
-    if (lerAuto()) location.href = proximaPagina(portal, location.href);
+    if (!lerAuto()) return;
+    if (portal === 'quintoandar') {
+      const b = botaoVerMais();
+      if (!b) return concluir(auto, 'sem botão "Ver mais"');
+      b.click();
+      await esperar(2000); // a resposta de /search/list chega depois do clique
+      passoAutomatico();
+      return;
+    }
+    location.href = proximaPagina(portal, location.href);
   }
 
   // ---------- painel (padrão: canto superior direito, shadow DOM, fora do <body>) ----------
@@ -475,8 +514,9 @@
       onclick: async () => {
         el.bPagina.disabled = true;
         status('Lendo a página…');
-        const { lidos, novos } = await coletarPagina();
+        const { lidos, novos, gravou } = await coletarPagina();
         el.bPagina.disabled = false;
+        if (!gravou) { avisarCheio(); return; }
         mostrar(`${lidos} lidos, ${novos} novos.`);
       },
     });
@@ -487,7 +527,7 @@
         passoAutomatico();
       },
     });
-    const bCsv = criar('button', { textContent: 'Baixar CSV', onclick: baixarCsv });
+    const bCsv = criar('button', { textContent: 'Baixar CSV', onclick: () => baixarCsv() });
     const bLimpar = criar('button', {
       textContent: 'Limpar',
       onclick: () => {
