@@ -28,7 +28,8 @@ Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e
 - Fluxograma dos processos principais (figura).
 
 ### 7.4 Gestão do acervo
-- Etapas (P7): abertura com o acervo enxuto (jogos em pelo menos 50% das luderias com elogio de variedade ou curadoria no B2); ampliação até a mediana do B1 quando o gatilho da etapa 2 disparar. Registro, no caixa, dos jogos pedidos e não disponíveis (alimenta o gatilho).
+- Etapas (P7): abertura com o acervo enxuto (jogos em pelo menos 50% das luderias com elogio de variedade ou curadoria no B2); ampliação até a mediana do B1 quando o gatilho da etapa 2 disparar. Jogos pedidos e não disponíveis, e buscas por número de pessoas e mecânica, registrados no site de recomendação (P7), que também traz os tutoriais rápidos; esses dados alimentam o gatilho.
+- Sleeves (protetores) em todas as cartas do acervo desde a abertura, e nos jogos novos de cada ampliação.
 - Composição inicial (de 6.2) e critérios de curadoria (jogos citados nas avaliações e acervo declarado dos concorrentes).
 - Conferência de peças após uso, reposição e desgaste (taxa de reposição vai para as premissas).
 - Renovação periódica do acervo.

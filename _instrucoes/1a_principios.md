@@ -83,9 +83,10 @@ Decisão do autor em 02/11/2026. O plano não projeta uma casa do porte da São 
   | Etapa | O que muda | Gatilho (3 meses seguidos, depois da maturação) |
   |---|---|---|
   | 1. Abertura | 6 mesas; acervo enxuto: jogos presentes em pelo menos 50% das luderias com elogio de variedade ou curadoria do acervo no B2 (98 títulos, cerca de R$ 18 mil a preço de loja); cardápio só com comidas recebidas prontas (salgados como coxinha e quibe, doces, bebidas), sem preparo no local | — |
-  | 2. Acervo | Acervo até a mediana do B1 (322 títulos), pelos jogos mais pedidos e pelos citados nas avaliações | Pedidos de jogos fora do acervo registrados no caixa em pelo menos 10% das mesas, ou fila pelo mesmo jogo em 1 dia de pico por semana |
+  | 2. Acervo | Acervo até a mediana do B1 (322 títulos), pelos jogos mais pedidos e pelos citados nas avaliações | Pedidos de jogos fora do acervo em pelo menos 10% das mesas; fila pelo mesmo jogo em 1 dia de pico por semana; ou buscas frequentes por jogos para um número de pessoas ou de uma mecânica com pouca oferta no acervo (dados do site de recomendação) |
   | 3. Cardápio | Cozinha de preparo no local (pratos e lanches feitos na casa) | Consumo de A&B por pessoa igual ou acima da cesta do provável e cardápio criticado em avaliações (variedade ou comida) |
   | 4. Mesas | +2 mesas por vez, até 10, sempre com no máximo 2 mesas por instrutor no pico | Ocupação de pico acima de 80% das mesas, ou grupos recusados por lotação em todos os fins de semana |
 
   Os limites dos gatilhos são proposta do autor (N6); o texto declara isso.
+- **Monitoramento pelo site de recomendação.** Um site no molde do app Tabulado do autor (`~/Codigos/Apps/tabulado`), preenchido pelos clientes ou pelos instrutores: a mesa informa número de pessoas, tempo, idade, peso das regras e estilo, recebe recomendações e tutoriais rápidos dos jogos. As buscas, os jogos escolhidos e os não encontrados alimentam os gatilhos das etapas e os do cap. 10.
 - **Ao escrever:** apresentar o porte reduzido como escolha de gestão de risco, com a justificativa, e não como limitação de capital.

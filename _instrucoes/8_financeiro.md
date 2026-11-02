@@ -4,7 +4,7 @@
 
 Responder se o negócio é viável e sob quais condições. O capítulo não vale pelos indicadores em si, mas pela **rastreabilidade e pelo teste das premissas** que os geram.
 
-**Desenho enxuto (P7 em [1a_principios.md](1a_principios.md)):** o modelo projeta a versão menor do negócio (6 mesas; terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h, 48 h por semana; 2 cozinheiros-chefes, instrutores de tempo integral e um de meio período de 20 h), não uma casa do porte da São Jogue. Premissas de horas e dias abertos, giro otimista (horas abertas ÷ permanência), equipe, área, aluguel e investimento saem desse desenho. O fluxo de caixa base é o da etapa 1 (acervo enxuto, comidas recebidas prontas); as etapas 2 a 4 (acervo, cozinha, mesas) entram no cap. 10 como opções, cada uma com investimento, efeito na receita e gatilho.
+**Desenho enxuto (P7 em [1a_principios.md](1a_principios.md)):** o modelo projeta a versão menor do negócio (6 mesas; terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h, 48 h por semana; 2 cozinheiros-chefes, instrutores de tempo integral e um de meio período de 20 h), não uma casa do porte da São Jogue. Premissas de horas e dias abertos, giro otimista (horas abertas ÷ permanência), equipe, área, aluguel e investimento saem desse desenho. O investimento em acervo inclui sleeves para todas as cartas (contagem de cartas por jogo e preço por pacote, com fonte), na abertura e em cada ampliação; a reposição (C13) também cobre sleeves. O fluxo de caixa base é o da etapa 1 (acervo enxuto, comidas recebidas prontas); as etapas 2 a 4 (acervo, cozinha, mesas) entram no cap. 10 como opções, cada uma com investimento, efeito na receita e gatilho.
 
 ## Divisão de subcapítulos
 

@@ -4,6 +4,9 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Gatilhos de perda máxima em ordem de análise: G1 pessoas por mesa, G2 consumo, G3 dia útil, G4 demanda baixa (alarme geral, só sem causa apontada por G1 a G3), G5 caixa, G6 saída | `_instrucoes/9_anal-riscos.md`, §10.6 |
+| 02/11/2026 | Monitoramento por um site de recomendação de jogos no molde do app Tabulado (clientes ou instrutores preenchem; recomendações e tutoriais rápidos); buscas por número de pessoas e mecânica entram no gatilho da etapa 2 | `_instrucoes/1a_principios.md` (P7) |
+| 02/11/2026 | Sleeves para todas as cartas do acervo previstos no investimento (abertura e cada ampliação) e na reposição | `_instrucoes/8_financeiro.md` |
 | 02/11/2026 | Bloco B5 (ativos fixos): preços de obra, aluguel, mobiliário, cozinha e bar, equipamentos e jogos coletados em sites e e-commerces, numa pasta por categoria | `CLAUDE.md`, Estado do projeto |
 | 02/11/2026 | Gatilhos de perda máxima no cap. 10 (G1 a G6: demanda, pessoas por mesa, consumo, dia útil, caixa, saída), com medidas de taxa alternativas como contingência: sessão curta com taxa menor, taxa por mesa, taxa revertida em consumação, desconto progressivo por pessoa na mesa e passaporte mensal | `_instrucoes/9_anal-riscos.md`, §10.6 |
 | 02/11/2026 | Investimento por etapas: abertura com 6 mesas, acervo enxuto (jogos em ≥ 50% das luderias com elogio ao acervo) e só comidas recebidas prontas; acervo, cozinha de preparo e mesas crescem por gatilho, pagos com o caixa gerado; o fluxo base é o da etapa 1 | `_instrucoes/1a_principios.md` (P7) |

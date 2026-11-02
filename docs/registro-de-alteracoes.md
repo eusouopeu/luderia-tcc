@@ -2188,3 +2188,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: sem bloco para os preços do investimento; o código B5 constava só como bloco arquivado (jogos da Ludopedia).
 **Depois**: bloco B5 com seis categorias (`acervo_jogos`, `aluguel`, `cozinha_bar`, `equipamentos`, `mobiliario`, `obra_reforma`), cada uma em `_dados-brutos/` (coletas e orçamentos originais) e na raiz (processados, com `_arquivo/`); CLAUDE.md e README listam o B5 novo e chamam o antigo de "B5 de jogos".
 **Justificativa**: pedido do autor: reunir os valores dos ativos fixos coletados em sites e e-commerces. Categorias pela lista de investimento do `_instrucoes/8_financeiro.md` (reforma, mobiliário, cozinha e bar, acervo), mais equipamentos e aluguel.
+
+### 09:18
+**Objeto**: `_instrucoes/1a_principios.md` (P7), `_instrucoes/7_operacional.md` (7.4), `_instrucoes/8_financeiro.md` (abertura), `_instrucoes/9_anal-riscos.md` (10.5, 10.6)
+**Antes**: gatilhos G1 demanda, G2 pessoas por mesa, G3 consumo, G4 dia útil, G5 caixa, G6 saída, sem ordem declarada; gatilho da etapa 2 só com pedidos no caixa e fila; sem sleeves no investimento.
+**Depois**: gatilhos em ordem de análise: G1 pessoas por mesa, G2 consumo, G3 dia útil (passaporte e eventos antes de fechar a terça), G4 demanda baixa (alarme geral, só sem causa em G1 a G3), G5 caixa, G6 saída. Gatilho da etapa 2 com buscas frequentes por número de pessoas ou mecânica; monitoramento por um site de recomendação no molde do app Tabulado (clientes ou instrutores; recomendações e tutoriais rápidos). Sleeves para todas as cartas no investimento em acervo e na reposição.
+**Justificativa**: pedido do autor; a ordem foi proposta por ele e conferida (causas específicas e medidas baratas antes do alarme geral).
