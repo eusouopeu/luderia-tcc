@@ -78,6 +78,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D40 — Ocupação de pico aplicada ao dia inteiro (02/11/2026).** 3.6 trata a contagem como limite superior, mas o 9.2 usa as 4,37 mesas ocupadas (noites de sexta e sábado, cerca de 2,7 h por visita) como provável para o dia inteiro, multiplicadas por 4,56 giros. O giro otimista (5,51) supõe 10 h abertas; o fim de semana tem 9,3 h (9.8), com teto de 5,14 giros, abaixo da ruptura (5,55). Sugestão: ocupação por faixa de horário e giro do fim de semana pelo horário do fim de semana.
 
+**D41 — Cap. 9 sem o valor residual do modelo (02/11/2026).** O 9.5 diz "sem valor residual dos demais ativos" e o 9.7.2 e o 4.6 dão P(VPL > 0) de 25,2% e 35,4%; o modelo passou a ter valor residual (M03), com P(VPL > 0) de 31,9% no quadro de 12 e VPL otimista de R$ 15,98 milhões. Sugestão: atualizar os caps. 4, 9, 10 e 11 junto com o pacote de mudanças do financeiro.
+
 ## Aceitável
 
 **D37 — Erros de digitação no cap. 1 (02/11/2026).** §2 da introdução: "São Paul" (São Paulo).

@@ -2115,3 +2115,10 @@ A busca por estaciona, vaga, valet, manobrista, parking, flanelinha, zona azul e
 
 A edição do autor no §6 do dicionário continua fora do commit.
 **Justificativa**: pedido do autor, para alinhar as duas grades antes da comparação da recodificação cega.
+
+### 05:20
+**Objeto**: `_src/extras/gerar_modelo_financeiro.py`; `textos/capitulos/9_plano_financeiro_modelo.xlsx`; `textos/capitulos/figuras/9_tornado.png` e `9_monte_carlo.png`
+**Antes**: sem valor residual; no ano 5 voltavam só a caução e o capital de giro. P(VPL > 0) de 25,2% no Monte Carlo; VPL otimista de R$ 6,64 milhões.
+**Depois**: premissa M03 (valor residual no ano 5): perpetuidade sem crescimento do EBITDA do ano 5 menos o reinvestimento anual igual à depreciação, à TMA, com piso zero; linha 12 da aba fluxo_caixa e bloco "VPL com e sem valor residual" na aba sensibilidade. Provável e pessimista sem mudança (perpetuidade negativa, valor residual zero: VPL de -R$ 638 mil e -R$ 2,88 milhões); otimista de R$ 15,98 milhões (R$ 6,64 milhões sem); P(VPL > 0) de 31,9%. VPL da planilha igual ao do Python nos três cenários.
+**Justificativa**: pedido do autor (recomendação 10 do financeiro, 02/11/2026): declarar o valor residual e mostrar a sensibilidade com e sem.
+

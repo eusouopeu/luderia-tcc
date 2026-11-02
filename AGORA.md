@@ -4,6 +4,7 @@ Atualizado em 02/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora
 
+- **Financeiro (02/11, 05h):** valor residual no modelo (M03; provável inalterado, P(VPL > 0) de 31,9%); taxas de entrada alternativas, gasto declarado ÷ cesta e área da Bela Vista calculados; sem novas visitas presenciais (decisão do autor). Falta escolher o pacote de mudanças (pendências) e levar aos caps. 4, 9, 10 e 11.
 - **Revisão do TMin v9 (02/11, 04h):** recomendações 1, 6, 9 e 10 aplicadas no `.docx` (pares originais apagados, 26 referências novas com [AV], "seção N.N", erros de redação); 3, 4 e 5 (números, alertas e ocupação de pico) esperam a decisão sobre o financeiro (pendências); 2, 7 e 8 ficam para depois. Os `.md` de `_md/` ainda não têm essas mudanças.
 - **Cap. 2 reordenado (02/11):** contexto (2.1 experiência, 2.2 estabelecimentos, 2.3 público) → 2.4 estratégia e gestão do serviço → 2.5 viabilidade, no TMin v9; três parágrafos novos com "*". Depois dos caps. 2 e 3, reescrever o início do cap. 1 (pendências).
 - **Comentários do TMin v9 (01/11, 23h):** 8 dos 9 comentários e as remissões do cap. 2 respondidos em 18 parágrafos com "*", abaixo dos originais; a regra do cap. 2 mudou (sem remissão a capítulo no texto). Falta o autor escolher a versão de cada um e conferir Figueiredo para o comentário 7.

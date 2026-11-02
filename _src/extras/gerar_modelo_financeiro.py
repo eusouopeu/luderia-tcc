@@ -15,8 +15,11 @@ VPL de cada um tem de bater com o do Python (diferença < R$ 1,00); senão o
 script para.
 
 Modelo em preços constantes (out/2026), com TMA real. Mensal nos 60 meses
-(rampa de maturação no ano 1), anual na DRE e no fluxo de caixa. Sem valor
-residual: no ano 5 voltam só a caução e o capital de giro.
+(rampa de maturação no ano 1), anual na DRE e no fluxo de caixa. No ano 5
+voltam a caução e o capital de giro e entra o valor residual (M03):
+perpetuidade sem crescimento do EBITDA do ano 5 menos o reinvestimento anual
+(igual à depreciação), à TMA, com piso zero (se a perpetuidade for negativa, o
+negócio fecha). A aba sensibilidade mostra o VPL com e sem o valor residual.
 
 Receita (decisão do autor, 31/10/2026): pessoas = mesas ocupadas × pessoas
 por mesa × giros por mesa por dia × dias abertos; receita por pessoa = taxa de
@@ -69,6 +72,8 @@ FIGURA_MC = ROOT / "textos" / "capitulos" / "figuras" / "9_monte_carlo.png"
 SOFFICE = "/Applications/LibreOffice.app/Contents/MacOS/soffice"
 
 MESES = 60
+# vida útil (anos) dos itens depreciáveis, a mesma da aba investimento
+VIDA_UTIL = dict(reforma=5, mobiliario=10, cozinha=10, ti=5, acervo=5, preop=5)
 ANOS = 5
 CENARIOS = ("pessimista", "provavel", "otimista")
 N_SIMULACOES = 10_000
@@ -260,6 +265,8 @@ def premissas(f) -> list[dict]:
           "BCB: Selic meta e Focus (B4); prêmio de risco do autor", "N2 + N6",
           f"Juro real de {f['juro_real']:.1f}% (Selic {f['selic']:.1f}% e IPCA esperado de {f['ipca_2027']:.1f}% para 2027) mais 3 a 9 p.p. de risco de pequeno negócio."),
         R("M02", "Semanas por mês", "semanas", 52 / 12, 52 / 12, 52 / 12, "Calendário", "N1", "52 semanas ÷ 12 meses."),
+        R("M03", "Valor residual no ano 5", "1 com, 0 sem", 1, 1, 1, "Assaf Neto (2014), perpetuidade sem crescimento", "N1",
+          "Fluxo do ano 5 (EBITDA menos reinvestimento igual à depreciação) ÷ TMA, com piso zero; sem valor residual na aba sensibilidade."),
     ]
 
 
@@ -299,8 +306,10 @@ def calcula(f, v: dict, folha: float) -> dict:
                acervo=v["I05"], preop=v["I06"], caucao=v["I07"] * aluguel, giro=v["I08"] * fixos)
     total_inv = sum(inv.values())
     ano = m.groupby("ano")[["bruta", "simples", "cmv", "cartao", "fixos", "ebitda"]].sum()
+    deprec = sum(inv[k] / VIDA_UTIL[k] for k in VIDA_UTIL)
+    residual = v["M03"] * max(0.0, (ano.loc[ANOS, "ebitda"] - deprec) / v["M01"])
     fc = [-total_inv] + list(ano["ebitda"])
-    fc[-1] += inv["caucao"] + inv["giro"]
+    fc[-1] += inv["caucao"] + inv["giro"] + residual
     desc = [x / (1 + v["M01"]) ** t for t, x in enumerate(fc)]
     vpl = sum(desc)
     acum, payback = 0.0, float("nan")
@@ -310,7 +319,7 @@ def calcula(f, v: dict, folha: float) -> dict:
             break
         acum += d
     mc_pct = 1 - (ano.loc[ANOS, ["simples", "cmv", "cartao"]].sum() / ano.loc[ANOS, "bruta"])
-    return dict(vpl=vpl, tir=tir(fc), payback=payback, investimento=total_inv, inv=inv, fc=fc,
+    return dict(vpl=vpl, tir=tir(fc), payback=payback, investimento=total_inv, inv=inv, fc=fc, residual=residual,
                 receita_madura=m["bruta"].iloc[-1], pessoas_madura=m["pessoas"].iloc[-1],
                 fixos=fixos, ebitda5=ano.loc[ANOS, "ebitda"], mc_pct=mc_pct,
                 receita_equilibrio=fixos / mc_pct, alug_madura=m["alug"].iloc[-1], ano=ano)
@@ -424,7 +433,7 @@ def nota(ws, linha, texto, ncol):
     ws.row_dimensions[linha].height = 15 * max(1, len(texto) // 110 + 1)
 
 
-def planilha(f, prem, quadro, resultados, tornado, rupt, mc):
+def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
     wb = openpyxl.Workbook()
     # ---- premissas
     ws = wb.active
@@ -615,7 +624,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc):
     estilo(ws, 2, rt, 4, MOEDA)
     for r in range(3, rt):
         ws.cell(r, 3).number_format = "0"
-    nota(ws, rt + 2, "Fonte: aba premissas (I01 a I08, C03). Reforma depreciada em 5 anos (prazo típico de locação); caução e capital de giro voltam no ano 5. Sem valor residual dos demais itens.", 4)
+    nota(ws, rt + 2, "Fonte: aba premissas (I01 a I08, C03). Reforma depreciada em 5 anos (prazo típico de locação); caução e capital de giro voltam no ano 5. Valor residual na aba fluxo_caixa (M03).", 4)
     ws.column_dimensions["A"].width = 30
     for col in "BCD":
         ws.column_dimensions[col].width = 18
@@ -664,7 +673,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc):
     ws["A3"] = "Ano (número)"
     rot = {4: "Investimento", 5: "EBITDA", 6: "Retorno da caução e do capital de giro", 7: "Fluxo líquido",
            8: "Fator de desconto", 9: "Fluxo descontado", 10: "Fluxo descontado acumulado",
-           11: "Payback descontado (auxiliar)"}
+           11: "Payback descontado (auxiliar)", 12: "Valor residual (perpetuidade sem crescimento, piso zero)"}
     for r, n in rot.items():
         ws.cell(r, 1, n)
     for t in range(ANOS + 1):
@@ -672,14 +681,16 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc):
         ws[f"{c}4"] = "=-investimento!$B$11" if t == 0 else 0
         ws[f"{c}5"] = 0 if t == 0 else f"=dre!{get_column_letter(1 + t)}11"
         ws[f"{c}6"] = "=investimento!$B$9+investimento!$B$10" if t == ANOS else 0
-        ws[f"{c}7"] = f"=SUM({c}4:{c}6)"
+        ws[f"{c}12"] = (f"=P_M03*MAX(0,(dre!{get_column_letter(1 + t)}11-investimento!$D$11)/P_M01)"
+                        if t == ANOS else 0)
+        ws[f"{c}7"] = f"=SUM({c}4:{c}6)+{c}12"
         ws[f"{c}8"] = f"=1/(1+P_M01)^{c}3"
         ws[f"{c}9"] = f"={c}7*{c}8"
         ws[f"{c}10"] = f"={c}9" if t == 0 else f"={get_column_letter(1 + t)}10+{c}9"
         if t:
             p = get_column_letter(1 + t)
             ws[f"{c}11"] = f'=IF(AND({p}10<0,{c}10>=0),{p}3+(-{p}10)/{c}9,"")'
-    estilo(ws, 2, 11, 2 + ANOS, MOEDA)
+    estilo(ws, 2, 12, 2 + ANOS, MOEDA)
     for t in range(ANOS + 1):
         c = get_column_letter(2 + t)
         ws[f"{c}3"].number_format = "0"
@@ -785,6 +796,17 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc):
         fmt = PCT if rp["unidade"].startswith("%") else (MOEDA if rp["unidade"].startswith("R$") else DEC2)
         for c in (3, 4, 5, 6):
             ws.cell(r, c).number_format = fmt
+    r2 = ultr + 3
+    ws.cell(r2 - 1, 1, "VPL com e sem valor residual (M03)").font = NEGRITO
+    for j, h in enumerate(["Cenário", "Valor residual no ano 5 (R$)", "VPL com (R$)", "VPL sem (R$)", "Diferença (R$)"], 1):
+        ws.cell(r2, j, h).font = NEGRITO
+    for i, cen in enumerate(CENARIOS):
+        com, sem = resultados[cen], sem_residual[cen]
+        for j, x in enumerate((("pessimista", "provável", "otimista")[i], com["residual"], com["vpl"], sem["vpl"], com["vpl"] - sem["vpl"]), 1):
+            ws.cell(r2 + 1 + i, j, x)
+            if j > 1:
+                ws.cell(r2 + 1 + i, j).number_format = MOEDA
+    ultr = r2 + len(CENARIOS)
     nota(ws, ultr + 2, "Fonte: elaboração própria. Valores gravados pelo script _src/extras/gerar_modelo_financeiro.py, que recalcula o modelo em Python e confere o VPL com esta planilha nos três cenários; mudar a aba premissas não atualiza esta aba (rodar o script de novo).", 7)
     for col, w in zip("ABCDEFG", (12, 44, 18, 18, 18, 18, 18)):
         ws.column_dimensions[col].width = w
@@ -942,7 +964,8 @@ def main():
     rupt = [dict(por_id[t["id"]], ruptura=ruptura(f, prem, folha, t["id"])) for t in tornado[:5]]
     mc = monte_carlo(f, prem, folha)
 
-    wb = planilha(f, prem, quadro, resultados, tornado, rupt, mc)
+    sem_residual = {c: calcula(f, dict(valores(prem, c), M03=0), folha) for c in CENARIOS}
+    wb = planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual)
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     wb.save(SAIDA)
     for i, cen in enumerate(CENARIOS, 1):
@@ -964,7 +987,8 @@ def main():
         r = resultados[cen]
         print(f"\n[{cen}] invest {r['investimento']:,.0f} | receita madura {r['receita_madura']:,.0f}/mês | pessoas {r['pessoas_madura']:,.0f}/mês"
               f" | fixos {r['fixos']:,.0f} | MC {r['mc_pct']:.1%} | equilíbrio {r['receita_equilibrio']:,.0f} | EBITDA5 {r['ebitda5']:,.0f}"
-              f" | VPL {r['vpl']:,.0f} | TIR {r['tir']:.1%} | payback {r['payback']:.2f}")
+              f" | VPL {r['vpl']:,.0f} (sem valor residual {sem_residual[cen]['vpl']:,.0f}; residual {r['residual']:,.0f})"
+              f" | TIR {r['tir']:.1%} | payback {r['payback']:.2f}")
         print("   inv:", {k: round(x) for k, x in r["inv"].items()})
         print("   anos:", r["ano"].round(0).to_dict("index"))
     print("\nTornado:")

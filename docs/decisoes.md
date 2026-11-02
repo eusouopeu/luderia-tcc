@@ -4,6 +4,8 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Sem novas visitas presenciais: a validação das premissas de dia útil, fluxo e consumo usa só dados secundários e já coletados (B1, B2, B3, B4) | pedido do autor; `docs/pendencias.md` |
+| 02/11/2026 | Modelo financeiro com valor residual no ano 5 (perpetuidade sem crescimento, reinvestimento igual à depreciação, piso zero), declarado e mostrado com e sem na aba sensibilidade | `docs/registro-de-alteracoes.md` (02/11/2026, 05:20) |
 | 02/11/2026 | Tema "estacionamento" separado de "localização e acesso" nas duas codificações do B2 (vaga, valet, preço, flanelinha, convênio) | `textos/instrumentos/dicionario_temas_B2.md`, §2 |
 | 02/11/2026 | Remissão a subdivisão escrita "seção N.N" (e "cap. N" só para capítulo inteiro); legislação nas Referências sob a jurisdição (BRASIL, BAHIA, SALVADOR), e a consulta ao CNPJ citada como (BRASIL, 2026) | `docs/registro-de-alteracoes.md` (02/11/2026, 04:33) |
 | 02/11/2026 | Comentário do B2 cujo texto termina em emoji antes do "…" do Google, com frase de sentido completo, conta como inteiro (Status "Completo") | `docs/pendencias.md`, item 14 |
