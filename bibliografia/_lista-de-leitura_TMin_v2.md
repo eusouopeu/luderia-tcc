@@ -159,3 +159,36 @@ Legenda, no fim de cada referência:
 ### Aluguel comercial
 
 - [ ] FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). *Índice FipeZAP*: locação comercial, julho de 2026. São Paulo, 2026. Citada também nos caps. 3, 5, 6, 9, 10, 11. 🌐
+
+## Fontes candidatas para a abertura, o 2.1 e o 2.2 (02/11/2026, aguardando decisão do autor)
+
+Ainda não citadas no TMin. Entram só se o autor aprovar os parágrafos novos do cap. 2.
+
+### Com PDF e trecho recortado
+
+- [ ] SEBRAE. *Sobrevivência das empresas mercantis brasileiras (2019–2023)*: relatório técnico. Brasília: Sebrae, 2024. Disponível em: https://datasebrae.com.br/wp-content/uploads/2024/09/2024-08-13-Relatorio-tecnico-Sobrevivencia-das-empresas-mercantis-brasileiras.pdf. 📄
+  - [ ] MPE: 74,2% sobrevivem cinco anos (Tabela 1, p. 15–16); cerca de uma em cada quatro fecha.
+  - [ ] MPE de serviços: 74,1% em cinco anos (Tabela 17, p. 30).
+- [ ] IBGE. *Pesquisa de Orçamentos Familiares 2017-2018*: perfil das despesas no Brasil: indicadores selecionados de alimentação, transporte, lazer e inclusão financeira. Rio de Janeiro: IBGE, 2021. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv101844.pdf. 📄
+  - [ ] despesa per capita com lazer de R$ 14,87 por mês, 63,8% em eventos culturais, esportivos e recreação (p. 102 e 107).
+  - [ ] o décimo de maior renda responde por 49,0% das despesas com lazer e viagens; razão 10/40 de 5,67 (p. 107).
+- [ ] NOVAES, Allan; KANYAT, Lizbeth. From play to belonging: board game cafes as mediators for social wellness and community building in Japan. *Acta Ludologica*, v. 8, n. 1, p. 78–97, 2025. DOI: 10.34135/actaludologica.2025-8-1.78-97. 📄
+  - [ ] etnografia em nove *board game cafés* de Tóquio (p. 80).
+  - [ ] terceiro lugar: ambiente distinto da casa e do trabalho, de convívio informal (Oldenburg, 1989, apud p. 83).
+  - [ ] fazer amigos é a principal motivação; preço por tempo, em média 470 ienes por hora, menor à tarde em dia útil (p. 87).
+  - [ ] 44% vão sozinhos; a equipe atua como anfitriã, explica regras e forma grupos (p. 89).
+- [ ] KVIAT, Alexandra. Playful infrastructures: building communities through social board gaming. In: BRITISH ACADEMY. *Social and cultural infrastructure for people and policy*. Londres: The British Academy, 2024. p. 74–86. Disponível em: https://www.thebritishacademy.ac.uk/documents/5384/Social-and-cultural-infrastructure-for-people-and-policy.pdf. 📄
+  - [ ] estudo qualitativo: 50 entrevistas e observação em 24 locais na Inglaterra (p. 76).
+  - [ ] nas casas de jogos, o cliente paga uma taxa fixa de acesso ao acervo, e comida e bebida são opcionais (p. 77).
+  - [ ] o jogo dá foco e estrutura à interação, o que facilita a socialização de quem não se sente à vontade em bares (p. 77–78).
+
+### Sem PDF de acesso aberto (só o link)
+
+- [ ] PINE, B. Joseph; GILMORE, James H. Welcome to the experience economy. *Harvard Business Review*, v. 76, n. 4, p. 97–105, jul./ago. 1998. Disponível em: https://hbr.org/1998/07/welcome-to-the-experience-economy. [AV: volume e páginas] ⛔
+  - [ ] progressão do valor econômico (commodities, bens, serviços, experiências) e os quatro domínios da experiência.
+- [ ] BRINCKMANN, Jan; GRICHNIK, Dietmar; KAPSA, Diana. Should entrepreneurs plan or just storm the castle? A meta-analysis on contextual factors impacting the business planning–performance relationship in small firms. *Journal of Business Venturing*, v. 25, n. 1, p. 24–40, 2010. DOI: 10.1016/j.jbusvent.2008.10.007. ⛔
+  - [ ] planejamento associado a melhor desempenho em pequenas empresas, mais nas já estabelecidas que nas novas.
+- [ ] SAVILLS. Competitive socialising sector grows at rapid rate, says Savills. Savills UK, 22 nov. 2023. Disponível em: https://www.savills.co.uk/insight-and-opinion/savills-news/354444/competitive-socialising-sector-grows-at-rapid-rate--says-savills. 🌐
+  - [ ] alta de 38% no número de locais de *competitive socialising* no Reino Unido desde 2018.
+
+Descartada: JONSSON, F. *A public place of their own* (DiGRA, 2010), porque trata de *game café* de jogos digitais, não de tabuleiro. Gilovich, Kumar e Jampol (2015), já citado no cap. 1, segue sem PDF aberto (só cópias não oficiais).

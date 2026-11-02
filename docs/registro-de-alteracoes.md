@@ -2029,3 +2029,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: "Comentário original" cortado no marcador "…" do Google (131 a 235 caracteres) e campos extras vazios (preço por pessoa, notas de comida, serviço e ambiente, nível de barulho, tamanho do grupo, tempo de espera); Status "Incompleto" em 20 linhas.
 **Depois**: texto inteiro (272 a 682 caracteres) e campos extras tirados de `coletas/2026-10-14_bardo_mago_maps_avaliacoes_tudo.csv` e `coletas/2026-10-30_bardo_mago_maps_avaliacoes_tudo.csv` (mesmo texto nas duas); Status "Completo" nos 6; restam 14 "Incompleto", com o mesmo texto em todos os CSVs (o "…" vem depois de emoji). Temas (Itens positivos e negativos) não mexidos.
 **Justificativa**: pedido do autor, depois de comparar os 20 "Incompleto" com todos os CSVs de coleta do B2.
+
+### 02:12
+**Objeto**: `bibliografia/` (4 PDFs novos, fora do git: Sebrae 2024, IBGE POF 2021, Novaes e Kanyat 2025, Kviat 2024); `bibliografia/trechos_citados/` (4 recortes, fora do git); `bibliografia/_lista-de-leitura_TMin_v2.md`
+**Antes**: sem fontes para ampliar a abertura, o 2.1 e o 2.2 do cap. 2.
+**Depois**: quatro fontes abertas baixadas, com as páginas citadas recortadas (Sebrae, p. 15–16 e 30; IBGE, p. 101–102 e 107; Novaes e Kanyat, p. 80, 83, 86–87 e 89; Kviat, p. 75–78), e três só com link (Pine e Gilmore, HBR 1998; Brinckmann, Grichnik e Kapsa, 2010; Savills, 22/11/2023), em seção nova da lista de leitura, como candidatas. Jonsson (DiGRA, 2010) descartado: trata de jogos digitais.
+**Justificativa**: pedido do autor: buscar e conferir as fontes antes de decidir se os parágrafos novos entram.
