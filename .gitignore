@@ -12,6 +12,8 @@ _src/_shared
 dados/\[B4\]*/_dados-brutos/**/*.7z
 dados/\[B4\]*/_dados-brutos/**/*.zip
 dados/\[B4\]*/_dados-brutos/caged/
+# Bloco B5: zip mensal do SINAPI (Caixa, 16 MB); regenerável pelo B5-c_sinapi.py
+dados/\[B5\]*/_dados-brutos/obra_reforma/sinapi/
 .DS_Store
 .tmp.driveupload/
 .tmp.drivedownload/

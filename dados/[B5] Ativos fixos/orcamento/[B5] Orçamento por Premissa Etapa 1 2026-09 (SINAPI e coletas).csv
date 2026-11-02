@@ -1,0 +1,5 @@
+﻿premissa;descricao;itens;itens_com_preco;total_pessimista;total_provavel;total_otimista;cobertura;i01_rs_m2_pessimista;i01_rs_m2_provavel;i01_rs_m2_otimista
+I01;Reforma e instalações;42;39;115669,5;75377,19;42034,38;0,929;771,13;579,82;382,13
+I02;Mobiliário;7;0;;;;0,0;;;
+I03;Cozinha e bar;20;0;;;;0,0;;;
+I04;Caixa e informática;6;0;;;;0,0;;;
