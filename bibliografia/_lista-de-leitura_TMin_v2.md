@@ -184,10 +184,14 @@ Ainda não citadas no TMin. Entram só se o autor aprovar os parágrafos novos d
 
 ### Sem PDF de acesso aberto (só o link)
 
-- [ ] PINE, B. Joseph; GILMORE, James H. Welcome to the experience economy. *Harvard Business Review*, v. 76, n. 4, p. 97–105, jul./ago. 1998. Disponível em: https://hbr.org/1998/07/welcome-to-the-experience-economy. [AV: volume e páginas] ⛔
-  - [ ] progressão do valor econômico (commodities, bens, serviços, experiências) e os quatro domínios da experiência.
-- [ ] BRINCKMANN, Jan; GRICHNIK, Dietmar; KAPSA, Diana. Should entrepreneurs plan or just storm the castle? A meta-analysis on contextual factors impacting the business planning–performance relationship in small firms. *Journal of Business Venturing*, v. 25, n. 1, p. 24–40, 2010. DOI: 10.1016/j.jbusvent.2008.10.007. ⛔
-  - [ ] planejamento associado a melhor desempenho em pequenas empresas, mais nas já estabelecidas que nas novas.
+- [ ] BRINCKMANN, Jan; GRICHNIK, Dietmar; KAPSA, Diana. Should entrepreneurs plan or just storm the castle? A meta-analysis on contextual factors impacting the business planning–performance relationship in small firms. *Journal of Business Venturing*, v. 25, n. 1, p. 24–40, 2010. DOI: 10.1016/j.jbusvent.2008.10.007. PDF obtido pelo autor (02/11/2026). 📄
+  - [ ] meta-análise de 46 estudos e 11.046 organizações: o planejamento aumenta o desempenho de pequenas empresas novas e estabelecidas, com efeito maior nas estabelecidas (p. 25).
+  - [ ] incerteza e pouca informação prévia reduzem o retorno do planejamento; os autores propõem planejar, aprender e fazer ao mesmo tempo (p. 24–25).
+- [ ] PINE, B. Joseph; GILMORE, James H. Welcome to the experience economy. *Harvard Business Review*, jul./ago. 1998, p. 97–105 (páginas pela nota 5 de Fitzsimmons e Fitzsimmons, 2014, p. 16). Sem acesso: citar por *apud* (abaixo). ⛔
+- [ ] FITZSIMMONS e FITZSIMMONS (2014), já na lista, cap. 1 (trecho novo: p. 11–12 e 16). 📄
+  - [ ] quatro esferas da experiência (entretenimento, educação, dimensão estética e aventura), por participação do cliente e relação com o ambiente; Figura 1.6, adaptada de Pine e Gilmore (1998, p. 102) (p. 11).
+  - [ ] evolução econômica até a economia da experiência: a oferta é encenada e memorável, o comprador é um convidado, e o negócio cobra pelos encontros memoráveis que produz (Tabela 1.3, p. 11).
+  - Forma de citar: PINE; GILMORE, 1998 *apud* FITZSIMMONS; FITZSIMMONS, 2014, p. 11; ou só Fitzsimmons e Fitzsimmons (2014, p. 11), quando o texto usar a apresentação do livro.
 - [ ] SAVILLS. Competitive socialising sector grows at rapid rate, says Savills. Savills UK, 22 nov. 2023. Disponível em: https://www.savills.co.uk/insight-and-opinion/savills-news/354444/competitive-socialising-sector-grows-at-rapid-rate--says-savills. 🌐
   - [ ] alta de 38% no número de locais de *competitive socialising* no Reino Unido desde 2018.
 

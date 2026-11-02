@@ -2035,3 +2035,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: sem fontes para ampliar a abertura, o 2.1 e o 2.2 do cap. 2.
 **Depois**: quatro fontes abertas baixadas, com as páginas citadas recortadas (Sebrae, p. 15–16 e 30; IBGE, p. 101–102 e 107; Novaes e Kanyat, p. 80, 83, 86–87 e 89; Kviat, p. 75–78), e três só com link (Pine e Gilmore, HBR 1998; Brinckmann, Grichnik e Kapsa, 2010; Savills, 22/11/2023), em seção nova da lista de leitura, como candidatas. Jonsson (DiGRA, 2010) descartado: trata de jogos digitais.
 **Justificativa**: pedido do autor: buscar e conferir as fontes antes de decidir se os parágrafos novos entram.
+
+### 02:32
+**Objeto**: `bibliografia/Brinckmann, Grichnik & Kapsa (JBV, 2010).pdf` (renomeado; PDF do autor, fora do git); `bibliografia/trechos_citados/` (2 recortes novos: Brinckmann, p. 24–25; Fitzsimmons, p. 11–12 e 16); `bibliografia/_lista-de-leitura_TMin_v2.md`; `docs/pendencias.md`
+**Antes**: Brinckmann e Pine e Gilmore (1998) como fontes sem PDF.
+**Depois**: Brinckmann conferido (46 estudos, 11.046 organizações; planejamento melhora o desempenho, mais nas pequenas empresas estabelecidas, p. 25). Pine e Gilmore (1998) acessível por Fitzsimmons e Fitzsimmons (2014, p. 11–12), que reproduz as quatro esferas da experiência (Figura 1.6) e a evolução até a economia da experiência (Tabela 1.3), com a referência completa na nota 5 (p. 16).
+**Justificativa**: pedido do autor: conferir o PDF que baixou e achar citação indireta de Pine e Gilmore.
