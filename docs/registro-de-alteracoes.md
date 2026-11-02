@@ -2326,3 +2326,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: esquema com as opções da grade 1 e da grade 2 juntas.
 **Depois**: só as 22 opções da grade 2. Conferência por SQL adiada: o índice de consulta do Notion ainda devolve o estado anterior às gravações; duas páginas lidas uma a uma batem com o plano.
 **Justificativa**: concluir a migração para a grade 2.
+
+### 18:07
+**Objeto**: `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js` e `precos_itens.test.cjs` (novos); `build/B5-b_orcamento_itens.py` (docstring); `docs/pendencias.md`, `AGORA.md`
+**Antes**: 36 itens da lista da etapa 1 com fonte "coleta" e nenhum coletor; o build já lia `_dados-brutos/*/*_precos.csv`, sem quem os gerasse.
+**Depois**: coletor no Tampermonkey: escolhe o item, abre a busca do site com o termo da lista, lê as ofertas (Amazon por seletor próprio; Mercado Livre por seletor ainda não conferido; demais pelo JSON-LD ou pela leitura genérica de preço e link), marca as que têm metade ou mais das palavras do termo e não são patrocinadas, guarda as marcadas com preço por unidade (embalagens) e frete, e baixa um CSV por categoria no formato do build. 9 testes (a lista embutida confere com o CSV). Leitura conferida na Amazon e na Leroy Merlin (busca e produto); Mercado Livre e Magalu bloquearam o navegador de teste.
+**Justificativa**: pedido do autor (coletor de e-commerce para os itens sem preço do investimento inicial).

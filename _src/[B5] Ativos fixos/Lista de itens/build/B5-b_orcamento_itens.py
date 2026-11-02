@@ -9,7 +9,8 @@ Entradas em dados/[B5] Ativos fixos/:
       fonte da quantidade, fonte do preço (sinapi ou coleta), código SINAPI e termo de busca
   obra_reforma/"[B5] SINAPI Composições BA AAAA-MM (Caixa).csv"   (B5-c_sinapi.py; o mês mais recente)
   _dados-brutos/<categoria>/*_precos.csv                          (coletas em sites, quando houver)
-      colunas: id_item; fonte; produto; preco; frete; url; data_coleta  (vírgula decimal)
+      do webscripts/precos_itens.user.js; usa id_item, preco (por unidade da lista) e frete
+      (vazio = não informado, conta como 0), com vírgula decimal
 Saídas em dados/[B5] Ativos fixos/orcamento/:
   "[B5] Orçamento por Item Etapa 1 {mês} (SINAPI e coletas).csv"
       quantidade, preço unitário e total de cada item nos três cenários, com o nível de evidência
