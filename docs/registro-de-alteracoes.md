@@ -2086,3 +2086,9 @@ Restam 10 "Incompleto": Arena BG, BoardZ, Castelos, Flow Games, Nala Land e Play
 **Antes**: "Os estabelecimentos que oferecem um acervo de jogos de mesa para uso no local, em geral junto com bebidas e alimentos, conhecidos no Brasil como luderias ou ludobares, integram um ramo recente mais amplo dentro do setor de entretenimento denominado *competitive socialising*".
 **Depois**: "*As luderias, também chamadas de ludobares, são estabelecimentos que oferecem jogos de mesa para uso no local. Elas integram um ramo recente mais amplo do setor de entretenimento, denominado *competitive socialising*" (parágrafo revisado no lugar do original, pela regra de 02/11). Documento reaberto no WordCraft.
 **Justificativa**: comentário 9 do autor; opção 1 escolhida: "luderia" como termo (P6), definição curta e frase dividida em duas.
+
+### 04:17
+**Objeto**: Notion, banco "2 - Comentários": Status de 5 comentários (BoardZ, Castelos, Flow Games, Nala Land, Play Easy)
+**Antes**: Status "Incompleto" nos 5, todos terminados em emoji seguido do marcador "…" do Google.
+**Depois**: Status "Completo" nos 5. A frase de cada um tem sentido completo e termina em emoji. O da Arena BG segue "Incompleto": a frase fecha com ponto, sem emoji, antes do "…". Restam 5 "Incompleto": Arena BG, Bardo Mago (2) e Bodogami (2). Os 4 do Bardo Mago e do Bodogami também têm frase completa e terminam em emoji.
+**Justificativa**: regra do autor: frase com sentido completo e terminada em emoji = comentário inteiro.
