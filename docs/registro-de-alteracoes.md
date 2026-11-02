@@ -2362,3 +2362,15 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes** (`CLAUDE.md`, seção B5, e `_instrucoes/8_financeiro.md`, tabela de premissas): aluguel = C07.
 **Depois** (`dados/Modelo financeiro/financeiro_premissas.csv`): C04 = área do ponto (150 m²), C05 = aluguel comercial (R$/m²/mês, FipeZap), C06 = IPTU e condomínio (R$/m²/mês, N6); C07 = monitores de jogos. O cap. 7, na nota da tabela da equipe, chama de C07 os encargos sobre a folha.
 **Efeitos colaterais**: o build do aluguel passou a citar C05 e C06; `CLAUDE.md`, `_instrucoes/8_financeiro.md`, `docs/pendencias.md` e o cap. 7 seguem com C07 até decisão do autor.
+
+### 19:09
+**Objeto**: `CLAUDE.md` (seção B5); `_instrucoes/8_financeiro.md` (exemplo da tabela de premissas); `_src/[B5] Ativos fixos/Anuncios de aluguel/build/B5-b_anuncios_aluguel.py` e `test_B5-b_anuncios_aluguel.py`; `webscripts/portais_aluguel.user.js` (comentário); `docs/pendencias.md`, `docs/decisoes.md`
+**Antes**: aluguel citado como C07 nas instruções e como C05 (com C06 para condomínio e IPTU em R$/m² e C04 para a área) no build do aluguel. Esta segunda numeração saiu de `dados/Modelo financeiro/financeiro_premissas.csv`, que é o modelo v0 de 15/10, e não do modelo atual.
+**Depois**: numeração do modelo atual (`_src/extras/gerar_modelo_financeiro.py`, TMin v18), escolhida pelo autor: C03 = área do ponto (150, 130 e 110 m²), C04 = aluguel (R$/m² ao mês), C05 = condomínio e IPTU (% do aluguel), C07 = encargos da folha (como no cap. 7). Build com a coluna `encargos_pct_aluguel` e seus quartis no resumo por área do 6.4, na unidade da C05. 7 testes do build e 9 do coletor passando.
+**Justificativa**: decisão do autor ("a do modelo") sobre a divergência registrada às 19h; o modelo atual é o que gera o cap. 9 e os apêndices.
+
+### 19:09
+**Objeto**: modelo financeiro v0 ainda em uso como arquivo
+**Antes** (`dados/Modelo financeiro/financeiro_premissas.csv` e `financeiro_modelo.xlsx`, de 31/10, gerados por `_src/Modelo financeiro/analise/financeiro-a_modelo.py`, de 15/10): C04 = área, C05 = aluguel, C06 = IPTU e condomínio em R$/m², C07 = monitores.
+**Depois** (`_src/extras/gerar_modelo_financeiro.py`, 02/11, gera `textos/capitulos/9_plano_financeiro_modelo.xlsx`): C03 = área, C04 = aluguel, C05 = condomínio e IPTU em % do aluguel, C07 = encargos.
+**Efeitos colaterais**: quem abrir `dados/Modelo financeiro/` lê premissas e IDs que o texto não usa; foi o que levou ao erro de numeração no build do aluguel. Não corrigido (sem pedido do autor).

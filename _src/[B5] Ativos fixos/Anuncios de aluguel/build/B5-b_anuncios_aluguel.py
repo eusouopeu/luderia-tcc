@@ -11,7 +11,7 @@ Entrada: dados/[B5] Ativos fixos/_dados-brutos/aluguel/AAAA-MM-DD_HHmm_<portal>_
 Saídas em dados/[B5] Ativos fixos/aluguel/, no padrão "[B5] {dado} {período} ({fonte}).csv":
   "Anúncios de Aluguel"              um anúncio por linha: subtipo, porte, aluguel, encargos, R$/m², bairro
   "Aluguel Pedido por Bairro"        por segmento, subtipo e bairro: anúncios, quartis do R$/m², encargos
-  "Aluguel Pedido por Área do 6.4"   lojas e pontos no porte do plano, por área candidata: C05 e C06
+  "Aluguel Pedido por Área do 6.4"   lojas e pontos no porte do plano, por área candidata: C04 e C05
   "Possíveis Duplicatas de Aluguel"  pares com área e aluguel a até 5%, para conferir à mão (não saem)
   "Cobertura das Buscas de Aluguel"  por busca: total que o portal diz ter e anúncios lidos
 
@@ -28,9 +28,9 @@ Regras:
   - Subtipo do comercial: loja_ponto (loja de rua, ponto, salão, box), sala (sala ou conjunto
     em prédio, escritório, consultório), galpao, predio ou outro; pela busca e, sem ela, pelo
     texto. A luderia precisa de loja térrea: a área do 6.4 usa só loja_ponto.
-  - Porte do plano: área de 100 a 200 m² (C04 = 150 m² ± 50 m², faixa do autor, N6).
-  - Encargos: condomínio + IPTU por m² (C06), quando o anúncio informa os dois; custo de
-    ocupação = aluguel + encargos por m².
+  - Porte do plano: área de 100 a 200 m² (cobre a C03, de 110 a 150 m² nos cenários; faixa do autor, N6).
+  - Encargos: condomínio + IPTU por m² e em % do aluguel (unidade da C05), quando o anúncio
+    informa os dois; custo de ocupação = aluguel + encargos por m².
   - Bairro: casado com os 170 bairros de Salvador do Censo 2022 sem acento, caixa e
     pontuação, ou pelo arquivo de apelidos; sem correspondência, fica a grafia mais
     frequente do portal (bairro_no_censo = "não") e o print lista os casos.
@@ -39,7 +39,8 @@ Regras:
     o print mostra quantos saíram em cada segmento.
   - Resumos: grupo com menos de 5 anúncios fica com amostra_suficiente = "não" e sem quartis.
   - É preço pedido, não preço fechado: o FipeZap (também preço de anúncio) e as cotações
-    no ponto completam as premissas C05 (aluguel) e C06 (IPTU e condomínio) do modelo.
+    no ponto completam as premissas C04 (aluguel por m²) e C05 (condomínio e IPTU, % do aluguel)
+    do modelo (_src/extras/gerar_modelo_financeiro.py).
 """
 
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
@@ -218,6 +219,7 @@ def tratar(df: pd.DataFrame) -> pd.DataFrame:
         porte_plano=df["area_m2"].between(PORTE_MIN, PORTE_MAX).map({True: "sim", False: "não"}),
         aluguel_m2=(df["aluguel"] / df["area_m2"]).round(2),
         encargos_m2=(df["condominio_iptu"] / df["area_m2"]).round(2),
+        encargos_pct_aluguel=(df["condominio_iptu"] / df["aluguel"]).round(3),
     )
     df = df.assign(custo_ocupacao_m2=(df["aluguel_m2"] + df["encargos_m2"]).round(2))
     print(f"segmento pela busca: {df['segmento_origem'].eq('busca').sum()}; pelo texto: {df['segmento_origem'].eq('texto').sum()}")
@@ -233,7 +235,7 @@ def tratar(df: pd.DataFrame) -> pd.DataFrame:
 
     colunas = ["portais", "id", "url", "segmento", "segmento_origem", "subtipo", "porte_plano", "tipo", "titulo",
                "bairro", "bairro_no_censo", "bairro_portal", "area_6_4", "endereco", "aluguel", "condominio", "iptu",
-               "condominio_iptu", "area_m2", "aluguel_m2", "encargos_m2", "custo_ocupacao_m2", "quartos", "banheiros",
+               "condominio_iptu", "area_m2", "aluguel_m2", "encargos_m2", "encargos_pct_aluguel", "custo_ocupacao_m2", "quartos", "banheiros",
                "vagas", "anunciante", "publicado", "data_coleta"]
     return df[colunas + ["bairro_chave"]].sort_values(["segmento", "subtipo", "bairro", "aluguel_m2"]).reset_index(drop=True)
 
@@ -314,7 +316,7 @@ def resumo_por_bairro(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def resumo_area_6_4(df: pd.DataFrame) -> pd.DataFrame:
-    """Lojas e pontos no porte do plano, por área candidata do 6.4: insumo de C05 e C06."""
+    """Lojas e pontos no porte do plano, por área candidata do 6.4: insumo de C04 e C05."""
     base = df[df["subtipo"].eq("loja_ponto") & df["porte_plano"].eq("sim")]
     g = base.groupby("area_6_4")
     res = pd.DataFrame({
@@ -322,11 +324,13 @@ def resumo_area_6_4(df: pd.DataFrame) -> pd.DataFrame:
         **_quartis(g, "aluguel_m2", "aluguel_m2"),
         "anuncios_com_encargos": g["encargos_m2"].count(),
         **_quartis(g, "encargos_m2", "encargos_m2"),
+        **_quartis(g, "encargos_pct_aluguel", "encargos_pct_aluguel"),
         "custo_ocupacao_m2_mediana": g["custo_ocupacao_m2"].median(),
         "area_m2_mediana": g["area_m2"].median(),
     }).round(2).reset_index()
     _marcar_amostra(res, "anuncios", ["aluguel_m2_p25", "aluguel_m2_p75"], 2)
-    _marcar_amostra(res, "anuncios_com_encargos", ["encargos_m2_p25", "encargos_m2_p75"], 2)
+    _marcar_amostra(res, "anuncios_com_encargos", ["encargos_m2_p25", "encargos_m2_p75",
+                                                   "encargos_pct_aluguel_p25", "encargos_pct_aluguel_p75"], 2)
     # Cada anúncio está numa única área (ou em "demais bairros"): a soma fecha com o total do recorte.
     assert res["anuncios"].sum() == len(base), "resumo por área do 6.4 não fecha com o total do recorte"
     ordem = {a: i for i, a in enumerate(dict.fromkeys(AREAS_6_4.values()))}

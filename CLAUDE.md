@@ -34,7 +34,7 @@ Ler este arquivo e o [AGORA.md](AGORA.md) sempre; não carregar documentação o
   - **B2** — avaliações com texto publicadas até "3 meses atrás", inclusive (rótulo do Google Maps na data da coleta) → proposta de valor, reclamações, ticket, fluxo.
   - **B3** — contagem direta nas duas unidades da São Jogue (Salvador), com leitura da NFC-e → ocupação, giro, calibração.
   - **B4** — bases públicas (IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA) → demanda, custos, tributos, taxa de desconto. Subpastas por uso (`mercado_demanda`, `ponto_operacoes`, `juridico_tributario`, `financeiro`, `multiuso`) definidas em `USOS` no `bases_comum.py`.
-  - **B5** — ativos fixos: orçamentos de obra, aluguel, mobiliário, cozinha e bar, equipamentos e jogos, coletados em sites e e-commerces → investimento inicial (9.3), aluguel (C07). Subpastas por categoria, iguais em `_dados-brutos/` e na raiz. O código B5 já foi do bloco de jogos da Ludopedia, retirado (`arquivados/B5-jogos/`).
+  - **B5** — ativos fixos: orçamentos de obra, aluguel, mobiliário, cozinha e bar, equipamentos e jogos, coletados em sites e e-commerces → investimento inicial (9.3), aluguel e condomínio (C04 e C05). Subpastas por categoria, iguais em `_dados-brutos/` e na raiz. O código B5 já foi do bloco de jogos da Ludopedia, retirado (`arquivados/B5-jogos/`).
   - **B6** — histórico dos avaliadores; retirado em 18/09/2026 (`arquivados/B6-avaliadores/`).
   - Subpastas dentro de `dados/[Bn]…/` e `dados/[Bn]…/_dados-brutos/`: minúsculas, sem acento, com `_` (ex.: `cardapios/`, `acervo_jogos/`, `redes_sociais/analise_legendas/`).
 

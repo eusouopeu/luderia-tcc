@@ -70,7 +70,7 @@ Tabela única, no apêndice do TCC e na aba `premissas` do modelo. Uma linha por
 | ID | Premissa | Unidade | Pessimista | Provável | Otimista | Fonte | Nível | Justificativa da faixa | Impacto no VPL |
 |---|---|---|---|---|---|---|---|---|---|
 | R03 | Ocupação em dia útil | % | 25 | 40 | 55 | Blocos B2 e B3 | N3/N5 | ... | Alto |
-| C07 | Aluguel | R$/mês | ... | ... | ... | FipeZap + 3 cotações | N1/N2 | ... | Médio |
+| C04 | Aluguel comercial | R$/m² ao mês | ... | ... | ... | FipeZap + 3 cotações | N1/N2 | ... | Médio |
 
 Regras:
 - **Toda premissa tem faixa**, não só valor único. Os cenários saem daí.

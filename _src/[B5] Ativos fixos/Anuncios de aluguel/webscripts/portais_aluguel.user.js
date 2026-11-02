@@ -14,7 +14,7 @@
 
 /*
  * Uso pessoal, para o Bloco B5 (ativos fixos): preço pedido de aluguel de pontos comerciais em
- * Salvador (cap. 9, premissa C07, e 6.4, escolha do bairro). Os portais bloqueiam
+ * Salvador (cap. 9, premissas C04 e C05, e 6.4, escolha do bairro). Os portais bloqueiam
  * requisições fora do navegador (Cloudflare), por isso a coleta roda na página.
  *
  * Como usar: abrir a busca no portal, já filtrada (tipo, cidade, bairro), e clicar

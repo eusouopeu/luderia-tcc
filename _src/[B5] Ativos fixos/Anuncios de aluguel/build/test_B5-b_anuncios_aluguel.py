@@ -113,6 +113,7 @@ class TestAnunciosAluguel(unittest.TestCase):
         self.assertEqual(area.loc["Pituba/Itaigara", "anuncios"], 7)
         self.assertEqual(area.loc["Pituba/Itaigara", "anuncios_com_encargos"], 6)
         self.assertEqual(area.loc["Pituba/Itaigara", "encargos_m2_mediana"], 10.0)
+        self.assertEqual(self.df.loc["100", "encargos_pct_aluguel"], round(1500 / 9000, 3))
 
     def test_cobertura_por_busca(self):
         cob = self.t["Cobertura das Buscas de Aluguel"]
