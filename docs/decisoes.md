@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | B2, grade 2 fechada em 22 temas: "conforto e barulho", "espaço e lotação" (com lotação e reserva) e horário em regras da casa; aplicada à base inteira; rodada 2 da recodificação cega com 60 comentários novos | `textos/instrumentos/dicionario_temas_B2.md` |
 | 02/11/2026 | Investimento da etapa 1 orçado por lista de itens: reforma pelo SINAPI da Bahia (sem desoneração) mais BDI do TCU nos quartis por cenário; demais itens por coleta em sites (P25, mediana e P75 de preço mais frete) | `_src/[B5] Ativos fixos/Lista de itens/build/B5-b_orcamento_itens.py` |
 | 02/11/2026 | B2, grade 2: preço da entrada, do cardápio e de outros itens (preço sem objeto e jogos em "outros"; "tudo caro" nos três); estacionamento em localização e acesso; conservação em "curadoria e conservação do acervo"; "acervo bom" = variedade e curadoria; "familiar" = ambiente | `textos/instrumentos/dicionario_temas_B2.md` |
 | 02/11/2026 | Título: *Dados em jogo: plano de negócios baseado em evidências para uma luderia em Salvador* | `_instrucoes/1_estrutura.md` |
