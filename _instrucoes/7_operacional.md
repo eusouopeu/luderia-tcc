@@ -4,7 +4,7 @@
 
 Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e estrutura física. Os números daqui (lugares, giros, equipe, horário) entram na árvore de direcionadores do cap. 9 e nas checagens de coerência.
 
-**Desenho enxuto (P7 em [1a_principios.md](1a_principios.md)):** 6 mesas; funcionamento de terça a sexta das 15h às 23h e sábado e domingo das 14h às 22h (8 h contínuas com mais luderias abertas no B1), fechado na segunda; 2 cozinheiros-chefes, instrutores de tempo integral com folga na segunda e em um dia de terça a quinta, e um instrutor de meio período de 20 h (quinta e sexta das 17h às 22h, sábado e domingo das 15h às 20h). A São Jogue entra como referência de comportamento (ocupação, permanência, giro), não de porte.
+**Desenho enxuto (P7 em [1a_principios.md](1a_principios.md)):** 6 mesas; funcionamento de terça a sexta das 15h às 23h e sábado e domingo das 14h às 22h (8 h contínuas com mais luderias abertas no B1), fechado na segunda; 2 cozinheiros-chefes, 3 instrutores de tempo integral com folga na segunda e em um dia de terça a quinta (dias diferentes), e um instrutor de meio período de 20 h (quinta e sexta das 17h às 22h, sábado e domingo das 15h às 20h). A São Jogue entra como referência de comportamento (ocupação, permanência, giro), não de porte.
 
 ## Divisão de subcapítulos
 

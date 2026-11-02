@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 02/11/2026 | Equipe de 6: 2 cozinheiros-chefes, 3 instrutores de tempo integral (folgas em dias diferentes de terça a quinta) e 1 de meio período | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Horário: as 8 h contínuas com mais luderias abertas em cada dia (B1), como simplificação declarada: terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h; segunda fechada | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Equipe: 2 cozinheiros-chefes no lugar do cozinheiro e do auxiliar (um nos dias úteis, os dois no pico); instrutores de tempo integral com folga na segunda e em um dia de terça a quinta; meio período de 20 h (quinta e sexta das 17h às 22h, sábado e domingo das 15h às 20h) | `_instrucoes/1a_principios.md` (P7) |
 | 02/11/2026 | Monte Carlo com salários de 0% a +x% sobre o salário de admissão do Novo CAGED, por cargo (x a definir) | `_instrucoes/8_financeiro.md`, §4.4 |
