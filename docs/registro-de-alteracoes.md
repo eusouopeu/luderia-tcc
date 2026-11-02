@@ -2009,3 +2009,9 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: o documento aberto no WordCraft estava na versão da primeira rodada (6 parágrafos e a referência FOODBIZ em verde), diferente do arquivo em disco, que já tinha os parágrafos com "*".
 **Depois**: as revisões com "*" foram refeitas no documento aberto, os verdes apagados, e o arquivo salvo pelo próprio app; o texto é o mesmo da versão em disco anterior (comentários e destaques do autor intactos).
 **Justificativa**: pedido do autor, para que as mudanças apareçam no documento aberto sem fechar e reabrir.
+
+### 23:17
+**Objeto**: `textos/capitulos/TCC_luderia_TMin_v9.docx`
+**Antes**: a versão salva pelo WordCraft levou a formatação dos parágrafos verdes apagados para os parágrafos seguintes: "2 REFERENCIAL TEÓRICO" e "2.1" perderam os estilos Title e Heading1 (e a quebra de página), e sete marcas de parágrafo ficaram com realce verde.
+**Depois**: arquivo restaurado à versão do commit b16ecba (mesmo texto, formatação original) e reaberto no WordCraft por comando (fechar e abrir), já com os parágrafos com "*".
+**Justificativa**: corrigir o efeito colateral da edição feita dentro do app.
