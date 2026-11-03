@@ -1,0 +1,61 @@
+n_amostra;duvida_autor;autor_positivos;autor_negativos;autor_contexto;autor_costuma_ir;autor_voltara;claude_positivos;claude_negativos;claude_contexto;claude_costuma_ir;claude_voltara
+1;não;ambiente e decoração | atendimento presencial;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial;;;não foi dito;não foi dito
+2;não;atendimento presencial | curadoria e conservação do acervo | variedade do acervo;;;não;não foi dito;atendimento presencial | curadoria e conservação do acervo;;;não foi dito;não foi dito
+3;não;atendimento presencial | comida | explicação de jogos;;;não foi dito;não foi dito;atendimento presencial | comida | explicação de jogos;;;não foi dito;não foi dito
+4;não;variedade do acervo;;;não foi dito;não foi dito;variedade do acervo;;loja;não foi dito;não foi dito
+5;não;atendimento presencial | preço de outros itens | variedade do cardápio;;;sim;não foi dito;atendimento presencial | variedade do cardápio;;;sim;não foi dito
+6;não;ambiente e decoração | variedade do acervo;atendimento presencial | comida | curadoria e conservação do acervo | preço do cardápio;;não foi dito;não foi dito;variedade do acervo;atendimento presencial | curadoria e conservação do acervo | limpeza;;não foi dito;não foi dito
+7;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;;não foi dito;não foi dito
+8;não;preço da entrada;;;não foi dito;não foi dito;preço da entrada;;;não foi dito;não foi dito
+9;não;ambiente e decoração | comida | variedade do acervo;;;não foi dito;não foi dito;ambiente e decoração | comida | variedade do acervo;;;não foi dito;não foi dito
+10;não;explicação de jogos;;;não foi dito;não foi dito;explicação de jogos;;;não foi dito;não foi dito
+11;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;;não foi dito;não foi dito
+12;não;;;;não foi dito;não foi dito;;;;não foi dito;não foi dito
+13;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;;não foi dito;não foi dito
+14;não;comida;;;não foi dito;não foi dito;comida;;;não foi dito;não foi dito
+15;não;ambiente e decoração | atendimento presencial | comida | espaço e lotação | variedade do acervo;porções | preço do cardápio;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | comida | espaço e lotação | variedade do acervo;porções | preço do cardápio | regras da casa;amigos | loja;não foi dito;não foi dito
+16;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;;não foi dito;não foi dito
+17;não;atendimento presencial | variedade do acervo;;;não foi dito;não foi dito;atendimento presencial | variedade do acervo;;;não foi dito;não foi dito
+18;não;;atendimento online;apenas loja;não foi dito;não foi dito;;;;não foi dito;não foi dito
+19;não;ambiente e decoração | atendimento presencial | conforto e barulho | espaço e lotação;;;não foi dito;não foi dito;atendimento presencial | espaço e lotação;;amigos;não foi dito;não foi dito
+20;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;;não foi dito;não foi dito
+21;não;ambiente e decoração;;;sim;sim;ambiente e decoração;;;sim;sim
+22;não;atendimento presencial;;;não foi dito;sim;atendimento presencial;;;não foi dito;sim
+23;não;;comida;;não foi dito;não foi dito;;comida;;não foi dito;não foi dito
+24;sim;ambiente e decoração | comida;preço da entrada;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | comida;preço do cardápio;;não foi dito;não foi dito
+25;não;;espaço e lotação | regras da casa;casal;não;não;;atendimento presencial | espaço e lotação | regras da casa;casal;não foi dito;não foi dito
+26;não;atendimento presencial | comida;;;não foi dito;não foi dito;atendimento presencial | comida;;;não foi dito;não foi dito
+27;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;;não foi dito;não foi dito
+28;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;;não foi dito;sim
+29;não;comida;curadoria e conservação do acervo;;não foi dito;não foi dito;comida;curadoria e conservação do acervo;;não foi dito;não foi dito
+30;sim;;regras da casa;loja;não foi dito;não;;atendimento presencial;;não foi dito;não
+31;não;;;;não foi dito;não foi dito;comemorações e grupos;;;não foi dito;não foi dito
+32;não;;;;não foi dito;não foi dito;;;;não foi dito;não foi dito
+33;não;atendimento presencial;;;não;não foi dito;atendimento presencial;;;não foi dito;não foi dito
+34;sim;ambiente e decoração | bebidas | comida | indicações de jogos | variedade do acervo;espaço e lotação;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | bebidas | comida | indicações de jogos | variedade do acervo;espaço e lotação;;não foi dito;não foi dito
+35;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;;não foi dito;não foi dito
+36;não;;atendimento presencial | bebidas | comida | curadoria e conservação do acervo | explicação de jogos | preço da entrada | preço de outros itens | preço do cardápio;;não foi dito;não foi dito;;atendimento presencial | bebidas | comida | curadoria e conservação do acervo | explicação de jogos | preço da entrada | preço de outros itens | preço do cardápio;;não foi dito;não foi dito
+37;não;ambiente e decoração | atendimento presencial | comida;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | comida;;;não foi dito;não foi dito
+38;não;ambiente e decoração | atendimento presencial | comida | preço de outros itens;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | comida | eventos e comunidade | preço de outros itens;;;não foi dito;não foi dito
+39;não;comida;conforto e barulho | espaço e lotação;;não foi dito;não foi dito;comida;conforto e barulho | rapidez do serviço;;não foi dito;não foi dito
+40;não;;;;não foi dito;não foi dito;;;;não foi dito;não foi dito
+41;não;ambiente e decoração | atendimento presencial;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial;;;não foi dito;não foi dito
+42;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;;não foi dito;não foi dito
+43;não;atendimento presencial | variedade do acervo;;;não foi dito;não foi dito;atendimento presencial | variedade do acervo;;;não foi dito;não foi dito
+44;não;ambiente e decoração | atendimento presencial | comida | explicação de jogos | indicações de jogos | preço do cardápio | regras da casa;;amigos;não;não foi dito;atendimento presencial | curadoria e conservação do acervo | espaço e lotação | explicação de jogos | indicações de jogos | limpeza | preço da entrada | preço do cardápio;;amigos;não;não foi dito
+45;não;ambiente e decoração | atendimento presencial;;;não foi dito;sim;ambiente e decoração | atendimento presencial;;;não foi dito;sim
+46;sim;eventos e comunidade | regras da casa;atendimento presencial;;não foi dito;não foi dito;eventos e comunidade;atendimento presencial;loja;não foi dito;não foi dito
+47;não;ambiente e decoração | variedade do acervo;;;não foi dito;não foi dito;ambiente e decoração | variedade do acervo;;;não foi dito;não foi dito
+48;não;ambiente e decoração | atendimento presencial;;;não foi dito;sim;atendimento presencial | explicação de jogos;;;não foi dito;não foi dito
+49;não;atendimento presencial | comemorações e grupos | comida | porções;atendimento presencial | regras da casa;aniversário | família;não foi dito;não foi dito;comemorações e grupos | eventos e comunidade | porções;atendimento presencial;aniversário | família;não foi dito;não foi dito
+50;não;bebidas | comida | variedade do acervo;;;não foi dito;não foi dito;bebidas | comida | variedade do acervo;;;não foi dito;não foi dito
+51;não;;;;não foi dito;não foi dito;;;;não foi dito;não foi dito
+52;não;curadoria e conservação do acervo | variedade do acervo;;;não foi dito;não foi dito;curadoria e conservação do acervo | variedade do acervo;;;não foi dito;não foi dito
+53;não;;;;sim;não foi dito;;;;não foi dito;não foi dito
+54;não;ambiente e decoração | atendimento presencial | comida;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | comida;;;não foi dito;não foi dito
+55;não;atendimento online | atendimento presencial;;;não foi dito;não foi dito;atendimento online | atendimento presencial;;;não foi dito;não foi dito
+56;não;atendimento presencial;;;não foi dito;não foi dito;atendimento presencial;;;não foi dito;não foi dito
+57;não;ambiente e decoração;;;não foi dito;não foi dito;ambiente e decoração | atendimento presencial | conforto e barulho | espaço e lotação;;;não foi dito;não foi dito
+58;não;conforto e barulho;;;não foi dito;não foi dito;conforto e barulho;;;não foi dito;não foi dito
+59;não;;;;não foi dito;não foi dito;;;;não foi dito;não foi dito
+60;não;atendimento presencial | explicação de jogos;;;não;sim;explicação de jogos;;;não foi dito;sim
