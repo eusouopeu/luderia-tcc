@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.03-1
+// @version      2026.11.03-2
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas seguintes e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -303,7 +303,7 @@
     } catch (e) { return String(href || ''); }
   }
 
-  const RE_BUSCA_COMERCIAL = /loja-salao|conjunto-comercial|comercio-e-industria|ponto-comercial|galpao|predio-inteiro|imoveis-comerciais|consultorio/;
+  const RE_BUSCA_COMERCIAL = /loja-salao|conjunto-comercial|comercio-e-industria|ponto-comercial|casa-comercial|imovel-comercial|galpao|predio-inteiro|imoveis-comerciais|consultorio/;
   const RE_BUSCA_RESIDENCIAL = /quintoandar\.com\.br|\/apartamentos?[/_-]|\/casas?[/_-]|kitnet|flat|cobertura/;
   const RE_COMERCIAL = /\b(lojas?|(?:salao|saloes|salas?|pontos?|imove(?:l|is)|predios?|conjuntos?|box) comercia(?:l|is)|galpao|galpoes|depositos?|armazem|escritorios?|consultorios?|andar corporativo|sala para escritorio|sala empresarial|centro empresarial)\b/;
   const SUBTIPO_BUSCA = [['loja_ponto', /loja-salao|ponto-comercial/], ['sala', /conjunto-comercial|consultorio/], ['galpao', /galpao/], ['predio', /predio-inteiro/]];

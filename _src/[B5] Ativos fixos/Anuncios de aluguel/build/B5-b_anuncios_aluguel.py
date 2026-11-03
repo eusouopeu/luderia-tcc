@@ -73,8 +73,9 @@ AREAS_6_4 = {"Pituba": "Pituba/Itaigara", "Itaigara": "Pituba/Itaigara", "Barra"
 DEMAIS = "demais bairros"
 TOLERANCIA_DUPLICATA = 0.05
 RE_ARQUIVO = re.compile(r"^\d{4}-\d{2}-\d{2}(_\d{4})?_[a-z]+_anuncios_aluguel\.csv$")
-# Categoria da busca (busca_url): decide o segmento quando a busca já filtrou o tipo.
-RE_BUSCA_COMERCIAL = re.compile(r"loja-salao|conjunto-comercial|comercio-e-industria|ponto-comercial|galpao|predio-inteiro|imoveis-comerciais|consultorio")
+# Categoria da busca (busca_url): decide o segmento quando a busca já filtrou o tipo. O comercial vem
+# primeiro: "/casa-comercial/" casaria com o "/casa-" do residencial.
+RE_BUSCA_COMERCIAL = re.compile(r"loja-salao|conjunto-comercial|comercio-e-industria|ponto-comercial|casa-comercial|imovel-comercial|galpao|predio-inteiro|imoveis-comerciais|consultorio")
 RE_BUSCA_RESIDENCIAL = re.compile(r"quintoandar\.com\.br|/apartamentos?[/_-]|/casas?[/_-]|kitnet|flat|cobertura")
 # Busca sem categoria: termos que só aparecem em imóvel comercial ("sala comercial", não "sala";
 # "box comercial", não "box", que também é o do banheiro).

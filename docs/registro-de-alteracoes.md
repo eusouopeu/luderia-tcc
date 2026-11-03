@@ -2496,3 +2496,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: rodada 2 da recodificação cega (banco "2R2", 60 comentários) concluída pelo autor, sem comparação com a codificação do Claude no "2 - Comentários" (grade 2).
 **Depois**: comparação feita com o mesmo método da rodada 1 (unidade = comentário × tema × polaridade, kappa de Cohen agrupado; o método reproduz o 0,83 e o 0,58 da rodada 1): temas com kappa 0,84, 106 de 145 marcas em comum (73%), 41 de 60 linhas idênticas; temas com 10 ou mais marcas de 0,82 a 0,94; Contexto 0,53; "Costuma ir" 0,52; "Voltará" 0,75. Codificações das duas partes guardadas em CSV, sem texto dos comentários. Valores do Claude lidos por SQL e corrigidos pelo `B2_plano_grade2.json` (o índice SQL ainda devolve o estado anterior à grade 2; três páginas conferidas uma a uma).
 **Justificativa**: pedido do autor (comparar a rodada 2 com a codificação do Claude e informar o kappa e o mínimo exigido). Resultado interno; não entra nos textos oficiais.
+
+### 00:52
+**Objeto**: `_src/[B5] Ativos fixos/Anuncios de aluguel/build/B5-b_anuncios_aluguel.py` e `webscripts/portais_aluguel.user.js` (versão 2026.11.03-2), com os testes dos dois; `docs/pendencias.md`
+**Antes**: a busca do ZAP `/aluguel/casa-comercial/` caía no padrão residencial (`/casa-`), e o build e o painel marcavam como residenciais os 138 anúncios da primeira coleta (03/11/2026, 138 de 143 da busca).
+**Depois**: `casa-comercial` e `imovel-comercial` entram no padrão de busca comercial, que é testado antes do residencial; os 138 anúncios passam a comercial, com subtipo "outro" (o texto "Imóvel comercial" ou "Casa" não indica loja, sala, galpão ou prédio). Testes novos no build e no painel (14 testes JS e os do build passando).
+**Justificativa**: pedido do autor, após a análise da primeira coleta do ZAP.
