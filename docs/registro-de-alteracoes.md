@@ -2446,3 +2446,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: 63 linhas e 14 KB, com o histórico de cada versão do TMin (v11 a v20), do B5 e do B2 na seção "Fazendo agora", contra a regra de no máximo uma tela.
 **Depois**: 34 linhas e 2,4 KB, só com o estado atual de cada frente (TMin v20, B5, B2, capítulos), os próximos 3 passos e o bloqueado; o histórico fica neste registro.
 **Justificativa**: pedido do autor. O arquivo entra no contexto de toda sessão e dobrou de tamanho em 02/11.
+
+### 23:59
+**Objeto**: `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js` (versão 2026.11.02-9) e `precos_itens.test.cjs`; `docs/pendencias.md`, `AGORA.md`
+**Antes**: painel com botões de texto longo, filtros em caixas de seleção, explicações escritas no próprio painel ("Funil:", "Este item:", "CEP no site", "Desmarque o que não é o item") e "Guardar marcadas" abaixo dos filtros.
+**Depois**: "Guardar" (com o número de marcadas) ao lado de "Próximo" e do selo "só os que faltam"; abaixo, Buscar, Reler, Somar e Pix; filtros e "só os que faltam" como selos que ligam e desligam; botões com ícone e nome curto, com o nome completo e a explicação na dica (title); CEP, CSV pendente, cobertura, resumo do item e funil em linhas curtas, com o detalhe na dica; números do item e da categoria num quadro; nas ofertas, frete, Pix, preço sem Pix e avaliações numa linha abaixo do título. Conferido no navegador com a fixture da Amazon; teste do painel ajustado (25 testes passando).
+**Justificativa**: pedido do autor (Guardar ao lado de Próximo, painel mais limpo, filtros como selos, explicações em dicas e ícones nos botões).

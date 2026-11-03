@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.02-8
+// @version      2026.11.02-9
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -20,6 +20,10 @@
  * Uso pessoal, para o Bloco B5 (ativos fixos): preço de mobiliário, cozinha e bar, caixa e
  * informática e dos itens da reforma sem composição no SINAPI (premissas I01 a I04 do cap. 9).
  * Os sites bloqueiam requisições fora do navegador, por isso a coleta roda na página.
+ *
+ * Os botões do painel trazem ícone e nome curto; o nome completo ("Guardar marcadas", "Ler
+ * ofertas"...) e a explicação ficam na dica ao passar o mouse. Os filtros são selos que ligam e
+ * desligam.
  *
  * Como usar:
  *  1. Informar o CEP de Salvador usado no site (o frete depende dele) e escolher o item no
@@ -729,28 +733,36 @@
     #cpi-painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:360px;
       max-height:calc(100vh - 24px);overflow:auto;box-sizing:border-box;
       background:#fff;color:#111;border:1px solid #ccc;border-radius:10px;
-      box-shadow:0 4px 16px rgba(0,0,0,.18);font:13px/1.4 system-ui,sans-serif;padding:10px}
-    @media (prefers-color-scheme:dark){#cpi-painel{background:#1e1e1e;color:#eee;border-color:#444}}
+      box-shadow:0 4px 16px rgba(0,0,0,.18);font:13px/1.4 system-ui,sans-serif;padding:10px;
+      --azul:#2563eb;--linha:rgba(128,128,128,.25)}
+    @media (prefers-color-scheme:dark){#cpi-painel{background:#1e1e1e;color:#eee;border-color:#444;--azul:#3b82f6}}
     #cpi-painel.min>*:not(header){display:none}
     header{display:flex;justify-content:space-between;align-items:center;font-weight:700;cursor:pointer}
-    p{margin:6px 0}
+    p{margin:4px 0}
     .linha{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0;align-items:center}
     button{flex:1 1 auto;padding:5px 8px;border-radius:6px;border:1px solid #888;
-      background:transparent;color:inherit;cursor:pointer;font:inherit}
+      background:transparent;color:inherit;cursor:pointer;font:inherit;white-space:nowrap}
     button:disabled{opacity:.4;cursor:default}
+    button.principal{background:var(--azul);border-color:var(--azul);color:#fff;font-weight:600}
+    button.ic{flex:0 0 auto;padding:4px 7px}
     button.x{flex:0 0 auto;padding:0 6px;border:none;opacity:.7}
+    .tag{flex:0 0 auto;border-radius:999px;padding:2px 9px;font-size:12px;opacity:.55}
+    .tag.on{opacity:1;background:var(--azul);border-color:var(--azul);color:#fff}
     select,input{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px}
-    select{width:100%} select option{color:#111}
+    select{width:100%} select option,select optgroup{color:#111}
     option.obra_reforma{color:#c2410c} option.cozinha_bar{color:#1d4ed8}
     option.mobiliario{color:#15803d} option.equipamentos{color:#7e22ce}
     option.coletado{color:#9ca3af} option.fraco{color:#b45309}
-    input[type=number]{width:52px} input.cep{width:90px} li input.u{width:40px;flex:0 0 auto}
+    input[type=number]{width:46px} input.cep{width:84px} li input.u{width:38px;flex:0 0 auto}
+    .rotulo{font-size:12px;opacity:.7}
+    .info{font-size:12px}
+    .caixa{border:1px solid var(--linha);border-radius:8px;padding:4px 8px;margin:6px 0}
+    .sub{font-size:11px;opacity:.75}
     ul{list-style:none;margin:6px 0;padding:0;max-height:40vh;overflow:auto}
-    li{display:flex;gap:6px;align-items:flex-start;padding:3px 0;border-bottom:1px solid rgba(128,128,128,.25);font-size:12px}
+    li{display:flex;gap:6px;align-items:flex-start;padding:3px 0;border-bottom:1px solid var(--linha);font-size:12px}
     li span{flex:1} li b{white-space:nowrap}
     li i{display:block;font-style:normal;font-size:11px;opacity:.75}
-    label{font-size:12px;display:flex;gap:3px;align-items:center}
-    .barra{display:inline-block;width:80px;height:8px;border:1px solid #888;border-radius:4px;vertical-align:middle;overflow:hidden}
+    .barra{display:inline-block;width:70px;height:7px;border:1px solid #888;border-radius:4px;vertical-align:middle;overflow:hidden}
     .barra>span{display:block;height:100%;background:currentColor}
     details{margin:6px 0} summary{cursor:pointer;font-size:12px}
     .resumo{font-size:12px} .alerta{color:#b45309} .ok{color:#15803d}
@@ -761,18 +773,31 @@
   const reais = (v) => (v == null ? '–' : `R$ ${v.toFixed(2).replace('.', ',')}`);
   const ROTULO_TIPO = { pix: ' [Pix]', cupom: ' [cupom]', padrao: '' };
   const ROTULO_LEITOR = { proprio: `próprio do site`, jsonld: 'JSON-LD', generico: 'genérico', nenhum: 'nenhum' };
+  const ROTULO_CATEGORIA = { obra_reforma: 'Obra e reforma', cozinha_bar: 'Cozinha e bar', mobiliario: 'Mobiliário', equipamentos: 'Equipamentos' };
   const decimal = (v) => String(v).replace('.', ',');
   const quando = (ms) => { const d = new Date(ms); return `${doisDig(d.getDate())}/${doisDig(d.getMonth() + 1)} ${doisDig(d.getHours())}h${doisDig(d.getMinutes())}`; };
+  // Texto curto (ícone) no painel; o nome e a explicação vão no title (tooltip)
+  const botao = (rotulo, titulo, onclick, className = '') => criar('button', { textContent: rotulo, title: titulo, onclick, className });
+  // Selo que liga e desliga (filtros e "só os que faltam")
+  function selo(rotulo, titulo, ligado, aoMudar) {
+    const b = criar('button', { className: 'tag', textContent: rotulo, title: titulo });
+    const pintar = (v) => { b.classList.toggle('on', v); b.setAttribute('aria-pressed', String(v)); };
+    pintar(ligado);
+    b.onclick = () => { const v = !b.classList.contains('on'); pintar(v); aoMudar(v); };
+    return b;
+  }
 
   function mostrarCep() {
     const doSite = cepDoSite();
     const cep = cepAtual();
     const ok = cep && ehSalvador(cep);
-    el.cepAviso.className = ok ? 'resumo ok' : 'resumo alerta';
-    el.cepAviso.textContent = doSite
+    const bom = doSite ? ehSalvador(doSite) : ok;
+    el.cepAviso.className = bom ? 'info ok' : 'info alerta';
+    el.cepAviso.textContent = doSite ? `${bom ? '✓' : '⚠'} no site: ${doSite}` : cep ? `${ok ? '✓' : '⚠'} site não mostra` : '⚠ informe o CEP';
+    el.cepAviso.title = doSite
       ? `CEP no site: ${doSite}${ehSalvador(doSite) ? ' (Salvador)' : ' — fora de Salvador: o frete não vale'}`
       : cep ? `CEP informado: ${cep}${ok ? ' (Salvador)' : ' — fora de Salvador'}; o site não mostra o CEP, conferir`
-        : 'Informe o CEP de Salvador usado no site.';
+        : 'Informe o CEP de Salvador usado no site: o frete depende dele.';
   }
 
   function mostrar(t) {
@@ -782,40 +807,45 @@
     const r = resumoItem(guardados, item.id);
     const itensComPreco = new Set(lista.map((l) => l.id_item)).size;
     const itensFracos = ITENS.filter((i) => { const n = resumoItem(guardados, i.id).n; return n > 0 && n < MIN_OFERTAS; }).length;
-    el.contagem.textContent = `${itensComPreco} de ${ITENS.length} itens com preço · ${itensFracos} com menos de ${MIN_OFERTAS} ofertas · ${lista.length} ofertas no total`;
+    el.contagem.textContent = `📊 ${itensComPreco}/${ITENS.length} itens · ${itensFracos} abaixo de ${MIN_OFERTAS} · ${lista.length} ofertas`;
+    el.contagem.title = `${itensComPreco} de ${ITENS.length} itens com preço; ${itensFracos} com menos de ${MIN_OFERTAS} ofertas; ${lista.length} ofertas guardadas no total`;
 
     // A8: o que mudou desde o último CSV
     const exportadoEm = GM_getValue(CHAVE_EXPORTACAO, 0);
     const pend = pendentes(guardados, exportadoEm);
-    el.pendentes.className = pend ? 'resumo alerta' : 'resumo ok';
-    el.pendentes.textContent = pend
+    el.pendentes.className = pend ? 'info alerta' : 'info ok';
+    el.pendentes.textContent = pend ? `${pend >= AVISO_PENDENTES ? '⚠' : '•'} ${pend} fora do CSV` : exportadoEm ? '✓ CSV em dia' : 'Nada guardado ainda.';
+    el.pendentes.title = pend
       ? `${pend} oferta(s) guardadas ou excluídas desde o último CSV${exportadoEm ? ` (${quando(exportadoEm)})` : ' (nenhum baixado ainda)'}`
-        + `${pend >= AVISO_PENDENTES ? ' ⚠ baixe o CSV: os dados só estão no Tampermonkey' : ''}`
-      : exportadoEm ? `CSV em dia (baixado em ${quando(exportadoEm)})` : 'Nada guardado ainda.';
+        + `${pend >= AVISO_PENDENTES ? '. Baixe o CSV: os dados só estão no Tampermonkey' : ''}`
+      : exportadoEm ? `CSV baixado em ${quando(exportadoEm)}` : '';
 
     // A2: cobertura da categoria do item
     const c = coberturaCategoria(guardados, item.categoria);
     el.categoria.className = c.completos === c.itens ? 'resumo ok' : 'resumo';
+    el.categoria.title = `Categoria ${item.categoria}: ${c.completos} de ${c.itens} itens com ${MIN_OFERTAS}+ ofertas (${c.comPreco} com alguma)`;
     const preenchido = criar('span');
     preenchido.style.width = `${Math.round((100 * c.completos) / c.itens)}%`;
     el.categoria.replaceChildren(
-      criar('span', { textContent: `Categoria ${item.categoria}: ${c.completos} de ${c.itens} itens com ${MIN_OFERTAS}+ ofertas (${c.comPreco} com alguma) ` }),
+      criar('span', { textContent: `🗂 ${ROTULO_CATEGORIA[item.categoria] || item.categoria}: ${c.completos}/${c.itens} (${c.comPreco} com alguma) ` }),
       criar('span', { className: 'barra' }, [preenchido]),
     );
 
     // A4 e A7: dispersão e idade da coleta do item
     const alertas = [];
-    if (r.n && r.n < MIN_OFERTAS) alertas.push(`faltam ${MIN_OFERTAS - r.n} para o mínimo`);
+    if (r.n && r.n < MIN_OFERTAS) alertas.push(`faltam ${MIN_OFERTAS - r.n}`);
     if (r.dispersao > DISPERSAO_MAX) alertas.push(`P75/P25 de ${decimal(r.dispersao)}×: produtos diferentes?`);
-    if (r.idade > IDADE_MAX) alertas.push(`coleta mais antiga com ${r.idade} dias`);
+    if (r.idade > IDADE_MAX) alertas.push(`coleta de ${r.idade} dias`);
     el.resumo.className = r.n >= MIN_OFERTAS && !alertas.length ? 'resumo ok' : 'resumo alerta';
-    el.resumo.textContent = r.n
-      ? `Este item: ${r.n} ofertas de ${r.sites} site(s) · mediana ${reais(r.mediana)} (${reais(r.min)} a ${reais(r.max)}, preço + frete)`
-        + `${r.n > 1 ? ` · P25 ${reais(r.p25)}, P75 ${reais(r.p75)} (${decimal(r.dispersao)}×)` : ''}`
-        + `${r.semFrete ? ` · ${r.semFrete} sem frete informado` : ''}${r.pixCupom ? ` · ${r.pixCupom} no Pix ou cupom` : ''}`
-        + `${r.leitores.length ? ` · leitor ${r.leitores.map((l) => ROTULO_LEITOR[l] || l).join(', ')}` : ''}`
-        + ` · desde ${r.maisAntiga}${alertas.length ? ` · ⚠ ${alertas.join('; ')}` : ''}`
-      : 'Este item ainda não tem ofertas guardadas.';
+    el.resumo.title = r.n ? `Preço + frete das ofertas guardadas deste item${r.leitores.length ? `; leitor ${r.leitores.map((l) => ROTULO_LEITOR[l] || l).join(', ')}` : ''}` : '';
+    el.resumo.replaceChildren(...(r.n ? [
+      criar('span', { textContent: `🏷 ${r.n} ofertas · ${r.sites} site(s) · mediana ${reais(r.mediana)}${alertas.length ? ` · ⚠ ${alertas.join('; ')}` : ''}` }),
+      criar('span', {
+        className: 'sub',
+        textContent: ` ${reais(r.min)} a ${reais(r.max)}${r.n > 1 ? ` · P25 ${reais(r.p25)}, P75 ${reais(r.p75)} (${decimal(r.dispersao)}×)` : ''}`
+          + `${r.semFrete ? ` · ${r.semFrete} sem frete` : ''}${r.pixCupom ? ` · ${r.pixCupom} Pix/cupom` : ''} · desde ${r.maisAntiga}`,
+      }),
+    ] : [criar('span', { textContent: '🏷 Nenhuma oferta guardada deste item.' })]));
     rotularItens(lista);
     listarGuardadas(guardados, item);
     if (t) status(t);
@@ -862,7 +892,7 @@
       const l = guardados[k];
       const frete = l.frete == null ? ' + frete ?' : l.frete === 0 ? '' : ` + ${reais(l.frete)}`;
       const x = criar('button', {
-        className: 'x', textContent: '✕', title: 'Excluir esta oferta',
+        className: 'x', textContent: '✕', title: 'Excluir esta oferta (a exclusão vai no CSV)',
         onclick: () => { const g = carregar(); excluir(g, k); salvar(g); mostrar(`Excluída: ${l.produto.slice(0, 40)}`); },
       });
       return criar('li', {}, [x, criar('span', { textContent: `${l.fonte} · ${l.produto}` }), criar('b', { textContent: `${reais(l.preco)}${frete}${ROTULO_TIPO[l.tipo_preco] || ''}` })]);
@@ -882,36 +912,45 @@
     el.lista.replaceChildren(...ofertasLidas.map((o, i) => {
       o.unidades = unidadesDe(o);
       const motivos = motivosOferta(o, item.termo, ref);
-      const marca = criar('input', { type: 'checkbox', checked: !motivos.length });
+      const marca = criar('input', { type: 'checkbox', checked: !motivos.length, onchange: contarMarcadas });
       marca.dataset.i = i;
       const u = criar('input', {
         type: 'number', min: 1, value: o.unidades, className: 'u', title: 'Unidades da lista neste anúncio (caixa, jogo ou kit)',
         onchange: () => { o.unidadesManual = Math.max(1, Number(u.value) || 1); o.unidades = o.unidadesManual; },
       });
-      const frete = o.frete == null ? '' : o.frete === 0 ? ' + frete grátis' : ` + ${reais(o.frete)}`;
-      const avaliacoes = o.avaliacoes == null ? '' : ` · ${o.avaliacoes} avaliações`;
-      const semPix = o.preco_sem_pix ? ` (sem Pix ${reais(o.preco_sem_pix)})` : '';
+      const detalhes = [
+        o.frete == null ? '' : o.frete === 0 ? '🚚 grátis' : `🚚 ${reais(o.frete)}`,
+        o.tipo_preco && o.tipo_preco !== 'padrao' ? (o.tipo_preco === 'pix' ? 'Pix' : 'cupom') : '',
+        o.preco_sem_pix ? `sem Pix ${reais(o.preco_sem_pix)}` : '',
+        o.avaliacoes == null ? '' : `★ ${o.avaliacoes}`,
+      ].filter(Boolean).join(' · ');
       const notas = [];
-      if (motivos.length) notas.push(criar('i', { textContent: `desmarcada: ${motivos.join('; ')}` }));
-      if (o.unidades > 1) notas.push(criar('i', { textContent: `${o.unidades} unidades: ${reais(o.preco / o.unidades)} cada` }));
-      return criar('li', {}, [marca, criar('span', { textContent: o.produto }, notas), u,
-        criar('b', { textContent: `${reais(o.preco)}${frete}${ROTULO_TIPO[o.tipo_preco] || ''}${semPix}${avaliacoes}` })]);
+      if (detalhes) notas.push(criar('i', { textContent: detalhes }));
+      if (motivos.length) notas.push(criar('i', { className: 'alerta', textContent: `⊘ ${motivos.join('; ')}`, title: 'Desmarcada pelas regras do item ou pelos filtros; se marcada à mão, vai com motivo e o build a deixa de fora' }));
+      if (o.unidades > 1) notas.push(criar('i', { textContent: `${o.unidades} un. · ${reais(o.preco / o.unidades)} cada` }));
+      return criar('li', {}, [marca, criar('span', { textContent: o.produto }, notas), u, criar('b', { textContent: reais(o.preco) })]);
     }));
-    el.bGuardar.disabled = !ofertasLidas.length;
+    contarMarcadas();
     mostrarFunil();
+  }
+
+  const caixasMarcadas = () => [...el.lista.querySelectorAll('input[type=checkbox]')].filter((m) => m.checked);
+  function contarMarcadas() {
+    const n = caixasMarcadas().length;
+    el.bGuardar.textContent = `💾 Guardar${ofertasLidas.length ? ` (${n})` : ''}`;
+    el.bGuardar.disabled = !ofertasLidas.length;
   }
 
   // A1 e A6: funil da leitura e leitor usado, com alerta se o site tem leitor próprio e ele falhou.
   function mostrarFunil() {
-    if (!ofertasLidas.length && !cardsLidos) { el.funil.textContent = ''; return; }
+    if (!ofertasLidas.length && !cardsLidos) { el.funil.textContent = ''; el.funil.title = ''; return; }
     const f = funil(ofertasLidas, cardsLidos, itemAtual().termo, referencia());
     const falhou = TEM_LEITOR_PROPRIO.includes(site) && leitorLido !== 'proprio';
     el.funil.className = falhou || !f.nosFiltros ? 'resumo alerta' : 'resumo';
-    el.funil.textContent = `Funil: ${f.cards} cards → ${f.comPreco} com preço → ${f.semPatrocinado} sem patrocinado → ${f.noTermo} no termo → ${f.nosFiltros} nos filtros`
-      + ` · leitor ${ROTULO_LEITOR[leitorLido] || leitorLido}${falhou ? ' ⚠ o seletor do site não leu: o layout pode ter mudado' : ''}`;
+    el.funil.textContent = `${f.cards} cards → ${f.comPreco} com preço → ${f.semPatrocinado} sem patrocinado → ${f.noTermo} no termo → ${f.nosFiltros} nos filtros`
+      + `${falhou ? ' ⚠ leitor do site falhou' : ''}`;
+    el.funil.title = `Funil da leitura desta página; leitor ${ROTULO_LEITOR[leitorLido] || leitorLido}${falhou ? '. O seletor do site não leu: o layout pode ter mudado' : ''}`;
   }
-
-  const caixasMarcadas = () => [...el.lista.querySelectorAll('input[type=checkbox]')].filter((m) => m.checked);
 
   function ler(somar, motivo = '') {
     const { ofertas, cards, leitor } = lerOfertas(site);
@@ -926,137 +965,111 @@
     const marcadas = caixasMarcadas().length;
     const novas = ofertasLidas.length - (somar ? antes : 0);
     status(!ofertasLidas.length ? `${motivo}Nenhuma oferta com preço nesta página.`
-      : `${motivo}${somar ? `+${novas} novas; ` : ''}${ofertasLidas.length} ofertas com preço de ${cardsLidos} cards lidos, ${marcadas} marcadas pelo termo e pelos filtros. Desmarque o que não é o item.`);
+      : `${motivo}${somar ? `+${novas} novas; ` : ''}${ofertasLidas.length} ofertas de ${cardsLidos} cards, ${marcadas} marcadas.`);
   }
 
   function montarPainel() {
     el.item = criar('select', {
-      onchange: () => { GM_setValue(CHAVE_ITEM, el.item.value); mostrar(); ler(false, 'Item trocado: página relida com as regras dele. '); },
-    }, [...new Set(ITENS.map((i) => i.categoria))].map((c) => criar('optgroup', { label: c },
+      title: 'Item da lista. ✓ completo, ⚠ abaixo do mínimo, cor da categoria: sem oferta',
+      onchange: () => { GM_setValue(CHAVE_ITEM, el.item.value); mostrar(); ler(false, 'Item trocado: página relida. '); },
+    }, [...new Set(ITENS.map((i) => i.categoria))].map((c) => criar('optgroup', { label: `${MARCA_CATEGORIA[c] || '⚪'} ${ROTULO_CATEGORIA[c] || c}` },
       ITENS.filter((i) => i.categoria === c).map((i) => criar('option', { value: i.id, textContent: `${i.id} · ${i.item}` })))));
     el.item.value = itemAtual().id;
     el.cep = criar('input', {
-      className: 'cep', placeholder: '40000-000', value: GM_getValue(CHAVE_CEP, ''),
+      className: 'cep', placeholder: '40000-000', value: GM_getValue(CHAVE_CEP, ''), title: 'CEP de Salvador usado no site (o frete depende dele)',
       onchange: () => { GM_setValue(CHAVE_CEP, cepDe(el.cep.value) || ''); el.cep.value = GM_getValue(CHAVE_CEP, ''); mostrarCep(); },
     });
-    el.cepAviso = criar('p');
+    el.cepAviso = criar('span');
     el.contagem = criar('p', { className: 'resumo' });
-    el.pendentes = criar('p');
+    el.pendentes = criar('span');
     el.categoria = criar('p');
     el.resumo = criar('p');
     el.funil = criar('p');
     // F2, F3 e F5: filtros da marcação inicial, guardados no Tampermonkey
-    const ROTULO_FILTRO = { faixa: 'faixa de preço', medida: 'medida', avaliacoes: 'sem avaliações (Amazon)' };
-    const filtros = criar('div', { className: 'linha' }, [criar('span', { textContent: 'Filtros:' }), ...Object.keys(FILTROS_PADRAO).map((k) => {
-      const caixa = criar('input', {
-        type: 'checkbox', checked: filtrosAtuais()[k],
-        onchange: () => { GM_setValue(CHAVE_FILTROS, { ...filtrosAtuais(), [k]: caixa.checked }); listarOfertas(); },
-      });
-      return criar('label', {}, [caixa, criar('span', { textContent: ROTULO_FILTRO[k] })]);
-    })]);
-    el.status = criar('p', { className: 'status', textContent: 'Escolha o item, busque e leia as ofertas.' });
-    el.unidades = criar('input', { type: 'number', min: 1, value: 1, onchange: () => listarOfertas() });
+    const FILTRO = {
+      faixa: ['preço', 'Filtro de faixa de preço: desmarca ofertas abaixo de 0,3× ou acima de 3× a mediana guardada do item'],
+      medida: ['medida', 'Filtro de medida: desmarca ofertas cuja medida (cm, L, BTU, W, kg) foge da do termo'],
+      avaliacoes: ['avaliações', 'Filtro de avaliações: desmarca ofertas da Amazon sem avaliações'],
+    };
+    const filtros = Object.keys(FILTROS_PADRAO).map((k) => selo(FILTRO[k][0], FILTRO[k][1], filtrosAtuais()[k],
+      (v) => { GM_setValue(CHAVE_FILTROS, { ...filtrosAtuais(), [k]: v }); listarOfertas(); }));
+    const soFaltam = selo('só os que faltam', `Esconde no seletor os itens com ${MIN_OFERTAS}+ ofertas`, GM_getValue(CHAVE_SO_FALTAM, false),
+      (v) => { GM_setValue(CHAVE_SO_FALTAM, v); mostrar(); });
+    el.status = criar('p', { className: 'status' });
+    el.unidades = criar('input', { type: 'number', min: 1, value: 1, title: 'Unidades por embalagem: vale para as ofertas sem unidades no título', onchange: () => listarOfertas() });
     el.lista = criar('ul');
     el.guardadas = criar('ul');
     el.guardadasTitulo = criar('summary');
-    const bBuscar = criar('button', {
-      textContent: 'Buscar aqui',
-      disabled: !urlBusca(site, 'x'),
-      onclick: () => { saindoPeloPainel = true; location.href = urlBusca(site, itemAtual().termo); },
-    });
-    const bLer = criar('button', { textContent: 'Ler ofertas', onclick: () => ler(false) });
-    const bProximo = criar('button', {
-      textContent: 'Próximo que falta',
-      title: `Pula para o próximo item com menos de ${MIN_OFERTAS} ofertas (primeiro na mesma categoria) e abre a busca dele`,
-      onclick: () => {
-        const prox = proximoQueFalta(ativas(carregar()), itemAtual());
-        if (!prox) { status(`Todos os itens têm ${MIN_OFERTAS}+ ofertas.`); return; }
-        GM_setValue(CHAVE_ITEM, prox.id);
-        el.item.value = prox.id;
-        mostrar(`Item ${prox.id} · ${prox.item}.`);
-        const url = urlBusca(site, prox.termo);
-        if (url) { saindoPeloPainel = true; location.href = url; } else ler(false, `Item ${prox.id}: página relida com as regras dele. `);
-      },
-    });
-    const soFaltam = criar('input', {
-      type: 'checkbox', checked: GM_getValue(CHAVE_SO_FALTAM, false),
-      onchange: () => { GM_setValue(CHAVE_SO_FALTAM, soFaltam.checked); mostrar(); },
-    });
+    const bBuscar = botao('🔍 Buscar', 'Buscar aqui: abre a busca do site com o termo do item', () => { saindoPeloPainel = true; location.href = urlBusca(site, itemAtual().termo); });
+    bBuscar.disabled = !urlBusca(site, 'x');
+    const bLer = botao('↻ Reler', 'Ler ofertas: relê a página (ela já é lida sozinha ao abrir e ao trocar de página)', () => ler(false));
+    const bSomar = botao('➕ Somar', 'Somar página: acrescenta as ofertas desta página (ou das que carregaram ao rolar) às já lidas', () => ler(true));
     // F4: desmarca as ofertas de Pix ou cupom, para comparar só preços padrão
-    const bPadrao = criar('button', {
-      textContent: 'Só preço padrão',
-      title: 'Desmarca as ofertas com preço de Pix ou cupom',
-      onclick: () => {
-        let n = 0;
-        for (const m of caixasMarcadas()) if ((ofertasLidas[m.dataset.i].tipo_preco || 'padrao') !== 'padrao') { m.checked = false; n++; }
-        status(`${n} oferta(s) de Pix ou cupom desmarcadas; ${caixasMarcadas().length} marcadas.`);
-      },
+    const bPadrao = botao('⊘ Pix', 'Só preço padrão: desmarca as ofertas com preço de Pix ou cupom', () => {
+      let n = 0;
+      for (const m of caixasMarcadas()) if ((ofertasLidas[m.dataset.i].tipo_preco || 'padrao') !== 'padrao') { m.checked = false; n++; }
+      contarMarcadas();
+      status(`${n} oferta(s) de Pix ou cupom desmarcadas; ${caixasMarcadas().length} marcadas.`);
     });
-    const bSomar = criar('button', { textContent: 'Somar página', title: 'Acrescenta as ofertas desta página (ou das que carregaram ao rolar) às já lidas', onclick: () => ler(true) });
-    el.bGuardar = criar('button', {
-      textContent: 'Guardar marcadas',
-      disabled: true,
-      onclick: () => {
-        // motivo: os filtros que a oferta não passou (marcada à mão); o build a deixa de fora
-        const ref = referencia();
-        const marcadas = caixasMarcadas().map((m) => ofertasLidas[m.dataset.i])
-          .map((o) => ({ ...o, motivo: motivosOferta(o, itemAtual().termo, ref).join('; ') }));
-        const guardados = carregar();
-        const novas = guardar(guardados, itemAtual(), marcadas, el.unidades.value,
-          { fonte: site, busca: location.href, data_coleta: dataLocal(), cep: cepAtual(), agora: Date.now() });
-        salvar(guardados);
-        const comMotivo = marcadas.filter((o) => o.motivo).length;
-        mostrar(`${marcadas.length} guardadas (${novas} novas).${comMotivo ? ` ${comMotivo} fora dos filtros: vão com motivo e o build as deixa de fora.` : ''}${cepAtual() && ehSalvador(cepAtual()) ? '' : ' Atenção: sem CEP de Salvador.'}`);
-      },
+    const bProximo = botao('⏭ Próximo', `Próximo que falta: pula para o próximo item com menos de ${MIN_OFERTAS} ofertas (primeiro na mesma categoria) e abre a busca dele`, () => {
+      const prox = proximoQueFalta(ativas(carregar()), itemAtual());
+      if (!prox) { status(`Todos os itens têm ${MIN_OFERTAS}+ ofertas.`); return; }
+      GM_setValue(CHAVE_ITEM, prox.id);
+      el.item.value = prox.id;
+      mostrar(`Item ${prox.id} · ${prox.item}.`);
+      const url = urlBusca(site, prox.termo);
+      if (url) { saindoPeloPainel = true; location.href = url; } else ler(false, `Item ${prox.id}: página relida. `);
     });
-    const bCsv = criar('button', { textContent: 'Baixar CSV', onclick: () => status(`${baixarCsv()} arquivo(s) de categoria baixados.`) });
+    el.bGuardar = botao('💾 Guardar', 'Guardar marcadas: guarda as ofertas marcadas no Tampermonkey', () => {
+      // motivo: os filtros que a oferta não passou (marcada à mão); o build a deixa de fora
+      const ref = referencia();
+      const marcadas = caixasMarcadas().map((m) => ofertasLidas[m.dataset.i])
+        .map((o) => ({ ...o, motivo: motivosOferta(o, itemAtual().termo, ref).join('; ') }));
+      const guardados = carregar();
+      const novas = guardar(guardados, itemAtual(), marcadas, el.unidades.value,
+        { fonte: site, busca: location.href, data_coleta: dataLocal(), cep: cepAtual(), agora: Date.now() });
+      salvar(guardados);
+      const comMotivo = marcadas.filter((o) => o.motivo).length;
+      mostrar(`${marcadas.length} guardadas (${novas} novas).${comMotivo ? ` ${comMotivo} fora dos filtros: vão com motivo e o build as deixa de fora.` : ''}${cepAtual() && ehSalvador(cepAtual()) ? '' : ' Atenção: sem CEP de Salvador.'}`);
+    }, 'principal');
+    el.bGuardar.disabled = true;
+    const bCsv = botao('⬇ CSV', 'Baixar CSV: um arquivo por categoria, com tudo o que está guardado', () => { status(`${baixarCsv()} arquivo(s) de categoria baixados.`); mostrar(); }, 'ic');
     // Exclui as guardadas (de todos os itens) que as regras e os filtros de agora não aceitam.
-    const bRevisar = criar('button', {
-      textContent: 'Revisar guardadas',
-      title: 'Exclui as guardadas que não passam nas regras do item e nos filtros ligados (sem a faixa de preço)',
-      onclick: () => {
-        const g = carregar();
-        const fora = revisarGuardadas(g, filtrosAtuais());
-        if (!fora.length) { status('Todas as guardadas passam nas regras e nos filtros.'); return; }
-        const porItem = {};
-        for (const f of fora) porItem[f.id] = (porItem[f.id] || 0) + 1;
-        const exemplos = fora.slice(0, 5).map((f) => `${f.id} ${f.produto.slice(0, 40)}: ${f.motivos.join('; ')}`).join('\n');
-        if (!confirm(`${fora.length} guardadas não passam (${Object.entries(porItem).map(([id, n]) => `${id} ${n}`).join(', ')}).\n\n${exemplos}\n\nExcluir todas? A exclusão vai no próximo CSV.`)) return;
-        const agora = Date.now();
-        for (const f of fora) excluir(g, f.k, agora);
-        salvar(g);
-        mostrar(`${fora.length} guardadas excluídas pela revisão. Baixe o CSV para levar a exclusão ao build.`);
-      },
-    });
-    const bLimpar = criar('button', {
-      textContent: 'Limpar',
-      onclick: () => {
-        const pend = pendentes(carregar(), GM_getValue(CHAVE_EXPORTACAO, 0));
-        if (!confirm(`Apagar todas as ofertas guardadas?${pend ? ` ${pend} ainda não estão em nenhum CSV.` : ''} Um backup JSON será baixado antes.`)) return;
-        const agora = new Date();
-        baixar(`${dataLocal(agora)}_${horaLocal(agora)}_precos_backup.json`, JSON.stringify(carregar(), null, 1), 'application/json');
-        GM_deleteValue(CHAVE);
-        mostrar('Guardadas apagadas (backup baixado).');
-      },
-    });
+    const bRevisar = botao('🧹 Revisar', 'Revisar guardadas: exclui as guardadas que não passam nas regras do item e nos filtros ligados (sem a faixa de preço)', () => {
+      const g = carregar();
+      const fora = revisarGuardadas(g, filtrosAtuais());
+      if (!fora.length) { status('Todas as guardadas passam nas regras e nos filtros.'); return; }
+      const porItem = {};
+      for (const f of fora) porItem[f.id] = (porItem[f.id] || 0) + 1;
+      const exemplos = fora.slice(0, 5).map((f) => `${f.id} ${f.produto.slice(0, 40)}: ${f.motivos.join('; ')}`).join('\n');
+      if (!confirm(`${fora.length} guardadas não passam (${Object.entries(porItem).map(([id, n]) => `${id} ${n}`).join(', ')}).\n\n${exemplos}\n\nExcluir todas? A exclusão vai no próximo CSV.`)) return;
+      const agora = Date.now();
+      for (const f of fora) excluir(g, f.k, agora);
+      salvar(g);
+      mostrar(`${fora.length} guardadas excluídas pela revisão. Baixe o CSV para levar a exclusão ao build.`);
+    }, 'ic');
+    const bLimpar = botao('🗑', 'Limpar: apaga todas as guardadas (baixa antes um backup JSON)', () => {
+      const pend = pendentes(carregar(), GM_getValue(CHAVE_EXPORTACAO, 0));
+      if (!confirm(`Apagar todas as ofertas guardadas?${pend ? ` ${pend} ainda não estão em nenhum CSV.` : ''} Um backup JSON será baixado antes.`)) return;
+      const agora = new Date();
+      baixar(`${dataLocal(agora)}_${horaLocal(agora)}_precos_backup.json`, JSON.stringify(carregar(), null, 1), 'application/json');
+      GM_deleteValue(CHAVE);
+      mostrar('Guardadas apagadas (backup baixado).');
+    }, 'ic');
 
     const minimizar = criar('span', { textContent: '–' });
     const cabecalho = criar('header', {}, [criar('span', { textContent: `Preços · ${site}` }), minimizar]);
     const painel = criar('div', { id: 'cpi-painel' }, [
       cabecalho,
-      criar('div', { className: 'linha' }, [criar('span', { textContent: 'CEP:' }), el.cep]),
-      el.cepAviso,
+      criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', textContent: '📍' }), el.cep, el.cepAviso]),
       el.item,
-      criar('div', { className: 'linha' }, [criar('label', {}, [soFaltam, criar('span', { textContent: `só os que faltam (menos de ${MIN_OFERTAS} ofertas)` })]), bProximo]),
-      el.contagem,
-      el.pendentes,
-      el.categoria,
-      el.resumo,
-      criar('details', {}, [el.guardadasTitulo, el.guardadas]),
-      filtros,
-      criar('div', { className: 'linha' }, [criar('span', { textContent: 'Unidades por embalagem:' }), el.unidades, el.bGuardar]),
-      criar('div', { className: 'linha' }, [bCsv, bRevisar, bLimpar]),
+      criar('div', { className: 'linha' }, [soFaltam, bProximo, el.bGuardar]),
       criar('div', { className: 'linha' }, [bBuscar, bLer, bSomar, bPadrao]),
+      criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', textContent: '⚙', title: 'Filtros da marcação inicial' }), ...filtros,
+        criar('span', { className: 'rotulo', textContent: '📦', title: el.unidades.title }), el.unidades]),
+      criar('div', { className: 'linha' }, [bCsv, bRevisar, bLimpar, el.pendentes]),
+      criar('div', { className: 'caixa' }, [el.contagem, el.categoria, el.resumo]),
+      criar('details', {}, [el.guardadasTitulo, el.guardadas]),
       el.funil,
       el.lista,
       el.status,
