@@ -37,12 +37,29 @@ Padrão de parágrafo: **afirmação → sustentação (citação ou dado) → l
 ## Escolha das obras (pedido do autor em 31/10/2026)
 
 - **Só o necessário:** cada conceito tem uma obra, a que sustenta a decisão do plano em que o conceito é usado. Obra que repete outra ou que não liga a nenhuma decisão sai.
-- **Ordem de preferência** entre obras que sustentam o mesmo ponto, aplicada nesta ordem:
-  1. com acesso gratuito em PDF, na internet ou na biblioteca do autor no Google Drive;
-  2. livro, depois artigo, depois relatório, depois TCC, dissertação ou tese;
-  3. autor mais renomado na literatura da área;
-  4. autor brasileiro.
-- **Finanças:** VPL, TIR, payback e taxa de desconto só com Assaf Neto e Bruni. Damodaran fica reservado para o cálculo do beta e do risco-país (CRP) da taxa de desconto, se essa etapa for feita no cap. 9. Ponto de equilíbrio com Bruni e Famá.
+- **Ordem de preferência** entre obras que sustentam o mesmo ponto, aplicada nesta ordem (03/11/2026, pedido do autor):
+  1. obra que está na pasta `bibliografia/` do projeto (PDF ou EPUB na raiz), conferível pelo autor;
+  2. entre as da pasta, o livro-texto da área já citado no trabalho, antes de outro livro ou de um artigo;
+  3. livro, depois artigo, depois relatório, depois TCC, dissertação ou tese;
+  4. autor mais renomado na literatura da área;
+  5. autor brasileiro.
+- **Concentrar no livro-texto (03/11/2026, pedido do autor):** conceitos e fórmulas de uma mesma área saem, sempre que possível, de um único livro-texto da pasta, com várias citações dele (páginas diferentes), em vez de uma obra para cada conceito. Obra de fora da pasta só entra quando nenhum livro da pasta cobre o ponto, e fica `[AV]` até o autor conseguir o arquivo. Ao revisar um capítulo, trocar a citação de obra fora da pasta pela do livro-texto da área que cubra o mesmo conceito.
+- **Livros-texto da pasta, por área:**
+
+  | Área | Livro-texto (arquivo em `bibliografia/`) |
+  |---|---|
+  | Plano de negócios, estrutura do plano | Dornelas, *Plano de Negócios* |
+  | Marketing: segmentação, posicionamento, proposta de valor, 4Ps, preço, canais | Kotler e Keller, *Administração de Marketing* (`[658@PKOT]`) |
+  | Serviços e operações: capacidade, filas, lei de Little, *servicescape*, layout | Fitzsimmons e Fitzsimmons, *Administração de Serviços* |
+  | Estratégia e concorrência: cinco forças, estratégias genéricas | Porter, *Estratégia Competitiva* |
+  | Finanças: VPL, TIR, payback, fluxo de caixa, taxa de desconto (WACC, CAPM, beta, risco-país) | Assaf Neto, *Finanças Corporativas e Valor* |
+  | Custos, formação de preço, margem de contribuição, ponto de equilíbrio | Bruni e Famá, *Gestão de Custos e Formação de Preços* |
+  | Estatística: amostragem, intervalos, testes | Larson e Farber, *Estatística Aplicada* |
+  | Erro total e desenho de coleta | Groves et al., *Survey Methodology* |
+  | Análise de conteúdo | Bardin, *Análise de Conteúdo* |
+
+  Os livros de finanças de Ross et al. (`[650]` e `[658] Fundamentos…`) e de Gitman (`[658] Princípios…`) ficam de reserva: só entram quando Assaf Neto não cobre o ponto.
+- **Finanças:** VPL, TIR, payback e taxa de desconto só com Assaf Neto, inclusive beta e risco-país (CRP); Damodaran só se Assaf Neto não cobrir o cálculo. Custos e ponto de equilíbrio com Bruni e Famá.
 - Obras retiradas no TMin de 31/10/2026: Brealey, Myers e Allen; Casarotto Filho e Kopittke; Hillier e Lieberman; Zeithaml, Bitner e Gremler (o *servicescape* e a lei de Little passam a Fitzsimmons); Mintzberg, Ahlstrand e Lampel; Pfeffer e Sutton; Oldenburg; Marcellino; Kim e Mauborgne; Woods; Gilovich, Kumar e Jampol; Frezatti et al.; no cap. 3, Biemer, Amaya, Biemer e Kinyon e Meng; no cap. 5, Sebrae (notícia) e Savills.
 
 ## Divisão de subcapítulos

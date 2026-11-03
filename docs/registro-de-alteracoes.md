@@ -2556,3 +2556,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: sem regra sobre qual versão de cada arquivo serve de contexto; `arquivados/introducao_tcc_luderia.md` e `metodologia_tcc_luderia.md` "servem de insumo".
 **Depois**: regra "Só a versão atual como contexto": o Claude lê só a versão mais atual de cada arquivo (fora de `_arquivo/` e `arquivados/`, maior `_v<n>` ou carimbo de data e hora mais recente); versões anteriores, `_arquivo/`, `arquivados/` e o histórico do git só com pedido explícito do autor. Os dois arquivos do desenho anterior passam a seguir a mesma regra.
 **Justificativa**: pedido do autor (buscar contexto só nas versões mais atuais de cada arquivo; versões anteriores só se pedidas explicitamente).
+
+### 11:47
+**Objeto**: `_instrucoes/2_ref-teorico.md` (Escolha das obras); `CLAUDE.md` (Princípios, Versões); `docs/decisoes.md`
+**Antes**: ordem de preferência começava pelo acesso gratuito em PDF (internet ou Google Drive do autor); uma obra por conceito; Damodaran reservado para beta e risco-país.
+**Depois**: ordem começa pela obra da pasta `bibliografia/` e, entre elas, pelo livro-texto da área já citado; conceitos e fórmulas de uma área concentrados num único livro-texto da pasta, com tabela de livros-texto por área (Dornelas, Kotler e Keller, Fitzsimmons, Porter, Assaf Neto, Bruni e Famá, Larson e Farber, Groves et al., Bardin); obra de fora da pasta só sem cobertura, marcada [AV]; Assaf Neto cobre também beta e risco-país.
+**Justificativa**: pedido do autor (entrega hoje; muitas referências citam obras a que o autor não tem acesso; preferir várias citações de um mesmo livro a várias obras).
