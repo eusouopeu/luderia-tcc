@@ -22,6 +22,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
+**D64 — Página do modelo Kano em Picolo e Tontini: p. 40 × p. 39 (03/11/2026).** Cap. 2 (2.3: "(PICOLO; TONTINI, 2008, p. 40)") × PDF da pasta `bibliografia/`, em que a definição dos atributos obrigatórios e atrativos está na p. 39 (página impressa). A variante `estilo_manual/` já cita p. 39. Sugestão: conferir e trocar para p. 39 no TMin.
+
 **D61 — Critério do B5 × coletas de 03/11 (03/11/2026).** Cap. 3 (3.2.4: "os cinco primeiros anúncios de cada busca, na ordem do site") × dados do cap. 9 (Tabela 9.1). As exportações de 03/11 01:11 não têm a posição na busca (o coletor ordenava por preço); o build usa, nelas, até 5 ofertas por site espaçadas na ordem de preço. O texto descreve o critério, e os números só o seguem depois da recoleta com o coletor 2026.11.03-8 (pendências, B5).
 
 **D58 — Acervo mediano dos concorrentes: 468 × 322 títulos (03/11/2026).** Cap. 5 (5.3.2: mediana de 468 títulos nas 17 casas com acervo conhecido) × cap. 7 (7.4: ampliação até 322, "a mediana dos acervos do B1") e cap. 6 (Quadro 6.1: mediana de 322 nos 30 acervos publicados). São recortes diferentes do B1 (número declarado × lista publicada), sem a explicação no texto. Sugestão: usar um só recorte nos três capítulos ou dizer, no 5.3.2, de onde vem cada número.

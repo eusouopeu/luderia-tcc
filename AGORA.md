@@ -30,4 +30,5 @@ Atualizado em 03/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 | O que já foi decidido | [docs/decisoes.md](docs/decisoes.md) |
 | Dúvidas, ideias e decisões a tomar | [docs/pendencias.md](docs/pendencias.md) |
 | O que é comum ou falta diante de 33 TCCs-plano de negócios | [docs/parecer_tccs_planos_de_negocio.md](docs/parecer_tccs_planos_de_negocio.md) |
+| Caps. 1 e 2 no estilo da maioria dos TCCs (variante, fora do TMin) | [textos/capitulos/estilo_manual/](textos/capitulos/estilo_manual/) |
 | Que arquivo abrir para cada tarefa | [README.md](README.md), "Por onde começar" |

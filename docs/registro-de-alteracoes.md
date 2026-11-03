@@ -2592,3 +2592,15 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: sem levantamento das obras mais citadas nos referenciais dos TCCs.
 **Depois**: quadro com a referência completa de cada obra, quantos trabalhos a citam e se está na pasta; baixados os dois relatórios do Sebrae com cópia pública (mortalidade de empresas e "Como elaborar um plano de negócio", ambos de 2004). Livros comerciais não baixados.
 **Justificativa**: pedido do autor (buscar as obras mais citadas e baixá-las para a pasta de bibliografia).
+
+### 15:46
+**Objeto**: `textos/capitulos/estilo_manual/` (nova: `_md/1-2_introducao_referencial_estilo_manual.md` e `1-2_introducao_referencial_estilo_manual_v1.docx`); `_src/extras/gerar_docx_estilo_manual.py` (novo); `docs/melhorias-texto.md` (D64); `AGORA.md`
+**Antes**: caps. 1 e 2 só no estilo do TMin v23 (referencial por tema, citação indireta curta, uma obra por conceito).
+**Depois**: variante separada do TMin com a introdução em funil (mortalidade de empresas, mercado, problema, objetivos, justificativa, estrutura) e o referencial na ordem das partes do plano (2.1 plano de negócios a 2.6 riscos), autores encadeados e 12 citações diretas longas em bloco (Dornelas, Sebrae-MG, Fitzsimmons, Kotler e Keller, Picolo e Tontini, Assaf Neto), todas conferidas na página impressa dos PDFs da pasta `bibliografia/`; Quadro 2.1 liga cada conceito ao capítulo que o usa. Script próprio para o `.docx`, porque o `gerar_docx_capitulo.js` omite as linhas de citação em bloco. O TMin não muda.
+**Justificativa**: pedido do autor (comentário no parecer: reescrever os dois capítulos com os hábitos da maioria dos TCCs, tendo como modelo o parágrafo de Kotler e Armstrong do TCC da Cafeteria).
+
+### 15:46
+**Objeto**: `textos/capitulos/_md/2_referencial_teorico.md` (2.3) × `bibliografia/` (Picolo e Tontini, 2008)
+**Antes**: o TMin cita a definição do modelo Kano na p. 40.
+**Depois**: no PDF, a definição está na p. 39 (página impressa).
+**Efeitos colaterais**: número de página errado na citação do TMin; registrado em `docs/melhorias-texto.md` (D64), sem correção no capítulo.
