@@ -2,6 +2,8 @@
 
 Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagnostico-teorico.md`, `matriz-fundamentacao.md` e `lacunas-bibliograficas.md`.
 
+**Situação em 03/11/2026.** Os IDs `Rnn` são os dos checklists de conceitos de outubro, hoje em `bibliografia/_arquivo/leituras-P1/` e `leituras-P2/`. Saíram deste roteiro as obras que só serviam ao desenho anterior (velocidade de avaliações como medida de fluxo, registro prévio e base dividida, testes das hipóteses H1–H9): R10, R28, R29, R30, R34, R37, R53, R54, R74 e R79. A escolha das obras citadas segue `_instrucoes/2_ref-teorico.md` (Escolha das obras): artigo só para dado empírico, conceitos e fórmulas de um livro-texto da pasta `bibliografia/`.
+
 ## Como ler este roteiro
 
 - **Verificado no texto (VT):** baixei o arquivo e conferi as páginas indicadas. A numeração é a impressa na edição lida; quando a edição não é a publicada (manuscrito, preprint), isso está dito.
@@ -19,7 +21,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** Páginas não verificadas. Sugestão: introdução e as seções sobre os vieses de seleção que levam à distribuição em J (termos de busca: *J-shaped distribution*, *self-selection*, *under-reporting*). Artigo tem 23 p.; ler no máximo 12.
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Entender por que quem avalia não representa quem consumiu e como isso distorce a nota.
-- **Fundamenta:** E03 (Avaliações do Google Maps como fonte (nota, texto, autosseleção)); E04 (Velocidade de avaliações como proxy de fluxo; calibração por razão); E12 (H1 — peso de atendimento/ambiente × comida/bebida na nota)
+- **Fundamenta:** E03 (Avaliações do Google Maps como fonte (nota, texto, autosseleção))
 - **Perguntas a responder depois de ler:**
   - Quais vieses de seleção afetam a distribuição das notas?
   - O que isso implica para ler a nota média como satisfação?
@@ -77,7 +79,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** pp. 32–39, artigo inteiro (8 p.). Verificado: relaciona preço ao tempo de permanência na mesa e define receita por assento-hora disponível (RevPASH).
 - **Quantidade estimada:** 8 p. (verificada)
 - **Objetivo:** Entender capacidade em restaurante como assento × tempo, e a ligação entre duração da refeição, giro e receita.
-- **Fundamenta:** E05 (Taxa de ocupação, giro de mesa e permanência); E13 (H3 e 6.3 — política de cobrança e percepção de preço (couvert))
+- **Fundamenta:** E05 (Taxa de ocupação, giro de mesa e permanência); E13 (Política de cobrança e percepção de preço (6.3, couvert))
 - **Perguntas a responder depois de ler:**
   - Como se mede utilização de assentos e por que o tempo de mesa é o recurso escasso?
   - O que a duração da refeição implica para a precificação?
@@ -119,7 +121,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** Páginas não verificadas. Artigo tem 23 p.; ler as seções sobre medidas de concordância e limiares de aceitação (máximo 12).
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Decidir entre kappa de Cohen e outras medidas de concordância e justificar (ou ajustar) o limiar de 0,70.
-- **Fundamenta:** E09 (Análise de conteúdo: dicionário, kappa e F1)
+- **Fundamenta:** E09 (Análise de conteúdo: grade de temas e kappa)
 - **Perguntas a responder depois de ler:**
   - Que medida de confiabilidade convém a variáveis binárias raras?
   - De onde vêm os limiares de aceitação usados em análise de conteúdo?
@@ -133,25 +135,11 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** pp. 267–271 (introdução e quatro princípios, incluindo 'validar, validar, validar') e pp. 274–275 (seção 5.1, métodos de dicionário). Posição no PDF: 1–5 e 8–9.
 - **Quantidade estimada:** 7 p. (verificada)
 - **Objetivo:** Fundamentar a exigência de validar o dicionário contra codificação humana antes de usá-lo.
-- **Fundamenta:** E09 (Análise de conteúdo: dicionário, kappa e F1); E03 (Avaliações do Google Maps como fonte (nota, texto, autosseleção))
+- **Fundamenta:** E09 (Análise de conteúdo: grade de temas e kappa); E03 (Avaliações do Google Maps como fonte (nota, texto, autosseleção))
 - **Perguntas a responder depois de ler:**
   - Por que todo modelo automático de texto exige validação?
   - Quais limites têm os métodos de dicionário?
 - **Ressalva:** Texto lido nas seções indicadas. O artigo trata de textos políticos; vale como princípio geral, não como validação do dicionário do projeto.
-
-### R10 — Nosek et al. (2018)
-
-- **Referência:** NOSEK; EBERSOLE; DEHAVEN; MELLOR. The preregistration revolution. *Proceedings of the National Academy of Sciences*, v. 115, n. 11, p. 2600–2606, 2018. DOI 10.1073/pnas.1708274114.
-- **Tipo:** Seminal / metodológica. **Status:** **Verificado no texto** (páginas conferidas no arquivo).
-- **Acesso:** **Baixado:** `bibliografia/leituras-P1/Nosek et al. (PNAS, 2018) - manuscrito.pdf` (manuscrito, não a versão do PNAS). Versão submetida aberta: [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5856500/) · [DOI](https://doi.org/10.1073/pnas.1708274114).
-- **Páginas:** Manuscrito (errorstatistics.com), pp. 2–4 e 7–8, numeração própria do manuscrito (PDF posição 3–5 e 8–9). **Não é a paginação do PNAS (2600–2606).** Verificado: distinção entre predição e pós-dição, 'forking paths' (p. 3) e divisão de amostra em exploratória e confirmatória (p. 8).
-- **Quantidade estimada:** 5 p. (verificada)
-- **Objetivo:** Fundamentar o registro prévio e a separação entre análise exploratória e confirmatória.
-- **Fundamenta:** E10 (Registro prévio e divisão exploratória/confirmatória)
-- **Perguntas a responder depois de ler:**
-  - Por que registrar antes distingue predição de pós-dição?
-  - Em que casos o registro prévio é viável com dados já existentes?
-- **Ressalva:** Manuscrito lido. A versão publicada pode diferir; obter o PDF do PNAS para citar páginas. Páginas do PNAS não verificadas.
 
 ### R11 — Saltelli e Annoni (2010)
 
@@ -175,11 +163,11 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** Páginas não verificadas. Sugestão: o modelo conceitual do ambiente de serviço e as dimensões do ambiente. Máximo 12 p. (artigo tem 15).
 - **Quantidade estimada:** 10 p. (teto; intervalo não verificado)
 - **Objetivo:** Dar base teórica à categoria 'ambiente' e à expectativa de que o ambiente físico afete a avaliação.
-- **Fundamenta:** E12 (H1 — peso de atendimento/ambiente × comida/bebida na nota); E21 (Ferramentas estratégicas: cinco forças, SWOT, PESTEL, ERRC, Canvas, mix de marketing)
+- **Fundamenta:** E21 (Ferramentas estratégicas: cinco forças, SWOT, PESTEL, ERRC, Canvas, mix de marketing)
 - **Perguntas a responder depois de ler:**
   - Que dimensões do ambiente físico a literatura distingue?
   - Como o ambiente afeta clientes e funcionários?
-- **Ressalva:** Existência e metadados conferidos; não li o texto. É a fonte clássica de servicescape, mas a hipótese H1 (atendimento/ambiente pesam mais que comida/bebida) não é automaticamente sustentada por ela.
+- **Ressalva:** Existência e metadados conferidos; não li o texto. É a fonte clássica de servicescapemente sustentada por ela.
 
 ### R13 — Namkung e Jang (2007)
 
@@ -189,11 +177,11 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** Páginas não verificadas. Artigo tem 23 p.; ler introdução, resultados e discussão (máximo 12).
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Ver como a literatura de restaurantes pesa a comida frente a outros atributos na satisfação.
-- **Fundamenta:** E12 (H1 — peso de atendimento/ambiente × comida/bebida na nota); E14 (Análise de penalidade e recompensa (Kano))
+- **Fundamenta:** E14 (Análise de penalidade e recompensa (Kano))
 - **Perguntas a responder depois de ler:**
   - A qualidade da comida pesa mais ou menos que serviço e ambiente na satisfação?
   - Com que medidas e amostra isso foi estimado?
-- **Ressalva:** O título pergunta se a comida importa; o resultado e a amostra (restaurantes, não bares de jogos) devem ser lidos antes de usar como apoio direcional a H1.
+- **Ressalva:** O título pergunta se a comida importa; o resultado e a amostra (restaurantes, não bares de jogos) devem ser lidos antes de usar como apoio.
 
 ### R14 — Lohr
 
@@ -203,7 +191,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** Páginas não verificadas. Sugestão: capítulo sobre estimadores de razão e regressão, e seções sobre erro de estimação. Localizar pelo sumário da edição.
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Fundamentar o estimador por razão usado na calibração (visitantes ÷ avaliações) e o erro dessa razão.
-- **Fundamenta:** E04 (Velocidade de avaliações como proxy de fluxo; calibração por razão); E06 (Contagem direta: observação externa e amostragem de tempo)
+- **Fundamenta:** E06 (Contagem direta: observação externa e amostragem de tempo)
 - **Perguntas a responder depois de ler:**
   - Qual a variância de um estimador de razão e quando é viesado?
   - O que se pode afirmar com uma única unidade de calibração?
@@ -307,7 +295,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** Páginas não verificadas. Artigo tem 19 p.; ler modelo e discussão (máximo 12).
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Mecanismo de autosseleção de quem avalia, complementar a R01.
-- **Fundamenta:** E03 (Avaliações do Google Maps como fonte (nota, texto, autosseleção)); E04 (Velocidade de avaliações como proxy de fluxo; calibração por razão)
+- **Fundamenta:** E03 (Avaliações do Google Maps como fonte (nota, texto, autosseleção))
 - **Perguntas a responder depois de ler:**
   - Como o perfil de quem avalia enviesa a nota média?
 - **Ressalva:** Título conferido; produtos, não serviços presenciais.
@@ -319,7 +307,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** Páginas não verificadas. Artigo tem 33 p.; ler introdução e discussão (máximo 12).
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Segunda evidência (além de R24) sobre efeito da nota online na demanda de restaurantes.
-- **Fundamenta:** E03 (Avaliações do Google Maps como fonte (nota, texto, autosseleção)); E04 (Velocidade de avaliações como proxy de fluxo; calibração por razão)
+- **Fundamenta:** E03 (Avaliações do Google Maps como fonte (nota, texto, autosseleção))
 - **Perguntas a responder depois de ler:**
   - Qual o efeito da nota sobre a demanda e para qual tipo de restaurante?
 - **Ressalva:** Título conferido; conteúdo não lido.
@@ -332,7 +320,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** pp. 1–3 (introdução e resultados) e pp. 7–9 (dados), numeração do WP. Verificado na p. 1: aumento de uma estrela associa-se a 5–9% mais receita; efeito concentrado em restaurantes independentes, não em redes.
 - **Quantidade estimada:** 6 p. (verificada)
 - **Objetivo:** Ver evidência de que a nota online move a receita, e a diferença entre independentes e redes.
-- **Fundamenta:** E03 (Avaliações do Google Maps como fonte (nota, texto, autosseleção)); E04 (Velocidade de avaliações como proxy de fluxo; calibração por razão)
+- **Fundamenta:** E03 (Avaliações do Google Maps como fonte (nota, texto, autosseleção))
 - **Perguntas a responder depois de ler:**
   - A nota afeta a receita? Em quais restaurantes?
 - **Ressalva:** Texto lido nas partes indicadas. Trata do efeito da **nota** sobre a receita, não do **número de avaliações** como medida de fluxo; não valida o proxy B07.
@@ -369,47 +357,10 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** Páginas não verificadas. Artigo curto (7 p.); ler inteiro.
 - **Quantidade estimada:** 7 p. (teto; intervalo não verificado)
 - **Objetivo:** Apoio introdutório ao kappa e às suas limitações.
-- **Fundamenta:** E09 (Análise de conteúdo: dicionário, kappa e F1)
+- **Fundamenta:** E09 (Análise de conteúdo: grade de temas e kappa)
 - **Perguntas a responder depois de ler:**
   - Quando kappa baixo não indica codificação ruim?
 - **Ressalva:** Metadados conferidos; texto não lido.
-
-### R28 — Wagenmakers et al. (2012)
-
-- **Referência:** WAGENMAKERS et al. An agenda for purely confirmatory research. *Perspectives on Psychological Science*, v. 7, n. 6, p. 632–638, 2012. DOI 10.1177/1745691612463078.
-- **Tipo:** Metodológica. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
-- **Páginas:** Páginas não verificadas. Artigo curto (7 p.); ler inteiro.
-- **Quantidade estimada:** 7 p. (teto; intervalo não verificado)
-- **Objetivo:** Argumento complementar a R10 para separar confirmatório e exploratório.
-- **Fundamenta:** E10 (Registro prévio e divisão exploratória/confirmatória)
-- **Perguntas a responder depois de ler:**
-  - O que torna uma análise confirmatória?
-- **Ressalva:** Metadados conferidos; texto não lido.
-
-### R29 — Benjamini e Hochberg (1995)
-
-- **Referência:** BENJAMINI; HOCHBERG. Controlling the false discovery rate: a practical and powerful approach to multiple testing. *Journal of the Royal Statistical Society: Series B*, v. 57, n. 1, p. 289–300, 1995. DOI 10.1111/j.2517-6161.1995.tb02031.x.
-- **Tipo:** Seminal / metodológica. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
-- **Páginas:** Páginas não verificadas. Sugestão: introdução e descrição do procedimento (cerca de 4 p.).
-- **Quantidade estimada:** 4 p. (teto; intervalo não verificado)
-- **Objetivo:** Citar a origem do procedimento de BH e sua lógica.
-- **Fundamenta:** E11 (Modelos e testes (efeito fixo, erro agrupado, nota ordinal, testes não paramétricos, tamanho de efeito, BH))
-- **Perguntas a responder depois de ler:**
-  - Que garantia o procedimento oferece e sob que dependência?
-- **Ressalva:** Metadados conferidos. Com apenas dois testes (H1, H3), o ganho sobre Holm é pequeno: justificar a escolha.
-
-### R30 — Cameron e Miller (2015)
-
-- **Referência:** CAMERON; MILLER. A practitioner's guide to cluster-robust inference. *Journal of Human Resources*, v. 50, n. 2, p. 317–372, 2015. DOI 10.3368/jhr.50.2.317.
-- **Tipo:** Metodológica. **Status:** **Verificado no texto** (páginas conferidas no arquivo).
-- **Acesso:** **Baixado:** `bibliografia/leituras-P2/Cameron & Miller (JHR, 2015) - preprint.pdf` (preprint na página do autor, UC Davis; numeração própria, ≠ JHR 317–372).
-- **Páginas:** Preprint, numeração própria (≠ JHR 317–372): pp. 2–7 (introdução e fundamento do erro agrupado), 17–18 (seção IV, o que agrupar) e 23–25 (seção VI.A, problemas com poucos agrupamentos).
-- **Quantidade estimada:** 11 p. (verificada)
-- **Objetivo:** Justificar erro-padrão agrupado por estabelecimento e saber quando o número de agrupamentos importa.
-- **Fundamenta:** E11 (Modelos e testes (efeito fixo, erro agrupado, nota ordinal, testes não paramétricos, tamanho de efeito, BH))
-- **Perguntas a responder depois de ler:**
-  - Quando agrupar e em que nível? Quantos agrupamentos bastam?
-- **Ressalva:** Preprint lido; páginas do JHR não verificadas. Páginas do JHR não verificadas.
 
 ### R31 — Liddell e Kruschke (2018)
 
@@ -419,7 +370,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** Páginas não verificadas. Artigo tem 21 p.; ler introdução e a seção de problemas (máximo 12).
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Avaliar o risco de tratar a nota de 1 a 5 como medida contínua em regressão linear.
-- **Fundamenta:** E11 (Modelos e testes (efeito fixo, erro agrupado, nota ordinal, testes não paramétricos, tamanho de efeito, BH)); E03 (Avaliações do Google Maps como fonte (nota, texto, autosseleção))
+- **Fundamenta:** E03 (Avaliações do Google Maps como fonte (nota, texto, autosseleção))
 - **Perguntas a responder depois de ler:**
   - Em que situações o modelo métrico erra com dados ordinais?
 - **Ressalva:** Título conferido; conteúdo não lido.
@@ -448,18 +399,6 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
   - Por que o plano com valores médios é sistematicamente enganoso?
 - **Ressalva:** Já citado no projeto como `[AV]`; existência conferida, conteúdo não lido.
 
-### R34 — Ryu e Han
-
-- **Referência:** RYU; HAN. Influence of the quality of food, service, and physical environment on customer satisfaction and behavioral intention in quick-casual restaurants. *Journal of Hospitality & Tourism Research*, v. 34, n. 3, p. 310–329. DOI 10.1177/1096348009350624. (Crossref indica 2009 de publicação online; conferir ano de capa.)
-- **Tipo:** Empírica. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
-- **Páginas:** Páginas não verificadas. Artigo tem 20 p.; ler resultados e discussão (máximo 12).
-- **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
-- **Objetivo:** Comparar o peso de comida, serviço e ambiente físico em restaurante informal.
-- **Fundamenta:** E12 (H1 — peso de atendimento/ambiente × comida/bebida na nota)
-- **Perguntas a responder depois de ler:**
-  - Qual dos três pesa mais na satisfação?
-- **Ressalva:** Título conferido; resultados não lidos.
-
 ### R35 — Mikulić e Prebežac (2011)
 
 - **Referência:** MIKULIĆ; PREBEŽAC. A critical review of techniques for classifying quality attributes in the Kano model. *Managing Service Quality*, v. 21, n. 1, p. 46–66, 2011. DOI 10.1108/09604521111100243.
@@ -484,18 +423,6 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
   - Que estrutura de fatores a técnica revela?
 - **Ressalva:** Título conferido; conteúdo não lido.
 
-### R37 — Stevens et al. (1995)
-
-- **Referência:** STEVENS; KNUTSON; PATTON. DINESERV: a tool for measuring service quality in restaurants. *Cornell Hotel and Restaurant Administration Quarterly*, v. 36, n. 2, p. 56–60, 1995. DOI 10.1177/001088049503600226.
-- **Tipo:** Metodológica. **Status:** Existência e metadados conferidos em catálogo; **texto não lido**.
-- **Páginas:** Páginas não verificadas. Artigo curto (5 p.); ler inteiro.
-- **Quantidade estimada:** 5 p. (teto; intervalo não verificado)
-- **Objetivo:** Dimensões de qualidade de serviço específicas de restaurante.
-- **Fundamenta:** E12 (H1 — peso de atendimento/ambiente × comida/bebida na nota)
-- **Perguntas a responder depois de ler:**
-  - Que dimensões a escala usa?
-- **Ressalva:** Título conferido; conteúdo não lido.
-
 ### R38 — Xia et al. (2004)
 
 - **Referência:** XIA; MONROE; COX. The price is unfair! A conceptual framework of price fairness perceptions. *Journal of Marketing*, v. 68, n. 4, p. 1–15, 2004. DOI 10.1509/jmkg.68.4.1.42733.
@@ -503,7 +430,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** Páginas não verificadas. Artigo tem 15 p.; ler o quadro conceitual (máximo 12).
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Base para interpretar 'reclamação de preço' como percepção de justiça e não só nível de preço.
-- **Fundamenta:** E13 (H3 e 6.3 — política de cobrança e percepção de preço (couvert))
+- **Fundamenta:** E13 (Política de cobrança e percepção de preço (6.3, couvert))
 - **Perguntas a responder depois de ler:**
   - Que fatores levam a percepção de preço injusto?
 - **Ressalva:** Título conferido; conteúdo não lido.
@@ -515,7 +442,7 @@ Etapa 5 da auditoria bibliográfica. Consulta em 09/10/2026. Complementa `diagno
 - **Páginas:** Páginas não verificadas. Artigo tem 12 p.; ler inteiro.
 - **Quantidade estimada:** 12 p. (teto; intervalo não verificado)
 - **Objetivo:** Comparar cobrança fixa × por uso na escolha do consumidor (relevante a couvert, por hora e consumação mínima).
-- **Fundamenta:** E13 (H3 e 6.3 — política de cobrança e percepção de preço (couvert))
+- **Fundamenta:** E13 (Política de cobrança e percepção de preço (6.3, couvert))
 - **Perguntas a responder depois de ler:**
   - Por que consumidores escolhem tarifas fixas mesmo pagando mais?
 - **Ressalva:** Título conferido; contexto de telecom/internet, não de lazer presencial.
@@ -660,20 +587,18 @@ Leituras de contexto ou opcionais. Entradas curtas.
 
 - **R51** — LANDIS; KOCH. The measurement of observer agreement for categorical data. *Biometrics*, v. 33, n. 1, p. 159–174, 1977. DOI 10.2307/2529310. *Páginas:* Páginas não verificadas. Crossref traz só a página inicial; intervalo 159–174 a conferir. (~6 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Origem das faixas de interpretação do kappa usadas por convenção. Os 'níveis' de kappa são convenção dos autores, não limiar teórico: relevante para justificar 0,70.
 - **R52** — FEINSTEIN; CICCHETTI. High agreement but low kappa: I. The problems of two paradoxes. *Journal of Clinical Epidemiology*, v. 43, n. 6, p. 543–549, 1990. DOI 10.1016/0895-4356(90)90158-l. *Páginas:* Páginas não verificadas. (~7 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Explicar por que kappa fica baixo com variáveis muito raras ou muito frequentes. Pertinente a aspectos raros como 'estado das peças'.
-- **R53** — CLIFF, Norman. Dominance statistics: ordinal analyses to answer ordinal questions. *Psychological Bulletin*, v. 114, n. 3, p. 494–509, 1993. DOI 10.1037/0033-2909.114.3.494. *Páginas:* Páginas não verificadas. (~8 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Origem do delta de Cliff, medida de tamanho de efeito prevista em H3/H4. Justifica a medida.
-- **R54** — FAFCHAMPS; LABONNE. Using split samples to improve inference about causal effects. NBER Working Paper 21842, 2016. DOI 10.3386/w21842. *Páginas:* Páginas não verificadas. Conferir versão publicada. (~8 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Divisão de amostra em contexto econômico. Complementar à divisão exploratória/confirmatória.
 - **R55** — IMAN; CONOVER. A distribution-free approach to inducing rank correlation among input variables. *Communications in Statistics — Simulation and Computation*, v. 11, n. 3, p. 311–334, 1982. DOI 10.1080/03610918208812265. *Páginas:* Páginas não verificadas. (~8 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Técnica para correlacionar entradas do Monte Carlo (ocupação × ticket). Só necessário se o Monte Carlo for feito.
 - **R56** — THOMPSON, Gary M. Optimizing a restaurant's seating capacity: use dedicated or combinable tables? *Cornell Hotel and Restaurant Administration Quarterly*, v. 43, n. 4, p. 48–57, 2002. DOI 10.1177/0010880402434005. *Páginas:* Páginas não verificadas. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Dimensionamento de mesas e lugares. Pode apoiar o cap. 7.2.
 - **R57** — PARSA et al. Why restaurants fail? Part IV: the relationship between restaurant failures and demographic factors. *Cornell Hospitality Quarterly*, v. 56, n. 1, p. 80–90, 2015. DOI 10.1177/1938965514551959. (Crossref indica 2014 de publicação online.) *Páginas:* Páginas não verificadas. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Fatores demográficos do entorno e fracasso. Complementar a R16.
 - **R58** — CAMILLO; CONNOLLY; KIM. Success and failure in Northern California: critical success factors for independent restaurants. *Cornell Hospitality Quarterly*, v. 49, n. 4, p. 364–380, 2008. DOI 10.1177/1938965508317712. *Páginas:* Páginas não verificadas. Autores a conferir. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Fatores críticos de sucesso. Complementar a R16.
 - **R59** — SAATY, Thomas L. How to make a decision: the analytic hierarchy process. *European Journal of Operational Research*, v. 48, n. 1, p. 9–26, 1990. DOI 10.1016/0377-2217(90)90057-i. *Páginas:* Páginas não verificadas. Artigo tem 18 p.; ler a parte conceitual. (~12 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Método de pesos para a matriz multicritério de 6.4. Opção para ponderar critérios.
 - **R60** — PUYT; LIE; WILDEROM. The origins of SWOT analysis. *Long Range Planning*, v. 56, n. 3, art. 102304, 2023. DOI 10.1016/j.lrp.2023.102304. *Páginas:* Páginas não verificadas. Autores a conferir. (~12 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Origem histórica da SWOT. Opcional.
-- **R61** — KIM, W. Chan; MAUBORGNE, Renée. *Blue ocean strategy*. Harvard Business School Press, 2005 (catálogo: ISBN 9864175351 em edição local). *Páginas:* Páginas não verificadas. Sugestão: capítulo sobre a grade ERRC. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Fonte da grade ERRC, ainda prevista em 6.1. Com a retirada do recorte casual, o uso da grade ERRC deve ser reavaliado.
+- **R61** — KIM, W. Chan; MAUBORGNE, Renée. *Blue ocean strategy*. Harvard Business School Press, 2005 (catálogo: ISBN 9864175351 em edição local). *Páginas:* Páginas não verificadas. Sugestão: capítulo sobre a grade ERRC. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Fonte da grade ERRC, usada no cap. 6.
 - **R62** — OSTERWALDER; PIGNEUR. *Business model generation*. Hoboken: Wiley, 2010 (ISBN 0470876417 em catálogo). *Páginas:* Páginas não verificadas. Sugestão: apresentação do Canvas. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Fonte do Canvas, que pode ficar em apêndice. Opcional.
 - **R63** — CONSTANTINIDES, Efthymios. The marketing mix revisited: towards the 21st century marketing. *Journal of Marketing Management*, v. 22, n. 3–4, p. 407–438, 2006. DOI 10.1362/026725706776861190. *Páginas:* Páginas não verificadas. (~12 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Crítica e extensão do composto de marketing. Opcional.
-- **R64** — PINE, B. Joseph; GILMORE, James H. *The experience economy*. Harvard Business Review Press (edição de 2011 em catálogo; obra original de 1999). *Páginas:* Páginas não verificadas. Sugestão: capítulo introdutório. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Fonte de economia da experiência. Já listada como `[AV]`; existência conferida.
+- **R64** — PINE, B. Joseph; GILMORE, James H. *The experience economy*. Harvard Business Review Press (edição de 2011 em catálogo; obra original de 1999). *Páginas:* Páginas não verificadas. Sugestão: capítulo introdutório. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Fonte de economia da experiência. No TMin, citada por *apud* Fitzsimmons (desde 03/11/2026).
 - **R65** — HOLBROOK; HIRSCHMAN. The experiential aspects of consumption: consumer fantasies, feelings, and fun. *Journal of Consumer Research*, v. 9, n. 2, p. 132–140, 1982. DOI 10.1086/208906. *Páginas:* Páginas não verificadas. Crossref traz só a página inicial; intervalo 132–140 a conferir. (~9 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Consumo experiencial. Complementa R64.
-- **R66** — OLDENBURG, Ray. *The great good place*. Marlowe & Co (1989; ISBN 9781557784582 em catálogo). *Páginas:* Páginas não verificadas. Sugestão: capítulo que define o terceiro lugar. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Conceito de terceiro lugar. Já listada como `[AV]`; existência conferida.
+- **R66** — OLDENBURG, Ray. *The great good place*. Marlowe & Co (1989; ISBN 9781557784582 em catálogo). *Páginas:* Páginas não verificadas. Sugestão: capítulo que define o terceiro lugar. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Conceito de terceiro lugar. Saiu da lista de referências do TMin em 03/11/2026.
 - **R67** — GILOVICH; KUMAR; JAMPOL. A wonderful life: experiential consumption and the pursuit of happiness. *Journal of Consumer Psychology*, v. 25, n. 1, p. 152–165, 2015. DOI 10.1016/j.jcps.2014.08.004. *Páginas:* Páginas não verificadas. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Já citada no projeto (1.1). Ano de capa 2015; Crossref indica 2014 (online).
 - **R68** — HARRINGTON. Let's Meetup? Board game communities in Hong Kong. *Games and Culture*, v. 20, n. 3, p. 279–297, 2025. DOI 10.1177/15554120231202707. (Crossref: 2023 online; 2025 em volume.) *Páginas:* Páginas não verificadas. (~12 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Comunidades e cafés de jogos. Resolve a dúvida de data: o DOI de 2023 refere-se à publicação online.
 - **R69** — ROGERSON; GIBBS. Finding time for tabletop [subtítulo a conferir]. *Games and Culture*, v. 13, n. 3, p. 280–300, 2018. DOI 10.1177/1555412016656324. *Páginas:* Páginas não verificadas. (~12 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Jogadores que são pais; relevante a estudos futuros (público potencial). Ver lacunas, seção de estudos futuros.
@@ -681,23 +606,21 @@ Leituras de contexto ou opcionais. Entradas curtas.
 - **R71** — KAM INSIGHT. Competitive socialising: winning a new customer occasion. 2022. Arquivo local `bibliografia/KAM Insight…pdf` (37 p.). *Páginas:* Páginas não verificadas. (~8 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Dados do Reino Unido sobre competitive socialising. Literatura cinzenta; não substitui base acadêmica.
 - **R72** — LUCA; ZERVAS. Fake it till you make it: reputation, competition, and Yelp review fraud. *Management Science*, v. 62, n. 12, p. 3412–3427, 2016. DOI 10.1287/mnsc.2015.2304. *Páginas:* Páginas não verificadas. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Manipulação de avaliações em restaurantes. Risco à validade do Bloco B2.
 - **R73** — MAYZLIN et al. Promotional reviews: an empirical investigation of online review manipulation. *American Economic Review*, v. 104, n. 8, p. 2421–2455, 2014. DOI 10.1257/aer.104.8.2421. *Páginas:* Páginas não verificadas. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Manipulação de avaliações em hotéis. Complementa R72.
-- **R74** — ZHANG et al. The impact of e-word-of-mouth on the online popularity of restaurants. *International Journal of Hospitality Management*, v. 29, n. 4, p. 694–700, 2010. DOI 10.1016/j.ijhm.2010.02.002. *Páginas:* Páginas não verificadas. (~7 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Popularidade online de restaurantes e avaliações. Mede popularidade online, não visitas.
 - **R75** — LIST; GALLET. What experimental protocol influence disparities between actual and hypothetical stated values? *Environmental and Resource Economics*, v. 20, n. 3, p. 241–254, 2001. DOI 10.1023/a:1012791822804. *Páginas:* Páginas não verificadas. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Viés hipotético em valores declarados. Complementa R45/R46.
 - **R76** — LOVELOCK; WIRTZ. *Services marketing*: people, technology, strategy. Pearson (ISBN 9780134613772 em catálogo). *Páginas:* Páginas não verificadas. Sugestão: capítulo sobre equilíbrio entre capacidade e demanda. (~10 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Gestão de capacidade em serviços. Opcional.
 - **R77** — DENZIN, Norman K. *The research act*. Prentice Hall (1970 em catálogo; ISBN 9780070163607). *Páginas:* Páginas não verificadas. Sugestão: parte sobre triangulação. (~8 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Origem do termo triangulação em pesquisa social. A triangulação do plano é de números, não de métodos qualitativos: a analogia precisa ser declarada.
 - **R78** — HONIG; KARLSSON. Institutional forces and the written business plan. *Journal of Management*, v. 30, n. 1, p. 29–48, 2004. DOI 10.1016/j.jm.2002.11.002. *Páginas:* Páginas não verificadas. (~12 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Contraponto: por que empresários escrevem planos. Relativiza o valor do plano como instrumento.
-- **R79** — STEBBINS, Robert A. Serious leisure: a conceptual statement. *The Pacific Sociological Review*, v. 25, n. 2, p. 251–272, 1982. DOI 10.2307/1388726. *Páginas:* Páginas não verificadas. (~12 p.). *Status:* metadados conferidos, texto não lido. *Uso:* Lazer sério × casual. **Condicional**: só se o recorte casual voltar. Com a retirada do recorte, fica como contexto.
 
 ## Totais
 
 | Prioridade | Obras | Páginas verificadas no texto | Páginas estimadas (teto, não verificadas) | Total estimado |
 |---|---|---|---|---|
-| P1 | 16 | 37 | 114 | 151 |
-| P2 | 34 | 36 | 303 | 339 |
-| P3 | 29 | 2 | 273 | 275 |
-| **Total** | **79** | **75** | **690** | **765** |
+| P1 | 15 | 32 | 114 | 146 |
+| P2 | 29 | 25 | 275 | 300 |
+| P3 | 25 | 2 | 238 | 240 |
+| **Total** | **69** | **59** | **627** | **686** |
 
-Cada obra aparece uma única vez, então não há dupla contagem entre elementos do TCC. Os totais de páginas são **teto**: partes dos intervalos não foram lidas, e livros foram contados por capítulos sugeridos, não por páginas conferidas. Obras sem leitura verificada: 67 de 79.
+Cada obra aparece uma única vez, então não há dupla contagem entre elementos do TCC. Os totais de páginas são **teto**: partes dos intervalos não foram lidas, e livros foram contados por capítulos sugeridos, não por páginas conferidas. Obras sem leitura verificada: 59 de 69.
 
 ## Cobertura dos elementos
 
@@ -706,16 +629,12 @@ Cada obra aparece uma única vez, então não há dupla contagem entre elementos
 | E01 Plano de negócios baseado em evidências; escala N1–N6 | R02, R03 | R20, R21 | R78 | sim |
 | E02 Hierarquia de tipos de dado; exclusão de questionários | R03, R15 | R45, R46 | R75 | sim |
 | E03 Avaliações do Google Maps como fonte (nota, texto, autosseleção) | R01, R09, R15 | R22, R23, R24, R31 | R72, R73 | sim |
-| E04 Velocidade de avaliações como proxy de fluxo; calibração por razão | R01, R14 | R22, R23, R24 | R74 | sim |
 | E05 Taxa de ocupação, giro de mesa e permanência | R05, R06 | R25 | R56, R76 | sim |
 | E06 Contagem direta: observação externa e amostragem de tempo | R07, R14, R15 | — | — | não |
 | E07 Permanência com observações censuradas | R06, R07 | R26 | — | sim |
 | E08 NFC-e como contador de transações | — | — | — | não |
-| E09 Análise de conteúdo: dicionário, kappa e F1 | R08, R09 | R27 | R51, R52 | sim |
-| E10 Registro prévio e divisão exploratória/confirmatória | R10 | R28 | R54 | sim |
-| E11 Modelos e testes (efeito fixo, erro agrupado, nota ordinal, testes não paramétricos, tamanho de efeito, BH) | — | R29, R30, R31 | R53 | sim |
-| E12 H1 — peso de atendimento/ambiente × comida/bebida na nota | R01, R12, R13 | R34, R37 | R74 | não |
-| E13 H3 e 6.3 — política de cobrança e percepção de preço (couvert) | R05 | R38, R39 | — | sim |
+| E09 Análise de conteúdo: grade de temas e kappa | R08, R09 | R27 | R51, R52 | sim |
+| E13 Política de cobrança e percepção de preço (6.3, couvert) | R05 | R38, R39 | — | sim |
 | E14 Análise de penalidade e recompensa (Kano) | R13 | R35, R36 | — | não |
 | E15 Triangulação (bottom-up × top-down; Blocos entre si) | — | — | R77 | não |
 | E16 Sensibilidade (tornado), ponto de ruptura | R11 | R32 | — | não |
@@ -727,7 +646,7 @@ Cada obra aparece uma única vez, então não há dupla contagem entre elementos
 | E22 Escolha do bairro e do ponto (matriz de critérios) | — | R40 | R57, R59 | não |
 | E23 Estimativa de demanda e rampa de maturação | — | R40 | R76 | não |
 | E24 Risco: fracasso e sobrevivência de bares e restaurantes | R16 | — | R57, R58 | sim |
-| E25 Experiência, terceiro lugar, board game cafés | — | R44, R49 | R64, R65, R66, R67, R68, R69, R71, R79 | não |
+| E25 Experiência, terceiro lugar, board game cafés | — | R44, R49 | R64, R65, R66, R67, R68, R69, R71 | não |
 | E26 Coleta automatizada: termos de uso e ética | — | R47, R48 | — | sim |
 | E27 Perfil do consumidor de jogos de tabuleiro e panorama do setor | — | — | R69, R70, R71 | sim |
 
@@ -738,8 +657,8 @@ Elementos sem nenhuma leitura P1/P2 ou sem fundamentação direta: ver `lacunas-
 - **1. Conceito do trabalho:** R03 (Briner et al.) → R02 (Brinckmann et al.) → R20/R21 se sobrar tempo. Define o que é 'baseado em evidências' e o que o planejamento entrega.
 - **2. Validade do dado de avaliações:** R01 (Hu et al.) → R22 → R24 (Luca) → R23. Leia sabendo que **nenhuma** delas valida contagem de avaliações como medida de visitas (ver lacunas).
 - **3. Medir ocupação e permanência:** R06 (Little) → R05 (Kimes et al.) → R25 → R07 (Altmann) → R14 (Lohr) → R26. Fecha a lógica de fluxo × permanência × ocupação e o método de observação.
-- **4. Medir texto e testar:** R09 (Grimmer e Stewart) → R08 (Krippendorff) → R27 → R10 (Nosek) → R28 → R30 → R31 → R29.
-- **5. Hipóteses H1 e H3:** R12 (Bitner) → R13 (Namkung e Jang) → R34 → R37 → R35/R36 para penalidade-recompensa; R38 → R39 para preço.
+- **4. Medir texto:** R09 (Grimmer e Stewart) → R08 (Krippendorff) → R27 → R31.
+- **5. Satisfação e preço:** R12 (Bitner) → R13 (Namkung e Jang) → R35/R36 para penalidade-recompensa; R38 → R39 para preço.
 - **6. Plano financeiro e incerteza:** R04 (Assaf Neto) → R17/R18 (taxa de desconto) → R11 (Saltelli e Annoni) → R32 → R33. R50 (Asakura et al.) como caso comparativo.
 - **7. Risco, ponto e estratégia:** R16 (Parsa et al.) → R40 (Huff) → R43, R41, R42.
 - **8. Ética da coleta e contexto do formato:** R47, R48; R49, R44. P3 por último.

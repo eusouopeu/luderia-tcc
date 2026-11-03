@@ -41,7 +41,7 @@ O paralelo é **por analogia**. A norma não propõe níveis numerados.
 ## Dois ajustes que a norma sugere
 
 1. **A ordem N1 a N6 mistura critérios.** Na norma, "obtida diretamente" (N5) vence "fonte externa indireta" (N4) num critério, e perde noutro (independência). Declarar a escala como **convenção ordinal do autor**, e dizer quais critérios a sustentam.
-2. **Relevância fica de fora.** A norma separa relevância de confiabilidade. N1–N6 mede só confiabilidade. Um dado N3 confiável pode ser **irrelevante** para a premissa (caso da velocidade de avaliações como medida de fluxo). Vale acrescentar uma checagem de relevância em cada premissa crítica.
+2. **Relevância fica de fora.** A norma separa relevância de confiabilidade. N1–N6 mede só confiabilidade. Um dado N3 confiável pode ser **irrelevante** para a premissa (por exemplo, a nota média dos concorrentes como medida de demanda). Vale acrescentar uma checagem de relevância em cada premissa crítica.
 
 ## Outro paralelo (fonte secundária)
 
