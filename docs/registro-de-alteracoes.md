@@ -2605,3 +2605,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: linhas escolhidas pelo total de menções (6 de elogio, 7 de crítica), com curadoria do acervo e regras da casa à parte.
 **Depois**: linhas formadas pelos quatro temas mais mencionados de cada grupo, em negrito no próprio grupo; como se repetem, ficam 5 de elogio e 6 de crítica, e o resto vai para "demais temas".
 **Justificativa**: pedido do autor (comparar, em cada grupo, os quatro mais frequentes dele e os dos outros grupos).
+
+### 19:32
+**Objeto**: `docs/parecer_retorno_e_clusters_B2.md` (Quadro C2)
+**Antes**: os quatro temas mais mencionados de cada grupo de gasto (5 de elogio, 6 de crítica).
+**Depois**: os cinco mais mencionados de cada grupo; os elogios continuam com 5 temas (os mesmos nos três grupos) e as críticas passam a 7 (entra regras da casa).
+**Justificativa**: pedido do autor (aumentar para 5 temas por grupo).
