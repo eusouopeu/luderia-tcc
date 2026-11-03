@@ -27,7 +27,7 @@ A escala também limita o peso das estimativas próprias. Nenhuma premissa crít
 
 ## 3.2 FONTES E INSTRUMENTOS DE COLETA
 
-Os dados que alimentam essa escala vêm de quatro blocos de coleta (Quadro 3.2). Os Blocos B1 e B2 são censos da fonte, o B3 é a única coleta primária, e o B4 reúne bases públicas extraídas por inteiro.
+Os dados que alimentam essa escala vêm de cinco blocos de coleta (Quadro 3.2). Os Blocos B1 e B2 são censos da fonte, o B3 é a única coleta primária, o B4 reúne bases públicas extraídas por inteiro, e o B5 orça o investimento item a item.
 
 **Quadro 3.2 – Blocos de coleta**
 
@@ -37,6 +37,7 @@ Os dados que alimentam essa escala vêm de quatro blocos de coleta (Quadro 3.2).
 | B2 – Avaliações recentes | Página de avaliações de cada concorrente no Google Maps | Avaliações com rótulo de data até "3 meses atrás", inclusive | Proposta de valor, reclamações, tamanho do grupo, jogos citados |
 | B3 – Contagem direta | Observação nas duas unidades da São Jogue, com leitura da NFC-e | 4 visitas, sexta e sábado à noite, out/2026 | Taxa de ocupação, permanência, tamanho do grupo, fluxo |
 | B4 – Bases públicas | IBGE, Novo CAGED, FipeZap, Simples Nacional, Banco Central, CONCLA | Salvador e demais capitais; 2017 a 2026 | Público, aluguel, salários, tributos, taxa de desconto |
+| B5 – Ativos fixos | SINAPI (Caixa); anúncios da Amazon e do Mercado Livre | Bahia, set/2026; até 5 anúncios por item e site, nov/2026 | Investimento em reforma, mobiliário, cozinha e informática |
 
 Fonte: elaborado pelo próprio autor.
 
@@ -56,9 +57,11 @@ A contagem direta é a âncora absoluta do trabalho. Foram quatro visitas à Sã
 
 O observador fica sentado a uma mesa como cliente, e essa mesa sai dos registros e do denominador. Um aplicativo para Android, desenvolvido para o trabalho, grava a entrada e a saída de cada grupo, o número de pessoas, os jogos e as chamadas ao instrutor (Apêndice B). A *taxa de ocupação* é a proporção média das mesas ocupadas, calculada minuto a minuto, sobre 10 mesas na Bela Vista e 9 na Paralela. A contagem cobre só as horas observadas; para estimar as vendas fora delas, o trabalho usa a numeração das notas fiscais. A nota fiscal de consumidor eletrônica (NFC-e) de uma compra do autor no início e no fim de cada visita dá o número da nota. A diferença entre as visitas da mesma unidade dá as notas emitidas no intervalo: 183 na Bela Vista, em 6 dias, e 209 na Paralela, em 13 dias. Como as duas unidades só emitem a nota a pedido do cliente, as notas são um piso das vendas.
 
-### 3.2.4 Bloco B4 – Bases públicas
+### 3.2.4 Blocos B4 e B5 – Bases públicas e ativos fixos
 
 As bases públicas dão o público e a renda (Censo 2022, estimativas de população e Pesquisa Nacional por Amostra de Domicílios, PNAD Contínua), o aluguel (FipeZap), os salários (Novo Cadastro Geral de Empregados e Desempregados, Novo CAGED), os tributos (Simples Nacional e Comissão Nacional de Classificação, CONCLA), as margens do setor (Pesquisa Anual de Serviços, PAS), o gasto das famílias (Pesquisa de Orçamentos Familiares, POF 2017-2018) e a taxa de desconto (Banco Central), cada série com recorte e data de referência (Apêndice C).
+
+O Bloco B5 orça o investimento item a item, nos 75 itens da abertura. A reforma usa as composições do Sistema Nacional de Pesquisa de Custos e Índices da Construção Civil (SINAPI) na Bahia, com a taxa de bonificações e despesas indiretas do Tribunal de Contas da União, em N2. Mobiliário, cozinha e informática usam os cinco primeiros anúncios de cada busca na Amazon e no Mercado Livre, na ordem do site, que cumprem a especificação mínima do item, pelo preço sem frete (N3). O 3º quartil, a mediana e o 1º quartil das ofertas dão os cenários; as quantidades, sem projeto do ponto, são N6.
 
 ## 3.3 TRATAMENTO DOS DADOS
 
@@ -73,6 +76,7 @@ As avaliações são codificadas por análise de conteúdo (BARDIN, 2002, p. 104
 | B1 e B2 | Fidelidade do script à página; completude; cobertura do Google Maps | Amostra de auditoria; contagem na página; buscas independentes |
 | B3 | Omissão de registro; erro de contagem | Fechamento do saldo; comparação entre porta, mesas e notas |
 | B4 | Código, filtro, unidade, deflação | Reconciliação com a tabela publicada; soma das linhas igual ao total |
+| B5 | Anúncio fora da especificação; kit lido como unidade | Requisitos mínimos por item; preço por unidade do kit; faixa em torno da mediana |
 
 Fonte: elaborado pelo próprio autor.
 

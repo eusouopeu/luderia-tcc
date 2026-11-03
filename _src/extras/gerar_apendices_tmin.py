@@ -250,7 +250,7 @@ def apendice_d(d):
          ["Custo das mercadorias", "Qual o CMV do A&B?", "CMV dos serviços de alimentação (C01)", "PAS (B4)", "N2"],
          ["Regime tributário", "Qual a carga sobre a receita?", "Anexos I e III; CNAE", "LC n. 123/2006; CONCLA", "N1"],
          ["Taxa de desconto", "Qual o custo de oportunidade?", "Selic e IPCA projetados; prêmio de risco (M01)", "BCB (B4); autor", "N2 + N6"],
-         ["Investimento", "Quanto custa abrir?", "Reforma, mobiliário, cozinha, informática e pré-operacionais (I01 a I04, I06)", "Autor", "N6"]]
+         ["Investimento", "Quanto custa abrir?", "Reforma, mobiliário, cozinha e informática, item a item (I01 a I04); pré-operacionais (I06)", "SINAPI e anúncios de sites (B5); autor", "N2 + N3 + N6"]]
     return [titulo("APÊNDICE D – MATRIZ DE EVIDÊNCIAS"),
             par("A matriz liga cada decisão do plano à pergunta que ela responde, ao dado usado, à fonte e ao nível de evidência, de N1, "
                 "o mais confiável, a N6, a estimativa do autor (Quadro 3.1). Os códigos entre parênteses são as premissas do modelo "

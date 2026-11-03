@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.03-7
+// @version      2026.11.03-8
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -103,8 +103,10 @@
   const CHAVE_EXPORTACAO = 'tcc_precos_exportado_em';
   const CHAVE_SO_FALTAM = 'tcc_precos_so_faltam';
   const CHAVE_PULADOS = 'tcc_precos_pulados'; // { id_item: data em que foi pulado }
+  const CHAVE_COLETADOS = 'tcc_precos_coletados'; // { site: { id_item: true (coletado) | false (desfeito) } }
   const AVISO_PENDENTES = 25; // guardadas ou excluídas fora de CSV a partir das quais o painel cobra o download
   const MIN_OFERTAS = 3; // o build usa P25, mediana e P75: abaixo disso o item fica frágil
+  const POR_SITE = 5; // critério da coleta: os 5 primeiros anúncios da busca, na ordem do site, que passam nos filtros
   const FAIXA = [0.3, 3]; // F2: oferta fora de 0,3× a 3× a mediana do item fica desmarcada
   const DISPERSAO_MAX = 3; // A4: P75/P25 acima disso sugere produtos diferentes no mesmo item
   const IDADE_MAX = 30; // A7: dias até a coleta mais antiga do item pedir revisão
@@ -149,7 +151,6 @@
     ['CB20', 'cozinha_bar', 'Lava-louças', 'lava loucas industrial capota', 'louca|industrial/comercial/capota/restaurante/profissional', 'servicos|detergente|secante|pastilha|cesto avulso|bancada|roupa|alta pressao|pia|torneira|ducha|portatil|mini|escorredor|esponja'],
     ['EQ01', 'equipamentos', 'Computador', 'notebook intel core i5 8gb ssd 256gb', 'notebook|i5', 'recondicionado|usado|seminovo|capa|mochila|suporte|carregador|bateria|para notebook|teclado|memoria'],
     ['EQ02', 'equipamentos', 'Impressora de NFC-e', 'impressora termica nao fiscal 80mm', '80 mm', 'etiqueta|portatil|a4|sem tinta'],
-    ['EQ03', 'equipamentos', 'Maquininha de cartão', 'maquininha de cartao credito debito pix chip', 'maquininha/maquina', 'bobina|capa|carregador|bateria|pelicula|suporte|cabo|bolsa|case'],
     ['EQ04', 'equipamentos', 'Roteador Wi-Fi', 'roteador wifi 6 dual band', 'wi fi 6/wifi 6/ax', 'repetidor|xpon|ont|wi fi 7|wifi 7|4g|chip'],
     ['EQ05', 'equipamentos', 'Som ambiente', 'caixa de som ativa amplificada 10 polegadas bivolt', 'caixa|ativa/amplificada', 'portatil|karaoke|automotivo|carro|mini|alto falante|capa|suporte|cabo|trio'],
     ['EQ06', 'equipamentos', 'Câmeras', 'kit cftv 4 cameras full hd dvr 4 canais', 'kit|dvr/nvr', 'fonte avulsa|conector|balun|cabo|suporte|caixa hermetica|falsa|fake|bateria'],
@@ -527,7 +528,7 @@
         preco_anuncio: o.preco, unidades: u, tipo_preco: o.tipo_preco || 'padrao', preco_sem_pix: porUnidade(o.preco_sem_pix, u),
         cep: contexto.cep || '',
         avaliacoes: o.avaliacoes ?? null, leitor: o.leitor || '',
-        url: o.url, busca: o.busca || contexto.busca, data_coleta: contexto.data_coleta, motivo: o.motivo || '', excluida: 0,
+        url: o.url, busca: o.busca || contexto.busca, posicao: o.posicao ?? null, data_coleta: contexto.data_coleta, motivo: o.motivo || '', excluida: 0,
         unidades_manual: Boolean(o.unidadesManual),
         filtros_off: Object.keys(contexto.filtros || {}).filter((f) => !contexto.filtros[f]),
         alterado_em: contexto.agora || Date.now(),
@@ -582,7 +583,7 @@
     };
   }
 
-  const COLS = ['id_item', 'categoria', 'fonte', 'produto', 'preco', 'frete', 'preco_anuncio', 'unidades', 'tipo_preco', 'preco_sem_pix', 'cep', 'avaliacoes', 'leitor', 'url', 'busca', 'data_coleta', 'motivo', 'excluida'];
+  const COLS = ['id_item', 'categoria', 'fonte', 'produto', 'preco', 'frete', 'preco_anuncio', 'unidades', 'tipo_preco', 'preco_sem_pix', 'cep', 'avaliacoes', 'leitor', 'url', 'busca', 'posicao', 'data_coleta', 'motivo', 'excluida'];
 
   function celula(v) {
     const s = typeof v === 'number' ? String(v).replace('.', ',') : String(v ?? '');
@@ -613,7 +614,7 @@
     const num = (v) => (v === '' || v == null ? null : Number(String(v).replace(',', '.')));
     return resto.map((l) => {
       const o = Object.fromEntries(cab.map((c, i) => [c, l[i] ?? '']));
-      for (const c of ['preco', 'frete', 'preco_anuncio', 'unidades', 'preco_sem_pix', 'avaliacoes']) o[c] = num(o[c]);
+      for (const c of ['preco', 'frete', 'preco_anuncio', 'unidades', 'preco_sem_pix', 'avaliacoes', 'posicao']) o[c] = num(o[c]);
       o.unidades = o.unidades || 1;
       o.excluida = Number(o.excluida) || 0;
       return o;
@@ -828,7 +829,7 @@
     for (const l of Object.values(carregar())) (porCategoria[l.categoria] ||= []).push(l);
     const agora = new Date();
     Object.entries(porCategoria).forEach(([categoria, linhas], i) => {
-      linhas.sort((a, b) => a.id_item.localeCompare(b.id_item) || a.preco - b.preco);
+      linhas.sort((a, b) => a.id_item.localeCompare(b.id_item) || a.fonte.localeCompare(b.fonte) || (a.posicao ?? Infinity) - (b.posicao ?? Infinity) || a.preco - b.preco);
       baixar(nomeArquivo(categoria, dataLocal(agora), horaLocal(agora)), csv(linhas), 'text/csv;charset=utf-8', i * 800);
     });
     GM_setValue(CHAVE_EXPORTACAO, agora.getTime());
@@ -1053,6 +1054,20 @@
   const pulados = () => GM_getValue(CHAVE_PULADOS, {});
   const pulado = (id) => id in pulados();
 
+  // Coletado é por site: o item coletado no Mercado Livre segue a coletar na Amazon e no Magalu.
+  // Guardar marca o item como coletado no site aberto; "Desfazer" tira a marca. Sem marca nem
+  // desfeito, vale o número de ofertas guardadas do site (POR_SITE ou mais).
+  const coletadosSite = () => GM_getValue(CHAVE_COLETADOS, {})[site] || {};
+  function marcarColetado(id, v) {
+    const g = GM_getValue(CHAVE_COLETADOS, {});
+    GM_setValue(CHAVE_COLETADOS, { ...g, [site]: { ...(g[site] || {}), [id]: v } });
+  }
+  const doSite = (lista) => lista.filter((l) => l.fonte === site);
+  function coletado(id, n) {
+    const m = coletadosSite()[id];
+    return m ?? (n[id] || 0) >= POR_SITE;
+  }
+
   // Itens do seletor (o menu nativo só aceita texto): com o mínimo de ofertas, esmaecidos (✓ e o
   // número de ofertas); com alguma, abaixo do mínimo, em âmbar (◐ e n/3); sem oferta, ○ na cor
   // da categoria; pulados, – em itálico. "Só os que faltam" esconde completos e pulados (menos o atual).
@@ -1062,27 +1077,28 @@
     return n;
   };
   function rotularItens(lista) {
-    const n = ofertasPorItem(lista);
+    const n = ofertasPorItem(doSite(lista));
     const soFaltam = GM_getValue(CHAVE_SO_FALTAM, false);
     const atual = itemAtual().id;
     for (const o of el.item.querySelectorAll('option')) {
       const i = ITENS.find((x) => x.id === o.value);
       const k = n[i.id] || 0;
       const pul = pulado(i.id);
-      o.className = pul ? 'pulado' : k >= MIN_OFERTAS ? 'coletado' : k ? 'fraco' : i.categoria;
-      o.textContent = pul ? `– ${i.id} · ${i.item} (pulado)` : k >= MIN_OFERTAS ? `✓ ${i.id} · ${i.item} (${k})`
-        : k ? `◐ ${i.id} · ${i.item} (${k}/${MIN_OFERTAS})` : `○ ${i.id} · ${i.item}`;
-      o.hidden = soFaltam && (k >= MIN_OFERTAS || pul) && i.id !== atual;
+      const col = coletado(i.id, n);
+      o.className = pul ? 'pulado' : col ? 'coletado' : k ? 'fraco' : i.categoria;
+      o.textContent = pul ? `– ${i.id} · ${i.item} (pulado)` : col ? `✓ ${i.id} · ${i.item} (${k})`
+        : k ? `◐ ${i.id} · ${i.item} (${k}/${POR_SITE})` : `○ ${i.id} · ${i.item}`;
+      o.hidden = soFaltam && (col || pul) && i.id !== atual;
     }
     for (const g of el.item.querySelectorAll('optgroup')) g.hidden = [...g.querySelectorAll('option')].every((o) => o.hidden);
   }
 
-  // Próximo item abaixo do mínimo de ofertas e não pulado: primeiro na categoria do atual, depois
+  // Próximo item não coletado neste site e não pulado: primeiro na categoria do atual, depois
   // nas outras, seguindo a ordem da lista a partir do atual.
   function proximoQueFalta(lista, atual, puls = {}) {
-    const n = ofertasPorItem(lista);
+    const n = ofertasPorItem(doSite(lista));
     const i0 = ITENS.findIndex((i) => i.id === atual.id);
-    const ordem = [...ITENS.slice(i0 + 1), ...ITENS.slice(0, i0)].filter((i) => (n[i.id] || 0) < MIN_OFERTAS && !(i.id in puls));
+    const ordem = [...ITENS.slice(i0 + 1), ...ITENS.slice(0, i0)].filter((i) => !coletado(i.id, n) && !(i.id in puls));
     return ordem.find((i) => i.categoria === atual.categoria) || ordem[0] || null;
   }
 
@@ -1093,7 +1109,17 @@
     el.bPular.title = pul
       ? `Retomar: ${item.id} foi pulado em ${diaMes(pulados()[item.id])}; volta ao "Próximo" e libera o Guardar`
       : 'Pular: a busca não trouxe o item pensado; marca o item como pulado (fora do "Próximo" e de "só os que faltam", sem Guardar) e vai ao próximo';
+    mostrarColetado(item);
     if (el.bGuardar) contarMarcadas();
+  }
+
+  function mostrarColetado(item) {
+    if (!el.bColetado) return;
+    const col = coletado(item.id, ofertasPorItem(doSite(ativas(carregar()))));
+    el.bColetado.replaceChildren(...partes(icone(col ? 'x-mark' : 'check'), criar('span', { textContent: col ? 'Desfazer' : 'Coletado' })));
+    el.bColetado.title = col
+      ? `Desfazer coletado: ${item.id} volta a faltar em ${site} (seletor, "Próximo" e "só os que faltam"); as ofertas guardadas ficam`
+      : `Marcar coletado: dá ${item.id} por coletado em ${site} (ex.: a busca tem menos de ${POR_SITE} anúncios que servem)`;
   }
 
   function listarGuardadas(guardados, item) {
@@ -1144,10 +1170,11 @@
   function listarOfertas() {
     const item = itemAtual();
     const ref = referencia();
+    let aptas = 0; // vêm marcadas só as POR_SITE primeiras que passam nos filtros
     el.lista.replaceChildren(...ofertasLidas.map((o, i) => {
       o.unidades = unidadesDe(o);
       const motivos = motivosOferta(o, item.termo, ref);
-      const marca = criar('input', { type: 'checkbox', checked: !motivos.length, onchange: contarMarcadas });
+      const marca = criar('input', { type: 'checkbox', checked: !motivos.length && aptas++ < POR_SITE, onchange: contarMarcadas });
       marca.dataset.i = i;
       const titulo = criar('span', { className: 'titulo', textContent: o.produto, title: `${o.produto}\n(clique para ver na página)` });
       titulo.onclick = () => { if (!localizar(o)) status('Oferta não encontrada na página (pode ter saído da tela).'); };
@@ -1196,6 +1223,7 @@
     const { ofertas, cards, leitor } = lerOfertas(site);
     const antes = ofertasLidas.length;
     ofertasLidas = somar ? somarOfertas(ofertasLidas, ofertas) : ofertas;
+    ofertasLidas.forEach((o, i) => { o.posicao ??= i + 1; }); // posição na busca, na ordem do site
     cardsLidos = somar ? cardsLidos + cards : cards;
     leitorLido = somar && leitorLido && leitorLido !== leitor ? `${leitorLido}+${leitor}` : leitor;
     urlLida = location.href;
@@ -1211,7 +1239,7 @@
 
   function montarPainel() {
     el.item = criar('select', {
-      title: 'Item da lista. ✓ completo, ◐ abaixo do mínimo, ○ sem oferta (na cor da categoria)',
+      title: 'Item da lista, neste site. ✓ coletado, ◐ com ofertas e não coletado, ○ sem oferta (na cor da categoria)',
       onchange: () => { GM_setValue(CHAVE_ITEM, el.item.value); religarFiltros(); mostrar(); ler(false, 'Item trocado: página relida. '); },
     }, [...new Set(ITENS.map((i) => i.categoria))].map((c) => criar('optgroup', { label: ROTULO_CATEGORIA[c] || c },
       ITENS.filter((i) => i.categoria === c).map((i) => criar('option', { value: i.id, textContent: `${i.id} · ${i.item}` })))));
@@ -1248,7 +1276,7 @@
       avisarFiltros();
     };
     avisarFiltros();
-    const soFaltam = selo('só os que faltam', `Esconde no seletor os itens com ${MIN_OFERTAS}+ ofertas`, GM_getValue(CHAVE_SO_FALTAM, false),
+    const soFaltam = selo('só os que faltam', `Esconde no seletor os itens já coletados neste site`, GM_getValue(CHAVE_SO_FALTAM, false),
       (v) => { GM_setValue(CHAVE_SO_FALTAM, v); mostrar(); });
     el.status = criar('p', { className: 'status' });
     el.unidades = criar('input', { type: 'number', min: 1, value: 1, title: 'Unidades por embalagem: vale para as ofertas sem unidades no título', onchange: () => listarOfertas() });
@@ -1276,7 +1304,7 @@
     });
     const irProximo = (antes = '') => {
       const prox = proximoQueFalta(ativas(carregar()), itemAtual(), pulados());
-      if (!prox) { mostrar(`${antes}Todos os itens não pulados têm ${MIN_OFERTAS}+ ofertas.`); return; }
+      if (!prox) { mostrar(`${antes}Todos os itens não pulados estão coletados em ${site}.`); return; }
       GM_setValue(CHAVE_ITEM, prox.id);
       religarFiltros();
       el.item.value = prox.id;
@@ -1284,7 +1312,7 @@
       const url = urlBusca(site, prox.termo);
       if (url) { saindoPeloPainel = true; location.href = url; } else ler(false, `${antes}Item ${prox.id}: página relida. `);
     };
-    const bProximo = botao('forward', 'Próximo', `Próximo que falta: vai para o próximo item com menos de ${MIN_OFERTAS} ofertas e não pulado (primeiro na mesma categoria) e abre a busca dele`, () => irProximo());
+    const bProximo = botao('forward', 'Próximo', `Próximo que falta: vai para o próximo item não coletado neste site e não pulado (primeiro na mesma categoria) e abre a busca dele`, () => irProximo());
     // Pular: marca o item como pulado (a busca não trouxe o item pensado) e vai ao próximo;
     // num item já pulado, o botão vira "Retomar".
     el.bPular = botao('arrow-uturn-right', 'Pular', '', () => {
@@ -1311,9 +1339,16 @@
         { fonte: site, busca: location.href, data_coleta: dataLocal(), cep: cepAtual(), agora, filtros: filtrosAtuais() });
       const r = revisarAgora(guardados, agora);
       salvar(guardados);
+      if (marcadas.length) marcarColetado(itemAtual().id, true);
       mostrar(`${marcadas.length} guardadas (${novas} novas).${r.texto}${cepAtual() && ehSalvador(cepAtual()) ? '' : ' Atenção: sem CEP de Salvador.'}`);
       el.status.title = r.dica;
     }, 'principal');
+    el.bColetado = botao('check', 'Coletado', '', () => {
+      const item = itemAtual();
+      const col = coletado(item.id, ofertasPorItem(doSite(ativas(carregar()))));
+      marcarColetado(item.id, !col);
+      mostrar(col ? `${item.id} volta a faltar em ${site}.` : `${item.id} marcado como coletado em ${site}.`);
+    }, 'ic');
     // Importar CSV: refaz as guardadas a partir de exportações anteriores (ex.: depois de
     // reinstalar o script) e revisa tudo.
     const arquivo = criar('input', {
@@ -1351,7 +1386,7 @@
       cabecalho,
       criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo' }, [icone('map-pin')]), el.cep, el.cepAviso]),
       el.item,
-      criar('div', { className: 'linha' }, [soFaltam, el.bPular, bProximo, el.bGuardar]),
+      criar('div', { className: 'linha' }, [soFaltam, el.bPular, el.bColetado, bProximo, el.bGuardar]),
       criar('div', { className: 'linha' }, [bBuscar, bLer, bSomar, bPadrao]),
       criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', title: 'Filtros da marcação inicial' }, [icone('adjustments-horizontal')]), ...filtros,
         criar('span', { className: 'rotulo', title: el.unidades.title }, [icone('cube')]), el.unidades, el.avisoFiltros]),

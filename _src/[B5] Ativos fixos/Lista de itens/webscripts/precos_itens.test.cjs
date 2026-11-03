@@ -115,7 +115,7 @@ test('guardar: preço por unidade, sem duplicar a mesma oferta do item', () => {
   assert.equal(t.guardar(g, item, ofertas, 24, ctx), 0);
   assert.deepEqual(json(g['CB17|https://a/1']), {
     id_item: 'CB17', categoria: 'cozinha_bar', fonte: 'amazon', produto: 'Copo long drink caixa com 24',
-    preco: 5, frete: 1, preco_anuncio: 120, unidades: 24, tipo_preco: 'padrao', preco_sem_pix: null, cep: '', avaliacoes: null, leitor: '', url: 'https://a/1', busca: 'b', data_coleta: '2026-11-02', motivo: '', excluida: 0, unidades_manual: false, filtros_off: [], alterado_em: 1000,
+    preco: 5, frete: 1, preco_anuncio: 120, unidades: 24, tipo_preco: 'padrao', preco_sem_pix: null, cep: '', avaliacoes: null, leitor: '', url: 'https://a/1', busca: 'b', posicao: null, data_coleta: '2026-11-02', motivo: '', excluida: 0, unidades_manual: false, filtros_off: [], alterado_em: 1000,
   });
   // unidades da oferta valem sobre as do painel; preço sem Pix e motivo vão por unidade e como vieram
   t.guardar(g, item, [{ produto: 'Copo caixa com 12', preco: 60, frete: null, preco_sem_pix: 63, unidades: 12, motivo: 'sem avaliações', url: 'https://a/3' }], 24, ctx);
@@ -155,8 +155,8 @@ test('CSV: cabeçalho que o build lê, vírgula decimal e nome por categoria', (
   // linha antiga, sem tipo_preco, cep e excluida: sai com vazios e excluida = 0
   const s = t.csv([{ id_item: 'MO03', categoria: 'mobiliario', fonte: 'leroymerlin', produto: 'Cadeira; estofada', preco: 250.5, frete: null, preco_anuncio: 250.5, unidades: 1, url: 'u', busca: 'b', data_coleta: 'd' }]);
   const [cab, linha] = s.replace(/^﻿/, '').split('\r\n');
-  assert.equal(cab, 'id_item;categoria;fonte;produto;preco;frete;preco_anuncio;unidades;tipo_preco;preco_sem_pix;cep;avaliacoes;leitor;url;busca;data_coleta;motivo;excluida');
-  assert.equal(linha, 'MO03;mobiliario;leroymerlin;"Cadeira; estofada";250,5;;250,5;1;;;;;;u;b;d;;0');
+  assert.equal(cab, 'id_item;categoria;fonte;produto;preco;frete;preco_anuncio;unidades;tipo_preco;preco_sem_pix;cep;avaliacoes;leitor;url;busca;posicao;data_coleta;motivo;excluida');
+  assert.equal(linha, 'MO03;mobiliario;leroymerlin;"Cadeira; estofada";250,5;;250,5;1;;;;;;u;b;;d;;0');
   assert.equal(t.nomeArquivo('mobiliario', '2026-11-02', '1405'), '2026-11-02_1405_mobiliario_precos.csv');
 });
 
@@ -336,9 +336,9 @@ test('quantil como o pandas, pendências do CSV (A8) e cobertura da categoria (A
   assert.equal(t.pendentes(g, 200), 1);
   t.excluir(g, 'EQ01|https://n/1', 400);
   assert.equal(t.pendentes(g, 350), 1);
-  assert.deepEqual(json(t.coberturaCategoria(g, 'equipamentos')), { itens: 6, completos: 0, comPreco: 2 });
+  assert.deepEqual(json(t.coberturaCategoria(g, 'equipamentos')), { itens: 5, completos: 0, comPreco: 2 });
   t.guardar(g, { id: 'EQ01', categoria: 'equipamentos' }, [{ produto: 'Notebook 4', preco: 3100, url: 'https://n/4' }], 1, ctx(500));
-  assert.deepEqual(json(t.coberturaCategoria(g, 'equipamentos')), { itens: 6, completos: 1, comPreco: 2 });
+  assert.deepEqual(json(t.coberturaCategoria(g, 'equipamentos')), { itens: 5, completos: 1, comPreco: 2 });
 });
 
 // ---------- leitura do DOM, com trechos das páginas em outros/fixtures_html/ ----------
@@ -450,10 +450,18 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   assert.match(textos(), /Cozinha e bar0\/20/);
   assert.match(textos(), /Ofertas2 \(1 site\)MedianaR\$ 906,05MínimoR\$ 402,20MáximoR\$ 1409,90P25R\$ 654,13P75R\$ 1157,98P75\/P251,77×Pix\/cupom2Desde\d{2}\/\d{2}\/\d{4}faltam 1 para o mínimo Preço \+ frete .*leitor próprio do site/);
   assert.match(textos(), /CEP no site: 40170-110 \(Salvador\)/);
-  // seletor: CB09 esmaecido com ✓ e o número de ofertas; os que faltam na cor da categoria, em grupos
+  // seletor: CB09, guardado neste site, sai como coletado (✓ e o número de ofertas do site);
+  // Desfazer tira a marca só neste site, e Coletado a põe de volta
   const opcao = (id) => r.querySelector(`option[value="${id}"]`);
+  assert.equal(opcao('CB09').className, 'coletado');
+  assert.match(opcao('CB09').textContent, /^✓ CB09 · .* \(2\)$/);
+  botao('Desfazer coletado').onclick();
   assert.equal(opcao('CB09').className, 'fraco');
-  assert.match(opcao('CB09').textContent, /^◐ CB09 · .* \(2\/3\)$/);
+  assert.match(opcao('CB09').textContent, /^◐ CB09 · .* \(2\/5\)$/);
+  assert.deepEqual(json(Object.values(memoria.tcc_precos_coletados)), [{ CB09: false }]);
+  botao('Marcar coletado').onclick();
+  assert.equal(opcao('CB09').className, 'coletado');
+  botao('Desfazer coletado').onclick();
   // só os que faltam: nenhum completo, nada escondido; próximo que falta fica na categoria
   const so = botao('só os que faltam');
   so.onclick();

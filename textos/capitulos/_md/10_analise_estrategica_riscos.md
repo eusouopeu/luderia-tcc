@@ -15,9 +15,9 @@ A luderia entra num mercado com uma referência forte e com margem folgada no pr
 |  | Instrutor dedicado ao salão em todas as horas abertas, com no máximo 2 mesas por instrutor no pico | Seções 7.3 e 7.5 |
 |  | Desenho enxuto: 6 mesas, horário de maior movimento e investimento por etapas, pago com o caixa gerado | Seções 7.2 e 10.4 |
 | Fraquezas | Aluguel com condomínio de 11,1% da receita, contra 4,0% no setor | Seção 9.6; IBGE, PAS 2024 |
-|  | Viabilidade concentrada na circulação no pico e no gasto por pessoa, com ruptura 23% abaixo do provável | Seções 9.4 e 9.5 |
+|  | Viabilidade concentrada na circulação no pico e no gasto por pessoa, com ruptura 26% abaixo do provável | Seções 9.4 e 9.5 |
 |  | Circulação de dia útil sem medida própria: razão de restaurantes do Rio de Janeiro e de São Paulo (N4) | Seções 9.1 e 11.2 |
-|  | Investimento sem cotação: reforma, mobiliário e cozinha em N6 | Seção 9.1 |
+|  | Investimento orçado sem projeto do ponto: quantidades da reforma, do mobiliário e da cozinha em N6 | Seção 9.2 |
 |  | Marca nova contra uma rede com duas unidades | Seção 5.3 |
 | Oportunidades | Salvador com uma só luderia no recorte do B1, a São Jogue | Seção 5.3 |
 |  | Nenhuma unidade da São Jogue entre os bairros mais bem colocados da matriz | Seção 6.4 |
@@ -29,15 +29,15 @@ Fonte: elaborado pelo próprio autor, com base nos capítulos 5 a 9.
 
 ## 10.2 CENÁRIOS
 
-O plano é viável no cenário provável: o VPL é de R$ 854 mil, e a TIR, de 59,3%, contra a TMA de 15% (seção 9.4). A receita madura, de R$ 76,4 mil por mês, cobre o ponto de equilíbrio operacional, de R$ 48,7 mil, com 57% de folga. O VPL positivo não depende do valor residual: sem ele, o provável fica em R$ 290 mil (Tabela 9.4).
+O plano é viável no cenário provável: o VPL é de R$ 973 mil, e a TIR, de 72,7%, contra a TMA de 15% (seção 9.4). A receita madura, de R$ 76,4 mil por mês, cobre o ponto de equilíbrio operacional, de R$ 48,7 mil, com 57% de folga. O VPL positivo não depende do valor residual: sem ele, o provável fica em R$ 369 mil (Tabela 9.4).
 
 Os cenários extremos põem todas as premissas do mesmo lado da faixa e servem de limite, não de previsão. O pessimista descreve a circulação das NFC-e, de 4,13 pessoas por hora, com gasto de R$ 40,00 por pessoa, dia útil a 61,9% do fim de semana e demanda caindo 5% ao ano a partir do ano 3: 20 clientes por dia aberto no ano 5, entre os pisos das NFC-e da Paralela e da Bela Vista. O otimista descreve a circulação da maior visita, de 11,43 pessoas por hora, perto do teto do salão, com gasto de R$ 109,84: 70 clientes por dia aberto.
 
 ## 10.3 PREMISSAS CRÍTICAS, RUPTURA E RISCOS
 
-Duas premissas decidem a viabilidade: a circulação no pico e o gasto por pessoa (Figura 9.2). As três seguintes do tornado, a variação anual da demanda, a TMA e o CMV, movem o VPL, mas não mudam o seu sinal dentro da faixa. A Tabela 9.5 compara o provável com o ponto de ruptura de cada uma e com o valor medido nos Blocos B1 a B4.
+Duas premissas decidem a viabilidade: a circulação no pico e o gasto por pessoa (Figura 9.2). As três seguintes do tornado, a TMA, a variação anual da demanda e o CMV, movem o VPL, mas não mudam o seu sinal dentro da faixa. A Tabela 9.5 compara o provável com o ponto de ruptura de cada uma e com o valor medido nos Blocos B1 a B4.
 
-As rupturas da circulação e do gasto ficam 23% abaixo do provável. O negócio é viável enquanto as duas ficarem acima desse ponto, e a folga cresce rápido com o movimento. Uma circulação de 5,5 pessoas por hora dá VPL de R$ 338 mil; uma de 7,5, de R$ 1,48 milhão. Um gasto de R$ 70,00 por pessoa dá R$ 390 mil; um de R$ 90,00, R$ 1,30 milhão. As duas premissas têm dado próprio: a circulação vem da contagem direta (N5), e o gasto, das avaliações dos concorrentes (N3). A circulação de dia útil é a fraqueza de evidência do plano: vem de restaurantes do Rio de Janeiro e de São Paulo (N4), porque as visitas mediram só as noites de sexta e sábado (seção 11.2). O peso dela é pequeno: com 60% do fim de semana, o VPL fica em R$ 731 mil. Na simulação de Monte Carlo, o VPL fica positivo em 81,9% dos 10 mil cenários; os gatilhos G5 e G6 agem em 5,4% deles e encerram o negócio em 2,2%, o que limita a perda.
+As rupturas da circulação e do gasto ficam 26% abaixo do provável. O negócio é viável enquanto as duas ficarem acima desse ponto, e a folga cresce rápido com o movimento. Uma circulação de 5,5 pessoas por hora dá VPL de R$ 457 mil; uma de 7,5, de R$ 1,60 milhão. Um gasto de R$ 70,00 por pessoa dá R$ 509 mil; um de R$ 90,00, R$ 1,42 milhão. As duas premissas têm dado próprio: a circulação vem da contagem direta (N5), e o gasto, das avaliações dos concorrentes (N3). A circulação de dia útil é a fraqueza de evidência do plano: vem de restaurantes do Rio de Janeiro e de São Paulo (N4), porque as visitas mediram só as noites de sexta e sábado (seção 11.2). O peso dela é pequeno: com 60% do fim de semana, o VPL fica em R$ 850 mil. Na simulação de Monte Carlo, o VPL fica positivo em 85,9% dos 10 mil cenários; os gatilhos G5 e G6 agem em 4,8% deles e encerram o negócio em 1,9%, o que limita a perda.
 
 As premissas críticas se traduzem em riscos do negócio, e os de maior impacto são os de demanda e de custo fixo. O Quadro 10.2 classifica cada risco pela probabilidade e pelo impacto, com o VPL da premissa no pessimista, o gatilho que trata o risco e a evidência.
 
@@ -45,21 +45,21 @@ As premissas críticas se traduzem em riscos do negócio, e os de maior impacto 
 
 | Risco | Probabilidade | Impacto | VPL com a premissa no pessimista (R$) | Gatilho | Evidência |
 |---|---|---|---|---|---|
-| Gasto por pessoa abaixo de R$ 61,51 | Média | Alto | -618.012 | G2 | Gasto médio de R$ 40,00 a R$ 109,84 nos 12 concorrentes (B2) |
-| Circulação no pico abaixo de 4,91 pessoas por hora | Média | Alto | -350.755 | G4 | Média de 6,40 nas visitas, de 4,03 a 11,43, e 4,13 pelas NFC-e (B3) |
+| Gasto por pessoa abaixo de R$ 58,97 | Média | Alto | -538.780 | G2 | Gasto médio de R$ 40,00 a R$ 109,84 nos 12 concorrentes (B2) |
+| Circulação no pico abaixo de 4,71 pessoas por hora | Média | Alto | -271.524 | G4 | Média de 6,40 nas visitas, de 4,03 a 11,43, e 4,13 pelas NFC-e (B3) |
 | Abertura de unidade da São Jogue perto do ponto, ou preço menor | Média | Alto | n.a. | G4 | Rede com duas unidades (B3) |
-| Aluguel acima de R$ 54,15 por m² na Pituba | Alta | Médio | 562.715 | G5 | FipeZap só para Salvador inteira; alta de 18,9% em 12 meses |
-| Demanda caindo 5% ao ano a partir do ano 3 | Média | Médio | 490.867 | G4 | N6 (R18) |
-| CMV acima de 30% do A&B | Média | Médio | 633.295 | G2 | 29,6% no setor (IBGE, PAS 2023) |
-| Salários acima da admissão do Novo CAGED | Média | Médio | 738.826 | G5 | Acréscimo de 11,4% no pessimista (seção 9.1) |
-| Reforma e cozinha acima do provável | Média | Médio | 740.816 | n.a. | Sem cotação (N6) |
+| Aluguel acima de R$ 54,15 por m² na Pituba | Alta | Médio | 692.124 | G5 | FipeZap só para Salvador inteira; alta de 18,9% em 12 meses |
+| Demanda caindo 5% ao ano a partir do ano 3 | Média | Médio | 609.604 | G4 | N6 (R18) |
+| CMV acima de 30% do A&B | Média | Médio | 752.032 | G2 | 29,6% no setor (IBGE, PAS 2023) |
+| Reforma e cozinha acima do provável | Média | Médio | 851.147 | n.a. | Orçamento do B5: SINAPI e anúncios de sites (N2 e N3), quantidades sem projeto (N6) |
+| Salários acima da admissão do Novo CAGED | Média | Médio | 857.562 | G5 | Acréscimo de 11,4% no pessimista (seção 9.1) |
 | Lotação dos bombeiros abaixo de 30 assentos | Baixa | Médio | n.a. | n.a. | Depende do projeto do imóvel (seção 7.2) |
-| Circulação de dia útil abaixo de 65,5% da do fim de semana | Média | Baixo | 772.166 | G3 | 61,9% a 69,2% em restaurantes (ANR, 2026a; 2026b); nenhuma visita em dia útil |
-| Perda e desgaste do acervo acima de 10% ao ano | Média | Baixo | 842.092 | n.a. | N6 (C13) |
+| Circulação de dia útil abaixo de 65,5% da do fim de semana | Média | Baixo | 890.903 | G3 | 61,9% a 69,2% em restaurantes (ANR, 2026a; 2026b); nenhuma visita em dia útil |
+| Perda e desgaste do acervo acima de 10% ao ano | Média | Baixo | 960.828 | n.a. | N6 (C13) |
 
 Fonte: elaborado pelo próprio autor, com base nos capítulos 5 a 9.
 
-Nota: riscos do mais para o menos grave. Probabilidade, pelo critério do autor (N6): alta, se a evidência disponível já aponta para o valor adverso; média, se a faixa medida ou estimada inclui o valor adverso; baixa, se o risco depende de um fato que o projeto controla antes da abertura. Impacto, pelo VPL com a premissa no pessimista e as demais no provável, de R$ 853.916 (Figura 9.2): alto, VPL negativo; médio, queda de R$ 100 mil ou mais, com VPL positivo; baixo, queda menor que R$ 100 mil. Aluguel: área e preço por m² no pessimista; reforma e cozinha: premissas I01 e I03. Gatilhos G1 a G6 no Quadro 10.4. n.a.: risco sem premissa própria no modelo (a São Jogue atua sobre a circulação e o gasto; a lotação, sobre o número de mesas) ou sem gatilho na operação.
+Nota: riscos do mais para o menos grave. Probabilidade, pelo critério do autor (N6): alta, se a evidência disponível já aponta para o valor adverso; média, se a faixa medida ou estimada inclui o valor adverso; baixa, se o risco depende de um fato que o projeto controla antes da abertura. Impacto, pelo VPL com a premissa no pessimista e as demais no provável, de R$ 972.652 (Figura 9.2): alto, VPL negativo; médio, queda de R$ 100 mil ou mais, com VPL positivo; baixo, queda menor que R$ 100 mil. Aluguel: área e preço por m² no pessimista; reforma e cozinha: premissas I01 e I03. Gatilhos G1 a G6 no Quadro 10.4. n.a.: risco sem premissa própria no modelo (a São Jogue atua sobre a circulação e o gasto; a lotação, sobre o número de mesas) ou sem gatilho na operação.
 
 ## 10.4 CONTINGÊNCIA E MONITORAMENTO
 
@@ -84,7 +84,7 @@ Os gatilhos de perda máxima seguem uma ordem de análise (Quadro 10.4). Os trê
 | Gatilho | Condição | Medidas |
 |---|---|---|
 | G1. Pouca gente por mesa | Média de pessoas por mesa abaixo de 3 por 3 meses | Taxa de entrada por mesa, e não por pessoa: cada mesa recebe um só grupo, e quanto maior o grupo, maior o consumo; desconto progressivo na taxa conforme o número de pessoas na mesa |
-| G2. Consumo baixo | Gasto por pessoa abaixo de R$ 61,51, a ruptura da Tabela 9.5, por 3 meses | Taxa de entrada mais cara, revertida em consumação; combos de entrada com bebida |
+| G2. Consumo baixo | Gasto por pessoa abaixo de R$ 58,97, a ruptura da Tabela 9.5, por 3 meses | Taxa de entrada mais cara, revertida em consumação; combos de entrada com bebida |
 | G3. Dia útil fraco | Circulação de terça a quinta abaixo de 60% da do fim de semana por 3 meses | Passaporte mensal com direito a um número de dias e de acompanhantes, vendido para os dias úteis; eventos fechados e aluguel do espaço; se persistir, fechar a terça e refazer a escala |
 | G4. Demanda baixa | Receita abaixo do equilíbrio operacional (R$ 48,7 mil por mês no provável) por 2 meses, sem causa apontada de G1 a G3 | Marketing dirigido a escolas, empresas e grupos de jogos; eventos de comunidade nos dias fracos; reserva com sinal; taxa de entrada menor, com sessão limitada à permanência média das visitas (cerca de 1h50) |
 | G5. Caixa negativo | EBITDA negativo por 3 meses seguidos, ou caixa abaixo de 1 mês de custo fixo | Corte do meio período; renegociação do aluguel; suspensão das etapas de expansão; passaporte mensal e pré-venda para antecipar caixa; troca do cardápio por comidas recebidas prontas (salgados como coxinha e quibe), com corte de um cozinheiro |

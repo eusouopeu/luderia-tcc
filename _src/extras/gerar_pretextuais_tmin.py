@@ -34,7 +34,7 @@ SIGLAS = {
     "ANPD": "Autoridade Nacional de Proteção de Dados",
     "ANR": "Associação Nacional de Restaurantes",
     "API": "Interface de programação de aplicações (Application Programming Interface)",
-    "B1 a B4": "Blocos de coleta de dados do trabalho (concorrentes, avaliações, contagem direta e bases públicas)",
+    "B1 a B5": "Blocos de coleta de dados do trabalho (Quadro 3.2)",
     "BCB": "Banco Central do Brasil",
     "CBMBA": "Corpo de Bombeiros Militar da Bahia",
     "CBO": "Classificação Brasileira de Ocupações",
@@ -86,6 +86,7 @@ SIGLAS = {
     "Selic": "Sistema Especial de Liquidação e de Custódia",
     "SGS": "Sistema Gerenciador de Séries Temporais",
     "SIDRA": "Sistema IBGE de Recuperação Automática",
+    "SINAPI": "Sistema Nacional de Pesquisa de Custos e Índices da Construção Civil",
     "SWOT": "Forças, fraquezas, oportunidades e ameaças (Strengths, Weaknesses, Opportunities, Threats)",
     "TIR": "Taxa interna de retorno",
     "TMA": "Taxa mínima de atratividade",
@@ -130,8 +131,8 @@ def siglas_usadas(texto):
     usadas = []
     for sg in SIGLAS:
         partes = [p.strip() for p in re.split(r",| a ", sg)]
-        if sg == "B1 a B4":
-            ok = bool(re.search(r"\bB[1-4]\b", texto))
+        if sg == "B1 a B5":
+            ok = bool(re.search(r"\bB[1-5]\b", texto))
         elif sg == "N1 a N6":
             ok = bool(re.search(r"\bN[1-6]\b", texto))
         else:

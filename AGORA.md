@@ -4,8 +4,8 @@ Atualizado em 03/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora
 
-- **TMin v21** (90 páginas, texto da p. 9 à 90) e apêndices v21 (14 páginas, Apêndice F novo com a análise de conteúdo do B2; Monte Carlo em G). Provável: VPL de R$ 854 mil, TIR de 59,3%, P(VPL > 0) de 81,9%; demanda de 942 pessoas por mês (594 a 1.720). O TMax ainda segue o modelo antigo (D53).
-- **B5, ativos fixos:** orçamento da etapa 1 rodado com as coletas de 03/11 (filtro simplificado, sem frete; 416 ofertas, 32 de 36 itens com preço; provável: I01 R$ 88,6 mil, I02 R$ 15,1 mil, I03 R$ 38,5 mil, I04 R$ 7,8 mil). Faltam MO06, OB42, EQ03 e CB14 e decidir se os totais entram no modelo (pendências).
+- **TMin v22** (90 páginas, texto da p. 9 à 90) e apêndices v22 (14 páginas). Investimento I01 a I04 do orçamento do B5. Provável: investimento de R$ 290 mil, VPL de R$ 973 mil, TIR de 72,7%, P(VPL > 0) de 85,9%; demanda de 942 pessoas por mês (594 a 1.720). O TMax ainda segue o modelo antigo (D53).
+- **B5, ativos fixos:** orçamento no modelo e no TMin v22. Coletor 2026.11.03-8 grava a posição na busca, marca só os 5 primeiros que passam e controla "coletado" por site (botão Coletado/Desfazer). Falta recoletar com ele (os números atuais usam até 5 ofertas por site espaçadas no preço) e coletar letreiro, balcão e kit de gás.
 - **B2: codificação concluída** (03/11): grade de 22 temas, kappa de 0,84; Contexto exploratório (0,52); "Costuma ir" excluída. Falta o acabamento: casos de fronteira, site e pictogramas ([pendências](docs/pendencias.md), item 15).
 - **Capítulos:** cap. 6 completo (6.1 a 6.6), mas com 10 páginas para teto de 8 (melhorias C21); 5.2 refeito com o B2 final; comentários do TMin v9 esperam a escolha do autor ([status](textos/planejamento/status_capitulos.md)).
 
@@ -17,7 +17,7 @@ Atualizado em 03/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Bloqueado ou aguardando
 
-- Ocupação de dia útil (N6) e investimento (N6): aguardam visita em dia útil e cotações na Pituba.
+- Ocupação de dia útil (N6): aguarda visita em dia útil. Quantidades do investimento (N6): aguardam projeto do ponto na Pituba.
 
 ## Onde está o resto
 

@@ -31,6 +31,7 @@ Cada bloco tem pasta `[Bn] Nome`, com o mesmo nome, em `_src/` e em `dados/`; em
 | B2 | Avaliações recentes | `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/` | `[B2] Avaliacoes recentes/` |
 | B3 | Contagem direta de ocupação | `_src/[B3] Contagem direta de ocupacao/Contagem direta/` | `[B3] Contagem direta de ocupacao/` |
 | B4 | Bases públicas | `_src/[B4] Bases publicas/` (uma pasta por fonte; `Comum/bases_comum.py`) | `[B4] Bases publicas/` |
+| B5 | Ativos fixos | `_src/[B5] Ativos fixos/` (`Lista de itens/`, `SINAPI (Obra e reforma)/`, `Anuncios de aluguel/`) | `[B5] Ativos fixos/` (`orcamento/`, uma subpasta por categoria) |
 
 ## Divisão de subcapítulos
 
@@ -128,6 +129,16 @@ O `B3-a_contagem.py` gera as saídas em `dados/[B3] Contagem direta de ocupacao/
 | Banco Central — SGS e relatório Focus | Selic e IPCA observados e projetados; salário mínimo | Taxa mínima de atratividade e inflação do modelo (cap. 9) |
 
 Scripts em `_src/[B4] Bases publicas/` (`B4-c_*` → `B4-b_*`); saídas `[B4] *.csv` em `dados/[B4] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
+
+### Bloco B5 — Ativos fixos
+
+Orçamento da etapa 1 (premissas I01 a I04 do cap. 9), item a item, na lista `dados/[B5] Ativos fixos/orcamento/[B5] Lista de Itens da Etapa 1 (elaboração própria).csv` (75 itens; `fonte_preco` sinapi, coleta ou gratuito).
+
+- **SINAPI (reforma, N2):** composições da Bahia sem desoneração (`B5-c_sinapi.py`), com o BDI de construção de edifícios do TCU (Acórdão 2.622/2013): 1º quartil no otimista, médio no provável, 3º quartil no pessimista.
+- **Coleta em sites (mobiliário, cozinha e bar, informática, climatização; N3):** `webscripts/precos_itens.user.js` (Tampermonkey) na Amazon e no Mercado Livre, CEP de Salvador. Critério (decisão do autor, 03/11/2026): de cada busca, na ordenação padrão do site, entram os **5 primeiros anúncios que cumprem os requisitos técnicos mínimos** do item (medida ou capacidade, palavras exigidas e excluídas), pelo preço do produto, **sem frete, cor, estilo ou acabamento**. O coletor grava a `posicao` na busca e marca o item como coletado **por site**. O build (`B5-b_orcamento_itens.py`) corrige kit lido como unidade, descarta anúncio patrocinado sem página de produto e preço fora de 0,4× a 2,5× a mediana do item, e fica com as 5 primeiras por site; item com menos de 3 ofertas fica sem preço. Cenários: P75, mediana e P25 das ofertas.
+- **Gratuito (N6):** item sem custo por informação do autor (ex.: maquininha cedida a PJ pelos bancos).
+- **Quantidade:** do autor (N6) até haver projeto do ponto; a I01 entra no modelo em R$ por m² (total ÷ área do C03).
+- Saídas em `orcamento/`: orçamento por item, por premissa e as ofertas filtradas; o `gerar_modelo_financeiro.py` lê o orçamento por premissa mais recente.
 
 ## 3.4 Tratamento dos dados
 

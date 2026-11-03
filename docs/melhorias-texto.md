@@ -22,6 +22,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
+**D61 — Critério do B5 × coletas de 03/11 (03/11/2026).** Cap. 3 (3.2.4: "os cinco primeiros anúncios de cada busca, na ordem do site") × dados do cap. 9 (Tabela 9.1). As exportações de 03/11 01:11 não têm a posição na busca (o coletor ordenava por preço); o build usa, nelas, até 5 ofertas por site espaçadas na ordem de preço. O texto descreve o critério, e os números só o seguem depois da recoleta com o coletor 2026.11.03-8 (pendências, B5).
+
 **D58 — Acervo mediano dos concorrentes: 468 × 322 títulos (03/11/2026).** Cap. 5 (5.3.2: mediana de 468 títulos nas 17 casas com acervo conhecido) × cap. 7 (7.4: ampliação até 322, "a mediana dos acervos do B1") e cap. 6 (Quadro 6.1: mediana de 322 nos 30 acervos publicados). São recortes diferentes do B1 (número declarado × lista publicada), sem a explicação no texto. Sugestão: usar um só recorte nos três capítulos ou dizer, no 5.3.2, de onde vem cada número.
 
 **D59 — Site e pictogramas com o livro de códigos antigo (03/11/2026).** `_src/site-apresentacao` (`b2-conteudo.json`, `B2-a_conteudo_site.py`) e `B2-a_pictogramas.py` × caps. 5 e 6 e Apêndice F. O site e os pictogramas usam as tabelas `B2_bardin_*` (livro de 15/10, 1.588 avaliações), e o texto usa a grade de 22 temas (1.628 avaliações). Sugestão: refazer o site e os pictogramas com `B2_temas_*.csv` antes da defesa.
@@ -83,6 +85,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D42 — Taxa da São Jogue fora da média do modelo (02/11/2026).** O B1 (aba cesta) marca a taxa da São Jogue como "não encontrada", embora a Tabela 6.1 e a NFC-e do B3 a tragam (R$ 22,00 e R$ 28,00). A média de R$ 18,68 (caps. 4, 6, 9 e 11) não inclui a única casa de Salvador, e as 22 casas da média não são as 22 da Tabela 6.1. A Ludus tem taxa zero na Tabela 6.1 e couvert de R$ 34,00/44,00 numa fonte secundária de 2024. Sugestão: corrigir o B1 e regerar a média e o modelo.
 
 ## Aceitável
+
+**D62 — BDI e TCU sem sigla no Apêndice E (03/11/2026).** A fonte da I01 no Apêndice E (vinda de `gerar_modelo_financeiro.py`) usa "BDI" e "TCU", que o texto principal escreve por extenso e a lista de siglas não traz.
 
 **D60 — Grade ERRC sem base no cap. 2 (03/11/2026).** Cap. 6 (6.1, Quadro 6.1, KIM; MAUBORGNE, 2005 [AV]) × cap. 2. A grade ERRC entra no 6.1, como pede `_instrucoes/5_marketing.md`, mas o cap. 2 não a apresenta, e a obra está sem conferência. Sugestão: uma frase no 2.2 ou no 2.3, ou manter só a citação no 6.1 e conferir a obra.
 

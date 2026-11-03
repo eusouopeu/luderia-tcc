@@ -4,6 +4,9 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 03/11/2026 | I01 a I04 do modelo vêm do orçamento do B5 (`gerar_modelo_financeiro.py` lê o orçamento por premissa mais recente), no lugar das estimativas do autor; itens sem preço ficam fora da soma | Cap. 9 (9.2, Tabela 9.1); `_instrucoes/4_metodologia.md` (Bloco B5) |
+| 03/11/2026 | Critério da coleta de preços: os 5 primeiros anúncios de cada busca, na ordem padrão do site, que cumprem os requisitos técnicos mínimos; o coletor grava a posição e marca "coletado" por site | `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js`; `B5-b_orcamento_itens.py` |
+| 03/11/2026 | Maquininha de cartão (EQ03) sem custo: bancos cedem a PJ (informação do autor, N6) | Lista de itens da etapa 1 (`fonte_preco` = gratuito) |
 | 03/11/2026 | Preço dos itens coletados sem frete, cor, estilo ou acabamento: só a medida ou capacidade essencial, faixa de 0,4× a 2,5× a mediana do item e de 3 a 15 ofertas por item (espaçadas na ordem de preço) | `_src/[B5] Ativos fixos/Lista de itens/build/B5-b_orcamento_itens.py` |
 | 03/11/2026 | Codificação do B2 encerrada: vale a grade de 22 temas do Notion nas 1.628 avaliações; o livro de códigos de 15/10 (tabelas `B2_bardin_*`) fica como histórico | `textos/instrumentos/dicionario_temas_B2.md`; `_instrucoes/4_metodologia.md` §3.4 |
 | 03/11/2026 | "Costuma ir" sai da análise (kappa 0,52) e é declarada no cap. 3; Contexto entra como exploratório (0,52); "Voltará" fica (0,75) | Cap. 3 (3.3); Apêndice F; pendências, item 15 |

@@ -79,6 +79,7 @@ DADOS = ROOT / "dados"
 B1 = DADOS / "[B1] Estabelecimentos e cardapios"
 B3 = DADOS / "[B3] Contagem direta de ocupacao"
 B4 = DADOS / "[B4] Bases publicas"
+B5 = DADOS / "[B5] Ativos fixos"
 SAIDA = ROOT / "textos" / "capitulos" / "9_plano_financeiro_modelo.xlsx"
 FIGURA = ROOT / "textos" / "capitulos" / "figuras" / "9_tornado.png"
 FIGURA_MC = ROOT / "textos" / "capitulos" / "figuras" / "9_monte_carlo.png"
@@ -118,6 +119,10 @@ def ler_fontes() -> dict:
     f["acervo"] = dict(zip(ai["tamanho"], ai["custo_provavel_rs"]))
     f["acervo_faixa"] = ai.set_index("tamanho")[["custo_pessimista_rs", "custo_provavel_rs", "custo_otimista_rs"]].to_dict("index")
     f["acervo_titulos"] = dict(zip(ai["tamanho"], ai["titulos"]))
+    # B5: orçamento da etapa 1 por premissa (SINAPI e coletas em sites; B5-b_orcamento_itens.py), o mês mais recente
+    orc = sorted((B5 / "orcamento").glob("[[]B5[]] Orçamento por Premissa Etapa 1 *.csv"))[-1]
+    f["b5"] = pd.read_csv(orc, sep=";", decimal=",", encoding="utf-8-sig").set_index("premissa")
+    f["b5_arquivo"] = orc.name
     ps = pd.read_excel(B1 / "cardapios" / "B1_cardapios_itens_precos.xlsx", sheet_name="precos_subcategoria")
     taxa = ps["couvert ou taxa de jogo | couvert ou taxa de jogo"].dropna()
     taxa = taxa[taxa > 0]
@@ -185,6 +190,14 @@ def quadro_pessoal(f) -> list[tuple]:
 
 
 def premissas(f) -> list[dict]:
+    # I01 a I04: totais do orçamento do B5 (P75, mediana e P25 das ofertas; I01 em R$ por m²)
+    def b5(pid, col="total"):
+        return tuple(round(float(f["b5"].at[pid, f"{col}_{c}"]), 2) for c in CENARIOS)
+
+    def cob(pid):
+        r = f["b5"].loc[pid]
+        falta = "" if r["itens_com_preco"] == r["itens"] else f", {r['itens'] - r['itens_com_preco']} sem preço ainda"
+        return f"{r['itens_com_preco']} de {r['itens']} itens com preço{falta}."
     """Registro de premissas (§3). Percentuais como fração. Ordem = ordem da aba."""
     vis = f["visitas"]
     pg, pm = vis["tamanho_grupo_mesa"], vis["permanencia_mesa_media_min"]
@@ -300,10 +313,18 @@ def premissas(f) -> list[dict]:
         R("C11", "Contabilidade", "R$ por mês", 1500, 1200, 900, "Estimativa do autor", "N6", "Escritório para empresa do Simples com folha."),
         R("C12", "Sistemas (caixa, reservas, nota fiscal)", "R$ por mês", 600, 450, 300, "Estimativa do autor", "N6", "Assinaturas."),
         R("C13", "Reposição do acervo", "% do acervo ao ano", 0.15, 0.10, 0.05, "Estimativa do autor", "N6", "Peças perdidas e jogos novos."),
-        R("I01", "Reforma e instalações", "R$ por m²", 1400, 1000, 600, "Estimativa do autor", "N6", "Sem cotação; ponto alugado sem obra estrutural."),
-        R("I02", "Mobiliário (mesas, cadeiras, estantes)", "R$", 44000, 33000, 22000, "Estimativa do autor; descrição das unidades da São Jogue", "N6", "6 mesas, cerca de 30 assentos e estantes de pinus com metal: R$ 15 mil de base mais R$ 3 mil por mesa no provável, ± 1/3."),
-        R("I03", "Cozinha e bar", "R$", 80000, 60000, 40000, "Estimativa do autor", "N6", "Cozinha própria, como a da São Jogue."),
-        R("I04", "Caixa e informática", "R$", 8000, 6000, 4000, "Estimativa do autor", "N6", "1 computador, 1 impressora de nota e 2 maquininhas."),
+        R("I01", "Reforma e instalações", "R$ por m²", *b5("I01", "i01_rs_m2"),
+          "B5: SINAPI BA (Caixa, set/2026, com BDI do TCU) e coletas em sites (nov/2026); quantidades do autor", "N2 + N3 + N6",
+          f"{cob('I01')} Ponto alugado sem obra estrutural; piso, forro e paredes por cenário; split de 30.000 BTU/h."),
+        R("I02", "Mobiliário (mesas, cadeiras, estantes)", "R$", *b5("I02"),
+          "B5: coletas na Amazon e no Mercado Livre (nov/2026); quantidades do autor", "N3 + N6",
+          f"{cob('I02')} 6 mesas, 33 cadeiras, 6 pendentes, estantes do acervo e armário, em estilo industrial."),
+        R("I03", "Cozinha e bar", "R$", *b5("I03"),
+          "B5: coletas na Amazon e no Mercado Livre (nov/2026); quantidades do autor", "N3 + N6",
+          f"{cob('I03')} Cocção, exaustão, refrigeração, preparo, louça e talheres; lava-louças só no pessimista."),
+        R("I04", "Caixa e informática", "R$", *b5("I04"),
+          "B5: coletas na Amazon e no Mercado Livre (nov/2026); quantidades do autor", "N3 + N6",
+          f"{cob('I04')} Computador, impressora de nota, roteador, som e câmeras; maquininha cedida sem custo a PJ."),
         R("I05", "Acervo inicial de jogos", "R$", *[round(f["acervo_faixa"]["joelho"][c], 2) for c in ("custo_pessimista_rs", "custo_provavel_rs", "custo_otimista_rs")],
           "B1, acervos de 30 concorrentes e preço de venda nas lojas online de 8 deles (out/2026)", "N3",
           f"Joelho da curva de presença: os {f['acervo_titulos']['joelho']} jogos presentes em 12 ou mais das 30 casas (decisão do autor; etapa 1 da P7); provável pela mediana de venda de cada jogo, ± 15% (3º quartil da variação do preço do mesmo jogo entre lojas); a São Jogue lista 370."),

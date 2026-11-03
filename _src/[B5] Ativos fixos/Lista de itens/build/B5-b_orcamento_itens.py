@@ -6,11 +6,12 @@ cenários do modelo, e resume por premissa (I01 a I04 do cap. 9).
 Entradas em dados/[B5] Ativos fixos/:
   orcamento/"[B5] Lista de Itens da Etapa 1 (elaboração própria).csv"
       um item por linha: premissa, unidade, base (fixa ou por_m2), quantidade por cenário,
-      fonte da quantidade, fonte do preço (sinapi ou coleta), código SINAPI e termo de busca
+      fonte da quantidade, fonte do preço (sinapi, coleta ou gratuito), código SINAPI e termo de busca
   obra_reforma/"[B5] SINAPI Composições BA AAAA-MM (Caixa).csv"   (B5-c_sinapi.py; o mês mais recente)
   _dados-brutos/<categoria>/*_precos.csv                          (coletas em sites, quando houver)
       do webscripts/precos_itens.user.js; usa id_item, url, produto, preco (por unidade da lista),
-      preco_anuncio, unidades, motivo e excluida, com vírgula decimal. Cada exportação traz tudo o que
+      preco_anuncio, unidades, posicao (na busca, na ordem do site; vazia nas exportações
+      anteriores a 03/11/2026 01:40), motivo e excluida, com vírgula decimal. Cada exportação traz tudo o que
       estava guardado no navegador, então os arquivos se repetem entre si.
 Saídas em dados/[B5] Ativos fixos/orcamento/:
   "[B5] Orçamento por Item Etapa 1 {mês} (SINAPI e coletas).csv"
@@ -18,7 +19,7 @@ Saídas em dados/[B5] Ativos fixos/orcamento/:
   "[B5] Orçamento por Premissa Etapa 1 {mês} (SINAPI e coletas).csv"
       total de cada premissa por cenário, itens com preço e, na I01, o R$ por m² que o modelo usa
   "[B5] Ofertas Filtradas Etapa 1 {mês} (coletas).csv"
-      as ofertas que entram no preço de cada item, de MIN_OFERTAS a MAX_OFERTAS por item
+      as ofertas que entram no preço de cada item, até POR_SITE por site
 
 Regras:
   - Quantidade "por_m2" multiplica o coeficiente pela área do ponto (C03: 150, 130 e 110 m²).
@@ -33,9 +34,12 @@ Regras:
     modelo lido como kit e volta a 1. Sai a URL de anúncio patrocinado (mclics), sem a página do
     produto, e a repetição de título e preço no mesmo item. Fica a medida ou capacidade essencial
     (MEDIDA_EXIGIDA) e o preço entre a mediana do item dividida e multiplicada por FAIXA, que
-    tira acessório e kit mal lido. Item com mais de MAX_OFERTAS fica com MAX_OFERTAS ofertas
-    espaçadas na ordem de preço; item com menos de MIN_OFERTAS fica sem preço. P75 no
-    pessimista, mediana no provável e P25 no otimista, entre as ofertas do item.
+    tira acessório e kit mal lido. Das que cumprem esses requisitos mínimos, ficam as POR_SITE
+    primeiras de cada site na ordem da busca (posicao); oferta sem posicao (exportações
+    anteriores) não tem a ordem do site, e o site fica com POR_SITE ofertas espaçadas na ordem
+    de preço. Item com menos de MIN_OFERTAS ofertas fica sem preço. P75 no pessimista, mediana
+    no provável e P25 no otimista, entre as ofertas do item.
+  - Gratuito: preço zero (ex.: maquininha cedida sem custo a PJ), nível N6.
   - Item sem preço fica com total vazio e sai da soma: a cobertura (itens com preço sobre
     itens da lista) acompanha o total de cada premissa, que só substitui a estimativa do
     autor no modelo quando a cobertura for completa.
@@ -67,7 +71,7 @@ BDI = {"pessimista": 0.2500, "provavel": 0.2212, "otimista": 0.2034}  # TCU, Ac�
 QUANTIL_COLETA = {"pessimista": 0.75, "provavel": 0.50, "otimista": 0.25}
 PREMISSAS = {"I01": "Reforma e instalações", "I02": "Mobiliário", "I03": "Cozinha e bar", "I04": "Caixa e informática"}
 RE_MES = re.compile(r"(\d{4}-\d{2})")
-MIN_OFERTAS, MAX_OFERTAS = 3, 15
+MIN_OFERTAS, POR_SITE = 3, 5
 FAIXA = 2.5  # preço aceito: mediana do item / FAIXA a mediana × FAIXA
 # Medida ou capacidade que o título precisa trazer (texto minúsculo e sem acento).
 MEDIDA_EXIGIDA = {
@@ -87,7 +91,7 @@ def ler_lista() -> pd.DataFrame:
     df = ler_csv(LISTA)
     assert df["id"].is_unique, "id repetido na lista de itens"
     assert df["base"].isin(["fixa", "por_m2"]).all(), "base deve ser fixa ou por_m2"
-    assert df["fonte_preco"].isin(["sinapi", "coleta"]).all(), "fonte_preco deve ser sinapi ou coleta"
+    assert df["fonte_preco"].isin(["sinapi", "coleta", "gratuito"]).all(), "fonte_preco deve ser sinapi, coleta ou gratuito"
     assert df["premissa"].isin(PREMISSAS).all(), "premissa fora de I01 a I04"
     sem_codigo = df[df["fonte_preco"].eq("sinapi") & df["codigo_sinapi"].isna()]
     assert sem_codigo.empty, f"itens do SINAPI sem código: {', '.join(sem_codigo['id'])}"
@@ -106,7 +110,7 @@ def ler_sinapi() -> tuple[str, pd.DataFrame]:
     return mes, df
 
 
-def ler_coletas() -> pd.DataFrame:
+def ler_coletas(itens_coleta: set[str]) -> pd.DataFrame:
     arquivos = sorted(RAW_DIR.glob("*/*_precos.csv"), key=lambda a: a.name)
     if not arquivos:
         print("coletas em sites: nenhuma ainda")
@@ -124,7 +128,8 @@ def ler_coletas() -> pd.DataFrame:
     df = df.drop_duplicates(["id_item", "url"], keep="last")
     excluidas = int(df["excluida"].sum())
     fora_filtro = int((df["excluida"].eq(0) & df["motivo"].ne("")).sum())
-    df = df[df["excluida"].eq(0) & df["motivo"].eq("") & df["preco"].gt(0)].copy()
+    df = df[df["excluida"].eq(0) & df["motivo"].eq("") & df["preco"].gt(0)
+            & df["id_item"].isin(itens_coleta)].copy()  # item que deixou de ser coletado (ex.: EQ03) sai
     validas = len(df)
     df = filtrar(df)
     print(f"coletas em sites: {len(arquivos)} arquivos, {linhas} linhas, {validas} ofertas válidas "
@@ -150,12 +155,14 @@ def corrigir_unidades(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def espacar(grupo: pd.DataFrame) -> pd.DataFrame:
-    """Até MAX_OFERTAS ofertas espaçadas na ordem de preço, das extremas inclusive."""
+def primeiras(grupo: pd.DataFrame) -> pd.DataFrame:
+    """As POR_SITE primeiras do site na ordem da busca; sem posição, POR_SITE espaçadas no preço."""
+    if grupo["posicao"].notna().all():
+        return grupo.sort_values("posicao").head(POR_SITE)
     grupo = grupo.sort_values("preco")
-    if len(grupo) <= MAX_OFERTAS:
+    if len(grupo) <= POR_SITE:
         return grupo
-    posicoes = sorted({round(i * (len(grupo) - 1) / (MAX_OFERTAS - 1)) for i in range(MAX_OFERTAS)})
+    posicoes = sorted({round(i * (len(grupo) - 1) / (POR_SITE - 1)) for i in range(POR_SITE)})
     return grupo.iloc[posicoes]
 
 
@@ -168,7 +175,9 @@ def filtrar(df: pd.DataFrame) -> pd.DataFrame:
     df = df[tem_medida]
     mediana = df.groupby("id_item")["preco"].transform("median")
     df = df[df["preco"].between(mediana / FAIXA, mediana * FAIXA)]
-    df = df.groupby("id_item", group_keys=False)[df.columns].apply(espacar)
+    if "posicao" not in df:  # exportações anteriores à posição na busca
+        df["posicao"] = float("nan")
+    df = df.groupby(["id_item", "fonte"], group_keys=False)[df.columns].apply(primeiras)
     poucas = df.groupby("id_item")["preco"].transform("size").lt(MIN_OFERTAS)
     if poucas.any():
         print(f"  com menos de {MIN_OFERTAS} ofertas, sem preço: {', '.join(sorted(df.loc[poucas, 'id_item'].unique()))}")
@@ -187,6 +196,8 @@ def precos_unitarios(lista: pd.DataFrame, sinapi: pd.DataFrame, coletas: pd.Data
     for c in CENARIOS:
         precos.loc[eh_sinapi, c] = custo * (1 + BDI[c])
     ofertas[eh_sinapi] = 1
+    eh_gratuito = lista["fonte_preco"].eq("gratuito")
+    precos.loc[eh_gratuito, CENARIOS] = 0.0
 
     if not coletas.empty:
         total_oferta = coletas.groupby("id_item")["preco"]
@@ -211,10 +222,11 @@ def orcar(lista: pd.DataFrame, sinapi: pd.DataFrame, coletas: pd.DataFrame) -> p
         df[f"total_{c}"] = (df[f"qtd_{c}"] * precos[c]).round(2)
     df["com_preco"] = precos["provavel"].notna()
     df["ofertas"] = ofertas
-    df["fonte_preco"] = lista["fonte_preco"].map({"sinapi": "SINAPI BA, sem desoneração, com BDI", "coleta": "Coleta em sites"})
+    df["fonte_preco"] = lista["fonte_preco"].map({"sinapi": "SINAPI BA, sem desoneração, com BDI", "coleta": "Coleta em sites",
+                                                  "gratuito": "Sem custo (informação do autor)"})
     df["codigo_sinapi"] = lista["codigo_sinapi"]
     df["descricao_sinapi"] = sinapi_desc
-    df["nivel_preco"] = lista["fonte_preco"].map({"sinapi": "N2", "coleta": "N3"}).where(df["com_preco"], "")
+    df["nivel_preco"] = lista["fonte_preco"].map({"sinapi": "N2", "coleta": "N3", "gratuito": "N6"}).where(df["com_preco"], "")
     df["nivel_qtd"] = "N6"
     df["fonte_qtd"] = lista["fonte_qtd"]
     df["termo_busca"] = lista["termo_busca"]
@@ -244,10 +256,10 @@ def resumo_por_premissa(itens: pd.DataFrame) -> pd.DataFrame:
 def main() -> None:
     lista = ler_lista()
     mes, sinapi = ler_sinapi()
-    coletas = ler_coletas()
+    coletas = ler_coletas(set(lista.loc[lista["fonte_preco"].eq("coleta"), "id"]))
     itens = orcar(lista, sinapi, coletas)
     resumo = resumo_por_premissa(itens)
-    ofertas = coletas[["id_item", "fonte", "produto", "preco", "unidades", "preco_anuncio", "url", "data_coleta"]]
+    ofertas = coletas[["id_item", "fonte", "posicao", "produto", "preco", "unidades", "preco_anuncio", "url", "data_coleta"]]
     # Cada oferta entra num único item: a contagem fecha com as ofertas dos itens com preço.
     assert len(ofertas) == itens["ofertas"].where(itens["fonte_preco"].eq("Coleta em sites"), 0).sum(), \
         "ofertas filtradas não fecham com as ofertas do orçamento"
