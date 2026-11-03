@@ -2629,3 +2629,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: elogios por grupo de gasto só com k = 3.
 **Depois**: elogios também com k = 2 (gasto baixo até R$ 90, 406 avaliações; alto de R$ 110 a R$ 200, 202), em todas as avaliações com gasto e só nas "volta". O atendimento continua liderando; o recuo do ambiente no gasto alto some, porque é próprio de quem gasta R$ 150 ou mais.
 **Justificativa**: pedido do autor (mais uma tabela de itens elogiados com k = 2, como teste de robustez).
+
+### 19:53
+**Objeto**: `B2-a_retorno_e_clusters.py` (resumo e temas com k = 2 e k = 5); `dados/[B2] Avaliacoes recentes/retorno_e_clusters/B2_cluster_clientes_k2_k5_resumo.csv` e `_conteudo.csv` (novos); `docs/parecer_retorno_e_clusters_B2.md` (Quadros C6 e C7)
+**Antes**: o Quadro C e os temas que mudam entre grupos de gasto só com k = 3.
+**Depois**: os mesmos com k = 2 e k = 5. Só a queda da nota e a alta da crítica ao atendimento com o gasto ficam abaixo de q = 0,05 nos três k; preço da entrada, ambiente, rapidez, explicação de jogos e regras da casa ficam como tendência.
+**Justificativa**: pedido do autor (mais uma tabela de grupos de gasto com k = 5 e k = 2).

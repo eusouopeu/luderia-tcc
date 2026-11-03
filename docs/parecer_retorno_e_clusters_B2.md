@@ -167,6 +167,33 @@ Com dois grupos, o padrão dos Quadros C2 e C3 se mantém: atendimento lidera, s
 
 Leitura para o plano: o cliente de ticket alto avalia o serviço, não o cenário. Ele elogia a rapidez e critica o atendimento e a taxa de entrada, que pesa mais numa conta já alta. O plano que mira ticket acima de R$ 100 precisa de atendimento à altura e de taxa justificada pelo serviço (explicação de jogos, curadoria). A Bodogami tem cerca de 40% das avaliações de cada grupo, então o padrão não é efeito de uma casa só.
 
+**Quadro C6 - Robustez: grupos de clientes pelo gasto declarado com k = 2 e k = 5**
+
+| k | Grupo | Avaliações | Gasto declarado | Nota média | Nota 1 ou 2 | Com alguma crítica |
+|---|---|---|---|---|---|---|
+| 2 | Baixo | 406 | até R$ 90 (média R$ 66) | 4,77 | 4% | 18% |
+| 2 | Alto | 202 | R$ 110 a R$ 200 (média R$ 134) | 4,41 | 12% | 29% |
+| 5 | 1 | 161 | até R$ 50 (média R$ 44) | 4,83 | 3% | 11% |
+| 5 | 2 | 120 | R$ 70 | 4,80 | 3% | 18% |
+| 5 | 3 | 221 | R$ 90 a R$ 110 (média R$ 99) | 4,61 | 6% | 26% |
+| 5 | 4 | 73 | R$ 130 a R$ 150 (média R$ 137) | 4,25 | 16% | 36% |
+| 5 | 5 | 33 | R$ 170 a R$ 200 (média R$ 194) | 4,36 | 15% | 21% |
+
+**Quadro C7 - Robustez: temas do Quadro C com k = 2 e k = 5 (% das avaliações do grupo)**
+
+| Tema | k = 2: baixo / alto | q | k = 5: grupos 1 a 5 | q |
+|---|---|---|---|---|
+| Atendimento presencial, crítica | 3% / 9% | 0,01 | 0,6% / 3% / 5% / 15% / 9% | 0,003 |
+| Preço da entrada, crítica | 2% / 5% | 0,17 | 0,6% / 2% / 3% / 8% / 6% | 0,18 |
+| Rapidez do serviço, elogio | 1% / 4% | 0,21 | 0,6% / 0% / 3% / 5% / 3% | 0,27 |
+| Ambiente e decoração, elogio | 33% / 23% | 0,11 | 32% / 33% / 30% / 26% / 12% | 0,49 |
+| Explicação de jogos, elogio | 14% / 17% | 0,44 | 7% / 14% / 20% / 18% / 12% | 0,14 |
+| Regras da casa, crítica | 2% / 5% | 0,17 | 0,6% / 2% / 5% / 4% / 0% | 0,27 |
+
+Fonte: elaborado pelo próprio autor com base no B2. Tabelas completas em `B2_cluster_clientes_k2_k5_resumo.csv` e `_conteudo.csv`.
+
+O resultado que não depende de k é este: a nota cai e a crítica ao atendimento sobe com o gasto, com q abaixo de 0,05 nos três agrupamentos. A crítica ao preço da entrada e a queda do elogio ao ambiente seguem a mesma direção com k = 2 e k = 5, mas perdem a significância (q de 0,11 a 0,49). Por isso, no texto, devem aparecer como tendência, não como achado. Com k = 5, o grupo 2 é uma faixa só (R$ 70) e o grupo 5 tem 33 avaliações.
+
 Limites: o gasto declarado inclui a ocasião (aniversário, grupo grande) e não separa o que é taxa e o que é consumo; a faixa é escolhida pelo cliente no Google Maps, sem conferência.
 
 ## 4. Custo-benefício: cardápio de qualidade, preço baixo, acervo ou ambiente
@@ -208,6 +235,7 @@ Limites: o gasto declarado vem de 13 casas com faixa de preço (6 no grupo 1, 7 
 | `B2_cluster_casas.csv` | 54 casas do B1: taxas, fonte, horas cobertas, taxa por hora, consumo, cesta completa, grupo ou motivo de ficar fora |
 | `B2_cluster_casas_resumo.csv` e `_conteudo.csv` | Grupos de casas: centroides, casas, nota, retorno; temas por grupo com qui-quadrado |
 | `B2_cluster_clientes_distribuicao_por_decisao.csv` | Distribuição interna dos elogios de quem volta e das críticas de quem não volta, por grupo de gasto |
+| `B2_cluster_clientes_k2_k5_resumo.csv` e `_conteudo.csv` | Robustez: resumo e temas dos grupos de gasto com k = 2 e k = 5 |
 | `B2_cluster_clientes_k2_elogios.csv` | Robustez: distribuição interna dos elogios com k = 2, em todas as avaliações com gasto e só nas "volta" |
 | `B2_cluster_clientes_distribuicao.csv` | Distribuição interna dos elogios e das críticas em cada grupo de gasto (cada coluna soma 100%) |
 | `B2_cluster_clientes_resumo.csv` e `_conteudo.csv` | Grupos de clientes: faixa de gasto, nota, retorno; temas por grupo com qui-quadrado |

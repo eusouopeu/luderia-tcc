@@ -540,6 +540,18 @@ def main():
             **{f"gasto_min_{r2[g]}": d2.loc[d2["grupo_k2"] == g, "gasto"].min() for g in r2},
             **{f"gasto_max_{r2[g]}": d2.loc[d2["grupo_k2"] == g, "gasto"].max() for g in r2}))
     pd.concat(partes).to_csv(PASTA / "B2_cluster_clientes_k2_elogios.csv", sep=";", index=False, encoding="utf-8-sig")
+    # robustez (pedido do autor): resumo e temas dos grupos de gasto com k = 2 e k = 5
+    res_k, cont_k = [], []
+    for kk in (2, 5):
+        rk, _ = agrupar(dg[["gasto"]].to_numpy(float), f"clientes k = {kk} (robustez)", [], kk)
+        dk = dg.assign(grupo_k=rk)
+        rotk = {i + 1: f"k{kk}_grupo_{i + 1}" for i in range(kk)}
+        r = resumo_grupo(dk, "grupo_k", rotk)
+        assert r["avaliacoes"].sum() == len(dk)
+        res_k.append(r.assign(k=kk))
+        cont_k.append(conteudo(dk, "grupo_k", rotk).assign(k=kk))
+    pd.concat(res_k).to_csv(PASTA / "B2_cluster_clientes_k2_k5_resumo.csv", sep=";", index=False, encoding="utf-8-sig")
+    pd.concat(cont_k).to_csv(PASTA / "B2_cluster_clientes_k2_k5_conteudo.csv", sep=";", index=False, encoding="utf-8-sig")
     rg = resumo_grupo(dg, "grupo_cliente", rot_g)
     assert rg["avaliacoes"].sum() == len(dg), "grupos de clientes não fecham com o total com gasto"
     rg.to_csv(PASTA / "B2_cluster_clientes_resumo.csv", sep=";", index=False, encoding="utf-8-sig")
