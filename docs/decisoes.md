@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 03/11/2026 | O Claude usa como contexto só a versão mais atual de cada arquivo; versões anteriores, `_arquivo/`, `arquivados/` e o histórico do git só com pedido explícito do autor | `CLAUDE.md` (Princípios); `_instrucoes/1c_versoes.md` |
 | 03/11/2026 | I01 a I04 do modelo vêm do orçamento do B5 (`gerar_modelo_financeiro.py` lê o orçamento por premissa mais recente), no lugar das estimativas do autor; itens sem preço ficam fora da soma | Cap. 9 (9.2, Tabela 9.1); `_instrucoes/4_metodologia.md` (Bloco B5) |
 | 03/11/2026 | Critério da coleta de preços: os 5 primeiros anúncios de cada busca, na ordem padrão do site, que cumprem os requisitos técnicos mínimos; o coletor grava a posição e marca "coletado" por site | `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js`; `B5-b_orcamento_itens.py` |
 | 03/11/2026 | Maquininha de cartão (EQ03) sem custo: bancos cedem a PJ (informação do autor, N6) | Lista de itens da etapa 1 (`fonte_preco` = gratuito) |
