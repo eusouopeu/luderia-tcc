@@ -2434,3 +2434,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: "Guardar marcadas", "Baixar CSV", "Revisar guardadas" e "Limpar" no fim do painel, abaixo da lista de ofertas; seletor de itens em lista única, sem distinguir os já coletados.
 **Depois**: os quatro botões (com "Unidades por embalagem") logo abaixo dos filtros; seletor com os itens agrupados por categoria (optgroup), os que já têm oferta guardada esmaecidos, com ✓ e o número de ofertas, e os que faltam na cor e com a marca da categoria (🟠 obra e reforma, 🔵 cozinha e bar, 🟢 mobiliário, 🟣 equipamentos), atualizados a cada guardada ou exclusão. Teste do painel confere o seletor (25 testes passando).
 **Justificativa**: pedido do autor (botões perto dos filtros; ver no seletor os itens que faltam).
+
+### 23:48
+**Objeto**: `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js` (versão 2026.11.02-8) e `precos_itens.test.cjs`; `docs/pendencias.md`, `AGORA.md`
+**Antes**: no seletor, qualquer item com oferta saía esmaecido, mesmo abaixo do mínimo de 3; sem atalho para o próximo item a coletar; nenhum aviso de ofertas fora de CSV ao sair da página.
+**Depois**: seletor com três estados (✓ esmaecido com 3+ ofertas; ⚠ em âmbar com 1 ou 2; cor da categoria sem oferta); caixa "só os que faltam" (guardada no Tampermonkey) esconde os completos, menos o atual; botão "Próximo que falta" pula para o próximo item abaixo do mínimo, primeiro na mesma categoria, e abre a busca dele; com 25+ ofertas guardadas ou excluídas fora de CSV, o painel pede o download e o navegador pede confirmação ao fechar a aba ou sair por link do site (não por "Buscar aqui" nem "Próximo que falta"). Teste do painel confere os três estados, a caixa e o próximo item (25 testes passando).
+**Justificativa**: pedido do autor (recomendações 1, 2, 3 e 5 da sessão).

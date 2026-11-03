@@ -363,8 +363,19 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   assert.match(textos(), /Este item: 2 ofertas de 1 site\(s\) · mediana R\$ 906,05 \(R\$ 402,20 a R\$ 1409,90/);
   // seletor: CB09 esmaecido com ✓ e o número de ofertas; os que faltam na cor da categoria, em grupos
   const opcao = (id) => r.querySelector(`option[value="${id}"]`);
-  assert.equal(opcao('CB09').className, 'coletado');
-  assert.match(opcao('CB09').textContent, /^✓ CB09 · .* \(2\)$/);
+  assert.equal(opcao('CB09').className, 'fraco');
+  assert.match(opcao('CB09').textContent, /^⚠ CB09 · .* \(2 de 3\)$/);
+  // só os que faltam: nenhum completo, nada escondido; próximo que falta fica na categoria
+  const so = [...r.querySelectorAll('input[type=checkbox]')].find((c) => /só os que faltam/.test(c.parentElement.textContent));
+  so.checked = true;
+  so.onchange();
+  assert.equal([...r.querySelectorAll('option')].filter((o) => o.hidden).length, 0);
+  botao('Próximo que falta').onclick();
+  assert.equal(memoria.tcc_precos_item, 'CB10');
+  assert.match(ambiente.location.href, /amazon\.com\.br\/s\?k=/);
+  ambiente.location.href = 'https://www.amazon.com.br/s?k=mesa+inox';
+  select.value = 'CB09';
+  select.onchange();
   assert.equal(opcao('CB01').className, 'cozinha_bar');
   assert.match(opcao('CB01').textContent, /^🔵 CB01 · /);
   assert.equal(r.querySelectorAll('optgroup').length, 4);

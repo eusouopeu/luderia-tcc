@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.02-7
+// @version      2026.11.02-8
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -26,7 +26,10 @@
  *     painel (a lista vem de "[B5] Lista de Itens da Etapa 1", só os de fonte "coleta").
  *     "Buscar aqui" abre a busca do site com o termo do item. No seletor, os itens vêm em grupos
  *     por categoria: os que já têm oferta guardada esmaecidos (✓ e o número de ofertas), os que
- *     faltam na cor da categoria.
+ *     faltam na cor da categoria (com 1 ou 2 ofertas, em âmbar com ⚠). "Só os que faltam" esconde
+ *     os completos; "Próximo que falta" pula para o próximo item abaixo do mínimo (primeiro na
+ *     mesma categoria) e abre a busca dele. Com 25+ ofertas fora de CSV, o painel cobra o download
+ *     e o navegador pede confirmação ao fechar a aba.
  *  2. A página é lida sozinha ao abrir, ao trocar de página e ao trocar de item ("Ler ofertas"
  *     relê à mão, ex.: depois de rolar): o painel lista as ofertas com preço, frete e tipo de preço; já
  *     vêm marcadas as que têm no título metade ou mais das palavras do termo, todas as
@@ -91,6 +94,8 @@
   const CHAVE_CEP = 'tcc_precos_cep';
   const CHAVE_FILTROS = 'tcc_precos_filtros';
   const CHAVE_EXPORTACAO = 'tcc_precos_exportado_em';
+  const CHAVE_SO_FALTAM = 'tcc_precos_so_faltam';
+  const AVISO_PENDENTES = 25; // guardadas ou excluídas fora de CSV a partir das quais o painel cobra o download
   const MIN_OFERTAS = 3; // o build usa P25, mediana e P75: abaixo disso o item fica frágil
   const FAIXA = [0.3, 3]; // F2: oferta fora de 0,3× a 3× a mediana do item fica desmarcada
   const DISPERSAO_MAX = 3; // A4: P75/P25 acima disso sugere produtos diferentes no mesmo item
@@ -711,6 +716,7 @@
 
   const el = {};
   let hospedeiro = null;
+  let saindoPeloPainel = false; // "Buscar aqui" e "Próximo que falta" não disparam o aviso de CSV pendente
 
   function criar(tag, props = {}, filhos = []) {
     const n = document.createElement(tag);
@@ -737,7 +743,7 @@
     select{width:100%} select option{color:#111}
     option.obra_reforma{color:#c2410c} option.cozinha_bar{color:#1d4ed8}
     option.mobiliario{color:#15803d} option.equipamentos{color:#7e22ce}
-    option.coletado{color:#9ca3af}
+    option.coletado{color:#9ca3af} option.fraco{color:#b45309}
     input[type=number]{width:52px} input.cep{width:90px} li input.u{width:40px;flex:0 0 auto}
     ul{list-style:none;margin:6px 0;padding:0;max-height:40vh;overflow:auto}
     li{display:flex;gap:6px;align-items:flex-start;padding:3px 0;border-bottom:1px solid rgba(128,128,128,.25);font-size:12px}
@@ -784,6 +790,7 @@
     el.pendentes.className = pend ? 'resumo alerta' : 'resumo ok';
     el.pendentes.textContent = pend
       ? `${pend} oferta(s) guardadas ou excluídas desde o último CSV${exportadoEm ? ` (${quando(exportadoEm)})` : ' (nenhum baixado ainda)'}`
+        + `${pend >= AVISO_PENDENTES ? ' ⚠ baixe o CSV: os dados só estão no Tampermonkey' : ''}`
       : exportadoEm ? `CSV em dia (baixado em ${quando(exportadoEm)})` : 'Nada guardado ainda.';
 
     // A2: cobertura da categoria do item
@@ -814,18 +821,37 @@
     if (t) status(t);
   }
 
-  // Itens do seletor: os que já têm oferta guardada saem esmaecidos (✓ e o número de ofertas);
-  // os que faltam, na cor e com a marca da categoria. A marca vale onde o menu nativo ignora a cor.
+  // Itens do seletor: com o mínimo de ofertas, esmaecidos (✓ e o número de ofertas); com
+  // alguma, abaixo do mínimo, em âmbar (⚠); sem oferta, na cor e com a marca da categoria. A marca
+  // vale onde o menu nativo ignora a cor. "Só os que faltam" esconde os completos (menos o atual).
   const MARCA_CATEGORIA = { obra_reforma: '🟠', cozinha_bar: '🔵', mobiliario: '🟢', equipamentos: '🟣' };
-  function rotularItens(lista) {
+  const ofertasPorItem = (lista) => {
     const n = {};
     for (const l of lista) n[l.id_item] = (n[l.id_item] || 0) + 1;
+    return n;
+  };
+  function rotularItens(lista) {
+    const n = ofertasPorItem(lista);
+    const soFaltam = GM_getValue(CHAVE_SO_FALTAM, false);
+    const atual = itemAtual().id;
     for (const o of el.item.querySelectorAll('option')) {
       const i = ITENS.find((x) => x.id === o.value);
-      const feito = n[i.id] > 0;
-      o.className = feito ? 'coletado' : i.categoria;
-      o.textContent = feito ? `✓ ${i.id} · ${i.item} (${n[i.id]})` : `${MARCA_CATEGORIA[i.categoria] || '⚪'} ${i.id} · ${i.item}`;
+      const k = n[i.id] || 0;
+      o.className = k >= MIN_OFERTAS ? 'coletado' : k ? 'fraco' : i.categoria;
+      o.textContent = k >= MIN_OFERTAS ? `✓ ${i.id} · ${i.item} (${k})`
+        : k ? `⚠ ${i.id} · ${i.item} (${k} de ${MIN_OFERTAS})` : `${MARCA_CATEGORIA[i.categoria] || '⚪'} ${i.id} · ${i.item}`;
+      o.hidden = soFaltam && k >= MIN_OFERTAS && i.id !== atual;
     }
+    for (const g of el.item.querySelectorAll('optgroup')) g.hidden = [...g.querySelectorAll('option')].every((o) => o.hidden);
+  }
+
+  // Próximo item abaixo do mínimo de ofertas: primeiro na categoria do atual, depois nas outras,
+  // seguindo a ordem da lista a partir do atual.
+  function proximoQueFalta(lista, atual) {
+    const n = ofertasPorItem(lista);
+    const i0 = ITENS.findIndex((i) => i.id === atual.id);
+    const ordem = [...ITENS.slice(i0 + 1), ...ITENS.slice(0, i0)].filter((i) => (n[i.id] || 0) < MIN_OFERTAS);
+    return ordem.find((i) => i.categoria === atual.categoria) || ordem[0] || null;
   }
 
   function listarGuardadas(guardados, item) {
@@ -936,9 +962,26 @@
     const bBuscar = criar('button', {
       textContent: 'Buscar aqui',
       disabled: !urlBusca(site, 'x'),
-      onclick: () => { location.href = urlBusca(site, itemAtual().termo); },
+      onclick: () => { saindoPeloPainel = true; location.href = urlBusca(site, itemAtual().termo); },
     });
     const bLer = criar('button', { textContent: 'Ler ofertas', onclick: () => ler(false) });
+    const bProximo = criar('button', {
+      textContent: 'Próximo que falta',
+      title: `Pula para o próximo item com menos de ${MIN_OFERTAS} ofertas (primeiro na mesma categoria) e abre a busca dele`,
+      onclick: () => {
+        const prox = proximoQueFalta(ativas(carregar()), itemAtual());
+        if (!prox) { status(`Todos os itens têm ${MIN_OFERTAS}+ ofertas.`); return; }
+        GM_setValue(CHAVE_ITEM, prox.id);
+        el.item.value = prox.id;
+        mostrar(`Item ${prox.id} · ${prox.item}.`);
+        const url = urlBusca(site, prox.termo);
+        if (url) { saindoPeloPainel = true; location.href = url; } else ler(false, `Item ${prox.id}: página relida com as regras dele. `);
+      },
+    });
+    const soFaltam = criar('input', {
+      type: 'checkbox', checked: GM_getValue(CHAVE_SO_FALTAM, false),
+      onchange: () => { GM_setValue(CHAVE_SO_FALTAM, soFaltam.checked); mostrar(); },
+    });
     // F4: desmarca as ofertas de Pix ou cupom, para comparar só preços padrão
     const bPadrao = criar('button', {
       textContent: 'Só preço padrão',
@@ -1004,6 +1047,7 @@
       criar('div', { className: 'linha' }, [criar('span', { textContent: 'CEP:' }), el.cep]),
       el.cepAviso,
       el.item,
+      criar('div', { className: 'linha' }, [criar('label', {}, [soFaltam, criar('span', { textContent: `só os que faltam (menos de ${MIN_OFERTAS} ofertas)` })]), bProximo]),
       el.contagem,
       el.pendentes,
       el.categoria,
@@ -1066,6 +1110,15 @@
     } else if (espera) {
       acompanharTroca();
     }
+  }
+
+  // Aviso ao fechar a aba ou sair por link do site com muitas ofertas fora de CSV.
+  if (typeof window !== 'undefined' && window.addEventListener) {
+    window.addEventListener('beforeunload', (e) => {
+      if (saindoPeloPainel || pendentes(carregar(), GM_getValue(CHAVE_EXPORTACAO, 0)) < AVISO_PENDENTES) return;
+      e.preventDefault();
+      e.returnValue = '';
+    });
   }
 
   console.info(NOME, 'carregado');
