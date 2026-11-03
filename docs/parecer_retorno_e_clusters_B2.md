@@ -92,6 +92,33 @@ Temas que mudam entre os grupos (q < 0,05):
 - elogio à explicação de jogos: 10%, 20% e 15%;
 - crítica às regras da casa: 1%, 6% e nenhuma.
 
+**Quadro C2 - Distribuição interna das menções em cada grupo de gasto (% do total de menções do grupo)**
+
+| Elogios | Baixo (570 menções) | Médio (560) | Alto (108) |
+|---|---|---|---|
+| Atendimento presencial | 26% | 25% | 23% |
+| Comida | 19% | 18% | 23% |
+| Ambiente e decoração | 16% | 15% | 6% |
+| Variedade do acervo | 10% | 8% | 8% |
+| Explicação de jogos | 5% | 9% | 8% |
+| Curadoria e conservação do acervo | 4% | 6% | 3% |
+| Demais 16 temas | 20% | 19% | 29% |
+
+| Críticas | Baixo (60 menções) | Médio (160) | Alto (38) |
+|---|---|---|---|
+| Comida | 23% | 11% | 18% |
+| Preço do cardápio | 15% | 12% | 13% |
+| Conforto e barulho | 10% | 11% | 11% |
+| Atendimento presencial | 8% | 11% | 18% |
+| Preço da entrada | 5% | 6% | 13% |
+| Rapidez do serviço | 10% | 6% | 3% |
+| Regras da casa | 5% | 9% | 0% |
+| Demais 15 temas | 23% | 34% | 24% |
+
+Fonte: elaborado pelo próprio autor com base no B2. Unidade: menção (avaliação × tema). Cada coluna soma 100%. Tabela completa em `B2_cluster_clientes_distribuicao.csv`.
+
+Dentro de cada grupo, atendimento e comida dominam os elogios em todas as faixas. O que muda é o peso do ambiente, que cai de 16% para 6% dos elogios no gasto alto. Nas críticas, o cliente de gasto baixo reclama sobretudo da comida e do preço do cardápio. O de gasto alto divide a crítica entre comida, atendimento e preço (cardápio e entrada). Com 38 e 60 menções de crítica, as diferenças nos grupos alto e baixo valem como direção, não como medida.
+
 Leitura para o plano: o cliente de ticket alto avalia o serviço, não o cenário. Ele elogia a rapidez e critica o atendimento e a taxa de entrada, que pesa mais numa conta já alta. O plano que mira ticket acima de R$ 100 precisa de atendimento à altura e de taxa justificada pelo serviço (explicação de jogos, curadoria). A Bodogami tem cerca de 40% das avaliações de cada grupo, então o padrão não é efeito de uma casa só.
 
 Limites: o gasto declarado inclui a ocasião (aniversário, grupo grande) e não separa o que é taxa e o que é consumo; a faixa é escolhida pelo cliente no Google Maps, sem conferência.
@@ -134,6 +161,7 @@ Limites: o gasto declarado vem de 13 casas com faixa de preço (6 no grupo 1, 7 
 | `B2_retorno_decisao_resumo.csv` | Nota, notas de aspecto, temas, "costuma ir", gasto e contexto por decisão; fecha com 1.628 |
 | `B2_cluster_casas.csv` | 54 casas do B1: taxas, fonte, horas cobertas, taxa por hora, consumo, cesta completa, grupo ou motivo de ficar fora |
 | `B2_cluster_casas_resumo.csv` e `_conteudo.csv` | Grupos de casas: centroides, casas, nota, retorno; temas por grupo com qui-quadrado |
+| `B2_cluster_clientes_distribuicao.csv` | Distribuição interna dos elogios e das críticas em cada grupo de gasto (cada coluna soma 100%) |
 | `B2_cluster_clientes_resumo.csv` e `_conteudo.csv` | Grupos de clientes: faixa de gasto, nota, retorno; temas por grupo com qui-quadrado |
 | `B2_cluster_silhueta.csv` | Silhueta média de k = 2 a 5 nos dois agrupamentos |
 | `B2_custo_beneficio_posicoes.csv` e `_grupos.csv` | Margem por pessoa, custo fixo extra e público de empate de cada posição nos três cenários; preços, gasto e notas de comida por grupo de casas |

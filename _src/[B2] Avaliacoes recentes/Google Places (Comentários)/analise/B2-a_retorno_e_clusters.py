@@ -364,6 +364,23 @@ def conteudo(d, col, rotulos):
     return r.sort_values("p")
 
 
+def distribuicao_interna(conteudo_df, rotulos):
+    """Dentro de cada grupo: % de cada tema no total de menções de elogio (ou de crítica) do grupo.
+    Unidade = menção (avaliação × tema); cada coluna soma 100% (diferença zero, senão para)."""
+    x = conteudo_df[conteudo_df["tema"] != "qualquer tema"]
+    lin = []
+    for pol in ("elogio", "crítica"):
+        t = x[x["polaridade"] == pol].set_index("tema")[[f"n_{r}" for r in rotulos.values()]]
+        tot = t.sum(axis=0)
+        for tema, linha in t.iterrows():
+            lin.append({"polaridade": pol, "tema": tema,
+                        **{f"mencoes_{r}": int(linha[f"n_{r}"]) for r in rotulos.values()},
+                        **{f"pct_mencoes_{r}": round(100 * linha[f"n_{r}"] / tot[f"n_{r}"], 1) for r in rotulos.values()}})
+        for r in rotulos.values():
+            assert int(t[f"n_{r}"].sum()) == int(tot[f"n_{r}"])
+    return pd.DataFrame(lin)
+
+
 def resumo_grupo(d, col, rotulos, extra=None):
     lin = []
     for g in sorted(d[col].dropna().unique()):
@@ -499,6 +516,8 @@ def main():
     rot_g = {i + 1: f"gasto_{n.replace(' ', '_')}" for i, n in enumerate(ROT_PRECO[kg])}
     cg = conteudo(dg, "grupo_cliente", rot_g)
     cg.to_csv(PASTA / "B2_cluster_clientes_conteudo.csv", sep=";", index=False, encoding="utf-8-sig")
+    distribuicao_interna(cg, rot_g).to_csv(PASTA / "B2_cluster_clientes_distribuicao.csv", sep=";", index=False,
+                                           encoding="utf-8-sig")
     rg = resumo_grupo(dg, "grupo_cliente", rot_g)
     assert rg["avaliacoes"].sum() == len(dg), "grupos de clientes não fecham com o total com gasto"
     rg.to_csv(PASTA / "B2_cluster_clientes_resumo.csv", sep=";", index=False, encoding="utf-8-sig")

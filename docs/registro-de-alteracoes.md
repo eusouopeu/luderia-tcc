@@ -2593,3 +2593,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: sem estimativa de margem por categoria nem comparação entre posições de cardápio, preço, acervo e ambiente.
 **Depois**: margem de contribuição por pessoa com o CMV por categoria da Abrasel (jan/2026) e os preços e gastos dos grupos de casas. Resultado no provável: o cardápio do grupo de consumo caro rende cerca de R$ 9 a mais por pessoa e tolera 11% menos público; o preço 15% menor exige 17% mais público; o acervo da mediana pede 13 pessoas a mais por mês; cada R$ 10 mil de ambiente pede 3. O B2 não mostra comida melhor nas casas de cardápio caro (nota de comida 4,37 contra 4,67).
 **Justificativa**: pedido do autor (custo-benefício de investir em qualidade de comida contra preço baixo, acervo ou ambiente, com dados confiáveis de margem).
+
+### 19:22
+**Objeto**: `B2-a_retorno_e_clusters.py` (função `distribuicao_interna`); `dados/[B2] Avaliacoes recentes/retorno_e_clusters/B2_cluster_clientes_distribuicao.csv` (novo); `docs/parecer_retorno_e_clusters_B2.md` (Quadro C2)
+**Antes**: os grupos de gasto só eram comparados entre si (% das avaliações de cada grupo).
+**Depois**: distribuição interna das menções de elogio e de crítica em cada grupo (cada coluna soma 100%). No gasto alto, o ambiente cai para 6% dos elogios e a crítica se divide entre comida, atendimento e preço.
+**Justificativa**: pedido do autor (tabela comparando só internamente os itens elogiados e criticados de cada grupo de cliente por gasto).
