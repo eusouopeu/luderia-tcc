@@ -2635,3 +2635,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: o Quadro C e os temas que mudam entre grupos de gasto só com k = 3.
 **Depois**: os mesmos com k = 2 e k = 5. Só a queda da nota e a alta da crítica ao atendimento com o gasto ficam abaixo de q = 0,05 nos três k; preço da entrada, ambiente, rapidez, explicação de jogos e regras da casa ficam como tendência.
 **Justificativa**: pedido do autor (mais uma tabela de grupos de gasto com k = 5 e k = 2).
+
+### 20:06
+**Objeto**: `B2-a_retorno_e_clusters.py` (distribuição interna por grupo de casas); `dados/[B2] Avaliacoes recentes/retorno_e_clusters/B2_cluster_casas_distribuicao.csv` (novo); `docs/parecer_retorno_e_clusters_B2.md` (Quadro B2)
+**Antes**: distribuição interna de elogios e críticas só nos grupos de clientes por gasto.
+**Depois**: a mesma distribuição nos três grupos de casas por preço. Elogios com os mesmos cinco temas no topo; nas críticas, as casas de consumo barato concentram atendimento e regras da casa, e as de consumo caro têm a comida como primeira crítica.
+**Justificativa**: pedido do autor (as duas tabelas do Quadro C2 para o agrupamento dos estabelecimentos).

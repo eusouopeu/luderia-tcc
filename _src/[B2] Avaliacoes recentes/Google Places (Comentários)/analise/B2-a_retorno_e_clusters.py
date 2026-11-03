@@ -489,6 +489,8 @@ def main():
     assert len(dc) == c.loc[c["no_agrupamento"] == "sim", "avaliacoes_b2"].sum(), "avaliações das casas não fecham"
     cc = conteudo(dc, "grupo_casa", rot_c)
     cc.to_csv(PASTA / "B2_cluster_casas_conteudo.csv", sep=";", index=False, encoding="utf-8-sig")
+    distribuicao_interna(cc, rot_c).to_csv(PASTA / "B2_cluster_casas_distribuicao.csv", sep=";", index=False,
+                                           encoding="utf-8-sig")
 
     def extra_casa(g):
         x = c[c["grupo"] == g]

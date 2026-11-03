@@ -66,6 +66,33 @@ Fonte: elaborado pelo próprio autor com base no B1 (cardápios e taxas) e no B2
 - Comida, elogio: cerca de 33% nos grupos 1 e 2 e 51% no 3 (q = 0,07).
 - Regras da casa, crítica: 6% nos grupos 1 e 3, 2% no 2 (q = 0,006).
 
+**Quadro B2 - Distribuição interna das menções em cada grupo de casas (% do total de menções do grupo)**
+
+| Elogios | Grupo 1, consumo barato (657 menções) | Grupo 2, consumo caro (1.524) | Grupo 3, taxa por hora alta (147) |
+|---|---|---|---|
+| Atendimento presencial | **25%** | **30%** | **17%** |
+| Comida | **14%** | **19%** | **23%** |
+| Ambiente e decoração | **13%** | **14%** | **11%** |
+| Variedade do acervo | **12%** | **8%** | **16%** |
+| Explicação de jogos | **8%** | **8%** | **9%** |
+| Demais 17 temas | 28% | 22% | 25% |
+
+| Críticas | Grupo 1 (95 menções) | Grupo 2 (279) | Grupo 3 (19) |
+|---|---|---|---|
+| Atendimento presencial | **22%** | **14%** | **16%** |
+| Regras da casa | **18%** | 6% | **21%** |
+| Comida | **5%** | **16%** | 5% |
+| Preço do cardápio | **10%** | **10%** | 5% |
+| Rapidez do serviço | 4% | **8%** | **10%** |
+| Explicação de jogos | **5%** | 4% | **10%** |
+| Espaço e lotação | **8%** | 5% | 5% |
+| Conforto e barulho | **5%** | **8%** | 5% |
+| Demais 14 temas | 21% | 28% | 21% |
+
+Fonte: elaborado pelo próprio autor com base no B2. Unidade: menção (avaliação × tema); cada coluna soma 100%. Em negrito, os cinco temas mais mencionados de cada grupo, com empates, desde que tenham 2 menções ou mais (no grupo 3, as críticas empatam em 1 menção a partir do 5º tema). Tabela completa em `B2_cluster_casas_distribuicao.csv`.
+
+Nos elogios, os três grupos têm os mesmos cinco temas no topo. O grupo 3, que na prática é a Encounter, elogia mais a comida e o acervo do que o atendimento. Nas críticas, as casas de consumo barato concentram a reclamação em atendimento (22%) e regras da casa (18%). Nas de consumo caro, a comida passa a ser a primeira crítica (16%), à frente do atendimento (14%): quem paga mais pelo cardápio cobra mais da comida. O grupo 3 tem 19 menções de crítica e fica como registro.
+
 Leitura para o plano: o preço não muda a nota nem a proporção de quem diz que não volta (3, 8 e 0 avaliações nos três grupos); muda o eixo da proposta de valor. A luderia de consumo barato compete por acervo, atendimento e preço da entrada; a de cardápio caro, por comida e ambiente.
 
 Limites: a taxa por hora de quem cobra o dia inteiro supõe que o cliente usa todo o horário; como a permanência é menor, ela subestima o que se paga por hora de uso, e a distância da São Jogue para as outras fica exagerada. O grupo 3 tem duas casas. Teste de qui-quadrado com células de contagem esperada abaixo de 5 em temas raros.
@@ -233,6 +260,7 @@ Limites: o gasto declarado vem de 13 casas com faixa de preço (6 no grupo 1, 7 
 | `B2_retorno_temas.csv` | Tema × polaridade nas comparações a, b e c (contagens, %, razão de chances, p e q) |
 | `B2_retorno_decisao_resumo.csv` | Nota, notas de aspecto, temas, "costuma ir", gasto e contexto por decisão; fecha com 1.628 |
 | `B2_cluster_casas.csv` | 54 casas do B1: taxas, fonte, horas cobertas, taxa por hora, consumo, cesta completa, grupo ou motivo de ficar fora |
+| `B2_cluster_casas_distribuicao.csv` | Distribuição interna dos elogios e das críticas em cada grupo de casas (cada coluna soma 100%) |
 | `B2_cluster_casas_resumo.csv` e `_conteudo.csv` | Grupos de casas: centroides, casas, nota, retorno; temas por grupo com qui-quadrado |
 | `B2_cluster_clientes_distribuicao_por_decisao.csv` | Distribuição interna dos elogios de quem volta e das críticas de quem não volta, por grupo de gasto |
 | `B2_cluster_clientes_k2_k5_resumo.csv` e `_conteudo.csv` | Robustez: resumo e temas dos grupos de gasto com k = 2 e k = 5 |
