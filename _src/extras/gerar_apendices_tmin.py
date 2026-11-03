@@ -348,6 +348,14 @@ def main():
         raise SystemExit("Principal e apêndices divergem:\n- " + "\n- ".join(erros))
     corpo[0] = corpo[0].replace("<w:pageBreakBefore/>", "")
     doc = x[:i_body] + "".join(corpo) + sect + "</w:body></w:document>"
+    # a raiz vem do principal; o .docx do gerar_docx_capitulo.js não declara os prefixos da figura
+    ns = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main",
+          "pic": "http://schemas.openxmlformats.org/drawingml/2006/picture",
+          "wp": "http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing",
+          "r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships"}
+    raiz = re.search(r"<w:document[^>]*>", doc).group(0)
+    falta = "".join(f' xmlns:{p}="{u}"' for p, u in ns.items() if f"xmlns:{p}=" not in raiz)
+    doc = doc.replace(raiz, raiz[:-1] + falta + ">", 1)
 
     rels = re.sub(r'<Relationship [^>]*Target="(?:media/|comments)[^>]*/>', "", z.read("word/_rels/document.xml.rels").decode())
     rels = rels.replace("</Relationships>", '<Relationship Id="rIdApF1" Type="http://schemas.openxmlformats.org/officeDocument/2006/'

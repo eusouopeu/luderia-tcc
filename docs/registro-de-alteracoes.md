@@ -2416,3 +2416,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: TMax com o modelo antigo; Figura 6.1 com 602 declarações; Figura 5.3 chamada "consumo por pessoa"; G1 ligado ao risco de pessoas por mesa; taxa de R$ 18,68 no 6.3.
 **Depois**: TMin com o modelo novo (675 declarações de 12 concorrentes, base de 769; cesta de consumo com a taxa; R02 fora da receita; taxa de R$ 19,83 contida no gasto do 9.6). Registradas em `docs/melhorias-texto.md` (D53 a D57).
 **Efeitos colaterais**: o TMax e a Figura 6.1 divergem do TMin até serem refeitos; o TMin v19 (`.docx`) ainda traz o modelo antigo.
+
+### 23:35
+**Objeto**: `textos/capitulos/TCC_luderia_TMin_v20.docx` e `.pdf`, `TCC_luderia_TMin_apendices_v20.docx` e `.pdf` (novos; v19 em `_arquivo/`); `_src/extras/gerar_apendices_tmin.py`; `_src/extras/gerar_pretextuais_tmin.py`; `AGORA.md`, `docs/pendencias.md`, `textos/planejamento/status_capitulos.md`
+**Antes**: TMin v19 com o modelo de demanda antigo (VPL de R$ 13.248); apêndices montados sobre a raiz XML do principal, sem declarar os prefixos `a` e `pic` da Figura F.1; sigla ANR fora da lista.
+**Depois**: TMin v20 com o modelo novo (84 páginas, pré-textuais em 7, texto da p. 8 à 84; 7 figuras, 15 quadros, 10 tabelas, 58 siglas); apêndices v20 (12 páginas) conferidos com o principal (54 concorrentes, 42 premissas, P(VPL > 0) de 81,9%); o script dos apêndices declara os prefixos que faltam na raiz, e o LibreOffice volta a abrir o arquivo; ANR na lista de siglas.
+**Justificativa**: pedido do autor (gerar o v20 com o modelo novo). O `.docx` dos apêndices gerado sobre o v20 não abria no LibreOffice ("unbound prefix" na figura).

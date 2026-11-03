@@ -32,6 +32,7 @@ SIGLAS = {
     "ABNT": "Associação Brasileira de Normas Técnicas",
     "ABRINQ": "Associação Brasileira dos Fabricantes de Brinquedos",
     "ANPD": "Autoridade Nacional de Proteção de Dados",
+    "ANR": "Associação Nacional de Restaurantes",
     "API": "Interface de programação de aplicações (Application Programming Interface)",
     "B1 a B4": "Blocos de coleta de dados do trabalho (concorrentes, avaliações, contagem direta e bases públicas)",
     "BCB": "Banco Central do Brasil",
