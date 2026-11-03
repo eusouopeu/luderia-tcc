@@ -149,6 +149,22 @@ Fonte: elaborado pelo próprio autor com base no B2. Em negrito, os cinco temas 
 
 Entre quem volta, o atendimento lidera os elogios nos três grupos, com cerca de um quarto a um terço das menções, seguido de ambiente e comida. No gasto médio e no alto, aparecem comemorações e grupos. No gasto alto, aparecem também bebidas e rapidez: quem gasta mais e volta elogia o serviço da ocasião, não só a casa. O Quadro C4 tem 7 avaliações, poucas para comparar grupos, e serve só de registro. Entre as 20 avaliações "não volta" (seção 1, sem filtro de gasto), a crítica ao atendimento aparece em 17 e a crítica à comida em 10.
 
+**Quadro C5 - Robustez: elogios com dois grupos de gasto (k = 2, % das menções de elogio do grupo)**
+
+| Elogios | Todas, gasto baixo (até R$ 90; 406 avaliações) | Todas, gasto alto (R$ 110 a R$ 200; 202) | Quem volta, gasto baixo (44) | Quem volta, gasto alto (23) |
+|---|---|---|---|---|
+| Atendimento presencial | **26%** | **23%** | **29%** | **25%** |
+| Comida | **18%** | **19%** | **12%** | **12%** |
+| Ambiente e decoração | **15%** | **12%** | **15%** | **15%** |
+| Variedade do acervo | **10%** | **8%** | **8%** | **6%** |
+| Explicação de jogos | **6%** | **9%** | **8%** | **11%** |
+| Comemorações e grupos | 2% | 2% | 3% | **6%** |
+| Demais 16 temas | 22% | 26% | 24% | 24% |
+
+Fonte: elaborado pelo próprio autor com base no B2. K-means com k = 2 no gasto declarado; em negrito, os cinco temas mais mencionados de cada coluna, com empates. Tabela completa em `B2_cluster_clientes_k2_elogios.csv`.
+
+Com dois grupos, o padrão dos Quadros C2 e C3 se mantém: atendimento lidera, seguido de comida e ambiente, nas duas faixas e entre quem volta. O que o k = 2 apaga é o recuo do ambiente no gasto alto, que no k = 3 cai a 6% dos elogios: com o grupo alto começando em R$ 110, ele fica em 12%. Esse recuo é próprio de quem gasta R$ 150 ou mais (60 avaliações), e o achado firme é a liderança do atendimento.
+
 Leitura para o plano: o cliente de ticket alto avalia o serviço, não o cenário. Ele elogia a rapidez e critica o atendimento e a taxa de entrada, que pesa mais numa conta já alta. O plano que mira ticket acima de R$ 100 precisa de atendimento à altura e de taxa justificada pelo serviço (explicação de jogos, curadoria). A Bodogami tem cerca de 40% das avaliações de cada grupo, então o padrão não é efeito de uma casa só.
 
 Limites: o gasto declarado inclui a ocasião (aniversário, grupo grande) e não separa o que é taxa e o que é consumo; a faixa é escolhida pelo cliente no Google Maps, sem conferência.
@@ -192,6 +208,7 @@ Limites: o gasto declarado vem de 13 casas com faixa de preço (6 no grupo 1, 7 
 | `B2_cluster_casas.csv` | 54 casas do B1: taxas, fonte, horas cobertas, taxa por hora, consumo, cesta completa, grupo ou motivo de ficar fora |
 | `B2_cluster_casas_resumo.csv` e `_conteudo.csv` | Grupos de casas: centroides, casas, nota, retorno; temas por grupo com qui-quadrado |
 | `B2_cluster_clientes_distribuicao_por_decisao.csv` | Distribuição interna dos elogios de quem volta e das críticas de quem não volta, por grupo de gasto |
+| `B2_cluster_clientes_k2_elogios.csv` | Robustez: distribuição interna dos elogios com k = 2, em todas as avaliações com gasto e só nas "volta" |
 | `B2_cluster_clientes_distribuicao.csv` | Distribuição interna dos elogios e das críticas em cada grupo de gasto (cada coluna soma 100%) |
 | `B2_cluster_clientes_resumo.csv` e `_conteudo.csv` | Grupos de clientes: faixa de gasto, nota, retorno; temas por grupo com qui-quadrado |
 | `B2_cluster_silhueta.csv` | Silhueta média de k = 2 a 5 nos dois agrupamentos |

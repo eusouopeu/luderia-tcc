@@ -2623,3 +2623,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: sem registro das hipóteses H-A (público latente pela comida), H-B (cesta mais cara desse público) e H-C (público afastado por conforto ou barulho).
 **Depois**: as três entram como hipóteses formuladas *a posteriori*, com a evidência indireta do B2 e a decisão de declarar no cap. 3 em aberto.
 **Justificativa**: o autor relatou as três hipóteses no chat do projeto; registrar antes de qualquer uso no texto.
+
+### 19:52
+**Objeto**: `B2-a_retorno_e_clusters.py` (robustez com k = 2); `dados/[B2] Avaliacoes recentes/retorno_e_clusters/B2_cluster_clientes_k2_elogios.csv` (novo); `docs/parecer_retorno_e_clusters_B2.md` (Quadro C5)
+**Antes**: elogios por grupo de gasto só com k = 3.
+**Depois**: elogios também com k = 2 (gasto baixo até R$ 90, 406 avaliações; alto de R$ 110 a R$ 200, 202), em todas as avaliações com gasto e só nas "volta". O atendimento continua liderando; o recuo do ambiente no gasto alto some, porque é próprio de quem gasta R$ 150 ou mais.
+**Justificativa**: pedido do autor (mais uma tabela de itens elogiados com k = 2, como teste de robustez).
