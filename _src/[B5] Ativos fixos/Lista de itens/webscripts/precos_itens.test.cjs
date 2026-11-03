@@ -115,7 +115,7 @@ test('guardar: preço por unidade, sem duplicar a mesma oferta do item', () => {
   assert.equal(t.guardar(g, item, ofertas, 24, ctx), 0);
   assert.deepEqual(json(g['CB17|https://a/1']), {
     id_item: 'CB17', categoria: 'cozinha_bar', fonte: 'amazon', produto: 'Copo long drink caixa com 24',
-    preco: 5, frete: 1, preco_anuncio: 120, unidades: 24, tipo_preco: 'padrao', preco_sem_pix: null, cep: '', avaliacoes: null, leitor: '', url: 'https://a/1', busca: 'b', data_coleta: '2026-11-02', motivo: '', excluida: 0, filtros_off: [], alterado_em: 1000,
+    preco: 5, frete: 1, preco_anuncio: 120, unidades: 24, tipo_preco: 'padrao', preco_sem_pix: null, cep: '', avaliacoes: null, leitor: '', url: 'https://a/1', busca: 'b', data_coleta: '2026-11-02', motivo: '', excluida: 0, unidades_manual: false, filtros_off: [], alterado_em: 1000,
   });
   // unidades da oferta valem sobre as do painel; preço sem Pix e motivo vão por unidade e como vieram
   t.guardar(g, item, [{ produto: 'Copo caixa com 12', preco: 60, frete: null, preco_sem_pix: 63, unidades: 12, motivo: 'sem avaliações', url: 'https://a/3' }], 24, ctx);
@@ -214,6 +214,39 @@ test('kits, combos e variantes de cor ou voltagem', () => {
   const v = t.marcarVariantes([...cores, { produto: 'Frigobar HQ 130 Litros (127V)', preco: 1489, url: 'f1' }, { produto: 'Frigobar HQ 130 Litros (220v)', preco: 1489, url: 'f2' }, { produto: 'Frigobar HQ 130 Litros (220v)', preco: 1600, url: 'f3' }]);
   assert.deepEqual(json(v.map((o) => Boolean(o.varianteDe))), [false, true, true, false, true, false]);
   assert.match(t.motivosOferta(v[1], 'fogao industrial 4 bocas com forno').join(), /variante de: Fogão Industrial com Forno 2 Bocas/);
+});
+
+test('kits: Nº é tamanho, lista de opções, pacote da Amazon, peças e pares', () => {
+  const k = (titulo, termo) => json(t.kitDe(titulo, termo));
+  assert.deepEqual(k('Caçarola Nº 50 Panela Grande Linha Hotel', 'kit panelas aluminio grosso industrial hotel'), {});
+  assert.deepEqual(k('Conjunto De Copos Nadir Long Drink 450 Ml 3/6/12/24 Unid', 'copo long drink vidro 300 ml caixa 24'), { ambiguo: '3/6/12/24' });
+  assert.deepEqual(k('Jogo de Talheres Aço Inox 24 48 ou 72 Peças', 'kit garfo e faca de mesa inox restaurante 12 pares'), { ambiguo: '24/48/72' });
+  assert.deepEqual(k('Cadeira de Jantar Dora Industrial Metal (4, Preto, 0)', 'cadeira industrial metal preta assento madeira'), { unidades: 4 });
+  assert.deepEqual(k('Cadeira de Jantar Dora Industrial Metal (1, Preto, 0)', 'cadeira industrial metal preta assento madeira'), {});
+  assert.deepEqual(k('Refrigerador Expositor Vertical HQ 509 Litros Porta de Vidro (110, Preto)', 'expositor vertical bebidas porta vidro'), {});
+  assert.deepEqual(k('Conjunto de Talheres em Aço Inoxidável 430, 36 Peças, 12 Facas, 12 Garfos', 'kit garfo e faca de mesa inox restaurante 12 pares'), { unidades: 12 });
+  assert.deepEqual(k('Tenda Roteador Wi-Fi 6, Roteador Dual Band Gigabit AX3000', 'roteador wifi 6 dual band'), {});
+  assert.deepEqual(k('2 peças ® Luminária de teto pendente retrô E27', 'luminaria pendente industrial cupula metal preto e27'), { unidades: 2 });
+  const pares = 'kit garfo e faca de mesa inox restaurante 12 pares';
+  assert.deepEqual(k('Kit 200 Garfo e Faca Talheres 100% Aço Inox 100 Garfo e 100 Faca', pares), { unidades: 100 });
+  assert.deepEqual(k('Kit 24 Peças com 12 Garfos E 12 Facas de mesa em Inox', pares), { unidades: 12 });
+  assert.deepEqual(k('Kit 12 Garfo 12 Faca Aço Inox Mesa Restaurante', pares), { unidades: 12 });
+  assert.deepEqual(k('Jogo Garfo e Faca Inox 12 pares', pares), { unidades: 12 });
+  // lista de opções desmarca até o autor digitar as unidades; frete acima de 3× o preço também
+  const o = { produto: 'Copo Americano Long Drink Nadir 450 ml Kit 6/12/24 Unid', preco: 54.97, frete: 0, avaliacoes: 3 };
+  assert.match(t.motivosOferta(o, 'copo long drink vidro 300 ml caixa 24', { filtros: { medida: false } }).join(), /unidades: 6\/12\/24, conferir no anúncio/);
+  assert.equal(t.motivosOferta({ ...o, unidadesManual: 6 }, 'copo long drink vidro 300 ml caixa 24', { filtros: { medida: false } }).length, 0);
+  assert.match(t.motivosOferta({ ...o, produto: 'Copo Long Drink 300ml Kit 24', frete: 200 }, 'copo long drink vidro 300 ml caixa 24').join(), /frete suspeito: R\$ 200,00/);
+});
+
+test('revisar guardadas: mesmo produto em dois itens fica no primeiro', () => {
+  const g = {};
+  const ctx = { fonte: 'amazon', busca: 'b', data_coleta: '2026-11-03' };
+  const oferta = { produto: 'Estante Industrial Preta com 5 Prateleiras de Madeira e Metalon', preco: 339, url: 'e1', avaliacoes: 2 };
+  t.guardar(g, { id: 'MO05', categoria: 'mobiliario' }, [oferta], 1, { ...ctx, agora: 1 });
+  t.guardar(g, { id: 'CB19', categoria: 'cozinha_bar' }, [oferta], 1, { ...ctx, agora: 2 });
+  const fora = t.revisarGuardadas(g, {});
+  assert.deepEqual(json(fora.map((f) => [f.k, f.motivos.at(-1)])), [['CB19|e1', 'já guardada em MO05']]);
 });
 
 test('revisar guardadas: regras, medida e variantes, sem a faixa de preço', () => {

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.03-4
+// @version      2026.11.03-5
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -121,8 +121,8 @@
     ['OB42', 'obra_reforma', 'Letreiro de fachada', 'fachada acm letra caixa iluminada led', 'fachada/letreiro|acm', 'adesivo|neon|mini|mesa|placa de sinalizacao|letra avulsa'],
     ['MO01', 'mobiliario', 'Mesa de jogo para 6 lugares', 'mesa industrial 160x80 tampo pinus pe metal preto', 'mesa|industrial/metal/ferro/aco/metalon', 'cadeira|conjunto|jogo de jantar|banco|dobravel|infantil|escritorio|centro|bistro|vidro|marmore|laca'],
     ['MO02', 'mobiliario', 'Mesa de jogo para 4 lugares', 'mesa industrial quadrada 80x80 tampo pinus pe metal preto', 'mesa|quadrada|industrial/metal/ferro/aco/metalon', 'cadeira|conjunto|jogo de jantar|banco|dobravel|infantil|centro|lateral|bistro|alta|vidro|marmore|laca'],
-    ['MO03', 'mobiliario', 'Cadeira', 'cadeira industrial metal preta assento madeira', 'cadeira|metal/ferro/aco/industrial', 'gamer|escritorio|giratoria|rodizio|infantil|praia|capa|almofada|poltrona|banqueta|bistro|alta|estofada|veludo|plastico'],
-    ['MO04', 'mobiliario', 'Luminária pendente sobre a mesa', 'luminaria pendente industrial cupula metal preto e27', 'pendente|preto/preta', 'abajur|luminaria de mesa|trilho|spot|arandela|lampada avulsa|plafon|fita|dourado|cristal|rose'],
+    ['MO03', 'mobiliario', 'Cadeira', 'cadeira industrial metal preta assento madeira', 'cadeira|metal/ferro/aco/industrial', 'gamer|escritorio|giratoria|rodizio|infantil|praia|capa|almofada|poltrona|banqueta|bistro|alta|estofada|veludo|plastico|estofado|banco|bancos|alto|mesa|polipropileno|courino'],
+    ['MO04', 'mobiliario', 'Luminária pendente sobre a mesa', 'luminaria pendente industrial cupula metal preto e27', 'pendente|preto/preta', 'abajur|luminaria de mesa|trilho|spot|arandela|lampada avulsa|plafon|fita|dourado|cristal|rose|semi embutida|3 lampadas|bilhar|parede|tripla'],
     ['MO05', 'mobiliario', 'Estante do acervo', 'estante industrial metalon preto pinus 5 prateleiras 180 cm', 'estante|5 prateleira|industrial/metalon/ferro/aco', 'sapateira|banheiro|plastica|plastico|mini|nicho|parede|escada'],
     ['MO06', 'mobiliario', 'Balcão de atendimento e caixa', 'balcao industrial metalon preto tampo pinus loja caixa', 'balcao|industrial/metalon/ferro/aco', 'cozinha|pia|banheiro|gabinete|buffet|aereo|rack|tv|mini|refrigerado|vidro'],
     ['MO07', 'mobiliario', 'Armário de funcionários', 'armario roupeiro aco 8 portas vestiario', 'roupeiro/vestiario|aco', 'guarda roupa|mdf|infantil|casal|solteiro|cabideiro'],
@@ -294,18 +294,41 @@
   }
 
   // Kit ou combo no título. Unidades: "(2 un.)", "caixa com 24", "kit com 4 cadeiras", "12
-  // pratos" (a palavra é a principal do termo: a primeira com 4 letras ou mais). Combo: o kit ou
-  // o "+" traz algo fora do termo ("+ 30 bobinas", "kit com 2 bobinas"); conexões ("USB + LAN")
-  // não contam. Palavra do termo que não é a principal ("kit 4 câmeras") é a especificação.
+  // pratos" (a palavra é a principal do termo: a primeira com 4 letras ou mais), "2 peças
+  // luminária" e o pacote da variante da Amazon, "(4, Preto)". Combo: o kit ou o "+" traz algo
+  // fora do termo ("+ 30 bobinas", "kit com 2 bobinas"); conexões ("USB + LAN") não contam.
+  // Palavra do termo que não é a principal ("kit 4 câmeras") é a especificação. "Nº 50" é
+  // tamanho, não unidade. Lista de opções ("3/6/12/24 unid.", "24, 48 ou 72 peças") devolve
+  // { ambiguo }: o preço é de uma delas. Termo em pares ("12 pares"): o menor número entre as
+  // peças do par ("12 garfos e 12 facas" = 12).
   const CONEXOES = new Set(['usb', 'lan', 'wifi', 'wi', 'bluetooth', 'ethernet', 'serial', 'rede', 'hdmi', 'nfc', 'pix', 'debito', 'credito', 'chip', 'mais']);
   function kitDe(titulo, termo) {
-    const t = palavras(titulo).join(' ');
+    // "Nº 50" é tamanho; "Wi-Fi 6", "USB 3" e afins são especificação, não unidades
+    const t = palavras(titulo).join(' ').replace(/(^| )(?:n|nro|numero|fi|wifi|usb|ax|ac|bluetooth|hdmi) \d+(?= |$)/g, ' ');
     const doTermo = palavras(termo).filter((p) => p.length >= 3 && !/\d/.test(p));
     const principal = doTermo.find((p) => p.length >= 4) || '';
     const casa = (w, p) => w.startsWith(p) || p.startsWith(w.replace(/e?s$/, ''));
     const papel = (w) => (!w || (principal && casa(w, principal)) ? 'item' : doTermo.some((p) => casa(w, p)) ? 'spec' : 'fora');
     const mais = String(titulo || '').match(/\+\s*(?:\d+\s*)?([A-Za-zÀ-ú]{3,})/);
     if (mais && !CONEXOES.has(semAcento(mais[1])) && papel(semAcento(mais[1])) === 'fora') return { combo: semAcento(mais[1]) };
+    // lista de opções: números separados por "/" ou "ou" antes de un./peças ("430, 36 peças" não)
+    const opcoes = semAcento(String(titulo || '')).match(/(\d+(?:(?:\s*(?:\/|,|\bou\b|\be\b)\s*|\s+)\d+)+)\s*(?:un|unid|unidades?|pecas?|pcs)\b/i);
+    if (opcoes && /\/|\bou\b/.test(opcoes[1])) return { ambiguo: opcoes[1].split(/(?:\s*(?:\/|,|\bou\b|\be\b)\s*|\s+)/).join('/') };
+    if (/(^| )pares?( |$)/.test(palavras(termo).join(' '))) {
+      const menor = {};
+      for (const p of doTermo.filter((w) => w.length >= 4 && w !== 'pares')) {
+        for (const m of t.matchAll(new RegExp(`(?:^| )(\\d+) ${p.slice(0, 4)}[a-z]*(?= |$)`, 'g'))) menor[p] = Math.min(menor[p] ?? Infinity, Number(m[1]));
+      }
+      const ns = Object.values(menor);
+      if (ns.length >= 2) return Math.min(...ns) > 1 ? { unidades: Math.min(...ns) } : {};
+      const pares = t.match(/(?:^| )(\d+) pares(?= |$)/);
+      if (pares) return { unidades: Number(pares[1]) };
+    }
+    // pacote da variante: "(4, Preto)"; voltagem ("(110, Cinza)") não é pacote
+    const pacote = String(titulo || '').match(/\((\d+)\s*,[^)]*\)\s*$/);
+    if (pacote && Number(pacote[1]) > 1 && Number(pacote[1]) <= 50) return { unidades: Number(pacote[1]) };
+    const pecas = principal && t.match(new RegExp(`(?:^| )(\\d+) (?:pecas?|pcs) ${principal.slice(0, 4)}`));
+    if (pecas && Number(pecas[1]) > 1) return { unidades: Number(pecas[1]) };
     const kit = t.match(/(?:^| )(?:kit|caixa|jogo|conjunto|pack|cx)(?: (?:com|c))? (\d+)(?: ([a-z]+))?/);
     if (kit) {
       const w = /^(un|unid|unidades?|pecas?|pcs?)$/.test(kit[2] || '') ? '' : kit[2];
@@ -353,7 +376,10 @@
     m.push(...motivosRegras(o.produto, ref.regras));
     const kit = kitDe(o.produto, termo);
     if (kit.combo) m.push(`combo: + ${kit.combo}`);
+    if (kit.ambiguo && !o.unidadesManual && !o.unidades_manual) m.push(`unidades: ${kit.ambiguo}, conferir no anúncio`);
     if (o.varianteDe) m.push(`variante de: ${o.varianteDe.slice(0, 40)}`);
+    if (o.frete > 3 * o.preco) m.push(`frete suspeito: R$ ${o.frete.toFixed(2).replace('.', ',')}`);
+    if (ref.outros && ref.outros[o.url]) m.push(`já guardada em ${ref.outros[o.url]}`);
     if (f.faixa && ref.mediana > 0) {
       const v = (o.preco + (o.frete || 0)) / Math.max(1, Number(o.unidades ?? ref.unidades) || 1);
       if (v < FAIXA[0] * ref.mediana || v > FAIXA[1] * ref.mediana) m.push(`faixa: ${(v / ref.mediana).toFixed(1).replace('.', ',')}× a mediana`);
@@ -382,6 +408,9 @@
     const fora = [];
     const porItem = {};
     for (const [k, l] of Object.entries(guardados)) if (!l.excluida) (porItem[l.id_item] ||= []).push([k, l]);
+    // o mesmo produto em dois itens fica no primeiro em que foi guardado
+    const donoUrl = {};
+    for (const [k, l] of Object.entries(guardados).filter(([, l]) => !l.excluida).sort((a, b) => (a[1].alterado_em || 0) - (b[1].alterado_em || 0) || a[0].localeCompare(b[0]))) donoUrl[l.url] ||= l.id_item;
     for (const [id, ls] of Object.entries(porItem)) {
       const item = ITENS.find((i) => i.id === id);
       if (!item) continue;
@@ -391,9 +420,10 @@
         // a faixa de preço e as avaliações não valem na revisão; o filtro desligado ao guardar a
         // oferta (filtros_off) também não, para manter o que o autor guardou de propósito
         const desligados = Object.fromEntries((o.filtros_off || []).map((f) => [f, false]));
-        const m = motivosOferta({ ...o, patrocinado: false }, item.termo, { filtros: { ...filtros, faixa: false, avaliacoes: false, ...desligados }, regras: item });
+        const outros = donoUrl[o.url] !== id ? { [o.url]: donoUrl[o.url] } : {};
+        const m = motivosOferta({ ...o, patrocinado: false }, item.termo, { filtros: { ...filtros, faixa: false, avaliacoes: false, ...desligados }, regras: item, outros });
         const kit = kitDe(o.produto, item.termo);
-        if (kit.unidades && Number(o.unidades) !== kit.unidades) m.push(`kit de ${kit.unidades} un., guardada com ${o.unidades}`);
+        if (kit.unidades && !o.unidades_manual && Number(o.unidades) !== kit.unidades) m.push(`kit de ${kit.unidades} un., guardada com ${o.unidades}`);
         if (m.length) fora.push({ k: ls[i][0], id, produto: o.produto, motivos: m });
       });
     }
@@ -482,6 +512,7 @@
         cep: contexto.cep || '',
         avaliacoes: o.avaliacoes ?? null, leitor: o.leitor || '',
         url: o.url, busca: o.busca || contexto.busca, data_coleta: contexto.data_coleta, motivo: o.motivo || '', excluida: 0,
+        unidades_manual: Boolean(o.unidadesManual),
         filtros_off: Object.keys(contexto.filtros || {}).filter((f) => !contexto.filtros[f]),
         alterado_em: contexto.agora || Date.now(),
       };
@@ -998,7 +1029,14 @@
   }
 
   // Referência dos filtros: mediana do item guardado, unidades por embalagem e filtros ligados.
-  const referencia = () => ({ mediana: resumoItem(carregar(), itemAtual().id).mediana, unidades: el.unidades.value, filtros: filtrosAtuais(), regras: itemAtual() });
+  // outros: URL já guardada em outro item -> id desse item (cada produto conta num item só).
+  function referencia() {
+    const g = carregar();
+    const item = itemAtual();
+    const outros = {};
+    for (const l of ativas(g)) if (l.id_item !== item.id) outros[l.url] ||= l.id_item;
+    return { mediana: resumoItem(g, item.id).mediana, unidades: el.unidades.value, filtros: filtrosAtuais(), regras: item, outros };
+  }
 
   // Unidades de cada oferta: a digitada na linha; senão, a do kit no título ("caixa com 24");
   // senão, a do campo do painel.
