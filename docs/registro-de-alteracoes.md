@@ -2428,3 +2428,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: o painel só lia as ofertas ao clicar em "Ler ofertas" (ou ao trocar de página depois de uma leitura); até lá, "Guardar marcadas" ficava desativado; trocar de item apagava a lista.
 **Depois**: a página é lida sozinha ao abrir o painel e a cada troca de URL, assim que as ofertas param de mudar (duas leituras iguais, a cada 1,5 s); trocar de item relê a página com as regras do item novo; "Guardar marcadas" fica liberado sem clique extra; "Ler ofertas" segue para reler à mão (ex.: depois de rolar). Teste do painel confere a leitura automática e a releitura ao trocar de item (25 testes passando).
 **Justificativa**: pedido do autor (não precisar clicar em "Ler ofertas" para liberar "Guardar marcadas").
+
+### 23:45
+**Objeto**: `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js` (versão 2026.11.02-7) e `precos_itens.test.cjs`; `docs/pendencias.md`, `AGORA.md`
+**Antes**: "Guardar marcadas", "Baixar CSV", "Revisar guardadas" e "Limpar" no fim do painel, abaixo da lista de ofertas; seletor de itens em lista única, sem distinguir os já coletados.
+**Depois**: os quatro botões (com "Unidades por embalagem") logo abaixo dos filtros; seletor com os itens agrupados por categoria (optgroup), os que já têm oferta guardada esmaecidos, com ✓ e o número de ofertas, e os que faltam na cor e com a marca da categoria (🟠 obra e reforma, 🔵 cozinha e bar, 🟢 mobiliário, 🟣 equipamentos), atualizados a cada guardada ou exclusão. Teste do painel confere o seletor (25 testes passando).
+**Justificativa**: pedido do autor (botões perto dos filtros; ver no seletor os itens que faltam).

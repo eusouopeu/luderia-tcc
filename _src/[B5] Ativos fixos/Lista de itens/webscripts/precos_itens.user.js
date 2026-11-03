@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.02-6
+// @version      2026.11.02-7
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -24,7 +24,9 @@
  * Como usar:
  *  1. Informar o CEP de Salvador usado no site (o frete depende dele) e escolher o item no
  *     painel (a lista vem de "[B5] Lista de Itens da Etapa 1", só os de fonte "coleta").
- *     "Buscar aqui" abre a busca do site com o termo do item.
+ *     "Buscar aqui" abre a busca do site com o termo do item. No seletor, os itens vêm em grupos
+ *     por categoria: os que já têm oferta guardada esmaecidos (✓ e o número de ofertas), os que
+ *     faltam na cor da categoria.
  *  2. A página é lida sozinha ao abrir, ao trocar de página e ao trocar de item ("Ler ofertas"
  *     relê à mão, ex.: depois de rolar): o painel lista as ofertas com preço, frete e tipo de preço; já
  *     vêm marcadas as que têm no título metade ou mais das palavras do termo, todas as
@@ -733,6 +735,9 @@
     button.x{flex:0 0 auto;padding:0 6px;border:none;opacity:.7}
     select,input{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px}
     select{width:100%} select option{color:#111}
+    option.obra_reforma{color:#c2410c} option.cozinha_bar{color:#1d4ed8}
+    option.mobiliario{color:#15803d} option.equipamentos{color:#7e22ce}
+    option.coletado{color:#9ca3af}
     input[type=number]{width:52px} input.cep{width:90px} li input.u{width:40px;flex:0 0 auto}
     ul{list-style:none;margin:6px 0;padding:0;max-height:40vh;overflow:auto}
     li{display:flex;gap:6px;align-items:flex-start;padding:3px 0;border-bottom:1px solid rgba(128,128,128,.25);font-size:12px}
@@ -804,8 +809,23 @@
         + `${r.leitores.length ? ` · leitor ${r.leitores.map((l) => ROTULO_LEITOR[l] || l).join(', ')}` : ''}`
         + ` · desde ${r.maisAntiga}${alertas.length ? ` · ⚠ ${alertas.join('; ')}` : ''}`
       : 'Este item ainda não tem ofertas guardadas.';
+    rotularItens(lista);
     listarGuardadas(guardados, item);
     if (t) status(t);
+  }
+
+  // Itens do seletor: os que já têm oferta guardada saem esmaecidos (✓ e o número de ofertas);
+  // os que faltam, na cor e com a marca da categoria. A marca vale onde o menu nativo ignora a cor.
+  const MARCA_CATEGORIA = { obra_reforma: '🟠', cozinha_bar: '🔵', mobiliario: '🟢', equipamentos: '🟣' };
+  function rotularItens(lista) {
+    const n = {};
+    for (const l of lista) n[l.id_item] = (n[l.id_item] || 0) + 1;
+    for (const o of el.item.querySelectorAll('option')) {
+      const i = ITENS.find((x) => x.id === o.value);
+      const feito = n[i.id] > 0;
+      o.className = feito ? 'coletado' : i.categoria;
+      o.textContent = feito ? `✓ ${i.id} · ${i.item} (${n[i.id]})` : `${MARCA_CATEGORIA[i.categoria] || '⚪'} ${i.id} · ${i.item}`;
+    }
   }
 
   function listarGuardadas(guardados, item) {
@@ -886,7 +906,8 @@
   function montarPainel() {
     el.item = criar('select', {
       onchange: () => { GM_setValue(CHAVE_ITEM, el.item.value); mostrar(); ler(false, 'Item trocado: página relida com as regras dele. '); },
-    }, ITENS.map((i) => criar('option', { value: i.id, textContent: `${i.id} · ${i.item}` })));
+    }, [...new Set(ITENS.map((i) => i.categoria))].map((c) => criar('optgroup', { label: c },
+      ITENS.filter((i) => i.categoria === c).map((i) => criar('option', { value: i.id, textContent: `${i.id} · ${i.item}` })))));
     el.item.value = itemAtual().id;
     el.cep = criar('input', {
       className: 'cep', placeholder: '40000-000', value: GM_getValue(CHAVE_CEP, ''),
@@ -989,11 +1010,11 @@
       el.resumo,
       criar('details', {}, [el.guardadasTitulo, el.guardadas]),
       filtros,
+      criar('div', { className: 'linha' }, [criar('span', { textContent: 'Unidades por embalagem:' }), el.unidades, el.bGuardar]),
+      criar('div', { className: 'linha' }, [bCsv, bRevisar, bLimpar]),
       criar('div', { className: 'linha' }, [bBuscar, bLer, bSomar, bPadrao]),
       el.funil,
       el.lista,
-      criar('div', { className: 'linha' }, [criar('span', { textContent: 'Unidades por embalagem:' }), el.unidades, el.bGuardar]),
-      criar('div', { className: 'linha' }, [bCsv, bRevisar, bLimpar]),
       el.status,
     ]);
     cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.textContent = painel.classList.contains('min') ? '+' : '–'; };
