@@ -1,7 +1,7 @@
 """Gera o .docx da variante de estilo dos caps. 1 e 2 (textos/capitulos/estilo_manual/).
 
 Converte o .md (títulos #/##, parágrafos, citações longas em linhas "> ",
-quadro em tabela markdown, legenda e fonte) em .docx no padrão ABNT/UFBA:
+quadro em tabela markdown, legenda e fonte; fórmula centralizada em linha "$$ … $$") em .docx no padrão ABNT/UFBA:
 A4, margens 3/2 cm, Arial 12, entrelinha 1,5, recuo de 1,25 cm; citação
 longa com recuo de 4 cm, corpo 10 e entrelinha simples. O gerar_docx_capitulo.js
 omite as linhas "> ", por isso este script próprio.
@@ -103,6 +103,11 @@ def main():
                     runs(cp, f"**{val}**" if r == 0 else val, tamanho=10)
                     formato(cp, recuo=0, linha=1.0, alinh=WD_ALIGN_PARAGRAPH.LEFT)
             continue
+        elif l.startswith("$$") and l.endswith("$$"):
+            p = doc.add_paragraph()
+            runs(p, l.strip("$").strip())
+            formato(p, recuo=0, depois=6, alinh=WD_ALIGN_PARAGRAPH.CENTER)
+            p.paragraph_format.space_before = Pt(6)
         elif l.startswith("**Quadro") or l.startswith("Fonte:"):
             p = doc.add_paragraph()
             runs(p, l, tamanho=12 if l.startswith("**") else 10)
