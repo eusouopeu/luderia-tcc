@@ -10,7 +10,7 @@ Entradas em dados/[B5] Ativos fixos/:
   obra_reforma/"[B5] SINAPI Composições BA AAAA-MM (Caixa).csv"   (B5-c_sinapi.py; o mês mais recente)
   _dados-brutos/<categoria>/*_precos.csv                          (coletas em sites, quando houver)
       do webscripts/precos_itens.user.js; usa id_item, url, preco (por unidade da lista), frete
-      (vazio = não informado) e excluida, com vírgula decimal. Cada exportação traz tudo o que
+      (vazio = não informado), motivo e excluida, com vírgula decimal. Cada exportação traz tudo o que
       estava guardado no navegador, então os arquivos se repetem entre si.
 Saídas em dados/[B5] Ativos fixos/orcamento/:
   "[B5] Orçamento por Item Etapa 1 {mês} (SINAPI e coletas).csv"
@@ -24,7 +24,9 @@ Regras:
     edifícios do TCU (Acórdão 2.622/2013-Plenário): 1º quartil no otimista, médio no
     provável e 3º quartil no pessimista.
   - Coleta: uma linha por item e URL, a do arquivo mais recente (o nome começa por
-    AAAA-MM-DD_HHmm); a oferta cuja última linha tem excluida = 1 sai. Frete não informado é
+    AAAA-MM-DD_HHmm); a oferta cuja última linha tem excluida = 1 sai, e também a que tem
+    motivo (filtro do painel que ela não passou: medida, palavra exigida ou excluída, combo,
+    variante, faixa, sem avaliações), marcada à mão pelo autor. Frete não informado é
     estimado: mediana dos fretes informados do item; sem eles, a mediana da razão frete/preço
     da categoria vezes o preço; sem nenhum frete na categoria, 0. Depois, preço mais frete de
     cada oferta; P75 no pessimista, mediana no provável e P25 no otimista, entre as ofertas
@@ -99,14 +101,19 @@ def ler_coletas() -> pd.DataFrame:
     if "excluida" not in df:  # exportações anteriores à exclusão no painel
         df["excluida"] = 0
     df["excluida"] = df["excluida"].fillna(0).astype(int)
+    if "motivo" not in df:  # exportações anteriores ao registro do motivo
+        df["motivo"] = ""
+    df["motivo"] = df["motivo"].fillna("").astype(str).str.strip()
     linhas = len(df)
     # Arquivos em ordem de nome (data e hora da exportação): fica a última linha de cada oferta.
     df = df.drop_duplicates(["id_item", "url"], keep="last")
     excluidas = int(df["excluida"].sum())
-    df = df[df["excluida"].eq(0) & df["preco"].gt(0)].copy()
+    fora_filtro = int((df["excluida"].eq(0) & df["motivo"].ne("")).sum())
+    df = df[df["excluida"].eq(0) & df["motivo"].eq("") & df["preco"].gt(0)].copy()
     df = estimar_frete(df)
     print(f"coletas em sites: {len(arquivos)} arquivos, {linhas} linhas, {len(df)} ofertas de {df['id_item'].nunique()} itens "
-          f"({linhas - len(df) - excluidas} repetidas entre exportações ou sem preço, {excluidas} excluídas no painel; "
+          f"({linhas - len(df) - excluidas - fora_filtro} repetidas entre exportações ou sem preço, {excluidas} excluídas no painel, "
+          f"{fora_filtro} fora dos filtros; "
           f"frete estimado em {int(df['frete_estimado'].sum())})")
     return df
 

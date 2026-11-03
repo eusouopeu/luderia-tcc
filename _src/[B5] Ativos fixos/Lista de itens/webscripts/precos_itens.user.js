@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.02-4
+// @version      2026.11.02-5
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -26,11 +26,14 @@
  *     painel (a lista vem de "[B5] Lista de Itens da Etapa 1", só os de fonte "coleta").
  *     "Buscar aqui" abre a busca do site com o termo do item.
  *  2. "Ler ofertas": o painel lista as ofertas da página com preço, frete e tipo de preço; já
- *     vêm marcadas as que têm no título metade ou mais das palavras do termo e não são
- *     patrocinadas. Desmarcar o que não é o item (outro tamanho, peça avulsa, acessório).
+ *     vêm marcadas as que têm no título metade ou mais das palavras do termo, todas as
+ *     palavras exigidas do item e nenhuma excluída, e que não são patrocinadas, combo com
+ *     acessório ("+ 30 bobinas") nem variante de cor ou voltagem de outra da lista. Desmarcar
+ *     o que não é o item (outro tamanho, peça avulsa, acessório).
  *     "Somar página" acrescenta as ofertas de outra página ou das que carregaram ao rolar.
- *  3. Se o anúncio vende em caixa ou jogo (pratos, copos), informar as unidades por
- *     embalagem: o preço guardado é o da unidade da lista.
+ *  3. Se o anúncio vende em caixa, jogo ou kit (pratos, copos), as unidades vêm do título
+ *     ("caixa com 24", "(2 un.)") no campo de cada linha, que se pode corrigir; sem elas, vale
+ *     "Unidades por embalagem". O preço guardado é o da unidade da lista.
  *  4. "Guardar marcadas". Repetir em outros sites e itens; os dados ficam no Tampermonkey
  *     (comuns a todos os sites). "Guardadas deste item" lista as ofertas do item, com ✕ para
  *     excluir uma: a exclusão vai no CSV (excluida = 1) e o build a respeita.
@@ -39,11 +42,14 @@
  *     Depois, rodar build/B5-b_orcamento_itens.py, que junta os arquivos e fica, para cada
  *     item e URL, com a linha do arquivo mais recente. "Limpar" baixa antes um backup JSON.
  *  Em página de produto, "Ler ofertas" lê o produto pelo JSON-LD (schema.org Product).
+ *  "Revisar guardadas" exclui as guardadas (de todos os itens) que não passam nas regras e
+ *  nos filtros de agora, sem a faixa de preço: serve às coletas feitas antes das regras.
  *
  * Leitura por site:
  *  - Amazon: cards [data-component-type="s-search-result"] (preço em .a-price .a-offscreen,
  *    sem o riscado; frete em "Entrega R$ X" ou "GRÁTIS"; link canônico /dp/<ASIN>). O preço
- *    do card costuma ser o do Pix ("à vista no Pix ou NuPay"): tipo_preco = pix.
+ *    do card costuma ser o do Pix ("à vista no Pix ou NuPay"): tipo_preco = pix, e o preço
+ *    cinza ao lado, sem o desconto, vai em preco_sem_pix.
  *  - Mercado Livre: cards .poly-card (preço atual em .poly-price__current).
  *  - Demais: JSON-LD (Product ou ItemList) e, sem ele, leitura genérica: cada preço
  *    "R$ X" da página sobe até o bloco com um único link de produto; o preço da oferta é o
@@ -56,14 +62,18 @@
  *  Frete vazio = o card não informa (o build estima); 0 = frete grátis.
  *
  * Saída: CSV com ";" e UTF-8 com BOM. Colunas id_item; categoria; fonte; produto; preco;
- * frete; preco_anuncio; unidades; tipo_preco (padrao, pix ou cupom); cep; avaliacoes (só
- * Amazon); leitor (proprio, jsonld ou generico); url; busca; data_coleta; excluida (0 ou 1).
- * preco = preco_anuncio ÷ unidades.
+ * frete; preco_anuncio; unidades; tipo_preco (padrao, pix ou cupom); preco_sem_pix (Amazon,
+ * por unidade); cep; avaliacoes (só Amazon); leitor (proprio, jsonld ou generico); url; busca;
+ * data_coleta; motivo (filtros que a oferta não passou e que o autor marcou à mão; o build
+ * deixa de fora); excluida (0 ou 1). preco = preco_anuncio ÷ unidades.
  *
  * Filtros da marcação inicial (desligáveis no painel; cada oferta desmarcada mostra o motivo):
  * faixa de preço (fora de 0,3× a 3× a mediana do que já está guardado do item), medida (o
- * título traz a mesma grandeza do termo com outro valor: "12000 btus" para "30000 btus") e
- * sem avaliações (card da Amazon sem nenhuma). "Só preço padrão" desmarca Pix e cupom.
+ * título traz a mesma grandeza do termo com outro valor: "12000 btus" para "30000 btus", com
+ * folga de 10% a 20% nas grandezas contínuas; comprimento em cm, comparado também às
+ * dimensões "25x25" do título) e sem avaliações (card da Amazon sem nenhuma). As regras do
+ * item (termo_exige e termo_exclui da lista) não se desligam. "Só preço padrão" desmarca Pix
+ * e cupom.
  * Atestados: funil da leitura (cards → com preço → sem patrocinado → no termo → nos filtros)
  * e leitor usado; cobertura da categoria; quartis e dispersão P75/P25 do item (alerta acima
  * de 3×); coleta mais antiga (alerta acima de 30 dias); ofertas mudadas desde o último CSV.
@@ -84,46 +94,50 @@
   const IDADE_MAX = 30; // A7: dias até a coleta mais antiga do item pedir revisão
   const FILTROS_PADRAO = { faixa: true, medida: true, avaliacoes: true };
 
-  // Itens de fonte "coleta" da lista da etapa 1: [id, categoria, item, termo de busca].
+  const lista = (s) => String(s || '').split('|').map((p) => p.trim()).filter(Boolean);
+
+  // Itens de fonte "coleta" da lista da etapa 1: [id, categoria, item, termo de busca, palavras
+  // exigidas, palavras excluídas] (colunas termo_busca, termo_exige e termo_exclui; "|" separa
+  // as palavras e "/" separa alternativas).
   // O teste (precos_itens.test.cjs) confere esta lista com o CSV.
   const ITENS = [
-    ['OB40', 'obra_reforma', 'Ar-condicionado split', 'ar condicionado split 30000 btus inverter'],
-    ['OB41', 'obra_reforma', 'Instalação do split', 'instalação ar condicionado split 30000 salvador'],
-    ['OB42', 'obra_reforma', 'Letreiro de fachada', 'letreiro fachada acm iluminado'],
-    ['MO01', 'mobiliario', 'Mesa de jogo para 6 lugares', 'mesa retangular 160x90 restaurante'],
-    ['MO02', 'mobiliario', 'Mesa de jogo para 4 lugares', 'mesa quadrada 90x90 restaurante'],
-    ['MO03', 'mobiliario', 'Cadeira', 'cadeira restaurante estofada'],
-    ['MO04', 'mobiliario', 'Luminária pendente sobre a mesa', 'luminaria pendente led mesa'],
-    ['MO05', 'mobiliario', 'Estante do acervo', 'estante industrial madeira metal 5 prateleiras'],
-    ['MO06', 'mobiliario', 'Balcão de atendimento e caixa', 'balcão de atendimento caixa loja mdf'],
-    ['MO07', 'mobiliario', 'Armário de funcionários', 'roupeiro aço 8 portas'],
-    ['CB01', 'cozinha_bar', 'Fogão industrial', 'fogao industrial 4 bocas com forno'],
-    ['CB02', 'cozinha_bar', 'Chapa bifeteira', 'chapa bifeteira industrial gas 70cm'],
-    ['CB03', 'cozinha_bar', 'Fritadeira', 'fritadeira industrial 2 cubas'],
-    ['CB04', 'cozinha_bar', 'Forno elétrico de bancada', 'forno eletrico industrial bancada'],
-    ['CB05', 'cozinha_bar', 'Coifa com exaustor', 'coifa industrial inox 150 cm exaustor'],
-    ['CB06', 'cozinha_bar', 'Geladeira comercial', 'refrigerador comercial 4 portas'],
-    ['CB07', 'cozinha_bar', 'Freezer horizontal', 'freezer horizontal 2 tampas 400 litros'],
-    ['CB08', 'cozinha_bar', 'Expositor de bebidas', 'expositor vertical bebidas porta vidro'],
-    ['CB09', 'cozinha_bar', 'Mesa de inox', 'mesa inox 150 cm cozinha industrial'],
-    ['CB10', 'cozinha_bar', 'Pia industrial', 'pia inox industrial 2 cubas'],
-    ['CB11', 'cozinha_bar', 'Liquidificador industrial', 'liquidificador industrial 4 litros'],
-    ['CB12', 'cozinha_bar', 'Multiprocessador', 'processador de alimentos industrial'],
-    ['CB13', 'cozinha_bar', 'Micro-ondas', 'micro-ondas 30 litros'],
-    ['CB14', 'cozinha_bar', 'Kit de gás', 'botijao p45 com regulador'],
-    ['CB15', 'cozinha_bar', 'Utensílios de cozinha', 'kit cozinha industrial panelas cubas gastronomicas'],
-    ['CB16', 'cozinha_bar', 'Pratos', 'prato raso restaurante'],
-    ['CB17', 'cozinha_bar', 'Copos', 'copo vidro long drink caixa'],
-    ['CB18', 'cozinha_bar', 'Talheres', 'faqueiro restaurante inox'],
-    ['CB19', 'cozinha_bar', 'Estante de aço', 'estante aço 5 prateleiras'],
-    ['CB20', 'cozinha_bar', 'Lava-louças', 'lava louças industrial capota'],
-    ['EQ01', 'equipamentos', 'Computador', 'notebook core i5 8gb ssd'],
-    ['EQ02', 'equipamentos', 'Impressora de NFC-e', 'impressora termica nao fiscal 80mm'],
-    ['EQ03', 'equipamentos', 'Maquininha de cartão', 'maquininha de cartão'],
-    ['EQ04', 'equipamentos', 'Roteador Wi-Fi', 'roteador wifi 6 dual band'],
-    ['EQ05', 'equipamentos', 'Som ambiente', 'caixa de som amplificada ambiente'],
-    ['EQ06', 'equipamentos', 'Câmeras', 'kit cftv 4 cameras dvr'],
-  ].map(([id, categoria, item, termo]) => ({ id, categoria, item, termo }));
+    ['OB40', 'obra_reforma', 'Ar-condicionado split', 'ar condicionado split 30000 btus inverter', 'split|inverter', 'janela|portatil|on off|controle remoto|suporte|capa'],
+    ['OB41', 'obra_reforma', 'Instalação do split', 'kit instalacao ar condicionado split 30000 btus 5 metros', 'kit|instala', 'suporte avulso|dreno|bomba|capa|controle'],
+    ['OB42', 'obra_reforma', 'Letreiro de fachada', 'fachada acm letra caixa iluminada led', 'fachada/letreiro|acm', 'adesivo|neon|mini|mesa|placa de sinalizacao|letra avulsa'],
+    ['MO01', 'mobiliario', 'Mesa de jogo para 6 lugares', 'mesa retangular restaurante 160x80 tampo madeira pe ferro', 'mesa', 'cadeira|conjunto|jogo de jantar|banco|dobravel|infantil|escritorio|centro|bistro'],
+    ['MO02', 'mobiliario', 'Mesa de jogo para 4 lugares', 'mesa quadrada restaurante 80x80 tampo madeira pe ferro', 'mesa|quadrada', 'cadeira|conjunto|jogo de jantar|banco|dobravel|infantil|centro|lateral|bistro|alta'],
+    ['MO03', 'mobiliario', 'Cadeira', 'cadeira restaurante estofada encosto madeira', 'cadeira', 'gamer|escritorio|giratoria|rodizio|infantil|praia|capa|almofada|poltrona|banqueta|bistro|alta'],
+    ['MO04', 'mobiliario', 'Luminária pendente sobre a mesa', 'luminaria pendente cupula metal e27 mesa jantar', 'pendente', 'abajur|luminaria de mesa|trilho|spot|arandela|lampada avulsa|plafon|fita'],
+    ['MO05', 'mobiliario', 'Estante do acervo', 'estante industrial aco madeira 5 prateleiras 180 cm', 'estante|5 prateleira', 'sapateira|banheiro|plastica|plastico|mini|nicho|parede|escada'],
+    ['MO06', 'mobiliario', 'Balcão de atendimento e caixa', 'balcao caixa atendimento loja recepcao mdf 180 cm', 'balcao', 'cozinha|pia|banheiro|gabinete|buffet|aereo|rack|tv|mini'],
+    ['MO07', 'mobiliario', 'Armário de funcionários', 'armario roupeiro aco 8 portas vestiario', 'roupeiro/vestiario|aco', 'guarda roupa|mdf|infantil|casal|solteiro|cabideiro'],
+    ['CB01', 'cozinha_bar', 'Fogão industrial', 'fogao industrial 4 bocas com forno', 'industrial', 'sem forno|embutir|cooktop|mesa vidro'],
+    ['CB02', 'cozinha_bar', 'Chapa bifeteira', 'chapa bifeteira industrial gas 70cm', 'chapa|gas', 'ferro fundido|para fogao|eletrica|grill|sanduicheira'],
+    ['CB03', 'cozinha_bar', 'Fritadeira', 'fritadeira industrial 2 cubas', 'fritadeira|2 cuba/dupla', 'air fryer|airfryer|sem oleo|cesto avulso'],
+    ['CB04', 'cozinha_bar', 'Forno elétrico de bancada', 'forno eletrico industrial bancada', 'industrial/comercial/profissional', 'air fryer|airfryer|micro ondas'],
+    ['CB05', 'cozinha_bar', 'Coifa com exaustor', 'coifa industrial inox 150 cm com motor exaustor', 'coifa|industrial', 'depurador|ilha|vidro|filtro avulso|carvao|60 cm|90 cm'],
+    ['CB06', 'cozinha_bar', 'Geladeira comercial', 'refrigerador comercial 4 portas', '4 porta', 'frigobar|cervejeira|vidro'],
+    ['CB07', 'cozinha_bar', 'Freezer horizontal', 'freezer horizontal 2 tampas 400 litros', 'horizontal', 'vertical|1 tampa|1 porta'],
+    ['CB08', 'cozinha_bar', 'Expositor de bebidas', 'expositor vertical bebidas porta vidro', 'vertical|vidro', 'frigobar|mini|cooler'],
+    ['CB09', 'cozinha_bar', 'Mesa de inox', 'mesa inox 150 cm cozinha industrial', 'inox', 'escrivaninha|escritorio|gamer|computador|jantar|centro|dobravel'],
+    ['CB10', 'cozinha_bar', 'Pia industrial', 'pia inox industrial 2 cubas', 'industrial|2 cuba/dupla', 'embutir|sobrepor|gourmet|torneira|tanque'],
+    ['CB11', 'cozinha_bar', 'Liquidificador industrial', 'liquidificador industrial 4 litros', 'industrial', 'portatil|mini|copo avulso|jarra avulsa'],
+    ['CB12', 'cozinha_bar', 'Multiprocessador', 'processador de alimentos industrial', 'industrial/comercial/profissional', 'manual|mini|usb|disco avulso|lamina avulsa'],
+    ['CB13', 'cozinha_bar', 'Micro-ondas', 'micro-ondas 30 litros', 'micro ondas', 'suporte|prato giratorio|prato avulso|capa'],
+    ['CB14', 'cozinha_bar', 'Kit de gás', 'kit regulador gas p45 alta vazao mangueira', 'regulador', 'p13|fogareiro|macarico|maçarico|botijao p13'],
+    ['CB15', 'cozinha_bar', 'Utensílios de cozinha', 'kit panelas aluminio grosso industrial hotel', 'panela|industrial/hotel/restaurante', 'brinquedo|infantil|miniatura|tampa avulsa|panela de pressao eletrica'],
+    ['CB16', 'cozinha_bar', 'Pratos', 'prato raso porcelana branco 26 cm kit 12', 'prato|raso', 'descartavel|papel|suporte|porta prato|sobremesa|fundo|infantil|decorativo|bolo'],
+    ['CB17', 'cozinha_bar', 'Copos', 'copo long drink vidro 300 ml caixa 24', 'copo|long', 'acrilico|plastico|descartavel|taca|caneca|termico|personalizado|gravado|canudo'],
+    ['CB18', 'cozinha_bar', 'Talheres', 'kit garfo e faca de mesa inox restaurante 12 pares', 'garfo|faca', 'colher|sobremesa|descartavel|plastico|infantil|faqueiro|churrasco|bolo|peixe'],
+    ['CB19', 'cozinha_bar', 'Estante de aço', 'estante aço 5 prateleiras', 'aco', 'sapateira|plastica|plastico|banheiro|mini'],
+    ['CB20', 'cozinha_bar', 'Lava-louças', 'lava loucas industrial capota inox', 'capota/industrial', 'servicos|detergente|secante|pastilha|cesto avulso|bancada'],
+    ['EQ01', 'equipamentos', 'Computador', 'notebook intel core i5 8gb ssd 256gb', 'notebook|i5', 'recondicionado|usado|seminovo|capa|mochila|suporte|carregador|bateria|para notebook|teclado|memoria'],
+    ['EQ02', 'equipamentos', 'Impressora de NFC-e', 'impressora termica nao fiscal 80mm', '80 mm', 'etiqueta|portatil|a4|sem tinta'],
+    ['EQ03', 'equipamentos', 'Maquininha de cartão', 'maquininha de cartao credito debito pix chip', 'maquininha/maquina', 'bobina|capa|carregador|bateria|pelicula|suporte|cabo|bolsa|case'],
+    ['EQ04', 'equipamentos', 'Roteador Wi-Fi', 'roteador wifi 6 dual band', 'wi fi 6/wifi 6/ax', 'repetidor|xpon|ont|wi fi 7|wifi 7|4g|chip'],
+    ['EQ05', 'equipamentos', 'Som ambiente', 'caixa de som ativa amplificada 10 polegadas bivolt', 'caixa|ativa/amplificada', 'portatil|karaoke|automotivo|carro|mini|alto falante|capa|suporte|cabo|trio'],
+    ['EQ06', 'equipamentos', 'Câmeras', 'kit cftv 4 cameras full hd dvr 4 canais', 'kit|dvr/nvr', 'fonte avulsa|conector|balun|cabo|suporte|caixa hermetica|falsa|fake|bateria'],
+  ].map(([id, categoria, item, termo, exige, exclui]) => ({ id, categoria, item, termo, exige: lista(exige), exclui: lista(exclui) }));
 
   // ---------- leitura de texto ----------
 
@@ -167,15 +181,37 @@
     return 'padrao';
   }
 
-  // Palavras comparáveis: sem acento, milhar sem ponto ("30.000" -> "30000"), medida junta
-  // ("160 x 90" e "160cm x 90cm" -> "160x90") e número separado da unidade ("513L" -> "513 l", "70cm" -> "70 cm").
+  // Palavras comparáveis: sem acento, milhar sem ponto ("30.000" -> "30000"), decimal com ponto
+  // ("2,4L" -> "2.4 l"), medida junta ("160 x 90" e "160cm x 90cm" -> "160x90") e número
+  // separado da unidade ("513L" -> "513 l", "70cm" -> "70 cm").
   function palavras(t) {
     return semAcento(t)
       .replace(/(\d)\.(\d{3})\b/g, '$1$2')
+      .replace(/(\d),(\d)/g, '$1.$2')
       .replace(/(\d)\s*(?:mm|cm|m)?\s*x\s*(?=\d)/g, '$1x')
       .replace(/(\d)(?!x\d)([a-z]+)/g, '$1 $2')
-      .split(/[^a-z0-9]+/)
+      .split(/[^a-z0-9.]+/)
+      .map((w) => w.replace(/^\.+|\.+$/g, ''))
       .filter(Boolean);
+  }
+
+  // A frase aparece no título em palavras inteiras. Exigida: a última palavra aceita sufixo
+  // ("2 cuba" casa com "2 cubas", "industria" com "industrial"). Excluída: só o plural em "s",
+  // para "capa" não casar com "capacidade" nem "mini" com "minimalista".
+  function temFrase(tituloNorm, frase, exata = false) {
+    const f = palavras(frase).join(' ').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return f !== '' && new RegExp(`(^| )${f}${exata ? 's?(?= |$)' : ''}`).test(tituloNorm);
+  }
+
+  // Regras do item (termo_exige e termo_exclui): falta uma exigida (nenhuma das alternativas
+  // "a/b" no título) ou aparece uma excluída. Devolve os motivos.
+  function motivosRegras(titulo, regras = {}) {
+    const t = palavras(titulo).join(' ');
+    const m = [];
+    for (const e of regras.exige || []) if (!e.split('/').some((alt) => temFrase(t, alt))) m.push(`falta: ${e}`);
+    const fora = (regras.exclui || []).filter((e) => temFrase(t, e, true));
+    if (fora.length) m.push(`excluída: ${fora.join(', ')}`);
+    return m;
   }
 
   // Parte das palavras do termo (4 letras ou mais, ou com número) presentes no título. Palavra
@@ -195,41 +231,116 @@
     cuba: 'cuba', cubas: 'cuba', tampa: 'tampa', tampas: 'tampa', gb: 'gb', tb: 'tb', w: 'w', kg: 'kg', polegadas: 'pol', pol: 'pol',
     lugar: 'lugar', lugares: 'lugar', cameras: 'camera', camera: 'camera', canais: 'canal', canal: 'canal' };
 
+  // Comprimentos vão para cm ("1,5 m" e "1500 mm" -> 150 cm); "80 mm" vira 8 cm nos dois lados.
+  const PARA_CM = { mm: 0.1, cm: 1, m: 100 };
+  // Folga da comparação por grandeza (o termo é aproximado: "cerca de 400 L"); contagens
+  // (bocas, portas, cubas) e as demais são exatas.
+  const FOLGA = { cm: 0.15, l: 0.15, ml: 0.2, btu: 0.1, w: 0.15, kg: 0.15 };
+  const FOLGA_DIM = 0.15;
+
   // Medidas de um texto: pares número + unidade ("30000 btu") e dimensões ("160x90", em ordem crescente).
   function medidas(t) {
     const ps = palavras(t);
     const pares = {};
     ps.forEach((p, i) => {
-      const u = UNIDADES[ps[i + 1]];
-      if (/^\d+$/.test(p) && u) (pares[u] ||= new Set()).add(p);
+      let u = UNIDADES[ps[i + 1]];
+      if (!/^\d+(\.\d+)?$/.test(p) || !u) return;
+      let v = Number(p);
+      if (PARA_CM[u]) { v = Math.round(v * PARA_CM[u] * 10) / 10; u = 'cm'; }
+      (pares[u] ||= new Set()).add(v);
     });
     const dims = new Set(ps.filter((p) => /^\d+(x\d+)+$/.test(p)).map((p) => p.split('x').map(Number).sort((a, b) => a - b).join('x')));
     return { pares, dims };
   }
 
-  // F3: o título traz a mesma grandeza do termo com outro valor (e não traz o do termo).
-  // Devolve o motivo ("12000 btu, termo 30000 btu") ou ''.
+  const perto = (v, ref, folga) => Math.abs(v - ref) <= folga * ref;
+  const fmtMedida = (vs) => [...vs].map((v) => String(v).replace('.', ',')).join('/');
+
+  // Cada lado da dimensão do termo tem um lado próximo no título ("160x80" casa com "80x160x75").
+  const dimCasa = (dt, dTitulo) => {
+    const ladosTitulo = dTitulo.split('x').map(Number);
+    return dt.split('x').map(Number).every((l) => ladosTitulo.some((x) => perto(x, l, FOLGA_DIM)));
+  };
+
+  // F3: o título traz a mesma grandeza do termo com outro valor (e não traz o do termo, com a
+  // folga da grandeza). Comprimento do termo ("70 cm") também se compara às dimensões do título
+  // ("25x25"). Devolve o motivo ("12000 btu, termo 30000 btu") ou ''.
   function medidaConflita(titulo, termo) {
     const mt = medidas(termo);
     const mo = medidas(titulo);
     for (const [u, valores] of Object.entries(mt.pares)) {
-      const doTitulo = mo.pares[u];
-      if (doTitulo && ![...valores].some((v) => doTitulo.has(v))) return `${[...doTitulo].join('/')} ${u}, termo ${[...valores].join('/')} ${u}`;
+      const doTitulo = new Set(mo.pares[u] || []);
+      if (u === 'cm') for (const d of mo.dims) d.split('x').forEach((l) => doTitulo.add(Number(l)));
+      const casa = (v) => [...valores].some((ref) => perto(v, ref, FOLGA[u] || 0));
+      if (doTitulo.size && ![...doTitulo].some(casa)) return `${fmtMedida(doTitulo)} ${u}, termo ${fmtMedida(valores)} ${u}`;
     }
-    if (mt.dims.size && mo.dims.size && ![...mt.dims].some((d) => mo.dims.has(d))) return `${[...mo.dims].join('/')}, termo ${[...mt.dims].join('/')}`;
+    if (mt.dims.size && mo.dims.size && ![...mt.dims].some((d) => [...mo.dims].some((dt) => dimCasa(d, dt)))) return `${[...mo.dims].join('/')}, termo ${[...mt.dims].join('/')}`;
     return '';
   }
 
-  // Motivos para uma oferta lida não vir marcada, na ordem do funil: patrocinado, termo e os
-  // filtros ligados (F2 faixa de preço, F3 medida, F5 sem avaliações). Vazio = marcada.
-  // ref = { mediana (preço + frete por unidade das guardadas do item), unidades, filtros }.
+  // Kit ou combo no título. Unidades: "(2 un.)", "caixa com 24", "kit com 4 cadeiras", "12
+  // pratos" (a palavra é a principal do termo: a primeira com 4 letras ou mais). Combo: o kit ou
+  // o "+" traz algo fora do termo ("+ 30 bobinas", "kit com 2 bobinas"); conexões ("USB + LAN")
+  // não contam. Palavra do termo que não é a principal ("kit 4 câmeras") é a especificação.
+  const CONEXOES = new Set(['usb', 'lan', 'wifi', 'wi', 'bluetooth', 'ethernet', 'serial', 'rede', 'hdmi', 'nfc', 'pix', 'debito', 'credito', 'chip', 'mais']);
+  function kitDe(titulo, termo) {
+    const t = palavras(titulo).join(' ');
+    const doTermo = palavras(termo).filter((p) => p.length >= 3 && !/\d/.test(p));
+    const principal = doTermo.find((p) => p.length >= 4) || '';
+    const casa = (w, p) => w.startsWith(p) || p.startsWith(w.replace(/e?s$/, ''));
+    const papel = (w) => (!w || (principal && casa(w, principal)) ? 'item' : doTermo.some((p) => casa(w, p)) ? 'spec' : 'fora');
+    const mais = String(titulo || '').match(/\+\s*(?:\d+\s*)?([A-Za-zÀ-ú]{3,})/);
+    if (mais && !CONEXOES.has(semAcento(mais[1])) && papel(semAcento(mais[1])) === 'fora') return { combo: semAcento(mais[1]) };
+    const kit = t.match(/(?:^| )(?:kit|caixa|jogo|conjunto|pack|cx)(?: (?:com|c))? (\d+)(?: ([a-z]+))?/);
+    if (kit) {
+      const w = /^(un|unid|unidades?|pecas?|pcs?)$/.test(kit[2] || '') ? '' : kit[2];
+      const p = papel(w);
+      if (p === 'fora') return { combo: w };
+      if (p === 'item' && Number(kit[1]) > 1) return { unidades: Number(kit[1]) };
+      if (p === 'spec') return {};
+    }
+    const un = t.match(/(?:^| )(\d+) (?:un|unid|unidades?)(?= |$)/);
+    if (un && Number(un[1]) > 1) return { unidades: Number(un[1]) };
+    const n = principal && t.match(new RegExp(`(?:^| )(\\d+) (${principal.slice(0, 4)}[a-z]*)(?= |$)`));
+    if (n && Number(n[1]) > 1 && papel(n[2]) === 'item') return { unidades: Number(n[1]) };
+    return {};
+  }
+
+  // Variantes de cor ou voltagem: mesmo título sem cor nem voltagem e mesmo preço. A primeira
+  // fica; as demais recebem varianteDe (título da primeira). Devolve as ofertas anotadas.
+  const CORES = new Set(['preto', 'preta', 'branco', 'branca', 'cinza', 'azul', 'amarelo', 'amarela', 'vermelho', 'vermelha', 'verde', 'rosa', 'prata', 'dourado', 'dourada', 'marrom', 'bege', 'grafite', 'cor', 'cores']);
+  function chaveVariante(o) {
+    const t = palavras(o.produto).join(' ')
+      .replace(/(^| )(110|127|220)( v| volts?)(?= |$)/g, ' ')
+      .replace(/(^| )(bivolt|monofasico|volts?)(?= |$)/g, ' ');
+    return t.split(' ').filter((w) => w && !CORES.has(w)).join(' ') + '|' + Math.round(o.preco || 0);
+  }
+  function marcarVariantes(ofertas) {
+    const primeira = new Map();
+    return ofertas.map((o) => {
+      const k = chaveVariante(o);
+      const p = primeira.get(k);
+      if (!p) { primeira.set(k, o); const { varianteDe, ...resto } = o; return resto; }
+      return { ...o, varianteDe: p.produto };
+    });
+  }
+
+  // Motivos para uma oferta lida não vir marcada, na ordem do funil: patrocinado, termo, regras
+  // do item (falta uma exigida, tem uma excluída), combo com acessório, variante de cor ou
+  // voltagem e os filtros ligados (F2 faixa de preço, F3 medida, F5 sem avaliações). Vazio =
+  // marcada. ref = { mediana (preço + frete por unidade das guardadas do item), unidades,
+  // filtros, regras: { exige, exclui } }. A faixa usa as unidades da oferta, se ela tiver.
   function motivosOferta(o, termo, ref = {}) {
     const f = { ...FILTROS_PADRAO, ...(ref.filtros || {}) };
     const m = [];
     if (o.patrocinado) m.push('patrocinado');
     if (relevancia(o.produto, termo) < 0.5) m.push('termo');
+    m.push(...motivosRegras(o.produto, ref.regras));
+    const kit = kitDe(o.produto, termo);
+    if (kit.combo) m.push(`combo: + ${kit.combo}`);
+    if (o.varianteDe) m.push(`variante de: ${o.varianteDe.slice(0, 40)}`);
     if (f.faixa && ref.mediana > 0) {
-      const v = (o.preco + (o.frete || 0)) / Math.max(1, Number(ref.unidades) || 1);
+      const v = (o.preco + (o.frete || 0)) / Math.max(1, Number(o.unidades ?? ref.unidades) || 1);
       if (v < FAIXA[0] * ref.mediana || v > FAIXA[1] * ref.mediana) m.push(`faixa: ${(v / ref.mediana).toFixed(1).replace('.', ',')}× a mediana`);
     }
     const conflito = f.medida ? medidaConflita(o.produto, termo) : '';
@@ -238,12 +349,37 @@
     return m;
   }
 
-  // A1: funil da leitura: cards → com preço → sem patrocinado → no termo → nos filtros.
+  // A1: funil da leitura: cards → com preço → sem patrocinado → no termo e nas regras do item →
+  // nos filtros.
+  const ehDoTermo = (x) => x === 'termo' || x.startsWith('falta:') || x.startsWith('excluída:');
   function funil(ofertas, cards, termo, ref) {
     const ms = ofertas.map((o) => motivosOferta(o, termo, ref));
     const semPat = ms.filter((m) => !m.includes('patrocinado'));
-    const noTermo = semPat.filter((m) => !m.includes('termo'));
+    const noTermo = semPat.filter((m) => !m.some(ehDoTermo));
     return { cards, comPreco: ofertas.length, semPatrocinado: semPat.length, noTermo: noTermo.length, nosFiltros: ms.filter((m) => !m.length).length };
+  }
+
+  // Revisão das guardadas pelas regras e filtros de agora (sem a faixa de preço, que depende das
+  // próprias guardadas): chaves das ofertas ativas que não passam, com os motivos, incluídas as
+  // variantes de cor ou voltagem de uma oferta já guardada do mesmo item e os kits guardados
+  // com outras unidades que as do título (a coletar de novo).
+  function revisarGuardadas(guardados, filtros = {}) {
+    const fora = [];
+    const porItem = {};
+    for (const [k, l] of Object.entries(guardados)) if (!l.excluida) (porItem[l.id_item] ||= []).push([k, l]);
+    for (const [id, ls] of Object.entries(porItem)) {
+      const item = ITENS.find((i) => i.id === id);
+      if (!item) continue;
+      ls.sort((a, b) => a[0].localeCompare(b[0]));
+      const anotadas = marcarVariantes(ls.map(([, l]) => l));
+      anotadas.forEach((o, i) => {
+        const m = motivosOferta({ ...o, patrocinado: false }, item.termo, { filtros: { ...filtros, faixa: false }, regras: item });
+        const kit = kitDe(o.produto, item.termo);
+        if (kit.unidades && Number(o.unidades) !== kit.unidades) m.push(`kit de ${kit.unidades} un., guardada com ${o.unidades}`);
+        if (m.length) fora.push({ k: ls[i][0], id, produto: o.produto, motivos: m });
+      });
+    }
+    return fora;
   }
 
   // CEP de um texto ("Salvador 40170-110" -> "40170-110") e se é de Salvador (40000 a 42599).
@@ -311,20 +447,23 @@
   const chave = (idItem, url) => `${idItem}|${url}`;
 
   // Junta as ofertas marcadas às guardadas (chave: item + url); devolve quantas são novas.
-  // Guardar de novo uma oferta excluída a traz de volta.
+  // Guardar de novo uma oferta excluída a traz de volta. As unidades da oferta (o.unidades,
+  // do campo da linha) valem sobre as do painel; o.motivo traz os filtros que ela não passou.
+  const porUnidade = (v, u) => (v == null ? null : Math.round((v / u) * 100) / 100);
   function guardar(guardados, item, ofertas, unidades, contexto) {
     let novas = 0;
-    const u = Math.max(1, Number(unidades) || 1);
     for (const o of ofertas) {
       if (!o.url || !(o.preco > 0)) continue;
+      const u = Math.max(1, Number(o.unidades ?? unidades) || 1);
       const k = chave(item.id, o.url);
       if (!guardados[k] || guardados[k].excluida) novas++;
       guardados[k] = {
         id_item: item.id, categoria: item.categoria, fonte: contexto.fonte, produto: o.produto,
-        preco: Math.round((o.preco / u) * 100) / 100, frete: o.frete == null ? null : Math.round((o.frete / u) * 100) / 100,
-        preco_anuncio: o.preco, unidades: u, tipo_preco: o.tipo_preco || 'padrao', cep: contexto.cep || '',
+        preco: porUnidade(o.preco, u), frete: porUnidade(o.frete, u),
+        preco_anuncio: o.preco, unidades: u, tipo_preco: o.tipo_preco || 'padrao', preco_sem_pix: porUnidade(o.preco_sem_pix, u),
+        cep: contexto.cep || '',
         avaliacoes: o.avaliacoes ?? null, leitor: o.leitor || '',
-        url: o.url, busca: o.busca || contexto.busca, data_coleta: contexto.data_coleta, excluida: 0,
+        url: o.url, busca: o.busca || contexto.busca, data_coleta: contexto.data_coleta, motivo: o.motivo || '', excluida: 0,
         alterado_em: contexto.agora || Date.now(),
       };
     }
@@ -377,7 +516,7 @@
     };
   }
 
-  const COLS = ['id_item', 'categoria', 'fonte', 'produto', 'preco', 'frete', 'preco_anuncio', 'unidades', 'tipo_preco', 'cep', 'avaliacoes', 'leitor', 'url', 'busca', 'data_coleta', 'excluida'];
+  const COLS = ['id_item', 'categoria', 'fonte', 'produto', 'preco', 'frete', 'preco_anuncio', 'unidades', 'tipo_preco', 'preco_sem_pix', 'cep', 'avaliacoes', 'leitor', 'url', 'busca', 'data_coleta', 'motivo', 'excluida'];
 
   function celula(v) {
     const s = typeof v === 'number' ? String(v).replace('.', ',') : String(v ?? '');
@@ -413,14 +552,20 @@
   function lerAmazon() {
     return [...document.querySelectorAll('[data-component-type="s-search-result"][data-asin]')].map((c) => {
       const asin = c.dataset.asin;
-      const precoTxt = c.querySelector('.a-price:not(.a-text-price) .a-offscreen')?.textContent;
+      const principal = c.querySelector('.a-price:not(.a-text-price)');
+      const preco = numeroBR(principal?.querySelector('.a-offscreen')?.textContent);
+      const tipo = tipoPreco(texto(c, '.s-price-instructions-style') || c.textContent);
+      // No card de Pix, o preço cinza no mesmo link é o sem desconto (o riscado "De:" só
+      // aparece no card sem Pix); fora de 1× a 1,15× o preço, não é o do Pix.
+      const cinza = numeroBR(principal?.parentElement?.querySelector('.a-price.a-text-price .a-offscreen')?.textContent);
       return {
         produto: texto(c, 'h2'),
-        preco: numeroBR(precoTxt),
+        preco,
+        preco_sem_pix: tipo === 'pix' && cinza > preco && cinza <= 1.15 * preco ? cinza : null,
         frete: freteDe(c.textContent),
         url: asin ? `https://www.amazon.com.br/dp/${asin}` : '',
         patrocinado: /patrocinado/i.test(c.textContent) || c.classList.contains('AdHolder'),
-        tipo_preco: tipoPreco(texto(c, '.s-price-instructions-style') || c.textContent),
+        tipo_preco: tipo,
         avaliacoes: avaliacoesAmazon(c),
       };
     });
@@ -490,7 +635,7 @@
     if (!brutas.length) { leitor = 'generico'; brutas = lerGenerico(); }
     if (!brutas.length) leitor = 'nenhum';
     const busca = location.href;
-    const ofertas = semRepetidas(brutas.filter((o) => o.url && o.preco > 0 && o.produto).map((o) => ({ ...o, busca, leitor })));
+    const ofertas = marcarVariantes(semRepetidas(brutas.filter((o) => o.url && o.preco > 0 && o.produto).map((o) => ({ ...o, busca, leitor }))));
     return { ofertas, cards: brutas.length, leitor };
   }
 
@@ -509,10 +654,10 @@
   // Assinatura das ofertas de uma leitura (as URLs em ordem), para saber se a página mudou.
   const assinatura = (ofertas) => ofertas.map((o) => o.url).join('|');
 
-  // Soma ofertas novas às já lidas, sem repetir URL.
+  // Soma ofertas novas às já lidas, sem repetir URL; as variantes valem no conjunto.
   function somarOfertas(lidas, novas) {
     const urls = new Set(lidas.map((o) => o.url));
-    return lidas.concat(novas.filter((o) => !urls.has(o.url) && urls.add(o.url)));
+    return marcarVariantes(lidas.concat(novas.filter((o) => !urls.has(o.url) && urls.add(o.url))));
   }
 
   // CEP que o site mostra no cabeçalho, quando mostra.
@@ -587,7 +732,7 @@
     button.x{flex:0 0 auto;padding:0 6px;border:none;opacity:.7}
     select,input{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px}
     select{width:100%} select option{color:#111}
-    input[type=number]{width:52px} input.cep{width:90px}
+    input[type=number]{width:52px} input.cep{width:90px} li input.u{width:40px;flex:0 0 auto}
     ul{list-style:none;margin:6px 0;padding:0;max-height:40vh;overflow:auto}
     li{display:flex;gap:6px;align-items:flex-start;padding:3px 0;border-bottom:1px solid rgba(128,128,128,.25);font-size:12px}
     li span{flex:1} li b{white-space:nowrap}
@@ -678,19 +823,32 @@
   }
 
   // Referência dos filtros: mediana do item guardado, unidades por embalagem e filtros ligados.
-  const referencia = () => ({ mediana: resumoItem(carregar(), itemAtual().id).mediana, unidades: el.unidades.value, filtros: filtrosAtuais() });
+  const referencia = () => ({ mediana: resumoItem(carregar(), itemAtual().id).mediana, unidades: el.unidades.value, filtros: filtrosAtuais(), regras: itemAtual() });
+
+  // Unidades de cada oferta: a digitada na linha; senão, a do kit no título ("caixa com 24");
+  // senão, a do campo do painel.
+  const unidadesDe = (o) => o.unidadesManual ?? kitDe(o.produto, itemAtual().termo).unidades ?? (Number(el.unidades.value) || 1);
 
   function listarOfertas() {
     const item = itemAtual();
     const ref = referencia();
     el.lista.replaceChildren(...ofertasLidas.map((o, i) => {
+      o.unidades = unidadesDe(o);
       const motivos = motivosOferta(o, item.termo, ref);
       const marca = criar('input', { type: 'checkbox', checked: !motivos.length });
       marca.dataset.i = i;
+      const u = criar('input', {
+        type: 'number', min: 1, value: o.unidades, className: 'u', title: 'Unidades da lista neste anúncio (caixa, jogo ou kit)',
+        onchange: () => { o.unidadesManual = Math.max(1, Number(u.value) || 1); o.unidades = o.unidadesManual; },
+      });
       const frete = o.frete == null ? '' : o.frete === 0 ? ' + frete grátis' : ` + ${reais(o.frete)}`;
       const avaliacoes = o.avaliacoes == null ? '' : ` · ${o.avaliacoes} avaliações`;
-      return criar('li', {}, [marca, criar('span', { textContent: o.produto }, motivos.length ? [criar('i', { textContent: `desmarcada: ${motivos.join('; ')}` })] : []),
-        criar('b', { textContent: `${reais(o.preco)}${frete}${ROTULO_TIPO[o.tipo_preco] || ''}${avaliacoes}` })]);
+      const semPix = o.preco_sem_pix ? ` (sem Pix ${reais(o.preco_sem_pix)})` : '';
+      const notas = [];
+      if (motivos.length) notas.push(criar('i', { textContent: `desmarcada: ${motivos.join('; ')}` }));
+      if (o.unidades > 1) notas.push(criar('i', { textContent: `${o.unidades} unidades: ${reais(o.preco / o.unidades)} cada` }));
+      return criar('li', {}, [marca, criar('span', { textContent: o.produto }, notas), u,
+        criar('b', { textContent: `${reais(o.preco)}${frete}${ROTULO_TIPO[o.tipo_preco] || ''}${semPix}${avaliacoes}` })]);
     }));
     el.bGuardar.disabled = !ofertasLidas.length;
     mostrarFunil();
@@ -774,15 +932,37 @@
       textContent: 'Guardar marcadas',
       disabled: true,
       onclick: () => {
-        const marcadas = caixasMarcadas().map((m) => ofertasLidas[m.dataset.i]);
+        // motivo: os filtros que a oferta não passou (marcada à mão); o build a deixa de fora
+        const ref = referencia();
+        const marcadas = caixasMarcadas().map((m) => ofertasLidas[m.dataset.i])
+          .map((o) => ({ ...o, motivo: motivosOferta(o, itemAtual().termo, ref).join('; ') }));
         const guardados = carregar();
         const novas = guardar(guardados, itemAtual(), marcadas, el.unidades.value,
           { fonte: site, busca: location.href, data_coleta: dataLocal(), cep: cepAtual(), agora: Date.now() });
         salvar(guardados);
-        mostrar(`${marcadas.length} guardadas (${novas} novas).${cepAtual() && ehSalvador(cepAtual()) ? '' : ' Atenção: sem CEP de Salvador.'}`);
+        const comMotivo = marcadas.filter((o) => o.motivo).length;
+        mostrar(`${marcadas.length} guardadas (${novas} novas).${comMotivo ? ` ${comMotivo} fora dos filtros: vão com motivo e o build as deixa de fora.` : ''}${cepAtual() && ehSalvador(cepAtual()) ? '' : ' Atenção: sem CEP de Salvador.'}`);
       },
     });
     const bCsv = criar('button', { textContent: 'Baixar CSV', onclick: () => status(`${baixarCsv()} arquivo(s) de categoria baixados.`) });
+    // Exclui as guardadas (de todos os itens) que as regras e os filtros de agora não aceitam.
+    const bRevisar = criar('button', {
+      textContent: 'Revisar guardadas',
+      title: 'Exclui as guardadas que não passam nas regras do item e nos filtros ligados (sem a faixa de preço)',
+      onclick: () => {
+        const g = carregar();
+        const fora = revisarGuardadas(g, filtrosAtuais());
+        if (!fora.length) { status('Todas as guardadas passam nas regras e nos filtros.'); return; }
+        const porItem = {};
+        for (const f of fora) porItem[f.id] = (porItem[f.id] || 0) + 1;
+        const exemplos = fora.slice(0, 5).map((f) => `${f.id} ${f.produto.slice(0, 40)}: ${f.motivos.join('; ')}`).join('\n');
+        if (!confirm(`${fora.length} guardadas não passam (${Object.entries(porItem).map(([id, n]) => `${id} ${n}`).join(', ')}).\n\n${exemplos}\n\nExcluir todas? A exclusão vai no próximo CSV.`)) return;
+        const agora = Date.now();
+        for (const f of fora) excluir(g, f.k, agora);
+        salvar(g);
+        mostrar(`${fora.length} guardadas excluídas pela revisão. Baixe o CSV para levar a exclusão ao build.`);
+      },
+    });
     const bLimpar = criar('button', {
       textContent: 'Limpar',
       onclick: () => {
@@ -812,7 +992,7 @@
       el.funil,
       el.lista,
       criar('div', { className: 'linha' }, [criar('span', { textContent: 'Unidades por embalagem:' }), el.unidades, el.bGuardar]),
-      criar('div', { className: 'linha' }, [bCsv, bLimpar]),
+      criar('div', { className: 'linha' }, [bCsv, bRevisar, bLimpar]),
       el.status,
     ]);
     cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.textContent = painel.classList.contains('min') ? '+' : '–'; };

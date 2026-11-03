@@ -25,7 +25,7 @@ function carregar(html, href = 'https://www.amazon.com.br/s?k=x') {
     document,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { ITENS, numeroBR, freteDe, precoAtual, tipoPreco, palavras, relevancia, medidas, medidaConflita, motivosOferta, funil, quantil, pendentes, coberturaCategoria, cepDe, ehSalvador, ofertasJsonLd, siteDe, urlBusca, guardar, excluir, ativas, resumoItem, mediana, somarOfertas, csv, nomeArquivo, lerOfertas, cepDoSite });})();';
+    + 'Object.assign(globalThis.__test, { ITENS, numeroBR, freteDe, precoAtual, tipoPreco, palavras, relevancia, medidas, medidaConflita, motivosRegras, kitDe, marcarVariantes, revisarGuardadas, motivosOferta, funil, quantil, pendentes, coberturaCategoria, cepDe, ehSalvador, ofertasJsonLd, siteDe, urlBusca, guardar, excluir, ativas, resumoItem, mediana, somarOfertas, csv, nomeArquivo, lerOfertas, cepDoSite });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'precos_itens.user.js' });
   return ambiente.__test;
 }
@@ -40,7 +40,8 @@ test('a lista embutida é a dos itens de coleta do CSV da etapa 1', () => {
   const cab = linhas[0];
   const col = (l, nome) => l[cab.indexOf(nome)];
   const esperado = linhas.slice(1).filter((l) => col(l, 'fonte_preco') === 'coleta')
-    .map((l) => ({ id: col(l, 'id'), categoria: col(l, 'categoria'), item: col(l, 'item'), termo: col(l, 'termo_busca') }));
+    .map((l) => ({ id: col(l, 'id'), categoria: col(l, 'categoria'), item: col(l, 'item'), termo: col(l, 'termo_busca'),
+      exige: col(l, 'termo_exige').split('|').filter(Boolean), exclui: col(l, 'termo_exclui').split('|').filter(Boolean) }));
   assert.deepEqual(json(t.ITENS), esperado);
 });
 
@@ -114,8 +115,11 @@ test('guardar: preço por unidade, sem duplicar a mesma oferta do item', () => {
   assert.equal(t.guardar(g, item, ofertas, 24, ctx), 0);
   assert.deepEqual(json(g['CB17|https://a/1']), {
     id_item: 'CB17', categoria: 'cozinha_bar', fonte: 'amazon', produto: 'Copo long drink caixa com 24',
-    preco: 5, frete: 1, preco_anuncio: 120, unidades: 24, tipo_preco: 'padrao', cep: '', avaliacoes: null, leitor: '', url: 'https://a/1', busca: 'b', data_coleta: '2026-11-02', excluida: 0, alterado_em: 1000,
+    preco: 5, frete: 1, preco_anuncio: 120, unidades: 24, tipo_preco: 'padrao', preco_sem_pix: null, cep: '', avaliacoes: null, leitor: '', url: 'https://a/1', busca: 'b', data_coleta: '2026-11-02', motivo: '', excluida: 0, alterado_em: 1000,
   });
+  // unidades da oferta valem sobre as do painel; preço sem Pix e motivo vão por unidade e como vieram
+  t.guardar(g, item, [{ produto: 'Copo caixa com 12', preco: 60, frete: null, preco_sem_pix: 63, unidades: 12, motivo: 'sem avaliações', url: 'https://a/3' }], 24, ctx);
+  assert.deepEqual(json([g['CB17|https://a/3'].preco, g['CB17|https://a/3'].preco_sem_pix, g['CB17|https://a/3'].unidades, g['CB17|https://a/3'].motivo]), [5, 5.25, 12, 'sem avaliações']);
 });
 
 test('excluir: some das ativas e do resumo, e volta se guardada de novo', () => {
@@ -151,8 +155,8 @@ test('CSV: cabeçalho que o build lê, vírgula decimal e nome por categoria', (
   // linha antiga, sem tipo_preco, cep e excluida: sai com vazios e excluida = 0
   const s = t.csv([{ id_item: 'MO03', categoria: 'mobiliario', fonte: 'leroymerlin', produto: 'Cadeira; estofada', preco: 250.5, frete: null, preco_anuncio: 250.5, unidades: 1, url: 'u', busca: 'b', data_coleta: 'd' }]);
   const [cab, linha] = s.replace(/^﻿/, '').split('\r\n');
-  assert.equal(cab, 'id_item;categoria;fonte;produto;preco;frete;preco_anuncio;unidades;tipo_preco;cep;avaliacoes;leitor;url;busca;data_coleta;excluida');
-  assert.equal(linha, 'MO03;mobiliario;leroymerlin;"Cadeira; estofada";250,5;;250,5;1;;;;;u;b;d;0');
+  assert.equal(cab, 'id_item;categoria;fonte;produto;preco;frete;preco_anuncio;unidades;tipo_preco;preco_sem_pix;cep;avaliacoes;leitor;url;busca;data_coleta;motivo;excluida');
+  assert.equal(linha, 'MO03;mobiliario;leroymerlin;"Cadeira; estofada";250,5;;250,5;1;;;;;;u;b;d;;0');
   assert.equal(t.nomeArquivo('mobiliario', '2026-11-02', '1405'), '2026-11-02_1405_mobiliario_precos.csv');
 });
 
@@ -166,6 +170,67 @@ test('F3: medida conflitante pela grandeza do termo', () => {
   assert.equal(t.medidaConflita('Mesa Retangular 90 x 160 cm', 'mesa retangular 160x90 restaurante'), ''); // ordem não importa
   assert.equal(t.medidaConflita('Mesa Retangular 120x80', 'mesa retangular 160x90 restaurante'), '80x120, termo 90x160');
   assert.equal(t.medidaConflita('Mesa Inox 150cm X 70cm X 90cm', 'mesa inox 150 cm cozinha industrial'), '');
+});
+
+test('F3: decimal com vírgula, folga, metros e dimensões contra comprimento', () => {
+  assert.deepEqual(json(t.palavras('Liquidificador 2,4L, Inox.')), ['liquidificador', '2.4', 'l', 'inox']);
+  assert.equal(t.medidaConflita('Liquidificador Industrial Jarra de 2,4L', 'liquidificador industrial 4 litros'), '2,4 l, termo 4 l');
+  assert.equal(t.medidaConflita('Fritadeira Elétrica 3,5 Litros', 'fritadeira 5 litros'), '3,5 l, termo 5 l');
+  assert.equal(t.medidaConflita('Freezer Horizontal 2 Tampas 410 Litros', 'freezer horizontal 2 tampas 400 litros'), ''); // folga de 10%
+  assert.equal(t.medidaConflita('Ar Split 32000 BTUs', 'ar condicionado split 30000 btus inverter'), '');
+  assert.equal(t.medidaConflita('Coifa Industrial 1,5 m Inox', 'coifa industrial inox 150 cm'), '');
+  assert.equal(t.medidaConflita('Chapa Bifeteira Lisa 25x25', 'chapa bifeteira industrial gas 70cm'), '25 cm, termo 70 cm');
+  assert.equal(t.medidaConflita('Mesa Inox Profissional 92x53x84cm', 'mesa inox 150 cm cozinha industrial'), '53/84/92 cm, termo 150 cm');
+  assert.equal(t.medidaConflita('Mesa Restaurante 160 x 90 cm', 'mesa retangular restaurante 160x80'), ''); // 90 está a 12,5% de 80
+  assert.equal(t.medidaConflita('Impressora Térmica 58/80mm USB', 'impressora termica nao fiscal 80mm'), '');
+});
+
+test('regras do item: palavras exigidas (com alternativas) e excluídas (palavra inteira)', () => {
+  const r = { exige: ['wi fi 6/wifi 6/ax'], exclui: ['repetidor', 'capa'] };
+  assert.deepEqual(json(t.motivosRegras('Roteador Wi-Fi 6 AX1500', r)), []);
+  assert.deepEqual(json(t.motivosRegras('Roteador AC1200 Dual Band', r)), ['falta: wi fi 6/wifi 6/ax']);
+  assert.deepEqual(json(t.motivosRegras('Mercusys ME60X Repetidor de Sinal Wi-Fi 6', r)), ['excluída: repetidor']);
+  assert.deepEqual(json(t.motivosRegras('Roteador WiFi 6 com capacidade para 60 dispositivos', r)), []); // "capa" não casa com "capacidade"
+  assert.deepEqual(json(t.motivosRegras('Fritadeira Elétrica 2 Cubas', { exige: ['fritadeira', '2 cuba/dupla'] })), []);
+  assert.deepEqual(json(t.motivosRegras('Fritadeira Elétrica Cuba 3L', { exige: ['fritadeira', '2 cuba/dupla'] })), ['falta: 2 cuba/dupla']);
+  assert.deepEqual(json(t.motivosRegras('Ar Condicionado Split on/off', { exclui: ['on off'] })), ['excluída: on off']);
+  const item = t.ITENS.find((i) => i.id === 'EQ04');
+  assert.deepEqual(json(t.motivosOferta({ produto: 'Roteador TP-Link Archer C50 AC1200 Dual Band', preco: 199, avaliacoes: 9 }, item.termo, { regras: item })), ['falta: wi fi 6/wifi 6/ax']);
+});
+
+test('kits, combos e variantes de cor ou voltagem', () => {
+  const imp = 'impressora termica nao fiscal 80mm';
+  assert.deepEqual(json(t.kitDe('Impressora térmica Elgin i8 + 30 Bobina de Cupom 80x40', imp)), { combo: 'bobina' });
+  assert.deepEqual(json(t.kitDe('Impressora Térmica SI-180M 80mm — Kit com 2 Bobinas', imp)), { combo: 'bobinas' });
+  assert.deepEqual(json(t.kitDe('Impressora de recibos USB + LAN de 80 mm', imp)), {});
+  assert.deepEqual(json(t.kitDe('Copo Long Drink 300ml Caixa com 24', 'copo long drink vidro 300 ml caixa 24')), { unidades: 24 });
+  assert.deepEqual(json(t.kitDe('Mercusys Halo H80X (2 un.) Roteador Mesh', 'roteador wifi 6 dual band')), { unidades: 2 });
+  assert.deepEqual(json(t.kitDe('Kit 4 Cadeiras Estofadas', 'cadeira restaurante estofada')), { unidades: 4 });
+  assert.deepEqual(json(t.kitDe('Jogo 6 Pratos Rasos Porcelana', 'prato raso porcelana branco 26 cm kit 12')), { unidades: 6 });
+  assert.deepEqual(json(t.kitDe('Kit 4 Câmeras Full HD DVR 4 Canais', 'kit cftv 4 cameras full hd dvr 4 canais')), {});
+  assert.deepEqual(json(t.kitDe('Fogão Industrial 4 Bocas com Forno', 'fogao industrial 4 bocas com forno')), {});
+  assert.deepEqual(json(t.motivosOferta({ produto: 'Impressora Térmica 80mm + Leitor Código Barras', preco: 437 }, imp)), ['combo: + leitor']);
+  const cores = ['Azul', 'Branco', 'Cinza'].map((c, i) => ({ produto: `Fogão Industrial com Forno 2 Bocas Duplas Bravo ${c} - Venâncio`, preco: 1460.36, url: `u${i}` }));
+  const v = t.marcarVariantes([...cores, { produto: 'Frigobar HQ 130 Litros (127V)', preco: 1489, url: 'f1' }, { produto: 'Frigobar HQ 130 Litros (220v)', preco: 1489, url: 'f2' }, { produto: 'Frigobar HQ 130 Litros (220v)', preco: 1600, url: 'f3' }]);
+  assert.deepEqual(json(v.map((o) => Boolean(o.varianteDe))), [false, true, true, false, true, false]);
+  assert.match(t.motivosOferta(v[1], 'fogao industrial 4 bocas com forno').join(), /variante de: Fogão Industrial com Forno 2 Bocas/);
+});
+
+test('revisar guardadas: regras, medida e variantes, sem a faixa de preço', () => {
+  const g = {};
+  const ctx = { fonte: 'amazon', busca: 'b', data_coleta: '2026-11-02', agora: 1 };
+  t.guardar(g, { id: 'OB40', categoria: 'obra_reforma' }, [
+    { produto: 'Ar Condicionado Split Inverter 30.000 BTUs Frio', preco: 4800, url: 'a1', avaliacoes: 5 },
+    { produto: 'Ar Condicionado Split Inverter 9000 BTUs Frio', preco: 1700, url: 'a2', avaliacoes: 5 },
+    { produto: 'Ar Condicionado Split Inverter 30.000 BTUs Frio Branco', preco: 4800, url: 'a3', avaliacoes: 5 },
+    { produto: 'Ar Condicionado Split Inverter 30.000 BTUs Barato', preco: 900, url: 'a4', avaliacoes: 5 },
+  ], 1, ctx);
+  t.guardar(g, { id: 'EQ04', categoria: 'equipamentos' }, [{ produto: 'Repetidor Wi-Fi 6 AX1500', preco: 224, url: 'r1', avaliacoes: 9 }], 1, ctx);
+  const fora = t.revisarGuardadas(g, {});
+  assert.deepEqual(json(fora.map((f) => [f.k, f.motivos[0].split(':')[0]])), [['OB40|a2', 'medida'], ['OB40|a3', 'variante de'], ['EQ04|r1', 'termo']]);
+  assert.ok(fora[2].motivos.includes('excluída: repetidor'));
+  t.excluir(g, 'OB40|a2');
+  assert.equal(t.revisarGuardadas(g, {}).length, 2);
 });
 
 test('motivos da marcação: patrocinado, termo, faixa (F2), medida (F3) e avaliações (F5)', () => {
@@ -220,6 +285,7 @@ test('DOM Amazon: cards, patrocinado, frete, Pix e CEP do cabeçalho', () => {
     ['https://www.amazon.com.br/dp/B0DK7V4QHY', 1234.9, 175, false, 'pix'],
     ['https://www.amazon.com.br/dp/B0GWFG3BQ2', 402.2, 0, false, 'pix'],
   ]);
+  assert.deepEqual(json(ofertas.map((o) => o.preco_sem_pix)), [259, 1299.9, 423.37]); // preço cinza do card de Pix
   assert.equal(ofertas[1].produto, 'Mesa Inox Nortinox 150cm X 70cm X 90cm');
   assert.equal(ofertas[1].busca, href);
   assert.ok(d.relevancia(ofertas[1].produto, 'mesa inox 150 cm cozinha industrial') >= 0.5);
@@ -268,17 +334,21 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   select.value = 'CB09';
   select.onchange();
   botao('Ler ofertas').onclick();
-  assert.match(r.querySelector('.status').textContent, /^3 ofertas com preço de 3 cards lidos, 1 marcadas/);
-  assert.match(textos(), /Funil: 3 cards → 3 com preço → 2 sem patrocinado → 2 no termo → 1 nos filtros · leitor próprio do site/);
-  const caixas = [...r.querySelectorAll('ul')[1].querySelectorAll('input')];
+  assert.match(r.querySelector('.status').textContent, /^3 ofertas com preço de 3 cards lidos, 0 marcadas/);
+  assert.match(textos(), /Funil: 3 cards → 3 com preço → 2 sem patrocinado → 2 no termo → 0 nos filtros · leitor próprio do site/);
+  const caixas = [...r.querySelectorAll('ul')[1].querySelectorAll('input[type=checkbox]')];
   assert.match(caixas[1].parentElement.textContent, /desmarcada: sem avaliações/);
   caixas[1].checked = true; // o autor confere e marca a Nortinox
   botao('Só preço padrão').onclick(); // todas são Pix na Amazon
-  assert.match(r.querySelector('.status').textContent, /^2 oferta\(s\) de Pix ou cupom desmarcadas; 0 marcadas/);
+  assert.match(caixas[2].parentElement.textContent, /desmarcada: medida: 53\/84\/92 cm, termo 150 cm/);
+  assert.match(caixas[1].parentElement.textContent, /\(sem Pix R\$ 1299,90\)/);
+  assert.match(r.querySelector('.status').textContent, /^1 oferta\(s\) de Pix ou cupom desmarcadas; 0 marcadas/);
   caixas[1].checked = true;
   caixas[2].checked = true;
   assert.match(textos(), /Nada guardado ainda/);
   botao('Guardar marcadas').onclick();
+  assert.match(r.querySelector('.status').textContent, /2 fora dos filtros: vão com motivo e o build as deixa de fora/);
+  assert.deepEqual(json(Object.values(JSON.parse(memoria.tcc_precos_v1)).map((l) => l.motivo).sort()), ['medida: 53/84/92 cm, termo 150 cm', 'sem avaliações']);
   assert.match(textos(), /2 oferta\(s\) guardadas ou excluídas desde o último CSV \(nenhum baixado ainda\)/);
   assert.match(textos(), /Categoria cozinha_bar: 0 de 20 itens com 3\+ ofertas \(1 com alguma\)/);
   assert.match(textos(), /P25 R\$ 654,13, P75 R\$ 1157,98 \(1,77×\) · 2 no Pix ou cupom · leitor próprio do site · desde \d{4}-\d{2}-\d{2} · ⚠ faltam 1/);
