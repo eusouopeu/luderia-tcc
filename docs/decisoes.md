@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 03/11/2026 | Coletor de preços: os filtros (preço, medida, avaliações) voltam a ligar ao trocar de item, com aviso enquanto algum estiver desligado; o armazenamento pode ser refeito importando CSVs exportados, com as guardadas valendo sobre o arquivo | `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js` |
 | 03/11/2026 | Coletores do B5 com um só padrão de painel: ícone e nome curto nos botões, explicação na dica, filtros em selos, resumo em grade, aviso de dados fora de CSV e backup antes de apagar | `_src/[B5] Ativos fixos/Anuncios de aluguel/webscripts/portais_aluguel.user.js` |
 | 03/11/2026 | Coletor de preços: a revisão das guardadas roda sozinha a cada "Guardar" e exclui o que não passa nas regras e nos filtros ligados; faixa de preço e avaliações não valem na revisão, e o filtro desligado ao guardar uma oferta não vale para ela | `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js` |
 | 03/11/2026 | Mobiliário do salão em estilo industrial: mesas e balcão com tampo de pinus e estrutura de metal preto, cadeiras de metal preto com assento de madeira, pendentes de cúpula de metal preta e estantes de metalon preto e pinus (MO01 a MO06); o armário de funcionários (MO07) segue de aço | `dados/[B5] Ativos fixos/orcamento/[B5] Lista de Itens da Etapa 1 (elaboração própria).csv` |

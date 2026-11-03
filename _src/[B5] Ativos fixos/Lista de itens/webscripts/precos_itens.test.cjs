@@ -25,7 +25,7 @@ function carregar(html, href = 'https://www.amazon.com.br/s?k=x') {
     document,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { ITENS, numeroBR, freteDe, precoAtual, tipoPreco, palavras, relevancia, medidas, medidaConflita, motivosRegras, kitDe, marcarVariantes, revisarGuardadas, motivosOferta, funil, quantil, pendentes, coberturaCategoria, cepDe, ehSalvador, ofertasJsonLd, siteDe, urlBusca, guardar, excluir, ativas, resumoItem, mediana, somarOfertas, csv, nomeArquivo, lerOfertas, cepDoSite });})();';
+    + 'Object.assign(globalThis.__test, { ITENS, numeroBR, freteDe, precoAtual, tipoPreco, palavras, relevancia, medidas, medidaConflita, motivosRegras, kitDe, marcarVariantes, revisarGuardadas, lerCsv, importar, motivosOferta, funil, quantil, pendentes, coberturaCategoria, cepDe, ehSalvador, ofertasJsonLd, siteDe, urlBusca, guardar, excluir, ativas, resumoItem, mediana, somarOfertas, csv, nomeArquivo, lerOfertas, cepDoSite });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'precos_itens.user.js' });
   return ambiente.__test;
 }
@@ -239,6 +239,36 @@ test('kits: Nº é tamanho, lista de opções, pacote da Amazon, peças e pares'
   assert.match(t.motivosOferta({ ...o, produto: 'Copo Long Drink 300ml Kit 24', frete: 200 }, 'copo long drink vidro 300 ml caixa 24').join(), /frete suspeito: R\$ 200,00/);
 });
 
+test('importar CSV: aspas, decimais, excluídas e prioridade das guardadas', () => {
+  const cab = 'id_item;categoria;fonte;produto;preco;frete;preco_anuncio;unidades;tipo_preco;preco_sem_pix;cep;avaliacoes;leitor;url;busca;data_coleta;motivo;excluida';
+  const texto = '\ufeff' + [cab,
+    'OB41;obra_reforma;amazon;"Kit Hulter 3/8"" 5/8"" 24000 a 30000 Btus";358,78;89,9;358,78;1;pix;377,67;40150-140;0;proprio;https://a/1;b;2026-11-03;;0',
+    'CB16;cozinha_bar;amazon;Kit 6 Pratos;19,7;;118,21;6;pix;;40150-140;;proprio;https://a/2;b;2026-11-02;;1',
+    'MO03;mobiliario;amazon;Cadeira Tolix;313,4;0;313,4;1;pix;329,9;40150-140;2;proprio;https://a/3;b;2026-11-03;;0',
+  ].join('\r\n');
+  const ls = t.lerCsv(texto);
+  assert.deepEqual(json(ls.map((l) => [l.produto, l.preco, l.frete, l.unidades, l.avaliacoes, l.excluida])), [
+    ['Kit Hulter 3/8" 5/8" 24000 a 30000 Btus', 358.78, 89.9, 1, 0, 0], ['Kit 6 Pratos', 19.7, null, 6, null, 1], ['Cadeira Tolix', 313.4, 0, 1, 2, 0]]);
+  const g = {};
+  t.guardar(g, { id: 'MO03', categoria: 'mobiliario' }, [{ produto: 'Cadeira Tolix', preco: 300, url: 'https://a/3' }], 1, { fonte: 'amazon', busca: 'b', data_coleta: '2026-11-03', agora: 1 });
+  assert.equal(t.importar(g, ls, 5), 2);
+  assert.equal(g['MO03|https://a/3'].preco, 300);
+  assert.equal(g['CB16|https://a/2'].excluida, 1);
+  assert.equal(t.importar(g, ls, 6), 0);
+  assert.deepEqual(json(t.lerCsv('a;b\n1;2')), []);
+});
+
+test('variantes: cores como off white e bronze, voltagem solta', () => {
+  const v = t.marcarVariantes([
+    { produto: 'Mesa Industrial Retangular 160x80 Pé Metal Cozinha Jantar (Preto/Preto)', preco: 550.9 },
+    { produto: 'Mesa Industrial Retangular 160x80 Pé Metal Cozinha Jantar (Off White/Dourado)', preco: 550.9 },
+    { produto: 'Mesa Industrial Retangular 160x80 Pé Metal Cozinha Jantar (Off White/Bronze)', preco: 550.9 },
+    { produto: 'Fritadeira Elétrica Industrial 2 Cubas Inox 10 Litros(110)', preco: 415.95 },
+    { produto: 'Fritadeira Elétrica Industrial 2 Cubas Inox 10 Litros(220)', preco: 415.95 },
+  ]);
+  assert.deepEqual(json(v.map((o) => Boolean(o.varianteDe))), [false, true, true, false, true]);
+});
+
 test('revisar guardadas: mesmo produto em dois itens fica no primeiro', () => {
   const g = {};
   const ctx = { fonte: 'amazon', busca: 'b', data_coleta: '2026-11-03' };
@@ -405,7 +435,17 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   botao('Guardar marcadas').onclick();
   assert.match(r.querySelector('.status').textContent, /^2 guardadas \(1 novas\)\.(?! Revisão)/);
   assert.deepEqual(json(Object.values(JSON.parse(memoria.tcc_precos_v1)).map((l) => [l.motivo, l.excluida, l.filtros_off]).sort()), [['faixa: 0,3× a mediana', 0, ['medida']], ['sem avaliações', 0, ['medida']]]);
+  // Filtro desligado: aviso ao lado dos selos; ao trocar de item, os filtros voltam a ligar
   delete memoria.tcc_precos_filtros;
+  botao('Filtro de medida').onclick(); // desliga
+  assert.match(r.querySelector('.filtros-off').textContent, /medida desligado/);
+  select.value = 'CB10';
+  select.onchange();
+  assert.deepEqual(json(memoria.tcc_precos_filtros), {});
+  assert.equal(botao('Filtro de medida').getAttribute('aria-pressed'), 'true');
+  assert.equal(r.querySelector('.filtros-off').textContent, '');
+  select.value = 'CB09';
+  select.onchange();
   assert.match(textos(), /2 oferta\(s\) guardadas ou excluídas desde o último CSV \(nenhum baixado ainda\)/);
   assert.match(textos(), /Cozinha e bar0\/20/);
   assert.match(textos(), /Ofertas2 \(1 site\)MedianaR\$ 906,05MínimoR\$ 402,20MáximoR\$ 1409,90P25R\$ 654,13P75R\$ 1157,98P75\/P251,77×Pix\/cupom2Desde\d{2}\/\d{2}\/\d{4}faltam 1 para o mínimo Preço \+ frete .*leitor próprio do site/);

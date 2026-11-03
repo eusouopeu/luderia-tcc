@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.03-5
+// @version      2026.11.03-6
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -119,7 +119,7 @@
     ['OB40', 'obra_reforma', 'Ar-condicionado split', 'ar condicionado split 30000 btus inverter', 'split|inverter', 'janela|portatil|on off|controle remoto|suporte|capa'],
     ['OB41', 'obra_reforma', 'Instalação do split', 'kit instalacao ar condicionado split 30000 btus 5 metros', 'kit|instala', 'suporte avulso|dreno|bomba|capa|controle'],
     ['OB42', 'obra_reforma', 'Letreiro de fachada', 'fachada acm letra caixa iluminada led', 'fachada/letreiro|acm', 'adesivo|neon|mini|mesa|placa de sinalizacao|letra avulsa'],
-    ['MO01', 'mobiliario', 'Mesa de jogo para 6 lugares', 'mesa industrial 160x80 tampo pinus pe metal preto', 'mesa|industrial/metal/ferro/aco/metalon', 'cadeira|conjunto|jogo de jantar|banco|dobravel|infantil|escritorio|centro|bistro|vidro|marmore|laca'],
+    ['MO01', 'mobiliario', 'Mesa de jogo para 6 lugares', 'mesa industrial 160x80 tampo pinus pe metal preto', 'mesa|industrial/metal/ferro/aco/metalon', 'cadeira|conjunto|jogo de jantar|banco|dobravel|infantil|escritorio|centro|bistro|vidro|marmore|laca|quadrada|redonda|apoio|aparador|bancada'],
     ['MO02', 'mobiliario', 'Mesa de jogo para 4 lugares', 'mesa industrial quadrada 80x80 tampo pinus pe metal preto', 'mesa|quadrada|industrial/metal/ferro/aco/metalon', 'cadeira|conjunto|jogo de jantar|banco|dobravel|infantil|centro|lateral|bistro|alta|vidro|marmore|laca'],
     ['MO03', 'mobiliario', 'Cadeira', 'cadeira industrial metal preta assento madeira', 'cadeira|metal/ferro/aco/industrial', 'gamer|escritorio|giratoria|rodizio|infantil|praia|capa|almofada|poltrona|banqueta|bistro|alta|estofada|veludo|plastico|estofado|banco|bancos|alto|mesa|polipropileno|courino'],
     ['MO04', 'mobiliario', 'Luminária pendente sobre a mesa', 'luminaria pendente industrial cupula metal preto e27', 'pendente|preto/preta', 'abajur|luminaria de mesa|trilho|spot|arandela|lampada avulsa|plafon|fita|dourado|cristal|rose|semi embutida|3 lampadas|bilhar|parede|tripla'],
@@ -128,7 +128,7 @@
     ['MO07', 'mobiliario', 'Armário de funcionários', 'armario roupeiro aco 8 portas vestiario', 'roupeiro/vestiario|aco', 'guarda roupa|mdf|infantil|casal|solteiro|cabideiro'],
     ['CB01', 'cozinha_bar', 'Fogão industrial', 'fogao industrial 4 bocas com forno', 'industrial', 'sem forno|embutir|cooktop|mesa vidro'],
     ['CB02', 'cozinha_bar', 'Chapa bifeteira', 'chapa bifeteira industrial gas 70cm', 'chapa|gas', 'ferro fundido|para fogao|eletrica|grill|sanduicheira'],
-    ['CB03', 'cozinha_bar', 'Fritadeira', 'fritadeira industrial 2 cubas', 'fritadeira|2 cuba/dupla', 'air fryer|airfryer|sem oleo|cesto avulso'],
+    ['CB03', 'cozinha_bar', 'Fritadeira', 'fritadeira industrial 2 cubas', 'fritadeira|2 cuba/dupla', 'air fryer|airfryer|sem oleo|cesto avulso|chapeira'],
     ['CB04', 'cozinha_bar', 'Forno elétrico de bancada', 'forno eletrico industrial bancada', 'industrial/comercial/profissional', 'air fryer|airfryer|micro ondas'],
     ['CB05', 'cozinha_bar', 'Coifa com exaustor', 'coifa inox industrial parede 150 cm', 'coifa', 'depurador|ilha|central|vidro|filtro avulso|carvao|60 cm|90 cm|cooktop|fogao|purificador|chapeu|duto avulso'],
     ['CB06', 'cozinha_bar', 'Geladeira comercial', 'refrigerador comercial 4 portas', '4 porta', 'frigobar|cervejeira|vidro'],
@@ -346,10 +346,11 @@
 
   // Variantes de cor ou voltagem: mesmo título sem cor nem voltagem e mesmo preço. A primeira
   // fica; as demais recebem varianteDe (título da primeira). Devolve as ofertas anotadas.
-  const CORES = new Set(['preto', 'preta', 'branco', 'branca', 'cinza', 'azul', 'amarelo', 'amarela', 'vermelho', 'vermelha', 'verde', 'rosa', 'prata', 'dourado', 'dourada', 'marrom', 'bege', 'grafite', 'cor', 'cores']);
+  const CORES = new Set(['preto', 'preta', 'branco', 'branca', 'cinza', 'azul', 'amarelo', 'amarela', 'vermelho', 'vermelha', 'verde', 'rosa', 'prata', 'dourado', 'dourada', 'marrom', 'bege', 'grafite', 'cor', 'cores',
+    'off', 'white', 'offwhite', 'bronze', 'mel', 'natural', 'nature', 'amadeirado', 'prateado', 'prateada']);
   function chaveVariante(o) {
     const t = palavras(o.produto).join(' ')
-      .replace(/(^| )(110|127|220)( v| volts?)(?= |$)/g, ' ')
+      .replace(/(^| )(110|127|220)v?( v| volts?)?(?= |$)/g, ' ')
       .replace(/(^| )(bivolt|monofasico|volts?)(?= |$)/g, ' ');
     return t.split(' ').filter((w) => w && !CORES.has(w)).join(' ') + '|' + Math.round(o.preco || 0);
   }
@@ -428,6 +429,20 @@
       });
     }
     return fora;
+  }
+
+  // Revisão automática (após Guardar e Importar): exclui as guardadas que não passam e devolve o
+  // texto do status (quantas por item) e a dica (cada uma com os motivos).
+  function revisarAgora(guardados, agora = Date.now()) {
+    const fora = revisarGuardadas(guardados, filtrosAtuais());
+    for (const f of fora) excluir(guardados, f.k, agora);
+    const porItem = {};
+    for (const f of fora) porItem[f.id] = (porItem[f.id] || 0) + 1;
+    return {
+      fora,
+      texto: fora.length ? ` Revisão: ${fora.length} excluída(s) (${Object.entries(porItem).map(([id, n]) => `${id} ${n}`).join(', ')}).` : '',
+      dica: fora.map((f) => `${f.id} ${f.produto.slice(0, 50)}: ${f.motivos.join('; ')}`).join('\n'),
+    };
   }
 
   // CEP de um texto ("Salvador 40170-110" -> "40170-110") e se é de Salvador (40000 a 42599).
@@ -571,6 +586,51 @@
   function celula(v) {
     const s = typeof v === 'number' ? String(v).replace('.', ',') : String(v ?? '');
     return /[";\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  }
+
+  // Lê um CSV exportado pelo painel (";", BOM, aspas com "" dentro) em linhas como as guardadas.
+  function lerCsv(texto) {
+    const t = String(texto || '').replace(/^\ufeff/, '');
+    const linhas = [];
+    let campo = '';
+    let linha = [];
+    let aspas = false;
+    for (let i = 0; i < t.length; i++) {
+      const c = t[i];
+      if (aspas) {
+        if (c !== '"') campo += c;
+        else if (t[i + 1] === '"') { campo += '"'; i++; } else aspas = false;
+      } else if (c === '"') aspas = true;
+      else if (c === ';') { linha.push(campo); campo = ''; } else if (c === '\n' || c === '\r') {
+        if (c === '\r' && t[i + 1] === '\n') i++;
+        linha.push(campo); linhas.push(linha); linha = []; campo = '';
+      } else campo += c;
+    }
+    if (campo || linha.length) { linha.push(campo); linhas.push(linha); }
+    const [cab, ...resto] = linhas.filter((l) => l.some((x) => x !== ''));
+    if (!cab || !cab.includes('id_item') || !cab.includes('url')) return [];
+    const num = (v) => (v === '' || v == null ? null : Number(String(v).replace(',', '.')));
+    return resto.map((l) => {
+      const o = Object.fromEntries(cab.map((c, i) => [c, l[i] ?? '']));
+      for (const c of ['preco', 'frete', 'preco_anuncio', 'unidades', 'preco_sem_pix', 'avaliacoes']) o[c] = num(o[c]);
+      o.unidades = o.unidades || 1;
+      o.excluida = Number(o.excluida) || 0;
+      return o;
+    }).filter((o) => o.id_item && o.url && o.preco > 0);
+  }
+
+  // Junta às guardadas as ofertas de CSVs exportados que não estão guardadas (item + url); as
+  // guardadas valem sobre o arquivo, e a primeira linha de cada oferta vale sobre as seguintes
+  // (passar os arquivos do mais recente para o mais antigo). Devolve quantas entraram.
+  function importar(guardados, linhas, agora = Date.now()) {
+    let novas = 0;
+    for (const l of linhas) {
+      const k = chave(l.id_item, l.url);
+      if (guardados[k]) continue;
+      guardados[k] = { ...l, motivo: l.motivo || '', filtros_off: [], unidades_manual: false, alterado_em: agora };
+      novas++;
+    }
+    return novas;
   }
 
   const csv = (ls) => '﻿' + [COLS.join(';'), ...ls.map((l) => COLS.map((c) => celula(l[c] ?? (c === 'excluida' ? 0 : ''))).join(';'))].join('\r\n');
@@ -823,6 +883,7 @@
   // "e:" marca fill-rule evenodd. Montados com createElementNS (sem innerHTML).
   const ICONES = {
     'adjustments-horizontal': ["M10 3.75a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM17.25 4.5a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM5 3.75a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 .75.75ZM4.25 17a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM17.25 17a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM9 10a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1 0-1.5h5.5A.75.75 0 0 1 9 10ZM17.25 10.75a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM14 10a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM10 16.25a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"],
+    'arrow-up-tray': ["M9.25 13.25a.75.75 0 0 0 1.5 0V4.636l2.955 3.129a.75.75 0 0 0 1.09-1.03l-4.25-4.5a.75.75 0 0 0-1.09 0l-4.25 4.5a.75.75 0 1 0 1.09 1.03L9.25 4.636v8.614Z", "M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z"],
     'arrow-down-tray': ["M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z", "M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z"],
     'arrow-path': ["e:M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138.75.75 0 0 0-1.449-.39Zm1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219Z"],
     'bookmark': ["e:M10 2c-1.716 0-3.408.106-5.07.31C3.806 2.45 3 3.414 3 4.517V17.25a.75.75 0 0 0 1.075.676L10 15.082l5.925 2.844A.75.75 0 0 0 17 17.25V4.517c0-1.103-.806-2.068-1.93-2.207A41.403 41.403 0 0 0 10 2Z"],
@@ -882,6 +943,7 @@
     const pintar = (v) => { b.classList.toggle('on', v); b.setAttribute('aria-pressed', String(v)); };
     pintar(ligado);
     b.onclick = () => { const v = !b.classList.contains('on'); pintar(v); aoMudar(v); };
+    b.pintar = pintar;
     return b;
   }
   // Casa da grade: rótulo (k) ou valor (v), com ícone opcional
@@ -1128,7 +1190,7 @@
   function montarPainel() {
     el.item = criar('select', {
       title: 'Item da lista. ✓ completo, ◐ abaixo do mínimo, ○ sem oferta (na cor da categoria)',
-      onchange: () => { GM_setValue(CHAVE_ITEM, el.item.value); mostrar(); ler(false, 'Item trocado: página relida. '); },
+      onchange: () => { GM_setValue(CHAVE_ITEM, el.item.value); religarFiltros(); mostrar(); ler(false, 'Item trocado: página relida. '); },
     }, [...new Set(ITENS.map((i) => i.categoria))].map((c) => criar('optgroup', { label: ROTULO_CATEGORIA[c] || c },
       ITENS.filter((i) => i.categoria === c).map((i) => criar('option', { value: i.id, textContent: `${i.id} · ${i.item}` })))));
     el.item.value = itemAtual().id;
@@ -1148,7 +1210,22 @@
       avaliacoes: ['avaliações', 'Filtro de avaliações: desmarca ofertas da Amazon sem avaliações'],
     };
     const filtros = Object.keys(FILTROS_PADRAO).map((k) => selo(FILTRO[k][0], FILTRO[k][1], filtrosAtuais()[k],
-      (v) => { GM_setValue(CHAVE_FILTROS, { ...filtrosAtuais(), [k]: v }); listarOfertas(); }));
+      (v) => { GM_setValue(CHAVE_FILTROS, { ...filtrosAtuais(), [k]: v }); avisarFiltros(); listarOfertas(); }));
+    // Filtro desligado: aviso ao lado dos selos; todos voltam a ligar ao trocar de item, para não
+    // ficarem desligados sem querer (a oferta guardada com um filtro desligado fica fora da revisão dele)
+    el.avisoFiltros = criar('span', { className: 'info alerta filtros-off' });
+    const avisarFiltros = () => {
+      const off = Object.keys(FILTROS_PADRAO).filter((k) => !filtrosAtuais()[k]).map((k) => FILTRO[k][0]);
+      el.avisoFiltros.replaceChildren(...(off.length ? partes(icone('exclamation-triangle'), `${off.join(', ')} desligado${off.length > 1 ? 's' : ''}`) : []));
+      el.avisoFiltros.title = off.length ? 'As ofertas guardadas agora ficam fora da revisão desse filtro. Os filtros voltam a ligar ao trocar de item.' : '';
+    };
+    const religarFiltros = () => {
+      if (Object.keys(FILTROS_PADRAO).every((k) => filtrosAtuais()[k])) return;
+      GM_setValue(CHAVE_FILTROS, {});
+      for (const b of filtros) b.pintar(true);
+      avisarFiltros();
+    };
+    avisarFiltros();
     const soFaltam = selo('só os que faltam', `Esconde no seletor os itens com ${MIN_OFERTAS}+ ofertas`, GM_getValue(CHAVE_SO_FALTAM, false),
       (v) => { GM_setValue(CHAVE_SO_FALTAM, v); mostrar(); });
     el.status = criar('p', { className: 'status' });
@@ -1171,6 +1248,7 @@
       const prox = proximoQueFalta(ativas(carregar()), itemAtual(), pulados());
       if (!prox) { mostrar(`${antes}Todos os itens não pulados têm ${MIN_OFERTAS}+ ofertas.`); return; }
       GM_setValue(CHAVE_ITEM, prox.id);
+      religarFiltros();
       el.item.value = prox.id;
       mostrar(`${antes}Item ${prox.id} · ${prox.item}.`);
       const url = urlBusca(site, prox.termo);
@@ -1201,18 +1279,31 @@
       const agora = Date.now();
       const novas = guardar(guardados, itemAtual(), marcadas, el.unidades.value,
         { fonte: site, busca: location.href, data_coleta: dataLocal(), cep: cepAtual(), agora, filtros: filtrosAtuais() });
-      // Revisão automática: depois de guardar, exclui as guardadas (de todos os itens) que não
-      // passam nas regras do item e nos filtros (sem faixa de preço e avaliações; o filtro
-      // desligado ao guardar uma oferta não vale para ela)
-      const fora = revisarGuardadas(guardados, filtrosAtuais());
-      for (const f of fora) excluir(guardados, f.k, agora);
+      const r = revisarAgora(guardados, agora);
       salvar(guardados);
-      const porItem = {};
-      for (const f of fora) porItem[f.id] = (porItem[f.id] || 0) + 1;
-      const revisao = fora.length ? ` Revisão: ${fora.length} excluída(s) (${Object.entries(porItem).map(([id, n]) => `${id} ${n}`).join(', ')}).` : '';
-      mostrar(`${marcadas.length} guardadas (${novas} novas).${revisao}${cepAtual() && ehSalvador(cepAtual()) ? '' : ' Atenção: sem CEP de Salvador.'}`);
-      if (fora.length) el.status.title = fora.map((f) => `${f.id} ${f.produto.slice(0, 50)}: ${f.motivos.join('; ')}`).join('\n');
+      mostrar(`${marcadas.length} guardadas (${novas} novas).${r.texto}${cepAtual() && ehSalvador(cepAtual()) ? '' : ' Atenção: sem CEP de Salvador.'}`);
+      el.status.title = r.dica;
     }, 'principal');
+    // Importar CSV: refaz as guardadas a partir de exportações anteriores (ex.: depois de
+    // reinstalar o script) e revisa tudo.
+    const arquivo = criar('input', {
+      type: 'file', accept: '.csv,text/csv', multiple: true,
+      onchange: async () => {
+        const fs = [...arquivo.files].sort((a, b) => b.name.localeCompare(a.name));
+        const linhas = [];
+        for (const f of fs) linhas.push(...lerCsv(await f.text()));
+        arquivo.value = '';
+        const g = carregar();
+        const agora = Date.now();
+        const n = importar(g, linhas, agora);
+        const r = revisarAgora(g, agora);
+        salvar(g);
+        mostrar(`${n} ofertas importadas de ${fs.length} arquivo(s) (${linhas.length - n} já guardadas ou repetidas).${r.texto}`);
+        el.status.title = r.dica;
+      },
+    });
+    arquivo.style.display = 'none';
+    const bImportar = botao('arrow-up-tray', '', 'Importar CSV: junta às guardadas as ofertas de CSVs exportados (as já guardadas valem sobre o arquivo) e revisa', () => arquivo.click(), 'ic');
     el.bGuardar.disabled = true;
     const bCsv = botao('arrow-down-tray', 'CSV', 'Baixar CSV: um arquivo por categoria, com tudo o que está guardado', () => { status(`${baixarCsv()} arquivo(s) de categoria baixados.`); mostrar(); }, 'ic');
     const bLimpar = botao('trash', '', 'Limpar: apaga todas as guardadas (baixa antes um backup JSON)', () => {
@@ -1233,8 +1324,8 @@
       criar('div', { className: 'linha' }, [soFaltam, el.bPular, bProximo, el.bGuardar]),
       criar('div', { className: 'linha' }, [bBuscar, bLer, bSomar, bPadrao]),
       criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', title: 'Filtros da marcação inicial' }, [icone('adjustments-horizontal')]), ...filtros,
-        criar('span', { className: 'rotulo', title: el.unidades.title }, [icone('cube')]), el.unidades]),
-      criar('div', { className: 'linha' }, [bCsv, bLimpar, el.pendentes]),
+        criar('span', { className: 'rotulo', title: el.unidades.title }, [icone('cube')]), el.unidades, el.avisoFiltros]),
+      criar('div', { className: 'linha' }, [bCsv, bImportar, arquivo, bLimpar, el.pendentes]),
       criar('div', { className: 'caixa' }, [el.geral, el.resumo]),
       criar('details', {}, [el.guardadasTitulo, el.guardadas]),
       el.funil,
