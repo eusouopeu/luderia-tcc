@@ -2440,3 +2440,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: no seletor, qualquer item com oferta saía esmaecido, mesmo abaixo do mínimo de 3; sem atalho para o próximo item a coletar; nenhum aviso de ofertas fora de CSV ao sair da página.
 **Depois**: seletor com três estados (✓ esmaecido com 3+ ofertas; ⚠ em âmbar com 1 ou 2; cor da categoria sem oferta); caixa "só os que faltam" (guardada no Tampermonkey) esconde os completos, menos o atual; botão "Próximo que falta" pula para o próximo item abaixo do mínimo, primeiro na mesma categoria, e abre a busca dele; com 25+ ofertas guardadas ou excluídas fora de CSV, o painel pede o download e o navegador pede confirmação ao fechar a aba ou sair por link do site (não por "Buscar aqui" nem "Próximo que falta"). Teste do painel confere os três estados, a caixa e o próximo item (25 testes passando).
 **Justificativa**: pedido do autor (recomendações 1, 2, 3 e 5 da sessão).
+
+### 23:57
+**Objeto**: `AGORA.md`
+**Antes**: 63 linhas e 14 KB, com o histórico de cada versão do TMin (v11 a v20), do B5 e do B2 na seção "Fazendo agora", contra a regra de no máximo uma tela.
+**Depois**: 34 linhas e 2,4 KB, só com o estado atual de cada frente (TMin v20, B5, B2, capítulos), os próximos 3 passos e o bloqueado; o histórico fica neste registro.
+**Justificativa**: pedido do autor. O arquivo entra no contexto de toda sessão e dobrou de tamanho em 02/11.
