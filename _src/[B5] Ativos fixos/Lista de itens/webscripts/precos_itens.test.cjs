@@ -330,9 +330,16 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   const r = document.getElementById('cpi-hospedeiro').shadowRoot;
   const botao = (t) => [...r.querySelectorAll('button')].find((b) => b.textContent === t);
   const textos = () => [...r.querySelectorAll('p')].map((p) => p.textContent).join(' | ');
+  // Ao abrir, a página é lida sozinha quando as ofertas param de mudar: Guardar já fica liberado
+  assert.equal(botao('Guardar marcadas').disabled, true);
+  tique();
+  tique();
+  assert.match(r.querySelector('.status').textContent, /^Ofertas lidas sozinhas\. 3 ofertas com preço/);
+  assert.equal(botao('Guardar marcadas').disabled, false);
   const select = r.querySelector('select');
   select.value = 'CB09';
   select.onchange();
+  assert.match(r.querySelector('.status').textContent, /^Item trocado: página relida com as regras dele\. 3 ofertas/);
   botao('Ler ofertas').onclick();
   assert.match(r.querySelector('.status').textContent, /^3 ofertas com preço de 3 cards lidos, 0 marcadas/);
   assert.match(textos(), /Funil: 3 cards → 3 com preço → 2 sem patrocinado → 2 no termo → 0 nos filtros · leitor próprio do site/);

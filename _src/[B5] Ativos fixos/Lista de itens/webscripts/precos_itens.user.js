@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.02-5
+// @version      2026.11.02-6
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -25,7 +25,8 @@
  *  1. Informar o CEP de Salvador usado no site (o frete depende dele) e escolher o item no
  *     painel (a lista vem de "[B5] Lista de Itens da Etapa 1", só os de fonte "coleta").
  *     "Buscar aqui" abre a busca do site com o termo do item.
- *  2. "Ler ofertas": o painel lista as ofertas da página com preço, frete e tipo de preço; já
+ *  2. A página é lida sozinha ao abrir, ao trocar de página e ao trocar de item ("Ler ofertas"
+ *     relê à mão, ex.: depois de rolar): o painel lista as ofertas com preço, frete e tipo de preço; já
  *     vêm marcadas as que têm no título metade ou mais das palavras do termo, todas as
  *     palavras exigidas do item e nenhuma excluída, e que não são patrocinadas, combo com
  *     acessório ("+ 30 bobinas") nem variante de cor ou voltagem de outra da lista. Desmarcar
@@ -41,7 +42,7 @@
  *     tudo o que está guardado, para dados/[B5] Ativos fixos/_dados-brutos/<categoria>/.
  *     Depois, rodar build/B5-b_orcamento_itens.py, que junta os arquivos e fica, para cada
  *     item e URL, com a linha do arquivo mais recente. "Limpar" baixa antes um backup JSON.
- *  Em página de produto, "Ler ofertas" lê o produto pelo JSON-LD (schema.org Product).
+ *  Em página de produto, a leitura pega o produto pelo JSON-LD (schema.org Product).
  *  "Revisar guardadas" exclui as guardadas (de todos os itens) que não passam nas regras e
  *  nos filtros de agora, sem a faixa de preço: serve às coletas feitas antes das regras.
  *
@@ -884,7 +885,7 @@
 
   function montarPainel() {
     el.item = criar('select', {
-      onchange: () => { GM_setValue(CHAVE_ITEM, el.item.value); ofertasLidas = []; cardsLidos = 0; assinaturaLida = ''; listarOfertas(); mostrar(); },
+      onchange: () => { GM_setValue(CHAVE_ITEM, el.item.value); mostrar(); ler(false, 'Item trocado: página relida com as regras dele. '); },
     }, ITENS.map((i) => criar('option', { value: i.id, textContent: `${i.id} · ${i.item}` })));
     el.item.value = itemAtual().id;
     el.cep = criar('input', {
@@ -1005,11 +1006,11 @@
     mostrar();
   }
 
-  // O painel é reposto se o site refizer a página. Amazon (próxima página, ordenação, filtros),
-  // Magalu e Leroy Merlin trocam a busca sem recarregar: o script segue de pé com as ofertas da
-  // página anterior. Depois de uma troca de URL, a página é lida a cada verificação até as
-  // ofertas pararem de mudar (duas leituras iguais); se forem outras, a lista é relida sozinha,
-  // somando se a última leitura foi "Somar página".
+  // O painel é reposto se o site refizer a página. A página é lida sozinha ao abrir e a cada troca
+  // de URL (Amazon, Magalu e Leroy Merlin trocam a busca sem recarregar): a cada verificação até
+  // as ofertas pararem de mudar (duas leituras iguais); se forem outras que as da lista, ela é
+  // relida, somando se a última leitura foi "Somar página". "Ler ofertas" fica para reler à mão
+  // (ex.: depois de rolar a página).
   let urlVista = location.href;
   let espera = null; // { tentativas, ultima } enquanto a página nova carrega
   const ESPERA_MAX = 10; // verificações (15 s) até desistir
@@ -1019,24 +1020,28 @@
     const agora = assinatura(lerOfertas(site).ofertas);
     if (agora && agora === espera.ultima) {
       espera = null;
-      if (agora !== assinaturaLida) ler(somando, somando ? 'A página mudou: ofertas dela somadas às já lidas. ' : 'A página mudou: lista relida. ');
+      if (agora !== assinaturaLida) {
+        const motivo = !ofertasLidas.length ? 'Ofertas lidas sozinhas. '
+          : somando ? 'A página mudou: ofertas dela somadas às já lidas. ' : 'A página mudou: lista relida. ';
+        ler(somando && ofertasLidas.length > 0, motivo);
+      }
       return;
     }
     espera.ultima = agora;
     if (espera.tentativas >= ESPERA_MAX) {
       espera = null;
-      status(`A página mudou e não terminou de carregar: as ${ofertasLidas.length} ofertas da lista são da anterior. Clique em "Ler ofertas".`);
+      if (ofertasLidas.length) status(`A página mudou e não terminou de carregar: as ${ofertasLidas.length} ofertas da lista são da anterior. Clique em "Ler ofertas".`);
     }
   }
 
   function verificar() {
     if (!document.body) return;
-    if (!hospedeiro) montarPainel();
+    if (!hospedeiro) { montarPainel(); espera = { tentativas: 0, ultima: '' }; }
     if (!hospedeiro.isConnected) document.documentElement.appendChild(hospedeiro);
     if (location.href !== urlVista) {
       urlVista = location.href;
       mostrarCep();
-      if (ofertasLidas.length) espera = { tentativas: 0, ultima: '' };
+      espera = { tentativas: 0, ultima: '' };
     } else if (espera) {
       acompanharTroca();
     }

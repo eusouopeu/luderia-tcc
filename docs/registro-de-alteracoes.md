@@ -2422,3 +2422,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: TMin v19 com o modelo de demanda antigo (VPL de R$ 13.248); apêndices montados sobre a raiz XML do principal, sem declarar os prefixos `a` e `pic` da Figura F.1; sigla ANR fora da lista.
 **Depois**: TMin v20 com o modelo novo (84 páginas, pré-textuais em 7, texto da p. 8 à 84; 7 figuras, 15 quadros, 10 tabelas, 58 siglas); apêndices v20 (12 páginas) conferidos com o principal (54 concorrentes, 42 premissas, P(VPL > 0) de 81,9%); o script dos apêndices declara os prefixos que faltam na raiz, e o LibreOffice volta a abrir o arquivo; ANR na lista de siglas.
 **Justificativa**: pedido do autor (gerar o v20 com o modelo novo). O `.docx` dos apêndices gerado sobre o v20 não abria no LibreOffice ("unbound prefix" na figura).
+
+### 23:39
+**Objeto**: `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js` (versão 2026.11.02-6) e `precos_itens.test.cjs`; `docs/pendencias.md`, `AGORA.md`
+**Antes**: o painel só lia as ofertas ao clicar em "Ler ofertas" (ou ao trocar de página depois de uma leitura); até lá, "Guardar marcadas" ficava desativado; trocar de item apagava a lista.
+**Depois**: a página é lida sozinha ao abrir o painel e a cada troca de URL, assim que as ofertas param de mudar (duas leituras iguais, a cada 1,5 s); trocar de item relê a página com as regras do item novo; "Guardar marcadas" fica liberado sem clique extra; "Ler ofertas" segue para reler à mão (ex.: depois de rolar). Teste do painel confere a leitura automática e a releitura ao trocar de item (25 testes passando).
+**Justificativa**: pedido do autor (não precisar clicar em "Ler ofertas" para liberar "Guardar marcadas").
