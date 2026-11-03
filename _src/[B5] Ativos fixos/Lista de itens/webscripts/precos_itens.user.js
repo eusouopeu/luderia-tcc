@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.03-1
+// @version      2026.11.03-2
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -32,7 +32,8 @@
  *     por categoria: os que já têm oferta guardada esmaecidos (✓ e o número de ofertas), os que
  *     faltam com ○ na cor da categoria (com 1 ou 2 ofertas, ◐ em âmbar). "Só os que faltam" esconde
  *     os completos; "Próximo que falta" pula para o próximo item abaixo do mínimo (primeiro na
- *     mesma categoria) e abre a busca dele. Com 25+ ofertas fora de CSV, o painel cobra o download
+ *     mesma categoria) e abre a busca dele. "Pular" marca o item cuja busca não trouxe o item pensado: ele sai do
+ *     "Próximo" e de "só os que faltam" e não deixa guardar, até "Retomar" (no próprio item). Com 25+ ofertas fora de CSV, o painel cobra o download
  *     e o navegador pede confirmação ao fechar a aba.
  *  2. A página é lida sozinha ao abrir, ao trocar de página e ao trocar de item ("Ler ofertas"
  *     relê à mão, ex.: depois de rolar): o painel lista as ofertas com preço, frete e tipo de preço; já
@@ -99,6 +100,7 @@
   const CHAVE_FILTROS = 'tcc_precos_filtros';
   const CHAVE_EXPORTACAO = 'tcc_precos_exportado_em';
   const CHAVE_SO_FALTAM = 'tcc_precos_so_faltam';
+  const CHAVE_PULADOS = 'tcc_precos_pulados'; // { id_item: data em que foi pulado }
   const AVISO_PENDENTES = 25; // guardadas ou excluídas fora de CSV a partir das quais o painel cobra o download
   const MIN_OFERTAS = 3; // o build usa P25, mediana e P75: abaixo disso o item fica frágil
   const FAIXA = [0.3, 3]; // F2: oferta fora de 0,3× a 3× a mediana do item fica desmarcada
@@ -116,12 +118,12 @@
     ['OB40', 'obra_reforma', 'Ar-condicionado split', 'ar condicionado split 30000 btus inverter', 'split|inverter', 'janela|portatil|on off|controle remoto|suporte|capa'],
     ['OB41', 'obra_reforma', 'Instalação do split', 'kit instalacao ar condicionado split 30000 btus 5 metros', 'kit|instala', 'suporte avulso|dreno|bomba|capa|controle'],
     ['OB42', 'obra_reforma', 'Letreiro de fachada', 'fachada acm letra caixa iluminada led', 'fachada/letreiro|acm', 'adesivo|neon|mini|mesa|placa de sinalizacao|letra avulsa'],
-    ['MO01', 'mobiliario', 'Mesa de jogo para 6 lugares', 'mesa retangular restaurante 160x80 tampo madeira pe ferro', 'mesa', 'cadeira|conjunto|jogo de jantar|banco|dobravel|infantil|escritorio|centro|bistro'],
-    ['MO02', 'mobiliario', 'Mesa de jogo para 4 lugares', 'mesa quadrada restaurante 80x80 tampo madeira pe ferro', 'mesa|quadrada', 'cadeira|conjunto|jogo de jantar|banco|dobravel|infantil|centro|lateral|bistro|alta'],
-    ['MO03', 'mobiliario', 'Cadeira', 'cadeira restaurante estofada encosto madeira', 'cadeira', 'gamer|escritorio|giratoria|rodizio|infantil|praia|capa|almofada|poltrona|banqueta|bistro|alta'],
-    ['MO04', 'mobiliario', 'Luminária pendente sobre a mesa', 'luminaria pendente cupula metal e27 mesa jantar', 'pendente', 'abajur|luminaria de mesa|trilho|spot|arandela|lampada avulsa|plafon|fita'],
-    ['MO05', 'mobiliario', 'Estante do acervo', 'estante industrial aco madeira 5 prateleiras 180 cm', 'estante|5 prateleira', 'sapateira|banheiro|plastica|plastico|mini|nicho|parede|escada'],
-    ['MO06', 'mobiliario', 'Balcão de atendimento e caixa', 'balcao caixa atendimento loja recepcao mdf 180 cm', 'balcao', 'cozinha|pia|banheiro|gabinete|buffet|aereo|rack|tv|mini'],
+    ['MO01', 'mobiliario', 'Mesa de jogo para 6 lugares', 'mesa industrial 160x80 tampo pinus pe metal preto', 'mesa|industrial/metal/ferro/aco/metalon', 'cadeira|conjunto|jogo de jantar|banco|dobravel|infantil|escritorio|centro|bistro|vidro|marmore|laca'],
+    ['MO02', 'mobiliario', 'Mesa de jogo para 4 lugares', 'mesa industrial quadrada 80x80 tampo pinus pe metal preto', 'mesa|quadrada|industrial/metal/ferro/aco/metalon', 'cadeira|conjunto|jogo de jantar|banco|dobravel|infantil|centro|lateral|bistro|alta|vidro|marmore|laca'],
+    ['MO03', 'mobiliario', 'Cadeira', 'cadeira industrial metal preta assento madeira', 'cadeira|metal/ferro/aco/industrial', 'gamer|escritorio|giratoria|rodizio|infantil|praia|capa|almofada|poltrona|banqueta|bistro|alta|estofada|veludo|plastico'],
+    ['MO04', 'mobiliario', 'Luminária pendente sobre a mesa', 'luminaria pendente industrial cupula metal preto e27', 'pendente|preto/preta', 'abajur|luminaria de mesa|trilho|spot|arandela|lampada avulsa|plafon|fita|dourado|cristal|rose'],
+    ['MO05', 'mobiliario', 'Estante do acervo', 'estante industrial metalon preto pinus 5 prateleiras 180 cm', 'estante|5 prateleira|industrial/metalon/ferro/aco', 'sapateira|banheiro|plastica|plastico|mini|nicho|parede|escada'],
+    ['MO06', 'mobiliario', 'Balcão de atendimento e caixa', 'balcao industrial metalon preto tampo pinus loja caixa', 'balcao|industrial/metalon/ferro/aco', 'cozinha|pia|banheiro|gabinete|buffet|aereo|rack|tv|mini|refrigerado|vidro'],
     ['MO07', 'mobiliario', 'Armário de funcionários', 'armario roupeiro aco 8 portas vestiario', 'roupeiro/vestiario|aco', 'guarda roupa|mdf|infantil|casal|solteiro|cabideiro'],
     ['CB01', 'cozinha_bar', 'Fogão industrial', 'fogao industrial 4 bocas com forno', 'industrial', 'sem forno|embutir|cooktop|mesa vidro'],
     ['CB02', 'cozinha_bar', 'Chapa bifeteira', 'chapa bifeteira industrial gas 70cm', 'chapa|gas', 'ferro fundido|para fogao|eletrica|grill|sanduicheira'],
@@ -753,7 +755,7 @@
     select{width:100%} select option,select optgroup{color:#111}
     option.obra_reforma{color:#c2410c} option.cozinha_bar{color:#1d4ed8}
     option.mobiliario{color:#15803d} option.equipamentos{color:#7e22ce}
-    option.coletado{color:#9ca3af} option.fraco{color:#b45309}
+    option.coletado{color:#9ca3af} option.fraco{color:#b45309} option.pulado{color:#9ca3af;font-style:italic}
     input[type=number]{width:46px} input.cep{width:84px} input.u{width:38px;flex:0 0 auto;font-size:11px;padding:1px 3px}
     .rotulo{display:inline-flex;opacity:.7}
     .info{font-size:12px;display:inline-flex;align-items:center;gap:3px}
@@ -803,6 +805,8 @@
     'tag': ["e:M4.5 2A2.5 2.5 0 0 0 2 4.5v3.879a2.5 2.5 0 0 0 .732 1.767l7.5 7.5a2.5 2.5 0 0 0 3.536 0l3.878-3.878a2.5 2.5 0 0 0 0-3.536l-7.5-7.5A2.5 2.5 0 0 0 8.38 2H4.5ZM5 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"],
     'trash': ["e:M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z"],
     'truck': ["M6.5 3c-1.051 0-2.093.04-3.125.117A1.49 1.49 0 0 0 2 4.607V10.5h9V4.606c0-.771-.59-1.43-1.375-1.489A41.568 41.568 0 0 0 6.5 3ZM2 12v2.5A1.5 1.5 0 0 0 3.5 16h.041a3 3 0 0 1 5.918 0h.791a.75.75 0 0 0 .75-.75V12H2Z", "M6.5 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM13.25 5a.75.75 0 0 0-.75.75v8.514a3.001 3.001 0 0 1 4.893 1.44c.37-.275.61-.719.595-1.227a24.905 24.905 0 0 0-1.784-8.549A1.486 1.486 0 0 0 14.823 5H13.25ZM14.5 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"],
+    'arrow-uturn-left': ["e:M7.793 2.232a.75.75 0 0 1-.025 1.06L3.622 7.25h10.003a5.375 5.375 0 0 1 0 10.75H10.75a.75.75 0 0 1 0-1.5h2.875a3.875 3.875 0 0 0 0-7.75H3.622l4.146 3.957a.75.75 0 0 1-1.036 1.085l-5.5-5.25a.75.75 0 0 1 0-1.085l5.5-5.25a.75.75 0 0 1 1.06.025Z"],
+    'arrow-uturn-right': ["e:M12.207 2.232a.75.75 0 0 0 .025 1.06l4.146 3.958H6.375a5.375 5.375 0 0 0 0 10.75H9.25a.75.75 0 0 0 0-1.5H6.375a3.875 3.875 0 0 1 0-7.75h10.003l-4.146 3.957a.75.75 0 0 0 1.036 1.085l5.5-5.25a.75.75 0 0 0 0-1.085l-5.5-5.25a.75.75 0 0 0-1.06.025Z"],
     'x-mark': ["M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"],
   };
   function icone(nome) {
@@ -888,6 +892,7 @@
     el.geral.replaceChildren(
       casa('k', icone('chart-bar'), 'Itens'), casa('v', `${itensComPreco}/${ITENS.length}`),
       casa('k', 'Abaixo de 3'), casa('v', String(itensFracos)),
+      ...(Object.keys(pulados()).length ? [casa('k', icone('arrow-uturn-right'), 'Pulados'), casa('v largo', Object.keys(pulados()).sort().join(', '))] : []),
       casa('k', icone('folder'), ROTULO_CATEGORIA[item.categoria] || item.categoria),
       criar('span', { className: `v largo${c.completos === c.itens ? ' ok' : ''}`, title: `${c.completos} de ${c.itens} itens da categoria com ${MIN_OFERTAS}+ ofertas; ${c.comPreco} com alguma` },
         partes(`${c.completos}/${c.itens}`, criar('span', { className: 'barra' }, [preenchido]))),
@@ -919,13 +924,19 @@
       );
     }
     rotularItens(lista);
+    mostrarPular(item);
     listarGuardadas(guardados, item);
     if (t) status(t);
   }
 
+  // Itens pulados: a busca não trouxe o item pensado. Ficam fora do "Próximo" e de "só os que
+  // faltam", não deixam guardar e voltam com "Retomar" (no próprio item, pelo seletor).
+  const pulados = () => GM_getValue(CHAVE_PULADOS, {});
+  const pulado = (id) => id in pulados();
+
   // Itens do seletor (o menu nativo só aceita texto): com o mínimo de ofertas, esmaecidos (✓ e o
   // número de ofertas); com alguma, abaixo do mínimo, em âmbar (◐ e n/3); sem oferta, ○ na cor
-  // da categoria. "Só os que faltam" esconde os completos (menos o atual).
+  // da categoria; pulados, – em itálico. "Só os que faltam" esconde completos e pulados (menos o atual).
   const ofertasPorItem = (lista) => {
     const n = {};
     for (const l of lista) n[l.id_item] = (n[l.id_item] || 0) + 1;
@@ -938,21 +949,32 @@
     for (const o of el.item.querySelectorAll('option')) {
       const i = ITENS.find((x) => x.id === o.value);
       const k = n[i.id] || 0;
-      o.className = k >= MIN_OFERTAS ? 'coletado' : k ? 'fraco' : i.categoria;
-      o.textContent = k >= MIN_OFERTAS ? `✓ ${i.id} · ${i.item} (${k})`
+      const pul = pulado(i.id);
+      o.className = pul ? 'pulado' : k >= MIN_OFERTAS ? 'coletado' : k ? 'fraco' : i.categoria;
+      o.textContent = pul ? `– ${i.id} · ${i.item} (pulado)` : k >= MIN_OFERTAS ? `✓ ${i.id} · ${i.item} (${k})`
         : k ? `◐ ${i.id} · ${i.item} (${k}/${MIN_OFERTAS})` : `○ ${i.id} · ${i.item}`;
-      o.hidden = soFaltam && k >= MIN_OFERTAS && i.id !== atual;
+      o.hidden = soFaltam && (k >= MIN_OFERTAS || pul) && i.id !== atual;
     }
     for (const g of el.item.querySelectorAll('optgroup')) g.hidden = [...g.querySelectorAll('option')].every((o) => o.hidden);
   }
 
-  // Próximo item abaixo do mínimo de ofertas: primeiro na categoria do atual, depois nas outras,
-  // seguindo a ordem da lista a partir do atual.
-  function proximoQueFalta(lista, atual) {
+  // Próximo item abaixo do mínimo de ofertas e não pulado: primeiro na categoria do atual, depois
+  // nas outras, seguindo a ordem da lista a partir do atual.
+  function proximoQueFalta(lista, atual, puls = {}) {
     const n = ofertasPorItem(lista);
     const i0 = ITENS.findIndex((i) => i.id === atual.id);
-    const ordem = [...ITENS.slice(i0 + 1), ...ITENS.slice(0, i0)].filter((i) => (n[i.id] || 0) < MIN_OFERTAS);
+    const ordem = [...ITENS.slice(i0 + 1), ...ITENS.slice(0, i0)].filter((i) => (n[i.id] || 0) < MIN_OFERTAS && !(i.id in puls));
     return ordem.find((i) => i.categoria === atual.categoria) || ordem[0] || null;
+  }
+
+  function mostrarPular(item) {
+    if (!el.bPular) return;
+    const pul = pulado(item.id);
+    el.bPular.replaceChildren(...partes(icone(pul ? 'arrow-uturn-left' : 'arrow-uturn-right'), criar('span', { textContent: pul ? 'Retomar' : 'Pular' })));
+    el.bPular.title = pul
+      ? `Retomar: ${item.id} foi pulado em ${diaMes(pulados()[item.id])}; volta ao "Próximo" e libera o Guardar`
+      : 'Pular: a busca não trouxe o item pensado; marca o item como pulado (fora do "Próximo" e de "só os que faltam", sem Guardar) e vai ao próximo';
+    if (el.bGuardar) contarMarcadas();
   }
 
   function listarGuardadas(guardados, item) {
@@ -1030,7 +1052,7 @@
   function contarMarcadas() {
     const n = caixasMarcadas().length;
     el.bGuardar.lastChild.textContent = `Guardar${ofertasLidas.length ? ` (${n})` : ''}`;
-    el.bGuardar.disabled = !ofertasLidas.length;
+    el.bGuardar.disabled = !ofertasLidas.length || pulado(itemAtual().id);
   }
 
   // A1 e A6: funil da leitura e leitor usado, com alerta se o site tem leitor próprio e ele falhou.
@@ -1102,15 +1124,31 @@
       contarMarcadas();
       status(`${n} oferta(s) de Pix ou cupom desmarcadas; ${caixasMarcadas().length} marcadas.`);
     });
-    const bProximo = botao('forward', 'Próximo', `Próximo que falta: pula para o próximo item com menos de ${MIN_OFERTAS} ofertas (primeiro na mesma categoria) e abre a busca dele`, () => {
-      const prox = proximoQueFalta(ativas(carregar()), itemAtual());
-      if (!prox) { status(`Todos os itens têm ${MIN_OFERTAS}+ ofertas.`); return; }
+    const irProximo = (antes = '') => {
+      const prox = proximoQueFalta(ativas(carregar()), itemAtual(), pulados());
+      if (!prox) { mostrar(`${antes}Todos os itens não pulados têm ${MIN_OFERTAS}+ ofertas.`); return; }
       GM_setValue(CHAVE_ITEM, prox.id);
       el.item.value = prox.id;
-      mostrar(`Item ${prox.id} · ${prox.item}.`);
+      mostrar(`${antes}Item ${prox.id} · ${prox.item}.`);
       const url = urlBusca(site, prox.termo);
-      if (url) { saindoPeloPainel = true; location.href = url; } else ler(false, `Item ${prox.id}: página relida. `);
-    });
+      if (url) { saindoPeloPainel = true; location.href = url; } else ler(false, `${antes}Item ${prox.id}: página relida. `);
+    };
+    const bProximo = botao('forward', 'Próximo', `Próximo que falta: vai para o próximo item com menos de ${MIN_OFERTAS} ofertas e não pulado (primeiro na mesma categoria) e abre a busca dele`, () => irProximo());
+    // Pular: marca o item como pulado (a busca não trouxe o item pensado) e vai ao próximo;
+    // num item já pulado, o botão vira "Retomar".
+    el.bPular = botao('arrow-uturn-right', 'Pular', '', () => {
+      const item = itemAtual();
+      const g = pulados();
+      if (item.id in g) {
+        delete g[item.id];
+        GM_setValue(CHAVE_PULADOS, g);
+        mostrar(`${item.id} retomado.`);
+        listarOfertas();
+        return;
+      }
+      GM_setValue(CHAVE_PULADOS, { ...g, [item.id]: dataLocal() });
+      irProximo(`${item.id} pulado. `);
+    }, 'ic');
     el.bGuardar = botao('bookmark', 'Guardar', 'Guardar marcadas: guarda as ofertas marcadas no Tampermonkey', () => {
       // motivo: os filtros que a oferta não passou (marcada à mão); o build a deixa de fora
       const ref = referencia();
@@ -1154,7 +1192,7 @@
       cabecalho,
       criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo' }, [icone('map-pin')]), el.cep, el.cepAviso]),
       el.item,
-      criar('div', { className: 'linha' }, [soFaltam, bProximo, el.bGuardar]),
+      criar('div', { className: 'linha' }, [soFaltam, el.bPular, bProximo, el.bGuardar]),
       criar('div', { className: 'linha' }, [bBuscar, bLer, bSomar, bPadrao]),
       criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', title: 'Filtros da marcação inicial' }, [icone('adjustments-horizontal')]), ...filtros,
         criar('span', { className: 'rotulo', title: el.unidades.title }, [icone('cube')]), el.unidades]),

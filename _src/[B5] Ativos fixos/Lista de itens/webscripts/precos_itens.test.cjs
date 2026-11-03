@@ -372,6 +372,24 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   assert.equal(so.getAttribute('aria-pressed'), 'true');
   assert.equal(memoria.tcc_precos_so_faltam, true);
   assert.equal([...r.querySelectorAll('option')].filter((o) => o.hidden).length, 0);
+  // Pular: CB10 fica fora do Próximo, esconde-se em "só os que faltam" e não deixa guardar; Retomar desfaz
+  memoria.tcc_precos_pulados = { CB10: '2026-11-03' };
+  botao('Próximo que falta').onclick();
+  assert.equal(memoria.tcc_precos_item, 'CB11');
+  select.value = 'CB09';
+  select.onchange();
+  assert.equal(opcao('CB10').hidden, true);
+  assert.match(opcao('CB10').textContent, /^– CB10 · .*\(pulado\)$/);
+  assert.match(textos(), /PuladosCB10/);
+  botao('Pular').onclick();
+  assert.deepEqual(Object.keys(memoria.tcc_precos_pulados).sort(), ['CB09', 'CB10']);
+  assert.equal(memoria.tcc_precos_item, 'CB11');
+  select.value = 'CB09';
+  select.onchange();
+  assert.equal(botao('Guardar marcadas').disabled, true);
+  botao('Retomar').onclick();
+  assert.equal(botao('Guardar marcadas').disabled, false);
+  delete memoria.tcc_precos_pulados;
   botao('Próximo que falta').onclick();
   assert.equal(memoria.tcc_precos_item, 'CB10');
   assert.match(ambiente.location.href, /amazon\.com\.br\/s\?k=/);
