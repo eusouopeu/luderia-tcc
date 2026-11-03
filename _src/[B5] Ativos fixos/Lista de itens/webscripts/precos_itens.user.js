@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.03-2
+// @version      2026.11.03-3
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -129,7 +129,7 @@
     ['CB02', 'cozinha_bar', 'Chapa bifeteira', 'chapa bifeteira industrial gas 70cm', 'chapa|gas', 'ferro fundido|para fogao|eletrica|grill|sanduicheira'],
     ['CB03', 'cozinha_bar', 'Fritadeira', 'fritadeira industrial 2 cubas', 'fritadeira|2 cuba/dupla', 'air fryer|airfryer|sem oleo|cesto avulso'],
     ['CB04', 'cozinha_bar', 'Forno elétrico de bancada', 'forno eletrico industrial bancada', 'industrial/comercial/profissional', 'air fryer|airfryer|micro ondas'],
-    ['CB05', 'cozinha_bar', 'Coifa com exaustor', 'coifa industrial inox 150 cm com motor exaustor', 'coifa|industrial', 'depurador|ilha|vidro|filtro avulso|carvao|60 cm|90 cm'],
+    ['CB05', 'cozinha_bar', 'Coifa com exaustor', 'coifa inox industrial parede 150 cm', 'coifa', 'depurador|ilha|central|vidro|filtro avulso|carvao|60 cm|90 cm|cooktop|fogao|purificador|chapeu|duto avulso'],
     ['CB06', 'cozinha_bar', 'Geladeira comercial', 'refrigerador comercial 4 portas', '4 porta', 'frigobar|cervejeira|vidro'],
     ['CB07', 'cozinha_bar', 'Freezer horizontal', 'freezer horizontal 2 tampas 400 litros', 'horizontal', 'vertical|1 tampa|1 porta'],
     ['CB08', 'cozinha_bar', 'Expositor de bebidas', 'expositor vertical bebidas porta vidro', 'vertical|vidro', 'frigobar|mini|cooler'],
@@ -144,7 +144,7 @@
     ['CB17', 'cozinha_bar', 'Copos', 'copo long drink vidro 300 ml caixa 24', 'copo|long', 'acrilico|plastico|descartavel|taca|caneca|termico|personalizado|gravado|canudo'],
     ['CB18', 'cozinha_bar', 'Talheres', 'kit garfo e faca de mesa inox restaurante 12 pares', 'garfo|faca', 'colher|sobremesa|descartavel|plastico|infantil|faqueiro|churrasco|bolo|peixe'],
     ['CB19', 'cozinha_bar', 'Estante de aço', 'estante aço 5 prateleiras', 'aco', 'sapateira|plastica|plastico|banheiro|mini'],
-    ['CB20', 'cozinha_bar', 'Lava-louças', 'lava loucas industrial capota inox', 'capota/industrial', 'servicos|detergente|secante|pastilha|cesto avulso|bancada'],
+    ['CB20', 'cozinha_bar', 'Lava-louças', 'lava loucas industrial capota', 'louca|industrial/comercial/capota/restaurante/profissional', 'servicos|detergente|secante|pastilha|cesto avulso|bancada|roupa|alta pressao|pia|torneira|ducha|portatil|mini|escorredor|esponja'],
     ['EQ01', 'equipamentos', 'Computador', 'notebook intel core i5 8gb ssd 256gb', 'notebook|i5', 'recondicionado|usado|seminovo|capa|mochila|suporte|carregador|bateria|para notebook|teclado|memoria'],
     ['EQ02', 'equipamentos', 'Impressora de NFC-e', 'impressora termica nao fiscal 80mm', '80 mm', 'etiqueta|portatil|a4|sem tinta'],
     ['EQ03', 'equipamentos', 'Maquininha de cartão', 'maquininha de cartao credito debito pix chip', 'maquininha/maquina', 'bobina|capa|carregador|bateria|pelicula|suporte|cabo|bolsa|case'],
