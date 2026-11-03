@@ -96,26 +96,24 @@ Temas que mudam entre os grupos (q < 0,05):
 
 | Elogios | Baixo (570 menções) | Médio (560) | Alto (108) |
 |---|---|---|---|
-| Atendimento presencial | 26% | 25% | 23% |
-| Comida | 19% | 18% | 23% |
-| Ambiente e decoração | 16% | 15% | 6% |
-| Variedade do acervo | 10% | 8% | 8% |
-| Explicação de jogos | 5% | 9% | 8% |
-| Curadoria e conservação do acervo | 4% | 6% | 3% |
-| Demais 16 temas | 20% | 19% | 29% |
+| Atendimento presencial | **26%** | **25%** | **23%** |
+| Comida | **19%** | **18%** | **23%** |
+| Ambiente e decoração | **16%** | **15%** | 6% |
+| Variedade do acervo | **10%** | 8% | **8%** |
+| Explicação de jogos | 5% | **9%** | **8%** |
+| Demais 17 temas | 25% | 25% | 31% |
 
 | Críticas | Baixo (60 menções) | Médio (160) | Alto (38) |
 |---|---|---|---|
-| Comida | 23% | 11% | 18% |
-| Preço do cardápio | 15% | 12% | 13% |
-| Conforto e barulho | 10% | 11% | 11% |
-| Atendimento presencial | 8% | 11% | 18% |
-| Preço da entrada | 5% | 6% | 13% |
-| Rapidez do serviço | 10% | 6% | 3% |
-| Regras da casa | 5% | 9% | 0% |
-| Demais 15 temas | 23% | 34% | 24% |
+| Comida | **23%** | **11%** | **18%** |
+| Preço do cardápio | **15%** | **12%** | **13%** |
+| Atendimento presencial | 8% | **11%** | **18%** |
+| Conforto e barulho | **10%** | **11%** | 11% |
+| Preço da entrada | 5% | 6% | **13%** |
+| Rapidez do serviço | **10%** | 6% | 3% |
+| Demais 16 temas | 28% | 44% | 24% |
 
-Fonte: elaborado pelo próprio autor com base no B2. Unidade: menção (avaliação × tema). Cada coluna soma 100%. Tabela completa em `B2_cluster_clientes_distribuicao.csv`.
+Fonte: elaborado pelo próprio autor com base no B2. Unidade: menção (avaliação × tema). Cada coluna soma 100%. Linhas: os quatro temas mais mencionados de cada grupo, em negrito no próprio grupo (empate no 4º lugar entra; no gasto alto, acervo e explicação de jogos empatam em elogios, e conforto e barulho fica fora das críticas por 10,5% contra 13,2%). Como os quatro primeiros se repetem entre os grupos, sobram 5 temas de elogio e 6 de crítica. Tabela completa em `B2_cluster_clientes_distribuicao.csv`.
 
 Dentro de cada grupo, atendimento e comida dominam os elogios em todas as faixas. O que muda é o peso do ambiente, que cai de 16% para 6% dos elogios no gasto alto. Nas críticas, o cliente de gasto baixo reclama sobretudo da comida e do preço do cardápio. O de gasto alto divide a crítica entre comida, atendimento e preço (cardápio e entrada). Com 38 e 60 menções de crítica, as diferenças nos grupos alto e baixo valem como direção, não como medida.
 

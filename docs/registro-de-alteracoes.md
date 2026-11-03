@@ -2599,3 +2599,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: os grupos de gasto só eram comparados entre si (% das avaliações de cada grupo).
 **Depois**: distribuição interna das menções de elogio e de crítica em cada grupo (cada coluna soma 100%). No gasto alto, o ambiente cai para 6% dos elogios e a crítica se divide entre comida, atendimento e preço.
 **Justificativa**: pedido do autor (tabela comparando só internamente os itens elogiados e criticados de cada grupo de cliente por gasto).
+
+### 19:29
+**Objeto**: `docs/parecer_retorno_e_clusters_B2.md` (Quadro C2)
+**Antes**: linhas escolhidas pelo total de menções (6 de elogio, 7 de crítica), com curadoria do acervo e regras da casa à parte.
+**Depois**: linhas formadas pelos quatro temas mais mencionados de cada grupo, em negrito no próprio grupo; como se repetem, ficam 5 de elogio e 6 de crítica, e o resto vai para "demais temas".
+**Justificativa**: pedido do autor (comparar, em cada grupo, os quatro mais frequentes dele e os dos outros grupos).
