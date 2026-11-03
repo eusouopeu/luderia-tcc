@@ -6,12 +6,13 @@ Uso: python3 _src/extras/gerar_apendices_tmin.py textos/capitulos/TCC_luderia_TM
 Gera `textos/capitulos/TCC_luderia_TMin_apendices_v<n>.docx` (mesmo número de
 versão do principal) com os apêndices citados no texto, na ordem de citação:
 A (concorrentes do B1), B (contagem direta do B3), C (bases públicas do B4),
-D (matriz de evidências), E (registro de premissas) e F (Monte Carlo). Os
-números vêm dos dados e do modelo financeiro (`gerar_modelo_financeiro.py`),
-não do texto. Estilos, rodapé e margens são copiados do .docx principal.
+D (matriz de evidências), E (registro de premissas), F (análise de conteúdo
+das avaliações do B2) e G (Monte Carlo). Os números vêm dos dados e do modelo
+financeiro (`gerar_modelo_financeiro.py`), não do texto; os do F, das saídas de
+`_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_temas_grade2.py`. Estilos, rodapé e margens são copiados do .docx principal.
 
 Toda vez que o principal mudar, rodar de novo: o script confere se o principal
-cita exatamente os apêndices A a F e se os números-chave citados no texto
+cita exatamente os apêndices A a G e se os números-chave citados no texto
 (concorrentes, premissas, P(VPL > 0)) batem com os dos apêndices; se não,
 para com a lista das divergências (regra em `_instrucoes/1c_versoes.md`).
 """
@@ -30,8 +31,9 @@ import gerar_modelo_financeiro as g  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 B3 = ROOT / "dados" / "[B3] Contagem direta de ocupacao"
+B2 = ROOT / "dados" / "[B2] Avaliacoes recentes" / "analise_conteudo"
 FIG_MC = ROOT / "textos" / "capitulos" / "figuras" / "9_monte_carlo.png"
-LETRAS = "ABCDEF"
+LETRAS = "ABCDEFG"
 
 
 # --------------------------------------------------------------- formato
@@ -139,7 +141,10 @@ def dados():
     vis = pd.read_csv(B3 / "contagem_resumo_visitas.csv", sep=";", encoding="utf-8-sig")
     vis = vis[vis["observador"] != "media"]
     notas = pd.read_csv(B3 / "contagem_notas_intervalo.csv", sep=";", encoding="utf-8-sig")
-    return dict(f=f, prem=prem, quadro=quadro, mc=mc, est=est, vis=vis, notas=notas)
+    temas = pd.read_csv(B2 / "B2_temas_frequencia.csv", sep=";", encoding="utf-8-sig")
+    kappa = pd.read_csv(B2 / "B2_recodificacao_kappa.csv", sep=";", encoding="utf-8-sig")
+    ctx = pd.read_csv(B2 / "B2_temas_contexto.csv", sep=";", encoding="utf-8-sig")
+    return dict(f=f, prem=prem, quadro=quadro, mc=mc, est=est, vis=vis, notas=notas, temas=temas, kappa=kappa, ctx=ctx)
 
 
 UNIDADE = {"BV": "Bela Vista", "PA": "Paralela"}
@@ -271,7 +276,75 @@ def apendice_e(d):
         dict(premissas=len(d["prem"]))
 
 
+# o que cada tema marca (resumo da descrição do banco "2 - Comentários" e do dicionário de 02/11/2026)
+DEF_TEMAS = {
+    "atendimento presencial": "Cordialidade e atenção da equipe; atendimento e serviço genéricos",
+    "comida": "Sabor e qualidade dos pratos",
+    "ambiente e decoração": "Atmosfera, aconchego, tema e decoração",
+    "variedade do acervo": "Quantidade de jogos",
+    "explicação de jogos": "Ensino das regras, monitor, troca de jogos na mesa",
+    "curadoria e conservação do acervo": "Jogos bons de jogar; peças faltando; estado dos jogos",
+    "espaço e lotação": "Tamanho do salão e das mesas, conseguir mesa, fila, reserva",
+    "bebidas": "Sabor e qualidade das bebidas",
+    "eventos e comunidade": "Torneios, trívia, público frequente",
+    "preço de outros itens": "Jogos, produtos da loja, aluguel e preço sem objeto declarado",
+    "conforto e barulho": "Cadeiras, temperatura, ventilação, ruído",
+    "preço do cardápio": "Preço de comida e bebida",
+    "regras da casa": "Taxa de serviço, pagamento, limite de tempo, idade, horário",
+    "rapidez do serviço": "Tempo do pedido",
+    "variedade do cardápio": "Opções de comida e bebida",
+    "indicações de jogos": "Recomendação de jogo pela equipe",
+    "comemorações e grupos": "Serviço a aniversários e grupos",
+    "preço da entrada": "Couvert, taxa de jogo, tempo adicional",
+    "porções": "Tamanho das porções",
+    "limpeza": "Limpeza do salão, dos sanitários e dos jogos",
+    "atendimento online": "WhatsApp, telefone, redes, reserva e compra a distância",
+    "localização e acesso": "Localização, acesso e estacionamento",
+}
+VARIAVEL = {"temas (positivos e negativos, agrupados)": "Temas (elogio e crítica)", "contexto": "Contexto",
+            "costuma ir": "Frequência de visita declarada", "voltará": "Intenção de voltar"}
+
+
 def apendice_f(d):
+    t = d["temas"]
+    assert set(t["tema"]) == set(DEF_TEMAS), "temas do B2 fora da lista do apêndice"
+    q1 = [["Tema", "O que marca", "Elogio", "Crítica", "Nota média na crítica (1 a 5)"]] + [
+        [r.tema[0].upper() + r.tema[1:], DEF_TEMAS[r.tema], str(r.comentarios_elogio), str(r.comentarios_critica),
+         brl(r.nota_media_critica)] for r in t.itertuples()]
+    k = d["kappa"]
+    k = k[k["kappa"].notna()]
+    t2 = [["Rodada", "Variável", "Avaliações", "Kappa", "Situação"]] + [
+        [str(r.rodada), VARIAVEL[r.variavel], str(r.linhas), brl(r.kappa),
+         "aceita" if r.kappa >= 0.70 else ("excluída" if r.variavel == "costuma ir" else "exploratória")]
+        for r in k.itertuples()]
+    c = d["ctx"]
+    ctx = "; ".join(f"{r.contexto}, {r.comentarios}" for r in c.itertuples())
+    k2 = k[(k["rodada"] == 2) & (k["variavel"].str.startswith("temas"))].iloc[0]
+    return [titulo("APÊNDICE F – ANÁLISE DE CONTEÚDO DAS AVALIAÇÕES (BLOCO B2)"),
+            par("As 1.628 avaliações com texto do B2 foram codificadas numa grade de 22 temas, os mesmos para elogio e crítica: "
+                "a coluna em que o tema entra dá a polaridade, e um tema conta uma vez por avaliação. A codificação foi feita com "
+                "apoio de inteligência artificial, pelo dicionário de temas, e validada pela recodificação cega do autor (seção 3.3). "
+                "O Quadro F.1 traz a grade, o número de avaliações que elogiam e que criticam cada tema e a nota média das "
+                "avaliações com crítica."),
+            legenda("Quadro F.1 – Grade de temas e frequência nas avaliações"),
+            tabela("Quadro", [2100, 3471, 900, 900, 1700], q1, ["left", "left", "right", "right", "right"], sz=18),
+            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B2 (avaliações até \"3 meses atrás\", coletadas de "
+                  "09/10/2026 a 30/10/2026).", fim=False),
+            nota("Nota: temas não exclusivos; uma avaliação pode elogiar e criticar vários temas. Elogio e crítica em número de "
+                 "avaliações, de 1.628."),
+            par(f"A recodificação cega cobriu 199 avaliações sorteadas com estratificação por concorrente: 139 na rodada 1, antes da "
+                f"revisão do dicionário, e 60 na rodada 2, fora das primeiras. O kappa de Cohen agrupa os temas: cada avaliação, "
+                f"tema e polaridade é uma unidade. Na rodada 2, as duas codificações tiveram {int(k2.marcas_em_comum)} marcas em comum, "
+                f"de {int(k2.marcas_autor)} do autor e {int(k2.marcas_claude)} da primeira codificação (Tabela F.2). O contexto da visita, "
+                f"sem polaridade, é exploratório; nas 1.628 avaliações, aparece assim: {ctx}."),
+            legenda("Tabela F.2 – Concordância da recodificação cega"),
+            tabela("Tabela", [1000, 3871, 1400, 1200, 1600], t2, ["center", "left", "right", "right", "left"]),
+            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B2 (recodificação de 02/11/2026 e 03/11/2026).", fim=False),
+            nota("Nota: critério de aceitação de 0,70. Na rodada 1, a frequência de visita e a intenção de voltar não foram "
+                 "comparadas, porque só o autor as codificou.")], dict(kappa_temas=num(k2.kappa))
+
+
+def apendice_g(d):
     mc = d["mc"]
     pct = lambda x: num(round(100 * x, 1))
     t = [["Medida", "Valor"],
@@ -290,7 +363,7 @@ def apendice_f(d):
          ["Cenários encerrados pelo gatilho G6 (%)", pct(mc["fechamento"])],
          ["Cenários com payback em até 5 anos (%)", pct(mc["payback_5anos"])],
          ["Payback descontado mediano (anos)", num(round(mc["payback_mediana"], 1))]]
-    return [titulo("APÊNDICE F – SIMULAÇÃO DE MONTE CARLO"),
+    return [titulo("APÊNDICE G – SIMULAÇÃO DE MONTE CARLO"),
             par(f"A simulação sorteia {brl(g.N_SIMULACOES, 0)} cenários do modelo do capítulo 9. Em cada cenário, toda premissa com faixa "
                 "recebe um valor contínuo de uma distribuição PERT entre o pessimista e o otimista, com moda no provável: a PERT dá menos "
                 "peso às pontas que a triangular. Há duas exceções. As pessoas por mesa (R02), que só limitam o salão, vão de 2 a 6. A taxa "
@@ -301,13 +374,13 @@ def apendice_f(d):
                 "encerra o negócio no fim desse ano, com a devolução da caução e do capital de giro e a revenda dos ativos (I09), sem valor "
                 "residual. A semente é fixa, e o resultado se repete a cada execução."),
             par("As premissas são sorteadas de forma independente. A simulação mede o efeito conjunto das faixas melhor que os cenários "
-                "extremos, que põem todas as premissas no mesmo lado ao mesmo tempo (Tabela F.1 e Figura F.1). Com 10 mil cenários, a "
+                "extremos, que põem todas as premissas no mesmo lado ao mesmo tempo (Tabela G.1 e Figura G.1). Com 10 mil cenários, a "
                 f"probabilidade de VPL positivo tem erro padrão de {num(round(100 * mc['erro_prob'], 1))} ponto percentual."),
-            legenda("Tabela F.1 – Resultados da simulação de Monte Carlo"),
+            legenda("Tabela G.1 – Resultados da simulação de Monte Carlo"),
             tabela("Tabela", [6071, 3000], t, ["left", "right"]),
             fonte("Fonte: elaborado pelo próprio autor, com base no modelo financeiro (02/11/2026)."),
-            legenda("Figura F.1 – Distribuição do VPL na simulação de Monte Carlo"),
-            figura("rIdApF1", FIG_MC, "Figura F.1 – Distribuição do VPL na simulação de Monte Carlo"),
+            legenda("Figura G.1 – Distribuição do VPL na simulação de Monte Carlo"),
+            figura("rIdApF1", FIG_MC, "Figura G.1 – Distribuição do VPL na simulação de Monte Carlo"),
             fonte("Fonte: elaborado pelo próprio autor, com base no modelo financeiro (02/11/2026).")], dict(prob=pct(mc["prob_positivo"]))
 
 
@@ -321,7 +394,8 @@ def confere(texto, chaves):
         erros.append("o principal ainda tem 'Apêndice [letra]'")
     for rotulo, padrao, valor_ in (("concorrentes", r"aprovou (\d+)", str(chaves["concorrentes"])),
                                    ("premissas", r"modelo tem (\d+) premissas", str(chaves["premissas"])),
-                                   ("P(VPL > 0)", r"positivo em ([\d,]+)% d", chaves["prob"])):
+                                   ("P(VPL > 0)", r"positivo em ([\d,]+)% d", chaves["prob"]),
+                                   ("kappa dos temas", r"temas tiveram kappa de (\d,\d+)", chaves["kappa_temas"])):
         achados = set(re.findall(padrao, texto))
         if achados and achados != {valor_}:
             erros.append(f"{rotulo}: texto {sorted(achados)} × apêndice {valor_}")
@@ -340,7 +414,7 @@ def main():
 
     d = dados()
     corpo, chaves = [], {}
-    for fn in (apendice_a, apendice_b, apendice_c, apendice_d, apendice_e, apendice_f):
+    for fn in (apendice_a, apendice_b, apendice_c, apendice_d, apendice_e, apendice_f, apendice_g):
         els, ch = fn(d)
         corpo += els; chaves.update(ch)
     erros = confere(texto, chaves)

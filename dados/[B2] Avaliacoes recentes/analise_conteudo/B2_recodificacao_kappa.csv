@@ -1,0 +1,9 @@
+﻿rodada;variavel;linhas;kappa;marcas_autor;marcas_claude;marcas_em_comum;concordancia_pct;aceita
+1;temas (positivos e negativos, agrupados);139;0.83;218.0;256.0;199.0;;sim
+1;contexto;139;0.58;30.0;53.0;25.0;;não
+1;costuma ir;139;;;;;;
+1;voltará;139;;;;;;
+2;temas (positivos e negativos, agrupados);60;0.84;126.0;125.0;106.0;;sim
+2;contexto;60;0.52;6.0;9.0;4.0;;não
+2;costuma ir;60;0.52;;;;91.7;não
+2;voltará;60;0.75;;;;95.0;sim

@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 02/11/2026 (23h), TMin (md) depois da troca do modelo de demanda: circulação no pico (B3, sem escala por mesa; pessimista pelas NFC-e) × horas de pico equivalentes (B1) e dia útil pela ANR/Mastercard; gasto por pessoa declarado no Google Maps (B2) e cesta de consumo com a taxa de entrada. Caps. 3, 4, 6, 7, 8, 9, 10 e 11 revistos; D12, D39 e D40 resolvidos. Itens anteriores citam a numeração antiga.
+Última análise: 03/11/2026, TMin v21, depois da conclusão da codificação do B2 (grade de 22 temas; recodificação cega com kappa de 0,84) e da escrita do 6.1, 6.2, 6.5 e 6.6 (demanda vinda do cap. 9). Caps. 3, 4, 5, 6, 7, 9 e 11 revistos; D26, D27 e D47 resolvidos; D04, D54 e D57 revistos; D58 a D60 e C21 novos.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -22,7 +22,11 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
-**D54 — Figura 6.1 com a base antiga do B2 (02/11/2026).** Cap. 6 (6.3, Figura 6.1: 602 declarações, 352 sem a Bodogami) × 6.3 e cap. 9 (675 declarações de 12 concorrentes, na base de 769 declarações com faixa de preço). Sugestão: regerar a Figura 6.1 com `B2_avaliacoes_periodo.csv` atual e citar as mesmas contagens nos dois parágrafos.
+**D58 — Acervo mediano dos concorrentes: 468 × 322 títulos (03/11/2026).** Cap. 5 (5.3.2: mediana de 468 títulos nas 17 casas com acervo conhecido) × cap. 7 (7.4: ampliação até 322, "a mediana dos acervos do B1") e cap. 6 (Quadro 6.1: mediana de 322 nos 30 acervos publicados). São recortes diferentes do B1 (número declarado × lista publicada), sem a explicação no texto. Sugestão: usar um só recorte nos três capítulos ou dizer, no 5.3.2, de onde vem cada número.
+
+**D59 — Site e pictogramas com o livro de códigos antigo (03/11/2026).** `_src/site-apresentacao` (`b2-conteudo.json`, `B2-a_conteudo_site.py`) e `B2-a_pictogramas.py` × caps. 5 e 6 e Apêndice F. O site e os pictogramas usam as tabelas `B2_bardin_*` (livro de 15/10, 1.588 avaliações), e o texto usa a grade de 22 temas (1.628 avaliações). Sugestão: refazer o site e os pictogramas com `B2_temas_*.csv` antes da defesa.
+
+**D54 — Figura 6.2 com a base antiga do B2 (02/11/2026; Figura 6.1 até o TMin v20).** Cap. 6 (6.3, Figura 6.2: 602 declarações, 352 sem a Bodogami) × 6.3 e cap. 9 (675 declarações de 12 concorrentes, na base de 769 declarações com faixa de preço). Sugestão: regerar a Figura 6.2 com `B2_avaliacoes_periodo.csv` atual e citar as mesmas contagens nos dois parágrafos.
 
 **D55 — "Consumo por pessoa" depois da nova cesta de consumo (02/11/2026).** Cap. 5 (Figura 5.3, "Consumo por pessoa (uma bebida e uma entrada ou prato)") e TMax 5 × `_instrucoes/1b_escrita.md` (P6: cesta de consumo inclui a taxa de entrada, e "consumo por pessoa" não é sinônimo). Sugestão: renomear a figura para "Bebida mais entrada ou prato, mediana por metrópole".
 
@@ -31,8 +35,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D51 — Cruzamento da SWOT só no texto (02/11/2026).** Cap. 2 (2.2: "O cruzamento dos quadrantes indica a estratégia") × cap. 10. O texto do 10.1 cruza os quadrantes (FO, DO e FA), mas o Quadro 10.1 mostra só os quatro quadrantes, com evidência que remete a seções, e falta o cruzamento de fraquezas com ameaças (DA). Sugestão: trocar a coluna "Evidência" por uma linha de estratégias cruzadas (FO, FA, DO e DA), ligada às etapas e aos gatilhos do 10.4.
 
 **D52 — Quadro 3.2 atribui ao B2 usos que vêm de outros blocos (02/11/2026).** Cap. 3 (Quadro 3.2: B2 para "tamanho do grupo, jogos citados") × caps. 7 e 9 (tamanho do grupo pela contagem do B3, R02; acervo pelos acervos do B1, I05). O cap. 9 não cita o B2. Sugestão: deixar no B2 só proposta de valor e reclamações, como no Apêndice D.
-
-**D47 — Quadro 1 remete a seções que o TMin não tem (02/11/2026).** Cap. 2 (Quadro 1) × cap. 6. O Quadro 1 aplica economia da experiência e Kano/PRC nas seções 6.1 e 6.2, e o cap. 4 cita a proposta de valor "da seção 6.1"; o cap. 6 do TMin só tem 6.3 e 6.4. Sugestão: manter enquanto o 6.1 e o 6.2 não forem escritos, e conferir a numeração quando entrarem.
 
 **D36 — Duas páginas da Savills com datas diferentes (02/11/2026).** O 2.1 cita SAVILLS, [s.d.] (definição) e a 5.1.2 cita SAVILLS, 2023 (alta de 38% desde 2018); o TMax cita a [s.d.] pelos mais de 800 locais. As duas contagens são de momentos diferentes; a de [s.d.] precisa da data para o leitor entender a sequência (ver D16).
 
@@ -48,7 +50,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D03 — "Única luderia em operação" × "única no recorte".** Cap. 1 (contextualização) × cap. 5 (5.3.3, Tabela 5.1). O cap. 1 afirma que a São Jogue é a única luderia em operação em Salvador; o cap. 5 diz "única no recorte", com 13 resultados na busca, 7 acima de 100 avaliações e 1 aprovado na curadoria. A afirmação do cap. 1 é mais forte que o dado. Sugestão: "a única luderia de Salvador com mais de 100 avaliações no Google Maps (Bloco B1, 2026)". Em 31/10, o cap. 3 (3.3.3) também diz "única luderia de Salvador".
 
-**D04 — Categorias da análise de conteúdo do B2.** Cap. 2 (2.5) × cap. 5 (5.2.2). O cap. 2 diz que as categorias são comida, serviço, ambiente, acervo e preço, e que a análise está no cap. 6.2. O cap. 5.2.2 usa atendimento, alimentos e bebidas, acervo, mediação lúdica e preço: a mediação lúdica não está no cap. 2, e o ambiente não aparece no cap. 5. Sugestão: alinhar as duas listas ao dicionário de `textos/instrumentos/analise_conteudo_bardin_B2.md` e dizer, no cap. 2, que a análise aparece em 5.2 (ocasiões e temas) e 6.2 (acervo e atributos). Em 31/10, o cap. 3 (3.4.2) entra com uma terceira lista: os 22 temas do dicionário de 30/10 (`textos/instrumentos/dicionario_temas_B2.md`), que ainda não foi unificado com o livro do Bardin (pendências, item 15).
+**D04 — Categorias da análise de conteúdo do B2 (revisto em 03/11/2026).** Cap. 2 (2.5) × caps. 3, 5 e 6. A grade final é a de 22 temas (cap. 3, Apêndice F), usada em 5.2 e 6.1. O cap. 2 ainda resume as categorias como comida, serviço, ambiente, acervo e preço e diz que a análise está na 6.2; ela está na 6.1 (temas) e na 6.2 (produto). Sugestão: no 2.5, remeter à grade do Apêndice F e às seções 5.2 e 6.1.
 
 **D05 — PRC anunciada e aplicada pela metade.** Cap. 2 (2.2.2) × cap. 5 (5.2.2). O cap. 2 define a PRC pela comparação da nota de quem elogia, de quem critica e de quem não menciona o aspecto (penalidade e recompensa contra uma referência). O cap. 5.2.2 traz só a nota média das menções negativas (2,83 na mediação; 3,11 no preço), sem a referência nem as positivas. Lido isolado, parece que a classificação Kano já saiu. Sugestão: no cap. 5 dar as três notas (ou a diferença para a referência) ou dizer que a classificação fica para o cap. 6. Em 31/10, o cap. 3 (3.5.1) define a PRC como a nota média com e sem crítica a cada tema, sem o grupo de quem elogia; alinhar com a definição do cap. 2.
 
@@ -68,10 +70,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D20 — Ocupação de dia útil em N6 entre as premissas críticas.** Cap. 9 (9.2 e 9.7) × `8_financeiro.md` (§2, regra de robustez). A taxa de ocupação de dia útil é a 4ª do tornado e só tem estimativa do autor. A regra admite isso com faixa larga e destaque no cap. 10, que ainda não existe. Sugestão: buscar fonte N3 (curva de horários de pico do Google Maps das luderias do B1) ou manter e levar ao cap. 10.
 
-**D26 — Codificação do B2: cap. 3 × instrução.** Cap. 3 (3.4.2 e 3.4.3) × `4_metodologia.md` §3.4. O cap. 3 descreve a prática atual — codificação temática com 22 temas, feita com apoio de inteligência artificial e validada por recodificação cega de 139 avaliações com kappa ≥ 0,70. A instrução ainda prevê dicionário automático de 11 aspectos, validado por kappa e F1 em 200 avaliações. Sugestão: decidir o instrumento (pendências, item 15, e "Instruções ainda desatualizadas") e alinhar a instrução ou o capítulo.
-
-**D27 — Frequência de preço nas avaliações: 12,8% × 2,7% e 9,3%.** Cap. 5 (5.2.2, Bardin provisório de 15/10: "preço e valor percebido" em 12,8%) × cap. 6 (6.3, temas do Notion de 30/10: preço da entrada em 44 e preço do consumo em 152 das 1.628 avaliações). São codificações diferentes; alinhar quando o 5.2 for refeito com o dicionário de 30/10.
-
 **D32 — Ruído e horário: nenhum capítulo trata.** Cap. 5 (5.5, campo legal) × cap. 8 (Quadro 8.1). A reforma tributária já está no 8.1, e a PESTEL agora a resume no campo político. A regulação municipal de ruído e horário noturno segue `[BUSCAR]` na 5.5 e sem linha no Quadro 8.1. Sugestão: buscar a norma de Salvador e pôr uma linha no Quadro 8.1, ou tirar a menção da 5.5.
 
 **D33 — Equipe de 12 no modelo × 8 no cap. 7.** Cap. 9 (9.4, C06, Tabela 9.2) × caps. 7 (7.5, Quadro 7.2), 10 (Quadros 10.2 e 10.3), 4 (Quadro 4.1) e 11 (11.1). O modelo usa o quadro de referência de 12 pessoas; o cap. 7 dimensiona 8 pelo fluxo do B3, e os caps. 4, 10 e 11 trazem as duas versões. Sugestão: quando o autor decidir a equipe, levar a escolha ao `gerar_modelo_financeiro.py` e deixar uma só versão nos cinco capítulos.
@@ -86,7 +84,9 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Aceitável
 
-**D57 — Taxa adotada × taxa contida no gasto (02/11/2026).** Cap. 6 (6.3: taxa de R$ 18,68, média dos 22 que cobram) × cap. 9 (9.6: R$ 19,83, 24,7% do gasto de R$ 80,14, R07). O 6.3 declara a diferença (6%). Sugestão: manter, ou fixar o preço adotado em R$ 19,83 para o texto e o modelo coincidirem.
+**D60 — Grade ERRC sem base no cap. 2 (03/11/2026).** Cap. 6 (6.1, Quadro 6.1, KIM; MAUBORGNE, 2005 [AV]) × cap. 2. A grade ERRC entra no 6.1, como pede `_instrucoes/5_marketing.md`, mas o cap. 2 não a apresenta, e a obra está sem conferência. Sugestão: uma frase no 2.2 ou no 2.3, ou manter só a citação no 6.1 e conferir a obra.
+
+**D57 — Taxa adotada × taxa contida no gasto (02/11/2026; revisto em 03/11/2026).** Cap. 6 (6.3: taxa de R$ 18,68, média dos 22 que cobram) × cap. 9 (9.6: R$ 19,83, 24,7% do gasto de R$ 80,14, R07). Em 03/11, a frase do 6.3 que declarava a diferença (6%) saiu no corte do capítulo; só o 9.6 compara as duas. Sugestão: manter, ou fixar o preço adotado em R$ 19,83 para o texto e o modelo coincidirem.
 
 **D37 — Erros de digitação no cap. 1 (02/11/2026).** §2 da introdução: "São Paul" (São Paulo).
 
@@ -112,6 +112,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, C07, C08, C09, C11, C12, C13 (CNAE no cap. 5), C13 (capacidade no cap. 9), C14, C15 e C16. Seguem valendo para o TMax; C01, C02, C04, C10 e C17 (caps. 1 e 10) não foram aplicados em nenhuma versão.
 
 ## Alto ganho
+
+**C21 — Cap. 6 acima do teto (03/11/2026).** No TMin v21, o cap. 6 tem 10 páginas, contra o teto de 8, depois da entrada do 6.1, 6.2, 6.5 e 6.6 (a demanda saiu do cap. 9, que caiu de 14 para 13 páginas). Candidatos: a Tabela 6.1 (24 concorrentes, ~0,9 página) para o apêndice, com a mediana e a São Jogue no texto; o 6.2 só com as decisões, remetendo ao 7.3 e ao 7.4 (~150 palavras); a Tabela 6.3, se o texto do 6.6 trouxer as três faixas (~0,5 página). Ganho: ~2 páginas.
 
 **C01 — Contexto do mercado duplicado entre os caps. 1 e 5.** Abrinq (9,1% → 13,1%, alta de 16%), Sebrae (R$ 53 bilhões) e Savills (800 locais) aparecem com o mesmo texto no cap. 1 e no 5.1.2. Manter no 5.1.2, com fonte e nível, e deixar no cap. 1 uma frase com remissão. Ganho: ~90 palavras.
 

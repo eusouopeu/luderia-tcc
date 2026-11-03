@@ -140,6 +140,8 @@ Scripts em `_src/[B4] Bases publicas/` (`B4-c_*` → `B4-b_*`); saídas `[B4] *.
 
 ### Variáveis derivadas dos textos (Bloco B2)
 
+> **Situação em 03/11/2026: etapa concluída, com desenho diferente do previsto abaixo** (decisão do autor). No lugar do dicionário automático de termos, a codificação foi temática, comentário por comentário, na grade de 22 temas do Notion (`textos/instrumentos/dicionario_temas_B2.md`), com apoio de IA, nas 1.628 avaliações. A validação foi a recodificação cega do autor em 199 avaliações, em duas rodadas (139 e 60), com kappa de Cohen agrupado e critério de 0,70: temas com 0,83 e 0,84 (aceitos); contexto com 0,58 e 0,52 (exploratório); "Costuma ir" com 0,52 (excluído); "Voltará" com 0,75. Não há F1, porque não há dicionário automático. Base final: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/build/B2-b_comentarios_grade2.py`; tabelas e kappa: `../analise/B2-a_temas_grade2.py`; Apêndice F do TMin.
+
 | Variável | Construção | Codificação |
 |---|---|---|
 | Aspectos mencionados | Dicionário de termos por aspecto: ambiente, barulho, atendimento, explicação dos jogos, acervo, estado das peças, comida, bebida, preço, limpeza, conforto | Binária por aspecto; polaridade (positiva, negativa, neutra) |
@@ -220,6 +222,8 @@ O instrumento é o próprio observador, e não há gravação para auditar depoi
 Dado não anotado é tratado como faltante. Não há imputação. A taxa de omissão de cada visita é reportada junto com as saídas. Quando a omissão for relevante, a estimativa de fluxo usa o caminho com menos falhas e a faixa da premissa aumenta. O script `B3-a_contagem.py` já conta à parte os grupos sem saída e os pedidos sem chegada (extra), sem imputação. O fechamento do saldo e a separação entre censura e omissão ainda precisam ser acrescentados a ele.
 
 ### Validação do dicionário
+
+> Concluída em 03/11/2026 por recodificação cega da codificação temática (ver a situação em "Variáveis derivadas dos textos (Bloco B2)"); a tabela abaixo é o desenho original.
 
 O dicionário é validado numa amostra antes de ser aplicado à base inteira. A amostra sai da própria base inteira, já que não há divisão em metades.
 

@@ -144,7 +144,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 
 - [ ] Conclusão da coleta das avaliações
 - [ ] Divisão da base em parte exploratória e parte confirmatória
-- [ ] Primeira codificação das avaliações da amostra (até 10/10)
+- [x] Primeira codificação das avaliações da amostra (até 10/10) — base inteira, grade de 22 temas, concluída em 02/11
 - [ ] Conclusão dos cardápios
 - [x] Definição das horas das visitas: reservas só permitiam três horários de marcação (12:00, 15:00 e 18:00), portanto optou-se pelo horário de 18:00/19:00 por acreditar ser o horário de maior fluxo/ocupação
 - [ ] Formulário de observação da contagem - optou-se por dois formulários (um por gatilho e um por tempo). Incluiu-se perguntas de fluxo/ocupação/permanência/busca
@@ -168,7 +168,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 | 5 | 10/10 a 16/10 | Cap. 5: seção 5.3 (concorrência); cap. 6: rascunho das seções 6.3 (preço) e 6.4 (bairro e ponto em Salvador) | **16/10: coleta em estágio avançado** |
 
 - [ ] Organização das bases e do dicionário de dados
-- [ ] Segunda codificação das 200 avaliações (a partir de 16/10)
+- [x] Segunda codificação das 200 avaliações (a partir de 16/10) — recodificação cega de 199, rodadas de 02/11 e 03/11
 - [x] Primeira versão do registro de premissas
 
 ### Semana 6
@@ -179,7 +179,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 
 - [ ] Visitas de retorno (domingo, 18/10)
 - [ ] Estimativa de ocupação e fluxo, em faixa, pelas notas fiscais e pela contagem
-- [ ] Concordância entre as duas codificações e revisão do dicionário
+- [x] Concordância entre as duas codificações e revisão do dicionário — kappa de 0,83 e 0,84 nos temas (03/11)
 - [ ] Análises da parte exploratória
 - [ ] Emenda ao registro prévio (até 23/10)
 - [x] Modelo financeiro versão 1
@@ -191,7 +191,7 @@ As semanas vão de sábado a sexta-feira. A versão final para a banca tem 16/11
 | 7 | 24/10 a 30/10 | Cap. 5: seção 5.2 (público-alvo), depois do fim da análise das avaliações; cap. 6: seções 6.1, 6.2 e 6.6; cap. 9 completo; rascunho do cap. 10 (Análise de riscos) | **30/10: primeira versão dos resultados** |
 
 - [ ] Análise da parte confirmatória (rodada única)
-- [ ] Estatísticas descritivas das avaliações
+- [x] Estatísticas descritivas das avaliações — `B2_temas_*.csv` e Apêndice F (03/11)
 - [ ] Viabilidade nos três cenários
 - [ ] Análise de sensibilidade e pontos de ruptura
 

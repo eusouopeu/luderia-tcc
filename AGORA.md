@@ -4,16 +4,16 @@ Atualizado em 03/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora
 
-- **TMin v20** (84 páginas, texto da p. 8 à 84) e apêndices v20 (12 páginas), com o modelo de demanda novo: circulação no pico da São Jogue × horas de pico equivalentes, gasto por pessoa declarado (R$ 80,14) e dia útil pela ANR/Mastercard. Provável: VPL de R$ 854 mil, TIR de 59,3%, P(VPL > 0) de 81,9%. O TMax ainda segue o modelo antigo (D53).
+- **TMin v21** (90 páginas, texto da p. 9 à 90) e apêndices v21 (14 páginas, Apêndice F novo com a análise de conteúdo do B2; Monte Carlo em G). Provável: VPL de R$ 854 mil, TIR de 59,3%, P(VPL > 0) de 81,9%; demanda de 942 pessoas por mês (594 a 1.720). O TMax ainda segue o modelo antigo (D53).
 - **B5, ativos fixos:** orçamento da etapa 1 pelo SINAPI e coletores no Tampermonkey (preços de itens e aluguel por anúncios) prontos; falta revisar a primeira coleta da Amazon, recoletar e rodar a coleta de aluguel (pendências).
-- **B2:** rodada 2 da recodificação cega comparada (60 comentários): temas com kappa 0,84 (critério 0,70); Contexto (0,53) e "Costuma ir" (0,52) abaixo do critério ([pendências](docs/pendencias.md), item 15).
-- **Capítulos:** 5.2 provisório; cap. 6 só com 6.3 e 6.4; comentários do TMin v9 esperam a escolha do autor ([status](textos/planejamento/status_capitulos.md)).
+- **B2: codificação concluída** (03/11): grade de 22 temas, kappa de 0,84; Contexto exploratório (0,52); "Costuma ir" excluída. Falta o acabamento: casos de fronteira, site e pictogramas ([pendências](docs/pendencias.md), item 15).
+- **Capítulos:** cap. 6 completo (6.1 a 6.6), mas com 10 páginas para teto de 8 (melhorias C21); 5.2 refeito com o B2 final; comentários do TMin v9 esperam a escolha do autor ([status](textos/planejamento/status_capitulos.md)).
 
 ## Próximos 3 passos
 
 1. Decidir o G3 (60%), a escala de impacto do Quadro 10.2 e o TMax (D53) (pendências).
-2. Decidir Contexto e "Costuma ir" (regra nova ou exploratória); refazer o 5.2 e escrever 6.1, 6.2 e 6.5.
-3. Cortar o cap. 10 até o teto (melhorias C17), escrever o 6.6 e decidir os itens D46 e D47 de `docs/melhorias-texto.md`.
+2. Revisar o 6.1, o 6.2, o 6.5 e o 6.6 e escolher os cortes do cap. 6 (C21); decidir D58 (acervo de 468 × 322 títulos).
+3. Cortar o cap. 10 até o teto (melhorias C17) e decidir o item D46 de `docs/melhorias-texto.md`.
 
 ## Bloqueado ou aguardando
 

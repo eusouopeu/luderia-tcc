@@ -1,5 +1,7 @@
 # Análise de conteúdo das avaliações das luderias (Bloco B2)
 
+> **Substituído em 03/11/2026.** Os números do TCC saem da grade de 22 temas do Notion (`dicionario_temas_B2.md`), validada pela recodificação cega. Este livro de códigos e as tabelas `B2_bardin_*` ficam como histórico; o site de apresentação e os pictogramas ainda os usam.
+
 Versão de 15/10/2026. Corpus: coletas do userscript `maps_avaliacoes` de 13 e 14/10/2026, com as avaliações até o rótulo "3 meses atrás". Substitui a versão parcial de 10/10/2026, feita sobre a base do Notion "B - Comentários (manual)" com 575 comentários e janelas diferentes entre lotes. A análise segue o modelo de análise de conteúdo de Bardin (2011) `[AV]` e tem caráter exploratório: identifica e define as categorias. A medição de intensidade dos achados fica para a etapa lexical/categórica posterior.
 
 Arquivos:

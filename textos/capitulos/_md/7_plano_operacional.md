@@ -35,7 +35,7 @@ A jornada do cliente tem cinco etapas. Na chegada, o instrutor no balcão regist
 
 O acúmulo de funções vem da referência medida. Em todas as visitas à São Jogue, os instrutores também atendiam as mesas, cuidavam do balcão e operavam o caixa: não havia caixa, garçom nem atendente separados (B3). A luderia repete esse arranjo. Com isso, os instrutores cobrem salão, balcão e caixa.
 
-A explicação de regras é o processo que mais pesa na avaliação. A mediação lúdica aparece em 16,4% das avaliações dos concorrentes e, quando negativa, acompanha nota média de 2,83 (B2, codificação provisória de 15/10/2026, capítulo 5). O plano trata a explicação como serviço de mesa, com no máximo 2 mesas por instrutor no pico, e não como tarefa de quem estiver livre.
+A explicação de regras é o processo que mais pesa na avaliação. A explicação de jogos aparece em 14,3% das avaliações dos concorrentes e, quando criticada, acompanha nota média de 2,62 (B2, seção 6.1). O plano trata a explicação como serviço de mesa, com no máximo 2 mesas por instrutor no pico, e não como tarefa de quem estiver livre.
 
 Um site de recomendação apoia esse serviço. O cliente ou o instrutor informa o número de pessoas, o tempo disponível, a idade do mais novo, o peso das regras e o estilo do grupo; o site lista os jogos do acervo que combinam e traz um tutorial rápido de cada um. As buscas, os jogos escolhidos e os jogos procurados que não estão no acervo ficam gravados e alimentam os gatilhos de expansão (seção 7.4) e de contingência (seção 10.4).
 

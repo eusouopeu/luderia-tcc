@@ -4,6 +4,10 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 03/11/2026 | Codificação do B2 encerrada: vale a grade de 22 temas do Notion nas 1.628 avaliações; o livro de códigos de 15/10 (tabelas `B2_bardin_*`) fica como histórico | `textos/instrumentos/dicionario_temas_B2.md`; `_instrucoes/4_metodologia.md` §3.4 |
+| 03/11/2026 | "Costuma ir" sai da análise (kappa 0,52) e é declarada no cap. 3; Contexto entra como exploratório (0,52); "Voltará" fica (0,75) | Cap. 3 (3.3); Apêndice F; pendências, item 15 |
+| 03/11/2026 | A derivação da demanda passa do cap. 9 para o 6.6; o cap. 9 só remete a ela, e a conferência pela população de 20 a 39 anos fica no 6.6 | Caps. 6 (6.6) e 9 (abertura e 9.6) |
+| 03/11/2026 | Apêndice F do TMin = análise de conteúdo do B2 (grade, frequências, kappa); Monte Carlo passa a Apêndice G | `_src/extras/gerar_apendices_tmin.py` |
 | 03/11/2026 | Coletor de preços: os filtros (preço, medida, avaliações) voltam a ligar ao trocar de item, com aviso enquanto algum estiver desligado; o armazenamento pode ser refeito importando CSVs exportados, com as guardadas valendo sobre o arquivo | `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js` |
 | 03/11/2026 | Coletores do B5 com um só padrão de painel: ícone e nome curto nos botões, explicação na dica, filtros em selos, resumo em grade, aviso de dados fora de CSV e backup antes de apagar | `_src/[B5] Ativos fixos/Anuncios de aluguel/webscripts/portais_aluguel.user.js` |
 | 03/11/2026 | Coletor de preços: a revisão das guardadas roda sozinha a cada "Guardar" e exclui o que não passa nas regras e nos filtros ligados; faixa de preço e avaliações não valem na revisão, e o filtro desligado ao guardar uma oferta não vale para ela | `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js` |

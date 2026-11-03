@@ -2,13 +2,7 @@
 
 O plano financeiro converte as decisões dos capítulos 5 a 8 em receitas, custos e indicadores de viabilidade. O modelo projeta o desenho enxuto do plano operacional na etapa de abertura: 6 mesas, 48 horas por semana, equipe de 6 funcionários e acervo com 175 jogos. As etapas de expansão ficam fora do fluxo de caixa base, entrando apenas na análise estratégica (capítulo 10) como opções. O capítulo parte da estrutura do modelo e do registro de premissas, projeta investimento, resultado e fluxo de caixa e termina na sensibilidade e nas checagens de coerência.
 
-A receita nasce do número de pessoas atendidas. O modelo parte da circulação: as pessoas que entram na luderia por hora. A circulação no pico vem da contagem direta na São Jogue (B3), nas noites de sexta e sábado: 6,40 pessoas por hora, em média. O pico não dura o dia inteiro. Para levar a circulação ao dia, o modelo usa o horário dos 54 concorrentes (B1): em cada hora aberta do plano, o número de concorrentes abertos é dividido pelo número de concorrentes abertos nas horas das visitas. A soma dessas razões dá as horas de pico equivalentes do dia: 6,84 horas, em média, de sexta a domingo, nas 8 horas abertas. No mês maduro do cenário provável, a conta é a seguinte:
-
-pessoas por dia de fim de semana = circulação no pico × horas de pico equivalentes (1)
-
-6,40 × 6,84 = 43,8 pessoas por dia de fim de semana
-
-O dia útil (terça a quinta) entra em separado do fim de semana (sexta a domingo), porque o movimento é menor. Em restaurantes de loja física, um dia de segunda a quinta recebe 61,9% do gasto de um dia de sexta a domingo no Rio de Janeiro e 69,2% em São Paulo (ANR, 2026a; 2026b). Com a média das duas cidades, 65,5%, o dia útil recebe 28,7 pessoas. Com 3 dias de cada tipo por semana e 4,33 semanas por mês, o mês maduro soma 942 pessoas.
+A receita nasce do número de pessoas atendidas, estimado na seção 6.6 a partir da circulação medida no pico da São Jogue (B3), levada ao dia pelo horário dos concorrentes (B1) e ao dia útil pelo gasto com cartão em restaurantes (ANR, 2026a; 2026b). No mês maduro do cenário provável, a luderia recebe 43,8 pessoas por dia de fim de semana e 28,7 por dia útil, ou 942 pessoas por mês.
 
 Cada pessoa gasta, em média, uma cesta de consumo: uma bebida, uma entrada ou prato principal e a taxa de entrada. O gasto provável é o declarado pelos avaliadores no Google Maps (B2), em média, nos 12 concorrentes com cesta de consumo conhecida: R$ 80,14 por pessoa (seção 6.3). A taxa de entrada responde por 24,7% da cesta nesses concorrentes; o restante é alimentos e bebidas (A&B). Somado o aluguel de jogos para levar para casa, a receita por pessoa é:
 
@@ -218,7 +212,7 @@ Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E
 
 A circulação pesa mais que o gasto porque a faixa medida é mais larga: a maior visita teve 2,8 vezes a circulação da menor. As duas multiplicam a taxa e o A&B ao mesmo tempo. O teto do salão não encurta o lado otimista: as 11,43 pessoas por hora da maior visita ficam abaixo das 11,9 que o salão comporta.
 
-O tornado move uma premissa por vez; a simulação de Monte Carlo move todas juntas. Ela sorteia 10 mil combinações de premissas dentro das faixas, calcula o VPL de cada uma e conta em quantas ele fica positivo. Em cada sorteio, os gatilhos de contingência e a etapa de mesas agem como decisões de gestão (Apêndice F). O VPL fica positivo em 81,9% dos cenários, com mediana de R$ 854 mil. Os gatilhos agem em poucos sorteios: o G5 em 5,4% e o encerramento pelo G6 em 2,2%.
+O tornado move uma premissa por vez; a simulação de Monte Carlo move todas juntas. Ela sorteia 10 mil combinações de premissas dentro das faixas, calcula o VPL de cada uma e conta em quantas ele fica positivo. Em cada sorteio, os gatilhos de contingência e a etapa de mesas agem como decisões de gestão (Apêndice G). O VPL fica positivo em 81,9% dos cenários, com mediana de R$ 854 mil. Os gatilhos agem em poucos sorteios: o G5 em 5,4% e o encerramento pelo G6 em 2,2%.
 
 O ponto de ruptura é o valor de uma premissa que zera o VPL, com as demais no provável (seção 2.5). Ele transforma o resultado numa condição que pode ser acompanhada. A Tabela 9.5 traz a ruptura das cinco premissas críticas. O negócio é viável, por exemplo, enquanto a circulação no pico ficar acima de 4,91 pessoas por hora: 23% abaixo do provável.
 
@@ -263,7 +257,7 @@ A capacidade comporta a demanda: as 36 pessoas por dia aberto usam 38% da capaci
 
 A comparação com o setor mostra onde a luderia se afasta dos serviços de alimentação. A folha com encargos custa 16,3% da receita, contra 25,1% de gastos com pessoal no setor (IBGE, PAS 2024); a diferença vem da equipe de 6 pessoas do desenho enxuto. O aluguel com condomínio custa 11,1%, contra 4,0% no setor. Essa diferença vem do formato: cada grupo ocupa uma mesa por 109 minutos em média para jogar, o que exige mais área para cada real de receita. O ponto é o custo que mais se afasta do setor e o primeiro a cotar.
 
-No preço, a taxa de entrada contida no gasto provável, R$ 19,83 por pessoa (24,7% de R$ 80,14), fica perto da mediana de R$ 20,00 dos concorrentes que cobram e abaixo da São Jogue, de R$ 28,00 no fim de semana (seção 6.3). A distância para a São Jogue vem da decisão de entrar pela média dos concorrentes: o preço não exige posicionamento acima do mercado. Por fim, a demanda projetada equivale a 11,3 mil visitas por ano, ou 0,4% da população de Salvador em 2026 (IBGE), abaixo da penetração que exigiria um mercado novo.
+No preço, a taxa de entrada contida no gasto provável, R$ 19,83 por pessoa (24,7% de R$ 80,14), fica perto da mediana de R$ 20,00 dos concorrentes que cobram e abaixo da São Jogue, de R$ 28,00 no fim de semana (seção 6.3). A distância para a São Jogue vem da decisão de entrar pela média dos concorrentes: o preço não exige posicionamento acima do mercado. A demanda projetada também cabe no mercado da cidade (seção 6.6).
 
 **Referências citadas neste capítulo**
 

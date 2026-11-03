@@ -1,9 +1,10 @@
 """
 Planilha separada com os dados agregados dos comentários do B2, com gráficos.
 
-Lê a cópia exportada e atualizada do banco "2 - Comentários" do Notion
-(`2026-10-30_2_comentarios_all_atualizado.csv`, temas codificados em 30/10) e
-grava `dados/Dados agregados/B2_dados_agregados_DMax.xlsx`, uma aba por
+Lê a base final do banco "2 - Comentários" do Notion, com a grade 2 de temas
+(`2026-11-03_2_comentarios_grade2.csv`, montada por
+`_src/[B2] Avaliacoes recentes/Google Places (Comentários)/build/B2-b_comentarios_grade2.py`;
+codificação concluída em 03/11/2026), e grava `dados/Dados agregados/B2_dados_agregados_DMax.xlsx`, uma aba por
 tabela com o gráfico ao lado, e os PNGs em `graficos_comentarios/`.
 
 A aba "Dados B2" traz uma linha por comentário, sem o texto (texto integral não
@@ -11,9 +12,11 @@ A aba "Dados B2" traz uma linha por comentário, sem o texto (texto integral nã
 campos extras do Maps e uma coluna 0/1 por tema positivo, tema negativo,
 contexto e tamanho de grupo. As tabelas calculam por fórmula sobre ela.
 
+"Costuma ir" fica fora (excluída em 03/11/2026, kappa 0,52 na recodificação
+cega); Contexto entra como exploratória (kappa 0,52).
+
 Uso: python3 _src/extras/gerar_planilha_comentarios.py [caminho do CSV]
-Sem argumento, procura o CSV em `dados/[B2]…/_dados-brutos/notion_comentarios/`
-e, se não achar, nos arquivos do projeto (`/mnt/project-files/b2/…`).
+Sem argumento, lê o CSV em `dados/[B2]…/_dados-brutos/analise_conteudo/`.
 """
 
 from __future__ import annotations
@@ -35,9 +38,8 @@ from planilha_estilo import *  # noqa: E402,F403
 
 D = ROOT / "dados"
 B1 = D / "[B1] Estabelecimentos e cardapios"
-NOME_CSV = "2026-10-30_2_comentarios_all_atualizado.csv"
-CANDIDATOS = [D / "[B2] Avaliacoes recentes" / "_dados-brutos" / "notion_comentarios" / NOME_CSV,
-              Path("/mnt/project-files/b2/notion_comentarios") / NOME_CSV]
+NOME_CSV = "2026-11-03_2_comentarios_grade2.csv"
+CANDIDATOS = [D / "[B2] Avaliacoes recentes" / "_dados-brutos" / "analise_conteudo" / NOME_CSV]
 SAIDA = D / "Dados agregados"
 GRAF = SAIDA / "graficos_comentarios"
 
@@ -130,7 +132,7 @@ def itens(v):
 
 
 TEMAS = sorted({t for c in ("Itens positivos", "Itens negativos") for v in d[c] for t in itens(v)})
-CONTEXTOS = ["amigos", "família", "casal", "aniversário", "loja", "aluguel"]
+CONTEXTOS = ["amigos", "família", "casal", "aniversário", "aluguel", "loja", "apenas loja"]
 pos = pd.DataFrame({t: d["Itens positivos"].map(lambda v, t=t: int(t in itens(v))) for t in TEMAS})
 neg = pd.DataFrame({t: d["Itens negativos"].map(lambda v, t=t: int(t in itens(v))) for t in TEMAS})
 ctx = pd.DataFrame({c: d.Contexto.map(lambda v, c=c: int(c in itens(v))) for c in CONTEXTOS})
@@ -140,7 +142,7 @@ base = pd.DataFrame({
     "estabelecimento": d.Estabelecimento, "metropole": d.metropole, "regiao": d.metropole.map(REGIAO),
     "nota": d["Nota geral"], "comida": d.Comida, "servico": d["Serviço"], "ambiente": d.Ambiente,
     "preco_faixa": d.preco_faixa, "espera": d.espera, "barulho": d.barulho, "grupo_informado": d.grupo_informado,
-    "analise_temas": d["Análise de temas"], "com_tema": d.com_tema,
+    "analise_temas": d["Análise de temas"].fillna("anterior a 30/10/2026"), "com_tema": d.com_tema,
 })
 for g, _ in GRUPOS:
     base[g] = gr[g]
@@ -172,8 +174,8 @@ def R(col):
 
 NT = f'COUNTA({R("estabelecimento")})'
 FONTE = ("B2, avaliações do Google Maps até \"3 meses atrás\" (coletas de 09 a 30/10/2026), banco \"2 - Comentários\" "
-         "do Notion, cópia atualizada de 30/10/2026")
-FONTE_TEMAS = FONTE + "; temas pelo dicionário de 30/10/2026 (textos/instrumentos/dicionario_temas_B2.md)"
+         "do Notion, base final de 03/11/2026")
+FONTE_TEMAS = FONTE + "; temas pela grade 2 de 02/11/2026 (textos/instrumentos/dicionario_temas_B2.md)"
 N_CASAS = base.estabelecimento.nunique()
 
 # Tab 1: comentários por metrópole
@@ -241,7 +243,7 @@ nova_aba("Tab 4", "Tabela 4 – Temas dos comentários: atendimento, comida, amb
           "% dos comentários com tema (crítica)", "% de críticas nas menções"], lin4,
          ["txt", "int", "int", "int", "pct", "pct", "pct"], FONTE_TEMAS, [26, 12, 12, 10, 14, 14, 13], g4,
          [f"Nota: temas não exclusivos; base = {nt} comentários com pelo menos um tema (de {N}).",
-          "Codificação: 355 linhas pelo autor (antes de 30/10) e 1.273 por Claude em 30/10/2026; recodificação cega do autor pendente."])
+          "Codificação concluída em 03/11/2026 (grade 2, 22 temas): recodificação cega do autor em 199 comentários, kappa agrupado de 0,83 e 0,84 nas rodadas 1 e 2."])
 
 # Tab 5: críticas nos comentários de nota 1 a 3
 ruins = d["Nota geral"] <= 3  # mesma ordem de pos/neg (a base é reordenada)
@@ -262,9 +264,9 @@ nova_aba("Tab 5", f"Tabela 5 – O que derruba a nota: atendimento, comida, pre�
 lin6 = [[c.capitalize(), f'=SUM({R(f"ctx_{c}")})', f"=B{k}/{NT}"] for k, c in enumerate(CONTEXTOS, 3)]
 cs = ctx.sum().sort_values(ascending=False)
 g6 = barras_h("06_contexto", [c.capitalize() for c in cs.index], {"comentários": cs.tolist()}, lambda v: br(v, 0))
-nova_aba("Tab 6", "Tabela 6 – Contexto citado: amigos e loja aparecem mais que família, aniversário ou casal",
+nova_aba("Tab 6", "Tabela 6 – Contexto citado (exploratório): ocasião e compra aparecem em poucos comentários",
          ["Contexto", "Comentários", "% dos comentários"], lin6, ["txt", "int", "pct"], FONTE_TEMAS, [18, 12, 14], g6,
-         ["Nota: contextos não exclusivos e sem polaridade (ocasião, público, aluguel e loja)."])
+         ["Nota: contextos não exclusivos e sem polaridade (ocasião, aluguel e loja); variável exploratória (kappa 0,52 na recodificação cega)."])
 
 # Tab 7: preço por pessoa
 lin7 = [[r, f'=COUNTIF({R("preco_faixa")},A{k})', f"=B{k}/B${3 + len(ROT_PRECO)}"] for k, r in enumerate(ROT_PRECO, 3)]
@@ -308,16 +310,17 @@ nova_aba("Tab 10", "Tabela 10 – Tamanho do grupo: as casas são indicadas para
          ["Nota: múltipla escolha no Maps (não exclusiva); faixas digitadas à mão (ex.: \"3 a 8\") marcam as faixas que cobrem."])
 
 # Tab 11: situação da codificação
-AN = ["anterior a 30/10/2026", "Claude, 30/10/2026"]
+AN = ["anterior a 30/10/2026", "Claude 30/10/2026", "Claude 02/11/2026"]
+d["Análise de temas"] = d["Análise de temas"].fillna(AN[0])
 lin11 = [[a, f'=COUNTIFS({R("analise_temas")},A{k},{R("com_tema")},1)',
           f'=COUNTIFS({R("analise_temas")},A{k},{R("com_tema")},0)', f"=B{k}+C{k}"] for k, a in enumerate(AN, 3)]
-lin11 += [["Total", "=SUM(B3:B4)", "=SUM(C3:C4)", "=SUM(D3:D4)"], ["Conferência (deve ser 0)", "", "", f"=D5-{NT}"]]
-g11 = empilhado_100("11_codificacao", ["Autor (antes de 30/10)", "Claude (30/10)"],
+lin11 += [["Total", "=SUM(B3:B5)", "=SUM(C3:C5)", "=SUM(D3:D5)"], ["Conferência (deve ser 0)", "", "", f"=D6-{NT}"]]
+g11 = empilhado_100("11_codificacao", ["Autor (antes de 30/10)", "Claude (30/10)", "Claude, grade 2 (02/11)"],
                     {"Com tema": [int(((d["Análise de temas"] == a) & (d.com_tema == 1)).sum()) for a in AN],
                      "Sem tema": [int(((d["Análise de temas"] == a) & (d.com_tema == 0)).sum()) for a in AN]})
 nova_aba("Tab 11", "Tabela 11 – Codificação dos temas: quem codificou e quantos comentários ficaram sem tema",
          ["Análise de temas", "Com tema", "Sem tema", "Comentários"], lin11, ["txt", "int", "int", "int"], FONTE_TEMAS,
-         [30, 12, 12, 12], g11, ["Nota: sem tema = comentário que não cita atributo (ex.: \"Excelente\"); não é o mesmo que não analisado."])
+         [30, 12, 12, 12], g11, ["Nota: sem tema = comentário que não cita atributo (ex.: \"Excelente\"); não é o mesmo que não analisado. Última marca de cada comentário; a grade 2 (02/11) regravou 652. Codificação concluída em 03/11/2026, depois da recodificação cega do autor (199 comentários, duas rodadas)."])
 
 # ---------------------------------------------------------------- base e índice
 ws = est.wb.create_sheet(ABA_BASE)

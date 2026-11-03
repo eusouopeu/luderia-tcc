@@ -34,8 +34,6 @@ Não há levantamento oficial nem setorial sobre luderias no Brasil. O formato n
 
 ## 5.2 PÚBLICO-ALVO E SEGMENTAÇÃO
 
-> **Bloqueada** até a recodificação cega da amostra de controle do Bardin (AGORA.md). Abaixo, o roteiro com os números já disponíveis; os do B2 são provisórios.
-
 ### 5.2.1 População e renda: Brasil → capitais → Salvador
 
 Salvador tem a quinta maior população entre as capitais e uma das menores rendas. A população estimada em 2026 é de 2.559.945 habitantes (IBGE, Estimativas da População, 2026); no Censo 2022, 736.849 pessoas, ou 30,5% dos residentes, tinham de 20 a 39 anos (IBGE, Censo 2022). O rendimento médio habitual do trabalho, de R$ 3.417,00 no 2º trimestre de 2026, coloca Salvador em 22º lugar entre as 27 capitais (IBGE, PNAD Contínua). O rendimento domiciliar per capita caiu de R$ 1.985,00, em 2023, para R$ 1.900,00, em 2025, enquanto o do Brasil subiu de R$ 2.039,00 para R$ 2.280,00 (IBGE, PNAD Contínua). A cidade tem público em número, mas com renda menor: o preço de entrada da luderia precisa ficar abaixo da média das metrópoles (retomado em 6.3), e o ponto precisa estar onde a renda se concentra (6.4).
@@ -44,9 +42,9 @@ Salvador tem a quinta maior população entre as capitais e uma das menores rend
 
 ### 5.2.2 Ocasiões de consumo e o que o público valoriza
 
-`[B2, provisório — 1.588 avaliações de 53 casas.]` O atendimento é o tema mais citado nas avaliações das luderias: aparece em 55,7% das avaliações, seguido de alimentos e bebidas (40,6%) e acervo (26,9%). A mediação lúdica — a explicação de regras pela equipe — aparece em 16,4% e, quando negativa, acompanha nota média de 2,83. Preço e valor percebido aparecem em 12,8%; as menções negativas a preço têm nota média de 3,11. Fonte: elaborado pelo próprio autor com base nas avaliações do Google Maps (Bloco B2, 2026). A decisão afetada é o quadro de pessoal (monitor de jogos) e o peso do cardápio na proposta de valor.
+O atendimento presencial é o tema mais citado nas 1.628 avaliações com texto do B2, de 53 concorrentes: aparece em 55,6% delas, seguido da comida (34,1%), do ambiente e decoração (26,2%) e da variedade do acervo (20,1%) (Bloco B2, grade de 22 temas, Figura 6.1). A explicação de jogos pela equipe aparece em 14,3% e, quando criticada, acompanha nota média de 2,62. O preço do cardápio aparece em 4,5% das avaliações e o da entrada em 2,8%, os dois com mais críticas que elogios; a crítica ao preço do cardápio acompanha nota média de 3,35. A decisão afetada é o quadro de pessoal (instrutor de jogos) e o peso do cardápio na proposta de valor.
 
-`[Ocasiões (aniversário, encontro, corporativo): frequência a extrair da codificação do B2.]`
+Poucas avaliações dizem com quem o cliente foi: amigos em 56, família em 40, aniversário em 39, casal em 13; o aluguel de jogos aparece em 15, e a compra na loja em 150 (115 com jogo ou consumo no local e 35 só de compra). O contexto é exploratório: a recodificação cega deu kappa de 0,52 (seção 3.3). Ainda assim, a ocasião em grupo, com amigos ou família, é o caso típico entre as que aparecem.
 
 ### 5.2.3 Tamanho do público em Salvador
 
