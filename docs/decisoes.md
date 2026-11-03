@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 03/11/2026 | Preço dos itens coletados sem frete, cor, estilo ou acabamento: só a medida ou capacidade essencial, faixa de 0,4× a 2,5× a mediana do item e de 3 a 15 ofertas por item (espaçadas na ordem de preço) | `_src/[B5] Ativos fixos/Lista de itens/build/B5-b_orcamento_itens.py` |
 | 03/11/2026 | Codificação do B2 encerrada: vale a grade de 22 temas do Notion nas 1.628 avaliações; o livro de códigos de 15/10 (tabelas `B2_bardin_*`) fica como histórico | `textos/instrumentos/dicionario_temas_B2.md`; `_instrucoes/4_metodologia.md` §3.4 |
 | 03/11/2026 | "Costuma ir" sai da análise (kappa 0,52) e é declarada no cap. 3; Contexto entra como exploratório (0,52); "Voltará" fica (0,75) | Cap. 3 (3.3); Apêndice F; pendências, item 15 |
 | 03/11/2026 | A derivação da demanda passa do cap. 9 para o 6.6; o cap. 9 só remete a ela, e a conferência pela população de 20 a 39 anos fica no 6.6 | Caps. 6 (6.6) e 9 (abertura e 9.6) |

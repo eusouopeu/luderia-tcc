@@ -9,14 +9,16 @@ Entradas em dados/[B5] Ativos fixos/:
       fonte da quantidade, fonte do preço (sinapi ou coleta), código SINAPI e termo de busca
   obra_reforma/"[B5] SINAPI Composições BA AAAA-MM (Caixa).csv"   (B5-c_sinapi.py; o mês mais recente)
   _dados-brutos/<categoria>/*_precos.csv                          (coletas em sites, quando houver)
-      do webscripts/precos_itens.user.js; usa id_item, url, preco (por unidade da lista), frete
-      (vazio = não informado), motivo e excluida, com vírgula decimal. Cada exportação traz tudo o que
+      do webscripts/precos_itens.user.js; usa id_item, url, produto, preco (por unidade da lista),
+      preco_anuncio, unidades, motivo e excluida, com vírgula decimal. Cada exportação traz tudo o que
       estava guardado no navegador, então os arquivos se repetem entre si.
 Saídas em dados/[B5] Ativos fixos/orcamento/:
   "[B5] Orçamento por Item Etapa 1 {mês} (SINAPI e coletas).csv"
       quantidade, preço unitário e total de cada item nos três cenários, com o nível de evidência
   "[B5] Orçamento por Premissa Etapa 1 {mês} (SINAPI e coletas).csv"
       total de cada premissa por cenário, itens com preço e, na I01, o R$ por m² que o modelo usa
+  "[B5] Ofertas Filtradas Etapa 1 {mês} (coletas).csv"
+      as ofertas que entram no preço de cada item, de MIN_OFERTAS a MAX_OFERTAS por item
 
 Regras:
   - Quantidade "por_m2" multiplica o coeficiente pela área do ponto (C03: 150, 130 e 110 m²).
@@ -25,12 +27,15 @@ Regras:
     provável e 3º quartil no pessimista.
   - Coleta: uma linha por item e URL, a do arquivo mais recente (o nome começa por
     AAAA-MM-DD_HHmm); a oferta cuja última linha tem excluida = 1 sai, e também a que tem
-    motivo (filtro do painel que ela não passou: medida, palavra exigida ou excluída, combo,
-    variante, faixa, sem avaliações), marcada à mão pelo autor. Frete não informado é
-    estimado: mediana dos fretes informados do item; sem eles, a mediana da razão frete/preço
-    da categoria vezes o preço; sem nenhum frete na categoria, 0. Depois, preço mais frete de
-    cada oferta; P75 no pessimista, mediana no provável e P25 no otimista, entre as ofertas
-    do item.
+    motivo (filtro do painel que ela não passou), marcada à mão pelo autor. Filtro simplificado
+    (pedido do autor em 03/11/2026): só o preço do produto, sem frete, cor, estilo ou acabamento.
+    Kit lido como 1 unidade é dividido pelo número do título; mais de 100 unidades é número de
+    modelo lido como kit e volta a 1. Sai a URL de anúncio patrocinado (mclics), sem a página do
+    produto, e a repetição de título e preço no mesmo item. Fica a medida ou capacidade essencial
+    (MEDIDA_EXIGIDA) e o preço entre a mediana do item dividida e multiplicada por FAIXA, que
+    tira acessório e kit mal lido. Item com mais de MAX_OFERTAS fica com MAX_OFERTAS ofertas
+    espaçadas na ordem de preço; item com menos de MIN_OFERTAS fica sem preço. P75 no
+    pessimista, mediana no provável e P25 no otimista, entre as ofertas do item.
   - Item sem preço fica com total vazio e sai da soma: a cobertura (itens com preço sobre
     itens da lista) acompanha o total de cada premissa, que só substitui a estimativa do
     autor no modelo quando a cobertura for completa.
@@ -62,6 +67,16 @@ BDI = {"pessimista": 0.2500, "provavel": 0.2212, "otimista": 0.2034}  # TCU, Ac�
 QUANTIL_COLETA = {"pessimista": 0.75, "provavel": 0.50, "otimista": 0.25}
 PREMISSAS = {"I01": "Reforma e instalações", "I02": "Mobiliário", "I03": "Cozinha e bar", "I04": "Caixa e informática"}
 RE_MES = re.compile(r"(\d{4}-\d{2})")
+MIN_OFERTAS, MAX_OFERTAS = 3, 15
+FAIXA = 2.5  # preço aceito: mediana do item / FAIXA a mediana × FAIXA
+# Medida ou capacidade que o título precisa trazer (texto minúsculo e sem acento).
+MEDIDA_EXIGIDA = {
+    "OB40": r"30\.?000",                      # split de 30.000 BTU/h
+    "OB41": r"24\.?000|30\.?000|5/8",         # kit da bitola de 24 a 30 mil BTU/h
+    "MO01": r"160",                           # mesa de 160 x 80 cm
+    "MO02": r"80\s?x\s?80|\b80\s?cm",         # mesa de 80 x 80 cm
+}
+RE_KIT = re.compile(r"(?:kit|jogo|caixa|cx|c/)\s*(\d+)|(\d+)\s*(?:un\b|unid|pecas|pcs|copos|pratos|pares)")
 
 
 def ler_csv(caminho: Path) -> pd.DataFrame:
@@ -95,7 +110,7 @@ def ler_coletas() -> pd.DataFrame:
     arquivos = sorted(RAW_DIR.glob("*/*_precos.csv"), key=lambda a: a.name)
     if not arquivos:
         print("coletas em sites: nenhuma ainda")
-        return pd.DataFrame(columns=["id_item", "categoria", "fonte", "produto", "preco", "frete", "url", "data_coleta"])
+        return pd.DataFrame(columns=["id_item", "categoria", "fonte", "produto", "preco", "url", "data_coleta"])
     df = pd.concat([pd.read_csv(a, sep=";", decimal=",", encoding="utf-8-sig", dtype={"cep": str})
                     .assign(arquivo=a.name) for a in arquivos], ignore_index=True)
     if "excluida" not in df:  # exportações anteriores à exclusão no painel
@@ -110,24 +125,54 @@ def ler_coletas() -> pd.DataFrame:
     excluidas = int(df["excluida"].sum())
     fora_filtro = int((df["excluida"].eq(0) & df["motivo"].ne("")).sum())
     df = df[df["excluida"].eq(0) & df["motivo"].eq("") & df["preco"].gt(0)].copy()
-    df = estimar_frete(df)
-    print(f"coletas em sites: {len(arquivos)} arquivos, {linhas} linhas, {len(df)} ofertas de {df['id_item'].nunique()} itens "
-          f"({linhas - len(df) - excluidas - fora_filtro} repetidas entre exportações ou sem preço, {excluidas} excluídas no painel, "
-          f"{fora_filtro} fora dos filtros; "
-          f"frete estimado em {int(df['frete_estimado'].sum())})")
+    validas = len(df)
+    df = filtrar(df)
+    print(f"coletas em sites: {len(arquivos)} arquivos, {linhas} linhas, {validas} ofertas válidas "
+          f"({excluidas} excluídas e {fora_filtro} fora dos filtros no painel); "
+          f"{len(df)} ofertas filtradas de {df['id_item'].nunique()} itens")
     return df
 
 
-def estimar_frete(df: pd.DataFrame) -> pd.DataFrame:
-    """Frete vazio (o anúncio não informa): mediana do item; senão, razão frete/preço da categoria."""
-    df["frete_estimado"] = df["frete"].isna()
-    informado = df[~df["frete_estimado"]]
-    por_item = informado.groupby("id_item")["frete"].median()
-    razao_categoria = (informado["frete"] / informado["preco"]).groupby(informado["categoria"]).median()
-    estimado = df["id_item"].map(por_item)
-    estimado = estimado.fillna(df["categoria"].map(razao_categoria) * df["preco"]).fillna(0)
-    df["frete"] = df["frete"].fillna(estimado.round(2))
+def normalizar(texto: pd.Series) -> pd.Series:
+    return (texto.fillna("").str.normalize("NFKD").str.encode("ascii", "ignore").str.decode("ascii")
+            .str.lower().str.replace(r"\s+", " ", regex=True).str.strip())
+
+
+def corrigir_unidades(df: pd.DataFrame) -> pd.DataFrame:
+    """Kit lido como 1 unidade: divide pelo número do título; mais de 100 unidades: número de modelo."""
+    titulo = normalizar(df["produto"])
+    n_kit = titulo.str.extract(RE_KIT).bfill(axis=1)[0].astype(float)
+    eh_kit = df["unidades"].eq(1) & n_kit.gt(1) & n_kit.le(100)
+    modelo = df["unidades"].gt(100)
+    df.loc[eh_kit, "unidades"] = n_kit[eh_kit]
+    df.loc[modelo, "unidades"] = 1
+    df["preco"] = (df["preco_anuncio"] / df["unidades"]).round(2).where(eh_kit | modelo, df["preco"])
     return df
+
+
+def espacar(grupo: pd.DataFrame) -> pd.DataFrame:
+    """Até MAX_OFERTAS ofertas espaçadas na ordem de preço, das extremas inclusive."""
+    grupo = grupo.sort_values("preco")
+    if len(grupo) <= MAX_OFERTAS:
+        return grupo
+    posicoes = sorted({round(i * (len(grupo) - 1) / (MAX_OFERTAS - 1)) for i in range(MAX_OFERTAS)})
+    return grupo.iloc[posicoes]
+
+
+def filtrar(df: pd.DataFrame) -> pd.DataFrame:
+    df = corrigir_unidades(df)
+    df = df[~df["url"].str.contains("mclics", na=False)]
+    df = df.assign(titulo=normalizar(df["produto"])).drop_duplicates(["id_item", "titulo", "preco"])
+    exige = df["id_item"].map(MEDIDA_EXIGIDA)
+    tem_medida = [pd.isna(r) or bool(re.search(r, t)) for r, t in zip(exige, df["titulo"])]
+    df = df[tem_medida]
+    mediana = df.groupby("id_item")["preco"].transform("median")
+    df = df[df["preco"].between(mediana / FAIXA, mediana * FAIXA)]
+    df = df.groupby("id_item", group_keys=False)[df.columns].apply(espacar)
+    poucas = df.groupby("id_item")["preco"].transform("size").lt(MIN_OFERTAS)
+    if poucas.any():
+        print(f"  com menos de {MIN_OFERTAS} ofertas, sem preço: {', '.join(sorted(df.loc[poucas, 'id_item'].unique()))}")
+    return df[~poucas].drop(columns="titulo")
 
 
 def precos_unitarios(lista: pd.DataFrame, sinapi: pd.DataFrame, coletas: pd.DataFrame) -> pd.DataFrame:
@@ -144,7 +189,7 @@ def precos_unitarios(lista: pd.DataFrame, sinapi: pd.DataFrame, coletas: pd.Data
     ofertas[eh_sinapi] = 1
 
     if not coletas.empty:
-        total_oferta = coletas.assign(v=coletas["preco"] + coletas["frete"]).groupby("id_item")["v"]
+        total_oferta = coletas.groupby("id_item")["preco"]
         idx = lista.index[lista["fonte_preco"].eq("coleta")]
         for c in CENARIOS:
             precos.loc[idx, c] = lista.loc[idx, "id"].map(total_oferta.quantile(QUANTIL_COLETA[c]))
@@ -199,11 +244,18 @@ def resumo_por_premissa(itens: pd.DataFrame) -> pd.DataFrame:
 def main() -> None:
     lista = ler_lista()
     mes, sinapi = ler_sinapi()
-    itens = orcar(lista, sinapi, ler_coletas())
+    coletas = ler_coletas()
+    itens = orcar(lista, sinapi, coletas)
     resumo = resumo_por_premissa(itens)
+    ofertas = coletas[["id_item", "fonte", "produto", "preco", "unidades", "preco_anuncio", "url", "data_coleta"]]
+    # Cada oferta entra num único item: a contagem fecha com as ofertas dos itens com preço.
+    assert len(ofertas) == itens["ofertas"].where(itens["fonte_preco"].eq("Coleta em sites"), 0).sum(), \
+        "ofertas filtradas não fecham com as ofertas do orçamento"
 
-    for dado, tabela in [("Orçamento por Item", itens), ("Orçamento por Premissa", resumo)]:
-        destino = OUT_DIR / f"[B5] {dado} Etapa 1 {mes} (SINAPI e coletas).csv"
+    for dado, tabela, fontes in [("Orçamento por Item", itens, "SINAPI e coletas"),
+                                 ("Orçamento por Premissa", resumo, "SINAPI e coletas"),
+                                 ("Ofertas Filtradas", ofertas, "coletas")]:
+        destino = OUT_DIR / f"[B5] {dado} Etapa 1 {mes} ({fontes}).csv"
         tabela.to_csv(destino, sep=";", decimal=",", index=False, encoding="utf-8-sig")
         print(f"gravado: {destino.name} ({len(tabela)} linhas)")
     for _, r in resumo.iterrows():
