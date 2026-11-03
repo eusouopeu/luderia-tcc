@@ -2562,3 +2562,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: ordem de preferência começava pelo acesso gratuito em PDF (internet ou Google Drive do autor); uma obra por conceito; Damodaran reservado para beta e risco-país.
 **Depois**: ordem começa pela obra da pasta `bibliografia/` e, entre elas, pelo livro-texto da área já citado; conceitos e fórmulas de uma área concentrados num único livro-texto da pasta, com tabela de livros-texto por área (Dornelas, Kotler e Keller, Fitzsimmons, Porter, Assaf Neto, Bruni e Famá, Larson e Farber, Groves et al., Bardin); obra de fora da pasta só sem cobertura, marcada [AV]; Assaf Neto cobre também beta e risco-país.
 **Justificativa**: pedido do autor (entrega hoje; muitas referências citam obras a que o autor não tem acesso; preferir várias citações de um mesmo livro a várias obras).
+
+### 12:33
+**Objeto**: `_instrucoes/2_ref-teorico.md` (Escolha das obras, "Obras retiradas no TMin de 31/10/2026") × `textos/capitulos/_md/1_introducao_plano_luderia.md`, `2_referencial_teorico.md` e `5_analise_de_mercado.md`
+**Antes**: a instrução lista Savills e Sebrae (notícia) do cap. 5 entre as obras retiradas do TMin em 31/10/2026.
+**Depois**: os caps. 1, 2 e 5 do TMin ainda citam Savills (2023 e [s.d.]) e os caps. 1 e 2 citam Sebrae (notícia, 2026).
+**Efeitos colaterais**: referências que a instrução dá como retiradas continuam no texto e nas listas de referências; a lista final fica maior que o previsto.
