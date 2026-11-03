@@ -96,6 +96,36 @@ Leitura para o plano: o cliente de ticket alto avalia o serviço, não o cenári
 
 Limites: o gasto declarado inclui a ocasião (aniversário, grupo grande) e não separa o que é taxa e o que é consumo; a faixa é escolhida pelo cliente no Google Maps, sem conferência.
 
+## 4. Custo-benefício: cardápio de qualidade, preço baixo, acervo ou ambiente
+
+Pedido do autor (03/11/2026): estimar o que rende mais por pessoa e por mês na luderia do plano. Script `B2-a_custo_beneficio_cardapio.py`; tabelas `B2_custo_beneficio_posicoes.csv` e `B2_custo_beneficio_grupos.csv`.
+
+**A premissa de que o cardápio caro tem comida melhor não aparece no B2.** Nas casas do grupo 2 (consumo caro), a nota média de comida é 4,37, contra 4,67 no grupo 1 (média das casas com nota de aspecto). A crítica à comida também é maior: 5% das avaliações, contra 2% (q = 0,17). O cardápio caro cobra mais, mas não é percebido como mais gostoso. A expectativa que o preço cria pode até explicar a crítica maior. Como a crítica à comida aparece em metade das avaliações de quem não volta (seção 1), cobrar mais sem entregar mais é risco de retenção.
+
+**Margem de contribuição por categoria.** A fonte é a cartilha de CMV da Abrasel (jan/2026, seção 6, N4), que dá faixas por categoria: pratos de 25% a 40%; bebidas não alcoólicas de 10% a 30%; chope e cervejas de 30% a 35%; destilados de 10% a 20%. A mesma cartilha diz que CMV mais mão de obra não deve passar de 65% da receita bruta. O plano usa 30% para todo o A&B (C01, IBGE PAS 2023), dentro dessas faixas. Na estimativa, a bebida do cardápio, que mistura as três categorias, fica em 25% (de 20% a 32,5%), e o prato em 32,5% (de 27,5% a 37,5%). No cardápio de qualidade, o prato vai ao topo da faixa, 40%.
+
+**Posições comparadas.** Base: os preços do grupo 1, perto da cesta do plano. O gasto com A&B é o declarado no B2 menos a taxa de entrada, média das casas: R$ 55,73 no grupo 1 e R$ 78,00 no grupo 2. A taxa de entrada fica em R$ 19,83 por pessoa em todas as posições. Simples (9,24%) e cartão (3%) saem da Tabela 9.2.
+
+**Quadro D - Margem por pessoa e público necessário para empatar com a base (cenário provável)**
+
+| Posição | A&B por pessoa | CMV do A&B | Margem por pessoa | Custo fixo extra por mês | Público para empatar com a base |
+|---|---|---|---|---|---|
+| Base (preços do grupo 1) | R$ 55,73 | 30% | R$ 49,53 | — | 942 por mês |
+| Cardápio de qualidade (preços do grupo 2) | R$ 78,00 | 35% | R$ 58,72 | R$ 2.329 (cozinheiros 50% mais caros, N6) | 834 (11% a menos) |
+| Preço baixo (A&B 15% mais barato) | R$ 47,37 | 35% | R$ 42,20 | — | 1.106 (17% a mais) |
+| Acervo maior (+147 títulos, de 175 para 322) | R$ 55,73 | 30% | R$ 49,53 | R$ 646 (R$ 25,9 mil em 5 anos mais reposição de 10% ao ano) | 955 (+13 pessoas) |
+| Ambiente (cada R$ 10 mil investidos) | R$ 55,73 | 30% | R$ 49,53 | R$ 167 (5 anos) | 945 (+3 pessoas) |
+
+Fonte: elaborado pelo próprio autor com base em Abrasel (2026), B1, B2 e no modelo financeiro (cap. 9). No pessimista e no otimista (CMV nas pontas das faixas), o cardápio de qualidade tolera perder de 10% a 13% do público, e o preço baixo pede de 16% a 19% a mais.
+
+**Leitura para o plano.**
+- **Preço baixo é a pior aposta.** Cortar 15% do A&B exige 17% mais gente só para empatar. No B2, nada mostra que preço atrai: o elogio ao preço da entrada aparece em 3,5% das avaliações do grupo 1, e a nota é igual nos três grupos.
+- **Cardápio mais caro rende mais por pessoa,** cerca de R$ 9 de margem a mais, ou R$ 6 mil por mês depois do custo dos cozinheiros. Esse ganho vem do preço, não da qualidade percebida, e só se paga se a comida sustentar o preço: a crítica à comida é a segunda maior causa declarada de não voltar.
+- **Acervo e ambiente são baratos de pagar.** O acervo da mediana custa 13 pessoas a mais por mês (1,4% do público), e cada R$ 10 mil de ambiente, 3 pessoas. São as posições de menor risco. O acervo é o tema que mais distingue as casas de consumo barato e de taxa por hora alta (elogiado em 27% e 34% das avaliações). O ambiente funciona como piso: quase nunca é criticado e não rompe a relação (seção 1).
+- Uma ordem coerente com os dados: atendimento primeiro (retenção), depois acervo e ambiente (custo baixo e elogio frequente), e preço de cardápio no meio, com subida só quando a comida sustentar a nota.
+
+Limites: o gasto declarado vem de 13 casas com faixa de preço (6 no grupo 1, 7 no grupo 2). Nenhuma fonte liga qualidade, preço ou acervo a um volume de público medido, por isso o quadro responde quanto público cada posição precisa ganhar ou pode perder, e não quanto ela ganha. O acréscimo dos cozinheiros e o corte de 15% são premissas do autor (N6).
+
 ## Arquivos
 
 | Arquivo | Conteúdo |
@@ -106,3 +136,4 @@ Limites: o gasto declarado inclui a ocasião (aniversário, grupo grande) e não
 | `B2_cluster_casas_resumo.csv` e `_conteudo.csv` | Grupos de casas: centroides, casas, nota, retorno; temas por grupo com qui-quadrado |
 | `B2_cluster_clientes_resumo.csv` e `_conteudo.csv` | Grupos de clientes: faixa de gasto, nota, retorno; temas por grupo com qui-quadrado |
 | `B2_cluster_silhueta.csv` | Silhueta média de k = 2 a 5 nos dois agrupamentos |
+| `B2_custo_beneficio_posicoes.csv` e `_grupos.csv` | Margem por pessoa, custo fixo extra e público de empate de cada posição nos três cenários; preços, gasto e notas de comida por grupo de casas |

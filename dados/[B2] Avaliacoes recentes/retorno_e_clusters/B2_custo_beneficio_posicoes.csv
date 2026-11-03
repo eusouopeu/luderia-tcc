@@ -1,0 +1,16 @@
+﻿cenario;posicao;ab_por_pessoa;cmv_ab;margem_por_pessoa;custo_fixo_extra_mes;margem_mes_942;pessoas_para_empatar_com_base;variacao_de_publico_tolerada_pct
+pessimista;base (preços do grupo de consumo barato);55.73;0.36;46.3;0.0;43616.22;942.0;0.0
+pessimista;cardápio de qualidade (preços do grupo de consumo caro);78.0;0.41;54.15;2329.0;48676.68;848.54;-9.92
+pessimista;preço baixo (A&B 15% mais barato);47.37;0.42;38.97;0.0;36705.14;1119.37;18.83
+pessimista;acervo maior (+147 títulos, joelho → mediana);55.73;0.36;46.3;646.34;42969.88;955.96;1.48
+pessimista;ambiente (cada R$ 10 mil investidos);55.73;0.36;46.3;166.67;43449.55;945.6;0.38
+provavel;base (preços do grupo de consumo barato);55.73;0.3;49.53;0.0;46659.38;942.0;0.0
+provavel;cardápio de qualidade (preços do grupo de consumo caro);78.0;0.35;58.72;2329.0;52989.24;834.21;-11.44
+provavel;preço baixo (A&B 15% mais barato);47.37;0.35;42.2;0.0;39748.3;1105.79;17.39
+provavel;acervo maior (+147 títulos, joelho → mediana);55.73;0.3;49.53;646.34;46013.04;955.05;1.39
+provavel;ambiente (cada R$ 10 mil investidos);55.73;0.3;49.53;166.67;46492.71;945.36;0.36
+otimista;base (preços do grupo de consumo barato);55.73;0.25;52.32;0.0;49284.37;942.0;0.0
+otimista;cardápio de qualidade (preços do grupo de consumo caro);78.0;0.3;62.62;2329.0;56663.06;824.18;-12.51
+otimista;preço baixo (A&B 15% mais barato);47.37;0.3;44.98;0.0;42373.29;1095.64;16.31
+otimista;acervo maior (+147 títulos, joelho → mediana);55.73;0.25;52.32;646.34;48638.04;954.35;1.31
+otimista;ambiente (cada R$ 10 mil investidos);55.73;0.25;52.32;166.67;49117.71;945.19;0.34

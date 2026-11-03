@@ -2587,3 +2587,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Depois**: o cardápio do B1 e `B2-a_retorno_e_clusters.py` usam R$ 0 (página inicial do site: "não cobra por tempo nem por jogo").
 **Efeitos colaterais**: a cesta de consumo da Ludus no B2 (R$ 122) e o gasto por cesta que apoia a R06 usam um valor que o site da casa nega; nos grupos de preço, a Ludus entra como casa sem cobrança.
 
+
+### 19:21
+**Objeto**: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_custo_beneficio_cardapio.py` (novo); `dados/[B2] Avaliacoes recentes/retorno_e_clusters/B2_custo_beneficio_posicoes.csv` e `B2_custo_beneficio_grupos.csv` (novos); `docs/parecer_retorno_e_clusters_B2.md` (seção 4)
+**Antes**: sem estimativa de margem por categoria nem comparação entre posições de cardápio, preço, acervo e ambiente.
+**Depois**: margem de contribuição por pessoa com o CMV por categoria da Abrasel (jan/2026) e os preços e gastos dos grupos de casas. Resultado no provável: o cardápio do grupo de consumo caro rende cerca de R$ 9 a mais por pessoa e tolera 11% menos público; o preço 15% menor exige 17% mais público; o acervo da mediana pede 13 pessoas a mais por mês; cada R$ 10 mil de ambiente pede 3. O B2 não mostra comida melhor nas casas de cardápio caro (nota de comida 4,37 contra 4,67).
+**Justificativa**: pedido do autor (custo-benefício de investir em qualidade de comida contra preço baixo, acervo ou ambiente, com dados confiáveis de margem).
