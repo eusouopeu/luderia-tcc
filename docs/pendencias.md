@@ -109,6 +109,8 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 
 ## Dúvidas
 
+- **Levantamento nos repositórios (03/11/2026).** Completar à mão o que o Claude não acessou: o Acervo Digital da UFPR (fora do ar em 03/11) e o curso de 6 dos 9 planos de negócios da BDM/UnB (o site bloqueia depois de poucas páginas). Decidir se o resultado (nenhum trabalho sobre luderias; poucos planos de graduandos de Administração) entra no cap. 1 ou no 2. Detalhes em `bibliografia/levantamento-repositorios/`.
+
 - **Cardápios, conferir à mão:** categorias de 13 casas atribuídas por regra de palavra-chave (`B1-b_cardapios_transcricoes.py`); Cartola só tem entradas, sobremesas e drinks exportados da Takeat; preços de La Tabuleria e Toca do Rato são de delivery (Saipos); preços da Fan Hour e do LudoCafé vêm de matéria e de legenda do TikTok, lidos por resumo automático da página: conferir contra a fonte antes de citar.
 
 - **Cardápios no navegador (busca profunda de 16/10):** abrir com o `cardapio_coletor.user.js` o Goomer da São Jogue (`sao-jogue.goomer.app`, concorrente direta em Salvador) e o iFood do Game Of Boards; abrir à mão `garagemdonerd.com.br/cardapio/`, o botão Cardápio do `beacons.ai/nalaland` e a aba de cardápio do Restaurant Guru do Joyjoy. Coletivo Geek: decidir se preenche o formulário do PDF. Lista completa e próximo passo por casa em `cardapios/B1_cardapios_busca_profunda.csv`.
