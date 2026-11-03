@@ -2586,3 +2586,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: parecer só com estrutura e conteúdo dos planos.
 **Depois**: seção 5 com o Quadro 5.1 (temas, extensão, média e mediana de obras e citações, tipos de referência, autores e conteúdo das citações na introdução de 14 TCCs e no referencial de 11), comparação com o TMin v23, traços de estilo e quatro parágrafos transcritos como referência (Padaria Savassi e Saladeria na introdução; Cafeteria e Saladeria no referencial).
 **Justificativa**: pedido do autor (analisar o estilo da introdução e do referencial teórico dos TCCs e trazer parágrafos-modelo).
+
+### 15:28
+**Objeto**: `docs/parecer_tccs_planos_de_negocio.md` (seção 6, nova); `bibliografia/Obras citadas nos TCCs/` (nova, só no Mac, com 2 PDFs do Sebrae de 2004)
+**Antes**: sem levantamento das obras mais citadas nos referenciais dos TCCs.
+**Depois**: quadro com a referência completa de cada obra, quantos trabalhos a citam e se está na pasta; baixados os dois relatórios do Sebrae com cópia pública (mortalidade de empresas e "Como elaborar um plano de negócio", ambos de 2004). Livros comerciais não baixados.
+**Justificativa**: pedido do autor (buscar as obras mais citadas e baixá-las para a pasta de bibliografia).

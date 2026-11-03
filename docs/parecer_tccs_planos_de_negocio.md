@@ -104,3 +104,22 @@ Fonte: elaborado pelo próprio autor com base nos TCCs de `bibliografia/Planos d
 4. Referencial, limite da técnica (Saladeria, UFMG, 2020). Bom por mostrar o problema da TIR calculada sem risco, o mesmo argumento da seção 2.5 da luderia para usar cenários e sensibilidade.
 
    > Mattos e Vasconcellos (1989) destacam que, no entanto, a teoria e a prática quase nunca se entendem. Um projeto de investimento, tendo a taxa interna de retorno (TIR) como critério de análise, passados alguns anos de sua implantação, pode ter a sua rentabilidade, constatada na prática, menor que àquela calculada teoricamente. Segundo os autores, esse problema básico se reside em não se considerar o fator risco ou incerteza na análise do fluxo de caixa.
+
+## 6. Obras mais citadas nos referenciais: onde estão
+
+Levantadas nas listas de referências dos 11 trabalhos em 03/11/2026. "Na pasta" = já está em `bibliografia/`; "Baixada" = posta em `bibliografia/Obras citadas nos TCCs/`. Livros comerciais não foram baixados: não há cópia legal gratuita.
+
+| Obra (edição mais citada) | Citada em | Situação |
+|---|---|---|
+| DORNELAS. *Empreendedorismo*: transformando ideias em negócios. Rio de Janeiro: Campus/Elsevier, 2001 (4. ed. 2012) | 8 | Fora da pasta; a pasta tem o *Plano de negócios: seu guia definitivo* (citado no Restaurante vegetariano, ed. 2011) |
+| HISRICH; PETERS (; SHEPHERD). *Empreendedorismo*. Porto Alegre: Bookman, 2004 (7. ed. 2009) | 7 | Fora da pasta; livro comercial |
+| KOTLER. *Princípios de marketing*. São Paulo: Atlas/Prentice Hall, 1998 (Kotler e Armstrong, 7. a 12. ed.) | 6 | Fora da pasta; a pasta tem Kotler e Keller, *Administração de marketing* (citado em 3) |
+| WESTWOOD. *O plano de marketing*. 2. ed. São Paulo: Makron Books, 1996 | 6 | Fora da pasta; livro comercial esgotado |
+| DOLABELA. *O segredo de Luísa* (3) e *Oficina do empreendedor* (2). São Paulo: Cultura, 1999 | 5 | Fora da pasta; livros comerciais |
+| GITMAN. *Princípios de administração financeira*. São Paulo: Harbra, 1997 (12. ed. Pearson, 2010) | 4 | Na pasta (12. ed.) |
+| DEGEN. *O empreendedor*. São Paulo: McGraw-Hill, 1989 (Pearson, 2009) | 3 | Fora da pasta; livro comercial |
+| LAPPONI. *Projetos de investimento na empresa*. Rio de Janeiro: Elsevier, 2007 | 2 | Fora da pasta; livro comercial |
+| SEBRAE. *Fatores condicionantes e taxa de mortalidade de empresas no Brasil*: relatório de pesquisa. Brasília: Sebrae, ago. 2004. Disponível em: https://bibliotecas.sebrae.com.br/chronus/ARQUIVOS_CHRONUS/bds/bds.nsf/9A2916A2D7D88C4D03256EEE00489AB1/$File/NT0002FEEA.pdf | 2 (e a edição de 2013 em 1) | Baixada |
+| SEBRAE. *Como elaborar um plano de negócio*. Belo Horizonte: Sebrae-MG, 2004 (reedição Sebrae Nacional, 2013). Cópia de 2004 em: https://www.semadesc.ms.gov.br/wp-content/uploads/2023/11/Como-elaborar-um-plano-de-negocio-SEBRAE.pdf | 1 (ed. 2013) | Baixada a de 2004, com reprodução permitida; a de 2013 fica em sebrae.com.br, que bloqueia download automático |
+| SEBRAE. *Global Entrepreneurship Monitor*: empreendedorismo no Brasil 2010 | 1 | Não achada; o Sebrae publica a de 2011 |
+| DORNELAS. Artigos em planodenegocios.com.br (2005 e 2007) | 2 | Site fora do ar |
