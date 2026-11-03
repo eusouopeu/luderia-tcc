@@ -2617,3 +2617,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: a distribuição interna por grupo de gasto usava todas as avaliações com gasto declarado.
 **Depois**: elogios só de quem diz que volta (67 avaliações) e críticas só de quem diz que não volta (7 avaliações), por grupo de gasto. Entre quem volta, o atendimento lidera nos três grupos; no gasto alto entram bebidas e rapidez. O quadro de quem não volta fica como registro, por ter só 7 avaliações.
 **Justificativa**: pedido do autor (itens mais elogiados por quem volta e mais criticados por quem não volta, nos três grupos de gasto).
+
+### 19:43
+**Objeto**: `docs/pendencias.md` (Decisões a tomar)
+**Antes**: sem registro das hipóteses H-A (público latente pela comida), H-B (cesta mais cara desse público) e H-C (público afastado por conforto ou barulho).
+**Depois**: as três entram como hipóteses formuladas *a posteriori*, com a evidência indireta do B2 e a decisão de declarar no cap. 3 em aberto.
+**Justificativa**: o autor relatou as três hipóteses no chat do projeto; registrar antes de qualquer uso no texto.
