@@ -2611,3 +2611,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: os quatro temas mais mencionados de cada grupo de gasto (5 de elogio, 6 de crítica).
 **Depois**: os cinco mais mencionados de cada grupo; os elogios continuam com 5 temas (os mesmos nos três grupos) e as críticas passam a 7 (entra regras da casa).
 **Justificativa**: pedido do autor (aumentar para 5 temas por grupo).
+
+### 19:36
+**Objeto**: `B2-a_retorno_e_clusters.py` (distribuição por decisão); `dados/[B2] Avaliacoes recentes/retorno_e_clusters/B2_cluster_clientes_distribuicao_por_decisao.csv` (novo); `docs/parecer_retorno_e_clusters_B2.md` (Quadros C3 e C4)
+**Antes**: a distribuição interna por grupo de gasto usava todas as avaliações com gasto declarado.
+**Depois**: elogios só de quem diz que volta (67 avaliações) e críticas só de quem diz que não volta (7 avaliações), por grupo de gasto. Entre quem volta, o atendimento lidera nos três grupos; no gasto alto entram bebidas e rapidez. O quadro de quem não volta fica como registro, por ter só 7 avaliações.
+**Justificativa**: pedido do autor (itens mais elogiados por quem volta e mais criticados por quem não volta, nos três grupos de gasto).

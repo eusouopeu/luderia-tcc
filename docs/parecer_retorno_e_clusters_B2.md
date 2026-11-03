@@ -118,6 +118,37 @@ Fonte: elaborado pelo próprio autor com base no B2. Unidade: menção (avaliaç
 
 Dentro de cada grupo, atendimento e comida dominam os elogios em todas as faixas. O que muda é o peso do ambiente, que cai de 16% para 6% dos elogios no gasto alto. Nas críticas, o cliente de gasto baixo reclama sobretudo da comida e do preço do cardápio. O de gasto alto divide a crítica entre comida, atendimento e preço (cardápio e entrada). Com 38 e 60 menções de crítica, as diferenças nos grupos alto e baixo valem como direção, não como medida.
 
+**Quadro C3 - Elogios de quem diz que volta, por grupo de gasto (% das menções de elogio do grupo)**
+
+| Elogios de quem volta | Baixo (34 avaliações, 78 menções) | Médio (22; 64) | Alto (11; 29) |
+|---|---|---|---|
+| Atendimento presencial | **31%** | **25%** | **24%** |
+| Ambiente e decoração | **15%** | **14%** | **17%** |
+| Comida | **15%** | **8%** | **14%** |
+| Explicação de jogos | **9%** | **11%** | **7%** |
+| Variedade do acervo | **8%** | 6% | **7%** |
+| Comemorações e grupos | 0% | **8%** | **7%** |
+| Bebidas | 3% | 3% | **7%** |
+| Rapidez do serviço | 0% | 5% | **7%** |
+| Demais 14 temas | 20% | 21% | 10% |
+
+**Quadro C4 - Críticas de quem diz que não volta, por grupo de gasto (menções)**
+
+| Críticas de quem não volta | Baixo (1 avaliação) | Médio (5) | Alto (1) |
+|---|---|---|---|
+| Atendimento presencial | **1** | **3** | **1** |
+| Comida | 0 | **4** | 0 |
+| Preço do cardápio | 0 | **3** | 0 |
+| Preço da entrada | 0 | **2** | **1** |
+| Regras da casa | 0 | **2** | 0 |
+| Porções | 0 | 1 | **1** |
+| Rapidez do serviço | 0 | 0 | **1** |
+| Demais temas | 0 | 6 | 0 |
+
+Fonte: elaborado pelo próprio autor com base no B2. Em negrito, os cinco temas mais mencionados de cada grupo, com empates. Só entram as avaliações com gasto declarado e decisão dita: 67 das 144 "volta" e 7 das 20 "não volta". Tabela completa em `B2_cluster_clientes_distribuicao_por_decisao.csv`.
+
+Entre quem volta, o atendimento lidera os elogios nos três grupos, com cerca de um quarto a um terço das menções, seguido de ambiente e comida. No gasto médio e no alto, aparecem comemorações e grupos. No gasto alto, aparecem também bebidas e rapidez: quem gasta mais e volta elogia o serviço da ocasião, não só a casa. O Quadro C4 tem 7 avaliações, poucas para comparar grupos, e serve só de registro. Entre as 20 avaliações "não volta" (seção 1, sem filtro de gasto), a crítica ao atendimento aparece em 17 e a crítica à comida em 10.
+
 Leitura para o plano: o cliente de ticket alto avalia o serviço, não o cenário. Ele elogia a rapidez e critica o atendimento e a taxa de entrada, que pesa mais numa conta já alta. O plano que mira ticket acima de R$ 100 precisa de atendimento à altura e de taxa justificada pelo serviço (explicação de jogos, curadoria). A Bodogami tem cerca de 40% das avaliações de cada grupo, então o padrão não é efeito de uma casa só.
 
 Limites: o gasto declarado inclui a ocasião (aniversário, grupo grande) e não separa o que é taxa e o que é consumo; a faixa é escolhida pelo cliente no Google Maps, sem conferência.
@@ -160,6 +191,7 @@ Limites: o gasto declarado vem de 13 casas com faixa de preço (6 no grupo 1, 7 
 | `B2_retorno_decisao_resumo.csv` | Nota, notas de aspecto, temas, "costuma ir", gasto e contexto por decisão; fecha com 1.628 |
 | `B2_cluster_casas.csv` | 54 casas do B1: taxas, fonte, horas cobertas, taxa por hora, consumo, cesta completa, grupo ou motivo de ficar fora |
 | `B2_cluster_casas_resumo.csv` e `_conteudo.csv` | Grupos de casas: centroides, casas, nota, retorno; temas por grupo com qui-quadrado |
+| `B2_cluster_clientes_distribuicao_por_decisao.csv` | Distribuição interna dos elogios de quem volta e das críticas de quem não volta, por grupo de gasto |
 | `B2_cluster_clientes_distribuicao.csv` | Distribuição interna dos elogios e das críticas em cada grupo de gasto (cada coluna soma 100%) |
 | `B2_cluster_clientes_resumo.csv` e `_conteudo.csv` | Grupos de clientes: faixa de gasto, nota, retorno; temas por grupo com qui-quadrado |
 | `B2_cluster_silhueta.csv` | Silhueta média de k = 2 a 5 nos dois agrupamentos |

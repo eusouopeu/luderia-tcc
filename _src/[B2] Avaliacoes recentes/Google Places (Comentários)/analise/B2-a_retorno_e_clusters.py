@@ -518,6 +518,16 @@ def main():
     cg.to_csv(PASTA / "B2_cluster_clientes_conteudo.csv", sep=";", index=False, encoding="utf-8-sig")
     distribuicao_interna(cg, rot_g).to_csv(PASTA / "B2_cluster_clientes_distribuicao.csv", sep=";", index=False,
                                            encoding="utf-8-sig")
+    # mesma distribuição interna, só nas avaliações com a decisão dita (volta: elogios; não volta: críticas)
+    partes = []
+    for decisao, pol in (("sim", "elogio"), ("não", "crítica")):
+        sub = dg[dg["Voltará"] == decisao]
+        dist = distribuicao_interna(conteudo(sub, "grupo_cliente", {g: rot_g[g] for g in sorted(sub["grupo_cliente"].unique())}),
+                                    {g: rot_g[g] for g in sorted(sub["grupo_cliente"].unique())})
+        partes.append(dist[dist["polaridade"] == pol].assign(decisao=("volta" if decisao == "sim" else "não volta"),
+                                                             avaliacoes=len(sub)))
+    pd.concat(partes).to_csv(PASTA / "B2_cluster_clientes_distribuicao_por_decisao.csv", sep=";", index=False,
+                             encoding="utf-8-sig")
     rg = resumo_grupo(dg, "grupo_cliente", rot_g)
     assert rg["avaliacoes"].sum() == len(dg), "grupos de clientes não fecham com o total com gasto"
     rg.to_csv(PASTA / "B2_cluster_clientes_resumo.csv", sep=";", index=False, encoding="utf-8-sig")
