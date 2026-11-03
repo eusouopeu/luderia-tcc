@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.02-4
+// @version      2026.11.03-1
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas seguintes e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -18,25 +18,29 @@
  * requisições fora do navegador (Cloudflare), por isso a coleta roda na página.
  *
  * Como usar: abrir a busca no portal, já filtrada (tipo, cidade, bairro), e clicar
- * em "Coletar todas as páginas". O script lê a página, rola até o fim, guarda os
+ * em "Todas" (coletar todas as páginas). O script lê a página, rola até o fim, guarda os
  * anúncios e vai para a página seguinte (?o=N no OLX, ?pagina=N no ZAP e no Viva
  * Real, botão "Ver mais" no QuintoAndar) até uma página vir vazia, não trazer
  * anúncio inédito nesta rodada ou chegar ao limite. "Inédito" conta só a rodada:
  * refazer uma busca já guardada percorre todas as páginas de novo. No fim, toca
  * um som e baixa o CSV. Os anúncios ficam guardados no navegador (localStorage,
- * um por portal) até "Limpar"; o CSV traz tudo o que foi guardado. Se o
+ * um por portal) até "Apagar"; o CSV traz tudo o que foi guardado. Se o
  * localStorage encher, a rodada para e o CSV sai na hora com o que foi lido. Se
  * aparecer o desafio do Cloudflare, a rodada pausa e retoma da mesma página depois
  * que ele for resolvido. Cada anúncio leva o total de resultados que o portal diz
  * ter na busca (total_busca), para o build medir a cobertura.
  *
- * Painel: além dos botões, mostra a cobertura da busca (lidos ÷ total do portal), o
- * funil da última página (cards → com id → com preço → com área), o preenchimento de
- * cada campo, a mistura de operação, cidade e tipo, a prévia do que o build vai
- * descartar, quantos anúncios estão no alvo (porte do plano e áreas do 6.4), o
- * histórico da rodada automática e as buscas guardadas, com "Baixar" e "Apagar" por
- * busca. Os filtros do painel só mudam esses indicadores e o destaque dos cards na
- * página; nada é descartado na coleta, e o CSV sai completo.
+ * Painel (mesmas regras de UI do coletor de preços): botões com ícone (Heroicons) e
+ * nome curto, com o nome completo e a explicação na dica ao passar o mouse; filtros em
+ * selos que ligam e desligam. Mostra os anúncios fora de CSV (com 100 ou mais, cobra o
+ * download e o navegador pede confirmação ao fechar a aba), a cobertura da busca (lidos
+ * ÷ total do portal), a coleta mais antiga da busca (alerta acima de 30 dias), a mediana,
+ * P25 e P75 do R$/m² pedido, o funil da última página (cards → com id → com preço → com
+ * área), o preenchimento de cada campo, a mistura de operação, cidade e tipo, a prévia do
+ * que o build vai descartar, quantos anúncios estão no alvo (porte do plano e áreas do
+ * 6.4), o histórico da rodada automática e as buscas guardadas, com "Baixar" e "Apagar"
+ * por busca (Apagar baixa antes o CSV do que sai). Os filtros só mudam esses indicadores
+ * e o destaque dos cards na página; nada é descartado na coleta, e o CSV sai completo.
  *
  * Buscas que funcionam (02/11/2026):
  *  - OLX:       /imoveis/comercio-e-industria/estado-ba/grande-salvador/salvador
@@ -64,6 +68,9 @@
   const CHAVE_AUTO = 'tcc_aluguel_auto';
   const CHAVE_HIST = 'tcc_aluguel_hist';
   const CHAVE_FILTROS = 'tcc_aluguel_filtros';
+  const CHAVE_EXPORTACAO = 'tcc_aluguel_exportado_em';
+  const AVISO_PENDENTES = 100; // anúncios fora de CSV (cerca de 3 páginas) a partir dos quais o painel cobra o download
+  const IDADE_MAX = 30; // dias até a coleta mais antiga de uma busca pedir revisão
 
   // ---------- leitura de texto ----------
 
@@ -414,6 +421,26 @@
     return [...g.values()].sort((p, q) => q.data.localeCompare(p.data) || q.n - p.n);
   }
 
+  // Anúncios lidos depois da última exportação do CSV de tudo (sem alterado_em: lidos antes
+  // deste controle, contam como pendentes).
+  const pendentes = (dados, exportadoEm) => Object.values(dados).filter((a) => (a.alterado_em || Infinity) > (exportadoEm || 0)).length;
+
+  // Quantil com interpolação linear, como o pandas no build.
+  const quantil = (vs, q) => {
+    const s = vs.filter((v) => Number.isFinite(v)).sort((a, b) => a - b);
+    if (!s.length) return null;
+    const pos = (s.length - 1) * q;
+    const i = Math.floor(pos);
+    return s[i] + (s[Math.min(i + 1, s.length - 1)] - s[i]) * (pos - i);
+  };
+  const diasEntre = (de, ate) => Math.round((Date.parse(ate) - Date.parse(de)) / 86400000);
+
+  // R$/m² pedido (aluguel ÷ área) dos anúncios de aluguel com área: n, mediana, P25 e P75.
+  function resumoM2(lista) {
+    const m2 = lista.filter((a) => a.operacao === 'aluguel' && a.aluguel > 0 && a.area_m2 > 0).map((a) => a.aluguel / a.area_m2);
+    return { n: m2.length, mediana: quantil(m2, 0.5), p25: quantil(m2, 0.25), p75: quantil(m2, 0.75) };
+  }
+
   // ---------- leitura da página (DOM) ----------
 
   const texto = (raiz, sel) => raiz.querySelector(sel)?.textContent || '';
@@ -566,7 +593,7 @@
     const anuncios = lerPagina(portal);
     ultimoFunil = funil(anuncios, contarCards(portal));
     guardados = carregar();
-    const novos = guardar(guardados, anuncios, { busca_url: location.href, pagina, total_busca: totalResultados(), data_coleta: dataLocal() });
+    const novos = guardar(guardados, anuncios, { busca_url: location.href, pagina, total_busca: totalResultados(), data_coleta: dataLocal(), alterado_em: Date.now() });
     const gravou = salvar(guardados);
     return { anuncios, lidos: anuncios.length, novos, gravou };
   }
@@ -597,7 +624,8 @@
     status('Armazenamento do navegador cheio: o CSV saiu com tudo o que foi lido. Confira o arquivo, apague buscas em "Buscas guardadas" e retome.');
   }
 
-  function baixarCsv(dados = carregar()) {
+  // parcial: CSV de uma busca, que não conta como exportação de tudo (aviso de pendentes).
+  function baixarCsv(dados = carregar(), parcial = false) {
     const linhas = Object.values(dados).sort((a, b) => (a.pagina - b.pagina) || String(a.id).localeCompare(String(b.id)));
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([csv(linhas)], { type: 'text/csv;charset=utf-8' }));
@@ -605,6 +633,7 @@
     (document.body || document.documentElement).appendChild(a);
     a.click();
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+    if (!parcial) try { localStorage.setItem(CHAVE_EXPORTACAO, String(Date.now())); } catch (e) { /* sem marca */ }
   }
 
   function som() {
@@ -673,6 +702,9 @@
   }
 
   // ---------- painel (padrão: canto superior direito, shadow DOM, fora do <body>) ----------
+  // Mesmas regras de UI do coletor de preços (precos_itens.user.js): botões com ícone
+  // (Heroicons) e nome curto, com o nome completo e a explicação na dica; filtros em selos que
+  // ligam e desligam; resumo em grade; painel montado com createElement (sem innerHTML).
 
   const el = {};
   let hospedeiro = null;
@@ -685,118 +717,243 @@
   }
 
   const CSS_PAINEL = `
-    #cal-painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:340px;
+    #cal-painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:360px;
       max-height:calc(100vh - 24px);overflow:auto;box-sizing:border-box;
       background:#fff;color:#111;border:1px solid #ccc;border-radius:10px;
       box-shadow:0 4px 16px rgba(0,0,0,.18);font:13px/1.4 system-ui,sans-serif;padding:10px;
-      --ok:#2e7d32;--medio:#b26a00;--ruim:#c62828;--trilho:#e5e5e5}
-    @media (prefers-color-scheme:dark){#cal-painel{background:#1e1e1e;color:#eee;border-color:#444;
-      --ok:#81c784;--medio:#ffb74d;--ruim:#ef9a9a;--trilho:#3a3a3a}}
+      --azul:#2563eb;--vermelho:#b91c1c;--linha:rgba(128,128,128,.25)}
+    @media (prefers-color-scheme:dark){#cal-painel{background:#1e1e1e;color:#eee;border-color:#444;--azul:#3b82f6;--vermelho:#dc2626}}
     #cal-painel.min>*:not(header){display:none}
     header{display:flex;justify-content:space-between;align-items:center;font-weight:700;cursor:pointer}
-    p{margin:6px 0}
+    p{margin:4px 0}
+    svg.ico{width:14px;height:14px;flex:0 0 auto;vertical-align:-2px}
     .linha{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0;align-items:center}
-    button{flex:1 1 auto;padding:5px 8px;border-radius:6px;border:1px solid #888;
-      background:transparent;color:inherit;cursor:pointer;font:inherit}
-    button.ativo{background:#c62828;color:#fff;border-color:#c62828}
+    button{flex:1 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 8px;
+      border-radius:6px;border:1px solid #888;background:transparent;color:inherit;cursor:pointer;font:inherit;white-space:nowrap}
     button:disabled{opacity:.4;cursor:default}
-    input[type=number]{width:52px;font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px}
-    .status{font-size:12px;opacity:.8}
-    details{border-top:1px solid rgba(128,128,128,.35);margin-top:8px;padding-top:4px}
-    summary{cursor:pointer;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em;opacity:.8}
-    .ind{font-size:12px;margin:5px 0}
-    .ok{color:var(--ok)} .medio{color:var(--medio)} .ruim{color:var(--ruim)}
-    .barra{height:6px;border-radius:3px;background:var(--trilho);overflow:hidden;margin-top:3px}
-    .barra>div{height:100%;background:currentColor}
-    .campos{display:grid;grid-template-columns:1fr 1fr;gap:2px 10px}
+    button.principal{background:var(--azul);border-color:var(--azul);color:#fff;font-weight:600}
+    button.principal.ativo{background:var(--vermelho);border-color:var(--vermelho)}
+    button.ic{flex:0 0 auto;padding:4px 7px}
+    .tag{flex:0 0 auto;border-radius:999px;padding:2px 9px;font-size:12px;opacity:.55}
+    .tag.on{opacity:1;background:var(--azul);border-color:var(--azul);color:#fff}
+    input{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px}
+    input[type=number]{width:46px}
+    .rotulo{display:inline-flex;align-items:center;gap:3px;opacity:.7;font-size:12px}
+    .info{font-size:12px;display:inline-flex;align-items:center;gap:3px}
+    .caixa{border:1px solid var(--linha);border-radius:8px;padding:6px 8px;margin:6px 0}
+    .grade{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:2px 8px;font-size:12px;align-items:center}
+    .grade+.grade{margin-top:6px;padding-top:6px;border-top:1px solid var(--linha)}
+    .grade .k{opacity:.6;display:inline-flex;align-items:center;gap:3px}
+    .grade .v{font-variant-numeric:tabular-nums;display:inline-flex;align-items:center;gap:3px}
+    .grade .largo{grid-column:2 / -1}
+    .grade .todo{grid-column:1 / -1;display:flex;align-items:center;gap:4px}
+    ul{list-style:none;margin:6px 0;padding:0;max-height:30vh;overflow:auto}
+    li{display:flex;gap:6px;align-items:center;padding:4px 0;border-bottom:1px solid var(--linha);font-size:12px}
+    li .corpo{flex:1;min-width:0}
+    li .titulo{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    li.atual .titulo{font-weight:600}
+    li .meta{font-size:11px;opacity:.75}
     table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
     th,td{text-align:right;padding:1px 4px} th:first-child,td:first-child{text-align:left}
-    .rolagem{max-height:170px;overflow:auto}
-    label{display:flex;gap:6px;align-items:center;font-size:12px;margin:3px 0;cursor:pointer}
-    .busca{display:grid;grid-template-columns:1fr auto;gap:2px 6px;font-size:12px;padding:4px 0;border-bottom:1px dotted rgba(128,128,128,.4)}
-    .busca.atual{font-weight:600}
-    .busca .url{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-    .busca .acoes{grid-column:1/-1;display:flex;gap:6px}
-    .busca button{padding:2px 6px;font-size:12px}`;
+    .barra{display:inline-block;width:70px;height:7px;border:1px solid #888;border-radius:4px;vertical-align:middle;overflow:hidden}
+    .barra>span{display:block;height:100%;background:currentColor}
+    details{margin:6px 0} summary{cursor:pointer;font-size:12px}
+    .resumo{font-size:12px;display:flex;flex-wrap:wrap;align-items:center;gap:3px}
+    .alerta{color:#b45309} .ok{color:#15803d} .ruim{color:var(--vermelho)}
+    @media (prefers-color-scheme:dark){.alerta{color:#fbbf24}.ok{color:#4ade80}.ruim{color:#f87171}}
+    .status{font-size:12px;opacity:.8}`;
 
-  const status = (t) => { if (el.status) el.status.textContent = t; };
+  // Ícones Heroicons (MIT, Tailwind Labs), versão 2.1.5, 20/solid: só os caminhos do SVG;
+  // "e:" marca fill-rule evenodd. Montados com createElementNS (sem innerHTML).
+  const ICONES = {
+    'adjustments-horizontal': ["M10 3.75a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM17.25 4.5a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM5 3.75a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 .75.75ZM4.25 17a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM17.25 17a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM9 10a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1 0-1.5h5.5A.75.75 0 0 1 9 10ZM17.25 10.75a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM14 10a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM10 16.25a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"],
+    'arrow-down-tray': ["M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z", "M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z"],
+    'arrow-path': ["e:M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138.75.75 0 0 0-1.449-.39Zm1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219Z"],
+    'chart-bar': ["M15.5 2A1.5 1.5 0 0 0 14 3.5v13a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 16.5 2h-1ZM9.5 6A1.5 1.5 0 0 0 8 7.5v9A1.5 1.5 0 0 0 9.5 18h1a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 10.5 6h-1ZM3.5 10A1.5 1.5 0 0 0 2 11.5v5A1.5 1.5 0 0 0 3.5 18h1A1.5 1.5 0 0 0 6 16.5v-5A1.5 1.5 0 0 0 4.5 10h-1Z"],
+    'check': ["e:M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"],
+    'exclamation-triangle': ["e:M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"],
+    'forward': ["M3.288 4.818A1.5 1.5 0 0 0 1 6.095v7.81a1.5 1.5 0 0 0 2.288 1.276l6.323-3.905c.155-.096.285-.213.389-.344v2.973a1.5 1.5 0 0 0 2.288 1.276l6.323-3.905a1.5 1.5 0 0 0 0-2.552l-6.323-3.906A1.5 1.5 0 0 0 10 6.095v2.972a1.506 1.506 0 0 0-.389-.343L3.288 4.818Z"],
+    'funnel': ["e:M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 0 1 .628.74v2.288a2.25 2.25 0 0 1-.659 1.59l-4.682 4.683a2.25 2.25 0 0 0-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 0 1 8 18.25v-5.757a2.25 2.25 0 0 0-.659-1.591L2.659 6.22A2.25 2.25 0 0 1 2 4.629V2.34a.75.75 0 0 1 .628-.74Z"],
+    'magnifying-glass': ["e:M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z"],
+    'map-pin': ["e:m9.69 18.933.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 0 0 .281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 1 0 3 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 0 0 2.273 1.765 11.842 11.842 0 0 0 .976.544l.062.029.018.008.006.003ZM10 11.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z"],
+    'minus': ["e:M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z"],
+    'plus': ["M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z"],
+    'tag': ["e:M4.5 2A2.5 2.5 0 0 0 2 4.5v3.879a2.5 2.5 0 0 0 .732 1.767l7.5 7.5a2.5 2.5 0 0 0 3.536 0l3.878-3.878a2.5 2.5 0 0 0 0-3.536l-7.5-7.5A2.5 2.5 0 0 0 8.38 2H4.5ZM5 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"],
+    'trash': ["e:M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z"],
+    'stop': ["M5.25 3A2.25 2.25 0 0 0 3 5.25v9.5A2.25 2.25 0 0 0 5.25 17h9.5A2.25 2.25 0 0 0 17 14.75v-9.5A2.25 2.25 0 0 0 14.75 3h-9.5Z"],
+  };
+  function icone(nome) {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', '0 0 20 20');
+    svg.setAttribute('fill', 'currentColor');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('class', 'ico');
+    for (const d of ICONES[nome] || []) {
+      const p = document.createElementNS(ns, 'path');
+      if (d.startsWith('e:')) { p.setAttribute('fill-rule', 'evenodd'); p.setAttribute('clip-rule', 'evenodd'); }
+      p.setAttribute('d', d.replace(/^e:/, ''));
+      svg.appendChild(p);
+    }
+    return svg;
+  }
+  // Filhos mistos: texto e nós (ícones), sem vazios
+  const partes = (...xs) => xs.filter((x) => x !== '' && x != null && x !== false).map((x) => (typeof x === 'string' ? document.createTextNode(x) : x));
 
-  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const status = (t) => { if (el.status) { el.status.textContent = t; el.status.title = ''; } };
   const pctTxt = (x) => (x == null ? '–' : `${Math.round(x * 100)}%`);
+  const reais = (v) => (v == null ? '–' : `R$ ${v.toFixed(2).replace('.', ',')}`);
+  const doisDig = (n) => String(n).padStart(2, '0');
+  const quando = (ms) => { const d = new Date(ms); return `${doisDig(d.getDate())}/${doisDig(d.getMonth() + 1)} ${doisDig(d.getHours())}h${doisDig(d.getMinutes())}`; };
+  const diaMes = (iso) => (iso ? iso.split('-').reverse().join('/') : '–');
   // Verde a partir de "bom", âmbar a partir de "medio", vermelho abaixo.
-  const nivel = (x, bom = 0.9, medio = 0.6) => (x == null ? '' : x >= bom ? 'ok' : x >= medio ? 'medio' : 'ruim');
+  const nivel = (x, bom = 0.9, medio = 0.6) => (x == null ? '' : x >= bom ? 'ok' : x >= medio ? 'alerta' : 'ruim');
   const NOMES_SUBTIPO = { loja_ponto: 'loja/ponto', sala: 'sala', galpao: 'galpão', predio: 'prédio', outro: 'outro', residencial: 'residencial' };
 
-  // Cobertura da busca atual e funil da última página lida.
-  function htmlPagina(lista) {
+  // Botão com ícone e nome curto; o nome completo e a explicação vão no title (tooltip)
+  const botao = (ico, rotulo, titulo, onclick, className = '') =>
+    criar('button', { title: titulo, onclick, className }, partes(icone(ico), rotulo && criar('span', { textContent: rotulo })));
+  // Selo que liga e desliga (filtros)
+  function selo(rotulo, titulo, ligado, aoMudar) {
+    const b = criar('button', { className: 'tag', textContent: rotulo, title: titulo });
+    const pintar = (v) => { b.classList.toggle('on', v); b.setAttribute('aria-pressed', String(v)); };
+    pintar(ligado);
+    b.onclick = () => { const v = !b.classList.contains('on'); pintar(v); aoMudar(v); };
+    return b;
+  }
+  // Casa da grade: rótulo (k) ou valor (v), com ícone opcional
+  const casa = (classe, ...xs) => criar('span', { className: classe }, partes(...xs));
+  const aviso = (t) => criar('span', { className: 'alerta', title: t }, [icone('exclamation-triangle')]);
+  const barra = (x) => { const s = criar('span'); s.style.width = `${Math.round(x * 100)}%`; return criar('span', { className: 'barra' }, [s]); };
+
+  // A8 do coletor de preços: anúncios guardados desde o último CSV de tudo.
+  function mostrarPendentes(dados) {
+    const exportadoEm = Number(localStorage.getItem(CHAVE_EXPORTACAO)) || 0;
+    const pend = pendentes(dados, exportadoEm);
+    el.pendentes.className = pend >= AVISO_PENDENTES ? 'info alerta' : pend ? 'info' : 'info ok';
+    el.pendentes.replaceChildren(...partes(pend >= AVISO_PENDENTES ? icone('exclamation-triangle') : !pend && exportadoEm ? icone('check') : '',
+      pend ? `${pend} fora do CSV` : exportadoEm ? 'CSV em dia' : 'Nada guardado ainda.'));
+    el.pendentes.title = pend
+      ? `${pend} anúncio(s) lidos desde o último CSV de tudo${exportadoEm ? ` (${quando(exportadoEm)})` : ' (nenhum baixado ainda)'}`
+        + `${pend >= AVISO_PENDENTES ? '. Baixe o CSV: os dados só estão no navegador' : ''}`
+      : exportadoEm ? `CSV de tudo baixado em ${quando(exportadoEm)}` : '';
+  }
+
+  // Portal, cobertura da busca atual e R$/m² pedido dos anúncios de aluguel da busca.
+  function mostrarGeral(todos, lista) {
     const totais = lista.map((a) => Number(a.total_busca)).filter((n) => n > 0);
     const total = totais.length ? Math.max(...totais) : totalResultados();
     const cob = total ? Math.min(1, lista.length / total) : null;
-    const cobTxt = total
-      ? `Busca: ${lista.length} de ${total} anúncios (${pctTxt(cob)})`
-      : `Busca: ${lista.length} anúncios; total da busca não lido na página`;
-    const corCob = lerAuto() ? '' : nivel(cob, 0.8, 0.5);
-    let h = `<div class="ind ${corCob}">${esc(cobTxt)}${cob != null ? `<div class="barra"><div style="width:${Math.round(cob * 100)}%"></div></div>` : ''}</div>`;
-    if (ultimoFunil) {
-      const f = ultimoFunil;
-      const cor = f.comId < f.cards ? 'ruim' : f.comArea < f.comId * 0.8 ? 'medio' : 'ok';
-      h += `<div class="ind ${cor}">Página: ${f.cards} cards → ${f.comId} com id → ${f.comPreco} com preço → ${f.comArea} com área</div>`;
-      if (f.comId < f.cards) h += '<div class="ind ruim">Há cards sem id: o seletor do portal pode ter mudado.</div>';
-    } else {
-      h += '<div class="ind">Página ainda não lida nesta aba.</div>';
-    }
-    return h;
+    const datas = lista.map((a) => a.data_coleta).filter(Boolean).sort();
+    const idade = datas[0] ? diasEntre(datas[0], dataLocal()) : null;
+    el.geral.replaceChildren(
+      casa('k', icone('chart-bar'), 'Portal'), casa('v largo', `${todos.length} anúncios (${todos.filter((a) => a.operacao === 'aluguel').length} de aluguel)`),
+      casa('k', icone('magnifying-glass'), 'Busca'),
+      cob == null
+        ? casa('v largo', `${lista.length}`, aviso('Total da busca não lido na página: sem cobertura'))
+        : criar('span', { className: `v largo ${lerAuto() ? '' : nivel(cob, 0.8, 0.5)}`, title: `${lista.length} de ${total} anúncios que o portal diz ter na busca (${pctTxt(cob)})` },
+          partes(`${lista.length}/${total}`, barra(cob))),
+      ...(lista.length ? [casa('k', 'Desde'), casa(`v largo${idade > IDADE_MAX ? ' alerta' : ''}`, diaMes(datas[0]), idade > IDADE_MAX && aviso(`Coleta mais antiga desta busca com ${idade} dias: refazer?`))] : []),
+    );
+    const r = resumoM2(lista.filter((a) => passaFiltros(a, lerFiltros())));
+    el.resumo.title = 'R$/m² pedido (aluguel ÷ área) dos anúncios de aluguel com área desta busca, nos filtros ligados';
+    el.resumo.replaceChildren(...(!r.n ? [casa('todo', icone('tag'), 'Nenhum anúncio de aluguel com área nesta busca.')] : [
+      casa('k', icone('tag'), 'Com área'), casa(`v${r.n < MIN_AMOSTRA ? ' alerta' : ''}`, String(r.n)),
+      casa('k', 'R$/m²'), criar('b', { className: 'v', textContent: reais(r.mediana) }),
+      ...(r.n > 1 ? [casa('k', 'P25'), casa('v', reais(r.p25)), casa('k', 'P75'), casa('v', reais(r.p75))] : []),
+      ...(r.n < MIN_AMOSTRA ? [casa('todo alerta', icone('exclamation-triangle'), `faltam ${MIN_AMOSTRA - r.n} para a amostra mínima`)] : []),
+    ]));
   }
 
-  function htmlQualidade(lista, filtrados, filtros, todos) {
-    let h = '';
-    if (Object.values(filtros).some(Boolean)) h += `<div class="ind">Filtro: ${filtrados.length} de ${lista.length} anúncios da busca.</div>`;
+  // Funil da última página lida, com alerta se há cards sem id (seletor do portal mudou?).
+  function mostrarFunil() {
+    if (!ultimoFunil) { el.funil.className = 'resumo'; el.funil.replaceChildren(...partes(icone('funnel'), ' Página ainda não lida nesta aba.')); return; }
+    const f = ultimoFunil;
+    const semId = f.comId < f.cards;
+    el.funil.className = `resumo ${semId ? 'ruim' : f.comArea < f.comId * 0.8 ? 'alerta' : 'ok'}`;
+    el.funil.replaceChildren(...partes(icone('funnel'), ` ${f.cards} cards → ${f.comId} com id → ${f.comPreco} com preço → ${f.comArea} com área`,
+      semId && ' ', semId && icone('exclamation-triangle'), semId && ' cards sem id'));
+    el.funil.title = `Funil da última página lida${semId ? '. Há cards sem id: o seletor do portal pode ter mudado' : ''}`;
+  }
 
+  // Preenchimento dos campos, mistura da busca, prévia do descarte e anúncios no alvo.
+  function mostrarQualidade(lista, filtrados, filtros, todos) {
     const q = qualidade(filtrados);
-    h += '<div class="ind campos">' + CAMPOS_QUALIDADE.map(([c, nome]) => {
+    const campos = CAMPOS_QUALIDADE.flatMap(([c, nome]) => {
       const cor = c === 'condominio_iptu' ? nivel(q.pct[c], 0.6, 0.3) : nivel(q.pct[c]);
-      return `<span class="${cor}">● ${nome} ${pctTxt(q.pct[c])}</span>`;
-    }).join('') + '</div>';
+      return [casa('k', nome), casa(`v ${cor}`, pctTxt(q.pct[c]))];
+    });
+    const filtro = Object.values(filtros).some(Boolean);
+    el.campos.title = `Preenchimento de cada campo nos ${filtrados.length} anúncios ${filtro ? 'da busca nos filtros ligados' : 'da busca'}`;
+    el.campos.replaceChildren(...(filtro ? [casa('k', icone('adjustments-horizontal'), 'Filtro'), casa('v largo', `${filtrados.length} de ${lista.length}`)] : []), ...campos);
 
     const m = mistura(lista);
-    if (m.n) {
-      h += `<div class="ind">Aluguel ${pctTxt(m.pctAluguel)} · venda ${pctTxt(m.pctVenda)} · fora de Salvador ${pctTxt(m.pctFora)}</div>`;
-      const tipos = Object.entries(m.tipos).sort((x, y) => y[1] - x[1]).map(([t, n]) => `${NOMES_SUBTIPO[t] || t} ${n}`).join(' · ');
-      h += `<div class="ind">Tipo estimado: ${esc(tipos)}</div>`;
-      h += m.alertas.map((a) => `<div class="ind ruim">${esc(a)}</div>`).join('');
-    }
-
     const d = previaDescarte(filtrados);
+    const alvo = noAlvo(todos);
+    const linhas = [];
+    if (m.n) {
+      linhas.push(casa('k', 'Aluguel'), casa('v', pctTxt(m.pctAluguel)), casa('k', 'Venda'), casa(`v${m.pctVenda > 0.1 ? ' ruim' : ''}`, pctTxt(m.pctVenda)));
+      linhas.push(casa('k', 'Fora de SSA'), casa(`v largo${m.pctFora > 0.1 ? ' ruim' : ''}`, pctTxt(m.pctFora)));
+      const tipos = Object.entries(m.tipos).sort((x, y) => y[1] - x[1]);
+      linhas.push(criar('span', { className: 'k', textContent: 'Tipo', title: 'Tipo estimado pela busca e pelo texto, com as regras do build' }),
+        casa('v largo', tipos.map(([t, n]) => `${NOMES_SUBTIPO[t] || t} ${n}`).join(' · ')));
+      linhas.push(...m.alertas.map((a) => casa('todo ruim', icone('exclamation-triangle'), a)));
+    }
     if (d.aluguel) {
       const nomes = { semArea: 'sem área', preco: 'preço fora de R$ 300 a 100 mil', foraSalvador: 'fora de Salvador', m2: 'R$/m² fora de 3 a 500' };
-      const motivos = Object.entries(d.motivos).filter(([, n]) => n).map(([k, n]) => `${n} ${nomes[k]}`).join(', ');
+      const motivos = Object.entries(d.motivos).filter(([, n]) => n).map(([k, n]) => `${n} ${nomes[k]}`).join('; ');
       const frac = d.total / d.aluguel;
-      const cor = frac > 0.2 ? 'ruim' : frac > 0.05 ? 'medio' : 'ok';
-      h += `<div class="ind ${cor}">O build deve descartar ${d.total} de ${d.aluguel} de aluguel${motivos ? `: ${esc(motivos)}` : ''}.</div>`;
+      linhas.push(criar('span', { className: 'k', textContent: 'Descarte', title: 'Prévia do que o build vai descartar entre os anúncios de aluguel' }),
+        criar('span', { className: `v largo ${frac > 0.2 ? 'ruim' : frac > 0.05 ? 'alerta' : 'ok'}`, title: motivos || 'nenhum motivo de descarte' },
+          partes(`${d.total} de ${d.aluguel}`, motivos && ` (${motivos})`)));
     }
+    el.mistura.replaceChildren(...linhas);
 
-    const alvo = noAlvo(todos);
-    const areas = Object.entries(alvo.porArea).map(([a, n]) => `<span class="${n >= MIN_AMOSTRA ? 'ok' : 'medio'}">${esc(a)} ${n}${n >= MIN_AMOSTRA ? ' ✓' : ''}</span>`).join(' · ');
-    h += `<div class="ind">Neste portal: ${alvo.porte} de aluguel no porte (${PORTE_MIN} a ${PORTE_MAX} m²). Lojas e pontos no porte: ${areas}</div>`;
-    return h;
+    el.alvo.title = `Anúncios de aluguel deste portal no porte do plano (${PORTE_MIN} a ${PORTE_MAX} m²) e, entre as lojas e pontos no porte, por área do 6.4; ✓ a partir de ${MIN_AMOSTRA}`;
+    el.alvo.replaceChildren(
+      casa('k', icone('map-pin'), 'No porte'), casa('v largo', `${alvo.porte} de aluguel`),
+      ...Object.entries(alvo.porArea).flatMap(([a, n]) => [casa('k', a), casa(`v${n >= MIN_AMOSTRA ? ' ok' : ' alerta'}`, String(n), n >= MIN_AMOSTRA && icone('check'))]),
+    );
   }
 
-  function htmlHist(hist) {
-    if (!hist.length) return '<div class="ind">Sem rodada automática nesta aba.</div>';
-    const linhas = hist.map((r) => {
-      const cor = r.lidos === 0 || r.ineditos === 0 ? 'ruim' : r.ineditos < r.lidos / 2 ? 'medio' : '';
-      return `<tr class="${cor}"><td>${r.pagina}</td><td>${r.lidos}</td><td>${r.ineditos}</td><td>${r.novos}</td><td>${r.seg}</td></tr>`;
-    }).join('');
-    return `<div class="rolagem"><table><thead><tr><th>Pág.</th><th>Lidos</th><th>Inéditos</th><th>Novos</th><th>s</th></tr></thead><tbody>${linhas}</tbody></table></div>`;
+  function mostrarHist(hist) {
+    el.histTitulo.textContent = `Rodada automática (${hist.length} pág.)`;
+    if (!hist.length) { el.hist.replaceChildren(criar('p', { className: 'status', textContent: 'Sem rodada automática nesta aba.' })); return; }
+    const td = (v) => criar('td', { textContent: String(v) });
+    const linhas = hist.map((r) => criar('tr', {
+      className: r.lidos === 0 || r.ineditos === 0 ? 'ruim' : r.ineditos < r.lidos / 2 ? 'alerta' : '',
+      title: r.lidos === 0 || r.ineditos === 0 ? 'Nada inédito: a rodada para aqui' : r.ineditos < r.lidos / 2 ? 'Menos da metade inédita: a busca pode estar se repetindo' : '',
+    }, [td(r.pagina), td(r.lidos), td(r.ineditos), td(r.novos), td(r.seg)]));
+    const th = (t, dica) => criar('th', { textContent: t, title: dica });
+    el.hist.replaceChildren(criar('table', {}, [
+      criar('thead', {}, [criar('tr', {}, [th('Pág.', 'Página'), th('Lidos', 'Anúncios lidos na página'), th('Inéd.', 'Inéditos nesta rodada'), th('Novos', 'Novos no navegador'), th('s', 'Segundos na página')])]),
+      criar('tbody', {}, linhas),
+    ]));
   }
 
-  function htmlBuscas(buscas, atual) {
+  // Apagar baixa antes o CSV do que vai sair (como o "Limpar" do coletor de preços).
+  function apagarComBackup(busca, n) {
+    if (!confirm(busca ? `Apagar os ${n} anúncios guardados desta busca? O CSV dela será baixado antes.` : 'Apagar todos os anúncios guardados deste portal? O CSV de tudo será baixado antes.')) return;
+    const dados = carregar();
+    if (busca) baixarCsv(daBusca(dados, busca), true); else baixarCsv(dados);
+    apagarBusca(busca);
+    mostrar(busca ? 'Busca apagada (CSV baixado antes).' : 'Guardados apagados (CSV baixado antes).');
+  }
+
+  function mostrarBuscas(buscas, atual) {
+    el.buscasTitulo.textContent = `Buscas guardadas (${buscas.length})`;
     const rotulo = (b) => { try { const u = new URL(b); return decodeURIComponent(u.pathname + u.search); } catch (e) { return b; } };
-    const linhas = buscas.map((b) => `<div class="busca ${b.busca === atual ? 'atual' : ''}">
-      <span class="url" title="${esc(b.busca)}">${esc(rotulo(b.busca))}</span><span>${b.n} · ${esc(b.data)}</span>
-      <span class="acoes"><button data-acao="baixar" data-busca="${esc(b.busca)}">Baixar</button><button data-acao="apagar" data-busca="${esc(b.busca)}" data-n="${b.n}">Apagar</button></span></div>`).join('');
-    return (linhas || '<div class="ind">Nada guardado neste portal.</div>')
-      + (buscas.length ? '<div class="linha"><button data-acao="apagar-tudo">Apagar tudo deste portal</button></div>' : '');
+    el.buscas.replaceChildren(...(!buscas.length ? [criar('li', { textContent: 'Nada guardado neste portal.' })] : buscas.map((b) => {
+      const velha = diasEntre(b.data, dataLocal()) > IDADE_MAX;
+      return criar('li', { className: b.busca === atual ? 'atual' : '' }, [
+        criar('div', { className: 'corpo' }, [
+          criar('span', { className: 'titulo', textContent: rotulo(b.busca), title: b.busca }),
+          criar('span', { className: `meta${velha ? ' alerta' : ''}`, textContent: `${b.n} anúncios · ${diaMes(b.data)}${b.busca === atual ? ' · esta busca' : ''}`, title: velha ? `Coletada há mais de ${IDADE_MAX} dias` : '' }),
+        ]),
+        botao('arrow-down-tray', '', 'Baixar: CSV só desta busca', () => baixarCsv(daBusca(carregar(), b.busca), true), 'ic'),
+        botao('trash', '', 'Apagar: tira esta busca do navegador (baixa antes o CSV dela)', () => apagarComBackup(b.busca, b.n), 'ic'),
+      ]);
+    })));
   }
 
   // Com filtro ativo, contorna os cards que passam e esmaece os demais.
@@ -805,24 +962,25 @@
     for (const [k, card] of cardsDaPagina) {
       if (!card.isConnected) continue;
       const passa = !!dados[k] && passaFiltros(dados[k], filtros);
-      card.style.outline = ativo && passa ? '3px solid #2e7d32' : '';
+      card.style.outline = ativo && passa ? '3px solid #15803d' : '';
       card.style.outlineOffset = ativo && passa ? '-3px' : '';
       card.style.opacity = ativo && !passa ? '0.35' : '';
     }
   }
 
   function atualizarPainel() {
-    if (!el.contagem) return;
+    if (!el.geral) return;
     const dados = carregar();
     const todos = Object.values(dados);
-    el.contagem.textContent = `${todos.length} anúncios guardados neste portal (${todos.filter((a) => a.operacao === 'aluguel').length} de aluguel)`;
     const busca = buscaBase(portal, location.href);
     const lista = todos.filter((a) => buscaBase(portal, a.busca_url) === busca);
     const filtros = lerFiltros();
-    el.pagina.innerHTML = htmlPagina(lista);
-    el.qualidade.innerHTML = htmlQualidade(lista, lista.filter((a) => passaFiltros(a, filtros)), filtros, todos);
-    el.hist.innerHTML = htmlHist(lerHist());
-    el.buscas.innerHTML = htmlBuscas(agruparBuscas(portal, dados), busca);
+    mostrarPendentes(dados);
+    mostrarGeral(todos, lista);
+    mostrarFunil();
+    mostrarQualidade(lista, lista.filter((a) => passaFiltros(a, filtros)), filtros, todos);
+    mostrarHist(lerHist());
+    mostrarBuscas(agruparBuscas(portal, dados), busca);
     destacarCards(filtros, dados);
   }
 
@@ -834,77 +992,69 @@
   function atualizarBotoes() {
     if (!el.bAuto) return;
     const ativo = !!lerAuto();
-    el.bAuto.textContent = ativo ? 'Parar' : 'Coletar todas as páginas';
+    el.bAuto.replaceChildren(...partes(icone(ativo ? 'stop' : 'forward'), criar('span', { textContent: ativo ? 'Parar' : 'Todas' })));
+    el.bAuto.title = ativo ? 'Parar a rodada automática' : 'Coletar todas as páginas: lê esta página e segue para as próximas até uma página vazia, sem anúncio inédito ou o limite; no fim, toca um som e baixa o CSV';
     el.bAuto.classList.toggle('ativo', ativo);
     el.bPagina.disabled = ativo;
   }
 
-  const secao = (titulo, conteudo, aberta = true) => criar('details', { open: aberta }, [criar('summary', { textContent: titulo }), conteudo]);
-
   function montarPainel() {
-    el.contagem = criar('p');
-    el.status = criar('p', { className: 'status', textContent: 'Abra a busca já filtrada e clique em "Coletar todas as páginas".' });
-    el.limite = criar('input', { type: 'number', min: 1, value: 50 });
-    el.bPagina = criar('button', {
-      textContent: 'Coletar esta página',
-      onclick: async () => {
-        el.bPagina.disabled = true;
-        status('Lendo a página…');
-        const { lidos, novos, gravou } = await coletarPagina();
-        el.bPagina.disabled = false;
-        if (!gravou) { avisarCheio(); return; }
-        mostrar(`${lidos} lidos, ${novos} novos.`);
-      },
+    el.status = criar('p', { className: 'status', textContent: 'Abra a busca já filtrada e clique em "Todas".' });
+    el.pendentes = criar('span');
+    el.limite = criar('input', { type: 'number', min: 1, value: 50, title: 'Limite de páginas da rodada automática' });
+    el.bPagina = botao('arrow-path', 'Esta página', 'Coletar esta página: lê e guarda só os anúncios desta página', async () => {
+      el.bPagina.disabled = true;
+      status('Lendo a página…');
+      const { lidos, novos, gravou } = await coletarPagina();
+      el.bPagina.disabled = false;
+      if (!gravou) { avisarCheio(); return; }
+      mostrar(`${lidos} lidos, ${novos} novos.`);
     });
-    el.bAuto = criar('button', {
-      onclick: () => {
-        if (lerAuto()) { gravarAuto(null); atualizarBotoes(); status('Parado.'); return; }
-        gravarAuto({ limite: Math.max(1, parseInt(el.limite.value, 10) || 50), paginas: 0, total: 0 });
-        gravarHist([]);
-        passoAutomatico();
-      },
-    });
-    const bCsv = criar('button', { textContent: 'Baixar CSV de tudo', onclick: () => baixarCsv() });
+    el.bAuto = botao('forward', 'Todas', '', () => {
+      if (lerAuto()) { gravarAuto(null); atualizarBotoes(); status('Parado.'); return; }
+      gravarAuto({ limite: Math.max(1, parseInt(el.limite.value, 10) || 50), paginas: 0, total: 0 });
+      gravarHist([]);
+      passoAutomatico();
+    }, 'principal');
+    const bCsv = botao('arrow-down-tray', 'CSV', 'Baixar CSV de tudo: um arquivo com todos os anúncios guardados deste portal', () => { baixarCsv(); mostrar('CSV de tudo baixado.'); }, 'ic');
+    const bLimpar = botao('trash', '', 'Apagar tudo deste portal (baixa antes o CSV de tudo)', () => apagarComBackup(null), 'ic');
 
-    el.pagina = criar('div');
-    el.qualidade = criar('div');
+    el.geral = criar('div', { className: 'grade' });
+    el.resumo = criar('div', { className: 'grade' });
+    el.funil = criar('p');
+    el.campos = criar('div', { className: 'grade' });
+    el.mistura = criar('div', { className: 'grade' });
+    el.alvo = criar('div', { className: 'grade' });
     el.hist = criar('div');
-    el.buscas = criar('div');
-    el.buscas.onclick = (ev) => {
-      const b = ev.target.closest('button');
-      if (!b) return;
-      const { acao, busca, n } = b.dataset;
-      if (acao === 'baixar') baixarCsv(daBusca(carregar(), busca));
-      if (acao === 'apagar' && confirm(`Apagar os ${n} anúncios guardados desta busca? Baixe o CSV antes.`)) { apagarBusca(busca); mostrar('Busca apagada.'); }
-      if (acao === 'apagar-tudo' && confirm('Apagar todos os anúncios guardados deste portal? Baixe o CSV antes.')) { apagarBusca(null); mostrar('Guardados apagados.'); }
-    };
+    el.histTitulo = criar('summary');
+    el.buscas = criar('ul');
+    el.buscasTitulo = criar('summary');
 
     // Filtros: só mudam os indicadores da busca e o destaque dos cards; o CSV sai completo.
-    const filtros = lerFiltros();
-    const caixas = [['soAluguel', 'Só aluguel'], ['soComercial', 'Só comercial'], ['soLoja', 'Só loja ou ponto'], ['soAreas', 'Só áreas do 6.4 (Pituba/Itaigara, Barra/Graça, Rio Vermelho)']]
-      .map(([k, nome]) => {
-        const c = criar('input', { type: 'checkbox', checked: !!filtros[k] });
-        c.onchange = () => { gravarFiltros({ ...lerFiltros(), [k]: c.checked }); atualizarPainel(); };
-        return criar('label', {}, [c, criar('span', { textContent: nome })]);
-      });
+    const FILTRO = {
+      soAluguel: ['aluguel', 'Só aluguel: deixa de fora os anúncios de venda'],
+      soComercial: ['comercial', 'Só comercial: pela busca ou, sem ela, pelo texto do anúncio (regras do build)'],
+      soLoja: ['loja/ponto', 'Só loja ou ponto comercial (sem sala, galpão e prédio)'],
+      soAreas: ['áreas do 6.4', 'Só as áreas do 6.4: Pituba/Itaigara, Barra/Graça e Rio Vermelho'],
+    };
+    const selos = Object.entries(FILTRO).map(([k, [nome, dica]]) => selo(nome, `${dica}. Muda só os indicadores e o destaque dos cards; o CSV sai completo`, !!lerFiltros()[k],
+      (v) => { gravarFiltros({ ...lerFiltros(), [k]: v }); atualizarPainel(); }));
 
-    const minimizar = criar('span', { textContent: '–' });
+    const minimizar = criar('span', { className: 'rotulo' }, [icone('minus')]);
     const cabecalho = criar('header', {}, [criar('span', { textContent: `Aluguel · ${portal}` }), minimizar]);
     const painel = criar('div', { id: 'cal-painel' }, [
       cabecalho,
-      el.contagem,
-      criar('div', { className: 'linha' }, [el.bPagina]),
-      criar('div', { className: 'linha' }, [el.bAuto]),
-      criar('div', { className: 'linha' }, [criar('span', { textContent: 'Limite de páginas:' }), el.limite]),
-      criar('div', { className: 'linha' }, [bCsv]),
+      criar('div', { className: 'linha' }, [el.bAuto, el.bPagina, criar('span', { className: 'rotulo', title: el.limite.title, textContent: 'máx.' }), el.limite]),
+      criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', title: 'Filtros dos indicadores' }, [icone('adjustments-horizontal')]), ...selos]),
+      criar('div', { className: 'linha' }, [bCsv, bLimpar, el.pendentes]),
+      criar('div', { className: 'caixa' }, [el.geral, el.resumo]),
+      el.funil,
       el.status,
-      secao('Esta busca e esta página', el.pagina),
-      secao('Qualidade', el.qualidade),
-      secao('Filtros dos indicadores', criar('div', {}, caixas), false),
-      secao('Rodada automática', el.hist, false),
-      secao('Buscas guardadas', el.buscas, false),
+      criar('details', { open: true }, [criar('summary', { textContent: 'Qualidade da busca' }), criar('div', { className: 'caixa' }, [el.campos, el.mistura, el.alvo])]),
+      criar('details', {}, [el.histTitulo, el.hist]),
+      criar('details', {}, [el.buscasTitulo, el.buscas]),
     ]);
-    cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.textContent = painel.classList.contains('min') ? '+' : '–'; };
+    cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.replaceChildren(icone(painel.classList.contains('min') ? 'plus' : 'minus')); };
 
     hospedeiro = criar('div', { id: 'cal-hospedeiro' });
     const raiz = hospedeiro.attachShadow({ mode: 'open' });
@@ -933,6 +1083,16 @@
     if (!hospedeiro.isConnected) document.documentElement.appendChild(hospedeiro);
     if (desafio) { status('Bloqueio do Cloudflare: resolva o desafio na página; a coleta retoma desta página.'); return; }
     if (!iniciouAuto && lerAuto()) { iniciouAuto = true; passoAutomatico(); }
+  }
+
+  // Aviso ao fechar a aba ou sair por link do portal com muitos anúncios fora de CSV; a
+  // rodada automática troca de página sozinha e não dispara o aviso.
+  if (typeof window !== 'undefined' && window.addEventListener) {
+    window.addEventListener('beforeunload', (e) => {
+      if (lerAuto() || pendentes(carregar(), Number(localStorage.getItem(CHAVE_EXPORTACAO)) || 0) < AVISO_PENDENTES) return;
+      e.preventDefault();
+      e.returnValue = '';
+    });
   }
 
   console.info(NOME, 'carregado');

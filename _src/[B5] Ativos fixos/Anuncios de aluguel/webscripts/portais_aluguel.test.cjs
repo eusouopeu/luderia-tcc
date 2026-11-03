@@ -15,7 +15,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas });})();';
+    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2 });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'portais_aluguel.user.js' });
   return ambiente.__test;
 }
@@ -220,3 +220,18 @@ test('prévia do descarte e anúncios no alvo', () => {
   assert.deepEqual(alvo.porArea, { 'Pituba/Itaigara': 2, 'Barra/Graça': 0, 'Rio Vermelho': 0 });
 });
 
+
+test('anúncios fora de CSV e R$/m² pedido da busca', () => {
+  const dados = { a: { alterado_em: 100 }, b: { alterado_em: 300 }, c: {} };
+  assert.equal(t.pendentes(dados, 200), 2); // b depois do CSV; c sem marca conta como pendente
+  assert.equal(t.pendentes(dados, 0), 3);
+  const lista = [
+    { operacao: 'aluguel', aluguel: 1000, area_m2: 100 },
+    { operacao: 'aluguel', aluguel: 3000, area_m2: 100 },
+    { operacao: 'aluguel', aluguel: 5000, area_m2: 100 },
+    { operacao: 'aluguel', aluguel: 2000, area_m2: null },
+    { operacao: 'venda', aluguel: 500000, area_m2: 100 },
+  ];
+  assert.deepEqual(json(t.resumoM2(lista)), { n: 3, mediana: 30, p25: 20, p75: 40 });
+  assert.deepEqual(json(t.resumoM2([])), { n: 0, mediana: null, p25: null, p75: null });
+});
