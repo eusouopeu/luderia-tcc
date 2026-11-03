@@ -504,3 +504,41 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   assert.match(r.querySelector('.status').textContent, /^A página mudou: lista relida\. 2 ofertas de 2 cards/);
   assert.equal(r.querySelectorAll('ul')[1].querySelectorAll('li').length, 2);
 });
+
+test('somar: abre a próxima página e, ao carregar, soma as ofertas dela às anteriores', () => {
+  const memoria = { tcc_precos_item: 'CB09' };
+  const abrir = (href) => {
+    const { document, window } = parseHTML(fixture('amazon_busca.html'));
+    Object.defineProperty(window.HTMLSelectElement.prototype, 'value', { get() { return this._v ?? this.querySelector('option')?.value; }, set(v) { this._v = v; }, configurable: true });
+    let tique;
+    const ambiente = {
+      URL, Blob, document, console: { info() {}, error: (...a) => { throw a[1]; } },
+      location: { href, hostname: 'www.amazon.com.br' },
+      GM_getValue: (k, d) => (k in memoria ? memoria[k] : d), GM_setValue: (k, v) => { memoria[k] = v; }, GM_deleteValue: (k) => { delete memoria[k]; },
+      setInterval: (f) => { tique = f; }, setTimeout() {}, confirm: () => true,
+    };
+    vm.runInNewContext(source, ambiente, { filename: 'precos_itens.user.js' });
+    tique(); tique(); tique();
+    const r = document.getElementById('cpi-hospedeiro').shadowRoot;
+    const botao = (t) => [...r.querySelectorAll('button')].find((b) => b.title.startsWith(`${t}:`));
+    return { document, ambiente, r, botao };
+  };
+  // página 1: a próxima vem do link de paginação da Amazon
+  const p1 = abrir('https://www.amazon.com.br/s?k=mesa+inox');
+  const a = p1.document.createElement('a');
+  a.className = 's-pagination-next';
+  a.setAttribute('href', '/s?k=mesa+inox&page=2');
+  p1.document.body.appendChild(a);
+  p1.botao('Somar próxima página').onclick();
+  assert.equal(p1.ambiente.location.href, 'https://www.amazon.com.br/s?k=mesa+inox&page=2');
+  assert.equal(memoria.tcc_precos_soma.ofertas.length, 3);
+  // página 2 (outra oferta guardada da página 1, para a soma aparecer)
+  memoria.tcc_precos_soma.ofertas.push({ produto: 'Mesa Inox Industrial 150x70 da página 1', preco: 999, url: 'https://www.amazon.com.br/dp/PAGINA1', leitor: 'proprio' });
+  const p2 = abrir('https://www.amazon.com.br/s?k=mesa+inox&page=2');
+  assert.match(p2.r.querySelector('.status').textContent, /^Página 2 somada às anteriores\. \+0 novas; 4 ofertas de 6 cards/);
+  assert.equal(memoria.tcc_precos_soma, undefined);
+  // sem link de paginação, a Amazon usa page=N
+  p2.botao('Somar próxima página').onclick();
+  assert.equal(p2.ambiente.location.href, 'https://www.amazon.com.br/s?k=mesa+inox&page=3');
+  assert.equal(memoria.tcc_precos_soma.paginas, 2);
+});

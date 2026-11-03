@@ -2514,3 +2514,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: o subtipo vinha da URL sempre que ela citava um tipo; na busca do ZAP com `tipos=imovel-comercial_comercial,ponto-comercial_comercial` (coleta de 03/11/2026, 178 anúncios), o "ponto-comercial" marcava todos como loja/ponto, inclusive imóvel comercial, casa, sala e shopping.
 **Depois**: a URL só decide o subtipo quando indica um único tipo (o parâmetro `tipos=`, se houver, ou o caminho); com mais de um, valem o tipo e o título do anúncio. Na coleta, os 178 ficam com 155 lojas ou pontos, 22 "outro" e 1 sala. Testes novos no build e no painel.
 **Justificativa**: pedido do autor, após a análise da segunda coleta do ZAP.
+
+### 01:03
+**Objeto**: `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js` (versão 2026.11.03-7) e `precos_itens.test.cjs`; `docs/pendencias.md`, `AGORA.md`
+**Antes**: "Somar" só relia a página aberta e acrescentava as ofertas que tinham carregado ao rolar; para somar a página seguinte, o autor tinha de abri-la à mão, e, quando a troca recarregava a página, as ofertas lidas se perdiam.
+**Depois**: "Somar" guarda as ofertas lidas no Tampermonkey, abre a próxima página da busca (link de paginação da Amazon, do Mercado Livre ou rel="next"; sem link, o parâmetro page) e, ao carregar, recupera a lista (mesmo item, até 10 min) e soma as ofertas da página nova; o status diz qual página foi somada. Sem próxima página, soma as que carregaram ao rolar. Teste novo confere a navegação, a soma e o page=N (30 testes passando). Verificação da exportação de 03/11 00:59: o painel tinha só 8 itens porque o autor apagou as guardadas.
+**Justificativa**: pedido do autor ("Somar" deveria passar às próximas páginas de resultados).

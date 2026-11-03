@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.03-6
+// @version      2026.11.03-7
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -41,7 +41,8 @@
  *     palavras exigidas do item e nenhuma excluída, e que não são patrocinadas, combo com
  *     acessório ("+ 30 bobinas") nem variante de cor ou voltagem de outra da lista. Desmarcar
  *     o que não é o item (outro tamanho, peça avulsa, acessório).
- *     "Somar página" acrescenta as ofertas de outra página ou das que carregaram ao rolar.
+ *     "Somar" abre a próxima página da busca e soma as ofertas dela às já lidas (sem próxima
+ *     página, soma as que carregaram ao rolar).
  *  3. Se o anúncio vende em caixa, jogo ou kit (pratos, copos), as unidades vêm do título
  *     ("caixa com 24", "(2 un.)") no campo de cada linha, que se pode corrigir; sem elas, vale
  *     "Unidades por embalagem". O preço guardado é o da unidade da lista.
@@ -786,6 +787,26 @@
   let leitorLido = '';
   let assinaturaLida = ''; // ofertas da última leitura da página (não do acumulado)
   let somando = false; // a última leitura foi "Somar página"
+  let paginas = 0; // páginas da busca somadas na lista
+
+  // Soma entre páginas: "Somar" guarda as ofertas lidas e abre a próxima página da busca; ao
+  // carregar, o painel as recupera (mesmo item, até 10 min) e a leitura soma as da página nova.
+  const CHAVE_SOMA = 'tcc_precos_soma';
+  function proximaPagina() {
+    if (document.querySelector('.s-pagination-next.s-pagination-disabled')) return '';
+    const sel = ['a.s-pagination-next', 'li.andes-pagination__button--next a', 'a[rel="next"]', 'link[rel="next"]',
+      'a[aria-label*="próxima" i]', 'a[aria-label*="next page" i]', 'a[title="Seguinte"]', 'a[title="Próxima"]'];
+    for (const s of sel) {
+      const e = document.querySelector(s);
+      const href = e && e.getAttribute('href');
+      if (href && e.getAttribute('aria-disabled') !== 'true') return new URL(href, location.href).href;
+    }
+    // sem link: o parâmetro page da busca (Amazon, Magalu e Leroy Merlin usam page=N)
+    const u = new URL(location.href);
+    if (!u.searchParams.has('page') && site !== 'amazon') return '';
+    u.searchParams.set('page', String((Number(u.searchParams.get('page')) || 1) + 1));
+    return u.href;
+  }
 
   const itemAtual = () => ITENS.find((i) => i.id === GM_getValue(CHAVE_ITEM, ITENS[0].id)) || ITENS[0];
   const cepAtual = () => cepDoSite() || GM_getValue(CHAVE_CEP, '');
@@ -1180,6 +1201,7 @@
     urlLida = location.href;
     assinaturaLida = assinatura(ofertas);
     somando = somar;
+    paginas = somar ? paginas + 1 : 1;
     listarOfertas();
     const marcadas = caixasMarcadas().length;
     const novas = ofertasLidas.length - (somar ? antes : 0);
@@ -1236,7 +1258,15 @@
     const bBuscar = botao('magnifying-glass', 'Buscar', 'Buscar aqui: abre a busca do site com o termo do item', () => { saindoPeloPainel = true; location.href = urlBusca(site, itemAtual().termo); });
     bBuscar.disabled = !urlBusca(site, 'x');
     const bLer = botao('arrow-path', 'Reler', 'Ler ofertas: relê a página (ela já é lida sozinha ao abrir e ao trocar de página)', () => ler(false));
-    const bSomar = botao('plus', 'Somar', 'Somar página: acrescenta as ofertas desta página (ou das que carregaram ao rolar) às já lidas', () => ler(true));
+    const bSomar = botao('plus', 'Somar', 'Somar próxima página: guarda as ofertas lidas, abre a próxima página da busca e soma as dela (sem próxima página, soma as que carregaram ao rolar)', () => {
+      const url = proximaPagina();
+      if (!url) { ler(true, 'Sem próxima página: somadas as que carregaram nesta. '); return; }
+      if (!ofertasLidas.length) ler(false);
+      GM_setValue(CHAVE_SOMA, { item: itemAtual().id, ofertas: ofertasLidas, cards: cardsLidos, leitor: leitorLido, paginas, em: Date.now() });
+      saindoPeloPainel = true;
+      status(`Abrindo a página ${paginas + 1} para somar às ${ofertasLidas.length} ofertas lidas...`);
+      location.href = url;
+    });
     // F4: desmarca as ofertas de Pix ou cupom, para comparar só preços padrão
     const bPadrao = botao('no-symbol', 'Pix', 'Só preço padrão: desmarca as ofertas com preço de Pix ou cupom', () => {
       let n = 0;
@@ -1358,7 +1388,7 @@
       espera = null;
       if (agora !== assinaturaLida) {
         const motivo = !ofertasLidas.length ? 'Ofertas lidas sozinhas. '
-          : somando ? 'A página mudou: ofertas dela somadas às já lidas. ' : 'A página mudou: lista relida. ';
+          : somando ? `Página ${paginas + 1} somada às anteriores. ` : 'A página mudou: lista relida. ';
         ler(somando && ofertasLidas.length > 0, motivo);
       }
       return;
@@ -1370,9 +1400,23 @@
     }
   }
 
+  function retomarSoma() {
+    const s = GM_getValue(CHAVE_SOMA, null);
+    if (!s) return;
+    GM_deleteValue(CHAVE_SOMA);
+    if (s.item !== itemAtual().id || Date.now() - s.em > 10 * 60 * 1000) return;
+    ofertasLidas = s.ofertas;
+    cardsLidos = s.cards;
+    leitorLido = s.leitor;
+    paginas = s.paginas;
+    somando = true;
+    listarOfertas();
+    status(`Lendo a página ${paginas + 1} para somar às ${ofertasLidas.length} ofertas das anteriores...`);
+  }
+
   function verificar() {
     if (!document.body) return;
-    if (!hospedeiro) { montarPainel(); espera = { tentativas: 0, ultima: '' }; }
+    if (!hospedeiro) { montarPainel(); retomarSoma(); espera = { tentativas: 0, ultima: '' }; }
     if (!hospedeiro.isConnected) document.documentElement.appendChild(hospedeiro);
     if (location.href !== urlVista) {
       urlVista = location.href;
