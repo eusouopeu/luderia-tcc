@@ -64,3 +64,43 @@ Ordenado pela chance de a banca de Administração cobrar. Nenhum item foi mudad
 **O que eles têm e o plano da luderia não precisa:** Canvas (1 de 15), organograma (3 de 15, e a equipe tem 6 pessoas), balanço patrimonial projetado (raro), cronograma de implantação (1 dos 33), questionário com consumidores (excluído por desenho, com justificativa no cap. 3).
 
 **Diferença de método a defender:** 12 dos 15 entrevistam dono ou gerente de concorrente. O plano da luderia não entrevista ninguém, por desenho (cap. 3, viés do entrevistador e de desejabilidade). A pergunta provável da banca é "por que não perguntou ao dono da São Jogue?". A resposta já está no texto; vale ensaiá-la.
+
+## 5. Introdução e referencial teórico: estilo, temas e citações
+
+Feito em 03/11/2026, a pedido do autor. Base: as introduções de 14 trabalhos do núcleo (a do Flip Burger não existe) e os referenciais de 11 (Confeitaria Mina, Subway e Casa 388 não têm referencial). Citações contadas por busca do padrão autor-data e conferidas na lista de referências de cada trabalho; os números são aproximados, porque parte dos dados da introdução vem sem citação formal ("segundo a Abrasel", "segundo o IBGE", sem ano).
+
+**Quadro 5.1 – Introdução e referencial teórico nos TCCs do núcleo**
+
+| Aspecto | Introdução (14 trabalhos) | Referencial teórico (11 trabalhos) |
+|---|---|---|
+| Extensão (mediana) | 1.140 palavras (cerca de 3 páginas) | 5.090 palavras (cerca de 15 páginas) |
+| Temas mais frequentes | Plano de negócios como ferramenta (14); empreendedorismo e peso das micro e pequenas empresas (11); pergunta ou problema (11); oportunidade ou lacuna percebida pelo autor (10); setor de alimentação fora do lar (9); dados da cidade, como população e PIB (8); mortalidade de empresas (7) | Conceito e estrutura do plano de negócios (11); marketing, com 4 Ps e micro e macroambiente (9); indicadores financeiros com fórmula: fluxo de caixa, VPL, TIR, payback (8); empreendedorismo e perfil do empreendedor (7); missão e visão (5); recursos humanos (5); plano operacional (5); SWOT (4); risco, sensibilidade ou cenários (3); tema do produto, como café ou vegetarianismo (2) |
+| Obras distintas citadas | Média de 1,4; mediana de 1 | Média de 9,5; mediana de 9 |
+| Citações (ocorrências) | Média de 2,1; mediana de 2,5 | Média de 30,5; mediana de 26 |
+| Tipos de referência | Associações e institutos (Sebrae, IBGE, ABF, Abrasel), revistas de negócios (Exame, PEGN) e um livro-texto de empreendedorismo; muitos dados sem ano | Livro-texto (cerca de 76%); artigo, TCC ou dissertação (12%); Sebrae e institutos (9%); sites e dicionários (3%) |
+| Autores mais citados | Dornelas (4 trabalhos); Sebrae (3) | Dornelas (10 de 11); Hisrich e Peters (7); Kotler (5); Sebrae (4); Westwood (4); Gitman (3); Lapponi (2); Dolabela (2); Degen (2) |
+| Conteúdo das citações | Dados de setor e de mortalidade de empresas (cerca de 1 em 4 frases com citação); o resto é definição de plano de negócios e de empreendedor | Conceito ou definição (69% das frases com citação); técnica ou "o que o plano deve conter" (23%); fórmula ou cálculo (6%); dado (3%). Uma em cada 4 tem aspas ou página: citação direta é comum |
+
+Fonte: elaborado pelo próprio autor com base nos TCCs de `bibliografia/Planos de Negócio/`.
+
+**Comparação com o TMin v23.** A introdução da luderia tem 1.199 palavras e 10 obras: mesmo tamanho, mas cerca de sete vezes a média de fontes, quase todas para dado. O referencial tem 1.716 palavras e 13 obras: um terço do tamanho típico, com mais obras e cada conceito ligado a uma decisão do plano (quadro final do cap. 2).
+
+**Traços de estilo.** Na introdução, o padrão é o funil: abre largo (empreendedorismo, história da alimentação, hábitos de consumo), desce para a cidade e chega à ideia do negócio, muitas vezes pela motivação pessoal do autor e em primeira pessoa ("percebemos", "nosso empreendimento"). O referencial funciona como manual: segue a ordem das partes do plano, encadeia autores em sequência ("Segundo X… Para Y…"), usa citações diretas longas e quase nunca volta ao negócio estudado. O texto da luderia já se afasta desses vícios (P5), e os parágrafos abaixo servem de modelo só no que fazem bem.
+
+**Parágrafos de referência** (transcritos como estão no original; "[…]" marca o corte):
+
+1. Introdução, dado de setor com comparação no tempo (Padaria Savassi, UFMG, 2012). Bom pela série de números com ano e pela comparação ("quase o dobro"); a fonte é revista, não o IBGE direto, e a frase sobre as mulheres é inferência sem apoio.
+
+   > Segundo IBGE, do total do orçamento das famílias gasto com alimentação, 31% são aplicados fora do lar – em 2002, a porcentagem era de 24%. A previsão é que, em 2014, esse número atinja 38%, valor próximo ao dos Estados Unidos. Não por coincidência, nesse meio tempo, as mulheres passaram a participar mais do mercado de trabalho – a fatia delas entre a população economicamente ativa passou de 35,5%, em 1990, para 44%, em 2009. As maiores companhias de alimentação do país estão atentas a esse crescimento. Estima-se que as vendas da indústria de alimentação para o canal food service – empresas que fornecem alimento para restaurantes, bares, lanchonetes e padarias, entre outros – tenham chegado a 64.4 bilhões de reais em 2009. É quase o dobro dos 34 bilhões em vendas em 2004 (REVISTA EXAME, edição 0984 de 26/01/2011, reportagem “Comer, beber e prosperar”).
+
+2. Introdução, conceito social do consumo (Saladeria, UFMG, 2020). Bom pela afirmação na primeira frase, seguida da citação que a sustenta; o argumento do convívio vale para a luderia.
+
+   > No entanto, mais que um ato nutricional, comer possui uma função social. Para Carneiro (2005), comer não é um ato solitário ou autônomo do ser humano, mas muito pelo contrário, é a própria origem do processo de socialização. Segundo o autor, nas formas coletivas de se obter comida, a espécie humana desenvolveu utensílios culturais diversos, e talvez até mesmo a linguagem. A prática de comer junto, chamada de comensalidade, parte do princípio da partilha da comida, mesmo que de forma desigual. […]
+
+3. Referencial, definição curta e completa (Cafeteria, UFRGS, 2011). Bom por definir em três frases, sem citação direta, e por listar os componentes que o capítulo usa depois.
+
+   > De acordo com Kotler e Armstrong (2008), o ambiente de marketing é formado pelo microambiente e o macroambiente. O microambiente é formado pelos agentes próximos à empresa que afetam sua capacidade de atender os clientes – em própria empresa, os fornecedores, intermediários de marketing, mercado de clientes, concorrentes e públicos. Já o macroambiente é constituído pelas forças societais mais amplas que afetam o microambiente – forças demográficas, econômicas, naturais, tecnológicas, políticas e culturais.
+
+4. Referencial, limite da técnica (Saladeria, UFMG, 2020). Bom por mostrar o problema da TIR calculada sem risco, o mesmo argumento da seção 2.5 da luderia para usar cenários e sensibilidade.
+
+   > Mattos e Vasconcellos (1989) destacam que, no entanto, a teoria e a prática quase nunca se entendem. Um projeto de investimento, tendo a taxa interna de retorno (TIR) como critério de análise, passados alguns anos de sua implantação, pode ter a sua rentabilidade, constatada na prática, menor que àquela calculada teoricamente. Segundo os autores, esse problema básico se reside em não se considerar o fator risco ou incerteza na análise do fluxo de caixa.

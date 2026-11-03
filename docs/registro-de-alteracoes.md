@@ -2580,3 +2580,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: sem comparação do plano com outros TCCs-plano de negócios.
 **Depois**: parecer que compara o TMin v23 com os 33 TCCs da pasta `bibliografia/Planos de Negócio/` (USP, UFMG, UnB, UFRJ, UFF, UFRGS, UFPE, UFC), com foco nos 15 de Administração sobre alimentação e nos 7 bares: o que têm em comum, onde o plano vai além e 9 itens comuns que faltam ou diferem (missão e empreendedor, recrutamento e treinamento, fonte dos recursos, receitas de eventos, sazonalidade, VPL sem valor residual, estoque inicial, nome, referencial); pendência nova para o autor escolher quais entram.
 **Justificativa**: pedido do autor (analisar os TCCs da pasta nova e apontar o que eles têm em comum que falta ou difere no plano atual).
+
+### 15:20
+**Objeto**: `docs/parecer_tccs_planos_de_negocio.md` (seção 5, nova)
+**Antes**: parecer só com estrutura e conteúdo dos planos.
+**Depois**: seção 5 com o Quadro 5.1 (temas, extensão, média e mediana de obras e citações, tipos de referência, autores e conteúdo das citações na introdução de 14 TCCs e no referencial de 11), comparação com o TMin v23, traços de estilo e quatro parágrafos transcritos como referência (Padaria Savassi e Saladeria na introdução; Cafeteria e Saladeria no referencial).
+**Justificativa**: pedido do autor (analisar o estilo da introdução e do referencial teórico dos TCCs e trazer parágrafos-modelo).
