@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 03/11/2026 | Coletor de preços: a revisão das guardadas roda sozinha a cada "Guardar" e exclui o que não passa nas regras e nos filtros ligados; faixa de preço e avaliações não valem na revisão, e o filtro desligado ao guardar uma oferta não vale para ela | `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js` |
 | 03/11/2026 | Mobiliário do salão em estilo industrial: mesas e balcão com tampo de pinus e estrutura de metal preto, cadeiras de metal preto com assento de madeira, pendentes de cúpula de metal preta e estantes de metalon preto e pinus (MO01 a MO06); o armário de funcionários (MO07) segue de aço | `dados/[B5] Ativos fixos/orcamento/[B5] Lista de Itens da Etapa 1 (elaboração própria).csv` |
 | 02/11/2026 | Cesta de consumo = bebida + entrada ou prato principal + taxa de entrada (antes, sem a taxa); a taxa que muda com o dia entra pela média ponderada pelos dias em que cada valor vale, nos dias em que a casa abre | `_instrucoes/1b_escrita.md` (P6); `B2-a_gasto_por_pessoa.py` |
 | 02/11/2026 | Gasto por pessoa (R06) = média dos gastos médios declarados no Google Maps nos 12 concorrentes com cesta de consumo conhecida (R$ 80,14); pessimista e otimista no concorrente de menor (R$ 40,00) e de maior gasto (R$ 109,84); a parcela da taxa na cesta (24,7%, R07) separa taxa e A&B; saem a taxa e a cesta por quartil e as pessoas por cesta (R08) | Cap. 9 (9.1); `gerar_modelo_financeiro.py` |

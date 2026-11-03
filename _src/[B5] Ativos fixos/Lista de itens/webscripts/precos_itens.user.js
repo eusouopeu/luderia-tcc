@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.03-3
+// @version      2026.11.03-4
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -53,8 +53,9 @@
  *     Depois, rodar build/B5-b_orcamento_itens.py, que junta os arquivos e fica, para cada
  *     item e URL, com a linha do arquivo mais recente. "Limpar" baixa antes um backup JSON.
  *  Em página de produto, a leitura pega o produto pelo JSON-LD (schema.org Product).
- *  "Revisar guardadas" exclui as guardadas (de todos os itens) que não passam nas regras e
- *  nos filtros de agora, sem a faixa de preço: serve às coletas feitas antes das regras.
+ *  A cada "Guardar", o painel revisa as guardadas de todos os itens e exclui as que não passam
+ *  nas regras do item e nos filtros ligados (sem a faixa de preço e as avaliações); o filtro
+ *  desligado ao guardar uma oferta não vale para ela. A lista do que saiu fica na dica do status.
  *
  * Leitura por site:
  *  - Amazon: cards [data-component-type="s-search-result"] (preço em .a-price .a-offscreen,
@@ -387,7 +388,10 @@
       ls.sort((a, b) => a[0].localeCompare(b[0]));
       const anotadas = marcarVariantes(ls.map(([, l]) => l));
       anotadas.forEach((o, i) => {
-        const m = motivosOferta({ ...o, patrocinado: false }, item.termo, { filtros: { ...filtros, faixa: false }, regras: item });
+        // a faixa de preço e as avaliações não valem na revisão; o filtro desligado ao guardar a
+        // oferta (filtros_off) também não, para manter o que o autor guardou de propósito
+        const desligados = Object.fromEntries((o.filtros_off || []).map((f) => [f, false]));
+        const m = motivosOferta({ ...o, patrocinado: false }, item.termo, { filtros: { ...filtros, faixa: false, avaliacoes: false, ...desligados }, regras: item });
         const kit = kitDe(o.produto, item.termo);
         if (kit.unidades && Number(o.unidades) !== kit.unidades) m.push(`kit de ${kit.unidades} un., guardada com ${o.unidades}`);
         if (m.length) fora.push({ k: ls[i][0], id, produto: o.produto, motivos: m });
@@ -478,6 +482,7 @@
         cep: contexto.cep || '',
         avaliacoes: o.avaliacoes ?? null, leitor: o.leitor || '',
         url: o.url, busca: o.busca || contexto.busca, data_coleta: contexto.data_coleta, motivo: o.motivo || '', excluida: 0,
+        filtros_off: Object.keys(contexto.filtros || {}).filter((f) => !contexto.filtros[f]),
         alterado_em: contexto.agora || Date.now(),
       };
     }
@@ -1155,28 +1160,23 @@
       const marcadas = caixasMarcadas().map((m) => ofertasLidas[m.dataset.i])
         .map((o) => ({ ...o, motivo: motivosOferta(o, itemAtual().termo, ref).join('; ') }));
       const guardados = carregar();
+      const agora = Date.now();
       const novas = guardar(guardados, itemAtual(), marcadas, el.unidades.value,
-        { fonte: site, busca: location.href, data_coleta: dataLocal(), cep: cepAtual(), agora: Date.now() });
+        { fonte: site, busca: location.href, data_coleta: dataLocal(), cep: cepAtual(), agora, filtros: filtrosAtuais() });
+      // Revisão automática: depois de guardar, exclui as guardadas (de todos os itens) que não
+      // passam nas regras do item e nos filtros (sem faixa de preço e avaliações; o filtro
+      // desligado ao guardar uma oferta não vale para ela)
+      const fora = revisarGuardadas(guardados, filtrosAtuais());
+      for (const f of fora) excluir(guardados, f.k, agora);
       salvar(guardados);
-      const comMotivo = marcadas.filter((o) => o.motivo).length;
-      mostrar(`${marcadas.length} guardadas (${novas} novas).${comMotivo ? ` ${comMotivo} fora dos filtros: vão com motivo e o build as deixa de fora.` : ''}${cepAtual() && ehSalvador(cepAtual()) ? '' : ' Atenção: sem CEP de Salvador.'}`);
+      const porItem = {};
+      for (const f of fora) porItem[f.id] = (porItem[f.id] || 0) + 1;
+      const revisao = fora.length ? ` Revisão: ${fora.length} excluída(s) (${Object.entries(porItem).map(([id, n]) => `${id} ${n}`).join(', ')}).` : '';
+      mostrar(`${marcadas.length} guardadas (${novas} novas).${revisao}${cepAtual() && ehSalvador(cepAtual()) ? '' : ' Atenção: sem CEP de Salvador.'}`);
+      if (fora.length) el.status.title = fora.map((f) => `${f.id} ${f.produto.slice(0, 50)}: ${f.motivos.join('; ')}`).join('\n');
     }, 'principal');
     el.bGuardar.disabled = true;
     const bCsv = botao('arrow-down-tray', 'CSV', 'Baixar CSV: um arquivo por categoria, com tudo o que está guardado', () => { status(`${baixarCsv()} arquivo(s) de categoria baixados.`); mostrar(); }, 'ic');
-    // Exclui as guardadas (de todos os itens) que as regras e os filtros de agora não aceitam.
-    const bRevisar = botao('funnel', 'Revisar', 'Revisar guardadas: exclui as guardadas que não passam nas regras do item e nos filtros ligados (sem a faixa de preço)', () => {
-      const g = carregar();
-      const fora = revisarGuardadas(g, filtrosAtuais());
-      if (!fora.length) { status('Todas as guardadas passam nas regras e nos filtros.'); return; }
-      const porItem = {};
-      for (const f of fora) porItem[f.id] = (porItem[f.id] || 0) + 1;
-      const exemplos = fora.slice(0, 5).map((f) => `${f.id} ${f.produto.slice(0, 40)}: ${f.motivos.join('; ')}`).join('\n');
-      if (!confirm(`${fora.length} guardadas não passam (${Object.entries(porItem).map(([id, n]) => `${id} ${n}`).join(', ')}).\n\n${exemplos}\n\nExcluir todas? A exclusão vai no próximo CSV.`)) return;
-      const agora = Date.now();
-      for (const f of fora) excluir(g, f.k, agora);
-      salvar(g);
-      mostrar(`${fora.length} guardadas excluídas pela revisão. Baixe o CSV para levar a exclusão ao build.`);
-    }, 'ic');
     const bLimpar = botao('trash', '', 'Limpar: apaga todas as guardadas (baixa antes um backup JSON)', () => {
       const pend = pendentes(carregar(), GM_getValue(CHAVE_EXPORTACAO, 0));
       if (!confirm(`Apagar todas as ofertas guardadas?${pend ? ` ${pend} ainda não estão em nenhum CSV.` : ''} Um backup JSON será baixado antes.`)) return;
@@ -1196,7 +1196,7 @@
       criar('div', { className: 'linha' }, [bBuscar, bLer, bSomar, bPadrao]),
       criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', title: 'Filtros da marcação inicial' }, [icone('adjustments-horizontal')]), ...filtros,
         criar('span', { className: 'rotulo', title: el.unidades.title }, [icone('cube')]), el.unidades]),
-      criar('div', { className: 'linha' }, [bCsv, bRevisar, bLimpar, el.pendentes]),
+      criar('div', { className: 'linha' }, [bCsv, bLimpar, el.pendentes]),
       criar('div', { className: 'caixa' }, [el.geral, el.resumo]),
       criar('details', {}, [el.guardadasTitulo, el.guardadas]),
       el.funil,

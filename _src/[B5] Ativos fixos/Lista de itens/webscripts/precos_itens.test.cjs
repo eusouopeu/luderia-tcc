@@ -115,7 +115,7 @@ test('guardar: preço por unidade, sem duplicar a mesma oferta do item', () => {
   assert.equal(t.guardar(g, item, ofertas, 24, ctx), 0);
   assert.deepEqual(json(g['CB17|https://a/1']), {
     id_item: 'CB17', categoria: 'cozinha_bar', fonte: 'amazon', produto: 'Copo long drink caixa com 24',
-    preco: 5, frete: 1, preco_anuncio: 120, unidades: 24, tipo_preco: 'padrao', preco_sem_pix: null, cep: '', avaliacoes: null, leitor: '', url: 'https://a/1', busca: 'b', data_coleta: '2026-11-02', motivo: '', excluida: 0, alterado_em: 1000,
+    preco: 5, frete: 1, preco_anuncio: 120, unidades: 24, tipo_preco: 'padrao', preco_sem_pix: null, cep: '', avaliacoes: null, leitor: '', url: 'https://a/1', busca: 'b', data_coleta: '2026-11-02', motivo: '', excluida: 0, filtros_off: [], alterado_em: 1000,
   });
   // unidades da oferta valem sobre as do painel; preço sem Pix e motivo vão por unidade e como vieram
   t.guardar(g, item, [{ produto: 'Copo caixa com 12', preco: 60, frete: null, preco_sem_pix: 63, unidades: 12, motivo: 'sem avaliações', url: 'https://a/3' }], 24, ctx);
@@ -231,6 +231,13 @@ test('revisar guardadas: regras, medida e variantes, sem a faixa de preço', () 
   assert.ok(fora[2].motivos.includes('excluída: repetidor'));
   t.excluir(g, 'OB40|a2');
   assert.equal(t.revisarGuardadas(g, {}).length, 2);
+  // sem avaliações não conta; guardada com o filtro de medida desligado, a medida não conta para ela
+  t.guardar(g, { id: 'OB40', categoria: 'obra_reforma' }, [
+    { produto: 'Ar Condicionado Split Inverter 30.000 BTUs Quente e Frio', preco: 5000, url: 'a5', avaliacoes: 0 },
+    { produto: 'Ar Condicionado Split Inverter 24.000 BTUs Quente e Frio', preco: 4000, url: 'a6', avaliacoes: 3 },
+  ], 1, { ...ctx, filtros: { faixa: true, medida: false, avaliacoes: true } });
+  assert.deepEqual(json(g['OB40|a6'].filtros_off), ['medida']);
+  assert.equal(t.revisarGuardadas(g, { medida: true, avaliacoes: true }).length, 2);
 });
 
 test('motivos da marcação: patrocinado, termo, faixa (F2), medida (F3) e avaliações (F5)', () => {
@@ -355,9 +362,17 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   caixas[1].checked = true;
   caixas[2].checked = true;
   assert.match(textos(), /Nada guardado ainda/);
+  // Revisão automática ao guardar: a de medida errada sai; a sem avaliações fica (não vale na revisão)
   botao('Guardar marcadas').onclick();
-  assert.match(r.querySelector('.status').textContent, /2 fora dos filtros: vão com motivo e o build as deixa de fora/);
-  assert.deepEqual(json(Object.values(JSON.parse(memoria.tcc_precos_v1)).map((l) => l.motivo).sort()), ['medida: 53/84/92 cm, termo 150 cm', 'sem avaliações']);
+  assert.match(r.querySelector('.status').textContent, /^2 guardadas \(2 novas\)\. Revisão: 1 excluída\(s\) \(CB09 1\)\./);
+  assert.match(r.querySelector('.status').title, /CB09 .*: medida: 53\/84\/92 cm, termo 150 cm/);
+  assert.deepEqual(json(Object.values(JSON.parse(memoria.tcc_precos_v1)).map((l) => [l.motivo, l.excluida]).sort()), [['medida: 53/84/92 cm, termo 150 cm', 1], ['sem avaliações', 0]]);
+  // Guardada com o filtro de medida desligado, a oferta fica: a revisão respeita o filtro desligado ao guardar
+  memoria.tcc_precos_filtros = { medida: false };
+  botao('Guardar marcadas').onclick();
+  assert.match(r.querySelector('.status').textContent, /^2 guardadas \(1 novas\)\.(?! Revisão)/);
+  assert.deepEqual(json(Object.values(JSON.parse(memoria.tcc_precos_v1)).map((l) => [l.motivo, l.excluida, l.filtros_off]).sort()), [['faixa: 0,3× a mediana', 0, ['medida']], ['sem avaliações', 0, ['medida']]]);
+  delete memoria.tcc_precos_filtros;
   assert.match(textos(), /2 oferta\(s\) guardadas ou excluídas desde o último CSV \(nenhum baixado ainda\)/);
   assert.match(textos(), /Cozinha e bar0\/20/);
   assert.match(textos(), /Ofertas2 \(1 site\)MedianaR\$ 906,05MínimoR\$ 402,20MáximoR\$ 1409,90P25R\$ 654,13P75R\$ 1157,98P75\/P251,77×Pix\/cupom2Desde\d{2}\/\d{2}\/\d{4}faltam 1 para o mínimo Preço \+ frete .*leitor próprio do site/);
