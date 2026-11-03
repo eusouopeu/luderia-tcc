@@ -286,7 +286,7 @@ Valores numéricos extraídos (tamanho do grupo, valores em R$) são avaliados p
 | **Pessoas por mesa** | Tamanho do grupo citado (Bloco B2) e observado (Bloco B3) | Distribuição e comparação entre as duas fontes | Relato espontâneo × poucas observações |
 | **Giro de mesa** | Permanência observada (Bloco B3) e política de cobrança (Bloco B1) | Permanência média; comparação descritiva dos modelos de cobrança | Permanência censurada pelo início e fim da visita |
 | **Ticket médio** | Valores citados × cardápio × metrópole | Mediana e intervalo interquartil dos valores por pessoa; comparação com o consumo por pessoa do cardápio | Poucos textos citam valores |
-| **Ticket médio** | Itens fixos do cardápio (bebidas, entradas, principal, sobremesa, couvert) | **Consumo por pessoa** = bebida + entrada ou prato; **cesta completa** = consumo + couvert, só nas casas com couvert encontrado (couvert não encontrado não entra como 0; decisão de 30/10); por metrópole, com Salvador em destaque; calibrada pelos valores citados e pelos preços observados na São Jogue; checada contra a POF | Consumo por pessoa é premissa com faixa |
+| **Ticket médio** | Itens fixos do cardápio (bebidas, entradas, principal, sobremesa, couvert) | **Cesta de consumo** = bebida + entrada ou prato + taxa de entrada (ponderada pelos dias em que cada taxa vale), só nas casas com taxa conhecida (decisão de 02/11/2026); o gasto por pessoa declarado no Google Maps (B2) dessas casas é a premissa R06, e a parcela da taxa na cesta separa taxa e A&B; checada contra a POF | Gasto por pessoa é premissa com faixa (casa de menor e de maior gasto) |
 
 ### Modelo de calibração da ocupação
 

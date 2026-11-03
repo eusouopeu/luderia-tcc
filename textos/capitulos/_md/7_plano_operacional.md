@@ -1,12 +1,10 @@
 # 7 PLANO OPERACIONAL
 
-> **Rascunho (02/11/2026).** Desenho enxuto (P7 de `_instrucoes/1a_principios.md`): 6 mesas, 48 horas por semana, equipe de 6 e investimento por etapas. Capacidade e fluxo do Bloco B3 (quatro visitas à São Jogue, 10, 16, 17 e 30/10/2026) e premissas do modelo do cap. 9 no cenário provável. Área, layout e reforma ficam em N6 até haver ponto cotado.
-
-O plano operacional traduz a demanda estimada em espaço, processos e pessoas. O desenho é enxuto: a luderia abre menor que a São Jogue, que tem anos de mercado e clientela formada, e cresce por etapas. A São Jogue serve de referência de comportamento (ocupação, tamanho dos grupos, permanência e giro), não de porte. O porte menor reduz a exposição aos riscos que o cap. 9 aponta como críticos: mesas ocupadas, giro e movimento fora do pico. O capítulo parte do local e do layout, verifica a capacidade instalada e descreve os processos, a gestão do acervo e a equipe. Cada etapa de crescimento depende de um gatilho de demanda.
+O plano operacional traduz a demanda estimada em espaço, processos e pessoas. O desenho é enxuto: a luderia abre menor que a São Jogue, que tem anos de mercado e clientela formada, e cresce por etapas. A São Jogue serve de referência de comportamento (circulação, tamanho dos grupos e permanência), não de porte. O porte menor reduz a exposição aos riscos que o capítulo 9 aponta como críticos: circulação, gasto por pessoa e movimento fora do pico. O capítulo parte do local e do layout, verifica a capacidade instalada e descreve os processos, a gestão do acervo e a equipe. Cada etapa de crescimento depende de um gatilho de demanda.
 
 ## 7.1 LOCALIZAÇÃO E LAYOUT
 
-A luderia ocupa um salão térreo de cerca de 130 m² na Pituba, a até 1.000 m de uma estação de metrô (seção 6.4). A área é estimativa do autor (N6), com faixa de 110 a 150 m² no cap. 9: cerca de 12 m² por mesa, mais 60 m² de balcão, acervo, cozinha e sanitários. O ponto precisa de zona que admita serviço de alimentação e lazer na Lei de Ordenamento do Uso e da Ocupação do Solo (LOUOS) de Salvador e de licença do Corpo de Bombeiros compatível com a lotação do salão (Quadro 8.1).
+A luderia ocupa um salão térreo de cerca de 130 m² na Pituba, a até 1.000 m de uma estação de metrô (seção 6.4). A área é estimativa do autor (N6), com faixa de 110 a 150 m² no capítulo 9: cerca de 12 m² por mesa, mais 60 m² de balcão, acervo, cozinha e sanitários. O ponto precisa de zona que admita serviço de alimentação e lazer na Lei de Ordenamento do Uso e da Ocupação do Solo (LOUOS) de Salvador e de licença do Corpo de Bombeiros compatível com a lotação do salão (Quadro 8.1).
 
 O salão de jogos recebe 6 mesas, de 4 a 6 lugares, com cerca de 30 assentos. O número de mesas é o maior número de mesas ocupadas visto nas visitas: 6,02 em média na noite mais cheia, na Paralela, em 30/10 (B3). As estantes do acervo ficam no próprio salão, à vista das mesas, porque a escolha do jogo faz parte do serviço. Completam a área o balcão com o caixa, a cozinha, o depósito de alimentos e bebidas (A&B), dois sanitários, um deles adaptado, e uma rota acessível da entrada às mesas (Lei n. 13.146/2015; ABNT NBR 9050). [figura: croqui do salão]
 
@@ -22,29 +20,30 @@ O horário segue uma regra simples: as 8 horas contínuas com mais luderias aber
 | Pessoas por grupo de mesa | 3,6 | B3, média das quatro visitas (R02) |
 | Permanência média | 109 min | B3, média das quatro visitas (R03) |
 | Horas abertas por semana | 48 h: 24 h de terça a quinta e 24 h de sexta a domingo | 8 h contínuas com mais concorrentes abertos, B1 (R13, R14) |
-| Giro por mesa ocupada | 3,61 a 4,41 por dia; 4,01 no provável | Piso das NFC-e a 8 horas abertas ÷ permanência (R15) |
+| Circulação no pico | 4,13 a 11,43 pessoas por hora; 6,40 no provável | NFC-e e visitas do B3 (R04) |
+| Horas de pico equivalentes | 6,84 por dia de fim de semana | Concorrentes abertos em cada hora, B1 (R15) |
 | Capacidade máxima | 95 pessoas por dia aberto | Todas as mesas ocupadas em todas as horas abertas |
-| Demanda provável no ano maduro | 47 pessoas por dia aberto | 4,37 mesas ocupadas no fim de semana e metade disso no dia útil, com 4,01 giros (R04, R05, R15) |
+| Demanda provável no ano maduro | 36 pessoas por dia aberto | 6,40 pessoas por hora × 6,84 horas no fim de semana e 65,5% disso no dia útil (R04, R05, R15) |
 
-Fonte: elaboração própria, com base nos Blocos B1 (10/2026) e B3 (10/10/2026 a 30/10/2026) e no modelo financeiro (Apêndice E).
+Fonte: elaborado pelo próprio autor, com base nos Blocos B1 (10/2026) e B3 (10/10/2026 a 30/10/2026), em ANR (2026a; 2026b) e no modelo financeiro (Apêndice E).
 
-A demanda provável usa 50% da capacidade (Quadro 7.1). As mesas ocupadas em média ficam limitadas pelo salão: nas visitas, o pico de mesas ocupadas foi 1,29 vez a média. Com 6 mesas, a média do fim de semana pode chegar a 4,65 mesas sem que o pico passe do salão. O provável, de 4,37 mesas, fica abaixo desse teto; o otimista é cortado nele. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto. Teto abaixo de 6 mesas exclui o imóvel.
+A demanda provável usa 38% da capacidade (Quadro 7.1). No pico, a circulação fica limitada pelo salão: com grupos de 3,6 pessoas e permanência de 109 minutos, as 6 mesas comportam até 11,9 pessoas por hora. A circulação provável, de 6,40, ocupa 3,2 mesas no pico; a otimista, de 11,43, fica perto do teto. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto. Teto abaixo de 6 mesas exclui o imóvel.
 
 ## 7.3 PROCESSOS OPERACIONAIS
 
-A jornada do cliente tem cinco etapas. Na chegada, o instrutor no balcão registra o grupo e cobra a taxa de entrada por pessoa, válida por um turno de 3 horas; a reserva antecipada segue os mesmos turnos. Na mesa, o instrutor sugere títulos pelo perfil do grupo e explica as regras. O pedido de A&B é feito ao mesmo instrutor. No fim, a conta é paga no balcão, com NFC-e para toda venda, como o cap. 8 assume. Por último, o instrutor confere as peças do jogo devolvido antes de guardar a caixa [figura: fluxograma da jornada do cliente].
+A jornada do cliente tem cinco etapas. Na chegada, o instrutor no balcão registra o grupo e cobra a taxa de entrada por pessoa, válida por um turno de 3 horas; a reserva antecipada segue os mesmos turnos. Na mesa, o instrutor sugere títulos pelo perfil do grupo e explica as regras. O pedido de A&B é feito ao mesmo instrutor. No fim, a conta é paga no balcão, com NFC-e para toda venda, como o capítulo 8 assume. Por último, o instrutor confere as peças do jogo devolvido antes de guardar a caixa [figura: fluxograma da jornada do cliente].
 
 O acúmulo de funções vem da referência medida. Em todas as visitas à São Jogue, os instrutores também atendiam as mesas, cuidavam do balcão e operavam o caixa: não havia caixa, garçom nem atendente separados (B3). A luderia repete esse arranjo. Com isso, os instrutores cobrem salão, balcão e caixa.
 
-A explicação de regras é o processo que mais pesa na avaliação. A mediação lúdica aparece em 16,4% das avaliações dos concorrentes e, quando negativa, acompanha nota média de 2,83 (B2, codificação provisória de 15/10/2026, cap. 5). O plano trata a explicação como serviço de mesa, com no máximo 2 mesas por instrutor no pico, e não como tarefa de quem estiver livre.
+A explicação de regras é o processo que mais pesa na avaliação. A mediação lúdica aparece em 16,4% das avaliações dos concorrentes e, quando negativa, acompanha nota média de 2,83 (B2, codificação provisória de 15/10/2026, capítulo 5). O plano trata a explicação como serviço de mesa, com no máximo 2 mesas por instrutor no pico, e não como tarefa de quem estiver livre.
 
 Um site de recomendação apoia esse serviço. O cliente ou o instrutor informa o número de pessoas, o tempo disponível, a idade do mais novo, o peso das regras e o estilo do grupo; o site lista os jogos do acervo que combinam e traz um tutorial rápido de cada um. As buscas, os jogos escolhidos e os jogos procurados que não estão no acervo ficam gravados e alimentam os gatilhos de expansão (seção 7.4) e de contingência (seção 10.4).
 
-O A&B tem cozinha completa desde a abertura, com lanches, porções e pratos de preparo rápido, além de bebidas. É o modelo da maioria dos concorrentes e a maior fonte de receita do plano: 56,7% da receita bruta no provável (cap. 9). Os cardápios do B1 dão a base de preço e de composição. Um cardápio só com comidas recebidas prontas, como salgados (coxinha e quibe), fica como medida de perda máxima: entra se o caixa ficar negativo ou se a saída for avaliada (gatilhos G5 e G6, seção 10.4), e corta um cozinheiro e parte do custo fixo.
+O A&B tem cozinha completa desde a abertura, com lanches, porções e pratos de preparo rápido, além de bebidas. É o modelo da maioria dos concorrentes e a maior fonte de receita do plano: 56,7% da receita bruta no provável (capítulo 9). Os cardápios do B1 dão a base de preço e de composição. Um cardápio só com comidas recebidas prontas, como salgados (coxinha e quibe), fica como medida de perda máxima: entra se o caixa ficar negativo ou se a saída for avaliada (gatilhos G5 e G6, seção 10.4), e corta um cozinheiro e parte do custo fixo.
 
 ## 7.4 GESTÃO DO ACERVO
 
-O acervo inicial tem 175 títulos, ao custo provável de R$ 35 mil (I05). São os jogos presentes em 12 ou mais dos 30 acervos publicados pelos concorrentes do B1 (17/10/2026). O corte está no joelho da curva de presença: abaixo de 12 casas, cada casa a menos acrescenta cada vez mais jogos raros. O preço de cada jogo é a mediana da venda nas lojas online de 8 concorrentes do B1; os 40 títulos sem preço entram pelo preço médio por título. A faixa do cap. 9 é de 15% para cima e para baixo, a variação típica do preço do mesmo jogo entre as lojas. A São Jogue lista 370 títulos, e uma das visitas contou 350 caixas só no salão da Bela Vista (B3, 10/10/2026).
+O acervo inicial tem 175 títulos, ao custo provável de R$ 35 mil (I05). São os jogos presentes em 12 ou mais dos 30 acervos publicados pelos concorrentes do B1 (17/10/2026). O corte está no joelho da curva de presença: abaixo de 12 casas, cada casa a menos acrescenta cada vez mais jogos raros. O preço de cada jogo é a mediana da venda nas lojas online de 8 concorrentes do B1; os 40 títulos sem preço entram pelo preço médio por título. A faixa do capítulo 9 é de 15% para cima e para baixo, a variação típica do preço do mesmo jogo entre as lojas. A São Jogue lista 370 títulos, e uma das visitas contou 350 caixas só no salão da Bela Vista (B3, 10/10/2026).
 
 O acervo cresce por gatilho. A ampliação até 322 títulos, a mediana dos acervos do B1, acontece quando, por três meses seguidos, ao menos 10% das mesas pedem jogos fora do acervo, ou quando o site de recomendação registra buscas frequentes por jogos para um número de pessoas ou de uma mecânica com pouca oferta no acervo. A escolha dos títulos segue esses pedidos e os jogos citados nas avaliações (B2), depois da recodificação da seção 5.2.
 
@@ -52,7 +51,7 @@ A conferência de peças acontece na devolução de cada jogo, pelo instrutor. J
 
 ## 7.5 ESTRUTURA ORGANIZACIONAL E PESSOAL
 
-A equipe é dimensionada pelo fluxo medido, não pelo número de funções. Na noite mais cheia observada, o salão teve 32 pessoas sentadas no pico e 9 grupos de mesa ao longo da visita (B3, Bela Vista, 10/10/2026). Nas demais noites, o pico foi de 12 a 31 pessoas. No ano maduro provável, a luderia recebe 47 pessoas por dia aberto, com a maior parte de sexta a domingo.
+A equipe é dimensionada pelo fluxo medido, não pelo número de funções. Na noite mais cheia observada, o salão teve 32 pessoas sentadas no pico e 9 grupos de mesa ao longo da visita (B3, Bela Vista, 10/10/2026). Nas demais noites, o pico foi de 12 a 31 pessoas. No ano maduro provável, a luderia recebe 36 pessoas por dia aberto, com a maior parte de sexta a domingo.
 
 Esse fluxo cabe numa equipe de 6 pessoas (Quadro 7.2). O salão tem 2 instrutores de terça a quarta, 3 na quinta e 3 de sexta a domingo, com um quarto nas horas do meio período. O teto é de 2 mesas, ou cerca de 10 clientes, por instrutor no pico: a maior carga vista nas visitas. Com 6 mesas e 3 instrutores no pico, a carga fica nesse teto. Os instrutores atendem as mesas, explicam as regras, levam os pedidos e cuidam do balcão e do caixa. A cozinha tem um cozinheiro-chefe na terça e na quarta e os dois de quinta a domingo. A gestão, as compras e a cobertura de imprevistos ficam com o sócio (pró-labore, C08).
 
@@ -65,15 +64,19 @@ Esse fluxo cabe numa equipe de 6 pessoas (Quadro 7.2). O salão tem 2 instrutore
 | Cozinheiro-chefe | 2 | 5 dias de 8 h (40 h); folgas na segunda e na terça ou na quarta | 1.700,00 |
 | Total (folha mensal) | 6 | n.a. | 9.112,95 |
 
-Fonte: elaboração própria, com base no Bloco B3 (10/10/2026 a 30/10/2026) e no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana; recreador em todas as atividades e cozinheiro geral na CNAE 56).
+Fonte: elaborado pelo próprio autor, com base no Bloco B3 (10/10/2026 a 30/10/2026) e no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana; recreador em todas as atividades e cozinheiro geral na CNAE 56).
 
 Nota: total = pessoas × salário de admissão. Com encargos de 37% (premissa C07), a folha vai a R$ 12.484,75 por mês (Tabela 9.2). n.a.: não se aplica.
 
-A folha com encargos fica em 22,6% da receita do ano maduro provável, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). O salário de admissão do Novo CAGED tende a ficar abaixo do salário pago a quem já está no cargo; por isso, o cap. 9 testa um acréscimo de até 11,4% sobre ele. A São Jogue opera com mais gente: de três a sete instrutores no salão nas visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
+A folha com encargos fica em 22,6% da receita do ano maduro provável, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). O salário de admissão do Novo CAGED tende a ficar abaixo do salário pago a quem já está no cargo; por isso, o capítulo 9 testa um acréscimo de até 11,4% sobre ele. A São Jogue opera com mais gente: de três a sete instrutores no salão nas visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
 
 Contratar instrutores como jovens aprendizes reduz pouco o custo. Os salários já estão no piso, e o aprendiz trabalha no máximo 6 horas por dia, o que exige mais pessoas para cobrir as mesmas horas; menores de 18 anos não podem trabalhar depois das 22h (CLT, art. 404 e art. 432). O estágio exige relação com o curso do estudante (Lei n. 11.788/2008) e não cabe na função de atendimento. As duas formas ficam fora do provável. Fora da equipe fixa, o contador é terceirizado (R$ 1.200,00 por mês, C11). A limpeza diária entra nas tarefas de abertura e fechamento da equipe.
 
 **Referências citadas neste capítulo**
+
+ASSOCIAÇÃO NACIONAL DE RESTAURANTES (ANR). *Panorama do consumo em restaurantes no Rio de Janeiro*: preferências por cozinha, dias da semana e momentos de refeição. São Paulo, 10 set. 2026a. Estudo do Mastercard Economics Institute em parceria com a ANR. Disponível em: https://anrbrasil.org.br/panorama-do-consumo-em-restaurantes-no-rio-de-janeiro-preferencias-por-cozinha-dias-da-semana-e-momentos-de-refeicao/. Acesso em: 2 nov. 2026.
+
+ASSOCIAÇÃO NACIONAL DE RESTAURANTES (ANR). *Calor e chuva esfriam o apetite?* Estudo inédito da Mastercard Economics Institute em parceria com a ANR revela o impacto do clima sobre os gastos em restaurantes de São Paulo. São Paulo, 11 ago. 2026b. Disponível em: https://anrbrasil.org.br/calor-e-chuva-esfriam-o-apetite-estudo-inedito-da-mastercard-economics-institute-em-parceria-com-a-anr-revela-o-impacto-do-clima-sobre-os-gastos-em-restaurantes-de-sao-paulo/. Acesso em: 2 nov. 2026.
 
 BRASIL. Lei nº 11.788, de 25 de setembro de 2008. Dispõe sobre o estágio de estudantes. *Diário Oficial da União*: seção 1, Brasília, DF, 26 set. 2008. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11788.htm. Acesso em: 2 nov. 2026. [AV]
 

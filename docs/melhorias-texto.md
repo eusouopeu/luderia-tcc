@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 02/11/2026 (noite), TMin v18: modelo com faixa na taxa e na cesta, tendência da demanda, PERT, TMA fixa no Monte Carlo e gatilhos na simulação; as cinco premissas críticas passam a ser pessoas por mesa, pessoas por cesta, mesas ocupadas no fim de semana, cesta e taxa de entrada (D13 resolvido). Itens anteriores citam a numeração antiga.
+Última análise: 02/11/2026 (23h), TMin (md) depois da troca do modelo de demanda: circulação no pico (B3, sem escala por mesa; pessimista pelas NFC-e) × horas de pico equivalentes (B1) e dia útil pela ANR/Mastercard; gasto por pessoa declarado no Google Maps (B2) e cesta de consumo com a taxa de entrada. Caps. 3, 4, 6, 7, 8, 9, 10 e 11 revistos; D12, D39 e D40 resolvidos. Itens anteriores citam a numeração antiga.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -12,6 +12,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Grave
 
+**D53 — TMax com o modelo de demanda antigo (02/11/2026).** TMax caps. 3, 5 e 9 × TMin caps. 3, 6 e 9. O TMax ainda usa a cesta sem a taxa de entrada, as pessoas por cesta (R08), as mesas ocupadas × giros e a taxa e a cesta iguais nos três cenários; o TMin passou à circulação no pico, às horas de pico equivalentes e ao gasto por pessoa (R04 a R07, R15). Sugestão: refazer o 9.1 e o 9.3 do TMax a partir do TMin, ou declarar que o cap. 9 do TMax segue o do TMin.
+
 **D49 — Marcadores pendentes a duas semanas da banca (02/11/2026).** TMin v17: os `[script]` e a correção pelo IPCA foram fechados. Restam 15 `[AV]` no texto corrido, `[pendente]` (9.2: sleeves; 9.5: triangulação com o cap. 6), `[Pendente: alimentos e bebidas...]` (5.3.2), `[figura: croqui do salão]` e `[figura: fluxograma da jornada do cliente]` (7.2 e 7.3), `[BUSCAR]` (8.2), `[resultado do kappa]` (11.2) e a proposta de valor entre colchetes no cap. 4. Sugestão: gerar ou cortar as duas figuras do cap. 7; deixar para o fim só o kappa e a proposta de valor.
 
 **D45 — Páginas do TMin v10 (02/11/2026).** O TMin passou de 59 para 69 páginas: os quadros 10.5 e 10.6 e o Quadro 9.2 com 15 premissas. O cap. 10 já estava acima do teto (C17). Sugestão: levar o Quadro 10.6 ou o 10.5 para apêndice.
@@ -19,6 +21,12 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D01 — Três escalas de confiança com os mesmos rótulos.** Cap. 5 (nota de abertura, 5.1.2, 5.1.3, 5.2.3, 5.4.2 e quadro "Fontes por nível de preferência") × cap. 2 (2.1) × `_instrucoes/1a_principios.md` (P1, P2) e `8_financeiro.md` (N1–N6). O cap. 5 usa uma ordem própria de fontes em 4 níveis (oficial → fundação → entidade setorial → imprensa), decidida em 15/10 (`decisoes.md`), que não bate com a P1 (7 níveis: legislação, artigos revisados, teses, relatórios oficiais e setoriais…). Além disso, mistura as escalas no texto: a POF é "N2" (escala N1–N6, correto), o Savills é "nível 3" (da ordem própria; na N1–N6 seria N4), o público do Meta Ads é "N5, rastros digitais" (rastro digital é o tipo 5 da P2; N5 é coleta primária comportamental própria) e a cotação é "N2 na hierarquia de dados" (tipo 2 da P2, não N2). O cap. 2 anuncia só a N1–N6 e a P2 para o cap. 3. A banca lê "N2" e "nível 2" como a mesma coisa. Sugestão: no texto, usar só a N1–N6 para dados e premissas; a ordem de fontes do cap. 5 vira a P1 (atualizar a instrução) ou sai do capítulo; o tipo de dado da P2 ganha rótulo próprio (ex.: "tipo 5").
 
 ## Média
+
+**D54 — Figura 6.1 com a base antiga do B2 (02/11/2026).** Cap. 6 (6.3, Figura 6.1: 602 declarações, 352 sem a Bodogami) × 6.3 e cap. 9 (675 declarações de 12 concorrentes, na base de 769 declarações com faixa de preço). Sugestão: regerar a Figura 6.1 com `B2_avaliacoes_periodo.csv` atual e citar as mesmas contagens nos dois parágrafos.
+
+**D55 — "Consumo por pessoa" depois da nova cesta de consumo (02/11/2026).** Cap. 5 (Figura 5.3, "Consumo por pessoa (uma bebida e uma entrada ou prato)") e TMax 5 × `_instrucoes/1b_escrita.md` (P6: cesta de consumo inclui a taxa de entrada, e "consumo por pessoa" não é sinônimo). Sugestão: renomear a figura para "Bebida mais entrada ou prato, mediana por metrópole".
+
+**D56 — Gatilho G1 sem risco correspondente (02/11/2026).** Cap. 10 (Quadro 10.4, G1: pessoas por mesa abaixo de 3) × Quadro 10.2, que deixou de ter o risco de pessoas por mesa: no modelo novo, as pessoas por mesa só limitam o salão. Sugestão: tirar o G1 ou ligá-lo ao gasto por pessoa (grupos pequenos consomem menos por mesa).
 
 **D51 — Cruzamento da SWOT só no texto (02/11/2026).** Cap. 2 (2.2: "O cruzamento dos quadrantes indica a estratégia") × cap. 10. O texto do 10.1 cruza os quadrantes (FO, DO e FA), mas o Quadro 10.1 mostra só os quatro quadrantes, com evidência que remete a seções, e falta o cruzamento de fraquezas com ameaças (DA). Sugestão: trocar a coluna "Evidência" por uma linha de estratégias cruzadas (FO, FA, DO e DA), ligada às etapas e aos gatilhos do 10.4.
 
@@ -32,10 +40,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D16 — Savills sem data (01/11/2026).** Cap. 1 e referências. A página da Savills citada como [s.d.] traz a data de 19 mar. 2024. Sugestão: SAVILLS, 2024, no texto e na referência.
 
-**D12 — Condição de viabilidade dita de três jeitos (01/11/2026).** Cap. 4 (4.6) × cap. 11 (11.1) × cap. 9 (9.7.3). O 4.6 diz que o negócio fica viável com a equipe de 8 e duas premissas juntas (5,0 mesas e cesta para 1,5 pessoa); o 11.1, com uma de três condições isoladas (5,3 mesas, 4,4 pessoas por mesa ou cesta para 1,4 pessoa); o 9.7.3, com 5,98 mesas e o quadro de 12. Sugestão: uma só formulação, com o mesmo quadro de pessoal, repetida igual nos três.
 
-
-- **Giro: vocabulário × modelo (31/10/2026).** `_instrucoes/1b_escrita.md` (P6) define giro como horas de funcionamento ÷ permanência média; no modelo do cap. 9, só o otimista segue a definição, o pessimista sai das NFC-e e o provável é a média dos dois. Ajustar a definição do P6 (giro por mesa ocupada, com a faixa) ou declarar a diferença no cap. 3. A "taxa de ocupação" do P6 também deixou de ser premissa: o modelo usa mesas ocupadas.
+- **Giro e taxa de ocupação no vocabulário (31/10/2026; revisto em 02/11/2026).** `_instrucoes/1b_escrita.md` (P6) mantém giro e taxa de ocupação, mas o modelo do cap. 9 deixou os dois de fora da receita: a demanda é a circulação no pico × horas de pico equivalentes, e o giro só confere o salão (cap. 3). Sugestão: no P6, marcar giro e taxa de ocupação como medidas de conferência, não de receita.
 - **Figuras só no TMin (31/10/2026).** O TMin tem as Figuras 5.1 a 5.4, 6.1 e 9.1 (Selic), com o tornado como Figura 9.2; o TMax segue só com o tornado como Figura 9.1, mas o cap. 10, comum às duas versões, já remete à "Figura 9.2".
 - **Seções renumeradas no TMin (31/10/2026).** No TMin, o cap. 2 vai de 2.1 a 2.5 e o cap. 3 de 3.1 a 3.6; no TMax, seguem de 2.1 a 2.6 e de 3.1 a 3.7. Remissões entre capítulos a essas seções ficam diferentes nas duas versões.
 **D02 — Objetivos e seções da introdução fora da estrutura.** Cap. 1 (1.1) × `1_estrutura.md` (1.3). O cap. 1 tem 7 objetivos específicos; a instrução permite no máximo 6, um por decisão, cada um respondido em 11.2. Os itens (vi) e (vii) cabem em um só (o (vi) da proposta da instrução). As seções também divergem: o cap. 1 tem 1.1 Objetivos, 1.2 Justificativa e 1.3 Estrutura; a instrução prevê 1.1 Contextualização, 1.2 Problema e oportunidade, 1.3 Objetivos, 1.4 Justificativa e 1.5 Estrutura. Sugestão: fundir (vi) e (vii) e renumerar, ou ajustar a instrução.
@@ -76,13 +82,11 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D38 — Números que mudam entre capítulos (02/11/2026).** 7.5 (48 pessoas por dia) × 4.5, 7.2 e 9.4 (51); 5.3.3 e 6.3 ("22 dos 53") × B1 com 54; 5.3.3 (taxa de R$ 5,00 a R$ 40,00) × Tabela 6.1 (Encounter a R$ 45,00); 8.1 (o MEI "não comporta [...] o quadro de 12 empregados") × Quadro 7.2 (6 pessoas); aluguel pessimista de R$ 64,36 (6.4) × R$ 64,35 (Quadro 9.2); "15 dos 22" que diferenciam o preço (6.3) × 16 na Tabela 6.1 (17 com a BoardZ, que não cobra entrada), que tem 24 linhas. Sugestão: tirar todos do modelo do cap. 9 e do B1 regerados.
 
-**D39 — Alertas do 10.5 acima do provável (02/11/2026).** Os limites de alerta saem do ponto de ruptura, acima do provável: pessoas por mesa abaixo de 4,4 (provável 3,6) e giros abaixo de 5,5 (teto físico de 5,51). A luderia abriria com todos os indicadores em alerta. Sugestão: limites a partir da combinação confirmada na validação, com margem abaixo dela.
-
-**D40 — Ocupação de pico aplicada ao dia inteiro (02/11/2026).** 3.6 trata a contagem como limite superior, mas o 9.2 usa as 4,37 mesas ocupadas (noites de sexta e sábado, cerca de 2,7 h por visita) como provável para o dia inteiro, multiplicadas por 4,56 giros. O giro otimista (5,51) supõe 10 h abertas; o fim de semana tem 9,3 h (9.8), com teto de 5,14 giros, abaixo da ruptura (5,55). Sugestão: ocupação por faixa de horário e giro do fim de semana pelo horário do fim de semana.
-
 **D42 — Taxa da São Jogue fora da média do modelo (02/11/2026).** O B1 (aba cesta) marca a taxa da São Jogue como "não encontrada", embora a Tabela 6.1 e a NFC-e do B3 a tragam (R$ 22,00 e R$ 28,00). A média de R$ 18,68 (caps. 4, 6, 9 e 11) não inclui a única casa de Salvador, e as 22 casas da média não são as 22 da Tabela 6.1. A Ludus tem taxa zero na Tabela 6.1 e couvert de R$ 34,00/44,00 numa fonte secundária de 2024. Sugestão: corrigir o B1 e regerar a média e o modelo.
 
 ## Aceitável
+
+**D57 — Taxa adotada × taxa contida no gasto (02/11/2026).** Cap. 6 (6.3: taxa de R$ 18,68, média dos 22 que cobram) × cap. 9 (9.6: R$ 19,83, 24,7% do gasto de R$ 80,14, R07). O 6.3 declara a diferença (6%). Sugestão: manter, ou fixar o preço adotado em R$ 19,83 para o texto e o modelo coincidirem.
 
 **D37 — Erros de digitação no cap. 1 (02/11/2026).** §2 da introdução: "São Paul" (São Paulo).
 

@@ -21,23 +21,28 @@ perpetuidade sem crescimento do EBITDA do ano 5 menos o reinvestimento anual
 (igual à depreciação), à TMA, com piso zero (se a perpetuidade for negativa, o
 negócio fecha). A aba sensibilidade mostra o VPL com e sem o valor residual.
 
-Receita (decisão do autor, 31/10/2026): pessoas = mesas ocupadas × pessoas
-por mesa × giros por mesa por dia × dias abertos; receita por pessoa = taxa de
-entrada média + cesta de consumo média ÷ pessoas por cesta (uma cesta por
-pessoa no otimista, por dupla no provável, por trio no pessimista). Os dados de
-pedidos da coleta presencial (B3) ficam fora do modelo: a coleta se mostrou
-inviável.
+Receita (decisão do autor, 02/11/2026): pessoas por dia de fim de semana =
+circulação no pico (pessoas que entram por hora nas visitas do B3, sem escala
+pelas mesas; pessimista pelas NFC-e) × horas de pico equivalentes (casas do B1 abertas
+em cada hora do plano ÷ casas abertas nas janelas das visitas); dia útil = fim
+de semana × razão dia útil ÷ fim de semana do gasto com cartão (ANR/Mastercard).
+Receita por pessoa = gasto por pessoa declarado no Google Maps (B2), média das
+12 casas com cesta de consumo conhecida; a cesta de consumo é bebida + entrada
+ou prato + taxa de entrada, e a parcela da taxa nessa cesta separa a receita de
+taxa (anexo III) da de A&B (anexo I e CMV).
 
 Desenho enxuto (P7 de _instrucoes/1a_principios.md, 02/11/2026): 6 mesas;
 terça a sexta das 15h às 23h e sábado e domingo das 14h às 22h (as 8 h
 contínuas com mais luderias abertas no B1), segunda fechada; equipe de 6 (2
 cozinheiros-chefes, 3 instrutores de tempo integral e 1 de meio período, 20 h).
-A São Jogue entra como referência de comportamento (ocupação, pessoas por mesa,
-permanência, giro), não de porte. As mesas ocupadas ficam limitadas ao salão:
-média ≤ mesas do salão ÷ razão pico/média das visitas (B3).
+A São Jogue entra como referência de comportamento (circulação, pessoas por
+mesa, permanência), não de porte. A circulação fica limitada ao salão:
+pessoas por hora ≤ mesas × pessoas por mesa ÷ permanência (B3).
 
-Entradas: B1 (cesta de jogos; couvert e cesta de consumo dos cardápios), B3
-(contagem_resumo_visitas.csv, contagem_notas_intervalo.csv), B4 (FipeZap, CAGED, BCB,
+Entradas: B1 (cesta de jogos; couvert dos cardápios; casas abertas por hora,
+B1-a_abertos_por_hora.py), B2 (gasto por pessoa e cesta por casa,
+B2-a_gasto_por_pessoa.py), B3 (contagem_resumo_visitas.csv,
+contagem_notas_intervalo.csv), B4 (FipeZap, CAGED, BCB,
 Simples Nacional, IBGE PAS e população). As premissas N6 ficam em PREMISSAS,
 com a justificativa da faixa.
 
@@ -127,6 +132,15 @@ def ler_fontes() -> dict:
     f["couvert_media"], f["couvert_n"], f["couvert_mediana"] = cv.mean(), len(cv), cv.median()
     f["cesta_consumo_media"], f["cesta_consumo_n"], f["cesta_consumo_mediana"] = co.mean(), len(co), co.median()
     f["couvert_q"], f["cesta_q"] = cv.quantile([.25, .75]).tolist(), co.quantile([.25, .75]).tolist()
+    # B2: gasto por pessoa declarado e cesta de consumo (com a taxa) das casas no recorte
+    gc = pd.read_csv(DADOS / "[B2] Avaliacoes recentes" / "gasto_por_pessoa" / "B2_gasto_cesta_por_casa.csv",
+                     sep=";", encoding="utf-8-sig")
+    f["gasto_casas"] = gc[gc["no_recorte"] == "sim"]
+    # B1: horas de pico equivalentes por dia do plano (casas abertas por hora ÷ referência das visitas)
+    hp = pd.read_csv(B1 / "estabelecimentos" / "B1_horas_pico_equivalentes.csv", sep=";", encoding="utf-8-sig")
+    for casa, chave in (("plano", "horas_pico"), ("São Jogue", "horas_pico_sj")):
+        h = hp[hp["casa"] == casa]
+        f[chave] = dict(zip(h["dia"], h["horas_pico_equivalentes"]))
     # B4
     fz = pd.read_csv(B4 / "financeiro" / "[B4] Aluguel Comercial por Capital 2026-07 (FipeZap).csv")
     fz = fz[fz["capital"] == "Salvador"].iloc[0]
@@ -173,60 +187,65 @@ def quadro_pessoal(f) -> list[tuple]:
 def premissas(f) -> list[dict]:
     """Registro de premissas (§3). Percentuais como fração. Ordem = ordem da aba."""
     vis = f["visitas"]
-    pg, pm, mo = vis["tamanho_grupo_mesa"], vis["permanencia_mesa_media_min"], f["mesas_ocupadas"]
-    # x% do cenário de mesas ocupadas: distância média dos extremos observados à média
-    x = ((mo.max() - mo.mean()) + (mo.mean() - mo.min())) / 2 / mo.mean()
-    cv, cc = f["couvert_media"], f["cesta_consumo_media"]
-    # giro pessimista: o cenário pessimista atende o piso de clientes da NFC-e
-    # (uma comanda e uma nota por pessoa; a nota sai só a pedido), na Paralela
-    nf = f["notas"].set_index("unidade")
-    piso = float(nf.loc["PA", "notas_emitidas"] / nf.loc["PA", "dias"])
-    # teto das mesas ocupadas em média: mesas do salão ÷ razão pico/média das visitas
+    pg, pm = vis["tamanho_grupo_mesa"], vis["permanencia_mesa_media_min"]
     MESAS = 6
-    vis_pico = vis["ocupacao_mesas_pico_pct"] / vis["ocupacao_mesas_media_pct"]
-    teto = MESAS / vis_pico.mean()
-    f["razao_pico"], f["mesas_max"] = vis_pico.mean(), mo.max()
-    r04 = [min(teto, mo.mean() * k) for k in (1 - x, 1, 1 + x)]
-    # semana da São Jogue (3 dias de fim de semana e 4 úteis) na calibração do giro pessimista
-    pess = dict(R02=2.5, R04=mo.mean() * (1 - x), R05=0.40, R16=3, R17=4)
-    giro_pess = piso * 7 / (pess["R04"] * pess["R02"] * (pess["R16"] + pess["R17"] * pess["R05"]))
-    # giro otimista: horas abertas por dia (8 h, desenho enxuto) ÷ permanência média das visitas;
-    # provável: média do pessimista e do otimista (decisão do autor, 31/10/2026)
+    # dia útil ÷ fim de semana: gasto médio por dia de segunda a quinta ÷ de sexta a domingo, em
+    # restaurantes de loja física, 2º tri 2025 a 2º tri 2026 (Mastercard Economics Institute e ANR)
+    du_fds = {"Rio de Janeiro": (10.0 + 11.0 + 11.4 + 12.8) / 4 / ((16.9 + 20.2 + 17.7) / 3),
+              "São Paulo": (100 - 17.9 - 17.1 - 17.0) / 4 / ((17.0 + 17.9 + 17.1) / 3)}
+    # circulação no pico: pessoas que entram por hora nas visitas, sem escala pelas mesas (a demanda
+    # vem do público, não do salão, até ele lotar); provável na média e otimista na maior visita.
+    # Pessimista: NFC-e por dia de cada unidade convertidas em pessoas por hora no pico, com as horas
+    # de pico equivalentes do horário da São Jogue e a semana de 3 dias de fim de semana e 4 úteis
+    # no dia útil pessimista; média das duas unidades (decisões do autor, 02/11/2026)
+    circ = vis["pessoas_por_hora"]
+    f["circulacao_visitas"] = circ
+    hs = f["horas_pico_sj"]
+    eq_sj = sum(hs[d] for d in ("sexta", "sabado", "domingo")) / 3
+    nf = f["notas"].set_index("unidade")
+    por_nota = [nf.loc[u, "notas_emitidas"] / nf.loc[u, "dias"] * 7 / (eq_sj * (3 + 4 * min(du_fds.values())))
+                for u in ("BV", "PA")]
+    circ_nfce = sum(por_nota) / len(por_nota)
+    f["circulacao_nfce"], f["horas_pico_sj_fds"] = por_nota, eq_sj
+    # gasto por pessoa: média, mínimo e máximo dos gastos médios das casas (B2); parcela da taxa
+    gc = f["gasto_casas"]
+    gasto = (gc["gasto_medio"].min(), gc["gasto_medio"].mean(), gc["gasto_medio"].max())
+    parcela = gc["taxa_ponderada"].mean() / gc["cesta_consumo"].mean()
+    f["gasto"], f["parcela_taxa"] = gasto, parcela
+    hp = f["horas_pico"]
+    r15 = sum(hp[d] for d in ("sexta", "sabado", "domingo")) / 3
+    f["teto_circ"] = MESAS * pg.mean() * 60 / pm.mean()
     HORAS_DIA = 8
     # acréscimo salarial máximo (C06), provisório: maior distância entre o 3º quartil
     # e a mediana do salário de admissão entre os cargos do quadro
     c = f["caged"]
     acr = max(float(c[(c["ocupacao"] == o) & (c["recorte"] == rc)].eval("salario_p75 / salario_mediana - 1").iloc[0])
               for o, rc in (("Cozinheiro geral", "CNAE 56 - alimentação"), ("Recreador", "todas as atividades")))
-    giro_otim = HORAS_DIA * 60 / pm.mean()
-    giro_prov = (giro_pess + giro_otim) / 2
     a = f["acervo"]
     R = lambda *x: dict(zip(("id", "nome", "unidade", "pess", "prov", "otim", "fonte", "nivel", "just"), x))
     return [
         R("R01", "Mesas do salão", "mesas", MESAS, MESAS, MESAS,
           "Decisão do autor (desenho enxuto); B3: maior ocupação vista nas visitas", "N5 + N6",
-          f"Capacidade do salão; limita as mesas ocupadas em média a {teto:.2f} (mesas ÷ razão pico/média de {vis_pico.mean():.2f} das visitas)."),
+          f"Capacidade do salão; limita a circulação no pico a {f['teto_circ']:.1f} pessoas por hora (mesas × pessoas por mesa ÷ permanência)."),
         R("R02", "Pessoas por mesa ocupada", "pessoas", 2.5, round(pg.mean(), 1), 5.5,
           "B3, 4 visitas (out/2026); faixa do autor", "N5 + N6",
-          f"Média das visitas {pg.mean():.1f} (de {pg.min():.1f} a {pg.max():.1f}); pessimista de 2 ou 3 e otimista de 5 ou 6 pessoas (ponto médio); Monte Carlo de 2 a 6."),
+          f"Média das visitas {pg.mean():.1f} (de {pg.min():.1f} a {pg.max():.1f}); não entra na receita, só no teto do salão (R01)."),
         R("R03", "Permanência média", "min", 137, round(pm.mean()), 83,
           "B3, 4 visitas (out/2026)", "N5",
-          f"Médias por visita de {pm.min():.0f} a {pm.max():.0f} min; não entra na receita, só confere se os giros cabem no horário."),
-        R("R04", "Mesas ocupadas em média, fim de semana", "mesas", *[round(z, 2) for z in r04],
-          "B3, 4 visitas nas noites de sexta e sábado (out/2026)", "N5",
-          f"Média das visitas ({mo.min():.1f} a {mo.max():.1f} mesas); ± {x:.0%}, distância média dos extremos observados à média; limitada a {teto:.2f} pelo salão de {MESAS} mesas (R01)."),
-        R("R05", "Mesas ocupadas em dia útil", "% do fim de semana", 0.40, 0.50, 0.60,
-          "Estimativa do autor", "N6",
-          "Cerca de metade do fim de semana; sem visita em dia útil."),
-        R("R06", "Taxa de entrada", "R$ por pessoa", round(f["couvert_q"][0], 2), round(cv, 2), round(f["couvert_q"][1], 2),
-          f"B1, couvert ou taxa de jogo das {f['couvert_n']} casas que cobram", "N3",
-          f"Média das casas que cobram (mediana R$ {f['couvert_mediana']:.2f}); pessimista e otimista no 1º e no 3º quartil (02/11/2026)."),
-        R("R07", "Cesta de consumo", "R$ por cesta", round(f["cesta_q"][0], 2), round(cc, 2), round(f["cesta_q"][1], 2),
-          f"B1, cardápios de {f['cesta_consumo_n']} casas (uma bebida e uma entrada ou prato)", "N3",
-          f"Média das casas (mediana R$ {f['cesta_consumo_mediana']:.2f}); pessimista e otimista no 1º e no 3º quartil (02/11/2026)."),
-        R("R08", "Pessoas por cesta de consumo", "pessoas", 3, 2, 1,
-          "Decisão do autor", "N6",
-          "Uma cesta por trio no pessimista, por dupla no provável e por pessoa no otimista."),
+          f"Médias por visita de {pm.min():.0f} a {pm.max():.0f} min; não entra na receita, só no teto do salão (R01)."),
+        R("R04", "Circulação no pico de fim de semana", "pessoas por hora", *[round(z, 2) for z in (circ_nfce, circ.mean(), circ.max())],
+          "B3, 4 visitas nas noites de sexta e sábado e NFC-e entre visitas (out/2026)", "N5",
+          f"Pessoas que entram por hora na São Jogue, sem escala pelas mesas: provável na média das visitas e otimista na maior. Pessimista: NFC-e por dia (uma nota por pessoa, só a pedido) ÷ {eq_sj:.2f} h de pico equivalentes do horário da São Jogue e semana com o dia útil pessimista; média da Bela Vista ({por_nota[0]:.2f}) e da Paralela ({por_nota[1]:.2f})."),
+        R("R05", "Circulação de dia útil", "% do fim de semana", round(min(du_fds.values()), 4),
+          round(sum(du_fds.values()) / 2, 4), round(max(du_fds.values()), 4),
+          "Mastercard Economics Institute e ANR, gasto em restaurantes de loja física, 2º tri 2025 a 2º tri 2026", "N4",
+          "Gasto médio por dia de segunda a quinta ÷ de sexta a domingo: Rio de Janeiro no pessimista, São Paulo no otimista, média das duas no provável."),
+        R("R06", "Gasto por pessoa (cesta de consumo)", "R$ por pessoa", *[round(z, 2) for z in gasto],
+          f"B2, preço por pessoa declarado no Google Maps, {int(gc['avaliacoes'].sum())} avaliações de {len(gc)} casas", "N3",
+          "Média dos gastos médios das casas com cesta de consumo conhecida (bebida + entrada ou prato + taxa de entrada); pessimista e otimista na casa de menor e de maior gasto."),
+        R("R07", "Parcela da taxa de entrada no gasto", "% do gasto", round(parcela, 4), round(parcela, 4), round(parcela, 4),
+          f"B1, cardápios e taxas de entrada das mesmas {len(gc)} casas", "N3",
+          "Taxa de entrada média ÷ cesta de consumo média; separa a receita de taxa (anexo III) da de A&B (anexo I e CMV)."),
         R("R09", "Aluguéis de jogos", "aluguéis por mês", 10, 30, 60,
           "Estimativa do autor", "N6",
           "Serviço oferecido pela São Jogue; volume não observado."),
@@ -245,9 +264,9 @@ def premissas(f) -> list[dict]:
         R("R14", "Horas abertas por semana, dia útil", "h", 3 * HORAS_DIA, 3 * HORAS_DIA, 3 * HORAS_DIA,
           "B1: horário de 49 concorrentes (Google Maps, out/2026); decisão do autor", "N3",
           "Terça a quinta das 15h às 23h; segunda fechada (71% dos concorrentes fecham)."),
-        R("R15", "Giros por mesa por dia", "grupos por mesa ocupada", round(giro_pess, 2), round(giro_prov, 2), round(giro_otim, 2),
-          "B3: NFC-e da São Jogue Paralela (pessimista) e permanência das 4 visitas (otimista)", "N5",
-          f"Pessimista calibrado para o cenário atender {piso:.2f} clientes por dia, as NFC-e por dia da Paralela (17/10 a 30/10/2026): uma comanda e uma nota por pessoa, emitida só a pedido, então piso. Otimista: {HORAS_DIA} h abertas por dia ÷ permanência média de {pm.mean():.0f} min. Provável: média dos dois."),
+        R("R15", "Horas de pico equivalentes por dia de fim de semana", "h", round(r15, 2), round(r15, 2), round(r15, 2),
+          "B1: horário de 54 concorrentes (Google Maps, out/2026)", "N3",
+          f"Soma, nas horas abertas do plano, das casas abertas em cada hora ÷ casas abertas nas janelas das visitas do B3; média de sexta ({hp['sexta']:.2f}), sábado ({hp['sabado']:.2f}) e domingo ({hp['domingo']:.2f}). O dia útil usa o mesmo valor, reduzido pela R05."),
         R("R16", "Dias abertos por semana, fim de semana", "dias", 3, 3, 3,
           "Decisão do autor (desenho enxuto)", "N3", "Sexta a domingo."),
         R("R17", "Dias abertos por semana, dia útil", "dias", 3, 3, 3,
@@ -316,15 +335,15 @@ def calcula(f, v: dict, folha: float) -> dict:
     for mes in range(1, MESES + 1):
         ano_ = (mes - 1) // 12 + 1
         rampa = min(1.0, v["R11"] + (1 - v["R11"]) * (mes - 1) / (v["R12"] - 1))
-        # tendência da demanda a partir do ano 3 (R18), limitada pelo salão: mesas ÷ razão pico/média;
-        # R01_exp só existe no Monte Carlo (etapa de mesas a partir do ano 2)
+        # tendência da demanda a partir do ano 3 (R18), limitada pelo salão: mesas × pessoas por mesa
+        # ÷ permanência; R01_exp só existe no Monte Carlo (etapa de mesas a partir do ano 2)
         tend = (1 + v["R18"]) ** max(0, ano_ - 2)
         mesas = v["R01"] if ano_ == 1 else v.get("R01_exp", v["R01"])
-        r04 = min(mesas / f["razao_pico"], v["R04"] * tend)
-        p_fds = r04 * v["R02"] * v["R15"] * v["R16"] * rampa * v["M02"]
-        p_du = r04 * v["R05"] * v["R02"] * v["R15"] * v["R17"] * rampa * v["M02"]
-        taxa_fds, taxa_du = p_fds * v["R06"], p_du * v["R06"]
-        ab = (p_fds + p_du) * v["R07"] / v["R08"]
+        r04 = min(mesas * v["R02"] * 60 / v["R03"], v["R04"] * tend)
+        p_fds = r04 * v["R15"] * v["R16"] * rampa * v["M02"]
+        p_du = r04 * v["R05"] * v["R15"] * v["R17"] * rampa * v["M02"]
+        taxa_fds, taxa_du = p_fds * v["R06"] * v["R07"], p_du * v["R06"] * v["R07"]
+        ab = (p_fds + p_du) * v["R06"] * (1 - v["R07"])
         alug = v["R09"] * v["R10"] * rampa * tend
         m.append(dict(ano=(mes - 1) // 12 + 1, pessoas=p_fds + p_du, taxa=taxa_fds + taxa_du,
                       ab=ab, alug=alug, bruta=taxa_fds + taxa_du + ab + alug))
@@ -420,7 +439,7 @@ def calcula_mc(f, v: dict, folha: float, quadro) -> dict:
       cozinheiro (cardápio de comidas recebidas prontas), com encargos;
     - G6: se o EBITDA segue negativo com o G5 ativo, a luderia fecha no fim desse ano e recupera
       caução, capital de giro e a revenda dos ativos (I09); sem valor residual."""
-    teto = v["R01"] / f["razao_pico"]
+    teto = v["R01"] * v["R02"] * 60 / v["R03"]
     expande = v["R04"] > teto
     w = dict(v, R01_exp=v["R01"] + MC_EXPANSAO) if expande else v
     r = calcula(f, w, folha)
@@ -466,10 +485,7 @@ def monte_carlo(f, prem, folha, quadro) -> dict:
         for p in prem:
             if p["id"] in MC_FIXAS or p["pess"] == p["otim"]:
                 continue
-            if p["id"] == "R04":
-                lo, hi = p["pess"], max(p["otim"], f["mesas_max"])
-            else:
-                lo, hi = MC_FAIXA.get(p["id"], (min(p["pess"], p["otim"]), max(p["pess"], p["otim"])))
+            lo, hi = MC_FAIXA.get(p["id"], (min(p["pess"], p["otim"]), max(p["pess"], p["otim"])))
             v[p["id"]] = pert(rng, lo, p["prov"], hi)
         r = calcula_mc(f, v, folha, quadro)
         vpls.append(r["vpl"])
@@ -641,28 +657,27 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
     linhas = {4: "Fator de rampa (% da ocupação madura)", 5: "Pessoas, fim de semana", 6: "Pessoas, dia útil",
               7: "Pessoas atendidas", 8: "Taxa de entrada, fim de semana (R$)", 9: "Taxa de entrada, dia útil (R$)",
               10: "Alimentos e bebidas (R$)", 11: "Aluguel de jogos (R$)", 12: "Receita bruta (R$)",
-              13: "Fator de tendência da demanda (R18, a partir do ano 3)", 14: "Mesas ocupadas, fim de semana (limitadas ao salão)",
-              16: "Teto de mesas ocupadas em média (R01 ÷ razão pico/média)", 17: "Razão pico/média das mesas ocupadas nas visitas (B3)"}
+              13: "Fator de tendência da demanda (R18, a partir do ano 3)", 14: "Circulação no pico, fim de semana (limitada ao salão)",
+              16: "Teto da circulação no pico (R01 × R02 × 60 ÷ R03, pessoas por hora)"}
     for r, t in linhas.items():
         ws.cell(r, 1, t)
-    ws["B17"] = float(f["razao_pico"])
-    ws["B16"] = "=P_R01/B17"
+    ws["B16"] = "=P_R01*P_R02*60/P_R03"
     for i, c in enumerate(COL_MES):
         ws[f"{c}2"] = i + 1
         ws[f"{c}3"] = f"=ROUNDUP({c}2/12,0)"
         ws[f"{c}4"] = f"=MIN(1,P_R11+(1-P_R11)*({c}2-1)/(P_R12-1))"
         ws[f"{c}13"] = f"=(1+P_R18)^MAX(0,{c}3-2)"
         ws[f"{c}14"] = f"=MIN($B$16,P_R04*{c}13)"
-        ws[f"{c}5"] = f"={c}14*P_R02*P_R15*P_R16*{c}4*P_M02"
-        ws[f"{c}6"] = f"={c}14*P_R05*P_R02*P_R15*P_R17*{c}4*P_M02"
+        ws[f"{c}5"] = f"={c}14*P_R15*P_R16*{c}4*P_M02"
+        ws[f"{c}6"] = f"={c}14*P_R05*P_R15*P_R17*{c}4*P_M02"
         ws[f"{c}7"] = f"={c}5+{c}6"
-        ws[f"{c}8"] = f"={c}5*P_R06"
-        ws[f"{c}9"] = f"={c}6*P_R06"
-        ws[f"{c}10"] = f"={c}7*P_R07/P_R08"
+        ws[f"{c}8"] = f"={c}5*P_R06*P_R07"
+        ws[f"{c}9"] = f"={c}6*P_R06*P_R07"
+        ws[f"{c}10"] = f"={c}7*P_R06*(1-P_R07)"
         ws[f"{c}11"] = f"=P_R09*P_R10*{c}4*{c}13"
         ws[f"{c}12"] = f"=SUM({c}8:{c}11)"
     estilo(ws, 2, 14, 2 + MESES)
-    ws["B16"].number_format = ws["B17"].number_format = DEC2
+    ws["B16"].number_format = DEC2
     for c in COL_MES:
         ws[f"{c}4"].number_format = ws[f"{c}13"].number_format = PCT
         ws[f"{c}14"].number_format = DEC2
@@ -818,8 +833,8 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
            ("Margem de contribuição (ano 5)", "=dre!F9/dre!F4", "% da receita bruta"),
            ("Receita bruta mensal de equilíbrio", "=B9/B10", "R$"),
            ("Receita madura ÷ receita de equilíbrio", "=B8/B11", "vezes"),
-           ("Mesas ocupadas de equilíbrio, fim de semana (dia útil na mesma proporção)", "=P_R04*(B11-receitas!BJ11)/(B8-receitas!BJ11)", "mesas"),
-           ("Mesas ocupadas de equilíbrio, dia útil", "=B13*P_R05", "mesas")]
+           ("Circulação de equilíbrio no pico de fim de semana (dia útil na mesma proporção)", "=P_R04*(B11-receitas!BJ11)/(B8-receitas!BJ11)", "pessoas por hora"),
+           ("Pessoas por dia de equilíbrio, fim de semana", "=B13*P_R15", "pessoas")]
     for i, (n, fo, u) in enumerate(ind):
         ws.cell(3 + i, 1, n); ws.cell(3 + i, 2, fo); ws.cell(3 + i, 3, u)
     rt = 2 + len(ind)
@@ -832,7 +847,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
     ws["B13"].number_format = ws["B14"].number_format = DEC2
     ws["B12"].number_format = DEC2
     ws["B3"].alignment = Alignment(horizontal="right")
-    nota(ws, rt + 2, "Fonte: abas fluxo_caixa, dre, receitas e custos. Mesas ocupadas de equilíbrio por aproximação linear: a receita sem o aluguel de jogos cresce na proporção das mesas ocupadas.", 3)
+    nota(ws, rt + 2, "Fonte: abas fluxo_caixa, dre, receitas e custos. Circulação de equilíbrio por aproximação linear: a receita sem o aluguel de jogos cresce na proporção da circulação.", 3)
     ws.column_dimensions["A"].width = 58
     ws.column_dimensions["B"].width = 18
     ws.column_dimensions["C"].width = 20
@@ -938,7 +953,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
     for i, (_, _, fmt) in enumerate(medidas):
         ws.cell(3 + i, 2).number_format = fmt
     nota(ws, rt + 2, "Fonte: elaboração própria. Distribuição PERT contínua entre o pessimista e o otimista da aba premissas, com moda no "
-         "provável, salvo: pessoas por mesa de 2 a 6; mesas ocupadas no fim de semana como demanda, até o maior valor das visitas; TMA fixa "
+         "provável, salvo: pessoas por mesa de 2 a 6; TMA fixa "
          "no provável. Demanda acima do salão abre mais 2 mesas a partir do ano 2; EBITDA anual negativo a partir do ano 2 aciona o G5 "
          "(corte do meio período e de um cozinheiro) e, se persistir, o G6 (encerramento com revenda dos ativos, I09). "
          f"Premissas independentes entre si; semente {SEMENTE}. Valores gravados pelo script.", 2)
@@ -955,16 +970,16 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
         ("Pessoas atendidas por dia", "=receitas!BJ7/(P_M02*7)", "=P_R01*P_R02*(P_R13+P_R14)*60/P_R03/7",
          "Capacidade: todas as mesas ocupadas todas as horas, com a permanência média"),
         ("Uso da capacidade", "=B3/C3", "", "Tem de ficar abaixo de 100%"),
-        ("Mesas ocupadas no fim de semana ÷ mesas do salão", "=P_R04/P_R01", "", "Tem de ficar abaixo de 100%"),
-        ("Horas de mesa por dia de fim de semana (giros × permanência)", "=P_R15*P_R03/60", "=P_R13/P_R16",
-         "Horas abertas por dia de fim de semana: os giros têm de caber no horário"),
+        ("Mesas ocupadas no pico ÷ mesas do salão", "=P_R04*P_R03/60/P_R02/P_R01", "", "Tem de ficar abaixo de 100%"),
+        ("Horas de pico equivalentes por dia de fim de semana", "=P_R15", "=P_R13/P_R16",
+         "Horas abertas por dia de fim de semana: as horas de pico equivalentes têm de caber no horário"),
         ("Pessoas atendidas por dia × NFC-e da Bela Vista", "=B3", float(notas.loc["BV", "notas_emitidas"] / notas.loc["BV", "dias"]),
          "NFC-e emitidas por dia, São Jogue Bela Vista, 10/10 a 16/10/2026 (B3); uma nota por pessoa, emitida só a pedido: piso de clientes"),
         ("Pessoas atendidas por dia × NFC-e da Paralela", "=B3", float(notas.loc["PA", "notas_emitidas"] / notas.loc["PA", "dias"]),
-         "NFC-e por dia, São Jogue Paralela, 17/10 a 30/10/2026 (B3), com o fim de semana da eleição; calibra o giro pessimista"),
-        ("Receita por pessoa (R$)", "=receitas!BJ12/receitas!BJ7", float(f["couvert_media"] + f["cesta_consumo_media"]),
-         "Taxa de entrada média mais uma cesta de consumo média por pessoa (B1): teto do otimista"),
-        ("Taxa de entrada (R$)", "=P_R06", float(f["taxa_b1_mediana"]),
+         "NFC-e por dia, São Jogue Paralela, 17/10 a 30/10/2026 (B3), com o fim de semana da eleição; piso de clientes"),
+        ("Receita por pessoa (R$)", "=receitas!BJ12/receitas!BJ7", float(f["gasto_casas"]["cesta_consumo"].mean()),
+         "Cesta de consumo média (bebida + entrada ou prato + taxa de entrada) das casas da R06 (B1)"),
+        ("Taxa de entrada (R$)", "=P_R06*P_R07", float(f["taxa_b1_mediana"]),
          f"Mediana do couvert ou taxa de jogo nos cardápios de {f['taxa_b1_n']} concorrentes (B1)"),
         ("Pessoas atendidas por dia por funcionário", "=B3/QUADRO_N", "",
          "Equipe do desenho enxuto (aba pessoal)"),
@@ -1090,6 +1105,11 @@ def main():
     print(f"\nTaxa de entrada média: R$ {f['couvert_media']:.2f} (n={f['couvert_n']}, mediana {f['couvert_mediana']:.2f});"
           f" cesta de consumo média: R$ {f['cesta_consumo_media']:.2f} (n={f['cesta_consumo_n']}, mediana {f['cesta_consumo_mediana']:.2f})")
     print("Mesas ocupadas por visita:", [round(x, 2) for x in f["mesas_ocupadas"]])
+    print("Circulação no pico por visita:", [round(x, 2) for x in f["circulacao_visitas"]],
+          f"| pelas NFC-e (BV, PA): {[round(x, 2) for x in f['circulacao_nfce']]} com {f['horas_pico_sj_fds']:.2f} h de pico"
+          f" | teto do salão {f['teto_circ']:.2f} pessoas/h")
+    print(f"Gasto por pessoa (B2): {[round(x, 2) for x in f['gasto']]}; parcela da taxa {f['parcela_taxa']:.4f};"
+          f" horas de pico equivalentes: {f['horas_pico']}")
     print(f"Folha de referência: R$ {folha:,.2f} ({sum(q for _, _, q, _, _ in quadro)} pessoas)")
     print(f"Juro real: {f['juro_real']:.2f}%; PAS mercadorias: {f['pas_mercadorias_pct']:.1f}%; taxa B1 mediana {f['taxa_b1_mediana']} (n={f['taxa_b1_n']})")
     for cen in CENARIOS:

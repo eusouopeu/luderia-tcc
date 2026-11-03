@@ -1,14 +1,12 @@
 # 8 ASPECTOS JURÍDICOS E LEGAIS
 
-> **Rascunho (31/10/2026).** Normas federais citadas pelo número e ano; normas da Bahia e de Salvador, alíquotas de ICMS e ISS, taxas e prazos das licenças marcados `[AV]` até a conferência do texto vigente. Valores de receita e folha do cenário provável do cap. 9 (ano 2).
-
 Os aspectos jurídicos definem a forma da empresa, o regime de tributos e as licenças que condicionam a abertura. Por isso, eles moldam o negócio antes dos números: o ponto, a lotação e a carga tributária do plano financeiro dependem das escolhas deste capítulo.
 
 ## 8.1 FORMA JURÍDICA E ENQUADRAMENTO TRIBUTÁRIO
 
 A luderia deve ser uma sociedade limitada, unipessoal se tiver um só sócio. A forma limita a responsabilidade do sócio ao capital (Lei n. 10.406/2002, art. 1.052) e, desde a Lei n. 13.874/2019, admite um único sócio. O empresário individual não separa o patrimônio pessoal, e o microempreendedor individual (MEI) não comporta a receita projetada nem o quadro de 12 empregados (LC n. 123/2006, art. 18-A) [AV]. As duas unidades da São Jogue são sociedades empresárias limitadas, com capital social de R$ 50 mil (Bela Vista, 2019) e R$ 150 mil (Paralela, 2025), ambas no Simples Nacional (BRASIL, 2026).
 
-A empresa entra no Simples Nacional como empresa de pequeno porte. A receita provável do ano 2, de R$ 662 mil, passa do teto da microempresa (R$ 360 mil) e fica abaixo do limite de R$ 4,8 milhões (LC n. 123/2006, art. 3º). Cada receita segue o anexo da atividade: o A&B é revenda de mercadoria, no anexo I; a taxa de entrada é serviço de recreação, no anexo III, pela regra geral do art. 18, § 5º-F; o aluguel de jogos é locação de bem móvel, no anexo III sem a parcela do Imposto sobre Serviços (ISS) (art. 18, § 4º, V). O modelo do cap. 9 tributa o aluguel pelo anexo III cheio, o que superestima o imposto em cerca de R$ 420,00 por ano (a parcela do ISS é 32,5% da alíquota do anexo III na 4ª faixa). O Simples custa cerca da metade do Lucro Presumido: R$ 58,8 mil, contra R$ 117,3 mil por ano (Tabela 8.1). A diferença vem sobretudo da contribuição patronal sobre a folha: no Simples, ela está dentro do Documento de Arrecadação do Simples Nacional (DAS) dos anexos I e III; no Lucro Presumido, soma 5,1% da receita.
+A empresa entra no Simples Nacional como empresa de pequeno porte. A receita provável do ano 2, de R$ 662 mil, passa do teto da microempresa (R$ 360 mil) e fica abaixo do limite de R$ 4,8 milhões (LC n. 123/2006, art. 3º). Cada receita segue o anexo da atividade: o A&B é revenda de mercadoria, no anexo I; a taxa de entrada é serviço de recreação, no anexo III, pela regra geral do art. 18, § 5º-F; o aluguel de jogos é locação de bem móvel, no anexo III sem a parcela do Imposto sobre Serviços (ISS) (art. 18, § 4º, V). O modelo do capítulo 9 tributa o aluguel pelo anexo III cheio, o que superestima o imposto em cerca de R$ 420,00 por ano (a parcela do ISS é 32,5% da alíquota do anexo III na 4ª faixa). O Simples custa cerca da metade do Lucro Presumido: R$ 58,8 mil, contra R$ 117,3 mil por ano (Tabela 8.1). A diferença vem sobretudo da contribuição patronal sobre a folha: no Simples, ela está dentro do Documento de Arrecadação do Simples Nacional (DAS) dos anexos I e III; no Lucro Presumido, soma 5,1% da receita.
 
 **Tabela 8.1 – Tributos no ano maduro, cenário provável: Simples Nacional × Lucro Presumido (R$)**
 
@@ -22,39 +20,39 @@ A empresa entra no Simples Nacional como empresa de pequeno porte. A receita pro
 | Total | 58.822,30 | 117.280,45 |
 | Carga sobre a receita bruta de R$ 661.655,03 (%) | 8,9 | 17,7 |
 
-Fonte: elaboração própria, com base na LC n. 123/2006 (anexos I e III), Lei n. 9.249/1995 (arts. 15 e 20), Lei n. 9.718/1998 e Lei n. 8.212/1991 (art. 22); receita e folha do modelo financeiro (Apêndice E).
+Fonte: elaborado pelo próprio autor, com base na LC n. 123/2006 (anexos I e III), Lei n. 9.249/1995 (arts. 15 e 20), Lei n. 9.718/1998 e Lei n. 8.212/1991 (art. 22); receita e folha do modelo financeiro (Apêndice E).
 
 Nota: n.a.: tributo incluído no DAS do Simples Nacional. Receita e folha do ano maduro: A&B de R$ 375.101,53, taxa de entrada de R$ 275.753,50 e aluguel de jogos de R$ 10.800,00; folha de 13,33 salários mensais de R$ 9.112,95 (12 meses, 13º salário e um terço de férias). Sem o adicional de 10% do IRPJ, porque a base presumida fica abaixo de R$ 240 mil por ano. O ISS incide só sobre a taxa de entrada, porque a locação de bem móvel não é serviço.
 
-A carga do Simples entra no cap. 9 como 7,4% sobre o A&B e 10,8% sobre os serviços no ano maduro, calculada pela tabela do anexo sobre a receita do ano. A reforma do consumo (EC n. 132/2023 e LC n. 214/2025) mantém o Simples e abre a opção de recolher IBS e CBS por fora a partir de 2027 [AV]; a opção só vale se a luderia vender para empresas que usem o crédito, o que não é o caso.
+A carga do Simples entra no capítulo 9 como 8,2% sobre o A&B e 12,1% sobre os serviços no ano maduro, calculada pela tabela do anexo sobre a receita do ano. A reforma do consumo (EC n. 132/2023 e LC n. 214/2025) mantém o Simples e abre a opção de recolher IBS e CBS por fora a partir de 2027 [AV]; a opção só vale se a luderia vender para empresas que usem o crédito, o que não é o caso.
 
 O anexo de cada receita depende também do código de atividade. O CNAE principal é 5611-2/01 (restaurantes e similares), pela cozinha própria com refeições, com 9329-8/99 (recreação e lazer), 4763-6/01 (venda de jogos), 7729-2/02 (locação de jogos) e 8230-0/01 (eventos) como secundários. A São Jogue usa 5611-2/03 (lanchonete) como principal e lista 5611-2/01, 9329-8/99, 4763-6/01 e 8230-0/01 entre os secundários (BRASIL, 2026); as duas escolhas caem no anexo I. O código 5611-2/05 foi descartado (bar com entretenimento): a CONCLA define o entretenimento dessa subclasse como música e apresentações, não jogos de mesa (CONCLA, 2026).
 
 ## 8.2 LICENÇAS, ALVARÁS E OBRIGAÇÕES
 
-A abertura e a operação dependem de nove obrigações (Quadro 8.1). O custo total entra no investimento pré-operacional do cap. 9 (premissa I06, R$ 20 mil no provável), ainda sem cotação. A emissão da NFC-e em toda venda muda a prática observada no setor. Nas visitas do B3, as duas unidades da São Jogue só emitiam a nota quando o cliente pedia; no restante, entregavam o comprovante da maquininha. O plano assume a emissão integral: a carga tributária do cap. 9 já incide sobre toda a receita. Essa escolha deixa o plano do lado conservador.
+A abertura e a operação dependem de nove obrigações (Quadro 8.1). O custo total entra no investimento pré-operacional do capítulo 9 (premissa I06, R$ 20 mil no provável), ainda sem cotação. A emissão da NFC-e em toda venda muda a prática observada no setor. Nas visitas do B3, as duas unidades da São Jogue só emitiam a nota quando o cliente pedia; no restante, entregavam o comprovante da maquininha. O plano assume a emissão integral: a carga tributária do capítulo 9 já incide sobre toda a receita. Essa escolha deixa o plano do lado conservador.
 
 **Quadro 8.1 – Obrigações legais para abrir e operar a luderia em Salvador**
 
 | Obrigação | Órgão | Norma | Efeito no plano |
 |---|---|---|---|
 | Registro da empresa e CNPJ | JUCEB e Receita Federal, pela Redesim | Lei n. 11.598/2007 | Primeiro passo; custo a cotar com o contador |
-| Viabilidade de localização e alvará de funcionamento | Prefeitura de Salvador (Sedur) | LOUOS de Salvador [AV] | Condiciona o ponto (cap. 7): zona que admita serviço de alimentação e lazer |
+| Viabilidade de localização e alvará de funcionamento | Prefeitura de Salvador (Sedur) | LOUOS de Salvador [AV] | Condiciona o ponto (capítulo 7): zona que admita serviço de alimentação e lazer |
 | Licença do Corpo de Bombeiros e lotação | CBMBA | Lei estadual n. 12.929/2013 [AV] | Lotação do salão define o teto de mesas (R01) |
-| Licença sanitária | Vigilância sanitária municipal | RDC Anvisa n. 216/2004 | Cozinha com fluxo, materiais e manual de boas práticas (cap. 7) |
-| Venda de bebida alcoólica | — | Lei n. 8.069/1990, art. 243 (Lei n. 13.106/2015) | Proibida a menores de 18 anos; conferência de idade no caixa |
+| Licença sanitária | Vigilância sanitária municipal | RDC Anvisa n. 216/2004 | Cozinha com fluxo, materiais e manual de boas práticas (capítulo 7) |
+| Venda de bebida alcoólica | – | Lei n. 8.069/1990, art. 243 (Lei n. 13.106/2015) | Proibida a menores de 18 anos; conferência de idade no caixa |
 | Música ambiente | ECAD | Lei n. 9.610/1998, art. 68 | Retribuição mensal, só se houver música |
 | Acessibilidade | Prefeitura, no alvará | Lei n. 13.146/2015; ABNT NBR 9050 | Rota acessível, sanitário adaptado e mesa acessível no projeto |
 | Dados de clientes | ANPD | Lei n. 13.709/2018 | Reserva e cadastro com finalidade declarada e base legal de execução de contrato (art. 7º, V) |
 | Nota fiscal ao consumidor (NFC-e) | Sefaz-BA | RICMS-BA [AV] | Emissão em toda venda |
 
-Fonte: elaboração própria.
+Fonte: elaborado pelo próprio autor.
 
 ## 8.3 CONTRATOS E PROPRIEDADE INTELECTUAL
 
-O contrato de locação deve ter prazo escrito de 5 anos. Esse prazo dá direito à ação renovatória (Lei n. 8.245/1991, art. 51) e coincide com o horizonte do cap. 9 e com a amortização da reforma. A garantia por caução fica limitada a três aluguéis (art. 38, § 2º), o valor da premissa I07. Em shopping, prevalecem as condições do contrato com o empreendedor (art. 54), o que explica a faixa pessimista de condomínio (C05). O reajuste anual por índice de preços é neutro no modelo, que usa preços constantes.
+O contrato de locação deve ter prazo escrito de 5 anos. Esse prazo dá direito à ação renovatória (Lei n. 8.245/1991, art. 51) e coincide com o horizonte do capítulo 9 e com a amortização da reforma. A garantia por caução fica limitada a três aluguéis (art. 38, § 2º), o valor da premissa I07. Em shopping, prevalecem as condições do contrato com o empreendedor (art. 54), o que explica a faixa pessimista de condomínio (C05). O reajuste anual por índice de preços é neutro no modelo, que usa preços constantes.
 
-O acervo traz uma questão própria de propriedade intelectual, mas o uso dos jogos comprados no salão não depende de licença. A Lei n. 9.610/1998 protege a reprodução da obra (art. 29); o exemplar adquirido pode ser emprestado à mesa e alugado como bem móvel. Copiar ou imprimir componentes e usar a marca de um jogo para divulgar torneio pago exige autorização do titular [AV — conferir termos das editoras do acervo]. O nome da luderia deve ser registrado no Instituto Nacional da Propriedade Industrial (INPI) antes da fachada e das redes sociais. A propriedade da marca vem do registro (Lei n. 9.279/1996, art. 129), nas classes de serviços de alimentação e de entretenimento [AV]. A busca de anterioridade precede a escolha do nome no cap. 6.
+O acervo traz uma questão própria de propriedade intelectual, mas o uso dos jogos comprados no salão não depende de licença. A Lei n. 9.610/1998 protege a reprodução da obra (art. 29); o exemplar adquirido pode ser emprestado à mesa e alugado como bem móvel. Copiar ou imprimir componentes e usar a marca de um jogo para divulgar torneio pago exige autorização do titular [AV – conferir termos das editoras do acervo]. O nome da luderia deve ser registrado no Instituto Nacional da Propriedade Industrial (INPI) antes da fachada e das redes sociais. A propriedade da marca vem do registro (Lei n. 9.279/1996, art. 129), nas classes de serviços de alimentação e de entretenimento [AV]. A busca de anterioridade precede a escolha do nome no capítulo 6.
 
 **Referências citadas neste capítulo**
 

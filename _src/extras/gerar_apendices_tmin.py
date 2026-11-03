@@ -152,7 +152,7 @@ def apendice_a(d):
     lista = est.sort_values(["capital_endereco", "volume_avaliacoes"], ascending=[True, False])
     t2 = [["Concorrente", "Metrópole", "Nota (1 a 5)", "Avaliações"]] + [
         [r.nome, r.capital_endereco, num(r.avaliacao_media), brl(r.volume_avaliacoes, 0)] for r in lista.itertuples()]
-    fonte_b1 = "Fonte: elaboração própria, com base no Bloco B1 (Google Places API, 09/2026 e 12/10/2026)."
+    fonte_b1 = "Fonte: elaborado pelo próprio autor, com base no Bloco B1 (Google Places API, 09/2026 e 12/10/2026)."
     return [titulo("APÊNDICE A – CONCORRENTES DO BLOCO B1"),
             par(f"A busca pela Google Places API levantou 164 candidatos com mais de 100 avaliações nas 14 metrópoles da REGIC 2018 "
                 f"e em suas regiões metropolitanas, e a curadoria manual aprovou {len(est)}. Cada concorrente pertence a uma única "
@@ -184,7 +184,7 @@ def apendice_b(d):
                 "Bela Vista e 9 na Paralela (Tabela B.1)."),
             legenda("Tabela B.1 – Registros por visita"),
             tabela("Tabela", [800, 1171, 1050, 1050, 1050, 1350, 1300, 1300], t1, ["left", "left"] + ["right"] * 6),
-            fonte("Fonte: elaboração própria, com base no Bloco B3 (10/10/2026 a 30/10/2026).", fim=False),
+            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B3 (10/10/2026 a 30/10/2026).", fim=False),
             nota("Nota: visita pela data de início. Mesas ocupadas em média = ocupação média × mesas da unidade; pessoas por grupo e "
                  "permanência só dos grupos sentados durante a visita."),
             par("As vendas fora das horas observadas vêm da numeração das notas fiscais. A NFC-e de uma compra do autor no início e no "
@@ -192,7 +192,7 @@ def apendice_b(d):
                 "intervalo (Tabela B.2). Como nem toda venda gera nota, o valor é um piso."),
             legenda("Tabela B.2 – Notas fiscais emitidas entre visitas"),
             tabela("Tabela", [1771, 1800, 1800, 1000, 1350, 1350], t2, ["left", "left", "left", "right", "right", "right"]),
-            fonte("Fonte: elaboração própria, com base no Bloco B3 (NFC-e da São Jogue, 10/10/2026 a 30/10/2026).")], {}
+            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B3 (NFC-e da São Jogue, 10/10/2026 a 30/10/2026).")], {}
 
 
 def apendice_c(d):
@@ -219,13 +219,13 @@ def apendice_c(d):
                 "As faixas do Simples Nacional (Tabela C.2) e os salários de admissão (Tabela C.3) entram direto no modelo financeiro."),
             legenda("Quadro C.1 – Séries das bases públicas usadas no plano"),
             tabela("Quadro", [2200, 2300, 2271, 2300], q, ["left"] * 4),
-            fonte("Fonte: elaboração própria, com base no Bloco B4 (10/2026)."),
+            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B4 (10/2026)."),
             legenda("Tabela C.2 – Faixas do Simples Nacional, anexos I e III"),
             tabela("Tabela", [900, 800, 3371, 1900, 2100], t2, ["center", "center", "right", "right", "right"]),
-            fonte("Fonte: elaboração própria, com base na LC n. 123/2006 (anexos I e III)."),
+            fonte("Fonte: elaborado pelo próprio autor, com base na LC n. 123/2006 (anexos I e III)."),
             legenda("Tabela C.3 – Salários de admissão da equipe"),
             tabela("Tabela", [4371, 1200, 1200, 2300], t3, ["left", "center", "right", "right"]),
-            fonte("Fonte: elaboração própria, com base no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana).", fim=False),
+            fonte("Fonte: elaborado pelo próprio autor, com base no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana).", fim=False),
             nota("Nota: recreador em todas as atividades e cozinheiro geral na CNAE 56; meio período proporcional a 20 h de 44 h.")], {}
 
 
@@ -233,11 +233,11 @@ def apendice_d(d):
     q = [["Decisão", "Pergunta", "Dado usado (premissas)", "Fonte", "Nível"],
          ["Bairro", "Onde está o público, longe da concorrência direta?", "Pessoas de 20 a 39 anos, apartamentos e densidade por bairro; endereço da São Jogue", "Censo 2022 (B4); B1", "N2 + N3"],
          ["Modelo de cobrança", "Como o mercado cobra a entrada?", "Taxa por dia e turno nos concorrentes; NFC-e da São Jogue", "B1; B3", "N3 + N5"],
-         ["Taxa de entrada", "Quanto cobrar por pessoa?", "Couvert ou taxa de jogo de 22 casas (R06)", "B1", "N3"],
-         ["Consumo", "Quanto cada pessoa consome?", "Cesta de 36 casas (R07); pessoas por cesta (R08)", "B1; autor", "N3 + N6"],
-         ["Mesas e ocupação", "Quantas mesas e quantas ocupadas?", "Ocupação nas visitas (R01, R04); dia útil (R05)", "B3; autor", "N5 + N6"],
-         ["Tamanho do grupo", "Quantas pessoas por mesa?", "Pessoas por mesa ocupada nas visitas (R02)", "B3", "N5 + N6"],
-         ["Giro", "Quantas vezes a mesa vira por dia?", "NFC-e entre visitas e permanência (R15)", "B3", "N5"],
+         ["Taxa de entrada", "Quanto cobrar por pessoa?", "Couvert ou taxa de jogo de 22 casas; parcela da taxa na cesta de consumo de 12 casas (R07)", "B1", "N3"],
+         ["Consumo", "Quanto cada pessoa gasta?", "Gasto por pessoa declarado no Google Maps e cesta de consumo de 12 casas (R06)", "B1; B2", "N3"],
+         ["Demanda", "Quantas pessoas entram por dia?", "Circulação no pico nas visitas e pelas NFC-e (R04); concorrentes abertos por hora (R15)", "B1; B3", "N5 + N3"],
+         ["Dia útil", "Quanto o dia útil recebe do fim de semana?", "Gasto com cartão em restaurantes por dia da semana (R05)", "ANR e Mastercard", "N4"],
+         ["Mesas e grupo", "Quantas mesas o salão precisa?", "Mesas, pessoas por mesa e permanência nas visitas (R01 a R03)", "B3", "N5 + N6"],
          ["Horário", "Em que dias e horas abrir?", "Horário de 49 concorrentes (R13, R14, R16, R17)", "B1", "N3"],
          ["Equipe", "Quantas pessoas e a que custo?", "Fluxo nas visitas; salário de admissão (C06); encargos (C07)", "B3; Novo CAGED (B4); CLT", "N5 + N2 + N1"],
          ["Acervo inicial", "Quais jogos e a que custo?", "Acervos de 30 concorrentes e preço nas lojas (I05)", "B1", "N3"],
@@ -252,7 +252,7 @@ def apendice_d(d):
                 "financeiro, com faixa e justificativa no Apêndice E (Quadro D.1)."),
             legenda("Quadro D.1 – Matriz de evidências"),
             tabela("Quadro", [1500, 2000, 2771, 1800, 1000], q, ["left", "left", "left", "left", "center"]),
-            fonte("Fonte: elaboração própria.")], {}
+            fonte("Fonte: elaborado pelo próprio autor.")], {}
 
 
 def apendice_e(d):
@@ -261,13 +261,13 @@ def apendice_e(d):
         linhas.append([p["id"], f"{p['nome']} ({unidade_rotulo(p['unidade'])})", valor(p["pess"], p["unidade"]),
                        valor(p["prov"], p["unidade"]), valor(p["otim"], p["unidade"]), p["fonte"], p["nivel"]])
     return [titulo("APÊNDICE E – REGISTRO DE PREMISSAS"),
-            par(f"O modelo do cap. 9 tem {len(d['prem'])} premissas, cada uma com faixa pessimista, provável e otimista, fonte e nível "
+            par(f"O modelo do capítulo 9 tem {len(d['prem'])} premissas, cada uma com faixa pessimista, provável e otimista, fonte e nível "
                 "de evidência (Quadro E.1). O código diz o grupo: R, receita e demanda; C, custos; I, investimento; M, parâmetros do "
                 "modelo. Nas unidades em %, os valores estão em pontos percentuais."),
             legenda("Quadro E.1 – Registro de premissas do modelo financeiro"),
             tabela("Quadro", [550, 2450, 1050, 1050, 1050, 2221, 700], linhas,
                    ["center", "left", "center", "center", "center", "left", "center"], sz=18),
-            fonte("Fonte: elaboração própria, com base no modelo financeiro e nos Blocos B1, B3 e B4 (10/2026).")], \
+            fonte("Fonte: elaborado pelo próprio autor, com base no modelo financeiro e nos Blocos B1, B3 e B4 (10/2026).")], \
         dict(premissas=len(d["prem"]))
 
 
@@ -291,25 +291,24 @@ def apendice_f(d):
          ["Cenários com payback em até 5 anos (%)", pct(mc["payback_5anos"])],
          ["Payback descontado mediano (anos)", num(round(mc["payback_mediana"], 1))]]
     return [titulo("APÊNDICE F – SIMULAÇÃO DE MONTE CARLO"),
-            par(f"A simulação sorteia {brl(g.N_SIMULACOES, 0)} cenários do modelo do cap. 9. Em cada cenário, toda premissa com faixa "
+            par(f"A simulação sorteia {brl(g.N_SIMULACOES, 0)} cenários do modelo do capítulo 9. Em cada cenário, toda premissa com faixa "
                 "recebe um valor contínuo de uma distribuição PERT entre o pessimista e o otimista, com moda no provável: a PERT dá menos "
-                "peso às pontas que a triangular. Há três exceções. As pessoas por mesa (R02) vão de 2 a 6. As mesas ocupadas no fim de "
-                "semana (R04) representam a demanda e vão até 6,02, o maior valor das visitas, mesmo acima do que o salão comporta. A taxa "
+                "peso às pontas que a triangular. Há duas exceções. As pessoas por mesa (R02), que só limitam o salão, vão de 2 a 6. A taxa "
                 "mínima de atratividade fica no provável, 15%: o risco já está no fluxo de caixa, e sorteá-la contaria o risco duas vezes."),
-            par("A simulação inclui as decisões de gestão do cap. 10. Se a demanda sorteada passa do salão, a luderia abre mais 2 mesas a "
+            par("A simulação inclui as decisões de gestão do capítulo 10. Se a circulação sorteada passa do que o salão comporta, a luderia abre mais 2 mesas a "
                 "partir do ano 2, com o mobiliário proporcional pago no fim do ano 1. Se o EBITDA de um ano, a partir do ano 2, fica "
                 "negativo, o gatilho G5 corta o meio período e um cozinheiro no ano seguinte. Se o EBITDA segue negativo, o gatilho G6 "
                 "encerra o negócio no fim desse ano, com a devolução da caução e do capital de giro e a revenda dos ativos (I09), sem valor "
                 "residual. A semente é fixa, e o resultado se repete a cada execução."),
             par("As premissas são sorteadas de forma independente. A simulação mede o efeito conjunto das faixas melhor que os cenários "
                 "extremos, que põem todas as premissas no mesmo lado ao mesmo tempo (Tabela F.1 e Figura F.1). Com 10 mil cenários, a "
-                "probabilidade de VPL positivo tem erro padrão de 0,5 ponto percentual."),
+                f"probabilidade de VPL positivo tem erro padrão de {num(round(100 * mc['erro_prob'], 1))} ponto percentual."),
             legenda("Tabela F.1 – Resultados da simulação de Monte Carlo"),
             tabela("Tabela", [6071, 3000], t, ["left", "right"]),
-            fonte("Fonte: elaboração própria, com base no modelo financeiro (02/11/2026)."),
+            fonte("Fonte: elaborado pelo próprio autor, com base no modelo financeiro (02/11/2026)."),
             legenda("Figura F.1 – Distribuição do VPL na simulação de Monte Carlo"),
             figura("rIdApF1", FIG_MC, "Figura F.1 – Distribuição do VPL na simulação de Monte Carlo"),
-            fonte("Fonte: elaboração própria, com base no modelo financeiro (02/11/2026).")], dict(prob=pct(mc["prob_positivo"]))
+            fonte("Fonte: elaborado pelo próprio autor, com base no modelo financeiro (02/11/2026).")], dict(prob=pct(mc["prob_positivo"]))
 
 
 # --------------------------------------------------------------- conferência com o principal

@@ -1,30 +1,28 @@
 # 4 SUMÁRIO EXECUTIVO
 
-> **Rascunho (02/11/2026).** Resume os caps. 5 a 11 sem informação nova, em texto corrido, sem seções (pedido do autor em 02/11/2026). Empreendedor e missão, visão e valores saíram do TMin; a proposta de valor é provisória até o 6.1.
-
 A luderia é um salão de jogos de tabuleiro com 6 mesas, na Pituba, em Salvador, aberto de terça a domingo nas 8 horas de maior movimento das concorrentes. O cliente paga uma taxa de entrada por pessoa, por turno de 3 horas, escolhe entre 175 títulos com a ajuda de um instrutor e consome alimentos e bebidas na mesa. O desenho é enxuto: acervo e mesas crescem por etapas, quando a demanda medida pede. [proposta de valor em uma frase, da seção 6.1]
 
-As 14 metrópoles brasileiras têm 54 luderias com mais de 100 avaliações no Google Maps, em 13 delas. Salvador tem uma, a São Jogue, com duas unidades, a 4,8 estrelas em 787 avaliações (Bloco B1). Os 22 concorrentes que cobram taxa de entrada cobram em média R$ 18,68 por pessoa, e a cesta de consumo, uma bebida e uma entrada ou prato, custa em média R$ 50,82 (seções 5.3 e 6.3). A Pituba lidera a matriz de bairros pela população de 20 a 39 anos e pela proporção de domicílios em apartamento, e não tem unidade da São Jogue (seção 6.4).
+As 14 metrópoles brasileiras têm 54 luderias com mais de 100 avaliações no Google Maps, em 13 delas. Salvador tem uma, a São Jogue, com duas unidades, a 4,8 estrelas em 787 avaliações (Bloco B1). Os 22 concorrentes que cobram taxa de entrada cobram em média R$ 18,68 por pessoa. A cesta de consumo, uma bebida, uma entrada ou prato e a taxa de entrada, custa em média R$ 79,20 nos 12 concorrentes com taxa conhecida, e os avaliadores desses concorrentes declaram gastar R$ 80,14 por pessoa (seções 5.3 e 6.3). A Pituba lidera a matriz de bairros pela população de 20 a 39 anos e pela proporção de domicílios em apartamento, e não tem unidade da São Jogue (seção 6.4).
 
-O investimento provável é de R$ 369 mil, com a reforma (35%) e o capital de giro (17%) como maiores itens. No ano maduro, a receita bruta é de R$ 55,1 mil por mês, a partir de 47 pessoas por dia aberto, taxa de entrada de R$ 18,68 e uma cesta de consumo para cada duas pessoas. A equipe tem 6 pessoas: 3 instrutores de tempo integral, 1 de meio período e 2 cozinheiros-chefes (caps. 7 e 9).
+O investimento provável é de R$ 369 mil, com a reforma (35%) e o capital de giro (17%) como maiores itens. No ano maduro, a receita bruta é de R$ 76,4 mil por mês, a partir de 36 pessoas por dia aberto e de um gasto de R$ 80,14 por pessoa. As 36 pessoas vêm da circulação medida no pico da São Jogue, de 6,40 pessoas por hora, levada ao dia pelo horário dos concorrentes. A equipe tem 6 pessoas: 3 instrutores de tempo integral, 1 de meio período e 2 cozinheiros-chefes (capítulos 7 e 9).
 
 **Tabela 4.1 – Indicadores de viabilidade no cenário provável**
 
 | Indicador | Provável |
 |---|---|
 | Investimento inicial (R$) | 368.898 |
-| Receita bruta mensal madura (R$) | 55.138 |
-| Ponto de equilíbrio mensal (R$) | 44.828 |
-| VPL a 15% real (R$) | 13.248 |
-| VPL sem valor residual (R$) | -120.849 |
-| TIR real (%) | 16,0 |
-| Payback descontado (anos) | 4,9 |
+| Receita bruta mensal madura (R$) | 76.402 |
+| Ponto de equilíbrio mensal (R$) | 48.699 |
+| VPL a 15% real (R$) | 853.916 |
+| VPL sem valor residual (R$) | 290.196 |
+| TIR real (%) | 59,3 |
+| Payback descontado (anos) | 2,9 |
 
-Fonte: elaboração própria, com base no modelo financeiro (Apêndice E, 02/11/2026).
+Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E, 02/11/2026).
 
 Nota: cenários pessimista e otimista na Tabela 9.4.
 
-O negócio fica no limite da viabilidade nas premissas prováveis: o VPL é de R$ 13 mil (Tabela 4.1), positivo só com o valor residual, e as cinco premissas críticas têm ruptura a menos de 2% do provável (seção 10.3). Na simulação de Monte Carlo, o VPL fica positivo em 49,1% dos cenários. O desenho enxuto reduz a perda máxima: a expansão só acontece quando a demanda medida pede, e seis gatilhos de perda definem as medidas, da troca da forma de cobrança ao encerramento (seção 10.4). O consumo por pessoa e as mesas ocupadas em dia útil não foram medidos e são as premissas que mais precisam de validação antes do investimento, junto com a cotação do ponto e da reforma.
+O negócio é viável nas premissas prováveis: o VPL é de R$ 854 mil (Tabela 4.1) e segue positivo sem o valor residual. A viabilidade depende de duas premissas, a circulação no pico e o gasto por pessoa, que têm ruptura 23% abaixo do provável (seção 10.3). Na simulação de Monte Carlo, o VPL fica positivo em 81,9% dos cenários. O desenho enxuto reduz a perda máxima: a expansão só acontece quando a demanda medida pede, e seis gatilhos de perda definem as medidas, da troca da forma de cobrança ao encerramento (seção 10.4). A circulação de dia útil não foi medida em luderia e é a premissa que mais precisa de validação antes do investimento, junto com a cotação do ponto e da reforma.
 
 **Referências citadas neste capítulo**
 

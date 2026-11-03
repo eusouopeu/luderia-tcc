@@ -27,6 +27,8 @@ Cada termo é definido uma vez, no cap. 3 (ou na primeira ocorrência, se aparec
 | **Fluxo** | Visitantes por semana | movimento, público, demanda (demanda é o total do mercado) |
 | **Permanência** | Tempo entre a entrada e a saída de um grupo | duração da sessão, estadia |
 | **Giro** | Número de grupos que uma mesa recebe por dia (horas de funcionamento ÷ permanência média) | rotatividade |
-| **Ticket médio** | Gasto médio por pessoa por visita, em R$, com couvert e alimentos e bebidas. A árvore de direcionadores separa as duas partes: couvert lúdico e ticket médio de A&B | gasto médio, consumo médio, conta média |
+| **Circulação** | Pessoas que entram na luderia por hora; a circulação no pico é a das visitas do B3, nas noites de sexta e sábado (decisão do autor, 02/11/2026) | fluxo (fluxo é por semana), movimento |
+| **Cesta de consumo** | Bebida + entrada ou prato principal + taxa de entrada, pelos preços do cardápio de cada concorrente (decisão do autor, 02/11/2026; antes, sem a taxa) | cesta completa, consumo por pessoa |
+| **Ticket médio** | Gasto médio por pessoa por visita, em R$, com couvert e alimentos e bebidas. No modelo, é o gasto por pessoa declarado no Google Maps (R06); a parcela da taxa de entrada (R07) separa taxa e A&B | gasto médio, consumo médio, conta média |
 | **Velocidade de avaliações** | Avaliações com texto por mês, no recorte até "3 meses atrás", inclusive | ritmo, frequência de avaliações |
 | **Premissa crítica** | Uma das 3 a 5 premissas de maior impacto no VPL no tornado | premissa-chave, variável principal |

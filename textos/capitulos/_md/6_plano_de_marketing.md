@@ -1,7 +1,5 @@
 # 6 PLANO DE MARKETING
 
-> **Rascunho parcial (31/10/2026).** Só as seções 6.3 e 6.4; as demais ficam para depois do Bardin (6.1, 6.2, 6.5) e da calibração da demanda (seção 6.6). Números de preço do B1 (cardápios; couvert também de site, imprensa e Instagram, atualizado em 31/10/2026), B2 (avaliações até "3 meses atrás", no Notion "2 - Comentários" em 31/10/2026) e B3 (contagem direta); números de praça do Censo 2022 (`B4-a_matriz_bairros.py`) e do entorno do B1.
-
 O plano de marketing define como a luderia se posiciona e se apresenta ao público de Salvador. As decisões seguem o composto de marketing: preço, praça e comunicação, a partir da proposta de valor, com a estimativa de demanda ao fim.
 
 ## 6.3 PREÇO
@@ -37,27 +35,27 @@ A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor 
 | Toca do Rato | Porto Alegre | 5,00 | 5,00 |
 | Ludus Luderia | São Paulo | 0,00 | 0,00 |
 
-Fonte: elaboração própria, com base nos cardápios, sites, matérias de imprensa, posts do Instagram e fotos do Google Maps do Bloco B1 (04/2024 a 07/2026; BoardZ sem data, coletada em 10/2026) e nas NFC-e da São Jogue (Bloco B3, 10/10/2026 a 30/10/2026).
+Fonte: elaborado pelo próprio autor, com base nos cardápios, sites, matérias de imprensa, posts do Instagram e fotos do Google Maps do Bloco B1 (04/2024 a 07/2026; BoardZ sem data, coletada em 10/2026) e nas NFC-e da São Jogue (Bloco B3, 10/10/2026 a 30/10/2026).
 
 Nota: em negrito, a São Jogue, única luderia de Salvador no B1. Linhas em ordem decrescente do valor de fim de semana. Fim de semana: sexta a domingo e feriados. Faixa: menor e maior valor do período. LudoCafé: menor valor com consumo mínimo de R$ 50,00. BoardZ: passe do dia; a casa não cobra entrada, e o jogo avulso é pago por título. Place Games: R$ 10,00 da entrada valem como consumo, e a entrada é grátis na confraria de quinta. Café Geek: passaporte por nível de jogo. A taxa de entrada do plano, de R$ 18,68, é a média do couvert ou da taxa de jogo nos cardápios das 22 casas que a cobram (mediana de R$ 20,00), e não a média desta tabela, que reúne também sites, imprensa e redes sociais (seção 6.3).
 
 A taxa da São Jogue está no alto da faixa. Pelo maior valor de cada casa, a mediana dos 22 concorrentes que cobram é de R$ 25,00 no fim de semana, e só três cobram mais que a São Jogue: Encounter (R$ 45,00 no sábado), LudoCafé (R$ 35,00 sem consumo mínimo) e Shelf (R$ 30,00). No dia útil, a mediana é de R$ 15,00, contra R$ 22,00. Dos 53 concorrentes do B1, 22 têm a taxa encontrada no cardápio, no site, na imprensa ou no Instagram, e a Ludus declara que não cobra; nos outros 30, a cobrança não foi encontrada. Os valores de Covil, LudoCafé, Garagem do Nerd e Joyjoy são de 2024 e podem estar defasados. A contagem exclui a sala privativa do Café Geek, cobrada por hora e por grupo.
 
-As avaliações confirmam que o preço da entrada pesa, mas pouco. Das 1.628 avaliações com texto do B2, 44 citam a taxa de entrada — 24 de forma negativa e 20 positiva — e 152 citam o preço do consumo, 61 de forma negativa. Na Sidequest, que cobra o mesmo que a São Jogue no fim de semana, um cliente chamou os R$ 28,00 de "um preço um pouco alto" e deu nota 4. O gasto declarado pelos avaliadores no campo de preço por pessoa do Google Maps tem mediana na faixa de R$ 80,00 a R$ 100,00 (352 declarações, sem a Bodogami, que soma 250 das 602; Figura 6.1).
+As avaliações confirmam que o preço da entrada pesa, mas pouco. Das 1.628 avaliações com texto do B2, 44 citam a taxa de entrada – 24 de forma negativa e 20 positiva – e 152 citam o preço do consumo, 61 de forma negativa. Na Sidequest, que cobra o mesmo que a São Jogue no fim de semana, um cliente chamou os R$ 28,00 de "um preço um pouco alto" e deu nota 4. O gasto declarado pelos avaliadores no campo de preço por pessoa do Google Maps tem mediana na faixa de R$ 80,00 a R$ 100,00 (352 declarações, sem a Bodogami, que soma 250 das 602; Figura 6.1).
 
 **Figura 6.1 – Gasto por pessoa declarado pelos avaliadores no Google Maps**
 
 ![Gasto por pessoa declarado pelos avaliadores no Google Maps](../figuras/6_gasto_declarado_por_pessoa.png)
 
-Fonte: elaboração própria, com base no Bloco B2 (avaliações até "3 meses atrás", coletadas de 09/10/2026 a 30/10/2026).
+Fonte: elaborado pelo próprio autor, com base no Bloco B2 (avaliações até "3 meses atrás", coletadas de 09/10/2026 a 30/10/2026).
 
-Pelos cardápios, uma visita custa de R$ 44,09 a R$ 69,50 por pessoa. A taxa de entrada média é de R$ 18,68, nas 22 casas que a cobram, e a cesta de consumo, uma bebida e uma entrada ou prato, custa em média R$ 50,82, em 36 casas (Bloco B1). O valor menor supõe uma cesta dividida por dupla; o maior, uma cesta por pessoa. Num grupo de 3,6 pessoas, a visita custa de R$ 158,72 a R$ 250,20. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018), ou R$ 694,55 a preços de agosto de 2026, corrigidos pelo IPCA (BCB, SGS): uma visita consome de 23% a 36% desse orçamento. A luderia é ocasião de saída, não hábito semanal.
+O gasto declarado confirma a cesta de consumo dos cardápios. A cesta de cada concorrente soma a mediana das bebidas, a mediana das entradas ou pratos principais e a taxa de entrada. Quando a taxa muda com o dia, entra a média das taxas, ponderada pelos dias em que cada uma vale. Nos 12 concorrentes com taxa conhecida e gasto declarado, a cesta média é de R$ 79,20, e o gasto médio declarado, de R$ 80,14 por pessoa (675 declarações; Blocos B1 e B2). Cada pessoa gasta, em média, uma cesta de consumo. Num grupo de 3,6 pessoas, a visita custa R$ 288,50. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018), ou R$ 694,55 a preços de agosto de 2026, corrigidos pelo IPCA (BCB, SGS): uma visita consome 42% desse orçamento. A luderia é ocasião de saída, não hábito semanal.
 
-O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 18,68 por pessoa, em todos os dias, no cenário provável; o pessimista e o otimista usam o 1º e o 3º quartil dos concorrentes, R$ 12,50 e R$ 21,88. O valor fica perto da mediana dos concorrentes (R$ 20,00) e abaixo da São Jogue (R$ 28,00 no fim de semana e R$ 22,00 no dia útil). O consumo segue a cesta média dos cardápios, R$ 50,82 (de R$ 38,38 a R$ 65,70 entre o 1º e o 3º quartil, nos cenários), dividida por uma, duas ou três pessoas nos cenários otimista, provável e pessimista. Os valores entram no registro de premissas do cap. 9 como R06, R07 e R08. Com a entrada mais barata que a da São Jogue, o preço atrai o cliente da concorrente, e o serviço de mesa — explicação de jogos e acervo grande — sustenta a volta, o que liga o preço à proposta de valor (seção 6.1).
+O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 18,68 por pessoa, em todos os dias. O valor fica perto da mediana dos concorrentes (R$ 20,00) e abaixo da São Jogue (R$ 28,00 no fim de semana e R$ 22,00 no dia útil). No modelo, a receita por pessoa segue o gasto declarado: R$ 80,14 no provável, o gasto do concorrente de menor gasto (R$ 40,00) no pessimista e o do de maior gasto (R$ 109,84) no otimista. A taxa responde por 24,7% da cesta de consumo dos 12 concorrentes, e essa parcela separa a taxa do A&B. A taxa contida no gasto provável fica em R$ 19,83, 6% acima do preço adotado: a diferença está dentro da faixa dos concorrentes e não muda a decisão de preço. Os valores entram no registro de premissas do capítulo 9 como R06 e R07. Com a entrada mais barata que a da São Jogue, o preço atrai o cliente da concorrente, e o serviço de mesa – explicação de jogos e acervo grande – sustenta a volta, o que liga o preço à proposta de valor (seção 6.1).
 
 ## 6.4 PRAÇA
 
-A Pituba é o bairro indicado para a luderia. Ela lidera a matriz de critérios em todos os conjuntos de pesos testados (Tabela 6.2): tem a 5ª maior população de 20 a 39 anos de Salvador, 15.276 pessoas, e 95,1% dos domicílios em apartamento (IBGE, Censo 2022). A matriz precisa de uma medida de renda que o Censo 2022 não oferece, já que ele não publica renda por bairro. A proporção de domicílios em apartamento entra como substituta da renda: em Salvador, a média é de 28,1%, e só 19 dos 170 bairros passam de 80%. A substituição tem limite: conjuntos habitacionais também são apartamentos, e Cajazeiras II (90,9%) é o exemplo. A matriz considera só os bairros com pelo menos 80% de apartamentos e 3.500 pessoas de 20 a 39 anos — 10 dos 170 bairros.
+A Pituba é o bairro indicado para a luderia. Ela lidera a matriz de critérios em todos os conjuntos de pesos testados (Tabela 6.2): tem a 5ª maior população de 20 a 39 anos de Salvador, 15.276 pessoas, e 95,1% dos domicílios em apartamento (IBGE, Censo 2022). A matriz precisa de uma medida de renda que o Censo 2022 não oferece, já que ele não publica renda por bairro. A proporção de domicílios em apartamento entra como substituta da renda: em Salvador, a média é de 28,1%, e só 19 dos 170 bairros passam de 80%. A substituição tem limite: conjuntos habitacionais também são apartamentos, e Cajazeiras II (90,9%) é o exemplo. A matriz considera só os bairros com pelo menos 80% de apartamentos e 3.500 pessoas de 20 a 39 anos – 10 dos 170 bairros.
 
 **Tabela 6.2 – Matriz de critérios ponderados para o bairro, Salvador**
 
@@ -74,7 +72,7 @@ A Pituba é o bairro indicado para a luderia. Ela lidera a matriz de critérios 
 | 9 | Patamares | 5.969 | 88,7 | 1.307 | 0,190 |
 | 10 | STIEP | 4.034 | 86,6 | 3.265 | 0,166 |
 
-Fonte: elaboração própria, com base no IBGE (Censo 2022, agregados por bairro).
+Fonte: elaborado pelo próprio autor, com base no IBGE (Censo 2022, agregados por bairro).
 
 Nota: pesos de 50% para o público de 20 a 39 anos, 30% para os domicílios em apartamento e 20% para o público por km²; cada critério normalizado de 0 a 1 entre os candidatos. Com pesos de 40%, 40% e 20%, de 60%, 20% e 20% ou iguais, a Pituba segue em 1º.
 
@@ -82,9 +80,11 @@ Os pesos são do autor (N6) e não mudam a escolha. Com pesos de 40%, 40% e 20%,
 
 Escolhido o bairro, falta definir o ponto. Ele deve ficar a até 1.000 m de uma estação de metrô. Entre os 54 concorrentes do B1, os 24 com estação a até 1.000 m têm mediana de 770 avaliações no Google Maps, contra 396 dos 30 sem estação (Bloco B1, entorno pelo Google Maps). O shopping de porte não mostra a mesma vantagem: os 10 concorrentes com shopping a até 1.000 m têm mediana de 396 avaliações, contra 663 dos 19 sem (25 sem dado). O número de avaliações mede fluxo de forma indireta, e a associação não prova causa. A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica dentro do Shopping Bela Vista, a 387 m do metrô.
 
-Falta o custo do ponto por bairro. O FipeZap dá o aluguel comercial só para Salvador inteira (R$ 54,15 por m² em jul/2026), sem recorte de bairro; o cap. 9 usa esse valor, e o pessimista (R$ 64,36) cobre parte do prêmio de um bairro como a Pituba. A cotação de pontos na Pituba, junto ao metrô, fecha a decisão [BUSCAR — anúncios de locação comercial].
+Falta o custo do ponto por bairro. O FipeZap dá o aluguel comercial só para Salvador inteira (R$ 54,15 por m² em jul/2026), sem recorte de bairro; o capítulo 9 usa esse valor, e o pessimista (R$ 64,36) cobre parte do prêmio de um bairro como a Pituba. A cotação de pontos na Pituba, junto ao metrô, fecha a decisão [BUSCAR – anúncios de locação comercial].
 
 **Referências citadas neste capítulo**
+
+BANCO CENTRAL DO BRASIL (BCB). *Relatório Focus*: expectativas de mercado de 11 set. 2026. Brasília, 2026. Disponível em: https://www.bcb.gov.br/content/focus/focus/R20260911.pdf. Acesso em: 2 nov. 2026.
 
 BANCO CENTRAL DO BRASIL (BCB). *Sistema Gerenciador de Séries Temporais (SGS)*: séries 432, 433, 1619 e 13522. Brasília, 2026. Disponível em: https://www3.bcb.gov.br/sgspub/. Acesso em: 14 out. 2026.
 

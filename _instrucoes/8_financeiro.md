@@ -29,10 +29,11 @@ Interpretação estratégica do tornado e dos pontos de ruptura: cap. 10 ([9_ana
 
 ```
 Receita mensal
-├── Couvert lúdico = clientes/dia × % que paga couvert × preço do couvert × dias abertos
-├── Alimentos e bebidas = clientes/dia × ticket médio de A&B × dias abertos
-│     └── clientes/dia = mesas × pessoas/mesa × giros/dia × taxa de ocupação
-│           └── ocupação separada por dia útil × fim de semana
+├── Couvert lúdico = clientes/dia × gasto por pessoa × parcela da taxa na cesta de consumo × dias abertos
+├── Alimentos e bebidas = clientes/dia × gasto por pessoa × (1 − parcela da taxa) × dias abertos
+│     └── clientes/dia de fim de semana = circulação no pico (pessoas/h, B3) × horas de pico equivalentes (B1)
+│           └── dia útil = fim de semana × razão dia útil ÷ fim de semana (ANR/Mastercard)
+│     (desde 02/11/2026; antes, mesas × pessoas/mesa × giros/dia × taxa de ocupação)
 └── Eventos/aluguel de espaço = eventos/mês × preço médio
 
 Custos
