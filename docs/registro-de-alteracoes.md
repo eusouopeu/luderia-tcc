@@ -2580,3 +2580,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: estabelecimento sem nome; sem registro de sócios, papel do autor nem fonte dos recursos; MVV e perfil do empreendedor fora do TMin desde 02/11/2026.
 **Depois**: decisão do nome Interlúdio, do dono único sem sócios, do autor no salão e na gestão e da fonte dos recursos pelo modelo da lavanderia (30% capital próprio, 70% financiado); pendência com o MVV, o perfil e o detalhe do financiamento.
 **Justificativa**: pedido do autor (brainstorm de nome, MVV e perfil do empreendedor). Alerta: o financiamento de 70% muda o fluxo de caixa do cap. 9 (juros e amortização), hoje sem dívida; nada mudou no TMin.
+
+### 22:00
+**Objeto**: `docs/decisoes.md`; `docs/pendencias.md`
+**Antes**: fonte dos recursos registrada como 30% capital próprio e 70% financiado.
+**Depois**: 70% capital próprio e 30% dívida no FNE MPE do Banco do Nordeste, como no trabalho de EAPP da lavanderia; VPL do projeto mantido a 15%, sem trocar a TMA pelo WACC; pendência de simular o FNE MPE para R$ 86,9 mil.
+**Justificativa**: o trabalho da lavanderia usa 30% de dívida e 70% de capital próprio, o inverso do registrado; o autor escolheu a divisão da lavanderia.
