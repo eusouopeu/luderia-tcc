@@ -189,6 +189,9 @@ test('classificação e filtros iguais aos do build', () => {
   assert.deepEqual(json(t.classificar(amostra[6])), { segmento: 'residencial', subtipo: 'residencial' });
   assert.equal(t.classificar({ busca_url: OLX, titulo: 'Aluga-se sala comercial' }).subtipo, 'sala');
   assert.equal(t.classificar({ busca_url: 'https://www.zapimoveis.com.br/aluguel/casa-comercial/ba+salvador/', titulo: 'Casa para alugar com 3 quartos' }).segmento, 'comercial');
+  const dois = 'https://www.zapimoveis.com.br/aluguel/casa-comercial/ba+salvador/?tipos=imovel-comercial_comercial%2Cponto-comercial_comercial';
+  assert.equal(t.classificar({ busca_url: dois, tipo: 'Imóvel comercial', titulo: 'Imóvel comercial para alugar' }).subtipo, 'outro');
+  assert.equal(t.classificar({ busca_url: dois, tipo: 'Ponto comercial/Loja/Box', titulo: 'Ponto comercial para alugar' }).subtipo, 'loja_ponto');
   assert.equal(t.areaDe6_4('Graça'), 'Barra/Graça');
   assert.equal(t.areaDe6_4('Centro'), '');
   assert.equal(t.passaFiltros(amostra[4], { soAluguel: true }), false);

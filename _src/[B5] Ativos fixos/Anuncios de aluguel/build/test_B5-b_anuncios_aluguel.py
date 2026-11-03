@@ -79,6 +79,11 @@ class TestAnunciosAluguel(unittest.TestCase):
         # "/casa-comercial/" é busca comercial, não a "/casa-" do residencial
         url = "https://www.zapimoveis.com.br/aluguel/casa-comercial/ba+salvador/"
         self.assertEqual(b.segmento_de(url, "Casa", "Casa para alugar com 3 quartos"), ("comercial", "busca"))
+        # busca com dois tipos: o subtipo vem do anúncio, não da URL
+        dois = url + "?tipos=imovel-comercial_comercial%2Cponto-comercial_comercial"
+        self.assertEqual(b.subtipo_de("comercial", dois, "Imóvel comercial", "Imóvel comercial para alugar"), "outro")
+        self.assertEqual(b.subtipo_de("comercial", dois, "Ponto comercial/Loja/Box", "Ponto comercial para alugar"), "loja_ponto")
+        self.assertEqual(b.subtipo_de("comercial", url + "?tipos=ponto-comercial_comercial", "Casa", "Casa"), "loja_ponto")
 
     def test_bairros_oficiais_e_area_6_4(self):
         self.assertEqual(self.df.loc["200", "bairro"], "Caminho das Árvores")

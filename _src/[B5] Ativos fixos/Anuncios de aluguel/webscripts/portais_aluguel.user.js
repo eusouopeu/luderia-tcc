@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.03-2
+// @version      2026.11.03-3
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas seguintes e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -314,6 +314,17 @@
     ['loja_ponto', /\b(lojas?|pontos? comercia(?:l|is)|salao comercial|saloes comerciais|box comercial)\b/],
   ];
 
+  // Parte da busca que diz o tipo: o parâmetro tipos= do ZAP e do Viva Real, se houver, ou a URL
+  // toda. Com mais de um tipo ("tipos=imovel-comercial_comercial,ponto-comercial_comercial"),
+  // null: a busca não decide o subtipo, e vale o tipo e o título do anúncio.
+  function tiposDaBusca(url) {
+    let u = url;
+    try { u = decodeURIComponent(url); } catch (e) { /* URL mal codificada: usa como veio */ }
+    const m = u.match(/[?&]tipos=([^&]*)/);
+    if (!m) return u;
+    return m[1].includes(',') ? null : m[1];
+  }
+
   // Segmento e subtipo como no build: pela categoria da busca e, sem ela, pelo tipo e título.
   function classificar(a) {
     const url = String(a.busca_url || '').toLowerCase();
@@ -323,7 +334,8 @@
     else if (RE_BUSCA_RESIDENCIAL.test(url)) segmento = 'residencial';
     else segmento = RE_COMERCIAL.test(txt) ? 'comercial' : 'residencial';
     if (segmento === 'residencial') return { segmento, subtipo: 'residencial' };
-    const porBusca = SUBTIPO_BUSCA.find(([, re]) => re.test(url));
+    const tipos = tiposDaBusca(url);
+    const porBusca = tipos === null ? null : SUBTIPO_BUSCA.find(([, re]) => re.test(tipos));
     const porTexto = SUBTIPO_TEXTO.find(([, re]) => re.test(txt));
     return { segmento, subtipo: (porBusca || porTexto || ['outro'])[0] };
   }

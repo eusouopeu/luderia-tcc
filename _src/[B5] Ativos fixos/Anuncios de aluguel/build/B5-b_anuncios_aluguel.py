@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
 import re
 import unicodedata
-from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit, unquote
 
 import pandas as pd
 
@@ -120,12 +120,23 @@ def segmento_de(busca_url, tipo, titulo) -> tuple[str, str]:
     return ("comercial" if RE_COMERCIAL.search(texto) else "residencial"), "texto"
 
 
+def tipos_da_busca(url):
+    """Parte da busca que diz o tipo: o parâmetro tipos= do ZAP e do Viva Real, se houver, ou a URL
+    toda. Com mais de um tipo ("tipos=imovel-comercial_comercial,ponto-comercial_comercial"), None:
+    a busca não decide o subtipo, e vale o tipo e o título do anúncio."""
+    u = unquote(url)
+    m = re.search(r"[?&]tipos=([^&]*)", u)
+    if not m:
+        return u
+    return None if "," in m.group(1) else m.group(1)
+
+
 def subtipo_de(segmento, busca_url, tipo, titulo) -> str:
     if segmento != "comercial":
         return "residencial"
-    url = str(busca_url or "").lower()
+    tipos = tipos_da_busca(str(busca_url or "").lower())
     for nome, padrao in SUBTIPO_BUSCA:
-        if re.search(padrao, url):
+        if tipos is not None and re.search(padrao, tipos):
             return nome
     texto = sem_acento(f"{tipo} {titulo}")
     for nome, padrao in SUBTIPO_TEXTO:
