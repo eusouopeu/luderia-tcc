@@ -38,11 +38,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D52 — Quadro 3.2 atribui ao B2 usos que vêm de outros blocos (02/11/2026).** Cap. 3 (Quadro 3.2: B2 para "tamanho do grupo, jogos citados") × caps. 7 e 9 (tamanho do grupo pela contagem do B3, R02; acervo pelos acervos do B1, I05). O cap. 9 não cita o B2. Sugestão: deixar no B2 só proposta de valor e reclamações, como no Apêndice D.
 
-**D36 — Duas páginas da Savills com datas diferentes (02/11/2026).** O 2.1 cita SAVILLS, [s.d.] (definição) e a 5.1.2 cita SAVILLS, 2023 (alta de 38% desde 2018); o TMax cita a [s.d.] pelos mais de 800 locais. As duas contagens são de momentos diferentes; a de [s.d.] precisa da data para o leitor entender a sequência (ver D16).
-
 **D15 — Fontes da gestão baseada em evidências (01/11/2026).** Cap. 2 (abertura), parágrafo original e o revisado em verde no TMin v9. O texto põe as quatro fontes de evidência em Figueiredo (2020, p. 31) e inclui "organizações comparáveis"; no artigo, a quarta fonte (valores das partes interessadas) está na p. 32 e não há menção a organizações comparáveis, só a dados da própria organização. Sugestão: citar p. 31–32 e tirar "ou de organizações comparáveis", junto com o corte de citações pedido no comentário 7.
-
-**D16 — Savills sem data (01/11/2026).** Cap. 1 e referências. A página da Savills citada como [s.d.] traz a data de 19 mar. 2024. Sugestão: SAVILLS, 2024, no texto e na referência.
 
 
 - **Giro e taxa de ocupação no vocabulário (31/10/2026; revisto em 02/11/2026).** `_instrucoes/1b_escrita.md` (P6) mantém giro e taxa de ocupação, mas o modelo do cap. 9 deixou os dois de fora da receita: a demanda é a circulação no pico × horas de pico equivalentes, e o giro só confere o salão (cap. 3). Sugestão: no P6, marcar giro e taxa de ocupação como medidas de conferência, não de receita.
@@ -86,6 +82,10 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Aceitável
 
+**D62 — Mattar sem edição e ano (03/11/2026).** Cap. 3 (3.1 e 3.3) e referências. Os slides de Mattar na pasta não trazem a edição; a citação está como (MATTAR, [AV ano], cap. 5 e 6). Conferir a edição do v. 1 (Atlas) e trocar o marcador pelo ano.
+
+**D63 — Pfeffer e Sutton sem página (03/11/2026).** Cap. 2 (2.5) e TMax (2.1). A gestão baseada em evidências passou de Figueiredo (2020) para Pfeffer e Sutton (2006), livro fora da pasta e sem PDF legal localizado; as duas citações ficam `[AV]` até o autor conferir as páginas.
+
 **D62 — BDI e TCU sem sigla no Apêndice E (03/11/2026).** A fonte da I01 no Apêndice E (vinda de `gerar_modelo_financeiro.py`) usa "BDI" e "TCU", que o texto principal escreve por extenso e a lista de siglas não traz.
 
 **D60 — Grade ERRC sem base no cap. 2 (03/11/2026).** Cap. 6 (6.1, Quadro 6.1, KIM; MAUBORGNE, 2005 [AV]) × cap. 2. A grade ERRC entra no 6.1, como pede `_instrucoes/5_marketing.md`, mas o cap. 2 não a apresenta, e a obra está sem conferência. Sugestão: uma frase no 2.2 ou no 2.3, ou manter só a citação no 6.1 e conferir a obra.
@@ -95,7 +95,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D37 — Erros de digitação no cap. 1 (02/11/2026).** §2 da introdução: "São Paul" (São Paulo).
 
 - **Fitzsimmons no TMax, cap. 2 (31/10/2026).** A citação da capacidade perecível (§ do 2.x) segue sem página, enquanto o TMin cita as p. 152–156 e 406–410.
-**D14 — Formatação de referências repetidas.** Caps. 1, 2 e 5. Sebrae: "Agência de Notícias do Sebrae" (cap. 1) × "Agência Sebrae de Notícias" (cap. 5). Abrinq e Savills sem local no cap. 1 e com local no cap. 5. Resolve-se na lista única de referências.
+**D14 — Formatação de referências repetidas.** Caps. 1, 2 e 5. Sebrae: "Agência de Notícias do Sebrae" (cap. 1) × "Agência Sebrae de Notícias" (cap. 5). Abrinq sem local no cap. 1 e com local no cap. 5. Resolve-se na lista única de referências.
 
 **D15 — Travessão e linha de fonte.** O cap. 1 usa hífen com espaços ( - ) como travessão; os caps. 2 e 5 usam travessão (—). O cap. 2 escreve "Fonte: elaborado pelo autor."; o cap. 5, "Fonte: elaborado pelo próprio autor com base em…". Padronizar na revisão de forma.
 
@@ -119,7 +119,7 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 
 **C21 — Cap. 6 acima do teto (03/11/2026).** No TMin v21, o cap. 6 tem 10 páginas, contra o teto de 8, depois da entrada do 6.1, 6.2, 6.5 e 6.6 (a demanda saiu do cap. 9, que caiu de 14 para 13 páginas). Candidatos: a Tabela 6.1 (24 concorrentes, ~0,9 página) para o apêndice, com a mediana e a São Jogue no texto; o 6.2 só com as decisões, remetendo ao 7.3 e ao 7.4 (~150 palavras); a Tabela 6.3, se o texto do 6.6 trouxer as três faixas (~0,5 página). Ganho: ~2 páginas.
 
-**C01 — Contexto do mercado duplicado entre os caps. 1 e 5.** Abrinq (9,1% → 13,1%, alta de 16%), Sebrae (R$ 53 bilhões) e Savills (800 locais) aparecem com o mesmo texto no cap. 1 e no 5.1.2. Manter no 5.1.2, com fonte e nível, e deixar no cap. 1 uma frase com remissão. Ganho: ~90 palavras.
+**C01 — Contexto do mercado duplicado entre os caps. 1 e 5.** Abrinq (9,1% → 13,1%, alta de 16%), Sebrae (R$ 53 bilhões) aparecem com o mesmo texto no cap. 1 e no 5.1.2. Manter no 5.1.2, com fonte e nível, e deixar no cap. 1 uma frase com remissão. Ganho: ~90 palavras.
 
 **C02 — Justificativa acadêmica repete a contextualização.** Cap. 1: "O único estudo de viabilidade identificado… (ASAKURA; SILVA; MELLO, 2018)" aparece duas vezes com a mesma redação (contextualização e 1.2), e "não há levantamento setorial" volta no 1.2 e no 5.1.4. O cap. 2 (2.6) cita o mesmo estudo com mais detalhe. Manter a menção do cap. 2 e uma só no cap. 1. Ganho: ~70 palavras.
 
@@ -132,8 +132,6 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 
 **C17 — Cap. 10 acima do teto.** No TMin v15, o cap. 10 tem a SWOT e três quadros (riscos, etapas e gatilhos), perto de 5 páginas contra o teto de 4; os indicadores e a ruptura saíram para as Tabelas 9.5 e 9.6. Sugestão: levar o Quadro 10.3 (etapas de expansão) para apêndice. Ganho: cerca de meia página.
 
-
-**C04 — Gilovich e "a luderia vende uma ocasião social" em três lugares.** A mesma frase de Gilovich, Kumar e Jampol (2015) está no cap. 1 e no 2.3; a nota do 5.5.3 sugere usá-la de novo. "A luderia vende uma ocasião social, e não um produto/o uso de um jogo" está no cap. 1 e no 2.3. Manter no cap. 2. Ganho: ~50 palavras.
 
 **C05 — Linha "Fonte: elaborado pelo próprio autor…" no meio da prosa.** Cap. 5: seis parágrafos terminam com a linha de fonte (5.2.2, 5.3.1 a 5.3.4, 5.4.1, 5.5.4), formato de tabela e figura na ABNT. Na prosa, basta a citação entre parênteses: "(Bloco B1, 2026)". Ganho: ~90 palavras.
 

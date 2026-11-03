@@ -4,7 +4,7 @@ Este trabalho consiste em um plano de negócios baseado em evidências. Cada dec
 
 Três termos têm sentido fixo ao longo do texto: *luderia* é o estabelecimento que combina alimentos e bebidas com acervo de jogos de mesa para uso no local, incluídos os formatos ludobar e quiz-bar; *concorrente* é a luderia aprovada na curadoria do Bloco B1; por último, *avaliação* é a avaliação com texto publicada no Google Maps.
 
-Visando mitigar o viés de desejabilidade social, o efeito do entrevistador e o viés de seleção dos respondentes (GROVES et al., 2009, seç. 4.1, 5.3.5 e 9.2), o trabalho usa dados de comportamento real e observado, em vez de questionários e entrevistas. Todas as premissas vêm de bases públicas, de rastros digitais reais dos concorrentes e de contagens diretas realizadas em visitas presenciais.
+Visando mitigar o viés de desejabilidade social, o efeito do entrevistador e o viés de seleção dos respondentes (MATTAR, [AV ano], cap. 5), o trabalho usa dados de comportamento real e observado, em vez de questionários e entrevistas. Todas as premissas vêm de bases públicas, de rastros digitais reais dos concorrentes e de contagens diretas realizadas em visitas presenciais.
 
 ## 3.1 HIERARQUIA DE EVIDÊNCIAS
 
@@ -67,7 +67,7 @@ O Bloco B5 orça o investimento item a item, nos 75 itens da abertura. A reforma
 
 Os dados passam por coleta, tratamento e análise, cada etapa com scripts próprios. Os brutos com nomes de pessoas ficam fora do repositório público, todo sorteio usa semente fixa, e qualquer número do texto pode ser gerado de novo a partir dos scripts. Cada execução grava um registro com a data e as saídas.
 
-As avaliações são codificadas por análise de conteúdo (BARDIN, 2002, p. 104–108). A unidade de registro é o tema, trecho que expressa um juízo sobre um atributo do concorrente, e a enumeração é por presença. O dicionário tem 22 temas, os mesmos para elogio e crítica: jogos, equipe e serviço, comida e bebida, preço, ambiente e regras da casa. A ocasião da visita e a compra na loja vão para uma coluna de contexto, sem polaridade. A codificação foi feita com apoio de inteligência artificial, pelo dicionário, e é validada pela recodificação do autor, descrita adiante. A validação estima o erro não amostral de cobertura, medida e processamento (GROVES et al., 2009, seç. 2.3), com procedimento próprio para cada bloco (Quadro 3.3).
+As avaliações são codificadas por análise de conteúdo (BARDIN, 2002, p. 104–108). A unidade de registro é o tema, trecho que expressa um juízo sobre um atributo do concorrente, e a enumeração é por presença. O dicionário tem 22 temas, os mesmos para elogio e crítica: jogos, equipe e serviço, comida e bebida, preço, ambiente e regras da casa. A ocasião da visita e a compra na loja vão para uma coluna de contexto, sem polaridade. A codificação foi feita com apoio de inteligência artificial, pelo dicionário, e é validada pela recodificação do autor, descrita adiante. A validação estima o erro não amostral de cobertura, medida e processamento (MATTAR, [AV ano], cap. 6), com procedimento próprio para cada bloco (Quadro 3.3).
 
 **Quadro 3.3 – Validação por bloco**
 
@@ -131,8 +131,6 @@ COMISSÃO NACIONAL DE CLASSIFICAÇÃO (CONCLA). *CNAE 2.3*: subclasse 5611-2/05.
 
 FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). *Índice FipeZAP*: locação comercial, julho de 2026. São Paulo, 2026. Disponível em: https://downloads.fipe.org.br/indices/fipezap/fipezap-202607-comercial.pdf. Acesso em: 2 nov. 2026.
 
-GROVES, Robert M. et al. *Survey methodology*. 2. ed. Hoboken: Wiley, 2009.
-
 IBGE. *Censo Demográfico 2022*: população residente por idade. Rio de Janeiro: IBGE, 2023. Disponível em: https://sidra.ibge.gov.br/tabela/9514. Acesso em: 2 nov. 2026. `[AV ano]`
 
 IBGE. *Estimativas da população residente*: 2026. Rio de Janeiro: IBGE, 2026. Disponível em: https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html. Acesso em: 2 nov. 2026.
@@ -148,5 +146,7 @@ IBGE. *Pesquisa Nacional por Amostra de Domicílios Contínua*: tabelas 5436 e 7
 IBGE. *Regiões de influência das cidades 2018*. Rio de Janeiro: IBGE, 2020. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv101728.pdf. Acesso em: 2 nov. 2026.
 
 IBGE. *Sistema Nacional de Índices de Preços ao Consumidor*: IPCA, tabela 7060. Rio de Janeiro: IBGE, 2026. Disponível em: https://sidra.ibge.gov.br/tabela/7060. Acesso em: 2 nov. 2026.
+
+MATTAR, Fauze Najib. *Pesquisa de marketing*: metodologia, planejamento. v. 1. São Paulo: Atlas, [AV: edição e ano].
 
 WILSON, Edwin B. Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association*, v. 22, n. 158, p. 209–212, 1927. [AV]

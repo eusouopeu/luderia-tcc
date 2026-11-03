@@ -25,6 +25,8 @@
 // Trabalho inteiro (cada capítulo começa em página nova), com PDF:
 //   node "_src/extras/gerar_docx_capitulo.js" --trabalho TMin --pdf
 //   node "_src/extras/gerar_docx_capitulo.js" --trabalho TMax --pdf
+// --vermelho "COHEN|WILSON": frases do corpo que citam esses autores saem em vermelho
+// (revisão das referências; regex sem diferenciar maiúsculas).
 const fs = require("fs");
 const path = require("path");
 const {
@@ -39,6 +41,7 @@ const ARGS = process.argv.slice(2);
 const opcao = (nome) => { const i = ARGS.indexOf(nome); return i < 0 ? null : ARGS[i + 1]; };
 const PDF = ARGS.includes("--pdf");
 const TRABALHO = opcao("--trabalho");
+const VERMELHO = opcao("--vermelho") ? new RegExp(opcao("--vermelho"), "i") : null;
 const numero = (f) => Number(path.basename(f).match(/^\d+/)?.[0] ?? 99);
 
 let MDS, TEXTO, BASE;
@@ -101,13 +104,29 @@ function runs(texto, base = {}) {
     if (p.startsWith("**") && p.endsWith("**")) { t = p.slice(2, -2); bold = true; }
     else if (p.startsWith("*") && p.endsWith("*") && p.length > 2) { t = p.slice(1, -1); italics = true; }
     else if (p.startsWith("`") && p.endsWith("`")) { t = p.slice(1, -1); }
-    return new TextRun({ text: t, bold, italics, font: FONTE, size: base.size || TAM });
+    return new TextRun({ text: t, bold, italics, color: base.color, font: FONTE, size: base.size || TAM });
   });
+}
+
+// Com --vermelho, as frases que citam os autores indicados saem em vermelho.
+function runsCorpo(texto) {
+  if (!VERMELHO || !VERMELHO.test(texto)) return runs(texto);
+  // Frase termina em . ! ? fora de parênteses, para "p. 13" e "et al." não cortarem a citação.
+  const frases = [];
+  let ini = 0, nivel = 0;
+  for (let i = 0; i < texto.length; i++) {
+    const c = texto[i];
+    if (c === "(") nivel++;
+    else if (c === ")") nivel = Math.max(0, nivel - 1);
+    else if (".!?".includes(c) && !nivel && texto[i + 1] === " ") { frases.push(texto.slice(ini, i + 1)); ini = i + 1; }
+  }
+  frases.push(texto.slice(ini));
+  return frases.filter(Boolean).flatMap((f) => runs(f, VERMELHO.test(f) ? { color: "FF0000" } : {}));
 }
 
 function corpo(texto) {
   return new Paragraph({
-    children: runs(texto),
+    children: runsCorpo(texto),
     alignment: AlignmentType.JUSTIFIED,
     indent: { firstLine: Math.round(1.0 * CM) },
     spacing: { line: ENTRELINHA, after: DEPOIS },
@@ -235,11 +254,11 @@ function converte(md, MD, blocos = []) {
       blocos.push(quadro(tab, tipoLegenda));
       tipoLegenda = null;
     } else if (/^\s*- /.test(l)) {
-      blocos.push(new Paragraph({ children: runs(l.replace(/^\s*- /, "")),
+      blocos.push(new Paragraph({ children: runsCorpo(l.replace(/^\s*- /, "")),
         alignment: AlignmentType.JUSTIFIED,
         numbering: { reference: "topicos", level: 0 }, spacing: { line: ENTRELINHA, after: 0 } }));
     } else if (numerada) {
-      blocos.push(new Paragraph({ children: runs(l.replace(/^\d+\. /, "")),
+      blocos.push(new Paragraph({ children: runsCorpo(l.replace(/^\d+\. /, "")),
         alignment: AlignmentType.JUSTIFIED,
         numbering: { reference: "numerada", level: 0, instance: instancia }, spacing: { line: ENTRELINHA, after: 0 } }));
     } else if (referencias) {

@@ -44,6 +44,7 @@ Padrão de parágrafo: **afirmação → sustentação (citação ou dado) → l
   4. autor mais renomado na literatura da área;
   5. autor brasileiro.
 - **Concentrar no livro-texto (03/11/2026, pedido do autor):** conceitos e fórmulas de uma mesma área saem, sempre que possível, de um único livro-texto da pasta, com várias citações dele (páginas diferentes), em vez de uma obra para cada conceito. Obra de fora da pasta só entra quando nenhum livro da pasta cobre o ponto, e fica `[AV]` até o autor conseguir o arquivo. Ao revisar um capítulo, trocar a citação de obra fora da pasta pela do livro-texto da área que cubra o mesmo conceito.
+- **Artigos só para dado empírico (03/11/2026, pedido do autor):** conceito, definição e fundamentação vêm de livro-texto em português; artigo (sobretudo em outra língua) só entra para dado empírico, e o dado empírico preferido é o publicado em português ou o dos próprios blocos (B1 a B5). Dado estrangeiro sai quando um bloco do trabalho dá a mesma evidência. A lista de referências fica no mínimo: referência que não sustenta decisão nem dado sai, e a que não pode sair passa para um livro-texto em português. Exceções mantidas: métodos aplicados no trabalho sem cobertura em livro da pasta (Cohen, kappa; Wilson, intervalo; Picolo e Tontini, PRC), o relatório da KAM Insight, Pine e Gilmore *apud* Fitzsimmons e Kim e Mauborgne (lido pelo autor).
 - **Livros-texto da pasta, por área:**
 
   | Área | Livro-texto (arquivo em `bibliografia/`) |
@@ -52,14 +53,16 @@ Padrão de parágrafo: **afirmação → sustentação (citação ou dado) → l
   | Marketing: segmentação, posicionamento, proposta de valor, 4Ps, preço, canais | Kotler e Keller, *Administração de Marketing* (`[658@PKOT]`) |
   | Serviços e operações: capacidade, filas, lei de Little, *servicescape*, layout | Fitzsimmons e Fitzsimmons, *Administração de Serviços* |
   | Estratégia e concorrência: cinco forças, estratégias genéricas | Porter, *Estratégia Competitiva* |
-  | Finanças: VPL, TIR, payback, fluxo de caixa, taxa de desconto (WACC, CAPM, beta, risco-país) | Assaf Neto, *Finanças Corporativas e Valor* |
-  | Custos, formação de preço, margem de contribuição, ponto de equilíbrio | Bruni e Famá, *Gestão de Custos e Formação de Preços* |
+  | Finanças: VPL, TIR, payback, fluxo de caixa, taxa de desconto (prêmio de risco e de liquidez), sensibilidade, ponto de equilíbrio e de ruptura | Assaf Neto, *Finanças Corporativas e Valor* (p. 13, 89, 374–392, 419–423) |
+  | Custos, formação de preço, margem de contribuição (só se Assaf Neto não cobrir; PDF escaneado) | Bruni e Famá, *Gestão de Custos e Formação de Preços* |
   | Estatística: amostragem, intervalos, testes | Larson e Farber, *Estatística Aplicada* |
-  | Erro total e desenho de coleta | Groves et al., *Survey Methodology* |
+  | Tipos de pesquisa, coleta (comunicação × observação), erro amostral e não amostral | Mattar, *Pesquisa de Marketing*, v. 1 (slides dos caps. 1, 2, 3, 5 e 6, `Pesquisa de MKT-…`); citar pelo capítulo |
+  | Gestão baseada em evidências | Pfeffer e Sutton, *A verdade dos fatos* (fora da pasta, `[AV]` até o autor obter o livro) |
   | Análise de conteúdo | Bardin, *Análise de Conteúdo* |
 
   Os livros de finanças de Ross et al. (`[650]` e `[658] Fundamentos…`) e de Gitman (`[658] Princípios…`) ficam de reserva: só entram quando Assaf Neto não cobre o ponto.
-- **Finanças:** VPL, TIR, payback e taxa de desconto só com Assaf Neto, inclusive beta e risco-país (CRP); Damodaran só se Assaf Neto não cobrir o cálculo. Custos e ponto de equilíbrio com Bruni e Famá.
+- **Finanças:** VPL, TIR, payback, taxa de desconto, sensibilidade e pontos de equilíbrio e de ruptura só com Assaf Neto. Os capítulos de Bruni da disciplina EAPP (`[EAPP-26.1] capitulo 17–19`, texto em elaboração) ficam de reserva, como Damodaran.
+- **Obras retiradas em 03/11/2026 (TMin e TMax):** Groves et al. (trocado por Mattar); Brinckmann, Grichnik e Kapsa; Gilovich, Kumar e Jampol; Oldenburg; Tontini e Theiss; Savills; Kviat; Novaes e Kanyat; Figueiredo (2020) (trocado por Pfeffer e Sutton); Bruni (2018), Bruni e Famá, Damodaran, Brealey, Myers e Allen e Casarotto Filho e Kopittke (trocados por Assaf Neto).
 - Obras retiradas no TMin de 31/10/2026: Brealey, Myers e Allen; Casarotto Filho e Kopittke; Hillier e Lieberman; Zeithaml, Bitner e Gremler (o *servicescape* e a lei de Little passam a Fitzsimmons); Mintzberg, Ahlstrand e Lampel; Pfeffer e Sutton; Oldenburg; Marcellino; Kim e Mauborgne; Woods; Gilovich, Kumar e Jampol; Frezatti et al.; no cap. 3, Biemer, Amaya, Biemer e Kinyon e Meng; no cap. 5, Sebrae (notícia) e Savills.
 
 ## Divisão de subcapítulos

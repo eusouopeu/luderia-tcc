@@ -14,8 +14,6 @@ A mesma pesquisa mostra a estrutura de custos dos serviços de alimentação. Em
 
 Os jogos de tabuleiro e cartas passaram de 9,1% para 13,1% das vendas da indústria de brinquedos entre 2017 e 2025 (ABRINQ, 2026). O número sustenta o crescimento do hábito de jogar, não a demanda por luderias. Não há levantamento oficial nem setorial sobre luderias, e o formato não tem código próprio na Classificação Nacional de Atividades Econômicas (CNAE) (seção 8.1): o tamanho do segmento é medido pelo Bloco B1 (seção 5.3).
 
-O formato já tem escala fora do Brasil. No Reino Unido, o número de locais de *competitive socialising* cresceu 38% entre 2018 e 2023, e os locais que combinam várias atividades cresceram 455% no mesmo período (SAVILLS, 2023). A procura por experiências presenciais depois da pandemia de covid-19 sustentou esse crescimento (SAVILLS, 2023). O dado mostra um formato em alta, mas medido fora do Brasil: a demanda em Salvador precisa de evidência própria.
-
 ### 5.1.3 Alimentação fora do lar na Bahia
 
 O consumo fora do domicílio pesa mais no orçamento baiano que na média nacional. Na Bahia, a alimentação fora do domicílio respondia por 36,1% da despesa familiar com alimentação, contra 32,8% no Brasil, e as bebidas alcoólicas consumidas fora de casa, por 2,6%, contra 1,5% (IBGE, POF 2017-2018). A propensão local favorece um modelo de receita apoiado em alimentos e bebidas, com o jogo como motivo da visita. O dado entra como evidência de hábito (N2), não como gasto atual.
@@ -36,7 +34,7 @@ Para dimensionar esse público, os dados disponíveis têm um viés. Os levantam
 
 Nas avaliações, o atendimento presencial é o tema mais citado: aparece em 55,6% delas, seguido da comida (34,1%), do ambiente e decoração (26,2%) e da variedade do acervo (20,1%) (Bloco B2, Figura 6.1). A explicação de jogos pela equipe aparece em 14,3% e, quando criticada, acompanha nota média de 2,62. O preço do cardápio e o da entrada aparecem em 4,5% e 2,8% das avaliações, os dois com mais críticas que elogios. A decisão afetada é o quadro de pessoal, com instrutor de jogos, e o peso do cardápio na proposta de valor.
 
-Os estudos de fora do Brasil apontam na mesma direção. Em nove *board game cafés* de Tóquio, fazer amigos foi a principal motivação dos frequentadores, e 44% dos entrevistados iam sozinhos; a equipe atuava como anfitriã, explicava as regras e formava grupos com quem chegava sozinho (NOVAES; KANYAT, 2025, p. 87, 89). Na Inglaterra, com 50 entrevistas e observação em 24 locais, Kviat (2024, p. 76–77) conclui que o jogo dá foco e estrutura à interação, o que facilita a socialização de quem não se sente à vontade em um pub. A equipe faz parte do produto, e não só do serviço de mesa. Ainda assim, no Reino Unido, os atributos mais exigidos nos locais de *competitive socialising* são os mesmos de qualquer bar: segurança (70%), preço (69%) e qualidade da comida (63%) (KAM INSIGHT, 2022, p. 17–21). O jogo diferencia o local, mas não dispensa o básico da hospitalidade.
+No Reino Unido, os atributos mais exigidos nos locais de *competitive socialising* são os mesmos de qualquer bar: segurança (70%), preço (69%) e qualidade da comida (63%) (KAM INSIGHT, 2022, p. 17–21). O jogo diferencia o local, mas não dispensa o básico da hospitalidade.
 
 A ocasião em grupo também aparece nas avaliações, embora poucas digam com quem o cliente foi: amigos em 56, família em 40, aniversário em 39 e casal em 13 (Bloco B2). O dado é exploratório, porque a codificação do contexto não passou no teste de concordância (seção 3.3). O público da faixa de 20 a 39 anos soma cerca de 781 mil pessoas em Salvador, se mantida em 2026 a proporção do Censo 2022 (IBGE). A seção 6.6 confere a demanda contra esse total.
 
@@ -68,7 +66,7 @@ O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 c
 
 Fonte: elaborado pelo próprio autor, com base nos cardápios do Bloco B1 (04/2024 a 07/2026).
 
-Fora do Brasil, a cobrança segue dois modelos. Nos estabelecimentos especializados do Reino Unido, o cliente paga uma taxa fixa de acesso ao acervo, e comida e bebida são opcionais (KVIAT, 2024, p. 77); em Tóquio, a cobrança é por hora, em média 470 ienes, com preço menor nas tardes de dia útil (NOVAES; KANYAT, 2025, p. 87). Os dois modelos, com o couvert dos concorrentes, são as referências da taxa de entrada.
+O couvert cobrado pelos concorrentes é a referência da taxa de entrada.
 
 Os levantamentos de jogadores mostram o preço como a barreira mais citada: 57% dos respondentes do Censo Ludopedia apontam o preço elevado como a maior preocupação com os jogos fabricados no Brasil (FIGUEIREDO; MANTOVANI, 2022, p. 4). O dado tem leitura dupla. O acervo da luderia dá acesso a jogos que o cliente não compraria; o jogador que já tem acervo, porém, compara o gasto no bar com a compra de um jogo, e entrevistados de Sarpa (2016, p. 41) descrevem esse gasto como "desperdício de dinheiro". A taxa de entrada precisa equilibrar os dois lados dessa tensão (seção 6.3).
 
@@ -136,8 +134,6 @@ BRASIL. Constituição (1988). Emenda Constitucional nº 132, de 20 de dezembro 
 
 BRASIL. Lei Complementar nº 214, de 16 de janeiro de 2025. Institui o Imposto sobre Bens e Serviços (IBS), a Contribuição Social sobre Bens e Serviços (CBS) e o Imposto Seletivo (IS). *Diário Oficial da União*: seção 1, Brasília, DF, 16 jan. 2025. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm. Acesso em: 2 nov. 2026. [AV]
 
-FIGUEIREDO, Américo Rodrigues de. Gestão baseada em evidências. *GV-executivo*, São Paulo, v. 19, n. 1, p. 30–32, jan./fev. 2020. Disponível em: https://periodicos.fgv.br/gvexecutivo/article/download/81435/77745/173459. Acesso em: 2 nov. 2026.
-
 FIGUEIREDO, Caio Moretti de; MANTOVANI, Daielly Melina Nassif. Jogos de tabuleiro modernos e o consumidor brasileiro: uma análise das características desejáveis no produto via modelos estatístico-preditivos. In: SEMINÁRIOS EM ADMINISTRAÇÃO, 25., 2022, São Paulo. *Anais* [...]. São Paulo: FEA-USP, 2022. Disponível em: https://login.semead.com.br/25semead/anais/arquivos/1057.pdf. [AV: data de acesso]
 
 FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). *Índice FipeZAP*: locação comercial, julho de 2026. São Paulo, 2026. Disponível em: https://downloads.fipe.org.br/indices/fipezap/fipezap-202607-comercial.pdf. Acesso em: 2 nov. 2026.
@@ -160,14 +156,6 @@ IBGE. *Sistema Nacional de Índices de Preços ao Consumidor*: IPCA, tabela 7060
 
 KAM INSIGHT. *Competitive socialising*: winning a new customer occasion. KAM Media, 2022. Disponível em: https://kaminsight.com/wp-content/uploads/sites/2044/2023/07/KAM-Competitive-Socialising-Feb-22.pdf. [AV: data de acesso]
 
-KVIAT, Alexandra. Playful infrastructures: building communities through social board gaming. In: EVANS, George (ed.). *Social and cultural infrastructure for people and policy*. London: The British Academy, 2024. p. 74–86. Disponível em: https://www.thebritishacademy.ac.uk/documents/5384/Social-and-cultural-infrastructure-for-people-and-policy.pdf. Acesso em: 2 nov. 2026.
-
-NOVAES, Allan; KANYAT, Lizbeth. From play to belonging: board game cafes as mediators for social wellness and community building in Japan. *Acta Ludologica*, v. 8, n. 1, p. 78–97, 2025. DOI: 10.34135/actaludologica.2025-8-1.78-97. Disponível em: https://doi.org/10.34135/actaludologica.2025-8-1.78-97. Acesso em: 2 nov. 2026.
-
 SALVADOR. Lei nº 9.148, de 8 de setembro de 2016. Dispõe sobre o ordenamento do uso e da ocupação do solo do Município de Salvador (LOUOS). *Diário Oficial do Município*, Salvador, 2016. [AV]
 
 SARPA, Bernard Calvert. *Experiências de consumo com jogos de tabuleiro modernos*. 2016. Dissertação (Mestrado em Administração) – Instituto COPPEAD de Administração, Universidade Federal do Rio de Janeiro, Rio de Janeiro, 2016. Disponível em: https://www.coppead.ufrj.br/wp-content/uploads/2021/06/Bernard_Sarpa.pdf. Acesso em: 2 nov. 2026.
-
-SAVILLS. Competitive socialising. Savills UK, [s.d.]. Disponível em: https://www.savills.co.uk/research_articles/229130/357959-0. [Conferir ano de publicação e data de acesso.]
-
-SAVILLS. Competitive socialising sector grows at rapid rate, says Savills. *Savills UK*, 22 nov. 2023. Disponível em: https://www.savills.co.uk/insight-and-opinion/savills-news/354444/competitive-socialising-sector-grows-at-rapid-rate--says-savills. Acesso em: 2 nov. 2026.

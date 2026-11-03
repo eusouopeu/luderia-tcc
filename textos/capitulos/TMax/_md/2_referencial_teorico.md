@@ -8,11 +8,11 @@ Convenção de citação: página = conferida no PDF; [AV] = obra ainda não lid
 
 O plano de negócios é o documento que descreve o empreendimento e testa, antes do investimento, se ele se sustenta. Dornelas (2021, p. 6–10, [AV]) atribui ao plano duas funções: orientar a gestão do negócio e comunicar a oportunidade a sócios e financiadores. Os componentes do plano — análise de mercado, plano de marketing, plano operacional, aspectos jurídicos e plano financeiro — organizam os capítulos 5 a 9 deste trabalho. O sumário executivo (capítulo 4) condensa o resultado em uma decisão: investir ou não.
 
-O valor do plano depende da qualidade das premissas que o alimentam. Um plano com premissas sem fonte apenas formaliza a intuição do empreendedor. A gestão baseada em evidências responde a esse problema: é o uso consciente, explícito e criterioso das melhores evidências disponíveis na tomada de decisão (FIGUEIREDO, 2020, p. 31). Pfeffer e Sutton (2006, [AV]) opõem essa prática à decisão apoiada em costume, imitação de casos de sucesso ou crença não testada.
+O valor do plano depende da qualidade das premissas que o alimentam. Um plano com premissas sem fonte apenas formaliza a intuição do empreendedor. A gestão baseada em evidências responde a esse problema: as decisões usam as melhores evidências disponíveis, e não o costume, a imitação de casos de sucesso ou a crença não testada (PFEFFER; SUTTON, 2006, [AV]).
 
-As evidências vêm de quatro fontes: pesquisas científicas, dados da própria organização, experiência profissional e valores das partes afetadas pela decisão (FIGUEIREDO, 2020, p. 31). Um negócio ainda não aberto não tem dados próprios. O trabalho substitui essa fonte por dados de estabelecimentos comparáveis: avaliações publicadas, cardápios e a contagem direta em uma luderia em operação. A escala de confiança N1–N6 e a hierarquia de tipos de dados (capítulo 3) ordenam essas fontes pela força da evidência que oferecem.
+Um negócio ainda não aberto não tem dados próprios. O trabalho substitui essa fonte por dados de estabelecimentos comparáveis: avaliações publicadas, cardápios e a contagem direta em uma luderia em operação. A escala de confiança N1–N6 e a hierarquia de tipos de dados (capítulo 3) ordenam essas fontes pela força da evidência que oferecem.
 
-A evidência disponível nem sempre é suficiente. Nesse caso, a decisão trabalha com a evidência limitada e a complementa com testes piloto (FIGUEIREDO, 2020, p. 32). O princípio orienta o tratamento das premissas de maior incerteza: elas recebem faixa pessimista, provável e otimista no capítulo 9 e indicam as validações a fazer antes do investimento no capítulo 11.
+A evidência disponível nem sempre é suficiente. Nesse caso, a decisão trabalha com a evidência limitada e a complementa com testes piloto (PFEFFER; SUTTON, 2006, [AV]). O princípio orienta o tratamento das premissas de maior incerteza: elas recebem faixa pessimista, provável e otimista no capítulo 9 e indicam as validações a fazer antes do investimento no capítulo 11.
 
 ## 2.2 ESTRATÉGIA E MODELO DE NEGÓCIO
 
@@ -26,7 +26,7 @@ O macroambiente reúne as forças externas que a empresa não controla. Kotler e
 
 A estratégia do oceano azul propõe criar um espaço de mercado sem disputa direta, em vez de competir por preço no espaço existente. Kim e Mauborgne (2005, [AV]) operacionalizam a proposta pela grade ERRC: eliminar, reduzir, elevar e criar atributos em relação ao padrão do setor. A grade obriga a escolher onde o negócio fica abaixo do padrão para financiar o que fica acima. O capítulo 6.1 define o posicionamento da luderia por essa grade.
 
-A grade ERRC não indica, por si, quais atributos podem ser reduzidos sem perda de clientes. O modelo Kano responde a essa pergunta ao classificar os atributos pela relação entre desempenho e satisfação. Atributos obrigatórios geram insatisfação quando ausentes, mas não geram satisfação quando presentes; atributos atrativos geram satisfação quando presentes, sem gerar insatisfação quando ausentes (TONTINI; THEISS, 2005, p. 35–36). Atributos unidimensionais, ou de desempenho, afetam a satisfação nos dois sentidos.
+A grade ERRC não indica, por si, quais atributos podem ser reduzidos sem perda de clientes. O modelo Kano responde a essa pergunta ao classificar os atributos pela relação entre desempenho e satisfação. Atributos obrigatórios geram insatisfação quando ausentes, mas não geram satisfação quando presentes; atributos atrativos geram satisfação quando presentes, sem gerar insatisfação quando ausentes (PICOLO; TONTINI, 2008, p. 40). Atributos unidimensionais, ou de desempenho, afetam a satisfação nos dois sentidos.
 
 A análise do contraste da penalidade e da recompensa (PRC) classifica os atributos a partir de dados de satisfação, sem perguntar ao cliente como reagiria a cada atributo. A satisfação geral é regredida contra variáveis indicadoras de desempenho abaixo e acima de uma referência; o coeficiente de penalidade mede a perda de satisfação no primeiro caso, e o de recompensa, o ganho no segundo (PICOLO; TONTINI, 2008, p. 42–45). Atributo com penalidade maior que a recompensa é obrigatório; com recompensa maior que a penalidade, atrativo (PICOLO; TONTINI, 2008, p. 50–51). O capítulo 6 aplica a lógica às avaliações do Bloco B2: o aspecto citado nas avaliações é comparado com a nota de quem o elogia, de quem o critica e de quem não o menciona.
 
@@ -40,7 +40,7 @@ A análise SWOT cruza as forças e fraquezas internas do negócio com as oportun
 
 O lazer é a cultura vivida no tempo disponível, escolhida pelo próprio indivíduo e sem obrigação profissional ou doméstica (MARCELLINO, 2012, [AV]). A definição tem duas dimensões: o tempo livre e a atitude de escolha. A luderia disputa a segunda dimensão: o cliente escolhe entre ela e outras formas de passar a noite ou o fim de semana com outras pessoas.
 
-Pine e Gilmore (1999, [AV]) tratam a experiência como uma oferta econômica própria, distinta de bens e serviços: a empresa encena um acontecimento memorável, e o cliente paga pelo tempo que passa nele. Compras de experiências geram mais satisfação que compras de bens materiais (GILOVICH; KUMAR; JAMPOL, 2015). Em pesquisa com 500 adultos do Reino Unido (janeiro de 2022), 88% disseram querer que bares ofereçam uma experiência que não conseguem ter em casa; a preferência por gastar com experiências em vez de bens vai de 41% entre maiores de 55 anos a 69% entre 18 e 24 anos (KAM INSIGHT, 2022, p. 4–8).
+Pine e Gilmore (1998 *apud* FITZSIMMONS; FITZSIMMONS, 2014) tratam a experiência como uma oferta econômica própria, distinta de bens e serviços: a empresa encena um acontecimento memorável, e o cliente paga pelo tempo que passa nele. Em pesquisa com 500 adultos do Reino Unido (janeiro de 2022), 88% disseram querer que bares ofereçam uma experiência que não conseguem ter em casa; a preferência por gastar com experiências em vez de bens vai de 41% entre maiores de 55 anos a 69% entre 18 e 24 anos (KAM INSIGHT, 2022, p. 4–8).
 
 A luderia vende uma ocasião social, e não o uso de um jogo. O jogo é o meio; o produto é o encontro em torno da mesa. A distinção orienta a proposta de valor (capítulo 6.1) e a leitura das ocasiões de consumo nas avaliações (capítulo 5.2).
 
@@ -60,8 +60,6 @@ A preferência por regras simples também orienta o acervo. Entre os jogos avali
 
 A luderia pertence ao segmento de *competitive socialising*: estabelecimentos que combinam uma atividade de jogo com alimentos e bebidas em uma ocasião social (KAM INSIGHT, 2022, p. 2–6). No Reino Unido, as ocasiões que levam a esses locais são encontrar amigos (67%), diversão em família (59%), datas especiais (36%), a substituição de uma saída comum a bar ou restaurante (29%) e eventos de trabalho (22%). Os atributos mais exigidos são os mesmos de qualquer bar: segurança (70%), preço (69%) e qualidade da comida (63%) (KAM INSIGHT, 2022, p. 15–19). O jogo diferencia o local, mas não dispensa o básico da hospitalidade.
 
-Oldenburg (1989, [AV]) chama de terceiro lugar o espaço de convívio entre a casa e o trabalho, com acesso fácil, frequentadores habituais e a conversa como atividade principal. A luderia se aproxima do conceito pela mesa compartilhada e se afasta dele pelo couvert e pela permanência longa, que reduzem a visita espontânea. O conceito orienta a leitura das avaliações sobre recorrência e sensação de pertencimento (capítulo 5.2).
-
 O ambiente físico também compõe o serviço. O *servicescape* reúne as condições ambientais, o arranjo do espaço e os sinais e símbolos do local, que afetam a avaliação do cliente e o comportamento dos funcionários (ZEITHAML; BITNER; GREMLER, 2014, [AV]). Na luderia, o arranjo inclui o tamanho das mesas, a iluminação e a exposição do acervo. Ainda assim, o ambiente não é o fator de maior peso em restaurantes. Em clientes do Outback Steakhouse no Brasil, a qualidade da comida teve o maior efeito sobre a imagem do restaurante (coeficiente padronizado de 0,866), acima do serviço (0,223) e do ambiente físico (0,107); a imagem, por sua vez, determinou a satisfação (VASCONCELLOS, 2016, p. 45–47). Comida, serviço e ambiente formam as categorias da análise de conteúdo do Bloco B2, ao lado do acervo e do preço (capítulo 6.2).
 
 A capacidade de um serviço é perecível: a mesa vazia em uma hora não pode ser vendida na hora seguinte (FITZSIMMONS; FITZSIMMONS, 2014, [AV]). A receita da luderia depende, portanto, da taxa de ocupação e do giro das mesas. A lei de Little liga essas medidas: o número médio de clientes no estabelecimento é igual à taxa de chegada multiplicada pela permanência média (HILLIER; LIEBERMAN, 2013, [AV]). A relação dá consistência à contagem do Bloco B3 e ao dimensionamento da capacidade no capítulo 7.2.
@@ -70,13 +68,13 @@ A capacidade de um serviço é perecível: a mesa vazia em uma hora não pode se
 
 A viabilidade econômico-financeira é medida por indicadores calculados sobre o fluxo de caixa projetado. O valor presente líquido (VPL) é a soma dos fluxos de caixa futuros descontados pela taxa mínima de atratividade (TMA), menos o investimento inicial (ASSAF NETO, 2014, p. 388–392). VPL positivo indica que o projeto remunera o capital acima da TMA. A taxa interna de retorno (TIR) é a taxa que torna o VPL igual a zero; o projeto é aceito quando a TIR supera a TMA (ASSAF NETO, 2014, p. 378–382).
 
-A TMA é o retorno mínimo exigido do investimento. Ela parte de uma taxa livre de risco e soma um prêmio pelo risco do projeto (BREALEY; MYERS; ALLEN, 2018, [AV]). Um negócio pequeno, de capital fechado e sem liquidez exige prêmio maior que o de uma empresa listada (DAMODARAN, 2010, [AV]). No capítulo 9, a TMA parte da Selic e do IPCA divulgados pelo Banco Central.
+A TMA é o retorno mínimo exigido do investimento. Ela parte de uma taxa livre de risco e soma um prêmio pelo risco do projeto (ASSAF NETO, 2014, p. 13). Um negócio de capital fechado, sem liquidez, soma a esse prêmio um prêmio de liquidez, que remunera a dificuldade de vender o investimento por um valor justo (ASSAF NETO, 2014, p. 89). No capítulo 9, a TMA parte da Selic e do IPCA divulgados pelo Banco Central.
 
-O payback descontado é o prazo em que os fluxos descontados pela TMA recuperam o investimento inicial (ASSAF NETO, 2014, p. 374–378). O ponto de equilíbrio é o volume de vendas em que a receita cobre os custos fixos e variáveis, com lucro igual a zero (BRUNI; FAMÁ, 2019, [AV]). Para a luderia, o ponto de equilíbrio se expressa em visitantes por semana, o que permite compará-lo diretamente com o fluxo estimado.
+O payback descontado é o prazo em que os fluxos descontados pela TMA recuperam o investimento inicial (ASSAF NETO, 2014, p. 374–378). O ponto de equilíbrio é o volume de vendas em que a receita cobre os custos fixos e variáveis, com lucro igual a zero (ASSAF NETO, 2014, p. 422–423). Para a luderia, o ponto de equilíbrio se expressa em visitantes por semana, o que permite compará-lo diretamente com o fluxo estimado.
 
 Os mesmos indicadores dominam a prática. Em empresas brasileiras, o VPL foi apontado como o método mais importante por 54% dos respondentes e a TIR por 38%, com o payback simples em terceiro lugar (FREZATTI et al., 2012, p. 12). O payback simples foi mais usado que o payback ajustado pelo custo de oportunidade, o que indica descuido com o horizonte de retorno do investimento (FREZATTI et al., 2012, p. 18). O único estudo de viabilidade localizado sobre o formato, de um *board game café* em Ourinhos (SP), usa esse indicador: o investimento de R$ 38.705,06 seria recuperado em três anos e cinco meses, e o negócio é declarado viável (ASAKURA; SILVA; MELLO, 2018, p. 9–13). O estudo não testa a sensibilidade do resultado às premissas de receita. O trabalho usa o payback descontado e trata a incerteza de forma explícita.
 
-A incerteza é tratada por cenários e por análise de sensibilidade. Os cenários combinam valores pessimistas, prováveis e otimistas das premissas. A análise de sensibilidade varia uma premissa por vez, mantendo as demais no valor provável, e mede o efeito sobre o VPL (BRUNI, 2018, [AV]; CASAROTTO FILHO; KOPITTKE, 2020, [AV]). Ordenadas pelo efeito, as premissas formam o gráfico de tornado; as de maior impacto são as premissas críticas. O ponto de ruptura é o valor de uma premissa crítica que torna o VPL igual a zero (BRUNI, 2018, [AV]). Ele converte o resultado em condição: o negócio é viável enquanto a taxa de ocupação ficar acima de um valor determinado. Os capítulos 9.7 e 10.3 aplicam essas ferramentas.
+A incerteza é tratada por cenários e por análise de sensibilidade. Os cenários combinam valores pessimistas, prováveis e otimistas das premissas. A análise de sensibilidade varia uma premissa por vez, mantendo as demais no valor provável, e mede o efeito sobre o VPL (ASSAF NETO, 2014, p. 419–420). Ordenadas pelo efeito, as premissas formam o gráfico de tornado; as de maior impacto são as premissas críticas. O ponto de ruptura é o valor de uma premissa crítica que torna o VPL igual a zero (ASSAF NETO, 2014, p. 422–423). Ele converte o resultado em condição: o negócio é viável enquanto a taxa de ocupação ficar acima de um valor determinado. Os capítulos 9.7 e 10.3 aplicam essas ferramentas.
 
 O Quadro 1 resume os conceitos do capítulo e o ponto do plano em que cada um é aplicado.
 
@@ -109,27 +107,13 @@ ASAKURA, P. N.; SILVA, A. R. da; MELLO, D. A. Estudo de viabilidade econômica d
 
 ASSAF NETO, Alexandre. *Finanças corporativas e valor*. 7. ed. São Paulo: Atlas, 2014.
 
-BREALEY, Richard A.; MYERS, Stewart C.; ALLEN, Franklin. *Princípios de finanças corporativas*. 12. ed. Porto Alegre: AMGH, 2018. [AV]
-
-BRUNI, Adriano Leal. *Avaliação de investimentos*. 3. ed. São Paulo: Atlas, 2018. [AV]
-
-BRUNI, Adriano Leal; FAMÁ, Rubens. *Gestão de custos e formação de preços*. 7. ed. São Paulo: Atlas, 2019. [AV]
-
-CASAROTTO FILHO, Nelson; KOPITTKE, Bruno Hartmut. *Análise de investimentos*. 12. ed. São Paulo: Atlas, 2020. [AV]
-
-DAMODARAN, Aswath. *Avaliação de investimentos*: ferramentas e técnicas para a determinação do valor de qualquer ativo. 2. ed. Rio de Janeiro: Qualitymark, 2010. [AV]
-
 DORNELAS, José. *Plano de negócios*: seu guia definitivo. 3. ed. São Paulo: Empreende, 2021. [AV]
-
-FIGUEIREDO, Américo Rodrigues de. Gestão baseada em evidências. *GV-executivo*, São Paulo, v. 19, n. 1, p. 30–32, jan./fev. 2020.
 
 FIGUEIREDO, Caio Moretti de; MANTOVANI, Daielly Melina Nassif. Jogos de tabuleiro modernos e o consumidor brasileiro: uma análise das características desejáveis no produto via modelos estatístico-preditivos. In: SEMINÁRIOS EM ADMINISTRAÇÃO, 25., 2022, São Paulo. *Anais* [...]. São Paulo: FEA-USP, 2022. Disponível em: https://login.semead.com.br/25semead/anais/arquivos/1057.pdf. [AV: data de acesso]
 
 FITZSIMMONS, James A.; FITZSIMMONS, Mona J. *Administração de serviços*: operações, estratégia e tecnologia da informação. 7. ed. Porto Alegre: AMGH, 2014.
 
 FREZATTI, Fábio; BIDO, Diógenes de Souza; CRUZ, Ana Paula Capuano da; BARROSO, Marcelo Francini Girão; MACHADO, Maria José de Camargo. Decisões de investimento em ativos de longo prazo nas empresas brasileiras: qual a aderência ao modelo teórico? *Revista de Administração Contemporânea*, Curitiba, v. 16, n. 1, p. 1–22, jan./fev. 2012.
-
-GILOVICH, Thomas; KUMAR, Amit; JAMPOL, Lily. A wonderful life: experiential consumption and the pursuit of happiness. *Journal of Consumer Psychology*, v. 25, n. 1, p. 152–165, 2015. DOI: 10.1016/j.jcps.2014.08.004.
 
 HILLIER, Frederick S.; LIEBERMAN, Gerald J. *Introdução à pesquisa operacional*. 9. ed. Porto Alegre: AMGH, 2013. [AV]
 
@@ -143,19 +127,13 @@ MARCELLINO, Nelson Carvalho. *Estudos do lazer*: uma introdução. 5. ed. Campin
 
 MINTZBERG, Henry; AHLSTRAND, Bruce; LAMPEL, Joseph. *Safári de estratégia*. 2. ed. Porto Alegre: Bookman, 2010. [AV]
 
-OLDENBURG, Ray. *The great good place*. New York: Paragon House, 1989. [AV]
-
 PFEFFER, Jeffrey; SUTTON, Robert I. *A verdade dos fatos*: gerenciamento baseado em evidências. Rio de Janeiro: Campus/Elsevier, 2006. [AV]
 
 PICOLO, Jaime Dagostim; TONTINI, Gérson. Análise do contraste da penalidade e da recompensa (PRC): identificando oportunidades de melhoria em um serviço. *RAM – Revista de Administração Mackenzie*, São Paulo, v. 9, n. 5, p. 35–58, 2008.
 
-PINE, B. Joseph; GILMORE, James H. *O espetáculo dos negócios*. Rio de Janeiro: Campus, 1999. [AV]
-
 PORTER, Michael E. *Estratégia competitiva*: técnicas para análise de indústrias e da concorrência. 2. ed. Rio de Janeiro: Elsevier, 2004. [AV]
 
 SARPA, Bernard Calvert. *Experiências de consumo com jogos de tabuleiro modernos*. 2016. Dissertação (Mestrado em Administração) – Instituto COPPEAD de Administração, Universidade Federal do Rio de Janeiro, Rio de Janeiro, 2016.
-
-TONTINI, Gérson; THEISS, Juscelene. Estudo sobre a confiabilidade da classificação dos atributos de um serviço pelo modelo Kano de qualidade atrativa e obrigatória. *RAI – Revista de Administração e Inovação*, São Paulo, v. 2, n. 1, p. 34–50, 2005.
 
 VASCONCELLOS, Pedro Henrique da Silva Carvalho de Barros e. *A influência da qualidade de serviço na imagem, satisfação e intenções comportamentais em restaurantes*: uma análise do Outback Steakhouse Brasil. 2016. Dissertação (Mestrado em Administração de Empresas) – Pontifícia Universidade Católica do Rio de Janeiro, Rio de Janeiro, 2016.
 

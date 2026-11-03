@@ -140,7 +140,7 @@ def siglas_usadas(texto):
         if ok:
             usadas.append(sg)
     # siglas do texto que faltam no dicionário (só maiúsculas de 2 a 6 letras, fora as citações)
-    sem_cit = re.sub(r"\([^()]*\d{4}[^()]*\)", " ", texto)
+    sem_cit = re.sub(r"\([^()]*(?:\d{4}|\[AV)[^()]*\)", " ", texto)
     candidatas = set(re.findall(r"(?<![\w&-])([A-Z]{2,6})(?![\w&-])", sem_cit))
     conhecidas = {p.strip() for sg in SIGLAS for p in re.split(r",| a ", sg)} | {"CAGED"}
     ignorar = {"II", "III", "IV", "VI", "VII", "AV", "SP", "UK", "DF", "BA", "RJ", "MG", "PR", "PE", "PA", "BV", "TMIN", "TMAX", "MVP",

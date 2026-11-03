@@ -20,7 +20,7 @@ A estrutura de custos dos serviços de alimentação serve de referência para o
 
 Os jogos de tabuleiro ganharam participação na indústria nacional de brinquedos. Os jogos de tabuleiro e cartas passaram de 9,1% para 13,1% das vendas do setor entre 2017 e 2025, com alta de 16% no último ano (ABRINQ, 2026). Não há série oficial para o segmento: a Abrinq é a fonte setorial mais alta disponível. O número sustenta o crescimento do hábito de jogar, não a demanda por luderias.
 
-No mundo, o mercado de jogos de tabuleiro é estimado em R$ 53 bilhões em 2024 (SEBRAE, 2026). `[BUSCAR a fonte original citada pelo Sebrae; se não houver, mover para nota ou cortar.]` O formato de lazer social com jogos já tem escala em outros países: o Reino Unido soma mais de 800 locais de *competitive socialising* (SAVILLS, [s.d.]). `[Relatório de consultoria imobiliária — nível 3; conferir ano.]`
+No mundo, o mercado de jogos de tabuleiro é estimado em R$ 53 bilhões em 2024 (SEBRAE, 2026). `[BUSCAR a fonte original citada pelo Sebrae; se não houver, mover para nota ou cortar.]`
 
 ### 5.1.3 Alimentação fora do lar na Bahia
 
@@ -126,7 +126,7 @@ O enquadramento tributário e a licença de funcionamento são tratados no cap. 
 
 ### 5.5.3 Social
 
-O lazer fora de casa e o consumo de bebida fora do lar têm peso maior no orçamento baiano (5.1.3). A faixa de 20 a 39 anos soma 30,5% da população de Salvador (IBGE, Censo 2022). `[Referência acadêmica sobre consumo de experiências (Gilovich; Kumar; Jampol, 2015) já citada no cap. 1 — usar só se ligar a uma decisão.]`
+O lazer fora de casa e o consumo de bebida fora do lar têm peso maior no orçamento baiano (5.1.3). A faixa de 20 a 39 anos soma 30,5% da população de Salvador (IBGE, Censo 2022).
 
 ### 5.5.4 Tecnológico
 
@@ -142,7 +142,7 @@ A divulgação das luderias acontece nas redes sociais. As 49 luderias com perfi
 | 1 — oficial | Lei Complementar n. 214/2025 | 5.5.2 | `[AV]` |
 | 1 — oficial | Comex Stat (MDIC), dados abertos do CNPJ (Receita Federal), PNAD TIC | 5.1.4, 5.4.1, 5.5.4 | `[BUSCAR]` |
 | 2 — fundação | Fipe (Índice FipeZAP) | 5.5.1 | Coletado no B4 |
-| 3 — entidade setorial e acadêmico | Abrinq (2026), Sebrae (2026), Savills, Gilovich et al. (2015) | 5.1.2, 5.5.3 | Abrinq e Sebrae: buscar original |
+| 3 — entidade setorial e acadêmico | Abrinq (2026), Sebrae (2026) | 5.1.2, 5.5.3 | Abrinq e Sebrae: buscar original |
 | Próprio | Blocos B1, B2 e B3 | 5.2.2, 5.3, 5.4.1 | B2 provisório |
 | 4 — imprensa | Mercado&Consumo (cap. 1) | Não usado aqui | Substituir pela Abrasce |
 
@@ -171,7 +171,5 @@ IBGE. *Pesquisa Nacional por Amostra de Domicílios Contínua*: tabelas 5436 e 7
 IBGE. *Regiões de influência das cidades 2018*. Rio de Janeiro: IBGE, 2020.
 
 IBGE. *Sistema Nacional de Índices de Preços ao Consumidor*: IPCA, tabela 7060. Rio de Janeiro: IBGE, 2026.
-
-SAVILLS. *Competitive socialising*. Londres: Savills UK, [s.d.]. `[AV ano]`
 
 SEBRAE. Jogos de tabuleiro movimentaram R$ 53 bilhões em 2024. *Agência Sebrae de Notícias*, 2026. `[Buscar fonte original]`

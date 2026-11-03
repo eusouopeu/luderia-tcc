@@ -100,7 +100,7 @@ O dicionário de temas tem 22 temas, os mesmos para elogio e crítica: a coluna 
 
 ### 3.4.3 Validação da coleta e da codificação
 
-A validação estima o erro que sobra depois que o dado é obtido. A referência é o modelo de erro total da pesquisa, que separa o erro amostral do erro não amostral: cobertura, medida e processamento (GROVES et al., 2009; BIEMER, 2010) `[AV]`. A adaptação desse modelo a dados de plataformas digitais está em Amaya, Biemer e Kinyon (2020) `[AV]`. O procedimento muda com a natureza de cada bloco (Quadro 3.3).
+A validação estima o erro que sobra depois que o dado é obtido. A referência é o modelo de erro total da pesquisa, que separa o erro amostral do erro não amostral: cobertura, medida e processamento (MATTAR, [AV ano], cap. 6). O procedimento muda com a natureza de cada bloco (Quadro 3.3).
 
 **Quadro 3.3 – Validação por bloco**
 
