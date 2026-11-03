@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.02-9
+// @version      2026.11.03-1
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -21,7 +21,7 @@
  * informática e dos itens da reforma sem composição no SINAPI (premissas I01 a I04 do cap. 9).
  * Os sites bloqueiam requisições fora do navegador, por isso a coleta roda na página.
  *
- * Os botões do painel trazem ícone e nome curto; o nome completo ("Guardar marcadas", "Ler
+ * Os botões do painel trazem ícone (Heroicons) e nome curto; o nome completo ("Guardar marcadas", "Ler
  * ofertas"...) e a explicação ficam na dica ao passar o mouse. Os filtros são selos que ligam e
  * desligam.
  *
@@ -30,7 +30,7 @@
  *     painel (a lista vem de "[B5] Lista de Itens da Etapa 1", só os de fonte "coleta").
  *     "Buscar aqui" abre a busca do site com o termo do item. No seletor, os itens vêm em grupos
  *     por categoria: os que já têm oferta guardada esmaecidos (✓ e o número de ofertas), os que
- *     faltam na cor da categoria (com 1 ou 2 ofertas, em âmbar com ⚠). "Só os que faltam" esconde
+ *     faltam com ○ na cor da categoria (com 1 ou 2 ofertas, ◐ em âmbar). "Só os que faltam" esconde
  *     os completos; "Próximo que falta" pula para o próximo item abaixo do mínimo (primeiro na
  *     mesma categoria) e abre a busca dele. Com 25+ ofertas fora de CSV, o painel cobra o download
  *     e o navegador pede confirmação ao fechar a aba.
@@ -45,7 +45,7 @@
  *     ("caixa com 24", "(2 un.)") no campo de cada linha, que se pode corrigir; sem elas, vale
  *     "Unidades por embalagem". O preço guardado é o da unidade da lista.
  *  4. "Guardar marcadas". Repetir em outros sites e itens; os dados ficam no Tampermonkey
- *     (comuns a todos os sites). "Guardadas deste item" lista as ofertas do item, com ✕ para
+ *     (comuns a todos os sites). "Guardadas deste item" lista as ofertas do item, com um X para
  *     excluir uma: a exclusão vai no CSV (excluida = 1) e o build a respeita.
  *  5. "Baixar CSV": um arquivo por categoria, AAAA-MM-DD_HHmm_<categoria>_precos.csv, com
  *     tudo o que está guardado, para dados/[B5] Ativos fixos/_dados-brutos/<categoria>/.
@@ -739,13 +739,14 @@
     #cpi-painel.min>*:not(header){display:none}
     header{display:flex;justify-content:space-between;align-items:center;font-weight:700;cursor:pointer}
     p{margin:4px 0}
+    svg.ico{width:14px;height:14px;flex:0 0 auto;vertical-align:-2px}
     .linha{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0;align-items:center}
-    button{flex:1 1 auto;padding:5px 8px;border-radius:6px;border:1px solid #888;
-      background:transparent;color:inherit;cursor:pointer;font:inherit;white-space:nowrap}
+    button{flex:1 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 8px;
+      border-radius:6px;border:1px solid #888;background:transparent;color:inherit;cursor:pointer;font:inherit;white-space:nowrap}
     button:disabled{opacity:.4;cursor:default}
     button.principal{background:var(--azul);border-color:var(--azul);color:#fff;font-weight:600}
     button.ic{flex:0 0 auto;padding:4px 7px}
-    button.x{flex:0 0 auto;padding:0 6px;border:none;opacity:.7}
+    button.x{flex:0 0 auto;padding:0 2px;border:none;opacity:.6}
     .tag{flex:0 0 auto;border-radius:999px;padding:2px 9px;font-size:12px;opacity:.55}
     .tag.on{opacity:1;background:var(--azul);border-color:var(--azul);color:#fff}
     select,input{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px}
@@ -753,21 +754,74 @@
     option.obra_reforma{color:#c2410c} option.cozinha_bar{color:#1d4ed8}
     option.mobiliario{color:#15803d} option.equipamentos{color:#7e22ce}
     option.coletado{color:#9ca3af} option.fraco{color:#b45309}
-    input[type=number]{width:46px} input.cep{width:84px} li input.u{width:38px;flex:0 0 auto}
-    .rotulo{font-size:12px;opacity:.7}
-    .info{font-size:12px}
-    .caixa{border:1px solid var(--linha);border-radius:8px;padding:4px 8px;margin:6px 0}
-    .sub{font-size:11px;opacity:.75}
+    input[type=number]{width:46px} input.cep{width:84px} input.u{width:38px;flex:0 0 auto;font-size:11px;padding:1px 3px}
+    .rotulo{display:inline-flex;opacity:.7}
+    .info{font-size:12px;display:inline-flex;align-items:center;gap:3px}
+    .caixa{border:1px solid var(--linha);border-radius:8px;padding:6px 8px;margin:6px 0}
+    .grade{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:2px 8px;font-size:12px;align-items:center}
+    .grade+.grade{margin-top:6px;padding-top:6px;border-top:1px solid var(--linha)}
+    .grade .k{opacity:.6;display:inline-flex;align-items:center;gap:3px}
+    .grade .v{font-variant-numeric:tabular-nums;display:inline-flex;align-items:center;gap:3px}
+    .grade .largo{grid-column:2 / -1}
+    .grade .todo{grid-column:1 / -1;display:flex;align-items:center;gap:4px}
     ul{list-style:none;margin:6px 0;padding:0;max-height:40vh;overflow:auto}
-    li{display:flex;gap:6px;align-items:flex-start;padding:3px 0;border-bottom:1px solid var(--linha);font-size:12px}
-    li span{flex:1} li b{white-space:nowrap}
-    li i{display:block;font-style:normal;font-size:11px;opacity:.75}
+    li{display:flex;gap:6px;align-items:flex-start;padding:4px 0;border-bottom:1px solid var(--linha);font-size:12px}
+    li .corpo{flex:1;min-width:0}
+    li .titulo{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+    li .titulo:hover{text-decoration:underline}
+    li .meta{display:flex;flex-wrap:wrap;gap:3px 8px;align-items:center;font-size:11px;margin-top:1px}
+    li .meta>span{display:inline-flex;align-items:center;gap:2px}
+    li .meta b{font-size:12px}
+    li .selo{border:1px solid currentColor;border-radius:4px;padding:0 3px;font-size:10px;opacity:.75}
+    li.guardada span{flex:1} li.guardada b{white-space:nowrap}
     .barra{display:inline-block;width:70px;height:7px;border:1px solid #888;border-radius:4px;vertical-align:middle;overflow:hidden}
     .barra>span{display:block;height:100%;background:currentColor}
     details{margin:6px 0} summary{cursor:pointer;font-size:12px}
     .resumo{font-size:12px} .alerta{color:#b45309} .ok{color:#15803d}
     @media (prefers-color-scheme:dark){.alerta{color:#fbbf24}.ok{color:#4ade80}}
     .status{font-size:12px;opacity:.8}`;
+
+  // Ícones Heroicons (MIT, Tailwind Labs), versão 2.1.5, 20/solid: só os caminhos do SVG;
+  // "e:" marca fill-rule evenodd. Montados com createElementNS (sem innerHTML).
+  const ICONES = {
+    'adjustments-horizontal': ["M10 3.75a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM17.25 4.5a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM5 3.75a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 .75.75ZM4.25 17a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM17.25 17a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM9 10a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1 0-1.5h5.5A.75.75 0 0 1 9 10ZM17.25 10.75a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM14 10a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM10 16.25a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"],
+    'arrow-down-tray': ["M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z", "M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z"],
+    'arrow-path': ["e:M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138.75.75 0 0 0-1.449-.39Zm1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219Z"],
+    'bookmark': ["e:M10 2c-1.716 0-3.408.106-5.07.31C3.806 2.45 3 3.414 3 4.517V17.25a.75.75 0 0 0 1.075.676L10 15.082l5.925 2.844A.75.75 0 0 0 17 17.25V4.517c0-1.103-.806-2.068-1.93-2.207A41.403 41.403 0 0 0 10 2Z"],
+    'chart-bar': ["M15.5 2A1.5 1.5 0 0 0 14 3.5v13a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 16.5 2h-1ZM9.5 6A1.5 1.5 0 0 0 8 7.5v9A1.5 1.5 0 0 0 9.5 18h1a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 10.5 6h-1ZM3.5 10A1.5 1.5 0 0 0 2 11.5v5A1.5 1.5 0 0 0 3.5 18h1A1.5 1.5 0 0 0 6 16.5v-5A1.5 1.5 0 0 0 4.5 10h-1Z"],
+    'check': ["e:M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"],
+    'cube': ["M10.362 1.093a.75.75 0 0 0-.724 0L2.523 5.018 10 9.143l7.477-4.125-7.115-3.925ZM18 6.443l-7.25 4v8.25l6.862-3.786A.75.75 0 0 0 18 14.25V6.443ZM9.25 18.693v-8.25l-7.25-4v7.807a.75.75 0 0 0 .388.657l6.862 3.786Z"],
+    'exclamation-triangle': ["e:M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"],
+    'folder': ["M3.75 3A1.75 1.75 0 0 0 2 4.75v3.26a3.235 3.235 0 0 1 1.75-.51h12.5c.644 0 1.245.188 1.75.51V6.75A1.75 1.75 0 0 0 16.25 5h-4.836a.25.25 0 0 1-.177-.073L9.823 3.513A1.75 1.75 0 0 0 8.586 3H3.75ZM3.75 9A1.75 1.75 0 0 0 2 10.75v4.5c0 .966.784 1.75 1.75 1.75h12.5A1.75 1.75 0 0 0 18 15.25v-4.5A1.75 1.75 0 0 0 16.25 9H3.75Z"],
+    'forward': ["M3.288 4.818A1.5 1.5 0 0 0 1 6.095v7.81a1.5 1.5 0 0 0 2.288 1.276l6.323-3.905c.155-.096.285-.213.389-.344v2.973a1.5 1.5 0 0 0 2.288 1.276l6.323-3.905a1.5 1.5 0 0 0 0-2.552l-6.323-3.906A1.5 1.5 0 0 0 10 6.095v2.972a1.506 1.506 0 0 0-.389-.343L3.288 4.818Z"],
+    'funnel': ["e:M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 0 1 .628.74v2.288a2.25 2.25 0 0 1-.659 1.59l-4.682 4.683a2.25 2.25 0 0 0-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 0 1 8 18.25v-5.757a2.25 2.25 0 0 0-.659-1.591L2.659 6.22A2.25 2.25 0 0 1 2 4.629V2.34a.75.75 0 0 1 .628-.74Z"],
+    'magnifying-glass': ["e:M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z"],
+    'map-pin': ["e:m9.69 18.933.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 0 0 .281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 1 0 3 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 0 0 2.273 1.765 11.842 11.842 0 0 0 .976.544l.062.029.018.008.006.003ZM10 11.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z"],
+    'minus': ["e:M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z"],
+    'no-symbol': ["e:m5.965 4.904 9.131 9.131a6.5 6.5 0 0 0-9.131-9.131Zm8.07 10.192L4.904 5.965a6.5 6.5 0 0 0 9.131 9.131ZM4.343 4.343a8 8 0 1 1 11.314 11.314A8 8 0 0 1 4.343 4.343Z"],
+    'plus': ["M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z"],
+    'tag': ["e:M4.5 2A2.5 2.5 0 0 0 2 4.5v3.879a2.5 2.5 0 0 0 .732 1.767l7.5 7.5a2.5 2.5 0 0 0 3.536 0l3.878-3.878a2.5 2.5 0 0 0 0-3.536l-7.5-7.5A2.5 2.5 0 0 0 8.38 2H4.5ZM5 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"],
+    'trash': ["e:M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z"],
+    'truck': ["M6.5 3c-1.051 0-2.093.04-3.125.117A1.49 1.49 0 0 0 2 4.607V10.5h9V4.606c0-.771-.59-1.43-1.375-1.489A41.568 41.568 0 0 0 6.5 3ZM2 12v2.5A1.5 1.5 0 0 0 3.5 16h.041a3 3 0 0 1 5.918 0h.791a.75.75 0 0 0 .75-.75V12H2Z", "M6.5 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM13.25 5a.75.75 0 0 0-.75.75v8.514a3.001 3.001 0 0 1 4.893 1.44c.37-.275.61-.719.595-1.227a24.905 24.905 0 0 0-1.784-8.549A1.486 1.486 0 0 0 14.823 5H13.25ZM14.5 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"],
+    'x-mark': ["M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"],
+  };
+  function icone(nome) {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', '0 0 20 20');
+    svg.setAttribute('fill', 'currentColor');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('class', 'ico');
+    for (const d of ICONES[nome] || []) {
+      const p = document.createElementNS(ns, 'path');
+      if (d.startsWith('e:')) { p.setAttribute('fill-rule', 'evenodd'); p.setAttribute('clip-rule', 'evenodd'); }
+      p.setAttribute('d', d.replace(/^e:/, ''));
+      svg.appendChild(p);
+    }
+    return svg;
+  }
+  // Filhos mistos: texto e nós (ícones), sem vazios
+  const partes = (...xs) => xs.filter((x) => x !== '' && x != null && x !== false).map((x) => (typeof x === 'string' ? document.createTextNode(x) : x));
 
   const status = (t) => { if (el.status) el.status.textContent = t; };
   const reais = (v) => (v == null ? '–' : `R$ ${v.toFixed(2).replace('.', ',')}`);
@@ -776,8 +830,12 @@
   const ROTULO_CATEGORIA = { obra_reforma: 'Obra e reforma', cozinha_bar: 'Cozinha e bar', mobiliario: 'Mobiliário', equipamentos: 'Equipamentos' };
   const decimal = (v) => String(v).replace('.', ',');
   const quando = (ms) => { const d = new Date(ms); return `${doisDig(d.getDate())}/${doisDig(d.getMonth() + 1)} ${doisDig(d.getHours())}h${doisDig(d.getMinutes())}`; };
-  // Texto curto (ícone) no painel; o nome e a explicação vão no title (tooltip)
-  const botao = (rotulo, titulo, onclick, className = '') => criar('button', { textContent: rotulo, title: titulo, onclick, className });
+  const diaMes = (iso) => (iso ? iso.split('-').reverse().join('/') : '–');
+  // Botão com ícone e nome curto; o nome completo e a explicação vão no title (tooltip)
+  function botao(ico, rotulo, titulo, onclick, className = '') {
+    const b = criar('button', { title: titulo, onclick, className }, partes(icone(ico), rotulo && criar('span', { textContent: rotulo })));
+    return b;
+  }
   // Selo que liga e desliga (filtros e "só os que faltam")
   function selo(rotulo, titulo, ligado, aoMudar) {
     const b = criar('button', { className: 'tag', textContent: rotulo, title: titulo });
@@ -786,6 +844,9 @@
     b.onclick = () => { const v = !b.classList.contains('on'); pintar(v); aoMudar(v); };
     return b;
   }
+  // Casa da grade: rótulo (k) ou valor (v), com ícone opcional
+  const casa = (classe, ...xs) => criar('span', { className: classe }, partes(...xs));
+  const aviso = (t) => criar('span', { className: 'alerta', title: t }, [icone('exclamation-triangle')]);
 
   function mostrarCep() {
     const doSite = cepDoSite();
@@ -793,7 +854,8 @@
     const ok = cep && ehSalvador(cep);
     const bom = doSite ? ehSalvador(doSite) : ok;
     el.cepAviso.className = bom ? 'info ok' : 'info alerta';
-    el.cepAviso.textContent = doSite ? `${bom ? '✓' : '⚠'} no site: ${doSite}` : cep ? `${ok ? '✓' : '⚠'} site não mostra` : '⚠ informe o CEP';
+    el.cepAviso.replaceChildren(...partes(icone(bom ? 'check' : 'exclamation-triangle'),
+      doSite ? `no site: ${doSite}` : cep ? 'site não mostra' : 'informe o CEP'));
     el.cepAviso.title = doSite
       ? `CEP no site: ${doSite}${ehSalvador(doSite) ? ' (Salvador)' : ' — fora de Salvador: o frete não vale'}`
       : cep ? `CEP informado: ${cep}${ok ? ' (Salvador)' : ' — fora de Salvador'}; o site não mostra o CEP, conferir`
@@ -807,54 +869,63 @@
     const r = resumoItem(guardados, item.id);
     const itensComPreco = new Set(lista.map((l) => l.id_item)).size;
     const itensFracos = ITENS.filter((i) => { const n = resumoItem(guardados, i.id).n; return n > 0 && n < MIN_OFERTAS; }).length;
-    el.contagem.textContent = `📊 ${itensComPreco}/${ITENS.length} itens · ${itensFracos} abaixo de ${MIN_OFERTAS} · ${lista.length} ofertas`;
-    el.contagem.title = `${itensComPreco} de ${ITENS.length} itens com preço; ${itensFracos} com menos de ${MIN_OFERTAS} ofertas; ${lista.length} ofertas guardadas no total`;
 
     // A8: o que mudou desde o último CSV
     const exportadoEm = GM_getValue(CHAVE_EXPORTACAO, 0);
     const pend = pendentes(guardados, exportadoEm);
     el.pendentes.className = pend ? 'info alerta' : 'info ok';
-    el.pendentes.textContent = pend ? `${pend >= AVISO_PENDENTES ? '⚠' : '•'} ${pend} fora do CSV` : exportadoEm ? '✓ CSV em dia' : 'Nada guardado ainda.';
+    el.pendentes.replaceChildren(...partes(pend >= AVISO_PENDENTES ? icone('exclamation-triangle') : !pend && exportadoEm ? icone('check') : '',
+      pend ? `${pend} fora do CSV` : exportadoEm ? 'CSV em dia' : 'Nada guardado ainda.'));
     el.pendentes.title = pend
       ? `${pend} oferta(s) guardadas ou excluídas desde o último CSV${exportadoEm ? ` (${quando(exportadoEm)})` : ' (nenhum baixado ainda)'}`
         + `${pend >= AVISO_PENDENTES ? '. Baixe o CSV: os dados só estão no Tampermonkey' : ''}`
       : exportadoEm ? `CSV baixado em ${quando(exportadoEm)}` : '';
 
-    // A2: cobertura da categoria do item
+    // Coleta toda e A2: cobertura da categoria do item
     const c = coberturaCategoria(guardados, item.categoria);
-    el.categoria.className = c.completos === c.itens ? 'resumo ok' : 'resumo';
-    el.categoria.title = `Categoria ${item.categoria}: ${c.completos} de ${c.itens} itens com ${MIN_OFERTAS}+ ofertas (${c.comPreco} com alguma)`;
     const preenchido = criar('span');
     preenchido.style.width = `${Math.round((100 * c.completos) / c.itens)}%`;
-    el.categoria.replaceChildren(
-      criar('span', { textContent: `🗂 ${ROTULO_CATEGORIA[item.categoria] || item.categoria}: ${c.completos}/${c.itens} (${c.comPreco} com alguma) ` }),
-      criar('span', { className: 'barra' }, [preenchido]),
+    el.geral.replaceChildren(
+      casa('k', icone('chart-bar'), 'Itens'), casa('v', `${itensComPreco}/${ITENS.length}`),
+      casa('k', 'Abaixo de 3'), casa('v', String(itensFracos)),
+      casa('k', icone('folder'), ROTULO_CATEGORIA[item.categoria] || item.categoria),
+      criar('span', { className: `v largo${c.completos === c.itens ? ' ok' : ''}`, title: `${c.completos} de ${c.itens} itens da categoria com ${MIN_OFERTAS}+ ofertas; ${c.comPreco} com alguma` },
+        partes(`${c.completos}/${c.itens}`, criar('span', { className: 'barra' }, [preenchido]))),
     );
 
-    // A4 e A7: dispersão e idade da coleta do item
-    const alertas = [];
-    if (r.n && r.n < MIN_OFERTAS) alertas.push(`faltam ${MIN_OFERTAS - r.n}`);
-    if (r.dispersao > DISPERSAO_MAX) alertas.push(`P75/P25 de ${decimal(r.dispersao)}×: produtos diferentes?`);
-    if (r.idade > IDADE_MAX) alertas.push(`coleta de ${r.idade} dias`);
-    el.resumo.className = r.n >= MIN_OFERTAS && !alertas.length ? 'resumo ok' : 'resumo alerta';
-    el.resumo.title = r.n ? `Preço + frete das ofertas guardadas deste item${r.leitores.length ? `; leitor ${r.leitores.map((l) => ROTULO_LEITOR[l] || l).join(', ')}` : ''}` : '';
-    el.resumo.replaceChildren(...(r.n ? [
-      criar('span', { textContent: `🏷 ${r.n} ofertas · ${r.sites} site(s) · mediana ${reais(r.mediana)}${alertas.length ? ` · ⚠ ${alertas.join('; ')}` : ''}` }),
-      criar('span', {
-        className: 'sub',
-        textContent: ` ${reais(r.min)} a ${reais(r.max)}${r.n > 1 ? ` · P25 ${reais(r.p25)}, P75 ${reais(r.p75)} (${decimal(r.dispersao)}×)` : ''}`
-          + `${r.semFrete ? ` · ${r.semFrete} sem frete` : ''}${r.pixCupom ? ` · ${r.pixCupom} Pix/cupom` : ''} · desde ${r.maisAntiga}`,
-      }),
-    ] : [criar('span', { textContent: '🏷 Nenhuma oferta guardada deste item.' })]));
+    // A4 e A7: resumo do item em grade (preço + frete), com alerta de mínimo, dispersão e idade
+    if (!r.n) {
+      el.resumo.replaceChildren(casa('todo', icone('tag'), 'Nenhuma oferta guardada deste item.'));
+    } else {
+      const disperso = r.dispersao > DISPERSAO_MAX;
+      const alertas = [];
+      if (r.n < MIN_OFERTAS) alertas.push(`faltam ${MIN_OFERTAS - r.n} para o mínimo`);
+      if (r.idade > IDADE_MAX) alertas.push(`coleta mais antiga com ${r.idade} dias`);
+      el.resumo.title = `Preço + frete das ofertas guardadas deste item${r.leitores.length ? `; leitor ${r.leitores.map((l) => ROTULO_LEITOR[l] || l).join(', ')}` : ''}`;
+      el.resumo.replaceChildren(
+        casa('k', icone('tag'), 'Ofertas'), casa(`v${r.n < MIN_OFERTAS ? ' alerta' : ''}`, `${r.n} (${r.sites} site${r.sites > 1 ? 's' : ''})`),
+        casa('k', 'Mediana'), criar('b', { className: 'v', textContent: reais(r.mediana) }),
+        casa('k', 'Mínimo'), casa('v', reais(r.min)),
+        casa('k', 'Máximo'), casa('v', reais(r.max)),
+        ...(r.n > 1 ? [
+          casa('k', 'P25'), casa('v', reais(r.p25)),
+          casa('k', 'P75'), casa('v', reais(r.p75)),
+          casa('k', 'P75/P25'), casa(`v${disperso ? ' alerta' : ''}`, `${decimal(r.dispersao)}×`, disperso && aviso(`Acima de ${decimal(DISPERSAO_MAX)}×: produtos diferentes?`)),
+        ] : []),
+        casa('k', 'Pix/cupom'), casa('v', String(r.pixCupom || 0)),
+        ...(r.semFrete ? [casa('k', 'Sem frete'), casa('v', String(r.semFrete))] : []),
+        casa('k', 'Desde'), casa(`v${r.idade > IDADE_MAX ? ' alerta' : ''}`, diaMes(r.maisAntiga)),
+        ...(alertas.length ? [casa('todo alerta', icone('exclamation-triangle'), alertas.join('; '))] : []),
+      );
+    }
     rotularItens(lista);
     listarGuardadas(guardados, item);
     if (t) status(t);
   }
 
-  // Itens do seletor: com o mínimo de ofertas, esmaecidos (✓ e o número de ofertas); com
-  // alguma, abaixo do mínimo, em âmbar (⚠); sem oferta, na cor e com a marca da categoria. A marca
-  // vale onde o menu nativo ignora a cor. "Só os que faltam" esconde os completos (menos o atual).
-  const MARCA_CATEGORIA = { obra_reforma: '🟠', cozinha_bar: '🔵', mobiliario: '🟢', equipamentos: '🟣' };
+  // Itens do seletor (o menu nativo só aceita texto): com o mínimo de ofertas, esmaecidos (✓ e o
+  // número de ofertas); com alguma, abaixo do mínimo, em âmbar (◐ e n/3); sem oferta, ○ na cor
+  // da categoria. "Só os que faltam" esconde os completos (menos o atual).
   const ofertasPorItem = (lista) => {
     const n = {};
     for (const l of lista) n[l.id_item] = (n[l.id_item] || 0) + 1;
@@ -869,7 +940,7 @@
       const k = n[i.id] || 0;
       o.className = k >= MIN_OFERTAS ? 'coletado' : k ? 'fraco' : i.categoria;
       o.textContent = k >= MIN_OFERTAS ? `✓ ${i.id} · ${i.item} (${k})`
-        : k ? `⚠ ${i.id} · ${i.item} (${k} de ${MIN_OFERTAS})` : `${MARCA_CATEGORIA[i.categoria] || '⚪'} ${i.id} · ${i.item}`;
+        : k ? `◐ ${i.id} · ${i.item} (${k}/${MIN_OFERTAS})` : `○ ${i.id} · ${i.item}`;
       o.hidden = soFaltam && k >= MIN_OFERTAS && i.id !== atual;
     }
     for (const g of el.item.querySelectorAll('optgroup')) g.hidden = [...g.querySelectorAll('option')].every((o) => o.hidden);
@@ -892,10 +963,10 @@
       const l = guardados[k];
       const frete = l.frete == null ? ' + frete ?' : l.frete === 0 ? '' : ` + ${reais(l.frete)}`;
       const x = criar('button', {
-        className: 'x', textContent: '✕', title: 'Excluir esta oferta (a exclusão vai no CSV)',
+        className: 'x', title: 'Excluir esta oferta (a exclusão vai no CSV)',
         onclick: () => { const g = carregar(); excluir(g, k); salvar(g); mostrar(`Excluída: ${l.produto.slice(0, 40)}`); },
-      });
-      return criar('li', {}, [x, criar('span', { textContent: `${l.fonte} · ${l.produto}` }), criar('b', { textContent: `${reais(l.preco)}${frete}${ROTULO_TIPO[l.tipo_preco] || ''}` })]);
+      }, [icone('x-mark')]);
+      return criar('li', { className: 'guardada' }, [x, criar('span', { textContent: `${l.fonte} · ${l.produto}` }), criar('b', { textContent: `${reais(l.preco)}${frete}${ROTULO_TIPO[l.tipo_preco] || ''}` })]);
     }));
   }
 
@@ -906,6 +977,22 @@
   // senão, a do campo do painel.
   const unidadesDe = (o) => o.unidadesManual ?? kitDe(o.produto, itemAtual().termo).unidades ?? (Number(el.unidades.value) || 1);
 
+  // Clicar no título rola a página até o card da oferta e o contorna por 2 s, para conferir.
+  function localizar(o) {
+    let caminho = '';
+    try { caminho = new URL(o.url).pathname; } catch (e) { return false; }
+    const a = [...document.querySelectorAll('a[href]')].find((x) => x.href && x.href.includes(caminho));
+    if (!a) return false;
+    const alvo = a.closest('[data-asin], li, article') || a;
+    alvo.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    const antes = alvo.style.outline;
+    alvo.style.outline = '3px solid #2563eb';
+    setTimeout(() => { alvo.style.outline = antes; }, 2000);
+    return true;
+  }
+
+  // Linha da oferta: título em até 2 linhas (inteiro na dica), preço, frete, Pix, unidades do kit e
+  // o motivo de vir desmarcada; o resto (preço sem Pix, avaliações) fica na dica do preço.
   function listarOfertas() {
     const item = itemAtual();
     const ref = referencia();
@@ -914,21 +1001,26 @@
       const motivos = motivosOferta(o, item.termo, ref);
       const marca = criar('input', { type: 'checkbox', checked: !motivos.length, onchange: contarMarcadas });
       marca.dataset.i = i;
-      const u = criar('input', {
-        type: 'number', min: 1, value: o.unidades, className: 'u', title: 'Unidades da lista neste anúncio (caixa, jogo ou kit)',
-        onchange: () => { o.unidadesManual = Math.max(1, Number(u.value) || 1); o.unidades = o.unidadesManual; },
-      });
-      const detalhes = [
-        o.frete == null ? '' : o.frete === 0 ? '🚚 grátis' : `🚚 ${reais(o.frete)}`,
-        o.tipo_preco && o.tipo_preco !== 'padrao' ? (o.tipo_preco === 'pix' ? 'Pix' : 'cupom') : '',
-        o.preco_sem_pix ? `sem Pix ${reais(o.preco_sem_pix)}` : '',
-        o.avaliacoes == null ? '' : `★ ${o.avaliacoes}`,
-      ].filter(Boolean).join(' · ');
-      const notas = [];
-      if (detalhes) notas.push(criar('i', { textContent: detalhes }));
-      if (motivos.length) notas.push(criar('i', { className: 'alerta', textContent: `⊘ ${motivos.join('; ')}`, title: 'Desmarcada pelas regras do item ou pelos filtros; se marcada à mão, vai com motivo e o build a deixa de fora' }));
-      if (o.unidades > 1) notas.push(criar('i', { textContent: `${o.unidades} un. · ${reais(o.preco / o.unidades)} cada` }));
-      return criar('li', {}, [marca, criar('span', { textContent: o.produto }, notas), u, criar('b', { textContent: reais(o.preco) })]);
+      const titulo = criar('span', { className: 'titulo', textContent: o.produto, title: `${o.produto}\n(clique para ver na página)` });
+      titulo.onclick = () => { if (!localizar(o)) status('Oferta não encontrada na página (pode ter saído da tela).'); };
+      const meta = [criar('b', {
+        textContent: reais(o.preco),
+        title: [o.preco_sem_pix ? `sem Pix ${reais(o.preco_sem_pix)}` : '', o.avaliacoes == null ? '' : `${o.avaliacoes} avaliações`].filter(Boolean).join(' · '),
+      })];
+      if (o.frete != null) meta.push(criar('span', { title: 'Frete' }, partes(icone('truck'), o.frete === 0 ? 'grátis' : reais(o.frete))));
+      if (o.tipo_preco && o.tipo_preco !== 'padrao') meta.push(criar('span', { className: 'selo', textContent: o.tipo_preco === 'pix' ? 'Pix' : 'cupom' }));
+      if (o.unidades > 1 || o.unidadesManual) {
+        const u = criar('input', {
+          type: 'number', min: 1, value: o.unidades, className: 'u', title: 'Unidades da lista neste anúncio (caixa, jogo ou kit)',
+          onchange: () => { o.unidadesManual = Math.max(1, Number(u.value) || 1); o.unidades = o.unidadesManual; listarOfertas(); },
+        });
+        meta.push(criar('span', {}, partes(icone('cube'), u, `${reais(o.preco / o.unidades)} cada`)));
+      }
+      if (motivos.length) {
+        meta.push(criar('span', { className: 'alerta', title: `Desmarcada: ${motivos.join('; ')}. Se marcada à mão, vai com motivo e o build a deixa de fora` },
+          partes(icone('no-symbol'), motivos.length > 1 ? `${motivos[0]} +${motivos.length - 1}` : motivos[0])));
+      }
+      return criar('li', {}, [marca, criar('div', { className: 'corpo' }, [titulo, criar('div', { className: 'meta' }, meta)])]);
     }));
     contarMarcadas();
     mostrarFunil();
@@ -937,7 +1029,7 @@
   const caixasMarcadas = () => [...el.lista.querySelectorAll('input[type=checkbox]')].filter((m) => m.checked);
   function contarMarcadas() {
     const n = caixasMarcadas().length;
-    el.bGuardar.textContent = `💾 Guardar${ofertasLidas.length ? ` (${n})` : ''}`;
+    el.bGuardar.lastChild.textContent = `Guardar${ofertasLidas.length ? ` (${n})` : ''}`;
     el.bGuardar.disabled = !ofertasLidas.length;
   }
 
@@ -947,8 +1039,8 @@
     const f = funil(ofertasLidas, cardsLidos, itemAtual().termo, referencia());
     const falhou = TEM_LEITOR_PROPRIO.includes(site) && leitorLido !== 'proprio';
     el.funil.className = falhou || !f.nosFiltros ? 'resumo alerta' : 'resumo';
-    el.funil.textContent = `${f.cards} cards → ${f.comPreco} com preço → ${f.semPatrocinado} sem patrocinado → ${f.noTermo} no termo → ${f.nosFiltros} nos filtros`
-      + `${falhou ? ' ⚠ leitor do site falhou' : ''}`;
+    el.funil.replaceChildren(...partes(icone('funnel'), ` ${f.cards} cards → ${f.comPreco} com preço → ${f.semPatrocinado} sem patrocinado → ${f.noTermo} no termo → ${f.nosFiltros} nos filtros`,
+      falhou && ' ', falhou && icone('exclamation-triangle'), falhou && ' leitor do site falhou'));
     el.funil.title = `Funil da leitura desta página; leitor ${ROTULO_LEITOR[leitorLido] || leitorLido}${falhou ? '. O seletor do site não leu: o layout pode ter mudado' : ''}`;
   }
 
@@ -970,9 +1062,9 @@
 
   function montarPainel() {
     el.item = criar('select', {
-      title: 'Item da lista. ✓ completo, ⚠ abaixo do mínimo, cor da categoria: sem oferta',
+      title: 'Item da lista. ✓ completo, ◐ abaixo do mínimo, ○ sem oferta (na cor da categoria)',
       onchange: () => { GM_setValue(CHAVE_ITEM, el.item.value); mostrar(); ler(false, 'Item trocado: página relida. '); },
-    }, [...new Set(ITENS.map((i) => i.categoria))].map((c) => criar('optgroup', { label: `${MARCA_CATEGORIA[c] || '⚪'} ${ROTULO_CATEGORIA[c] || c}` },
+    }, [...new Set(ITENS.map((i) => i.categoria))].map((c) => criar('optgroup', { label: ROTULO_CATEGORIA[c] || c },
       ITENS.filter((i) => i.categoria === c).map((i) => criar('option', { value: i.id, textContent: `${i.id} · ${i.item}` })))));
     el.item.value = itemAtual().id;
     el.cep = criar('input', {
@@ -980,10 +1072,9 @@
       onchange: () => { GM_setValue(CHAVE_CEP, cepDe(el.cep.value) || ''); el.cep.value = GM_getValue(CHAVE_CEP, ''); mostrarCep(); },
     });
     el.cepAviso = criar('span');
-    el.contagem = criar('p', { className: 'resumo' });
     el.pendentes = criar('span');
-    el.categoria = criar('p');
-    el.resumo = criar('p');
+    el.geral = criar('div', { className: 'grade' });
+    el.resumo = criar('div', { className: 'grade' });
     el.funil = criar('p');
     // F2, F3 e F5: filtros da marcação inicial, guardados no Tampermonkey
     const FILTRO = {
@@ -1000,18 +1091,18 @@
     el.lista = criar('ul');
     el.guardadas = criar('ul');
     el.guardadasTitulo = criar('summary');
-    const bBuscar = botao('🔍 Buscar', 'Buscar aqui: abre a busca do site com o termo do item', () => { saindoPeloPainel = true; location.href = urlBusca(site, itemAtual().termo); });
+    const bBuscar = botao('magnifying-glass', 'Buscar', 'Buscar aqui: abre a busca do site com o termo do item', () => { saindoPeloPainel = true; location.href = urlBusca(site, itemAtual().termo); });
     bBuscar.disabled = !urlBusca(site, 'x');
-    const bLer = botao('↻ Reler', 'Ler ofertas: relê a página (ela já é lida sozinha ao abrir e ao trocar de página)', () => ler(false));
-    const bSomar = botao('➕ Somar', 'Somar página: acrescenta as ofertas desta página (ou das que carregaram ao rolar) às já lidas', () => ler(true));
+    const bLer = botao('arrow-path', 'Reler', 'Ler ofertas: relê a página (ela já é lida sozinha ao abrir e ao trocar de página)', () => ler(false));
+    const bSomar = botao('plus', 'Somar', 'Somar página: acrescenta as ofertas desta página (ou das que carregaram ao rolar) às já lidas', () => ler(true));
     // F4: desmarca as ofertas de Pix ou cupom, para comparar só preços padrão
-    const bPadrao = botao('⊘ Pix', 'Só preço padrão: desmarca as ofertas com preço de Pix ou cupom', () => {
+    const bPadrao = botao('no-symbol', 'Pix', 'Só preço padrão: desmarca as ofertas com preço de Pix ou cupom', () => {
       let n = 0;
       for (const m of caixasMarcadas()) if ((ofertasLidas[m.dataset.i].tipo_preco || 'padrao') !== 'padrao') { m.checked = false; n++; }
       contarMarcadas();
       status(`${n} oferta(s) de Pix ou cupom desmarcadas; ${caixasMarcadas().length} marcadas.`);
     });
-    const bProximo = botao('⏭ Próximo', `Próximo que falta: pula para o próximo item com menos de ${MIN_OFERTAS} ofertas (primeiro na mesma categoria) e abre a busca dele`, () => {
+    const bProximo = botao('forward', 'Próximo', `Próximo que falta: pula para o próximo item com menos de ${MIN_OFERTAS} ofertas (primeiro na mesma categoria) e abre a busca dele`, () => {
       const prox = proximoQueFalta(ativas(carregar()), itemAtual());
       if (!prox) { status(`Todos os itens têm ${MIN_OFERTAS}+ ofertas.`); return; }
       GM_setValue(CHAVE_ITEM, prox.id);
@@ -1020,7 +1111,7 @@
       const url = urlBusca(site, prox.termo);
       if (url) { saindoPeloPainel = true; location.href = url; } else ler(false, `Item ${prox.id}: página relida. `);
     });
-    el.bGuardar = botao('💾 Guardar', 'Guardar marcadas: guarda as ofertas marcadas no Tampermonkey', () => {
+    el.bGuardar = botao('bookmark', 'Guardar', 'Guardar marcadas: guarda as ofertas marcadas no Tampermonkey', () => {
       // motivo: os filtros que a oferta não passou (marcada à mão); o build a deixa de fora
       const ref = referencia();
       const marcadas = caixasMarcadas().map((m) => ofertasLidas[m.dataset.i])
@@ -1033,9 +1124,9 @@
       mostrar(`${marcadas.length} guardadas (${novas} novas).${comMotivo ? ` ${comMotivo} fora dos filtros: vão com motivo e o build as deixa de fora.` : ''}${cepAtual() && ehSalvador(cepAtual()) ? '' : ' Atenção: sem CEP de Salvador.'}`);
     }, 'principal');
     el.bGuardar.disabled = true;
-    const bCsv = botao('⬇ CSV', 'Baixar CSV: um arquivo por categoria, com tudo o que está guardado', () => { status(`${baixarCsv()} arquivo(s) de categoria baixados.`); mostrar(); }, 'ic');
+    const bCsv = botao('arrow-down-tray', 'CSV', 'Baixar CSV: um arquivo por categoria, com tudo o que está guardado', () => { status(`${baixarCsv()} arquivo(s) de categoria baixados.`); mostrar(); }, 'ic');
     // Exclui as guardadas (de todos os itens) que as regras e os filtros de agora não aceitam.
-    const bRevisar = botao('🧹 Revisar', 'Revisar guardadas: exclui as guardadas que não passam nas regras do item e nos filtros ligados (sem a faixa de preço)', () => {
+    const bRevisar = botao('funnel', 'Revisar', 'Revisar guardadas: exclui as guardadas que não passam nas regras do item e nos filtros ligados (sem a faixa de preço)', () => {
       const g = carregar();
       const fora = revisarGuardadas(g, filtrosAtuais());
       if (!fora.length) { status('Todas as guardadas passam nas regras e nos filtros.'); return; }
@@ -1048,7 +1139,7 @@
       salvar(g);
       mostrar(`${fora.length} guardadas excluídas pela revisão. Baixe o CSV para levar a exclusão ao build.`);
     }, 'ic');
-    const bLimpar = botao('🗑', 'Limpar: apaga todas as guardadas (baixa antes um backup JSON)', () => {
+    const bLimpar = botao('trash', '', 'Limpar: apaga todas as guardadas (baixa antes um backup JSON)', () => {
       const pend = pendentes(carregar(), GM_getValue(CHAVE_EXPORTACAO, 0));
       if (!confirm(`Apagar todas as ofertas guardadas?${pend ? ` ${pend} ainda não estão em nenhum CSV.` : ''} Um backup JSON será baixado antes.`)) return;
       const agora = new Date();
@@ -1057,24 +1148,24 @@
       mostrar('Guardadas apagadas (backup baixado).');
     }, 'ic');
 
-    const minimizar = criar('span', { textContent: '–' });
+    const minimizar = criar('span', { className: 'rotulo' }, [icone('minus')]);
     const cabecalho = criar('header', {}, [criar('span', { textContent: `Preços · ${site}` }), minimizar]);
     const painel = criar('div', { id: 'cpi-painel' }, [
       cabecalho,
-      criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', textContent: '📍' }), el.cep, el.cepAviso]),
+      criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo' }, [icone('map-pin')]), el.cep, el.cepAviso]),
       el.item,
       criar('div', { className: 'linha' }, [soFaltam, bProximo, el.bGuardar]),
       criar('div', { className: 'linha' }, [bBuscar, bLer, bSomar, bPadrao]),
-      criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', textContent: '⚙', title: 'Filtros da marcação inicial' }), ...filtros,
-        criar('span', { className: 'rotulo', textContent: '📦', title: el.unidades.title }), el.unidades]),
+      criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', title: 'Filtros da marcação inicial' }, [icone('adjustments-horizontal')]), ...filtros,
+        criar('span', { className: 'rotulo', title: el.unidades.title }, [icone('cube')]), el.unidades]),
       criar('div', { className: 'linha' }, [bCsv, bRevisar, bLimpar, el.pendentes]),
-      criar('div', { className: 'caixa' }, [el.contagem, el.categoria, el.resumo]),
+      criar('div', { className: 'caixa' }, [el.geral, el.resumo]),
       criar('details', {}, [el.guardadasTitulo, el.guardadas]),
       el.funil,
       el.lista,
       el.status,
     ]);
-    cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.textContent = painel.classList.contains('min') ? '+' : '–'; };
+    cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.replaceChildren(icone(painel.classList.contains('min') ? 'plus' : 'minus')); };
 
     hospedeiro = criar('div', { id: 'cpi-hospedeiro' });
     const raiz = hospedeiro.attachShadow({ mode: 'open' });

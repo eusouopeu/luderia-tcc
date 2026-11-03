@@ -329,14 +329,14 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   tique();
   const r = document.getElementById('cpi-hospedeiro').shadowRoot;
   const botao = (t) => [...r.querySelectorAll('button')].find((b) => b.title.startsWith(`${t}:`) || b.textContent === t);
-  const textos = () => [...r.querySelectorAll('p, .info')].map((p) => `${p.textContent} ${p.title || ''}`).join(' | ');
+  const textos = () => [...r.querySelectorAll('p, .info, .grade')].map((p) => `${p.textContent} ${p.title || ''}`).join(' | ');
   // Ao abrir, a página é lida sozinha quando as ofertas param de mudar: Guardar já fica liberado
   assert.equal(botao('Guardar marcadas').disabled, true);
   tique();
   tique();
   assert.match(r.querySelector('.status').textContent, /^Ofertas lidas sozinhas\. 3 ofertas de 3 cards/);
   assert.equal(botao('Guardar marcadas').disabled, false);
-  assert.equal(botao('Guardar marcadas').textContent, '💾 Guardar (0)');
+  assert.equal(botao('Guardar marcadas').textContent, 'Guardar (0)');
   const select = r.querySelector('select');
   select.value = 'CB09';
   select.onchange();
@@ -344,12 +344,13 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   botao('Ler ofertas').onclick();
   assert.match(r.querySelector('.status').textContent, /^3 ofertas de 3 cards, 0 marcadas\./);
   assert.match(textos(), /3 cards → 3 com preço → 2 sem patrocinado → 2 no termo → 0 nos filtros Funil da leitura desta página; leitor próprio do site/);
+  const motivo = (c) => c.closest('li').querySelector('.alerta').title;
   const caixas = [...r.querySelectorAll('ul')[1].querySelectorAll('input[type=checkbox]')];
-  assert.match(caixas[1].parentElement.textContent, /⊘ sem avaliações/);
+  assert.match(motivo(caixas[1]), /sem avaliações/);
   caixas[1].checked = true; // o autor confere e marca a Nortinox
   botao('Só preço padrão').onclick(); // todas são Pix na Amazon
-  assert.match(caixas[2].parentElement.textContent, /⊘ medida: 53\/84\/92 cm, termo 150 cm/);
-  assert.match(caixas[1].parentElement.textContent, /sem Pix R\$ 1299,90/);
+  assert.match(motivo(caixas[2]), /medida: 53\/84\/92 cm, termo 150 cm/);
+  assert.match(caixas[1].closest('li').querySelector('b').title, /sem Pix R\$ 1299,90/);
   assert.match(r.querySelector('.status').textContent, /^1 oferta\(s\) de Pix ou cupom desmarcadas; 0 marcadas/);
   caixas[1].checked = true;
   caixas[2].checked = true;
@@ -358,14 +359,13 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   assert.match(r.querySelector('.status').textContent, /2 fora dos filtros: vão com motivo e o build as deixa de fora/);
   assert.deepEqual(json(Object.values(JSON.parse(memoria.tcc_precos_v1)).map((l) => l.motivo).sort()), ['medida: 53/84/92 cm, termo 150 cm', 'sem avaliações']);
   assert.match(textos(), /2 oferta\(s\) guardadas ou excluídas desde o último CSV \(nenhum baixado ainda\)/);
-  assert.match(textos(), /Cozinha e bar: 0\/20 \(1 com alguma\)/);
-  assert.match(textos(), /⚠ faltam 1 .*P25 R\$ 654,13, P75 R\$ 1157,98 \(1,77×\) · 2 Pix\/cupom · desde \d{4}-\d{2}-\d{2}.*leitor próprio do site/);
+  assert.match(textos(), /Cozinha e bar0\/20/);
+  assert.match(textos(), /Ofertas2 \(1 site\)MedianaR\$ 906,05MínimoR\$ 402,20MáximoR\$ 1409,90P25R\$ 654,13P75R\$ 1157,98P75\/P251,77×Pix\/cupom2Desde\d{2}\/\d{2}\/\d{4}faltam 1 para o mínimo Preço \+ frete .*leitor próprio do site/);
   assert.match(textos(), /CEP no site: 40170-110 \(Salvador\)/);
-  assert.match(textos(), /🏷 2 ofertas · 1 site\(s\) · mediana R\$ 906,05.* R\$ 402,20 a R\$ 1409,90/);
   // seletor: CB09 esmaecido com ✓ e o número de ofertas; os que faltam na cor da categoria, em grupos
   const opcao = (id) => r.querySelector(`option[value="${id}"]`);
   assert.equal(opcao('CB09').className, 'fraco');
-  assert.match(opcao('CB09').textContent, /^⚠ CB09 · .* \(2 de 3\)$/);
+  assert.match(opcao('CB09').textContent, /^◐ CB09 · .* \(2\/3\)$/);
   // só os que faltam: nenhum completo, nada escondido; próximo que falta fica na categoria
   const so = botao('só os que faltam');
   so.onclick();
@@ -379,10 +379,10 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   select.value = 'CB09';
   select.onchange();
   assert.equal(opcao('CB01').className, 'cozinha_bar');
-  assert.match(opcao('CB01').textContent, /^🔵 CB01 · /);
+  assert.match(opcao('CB01').textContent, /^○ CB01 · /);
   assert.equal(r.querySelectorAll('optgroup').length, 4);
   r.querySelector('button.x').onclick();
-  assert.match(textos(), /🏷 1 ofertas/);
+  assert.match(textos(), /Ofertas1 \(1 site\)/);
   assert.equal(Object.values(JSON.parse(memoria.tcc_precos_v1)).filter((l) => l.excluida).length, 1);
   // Próxima página sem recarregar (como a Amazon faz): a URL muda e os cards trocam depois
   ambiente.location.href = 'https://www.amazon.com.br/s?k=mesa+inox&page=2';

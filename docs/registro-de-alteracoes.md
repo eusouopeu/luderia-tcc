@@ -2452,3 +2452,11 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: painel com botões de texto longo, filtros em caixas de seleção, explicações escritas no próprio painel ("Funil:", "Este item:", "CEP no site", "Desmarque o que não é o item") e "Guardar marcadas" abaixo dos filtros.
 **Depois**: "Guardar" (com o número de marcadas) ao lado de "Próximo" e do selo "só os que faltam"; abaixo, Buscar, Reler, Somar e Pix; filtros e "só os que faltam" como selos que ligam e desligam; botões com ícone e nome curto, com o nome completo e a explicação na dica (title); CEP, CSV pendente, cobertura, resumo do item e funil em linhas curtas, com o detalhe na dica; números do item e da categoria num quadro; nas ofertas, frete, Pix, preço sem Pix e avaliações numa linha abaixo do título. Conferido no navegador com a fixture da Amazon; teste do painel ajustado (25 testes passando).
 **Justificativa**: pedido do autor (Guardar ao lado de Próximo, painel mais limpo, filtros como selos, explicações em dicas e ícones nos botões).
+
+## 2026/11/03
+
+### 00:12
+**Objeto**: `_src/[B5] Ativos fixos/Lista de itens/webscripts/precos_itens.user.js` (versão 2026.11.03-1) e `precos_itens.test.cjs`; `docs/pendencias.md`, `AGORA.md`
+**Antes**: painel com emojis nos botões e nas informações; resumo do item numa frase corrida (ofertas, mediana, faixa, quartis, dispersão, Pix e data); cada oferta lida com o título inteiro, frete, Pix, preço sem Pix, avaliações, motivos completos e campo de unidades sempre visível.
+**Depois**: só ícones Heroicons (2.1.5, 20/solid, MIT), embutidos como caminhos SVG; no seletor, ✓, ◐ e ○ em vez de emojis; resumo em grade de quatro colunas (rótulo e valor: ofertas, mediana, mínimo, máximo, P25, P75, P75/P25 com alerta, Pix/cupom, sem frete, desde) e cobertura geral e da categoria em outra grade; cada oferta com o título em até duas linhas (inteiro na dica; clicar rola a página até o card e o contorna), preço, frete, selo de Pix, unidades só quando é kit e o primeiro motivo de vir desmarcada (todos na dica). Conferido no navegador com a fixture da Amazon (25 testes passando).
+**Justificativa**: pedido do autor (Heroicons em vez de emojis, resumo em grade, linhas das ofertas só com o que serve para conferir o item).
