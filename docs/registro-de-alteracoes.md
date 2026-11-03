@@ -2592,3 +2592,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: a instrução põe o Monte Carlo e os testes H1–H9, se feitos, nos apêndices L e M.
 **Depois**: no TMin v23, o Monte Carlo é o Apêndice G (decisão de 03/11).
 **Efeitos colaterais**: a instrução indica letras de apêndice que o TMin não usa.
+
+### 20:10
+**Objeto**: `docs/2026-11-03_casas_sem_taxa_de_entrada.md` (novo); `docs/pendencias.md`
+**Antes**: sem lista das casas do B1 sem taxa de entrada; a situação de cada casa estava espalhada entre a planilha de cardápios, as fontes secundárias e as legendas do Instagram.
+**Depois**: lista das 30 casas sem taxa encontrada, por situação (1 com divergência, Ludus; 2 com R$ 0 declarado por portal, Castelos e Pitta's; 16 com cardápio coletado sem taxa; 11 sem cardápio), com capital, fonte já consultada e menções no Instagram; as 24 restantes têm taxa (Bodogami e Ludoteca BGC só por imprensa). Total 54, diferença zero.
+**Justificativa**: pedido do autor (lista dos estabelecimentos que ainda não têm taxa de entrada declarada). Taxa ausente fica "não encontrada", nunca R$ 0.

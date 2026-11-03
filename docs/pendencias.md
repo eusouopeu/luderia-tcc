@@ -90,6 +90,7 @@ Tudo o que está em aberto, num só lugar. Quando um item for resolvido, ele sai
 - **Cardápios no navegador (busca profunda de 16/10):** abrir com o `cardapio_coletor.user.js` o Goomer da São Jogue (`sao-jogue.goomer.app`, concorrente direta em Salvador) e o iFood do Game Of Boards; abrir à mão `garagemdonerd.com.br/cardapio/`, o botão Cardápio do `beacons.ai/nalaland` e a aba de cardápio do Restaurant Guru do Joyjoy. Coletivo Geek: decidir se preenche o formulário do PDF. Lista completa e próximo passo por casa em `cardapios/B1_cardapios_busca_profunda.csv`.
 
 - **Couvert de imprensa a confirmar (autor confirmando):** a imprensa cita couvert na Ludus (R$ 34 a R$ 44), e na Bodogami (R$ 20 a R$ 35), sem couvert no cardápio coletado (a Encounter, R$ 35 a R$ 45, foi confirmada pelo Instagram em 31/10); na Ludus, a página inicial do site diz que não cobra (`cardapios/B1_couvert_fontes_secundarias.csv`). Confirmado, entra na planilha de cardápios.
+- **Taxa de entrada não encontrada em 30 das 54 casas (03/11/2026):** lista em `docs/2026-11-03_casas_sem_taxa_de_entrada.md`. Prioridade: São Jogue (51 posts citam couvert; print do destaque ou NFC-e do B3), Ludus (site R$ 0 × imprensa R$ 34 a R$ 44) e Play Easy, Balboa's, Jogasampa e Arcadea (cardápio sem taxa, legendas com 5 a 10 citações).
 
 - **Rascunho do cap. 3, pontos `[conferir]`:** origem das 5 luderias novas (busca manual, Instagram ou outra); data e horário efetivos das visitas de 03/10; consulta à orientação sobre a dispensa do Comitê de Ética.
 
