@@ -2606,3 +2606,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: o cap. 7 diz que a folha com encargos fica em 22,6% da receita do ano maduro provável.
 **Depois**: o cap. 9 e o modelo atual dão 16,3% (R$ 12.484,75 × 12 ÷ R$ 916.823).
 **Efeitos colaterais**: o 22,6% parece calculado sobre a receita antiga (cerca de R$ 662 mil, a mesma da Tabela 8.1); a comparação com os 25,1% da PAS continua valendo, mas com folga maior.
+
+### 00:28
+**Objeto**: `docs/pendencias.md` (MVV, perfil e fonte dos recursos)
+**Antes**: prática de "Qualidade" com salários x% acima da média do mercado.
+**Depois**: jornada de 7 h por dia (35 h) com o salário de 40 h e escalonamento nas horas de menor movimento, sem contratação extra; ajuste pendente do Quadro 7.2 e fontes sobre cansaço e erro a conferir.
+**Justificativa**: pedido do autor em comentário no doc do MVV (não aumentar salários nem contratar; dividir a hora descoberta entre entrada mais tarde e saída mais cedo; buscar justificativa de menos erro por cansaço).
