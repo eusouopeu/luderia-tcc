@@ -106,12 +106,20 @@ Legenda, no fim de cada referência:
   - [ ] VPL e regra de aceitação (p. 388–392).
   - [ ] TIR comparada com a TMA (p. 378–382).
   - [ ] payback descontado (p. 374–378).
-- [ ] BRUNI, Adriano Leal. *Avaliação de investimentos*. 3. ed. São Paulo: Atlas, 2018. [AV] ⛔
-  - [ ] TMA = taxa livre de risco + prêmio pelo risco (sem página).
-  - [ ] sensibilidade, gráfico de tornado e premissas críticas (sem página).
-  - [ ] ponto de ruptura: valor da premissa que zera o VPL (sem página).
-- [ ] BRUNI, Adriano Leal; FAMÁ, Rubens. *Gestão de custos e formação de preços*. 7. ed. São Paulo: Atlas, 2019. [AV] O PDF da pasta é só o arquivo de transparências de 2002, que não serve para a página. ⛔
-  - [ ] ponto de equilíbrio (sem página).
+- [ ] BRUNI, Adriano Leal. *Avaliação de investimentos*. 3. ed. São Paulo: Atlas, 2018. [AV] edição e ano (conferir na ficha catalográfica) 📖 exemplar físico, páginas conferidas em 04/11/2026
+  - [x] VPL e regra de aceitação (p. 227–228): VPL é a soma dos fluxos descontados na data zero menos o investimento inicial; VPL > 0, o projeto deve ser aceito (p. 228).
+  - [x] TIR (p. 257, 265): taxa de rentabilidade do projeto; é a TMA que resulta em VPL nulo (p. 265, Figura 8.6). A regra "aceitar se TIR > TMA" não apareceu nas páginas fotografadas; conferir a p. 258–264.
+  - [x] payback descontado (p. 220–221): fluxos trazidos a valor presente pelo juros compostos; o prazo é maior que o do payback simples (Tabela 6.3, p. 221).
+  - [x] TMA (p. 176–177): taxa de desconto do projeto (CMPC no caso da empresa); TMA = CMPC + prêmio pelo risco quando o risco do projeto é maior (p. 177).
+  - [x] taxa livre de risco e prêmio pelo risco (p. 162, 171): Rf é a taxa de risco zero (no Brasil, a Selic); prêmio de mercado = E(Rm) − Rf; Ks = Rf + beta × prêmio de mercado + prêmio pelo risco país (p. 171).
+  - [ ] prêmio de liquidez: não apareceu nas páginas fotografadas; conferir a 4.5 (p. 155–173) ou manter outra fonte.
+  - [x] ponto de equilíbrio (p. 203, 207, 209–210): contábil, financeiro e econômico; PEC = gasto fixo ÷ (preço − gasto variável unitário). Substitui Bruni e Famá.
+  - [x] sensibilidade (p. 357–358): altera variáveis e mede o efeito sobre o VPL ou a TIR; Tabelas 12.8 e 12.9.
+  - [x] gráfico de tornado (p. 359, 361): variáveis ordenadas pela variação que provocam no VPL; a de maior efeito é a principal fonte de incerteza (Figura 12.2, p. 361).
+  - [x] cenários (p. 361–362): realista (valor esperado), otimista e pessimista, com base em Lapponi (1996, p. 223) como fonte indireta.
+  - [ ] ponto de ruptura: não apareceu nas páginas fotografadas; conferir 14.7 (p. 433) ou outra fonte.
+  - [ ] Monte Carlo (Apêndice G): conferir 15.3 (p. 445–447).
+- ~~BRUNI, Adriano Leal; FAMÁ, Rubens. *Gestão de custos e formação de preços*~~: dispensada em 04/11/2026; o ponto de equilíbrio sai de Bruni (2018, p. 203–210).
 - [ ] DAMODARAN, Aswath. *Avaliação de investimentos*: ferramentas e técnicas para a determinação do valor de qualquer ativo. 2. ed. Rio de Janeiro: Qualitymark, 2010. [AV] ⛔
   - [ ] negócio pequeno, fechado e sem liquidez exige prêmio de risco maior (sem página).
 
