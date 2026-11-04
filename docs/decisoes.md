@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 04/11/2026 | O campo "Tamanho do grupo" das avaliações do Maps (B2) sai do trabalho: não mede o tamanho do grupo que foi à casa. O tamanho do grupo vem só da contagem direta (B3) | `_src/extras/gerar_planilha_comentarios.py`; Quadro 3.2 |
 | 04/11/2026 | Citação ainda não verificada na obra fica em vermelho e em citação direta, com `[AV]`; citação que o autor deixa em preto na versão seguinte está conferida: perde o `[AV]`, volta a citação indireta e entra em `bibliografia/citacoes_conferidas.md` | `_instrucoes/10_biblio-apendices.md` (Referências) |
 | 04/11/2026 | O TMax sai: o texto tem uma só versão, o TMin; DMax e DMin ficam | `_instrucoes/1c_versoes.md` |
 | 04/11/2026 | O `.md` é a fonte única do texto: comentário do autor no `.docx` é aplicado no `.md` e o `.docx` é regerado, sem pares original/revisado com "*" | `_instrucoes/1c_versoes.md` |

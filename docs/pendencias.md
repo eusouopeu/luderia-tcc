@@ -15,7 +15,7 @@ Perguntas fechadas para o autor responder de uma vez. Cada resposta vira uma lin
 | L5 | Cap. 6 com 10 páginas para teto de 8 (melhorias C21) | (a) aplicar os cortes de alto ganho do C21; (b) aceitar e cortar em outro capítulo | (a) |
 | L6 | Apêndices v23 com 14 páginas para teto de 9 | (a) lista de concorrentes (A.2) só como link; (b) registro de premissas (E.1) só como link; (c) os dois | (c) |
 | L7 | SWOT: o texto do 10.1 cruza FO, DO e FA, e o Quadro 10.1 só mostra os quadrantes (D51) | (a) o quadro ganha a linha de estratégias cruzadas; (b) a frase do cruzamento no 2.2 sai | (b), que não acrescenta página |
-| L8 | Quadro 3.2 atribui ao B2 o tamanho do grupo e os jogos citados, que no plano vêm do B3 (R02) e dos acervos do B1 (I05) (D52) | (a) B2 só com proposta de valor, reclamações e gasto por pessoa; (b) manter | (a) |
+| L8 | Quadro 3.2 atribui ao B2 os jogos citados, que no plano vêm dos acervos do B1 (I05) (D52); o tamanho do grupo do B2 já saiu (04/11/2026) | (a) B2 só com proposta de valor, reclamações e gasto por pessoa; (b) manter | (a) |
 | L9 | Escala de fontes do cap. 5 em 4 níveis × P1 e N1–N6 (D01) | (a) a escala sai do cap. 5 e fica só a N1–N6; (b) vira a P1 de `1a_principios.md` | (a) |
 | L10 | Variação dos salários no Monte Carlo (0% a +x% sobre a admissão do Novo CAGED; provisório 11,4%) | (a) manter 11,4% (maior distância do 3º quartil à mediana entre os cargos); (b) diferença admissão × estoque no CEMPRE/RAIS; (c) piso da convenção coletiva | (a), declarado |
 | L11 | Anúncios de aluguel com IPTU acima de 30% do aluguel (9 de 138, provavelmente anual) | (a) o build divide por 12 acima do limite; (b) descarta | (a) |

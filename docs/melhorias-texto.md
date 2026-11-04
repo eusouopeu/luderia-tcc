@@ -34,7 +34,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D51 — Cruzamento da SWOT só no texto (02/11/2026).** Cap. 2 (2.2: "O cruzamento dos quadrantes indica a estratégia") × cap. 10. O texto do 10.1 cruza os quadrantes (FO, DO e FA), mas o Quadro 10.1 mostra só os quatro quadrantes, com evidência que remete a seções, e falta o cruzamento de fraquezas com ameaças (DA). Sugestão: trocar a coluna "Evidência" por uma linha de estratégias cruzadas (FO, FA, DO e DA), ligada às etapas e aos gatilhos do 10.4.
 
-**D52 — Quadro 3.2 atribui ao B2 usos que vêm de outros blocos (02/11/2026).** Cap. 3 (Quadro 3.2: B2 para "tamanho do grupo, jogos citados") × caps. 7 e 9 (tamanho do grupo pela contagem do B3, R02; acervo pelos acervos do B1, I05). O cap. 9 não cita o B2. Sugestão: deixar no B2 só proposta de valor e reclamações, como no Apêndice D.
+**D52 — Quadro 3.2 atribui ao B2 usos que vêm de outros blocos (02/11/2026).** Cap. 3 (Quadro 3.2: B2 para "jogos citados") × caps. 7 e 9 (acervo pelos acervos do B1, I05). O tamanho do grupo do B2 saiu do quadro em 04/11/2026. O cap. 9 não cita o B2. Sugestão: deixar no B2 só proposta de valor e reclamações, como no Apêndice D.
 
 **D15 — Fontes da gestão baseada em evidências (01/11/2026).** Cap. 2 (abertura), parágrafo original e o revisado em verde no TMin v9. O texto põe as quatro fontes de evidência em Figueiredo (2020, p. 31) e inclui "organizações comparáveis"; no artigo, a quarta fonte (valores das partes interessadas) está na p. 32 e não há menção a organizações comparáveis, só a dados da própria organização. Sugestão: citar p. 31–32 e tirar "ou de organizações comparáveis", junto com o corte de citações pedido no comentário 7.
 

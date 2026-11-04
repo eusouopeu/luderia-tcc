@@ -34,7 +34,7 @@ Os dados que alimentam essa escala vêm de cinco blocos de coleta (Quadro 3.2). 
 | Bloco | Fonte | Recorte | Uso no plano |
 |---|---|---|---|
 | B1 – Concorrentes | Google Places API; Google Maps; Instagram; Ludopedia; Acervo de Jogos; sites próprios de cada concorrente | Luderias com mais de 100 avaliações nas 14 metrópoles da REGIC 2018 (IBGE): 54 concorrentes | Concorrência, preço, cardápio, ponto, acervo, ticket médio |
-| B2 – Avaliações recentes | Página de avaliações de cada concorrente no Google Maps | Avaliações com rótulo de data até "3 meses atrás", inclusive | Proposta de valor, reclamações, tamanho do grupo, jogos citados |
+| B2 – Avaliações recentes | Página de avaliações de cada concorrente no Google Maps | Avaliações com rótulo de data até "3 meses atrás", inclusive | Proposta de valor, reclamações, jogos citados |
 | B3 – Contagem direta | Observação nas duas unidades da São Jogue, com leitura da NFC-e | 4 visitas, sexta e sábado à noite, out/2026 | Taxa de ocupação, permanência, tamanho do grupo, fluxo |
 | B4 – Bases públicas | IBGE, Novo CAGED, FipeZap, Simples Nacional, Banco Central, CONCLA | Salvador e demais capitais; 2017 a 2026 | Público, aluguel, salários, tributos, taxa de desconto |
 | B5 – Ativos fixos | SINAPI (Caixa); anúncios da Amazon e do Mercado Livre | Bahia, set/2026; até 5 anúncios por item e site, nov/2026 | Investimento em reforma, mobiliário, cozinha e informática |

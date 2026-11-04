@@ -10,7 +10,10 @@ tabela com o gráfico ao lado, e os PNGs em `graficos_comentarios/`.
 A aba "Dados B2" traz uma linha por comentário, sem o texto (texto integral não
 é publicado; `_instrucoes/4_metodologia.md` §3.4): casa, metrópole, notas,
 campos extras do Maps e uma coluna 0/1 por tema positivo, tema negativo,
-contexto e tamanho de grupo. As tabelas calculam por fórmula sobre ela.
+e contexto. As tabelas calculam por fórmula sobre ela.
+
+O campo "Tamanho do grupo" do Maps fica fora (excluído em 04/11/2026, a pedido do
+autor): o campo não mede o tamanho do grupo que foi à casa.
 
 "Costuma ir" fica fora (excluída em 03/11/2026, kappa 0,52 na recodificação
 cega); Contexto entra como exploratória (kappa 0,52).
@@ -93,40 +96,6 @@ d["espera"] = d["Tempo de espera"].map({"Sem espera": ESPERA[0], "até 10 minuto
 BARULHO = ["Silencioso", "Moderado", "Alto; conversa possível", "Muito alto; conversa difícil"]
 d["barulho"] = d["Nível de barulho"]
 
-GRUPOS = [("g_1", "1 pessoa"), ("g_2", "2 pessoas"), ("g_3_4", "3 a 4 pessoas"), ("g_5_8", "5 a 8 pessoas"),
-          ("g_9", "9 pessoas ou mais"), ("g_todos", "Todos os tamanhos")]
-
-
-def grupos(v):
-    """Tamanho do grupo (múltipla escolha no Maps, com variações digitadas à mão) em marcas 0/1."""
-    out = dict.fromkeys([g for g, _ in GRUPOS], 0)
-    if pd.isna(v):
-        return out
-    for p in [x.strip().lower() for x in str(v).split(",")]:
-        if "todos" in p or "adequado" in p:
-            out["g_todos"] = 1
-        elif p.startswith("1 pessoa"):
-            out["g_1"] = 1
-        elif re.match(r"(de )?2 pessoas", p):
-            out["g_2"] = 1
-        elif re.match(r"(de )?3 a 4", p):
-            out["g_3_4"] = 1
-        elif re.match(r"(de )?5 a 8", p):
-            out["g_5_8"] = 1
-        elif p.startswith("mais de 9"):
-            out["g_9"] = 1
-        elif m := re.match(r"(\d) a (\d)", p):  # faixas largas: "3 a 8", "2 a 4", "2 a 9+", "5 a 9"
-            a, b = int(m.group(1)), int(m.group(2))
-            for g, lo, hi in (("g_2", 2, 2), ("g_3_4", 3, 4), ("g_5_8", 5, 8), ("g_9", 9, 99)):
-                if a <= hi and b >= lo:
-                    out[g] = 1
-    return out
-
-
-gr = pd.DataFrame([grupos(v) for v in d["Tamanho do grupo"]])
-d["grupo_informado"] = (gr.sum(axis=1) > 0).astype(int)
-
-
 def itens(v):
     return [t.strip() for t in str(v).split(",") if t.strip()] if pd.notna(v) else []
 
@@ -141,11 +110,9 @@ d["com_tema"] = ((pos.sum(axis=1) + neg.sum(axis=1)) > 0).astype(int)
 base = pd.DataFrame({
     "estabelecimento": d.Estabelecimento, "metropole": d.metropole, "regiao": d.metropole.map(REGIAO),
     "nota": d["Nota geral"], "comida": d.Comida, "servico": d["Serviço"], "ambiente": d.Ambiente,
-    "preco_faixa": d.preco_faixa, "espera": d.espera, "barulho": d.barulho, "grupo_informado": d.grupo_informado,
+    "preco_faixa": d.preco_faixa, "espera": d.espera, "barulho": d.barulho,
     "analise_temas": d["Análise de temas"].fillna("anterior a 30/10/2026"), "com_tema": d.com_tema,
 })
-for g, _ in GRUPOS:
-    base[g] = gr[g]
 for c in CONTEXTOS:
     base[f"ctx_{c}"] = ctx[c]
 for i, t in enumerate(TEMAS):
@@ -158,8 +125,7 @@ N = len(base)
 ROTULO = {"estabelecimento": "casa", "metropole": "metrópole", "regiao": "região", "nota": "nota geral",
           "comida": "nota de comida", "servico": "nota de serviço", "ambiente": "nota de ambiente",
           "preco_faixa": "preço por pessoa", "espera": "tempo de espera", "barulho": "nível de barulho",
-          "grupo_informado": "tamanho do grupo informado", "analise_temas": "análise de temas", "com_tema": "com tema"}
-ROTULO.update({g: f"grupo: {r}" for g, r in GRUPOS})
+          "analise_temas": "análise de temas", "com_tema": "com tema"}
 ROTULO.update({f"ctx_{c}": f"contexto: {c}" for c in CONTEXTOS})
 ROTULO.update({f"pos_{i:02d}": f"+ {t}" for i, t in enumerate(TEMAS)})
 ROTULO.update({f"neg_{i:02d}": f"− {t}" for i, t in enumerate(TEMAS)})
@@ -283,7 +249,7 @@ nova_aba("Tab 7", f"Tabela 7 – Gasto por pessoa informado no Maps: a faixa med
          ["Faixa de gasto por pessoa", "Comentários", "% dos com preço"], lin7, ["txt", "int", "pct"], FONTE,
          [26, 12, 14], g7, ["Nota: valores únicos digitados à mão entram na faixa que os contém (ex.: 50 em R$ 40 a 60)."])
 
-# Tab 8 a 10: espera, barulho e grupo
+# Tab 8 e 9: espera e barulho
 lin8 = [[r, f'=COUNTIF({R("espera")},A{k})', f"=B{k}/B$8"] for k, r in enumerate(ESPERA, 3)]
 lin8 += [["Total com espera informada", "=SUM(B3:B7)", "=SUM(C3:C7)"], ["Sem espera informada", f"={NT}-B8", ""]]
 ec = base.espera.value_counts()
@@ -299,28 +265,18 @@ g9 = barras_h("09_barulho", BARULHO, {"% dos que informam": [bc.get(b, 0) / bc.s
               lambda v: br(v * 100, 1, suf="%"), eixo_pct=True, larg_rotulo=20)
 nova_aba("Tab 9", "Tabela 9 – Nível de barulho: moderado na maioria das menções; muito alto é raro",
          ["Nível de barulho", "Comentários", "% dos que informam"], lin9, ["txt", "int", "pct"], FONTE, [28, 12, 14], g9)
-GI = f'SUM({R("grupo_informado")})'
-lin10 = [[r, f'=SUM({R(g)})', f"=B{k}/{GI}"] for k, (g, r) in enumerate(GRUPOS, 3)]
-lin10.append(["Comentários com tamanho de grupo informado", f"={GI}", ""])
-ng = int(d.grupo_informado.sum())
-g10 = barras_h("10_tamanho_grupo", [r for _, r in GRUPOS], {"% dos que informam": [gr[g].sum() / ng for g, _ in GRUPOS]},
-               lambda v: br(v * 100, 1, suf="%"), eixo_pct=True)
-nova_aba("Tab 10", "Tabela 10 – Tamanho do grupo: as casas são indicadas para grupos de 3 a 8 pessoas ou de todos os tamanhos",
-         ["Tamanho do grupo", "Comentários", "% dos que informam"], lin10, ["txt", "int", "pct"], FONTE, [36, 12, 14], g10,
-         ["Nota: múltipla escolha no Maps (não exclusiva); faixas digitadas à mão (ex.: \"3 a 8\") marcam as faixas que cobrem."])
-
-# Tab 11: situação da codificação
+# Tab 10: situação da codificação
 AN = ["anterior a 30/10/2026", "Claude 30/10/2026", "Claude 02/11/2026"]
 d["Análise de temas"] = d["Análise de temas"].fillna(AN[0])
-lin11 = [[a, f'=COUNTIFS({R("analise_temas")},A{k},{R("com_tema")},1)',
+lin10 = [[a, f'=COUNTIFS({R("analise_temas")},A{k},{R("com_tema")},1)',
           f'=COUNTIFS({R("analise_temas")},A{k},{R("com_tema")},0)', f"=B{k}+C{k}"] for k, a in enumerate(AN, 3)]
-lin11 += [["Total", "=SUM(B3:B5)", "=SUM(C3:C5)", "=SUM(D3:D5)"], ["Conferência (deve ser 0)", "", "", f"=D6-{NT}"]]
-g11 = empilhado_100("11_codificacao", ["Autor (antes de 30/10)", "Claude (30/10)", "Claude, grade 2 (02/11)"],
+lin10 += [["Total", "=SUM(B3:B5)", "=SUM(C3:C5)", "=SUM(D3:D5)"], ["Conferência (deve ser 0)", "", "", f"=D6-{NT}"]]
+g10 = empilhado_100("10_codificacao", ["Autor (antes de 30/10)", "Claude (30/10)", "Claude, grade 2 (02/11)"],
                     {"Com tema": [int(((d["Análise de temas"] == a) & (d.com_tema == 1)).sum()) for a in AN],
                      "Sem tema": [int(((d["Análise de temas"] == a) & (d.com_tema == 0)).sum()) for a in AN]})
-nova_aba("Tab 11", "Tabela 11 – Codificação dos temas: quem codificou e quantos comentários ficaram sem tema",
-         ["Análise de temas", "Com tema", "Sem tema", "Comentários"], lin11, ["txt", "int", "int", "int"], FONTE_TEMAS,
-         [30, 12, 12, 12], g11, ["Nota: sem tema = comentário que não cita atributo (ex.: \"Excelente\"); não é o mesmo que não analisado. Última marca de cada comentário; a grade 2 (02/11) regravou 652. Codificação concluída em 03/11/2026, depois da recodificação cega do autor (199 comentários, duas rodadas)."])
+nova_aba("Tab 10", "Tabela 10 – Codificação dos temas: quem codificou e quantos comentários ficaram sem tema",
+         ["Análise de temas", "Com tema", "Sem tema", "Comentários"], lin10, ["txt", "int", "int", "int"], FONTE_TEMAS,
+         [30, 12, 12, 12], g10, ["Nota: sem tema = comentário que não cita atributo (ex.: \"Excelente\"); não é o mesmo que não analisado. Última marca de cada comentário; a grade 2 (02/11) regravou 652. Codificação concluída em 03/11/2026, depois da recodificação cega do autor (199 comentários, duas rodadas)."])
 
 # ---------------------------------------------------------------- base e índice
 ws = est.wb.create_sheet(ABA_BASE)
