@@ -132,6 +132,20 @@ Legenda, no fim de cada referência:
 - [ ] COHEN, Jacob. A coefficient of agreement for nominal scales. *Educational and Psychological Measurement*, v. 20, n. 1, p. 37–46, 1960. [AV] ⛔
   - [ ] kappa de Cohen para a concordância da recodificação cega.
 
+### Método de coleta (comportamento observado em vez de questionário)
+
+- [x] MATTAR, Fauze Najib. *Pesquisa de marketing*: metodologia, planejamento. v. 1. 4. ed. São Paulo: Atlas, 1997. 📖 exemplar físico (UFBA); edição e ISBN 85-224-1790-3 conferidos na ficha catalográfica; páginas conferidas em 04/11/2026
+  - [x] vieses de entrevista e questionário (p. 174–178): Quadro 5.13 (p. 175) dá o nível de viés por método, com "influência do entrevistador" e "insinceridade das respostas"; o questionário tem controle amostral extremamente baixo, porque o pesquisador não sabe quem respondeu (p. 174); quem mais responde são os mais interessados e instruídos (p. 177); só a entrevista pessoal permite verificar a sinceridade (p. 178). **O termo "desejabilidade social" não aparece nessas páginas**; o cap. 3 deve citar "insinceridade das respostas" ou buscar outra fonte para o termo.
+  - [x] observação estruturada e não estruturada (p. 179, 181): a estruturada exige objetivos definidos e especificação a priori do observado; a não estruturada serve à pesquisa exploratória e é de interpretação difícil e subjetiva (p. 181).
+  - [x] observação não disfarçada (p. 181): usa-se quando o comportamento não é influenciado pela presença do observador ou quando a ética impede o disfarce; o disfarce levanta a questão do consentimento (p. 181).
+  - [x] observação direta (p. 184): registra o comportamento no momento em que ocorre, e só é possível para fatos em ambiente público; observação natural (p. 184) evita vieses.
+  - [x] observação humana, de papel e caneta (p. 182): o registro depende da interpretação do observador; para reduzir o viés, registra-se de modo que uma junta de observadores reinterprete depois.
+  - [x] dados secundários (p. 135–138): definição (p. 135); começar por eles, por economia de tempo e custo (p. 136–137); desvantagens: unidade de medida, definição de classes, momento da publicação e confiabilidade (p. 137); preferir fonte original à reprodutora e checar propósito e evidências de qualidade (p. 138).
+  - [x] fontes padronizadas e institucionais no Brasil (p. 145): lista de entidades de pesquisa, entre elas o CEI (Salvador).
+  - [x] atitude e comportamento (p. 155–156): a atitude só se manifesta por comportamento ou declaração do entrevistado, e o comportamento pode ser observado (p. 155); comportamento é o que as pessoas fizeram ou fazem, e o Quadro 5.8 (p. 156) o decompõe em quem, o quê, quanto, quando, onde, como.
+  - [x] tipos de pesquisa (p. 76–77): classificação por objetivo (exploratória e conclusiva), por natureza (descritiva e causal) e por forma de coleta (comunicação e observação); a descritiva responde quem, o quê, quanto, quando e onde (p. 77).
+  - [ ] amostragem não probabilística, intencional e por julgamento (p. 267–270): ainda não fotografada; é a que o recorte das 54 luderias e das visitas à São Jogue usa.
+
 ### Erro de coleta e validação
 
 - [ ] GROVES, Robert M. et al. *Survey methodology*. 2. ed. Hoboken: Wiley, 2009. O PDF foi convertido do EPUB e não tem a paginação impressa; a citação usa a seção. 📄
