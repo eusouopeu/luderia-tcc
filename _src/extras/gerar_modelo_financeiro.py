@@ -35,7 +35,7 @@ Desenho enxuto (P7 de _instrucoes/1a_principios.md, 02/11/2026): 6 mesas;
 terça a sexta das 15h às 23h e sábado e domingo das 14h às 22h (as 8 h
 contínuas com mais luderias abertas no B1), segunda fechada; equipe de 5 (2
 cozinheiros-chefes e 3 atendentes e instrutores, escala 5x2 de 40 h; decisão do
-autor, 04/11/2026), mais o sócio no caixa das 17h ao fechamento (pró-labore, C08).
+autor, 04/11/2026), mais o sócio no caixa em todo o horário aberto (pró-labore, C08).
 A remuneração soma ao salário os adicionais legais da escala (ESCALA): noturno,
 hora noturna reduzida, repouso sobre eles e feriados em dobro; os encargos e o
 vale-transporte (C07) saem da mesma conta, linha a linha (custo_empregado).

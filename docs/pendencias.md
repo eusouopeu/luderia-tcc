@@ -25,7 +25,7 @@ Perguntas fechadas para o autor responder de uma vez. Cada resposta vira uma lin
 | L15 | Hipótese do público potencial | (a) estudo futuro no cap. 11; (b) emenda ao registro prévio | (a) |
 | L16 | Monte Carlo, recomendações 5 (correlação entre circulação no pico, circulação de dia útil e gasto por pessoa) e 7 (valor residual incerto, maior que o VPL no provável) | (a) implementar as duas; (b) só a 7; (c) nenhuma, declaradas como limite | Explicar ao autor antes (pedido dele); depois, (b) |
 | L17 | Adicional noturno: a convenção SHRBS × Sindbares 2024/2026 pode fixar mais que os 20% da CLT (a de 2023/2024 trazia 30%) [AV] | (a) manter 20% até ler a convenção vigente; (b) 30% já no provável | (a) |
-| L18 | Domingo em que o atendente folga: o salão fica com uma atendente e, das 17h, o sócio (teto de 4 mesas; melhorias D64) | (a) declarar a exceção no 7.5; (b) trocar a folga do atendente por um domingo de demanda menor | (a) |
+| L18 | Domingo em que o atendente folga: o salão fica com uma atendente e o sócio (teto de 4 mesas; melhorias D64) | (a) declarar a exceção no 7.5; (b) trocar a folga do atendente por um domingo de demanda menor | (a) |
 
 ## Para a banca (muda texto, número ou decisão do TMin)
 

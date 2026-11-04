@@ -20,7 +20,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
-**D64 — Domingo com um só instrutor (04/11/2026).** Cap. 7 (7.5: teto de 2 mesas por instrutor no pico e "3 pessoas no salão no pico") × escala do Quadro 7.2. No domingo em que o atendente folga, o salão tem uma atendente das 13h às 17h e, depois, ela e o sócio: teto de 4 mesas, abaixo das 6 do salão. A demanda provável ocupa 3,2 mesas no pico, mas a otimista passa do teto nesse domingo. Sugestão: declarar a exceção no 7.5 ou aceitar a folga do atendente num domingo em que a demanda for menor.
+**D64 — Domingo com um só instrutor (04/11/2026).** Cap. 7 (7.5: teto de 2 mesas por instrutor no pico e "3 pessoas no salão no pico") × escala do Quadro 7.2. No domingo em que o atendente folga, o salão tem uma atendente e o sócio, que também cuida do caixa: teto de 4 mesas, abaixo das 6 do salão. A demanda provável ocupa 3,2 mesas no pico, mas a otimista passa do teto nesse domingo. Sugestão: declarar a exceção no 7.5 ou aceitar a folga do atendente num domingo em que a demanda for menor.
 
 **D65 — Receita da Tabela 8.1 × modelo do cap. 9 (04/11/2026).** Cap. 8 (Tabela 8.1: receita bruta de R$ 661.655,03 no ano maduro) × cap. 9 (Tabela 9.3: R$ 916.823 a partir do ano 2). A Tabela 8.1 compara os regimes com a receita de uma versão anterior do modelo; só a linha da contribuição patronal foi refeita, com a nova folha. Sugestão: refazer a Tabela 8.1 com a receita e a folha do modelo atual, ou gerá-la pelo `gerar_modelo_financeiro.py`.
 

@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 04/11/2026 | O sócio trabalha em todo o horário aberto (terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h) no caixa, na gestão e nas mesas, no lugar de das 17h ao fechamento; nenhum atendente fica no caixa | Cap. 7 (7.3, 7.5 e Quadro 7.2) |
 | 04/11/2026 | Equipe de 5 empregados (3 atendentes e instrutores, 2 delas mulheres, e 2 cozinheiros-chefes) em escala 5x2 de 40 h: folga na segunda e na terça, na quarta ou no domingo; um domingo de folga por mês para homens e domingo sim, domingo não para mulheres; sai o instrutor de meio período; o sócio fica no caixa, na gestão e nas mesas das 17h ao fechamento | Cap. 7 (7.5, Quadro 7.2); `gerar_modelo_financeiro.py` (`ESCALA`) |
 | 04/11/2026 | Último pedido da cozinha 1 h antes do fechamento e cozinha fechada 30 min antes; intervalos alternados dos atendentes (16h, 17h e 18h de terça a sexta; 15h, 16h e 17h no fim de semana); no dia com um só cozinheiro, o intervalo fica na primeira hora aberta, porque trocar o intervalo por pagamento não é lícito (CLT, art. 71, § 4º, e art. 75) | Cap. 7 (7.5) |
 | 04/11/2026 | Sem taxa de serviço nem gorjeta | Cap. 8 (Quadro 8.1) |
