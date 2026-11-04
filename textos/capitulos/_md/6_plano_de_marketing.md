@@ -1,10 +1,10 @@
 # 6 PLANO DE MARKETING
 
-O plano de marketing define como a luderia se posiciona e se apresenta ao público de Salvador. As decisões seguem o composto de marketing: produto, preço, praça e comunicação, a partir da proposta de valor, com a estimativa de demanda ao fim.
+O plano de marketing define como a luderia se posiciona e se apresenta ao público de Salvador. As decisões partem da proposta de valor, seguem pelo composto de marketing – produto, preço, praça e comunicação – e terminam com uma estimativa de demanda.
 
 ## 6.1 PROPOSTA DE VALOR E POSICIONAMENTO
 
-A luderia vende uma saída em grupo em que qualquer pessoa joga em poucos minutos: o instrutor escolhe o jogo pelo perfil da mesa e ensina a regra, e a cozinha serve sem parar a partida. A proposta sai do que os clientes dos concorrentes elogiam e criticam nas avaliações (Figura 6.1). O atendimento presencial aparece em 55,6% das 1.628 avaliações com texto do B2, à frente da comida (34,1%), do ambiente e decoração (26,2%) e da variedade do acervo (20,1%). A explicação de jogos, citada em 14,3%, é o serviço da equipe ligado ao acervo.
+O Interlúdio vende uma experiência de entretenimento ativo, sem requisito de conhecimento prévio, com opções de complexidade, duração e número de participantes para todos os tipos de grupos e de pessoas. Junto com os jogos, os instrutores, responsáveis pela indicação dos jogos e pela explicação das regras, compõem o ponto de diferenciação do negócio, enquanto a qualidade e a rapidez dos lanches e bebidas da cozinha compõem o ponto de paridade com os demais estabelecimentos de alimentação. A proposta parte do que os clientes dos concorrentes elogiam e criticam nas avaliações (Figura 6.1). O atendimento presencial aparece em 55,6% das 1.628 avaliações com texto do B2, à frente da comida (34,1%), do ambiente e decoração (26,2%) e da variedade do acervo (20,1%). A explicação de jogos, citada em 14,3%, é o serviço da equipe ligado ao acervo.
 
 **Figura 6.1 – Temas elogiados e criticados nas avaliações dos concorrentes**
 

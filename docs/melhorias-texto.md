@@ -24,8 +24,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D66 — TMin v25 no teto de 90 páginas (04/11/2026).** O texto termina na p. 90, exatamente o teto (`_instrucoes/1_estrutura.md`); qualquer acréscimo passa do limite. Sugestão: os cortes do C21 (cap. 6) e dos apêndices (L5 e L6) devolvem a margem.
 
-**D67 — 53 concorrentes × 13 casas com a São Jogue (04/11/2026).** Cap. 4 e cap. 6 (6.3). "Dos 53 concorrentes" exclui a São Jogue, mas a conta do gasto (13 casas) a inclui. Sugestão: dizer "das 54 luderias" na conta do gasto ou declarar a inclusão em nota.
-
 **D68 — CMV do setor de duas edições da PAS (04/11/2026).** Cap. 9 (Tabela 9.5, C01) e cap. 10 (Tabela 10.2) usam 29,6% (PAS 2023); o 9.6 compara pessoal e aluguel com a PAS 2024 (26,8% de CMV nessa edição). Sugestão: usar a PAS 2024 em todos os pontos.
 
 **D65 — Receita da Tabela 8.1 × modelo do cap. 9 (04/11/2026).** Cap. 8 (Tabela 8.1: receita bruta de R$ 661.655,03 no ano maduro) × cap. 9 (Tabela 9.3: R$ 916.823 a partir do ano 2). A Tabela 8.1 compara os regimes com a receita de uma versão anterior do modelo; só a linha da contribuição patronal foi refeita, com a nova folha. Sugestão: refazer a Tabela 8.1 com a receita e a folha do modelo atual, ou gerá-la pelo `gerar_modelo_financeiro.py`.

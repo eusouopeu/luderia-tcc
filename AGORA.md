@@ -4,7 +4,7 @@ Atualizado em 04/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora (no máximo duas frentes)
 
-1. **Texto do TMin v25** (90 páginas, no teto; apêndices v25). Provável: investimento de R$ 313 mil, VPL de R$ 689 mil, TIR de 56,2%, P(VPL > 0) de 77,3%; gasto de R$ 78,68 por pessoa (13 casas) e cesta com hambúrguer de R$ 74,06; Pituba em 1º na matriz com renda por bairro. Comentários do autor no v24 aplicados. Falta a passada única de revisão dos pares com "*" e as citações `[AV]` (inclui o QualiSalvador, sem PDF); abrir margem de páginas (D66).
+1. **Texto do TMin v25** (90 páginas, no teto; apêndices v25). Provável: investimento de R$ 313 mil, VPL de R$ 689 mil, TIR de 56,2%, P(VPL > 0) de 77,3%; gasto de R$ 78,68 por pessoa (13 casas) e cesta com hambúrguer de R$ 74,06; Pituba em 1º na matriz com renda por bairro. Comentários do autor no v24 aplicados e edições de estilo dos caps. 3, 4 e 6 levadas aos `.md` (pedidos `**` do 3.2 e 3.3 resolvidos; faltam os itens de metodologia em pendências). Falta a passada única de revisão dos pares com "*" e as citações `[AV]` (inclui o QualiSalvador, sem PDF); abrir margem de páginas (D66).
 2. **Recoleta do B5** com o coletor 2026.11.03-8 (os números atuais usam até 5 ofertas por site espaçadas no preço) e coleta de letreiro, balcão e kit de gás; é o único dado que ainda muda números do TMin.
 
 ## Próximos 3 passos
