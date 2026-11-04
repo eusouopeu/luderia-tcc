@@ -2594,3 +2594,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: sem item sobre a agilidade nos valores do Interlúdio.
 **Depois**: pendência para decidir se a agilidade (rapidez do serviço, 42 críticas e 27 elogios no B2) entra dentro de "Qualidade em primeiro lugar" ou fica de fora.
 **Justificativa**: pedido do autor (guardar a sugestão nas pendências a decidir). No doc do MVV, a prática de "Regras claras" passou a limitar mudanças de regra aos gatilhos da seção 10.4, com aviso prévio, também a pedido do autor.
+
+### 00:14
+**Objeto**: `textos/capitulos/_md/8_aspectos_juridicos.md` (8.1 e Tabela 8.1) × `textos/capitulos/_md/4_sumario_executivo.md` (Tabela 4.1) e modelo financeiro atual
+**Antes**: o cap. 8 usa receita provável do ano 2 de R$ 662 mil (R$ 661.655,03 na Tabela 8.1).
+**Depois**: o modelo atual (`gerar_modelo_financeiro.py`) e a Tabela 4.1 dão receita bruta madura de R$ 76.402 por mês, ou R$ 916.823 por ano a partir do ano 2 (R$ 710.538 no ano 1).
+**Efeitos colaterais**: os tributos da Tabela 8.1 (Simples e Lucro Presumido), a carga sobre a receita e o enquadramento descrito no 8.1 estão calculados sobre uma receita cerca de 28% menor que a do modelo; o enquadramento como EPP no Simples não muda (abaixo de R$ 4,8 milhões).
