@@ -2586,3 +2586,11 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: fonte dos recursos registrada como 30% capital próprio e 70% financiado.
 **Depois**: 70% capital próprio e 30% dívida no FNE MPE do Banco do Nordeste, como no trabalho de EAPP da lavanderia; VPL do projeto mantido a 15%, sem trocar a TMA pelo WACC; pendência de simular o FNE MPE para R$ 86,9 mil.
 **Justificativa**: o trabalho da lavanderia usa 30% de dívida e 70% de capital próprio, o inverso do registrado; o autor escolheu a divisão da lavanderia.
+
+## 2026/11/04
+
+### 00:02
+**Objeto**: `docs/pendencias.md`
+**Antes**: sem item sobre a agilidade nos valores do Interlúdio.
+**Depois**: pendência para decidir se a agilidade (rapidez do serviço, 42 críticas e 27 elogios no B2) entra dentro de "Qualidade em primeiro lugar" ou fica de fora.
+**Justificativa**: pedido do autor (guardar a sugestão nas pendências a decidir). No doc do MVV, a prática de "Regras claras" passou a limitar mudanças de regra aos gatilhos da seção 10.4, com aviso prévio, também a pedido do autor.
