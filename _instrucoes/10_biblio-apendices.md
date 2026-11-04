@@ -18,7 +18,7 @@ Conferir o manual ou as normas complementares da UFBA e do curso, e as orientaç
 
 - Lista única, no fim do trabalho, em ordem alfabética. Alinhamento e espaçamento seguem `1d_formatacao.md` (justificada, espaço 1,5), que prevalece sobre a NBR 6023 (esquerda, espaço simples).
 - Título em destaque (itálico ou negrito — escolher um e manter).
-- Documentos online: incluir "Disponível em: URL. Acesso em: dia mês abreviado ano." Toda referência com versão de acesso público (lei, base pública, artigo em acesso aberto, dissertação em repositório) leva o link, conferido antes de entrar; obra paga ou sem versão aberta (livros, periódicos fechados, ABNT) fica sem link (02/11/2026, pedido do autor).
+- Documentos online: incluir "Disponível em: URL. Acesso em: dia mês abreviado ano." Toda referência com versão de acesso público (lei, base pública, artigo em acesso aberto, dissertação em repositório) leva o link, conferido antes de entrar; obra paga ou sem versão aberta (livros, periódicos fechados, ABNT) fica sem link.
 - Incluir apenas obras citadas no texto. Leituras não citadas não entram.
 - Modelos:
   - **Livro:** SOBRENOME, Nome. *Título*: subtítulo. Edição. Local: Editora, ano.
@@ -28,7 +28,7 @@ Conferir o manual ou as normas complementares da UFBA e do curso, e as orientaç
   - **Legislação:** BRASIL. Lei nº X, de dia de mês de ano. Ementa. *Diário Oficial da União*, ...
   - **Repositório de código:** AUTOR. *Título do repositório*. Ano. Disponível em: URL. Acesso em: ...
 - Referência não conferida fica marcada `[AV]` (a verificar) e não entra na versão final.
-- Citação com página a conferir leva `[AV]` junto da citação; o autor troca o marcador pela página quando conferir na obra. (Os checklists de conceitos `[AV-<ID>]` e o vigia que os aplicava foram arquivados em 03/11/2026, em `bibliografia/_arquivo/` e `_src/extras/_arquivo/conceitos/`.)
+- Citação ainda não verificada na obra fica **em vermelho e em citação direta**: o trecho entre aspas, com `[AV]` e a página provável, para o autor achar o trecho no arquivo da referência. No `.md`, a citação leva `[AV]`; o `gerar_docx_capitulo.js` pinta a frase de vermelho (`--vermelho` com os autores que ainda têm `[AV]`). Ao gerar uma versão nova, o Claude compara com o `.docx` da versão anterior: citação que saiu em vermelho e o autor deixou em preto foi **conferida** — perde o `[AV]`, volta a ser citação indireta (paráfrase com a página) e entra em `bibliografia/citacoes_conferidas.md`.
 
 ## Tabelas, quadros e figuras
 

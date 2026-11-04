@@ -1,6 +1,6 @@
 # Princípios do plano
 
-Hierarquias e personalizações que valem para todos os capítulos. Parte de [1_estrutura.md](1_estrutura.md), separada em 31/10/2026; a numeração P1 a P4 foi mantida. P7 (desenho enxuto) entrou em 02/11/2026. Escrita e vocabulário (P5 e P6): [1b_escrita.md](1b_escrita.md).
+Hierarquias e personalizações que valem para todos os capítulos. Escrita e vocabulário (P5 e P6): [1b_escrita.md](1b_escrita.md).
 
 ## P1. Hierarquia de fontes
 
@@ -51,7 +51,7 @@ Onde investir tempo, texto e rigor, em ordem de prioridade:
 
 Na dúvida entre aprofundar um item de nível baixo ou fortalecer um de nível alto, fortalecer o de nível alto.
 
-**Precedência entre capítulos** (pedido do autor em 31/10/2026). Os caps. 6 (Plano de Marketing) e 8 (Aspectos Jurídicos e Legais) moldam o negócio: definem o que a luderia é, a quem atende, por quanto e dentro de que regras. Os demais capítulos de plano, em especial o 7 (Plano Operacional) e o 9 (Plano Financeiro), só tornam esse negócio viável. Por isso:
+**Precedência entre capítulos**. Os caps. 6 (Plano de Marketing) e 8 (Aspectos Jurídicos e Legais) moldam o negócio: definem o que a luderia é, a quem atende, por quanto e dentro de que regras. Os demais capítulos de plano, em especial o 7 (Plano Operacional) e o 9 (Plano Financeiro), só tornam esse negócio viável. Por isso:
 
 1. Em informação divergente entre capítulos, valem os caps. 6 e 8; os outros se ajustam a eles, e não o contrário.
 2. Toda mudança nos caps. 6 ou 8 leva a um alerta imediato ao autor, na mesma resposta, com os capítulos a ajustar (7, 9, 10, 4, 11 e, se for o caso, 3 e 5) e o que muda em cada um. O alerta não autoriza ajustar os outros capítulos sem pedido do autor.
@@ -71,7 +71,7 @@ Diferenças deliberadas em relação a um plano de negócios comum. Aplicar semp
 
 ## P7. Desenho enxuto (MVP)
 
-Decisão do autor em 02/11/2026. O plano não projeta uma casa do porte da São Jogue, que tem anos de mercado e clientela formada. Projeta uma versão menor, desenhada para reduzir a exposição aos riscos que o tornado aponta: giro de mesa, ocupação e movimento fora do pico. Vale para todos os capítulos.
+O plano não projeta uma casa do porte da São Jogue, que tem anos de mercado e clientela formada. Projeta uma versão menor, desenhada para reduzir a exposição aos riscos que o tornado aponta: giro de mesa, ocupação e movimento fora do pico. Vale para todos os capítulos.
 
 - **A São Jogue é referência de comportamento, não de porte.** Dela vêm ocupação de pico, pessoas por mesa, permanência e giro (B3); não vêm número de mesas, área, horário nem equipe. As duas unidades ficam dentro dos shoppings Bela Vista e Paralela, e não perto deles. Nas visitas, os instrutores eram 7, 3, 5 e 3 (Bela Vista em 10 e 16/10; Paralela em 17 e 30/10) e, em todas, também atendiam as mesas, cuidavam do balcão e operavam o caixa: não havia caixa, garçom nem atendente separados. Esse arranjo sustenta a equipe sem garçom nem caixa.
 - **Salão:** 6 mesas, a maior ocupação vista nas visitas. Teto de carga de 2 mesas (cerca de 10 clientes) por instrutor no pico.

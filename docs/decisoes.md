@@ -4,6 +4,14 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 04/11/2026 | Citação ainda não verificada na obra fica em vermelho e em citação direta, com `[AV]`; citação que o autor deixa em preto na versão seguinte está conferida: perde o `[AV]`, volta a citação indireta e entra em `bibliografia/citacoes_conferidas.md` | `_instrucoes/10_biblio-apendices.md` (Referências) |
+| 04/11/2026 | O TMax sai: o texto tem uma só versão, o TMin; DMax e DMin ficam | `_instrucoes/1c_versoes.md` |
+| 04/11/2026 | O `.md` é a fonte única do texto: comentário do autor no `.docx` é aplicado no `.md` e o `.docx` é regerado, sem pares original/revisado com "*" | `_instrucoes/1c_versoes.md` |
+| 04/11/2026 | Registro de alterações só para Notion e divergências; mudança em arquivo fica na mensagem do commit; registro até 03/11 arquivado | `CLAUDE.md` (Registro de alterações) |
+| 04/11/2026 | Fluxo até a banca: escopo congelado (o que não muda o TMin vai para "Depois da banca"), no máximo duas frentes no AGORA, decisões do autor em lote de perguntas fechadas, pendência sem solução vira limitação, regeração só por entrega | `CLAUDE.md` (Fluxo de trabalho até a banca) |
+| 04/11/2026 | Fim de sessão: sempre AGORA e commit (o vault sincroniza pelo hook `post-commit`); decisões, pendências e status só quando houver o que registrar | `CLAUDE.md` (Fim de sessão) |
+| 04/11/2026 | Registros incompletos das visitas do B3 (nota fiscal do início, contagens de mesas, quem já estava no salão) entram como limitação no Quadro 3.4 e saem das pendências | Cap. 3 (3.6) |
+| 04/11/2026 | Protocolos de validação da coleta e formato dos dados do app saem da `4_metodologia.md` para `textos/instrumentos/protocolo_validacao_coleta.md` | `_instrucoes/4_metodologia.md` |
 | 03/11/2026 | Lista de referências enxuta: artigo só para dado empírico; conceitos de livro-texto em português. Saem Brinckmann, Gilovich, Oldenburg, Tontini e Theiss, Savills, Kviat, Novaes e Kanyat; Groves vira Mattar; Figueiredo (2020) vira Pfeffer e Sutton; Bruni (2018), Bruni e Famá, Damodaran, Brealey e Casarotto viram Assaf Neto; ficam KAM Insight, Pine e Gilmore (*apud*), Kim e Mauborgne, Picolo e Tontini, Cohen e Wilson | `_instrucoes/2_ref-teorico.md` (Escolha das obras) |
 | 03/11/2026 | TMin v23 sai com as frases das referências restantes da revisão (artigos, relatório, *apud* e Kim e Mauborgne) em vermelho, pela opção `--vermelho` do gerador | `_src/extras/gerar_docx_capitulo.js` |
 | 03/11/2026 | Citações priorizam obras da pasta `bibliografia/`; conceitos e fórmulas de uma área saem de um único livro-texto da pasta (tabela por área), e obra de fora só entra se nenhum livro da pasta cobrir o ponto; Assaf Neto passa a cobrir também beta e risco-país | `_instrucoes/2_ref-teorico.md` (Escolha das obras) |

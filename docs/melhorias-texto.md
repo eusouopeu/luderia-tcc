@@ -12,8 +12,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Grave
 
-**D53 — TMax com o modelo de demanda antigo (02/11/2026).** TMax caps. 3, 5 e 9 × TMin caps. 3, 6 e 9. O TMax ainda usa a cesta sem a taxa de entrada, as pessoas por cesta (R08), as mesas ocupadas × giros e a taxa e a cesta iguais nos três cenários; o TMin passou à circulação no pico, às horas de pico equivalentes e ao gasto por pessoa (R04 a R07, R15). Sugestão: refazer o 9.1 e o 9.3 do TMax a partir do TMin, ou declarar que o cap. 9 do TMax segue o do TMin.
-
 **D49 — Marcadores pendentes a duas semanas da banca (02/11/2026).** TMin v17: os `[script]` e a correção pelo IPCA foram fechados. Restam 15 `[AV]` no texto corrido, `[pendente]` (9.2: sleeves; 9.5: triangulação com o cap. 6), `[Pendente: alimentos e bebidas...]` (5.3.2), `[figura: croqui do salão]` e `[figura: fluxograma da jornada do cliente]` (7.2 e 7.3), `[BUSCAR]` (8.2), `[resultado do kappa]` (11.2) e a proposta de valor entre colchetes no cap. 4. Sugestão: gerar ou cortar as duas figuras do cap. 7; deixar para o fim só o kappa e a proposta de valor.
 
 **D45 — Páginas do TMin v10 (02/11/2026).** O TMin passou de 59 para 69 páginas: os quadros 10.5 e 10.6 e o Quadro 9.2 com 15 premissas. O cap. 10 já estava acima do teto (C17). Sugestão: levar o Quadro 10.6 ou o 10.5 para apêndice.
@@ -30,7 +28,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D54 — Figura 6.2 com a base antiga do B2 (02/11/2026; Figura 6.1 até o TMin v20).** Cap. 6 (6.3, Figura 6.2: 602 declarações, 352 sem a Bodogami) × 6.3 e cap. 9 (675 declarações de 12 concorrentes, na base de 769 declarações com faixa de preço). Sugestão: regerar a Figura 6.2 com `B2_avaliacoes_periodo.csv` atual e citar as mesmas contagens nos dois parágrafos.
 
-**D55 — "Consumo por pessoa" depois da nova cesta de consumo (02/11/2026).** Cap. 5 (Figura 5.3, "Consumo por pessoa (uma bebida e uma entrada ou prato)") e TMax 5 × `_instrucoes/1b_escrita.md` (P6: cesta de consumo inclui a taxa de entrada, e "consumo por pessoa" não é sinônimo). Sugestão: renomear a figura para "Bebida mais entrada ou prato, mediana por metrópole".
+**D55 — "Consumo por pessoa" depois da nova cesta de consumo (02/11/2026).** Cap. 5 (Figura 5.3, "Consumo por pessoa (uma bebida e uma entrada ou prato)") × `_instrucoes/1b_escrita.md` (P6: cesta de consumo inclui a taxa de entrada, e "consumo por pessoa" não é sinônimo). Sugestão: renomear a figura para "Bebida mais entrada ou prato, mediana por metrópole".
 
 **D56 — Gatilho G1 sem risco correspondente (02/11/2026).** Cap. 10 (Quadro 10.4, G1: pessoas por mesa abaixo de 3) × Quadro 10.2, que deixou de ter o risco de pessoas por mesa: no modelo novo, as pessoas por mesa só limitam o salão. Sugestão: tirar o G1 ou ligá-lo ao gasto por pessoa (grupos pequenos consomem menos por mesa).
 
@@ -42,8 +40,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 
 - **Giro e taxa de ocupação no vocabulário (31/10/2026; revisto em 02/11/2026).** `_instrucoes/1b_escrita.md` (P6) mantém giro e taxa de ocupação, mas o modelo do cap. 9 deixou os dois de fora da receita: a demanda é a circulação no pico × horas de pico equivalentes, e o giro só confere o salão (cap. 3). Sugestão: no P6, marcar giro e taxa de ocupação como medidas de conferência, não de receita.
-- **Figuras só no TMin (31/10/2026).** O TMin tem as Figuras 5.1 a 5.4, 6.1 e 9.1 (Selic), com o tornado como Figura 9.2; o TMax segue só com o tornado como Figura 9.1, mas o cap. 10, comum às duas versões, já remete à "Figura 9.2".
-- **Seções renumeradas no TMin (31/10/2026).** No TMin, o cap. 2 vai de 2.1 a 2.5 e o cap. 3 de 3.1 a 3.6; no TMax, seguem de 2.1 a 2.6 e de 3.1 a 3.7. Remissões entre capítulos a essas seções ficam diferentes nas duas versões.
 **D02 — Objetivos e seções da introdução fora da estrutura.** Cap. 1 (1.1) × `1_estrutura.md` (1.3). O cap. 1 tem 7 objetivos específicos; a instrução permite no máximo 6, um por decisão, cada um respondido em 11.2. Os itens (vi) e (vii) cabem em um só (o (vi) da proposta da instrução). As seções também divergem: o cap. 1 tem 1.1 Objetivos, 1.2 Justificativa e 1.3 Estrutura; a instrução prevê 1.1 Contextualização, 1.2 Problema e oportunidade, 1.3 Objetivos, 1.4 Justificativa e 1.5 Estrutura. Sugestão: fundir (vi) e (vii) e renumerar, ou ajustar a instrução.
 
 **D03 — "Única luderia em operação" × "única no recorte".** Cap. 1 (contextualização) × cap. 5 (5.3.3, Tabela 5.1). O cap. 1 afirma que a São Jogue é a única luderia em operação em Salvador; o cap. 5 diz "única no recorte", com 13 resultados na busca, 7 acima de 100 avaliações e 1 aprovado na curadoria. A afirmação do cap. 1 é mais forte que o dado. Sugestão: "a única luderia de Salvador com mais de 100 avaliações no Google Maps (Bloco B1, 2026)". Em 31/10, o cap. 3 (3.3.3) também diz "única luderia de Salvador".
@@ -72,8 +68,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D33 — Equipe de 12 no modelo × 8 no cap. 7.** Cap. 9 (9.4, C06, Tabela 9.2) × caps. 7 (7.5, Quadro 7.2), 10 (Quadros 10.2 e 10.3), 4 (Quadro 4.1) e 11 (11.1). O modelo usa o quadro de referência de 12 pessoas; o cap. 7 dimensiona 8 pelo fluxo do B3, e os caps. 4, 10 e 11 trazem as duas versões. Sugestão: quando o autor decidir a equipe, levar a escolha ao `gerar_modelo_financeiro.py` e deixar uma só versão nos cinco capítulos.
 
-**D35 — Preço de entrada abaixo ou acima da média.** Cap. 5 (5.2.1, TMax: "o preço de entrada da luderia precisa ficar abaixo da média das metrópoles") × cap. 6 (6.3: R$ 28,00 no fim de semana, acima da mediana de R$ 25,00). Pela precedência, vale o cap. 6. O TMin do cap. 5 já diz só que a renda menor pesa na definição do preço. Sugestão: no TMax, a mesma redação do TMin.
-
 **D48 — Referência do Sebrae (02/11/2026).** Cap. 1 ("SEBRAE, 2026") × fonte. A referência "Jogos de tabuleiro movimentaram R$ 53 bilhões em 2024. Agência de Notícias do Sebrae, 2026" tem o título de uma matéria do Estado de Minas (jul. 2026); a matéria da Agência Sebrae com o número ("Mercado de jogos de tabuleiro avança no Brasil, apesar dos grandes desafios") traz data de 24 maio 2023, e o valor é da Statista, para o mercado mundial. Sugestão: citar a matéria da Agência Sebrae (ou a Statista) com o título e a data reais, e o link.
 
 **D38 — Números que mudam entre capítulos (02/11/2026).** 7.5 (48 pessoas por dia) × 4.5, 7.2 e 9.4 (51); 5.3.3 e 6.3 ("22 dos 53") × B1 com 54; 5.3.3 (taxa de R$ 5,00 a R$ 40,00) × Tabela 6.1 (Encounter a R$ 45,00); 8.1 (o MEI "não comporta [...] o quadro de 12 empregados") × Quadro 7.2 (6 pessoas); aluguel pessimista de R$ 64,36 (6.4) × R$ 64,35 (Quadro 9.2); "15 dos 22" que diferenciam o preço (6.3) × 16 na Tabela 6.1 (17 com a BoardZ, que não cobra entrada), que tem 24 linhas. Sugestão: tirar todos do modelo do cap. 9 e do B1 regerados.
@@ -84,7 +78,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D62 — Mattar sem edição e ano (03/11/2026).** Cap. 3 (3.1 e 3.3) e referências. Os slides de Mattar na pasta não trazem a edição; a citação está como (MATTAR, [AV ano], cap. 5 e 6). Conferir a edição do v. 1 (Atlas) e trocar o marcador pelo ano.
 
-**D63 — Pfeffer e Sutton sem página (03/11/2026).** Cap. 2 (2.5) e TMax (2.1). A gestão baseada em evidências passou de Figueiredo (2020) para Pfeffer e Sutton (2006), livro fora da pasta e sem PDF legal localizado; as duas citações ficam `[AV]` até o autor conferir as páginas.
+**D63 — Pfeffer e Sutton sem página (03/11/2026).** Cap. 2 (2.5). A gestão baseada em evidências passou de Figueiredo (2020) para Pfeffer e Sutton (2006), livro fora da pasta e sem PDF legal localizado; as duas citações ficam `[AV]` até o autor conferir as páginas.
 
 **D62 — BDI e TCU sem sigla no Apêndice E (03/11/2026).** A fonte da I01 no Apêndice E (vinda de `gerar_modelo_financeiro.py`) usa "BDI" e "TCU", que o texto principal escreve por extenso e a lista de siglas não traz.
 
@@ -94,7 +88,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D37 — Erros de digitação no cap. 1 (02/11/2026).** §2 da introdução: "São Paul" (São Paulo).
 
-- **Fitzsimmons no TMax, cap. 2 (31/10/2026).** A citação da capacidade perecível (§ do 2.x) segue sem página, enquanto o TMin cita as p. 152–156 e 406–410.
 **D14 — Formatação de referências repetidas.** Caps. 1, 2 e 5. Sebrae: "Agência de Notícias do Sebrae" (cap. 1) × "Agência Sebrae de Notícias" (cap. 5). Abrinq sem local no cap. 1 e com local no cap. 5. Resolve-se na lista única de referências.
 
 **D15 — Travessão e linha de fonte.** O cap. 1 usa hífen com espaços ( - ) como travessão; os caps. 2 e 5 usam travessão (—). O cap. 2 escreve "Fonte: elaborado pelo autor."; o cap. 5, "Fonte: elaborado pelo próprio autor com base em…". Padronizar na revisão de forma.

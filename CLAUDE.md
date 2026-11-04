@@ -4,17 +4,17 @@ TCC em formato **plano de negócios baseado em evidências** para uma luderia/lu
 
 ## Mapa dos arquivos de instrução
 
-Ler este arquivo e o [AGORA.md](AGORA.md) sempre; não carregar documentação ou arquivos grandes por padrão. Estrutura da documentação segue `../_shared/docs-standards.md`. Ler os demais sob demanda, conforme a tarefa (roteiro por tarefa no [README.md](README.md), "Por onde começar"). A numeração é a ordem de leitura, não o número do capítulo.
+Ler este arquivo e o [AGORA.md](AGORA.md) sempre; não carregar documentação ou arquivos grandes por padrão. **Arquivos grandes** (`docs/decisoes.md`, `docs/pendencias.md`, `docs/melhorias-texto.md`, `_instrucoes/4_metodologia.md`, os registros em `docs/_arquivo/` e os capítulos de `textos/capitulos/_md/`) nunca são abertos inteiros: buscar por termo, data ou ID (`grep -n`) e ler só o trecho (`offset`/`limit`). Estrutura da documentação segue `../_shared/docs-standards.md`. Ler os demais sob demanda, conforme a tarefa (roteiro por tarefa no [README.md](README.md), "Por onde começar"). A numeração é a ordem de leitura, não o número do capítulo.
 
 | Arquivo | Quando ler |
 |---|---|
 | [_instrucoes/1_estrutura.md](_instrucoes/1_estrutura.md) | Visão do todo; tarefa com mais de um capítulo; caps. 1, 4 e 11 (sem arquivo próprio); teto de páginas |
 | [_instrucoes/1a_principios.md](_instrucoes/1a_principios.md) | Hierarquias de fontes, dados e focos (P1 a P3); precedência dos caps. 6 e 8; personalização da estrutura (P4); desenho enxuto, MVP (P7) |
 | [_instrucoes/1b_escrita.md](_instrucoes/1b_escrita.md) | Qualquer prosa do TCC: regras de escrita (P5) e vocabulário controlado (P6) |
-| [_instrucoes/1c_versoes.md](_instrucoes/1c_versoes.md) | TMax/TMin, DMax/DMin, numeração `_v<n>` e `_arquivo/` |
+| [_instrucoes/1c_versoes.md](_instrucoes/1c_versoes.md) | TMin, DMax/DMin, numeração `_v<n>` e `_arquivo/`; `.md` como fonte única do texto |
 | [_instrucoes/1d_formatacao.md](_instrucoes/1d_formatacao.md) | Gerar ou revisar `.docx` e `.pdf` (suplementar à skill `formatacao-texto-ufba`) |
 | [_instrucoes/2_ref-teorico.md](_instrucoes/2_ref-teorico.md) | Cap. 2 — escrita, citação, subcapítulos (lista de leitura em `bibliografia/_lista-de-leitura_TMin_v2.md`) |
-| [_instrucoes/4_metodologia.md](_instrucoes/4_metodologia.md) | Cap. 3 — instrumentos de coleta, blocos de dados, matriz de evidências |
+| [_instrucoes/4_metodologia.md](_instrucoes/4_metodologia.md) | Cap. 3 — instrumentos de coleta, blocos de dados, matriz de evidências (protocolos de validação e auditoria em `textos/instrumentos/protocolo_validacao_coleta.md`, só para coleta ou auditoria) |
 | [_instrucoes/3_mercado.md](_instrucoes/3_mercado.md) | Cap. 5 — análise de mercado |
 | [_instrucoes/5_marketing.md](_instrucoes/5_marketing.md) | Cap. 6 — marketing e estimativa de demanda |
 | [_instrucoes/7_operacional.md](_instrucoes/7_operacional.md) | Cap. 7 — plano operacional |
@@ -46,46 +46,53 @@ Ler este arquivo e o [AGORA.md](AGORA.md) sempre; não carregar documentação o
 
 ## Registro de alterações
 
-Arquivo: [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md) (formato no topo). Registros novos entram no fim, sob `## AAAA/MM/DD` (criado se não existir), com a hora (`### HH:mm`) tirada de `date`, no mesmo commit da mudança.
+Arquivo: [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md) (formato no topo), só para o que o git não guarda. Entradas no fim, sob `## AAAA/MM/DD`, com a hora (`### HH:mm`) tirada de `date`, no mesmo commit da mudança.
 
-1. **TODA VEZ** que uma ação mudar qualquer arquivo do projeto **ou qualquer banco de dados do Notion**, registrar data, hora, **Objeto**, **Antes**, **Depois** e **Justificativa**.
-2. **TODA VEZ** que aparecer informação divergente entre documentos ainda sem registro, registrar data, **Objeto**, **Antes** (arquivo mais antigo), **Depois** (mais recente) e **Efeitos colaterais**. Registrar a divergência não autoriza corrigi-la sem pedido do autor.
+1. Mudança em **banco de dados do Notion**: data, hora, **Objeto**, **Antes**, **Depois** e **Justificativa**.
+2. **Informação divergente entre documentos** ainda sem registro: data, **Objeto**, **Antes** (arquivo mais antigo), **Depois** (mais recente) e **Efeitos colaterais**. Registrar a divergência não autoriza corrigi-la sem pedido do autor.
 
-Exceção: as notas de estudo em `docs/notas/` (skill `/traduza` ou `==termo==`) não entram no registro; entram só no commit de fim de sessão.
+Mudança em arquivo do projeto não entra no registro: fica na mensagem do commit.
 
 ## Melhorias do texto
 
-**TODA VEZ** que um capítulo for gerado, ou que o autor implementar ou pedir aprimoramento de um capítulo já escrito, analisar esse capítulo junto com os demais de `textos/capitulos/_md/` (e `TMax/_md/`) (e as regras de `_instrucoes/`) e atualizar [docs/melhorias-texto.md](docs/melhorias-texto.md), no mesmo commit:
+**TODA VEZ** que um capítulo for gerado, ou que o autor implementar ou pedir aprimoramento de um capítulo já escrito, analisar esse capítulo junto com os demais de `textos/capitulos/_md/` (e as regras de `_instrucoes/`) e atualizar [docs/melhorias-texto.md](docs/melhorias-texto.md), no mesmo commit:
 
 - **# Divergências** (`## Grave`, `## Média`, `## Aceitável`): informações, citações ou uso de técnicas, modelos e métodos que divergem entre capítulos ou contra as instruções.
 - **# Cortes em potencial** (`## Alto ganho`, `## Médio ganho`, `## Baixo ganho`): trechos que podem sair sem perder qualidade, profundidade ou clareza (repetidos em vários pontos, ou que perderam importância no todo do trabalho).
 
 Item resolvido sai do arquivo. Listar uma divergência não autoriza corrigi-la no capítulo sem pedido do autor.
 
+## Fluxo de trabalho até a banca
+
+- **Escopo congelado:** só entra trabalho que muda número, texto ou decisão do TMin. Coleta, auditoria, site e recoleta que não mudam o TMin vão para "Depois da banca", em `docs/pendencias.md`.
+- **No máximo duas frentes** em "Fazendo agora" no AGORA.md. Frente nova só entra quando uma sai.
+- **Decisões do autor em lote:** toda decisão que depende do autor entra como pergunta fechada (opções e recomendação) em "Lote de decisões", no topo de `docs/pendencias.md`, e não é perguntada de novo a cada sessão.
+- **Pendência sem solução possível** (ex.: dado do B3 que só uma nova visita traria) vira limitação no texto (3.6) e sai das pendências.
+- **Gatilho por entrega:** pré-textuais, apêndices e PDF só são regerados no fechamento de uma versão para a orientação, não a cada ajuste.
+
+## Formato das respostas
+
+Abrir pelo efeito no plano: que decisão, premissa ou número do TMin muda; depois, os capítulos a ajustar (alerta da P3 quando mudar o cap. 6 ou o 8) e o que ficou sem verificar. Não relatar o passo a passo do que foi feito.
+
 ## Fim de sessão
 
-Antes do commit, atualizar:
-
-1. [AGORA.md](AGORA.md): o que está em andamento, os próximos 3 passos e o que está bloqueado (no máximo uma tela).
-2. `docs/decisoes.md`: uma linha no topo para cada decisão tomada na sessão.
-3. `docs/pendencias.md`: dúvida, ideia ou decisão em aberto que surgiu; item resolvido sai.
-4. `textos/planejamento/status_capitulos.md`, se algum capítulo mudou; checklist do cronograma, se alguma tarefa terminou.
-5. Depois do commit, rodar `_src/extras/sincronizar_vault.sh`: copia `docs/`, `textos/` e `bibliografia/` para o vault do Obsidian (só leitura no celular, sentido único).
+1. **Sempre:** atualizar o [AGORA.md](AGORA.md) (no máximo duas frentes, os próximos 3 passos e o que está bloqueado, em uma tela) e fazer o commit com push. O hook `post-commit` do git roda `_src/extras/sincronizar_vault.sh` sozinho (cópia de `docs/`, `textos/` e `bibliografia/` para o vault do Obsidian, sentido único).
+2. **Só quando houver o que registrar:** `docs/decisoes.md` (uma linha no topo por decisão tomada), `docs/pendencias.md` (item novo ou resolvido) e `textos/planejamento/status_capitulos.md` (capítulo que mudou de estado) e o checklist do cronograma (tarefa concluída).
 
 ## Princípios
 
 - **Escrita:** skill `meu-estilo-escrita` para qualquer prosa do TCC, mais as regras de escrita e o vocabulário controlado de `_instrucoes/1b_escrita.md` (P5 e P6).
-- **Extensão:** no máximo 90 páginas, com teto por capítulo em `_instrucoes/1_estrutura.md`. Testes de hipótese H1–H9 e Monte Carlo são extras, só se sobrar tempo.
+- **Extensão:** no máximo 90 páginas, com teto por capítulo em `_instrucoes/1_estrutura.md`. Testes de hipótese H1–H9 são extra, só se sobrar tempo; o Monte Carlo está no Apêndice G.
 - **Tabela agregada fecha com o total.** Cada unidade (place_id, avaliação, jogo) conta em **um único grupo**, atribuído por atributo próprio (ex.: UF do endereço), nunca pelo contexto da coleta. Antes de entregar, somar as linhas e comparar com o total (diferença zero); vale também ao rodar de novo um script existente. Contagem não exclusiva por desenho fica declarada no nome da coluna e na docstring, sem total como soma.
 - **Precedência dos caps. 6 e 8:** em divergência entre capítulos, valem o Plano de Marketing (cap. 6) e os Aspectos Jurídicos (cap. 8), que moldam o negócio; os demais (7, 9 e os que dependem deles) só o tornam viável. Toda mudança nos caps. 6 ou 8 gera alerta imediato ao autor sobre os capítulos a ajustar. Detalhes em `_instrucoes/1a_principios.md` (P3).
 - **Decisão antes de descrição:** todo resultado responde "que decisão do plano isso muda?". Se nenhuma, vai para apêndice ou sai.
-- **Nada de número sem fonte** (instituição, base, recorte, data). **Nada de referência inventada:** obra não conferida ou citação com página a conferir fica `[AV]` (a verificar).
+- **Nada de número sem fonte** (instituição, base, recorte, data). **Nada de referência inventada:** obra não conferida ou citação com página a conferir fica `[AV]` (a verificar), em vermelho e em citação direta até o autor conferir; o ciclo (vermelho → preto = conferida → citação indireta) está em `_instrucoes/10_biblio-apendices.md`.
 - **Desenho enxuto (MVP):** o plano projeta uma versão menor que a São Jogue (6 mesas; terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h; 2 cozinheiros-chefes, instrutores de tempo integral e um de meio período), para reduzir o risco de giro, ocupação e horário fora do pico; a São Jogue é referência de comportamento, não de porte. Detalhes em `_instrucoes/1a_principios.md` (P7).
 - **Incerteza declarada:** estimativas com faixa (pessimista/provável/otimista) e nível de evidência.
 - **Sem questionários** de opinião ou intenção; preferir fontes secundárias e primárias comportamentais.
 - **Normas:** ABNT (detalhes em `_instrucoes/10_biblio-apendices.md`). Instituição: UFBA.
 - **Idioma:** português do Brasil no texto, nos comentários do código e nos nomes de arquivos de saída.
-- **Só a versão atual como contexto (pedido do autor em 03/11/2026):** ao buscar ou usar contexto, ler só a versão mais atual de cada arquivo (`.md`, `.pdf`, `.docx`, `.xlsx`, `.csv` etc.): a que está fora de `_arquivo/` e de `arquivados/`, com o maior `_v<n>` ou, quando a versão está na data e hora do nome (`AAAA-MM-DD_HHmm_…`), a mais recente. Versões anteriores, `_arquivo/`, `arquivados/` e o histórico do git só entram com pedido **explícito** do autor; não abrir nem citar para comparar, conferir ou completar. Não vale para coletas de datas diferentes que não substituem umas às outras (ex.: perfis distintos de rede social) nem muda a lógica dos scripts, que escolhem seus insumos sozinhos. Detalhes em `_instrucoes/1c_versoes.md`.
-- **Versões:** TMin (conciso, padrão, `textos/capitulos/`, com os `.md` em `_md/`) e TMax (completo, `textos/capitulos/TMax/`, só os capítulos que diferem); DMax e DMin para os dados agregados; `.docx` e `.pdf` numerados `_v<n>`, com as versões antigas em `_arquivo/`. Regras em `_instrucoes/1c_versoes.md`. Apêndices do TMin num `.docx` separado, regerado e conferido a cada nova versão do principal (`_src/extras/gerar_apendices_tmin.py`), e pré-textuais (listas e sumário) refeitos a cada versão (`gerar_pretextuais_tmin.py`; regras em `1c_versoes.md`). Formatação dos `.docx` e `.pdf`: skill `formatacao-texto-ufba` mais `_instrucoes/1d_formatacao.md`, que prevalece. Escolha de obras citadas: `_instrucoes/2_ref-teorico.md`, com prioridade para as obras da pasta `bibliografia/` e, para conceitos e fórmulas, várias citações de um mesmo livro-texto da área em vez de uma obra por conceito.
-- **Pastas enxutas:** nenhuma pasta com mais de cerca de 10 itens soltos na raiz; ao criar arquivos ou pastas, agrupar em subpastas por etapa ou tema (ex.: amostragem, curadoria, aprovadas, cardápios, redes sociais). Pedido do autor em 12/10/2026: abrir a pasta e ver dezenas de arquivos de uma vez sobrecarrega.
+- **Só a versão atual como contexto:** ao buscar ou usar contexto, ler só a versão mais atual de cada arquivo (`.md`, `.pdf`, `.docx`, `.xlsx`, `.csv` etc.): a que está fora de `_arquivo/` e de `arquivados/`, com o maior `_v<n>` ou, quando a versão está na data e hora do nome (`AAAA-MM-DD_HHmm_…`), a mais recente. Versões anteriores, `_arquivo/`, `arquivados/` e o histórico do git só entram com pedido **explícito** do autor; não abrir nem citar para comparar, conferir ou completar. Não vale para coletas de datas diferentes que não substituem umas às outras (ex.: perfis distintos de rede social) nem muda a lógica dos scripts, que escolhem seus insumos sozinhos. Detalhes em `_instrucoes/1c_versoes.md`.
+- **Versões:** o texto tem uma só versão, o TMin (`textos/capitulos/`, com os `.md` em `_md/`, fonte única do texto: o autor comenta no `.docx`, o Claude aplica no `.md` e regera, sem pares original/revisado com "*"); DMax e DMin para os dados agregados; `.docx` e `.pdf` numerados `_v<n>`, com as versões antigas em `_arquivo/`. Regras em `_instrucoes/1c_versoes.md`. Apêndices do TMin num `.docx` separado, regerado e conferido a cada nova versão do principal (`_src/extras/gerar_apendices_tmin.py`), e pré-textuais (listas e sumário) refeitos a cada versão (`gerar_pretextuais_tmin.py`; regras em `1c_versoes.md`). Formatação dos `.docx` e `.pdf`: skill `formatacao-texto-ufba` mais `_instrucoes/1d_formatacao.md`, que prevalece. Escolha de obras citadas: `_instrucoes/2_ref-teorico.md`, com prioridade para as obras da pasta `bibliografia/` e, para conceitos e fórmulas, várias citações de um mesmo livro-texto da área em vez de uma obra por conceito.
+- **Pastas enxutas:** nenhuma pasta com mais de cerca de 10 itens soltos na raiz; ao criar arquivos ou pastas, agrupar em subpastas por etapa ou tema (ex.: amostragem, curadoria, aprovadas, cardápios, redes sociais).
 - **Nome de arquivo de coleta de rede social:** `AAAA-MM-DD_<estabelecimento>_instagram_<perfis|posts>.csv`, em `redes_sociais/rs_<cidade>/rs_<perfil>/`; listas do snowball, `AAAA-MM-DD_<perfil>_instagram_seguindo.csv`, em `_dados-brutos/redes_sociais/seguindo/` (fora do git: trazem @ de pessoas físicas). Cardápios originais em `_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/`. A cidade é a capital da região metropolitana do endereço. Demais convenções: `_src/dicionario.md`.

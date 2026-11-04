@@ -104,6 +104,7 @@ O método mede bem os concorrentes estabelecidos e o movimento máximo da São J
 | Recorte de três meses e corte de 100 avaliações | Sem sazonalidade; casas novas fora | Sazonalidade como premissa com faixa |
 | Contagem em um só estabelecimento, em quatro noites de pico | Ocupação acima da média da semana | Contagem como limite superior; notas como piso |
 | NFC-e só a pedido, um intervalo por unidade | Vendas subestimadas; sem variação do mês | Notas como limite inferior, em faixa |
+| Registros incompletos nas visitas (nota fiscal do início, contagem de mesas a cada 30 minutos, quem já estava no salão na chegada) | Pessoas por nota sem medida em parte das visitas; circulação da visita de 10/10 subcontada | Circulação pela porta e pelos grupos de mesa; dado faltante declarado, sem imputação |
 | Falhas do script e erro de codificação | Registros perdidos; viés nos temas | Auditoria com IC 95%; recodificação cega |
 | FipeZap por cidade e POF de 2017-2018 | Aluguel sem bairro; valores defasados | Faixa larga; correção pelo IPCA; cotação do ponto |
 

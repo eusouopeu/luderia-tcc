@@ -1,7 +1,7 @@
 # Estrutura do TCC
 
 
-**Título do trabalho (02/11/2026, decisão do autor):** *Dados em jogo: plano de negócios baseado em evidências para uma luderia em Salvador*.
+**Título do trabalho:** *Dados em jogo: plano de negócios baseado em evidências para uma luderia em Salvador*.
 
 ## Descrição geral
 
@@ -17,7 +17,7 @@ Princípios gerais: ver [../CLAUDE.md](../CLAUDE.md). Este arquivo traz a visão
 |---|---|
 | [1a_principios.md](1a_principios.md) | P1 a P4: hierarquias de fontes, de tipos de dados e de focos; precedência dos caps. 6 e 8; personalização da estrutura |
 | [1b_escrita.md](1b_escrita.md) | P5 e P6: regras de escrita e vocabulário controlado |
-| [1c_versoes.md](1c_versoes.md) | TMax e TMin, DMax e DMin, numeração `_v<n>` e pastas `_arquivo/` |
+| [1c_versoes.md](1c_versoes.md) | TMin, DMax e DMin, numeração `_v<n>`, pastas `_arquivo/` e `.md` como fonte única |
 | [1d_formatacao.md](1d_formatacao.md) | Formatação dos `.docx` e `.pdf`, suplementar à skill `formatacao-texto-ufba` |
 
 ## Extensão: no máximo 90 páginas
@@ -79,7 +79,7 @@ Cada capítulo com arquivo de instrução próprio aponta para ele. Capítulos s
 - **2.4 Ambiente de serviço e capacidade** — ambiente físico, capacidade perecível, lei de Little.
 - **2.5 Viabilidade e decisão sob incerteza** — VPL, TIR, payback, ponto de equilíbrio, gestão baseada em evidências, cenários, sensibilidade.
 
-Evidência empírica de outros contextos (estudos de luderias, de jogadores e do segmento) vai para o cap. 5, não para o cap. 2 (pedido do autor em 02/11/2026).
+Evidência empírica de outros contextos (estudos de luderias, de jogadores e do segmento) vai para o cap. 5, não para o cap. 2.
 
 ### 3. Metodologia → [4_metodologia.md](4_metodologia.md)
 
@@ -97,7 +97,7 @@ A matriz de evidências (decisão → pergunta → dado → fonte → confiança
 
 Escrito por último, em até duas páginas. Não traz informação que não esteja no restante do plano.
 
-Texto corrido, sem títulos de seção (pedido do autor em 02/11/2026). Empreendedor e missão, visão e valores saíram do TMin. Conteúdo, em ordem:
+Texto corrido, sem títulos de seção. Empreendedor e missão, visão e valores saíram do TMin. Conteúdo, em ordem:
 
 - **Conceito do negócio** — o que é, para quem, proposta de valor em uma frase.
 - **Empreendedor** — perfil e competências relevantes.
@@ -114,7 +114,7 @@ Texto corrido, sem títulos de seção (pedido do autor em 02/11/2026). Empreend
 - **5.4 Fornecedores** — jogos, A&B, mobiliário.
 - **5.5 Macroambiente (PESTEL)** — as seis dimensões, sem subseções.
 
-No TMin, 5.2 e 5.5 não têm subseções, e a 5.3 abre com os concorrentes das 14 metrópoles antes das subseções (pedido do autor em 02/11/2026).
+No TMin, 5.2 e 5.5 não têm subseções, e a 5.3 abre com os concorrentes das 14 metrópoles antes das subseções.
 
 ### 6. Plano de Marketing → [5_marketing.md](5_marketing.md)
 
@@ -150,7 +150,7 @@ No TMin, 5.2 e 5.5 não têm subseções, e a 5.3 abre com os concorrentes das 1
 - **9.7 Triangulação, sensibilidade e ponto de ruptura** — Monte Carlo é extra, só se sobrar tempo.
 - **9.8 Checagens de coerência**
 
-No TMin, desde 02/11/2026 (pedido do autor): 9.1 Registro de premissas (a árvore de direcionadores abre o capítulo, sem título), 9.2 Investimento inicial, 9.3 Receitas, custos e resultados projetados (com a DRE e o fluxo de caixa), 9.4 Indicadores de viabilidade, 9.5 Triangulação, sensibilidade e ponto de ruptura (sem subseções), 9.6 Checagens de coerência. O TMax segue a numeração acima.
+No TMin: 9.1 Registro de premissas (a árvore de direcionadores abre o capítulo, sem título), 9.2 Investimento inicial, 9.3 Receitas, custos e resultados projetados (com a DRE e o fluxo de caixa), 9.4 Indicadores de viabilidade, 9.5 Triangulação, sensibilidade e ponto de ruptura (sem subseções), 9.6 Checagens de coerência. O TMax segue a numeração acima.
 
 ### 10. Análise Estratégica e de Riscos → [9_anal-riscos.md](9_anal-riscos.md)
 
@@ -160,7 +160,7 @@ No TMin, desde 02/11/2026 (pedido do autor): 9.1 Registro de premissas (a árvor
 - **10.4 Matriz de riscos**
 - **10.5 Plano de contingência e indicadores de monitoramento**
 
-No TMin, desde 02/11/2026: a matriz de riscos entra na 10.3 (Premissas críticas, ruptura e riscos), e a contingência vira 10.4.
+No TMin: a matriz de riscos entra na 10.3 (Premissas críticas, ruptura e riscos), e a contingência vira 10.4.
 
 ### 11. Considerações Finais — *sem arquivo próprio*
 
@@ -170,6 +170,6 @@ No TMin, desde 02/11/2026: a matriz de riscos entra na 10.3 (Premissas críticas
 - **11.4 Próximos passos** — validações a fazer antes de investir (ex.: evento piloto, cotação de ponto).
 - **11.5 Estudos futuros** — pesquisa que ficou fora do escopo (ex.: histórico completo de avaliações, sem o recorte de três meses; histórico dos avaliadores; comparação entre modelos de alimentos e bebidas).
 
-No TMin, desde 02/11/2026: o parecer abre o capítulo, sem título; 11.1 Síntese dos objetivos; 11.2 Limitações e próximos passos (próximos passos em uma frase com remissão à 10.4, estudos futuros num parágrafo).
+No TMin: o parecer abre o capítulo, sem título; 11.1 Síntese dos objetivos; 11.2 Limitações e próximos passos (próximos passos em uma frase com remissão à 10.4, estudos futuros num parágrafo).
 
 ### Referências, Apêndices e Anexos → [10_biblio-apendices.md](10_biblio-apendices.md)

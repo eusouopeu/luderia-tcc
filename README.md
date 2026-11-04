@@ -9,7 +9,7 @@ Todo número do texto pode ser gerado de novo por um script deste repositório. 
 | Pasta | Conteúdo |
 |---|---|
 | [`AGORA.md`](AGORA.md) | O que está em andamento, os próximos 3 passos e o que está bloqueado |
-| `textos/capitulos/` | Capítulos do TCC (TMin, padrão: `.md` em `_md/`, `.docx` e PDF na raiz), suas figuras e o TMax em `TMax/` (só os capítulos que diferem) |
+| `textos/capitulos/` | Capítulos do TCC (TMin: `.md` em `_md/`, fonte única do texto; `.docx` e PDF na raiz) e suas figuras |
 | `textos/planejamento/` | Cronograma, status dos capítulos, projeto de pesquisa e registro prévio |
 | `textos/instrumentos/` | Roteiro de observação, livro de códigos da análise de conteúdo e quadro de itens |
 | `_instrucoes/` | Instruções por capítulo (ver [CLAUDE.md](CLAUDE.md)) |
@@ -86,4 +86,4 @@ pnpm --dir _src/site-apresentacao dev
 
 - Toda tabela agregada fecha com o total: cada unidade conta em um único grupo, atribuído por atributo próprio.
 - Texto integral de avaliações, respostas de API e cardápios de terceiros não são publicados (`.gitignore`).
-- Mudanças no projeto ficam em [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md).
+- Mudanças em arquivos ficam nas mensagens dos commits; mudanças no Notion e divergências entre documentos, em [docs/registro-de-alteracoes.md](docs/registro-de-alteracoes.md).

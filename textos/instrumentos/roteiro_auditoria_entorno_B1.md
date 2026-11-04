@@ -79,6 +79,6 @@ A tolerância de 50 m cobre a imprecisão do clique e a diferença entre o pino 
 ## 6. Depois da conferência
 
 1. Calcular, por variável, a taxa de erro e o intervalo de Wilson (95%). O critério de aceitação da metodologia é limite superior de até 5%.
-2. Variável reprovada: corrigir o coletor, recoletar o estrato afetado e registrar a mudança em `docs/registro-de-alteracoes.md`.
+2. Variável reprovada: corrigir o coletor, recoletar o estrato afetado e descrever a mudança no commit.
 
 **Limite do desenho:** com 11 casas (20% de 54), zero erros ainda deixam o limite superior de Wilson em 25,9%. O critério de 5% exige pelo menos 73 unidades auditadas. A população tem só 54 casas: nem a auditoria de todas alcança 73. O tamanho da amostra segue aberto em `docs/pendencias.md` (validação proporcional, item 1). Duas saídas: auditar as 54 casas e declarar o limite alcançado, ou usar o item, e não a casa, como unidade da taxa de fidelidade.

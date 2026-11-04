@@ -65,5 +65,5 @@ A matriz SWOT não fica neste capítulo: está em 10.1.
 - Mobiliário e equipamentos.
 
 ### 5.5 Macroambiente (PESTEL)
-- As seis dimensões, na ordem político, econômico, social, tecnológico, ambiental e legal, sem subseções: um parágrafo de abertura lista as dimensões, e o primeiro parágrafo de cada uma começa por "No campo <dimensão>" (modelo do trabalho final do Dance Forrónejo, pedido do autor em 02/11/2026). Dimensão sem efeito relevante tem um parágrafo curto que diz isso (hoje, a ambiental).
+- As seis dimensões, na ordem político, econômico, social, tecnológico, ambiental e legal, sem subseções: um parágrafo de abertura lista as dimensões, e o primeiro parágrafo de cada uma começa por "No campo <dimensão>" (modelo do trabalho final do Dance Forrónejo). Dimensão sem efeito relevante tem um parágrafo curto que diz isso (hoje, a ambiental).
 - Só fatores com efeito concreto sobre o negócio, cada um com fonte; o detalhe jurídico fica no cap. 8.
