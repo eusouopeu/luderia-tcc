@@ -83,12 +83,12 @@ Os gatilhos de perda máxima seguem uma ordem de análise (Quadro 10.4). Os trê
 
 | Gatilho | Condição | Medidas |
 |---|---|---|
-| G1. Pouca gente por mesa | Média de pessoas por mesa abaixo de 3 por 3 meses | Taxa de entrada por mesa, e não por pessoa: cada mesa recebe um só grupo, e quanto maior o grupo, maior o consumo; desconto progressivo na taxa conforme o número de pessoas na mesa |
-| G2. Consumo baixo | Gasto por pessoa abaixo de R$ 63,84, a ruptura da Tabela 9.5, por 3 meses | Taxa de entrada mais cara, revertida em consumação; combos de entrada com bebida |
-| G3. Dia útil fraco | Circulação de terça a quinta abaixo de 60% da do fim de semana por 3 meses | Passaporte mensal com direito a um número de dias e de acompanhantes, vendido para os dias úteis; eventos fechados e aluguel do espaço; se persistir, fechar a terça e refazer a escala |
-| G4. Demanda baixa | Receita abaixo do equilíbrio operacional (R$ 52,5 mil por mês no provável) por 2 meses, sem causa apontada de G1 a G3 | Marketing dirigido a escolas, empresas e grupos de jogos; eventos de comunidade nos dias fracos; reserva com sinal; taxa de entrada menor, com sessão limitada à permanência média das visitas (cerca de 1h50) |
-| G5. Caixa negativo | EBITDA negativo por 3 meses seguidos, ou caixa abaixo de 1 mês de custo fixo | Renegociação do aluguel; suspensão das etapas de expansão; passaporte mensal e pré-venda para antecipar caixa; troca do cardápio por comidas recebidas prontas (salgados como coxinha e quibe), com corte de um cozinheiro |
-| G6. Saída | EBITDA acumulado de 6 meses negativo depois do mês 12, com G5 ativo e as medidas de G1 a G4 já aplicadas | Troca de formato (só eventos, aluguel e venda de jogos, com comidas recebidas prontas) ou encerramento, com venda do acervo e do mobiliário para limitar a perda ao investimento menos o valor de revenda |
+| G1. Pouca gente por mesa | Média de pessoas por mesa abaixo de 3 por 3 meses | → Taxa de entrada por mesa em vez de por pessoa;<br>→ Desconto progressivo na taxa de entrada conforme o número de pessoas na mesa |
+| G2. Consumo baixo | Gasto médio por pessoa abaixo de R$ 63,84 (ruptura, Tabela 9.5) por 3 meses | → Taxa de entrada mais cara, revertida em consumação;<br>→ Combos de entrada com bebidas |
+| G3. Dia útil fraco | Circulação de terça a quinta abaixo de 50% da do fim de semana por 3 meses | → Passaporte mensal com direito a um número de dias e de acompanhantes, vendido para os dias úteis;<br>→ Eventos fechados e aluguel do espaço;<br>→ Se persistir, fechar na terça e reduzir staff |
+| G4. Demanda baixa | Receita abaixo do equilíbrio operacional (R$ 52,5 mil por mês) por 2 meses, sem causa apontada por G1, G2 ou G3 | → Marketing dirigido a escolas, empresas e grupos de jogos;<br>→ Eventos de comunidade nos dias fracos;<br>→ Reserva com sinal;<br>→ Taxa de entrada mais barata, e redução da sessão para a média vista nas visitas (1h50) |
+| G5. Caixa negativo | EBITDA negativo por 3 meses seguidos, ou caixa abaixo de 1 mês de custo fixo | → Renegociação do aluguel;<br>→ Suspensão das etapas de expansão;<br>→ Passaporte mensal e pré-venda para antecipar caixa;<br>→ Troca do cardápio por comidas recebidas prontas (salgados como coxinha e quibe), com corte de um cozinheiro |
+| G6. Saída | EBITDA acumulado de 6 meses negativo depois do mês 12, com G5 ativo e as medidas de G1 a G4 já aplicadas | → Troca de formato (só eventos, aluguel e venda de jogos, com comidas recebidas prontas);<br>→ Encerramento, com venda do acervo e do mobiliário para limitar a perda ao investimento menos o valor de revenda |
 
 Fonte: elaborado pelo próprio autor. Limites propostos pelo autor (N6), salvo o equilíbrio operacional, do modelo do capítulo 9.
 

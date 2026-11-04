@@ -72,7 +72,7 @@ TBLPR = ('<w:tblPr><w:tblW w:w="9071" w:type="dxa"/><w:tblLook w:val="04A0" w:fi
 
 
 def titulo(t):
-    return ('<w:p><w:pPr><w:pStyle w:val="Title"/><w:keepNext/><w:pageBreakBefore/><w:spacing w:after="480" w:line="360" '
+    return ('<w:p><w:pPr><w:pStyle w:val="Title"/><w:keepNext/><w:pageBreakBefore/><w:spacing w:after="0" w:line="360" '
             'w:lineRule="auto"/><w:ind w:firstLine="0"/><w:jc w:val="left"/></w:pPr>'
             f'<w:r>{RPR.format(b=B(1), sz=24)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>')
 

@@ -8,7 +8,7 @@ capítulos em negrito e caixa alta, seções em caixa alta e subseções em negr
 Uso: python3 _src/extras/gerar_pretextuais_tmin.py textos/capitulos/TCC_luderia_TMin_v<n>.docx
 
 Reescreve o .docx no lugar. Tudo o que vem antes do título "1 INTRODUÇÃO" é
-trocado pelos elementos novos, numa seção própria, sem número de página
+trocado pela capa, pela folha de rosto e pelos elementos novos, numa seção própria, sem número de página
 impresso; a numeração do texto continua a contagem (ABNT NBR 14724). As
 páginas saem do PDF gerado pelo LibreOffice: o script gera o documento com
 páginas provisórias, converte, lê em que página está cada título e legenda,
@@ -113,6 +113,40 @@ def titulo(t, quebra=True):
             '<w:spacing w:before="0" w:after="283" w:line="360" w:lineRule="auto"/><w:ind w:firstLine="0"/><w:jc w:val="center"/></w:pPr>'
             f'<w:r>{rpr(b=True)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>')
 
+# Dados da capa e da folha de rosto (NBR 14724). A capa não entra na contagem das páginas:
+# a folha de rosto é a página 1, e o número só é impresso a partir da introdução.
+AUTOR = "Pedro Caio Feitosa Teles"
+TITULO = "Dados em jogo"
+SUBTITULO = "plano de negócios baseado em evidências para uma luderia em Salvador"
+ORIENTADOR = "Jair Sampaio Soares Junior"
+LOCAL, ANO = "Salvador", "2026"
+NATUREZA = ("Trabalho de Conclusão de Curso apresentado ao curso de Administração da Escola de Administração da "
+            "Universidade Federal da Bahia, como requisito parcial para a obtenção do grau de Bacharel em Administração.")
+
+
+def linha(t, b=False, antes=0, depois=0, jc="center", esq=0, simples=True, quebra=False):
+    return ('<w:p><w:pPr>' + ('<w:pageBreakBefore/>' if quebra else '') +
+            f'<w:spacing w:before="{antes}" w:after="{depois}" w:line="{240 if simples else 360}" w:lineRule="auto"/>'
+            f'<w:ind w:left="{esq}" w:firstLine="0"/><w:jc w:val="{jc}"/></w:pPr>'
+            f'<w:r>{rpr(b)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>')
+
+
+def titulo_trabalho(antes):
+    return ('<w:p><w:pPr>' f'<w:spacing w:before="{antes}" w:after="0" w:line="360" w:lineRule="auto"/><w:ind w:firstLine="0"/><w:jc w:val="center"/></w:pPr>'
+            f'<w:r>{rpr(True)}<w:t xml:space="preserve">{esc(TITULO.upper())}:</w:t></w:r>'
+            f'<w:r>{rpr(False)}<w:br/><w:t xml:space="preserve">{esc(SUBTITULO)}</w:t></w:r></w:p>')
+
+
+def capa_e_rosto():
+    capa = [linha("UNIVERSIDADE FEDERAL DA BAHIA", b=True), linha("ESCOLA DE ADMINISTRAÇÃO", b=True),
+            linha(AUTOR.upper(), antes=2600), titulo_trabalho(2900),
+            linha(LOCAL, antes=4300), linha(ANO)]
+    rosto = [linha(AUTOR.upper(), quebra=True), titulo_trabalho(2900),
+             linha(NATUREZA, antes=2400, jc="both", esq=4536),
+             linha(f"Orientador: {ORIENTADOR}", antes=360, jc="left", esq=4536),
+             linha(LOCAL, antes=2700), linha(ANO)]
+    return "".join(capa + rosto)
+
 
 def entrada(t, pag, b=False, caps=False):
     return ('<w:p><w:pPr><w:tabs><w:tab w:val="right" w:leader="dot" w:pos="9071"/></w:tabs>'
@@ -214,19 +248,25 @@ def main():
     if faltam:
         print("Aviso: siglas sem entrada na lista:", ", ".join(faltam))
 
-    def monta(pf, pq, pt, ps):
-        f = [titulo("LISTA DE FIGURAS", quebra=False)] + [entrada(s, p) for s, p in zip(figs, pf)]
-        f += [titulo("LISTA DE QUADROS")] + [entrada(s, p) for s, p in zip(quads, pq)]
-        f += [titulo("LISTA DE TABELAS")] + [entrada(s, p) for s, p in zip(tabs, pt)]
+    imp = lambda p: p - 1 if isinstance(p, int) else p  # página impressa: a capa não conta
+
+    def monta(pf, pq, pt, ps, ini_num=1):
+        f = [capa_e_rosto(), titulo("LISTA DE FIGURAS")] + [entrada(s, imp(p)) for s, p in zip(figs, pf)]
+        f += [titulo("LISTA DE QUADROS")] + [entrada(s, imp(p)) for s, p in zip(quads, pq)]
+        f += [titulo("LISTA DE TABELAS")] + [entrada(s, imp(p)) for s, p in zip(tabs, pt)]
         f += [titulo("LISTA DE ABREVIAÇÕES E SIGLAS"), tabela_siglas([(s, SIGLAS[s]) for s in usadas])]
         f += [titulo("SUMÁRIO")]
         for (nivel, s), p in zip(sumario, ps):
-            f.append(entrada(s, p, b=nivel in (1, 3), caps=nivel in (1, 2)))
+            f.append(entrada(s, imp(p), b=nivel in (1, 3), caps=nivel in (1, 2)))
         sect = x[x.rfind("<w:sectPr"):x.rfind("</w:sectPr>") + len("</w:sectPr>")]
         sect = re.sub(r"<w:footerReference[^>]*/>", "", sect)
         sect = re.sub(r"<w:pgNumType[^>]*/>", "", sect)
         f.append(f'<w:p><w:pPr>{sect}</w:pPr></w:p>')
-        return x[:ini] + "".join(f) + corpo_xml
+        corpo = re.sub(r"<w:pgNumType[^>]*/>", "", corpo_xml)
+        i = corpo.rfind("<w:pgMar")
+        j = corpo.find("/>", i) + 2
+        corpo = corpo[:j] + f'<w:pgNumType w:start="{ini_num}"/>' + corpo[j:]
+        return x[:ini] + "".join(f) + corpo
 
     def grava(doc, destino):
         with zipfile.ZipFile(destino, "w", zipfile.ZIP_DEFLATED) as zo:
@@ -240,7 +280,7 @@ def main():
         pags = paginas(prov)
         n_pre = next(i for i, p in enumerate(pags) if norm("1 INTRODUÇÃO") in norm(p) and "SUMÁRIO" not in p)
         res = [localiza(l, pags, n_pre) for l in (figs, quads, tabs, [s for _, s in sumario])]
-        doc = monta(*res)
+        doc = monta(*res, ini_num=n_pre)
         grava(doc, prov)
         pags2 = paginas(prov)
         res2 = [localiza(l, pags2, n_pre) for l in (figs, quads, tabs, [s for _, s in sumario])]
@@ -248,7 +288,7 @@ def main():
             raise SystemExit("as páginas mudaram entre as duas conversões; rodar de novo")
     grava(doc, arq)
     print(f"OK: {arq.name}; {len(figs)} figuras, {len(quads)} quadros, {len(tabs)} tabelas, {len(usadas)} siglas, "
-          f"{len(sumario)} entradas no sumário; pré-textuais em {n_pre} páginas; texto da p. {n_pre + 1} à {len(pags2) - 1}")
+          f"{len(sumario)} entradas no sumário; capa e pré-textuais em {n_pre} páginas (a capa não conta); texto da p. {n_pre} à {len(pags2) - 2}")
 
 
 if __name__ == "__main__":

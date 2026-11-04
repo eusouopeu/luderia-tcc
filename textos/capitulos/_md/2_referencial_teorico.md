@@ -1,8 +1,8 @@
 # 2 REFERENCIAL TEÓRICO
 
-O plano de negócios é uma ferramenta de gestão que descreve um empreendimento e delineia sua estratégia de atuação futura. No âmbito de novos empreendimentos, ele também serve para testar a viabilidade econômica do negócio antes do investimento, e para comunicar o valor do projeto para investidores e sócios em potencial (DORNELAS, 2021, p. 6–10).
+O plano de negócios é uma ferramenta de gestão que descreve um empreendimento e delineia sua estratégia de atuação futura. No âmbito de novos empreendimentos, ele serve para testar a viabilidade econômico-financeira do projeto, comunicar valor para investidores e sócios em potencial, e, de modo geral, reduzir o risco de abrir o negócio (DORNELAS, 2021). No Brasil, 25,8% das micro e pequenas empresas fecham nos primeiros cinco anos – 25,9% no setor de serviços (SEBRAE, 2024). Para um empreendimento em um segmento tão recente e com informações de mercado tão escassas, como no caso de uma luderia, o plano precisa declarar as premissas incertas e indicar como testá-las antes do investimento integral.
 
-O plano também reduz o risco de abrir um negócio. No Brasil, 25,8% das micro e pequenas empresas fecham nos primeiros cinco anos – 25,9% no setor de serviços (SEBRAE, 2024). Para a luderia, o plano precisa declarar as premissas incertas e indicar como testá-las antes do investimento integral.
+…
 
 ## 2.1 ECONOMIA DA EXPERIÊNCIA
 

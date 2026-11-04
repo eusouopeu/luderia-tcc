@@ -8,9 +8,9 @@
 // grade completa, preta e de mesma espessura (ABNT), mesmo com números;
 // imagem em linha própria no formato ![texto](caminho relativo ao .md);
 // linhas de citação (>) e comentários HTML de rascunho são omitidos.
-// Regras suplementares de _instrucoes/1d_formatacao.md: título 1 e título de
+// Larguras de coluna pelo conteúdo e <br> na célula para linhas separadas. Regras suplementares de _instrucoes/1d_formatacao.md: título 1 e título de
 // referências à esquerda; título 2 em caixa alta sem negrito; 0,5 cm depois do
-// parágrafo no corpo e nas referências; referências justificadas, com espaçamento
+// parágrafo no corpo e nas referências, e nenhum espaço antes ou depois dos títulos (04/11/2026); referências justificadas, com espaçamento
 // 1,5, e reunidas no fim no trabalho inteiro; células centradas na vertical; coluna
 // de quadro só com palavras únicas centrada; legenda e fonte centralizadas.
 //
@@ -85,17 +85,6 @@ const ENTRELINHA = 360; // 1,5
 const SIMPLES = 240;
 const DEPOIS = Math.round(0.5 * CM); // 0,5 cm depois do parágrafo
 
-// Larguras relativas por cabeçalho de quadro.
-const PESOS = {
-  "Termo": 18, "Definição adotada": 52, "Fonte": 30,
-  "Bloco": 23, "Instrumento": 22, "Procedimento": 36, "Situação": 20,
-  "Código": 8, "Item": 22, "Variável ou categoria": 18, "Fundamentação": 20, "Mensuração ou codificação": 32,
-  "Objetivo específico": 26, "Dimensão": 18, "Variáveis ou categorias": 36, "Itens": 20,
-  "Técnicas": 74,
-  "Posição": 9, "Bairro": 24, "Concorrente": 30, "Capital": 18, "Dia útil": 14, "Fim de semana": 16, "Nota": 9,
-  "ID": 7, "Premissa": 30, "Nível": 10, "Conta": 34, "Indicador": 34, "Direcionador": 20, "Cálculo": 52, "Premissas": 18, "Faixa testada": 16,
-};
-
 // Divide o texto em trechos com **negrito**, *itálico* e `código`.
 function runs(texto, base = {}) {
   const partes = texto.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g).filter(Boolean);
@@ -144,10 +133,42 @@ function legenda(texto, depois = 0) {
 
 const NUM = /^[-−]?(R\$ ?)?[\d.]+(,\d+)?%?$/;
 
+// Larguras das colunas pelo conteúdo: cada coluna recebe, no mínimo, o espaço da maior
+// palavra; o que sobra vai para as colunas de mais texto, na proporção do que falta
+// para caberem em uma linha. Colunas de pouco texto ficam estreitas, e as de muito
+// texto ganham largura e ocupam menos linhas.
+const CHAR = 105, CHAR_NEGRITO = 115, MARGEM = 170; // DXA por caractere (Arial 10) e margens da célula
+function largurasAuto(linhas) {
+  const n = linhas[0].length;
+  const minimo = [], preferido = [];
+  for (let j = 0; j < n; j++) {
+    let maior = 0, palavra = 0;
+    linhas.forEach((l, i) => {
+      const cw = i === 0 ? CHAR_NEGRITO : CHAR;
+      String(l[j] || "").replace(/[*`]/g, "").split("<br>").forEach((trecho) => {
+        maior = Math.max(maior, trecho.length * cw);
+        trecho.split(/\s+/).forEach((w) => { palavra = Math.max(palavra, w.length * cw); });
+      });
+    });
+    minimo.push(palavra + MARGEM);
+    preferido.push(Math.max(maior, palavra) + MARGEM);
+  }
+  const somaMin = minimo.reduce((a, b) => a + b, 0), somaPref = preferido.reduce((a, b) => a + b, 0);
+  let larg;
+  if (somaMin >= LARGURA) larg = minimo.map((m) => (m / somaMin) * LARGURA);
+  else if (somaPref <= LARGURA) larg = preferido.map((p) => (p / somaPref) * LARGURA);
+  else {
+    const falta = preferido.map((p, j) => p - minimo[j]), somaFalta = falta.reduce((a, b) => a + b, 0);
+    larg = minimo.map((m, j) => m + ((LARGURA - somaMin) * falta[j]) / somaFalta);
+  }
+  const inteiras = larg.map(Math.floor);
+  inteiras[n - 1] += LARGURA - inteiras.reduce((a, b) => a + b, 0);
+  return inteiras;
+}
+
 function quadro(linhas, tipo) {
   const cab = linhas[0];
   const numerica = linhas.slice(1).some((l) => l.slice(1).some((c) => NUM.test(c)));
-  const pesos = cab.map((c, j) => PESOS[c] || (j === 0 ? 34 : (numerica ? 14 : 20)));
   // Quadro: coluna em que toda célula tem uma só palavra fica centrada.
   const palavra = (c) => /^\S+$/.test(c.replace(/\*/g, ""));
   const centrada = cab.map((_, j) => !numerica && linhas.slice(1).every((l) => !l[j] || palavra(l[j]))
@@ -156,9 +177,7 @@ function quadro(linhas, tipo) {
     if (i === 0 || centrada[j]) return AlignmentType.CENTER;
     return numerica && NUM.test(celula) ? AlignmentType.RIGHT : AlignmentType.LEFT;
   };
-  const soma = pesos.reduce((a, b) => a + b, 0);
-  const larguras = pesos.map((p) => Math.floor((p / soma) * LARGURA));
-  larguras[larguras.length - 1] += LARGURA - larguras.reduce((a, b) => a + b, 0);
+  const larguras = largurasAuto(linhas);
   const borda = { style: BorderStyle.SINGLE, size: 6, color: "000000" }; // 0,75 pt
   const nada = { style: BorderStyle.NONE, size: 0, color: "FFFFFF" };
   const grade = { top: borda, bottom: borda, left: borda, right: borda };
@@ -179,11 +198,11 @@ function quadro(linhas, tipo) {
         margins: { top: 40, bottom: 40, left: 80, right: 80 },
         verticalAlign: VerticalAlign.CENTER,
         shading: { type: ShadingType.CLEAR, fill: "FFFFFF", color: "auto" },
-        children: [new Paragraph({
-          children: runs(celula, { bold: i === 0, size: TAM_QUADRO }),
+        children: celula.split("<br>").map((trecho) => new Paragraph({
+          children: runs(trecho.trim(), { bold: i === 0, size: TAM_QUADRO }),
           alignment: alinha(celula, i, j),
           spacing: { line: SIMPLES, after: 0 },
-        })],
+        })),
       })),
     })),
   });
@@ -193,7 +212,7 @@ function quadro(linhas, tipo) {
 function titulo1(texto, quebra) {
   return new Paragraph({ heading: HeadingLevel.TITLE, alignment: AlignmentType.LEFT, indent: { firstLine: 0 },
     pageBreakBefore: quebra, keepNext: true, children: runs(texto.toUpperCase(), { bold: true }),
-    spacing: { line: ENTRELINHA, after: 480 } });
+    spacing: { line: ENTRELINHA, before: 0, after: 0 } });
 }
 
 // Referências: espaçamento 1,5, justificadas, sem recuo (_instrucoes/1d_formatacao.md).
@@ -223,10 +242,10 @@ function converte(md, MD, blocos = []) {
       blocos.push(titulo1(l.slice(2), blocos.length > 0));
     } else if (l.startsWith("## ")) {
       blocos.push(new Paragraph({ heading: HeadingLevel.HEADING_1, keepNext: true,
-        children: runs(l.slice(3).toUpperCase(), { bold: false }), spacing: { line: ENTRELINHA, before: 360, after: 240 } }));
+        children: runs(l.slice(3).toUpperCase(), { bold: false }), spacing: { line: ENTRELINHA, before: 0, after: 0 } }));
     } else if (l.startsWith("### ")) {
       blocos.push(new Paragraph({ heading: HeadingLevel.HEADING_2, keepNext: true,
-        children: runs(l.slice(4), { bold: true }), spacing: { line: ENTRELINHA, before: 240, after: 120 } }));
+        children: runs(l.slice(4), { bold: true }), spacing: { line: ENTRELINHA, before: 0, after: 0 } }));
     } else if (/^\*\*Refer[êe]ncias[^*]*\*\*/.test(l.trim())) {
       // "Referências citadas neste capítulo": como o título 1, sem número (só no capítulo avulso).
       referencias = true;
