@@ -28,7 +28,7 @@ Conferir o manual ou as normas complementares da UFBA e do curso, e as orientaç
   - **Legislação:** BRASIL. Lei nº X, de dia de mês de ano. Ementa. *Diário Oficial da União*, ...
   - **Repositório de código:** AUTOR. *Título do repositório*. Ano. Disponível em: URL. Acesso em: ...
 - Referência não conferida fica marcada `[AV]` (a verificar) e não entra na versão final.
-- Citação de conceito com página a conferir leva `[AV-<ID>]`, com o ID da linha do `checklist-conceitos.md` da leva (`bibliografia/leituras-*/`). Quando o autor troca o `[AV]` da linha pela página, o vigia de `_src/extras/conceitos/` põe a página no lugar do marcador em todo o projeto, tira o `[AV]` da obra nas listas de referências e muda VM para VT na matriz de fundamentação. Divergências entre a definição usada e a do autor vão para `bibliografia/relatorio-conceitos.md`.
+- Citação com página a conferir leva `[AV]` junto da citação; o autor troca o marcador pela página quando conferir na obra. (Os checklists de conceitos `[AV-<ID>]` e o vigia que os aplicava foram arquivados em 03/11/2026, em `bibliografia/_arquivo/` e `_src/extras/_arquivo/conceitos/`.)
 
 ## Tabelas, quadros e figuras
 
@@ -73,9 +73,8 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 
 | Cap. | Elemento | Conteúdo mínimo |
 |---|---|---|
-| 3.2 | Quadro — escala N1–N6 | Nível, tipo de fonte, exemplo do plano |
-| 3.3 | Quadro — blocos de dados | Um quadro único para B1 a B4: fonte, recorte, período, uso no plano, limitação. Substitui a descrição em prosa de cada bloco |
-| 3.7 | Quadro — matriz de evidências resumida | Decisão, fonte e nível N (completa no apêndice A) |
+| 3.1 | Quadro — escala N1–N6 | Nível, tipo de fonte, exemplo do plano |
+| 3.2 | Quadro — blocos de dados | Um quadro único para B1 a B5: fonte, recorte, período, uso no plano, limitação. Substitui a descrição em prosa de cada bloco |
 | 5.3 | Tabela — concorrentes por metrópole | Total da busca, total acima do corte de 100 avaliações, avaliação média |
 | 5.3 | Figura — mapa de concorrentes | Metrópoles e Salvador |
 | 5.3 | Quadro — cinco forças | Força, intensidade, evidência |
@@ -84,60 +83,32 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 | 6.2–6.5 | Quadro — composto de marketing | Produto, preço, praça, promoção: decisão e evidência |
 | 6.3 | Tabela — preços praticados | Couvert, consumo por pessoa e cesta completa por metrópole, Salvador em destaque |
 | 6.4 | Quadro — critérios do bairro | Matriz de critérios ponderados, com fonte por critério |
-| 6.6 | Tabela — estimativa de demanda | Visitantes por semana nos três cenários e caminho de cálculo |
+| 6.6 | Tabela — estimativa de demanda | Visitas por mês nos três cenários e caminho de cálculo |
 | 7.2 | Tabela — capacidade | Mesas × lugares × giros, comparadas à demanda |
 | 8 | Quadro — enquadramento jurídico | CNAE, forma jurídica, regime tributário, licenças, com fonte legal |
 | 9.1 | Figura — árvore de direcionadores | Receita e custo até as folhas medidas |
-| 9.2 | Quadro — premissas críticas | Só as 3 a 5 do tornado: faixa, fonte, nível N (registro completo no apêndice B) |
+| 9.2 | Quadro — premissas críticas | Premissas do tornado: faixa, fonte, nível N (registro completo no Apêndice E) |
 | 9.3 | Tabela — investimento inicial | Por grupo de item |
-| 9.5 | Tabela — DRE anual resumida | 5 anos, cenário provável (mensal no apêndice C) |
+| 9.3 | Tabela — DRE e fluxo de caixa | 5 anos, cenário provável, numa só tabela (mensal só no modelo) |
 | 9.6 / 10.2 | Tabela — indicadores por cenário | Investimento, VPL, TIR, payback, ponto de equilíbrio. Uma só tabela, citada nos dois capítulos |
 | 9.7 / 10.3 | Figura — tornado | Com o ponto de ruptura de cada premissa crítica |
 | 10.1 | Quadro — SWOT | Com cruzamento FO, FA, DO, DA resumido |
 | 10.4–10.5 | Quadro — riscos e contingência | Risco, probabilidade × impacto, gatilho, ação. Um só quadro para as duas seções |
 
-### No apêndice (o texto cita só o número-chave)
+### Apêndices do TMin
 
-| Elemento | Onde é citado | Apêndice |
-|---|---|---|
-| Matriz de evidências completa | 3.7 | A |
-| Registro de premissas completo | 9.2 | B |
-| DRE e fluxo de caixa mensais | 9.5 | C |
-| Checagens de coerência | 9.8 | D |
-| Fluxograma de limpeza e critérios de curadoria (`textos/capitulos/figuras/fluxograma_limpeza_B1.*`) | 3.3 | E |
-| Tabela e gráfico de limiares de avaliações (`estabelecimentos/2_recorte/B1_limiares*.csv` e `B1_limiares*.png`); no texto, uma frase com o número do corte | 3.3 | E |
-| Conferência da região metropolitana (`estabelecimentos/1_busca/B1_conferencia_rm.csv`) e termos suspeitos (`estabelecimentos/1_busca/B1_termos_suspeitos.csv`) | 3.4 | E |
-| Cobertura da lista manual (`estabelecimentos/1_busca/B1_cobertura_lista_manual.csv`) | 3.4 | E |
-| Lista dos concorrentes aprovados (nome, metrópole, avaliação, volume; sem texto de avaliações) | 5.3 | E |
-| Itens e preços dos cardápios (`B1_cardapios_itens_precos.xlsx`, resumido por categoria) | 6.2, 6.3 | E |
-| Cesta de jogos e custo do acervo inicial (`B1_cesta_jogos.xlsx`) | 7.2, 9.3 | E |
-| Livro de códigos da análise de conteúdo (`textos/instrumentos/analise_conteudo_bardin_B2.md`), validação e frequências completas por categoria | 3.4, 5.2 | F |
-| Protocolo de observação (`textos/instrumentos/roteiro_observacao_sao_jogue.md`), formato dos dados do app de observação, estrutura das unidades, registros por visita, ocupação do salão, números das NFC-e e checagens de consistência; pedidos como extra | 3.3, 6.6 | G |
-| Tabelas de apoio das bases públicas: população por bairro, salários de admissão por CBO, faixas do Simples Nacional, Selic e IPCA | 6.4, 7.5, 8, 9 | H |
-| Canvas do modelo de negócio e fluxograma dos processos operacionais | 6.1, 7.3 | I |
+Só os apêndices citados no texto, com letras na ordem de citação, num arquivo separado ([1c_versoes.md](1c_versoes.md); `_src/extras/gerar_apendices_tmin.py`). O texto cita só o número-chave.
 
-### Apêndices do TMin (02/11/2026)
+| Apêndice | Conteúdo | Onde é citado | Origem |
+|---|---|---|---|
+| A | Concorrentes do B1: lista dos aprovados (nome, metrópole, avaliação, volume; sem texto de avaliações) | 3 | `dados/[B1] Estabelecimentos e cardapios/` |
+| B | Contagem direta do B3: protocolo, estrutura das unidades, registros por visita, ocupação, NFC-e | 3 | `dados/[B3] Contagem direta de ocupacao/`; `textos/instrumentos/roteiro_observacao_sao_jogue.md` |
+| C | Tabelas de apoio das bases públicas (B4): população por bairro, salários de admissão, faixas do Simples, Selic e IPCA | 3 | `dados/[B4] Bases publicas/` |
+| D | Matriz de evidências | 3 | [4_metodologia.md](4_metodologia.md) |
+| E | Registro de premissas | 4, 6 a 9 | [8_financeiro.md](8_financeiro.md); `gerar_modelo_financeiro.py` |
+| F | Análise de conteúdo das avaliações (B2): grade, frequências, kappa | 6 | `textos/instrumentos/dicionario_temas_B2.md`; `dados/[B2] Avaliacoes recentes/` |
+| G | Simulação de Monte Carlo | 9 | [8_financeiro.md](8_financeiro.md) §4.4 |
 
-No TMin, só os apêndices citados no texto, com letras na ordem de citação: A, concorrentes do B1; B, contagem direta do B3; C, tabelas de apoio do B4; D, matriz de evidências; E, registro de premissas; F, Monte Carlo. Arquivo separado (`1c_versoes.md`). A lista abaixo é o plano completo, do TMax.
+Teto dos apêndices: 9 páginas. O que não couber fica só no repositório, com o link no apêndice que o resume. Testes de hipótese H1–H9, se feitos, entram num apêndice novo, dentro do mesmo teto.
 
-### Apêndices previstos
-
-| Apêndice | Conteúdo | Origem |
-|---|---|---|
-| A | Matriz de evidências completa | [4_metodologia.md](4_metodologia.md) |
-| B | Registro de premissas completo | [8_financeiro.md](8_financeiro.md) |
-| C | Demonstrativos financeiros detalhados (DRE e fluxo de caixa mensais) | Modelo financeiro |
-| D | Checagens de coerência | [8_financeiro.md](8_financeiro.md) §5 |
-| E | Bloco B1 — curadoria, limiares, conferências, lista de concorrentes, cardápios, cesta de jogos e entorno | `dados/[B1] Estabelecimentos e cardapios/B1_*` |
-| F | Bloco B2 — livro de códigos, validação da codificação, frequências por categoria | `dados/[B2] Avaliacoes recentes/B2_*` |
-| G | Bloco B3 — protocolo, formato dos dados do app, registros da contagem direta, ocupação do salão e números das NFC-e | `dados/[B3] Contagem direta de ocupacao/contagem_*`; `_src/[B3]…/Contagem direta/outros/B3_estrutura_unidades.csv` |
-| H | Bloco B4 — tabelas de apoio das bases públicas | `dados/[B4] Bases publicas/` |
-| I | Canvas e fluxograma dos processos | Caps. 6 e 7 |
-| J | Dicionário de variáveis | A criar no repositório |
-| K | Repositório e produto visual — links e instruções de reprodução | README do repositório; `_src/site-apresentacao/` |
-| L | *Extra, se feito:* registro prévio, emendas e testes de hipótese H1–H9 | `textos/planejamento/registro_previo_luderia.md` |
-| M | *Extra, se feito:* simulação de Monte Carlo | [8_financeiro.md](8_financeiro.md) §4.4 |
-
-Teto dos apêndices: 9 páginas, incluindo os extras L e M, se feitos. O que não couber fica só no repositório, com o link no apêndice K.
-
-Testes estatísticos (apêndice L e qualquer teste nos demais): informar técnica, N, estatística do teste, valor-p e tamanho de efeito; resultado não significativo também é reportado.
+Testes estatísticos (se feitos, em qualquer apêndice): informar técnica, N, estatística do teste, valor-p e tamanho de efeito; resultado não significativo também é reportado.

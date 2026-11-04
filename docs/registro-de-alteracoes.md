@@ -2592,3 +2592,21 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: a instrução põe o Monte Carlo e os testes H1–H9, se feitos, nos apêndices L e M.
 **Depois**: no TMin v23, o Monte Carlo é o Apêndice G (decisão de 03/11).
 **Efeitos colaterais**: a instrução indica letras de apêndice que o TMin não usa.
+
+### 20:10
+**Objeto**: `docs/2026-11-03_casas_sem_taxa_de_entrada.md` (novo); `docs/pendencias.md`
+**Antes**: sem lista das casas do B1 sem taxa de entrada; a situação de cada casa estava espalhada entre a planilha de cardápios, as fontes secundárias e as legendas do Instagram.
+**Depois**: lista das 30 casas sem taxa encontrada, por situação (1 com divergência, Ludus; 2 com R$ 0 declarado por portal, Castelos e Pitta's; 16 com cardápio coletado sem taxa; 11 sem cardápio), com capital, fonte já consultada e menções no Instagram; as 24 restantes têm taxa (Bodogami e Ludoteca BGC só por imprensa). Total 54, diferença zero.
+**Justificativa**: pedido do autor (lista dos estabelecimentos que ainda não têm taxa de entrada declarada). Taxa ausente fica "não encontrada", nunca R$ 0.
+
+### 23:50
+**Objeto**: arquivos fora da estrutura do TMin v23. Arquivados: `textos/planejamento/{cronograma_luderia.docx, cronograma_luderia_atual.docx, projeto_pesquisa_luderia.md e .docx, registro_previo_luderia.md}` → `textos/planejamento/_arquivo/`; `textos/instrumentos/{analise_conteudo_bardin_B2.md, recomendacoes_registro_consumo_B3.md}` → `textos/instrumentos/_arquivo/`; `docs/bibliografia/` e `docs/parecer_entorno_B1.md` → `docs/_arquivo/`; `_src/extras/conceitos/` → `_src/extras/_arquivo/conceitos/`; `bibliografia/_relatorio-conceitos.md`, 15 PDFs sem citação no TMin (Brinckmann, Fama e Bruni, Figueiredo 2020, Groves ×2, Kviat, Larson e Farber, Novaes e Kanyat, Tontini e Theiss, [650], [658] ×2, [EAPP-26.1] ×3), `[519] Probabilidade e Estatística.pdf` da raiz e 6 trechos citados dessas obras → `bibliografia/_arquivo/`. Apagados: `textos/capitulos/TMin/` (capítulos avulsos e TMin v9), `TCC_luderia_TMin_v22.docx` e `figuras/fluxograma_limpeza_B1.*` (sem citação). `AGENTS.md` virou link simbólico para `CLAUDE.md`. Vigia do launchd `br.ufba.tcc-luderia.verificar-conceitos` removido (`instalar_vigia.sh --remover`)
+**Antes**: documentos e scripts do desenho anterior misturados aos atuais; vigia rodando a cada salvamento sem checklists para ler; `AGENTS.md` cópia separada do `CLAUDE.md`.
+**Depois**: só a versão atual fora de `_arquivo/`; caminhos atualizados em `B2-a_conteudo_site.py` (leitura do livro de códigos), `B2-a_conteudo_bardin.py`, `B1-a_instagram_temas.py`, `B1-b_resumo.py`, `gerar_docx_projeto.js`, `_src/dicionario.md`, site de apresentação, `dicionario_temas_B2.md`, `roteiro_observacao_sao_jogue.md` e `roteiro_auditoria_entorno_B1.md`.
+**Justificativa**: pedido do autor (aplicar a limpeza proposta segundo a estrutura do TMin v23; arquivar o cronograma em `.docx`).
+
+### 23:50
+**Objeto**: `_instrucoes/4_metodologia.md`, `1_estrutura.md`, `10_biblio-apendices.md`, `2_ref-teorico.md`, `5_marketing.md`; `CLAUDE.md` (marcador `[AV]`); `textos/planejamento/cronograma_luderia.md`; `textos/instrumentos/roteiro_auditoria_entorno_B1.md`; `docs/pendencias.md`
+**Antes**: metodologia com a velocidade de avaliações calibrada pelo B3, dicionário de termos com F1, registro prévio como §3.5 e numeração 3.1 a 3.9; apêndices A a M do TMax (Monte Carlo em M); passiva sintética no cap. 2; 6.6 pela calibração das avaliações; marcador `[AV-<ID>]` dos checklists; cronograma com P1, P2, H1, H3, H5, variáveis do desenho de 18/09 e tarefas da base dividida; roteiro de auditoria com o OSM.
+**Depois**: metodologia na ordem do TMin (3.1 a 3.6, matriz no Apêndice D), com a circulação no pico, as horas de pico equivalentes, a R05 e a grade de 22 temas com recodificação cega; registro prévio só como extra; apêndices A a G do TMin com o capítulo que cita cada um; voz ativa ou passiva analítica no cap. 2; 6.6 pelo modelo de demanda; `[AV]` simples; cronograma com o desenho de 03/11, tarefas antigas fora e plano de corte refeito; auditoria do entorno só no Maps; pendências sem os itens resolvidos (voz passiva, apêndices L e M, cronograma) e com os caminhos novos.
+**Justificativa**: pedido do autor (aplicar a limpeza proposta).

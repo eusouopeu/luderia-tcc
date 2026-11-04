@@ -39,7 +39,7 @@ Traduzir a análise de mercado em decisões de posicionamento, produto, preço, 
 - Metas e indicadores de acompanhamento.
 
 ### 6.6 Estimativa de demanda
-- Seguir o modelo de calibração da ocupação de [4_metodologia.md](4_metodologia.md) §3.6: contagem direta e notas fiscais emitidas no intervalo (Bloco B3) → razão de calibração → fluxo dos concorrentes pela velocidade de avaliações (Bloco B2) → faixa de visitantes por semana.
-- Apresentar **dois caminhos independentes** (bottom-up por capacidade × ocupação; top-down por público-alvo × penetração × frequência) e a conciliação entre eles.
-- Rampa de maturação (6 a 12 meses), sustentada por datas de avaliações de estabelecimentos novos.
+- Seguir o modelo de demanda de [4_metodologia.md](4_metodologia.md) §3.4: circulação no pico medida no B3 (pessimista pelas notas fiscais) × horas de pico equivalentes (horário dos concorrentes, B1), com a circulação de dia útil pela razão de gasto com cartão (R05) → faixa de visitas por mês. O cap. 9 só remete a esta seção.
+- Conferir a ordem de grandeza pelo caminho inverso: visitas por ano por 100 moradores de Salvador de 20 a 39 anos (Censo 2022).
+- Rampa de maturação (R11 e R12), premissa do autor (N6).
 - Resultado em faixas; saídas vão para o registro de premissas ([8_financeiro.md](8_financeiro.md)).

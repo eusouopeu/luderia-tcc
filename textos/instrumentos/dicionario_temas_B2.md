@@ -4,7 +4,7 @@ Versão de 30/10/2026, com o tema "estacionamento" separado de "localização e 
 
 **Codificação e recodificação concluídas em 03/11/2026.** A grade 2 (22 temas) é a grade final do trabalho: as 1.628 avaliações do "2 - Comentários" estão codificadas nela, e a recodificação cega do autor (199 avaliações, rodadas 1 e 2) deu kappa agrupado de 0,83 e 0,84 nos temas. O contexto (0,58 e 0,52) é exploratório; "Costuma ir" (0,52) foi excluído da análise; "Voltará" (0,75) passou. Tabelas agregadas em `dados/[B2] Avaliacoes recentes/analise_conteudo/B2_temas_*.csv` e `B2_recodificacao_kappa.csv`.
 
-Este dicionário vale para as colunas "Itens positivos" e "Itens negativos". O livro de códigos de `analise_conteudo_bardin_B2.md` (§1.4, 15/10) foi substituído por esta grade em 03/11/2026 e fica só como histórico.
+Este dicionário vale para as colunas "Itens positivos" e "Itens negativos". O livro de códigos de `_arquivo/analise_conteudo_bardin_B2.md` (§1.4, 15/10) foi substituído por esta grade em 03/11/2026 e fica só como histórico.
 
 ## 1. Unidades e enumeração
 

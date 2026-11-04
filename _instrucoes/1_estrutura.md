@@ -44,8 +44,8 @@ O teto de cada capítulo é fixado antes da escrita. Capítulo que estourar o te
 
 - Referência de conversão: cerca de 350 palavras por página de texto corrido (A4, fonte 12, espaço 1,5). Cada tabela, quadro ou figura desconta meia página do teto do capítulo.
 - Prosa que só descreve um conjunto de itens vira quadro (lista em [10_biblio-apendices.md](10_biblio-apendices.md), "Quadros e tabelas: texto ou apêndice"). O texto em volta do quadro diz só a conclusão e a decisão que ela muda.
-- O que não muda decisão do plano vai para apêndice ou sai. Os apêndices também têm teto: o que não couber fica só no repositório, com o link citado no apêndice K.
-- Extras (testes de hipótese H1–H9 e Monte Carlo) não entram no corpo. Se feitos, vão para os apêndices L e M, e o total de 90 páginas continua valendo: o espaço sai dos demais apêndices, que passam a ser resumidos com link para o repositório.
+- O que não muda decisão do plano vai para apêndice ou sai. Os apêndices também têm teto: o que não couber fica só no repositório, com o link citado no apêndice que o resume.
+- Extras não entram no corpo. O Monte Carlo está no Apêndice G do TMin; os testes de hipótese H1–H9, se feitos, vão para um apêndice novo, e o total de 90 páginas continua valendo: o espaço sai dos demais apêndices, que passam a ser resumidos com link para o repositório.
 
 ## Estrutura
 
@@ -83,15 +83,15 @@ Evidência empírica de outros contextos (estudos de luderias, de jogadores e do
 
 ### 3. Metodologia → [4_metodologia.md](4_metodologia.md)
 
-- **3.1 Caracterização do trabalho** — plano de negócios baseado em evidências.
-- **3.2 Hierarquia de evidências** — escala N1–N6 e hierarquia de tipos de dados.
-- **3.3 Fontes e instrumentos de coleta** — Blocos B1, B2, B3 e B4, em ordem de relevância.
-- **3.4 Tratamento dos dados** — pipeline, pseudonimização, variáveis, validação do dicionário.
-- **3.5 Registro prévio e testes de hipótese** — *Extra, só se sobrar tempo no fim (ver [4_metodologia.md](4_metodologia.md) §3.5).* H1–H9, na base inteira (sem divisão em metades). Se não for feito, a seção sai e as seguintes sobem um número.
-- **3.6 Técnicas de análise e controles** — técnicas por área, calibração da ocupação, controles estatísticos.
-- **3.7 Matriz de evidências** — decisão → pergunta → dado → fonte → confiança.
-- **3.8 Aspectos éticos e legais** — base legal, pseudonimização, observação sem identificação.
-- **3.9 Limitações** — o que o método não garante e como isso entra nos cenários.
+- **Abertura** — caracterização: plano de negócios baseado em evidências, sem questionários.
+- **3.1 Hierarquia de evidências** — escala N1–N6 e hierarquia de tipos de dados.
+- **3.2 Fontes e instrumentos de coleta** — Blocos B1, B2, B3, B4 e B5 (3.2.1 a 3.2.4), em ordem de relevância.
+- **3.3 Tratamento dos dados** — pipeline, pseudonimização, análise de conteúdo do B2 e validação da codificação e da coleta.
+- **3.4 Técnicas de análise** — técnicas por área, circulação no pico e de dia útil, ticket, controles estatísticos.
+- **3.5 Aspectos éticos e legais** — base legal, pseudonimização, observação sem identificação.
+- **3.6 Limitações** — o que o método não garante e como isso entra nos cenários.
+
+A matriz de evidências (decisão → pergunta → dado → fonte → confiança) vai para o Apêndice D. Testes de hipótese H1–H9 são extra, só se sobrar tempo ([4_metodologia.md](4_metodologia.md), "Extra: registro prévio e testes de hipótese").
 
 ### 4. Sumário Executivo — *sem arquivo próprio*
 

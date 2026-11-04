@@ -1,7 +1,7 @@
 """
 Bloco B1 - temas das legendas do Instagram das casas aprovadas, pelas mesmas
 categorias da análise de conteúdo do B2 (livro de códigos em
-textos/instrumentos/analise_conteudo_bardin_B2.md, §1.4).
+textos/instrumentos/_arquivo/analise_conteudo_bardin_B2.md, §1.4).
 
 Pergunta: o que as casas anunciam (legendas) bate com o que os clientes
 elogiam ou criticam (avaliações do Google, B2)? Tema muito anunciado e pouco

@@ -65,7 +65,7 @@ gráficos, tabelas e achados.
 A aba 11 lê `src/conteudo/b2-conteudo.json`, gerado por
 `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_conteudo_site.py` a partir das tabelas
 de `dados/[B2] Avaliacoes recentes/analise_conteudo/` e dos achados do §3 de
-`textos/instrumentos/analise_conteudo_bardin_B2.md`. Rodar o script depois de refazer a análise.
+`textos/instrumentos/_arquivo/analise_conteudo_bardin_B2.md`. Rodar o script depois de refazer a análise.
 
 A aba 12 lê `src/conteudo/auditorias.json`, gerado por `_src/extras/auditorias_site.py` a partir dos
 registros de sorteio (`auditoria/auditoria_registro.csv`) de cada pasta de brutos; os textos de cada auditoria

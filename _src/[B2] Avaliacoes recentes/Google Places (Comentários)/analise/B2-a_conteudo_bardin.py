@@ -19,7 +19,7 @@ em dados/[B2] Avaliacoes recentes/_dados-brutos/coletas/.
     do review_id do Google, estável entre coletas.
 
 A codificação foi feita à mão, comentário por comentário, pelo livro de códigos
-de textos/instrumentos/analise_conteudo_bardin_B2.md (§1.4). Os códigos de uma
+de textos/instrumentos/_arquivo/analise_conteudo_bardin_B2.md (§1.4). Os códigos de uma
 linha vêm separados por espaço; o sinal final é a polaridade (+ positiva,
 - negativa, ± mista, ~ neutra). Códigos de contexto (OCA:*, DESC, GEEK,
 NOM, DIV) não têm polaridade.

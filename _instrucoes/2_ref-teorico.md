@@ -19,7 +19,7 @@ Padrão de parágrafo: **afirmação → sustentação (citação ou dado) → l
 ## Linguagem e estilo
 
 - Seguir a skill `meu-estilo-escrita`: frases curtas, lógica dedutiva, tom impessoal, vocabulário técnico direto.
-- Impessoal (terceira pessoa ou voz passiva sintética: "observa-se", "adota-se").
+- Impessoal: terceira pessoa, voz ativa ou passiva analítica ("o trabalho adota", "foi adotado"), sem a passiva sintética ("adota-se"), vetada pelo [1b_escrita.md](1b_escrita.md), P5.5.
 - Definir cada conceito técnico na primeira ocorrência.
 - Sem adjetivação valorativa ("importantíssimo", "fundamental") nem generalizações sem fonte.
 - Termos estrangeiros consolidados (board game, hobby) em itálico na primeira ocorrência, se a orientação exigir.

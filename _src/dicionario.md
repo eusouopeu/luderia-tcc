@@ -162,5 +162,5 @@ Valem para arquivos novos e para os existentes quando o script que os gera for a
 | Nota de estudo | `docs/notas/AAAA-MM-DD_<termo>.md` | `2026-10-14_vpl.md` |
 | Capítulo | `textos/capitulos/_md/<n>_<tema>.md` (TMin, padrão); `textos/capitulos/TMax/_md/<n>_<tema>.md` (TMax, só se diferir) | `6_plano_de_marketing.md` |
 | `.docx` e `.pdf` de capítulo | `<n>_<tema>_v<n>.docx`; `<n>_<tema>_<TMin\|TMax>_v<n>.docx` se o capítulo diferir; `TCC_luderia_<TMin\|TMax>_v<n>` para o trabalho; versões antigas em `_arquivo/` | `6_plano_de_marketing_v2.docx` |
-| Instrumento de pesquisa | `textos/instrumentos/<tema>_<bloco>.md` | `analise_conteudo_bardin_B2.md` |
+| Instrumento de pesquisa | `textos/instrumentos/<tema>_<bloco>.md` | `dicionario_temas_B2.md` |
 | Versão do app de observação | `versionName` `AAAA.MM.DD-n`; APK `ObservacaoLuderia-<versionName>.apk` | `ObservacaoLuderia-2026.10.14-1.apk` |
