@@ -2612,3 +2612,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: prática de "Qualidade" com salários x% acima da média do mercado.
 **Depois**: jornada de 7 h por dia (35 h) com o salário de 40 h e escalonamento nas horas de menor movimento, sem contratação extra; ajuste pendente do Quadro 7.2 e fontes sobre cansaço e erro a conferir.
 **Justificativa**: pedido do autor em comentário no doc do MVV (não aumentar salários nem contratar; dividir a hora descoberta entre entrada mais tarde e saída mais cedo; buscar justificativa de menos erro por cansaço).
+
+### 01:13
+**Objeto**: `docs/pendencias.md`
+**Antes**: sem item sobre a convenção coletiva de bares e restaurantes nem sobre o nome do cargo de cozinheiro.
+**Depois**: pendência para obter a CCT do Sindhóteis Salvador (pisos e domingo) e para alinhar "cozinheiro-chefe" (Quadro 7.2) com o salário de cozinheiro geral do CAGED.
+**Justificativa**: pergunta do autor sobre o salário dos cozinheiros perto do mínimo e o adicional de domingo.
