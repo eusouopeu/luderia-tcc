@@ -20,7 +20,7 @@ Princípios gerais: ver [../CLAUDE.md](../CLAUDE.md). Este arquivo traz a visão
 | [1c_versoes.md](1c_versoes.md) | TMin, DMax e DMin, numeração `_v<n>`, pastas `_arquivo/` e `.md` como fonte única |
 | [1d_formatacao.md](1d_formatacao.md) | Formatação dos `.docx` e `.pdf`, suplementar à skill `formatacao-texto-ufba` |
 
-## Extensão: no máximo 90 páginas
+## Extensão: no máximo 100 páginas
 
 O teto de cada capítulo é fixado antes da escrita. Capítulo que estourar o teto perde parágrafos descritivos (nível 5 da hierarquia de focos, P3 em [1a_principios.md](1a_principios.md)) antes de perder evidência de premissa crítica.
 
@@ -40,12 +40,13 @@ O teto de cada capítulo é fixado antes da escrita. Capítulo que estourar o te
 | 11 Considerações finais | 2 |
 | Referências | 5 |
 | Apêndices | 9 |
-| **Total** | **90** |
+| Reserva, ainda sem capítulo definido (limite elevado de 90 para 100 em 04/11/2026) | 10 |
+| **Total** | **100** |
 
 - Referência de conversão: cerca de 350 palavras por página de texto corrido (A4, fonte 12, espaço 1,5). Cada tabela, quadro ou figura desconta meia página do teto do capítulo.
 - Prosa que só descreve um conjunto de itens vira quadro (lista em [10_biblio-apendices.md](10_biblio-apendices.md), "Quadros e tabelas: texto ou apêndice"). O texto em volta do quadro diz só a conclusão e a decisão que ela muda.
 - O que não muda decisão do plano vai para apêndice ou sai. Os apêndices também têm teto: o que não couber fica só no repositório, com o link citado no apêndice que o resume.
-- Extras não entram no corpo. O Monte Carlo está no Apêndice G do TMin; os testes de hipótese H1–H9, se feitos, vão para um apêndice novo, e o total de 90 páginas continua valendo: o espaço sai dos demais apêndices, que passam a ser resumidos com link para o repositório.
+- Extras não entram no corpo. O Monte Carlo está no Apêndice G do TMin; os testes de hipótese H1–H9, se feitos, vão para um apêndice novo, e o total de 100 páginas continua valendo: o espaço sai dos demais apêndices, que passam a ser resumidos com link para o repositório.
 
 ## Estrutura
 
