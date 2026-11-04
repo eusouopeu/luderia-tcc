@@ -102,10 +102,10 @@ Legenda, no fim de cada referência:
 
 - Asakura, Silva e Mello (2018), já marcada no cap. 1. 📄
   - [ ] o estudo declara o negócio viável pelo payback simples e não testa a sensibilidade (p. 9–13).
-- [ ] ASSAF NETO, Alexandre. *Finanças corporativas e valor*. 7. ed. São Paulo: Atlas, 2014. 📄
-  - [ ] VPL e regra de aceitação (p. 388–392).
-  - [ ] TIR comparada com a TMA (p. 378–382).
-  - [ ] payback descontado (p. 374–378).
+- [ ] ASSAF NETO, Alexandre. *Finanças corporativas e valor*. 7. ed. São Paulo: Atlas, 2014. 📄 Cita-se só no que Bruni não cobre.
+  - [ ] prêmio de liquidez (p. 89).
+  - [ ] ponto de ruptura (p. 422–423).
+  - [ ] valor residual como perpetuidade (cap. 9; sem página no texto).
 - [x] BRUNI, Adriano Leal. *Avaliação de investimentos*. 3. ed. São Paulo: Atlas, 2018. 📖 exemplar físico (UFBA); edição, ano e ISBN 978-85-97-01812-7 conferidos na ficha catalográfica; páginas conferidas em 04/11/2026
   - [x] VPL e regra de aceitação (p. 227–228): VPL é a soma dos fluxos descontados na data zero menos o investimento inicial; VPL > 0, o projeto deve ser aceito (p. 228).
   - [x] TIR (p. 257–262, 265): é a taxa que faz o VPL ser igual a zero (p. 260); a Figura 8.4 (p. 262) mostra VPL > 0 ("projetos bons") abaixo da TIR e VPL < 0 ("projetos ruins") acima dela; a TIR é a TMA que anula o VPL (p. 265). A regra escrita "aceitar se TIR > TMA" não apareceu nas fotos; a Figura 8.4 a sustenta, e o texto pode estar nas p. 263–264.

@@ -53,16 +53,17 @@ Padrão de parágrafo: **afirmação → sustentação (citação ou dado) → l
   | Marketing: segmentação, posicionamento, proposta de valor, 4Ps, preço, canais | Kotler e Keller, *Administração de Marketing* (`[658@PKOT]`) |
   | Serviços e operações: capacidade, filas, lei de Little, *servicescape*, layout | Fitzsimmons e Fitzsimmons, *Administração de Serviços* |
   | Estratégia e concorrência: cinco forças, estratégias genéricas | Porter, *Estratégia Competitiva* |
-  | Finanças: VPL, TIR, payback, fluxo de caixa, taxa de desconto (prêmio de risco e de liquidez), sensibilidade, ponto de equilíbrio e de ruptura | Assaf Neto, *Finanças Corporativas e Valor* (p. 13, 89, 374–392, 419–423) |
-  | Custos, formação de preço, margem de contribuição (só se Assaf Neto não cobrir; PDF escaneado) | Bruni e Famá, *Gestão de Custos e Formação de Preços* |
+  | Finanças: VPL, TIR, payback, taxa de desconto (TMA, prêmio pelo risco), ponto de equilíbrio, sensibilidade, tornado | Bruni, *Avaliação de investimentos*, 3. ed., 2018 (p. 158, 177, 203–210, 220–221, 227–228, 260–262, 357–361; páginas conferidas no exemplar da UFBA) |
+  | Prêmio de liquidez, ponto de ruptura, valor residual (perpetuidade) | Assaf Neto, *Finanças Corporativas e Valor*, 7. ed., 2014 (p. 89, 422–423; as páginas do valor residual no cap. 9 ficam a conferir) |
+  | Custos, formação de preço, margem de contribuição (só se Bruni, p. 203–210, não cobrir) | Bruni e Famá, *Gestão de Custos e Formação de Preços* (dispensada em 04/11/2026) |
   | Estatística: amostragem, intervalos, testes | Larson e Farber, *Estatística Aplicada* |
-  | Tipos de pesquisa, coleta (comunicação × observação), erro amostral e não amostral | Mattar, *Pesquisa de Marketing*, v. 1 (slides dos caps. 1, 2, 3, 5 e 6, `Pesquisa de MKT-…`); citar pelo capítulo |
+  | Vieses de entrevista e questionário, observação, amostragem não probabilística, dados secundários, tipos de pesquisa | Mattar, *Pesquisa de Marketing*, v. 1, 4. ed., 1997 (p. 76–90, 135–138, 174–184, 266–272; páginas conferidas no exemplar da UFBA); o termo "desejabilidade social" não está nas p. 174–178, onde o termo é "insinceridade das respostas" |
   | Gestão baseada em evidências | Pfeffer e Sutton, *A verdade dos fatos* (fora da pasta, `[AV]` até o autor obter o livro) |
   | Análise de conteúdo | Bardin, *Análise de Conteúdo* |
 
   Os livros de finanças de Ross et al. (`[650]` e `[658] Fundamentos…`) e de Gitman (`[658] Princípios…`) ficam de reserva: só entram quando Assaf Neto não cobre o ponto.
-- **Finanças:** VPL, TIR, payback, taxa de desconto, sensibilidade e pontos de equilíbrio e de ruptura só com Assaf Neto. Os capítulos de Bruni da disciplina EAPP (`[EAPP-26.1] capitulo 17–19`, texto em elaboração) ficam de reserva, como Damodaran.
-- **Obras retiradas em 03/11/2026:** Groves et al. (trocado por Mattar); Brinckmann, Grichnik e Kapsa; Gilovich, Kumar e Jampol; Oldenburg; Tontini e Theiss; Savills; Kviat; Novaes e Kanyat; Figueiredo (2020) (trocado por Pfeffer e Sutton); Bruni (2018), Bruni e Famá, Damodaran, Brealey, Myers e Allen e Casarotto Filho e Kopittke (trocados por Assaf Neto).
+- **Finanças:** VPL, TIR, payback, TMA, ponto de equilíbrio, sensibilidade e tornado com Bruni (2018), páginas conferidas; prêmio de liquidez, ponto de ruptura e valor residual, que Bruni não cobre, com Assaf Neto. Os capítulos de Bruni da disciplina EAPP (`[EAPP-26.1] capitulo 17–19`, texto em elaboração) ficam de reserva, como Damodaran.
+- **Obras retiradas em 03/11/2026:** Groves et al. (trocado por Mattar); Brinckmann, Grichnik e Kapsa; Gilovich, Kumar e Jampol; Oldenburg; Tontini e Theiss; Savills; Kviat; Novaes e Kanyat; Figueiredo (2020) (trocado por Pfeffer e Sutton); Damodaran, Brealey, Myers e Allen e Casarotto Filho e Kopittke (trocados por Assaf Neto); Bruni (2018) e Bruni e Famá saíram nessa data e voltaram em 04/11/2026 (Bruni 2018, no lugar de Assaf Neto nas citações de VPL, TIR, payback, TMA, ponto de equilíbrio e sensibilidade; Bruni e Famá, dispensada).
 - Obras retiradas no TMin de 31/10/2026: Brealey, Myers e Allen; Casarotto Filho e Kopittke; Hillier e Lieberman; Zeithaml, Bitner e Gremler (o *servicescape* e a lei de Little passam a Fitzsimmons); Mintzberg, Ahlstrand e Lampel; Pfeffer e Sutton; Oldenburg; Marcellino; Kim e Mauborgne; Woods; Gilovich, Kumar e Jampol; Frezatti et al.; no cap. 3, Biemer, Amaya, Biemer e Kinyon e Meng; no cap. 5, Sebrae (notícia) e Savills.
 
 ## Divisão de subcapítulos

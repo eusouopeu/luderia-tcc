@@ -29,9 +29,6 @@ Três registros planejados para a contagem direta ficaram fora do trabalho: os p
 Por fim, a codificação dos temas das avaliações foi feita com apoio de inteligência artificial e validada por uma amostra recodificada pelo autor [resultado do kappa]. O B2 cobre só as avaliações dos últimos três meses de cada concorrente.
 
 Antes de investir, as duas validações da seção 10.4 – a cotação de pontos na Pituba e a razão entre dia útil e fim de semana nos horários de pico do Google Maps da São Jogue – reduzem a incerteza das premissas. Depois da abertura, o site de recomendação de jogos e o caixa medem o que o plano não mediu: o fluxo de dia útil, o consumo por pessoa e os jogos procurados.
-
-Ficaram fora do escopo o histórico completo de avaliações, sem o recorte de três meses; o histórico dos avaliadores, que mostraria a frequência de visita a luderias; e a comparação entre modelos de A&B (cozinha própria, parceria ou só bar), que muda o investimento e o CMV.
-
 **Referências citadas neste capítulo**
 
 FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). *Índice FipeZAP*: locação comercial, julho de 2026. São Paulo, 2026. Disponível em: https://downloads.fipe.org.br/indices/fipezap/fipezap-202607-comercial.pdf. Acesso em: 2 nov. 2026.
