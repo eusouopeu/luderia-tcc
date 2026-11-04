@@ -2600,3 +2600,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: o cap. 8 usa receita provável do ano 2 de R$ 662 mil (R$ 661.655,03 na Tabela 8.1).
 **Depois**: o modelo atual (`gerar_modelo_financeiro.py`) e a Tabela 4.1 dão receita bruta madura de R$ 76.402 por mês, ou R$ 916.823 por ano a partir do ano 2 (R$ 710.538 no ano 1).
 **Efeitos colaterais**: os tributos da Tabela 8.1 (Simples e Lucro Presumido), a carga sobre a receita e o enquadramento descrito no 8.1 estão calculados sobre uma receita cerca de 28% menor que a do modelo; o enquadramento como EPP no Simples não muda (abaixo de R$ 4,8 milhões).
+
+### 00:20
+**Objeto**: `textos/capitulos/_md/7_plano_operacional.md` (seção 7.5, depois do Quadro 7.2) × `textos/capitulos/_md/9_plano_financeiro.md` (custos fixos)
+**Antes**: o cap. 7 diz que a folha com encargos fica em 22,6% da receita do ano maduro provável.
+**Depois**: o cap. 9 e o modelo atual dão 16,3% (R$ 12.484,75 × 12 ÷ R$ 916.823).
+**Efeitos colaterais**: o 22,6% parece calculado sobre a receita antiga (cerca de R$ 662 mil, a mesma da Tabela 8.1); a comparação com os 25,1% da PAS continua valendo, mas com folga maior.
