@@ -2618,3 +2618,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: sem item sobre a convenção coletiva de bares e restaurantes nem sobre o nome do cargo de cozinheiro.
 **Depois**: pendência para obter a CCT do Sindhóteis Salvador (pisos e domingo) e para alinhar "cozinheiro-chefe" (Quadro 7.2) com o salário de cozinheiro geral do CAGED.
 **Justificativa**: pergunta do autor sobre o salário dos cozinheiros perto do mínimo e o adicional de domingo.
+
+### 01:17
+**Objeto**: `docs/pendencias.md` (convenção coletiva)
+**Antes**: pendência só com piso e domingo pela convenção.
+**Depois**: acrescenta a regra legal de domingo e feriado (em dobro sem folga compensatória), o custo de feriados que falta no modelo e a EC 141/2026 (5x2, 40 h, folga preferencialmente no domingo), com o ajuste de rodízio dominical que falta no Quadro 7.2.
+**Justificativa**: pedido do autor (verificar o adicional de domingo para bares, restaurantes, cozinheiros e atendentes e considerar a nova legislação da escala 5x2).
