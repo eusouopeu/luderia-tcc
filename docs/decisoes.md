@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 04/11/2026 | TMin v26: taxa de entrada por concorrente (antiga Tabela 6.1) vai para o Apêndice A (Tabela A.2), com os dados em `B1_taxa_entrada_concorrentes.csv`; Tabelas 6.2 e 6.3 viram 6.1 e 6.2; ressalva da TIR de 56,2% (quatro visitas a uma só concorrente, lida como faixa) no cap. 4 e no 9.4; cortes de roteiro de capítulo e de frases de apoio nos caps. 5 a 9 para fechar em 90 páginas | Caps. 4, 6 e 9; `gerar_apendices_tmin.py` |
 | 04/11/2026 | Cesta de consumo = taxa de entrada + mediana das bebidas + hambúrguer não vegetariano mais barato do cardápio (substitui "uma entrada ou prato"); taxa variável pelo dia entra como média ponderada pelos dias | Cap. 6 (6.3); cap. 9 (R06, R07) |
 | 04/11/2026 | R06 sobre as 13 casas com taxa conhecida e gasto declarado, incluída a São Jogue (gasto médio de R$ 78,68); a cesta usa as 10 delas com bebida e hambúrguer (R$ 74,06) | Cap. 6 (6.3); cap. 9 (9.1) |
 | 04/11/2026 | Renda e densidade do cap. 5 por região metropolitana, não pela capital | Cap. 5 |

@@ -1,6 +1,6 @@
 # 7 PLANO OPERACIONAL
 
-O plano operacional traduz a demanda estimada em espaço, processos e pessoas. O desenho é enxuto: a luderia abre menor que a São Jogue, que tem anos de mercado e clientela formada, e cresce por etapas. A São Jogue serve de referência de comportamento (circulação, tamanho dos grupos e permanência), não de porte. O porte menor reduz a exposição aos riscos que o capítulo 9 aponta como críticos: circulação, gasto por pessoa e movimento fora do pico. O capítulo parte do local e do layout, verifica a capacidade instalada e descreve os processos, a gestão do acervo e a equipe. Cada etapa de crescimento depende de um gatilho de demanda.
+O plano operacional traduz a demanda estimada em espaço, processos e pessoas. O desenho é enxuto: a luderia abre menor que a São Jogue, que tem anos de mercado e clientela formada, e cresce por etapas. A São Jogue serve de referência de comportamento (circulação, tamanho dos grupos e permanência), não de porte. O porte menor reduz a exposição aos riscos que o capítulo 9 aponta como críticos: circulação, gasto por pessoa e movimento fora do pico. Cada etapa de crescimento depende de um gatilho de demanda.
 
 ## 7.1 LOCALIZAÇÃO E LAYOUT
 

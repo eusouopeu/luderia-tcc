@@ -1,6 +1,6 @@
 # 5 ANÁLISE DE MERCADO
 
-A análise de mercado verifica se Salvador comporta mais uma luderia e em que condições. O capítulo parte do setor, passa pelo público e pela concorrência e termina no macroambiente. Cada seção fecha com a decisão do plano que o dado afeta. Os Blocos B1, B2 e B4 sustentam as análises.
+A análise de mercado verifica se Salvador comporta mais uma luderia e em que condições. Cada seção fecha com a decisão do plano que o dado afeta. Os Blocos B1, B2 e B4 sustentam as análises.
 
 ## 5.1 ANÁLISE DO SETOR
 
@@ -54,7 +54,7 @@ Na prática, a concorrência local se resume a uma casa. A São Jogue é a únic
 
 ### 5.3.2 Acervo e preço
 
-O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 22 dos 53 concorrentes, com mediana de R$ 20,00 por pessoa (de R$ 5,00, na Toca do Rato, em Porto Alegre, a R$ 45,00, na Encounter, em São Paulo, no sábado); a Ludus declara que não cobra, e nos outros 30 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (seção 6.3). O consumo por pessoa, uma bebida e o hambúrguer não vegetariano mais barato do cardápio, tem mediana de R$ 46,00 em 27 casas, com faixa interquartil de R$ 38,00 a R$ 62,90, e é de R$ 41,00 na São Jogue (Bloco B1, 2026). O hambúrguer entra no lugar de uma entrada ou prato qualquer porque aparece em quase todos os cardápios, o que torna as casas comparáveis. Salvador fica no meio da distribuição por metrópole (Figura 5.3).
+O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 22 dos 54 concorrentes, com mediana de R$ 20,00 por pessoa (de R$ 5,00, na Toca do Rato, em Porto Alegre, a R$ 45,00, na Encounter, em São Paulo, no sábado); a Ludus declara que não cobra, e nos outros 31 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (seção 6.3). O consumo por pessoa, uma bebida e o hambúrguer não vegetariano mais barato do cardápio, tem mediana de R$ 46,00 em 27 casas, com faixa interquartil de R$ 38,00 a R$ 62,90, e é de R$ 41,00 na São Jogue (Bloco B1, 2026). O hambúrguer entra no lugar de uma entrada ou prato qualquer porque aparece em quase todos os cardápios, o que torna as casas comparáveis. Salvador fica no meio da distribuição por metrópole (Figura 5.3).
 
 **Figura 5.3 – Consumo por pessoa (uma bebida e um hambúrguer), mediana por metrópole (R$)**
 

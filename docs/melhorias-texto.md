@@ -22,7 +22,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D64 — Dias com dois instrutores (04/11/2026).** Cap. 7 (7.5: teto de 2 mesas por instrutor e 3 pessoas no salão) × escala do Quadro 7.2. Na terça, na quarta e no domingo, o salão tem 2 instrutores e o sócio; no intervalo de cada um, fica com 1 instrutor e o sócio, teto de 4 mesas, e no domingo de folga do atendente (1 a cada 4 semanas) com 1 instrutor e o sócio o dia todo. O 7.5 declara a exceção; a demanda provável ocupa 3,2 mesas no pico, mas a otimista passa de 4. Sugestão: manter declarado ou cobrir os intervalos com intermitente (R$ 1.066 por mês; VPL de R$ 615 mil, contra R$ 701 mil).
 
-**D66 — TMin v25 no teto de 90 páginas (04/11/2026).** O texto termina na p. 90, exatamente o teto (`_instrucoes/1_estrutura.md`); qualquer acréscimo passa do limite. Sugestão: os cortes do C21 (cap. 6) e dos apêndices (L5 e L6) devolvem a margem.
+**D66 — TMin v26 no teto de 90 páginas (04/11/2026).** O texto termina na p. 90, exatamente o teto (`_instrucoes/1_estrutura.md`), depois dos cortes de roteiro de capítulo (C18 em parte), da Tabela 6.1 no Apêndice A (agora Tabela A.2) e de frases de apoio nos caps. 6, 8 e 9. Qualquer acréscimo passa do limite; os cortes do C21 (cap. 6, restante) e dos apêndices (L5 e L6) devolvem margem.
 
 **D68 — CMV do setor de duas edições da PAS (04/11/2026).** Cap. 9 (Tabela 9.5, C01) e cap. 10 (Tabela 10.2) usam 29,6% (PAS 2023); o 9.6 compara pessoal e aluguel com a PAS 2024 (26,8% de CMV nessa edição). Sugestão: usar a PAS 2024 em todos os pontos.
 
@@ -81,6 +81,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D42 — Taxa da São Jogue fora da média do modelo (02/11/2026).** O B1 (aba cesta) marca a taxa da São Jogue como "não encontrada", embora a Tabela 6.1 e a NFC-e do B3 a tragam (R$ 22,00 e R$ 28,00). A média de R$ 18,68 (caps. 4, 6, 9 e 11) não inclui a única casa de Salvador, e as 22 casas da média não são as 22 da Tabela 6.1. A Ludus tem taxa zero na Tabela 6.1 e couvert de R$ 34,00/44,00 numa fonte secundária de 2024. Sugestão: corrigir o B1 e regerar a média e o modelo.
 
 ## Aceitável
+
+**D72 — Cesta de jogos: 12 ou 15 acervos (04/11/2026).** Cap. 3 (3.2.1) diz que a cesta reúne os títulos presentes em 15 ou mais dos 30 acervos; o cap. 6 (6.2) diz 12 ou mais, e o acervo inicial de 175 títulos vem desse corte. Conferir no B1 qual limite gerou os 175 e igualar os dois capítulos.
 
 **D69 — Taxa adotada × taxa do modelo (04/11/2026).** Cap. 6 (6.3) adota R$ 18,68 de taxa; o modelo separa R$ 22,32 pela parcela de 28,4% da cesta (R07), e o cap. 10 (SWOT) e o 9.6 citam R$ 22,32. O 6.3 declara que a diferença não muda a receita total. Sugestão: manter declarado ou fazer o modelo usar R$ 18,68 e jogar o restante no A&B.
 

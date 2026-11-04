@@ -17,6 +17,7 @@ cita exatamente os apêndices A a G e se os números-chave citados no texto
 para com a lista das divergências (regra em `_instrucoes/1c_versoes.md`).
 """
 import html
+import json
 import re
 import struct
 import sys
@@ -152,6 +153,18 @@ UNIDADE = {"BV": "Bela Vista", "PA": "Paralela"}
 
 
 # --------------------------------------------------------------- apêndices
+def taxas_entrada():
+    """Tabela A.2: taxa de entrada dos concorrentes que a divulgam (saiu do cap. 6 para o apêndice)."""
+    pasta = B1 / "estabelecimentos"
+    ta = pd.read_csv(pasta / "B1_taxa_entrada_concorrentes.csv", sep=";", encoding="utf-8-sig", dtype=str)
+    notas = json.loads((pasta / "B1_taxa_entrada_concorrentes_notas.json").read_text(encoding="utf-8"))
+    linhas = [["Concorrente", "Capital", "Dia útil", "Fim de semana"]] + ta.values.tolist()
+    return [par("A Tabela A.2 traz a taxa de entrada de cada concorrente que a divulga, usada no preço da luderia (seção 6.3)."),
+            legenda("Tabela A.2 – Taxa de entrada por pessoa nos concorrentes que a divulgam (R$)"),
+            tabela("Tabela", [3071, 2300, 1800, 1900], linhas, ["left", "left", "right", "right"], sz=18),
+            fonte(notas["fonte"], fim=False), nota(notas["nota"].replace("em negrito, a São Jogue", "São Jogue"))]
+
+
 def apendice_a(d):
     est = d["est"]
     por = est.groupby("capital_endereco").size()
@@ -166,7 +179,7 @@ def apendice_a(d):
                 "com a contagem por metrópole na Figura 5.2. A Tabela A.1 lista os concorrentes, com a nota e o número de avaliações no Google Maps."),
             legenda("Tabela A.1 – Concorrentes aprovados"),
             tabela("Tabela", [4271, 2300, 1300, 1200], t2, ["left", "left", "right", "right"], sz=18),
-            fonte(fonte_b1)], dict(concorrentes=len(est))
+            fonte(fonte_b1)] + taxas_entrada(), dict(concorrentes=len(est))
 
 
 def apendice_b(d):

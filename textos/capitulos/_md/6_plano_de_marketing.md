@@ -24,7 +24,7 @@ A grade ERRC (eliminar, reduzir, elevar e criar) converte essas evidências em d
 |---|---|---|
 | Eliminar | Consumação mínima e cobrança por jogo: uma taxa por pessoa e por turno | Regras da casa com 53 críticas e 17 elogios (B2); consumação mínima no LudoCafé e cobrança por título na BoardZ (B1) |
 | Reduzir | Acervo inicial de 175 títulos, contra a mediana de 322 nos 30 acervos publicados | Variedade do acervo com 13 críticas em 1.628 avaliações (B2) |
-| Reduzir | Taxa de entrada de R$ 18,68, abaixo da São Jogue | Preço da entrada com 25 críticas e 21 elogios (B2); Tabela 6.1 (B1) |
+| Reduzir | Taxa de entrada de R$ 18,68, abaixo da São Jogue | Preço da entrada com 25 críticas e 21 elogios (B2); Tabela A.2 (B1) |
 | Elevar | Instrutor no salão, com no máximo 2 mesas por instrutor no pico, e explicação de regras inclusa na taxa | Explicação de jogos em 14,3% das avaliações; nota média de 2,62 quando criticada (B2) |
 | Elevar | Cardápio de preparo rápido | Rapidez do serviço com 42 críticas e 27 elogios; nota média de 2,50 quando criticada (B2) |
 | Criar | Indicação de jogo pelo perfil do grupo, com apoio de um site de recomendação | Indicações de jogos em 3,6% das avaliações; nota média de 1,25 nas 4 críticas (B2) |
@@ -35,50 +35,17 @@ O posicionamento fica entre o bar e a loja de jogos. O preço de entrada fica ab
 
 ## 6.2 PRODUTO E SERVIÇO
 
-O produto tem três partes: a mesa com instrutor, o acervo e os alimentos e bebidas. As decisões de cada parte saem da proposta de valor; a operação está no capítulo 7. Na mesa, o grupo paga um turno de 3 horas (seção 6.3), e o instrutor sugere o jogo e explica as regras sem custo extra. A indicação e a explicação são a parte do serviço mais ligada à nota: as 4 avaliações que criticam a indicação de jogos têm nota média de 1,25.
+O produto tem três partes: a mesa com instrutor, o acervo e os alimentos e bebidas. Na mesa, o grupo paga um turno de 3 horas (seção 6.3), e o instrutor sugere o jogo e explica as regras sem custo extra. A indicação e a explicação são a parte do serviço mais ligada à nota: as 4 avaliações que criticam a indicação de jogos têm nota média de 1,25.
 
 O acervo abre com 175 títulos, os presentes em 12 ou mais dos 30 acervos publicados pelos concorrentes do B1, e cresce por gatilho (seção 7.4). A conservação pesa tanto quanto o tamanho: a curadoria e conservação do acervo aparece em 9,2% das avaliações, e 9 das 13 críticas falam de jogos gastos ou com peças faltando, o que leva à conferência de peças na devolução (seção 7.4).
 
-Os alimentos e bebidas são a maior fonte de receita e o segundo tema das avaliações. A comida aparece em 34,1% delas, com 503 elogios e 67 críticas. O cardápio é curto e de preparo rápido, com porções para dividir na mesa: além da comida (67 críticas), as críticas de A&B recaem sobre o preço (48) e a demora (42) mais que sobre a variedade (24). Os produtos complementares são o aluguel de jogos para levar para casa, com preço da tabela da São Jogue (premissa R10), e as comemorações em grupo, citadas em 3,1% das avaliações.
+Os alimentos e bebidas são a maior fonte de receita e o segundo tema das avaliações. A comida aparece em 34,1% delas, com 503 elogios e 67 críticas. O cardápio é curto e de preparo rápido, com porções para dividir na mesa. Os produtos complementares são o aluguel de jogos para levar para casa, com preço da tabela da São Jogue (premissa R10), e as comemorações em grupo, citadas em 3,1% das avaliações.
 
 ## 6.3 PREÇO
 
-A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor maior de sexta a domingo. É o modelo da São Jogue e o mais comum entre os concorrentes que divulgam a taxa: 15 dos 22 que cobram diferenciam o preço pelo dia da semana (Tabela 6.1). O turno de 3 horas fica acima da permanência média medida no B3, de 109 minutos, e não limita o grupo típico; serve para liberar a mesa nos horários de reserva. A São Jogue usa o mesmo turno de 3 horas (Tabela 6.1).
+A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor maior de sexta a domingo. É o modelo da São Jogue e o mais comum entre os concorrentes que divulgam a taxa: 15 dos 22 que cobram diferenciam o preço pelo dia da semana (Tabela A.2, no Apêndice A). O turno de 3 horas fica acima da permanência média medida no B3, de 109 minutos, e não limita o grupo típico; serve para liberar a mesa nos horários de reserva. A São Jogue usa o mesmo turno de 3 horas (Tabela A.2).
 
-**Tabela 6.1 – Taxa de entrada por pessoa nos concorrentes que a divulgam (R$)**
-
-| Concorrente | Capital | Dia útil | Fim de semana |
-|---|---|---|---|
-| Encounter | São Paulo | 35,00 | 40,00 a 45,00 |
-| LudoCafé | Belo Horizonte | 10,00 a 25,00 | 20,00 a 35,00 |
-| Shelf Bar e Jogos | Belo Horizonte | 15,00 a 20,00 | 30,00 |
-| Tubaleria | São Paulo | 28,00 | 28,00 |
-| Ludoteca Sidequest | Belém | 23,00 | 28,00 |
-| São Jogue (turno de 3 h) | Salvador | 22,00 | 28,00 |
-| Place Games | São Paulo | 0,00 a 25,00 | 25,00 |
-| Bardo Mago | Belo Horizonte | 15,00 | 25,00 |
-| Game Of Boards | Rio de Janeiro | 15,00 | 25,00 |
-| Loja de Jogos - Asgard | Brasília | 10,00 | 25,00 |
-| Nala Land | Recife | 20,00 | 20,00 a 25,00 |
-| TabuClub | Rio de Janeiro | 20,00 | 20,00 a 25,00 |
-| Arena BG | São Paulo | 0,00 | 12,50 a 25,00 |
-| Fan Hour | São Paulo | 20,00 | 20,00 |
-| Luderia Carioca | Rio de Janeiro | 20,00 | 20,00 |
-| Comdado Bar e Jogos | Belo Horizonte | 15,00 | 20,00 |
-| Covil Game Bar | São Paulo | 15,00 | 15,00 a 20,00 |
-| La Tabuleria | Belo Horizonte | 10,00 | 15,00 a 20,00 |
-| BoardZ Game Pub | Curitiba | 10,00 | 15,00 |
-| Joyjoy Café | Curitiba | 10,00 | 10,00 a 15,00 |
-| Café Geek | Vitória | 0,00 a 15,00 | 0,00 a 15,00 |
-| Garagem do Nerd | Belo Horizonte | 10,00 | 10,00 |
-| Toca do Rato | Porto Alegre | 5,00 | 5,00 |
-| Ludus Luderia | São Paulo | 0,00 | 0,00 |
-
-Fonte: elaborado pelo próprio autor, com base nos cardápios, sites, matérias de imprensa, posts do Instagram e fotos do Google Maps do Bloco B1 (04/2024 a 07/2026; BoardZ sem data, coletada em 10/2026) e nas NFC-e da São Jogue (Bloco B3, 10/10/2026 a 30/10/2026).
-
-Nota: em negrito, a São Jogue, única luderia de Salvador no B1. Linhas em ordem decrescente do valor de fim de semana. Fim de semana: sexta a domingo e feriados. Faixa: menor e maior valor do período. LudoCafé: menor valor com consumo mínimo de R$ 50,00. BoardZ: passe do dia; a casa não cobra entrada, e o jogo avulso é pago por título. Place Games: R$ 10,00 da entrada valem como consumo, e a entrada é grátis na confraria de quinta. Café Geek: passaporte por nível de jogo. A taxa de entrada do plano, de R$ 18,68, é a média do couvert ou da taxa de jogo nos cardápios das 22 casas que a cobram (mediana de R$ 20,00), e não a média desta tabela, que reúne também sites, imprensa e redes sociais (seção 6.3).
-
-A taxa da São Jogue está no alto da faixa. Pelo maior valor de cada casa, a mediana dos 22 concorrentes que cobram é de R$ 25,00 no fim de semana, e só três cobram mais que a São Jogue: Encounter (R$ 45,00 no sábado), LudoCafé (R$ 35,00 sem consumo mínimo) e Shelf (R$ 30,00). No dia útil, a mediana é de R$ 15,00, contra R$ 22,00. Dos 53 concorrentes do B1, 22 têm a taxa encontrada no cardápio, no site, na imprensa ou no Instagram, e a Ludus declara que não cobra; nos outros 30, a cobrança não foi encontrada. Os valores de Covil, LudoCafé, Garagem do Nerd e Joyjoy são de 2024 e podem estar defasados. A contagem exclui a sala privativa do Café Geek, cobrada por hora e por grupo.
+A taxa de entrada do plano, de R$ 18,68, é a média do couvert ou da taxa de jogo nos cardápios das 22 casas que a cobram (mediana de R$ 20,00). A taxa da São Jogue está no alto da faixa. Pelo maior valor de cada casa, a mediana dos 22 concorrentes que cobram é de R$ 25,00 no fim de semana, e só três cobram mais que a São Jogue: Encounter (R$ 45,00 no sábado), LudoCafé (R$ 35,00 sem consumo mínimo) e Shelf (R$ 30,00). No dia útil, a mediana é de R$ 15,00, contra R$ 22,00. Dos 54 concorrentes do B1, 22 têm a taxa encontrada no cardápio, no site, na imprensa ou no Instagram, e a Ludus declara que não cobra; nos outros 31, a cobrança não foi encontrada. Os valores de Covil, LudoCafé, Garagem do Nerd e Joyjoy são de 2024 e podem estar defasados. A contagem exclui a sala privativa do Café Geek, cobrada por hora e por grupo.
 
 As avaliações confirmam que o preço da entrada pesa, mas pouco. Das 1.628 avaliações com texto do B2, 45 citam o preço da entrada – 25 de forma negativa e 21 positiva, uma delas com as duas – e 74 citam o preço do cardápio, 48 de forma negativa. Na Sidequest, que cobra o mesmo que a São Jogue no fim de semana, um cliente chamou os R$ 28,00 de "um preço um pouco alto" e deu nota 4. O gasto declarado pelos avaliadores no campo de preço por pessoa do Google Maps tem mediana na faixa de R$ 80,00 a R$ 100,00 (352 declarações, sem a Bodogami, que soma 250 das 602; Figura 6.2).
 
@@ -94,9 +61,9 @@ O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 18
 
 ## 6.4 PRAÇA
 
-A Pituba é o bairro indicado para a luderia. Ela lidera a matriz de critérios em todos os conjuntos de pesos testados (Tabela 6.2): tem a 5ª maior população de 20 a 39 anos de Salvador, 15.276 pessoas (IBGE, Censo 2022), e renda média do responsável pelo domicílio de R$ 7.513,00, 3,7 vezes a média da cidade (IBGE, Censo 2010, por bairro, no Observatório de Bairros de Salvador). A renda entra porque o gasto com lazer se concentra nas famílias de renda alta (seção 5.4). O Censo 2022 não publica renda por bairro, e a de 2010 é a medida por bairro mais recente; a ordem entre bairros muda devagar, mas o valor está defasado. O QualiSalvador, levantamento da UFBA sobre a qualidade urbana dos bairros, também põe a Pituba no grupo de melhor qualidade de vida da cidade [AV]. A matriz considera só os bairros com renda de pelo menos o dobro da média da cidade (R$ 4.109,00) e 3.500 pessoas de 20 a 39 anos – 14 dos 170 bairros.
+A Pituba é o bairro indicado para a luderia. Ela lidera a matriz de critérios em todos os conjuntos de pesos testados (Tabela 6.1): tem a 5ª maior população de 20 a 39 anos de Salvador, 15.276 pessoas (IBGE, Censo 2022), e renda média do responsável pelo domicílio de R$ 7.513,00, 3,7 vezes a média da cidade (IBGE, Censo 2010, por bairro, no Observatório de Bairros de Salvador). A renda entra porque o gasto com lazer se concentra nas famílias de renda alta (seção 5.4). O Censo 2022 não publica renda por bairro, e a de 2010 é a medida por bairro mais recente; a ordem entre bairros muda devagar, mas o valor está defasado. O QualiSalvador, levantamento da UFBA sobre a qualidade urbana dos bairros, também põe a Pituba no grupo de melhor qualidade de vida da cidade [AV]. A matriz considera só os bairros com renda de pelo menos o dobro da média da cidade (R$ 4.109,00) e 3.500 pessoas de 20 a 39 anos – 14 dos 170 bairros.
 
-**Tabela 6.2 – Matriz de critérios ponderados para o bairro, Salvador**
+**Tabela 6.1 – Matriz de critérios ponderados para o bairro, Salvador**
 
 | Posição | Bairro | Pessoas de 20 a 39 anos | Renda média do responsável, 2010 (R$) | Pessoas de 20 a 39 anos por km² | Nota (0 a 1) |
 |---|---|---|---|---|---|
@@ -119,7 +86,7 @@ Fonte: elaborado pelo próprio autor, com base no IBGE (Censo 2022, agregados po
 
 Nota: pesos de 50% para o público de 20 a 39 anos, 30% para a renda e 20% para o público por km²; cada critério normalizado de 0 a 1 entre os candidatos. Com pesos de 40%, 40% e 20%, de 60%, 20% e 20% ou iguais, a Pituba segue em 1º. Renda média de Salvador em 2010: R$ 2.055,00.
 
-Os pesos são do autor (N6) e não mudam a escolha (nota da Tabela 6.2): Patamares, Candeal, Imbuí e Graça só alternam do 2º ao 6º lugar. Patamares tem a maior renda entre os candidatos, mas pouco público por km². Nenhuma das duas unidades da São Jogue está entre os candidatos: a Bela Vista fica no Shopping Bela Vista, em Pernambués, e a Paralela, no Shopping Paralela.
+Os pesos são do autor (N6) e não mudam a escolha (nota da Tabela 6.1): Patamares, Candeal, Imbuí e Graça só alternam do 2º ao 6º lugar. Patamares tem a maior renda entre os candidatos, mas pouco público por km². Nenhuma das duas unidades da São Jogue está entre os candidatos: a Bela Vista fica no Shopping Bela Vista, em Pernambués, e a Paralela, no Shopping Paralela.
 
 Escolhido o bairro, falta definir o ponto. Ele deve ficar a até 1.000 m de uma estação de metrô. Entre os 54 concorrentes do B1, os 24 com estação a até 1.000 m têm mediana de 770 avaliações no Google Maps, contra 396 dos 30 sem estação (Bloco B1, entorno pelo Google Maps). O shopping de porte não mostra a mesma vantagem: os 10 concorrentes com shopping a até 1.000 m têm mediana de 396 avaliações, contra 663 dos 19 sem (25 sem dado). O número de avaliações mede fluxo de forma indireta, e a associação não prova causa. A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica dentro do Shopping Bela Vista, a 387 m do metrô.
 
@@ -135,7 +102,7 @@ O orçamento de marketing é de R$ 1.500,00 por mês no provável, de R$ 1.000,0
 
 ## 6.6 ESTIMATIVA DE DEMANDA
 
-A luderia deve receber 942 pessoas por mês no ano maduro do cenário provável, de 594 a 1.720 nos cenários (Tabela 6.3). A estimativa parte da *circulação*: as pessoas que entram na luderia por hora. A circulação no pico vem da contagem direta na São Jogue (B3), nas noites de sexta e sábado: 6,40 pessoas por hora, em média. O pico não dura o dia inteiro. Para levar a circulação ao dia, o modelo usa o horário dos 54 concorrentes (B1): em cada hora aberta do plano, o número de concorrentes abertos é dividido pelo número de concorrentes abertos nas horas das visitas. A soma dessas razões dá as horas de pico equivalentes do dia: 6,84 horas, em média, de sexta a domingo, nas 8 horas abertas. No mês maduro do cenário provável, a conta é a seguinte:
+A luderia deve receber 942 pessoas por mês no ano maduro do cenário provável, de 594 a 1.720 nos cenários (Tabela 6.2). A estimativa parte da *circulação*: as pessoas que entram na luderia por hora. A circulação no pico vem da contagem direta na São Jogue (B3), nas noites de sexta e sábado: 6,40 pessoas por hora, em média. Para levar a circulação ao dia, o modelo usa o horário dos 54 concorrentes (B1): em cada hora aberta do plano, o número de concorrentes abertos é dividido pelo número de concorrentes abertos nas horas das visitas. A soma dessas razões dá as horas de pico equivalentes do dia: 6,84 horas, em média, de sexta a domingo, nas 8 horas abertas. No mês maduro do cenário provável, a conta é a seguinte:
 
 pessoas por dia de fim de semana = circulação no pico × horas de pico equivalentes (1)
 
@@ -143,7 +110,7 @@ pessoas por dia de fim de semana = circulação no pico × horas de pico equival
 
 O dia útil (terça a quinta) entra em separado do fim de semana (sexta a domingo), porque o movimento é menor. Em restaurantes de loja física, um dia de segunda a quinta recebe 61,9% do gasto de um dia de sexta a domingo no Rio de Janeiro e 69,2% em São Paulo (ANR, 2026a; 2026b). Com a média das duas cidades, 65,5%, o dia útil recebe 28,7 pessoas. Com 3 dias de cada tipo por semana e 4,33 semanas por mês, o mês maduro soma 942 pessoas.
 
-**Tabela 6.3 – Demanda no mês maduro, por cenário**
+**Tabela 6.2 – Demanda no mês maduro, por cenário**
 
 | Variável | Pessimista | Provável | Otimista |
 |---|---|---|---|
@@ -157,7 +124,7 @@ Fonte: elaborado pelo próprio autor, com base nos Blocos B1 e B3 e na ANR (2026
 
 Nota: pessimista com o piso das notas fiscais da São Jogue e a razão do Rio de Janeiro; otimista com a visita mais cheia e a razão de São Paulo. Horas de pico equivalentes de 6,84 nos três cenários.
 
-O primeiro ano tem rampa: o movimento começa em 40% do maduro e chega a 100% no mês 9, de 30% em 12 meses no pessimista a 50% em 6 meses no otimista (premissas R11 e R12, estimativa do autor, N6). O caminho inverso confere a ordem de grandeza. As 11,3 mil visitas por ano do provável equivalem a 1,4 visita por ano para cada 100 moradores de Salvador de 20 a 39 anos, cerca de 781 mil pessoas se mantida a proporção do Censo 2022 (IBGE). A luderia não precisa criar um mercado novo para atingir o provável.
+O primeiro ano tem rampa: o movimento começa em 40% do maduro e chega a 100% no mês 9, de 30% em 12 meses no pessimista a 50% em 6 meses no otimista (premissas R11 e R12, estimativa do autor, N6). O caminho inverso confere a ordem de grandeza. As 11,3 mil visitas por ano do provável equivalem a 1,4 visita por ano para cada 100 moradores de Salvador de 20 a 39 anos, cerca de 781 mil pessoas se mantida a proporção do Censo 2022 (IBGE).
 
 **Referências citadas neste capítulo**
 

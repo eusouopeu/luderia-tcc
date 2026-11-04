@@ -24,7 +24,7 @@ Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E
 
 Nota: cenários pessimista e otimista na Tabela 9.4.
 
-O negócio é viável nas premissas prováveis: o VPL é de R$ 689 mil (Tabela 4.1) e segue positivo sem o valor residual. A viabilidade depende de duas premissas, a circulação no pico e o gasto por pessoa, que têm ruptura 19% abaixo do provável (seção 10.3). Na simulação de Monte Carlo, o VPL fica positivo em 77,3% dos cenários. O desenho enxuto limita a perda máxima: a expansão só acontece quando a demanda medida pede, e seis gatilhos mensuráveis acionam medidas de contenção, da mudança na política de taxa de entrada à redução do espaço e do horário (seção 10.4). O fluxo de dia útil não foi medido na observação direta e é a premissa que mais precisa de validação antes do investimento, junto com a cotação do ponto.
+O negócio é viável nas premissas prováveis: o VPL é de R$ 689 mil (Tabela 4.1) e segue positivo sem o valor residual. A TIR de 56,2% repousa em quatro visitas a uma só concorrente e deve ser lida como faixa, e não como previsão. A viabilidade depende de duas premissas, a circulação no pico e o gasto por pessoa, que têm ruptura 19% abaixo do provável (seção 10.3). Na simulação de Monte Carlo, o VPL fica positivo em 77,3% dos cenários. O desenho enxuto limita a perda máxima: a expansão só acontece quando a demanda medida pede, e seis gatilhos mensuráveis acionam medidas de contenção, da mudança na política de taxa de entrada à redução do espaço e do horário (seção 10.4). O fluxo de dia útil não foi medido na observação direta e é a premissa que mais precisa de validação antes do investimento, junto com a cotação do ponto.
 
 **Referências citadas neste capítulo**
 

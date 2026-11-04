@@ -1,6 +1,6 @@
 # 9 PLANO FINANCEIRO
 
-O plano financeiro converte as decisões dos capítulos 5 a 8 em receitas, custos e indicadores de viabilidade. O modelo projeta o desenho enxuto do plano operacional na etapa de abertura: 6 mesas, 48 horas por semana, equipe de 6 empregados e o sócio e acervo com 175 jogos. As etapas de expansão ficam fora do fluxo de caixa base, entrando apenas na análise estratégica (capítulo 10) como opções. O capítulo parte da estrutura do modelo e do registro de premissas, projeta investimento, resultado e fluxo de caixa e termina na sensibilidade e nas checagens de coerência.
+O plano financeiro converte as decisões dos capítulos 5 a 8 em receitas, custos e indicadores de viabilidade. O modelo projeta o desenho enxuto do plano operacional na etapa de abertura: 6 mesas, 48 horas por semana, equipe de 6 empregados e o sócio e acervo com 175 jogos. As etapas de expansão ficam fora do fluxo de caixa base, entrando apenas na análise estratégica (capítulo 10) como opções.
 
 A receita nasce do número de pessoas atendidas, estimado na seção 6.6 a partir da circulação medida no pico da São Jogue (B3), levada ao dia pelo horário dos concorrentes (B1) e ao dia útil pelo gasto com cartão em restaurantes (ANR, 2026a; 2026b). No mês maduro do cenário provável, a luderia recebe 43,8 pessoas por dia de fim de semana e 28,7 por dia útil, ou 942 pessoas por mês.
 
@@ -190,7 +190,7 @@ Nota: n.a.: não há TIR, porque o fluxo do pessimista não muda de sinal.
 
 O VPL soma o fluxo descontado e mostra quanto o negócio gera além do que a TMA exige. No provável, o VPL é de R$ 689 mil: o negócio paga os 15% ao ano e gera esse valor a mais, em dinheiro de hoje. Sem o valor residual, o VPL cai para R$ 222 mil e segue positivo: a viabilidade não depende de a luderia seguir aberta depois do ano 5.
 
-A TIR é o rendimento anual do próprio negócio: a taxa que zera o VPL. A TIR provável é de 56,2% ao ano, em termos reais, quase quatro vezes a TMA.
+A TIR é o rendimento anual do próprio negócio: a taxa que zera o VPL. A TIR provável é de 56,2% ao ano, em termos reais, quase quatro vezes a TMA. Uma TIR dessa ordem pede cautela: ela repousa em quatro visitas a uma só concorrente e deixa de existir se a circulação no pico ou o gasto por pessoa ficarem 19% abaixo do provável (seção 9.5).
 
 O payback descontado é o tempo até o fluxo descontado acumulado devolver o investimento. No provável, ele é de 3,2 anos, dentro do horizonte de 5 anos.
 
@@ -253,11 +253,11 @@ A escada mostra três coisas. Primeiro, o provável fica 1,2 vez acima do piso d
 
 ## 9.6 CHECAGENS DE COERÊNCIA
 
-A capacidade comporta a demanda: as 36 pessoas por dia aberto usam 38% da capacidade do salão, de 95 pessoas por dia aberto (capítulo 7). No pico, a circulação provável de 6,40 pessoas por hora, com permanência de 109 minutos, ocupa 3,2 das 6 mesas. As horas de pico equivalentes também cabem no horário: 6,84 horas, contra 8 horas abertas por dia.
+A capacidade comporta a demanda: as 36 pessoas por dia aberto usam 38% da capacidade do salão, de 95 pessoas por dia aberto (capítulo 7). No pico, a circulação provável de 6,40 pessoas por hora, com permanência de 109 minutos, ocupa 3,2 das 6 mesas.
 
-A comparação com o setor mostra onde a luderia se afasta dos serviços de alimentação. A folha com encargos custa 20,6% da receita, contra 25,1% de gastos com pessoal no setor (IBGE, PAS 2024); a diferença vem da equipe de 6 empregados do desenho enxuto, com o sócio no caixa. O aluguel com condomínio custa 11,3%, contra 4,0% no setor. Essa diferença vem do formato: cada grupo ocupa uma mesa por 109 minutos em média para jogar, o que exige mais área para cada real de receita. O ponto é o custo que mais se afasta do setor e o primeiro a cotar.
+A comparação com o setor mostra onde a luderia se afasta dos serviços de alimentação. A folha com encargos custa 20,6% da receita, contra 25,1% de gastos com pessoal no setor (IBGE, PAS 2024); a diferença vem da equipe de 6 empregados do desenho enxuto, com o sócio no caixa. O aluguel com condomínio custa 11,3%, contra 4,0% no setor. O ponto é o custo que mais se afasta do setor e o primeiro a cotar.
 
-No preço, a taxa de entrada contida no gasto provável, R$ 22,32 por pessoa (28,4% de R$ 78,68), fica entre a mediana de R$ 20,00 dos concorrentes que cobram e os R$ 28,00 da São Jogue no fim de semana (seção 6.3). A distância para a São Jogue vem da decisão de entrar pela média dos concorrentes: o preço não exige posicionamento acima do mercado. A demanda projetada também cabe no mercado da cidade (seção 6.6).
+No preço, a taxa de entrada contida no gasto provável, R$ 22,32 por pessoa (28,4% de R$ 78,68), fica entre a mediana de R$ 20,00 dos concorrentes que cobram e os R$ 28,00 da São Jogue no fim de semana (seção 6.3).
 
 **Referências citadas neste capítulo**
 
