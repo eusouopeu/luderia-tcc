@@ -4,6 +4,11 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 04/11/2026 | Equipe de 5 empregados (3 atendentes e instrutores, 2 delas mulheres, e 2 cozinheiros-chefes) em escala 5x2 de 40 h: folga na segunda e na terça, na quarta ou no domingo; um domingo de folga por mês para homens e domingo sim, domingo não para mulheres; sai o instrutor de meio período; o sócio fica no caixa, na gestão e nas mesas das 17h ao fechamento | Cap. 7 (7.5, Quadro 7.2); `gerar_modelo_financeiro.py` (`ESCALA`) |
+| 04/11/2026 | Último pedido da cozinha 1 h antes do fechamento e cozinha fechada 30 min antes; intervalos alternados dos atendentes (16h, 17h e 18h de terça a sexta; 15h, 16h e 17h no fim de semana); no dia com um só cozinheiro, o intervalo fica na primeira hora aberta, porque trocar o intervalo por pagamento não é lícito (CLT, art. 71, § 4º, e art. 75) | Cap. 7 (7.5) |
+| 04/11/2026 | Sem taxa de serviço nem gorjeta | Cap. 8 (Quadro 8.1) |
+| 04/11/2026 | Remuneração do modelo = salário + adicional noturno de 20% e hora reduzida das 22h às 23h + repouso sobre eles + feriados em dobro (14 por ano [AV]); domingo com folga na semana sem adicional (Súmula 146 do TST); C07 = encargos linha a linha + vale-transporte (43,7% no provável) | `gerar_modelo_financeiro.py` (`custo_empregado`) |
+| 04/11/2026 | Quatro sanitários: masculino com mictório, feminino e adaptado com fraldário para clientes (Código de Obras de Salvador) e um da equipe (NR-24) | Lista de itens da etapa 1 do B5 (OB31 a OB44) |
 | 04/11/2026 | O campo "Tamanho do grupo" das avaliações do Maps (B2) sai do trabalho: não mede o tamanho do grupo que foi à casa. O tamanho do grupo vem só da contagem direta (B3) | `_src/extras/gerar_planilha_comentarios.py`; Quadro 3.2 |
 | 04/11/2026 | Citação ainda não verificada na obra fica em vermelho e em citação direta, com `[AV]`; citação que o autor deixa em preto na versão seguinte está conferida: perde o `[AV]`, volta a citação indireta e entra em `bibliografia/citacoes_conferidas.md` | `_instrucoes/10_biblio-apendices.md` (Referências) |
 | 04/11/2026 | O TMax sai: o texto tem uma só versão, o TMin; DMax e DMin ficam | `_instrucoes/1c_versoes.md` |

@@ -33,8 +33,12 @@ taxa (anexo III) da de A&B (anexo I e CMV).
 
 Desenho enxuto (P7 de _instrucoes/1a_principios.md, 02/11/2026): 6 mesas;
 terça a sexta das 15h às 23h e sábado e domingo das 14h às 22h (as 8 h
-contínuas com mais luderias abertas no B1), segunda fechada; equipe de 6 (2
-cozinheiros-chefes, 3 instrutores de tempo integral e 1 de meio período, 20 h).
+contínuas com mais luderias abertas no B1), segunda fechada; equipe de 5 (2
+cozinheiros-chefes e 3 atendentes e instrutores, escala 5x2 de 40 h; decisão do
+autor, 04/11/2026), mais o sócio no caixa das 17h ao fechamento (pró-labore, C08).
+A remuneração soma ao salário os adicionais legais da escala (ESCALA): noturno,
+hora noturna reduzida, repouso sobre eles e feriados em dobro; os encargos e o
+vale-transporte (C07) saem da mesma conta, linha a linha (custo_empregado).
 A São Jogue entra como referência de comportamento (circulação, pessoas por
 mesa, permanência), não de porte. A circulação fica limitada ao salão:
 pessoas por hora ≤ mesas × pessoas por mesa ÷ permanência (B3).
@@ -86,7 +90,20 @@ FIGURA_MC = ROOT / "textos" / "capitulos" / "figuras" / "9_monte_carlo.png"
 SOFFICE = "/Applications/LibreOffice.app/Contents/MacOS/soffice"
 
 MESES = 60
-JORNADA_H, MEIO_PERIODO_H = 44, 20  # jornada semanal da CLT e do instrutor de meio período
+# Escala 5x2 (decisão do autor, 04/11/2026): segunda fechada; a segunda folga cai na terça, na
+# quarta ou no domingo; homem folga 1 domingo a cada 4 semanas e mulher, domingo sim, domingo não
+# (CLT, art. 386); atendentes 1 e 2 mulheres. Folga de cada semana do ciclo de 4 semanas.
+ESCALA = {
+    "Atendente e instrutor de jogos (recreador)": (("dom", "ter", "dom", "ter"), ("qua", "dom", "qua", "dom"),
+                                                    ("ter", "dom", "ter", "qua")),
+    "Cozinheiro-chefe": (("dom", "ter", "ter", "ter"), ("qua", "qua", "dom", "qua")),
+}
+DIVISOR_H = 200  # horas por mês da jornada de 40 h (5 × 8 h), para o salário-hora
+ADIC_NOTURNO = 0.20  # CLT, art. 73: 20% das 22h às 5h, hora noturna de 52 min 30 s
+HORA_EXTRA = 0.50  # CF, art. 7º, XVI: a hora reduzida das 22h às 23h passa das 8 h diárias
+FERIADOS_ANO = 14  # 9 nacionais, 2 de julho (BA) e 4 de Salvador (Lei n. 9.093/1995) [AV]
+TARIFA_VT = 5.90  # ônibus de Salvador desde 05/01/2026; ida e volta por dia trabalhado (Lei n. 7.418/1985)
+SEMANAS_MES = 365.25 / 7 / 12
 # vida útil (anos) dos itens depreciáveis, a mesma da aba investimento
 VIDA_UTIL = dict(reforma=5, mobiliario=10, cozinha=10, ti=5, acervo=5, preop=5)
 ANOS = 5
@@ -176,17 +193,71 @@ def salario(f, ocupacao: str, recorte: str = "CNAE 56 - alimentação") -> float
 
 def quadro_pessoal(f) -> list[tuple]:
     """(cargo, CBO, quantidade, salário, fonte). Equipe do desenho enxuto (P7): 48 h abertas
-    por semana, de terça a domingo; a gestão fica com o sócio (pró-labore, C08)."""
+    por semana, de terça a domingo; o caixa e a gestão ficam com o sócio (pró-labore, C08)."""
     cn56 = "CAGED, admissões ago/2025-jul/2026, Salvador, CNAE 56, mediana"
     todas = "CAGED, admissões ago/2025-jul/2026, Salvador, todas as atividades, mediana (CNAE 56 com amostra pequena)"
     rec = salario(f, "Recreador", "todas as atividades")
     return [
         ("Cozinheiro-chefe", "513205", 2, salario(f, "Cozinheiro geral"),
          cn56 + "; cozinheiro geral, sem chefe de cozinha no recorte"),
-        ("Instrutor de jogos (recreador), tempo integral", "371410", 3, rec, todas),
-        ("Instrutor de jogos (recreador), meio período de 20 h", "371410", 1, rec * MEIO_PERIODO_H / JORNADA_H,
-         todas + f"; proporcional a {MEIO_PERIODO_H} h de {JORNADA_H} h"),
+        ("Atendente e instrutor de jogos (recreador)", "371410", 3, rec, todas),
     ]
+
+
+def noites_por_mes(folgas: tuple) -> float:
+    """Noites trabalhadas de terça a sexta (fecha às 23h, com 1 h depois das 22h) por mês."""
+    return sum(1 for semana in folgas for d in ("ter", "qua", "qui", "sex") if semana != d) / len(folgas) * SEMANAS_MES
+
+
+def custo_empregado(sal: float, folgas: tuple, anos_aviso: int = 5, vt: bool = True) -> dict:
+    """Custo mensal de um empregado, linha a linha (R$). Remuneração: salário mais adicionais da
+    escala; encargos do empregador no Simples (a contribuição patronal fica no DAS dos anexos I e
+    III, LC n. 123/2006, art. 13); provisão de uma rescisão sem justa causa a cada anos_aviso anos."""
+    sh = sal / DIVISOR_H
+    n = noites_por_mes(folgas)
+    dom, fer = 365.25 / 7 / 12, FERIADOS_ANO / 12
+    repouso = (dom + fer) / (365.25 / 12 - dom - fer)  # dias de repouso ÷ dias úteis do mês
+    c = {"Salário": sal,
+         "Adicional noturno (20%)": n * 1.0 * sh * ADIC_NOTURNO,
+         "Hora noturna reduzida (hora extra de 50%)": n / 7 * sh * (1 + ADIC_NOTURNO) * (1 + HORA_EXTRA)}
+    c["Repouso semanal sobre os adicionais"] = (c["Adicional noturno (20%)"] + c["Hora noturna reduzida (hora extra de 50%)"]) * repouso
+    c["Feriados trabalhados em dobro"] = FERIADOS_ANO * 6 / 7 * 5 / 6 / 12 * 2 * sal / 30
+    rem = sum(c.values())
+    c["Remuneração"] = rem
+    c["FGTS (8%)"] = 0.08 * rem
+    c["13º salário (1/12)"] = rem / 12
+    c["Férias com 1/3 (1/12 × 4/3)"] = rem / 12 * 4 / 3
+    c["FGTS sobre 13º e férias"] = 0.08 * (c["13º salário (1/12)"] + c["Férias com 1/3 (1/12 × 4/3)"])
+    dias = 30 + 3 * (anos_aviso - 1)
+    c[f"Aviso prévio indenizado (provisão, {dias} dias em {anos_aviso * 12} meses)"] = av = sal * dias / 30 / (12 * anos_aviso)
+    c["FGTS sobre o aviso prévio"] = 0.08 * av
+    c["Multa de 40% do FGTS (provisão)"] = 0.4 * (c["FGTS (8%)"] + c["FGTS sobre 13º e férias"] + c["FGTS sobre o aviso prévio"])
+    c["INSS patronal, RAT e terceiros (no DAS)"] = 0.0
+    c["Vale-transporte (parte do empregador)"] = max(0.0, 2 * TARIFA_VT * 5 * SEMANAS_MES - 0.06 * sal) if vt else 0.0
+    ks = list(c)
+    c["Custo mensal"] = rem + sum(c[k] for k in ks[ks.index("Remuneração") + 1:])
+    return c
+
+
+def pessoal_detalhe(quadro) -> dict:
+    """Por cargo: remuneração média por pessoa e custo linha a linha de cada pessoa da escala."""
+    out = {}
+    for cargo, _, q, s, _ in quadro:
+        pessoas = [custo_empregado(s, fl) for fl in ESCALA[cargo]]
+        assert len(pessoas) == q, cargo
+        out[cargo] = dict(pessoas=pessoas, remuneracao=sum(p["Remuneração"] for p in pessoas) / q)
+    return out
+
+
+def encargos_c07(quadro, anos_aviso: int, vt: bool) -> float:
+    """Encargos, provisões e vale-transporte ÷ remuneração, na equipe inteira (premissa C07)."""
+    rem = enc = 0.0
+    for cargo, _, q, s, _ in quadro:
+        for fl in ESCALA[cargo]:
+            c = custo_empregado(s, fl, anos_aviso, vt)
+            rem += c["Remuneração"]
+            enc += c["Custo mensal"] - c["Remuneração"]
+    return round(enc / rem, 4)
 
 
 def premissas(f) -> list[dict]:
@@ -235,6 +306,7 @@ def premissas(f) -> list[dict]:
     acr = max(float(c[(c["ocupacao"] == o) & (c["recorte"] == rc)].eval("salario_p75 / salario_mediana - 1").iloc[0])
               for o, rc in (("Cozinheiro geral", "CNAE 56 - alimentação"), ("Recreador", "todas as atividades")))
     a = f["acervo"]
+    q_ = quadro_pessoal(f)
     R = lambda *x: dict(zip(("id", "nome", "unidade", "pess", "prov", "otim", "fonte", "nivel", "just"), x))
     return [
         R("R01", "Mesas do salão", "mesas", MESAS, MESAS, MESAS,
@@ -304,9 +376,10 @@ def premissas(f) -> list[dict]:
         R("C06", "Acréscimo sobre o salário de admissão", "% do salário do CAGED", round(acr, 4), 0.0, 0.0,
           "Novo CAGED, Salvador, 3º quartil ÷ mediana do salário de admissão (B4)", "N2 + N6",
           f"O CAGED registra a admissão, que tende a pagar menos que o estoque; variação só para cima, de 0% a {acr:.1%} (provisório: maior distância do 3º quartil à mediana entre os cargos; x a definir pelo autor)."),
-        R("C07", "Encargos e provisões sobre a folha", "% do salário", 0.45, 0.37, 0.30,
-          "CLT (FGTS, 13º, férias) e estimativa de benefícios", "N1 + N6",
-          "No Simples, a contribuição patronal fica no DAS dos anexos I e III."),
+        R("C07", "Encargos, provisões e vale-transporte", "% da remuneração",
+          encargos_c07(q_, 1, True), encargos_c07(q_, 5, True), encargos_c07(q_, 5, False),
+          "CLT e Lei n. 8.036/1990 (FGTS, 13º, férias, aviso prévio e multa de 40%), Lei n. 7.418/1985 (vale-transporte)", "N1 + N6",
+          "No Simples, a contribuição patronal fica no DAS dos anexos I e III. Provável: uma rescisão sem justa causa por vaga em 5 anos; pessimista: uma por ano; otimista: sem vale-transporte."),
         R("C08", "Pró-labore", "R$ por mês", 4000, 3000, 2000, "Estimativa do autor", "N6", "Um sócio na gestão."),
         R("C09", "Utilidades (energia, água, gás, internet)", "R$ por mês", 6000, 4500, 3500, "Estimativa do autor", "N6", "Cozinha própria e ar-condicionado."),
         R("C10", "Marketing", "R$ por mês", 2000, 1500, 1000, "Estimativa do autor", "N6", "Redes sociais e eventos."),
@@ -456,8 +529,8 @@ def calcula_mc(f, v: dict, folha: float, quadro) -> dict:
     """Um cenário do Monte Carlo com as decisões de gestão do cap. 10 (02/11/2026):
     - etapa de mesas: se a demanda sorteada (R04) passa do teto do salão, a luderia abre mais
       MC_EXPANSAO mesas a partir do ano 2, com mobiliário proporcional (I02) pago no fim do ano 1;
-    - G5: ano (a partir do 2) com EBITDA negativo corta, no ano seguinte, o meio período e um
-      cozinheiro (cardápio de comidas recebidas prontas), com encargos;
+    - G5: ano (a partir do 2) com EBITDA negativo corta, no ano seguinte, um cozinheiro
+      (cardápio de comidas recebidas prontas), com encargos;
     - G6: se o EBITDA segue negativo com o G5 ativo, a luderia fecha no fim desse ano e recupera
       caução, capital de giro e a revenda dos ativos (I09); sem valor residual."""
     teto = v["R01"] * v["R02"] * 60 / v["R03"]
@@ -466,8 +539,7 @@ def calcula_mc(f, v: dict, folha: float, quadro) -> dict:
     r = calcula(f, w, folha)
     inv, ano = r["inv"], r["ano"]
     deprec = sum(inv[k] / VIDA_UTIL[k] for k in VIDA_UTIL)
-    sal = {fn: s_ for fn, _, _, s_, _ in quadro}
-    corte = (sal["Instrutor de jogos (recreador), meio período de 20 h"] + sal["Cozinheiro-chefe"]) * 12 * (1 + v["C06"]) * (1 + v["C07"])
+    corte = pessoal_detalhe(quadro)["Cozinheiro-chefe"]["remuneracao"] * 12 * (1 + v["C06"]) * (1 + v["C07"])
     revenda = v["I09"] * (inv["mobiliario"] + inv["cozinha"] + inv["ti"] + inv["acervo"])
     fc = [-r["investimento"], float(ano.loc[1, "ebitda"])]
     if expande:
@@ -601,23 +673,42 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
 
     # ---- pessoal
     ws = wb.create_sheet("pessoal")
-    titulo(ws, "Quadro de pessoal de referência e salários de admissão em Salvador", 6)
-    for j, h in enumerate(["Cargo", "CBO", "Quantidade", "Salário mensal (R$)", "Total mensal (R$)", "Fonte"], 1):
+    titulo(ws, "Quadro de pessoal de referência, salários de admissão em Salvador e adicionais da escala", 7)
+    det = pessoal_detalhe(quadro)
+    for j, h in enumerate(["Cargo", "CBO", "Quantidade", "Salário mensal (R$)", "Adicionais da escala por pessoa (R$)",
+                           "Remuneração total mensal (R$)", "Fonte"], 1):
         ws.cell(2, j, h)
     for i, (cargo, cbo, q, s, fonte) in enumerate(quadro):
         r = 3 + i
         ws.cell(r, 1, cargo); ws.cell(r, 2, cbo); ws.cell(r, 3, q); ws.cell(r, 4, s)
-        ws.cell(r, 5, f"=C{r}*D{r}"); ws.cell(r, 6, fonte)
+        ws.cell(r, 5, det[cargo]["remuneracao"] - s)
+        ws.cell(r, 6, f"=C{r}*(D{r}+E{r})"); ws.cell(r, 7, fonte)
     rt = 3 + len(quadro)
-    ws.cell(rt, 1, "Total"); ws.cell(rt, 3, f"=SUM(C3:C{rt - 1})"); ws.cell(rt, 5, f"=SUM(E3:E{rt - 1})")
-    estilo(ws, 2, rt, 6)
+    ws.cell(rt, 1, "Total"); ws.cell(rt, 3, f"=SUM(C3:C{rt - 1})"); ws.cell(rt, 6, f"=SUM(F3:F{rt - 1})")
+    estilo(ws, 2, rt, 7)
     for r in range(3, rt + 1):
         ws.cell(r, 3).number_format = INT
-        ws.cell(r, 4).number_format = ws.cell(r, 5).number_format = MOEDA
-    wb.defined_names["FOLHA_REF"] = DefinedName("FOLHA_REF", attr_text=f"pessoal!$E${rt}")
+        ws.cell(r, 4).number_format = ws.cell(r, 5).number_format = ws.cell(r, 6).number_format = MOEDA
+    wb.defined_names["FOLHA_REF"] = DefinedName("FOLHA_REF", attr_text=f"pessoal!$F${rt}")
     wb.defined_names["QUADRO_N"] = DefinedName("QUADRO_N", attr_text=f"pessoal!$C${rt}")
-    nota(ws, rt + 2, "Fonte: Novo CAGED (MTE), salário de admissão, mediana, ago/2025 a jul/2026 (B4). Acréscimo salarial e encargos na aba premissas (C06 e C07).", 6)
-    for col, w in zip("ABCDEF", (30, 9, 11, 16, 16, 60)):
+    nota(ws, rt + 2, "Fonte: Novo CAGED (MTE), salário de admissão, mediana, ago/2025 a jul/2026 (B4). Adicionais pela escala 5x2 "
+         "(noturno, hora noturna reduzida, repouso sobre eles e feriados em dobro; CLT, art. 73; Lei n. 605/1949, art. 9º). "
+         "Acréscimo salarial e encargos na aba premissas (C06 e C07); custo linha a linha abaixo.", 7)
+    # custo linha a linha de cada pessoa da escala (provável)
+    r0 = rt + 4
+    ws.cell(r0, 1, "Custo mensal por pessoa, cenário provável (R$)")
+    linhas = list(det[quadro[0][0]]["pessoas"][0])
+    nomes = [f"{cargo} {i + 1}" for cargo, *_ in quadro for i in range(len(det[cargo]["pessoas"]))]
+    ws.cell(r0 + 1, 1, "Linha")
+    for j, nm in enumerate(nomes, 2):
+        ws.cell(r0 + 1, j, nm)
+    pessoas = [p for cargo, *_ in quadro for p in det[cargo]["pessoas"]]
+    for i, ln in enumerate(linhas):
+        ws.cell(r0 + 2 + i, 1, ln)
+        for j, p in enumerate(pessoas, 2):
+            ws.cell(r0 + 2 + i, j, round(p[ln], 2)).number_format = MOEDA
+    estilo(ws, r0 + 1, r0 + 1 + len(linhas), 1 + len(pessoas))
+    for col, w in zip("ABCDEFG", (44, 16, 16, 16, 16, 16, 50)):
         ws.column_dimensions[col].width = w
 
     # ---- simples
@@ -976,7 +1067,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
     nota(ws, rt + 2, "Fonte: elaboração própria. Distribuição PERT contínua entre o pessimista e o otimista da aba premissas, com moda no "
          "provável, salvo: pessoas por mesa de 2 a 6; TMA fixa "
          "no provável. Demanda acima do salão abre mais 2 mesas a partir do ano 2; EBITDA anual negativo a partir do ano 2 aciona o G5 "
-         "(corte do meio período e de um cozinheiro) e, se persistir, o G6 (encerramento com revenda dos ativos, I09). "
+         "(corte de um cozinheiro) e, se persistir, o G6 (encerramento com revenda dos ativos, I09). "
          f"Premissas independentes entre si; semente {SEMENTE}. Valores gravados pelo script.", 2)
     ws.column_dimensions["A"].width = 58
     ws.column_dimensions["B"].width = 18
@@ -1092,7 +1183,8 @@ def main():
     f = ler_fontes()
     prem = premissas(f)
     quadro = quadro_pessoal(f)
-    folha = sum(q * s for _, _, q, s, _ in quadro)
+    det = pessoal_detalhe(quadro)
+    folha = sum(q * det[cargo]["remuneracao"] for cargo, _, q, _, _ in quadro)
     resultados = {c: calcula(f, valores(prem, c), folha) for c in CENARIOS}
     base = resultados["provavel"]
     tornado = []
@@ -1131,7 +1223,11 @@ def main():
           f" | teto do salão {f['teto_circ']:.2f} pessoas/h")
     print(f"Gasto por pessoa (B2): {[round(x, 2) for x in f['gasto']]}; parcela da taxa {f['parcela_taxa']:.4f};"
           f" horas de pico equivalentes: {f['horas_pico']}")
-    print(f"Folha de referência: R$ {folha:,.2f} ({sum(q for _, _, q, _, _ in quadro)} pessoas)")
+    print(f"Folha de referência (remuneração com adicionais): R$ {folha:,.2f} ({sum(q for _, _, q, _, _ in quadro)} pessoas;"
+          f" salários R$ {sum(q * s for _, _, q, s, _ in quadro):,.2f})")
+    for cargo, *_ in quadro:
+        for i, p in enumerate(det[cargo]["pessoas"], 1):
+            print(f"  {cargo} {i}: " + " | ".join(f"{k} {x:,.2f}" for k, x in p.items()))
     print(f"Juro real: {f['juro_real']:.2f}%; PAS mercadorias: {f['pas_mercadorias_pct']:.1f}%; taxa B1 mediana {f['taxa_b1_mediana']} (n={f['taxa_b1_n']})")
     for cen in CENARIOS:
         r = resultados[cen]

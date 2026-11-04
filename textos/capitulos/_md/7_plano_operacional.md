@@ -6,7 +6,7 @@ O plano operacional traduz a demanda estimada em espaço, processos e pessoas. O
 
 A luderia ocupa um salão térreo de cerca de 130 m² na Pituba, a até 1.000 m de uma estação de metrô (seção 6.4). A área é estimativa do autor (N6), com faixa de 110 a 150 m² no capítulo 9: cerca de 12 m² por mesa, mais 60 m² de balcão, acervo, cozinha e sanitários. O ponto precisa de zona que admita serviço de alimentação e lazer na Lei de Ordenamento do Uso e da Ocupação do Solo (LOUOS) de Salvador e de licença do Corpo de Bombeiros compatível com a lotação do salão (Quadro 8.1).
 
-O salão de jogos recebe 6 mesas, de 4 a 6 lugares, com cerca de 30 assentos. O número de mesas é o maior número de mesas ocupadas visto nas visitas: 6,02 em média na noite mais cheia, na Paralela, em 30/10 (B3). As estantes do acervo ficam no próprio salão, à vista das mesas, porque a escolha do jogo faz parte do serviço. Completam a área o balcão com o caixa, a cozinha, o depósito de alimentos e bebidas (A&B), dois sanitários, um deles adaptado, e uma rota acessível da entrada às mesas (Lei n. 13.146/2015; ABNT NBR 9050). [figura: croqui do salão]
+O salão de jogos recebe 6 mesas, de 4 a 6 lugares, com cerca de 30 assentos. O número de mesas é o maior número de mesas ocupadas visto nas visitas: 6,02 em média na noite mais cheia, na Paralela, em 30/10 (B3). As estantes do acervo ficam no próprio salão, à vista das mesas, porque a escolha do jogo faz parte do serviço. Completam a área o balcão com o caixa, a cozinha, o depósito de alimentos e bebidas (A&B), quatro sanitários e uma rota acessível da entrada às mesas. Os sanitários dos clientes são três, masculino, feminino e adaptado, como pede o Código de Obras de Salvador para até 50 pessoas por sexo, e o adaptado tem o fraldário exigido em lei municipal; o quarto é o da equipe (NR-24) [AV]. Mesa, balcão e caixa têm trecho acessível, e o cardápio tem versão em Braille e em letras ampliadas (Lei n. 13.146/2015; ABNT NBR 9050). [figura: croqui do salão]
 
 ## 7.2 CAPACIDADE INSTALADA
 
@@ -33,7 +33,7 @@ A demanda provável usa 38% da capacidade (Quadro 7.1). No pico, a circulação 
 
 A jornada do cliente tem cinco etapas. Na chegada, o instrutor no balcão registra o grupo e cobra a taxa de entrada por pessoa, válida por um turno de 3 horas; a reserva antecipada segue os mesmos turnos. Na mesa, o instrutor sugere títulos pelo perfil do grupo e explica as regras. O pedido de A&B é feito ao mesmo instrutor. No fim, a conta é paga no balcão, com NFC-e para toda venda, como o capítulo 8 assume. Por último, o instrutor confere as peças do jogo devolvido antes de guardar a caixa [figura: fluxograma da jornada do cliente].
 
-O acúmulo de funções vem da referência medida. Em todas as visitas à São Jogue, os instrutores também atendiam as mesas, cuidavam do balcão e operavam o caixa: não havia caixa, garçom nem atendente separados (B3). A luderia repete esse arranjo. Com isso, os instrutores cobrem salão, balcão e caixa.
+O acúmulo de funções vem da referência medida. Em todas as visitas à São Jogue, os instrutores também atendiam as mesas, cuidavam do balcão e operavam o caixa: não havia caixa, garçom nem atendente separados (B3). A luderia repete esse arranjo: os instrutores cobrem salão e balcão, e o sócio assume o caixa das 17h ao fechamento.
 
 A explicação de regras é o processo que mais pesa na avaliação. A explicação de jogos aparece em 14,3% das avaliações dos concorrentes e, quando criticada, acompanha nota média de 2,62 (B2, seção 6.1). O plano trata a explicação como serviço de mesa, com no máximo 2 mesas por instrutor no pico, e não como tarefa de quem estiver livre.
 
@@ -53,22 +53,22 @@ A conferência de peças acontece na devolução de cada jogo, pelo instrutor. J
 
 A equipe é dimensionada pelo fluxo medido, não pelo número de funções. Na noite mais cheia observada, o salão teve 32 pessoas sentadas no pico e 9 grupos de mesa ao longo da visita (B3, Bela Vista, 10/10/2026). Nas demais noites, o pico foi de 12 a 31 pessoas. No ano maduro provável, a luderia recebe 36 pessoas por dia aberto, com a maior parte de sexta a domingo.
 
-Esse fluxo cabe numa equipe de 6 pessoas (Quadro 7.2). O salão tem 2 instrutores de terça a quarta, 3 na quinta e 3 de sexta a domingo, com um quarto nas horas do meio período. O teto é de 2 mesas, ou cerca de 10 clientes, por instrutor no pico: a maior carga vista nas visitas. Com 6 mesas e 3 instrutores no pico, a carga fica nesse teto. Os instrutores atendem as mesas, explicam as regras, levam os pedidos e cuidam do balcão e do caixa. A cozinha tem um cozinheiro-chefe na terça e na quarta e os dois de quinta a domingo. A gestão, as compras e a cobertura de imprevistos ficam com o sócio (pró-labore, C08).
+Esse fluxo cabe numa equipe de 5 empregados e o sócio (Quadro 7.2). A escala é 5x2, de 40 horas por semana: a segunda, com a casa fechada, é uma folga, e a outra cai na terça, na quarta ou no domingo. Cada empregado folga ao menos um domingo por mês, e as duas atendentes, domingo sim, domingo não (CLT, art. 386). O turno começa 1 hora antes da abertura e tem 1 hora de intervalo (CLT, art. 71). O salão tem 3 instrutores de quinta a sábado, 2 ou 3 na terça e na quarta e 1 ou 2 no domingo, e o sócio atende das 17h ao fechamento. O teto é de 2 mesas, ou cerca de 10 clientes, por instrutor no pico: a maior carga vista nas visitas. Com 6 mesas e 3 pessoas no salão no pico, a carga fica nesse teto. A cozinha tem um ou dois cozinheiros-chefes por dia; recebe o último pedido 1 hora antes do fechamento e fecha 30 minutos antes, para a limpeza. No dia com um só cozinheiro, o intervalo dele cai na primeira hora aberta, e a cozinha serve a partir da segunda: o intervalo não pode ser trocado por pagamento, que a lei trata como indenização pela falta (art. 71, § 4º), sujeita a multa (art. 75). A gestão, as compras e a cobertura de imprevistos ficam com o sócio (pró-labore, C08).
 
 **Quadro 7.2 – Equipe proposta**
 
-| Função | Pessoas | Escala | Salário de admissão (R$) |
-|---|---|---|---|
-| Instrutor de jogos, tempo integral | 3 | 5 dias de 8 h (40 h); folga na segunda e em um dia de terça a quinta, cada um num dia | 1.653,75 |
-| Instrutor de jogos, meio período | 1 | 20 h: quinta e sexta das 17h às 22h; sábado e domingo das 15h às 20h | 751,70 |
-| Cozinheiro-chefe | 2 | 5 dias de 8 h (40 h); folgas na segunda e na terça ou na quarta | 1.700,00 |
-| Total (folha mensal) | 6 | n.a. | 9.112,95 |
+| Função | Pessoas | Escala | Salário de admissão (R$) | Remuneração com adicionais (R$) |
+|---|---|---|---|---|
+| Atendente e instrutor de jogos | 3 | 5x2 de 8 h (40 h): terça a sexta das 14h às 23h, sábado e domingo das 13h às 22h, com 1 h de intervalo; folgas na segunda e na terça, na quarta ou no domingo | 1.653,75 | 1.814,21 |
+| Cozinheiro-chefe | 2 | A mesma dos instrutores | 1.700,00 | 1.861,51 |
+| Sócio (caixa, gestão e mesas) | 1 | Todos os dias abertos, das 17h ao fechamento | Pró-labore (C08) | n.a. |
+| Total (folha mensal) | 5 empregados | n.a. | 8.361,25 | 9.165,64 |
 
 Fonte: elaborado pelo próprio autor, com base no Bloco B3 (10/10/2026 a 30/10/2026) e no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana; recreador em todas as atividades e cozinheiro geral na CNAE 56).
 
-Nota: total = pessoas × salário de admissão. Com encargos de 37% (premissa C07), a folha vai a R$ 12.484,75 por mês (Tabela 9.2). n.a.: não se aplica.
+Nota: remuneração por pessoa, média do cargo: salário, adicional noturno de 20% e hora noturna reduzida das 22h às 23h (CLT, art. 73), repouso sobre esses adicionais e feriados trabalhados em dobro (Lei n. 605/1949, art. 9º). O domingo trabalhado com folga na semana não tem adicional (TST, Súmula 146). Com encargos, provisões e vale-transporte de 43,7% (premissa C07), o custo vai a R$ 13.171,94 por mês (Tabela 9.2). Os salários ficam acima do piso de R$ 1.625,09 da convenção coletiva dos bares e restaurantes de Salvador (SHRBS e Sindbares, 2024/2026), que pode fixar adicional noturno maior que o da CLT [AV]. n.a.: não se aplica.
 
-A folha com encargos fica em 22,6% da receita do ano maduro provável, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). O salário de admissão do Novo CAGED tende a ficar abaixo do salário pago a quem já está no cargo; por isso, o capítulo 9 testa um acréscimo de até 11,4% sobre ele. A São Jogue opera com mais gente: de três a sete instrutores no salão nas visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
+A folha com encargos fica em 17,2% da receita do ano maduro provável, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). O salário de admissão do Novo CAGED tende a ficar abaixo do salário pago a quem já está no cargo; por isso, o capítulo 9 testa um acréscimo de até 11,4% sobre ele. A São Jogue opera com mais gente: de três a sete instrutores no salão nas visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
 
 Contratar instrutores como jovens aprendizes reduz pouco o custo. Os salários já estão no piso, e o aprendiz trabalha no máximo 6 horas por dia, o que exige mais pessoas para cobrir as mesmas horas; menores de 18 anos não podem trabalhar depois das 22h (CLT, art. 404 e art. 432). O estágio exige relação com o curso do estudante (Lei n. 11.788/2008) e não cabe na função de atendimento. As duas formas ficam fora do provável. Fora da equipe fixa, o contador é terceirizado (R$ 1.200,00 por mês, C11). A limpeza diária entra nas tarefas de abertura e fechamento da equipe.
 

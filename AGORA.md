@@ -4,12 +4,12 @@ Atualizado em 04/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora (no máximo duas frentes)
 
-1. **Texto do TMin v23** (87 páginas, texto da p. 9 à 87; apêndices v23 com 14 páginas). Provável: investimento de R$ 290 mil, VPL de R$ 973 mil, TIR de 72,7%, P(VPL > 0) de 85,9%; demanda de 942 pessoas por mês (594 a 1.720). Falta a passada única de revisão dos pares com "*" e as citações `[AV]`, agora em vermelho e em citação direta até a conferência.
+1. **Texto do TMin v23** (87 páginas, texto da p. 9 à 87; apêndices v23 com 14 páginas). Provável: investimento de R$ 309 mil, VPL de R$ 887 mil, TIR de 66,3%, P(VPL > 0) de 83,5%; demanda de 942 pessoas por mês (594 a 1.720). Em 04/11: equipe de 5 empregados em escala 5x2 com o sócio no caixa, adicionais e encargos linha a linha (C07 de 43,7%), quatro sanitários no B5 e Quadro 8.1 com trabalho, saúde e segurança e consumidor; apêndices E e G ainda com os números de 03/11 (regerar na entrega de 06/11). Falta a passada única de revisão dos pares com "*" e as citações `[AV]`, agora em vermelho e em citação direta até a conferência.
 2. **Recoleta do B5** com o coletor 2026.11.03-8 (os números atuais usam até 5 ofertas por site espaçadas no preço) e coleta de letreiro, balcão e kit de gás; é o único dado que ainda muda números do TMin.
 
 ## Próximos 3 passos
 
-1. Responder o "Lote de decisões" (L1 a L16) em [pendências](docs/pendencias.md).
+1. Responder o "Lote de decisões" (L1 a L18) em [pendências](docs/pendencias.md) e ler a convenção SHRBS × Sindbares vigente (piso, adicional noturno, alimentação).
 2. Passada única de revisão dos pares com "*", capítulo a capítulo; conferir Mattar (edição e ano) e Pfeffer e Sutton (páginas) (melhorias D62 e D63).
 3. Cortes do cap. 6 (C21) e dos apêndices até o teto de 9 páginas (L5 e L6).
 
