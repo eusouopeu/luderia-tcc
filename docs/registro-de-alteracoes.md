@@ -2624,3 +2624,9 @@ A edição do autor no §6 do dicionário continua fora do commit.
 **Antes**: pendência só com piso e domingo pela convenção.
 **Depois**: acrescenta a regra legal de domingo e feriado (em dobro sem folga compensatória), o custo de feriados que falta no modelo e a EC 141/2026 (5x2, 40 h, folga preferencialmente no domingo), com o ajuste de rodízio dominical que falta no Quadro 7.2.
 **Justificativa**: pedido do autor (verificar o adicional de domingo para bares, restaurantes, cozinheiros e atendentes e considerar a nova legislação da escala 5x2).
+
+### 02:34
+**Objeto**: `docs/nome_mvv_perfil_empreendedor.md` (novo)
+**Antes**: nome, MVV, perfil do empreendedor e fonte dos recursos só no doc do Claude Docs.
+**Depois**: cópia em Markdown na pasta `docs/`, com as edições do autor (missão, valores e práticas) até 04/11/2026.
+**Justificativa**: pedido do autor (transformar o doc em arquivo .md na pasta docs do trabalho).
