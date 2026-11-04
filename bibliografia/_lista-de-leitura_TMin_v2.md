@@ -144,7 +144,19 @@ Legenda, no fim de cada referência:
   - [x] fontes padronizadas e institucionais no Brasil (p. 145): lista de entidades de pesquisa, entre elas o CEI (Salvador).
   - [x] atitude e comportamento (p. 155–156): a atitude só se manifesta por comportamento ou declaração do entrevistado, e o comportamento pode ser observado (p. 155); comportamento é o que as pessoas fizeram ou fazem, e o Quadro 5.8 (p. 156) o decompõe em quem, o quê, quanto, quando, onde, como.
   - [x] tipos de pesquisa (p. 76–77): classificação por objetivo (exploratória e conclusiva), por natureza (descritiva e causal) e por forma de coleta (comunicação e observação); a descritiva responde quem, o quê, quanto, quando e onde (p. 77).
-  - [ ] amostragem não probabilística, intencional e por julgamento (p. 267–270): ainda não fotografada; é a que o recorte das 54 luderias e das visitas à São Jogue usa.
+  - [x] amostragem não probabilística (p. 266–270, 272): a seleção depende, ao menos em parte, do julgamento do pesquisador, e não há chance conhecida de um elemento entrar na amostra; só a probabilística dá estimativas com precisão da população (p. 266). Razões para usá-la: não haver alternativa viável (p. 267–268), a probabilística falhar na prática (p. 268), a generalização não ser o propósito, como na pesquisa exploratória (p. 268) e falta de tempo e recursos (p. 269). O pesquisador deve declarar o limite: nunca divulgar resultado de amostra não probabilística como se fosse probabilística (p. 267).
+  - [x] amostra intencional ou por julgamento (p. 270): escolhem-se os casos a incluir; não permite afirmações conclusivas sobre a população, mas, com critérios corretos, rende mais que a por conveniência. Sustenta o recorte das 54 luderias e da São Jogue.
+  - [x] amostra por conveniência (p. 269): barata e simples, serve à pesquisa exploratória e não é recomendada para pesquisas conclusivas.
+  - [x] amostra por tráfego (p. 272): observar pessoas que passam por um local; exige trabalho de campo em horas, dias da semana e dias do mês diferentes, com conhecimento prévio do volume de tráfego. Sustenta a distribuição das quatro visitas (sexta e sábado, duas unidades).
+  - [x] pesquisa exploratória (p. 80–81): objetivos e métodos (fontes secundárias, levantamento de experiências, estudo de casos, observação informal).
+  - [x] fontes secundárias na pesquisa exploratória (p. 82): bibliográficos, documentais, estatísticas (cita FIBGE, FIPE, FGV, Fundação SEADE) e pesquisas já feitas; nelas, o que importa são ideias e explicações possíveis, não tomá-las como verdades.
+  - [x] levantamento de experiências (p. 83): entrevistas sem estrutura rígida; o número é indefinido e para-se quando novas entrevistas deixam de ampliar a compreensão (critério de saturação).
+  - [x] pesquisa descritiva (p. 85–86): usada para descrever características de grupos, estimar proporções e verificar relações entre variáveis, sem causa e efeito; exige objetivos bem definidos e procedimentos formais.
+  - [x] quadro planejado para análise (p. 86–87, Figura 3.1): as variáveis e categorias devem ser definidas antes da coleta, e os testes estatísticos, especificados antes. Sustenta o dicionário de codificação fechado antes de codificar as avaliações.
+  - [x] observação sistemática ou assistemática (p. 78): a observação obtém dados sem comunicação com o pesquisado, por seus atos, comportamentos e fatos, e pode ser sistemática ou assistemática, a olho nu ou com aparelhos.
+  - [x] pesquisa ocasional e evolutiva (p. 78–79): a ocasional resolve problema específico; a evolutiva acompanha o fenômeno, com o mesmo painel ou elementos diferentes.
+  - [x] ambiente de pesquisa (p. 79): de campo (condições reais), de laboratório e por simulação; a ex-post facto busca relações depois que o fenômeno ocorreu.
+  - [x] estudo de campo e levantamento de campo (p. 88–90): o estudo de campo é de média amplitude e profundidade; investiga o fenômeno na ocorrência natural, sem manipular variáveis, e serve sobretudo à geração de hipóteses (p. 90). Desvantagem: só investiga o fato após sua ocorrência.
 
 ### Erro de coleta e validação
 
