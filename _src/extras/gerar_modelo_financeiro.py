@@ -27,9 +27,10 @@ pelas mesas; pessimista pelas NFC-e) × horas de pico equivalentes (casas do B1 
 em cada hora do plano ÷ casas abertas nas janelas das visitas); dia útil = fim
 de semana × razão dia útil ÷ fim de semana do gasto com cartão (ANR/Mastercard).
 Receita por pessoa = gasto por pessoa declarado no Google Maps (B2), média das
-12 casas com cesta de consumo conhecida; a cesta de consumo é bebida + entrada
-ou prato + taxa de entrada, e a parcela da taxa nessa cesta separa a receita de
-taxa (anexo III) da de A&B (anexo I e CMV).
+13 casas com taxa de entrada conhecida; a cesta de consumo é taxa de entrada +
+bebida + hambúrguer mais barato sem ser vegetariano, e a parcela da taxa nessa
+cesta (10 casas com cesta) separa a receita de taxa (anexo III) da de A&B
+(anexo I e CMV).
 
 Desenho enxuto (P7 de _instrucoes/1a_principios.md, 02/11/2026): 6 mesas;
 terça a sexta das 15h às 23h e sábado e domingo das 14h às 22h (as 8 h
@@ -157,11 +158,11 @@ def ler_fontes() -> dict:
     f["taxa_b1_mediana"], f["taxa_b1_n"] = taxa.median(), len(taxa)
     # couvert e cesta de consumo por casa (B1_resumo_estabelecimentos, aba cesta):
     # couvert só nas casas que cobram (encontrado e > 0); cesta de consumo =
-    # bebida + entrada ou prato (medianas da casa), só nas casas com os dois
+    # bebida mediana + hambúrguer não vegetariano mais barato, só nas casas com os dois
     ce = pd.read_excel(B1 / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx", sheet_name="cesta")
     cv = ce.loc[ce["couvert_no_cardapio"] == "sim", "couvert_mediana"]
     cv = cv[cv > 0]
-    co = (ce["bebida_mediana"] + ce["entrada_ou_prato_mediana"]).dropna()
+    co = (ce["bebida_mediana"] + ce["hamburguer_min_nao_veg"]).dropna()
     f["couvert_media"], f["couvert_n"], f["couvert_mediana"] = cv.mean(), len(cv), cv.median()
     f["cesta_consumo_media"], f["cesta_consumo_n"], f["cesta_consumo_mediana"] = co.mean(), len(co), co.median()
     f["couvert_q"], f["cesta_q"] = cv.quantile([.25, .75]).tolist(), co.quantile([.25, .75]).tolist()
@@ -301,7 +302,9 @@ def premissas(f) -> list[dict]:
     # gasto por pessoa: média, mínimo e máximo dos gastos médios das casas (B2); parcela da taxa
     gc = f["gasto_casas"]
     gasto = (gc["gasto_medio"].min(), gc["gasto_medio"].mean(), gc["gasto_medio"].max())
-    parcela = gc["taxa_ponderada"].mean() / gc["cesta_consumo"].mean()
+    gcc = gc.dropna(subset=["cesta_consumo"])
+    parcela = gcc["taxa_ponderada"].mean() / gcc["cesta_consumo"].mean()
+    f["gasto_casas_cesta"] = gcc
     f["gasto"], f["parcela_taxa"] = gasto, parcela
     hp = f["horas_pico"]
     r15 = sum(hp[d] for d in ("sexta", "sabado", "domingo")) / 3
@@ -334,10 +337,10 @@ def premissas(f) -> list[dict]:
           "Gasto médio por dia de segunda a quinta ÷ de sexta a domingo: Rio de Janeiro no pessimista, São Paulo no otimista, média das duas no provável."),
         R("R06", "Gasto por pessoa (cesta de consumo)", "R$ por pessoa", *[round(z, 2) for z in gasto],
           f"B2, preço por pessoa declarado no Google Maps, {int(gc['avaliacoes'].sum())} avaliações de {len(gc)} casas", "N3",
-          "Média dos gastos médios das casas com cesta de consumo conhecida (bebida + entrada ou prato + taxa de entrada); pessimista e otimista na casa de menor e de maior gasto."),
+          "Média dos gastos médios das casas com taxa de entrada conhecida; pessimista e otimista na casa de menor e de maior gasto."),
         R("R07", "Parcela da taxa de entrada no gasto", "% do gasto", round(parcela, 4), round(parcela, 4), round(parcela, 4),
-          f"B1, cardápios e taxas de entrada das mesmas {len(gc)} casas", "N3",
-          "Taxa de entrada média ÷ cesta de consumo média; separa a receita de taxa (anexo III) da de A&B (anexo I e CMV)."),
+          f"B1, cardápios e taxas de entrada de {len(f['gasto_casas_cesta'])} dessas casas", "N3",
+          "Taxa de entrada média ÷ cesta de consumo média (taxa + bebida + hambúrguer); separa a receita de taxa (anexo III) da de A&B (anexo I e CMV)."),
         R("R09", "Aluguéis de jogos", "aluguéis por mês", 10, 30, 60,
           "Estimativa do autor", "N6",
           "Serviço oferecido pela São Jogue; volume não observado."),
@@ -1096,8 +1099,8 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
          "NFC-e emitidas por dia, São Jogue Bela Vista, 10/10 a 16/10/2026 (B3); uma nota por pessoa, emitida só a pedido: piso de clientes"),
         ("Pessoas atendidas por dia × NFC-e da Paralela", "=B3", float(notas.loc["PA", "notas_emitidas"] / notas.loc["PA", "dias"]),
          "NFC-e por dia, São Jogue Paralela, 17/10 a 30/10/2026 (B3), com o fim de semana da eleição; piso de clientes"),
-        ("Receita por pessoa (R$)", "=receitas!BJ12/receitas!BJ7", float(f["gasto_casas"]["cesta_consumo"].mean()),
-         "Cesta de consumo média (bebida + entrada ou prato + taxa de entrada) das casas da R06 (B1)"),
+        ("Receita por pessoa (R$)", "=receitas!BJ12/receitas!BJ7", float(f["gasto_casas_cesta"]["cesta_consumo"].mean()),
+         "Cesta de consumo média (taxa de entrada + bebida + hambúrguer) das casas da R06 (B1)"),
         ("Taxa de entrada (R$)", "=P_R06*P_R07", float(f["taxa_b1_mediana"]),
          f"Mediana do couvert ou taxa de jogo nos cardápios de {f['taxa_b1_n']} concorrentes (B1)"),
         ("Pessoas atendidas por dia por funcionário", "=B3/QUADRO_N", "",
@@ -1223,7 +1226,7 @@ def main():
 
     # números citados no capítulo
     print(f"\nTaxa de entrada média: R$ {f['couvert_media']:.2f} (n={f['couvert_n']}, mediana {f['couvert_mediana']:.2f});"
-          f" cesta de consumo média: R$ {f['cesta_consumo_media']:.2f} (n={f['cesta_consumo_n']}, mediana {f['cesta_consumo_mediana']:.2f})")
+          f" consumo (bebida + hambúrguer) médio: R$ {f['cesta_consumo_media']:.2f} (n={f['cesta_consumo_n']}, mediana {f['cesta_consumo_mediana']:.2f})")
     print("Mesas ocupadas por visita:", [round(x, 2) for x in f["mesas_ocupadas"]])
     print("Circulação no pico por visita:", [round(x, 2) for x in f["circulacao_visitas"]],
           f"| pelas NFC-e (BV, PA): {[round(x, 2) for x in f['circulacao_nfce']]} com {f['horas_pico_sj_fds']:.2f} h de pico"

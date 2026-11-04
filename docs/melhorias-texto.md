@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 04/11/2026, depois da nova equipe (5 empregados em escala 5x2 e o sócio no caixa), dos sanitários do B5 e das obrigações trabalhistas, de saúde e segurança e do consumidor no Quadro 8.1: caps. 4, 7, 8, 9, 10 e 11 revistos; D33 resolvido; D38 revisto; D64 a D66 novos (equipe de 6 e TMin v24). Anterior: 03/11/2026, TMin v21, depois da conclusão da codificação do B2 (grade de 22 temas; recodificação cega com kappa de 0,84) e da escrita do 6.1, 6.2, 6.5 e 6.6 (demanda vinda do cap. 9). Caps. 3, 4, 5, 6, 7, 9 e 11 revistos; D26, D27 e D47 resolvidos; D04, D54 e D57 revistos; D58 a D60 e C21 novos.
+Última análise: 04/11/2026, TMin v25, depois dos comentários do autor no v24 (cesta com hambúrguer, R06 com 13 casas, renda por RM no cap. 5, matriz com renda por bairro, 5.4 cortado, Tabela 8.1 refeita): caps. 4 a 11 revistos; D66 revisto; D67 a D71 novos. Anterior: 04/11/2026, depois da nova equipe (5 empregados em escala 5x2 e o sócio no caixa), dos sanitários do B5 e das obrigações trabalhistas, de saúde e segurança e do consumidor no Quadro 8.1: caps. 4, 7, 8, 9, 10 e 11 revistos; D33 resolvido; D38 revisto; D64 a D66 novos (equipe de 6 e TMin v24). Anterior: 03/11/2026, TMin v21, depois da conclusão da codificação do B2 (grade de 22 temas; recodificação cega com kappa de 0,84) e da escrita do 6.1, 6.2, 6.5 e 6.6 (demanda vinda do cap. 9). Caps. 3, 4, 5, 6, 7, 9 e 11 revistos; D26, D27 e D47 resolvidos; D04, D54 e D57 revistos; D58 a D60 e C21 novos.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -22,7 +22,11 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D64 — Dias com dois instrutores (04/11/2026).** Cap. 7 (7.5: teto de 2 mesas por instrutor e 3 pessoas no salão) × escala do Quadro 7.2. Na terça, na quarta e no domingo, o salão tem 2 instrutores e o sócio; no intervalo de cada um, fica com 1 instrutor e o sócio, teto de 4 mesas, e no domingo de folga do atendente (1 a cada 4 semanas) com 1 instrutor e o sócio o dia todo. O 7.5 declara a exceção; a demanda provável ocupa 3,2 mesas no pico, mas a otimista passa de 4. Sugestão: manter declarado ou cobrir os intervalos com intermitente (R$ 1.066 por mês; VPL de R$ 615 mil, contra R$ 701 mil).
 
-**D66 — TMin v24 com 91 páginas (04/11/2026).** Texto da p. 10 à 91, contra o teto de 90 (`_instrucoes/1_estrutura.md`); o cap. 7 ganhou a Tabela 7.1 e o Quadro 8.1 quatro linhas. Sugestão: os cortes do C21 (cap. 6) e dos apêndices (L5 e L6) devolvem a margem.
+**D66 — TMin v25 no teto de 90 páginas (04/11/2026).** O texto termina na p. 90, exatamente o teto (`_instrucoes/1_estrutura.md`); qualquer acréscimo passa do limite. Sugestão: os cortes do C21 (cap. 6) e dos apêndices (L5 e L6) devolvem a margem.
+
+**D67 — 53 concorrentes × 13 casas com a São Jogue (04/11/2026).** Cap. 4 e cap. 6 (6.3). "Dos 53 concorrentes" exclui a São Jogue, mas a conta do gasto (13 casas) a inclui. Sugestão: dizer "das 54 luderias" na conta do gasto ou declarar a inclusão em nota.
+
+**D68 — CMV do setor de duas edições da PAS (04/11/2026).** Cap. 9 (Tabela 9.5, C01) e cap. 10 (Tabela 10.2) usam 29,6% (PAS 2023); o 9.6 compara pessoal e aluguel com a PAS 2024 (26,8% de CMV nessa edição). Sugestão: usar a PAS 2024 em todos os pontos.
 
 **D65 — Receita da Tabela 8.1 × modelo do cap. 9 (04/11/2026).** Cap. 8 (Tabela 8.1: receita bruta de R$ 661.655,03 no ano maduro) × cap. 9 (Tabela 9.3: R$ 916.823 a partir do ano 2). A Tabela 8.1 compara os regimes com a receita de uma versão anterior do modelo; só a linha da contribuição patronal foi refeita, com a nova folha. Sugestão: refazer a Tabela 8.1 com a receita e a folha do modelo atual, ou gerá-la pelo `gerar_modelo_financeiro.py`.
 
@@ -79,6 +83,12 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D42 — Taxa da São Jogue fora da média do modelo (02/11/2026).** O B1 (aba cesta) marca a taxa da São Jogue como "não encontrada", embora a Tabela 6.1 e a NFC-e do B3 a tragam (R$ 22,00 e R$ 28,00). A média de R$ 18,68 (caps. 4, 6, 9 e 11) não inclui a única casa de Salvador, e as 22 casas da média não são as 22 da Tabela 6.1. A Ludus tem taxa zero na Tabela 6.1 e couvert de R$ 34,00/44,00 numa fonte secundária de 2024. Sugestão: corrigir o B1 e regerar a média e o modelo.
 
 ## Aceitável
+
+**D69 — Taxa adotada × taxa do modelo (04/11/2026).** Cap. 6 (6.3) adota R$ 18,68 de taxa; o modelo separa R$ 22,32 pela parcela de 28,4% da cesta (R07), e o cap. 10 (SWOT) e o 9.6 citam R$ 22,32. O 6.3 declara que a diferença não muda a receita total. Sugestão: manter declarado ou fazer o modelo usar R$ 18,68 e jogar o restante no A&B.
+
+**D70 — Ludus: "não cobra" × R$ 40 (04/11/2026).** Cap. 5 (5.3) registra que a Ludus declara não cobrar taxa; o CSV do B2 traz R$ 40 pela CNN. Sugestão: conferir o site e a matéria e ficar com uma fonte.
+
+**D71 — Instrução cita 5.1.2 (04/11/2026).** `_instrucoes/2_ref-teorico.md:74` remete ao 5.1.2, que não existe mais na estrutura do cap. 5. Sugestão: atualizar a instrução.
 
 **D62 — Mattar sem edição e ano (03/11/2026).** Cap. 3 (3.1 e 3.3) e referências. Os slides de Mattar na pasta não trazem a edição; a citação está como (MATTAR, [AV ano], cap. 5 e 6). Conferir a edição do v. 1 (Atlas) e trocar o marcador pelo ano.
 

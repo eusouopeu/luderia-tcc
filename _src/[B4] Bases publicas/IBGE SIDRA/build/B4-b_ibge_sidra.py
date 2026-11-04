@@ -39,6 +39,8 @@ SAIDAS = {
     "renda_censo_2022_idade": ("mercado_demanda", "Renda por Idade", "IBGE Censo"),
     "renda_pnadc_per_capita_rm_uf": ("mercado_demanda", "Renda Domiciliar per Capita", "IBGE PNADC"),
     "renda_pnadc_trabalho_capitais": ("mercado_demanda", "Renda do Trabalho por Capital", "IBGE PNADC"),
+    "populacao_estimada_municipios": ("mercado_demanda", "População Estimada por Município", "IBGE"),
+    "renda_pnadc_trabalho_rm": ("mercado_demanda", "Renda do Trabalho por Região Metropolitana", "IBGE PNADC"),
 }
 FAIXAS_20_39 = ["20 a 24 anos", "25 a 29 anos", "30 a 34 anos", "35 a 39 anos"]
 PADRAO_PNADC = "habitualmente recebido no trabalho principal"  # variável de referência da tabela 5436

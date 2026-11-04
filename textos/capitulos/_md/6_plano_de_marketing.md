@@ -88,34 +88,38 @@ As avaliações confirmam que o preço da entrada pesa, mas pouco. Das 1.628 ava
 
 Fonte: elaborado pelo próprio autor, com base no Bloco B2 (avaliações até "3 meses atrás", coletadas de 09/10/2026 a 30/10/2026).
 
-O gasto declarado confirma a cesta de consumo dos cardápios. A cesta de cada concorrente soma a mediana das bebidas, a mediana das entradas ou pratos principais e a taxa de entrada. Quando a taxa muda com o dia, entra a média das taxas, ponderada pelos dias em que cada uma vale. Nos 12 concorrentes com taxa conhecida e gasto declarado, a cesta média é de R$ 79,20, e o gasto médio declarado, de R$ 80,14 por pessoa (675 declarações; Blocos B1 e B2). Cada pessoa gasta, em média, uma cesta de consumo. Num grupo de 3,6 pessoas, a visita custa R$ 288,50. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018), ou R$ 694,55 a preços de agosto de 2026, corrigidos pelo IPCA (BCB, SGS): uma visita consome 42% desse orçamento. A luderia é ocasião de saída, não hábito semanal.
+O gasto declarado confirma a cesta de consumo dos cardápios. A cesta de cada concorrente soma a taxa de entrada, a mediana das bebidas e o hambúrguer não vegetariano mais barato do cardápio. Quando a taxa muda com o dia, entra a média das taxas, ponderada pelos dias em que cada uma vale. Nos 13 concorrentes com taxa conhecida e gasto declarado, incluída a São Jogue, o gasto médio declarado é de R$ 78,68 por pessoa (701 declarações; Blocos B1 e B2). Dez deles têm bebida e hambúrguer no cardápio, e a cesta média desses dez é de R$ 74,06: cada pessoa gasta pouco mais de uma cesta de consumo. Num grupo de 3,6 pessoas, a visita custa R$ 283,25. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018), ou R$ 694,55 a preços de agosto de 2026, corrigidos pelo IPCA (BCB, SGS): uma visita consome 41% desse orçamento. A luderia é ocasião de saída, não hábito semanal.
 
-O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 18,68 por pessoa, em todos os dias. O valor fica perto da mediana dos concorrentes (R$ 20,00) e abaixo da São Jogue (R$ 28,00 no fim de semana e R$ 22,00 no dia útil). No modelo, a receita por pessoa segue o gasto declarado: R$ 80,14 no provável, o gasto do concorrente de menor gasto (R$ 40,00) no pessimista e o do de maior gasto (R$ 109,84) no otimista. Os valores entram no registro de premissas do capítulo 9 como R06 e R07. Com a entrada mais barata que a da São Jogue, o preço atrai o cliente da concorrente, e o serviço de mesa – explicação de jogos e acervo grande – sustenta a volta, o que liga o preço à proposta de valor (seção 6.1).
+O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 18,68 por pessoa, em todos os dias. O valor fica perto da mediana dos concorrentes (R$ 20,00) e abaixo da São Jogue (R$ 28,00 no fim de semana e R$ 22,00 no dia útil). No modelo, a receita por pessoa segue o gasto declarado: R$ 78,68 no provável, o gasto do concorrente de menor gasto (R$ 40,00) no pessimista e o do de maior gasto (R$ 109,84) no otimista. Os valores entram no registro de premissas do capítulo 9 como R06 e R07. O modelo separa a taxa do A&B pela parcela da taxa na cesta dos concorrentes, de 28,4%, o que dá R$ 22,32 por pessoa no provável, acima dos R$ 18,68 adotados: a diferença só desloca receita entre a taxa e o A&B e não muda a receita total. Com a entrada mais barata que a da São Jogue, o preço atrai o cliente da concorrente, e o serviço de mesa – explicação de jogos e acervo grande – sustenta a volta, o que liga o preço à proposta de valor (seção 6.1).
 
 ## 6.4 PRAÇA
 
-A Pituba é o bairro indicado para a luderia. Ela lidera a matriz de critérios em todos os conjuntos de pesos testados (Tabela 6.2): tem a 5ª maior população de 20 a 39 anos de Salvador, 15.276 pessoas, e 95,1% dos domicílios em apartamento (IBGE, Censo 2022). A matriz precisa de uma medida de renda que o Censo 2022 não oferece, já que ele não publica renda por bairro. A proporção de domicílios em apartamento entra como substituta da renda: em Salvador, a média é de 28,1%, e só 19 dos 170 bairros passam de 80%. A substituição tem limite: conjuntos habitacionais também são apartamentos, e Cajazeiras II (90,9%) é o exemplo. A matriz considera só os bairros com pelo menos 80% de apartamentos e 3.500 pessoas de 20 a 39 anos – 10 dos 170 bairros.
+A Pituba é o bairro indicado para a luderia. Ela lidera a matriz de critérios em todos os conjuntos de pesos testados (Tabela 6.2): tem a 5ª maior população de 20 a 39 anos de Salvador, 15.276 pessoas (IBGE, Censo 2022), e renda média do responsável pelo domicílio de R$ 7.513,00, 3,7 vezes a média da cidade (IBGE, Censo 2010, por bairro, no Observatório de Bairros de Salvador). A renda entra porque o gasto com lazer se concentra nas famílias de renda alta (seção 5.4). O Censo 2022 não publica renda por bairro, e a de 2010 é a medida por bairro mais recente; a ordem entre bairros muda devagar, mas o valor está defasado. O QualiSalvador, levantamento da UFBA sobre a qualidade urbana dos bairros, também põe a Pituba no grupo de melhor qualidade de vida da cidade [AV]. A matriz considera só os bairros com renda de pelo menos o dobro da média da cidade (R$ 4.109,00) e 3.500 pessoas de 20 a 39 anos – 14 dos 170 bairros.
 
 **Tabela 6.2 – Matriz de critérios ponderados para o bairro, Salvador**
 
-| Posição | Bairro | Pessoas de 20 a 39 anos | Domicílios em apartamento (%) | Pessoas de 20 a 39 anos por km² | Nota (0 a 1) |
+| Posição | Bairro | Pessoas de 20 a 39 anos | Renda média do responsável, 2010 (R$) | Pessoas de 20 a 39 anos por km² | Nota (0 a 1) |
 |---|---|---|---|---|---|
-| 1 | Pituba | 15.276 | 95,1 | 3.353 | 0,864 |
-| 2 | Graça | 3.756 | 97,2 | 4.380 | 0,473 |
-| 3 | Imbuí | 9.127 | 88,3 | 3.431 | 0,437 |
-| 4 | Vila Laura | 4.070 | 93,0 | 4.861 | 0,412 |
-| 5 | Costa Azul | 4.996 | 92,6 | 3.857 | 0,386 |
-| 6 | Caminho das Árvores | 4.037 | 93,8 | 2.013 | 0,270 |
-| 7 | Jardim das Margaridas | 7.018 | 84,8 | 2.744 | 0,222 |
-| 8 | Barra | 3.862 | 89,5 | 2.742 | 0,199 |
-| 9 | Patamares | 5.969 | 88,7 | 1.307 | 0,190 |
-| 10 | STIEP | 4.034 | 86,6 | 3.265 | 0,166 |
+| 1 | Pituba | 15.276 | 7.513 | 3.353 | 0,725 |
+| 2 | Patamares | 5.969 | 12.294 | 1.307 | 0,416 |
+| 3 | Imbuí | 9.127 | 4.353 | 3.431 | 0,344 |
+| 4 | Candeal | 3.653 | 7.392 | 5.533 | 0,315 |
+| 5 | Graça | 3.756 | 7.772 | 4.380 | 0,284 |
+| 6 | Piatã | 5.909 | 8.641 | 918 | 0,259 |
+| 7 | Caminho das Árvores | 4.037 | 9.176 | 2.013 | 0,246 |
+| 8 | Costa Azul | 4.996 | 5.737 | 3.857 | 0,238 |
+| 9 | Rio Vermelho | 5.157 | 6.282 | 2.981 | 0,227 |
+| 10 | Vila Laura | 4.070 | 4.431 | 4.861 | 0,192 |
+| 11 | Ondina | 3.961 | 7.614 | 1.995 | 0,183 |
+| 12 | Barra | 3.862 | 6.585 | 2.742 | 0,172 |
+| 13 | STIEP | 4.034 | 5.360 | 3.265 | 0,156 |
+| 14 | Stella Maris | 5.001 | 6.691 | 936 | 0,147 |
 
-Fonte: elaborado pelo próprio autor, com base no IBGE (Censo 2022, agregados por bairro).
+Fonte: elaborado pelo próprio autor, com base no IBGE (Censo 2022, agregados por bairro; Censo 2010, renda por bairro, via Observatório de Bairros de Salvador, 04/11/2026).
 
-Nota: pesos de 50% para o público de 20 a 39 anos, 30% para os domicílios em apartamento e 20% para o público por km²; cada critério normalizado de 0 a 1 entre os candidatos. Com pesos de 40%, 40% e 20%, de 60%, 20% e 20% ou iguais, a Pituba segue em 1º.
+Nota: pesos de 50% para o público de 20 a 39 anos, 30% para a renda e 20% para o público por km²; cada critério normalizado de 0 a 1 entre os candidatos. Com pesos de 40%, 40% e 20%, de 60%, 20% e 20% ou iguais, a Pituba segue em 1º. Renda média de Salvador em 2010: R$ 2.055,00.
 
-Os pesos são do autor (N6) e não mudam a escolha (nota da Tabela 6.2): Graça, Imbuí e Vila Laura só alternam do 2º ao 5º lugar. Nenhuma das duas unidades da São Jogue está entre os candidatos: a Bela Vista fica no Shopping Bela Vista, em Pernambués, e a Paralela, no Shopping Paralela.
+Os pesos são do autor (N6) e não mudam a escolha (nota da Tabela 6.2): Patamares, Candeal, Imbuí e Graça só alternam do 2º ao 6º lugar. Patamares tem a maior renda entre os candidatos, mas pouco público por km². Nenhuma das duas unidades da São Jogue está entre os candidatos: a Bela Vista fica no Shopping Bela Vista, em Pernambués, e a Paralela, no Shopping Paralela.
 
 Escolhido o bairro, falta definir o ponto. Ele deve ficar a até 1.000 m de uma estação de metrô. Entre os 54 concorrentes do B1, os 24 com estação a até 1.000 m têm mediana de 770 avaliações no Google Maps, contra 396 dos 30 sem estação (Bloco B1, entorno pelo Google Maps). O shopping de porte não mostra a mesma vantagem: os 10 concorrentes com shopping a até 1.000 m têm mediana de 396 avaliações, contra 663 dos 19 sem (25 sem dado). O número de avaliações mede fluxo de forma indireta, e a associação não prova causa. A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica dentro do Shopping Bela Vista, a 387 m do metrô.
 
@@ -127,7 +131,7 @@ O Google Maps é o canal principal, e o Instagram, o de apoio. Entre os 49 conco
 
 A mensagem fala com grupos de amigos e com quem organiza aniversários. Quando a avaliação diz com quem o cliente foi, os amigos aparecem em 56 avaliações, a família em 40, o aniversário em 39 e o casal em 13 (Bloco B2). O dado é exploratório (seção 3.3), mas confirma a ocasião em grupo do capítulo 5. O argumento é a proposta de valor: ninguém precisa conhecer o jogo, porque o instrutor ensina.
 
-O orçamento de marketing é de R$ 1.500,00 por mês no provável, de R$ 1.000,00 a R$ 2.000,00 nos cenários (premissa C10). O valor é estimativa do autor (N6): o escopo não inclui teste de anúncio, e o custo de aquisição de cliente não foi medido. No mês maduro do provável, o orçamento equivale a R$ 1,59 por visita (seção 6.6). Três indicadores acompanham o plano: a nota no Google Maps, com meta de 4,7, a mediana dos concorrentes; a proporção de avaliações que criticam o atendimento, de 5,7% nos concorrentes (B2); e a circulação no pico de fim de semana, que precisa ficar acima de 5,18 pessoas por hora, o ponto de ruptura da seção 9.5.
+O orçamento de marketing é de R$ 1.500,00 por mês no provável, de R$ 1.000,00 a R$ 2.000,00 nos cenários (premissa C10). O valor é estimativa do autor (N6): o escopo não inclui teste de anúncio, e o custo de aquisição de cliente não foi medido. No mês maduro do provável, o orçamento equivale a R$ 1,59 por visita (seção 6.6). Três indicadores acompanham o plano: a nota no Google Maps, com meta de 4,7, a mediana dos concorrentes; a proporção de avaliações que criticam o atendimento, de 5,7% nos concorrentes (B2); e a circulação no pico de fim de semana, que precisa ficar acima de 5,19 pessoas por hora, o ponto de ruptura da seção 9.5.
 
 ## 6.6 ESTIMATIVA DE DEMANDA
 
@@ -184,3 +188,7 @@ IBGE. *Regiões de influência das cidades 2018*. Rio de Janeiro: IBGE, 2020. Di
 IBGE. *Sistema Nacional de Índices de Preços ao Consumidor*: IPCA, tabela 7060. Rio de Janeiro: IBGE, 2026. Disponível em: https://sidra.ibge.gov.br/tabela/7060. Acesso em: 2 nov. 2026.
 
 KIM, W. Chan; MAUBORGNE, Renée. *A estratégia do oceano azul*: como criar novos mercados e tornar a concorrência irrelevante. Rio de Janeiro: Elsevier, 2005. [AV]
+
+OBSERVATÓRIO DE BAIRROS SALVADOR. *Bairros de Salvador*: renda média do responsável pelo domicílio, Censo 2010. Salvador: UFBA, 2026. Disponível em: https://observatoriobairrossalvador.ufba.br/. Acesso em: 4 nov. 2026.
+
+QUALISALVADOR: qualidade do ambiente urbano na cidade da Bahia. Salvador: EDUFBA, 2021. `[AV autoria, título e ano]`

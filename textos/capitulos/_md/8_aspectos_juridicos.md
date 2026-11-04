@@ -6,25 +6,25 @@ Os aspectos jurídicos definem a forma da empresa, o regime de tributos e as lic
 
 A luderia deve ser uma sociedade limitada, unipessoal se tiver um só sócio. A forma limita a responsabilidade do sócio ao capital (Lei n. 10.406/2002, art. 1.052) e, desde a Lei n. 13.874/2019, admite um único sócio. O empresário individual não separa o patrimônio pessoal, e o microempreendedor individual (MEI) não comporta a receita projetada nem o quadro de 6 empregados (LC n. 123/2006, art. 18-A) [AV]. As duas unidades da São Jogue são sociedades empresárias limitadas, com capital social de R$ 50 mil (Bela Vista, 2019) e R$ 150 mil (Paralela, 2025), ambas no Simples Nacional (BRASIL, 2026).
 
-A empresa entra no Simples Nacional como empresa de pequeno porte. A receita provável do ano 2, de R$ 662 mil, passa do teto da microempresa (R$ 360 mil) e fica abaixo do limite de R$ 4,8 milhões (LC n. 123/2006, art. 3º). Cada receita segue o anexo da atividade: o A&B é revenda de mercadoria, no anexo I; a taxa de entrada é serviço de recreação, no anexo III, pela regra geral do art. 18, § 5º-F; o aluguel de jogos é locação de bem móvel, no anexo III sem a parcela do Imposto sobre Serviços (ISS) (art. 18, § 4º, V). O modelo do capítulo 9 tributa o aluguel pelo anexo III cheio, o que superestima o imposto em cerca de R$ 420,00 por ano (a parcela do ISS é 32,5% da alíquota do anexo III na 4ª faixa). O Simples custa cerca da metade do Lucro Presumido: R$ 58,8 mil, contra R$ 123,8 mil por ano (Tabela 8.1). A diferença vem sobretudo da contribuição patronal sobre a folha: no Simples, ela está dentro do Documento de Arrecadação do Simples Nacional (DAS) dos anexos I e III; no Lucro Presumido, soma 6,1% da receita.
+A empresa entra no Simples Nacional como empresa de pequeno porte. A receita provável do ano 2, de R$ 900 mil, passa do teto da microempresa (R$ 360 mil) e fica abaixo do limite de R$ 4,8 milhões (LC n. 123/2006, art. 3º). Cada receita segue o anexo da atividade: o A&B é revenda de mercadoria, no anexo I; a taxa de entrada é serviço de recreação, no anexo III, pela regra geral do art. 18, § 5º-F; o aluguel de jogos é locação de bem móvel, no anexo III sem a parcela do Imposto sobre Serviços (ISS) (art. 18, § 4º, V). O modelo do capítulo 9 tributa o aluguel pelo anexo III cheio, o que superestima o imposto em cerca de R$ 420,00 por ano (a parcela do ISS é 32,5% da alíquota do anexo III na 4ª faixa). O Simples custa 42% menos que o Lucro Presumido: R$ 83,9 mil, contra R$ 146,0 mil por ano (Tabela 8.1). A diferença vem sobretudo da contribuição patronal sobre a folha: no Simples, ela está dentro do Documento de Arrecadação do Simples Nacional (DAS) dos anexos I e III; no Lucro Presumido, soma 4,5% da receita.
 
 **Tabela 8.1 – Tributos no ano maduro, cenário provável: Simples Nacional × Lucro Presumido (R$)**
 
 | Tributo | Simples Nacional | Lucro Presumido |
 |---|---|---|
-| IRPJ e CSLL (presunção de 8% e 12% no A&B, 32% nos serviços) | n.a. | 30.559,62 |
-| PIS e Cofins cumulativos (3,65%) | n.a. | 24.150,41 |
-| ICMS sobre o A&B (4%) [AV] | n.a. | 15.004,06 |
-| ISS sobre a taxa de entrada (5%) [AV] | n.a. | 13.787,68 |
+| IRPJ e CSLL (presunção de 8% e 12% no A&B, 32% nos serviços) | n.a. | 34.737,65 |
+| PIS e Cofins cumulativos (3,65%) | n.a. | 32.861,57 |
+| ICMS sobre o A&B (4%) [AV] | n.a. | 25.486,44 |
+| ISS sobre a taxa de entrada (5%) [AV] | n.a. | 12.617,80 |
 | Contribuição patronal sobre a folha (27,8%) [AV] | n.a. | 40.272,86 |
-| Total | 58.822,30 | 123.774,63 |
-| Carga sobre a receita bruta de R$ 661.655,03 (%) | 8,9 | 18,7 |
+| Total | 83.940,05 | 145.976,32 |
+| Carga sobre a receita bruta de R$ 900.316,91 (%) | 9,3 | 16,2 |
 
 Fonte: elaborado pelo próprio autor, com base na LC n. 123/2006 (anexos I e III), Lei n. 9.249/1995 (arts. 15 e 20), Lei n. 9.718/1998 e Lei n. 8.212/1991 (art. 22); receita e folha do modelo financeiro (Apêndice E).
 
-Nota: n.a.: tributo incluído no DAS do Simples Nacional. Receita e folha do ano maduro: A&B de R$ 375.101,53, taxa de entrada de R$ 275.753,50 e aluguel de jogos de R$ 10.800,00; folha de 13,33 remunerações mensais de R$ 10.864,98, com os adicionais da escala (12 meses, 13º salário e um terço de férias). Sem o adicional de 10% do IRPJ, porque a base presumida fica abaixo de R$ 240 mil por ano. O ISS incide só sobre a taxa de entrada, porque a locação de bem móvel não é serviço.
+Nota: n.a.: tributo incluído no DAS do Simples Nacional. Receita e folha do ano maduro: A&B de R$ 637.161,00, taxa de entrada de R$ 252.355,92 e aluguel de jogos de R$ 10.800,00; folha de 13,33 remunerações mensais de R$ 10.864,98, com os adicionais da escala (12 meses, 13º salário e um terço de férias). Sem o adicional de 10% do IRPJ, porque a base presumida fica abaixo de R$ 240 mil por ano. O ISS incide só sobre a taxa de entrada, porque a locação de bem móvel não é serviço.
 
-A carga do Simples entra no capítulo 9 como 8,2% sobre o A&B e 12,1% sobre os serviços no ano maduro, calculada pela tabela do anexo sobre a receita do ano. A reforma do consumo (EC n. 132/2023 e LC n. 214/2025) mantém o Simples e abre a opção de recolher IBS e CBS por fora a partir de 2027 [AV]; a opção só vale se a luderia vender para empresas que usem o crédito, o que não é o caso. A redução de 40% do IBS e da CBS para bares e restaurantes também fica fora do DAS e não alcança as bebidas alcoólicas (LC n. 214/2025) [AV].
+A carga do Simples entra no capítulo 9 como 8,2% sobre o A&B e 12,0% sobre os serviços no ano maduro, calculada pela tabela do anexo sobre a receita do ano. A reforma do consumo (EC n. 132/2023 e LC n. 214/2025) mantém o Simples e abre a opção de recolher IBS e CBS por fora a partir de 2027 [AV]; a opção só vale se a luderia vender para empresas que usem o crédito, o que não é o caso. A redução de 40% do IBS e da CBS para bares e restaurantes também fica fora do DAS e não alcança as bebidas alcoólicas (LC n. 214/2025) [AV].
 
 O anexo de cada receita depende também do código de atividade. O CNAE principal é 5611-2/01 (restaurantes e similares), pela cozinha própria com refeições, com 9329-8/99 (recreação e lazer), 4763-6/01 (venda de jogos), 7729-2/02 (locação de jogos) e 8230-0/01 (eventos) como secundários. A São Jogue usa 5611-2/03 (lanchonete) como principal e lista 5611-2/01, 9329-8/99, 4763-6/01 e 8230-0/01 entre os secundários (BRASIL, 2026); as duas escolhas caem no anexo I. O código 5611-2/05 foi descartado (bar com entretenimento): a CONCLA define o entretenimento dessa subclasse como música e apresentações, não jogos de mesa (CONCLA, 2026).
 

@@ -4,6 +4,12 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 04/11/2026 | Cesta de consumo = taxa de entrada + mediana das bebidas + hambúrguer não vegetariano mais barato do cardápio (substitui "uma entrada ou prato"); taxa variável pelo dia entra como média ponderada pelos dias | Cap. 6 (6.3); cap. 9 (R06, R07) |
+| 04/11/2026 | R06 sobre as 13 casas com taxa conhecida e gasto declarado, incluída a São Jogue (gasto médio de R$ 78,68); a cesta usa as 10 delas com bebida e hambúrguer (R$ 74,06) | Cap. 6 (6.3); cap. 9 (9.1) |
+| 04/11/2026 | Renda e densidade do cap. 5 por região metropolitana, não pela capital | Cap. 5 |
+| 04/11/2026 | Matriz de bairros (6.4) com a renda média do responsável pelo domicílio (Censo 2010, por bairro, via Observatório de Bairros de Salvador) no lugar da proporção de apartamentos; candidatos com renda de pelo menos 2 vezes a média da cidade e 3.500 pessoas de 20 a 39 anos (14 bairros); pesos 50/30/20; Pituba segue em 1º; QualiSalvador citado como `[AV]` | Cap. 6 (6.4, Tabela 6.2) |
+| 04/11/2026 | Seção 5.4 Fornecedores sai do TMin | Cap. 5 |
+| 04/11/2026 | Horário descrito como as 8 horas contínuas em que mais concorrentes funcionam a cada dia (não "de maior movimento") | Caps. 4, 7 e 10 |
 | 04/11/2026 | Equipe de 6 empregados: 3 atendentes e instrutores (5 dias de 7 h, 35 h por semana) e 3 cozinheiros-chefes (4 dias de 7 h, 28 h), sem redução de salário, para a equipe trabalhar descansada (atendimento e comida em 55,6% e 34,1% das avaliações do B2); intervalo de 1 h de 3 a 4 h depois da entrada (o TST trata o intervalo no início da jornada como supressão); cozinheiros folgam em qualquer dia aberto; sem intermitente nem freelancer; substitui a equipe 5x2 de 40 h | Cap. 7 (7.5, Quadro 7.2, Tabela 7.1); `gerar_modelo_financeiro.py` (`ESCALA`, `JORNADA_SEM`) |
 | 04/11/2026 | Tabela 7.1 compõe o custo mensal por empregado no estilo da DRE (instrutor e cozinheiro), com a economia sobre a jornada de 40 h; C07 sem arredondamento, para a tabela fechar com a Tabela 9.2 | Cap. 7 (Tabela 7.1) |
 | 04/11/2026 | O sócio trabalha em todo o horário aberto (terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h) no caixa, na gestão e nas mesas, no lugar de das 17h ao fechamento; nenhum atendente fica no caixa | Cap. 7 (7.3, 7.5 e Quadro 7.2) |

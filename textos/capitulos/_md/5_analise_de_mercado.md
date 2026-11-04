@@ -1,32 +1,28 @@
 # 5 ANÁLISE DE MERCADO
 
-A análise de mercado verifica se Salvador comporta mais uma luderia e em que condições. O capítulo parte do setor, passa pelo público e pela concorrência e termina nos fornecedores e no macroambiente. Cada seção fecha com a decisão do plano que o dado afeta. Os Blocos B1, B2 e B4 sustentam as análises.
+A análise de mercado verifica se Salvador comporta mais uma luderia e em que condições. O capítulo parte do setor, passa pelo público e pela concorrência e termina no macroambiente. Cada seção fecha com a decisão do plano que o dado afeta. Os Blocos B1, B2 e B4 sustentam as análises.
 
 ## 5.1 ANÁLISE DO SETOR
 
-### 5.1.1 Serviços às famílias no Brasil
+Embora não tenham um formato único de funcionamento, as luderias se enquadram, na maioria, nos serviços prestados às famílias. Entre 2019 e 2023, a receita bruta desse segmento passou de R$ 223,9 bilhões para R$ 388,9 bilhões, com ganho real de 36,4%, descontado o Índice Nacional de Preços ao Consumidor Amplo (IPCA) acumulado (IBGE, PAS, tabela 2611; BCB, SGS). Dentro do segmento, a receita das atividades culturais, recreativas e esportivas subiu 95,4%, e a dos serviços de alimentação, 67,7% (IBGE, PAS, tabela 2611).
 
-Os serviços prestados às famílias cresceram acima da inflação depois da pandemia. A receita bruta do segmento passou de R$ 223,9 bilhões, em 2019, para R$ 388,9 bilhões, em 2023, com ganho real de 36,4%, descontado o Índice Nacional de Preços ao Consumidor Amplo (IPCA) acumulado de 2020 a 2023 (IBGE, PAS, tabela 2611; BCB, SGS). O lazer cresceu mais que a alimentação e atraiu novas empresas. Entre 2019 e 2023, a receita das atividades culturais, recreativas e esportivas subiu 95,4%, e a dos serviços de alimentação, 67,7% (IBGE, PAS, tabela 2611). No mesmo período, o número de empresas de alimentação caiu 8,7%, e o de atividades culturais e recreativas cresceu 35,1% (IBGE, PAS, tabela 2619). A luderia disputa clientes como bar, onde a concorrência é por escala, e se diferencia como lazer, onde há espaço para entrantes.
+O número de empresas andou em sentidos opostos. No mesmo período, as empresas de atividades culturais e recreativas aumentaram 35,1%, e as de alimentação diminuíram 8,7% (IBGE, PAS, tabela 2619). Na alimentação, a receita cresceu com menos empresas: o consumidor gasta mais em restaurantes e lanchonetes, mas concentra o gasto em menos casas e escolhe com mais critério onde vai. Na recreação, receita e número de empresas cresceram juntos, o que indica espaço para entrantes. A luderia fica entre os dois lados. Ela disputa o gasto com bares e restaurantes, mas se diferencia pela atividade recreativa, justamente o lado em que o setor abre espaço.
 
-A mesma pesquisa mostra a estrutura de custos dos serviços de alimentação. Em 2024, os gastos com pessoal equivaleram a 25,1% da receita operacional líquida dos serviços de alimentação, o consumo de mercadorias a 26,8% e o aluguel a 4,0% (IBGE, PAS 2024, tabela 10758). Esses percentuais são o teto de comparação das premissas de custo do capítulo 9.
-
-### 5.1.2 Jogos de tabuleiro e luderias
-
-Os jogos de tabuleiro e cartas passaram de 9,1% para 13,1% das vendas da indústria de brinquedos entre 2017 e 2025 (ABRINQ, 2026). O número sustenta o crescimento do hábito de jogar, não a demanda por luderias. Não há levantamento oficial nem setorial sobre luderias, e o formato não tem código próprio na Classificação Nacional de Atividades Econômicas (CNAE) (seção 8.1): o tamanho do segmento é medido pelo Bloco B1 (seção 5.3).
-
-### 5.1.3 Alimentação fora do lar na Bahia
+Do lado dos custos, a mesma pesquisa dá a estrutura dos serviços de alimentação. Em 2024, os gastos com pessoal equivaleram a 25,1% da receita operacional líquida, o consumo de mercadorias, a 26,8%, e o aluguel, a 4,0% (IBGE, PAS 2024, tabela 10758). Esses percentuais são a referência de comparação das premissas de custo do capítulo 9.
 
 O consumo fora do domicílio pesa mais no orçamento baiano que na média nacional. Na Bahia, a alimentação fora do domicílio respondia por 36,1% da despesa familiar com alimentação, contra 32,8% no Brasil, e as bebidas alcoólicas consumidas fora de casa, por 2,6%, contra 1,5% (IBGE, POF 2017-2018). A propensão local favorece um modelo de receita apoiado em alimentos e bebidas, com o jogo como motivo da visita. O dado entra como evidência de hábito (N2), não como gasto atual.
 
 ## 5.2 PÚBLICO-ALVO E SEGMENTAÇÃO
 
-Do setor, a análise passa ao público da cidade. Salvador tem público em número, mas com renda menor. A população estimada em 2026 é de 2.559.945 habitantes (IBGE, Estimativas da População), e 30,5% dos residentes tinham de 20 a 39 anos no Censo 2022. O rendimento médio do trabalho, de R$ 3.417,00 no 2º trimestre de 2026, coloca Salvador em 22º lugar entre as 27 capitais e em penúltimo entre as que têm luderia no B1 (Figura 5.1), e o rendimento domiciliar per capita caiu de R$ 1.985,00, em 2023, para R$ 1.900,00, em 2025 (IBGE, PNAD Contínua). A renda menor pesa na definição do preço de entrada (seção 6.3), e o ponto precisa estar onde a renda se concentra (seção 6.4).
+Do setor, a análise passa ao público da cidade. Salvador tem público em número, mas com renda menor. A população estimada em 2026 é de 2.559.945 habitantes na capital e de 3.623.067 nos 13 municípios da região metropolitana (IBGE, Estimativas da População), e 30,5% dos residentes da capital tinham de 20 a 39 anos no Censo 2022. A comparação de renda usa a região metropolitana, e não a capital, porque em algumas metrópoles a capital reúne só parte da população da região, o que distorce a comparação. Na Região Metropolitana de Salvador, o rendimento médio do trabalho foi de R$ 3.271,00 no 2º trimestre de 2026: o 14º entre as 21 regiões metropolitanas com dado na PNAD Contínua e o 11º entre as 13 metrópoles com luderia no B1, acima só de Recife e Belém (Figura 5.1). Na mesma região, o rendimento domiciliar per capita caiu de R$ 1.985,00, em 2023, para R$ 1.900,00, em 2025 (IBGE, PNAD Contínua). A renda menor pesa na definição do preço de entrada (seção 6.3), e o ponto precisa estar onde a renda se concentra (seção 6.4).
 
-**Figura 5.1 – Rendimento médio do trabalho nas capitais com luderia no B1, 2º trimestre de 2026 (R$)**
+**Figura 5.1 – Rendimento médio do trabalho nas regiões metropolitanas com luderia no B1, 2º trimestre de 2026 (R$)**
 
-![Rendimento médio do trabalho nas capitais com luderia no B1, 2º trimestre de 2026](../figuras/5_renda_trabalho_capitais.png)
+![Rendimento médio do trabalho nas regiões metropolitanas com luderia no B1, 2º trimestre de 2026](../figuras/5_renda_trabalho_rm.png)
 
 Fonte: elaborado pelo próprio autor, com base no IBGE, PNAD Contínua (04/2026 a 06/2026).
+
+Nota: Brasília corresponde ao Distrito Federal.
 
 O jogo de tabuleiro moderno valoriza a interação presencial. Em entrevistas com jogadores adultos, Sarpa (2016, p. 39–40) mostra que eles descrevem o jogo como o elo que reúne as pessoas: o convívio importa mais que a partida e se concentra no fim de semana, com amigos.
 
@@ -40,29 +36,29 @@ A ocasião em grupo também aparece nas avaliações, embora poucas digam com qu
 
 ## 5.3 ANÁLISE DA CONCORRÊNCIA
 
-O Bloco B1 identificou 54 luderias com mais de 100 avaliações no Google Maps nas 14 metrópoles da pesquisa Regiões de Influência das Cidades (REGIC) (IBGE, 2020), em outubro de 2026. São Paulo concentra 19; Belo Horizonte, Brasília e Curitiba têm seis cada; Rio de Janeiro, cinco; Florianópolis, três; Fortaleza e Porto Alegre, duas; Belém, Goiânia, Recife, Salvador e Vitória, uma; Manaus não tem nenhuma (Figura 5.2).
+O Bloco B1 identificou 54 luderias ativas com mais de 100 avaliações no Google Maps nas 14 metrópoles da pesquisa Regiões de Influência das Cidades (REGIC) (IBGE, 2020), em outubro de 2026. São Paulo concentra 19; Belo Horizonte, Brasília e Curitiba têm seis cada; Rio de Janeiro, cinco; Florianópolis, três; Fortaleza e Porto Alegre, duas; Belém, Goiânia, Recife, Salvador e Vitória, uma; Manaus não tem nenhuma (Figura 5.2). Casas fechadas não entram no conjunto, mesmo com mais de 100 avaliações.
 
-**Figura 5.2 – Luderias com mais de 100 avaliações por metrópole**
+**Figura 5.2 – Luderias ativas com mais de 100 avaliações por metrópole**
 
 ![Luderias com mais de 100 avaliações por metrópole](../figuras/5_casas_por_metropole.png)
 
 Fonte: elaborado pelo próprio autor, com base no Bloco B1 (Google Places API, 15/10/2026).
 
-A nota mediana é 4,7 (de 4,2 a 5,0), e o volume mediano de avaliações é 621 (de 105 a 5.137). Nota alta é condição de entrada no mercado, não diferencial; o volume de avaliações separa as casas e alimenta a estimativa de fluxo.
+A nota mediana do conjunto é 4,7 (de 4,2 a 5,0), e o volume mediano de avaliações, 621 (de 105 a 5.137).
 
 ### 5.3.1 Densidade e concorrência em Salvador
 
-Salvador tem a menor oferta de luderias por habitante entre as metrópoles com ao menos uma casa: cerca de 0,04 por 100 mil habitantes, contra 0,16 em São Paulo e 0,33 em Curitiba (Bloco B1; IBGE, estimativas de 2026). A baixa densidade indica espaço para um segundo concorrente, mas também pode refletir a renda menor, e a ocupação observada na São Jogue (Bloco B3) testa as duas leituras.
+Salvador tem a segunda menor oferta de luderias por habitante entre as metrópoles com ao menos uma casa: 0,028 por 100 mil habitantes da região metropolitana, acima só de Recife (0,025), contra 0,088 em São Paulo e 0,197 em Florianópolis, a maior (Bloco B1; IBGE, estimativas de 2026). A densidade baixa admite duas leituras: ou há espaço para um segundo concorrente, ou o público local adere pouco a esse tipo de casa. A ocupação observada na São Jogue (Bloco B3) testa as duas.
 
 Na prática, a concorrência local se resume a uma casa. A São Jogue é a única luderia de Salvador no recorte. A unidade Bela Vista tem nota 4,8, 787 avaliações e abre 68 horas por semana; a Paralela, mais nova, tem 16 avaliações. As duas ficam dentro de shoppings (Bela Vista e Paralela), no eixo da Avenida Paralela, o que orienta a escolha de bairro (seção 6.4). O aluguel de jogos para levar para casa é o substituto mais próximo, com seis acervos em Salvador na plataforma Acervo de Jogos, mas não compete com a ocasião social.
 
 ### 5.3.2 Acervo e preço
 
-O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 22 dos 53 concorrentes, com mediana de R$ 20,00 por pessoa (de R$ 5,00 a R$ 40,00); a Ludus declara que não cobra, e nos outros 30 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (seção 6.3). O consumo por pessoa, uma bebida e uma entrada ou prato, tem mediana de R$ 50,25 em 36 casas, com faixa interquartil de R$ 38,38 a R$ 65,70, e de R$ 48,50 na São Jogue (Bloco B1, 2026). Salvador fica no meio da distribuição por metrópole (Figura 5.3).
+O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 22 dos 53 concorrentes, com mediana de R$ 20,00 por pessoa (de R$ 5,00, na Toca do Rato, em Porto Alegre, a R$ 45,00, na Encounter, em São Paulo, no sábado); a Ludus declara que não cobra, e nos outros 30 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (seção 6.3). O consumo por pessoa, uma bebida e o hambúrguer não vegetariano mais barato do cardápio, tem mediana de R$ 46,00 em 27 casas, com faixa interquartil de R$ 38,00 a R$ 62,90, e é de R$ 41,00 na São Jogue (Bloco B1, 2026). O hambúrguer entra no lugar de uma entrada ou prato qualquer porque aparece em quase todos os cardápios, o que torna as casas comparáveis. Salvador fica no meio da distribuição por metrópole (Figura 5.3).
 
-**Figura 5.3 – Consumo por pessoa (uma bebida e uma entrada ou prato), mediana por metrópole (R$)**
+**Figura 5.3 – Consumo por pessoa (uma bebida e um hambúrguer), mediana por metrópole (R$)**
 
-![Consumo por pessoa uma bebida e uma entrada ou prato, mediana por metrópole](../figuras/5_consumo_por_metropole.png)
+![Consumo por pessoa uma bebida e um hambúrguer, mediana por metrópole](../figuras/5_consumo_por_metropole.png)
 
 Fonte: elaborado pelo próprio autor, com base nos cardápios do Bloco B1 (04/2024 a 07/2026).
 
@@ -81,20 +77,16 @@ Os dados das seções anteriores alimentam a análise das cinco forças (Quadro 
 | Rivalidade | Baixa no formato, alta no bar comum | 1 luderia no recorte (B1); alimentação concentra receita (PAS) |
 | Ameaça de entrantes | Média | Acervo barato frente à cozinha; barreira na curadoria e na explicação de jogos (B2) |
 | Substitutos | Alta | Bares, aluguel de jogos, lazer em casa |
-| Poder dos fornecedores | Baixo a médio | Jogos com várias lojas (seção 5.4); A&B com muitos distribuidores |
-| Poder dos clientes | Médio | Renda abaixo da média das capitais (seção 5.2); custo de troca baixo |
+| Poder dos fornecedores | Baixo a médio | Jogos vendidos por várias lojas (B5); A&B com muitos distribuidores |
+| Poder dos clientes | Médio | Renda abaixo da média das metrópoles (seção 5.2); custo de troca baixo |
 
 Fonte: elaborado pelo próprio autor.
 
-## 5.4 FORNECEDORES
+## 5.4 MACROAMBIENTE (PESTEL)
 
-O principal insumo próprio da luderia é o acervo. Em oito lojas especializadas, 2.342 jogos tinham preço mediano de R$ 130,00, com faixa interquartil de R$ 69,90 a R$ 249,88 (Bloco B1, 2026). Um acervo do tamanho mediano dos concorrentes custaria cerca de R$ 61 mil, para 322 títulos (Bloco B1, 2026). [Pendente: alimentos e bebidas, mobiliário e equipamentos.] A composição do acervo também encontra apoio nos levantamentos de jogadores. Mecânicas de fácil apreensão aumentam a probabilidade de sucesso de um título entre usuários brasileiros, e jogos de guerra e de cartas colecionáveis a reduzem (FIGUEIREDO; MANTOVANI, 2022, p. 12). Para a luderia, o resultado favorece um acervo de jogos de regras simples (seção 7.4).
+A análise PESTEL examina o macroambiente do negócio em seis dimensões: política, econômica, sociocultural, tecnológica, ambiental e legal (seção 2.2). Cada dimensão entra pelo fator que muda uma decisão do plano.
 
-## 5.5 MACROAMBIENTE (PESTEL)
-
-A análise PESTEL lê o macroambiente em seis dimensões: política, econômica, social, tecnológica, ambiental e legal (seção 2.2). Cada dimensão entra pelo fator que muda uma decisão do plano.
-
-No campo político, o fator de maior efeito é a reforma tributária do consumo. A Emenda Constitucional n. 132/2023 e a Lei Complementar n. 214/2025 trocam os tributos sobre o consumo pelo Imposto sobre Bens e Serviços (IBS) e pela Contribuição Social sobre Bens e Serviços (CBS), com transição a partir de 2026 [AV]. A reforma mantém o Simples Nacional e abre a opção de recolher IBS e CBS por fora a partir de 2027, que a luderia não usa, por vender ao consumidor final (seção 8.1).
+No campo político, o fator de maior efeito é a reforma tributária do consumo. A Emenda Constitucional n. 132/2023 e a Lei Complementar n. 214/2025 simplificam a tributação do consumo: PIS, Cofins, ICMS e ISS dão lugar a dois tributos, o Imposto sobre Bens e Serviços (IBS) e a Contribuição Social sobre Bens e Serviços (CBS), com transição a partir de 2026 [AV]. A reforma mantém o Simples Nacional e abre a opção de recolher IBS e CBS por fora a partir de 2027, que a luderia não usa, por vender ao consumidor final (seção 8.1).
 
 No campo econômico, os juros altos encarecem o capital. A meta da Selic estava em 14,00% ao ano em setembro de 2026, e o mercado espera 12,00% no fim de 2027 (BCB, SGS e Focus). A taxa de desconto do capítulo 9 parte dessa curva.
 
@@ -108,7 +100,7 @@ Fonte: elaborado pelo próprio autor, com base no IBGE, IPCA, tabela 7060 (08/20
 
 O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvador chegou a R$ 54,15 por m² em julho de 2026, alta de 18,9% em 12 meses, contra 7,8% em São Paulo (FIPE, Índice FipeZAP). O aluguel é o principal custo fixo e entra como premissa de risco na escolha do ponto (seção 6.4) e na sensibilidade (capítulo 9). A cotação na Pituba substitui o índice antes do investimento.
 
-No campo social, dois fatores atuam em sentidos opostos. O hábito de comer e beber fora de casa pesa mais no orçamento baiano que na média nacional (seção 5.1.3) e favorece um modelo de receita apoiado em alimentos e bebidas. A renda menor de Salvador (seção 5.2) limita a taxa de entrada e o consumo por pessoa.
+No campo social, dois fatores atuam em sentidos opostos. O hábito de comer e beber fora de casa pesa mais no orçamento baiano que na média nacional (seção 5.1) e favorece um modelo de receita apoiado em alimentos e bebidas. A renda menor de Salvador (seção 5.2) limita a taxa de entrada e o consumo por pessoa.
 
 O gasto com lazer se concentra na renda. A Pesquisa de Orçamentos Familiares (POF) 2017-2018 mede o lazer em sentido estrito – leitura, ingressos, eventos esportivos, recreação, brinquedos e jogos –, sem bares e restaurantes: nesse recorte, a despesa média foi de R$ 14,87 por pessoa por mês (IBGE, 2021, p. 101–102). Comer e beber fora de casa entra em outro grupo da pesquisa, com despesa média de R$ 61,68 por pessoa por mês (IBGE, 2021, p. 63, 65). O décimo de maior rendimento respondeu por 49,0% das despesas com lazer e viagens, mais de cinco vezes o gasto dos quatro décimos de menor rendimento somados (IBGE, 2021, p. 107). Para a luderia, a concentração indica que a demanda depende da renda do entorno, e não só do tamanho da população.
 
@@ -119,8 +111,6 @@ No campo ambiental, o efeito sobre o negócio é residual. O acervo é um bem du
 Por fim, no campo legal, as normas de maior efeito são as de licença e de venda. O alvará depende de a zona do ponto admitir serviço de alimentação e lazer (Lei municipal n. 9.148/2016) [AV], e a lotação aprovada pelo Corpo de Bombeiros fixa o teto de mesas. A venda de bebida alcoólica a menores de 18 anos é crime (Lei n. 8.069/1990, art. 243), o que exige conferência de idade no caixa, e a música ambiente gera retribuição ao Escritório Central de Arrecadação e Distribuição (ECAD) (Lei n. 9.610/1998, art. 68). As obrigações e o custo de cada uma estão no capítulo 8; a regulação municipal de ruído e horário ainda precisa ser conferida [BUSCAR]. Cada norma vira custo ou processo.
 
 **Referências citadas neste capítulo**
-
-ABRINQ. *Anuário da Abrinq 2026*. São Paulo: Associação Brasileira dos Fabricantes de Brinquedos, 2026. `[AV]`
 
 BANCO CENTRAL DO BRASIL (BCB). *Relatório Focus*: expectativas de mercado de 11 set. 2026. Brasília, 2026. Disponível em: https://www.bcb.gov.br/content/focus/focus/R20260911.pdf. Acesso em: 2 nov. 2026.
 

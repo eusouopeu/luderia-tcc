@@ -30,6 +30,9 @@ def consultas() -> list[dict]:
         {"nome": "populacao_estimada", "tabela": 6579, "variaveis": [9324], "periodos": "-3",
          "localidades": f"N1[all]|{CAP}",
          "uso": "Atualização da população do Censo (5.2, 6.6)"},
+        {"nome": "populacao_estimada_municipios", "tabela": 6579, "variaveis": [9324], "periodos": "-1",
+         "localidades": "N6[all]",
+         "uso": "População das regiões metropolitanas (soma dos municípios), densidade de luderias (5.3.1)"},
         {"nome": "populacao_idade_censo_2022", "tabela": 9514, "variaveis": [93], "periodos": "2022",
          "localidades": CAP,
          "classificacao": f"2[6794]|286[113635]|287[{categorias(9514, 287, r'^(Total|\d+ a \d+ anos|100 anos ou mais)$')}]",
@@ -42,6 +45,9 @@ def consultas() -> list[dict]:
         {"nome": "renda_pnadc_trabalho_capitais", "tabela": 5436, "variaveis": variaveis_absolutas(5436),
          "periodos": "-8", "localidades": f"N1[all]|{CAP}", "classificacao": "2[6794]",
          "uso": "Atualização trimestral da renda do trabalho por capital (5.2, 6.4)"},
+        {"nome": "renda_pnadc_trabalho_rm", "tabela": 5436, "variaveis": variaveis_absolutas(5436),
+         "periodos": "-8", "localidades": "N1[all]|N7[all]|N6[5300108]", "classificacao": "2[6794]",
+         "uso": "Renda do trabalho por região metropolitana e RIDE, comparável ao recorte metropolitano do B1 (5.2)"},
         {"nome": "renda_pnadc_per_capita_rm_uf", "tabela": 7395, "variaveis": variaveis_absolutas(7395),
          "periodos": "-3", "localidades": "N1[all]|N3[all]|N7[all]",
          "uso": "Renda domiciliar per capita por região metropolitana e UF (5.2, 6.4)"},
@@ -71,7 +77,11 @@ def consultas() -> list[dict]:
 
 
 def main() -> None:
+    # nomes na linha de comando coletam só essas consultas
+    so = set(sys.argv[1:])
     for c in consultas():
+        if so and c["nome"] not in so:
+            continue
         bruto = sidra(c["tabela"], c["variaveis"], c["periodos"], c["localidades"], c.get("classificacao"))
         bruto["uso_no_plano"] = c["uso"]
         salvar_json(bruto, OUT_DIR / f"{c['nome']}.json")

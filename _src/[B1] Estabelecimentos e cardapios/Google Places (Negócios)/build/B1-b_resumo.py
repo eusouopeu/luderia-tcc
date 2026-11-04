@@ -120,6 +120,18 @@ def instagram():
     return i.drop(columns=["estabelecimento"]).rename(columns={"observacao": "obs_instagram"})
 
 
+VEG = r"veg|plant|falafel|grão|cogumelo|shimeji|soja|tofu|lentilha|vegetais|queijo coalho empanado"
+NAO_VEG = r"bovino|carne|opção vegana"
+
+
+def vegetariano(r) -> bool:
+    """Hambúrguer sem carne: nome, descrição ou observação citam a base vegetal,
+    salvo quando o item também oferece carne (ex.: "vegetariano ou bovino")."""
+    txt = " ".join(str(r[c]) for c in ("item", "descricao", "observacao") if pd.notna(r[c]))
+    return bool(pd.Series([txt]).str.contains(VEG, case=False).iloc[0]
+                and not pd.Series([txt]).str.contains(NAO_VEG, case=False).iloc[0])
+
+
 def cesta():
     it = pd.read_excel(B1 / "cardapios/B1_cardapios_itens_precos.xlsx", sheet_name="itens")
     it = it[it.linha_referencia == "S"].dropna(subset=["preco"])
@@ -135,6 +147,7 @@ def cesta():
             bebida_p25=q(beb, .25), bebida_mediana=q(beb, .5), bebida_p75=q(beb, .75),
             entrada_ou_prato_p25=q(com, .25), entrada_ou_prato_mediana=q(com, .5), entrada_ou_prato_p75=q(com, .75),
             hamburguer_mediana=q(g[g.subcategoria == "hambúrguer"].preco, .5),
+            hamburguer_min_nao_veg=q(g[(g.subcategoria == "hambúrguer") & ~g.apply(vegetariano, axis=1)].preco, 0),
             batata_mediana=q(g[g.subcategoria == "batata"].preco, .5),
             cerveja_mediana=q(g[g.subcategoria == "cerveja"].preco, .5),
             refrigerante_mediana=q(g[g.subcategoria == "refrigerante"].preco, .5),
@@ -203,7 +216,7 @@ CESTA_COLS = ["place_id", "nome", "capital_endereco", "itens_com_preco", "couver
               "couvert_p25", "couvert_mediana", "couvert_p75", "bebida_p25", "bebida_mediana", "bebida_p75",
               "entrada_ou_prato_p25", "entrada_ou_prato_mediana", "entrada_ou_prato_p75",
               "cesta_baixa", "cesta_mediana", "cesta_alta",
-              "hamburguer_mediana", "batata_mediana", "cerveja_mediana", "refrigerante_mediana", "drinks_mediana",
+              "hamburguer_mediana", "hamburguer_min_nao_veg", "batata_mediana", "cerveja_mediana", "refrigerante_mediana", "drinks_mediana",
               "data_cardapio"]
 REAIS = '"R$" #,##0.00'
 
@@ -262,7 +275,7 @@ def main():
         for nivel, suf in [("cesta_baixa", "p25"), ("cesta_mediana", "mediana"), ("cesta_alta", "p75")]:
             wc[f"{col[nivel]}{r}"] = (f"=IF(OR({col['couvert_' + suf]}{r}=\"\",{col['bebida_' + suf]}{r}=\"\",{col['entrada_ou_prato_' + suf]}{r}=\"\"),\"\","
                                       f"{col['couvert_' + suf]}{r}+{col['bebida_' + suf]}{r}+{col['entrada_ou_prato_' + suf]}{r})")
-        for c in CESTA_COLS[5:22]:
+        for c in CESTA_COLS[5:23]:
             wc[f"{col[c]}{r}"].number_format = REAIS
     estilo_cabecalho(wc, len(CESTA_COLS))
     larguras(wc, 12, {"nome": 34, "capital_endereco": 16, "place_id": 12, "data_cardapio": 20})
