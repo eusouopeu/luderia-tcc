@@ -53,22 +53,57 @@ A conferência de peças acontece na devolução de cada jogo, pelo instrutor. J
 
 A equipe é dimensionada pelo fluxo medido, não pelo número de funções. Na noite mais cheia observada, o salão teve 32 pessoas sentadas no pico e 9 grupos de mesa ao longo da visita (B3, Bela Vista, 10/10/2026). Nas demais noites, o pico foi de 12 a 31 pessoas. No ano maduro provável, a luderia recebe 36 pessoas por dia aberto, com a maior parte de sexta a domingo.
 
-Esse fluxo cabe numa equipe de 5 empregados e o sócio (Quadro 7.2). A escala é 5x2, de 40 horas por semana: a segunda, com a casa fechada, é uma folga, e a outra cai na terça, na quarta ou no domingo. Cada empregado folga ao menos um domingo por mês, e as duas atendentes, domingo sim, domingo não (CLT, art. 386). O turno começa 1 hora antes da abertura e tem 1 hora de intervalo (CLT, art. 71). O salão tem 3 instrutores de quinta a sábado, 2 ou 3 na terça e na quarta e 1 ou 2 no domingo, e o sócio fica no salão e no caixa em todo o horário aberto. O teto é de 2 mesas, ou cerca de 10 clientes, por instrutor no pico: a maior carga vista nas visitas. Com 6 mesas e 3 pessoas no salão no pico, a carga fica nesse teto. A cozinha tem um ou dois cozinheiros-chefes por dia; recebe o último pedido 1 hora antes do fechamento e fecha 30 minutos antes, para a limpeza. No dia com um só cozinheiro, o intervalo dele cai na primeira hora aberta, e a cozinha serve a partir da segunda: o intervalo não pode ser trocado por pagamento, que a lei trata como indenização pela falta (art. 71, § 4º), sujeita a multa (art. 75). A gestão, as compras e a cobertura de imprevistos ficam com o sócio (pró-labore, C08).
+Esse fluxo cabe numa equipe de 6 empregados e o sócio (Quadro 7.2). O atendimento e a comida são os temas mais citados nas avaliações dos concorrentes, em 55,6% e 34,1% delas (B2, seção 6.1); por isso, a jornada é menor que a da CLT, sem redução de salário, para a equipe trabalhar descansada. Cada turno tem 7 horas e 1 hora de intervalo no meio, de 3 a 4 horas depois da entrada (CLT, art. 71). Os atendentes trabalham 5 dias, 35 horas por semana; os cozinheiros, 4 dias, 28 horas. A segunda, com a casa fechada, é folga de todos. Os atendentes folgam também na terça, na quarta ou no domingo, e os cozinheiros, em qualquer dia aberto. Cada empregado folga ao menos um domingo por mês, e as duas atendentes, domingo sim, domingo não (CLT, art. 386).
+
+O salão tem 3 instrutores de quinta a sábado e 2 nos demais dias, e o sócio fica no salão e no caixa em todo o horário aberto. O teto é de 2 mesas, ou cerca de 10 clientes, por instrutor no pico: a maior carga vista nas visitas. Com 6 mesas e 3 pessoas no salão, a carga fica nesse teto. Na terça, na quarta e no domingo, os dois instrutores entram com a abertura e fecham a casa, e, nos intervalos de cada um, o salão fica com um instrutor e o sócio: teto de 4 mesas, nos dias de menor movimento. No domingo em que o atendente folga, uma vez a cada 4 semanas, o salão fica com uma atendente e o sócio. A cozinha tem 2 cozinheiros-chefes por dia, com intervalos alternados, e os dois no pico; recebe o último pedido 1 hora antes do fechamento e fecha 30 minutos antes, para a limpeza. A gestão, as compras e a cobertura de imprevistos ficam com o sócio (pró-labore, C08).
 
 **Quadro 7.2 – Equipe proposta**
 
 | Função | Pessoas | Escala | Salário de admissão (R$) | Remuneração com adicionais (R$) |
 |---|---|---|---|---|
-| Atendente e instrutor de jogos | 3 | 5x2 de 8 h (40 h): terça a sexta das 14h às 23h, sábado e domingo das 13h às 22h, com 1 h de intervalo; folgas na segunda e na terça, na quarta ou no domingo | 1.653,75 | 1.814,21 |
-| Cozinheiro-chefe | 2 | A mesma dos instrutores | 1.700,00 | 1.861,51 |
+| Atendente e instrutor de jogos | 3 | 5 dias de 7 h (35 h), com 1 h de intervalo. Quinta e sexta: um das 14h às 22h e dois das 15h às 23h; sábado, uma hora antes. Terça, quarta e domingo: dois, da abertura ao fechamento. Folgas na segunda e na terça, na quarta ou no domingo | 1.653,75 | 1.806,80 |
+| Cozinheiro-chefe | 3 | 4 dias de 7 h (28 h), com 1 h de intervalo: um das 14h às 22h e um das 15h às 23h (no fim de semana, uma hora antes). Folgas na segunda e em dois dias abertos | 1.700,00 | 1.814,86 |
 | Sócio (caixa, gestão e mesas) | 1 | Todo o horário aberto: terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h | Pró-labore (C08) | n.a. |
-| Total (folha mensal) | 5 empregados | n.a. | 8.361,25 | 9.165,64 |
+| Total (folha mensal) | 6 empregados | n.a. | 10.061,25 | 10.864,98 |
 
-Fonte: elaborado pelo próprio autor, com base no Bloco B3 (10/10/2026 a 30/10/2026) e no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana; recreador em todas as atividades e cozinheiro geral na CNAE 56).
+Fonte: elaborado pelo próprio autor, com base nos Blocos B2 (1.628 avaliações) e B3 (10/10/2026 a 30/10/2026) e no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana; recreador em todas as atividades e cozinheiro geral na CNAE 56).
 
-Nota: remuneração por pessoa, média do cargo: salário, adicional noturno de 20% e hora noturna reduzida das 22h às 23h (CLT, art. 73), repouso sobre esses adicionais e feriados trabalhados em dobro (Lei n. 605/1949, art. 9º). O domingo trabalhado com folga na semana não tem adicional (TST, Súmula 146). Com encargos, provisões e vale-transporte de 43,7% (premissa C07), o custo vai a R$ 13.171,94 por mês (Tabela 9.2). Os salários ficam acima do piso de R$ 1.625,09 da convenção coletiva dos bares e restaurantes de Salvador (SHRBS e Sindbares, 2024/2026), que pode fixar adicional noturno maior que o da CLT [AV]. n.a.: não se aplica.
+Nota: remuneração por pessoa: salário, adicional noturno de 20% e hora noturna reduzida das 22h às 23h (CLT, art. 73), repouso sobre esses adicionais e feriados trabalhados em dobro (Lei n. 605/1949, art. 9º). O domingo trabalhado com folga na semana não tem adicional (TST, Súmula 146). Com encargos, provisões e vale-transporte de 42,4% (premissa C07), o custo vai a R$ 15.473,83 por mês (Tabela 9.2). Os salários ficam acima do piso de R$ 1.625,09 da convenção coletiva dos bares e restaurantes de Salvador (SHRBS e Sindbares, 2024/2026), que pode fixar adicional noturno maior que o da CLT [AV]. n.a.: não se aplica.
 
-A folha com encargos fica em 17,2% da receita do ano maduro provável, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). O salário de admissão do Novo CAGED tende a ficar abaixo do salário pago a quem já está no cargo; por isso, o capítulo 9 testa um acréscimo de até 11,4% sobre ele. A São Jogue opera com mais gente: de três a sete instrutores no salão nas visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
+Com a jornada menor, o custo de cada empregado cai, sem redução de salário. O cozinheiro trabalha 4 dias por semana em vez de 5: recebe menos vale-transporte, faz menos noites depois das 22h e trabalha em menos feriados, e custa R$ 113,27 a menos por mês. O instrutor, que segue com 5 dias, faz menos horas noturnas e custa R$ 9,84 a menos (Tabela 7.1).
+
+**Tabela 7.1 – Composição do custo mensal por empregado, cenário provável (R$)**
+
+| Conta | Instrutor de jogos | Cozinheiro-chefe |
+|---|---|---|
+| Salário de admissão | 1.653,75 | 1.700,00 |
+| (+) Adicional noturno (20%) | 21,91 | 14,08 |
+| (+) Hora noturna reduzida (hora extra de 50%) | 28,18 | 18,10 |
+| (+) Repouso semanal sobre os adicionais | 11,09 | 7,12 |
+| (+) Feriados trabalhados em dobro | 91,87 | 75,56 |
+| **(=) Remuneração** | 1.806,80 | 1.814,86 |
+| (+) FGTS (8%) | 144,54 | 145,19 |
+| (+) 13º salário (1/12) | 150,57 | 151,24 |
+| (+) Férias com 1/3 (1/12 × 4/3) | 200,76 | 201,65 |
+| (+) FGTS sobre 13º e férias | 28,10 | 28,23 |
+| **(=) Custo com encargos sobre a remuneração** | 2.330,77 | 2.341,17 |
+| (+) Aviso prévio indenizado (provisão: 42 dias em 60 meses) | 38,59 | 39,67 |
+| (+) FGTS sobre o aviso prévio | 3,09 | 3,17 |
+| (+) Multa de 40% do FGTS (provisão) | 70,29 | 70,64 |
+| **(=) Custo com provisões de rescisão** | 2.442,74 | 2.454,65 |
+| (+) Contribuição patronal ao INSS, RAT e terceiros (no DAS) | 0,00 | 0,00 |
+| (+) Vale-transporte (parte do empregador) | 157,32 | 103,23 |
+| **(=) Custo mensal por empregado** | 2.600,06 | 2.557,88 |
+| (×) Empregados no cargo | 3 | 3 |
+| **(=) Custo mensal do cargo** | 7.800,19 | 7.673,65 |
+| Custo mensal por empregado na jornada anterior, de 40 h em 5 dias | 2.609,90 | 2.671,15 |
+| **(=) Economia mensal por empregado com a nova jornada** | 9,84 | 113,27 |
+
+Fonte: elaborado pelo próprio autor, com base no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana), na CLT, na Lei n. 605/1949, na Lei n. 7.418/1985 e na Lei n. 8.036/1990; modelo financeiro (Apêndice E).
+
+Nota: os dois cargos somam R$ 15.473,83 por mês, o pessoal da Tabela 9.2; diferença de R$ 0,01 por arredondamento. No Simples Nacional, a contribuição patronal fica no DAS (LC n. 123/2006, art. 13). Jornada anterior: 5 dias de 8 h, com o mesmo salário.
+
+A folha com encargos fica em 20,3% da receita do ano maduro provável, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). O salário de admissão do Novo CAGED tende a ficar abaixo do salário pago a quem já está no cargo; por isso, o capítulo 9 testa um acréscimo de até 11,4% sobre ele. A São Jogue opera com mais gente: de três a sete instrutores no salão nas visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
 
 Contratar instrutores como jovens aprendizes reduz pouco o custo. Os salários já estão no piso, e o aprendiz trabalha no máximo 6 horas por dia, o que exige mais pessoas para cobrir as mesmas horas; menores de 18 anos não podem trabalhar depois das 22h (CLT, art. 404 e art. 432). O estágio exige relação com o curso do estudante (Lei n. 11.788/2008) e não cabe na função de atendimento. As duas formas ficam fora do provável. Fora da equipe fixa, o contador é terceirizado (R$ 1.200,00 por mês, C11). A limpeza diária entra nas tarefas de abertura e fechamento da equipe.
 

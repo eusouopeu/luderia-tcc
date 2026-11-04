@@ -135,7 +135,8 @@ def dados():
     f = g.ler_fontes()
     prem = g.premissas(f)
     quadro = g.quadro_pessoal(f)
-    folha = sum(q * s for _, _, q, s, _ in quadro)
+    det = g.pessoal_detalhe(quadro)  # remuneração com os adicionais da escala, como no modelo
+    folha = sum(q * det[cargo]["remuneracao"] for cargo, _, q, _, _ in quadro)
     mc = g.monte_carlo(f, prem, folha, quadro)
     est = pd.read_excel(B1 / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx", sheet_name="estabelecimentos")
     vis = pd.read_csv(B3 / "contagem_resumo_visitas.csv", sep=";", encoding="utf-8-sig")

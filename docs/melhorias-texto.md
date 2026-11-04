@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 04/11/2026, depois da nova equipe (5 empregados em escala 5x2 e o sócio no caixa), dos sanitários do B5 e das obrigações trabalhistas, de saúde e segurança e do consumidor no Quadro 8.1: caps. 4, 7, 8, 9, 10 e 11 revistos; D33 resolvido; D38 revisto; D64 e D65 novos. Anterior: 03/11/2026, TMin v21, depois da conclusão da codificação do B2 (grade de 22 temas; recodificação cega com kappa de 0,84) e da escrita do 6.1, 6.2, 6.5 e 6.6 (demanda vinda do cap. 9). Caps. 3, 4, 5, 6, 7, 9 e 11 revistos; D26, D27 e D47 resolvidos; D04, D54 e D57 revistos; D58 a D60 e C21 novos.
+Última análise: 04/11/2026, depois da nova equipe (5 empregados em escala 5x2 e o sócio no caixa), dos sanitários do B5 e das obrigações trabalhistas, de saúde e segurança e do consumidor no Quadro 8.1: caps. 4, 7, 8, 9, 10 e 11 revistos; D33 resolvido; D38 revisto; D64 a D66 novos (equipe de 6 e TMin v24). Anterior: 03/11/2026, TMin v21, depois da conclusão da codificação do B2 (grade de 22 temas; recodificação cega com kappa de 0,84) e da escrita do 6.1, 6.2, 6.5 e 6.6 (demanda vinda do cap. 9). Caps. 3, 4, 5, 6, 7, 9 e 11 revistos; D26, D27 e D47 resolvidos; D04, D54 e D57 revistos; D58 a D60 e C21 novos.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -20,7 +20,9 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
-**D64 — Domingo com um só instrutor (04/11/2026).** Cap. 7 (7.5: teto de 2 mesas por instrutor no pico e "3 pessoas no salão no pico") × escala do Quadro 7.2. No domingo em que o atendente folga, o salão tem uma atendente e o sócio, que também cuida do caixa: teto de 4 mesas, abaixo das 6 do salão. A demanda provável ocupa 3,2 mesas no pico, mas a otimista passa do teto nesse domingo. Sugestão: declarar a exceção no 7.5 ou aceitar a folga do atendente num domingo em que a demanda for menor.
+**D64 — Dias com dois instrutores (04/11/2026).** Cap. 7 (7.5: teto de 2 mesas por instrutor e 3 pessoas no salão) × escala do Quadro 7.2. Na terça, na quarta e no domingo, o salão tem 2 instrutores e o sócio; no intervalo de cada um, fica com 1 instrutor e o sócio, teto de 4 mesas, e no domingo de folga do atendente (1 a cada 4 semanas) com 1 instrutor e o sócio o dia todo. O 7.5 declara a exceção; a demanda provável ocupa 3,2 mesas no pico, mas a otimista passa de 4. Sugestão: manter declarado ou cobrir os intervalos com intermitente (R$ 1.066 por mês; VPL de R$ 615 mil, contra R$ 701 mil).
+
+**D66 — TMin v24 com 91 páginas (04/11/2026).** Texto da p. 10 à 91, contra o teto de 90 (`_instrucoes/1_estrutura.md`); o cap. 7 ganhou a Tabela 7.1 e o Quadro 8.1 quatro linhas. Sugestão: os cortes do C21 (cap. 6) e dos apêndices (L5 e L6) devolvem a margem.
 
 **D65 — Receita da Tabela 8.1 × modelo do cap. 9 (04/11/2026).** Cap. 8 (Tabela 8.1: receita bruta de R$ 661.655,03 no ano maduro) × cap. 9 (Tabela 9.3: R$ 916.823 a partir do ano 2). A Tabela 8.1 compara os regimes com a receita de uma versão anterior do modelo; só a linha da contribuição patronal foi refeita, com a nova folha. Sugestão: refazer a Tabela 8.1 com a receita e a folha do modelo atual, ou gerá-la pelo `gerar_modelo_financeiro.py`.
 

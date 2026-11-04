@@ -33,9 +33,10 @@ taxa (anexo III) da de A&B (anexo I e CMV).
 
 Desenho enxuto (P7 de _instrucoes/1a_principios.md, 02/11/2026): 6 mesas;
 terça a sexta das 15h às 23h e sábado e domingo das 14h às 22h (as 8 h
-contínuas com mais luderias abertas no B1), segunda fechada; equipe de 5 (2
-cozinheiros-chefes e 3 atendentes e instrutores, escala 5x2 de 40 h; decisão do
-autor, 04/11/2026), mais o sócio no caixa em todo o horário aberto (pró-labore, C08).
+contínuas com mais luderias abertas no B1), segunda fechada; equipe de 6 (3
+cozinheiros-chefes em 4 dias de 7 h, 28 h por semana, e 3 atendentes e instrutores
+em 5 dias de 7 h, 35 h, sem redução de salário; decisão do autor, 04/11/2026), mais o
+sócio no caixa em todo o horário aberto (pró-labore, C08).
 A remuneração soma ao salário os adicionais legais da escala (ESCALA): noturno,
 hora noturna reduzida, repouso sobre eles e feriados em dobro; os encargos e o
 vale-transporte (C07) saem da mesma conta, linha a linha (custo_empregado).
@@ -90,17 +91,27 @@ FIGURA_MC = ROOT / "textos" / "capitulos" / "figuras" / "9_monte_carlo.png"
 SOFFICE = "/Applications/LibreOffice.app/Contents/MacOS/soffice"
 
 MESES = 60
-# Escala 5x2 (decisão do autor, 04/11/2026): segunda fechada; a segunda folga cai na terça, na
-# quarta ou no domingo; homem folga 1 domingo a cada 4 semanas e mulher, domingo sim, domingo não
-# (CLT, art. 386); atendentes 1 e 2 mulheres. Folga de cada semana do ciclo de 4 semanas.
+# Escala (decisão do autor, 04/11/2026): segunda fechada; turnos de 7 h com 1 h de intervalo no
+# meio do turno; homem folga 1 domingo a cada 4 semanas e mulher, domingo sim, domingo não (CLT,
+# art. 386); atendentes 1 e 2 mulheres. Folgas de cada semana do ciclo de 4 semanas.
+# Atendentes: 5 dias (1 folga por semana, na terça, na quarta ou no domingo); 3 no salão de quinta
+# a sábado e 2 nos demais dias. Cozinheiros: 4 dias (2 folgas por semana), 2 na cozinha todo dia.
 ESCALA = {
-    "Atendente e instrutor de jogos (recreador)": (("dom", "ter", "dom", "ter"), ("qua", "dom", "qua", "dom"),
-                                                    ("ter", "dom", "ter", "qua")),
-    "Cozinheiro-chefe": (("dom", "ter", "ter", "ter"), ("qua", "qua", "dom", "qua")),
+    "Atendente e instrutor de jogos (recreador)": (
+        (("dom",), ("ter",), ("dom",), ("qua",)),
+        (("ter",), ("dom",), ("ter",), ("dom",)),
+        (("qua",), ("dom",), ("qua",), ("ter",))),
+    "Cozinheiro-chefe": (
+        (("dom", "qua"), ("qui", "sab"), ("ter", "sex"), ("dom", "qua")),
+        (("ter", "sex"), ("dom", "qua"), ("qui", "sab"), ("ter", "sex")),
+        (("qui", "sab"), ("ter", "sex"), ("dom", "qua"), ("qui", "sab"))),
 }
-DIVISOR_H = 200  # horas por mês da jornada de 40 h (5 × 8 h), para o salário-hora
+JORNADA_SEM = {"Atendente e instrutor de jogos (recreador)": 35, "Cozinheiro-chefe": 28}  # 7 h por turno
+# turnos que fecham às 23h, de terça a sexta, por semana (1 h depois das 22h): atendentes, os 2 que
+# entram às 15h; cozinheiros, o que entra às 15h
+NOITES_SEM = {"Atendente e instrutor de jogos (recreador)": 8, "Cozinheiro-chefe": 4}
 ADIC_NOTURNO = 0.20  # CLT, art. 73: 20% das 22h às 5h, hora noturna de 52 min 30 s
-HORA_EXTRA = 0.50  # CF, art. 7º, XVI: a hora reduzida das 22h às 23h passa das 8 h diárias
+HORA_EXTRA = 0.50  # CF, art. 7º, XVI: a hora reduzida das 22h às 23h passa da jornada contratada
 FERIADOS_ANO = 14  # 9 nacionais, 2 de julho (BA) e 4 de Salvador (Lei n. 9.093/1995) [AV]
 TARIFA_VT = 5.90  # ônibus de Salvador desde 05/01/2026; ida e volta por dia trabalhado (Lei n. 7.418/1985)
 SEMANAS_MES = 365.25 / 7 / 12
@@ -198,30 +209,26 @@ def quadro_pessoal(f) -> list[tuple]:
     todas = "CAGED, admissões ago/2025-jul/2026, Salvador, todas as atividades, mediana (CNAE 56 com amostra pequena)"
     rec = salario(f, "Recreador", "todas as atividades")
     return [
-        ("Cozinheiro-chefe", "513205", 2, salario(f, "Cozinheiro geral"),
+        ("Cozinheiro-chefe", "513205", 3, salario(f, "Cozinheiro geral"),
          cn56 + "; cozinheiro geral, sem chefe de cozinha no recorte"),
         ("Atendente e instrutor de jogos (recreador)", "371410", 3, rec, todas),
     ]
 
 
-def noites_por_mes(folgas: tuple) -> float:
-    """Noites trabalhadas de terça a sexta (fecha às 23h, com 1 h depois das 22h) por mês."""
-    return sum(1 for semana in folgas for d in ("ter", "qua", "qui", "sex") if semana != d) / len(folgas) * SEMANAS_MES
-
-
-def custo_empregado(sal: float, folgas: tuple, anos_aviso: int = 5, vt: bool = True) -> dict:
+def custo_empregado(sal: float, cargo: str, folgas: tuple, anos_aviso: int = 5, vt: bool = True) -> dict:
     """Custo mensal de um empregado, linha a linha (R$). Remuneração: salário mais adicionais da
     escala; encargos do empregador no Simples (a contribuição patronal fica no DAS dos anexos I e
     III, LC n. 123/2006, art. 13); provisão de uma rescisão sem justa causa a cada anos_aviso anos."""
-    sh = sal / DIVISOR_H
-    n = noites_por_mes(folgas)
+    sh = sal / (JORNADA_SEM[cargo] * 5)  # salário-hora: divisor de 5 × a jornada semanal
+    n = NOITES_SEM[cargo] / len(ESCALA[cargo]) * SEMANAS_MES  # noites depois das 22h por mês
+    dias_sem = 6 - sum(len(sem) for sem in folgas) / len(folgas)  # dias trabalhados por semana
     dom, fer = 365.25 / 7 / 12, FERIADOS_ANO / 12
     repouso = (dom + fer) / (365.25 / 12 - dom - fer)  # dias de repouso ÷ dias úteis do mês
     c = {"Salário": sal,
          "Adicional noturno (20%)": n * 1.0 * sh * ADIC_NOTURNO,
          "Hora noturna reduzida (hora extra de 50%)": n / 7 * sh * (1 + ADIC_NOTURNO) * (1 + HORA_EXTRA)}
     c["Repouso semanal sobre os adicionais"] = (c["Adicional noturno (20%)"] + c["Hora noturna reduzida (hora extra de 50%)"]) * repouso
-    c["Feriados trabalhados em dobro"] = FERIADOS_ANO * 6 / 7 * 5 / 6 / 12 * 2 * sal / 30
+    c["Feriados trabalhados em dobro"] = FERIADOS_ANO * 6 / 7 * dias_sem / 6 / 12 * 2 * sal / 30
     rem = sum(c.values())
     c["Remuneração"] = rem
     c["FGTS (8%)"] = 0.08 * rem
@@ -233,7 +240,7 @@ def custo_empregado(sal: float, folgas: tuple, anos_aviso: int = 5, vt: bool = T
     c["FGTS sobre o aviso prévio"] = 0.08 * av
     c["Multa de 40% do FGTS (provisão)"] = 0.4 * (c["FGTS (8%)"] + c["FGTS sobre 13º e férias"] + c["FGTS sobre o aviso prévio"])
     c["INSS patronal, RAT e terceiros (no DAS)"] = 0.0
-    c["Vale-transporte (parte do empregador)"] = max(0.0, 2 * TARIFA_VT * 5 * SEMANAS_MES - 0.06 * sal) if vt else 0.0
+    c["Vale-transporte (parte do empregador)"] = max(0.0, 2 * TARIFA_VT * dias_sem * SEMANAS_MES - 0.06 * sal) if vt else 0.0
     ks = list(c)
     c["Custo mensal"] = rem + sum(c[k] for k in ks[ks.index("Remuneração") + 1:])
     return c
@@ -243,7 +250,7 @@ def pessoal_detalhe(quadro) -> dict:
     """Por cargo: remuneração média por pessoa e custo linha a linha de cada pessoa da escala."""
     out = {}
     for cargo, _, q, s, _ in quadro:
-        pessoas = [custo_empregado(s, fl) for fl in ESCALA[cargo]]
+        pessoas = [custo_empregado(s, cargo, fl) for fl in ESCALA[cargo]]
         assert len(pessoas) == q, cargo
         out[cargo] = dict(pessoas=pessoas, remuneracao=sum(p["Remuneração"] for p in pessoas) / q)
     return out
@@ -254,10 +261,10 @@ def encargos_c07(quadro, anos_aviso: int, vt: bool) -> float:
     rem = enc = 0.0
     for cargo, _, q, s, _ in quadro:
         for fl in ESCALA[cargo]:
-            c = custo_empregado(s, fl, anos_aviso, vt)
+            c = custo_empregado(s, cargo, fl, anos_aviso, vt)
             rem += c["Remuneração"]
             enc += c["Custo mensal"] - c["Remuneração"]
-    return round(enc / rem, 4)
+    return enc / rem
 
 
 def premissas(f) -> list[dict]:
@@ -691,7 +698,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
         ws.cell(r, 4).number_format = ws.cell(r, 5).number_format = ws.cell(r, 6).number_format = MOEDA
     wb.defined_names["FOLHA_REF"] = DefinedName("FOLHA_REF", attr_text=f"pessoal!$F${rt}")
     wb.defined_names["QUADRO_N"] = DefinedName("QUADRO_N", attr_text=f"pessoal!$C${rt}")
-    nota(ws, rt + 2, "Fonte: Novo CAGED (MTE), salário de admissão, mediana, ago/2025 a jul/2026 (B4). Adicionais pela escala 5x2 "
+    nota(ws, rt + 2, "Fonte: Novo CAGED (MTE), salário de admissão, mediana, ago/2025 a jul/2026 (B4). Adicionais pela escala de turnos de 7 h "
          "(noturno, hora noturna reduzida, repouso sobre eles e feriados em dobro; CLT, art. 73; Lei n. 605/1949, art. 9º). "
          "Acréscimo salarial e encargos na aba premissas (C06 e C07); custo linha a linha abaixo.", 7)
     # custo linha a linha de cada pessoa da escala (provável)
