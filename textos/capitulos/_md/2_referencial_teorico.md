@@ -48,8 +48,8 @@ O único estudo de viabilidade localizado sobre o formato, de um *board game caf
 
 | Conceito ou ferramenta | Decisão que apoia | Aplicação |
 |---|---|---|
-| Economia da experiência; *competitive socialising*; ambiente de convívio | A ocasião social como produto | Seções 5.2 e 6.1 |
-| Cinco forças; PESTEL | Espaço para um novo concorrente; limites externos | Seções 5.3 e 5.5 |
+| Economia da experiência; *competitive socialising*; ambiente de convívio | A ocasião social como produto | Seções 5.1, 5.2 e 6.1 |
+| Cinco forças; PESTEL | Espaço para um novo concorrente; limites externos | Seções 5.2 e 5.3 |
 | Modelo Kano e PRC | Atributos que não podem ser reduzidos | Seções 6.1 e 6.2 |
 | Ambiente físico; capacidade e lei de Little | Ambiente, mesas, giro e equipe | Cap. 7 e seção 9.1 |
 | SWOT | Diagnóstico estratégico | Seção 10.1 |

@@ -8,6 +8,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ---
 
+> **Numeração do cap. 5 (05/11/2026):** as seções do cap. 5 citadas abaixo seguem a numeração antiga (5.1 setor, 5.2 público, 5.3 concorrência, 5.4 PESTEL). A atual: 5.1 mercado do entretenimento social, 5.2 PESTEL, 5.3 cinco forças, 5.4 concorrência e localização, 5.5 síntese; figuras 5.1 a 5.4 renumeradas. Ao resolver cada item, usar a numeração nova.
+
 # Divergências
 
 ## Grave

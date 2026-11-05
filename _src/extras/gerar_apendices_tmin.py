@@ -176,7 +176,7 @@ def apendice_a(d):
             par(f"A busca pela Google Places API levantou 164 candidatos com mais de 100 avaliações nas 14 metrópoles da REGIC 2018 "
                 f"e em suas regiões metropolitanas, e a curadoria manual aprovou {len(est)}. Cada concorrente pertence a uma única "
                 f"metrópole: a capital da região metropolitana do seu endereço. {len(por)} das 14 metrópoles têm ao menos um concorrente, "
-                "com a contagem por metrópole na Figura 5.2. A Tabela A.1 lista os concorrentes, com a nota e o número de avaliações no Google Maps."),
+                "com a contagem por metrópole na Figura 5.1. A Tabela A.1 lista os concorrentes, com a nota e o número de avaliações no Google Maps."),
             legenda("Tabela A.1 – Concorrentes aprovados"),
             tabela("Tabela", [4271, 2300, 1300, 1200], t2, ["left", "left", "right", "right"], sz=18),
             fonte(fonte_b1)] + taxas_entrada(), dict(concorrentes=len(est))
@@ -221,7 +221,7 @@ def apendice_c(d):
          ["IBGE, PNAD Contínua", "SIDRA 5436 e 7395", "Capitais; 2º trimestre de 2026", "Renda (seção 5.2)"],
          ["IBGE, POF 2017-2018", "SIDRA 6715 e 6972; perfil das despesas", "Brasil e Bahia; 2017-2018", "Gasto com lazer e alimentação fora (seções 5.1 e 5.5)"],
          ["IBGE, PAS", "SIDRA 2611, 2619 e 10758", "Brasil; 2023", "CMV de A&B (C01)"],
-         ["IBGE, IPCA", "SIDRA 7060", "Brasil e Salvador; 12 meses até ago/2026", "Preços (Figura 5.4)"],
+         ["IBGE, IPCA", "SIDRA 7060", "Brasil e Salvador; 12 meses até ago/2026", "Preços (Figura 5.3)"],
          ["MTE, Novo CAGED", "Admissões", "Salvador; ago/2025 a jul/2026", "Salários (Quadro 7.2; C06)"],
          ["Fipe, FipeZap", "Locação comercial", "Salvador; jul/2026", "Aluguel (C04)"],
          ["LC n. 123/2006", "Anexos I e III", "Vigentes em 2026", "Simples Nacional (seção 8.1)"],

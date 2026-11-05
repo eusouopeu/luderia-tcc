@@ -27,43 +27,44 @@ Padrão de parágrafo: **achado → evidência → implicação para o plano**.
 
 O capítulo mistura duas bases e é escrito em duas etapas:
 
-1. **Dados secundários** — 5.1, 5.4, 5.5 e o esqueleto das cinco forças (5.3). Podem ser escritos antes das análises próprias.
-2. **Dados próprios** — 5.3 (mapeamento e rivalidade, Bloco B1) depois da curadoria e dos cardápios; 5.2 depois do fim da análise do Bloco B2.
+1. **Dados secundários** - 5.1, 5.2 e o esqueleto das cinco forças (5.3). Podem ser escritos antes das análises próprias.
+2. **Dados próprios** - 5.3 (rivalidade, Bloco B1), 5.4 (concorrência e localização, Bloco B1) depois da curadoria e dos cardápios; a dimensão social da 5.2 (avaliações) depois do fim da análise do Bloco B2.
 
-A matriz SWOT não fica neste capítulo: está em 10.1.
+A matriz SWOT não fica neste capítulo: está em 10.1. A síntese (5.5) é opcional e só liga o capítulo à SWOT.
+
+## Regra de alocação dos dados (04/11/2026)
+
+Cada dado fica em **uma seção só**; as outras remetem a ela. Critério: a pergunta que o dado responde.
+
+| Seção | Pergunta | Dados |
+|---|---|---|
+| 5.1 O mercado do entretenimento social | Qual o tamanho e a estrutura do setor? | Receita do setor, número de empresas, estrutura de custos (PAS), contagem de luderias (B1) |
+| 5.2 PESTEL, econômico | Quais condições macro ajudam ou atrapalham o setor? | Juros, inflação (alimentos e aluguel), renda média e poder de compra agregado |
+| 5.2 PESTEL, social | Como as pessoas gastam e se comportam? | Gasto das famílias com lazer e alimentação fora, faixa etária, hábitos de lazer, avaliações (B2) |
+| 5.3 Cinco forças | Quanta pressão o setor sofre? | Só remissões às seções 5.1, 5.2 e 5.4, mais os dados de rivalidade local |
+| 5.4 Concorrência e localização | O que os concorrentes oferecem, cobram e onde ficam? | Acervo, preço, metrô e shopping (500 m e 1.000 m) |
+
+Renda média e desemprego medem poder de compra agregado e vão no econômico; gasto com lazer por faixa de renda mostra o perfil do consumidor e vai no social.
 
 ## Divisão de subcapítulos
 
-### 5.1 Análise do setor
-- Tamanho e crescimento do mercado de jogos de tabuleiro (Brasil e mundo).
-- Setor de bares e entretenimento social presencial.
-- Tendências: lazer fora das telas, consumo de experiências.
-- Fontes: Abrinq, Sebrae, Abrasel, IBGE (PAS). Aproveitar dados da introdução.
-- Estudos sobre o segmento fora do Brasil (Savills) entram aqui, e não no cap. 2.
+### 5.1 O mercado do entretenimento social
+- Do mais amplo ao mais estreito: serviços prestados às famílias, serviços de alimentação e atividades culturais, recreativas e esportivas.
+- Termina na definição de entretenimento social (ecótono entre alimentação e atividades culturais e recreativas) e no núcleo medido pelo B1.
+- Fontes: IBGE (PAS), Bloco B1. Estudos sobre o segmento fora do Brasil entram aqui, e não no cap. 2.
 
-### 5.2 Público-alvo e segmentação
-- Perfil demográfico e de renda do público-alvo em Salvador, por bairro quando houver dado (IBGE).
-- Ocasiões de consumo: encontro, aniversário, evento corporativo.
-- O que o público valoriza e o que o afasta: Bloco B2 (menções a preço, fricção de complexidade).
-- Tamanho do público-alvo em Salvador: Meta Ads, planejador de palavras-chave, Censo.
-- Escrita depois do fim da análise do Bloco B2.
-- Estudos de jogadores e de luderias (Sarpa, Censo Ludopedia, Novaes e Kanyat, Kviat, KAM Insight) entram ao lado do B2, como evidência externa; os modelos de cobrança e a barreira de preço, na 5.3; as mecânicas simples, na 5.4.
-
-### 5.3 Análise da concorrência
-- Mapeamento: Bloco B1 (localização, avaliação, volume de avaliações, preço, acervo declarado). Recorte: estabelecimentos com mais de 100 avaliações nas 14 metrópoles da REGIC. O recorte descreve concorrentes estabelecidos; casas novas ou pequenas ficam de fora, e isso é declarado.
-- Concorrência em Salvador: localização das unidades da São Jogue e de outros espaços com jogos, por bairro. As duas unidades da São Jogue ficam dentro dos shoppings Bela Vista (Pernambués) e Paralela, e não perto deles.
-- Densidade por metrópole: total da busca e total acima do corte de 100 avaliações, lado a lado.
-- Posicionamento dos concorrentes pelo acervo declarado (tamanho, presença dos jogos mais citados nas avaliações) e pela política de cobrança (Bloco B1).
-- Desempenho estimado: velocidade de avaliações calibrada (ver [4_metodologia.md](4_metodologia.md)).
-- Sobrevivência: dados abertos do CNPJ.
-- Cinco forças de Porter aplicadas.
-- Mapa de concorrentes: figura no texto e versão interativa no site/dashboard.
-
-### 5.4 Fornecedores
-- Jogos: editoras e distribuidoras nacionais, prazos, descontos por volume.
-- Alimentos e bebidas: distribuidores, parceria com food truck ou cozinha terceirizada.
-- Mobiliário e equipamentos.
-
-### 5.5 Macroambiente (PESTEL)
-- As seis dimensões, na ordem político, econômico, social, tecnológico, ambiental e legal, sem subseções: um parágrafo de abertura lista as dimensões, e o primeiro parágrafo de cada uma começa por "No campo <dimensão>" (modelo do trabalho final do Dance Forrónejo). Dimensão sem efeito relevante tem um parágrafo curto que diz isso (hoje, a ambiental).
+### 5.2 Análise PESTEL
+- Aplicada ao mercado do entretenimento social, não ao varejo em geral.
+- As seis dimensões em negrito no início do parágrafo (Político, Econômico, Social, Tecnológico, Ambiental, Legal).
 - Só fatores com efeito concreto sobre o negócio, cada um com fonte; o detalhe jurídico fica no cap. 8.
+- Estudos de jogadores e de luderias (Sarpa, Censo Ludopedia, KAM Insight) entram no social, ao lado do B2.
+
+### 5.3 Cinco forças de Porter
+- Rivalidade, entrantes, substitutos, poder de compradores e de fornecedores, com o Quadro 5.1.
+
+### 5.4 Concorrência e localização
+- Depois das cinco forças, porque detalha a rivalidade e a ameaça de substitutos.
+- Acervo e preço (B1); metrô e shopping no entorno, a 500 m e a 1.000 m (B1, entorno pelo Google Maps).
+
+### 5.5 Síntese (opcional)
+- Oportunidades e ameaças em um quadro curto, para ligar à SWOT (10.1).

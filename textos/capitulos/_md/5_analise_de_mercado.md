@@ -1,28 +1,60 @@
 # 5 ANÁLISE DE MERCADO
 
-A análise de mercado verifica se Salvador comporta mais uma luderia e em que condições. Cada seção fecha com a decisão do plano que o dado afeta. Os Blocos B1, B2 e B4 sustentam as análises.
+A análise de mercado verifica se Salvador comporta mais uma luderia e em que condições. O capítulo vai do mais amplo ao mais específico: o setor (5.1), o ambiente externo (5.2), a pressão competitiva (5.3) e a concorrência com a localização (5.4). Cada dado aparece em uma só seção, e as demais remetem a ela. Cada seção fecha com a decisão do plano que o dado afeta. Os Blocos B1, B2 e B4 sustentam as análises.
 
-## 5.1 ANÁLISE DO SETOR
+## 5.1 O MERCADO DO ENTRETENIMENTO SOCIAL
 
-Embora não tenham um formato único de funcionamento, as luderias se enquadram, na maioria, nos serviços prestados às famílias. Entre 2019 e 2023, a receita bruta desse segmento passou de R$ 223,9 bilhões para R$ 388,9 bilhões, com ganho real de 36,4%, descontado o Índice Nacional de Preços ao Consumidor Amplo (IPCA) acumulado (IBGE, PAS, tabela 2611; BCB, SGS). Dentro do segmento, a receita das atividades culturais, recreativas e esportivas subiu 95,4%, e a dos serviços de alimentação, 67,7% (IBGE, PAS, tabela 2611).
+A luderia se enquadra, na maioria dos casos, nos serviços prestados às famílias. Entre 2019 e 2023, a receita bruta desse segmento passou de R$ 223,9 bilhões para R$ 388,9 bilhões, com ganho real de 36,4%, descontado o Índice Nacional de Preços ao Consumidor Amplo (IPCA) acumulado (IBGE, PAS, tabela 2611; BCB, SGS). Dentro do segmento, a receita das atividades culturais, recreativas e esportivas subiu 95,4%, e a dos serviços de alimentação, 67,7% (IBGE, PAS, tabela 2611).
 
-O número de empresas andou em sentidos opostos. No mesmo período, as empresas de atividades culturais e recreativas aumentaram 35,1%, e as de alimentação diminuíram 8,7% (IBGE, PAS, tabela 2619). Na alimentação, a receita cresceu com menos empresas: o consumidor gasta mais em restaurantes e lanchonetes, mas concentra o gasto em menos casas e escolhe com mais critério onde vai. Na recreação, receita e número de empresas cresceram juntos, o que indica espaço para entrantes. A luderia fica entre os dois lados. Ela disputa o gasto com bares e restaurantes, mas se diferencia pela atividade recreativa, justamente o lado em que o setor abre espaço.
+O número de empresas andou em sentidos opostos. No mesmo período, as empresas de atividades culturais e recreativas aumentaram 35,1%, e as de alimentação diminuíram 8,7% (IBGE, PAS, tabela 2619). Na alimentação, a receita cresceu com menos empresas: o consumidor gasta mais em restaurantes e lanchonetes, mas concentra o gasto em menos casas. Na recreação, receita e número de empresas cresceram juntos, o que indica espaço para entrantes.
 
-Do lado dos custos, a mesma pesquisa dá a estrutura dos serviços de alimentação. Em 2024, os gastos com pessoal equivaleram a 25,1% da receita operacional líquida, o consumo de mercadorias, a 26,8%, e o aluguel, a 4,0% (IBGE, PAS 2024, tabela 10758). Esses percentuais são a referência de comparação das premissas de custo do capítulo 9.
+A estrutura de custos dos serviços de alimentação completa o quadro. Em 2024, os gastos com pessoal equivaleram a 25,1% da receita operacional líquida, o consumo de mercadorias, a 26,8%, e o aluguel, a 4,0% (IBGE, PAS 2024, tabela 10758). Esses percentuais são a referência de comparação das premissas de custo do capítulo 9.
 
-O consumo fora do domicílio pesa mais no orçamento baiano que na média nacional. Na Bahia, a alimentação fora do domicílio respondia por 36,1% da despesa familiar com alimentação, contra 32,8% no Brasil, e as bebidas alcoólicas consumidas fora de casa, por 2,6%, contra 1,5% (IBGE, POF 2017-2018). A propensão local favorece um modelo de receita apoiado em alimentos e bebidas, com o jogo como motivo da visita. O dado entra como evidência de hábito (N2), não como gasto atual.
+O mercado do entretenimento social fica entre esses dois lados. É um ecótono entre os serviços de alimentação e as atividades culturais e recreativas. Ecótono é a faixa de transição entre dois ambientes: reúne espécies de ambos e espécies próprias. No mercado, o equivalente é a ocasião de saída em que um grupo paga por um tempo de convívio em torno de uma atividade, com alimentos e bebidas. A luderia, o bar com jogos e o quiz-bar são exemplos. O termo é adotado pelo autor (N6) e corresponde ao *competitive socialising* (KAM INSIGHT, 2022), definido na seção 2.1. A receita vem da alimentação, e o motivo da visita vem da atividade.
 
-## 5.2 PÚBLICO-ALVO E SEGMENTAÇÃO
+O Bloco B1 mede o núcleo desse mercado que tem a luderia como formato. Foram identificadas 54 luderias ativas com mais de 100 avaliações no Google Maps nas 14 metrópoles da pesquisa Regiões de Influência das Cidades (REGIC) (IBGE, 2020), em outubro de 2026. São Paulo concentra 19; Belo Horizonte, Brasília e Curitiba têm seis cada; Rio de Janeiro, cinco; Florianópolis, três; Fortaleza e Porto Alegre, duas; Belém, Goiânia, Recife, Salvador e Vitória, uma; Manaus não tem nenhuma (Figura 5.1). Casas fechadas não entram no conjunto, mesmo com mais de 100 avaliações. A nota mediana é 4,7 (de 4,2 a 5,0), e o volume mediano de avaliações, 621 (de 105 a 5.137).
 
-Do setor, a análise passa ao público da cidade. Salvador tem público em número, mas com renda menor. A população estimada em 2026 é de 2.559.945 habitantes na capital e de 3.623.067 nos 13 municípios da região metropolitana (IBGE, Estimativas da População), e 30,5% dos residentes da capital tinham de 20 a 39 anos no Censo 2022. A comparação de renda usa a região metropolitana, e não a capital, porque em algumas metrópoles a capital reúne só parte da população da região, o que distorce a comparação. Na Região Metropolitana de Salvador, o rendimento médio do trabalho foi de R$ 3.271,00 no 2º trimestre de 2026: o 14º entre as 21 regiões metropolitanas com dado na PNAD Contínua e o 11º entre as 13 metrópoles com luderia no B1, acima só de Recife e Belém (Figura 5.1). Na mesma região, o rendimento domiciliar per capita caiu de R$ 1.985,00, em 2023, para R$ 1.900,00, em 2025 (IBGE, PNAD Contínua). A renda menor pesa na definição do preço de entrada (seção 6.3), e o ponto precisa estar onde a renda se concentra (seção 6.4).
+**Figura 5.1 – Luderias ativas com mais de 100 avaliações por metrópole**
 
-**Figura 5.1 – Rendimento médio do trabalho nas regiões metropolitanas com luderia no B1, 2º trimestre de 2026 (R$)**
+![Luderias com mais de 100 avaliações por metrópole](../figuras/5_casas_por_metropole.png)
+
+Fonte: elaborado pelo próprio autor, com base no Bloco B1 (Google Places API, 15/10/2026).
+
+A decisão afetada é a composição da receita: o plano apoia a receita em alimentos e bebidas, com o jogo como motivo da visita, e compara o custo com a referência dos serviços de alimentação (capítulo 9).
+
+## 5.2 ANÁLISE PESTEL
+
+A análise PESTEL examina o ambiente externo do mercado do entretenimento social, e não o do varejo em geral. As seis dimensões são política, econômica, sociocultural, tecnológica, ambiental e legal (seção 2.2). Cada dimensão entra pelo fator que muda uma decisão do plano. O critério de alocação é a pergunta que o dado responde: o que mede o setor está na seção 5.1; o econômico traz as condições macro que ajudam ou atrapalham o setor; o social traz como as pessoas gastam e se comportam.
+
+**Político.** O fator de maior efeito é a reforma tributária do consumo. A Emenda Constitucional n. 132/2023 e a Lei Complementar n. 214/2025 simplificam a tributação do consumo: PIS, Cofins, ICMS e ISS dão lugar a dois tributos, o Imposto sobre Bens e Serviços (IBS) e a Contribuição Social sobre Bens e Serviços (CBS), com transição a partir de 2026 [AV]. A reforma mantém o Simples Nacional e abre a opção de recolher IBS e CBS por fora a partir de 2027, que a luderia não usa, por vender ao consumidor final (seção 8.1).
+
+**Econômico.** Os juros altos encarecem o capital. A meta da Selic estava em 14,00% ao ano em setembro de 2026, e o mercado espera 12,00% no fim de 2027 (BCB, SGS e Focus). A taxa de desconto do capítulo 9 parte dessa curva.
+
+A renda mede o poder de compra agregado. Na Região Metropolitana de Salvador, o rendimento médio do trabalho foi de R$ 3.271,00 no 2º trimestre de 2026: o 14º entre as 21 regiões metropolitanas com dado na PNAD Contínua e o 11º entre as 13 metrópoles com luderia no B1, acima só de Recife e Belém (Figura 5.2). A comparação usa a região metropolitana, e não a capital, porque em algumas metrópoles a capital reúne só parte da população da região, o que distorce a comparação. Na mesma região, o rendimento domiciliar per capita caiu de R$ 1.985,00, em 2023, para R$ 1.900,00, em 2025 (IBGE, PNAD Contínua). A renda menor pesa na definição do preço de entrada (seção 6.3), e o ponto precisa estar onde a renda se concentra (seção 6.4).
+
+**Figura 5.2 – Rendimento médio do trabalho nas regiões metropolitanas com luderia no B1, 2º trimestre de 2026 (R$)**
 
 ![Rendimento médio do trabalho nas regiões metropolitanas com luderia no B1, 2º trimestre de 2026](../figuras/5_renda_trabalho_rm.png)
 
 Fonte: elaborado pelo próprio autor, com base no IBGE, PNAD Contínua (04/2026 a 06/2026).
 
 Nota: Brasília corresponde ao Distrito Federal.
+
+A inflação da alimentação fora do domicílio corre acima da geral, e mais em Salvador. Em 12 meses até agosto de 2026, o IPCA subiu 3,64% em Salvador, e a alimentação fora do domicílio, 6,55% (IBGE, IPCA). Em Salvador, a alimentação fora subiu mais que o índice geral em 2025 e em 2026 (Figura 5.3). Por isso, o reajuste de preço do capítulo 9 usa o subitem de Salvador.
+
+**Figura 5.3 – IPCA acumulado em 12 meses até agosto: geral e alimentação fora do domicílio**
+
+![IPCA acumulado em 12 meses até agosto: geral e alimentação fora do domicílio](../figuras/5_ipca_alimentacao_fora.png)
+
+Fonte: elaborado pelo próprio autor, com base no IBGE, IPCA, tabela 7060 (08/2023 a 08/2026).
+
+O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvador chegou a R$ 54,15 por m² em julho de 2026, alta de 18,9% em 12 meses, contra 7,8% em São Paulo (FIPE, Índice FipeZAP). O aluguel é o principal custo fixo e entra como premissa de risco na escolha do ponto (seção 6.4) e na sensibilidade (capítulo 9). A cotação na Pituba substitui o índice antes do investimento.
+
+**Social.** Salvador tem público em número. A população estimada em 2026 é de 2.559.945 habitantes na capital e de 3.623.067 nos 13 municípios da região metropolitana (IBGE, Estimativas da População), e 30,5% dos residentes da capital tinham de 20 a 39 anos no Censo 2022. O público dessa faixa soma cerca de 781 mil pessoas em Salvador, se mantida em 2026 a proporção do Censo 2022 (IBGE). A seção 6.6 confere a demanda contra esse total.
+
+O hábito de comer e beber fora de casa pesa mais no orçamento baiano que na média nacional. Na Bahia, a alimentação fora do domicílio respondia por 36,1% da despesa familiar com alimentação, contra 32,8% no Brasil, e as bebidas alcoólicas consumidas fora de casa, por 2,6%, contra 1,5% (IBGE, POF 2017-2018). A propensão local favorece um modelo de receita apoiado em alimentos e bebidas, com o jogo como motivo da visita. O dado entra como evidência de hábito (N2), não como gasto atual.
+
+O gasto com lazer se concentra na renda. A Pesquisa de Orçamentos Familiares (POF) 2017-2018 mede o lazer em sentido estrito – leitura, ingressos, eventos esportivos, recreação, brinquedos e jogos –, sem bares e restaurantes: nesse recorte, a despesa média foi de R$ 14,87 por pessoa por mês (IBGE, 2021, p. 101–102). Comer e beber fora de casa entra em outro grupo da pesquisa, com despesa média de R$ 61,68 por pessoa por mês (IBGE, 2021, p. 63, 65). O décimo de maior rendimento respondeu por 49,0% das despesas com lazer e viagens, mais de cinco vezes o gasto dos quatro décimos de menor rendimento somados (IBGE, 2021, p. 107). Para a luderia, a concentração indica que a demanda depende da renda do entorno, e não só do tamanho da população.
 
 O jogo de tabuleiro moderno valoriza a interação presencial. Em entrevistas com jogadores adultos, Sarpa (2016, p. 39–40) mostra que eles descrevem o jogo como o elo que reúne as pessoas: o convívio importa mais que a partida e se concentra no fim de semana, com amigos.
 
@@ -32,43 +64,29 @@ Nas avaliações, o atendimento presencial é o tema mais citado: aparece em 55,
 
 No Reino Unido, os atributos mais exigidos nos locais de *competitive socialising* são os mesmos de qualquer bar: segurança (70%), preço (69%) e qualidade da comida (63%) (KAM INSIGHT, 2022, p. 17–21). O jogo diferencia o local, mas não dispensa o básico da hospitalidade.
 
-A ocasião em grupo também aparece nas avaliações, embora poucas digam com quem o cliente foi: amigos em 56, família em 40, aniversário em 39 e casal em 13 (Bloco B2). O dado é exploratório, porque a codificação do contexto não passou no teste de concordância (seção 3.3). O público da faixa de 20 a 39 anos soma cerca de 781 mil pessoas em Salvador, se mantida em 2026 a proporção do Censo 2022 (IBGE). A seção 6.6 confere a demanda contra esse total.
-
-## 5.3 ANÁLISE DA CONCORRÊNCIA
-
-O Bloco B1 identificou 54 luderias ativas com mais de 100 avaliações no Google Maps nas 14 metrópoles da pesquisa Regiões de Influência das Cidades (REGIC) (IBGE, 2020), em outubro de 2026. São Paulo concentra 19; Belo Horizonte, Brasília e Curitiba têm seis cada; Rio de Janeiro, cinco; Florianópolis, três; Fortaleza e Porto Alegre, duas; Belém, Goiânia, Recife, Salvador e Vitória, uma; Manaus não tem nenhuma (Figura 5.2). Casas fechadas não entram no conjunto, mesmo com mais de 100 avaliações.
-
-**Figura 5.2 – Luderias ativas com mais de 100 avaliações por metrópole**
-
-![Luderias com mais de 100 avaliações por metrópole](../figuras/5_casas_por_metropole.png)
-
-Fonte: elaborado pelo próprio autor, com base no Bloco B1 (Google Places API, 15/10/2026).
-
-A nota mediana do conjunto é 4,7 (de 4,2 a 5,0), e o volume mediano de avaliações, 621 (de 105 a 5.137).
-
-### 5.3.1 Densidade e concorrência em Salvador
-
-Salvador tem a segunda menor oferta de luderias por habitante entre as metrópoles com ao menos uma casa: 0,028 por 100 mil habitantes da região metropolitana, acima só de Recife (0,025), contra 0,088 em São Paulo e 0,197 em Florianópolis, a maior (Bloco B1; IBGE, estimativas de 2026). A densidade baixa admite duas leituras: ou há espaço para um segundo concorrente, ou o público local adere pouco a esse tipo de casa. A ocupação observada na São Jogue (Bloco B3) testa as duas.
-
-Na prática, a concorrência local se resume a uma casa. A São Jogue é a única luderia de Salvador no recorte. A unidade Bela Vista tem nota 4,8, 787 avaliações e abre 68 horas por semana; a Paralela, mais nova, tem 16 avaliações. As duas ficam dentro de shoppings (Bela Vista e Paralela), no eixo da Avenida Paralela, o que orienta a escolha de bairro (seção 6.4). O aluguel de jogos para levar para casa é o substituto mais próximo, com seis acervos em Salvador na plataforma Acervo de Jogos, mas não compete com a ocasião social.
-
-### 5.3.2 Acervo e preço
-
-O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 22 dos 54 concorrentes, com mediana de R$ 20,00 por pessoa (de R$ 5,00, na Toca do Rato, em Porto Alegre, a R$ 45,00, na Encounter, em São Paulo, no sábado); a Ludus declara que não cobra, e nos outros 31 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (seção 6.3). O consumo por pessoa, uma bebida e o hambúrguer não vegetariano mais barato do cardápio, tem mediana de R$ 46,00 em 27 casas, com faixa interquartil de R$ 38,00 a R$ 62,90, e é de R$ 41,00 na São Jogue (Bloco B1, 2026). O hambúrguer entra no lugar de uma entrada ou prato qualquer porque aparece em quase todos os cardápios, o que torna as casas comparáveis. Salvador fica no meio da distribuição por metrópole (Figura 5.3).
-
-**Figura 5.3 – Consumo por pessoa (uma bebida e um hambúrguer), mediana por metrópole (R$)**
-
-![Consumo por pessoa uma bebida e um hambúrguer, mediana por metrópole](../figuras/5_consumo_por_metropole.png)
-
-Fonte: elaborado pelo próprio autor, com base nos cardápios do Bloco B1 (04/2024 a 07/2026).
-
-O couvert cobrado pelos concorrentes é a referência da taxa de entrada.
-
 Os levantamentos de jogadores mostram o preço como a barreira mais citada: 57% dos respondentes do Censo Ludopedia apontam o preço elevado como a maior preocupação com os jogos fabricados no Brasil (FIGUEIREDO; MANTOVANI, 2022, p. 4). O dado tem leitura dupla. O acervo da luderia dá acesso a jogos que o cliente não compraria; o jogador que já tem acervo, porém, compara o gasto no bar com a compra de um jogo, e entrevistados de Sarpa (2016, p. 41) descrevem esse gasto como "desperdício de dinheiro". A taxa de entrada precisa equilibrar os dois lados dessa tensão (seção 6.3).
 
-### 5.3.3 Cinco forças
+A ocasião em grupo também aparece nas avaliações, embora poucas digam com quem o cliente foi: amigos em 56, família em 40, aniversário em 39 e casal em 13 (Bloco B2). O dado é exploratório, porque a codificação do contexto não passou no teste de concordância (seção 3.3).
+
+**Tecnológico.** O efeito mais direto está na divulgação, que acontece nas redes sociais. As 49 luderias com perfil no Instagram têm mediana de 14.021 seguidores, e a São Jogue tem 38.492 (Bloco B1, 2026). O Instagram é o canal principal do plano de comunicação (capítulo 6).
+
+**Ambiental.** O efeito sobre o negócio é residual. O acervo é um bem durável, usado por muitos clientes ao longo de anos, e o manejo dos resíduos da cozinha entra na licença sanitária (seção 8.2). Por isso, a dimensão não é detalhada.
+
+**Legal.** As normas de maior efeito são as de licença e de venda. O alvará depende de a zona do ponto admitir serviço de alimentação e lazer (Lei municipal n. 9.148/2016) [AV], e a lotação aprovada pelo Corpo de Bombeiros fixa o teto de mesas. A venda de bebida alcoólica a menores de 18 anos é crime (Lei n. 8.069/1990, art. 243), o que exige conferência de idade no caixa, e a música ambiente gera retribuição ao Escritório Central de Arrecadação e Distribuição (ECAD) (Lei n. 9.610/1998, art. 68). As obrigações e o custo de cada uma estão no capítulo 8; a regulação municipal de ruído e horário ainda precisa ser conferida [BUSCAR]. Cada norma vira custo ou processo.
+
+## 5.3 CINCO FORÇAS DE PORTER
 
 Os dados das seções anteriores alimentam a análise das cinco forças (Quadro 5.1). A pressão mais forte vem dos substitutos – bares, aluguel de jogos e lazer em casa –, e a rivalidade é baixa no formato de luderia, mas alta diante do bar comum. Entrantes e clientes exercem pressão média.
+
+**Rivalidade.** Na prática, a concorrência local se resume a uma casa. A São Jogue é a única luderia de Salvador no recorte do B1 (seção 5.1). A unidade Bela Vista tem nota 4,8, 787 avaliações e abre 68 horas por semana; a Paralela, mais nova, tem 16 avaliações. As duas ficam dentro de shoppings (Bela Vista e Paralela), no eixo da Avenida Paralela, o que orienta a escolha de bairro (seção 6.4). Salvador tem a segunda menor oferta de luderias por habitante entre as metrópoles com ao menos uma casa: 0,028 por 100 mil habitantes da região metropolitana, acima só de Recife (0,025), contra 0,088 em São Paulo e 0,197 em Florianópolis, a maior (Bloco B1; IBGE, estimativas de 2026). A densidade baixa admite duas leituras: ou há espaço para um segundo concorrente, ou o público local adere pouco a esse tipo de casa. A ocupação observada na São Jogue (Bloco B3) testa as duas. Diante do bar comum, a rivalidade é alta: a alimentação concentra a receita do mercado (seção 5.1).
+
+**Entrantes.** A ameaça é média. O acervo é barato frente à cozinha, e a barreira está na curadoria e na explicação de jogos, tema de 14,3% das avaliações (seção 5.2).
+
+**Substitutos.** A ameaça é alta. O aluguel de jogos para levar para casa é o substituto mais próximo, com seis acervos em Salvador na plataforma Acervo de Jogos, mas não compete com a ocasião social. Bares e lazer em casa disputam o mesmo gasto e o mesmo tempo livre. O jogador que tem acervo compara o gasto na luderia com a compra de um jogo (seção 5.2).
+
+**Fornecedores.** O poder é baixo a médio. Os jogos são vendidos por várias lojas (B5), e o A&B tem muitos distribuidores.
+
+**Clientes.** O poder é médio. A renda de Salvador fica abaixo da média das metrópoles (seção 5.2), e o custo de troca é baixo.
 
 **Quadro 5.1 – Cinco forças aplicadas à luderia em Salvador**
 
@@ -82,33 +100,45 @@ Os dados das seções anteriores alimentam a análise das cinco forças (Quadro 
 
 Fonte: elaborado pelo próprio autor.
 
-## 5.4 MACROAMBIENTE (PESTEL)
+## 5.4 CONCORRÊNCIA E LOCALIZAÇÃO
 
-A análise PESTEL examina o macroambiente do negócio em seis dimensões: política, econômica, sociocultural, tecnológica, ambiental e legal (seção 2.2). Cada dimensão entra pelo fator que muda uma decisão do plano.
+A seção detalha a rivalidade e a ameaça de substitutos com os dados dos concorrentes: o que oferecem, quanto cobram e onde ficam.
 
-No campo político, o fator de maior efeito é a reforma tributária do consumo. A Emenda Constitucional n. 132/2023 e a Lei Complementar n. 214/2025 simplificam a tributação do consumo: PIS, Cofins, ICMS e ISS dão lugar a dois tributos, o Imposto sobre Bens e Serviços (IBS) e a Contribuição Social sobre Bens e Serviços (CBS), com transição a partir de 2026 [AV]. A reforma mantém o Simples Nacional e abre a opção de recolher IBS e CBS por fora a partir de 2027, que a luderia não usa, por vender ao consumidor final (seção 8.1).
+### 5.4.1 Acervo e preço
 
-No campo econômico, os juros altos encarecem o capital. A meta da Selic estava em 14,00% ao ano em setembro de 2026, e o mercado espera 12,00% no fim de 2027 (BCB, SGS e Focus). A taxa de desconto do capítulo 9 parte dessa curva.
+O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 22 dos 54 concorrentes, com mediana de R$ 20,00 por pessoa (de R$ 5,00, na Toca do Rato, em Porto Alegre, a R$ 45,00, na Encounter, em São Paulo, no sábado); a Ludus declara que não cobra, e nos outros 31 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (seção 6.3). O consumo por pessoa, uma bebida e o hambúrguer não vegetariano mais barato do cardápio, tem mediana de R$ 46,00 em 27 casas, com faixa interquartil de R$ 38,00 a R$ 62,90, e é de R$ 41,00 na São Jogue (Bloco B1, 2026). O hambúrguer entra no lugar de uma entrada ou prato qualquer porque aparece em quase todos os cardápios, o que torna as casas comparáveis. Salvador fica no meio da distribuição por metrópole (Figura 5.4). O couvert cobrado pelos concorrentes é a referência da taxa de entrada.
 
-A inflação da alimentação fora do domicílio corre acima da geral, e mais em Salvador. Em 12 meses até agosto de 2026, o IPCA subiu 3,64% em Salvador, e a alimentação fora do domicílio, 6,55% (IBGE, IPCA). Em Salvador, a alimentação fora subiu mais que o índice geral em 2025 e em 2026 (Figura 5.4). Por isso, o reajuste de preço do capítulo 9 usa o subitem de Salvador.
+**Figura 5.4 – Consumo por pessoa (uma bebida e um hambúrguer), mediana por metrópole (R$)**
 
-**Figura 5.4 – IPCA acumulado em 12 meses até agosto: geral e alimentação fora do domicílio**
+![Consumo por pessoa uma bebida e um hambúrguer, mediana por metrópole](../figuras/5_consumo_por_metropole.png)
 
-![IPCA acumulado em 12 meses até agosto: geral e alimentação fora do domicílio](../figuras/5_ipca_alimentacao_fora.png)
+Fonte: elaborado pelo próprio autor, com base nos cardápios do Bloco B1 (04/2024 a 07/2026).
 
-Fonte: elaborado pelo próprio autor, com base no IBGE, IPCA, tabela 7060 (08/2023 a 08/2026).
+### 5.4.2 Metrô e shopping no entorno
 
-O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvador chegou a R$ 54,15 por m² em julho de 2026, alta de 18,9% em 12 meses, contra 7,8% em São Paulo (FIPE, Índice FipeZAP). O aluguel é o principal custo fixo e entra como premissa de risco na escolha do ponto (seção 6.4) e na sensibilidade (capítulo 9). A cotação na Pituba substitui o índice antes do investimento.
+O entorno de cada concorrente mede onde a casa fica em relação ao metrô e ao shopping de porte. O estudo usa o número de avaliações no Google Maps como medida indireta de fluxo, e a associação não prova causa.
 
-No campo social, dois fatores atuam em sentidos opostos. O hábito de comer e beber fora de casa pesa mais no orçamento baiano que na média nacional (seção 5.1) e favorece um modelo de receita apoiado em alimentos e bebidas. A renda menor de Salvador (seção 5.2) limita a taxa de entrada e o consumo por pessoa.
+Entre os 54 concorrentes do B1, os 24 com estação de metrô a até 1.000 m têm mediana de 770 avaliações, contra 396 dos 30 sem estação (Bloco B1, entorno pelo Google Maps). O shopping de porte não mostra a mesma vantagem: os 10 concorrentes com shopping a até 1.000 m têm mediana de 396 avaliações, contra 663 dos 19 sem (25 sem dado). A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica dentro do Shopping Bela Vista, a 387 m do metrô. A comparação a 500 m depende da recarga do entorno em seis casas e ainda não foi feita [BUSCAR – contagens a 500 m do Bloco B1].
 
-O gasto com lazer se concentra na renda. A Pesquisa de Orçamentos Familiares (POF) 2017-2018 mede o lazer em sentido estrito – leitura, ingressos, eventos esportivos, recreação, brinquedos e jogos –, sem bares e restaurantes: nesse recorte, a despesa média foi de R$ 14,87 por pessoa por mês (IBGE, 2021, p. 101–102). Comer e beber fora de casa entra em outro grupo da pesquisa, com despesa média de R$ 61,68 por pessoa por mês (IBGE, 2021, p. 63, 65). O décimo de maior rendimento respondeu por 49,0% das despesas com lazer e viagens, mais de cinco vezes o gasto dos quatro décimos de menor rendimento somados (IBGE, 2021, p. 107). Para a luderia, a concentração indica que a demanda depende da renda do entorno, e não só do tamanho da população.
+A decisão afetada é o ponto: a luderia deve ficar a até 1.000 m de uma estação de metrô (seção 6.4). O shopping não entra como exigência.
 
-No campo tecnológico, o efeito mais direto está na divulgação, que acontece nas redes sociais. As 49 luderias com perfil no Instagram têm mediana de 14.021 seguidores, e a São Jogue tem 38.492 (Bloco B1, 2026). O Instagram é o canal principal do plano de comunicação (capítulo 6).
+## 5.5 SÍNTESE
 
-No campo ambiental, o efeito sobre o negócio é residual. O acervo é um bem durável, usado por muitos clientes ao longo de anos, e o manejo dos resíduos da cozinha entra na licença sanitária (seção 8.2). Por isso, a dimensão não é detalhada.
+O quadro resume as oportunidades e as ameaças do mercado. Ele liga o capítulo à matriz SWOT (seção 10.1).
 
-Por fim, no campo legal, as normas de maior efeito são as de licença e de venda. O alvará depende de a zona do ponto admitir serviço de alimentação e lazer (Lei municipal n. 9.148/2016) [AV], e a lotação aprovada pelo Corpo de Bombeiros fixa o teto de mesas. A venda de bebida alcoólica a menores de 18 anos é crime (Lei n. 8.069/1990, art. 243), o que exige conferência de idade no caixa, e a música ambiente gera retribuição ao Escritório Central de Arrecadação e Distribuição (ECAD) (Lei n. 9.610/1998, art. 68). As obrigações e o custo de cada uma estão no capítulo 8; a regulação municipal de ruído e horário ainda precisa ser conferida [BUSCAR]. Cada norma vira custo ou processo.
+**Quadro 5.2 – Oportunidades e ameaças do mercado**
+
+| Tipo | Fator | Seção |
+|---|---|---|
+| Oportunidade | Recreação cresce em receita e em número de empresas | 5.1 |
+| Oportunidade | Salvador tem uma só luderia no recorte do B1 | 5.3 |
+| Oportunidade | Consumo fora de casa pesa mais na Bahia que no Brasil | 5.2 |
+| Ameaça | Selic em 14,00% e aluguel comercial com alta de 18,9% em 12 meses | 5.2 |
+| Ameaça | Alimentação fora do domicílio com inflação acima da geral | 5.2 |
+| Ameaça | Renda menor que a das demais metrópoles e gasto com lazer concentrado | 5.2 |
+| Ameaça | Substitutos fortes: bares, aluguel de jogos e lazer em casa | 5.3 |
+
+Fonte: elaborado pelo próprio autor, com base nas seções 5.1 a 5.3.
 
 **Referências citadas neste capítulo**
 

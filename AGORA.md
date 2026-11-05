@@ -1,10 +1,10 @@
 # AGORA
 
-Atualizado em 04/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entrega: **06/11, versão completa**; versão final para a banca em 16/11. Escopo congelado até a banca: só entra o que muda o TMin (`CLAUDE.md`, "Fluxo de trabalho até a banca").
+Atualizado em 05/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entrega: **06/11, versão completa**; versão final para a banca em 16/11. Escopo congelado até a banca: só entra o que muda o TMin (`CLAUDE.md`, "Fluxo de trabalho até a banca").
 
 ## Fazendo agora (no máximo duas frentes)
 
-1. **Texto do TMin v29** (77 páginas de texto, p. 10 a 87, dentro do teto de 100; apêndices v29 conferidos; Claude Docs sincronizado com os `.md`). Plano de 51 h por semana, equipe de 5 (2 cozinheiros e 3 instrutores), refeição no local e PLR de 5% do EBITDA. Provável: investimento de R$ 312 mil, receita madura de R$ 77,1 mil por mês, equilíbrio de R$ 51,3 mil, VPL de R$ 795 mil (R$ 278 mil sem residual), TIR de 61,8%, payback de 2,8 anos, P(VPL > 0) de 82,1%. Falta a passada única de revisão dos pares com "*" e as citações `[AV]` (inclui CLT art. 458, Lei n. 10.101/2000 e o QualiSalvador, sem PDF).
+1. **Texto do TMin v29** (cap. 5 reestruturado em 05/11 no `.md`: 5.1 a 5.5; falta regerar o `.docx` e o PDF; análise do bairro com o QualiSalvador na 6.4 à espera do autor) (77 páginas de texto, p. 10 a 87, dentro do teto de 100; apêndices v29 conferidos; Claude Docs sincronizado com os `.md`). Plano de 51 h por semana, equipe de 5 (2 cozinheiros e 3 instrutores), refeição no local e PLR de 5% do EBITDA. Provável: investimento de R$ 312 mil, receita madura de R$ 77,1 mil por mês, equilíbrio de R$ 51,3 mil, VPL de R$ 795 mil (R$ 278 mil sem residual), TIR de 61,8%, payback de 2,8 anos, P(VPL > 0) de 82,1%. Falta a passada única de revisão dos pares com "*" e as citações `[AV]` (inclui CLT art. 458, Lei n. 10.101/2000 e o QualiSalvador, sem PDF).
 2. **Recoleta do B5** com o coletor 2026.11.03-8 (os números atuais usam até 5 ofertas por site espaçadas no preço) e coleta de letreiro, balcão e kit de gás; é o único dado que ainda muda números do TMin.
 
 ## Próximos 3 passos
