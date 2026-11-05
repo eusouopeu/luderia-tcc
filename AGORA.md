@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 05/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entrega: **06/11, versão completa**; versão final para a banca em 16/11. Escopo congelado até a banca: só entra o que muda o TMin (`CLAUDE.md`, "Fluxo de trabalho até a banca").
+Atualizado em 05/11/2026. Os pull requests 24 a 28 foram mesclados (itens novos em "Vindo dos pull requests", em `docs/pendencias.md`). Semana 8 do cronograma (31/10 a 06/11). Próxima entrega: **06/11, versão completa**; versão final para a banca em 16/11. Escopo congelado até a banca: só entra o que muda o TMin (`CLAUDE.md`, "Fluxo de trabalho até a banca").
 
 ## Fazendo agora (no máximo duas frentes)
 
