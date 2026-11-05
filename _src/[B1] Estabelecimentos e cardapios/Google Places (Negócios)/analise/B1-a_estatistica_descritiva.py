@@ -147,12 +147,15 @@ def montar_dados():
         ok = c[f"bebida_{suf}"].notna() & c[f"entrada_ou_prato_{suf}"].notna()
         c[f"consumo_{nivel}"] = (c[f"bebida_{suf}"] + c[f"entrada_ou_prato_{suf}"]).where(ok).round(2)
         c[f"cesta_{nivel}"] = (c[f"consumo_{nivel}"] + c[f"couvert_{suf}"]).where(ok & achou).round(2)
-        # site: cesta casa a casa de antes (couvert não encontrado soma 0), até o site trocar o rótulo
-        c[f"cesta_site_{nivel}"] = (c[f"consumo_{nivel}"] + c[f"couvert_{suf}"].where(achou, 0)).where(ok).round(2)
+        # site: consumo por pessoa = bebida + hambúrguer não vegetariano mais barato (decisão de 04/11/2026, a
+        # mesma do TMin, seção 5.4.1); o couvert fica fora, porque a taxa de entrada é tratada à parte (seção 6.3).
+        # Os campos mantêm o nome cesta_site_* para não mexer nas abas do site; os rótulos dizem "consumo".
+        okh = c[f"bebida_{suf}"].notna() & c["hamburguer_min_nao_veg"].notna()
+        c[f"cesta_site_{nivel}"] = (c[f"bebida_{suf}"] + c["hamburguer_min_nao_veg"]).where(okh).round(2)
     c["couvert_mediana"] = c["couvert_mediana"].where(achou)
     precos = ["couvert_mediana", "bebida_mediana", "entrada_ou_prato_mediana", "consumo_baixa", "consumo_mediana",
               "consumo_alta", "cesta_baixa", "cesta_mediana", "cesta_alta", "cesta_site_baixa", "cesta_site_mediana",
-              "cesta_site_alta", "hamburguer_mediana", "batata_mediana", "cerveja_mediana", "refrigerante_mediana",
+              "cesta_site_alta", "hamburguer_mediana", "hamburguer_min_nao_veg", "batata_mediana", "cerveja_mediana", "refrigerante_mediana",
               "drinks_mediana"]
     d = e.drop(columns=["cesta_baixa", "cesta_mediana", "cesta_alta"]).merge(
         c[["place_id", *precos]], on="place_id", how="left")
@@ -417,7 +420,7 @@ def site(d):
     num = lambda s: pd.to_numeric(s, errors="coerce")
     geral = {c: {"grupo": g, "rotulo": rot, "unidade": uni, **resumo(d[c])} for c, (g, rot, uni, _) in VARS.items()}
     for nivel, rot in (("baixa", "nível baixo (P25)"), ("mediana", "nível mediano"), ("alta", "nível alto (P75)")):
-        geral[f"cesta_{nivel}"] = {"grupo": "Cardápio", "rotulo": f"Cesta por pessoa, {rot}", "unidade": "R$",
+        geral[f"cesta_{nivel}"] = {"grupo": "Cardápio", "rotulo": f"Consumo por pessoa (bebida + hambúrguer), {rot}", "unidade": "R$",
                                    **resumo(d[f"cesta_site_{nivel}"])}
 
     def painel(grp, grupos):
@@ -478,12 +481,12 @@ def site(d):
         "fechamento": contagem_hora("fecha_tarde_h"),
         "dispersao_instagram": pontos(["seguidores", "interacoes_por_post"]),
         "dispersao_google": pontos(["volume_avaliacoes", "avaliacao_media"]),
-        # completa = couvert, bebida e entrada ou prato no cardápio. Couvert não
-        # encontrado não é couvert 0: a casa fica sem cesta.
+        # consumo = bebida e hambúrguer não vegetariano mais barato no cardápio; casa sem um
+        # dos dois fica de fora.
         "cestas": sorted(({"nome": r.nome, "metropole": r.metropole, "regiao": r.regiao,
                            "baixa": float(r.cesta_site_baixa), "mediana": float(r.cesta_site_mediana),
                            "alta": float(r.cesta_site_alta),
-                           "completa": bool(pd.notna(r.bebida_mediana) and pd.notna(r.entrada_ou_prato_mediana))}
+                           "completa": True}
                           for r in d.itertuples() if pd.notna(r.cesta_site_mediana)), key=lambda x: x["mediana"]),
         "metropoles": metro,
         "regioes": reg,

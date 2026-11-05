@@ -7,6 +7,8 @@ import { Bar, BarChart, Cell, LabelList, ResponsiveContainer, XAxis, YAxis, Tool
 import tabelas from "../conteudo/tabelas.json";
 import { Cartao, Reveal, Nota, Sanfona } from "./ui";
 import { Kpi, Pilulas, Dica } from "./graficos";
+import { QRCodeSVG } from "qrcode.react";
+import site from "../conteudo/site.json";
 import { numero, slug } from "../auxiliares";
 
 const ehNumero = (s) => /^[-−+]?\d[\d.]*(,\d+)?\s?(%|min|m²|R\$)?$/.test((s ?? "").trim());
@@ -17,6 +19,61 @@ function Titulo({ titulo, descricao }) {
     <div id={slug(titulo)} className="mb-4 scroll-mt-24">
       <h2 className="font-display text-2xl font-bold text-azul-950 sm:text-[1.7rem]">{titulo}</h2>
       {descricao && <p className="mt-1 max-w-3xl text-sm leading-relaxed text-azul-700">{descricao}</p>}
+    </div>
+  );
+}
+
+/* Notas e fonte de uma tabela: em vez do bloco de texto corrido, cada frase da nota vira um botão com
+   dica (passar o mouse, focar ou tocar), e a fonte vira mais um. Poupa a tela durante a apresentação. */
+function dividirNota(nota) {
+  return nota.split(/(?<=[.;])\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕ])/).map((s) => s.trim()).filter(Boolean);
+}
+const rotuloCurto = (s) => {
+  const palavras = s.replace(/[()]/g, "").split(/\s+/).slice(0, 3).join(" ");
+  return palavras.length < s.length ? `${palavras.replace(/[,;:]$/, "")}…` : palavras;
+};
+
+function Notas({ nota, fonte }) {
+  const [aberta, setAberta] = useState(null);
+  const itens = [
+    ...(nota ? dividirNota(nota).map((texto) => ({ rotulo: rotuloCurto(texto), texto, tipo: "Nota" })) : []),
+    ...(fonte ? [{ rotulo: "Fonte", texto: fonte, tipo: "Fonte" }] : []),
+  ];
+  if (!itens.length) return null;
+  return (
+    <div className="no-print relative mt-2 flex flex-wrap items-center gap-1.5" onMouseLeave={() => setAberta(null)}>
+      <span className="mr-0.5 text-[11px] font-semibold tracking-wide text-azul-700 uppercase">Notas</span>
+      {itens.map((n, i) => (
+        <span key={i}>
+          <button
+            type="button"
+            aria-expanded={aberta === i}
+            aria-describedby={aberta === i ? `nota-${i}` : undefined}
+            onMouseEnter={() => setAberta(i)}
+            onFocus={() => setAberta(i)}
+            onBlur={() => setAberta(null)}
+            onClick={() => setAberta(aberta === i ? null : i)}
+            className={`flex max-w-[11rem] cursor-pointer items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-semibold transition-colors ${
+              aberta === i ? "border-roxo-600 bg-lavanda-100 text-roxo-700" : "border-papel-200 bg-white text-azul-700 hover:border-roxo-600"
+            }`}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-3 w-3 shrink-0" aria-hidden="true">
+              <path d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+            </svg>
+            <span className="truncate">{n.rotulo}</span>
+          </button>
+          {aberta === i && (
+            <span
+              role="tooltip"
+              id={`nota-${i}`}
+              className="absolute bottom-full left-0 z-30 mb-2 block w-80 max-w-full rounded-lg border border-papel-200 bg-white p-3 text-xs leading-relaxed font-normal text-azul-900 normal-case"
+            >
+              <span className="mb-1 block text-[10px] font-bold tracking-[0.14em] text-roxo-600 uppercase">{n.tipo}</span>
+              {n.texto}
+            </span>
+          )}
+        </span>
+      ))}
     </div>
   );
 }
@@ -77,12 +134,7 @@ function TabelaTMin({ id, titulo, destacar = [], mostrarTitulo = true, ate }) {
             </tbody>
           </table>
         </div>
-        {(t.fonte || t.nota) && (
-          <p className="mt-2 text-[11px] leading-snug text-azul-700/80">
-            {t.nota && <span>Nota: {t.nota} </span>}
-            {t.fonte && <span>Fonte: {t.fonte}</span>}
-          </p>
-        )}
+        <Notas nota={t.nota} fonte={t.fonte} />
       </figure>
     </Reveal>
   );
@@ -131,6 +183,26 @@ function Barras({ b }) {
           </ResponsiveContainer>
         </div>
         {b.fonte && <p className="mt-2 text-[11px] leading-snug text-azul-700/80">{b.fonte}</p>}
+      </Cartao>
+    </Reveal>
+  );
+}
+
+/* QR code do site: só em telas grandes (na tela do celular, o próprio site já está aberto). */
+function QrCode() {
+  return (
+    <Reveal className="hidden lg:block">
+      <Cartao tom="areia" className="flex items-center gap-6 p-5">
+        <div className="shrink-0 rounded-lg bg-white p-2.5">
+          <QRCodeSVG value={site.meta.url} size={112} bgColor="#ffffff" fgColor="#1e1b26" level="M" title="QR code do site da apresentação" />
+        </div>
+        <div className="min-w-0">
+          <h3 className="font-display text-lg font-bold text-azul-950">{site.qrcode.titulo}</h3>
+          <p className="mt-1 text-sm leading-relaxed text-azul-700">{site.qrcode.texto}</p>
+          <a href={site.meta.url} className="mt-1.5 inline-block text-sm font-semibold break-all text-roxo-600 hover:underline">
+            {site.meta.url}
+          </a>
+        </div>
       </Cartao>
     </Reveal>
   );
@@ -210,6 +282,8 @@ function Abas({ b }) {
 
 export function Bloco({ b }) {
   switch (b.tipo) {
+    case "qrcode":
+      return <QrCode />;
     case "kpis":
       return (
         <div className={`grid gap-3 ${b.itens.length > 4 ? "grid-cols-2 lg:grid-cols-3" : "grid-cols-2 lg:grid-cols-4"}`}>

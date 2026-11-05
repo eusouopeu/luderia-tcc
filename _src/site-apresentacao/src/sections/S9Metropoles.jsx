@@ -82,7 +82,7 @@ export default function S9Metropoles() {
           { rotulo: "seguidores", valor: (m) => milhar(med("seguidores")(m)) },
           { rotulo: "interações/post", valor: (m) => num(med("interacoes_por_post")(m)) },
           { rotulo: "com cardápio", valor: (m) => m.com_cardapio },
-          { rotulo: "cesta mediana", valor: (m) => reais(med("cesta_mediana")(m)) },
+          { rotulo: "consumo mediano", valor: (m) => reais(med("cesta_mediana")(m)) },
           { rotulo: "avaliações B2", valor: (m) => num(m.avaliacoes_b2) },
         ]}
       />

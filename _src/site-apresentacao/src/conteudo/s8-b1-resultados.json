@@ -2,7 +2,7 @@
   "_leiaMe": "Abas 08 a 10: estatística descritiva do B1. Títulos, descrições e notas ficam aqui; os números vêm de b1-estatisticas.json e os achados de b1-achados.js.",
   "fonte": "Fontes: Google Places API (09/2026 e 15/10/2026), coletor de entorno no Google Maps (15/10/2026, distâncias em linha reta), Instagram (posts de 01/09 a 01/10/2026), cardápios publicados pelas casas e B2 (avaliações até \"3 meses atrás\"). Elaboração própria.",
   "panorama": {
-    "intro": "Estatística descritiva das 54 luderias com mais de 100 avaliações no Google nas metrópoles da REGIC. Cada casa conta uma vez. Os valores servem de referência de mercado para preço, horário e localização da luderia de Salvador.",
+    "intro": "Estatística descritiva das 54 luderias ativas com mais de 100 avaliações no Google nas 14 metrópoles da REGIC (13 têm ao menos uma casa). Cada casa conta uma vez. Os valores são a referência de mercado das decisões do plano: a taxa de entrada, o horário de 51 horas por semana e o ponto a até 1.000 m do metrô.",
     "achados": "O que os dados mostram",
     "dias": {
       "titulo": "Casas abertas por dia da semana",
@@ -17,11 +17,11 @@
       "descricao": "Nº de casas pela hora em que fecham no dia de fechamento mais tarde da semana."
     },
     "cestas": {
-      "titulo": "Cesta por pessoa, casa a casa",
-      "descricao": "Faixa entre a cesta baixa (P25) e a alta (P75) das casas com couvert, bebida e entrada ou prato no cardápio. Casa sem couvert encontrado fica de fora: não achar o couvert não quer dizer que a casa não cobra. A linha marca a mediana da cesta mediana dessas casas. Toque numa barra para ver os três níveis."
+      "titulo": "Consumo por pessoa, casa a casa",
+      "descricao": "Faixa entre o consumo baixo (bebida no P25) e o alto (bebida no P75), mais o hambúrguer não vegetariano mais barato do cardápio, nas casas com os dois itens. A taxa de entrada fica de fora: é tratada à parte no plano. A linha marca a mediana do consumo mediano. Toque numa barra para ver os três níveis."
     },
     "histCesta": {
-      "titulo": "Distribuição da cesta mediana",
+      "titulo": "Distribuição do consumo mediano",
       "descricao": "Nº de casas por faixa de R$ 20,00."
     },
     "google": {
@@ -36,7 +36,7 @@
       "titulo": "Estatística descritiva por variável",
       "descricao": "n = casas com o dado. DP = desvio padrão amostral. CV = coeficiente de variação (DP ÷ média). Quartis pelo método inclusivo."
     },
-    "nota": "Cardápio transcrito em 26 das 54 casas, acervo em 17 e Instagram com seguidores em 47. Os quartis e medianas de grupos pequenos descrevem as casas do grupo, e não o mercado."
+    "nota": "Cardápio com preço em 42 das 54 casas, consumo calculável em 27 (bebida e hambúrguer), acervo publicado em 30 e Instagram com seguidores em 47. Os quartis e medianas de grupos pequenos descrevem as casas do grupo, e não o mercado."
   },
   "metropoles": {
     "intro": "As mesmas variáveis, agrupadas pela metrópole do endereço de cada casa (capital da região metropolitana). A soma das casas por metrópole fecha com o total de 54.",
@@ -46,8 +46,8 @@
       "descricao": "Nº de luderias com mais de 100 avaliações no Google. Salvador em destaque."
     },
     "cesta": {
-      "titulo": "Cesta mediana por metrópole",
-      "descricao": "Mediana da cesta mediana das casas com cardápio; o rótulo traz o nº de casas com cardápio."
+      "titulo": "Consumo mediano por metrópole",
+      "descricao": "Mediana do consumo (bebida + hambúrguer) das casas com os dois itens; o rótulo traz o nº de casas com cardápio. Vitória e Goiânia ficam sem valor."
     },
     "seguidores": {
       "titulo": "Seguidores no Instagram por metrópole",
@@ -59,15 +59,15 @@
     }
   },
   "regioes": {
-    "intro": "As 13 metrópoles agrupadas pela região do Brasil da sua capital (IBGE). A soma das casas por região fecha com o total de 54.",
+    "intro": "As 13 metrópoles com casas agrupadas pela região do Brasil da sua capital (IBGE). A soma das casas por região fecha com o total de 54.",
     "achados": "O que muda entre regiões",
     "casas": {
       "titulo": "Casas por região",
       "descricao": "Nº de luderias e participação no total."
     },
     "cesta": {
-      "titulo": "Cesta mediana por região",
-      "descricao": "Barra: da menor à maior cesta mediana da região. Ponto: mediana. O Nordeste não tem cardápio transcrito."
+      "titulo": "Consumo mediano por região",
+      "descricao": "Barra: do menor ao maior consumo mediano da região. Ponto: mediana. Norte tem uma só casa com o dado."
     },
     "operacao": {
       "titulo": "Domingo, segunda e metrô por região",

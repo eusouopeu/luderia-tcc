@@ -14,7 +14,7 @@ const T = c.panorama;
 const G = D.geral;
 const GRUPOS = [...new Set(Object.values(G).map((v) => v.grupo))];
 const salvador = (p) => p.metropole === "Salvador";
-// Só cestas com bebida e entrada ou prato no cardápio (sem couvert, couvert 0).
+// Só casas com bebida e hambúrguer no cardápio (consumo por pessoa; a taxa de entrada fica fora).
 const CESTAS = D.cestas.filter((p) => p.completa);
 const mediana = (xs) => {
   const v = [...xs].sort((a, b) => a - b);
@@ -70,7 +70,7 @@ export default function S8Panorama() {
         <Kpi rotulo="Luderias" valor={D.total_casas} detalhe={`${D.n_metropoles} metrópoles`} />
         <Kpi rotulo={`Nota (${nomeMedida[medida]})`} valor={num(G.avaliacao_media[medida], medida === "media" ? 2 : 1)} detalhe={`${num(G.avaliacao_media.min, 1)} a ${num(G.avaliacao_media.max, 1)}`} />
         <Kpi rotulo={`Avaliações (${nomeMedida[medida]})`} valor={num(G.volume_avaliacoes[medida])} detalhe="no Google" />
-        <Kpi rotulo={`Cesta (${nomeMedida[medida]})`} valor={reais(G.cesta_mediana[medida])} detalhe={`cesta mediana de ${G.cesta_mediana.n} casas com cardápio`} />
+        <Kpi rotulo={`Consumo (${nomeMedida[medida]})`} valor={reais(G.cesta_mediana[medida])} detalhe={`consumo mediano de ${G.cesta_mediana.n} casas com cardápio`} />
         <Kpi rotulo={`Seguidores (${nomeMedida[medida]})`} valor={milhar(G.seguidores[medida])} detalhe="no Instagram" />
         <Kpi rotulo={`Horas por semana (${nomeMedida[medida]})`} valor={num(G.horas_semana[medida], medida === "media" ? 1 : 0)} detalhe="abertas" />
         <Kpi rotulo={`Itens no cardápio (${nomeMedida[medida]})`} valor={num(G.itens_com_preco[medida], 1)} detalhe={`itens com preço, em ${G.itens_com_preco.n} casas`} />

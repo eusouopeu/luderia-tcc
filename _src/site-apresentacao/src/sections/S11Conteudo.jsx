@@ -1,100 +1,89 @@
-import { useState } from "react";
 import {
   Bar, BarChart, CartesianGrid, LabelList, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from "recharts";
-import D from "../conteudo/b2-conteudo.json";
+import D from "../conteudo/b2-temas.json";
 import c from "../conteudo/s11-b2-conteudo.json";
 import { TituloSecao, Reveal, Nota, Sanfona } from "../components/ui";
-import { CartaoGrafico, Dica, Kpi, Pilulas, Tabela } from "../components/graficos";
+import { CartaoGrafico, Dica, Kpi, Tabela } from "../components/graficos";
 import { COR, eixo, num } from "../formato";
 
-const K = D.corpus;
-const TIPOS = [
-  { id: "casas", rotulo: "Casas de jogos" },
-  { id: "lojas", rotulo: "Lojas" },
-  { id: "total", rotulo: "Total" },
-];
-const MEDIDAS = [
-  { id: "pct", rotulo: "% dos comentários" },
-  { id: "pond", rotulo: "% ponderado" },
-];
 const p1 = (v) => `${num(v, 1)}%`;
+const curto = (v, n) => (v.length > n ? `${v.slice(0, n - 1)}…` : v);
+const T = (nome) => D.temas.find((t) => t.tema === nome);
+const K = (rodada, variavel) => D.kappa.find((k) => k.rodada === rodada && k.variavel.startsWith(variavel));
 
 export default function S11Conteudo() {
-  const [tipo, setTipo] = useState("casas");
-  const [medida, setMedida] = useState("pct");
-
-  const temas = D.categorias
-    .map((x) => {
-      const t = x[tipo];
-      const pos = t.positiva[medida] ?? 0;
-      const neg = t.negativa[medida] ?? 0;
-      const total = t.qualquer[medida] ?? 0;
-      return {
-        nome: x.categoria, codigo: x.codigo, pos, neg, outra: Math.max(0, +(total - pos - neg).toFixed(1)), total,
-        n: t.qualquer.n, estab: t.qualquer.estab,
-      };
-    })
-    .sort((a, b) => b.total - a.total);
-  const criticas = D.categorias
-    .map((x) => ({ nome: x.categoria, parte: x[tipo].negativa.parte_criticas ?? 0, n: x[tipo].negativa.n }))
-    .filter((x) => x.n > 0)
-    .sort((a, b) => b.parte - a.parte);
-  const notas = D.categorias
-    .filter((x) => x.total.negativa.n >= 5 && x.nota.negativa != null)
-    .map((x) => ({ nome: x.categoria, elogio: x.nota.positiva, critica: x.nota.negativa, n: x.total.negativa.n }))
+  const temas = [...D.temas]
+    .sort((a, b) => b.pctTema - a.pctTema)
+    .map((t) => ({
+      nome: t.tema, total: t.pctTema, pos: t.pctElogio, neg: t.pctCritica,
+      outra: Math.max(0, +(t.pctTema - t.pctElogio - t.pctCritica).toFixed(1)), n: t.comTema,
+    }));
+  const notas = D.temas
+    .filter((t) => t.critica >= 5 && t.notaCritica != null)
+    .map((t) => ({ nome: t.tema, elogio: t.notaElogio, critica: t.notaCritica, n: t.critica }))
     .sort((a, b) => a.critica - b.critica);
-  const contexto = D.contexto.map((x) => ({ nome: x.categoria, casas: x.casas.pct, lojas: x.lojas.pct }));
+  const contexto = D.contexto.map((x) => ({ nome: x.contexto, pct: x.pct, n: x.comentarios }));
+  const kTemas = K(2, "temas");
+  const kCtx = K(1, "contexto");
+
+  const atend = T("atendimento presencial");
+  const comida = T("comida");
+  const expl = T("explicação de jogos");
+  const indic = T("indicações de jogos");
+  const entrada = T("preço da entrada");
+  const cardapio = T("preço do cardápio");
+  const achados = [
+    {
+      titulo: "O atendimento é o eixo da avaliação",
+      texto: `O atendimento presencial aparece em ${p1(atend.pctTema)} dos comentários (${num(atend.comTema)}), com ${num(atend.elogio)} elogios e ${atend.critica} críticas. Quando é criticado, a nota média do comentário cai para ${num(atend.notaCritica, 2)}.`,
+      decisao: "Um instrutor dedicado ao salão em todas as horas abertas, com no máximo duas mesas por instrutor no pico (capítulos 6 e 7).",
+    },
+    {
+      titulo: "Explicar e indicar jogos é parte do serviço",
+      texto: `A explicação de jogos aparece em ${p1(expl.pctTema)} dos comentários e, quando criticada, leva a nota a ${num(expl.notaCritica, 2)}. A indicação de jogos é rara (${p1(indic.pctTema)}), e a nota com crítica é de ${num(indic.notaCritica, 2)}.`,
+      decisao: "A explicação é tratada como serviço de mesa, e a indicação pelo perfil do grupo é a novidade da proposta de valor.",
+    },
+    {
+      titulo: "A comida pesa mais que o ambiente",
+      texto: `A comida é o segundo tema (${p1(comida.pctTema)}, com ${comida.elogio} elogios e ${comida.critica} críticas). A nota média cai para ${num(comida.notaCritica, 2)} quando a comida é criticada.`,
+      decisao: "Cozinha completa desde a abertura: os alimentos e bebidas são a maior fonte de receita do plano.",
+    },
+    {
+      titulo: "O preço pesa pouco, mas incomoda",
+      texto: `O preço da entrada aparece em ${entrada.comTema} comentários (${entrada.critica} críticas e ${entrada.elogio} elogios); o do cardápio, em ${cardapio.comTema} (${cardapio.critica} críticas e ${cardapio.elogio} elogios).`,
+      decisao: "A taxa de entrada fica na média dos concorrentes, abaixo da São Jogue (capítulo 6).",
+    },
+  ];
+  const estab = [...D.porEstabelecimento].sort((a, b) => b.comentarios - a.comentarios);
 
   return (
     <>
       <TituloSecao id="conteudo" />
       <Reveal>
-        <p className="mb-6 max-w-3xl text-sm leading-relaxed text-azul-800/85 sm:text-base">{c.intro}</p>
+        <p className="mb-6 max-w-3xl text-sm leading-relaxed text-azul-800 sm:text-base">{c.intro}</p>
       </Reveal>
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-        <Kpi rotulo="Comentários analisados" valor={num(K.comentarios)} detalhe={`${K.excluidos} excluídos (fora do tema ou texto-modelo)`} />
-        <Kpi rotulo="Estabelecimentos" valor={K.estabelecimentos} detalhe={`${K.por_tipo.casas.estabelecimentos} casas de jogos e ${K.por_tipo.lojas.estabelecimentos} lojas`} />
-        <Kpi rotulo="Comentários por tipo" valor={`${num(K.por_tipo.casas.comentarios)} / ${num(K.por_tipo.lojas.comentarios)}`} detalhe="casas de jogos / lojas" />
-        <Kpi rotulo="Nota média" valor={num(K.nota_media, 2)} detalhe={`${p1(K.pct_nota5)} dos comentários com nota 5`} />
-        <Kpi rotulo="Menções negativas" valor={num(D.total_negativas.total)} detalhe={`${num(D.total_negativas.casas)} nas casas de jogos`} />
-        <Kpi rotulo="Concentração" valor={p1(K.concentracao.pct_casas)} detalhe={`dos comentários das casas de jogos vêm de ${K.concentracao.nomes.map((n) => n.split(" ")[0]).join(" e ")}`} />
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <Kpi rotulo="Comentários analisados" valor={num(D.comentarios)} detalhe={"Avaliações com texto, até \"3 meses atrás\""} />
+        <Kpi rotulo="Estabelecimentos" valor={D.estabelecimentos} detalhe="Concorrentes do B1 com avaliações no recorte" />
+        <Kpi rotulo="Temas codificados" valor={D.temas.length} detalhe="Cada tema conta uma vez por comentário e polaridade" />
+        <Kpi rotulo="Concordância (kappa)" valor={num(kTemas.kappa, 2)} detalhe={`Recodificação cega, rodada 2, ${kTemas.linhas} comentários`} />
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center gap-2">
-        <Pilulas opcoes={TIPOS} valor={tipo} aoMudar={setTipo} rotulo="Tipo de estabelecimento" />
-        <Pilulas opcoes={MEDIDAS} valor={medida} aoMudar={setMedida} rotulo="Medida" />
-      </div>
-
-      <div className="mt-4 grid gap-4 md:grid-cols-2">
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
         <CartaoGrafico titulo={c.temas.titulo} descricao={c.temas.descricao} className="md:col-span-2">
           <ResponsiveContainer width="100%" height={temas.length * 26 + 50}>
             <BarChart data={temas} layout="vertical" margin={{ top: 0, right: 40, left: 0, bottom: 0 }}>
               <CartesianGrid horizontal={false} stroke={COR.grade} />
               <XAxis type="number" tick={eixo} tickFormatter={(v) => `${v}%`} />
-              <YAxis type="category" dataKey="nome" tick={{ ...eixo, fontSize: 10 }} width={150} interval={0}
-                tickFormatter={(v) => (v.length > 26 ? `${v.slice(0, 25)}…` : v)} />
-              <Tooltip content={<Dica formatar={(p) => [p.nome, `${p1(p.total)} (${p.n} comentários, ${p.estab} casas)`, `elogio ${p1(p.pos)}`, `crítica ${p1(p.neg)}`]} />} />
+              <YAxis type="category" dataKey="nome" tick={{ ...eixo, fontSize: 10 }} width={170} interval={0} tickFormatter={(v) => curto(v, 30)} />
+              <Tooltip content={<Dica formatar={(p) => [p.nome, `${p1(p.total)} (${num(p.n)} comentários)`, `elogio ${p1(p.pos)}`, `crítica ${p1(p.neg)}`]} />} />
               <Legend wrapperStyle={{ fontSize: 12 }} />
               <Bar dataKey="pos" name="elogio" stackId="a" fill={COR.azul} />
               <Bar dataKey="neg" name="crítica" stackId="a" fill={COR.destaque} />
-              <Bar dataKey="outra" name="mista ou neutra" stackId="a" fill={COR.neutra} radius={[0, 3, 3, 0]}>
+              <Bar dataKey="outra" name="outra polaridade" stackId="a" fill={COR.neutra} radius={[0, 3, 3, 0]}>
                 <LabelList dataKey="total" position="right" formatter={(v) => `${num(v, 0)}%`} style={{ fontSize: 10, fill: COR.texto }} />
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        </CartaoGrafico>
-
-        <CartaoGrafico titulo={c.criticas.titulo} descricao={`${c.criticas.descricao} Total: ${num(D.total_negativas[tipo])} menções negativas.`}>
-          <ResponsiveContainer width="100%" height={criticas.length * 24 + 30}>
-            <BarChart data={criticas} layout="vertical" margin={{ top: 0, right: 44, left: 0, bottom: 0 }}>
-              <XAxis type="number" hide />
-              <YAxis type="category" dataKey="nome" tick={{ ...eixo, fontSize: 10 }} width={130} interval={0}
-                tickFormatter={(v) => (v.length > 22 ? `${v.slice(0, 21)}…` : v)} />
-              <Tooltip content={<Dica formatar={(p) => [p.nome, `${p1(p.parte)} das críticas`, `${p.n} menções negativas`]} />} />
-              <Bar dataKey="parte" fill={COR.azul} radius={[0, 4, 4, 0]} barSize={14}>
-                <LabelList dataKey="parte" position="right" formatter={p1} style={{ fontSize: 10, fill: COR.texto }} />
               </Bar>
             </BarChart>
           </ResponsiveContainer>
@@ -105,8 +94,7 @@ export default function S11Conteudo() {
             <BarChart data={notas} layout="vertical" margin={{ top: 0, right: 30, left: 0, bottom: 0 }}>
               <CartesianGrid horizontal={false} stroke={COR.grade} />
               <XAxis type="number" domain={[0, 5]} ticks={[1, 2, 3, 4, 5]} tick={eixo} />
-              <YAxis type="category" dataKey="nome" tick={{ ...eixo, fontSize: 10 }} width={130} interval={0}
-                tickFormatter={(v) => (v.length > 22 ? `${v.slice(0, 21)}…` : v)} />
+              <YAxis type="category" dataKey="nome" tick={{ ...eixo, fontSize: 10 }} width={150} interval={0} tickFormatter={(v) => curto(v, 26)} />
               <Tooltip content={<Dica formatar={(p) => [p.nome, `com elogio: ${num(p.elogio, 2)}`, `com crítica: ${num(p.critica, 2)} (${p.n} críticas)`]} />} />
               <Legend wrapperStyle={{ fontSize: 12 }} />
               <Bar dataKey="elogio" name="com elogio" fill={COR.azulClaro} barSize={9} />
@@ -117,68 +105,59 @@ export default function S11Conteudo() {
           </ResponsiveContainer>
         </CartaoGrafico>
 
-        <CartaoGrafico titulo={c.contexto.titulo} descricao={c.contexto.descricao} className="md:col-span-2">
+        <CartaoGrafico titulo={c.contexto.titulo} descricao={`${c.contexto.descricao} Concordância da recodificação: kappa de ${num(kCtx.kappa, 2)}, abaixo do critério.`}>
           <ResponsiveContainer width="100%" height={contexto.length * 30 + 50}>
             <BarChart data={contexto} layout="vertical" margin={{ top: 0, right: 40, left: 0, bottom: 0 }}>
               <CartesianGrid horizontal={false} stroke={COR.grade} />
               <XAxis type="number" tick={eixo} tickFormatter={(v) => `${v}%`} />
-              <YAxis type="category" dataKey="nome" tick={{ ...eixo, fontSize: 10 }} width={150} interval={0}
-                tickFormatter={(v) => (v.length > 26 ? `${v.slice(0, 25)}…` : v)} />
-              <Tooltip formatter={(v) => p1(v)} />
-              <Legend wrapperStyle={{ fontSize: 12 }} />
-              <Bar dataKey="casas" name="casas de jogos" fill={COR.azul} barSize={9} />
-              <Bar dataKey="lojas" name="lojas" fill={COR.azulClaro} barSize={9} />
+              <YAxis type="category" dataKey="nome" tick={{ ...eixo, fontSize: 10 }} width={90} interval={0} />
+              <Tooltip content={<Dica formatar={(p) => [p.nome, `${p1(p.pct)} (${p.n} comentários)`]} />} />
+              <Bar dataKey="pct" fill={COR.azulClaro} barSize={14} radius={[0, 4, 4, 0]}>
+                <LabelList dataKey="pct" position="right" formatter={p1} style={{ fontSize: 10, fill: COR.texto }} />
+              </Bar>
             </BarChart>
           </ResponsiveContainer>
         </CartaoGrafico>
       </div>
 
       <Reveal>
-        <h2 className="mt-12 font-display text-2xl font-bold text-azul-800">{c.achados.titulo}</h2>
-        <p className="mt-1 mb-5 max-w-3xl text-sm text-azul-700/80">{D.achados_intro}</p>
+        <h2 className="mt-12 font-display text-2xl font-bold text-azul-950">{c.achados.titulo}</h2>
+        <p className="mt-1 mb-5 max-w-3xl text-sm text-azul-700">{c.achados.descricao}</p>
       </Reveal>
       <div className="space-y-3">
-        {D.achados.map((a, i) => (
+        {achados.map((a, i) => (
           <Sanfona key={a.titulo} titulo={`${i + 1}. ${a.titulo}`} aberto={i === 0}>
             <div className="space-y-3 p-5">
               <p className="text-sm leading-relaxed text-azul-900">{a.texto}</p>
-              {a.decisao && (
-                <p className="rounded-lg border-l-4 border-azul-800 bg-papel-100 px-4 py-3 text-sm leading-relaxed text-azul-950">
-                  <span className="font-semibold">{c.achados.rotuloDecisao}: </span>
-                  {a.decisao}
-                </p>
-              )}
+              <p className="rounded-lg border-l-4 border-roxo-600 bg-lavanda-100 px-4 py-3 text-sm leading-relaxed text-azul-950">
+                <span className="font-semibold">{c.achados.rotuloDecisao}: </span>
+                {a.decisao}
+              </p>
             </div>
           </Sanfona>
         ))}
       </div>
 
       <Reveal>
-        <h2 className="mt-12 font-display text-2xl font-bold text-azul-800">{c.estabelecimentos.titulo}</h2>
-        <p className="mt-1 mb-5 max-w-3xl text-sm text-azul-700/80">{c.estabelecimentos.descricao}</p>
+        <h2 className="mt-12 font-display text-2xl font-bold text-azul-950">{c.estabelecimentos.titulo}</h2>
+        <p className="mt-1 mb-5 max-w-3xl text-sm text-azul-700">{c.estabelecimentos.descricao}</p>
       </Reveal>
-      <Sanfona titulo="Tabela" contagem={D.estabelecimentos.length}>
+      <Sanfona titulo="Tabela" contagem={estab.length}>
         <div className="p-3 sm:p-4">
           <Tabela
-            linhas={D.estabelecimentos}
-            destaque={(e) => e.capital === "Salvador"}
+            linhas={estab}
+            destaque={(e) => e.metropole === "Salvador"}
             colunas={[
               { rotulo: "estabelecimento", valor: (e) => <span className="font-normal">{e.nome}</span> },
-              { rotulo: "metrópole", valor: (e) => e.capital },
-              { rotulo: "tipo", valor: (e) => (e.tipo === "casas" ? "casa de jogos" : "loja") },
-              { rotulo: "comentários", valor: (e) => e.comentarios },
-              { rotulo: "nota média", valor: (e) => num(e.nota, 2) },
+              { rotulo: "metrópole", valor: (e) => e.metropole },
+              { rotulo: "comentários", valor: (e) => num(e.comentarios) },
+              { rotulo: "com tema", valor: (e) => num(e.comTema) },
             ]}
           />
         </div>
       </Sanfona>
 
-      <Nota>
-        {K.controle.recodificada
-          ? "Controle de qualidade: recodificação cega concluída."
-          : `Controle de qualidade: amostra de ${K.controle.amostra} comentários sorteada para recodificação cega (kappa de Cohen por categoria); a recodificação ainda não foi feita, e os resultados são preliminares.`}{" "}
-        {c.nota}
-      </Nota>
+      <Nota>{c.nota}</Nota>
     </>
   );
 }

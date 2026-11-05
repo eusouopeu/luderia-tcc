@@ -100,7 +100,7 @@ export default function S10Regioes() {
           { rotulo: "com cardápio", valor: (r) => r.com_cardapio },
           { rotulo: "bebida", valor: (r) => reais(med("bebida_mediana")(r)) },
           { rotulo: "entrada ou prato", valor: (r) => reais(med("entrada_ou_prato_mediana")(r)) },
-          { rotulo: "cesta mediana", valor: (r) => reais(med("cesta_mediana")(r)) },
+          { rotulo: "consumo mediano", valor: (r) => reais(med("cesta_mediana")(r)) },
           { rotulo: "avaliações B2", valor: (r) => num(r.avaliacoes_b2) },
         ]}
       />

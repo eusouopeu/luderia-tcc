@@ -1,5 +1,5 @@
 {
-  "_leiaMe": "Aba 12: auditorias da coleta. Textos por conjunto aqui; números em auditorias.json (gerado por _src/extras/auditorias_site.py a partir dos registros de cada pasta auditoria/). Método em _instrucoes/4_metodologia.md §3.4.",
+  "_leiaMe": "Aba 12: auditorias da coleta. Textos por conjunto aqui; números em auditorias.json (gerado por _src/extras/auditorias_site.py a partir dos registros de cada pasta auditoria/). Método na seção 3.3 do TMin (Quadro 3.3).",
   "intro": "Os scripts de coleta leem a fonte inteira: todos os estabelecimentos do recorte, todas as avaliações, todos os posts. Por isso, não há erro amostral na coleta. A auditoria não estima a população: ela estima a taxa de erro do instrumento, isto é, quanto o dado gravado difere da página de origem. O que se valida é o dado gerado, e não a autoria do código.",
   "regras": {
     "titulo": "Regras comuns a todas as auditorias",
@@ -118,5 +118,5 @@
     }
   ],
   "b3": "A contagem direta (B3) não tem amostra de auditoria: não há gravação para conferir depois. A validação usa a consistência do próprio registro: fechamento do saldo de pessoas a cada 30 minutos, grupos sem saída contados à parte e comparação entre três caminhos independentes (porta, mesas e notas fiscais).",
-  "nota": "Fonte: metodologia deste trabalho (§3.4, validação da coleta), scripts B1-a_auditoria_*, B2-a_auditoria_avaliacoes.py e B4-a_auditoria_bases.py e registros de sorteio de 15/10/2026. Referências do modelo de erro total da pesquisa: Groves et al. (2009), Biemer (2010), Amaya, Biemer e Kinyon (2020) e Meng (2018)."
+  "nota": "Fonte: metodologia deste trabalho (seção 3.3 e Quadro 3.3, validação por bloco), scripts B1-a_auditoria_*, B2-a_auditoria_avaliacoes.py e B4-a_auditoria_bases.py e registros de sorteio de 15/10/2026. Referências do modelo de erro total da pesquisa: Groves et al. (2009), Biemer (2010), Amaya, Biemer e Kinyon (2020) e Meng (2018). Os tamanhos de população de cada conjunto são os da data do sorteio, e as bases cresceram depois: o B2 final tem 1.628 avaliações com texto em 53 estabelecimentos, e o B1 tem cardápio com preço em 42 casas e acervo publicado em 30. Rodar de novo o sorteio com a base final fecha essa diferença."
 }

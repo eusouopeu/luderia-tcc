@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "predeploy": "pnpm run build",
     "deploy": "gh-pages -d dist",
-    "tabelas": "python3 scripts/sincronizar_tabelas.py"
+    "tabelas": "python3 scripts/sincronizar_tabelas.py",
+    "b2": "python3 scripts/sincronizar_b2.py"
   },
   "dependencies": {
     "qrcode.react": "^4.2.0",

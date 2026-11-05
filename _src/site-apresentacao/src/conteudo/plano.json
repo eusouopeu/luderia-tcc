@@ -42,6 +42,9 @@
     ]
    },
    {
+    "tipo": "qrcode"
+   },
+   {
     "tipo": "texto",
     "titulo": "O problema",
     "paragrafos": [
