@@ -165,6 +165,25 @@ def taxas_entrada():
             fonte(notas["fonte"], fim=False), nota(notas["nota"].replace("em negrito, a São Jogue", "São Jogue"))]
 
 
+def termos_busca(est):
+    """Termos da busca na Google Places API, só com os candidatos do recorte das 14 metrópoles (164 com mais de 100
+    avaliações) e os aprovados (54). Um estabelecimento pode ser achado por vários termos: as linhas não somam."""
+    import collections
+    cur = pd.read_csv(B1 / "estabelecimentos" / "2_recorte" / "B1_curadoria_metro_f_av100.csv", sep=None, engine="python",
+                      encoding="utf-8-sig")
+    brutos = pd.read_csv(B1 / "_dados-brutos" / "estabelecimentos" / "B1_candidatos.csv", encoding="utf-8-sig")
+    rec, apr = set(cur.place_id), set(est.place_id)
+    achados = collections.defaultdict(set)
+    for r in brutos.itertuples():
+        achados[r.termo_busca].add(r.place_id)
+    linhas = sorted(((t, len(s & rec), len(s & apr)) for t, s in achados.items()), key=lambda x: (-x[1], x[0]))
+    todos = set().union(*achados.values())
+    assert rec <= todos and len(rec) == 164 and len(apr) == 54
+    q = [["Termo de busca", "Candidatos do recorte", "Aprovados"]] + [[t, str(c), str(a)] for t, c, a in linhas]
+    q.append(["Estabelecimentos distintos (as linhas se sobrepõem)", str(len(rec & todos)), str(len(apr & todos))])
+    return q, len(achados), brutos.capital_busca.nunique(), len(apr - todos)
+
+
 def apendice_a(d):
     est = d["est"]
     por = est.groupby("capital_endereco").size()
@@ -172,11 +191,19 @@ def apendice_a(d):
     t2 = [["Concorrente", "Metrópole", "Nota (1 a 5)", "Avaliações"]] + [
         [r.nome, r.capital_endereco, num(r.avaliacao_media), brl(r.volume_avaliacoes, 0)] for r in lista.itertuples()]
     fonte_b1 = "Fonte: elaborado pelo próprio autor, com base no Bloco B1 (Google Places API, 09/2026 e 12/10/2026)."
+    q1, n_termos, n_cap, sem_termo = termos_busca(est)
     return [titulo("APÊNDICE A – CONCORRENTES DO BLOCO B1"),
             par(f"A busca pela Google Places API levantou 164 candidatos com mais de 100 avaliações nas 14 metrópoles da REGIC 2018 "
                 f"e em suas regiões metropolitanas, e a curadoria manual aprovou {len(est)}. Cada concorrente pertence a uma única "
                 f"metrópole: a capital da região metropolitana do seu endereço. {len(por)} das 14 metrópoles têm ao menos um concorrente, "
-                "com a contagem por metrópole na Figura 5.1. A Tabela A.1 lista os concorrentes, com a nota e o número de avaliações no Google Maps."),
+                "com a contagem por metrópole na Figura 5.1. A busca cruzou "
+                f"{n_termos} termos com {n_cap} capitais (Quadro A.1). A Tabela A.1 lista os concorrentes, com a nota e o número de avaliações no Google Maps."),
+            legenda("Quadro A.1 – Termos da busca na Google Places API"),
+            tabela("Quadro", [4871, 2300, 1900], q1, ["left", "right", "right"], sz=18),
+            fonte(fonte_b1, fim=False),
+            nota("Nota: contagens só dos 164 candidatos do recorte das 14 metrópoles (mais de 100 avaliações) e dos 54 aprovados. "
+                 "Um estabelecimento pode ser achado por vários termos, então as linhas não somam o total. "
+                 + ("A Toca do Rato (Porto Alegre) não foi retornada por nenhum termo e entrou pelo Acervo de Jogos." if sem_termo else "")),
             legenda("Tabela A.1 – Concorrentes aprovados"),
             tabela("Tabela", [4271, 2300, 1300, 1200], t2, ["left", "left", "right", "right"], sz=18),
             fonte(fonte_b1)] + taxas_entrada(), dict(concorrentes=len(est))
