@@ -87,6 +87,8 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Aceitável
 
+**D64 — Página do modelo Kano em Picolo e Tontini: p. 40 × p. 39 (03/11/2026).** Cap. 2 (2.3: "(PICOLO; TONTINI, 2008, p. 40)") × PDF da pasta `bibliografia/`, em que a definição dos atributos obrigatórios e atrativos está na p. 39 (página impressa). A variante `estilo_manual/` já cita p. 39. Sugestão: conferir e trocar para p. 39 no TMin.
+
 **D72 — Cesta de jogos: 12 ou 15 acervos (04/11/2026).** Cap. 3 (3.2.1) diz que a cesta reúne os títulos presentes em 15 ou mais dos 30 acervos; o cap. 6 (6.2) diz 12 ou mais, e o acervo inicial de 175 títulos vem desse corte. Conferir no B1 qual limite gerou os 175 e igualar os dois capítulos.
 
 **D69 — Taxa adotada × taxa do modelo (04/11/2026).** Cap. 6 (6.3) adota R$ 18,68 de taxa; o modelo separa R$ 22,32 pela parcela de 28,4% da cesta (R07), e o cap. 10 (SWOT) e o 9.6 citam R$ 22,32. O 6.3 declara que a diferença não muda a receita total. Sugestão: manter declarado ou fazer o modelo usar R$ 18,68 e jogar o restante no A&B.
