@@ -1,28 +1,28 @@
 // Ponte entre os nomes de cor usados nos arquivos .json de conteúdo e os tokens
 // definidos em index.css. Nos JSON escreva apenas o nome ("azul", "roxo", …).
-// Paleta atual: editorial, em cinzas quentes sobre papel creme. Os nomes "azul", "roxo", "lavanda",
-// "rosa" e "carmesim" são apelidos herdados para esses tons (do mais escuro ao mais claro), mantidos
-// para não obrigar a reescrever o conteúdo em src/conteudo/*.json. A cor de destaque (terracota) fica
-// fora desta lista: é usada só nas seções, nos casos pertinentes (ver index.css).
+// Paleta purple e slate: "azulProfundo" é o slate (tinta), e "azul", "azulEscuro", "roxo", "roxoEscuro", "lavanda", "rosa" e "carmesim" são a
+// escala do purple, do mais forte ao mais claro; "papel" é o slate claro. Os nomes foram herdados da primeira
+// versão e mantidos para não reescrever o conteúdo de src/conteudo/*.json. As cores seguem o tema
+// claro ou escuro do sistema, porque apontam para variáveis CSS.
 export const CORES = {
-  azul: "var(--color-azul-800)",
-  azulEscuro: "var(--color-azul-900)",
+  azul: "var(--color-roxo-600)",
+  azulEscuro: "var(--color-roxo-700)",
   azulProfundo: "var(--color-azul-950)",
-  roxo: "var(--color-roxo-600)",
-  roxoEscuro: "var(--color-roxo-700)",
+  roxo: "var(--color-rosa-500)",
+  roxoEscuro: "var(--color-carmesim-600)",
   lavanda: "var(--color-lavanda-400)",
   lavandaClara: "var(--color-lavanda-200)",
   rosa: "var(--color-rosa-500)",
   carmesim: "var(--color-carmesim-600)",
   papel: "var(--color-papel-200)",
-  branco: "#ffffff",
+  branco: "var(--color-white)",
 };
 
-// Cores em que o texto por cima precisa ser branco.
+// Cores em que o texto por cima precisa ser claro (texto "sobre tinta").
 const FUNDO_ESCURO = new Set([
-  "azul", "azulEscuro", "azulProfundo", "roxo", "roxoEscuro", "carmesim",
+  "azul", "azulEscuro", "azulProfundo", "roxo", "roxoEscuro", "carmesim", "rosa",
 ]);
 
 export const cor = (nome) => CORES[nome] ?? CORES.azul;
-export const textoSobre = (nome) => (FUNDO_ESCURO.has(nome) ? "#ffffff" : "var(--color-azul-950)");
+export const textoSobre = (nome) => (FUNDO_ESCURO.has(nome) ? "var(--color-on-ink)" : "var(--color-azul-950)");
 export const ehEscura = (nome) => FUNDO_ESCURO.has(nome);

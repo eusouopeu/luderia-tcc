@@ -1,7 +1,7 @@
 {
-  "_leiaMe": "Identificação do trabalho, abas da barra lateral e textos da moldura do site. Em cada seção: 'titulo' e 'subtitulo' aparecem na barra lateral; 'subtituloLongo' aparece no cabeçalho da aba; 'tempo' é a estimativa de fala.",
+  "_leiaMe": "Identificação do trabalho, abas da barra lateral e textos da moldura do site. Em cada seção: 'titulo' e 'subtitulo' aparecem na barra lateral; 'subtituloLongo' aparece no cabeçalho da aba; 'tempo' é a estimativa de fala; 'grupo' separa o plano dos dados de apoio; 'capitulo' diz de onde o texto vem no TMin. O conteúdo das abas 1 a 8 está em plano.json.",
   "meta": {
-    "titulo": "Luderia Casual",
+    "titulo": "Dados em jogo",
     "subtitulo": "Plano de negócios baseado em evidências para uma luderia em Salvador, a partir de dados de concorrentes nas metrópoles brasileiras, de avaliações de clientes, de contagem direta e de bases públicas",
     "autor": "Pedro Caio Feitosa Teles",
     "curso": "Bacharelado em Administração — Escola de Administração, UFBA",
@@ -14,7 +14,7 @@
   },
   "barraLateral": {
     "chapeu": "TCC · Administração · UFBA",
-    "dicaTeclado": "Use ← → para navegar entre as seções",
+    "dicaTeclado": "Use ← → para navegar entre as abas",
     "rotuloNavegacao": "Navegação entre seções"
   },
   "rodape": {
@@ -23,100 +23,134 @@
   },
   "secoes": [
     {
-      "id": "estrutura",
+      "id": "introducao",
       "n": 1,
-      "titulo": "Estrutura da pesquisa",
-      "subtitulo": "Problema, objetivos e justificativa",
-      "tempo": "1min30",
-      "subtituloLongo": "Problema, questão de pesquisa e objetivos"
+      "grupo": "Plano",
+      "titulo": "Introdução",
+      "subtitulo": "Problema, objetivos e resultados",
+      "tempo": "1min",
+      "subtituloLongo": "Problema, objetivos, justificativa e os números principais",
+      "capitulo": "Capítulos 1 e 4 do TMin"
     },
     {
-      "id": "teorico",
+      "id": "referencial",
       "n": 2,
-      "titulo": "Quadro teórico",
-      "subtitulo": "Conceitos e fontes adotadas",
-      "tempo": "1min30",
-      "subtituloLongo": "Conceitos e ferramentas que o plano usa"
+      "grupo": "Plano",
+      "titulo": "Referencial teórico",
+      "subtitulo": "Conceitos e decisões que apoiam",
+      "tempo": "1min",
+      "subtituloLongo": "Os cinco blocos de teoria e a decisão que cada um sustenta",
+      "capitulo": "Capítulo 2 do TMin"
     },
     {
       "id": "metodologia",
       "n": 3,
-      "titulo": "Caracterização metodológica",
-      "subtitulo": "Blocos de dados B1 a B4",
+      "grupo": "Plano",
+      "titulo": "Metodologia",
+      "subtitulo": "Evidências N1 a N6 e blocos B1 a B5",
       "tempo": "1min30",
-      "subtituloLongo": "Tipo de trabalho, blocos de dados e coleta"
+      "subtituloLongo": "Hierarquia de evidências, blocos de coleta, validação e limitações",
+      "capitulo": "Capítulo 3 do TMin"
     },
     {
-      "id": "indicadores",
+      "id": "mercado",
       "n": 4,
-      "titulo": "Quadro de itens",
-      "subtitulo": "Variáveis de cada instrumento",
+      "grupo": "Plano",
+      "titulo": "Análise de mercado",
+      "subtitulo": "Entretenimento social, PESTEL e forças",
       "tempo": "1min30",
-      "subtituloLongo": "Itens registrados em cada instrumento de coleta"
+      "subtituloLongo": "O mercado do entretenimento social, o ambiente externo e a concorrência",
+      "capitulo": "Capítulo 5 do TMin"
     },
     {
-      "id": "modelo",
+      "id": "marketing",
       "n": 5,
-      "titulo": "Modelo de análise",
-      "subtitulo": "Objetivo ↔ variáveis ↔ técnica",
+      "grupo": "Plano",
+      "titulo": "Plano de marketing",
+      "subtitulo": "Proposta de valor, preço, bairro e demanda",
       "tempo": "1min30",
-      "subtituloLongo": "Objetivo específico ↔ variáveis ↔ itens ↔ técnica"
+      "subtituloLongo": "Posicionamento, composto de marketing, escolha do bairro e demanda",
+      "capitulo": "Capítulo 6 do TMin"
     },
     {
-      "id": "tecnicas",
+      "id": "operacional",
       "n": 6,
-      "titulo": "Técnicas de análise",
-      "subtitulo": "Descritiva, PRC, calibração e sensibilidade",
-      "tempo": "1min30",
-      "subtituloLongo": "Como os dados coletados viram premissas"
+      "grupo": "Plano",
+      "titulo": "Plano operacional",
+      "subtitulo": "Salão, processos, acervo e equipe",
+      "tempo": "1min",
+      "subtituloLongo": "Espaço, capacidade, jornada do cliente, acervo e equipe",
+      "capitulo": "Capítulo 7 do TMin"
     },
     {
-      "id": "contribuicoes",
+      "id": "financeiro",
       "n": 7,
-      "titulo": "Contribuições esperadas",
-      "subtitulo": "Gerencial, acadêmica e social",
+      "grupo": "Plano",
+      "titulo": "Plano financeiro",
+      "subtitulo": "Investimento, resultado e indicadores",
+      "tempo": "1min30",
+      "subtituloLongo": "Premissas, investimento, fluxo de caixa, indicadores e sensibilidade",
+      "capitulo": "Capítulo 9 do TMin"
+    },
+    {
+      "id": "riscos",
+      "n": 8,
+      "grupo": "Plano",
+      "titulo": "Análise de riscos",
+      "subtitulo": "SWOT, riscos, contingência e parecer",
       "tempo": "1min",
-      "subtituloLongo": "Gerencial, acadêmica, social e as limitações"
+      "subtituloLongo": "Estratégia, premissas críticas, riscos e validações antes de investir",
+      "capitulo": "Capítulos 10 e 11 do TMin"
     },
     {
       "id": "panorama",
-      "n": 8,
+      "n": 9,
       "titulo": "Panorama das luderias",
       "subtitulo": "B1: estatística descritiva geral",
       "tempo": "apoio",
-      "subtituloLongo": "B1: estatística descritiva das 54 luderias"
+      "subtituloLongo": "B1: estatística descritiva das 54 luderias",
+      "grupo": "Dados de apoio",
+      "capitulo": "Dados dos blocos B1 e B2"
     },
     {
       "id": "metropoles",
-      "n": 9,
+      "n": 10,
       "titulo": "Luderias por metrópole",
       "subtitulo": "B1: comparação entre as 13 metrópoles",
       "tempo": "apoio",
-      "subtituloLongo": "B1: estatística descritiva por metrópole"
+      "subtituloLongo": "B1: estatística descritiva por metrópole",
+      "grupo": "Dados de apoio",
+      "capitulo": "Dados dos blocos B1 e B2"
     },
     {
       "id": "regioes",
-      "n": 10,
+      "n": 11,
       "titulo": "Luderias por região",
       "subtitulo": "B1: Norte, Nordeste, Centro-Oeste, Sudeste e Sul",
       "tempo": "apoio",
-      "subtituloLongo": "B1: estatística descritiva por região do Brasil"
+      "subtituloLongo": "B1: estatística descritiva por região do Brasil",
+      "grupo": "Dados de apoio",
+      "capitulo": "Dados dos blocos B1 e B2"
     },
     {
       "id": "conteudo",
-      "n": 11,
+      "n": 12,
       "titulo": "Análise de conteúdo",
       "subtitulo": "B2: o que os clientes comentam",
       "tempo": "apoio",
-      "subtituloLongo": "B2: análise de conteúdo das avaliações recentes"
+      "subtituloLongo": "B2: análise de conteúdo das avaliações recentes",
+      "grupo": "Dados de apoio",
+      "capitulo": "Dados dos blocos B1 e B2"
     },
     {
       "id": "auditorias",
-      "n": 12,
+      "n": 13,
       "titulo": "Auditoria da coleta",
       "subtitulo": "Amostras, critérios e cálculo",
       "tempo": "apoio",
-      "subtituloLongo": "Auditoria dos dados coletados por script: amostras, critérios e cálculo"
+      "subtituloLongo": "Auditoria dos dados coletados por script: amostras, critérios e cálculo",
+      "grupo": "Dados de apoio",
+      "capitulo": "Auditoria dos blocos B1 e B2"
     }
   ]
 }

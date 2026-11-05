@@ -27,7 +27,7 @@ export function Achados({ titulo, itens }) {
   return (
     <Reveal>
       <Cartao tom="escuro" className="p-5 sm:p-6">
-        <p className="text-xs font-semibold tracking-[0.18em] text-lavanda-300 uppercase">{titulo}</p>
+        <p className="text-xs font-semibold tracking-[0.18em] text-lavanda-400 uppercase">{titulo}</p>
         <ul className="mt-3 space-y-2.5">
           {itens.map((t) => (
             <li key={t} className="flex items-start gap-3 text-sm leading-relaxed">
@@ -107,7 +107,7 @@ export function Pilulas({ opcoes, valor, aoMudar, rotulo }) {
             aria-selected={ativo}
             onClick={() => aoMudar(o.id)}
             className={`cursor-pointer rounded-full px-3.5 py-1 text-xs font-semibold transition-colors sm:text-sm ${
-              ativo ? "bg-azul-900 text-white" : "text-azul-800 hover:bg-papel-100"
+              ativo ? "bg-roxo-600 text-on-ink" : "text-azul-800 hover:bg-papel-100"
             }`}
           >
             {o.rotulo}

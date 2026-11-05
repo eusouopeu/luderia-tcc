@@ -43,21 +43,19 @@ export function TituloSecao({ id }) {
   if (!s) return null;
   const total = site.secoes.length;
   return (
-    <header className="mb-10 sm:mb-12">
-      <div className="flex items-center gap-3 font-mono text-[11px] font-medium tracking-[0.14em] text-azul-700/70 uppercase">
-        <span className="text-destaque-600">
+    <header className="mb-8 sm:mb-10">
+      <div className="flex items-center gap-3 text-[11px] font-semibold tracking-[0.14em] text-azul-700 uppercase">
+        <span className="text-roxo-600">
           {String(s.n).padStart(2, "0")}
-          <span className="text-azul-700/40"> / {String(total).padStart(2, "0")}</span>
+          <span className="text-azul-700/50"> / {String(total).padStart(2, "0")}</span>
         </span>
-        <span className="h-px flex-1 bg-azul-950/15" />
-        {s.tempo && <span>{s.tempo}</span>}
+        <span className="h-px flex-1 bg-papel-200" />
+        <span>{s.grupo}</span>
+        {s.tempo && <span className="rounded bg-lavanda-100 px-2 py-0.5 text-roxo-700">{s.tempo}</span>}
       </div>
-      <h1 className="mt-5 font-display text-4xl leading-[1.02] font-semibold text-azul-950 sm:text-5xl md:text-6xl">
-        {s.titulo}
-      </h1>
-      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-azul-700/80 sm:text-base">
-        {s.subtituloLongo ?? s.subtitulo}
-      </p>
+      <h1 className="mt-4 font-display text-4xl leading-[1.05] font-bold text-azul-950 sm:text-5xl">{s.titulo}</h1>
+      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-azul-700 sm:text-base">{s.subtituloLongo ?? s.subtitulo}</p>
+      {s.capitulo && <p className="mt-2 text-xs font-medium text-azul-700/80">{s.capitulo}</p>}
     </header>
   );
 }
@@ -66,8 +64,8 @@ export function Cartao({ children, className = "", tom = "claro" }) {
   const tons = {
     claro: "bg-white border-papel-200",
     areia: "bg-papel-100 border-papel-200",
-    escuro: "bg-azul-950 border-azul-900 text-papel-50",
-    brasa: "bg-roxo-600 border-roxo-700 text-white",
+    escuro: "bg-azul-950 border-azul-950 text-on-ink",
+    brasa: "bg-roxo-600 border-roxo-700 text-on-ink",
   };
   return (
     <div className={`rounded-lg border ${tons[tom]} ${className}`}>
@@ -125,14 +123,14 @@ export function Contador({ valor, sufixo = "", decimais = 0, duracao = 900 }) {
 
 export function Nota({ children }) {
   return (
-    <p className="mt-4 border-l-2 border-destaque-600/50 pl-3 text-xs leading-relaxed text-azul-700/75 italic">
+    <p className="mt-4 border-l-[3px] border-destaque-600/60 pl-3 text-xs leading-relaxed text-azul-700">
       {children}
     </p>
   );
 }
 
 /* Bloco recolhível. `aberto` define apenas o estado inicial. */
-export function Sanfona({ titulo, subtitulo, children, aberto = false, cor, corTexto = "#fff", contagem }) {
+export function Sanfona({ titulo, subtitulo, children, aberto = false, cor, corTexto = "var(--color-on-ink)", contagem }) {
   const [ativo, setAtivo] = useState(aberto);
   const fundo = cor ?? "var(--color-papel-100)";
   const tinta = cor ? corTexto : "var(--color-azul-950)";

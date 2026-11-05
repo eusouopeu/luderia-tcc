@@ -1,0 +1,1200 @@
+{
+ "introducao": {
+  "blocos": [
+   {
+    "tipo": "chamada",
+    "texto": "Uma luderia enxuta em Salvador é viável nas premissas prováveis. O risco se concentra em duas premissas, e cada uma está ligada a um dado, a uma fonte e a um nível de evidência.",
+    "rotulo": "Em um minuto"
+   },
+   {
+    "tipo": "kpis",
+    "itens": [
+     {
+      "rotulo": "Investimento inicial",
+      "valor": "R$ 312 mil",
+      "detalhe": "Reforma 34% e capital de giro 22%"
+     },
+     {
+      "rotulo": "VPL a 15% real",
+      "valor": "R$ 795 mil",
+      "detalhe": "R$ 278 mil sem valor residual"
+     },
+     {
+      "rotulo": "TIR real",
+      "valor": "61,8%",
+      "detalhe": "Lida como faixa: repousa em 4 visitas"
+     },
+     {
+      "rotulo": "Payback descontado",
+      "valor": "2,8 anos",
+      "detalhe": "Horizonte de 5 anos"
+     },
+     {
+      "rotulo": "VPL positivo",
+      "valor": "82,1%",
+      "detalhe": "dos cenários de Monte Carlo"
+     },
+     {
+      "rotulo": "Receita madura",
+      "valor": "R$ 77,1 mil/mês",
+      "detalhe": "50% acima do equilíbrio de R$ 51,3 mil"
+     }
+    ]
+   },
+   {
+    "tipo": "texto",
+    "titulo": "O problema",
+    "paragrafos": [
+     "O consumo de lazer fora de casa cresce no Brasil e abre espaço para formatos que juntam comida, bebida e atividade. Entre 2019 e 2023, a receita das atividades culturais, recreativas e esportivas subiu 95,4%, e a dos serviços de alimentação, 67,7% (IBGE, PAS).",
+     "As luderias, ou ludobares, oferecem jogos de mesa para uso no local. Integram o segmento de competitive socialising: grupos que se reúnem em torno de um jogo, com comida e bebida (KAM Insight, 2022). A Ludus Luderia, inaugurada em 2007 em São Paulo, foi a pioneira no Brasil.",
+     "O mercado tem uma lacuna de evidência. Não há levantamento setorial sobre luderias no Brasil, e as premissas que concentram o risco, taxa de ocupação e ticket médio, costumam ser estimadas sem fonte. O trabalho mede essas premissas em dados de comportamento real."
+    ]
+   },
+   {
+    "tipo": "kpis",
+    "itens": [
+     {
+      "rotulo": "Luderias nas 14 metrópoles",
+      "valor": "54",
+      "detalhe": "Ativas, com mais de 100 avaliações no Google Maps"
+     },
+     {
+      "rotulo": "Luderias em Salvador",
+      "valor": "1",
+      "detalhe": "São Jogue, com duas unidades"
+     },
+     {
+      "rotulo": "Luderias por 100 mil hab.",
+      "valor": "0,028",
+      "detalhe": "2ª menor densidade entre as metrópoles com ao menos uma casa"
+     }
+    ]
+   },
+   {
+    "tipo": "lista",
+    "titulo": "Objetivo geral",
+    "titulo2": "Objetivos",
+    "itens": [
+     "Avaliar a viabilidade mercadológica, operacional e econômico-financeira de uma luderia em Salvador, para subsidiar a decisão de investimento.",
+     "(i) Analisar o mercado e a concorrência nas 14 metrópoles brasileiras, com destaque para Salvador.",
+     "(ii) Definir o posicionamento e o composto de marketing a partir do que pesa na satisfação dos clientes.",
+     "(iii) Estimar a demanda, a taxa de ocupação e o giro de mesas, por observação direta e avaliações calibradas.",
+     "(iv) Dimensionar a estrutura operacional e os requisitos jurídicos.",
+     "(v) Projetar investimentos, receitas, custos e indicadores com premissas rastreáveis.",
+     "(vi) Identificar as premissas críticas e os pontos de ruptura, por análise de sensibilidade.",
+     "(vii) Propor um plano de contingência e as validações necessárias antes do investimento."
+    ]
+   },
+   {
+    "tipo": "cartoes",
+    "titulo": "Por que o trabalho importa",
+    "colunas": 3,
+    "itens": [
+     {
+      "rotulo": "Acadêmica",
+      "titulo": "Lacuna na literatura",
+      "texto": "Os levantamentos sobre jogos de tabuleiro tratam do varejo e da indústria. O único estudo de viabilidade do formato analisa um caso isolado, no interior paulista (Asakura; Silva; Mello, 2018)."
+     },
+     {
+      "rotulo": "Gerencial",
+      "titulo": "Decisões de investimento",
+      "texto": "O trabalho orienta a escolha do ponto, a curadoria do acervo, a política de preço e o cardápio, com um processo replicável a partir de fontes públicas."
+     },
+     {
+      "rotulo": "Social",
+      "titulo": "Lazer presencial",
+      "texto": "A luderia oferece um espaço alternativo ao entretenimento mediado por telas, para encontros, aniversários e confraternizações."
+     }
+    ]
+   },
+   {
+    "tipo": "cartoes",
+    "titulo": "Como o trabalho se organiza",
+    "descricao": "Os capítulos 4 a 10 são o plano de negócios; os blocos de dados B1 a B5 o sustentam.",
+    "colunas": 4,
+    "itens": [
+     {
+      "rotulo": "Cap. 2 e 3",
+      "titulo": "Teoria e método",
+      "texto": "Conceitos do plano, hierarquia de evidências N1 a N6 e coleta em cinco blocos."
+     },
+     {
+      "rotulo": "Cap. 5",
+      "titulo": "Mercado",
+      "texto": "Entretenimento social, PESTEL, cinco forças e concorrência."
+     },
+     {
+      "rotulo": "Cap. 6 a 8",
+      "titulo": "Marketing, operação e jurídico",
+      "texto": "Posicionamento, bairro, equipe e obrigações legais."
+     },
+     {
+      "rotulo": "Cap. 9 a 11",
+      "titulo": "Finanças, risco e parecer",
+      "texto": "Indicadores, sensibilidade, contingência e limitações."
+     }
+    ]
+   }
+  ]
+ },
+ "referencial": {
+  "blocos": [
+   {
+    "tipo": "chamada",
+    "texto": "Cinco blocos de teoria sustentam o plano, e cada um termina numa decisão concreta: o produto, o ambiente, o diagnóstico, os atributos que não podem faltar e a regra de decidir sob incerteza.",
+    "rotulo": "Em uma frase"
+   },
+   {
+    "tipo": "cartoes",
+    "titulo": "Os cinco blocos",
+    "colunas": 3,
+    "itens": [
+     {
+      "rotulo": "2.1",
+      "titulo": "Economia da experiência",
+      "texto": "A experiência é uma oferta econômica própria: a empresa encena um acontecimento, e o cliente paga pelo tempo que passa nele (Pine; Gilmore, 1998). A luderia vende uma ocasião social, e não o uso de um jogo.",
+      "destaque": "Decisão: a proposta de valor"
+     },
+     {
+      "rotulo": "2.2",
+      "titulo": "Análise estratégica",
+      "texto": "As cinco forças de Porter explicam a rentabilidade do setor. A SWOT cruza forças e fraquezas internas com oportunidades e ameaças, e cada item se apoia em um dado.",
+      "destaque": "Decisão: espaço para um novo concorrente"
+     },
+     {
+      "rotulo": "2.3",
+      "titulo": "Atributos de satisfação",
+      "texto": "O modelo Kano separa atributos obrigatórios e atrativos. A análise de penalidade e recompensa (PRC) mede essa relação nas avaliações de clientes reais (Picolo; Tontini, 2008).",
+      "destaque": "Decisão: o que não pode ser reduzido"
+     },
+     {
+      "rotulo": "2.4",
+      "titulo": "Ambiente de serviço e capacidade",
+      "texto": "O ambiente compõe o serviço, mas a qualidade da comida pesa mais. A capacidade é perecível: a mesa vazia agora não se vende depois. A lei de Little liga ocupação, chegada e permanência.",
+      "destaque": "Decisão: mesas e horário"
+     },
+     {
+      "rotulo": "2.5",
+      "titulo": "Viabilidade e incerteza",
+      "texto": "VPL, TIR e payback respondem se o projeto vale o investimento; o ponto de equilíbrio, quanto precisa vender. A taxa de desconto soma risco livre, prêmio de risco e de liquidez. A gestão é baseada em evidências (Pfeffer; Sutton, 2006).",
+      "destaque": "Decisão: sensibilidade e ruptura"
+     },
+     {
+      "rotulo": "Lacuna",
+      "titulo": "O único estudo do formato",
+      "texto": "O estudo de um board game café em Ourinhos (SP) declara o negócio viável pelo payback simples e não testa a sensibilidade das premissas de receita. Este trabalho trata a incerteza de forma explícita."
+     }
+    ]
+   },
+   {
+    "tipo": "tabela",
+    "secao": "Do conceito à decisão",
+    "descricao": "Cada conceito do referencial tem uma aplicação em um capítulo do plano.",
+    "id": "Quadro 2.1"
+   }
+  ]
+ },
+ "metodologia": {
+  "blocos": [
+   {
+    "tipo": "chamada",
+    "texto": "Pesquisa descritivo-exploratória de abordagem mista, sem questionários: todas as premissas vêm de bases públicas, de rastros digitais dos concorrentes e de contagem direta, e cada uma recebe um nível de confiança de N1 a N6.",
+    "rotulo": "Em uma frase"
+   },
+   {
+    "tipo": "kpis",
+    "itens": [
+     {
+      "rotulo": "Concorrentes (B1)",
+      "valor": "54",
+      "detalhe": "14 metrópoles da REGIC, mais de 100 avaliações"
+     },
+     {
+      "rotulo": "Avaliações com texto (B2)",
+      "valor": "1.628",
+      "detalhe": "Até \"3 meses atrás\"; 22 temas, kappa de 0,84"
+     },
+     {
+      "rotulo": "Visitas à São Jogue (B3)",
+      "valor": "4",
+      "detalhe": "Sexta e sábado à noite, duas unidades"
+     },
+     {
+      "rotulo": "Itens orçados (B5)",
+      "valor": "75",
+      "detalhe": "Reforma, mobiliário, cozinha e informática"
+     }
+    ]
+   },
+   {
+    "tipo": "abas",
+    "titulo": "Método em cinco partes",
+    "itens": [
+     {
+      "id": "evid",
+      "rotulo": "Evidências",
+      "blocos": [
+       {
+        "tipo": "tabela",
+        "id": "Quadro 3.1",
+        "descricao": "Nenhuma das cinco premissas de maior impacto no VPL se apoia só em evidência N6 (estimativa do autor)."
+       }
+      ]
+     },
+     {
+      "id": "blocos",
+      "rotulo": "Blocos de coleta",
+      "blocos": [
+       {
+        "tipo": "tabela",
+        "id": "Quadro 3.2"
+       }
+      ]
+     },
+     {
+      "id": "b3",
+      "rotulo": "Contagem direta",
+      "blocos": [
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "A contagem direta é a âncora absoluta do trabalho: observação sistemática e não participante em duas unidades da única luderia de Salvador. As notas fiscais (NFC-e) dão o piso das vendas fora das horas observadas."
+        ]
+       },
+       {
+        "tipo": "tabela",
+        "id": "Tabela 3.1"
+       }
+      ]
+     },
+     {
+      "id": "valid",
+      "rotulo": "Validação",
+      "blocos": [
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "Uma amostra de auditoria, sorteada com semente fixa, é conferida na página: 20% dos concorrentes e 200 unidades de cada variável. A variável é aceita quando o limite superior do erro, pelo método de Wilson, fica em 5% ou menos."
+        ]
+       },
+       {
+        "tipo": "tabela",
+        "id": "Quadro 3.3"
+       }
+      ]
+     },
+     {
+      "id": "lim",
+      "rotulo": "Limitações",
+      "blocos": [
+       {
+        "tipo": "tabela",
+        "id": "Quadro 3.4"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "tipo": "lista",
+    "titulo": "Ética e replicação",
+    "titulo2": "Ética e replicação",
+    "itens": [
+     "O nome de usuário das avaliações é trocado por um código na coleta, e os dados brutos com nomes ficam fora do repositório público.",
+     "A contagem direta é observação agregada em espaço comercial aberto, sem fotos nem interação com clientes (LGPD; Resolução CNS 510/2016).",
+     "Todo sorteio usa semente fixa, e qualquer número do texto pode ser gerado de novo a partir dos scripts públicos."
+    ]
+   }
+  ]
+ },
+ "mercado": {
+  "blocos": [
+   {
+    "tipo": "chamada",
+    "texto": "O entretenimento social é um ecótono entre os serviços de alimentação e as atividades recreativas, e Salvador tem uma só luderia nesse mercado.",
+    "rotulo": "Em uma frase"
+   },
+   {
+    "tipo": "kpis",
+    "itens": [
+     {
+      "rotulo": "Receita das atividades recreativas",
+      "valor": "+95,4%",
+      "detalhe": "2019 a 2023, contra +67,7% na alimentação"
+     },
+     {
+      "rotulo": "Empresas recreativas",
+      "valor": "+35,1%",
+      "detalhe": "Na alimentação, −8,7%"
+     },
+     {
+      "rotulo": "Aluguel comercial",
+      "valor": "R$ 54,15/m²",
+      "detalhe": "+18,9% em 12 meses (jul/2026)"
+     },
+     {
+      "rotulo": "Selic meta",
+      "valor": "14,00%",
+      "detalhe": "Focus: 12,00% no fim de 2027"
+     }
+    ]
+   },
+   {
+    "tipo": "texto",
+    "titulo": "O mercado do entretenimento social",
+    "paragrafos": [
+     "A luderia se enquadra nos serviços prestados às famílias, cuja receita passou de R$ 223,9 bilhões para R$ 388,9 bilhões entre 2019 e 2023. Dentro do segmento, a recreação cresce em receita e em número de empresas, o que indica espaço para entrantes; a alimentação cresce com menos empresas.",
+     "O entretenimento social é a ocasião de saída em que um grupo paga por um tempo de convívio em torno de uma atividade, com alimentos e bebidas. A receita vem da alimentação, e o motivo da visita vem da atividade.",
+     "Em Salvador, a referência é a São Jogue: unidade Bela Vista com nota 4,8 e 787 avaliações, aberta 68 horas por semana."
+    ]
+   },
+   {
+    "tipo": "abas",
+    "titulo": "PESTEL do entretenimento social",
+    "descricao": "Cada dimensão entra pelo fator que muda uma decisão do plano.",
+    "itens": [
+     {
+      "id": "p",
+      "rotulo": "Político",
+      "blocos": [
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "A reforma tributária do consumo troca PIS, Cofins, ICMS e ISS por dois tributos, o IBS e a CBS, com transição a partir de 2026. O Simples Nacional continua, e a luderia não migra para o regime por fora, porque vende ao consumidor final."
+        ]
+       }
+      ]
+     },
+     {
+      "id": "e",
+      "rotulo": "Econômico",
+      "blocos": [
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "Os juros altos encarecem o capital: a Selic está em 14,00% e a taxa de desconto do plano parte dessa curva. A renda média do trabalho na região metropolitana de Salvador, R$ 3.271,00, é a 11ª entre as 13 metrópoles com luderia. A alimentação fora do domicílio subiu 6,55% em 12 meses em Salvador, contra 3,64% do índice geral, e o aluguel comercial subiu 18,9%."
+        ]
+       }
+      ]
+     },
+     {
+      "id": "s",
+      "rotulo": "Social",
+      "blocos": [
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "A Bahia gasta mais com comer fora do que a média do país: 36,1% da despesa com alimentação, contra 32,8%. O gasto com lazer se concentra na renda: o décimo mais rico responde por 49,0% das despesas com lazer e viagens. O que o frequentador valoriza sai das avaliações dos concorrentes, e não de levantamentos de jogadores, que descrevem o jogador engajado."
+        ]
+       },
+       {
+        "tipo": "barras",
+        "titulo": "O que as avaliações comentam",
+        "descricao": "Presença de cada tema nas 1.628 avaliações do B2 (temas não exclusivos).",
+        "dados": [
+         {
+          "rotulo": "Atendimento presencial",
+          "valor": 55.6
+         },
+         {
+          "rotulo": "Comida",
+          "valor": 34.1
+         },
+         {
+          "rotulo": "Ambiente e decoração",
+          "valor": 26.2
+         },
+         {
+          "rotulo": "Variedade do acervo",
+          "valor": 20.1
+         },
+         {
+          "rotulo": "Explicação de jogos",
+          "valor": 14.3
+         },
+         {
+          "rotulo": "Conservação do acervo",
+          "valor": 9.2
+         }
+        ],
+        "unidade": "%",
+        "decimais": 1,
+        "destacar": [
+         "Atendimento presencial",
+         "Explicação de jogos"
+        ],
+        "fonte": "Fonte: Bloco B2 (avaliações com texto até \"3 meses atrás\")."
+       }
+      ]
+     },
+     {
+      "id": "t",
+      "rotulo": "Tecnológico",
+      "blocos": [
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "A divulgação acontece nas redes. As 49 luderias com perfil no Instagram têm mediana de 14.021 seguidores, e a São Jogue tem 38.492."
+        ]
+       }
+      ]
+     },
+     {
+      "id": "a",
+      "rotulo": "Ambiental",
+      "blocos": [
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "O efeito é residual: o acervo é um bem durável, e o manejo dos resíduos da cozinha entra na licença sanitária."
+        ]
+       }
+      ]
+     },
+     {
+      "id": "l",
+      "rotulo": "Legal",
+      "blocos": [
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "O alvará depende de a zona admitir serviço de alimentação e lazer, e a lotação aprovada pelo Corpo de Bombeiros fixa o teto de mesas. A venda de bebida alcoólica a menores de 18 anos é crime, e a música ambiente gera retribuição ao ECAD."
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "tipo": "tabela",
+    "secao": "As cinco forças de Porter",
+    "id": "Quadro 5.1"
+   },
+   {
+    "tipo": "barras",
+    "secao": "Concorrência e localização",
+    "descricao": "Mediana de avaliações no Google Maps (medida indireta de fluxo) conforme haja metrô ou shopping de porte a até 1.000 m do concorrente. A associação não prova causa.",
+    "titulo": "Entorno dos concorrentes do B1",
+    "dados": [
+     {
+      "rotulo": "Com metrô (24 casas)",
+      "valor": 770
+     },
+     {
+      "rotulo": "Sem metrô (30 casas)",
+      "valor": 396
+     },
+     {
+      "rotulo": "Com shopping (10 casas)",
+      "valor": 396
+     },
+     {
+      "rotulo": "Sem shopping (19 casas)",
+      "valor": 663
+     }
+    ],
+    "destacar": [
+     "Com metrô (24 casas)"
+    ],
+    "larguraRotulo": 160,
+    "fonte": "Fonte: Bloco B1, entorno pelo Google Maps. A decisão: o ponto fica a até 1.000 m de uma estação de metrô, e o shopping não é exigência."
+   },
+   {
+    "tipo": "tabela",
+    "secao": "Síntese: oportunidades e ameaças",
+    "id": "Quadro 5.2"
+   }
+  ]
+ },
+ "marketing": {
+  "blocos": [
+   {
+    "tipo": "chamada",
+    "texto": "Posicionamento entre o bar e a loja de jogos: um instrutor no salão, uma taxa de entrada por pessoa e cozinha completa. O bairro sai de uma matriz de três indicadores e da coleta de anúncios nos três finalistas.",
+    "rotulo": "Em uma frase"
+   },
+   {
+    "tipo": "kpis",
+    "itens": [
+     {
+      "rotulo": "Taxa de entrada",
+      "valor": "R$ 18,68",
+      "detalhe": "Média dos 22 concorrentes que cobram; São Jogue: R$ 28,00 no fim de semana"
+     },
+     {
+      "rotulo": "Gasto por pessoa",
+      "valor": "R$ 78,68",
+      "detalhe": "Declarado por avaliadores de 13 concorrentes"
+     },
+     {
+      "rotulo": "Cesta de consumo",
+      "valor": "R$ 74,06",
+      "detalhe": "Taxa, bebida e hambúrguer: 10 concorrentes"
+     },
+     {
+      "rotulo": "Demanda madura",
+      "valor": "968 pessoas/mês",
+      "detalhe": "De 610 a 1.770 nos cenários"
+     }
+    ]
+   },
+   {
+    "tipo": "barras",
+    "secao": "Proposta de valor",
+    "descricao": "O atendimento é o tema mais citado nas avaliações e o que mais derruba a nota: quando criticado, a nota média cai para 1,93; a rapidez, para 2,50; a explicação de jogos, para 2,62.",
+    "titulo": "Nota média quando o tema é criticado",
+    "dados": [
+     {
+      "rotulo": "Atendimento",
+      "valor": 1.93
+     },
+     {
+      "rotulo": "Indicação de jogos (4 críticas)",
+      "valor": 1.25
+     },
+     {
+      "rotulo": "Rapidez do serviço",
+      "valor": 2.5
+     },
+     {
+      "rotulo": "Explicação de jogos",
+      "valor": 2.62
+     }
+    ],
+    "unidade": "",
+    "decimais": 2,
+    "larguraRotulo": 190,
+    "fonte": "Fonte: Bloco B2 (1.628 avaliações com texto)."
+   },
+   {
+    "tipo": "tabela",
+    "secao": "Grade ERRC",
+    "descricao": "Eliminar, reduzir, elevar e criar, diante do padrão dos concorrentes.",
+    "id": "Quadro 6.1"
+   },
+   {
+    "tipo": "texto",
+    "titulo": "Produto e preço",
+    "paragrafos": [
+     "O produto tem três partes: a mesa com instrutor, o acervo e os alimentos e bebidas. O grupo paga um turno de 3 horas, e o instrutor indica o jogo e explica as regras sem custo extra. O acervo abre com 175 títulos, os presentes em 12 ou mais dos 30 acervos publicados pelos concorrentes, e cresce por gatilho.",
+     "A taxa de entrada é a média dos concorrentes que a cobram, R$ 18,68, em todos os dias, perto da mediana de R$ 20,00. As avaliações confirmam que o preço da entrada pesa pouco: 45 das 1.628 citam a entrada, e 74 citam o preço do cardápio. O gasto por pessoa no modelo é o declarado, R$ 78,68; a taxa contida nele é de R$ 22,32."
+    ],
+    "nota": "O preço do cardápio tem 48 críticas contra 27 elogios; a entrada, 25 críticas contra 21 elogios (B2)."
+   },
+   {
+    "tipo": "barras",
+    "secao": "Praça: a escolha do bairro",
+    "descricao": "Matriz de três indicadores: IISU (40%), renda familiar per capita (30%) e densidade demográfica (30%), sobre os 15 bairros com renda de pelo menos o dobro da média da cidade. A idade do público não entra: é premissa do autor, e os clientes vêm de vários bairros.",
+    "titulo": "Nota da matriz de bairros (0 a 1)",
+    "id": "Tabela 6.1",
+    "rotulo": 1,
+    "valor": 5,
+    "decimais": 3,
+    "destacar": [
+     "Graça",
+     "Pituba",
+     "Itaigara"
+    ],
+    "larguraRotulo": 150,
+    "fonte": "Fonte: QUALISalvador (Santos et al., 2022) e IBGE, Censo 2022."
+   },
+   {
+    "tipo": "abas",
+    "titulo": "Como a matriz decide",
+    "itens": [
+     {
+      "id": "res",
+      "rotulo": "Resultado",
+      "blocos": [
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "Os três finalistas ficam a 0,07 de distância entre si, e o 4º colocado está a 0,27 do 3º. A ordem entre os três depende dos pesos: com pesos iguais, a Graça segue em 1º; sem a densidade, o Itaigara passa a 1º; com o IISU em 60%, o Itaigara lidera e a Pituba e a Graça empatam em 2º."
+        ]
+       },
+       {
+        "tipo": "tabela",
+        "id": "Tabela 6.1",
+        "mostrarTitulo": false,
+        "destacar": [
+         "Graça",
+         "Pituba",
+         "Itaigara"
+        ]
+       }
+      ]
+     },
+     {
+      "id": "sens",
+      "rotulo": "Sensibilidade",
+      "blocos": [
+       {
+        "tipo": "barras",
+        "titulo": "Primeiro lugar em 20 mil sorteios de pesos",
+        "descricao": "Cada peso varia 50% para mais ou para menos.",
+        "dados": [
+         {
+          "rotulo": "Graça",
+          "valor": 76.6
+         },
+         {
+          "rotulo": "Itaigara",
+          "valor": 19.3
+         },
+         {
+          "rotulo": "Pituba",
+          "valor": 4.2
+         }
+        ],
+        "unidade": "%",
+        "decimais": 1,
+        "fonte": "Cálculo do autor sobre a Tabela 6.1 (pesos N6). Em todos os cenários testados, os três finalistas ocupam as três primeiras posições."
+       }
+      ]
+     },
+     {
+      "id": "lim",
+      "rotulo": "Limites",
+      "blocos": [
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "Os dados descrevem moradores, e não quem circula pelo bairro, com erro amostral de 8% a 10% ou mais por bairro. O IISU varia só de 0,78 a 0,92 entre os candidatos, e a densidade é a de moradores."
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "tipo": "passos",
+    "titulo": "Coleta de anúncios nos três finalistas",
+    "descricao": "Etapa antes do contrato, sem ida a campo. O bairro escolhido é o de maior nota que cumpra as duas condições.",
+    "itens": [
+     {
+      "titulo": "Buscar",
+      "texto": "O coletor do Bloco B5 varre OLX, ZAP Imóveis, Viva Real e QuintoAndar atrás de salões térreos de 110 a 150 m² na Graça, na Pituba e no Itaigara."
+     },
+     {
+      "titulo": "Registrar",
+      "texto": "Para cada anúncio: aluguel pedido, condomínio, IPTU, área, sanitários, andar, distância ao metrô e atendimento ao Quadro 6.2."
+     },
+     {
+      "titulo": "Aplicar a regra",
+      "texto": "Vale o bairro de maior nota com ao menos 3 anúncios que atendam ao quadro e aluguel mediano pedido de até R$ 64,36 por m², o valor pessimista do plano."
+     },
+     {
+      "titulo": "Plano B",
+      "texto": "Se nenhum dos três cumprir, a coleta se estende ao 4º colocado, o Caminho das Árvores. O preço pedido é maior que o fechado: a cotação com corretor substitui o anúncio antes do contrato."
+     }
+    ]
+   },
+   {
+    "tipo": "tabela",
+    "secao": "Requisitos mínimos do ponto",
+    "id": "Quadro 6.2"
+   },
+   {
+    "tipo": "texto",
+    "titulo": "Promoção e comunicação",
+    "paragrafos": [
+     "O Google Maps é o canal principal, e o Instagram, o de apoio: entre os 49 concorrentes com perfil medido, mais seguidores acompanham mais avaliações (Spearman de 0,62), mas o número de posts não (0,15). A mensagem fala com grupos de amigos e com quem organiza aniversários. O orçamento é de R$ 1.500,00 por mês, ou R$ 1,55 por visita no mês maduro."
+    ]
+   },
+   {
+    "tipo": "tabela",
+    "secao": "Estimativa de demanda",
+    "descricao": "A demanda parte da circulação: as pessoas que entram por hora. A circulação no pico vem da contagem direta, a média de 6,40 pessoas por hora, e chega ao dia pelo horário dos concorrentes.",
+    "id": "Tabela 6.2"
+   }
+  ]
+ },
+ "operacional": {
+  "blocos": [
+   {
+    "tipo": "chamada",
+    "texto": "Desenho enxuto: menor que a São Jogue, que serve de referência de comportamento, e não de porte. A luderia abre com 6 mesas e cresce por etapas, quando a demanda medida pede.",
+    "rotulo": "Em uma frase"
+   },
+   {
+    "tipo": "kpis",
+    "itens": [
+     {
+      "rotulo": "Salão",
+      "valor": "130 m²",
+      "detalhe": "Faixa de 110 a 150 m², térreo"
+     },
+     {
+      "rotulo": "Mesas e assentos",
+      "valor": "6 mesas · 30",
+      "detalhe": "Maior ocupação vista nas visitas: 6,02 mesas"
+     },
+     {
+      "rotulo": "Funcionamento",
+      "valor": "51 h/semana",
+      "detalhe": "Terça a sábado, 14h às 23h; domingo, 14h às 20h"
+     },
+     {
+      "rotulo": "Uso da capacidade",
+      "valor": "37%",
+      "detalhe": "37 pessoas por dia, de 101 possíveis"
+     },
+     {
+      "rotulo": "Equipe",
+      "valor": "5 + sócio",
+      "detalhe": "3 instrutores e 2 cozinheiros-chefes"
+     },
+     {
+      "rotulo": "Acervo inicial",
+      "valor": "175 títulos",
+      "detalhe": "Cresce até 322, a mediana do B1"
+     }
+    ]
+   },
+   {
+    "tipo": "texto",
+    "titulo": "Localização e layout",
+    "paragrafos": [
+     "O salão fica em um dos três bairros finalistas da matriz, a até 1.000 m de uma estação de metrô. A área é estimativa do autor: cerca de 12 m² por mesa, mais 60 m² de balcão, acervo, cozinha e sanitários.",
+     "As estantes do acervo ficam no próprio salão, à vista das mesas, porque a escolha do jogo faz parte do serviço. Os sanitários são quatro: masculino, feminino e adaptado com fraldário para os clientes, e um da equipe. Há rota acessível da entrada às mesas."
+    ]
+   },
+   {
+    "tipo": "tabela",
+    "secao": "Capacidade instalada",
+    "descricao": "A circulação provável de 6,40 pessoas por hora ocupa 3,2 das 6 mesas no pico; a otimista fica perto do teto.",
+    "id": "Quadro 7.1"
+   },
+   {
+    "tipo": "passos",
+    "titulo": "Jornada do cliente",
+    "itens": [
+     {
+      "titulo": "Chegada",
+      "texto": "O instrutor no balcão registra o grupo e cobra a taxa de entrada, válida por um turno de 3 horas. A reserva segue os mesmos turnos."
+     },
+     {
+      "titulo": "Na mesa",
+      "texto": "O instrutor sugere títulos pelo perfil do grupo e explica as regras, com no máximo 2 mesas por instrutor no pico."
+     },
+     {
+      "titulo": "Pedido",
+      "texto": "O pedido de alimentos e bebidas é feito ao mesmo instrutor; a cozinha é completa desde a abertura."
+     },
+     {
+      "titulo": "Conta",
+      "texto": "A conta é paga no balcão, com NFC-e para toda venda."
+     },
+     {
+      "titulo": "Devolução",
+      "texto": "O instrutor confere as peças do jogo devolvido antes de guardar a caixa."
+     }
+    ]
+   },
+   {
+    "tipo": "texto",
+    "titulo": "Acervo",
+    "paragrafos": [
+     "O acervo inicial tem 175 títulos, ao custo provável de R$ 35 mil, e cresce por gatilho: a ampliação até 322 títulos acontece quando, por três meses seguidos, ao menos 10% das mesas pedem jogos fora do acervo. As cartas recebem protetores desde a abertura, porque o desgaste é o principal custo de reposição."
+    ]
+   },
+   {
+    "tipo": "abas",
+    "titulo": "Equipe e custo de pessoal",
+    "itens": [
+     {
+      "id": "eq",
+      "rotulo": "Equipe",
+      "blocos": [
+       {
+        "tipo": "tabela",
+        "id": "Quadro 7.2"
+       }
+      ]
+     },
+     {
+      "id": "custo",
+      "rotulo": "Custo mensal",
+      "blocos": [
+       {
+        "tipo": "tabela",
+        "id": "Tabela 7.1"
+       }
+      ]
+     },
+     {
+      "id": "ben",
+      "rotulo": "Benefícios",
+      "blocos": [
+       {
+        "tipo": "cartoes",
+        "colunas": 2,
+        "itens": [
+         {
+          "titulo": "Refeição no local",
+          "texto": "Uma por turno, feita pela cozinha da casa, com insumos de R$ 12,00: 109 refeições por mês, R$ 1.304,40."
+         },
+         {
+          "titulo": "PLR de 5% do EBITDA",
+          "texto": "Paga só em ano com EBITDA positivo, em até duas parcelas, sem encargos. Em ano sem lucro, não custa nada."
+         }
+        ]
+       },
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "A folha com encargos fica em 17,3% da receita do ano maduro, e em 19,0% com as refeições, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024)."
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "financeiro": {
+  "blocos": [
+   {
+    "tipo": "chamada",
+    "texto": "O negócio é viável com folga no provável: o investimento é remunerado mesmo sem o valor residual. Duas premissas, a circulação no pico e o gasto por pessoa, concentram o risco.",
+    "rotulo": "Em uma frase"
+   },
+   {
+    "tipo": "kpis",
+    "itens": [
+     {
+      "rotulo": "VPL a 15% real",
+      "valor": "R$ 795 mil",
+      "detalhe": "R$ 278 mil sem valor residual"
+     },
+     {
+      "rotulo": "TIR real",
+      "valor": "61,8%",
+      "detalhe": "Pouco mais de 4 vezes a TMA"
+     },
+     {
+      "rotulo": "Payback descontado",
+      "valor": "2,8 anos",
+      "detalhe": "Horizonte de 5 anos"
+     },
+     {
+      "rotulo": "Ponto de equilíbrio",
+      "valor": "R$ 51,3 mil/mês",
+      "detalhe": "644 pessoas por mês, 25 por dia aberto"
+     }
+    ]
+   },
+   {
+    "tipo": "abas",
+    "titulo": "O modelo em seis partes",
+    "itens": [
+     {
+      "id": "prem",
+      "rotulo": "Premissas",
+      "blocos": [
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "O modelo tem 46 premissas, cada uma com três valores (um por cenário), fonte e nível de evidência. A taxa de desconto real soma o juro real de 9,3% ao ano (Selic de 14,0% e IPCA esperado de 4,3%) a um prêmio de 5,7 pontos: 15% no provável, 12% no otimista e 18% no pessimista."
+        ]
+       },
+       {
+        "tipo": "tabela",
+        "id": "Quadro 9.2"
+       }
+      ]
+     },
+     {
+      "id": "inv",
+      "rotulo": "Investimento",
+      "blocos": [
+       {
+        "tipo": "barras",
+        "titulo": "Investimento inicial provável (R$)",
+        "id": "Tabela 9.1",
+        "rotulo": 0,
+        "valor": 2,
+        "excluir": [
+         "Total"
+        ],
+        "destacar": [
+         "Reforma e instalações",
+         "Capital de giro"
+        ],
+        "larguraRotulo": 180,
+        "fonte": "Total de R$ 311.799; reforma (34%) e capital de giro (22%) pesam mais. O capital de giro cobre dois meses de custos fixos."
+       },
+       {
+        "tipo": "tabela",
+        "id": "Tabela 9.1",
+        "mostrarTitulo": false
+       }
+      ]
+     },
+     {
+      "id": "mes",
+      "rotulo": "Mês maduro",
+      "blocos": [
+       {
+        "tipo": "kpis",
+        "itens": [
+         {
+          "rotulo": "Receita bruta",
+          "valor": "R$ 77,1 mil",
+          "detalhe": "70,8% vem de alimentos e bebidas"
+         },
+         {
+          "rotulo": "Margem por pessoa",
+          "valor": "R$ 52,83",
+          "detalhe": "66% do que cada pessoa paga"
+         },
+         {
+          "rotulo": "Custos fixos",
+          "valor": "R$ 34,0 mil",
+          "detalhe": "Pessoal, aluguel, pró-labore e gerais"
+         },
+         {
+          "rotulo": "Folga sobre o equilíbrio",
+          "valor": "50%",
+          "detalhe": "Receita acima de R$ 51,3 mil"
+         }
+        ]
+       },
+       {
+        "tipo": "tabela",
+        "id": "Tabela 9.2"
+       }
+      ]
+     },
+     {
+      "id": "fluxo",
+      "rotulo": "Fluxo de caixa",
+      "blocos": [
+       {
+        "tipo": "tabela",
+        "id": "Tabela 9.3"
+       }
+      ]
+     },
+     {
+      "id": "ind",
+      "rotulo": "Indicadores",
+      "blocos": [
+       {
+        "tipo": "tabela",
+        "id": "Tabela 9.4"
+       },
+       {
+        "tipo": "chamada",
+        "texto": "A TIR repousa em quatro visitas a uma só concorrente e deixa de existir no pessimista, porque o fluxo não muda de sinal. Lê-se como faixa, e não como previsão. Os cenários extremos põem todas as premissas do mesmo lado: servem de limite.",
+        "rotulo": "Como ler"
+       }
+      ]
+     },
+     {
+      "id": "sens",
+      "rotulo": "Sensibilidade",
+      "blocos": [
+       {
+        "tipo": "barras",
+        "titulo": "Amplitude de cada premissa sobre o VPL (R$)",
+        "descricao": "Cada barra leva uma premissa do pessimista ao otimista, com as demais no provável.",
+        "id": "Quadro 9.2",
+        "rotulo": 1,
+        "valor": 5,
+        "rotulos": [
+         "Circulação no pico",
+         "Gasto por pessoa",
+         "Variação anual da demanda",
+         "Taxa de desconto (TMA)",
+         "CMV de A&B",
+         "Área do ponto",
+         "Aluguel por m²",
+         "Utilidades",
+         "Circulação em dia útil",
+         "Pró-labore"
+        ],
+        "destacar": [
+         "Circulação no pico",
+         "Gasto por pessoa"
+        ],
+        "larguraRotulo": 170,
+        "fonte": "Fonte: modelo financeiro (Quadro 9.2). Só a circulação e o gasto têm ruptura dentro da faixa."
+       },
+       {
+        "tipo": "tabela",
+        "secao": "Ponto de ruptura",
+        "descricao": "A ruptura é o valor da premissa que zera o VPL, com as demais no provável.",
+        "id": "Tabela 9.5",
+        "destacar": [
+         "R04",
+         "R06"
+        ]
+       },
+       {
+        "tipo": "barras",
+        "titulo": "Escada da demanda (pessoas por dia aberto)",
+        "id": "Tabela 9.6",
+        "rotulo": 0,
+        "valor": 1,
+        "rotulos": [
+         "Piso NFC-e Paralela",
+         "Equilíbrio operacional",
+         "Equilíbrio econômico",
+         "Piso NFC-e Bela Vista",
+         "Cenário provável",
+         "Capacidade do salão"
+        ],
+        "decimais": 1,
+        "destacar": [
+         "Cenário provável"
+        ],
+        "larguraRotulo": 170,
+        "fonte": "O provável usa 37% da capacidade do salão e fica 1,2 vez acima do piso da Bela Vista."
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "riscos": {
+  "blocos": [
+   {
+    "tipo": "chamada",
+    "texto": "A luderia entra num mercado com uma referência forte e com margem folgada no provável, mas concentrada em duas premissas. O investimento por etapas e os gatilhos de perda máxima limitam a perda se a demanda ficar abaixo do provável.",
+    "rotulo": "Em uma frase"
+   },
+   {
+    "tipo": "kpis",
+    "itens": [
+     {
+      "rotulo": "Ruptura da circulação",
+      "valor": "4,98 pessoas/h",
+      "detalhe": "22% abaixo do provável (6,40)"
+     },
+     {
+      "rotulo": "Ruptura do gasto",
+      "valor": "R$ 61,17",
+      "detalhe": "22% abaixo do provável (R$ 78,68)"
+     },
+     {
+      "rotulo": "VPL positivo",
+      "valor": "82,1%",
+      "detalhe": "Monte Carlo, 10 mil sorteios"
+     },
+     {
+      "rotulo": "Validações antes de investir",
+      "valor": "2",
+      "detalhe": "Coleta de anúncios e razão dia útil/fim de semana"
+     }
+    ]
+   },
+   {
+    "tipo": "abas",
+    "titulo": "Análise estratégica e de riscos",
+    "itens": [
+     {
+      "id": "swot",
+      "rotulo": "SWOT",
+      "blocos": [
+       {
+        "tipo": "tabela",
+        "id": "Quadro 10.1"
+       },
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "O cruzamento aponta uma estratégia: usar as forças de preço e ponto para ocupar um bairro sem luderia, proteger a margem com o desenho enxuto e as etapas, e responder à reação da São Jogue com o serviço de mesa."
+        ]
+       }
+      ]
+     },
+     {
+      "id": "cen",
+      "rotulo": "Cenários",
+      "blocos": [
+       {
+        "tipo": "texto",
+        "titulo": null,
+        "paragrafos": [
+         "O plano é viável no provável: o VPL é de R$ 795 mil, e a TIR, de 61,8%, contra a TMA de 15%. O VPL positivo não depende do valor residual.",
+         "O pessimista descreve a circulação das NFC-e (4,13 pessoas por hora), gasto de R$ 40,00 por pessoa e demanda caindo 5% ao ano: 20 clientes por dia aberto no ano 5. O otimista descreve a maior visita (11,43 pessoas por hora), perto do teto do salão, com gasto de R$ 109,84: 72 clientes por dia aberto."
+        ]
+       }
+      ]
+     },
+     {
+      "id": "risc",
+      "rotulo": "Matriz de riscos",
+      "blocos": [
+       {
+        "tipo": "tabela",
+        "id": "Quadro 10.2",
+        "descricao": null
+       }
+      ]
+     },
+     {
+      "id": "cont",
+      "rotulo": "Contingência",
+      "blocos": [
+       {
+        "tipo": "tabela",
+        "secao": "Etapas de expansão",
+        "descricao": "São opções: só são exercidas se a demanda medida pedir e se o caixa gerado pagar a etapa, com reserva de dois meses de custo fixo.",
+        "id": "Quadro 10.3"
+       },
+       {
+        "tipo": "tabela",
+        "secao": "Gatilhos de perda máxima",
+        "descricao": "Os três primeiros apontam uma causa específica; o G4 é o alarme geral, e a análise começa pelo G1.",
+        "id": "Quadro 10.4"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "tipo": "passos",
+    "titulo": "Antes de investir",
+    "descricao": "Duas validações, feitas sem nova ida a campo.",
+    "itens": [
+     {
+      "titulo": "Coleta de anúncios nos três bairros",
+      "texto": "Cotação do ponto e da reforma na Graça, na Pituba e no Itaigara, com área de 110 a 150 m² e atendimento ao Quadro 6.2."
+     },
+     {
+      "titulo": "Razão entre dia útil e fim de semana",
+      "texto": "O histograma de horários de pico do Google Maps da São Jogue dá a razão de uma luderia, para conferir a dos restaurantes. O plano só segue se as duas validações confirmarem as premissas na altura do provável."
+     }
+    ]
+   },
+   {
+    "tipo": "lista",
+    "titulo": "Limitações",
+    "titulo2": "Parecer e limitações",
+    "itens": [
+     "O fluxo fora das noites de pico é a maior limitação: as quatro visitas foram em sexta e sábado, e a circulação das outras horas segue a oferta dos concorrentes.",
+     "As notas fiscais dão só um piso das vendas: a nota sai só quando o cliente pede.",
+     "Pedidos de alimentos e bebidas, nível de ruído e jogos em uso por mesa ficaram fora: a coleta se mostrou inviável.",
+     "A codificação dos temas das avaliações teve apoio de IA e foi validada por recodificação cega (kappa de 0,84); o B2 cobre só os últimos três meses.",
+     "O investimento foi orçado sem projeto do ponto: os preços vêm do SINAPI e de anúncios, mas as quantidades são do autor."
+    ]
+   }
+  ]
+ }
+}

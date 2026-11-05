@@ -1,89 +1,158 @@
 @import "tailwindcss";
 
-@theme {
-  /* Paleta editorial: papel creme, tinta grafite quente e um único acento terracota. Os nomes de token
-     (azul/roxo/lavanda/rosa/carmesim/papel) foram mantidos por compatibilidade com src/conteudo/*.json e
-     com as classes das seções; hoje resolvem para uma escala de cinzas quentes, da tinta (azul-950) ao
-     papel (papel-50). A única cor é `destaque` (terracota), reservada aos casos pertinentes: Salvador (e o
-     Nordeste) nos gráficos e tabelas, críticas na análise de conteúdo, amostras que não cumprem o
-     critério, avisos e o marcador da seção ativa. */
-  --color-azul-950: #1c1b19;
-  --color-azul-900: #262420;
-  --color-azul-800: #34312c;
-  --color-azul-700: #4a4640;
-  --color-roxo-700: #3d3a35;
-  --color-roxo-600: #5c5750;
-  --color-roxo-500: #7a746b;
-  --color-lavanda-400: #a8a197;
-  --color-lavanda-300: #cfc8bc;
-  --color-lavanda-200: #e3ddd2;
-  --color-lavanda-100: #efeae0;
-  --color-rosa-500: #8c857a;
-  --color-rosa-400: #a8a197;
-  --color-carmesim-600: #6e685f;
-  --color-carmesim-500: #7a746b;
-  --color-papel-50: #f5f1e8;
-  --color-papel-100: #ede7db;
-  --color-papel-200: #ddd5c6;
-  --color-destaque-700: #93411f;
-  --color-destaque-600: #b4532a;
-  --color-destaque-100: #f3dfd3;
-  --color-destaque-50: #f9eee6;
-  /* "Branco" dos cartões e do texto sobre fundo escuro: um marfim que conversa com o papel. */
-  --color-white: #fcfaf5;
+/* Paleta purple e slate do padrão dos apps (skill identidade-visual-apps): tema claro por padrão,
+   escuro pelo sistema (prefers-color-scheme) ou por data-tema="escuro". Os valores vivem nestas
+   variáveis; o resto do site só usa os nomes de token do @theme abaixo. */
+:root,
+:root[data-tema="claro"] {
+  --paper: #f5f5f8;
+  --paper-2: #ecebf2;
+  --card: #ffffff;
+  --ink: #1e1b26;
+  --ink-2: #2d2938;
+  --ink-3: #423e50;
+  --sub: #5b6472;
+  --line: #e3e2e8;
+  --line-strong: #cfcdd8;
+  --caneta: #6d28d9;
+  --caneta-forte: #5b21b6;
+  --caneta-soft: #f0e9fc;
+  --ok: #157a45;
+  --ok-soft: #e4f2ea;
+  --erro: #b23a2f;
+  --erro-soft: #f8e9e7;
+  --heat-1: #e9d5ff;
+  --heat-2: #c084fc;
+  --heat-3: #9333ea;
+  --heat-4: #6b21a8;
+  --on-ink: #ffffff;
+}
 
-  /* Títulos em serifa de contraste (Fraunces), corpo em Inter, números em JetBrains Mono. */
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --paper: #14181c;
+    --paper-2: #1a1f24;
+    --card: #1d2226;
+    --ink: #e9eae5;
+    --ink-2: #d3d5d0;
+    --ink-3: #b6b9b4;
+    --sub: #98a0a6;
+    --line: #33383d;
+    --line-strong: #454b52;
+    --caneta: #a78bfa;
+    --caneta-forte: #c4b5fd;
+    --caneta-soft: #2a2145;
+    --ok: #4fae7c;
+    --ok-soft: #163524;
+    --erro: #e2776a;
+    --erro-soft: #3a211d;
+    --heat-1: #581c87;
+    --heat-2: #7e22ce;
+    --heat-3: #a855f7;
+    --heat-4: #d8b4fe;
+    --on-ink: #14181c;
+  }
+}
+:root[data-tema="escuro"] {
+  --paper: #14181c; --paper-2: #1a1f24; --card: #1d2226; --ink: #e9eae5; --ink-2: #d3d5d0; --ink-3: #b6b9b4;
+  --sub: #98a0a6; --line: #33383d; --line-strong: #454b52; --caneta: #a78bfa; --caneta-forte: #c4b5fd;
+  --caneta-soft: #2a2145; --ok: #4fae7c; --ok-soft: #163524; --erro: #e2776a; --erro-soft: #3a211d;
+  --heat-1: #581c87; --heat-2: #7e22ce; --heat-3: #a855f7; --heat-4: #d8b4fe; --on-ink: #14181c;
+}
+:root { color-scheme: light dark; }
+:root[data-tema="claro"] { color-scheme: light; }
+:root[data-tema="escuro"] { color-scheme: dark; }
+
+/* Nomes de cor herdados dos componentes e dos JSON de conteúdo (azul, roxo, lavanda, rosa, carmesim,
+   papel, destaque), agora apontando para a paleta: azul = slate (tinta), papel = slate claro,
+   roxo, lavanda, rosa e carmesim = escala do purple, destaque = purple de ação. */
+@theme {
+  --color-azul-950: var(--ink);
+  --color-azul-900: var(--ink-2);
+  --color-azul-800: var(--ink-3);
+  --color-azul-700: var(--sub);
+  --color-roxo-700: var(--caneta-forte);
+  --color-roxo-600: var(--caneta);
+  --color-roxo-500: var(--heat-3);
+  --color-lavanda-400: var(--heat-2);
+  --color-lavanda-300: var(--line-strong);
+  --color-lavanda-200: var(--heat-1);
+  --color-lavanda-100: var(--caneta-soft);
+  --color-rosa-500: var(--heat-3);
+  --color-rosa-400: var(--heat-2);
+  --color-carmesim-600: var(--heat-4);
+  --color-carmesim-500: var(--heat-3);
+  --color-papel-50: var(--paper);
+  --color-papel-100: var(--paper-2);
+  --color-papel-200: var(--line);
+  --color-destaque-700: var(--caneta-forte);
+  --color-destaque-600: var(--caneta);
+  --color-destaque-100: var(--heat-1);
+  --color-destaque-50: var(--caneta-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-erro: var(--erro);
+  --color-erro-soft: var(--erro-soft);
+  --color-white: var(--card);
+  --color-on-ink: var(--on-ink);
+
+  /* Lato para títulos e Montserrat para o resto, ambas locais (public/fonts). */
+  --font-display: "Lato", system-ui, -apple-system, sans-serif;
+  --font-sans: "Montserrat", system-ui, -apple-system, sans-serif;
+  --font-mono: "Montserrat", system-ui, -apple-system, sans-serif;
 
   --animate-fade-up: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-  --animate-grow-x: grow-x 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 400 800; font-display: swap; src: url("/fonts/Montserrat-Variable.woff2") format("woff2"); }
+@font-face { font-family: "Lato"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/Lato-400.woff2") format("woff2"); }
+@font-face { font-family: "Lato"; font-style: normal; font-weight: 700; font-display: swap; src: url("/fonts/Lato-700.woff2") format("woff2"); }
+@font-face { font-family: "Lato"; font-style: normal; font-weight: 900; font-display: swap; src: url("/fonts/Lato-900.woff2") format("woff2"); }
 
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes grow-x {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
 
 html { scroll-behavior: smooth; }
 
-/* Fraunces em corte de título: eixo óptico alto, um pouco de "suavidade" e peso médio. */
-.font-display {
-  font-optical-sizing: auto;
-  font-variation-settings: "SOFT" 30, "WONK" 0;
-  letter-spacing: -0.02em;
-}
-.font-display.font-bold { font-weight: 600; }
+.font-display { letter-spacing: -0.01em; }
+.font-display.font-semibold { font-weight: 700; }
 
-/* Números tabulares saem em mono: contagens, percentuais e tempos ficam alinhados como em tabela. */
-.tabular-nums { font-family: var(--font-mono); letter-spacing: -0.02em; }
-.font-display.tabular-nums { font-family: var(--font-display); }
+/* Números alinhados como em tabela (Montserrat tem algarismos tabulares). */
+.tabular-nums { font-variant-numeric: tabular-nums; }
 
 body {
-  background-color: var(--color-papel-50);
-  color: var(--color-azul-950);
-  font-feature-settings: "cv11", "ss01";
+  background-color: var(--paper);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
 }
 
+/* Borda de 1,5 px e nenhuma sombra: elevação só pela borda (padrão dos apps). */
+.border, .border-t, .border-b, .border-l, .border-r { border-width: 1.5px; }
+.border-t { border-width: 1.5px 0 0; }
+.border-b { border-width: 0 0 1.5px; }
+.border-l { border-width: 0 0 0 1.5px; }
+.border-r { border-width: 0 1.5px 0 0; }
+[class*="shadow"] { box-shadow: none !important; }
+
 /* Papel milimetrado: grade de pontos quase invisível no fundo da área de conteúdo. */
 .papel-milimetrado {
-  background-image: radial-gradient(circle at 1px 1px, rgb(28 27 25 / 0.07) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--ink) 7%, transparent) 1px, transparent 0);
   background-size: 22px 22px;
 }
 
-::selection { background: var(--color-destaque-100); color: var(--color-azul-950); }
+::selection { background: var(--heat-1); color: var(--ink); }
 
-/* trilha de rolagem discreta */
+:focus-visible { outline: 2px solid var(--caneta); outline-offset: 2px; border-radius: 4px; }
+
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--color-papel-100); }
-::-webkit-scrollbar-thumb { background: var(--color-lavanda-300); border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-roxo-500); }
+::-webkit-scrollbar-track { background: var(--paper-2); }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--sub); }
+
+button:active { transform: scale(0.98); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
 
 @media print {
   .no-print { display: none !important; }
