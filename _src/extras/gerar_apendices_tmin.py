@@ -216,7 +216,8 @@ def apendice_b(d):
 
 def apendice_c(d):
     q = [["Base", "Tabela ou série", "Recorte e referência", "Uso no plano"],
-         ["IBGE, Censo 2022", "Agregados por bairro; SIDRA 9514", "Salvador, por bairro; 2022", "Matriz de bairros (seção 6.4)"],
+         ["IBGE, Censo 2022", "Agregados por bairro; SIDRA 9514", "Salvador, por bairro; 2022", "Densidade da matriz de bairros (seção 6.4)"],
+         ["UFBA, QUALISalvador", "IQUASalvador: IISU e renda familiar per capita", "160 bairros; 2018-2020", "Matriz de bairros (seção 6.4)"],
          ["IBGE, Estimativas da população", "Estimativas de 2026", "Salvador; 2026", "Penetração da demanda"],
          ["IBGE, PNAD Contínua", "SIDRA 5436 e 7395", "Capitais; 2º trimestre de 2026", "Renda (seção 5.2)"],
          ["IBGE, POF 2017-2018", "SIDRA 6715 e 6972; perfil das despesas", "Brasil e Bahia; 2017-2018", "Gasto com lazer e alimentação fora (seções 5.1 e 5.5)"],

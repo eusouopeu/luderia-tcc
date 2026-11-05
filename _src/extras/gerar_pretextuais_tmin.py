@@ -69,6 +69,7 @@ SIGLAS = {
     "ICMS": "Imposto sobre Circulação de Mercadorias e Serviços",
     "INPI": "Instituto Nacional da Propriedade Industrial",
     "IPCA": "Índice Nacional de Preços ao Consumidor Amplo",
+    "IISU": "Índice de Infraestrutura e Serviços Urbanos",
     "IPTU": "Imposto Predial e Territorial Urbano",
     "IRPJ": "Imposto de Renda da Pessoa Jurídica",
     "ISS": "Imposto sobre Serviços",
@@ -150,6 +151,30 @@ def capa_e_rosto():
     return "".join(capa + rosto)
 
 
+
+def par_md(t, depois=0, antes=0):
+    """Parágrafo justificado, espaço simples e sem recuo (NBR 6028), com **negrito** do .md."""
+    runs = "".join(f'<w:r>{rpr(i % 2 == 1)}<w:t xml:space="preserve">{esc(s)}</w:t></w:r>'
+                   for i, s in enumerate(t.split("**")) if s)
+    return ('<w:p><w:pPr>'
+            f'<w:spacing w:before="{antes}" w:after="{depois}" w:line="240" w:lineRule="auto"/><w:ind w:firstLine="0"/><w:jc w:val="both"/></w:pPr>'
+            f'{runs}</w:p>')
+
+
+def resumo_e_abstract():
+    """RESUMO e ABSTRACT com as palavras-chave, de textos/capitulos/_md/resumo_abstract.md (fonte única)."""
+    md = Path(__file__).resolve().parents[2] / "textos" / "capitulos" / "_md" / "resumo_abstract.md"
+    if not md.exists():
+        return ""
+    out = []
+    for bloco in re.split(r"^# ", md.read_text(encoding="utf-8"), flags=re.M)[1:]:
+        tit, *paras = [l for l in bloco.splitlines() if l.strip()]
+        out.append(titulo(tit.strip()))
+        for i, par in enumerate(paras):
+            out.append(par_md(par.strip(), depois=283 if i < len(paras) - 1 else 0))
+    return "".join(out)
+
+
 def entrada(t, pag, b=False, caps=False):
     return ('<w:p><w:pPr><w:tabs><w:tab w:val="right" w:leader="dot" w:pos="9071"/></w:tabs>'
             '<w:spacing w:before="0" w:after="0" w:line="360" w:lineRule="auto"/><w:ind w:left="0" w:firstLine="0"/><w:jc w:val="both"/></w:pPr>'
@@ -186,7 +211,7 @@ def siglas_usadas(texto):
     candidatas = set(re.findall(r"(?<![\w&-])([A-Z]{2,6})(?![\w&-])", sem_cit))
     conhecidas = {p.strip() for sg in SIGLAS for p in re.split(r",| a ", sg)} | {"CAGED"}
     ignorar = {"II", "III", "IV", "VI", "VII", "AV", "SP", "UK", "DF", "BA", "RJ", "MG", "PR", "PE", "PA", "BV", "TMIN", "TMAX", "MVP",
-               "NETO", "KAM", "ERRC", "DRE", "UFBA", "BUSCAR", "BG", "STIEP"}
+               "NETO", "KAM", "ERRC", "DRE", "UFBA", "BUSCAR", "BG", "STIEP", "OLX", "ZAP"}
     faltam = sorted(c for c in candidatas - conhecidas - ignorar if not c.isdigit())
     return sorted(usadas, key=lambda s: s.lower()), faltam
 
@@ -253,7 +278,7 @@ def main():
     imp = lambda p: p - 1 if isinstance(p, int) else p  # página impressa: a capa não conta
 
     def monta(pf, pq, pt, ps, ini_num=1):
-        f = [capa_e_rosto(), titulo("LISTA DE FIGURAS")] + [entrada(s, imp(p)) for s, p in zip(figs, pf)]
+        f = [capa_e_rosto(), resumo_e_abstract(), titulo("LISTA DE FIGURAS")] + [entrada(s, imp(p)) for s, p in zip(figs, pf)]
         f += [titulo("LISTA DE QUADROS")] + [entrada(s, imp(p)) for s, p in zip(quads, pq)]
         f += [titulo("LISTA DE TABELAS")] + [entrada(s, imp(p)) for s, p in zip(tabs, pt)]
         f += [titulo("LISTA DE ABREVIAÇÕES E SIGLAS"), tabela_siglas([(s, SIGLAS[s]) for s in usadas])]

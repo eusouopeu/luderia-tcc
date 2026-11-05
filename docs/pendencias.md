@@ -20,7 +20,7 @@ Perguntas fechadas para o autor responder de uma vez. Cada resposta vira uma lin
 | L10 | Variação dos salários no Monte Carlo (0% a +x% sobre a admissão do Novo CAGED; provisório 11,4%) | (a) manter 11,4% (maior distância do 3º quartil à mediana entre os cargos); (b) diferença admissão × estoque no CEMPRE/RAIS; (c) piso da convenção coletiva | (a), declarado |
 | L11 | Anúncios de aluguel com IPTU acima de 30% do aluguel (9 de 138, provavelmente anual) | (a) o build divide por 12 acima do limite; (b) descarta | (a) |
 | L12 | Casa comercial nos anúncios de aluguel (138 com subtipo "outro") | (a) subtipo próprio, dentro do filtro loja/ponto; (b) fora | (a) |
-| L13 | Resumo de aluguel por bairro (Pituba/Itaigara, Barra/Graça, Rio Vermelho) | (a) entra no 6.4 e nas C04 e C05, como preço pedido (N2); (b) só C04 e C05 | (a), depois da coleta |
+| L13 | Resumo de aluguel por bairro (agora Graça, Pituba e Itaigara, os 3 finalistas da 6.4) | (a) decide o bairro pela regra da 6.4 (3 anúncios que atendem ao Quadro 6.2 e mediana até R$ 64,36 por m²) e entra nas C04 e C05; (b) só C04 e C05 | (a), depois da coleta
 | L14 | Site de recomendação no molde do Tabulado | (a) só proposta do plano; (b) protótipo | (a) até a banca |
 | L15 | Hipótese do público potencial | (a) estudo futuro no cap. 11; (b) emenda ao registro prévio | (a) |
 | L16 | Monte Carlo, recomendações 5 (correlação entre circulação no pico, circulação de dia útil e gasto por pessoa) e 7 (valor residual incerto, maior que o VPL no provável) | (a) implementar as duas; (b) só a 7; (c) nenhuma, declaradas como limite | Explicar ao autor antes (pedido dele); depois, (b) |

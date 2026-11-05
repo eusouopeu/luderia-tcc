@@ -11,7 +11,7 @@ A luderia entra num mercado com uma referência forte e com margem folgada no pr
 |  | Pontos | Evidência |
 |---|---|---|
 | Forças | Taxa de entrada de R$ 22,32 contida no gasto provável, entre a mediana dos concorrentes (R$ 20,00) e a São Jogue (R$ 28,00 no fim de semana, com 4,8 estrelas em 787 avaliações) | Seções 6.3 e 9.6 |
-|  | Ponto na Pituba, 1º da matriz de bairros em todos os pesos testados, a até 1.000 m do metrô | Seção 6.4 |
+|  | Ponto em um dos três primeiros da matriz de bairros em todos os pesos testados (Graça, Pituba ou Itaigara), a até 1.000 m do metrô | Seção 6.4 |
 |  | Instrutor dedicado ao salão em todas as horas abertas, com no máximo 2 mesas por instrutor no pico | Seções 7.3 e 7.5 |
 |  | Desenho enxuto: 6 mesas, 51 horas por semana que cobrem o pico de cada dia, equipe de 5 e investimento por etapas, pago com o caixa gerado | Seções 7.2 e 10.4 |
 | Fraquezas | Aluguel com condomínio de 11,3% da receita, contra 4,0% no setor | Seção 9.6; IBGE, PAS 2024 |
@@ -48,7 +48,7 @@ As premissas críticas se traduzem em riscos do negócio, e os de maior impacto 
 | Gasto por pessoa abaixo de R$ 61,17 | Média | Alto | -605.777 | G2 | Gasto médio de R$ 40,00 a R$ 109,84 nos 13 concorrentes (B2) |
 | Circulação no pico abaixo de 4,98 pessoas por hora | Média | Alto | -349.465 | G4 | Média de 6,40 nas visitas, de 4,03 a 11,43, e 4,13 pelas NFC-e (B3) |
 | Abertura de unidade da São Jogue perto do ponto, ou preço menor | Média | Alto | n.a. | G4 | Rede com duas unidades (B3) |
-| Aluguel acima de R$ 54,15 por m² na Pituba | Alta | Médio | 522.645 | G5 | FipeZap só para Salvador inteira; alta de 18,9% em 12 meses |
+| Aluguel acima de R$ 54,15 por m² no bairro escolhido | Alta | Médio | 522.645 | G5 | FipeZap só para Salvador inteira; alta de 18,9% em 12 meses |
 | Demanda caindo 5% ao ano a partir do ano 3 | Média | Médio | 442.281 | G4 | N6 (R18) |
 | CMV acima de 30% do A&B | Média | Médio | 593.895 | G2 | 29,6% no setor (IBGE, PAS 2023) |
 | Reforma e cozinha acima do provável | Média | Médio | 677.029 | n.a. | Orçamento do B5: SINAPI e anúncios de sites (N2 e N3), quantidades sem projeto (N6) |
@@ -63,7 +63,7 @@ Nota: riscos do mais para o menos grave. Probabilidade, pelo critério do autor 
 
 ## 10.4 CONTINGÊNCIA E MONITORAMENTO
 
-O investimento depende de duas validações feitas sem nova ida a campo. Primeiro, o ponto e a reforma precisam de cotação na Pituba, com área de 110 a 150 m²: os anúncios dos portais de aluguel dão o preço pedido por bairro, e o orçamento da reforma sai do imóvel escolhido. Na sequência, a circulação de dia útil precisa de uma medida de luderia: o histograma de horários de pico do Google Maps da São Jogue dá a razão entre o dia útil e o fim de semana, para conferir a dos restaurantes (R05). O plano só segue se as duas confirmarem as premissas na altura do provável.
+O investimento depende de duas validações feitas sem nova ida a campo. Primeiro, o ponto e a reforma precisam de cotação nos três bairros finalistas, com área de 110 a 150 m²: os anúncios dos portais de aluguel dão o preço pedido por bairro e dizem se o imóvel atende ao Quadro 6.2, e o orçamento da reforma sai do imóvel escolhido. Na sequência, a circulação de dia útil precisa de uma medida de luderia: o histograma de horários de pico do Google Maps da São Jogue dá a razão entre o dia útil e o fim de semana, para conferir a dos restaurantes (R05). O plano só segue se as duas confirmarem as premissas na altura do provável.
 
 Depois da abertura, o caixa, a NFC-e e o site de recomendação de jogos (seção 7.3) dão os indicadores mensais. Eles alimentam dois conjuntos de gatilhos: os de expansão, que liberam investimento, e os de perda máxima, que cortam receita perdida e custo. As etapas de expansão são opções: só são exercidas se a demanda medida pedir e se o caixa gerado pagar a etapa, com reserva de dois meses de custo fixo. O Quadro 10.3 resume as etapas.
 

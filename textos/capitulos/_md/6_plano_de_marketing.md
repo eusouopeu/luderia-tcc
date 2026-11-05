@@ -61,36 +61,59 @@ O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 18
 
 ## 6.4 PRAÇA
 
-A Pituba é o bairro indicado para a luderia. Ela lidera a matriz de critérios em todos os conjuntos de pesos testados (Tabela 6.1): tem a 5ª maior população de 20 a 39 anos de Salvador, 15.276 pessoas (IBGE, Censo 2022), e renda média do responsável pelo domicílio de R$ 7.513,00, 3,7 vezes a média da cidade (IBGE, Censo 2010, por bairro, no Observatório de Bairros de Salvador). A renda entra porque o gasto com lazer se concentra nas famílias de renda alta (seção 5.2). O Censo 2022 não publica renda por bairro, e a de 2010 é a medida por bairro mais recente; a ordem entre bairros muda devagar, mas o valor está defasado. O QualiSalvador, levantamento da UFBA sobre a qualidade urbana dos bairros, também põe a Pituba no grupo de melhor qualidade de vida da cidade [AV]. A matriz considera só os bairros com renda de pelo menos o dobro da média da cidade (R$ 4.109,00) e 3.500 pessoas de 20 a 39 anos – 14 dos 170 bairros.
+A matriz de bairros indica três finalistas para o ponto: Graça, Pituba e Itaigara (Tabela 6.1). A escolha final sai da coleta de anúncios nesses três bairros, antes do investimento. A matriz usa três indicadores, com pesos do autor (N6). O primeiro, de peso 40%, é o Índice de Infraestrutura e Serviços Urbanos (IISU) do QUALISalvador, levantamento da UFBA sobre a qualidade urbana dos bairros. O IISU reúne 23 indicadores de saneamento, saúde, educação, mobilidade, segurança pública e equipamentos urbanos, e mede o ambiente em que o negócio se instala (SANTOS et al., 2022, p. 92–95, 492–493) [AV]. O segundo, de peso 30%, é a renda média familiar per capita do mesmo levantamento (2018–2020), condição para pagar a visita: o gasto com lazer se concentra nas famílias de renda alta (seção 5.2). O terceiro, de peso 30%, é a densidade demográfica do Censo 2022 (IBGE), que aproxima o movimento e o comércio do entorno.
+
+A idade do público não entra. Ela é premissa do autor, e os clientes de uma luderia vêm de vários bairros, de carro ou de transporte público. A matriz considera só os bairros com renda per capita de pelo menos o dobro da média da cidade (R$ 2.819,54, o dobro de R$ 1.409,77): são 15 dos 160 bairros do levantamento. Cada indicador é normalizado de 0 a 1 entre os candidatos.
 
 **Tabela 6.1 – Matriz de critérios ponderados para o bairro, Salvador**
 
-| Posição | Bairro | Pessoas de 20 a 39 anos | Renda média do responsável, 2010 (R$) | Pessoas de 20 a 39 anos por km² | Nota (0 a 1) |
+| Posição | Bairro | IISU | Renda familiar per capita (R$) | Densidade (hab/km²) | Nota (0 a 1) |
 |---|---|---|---|---|---|
-| 1 | Pituba | 15.276 | 7.513 | 3.353 | 0,725 |
-| 2 | Patamares | 5.969 | 12.294 | 1.307 | 0,416 |
-| 3 | Imbuí | 9.127 | 4.353 | 3.431 | 0,344 |
-| 4 | Candeal | 3.653 | 7.392 | 5.533 | 0,315 |
-| 5 | Graça | 3.756 | 7.772 | 4.380 | 0,284 |
-| 6 | Piatã | 5.909 | 8.641 | 918 | 0,259 |
-| 7 | Caminho das Árvores | 4.037 | 9.176 | 2.013 | 0,246 |
-| 8 | Costa Azul | 4.996 | 5.737 | 3.857 | 0,238 |
-| 9 | Rio Vermelho | 5.157 | 6.282 | 2.981 | 0,227 |
-| 10 | Vila Laura | 4.070 | 4.431 | 4.861 | 0,192 |
-| 11 | Ondina | 3.961 | 7.614 | 1.995 | 0,183 |
-| 12 | Barra | 3.862 | 6.585 | 2.742 | 0,172 |
-| 13 | STIEP | 4.034 | 5.360 | 3.265 | 0,156 |
-| 14 | Stella Maris | 5.001 | 6.691 | 936 | 0,147 |
+| 1 | Graça | 0,87 | 5.425,88 | 17.488 | 0,821 |
+| 2 | Pituba | 0,88 | 5.742,30 | 12.708 | 0,786 |
+| 3 | Itaigara | 0,92 | 5.438,74 | 7.410 | 0,756 |
+| 4 | Caminho das Árvores | 0,86 | 4.661,13 | 6.788 | 0,483 |
+| 5 | Vitória | 0,81 | 4.385,77 | 12.627 | 0,431 |
+| 6 | Rio Vermelho | 0,85 | 3.713,90 | 10.131 | 0,417 |
+| 7 | Canela | 0,82 | 3.675,82 | 13.097 | 0,389 |
+| 8 | Patamares | 0,82 | 5.157,45 | 4.617 | 0,380 |
+| 9 | Barra | 0,80 | 4.163,10 | 10.715 | 0,337 |
+| 10 | Stiep | 0,82 | 3.442,60 | 10.747 | 0,313 |
+| 11 | Costa Azul | 0,80 | 3.345,20 | 13.001 | 0,292 |
+| 12 | Ondina/Chame-Chame | 0,81 | 3.883,95 | 6.987 | 0,256 |
+| 13 | Jardim Armação | 0,82 | 3.093,74 | 7.258 | 0,201 |
+| 14 | Piatã | 0,80 | 3.410,81 | 3.086 | 0,093 |
+| 15 | Stella Maris | 0,78 | 3.389,67 | 3.553 | 0,043 |
 
-Fonte: elaborado pelo próprio autor, com base no IBGE (Censo 2022, agregados por bairro; Censo 2010, renda por bairro, via Observatório de Bairros de Salvador, 04/11/2026).
+Fonte: elaborado pelo próprio autor, com base no QUALISalvador (SANTOS et al., 2022, p. 92–95 e 185–188) e no IBGE (Censo 2022, agregados por bairro).
 
-Nota: pesos de 50% para o público de 20 a 39 anos, 30% para a renda e 20% para o público por km²; cada critério normalizado de 0 a 1 entre os candidatos. Com pesos de 40%, 40% e 20%, de 60%, 20% e 20% ou iguais, a Pituba segue em 1º. Renda média de Salvador em 2010: R$ 2.055,00.
+Nota: pesos de 40% para o IISU, 30% para a renda e 30% para a densidade; cada indicador normalizado de 0 a 1 entre os 15 candidatos. A densidade usa os moradores do Censo 2022.
 
-Os pesos são do autor (N6) e não mudam a escolha (nota da Tabela 6.1): Patamares, Candeal, Imbuí e Graça só alternam do 2º ao 6º lugar. Patamares tem a maior renda entre os candidatos, mas pouco público por km². Nenhuma das duas unidades da São Jogue está entre os candidatos: a Bela Vista fica no Shopping Bela Vista, em Pernambués, e a Paralela, no Shopping Paralela.
+Os três finalistas ficam a 0,07 de distância entre si, e o 4º colocado está a 0,27 do 3º. A ordem entre os três depende dos pesos. Com pesos iguais, a Graça segue em 1º (0,841). Sem a densidade, o Itaigara passa a 1º (0,951) e a Pituba fica em 2º. Com o IISU em 60%, o Itaigara lidera (0,837) e a Pituba e a Graça empatam em 2º. Em 20 mil sorteios com cada peso variando 50% para mais ou para menos, a Graça é a 1ª em 76,6%, o Itaigara em 19,3% e a Pituba em 4,2%. Em todos os cenários testados, os três finalistas ocupam as três primeiras posições.
 
-Escolhido o bairro, falta definir o ponto. Ele deve ficar a até 1.000 m de uma estação de metrô: os concorrentes nessa condição têm mediana de 770 avaliações no Google Maps, contra 396 dos que ficam longe (seção 5.4.2). O shopping de porte não mostra a mesma vantagem e não entra como exigência. A associação não prova causa.
+Os dados têm limites. Descrevem moradores, e não quem circula pelo bairro, com erro amostral de 8% a 10% ou mais por bairro. O IISU varia só de 0,78 a 0,92 entre os candidatos, e a densidade é a de moradores. Nenhuma das duas unidades da São Jogue está entre os candidatos: a Bela Vista fica no Shopping Bela Vista, em Pernambués, e a Paralela, no Shopping Paralela.
 
-Falta o custo do ponto por bairro. O FipeZap dá o aluguel comercial só para Salvador inteira (R$ 54,15 por m² em jul/2026), sem recorte de bairro; o capítulo 9 usa esse valor, e o pessimista (R$ 64,36) cobre parte do prêmio de um bairro como a Pituba. A cotação de pontos na Pituba, junto ao metrô, fecha a decisão [BUSCAR – anúncios de locação comercial].
+O ponto deve ficar a até 1.000 m de uma estação de metrô: os concorrentes nessa condição têm mediana de 770 avaliações no Google Maps, contra 396 dos que ficam longe (seção 5.4.2). O shopping de porte não mostra a mesma vantagem e não entra como exigência.
+
+A escolha entre os três finalistas depende do custo e da oferta de pontos. O FipeZap dá o aluguel comercial só para Salvador inteira (R$ 54,15 por m² em jul/2026), sem recorte de bairro, e o capítulo 9 usa esse valor. A coleta de anúncios fecha essa lacuna. Antes de assinar o contrato, o coletor do Bloco B5 busca nos portais OLX, ZAP Imóveis, Viva Real e QuintoAndar os salões térreos de 110 a 150 m² na Graça, na Pituba e no Itaigara. Para cada anúncio, registram-se o aluguel pedido, o condomínio e o IPTU, a área, o número de sanitários, o andar, a distância até a estação de metrô mais próxima e o atendimento ao Quadro 6.2. O bairro escolhido é o de maior nota da matriz que tenha ao menos três anúncios que atendam ao quadro e aluguel mediano pedido de até R$ 64,36 por m², o valor pessimista do plano (capítulo 9). Se nenhum dos três cumprir as duas condições, a coleta se estende ao 4º colocado, o Caminho das Árvores. O preço pedido é maior que o fechado (N2): a cotação com corretor substitui o anúncio antes do contrato.
+
+**Quadro 6.2 – Requisitos mínimos do ponto**
+
+| Requisito | Mínimo | Origem |
+|---|---|---|
+| Área | De 110 a 150 m², com cerca de 130 m² no provável | Estimativa do autor (N6), capítulo 9 |
+| Pavimento | Térreo, com entrada voltada para a rua e rota acessível até as mesas | Seção 7.1; ABNT NBR 9050 |
+| Salão | Espaço para 6 mesas, cerca de 30 assentos, com estantes do acervo à vista | Seção 7.1 (B3) |
+| Sanitários | Três de clientes (masculino, feminino e adaptado com fraldário) e um da equipe | Seção 7.1; Código de Obras de Salvador [AV]; NR-24 |
+| Cozinha e depósito | Espaço para cozinha completa e depósito de A&B, com fluxo e materiais da RDC n. 216/2004 | Seções 7.1 e 8.2 |
+| Zoneamento | Zona que admita serviço de alimentação e lazer | LOUOS de Salvador [AV] |
+| Lotação | Licença do Corpo de Bombeiros compatível com 30 assentos e a equipe | Lei estadual n. 12.929/2013 [AV] |
+| Metrô | Estação a até 1.000 m | Seção 5.4.2 |
+| Contrato | Prazo de 5 anos, com direito à ação renovatória | Seção 8.3 |
+| Horário e ruído | Funcionamento até as 23h sem restrição da zona | Seção 7.2; regulação municipal de ruído e horário [BUSCAR] |
+| Aluguel | Mediana pedida de até R$ 64,36 por m² | Cenário pessimista, capítulo 9 |
+
+Fonte: elaborado pelo próprio autor, com base nos capítulos 7, 8 e 9.
 
 ## 6.5 PROMOÇÃO E COMUNICAÇÃO
 
@@ -156,6 +179,4 @@ IBGE. *Sistema Nacional de Índices de Preços ao Consumidor*: IPCA, tabela 7060
 
 KIM, W. Chan; MAUBORGNE, Renée. *A estratégia do oceano azul*: como criar novos mercados e tornar a concorrência irrelevante. Rio de Janeiro: Elsevier, 2005. [AV]
 
-OBSERVATÓRIO DE BAIRROS SALVADOR. *Bairros de Salvador*: renda média do responsável pelo domicílio, Censo 2010. Salvador: UFBA, 2026. Disponível em: https://observatoriobairrossalvador.ufba.br/. Acesso em: 4 nov. 2026.
-
-QUALISALVADOR: qualidade do ambiente urbano na cidade da Bahia. Salvador: EDUFBA, 2021. `[AV autoria, título e ano]`
+SANTOS, Elisabete et al. (org.). *QUALISalvador*: qualidade do ambiente urbano na cidade da Bahia. 2. ed. Salvador: EDUFBA, 2022. `[AV título e ano]`
