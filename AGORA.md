@@ -4,12 +4,12 @@ Atualizado em 04/11/2026. Semana 8 do cronograma (31/10 a 06/11). Próxima entre
 
 ## Fazendo agora (no máximo duas frentes)
 
-1. **Texto do TMin v28** (86 páginas de texto numeradas, mais capa e folha de rosto, dentro do teto de 100; apêndices v27; citações de finanças trocadas para Bruni, 2018, e as de metodologia para Mattar, 1997, com páginas conferidas no exemplar). Provável: investimento de R$ 313 mil, VPL de R$ 689 mil, TIR de 56,2%, P(VPL > 0) de 77,3%; gasto de R$ 78,68 por pessoa (13 casas) e cesta com hambúrguer de R$ 74,06; Pituba em 1º na matriz com renda por bairro. Comentários do autor no v24 aplicados e edições de estilo dos caps. 3, 4 e 6 levadas aos `.md` (pedidos `**` do 3.2 e 3.3 resolvidos; faltam os itens de metodologia em pendências). Falta a passada única de revisão dos pares com "*" e as citações `[AV]` (inclui o QualiSalvador, sem PDF); abrir margem de páginas (D66).
+1. **Texto do TMin v28** (86 páginas de texto numeradas, mais capa e folha de rosto, dentro do teto de 100; apêndices v27; citações de finanças trocadas para Bruni, 2018, e as de metodologia para Mattar, 1997, com páginas conferidas no exemplar). Provável: investimento de R$ 313 mil, VPL de R$ 689 mil, TIR de 56,2%, P(VPL > 0) de 77,3%; gasto de R$ 78,68 por pessoa (13 casas) e cesta com hambúrguer de R$ 74,06; Pituba em 1º na matriz com renda por bairro. Comentários do autor no v24 aplicados e edições de estilo dos caps. 3, 4 e 6 levadas aos `.md` (pedidos `**` do 3.2 e 3.3 resolvidos; faltam os itens de metodologia em pendências). Falta a passada única de revisão dos pares com "*" e as citações `[AV]` (inclui o QualiSalvador, sem PDF); abrir margem de páginas (D66). Em 04/11, horário de 51 h, equipe de 5, refeição e PLR levados ao modelo e aos `.md` dos caps. 4 e 6 a 11 (VPL de R$ 795 mil, TIR de 61,8%); o `.docx` só é regerado no fechamento de 06/11.
 2. **Recoleta do B5** com o coletor 2026.11.03-8 (os números atuais usam até 5 ofertas por site espaçadas no preço) e coleta de letreiro, balcão e kit de gás; é o único dado que ainda muda números do TMin.
 
 ## Próximos 3 passos
 
-1. Responder o "Lote de decisões" (L1 a L18) em [pendências](docs/pendencias.md) e ler a convenção SHRBS × Sindbares vigente (piso, adicional noturno, alimentação).
+1. Responder o "Lote de decisões" (L1 a L19; L19 é a terça com um só cozinheiro) em [pendências](docs/pendencias.md) e ler a convenção SHRBS × Sindbares vigente (piso, adicional noturno, alimentação); conferir CLT art. 458 e Lei n. 10.101/2000 (refeição e PLR).
 2. Passada única de revisão dos pares com "*", capítulo a capítulo; conferir Mattar (edição e ano) e Pfeffer e Sutton (páginas) (melhorias D62 e D63).
 3. Cortes do cap. 6 (C21) e dos apêndices até o teto de 9 páginas (L5 e L6); salvar o PDF do QualiSalvador em `bibliografia/`.
 

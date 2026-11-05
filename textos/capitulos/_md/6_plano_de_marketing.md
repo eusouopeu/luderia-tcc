@@ -102,13 +102,13 @@ O orçamento de marketing é de R$ 1.500,00 por mês no provável, de R$ 1.000,0
 
 ## 6.6 ESTIMATIVA DE DEMANDA
 
-A luderia deve receber 942 pessoas por mês no ano maduro do cenário provável, de 594 a 1.720 nos cenários (Tabela 6.2). A estimativa parte da *circulação*: as pessoas que entram na luderia por hora. A circulação no pico vem da contagem direta na São Jogue (B3), nas noites de sexta e sábado: 6,40 pessoas por hora, em média. Para levar a circulação ao dia, o modelo usa o horário dos 54 concorrentes (B1): em cada hora aberta do plano, o número de concorrentes abertos é dividido pelo número de concorrentes abertos nas horas das visitas. A soma dessas razões dá as horas de pico equivalentes do dia: 6,84 horas, em média, de sexta a domingo, nas 8 horas abertas. No mês maduro do cenário provável, a conta é a seguinte:
+A luderia deve receber 968 pessoas por mês no ano maduro do cenário provável, de 610 a 1.770 nos cenários (Tabela 6.2). A estimativa parte da *circulação*: as pessoas que entram na luderia por hora. A circulação no pico vem da contagem direta na São Jogue (B3), nas noites de sexta e sábado: 6,40 pessoas por hora, em média. Para levar a circulação ao dia, o modelo usa o horário dos 54 concorrentes (B1): em cada hora aberta do plano, o número de concorrentes abertos é dividido pelo número de concorrentes abertos nas horas das visitas. A soma dessas razões dá as horas de pico equivalentes do dia: 6,77 horas, em média, de sexta a domingo, nas 9 horas abertas de sexta e sábado e nas 6 do domingo. No mês maduro do cenário provável, a conta é a seguinte:
 
 pessoas por dia de fim de semana = circulação no pico × horas de pico equivalentes (1)
 
-6,40 × 6,84 = 43,8 pessoas por dia de fim de semana
+6,40 × 6,77 = 43,3 pessoas por dia de fim de semana
 
-O dia útil (terça a quinta) entra em separado do fim de semana (sexta a domingo), porque o movimento é menor. Em restaurantes de loja física, um dia de segunda a quinta recebe 61,9% do gasto de um dia de sexta a domingo no Rio de Janeiro e 69,2% em São Paulo (ANR, 2026a; 2026b). Com a média das duas cidades, 65,5%, o dia útil recebe 28,7 pessoas. Com 3 dias de cada tipo por semana e 4,33 semanas por mês, o mês maduro soma 942 pessoas.
+O dia útil (terça a quinta) entra em separado do fim de semana (sexta a domingo), porque o movimento é menor. Em restaurantes de loja física, um dia de segunda a quinta recebe 61,9% do gasto de um dia de sexta a domingo no Rio de Janeiro e 69,2% em São Paulo (ANR, 2026a; 2026b). Com a média das duas cidades, 65,5%, e o ajuste do horário, o dia útil recebe 31,2 pessoas. O ajuste vem do horário do plano, que cobre 84,5% dos concorrentes abertos no dia útil e 77,0% no fim de semana (B1): o dia útil ganha a razão entre os dois, 1,10, porque abre 9 horas em todos os dias, e o fim de semana perde 3 horas no domingo. Com 3 dias de cada tipo por semana e 4,33 semanas por mês, o mês maduro soma 968 pessoas.
 
 **Tabela 6.2 – Demanda no mês maduro, por cenário**
 
@@ -116,15 +116,15 @@ O dia útil (terça a quinta) entra em separado do fim de semana (sexta a doming
 |---|---|---|---|
 | Circulação no pico de fim de semana (pessoas por hora) | 4,13 | 6,40 | 11,43 |
 | Dia útil (% do fim de semana) | 61,9 | 65,5 | 69,2 |
-| Pessoas por dia de fim de semana | 28,2 | 43,8 | 78,2 |
-| Pessoas por dia útil | 17,5 | 28,7 | 54,1 |
-| Pessoas por mês | 594 | 942 | 1.720 |
+| Pessoas por dia de fim de semana | 28,0 | 43,3 | 77,4 |
+| Pessoas por dia útil | 19,0 | 31,2 | 58,8 |
+| Pessoas por mês | 610 | 968 | 1.770 |
 
 Fonte: elaborado pelo próprio autor, com base nos Blocos B1 e B3 e na ANR (2026a; 2026b), no modelo financeiro (Apêndice E).
 
-Nota: pessimista com o piso das notas fiscais da São Jogue e a razão do Rio de Janeiro; otimista com a visita mais cheia e a razão de São Paulo. Horas de pico equivalentes de 6,84 nos três cenários.
+Nota: pessimista com o piso das notas fiscais da São Jogue e a razão do Rio de Janeiro; otimista com a visita mais cheia e a razão de São Paulo. Horas de pico equivalentes de 6,77 e ajuste do horário de 1,10 nos três cenários.
 
-O primeiro ano tem rampa: o movimento começa em 40% do maduro e chega a 100% no mês 9, de 30% em 12 meses no pessimista a 50% em 6 meses no otimista (premissas R11 e R12, estimativa do autor, N6). O caminho inverso confere a ordem de grandeza. As 11,3 mil visitas por ano do provável equivalem a 1,4 visita por ano para cada 100 moradores de Salvador de 20 a 39 anos, cerca de 781 mil pessoas se mantida a proporção do Censo 2022 (IBGE).
+O primeiro ano tem rampa: o movimento começa em 40% do maduro e chega a 100% no mês 9, de 30% em 12 meses no pessimista a 50% em 6 meses no otimista (premissas R11 e R12, estimativa do autor, N6). O caminho inverso confere a ordem de grandeza. As 11,6 mil visitas por ano do provável equivalem a 1,5 visita por ano para cada 100 moradores de Salvador de 20 a 39 anos, cerca de 781 mil pessoas se mantida a proporção do Censo 2022 (IBGE).
 
 **Referências citadas neste capítulo**
 

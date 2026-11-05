@@ -38,8 +38,9 @@ VISITAS = ROOT / "dados" / "[B3] Contagem direta de ocupacao" / "contagem_resumo
 DIAS = ["segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo"]
 HORAS = range(0, 30)  # 24 a 29 = madrugada do dia seguinte
 # horário do plano (P7 de _instrucoes/1a_principios.md): [abre, fecha)
-PLANO = {"terca": (15, 23), "quarta": (15, 23), "quinta": (15, 23), "sexta": (15, 23),
-         "sabado": (14, 22), "domingo": (14, 22)}
+# (decisão do autor, 04/11/2026: 9 h de terça a sábado e 6 h no domingo)
+PLANO = {"terca": (14, 23), "quarta": (14, 23), "quinta": (14, 23), "sexta": (14, 23),
+         "sabado": (14, 23), "domingo": (14, 20)}
 
 
 def intervalos(texto):

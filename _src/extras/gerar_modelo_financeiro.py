@@ -24,8 +24,9 @@ negócio fecha). A aba sensibilidade mostra o VPL com e sem o valor residual.
 Receita (decisão do autor, 02/11/2026): pessoas por dia de fim de semana =
 circulação no pico (pessoas que entram por hora nas visitas do B3, sem escala
 pelas mesas; pessimista pelas NFC-e) × horas de pico equivalentes (casas do B1 abertas
-em cada hora do plano ÷ casas abertas nas janelas das visitas); dia útil = fim
-de semana × razão dia útil ÷ fim de semana do gasto com cartão (ANR/Mastercard).
+em cada hora do plano ÷ casas abertas nas janelas das visitas); dia útil = mesma
+circulação × horas de pico equivalentes do dia útil (R19) × razão dia útil ÷ fim de
+semana do gasto com cartão (ANR/Mastercard).
 Receita por pessoa = gasto por pessoa declarado no Google Maps (B2), média das
 13 casas com taxa de entrada conhecida; a cesta de consumo é taxa de entrada +
 bebida + hambúrguer mais barato sem ser vegetariano, e a parcela da taxa nessa
@@ -33,10 +34,10 @@ cesta (10 casas com cesta) separa a receita de taxa (anexo III) da de A&B
 (anexo I e CMV).
 
 Desenho enxuto (P7 de _instrucoes/1a_principios.md, 02/11/2026): 6 mesas;
-terça a sexta das 15h às 23h e sábado e domingo das 14h às 22h (as 8 h
-contínuas com mais luderias abertas no B1), segunda fechada; equipe de 6 (3
-cozinheiros-chefes em 4 dias de 7 h, 28 h por semana, e 3 atendentes e instrutores
-em 5 dias de 7 h, 35 h, sem redução de salário; decisão do autor, 04/11/2026), mais o
+terça a sábado das 14h às 23h (9 h) e domingo das 14h às 20h (6 h), segunda
+fechada (decisão do autor, 04/11/2026); equipe de 5 (2 cozinheiros-chefes e 3
+atendentes e instrutores, em 5 dias de 8 h, com 6 h no domingo, 39 h por semana na
+média; decisão do autor, 04/11/2026), mais o
 sócio no caixa em todo o horário aberto (pró-labore, C08).
 A remuneração soma ao salário os adicionais legais da escala (ESCALA): noturno,
 hora noturna reduzida, repouso sobre eles e feriados em dobro; os encargos e o
@@ -92,25 +93,27 @@ FIGURA_MC = ROOT / "textos" / "capitulos" / "figuras" / "9_monte_carlo.png"
 SOFFICE = "/Applications/LibreOffice.app/Contents/MacOS/soffice"
 
 MESES = 60
-# Escala (decisão do autor, 04/11/2026): segunda fechada; turnos de 7 h com 1 h de intervalo no
-# meio do turno; homem folga 1 domingo a cada 4 semanas e mulher, domingo sim, domingo não (CLT,
+# Escala (decisão do autor, 04/11/2026): segunda fechada; turnos de 8 h com 1 h de intervalo de
+# terça a sábado (das 14h às 23h) e de 6 h com 15 min no domingo (das 14h às 20h); homem folga 1 domingo a cada 4 semanas e mulher, domingo sim, domingo não (CLT,
 # art. 386); atendentes 1 e 2 mulheres. Folgas de cada semana do ciclo de 4 semanas.
 # Atendentes: 5 dias (1 folga por semana, na terça, na quarta ou no domingo); 3 no salão de quinta
-# a sábado e 2 nos demais dias. Cozinheiros: 4 dias (2 folgas por semana), 2 na cozinha todo dia.
+# a sábado e 2 nos demais dias. Cozinheiros (decisão do autor, 04/11/2026): 2, com 5 dias (folga na
+# segunda e, em semanas alternadas, na terça ou no domingo); 2 na cozinha de quarta a sábado e 1 na
+# terça e no domingo.
 ESCALA = {
     "Atendente e instrutor de jogos (recreador)": (
         (("dom",), ("ter",), ("dom",), ("qua",)),
         (("ter",), ("dom",), ("ter",), ("dom",)),
         (("qua",), ("dom",), ("qua",), ("ter",))),
     "Cozinheiro-chefe": (
-        (("dom", "qua"), ("qui", "sab"), ("ter", "sex"), ("dom", "qua")),
-        (("ter", "sex"), ("dom", "qua"), ("qui", "sab"), ("ter", "sex")),
-        (("qui", "sab"), ("ter", "sex"), ("dom", "qua"), ("qui", "sab"))),
+        (("ter",), ("dom",)),
+        (("dom",), ("ter",))),
 }
-JORNADA_SEM = {"Atendente e instrutor de jogos (recreador)": 35, "Cozinheiro-chefe": 28}  # 7 h por turno
-# turnos que fecham às 23h, de terça a sexta, por semana (1 h depois das 22h): atendentes, os 2 que
-# entram às 15h; cozinheiros, o que entra às 15h
-NOITES_SEM = {"Atendente e instrutor de jogos (recreador)": 8, "Cozinheiro-chefe": 4}
+JORNADA_SEM = {"Atendente e instrutor de jogos (recreador)": 39, "Cozinheiro-chefe": 39}  # média: 8 h de terça a sábado, 6 h no domingo
+# turnos que fecham às 23h, de terça a sábado, por semana (1 h depois das 22h): todos ficam até o
+# fechamento; atendentes, 15 turnos menos as folgas de terça e quarta (média de 13,25 no ciclo de 4
+# semanas); cozinheiros, 2 de quarta a sábado e 1 na terça
+NOITES_SEM = {"Atendente e instrutor de jogos (recreador)": 13.25, "Cozinheiro-chefe": 9}
 ADIC_NOTURNO = 0.20  # CLT, art. 73: 20% das 22h às 5h, hora noturna de 52 min 30 s
 HORA_EXTRA = 0.50  # CF, art. 7º, XVI: a hora reduzida das 22h às 23h passa da jornada contratada
 FERIADOS_ANO = 14  # 9 nacionais, 2 de julho (BA) e 4 de Salvador (Lei n. 9.093/1995) [AV]
@@ -175,6 +178,10 @@ def ler_fontes() -> dict:
     for casa, chave in (("plano", "horas_pico"), ("São Jogue", "horas_pico_sj")):
         h = hp[hp["casa"] == casa]
         f[chave] = dict(zip(h["dia"], h["horas_pico_equivalentes"]))
+    # cobertura de cada dia: casas abertas nas horas do plano ÷ casas abertas no dia inteiro (B1)
+    ab = pd.read_csv(B1 / "estabelecimentos" / "B1_abertos_por_hora.csv", sep=";", encoding="utf-8-sig").set_index("hora")
+    pl = hp[hp["casa"] == "plano"]
+    f["cobertura"] = {d: ab.loc[a:b - 1, d].sum() / ab[d].sum() for d, a, b in zip(pl["dia"], pl["abre"], pl["fecha"])}
     # B4
     fz = pd.read_csv(B4 / "financeiro" / "[B4] Aluguel Comercial por Capital 2026-07 (FipeZap).csv")
     fz = fz[fz["capital"] == "Salvador"].iloc[0]
@@ -210,7 +217,7 @@ def quadro_pessoal(f) -> list[tuple]:
     todas = "CAGED, admissões ago/2025-jul/2026, Salvador, todas as atividades, mediana (CNAE 56 com amostra pequena)"
     rec = salario(f, "Recreador", "todas as atividades")
     return [
-        ("Cozinheiro-chefe", "513205", 3, salario(f, "Cozinheiro geral"),
+        ("Cozinheiro-chefe", "513205", 2, salario(f, "Cozinheiro geral"),
          cn56 + "; cozinheiro geral, sem chefe de cozinha no recorte"),
         ("Atendente e instrutor de jogos (recreador)", "371410", 3, rec, todas),
     ]
@@ -309,7 +316,9 @@ def premissas(f) -> list[dict]:
     hp = f["horas_pico"]
     r15 = sum(hp[d] for d in ("sexta", "sabado", "domingo")) / 3
     f["teto_circ"] = MESAS * pg.mean() * 60 / pm.mean()
-    HORAS_DIA = 8
+    cb = f["cobertura"]
+    cob_du = sum(cb[d] for d in ("terca", "quarta", "quinta")) / 3
+    cob_fds = sum(cb[d] for d in ("sexta", "sabado", "domingo")) / 3
     # acréscimo salarial máximo (C06), provisório: maior distância entre o 3º quartil
     # e a mediana do salário de admissão entre os cargos do quadro
     c = f["caged"]
@@ -317,6 +326,8 @@ def premissas(f) -> list[dict]:
               for o, rc in (("Cozinheiro geral", "CNAE 56 - alimentação"), ("Recreador", "todas as atividades")))
     a = f["acervo"]
     q_ = quadro_pessoal(f)
+    # refeições da equipe (C15): uma por turno trabalhado
+    refeicoes = sum(6 - sum(len(sem) for sem in fl) / len(fl) for cargo, _, _, _, _ in q_ for fl in ESCALA[cargo]) * SEMANAS_MES
     R = lambda *x: dict(zip(("id", "nome", "unidade", "pess", "prov", "otim", "fonte", "nivel", "just"), x))
     return [
         R("R01", "Mesas do salão", "mesas", MESAS, MESAS, MESAS,
@@ -353,15 +364,15 @@ def premissas(f) -> list[dict]:
         R("R12", "Meses até a maturidade", "meses", 12, 9, 6,
           "Estimativa do autor (_instrucoes, §5)", "N6",
           "Rampa de 6 a 12 meses."),
-        R("R13", "Horas abertas por semana, fim de semana", "h", 3 * HORAS_DIA, 3 * HORAS_DIA, 3 * HORAS_DIA,
+        R("R13", "Horas abertas por semana, fim de semana", "h", 24, 24, 24,
           "B1: horário de 49 concorrentes (Google Maps, out/2026); decisão do autor", "N3",
-          "Sexta das 15h às 23h; sábado e domingo das 14h às 22h: as 8 h contínuas com mais luderias abertas em cada dia."),
-        R("R14", "Horas abertas por semana, dia útil", "h", 3 * HORAS_DIA, 3 * HORAS_DIA, 3 * HORAS_DIA,
+          "Sexta e sábado das 14h às 23h (9 h) e domingo das 14h às 20h (6 h): cobre o pico de sábado (18h) e o de domingo (17h); decisão do autor, 04/11/2026."),
+        R("R14", "Horas abertas por semana, dia útil", "h", 27, 27, 27,
           "B1: horário de 49 concorrentes (Google Maps, out/2026); decisão do autor", "N3",
-          "Terça a quinta das 15h às 23h; segunda fechada (71% dos concorrentes fecham)."),
+          "Terça a quinta das 14h às 23h; segunda fechada (71% dos concorrentes fecham)."),
         R("R15", "Horas de pico equivalentes por dia de fim de semana", "h", round(r15, 2), round(r15, 2), round(r15, 2),
           "B1: horário de 54 concorrentes (Google Maps, out/2026)", "N3",
-          f"Soma, nas horas abertas do plano, das casas abertas em cada hora ÷ casas abertas nas janelas das visitas do B3; média de sexta ({hp['sexta']:.2f}), sábado ({hp['sabado']:.2f}) e domingo ({hp['domingo']:.2f}). O dia útil usa o mesmo valor, reduzido pela R05."),
+          f"Soma, nas horas abertas do plano, das casas abertas em cada hora ÷ casas abertas nas janelas das visitas do B3; média de sexta ({hp['sexta']:.2f}), sábado ({hp['sabado']:.2f}) e domingo ({hp['domingo']:.2f})."),
         R("R16", "Dias abertos por semana, fim de semana", "dias", 3, 3, 3,
           "Decisão do autor (desenho enxuto)", "N3", "Sexta a domingo."),
         R("R17", "Dias abertos por semana, dia útil", "dias", 3, 3, 3,
@@ -369,6 +380,9 @@ def premissas(f) -> list[dict]:
         R("R18", "Variação anual da demanda a partir do ano 3", "% ao ano", -0.05, 0.0, 0.02,
           "Estimativa do autor", "N6",
           "Pessimista: fim da novidade e reação da São Jogue; otimista: boca a boca, até o teto do salão (02/11/2026)."),
+        R("R19", "Ajuste do horário de dia útil", "× fim de semana", round(cob_du / cob_fds, 4), round(cob_du / cob_fds, 4), round(cob_du / cob_fds, 4),
+          "B1: horário de 54 concorrentes (Google Maps, out/2026)", "N3",
+          f"O dia útil usa as horas de pico do fim de semana (R15), corrigidas pela cobertura do horário: casas abertas nas horas do plano ÷ casas abertas no dia, média de terça a quinta ({cob_du:.1%}) ÷ média de sexta a domingo ({cob_fds:.1%}). Vale 1,00 quando os horários cobrem o dia na mesma proporção."),
         R("C01", "CMV de alimentos e bebidas", "% do A&B", 0.35, 0.30, 0.26,
           "IBGE PAS 2023, serviços de alimentação (B4)", "N2",
           f"Mercadorias e materiais = {f['pas_mercadorias_pct']:.1f}% da receita líquida do setor."),
@@ -396,6 +410,13 @@ def premissas(f) -> list[dict]:
         R("C11", "Contabilidade", "R$ por mês", 1500, 1200, 900, "Estimativa do autor", "N6", "Escritório para empresa do Simples com folha."),
         R("C12", "Sistemas (caixa, reservas, nota fiscal)", "R$ por mês", 600, 450, 300, "Estimativa do autor", "N6", "Assinaturas."),
         R("C13", "Reposição do acervo", "% do acervo ao ano", 0.15, 0.10, 0.05, "Estimativa do autor", "N6", "Peças perdidas e jogos novos."),
+        R("C14", "Refeição da equipe no local", "R$ por refeição", 15, 12, 9, "Estimativa do autor", "N6",
+          "Insumos de uma refeição por turno, feita pela cozinha da casa (benefício sem natureza salarial: CLT, art. 458, § 2º); decisão do autor, 04/11/2026."),
+        R("C15", "Refeições da equipe", "refeições por mês", round(refeicoes, 1), round(refeicoes, 1), round(refeicoes, 1),
+          "Escala do cap. 7", "N1", "Uma por turno: dias trabalhados por semana de cada empregado × semanas do mês."),
+        R("C16", "Participação nos lucros ou resultados (PLR)", "% do EBITDA positivo do ano", 0.05, 0.05, 0.05,
+          "Decisão do autor (04/11/2026); Lei n. 10.101/2000", "N1",
+          "Paga só em ano com EBITDA positivo, sem encargos; rateio por pontos e metas da área (cap. 7)."),
         R("I01", "Reforma e instalações", "R$ por m²", *b5("I01", "i01_rs_m2"),
           "B5: SINAPI BA (Caixa, set/2026, com BDI do TCU) e coletas em sites (nov/2026); quantidades do autor", "N2 + N3 + N6",
           f"{cob('I01')} Ponto alugado sem obra estrutural; piso, forro e paredes por cenário; split de 30.000 BTU/h."),
@@ -445,7 +466,7 @@ def calcula(f, v: dict, folha: float) -> dict:
         mesas = v["R01"] if ano_ == 1 else v.get("R01_exp", v["R01"])
         r04 = min(mesas * v["R02"] * 60 / v["R03"], v["R04"] * tend)
         p_fds = r04 * v["R15"] * v["R16"] * rampa * v["M02"]
-        p_du = r04 * v["R05"] * v["R15"] * v["R17"] * rampa * v["M02"]
+        p_du = r04 * v["R05"] * v["R15"] * v["R19"] * v["R17"] * rampa * v["M02"]
         taxa_fds, taxa_du = p_fds * v["R06"] * v["R07"], p_du * v["R06"] * v["R07"]
         ab = (p_fds + p_du) * v["R06"] * (1 - v["R07"])
         alug = v["R09"] * v["R10"] * rampa * tend
@@ -460,13 +481,17 @@ def calcula(f, v: dict, folha: float) -> dict:
     m["cartao"] = m["bruta"] * v["C02"]
     aluguel = v["C03"] * v["C04"]
     fixos = (aluguel * (1 + v["C05"]) + folha * (1 + v["C06"]) * (1 + v["C07"]) + v["C08"] + v["C09"]
-             + v["C10"] + v["C11"] + v["C12"] + v["I05"] * v["C13"] / 12)
+             + v["C10"] + v["C11"] + v["C12"] + v["I05"] * v["C13"] / 12 + v["C14"] * v["C15"])
     m["fixos"] = fixos
     m["ebitda"] = m["bruta"] - m["simples"] - m["cmv"] - m["cartao"] - m["fixos"]
     inv = dict(reforma=v["I01"] * v["C03"], mobiliario=v["I02"], cozinha=v["I03"], ti=v["I04"],
                acervo=v["I05"], preop=v["I06"], caucao=v["I07"] * aluguel, giro=v["I08"] * fixos)
     total_inv = sum(inv.values())
     ano = m.groupby("ano")[["bruta", "simples", "cmv", "cartao", "fixos", "ebitda"]].sum()
+    # PLR (C16): parcela do EBITDA anual positivo, paga depois do fechamento do ano
+    ano["ebitda_pre"] = ano["ebitda"]
+    ano["plr"] = v["C16"] * ano["ebitda_pre"].clip(lower=0)
+    ano["ebitda"] = ano["ebitda_pre"] - ano["plr"]
     deprec = sum(inv[k] / VIDA_UTIL[k] for k in VIDA_UTIL)
     residual = v["M03"] * max(0.0, (ano.loc[ANOS, "ebitda"] - deprec) / v["M01"])
     fc = [-total_inv] + list(ano["ebitda"])
@@ -556,7 +581,8 @@ def calcula_mc(f, v: dict, folha: float, quadro) -> dict:
         fc[1] -= v["I02"] * MC_EXPANSAO / v["R01"]
     g5, fechou, e = False, False, 0.0
     for t in range(2, ANOS + 1):
-        e = float(ano.loc[t, "ebitda"]) + (corte if g5 else 0.0)
+        e = float(ano.loc[t, "ebitda_pre"]) + (corte if g5 else 0.0)
+        e -= v["C16"] * max(0.0, e)
         if g5 and e < 0:
             fc.append(e + inv["caucao"] + inv["giro"] + revenda)
             fc += [0.0] * (ANOS - t)
@@ -791,7 +817,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
         ws[f"{c}13"] = f"=(1+P_R18)^MAX(0,{c}3-2)"
         ws[f"{c}14"] = f"=MIN($B$16,P_R04*{c}13)"
         ws[f"{c}5"] = f"={c}14*P_R15*P_R16*{c}4*P_M02"
-        ws[f"{c}6"] = f"={c}14*P_R05*P_R15*P_R17*{c}4*P_M02"
+        ws[f"{c}6"] = f"={c}14*P_R05*P_R15*P_R19*P_R17*{c}4*P_M02"
         ws[f"{c}7"] = f"={c}5+{c}6"
         ws[f"{c}8"] = f"={c}5*P_R06*P_R07"
         ws[f"{c}9"] = f"={c}6*P_R06*P_R07"
@@ -818,7 +844,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
               7: "Custos variáveis (R$)", 8: "Aluguel (R$)", 9: "Condomínio e IPTU (R$)",
               10: "Pessoal com encargos (R$)", 11: "Pró-labore (R$)", 12: "Utilidades (R$)", 13: "Marketing (R$)",
               14: "Contabilidade (R$)", 15: "Sistemas (R$)", 16: "Reposição do acervo (R$)",
-              17: "Custos fixos (R$)", 18: "Custos totais (R$)"}
+              17: "Refeição da equipe (R$)", 18: "Custos fixos (R$)", 19: "Custos totais (R$)"}
     for r, t in linhas.items():
         ws.cell(r, 1, t)
     for i, c in enumerate(COL_MES):
@@ -838,9 +864,10 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
         ws[f"{c}14"] = "=P_C11"
         ws[f"{c}15"] = "=P_C12"
         ws[f"{c}16"] = "=P_I05*P_C13/12"
-        ws[f"{c}17"] = f"=SUM({c}8:{c}16)"
-        ws[f"{c}18"] = f"={c}7+{c}17"
-    estilo(ws, 2, 18, 2 + MESES, MOEDA)
+        ws[f"{c}17"] = "=P_C14*P_C15"
+        ws[f"{c}18"] = f"=SUM({c}8:{c}17)"
+        ws[f"{c}19"] = f"={c}7+{c}18"
+    estilo(ws, 2, 19, 2 + MESES, MOEDA)
     for c in COL_MES:
         ws[f"{c}2"].number_format = ws[f"{c}3"].number_format = "0"
     ws.column_dimensions["A"].width = 36
@@ -854,7 +881,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
     itens = [("Reforma e instalações", "=P_I01*P_C03", 5), ("Mobiliário", "=P_I02", 10),
              ("Cozinha e bar", "=P_I03", 10), ("Caixa e informática", "=P_I04", 5),
              ("Acervo inicial de jogos", "=P_I05", 5), ("Gastos pré-operacionais", "=P_I06", 5),
-             ("Caução do aluguel", "=P_I07*custos!$C$8", 0), ("Capital de giro", "=P_I08*custos!$C$17", 0)]
+             ("Caução do aluguel", "=P_I07*custos!$C$8", 0), ("Capital de giro", "=P_I08*custos!$C$18", 0)]
     for i, (n, fo, vida) in enumerate(itens):
         r = 3 + i
         ws.cell(r, 1, n); ws.cell(r, 2, fo); ws.cell(r, 3, vida)
@@ -884,21 +911,22 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
               (7, "(-) CMV de alimentos e bebidas", lambda c: "=-" + soma("custos", 5, c)),
               (8, "(-) Taxa de cartão", lambda c: "=-" + soma("custos", 6, c)),
               (9, "Margem de contribuição", lambda c: f"={c}6+{c}7+{c}8"),
-              (10, "(-) Custos fixos", lambda c: "=-" + soma("custos", 17, c)),
-              (11, "EBITDA", lambda c: f"={c}9+{c}10"),
-              (12, "(-) Depreciação e amortização", lambda c: "=-investimento!$D$11"),
-              (13, "Lucro líquido", lambda c: f"={c}11+{c}12"),
-              (14, "Margem líquida", lambda c: f"=IF({c}4=0,0,{c}13/{c}4)")]
+              (10, "(-) Custos fixos", lambda c: "=-" + soma("custos", 18, c)),
+              (11, "(-) Participação nos lucros (PLR)", lambda c: f"=-P_C16*MAX(0,{c}9+{c}10)"),
+              (12, "EBITDA", lambda c: f"={c}9+{c}10+{c}11"),
+              (13, "(-) Depreciação e amortização", lambda c: "=-investimento!$D$11"),
+              (14, "Lucro líquido", lambda c: f"={c}12+{c}13"),
+              (15, "Margem líquida", lambda c: f"=IF({c}4=0,0,{c}14/{c}4)")]
     for r, n, fo in contas:
         ws.cell(r, 1, n)
         for a in range(1, ANOS + 1):
             c = get_column_letter(1 + a)
             ws[f"{c}{r}"] = fo(c)
-    estilo(ws, 2, 14, 1 + ANOS, MOEDA)
+    estilo(ws, 2, 15, 1 + ANOS, MOEDA)
     for a in range(2, 2 + ANOS):
-        ws.cell(14, a).number_format = PCT
+        ws.cell(15, a).number_format = PCT
         ws.cell(3, a).number_format = "0"
-    nota(ws, 16, "Fonte: abas receitas, custos e investimento. No Simples Nacional, IRPJ e CSLL estão no DAS; não há imposto sobre o lucro à parte.", 1 + ANOS)
+    nota(ws, 17, "Fonte: abas receitas, custos e investimento. PLR: C16 sobre o EBITDA positivo do ano (Lei n. 10.101/2000). No Simples Nacional, IRPJ e CSLL estão no DAS; não há imposto sobre o lucro à parte.", 1 + ANOS)
     ws.column_dimensions["A"].width = 34
     for a in range(2, 2 + ANOS):
         ws.column_dimensions[get_column_letter(a)].width = 16
@@ -919,9 +947,9 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
     for t in range(ANOS + 1):
         c = get_column_letter(2 + t)
         ws[f"{c}4"] = "=-investimento!$B$11" if t == 0 else 0
-        ws[f"{c}5"] = 0 if t == 0 else f"=dre!{get_column_letter(1 + t)}11"
+        ws[f"{c}5"] = 0 if t == 0 else f"=dre!{get_column_letter(1 + t)}12"
         ws[f"{c}6"] = "=investimento!$B$9+investimento!$B$10" if t == ANOS else 0
-        ws[f"{c}12"] = (f"=P_M03*MAX(0,(dre!{get_column_letter(1 + t)}11-investimento!$D$11)/P_M01)"
+        ws[f"{c}12"] = (f"=P_M03*MAX(0,(dre!{get_column_letter(1 + t)}12-investimento!$D$11)/P_M01)"
                         if t == ANOS else 0)
         ws[f"{c}7"] = f"=SUM({c}4:{c}6)+{c}12"
         ws[f"{c}8"] = f"=1/(1+P_M01)^{c}3"
@@ -951,7 +979,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
            ("TIR real", '=IFERROR(IRR(fluxo_caixa!B7:G7),"não há")', "% ao ano"),
            ("Payback descontado", '=IF(COUNT(fluxo_caixa!C11:G11)=0,"mais de 5 anos",MIN(fluxo_caixa!C11:G11))', "anos"),
            ("Receita bruta mensal madura (mês 60)", "=receitas!BJ12", "R$"),
-           ("Custos fixos mensais", "=custos!BJ17", "R$"),
+           ("Custos fixos mensais", "=custos!BJ18", "R$"),
            ("Margem de contribuição (ano 5)", "=dre!F9/dre!F4", "% da receita bruta"),
            ("Receita bruta mensal de equilíbrio", "=B9/B10", "R$"),
            ("Receita madura ÷ receita de equilíbrio", "=B8/B11", "vezes"),

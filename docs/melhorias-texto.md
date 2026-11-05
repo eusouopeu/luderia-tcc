@@ -2,7 +2,7 @@
 
 Divergências entre capítulos (e contra as regras de `_instrucoes/`) e cortes possíveis, levantados a cada capítulo novo ou revisado. Regra em [CLAUDE.md](../CLAUDE.md), "Melhorias do texto". Item resolvido sai; listar não autoriza corrigir o capítulo sem pedido do autor.
 
-Última análise: 04/11/2026, TMin v25, depois dos comentários do autor no v24 (cesta com hambúrguer, R06 com 13 casas, renda por RM no cap. 5, matriz com renda por bairro, 5.4 cortado, Tabela 8.1 refeita): caps. 4 a 11 revistos; D66 revisto; D67 a D71 novos. Anterior: 04/11/2026, depois da nova equipe (5 empregados em escala 5x2 e o sócio no caixa), dos sanitários do B5 e das obrigações trabalhistas, de saúde e segurança e do consumidor no Quadro 8.1: caps. 4, 7, 8, 9, 10 e 11 revistos; D33 resolvido; D38 revisto; D64 a D66 novos (equipe de 6 e TMin v24). Anterior: 03/11/2026, TMin v21, depois da conclusão da codificação do B2 (grade de 22 temas; recodificação cega com kappa de 0,84) e da escrita do 6.1, 6.2, 6.5 e 6.6 (demanda vinda do cap. 9). Caps. 3, 4, 5, 6, 7, 9 e 11 revistos; D26, D27 e D47 resolvidos; D04, D54 e D57 revistos; D58 a D60 e C21 novos.
+Última análise: 04/11/2026, depois do horário de 51 h, da equipe de 5 e dos benefícios (refeição e PLR): caps. 4, 6 a 11 revistos; D65 resolvido; D64 revisto; D73 e D74 novos. Anterior: 04/11/2026, TMin v25, depois dos comentários do autor no v24 (cesta com hambúrguer, R06 com 13 casas, renda por RM no cap. 5, matriz com renda por bairro, 5.4 cortado, Tabela 8.1 refeita): caps. 4 a 11 revistos; D66 revisto; D67 a D71 novos. Anterior: 04/11/2026, depois da nova equipe (5 empregados em escala 5x2 e o sócio no caixa), dos sanitários do B5 e das obrigações trabalhistas, de saúde e segurança e do consumidor no Quadro 8.1: caps. 4, 7, 8, 9, 10 e 11 revistos; D33 resolvido; D38 revisto; D64 a D66 novos (equipe de 6 e TMin v24). Anterior: 03/11/2026, TMin v21, depois da conclusão da codificação do B2 (grade de 22 temas; recodificação cega com kappa de 0,84) e da escrita do 6.1, 6.2, 6.5 e 6.6 (demanda vinda do cap. 9). Caps. 3, 4, 5, 6, 7, 9 e 11 revistos; D26, D27 e D47 resolvidos; D04, D54 e D57 revistos; D58 a D60 e C21 novos.
 
 Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diverge ou se repete. Sugestão. Nos cortes, o ganho estimado em palavras (350 palavras ≈ 1 página).
 
@@ -20,13 +20,16 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
-**D64 — Dias com dois instrutores (04/11/2026).** Cap. 7 (7.5: teto de 2 mesas por instrutor e 3 pessoas no salão) × escala do Quadro 7.2. Na terça, na quarta e no domingo, o salão tem 2 instrutores e o sócio; no intervalo de cada um, fica com 1 instrutor e o sócio, teto de 4 mesas, e no domingo de folga do atendente (1 a cada 4 semanas) com 1 instrutor e o sócio o dia todo. O 7.5 declara a exceção; a demanda provável ocupa 3,2 mesas no pico, mas a otimista passa de 4. Sugestão: manter declarado ou cobrir os intervalos com intermitente (R$ 1.066 por mês; VPL de R$ 615 mil, contra R$ 701 mil).
+**D73 — Terça com um só cozinheiro (04/11/2026).** Cap. 7 (7.5: 2 cozinheiros de quarta a sábado, 1 na terça e no domingo) × proposta de valor do cap. 6 (6.1: a cozinha serve sem parar a partida). Na terça, o intervalo de 1 h do único cozinheiro para a cozinha, e o 7.5 diz que ela serve só itens prontos nessa hora, ainda [pendente: decisão do autor] (L19). Sugestão: decidir L19; com (b), o turno de 6 h na terça repete a regra do domingo.
+
+**D74 — Benefícios citados com normas a conferir (04/11/2026).** Cap. 7 (7.5: refeição sem natureza salarial, CLT art. 458, § 2º; PLR pela Lei n. 10.101/2000, arts. 2º e 3º) e cap. 8 (Quadro 8.1, linha de jornada e remuneração) citam normas ainda [AV]. O custo da refeição (C14, R$ 12) é N6. Sugestão: conferir as normas no texto legal e cotar a refeição pelo CMV do cardápio.
+
+**D64 — Dias com dois instrutores (04/11/2026).** Cap. 7 (7.5: teto de 2 mesas por instrutor e 3 pessoas no salão) × escala do Quadro 7.2. Na terça, na quarta e no domingo, o salão tem 2 instrutores e o sócio; no intervalo de cada um, fica com 1 instrutor e o sócio, teto de 4 mesas, e no domingo de folga do atendente (1 a cada 4 semanas) com 1 instrutor e o sócio o dia todo. O 7.5 declara a exceção; a demanda provável ocupa 3,2 mesas no pico, mas a otimista passa de 4. Decidido em L18: manter declarado no 7.5 (escala de 04/11: 3 instrutores de quinta a sábado e 2 nos demais dias).
 
 **D66 — TMin v26 no teto de 90 páginas (04/11/2026).** O texto termina na p. 90, exatamente o teto (`_instrucoes/1_estrutura.md`), depois dos cortes de roteiro de capítulo (C18 em parte), da Tabela 6.1 no Apêndice A (agora Tabela A.2) e de frases de apoio nos caps. 6, 8 e 9. Qualquer acréscimo passa do limite; os cortes do C21 (cap. 6, restante) e dos apêndices (L5 e L6) devolvem margem.
 
 **D68 — CMV do setor de duas edições da PAS (04/11/2026).** Cap. 9 (Tabela 9.5, C01) e cap. 10 (Tabela 10.2) usam 29,6% (PAS 2023); o 9.6 compara pessoal e aluguel com a PAS 2024 (26,8% de CMV nessa edição). Sugestão: usar a PAS 2024 em todos os pontos.
 
-**D65 — Receita da Tabela 8.1 × modelo do cap. 9 (04/11/2026).** Cap. 8 (Tabela 8.1: receita bruta de R$ 661.655,03 no ano maduro) × cap. 9 (Tabela 9.3: R$ 916.823 a partir do ano 2). A Tabela 8.1 compara os regimes com a receita de uma versão anterior do modelo; só a linha da contribuição patronal foi refeita, com a nova folha. Sugestão: refazer a Tabela 8.1 com a receita e a folha do modelo atual, ou gerá-la pelo `gerar_modelo_financeiro.py`.
 
 **D61 — Critério do B5 × coletas de 03/11 (03/11/2026).** Cap. 3 (3.2.4: "os cinco primeiros anúncios de cada busca, na ordem do site") × dados do cap. 9 (Tabela 9.1). As exportações de 03/11 01:11 não têm a posição na busca (o coletor ordenava por preço); o build usa, nelas, até 5 ofertas por site espaçadas na ordem de preço. O texto descreve o critério, e os números só o seguem depois da recoleta com o coletor 2026.11.03-8 (pendências, B5).
 
@@ -149,6 +152,8 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 **C15 — Matriz de evidências no corpo do cap. 3 (3.6).** O cap. 3 fecha em cerca de 10,2 páginas, acima do teto de 10. A matriz (Quadro 3.5, meia página) pode ir para apêndice, com uma frase no 3.6, como a P4.2 permite. Ganho: cerca de 175 palavras.
 
 ## Baixo ganho
+
+**C22 — Ajuste do horário (R19) explicado três vezes (04/11/2026).** A cobertura de 84,5% e 77,0% e a razão de 1,10 aparecem no 6.6, no 7.1 e no 9.2. Sugestão: explicar no 6.6 e só citar a premissa no 7.1 e no 9.2.
 
 **C20 — *Competitive socialising* definido duas vezes (01/11/2026; decidido em 02/11).** Cap. 1 (parágrafo revisado com "*") e cap. 2 (2.1, parágrafo com "*", com a definição completa; antes na 2.2). O autor decidiu que a definição fica no cap. 2: sai da introdução quando o início do cap. 1 for reescrito, depois dos caps. 2 e 3. Ganho: cerca de 40 palavras.
 

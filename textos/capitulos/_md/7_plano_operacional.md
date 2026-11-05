@@ -10,7 +10,7 @@ O salão de jogos recebe 6 mesas, de 4 a 6 lugares, com cerca de 30 assentos. O 
 
 ## 7.2 CAPACIDADE INSTALADA
 
-O horário segue uma regra simples: as 8 horas contínuas com mais luderias abertas em cada dia da semana, pelo horário publicado no Google Maps por 49 concorrentes do B1 (out/2026). Pela regra, a luderia abre de terça a sexta das 15h às 23h e no sábado e no domingo das 14h às 22h, 48 horas por semana. A segunda fica fechada: é o dia em que mais concorrentes fecham (71% deles). O horário deixa de fora as horas de menor movimento das concorrentes: de terça a sexta, no máximo 18 das 49 casas estão abertas antes das 15h; no domingo, só 7 ficam abertas depois das 22h (B1). A equipe fica nas horas de maior demanda.
+A luderia abre de terça a sábado das 14h às 23h e no domingo das 14h às 20h, 51 horas por semana. A segunda fica fechada: é o dia em que mais concorrentes fecham (71% deles). O horário cobre o pico de cada dia, pelo horário publicado no Google Maps por 54 concorrentes do B1 (out/2026): 53 casas abertas às 18h e às 19h de quinta e sexta, 49 às 18h de sábado e 39 às 17h de domingo. O domingo fecha mais cedo para caber num turno de 6 horas, com intervalo de 15 minutos (CLT, art. 71, § 1º), o que permite um só cozinheiro sem parar a cozinha. O custo é a perda do fim de tarde: às 20h de domingo, 32 casas ainda estão abertas, e, às 21h, 25. Por isso, o horário cobre 85% das casas abertas no dia útil e 77% no fim de semana (B1; decisão do autor, 04/11/2026).
 
 **Quadro 7.1 – Capacidade instalada e demanda provável**
 
@@ -19,15 +19,15 @@ O horário segue uma regra simples: as 8 horas contínuas com mais luderias aber
 | Mesas no salão | 6 | Maior ocupação das visitas do B3 (R01) |
 | Pessoas por grupo de mesa | 3,6 | B3, média das quatro visitas (R02) |
 | Permanência média | 109 min | B3, média das quatro visitas (R03) |
-| Horas abertas por semana | 48 h: 24 h de terça a quinta e 24 h de sexta a domingo | 8 h contínuas com mais concorrentes abertos, B1 (R13, R14) |
+| Horas abertas por semana | 51 h: 27 h de terça a quinta e 24 h de sexta a domingo | Decisão do autor; pico de cada dia, B1 (R13, R14) |
 | Circulação no pico | 4,13 a 11,43 pessoas por hora; 6,40 no provável | NFC-e e visitas do B3 (R04) |
-| Horas de pico equivalentes | 6,84 por dia de fim de semana | Concorrentes abertos em cada hora, B1 (R15) |
-| Capacidade máxima | 95 pessoas por dia aberto | Todas as mesas ocupadas em todas as horas abertas |
-| Demanda provável no ano maduro | 36 pessoas por dia aberto | 6,40 pessoas por hora × 6,84 horas no fim de semana e 65,5% disso no dia útil (R04, R05, R15) |
+| Horas de pico equivalentes | 6,77 por dia de fim de semana; 1,10 vez isso no dia útil | Concorrentes abertos em cada hora, B1 (R15, R19) |
+| Capacidade máxima | 101 pessoas por dia aberto | Todas as mesas ocupadas em todas as horas abertas |
+| Demanda provável no ano maduro | 37 pessoas por dia aberto | 6,40 pessoas por hora × 6,77 horas no fim de semana; no dia útil, 65,5% disso, com o ajuste do horário (R04, R05, R15, R19) |
 
 Fonte: elaborado pelo próprio autor, com base nos Blocos B1 (10/2026) e B3 (10/10/2026 a 30/10/2026), em ANR (2026a; 2026b) e no modelo financeiro (Apêndice E).
 
-A demanda provável usa 38% da capacidade (Quadro 7.1). No pico, a circulação fica limitada pelo salão: com grupos de 3,6 pessoas e permanência de 109 minutos, as 6 mesas comportam até 11,9 pessoas por hora. A circulação provável, de 6,40, ocupa 3,2 mesas no pico; a otimista, de 11,43, fica perto do teto. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto. Teto abaixo de 6 mesas exclui o imóvel.
+A demanda provável usa 37% da capacidade (Quadro 7.1). No pico, a circulação fica limitada pelo salão: com grupos de 3,6 pessoas e permanência de 109 minutos, as 6 mesas comportam até 11,9 pessoas por hora. A circulação provável, de 6,40, ocupa 3,2 mesas no pico; a otimista, de 11,43, fica perto do teto. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto. Teto abaixo de 6 mesas exclui o imóvel.
 
 ## 7.3 PROCESSOS OPERACIONAIS
 
@@ -51,59 +51,61 @@ A conferência de peças acontece na devolução de cada jogo, pelo instrutor. J
 
 ## 7.5 ESTRUTURA ORGANIZACIONAL E PESSOAL
 
-A equipe é dimensionada pelo fluxo medido, não pelo número de funções. Na noite mais cheia observada, o salão teve 32 pessoas sentadas no pico e 9 grupos de mesa ao longo da visita (B3, Bela Vista, 10/10/2026). Nas demais noites, o pico foi de 12 a 31 pessoas. No ano maduro provável, a luderia recebe 36 pessoas por dia aberto, com a maior parte de sexta a domingo.
+A equipe é dimensionada pelo fluxo medido, não pelo número de funções. Na noite mais cheia observada, o salão teve 32 pessoas sentadas no pico e 9 grupos de mesa ao longo da visita (B3, Bela Vista, 10/10/2026). Nas demais noites, o pico foi de 12 a 31 pessoas. No ano maduro provável, a luderia recebe 37 pessoas por dia aberto, com a maior parte de sexta a domingo.
 
-Esse fluxo cabe numa equipe de 6 empregados e o sócio (Quadro 7.2). O atendimento e a comida são os temas mais citados nas avaliações dos concorrentes, em 55,6% e 34,1% delas (B2, seção 6.1); por isso, a jornada é menor que a da CLT, sem redução de salário, para a equipe trabalhar descansada. Cada turno tem 7 horas e 1 hora de intervalo no meio, de 3 a 4 horas depois da entrada (CLT, art. 71). Os atendentes trabalham 5 dias, 35 horas por semana; os cozinheiros, 4 dias, 28 horas. A segunda, com a casa fechada, é folga de todos. Os atendentes folgam também na terça, na quarta ou no domingo, e os cozinheiros, em qualquer dia aberto. Cada empregado folga ao menos um domingo por mês, e as duas atendentes, domingo sim, domingo não (CLT, art. 386).
+Esse fluxo cabe numa equipe de 5 empregados e o sócio (Quadro 7.2). Todos trabalham 5 dias por semana. De terça a sábado, o turno vai da abertura ao fechamento: 8 horas de trabalho e 1 hora de intervalo no meio (CLT, art. 71). No domingo, o turno tem 6 horas e 15 minutos de intervalo. A semana fica entre 38 e 40 horas, abaixo das 44 horas da CLT. A segunda, com a casa fechada, é folga de todos. Os atendentes folgam também na terça, na quarta ou no domingo; os cozinheiros, em semanas alternadas, na terça ou no domingo. Cada empregado folga ao menos um domingo por mês, e as duas atendentes, domingo sim, domingo não (CLT, art. 386); os cozinheiros, pela escala, também.
 
-O salão tem 3 instrutores de quinta a sábado e 2 nos demais dias, e o sócio fica no salão e no caixa em todo o horário aberto. O teto é de 2 mesas, ou cerca de 10 clientes, por instrutor no pico: a maior carga vista nas visitas. Com 6 mesas e 3 pessoas no salão, a carga fica nesse teto. Na terça, na quarta e no domingo, os dois instrutores entram com a abertura e fecham a casa, e, nos intervalos de cada um, o salão fica com um instrutor e o sócio: teto de 4 mesas, nos dias de menor movimento. No domingo em que o atendente folga, uma vez a cada 4 semanas, o salão fica com uma atendente e o sócio. A cozinha tem 2 cozinheiros-chefes por dia, com intervalos alternados, e os dois no pico; recebe o último pedido 1 hora antes do fechamento e fecha 30 minutos antes, para a limpeza. A gestão, as compras e a cobertura de imprevistos ficam com o sócio (pró-labore, C08).
+O salão tem 3 instrutores de quinta a sábado e 2 nos demais dias, e o sócio fica no salão e no caixa em todo o horário aberto. O teto é de 2 mesas, ou cerca de 10 clientes, por instrutor no pico: a maior carga vista nas visitas. Com 6 mesas e 3 pessoas no salão, a carga fica nesse teto. Na terça, na quarta e no domingo, os dois instrutores entram com a abertura e fecham a casa, e, nos intervalos de cada um, o salão fica com um instrutor e o sócio: teto de 4 mesas, nos dias de menor movimento. No domingo em que o atendente folga, uma vez a cada 4 semanas, o salão fica com uma atendente e o sócio. A cozinha tem 2 cozinheiros-chefes de quarta a sábado, com intervalos alternados, e os dois no pico. Na terça e no domingo, os dias de menor movimento, fica com um. No domingo, o intervalo de 15 minutos quase não para a cozinha. Na terça, o intervalo de 1 hora fica antes do pico, e, nessa hora, a cozinha só serve itens prontos [pendente: decisão do autor]. A cozinha recebe o último pedido 1 hora antes do fechamento e fecha 30 minutos antes, para a limpeza. A gestão, as compras e a cobertura de imprevistos ficam com o sócio (pró-labore, C08).
 
 **Quadro 7.2 – Equipe proposta**
 
 | Função | Pessoas | Escala | Salário de admissão (R$) | Remuneração com adicionais (R$) |
 |---|---|---|---|---|
-| Atendente e instrutor de jogos | 3 | 5 dias de 7 h (35 h), com 1 h de intervalo. Quinta e sexta: um das 14h às 22h e dois das 15h às 23h; sábado, uma hora antes. Terça, quarta e domingo: dois, da abertura ao fechamento. Folgas na segunda e na terça, na quarta ou no domingo | 1.653,75 | 1.806,80 |
-| Cozinheiro-chefe | 3 | 4 dias de 7 h (28 h), com 1 h de intervalo: um das 14h às 22h e um das 15h às 23h (no fim de semana, uma hora antes). Folgas na segunda e em dois dias abertos | 1.700,00 | 1.814,86 |
-| Sócio (caixa, gestão e mesas) | 1 | Todo o horário aberto: terça a sexta das 15h às 23h, sábado e domingo das 14h às 22h | Pró-labore (C08) | n.a. |
-| Total (folha mensal) | 6 empregados | n.a. | 10.061,25 | 10.864,98 |
+| Atendente e instrutor de jogos | 3 | 5 dias, da abertura ao fechamento: 8 h de terça a sábado, com 1 h de intervalo, e 6 h no domingo, com 15 min (38 a 40 h por semana). Três de quinta a sábado e dois nos demais dias. Folgas na segunda e na terça, na quarta ou no domingo | 1.653,75 | 1.836,56 |
+| Cozinheiro-chefe | 2 | 5 dias, no mesmo turno dos atendentes (38 a 40 h por semana). Dois de quarta a sábado e um na terça e no domingo. Folgas na segunda e, em semanas alternadas, na terça ou no domingo | 1.700,00 | 1.889,68 |
+| Sócio (caixa, gestão e mesas) | 1 | Todo o horário aberto: terça a sábado das 14h às 23h, domingo das 14h às 20h | Pró-labore (C08) | n.a. |
+| Total (folha mensal) | 5 empregados | n.a. | 8.361,25 | 9.289,03 |
 
 Fonte: elaborado pelo próprio autor, com base nos Blocos B2 (1.628 avaliações) e B3 (10/10/2026 a 30/10/2026) e no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana; recreador em todas as atividades e cozinheiro geral na CNAE 56).
 
-Nota: remuneração por pessoa: salário, adicional noturno de 20% e hora noturna reduzida das 22h às 23h (CLT, art. 73), repouso sobre esses adicionais e feriados trabalhados em dobro (Lei n. 605/1949, art. 9º). O domingo trabalhado com folga na semana não tem adicional (TST, Súmula 146). Com encargos, provisões e vale-transporte de 42,4% (premissa C07), o custo vai a R$ 15.473,83 por mês (Tabela 9.2). Os salários ficam acima do piso de R$ 1.625,09 da convenção coletiva dos bares e restaurantes de Salvador (SHRBS e Sindbares, 2024/2026), que pode fixar adicional noturno maior que o da CLT [AV]. n.a.: não se aplica.
+Nota: remuneração por pessoa: salário, adicional noturno de 20% e hora noturna reduzida das 22h às 23h (CLT, art. 73), repouso sobre esses adicionais e feriados trabalhados em dobro (Lei n. 605/1949, art. 9º). O domingo trabalhado com folga na semana não tem adicional (TST, Súmula 146). Com encargos, provisões e vale-transporte de 43,6% (premissa C07), o custo vai a R$ 13.335,89 por mês (Tabela 9.2). Os salários ficam acima do piso de R$ 1.625,09 da convenção coletiva dos bares e restaurantes de Salvador (SHRBS e Sindbares, 2024/2026), que pode fixar adicional noturno maior que o da CLT [AV]. n.a.: não se aplica.
 
-Com a jornada menor, o custo de cada empregado cai, sem redução de salário. O cozinheiro trabalha 4 dias por semana em vez de 5: recebe menos vale-transporte, faz menos noites depois das 22h e trabalha em menos feriados, e custa R$ 113,27 a menos por mês. O instrutor, que segue com 5 dias, faz menos horas noturnas e custa R$ 9,84 a menos (Tabela 7.1).
+Cada empregado fica até o fechamento de terça a sábado e faz, em média, 4,5 noites por semana depois das 22h. O cozinheiro custa R$ 2.708,57 por mês, e o instrutor, R$ 2.639,58: a diferença vem do salário (Tabela 7.1).
 
 **Tabela 7.1 – Composição do custo mensal por empregado, cenário provável (R$)**
 
 | Conta | Instrutor de jogos | Cozinheiro-chefe |
 |---|---|---|
 | Salário de admissão | 1.653,75 | 1.700,00 |
-| (+) Adicional noturno (20%) | 21,91 | 14,08 |
-| (+) Hora noturna reduzida (hora extra de 50%) | 28,18 | 18,10 |
-| (+) Repouso semanal sobre os adicionais | 11,09 | 7,12 |
-| (+) Feriados trabalhados em dobro | 91,87 | 75,56 |
-| **(=) Remuneração** | 1.806,80 | 1.814,86 |
-| (+) FGTS (8%) | 144,54 | 145,19 |
-| (+) 13º salário (1/12) | 150,57 | 151,24 |
-| (+) Férias com 1/3 (1/12 × 4/3) | 200,76 | 201,65 |
-| (+) FGTS sobre 13º e férias | 28,10 | 28,23 |
-| **(=) Custo com encargos sobre a remuneração** | 2.330,77 | 2.341,17 |
+| (+) Adicional noturno (20%) | 32,57 | 34,12 |
+| (+) Hora noturna reduzida (hora extra de 50%) | 41,88 | 43,86 |
+| (+) Repouso semanal sobre os adicionais | 16,48 | 17,26 |
+| (+) Feriados trabalhados em dobro | 91,88 | 94,44 |
+| **(=) Remuneração** | 1.836,56 | 1.889,68 |
+| (+) FGTS (8%) | 146,92 | 151,17 |
+| (+) 13º salário (1/12) | 153,05 | 157,47 |
+| (+) Férias com 1/3 (1/12 × 4/3) | 204,06 | 209,96 |
+| (+) FGTS sobre 13º e férias | 28,57 | 29,40 |
+| **(=) Custo com encargos sobre a remuneração** | 2.369,16 | 2.437,69 |
 | (+) Aviso prévio indenizado (provisão: 42 dias em 60 meses) | 38,59 | 39,67 |
 | (+) FGTS sobre o aviso prévio | 3,09 | 3,17 |
-| (+) Multa de 40% do FGTS (provisão) | 70,29 | 70,64 |
-| **(=) Custo com provisões de rescisão** | 2.442,74 | 2.454,65 |
+| (+) Multa de 40% do FGTS (provisão) | 71,43 | 73,50 |
+| **(=) Custo com provisões de rescisão** | 2.482,26 | 2.554,03 |
 | (+) Contribuição patronal ao INSS, RAT e terceiros (no DAS) | 0,00 | 0,00 |
-| (+) Vale-transporte (parte do empregador) | 157,32 | 103,23 |
-| **(=) Custo mensal por empregado** | 2.600,06 | 2.557,88 |
-| (×) Empregados no cargo | 3 | 3 |
-| **(=) Custo mensal do cargo** | 7.800,19 | 7.673,65 |
-| Custo mensal por empregado na jornada anterior, de 40 h em 5 dias | 2.609,90 | 2.671,15 |
-| **(=) Economia mensal por empregado com a nova jornada** | 9,84 | 113,27 |
+| (+) Vale-transporte (parte do empregador) | 157,32 | 154,54 |
+| **(=) Custo mensal por empregado** | 2.639,58 | 2.708,57 |
+| (×) Empregados no cargo | 3 | 2 |
+| **(=) Custo mensal do cargo** | 7.918,75 | 5.417,14 |
 
 Fonte: elaborado pelo próprio autor, com base no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana), na CLT, na Lei n. 605/1949, na Lei n. 7.418/1985 e na Lei n. 8.036/1990; modelo financeiro (Apêndice E).
 
-Nota: os dois cargos somam R$ 15.473,83 por mês, o pessoal da Tabela 9.2; diferença de R$ 0,01 por arredondamento. No Simples Nacional, a contribuição patronal fica no DAS (LC n. 123/2006, art. 13). Jornada anterior: 5 dias de 8 h, com o mesmo salário.
+Nota: os dois cargos somam R$ 13.335,89 por mês, o pessoal da Tabela 9.2. No Simples Nacional, a contribuição patronal fica no DAS (LC n. 123/2006, art. 13).
 
-A folha com encargos fica em 20,6% da receita do ano maduro provável, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). O salário de admissão do Novo CAGED tende a ficar abaixo do salário pago a quem já está no cargo; por isso, o capítulo 9 testa um acréscimo de até 11,4% sobre ele. A São Jogue opera com mais gente: de três a sete instrutores no salão nas visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
+Dois benefícios completam a remuneração, ambos por decisão do autor (04/11/2026). O primeiro é a refeição no local: uma por turno, feita pela cozinha da casa, com custo de insumos de R$ 12,00 (premissa C14, N6, faixa de R$ 9,00 a R$ 15,00). São 109 refeições por mês, R$ 1.304,40 (C15). A cozinha e os insumos já existem, e uma refeição pronta vale mais para o empregado que o vale-alimentação, que ainda exige preparo em casa. Fornecida pelo empregador para o trabalho, a refeição não tem natureza salarial e não gera encargos (CLT, art. 458, § 2º) [AV].
+
+O segundo é a participação nos lucros ou resultados (PLR): 5% do EBITDA do ano, paga só em ano com EBITDA positivo (premissa C16). A PLR não custa nada em ano sem lucro e, paga em no máximo duas parcelas por ano, não gera encargos (Lei n. 10.101/2000, art. 3º) [AV]. O rateio é por pontos, com metas da área: o cozinheiro recebe mais pontos que o instrutor, porque a comida é o segundo tema mais citado nas avaliações (B2), e as metas da cozinha (tempo de saída dos pratos, CMV) diferem das do salão (avaliações, aluguéis de jogos). No ano maduro provável, a PLR soma R$ 10.276 por ano, cerca de R$ 2 mil por empregado. As regras ficam num acordo com a comissão dos empregados, com um representante do sindicato (art. 2º) [AV].
+
+A folha com encargos fica em 17,3% da receita do ano maduro provável, e em 19,0% com as refeições, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). O salário de admissão do Novo CAGED tende a ficar abaixo do salário pago a quem já está no cargo; por isso, o capítulo 9 testa um acréscimo de até 11,4% sobre ele. A São Jogue opera com mais gente: de três a sete instrutores no salão nas visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
 
 Contratar instrutores como jovens aprendizes reduz pouco o custo. Os salários já estão no piso, e o aprendiz trabalha no máximo 6 horas por dia, o que exige mais pessoas para cobrir as mesmas horas; menores de 18 anos não podem trabalhar depois das 22h (CLT, art. 404 e art. 432). O estágio exige relação com o curso do estudante (Lei n. 11.788/2008) e não cabe na função de atendimento. As duas formas ficam fora do provável. Fora da equipe fixa, o contador é terceirizado (R$ 1.200,00 por mês, C11). A limpeza diária entra nas tarefas de abertura e fechamento da equipe.
 
