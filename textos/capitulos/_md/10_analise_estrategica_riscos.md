@@ -15,7 +15,7 @@ A luderia entra num mercado com uma referência forte e com margem folgada no pr
 |  | Instrutor dedicado ao salão em todas as horas abertas, com no máximo 2 mesas por instrutor no pico | Seções 7.3 e 7.5 |
 |  | Desenho enxuto: 6 mesas, 51 horas por semana que cobrem o pico de cada dia, equipe de 5 e investimento por etapas, pago com o caixa gerado | Seções 7.2 e 10.4 |
 | Fraquezas | Aluguel com condomínio de 11,3% da receita, contra 4,0% no setor | Seção 9.6; IBGE, PAS 2024 |
-|  | Viabilidade concentrada na circulação no pico e no gasto por pessoa, com ruptura 19% abaixo do provável | Seções 9.4 e 9.5 |
+|  | Viabilidade concentrada na circulação no pico e no gasto por pessoa, com ruptura 22% abaixo do provável | Seções 9.4 e 9.5 |
 |  | Circulação de dia útil sem medida própria: razão de restaurantes do Rio de Janeiro e de São Paulo (N4) | Seções 9.1 e 11.2 |
 |  | Investimento orçado sem projeto do ponto: quantidades da reforma, do mobiliário e da cozinha em N6 | Seção 9.2 |
 |  | Marca nova contra uma rede com duas unidades | Seção 5.3 |

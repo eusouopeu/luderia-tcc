@@ -14,7 +14,7 @@ O objetivo (iv) foi dimensionar a operação e os requisitos jurídicos. O salã
 
 O objetivo (v) foi projetar investimento, receitas, custos e indicadores com premissas rastreáveis. O investimento provável é de R$ 312 mil, e as 46 premissas do modelo têm faixa, fonte e nível de evidência (capítulo 9).
 
-O objetivo (vi) foi identificar as premissas críticas e os pontos de ruptura. São cinco: a circulação no pico, o gasto por pessoa, a TMA, a variação anual da demanda e o CMV. Só as duas primeiras têm ruptura dentro da faixa, 19% abaixo do provável, e as duas têm dado próprio (capítulo 10). A premissa de evidência mais fraca é a circulação de dia útil, que vem de restaurantes, mas pesa pouco no VPL.
+O objetivo (vi) foi identificar as premissas críticas e os pontos de ruptura. São cinco: a circulação no pico, o gasto por pessoa, a TMA, a variação anual da demanda e o CMV. Só as duas primeiras têm ruptura dentro da faixa, 22% abaixo do provável, e as duas têm dado próprio (capítulo 10). A premissa de evidência mais fraca é a circulação de dia útil, que vem de restaurantes, mas pesa pouco no VPL.
 
 O objetivo (vii) foi propor contingência e validações. O plano define duas validações antes de investir, quatro etapas de expansão com gatilho e seis gatilhos de perda máxima, em ordem de análise (seção 10.4).
 

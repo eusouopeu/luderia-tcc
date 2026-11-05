@@ -84,6 +84,7 @@ SIGLAS = {
     "PAS": "Pesquisa Anual de Serviços",
     "PESTEL": "Fatores políticos, econômicos, sociais, tecnológicos, ambientais e legais",
     "PIS": "Programa de Integração Social",
+    "PLR": "Participação nos lucros ou resultados",
     "PNAD": "Pesquisa Nacional por Amostra de Domicílios",
     "POF": "Pesquisa de Orçamentos Familiares",
     "PRC": "Análise do contraste da penalidade e da recompensa",
@@ -96,6 +97,7 @@ SIGLAS = {
     "SWOT": "Forças, fraquezas, oportunidades e ameaças (Strengths, Weaknesses, Opportunities, Threats)",
     "TIR": "Taxa interna de retorno",
     "TMA": "Taxa mínima de atratividade",
+    "VLT": "Veículo leve sobre trilhos",
     "VPL": "Valor presente líquido",
 }
 
