@@ -82,7 +82,7 @@ Abrir pelo efeito no plano: que decisão, premissa ou número do TMin muda; depo
 ## Princípios
 
 - **Escrita:** skill `meu-estilo-escrita` para qualquer prosa do TCC, mais as regras de escrita e o vocabulário controlado de `_instrucoes/1b_escrita.md` (P5 e P6).
-- **Extensão:** no máximo 100 páginas, com teto por capítulo em `_instrucoes/1_estrutura.md`. Testes de hipótese H1–H9 são extra, só se sobrar tempo; o Monte Carlo está no Apêndice G.
+- **Extensão:** no máximo 120 páginas, com teto por capítulo em `_instrucoes/1_estrutura.md`. Testes de hipótese H1–H9 são extra, só se sobrar tempo; o Monte Carlo está no Apêndice G.
 - **Tabela agregada fecha com o total.** Cada unidade (place_id, avaliação, jogo) conta em **um único grupo**, atribuído por atributo próprio (ex.: UF do endereço), nunca pelo contexto da coleta. Antes de entregar, somar as linhas e comparar com o total (diferença zero); vale também ao rodar de novo um script existente. Contagem não exclusiva por desenho fica declarada no nome da coluna e na docstring, sem total como soma.
 - **Precedência dos caps. 6 e 8:** em divergência entre capítulos, valem o Plano de Marketing (cap. 6) e os Aspectos Jurídicos (cap. 8), que moldam o negócio; os demais (7, 9 e os que dependem deles) só o tornam viável. Toda mudança nos caps. 6 ou 8 gera alerta imediato ao autor sobre os capítulos a ajustar. Detalhes em `_instrucoes/1a_principios.md` (P3).
 - **Decisão antes de descrição:** todo resultado responde "que decisão do plano isso muda?". Se nenhuma, vai para apêndice ou sai.
