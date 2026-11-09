@@ -4,7 +4,7 @@ O plano financeiro converte as decisões dos capítulos 5 a 8 em receitas, custo
 
 A receita nasce do número de pessoas atendidas, estimado na seção 6.6 a partir da circulação medida no pico da São Jogue (B3), levada ao dia pelo horário dos concorrentes (B1) e ao dia útil pelo gasto com cartão em restaurantes (ANR, 2026a; 2026b). No mês maduro do cenário provável, a luderia recebe 43,3 pessoas por dia de fim de semana e 31,2 por dia útil, ou 968 pessoas por mês.
 
-Cada pessoa gasta, em média, uma cesta de consumo: a taxa de entrada, uma bebida e o hambúrguer não vegetariano mais barato do cardápio. O gasto provável é o declarado pelos avaliadores no Google Maps (B2), em média, nos 13 concorrentes com taxa de entrada conhecida: R$ 78,68 por pessoa (seção 6.3). A taxa de entrada responde por 28,4% da cesta nos 10 desses concorrentes com cesta completa; o restante é alimentos e bebidas (A&B). Somado o aluguel de jogos para levar para casa, a receita por pessoa é:
+Cada pessoa gasta, em média, uma cesta de consumo: a taxa de entrada, uma bebida e o hambúrguer não vegetariano mais barato do cardápio. O gasto provável é o declarado pelos avaliadores no Google Maps (B2), em média, nos 13 concorrentes com taxa de entrada conhecida: R$ 78,68 por pessoa (seção 6.3). Desse gasto, R$ 18,68 são a taxa de entrada adotada, e R$ 60,00, alimentos e bebidas (A&B). Somado o aluguel de jogos para levar para casa, a receita por pessoa é:
 
 receita por pessoa = gasto por pessoa + aluguel de jogos (2)
 
@@ -17,13 +17,13 @@ O Quadro 9.1 organiza essas contas como uma árvore de direcionadores: cada linh
 | Direcionador | Cálculo | Premissas |
 |---|---|---|
 | Pessoas por mês | circulação no pico × horas de pico equivalentes × dias abertos × fator de rampa × semanas por mês; o dia útil recebe a razão dia útil ÷ fim de semana e o ajuste do horário | R04, R05, R11, R12, R15 a R17, R19, M02 |
-| Receita de taxa de entrada | pessoas × gasto por pessoa × parcela da taxa de entrada | R06, R07 |
-| Receita de A&B | pessoas × gasto por pessoa × (1 − parcela da taxa de entrada) | R06, R07 |
+| Receita de taxa de entrada | pessoas × taxa de entrada | R07 |
+| Receita de A&B | pessoas × (gasto por pessoa − taxa de entrada) | R06, R07 |
 | Receita de aluguel de jogos | aluguéis por mês × preço médio × fator de rampa | R09, R10 |
 | Custos variáveis | Simples Nacional sobre a receita; CMV sobre o A&B; taxa de cartão | C01, C02, aba simples |
 | Custos fixos | aluguel e condomínio; pessoal com encargos; pró-labore; utilidades; marketing; contabilidade; sistemas; reposição do acervo; refeição da equipe | C03 a C15 |
 | Participação nos lucros | parcela do EBITDA anual, só quando positivo | C16 |
-| Investimento | reforma; mobiliário; cozinha e bar; caixa; acervo; pré-operacional; caução; capital de giro | I01 a I08 |
+| Investimento | reforma; mobiliário; cozinha e bar; caixa; acervo; pré-operacional; itens sem cotação; caução; capital de giro | I01 a I08, I10 |
 
 Fonte: elaborado pelo próprio autor.
 
@@ -33,32 +33,32 @@ Quatro elementos ficam fora do modelo, cada um por um motivo. A inflação fica 
 
 ## 9.1 REGISTRO DE PREMISSAS
 
-Premissa é um valor que o modelo assume sobre o futuro, como o gasto por pessoa. O modelo tem 46 premissas, cada uma com três valores, um por cenário, além de fonte e nível de evidência (Apêndice E). O cenário provável usa o valor mais bem sustentado pelos dados; o pessimista e o otimista usam os extremos plausíveis da faixa. O Quadro 9.2 traz as dez premissas que mais movem o VPL entre os extremos da faixa, na ordem do tornado (seção 9.5).
+Premissa é um valor que o modelo assume sobre o futuro, como o gasto por pessoa. O modelo tem 47 premissas, cada uma com três valores, um por cenário, além de fonte e nível de evidência (Apêndice E). O cenário provável usa o valor mais bem sustentado pelos dados; o pessimista e o otimista usam os extremos plausíveis da faixa. O Quadro 9.2 traz as dez premissas que mais movem o VPL entre os extremos da faixa, na ordem do tornado (seção 9.5).
 
 **Quadro 9.2 – Premissas de maior impacto no VPL**
 
 | ID | Premissa | Pessimista | Provável | Otimista | Amplitude no VPL (R$) | Nível |
 |---|---|---|---|---|---|---|
-| R04 | Circulação no pico de fim de semana (pessoas por hora) | 4,13 | 6,40 | 11,43 | 3.940.856 | N5 |
-| R06 | Gasto por pessoa (R$) | 40,00 | 78,68 | 109,84 | 2.809.953 | N3 |
-| R18 | Variação anual da demanda a partir do ano 3 (% ao ano) | -5% | 0% | 2% | 503.365 | N6 |
-| M01 | Taxa mínima de atratividade real (% ao ano) | 18% | 15% | 12% | 458.223 | N2 + N6 |
-| C01 | CMV de alimentos e bebidas (% do A&B) | 35% | 30% | 26% | 362.330 | N2 |
-| C03 | Área do ponto (m²) | 150 | 130 | 110 | 257.710 | N6 |
-| C04 | Aluguel comercial (R$ por m² ao mês) | 64,35 | 54,15 | 45,00 | 236.244 | N2 |
-| C09 | Utilidades (R$ por mês) | 6.000,00 | 4.500,00 | 3.500,00 | 192.514 | N6 |
-| R05 | Circulação de dia útil (% do fim de semana) | 61,9% | 65,5% | 69,2% | 167.574 | N4 |
-| C08 | Pró-labore (R$ por mês) | 4.000,00 | 3.000,00 | 2.000,00 | 154.011 | N6 |
+| R04 | Circulação no pico de fim de semana (pessoas por hora) | 4,13 | 6,40 | 11,43 | 3.789.660 | N5 |
+| R06 | Gasto por pessoa (R$) | 40,00 | 78,68 | 109,84 | 2.452.551 | N3 |
+| R18 | Variação anual da demanda a partir do ano 3 (% ao ano) | -5% | 0% | 2% | 494.411 | N6 |
+| M01 | Taxa mínima de atratividade real (% ao ano) | 18% | 15% | 12% | 409.716 | N2 + N6 |
+| C01 | CMV de alimentos e bebidas (% do A&B) | 35% | 30% | 26% | 385.742 | N2 |
+| C03 | Área do ponto (m²) | 150 | 130 | 110 | 263.525 | N6 |
+| C04 | Aluguel comercial (R$ por m² ao mês) | 64,35 | 54,15 | 45,00 | 242.997 | N2 |
+| C09 | Utilidades (R$ por mês) | 6.000,00 | 4.500,00 | 3.500,00 | 195.000 | N6 |
+| R05 | Circulação de dia útil (% do fim de semana) | 61,9% | 65,5% | 69,2% | 164.540 | N4 |
+| C08 | Pró-labore (R$ por mês) | 4.000,00 | 3.000,00 | 2.000,00 | 156.000 | N6 |
 
 Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E), nos Blocos B1 a B4 (10/2026) e em ANR (2026a; 2026b).
 
-As premissas de demanda vêm da contagem direta na São Jogue (B3). Nas quatro noites, entraram de 4,03 a 11,43 pessoas por hora, com média de 6,40. A circulação provável é essa média, e a otimista, a maior visita. A circulação não é reduzida na proporção das mesas, de 10 na São Jogue para 6 no plano: a demanda vem do público, não do tamanho do salão, enquanto o salão não lota. Nas visitas, a São Jogue não lotou: a ocupação média das mesas foi de 30% a 67%. O salão de 6 mesas comporta até 11,9 pessoas por hora, com grupos de 3,6 pessoas e permanência média de 109 minutos.
+As premissas de demanda vêm da contagem direta na São Jogue (B3). Nas quatro noites, entraram de 4,03 a 11,43 pessoas por hora, com média simples de 6,40, em que cada visita pesa o mesmo (Tabela 3.1). A circulação provável é essa média, e a otimista, a maior visita. A média é puxada pela visita de 10/10, a única acima de 5,26: a mediana das quatro é de 5,08, e a média ponderada pelas horas, 74 pessoas em 10,92 horas, de 6,78. Com a mediana, o VPL fica negativo (−R$ 69 mil), porque ela fica abaixo da ruptura da seção 9.5; com a média ponderada, sobe para R$ 860 mil. A escolha da média simples segue o desenho das visitas, uma noite por unidade e por dia, mas a distância entre média e mediana mostra o quanto o provável depende de uma só noite. A circulação não é reduzida na proporção das mesas, de 10 na São Jogue para 6 no plano: a demanda vem do público, não do tamanho do salão, enquanto o salão não lota. Nas visitas, a São Jogue não lotou: a ocupação média das mesas foi de 30% a 67%. O salão de 6 mesas comporta até 11,9 pessoas por hora, com grupos de 3,6 pessoas e permanência média de 109 minutos.
 
-A circulação pessimista vem das notas fiscais (NFC-e) da São Jogue. A Bela Vista emitiu 30,5 notas por dia, e a Paralela, 16,1. Cada cliente recebe uma nota, mas a nota só sai quando o cliente pede: o número de notas é, portanto, um piso do número de clientes. O caminho inverso da equação 1 converte esse piso em circulação no pico, com as horas de pico equivalentes do horário da São Jogue, 7,21, e uma semana de 3 dias de fim de semana e 4 dias úteis. O resultado é de 5,42 pessoas por hora na Bela Vista e 2,85 na Paralela, com média de 4,13. As horas de pico equivalentes (R15) não variam entre os cenários, porque vêm do horário publicado dos concorrentes (N3). A razão entre o dia útil e o fim de semana (R05) usa o Rio de Janeiro no pessimista e São Paulo no otimista (N4). O dia útil recebe ainda o ajuste do horário (R19), porque o plano abre mais horas no dia útil que no fim de semana: o horário cobre 84,5% das casas abertas no dia útil e 77,0% no fim de semana (B1), razão de 1,10. Num horário que cobrisse os dois na mesma proporção, o ajuste seria 1,00.
+A circulação pessimista vem das notas fiscais (NFC-e) da São Jogue. A Bela Vista emitiu 30,5 notas por dia, e a Paralela, 16,1. A nota só sai quando o cliente pede, e o número de pessoas por nota não foi medido: uma nota pode cobrir um grupo inteiro ou uma só pessoa. As notas são, portanto, um piso das vendas, e não uma contagem de clientes. O modelo supõe uma nota por pessoa e usa o caminho inverso da equação 1 para converter as notas em circulação no pico, com as horas de pico equivalentes do horário da São Jogue, 7,21, e uma semana de 3 dias de fim de semana e 4 dias úteis. O resultado é de 5,42 pessoas por hora na Bela Vista e 2,85 na Paralela, com média de 4,13. O pessimista usa as notas, e não a visita de menor circulação (4,03), porque elas cobrem 19 dias e todas as horas abertas, e não só uma noite; os dois valores ficam próximos e abaixo da ruptura (5,21), o que explica o VPL negativo do pessimista. As horas de pico equivalentes (R15) não variam entre os cenários, porque vêm do horário publicado dos concorrentes (N3). A razão entre o dia útil e o fim de semana (R05) usa o Rio de Janeiro no pessimista e São Paulo no otimista (N4). O dia útil recebe ainda o ajuste do horário (R19), porque o plano abre mais horas no dia útil que no fim de semana: o horário cobre 84,5% das casas abertas no dia útil e 77,0% no fim de semana (B1), razão de 1,10. Num horário que cobrisse os dois na mesma proporção, o ajuste seria 1,00.
 
-Os preços vêm dos concorrentes (seção 6.3). A cesta de consumo de cada concorrente soma a taxa de entrada, a mediana das bebidas e o hambúrguer não vegetariano mais barato do cardápio, prato presente em quase todas as casas, o que torna as cestas comparáveis entre elas. Quando a taxa muda com o dia, entra a média das taxas, ponderada pelos dias em que cada uma vale. Nos 13 concorrentes com taxa de entrada conhecida e gasto declarado, o gasto médio é de R$ 78,68; nos 10 deles com cesta completa, a cesta média é de R$ 74,06: cada pessoa gasta pouco mais de uma cesta de consumo. O gasto pessimista é o do concorrente de menor gasto, R$ 40,00, e o otimista, o do de maior gasto, R$ 109,84. A taxa de entrada responde por 28,4% da cesta (R$ 21,01 de R$ 74,06), e essa parcela separa a receita de taxa da de A&B nos três cenários (R07). Com isso, o cenário muda o volume e o preço.
+Os preços vêm dos concorrentes (seção 6.3). A cesta de consumo de cada concorrente soma a taxa de entrada, a mediana das bebidas e o hambúrguer não vegetariano mais barato do cardápio, prato presente em quase todas as casas, o que torna as cestas comparáveis entre elas. Quando a taxa muda com o dia, entra a média das taxas, ponderada pelos dias em que cada uma vale. Nos 13 concorrentes com taxa de entrada conhecida e gasto declarado, o gasto médio é de R$ 78,68: média simples dos gastos das casas, cada uma pela média das declarações no ponto médio das faixas (seção 6.3). Nos 10 deles com cesta completa, a cesta média é de R$ 74,06: cada pessoa gasta pouco mais de uma cesta de consumo. O gasto pessimista é o do concorrente de menor gasto, R$ 40,00, e o otimista, o do de maior gasto, R$ 109,84. A taxa de entrada é a adotada na seção 6.3, R$ 18,68 nos três cenários (R07), e o restante do gasto é A&B. Com isso, o cenário muda o volume e o gasto em A&B.
 
-Do lado dos custos, o modelo usa bases públicas sempre que possível: o aluguel do FipeZap, os salários das medianas de admissão em Salvador no Novo CAGED e o custo das mercadorias vendidas (CMV) da PAS 2023. O CMV é o custo dos ingredientes e das bebidas que a casa revende, e fica em 30% da receita de A&B. O salário de admissão tende a ficar abaixo do pago a quem já está no cargo; por isso, o pessimista soma 11,4% aos salários, a maior distância entre o 3º quartil e a mediana de admissão entre os cargos da equipe. Área e despesas gerais não têm cotação e ficam em N6; reforma, mobiliário, cozinha e informática vêm do orçamento da etapa 1 (seção 9.2).
+Do lado dos custos, o modelo usa bases públicas sempre que possível: o aluguel do FipeZap, os salários das medianas de admissão em Salvador no Novo CAGED e o custo das mercadorias vendidas (CMV) da PAS. O CMV é o custo dos ingredientes e das bebidas que a casa revende. Nos serviços de alimentação, as mercadorias e os materiais de consumo e de reposição somaram 29,6% da receita líquida em 2023 (IBGE, PAS 2023), e o consumo de mercadorias, 26,8% em 2024 (IBGE, PAS 2024, tabela 10758; seção 5.1). O provável fica em 30% da receita de A&B, perto do dado de 2023, que inclui os materiais de consumo de uma cozinha; o otimista, em 26%, perto do de 2024; e o pessimista, em 35%, para a perda e o desperdício de uma casa nova. O salário de admissão tende a ficar abaixo do pago a quem já está no cargo; por isso, o pessimista soma 11,4% aos salários, a maior distância entre o 3º quartil e a mediana de admissão entre os cargos da equipe. Área e despesas gerais não têm cotação e ficam em N6; reforma, mobiliário, cozinha e informática vêm do orçamento da etapa 1 (seção 9.2). A refeição da equipe (C14 e C15) e a PLR (C16) são decisões do autor (N6) sobre benefícios, e não dados medidos.
 
 Falta a taxa que traz os valores futuros para o presente. A TMA é o retorno mínimo que o investidor exige para pôr o dinheiro na luderia, em vez de aplicá-lo numa alternativa segura (seção 2.5). Ela soma duas parcelas: o juro real, que é o ganho de uma aplicação segura acima da inflação, e um prêmio pelo risco de um pequeno negócio novo. O juro real sai da Selic meta de 14,0% (BCB, set/2026) e do IPCA esperado de 4,3% para 2027 (Focus):
 
@@ -66,7 +66,7 @@ juro real = (1 + Selic) ÷ (1 + IPCA esperado) − 1 (3)
 
 1,140 ÷ 1,043 − 1 = 9,3% ao ano
 
-Com um prêmio de 5,7 pontos percentuais, a TMA provável fica em 15% ao ano. Os cenários usam prêmios de cerca de 3 e 9 pontos: TMA de 12% no otimista e de 18% no pessimista. A Figura 9.1 mostra que o Focus prevê queda da Selic até 2029, o que favorece a TMA otimista.
+A TMA provável é de 15% ao ano, um prêmio de 5,7 pontos percentuais sobre o juro real. O prêmio não vem de uma base de dados (N6), e três razões sustentam o valor. Primeiro, ele soma o risco de um pequeno negócio novo, em que 25,8% das micro e pequenas empresas fecham nos primeiros cinco anos (SEBRAE, 2024), e o de liquidez de um investimento sem mercado, que não se vende rápido por um valor justo (ASSAF NETO, 2014, p. 89). Segundo, o risco de demanda e de preço já está nos cenários e no Monte Carlo, e um prêmio alto o contaria duas vezes. Terceiro, a escolha pesa pouco na decisão: o VPL provável fica positivo até uma TMA de 42,8% (seção 9.5). Os cenários usam prêmios de cerca de 3 e 9 pontos: TMA de 12% no otimista e de 18% no pessimista. A Figura 9.1 mostra que o Focus prevê queda da Selic até 2029, o que favorece a TMA otimista.
 
 **Figura 9.1 – Selic meta e IPCA em 12 meses, com projeção do Relatório Focus**
 
@@ -76,7 +76,7 @@ Fonte: elaborado pelo próprio autor, com base no Banco Central do Brasil, SGS (
 
 ## 9.2 INVESTIMENTO INICIAL
 
-O investimento inicial é o dinheiro gasto antes da abertura: obra, equipamentos, acervo, caução e uma reserva de caixa. A Tabela 9.1 mostra os oito itens por cenário. No provável, o investimento é de R$ 312 mil, com a reforma (34%) e o capital de giro (22%) como maiores itens. Reforma, mobiliário, cozinha e informática vêm do orçamento item a item do Bloco B5 (seção 3.2.4), sem frete. Ainda sem preço, o letreiro, o balcão e o kit de gás ficam fora da soma; a maquininha de cartão é cedida sem custo pelo banco. O acervo de 175 jogos custa R$ 35 mil, com faixa de 15% para cada lado: a variação típica do preço do mesmo jogo entre as lojas do B1. O acervo também recebe *sleeves* (capas plásticas) em todas as cartas, ainda sem custo levantado [pendente].
+O investimento inicial é o dinheiro gasto antes da abertura: obra, equipamentos, acervo, caução e uma reserva de caixa. A Tabela 9.1 mostra os nove itens por cenário. No provável, o investimento é de R$ 329 mil, com a reforma (32%) e o capital de giro (21%) como maiores itens. Reforma, mobiliário, cozinha e informática vêm do orçamento item a item do Bloco B5 (seção 3.2.4), sem frete; a maquininha de cartão é cedida sem custo pelo banco. O acervo de 175 jogos custa R$ 35 mil, com faixa de 15% para cada lado: a variação típica do preço do mesmo jogo entre as lojas do B1. Quatro itens da abertura ficaram sem preço no B5: o letreiro, o balcão do caixa, a instalação de gás e os *sleeves* (capas plásticas) das cartas do acervo. Eles entram como uma verba estimada pelo autor (I10, N6), de R$ 17 mil no provável, de R$ 11 mil a R$ 25 mil nos cenários.
 
 **Tabela 9.1 – Investimento inicial por cenário (R$)**
 
@@ -88,13 +88,14 @@ O investimento inicial é o dinheiro gasto antes da abertura: obra, equipamentos
 | Caixa e informática | 9.764,79 | 7.762,90 | 5.414,15 |
 | Acervo inicial de jogos | 40.285,51 | 35.030,88 | 29.776,25 |
 | Gastos pré-operacionais | 30.000,00 | 20.000,00 | 12.000,00 |
+| Itens sem cotação (letreiro, balcão, gás e sleeves) | 25.000,00 | 17.000,00 | 11.000,00 |
 | Caução do aluguel | 28.957,50 | 21.118,50 | 9.900,00 |
 | Capital de giro | 132.771,54 | 68.059,22 | 40.203,31 |
-| Total | 507.713,98 | 311.798,62 | 212.376,50 |
+| Total | 532.713,98 | 328.798,62 | 223.376,50 |
 
 Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E) e no Bloco B5 (SINAPI de set/2026; anúncios de 03/11/2026).
 
-O capital de giro é a reserva de caixa que paga as contas enquanto a receita ainda não cobre os custos. Ele equivale a dois meses de custos fixos, R$ 68 mil, e cobre os primeiros meses da rampa, em que a receita ainda fica abaixo dos custos. A caução são três meses de aluguel, exigidos pelo locador como garantia. Os dois valores voltam ao caixa no ano 5, no fim do horizonte de análise. A cozinha completa desde a abertura custa R$ 39 mil e sustenta o CMV de 30%; no pessimista, com a lava-louças de capota, chega a R$ 89 mil.
+O capital de giro é a reserva de caixa que paga as contas enquanto a receita ainda não cobre os custos. Ele equivale a dois meses de custos fixos, R$ 68 mil, e cobre os primeiros meses da rampa, em que a receita ainda fica abaixo dos custos. A caução são três meses de aluguel, exigidos pelo locador como garantia. Os dois valores ficam presos no negócio enquanto ele funciona e só voltam ao caixa se ele fechar (seção 9.3). A cozinha completa desde a abertura custa R$ 39 mil e sustenta o CMV de 30%; no pessimista, com a lava-louças de capota, chega a R$ 89 mil.
 
 ## 9.3 RECEITAS, CUSTOS E RESULTADOS PROJETADOS
 
@@ -104,46 +105,46 @@ Na maturidade, o cenário provável atende 968 pessoas por mês, cerca de 37 por
 
 | Conta | Valor mensal | Participação na receita bruta (%) |
 |---|---|---|
-| Taxa de entrada | 21.614,70 | 28,0 |
-| Alimentos e bebidas | 54.573,88 | 70,8 |
+| Taxa de entrada | 18.088,49 | 23,5 |
+| Alimentos e bebidas | 58.100,09 | 75,4 |
 | Aluguel de jogos | 900,00 | 1,2 |
 | Receita bruta | 77.088,58 | 100,0 |
-| Simples Nacional | 7.246,95 | 9,4 |
-| CMV de A&B | 16.372,16 | 21,2 |
+| Simples Nacional | 7.110,15 | 9,2 |
+| CMV de A&B | 17.430,03 | 22,6 |
 | Taxa de cartão | 2.312,66 | 3,0 |
 | Pessoal com encargos (5 empregados) | 13.335,89 | 17,3 |
 | Refeição da equipe | 1.304,40 | 1,7 |
 | Aluguel, condomínio e IPTU | 8.447,40 | 11,0 |
 | Pró-labore e despesas gerais | 10.941,92 | 14,2 |
 | Subtotal: custos fixos (as quatro linhas anteriores) | 34.029,61 | 44,1 |
-| Participação nos lucros (5% do EBITDA, provisão mensal) | 856,36 | 1,1 |
-| Resultado operacional (EBITDA) | 16.270,84 | 21,1 |
+| Participação nos lucros (5% do EBITDA, provisão mensal) | 810,31 | 1,1 |
+| Resultado operacional (EBITDA) | 15.395,83 | 20,0 |
 
 Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E).
 
-Os custos se dividem em dois tipos. Os variáveis crescem com cada pessoa atendida: o Simples Nacional, o CMV e a taxa de cartão. Os fixos não mudam com o movimento: pessoal, aluguel, pró-labore e despesas gerais. O pessoal é o maior custo fixo: 5 empregados, com remuneração de R$ 9,3 mil, já com os adicionais da escala, e encargos, provisões e vale-transporte de 43,6%. A refeição da equipe soma R$ 1,3 mil. A participação nos lucros (PLR) não é custo fixo: é 5% do EBITDA de cada ano, paga só quando ele é positivo (seção 7.5). O A&B é a maior receita, com 70,8%, porque a taxa de entrada é pouco mais de um quarto da cesta de consumo dos concorrentes. O Simples Nacional custa 9,3% da receita, com o enquadramento da seção 8.1.
+Os custos se dividem em dois tipos. Os variáveis crescem com cada pessoa atendida: o Simples Nacional, o CMV e a taxa de cartão. Os fixos não mudam com o movimento: pessoal, aluguel, pró-labore e despesas gerais. O pessoal é o maior custo fixo: 5 empregados, com remuneração de R$ 9,3 mil, já com os adicionais da escala, e encargos, provisões e vale-transporte de 43,6%. A refeição da equipe soma R$ 1,3 mil. A participação nos lucros (PLR) não é custo fixo: é 5% do EBITDA de cada ano, paga só quando ele é positivo (seção 7.5). O A&B é a maior receita, com 75,4%, porque a taxa de entrada, de R$ 18,68, é menos de um quarto do gasto por pessoa. O Simples Nacional custa 9,2% da receita, com o enquadramento da seção 8.1.
 
 A margem de contribuição é o que sobra de cada pessoa atendida depois dos custos variáveis. É essa sobra que paga os custos fixos e, depois deles, gera lucro:
 
 margem por pessoa = receita por pessoa − Simples − CMV − cartão (4)
 
-79,61 − 7,48 − 16,91 − 2,39 = R$ 52,83
+79,61 − 7,34 − 18,00 − 2,39 = R$ 51,88
 
-Cada pessoa deixa R$ 52,83, ou 66% do que paga, para cobrir os custos fixos de R$ 34,0 mil por mês. O ponto de equilíbrio operacional é o movimento em que essa margem paga exatamente os custos fixos, sem lucro nem prejuízo:
+Cada pessoa deixa R$ 51,88, ou 65% do que paga, para cobrir os custos fixos de R$ 34,0 mil por mês. O ponto de equilíbrio operacional é o movimento em que essa margem paga exatamente os custos fixos, sem lucro nem prejuízo:
 
 pessoas no equilíbrio = custos fixos ÷ margem por pessoa (5)
 
-34.029,61 ÷ 52,83 = 644 pessoas por mês
+34.029,61 ÷ 51,88 = 656 pessoas por mês
 
-O equilíbrio exige 644 pessoas por mês, 24,8 por dia aberto, o que equivale a R$ 51,3 mil de receita mensal. O cenário provável fica 50% acima desse ponto. A PLR não muda o equilíbrio: com EBITDA zero, ela também é zero. A conta usa as alíquotas do ano maduro.
+O equilíbrio exige 656 pessoas por mês, 25,2 por dia aberto, o que equivale a R$ 52,2 mil de receita mensal. O cenário provável fica 48% acima desse ponto. A PLR não muda o equilíbrio: com EBITDA zero, ela também é zero. A conta usa as alíquotas do ano maduro.
 
-A Tabela 9.3 junta o resultado de cada ano e o fluxo de caixa. O resultado operacional antes de juros, impostos, depreciação e amortização (EBITDA) é a receita menos todos os custos que saem do caixa: mede o dinheiro que a operação gera. A depreciação é a perda de valor dos bens pelo uso, lançada como custo ao longo da vida útil, sem saída de dinheiro. O cenário provável dá lucro desde o ano 1, mesmo com a rampa. A partir do ano 2, o EBITDA é de R$ 195 mil por ano, já descontada a PLR de R$ 10 mil, e o lucro, depois da depreciação de R$ 39 mil, de R$ 156 mil.
+A Tabela 9.3 junta o resultado de cada ano e o fluxo de caixa. O resultado operacional antes de juros, impostos, depreciação e amortização (EBITDA) é a receita menos todos os custos que saem do caixa: mede o dinheiro que a operação gera. A depreciação é a perda de valor dos bens pelo uso, lançada como custo ao longo da vida útil, sem saída de dinheiro. O cenário provável dá lucro desde o ano 1, mesmo com a rampa. A partir do ano 2, o EBITDA é de R$ 185 mil por ano, já descontada a PLR de R$ 10 mil, e o lucro, depois da depreciação de R$ 43 mil, de R$ 142 mil.
 
-O fluxo de caixa registra o dinheiro que entra e sai em cada ano: o investimento no ano 0 e o EBITDA nos anos 1 a 5. O ano 5 tem três parcelas a mais. Voltam a caução e o capital de giro, e entra o valor residual: o valor que o negócio ainda tem no fim do horizonte, já que a luderia não fecha no ano 6. O modelo calcula esse valor como uma perpetuidade, isto é, supõe que o resultado do ano 5 se repete todos os anos, sem crescimento, e traz essa sequência para o valor presente pela TMA (ASSAF NETO, 2014). Do EBITDA sai um reinvestimento igual à depreciação, para repor os bens gastos:
+O fluxo de caixa registra o dinheiro que entra e sai em cada ano: o investimento no ano 0 e o EBITDA nos anos 1 a 5. No ano 5 entra o valor residual: o valor que o negócio ainda tem no fim do horizonte, já que a luderia não fecha no ano 6. Como o negócio segue aberto, a caução e o capital de giro continuam presos nele e não voltam ao caixa: o valor residual já os inclui, e somá-los a ele contaria o mesmo dinheiro duas vezes. Só no cálculo sem valor residual, em que a luderia fecha no fim do ano 5, os dois voltam. O modelo calcula esse valor como uma perpetuidade, isto é, supõe que o resultado do ano 5 se repete todos os anos, sem crescimento, e traz essa sequência para o valor presente pela TMA (ASSAF NETO, 2014). Do EBITDA sai um reinvestimento igual à depreciação, para repor os bens gastos:
 
 valor residual = (EBITDA do ano 5 − depreciação) ÷ TMA (6)
 
-(195.250 − 39.152) ÷ 0,15 = R$ 1.040.655
+(184.750 − 42.552) ÷ 0,15 = R$ 947.988
 
 A Tabela 9.3 também traz o fluxo descontado: cada valor futuro dividido por 1,15 elevado ao número de anos, o que o torna comparável ao dinheiro de hoje. A última linha acumula esses valores e, no ano 5, chega ao VPL. Sem o valor residual, o VPL provável segue positivo (seção 9.4).
 
@@ -152,24 +153,23 @@ A Tabela 9.3 também traz o fluxo descontado: cada valor futuro dividido por 1,1
 | Conta | Ano 0 | Ano 1 | Ano 2 | Ano 3 | Ano 4 | Ano 5 |
 |---|---|---|---|---|---|---|
 | Receita bruta | 0 | 716.924 | 925.063 | 925.063 | 925.063 | 925.063 |
-| (-) Simples Nacional | 0 | -61.519 | -86.963 | -86.963 | -86.963 | -86.963 |
-| (-) CMV e taxa de cartão | 0 | -173.769 | -224.218 | -224.218 | -224.218 | -224.218 |
-| Margem de contribuição | 0 | 481.636 | 613.882 | 613.882 | 613.882 | 613.882 |
+| (-) Simples Nacional | 0 | -60.380 | -85.322 | -85.322 | -85.322 | -85.322 |
+| (-) CMV e taxa de cartão | 0 | -183.607 | -236.912 | -236.912 | -236.912 | -236.912 |
+| Margem de contribuição | 0 | 472.937 | 602.829 | 602.829 | 602.829 | 602.829 |
 | (-) Custos fixos | 0 | -408.355 | -408.355 | -408.355 | -408.355 | -408.355 |
-| (-) Participação nos lucros (PLR) | 0 | -3.664 | -10.276 | -10.276 | -10.276 | -10.276 |
-| EBITDA | 0 | 69.616 | 195.250 | 195.250 | 195.250 | 195.250 |
-| (-) Depreciação e amortização | 0 | -39.152 | -39.152 | -39.152 | -39.152 | -39.152 |
-| Lucro líquido | 0 | 30.465 | 156.098 | 156.098 | 156.098 | 156.098 |
-| Investimento inicial | -311.799 | 0 | 0 | 0 | 0 | 0 |
-| Caução e capital de giro devolvidos | 0 | 0 | 0 | 0 | 0 | 89.178 |
-| Valor residual | 0 | 0 | 0 | 0 | 0 | 1.040.655 |
-| Fluxo de caixa | -311.799 | 69.616 | 195.250 | 195.250 | 195.250 | 1.325.083 |
-| Fluxo descontado a 15% | -311.799 | 60.536 | 147.637 | 128.380 | 111.635 | 658.800 |
-| Descontado acumulado | -311.799 | -251.263 | -103.626 | 24.755 | 136.389 | 795.190 |
+| (-) Participação nos lucros (PLR) | 0 | -3.229 | -9.724 | -9.724 | -9.724 | -9.724 |
+| EBITDA | 0 | 61.352 | 184.750 | 184.750 | 184.750 | 184.750 |
+| (-) Depreciação e amortização | 0 | -42.552 | -42.552 | -42.552 | -42.552 | -42.552 |
+| Lucro líquido | 0 | 18.800 | 142.198 | 142.198 | 142.198 | 142.198 |
+| Investimento inicial | -328.799 | 0 | 0 | 0 | 0 | 0 |
+| Valor residual | 0 | 0 | 0 | 0 | 0 | 947.988 |
+| Fluxo de caixa | -328.799 | 61.352 | 184.750 | 184.750 | 184.750 | 1.132.738 |
+| Fluxo descontado a 15% | -328.799 | 53.350 | 139.698 | 121.476 | 105.631 | 563.171 |
+| Descontado acumulado | -328.799 | -275.449 | -135.752 | -14.275 | 91.356 | 654.527 |
 
 Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E).
 
-Nota: o lucro líquido não desconta impostos sobre o lucro, que já estão no Simples Nacional. Sem o valor residual, o VPL é de R$ 277.800.
+Nota: o lucro líquido não desconta impostos sobre o lucro, que já estão no Simples Nacional. A caução e o capital de giro não voltam no ano 5, porque o negócio segue aberto e o valor residual já os inclui. Sem o valor residual, a luderia fecha no fim do ano 5, a caução e o capital de giro (R$ 89.178) voltam ao caixa, e o VPL é de R$ 227.546.
 
 ## 9.4 INDICADORES DE VIABILIDADE
 
@@ -179,26 +179,28 @@ Os indicadores de viabilidade resumem o fluxo de caixa em respostas a três perg
 
 | Indicador | Pessimista | Provável | Otimista |
 |---|---|---|---|
-| Investimento inicial (R$) | 507.714 | 311.799 | 212.377 |
+| Investimento inicial (R$) | 532.714 | 328.799 | 223.377 |
 | Receita bruta mensal madura (R$) | 21.054 | 77.089 | 208.863 |
-| Ponto de equilíbrio mensal (R$) | 67.158 | 51.279 | 40.138 |
-| EBITDA do ano 5 (R$) | -364.589 | 195.250 | 1.284.384 |
-| VPL a 15% real (R$) | -1.575.974 | 795.190 | 10.023.518 |
-| VPL sem valor residual (R$) | -1.575.974 | 277.800 | 4.082.735 |
-| TIR real (%) | n.a. | 61,8 | 498,6 |
-| Payback descontado (anos) | mais de 5 | 2,8 | 0,2 |
+| Ponto de equilíbrio mensal (R$) | 61.629 | 52.220 | 41.595 |
+| EBITDA do ano 5 (R$) | -349.652 | 184.750 | 1.228.712 |
+| VPL a 15% real (R$) | -1.554.155 | 654.527 | 9.522.279 |
+| VPL sem valor residual (R$) | -1.554.155 | 227.546 | 3.883.573 |
+| VPL com os gatilhos G5 e G6 (R$) | -1.155.720 | 654.527 | 9.522.279 |
+| TIR real (%) | n.a. | 54,4 | 454,6 |
+| TIR real sem valor residual (%) | n.a. | 36,4 | 450,8 |
+| Payback descontado (anos) | mais de 5 | 3,1 | 0,3 |
 
 Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E).
 
-Nota: n.a.: não há TIR, porque o fluxo do pessimista não muda de sinal.
+Nota: n.a.: não há TIR, porque o fluxo do pessimista não muda de sinal. As linhas sem gatilhos supõem que a luderia segue aberta nos 5 anos, mesmo com prejuízo. A linha com os gatilhos aplica as decisões de gestão do Quadro 10.4, como no Monte Carlo: o G5 corta um cozinheiro no ano seguinte ao primeiro EBITDA negativo, e o G6 fecha o negócio se o prejuízo continuar, com a volta da caução e do capital de giro e a revenda dos ativos (I09). No pessimista, os gatilhos reduzem a perda em R$ 398 mil; no provável e no otimista, não são acionados.
 
-O VPL soma o fluxo descontado e mostra quanto o negócio gera além do que a TMA exige. No provável, o VPL é de R$ 795 mil: o negócio paga os 15% ao ano e gera esse valor a mais, em dinheiro de hoje. Sem o valor residual, o VPL cai para R$ 278 mil e segue positivo: a viabilidade não depende de a luderia seguir aberta depois do ano 5.
+O VPL soma o fluxo descontado e mostra quanto o negócio gera além do que a TMA exige. No provável, o VPL é de R$ 655 mil: o negócio paga os 15% ao ano e gera esse valor a mais, em dinheiro de hoje. Sem o valor residual, o VPL cai para R$ 228 mil e segue positivo: a viabilidade não depende de a luderia seguir aberta depois do ano 5.
 
-A TIR é o rendimento anual do próprio negócio: a taxa que zera o VPL. A TIR provável é de 61,8% ao ano, em termos reais, pouco mais de quatro vezes a TMA. Uma TIR dessa ordem pede cautela: ela repousa em quatro visitas a uma só concorrente e deixa de existir se a circulação no pico ou o gasto por pessoa ficarem 22% abaixo do provável (seção 9.5).
+A TIR é o rendimento anual do próprio negócio: a taxa que zera o VPL. A TIR provável é de 54,4% ao ano, em termos reais, mais de três vezes a TMA. Sem o valor residual, ela cai para 36,4%: a perpetuidade pesa no resultado, e a TIR sem ela é a leitura mais prudente. Uma TIR dessa ordem pede cautela: ela repousa em quatro visitas a uma só concorrente, e o VPL zera se a circulação no pico ficar 19% abaixo do provável, ou o gasto por pessoa, 21% (seção 9.5).
 
-O payback descontado é o tempo até o fluxo descontado acumulado devolver o investimento. No provável, ele é de 2,8 anos, dentro do horizonte de 5 anos.
+O payback descontado é o tempo até o fluxo descontado acumulado devolver o investimento. No provável, ele é de 3,1 anos, dentro do horizonte de 5 anos.
 
-O ponto de equilíbrio completa a leitura: a receita madura fica 50% acima dos R$ 51,3 mil mensais que pagam os custos (seção 9.3). Os quatro indicadores apontam na mesma direção: no cenário provável, o negócio é viável, com folga.
+O ponto de equilíbrio completa a leitura: a receita madura fica 48% acima dos R$ 52,2 mil mensais que pagam os custos (seção 9.3). Os quatro indicadores apontam na mesma direção: no cenário provável, o negócio é viável, com folga.
 
 Os cenários extremos põem todas as premissas no mesmo lado da faixa ao mesmo tempo, uma combinação pouco provável: servem de limite, e não de previsão. A decisão depende de onde as premissas críticas ficam (seção 9.5).
 
@@ -206,7 +208,7 @@ Os cenários extremos põem todas as premissas no mesmo lado da faixa ao mesmo t
 
 A análise de sensibilidade mede quanto o VPL muda quando uma premissa muda (seção 2.5). A Figura 9.2 mostra o tornado: cada barra leva uma premissa ao pessimista e ao otimista, com as demais no provável. As barras são ordenadas da maior para a menor, o que dá ao gráfico a forma de um funil.
 
-Duas premissas concentram o risco: a circulação no pico (R04) e o gasto por pessoa (R06), cada uma com efeito de R$ 2,8 milhões ou mais sobre o VPL entre os extremos da faixa. As três seguintes, com efeito de R$ 360 mil a R$ 510 mil, completam as premissas críticas: a variação anual da demanda (R18), a TMA (M01) e o CMV (C01). As duas primeiras têm dado próprio: a circulação vem da contagem direta (N5), e o gasto, das avaliações e dos cardápios dos concorrentes (N3).
+Duas premissas concentram o risco: a circulação no pico (R04) e o gasto por pessoa (R06), cada uma com efeito de R$ 2,4 milhões ou mais sobre o VPL entre os extremos da faixa. As três seguintes, com efeito de R$ 380 mil a R$ 500 mil, completam as premissas críticas: a variação anual da demanda (R18), a TMA (M01) e o CMV (C01). As duas primeiras têm dado próprio: a circulação vem da contagem direta (N5), e o gasto, das avaliações e dos cardápios dos concorrentes (N3).
 
 **Figura 9.2 – Tornado: VPL com cada premissa no extremo da faixa e as demais no provável**
 
@@ -216,36 +218,36 @@ Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E
 
 A circulação pesa mais que o gasto porque a faixa medida é mais larga: a maior visita teve 2,8 vezes a circulação da menor. As duas multiplicam a taxa e o A&B ao mesmo tempo. O teto do salão não encurta o lado otimista: as 11,43 pessoas por hora da maior visita ficam abaixo das 11,9 que o salão comporta.
 
-O tornado move uma premissa por vez; a simulação de Monte Carlo move todas juntas. Ela sorteia 10 mil combinações de premissas dentro das faixas, calcula o VPL de cada uma e conta em quantas ele fica positivo. Em cada sorteio, os gatilhos de contingência e a etapa de mesas agem como decisões de gestão (Apêndice G). O VPL fica positivo em 82,1% dos cenários, com mediana de R$ 796 mil. Os gatilhos agem em poucos sorteios: o G5 em 6,6% e o encerramento pelo G6 em 3,4%.
+O tornado move uma premissa por vez; a simulação de Monte Carlo move todas juntas. Ela sorteia 10 mil combinações de premissas dentro das faixas, calcula o VPL de cada uma e conta em quantas ele fica positivo. Em cada sorteio, os gatilhos de contingência e a etapa de mesas agem como decisões de gestão (Apêndice G). O VPL fica positivo em 78,5% dos cenários, com mediana de R$ 676 mil. Os gatilhos agem em poucos sorteios: o G5 em 6,6% e o encerramento pelo G6 em 3,1%. Os 78,5% dependem das hipóteses da simulação: das faixas do registro de premissas, da distribuição PERT e da independência entre as premissas. Se a circulação e o gasto caíssem juntos, como numa crise de renda, a probabilidade seria menor.
 
-O ponto de ruptura é o valor de uma premissa que zera o VPL, com as demais no provável (seção 2.5). Ele transforma o resultado numa condição que pode ser acompanhada. A Tabela 9.5 traz a ruptura das cinco premissas críticas. O negócio é viável, por exemplo, enquanto a circulação no pico ficar acima de 4,98 pessoas por hora: 22% abaixo do provável.
+O ponto de ruptura é o valor de uma premissa que zera o VPL, com as demais no provável (seção 2.5). Ele transforma o resultado numa condição que pode ser acompanhada. A Tabela 9.5 traz a ruptura das cinco premissas críticas. O negócio é viável, por exemplo, enquanto a circulação no pico ficar acima de 5,21 pessoas por hora: 19% abaixo do provável.
 
 **Tabela 9.5 – Ponto de ruptura das premissas críticas (VPL = 0)**
 
 | ID | Premissa | Provável | Ruptura | Faixa testada | Valor medido | Nível |
 |---|---|---|---|---|---|---|
-| R04 | Circulação no pico de fim de semana (pessoas por hora) | 6,40 | 4,98 | 4,13 a 11,43 | 4,03 a 11,43 por visita (B3) | N5 |
-| R06 | Gasto por pessoa (R$) | 78,68 | 61,17 | 40,00 a 109,84 | 40,00 a 109,84, gasto médio de 13 concorrentes (B2) | N3 |
+| R04 | Circulação no pico de fim de semana (pessoas por hora) | 6,40 | 5,21 | 4,13 a 11,43 | 4,03 a 11,43 por visita, mediana de 5,08 (B3) | N5 |
+| R06 | Gasto por pessoa (R$) | 78,68 | 62,34 | 40,00 a 109,84 | 40,00 a 109,84, gasto médio de 13 concorrentes (B2) | N3 |
 | R18 | Variação anual da demanda a partir do ano 3 (% ao ano) | 0% | fora da faixa | -5% a 2% | n.a. | N6 |
-| M01 | Taxa mínima de atratividade real (% ao ano) | 15% | 49,5% | 18% a 12% | juro real de 9,3% (BCB) | N2 + N6 |
-| C01 | CMV de alimentos e bebidas (% do A&B) | 30% | 49,7% | 35% a 26% | 29,6% (IBGE, PAS 2023) | N2 |
+| M01 | Taxa mínima de atratividade real (% ao ano) | 15% | 42,8% | 18% a 12% | juro real de 9,3% (BCB) | N2 + N6 |
+| C01 | CMV de alimentos e bebidas (% do A&B) | 30% | 45,3% | 35% a 26% | 29,6% (IBGE, PAS 2023) | N2 |
 
 Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E) e nos Blocos B1 a B4 (10/10/2026 a 30/10/2026).
 
 Nota: n.a.: premissa sem medida. Fora da faixa: o VPL fica positivo em toda a faixa testada.
 
-Só a circulação e o gasto têm ruptura dentro da faixa, e as duas ficam 22% abaixo do provável. As outras três não mudam o sinal do VPL dentro da faixa: a TMA teria de passar de 49% ao ano, e o CMV, de 49% do A&B. A ruptura define o equilíbrio econômico do negócio: o movimento em que o VPL é zero. Esse ponto fica acima do equilíbrio operacional da seção 9.3, porque, além dos custos do mês, o negócio precisa devolver o investimento com a TMA.
+Só a circulação e o gasto têm ruptura dentro da faixa: a circulação 19% abaixo do provável, e o gasto, 21%. A ruptura da circulação, de 5,21 pessoas por hora, fica acima de três das quatro visitas e da mediana delas (5,08): o provável só passa da ruptura por causa da noite de 10/10. As outras três premissas não mudam o sinal do VPL dentro da faixa: a TMA teria de passar de 42% ao ano, e o CMV, de 45% do A&B. A ruptura define o equilíbrio econômico do negócio: o movimento em que o VPL é zero. Esse ponto fica acima do equilíbrio operacional da seção 9.3, porque, além dos custos do mês, o negócio precisa devolver o investimento com a TMA.
 
-A Tabela 9.6 junta os números de demanda do capítulo numa escada, em pessoas por dia aberto, do piso medido ao teto do salão. Dois degraus vêm de fora do modelo: são os pisos de clientes da São Jogue, pela numeração das NFC-e (B3). A Bela Vista emitiu 30,5 notas por dia, e a Paralela, 16,1; como a nota só sai a pedido, o número real de clientes é maior.
+A Tabela 9.6 junta os números de demanda do capítulo numa escada, em pessoas por dia aberto, das notas fiscais ao teto do salão. Dois degraus vêm de fora do modelo: as NFC-e emitidas por dia na São Jogue (B3), 30,5 na Bela Vista e 16,1 na Paralela. Elas entram como ordem de grandeza, com uma nota por pessoa: a nota só sai a pedido, e o número de pessoas por nota não foi medido.
 
 **Tabela 9.6 – Escada da demanda, do piso de clientes à capacidade do salão**
 
 | Degrau | Pessoas por dia aberto | Origem |
 |---|---|---|
-| Piso de clientes da São Jogue Paralela (NFC-e) | 16,1 | Bloco B3 |
-| Equilíbrio operacional (EBITDA = 0) | 24,8 | Equação 5 (seção 9.3) |
-| Equilíbrio econômico (VPL = 0) | 29,0 | Ruptura da circulação no pico (Tabela 9.5) |
-| Piso de clientes da São Jogue Bela Vista (NFC-e) | 30,5 | Bloco B3 |
+| NFC-e por dia da São Jogue Paralela | 16,1 | Bloco B3 |
+| Equilíbrio operacional (EBITDA = 0) | 25,2 | Equação 5 (seção 9.3) |
+| Equilíbrio econômico (VPL = 0) | 30,3 | Ruptura da circulação no pico (Tabela 9.5) |
+| NFC-e por dia da São Jogue Bela Vista | 30,5 | Bloco B3 |
 | Cenário provável | 37,2 | Equação 1 (início do capítulo) |
 | Capacidade do salão | 101 | Seção 7.2 |
 
@@ -253,15 +255,15 @@ Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E
 
 Nota: o equilíbrio econômico usa a ruptura da circulação no pico, com as demais premissas no provável. A São Jogue abre todos os dias, e o dia de calendário é também o dia aberto.
 
-A escada mostra três coisas. Primeiro, o provável fica 1,2 vez acima do piso da Bela Vista, o que é plausível, porque o piso conta só quem pediu nota. Segundo, o provável usa 37% da capacidade do salão, o que deixa folga para o pico. Terceiro, o provável fica 28% acima do equilíbrio econômico: o negócio tolera perder 22% dos clientes do provável antes de o VPL zerar. A estimativa de demanda do capítulo 6 completa a triangulação [pendente]. A plausibilidade de ficar acima das rupturas, os gatilhos de contingência e as opções de expansão são discutidos no capítulo 10.
+A escada mostra três coisas. Primeiro, o provável fica 1,2 vez acima das notas da Bela Vista, na mesma ordem de grandeza. Segundo, o provável usa 37% da capacidade do salão, o que deixa folga para o pico. Terceiro, o provável fica 23% acima do equilíbrio econômico: o negócio tolera perder 19% dos clientes do provável antes de o VPL zerar. A plausibilidade de ficar acima das rupturas, os gatilhos de contingência e as opções de expansão são discutidos no capítulo 10.
 
 ## 9.6 CHECAGENS DE COERÊNCIA
 
 A capacidade comporta a demanda: as 37 pessoas por dia aberto usam 37% da capacidade do salão, de 101 pessoas por dia aberto (capítulo 7). No pico, a circulação provável de 6,40 pessoas por hora, com permanência de 109 minutos, ocupa 3,2 das 6 mesas.
 
-A comparação com o setor mostra onde a luderia se afasta dos serviços de alimentação. A folha com encargos custa 17,3% da receita, e 19,0% com as refeições, contra 25,1% de gastos com pessoal no setor (IBGE, PAS 2024); a diferença vem da equipe de 5 empregados do desenho enxuto, com o sócio no caixa. O aluguel com condomínio custa 11,0%, contra 4,0% no setor. O ponto é o custo que mais se afasta do setor e o primeiro a cotar.
+A comparação com o setor mostra onde a luderia se afasta dos serviços de alimentação. O CMV de A&B soma 22,6% da receita bruta, abaixo dos 26,8% do consumo de mercadorias no setor (IBGE, PAS 2024), porque a taxa de entrada não tem custo de mercadoria. A folha com encargos custa 17,3% da receita, e 19,0% com as refeições, contra 25,1% de gastos com pessoal no setor (IBGE, PAS 2024); a diferença vem da equipe de 5 empregados do desenho enxuto, com o sócio no caixa. O aluguel com condomínio custa 11,0%, contra 4,0% no setor. O ponto é o custo que mais se afasta do setor e o primeiro a cotar.
 
-No preço, a taxa de entrada contida no gasto provável, R$ 22,32 por pessoa (28,4% de R$ 78,68), fica entre a mediana de R$ 20,00 dos concorrentes que cobram e os R$ 28,00 da São Jogue no fim de semana (seção 6.3).
+No preço, a taxa de entrada de R$ 18,68 é 23,7% do gasto provável, abaixo dos 28,4% que a taxa pesa na cesta dos 10 concorrentes com cesta completa, e fica perto da mediana de R$ 20,00 dos concorrentes que cobram, abaixo dos R$ 28,00 da São Jogue no fim de semana (seção 6.3).
 
 **Referências citadas neste capítulo**
 
@@ -279,7 +281,7 @@ BRASIL. Constituição (1988). Emenda Constitucional nº 132, de 20 de dezembro 
 
 FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). *Índice FipeZAP*: locação comercial, julho de 2026. São Paulo, 2026. Disponível em: https://downloads.fipe.org.br/indices/fipezap/fipezap-202607-comercial.pdf. Acesso em: 2 nov. 2026.
 
-IBGE. *Censo Demográfico 2022*: população residente por idade. Rio de Janeiro: IBGE, 2023. Disponível em: https://sidra.ibge.gov.br/tabela/9514. Acesso em: 2 nov. 2026. `[AV ano]`
+IBGE. *Censo Demográfico 2022*: população residente por idade. Rio de Janeiro: IBGE, 2023. Disponível em: https://sidra.ibge.gov.br/tabela/9514. Acesso em: 2 nov. 2026.
 
 IBGE. *Estimativas da população residente*: 2026. Rio de Janeiro: IBGE, 2026. Disponível em: https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html. Acesso em: 2 nov. 2026.
 
@@ -294,3 +296,5 @@ IBGE. *Pesquisa Nacional por Amostra de Domicílios Contínua*: tabelas 5436 e 7
 IBGE. *Regiões de influência das cidades 2018*. Rio de Janeiro: IBGE, 2020. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv101728.pdf. Acesso em: 2 nov. 2026.
 
 IBGE. *Sistema Nacional de Índices de Preços ao Consumidor*: IPCA, tabela 7060. Rio de Janeiro: IBGE, 2026. Disponível em: https://sidra.ibge.gov.br/tabela/7060. Acesso em: 2 nov. 2026.
+
+SEBRAE. *Sobrevivência das empresas mercantis brasileiras (2019–2023)*: relatório técnico. Brasília: Sebrae, 2024. Disponível em: https://datasebrae.com.br/wp-content/uploads/2024/09/2024-08-13-Relatorio-tecnico-Sobrevivencia-das-empresas-mercantis-brasileiras.pdf. Acesso em: 2 nov. 2026.

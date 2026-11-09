@@ -424,9 +424,9 @@ g15 = barras_v("15_b3_permanencia", rot_vis,
                lambda v: br(v, 0, suf=" min"))
 nova_aba("Tab 15", "Tabela 15 – Contagem direta na São Jogue: grupos ficam de 1h20 a 2h na mesa",
          ["Medida"] + rot_vis, linhas_t15, ["txt"] + ["dec"] * len(rv),
-         "B3, contagem direta nas unidades da São Jogue (app de observação, 10/10, 16/10 e 17/10/2026)",
+         "B3, contagem direta nas unidades da São Jogue (app de observação, " + ", ".join(f"{pd.to_datetime(x):%d/%m}" for x in rv.visita_inicio) + "/2026)",
          [38] + [16] * len(rv), g15,
-         ["Nota: visitas de cerca de 3 h, do lado de fora; 10/10 só com o POV1."])
+         ["Nota: visitas de 2,5 a 3,3 h nas noites de sexta e sábado; 10/10 só com o POV1. Entrada (porta): sem quem já estava dentro na chegada; mesa: inclui quem já estava sentado."])
 ws15 = wb["Tab 15"]
 for i, (_, _, t) in enumerate(VARS_B3, 3):
     for j in range(2, 2 + len(rv)):

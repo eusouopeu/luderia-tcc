@@ -14,7 +14,9 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Grave
 
-**D49 — Marcadores pendentes a duas semanas da banca (02/11/2026).** TMin v17: os `[script]` e a correção pelo IPCA foram fechados. Restam 15 `[AV]` no texto corrido, `[pendente]` (9.2: sleeves; 9.5: triangulação com o cap. 6), `[Pendente: alimentos e bebidas...]` (5.3.2), `[figura: croqui do salão]` e `[figura: fluxograma da jornada do cliente]` (7.2 e 7.3), `[BUSCAR]` (8.2), `[resultado do kappa]` (11.2) e a proposta de valor entre colchetes no cap. 4. Sugestão: gerar ou cortar as duas figuras do cap. 7; deixar para o fim só o kappa e a proposta de valor.
+**D75 — Circulação provável acima da mediana das visitas (09/11/2026).** Caps. 6, 9, 10 e 11: a circulação provável (R04) é a média simples das quatro visitas, 6,40 pessoas por hora, puxada pela noite de 10/10 (11,43); a mediana, 5,08, fica abaixo da ruptura (5,21), e com ela o VPL é de −R$ 69 mil. O v31 declara a diferença no 9.1, 10.3 e 11, mas o parecer de viabilidade depende dessa escolha. Sugestão: decidir L20 com a orientação.
+
+**D76 — Verba dos itens sem cotação estimada pelo Claude (09/11/2026).** Cap. 9 (Tabela 9.1, I10: R$ 17 mil no provável, de R$ 11 mil a R$ 25 mil) entrou para fechar os custos não precificados apontados pela orientação; os valores são estimativa sem fonte (N6), feita na sessão de 09/11, e não do autor. Sugestão: confirmar em L21.
 
 **D45 — Páginas do TMin v10 (02/11/2026).** O TMin passou de 59 para 69 páginas: os quadros 10.5 e 10.6 e o Quadro 9.2 com 15 premissas. O cap. 10 já estava acima do teto (C17). Sugestão: levar o Quadro 10.6 ou o 10.5 para apêndice.
 
@@ -22,15 +24,15 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
-**D73 — Terça com um só cozinheiro (04/11/2026).** Cap. 7 (7.5: 2 cozinheiros de quarta a sábado, 1 na terça e no domingo) × proposta de valor do cap. 6 (6.1: a cozinha serve sem parar a partida). Na terça, o intervalo de 1 h do único cozinheiro para a cozinha, e o 7.5 diz que ela serve só itens prontos nessa hora, ainda [pendente: decisão do autor] (L19). Sugestão: decidir L19; com (b), o turno de 6 h na terça repete a regra do domingo.
+**D77 — Auditoria do script do B1 e do B2 sem conferência (09/11/2026).** Cap. 3 (3.2.2, 3.3 e Quadro 3.4) e cap. 11 (11.3): as amostras de 200 unidades foram sorteadas em 15/10, mas nenhuma linha foi conferida na página; o texto agora declara a limitação, sem taxa de erro nem intervalo de Wilson. Sugestão: se houver tempo depois da banca, conferir a amostra do B2 (`B2_auditoria_avaliacoes.csv`).
 
-**D74 — Benefícios citados com normas a conferir (04/11/2026).** Cap. 7 (7.5: refeição sem natureza salarial, CLT art. 458, § 2º; PLR pela Lei n. 10.101/2000, arts. 2º e 3º) e cap. 8 (Quadro 8.1, linha de jornada e remuneração) citam normas ainda [AV]. O custo da refeição (C14, R$ 12) é N6. Sugestão: conferir as normas no texto legal e cotar a refeição pelo CMV do cardápio.
+**D78 — Normas novas da escala e dos benefícios (09/11/2026).** Cap. 7 (7.5) cita a Portaria MTP n. 671/2021 para o domingo de folga a cada sete semanas em restaurantes e bares [AV], e o art. 457, § 2º, da CLT para a refeição (no lugar do art. 458, § 2º, que trata de outras utilidades). Sugestão: conferir o artigo da portaria e a lista de atividades autorizadas.
+
+**D79 — Folha de aprovação com a banca em branco (09/11/2026).** Pré-textuais do v31: orientador, dois membros e data em branco, no modelo da NBR 14724. Sugestão: conferir o modelo do colegiado (L22).
 
 **D64 — Dias com dois instrutores (04/11/2026).** Cap. 7 (7.5: teto de 2 mesas por instrutor e 3 pessoas no salão) × escala do Quadro 7.2. Na terça, na quarta e no domingo, o salão tem 2 instrutores e o sócio; no intervalo de cada um, fica com 1 instrutor e o sócio, teto de 4 mesas, e no domingo de folga do atendente (1 a cada 4 semanas) com 1 instrutor e o sócio o dia todo. O 7.5 declara a exceção; a demanda provável ocupa 3,2 mesas no pico, mas a otimista passa de 4. Decidido em L18: manter declarado no 7.5 (escala de 04/11: 3 instrutores de quinta a sábado e 2 nos demais dias).
 
-**D66 — TMin v26 no teto de 90 páginas (04/11/2026).** O texto termina na p. 90, exatamente o teto (`_instrucoes/1_estrutura.md`), depois dos cortes de roteiro de capítulo (C18 em parte), da Tabela 6.1 no Apêndice A (agora Tabela A.2) e de frases de apoio nos caps. 6, 8 e 9. Qualquer acréscimo passa do limite; os cortes do C21 (cap. 6, restante) e dos apêndices (L5 e L6) devolvem margem.
-
-**D68 — CMV do setor de duas edições da PAS (04/11/2026).** Cap. 9 (Tabela 9.5, C01) e cap. 10 (Tabela 10.2) usam 29,6% (PAS 2023); o 9.6 compara pessoal e aluguel com a PAS 2024 (26,8% de CMV nessa edição). Sugestão: usar a PAS 2024 em todos os pontos.
+**D66 — TMin v31 com 116 páginas (09/11/2026).** Com texto e apêndices no mesmo documento e a folha de aprovação, o PDF tem 116 páginas: pré-textuais até a p. 13, texto da p. 14 à p. 99 e apêndices da p. 100 à p. 114 (numeração impressa). O teto de 100 páginas de `_instrucoes/1_estrutura.md` passa em cerca de 14, quase todas de apêndice. Sugestão: L5 e L6 (cortes do cap. 6 e lista de concorrentes e registro de premissas só como link), se a orientação contar os apêndices no teto.
 
 
 **D61 — Critério do B5 × coletas de 03/11 (03/11/2026).** Cap. 3 (3.2.4: "os cinco primeiros anúncios de cada busca, na ordem do site") × dados do cap. 9 (Tabela 9.1). As exportações de 03/11 01:11 não têm a posição na busca (o coletor ordenava por preço); o build usa, nelas, até 5 ofertas por site espaçadas na ordem de preço. O texto descreve o critério, e os números só o seguem depois da recoleta com o coletor 2026.11.03-8 (pendências, B5).
@@ -59,8 +61,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D04 — Categorias da análise de conteúdo do B2 (revisto em 03/11/2026).** Cap. 2 (2.5) × caps. 3, 5 e 6. A grade final é a de 22 temas (cap. 3, Apêndice F), usada em 5.2 e 6.1. O cap. 2 ainda resume as categorias como comida, serviço, ambiente, acervo e preço e diz que a análise está na 6.2; ela está na 6.1 (temas) e na 6.2 (produto). Sugestão: no 2.5, remeter à grade do Apêndice F e às seções 5.2 e 6.1.
 
-**D05 — PRC anunciada e aplicada pela metade.** Cap. 2 (2.2.2) × cap. 5 (5.2.2). O cap. 2 define a PRC pela comparação da nota de quem elogia, de quem critica e de quem não menciona o aspecto (penalidade e recompensa contra uma referência). O cap. 5.2.2 traz só a nota média das menções negativas (2,83 na mediação; 3,11 no preço), sem a referência nem as positivas. Lido isolado, parece que a classificação Kano já saiu. Sugestão: no cap. 5 dar as três notas (ou a diferença para a referência) ou dizer que a classificação fica para o cap. 6. Em 31/10, o cap. 3 (3.5.1) define a PRC como a nota média com e sem crítica a cada tema, sem o grupo de quem elogia; alinhar com a definição do cap. 2.
-
 **D07 — Bares: rival ou substituto?** Cap. 2 (2.2) × cap. 5 (Quadro 5.2). O cap. 2 põe bares e restaurantes entre os substitutos. O Quadro 5.2 põe o "bar comum" na rivalidade ("alta no bar comum") e de novo nos substitutos. A mesma unidade em duas forças contraria a lógica de um grupo por unidade. Sugestão: decidir uma posição (ex.: bar com jogo ou quiz = rival; bar comum = substituto) e usá-la nos dois capítulos.
 
 **D08 — "Principal custo fixo" sem dado e contra o próprio capítulo.** Cap. 5 (5.5, campo econômico × 5.1.1). A 5.5 afirma que o aluguel é o principal custo fixo da luderia; o 5.1.1 mostra, na PAS 2024, pessoal em 25,1% e aluguel em 4,0% da receita da alimentação. Sugestão: tirar "principal" ou sustentar com cotação (N1) e FipeZAP; a frase orienta a sensibilidade do cap. 9.
@@ -73,25 +73,13 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D12 — Contagens do cap. 5 diferentes das do AGORA.** Cap. 5 × `AGORA.md` (15/10). Cardápio coletado: 26 casas no 5.3.4, 27 no AGORA. B2: "1.588 avaliações de 53 casas" no 5.2.2, contra 54 casas no objeto do B1 (5.3.1). Instagram: "49 luderias com perfil coletado" no 5.5.4, contra 18 casas parciais ou sem coleta no Notion. Sugestão: tirar os números dos arquivos de `dados/` na hora de revisar e dizer qual casa falta e por quê (a soma deve fechar com 54).
 
-**D19 — Proporção de mercadorias da PAS em dois anos.** Cap. 5 (5.1.1) × cap. 9 (9.2). O cap. 5 dá 26,8% da receita líquida para mercadorias e materiais (PAS 2024, tabela 10758) e diz que o número entra no cap. 9; o cap. 9 usa 29,6% (PAS 2023, tabela 2613, a base que está no B4) para o CMV provável de 30%. Sugestão: baixar a PAS 2024 para o B4 e usar o mesmo ano nos dois capítulos.
-
 **D20 — Ocupação de dia útil em N6 entre as premissas críticas.** Cap. 9 (9.2 e 9.7) × `8_financeiro.md` (§2, regra de robustez). A taxa de ocupação de dia útil é a 4ª do tornado e só tem estimativa do autor. A regra admite isso com faixa larga e destaque no cap. 10, que ainda não existe. Sugestão: buscar fonte N3 (curva de horários de pico do Google Maps das luderias do B1) ou manter e levar ao cap. 10.
 
-**D32 — Ruído e horário: nenhum capítulo trata.** Cap. 5 (5.5, campo legal) × cap. 8 (Quadro 8.1). A reforma tributária já está no 8.1, e a PESTEL agora a resume no campo político. A regulação municipal de ruído e horário noturno segue `[BUSCAR]` na 5.5 e sem linha no Quadro 8.1. Sugestão: buscar a norma de Salvador e pôr uma linha no Quadro 8.1, ou tirar a menção da 5.5.
-
 **D48 — Referência do Sebrae (02/11/2026).** Cap. 1 ("SEBRAE, 2026") × fonte. A referência "Jogos de tabuleiro movimentaram R$ 53 bilhões em 2024. Agência de Notícias do Sebrae, 2026" tem o título de uma matéria do Estado de Minas (jul. 2026); a matéria da Agência Sebrae com o número ("Mercado de jogos de tabuleiro avança no Brasil, apesar dos grandes desafios") traz data de 24 maio 2023, e o valor é da Statista, para o mercado mundial. Sugestão: citar a matéria da Agência Sebrae (ou a Statista) com o título e a data reais, e o link.
-
-**D38 — Números que mudam entre capítulos (02/11/2026).** 7.5 (48 pessoas por dia) × 4.5, 7.2 e 9.4 (51); 5.3.3 e 6.3 ("22 dos 53") × B1 com 54; 5.3.3 (taxa de R$ 5,00 a R$ 40,00) × Tabela 6.1 (Encounter a R$ 45,00); aluguel pessimista de R$ 64,36 (6.4) × R$ 64,35 (Quadro 9.2); "15 dos 22" que diferenciam o preço (6.3) × 16 na Tabela 6.1 (17 com a BoardZ, que não cobra entrada), que tem 24 linhas. Sugestão: tirar todos do modelo do cap. 9 e do B1 regerados.
-
-**D42 — Taxa da São Jogue fora da média do modelo (02/11/2026).** O B1 (aba cesta) marca a taxa da São Jogue como "não encontrada", embora a Tabela 6.1 e a NFC-e do B3 a tragam (R$ 22,00 e R$ 28,00). A média de R$ 18,68 (caps. 4, 6, 9 e 11) não inclui a única casa de Salvador, e as 22 casas da média não são as 22 da Tabela 6.1. A Ludus tem taxa zero na Tabela 6.1 e couvert de R$ 34,00/44,00 numa fonte secundária de 2024. Sugestão: corrigir o B1 e regerar a média e o modelo.
 
 ## Aceitável
 
 **D64 — Página do modelo Kano em Picolo e Tontini: p. 40 × p. 39 (03/11/2026).** Cap. 2 (2.3: "(PICOLO; TONTINI, 2008, p. 40)") × PDF da pasta `bibliografia/`, em que a definição dos atributos obrigatórios e atrativos está na p. 39 (página impressa). A variante `estilo_manual/` já cita p. 39. Sugestão: conferir e trocar para p. 39 no TMin.
-
-**D72 — Cesta de jogos: 12 ou 15 acervos (04/11/2026).** Cap. 3 (3.2.1) diz que a cesta reúne os títulos presentes em 15 ou mais dos 30 acervos; o cap. 6 (6.2) diz 12 ou mais, e o acervo inicial de 175 títulos vem desse corte. Conferir no B1 qual limite gerou os 175 e igualar os dois capítulos.
-
-**D69 — Taxa adotada × taxa do modelo (04/11/2026).** Cap. 6 (6.3) adota R$ 18,68 de taxa; o modelo separa R$ 22,32 pela parcela de 28,4% da cesta (R07), e o cap. 10 (SWOT) e o 9.6 citam R$ 22,32. O 6.3 declara que a diferença não muda a receita total. Sugestão: manter declarado ou fazer o modelo usar R$ 18,68 e jogar o restante no A&B.
 
 **D70 — Ludus: "não cobra" × R$ 40 (04/11/2026).** Cap. 5 (5.3) registra que a Ludus declara não cobrar taxa; o CSV do B2 traz R$ 40 pela CNN. Sugestão: conferir o site e a matéria e ficar com uma fonte.
 
@@ -104,10 +92,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D62 — BDI e TCU sem sigla no Apêndice E (03/11/2026).** A fonte da I01 no Apêndice E (vinda de `gerar_modelo_financeiro.py`) usa "BDI" e "TCU", que o texto principal escreve por extenso e a lista de siglas não traz.
 
 **D60 — Grade ERRC sem base no cap. 2 (03/11/2026).** Cap. 6 (6.1, Quadro 6.1, KIM; MAUBORGNE, 2005 [AV]) × cap. 2. A grade ERRC entra no 6.1, como pede `_instrucoes/5_marketing.md`, mas o cap. 2 não a apresenta, e a obra está sem conferência. Sugestão: uma frase no 2.2 ou no 2.3, ou manter só a citação no 6.1 e conferir a obra.
-
-**D57 — Taxa adotada × taxa contida no gasto (02/11/2026; revisto em 03/11/2026).** Cap. 6 (6.3: taxa de R$ 18,68, média dos 22 que cobram) × cap. 9 (9.6: R$ 19,83, 24,7% do gasto de R$ 80,14, R07). Em 03/11, a frase do 6.3 que declarava a diferença (6%) saiu no corte do capítulo; só o 9.6 compara as duas. Sugestão: manter, ou fixar o preço adotado em R$ 19,83 para o texto e o modelo coincidirem.
-
-**D37 — Erros de digitação no cap. 1 (02/11/2026).** §2 da introdução: "São Paul" (São Paulo).
 
 **D14 — Formatação de referências repetidas.** Caps. 1, 2 e 5. Sebrae: "Agência de Notícias do Sebrae" (cap. 1) × "Agência Sebrae de Notícias" (cap. 5). Abrinq sem local no cap. 1 e com local no cap. 5. Resolve-se na lista única de referências.
 

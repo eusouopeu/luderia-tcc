@@ -8,7 +8,7 @@ capítulos em negrito e caixa alta, seções em caixa alta e subseções em negr
 Uso: python3 _src/extras/gerar_pretextuais_tmin.py textos/capitulos/TCC_luderia_TMin_v<n>.docx
 
 Reescreve o .docx no lugar. Tudo o que vem antes do título "1 INTRODUÇÃO" é
-trocado pela capa, pela folha de rosto e pelos elementos novos, numa seção própria, sem número de página
+trocado pela capa, pela folha de rosto, pela folha de aprovação e pelos elementos novos, numa seção própria, sem número de página
 impresso; a numeração do texto continua a contagem (ABNT NBR 14724). As
 páginas saem do PDF gerado pelo LibreOffice: o script gera o documento com
 páginas provisórias, converte, lê em que página está cada título e legenda,
@@ -86,6 +86,8 @@ SIGLAS = {
     "PESTEL": "Fatores políticos, econômicos, sociais, tecnológicos, ambientais e legais",
     "PIS": "Programa de Integração Social",
     "PLR": "Participação nos lucros ou resultados",
+    "MTP": "Ministério do Trabalho e Previdência",
+    "PERT": "Distribuição de três pontos da Program Evaluation and Review Technique",
     "PNAD": "Pesquisa Nacional por Amostra de Domicílios",
     "POF": "Pesquisa de Orçamentos Familiares",
     "PRC": "Análise do contraste da penalidade e da recompensa",
@@ -148,7 +150,16 @@ def capa_e_rosto():
              linha(NATUREZA, antes=2400, jc="both", esq=4536),
              linha(f"Orientador: {ORIENTADOR}", antes=360, jc="left", esq=4536),
              linha(LOCAL, antes=2700), linha(ANO)]
-    return "".join(capa + rosto)
+    # folha de aprovação (NBR 14724, 4.2.1.3): os nomes da banca e a data entram quando a banca for definida
+    membro = lambda nome, inst: [linha("_" * 50, antes=700), linha(nome), linha(inst)]
+    aprov = ([linha(AUTOR.upper(), quebra=True), titulo_trabalho(900),
+              linha(NATUREZA, antes=900, jc="both", esq=4536),
+              linha(f"Aprovado em ____ de ________________ de {ANO}.", antes=900, jc="left"),
+              linha("BANCA EXAMINADORA", b=True, antes=600)]
+             + membro(f"{ORIENTADOR} – Orientador", "Universidade Federal da Bahia")
+             + membro("Membro da banca examinadora", "Instituição")
+             + membro("Membro da banca examinadora", "Instituição"))
+    return "".join(capa + rosto + aprov)
 
 
 
@@ -263,11 +274,11 @@ def main():
             sumario.append((2, s))
         elif st == "Heading2":
             sumario.append((3, s))
-        elif re.match(r"Figura [\d.]+ –", s):
+        elif re.match(r"Figura [\dA-G.]+ –", s):
             figs.append(s)
-        elif re.match(r"Quadro [\d.]+ –", s):
+        elif re.match(r"Quadro [\dA-G.]+ –", s):
             quads.append(s)
-        elif re.match(r"Tabela [\d.]+ –", s):
+        elif re.match(r"Tabela [\dA-G.]+ –", s):
             tabs.append(s)
     i_ref = next(i for i, e in enumerate(corpo) if txt(e).upper() == "REFERÊNCIAS")
     texto = " ".join(html.unescape(" ".join(re.findall(r"<w:t[^>]*>([^<]*)</w:t>", e))) for e in corpo[:i_ref] if not re.search(r'<w:pStyle w:val="(Title|Heading\d)"', e[:300]))

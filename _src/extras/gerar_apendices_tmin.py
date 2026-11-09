@@ -3,13 +3,13 @@ Apêndices do TMin num .docx separado do trabalho principal.
 
 Uso: python3 _src/extras/gerar_apendices_tmin.py textos/capitulos/TCC_luderia_TMin_v<n>.docx
 
-Gera `textos/capitulos/TCC_luderia_TMin_apendices_v<n>.docx` (mesmo número de
-versão do principal) com os apêndices citados no texto, na ordem de citação:
+Acrescenta ao fim do próprio .docx principal, depois das referências (09/11/2026: texto e apêndices num só
+documento, pedido da orientação; antes, um .docx separado), os apêndices citados no texto, na ordem de citação:
 A (concorrentes do B1), B (contagem direta do B3), C (bases públicas do B4),
 D (matriz de evidências), E (registro de premissas), F (análise de conteúdo
 das avaliações do B2) e G (Monte Carlo). Os números vêm dos dados e do modelo
 financeiro (`gerar_modelo_financeiro.py`), não do texto; os do F, das saídas de
-`_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_temas_grade2.py`. Estilos, rodapé e margens são copiados do .docx principal.
+`_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_temas_grade2.py`. Estilos, rodapé e margens são os do .docx principal.
 
 Toda vez que o principal mudar, rodar de novo: o script confere se o principal
 cita exatamente os apêndices A a G e se os números-chave citados no texto
@@ -35,6 +35,7 @@ B3 = ROOT / "dados" / "[B3] Contagem direta de ocupacao"
 B2 = ROOT / "dados" / "[B2] Avaliacoes recentes" / "analise_conteudo"
 FIG_MC = ROOT / "textos" / "capitulos" / "figuras" / "9_monte_carlo.png"
 LETRAS = "ABCDEFG"
+DATA_MODELO = "09/11/2026"  # versão do modelo financeiro de que saem os apêndices E e G
 
 
 # --------------------------------------------------------------- formato
@@ -162,7 +163,7 @@ def taxas_entrada():
     return [par("A Tabela A.2 traz a taxa de entrada de cada concorrente que a divulga, usada no preço da luderia (seção 6.3)."),
             legenda("Tabela A.2 – Taxa de entrada por pessoa nos concorrentes que a divulgam (R$)"),
             tabela("Tabela", [3071, 2300, 1800, 1900], linhas, ["left", "left", "right", "right"], sz=18),
-            fonte(notas["fonte"], fim=False), nota(notas["nota"].replace("em negrito, a São Jogue", "São Jogue"))]
+            fonte(notas["fonte"], fim=False), nota("Nota: " + notas["nota"].replace("em negrito, a São Jogue", "São Jogue"))]
 
 
 def termos_busca(est):
@@ -212,12 +213,12 @@ def apendice_a(d):
 def apendice_b(d):
     v = d["vis"].copy()
     v["mesas_ocupadas"] = v["ocupacao_mesas_media_pct"] / 100 * v["mesas_denominador"]
-    t1 = [["Visita", "Unidade", "Horas observadas", "Grupos sentados", "Pessoas por grupo", "Permanência média (min)",
-           "Mesas ocupadas em média", "Ocupação no pico (%)"]]
+    t1 = [["Visita", "Unidade", "Horas observadas", "Circulação na entrada (pessoas por hora)", "Grupos sentados", "Pessoas por grupo",
+           "Permanência média (min)", "Mesas ocupadas em média", "Ocupação no pico (%)"]]
     for r in v.itertuples():
         t1.append([r.visita_inicio[:10].split("-")[2] + "/" + r.visita_inicio[5:7], UNIDADE[r.unidade], num(round(r.horas_observadas, 1)),
-                   str(int(r.grupos_mesa)), num(round(r.tamanho_grupo_mesa, 1)), num(round(r.permanencia_mesa_media_min)),
-                   num(round(r.mesas_ocupadas, 2)), num(round(r.ocupacao_mesas_pico_pct, 1))])
+                   brl(r.pessoas_por_hora), str(int(r.grupos_mesa)), num(round(r.tamanho_grupo_mesa, 1)),
+                   num(round(r.permanencia_mesa_media_min)), num(round(r.mesas_ocupadas, 2)), num(round(r.ocupacao_mesas_pico_pct, 1))])
     n = d["notas"]
     t2 = [["Unidade", "De", "Até", "Dias", "NFC-e emitidas", "NFC-e por dia"]] + [
         [UNIDADE[r.unidade], r.de[8:10] + "/" + r.de[5:7] + " " + r.de[11:16], r.ate[8:10] + "/" + r.ate[5:7] + " " + r.ate[11:16],
@@ -229,13 +230,15 @@ def apendice_b(d):
                 "chamadas ao instrutor. A ocupação é a proporção das mesas ocupadas, calculada minuto a minuto, sobre 10 mesas na "
                 "Bela Vista e 9 na Paralela (Tabela B.1)."),
             legenda("Tabela B.1 – Registros por visita"),
-            tabela("Tabela", [800, 1171, 1050, 1050, 1050, 1350, 1300, 1300], t1, ["left", "left"] + ["right"] * 6),
+            tabela("Tabela", [800, 1071, 900, 1200, 900, 900, 1100, 1100, 1100], t1, ["left", "left"] + ["right"] * 7),
             fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B3 (10/10/2026 a 30/10/2026).", fim=False),
-            nota("Nota: visita pela data de início. Mesas ocupadas em média = ocupação média × mesas da unidade; pessoas por grupo e "
+            nota("Nota: visita pela data de início. Circulação: pessoas que entraram pela porta ÷ horas observadas, sem quem já estava "
+                 "dentro na chegada (Tabela 3.1). Mesas ocupadas em média = ocupação média × mesas da unidade; pessoas por grupo e "
                  "permanência só dos grupos sentados durante a visita."),
             par("As vendas fora das horas observadas vêm da numeração das notas fiscais. A NFC-e de uma compra do autor no início e no "
                 "fim de cada visita dá o número da nota, e a diferença entre duas visitas da mesma unidade dá as notas emitidas no "
-                "intervalo (Tabela B.2). Como nem toda venda gera nota, o valor é um piso."),
+                "intervalo (Tabela B.2). Como a nota só sai a pedido do cliente, o valor é um piso das vendas, e não uma contagem de clientes: "
+                "o número de pessoas por nota não foi medido."),
             legenda("Tabela B.2 – Notas fiscais emitidas entre visitas"),
             tabela("Tabela", [1771, 1800, 1800, 1000, 1350, 1350], t2, ["left", "left", "left", "right", "right", "right"]),
             fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B3 (NFC-e da São Jogue, 10/10/2026 a 30/10/2026).")], {}
@@ -273,26 +276,28 @@ def apendice_c(d):
             legenda("Tabela C.3 – Salários de admissão da equipe"),
             tabela("Tabela", [4371, 1200, 1200, 2300], t3, ["left", "center", "right", "right"]),
             fonte("Fonte: elaborado pelo próprio autor, com base no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana).", fim=False),
-            nota("Nota: recreador em todas as atividades e cozinheiro geral na CNAE 56; meio período proporcional a 20 h de 44 h.")], {}
+            nota("Nota: recreador em todas as atividades, porque a CNAE 56 tem amostra pequena para a ocupação, e cozinheiro geral na "
+                 "CNAE 56, sem chefe de cozinha no recorte. Salário mensal de admissão, pago inteiro nas jornadas de 38 a 40 h por semana "
+                 "do plano (seção 7.5); sem empregado de meio período.")], {}
 
 
 def apendice_d(d):
     q = [["Decisão", "Pergunta", "Dado usado (premissas)", "Fonte", "Nível"],
-         ["Bairro", "Onde está o público, longe da concorrência direta?", "Pessoas de 20 a 39 anos, apartamentos e densidade por bairro; endereço da São Jogue", "Censo 2022 (B4); B1", "N2 + N3"],
+         ["Bairro", "Onde instalar o ponto?", "IISU, renda per capita e densidade por bairro, com pesos do autor; estação de metrô a até 1.000 m", "QUALISalvador e Censo 2022 (B4); B1", "N2 + N3 + N6"],
          ["Modelo de cobrança", "Como o mercado cobra a entrada?", "Taxa por dia e turno nos concorrentes; NFC-e da São Jogue", "B1; B3", "N3 + N5"],
-         ["Taxa de entrada", "Quanto cobrar por pessoa?", "Couvert ou taxa de jogo de 22 casas; parcela da taxa na cesta de consumo de 12 casas (R07)", "B1", "N3"],
-         ["Consumo", "Quanto cada pessoa gasta?", "Gasto por pessoa declarado no Google Maps e cesta de consumo de 12 casas (R06)", "B1; B2", "N3"],
-         ["Demanda", "Quantas pessoas entram por dia?", "Circulação no pico nas visitas e pelas NFC-e (R04); concorrentes abertos por hora (R15)", "B1; B3", "N5 + N3"],
+         ["Taxa de entrada", "Quanto cobrar por pessoa?", "Média da taxa das 22 casas que cobram, fora a São Jogue (R07)", "B1", "N3"],
+         ["Consumo", "Quanto cada pessoa gasta?", "Gasto por pessoa declarado no Google Maps em 13 casas (701 declarações) e cesta de consumo de 10 casas (R06)", "B1; B2", "N3"],
+         ["Demanda", "Quantas pessoas entram por dia?", "Circulação no pico nas visitas e pelas NFC-e (R04); concorrentes abertos por hora (R15, R19)", "B1; B3", "N5 + N3"],
          ["Dia útil", "Quanto o dia útil recebe do fim de semana?", "Gasto com cartão em restaurantes por dia da semana (R05)", "ANR e Mastercard", "N4"],
          ["Mesas e grupo", "Quantas mesas o salão precisa?", "Mesas, pessoas por mesa e permanência nas visitas (R01 a R03)", "B3", "N5 + N6"],
-         ["Horário", "Em que dias e horas abrir?", "Horário de 49 concorrentes (R13, R14, R16, R17)", "B1", "N3"],
+         ["Horário", "Em que dias e horas abrir?", "Horário de 54 concorrentes (R13, R14, R16, R17)", "B1", "N3"],
          ["Equipe", "Quantas pessoas e a que custo?", "Fluxo nas visitas; salário de admissão (C06); encargos (C07)", "B3; Novo CAGED (B4); CLT", "N5 + N2 + N1"],
-         ["Acervo inicial", "Quais jogos e a que custo?", "Acervos de 30 concorrentes e preço nas lojas (I05)", "B1", "N3"],
+         ["Acervo inicial", "Quais jogos e a que custo?", "Jogos presentes em 12 ou mais dos 30 acervos e preço nas lojas de 8 concorrentes (I05)", "B1", "N3"],
          ["Ponto", "Quanto custa o ponto?", "Aluguel por m² (C04); área (C03)", "FipeZap (B4); autor", "N2 + N6"],
-         ["Custo das mercadorias", "Qual o CMV do A&B?", "CMV dos serviços de alimentação (C01)", "PAS (B4)", "N2"],
+         ["Custo das mercadorias", "Qual o CMV do A&B?", "Mercadorias dos serviços de alimentação, 2023 e 2024 (C01)", "PAS (B4)", "N2"],
          ["Regime tributário", "Qual a carga sobre a receita?", "Anexos I e III; CNAE", "LC n. 123/2006; CONCLA", "N1"],
          ["Taxa de desconto", "Qual o custo de oportunidade?", "Selic e IPCA projetados; prêmio de risco (M01)", "BCB (B4); autor", "N2 + N6"],
-         ["Investimento", "Quanto custa abrir?", "Reforma, mobiliário, cozinha e informática, item a item (I01 a I04); pré-operacionais (I06)", "SINAPI e anúncios de sites (B5); autor", "N2 + N3 + N6"]]
+         ["Investimento", "Quanto custa abrir?", "Reforma, mobiliário, cozinha e informática, item a item (I01 a I04); pré-operacionais (I06); itens sem cotação (I10)", "SINAPI e anúncios de sites (B5); autor", "N2 + N3 + N6"]]
     return [titulo("APÊNDICE D – MATRIZ DE EVIDÊNCIAS"),
             par("A matriz liga cada decisão do plano à pergunta que ela responde, ao dado usado, à fonte e ao nível de evidência, de N1, "
                 "o mais confiável, a N6, a estimativa do autor (Quadro 3.1). Os códigos entre parênteses são as premissas do modelo "
@@ -364,8 +369,9 @@ def apendice_f(d):
     k2 = k[(k["rodada"] == 2) & (k["variavel"].str.startswith("temas"))].iloc[0]
     return [titulo("APÊNDICE F – ANÁLISE DE CONTEÚDO DAS AVALIAÇÕES (BLOCO B2)"),
             par("As 1.628 avaliações com texto do B2 foram codificadas numa grade de 22 temas, os mesmos para elogio e crítica: "
-                "a coluna em que o tema entra dá a polaridade, e um tema conta uma vez por avaliação. A codificação foi feita com "
-                "apoio de inteligência artificial, pelo dicionário de temas, e validada pela recodificação cega do autor (seção 3.3). "
+                "a coluna em que o tema entra dá a polaridade, e um tema conta uma vez por avaliação. A primeira codificação foi feita "
+                "pelo modelo de linguagem Claude, da Anthropic, com o dicionário de temas como instrução, e validada pela "
+                "recodificação cega do autor (seção 3.3). "
                 "O Quadro F.1 traz a grade, o número de avaliações que elogiam e que criticam cada tema e a nota média das "
                 "avaliações com crítica."),
             legenda("Quadro F.1 – Grade de temas e frequência nas avaliações"),
@@ -406,24 +412,33 @@ def apendice_g(d):
          ["Cenários com payback em até 5 anos (%)", pct(mc["payback_5anos"])],
          ["Payback descontado mediano (anos)", num(round(mc["payback_mediana"], 1))]]
     return [titulo("APÊNDICE G – SIMULAÇÃO DE MONTE CARLO"),
-            par(f"A simulação sorteia {brl(g.N_SIMULACOES, 0)} cenários do modelo do capítulo 9. Em cada cenário, toda premissa com faixa "
-                "recebe um valor contínuo de uma distribuição PERT entre o pessimista e o otimista, com moda no provável: a PERT dá menos "
-                "peso às pontas que a triangular. Há duas exceções. As pessoas por mesa (R02), que só limitam o salão, vão de 2 a 6. A taxa "
+            par(f"A simulação sorteia {brl(g.N_SIMULACOES, 0)} cenários do mesmo modelo do capítulo 9, na versão de {DATA_MODELO}. Em cada cenário, toda premissa com faixa "
+                "recebe um valor contínuo de uma distribuição PERT entre o pessimista e o otimista, com moda no provável. A PERT usa os "
+                "três valores que o registro de premissas já tem (Apêndice E) e concentra a probabilidade perto do provável, enquanto a "
+                "triangular, com os mesmos três valores, dá mais peso às pontas; a uniforme ignoraria o provável. Há duas exceções. As pessoas por mesa (R02), que só limitam o salão, vão de 2 a 6. A taxa "
                 "mínima de atratividade fica no provável, 15%: o risco já está no fluxo de caixa, e sorteá-la contaria o risco duas vezes."),
             par("A simulação inclui as decisões de gestão do capítulo 10. Se a circulação sorteada passa do que o salão comporta, a luderia abre mais 2 mesas a "
                 "partir do ano 2, com o mobiliário proporcional pago no fim do ano 1. Se o EBITDA de um ano, a partir do ano 2, fica "
-                "negativo, o gatilho G5 corta o meio período e um cozinheiro no ano seguinte. Se o EBITDA segue negativo, o gatilho G6 "
+                "negativo, o gatilho G5 troca o cardápio por comidas recebidas prontas e corta um cozinheiro no ano seguinte. Se o EBITDA segue negativo, o gatilho G6 "
                 "encerra o negócio no fim desse ano, com a devolução da caução e do capital de giro e a revenda dos ativos (I09), sem valor "
-                "residual. A semente é fixa, e o resultado se repete a cada execução."),
-            par("As premissas são sorteadas de forma independente. A simulação mede o efeito conjunto das faixas melhor que os cenários "
+                "residual. No cenário que chega ao ano 5, entra o valor residual, e a caução e o capital de giro ficam no negócio, como no "
+                "capítulo 9. A semente é fixa, e o resultado se repete a cada execução."),
+            par("As premissas são sorteadas de forma independente. A independência é uma hipótese, e não um dado: as fontes de cada "
+                "premissa são diferentes (contagem direta, avaliações, bases públicas, estimativas do autor), e o trabalho não tem "
+                "observações conjuntas para medir a correlação entre elas. A hipótese tem um efeito conhecido. Se a circulação e o gasto "
+                "por pessoa caíssem juntos, como numa crise de renda, as caudas da distribuição seriam mais largas, e a probabilidade de "
+                "VPL positivo, menor. A simulação mede o efeito conjunto das faixas melhor que os cenários "
                 "extremos, que põem todas as premissas no mesmo lado ao mesmo tempo (Tabela G.1 e Figura G.1). Com 10 mil cenários, a "
-                f"probabilidade de VPL positivo tem erro padrão de {num(round(100 * mc['erro_prob'], 1))} ponto percentual."),
+                f"probabilidade de VPL positivo tem erro padrão de {num(round(100 * mc['erro_prob'], 1))} ponto percentual. Ela vale para "
+                "as hipóteses simuladas – as faixas do Apêndice E, a PERT e a independência – e não é a chance de sucesso do negócio."),
             legenda("Tabela G.1 – Resultados da simulação de Monte Carlo"),
             tabela("Tabela", [6071, 3000], t, ["left", "right"]),
-            fonte("Fonte: elaborado pelo próprio autor, com base no modelo financeiro (02/11/2026)."),
+            fonte(f"Fonte: elaborado pelo próprio autor, com base no modelo financeiro ({DATA_MODELO})."),
             legenda("Figura G.1 – Distribuição do VPL na simulação de Monte Carlo"),
             figura("rIdApF1", FIG_MC, "Figura G.1 – Distribuição do VPL na simulação de Monte Carlo"),
-            fonte("Fonte: elaborado pelo próprio autor, com base no modelo financeiro (02/11/2026).")], dict(prob=pct(mc["prob_positivo"]))
+            fonte(f"Fonte: elaborado pelo próprio autor, com base no modelo financeiro ({DATA_MODELO}).", fim=False),
+            nota("Nota: barras: número de cenários em cada faixa de VPL. Linha pontilhada: VPL igual a zero; à esquerda dela, os "
+                 "cenários com VPL negativo. Linha cheia: VPL mediano dos 10 mil cenários.")], dict(prob=pct(mc["prob_positivo"]))
 
 
 # --------------------------------------------------------------- conferência com o principal
@@ -445,13 +460,16 @@ def confere(texto, chaves):
 
 
 def main():
+    """Põe os apêndices no fim do próprio .docx principal, depois das referências (um só documento com o texto e os
+    apêndices, pedido da orientação de 09/11/2026). Rodar uma vez sobre o .docx recém-gerado, antes dos pré-textuais."""
     principal = Path(sys.argv[1])
-    versao = re.search(r"_v(\d+)\.docx$", principal.name).group(1)
-    saida = principal.with_name(f"TCC_luderia_TMin_apendices_v{versao}.docx")
     z = zipfile.ZipFile(principal)
-    x = z.read("word/document.xml").decode()
-    i_body = x.find("<w:body>") + len("<w:body>")
-    sect = x[x.rfind("<w:sectPr"):x.rfind("</w:body>")]
+    itens = [(i, z.read(i.filename)) for i in z.infolist()]
+    z.close()
+    arq = dict((i.filename, d) for i, d in itens)
+    x = arq["word/document.xml"].decode()
+    if "APÊNDICE A –" in html.unescape(x):
+        raise SystemExit(f"{principal.name} já tem os apêndices; gerar o principal de novo antes")
     texto = html.unescape(" ".join(re.findall(r"<w:t[^>]*>([^<]*)</w:t>", x[:x.rfind("REFERÊNCIAS")])))
 
     d = dados()
@@ -462,8 +480,8 @@ def main():
     erros = confere(texto, chaves)
     if erros:
         raise SystemExit("Principal e apêndices divergem:\n- " + "\n- ".join(erros))
-    corpo[0] = corpo[0].replace("<w:pageBreakBefore/>", "")
-    doc = x[:i_body] + "".join(corpo) + sect + "</w:body></w:document>"
+    k = x.rfind("<w:sectPr")
+    doc = x[:k] + "".join(corpo) + x[k:]
     # a raiz vem do principal; o .docx do gerar_docx_capitulo.js não declara os prefixos da figura
     ns = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main",
           "pic": "http://schemas.openxmlformats.org/drawingml/2006/picture",
@@ -472,24 +490,21 @@ def main():
     raiz = re.search(r"<w:document[^>]*>", doc).group(0)
     falta = "".join(f' xmlns:{p}="{u}"' for p, u in ns.items() if f"xmlns:{p}=" not in raiz)
     doc = doc.replace(raiz, raiz[:-1] + falta + ">", 1)
-
-    rels = re.sub(r'<Relationship [^>]*Target="(?:media/|comments)[^>]*/>', "", z.read("word/_rels/document.xml.rels").decode())
+    rels = arq["word/_rels/document.xml.rels"].decode()
     rels = rels.replace("</Relationships>", '<Relationship Id="rIdApF1" Type="http://schemas.openxmlformats.org/officeDocument/2006/'
                                             f'relationships/image" Target="media/{FIG_MC.name}"/></Relationships>')
-    with zipfile.ZipFile(saida, "w", zipfile.ZIP_DEFLATED) as zo:
-        for item in z.infolist():
-            if item.filename.startswith("word/media/") or item.filename.startswith("word/comments"):
+    tipos = arq["[Content_Types].xml"]
+    if b'Extension="png"' not in tipos:
+        tipos = tipos.replace(b"<Default ", b'<Default Extension="png" ContentType="image/png"/><Default ', 1)
+    with zipfile.ZipFile(principal, "w", zipfile.ZIP_DEFLATED) as zo:
+        for item, dado in itens:
+            if item.filename == f"word/media/{FIG_MC.name}":
                 continue
-            dado = z.read(item.filename)
-            if item.filename == "word/document.xml":
-                dado = doc.encode()
-            elif item.filename == "word/_rels/document.xml.rels":
-                dado = rels.encode()
-            elif item.filename == "[Content_Types].xml":
-                dado = re.sub(rb'<Override PartName="/word/comments[^>]*/>', b"", dado)
+            dado = {"word/document.xml": doc.encode(), "word/_rels/document.xml.rels": rels.encode(),
+                    "[Content_Types].xml": tipos}.get(item.filename, dado)
             zo.writestr(item, dado)
         zo.write(FIG_MC, f"word/media/{FIG_MC.name}")
-    print(f"OK: {saida.name}; conferência com {principal.name} sem divergência ({chaves})")
+    print(f"OK: apêndices A a G no fim de {principal.name}; conferência sem divergência ({chaves})")
 
 
 if __name__ == "__main__":

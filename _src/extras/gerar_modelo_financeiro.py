@@ -16,10 +16,14 @@ script para.
 
 Modelo em preços constantes (out/2026), com TMA real. Mensal nos 60 meses
 (rampa de maturação no ano 1), anual na DRE e no fluxo de caixa. No ano 5
-voltam a caução e o capital de giro e entra o valor residual (M03):
-perpetuidade sem crescimento do EBITDA do ano 5 menos o reinvestimento anual
-(igual à depreciação), à TMA, com piso zero (se a perpetuidade for negativa, o
-negócio fecha). A aba sensibilidade mostra o VPL com e sem o valor residual.
+entra o valor residual (M03): perpetuidade sem crescimento do EBITDA do ano 5
+menos o reinvestimento anual (igual à depreciação), à TMA, com piso zero. Com
+valor residual, o negócio segue aberto, e a caução e o capital de giro ficam
+nele (já estão no valor da perpetuidade); sem valor residual (M03 = 0 ou
+perpetuidade negativa), o negócio fecha no ano 5 e os dois voltam ao caixa
+(correção de 09/11/2026: antes os dois voltavam junto com o valor residual, o
+que contava o mesmo dinheiro duas vezes). A aba sensibilidade mostra o VPL com
+e sem o valor residual.
 
 Receita (decisão do autor, 02/11/2026): pessoas por dia de fim de semana =
 circulação no pico (pessoas que entram por hora nas visitas do B3, sem escala
@@ -28,10 +32,11 @@ em cada hora do plano ÷ casas abertas nas janelas das visitas); dia útil = mes
 circulação × horas de pico equivalentes do dia útil (R19) × razão dia útil ÷ fim de
 semana do gasto com cartão (ANR/Mastercard).
 Receita por pessoa = gasto por pessoa declarado no Google Maps (B2), média das
-13 casas com taxa de entrada conhecida; a cesta de consumo é taxa de entrada +
-bebida + hambúrguer mais barato sem ser vegetariano, e a parcela da taxa nessa
-cesta (10 casas com cesta) separa a receita de taxa (anexo III) da de A&B
-(anexo I e CMV).
+13 casas com taxa de entrada conhecida. A taxa de entrada (R07) é o preço
+adotado na seção 6.3, R$ 18,68 em todos os cenários (média da taxa das 22 casas
+que cobram, fora a São Jogue), e o restante do gasto é A&B (anexo I e CMV);
+antes de 09/11/2026, a taxa era 28,4% do gasto (R$ 22,32 no provável), o que
+não batia com o preço adotado.
 
 Desenho enxuto (P7 de _instrucoes/1a_principios.md, 02/11/2026): 6 mesas;
 terça a sábado das 14h às 23h (9 h) e domingo das 14h às 20h (6 h), segunda
@@ -120,7 +125,7 @@ FERIADOS_ANO = 14  # 9 nacionais, 2 de julho (BA) e 4 de Salvador (Lei n. 9.093/
 TARIFA_VT = 5.90  # ônibus de Salvador desde 05/01/2026; ida e volta por dia trabalhado (Lei n. 7.418/1985)
 SEMANAS_MES = 365.25 / 7 / 12
 # vida útil (anos) dos itens depreciáveis, a mesma da aba investimento
-VIDA_UTIL = dict(reforma=5, mobiliario=10, cozinha=10, ti=5, acervo=5, preop=5)
+VIDA_UTIL = dict(reforma=5, mobiliario=10, cozinha=10, ti=5, acervo=5, preop=5, outros=5)
 ANOS = 5
 CENARIOS = ("pessimista", "provavel", "otimista")
 N_SIMULACOES = 10_000
@@ -349,9 +354,9 @@ def premissas(f) -> list[dict]:
         R("R06", "Gasto por pessoa (cesta de consumo)", "R$ por pessoa", *[round(z, 2) for z in gasto],
           f"B2, preço por pessoa declarado no Google Maps, {int(gc['avaliacoes'].sum())} avaliações de {len(gc)} casas", "N3",
           "Média dos gastos médios das casas com taxa de entrada conhecida; pessimista e otimista na casa de menor e de maior gasto."),
-        R("R07", "Parcela da taxa de entrada no gasto", "% do gasto", round(parcela, 4), round(parcela, 4), round(parcela, 4),
-          f"B1, cardápios e taxas de entrada de {len(f['gasto_casas_cesta'])} dessas casas", "N3",
-          "Taxa de entrada média ÷ cesta de consumo média (taxa + bebida + hambúrguer); separa a receita de taxa (anexo III) da de A&B (anexo I e CMV)."),
+        R("R07", "Taxa de entrada", "R$ por pessoa", *[round(f["couvert_media"], 2)] * 3,
+          f"B1, média da taxa de cada casa nos {f['couvert_n']} concorrentes que a cobram, fora a São Jogue (seção 6.3)", "N3",
+          "Preço adotado, igual em todos os dias e cenários; o restante do gasto por pessoa (R06) é A&B. Separa a receita de taxa (anexo III) da de A&B (anexo I e CMV)."),
         R("R09", "Aluguéis de jogos", "aluguéis por mês", 10, 30, 60,
           "Estimativa do autor", "N6",
           "Serviço oferecido pela São Jogue; volume não observado."),
@@ -359,16 +364,16 @@ def premissas(f) -> list[dict]:
           "Tabela da São Jogue (4 dias: R$ 15,00 a R$ 60,00)", "N3",
           "Categoria prata como provável."),
         R("R11", "Ocupação no mês 1", "% da madura", 0.30, 0.40, 0.50,
-          "Estimativa do autor (_instrucoes, §5)", "N6",
+          "Estimativa do autor", "N6",
           "Sem ocupação madura no mês 1."),
         R("R12", "Meses até a maturidade", "meses", 12, 9, 6,
-          "Estimativa do autor (_instrucoes, §5)", "N6",
+          "Estimativa do autor", "N6",
           "Rampa de 6 a 12 meses."),
         R("R13", "Horas abertas por semana, fim de semana", "h", 24, 24, 24,
-          "B1: horário de 49 concorrentes (Google Maps, out/2026); decisão do autor", "N3",
+          "B1: horário de 54 concorrentes (Google Maps, out/2026); decisão do autor", "N3",
           "Sexta e sábado das 14h às 23h (9 h) e domingo das 14h às 20h (6 h): cobre o pico de sábado (18h) e o de domingo (17h); decisão do autor, 04/11/2026."),
         R("R14", "Horas abertas por semana, dia útil", "h", 27, 27, 27,
-          "B1: horário de 49 concorrentes (Google Maps, out/2026); decisão do autor", "N3",
+          "B1: horário de 54 concorrentes (Google Maps, out/2026); decisão do autor", "N3",
           "Terça a quinta das 14h às 23h; segunda fechada (71% dos concorrentes fecham)."),
         R("R15", "Horas de pico equivalentes por dia de fim de semana", "h", round(r15, 2), round(r15, 2), round(r15, 2),
           "B1: horário de 54 concorrentes (Google Maps, out/2026)", "N3",
@@ -411,11 +416,11 @@ def premissas(f) -> list[dict]:
         R("C12", "Sistemas (caixa, reservas, nota fiscal)", "R$ por mês", 600, 450, 300, "Estimativa do autor", "N6", "Assinaturas."),
         R("C13", "Reposição do acervo", "% do acervo ao ano", 0.15, 0.10, 0.05, "Estimativa do autor", "N6", "Peças perdidas e jogos novos."),
         R("C14", "Refeição da equipe no local", "R$ por refeição", 15, 12, 9, "Estimativa do autor", "N6",
-          "Insumos de uma refeição por turno, feita pela cozinha da casa (benefício sem natureza salarial: CLT, art. 458, § 2º); decisão do autor, 04/11/2026."),
+          "Insumos de uma refeição por turno, feita pela cozinha da casa (alimentação in natura, que não integra a remuneração: CLT, art. 457, § 2º); decisão do autor, 04/11/2026."),
         R("C15", "Refeições da equipe", "refeições por mês", round(refeicoes, 1), round(refeicoes, 1), round(refeicoes, 1),
-          "Escala do cap. 7", "N1", "Uma por turno: dias trabalhados por semana de cada empregado × semanas do mês."),
+          "Escala do cap. 7; decisão do autor (04/11/2026)", "N6", "Uma por turno: dias trabalhados por semana de cada empregado × semanas do mês."),
         R("C16", "Participação nos lucros ou resultados (PLR)", "% do EBITDA positivo do ano", 0.05, 0.05, 0.05,
-          "Decisão do autor (04/11/2026); Lei n. 10.101/2000", "N1",
+          "Decisão do autor (04/11/2026); Lei n. 10.101/2000", "N6",
           "Paga só em ano com EBITDA positivo, sem encargos; rateio por pontos e metas da área (cap. 7)."),
         R("I01", "Reforma e instalações", "R$ por m²", *b5("I01", "i01_rs_m2"),
           "B5: SINAPI BA (Caixa, set/2026, com BDI do TCU) e coletas em sites (nov/2026); quantidades do autor", "N2 + N3 + N6",
@@ -437,6 +442,9 @@ def premissas(f) -> list[dict]:
         R("I08", "Capital de giro", "meses de custo fixo", 3, 2, 1.5, "Estimativa do autor", "N6", "Cobre a rampa de maturação."),
         R("I09", "Revenda dos ativos na saída (G6)", "% de mobiliário, cozinha, informática e acervo", 0.20, 0.30, 0.40,
           "Estimativa do autor", "N6", "Só no Monte Carlo: valor recuperado quando o gatilho G6 encerra o negócio (02/11/2026)."),
+        R("I10", "Itens sem cotação (letreiro, balcão, kit de gás e sleeves)", "R$", 25000, 17000, 11000,
+          "Estimativa do autor", "N6",
+          "Verba para os itens da abertura ainda sem preço no B5: letreiro de fachada, balcão do caixa, instalação de gás e sleeves das cartas do acervo (09/11/2026)."),
         R("M01", "Taxa mínima de atratividade (real)", "% ao ano", 0.18, 0.15, 0.12,
           "BCB: Selic meta e Focus (B4); prêmio de risco do autor", "N2 + N6",
           f"Juro real de {f['juro_real']:.1f}% (Selic {f['selic']:.1f}% e IPCA esperado de {f['ipca_2027']:.1f}% para 2027) mais 3 a 9 p.p. de risco de pequeno negócio."),
@@ -467,8 +475,8 @@ def calcula(f, v: dict, folha: float) -> dict:
         r04 = min(mesas * v["R02"] * 60 / v["R03"], v["R04"] * tend)
         p_fds = r04 * v["R15"] * v["R16"] * rampa * v["M02"]
         p_du = r04 * v["R05"] * v["R15"] * v["R19"] * v["R17"] * rampa * v["M02"]
-        taxa_fds, taxa_du = p_fds * v["R06"] * v["R07"], p_du * v["R06"] * v["R07"]
-        ab = (p_fds + p_du) * v["R06"] * (1 - v["R07"])
+        taxa_fds, taxa_du = p_fds * v["R07"], p_du * v["R07"]
+        ab = (p_fds + p_du) * (v["R06"] - v["R07"])
         alug = v["R09"] * v["R10"] * rampa * tend
         m.append(dict(ano=(mes - 1) // 12 + 1, pessoas=p_fds + p_du, taxa=taxa_fds + taxa_du,
                       ab=ab, alug=alug, bruta=taxa_fds + taxa_du + ab + alug))
@@ -485,7 +493,7 @@ def calcula(f, v: dict, folha: float) -> dict:
     m["fixos"] = fixos
     m["ebitda"] = m["bruta"] - m["simples"] - m["cmv"] - m["cartao"] - m["fixos"]
     inv = dict(reforma=v["I01"] * v["C03"], mobiliario=v["I02"], cozinha=v["I03"], ti=v["I04"],
-               acervo=v["I05"], preop=v["I06"], caucao=v["I07"] * aluguel, giro=v["I08"] * fixos)
+               acervo=v["I05"], preop=v["I06"], outros=v["I10"], caucao=v["I07"] * aluguel, giro=v["I08"] * fixos)
     total_inv = sum(inv.values())
     ano = m.groupby("ano")[["bruta", "simples", "cmv", "cartao", "fixos", "ebitda"]].sum()
     # PLR (C16): parcela do EBITDA anual positivo, paga depois do fechamento do ano
@@ -495,7 +503,8 @@ def calcula(f, v: dict, folha: float) -> dict:
     deprec = sum(inv[k] / VIDA_UTIL[k] for k in VIDA_UTIL)
     residual = v["M03"] * max(0.0, (ano.loc[ANOS, "ebitda"] - deprec) / v["M01"])
     fc = [-total_inv] + list(ano["ebitda"])
-    fc[-1] += inv["caucao"] + inv["giro"] + residual
+    # com valor residual o negócio continua, e a caução e o capital de giro ficam nele; sem, voltam
+    fc[-1] += residual if residual > 0 else inv["caucao"] + inv["giro"]
     desc = [x / (1 + v["M01"]) ** t for t, x in enumerate(fc)]
     vpl = sum(desc)
     acum, payback = 0.0, float("nan")
@@ -591,7 +600,8 @@ def calcula_mc(f, v: dict, folha: float, quadro) -> dict:
         fc.append(e)
         g5 = g5 or e < 0
     if not fechou:
-        fc[-1] += inv["caucao"] + inv["giro"] + v["M03"] * max(0.0, (e - deprec) / v["M01"])
+        res = v["M03"] * max(0.0, (e - deprec) / v["M01"])
+        fc[-1] += res if res > 0 else inv["caucao"] + inv["giro"]
     desc = [x / (1 + v["M01"]) ** t for t, x in enumerate(fc)]
     acum, payback = 0.0, float("nan")
     for t, dsc in enumerate(desc):
@@ -819,9 +829,9 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
         ws[f"{c}5"] = f"={c}14*P_R15*P_R16*{c}4*P_M02"
         ws[f"{c}6"] = f"={c}14*P_R05*P_R15*P_R19*P_R17*{c}4*P_M02"
         ws[f"{c}7"] = f"={c}5+{c}6"
-        ws[f"{c}8"] = f"={c}5*P_R06*P_R07"
-        ws[f"{c}9"] = f"={c}6*P_R06*P_R07"
-        ws[f"{c}10"] = f"={c}7*P_R06*(1-P_R07)"
+        ws[f"{c}8"] = f"={c}5*P_R07"
+        ws[f"{c}9"] = f"={c}6*P_R07"
+        ws[f"{c}10"] = f"={c}7*(P_R06-P_R07)"
         ws[f"{c}11"] = f"=P_R09*P_R10*{c}4*{c}13"
         ws[f"{c}12"] = f"=SUM({c}8:{c}11)"
     estilo(ws, 2, 14, 2 + MESES)
@@ -881,6 +891,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
     itens = [("Reforma e instalações", "=P_I01*P_C03", 5), ("Mobiliário", "=P_I02", 10),
              ("Cozinha e bar", "=P_I03", 10), ("Caixa e informática", "=P_I04", 5),
              ("Acervo inicial de jogos", "=P_I05", 5), ("Gastos pré-operacionais", "=P_I06", 5),
+             ("Itens sem cotação", "=P_I10", 5),
              ("Caução do aluguel", "=P_I07*custos!$C$8", 0), ("Capital de giro", "=P_I08*custos!$C$18", 0)]
     for i, (n, fo, vida) in enumerate(itens):
         r = 3 + i
@@ -891,7 +902,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
     estilo(ws, 2, rt, 4, MOEDA)
     for r in range(3, rt):
         ws.cell(r, 3).number_format = "0"
-    nota(ws, rt + 2, "Fonte: aba premissas (I01 a I08, C03). Reforma depreciada em 5 anos (prazo típico de locação); caução e capital de giro voltam no ano 5. Valor residual na aba fluxo_caixa (M03).", 4)
+    nota(ws, rt + 2, "Fonte: aba premissas (I01 a I08, I10, C03). Reforma depreciada em 5 anos (prazo típico de locação); caução e capital de giro voltam no ano 5 só sem valor residual (o negócio fecha). Valor residual na aba fluxo_caixa (M03).", 4)
     ws.column_dimensions["A"].width = 30
     for col in "BCD":
         ws.column_dimensions[col].width = 18
@@ -914,7 +925,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
               (10, "(-) Custos fixos", lambda c: "=-" + soma("custos", 18, c)),
               (11, "(-) Participação nos lucros (PLR)", lambda c: f"=-P_C16*MAX(0,{c}9+{c}10)"),
               (12, "EBITDA", lambda c: f"={c}9+{c}10+{c}11"),
-              (13, "(-) Depreciação e amortização", lambda c: "=-investimento!$D$11"),
+              (13, "(-) Depreciação e amortização", lambda c: "=-investimento!$D$12"),
               (14, "Lucro líquido", lambda c: f"={c}12+{c}13"),
               (15, "Margem líquida", lambda c: f"=IF({c}4=0,0,{c}14/{c}4)")]
     for r, n, fo in contas:
@@ -939,17 +950,17 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
         ws.cell(2, 2 + t, f"Ano {t}")
         ws.cell(3, 2 + t, t)
     ws["A3"] = "Ano (número)"
-    rot = {4: "Investimento", 5: "EBITDA", 6: "Retorno da caução e do capital de giro", 7: "Fluxo líquido",
+    rot = {4: "Investimento", 5: "EBITDA", 6: "Retorno da caução e do capital de giro (só sem valor residual)", 7: "Fluxo líquido",
            8: "Fator de desconto", 9: "Fluxo descontado", 10: "Fluxo descontado acumulado",
            11: "Payback descontado (auxiliar)", 12: "Valor residual (perpetuidade sem crescimento, piso zero)"}
     for r, n in rot.items():
         ws.cell(r, 1, n)
     for t in range(ANOS + 1):
         c = get_column_letter(2 + t)
-        ws[f"{c}4"] = "=-investimento!$B$11" if t == 0 else 0
+        ws[f"{c}4"] = "=-investimento!$B$12" if t == 0 else 0
         ws[f"{c}5"] = 0 if t == 0 else f"=dre!{get_column_letter(1 + t)}12"
-        ws[f"{c}6"] = "=investimento!$B$9+investimento!$B$10" if t == ANOS else 0
-        ws[f"{c}12"] = (f"=P_M03*MAX(0,(dre!{get_column_letter(1 + t)}12-investimento!$D$11)/P_M01)"
+        ws[f"{c}6"] = f"=IF({c}12>0,0,investimento!$B$10+investimento!$B$11)" if t == ANOS else 0
+        ws[f"{c}12"] = (f"=P_M03*MAX(0,(dre!{get_column_letter(1 + t)}12-investimento!$D$12)/P_M01)"
                         if t == ANOS else 0)
         ws[f"{c}7"] = f"=SUM({c}4:{c}6)+{c}12"
         ws[f"{c}8"] = f"=1/(1+P_M01)^{c}3"
@@ -974,7 +985,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
     for j, h in enumerate(["Indicador", "Valor", "Unidade"], 1):
         ws.cell(2, j, h)
     ind = [("Cenário ativo", '=CHOOSE(P_CEN,"pessimista","provável","otimista")', ""),
-           ("Investimento inicial", "=investimento!B11", "R$"),
+           ("Investimento inicial", "=investimento!B12", "R$"),
            ("VPL a TMA real", "=SUM(fluxo_caixa!B9:G9)", "R$"),
            ("TIR real", '=IFERROR(IRR(fluxo_caixa!B7:G7),"não há")', "% ao ano"),
            ("Payback descontado", '=IF(COUNT(fluxo_caixa!C11:G11)=0,"mais de 5 anos",MIN(fluxo_caixa!C11:G11))', "anos"),
@@ -1124,18 +1135,18 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
         ("Horas de pico equivalentes por dia de fim de semana", "=P_R15", "=P_R13/P_R16",
          "Horas abertas por dia de fim de semana: as horas de pico equivalentes têm de caber no horário"),
         ("Pessoas atendidas por dia × NFC-e da Bela Vista", "=B3", float(notas.loc["BV", "notas_emitidas"] / notas.loc["BV", "dias"]),
-         "NFC-e emitidas por dia, São Jogue Bela Vista, 10/10 a 16/10/2026 (B3); uma nota por pessoa, emitida só a pedido: piso de clientes"),
+         "NFC-e emitidas por dia, São Jogue Bela Vista, 10/10 a 16/10/2026 (B3); nota emitida só a pedido, sem medida de pessoas por nota: ordem de grandeza"),
         ("Pessoas atendidas por dia × NFC-e da Paralela", "=B3", float(notas.loc["PA", "notas_emitidas"] / notas.loc["PA", "dias"]),
-         "NFC-e por dia, São Jogue Paralela, 17/10 a 30/10/2026 (B3), com o fim de semana da eleição; piso de clientes"),
+         "NFC-e por dia, São Jogue Paralela, 17/10 a 30/10/2026 (B3), com o fim de semana da eleição; ordem de grandeza"),
         ("Receita por pessoa (R$)", "=receitas!BJ12/receitas!BJ7", float(f["gasto_casas_cesta"]["cesta_consumo"].mean()),
          "Cesta de consumo média (taxa de entrada + bebida + hambúrguer) das casas da R06 (B1)"),
-        ("Taxa de entrada (R$)", "=P_R06*P_R07", float(f["taxa_b1_mediana"]),
+        ("Taxa de entrada (R$)", "=P_R07", float(f["taxa_b1_mediana"]),
          f"Mediana do couvert ou taxa de jogo nos cardápios de {f['taxa_b1_n']} concorrentes (B1)"),
         ("Pessoas atendidas por dia por funcionário", "=B3/QUADRO_N", "",
          "Equipe do desenho enxuto (aba pessoal)"),
         ("Visitas por ano ÷ população de Salvador", "=receitas!BJ7*12/C12", float(f["pop_salvador"]),
          "População estimada de Salvador em 2026 (IBGE, B4); visitas, não pessoas distintas"),
-        ("Meses até a maturidade", "=P_R12", "", "Entre 6 e 12 meses (_instrucoes, §5)"),
+        ("Meses até a maturidade", "=P_R12", "", "Entre 6 e 12 meses (estimativa do autor)"),
     ]
     for i, (n, mo, ref, fonte) in enumerate(ch):
         r = 3 + i
@@ -1202,8 +1213,10 @@ def figura_monte_carlo(mc):
     fig, ax = plt.subplots(figsize=(6.3, 3.6), dpi=300)
     mil = [x / 1000 for x in mc["vpls"]]
     ax.hist(mil, bins=60, color="#7f7f7f", edgecolor="white", linewidth=0.3)
-    ax.axvline(0, color="black", linewidth=0.8, linestyle=":")
-    ax.axvline(mc["mediana"] / 1000, color="black", linewidth=0.8)
+    ax.axvline(0, color="black", linewidth=0.8, linestyle=":", label="VPL = 0")
+    ax.axvline(mc["mediana"] / 1000, color="black", linewidth=0.8,
+               label=f"Mediana (R$ {mc['mediana'] / 1000:,.0f} mil)".replace(",", "."))
+    ax.legend(fontsize=7, frameon=False, prop={"family": "Arial", "size": 7})
     ax.set_xlabel("VPL (R$ mil)", fontsize=8, fontname="Arial")
     ax.set_ylabel("Cenários simulados", fontsize=8, fontname="Arial")
     ax.tick_params(labelsize=7)
@@ -1285,6 +1298,10 @@ def main():
     print(f"Monte Carlo: P(VPL>0) {mc['prob_positivo']:.1%} | média {mc['media']:,.0f} | P5 {mc['p05']:,.0f}"
           f" | P25 {mc['p25']:,.0f} | mediana {mc['mediana']:,.0f} | P75 {mc['p75']:,.0f} | P95 {mc['p95']:,.0f}"
           f" | payback em 5 anos {mc['payback_5anos']:.1%} | payback mediano {mc['payback_mediana']:.2f}")
+    for cen in CENARIOS:
+        g = calcula_mc(f, valores(prem, cen), folha, quadro)
+        print(f"[{cen}] com os gatilhos G5 e G6: VPL {g['vpl']:,.0f} | G5 {g['g5']} | G6 {g['fechou']}"
+              f" | TIR sem valor residual {tir(sem_residual[cen]['fc']):.1%}")
     print(f"\nOK: {SAIDA.relative_to(ROOT)}, {FIGURA.relative_to(ROOT)} e {FIGURA_MC.relative_to(ROOT)}")
 
 

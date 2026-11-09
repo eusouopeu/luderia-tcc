@@ -72,7 +72,7 @@ A ocasião em grupo também aparece nas avaliações, embora poucas digam com qu
 
 **Ambiental.** O efeito sobre o negócio é residual. O acervo é um bem durável, usado por muitos clientes ao longo de anos, e o manejo dos resíduos da cozinha entra na licença sanitária (seção 8.2). Por isso, a dimensão não é detalhada.
 
-**Legal.** As normas de maior efeito são as de licença e de venda. O alvará depende de a zona do ponto admitir serviço de alimentação e lazer (Lei municipal n. 9.148/2016) [AV], e a lotação aprovada pelo Corpo de Bombeiros fixa o teto de mesas. A venda de bebida alcoólica a menores de 18 anos é crime (Lei n. 8.069/1990, art. 243), o que exige conferência de idade no caixa, e a música ambiente gera retribuição ao Escritório Central de Arrecadação e Distribuição (ECAD) (Lei n. 9.610/1998, art. 68). As obrigações e o custo de cada uma estão no capítulo 8; a regulação municipal de ruído e horário ainda precisa ser conferida [BUSCAR]. Cada norma vira custo ou processo.
+**Legal.** As normas de maior efeito são as de licença e de venda. O alvará depende de a zona do ponto admitir serviço de alimentação e lazer (Lei municipal n. 9.148/2016) [AV], e a lotação aprovada pelo Corpo de Bombeiros fixa o teto de mesas. A venda de bebida alcoólica a menores de 18 anos é crime (Lei n. 8.069/1990, art. 243), o que exige conferência de idade no caixa, e a música ambiente gera retribuição ao Escritório Central de Arrecadação e Distribuição (ECAD) (Lei n. 9.610/1998, art. 68). As obrigações e o custo de cada uma estão no capítulo 8. Cada norma vira custo ou processo.
 
 ## 5.3 CINCO FORÇAS DE PORTER
 
@@ -106,7 +106,7 @@ A seção detalha a rivalidade e a ameaça de substitutos com os dados dos conco
 
 ### 5.4.1 Acervo e preço
 
-O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 22 dos 54 concorrentes, com mediana de R$ 20,00 por pessoa (de R$ 5,00, na Toca do Rato, em Porto Alegre, a R$ 45,00, na Encounter, em São Paulo, no sábado); a Ludus declara que não cobra, e nos outros 31 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (seção 6.3). O consumo por pessoa, uma bebida e o hambúrguer não vegetariano mais barato do cardápio, tem mediana de R$ 46,00 em 27 casas, com faixa interquartil de R$ 38,00 a R$ 62,90, e é de R$ 41,00 na São Jogue (Bloco B1, 2026). O hambúrguer entra no lugar de uma entrada ou prato qualquer porque aparece em quase todos os cardápios, o que torna as casas comparáveis. Salvador fica no meio da distribuição por metrópole (Figura 5.4). O couvert cobrado pelos concorrentes é a referência da taxa de entrada.
+O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 23 dos 54 concorrentes, com mediana de R$ 20,00 por pessoa nos 22 de fora de Salvador (de R$ 5,00, na Toca do Rato, em Porto Alegre, a R$ 45,00, na Encounter, em São Paulo, no sábado); a Ludus declara que não cobra, e nos outros 30 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (seção 6.3). O consumo por pessoa, uma bebida e o hambúrguer não vegetariano mais barato do cardápio, tem mediana de R$ 46,00 em 27 casas, com faixa interquartil de R$ 38,00 a R$ 62,90, e é de R$ 41,00 na São Jogue (Bloco B1, 2026). O hambúrguer entra no lugar de uma entrada ou prato qualquer porque aparece em quase todos os cardápios, o que torna as casas comparáveis. Salvador fica no meio da distribuição por metrópole (Figura 5.4). O couvert cobrado pelos concorrentes é a referência da taxa de entrada.
 
 **Figura 5.4 – Consumo por pessoa (uma bebida e um hambúrguer), mediana por metrópole (R$)**
 
@@ -118,7 +118,7 @@ Fonte: elaborado pelo próprio autor, com base nos cardápios do Bloco B1 (04/20
 
 O entorno de cada concorrente mede onde a casa fica em relação ao metrô e ao shopping de porte. O estudo usa o número de avaliações no Google Maps como medida indireta de fluxo, e a associação não prova causa.
 
-Entre os 54 concorrentes do B1, os 24 com estação de metrô a até 1.000 m têm mediana de 770 avaliações, contra 396 dos 30 sem estação (Bloco B1, entorno pelo Google Maps). O shopping de porte não mostra a mesma vantagem: os 10 concorrentes com shopping a até 1.000 m têm mediana de 396 avaliações, contra 663 dos 19 sem (25 sem dado). A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica dentro do Shopping Bela Vista, a 387 m do metrô. A comparação a 500 m depende da recarga do entorno em seis casas e ainda não foi feita [BUSCAR – contagens a 500 m do Bloco B1].
+Entre os 54 concorrentes do B1, os 24 com estação de metrô a até 1.000 m têm mediana de 770 avaliações, contra 396 dos 30 sem estação (Bloco B1, entorno pelo Google Maps). O shopping de porte não mostra a mesma vantagem: os 10 concorrentes com shopping a até 1.000 m têm mediana de 396 avaliações, contra 663 dos 19 sem (25 sem dado). A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica dentro do Shopping Bela Vista, a 387 m do metrô.
 
 A decisão afetada é o ponto: a luderia deve ficar a até 1.000 m de uma estação de metrô (seção 6.4). O shopping não entra como exigência.
 
@@ -158,7 +158,7 @@ FIGUEIREDO, Caio Moretti de; MANTOVANI, Daielly Melina Nassif. Jogos de tabuleir
 
 FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). *Índice FipeZAP*: locação comercial, julho de 2026. São Paulo, 2026. Disponível em: https://downloads.fipe.org.br/indices/fipezap/fipezap-202607-comercial.pdf. Acesso em: 2 nov. 2026.
 
-IBGE. *Censo Demográfico 2022*: população residente por idade. Rio de Janeiro: IBGE, 2023. Disponível em: https://sidra.ibge.gov.br/tabela/9514. Acesso em: 2 nov. 2026. `[AV ano]`
+IBGE. *Censo Demográfico 2022*: população residente por idade. Rio de Janeiro: IBGE, 2023. Disponível em: https://sidra.ibge.gov.br/tabela/9514. Acesso em: 2 nov. 2026.
 
 IBGE. *Estimativas da população residente*: 2026. Rio de Janeiro: IBGE, 2026. Disponível em: https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html. Acesso em: 2 nov. 2026.
 

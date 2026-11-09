@@ -1,21 +1,22 @@
 # AGORA
 
-Atualizado em 05/11/2026. Os pull requests 24 a 28 foram mesclados (itens novos em "Vindo dos pull requests", em `docs/pendencias.md`). Semana 8 do cronograma (31/10 a 06/11). Próxima entrega: **06/11, versão completa**; versão final para a banca em 16/11. Escopo congelado até a banca: só entra o que muda o TMin (`CLAUDE.md`, "Fluxo de trabalho até a banca").
+Atualizado em 09/11/2026. Correções da orientação aplicadas no **TMin v31** (texto e apêndices num só PDF, 116 páginas, com folha de aprovação). Versão final para a banca em 16/11. Escopo congelado até a banca: só entra o que muda o TMin (`CLAUDE.md`, "Fluxo de trabalho até a banca").
 
 ## Fazendo agora (no máximo duas frentes)
 
-1. **Texto do TMin v30** (05/11: cap. 5 reestruturado em 5.1 a 5.5; 6.4 com matriz IISU, renda e densidade e coleta de anúncios nos 3 finalistas; resumo, abstract e introdução completos; 94 páginas no PDF mais 15 de apêndices = 108, **8 acima do limite de 100**; Claude Docs ainda no v29; site de apresentação refeito sobre o v30, a publicar com `pnpm run deploy` no fim da revisão) (77 páginas de texto, p. 10 a 87, dentro do teto de 100; apêndices v29 conferidos; Claude Docs sincronizado com os `.md`). Plano de 51 h por semana, equipe de 5 (2 cozinheiros e 3 instrutores), refeição no local e PLR de 5% do EBITDA. Provável: investimento de R$ 312 mil, receita madura de R$ 77,1 mil por mês, equilíbrio de R$ 51,3 mil, VPL de R$ 795 mil (R$ 278 mil sem residual), TIR de 61,8%, payback de 2,8 anos, P(VPL > 0) de 82,1%. Falta a passada única de revisão dos pares com "*" e as citações `[AV]` (inclui CLT art. 458, Lei n. 10.101/2000 e o QualiSalvador, sem PDF).
-2. **Recoleta do B5** com o coletor 2026.11.03-8 (os números atuais usam até 5 ofertas por site espaçadas no preço) e coleta de letreiro, balcão e kit de gás; é o único dado que ainda muda números do TMin.
+1. **TMin v31 com as correções da orientação** (09/11): taxa de entrada fixa de R$ 18,68; valor residual sem dupla contagem de caução e giro; verba I10 para itens sem cotação; auditoria do B1 e B2 declarada como não feita; Tabela 3.1 por visita (média 6,40, mediana 5,08); cap. 11 com contribuições e limitações. Provável: investimento de R$ 329 mil, equilíbrio de R$ 52,2 mil, VPL de R$ 655 mil (R$ 228 mil sem residual), TIR de 54,4% (36,4% sem residual), payback de 3,1 anos, P(VPL > 0) de 78,5%. A ruptura da circulação (5,21) fica acima da mediana das visitas (L20).
+2. **Fechamento para a banca:** citações `[AV]` (Portaria MTP n. 671/2021, LOUOS, convenção SHRBS × Sindbares, livros) e corte até o teto de páginas.
 
 ## Próximos 3 passos
 
-1. Responder o "Lote de decisões" (L1 a L19; L19 é a terça com um só cozinheiro) em [pendências](docs/pendencias.md) e ler a convenção SHRBS × Sindbares vigente (piso, adicional noturno, alimentação); conferir CLT art. 458 e Lei n. 10.101/2000 (refeição e PLR).
-2. Passada única de revisão dos pares com "*", capítulo a capítulo; conferir Mattar (edição e ano) e Pfeffer e Sutton (páginas) (melhorias D62 e D63).
-3. Cortes do cap. 6 (C21) e dos apêndices até o teto de 9 páginas (L5 e L6); salvar o PDF do QualiSalvador em `bibliografia/`.
+1. Responder L20 a L22 no "Lote de decisões" ([pendências](docs/pendencias.md)): circulação provável pela média ou pela mediana; valores da verba I10 (estimados pelo Claude); nomes da banca na folha de aprovação.
+2. Conferir as citações `[AV]` e trocar por citação indireta as conferidas.
+3. Cortes até o teto (116 páginas com apêndices; melhorias D66 e C21).
 
 ## Bloqueado ou aguardando
 
 - Quantidades do investimento (N6): aguardam projeto do ponto na Pituba.
+- Folha de aprovação: aguarda os nomes dos membros da banca.
 
 ## Onde está o resto
 
