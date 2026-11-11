@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Horários de pico do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.11-3
+// @version      2026.11.11-4
 // @description  Lê o gráfico "Horários de pico" (ocupação relativa por dia e hora), o "ao vivo" e o tempo de permanência de lugares do Google Maps; coleta uma fila de lugares e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -216,13 +216,18 @@
         if (b) { bs.push({ ...b, leitura: 'rotulo' }); continue; }
         const anterior = bs[bs.length - 1];
         if (!anterior || !Number.isFinite(topo(filho))) continue;
+        // Hora atual com o lugar aberto: "Movimento atual: 41%, movimento esperado: 12%."
+        // (11/11/2026). O esperado é o valor do gráfico; sem ele, vale a altura,
+        // que deu o mesmo número nas 3 barras conferidas.
         const rotulo = filho.getAttribute('aria-label') || '';
-        const vivo = semAcento(rotulo).match(/(\d{1,3})\s*%/);
+        const t = semAcento(rotulo);
+        const vivo = t.match(/(?:atual|atualmente|currently)\D{0,5}(\d{1,3})\s*%/) || t.match(/(\d{1,3})\s*%/);
+        const esperado = t.match(/(?:esperado|normalmente|usually)\D{0,5}(\d{1,3})\s*%/);
         bs.push({
           hora: (anterior.hora + 1) % 24,
-          pct: reta ? Math.max(0, Math.round(reta(topo(filho)))) : '',
+          pct: esperado ? +esperado[1] : (reta ? Math.max(0, Math.round(reta(topo(filho)))) : ''),
           ao_vivo: vivo ? +vivo[1] : '',
-          leitura: `altura (rótulo: "${rotulo}")`,
+          leitura: esperado ? 'rotulo da hora atual' : `altura (rótulo: "${rotulo}")`,
         });
       }
       grupos.set(g, bs);
