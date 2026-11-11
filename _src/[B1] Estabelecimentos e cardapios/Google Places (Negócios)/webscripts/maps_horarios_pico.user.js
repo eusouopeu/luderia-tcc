@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Horários de pico do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.11-1
+// @version      2026.11.10-1
 // @description  Lê o gráfico "Horários de pico" (ocupação relativa por dia e hora), o "ao vivo" e o tempo de permanência de lugares do Google Maps; coleta uma fila de lugares e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -100,25 +100,42 @@
     c.scrollTo(0, 0);
   }
 
-  // "Normalmente 45% cheio às 19 h." / "45% busy at 7 PM." / "Normalmente 45% cheio às 19:00."
+  // Formatos do rótulo de cada barra (o Google muda sem aviso):
+  //   "Movimento às 13:00: 39%."            (desde nov/2026)
+  //   "Normalmente 45% cheio às 19 h."      (antigo)
+  //   "Usually 45% busy at 7 PM." / "45% busy at 7 PM."
+  // Com o "ao vivo", o rótulo traz dois números; vale o depois de "normalmente/usually".
   function lerBarra(rotulo) {
     const t = semAcento(rotulo);
-    let m = t.match(/(\d{1,3})\s*%.*?\b(?:as|a)\s*(\d{1,2})(?::\d{2})?\s*h?\b/);
-    if (m) return { pct: +m[1], hora: +m[2] };
-    m = t.match(/(\d{1,3})\s*%\s*busy at\s*(\d{1,2})\s*(am|pm)/);
-    if (m) return { pct: +m[1], hora: (+m[2] % 12) + (m[3] === 'pm' ? 12 : 0) };
+    if (!/%/.test(t) || !/(moviment|cheio|busy|ocupa|lotad)/.test(t)) return null;
+    const usual = t.match(/(?:normalmente|usually|geralmente)\D{0,20}?(\d{1,3})\s*%/);
+    const pct = usual ? +usual[1] : +(t.match(/(\d{1,3})\s*%/) || [])[1];
+    if (!Number.isFinite(pct)) return null;
+    const semPct = t.replace(/\d{1,3}\s*%/g, ' ');
+    let m = semPct.match(/\b(\d{1,2})\s*(am|pm)\b/);
+    if (m) return { pct, hora: (+m[1] % 12) + (m[2] === 'pm' ? 12 : 0) };
+    m = semPct.match(/\b(\d{1,2})(?::\d{2}|\s*h\b)/);
+    if (m && +m[1] < 24) return { pct, hora: +m[1] };
     return null;
   }
 
+  // O bloco do gráfico ("Horários de pico em <lugar>"); sem ele, o painel inteiro.
+  function raizGrafico() {
+    const p = painelPrincipal();
+    return [...p.querySelectorAll('[aria-label]')].find((e) => /hor[aá]rios de pico|popular times/i.test(e.getAttribute('aria-label'))) || p;
+  }
+
+  const visivel = (e) => e.getClientRects().length > 0 && getComputedStyle(e).display !== 'none';
+
   function lerPicos() {
-    const raiz = painelPrincipal();
+    const raiz = raizGrafico();
     const barras = [...raiz.querySelectorAll('[aria-label]')]
       .map((e) => ({ e, b: lerBarra(e.getAttribute('aria-label')) }))
       .filter((x) => x.b);
     if (!barras.length) {
       // Diagnóstico: se o Google mudou o texto das barras, os rótulos com "%" aparecem no console.
       console.info('[Horários de pico] rótulos com %:', [...raiz.querySelectorAll('[aria-label*="%"]')].map((e) => e.getAttribute('aria-label')));
-      const limitada = /visualiza[cç][aã]o limitada|limited view/i.test(raiz.innerText);
+      const limitada = /visualiza[cç][aã]o limitada|limited view/i.test(painelPrincipal().innerText);
       return { linhas: [], aviso: limitada ? 'Visualização limitada do Maps (sem login): o gráfico não aparece. Entre na conta.' : 'Sem gráfico de horários de pico neste lugar (ou ainda não carregou).' };
     }
 
@@ -130,16 +147,29 @@
       grupos.get(g).push(b);
     }
     const listas = [...grupos.entries()];
-    let inferido = false;
+    // Os grupos vêm na ordem do Maps (domingo primeiro) e só o do dia escolhido no
+    // seletor ("Terças-feiras") fica visível. Se o seletor e o grupo visível
+    // concordam com essa ordem, o dia está confirmado; se não, o seletor manda.
+    const seletor = [...raiz.querySelectorAll('button[aria-label]')]
+      .map((b) => DIAS_RE.findIndex((re) => re.test(semAcento(b.getAttribute('aria-label')))))
+      .find((d) => d >= 0);
+    const iVisivel = listas.findIndex(([g]) => visivel(g));
+    let deslocamento = 0;
+    let inferido = true;
+    if (listas.length === 7 && seletor !== undefined && iVisivel >= 0) {
+      deslocamento = (seletor - iVisivel + 7) % 7;
+      inferido = false;
+    }
     const linhas = [];
     listas.forEach(([g, bs], i) => {
-      // Rótulo do dia no próprio grupo ou num ancestro próximo; senão, a ordem do Maps (domingo primeiro).
+      // Rótulo do dia no próprio grupo ou num ancestral próximo, quando houver.
       let dia = -1;
       for (let a = g, k = 0; a && k < 4 && dia < 0; a = a.parentElement, k++) {
-        const r = a.getAttribute?.('aria-label') || '';
+        const r = semAcento(a.getAttribute?.('aria-label') || '');
+        if (/hor[aá]rios de pico|popular times/.test(r)) break;
         dia = DIAS_RE.findIndex((re) => re.test(r));
       }
-      if (dia < 0) { dia = i % 7; inferido = true; }
+      if (dia < 0) dia = (i + deslocamento) % 7;
       for (const b of bs) linhas.push({ dia_semana: DIAS[dia], ordem_dia: dia, hora: b.hora, ocupacao_relativa: b.pct });
     });
 
@@ -156,9 +186,9 @@
       else linhas.push({ dia_semana: DIAS[d.getDay()], ordem_dia: d.getDay(), hora: d.getHours(), ocupacao_relativa: '', ao_vivo: aoVivo });
     }
 
-    const texto = raiz.innerText;
+    const texto = painelPrincipal().innerText;
     const permanencia = (texto.match(/(As pessoas (normalmente|costumam)[^\n]*|Normalmente, as pessoas passam[^\n]*|People typically spend[^\n]*)/i) || [])[0] || '';
-    return { linhas, aviso: inferido ? 'Dia da semana inferido pela ordem do Maps (domingo primeiro); confira um dia no gráfico.' : '', permanencia, dia_inferido: inferido ? 'sim' : '' };
+    return { linhas, aviso: inferido ? 'Dia da semana inferido pela ordem do Maps (domingo primeiro), sem conferência pelo seletor; confira um dia no gráfico.' : '', permanencia, dia_inferido: inferido ? 'sim' : '' };
   }
 
   async function coletarEste() {

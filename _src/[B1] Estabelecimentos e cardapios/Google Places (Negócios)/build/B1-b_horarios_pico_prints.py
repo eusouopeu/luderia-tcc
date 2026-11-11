@@ -25,6 +25,10 @@ Método (leitura por pixel, sem ajuste manual):
      altura / maior altura da semana × 100. A leitura tem erro de ±1 px, cerca
      de ±1,3 ponto do índice.
 
+Validação (10/11/2026): o coletor corrigido leu os rótulos do Maps ("Movimento
+às 13:00: 39%.") da mesma página; os 68 pares dia × hora batem com a leitura
+dos prints, com diferença máxima de 0,7 ponto e média de -0,1.
+
 O índice é relativo (forma da curva), não pessoas. Serve para a razão entre
 dias e para as horas de pico equivalentes; a escala em pessoas vem do B3.
 

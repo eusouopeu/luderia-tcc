@@ -17,7 +17,6 @@ Atualizado em 10/11/2026. Correções da orientação aplicadas no **TMin v31** 
 
 - Quantidades do investimento (N6): aguardam projeto do ponto na Pituba.
 - Folha de aprovação: aguarda os nomes dos membros da banca.
-- Coletor de horários de pico (`maps_horarios_pico.user.js`): o Maps só mostra o gráfico com a conta Google conectada; a correção espera o login no navegador interno para ler o HTML atual. Os dados da São Jogue já saíram dos prints.
 
 ## Onde está o resto
 
