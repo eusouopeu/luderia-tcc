@@ -1,0 +1,9 @@
+﻿dia_semana;grupo;horas_abertas;horas_equivalentes_dia;horas_equivalentes_plano;hora_pico;indice_pico
+segunda;fechado no plano;10.0;3.915;;17.0;51.4
+terca;dia util;10.0;4.8;3.871;19.0;70.0
+quarta;dia util;10.0;4.799;3.842;21.0;57.1
+quinta;dia util;10.0;4.386;3.986;20.0;60.0
+sexta;fim de semana;10.0;4.686;4.215;19.0;68.6
+sabado;fim de semana;10.0;6.513;5.599;16.0;100.0
+domingo;fim de semana;8.0;3.657;2.914;18.0;62.9
+razao dia util / fim de semana;;;0.9414;0.9192;;

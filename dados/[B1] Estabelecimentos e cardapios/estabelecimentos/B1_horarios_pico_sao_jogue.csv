@@ -1,0 +1,69 @@
+﻿dia_semana;grupo;hora;altura_px;base_px;hora_atual_no_print;px_por_hora;arquivo;indice_semana
+segunda;fechado no plano;12;35;75;;19.86;2026-11-10_sao_jogue_horarios_pico_segunda.png;50.0
+segunda;fechado no plano;13;24;75;;19.86;2026-11-10_sao_jogue_horarios_pico_segunda.png;34.3
+segunda;fechado no plano;14;20;75;;19.86;2026-11-10_sao_jogue_horarios_pico_segunda.png;28.6
+segunda;fechado no plano;15;27;75;;19.86;2026-11-10_sao_jogue_horarios_pico_segunda.png;38.6
+segunda;fechado no plano;16;34;75;;19.86;2026-11-10_sao_jogue_horarios_pico_segunda.png;48.6
+segunda;fechado no plano;17;36;75;;19.86;2026-11-10_sao_jogue_horarios_pico_segunda.png;51.4
+segunda;fechado no plano;18;27;75;sim;19.86;2026-11-10_sao_jogue_horarios_pico_segunda.png;38.6
+segunda;fechado no plano;19;26;75;;19.86;2026-11-10_sao_jogue_horarios_pico_segunda.png;37.1
+segunda;fechado no plano;20;25;75;;19.86;2026-11-10_sao_jogue_horarios_pico_segunda.png;35.7
+segunda;fechado no plano;21;20;75;;19.86;2026-11-10_sao_jogue_horarios_pico_segunda.png;28.6
+terca;dia util;12;34;75;;19.86;2026-11-10_sao_jogue_horarios_pico_terca.png;48.6
+terca;dia util;13;31;75;;19.86;2026-11-10_sao_jogue_horarios_pico_terca.png;44.3
+terca;dia util;14;26;75;;19.86;2026-11-10_sao_jogue_horarios_pico_terca.png;37.1
+terca;dia util;15;24;75;;19.86;2026-11-10_sao_jogue_horarios_pico_terca.png;34.3
+terca;dia util;16;31;75;;19.86;2026-11-10_sao_jogue_horarios_pico_terca.png;44.3
+terca;dia util;17;41;75;;19.86;2026-11-10_sao_jogue_horarios_pico_terca.png;58.6
+terca;dia util;18;45;75;sim;19.86;2026-11-10_sao_jogue_horarios_pico_terca.png;64.3
+terca;dia util;19;49;75;;19.86;2026-11-10_sao_jogue_horarios_pico_terca.png;70.0
+terca;dia util;20;33;75;;19.86;2026-11-10_sao_jogue_horarios_pico_terca.png;47.1
+terca;dia util;21;22;75;;19.86;2026-11-10_sao_jogue_horarios_pico_terca.png;31.4
+quarta;dia util;12;31;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quarta.png;44.3
+quarta;dia util;13;36;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quarta.png;51.4
+quarta;dia util;14;36;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quarta.png;51.4
+quarta;dia util;15;38;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quarta.png;54.3
+quarta;dia util;16;34;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quarta.png;48.6
+quarta;dia util;17;29;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quarta.png;41.4
+quarta;dia util;18;26;75;sim;19.86;2026-11-10_sao_jogue_horarios_pico_quarta.png;37.1
+quarta;dia util;19;31;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quarta.png;44.3
+quarta;dia util;20;35;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quarta.png;50.0
+quarta;dia util;21;40;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quarta.png;57.1
+quinta;dia util;12;11;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quinta.png;15.7
+quinta;dia util;13;17;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quinta.png;24.3
+quinta;dia util;14;31;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quinta.png;44.3
+quinta;dia util;15;31;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quinta.png;44.3
+quinta;dia util;16;31;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quinta.png;44.3
+quinta;dia util;17;31;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quinta.png;44.3
+quinta;dia util;18;38;75;sim;19.86;2026-11-10_sao_jogue_horarios_pico_quinta.png;54.3
+quinta;dia util;19;40;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quinta.png;57.1
+quinta;dia util;20;42;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quinta.png;60.0
+quinta;dia util;21;35;75;;19.86;2026-11-10_sao_jogue_horarios_pico_quinta.png;50.0
+sexta;fim de semana;12;15;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sexta.png;21.4
+sexta;fim de semana;13;18;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sexta.png;25.7
+sexta;fim de semana;14;20;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sexta.png;28.6
+sexta;fim de semana;15;22;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sexta.png;31.4
+sexta;fim de semana;16;31;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sexta.png;44.3
+sexta;fim de semana;17;38;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sexta.png;54.3
+sexta;fim de semana;18;47;75;sim;19.86;2026-11-10_sao_jogue_horarios_pico_sexta.png;67.1
+sexta;fim de semana;19;48;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sexta.png;68.6
+sexta;fim de semana;20;48;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sexta.png;68.6
+sexta;fim de semana;21;41;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sexta.png;58.6
+sabado;fim de semana;12;26;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sabado.png;37.1
+sabado;fim de semana;13;38;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sabado.png;54.3
+sabado;fim de semana;14;55;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sabado.png;78.6
+sabado;fim de semana;15;64;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sabado.png;91.4
+sabado;fim de semana;16;70;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sabado.png;100.0
+sabado;fim de semana;17;64;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sabado.png;91.4
+sabado;fim de semana;18;47;75;sim;19.86;2026-11-10_sao_jogue_horarios_pico_sabado.png;67.1
+sabado;fim de semana;19;33;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sabado.png;47.1
+sabado;fim de semana;20;31;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sabado.png;44.3
+sabado;fim de semana;21;28;75;;19.86;2026-11-10_sao_jogue_horarios_pico_sabado.png;40.0
+domingo;fim de semana;13;27;75;;19.86;2026-11-10_sao_jogue_horarios_pico_domingo.png;38.6
+domingo;fim de semana;14;28;75;;19.86;2026-11-10_sao_jogue_horarios_pico_domingo.png;40.0
+domingo;fim de semana;15;28;75;;19.86;2026-11-10_sao_jogue_horarios_pico_domingo.png;40.0
+domingo;fim de semana;16;33;75;;19.86;2026-11-10_sao_jogue_horarios_pico_domingo.png;47.1
+domingo;fim de semana;17;38;75;;19.86;2026-11-10_sao_jogue_horarios_pico_domingo.png;54.3
+domingo;fim de semana;18;44;75;sim;19.86;2026-11-10_sao_jogue_horarios_pico_domingo.png;62.9
+domingo;fim de semana;19;33;75;;19.86;2026-11-10_sao_jogue_horarios_pico_domingo.png;47.1
+domingo;fim de semana;20;25;75;;19.86;2026-11-10_sao_jogue_horarios_pico_domingo.png;35.7
