@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Horários de pico do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.10-1
+// @version      2026.11.11-1
 // @description  Lê o gráfico "Horários de pico" (ocupação relativa por dia e hora), o "ao vivo" e o tempo de permanência de lugares do Google Maps; coleta uma fila de lugares e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -63,8 +63,10 @@
     const nome = document.querySelector('h1.DUwDvf, div[role="main"] h1')?.innerText.trim() || '';
     const endereco = (document.querySelector('button[data-item-id="address"]')?.getAttribute('aria-label') || '')
       .replace(/^(endereço|address):\s*/i, '').trim();
-    const cid = (url.match(/!1s(0x[0-9a-f]+:0x[0-9a-f]+)/i) || [])[1] || '';
-    const coord = url.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/) || url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/) || [];
+    // Quem abre um lugar a partir de outro leva os dois na URL; o aberto é o último.
+    const ultimo = (re) => [...url.matchAll(re)].pop();
+    const cid = (ultimo(/!1s(0x[0-9a-f]+:0x[0-9a-f]+)/gi) || [])[1] || '';
+    const coord = ultimo(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/g) || url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/) || [];
     const resumo = document.querySelector('div.F7nice')?.innerText || '';
     const nota = (resumo.match(/(\d[.,]\d)/) || [])[1]?.replace(',', '.') || '';
     const volume = (resumo.match(/\(([\d.,\s]+)\)/) || [])[1]?.replace(/\D/g, '') || '';
@@ -125,8 +127,6 @@
     return [...p.querySelectorAll('[aria-label]')].find((e) => /hor[aá]rios de pico|popular times/i.test(e.getAttribute('aria-label'))) || p;
   }
 
-  const visivel = (e) => e.getClientRects().length > 0 && getComputedStyle(e).display !== 'none';
-
   function lerPicos() {
     const raiz = raizGrafico();
     const barras = [...raiz.querySelectorAll('[aria-label]')]
@@ -147,29 +147,28 @@
       grupos.get(g).push(b);
     }
     const listas = [...grupos.entries()];
-    // Os grupos vêm na ordem do Maps (domingo primeiro) e só o do dia escolhido no
-    // seletor ("Terças-feiras") fica visível. Se o seletor e o grupo visível
-    // concordam com essa ordem, o dia está confirmado; se não, o seletor manda.
-    const seletor = [...raiz.querySelectorAll('button[aria-label]')]
-      .map((b) => DIAS_RE.findIndex((re) => re.test(semAcento(b.getAttribute('aria-label')))))
-      .find((d) => d >= 0);
-    const iVisivel = listas.findIndex(([g]) => visivel(g));
-    let deslocamento = 0;
-    let inferido = true;
-    if (listas.length === 7 && seletor !== undefined && iVisivel >= 0) {
-      deslocamento = (seletor - iVisivel + 7) % 7;
-      inferido = false;
+    // O Maps monta 7 vagas de dia, domingo primeiro. O dia fechado continua lá,
+    // sem barras, com o texto "Fechada às segundas-feiras". O dia de cada grupo é
+    // a posição da sua vaga entre as 7; o texto dos dias fechados confere a ordem.
+    // (Até 10/11/2026 o script só contava os grupos com barras, e numa casa
+    // fechada em algum dia os dias seguintes saíam deslocados.)
+    const vagaDe = (g) => {
+      for (let a = g; a && a.parentElement && a !== raiz; a = a.parentElement) {
+        if (a.parentElement.children.length === 7) return a;
+      }
+      return null;
+    };
+    const vagas = vagaDe(listas[0][0])?.parentElement;
+    let inferido = !vagas || !listas.every(([g]) => vagas.contains(g));
+    if (!inferido) {
+      [...vagas.children].forEach((v, i) => {
+        const fechado = semAcento(v.textContent).match(/fechad[ao] (?:as|aos|no|na)?\s*(\S+)|closed on (\S+)/);
+        if (fechado && DIAS_RE.findIndex((re) => re.test(fechado[1] || fechado[2])) !== i) inferido = true;
+      });
     }
     const linhas = [];
     listas.forEach(([g, bs], i) => {
-      // Rótulo do dia no próprio grupo ou num ancestral próximo, quando houver.
-      let dia = -1;
-      for (let a = g, k = 0; a && k < 4 && dia < 0; a = a.parentElement, k++) {
-        const r = semAcento(a.getAttribute?.('aria-label') || '');
-        if (/hor[aá]rios de pico|popular times/.test(r)) break;
-        dia = DIAS_RE.findIndex((re) => re.test(r));
-      }
-      if (dia < 0) dia = (i + deslocamento) % 7;
+      const dia = inferido ? i % 7 : [...vagas.children].findIndex((v) => v.contains(g));
       for (const b of bs) linhas.push({ dia_semana: DIAS[dia], ordem_dia: dia, hora: b.hora, ocupacao_relativa: b.pct });
     });
 
@@ -188,7 +187,7 @@
 
     const texto = painelPrincipal().innerText;
     const permanencia = (texto.match(/(As pessoas (normalmente|costumam)[^\n]*|Normalmente, as pessoas passam[^\n]*|People typically spend[^\n]*)/i) || [])[0] || '';
-    return { linhas, aviso: inferido ? 'Dia da semana inferido pela ordem do Maps (domingo primeiro), sem conferência pelo seletor; confira um dia no gráfico.' : '', permanencia, dia_inferido: inferido ? 'sim' : '' };
+    return { linhas, aviso: inferido ? 'Dia da semana inferido pela ordem dos grupos (as 7 vagas de dia não foram achadas); confira um dia no gráfico.' : '', permanencia, dia_inferido: inferido ? 'sim' : '' };
   }
 
   async function coletarEste() {
