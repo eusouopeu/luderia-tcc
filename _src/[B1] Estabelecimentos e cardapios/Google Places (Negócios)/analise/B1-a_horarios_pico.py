@@ -98,9 +98,12 @@ def dentro(hora, ts):
 
 
 def main():
+    # Junta todas as exportações (cada uma é o estado do navegador naquela hora)
+    # e fica, por lugar, com a coleta mais recente. Junta todas porque o coletor
+    # até a versão 2026.11.11-1 podia apagar uma casa ao gravar outra.
     arqs = sorted((BRUTOS / "horarios_pico").glob("maps_horarios_pico_*.csv"))
-    col = pd.read_csv(arqs[-1], sep=";", encoding="utf-8-sig", dtype={"dia_inferido": str})
-    print(f"Coleta: {arqs[-1].name} ({col['nome'].nunique()} casas, {len(col)} linhas)")
+    col = pd.concat([pd.read_csv(a, sep=";", encoding="utf-8-sig", dtype={"dia_inferido": str}).assign(arquivo=a.name)
+                     for a in arqs], ignore_index=True)
     col["dia_semana"] = col["dia_semana"].map(sem_acento)
     # Até a versão 2026.11.10-1, o coletor pegava o primeiro lugar da URL; quem
     # abriu um lugar a partir de outro ficou com o código e a coordenada do
@@ -113,6 +116,9 @@ def main():
     col["id_maps"] = cid.fillna(col["id_maps"])
     col["lat"] = [float(c[0]) if c else v for c, v in zip(coord, col["lat"])]
     col["lng"] = [float(c[1]) if c else v for c, v in zip(coord, col["lng"])]
+    recente = col.groupby("id_maps")["coletado_em"].transform("max")
+    col = col[col["coletado_em"] == recente].drop_duplicates(["id_maps", "dia_semana", "hora", "coletado_em"])
+    print(f"Coletas: {len(arqs)} arquivo(s), {col['id_maps'].nunique()} lugares, {len(col)} linhas")
 
     b1 = pd.read_csv(HORARIOS, sep=";", encoding="utf-8-sig")
     loc = {}

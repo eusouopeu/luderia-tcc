@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Horários de pico do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.11-2
+// @version      2026.11.11-3
 // @description  Lê o gráfico "Horários de pico" (ocupação relativa por dia e hora), o "ao vivo" e o tempo de permanência de lugares do Google Maps; coleta uma fila de lugares e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -189,12 +189,43 @@
       return { linhas: [], aviso: limitada ? 'Visualização limitada do Maps (sem login): o gráfico não aparece. Entre na conta.' : 'Sem gráfico de horários de pico neste lugar (ou ainda não carregou).' };
     }
 
-    // Agrupa por dia: o elemento que reúne as barras de um dia (pai comum).
+    // Altura da barra: o primeiro filho de cada barra tem "top" em px (0% fica no
+    // fundo). Calibra top → % com as barras de rótulo lido (mínimos quadrados) e
+    // usa a reta para a barra cujo rótulo não se lê: a da hora atual, que tem
+    // outro texto quando o lugar está aberto (até a versão 2026.11.11-2 ela se
+    // perdia, ex.: Chef on Play e Cineplay às 23h de terça).
+    const topo = (e) => parseFloat(e.firstElementChild?.style.top);
+    const pares = barras.map(({ e, b }) => [topo(e), b.pct]).filter(([t]) => Number.isFinite(t));
+    let reta = null;
+    if (pares.length >= 3) {
+      const n = pares.length, mx = pares.reduce((s, [x]) => s + x, 0) / n, my = pares.reduce((s, [, y]) => s + y, 0) / n;
+      const sxx = pares.reduce((s, [x]) => s + (x - mx) ** 2, 0);
+      if (sxx > 0) { const b = pares.reduce((s, [x, y]) => s + (x - mx) * (y - my), 0) / sxx; reta = (t) => my + b * (t - mx); }
+    }
+
+    // Agrupa por dia: o elemento que reúne as barras de um dia (pai comum). Cada
+    // grupo é percorrido barra a barra, na ordem, para não pular nenhuma hora.
+    const lidas = new Map(barras.map(({ e, b }) => [e, b]));
     const grupos = new Map();
-    for (const { e, b } of barras) {
+    for (const { e } of barras) {
       const g = e.parentElement;
-      if (!grupos.has(g)) grupos.set(g, []);
-      grupos.get(g).push(b);
+      if (grupos.has(g)) continue;
+      const bs = [];
+      for (const filho of g.children) {
+        const b = lidas.get(filho);
+        if (b) { bs.push({ ...b, leitura: 'rotulo' }); continue; }
+        const anterior = bs[bs.length - 1];
+        if (!anterior || !Number.isFinite(topo(filho))) continue;
+        const rotulo = filho.getAttribute('aria-label') || '';
+        const vivo = semAcento(rotulo).match(/(\d{1,3})\s*%/);
+        bs.push({
+          hora: (anterior.hora + 1) % 24,
+          pct: reta ? Math.max(0, Math.round(reta(topo(filho)))) : '',
+          ao_vivo: vivo ? +vivo[1] : '',
+          leitura: `altura (rótulo: "${rotulo}")`,
+        });
+      }
+      grupos.set(g, bs);
     }
     const listas = [...grupos.entries()];
     // O Maps monta 7 vagas de dia, domingo primeiro. O dia fechado continua lá,
@@ -219,7 +250,7 @@
     const linhas = [];
     listas.forEach(([g, bs], i) => {
       const dia = inferido ? i % 7 : [...vagas.children].findIndex((v) => v.contains(g));
-      for (const b of bs) linhas.push({ dia_semana: DIAS[dia], ordem_dia: dia, hora: b.hora, ocupacao_relativa: b.pct });
+      for (const b of bs) linhas.push({ dia_semana: DIAS[dia], ordem_dia: dia, hora: b.hora, ocupacao_relativa: b.pct, ao_vivo: b.ao_vivo ?? '', leitura: b.leitura });
     });
 
     // Ao vivo: "Atualmente 60% cheio; normalmente 45%." / "Currently 60% busy, usually 45% busy."
@@ -231,7 +262,7 @@
     if (aoVivo !== '') {
       const d = new Date();
       const alvo = linhas.find((l) => l.ordem_dia === d.getDay() && l.hora === d.getHours());
-      if (alvo) alvo.ao_vivo = aoVivo;
+      if (alvo && alvo.ao_vivo === '') alvo.ao_vivo = aoVivo;
       else linhas.push({ dia_semana: DIAS[d.getDay()], ordem_dia: d.getDay(), hora: d.getHours(), ocupacao_relativa: '', ao_vivo: aoVivo });
     }
 
@@ -252,7 +283,12 @@
     const lugar = infoLugar();
     const { linhas, aviso, permanencia = '', dia_inferido = '' } = lerPicos();
     const coletado_em = agora();
-    const dados = ler(CHAVE_DADOS, []).filter((l) => !(l.id_maps && l.id_maps === lugar.id_maps) && l.nome !== lugar.nome);
+    // Substitui só a coleta anterior do MESMO lugar, pelo código tirado da URL
+    // gravada (o último lugar dela). Até a versão 2026.11.11-1 o código gravado
+    // podia ser o do lugar de onde se partiu, e comparar por ele ou pelo nome
+    // apagava outra casa (ex.: coletar a Magic Store apagou o Garagem do Nerd).
+    const codigoDe = (l) => ([...String(l.url || '').matchAll(/!1s(0x[0-9a-f]+:0x[0-9a-f]+)/gi)].pop() || [])[1] || l.id_maps || '';
+    const dados = ler(CHAVE_DADOS, []).filter((l) => !(lugar.id_maps && codigoDe(l) === lugar.id_maps));
     if (!linhas.length) dados.push({ ...lugar, permanencia, situacao: 'sem horários de pico', coletado_em });
     for (const l of linhas) dados.push({ ...lugar, ...l, ao_vivo: l.ao_vivo ?? '', permanencia, dia_inferido, situacao: 'ok', coletado_em });
     gravar(CHAVE_DADOS, dados);
@@ -307,7 +343,7 @@
 
   // ---------- exportação ----------
 
-  const COLS = ['nome', 'endereco', 'id_maps', 'lat', 'lng', 'nota_media', 'n_avaliacoes', 'dia_semana', 'ordem_dia', 'hora', 'ocupacao_relativa', 'ao_vivo', 'dia_inferido', 'permanencia', 'situacao', 'coletado_em', 'url'];
+  const COLS = ['nome', 'endereco', 'id_maps', 'lat', 'lng', 'nota_media', 'n_avaliacoes', 'dia_semana', 'ordem_dia', 'hora', 'ocupacao_relativa', 'ao_vivo', 'leitura', 'dia_inferido', 'permanencia', 'situacao', 'coletado_em', 'url'];
 
   function celula(v) {
     const s = String(v ?? '');

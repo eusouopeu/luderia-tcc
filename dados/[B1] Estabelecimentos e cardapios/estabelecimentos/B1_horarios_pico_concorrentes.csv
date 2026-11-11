@@ -1,41 +1,41 @@
 ﻿place_id;nome;capital;situacao;nome_maps;distancia_m;coletado_em;barras_no_horario;dias_com_movimento;dia_util;fim_de_semana;dia_mais_cheio;hora_mais_cheia;razao_util_fds;dia_corrigido
 ChIJTaG5ALpZzpQRUDErQ-RkfTs;Ludus Luderia;São Paulo;falta coletar;;;;;;;;;;;
 ChIJKeHwNv5ZzpQRlmzx9rCTWdM;Bodogami Restaurante e Cafeteria;São Paulo;ok;Bodogami Restaurante e Cafeteria;0.0;2026-11-10 23:05;1.0;7.0;2.837;6.293;sabado;sabado 16h;0.4508;
-ChIJ_aN4OAxXzpQR0UH63sAeVCA;Fan Hour Games and Burgers;São Paulo;falta coletar;;;;;;;;;;;
+ChIJ_aN4OAxXzpQR0UH63sAeVCA;Fan Hour Games and Burgers;São Paulo;ok;Fan Hour Games and Burgers;0.0;2026-11-11 10:21;1.0;6.0;1.767;5.147;sabado;sabado 19h;0.3433;sim
 ChIJ__9TTnxCzpQRwVSzrOijkRY;Bravo Jogos;São Paulo;ok;Bravo Jogos | Loja de Jogos de Tabuleiro;0.0;2026-11-10 23:07;1.0;5.0;2.717;5.72;sabado;sabado 15h;0.475;sim
 ChIJ7_DDAlH1zpQRJVJ0UHnItH8;Covil Game Bar;São Paulo;ok;Covil Game Bar;0.0;2026-11-10 23:08;1.0;5.0;1.285;3.643;sabado;sabado 21h;0.3527;sim
 ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;Belo Horizonte;falta coletar;;;;;;;;;;;
-ChIJ15nLgwAwWpMRY1whwD29ZSo;Ludoteca BGC;Brasília;falta coletar;;;;;;;;;;;
+ChIJ15nLgwAwWpMRY1whwD29ZSo;Ludoteca BGC;Brasília;ok;Ludoteca BGC;0.0;2026-11-11 10:34;1.0;6.0;4.32;7.133;sabado;sabado 18h;0.6056;
 ChIJc3F7ka83J5URQZ1XTl-_iak;Chef on Play;Florianópolis;ok;Chef on Play;0.0;2026-11-10 23:11;1.0;7.0;1.247;2.863;sabado;sabado 22h;0.4356;
 ChIJJz8-gcY3J5URYdZrEXdHaAk;Cineplay- Restaurante e Jogos;Florianópolis;ok;Cineplay- Restaurante e Jogos;0.0;2026-11-10 23:12;1.0;7.0;1.933;3.597;sabado;sabado 21h;0.5374;
-ChIJE43rt29ZzpQRnvADt6pXfto;OMNIVERSE;São Paulo;falta coletar;;;;;;;;;;;
-ChIJZz29dnVXzpQRvRh7_YKyUN4;Encounter | Jogos de Tabuleiro | Board Games;São Paulo;falta coletar;;;;;;;;;;;
+ChIJE43rt29ZzpQRnvADt6pXfto;OMNIVERSE;São Paulo;ok;Omniverse;0.0;2026-11-11 10:21;1.0;5.0;2.74;5.55;sabado;sabado 18h;0.4937;sim
+ChIJZz29dnVXzpQRvRh7_YKyUN4;Encounter | Jogos de Tabuleiro | Board Games;São Paulo;ok;Encounter | Jogos de Tabuleiro | Board Games;0.0;2026-11-11 10:22;1.0;6.0;2.367;5.21;sabado;sabado 21h;0.4543;sim
 ChIJHSDPTgF5GZURKmSqKITyoGM;Arcadea Gaming Pub;Porto Alegre;falta coletar;;;;;;;;;;;
 ChIJu1yUroF_mQAR7qxqAfxKSw4;Game Of Boards;Rio de Janeiro;ok;Game Of Boards;0.0;2026-11-10 23:10;1.0;5.0;3.67;4.97;sabado;sabado 20h;0.7384;sim
-ChIJNcHw7jNYzpQRKRHPOrb4jEw;Play Easy;São Paulo;falta coletar;;;;;;;;;;;
+ChIJNcHw7jNYzpQRKRHPOrb4jEw;Play Easy;São Paulo;ok;Play Easy;0.0;2026-11-11 10:22;1.0;6.0;3.9;6.115;sabado;sabado 17h;0.6378;sim
 ChIJ89uEICDxXpMRdaEvN0XiWK0;Paladins Game Store;Goiânia;falta coletar;;;;;;;;;;;
 ChIJ0yXbI35IxwcR0_jLi-uINUU;Balboa's Hobby Games;Fortaleza;ok;Balboa's Hobby Games;0.0;2026-11-10 23:14;1.0;5.0;3.815;4.317;sabado;quinta 19h;0.8837;sim
 ChIJ1SAzAGF_mQARQgP-yrPBxbQ;RED jogos;Rio de Janeiro;falta coletar;;;;;;;;;;;
-ChIJi5zbZadgzpQRIYeuK_eqQio;XPlace;São Paulo;falta coletar;;;;;;;;;;;
+ChIJi5zbZadgzpQRIYeuK_eqQio;XPlace;São Paulo;ok;XPlace;0.0;2026-11-11 10:23;1.0;6.0;3.207;5.765;sabado;sabado 16h;0.5563;sim
 ChIJoTlvBfMbFgcRHvuCKHBQrXQ;São Jogue - Bela Vista;Salvador;ok;São Jogue;0.0;2026-11-10 23:00;1.0;7.0;4.683;4.947;sabado;sabado 16h;0.9466;
 ChIJY_lqHVLl3JQRvDHacOMDKuc;BoardZ Game Pub;Curitiba;falta coletar;;;;;;;;;;;
-ChIJzdFNP3AyWpMRH2P6HEuhE-I;Loja de Jogos - Asgard;Brasília;falta coletar;;;;;;;;;;;
+ChIJzdFNP3AyWpMRH2P6HEuhE-I;Loja de Jogos - Asgard;Brasília;sem horários de pico;Loja de Jogos - Asgard;0.0;2026-11-11 10:35;;;;;;;;
 ChIJ1wjBJD7k3JQRQi7trfp_0aQ;Vila Celta Hobby Store - Jogos e Café;Curitiba;ok;Vila Celta Hobby Store - Jogos e Café;0.0;2026-11-10 23:10;1.0;7.0;4.147;6.173;sabado;sabado 16h;0.6718;
 ChIJOczn8z7l3JQRNBEL_ZJ3iQo;Joyjoy Café;Curitiba;falta coletar;;;;;;;;;;;
 ChIJo-6lZMlezpQRmgUpUPfmRIs;Pitta's Board Games;São Paulo;ok;Pittas Board Games;0.0;2026-11-10 23:08;1.0;6.0;3.007;4.77;sabado;sabado 18h;0.6304;sim
-ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;Brasília;falta coletar;;;;;;;;;;;
+ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;Brasília;ok;Inside Games;0.0;2026-11-11 10:35;1.0;6.0;5.55;4.9;sexta;terca 19h;1.1327;
 ChIJc66HomXk3JQRNl28jz_VsPc;Taverna Game House;Curitiba;falta coletar;;;;;;;;;;;
 ChIJbZRHQPRfzpQRz97-ZOg0yXA;Castelos Bar & Boardgames;São Paulo;ok;Castelos Bar & Boardgames;0.0;2026-11-10 23:07;1.0;5.0;1.265;3.62;sabado;sabado 20h;0.3494;sim
 ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;Belo Horizonte;falta coletar;;;;;;;;;;;
-ChIJkWsGmd1czpQRGLydxc29vbw;Place Games;São Paulo;falta coletar;;;;;;;;;;;
+ChIJkWsGmd1czpQRGLydxc29vbw;Place Games;São Paulo;ok;Place Games;0.0;2026-11-11 10:23;1.0;5.0;4.39;4.633;quinta;quinta 19h;0.9476;sim
 ChIJa3UsDhRczpQRPPSuDl6acO8;Flow Games - Burgers, Cards & Comunidade;São Paulo;ok;Flow Games - Burgers, Cards & Comunidade;0.0;2026-11-10 23:06;1.0;5.0;3.827;5.515;sabado;sexta 20h;0.6939;sim
-ChIJF9j3OCRbzpQRkk74_QtOk_0;Coletivo Geek;São Paulo;falta coletar;;;;;;;;;;;
-ChIJYzHxUhR-mQARpqVtYD9th0c;Magic Store Brazil;Rio de Janeiro;falta coletar;;;;;;;;;;;
+ChIJF9j3OCRbzpQRkk74_QtOk_0;Coletivo Geek;São Paulo;sem horários de pico;Coletivo Geek;0.0;2026-11-11 10:23;;;;;;;;
+ChIJYzHxUhR-mQARpqVtYD9th0c;Magic Store Brazil;Rio de Janeiro;ok;Magic Store Brasil;0.0;2026-11-11 10:37;1.0;6.0;2.713;4.32;sabado;sabado 16h;0.628;
 ChIJn7uU0RNbzpQRI4GI9KHOo_s;Jogasampa;São Paulo;sem horários de pico;Jogasampa;0.0;2026-11-10 23:06;;;;;;;;
 ChIJ-97tiEeNpJIRb_eV7a-sxBs;Ludoteca Sidequest;Belém;ok;Ludoteca Sidequest;0.0;2026-11-10 23:15;1.0;5.0;4.68;5.69;sabado;sabado 19h;0.8225;sim
 ChIJQURqeMZJxwcR95O-XLbS2mk;Dominaria Cards & Games;Fortaleza;falta coletar;;;;;;;;;;;
 ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;Belo Horizonte;ok;Garagem do Nerd;0.0;2026-11-10 23:13;1.0;5.0;4.257;3.49;quinta;quinta 21h;1.2198;sim
-ChIJrT_EWwBZzpQRGAZzptZbtsY;Cartola Luderia Bar;São Paulo;falta coletar;;;;;;;;;;;
+ChIJrT_EWwBZzpQRGAZzptZbtsY;Cartola Luderia Bar;São Paulo;ok;Cartola Luderia Bar;0.0;2026-11-11 10:24;1.0;3.0;0.98;4.0;sabado;sabado 20h;0.245;sim
 ChIJ3ekLtDjl3JQRHwtNgmINgLo;Alçapão Jogos;Curitiba;ok;Alçapão Jogos;0.0;2026-11-10 23:10;1.0;5.0;5.015;3.423;quinta;quinta 21h;1.4651;sim
 ChIJiZJ_DnIDz5QRaVafFCXGkUE;Dungeon Games Store;São Paulo;ok;Dungeon Games Store - Hambúrgueria, TCG & Board Games;0.0;2026-11-10 23:09;1.0;5.0;3.045;5.003;sabado;sexta 20h;0.6086;sim
 ChIJ90Gs_9rVmwAReA7MnIyPLTE;Luderia Carioca;Rio de Janeiro;ok;Luderia Carioca;0.0;2026-11-10 23:12;1.0;5.0;2.885;5.047;sabado;sabado 18h;0.5716;sim
@@ -44,10 +44,10 @@ ChIJawIVeV0JM0oR5BtnD_poQeA;CCG Floripa;Florianópolis;falta coletar;;;;;;;;;;;
 ChIJK5Dhtunj3JQRniPWHB3haDU;Paladino Hobbies;Curitiba;sem horários de pico;Paladino Hobbies;0.0;2026-11-10 23:11;;;;;;;;
 ChIJN8BZeb85WpMRgVKT05caxB4;Utopia Games & Food;Brasília;falta coletar;;;;;;;;;;;
 ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;Belo Horizonte;falta coletar;;;;;;;;;;;
-ChIJfyav9YI9uAARjwbBqcRm2_k;Café Geek Cafeteria e Ludoteca;Vitória;falta coletar;;;;;;;;;;;
-ChIJYTHwWgBbzpQRFenbJdM5cxU;Arena BG | Jogos de Tabuleiro | Hamburgueria;São Paulo;falta coletar;;;;;;;;;;;
+ChIJfyav9YI9uAARjwbBqcRm2_k;Café Geek Cafeteria e Ludoteca;Vitória;sem horários de pico;Café Geek Cafeteria e Ludoteca;0.0;2026-11-11 10:39;;;;;;;;
+ChIJYTHwWgBbzpQRFenbJdM5cxU;Arena BG | Jogos de Tabuleiro | Hamburgueria;São Paulo;ok;Arena BG | Jogos de Tabuleiro | Hamburgueria;0.0;2026-11-11 10:28;1.0;5.0;1.965;4.41;sabado;sabado 21h;0.4456;
 ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;Brasília;falta coletar;;;;;;;;;;;
-ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;Brasília;falta coletar;;;;;;;;;;;
+ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;Brasília;ok;FORTALÚDICA - BURGERS & JOGOS;0.0;2026-11-11 10:35;1.0;7.0;2.713;3.48;segunda;segunda 20h;0.7796;
 ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;Belo Horizonte;falta coletar;;;;;;;;;;;
 ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;Belo Horizonte;falta coletar;;;;;;;;;;;
 ChIJOcVssmeDmQARZZrnWu2mnwA;TabuClub;Rio de Janeiro;ok;TabuClub;0.0;2026-11-10 23:05;1.0;6.0;2.263;5.003;sabado;sabado 19h;0.4523;sim
