@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Horários de pico do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.11-1
+// @version      2026.11.11-2
 // @description  Lê o gráfico "Horários de pico" (ocupação relativa por dia e hora), o "ao vivo" e o tempo de permanência de lugares do Google Maps; coleta uma fila de lugares e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -74,7 +74,57 @@
   }
 
   function painelPrincipal() {
-    return document.querySelector('div[role="main"]') || document.body;
+    const paineis = [...document.querySelectorAll('div[role="main"]')];
+    return paineis.find((p) => p.getClientRects().length > 0) || paineis[0] || document.body;
+  }
+
+  // ---------- conferência do lugar ----------
+  // Ao ir de um lugar a outro sem recarregar a página, o Maps troca o painel, o
+  // gráfico e a URL em momentos diferentes, e a URL pode levar os dois lugares.
+  // Só se coleta quando os quatro nomes batem: título do painel, rótulo do
+  // painel, rótulo do gráfico ("Horários de pico em <nome>") e o lugar no fim
+  // da URL (/maps/place/<nome>/, com o código do lugar).
+
+  const chave = (t) => semAcento(t).replace(/[^a-z0-9]/g, '');
+
+  function nomesDoLugar() {
+    const painel = painelPrincipal();
+    const url = location.href;
+    let nomeUrl = '';
+    try { nomeUrl = decodeURIComponent(((url.match(/\/maps\/place\/([^/@?]+)/) || [])[1] || '').replace(/\+/g, ' ')); } catch (_) { /* URL malformada */ }
+    const grafico = [...painel.querySelectorAll('[aria-label]')]
+      .map((e) => e.getAttribute('aria-label'))
+      .find((t) => /^(hor[aá]rios de pico em|popular times (at|for)) /i.test(t)) || '';
+    return {
+      titulo: painel.querySelector('h1')?.innerText.trim() || '',
+      painel: painel.getAttribute('aria-label') || '',
+      grafico: grafico.replace(/^(hor[aá]rios de pico em|popular times (at|for)) /i, '').trim(),
+      url: nomeUrl,
+      temCodigo: /!1s0x[0-9a-f]+:0x[0-9a-f]+/i.test(url),
+    };
+  }
+
+  // Devolve '' se o lugar está coerente, ou o motivo da recusa.
+  function incoerencia(exigirGrafico) {
+    const n = nomesDoLugar();
+    const t = chave(n.titulo);
+    if (!t) return 'nenhum lugar aberto';
+    if (!n.temCodigo || !n.url) return 'a URL ainda não traz o lugar aberto';
+    const iguais = (a) => { const k = chave(a); return k === t || (k.length >= 4 && (t.startsWith(k) || k.startsWith(t))); };
+    if (n.painel && !iguais(n.painel)) return `painel com "${n.painel}" e título "${n.titulo}"`;
+    if (!iguais(n.url)) return `URL em "${n.url}" e painel em "${n.titulo}"`;
+    if (exigirGrafico && n.grafico && !iguais(n.grafico)) return `gráfico de "${n.grafico}" no painel de "${n.titulo}"`;
+    return '';
+  }
+
+  async function esperarCoerencia(exigirGrafico, ms = 10000) {
+    let motivo = '';
+    for (let t = 0; t < ms; t += 500) {
+      motivo = incoerencia(exigirGrafico);
+      if (!motivo) return '';
+      await esperar(500);
+    }
+    return motivo;
   }
 
   // Container que rola o painel do lugar.
@@ -124,7 +174,7 @@
   // O bloco do gráfico ("Horários de pico em <lugar>"); sem ele, o painel inteiro.
   function raizGrafico() {
     const p = painelPrincipal();
-    return [...p.querySelectorAll('[aria-label]')].find((e) => /hor[aá]rios de pico|popular times/i.test(e.getAttribute('aria-label'))) || p;
+    return [...p.querySelectorAll('[aria-label]')].find((e) => /^(hor[aá]rios de pico em|popular times (at|for)) /i.test(e.getAttribute('aria-label'))) || p;
   }
 
   function lerPicos() {
@@ -191,10 +241,15 @@
   }
 
   async function coletarEste() {
-    await abrirVisaoGeral();
-    await percorrerPainel();
+    // Antes e depois de rolar o painel: o gráfico só aparece depois da rolagem.
+    let motivo = await esperarCoerencia(false);
+    if (!motivo) {
+      await abrirVisaoGeral();
+      await percorrerPainel();
+      motivo = await esperarCoerencia(true);
+    }
+    if (motivo) return { ok: false, msg: `Nada gravado: ${motivo}. Espere a página terminar de carregar e colete de novo.` };
     const lugar = infoLugar();
-    if (!lugar.nome) return { ok: false, msg: 'Nenhum lugar aberto.' };
     const { linhas, aviso, permanencia = '', dia_inferido = '' } = lerPicos();
     const coletado_em = agora();
     const dados = ler(CHAVE_DADOS, []).filter((l) => !(l.id_maps && l.id_maps === lugar.id_maps) && l.nome !== lugar.nome);
@@ -227,6 +282,11 @@
       r = { msg: `Não abriu um lugar: ${atual}` };
     } else {
       r = await coletarEste();
+      if (!r.ok) {
+        const dados = ler(CHAVE_DADOS, []);
+        dados.push({ nome: infoLugar().nome, url: atual, situacao: r.msg, coletado_em: agora() });
+        gravar(CHAVE_DADOS, dados);
+      }
     }
     fila.pos += 1;
     if (fila.pos >= fila.itens.length || fila.parar) {
