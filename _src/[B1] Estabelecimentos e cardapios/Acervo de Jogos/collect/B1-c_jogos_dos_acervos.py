@@ -49,6 +49,17 @@ documentada. Em `posicao`, o empate de aluguéis cai em ordem alfabética.
 Aluguel (`aluguel_rs`, `aluguel_dias`): preço e período do card de cada
 título no Acervo de Jogos e na rejoy; vale o da primeira cópia listada. O
 período varia entre casas (1, 3 ou 7 dias). Ludopedia e Covil não têm preço.
+
+Desde 11/11/2026 (busca minuciosa das casas sem acervo ou sem aluguel):
+- o card do Acervo de Jogos que traz o preço sem o período ("R$ 15", como os
+  da São Jogue, do LudoCafé e da Dungeon) passa a ser lido; antes só entrava
+  o preço seguido de "/ N dias". Sem período no card, `aluguel_dias` fica
+  vazio, salvo quando a própria casa publica o período do aluguel básico
+  (PERIODO_DA_CASA: São Jogue, 4 dias, em saojogue.com.br/aluguel/);
+- Fan Hour: "cardápio de jogos" do site (fanhour.com.br/cardapio-de-jogos/,
+  botão do Linktree), só os jogos de tabuleiro (os que têm a linha "Tipo"),
+  em lista_fanhour.txt; a página guardada fica em fanhour/;
+- `data_coleta` é a data do arquivo bruto de cada casa, não a da execução.
 """
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
 import sys
@@ -112,7 +123,14 @@ FONTES = {
     "Jogasampa": ("ludopedia", "jogasampa"),
     "Play Easy": ("lista", "playeasy"),
     "Ludus Luderia": ("pdf_ludus", "ludus_luderia/cardápio_de_jogos_ludusluderia.pdf"),
+    # 11/11/2026
+    "Fan Hour Games and Burgers": ("lista", "fanhour"),
 }
+# Período do aluguel básico publicado pela casa, para os cards sem "/ N dias".
+PERIODO_DA_CASA = {"saojogue": 4}
+# Arquivo bruto que data a coleta de cada fonte (o primeiro que existir).
+BRUTO = {"acervodejogos": "{i}/p01.html", "rejoy": "{i}", "ludopedia": "ludopedia_{i}.txt",
+         "lista": "lista_{i}.txt", "asgard": "asgard", "squarespace": "omniverse", "pdf_ludus": "{i}"}
 CAMPOS = ["estabelecimento", "fonte", "url_fonte", "posicao", "jogo", "aluguel_rs", "aluguel_dias", "data_coleta"]
 
 
@@ -142,10 +160,11 @@ def acervodejogos(sub):
             nome = re.match(r'[^"]*" href="/boardgames/[^"]+">([^<]+)</a>', bloco)
             if not nome:
                 continue
-            preco = re.search(r"R\$\s*([\d.,]+)\s*<span[^>]*>\s*/\s*(\d+)\s*dias?\s*</span>", bloco)
+            preco = re.search(r"R\$\s*([\d.,]+)(?:\s*<span[^>]*>\s*/\s*(\d+)\s*dias?\s*</span>)?", bloco)
+            dias = int(preco.group(2)) if preco and preco.group(2) else PERIODO_DA_CASA.get(sub)
             jogos.append((limpa(nome.group(1)),
                           float(preco.group(1).replace(".", "").replace(",", ".")) if preco else None,
-                          int(preco.group(2)) if preco else None))
+                          dias if preco else None))
         if f"page={pagina + 1}&amp;sort=mais_alugados" not in texto:
             return base, jogos
         pagina += 1
@@ -234,8 +253,16 @@ def covil():
         return str(COVIL.relative_to(ROOT)), [(limpa(x["jogo"]), None, None) for x in csv.DictReader(f, delimiter=";")]
 
 
+def data_do_bruto(fonte, ident):
+    """Data (AAAA-MM-DD) do arquivo bruto da fonte; sem arquivo, a de hoje."""
+    alvo = RAW / BRUTO[fonte].format(i=ident) if fonte in BRUTO else COVIL
+    if alvo.is_dir():
+        alvo = min(alvo.rglob("*"), key=lambda a: a.stat().st_mtime, default=alvo)
+    quando = alvo.stat().st_mtime if alvo.exists() else time.time()
+    return time.strftime("%Y-%m-%d", time.localtime(quando))
+
+
 def main():
-    data = time.strftime("%Y-%m-%d")
     saida = []
     for est, (fonte, ident) in FONTES.items():
         if fonte == "acervodejogos":
@@ -254,6 +281,7 @@ def main():
             url, jogos = pdf_ludus(ident)
         else:
             url, jogos = covil()
+        data = data_do_bruto(fonte, ident)
         vistos = set()
         for j, preco, dias in jogos:
             if j.casefold() in vistos:
