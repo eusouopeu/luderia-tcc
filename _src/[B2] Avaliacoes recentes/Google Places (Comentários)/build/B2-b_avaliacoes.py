@@ -3,46 +3,60 @@ Bloco B2 - consolida as coletas do userscript maps_avaliacoes, confere a
 cobertura de cada estabelecimento e gera a fila do que falta coletar.
 
 Etapas:
-  1. Move de ~/Downloads (ou da pasta de --origem) para dados/[B2] Avaliacoes recentes/_dados-brutos/:
+  1. Move de ~/Downloads (ou da pasta de --origem) e da raiz de _dados-brutos/
+     para dados/[B2] Avaliacoes recentes/_dados-brutos/:
        *_maps_avaliacoes_tudo*.csv      -> coletas/
-       *_maps_avaliacoes_resumo_*.csv   -> resumos/
+       *_maps_avaliacoes_resumo*.csv    -> resumos/ (um por lugar, desde o
+                                           coletor 2026.11.12-2, e os da fila
+                                           ou do histórico)
+     A raiz entra porque as coletas de 31/10 e 02/11 foram baixadas direto nela
+     (pasta de download do navegador) e o build só varria ~/Downloads.
      Arquivo idêntico a um já movido é apagado da origem; nome repetido com
      conteúdo diferente recebe sufixo _2, _3...
-  2. Liga cada coleta a uma luderia aprovada do B1 pelo cid do Google Maps: a
+  2. Liga cada coleta e cada resumo a uma casa da população do B1 (a mesma do
+     B1-b_resumo.py: aprovadas da triagem, menos as excluídas, mais as luderias
+     novas do acervo) pelo cid do Google Maps: a
      segunda parte do id_maps (0x...:0x<cid em hexadecimal>) é o mesmo número
      do "?cid=" do link_google_maps do B1. O place_id vem do B1, mesmo quando a
      URL da coleta não o trazia. Coleta sem par no B1 fica fora da base e é
-     listada no terminal.
+     listada no terminal. Até 12/11/2026 a população era só a planilha de
+     aprovadas: as luderias novas do acervo ficavam fora e as 2 excluídas, dentro.
   3. Monta a base: por estabelecimento, junta todas as coletas e, para cada
      review_id, fica a linha da coleta mais recente. A idade de cada avaliação
      é levada à data da coleta mais recente do estabelecimento (idade_dias_ref),
      para que linhas de coletas anteriores não entrem no período por engano. O
      recorte é o do método (_instrucoes/4_metodologia.md, Bloco B2): rótulo de
      data até "3 meses atrás", inclusive, ou seja, idade_dias_ref <= 90.
-  4. Cobertura: uma linha por luderia aprovada, com a situação da coleta mais
-     recente:
+  4. Cobertura: uma linha por casa da população, com a situação da coleta mais
+     recente, no vocabulário único das coletas (_src/dicionario.md §4.5):
        ok         - coleta completa (passou do período, fim da lista ou alcançou
-                    coleta anterior);
+                    coleta anterior) com avaliação no recorte;
+       vazia      - coleta completa com zero avaliações no recorte: pelo CSV de
+                    tudo, ou só pelo CSV-resumo (lugar sem nenhuma avaliação lida,
+                    painel com período que cobre o recorte); números = 0;
        refazer    - coleta incompleta ou incerta (lista parou de crescer, ordem
-                    errada, interrompida, erro);
-       conferir   - coleta completa, mas com avaliação sem data reconhecida;
-       coletar    - sem coleta.
+                    errada, interrompida, erro, avaliação sem data reconhecida,
+                    período do painel menor que o recorte);
+       coletar    - sem registro de coleta (nem tudo nem resumo); números vazios,
+                    nunca 0.
   5. Fila: place_id das luderias com situação coletar ou refazer, um por linha,
      no formato que o campo "Fila" do userscript aceita. Copiada para a área de
      transferência (macOS).
 
 Conferência de somas (diferença zero, senão o script para):
   - por coleta: lidas = com texto + sem texto;
-  - na base: soma de avaliacoes_no_periodo da cobertura = linhas da base;
+  - na base: soma de avaliacoes_no_periodo da cobertura = linhas da base
+    (casas "coletar" ficam vazias e não entram na soma);
   - na cobertura: no período = com texto + sem texto.
 
 Saídas em dados/[B2] Avaliacoes recentes/:
   B2_avaliacoes_periodo.csv   avaliações no recorte (fica fora do repositório:
                               contém texto de avaliações)
-  B2_cobertura_coleta.csv     uma linha por luderia aprovada (sem texto)
+  B2_cobertura_coleta.csv     uma linha por casa da população do B1 (sem texto)
   B2_fila_coleta.txt          place_id a coletar ou refazer
 
-Entrada do B1: estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx
+Entrada do B1: casas() do B1-b_resumo.py (estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx
+menos as excluídas, mais acervo_jogos/B1_acervodejogos_luderias_novas.csv)
 
 Uso:
     python3 "_src/[B2] Avaliacoes recentes/Google Places (Comentários)/build/B2-b_avaliacoes.py"
@@ -60,6 +74,7 @@ if __name__ == "__main__":
 
 import argparse
 import filecmp
+import importlib.util
 import re
 import shutil
 import subprocess
@@ -68,7 +83,8 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
+# População do B1: a mesma função do B1-b_resumo.py, para as duas bases terem as mesmas casas.
+B1_RESUMO = ROOT / "_src" / "[B1] Estabelecimentos e cardapios" / "Google Places (Negócios)" / "build" / "B1-b_resumo.py"
 RAW = ROOT / "dados" / "[B2] Avaliacoes recentes" / "_dados-brutos"
 PROCESSED = ROOT / "dados" / "[B2] Avaliacoes recentes"
 COLETAS = RAW / "coletas"
@@ -77,15 +93,17 @@ RESUMOS = RAW / "resumos"
 # Recorte do método: rótulo até "3 meses atrás", inclusive (idade aproximada 90 dias).
 PERIODO_ATE_DIAS = 90
 COMPLETOS = {"passou do período", "fim da lista", "alcançou coleta anterior"}
-PADROES = {"*_maps_avaliacoes_tudo*.csv": COLETAS, "*_maps_avaliacoes_resumo_*.csv": RESUMOS}
+PADROES = {"*_maps_avaliacoes_tudo*.csv": COLETAS, "*_maps_avaliacoes_resumo*.csv": RESUMOS}
+# Período do painel que cobre o recorte (o resumo só prova "vazia" se o painel olhou os 90 dias).
+COBRE_RECORTE = PERIODO_ATE_DIAS
 
 
-def mover_downloads(origem):
+def mover_downloads(*origens):
     """Move os CSV do userscript para dados/[B2] Avaliacoes recentes/_dados-brutos/; devolve quantos foram movidos."""
     movidos = 0
     for padrao, destino in PADROES.items():
         destino.mkdir(parents=True, exist_ok=True)
-        for arq in sorted(origem.glob(padrao)):
+        for arq in sorted(a for o in origens for a in o.glob(padrao)):
             # "nome (1).csv" do navegador volta ao nome original.
             base = re.sub(r"\s*\(\d+\)$", "", arq.stem)
             alvo, n = destino / f"{base}.csv", 1
@@ -107,7 +125,10 @@ def cid_de_id_maps(id_maps):
 
 
 def ler_b1():
-    b1 = pd.read_excel(B1, dtype=str)
+    spec = importlib.util.spec_from_file_location("b1_resumo", B1_RESUMO)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    b1 = m.casas().astype(str)
     b1["cid"] = b1["link_google_maps"].str.extract(r"cid=(\d+)", expand=False).fillna("")
     sem_cid = b1[b1["cid"] == ""]
     if len(sem_cid):
@@ -141,6 +162,45 @@ def ler_coletas(b1):
     return col, sem_par
 
 
+def ler_resumos(b1):
+    """CSV-resumo de cada coleta (um por lugar, da fila ou do histórico), ligado à casa do B1."""
+    arquivos = sorted(RESUMOS.glob("*.csv"))
+    if not arquivos:
+        return pd.DataFrame(columns=["place_id", "data_coleta_dt"])
+    partes = []
+    for arq in arquivos:
+        df = pd.read_csv(arq, sep=";", dtype=str, encoding="utf-8-sig", keep_default_na=False)
+        df["arquivo_resumo"] = arq.name
+        partes.append(df)
+    r = pd.concat(partes, ignore_index=True)
+    for c in ("id_maps", "place_id", "lidas", "no_periodo", "no_periodo_com_texto", "periodo_ate_dias",
+              "coleta_completa", "motivo_parada", "data_coleta"):
+        if c not in r:
+            r[c] = ""
+    cid = r["id_maps"].map(cid_de_id_maps)
+    pid = cid.map(b1.set_index("cid")["place_id"])
+    pid = pid.where(pid.notna(), r["place_id"].where(r["place_id"].isin(set(b1["place_id"]))))
+    r["place_id"] = pid
+    r = r[r["place_id"].notna()].copy()
+    r["data_coleta_dt"] = pd.to_datetime(r["data_coleta"], format="%Y-%m-%d %H:%M", errors="coerce")
+    # O mesmo resumo aparece no arquivo do lugar, no da fila e no do histórico: conta uma vez.
+    return r.drop_duplicates(["place_id", "data_coleta", "motivo_parada", "lidas"])
+
+
+def situacao_por_resumo(r):
+    """Situação de uma casa que só tem CSV-resumo (nenhuma avaliação lida, então sem CSV de tudo)."""
+    lidas = pd.to_numeric(r["lidas"], errors="coerce")
+    ate = r["periodo_ate_dias"]
+    cobre = ate == "sem limite" or (pd.to_numeric(ate, errors="coerce") or 0) >= COBRE_RECORTE
+    if r["coleta_completa"] != "sim":
+        return f"refazer: {r['motivo_parada'] or 'sem motivo'}"
+    if lidas and lidas > 0:
+        return "refazer: resumo sem o CSV de tudo"
+    if r["motivo_parada"] == "fim da lista" or cobre:
+        return "vazia"
+    return f"refazer: período do painel ({ate} dias) menor que o recorte"
+
+
 def conferir_coletas(col):
     """lidas = com texto + sem texto, em cada coleta."""
     for arq, g in col.groupby("arquivo_coleta"):
@@ -162,16 +222,28 @@ def montar_base(col):
     return base
 
 
-def montar_cobertura(b1, col, base):
+def montar_cobertura(b1, col, base, res):
     linhas = []
+    nd = float("nan")
     for _, lugar in b1.iterrows():
         pid = lugar["place_id"]
         c = col[col["place_id"] == pid] if len(col) else col
+        rs = res[res["place_id"] == pid].sort_values("data_coleta_dt") if len(res) else res
         linha = {"place_id": pid, "nome": lugar["nome"], "capital": lugar["capital_endereco"],
-                 "volume_b1": lugar["volume_avaliacoes"], "coletas": 0}
+                 "volume_b1": lugar["volume_avaliacoes"], "coletas": 0, "resumos": len(rs)}
+        if len(c) == 0 and len(rs) == 0:
+            linhas.append({**linha, "situacao": "coletar", "avaliacoes_no_periodo": nd,
+                           "no_periodo_com_texto": nd, "no_periodo_sem_texto": nd})
+            continue
         if len(c) == 0:
-            linhas.append({**linha, "situacao": "coletar", "avaliacoes_no_periodo": 0,
-                           "no_periodo_com_texto": 0, "no_periodo_sem_texto": 0})
+            # Só o CSV-resumo: coleta feita sem nenhuma avaliação lida (ou que falhou).
+            u = rs.iloc[-1]
+            sit = situacao_por_resumo(u)
+            zero = 0 if sit == "vazia" else nd
+            linhas.append({**linha, "ultima_coleta": u["data_coleta"], "motivo_parada": u["motivo_parada"],
+                           "lidas_ultima_coleta": pd.to_numeric(u["lidas"], errors="coerce"),
+                           "situacao": sit, "avaliacoes_no_periodo": zero,
+                           "no_periodo_com_texto": zero, "no_periodo_sem_texto": zero})
             continue
         ultima_data = c["coletado_em_dt"].max()
         ultima = c[c["coletado_em_dt"] == ultima_data]
@@ -182,7 +254,9 @@ def montar_cobertura(b1, col, base):
         if motivo not in COMPLETOS:
             situacao = f"refazer: {motivo}"
         elif sem_data:
-            situacao = f"conferir: {sem_data} sem data"
+            situacao = f"refazer: {sem_data} sem data"
+        elif len(noP) == 0:
+            situacao = "vazia"
         else:
             situacao = "ok"
         linhas.append({**linha,
@@ -197,12 +271,18 @@ def montar_cobertura(b1, col, base):
                        "no_periodo_com_texto": com,
                        "no_periodo_sem_texto": len(noP) - com})
     cob = pd.DataFrame(linhas)
-    for c in ("volume_na_coleta", "lidas_ultima_coleta", "sem_data"):
+    for c in ("volume_na_coleta", "lidas_ultima_coleta", "sem_data", "avaliacoes_no_periodo",
+              "no_periodo_com_texto", "no_periodo_sem_texto"):
         if c in cob:
             cob[c] = pd.to_numeric(cob[c]).astype("Int64")
     soma = cob["no_periodo_com_texto"] + cob["no_periodo_sem_texto"]
-    if (soma != cob["avaliacoes_no_periodo"]).any():
+    medido = cob["avaliacoes_no_periodo"].notna()
+    if (soma[medido] != cob.loc[medido, "avaliacoes_no_periodo"]).any():
         raise SystemExit("Soma não confere na cobertura: com texto + sem texto != no período")
+    # Vazio só em "coletar" (sem registro) e em "refazer" só com resumo; nunca em ok ou vazia.
+    assert cob.loc[cob["situacao"].isin(["ok", "vazia"]), "avaliacoes_no_periodo"].notna().all()
+    assert (cob.loc[cob["situacao"] == "vazia", "avaliacoes_no_periodo"] == 0).all()
+    assert len(cob) == len(b1) and cob["place_id"].is_unique, "uma linha por casa da população"
     return cob
 
 
@@ -213,7 +293,7 @@ def main():
     args = ap.parse_args()
 
     if not args.sem_mover:
-        print(f"Movidos de {args.origem}: {mover_downloads(args.origem.expanduser())}")
+        print(f"Movidos de {args.origem} e da raiz de _dados-brutos/: {mover_downloads(args.origem.expanduser(), RAW)}")
 
     b1 = ler_b1()
     col, sem_par = ler_coletas(b1)
@@ -227,7 +307,8 @@ def main():
         no_rec = base[base["no_recorte"] == "sim"].drop(columns=["coletado_em_dt", "cid"])
     else:
         base = no_rec = pd.DataFrame(columns=["place_id", "review_id", "no_recorte", "tem_texto"])
-    cob = montar_cobertura(b1, col, base)
+    res = ler_resumos(b1)
+    cob = montar_cobertura(b1, col, base, res)
 
     dif = int(cob["avaliacoes_no_periodo"].sum()) - len(no_rec)
     if dif:
@@ -249,10 +330,10 @@ def main():
 
     print(f"Base: {len(no_rec)} avaliações no recorte ({(no_rec['tem_texto'] == 'sim').sum()} com texto); "
           f"soma da cobertura confere (diferença {dif}).")
-    print("Situação das", len(cob), "luderias aprovadas:")
+    print("Situação das", len(cob), "casas da população do B1:")
     for sit, n in cob["situacao"].str.split(":").str[0].value_counts().items():
         print(f"  {sit}: {n}")
-    for _, r in cob[~cob["situacao"].isin(["ok", "coletar"])].iterrows():
+    for _, r in cob[~cob["situacao"].isin(["ok"])].iterrows():
         print(f"  - {r['nome']} ({r['capital']}): {r['situacao']}")
     if len(col):
         datas = col.groupby("place_id")["coletado_em_dt"].max()

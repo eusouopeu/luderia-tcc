@@ -78,3 +78,8 @@ _src/Modelo financeiro/logs/*.log
 # Dependências Node dos testes dos webscripts e ícones de pasta do macOS ("Icon\r")
 node_modules/
 Icon?
+
+# Dados agregados: cópia de 30/10/2026 (antes do DMax), mantida só nesta máquina
+dados/dados_agregados/_arquivo/2026-10-30_*
+# Bloco B1: fotos de couvert e entradas (material de terceiros)
+dados/\[B1\]*/_dados-brutos/precificacao_promocoes/

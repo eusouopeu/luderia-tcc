@@ -26,7 +26,7 @@ from pathlib import Path
 
 import pandas as pd
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "Modelo financeiro" / "analise"))
 import gerar_modelo_financeiro as g  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -287,8 +287,8 @@ def apendice_d(d):
          ["Modelo de cobrança", "Como o mercado cobra a entrada?", "Taxa por dia e turno nos concorrentes; NFC-e da São Jogue", "B1; B3", "N3 + N5"],
          ["Taxa de entrada", "Quanto cobrar por pessoa?", "Média da taxa das 29 casas que cobram, fora a São Jogue (R07)", "B1", "N3"],
          ["Consumo", "Quanto cada pessoa gasta?", "Gasto por pessoa declarado no Google Maps em 16 casas (744 declarações) e cesta de consumo de 12 casas (R06)", "B1; B2", "N3"],
-         ["Demanda", "Quantas pessoas entram por dia?", "Circulação no pico nas visitas e pelas NFC-e (R04); concorrentes abertos por hora (R15, R19)", "B1; B3", "N5 + N3"],
-         ["Dia útil", "Quanto o dia útil recebe do fim de semana?", "Gasto com cartão em restaurantes por dia da semana (R05)", "ANR e Mastercard", "N4"],
+         ["Demanda", "Quantas pessoas entram por dia?", "Circulação no pico nas visitas e pelas NFC-e (R04); índice \"Horários de pico\" dos concorrentes no fim de semana (R15)", "B1; B3", "N5 + N3"],
+         ["Dia útil", "Quanto o dia útil recebe do fim de semana?", "Índice \"Horários de pico\" dos concorrentes de terça a quinta (R05)", "B1", "N3"],
          ["Mesas e grupo", "Quantas mesas o salão precisa?", "Mesas, pessoas por mesa e permanência nas visitas (R01 a R03)", "B3", "N5 + N6"],
          ["Horário", "Em que dias e horas abrir?", "Horário de 54 concorrentes (R13, R14, R16, R17)", "B1", "N3"],
          ["Equipe", "Quantas pessoas e a que custo?", "Fluxo nas visitas; salário de admissão (C06); encargos (C07)", "B3; Novo CAGED (B4); CLT", "N5 + N2 + N1"],

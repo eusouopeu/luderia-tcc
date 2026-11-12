@@ -55,9 +55,9 @@ As avaliações confirmam que o preço da entrada pesa, mas pouco. Das 1.628 ava
 
 Fonte: elaborado pelo próprio autor, com base no Bloco B2 (avaliações até "3 meses atrás", coletadas de 09/10/2026 a 30/10/2026).
 
-O gasto declarado confirma a cesta de consumo dos cardápios. A cesta de cada concorrente soma a taxa de entrada, a mediana das bebidas e o hambúrguer não vegetariano mais barato do cardápio. Quando a taxa muda com o dia, entra a média das taxas, ponderada pelos dias em que cada uma vale. Nos 16 concorrentes com taxa conhecida e gasto declarado, incluída a São Jogue, o gasto médio declarado é de R$ 77,86 por pessoa (744 declarações; Blocos B1 e B2). O cálculo tem três passos. Primeiro, cada declaração vale o ponto médio da sua faixa de R$ 20,00 (R$ 80,00 a R$ 100,00 vale R$ 90,00; R$ 1,00 a R$ 20,00, R$ 10,50). A faixa aberta "R$ 200 ou mais", com 27 das 744 declarações (3,6%), vale R$ 200,00, o limite inferior, o que subestima o gasto; com R$ 220,00, a média subiria para R$ 78,19. Segundo, o gasto de cada concorrente é a média das suas declarações. Terceiro, o gasto do plano é a média simples dos 16 concorrentes, com peso igual por casa (Quadro 3.4): ponderada pelas declarações, a média seria de R$ 87,22, puxada pela Bodogami, com 341 das 744. Doze deles têm bebida e hambúrguer no cardápio, e a cesta média desses doze é de R$ 71,18: cada pessoa gasta pouco mais de uma cesta de consumo. Num grupo de 3,6 pessoas, a visita custa R$ 280,30. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018), ou R$ 694,55 a preços de agosto de 2026, corrigidos pelo IPCA (BCB, SGS): uma visita consome 40% desse orçamento. A luderia é ocasião de saída, não hábito semanal.
+O gasto declarado confirma a cesta de consumo dos cardápios. A cesta de cada concorrente soma a taxa de entrada, a mediana das bebidas e o hambúrguer não vegetariano mais barato do cardápio. Quando a taxa muda com o dia, entra a média das taxas, ponderada pelos dias em que cada uma vale. Nos 18 concorrentes com taxa conhecida e gasto declarado, incluída a São Jogue, o gasto médio declarado é de R$ 78,94 por pessoa (804 declarações; Blocos B1 e B2). O cálculo tem três passos. Primeiro, cada declaração vale o ponto médio da sua faixa de R$ 20,00 (R$ 80,00 a R$ 100,00 vale R$ 90,00; R$ 1,00 a R$ 20,00, R$ 10,50). A faixa aberta "R$ 200 ou mais", com 32 das 804 declarações (4,0%), vale R$ 200,00, o limite inferior, o que subestima o gasto; com R$ 220,00, a média subiria para R$ 79,32. Segundo, o gasto de cada concorrente é a média das suas declarações. Terceiro, o gasto do plano é a média simples dos 18 concorrentes, com peso igual por casa (Quadro 3.4): ponderada pelas declarações, a média seria de R$ 88,84, puxada pela Bodogami, com 309 das 804. Catorze deles têm bebida e hambúrguer no cardápio, e a cesta média desses catorze é de R$ 71,09: cada pessoa gasta pouco mais de uma cesta de consumo. Num grupo de 3,6 pessoas, a visita custa R$ 284,18. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018), ou R$ 694,55 a preços de agosto de 2026, corrigidos pelo IPCA (BCB, SGS): uma visita consome 41% desse orçamento. A luderia é ocasião de saída, não hábito semanal.
 
-O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 19,62 por pessoa, em todos os dias. O valor fica perto da mediana dos concorrentes (R$ 20,00) e abaixo da São Jogue (R$ 28,00 no fim de semana e R$ 22,00 no dia útil). No modelo, a receita por pessoa segue o gasto declarado: R$ 77,86 no provável, o gasto do concorrente de menor gasto (R$ 40,00) no pessimista e o do de maior gasto (R$ 109,84) no otimista. A taxa de entrada é a mesma nos três cenários, R$ 19,62, e o restante do gasto é A&B: R$ 58,24 por pessoa no provável. Os valores entram no registro de premissas do capítulo 9 como R06 e R07. A taxa fica em 25,2% do gasto provável, abaixo dos 27,2% que ela pesa na cesta dos 12 concorrentes com cesta completa, porque o gasto declarado é maior que a cesta dessas casas. Com a entrada mais barata que a da São Jogue, o preço atrai o cliente da concorrente, e o serviço de mesa – explicação de jogos e acervo grande – sustenta a volta, o que liga o preço à proposta de valor (seção 6.1).
+O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 19,62 por pessoa, em todos os dias. O valor fica perto da mediana dos concorrentes (R$ 20,00) e abaixo da São Jogue (R$ 28,00 no fim de semana e R$ 22,00 no dia útil). No modelo, a receita por pessoa segue o gasto declarado: R$ 78,94 no provável, o gasto do concorrente de menor gasto (R$ 40,00) no pessimista e o do de maior gasto (R$ 111,09) no otimista. A taxa de entrada é a mesma nos três cenários, R$ 19,62, e o restante do gasto é A&B: R$ 59,32 por pessoa no provável. Os valores entram no registro de premissas do capítulo 9 como R06 e R07. A taxa fica em 24,9% do gasto provável, abaixo dos 27,4% que ela pesa na cesta dos 14 concorrentes com cesta completa, porque o gasto declarado é maior que a cesta dessas casas. Com a entrada mais barata que a da São Jogue, o preço atrai o cliente da concorrente, e o serviço de mesa – explicação de jogos e acervo grande – sustenta a volta, o que liga o preço à proposta de valor (seção 6.1).
 
 ## 6.4 PRAÇA
 
@@ -121,39 +121,40 @@ O Google Maps é o canal principal, e o Instagram, o de apoio. Entre os 49 conco
 
 A mensagem fala com grupos de amigos e com quem organiza aniversários. Quando a avaliação diz com quem o cliente foi, os amigos aparecem em 56 avaliações, a família em 40, o aniversário em 39 e o casal em 13 (Bloco B2). O dado é exploratório (seção 3.3), mas confirma a ocasião em grupo do capítulo 5. O argumento é a proposta de valor: ninguém precisa conhecer o jogo, porque o instrutor ensina.
 
-O orçamento de marketing é de R$ 1.500,00 por mês no provável, de R$ 1.000,00 a R$ 2.000,00 nos cenários (premissa C10). O valor é estimativa do autor (N6): o escopo não inclui teste de anúncio, e o custo de aquisição de cliente não foi medido. No mês maduro do provável, o orçamento equivale a R$ 1,70 por visita (seção 6.6). Três indicadores acompanham o plano: a nota no Google Maps, com meta de 4,7, a mediana dos concorrentes; a proporção de avaliações que criticam o atendimento, de 5,7% nos concorrentes (B2); e a circulação no pico de fim de semana, que precisa ficar acima de 5,70 pessoas por hora, o ponto de ruptura da seção 9.5.
+O orçamento de marketing é de R$ 1.500,00 por mês no provável, de R$ 1.000,00 a R$ 2.000,00 nos cenários (premissa C10). O valor é estimativa do autor (N6): o escopo não inclui teste de anúncio, e o custo de aquisição de cliente não foi medido. No mês maduro do provável, o orçamento equivale a R$ 1,78 por visita (seção 6.6). Três indicadores acompanham o plano: a nota no Google Maps, com meta de 4,7, a mediana dos concorrentes; a proporção de avaliações que criticam o atendimento, de 5,7% nos concorrentes (B2); e a circulação no pico de fim de semana, que precisa ficar acima de 5,89 pessoas por hora, o ponto de ruptura da seção 9.5.
 
 ## 6.6 ESTIMATIVA DE DEMANDA
 
-A luderia deve receber 882 pessoas por mês no ano maduro do cenário provável, de 477 a 1.720 nos cenários (Tabela 6.2). A estimativa parte da *circulação*: as pessoas que entram na luderia por hora. A circulação no pico vem da contagem direta na São Jogue (B3), nas noites de sexta e sábado: 6,40 pessoas por hora, a média simples das quatro visitas (Tabela 3.1). Para levar a circulação ao dia, o modelo usa o horário dos 54 concorrentes (B1): em cada hora aberta do plano, o número de concorrentes abertos é dividido pelo número de concorrentes abertos nas horas das visitas. A soma dessas razões dá as horas de pico equivalentes do dia: 7,89 horas, em média, na sexta e no sábado, nas 9 horas abertas de cada dia. No mês maduro do cenário provável, a conta é a seguinte:
+A luderia deve receber 843 pessoas por mês no ano maduro do cenário provável, de 480 a 1.506 nos cenários (Tabela 6.2). A estimativa parte da *circulação*: as pessoas que entram na luderia por hora. A circulação no pico vem da contagem direta na São Jogue (B3), nas noites de sexta e sábado: 6,40 pessoas por hora, a média simples das quatro visitas (Tabela 3.1).
 
-pessoas por dia de fim de semana = circulação no pico × horas de pico equivalentes (1)
+Para levar a circulação às demais horas, o modelo usa o índice "Horários de pico" do Google Maps de 47 concorrentes (B1). O índice mede o movimento de cada hora em porcentagem da hora mais cheia da semana da casa. Em cada hora, entra a média do índice das casas abertas nela. A soma dessa curva nas horas abertas do plano, dividida pelo valor da curva nas janelas das visitas, dá as *horas de pico equivalentes* do dia: 7,73 horas, em média, na sexta e no sábado, e 4,98 de terça a quinta, nas 9 horas abertas de cada dia. No mês maduro do cenário provável, a conta é a seguinte:
 
-6,40 × 7,89 = 50,5 pessoas por dia de fim de semana
+pessoas por dia = circulação no pico × horas de pico equivalentes do dia (1)
 
-O dia útil (terça a quinta) entra em separado do fim de semana (sexta e sábado), porque o movimento é menor. Em restaurantes de loja física, um dia de segunda a quinta recebe 61,9% do gasto de um dia de sexta a domingo no Rio de Janeiro e 69,2% em São Paulo (ANR, 2026a; 2026b). Com a média das duas cidades, 65,5%, e o ajuste do horário, o dia útil recebe 34,2 pessoas. O ajuste vem do horário do plano, que cobre 84,6% dos concorrentes abertos no dia útil e 81,9% na sexta e no sábado (B1): o dia útil ganha a razão entre os dois, 1,03. Com 3 dias úteis e 2 de fim de semana por semana e 4,33 semanas por mês, o mês maduro soma 882 pessoas. O domingo fica fechado na abertura e só entra com a etapa de mesas (seção 10.4).
+6,40 × 7,73 = 49,5 pessoas por dia de fim de semana
+
+6,40 × 4,98 = 31,9 pessoas por dia útil
+
+O dia útil sai da mesma curva, porque o índice mede o movimento de todos os dias: ele recebe 64,4% do fim de semana. Com 2 dias de fim de semana e 3 dias úteis por semana e 4,33 semanas por mês, o mês maduro soma 843 pessoas. O domingo fica fechado na abertura e só entra com a etapa de mesas (seção 10.4).
 
 **Tabela 6.2 – Demanda no mês maduro, por cenário**
 
 | Variável | Pessimista | Provável | Otimista |
 |---|---|---|---|
-| Circulação no pico de fim de semana (pessoas por hora) | 4,15 | 6,40 | 11,43 |
-| Dia útil (% do fim de semana) | 61,9 | 65,5 | 69,2 |
-| Pessoas por dia de fim de semana | 32,7 | 50,5 | 90,2 |
-| Pessoas por dia útil | 20,9 | 34,2 | 64,5 |
-| Pessoas por mês | 477 | 882 | 1.720 |
+| Circulação no pico de fim de semana (pessoas por hora) | 3,87 | 6,40 | 11,43 |
+| Horas de pico equivalentes por dia de fim de semana | 7,55 | 7,73 | 7,73 |
+| Horas de pico equivalentes por dia útil | 4,51 | 4,98 | 4,98 |
+| Pessoas por dia de fim de semana | 29,2 | 49,5 | 88,4 |
+| Pessoas por dia útil | 17,5 | 31,9 | 56,9 |
+| Pessoas por mês | 480 | 843 | 1.506 |
 
-Fonte: elaborado pelo próprio autor, com base nos Blocos B1 e B3 e na ANR (2026a; 2026b), no modelo financeiro (Apêndice E).
+Fonte: elaborado pelo próprio autor, com base nos Blocos B1 (11/2026) e B3 (10/10/2026 a 30/10/2026), no modelo financeiro (Apêndice E).
 
-Nota: pessimista com as notas fiscais da São Jogue convertidas em circulação (seção 9.1) e a razão do Rio de Janeiro; otimista com a visita mais cheia e a razão de São Paulo. Horas de pico equivalentes de 7,89 e ajuste do horário de 1,03 nos três cenários; fim de semana de sexta e sábado.
+Nota: pessimista com as notas fiscais da São Jogue convertidas em circulação (seção 9.1) e a curva mediana do índice; otimista com a visita mais cheia e a curva média; fim de semana de sexta e sábado.
 
-O primeiro ano tem rampa: o movimento começa em 40% do maduro e chega a 100% no mês 9, de 30% em 12 meses no pessimista a 50% em 6 meses no otimista (premissas R11 e R12, estimativa do autor, N6). O caminho inverso confere a ordem de grandeza. As 10,6 mil visitas por ano do provável equivalem a 1,4 visita por ano para cada 100 moradores de Salvador de 20 a 39 anos, cerca de 781 mil pessoas se mantida a proporção do Censo 2022 (IBGE).
+O primeiro ano tem rampa: o movimento começa em 40% do maduro e chega a 100% no mês 9, de 30% em 12 meses no pessimista a 50% em 6 meses no otimista (premissas R11 e R12, estimativa do autor, N6). O caminho inverso confere a ordem de grandeza. As 10,1 mil visitas por ano do provável equivalem a 1,3 visita por ano para cada 100 moradores de Salvador de 20 a 39 anos, cerca de 781 mil pessoas se mantida a proporção do Censo 2022 (IBGE).
 
 **Referências citadas neste capítulo**
-
-ASSOCIAÇÃO NACIONAL DE RESTAURANTES (ANR). *Panorama do consumo em restaurantes no Rio de Janeiro*: preferências por cozinha, dias da semana e momentos de refeição. São Paulo, 10 set. 2026a. Estudo do Mastercard Economics Institute em parceria com a ANR. Disponível em: https://anrbrasil.org.br/panorama-do-consumo-em-restaurantes-no-rio-de-janeiro-preferencias-por-cozinha-dias-da-semana-e-momentos-de-refeicao/. Acesso em: 2 nov. 2026.
-
-ASSOCIAÇÃO NACIONAL DE RESTAURANTES (ANR). *Calor e chuva esfriam o apetite?* Estudo inédito da Mastercard Economics Institute em parceria com a ANR revela o impacto do clima sobre os gastos em restaurantes de São Paulo. São Paulo, 11 ago. 2026b. Disponível em: https://anrbrasil.org.br/calor-e-chuva-esfriam-o-apetite-estudo-inedito-da-mastercard-economics-institute-em-parceria-com-a-anr-revela-o-impacto-do-clima-sobre-os-gastos-em-restaurantes-de-sao-paulo/. Acesso em: 2 nov. 2026.
 
 BANCO CENTRAL DO BRASIL (BCB). *Relatório Focus*: expectativas de mercado de 11 set. 2026. Brasília, 2026. Disponível em: https://www.bcb.gov.br/content/focus/focus/R20260911.pdf. Acesso em: 2 nov. 2026.
 

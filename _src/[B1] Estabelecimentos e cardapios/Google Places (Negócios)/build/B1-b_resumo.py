@@ -13,7 +13,8 @@ Fontes (dados/[B1] Estabelecimentos e cardapios/, salvo indicação):
   estabelecimentos/B1_horarios.csv                    -> horários (Places API)
   _dados-brutos/entornos/*_entorno_resumo.csv         -> entorno (coletor do Maps;
       vale o export mais recente de cada casa; distância a estação a mais de
-      50 km, de outra cidade, fica vazia)
+      50 km, de outra cidade, fica vazia; metrô, trem, VLT, BRT e "trilhos" =
+      metrô + trem + VLT; VLT e BRT separados só desde o coletor 2026.11.12-2)
   redes_sociais/B1_instagram_resumo_notion.csv        -> Instagram (retrato do
       Notion "A - Estabelecimentos" de 15/10/2026; período 01/09 a 01/10 com
       colaborações da grade)
@@ -88,7 +89,20 @@ def horarios():
     return h[["place_id", "dias_abertos", "horas_semana", "abre_cedo", "fecha_tarde", *DIAS]]
 
 
+# Grupos de estação no resumo. "trilhos" = metro + trem + vlt (BRT é ônibus).
+ESTACOES = ("metro", "trem", "vlt", "brt")
+TRILHOS = ("metro", "trem", "vlt")
+
+
 def entorno():
+    """Entorno de cada casa, do export mais recente. Grupo que a coleta não
+    trouxe (coluna ausente ou busca não feita) fica vazio, nunca zero.
+
+    Até a versão 2026.11.12-1 do coletor, VLT e BRT saíam juntos
+    (qt_estacoes_vlt_brt_*): nesses exports, vlt e brt ficam vazios e
+    vlt_brt guarda a contagem "VLT ou BRT, sem separação". Trilhos só sai
+    quando não há ambiguidade: vlt_brt = 0 no raio, ou busca de VLT dispensada
+    na cidade (sem VLT em operação), caso em que vlt = 0."""
     pasta = B1 / "_dados-brutos" / "entornos"
     partes = []
     for f in sorted(pasta.glob("*_entorno_resumo*.csv")):
@@ -100,19 +114,41 @@ def entorno():
         # lida", sem garantia acima de 1000 m, e porte pelo OSM. Desde 30/10 o
         # entorno usa só o Maps: distância só até 1000 m e porte pelas avaliações.
         if "dist_estacoes_metro_mais_proxima_m" not in d:
-            for g in ("estacoes_metro", "shoppings"):
-                lida = d[f"dist_{g}_mais_proxima_lida_m"]
-                d[f"dist_{g}_mais_proxima_m"] = lida.where(lida <= 1000)
+            for g in ("estacoes_metro", "estacoes_trem", "estacoes_vlt_brt", "shoppings"):
+                if f"dist_{g}_mais_proxima_lida_m" in d:
+                    lida = d[f"dist_{g}_mais_proxima_lida_m"]
+                    d[f"dist_{g}_mais_proxima_m"] = lida.where(lida <= 1000)
             d["qt_shoppings_porte_500m"] = d["qt_shoppings_porte_1000m"] = float("nan")
         partes.append(d)
     e = pd.concat(partes).sort_values("_arquivo").drop_duplicates("place_id", keep="last")
-    return e.rename(columns={
-        "qt_estacoes_metro_500m": "metro_500m", "qt_estacoes_metro_1000m": "metro_1000m",
-        "dist_estacoes_metro_mais_proxima_m": "dist_metro_m",
-        "qt_shoppings_porte_500m": "shopping_porte_500m", "qt_shoppings_porte_1000m": "shopping_porte_1000m",
-        "dist_shoppings_mais_proxima_m": "dist_shopping_m"})[
-        ["place_id", "metro_500m", "metro_1000m", "dist_metro_m", "shopping_porte_500m", "shopping_porte_1000m",
-         "dist_shopping_m"]]
+    out = pd.DataFrame({"place_id": e.place_id})
+    nan = float("nan")
+    col = lambda c: e[c] if c in e else pd.Series(nan, index=e.index)
+    for g in ESTACOES:
+        for r in (500, 1000):
+            out[f"{g}_{r}m"] = col(f"qt_estacoes_{g}_{r}m")
+        out[f"dist_{g}_m"] = col(f"dist_estacoes_{g}_mais_proxima_m")
+    # VLT ou BRT sem separação: o valor do export antigo; nos novos, vlt + brt.
+    for r in (500, 1000):
+        out[f"vlt_brt_{r}m"] = col(f"qt_estacoes_vlt_brt_{r}m").fillna(out[f"vlt_{r}m"] + out[f"brt_{r}m"])
+    # Trilhos. Novo coletor: colunas próprias. Export antigo: metro + trem
+    # onde vlt = 0 é certo (vlt_brt = 0 no raio ou busca de VLT dispensada).
+    vlt_dispensado = col("consultas_dispensadas").fillna("").str.contains("estação VLT", regex=False)
+    antigo = "qt_estacoes_vlt_brt_1000m"
+    for r in (500, 1000):
+        novo = col(f"qt_estacoes_trilhos_{r}m")
+        vlt_zero = vlt_dispensado | (out[f"vlt_brt_{r}m"] == 0)
+        velho = (out[f"metro_{r}m"] + out[f"trem_{r}m"]).where(vlt_zero & col(antigo).notna())
+        out[f"trilhos_{r}m"] = novo.where(novo.notna(), velho)
+    novo = col("dist_trilhos_mais_proxima_m")
+    vlt_zero = (vlt_dispensado | (out["vlt_brt_1000m"] == 0)) & col(antigo).notna()
+    medido = out["metro_1000m"].notna() & out["trem_1000m"].notna()
+    velho = out[["dist_metro_m", "dist_trem_m"]].min(axis=1).where(vlt_zero & medido)
+    out["dist_trilhos_m"] = novo.where(novo.notna() | col("qt_estacoes_trilhos_1000m").notna(), velho)
+    for r in (500, 1000):
+        out[f"shopping_porte_{r}m"] = col(f"qt_shoppings_porte_{r}m")
+    out["dist_shopping_m"] = col("dist_shoppings_mais_proxima_m")
+    return out
 
 
 def instagram():
@@ -191,6 +227,20 @@ DIC = {
     "metro_500m": ("Entorno", "Estações de metrô até 500 m", "coletor de entorno do Maps, 15/10/2026"),
     "metro_1000m": ("Entorno", "Estações de metrô até 1000 m", "idem"),
     "dist_metro_m": ("Entorno", "Distância (m) à estação de metrô mais próxima, só até 1000 m; vazio com metro_1000m = 0: nenhuma até 1000 m", "idem"),
+    "trem_500m": ("Entorno", "Estações de trem metropolitano (CPTM, SuperVia, Trensurb) até 500 m; vazio = busca não feita", "idem"),
+    "trem_1000m": ("Entorno", "Estações de trem metropolitano até 1000 m; vazio = busca não feita", "idem"),
+    "dist_trem_m": ("Entorno", "Distância (m) à estação de trem mais próxima, só até 1000 m", "idem"),
+    "vlt_500m": ("Entorno", "Estações de VLT, bonde urbano, aeromóvel ou monotrilho fora da categoria de metrô até 500 m; vazio = coleta anterior ao coletor 2026.11.12-2 (VLT e BRT juntos em vlt_brt)", "coletor de entorno do Maps, desde 2026.11.12-2"),
+    "vlt_1000m": ("Entorno", "Estações de VLT até 1000 m; vazio = coleta anterior a 2026.11.12-2", "idem"),
+    "dist_vlt_m": ("Entorno", "Distância (m) à estação de VLT mais próxima, só até 1000 m", "idem"),
+    "brt_500m": ("Entorno", "Estações de BRT (inclui as estações-tubo de Curitiba) até 500 m; ônibus, fora de trilhos; vazio = coleta anterior a 2026.11.12-2", "idem"),
+    "brt_1000m": ("Entorno", "Estações de BRT até 1000 m; vazio = coleta anterior a 2026.11.12-2", "idem"),
+    "dist_brt_m": ("Entorno", "Distância (m) à estação de BRT mais próxima, só até 1000 m", "idem"),
+    "vlt_brt_500m": ("Entorno", "Estações de VLT ou BRT, sem separação, até 500 m (coletas até 2026.11.12-1; nas novas, vlt + brt)", "coletor de entorno do Maps, 15/10/2026"),
+    "vlt_brt_1000m": ("Entorno", "Estações de VLT ou BRT, sem separação, até 1000 m", "idem"),
+    "trilhos_500m": ("Entorno", "Estações sobre trilhos (metrô + trem + VLT) até 500 m; nas coletas antigas, só onde VLT = 0 é certo (vlt_brt = 0 ou busca de VLT dispensada); vazio = não separável ou busca não feita", "coletor de entorno do Maps"),
+    "trilhos_1000m": ("Entorno", "Estações sobre trilhos (metrô + trem + VLT) até 1000 m; mesma regra de trilhos_500m", "idem"),
+    "dist_trilhos_m": ("Entorno", "Distância (m) à estação sobre trilhos mais próxima, só até 1000 m; vazio com trilhos_1000m = 0: nenhuma até 1000 m", "idem"),
     "shopping_porte_500m": ("Entorno", "Shoppings de porte (1.000 avaliações ou mais no Maps) até 500 m; vazio = coleta anterior a 30/10/2026 ou avaliações não lidas", "idem"),
     "shopping_porte_1000m": ("Entorno", "Shoppings de porte até 1000 m; vazio = coleta anterior a 30/10/2026 ou avaliações não lidas", "idem"),
     "dist_shopping_m": ("Entorno", "Distância (m) ao shopping mais próximo (qualquer porte), só até 1000 m", "idem"),

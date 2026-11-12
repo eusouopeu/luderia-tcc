@@ -31,8 +31,11 @@ O índice mede presença (pessoas no local × tempo), não entradas nem gasto, e
 casas em shopping recebem o movimento do entorno (ver L23 em docs/pendencias.md).
 
 Saídas (dados/[B1] Estabelecimentos e cardapios/estabelecimentos/):
-  - B1_horarios_pico_concorrentes.csv: uma linha por casa do B1 (54), com a
-    situação da coleta e as medidas;
+  - B1_horarios_pico_concorrentes.csv: uma linha por casa do B1, com a
+    situação da coleta no vocabulário único (_src/dicionario.md §4.5): ok;
+    vazia (lugar coletado sem gráfico de horários de pico no Maps); refazer
+    (coleta que falhou, dia não corrigido ou horas fora do horário publicado);
+    coletar (sem registro), e as medidas;
   - B1_horarios_pico_concorrentes_horas.csv: uma linha por casa × dia × hora,
     com o dia já corrigido.
 
@@ -145,20 +148,23 @@ def main():
         reg = {"place_id": casa["place_id"], "nome": casa["nome"], "capital": casa["capital_endereco"]}
         par = casou[casou["place_id"] == casa["place_id"]]
         if par.empty:
-            linhas.append(reg | {"situacao": "falta coletar"})
+            linhas.append(reg | {"situacao": "coletar"})
             continue
         idm = par["id_maps"].iloc[0]
         c = col[col["id_maps"] == idm].copy()
         reg |= {"nome_maps": c["nome"].iloc[0], "distancia_m": par["distancia_m"].iloc[0], "coletado_em": c["coletado_em"].iloc[0]}
         if (c["situacao"] != "ok").all():
-            linhas.append(reg | {"situacao": c["situacao"].iloc[0]})
+            # Lugar sem gráfico de "Horários de pico" no Maps: coleta feita, sem resultado.
+            msg = str(c["situacao"].iloc[0])
+            vazia = "sem horários de pico" in msg.lower()
+            linhas.append(reg | {"situacao": f"vazia: {msg}" if vazia else f"refazer: {msg}"})
             continue
         c = c[c["ocupacao_relativa"].notna()]
         abertos = [d for d in DIAS if turnos(casa[d])]
         if c["dia_inferido"].eq("sim").any():
             ordem = sorted(c["ordem_dia"].unique())
             if len(ordem) != len(abertos):
-                linhas.append(reg | {"situacao": f"dia não corrigido: {len(ordem)} grupos × {len(abertos)} dias abertos no B1"})
+                linhas.append(reg | {"situacao": f"refazer: dia não corrigido: {len(ordem)} grupos × {len(abertos)} dias abertos no B1"})
                 continue
             c["dia_semana"] = c["ordem_dia"].map(dict(zip(ordem, abertos)))
             reg["dia_corrigido"] = "sim"
@@ -166,7 +172,7 @@ def main():
         ok = pos.apply(lambda r: dentro(r["hora"], turnos(casa[r["dia_semana"]])), axis=1)
         reg["barras_no_horario"] = round(ok.mean(), 3) if len(ok) else float("nan")
         if len(ok) and ok.mean() < MIN_DENTRO:
-            linhas.append(reg | {"situacao": f"horas fora do horário publicado ({ok.mean():.0%} dentro)"})
+            linhas.append(reg | {"situacao": f"refazer: horas fora do horário publicado ({ok.mean():.0%} dentro)"})
             continue
         soma = c.groupby("dia_semana")["ocupacao_relativa"].sum() / 100
         soma = soma[soma > 0]
@@ -188,7 +194,7 @@ def main():
     if horas:
         pd.concat(horas).to_csv(SAIDA_HORAS, sep=";", index=False, encoding="utf-8-sig")
 
-    print(res["situacao"].value_counts().to_string())
+    print(res["situacao"].str.split(":").str[0].value_counts().to_string())
     ok = res[res["situacao"] == "ok"]
     r = ok["razao_util_fds"].dropna()
     sem_sj = ok.loc[~ok["nome"].str.contains("São Jogue"), "razao_util_fds"].dropna()

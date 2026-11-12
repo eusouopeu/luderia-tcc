@@ -4,7 +4,7 @@ Planilha separada com os dados agregados dos comentários do B2, com gráficos.
 Lê a base final do banco "2 - Comentários" do Notion, com a grade 2 de temas
 (`2026-11-03_2_comentarios_grade2.csv`, montada por
 `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/build/B2-b_comentarios_grade2.py`;
-codificação concluída em 03/11/2026), e grava `dados/Dados agregados/B2_dados_agregados_DMax.xlsx`, uma aba por
+codificação concluída em 03/11/2026), e grava `dados/dados_agregados/B2_dados_agregados_DMax.xlsx`, uma aba por
 tabela com o gráfico ao lado, e os PNGs em `graficos_comentarios/`.
 
 A aba "Dados B2" traz uma linha por comentário, sem o texto (texto integral não
@@ -43,7 +43,7 @@ D = ROOT / "dados"
 B1 = D / "[B1] Estabelecimentos e cardapios"
 NOME_CSV = "2026-11-03_2_comentarios_grade2.csv"
 CANDIDATOS = [D / "[B2] Avaliacoes recentes" / "_dados-brutos" / "analise_conteudo" / NOME_CSV]
-SAIDA = D / "Dados agregados"
+SAIDA = D / "dados_agregados"
 GRAF = SAIDA / "graficos_comentarios"
 
 registrar_execucao(__file__)
@@ -335,7 +335,7 @@ for rr in range(1, ult + 1):
 ind.column_dimensions["A"].width = 10
 ind.column_dimensions["B"].width = 110
 ind.cell(ult + 2, 1, f"Fonte: {FONTE_TEMAS}.").font = ARIAL
-ind.cell(ult + 3, 1, "Gráficos em PNG de 300 dpi em dados/Dados agregados/graficos_comentarios/. Gerado por _src/extras/gerar_planilha_comentarios.py.").font = ARIAL
+ind.cell(ult + 3, 1, "Gráficos em PNG de 300 dpi em dados/dados_agregados/graficos_comentarios/. Gerado por _src/extras/gerar_planilha_comentarios.py.").font = ARIAL
 
 SAIDA.mkdir(parents=True, exist_ok=True)
 (SAIDA / "dados_agregados_comentarios.xlsx").unlink(missing_ok=True)  # nome de antes da divisão por bloco

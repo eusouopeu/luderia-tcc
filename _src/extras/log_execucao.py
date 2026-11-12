@@ -5,6 +5,9 @@ Cada script chama `registrar_execucao(__file__)` no início. A partir daí, tudo
 que ele escreve no terminal (stdout e stderr) também vai para
 `_src/[Bn] Fonte/logs/<script>_AAAA-MM-DD_HHMM.log`, com cabeçalho (comando e
 início) e rodapé (fim e duração). Os logs ficam fora do git (`.gitignore`).
+
+Rotação (12/11/2026): a cada execução, ficam só os MANTER logs mais recentes
+de cada script na pasta; os mais antigos são apagados.
 """
 
 from __future__ import annotations
@@ -13,6 +16,8 @@ import atexit
 import sys
 from datetime import datetime
 from pathlib import Path
+
+MANTER = 5  # logs guardados por script
 
 
 class _Duplicador:
@@ -42,6 +47,9 @@ def registrar_execucao(script: str) -> Path:
     pasta = caminho_script.parents[1] / "logs"
     pasta.mkdir(exist_ok=True)
     log = pasta / f"{caminho_script.stem}_{inicio:%Y-%m-%d_%H%M}.log"
+    antigos = sorted(p for p in pasta.glob(f"{caminho_script.stem}_????-??-??_????.log") if p != log)
+    for p in antigos[:max(0, len(antigos) - (MANTER - 1))]:
+        p.unlink(missing_ok=True)
     arquivo = open(log, "a", encoding="utf-8")
     arquivo.write(f"# {caminho_script.name} {' '.join(sys.argv[1:])}\n# início: {inicio:%Y-%m-%d %H:%M:%S}\n\n")
     sys.stdout = _Duplicador(sys.stdout, arquivo)

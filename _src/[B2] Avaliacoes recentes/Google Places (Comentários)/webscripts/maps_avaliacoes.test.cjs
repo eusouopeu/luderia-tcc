@@ -25,7 +25,7 @@ function carregar(contexto = {}) {
     ...contexto,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Avaliações do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { infoLugar, fimPeloVolume, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, terminaCortado, leituraMelhor, checarSeletores, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros, reciboExportacao, aplicarForaDoFiltro, filtros, POP, estadoCasa, proximaQueFalta, casaDoLugar });})();';
+    + 'Object.assign(globalThis.__test, { infoLugar, fimPeloVolume, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, terminaCortado, leituraMelhor, checarSeletores, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros, reciboExportacao, aplicarForaDoFiltro, filtros, POP, estadoCasa, proximaQueFalta, casaDoLugar, situacaoColeta, nomeResumoLugar, COLS_RESUMO });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_avaliacoes.user.js' });
   return ambiente.__test;
 }
@@ -315,4 +315,20 @@ test('menu das casas: estado pelos resumos e marcas, e próxima que falta na mes
   assert.ok(![a.id, b.id, c.id].includes(prox.id));
   if (t.POP.slice(3).some((p) => p.capital === a.capital)) assert.equal(prox.capital, a.capital);
   assert.equal(t.casaDoLugar({ place_id: '', nome_estabelecimento: a.nome }).id, a.id);
+});
+
+test('marcador de coleta: situação ok, vazia ou refazer e resumo por lugar com nome próprio', () => {
+  const t = carregar();
+  assert.equal(t.situacaoColeta('sim', 12), 'ok');
+  assert.equal(t.situacaoColeta('sim', 0), 'vazia', 'coleta completa sem avaliação no período');
+  assert.equal(t.situacaoColeta('incerta', 0), 'refazer');
+  assert.equal(t.situacaoColeta('não', 5), 'refazer');
+  const d = new Date(2026, 10, 12, 23, 30);
+  assert.equal(t.nomeResumoLugar({ nome_estabelecimento: 'CHQ Jogos' }, '', d), '2026-11-12_chq_jogos_maps_avaliacoes_resumo.csv');
+  assert.equal(t.nomeResumoLugar({ nome_estabelecimento: '' }, 'Reduto', d), '2026-11-12_reduto_maps_avaliacoes_resumo.csv', 'lugar que não carregou: nome da casa');
+  assert.equal(t.nomeResumoLugar({ place_id: 'ChIJx' }, '', d), '2026-11-12_chijx_maps_avaliacoes_resumo.csv');
+  assert.ok(t.COLS_RESUMO.includes('situacao') && t.COLS_RESUMO.includes('lidas') && t.COLS_RESUMO.includes('no_periodo') && t.COLS_RESUMO.includes('motivo_parada') && t.COLS_RESUMO.includes('versao_script') && t.COLS_RESUMO.includes('data_coleta'));
+  // Zero linhas ainda gera o CSV (cabeçalho e a linha do resumo).
+  const texto = t.csv([{ lidas: 0, no_periodo: 0, situacao: 'vazia', motivo_parada: 'fim da lista' }], t.COLS_RESUMO);
+  assert.equal(texto.replace(/^﻿/, '').split(/\r?\n/).length, 2);
 });

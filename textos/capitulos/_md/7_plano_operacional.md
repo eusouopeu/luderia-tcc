@@ -20,15 +20,15 @@ A luderia abre de terça a sábado, das 14h às 23h, 45 horas por semana (decis�
 | Pessoas por grupo de mesa | 3,6 | B3, média das quatro visitas (R02) |
 | Permanência média | 109 min | B3, média das quatro visitas (R03) |
 | Horas abertas por semana | 45 h: 27 h de terça a quinta e 18 h na sexta e no sábado | Decisão do autor; pico de cada dia, B1 (R13, R14) |
-| Circulação no pico | 4,15 a 11,43 pessoas por hora; 6,40 no provável | NFC-e e visitas do B3 (R04) |
-| Horas de pico equivalentes | 7,89 por dia de fim de semana (sexta e sábado); 1,03 vez isso no dia útil | Concorrentes abertos em cada hora, B1 (R15, R19) |
+| Circulação no pico | 3,87 a 11,43 pessoas por hora; 6,40 no provável | NFC-e e visitas do B3 (R04) |
+| Horas de pico equivalentes | 7,73 por dia de fim de semana (sexta e sábado); 4,98 por dia útil | Índice "Horários de pico" dos concorrentes, B1 (R15, R05) |
 | Capacidade máxima | 107 pessoas por dia aberto; 30 grupos | Todas as mesas ocupadas em todas as horas abertas |
-| Demanda provável no ano maduro | 41 pessoas por dia aberto; 11,3 grupos | 6,40 pessoas por hora × 7,89 horas na sexta e no sábado; no dia útil, 65,5% disso, com o ajuste do horário (R04, R05, R15, R19) |
-| Giro provável | 1,9 grupo por mesa por dia aberto; 5,0 no teto | Grupos por dia ÷ 6 mesas |
+| Demanda provável no ano maduro | 39 pessoas por dia aberto; 10,8 grupos | 6,40 pessoas por hora × 7,73 horas na sexta e no sábado e × 4,98 horas no dia útil (R04, R05, R15) |
+| Giro provável | 1,8 grupo por mesa por dia aberto; 5,0 no teto | Grupos por dia ÷ 6 mesas |
 
-Fonte: elaborado pelo próprio autor, com base nos Blocos B1 (10/2026) e B3 (10/10/2026 a 30/10/2026), em ANR (2026a; 2026b) e no modelo financeiro (Apêndice E).
+Fonte: elaborado pelo próprio autor, com base nos Blocos B1 (10 e 11/2026) e B3 (10/10/2026 a 30/10/2026) e no modelo financeiro (Apêndice E).
 
-A demanda provável usa 38% da capacidade (Quadro 7.1). Em grupos de 3,6 pessoas, as 41 pessoas por dia aberto formam 11,3 grupos, e cada mesa recebe 1,9 grupo por dia: é o giro provável. Com permanência de 109 minutos, as 9 horas de cada dia comportariam até 5,0 grupos por mesa. No pico, a circulação fica limitada pelo salão: com grupos de 3,6 pessoas e permanência de 109 minutos, as 6 mesas comportam até 11,9 pessoas por hora. A circulação provável, de 6,40, ocupa 3,2 mesas no pico; a otimista, de 11,43, fica perto do teto. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto. Teto abaixo de 8 mesas exclui o imóvel, porque o ponto precisa comportar a etapa de mesas.
+A demanda provável usa 36% da capacidade (Quadro 7.1). Em grupos de 3,6 pessoas, as 39 pessoas por dia aberto formam 10,8 grupos, e cada mesa recebe 1,8 grupo por dia: é o giro provável. Com permanência de 109 minutos, as 9 horas de cada dia comportariam até 5,0 grupos por mesa. No pico, a circulação fica limitada pelo salão: com grupos de 3,6 pessoas e permanência de 109 minutos, as 6 mesas comportam até 11,9 pessoas por hora. A circulação provável, de 6,40, ocupa 3,2 mesas no pico; a otimista, de 11,43, fica perto do teto. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto. Teto abaixo de 8 mesas exclui o imóvel, porque o ponto precisa comportar a etapa de mesas.
 
 ## 7.3 PROCESSOS OPERACIONAIS
 
@@ -52,7 +52,7 @@ A conferência de peças acontece na devolução de cada jogo, pelo instrutor. J
 
 ## 7.5 ESTRUTURA ORGANIZACIONAL E PESSOAL
 
-A equipe é dimensionada pelo fluxo medido, não pelo número de funções. Na noite de maior circulação, o salão teve 32 pessoas sentadas no pico e 9 grupos de mesa ao longo da visita (B3, Bela Vista, 10/10/2026). Nas demais noites, o pico foi de 12 a 31 pessoas. No ano maduro provável, a luderia recebe 41 pessoas por dia aberto, com a maior parte na sexta e no sábado.
+A equipe é dimensionada pelo fluxo medido, não pelo número de funções. Na noite de maior circulação, o salão teve 32 pessoas sentadas no pico e 9 grupos de mesa ao longo da visita (B3, Bela Vista, 10/10/2026). Nas demais noites, o pico foi de 12 a 31 pessoas. No ano maduro provável, a luderia recebe 39 pessoas por dia aberto, com a maior parte na sexta e no sábado.
 
 Esse fluxo cabe numa equipe de 3 empregados e o sócio (Quadro 7.2): 2 atendentes e instrutores e 1 cozinheiro-chefe (decisão do autor, 12/11/2026). Todos trabalham de terça a sábado, da abertura ao fechamento: 8 horas de trabalho e 1 hora de intervalo no meio (CLT, art. 71), 40 horas por semana, abaixo das 44 horas da CLT. O domingo e a segunda, com a casa fechada, são as duas folgas semanais de todos.
 
@@ -113,10 +113,6 @@ A folha com encargos fica em 11,5% da receita do ano maduro provável, e em 12,7
 Contratar instrutores como jovens aprendizes reduz pouco o custo. Os salários já estão no piso, e o aprendiz trabalha no máximo 6 horas por dia, o que exige mais pessoas para cobrir as mesmas horas; menores de 18 anos não podem trabalhar depois das 22h (CLT, art. 404 e art. 432). O estágio exige relação com o curso do estudante (Lei n. 11.788/2008) e não cabe na função de atendimento. As duas formas ficam fora do provável. Fora da equipe fixa, o contador é terceirizado (R$ 1.200,00 por mês, C11). A limpeza diária entra nas tarefas de abertura e fechamento da equipe.
 
 **Referências citadas neste capítulo**
-
-ASSOCIAÇÃO NACIONAL DE RESTAURANTES (ANR). *Panorama do consumo em restaurantes no Rio de Janeiro*: preferências por cozinha, dias da semana e momentos de refeição. São Paulo, 10 set. 2026a. Estudo do Mastercard Economics Institute em parceria com a ANR. Disponível em: https://anrbrasil.org.br/panorama-do-consumo-em-restaurantes-no-rio-de-janeiro-preferencias-por-cozinha-dias-da-semana-e-momentos-de-refeicao/. Acesso em: 2 nov. 2026.
-
-ASSOCIAÇÃO NACIONAL DE RESTAURANTES (ANR). *Calor e chuva esfriam o apetite?* Estudo inédito da Mastercard Economics Institute em parceria com a ANR revela o impacto do clima sobre os gastos em restaurantes de São Paulo. São Paulo, 11 ago. 2026b. Disponível em: https://anrbrasil.org.br/calor-e-chuva-esfriam-o-apetite-estudo-inedito-da-mastercard-economics-institute-em-parceria-com-a-anr-revela-o-impacto-do-clima-sobre-os-gastos-em-restaurantes-de-sao-paulo/. Acesso em: 2 nov. 2026.
 
 BRASIL. Lei nº 11.788, de 25 de setembro de 2008. Dispõe sobre o estágio de estudantes. *Diário Oficial da União*: seção 1, Brasília, DF, 26 set. 2008. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11788.htm. Acesso em: 2 nov. 2026. [AV]
 

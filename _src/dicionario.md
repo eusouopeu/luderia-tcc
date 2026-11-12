@@ -144,6 +144,46 @@ Valem para arquivos novos e para os existentes quando o script que os gera for a
 - Separador `;`, codificação UTF-8 com BOM (abre direto no Excel em português). Dos 171 CSV versionados em 14/10/2026, 136 usam `;` e 100 têm BOM. Os de `,` vêm de fontes ou userscripts antigos.
 - Fim de linha: o padrão do módulo `csv` do Python (`\r\n`). Scripts que reescrevem um CSV preservam o fim de linha original.
 
+### 4.4 Grupos de estação do entorno (B1)
+
+Cada resultado do coletor de entorno (`maps_entorno.user.js`) cai em um só grupo, pela categoria e pelo nome no Google Maps, nunca pela busca que o trouxe. No resumo do coletor, `qt_estacoes_<grupo>_<raio>m` e `dist_estacoes_<grupo>_mais_proxima_m`; no `B1_resumo_estabelecimentos.xlsx`, `<grupo>_<raio>m` e `dist_<grupo>_m`.
+
+| Grupo | O que entra | Desde |
+|---|---|---|
+| `metro` | metrôs, inclusive o monotrilho das linhas 15 e 17 de São Paulo quando o Maps o põe na categoria de metrô | 13/10/2026 |
+| `trem` | trens metropolitanos (CPTM, SuperVia, Trensurb), pelo operador mesmo na categoria de metrô | 15/10/2026 |
+| `vlt` | VLT (Carioca, Baixada Santista, Fortaleza, Salvador), bonde de uso urbano, aeromóvel de Porto Alegre, monotrilho fora da categoria de metrô | 12/11/2026 (coletor 2026.11.12-2) |
+| `brt` | BRT e estações-tubo da RIT de Curitiba; ônibus, fora de trilhos | 12/11/2026 (coletor 2026.11.12-2) |
+| `trilhos` (derivado) | `metro` + `trem` + `vlt`; vazio se algum dos três ficou vazio | 12/11/2026 |
+| `vlt_brt` (antigo) | VLT ou BRT, sem separação: coletas até o coletor 2026.11.12-1 (15/10/2026); no resumo do B1, nas coletas novas, `vlt` + `brt` | 13/10 a 12/11/2026 |
+
+Coleta antiga (só `vlt_brt`): `vlt` e `brt` ficam vazios, nunca zero; `trilhos` só sai onde VLT = 0 é certo (`vlt_brt` = 0 no raio, ou busca de VLT dispensada na cidade).
+
+### 4.5 Situação da coleta (vocabulário único)
+
+Toda tabela de cobertura (uma linha por unidade da população) diz, na coluna `situacao`, o que se sabe da coleta daquela unidade. O valor começa por uma das quatro palavras; depois de ":" vem o motivo, quando houver (`refazer: lista parou de crescer`).
+
+| Valor | Significado | Números da linha |
+|---|---|---|
+| `ok` | coleta completa, com resultado | os medidos |
+| `vazia` | coleta completa, zero itens no recorte; há marcador que prova a coleta | 0 |
+| `refazer` | coleta incompleta ou incerta (parou antes do fim, falhou, dado inconsistente) | os lidos, ou vazios se nada foi lido |
+| `coletar` | sem registro de coleta | vazios, nunca 0 |
+
+Onde fica o marcador de cada coletor (levantamento de 12/11/2026; mudou só o que tem build que depende da distinção):
+
+| Coletor | O que é "vazio" | Marcador | Build que lê | Mudou? |
+|---|---|---|---|---|
+| `maps_avaliacoes.user.js` (B2) | lugar sem avaliação no recorte | CSV-resumo por lugar, `AAAA-MM-DD_<lugar>_maps_avaliacoes_resumo.csv`, baixado sempre, mesmo com zero lidas (desde 2026.11.12-2) | `B2-b_avaliacoes.py` (`resumos/`) | sim |
+| `maps_horarios_pico.user.js` (B1) | lugar sem gráfico de "Horários de pico" | linha do lugar no CSV, com `situacao` = "sem horários de pico" (já existia) | `B1-a_horarios_pico.py` (vazia, refazer, coletar) | só o build |
+| `maps_entorno.user.js` (B1) | nenhuma estação ou shopping no raio | linha do lugar no resumo com contagem 0 (branco = busca não feita) e `situacao` | `B1-b_resumo.py` | não (já distingue) |
+| `instagram_coletor.user.js` (B1) | perfil sem post no período | linha do perfil no CSV de perfis, sempre baixado | Notion "A - Estabelecimentos" | não |
+| `instagram_snowball.user.js` (B1) | perfil sem lista de "seguindo" | CSV de seguindo, sempre baixado | `B1-b_instagram_seguindo.py` (não depende) | não |
+| `cardapio_coletor.user.js` (B1) | casa sem cardápio | `B1_busca_minuciosa_taxa_cardapio_acervo.csv` (busca à mão) | `B1-b_cardapios_planilha.py` (não depende) | não |
+| `precos_itens.user.js` (B5) | item sem oferta | nenhum; item sem preço sai da soma, buscado ou não | `B5-b_orcamento_itens.py` (não depende: a cobertura de itens com preço decide) | não |
+| `portais_aluguel.user.js` (B5) | busca sem anúncio | parada "página vazia" no painel | `B5-b_anuncios_aluguel.py` (não depende) | não |
+| `collect/*.py` (B1, B4, B5) | API ou base sem resultado | log de `logs/` (`log_execucao.py`), com o que cada chamada devolveu | builds de cada bloco (não dependem) | não |
+
 ## 5. Variáveis no código
 
 | Objeto | Convenção atual | Exemplo |
