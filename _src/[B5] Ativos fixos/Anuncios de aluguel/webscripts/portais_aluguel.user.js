@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-5
+// @version      2026.11.12-6
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas e uma fila de buscas entre portais e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -138,12 +138,13 @@
     predio: { rotulo: 'prédio', dica: 'Prédio inteiro (só ZAP e Viva Real)', olx: null, zap: 'predio-inteiro', vivareal: 'predio_comercial' },
     galpao: { rotulo: 'galpão', dica: 'Galpão ou depósito (só OLX)', olx: [2], zap: null, vivareal: null },
   };
-  // Bairros do menu do painel: primeiro os finalistas e as demais áreas do 6.4, depois os outros
-  // bairros de Salvador em ordem alfabética (Gomes et al., "Salvador: ecos da escravidão e da
-  // desigualdade em uma economia periférica", apêndice, p. 185-188). Os nomes compostos do apêndice
-  // ("Ondina/Chame-Chame") entram separados, como os portais os escrevem; o que o portal não
+  // Bairros do menu do painel: no topo, juntos, os 10 de maior renda média familiar per capita
+  // (Gomes et al., "Salvador: ecos da escravidão e da desigualdade em uma economia periférica",
+  // apêndice, p. 185-188, 2018-2020), em ordem decrescente de renda; depois, os demais bairros de
+  // Salvador em ordem alfabética. Os nomes compostos do apêndice ("Ondina/Chame-Chame") entram
+  // separados, como os portais os escrevem (o 8º colocado ocupa duas linhas); o que o portal não
   // reconhecer fica sem resultado (campo "outros" para a grafia do portal).
-  const BAIRROS_DESTAQUE = ['Pituba', 'Itaigara', 'Graça', 'Barra', 'Rio Vermelho'];
+  const BAIRROS_DESTAQUE = ['Pituba', 'Itaigara', 'Graça', 'Patamares', 'Caminho das Árvores', 'Vitória', 'Barra', 'Ondina', 'Chame-Chame', 'Rio Vermelho', 'Canela'];
   const BAIRROS_SALVADOR = ('Acupe;Águas Claras;Alto da Terezinha;Alto das Pombas;Alto do Cabrito;Alto do Coqueirinho;Amaralina;Areia Branca;Arenoso;Arraial do Retiro;'
     + 'Bairro da Paz;Baixa de Quintas;Barbalho;Barreiras;Barris;Beiru;Boa Viagem;Boa Vista de Brotas;Boa Vista de São Caetano;Boca da Mata;Boca do Rio;Bom Juá;Bonfim;'
     + 'Brotas;Cabula;Cabula VI;Caixa d\'Água;Cajazeiras II;Cajazeiras IV;Cajazeiras V;Cajazeiras VI;Cajazeiras VII;Cajazeiras VIII;Cajazeiras X;Cajazeiras XI;Calabar;'
@@ -157,7 +158,7 @@
     + 'Pau da Lima;Pau Miúdo;Periperi;Pernambués;Pero Vaz;Piatã;Pirajá;Pituaçu;Plataforma;Praia Grande;Resgate;Retiro;Ribeira;Rio Sena;Roma;Saboeiro;Santa Cruz;Santa Luzia;'
     + 'Santa Mônica;Santo Agostinho;Santo Antônio;São Caetano;São Cristóvão;São Gonçalo;São João do Cabrito;São Marcos;São Rafael;São Tomé;Saramandaia;Saúde;Sete de Abril;'
     + 'Stella Maris;Stiep;Sussuarana;Tancredo Neves;Tororó;Trobogy;Uruguai;Vale das Pedrinhas;Vale dos Lagos;Valéria;Vila Canária;Vila Laura;Vila Ruy Barbosa;Vista Alegre;Vitória').split(';');
-  const BAIRROS_MENU = [...BAIRROS_DESTAQUE, ...BAIRROS_SALVADOR.filter((b) => !BAIRROS_DESTAQUE.includes(b))];
+  const BAIRROS_MENU = [...BAIRROS_DESTAQUE, ...BAIRROS_SALVADOR.filter((b) => !BAIRROS_DESTAQUE.includes(b)).sort((a, b) => a.localeCompare(b, 'pt'))];
   const PORTAIS_BUSCA = ['olx', 'zap', 'vivareal'];
   // Buscas do plano (C04 e C05, áreas do 6.4): Loja e Outros com 100 m² ou mais.
   const MONTAGEM_PADRAO = { bairros: ['Pituba', 'Graça', 'Itaigara'], outros: '', areaMin: 100, areaMax: null, tipos: ['loja'], portais: PORTAIS_BUSCA };
@@ -487,6 +488,27 @@
         || (p === 'quintoandar' ? d.match(/\/imovel\/([^/]+?)-salvador/) : null);
       return `${NOMES_PORTAL[p] || p}${m ? ` · ${m[1].replace(/-/g, ' ')}` : ''}${tipoDaUrl(p, u)}`;
     } catch (e) { return String(url); }
+  }
+
+  // Bairro que a URL da busca pede (mesma leitura do rótulo), em minúsculas e com hífen; '' sem bairro.
+  function bairroDaUrl(url) {
+    try {
+      const u = new URL(url);
+      const p = portalDe(u.hostname);
+      const d = decodeURIComponent(u.pathname).toLowerCase();
+      const m = d.match(/\+\+([^/]+)/) || d.match(/\/bairros\/([^/]+)/) || (p === 'olx' ? d.match(/\/salvador\/([^/]+)/) : null)
+        || (p === 'quintoandar' ? d.match(/\/imovel\/([^/]+?)-salvador/) : null);
+      return m ? m[1] : '';
+    } catch (e) { return ''; }
+  }
+
+  // O portal desviou a busca? Sem resultado no bairro pedido, o ZAP (e outros) redirecionam para
+  // a listagem de Salvador inteira: o bairro some do caminho e a página traria imóveis de todos os
+  // bairros, com o total da cidade. Só vale para busca com bairro na URL.
+  function redirecionada(pedida, atual) {
+    const b = bairroDaUrl(pedida);
+    if (!b) return false;
+    try { return !decodeURIComponent(new URL(atual).pathname).toLowerCase().includes(b); } catch (e) { return false; }
   }
 
   // " · sala": tipo da busca no rótulo, quando não é o padrão (loja/ponto), para distinguir
@@ -1078,6 +1100,7 @@
     progressoFila(fila);
     atualizarBotoes();
     status(`Abrindo ${rotuloBusca(fila.itens[fila.i])}…`);
+    gravarFila({ ...fila, abertoEm: Date.now() });
     location.href = fila.itens[fila.i];
   }
 
@@ -1113,6 +1136,18 @@
     abrirItem();
   }
 
+  // A busca aberta pela fila foi desviada pelo portal (bairro sem resultado, listagem da cidade):
+  // nada é lido nem guardado; a busca fica sem coleta no menu e a fila segue para a próxima.
+  let desviando = false;
+  function buscaDesviada() {
+    desviando = true;
+    const fila = lerFila();
+    let onde = location.pathname;
+    try { onde = decodeURIComponent(location.pathname); } catch (e) { /* mantém o caminho cru */ }
+    status(`${rotuloBusca(fila.itens[fila.i])}: o portal desviou a busca para ${onde}; nada foi lido.`);
+    fimDaBuscaNaFila({ vistos: [], totalBusca: null, paginas: 0 }, `desviada pelo portal para ${onde}`);
+  }
+
   function pausada() {
     const fila = lerFila();
     atualizarBotoes();
@@ -1126,10 +1161,12 @@
     progressoFila(fila);
     const rs = fila.resultados || [];
     const baixas = rs.filter((r) => r.cobertura != null && r.cobertura < COBERTURA_MIN);
-    som(!baixas.length);
+    const desviadas = rs.filter((r) => /^desviada/.test(r.motivo || ''));
+    som(!baixas.length && !desviadas.length);
     baixarCsv();
     mostrar(`Fila concluída: ${rs.length} buscas, ${rs.reduce((n, r) => n + r.lidos, 0)} anúncios lidos; CSV de tudo baixado.`
-      + (baixas.length ? ` Abaixo de ${pctTxt(COBERTURA_MIN)}: ${baixas.map((r) => r.rotulo).join(', ')}.` : ''));
+      + (baixas.length ? ` Abaixo de ${pctTxt(COBERTURA_MIN)}: ${baixas.map((r) => r.rotulo).join(', ')}.` : '')
+      + (desviadas.length ? ` Desviadas pelo portal (sem resultado no bairro, nada lido): ${desviadas.map((r) => r.rotulo).join(', ')}.` : ''));
   }
 
   // ---------- painel (padrão: canto superior direito, shadow DOM, fora do <body>) ----------
@@ -1600,7 +1637,7 @@
     const seloLista = (campo, valor, rotulo, dica) => selo(rotulo, dica, (montagem[campo] || []).includes(valor), (v) => { montagem[campo] = alternar(montagem[campo], valor, v); prever(); });
     const menuBairros = menuMulti({
       opcoes: BAIRROS_MENU, destaques: BAIRROS_DESTAQUE, marcados: montagem.bairros || [],
-      rotulo: 'Bairros', dica: 'Bairros de Salvador para montar as buscas: marque um ou mais; os cinco primeiros são as áreas do 6.4',
+      rotulo: 'Bairros', dica: 'Bairros de Salvador para montar as buscas: marque um ou mais; os 11 primeiros (10 bairros) são os de maior renda, os demais seguem em ordem alfabética',
       aoMudar: (lista) => { montagem.bairros = lista; prever(); },
     });
     const outros = criar('input', { type: 'text', value: montagem.outros || '', placeholder: 'outros bairros (vírgula)', className: 'largo',
@@ -1843,6 +1880,8 @@
     const filaAqui = !!fila?.ativa && !!fila.itens[fila.i] && chaveBusca(fila.itens[fila.i]) === chaveBusca(location.href);
     const pedido = gmLer(CHAVE_ABRIR, null);
     const pedidoAqui = !!pedido && Date.now() - pedido.em < 2 * 60 * 1000 && chaveBusca(pedido.url) === chaveBusca(location.href);
+    const desviada = !!fila?.ativa && !filaAqui && !desviando && !iniciouAuto && !contando && !lerAuto()
+      && Date.now() - (fila.abertoEm || 0) < 2 * 60 * 1000 && redirecionada(fila.itens[fila.i], location.href);
     const desafio = (!!lerAuto() || filaAqui) && desafioCloudflare() && lerPagina(portal).length === 0;
     if (!ehBusca) {
       ehBusca = lerPagina(portal).length > 0 || desafio || filaAqui || pedidoAqui || !!fila?.ativa || PAGINA_IMOVEIS.test(location.pathname)
@@ -1853,6 +1892,7 @@
     if (!hospedeiro) montarPainel();
     if (!hospedeiro.isConnected) document.documentElement.appendChild(hospedeiro);
     if (desafio) { status('Bloqueio do Cloudflare: resolva o desafio na página; a coleta retoma desta página.'); return; }
+    if (desviada) { buscaDesviada(); return; }
     if (!iniciouAuto && lerAuto()) { iniciouAuto = true; passoAutomatico(); return; }
     if (filaAqui && !iniciouAuto && !contando && !lerAuto()) { iniciarBuscaDaFila(); return; }
     // Busca escolhida no menu (ou por "Próximo"): coleta todas as páginas sozinha.

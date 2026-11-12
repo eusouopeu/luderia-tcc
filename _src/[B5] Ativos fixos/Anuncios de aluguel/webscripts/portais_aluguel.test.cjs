@@ -15,7 +15,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, BAIRROS_MENU, BAIRROS_DESTAQUE, MONTAGEM_PADRAO, chaveAlvo, estadoAlvo, proximoAlvo });})();';
+    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, BAIRROS_MENU, BAIRROS_DESTAQUE, bairroDaUrl, redirecionada, MONTAGEM_PADRAO, chaveAlvo, estadoAlvo, proximoAlvo });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'portais_aluguel.user.js' });
   return ambiente.__test;
 }
@@ -330,10 +330,22 @@ test('menu das buscas: estado pela rodada registrada, marca à mão e próxima n
 
 test('menu de bairros: destaques primeiro, sem repetição e com slug válido', () => {
   const menu = json(t.BAIRROS_MENU);
-  assert.deepEqual(menu.slice(0, 5), json(t.BAIRROS_DESTAQUE));
+  assert.deepEqual(menu.slice(0, 11), json(t.BAIRROS_DESTAQUE));
+  assert.deepEqual(menu.slice(11), [...menu.slice(11)].sort((a, b) => a.localeCompare(b, 'pt')));
   assert.equal(new Set(menu).size, menu.length);
   assert.equal(new Set(menu.map(t.slugBairro)).size, menu.length);
   assert.ok(menu.every((b) => t.slugBairro(b)));
   const r = t.montarBuscas({ bairros: ['Caixa d\'Água', 'Caminho das Árvores'], tipos: ['loja'], portais: ['zap'] });
   assert.deepEqual(json(r.bairros), ['caixa-d-agua', 'caminho-das-arvores']);
+});
+
+test('busca desviada pelo portal: o bairro some do caminho', () => {
+  const zap = 'https://www.zapimoveis.com.br/aluguel/casa-comercial/ba+salvador++caminho-das-arvores/?areaMinima=100&ordem=LOWEST_PRICE';
+  assert.equal(t.bairroDaUrl(zap), 'caminho-das-arvores');
+  assert.equal(t.redirecionada(zap, 'https://www.zapimoveis.com.br/aluguel/casa-comercial/ba+salvador/?onde=%2CBahia%2CSalvador&tipos=x'), true);
+  assert.equal(t.redirecionada(zap, 'https://www.zapimoveis.com.br/aluguel/casa-comercial/ba+salvador++caminho-das-arvores/?pagina=2'), false);
+  const olx = 'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/graca?commt=6&ss=100';
+  assert.equal(t.redirecionada(olx, 'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/grande-salvador?commt=6'), true);
+  assert.equal(t.redirecionada(olx, 'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/graca?commt=6&o=2'), false);
+  assert.equal(t.redirecionada('https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador/', 'https://www.zapimoveis.com.br/aluguel/x/'), false);
 });
