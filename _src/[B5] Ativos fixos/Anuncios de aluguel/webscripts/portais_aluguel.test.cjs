@@ -15,7 +15,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO });})();';
+    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, MONTAGEM_PADRAO });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'portais_aluguel.user.js' });
   return ambiente.__test;
 }
@@ -239,6 +239,45 @@ test('anúncios fora de CSV e R$/m² pedido da busca', () => {
   ];
   assert.deepEqual(json(t.resumoM2(lista)), { n: 3, mediana: 30, p25: 20, p75: 40 });
   assert.deepEqual(json(t.resumoM2([])), { n: 0, mediana: null, p25: null, p75: null });
+});
+
+test('montar buscas: padrão igual às 9 buscas do plano', () => {
+  assert.deepEqual(json(t.lerItensFila(t.FILA_PADRAO)), [
+    'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/pituba?commt=6&commt=7&ss=100',
+    'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/graca?commt=6&commt=7&ss=100',
+    'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/itaigara?commt=6&commt=7&ss=100',
+    'https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++pituba/?areaMinima=100&ordem=LOWEST_PRICE',
+    'https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++graca/?areaMinima=100&ordem=LOWEST_PRICE',
+    'https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++itaigara/?areaMinima=100&ordem=LOWEST_PRICE',
+    'https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/pituba/ponto-comercial_comercial/?areaMinima=100&ordem=LOWEST_PRICE',
+    'https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/graca/ponto-comercial_comercial/?areaMinima=100&ordem=LOWEST_PRICE',
+    'https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/itaigara/ponto-comercial_comercial/?areaMinima=100&ordem=LOWEST_PRICE',
+  ]);
+});
+
+test('montar buscas: bairros, área, tipos e portais', () => {
+  assert.equal(t.slugBairro('Rio Vermelho'), 'rio-vermelho');
+  assert.equal(t.slugBairro(' Caminho das Árvores '), 'caminho-das-arvores');
+  const r = t.montarBuscas({ bairros: ['Barra'], outros: 'Rio Vermelho; barra', areaMin: 100, areaMax: 200, tipos: ['loja', 'sala', 'galpao'], portais: ['olx', 'zap'] });
+  assert.deepEqual(json(r.bairros), ['barra', 'rio-vermelho']);
+  assert.deepEqual(json(r.urls), [
+    'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/barra?commt=1&commt=2&commt=6&commt=7&ss=100&se=200',
+    'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/rio-vermelho?commt=1&commt=2&commt=6&commt=7&ss=100&se=200',
+    'https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++barra/?areaMinima=100&areaMaxima=200&ordem=LOWEST_PRICE',
+    'https://www.zapimoveis.com.br/aluguel/conjunto-comercial-sala/ba+salvador++barra/?areaMinima=100&areaMaxima=200&ordem=LOWEST_PRICE',
+    'https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++rio-vermelho/?areaMinima=100&areaMaxima=200&ordem=LOWEST_PRICE',
+    'https://www.zapimoveis.com.br/aluguel/conjunto-comercial-sala/ba+salvador++rio-vermelho/?areaMinima=100&areaMaxima=200&ordem=LOWEST_PRICE',
+  ]);
+  assert.deepEqual(json(r.semBusca), ['galpão no ZAP']);
+  // máxima menor que a mínima é ignorada; sem mínima, sem o parâmetro
+  const s = t.montarBuscas({ bairros: ['Pituba'], areaMin: 300, areaMax: 200, tipos: ['casa'], portais: ['vivareal', 'olx'] });
+  assert.deepEqual(json(s.urls), ['https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/pituba/imovel-comercial_comercial/?areaMinima=300&ordem=LOWEST_PRICE']);
+  assert.deepEqual(json(s.semBusca), ['casa comercial no OLX']);
+  assert.equal(t.montarBuscas({ bairros: [], tipos: ['loja'], portais: ['olx'] }).urls.length, 0);
+  // o rótulo da fila mostra o tipo quando não é loja/ponto
+  assert.equal(t.rotuloBusca(r.urls[3]), 'ZAP · barra · sala');
+  assert.equal(t.rotuloBusca(r.urls[2]), 'ZAP · barra');
+  assert.equal(t.rotuloBusca(r.urls[0]), 'OLX · barra · loja/ponto, sala, galpão');
 });
 
 test('fila: lê as URLs, rotula as buscas e decide repetir', () => {

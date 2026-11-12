@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-2
+// @version      2026.11.12-3
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas e uma fila de buscas entre portais e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -23,7 +23,11 @@
  * Como usar (fila, o caminho normal): abrir qualquer página do OLX, do ZAP ou do Viva
  * Real e clicar em "Fila". A fila já vem com as 9 buscas do plano (Loja e Outros com
  * 100 m² ou mais na Pituba, na Graça e na Itaigara, nos três portais); a lista é
- * editável, uma URL por linha, e "Padrão" a restaura. O script abre cada busca, coleta
+ * editável, uma URL por linha, e "Padrão" a restaura. Para outra fila, abrir "Montar
+ * buscas", escolher bairros (selos ou texto), área mínima e máxima, tipos (loja/ponto,
+ * sala, casa comercial, prédio, galpão) e portais, e clicar em "Gerar fila": a lista passa
+ * a ter uma busca por portal, bairro e tipo (no OLX, os tipos numa busca só); tipo que o
+ * portal não tem fica de fora, com aviso. O script abre cada busca, coleta
  * todas as páginas, confere a cobertura (lidos ÷ total que o portal diz ter), repete a
  * busca uma vez se ela ficar abaixo de 95%, espera 8 a 15 s e passa à próxima, mesmo
  * em outro portal. No fim, toca um som e baixa um CSV só, com tudo o que foi guardado.
@@ -102,13 +106,77 @@
   const LIMITE_FILA = 50; // páginas por busca na fila
   const NOMES_PORTAL = { olx: 'OLX', zap: 'ZAP', vivareal: 'Viva Real', quintoandar: 'QuintoAndar' };
 
+  const CHAVE_MONTAGEM = 'tcc_aluguel_montagem';
+
+  // ---------- montagem das buscas da fila (bairro, área e tipo) ----------
+  // Endereços conferidos nos três portais em 12/11/2026 (Pituba, 100 a 200 m²):
+  //  - OLX: tipo no parâmetro commt (1 Escritório, 2 Galpão/Depósito, 6 Loja, 7 Outros;
+  //    vários na mesma URL), área em ss (mínima) e se (máxima).
+  //  - ZAP: tipo no caminho (loja-salao, conjunto-comercial-sala, casa-comercial,
+  //    predio-inteiro); sem galpão para aluguel em Salvador (404).
+  //  - Viva Real: tipo no caminho (ponto-comercial_comercial, sala_comercial,
+  //    imovel-comercial_comercial, predio_comercial); sem galpão (404).
+  //  - ZAP e Viva Real: área em areaMinima e areaMaxima; ordem=LOWEST_PRICE (sem ela, a
+  //    ordem muda entre páginas e anúncios ficam de fora).
+  // Tipo sem busca num portal fica de fora da fila daquele portal (o painel avisa).
+  const TIPOS_BUSCA = {
+    loja: { rotulo: 'loja/ponto', dica: 'Loja, salão ou ponto comercial (OLX: Loja e Outros)', olx: [6, 7], zap: 'loja-salao', vivareal: 'ponto-comercial_comercial' },
+    sala: { rotulo: 'sala', dica: 'Sala ou conjunto comercial (OLX: Escritório)', olx: [1], zap: 'conjunto-comercial-sala', vivareal: 'sala_comercial' },
+    casa: { rotulo: 'casa comercial', dica: 'Casa ou imóvel comercial (só ZAP e Viva Real)', olx: null, zap: 'casa-comercial', vivareal: 'imovel-comercial_comercial' },
+    predio: { rotulo: 'prédio', dica: 'Prédio inteiro (só ZAP e Viva Real)', olx: null, zap: 'predio-inteiro', vivareal: 'predio_comercial' },
+    galpao: { rotulo: 'galpão', dica: 'Galpão ou depósito (só OLX)', olx: [2], zap: null, vivareal: null },
+  };
+  // Bairros com selo no painel: os finalistas e as demais áreas do 6.4; outros, por texto.
+  const BAIRROS_SELO = ['Pituba', 'Itaigara', 'Graça', 'Barra', 'Rio Vermelho'];
+  const PORTAIS_BUSCA = ['olx', 'zap', 'vivareal'];
   // Buscas do plano (C04 e C05, áreas do 6.4): Loja e Outros com 100 m² ou mais.
-  const BAIRROS_FILA = ['pituba', 'graca', 'itaigara'];
-  const FILA_PADRAO = [
-    ...BAIRROS_FILA.map((b) => `https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/${b}?commt=6&commt=7&ss=100`),
-    ...BAIRROS_FILA.map((b) => `https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++${b}/?areaMinima=100&ordem=LOWEST_PRICE`),
-    ...BAIRROS_FILA.map((b) => `https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/${b}/ponto-comercial_comercial/?areaMinima=100&ordem=LOWEST_PRICE`),
-  ].join('\n');
+  const MONTAGEM_PADRAO = { bairros: ['Pituba', 'Graça', 'Itaigara'], outros: '', areaMin: 100, areaMax: null, tipos: ['loja'], portais: PORTAIS_BUSCA };
+
+  // "Rio Vermelho" -> "rio-vermelho"; "Graça" -> "graca" (como os portais escrevem o bairro na URL).
+  const slugBairro = (b) => String(b || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const numeroOuNulo = (v) => { const n = parseInt(v, 10); return Number.isFinite(n) && n > 0 ? n : null; };
+
+  // Bairros da montagem: selos ligados mais os digitados (vírgula ou ponto e vírgula), sem repetir.
+  function bairrosDaMontagem(m) {
+    const todos = [...(m.bairros || []), ...String(m.outros || '').split(/[,;]/)].map(slugBairro).filter(Boolean);
+    return [...new Set(todos)];
+  }
+
+  // URLs da fila para a montagem: por portal, bairro e tipo (no OLX, os tipos numa URL só).
+  // Devolve as URLs e os tipos sem busca em algum portal.
+  function montarBuscas(m) {
+    const bairros = bairrosDaMontagem(m);
+    const min = numeroOuNulo(m.areaMin);
+    let max = numeroOuNulo(m.areaMax);
+    if (min && max && max < min) max = null;
+    const tipos = (m.tipos || []).filter((t) => TIPOS_BUSCA[t]);
+    const portais = PORTAIS_BUSCA.filter((p) => (m.portais || []).includes(p));
+    const urls = [];
+    const semBusca = [];
+    for (const p of portais) {
+      const comBusca = tipos.filter((t) => TIPOS_BUSCA[t][p]);
+      tipos.filter((t) => !TIPOS_BUSCA[t][p]).forEach((t) => semBusca.push(`${TIPOS_BUSCA[t].rotulo} no ${NOMES_PORTAL[p]}`));
+      if (!comBusca.length) continue;
+      for (const b of bairros) {
+        if (p === 'olx') {
+          const q = [...new Set(comBusca.flatMap((t) => TIPOS_BUSCA[t].olx))].sort((x, y) => x - y).map((c) => `commt=${c}`);
+          if (min) q.push(`ss=${min}`);
+          if (max) q.push(`se=${max}`);
+          urls.push(`https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/${b}?${q.join('&')}`);
+          continue;
+        }
+        const q = [min && `areaMinima=${min}`, max && `areaMaxima=${max}`, 'ordem=LOWEST_PRICE'].filter(Boolean).join('&');
+        for (const t of comBusca) {
+          urls.push(p === 'zap'
+            ? `https://www.zapimoveis.com.br/aluguel/${TIPOS_BUSCA[t].zap}/ba+salvador++${b}/?${q}`
+            : `https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/${b}/${TIPOS_BUSCA[t].vivareal}/?${q}`);
+        }
+      }
+    }
+    return { urls, semBusca, bairros };
+  }
+
+  const FILA_PADRAO = montarBuscas(MONTAGEM_PADRAO).urls.join('\n');
   const AVISO_PENDENTES = 100; // anúncios fora de CSV (cerca de 3 páginas) a partir dos quais o painel cobra o download
   const IDADE_MAX = 30; // dias até a coleta mais antiga de uma busca pedir revisão
 
@@ -387,8 +455,21 @@
       const d = decodeURIComponent(u.pathname);
       const m = d.match(/\+\+([^/]+)/) || d.match(/\/bairros\/([^/]+)/) || (p === 'olx' ? d.match(/\/salvador\/([^/]+)/) : null)
         || (p === 'quintoandar' ? d.match(/\/imovel\/([^/]+?)-salvador/) : null);
-      return `${NOMES_PORTAL[p] || p}${m ? ` · ${m[1].replace(/-/g, ' ')}` : ''}`;
+      return `${NOMES_PORTAL[p] || p}${m ? ` · ${m[1].replace(/-/g, ' ')}` : ''}${tipoDaUrl(p, u)}`;
     } catch (e) { return String(url); }
+  }
+
+  // " · sala": tipo da busca no rótulo, quando não é o padrão (loja/ponto), para distinguir
+  // na tabela da fila as buscas do mesmo bairro.
+  function tipoDaUrl(p, u) {
+    const nomes = Object.values(TIPOS_BUSCA).filter((t) => {
+      if (p === 'olx') {
+        const c = u.searchParams.getAll('commt').map(Number);
+        return t.olx && t.olx.every((x) => c.includes(x));
+      }
+      return t[p] && decodeURIComponent(u.pathname).split('/').includes(t[p]);
+    }).map((t) => t.rotulo);
+    return nomes.length && !(nomes.length === 1 && nomes[0] === TIPOS_BUSCA.loja.rotulo) ? ` · ${nomes.join(', ')}` : '';
   }
 
   // Resultado de uma busca da fila: lidos (distintos na rodada), total do portal e cobertura.
@@ -1022,7 +1103,8 @@
     .tag{flex:0 0 auto;border-radius:999px;padding:2px 9px;font-size:12px;opacity:.55}
     .tag.on{opacity:1;background:var(--azul);border-color:var(--azul);color:#fff}
     input{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px}
-    input[type=number]{width:46px}
+    input[type=number]{width:56px}
+    input.largo{flex:1 1 140px;min-width:0}
     .rotulo{display:inline-flex;align-items:center;gap:3px;opacity:.7;font-size:12px}
     .info{font-size:12px;display:inline-flex;align-items:center;gap:3px}
     .caixa{border:1px solid var(--linha);border-radius:8px;padding:6px 8px;margin:6px 0}
@@ -1337,6 +1419,7 @@
     el.bContinuar.disabled = !podeContinuar;
     el.bContinuar.title = podeContinuar ? `Continuar a fila da busca ${fila.i + 1} de ${fila.itens.length} (${rotuloBusca(fila.itens[fila.i])})` : 'Continuar a fila: nada pausado';
     el.filaTexto.disabled = naFila;
+    if (el.bGerar) el.bGerar.disabled = naFila;
   }
 
   function montarPainel() {
@@ -1358,8 +1441,49 @@
       el.filaTexto.onchange();
       status('Lista da fila de volta ao padrão.');
     }, 'ic');
+    // Montar buscas: bairros, área e tipos escolhidos viram a lista da fila ("Gerar fila").
+    const montagem = { ...MONTAGEM_PADRAO, ...(gmLer(CHAVE_MONTAGEM, {}) || {}) };
+    const alternar = (lista, v, ligado) => (ligado ? [...new Set([...(lista || []), v])] : (lista || []).filter((x) => x !== v));
+    el.montagemPrevia = criar('span', { className: 'rotulo' });
+    const prever = () => {
+      gmGravar(CHAVE_MONTAGEM, montagem);
+      const r = montarBuscas(montagem);
+      el.montagemPrevia.replaceChildren(...partes(r.semBusca.length ? icone('exclamation-triangle') : '', `${r.urls.length} buscas em ${r.bairros.length} bairro(s)`));
+      el.montagemPrevia.className = r.semBusca.length ? 'rotulo alerta' : 'rotulo';
+      el.montagemPrevia.title = r.semBusca.length ? `Sem busca no portal (ficam de fora): ${r.semBusca.join('; ')}` : 'Buscas que "Gerar fila" põe na lista';
+    };
+    const seloLista = (campo, valor, rotulo, dica) => selo(rotulo, dica, (montagem[campo] || []).includes(valor), (v) => { montagem[campo] = alternar(montagem[campo], valor, v); prever(); });
+    const selosBairro = BAIRROS_SELO.map((b) => seloLista('bairros', b, b, `Buscar anúncios em ${b}`));
+    const outros = criar('input', { type: 'text', value: montagem.outros || '', placeholder: 'outros bairros (vírgula)', className: 'largo',
+      title: 'Outros bairros de Salvador, separados por vírgula, como o portal escreve na URL (ex.: Caminho das Árvores, Stiep)',
+      oninput: () => { montagem.outros = outros.value; prever(); } });
+    const campoArea = (campo, dica) => criar('input', { type: 'number', min: 0, step: 10, value: montagem[campo] ?? '', placeholder: '–', title: dica,
+      oninput: (e) => { montagem[campo] = numeroOuNulo(e.target.value); prever(); } });
+    const areaMin = campoArea('areaMin', 'Área mínima em m² (vazio: sem mínimo)');
+    const areaMax = campoArea('areaMax', 'Área máxima em m² (vazio: sem máximo; menor que a mínima é ignorada)');
+    const selosTipo = Object.entries(TIPOS_BUSCA).map(([k, t]) => seloLista('tipos', k, t.rotulo, t.dica));
+    const selosPortal = PORTAIS_BUSCA.map((p) => seloLista('portais', p, NOMES_PORTAL[p], `Montar buscas no ${NOMES_PORTAL[p]}`));
+    el.bGerar = botao('magnifying-glass', 'Gerar fila', 'Gerar fila: troca a lista da fila pelas buscas montadas aqui (cada portal × bairro × tipo, com a área escolhida); depois, "Fila" coleta', () => {
+      const r = montarBuscas(montagem);
+      if (!r.urls.length) { status('Nada a buscar: escolha ao menos um bairro, um tipo e um portal que tenha esse tipo.'); return; }
+      el.filaTexto.value = r.urls.join('\n');
+      el.filaTexto.onchange();
+      mostrarFila();
+      status(`Fila montada com ${r.urls.length} buscas${r.semBusca.length ? `; sem busca no portal: ${r.semBusca.join(', ')}` : ''}. Clique em "Fila" para coletar.`);
+    }, 'principal');
+    prever();
+    const rotuloIco = (ico, dica) => criar('span', { className: 'rotulo', title: dica }, [icone(ico)]);
+    el.montagem = criar('details', {}, [criar('summary', { textContent: 'Montar buscas' }), criar('div', { className: 'caixa' }, [
+      criar('div', { className: 'linha' }, [rotuloIco('map-pin', 'Bairros'), ...selosBairro, outros]),
+      criar('div', { className: 'linha' }, [rotuloIco('adjustments-horizontal', 'Área em m²'), criar('span', { className: 'rotulo', textContent: 'área de' }), areaMin,
+        criar('span', { className: 'rotulo', textContent: 'a' }), areaMax, criar('span', { className: 'rotulo', textContent: 'm²' })]),
+      criar('div', { className: 'linha' }, [rotuloIco('tag', 'Tipo de imóvel comercial'), ...selosTipo]),
+      criar('div', { className: 'linha' }, [rotuloIco('funnel', 'Portais'), ...selosPortal]),
+      criar('div', { className: 'linha' }, [el.bGerar, el.montagemPrevia]),
+    ])]);
+
     el.pendentes = criar('span');
-    el.limite = criar('input', { type: 'number', min: 1, value: 50, title: 'Limite de páginas da rodada automática' });
+    el.limite =criar('input', { type: 'number', min: 1, value: 50, title: 'Limite de páginas da rodada automática' });
     el.bPagina = botao('arrow-path', 'Esta página', 'Coletar esta página: lê e guarda só os anúncios desta página', async () => {
       el.bPagina.disabled = true;
       status('Lendo a página…');
@@ -1406,6 +1530,7 @@
       el.pFila.caixa,
       el.pBusca.caixa,
       el.status,
+      el.montagem,
       criar('details', {}, [criar('summary', { textContent: 'Buscas da fila' }), el.filaTexto, el.filaTabela]),
       criar('div', { className: 'linha' }, [el.bAuto, el.bPagina, criar('span', { className: 'rotulo', title: el.limite.title, textContent: 'máx.' }), el.limite]),
       criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', title: 'Filtros dos indicadores' }, [icone('adjustments-horizontal')]), ...selos]),

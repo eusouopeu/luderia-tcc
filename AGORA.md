@@ -17,7 +17,7 @@ Atualizado em 12/11/2026. Correções da orientação aplicadas no **TMin v31** 
 
 - Quantidades do investimento (N6): aguardam projeto do ponto na Pituba.
 - Folha de aprovação: aguarda os nomes dos membros da banca.
-- Aluguel (C04 e C05): coleta de 12/11 (OLX, ZAP e Viva Real) processada pelo build; lojas de 100 m² ou mais em Pituba, Itaigara e Graça: 150 anúncios, mediana de R$ 47,10/m² (Pituba R$ 48,30 com 117; Itaigara R$ 45,70 com 20; Graça R$ 35,60 com 13). Entra na C04 e na escolha do bairro só depois da L13; falta conferir à mão as 63 "Possíveis Duplicatas".
+- Aluguel (C04 e C05): coleta de 12/11 (OLX, ZAP e Viva Real), limitada a Pituba, Itaigara e Graça, processada pelo build (184 anúncios); lojas de 100 m² ou mais em Pituba, Itaigara e Graça: 150 anúncios, mediana de R$ 47,10/m² (Pituba R$ 48,30 com 117; Itaigara R$ 45,70 com 20; Graça R$ 35,60 com 13). Entra na C04 e na escolha do bairro só depois da L13; falta conferir à mão as 63 "Possíveis Duplicatas". Nova coleta: "Montar buscas" no painel do userscript 2026.11.12-3 (bairros, área mínima e máxima, tipo e portal).
 
 ## Onde está o resto
 
