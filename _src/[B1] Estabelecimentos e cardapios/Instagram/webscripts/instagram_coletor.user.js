@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-4
+// @version      2026.11.12-5
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -25,6 +25,9 @@
  *    respostas GraphQL do próprio site; a fila abre cada perfil e continua ao carregar.
  *  - Bio do perfil: campo "Bio" no painel e colunas bio/fonte_bio no CSV de perfis, da API,
  *    das respostas do site (biography) ou da meta description da página, nessa ordem.
+ *  - Período: ao abrir, vale o da última coleta feita (o padrão do B1 só sem coleta ou no ↻).
+ *  - Raio no cabeçalho, ao lado do download automático: desligado, abrir um perfil pelo menu
+ *    ou "Próximo" não coleta nem rola sozinho (a fila continua, porque é pedida à mão).
  *  - Menu dos perfis (mesmo padrão do coletor de preços): o seletor do topo traz os 60
  *    perfis das casas do B1 por capital, com ✓ coletado pela API, ◐ só dados do perfil e
  *    ○ falta. Escolher um abre o perfil e coleta sozinho (no modo do seletor da fila: só o
@@ -592,6 +595,8 @@
   const apiFora = () => Date.now() - (lerLs(CHAVE_API_FORA, 0) || 0) < HORAS_API_FORA * 3600e3;
 
   async function coletarPerfil(user, modo = 'completo') {
+    // O período desta coleta vira o padrão ao abrir a página da próxima vez.
+    gravarLs(CHAVE_PERIODO, [dataDe, dataAte]);
     if (!apiFora()) {
       try { return await coletarPelaApi(user, modo); } catch (e) {
         if (!apiSumiu(e)) throw e;
@@ -966,6 +971,7 @@
       rotularPerfis();
       return;
     }
+    if (!coletaAuto) { status(`@${pedido.u} aberto. Coleta automática desligada: use "Coletar período".`); return; }
     const modo = el.modoFila?.valor || 'periodo';
     await executar(() => coletarPerfil(pedido.u, modo).then(() => concluirPerfil(pedido.u, modo)));
     rotularPerfis();
@@ -979,7 +985,12 @@
   let busca = '';
   // Período padrão da coleta do Bloco B1; 'AAAA-MM-DD' ou vazio; inclusivo nas duas pontas.
   const PERIODO_PADRAO = ['2026-09-01', '2026-10-01'];
-  let [dataDe, dataAte] = PERIODO_PADRAO;
+  // Ao abrir, vale o período da última coleta feita (CHAVE_PERIODO); sem coleta, o padrão.
+  const CHAVE_PERIODO = 'igc-periodo-ultima-coleta';
+  let [dataDe, dataAte] = (() => {
+    const p = lerLs(CHAVE_PERIODO, null);
+    return Array.isArray(p) && p.length === 2 && p.every((x) => x === '' || /^\d{4}-\d{2}-\d{2}$/.test(x)) ? p : PERIODO_PADRAO;
+  })();
 
   function diaLocal(ts) {
     return dataHora(ts).slice(0, 10);
@@ -1134,6 +1145,8 @@
       'information-circle': 'm11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z',
       'magnifying-glass': 'm21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z',
       'minus': 'M5 12h14',
+      'bolt': 'm3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z',
+      'bolt-slash': 'M11.412 15.655 9.75 21.75l3.745-4.012M9.257 13.5H3.75l2.659-2.849m2.048-2.194L14.25 2.25 12 10.5h8.25l-4.707 5.043M8.457 8.457 3 3m5.457 5.457 7.086 7.086m0 0L21 21',
       'play': 'M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z',
       'plus': 'M12 4.5v15m7.5-7.5h-15',
       'queue-list': 'M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z',
@@ -1715,8 +1728,8 @@
       fecharDica();
     }
 
-    // montar({ nome, filhos, extras (botões do cabeçalho), largura, autobaixar, minimizado, css })
-    function montar({ nome, filhos, extras = [], largura = 340, autobaixar = false, minimizado, css = '' }) {
+    // montar({ nome, filhos, extras (botões do cabeçalho), aposAuto (botões logo depois do download automático), largura, autobaixar, minimizado, css })
+    function montar({ nome, filhos, extras = [], aposAuto = [], largura = 340, autobaixar = false, minimizado, css = '' }) {
       carregarFonte();
       k.el.ponto = criar('span', { className: 'ponto-estado' });
       k.el.nome = criar('span', { className: 'nome', textContent: nome });
@@ -1725,7 +1738,7 @@
         aoMudar: (v) => { k.som = v; gravar(chave('som'), v); if (v) tocar(true); } });
       const bAuto = autobaixar ? alternaIcone({ ico: 'arrow-down-tray', rotulo: 'Download automático', ligado: k.autobaixar,
         aoMudar: (v) => { k.autobaixar = v; gravar(chave('autobaixar'), v); } }) : null;
-      const cab = criar('header', {}, [k.el.ponto, k.el.nome, ...extras, bSom, bAuto, k.el.bMin]);
+      const cab = criar('header', {}, [k.el.ponto, k.el.nome, ...extras, bSom, bAuto, ...aposAuto, k.el.bMin]);
       dica(k.el.nome, 'Clique para minimizar · arraste para mover · duplo clique volta ao canto');
       painel = criar('div', { id: 'painel', style: `--largura:${largura}px` }, [cab, ...filhos]);
       k.el.painel = painel;
@@ -2237,6 +2250,10 @@
   // Chave nova (v2): a rolagem ao abrir um perfil volta a começar desligada, mesmo
   // para quem a tinha ligado; ela atrasava a fila de sementes, que abre perfis.
   const PREF_ROLAR = 'igc-rolar-ao-abrir-v2';
+  // Coleta e rolagem automáticas (perfil aberto pelo menu ou "Próximo", e "rolar ao abrir").
+  // Desligadas, o perfil só abre; a coleta fica para o botão. A fila não muda: é pedida à mão.
+  const PREF_AUTO = 'igc-coleta-automatica';
+  let coletaAuto = lerPref(PREF_AUTO, true);
   const PREF_COMPART = 'igc-contar-compartilhados';
   let contarCompartilhados = lerPref(PREF_COMPART, true);
 
@@ -2323,7 +2340,7 @@
   // Dispara a rolagem uma vez por perfil aberto (abrir um post e voltar não repete).
   function talvezRolarSozinho() {
     const u = perfilAtual();
-    if (!rolarAoAbrir || !u || u === ultimoAutoRolado || ocupado || filaSnowballAtiva()) return;
+    if (!coletaAuto || !rolarAoAbrir || !u || u === ultimoAutoRolado || ocupado || filaSnowballAtiva()) return;
     ultimoAutoRolado = u;
     setTimeout(() => { if (perfilAtual() === u && !ocupado) executar(rolarAteOFim); }, 2000);
   }
@@ -2464,6 +2481,8 @@
 
     kit.montar({
       nome: 'Coletor IG', autobaixar: true, css: CSS_EXTRA, largura: 350,
+      aposAuto: [kit.alternaIcone({ ico: 'bolt', icoDesligado: 'bolt-slash', rotulo: 'Coleta e rolagem automáticas ao abrir um perfil', ligado: coletaAuto,
+        aoMudar: (v) => { coletaAuto = v; gravarPref(PREF_AUTO, v); status(v ? 'Coleta automática ligada.' : 'Coleta automática desligada: o perfil só abre.'); } })],
       filhos: [
         menu.caixa,
         linhaPeriodo,

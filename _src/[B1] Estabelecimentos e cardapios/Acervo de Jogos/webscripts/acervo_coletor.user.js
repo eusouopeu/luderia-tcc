@@ -759,6 +759,8 @@
       'information-circle': 'm11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z',
       'magnifying-glass': 'm21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z',
       'minus': 'M5 12h14',
+      'bolt': 'm3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z',
+      'bolt-slash': 'M11.412 15.655 9.75 21.75l3.745-4.012M9.257 13.5H3.75l2.659-2.849m2.048-2.194L14.25 2.25 12 10.5h8.25l-4.707 5.043M8.457 8.457 3 3m5.457 5.457 7.086 7.086m0 0L21 21',
       'play': 'M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z',
       'plus': 'M12 4.5v15m7.5-7.5h-15',
       'queue-list': 'M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z',
@@ -1340,8 +1342,8 @@
       fecharDica();
     }
 
-    // montar({ nome, filhos, extras (botões do cabeçalho), largura, autobaixar, minimizado, css })
-    function montar({ nome, filhos, extras = [], largura = 340, autobaixar = false, minimizado, css = '' }) {
+    // montar({ nome, filhos, extras (botões do cabeçalho), aposAuto (botões logo depois do download automático), largura, autobaixar, minimizado, css })
+    function montar({ nome, filhos, extras = [], aposAuto = [], largura = 340, autobaixar = false, minimizado, css = '' }) {
       carregarFonte();
       k.el.ponto = criar('span', { className: 'ponto-estado' });
       k.el.nome = criar('span', { className: 'nome', textContent: nome });
@@ -1350,7 +1352,7 @@
         aoMudar: (v) => { k.som = v; gravar(chave('som'), v); if (v) tocar(true); } });
       const bAuto = autobaixar ? alternaIcone({ ico: 'arrow-down-tray', rotulo: 'Download automático', ligado: k.autobaixar,
         aoMudar: (v) => { k.autobaixar = v; gravar(chave('autobaixar'), v); } }) : null;
-      const cab = criar('header', {}, [k.el.ponto, k.el.nome, ...extras, bSom, bAuto, k.el.bMin]);
+      const cab = criar('header', {}, [k.el.ponto, k.el.nome, ...extras, bSom, bAuto, ...aposAuto, k.el.bMin]);
       dica(k.el.nome, 'Clique para minimizar · arraste para mover · duplo clique volta ao canto');
       painel = criar('div', { id: 'painel', style: `--largura:${largura}px` }, [cab, ...filhos]);
       k.el.painel = painel;
