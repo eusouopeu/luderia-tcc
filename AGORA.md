@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 10/11/2026. Correções da orientação aplicadas no **TMin v31** (texto e apêndices num só PDF, 116 páginas, com folha de aprovação). Versão final para a banca em 16/11. Escopo congelado até a banca: só entra o que muda o TMin (`CLAUDE.md`, "Fluxo de trabalho até a banca").
+Atualizado em 11/11/2026. Correções da orientação aplicadas no **TMin v31** (texto e apêndices num só PDF, 116 páginas, com folha de aprovação). Versão final para a banca em 16/11. Escopo congelado até a banca: só entra o que muda o TMin (`CLAUDE.md`, "Fluxo de trabalho até a banca").
 
 ## Fazendo agora (no máximo duas frentes)
 
@@ -9,7 +9,7 @@ Atualizado em 10/11/2026. Correções da orientação aplicadas no **TMin v31** 
 
 ## Próximos 3 passos
 
-1. Responder L20 a L23 no "Lote de decisões" ([pendências](docs/pendencias.md)): circulação provável pela média ou pela mediana; valores da verba I10 (estimados pelo Claude); nomes da banca na folha de aprovação; R05 diante do histograma da São Jogue (dia útil com 94,1% do fim de semana).
+1. Responder L20 a L24 no "Lote de decisões" ([pendências](docs/pendencias.md)): circulação provável pela média ou pela mediana; valores da verba I10 (estimados pelo Claude); nomes da banca na folha de aprovação; R05 diante do histograma da São Jogue (dia útil com 94,1% do fim de semana); busca do B1 sem paginação (336 candidatos novos à porta da triagem manual, 38 deles em Campinas).
 2. Conferir as citações `[AV]` e trocar por citação indireta as conferidas.
 3. Ganhos de página só com formatação (116 páginas, dentro do novo teto de 120): referências em espaço simples e fins de capítulo com poucas linhas (melhoria D66).
 

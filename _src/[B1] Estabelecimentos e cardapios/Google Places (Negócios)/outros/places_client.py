@@ -15,6 +15,25 @@ SEARCH_FIELD_MASK = ",".join(
         "places.displayName",
         "places.formattedAddress",
         "places.location",
+        # Sem este campo na máscara a API não devolve o token e a busca para
+        # na primeira página (20 resultados). Foi o que aconteceu na coleta de
+        # setembro de 2026: nenhuma das 403 buscas passou de 20 (ver
+        # B1-c_places.py --repaginar).
+        "nextPageToken",
+    ]
+)
+
+# Máscara da repaginação (B1-c_places.py --repaginar): traz também o que a
+# medição precisa (volume de avaliações, status e categorias), para não pagar
+# uma chamada de detalhes por candidato novo. Esses campos levam a chamada ao
+# SKU "Text Search Enterprise".
+SEARCH_MEDICAO_FIELD_MASK = SEARCH_FIELD_MASK + "," + ",".join(
+    [
+        "places.userRatingCount",
+        "places.rating",
+        "places.businessStatus",
+        "places.types",
+        "places.googleMapsUri",
     ]
 )
 
@@ -108,18 +127,23 @@ class PlacesClient:
                 time.sleep(self.backoff * attempt)
         raise RuntimeError(f"Falha ao consultar {url}: {last_exc}")
 
-    def text_search(self, query, page_token=None):
+    def text_search(self, query, page_token=None, field_mask=SEARCH_FIELD_MASK):
         body = {"textQuery": query, "languageCode": "pt-BR"}
         if page_token:
             body["pageToken"] = page_token
-        return self._post("places:searchText", body, SEARCH_FIELD_MASK)
+        return self._post("places:searchText", body, field_mask)
 
-    def text_search_all(self, query):
-        """Pagina textSearch até esgotar (Places New pagina até 60 resultados, 3 páginas de 20)."""
+    def text_search_all(self, query, field_mask=SEARCH_FIELD_MASK):
+        """Pagina textSearch até esgotar (Places New pagina até 60 resultados,
+        3 páginas de 20). Cada resultado ganha `_pagina` (1 a 3)."""
         results = []
         page_token = None
+        pagina = 0
         while True:
-            data = self.text_search(query, page_token=page_token)
+            data = self.text_search(query, page_token=page_token, field_mask=field_mask)
+            pagina += 1
+            for place in data.get("places", []):
+                place["_pagina"] = pagina
             results.extend(data.get("places", []))
             page_token = data.get("nextPageToken")
             if not page_token:
