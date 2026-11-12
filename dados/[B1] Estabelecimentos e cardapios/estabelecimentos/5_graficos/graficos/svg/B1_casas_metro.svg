@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-12T05:05:17.545196</dc:date>
+    <dc:date>2026-11-12T10:26:33.163854</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -40,236 +40,250 @@ z
    <g id="line2d_1">
     <path d="M 209.333333 481.68 
 L 209.333333 91.44 
-" clip-path="url(#pd86a8a22e7)" style="fill: none; stroke: #ececec; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p4fb8732802)" style="fill: none; stroke: #ececec; stroke-width: 0.8; stroke-linecap: square"/>
    </g>
    <g id="line2d_2">
     <path d="M 292.666667 481.68 
 L 292.666667 91.44 
-" clip-path="url(#pd86a8a22e7)" style="fill: none; stroke: #ececec; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p4fb8732802)" style="fill: none; stroke: #ececec; stroke-width: 0.8; stroke-linecap: square"/>
    </g>
    <g id="line2d_3">
     <path d="M 376 481.68 
 L 376 91.44 
-" clip-path="url(#pd86a8a22e7)" style="fill: none; stroke: #ececec; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p4fb8732802)" style="fill: none; stroke: #ececec; stroke-width: 0.8; stroke-linecap: square"/>
    </g>
    <g id="line2d_4">
     <path d="M 459.333333 481.68 
 L 459.333333 91.44 
-" clip-path="url(#pd86a8a22e7)" style="fill: none; stroke: #ececec; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p4fb8732802)" style="fill: none; stroke: #ececec; stroke-width: 0.8; stroke-linecap: square"/>
    </g>
    <g id="matplotlib.axis_1"/>
    <g id="matplotlib.axis_2"/>
    <g id="patch_3">
-    <path d="M 126 472.071075 
-L 159.333333 472.071075 
-L 159.333333 459.912844 
-L 126 459.912844 
+    <path d="M 126 472.530833 
+L 159.333333 472.530833 
+L 159.333333 460.954335 
+L 126 460.954335 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #4d4d4d"/>
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_1">
-    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="469.69896" transform="rotate(-0 121.032 469.69896)">Porto Alegre</text>
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="470.449584" transform="rotate(-0 121.032 470.449584)">Porto Alegre</text>
    </g>
    <g id="text_2">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="163.5" y="469.69896" transform="rotate(-0 163.5 469.69896)">2</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="163.5" y="470.449584" transform="rotate(-0 163.5 470.449584)">2</text>
    </g>
    <g id="patch_4">
-    <path d="M 126 452.461025 
-L 176 452.461025 
-L 176 440.302794 
-L 126 440.302794 
+    <path d="M 126 453.859062 
+L 176 453.859062 
+L 176 442.282565 
+L 126 442.282565 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #4d4d4d"/>
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_3">
-    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="450.08891" transform="rotate(-0 121.032 450.08891)">Florianópolis</text>
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="451.777813" transform="rotate(-0 121.032 451.777813)">Florianópolis</text>
    </g>
    <g id="text_4">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="180.166667" y="450.08891" transform="rotate(-0 180.166667 450.08891)">3</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="180.166667" y="451.777813" transform="rotate(-0 180.166667 451.777813)">3</text>
    </g>
    <g id="patch_5">
-    <path d="M 126 432.850975 
-L 226 432.850975 
-L 226 420.692744 
-L 126 420.692744 
+    <path d="M 126 435.187292 
+L 226 435.187292 
+L 226 423.610794 
+L 126 423.610794 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #4d4d4d"/>
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_5">
-    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="430.478859" transform="rotate(-0 121.032 430.478859)">Curitiba</text>
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="433.106043" transform="rotate(-0 121.032 433.106043)">Curitiba</text>
    </g>
    <g id="text_6">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="230.166667" y="430.478859" transform="rotate(-0 230.166667 430.478859)">6</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="230.166667" y="433.106043" transform="rotate(-0 230.166667 433.106043)">6</text>
    </g>
    <g id="text_7">
-    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="411.343812" transform="rotate(-0 14.4 411.343812)">SUL  ·  11 casas</text>
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="414.862361" transform="rotate(-0 14.4 414.862361)">SUL  ·  11 casas</text>
    </g>
    <g id="patch_6">
-    <path d="M 126 387.747859 
-L 142.666667 387.747859 
-L 142.666667 375.589628 
-L 126 375.589628 
+    <path d="M 126 392.24222 
+L 142.666667 392.24222 
+L 142.666667 380.665722 
+L 126 380.665722 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #4d4d4d"/>
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_8">
-    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="385.375744" transform="rotate(-0 121.032 385.375744)">Vitória</text>
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="390.160971" transform="rotate(-0 121.032 390.160971)">Vitória</text>
    </g>
    <g id="text_9">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="146.833333" y="385.375744" transform="rotate(-0 146.833333 385.375744)">1</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="146.833333" y="390.160971" transform="rotate(-0 146.833333 390.160971)">1</text>
    </g>
    <g id="patch_7">
-    <path d="M 126 368.137809 
-L 226 368.137809 
-L 226 355.979578 
-L 126 355.979578 
+    <path d="M 126 373.57045 
+L 176 373.57045 
+L 176 361.993952 
+L 126 361.993952 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #4d4d4d"/>
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_10">
-    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="365.765693" transform="rotate(-0 121.032 365.765693)">Belo Horizonte</text>
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="371.489201" transform="rotate(-0 121.032 371.489201)">Campinas</text>
    </g>
    <g id="text_11">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="230.166667" y="365.765693" transform="rotate(-0 230.166667 365.765693)">6</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="180.166667" y="371.489201" transform="rotate(-0 180.166667 371.489201)">3</text>
    </g>
    <g id="patch_8">
-    <path d="M 126 348.527759 
-L 242.666667 348.527759 
-L 242.666667 336.369528 
-L 126 336.369528 
+    <path d="M 126 354.898679 
+L 226 354.898679 
+L 226 343.322182 
+L 126 343.322182 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #4d4d4d"/>
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_12">
-    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="346.155643" transform="rotate(-0 121.032 346.155643)">Rio de Janeiro</text>
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="352.817431" transform="rotate(-0 121.032 352.817431)">Belo Horizonte</text>
    </g>
    <g id="text_13">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="246.833333" y="346.155643" transform="rotate(-0 246.833333 346.155643)">7</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="230.166667" y="352.817431" transform="rotate(-0 230.166667 352.817431)">6</text>
    </g>
    <g id="patch_9">
-    <path d="M 126 328.917709 
-L 509.333333 328.917709 
-L 509.333333 316.759477 
-L 126 316.759477 
+    <path d="M 126 336.226909 
+L 242.666667 336.226909 
+L 242.666667 324.650411 
+L 126 324.650411 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #4d4d4d"/>
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_14">
-    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="326.545593" transform="rotate(-0 121.032 326.545593)">São Paulo</text>
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="334.14566" transform="rotate(-0 121.032 334.14566)">Rio de Janeiro</text>
    </g>
    <g id="text_15">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="513.5" y="326.545593" transform="rotate(-0 513.5 326.545593)">23</text>
-   </g>
-   <g id="text_16">
-    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="307.410545" transform="rotate(-0 14.4 307.410545)">SUDESTE  ·  37 casas</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="246.833333" y="334.14566" transform="rotate(-0 246.833333 334.14566)">7</text>
    </g>
    <g id="patch_10">
-    <path d="M 126 283.814593 
-L 142.666667 283.814593 
-L 142.666667 271.656362 
-L 126 271.656362 
+    <path d="M 126 317.555139 
+L 509.333333 317.555139 
+L 509.333333 305.978641 
+L 126 305.978641 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #4d4d4d"/>
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="315.47389" transform="rotate(-0 121.032 315.47389)">São Paulo</text>
    </g>
    <g id="text_17">
-    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="281.442477" transform="rotate(-0 121.032 281.442477)">Goiânia</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="513.5" y="315.47389" transform="rotate(-0 513.5 315.47389)">23</text>
    </g>
    <g id="text_18">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="146.833333" y="281.442477" transform="rotate(-0 146.833333 281.442477)">1</text>
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="297.230208" transform="rotate(-0 14.4 297.230208)">SUDESTE  ·  40 casas</text>
    </g>
    <g id="patch_11">
-    <path d="M 126 264.204543 
-L 226 264.204543 
-L 226 252.046312 
-L 126 252.046312 
+    <path d="M 126 274.610067 
+L 142.666667 274.610067 
+L 142.666667 263.033569 
+L 126 263.033569 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #4d4d4d"/>
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_19">
-    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="261.832427" transform="rotate(-0 121.032 261.832427)">Brasília</text>
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="272.528818" transform="rotate(-0 121.032 272.528818)">Goiânia</text>
    </g>
    <g id="text_20">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="230.166667" y="261.832427" transform="rotate(-0 230.166667 261.832427)">6</text>
-   </g>
-   <g id="text_21">
-    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="242.697379" transform="rotate(-0 14.4 242.697379)">CENTRO-OESTE  ·  7 casas</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="146.833333" y="272.528818" transform="rotate(-0 146.833333 272.528818)">1</text>
    </g>
    <g id="patch_12">
-    <path d="M 126 219.101427 
-L 142.666667 219.101427 
-L 142.666667 206.943196 
-L 126 206.943196 
+    <path d="M 126 255.938297 
+L 226 255.938297 
+L 226 244.361799 
+L 126 244.361799 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #4d4d4d"/>
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="253.857048" transform="rotate(-0 121.032 253.857048)">Brasília</text>
    </g>
    <g id="text_22">
-    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="216.729312" transform="rotate(-0 121.032 216.729312)">Recife</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="230.166667" y="253.857048" transform="rotate(-0 230.166667 253.857048)">6</text>
    </g>
    <g id="text_23">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="146.833333" y="216.729312" transform="rotate(-0 146.833333 216.729312)">1</text>
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="235.613366" transform="rotate(-0 14.4 235.613366)">CENTRO-OESTE  ·  7 casas</text>
    </g>
    <g id="patch_13">
-    <path d="M 126 199.491377 
-L 142.666667 199.491377 
-L 142.666667 187.333146 
-L 126 187.333146 
+    <path d="M 126 212.993225 
+L 142.666667 212.993225 
+L 142.666667 201.416727 
+L 126 201.416727 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #b91c1c"/>
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_24">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #b91c1c" x="121.032" y="197.119261" transform="rotate(-0 121.032 197.119261)">Salvador</text>
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="210.911976" transform="rotate(-0 121.032 210.911976)">Recife</text>
    </g>
    <g id="text_25">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="146.833333" y="197.119261" transform="rotate(-0 146.833333 197.119261)">1</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="146.833333" y="210.911976" transform="rotate(-0 146.833333 210.911976)">1</text>
    </g>
    <g id="patch_14">
-    <path d="M 126 179.881327 
-L 159.333333 179.881327 
-L 159.333333 167.723095 
-L 126 167.723095 
+    <path d="M 126 194.321455 
+L 142.666667 194.321455 
+L 142.666667 182.744957 
+L 126 182.744957 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #4d4d4d"/>
+" clip-path="url(#p4fb8732802)" style="fill: #b91c1c"/>
    </g>
    <g id="text_26">
-    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="177.509211" transform="rotate(-0 121.032 177.509211)">Fortaleza</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #b91c1c" x="121.032" y="192.240206" transform="rotate(-0 121.032 192.240206)">Salvador</text>
    </g>
    <g id="text_27">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="163.5" y="177.509211" transform="rotate(-0 163.5 177.509211)">2</text>
-   </g>
-   <g id="text_28">
-    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="158.374163" transform="rotate(-0 14.4 158.374163)">NORDESTE  ·  4 casas</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="146.833333" y="192.240206" transform="rotate(-0 146.833333 192.240206)">1</text>
    </g>
    <g id="patch_15">
-    <path d="M 126 134.778211 
-L 142.666667 134.778211 
-L 142.666667 122.61998 
-L 126 122.61998 
+    <path d="M 126 175.649684 
+L 159.333333 175.649684 
+L 159.333333 164.073187 
+L 126 164.073187 
 z
-" clip-path="url(#pd86a8a22e7)" style="fill: #4d4d4d"/>
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="173.568435" transform="rotate(-0 121.032 173.568435)">Fortaleza</text>
    </g>
    <g id="text_29">
-    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="132.406095" transform="rotate(-0 121.032 132.406095)">Belém</text>
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="163.5" y="173.568435" transform="rotate(-0 163.5 173.568435)">2</text>
    </g>
    <g id="text_30">
-    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="146.833333" y="132.406095" transform="rotate(-0 146.833333 132.406095)">1</text>
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="155.324754" transform="rotate(-0 14.4 155.324754)">NORDESTE  ·  4 casas</text>
+   </g>
+   <g id="patch_16">
+    <path d="M 126 132.704612 
+L 142.666667 132.704612 
+L 142.666667 121.128115 
+L 126 121.128115 
+z
+" clip-path="url(#p4fb8732802)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_31">
-    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="113.271048" transform="rotate(-0 14.4 113.271048)">NORTE  ·  1 casa</text>
+    <text style="font-size: 11px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="121.032" y="130.623364" transform="rotate(-0 121.032 130.623364)">Belém</text>
+   </g>
+   <g id="text_32">
+    <text style="font-weight: 600; font-size: 11px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="146.833333" y="130.623364" transform="rotate(-0 146.833333 130.623364)">1</text>
+   </g>
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="14.4" y="112.379682" transform="rotate(-0 14.4 112.379682)">NORTE  ·  1 casa</text>
    </g>
   </g>
-  <g id="text_32">
-   <text style="font-weight: 600; font-size: 15.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="12.96" y="28.902233" transform="rotate(-0 12.96 28.902233)">São Paulo concentra 38% das luderias do estudo</text>
+  <g id="text_34">
+   <text style="font-weight: 600; font-size: 15.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="12.96" y="27.189967" transform="rotate(-0 12.96 27.189967)">São Paulo concentra um terço das luderias do estudo</text>
   </g>
-  <g id="text_33">
-   <text style="font-size: 11.5px; font-family: 'Source Sans 3'; fill: #525252" transform="translate(12.96 50.617734)">Casas com mais de 100 avaliações no Google, por metrópole do endereço (60 casas). Salvador tem</text>
+  <g id="text_35">
+   <text style="font-size: 11.5px; font-family: 'Source Sans 3'; fill: #525252" transform="translate(12.96 50.617734)">Casas com mais de 100 avaliações no Google, por metrópole do endereço (63 casas). Salvador tem</text>
    <text style="font-size: 11.5px; font-family: 'Source Sans 3'; fill: #525252" transform="translate(12.96 70.351016)">1.</text>
   </g>
-  <g id="text_34">
+  <g id="text_36">
    <text style="font-size: 8.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="12.96" y="519.279141" transform="rotate(-0 12.96 519.279141)">Fonte: elaboração própria com dados do Google Maps (Places API, set. 2026; casas novas em 12/10/2026), recorte B1.</text>
   </g>
  </g>
  <defs>
-  <clipPath id="pd86a8a22e7">
+  <clipPath id="p4fb8732802">
    <rect x="126" y="91.44" width="414" height="390.24"/>
   </clipPath>
  </defs>

@@ -1,98 +1,98 @@
 {
  "_leiaMe": "Gerado por _src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_estatistica_descritiva.py. Não editar à mão: rode o script de novo.",
  "atualizado": "2026-10-15",
- "total_casas": 60,
- "n_metropoles": 13,
+ "total_casas": 63,
+ "n_metropoles": 14,
  "geral": {
   "avaliacao_media": {
    "grupo": "Google Maps",
    "rotulo": "Nota média no Google",
    "unidade": "1 a 5",
-   "n": 60.0,
-   "media": 4.725,
+   "n": 63.0,
+   "media": 4.7302,
    "mediana": 4.7,
-   "dp": 0.1503,
+   "dp": 0.1509,
    "min": 4.2,
-   "p25": 4.675,
+   "p25": 4.7,
    "p75": 4.8,
    "max": 5.0,
    "amplitude": 0.8,
-   "cv": 0.0318
+   "cv": 0.0319
   },
   "volume_avaliacoes": {
    "grupo": "Google Maps",
    "rotulo": "Nº de avaliações no Google",
    "unidade": "avaliações",
-   "n": 60.0,
-   "media": 791.1833,
-   "mediana": 651.5,
-   "dp": 825.3503,
+   "n": 63.0,
+   "media": 796.8254,
+   "mediana": 640.0,
+   "dp": 839.2484,
    "min": 105.0,
-   "p25": 218.5,
-   "p75": 1020.75,
+   "p25": 214.5,
+   "p75": 1039.5,
    "max": 5137.0,
    "amplitude": 5032.0,
-   "cv": 1.0432
+   "cv": 1.0532
   },
   "dias_abertos": {
    "grupo": "Horários",
    "rotulo": "Dias abertos por semana",
    "unidade": "dias",
-   "n": 60.0,
-   "media": 5.55,
+   "n": 63.0,
+   "media": 5.5397,
    "mediana": 6.0,
-   "dp": 1.0484,
+   "dp": 1.029,
    "min": 2.0,
    "p25": 5.0,
    "p75": 6.0,
    "max": 7.0,
    "amplitude": 5.0,
-   "cv": 0.1889
+   "cv": 0.1858
   },
   "horas_semana": {
    "grupo": "Horários",
    "rotulo": "Horas abertas por semana",
    "unidade": "horas",
-   "n": 60.0,
-   "media": 43.9417,
+   "n": 63.0,
+   "media": 43.9841,
    "mediana": 42.0,
-   "dp": 15.4383,
+   "dp": 15.1175,
    "min": 12.0,
-   "p25": 33.0,
-   "p75": 50.5,
+   "p25": 33.5,
+   "p75": 51.0,
    "max": 92.0,
    "amplitude": 80.0,
-   "cv": 0.3513
+   "cv": 0.3437
   },
   "abre_cedo_h": {
    "grupo": "Horários",
    "rotulo": "Abertura mais cedo da semana",
    "unidade": "hora do dia",
-   "n": 60.0,
-   "media": 13.2417,
+   "n": 63.0,
+   "media": 13.3095,
    "mediana": 13.0,
-   "dp": 2.2237,
+   "dp": 2.2005,
    "min": 8.0,
    "p25": 12.0,
    "p75": 14.0,
    "max": 18.5,
    "amplitude": 10.5,
-   "cv": 0.1679
+   "cv": 0.1653
   },
   "fecha_tarde_h": {
    "grupo": "Horários",
    "rotulo": "Fechamento mais tarde da semana (25 = 1h da manhã)",
    "unidade": "hora do dia",
-   "n": 60.0,
-   "media": 23.1667,
+   "n": 63.0,
+   "media": 23.2063,
    "mediana": 23.5,
-   "dp": 1.4948,
+   "dp": 1.5017,
    "min": 19.0,
    "p25": 22.0,
    "p75": 24.0,
-   "max": 25.0,
-   "amplitude": 6.0,
-   "cv": 0.0645
+   "max": 26.0,
+   "amplitude": 7.0,
+   "cv": 0.0647
   },
   "metro_500m": {
    "grupo": "Entorno",
@@ -290,360 +290,360 @@
    "grupo": "Cardápio",
    "rotulo": "Itens com preço no cardápio",
    "unidade": "itens",
-   "n": 43.0,
-   "media": 51.9302,
-   "mediana": 52.0,
-   "dp": 37.9005,
+   "n": 47.0,
+   "media": 57.6596,
+   "mediana": 55.0,
+   "dp": 43.9665,
    "min": 1.0,
-   "p25": 25.0,
-   "p75": 72.0,
-   "max": 164.0,
-   "amplitude": 163.0,
-   "cv": 0.7298
+   "p25": 26.0,
+   "p75": 73.0,
+   "max": 194.0,
+   "amplitude": 193.0,
+   "cv": 0.7625
   },
   "couvert_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Couvert ou taxa de jogo (só casas que cobram)",
    "unidade": "R$",
-   "n": 31.0,
-   "media": 18.3548,
+   "n": 33.0,
+   "media": 18.4545,
    "mediana": 17.5,
-   "dp": 9.9131,
+   "dp": 9.6269,
    "min": 0.0,
    "p25": 12.5,
    "p75": 22.5,
    "max": 45.0,
    "amplitude": 45.0,
-   "cv": 0.5401
+   "cv": 0.5217
   },
   "bebida_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Bebida, mediana do cardápio",
    "unidade": "R$",
-   "n": 37.0,
-   "media": 16.6297,
+   "n": 41.0,
+   "media": 16.8341,
    "mediana": 16.0,
-   "dp": 8.7786,
+   "dp": 8.4369,
    "min": 6.0,
    "p25": 9.0,
    "p75": 25.0,
    "max": 36.0,
    "amplitude": 30.0,
-   "cv": 0.5279
+   "cv": 0.5012
   },
   "entrada_ou_prato_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Entrada ou prato, mediana do cardápio",
    "unidade": "R$",
-   "n": 38.0,
-   "media": 34.1303,
+   "n": 42.0,
+   "media": 34.2464,
    "mediana": 34.0,
-   "dp": 11.7732,
+   "dp": 11.2987,
    "min": 6.0,
    "p25": 30.0,
    "p75": 39.8,
    "max": 64.45,
    "amplitude": 58.45,
-   "cv": 0.3449
+   "cv": 0.3299
   },
   "consumo_baixa": {
    "grupo": "Cardápio",
    "rotulo": "Consumo por pessoa (bebida + entrada ou prato), nível baixo (P25)",
    "unidade": "R$",
-   "n": 36.0,
-   "media": 40.5228,
-   "mediana": 40.25,
-   "dp": 15.1963,
+   "n": 40.0,
+   "media": 40.5505,
+   "mediana": 40.625,
+   "dp": 14.4202,
    "min": 11.0,
-   "p25": 31.6,
-   "p75": 54.3,
+   "p25": 34.0625,
+   "p75": 54.075,
    "max": 69.3,
    "amplitude": 58.3,
-   "cv": 0.375
+   "cv": 0.3556
   },
   "consumo_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Consumo por pessoa (bebida + entrada ou prato), nível mediano",
    "unidade": "R$",
-   "n": 36.0,
-   "media": 50.8958,
-   "mediana": 50.25,
-   "dp": 17.614,
+   "n": 40.0,
+   "media": 51.2138,
+   "mediana": 52.0,
+   "dp": 16.7233,
    "min": 12.0,
-   "p25": 38.375,
-   "p75": 65.7,
+   "p25": 39.625,
+   "p75": 62.0,
    "max": 82.0,
    "amplitude": 70.0,
-   "cv": 0.3461
+   "cv": 0.3265
   },
   "consumo_alta": {
    "grupo": "Cardápio",
    "rotulo": "Consumo por pessoa (bebida + entrada ou prato), nível alto (P75)",
    "unidade": "R$",
-   "n": 36.0,
-   "media": 62.2942,
-   "mediana": 62.75,
-   "dp": 20.0028,
+   "n": 40.0,
+   "media": 62.9785,
+   "mediana": 65.4,
+   "dp": 19.2836,
    "min": 15.5,
-   "p25": 46.3125,
+   "p25": 51.0625,
    "p75": 77.625,
    "max": 96.0,
    "amplitude": 80.5,
-   "cv": 0.3211
+   "cv": 0.3062
   },
   "cesta_baixa": {
    "grupo": "Cardápio",
    "rotulo": "Consumo por pessoa (bebida + hambúrguer), nível baixo (P25)",
    "unidade": "R$",
-   "n": 27.0,
-   "media": 42.7481,
+   "n": 31.0,
+   "media": 42.0613,
    "mediana": 42.0,
-   "dp": 12.207,
+   "dp": 11.9336,
    "min": 16.0,
    "p25": 35.45,
-   "p75": 51.75,
+   "p75": 50.925,
    "max": 65.9,
    "amplitude": 49.9,
-   "cv": 0.2856
+   "cv": 0.2837
   },
   "cesta_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Consumo por pessoa (bebida + hambúrguer), nível mediano",
    "unidade": "R$",
-   "n": 27.0,
-   "media": 47.6074,
+   "n": 31.0,
+   "media": 47.3613,
    "mediana": 46.0,
-   "dp": 13.8783,
+   "dp": 13.5149,
    "min": 16.0,
    "p25": 38.0,
-   "p75": 60.3,
+   "p75": 57.8,
    "max": 72.0,
    "amplitude": 56.0,
-   "cv": 0.2915
+   "cv": 0.2854
   },
   "cesta_alta": {
    "grupo": "Cardápio",
    "rotulo": "Consumo por pessoa (bebida + hambúrguer), nível alto (P75)",
    "unidade": "R$",
-   "n": 27.0,
-   "media": 53.2044,
+   "n": 31.0,
+   "media": 53.2845,
    "mediana": 53.0,
-   "dp": 15.5379,
+   "dp": 14.9369,
    "min": 17.0,
-   "p25": 42.36,
-   "p75": 67.325,
+   "p25": 43.11,
+   "p75": 65.95,
    "max": 80.0,
    "amplitude": 63.0,
-   "cv": 0.292
+   "cv": 0.2803
   },
   "hamburguer_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Hambúrguer, mediana",
    "unidade": "R$",
-   "n": 29.0,
-   "media": 38.2034,
-   "mediana": 38.9,
-   "dp": 9.2586,
+   "n": 33.0,
+   "media": 37.5697,
+   "mediana": 38.0,
+   "dp": 8.9046,
    "min": 12.0,
    "p25": 31.0,
-   "p75": 45.0,
+   "p75": 43.9,
    "max": 54.0,
    "amplitude": 42.0,
-   "cv": 0.2424
+   "cv": 0.237
   },
   "batata_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Batata, mediana",
    "unidade": "R$",
-   "n": 30.0,
-   "media": 31.24,
-   "mediana": 29.6,
-   "dp": 11.7711,
+   "n": 34.0,
+   "media": 32.0912,
+   "mediana": 30.25,
+   "dp": 11.7683,
    "min": 10.0,
-   "p25": 25.05,
-   "p75": 36.875,
+   "p25": 25.125,
+   "p75": 38.625,
    "max": 68.0,
    "amplitude": 58.0,
-   "cv": 0.3768
+   "cv": 0.3667
   },
   "cerveja_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Cerveja, mediana",
    "unidade": "R$",
-   "n": 30.0,
-   "media": 13.7967,
-   "mediana": 12.75,
-   "dp": 4.1852,
+   "n": 34.0,
+   "media": 13.9059,
+   "mediana": 13.0,
+   "dp": 3.9849,
    "min": 6.5,
    "p25": 12.0,
-   "p75": 16.125,
+   "p75": 16.35,
    "max": 23.0,
    "amplitude": 16.5,
-   "cv": 0.3034
+   "cv": 0.2866
   },
   "refrigerante_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Refrigerante, mediana",
    "unidade": "R$",
-   "n": 32.0,
-   "media": 7.6578,
+   "n": 36.0,
+   "media": 7.6694,
    "mediana": 8.0,
-   "dp": 1.4322,
+   "dp": 1.3603,
    "min": 5.0,
-   "p25": 6.6875,
-   "p75": 8.225,
+   "p25": 6.825,
+   "p75": 8.05,
    "max": 12.0,
    "amplitude": 7.0,
-   "cv": 0.187
+   "cv": 0.1774
   },
   "drinks_mediana": {
    "grupo": "Cardápio",
    "rotulo": "Drinks, mediana",
    "unidade": "R$",
-   "n": 23.0,
-   "media": 27.3304,
-   "mediana": 28.0,
-   "dp": 7.5562,
+   "n": 27.0,
+   "media": 27.0648,
+   "mediana": 27.5,
+   "dp": 7.0811,
    "min": 13.0,
-   "p25": 23.0,
-   "p75": 34.0,
+   "p25": 22.95,
+   "p75": 31.0,
    "max": 38.9,
    "amplitude": 25.9,
-   "cv": 0.2765
+   "cv": 0.2616
   },
   "titulos_acervo": {
    "grupo": "Acervo",
    "rotulo": "Títulos no acervo publicado",
    "unidade": "jogos",
-   "n": 31.0,
-   "media": 474.0,
-   "mediana": 312.0,
-   "dp": 404.2361,
+   "n": 34.0,
+   "media": 488.6471,
+   "mediana": 299.5,
+   "dp": 431.6165,
    "min": 59.0,
-   "p25": 217.5,
-   "p75": 610.5,
+   "p25": 215.75,
+   "p75": 621.75,
    "max": 1833.0,
    "amplitude": 1774.0,
-   "cv": 0.8528
+   "cv": 0.8833
   },
   "avaliacoes_b2": {
    "grupo": "B2",
    "rotulo": "Avaliações no recorte do B2 (até '3 meses atrás')",
    "unidade": "avaliações",
-   "n": 49.0,
-   "media": 45.2653,
-   "mediana": 17.0,
-   "dp": 106.291,
-   "min": 2.0,
-   "p25": 12.0,
-   "p75": 37.0,
+   "n": 55.0,
+   "media": 40.3273,
+   "mediana": 15.0,
+   "dp": 101.2191,
+   "min": 0.0,
+   "p25": 10.0,
+   "p75": 31.5,
    "max": 712.0,
-   "amplitude": 710.0,
-   "cv": 2.3482
+   "amplitude": 712.0,
+   "cv": 2.5099
   },
   "avaliacoes_b2_com_texto": {
    "grupo": "B2",
    "rotulo": "Dessas, com texto",
    "unidade": "avaliações",
-   "n": 49.0,
-   "media": 29.3878,
-   "mediana": 9.0,
-   "dp": 71.8139,
+   "n": 55.0,
+   "media": 26.1818,
+   "mediana": 8.0,
+   "dp": 68.3353,
    "min": 0.0,
-   "p25": 6.0,
-   "p75": 22.0,
+   "p25": 5.0,
+   "p75": 20.0,
    "max": 453.0,
    "amplitude": 453.0,
-   "cv": 2.4437
+   "cv": 2.61
   }
  },
  "dias": [
   {
    "dia": "segunda",
-   "pct": 0.2833,
+   "pct": 0.2698,
    "casas": 17
   },
   {
    "dia": "terça",
-   "pct": 0.6167,
-   "casas": 37
+   "pct": 0.619,
+   "casas": 39
   },
   {
    "dia": "quarta",
-   "pct": 0.9,
-   "casas": 54
+   "pct": 0.9048,
+   "casas": 57
   },
   {
    "dia": "quinta",
-   "pct": 0.9833,
-   "casas": 59
+   "pct": 0.9841,
+   "casas": 62
   },
   {
    "dia": "sexta",
    "pct": 1.0,
-   "casas": 60
+   "casas": 63
   },
   {
    "dia": "sábado",
-   "pct": 0.9833,
-   "casas": 59
+   "pct": 0.9841,
+   "casas": 62
   },
   {
    "dia": "domingo",
-   "pct": 0.7833,
-   "casas": 47
+   "pct": 0.7778,
+   "casas": 49
   }
  ],
  "proporcoes": {
   "tem_metro_1000m": {
    "rotulo": "Com estação de metrô até 1000 m",
    "casas": 24,
-   "n": 60
+   "n": 63
   },
   "tem_cardapio": {
    "rotulo": "Com cardápio transcrito",
-   "casas": 43,
-   "n": 60
+   "casas": 47,
+   "n": 63
   },
   "cobra_couvert": {
    "rotulo": "Couvert ou taxa de jogo encontrado (entre as com cardápio)",
-   "casas": 31,
-   "n": 43
+   "casas": 33,
+   "n": 47
   },
   "abre_segunda": {
    "rotulo": "Abre segunda",
    "casas": 17,
-   "n": 60
+   "n": 63
   },
   "abre_terca": {
    "rotulo": "Abre terça",
-   "casas": 37,
-   "n": 60
+   "casas": 39,
+   "n": 63
   },
   "abre_quarta": {
    "rotulo": "Abre quarta",
-   "casas": 54,
-   "n": 60
+   "casas": 57,
+   "n": 63
   },
   "abre_quinta": {
    "rotulo": "Abre quinta",
-   "casas": 59,
-   "n": 60
+   "casas": 62,
+   "n": 63
   },
   "abre_sexta": {
    "rotulo": "Abre sexta",
-   "casas": 60,
-   "n": 60
+   "casas": 63,
+   "n": 63
   },
   "abre_sabado": {
    "rotulo": "Abre sábado",
-   "casas": 59,
-   "n": 60
+   "casas": 62,
+   "n": 63
   },
   "abre_domingo": {
    "rotulo": "Abre domingo",
-   "casas": 47,
-   "n": 60
+   "casas": 49,
+   "n": 63
   }
  },
  "hist_cesta": [
@@ -653,11 +653,11 @@
   },
   {
    "faixa": "20–40",
-   "casas": 8
+   "casas": 9
   },
   {
    "faixa": "40–60",
-   "casas": 11
+   "casas": 14
   },
   {
    "faixa": "60–80",
@@ -675,15 +675,15 @@
   },
   {
    "faixa": "30–40",
-   "casas": 16
+   "casas": 17
   },
   {
    "faixa": "40–50",
-   "casas": 19
+   "casas": 20
   },
   {
    "faixa": "50–60",
-   "casas": 7
+   "casas": 8
   },
   {
    "faixa": "60–70",
@@ -725,11 +725,11 @@
   },
   {
    "faixa": "4.7",
-   "casas": 17
+   "casas": 18
   },
   {
    "faixa": "4.8",
-   "casas": 18
+   "casas": 19
   },
   {
    "faixa": "4.9",
@@ -737,7 +737,7 @@
   },
   {
    "faixa": "5.0",
-   "casas": 3
+   "casas": 4
   }
  ],
  "abertura": [
@@ -763,7 +763,7 @@
   },
   {
    "hora": "14h",
-   "casas": 15
+   "casas": 17
   },
   {
    "hora": "15h",
@@ -771,7 +771,7 @@
   },
   {
    "hora": "16h",
-   "casas": 2
+   "casas": 3
   },
   {
    "hora": "17h",
@@ -801,7 +801,7 @@
   },
   {
    "hora": "23h",
-   "casas": 13
+   "casas": 15
   },
   {
    "hora": "0h",
@@ -810,6 +810,10 @@
   {
    "hora": "1h",
    "casas": 10
+  },
+  {
+   "hora": "2h",
+   "casas": 1
   }
  ],
  "dispersao_instagram": [
@@ -1264,6 +1268,27 @@
    "avaliacao_media": 4.6
   },
   {
+   "nome": "Metropoly Bar",
+   "metropole": "Campinas",
+   "regiao": "Sudeste",
+   "volume_avaliacoes": 2423.0,
+   "avaliacao_media": 4.7
+  },
+  {
+   "nome": "Muito Geek | TCG • Board Games • Fliperama",
+   "metropole": "Campinas",
+   "regiao": "Sudeste",
+   "volume_avaliacoes": 189.0,
+   "avaliacao_media": 4.8
+  },
+  {
+   "nome": "Nergeek",
+   "metropole": "Campinas",
+   "regiao": "Sudeste",
+   "volume_avaliacoes": 117.0,
+   "avaliacao_media": 5.0
+  },
+  {
    "nome": "Cheio de Fome - Vila da Penha",
    "metropole": "Rio de Janeiro",
    "regiao": "Sudeste",
@@ -1578,6 +1603,15 @@
    "completa": true
   },
   {
+   "nome": "Cheio de Fome - Vila da Penha",
+   "metropole": "Rio de Janeiro",
+   "regiao": "Sudeste",
+   "baixa": 24.0,
+   "mediana": 31.0,
+   "alta": 43.5,
+   "completa": true
+  },
+  {
    "nome": "Cineplay- Restaurante e Jogos",
    "metropole": "Florianópolis",
    "regiao": "Sul",
@@ -1642,6 +1676,15 @@
   },
   {
    "nome": "Covil Game Bar",
+   "metropole": "São Paulo",
+   "regiao": "Sudeste",
+   "baixa": 36.0,
+   "mediana": 40.0,
+   "alta": 44.0,
+   "completa": true
+  },
+  {
+   "nome": "Covil Game Bar SBC",
    "metropole": "São Paulo",
    "regiao": "Sudeste",
    "baixa": 36.0,
@@ -1722,12 +1765,30 @@
    "completa": true
   },
   {
+   "nome": "Metropoly Bar",
+   "metropole": "Campinas",
+   "regiao": "Sudeste",
+   "baixa": 46.7,
+   "mediana": 54.8,
+   "alta": 61.8,
+   "completa": true
+  },
+  {
    "nome": "Loja de Jogos - Asgard",
    "metropole": "Brasília",
    "regiao": "Centro-Oeste",
    "baixa": 50.25,
    "mediana": 56.0,
    "alta": 60.25,
+   "completa": true
+  },
+  {
+   "nome": "Espaço 162 - Meu Karaokê Box",
+   "metropole": "São Paulo",
+   "regiao": "Sudeste",
+   "baixa": 43.0,
+   "mediana": 57.0,
+   "alta": 66.0,
    "completa": true
   },
   {
@@ -1807,7 +1868,7 @@
   {
    "grupo": "São Paulo",
    "casas": 23,
-   "pct": 0.3833,
+   "pct": 0.3651,
    "regiao": "Sudeste",
    "avaliacao_media": {
     "n": 23.0,
@@ -1858,16 +1919,16 @@
     "cv": 3.4751
    },
    "cesta_mediana": {
-    "n": 11.0,
-    "media": 49.8455,
+    "n": 13.0,
+    "media": 49.6385,
     "mediana": 50.0,
-    "dp": 16.6041,
+    "dp": 15.5577,
     "min": 16.0,
-    "p25": 39.0,
-    "p75": 62.9,
+    "p25": 40.0,
+    "p75": 62.0,
     "max": 72.0,
     "amplitude": 56.0,
-    "cv": 0.3331
+    "cv": 0.3134
    },
    "fecha_tarde_h": {
     "n": 23.0,
@@ -1918,51 +1979,51 @@
     "cv": 0.3013
    },
    "bebida_mediana": {
-    "n": 14.0,
-    "media": 19.05,
-    "mediana": 17.5,
-    "dp": 10.5982,
+    "n": 16.0,
+    "media": 19.3562,
+    "mediana": 18.0,
+    "dp": 9.984,
     "min": 6.0,
-    "p25": 9.5,
-    "p75": 27.65,
+    "p25": 10.5,
+    "p75": 27.15,
     "max": 36.0,
     "amplitude": 30.0,
-    "cv": 0.5563
+    "cv": 0.5158
    },
    "entrada_ou_prato_mediana": {
-    "n": 14.0,
-    "media": 35.8071,
-    "mediana": 38.5,
-    "dp": 9.2318,
+    "n": 16.0,
+    "media": 35.2062,
+    "mediana": 36.0,
+    "dp": 8.8181,
     "min": 14.0,
-    "p25": 30.5,
-    "p75": 42.225,
+    "p25": 29.75,
+    "p75": 40.675,
     "max": 48.0,
     "amplitude": 34.0,
-    "cv": 0.2578
+    "cv": 0.2505
    },
    "couvert_mediana": {
-    "n": 10.0,
-    "media": 22.35,
-    "mediana": 18.75,
-    "dp": 13.9305,
+    "n": 11.0,
+    "media": 21.9091,
+    "mediana": 17.5,
+    "dp": 13.2963,
     "min": 0.0,
-    "p25": 13.125,
-    "p75": 31.75,
+    "p25": 13.75,
+    "p75": 30.5,
     "max": 45.0,
     "amplitude": 45.0,
-    "cv": 0.6233
+    "cv": 0.6069
    },
    "tem_metro_1000m": 0.6087,
    "abre_domingo": 0.7391,
    "abre_segunda": 0.1739,
-   "com_cardapio": 15,
+   "com_cardapio": 17,
    "avaliacoes_b2": 1335
   },
   {
    "grupo": "Rio de Janeiro",
    "casas": 7,
-   "pct": 0.1167,
+   "pct": 0.1111,
    "regiao": "Sudeste",
    "avaliacao_media": {
     "n": 7.0,
@@ -2013,16 +2074,16 @@
     "cv": 0.7143
    },
    "cesta_mediana": {
-    "n": 2.0,
-    "media": 57.0,
-    "mediana": 57.0,
-    "dp": 9.8995,
-    "min": 50.0,
-    "p25": 53.5,
-    "p75": 60.5,
+    "n": 3.0,
+    "media": 48.3333,
+    "mediana": 50.0,
+    "dp": 16.563,
+    "min": 31.0,
+    "p25": 40.5,
+    "p75": 57.0,
     "max": 64.0,
-    "amplitude": 14.0,
-    "cv": 0.1737
+    "amplitude": 33.0,
+    "cv": 0.3427
    },
    "fecha_tarde_h": {
     "n": 7.0,
@@ -2073,28 +2134,28 @@
     "cv": 0.5883
    },
    "bebida_mediana": {
-    "n": 2.0,
-    "media": 18.5,
-    "mediana": 18.5,
-    "dp": 9.1924,
+    "n": 3.0,
+    "media": 17.3333,
+    "mediana": 15.0,
+    "dp": 6.8069,
     "min": 12.0,
-    "p25": 15.25,
-    "p75": 21.75,
+    "p25": 13.5,
+    "p75": 20.0,
     "max": 25.0,
     "amplitude": 13.0,
-    "cv": 0.4969
+    "cv": 0.3927
    },
    "entrada_ou_prato_mediana": {
-    "n": 2.0,
-    "media": 34.0,
-    "mediana": 34.0,
-    "dp": 2.8284,
+    "n": 3.0,
+    "media": 36.5,
+    "mediana": 36.0,
+    "dp": 4.7697,
     "min": 32.0,
-    "p25": 33.0,
-    "p75": 35.0,
-    "max": 36.0,
-    "amplitude": 4.0,
-    "cv": 0.0832
+    "p25": 34.0,
+    "p75": 38.75,
+    "max": 41.5,
+    "amplitude": 9.5,
+    "cv": 0.1307
    },
    "couvert_mediana": {
     "n": 3.0,
@@ -2111,13 +2172,13 @@
    "tem_metro_1000m": 0.4286,
    "abre_domingo": 0.8571,
    "abre_segunda": 0.2857,
-   "com_cardapio": 3,
+   "com_cardapio": 4,
    "avaliacoes_b2": 132
   },
   {
    "grupo": "Brasília",
    "casas": 6,
-   "pct": 0.1,
+   "pct": 0.0952,
    "regiao": "Centro-Oeste",
    "avaliacao_media": {
     "n": 6.0,
@@ -2272,7 +2333,7 @@
   {
    "grupo": "Belo Horizonte",
    "casas": 6,
-   "pct": 0.1,
+   "pct": 0.0952,
    "regiao": "Sudeste",
    "avaliacao_media": {
     "n": 6.0,
@@ -2427,7 +2488,7 @@
   {
    "grupo": "Curitiba",
    "casas": 6,
-   "pct": 0.1,
+   "pct": 0.0952,
    "regiao": "Sul",
    "avaliacao_media": {
     "n": 6.0,
@@ -2571,9 +2632,128 @@
    "avaliacoes_b2": 135
   },
   {
+   "grupo": "Campinas",
+   "casas": 3,
+   "pct": 0.0476,
+   "regiao": "Sudeste",
+   "avaliacao_media": {
+    "n": 3.0,
+    "media": 4.8333,
+    "mediana": 4.8,
+    "dp": 0.1528,
+    "min": 4.7,
+    "p25": 4.75,
+    "p75": 4.9,
+    "max": 5.0,
+    "amplitude": 0.3,
+    "cv": 0.0316
+   },
+   "volume_avaliacoes": {
+    "n": 3.0,
+    "media": 909.6667,
+    "mediana": 189.0,
+    "dp": 1311.0795,
+    "min": 117.0,
+    "p25": 153.0,
+    "p75": 1306.0,
+    "max": 2423.0,
+    "amplitude": 2306.0,
+    "cv": 1.4413
+   },
+   "seguidores": {
+    "n": 0
+   },
+   "interacoes_por_post": {
+    "n": 0
+   },
+   "cesta_mediana": {
+    "n": 1.0,
+    "media": 54.8,
+    "mediana": 54.8,
+    "dp": null,
+    "min": 54.8,
+    "p25": 54.8,
+    "p75": 54.8,
+    "max": 54.8,
+    "amplitude": 0.0,
+    "cv": null
+   },
+   "fecha_tarde_h": {
+    "n": 3.0,
+    "media": 24.0,
+    "mediana": 23.0,
+    "dp": 1.7321,
+    "min": 23.0,
+    "p25": 23.0,
+    "p75": 24.5,
+    "max": 26.0,
+    "amplitude": 3.0,
+    "cv": 0.0722
+   },
+   "horas_semana": {
+    "n": 3.0,
+    "media": 44.8333,
+    "mediana": 45.0,
+    "dp": 7.2514,
+    "min": 37.5,
+    "p25": 41.25,
+    "p75": 48.5,
+    "max": 52.0,
+    "amplitude": 14.5,
+    "cv": 0.1617
+   },
+   "n_posts_periodo": {
+    "n": 0
+   },
+   "dist_metro_m": {
+    "n": 0
+   },
+   "bebida_mediana": {
+    "n": 1.0,
+    "media": 16.9,
+    "mediana": 16.9,
+    "dp": null,
+    "min": 16.9,
+    "p25": 16.9,
+    "p75": 16.9,
+    "max": 16.9,
+    "amplitude": 0.0,
+    "cv": null
+   },
+   "entrada_ou_prato_mediana": {
+    "n": 1.0,
+    "media": 37.9,
+    "mediana": 37.9,
+    "dp": null,
+    "min": 37.9,
+    "p25": 37.9,
+    "p75": 37.9,
+    "max": 37.9,
+    "amplitude": 0.0,
+    "cv": null
+   },
+   "couvert_mediana": {
+    "n": 1.0,
+    "media": 22.5,
+    "mediana": 22.5,
+    "dp": null,
+    "min": 22.5,
+    "p25": 22.5,
+    "p75": 22.5,
+    "max": 22.5,
+    "amplitude": 0.0,
+    "cv": null
+   },
+   "tem_metro_1000m": 0.0,
+   "abre_domingo": 0.6667,
+   "abre_segunda": 0.0,
+   "com_cardapio": 1,
+   "avaliacoes_b2": 0
+  },
+  {
    "grupo": "Florianópolis",
    "casas": 3,
-   "pct": 0.05,
+   "pct": 0.0476,
    "regiao": "Sul",
    "avaliacao_media": {
     "n": 3.0,
@@ -2719,7 +2899,7 @@
   {
    "grupo": "Fortaleza",
    "casas": 2,
-   "pct": 0.0333,
+   "pct": 0.0317,
    "regiao": "Nordeste",
    "avaliacao_media": {
     "n": 2.0,
@@ -2874,7 +3054,7 @@
   {
    "grupo": "Porto Alegre",
    "casas": 2,
-   "pct": 0.0333,
+   "pct": 0.0317,
    "regiao": "Sul",
    "avaliacao_media": {
     "n": 2.0,
@@ -3020,7 +3200,7 @@
   {
    "grupo": "Goiânia",
    "casas": 1,
-   "pct": 0.0167,
+   "pct": 0.0159,
    "regiao": "Centro-Oeste",
    "avaliacao_media": {
     "n": 1.0,
@@ -3130,7 +3310,7 @@
   {
    "grupo": "Recife",
    "casas": 1,
-   "pct": 0.0167,
+   "pct": 0.0159,
    "regiao": "Nordeste",
    "avaliacao_media": {
     "n": 1.0,
@@ -3276,7 +3456,7 @@
   {
    "grupo": "Salvador",
    "casas": 1,
-   "pct": 0.0167,
+   "pct": 0.0159,
    "regiao": "Nordeste",
    "avaliacao_media": {
     "n": 1.0,
@@ -3422,7 +3602,7 @@
   {
    "grupo": "Belém",
    "casas": 1,
-   "pct": 0.0167,
+   "pct": 0.0159,
    "regiao": "Norte",
    "avaliacao_media": {
     "n": 1.0,
@@ -3568,7 +3748,7 @@
   {
    "grupo": "Vitória",
    "casas": 1,
-   "pct": 0.0167,
+   "pct": 0.0159,
    "regiao": "Sudeste",
    "avaliacao_media": {
     "n": 1.0,
@@ -3707,7 +3887,7 @@
   {
    "grupo": "Norte",
    "casas": 1,
-   "pct": 0.0167,
+   "pct": 0.0159,
    "avaliacao_media": {
     "n": 1.0,
     "media": 4.8,
@@ -3852,7 +4032,7 @@
   {
    "grupo": "Nordeste",
    "casas": 4,
-   "pct": 0.0667,
+   "pct": 0.0635,
    "avaliacao_media": {
     "n": 4.0,
     "media": 4.8,
@@ -4006,7 +4186,7 @@
   {
    "grupo": "Centro-Oeste",
    "casas": 7,
-   "pct": 0.1167,
+   "pct": 0.1111,
    "avaliacao_media": {
     "n": 7.0,
     "media": 4.7429,
@@ -4159,31 +4339,31 @@
   },
   {
    "grupo": "Sudeste",
-   "casas": 37,
-   "pct": 0.6167,
+   "casas": 40,
+   "pct": 0.6349,
    "avaliacao_media": {
-    "n": 37.0,
-    "media": 4.7135,
+    "n": 40.0,
+    "media": 4.7225,
     "mediana": 4.7,
-    "dp": 0.1456,
+    "dp": 0.1476,
     "min": 4.4,
     "p25": 4.6,
     "p75": 4.8,
     "max": 5.0,
     "amplitude": 0.6,
-    "cv": 0.0309
+    "cv": 0.0313
    },
    "volume_avaliacoes": {
-    "n": 37.0,
-    "media": 915.7838,
-    "mediana": 663.0,
-    "dp": 988.7658,
+    "n": 40.0,
+    "media": 915.325,
+    "mediana": 640.0,
+    "dp": 995.292,
     "min": 105.0,
-    "p25": 244.0,
-    "p75": 1104.0,
+    "p25": 235.75,
+    "p75": 1108.75,
     "max": 5137.0,
     "amplitude": 5032.0,
-    "cv": 1.0797
+    "cv": 1.0874
    },
    "seguidores": {
     "n": 26.0,
@@ -4210,40 +4390,40 @@
     "cv": 3.9185
    },
    "cesta_mediana": {
-    "n": 17.0,
-    "media": 51.3706,
+    "n": 21.0,
+    "media": 50.2905,
     "mediana": 50.0,
-    "dp": 14.0763,
+    "dp": 13.6629,
     "min": 16.0,
-    "p25": 46.0,
-    "p75": 63.8,
+    "p25": 40.0,
+    "p75": 62.0,
     "max": 72.0,
     "amplitude": 56.0,
-    "cv": 0.274
+    "cv": 0.2717
    },
    "fecha_tarde_h": {
-    "n": 37.0,
-    "media": 23.2162,
-    "mediana": 23.5,
-    "dp": 1.6268,
+    "n": 40.0,
+    "media": 23.275,
+    "mediana": 23.25,
+    "dp": 1.6249,
     "min": 19.5,
     "p25": 22.0,
     "p75": 25.0,
-    "max": 25.0,
-    "amplitude": 5.5,
-    "cv": 0.0701
+    "max": 26.0,
+    "amplitude": 6.5,
+    "cv": 0.0698
    },
    "horas_semana": {
-    "n": 37.0,
-    "media": 42.5405,
-    "mediana": 42.0,
-    "dp": 14.7382,
+    "n": 40.0,
+    "media": 42.7125,
+    "mediana": 42.5,
+    "dp": 14.268,
     "min": 12.0,
     "p25": 33.0,
-    "p75": 49.0,
+    "p75": 49.25,
     "max": 92.0,
     "amplitude": 80.0,
-    "cv": 0.3464
+    "cv": 0.334
    },
    "n_posts_periodo": {
     "n": 30.0,
@@ -4270,51 +4450,51 @@
     "cv": 0.3707
    },
    "bebida_mediana": {
-    "n": 22.0,
-    "media": 19.7091,
-    "mediana": 19.0,
-    "dp": 9.3924,
+    "n": 26.0,
+    "media": 19.5577,
+    "mediana": 18.0,
+    "dp": 8.7475,
     "min": 6.0,
-    "p25": 12.125,
-    "p75": 26.65,
+    "p25": 12.875,
+    "p75": 25.675,
     "max": 36.0,
     "amplitude": 30.0,
-    "cv": 0.4766
+    "cv": 0.4473
    },
    "entrada_ou_prato_mediana": {
-    "n": 22.0,
-    "media": 35.8727,
-    "mediana": 37.0,
-    "dp": 10.3866,
+    "n": 26.0,
+    "media": 35.7923,
+    "mediana": 36.95,
+    "dp": 9.7296,
     "min": 10.0,
     "p25": 32.0,
-    "p75": 42.225,
+    "p75": 41.1,
     "max": 52.0,
     "amplitude": 42.0,
-    "cv": 0.2895
+    "cv": 0.2718
    },
    "couvert_mediana": {
-    "n": 20.0,
-    "media": 20.3,
+    "n": 22.0,
+    "media": 20.2727,
     "mediana": 20.0,
-    "dp": 10.3076,
+    "dp": 9.8352,
     "min": 0.0,
-    "p25": 14.375,
+    "p25": 15.625,
     "p75": 22.5,
     "max": 45.0,
     "amplitude": 45.0,
-    "cv": 0.5078
+    "cv": 0.4851
    },
-   "tem_metro_1000m": 0.4865,
-   "abre_domingo": 0.7838,
-   "abre_segunda": 0.1622,
-   "com_cardapio": 25,
+   "tem_metro_1000m": 0.45,
+   "abre_domingo": 0.775,
+   "abre_segunda": 0.15,
+   "com_cardapio": 29,
    "avaliacoes_b2": 1774
   },
   {
    "grupo": "Sul",
    "casas": 11,
-   "pct": 0.1833,
+   "pct": 0.1746,
    "avaliacao_media": {
     "n": 11.0,
     "media": 4.7182,

@@ -1,61 +1,64 @@
 ﻿nome;metropole;regiao;volume_avaliacoes;nota_media;spearman
-FORTALÚDICA - BURGERS & JOGOS;Brasília;Centro-Oeste;105;4.8;-0.402
-Gruta BSB;Brasília;Centro-Oeste;112;4.9;-0.402
-Inside Games;Brasília;Centro-Oeste;640;4.6;-0.402
-Loja de Jogos - Asgard;Brasília;Centro-Oeste;754;4.7;-0.402
-Ludoteca BGC;Brasília;Centro-Oeste;1379;4.7;-0.402
-Utopia Games & Food;Brasília;Centro-Oeste;159;4.8;-0.402
-Paladins Game Store;Goiânia;Centro-Oeste;906;4.7;-0.402
-Balboa's Hobby Games;Fortaleza;Nordeste;881;4.8;-0.402
-Dominaria Cards & Games;Fortaleza;Nordeste;305;4.7;-0.402
-Nala Land - Bar de Jogos de Tabuleiro em Recife;Recife;Nordeste;206;4.9;-0.402
-São Jogue - Bela Vista;Salvador;Nordeste;787;4.8;-0.402
-Ludoteca Sidequest;Belém;Norte;327;4.8;-0.402
-Bardo Mago;Belo Horizonte;Sudeste;823;4.8;-0.402
-Comdado Bar e Jogos;Belo Horizonte;Sudeste;158;4.4;-0.402
-Garagem do Nerd;Belo Horizonte;Sudeste;244;4.9;-0.402
-La Tabuleria;Belo Horizonte;Sudeste;138;4.7;-0.402
-LudoCafé;Belo Horizonte;Sudeste;585;4.6;-0.402
-Shelf Bar e Jogos;Belo Horizonte;Sudeste;1505;4.6;-0.402
-Cheio de Fome - Vila da Penha;Rio de Janeiro;Sudeste;989;4.8;-0.402
-Game Of Boards;Rio de Janeiro;Sudeste;1077;4.7;-0.402
-Luderia Carioca;Rio de Janeiro;Sudeste;212;4.7;-0.402
-Magic Store Brazil;Rio de Janeiro;Sudeste;465;4.7;-0.402
-RED jogos;Rio de Janeiro;Sudeste;800;4.7;-0.402
-Reduto;Rio de Janeiro;Sudeste;307;4.5;-0.402
-TabuClub;Rio de Janeiro;Sudeste;105;4.7;-0.402
-60 Minutos Escape, Hamburgueria e Boardgames;São Paulo;Sudeste;1104;4.7;-0.402
-Arena BG | Jogos de Tabuleiro | Hamburgueria;São Paulo;Sudeste;145;4.8;-0.402
-Bodogami Restaurante e Cafeteria;São Paulo;Sudeste;3386;4.6;-0.402
-Bravo Jogos;São Paulo;Sudeste;1719;4.9;-0.402
-CHQ Jogos;São Paulo;Sudeste;739;4.7;-0.402
-Cartola Luderia Bar;São Paulo;Sudeste;242;4.7;-0.402
-Castelos Bar & Boardgames;São Paulo;Sudeste;617;4.6;-0.402
-Coletivo Geek;São Paulo;Sudeste;477;4.7;-0.402
-Covil Game Bar;São Paulo;Sudeste;1714;4.6;-0.402
-Covil Game Bar SBC;São Paulo;Sudeste;815;4.9;-0.402
-Dungeon Games Store;São Paulo;Sudeste;217;4.9;-0.402
-Encounter | Jogos de Tabuleiro | Board Games;São Paulo;Sudeste;1123;4.8;-0.402
-Espaço 162 - Meu Karaokê Box;São Paulo;Sudeste;1332;4.4;-0.402
-Fan Hour Games and Burgers;São Paulo;Sudeste;2363;4.5;-0.402
-Flow Games - Burgers, Cards & Comunidade;São Paulo;Sudeste;503;4.6;-0.402
-Jogasampa;São Paulo;Sudeste;402;4.7;-0.402
-Ludus Luderia;São Paulo;Sudeste;5137;4.6;-0.402
-OMNIVERSE;São Paulo;Sudeste;1145;4.8;-0.402
-Pitta's Board Games;São Paulo;Sudeste;663;4.9;-0.402
-Place Games;São Paulo;Sudeste;572;4.8;-0.402
-Play Easy;São Paulo;Sudeste;1002;4.7;-0.402
-Tubaleria;São Paulo;Sudeste;116;5.0;-0.402
-XPlace;São Paulo;Sudeste;795;4.7;-0.402
-Café Geek Cafeteria e Ludoteca;Vitória;Sudeste;148;5.0;-0.402
-Alçapão Jogos;Curitiba;Sul;219;5.0;-0.402
-BoardZ Game Pub;Curitiba;Sul;776;4.8;-0.402
-Joyjoy Café;Curitiba;Sul;690;4.8;-0.402
-Paladino Hobbies;Curitiba;Sul;188;4.8;-0.402
-Taverna Game House;Curitiba;Sul;625;4.8;-0.402
-Vila Celta Hobby Store - Jogos e Café;Curitiba;Sul;751;4.8;-0.402
-CCG Floripa;Florianópolis;Sul;194;4.8;-0.402
-Chef on Play;Florianópolis;Sul;1204;4.6;-0.402
-Cineplay- Restaurante e Jogos;Florianópolis;Sul;1154;4.5;-0.402
-Arcadea Gaming Pub;Porto Alegre;Sul;1087;4.2;-0.402
-Toca do Rato - Pizzaria e Jogos de Tabuleiro;Porto Alegre;Sul;138;4.8;-0.402
+FORTALÚDICA - BURGERS & JOGOS;Brasília;Centro-Oeste;105;4.8;-0.434
+Gruta BSB;Brasília;Centro-Oeste;112;4.9;-0.434
+Inside Games;Brasília;Centro-Oeste;640;4.6;-0.434
+Loja de Jogos - Asgard;Brasília;Centro-Oeste;754;4.7;-0.434
+Ludoteca BGC;Brasília;Centro-Oeste;1379;4.7;-0.434
+Utopia Games & Food;Brasília;Centro-Oeste;159;4.8;-0.434
+Paladins Game Store;Goiânia;Centro-Oeste;906;4.7;-0.434
+Balboa's Hobby Games;Fortaleza;Nordeste;881;4.8;-0.434
+Dominaria Cards & Games;Fortaleza;Nordeste;305;4.7;-0.434
+Nala Land - Bar de Jogos de Tabuleiro em Recife;Recife;Nordeste;206;4.9;-0.434
+São Jogue - Bela Vista;Salvador;Nordeste;787;4.8;-0.434
+Ludoteca Sidequest;Belém;Norte;327;4.8;-0.434
+Bardo Mago;Belo Horizonte;Sudeste;823;4.8;-0.434
+Comdado Bar e Jogos;Belo Horizonte;Sudeste;158;4.4;-0.434
+Garagem do Nerd;Belo Horizonte;Sudeste;244;4.9;-0.434
+La Tabuleria;Belo Horizonte;Sudeste;138;4.7;-0.434
+LudoCafé;Belo Horizonte;Sudeste;585;4.6;-0.434
+Shelf Bar e Jogos;Belo Horizonte;Sudeste;1505;4.6;-0.434
+Metropoly Bar;Campinas;Sudeste;2423;4.7;-0.434
+Muito Geek | TCG • Board Games • Fliperama;Campinas;Sudeste;189;4.8;-0.434
+Nergeek;Campinas;Sudeste;117;5.0;-0.434
+Cheio de Fome - Vila da Penha;Rio de Janeiro;Sudeste;989;4.8;-0.434
+Game Of Boards;Rio de Janeiro;Sudeste;1077;4.7;-0.434
+Luderia Carioca;Rio de Janeiro;Sudeste;212;4.7;-0.434
+Magic Store Brazil;Rio de Janeiro;Sudeste;465;4.7;-0.434
+RED jogos;Rio de Janeiro;Sudeste;800;4.7;-0.434
+Reduto;Rio de Janeiro;Sudeste;307;4.5;-0.434
+TabuClub;Rio de Janeiro;Sudeste;105;4.7;-0.434
+60 Minutos Escape, Hamburgueria e Boardgames;São Paulo;Sudeste;1104;4.7;-0.434
+Arena BG | Jogos de Tabuleiro | Hamburgueria;São Paulo;Sudeste;145;4.8;-0.434
+Bodogami Restaurante e Cafeteria;São Paulo;Sudeste;3386;4.6;-0.434
+Bravo Jogos;São Paulo;Sudeste;1719;4.9;-0.434
+CHQ Jogos;São Paulo;Sudeste;739;4.7;-0.434
+Cartola Luderia Bar;São Paulo;Sudeste;242;4.7;-0.434
+Castelos Bar & Boardgames;São Paulo;Sudeste;617;4.6;-0.434
+Coletivo Geek;São Paulo;Sudeste;477;4.7;-0.434
+Covil Game Bar;São Paulo;Sudeste;1714;4.6;-0.434
+Covil Game Bar SBC;São Paulo;Sudeste;815;4.9;-0.434
+Dungeon Games Store;São Paulo;Sudeste;217;4.9;-0.434
+Encounter | Jogos de Tabuleiro | Board Games;São Paulo;Sudeste;1123;4.8;-0.434
+Espaço 162 - Meu Karaokê Box;São Paulo;Sudeste;1332;4.4;-0.434
+Fan Hour Games and Burgers;São Paulo;Sudeste;2363;4.5;-0.434
+Flow Games - Burgers, Cards & Comunidade;São Paulo;Sudeste;503;4.6;-0.434
+Jogasampa;São Paulo;Sudeste;402;4.7;-0.434
+Ludus Luderia;São Paulo;Sudeste;5137;4.6;-0.434
+OMNIVERSE;São Paulo;Sudeste;1145;4.8;-0.434
+Pitta's Board Games;São Paulo;Sudeste;663;4.9;-0.434
+Place Games;São Paulo;Sudeste;572;4.8;-0.434
+Play Easy;São Paulo;Sudeste;1002;4.7;-0.434
+Tubaleria;São Paulo;Sudeste;116;5.0;-0.434
+XPlace;São Paulo;Sudeste;795;4.7;-0.434
+Café Geek Cafeteria e Ludoteca;Vitória;Sudeste;148;5.0;-0.434
+Alçapão Jogos;Curitiba;Sul;219;5.0;-0.434
+BoardZ Game Pub;Curitiba;Sul;776;4.8;-0.434
+Joyjoy Café;Curitiba;Sul;690;4.8;-0.434
+Paladino Hobbies;Curitiba;Sul;188;4.8;-0.434
+Taverna Game House;Curitiba;Sul;625;4.8;-0.434
+Vila Celta Hobby Store - Jogos e Café;Curitiba;Sul;751;4.8;-0.434
+CCG Floripa;Florianópolis;Sul;194;4.8;-0.434
+Chef on Play;Florianópolis;Sul;1204;4.6;-0.434
+Cineplay- Restaurante e Jogos;Florianópolis;Sul;1154;4.5;-0.434
+Arcadea Gaming Pub;Porto Alegre;Sul;1087;4.2;-0.434
+Toca do Rato - Pizzaria e Jogos de Tabuleiro;Porto Alegre;Sul;138;4.8;-0.434

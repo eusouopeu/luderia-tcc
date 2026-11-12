@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-12T05:05:18.171805</dc:date>
+    <dc:date>2026-11-12T10:26:33.814119</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -85,39 +85,39 @@ z
    <g id="line2d_8">
     <path d="M 21.6 312.48 
 L 554.4 312.48 
-" clip-path="url(#pd34a6b8b0d)" style="fill: none; stroke: #c4c4c4; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p2e916d4a68)" style="fill: none; stroke: #c4c4c4; stroke-width: 0.8; stroke-linecap: square"/>
    </g>
    <g id="patch_3">
     <path d="M 45.818182 312.48 
 L 93.818182 312.48 
-L 93.818182 257.531607 
-L 45.818182 257.531607 
+L 93.818182 260.055738 
+L 45.818182 260.055738 
 z
-" clip-path="url(#pd34a6b8b0d)" style="fill: #c4c4c4"/>
+" clip-path="url(#p2e916d4a68)" style="fill: #c4c4c4"/>
    </g>
    <g id="patch_4">
     <path d="M 118.545455 312.48 
 L 166.545455 312.48 
-L 166.545455 192.680852 
-L 118.545455 192.680852 
+L 166.545455 192.292525 
+L 118.545455 192.292525 
 z
-" clip-path="url(#pd34a6b8b0d)" style="fill: #8f8f8f"/>
+" clip-path="url(#p2e916d4a68)" style="fill: #8f8f8f"/>
    </g>
    <g id="patch_5">
     <path d="M 191.272727 312.48 
 L 239.272727 312.48 
-L 239.272727 137.732459 
-L 191.272727 137.732459 
+L 239.272727 136.761639 
+L 191.272727 136.761639 
 z
-" clip-path="url(#pd34a6b8b0d)" style="fill: #8f8f8f"/>
+" clip-path="url(#p2e916d4a68)" style="fill: #8f8f8f"/>
    </g>
    <g id="patch_6">
     <path d="M 264 312.48 
 L 312 312.48 
-L 312 121.616852 
-L 264 121.616852 
+L 312 121.422689 
+L 264 121.422689 
 z
-" clip-path="url(#pd34a6b8b0d)" style="fill: #8f8f8f"/>
+" clip-path="url(#p2e916d4a68)" style="fill: #8f8f8f"/>
    </g>
    <g id="patch_7">
     <path d="M 336.727273 312.48 
@@ -125,79 +125,79 @@ L 384.727273 312.48
 L 384.727273 118.316066 
 L 336.727273 118.316066 
 z
-" clip-path="url(#pd34a6b8b0d)" style="fill: #4d4d4d"/>
+" clip-path="url(#p2e916d4a68)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_8">
     <path d="M 409.454545 312.48 
 L 457.454545 312.48 
-L 457.454545 121.616852 
-L 409.454545 121.616852 
+L 457.454545 121.422689 
+L 409.454545 121.422689 
 z
-" clip-path="url(#pd34a6b8b0d)" style="fill: #8f8f8f"/>
+" clip-path="url(#p2e916d4a68)" style="fill: #8f8f8f"/>
    </g>
    <g id="patch_9">
     <path d="M 482.181818 312.48 
 L 530.181818 312.48 
-L 530.181818 160.449639 
-L 482.181818 160.449639 
+L 530.181818 161.420459 
+L 482.181818 161.420459 
 z
-" clip-path="url(#pd34a6b8b0d)" style="fill: #8f8f8f"/>
+" clip-path="url(#p2e916d4a68)" style="fill: #8f8f8f"/>
    </g>
    <g id="text_8">
-    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="69.818182" y="249.736328" transform="rotate(-0 69.818182 249.736328)">28%</text>
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="69.818182" y="252.260459" transform="rotate(-0 69.818182 252.260459)">27%</text>
    </g>
    <g id="text_9">
-    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="69.818182" y="237.122852" transform="rotate(-0 69.818182 237.122852)">17 casas</text>
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="69.818182" y="239.646984" transform="rotate(-0 69.818182 239.646984)">17 casas</text>
    </g>
    <g id="text_10">
-    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="142.545455" y="184.885574" transform="rotate(-0 142.545455 184.885574)">62%</text>
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="142.545455" y="184.497246" transform="rotate(-0 142.545455 184.497246)">62%</text>
    </g>
    <g id="text_11">
-    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="142.545455" y="172.272098" transform="rotate(-0 142.545455 172.272098)">37 casas</text>
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="142.545455" y="171.88377" transform="rotate(-0 142.545455 171.88377)">39 casas</text>
    </g>
    <g id="text_12">
-    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="215.272727" y="129.93718" transform="rotate(-0 215.272727 129.93718)">90%</text>
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="215.272727" y="128.966361" transform="rotate(-0 215.272727 128.966361)">90%</text>
    </g>
    <g id="text_13">
-    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="215.272727" y="117.323705" transform="rotate(-0 215.272727 117.323705)">54 casas</text>
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="215.272727" y="116.352885" transform="rotate(-0 215.272727 116.352885)">57 casas</text>
    </g>
    <g id="text_14">
-    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="288" y="113.821574" transform="rotate(-0 288 113.821574)">98%</text>
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="288" y="113.62741" transform="rotate(-0 288 113.62741)">98%</text>
    </g>
    <g id="text_15">
-    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="288" y="101.208098" transform="rotate(-0 288 101.208098)">59 casas</text>
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="288" y="101.013934" transform="rotate(-0 288 101.013934)">62 casas</text>
    </g>
    <g id="text_16">
     <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="360.727273" y="110.520787" transform="rotate(-0 360.727273 110.520787)">100%</text>
    </g>
    <g id="text_17">
-    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="360.727273" y="97.907311" transform="rotate(-0 360.727273 97.907311)">60 casas</text>
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="360.727273" y="97.907311" transform="rotate(-0 360.727273 97.907311)">63 casas</text>
    </g>
    <g id="text_18">
-    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="433.454545" y="113.821574" transform="rotate(-0 433.454545 113.821574)">98%</text>
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="433.454545" y="113.62741" transform="rotate(-0 433.454545 113.62741)">98%</text>
    </g>
    <g id="text_19">
-    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="433.454545" y="101.208098" transform="rotate(-0 433.454545 101.208098)">59 casas</text>
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="433.454545" y="101.013934" transform="rotate(-0 433.454545 101.013934)">62 casas</text>
    </g>
    <g id="text_20">
-    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="506.181818" y="152.654361" transform="rotate(-0 506.181818 152.654361)">78%</text>
+    <text style="font-weight: 600; font-size: 12px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1f1f1f" x="506.181818" y="153.62518" transform="rotate(-0 506.181818 153.62518)">78%</text>
    </g>
    <g id="text_21">
-    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="506.181818" y="140.040885" transform="rotate(-0 506.181818 140.040885)">47 casas</text>
+    <text style="font-size: 9px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #8a8a8a" x="506.181818" y="141.011705" transform="rotate(-0 506.181818 141.011705)">49 casas</text>
    </g>
   </g>
   <g id="text_22">
-   <text style="font-weight: 600; font-size: 15.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="12.96" y="27.422467" transform="rotate(-0 12.96 27.422467)">Todas as casas abrem de o fim de semana; na segunda, só 28%</text>
+   <text style="font-weight: 600; font-size: 15.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="12.96" y="27.422467" transform="rotate(-0 12.96 27.422467)">Todas as casas abrem de o fim de semana; na segunda, só 27%</text>
   </g>
   <g id="text_23">
-   <text style="font-size: 11.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #525252" x="12.96" y="50.888164" transform="rotate(-0 12.96 50.888164)">Casas abertas em cada dia da semana (60 casas).</text>
+   <text style="font-size: 11.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #525252" x="12.96" y="50.888164" transform="rotate(-0 12.96 50.888164)">Casas abertas em cada dia da semana (63 casas).</text>
   </g>
   <g id="text_24">
    <text style="font-size: 8.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="12.96" y="346.479141" transform="rotate(-0 12.96 346.479141)">Fonte: elaboração própria com horários do Google Maps e dos perfis das casas (15/10/2026), recorte B1.</text>
   </g>
  </g>
  <defs>
-  <clipPath id="pd34a6b8b0d">
+  <clipPath id="p2e916d4a68">
    <rect x="21.6" y="75.6" width="532.8" height="236.88"/>
   </clipPath>
  </defs>

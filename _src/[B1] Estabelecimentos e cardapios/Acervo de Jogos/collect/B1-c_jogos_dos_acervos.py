@@ -125,6 +125,12 @@ FONTES = {
     "Ludus Luderia": ("pdf_ludus", "ludus_luderia/cardápio_de_jogos_ludusluderia.pdf"),
     # 11/11/2026
     "Fan Hour Games and Burgers": ("lista", "fanhour"),
+    # 12/11/2026: casas da repaginação da busca
+    "Metropoly Bar": ("acervodejogos", "metropoly"),
+    # acervo no site (loja Wix, 11 páginas de 15 títulos), lido página a página em lista_sessentaminutos.txt
+    "60 Minutos Escape, Hamburgueria e Boardgames": ("lista", "sessentaminutos"),
+    # acervo da marca: o cardápio de jogos do @covilgb atende as duas unidades
+    "Covil Game Bar SBC": ("covil", ""),
 }
 # Período do aluguel básico publicado pela casa, para os cards sem "/ N dias".
 PERIODO_DA_CASA = {"saojogue": 4}

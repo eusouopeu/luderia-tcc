@@ -1,0 +1,63 @@
+secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao;data_cardapio
+Refeições;Bife;acompanha arroz, feijão, batata frita e salada, almoço de terça a domingo, das 12h às 15h;;28;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Refeições;Bife à cavalo;acompanha arroz, feijão, batata frita e salada, almoço de terça a domingo, das 12h às 15h;;32;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Refeições;Bife à milanesa;acompanha arroz, feijão, batata frita e salada, almoço de terça a domingo, das 12h às 15h;;33;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Refeições;Filé de frango;acompanha arroz, feijão, batata frita e salada, almoço de terça a domingo, das 12h às 15h;;26;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Refeições;Filé de frango à milanesa;acompanha arroz, feijão, batata frita e salada, almoço de terça a domingo, das 12h às 15h;;29.5;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Refeições;Karaage;acompanha arroz, feijão, batata frita e salada, almoço de terça a domingo, das 12h às 15h;;30.5;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Refeições;Tonkatsu (lombo à milanesa);acompanha arroz, feijão, batata frita e salada, almoço de terça a domingo, das 12h às 15h;;30.5;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Refeições;Lombo de porco;acompanha arroz, feijão, batata frita e salada, almoço de terça a domingo, das 12h às 15h;;26;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Refeições;Linguiça toscana;acompanha arroz, feijão, batata frita e salada, almoço de terça a domingo, das 12h às 15h;;26;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Refeições;Filé de tilápia;acompanha arroz, feijão, batata frita e salada, almoço de terça a domingo, das 12h às 15h;;30;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Refeições;Omelete;acompanha arroz, feijão, batata frita e salada, almoço de terça a domingo, das 12h às 15h;;25;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Refeições;Bife à parmegiana;acompanha arroz e fritas;;37;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Refeições;Filé de frango à parmegiana;acompanha arroz e fritas;;33;pratos principais;outros;S;só no almoço, fora das salas de karaokê;2024-02
+Lanches;Katsu Sando 162;lombo de porco empanado, maionese, alface e molho tonkatsu no pão ciabata;;28;pratos principais;outros;S;combo com refrigerante e fritas: R$ 36,00;2024-02
+Lanches;162 Burger;hambúrguer de 200 g, queijo, maionese, alface, tomate e picles no pão brioche;;32;pratos principais;hambúrguer;S;combo com refrigerante e fritas: R$ 40,00;2024-02
+Lanches;Choripan 162;linguiça toscana, molho chimichurri no pão ciabata;;25;pratos principais;outros;S;;2024-02
+Petiscos;Mini salgados;kibe, coxinha, bolinho de queijo ou risole de carne (até 2 tipos);;25;entradas;outras;S;;2024-02
+Petiscos;Batata frita;;;25;entradas;batata;S;;2024-02
+Petiscos;Mandioca frita;;;25;entradas;outras;S;;2024-02
+Petiscos;Polenta frita;;;25;entradas;outras;S;;2024-02
+Petiscos;Pastel aperitivo;carne, queijo e palmito (9 unidades);;36;entradas;outras;S;;2024-02
+Petiscos;Karaage (frango frito);coxa e sobrecoxa desossada com tempero oriental;;27;entradas;outras;S;;2024-02
+Petiscos;Baby beef com fritas aperitivo;250 g de baby beef, batata frita, pão de alho;;49;entradas;outras;S;;2024-02
+Petiscos;Chicken com fritas aperitivo;300 g de filé de frango, batata frita, pão de alho;;39;entradas;outras;S;;2024-02
+Petiscos;Tonkatsu;lombo de porco à milanesa e molho tonkatsu;;27;entradas;outras;S;;2024-02
+Petiscos;Oniguiri;bolinho de arroz com furikake (só à noite);;13;entradas;outras;S;;2024-02
+Petiscos;Linguiça com ervas finas;acompanha vinagrete e pão ciabata;;58;entradas;outras;S;;2024-02
+Bebidas;Água 500 ml;;;5;bebidas;não alcoólicas;N;;2024-02
+Bebidas;Refrigerante lata;;;6.5;bebidas;refrigerante;N;;2024-02
+Bebidas;H2OH!;;;7.2;bebidas;refrigerante;N;;2024-02
+Bebidas;Suco de laranja (garrafa 300 ml);;;10;bebidas;não alcoólicas;N;;2024-02
+Bebidas;Suco Del Valle;;;7.2;bebidas;não alcoólicas;N;;2024-02
+Bebidas;Energético Red Bull;;;16;bebidas;não alcoólicas;N;;2024-02
+Cervejas artesanais;American lager (long neck);;;10;bebidas;cerveja;N;;2024-02
+Cervejas artesanais;All Day IPA (long neck);;;12.5;bebidas;cerveja;N;;2024-02
+Cervejas artesanais;Pilsen (garrafa 500 ml);;;18;bebidas;cerveja;N;;2024-02
+Drinks;Caipirinha Velho Barreiro;;;24;bebidas;drinks;S;;2024-02
+Drinks;Caipirinha Seleta;;;28;bebidas;drinks;S;;2024-02
+Drinks;Sakerinha;;;29;bebidas;drinks;S;;2024-02
+Drinks;Caipiroska Smirnoff;;;28;bebidas;drinks;S;;2024-02
+Drinks;Caipiroska Absolut;;;36;bebidas;drinks;S;;2024-02
+Drinks;Gin tônica Gordon;;;29.5;bebidas;drinks;S;;2024-02
+Drinks;Gin tônica Azzurra;;;31;bebidas;drinks;S;;2024-02
+Drinks;Gin tônica Tanqueray;;;36;bebidas;drinks;S;;2024-02
+Drinks;Jack & Coke;;;37;bebidas;drinks;S;;2024-02
+Drinks;Adicional xarope;;;4;outros;adicionais;S;;2024-02
+Combos;Absolut (750 ml);garrafa;;240;bebidas;drinks;N;"garrafa; com 4 energéticos: Absolut R$ 300,00, Red Label R$ 260,00";2024-02
+Combos;Red Label (750 ml);garrafa;;200;bebidas;drinks;N;"garrafa; com 4 energéticos: Absolut R$ 300,00, Red Label R$ 260,00";2024-02
+Combos;Black Label (750 ml);garrafa;;280;bebidas;drinks;N;"garrafa; com 4 energéticos: Absolut R$ 300,00, Red Label R$ 260,00";2024-02
+Destilados e fermentados;Seleta;dose;;11;bebidas;drinks;N;;2024-02
+Destilados e fermentados;Salinas;dose;;11;bebidas;drinks;N;;2024-02
+Destilados e fermentados;Conhaque Domecq;dose;;11;bebidas;drinks;N;;2024-02
+Destilados e fermentados;Campari;dose;;16;bebidas;drinks;N;;2024-02
+Destilados e fermentados;Gin Gordon;dose;;23;bebidas;drinks;N;;2024-02
+Destilados e fermentados;Absolut;dose;;26;bebidas;drinks;N;;2024-02
+Destilados e fermentados;Tequila;dose;;30;bebidas;drinks;N;;2024-02
+Destilados e fermentados;Red Label;dose;;25;bebidas;drinks;N;;2024-02
+Destilados e fermentados;Black Label;dose;;35;bebidas;drinks;N;;2024-02
+Destilados e fermentados;Jack Daniel's;dose;;35;bebidas;drinks;N;;2024-02
+Destilados e fermentados;Negroni;;;34;bebidas;drinks;S;;2024-02
+Destilados e fermentados;Smirnoff Ice;;;17;bebidas;drinks;N;;2024-02
+Destilados e fermentados;Vinho tinto seco;;;;bebidas;drinks;N;sob consulta;2024-02

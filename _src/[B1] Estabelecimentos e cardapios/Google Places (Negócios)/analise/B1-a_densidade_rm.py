@@ -31,7 +31,7 @@ ROOT = _AQUI.parents[4]
 POP = ROOT / "dados" / "[B4] Bases publicas" / "mercado_demanda" / "[B4] População Estimada por Município 2026 (IBGE).csv"
 EST = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos"
 METROPOLES = ["Belém", "Belo Horizonte", "Brasília", "Curitiba", "Florianópolis", "Fortaleza", "Goiânia",
-              "Manaus", "Porto Alegre", "Recife", "Rio de Janeiro", "Salvador", "São Paulo", "Vitória"]
+              "Manaus", "Porto Alegre", "Recife", "Rio de Janeiro", "Salvador", "São Paulo", "Vitória", "Campinas"]
 
 
 def main():

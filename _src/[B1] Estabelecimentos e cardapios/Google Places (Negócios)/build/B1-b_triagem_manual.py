@@ -33,8 +33,9 @@ B1-c_places.py --repaginar); as casas novas aprovadas na triagem manual da
 repaginação (3_triagem/B1_repaginacao_triagem.csv) e dentro do recorte entram
 na planilha de aprovadas, com `origem` = "repaginacao", a partir dos detalhes
 de _dados-brutos/estabelecimentos/B1_detalhes_repaginacao.jsonl
-(B1-c_details.py --repaginadas). Campinas fica de fora até a decisão L24 (RM
-que não é a de uma capital). A planilha de triagem original não muda.
+(B1-c_details.py --repaginadas). Campinas entra como 15ª metrópole da REGIC
+(decisão do autor em 12/11/2026; recorte_rm.metropole_do_endereco). A planilha
+de triagem original não muda.
 
 Entrada (anotada à mão pelo autor):
   dados/[B1] Estabelecimentos e cardapios/_dados-brutos/
@@ -138,7 +139,7 @@ def corrige_nota(df):
 
 def linhas_repaginadas():
     """Aprovadas da repaginação no recorte, nas colunas da planilha de aprovadas."""
-    from recorte_rm import classifica
+    from recorte_rm import metropole_do_endereco
 
     # Regras de grupo de categoria e de @ do Instagram: as mesmas do B1-b_planilha.py.
     spec = importlib.util.spec_from_file_location("planilha", pathlib.Path(__file__).with_name("B1-b_planilha.py"))
@@ -147,7 +148,7 @@ def linhas_repaginadas():
 
     with open(REPAGINACAO_TRIAGEM, newline="", encoding="utf-8") as f:
         ids = [r["place_id"] for r in csv.DictReader(f)
-               if r["resultado_triagem"] == "aprovado" and r["grupo"] != "Campinas"]
+               if r["resultado_triagem"] == "aprovado"]
     detalhes = {}
     with open(REPAGINACAO_DETALHES, encoding="utf-8") as f:
         for linha in f:
@@ -159,11 +160,11 @@ def linhas_repaginadas():
     linhas = []
     for pid in ids:
         d = detalhes[pid]
-        c = classifica(d["formattedAddress"])
-        assert c["situacao"] in ("municipio_da_capital", "dentro_da_rm"), (pid, c)
+        metropole = metropole_do_endereco(d["formattedAddress"])
+        assert metropole, (pid, d["formattedAddress"])
         linhas.append({
             "place_id": pid, "nome": d["displayName"]["text"], "endereco": d["formattedAddress"],
-            "capital_endereco": c["capital_referencia"], "origem": "repaginacao", "match_tipo": "",
+            "capital_endereco": metropole, "origem": "repaginacao", "match_tipo": "",
             "grupo_categoria": planilha.grupo_categoria(d), "categorias_google": ";".join(d.get("types", [])),
             "avaliacao_media": d.get("rating"), "volume_avaliacoes": d.get("userRatingCount") or 0,
             "status_google": d.get("businessStatus", ""), "site_ou_rede_social": d.get("websiteUri"),
