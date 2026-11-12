@@ -252,6 +252,36 @@ FONTES = {
            ("chefonplay", "ChIJc3F7ka83J5URQZ1XTl-_iak", "https://www.instagram.com/p/DTawJZ-Dsxz/"),
            ("castelos", "ChIJbZRHQPRfzpQRz97-ZOg0yXA", "https://www.instagram.com/p/C5CDD8sRpYq/"),
        ]},
+    # 12/11/2026: casas da repaginação da busca (busca de cardápio, taxa e acervo pelo Claude)
+    "metropoly": dict(place_id="ChIJGXginrXGyJQR0LFEVIzp4hI",
+                      url="https://www.deliway.com.br/metropoly-bar-delivery-campinas-sp",
+                      formato="cardápio de delivery Deliway (texto, botão Cardápio do site)", data_cardapio="",
+                      status="extraído", data_coleta="2026-11-12",
+                      nota="preços do delivery; seção Pratos Veganos fora (repete itens de outras seções); "
+                           "Double (2 unidades) na observação; combo de shots fora"),
+    "metropoly_couvert": dict(place_id="ChIJGXginrXGyJQR0LFEVIzp4hI", url="https://www.metropolybar.com.br/como-funciona/",
+                              formato="página do site", data_cardapio="", status="extraído", data_coleta="2026-11-12",
+                              nota="só a taxa de entrada"),
+    "cheiodefome": dict(place_id="ChIJPx_QtT17mQAR9cO9ARQW00g",
+                        url="https://pedido.anota.ai/loja/cheio-de-fome-vila-da-penha-1",
+                        formato="cardápio digital anota.ai (API do cardápio, texto)", data_cardapio="",
+                        status="extraído", data_coleta="2026-11-12",
+                        nota="promoções, combos e embalagem fora; jogos eletrônicos, VR e sinuca cobrados à parte "
+                             "ficam em adicionais (não são taxa de entrada)"),
+    "espaco162": dict(place_id="ChIJBUzaCedbzpQRkSqbwW7yAvQ",
+                      url="https://sites.google.com/view/espaco162/início",
+                      formato="PDF (Google Sites da casa), transcrito à mão", data_cardapio="2024-02",
+                      status="extraído", data_coleta="2026-11-12",
+                      nota="cardápio de fev/2024: preços podem estar defasados; refeições só no almoço"),
+    "covil_sbc": dict(place_id="ChIJSU_eTQBDzpQRv_GdRUp0f-g", url="fotos do Google Maps / Instagram (unidade Guarulhos)",
+                      formato="cópia de covil.csv (prints transcritos à mão)", data_cardapio="",
+                      status="extraído", data_coleta="2026-11-12",
+                      nota="cardápio da marca: o perfil @covilgb atende as duas unidades e a unidade SBC não publica "
+                           "cardápio próprio"),
+    "covil_sbc_couvert": dict(place_id="ChIJSU_eTQBDzpQRv_GdRUp0f-g",
+                              url="https://www.getin.app/sao-bernardo-do-campo/covil-game-bar-sbc",
+                              formato="página da unidade no Get In (reservas)", data_cardapio="", status="extraído",
+                              data_coleta="2026-11-12", nota="só a taxa de entrada"),
 }
 # aprovado com cardápio acessível, mas sem transcrição
 SEM_TRANSCRICAO = {

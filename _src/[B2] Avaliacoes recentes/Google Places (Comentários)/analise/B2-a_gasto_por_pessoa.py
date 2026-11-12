@@ -109,6 +109,15 @@ TAXAS = {
                                     "Instagram, 30/07/2025; média do esquenta de 3 h (R$ 20) e da diária (R$ 30)", _TODOS(25)),
     "ChIJ1wjBJD7k3JQRQi7trfp_0aQ": ("Vila Celta Hobby Store - Jogos e Café", "Instagram, 30/04/2024 (quarta sem cobrança)",
                                     {"segunda": 5, "terca": 5, "quarta": 0, "quinta": 5, "sexta": 10, "sabado": 10, "domingo": 10}),
+    # 12/11/2026: casas da repaginação da busca (cardapios/B1_busca_minuciosa_taxa_cardapio_acervo.csv)
+    "ChIJGXginrXGyJQR0LFEVIzp4hI": ("Metropoly Bar", "site, página Como funciona, 12/11/2026",
+                                    {"quarta": 20, "quinta": 20, "sexta": 25, "sabado": 25, "domingo": 25}),
+    "ChIJSU_eTQBDzpQRv_GdRUp0f-g": ("Covil Game Bar SBC", "Get In, página da unidade, 12/11/2026",
+                                    {"quarta": 15, "quinta": 15, "domingo": 15, "sexta": 20, "sabado": 20}),
+    "ChIJfWR3S3ZazpQR6aC6xpbPMwU": ("60 Minutos Escape, Hamburgueria e Boardgames",
+                                    "site, 12/11/2026; R$ 5 por hora (terça a sexta) e R$ 10 (sábado e domingo), "
+                                    "em 3 h, o turno da São Jogue; 1ª hora grátis com combo ou porção",
+                                    {**dict.fromkeys(DIAS[1:5], 15), "sabado": 30, "domingo": 30}),
 }
 
 

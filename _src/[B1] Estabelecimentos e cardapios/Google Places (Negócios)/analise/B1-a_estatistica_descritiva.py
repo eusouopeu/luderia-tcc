@@ -69,6 +69,7 @@ REGIAO = {
     "Fortaleza": "Nordeste", "Recife": "Nordeste", "Salvador": "Nordeste",
     "Brasília": "Centro-Oeste", "Goiânia": "Centro-Oeste",
     "Belo Horizonte": "Sudeste", "Rio de Janeiro": "Sudeste", "São Paulo": "Sudeste", "Vitória": "Sudeste",
+    "Campinas": "Sudeste",
     "Curitiba": "Sul", "Florianópolis": "Sul", "Porto Alegre": "Sul",
 }
 ORDEM_REGIAO = ["Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"]

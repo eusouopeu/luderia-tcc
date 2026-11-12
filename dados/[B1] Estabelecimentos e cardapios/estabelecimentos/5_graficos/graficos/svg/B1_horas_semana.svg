@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-12T05:05:18.411957</dc:date>
+    <dc:date>2026-11-12T10:26:34.058254</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -103,12 +103,12 @@ z
    <g id="line2d_11">
     <path d="M 232.294737 294.48 
 L 232.294737 75.6 
-" clip-path="url(#pa75a17d67d)" style="fill: none; stroke-dasharray: 3,3; stroke-dashoffset: 0; stroke: #1f1f1f"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: none; stroke-dasharray: 3,3; stroke-dashoffset: 0; stroke: #1f1f1f"/>
    </g>
    <g id="line2d_12">
     <path d="M 36 294.48 
 L 568.8 294.48 
-" clip-path="url(#pa75a17d67d)" style="fill: none; stroke: #c4c4c4; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: none; stroke: #c4c4c4; stroke-width: 0.8; stroke-linecap: square"/>
    </g>
    <g id="patch_3">
     <path d="M -1.576421 294.48 
@@ -116,7 +116,7 @@ L 23.100632 294.48
 L 23.100632 294.48 
 L -1.576421 294.48 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_4">
     <path d="M 26.465684 294.48 
@@ -124,119 +124,119 @@ L 51.142737 294.48
 L 51.142737 294.48 
 L 26.465684 294.48 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_5">
     <path d="M 54.507789 294.48 
 L 79.184842 294.48 
-L 79.184842 276.539016 
-L 54.507789 276.539016 
+L 79.184842 277.898182 
+L 54.507789 277.898182 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_6">
     <path d="M 82.549895 294.48 
 L 107.226947 294.48 
-L 107.226947 276.539016 
-L 82.549895 276.539016 
+L 107.226947 277.898182 
+L 82.549895 277.898182 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_7">
     <path d="M 110.592 294.48 
 L 135.269053 294.48 
-L 135.269053 276.539016 
-L 110.592 276.539016 
+L 135.269053 277.898182 
+L 110.592 277.898182 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_8">
     <path d="M 138.634105 294.48 
 L 163.311158 294.48 
-L 163.311158 186.834098 
-L 138.634105 186.834098 
+L 163.311158 194.989091 
+L 138.634105 194.989091 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_9">
     <path d="M 166.676211 294.48 
 L 191.353263 294.48 
-L 191.353263 150.952131 
-L 166.676211 150.952131 
+L 191.353263 161.825455 
+L 166.676211 161.825455 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_10">
     <path d="M 194.718316 294.48 
 L 219.395368 294.48 
-L 219.395368 150.952131 
-L 194.718316 150.952131 
+L 219.395368 145.243636 
+L 194.718316 145.243636 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_11">
     <path d="M 222.760421 294.48 
 L 247.437474 294.48 
-L 247.437474 133.011148 
-L 222.760421 133.011148 
+L 247.437474 145.243636 
+L 222.760421 145.243636 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_12">
     <path d="M 250.802526 294.48 
 L 275.479579 294.48 
-L 275.479579 115.070164 
-L 250.802526 115.070164 
+L 275.479579 112.08 
+L 250.802526 112.08 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_13">
     <path d="M 278.844632 294.48 
 L 303.521684 294.48 
-L 303.521684 240.657049 
-L 278.844632 240.657049 
+L 303.521684 228.152727 
+L 278.844632 228.152727 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_14">
     <path d="M 306.886737 294.48 
 L 331.563789 294.48 
-L 331.563789 222.716066 
-L 306.886737 222.716066 
+L 331.563789 228.152727 
+L 306.886737 228.152727 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_15">
     <path d="M 334.928842 294.48 
 L 359.605895 294.48 
-L 359.605895 240.657049 
-L 334.928842 240.657049 
+L 359.605895 244.734545 
+L 334.928842 244.734545 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_16">
     <path d="M 362.970947 294.48 
 L 387.648 294.48 
-L 387.648 276.539016 
-L 362.970947 276.539016 
+L 387.648 277.898182 
+L 362.970947 277.898182 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_17">
     <path d="M 391.013053 294.48 
 L 415.690105 294.48 
-L 415.690105 258.598033 
-L 391.013053 258.598033 
+L 415.690105 261.316364 
+L 391.013053 261.316364 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_18">
     <path d="M 419.055158 294.48 
 L 443.732211 294.48 
-L 443.732211 258.598033 
-L 419.055158 258.598033 
+L 443.732211 261.316364 
+L 419.055158 261.316364 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_19">
     <path d="M 447.097263 294.48 
@@ -244,7 +244,7 @@ L 471.774316 294.48
 L 471.774316 294.48 
 L 447.097263 294.48 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_20">
     <path d="M 475.139368 294.48 
@@ -252,15 +252,15 @@ L 499.816421 294.48
 L 499.816421 294.48 
 L 475.139368 294.48 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_21">
     <path d="M 503.181474 294.48 
 L 527.858526 294.48 
-L 527.858526 276.539016 
-L 503.181474 276.539016 
+L 527.858526 277.898182 
+L 503.181474 277.898182 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="patch_22">
     <path d="M 531.223579 294.48 
@@ -268,81 +268,81 @@ L 555.900632 294.48
 L 555.900632 294.48 
 L 531.223579 294.48 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #4d4d4d"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #4d4d4d"/>
    </g>
    <g id="text_11">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="66.846316" y="270.750869" transform="rotate(-0 66.846316 270.750869)">1</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="66.846316" y="272.313909" transform="rotate(-0 66.846316 272.313909)">1</text>
    </g>
    <g id="text_12">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="94.888421" y="270.750869" transform="rotate(-0 94.888421 270.750869)">1</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="94.888421" y="272.313909" transform="rotate(-0 94.888421 272.313909)">1</text>
    </g>
    <g id="text_13">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="122.930526" y="270.750869" transform="rotate(-0 122.930526 270.750869)">1</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="122.930526" y="272.313909" transform="rotate(-0 122.930526 272.313909)">1</text>
    </g>
    <g id="text_14">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="150.972632" y="181.045951" transform="rotate(-0 150.972632 181.045951)">6</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="150.972632" y="189.404818" transform="rotate(-0 150.972632 189.404818)">6</text>
    </g>
    <g id="text_15">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="179.014737" y="145.163984" transform="rotate(-0 179.014737 145.163984)">8</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="179.014737" y="156.241182" transform="rotate(-0 179.014737 156.241182)">8</text>
    </g>
    <g id="text_16">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="207.056842" y="145.163984" transform="rotate(-0 207.056842 145.163984)">8</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="207.056842" y="139.659364" transform="rotate(-0 207.056842 139.659364)">9</text>
    </g>
    <g id="text_17">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="235.098947" y="127.223" transform="rotate(-0 235.098947 127.223)">9</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="235.098947" y="139.659364" transform="rotate(-0 235.098947 139.659364)">9</text>
    </g>
    <g id="text_18">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="263.141053" y="109.282016" transform="rotate(-0 263.141053 109.282016)">10</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="263.141053" y="106.495727" transform="rotate(-0 263.141053 106.495727)">11</text>
    </g>
    <g id="text_19">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="291.183158" y="234.868902" transform="rotate(-0 291.183158 234.868902)">3</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="291.183158" y="222.568455" transform="rotate(-0 291.183158 222.568455)">4</text>
    </g>
    <g id="text_20">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="319.225263" y="216.927918" transform="rotate(-0 319.225263 216.927918)">4</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="319.225263" y="222.568455" transform="rotate(-0 319.225263 222.568455)">4</text>
    </g>
    <g id="text_21">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="347.267368" y="234.868902" transform="rotate(-0 347.267368 234.868902)">3</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="347.267368" y="239.150273" transform="rotate(-0 347.267368 239.150273)">3</text>
    </g>
    <g id="text_22">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="375.309474" y="270.750869" transform="rotate(-0 375.309474 270.750869)">1</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="375.309474" y="272.313909" transform="rotate(-0 375.309474 272.313909)">1</text>
    </g>
    <g id="text_23">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="403.351579" y="252.809885" transform="rotate(-0 403.351579 252.809885)">2</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="403.351579" y="255.732091" transform="rotate(-0 403.351579 255.732091)">2</text>
    </g>
    <g id="text_24">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="431.393684" y="252.809885" transform="rotate(-0 431.393684 252.809885)">2</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="431.393684" y="255.732091" transform="rotate(-0 431.393684 255.732091)">2</text>
    </g>
    <g id="text_25">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="515.52" y="270.750869" transform="rotate(-0 515.52 270.750869)">1</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #525252" x="515.52" y="272.313909" transform="rotate(-0 515.52 272.313909)">1</text>
    </g>
    <g id="text_26">
-    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="228.929684" y="91.746885" transform="rotate(-0 228.929684 91.746885)">mediana: 42 h</text>
+    <text style="font-size: 9.5px; font-family: 'Source Sans 3'; text-anchor: end; fill: #1f1f1f" x="228.929684" y="90.523636" transform="rotate(-0 228.929684 90.523636)">mediana: 42 h</text>
    </g>
    <g id="text_27">
-    <text style="font-weight: 600; font-size: 9.5px; font-family: 'Source Sans 3'; fill: #b91c1c" transform="translate(357.217169 242.903136)">Salvador</text>
-    <text style="font-weight: 600; font-size: 9.5px; font-family: 'Source Sans 3'; fill: #b91c1c" transform="translate(366.835919 256.759836)">68 h</text>
+    <text style="font-weight: 600; font-size: 9.5px; font-family: 'Source Sans 3'; fill: #b91c1c" transform="translate(357.217169 245.48555)">Salvador</text>
+    <text style="font-weight: 600; font-size: 9.5px; font-family: 'Source Sans 3'; fill: #b91c1c" transform="translate(366.835919 259.34225)">68 h</text>
    </g>
    <g id="patch_23">
     <path d="M 362.970947 294.48 
 L 387.648 294.48 
-L 387.648 276.539016 
-L 362.970947 276.539016 
+L 387.648 277.898182 
+L 362.970947 277.898182 
 z
-" clip-path="url(#pa75a17d67d)" style="fill: #b91c1c"/>
+" clip-path="url(#pb8e6fed1b8)" style="fill: #b91c1c"/>
    </g>
   </g>
   <g id="text_28">
    <text style="font-weight: 600; font-size: 15.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1f1f1f" x="12.96" y="27.600475" transform="rotate(-0 12.96 27.600475)">Metade das casas abre até 42 horas por semana</text>
   </g>
   <g id="text_29">
-   <text style="font-size: 11.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #525252" x="12.96" y="50.721055" transform="rotate(-0 12.96 50.721055)">Casas por faixa de horas abertas na semana (60 casas). A de Salvador abre 68 horas.</text>
+   <text style="font-size: 11.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #525252" x="12.96" y="50.721055" transform="rotate(-0 12.96 50.721055)">Casas por faixa de horas abertas na semana (63 casas). A de Salvador abre 68 horas.</text>
   </g>
   <g id="text_30">
    <text style="font-size: 8.5px; font-family: 'Source Sans 3'; text-anchor: start; fill: #8a8a8a" x="12.96" y="346.479141" transform="rotate(-0 12.96 346.479141)">Fonte: elaboração própria com horários do Google Maps e dos perfis das casas (15/10/2026), recorte B1.</text>
   </g>
  </g>
  <defs>
-  <clipPath id="pa75a17d67d">
+  <clipPath id="pb8e6fed1b8">
    <rect x="36" y="75.6" width="532.8" height="218.88"/>
   </clipPath>
  </defs>

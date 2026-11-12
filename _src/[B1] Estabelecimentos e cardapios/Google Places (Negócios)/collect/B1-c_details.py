@@ -49,7 +49,7 @@ B1-b_horarios.py.
 Modo --repaginadas (12/11/2026): detalhes (sem `reviews`, SKU "Place Details
 Enterprise") das luderias aprovadas na triagem manual da repaginação
 (estabelecimentos/3_triagem/B1_repaginacao_triagem.csv) que estão no recorte
-(grupo diferente de Campinas, que fica de fora até a decisão L24). Saída
+(inclusive Campinas, 15ª metrópole, decisão do autor em 12/11/2026). Saída
 separada, B1_detalhes_repaginacao.jsonl, para não entrar no funil do
 B1-b_planilha.py; quem monta a planilha de aprovadas
 (B1-b_triagem_manual.py) lê dele.
@@ -100,10 +100,10 @@ def load_casas_do_estudo():
 
 
 def load_repaginadas_aprovadas():
-    """place_ids aprovados na triagem da repaginação e dentro do recorte (sem Campinas)."""
+    """place_ids aprovados na triagem da repaginação (todos estão no recorte, Campinas incluída)."""
     with open(REPAGINACAO_TRIAGEM_PATH, newline="", encoding="utf-8") as f:
         return sorted({r["place_id"] for r in DictReader(f)
-                       if r["resultado_triagem"] == "aprovado" and r["grupo"] != "Campinas"})
+                       if r["resultado_triagem"] == "aprovado"})
 
 
 def load_done_ids(paths):

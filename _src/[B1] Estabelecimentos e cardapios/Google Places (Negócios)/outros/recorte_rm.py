@@ -69,6 +69,7 @@ RE_UF = re.compile(r"[,-]\s*([^,-]+?)\s*,(?:\s*[\d-]+\s*,)?\s*Bra[sz]il\s*$")
 ABREVIACOES = [(r"\bsra\b\.?", "senhora"), (r"\bsto\b\.?", "santo"), (r"\bsta\b\.?", "santa")]
 
 SITUACOES_NO_RECORTE = {"municipio_da_capital", "dentro_da_rm"}
+METROPOLE_NAO_CAPITAL = "Campinas"
 
 
 def chave(texto):
@@ -121,7 +122,23 @@ def rms():
         cats = [c for c, muns in por_categoria.items() if k in muns]
         assert len(cats) <= 1, (capital, cats)
         saida[capital] = (cats[0], frozenset(por_categoria[cats[0]])) if cats else ("sem recorte", frozenset({k}))
+    # Campinas: metrópole da REGIC 2018 que não é capital (decisão do autor em 12/11/2026, L24); a "capital"
+    # de referência dela é ela mesma, e o recorte é a Região Metropolitana de Campinas do IBGE.
+    k = (chave("Campinas"), "SP")
+    cats = [c for c, muns in por_categoria.items() if k in muns]
+    assert len(cats) == 1, cats
+    saida[METROPOLE_NAO_CAPITAL] = (cats[0], frozenset(por_categoria[cats[0]]))
     return saida
+
+
+def metropole_do_endereco(endereco):
+    """Metrópole do endereço para a população de luderias: a capital da UF (município da capital ou da RM
+    dela), Campinas (RM de Campinas) ou "" se o endereço está fora do recorte. Não muda `classifica`, que
+    segue valendo para a curadoria e o funil do B1 (só capitais)."""
+    c = classifica(endereco)
+    if (chave(c["municipio"]), c["uf"]) in rms()[METROPOLE_NAO_CAPITAL][1]:
+        return METROPOLE_NAO_CAPITAL
+    return c["capital_referencia"] if c["situacao"] in SITUACOES_NO_RECORTE else ""
 
 
 def classifica(endereco):
