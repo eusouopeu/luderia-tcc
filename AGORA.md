@@ -18,7 +18,7 @@ Atualizado em 12/11/2026, à tarde. **TMin v32** no PDF; os `.md` e o modelo já
 - Quantidades do investimento (N6): projeto do ponto na Pituba.
 - Folha de aprovação: nomes da banca.
 - Coletas do autor (aluguel, horários de pico, entorno, B2, webscripts): roteiros em [pendências](docs/pendencias.md), "Coletas em andamento".
-- Webscripts (12/11): instalar o carregador do `acervo_coletor` (cabeçalho novo: varredura das 63 casas) e reinstalar o do cardápio (`python3 _src/extras/gerar_carregadores.py --abrir`); o coletor do Instagram coleta pela grade quando a API antiga falha (404 em 12/11). Não muda o TMin até um acervo novo entrar no B1.
+- Webscripts (12/11): instalar o carregador do `acervo_coletor` (cabeçalho novo: varredura das 63 casas) e reinstalar o do cardápio (`python3 _src/extras/gerar_carregadores.py --abrir`); o coletor do Instagram coleta pela grade quando a API antiga falha (404 em 12/11); recoletar Cineplay, Fortalúdica, Bardo Mago e Comdado no período 01/07 a 01/11. Não muda o TMin até um acervo novo entrar no B1.
 
 ## Onde está o resto
 

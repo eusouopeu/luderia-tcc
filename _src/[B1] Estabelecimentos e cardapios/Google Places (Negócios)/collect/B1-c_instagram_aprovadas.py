@@ -75,6 +75,19 @@ MANUAL = {
     "ChIJawIVeV0JM0oR5BtnD_poQeA": ("ccg_floripa", BUSCA + "%22CCG+Floripa%22"),
     "ChIJpzB8zc2XpgARoJTUu90J6Pw": ("comdadobar", BUSCA + "%22Comdado%22+bar+jogos+Belo+Horizonte"),
     "ChIJfyav9YI9uAARjwbBqcRm2_k": ("cafegeekvv", BUSCA + "%22Caf%C3%A9+Geek%22+ludoteca+Vit%C3%B3ria"),
+    # perfil achado pelo autor na coleta de 12/11/2026 (a conta atende também a unidade de Caxias)
+    "ChIJPx_QtT17mQAR9cO9ARQW00g": ("cheiodefomeoficial", "https://www.instagram.com/cheiodefomeoficial/"),
+}
+# Correções que valem sobre qualquer fonte, conferidas no Instagram. Metropoly Bar: o site
+# aponta para @metropoly_, conta vazia (0 posts, 35 seguidores em 12/11/2026); a do bar é
+# @metropolybar (22 mil seguidores, último post em 01/11/2025).
+CORRECAO = {
+    "ChIJGXginrXGyJQR0LFEVIzp4hI": ("metropolybar", "https://www.instagram.com/metropolybar/"),
+}
+# Unidade sem perfil próprio: usa o de outra casa da população. Fica sem instagram_usuario
+# para o mesmo perfil não contar em duas casas; a fonte diz de quem é.
+COMPARTILHADO = {
+    "ChIJSU_eTQBDzpQRv_GdRUp0f-g": "covilgb",  # Covil Game Bar SBC: um perfil para Guarulhos e SBC
 }
 
 
@@ -128,6 +141,11 @@ def main():
         if not linha["instagram_usuario"] and a["place_id"] in MANUAL:
             usuario, prova = MANUAL[a["place_id"]]
             linha.update(instagram_usuario=usuario, fonte="manual", url_fonte=prova)
+        if a["place_id"] in CORRECAO:
+            usuario, prova = CORRECAO[a["place_id"]]
+            linha.update(instagram_usuario=usuario, fonte="correção manual", url_fonte=prova)
+        if a["place_id"] in COMPARTILHADO:
+            linha.update(instagram_usuario="", fonte=f"perfil compartilhado (@{COMPARTILHADO[a['place_id']]})")
         linhas.append(linha)
         print(f"{linha['nome'][:40]:40} {linha['instagram_usuario'] or '-':25} {linha['fonte']} {linha['erro']}")
 

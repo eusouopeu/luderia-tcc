@@ -50,8 +50,8 @@ test('o coletor não tem mais o snowball', () => {
 
 test('menu dos perfis: estado e próximo que falta na mesma capital', () => {
   const t = carregar();
-  assert.equal(t.POP_IG.length, 60);
-  assert.equal(new Set(t.POP_IG.map((p) => p.u)).size, 60);
+  assert.equal(t.POP_IG.length, 61); // 63 casas: Reduto sem perfil, Covil SBC usa o @covilgb
+  assert.equal(new Set(t.POP_IG.map((p) => p.u)).size, 61);
   const [a, b, c] = t.POP_IG;
   assert.equal(t.estadoPerfil(a.u, { [a.u]: { modo: 'periodo' } }, {}), 'ok');
   assert.equal(t.estadoPerfil(a.u, { [a.u]: { modo: 'periodo' } }, { [a.u]: false }), 'falta');

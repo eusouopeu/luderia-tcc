@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de acervos de jogos (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-2
+// @version      2026.11.12-3
 // @description  Procura as 63 casas do B1 na Ludopedia, no Acervo de Jogos e na rejoy, lê cada acervo achado e exporta o TXT da Ludopedia, um CSV por acervo e o CSV da varredura, com a situação da coleta.
 // @match        https://ludopedia.com.br/*
 // @match        https://*.acervodejogos.com.br/*
@@ -311,8 +311,8 @@
   }
 
   // ---------- população do B1 e varredura das plataformas ----------
-  // As 63 casas do B1: as 60 com Instagram (POP_IG do instagram_coletor.user.js) e as 3 sem
-  // perfil. [instagram, nome, capital, UF, domínio do site]. A varredura procura cada uma nas
+  // As 63 casas do B1: as 61 com Instagram próprio (POP_IG do instagram_coletor.user.js), o
+  // Reduto (sem perfil) e o Covil Game Bar SBC (usa o @covilgb, de Guarulhos). [instagram, nome, capital, UF, domínio do site]. A varredura procura cada uma nas
   // três plataformas, sem depender da lista ACERVOS (que guarda só os acervos já conhecidos).
   const CASAS = [
     ["bardo.mago", "Bardo Mago", "Belo Horizonte", "MG", ""],
@@ -328,7 +328,7 @@
     ["asgardbrasilia", "Loja de Jogos - Asgard", "Brasília", "DF", "asgardstore.com.br"],
     ["ludotecabgc", "Ludoteca BGC", "Brasília", "DF", "ludoteca.com.br"],
     ["utopiagamesbr", "Utopia Games & Food", "Brasília", "DF", "utopiagames.com.br"],
-    ["metropoly_", "Metropoly Bar", "Campinas", "SP", "metropolybar.com.br"],
+    ["metropolybar", "Metropoly Bar", "Campinas", "SP", "metropolybar.com.br"],
     ["muito_colecionaveis", "Muito Geek | TCG • Board Games • Fliperama", "Campinas", "SP", "muitocolecionaveis.com.br"],
     ["nergeek", "Nergeek", "Campinas", "SP", "nergeek.com.br"],
     ["alcapaojogos", "Alçapão Jogos", "Curitiba", "PR", "alcapaojogos.com.br"],
@@ -375,7 +375,7 @@
     ["tubaleria", "Tubaleria", "São Paulo", "SP", ""],
     ["xplaceoficial", "XPlace", "São Paulo", "SP", "xplace.com.br"],
     ["cafegeekvv", "Café Geek Cafeteria e Ludoteca", "Vitória", "ES", ""],
-    ["", "Cheio de Fome - Vila da Penha", "Rio de Janeiro", "RJ", ""],
+    ["cheiodefomeoficial", "Cheio de Fome - Vila da Penha", "Rio de Janeiro", "RJ", ""],
     ["", "Reduto", "Rio de Janeiro", "RJ", ""],
     ["", "Covil Game Bar SBC", "São Paulo", "SP", ""]
   ].map(([ig, nome, capital, uf, site]) => ({ id: slug(nome), ig, nome, capital, uf, site }));

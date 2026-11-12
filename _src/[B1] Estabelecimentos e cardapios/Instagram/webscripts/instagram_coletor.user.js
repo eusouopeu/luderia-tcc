@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-5
+// @version      2026.11.12-7
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -196,7 +196,8 @@
       visualizacoes: o.play_count ?? o.ig_play_count ?? o.view_count ?? '',
       n_midias: o.carousel_media_count ?? 1,
       local: o.location?.name || '',
-      fixado: o.timeline_pinned_user_ids?.length ? 'sim' : '',
+      // O campo do fixado muda conforme a resposta (API antiga, GraphQL, aba de reels).
+      fixado: o.timeline_pinned_user_ids?.length || o.clips_tab_pinned_user_ids?.length || o.pinned_for_users?.length || o.is_pinned === true ? 'sim' : '',
       legenda: o.caption?.text || '',
       ...classificar(o.caption?.text || ''),
     };
@@ -246,6 +247,9 @@
     if (typeof dado.code === 'string' && typeof dado.taken_at === 'number') {
       const novo = { ...normalizar(dado), pagina_coleta: pagina };
       const velho = posts.get(novo.shortcode);
+      // Ordem de chegada (a primeira vez que o post apareceu): separa a primeira página da
+      // grade, onde ficam os fixados, das seguintes. Ver periodoCoberto().
+      novo.chegada = velho?.chegada ?? marcaChegada();
       // Mantém o campo já preenchido quando a resposta nova vem incompleta.
       posts.set(novo.shortcode, velho ? mesclar(velho, novo) : novo);
       sujos.add(novo.shortcode);
@@ -277,6 +281,9 @@
     const chave = u.username.toLowerCase();
     capturados.set(chave, mesclar(capturados.get(chave) || {}, novo));
   }
+
+  let contadorChegada = 0;
+  const marcaChegada = () => Date.now() * 1000 + (contadorChegada++ % 1000);
 
   function mesclar(a, b) {
     const r = { ...a };
@@ -680,8 +687,7 @@
       const inicio = periodo && Date.parse(`${dataDe}T00:00:00`) / 1000;
       const frac = periodo ? (ps[0] ? (Date.now() / 1000 - ps[0].taken_at) / (Date.now() / 1000 - inicio) : 0) : total ? ps.length / total : true;
       kit.progresso('coleta', frac === true ? true : Math.min(0.99, frac), `@${user}: ${ps.length}${total ? ` de ${total}` : ''} posts`);
-      const passouDoInicio = periodo && (j.items || [])
-        .some((i) => !i.timeline_pinned_user_ids?.length && diaLocal(i.taken_at) < dataDe);
+      const passouDoInicio = periodo && periodoCoberto(user, postsDe(user));
       if (passouDoInicio) { status(`@${user}: período coberto (${postsDe(user).filter(passaData).length} posts).`); return; }
       if (!j.more_available || !j.next_max_id) break;
       maxId = j.next_max_id;
@@ -784,9 +790,10 @@
   // ---------- menu dos perfis do B1 ----------
   // Mesmo padrão do coletor de preços (B5): seletor com os perfis por capital, marcados como
   // coletados; escolher um abre o perfil e coleta sozinho (no modo do seletor da fila);
-  // "Próximo" abre o próximo que falta. População: as 60 casas do B1 com Instagram
-  // (estabelecimentos/3_triagem/B1_instagram_aprovadas.csv e redes_sociais/B1_instagram_resumo_notion.csv;
-  // sem perfil: Cheio de Fome - Vila da Penha, Reduto e Covil Game Bar SBC). [perfil, nome, capital]
+  // "Próximo" abre o próximo que falta. População: as 61 casas do B1 com perfil próprio
+  // (estabelecimentos/3_triagem/B1_instagram_aprovadas.csv e redes_sociais/B1_instagram_resumo_notion.csv);
+  // das 63, Reduto não tem Instagram e Covil Game Bar SBC usa o @covilgb, da unidade de
+  // Guarulhos. [perfil, nome, capital]
   const POP_IG = [
     ["bardo.mago", "Bardo Mago", "Belo Horizonte"],
     ["comdadobar", "Comdado Bar e Jogos", "Belo Horizonte"],
@@ -801,7 +808,7 @@
     ["asgardbrasilia", "Loja de Jogos - Asgard", "Brasília"],
     ["ludotecabgc", "Ludoteca BGC", "Brasília"],
     ["utopiagamesbr", "Utopia Games & Food", "Brasília"],
-    ["metropoly_", "Metropoly Bar", "Campinas"],
+    ["metropolybar", "Metropoly Bar", "Campinas"],
     ["muito_colecionaveis", "Muito Geek | TCG • Board Games • Fliperama", "Campinas"],
     ["nergeek", "Nergeek", "Campinas"],
     ["alcapaojogos", "Alçapão Jogos", "Curitiba"],
@@ -820,6 +827,7 @@
     ["tocadorato_oficial", "Toca do Rato - Pizzaria e Jogos de Tabuleiro", "Porto Alegre"],
     ["nalaland.jogos", "Nala Land - Bar de Jogos de Tabuleiro em Recife", "Recife"],
     ["gob.ludobar", "Game Of Boards", "Rio de Janeiro"],
+    ["cheiodefomeoficial", "Cheio de Fome - Vila da Penha", "Rio de Janeiro"],
     ["luderiacariocajogos", "Luderia Carioca", "Rio de Janeiro"],
     ["magicstorebrasil", "Magic Store Brazil", "Rio de Janeiro"],
     ["lojaredjogos", "RED jogos", "Rio de Janeiro"],
@@ -2064,10 +2072,18 @@
 
   // Cobertura do período: a grade toda carregada, ou algum post não fixado anterior à
   // data "De" (sinal de que a paginação já passou do início do período).
+  // Período coberto: grade completa ou um post anterior à data "De" que chegou depois da
+  // primeira página da grade. Os fixados vêm na primeira página e nem sempre trazem a marca
+  // (12/11/2026: Cineplay e Fortalúdica pararam por posts de janeiro e abril fixados sem
+  // marca); post antigo na primeira página não prova nada.
+  const PRIMEIRA_PAGINA = 12;
   function periodoCoberto(u, ps) {
     const total = totalDe(u);
     if (total != null && ps.length >= total) return true;
-    return !!dataDe && ps.some((p) => !p.fixado && diaLocal(p.taken_at) < dataDe);
+    if (!dataDe) return false;
+    const ordem = [...ps].sort((a, b) => (a.chegada ?? Infinity) - (b.chegada ?? Infinity));
+    const primeira = new Set(ordem.slice(0, PRIMEIRA_PAGINA).map((p) => p.shortcode));
+    return ps.some((p) => !p.fixado && diaLocal(p.taken_at) < dataDe && !primeira.has(p.shortcode));
   }
 
   // Os campos só estão prontos para ir ao Notion quando nenhum é parcial ou aproximado.
