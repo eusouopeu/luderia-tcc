@@ -102,4 +102,3 @@ BRASIL. Lei Complementar nº 214, de 16 de janeiro de 2025. Institui o Imposto s
 
 COMISSÃO NACIONAL DE CLASSIFICAÇÃO (CONCLA). *CNAE 2.3*: subclasse 5611-2/05. Rio de Janeiro: IBGE, 2026. Disponível em: https://concla.ibge.gov.br/busca-online-cnae.html. [AV: data de acesso]
 
-IBGE. *Pesquisa Anual de Serviços (PAS)*: tabelas 2611, 2619 e 10758. Rio de Janeiro: IBGE, 2025-2026. Disponível em: https://sidra.ibge.gov.br/tabela/2611, https://sidra.ibge.gov.br/tabela/2619 e https://sidra.ibge.gov.br/tabela/10758. Acesso em: 2 nov. 2026. `[AV ano de cada edição]`

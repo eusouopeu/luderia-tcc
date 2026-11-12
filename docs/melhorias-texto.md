@@ -61,8 +61,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 - **Giro e taxa de ocupação no vocabulário (31/10/2026; revisto em 02/11/2026).** `_instrucoes/1b_escrita.md` (P6) mantém giro e taxa de ocupação, mas o modelo do cap. 9 deixou os dois de fora da receita: a demanda é a circulação no pico × horas de pico equivalentes, e o giro só confere o salão (cap. 3). Sugestão: no P6, marcar giro e taxa de ocupação como medidas de conferência, não de receita.
 **D02 — Objetivos e seções da introdução fora da estrutura.** Cap. 1 (1.1) × `1_estrutura.md` (1.3). O cap. 1 tem 7 objetivos específicos; a instrução permite no máximo 6, um por decisão, cada um respondido em 11.2. Os itens (vi) e (vii) cabem em um só (o (vi) da proposta da instrução). As seções também divergem: o cap. 1 tem 1.1 Objetivos, 1.2 Justificativa e 1.3 Estrutura; a instrução prevê 1.1 Contextualização, 1.2 Problema e oportunidade, 1.3 Objetivos, 1.4 Justificativa e 1.5 Estrutura. Sugestão: fundir (vi) e (vii) e renumerar, ou ajustar a instrução.
 
-**D03 — "Única luderia em operação" × "única no recorte".** Cap. 1 (contextualização) × cap. 5 (5.3.3, Tabela 5.1). O cap. 1 afirma que a São Jogue é a única luderia em operação em Salvador; o cap. 5 diz "única no recorte", com 13 resultados na busca, 7 acima de 100 avaliações e 1 aprovado na curadoria. A afirmação do cap. 1 é mais forte que o dado. Sugestão: "a única luderia de Salvador com mais de 100 avaliações no Google Maps (Bloco B1, 2026)". Em 31/10, o cap. 3 (3.3.3) também diz "única luderia de Salvador".
-
 **D04 — Categorias da análise de conteúdo do B2 (revisto em 03/11/2026).** Cap. 2 (2.5) × caps. 3, 5 e 6. A grade final é a de 22 temas (cap. 3, Apêndice F), usada em 5.2 e 6.1. O cap. 2 ainda resume as categorias como comida, serviço, ambiente, acervo e preço e diz que a análise está na 6.2; ela está na 6.1 (temas) e na 6.2 (produto). Sugestão: no 2.5, remeter à grade do Apêndice F e às seções 5.2 e 6.1.
 
 **D07 — Bares: rival ou substituto?** Cap. 2 (2.2) × cap. 5 (Quadro 5.2). O cap. 2 põe bares e restaurantes entre os substitutos. O Quadro 5.2 põe o "bar comum" na rivalidade ("alta no bar comum") e de novo nos substitutos. A mesma unidade em duas forças contraria a lógica de um grupo por unidade. Sugestão: decidir uma posição (ex.: bar com jogo ou quiz = rival; bar comum = substituto) e usá-la nos dois capítulos.
@@ -146,8 +144,6 @@ Aplicados no TMin v1 (31/10/2026, hoje `textos/capitulos/_md/`): C03, C05, C06, 
 ## Baixo ganho
 
 **C22 — Ajuste do horário (R19) explicado três vezes (04/11/2026).** A cobertura de 84,5% e 77,0% e a razão de 1,10 aparecem no 6.6, no 7.1 e no 9.2. Sugestão: explicar no 6.6 e só citar a premissa no 7.1 e no 9.2.
-
-**C20 — *Competitive socialising* definido duas vezes (01/11/2026; decidido em 02/11).** Cap. 1 (parágrafo revisado com "*") e cap. 2 (2.1, parágrafo com "*", com a definição completa; antes na 2.2). O autor decidiu que a definição fica no cap. 2: sai da introdução quando o início do cap. 1 for reescrito, depois dos caps. 2 e 3. Ganho: cerca de 40 palavras.
 
 **C13 — Estrutura das unidades da São Jogue repetida (cap. 9, 9.2 e 9.8).** Mesas, assentos e turnos do site de reservas aparecem nas premissas e de novo na checagem de capacidade; quando o cap. 3 descrever o B3, os dois trechos viram remissão. Ganho: ~40 palavras.
 

@@ -5,7 +5,8 @@ Atualizado em 12/11/2026. **TMin v32** com as taxas de entrada achadas na busca 
 ## Fazendo agora (no máximo duas frentes)
 
 1. **TMin v32 com as taxas da busca de 11/11** (12/11): taxa de entrada de R$ 19,62 (29 casas, antes R$ 18,68 em 22) e gasto por pessoa de R$ 77,86 (16 casas, antes R$ 78,68 em 13), sobre as correções da orientação do v31. Provável: investimento de R$ 329 mil, equilíbrio de R$ 51,9 mil, VPL de R$ 639 mil (R$ 220 mil sem residual), TIR de 53,7% (35,7% sem residual), payback de 3,2 anos, P(VPL > 0) de 78,2%. A ruptura da circulação (5,23) fica acima da mediana das visitas (L20).
-2. **Fechamento para a banca:** citações `[AV]` (Portaria MTP n. 671/2021, LOUOS, convenção SHRBS × Sindbares, livros) e ajustes de formatação para ganhar páginas (teto agora de 120).
+2. **Redesenho de 12/11 parado na L27** (branch `claude/optimistic-kilby-cdad29`): o modelo (`gerar_modelo_financeiro.py`) já tem terça a sábado, 1 cozinheiro, taxas de R$ 15,00 e R$ 22,50, circulação de 5,08, dia útil pelos histogramas, aluguel dos anúncios e VPL sem residual, e dá VPL provável de −R$ 378 mil. A planilha, as figuras e os capítulos seguem no v32 até o autor responder a L27. Feito sem depender dela: caps. 1 e 2 fechados e referências sem citação retiradas (caps. 1, 2, 3, 4, 8 e 11).
+3. **Fechamento para a banca (em espera):** citações `[AV]` (Portaria MTP n. 671/2021, LOUOS, convenção SHRBS × Sindbares, livros) e ajustes de formatação para ganhar páginas (teto agora de 120).
 
 ## Próximos 3 passos
 

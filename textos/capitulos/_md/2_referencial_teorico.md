@@ -2,7 +2,7 @@
 
 O plano de negócios é uma ferramenta de gestão que descreve um empreendimento e delineia sua estratégia de atuação futura. No âmbito de novos empreendimentos, ele serve para testar a viabilidade econômico-financeira do projeto, comunicar valor para investidores e sócios em potencial, e, de modo geral, reduzir o risco de abrir o negócio (DORNELAS, 2021). No Brasil, 25,8% das micro e pequenas empresas fecham nos primeiros cinco anos – 25,9% no setor de serviços (SEBRAE, 2024). Para um empreendimento em um segmento tão recente e com informações de mercado tão escassas, como no caso de uma luderia, o plano precisa declarar as premissas incertas e indicar como testá-las antes do investimento integral.
 
-…
+Este capítulo reúne os conceitos que sustentam essas premissas, na ordem em que o plano os usa: a economia da experiência, que define o que a luderia vende (seção 2.1); a análise estratégica do setor e da concorrência (2.2); os atributos de satisfação do cliente (2.3); o ambiente de serviço e a capacidade (2.4); e a avaliação da viabilidade sob incerteza (2.5). Cada conceito entra pela decisão do plano que apoia, e o Quadro 2.1 resume essa ligação ao fim do capítulo.
 
 ## 2.1 ECONOMIA DA EXPERIÊNCIA
 
@@ -71,8 +71,6 @@ DORNELAS, José. *Plano de negócios*: seu guia definitivo. 3. ed. São Paulo: E
 
 FITZSIMMONS, James A.; FITZSIMMONS, Mona J. *Administração de serviços*: operações, estratégia e tecnologia da informação. 7. ed. Porto Alegre: AMGH, 2014.
 
-IBGE. *Pesquisa Anual de Serviços (PAS)*: tabelas 2611, 2619 e 10758. Rio de Janeiro: IBGE, 2025-2026. Disponível em: https://sidra.ibge.gov.br/tabela/2611, https://sidra.ibge.gov.br/tabela/2619 e https://sidra.ibge.gov.br/tabela/10758. Acesso em: 2 nov. 2026. `[AV ano de cada edição]`
-
 KAM INSIGHT. *Competitive socialising*: winning a new customer occasion. KAM Media, 2022. Disponível em: https://kaminsight.com/wp-content/uploads/sites/2044/2023/07/KAM-Competitive-Socialising-Feb-22.pdf. [AV: data de acesso]
 
 KOTLER, Philip; KELLER, Kevin Lane. *Administração de marketing*. 14. ed. Tradução de Sônia Midori Yamamoto. São Paulo: Pearson Education do Brasil, 2013.
@@ -84,7 +82,5 @@ PICOLO, Jaime Dagostim; TONTINI, Gérson. Análise do contraste da penalidade e 
 PORTER, Michael E. *Estratégia competitiva*: técnicas para análise de indústrias e da concorrência. 2. ed. Rio de Janeiro: Elsevier, 2004. [AV]
 
 SEBRAE. *Sobrevivência das empresas mercantis brasileiras (2019–2023)*: relatório técnico. Brasília: Sebrae, 2024. Disponível em: https://datasebrae.com.br/wp-content/uploads/2024/09/2024-08-13-Relatorio-tecnico-Sobrevivencia-das-empresas-mercantis-brasileiras.pdf. Acesso em: 2 nov. 2026.
-
-SEBRAE. Jogos de tabuleiro movimentaram R$ 53 bilhões em 2024. Agência de Notícias do Sebrae, 2026.
 
 VASCONCELLOS, Pedro Henrique da Silva Carvalho de Barros e. *A influência da qualidade de serviço na imagem, satisfação e intenções comportamentais em restaurantes*: uma análise do Outback Steakhouse Brasil. 2016. Dissertação (Mestrado em Administração de Empresas) – Pontifícia Universidade Católica do Rio de Janeiro, Rio de Janeiro, 2016. Disponível em: https://www.maxwell.vrac.puc-rio.br/27909/27909.PDF. Acesso em: 2 nov. 2026.
