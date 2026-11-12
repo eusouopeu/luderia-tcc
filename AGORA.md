@@ -18,6 +18,7 @@ Atualizado em 12/11/2026, à tarde. **TMin v32** no PDF; os `.md` e o modelo já
 - Quantidades do investimento (N6): projeto do ponto na Pituba.
 - Folha de aprovação: nomes da banca.
 - Coletas do autor (aluguel, horários de pico, entorno, B2, webscripts): roteiros em [pendências](docs/pendencias.md), "Coletas em andamento".
+- Webscripts (12/11): painéis do Instagram, dos cardápios e o novo coletor de acervos no kit comum (`_src/extras/kit_painel/`); instalar o carregador do `acervo_coletor` e reinstalar o do cardápio (`python3 _src/extras/gerar_carregadores.py --abrir`). Não muda o TMin.
 
 ## Onde está o resto
 

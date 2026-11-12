@@ -42,6 +42,7 @@ Legenda: `Bn` = código do bloco de dados (B1 a B4); `<x>` = parte variável; `[
 | Módulo auxiliar | `<tema>_<comum\|client>.py` ou nome do que faz, sem código de bloco nem etapa; fica em `outros/` | `outros/bases_comum.py`, `outros/places_client.py`, `outros/recorte_rm.py` |
 | Webscript (Tampermonkey) | `<site>_<objeto>.user.js`; teste ao lado, `<mesmo nome>.test.cjs` | `maps_avaliacoes.user.js`, `maps_avaliacoes.test.cjs` |
 | Versão do webscript (`@version`) | `AAAA.MM.DD-n` (n-ésima versão do dia) | `2026.10.13-7` |
+| Painel do webscript | kit comum `_src/extras/kit_painel/kit_painel.js`, copiado para dentro do script entre `// >>> kit_painel` e `// <<< kit_painel` por `node _src/extras/kit_painel/embutir.js` (não editar a cópia); o teste `kit_painel.test.cjs` falha se alguma cópia ficar velha. Usam o kit: coletor e snowball do Instagram, cardápios e acervos | `const kit = kitPainel({ id: 'acv' })` |
 | Utilitário geral | verbo no infinitivo + objeto, em `_src/extras/` | `gerar_carregadores.py`, `sincronizar_vault.sh`, `log_execucao.py` |
 
 Nomes com hífen não podem ser importados como módulo Python. Por isso, código usado por mais de um script vai para um módulo auxiliar em `outros/`, nunca para um script de etapa.
@@ -177,9 +178,10 @@ Onde fica o marcador de cada coletor (levantamento de 12/11/2026; mudou só o qu
 | `maps_avaliacoes.user.js` (B2) | lugar sem avaliação no recorte | CSV-resumo por lugar, `AAAA-MM-DD_<lugar>_maps_avaliacoes_resumo.csv`, baixado sempre, mesmo com zero lidas (desde 2026.11.12-2) | `B2-b_avaliacoes.py` (`resumos/`) | sim |
 | `maps_horarios_pico.user.js` (B1) | lugar sem gráfico de "Horários de pico" | linha do lugar no CSV, com `situacao` = "sem horários de pico" (já existia) | `B1-a_horarios_pico.py` (vazia, refazer, coletar) | só o build |
 | `maps_entorno.user.js` (B1) | nenhuma estação ou shopping no raio | linha do lugar no resumo com contagem 0 (branco = busca não feita) e `situacao` | `B1-b_resumo.py` | não (já distingue) |
-| `instagram_coletor.user.js` (B1) | perfil sem post no período | linha do perfil no CSV de perfis, sempre baixado | Notion "A - Estabelecimentos" | não |
+| `instagram_coletor.user.js` (B1) | perfil sem post no período | linha do perfil no CSV de perfis, baixado sempre ao fim de cada coleta (mesmo com o download automático desligado), com `situacao` (desde 2026.11.12-2) | Notion "A - Estabelecimentos" | sim (só o marcador) |
 | `instagram_snowball.user.js` (B1) | perfil sem lista de "seguindo" | CSV de seguindo, sempre baixado | `B1-b_instagram_seguindo.py` (não depende) | não |
-| `cardapio_coletor.user.js` (B1) | casa sem cardápio | `B1_busca_minuciosa_taxa_cardapio_acervo.csv` (busca à mão) | `B1-b_cardapios_planilha.py` (não depende) | não |
+| `cardapio_coletor.user.js` (B1) | casa sem cardápio | `B1_busca_minuciosa_taxa_cardapio_acervo.csv` (busca à mão); no menu do painel, a última extração sem itens fica `refazer` (!) e a de fontes divergentes, `conferir` (◐) (desde 2026.11.12-2) | `B1-b_cardapios_planilha.py` (não depende) | não |
+| `acervo_coletor.user.js` (B1) | acervo publicado sem título | `AAAA-MM-DD_<chave>_acervo.csv`, baixado sempre, com `situacao` (uma linha de jogo vazio quando `vazia`) | `B1-c_jogos_dos_acervos.py` lê o `ludopedia_<chave>.txt` (não depende do CSV) | novo (12/11/2026) |
 | `precos_itens.user.js` (B5) | item sem oferta | nenhum; item sem preço sai da soma, buscado ou não | `B5-b_orcamento_itens.py` (não depende: a cobertura de itens com preço decide) | não |
 | `portais_aluguel.user.js` (B5) | busca sem anúncio | parada "página vazia" no painel | `B5-b_anuncios_aluguel.py` (não depende) | não |
 | `collect/*.py` (B1, B4, B5) | API ou base sem resultado | log de `logs/` (`log_execucao.py`), com o que cada chamada devolveu | builds de cada bloco (não dependem) | não |

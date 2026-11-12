@@ -46,3 +46,11 @@ test('menu: cardápios sem repetição, estado e próximo que falta na mesma cap
 test('reconhece o cardápio da página aberta pelo host', () => {
   assert.equal(carregar().alvoAqui().id, 'la_tabuleria');
 });
+
+test('menu: extração sem itens vira refazer (!) e fontes divergentes viram conferir (◐)', () => {
+  const t = carregar();
+  const garagem = t.ALVOS.find((a) => a.id === 'garagem_do_nerd');
+  assert.equal(t.estadoCardapio(garagem, {}, {}, { garagem_do_nerd: { situacao: 'refazer: nenhum item extraído' } }), 'falha');
+  assert.equal(t.estadoCardapio(garagem, {}, {}, { garagem_do_nerd: { situacao: 'conferir: fontes divergem (40 × 12)' } }), 'parcial');
+  assert.equal(t.estadoCardapio(garagem, { garagem_do_nerd: { itens: 30 } }, {}, { garagem_do_nerd: { situacao: 'refazer: x' } }), 'ok');
+});

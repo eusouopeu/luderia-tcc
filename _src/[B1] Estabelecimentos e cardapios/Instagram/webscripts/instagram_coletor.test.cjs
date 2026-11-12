@@ -63,3 +63,11 @@ test('menu dos perfis: estado e próximo que falta na mesma capital', () => {
   const todos = Object.fromEntries(t.POP_IG.map((p) => [p.u, true]));
   assert.equal(t.proximoPerfil(a.u, {}, todos), null);
 });
+
+test('menu dos perfis: coleta com situação "refazer" aparece como falha, e a marca à mão prevalece', () => {
+  const t = carregar();
+  const [a] = t.POP_IG;
+  assert.equal(t.estadoPerfil(a.u, { [a.u]: { modo: 'periodo', situacao: 'refazer: período não coberto' } }, {}), 'falha');
+  assert.equal(t.estadoPerfil(a.u, { [a.u]: { modo: 'periodo', situacao: 'vazia' } }, {}), 'ok');
+  assert.equal(t.estadoPerfil(a.u, { [a.u]: { situacao: 'refazer: x' } }, { [a.u]: true }), 'ok');
+});
