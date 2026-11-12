@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de avaliações do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-1
+// @version      2026.11.12-2
 // @description  Abre as avaliações de um lugar, ordena por mais recentes, rola até o fim do período, expande os textos (no idioma original), filtra por tema, opinião, componentes e busca, salva o progresso, coleta em fila, confere amostras e exporta CSV com autor pseudonimizado.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -53,6 +53,14 @@
  * CSV-resumo: uma linha por coleta, com lidas = com texto + sem texto, avaliações
  * no período e velocidade de avaliações com texto por mês, em faixa: o rótulo
  * "um mês atrás" cobre de 30 a 59 dias, então a janela vai de 30 a 60 dias.
+ *
+ * Marcador de coleta (desde 2026.11.12-2): depois de cada lugar, avulso, pelo menu
+ * ou em fila, baixa SEMPRE o CSV-resumo daquele lugar
+ * (AAAA-MM-DD_<lugar>_maps_avaliacoes_resumo.csv), mesmo com zero avaliações
+ * lidas; o CSV de tudo continua só quando há linhas. É a prova de que a coleta
+ * foi feita. A coluna situacao segue o vocabulário de _src/dicionario.md §4.5:
+ * ok (completa, com avaliação no período), vazia (completa, zero no período) ou
+ * refazer (incompleta ou incerta).
  *
  * Conferência (fidelidade, §3.6 do método): cole os review_id sorteados. O script
  * diz de que lugar é cada um, rola até ele, destaca e mostra lado a lado o que foi
@@ -1031,7 +1039,14 @@
       janela_dias_min: jMin || '', janela_dias_max: jMax || '',
       texto_por_mes_min: porMes(jMax), texto_por_mes_max: porMes(jMin),
       motivo_parada: motivo, coleta_completa: COMPLETA[motivo] || 'não', versao_script: VERSAO, url: location.href,
+      situacao: situacaoColeta(COMPLETA[motivo] || 'não', noP.length),
     };
+  }
+
+  // Vocabulário único das coletas (_src/dicionario.md §4.5).
+  function situacaoColeta(completa, noPeriodo) {
+    if (completa !== 'sim') return 'refazer';
+    return noPeriodo > 0 ? 'ok' : 'vazia';
   }
 
   async function coletar() {
@@ -1214,16 +1229,17 @@
       status(`Fila ${fila.i + 1}/${fila.itens.length}: esperando o lugar carregar…`);
       let resumo;
       if (!(await aguardar(() => infoLugar().nome_estabelecimento, 45000))) {
-        resumo = { data_coleta: agora(), place_id: item.place_id, url: item.url, motivo_parada: 'lugar não carregou', coleta_completa: 'não', versao_script: VERSAO };
+        resumo = { data_coleta: agora(), place_id: item.place_id, url: item.url, motivo_parada: 'lugar não carregou', coleta_completa: 'não', versao_script: VERSAO, situacao: 'refazer' };
       } else {
         await esperar(2500);
         el.jaOrdenado.checked = false;
         status(`Fila ${fila.i + 1}/${fila.itens.length}: coletando ${infoLugar().nome_estabelecimento}…`);
         let motivo;
         try { motivo = await coletar(); } catch (e) { motivo = `erro: ${e.message}`; }
-        resumo = ultimoResumo || { data_coleta: agora(), place_id: item.place_id, url: item.url, motivo_parada: motivo, coleta_completa: 'não' };
+        resumo = ultimoResumo || { data_coleta: agora(), place_id: item.place_id, url: item.url, motivo_parada: motivo, coleta_completa: 'não', versao_script: VERSAO, situacao: 'refazer' };
         if (resultado.length) baixar(resultado, 'tudo', { forcar: true });
       }
+      baixarResumoLugar(resumo, item.nome || item.place_id);
       fila.resumos.push(resumo);
       fila.i++;
       if (parar) {
@@ -1401,8 +1417,12 @@
       await esperar(2500);
       el.jaOrdenado.checked = false;
       status(`Coletando ${casa.nome}…`);
-      const motivo = await coletar();
-      if (resultado.length) baixar(resultado, 'tudo', { forcar: true });
+      ultimoResumo = null;
+      let motivo;
+      try { motivo = await coletar(); } finally {
+        if (resultado.length) baixar(resultado, 'tudo', { forcar: true });
+        baixarResumoLugar(ultimoResumo || { data_coleta: agora(), place_id: casa.id, nome_estabelecimento: casa.nome, motivo_parada: motivo || 'erro', coleta_completa: 'não', versao_script: VERSAO, situacao: 'refazer' }, casa.nome);
+      }
       rotularCasas();
       if (motivo === 'ordem errada' || motivo === 'lista não encontrada') throw new Error(MSG_MOTIVO[motivo]);
     }, { avisar: true });
@@ -1585,7 +1605,7 @@
   const COLS_RESUMO = ['data_coleta', 'place_id', 'id_maps', 'nome_estabelecimento', 'avaliacao_media_estabelecimento',
     'volume_avaliacoes_estabelecimento', 'lidas', 'com_texto', 'sem_texto', 'soma_confere', 'novas', 'no_periodo',
     'no_periodo_com_texto', 'periodo_de_dias', 'periodo_ate_dias', 'coleta_parar_em_conhecidas', 'coleta_ordenacao_manual', 'janela_dias_min', 'janela_dias_max', 'texto_por_mes_min',
-    'texto_por_mes_max', 'motivo_parada', 'coleta_completa', 'versao_script', 'url'];
+    'texto_por_mes_max', 'motivo_parada', 'coleta_completa', 'versao_script', 'url', 'situacao'];
   const COLS_CONF = ['review_id', 'nome_estabelecimento', 'coletado_em', 'nota_coletada', 'nota_pagina', 'nota_confere_auto',
     'data_coletada', 'data_pagina', 'texto_confere_auto', 'resultado', 'observacao', 'conferido_em'];
 
@@ -1639,6 +1659,16 @@
   function baixarResumo(linhas, sufixo) {
     if (!linhas.length) { status('Sem coletas no histórico.'); return; }
     salvarArquivo(`${dataLocal(new Date())}_maps_avaliacoes_resumo_${sufixo}.csv`, csv(linhas, COLS_RESUMO));
+  }
+
+  // Resumo de um lugar só, baixado depois de cada coleta, mesmo com zero linhas.
+  function nomeResumoLugar(resumo, reserva = '', data = new Date()) {
+    return `${dataLocal(data)}_${nomeArquivo(resumo.nome_estabelecimento || reserva || resumo.place_id)}_maps_avaliacoes_resumo.csv`;
+  }
+
+  function baixarResumoLugar(resumo, reserva = '') {
+    if (!resumo) return;
+    salvarArquivo(nomeResumoLugar(resumo, reserva), csv([resumo], COLS_RESUMO));
   }
 
   function baixarConferencia() {
@@ -2042,8 +2072,11 @@
     if (seletorAte.value === '') { seletorAte.value = '30'; periodo.ate = 30; }
 
     const bColetar = botaoTexto('arrow-down-tray', 'Coletar avaliações', () => executar(async () => {
+      ultimoResumo = null;
       const motivo = await coletar();
       if (prefs.autobaixar && resultado.length) baixar(resultado, 'tudo');
+      // O resumo sai sempre (mesmo com zero lidas): é a prova da coleta.
+      if (ultimoResumo) baixarResumoLugar(ultimoResumo);
       if (motivo === 'ordem errada' || motivo === 'lista não encontrada') throw new Error(MSG_MOTIVO[motivo]);
     }, { avisar: true }), 'primario');
     el.parar = botaoIcone('stop', 'Parar', () => { parar = true; status('Parando…'); }, 'parar');

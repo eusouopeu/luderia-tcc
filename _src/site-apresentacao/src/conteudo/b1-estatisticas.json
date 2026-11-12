@@ -602,31 +602,31 @@
    "grupo": "B2",
    "rotulo": "Avaliações no recorte do B2 (até '3 meses atrás')",
    "unidade": "avaliações",
-   "n": 55.0,
-   "media": 40.3273,
-   "mediana": 15.0,
-   "dp": 101.2191,
-   "min": 0.0,
-   "p25": 10.0,
-   "p75": 31.5,
-   "max": 712.0,
-   "amplitude": 712.0,
-   "cv": 2.5099
+   "n": 54.0,
+   "media": 44.7222,
+   "mediana": 17.5,
+   "dp": 99.6799,
+   "min": 2.0,
+   "p25": 12.0,
+   "p75": 37.5,
+   "max": 679.0,
+   "amplitude": 677.0,
+   "cv": 2.2289
   },
   "avaliacoes_b2_com_texto": {
    "grupo": "B2",
    "rotulo": "Dessas, com texto",
    "unidade": "avaliações",
-   "n": 55.0,
-   "media": 26.1818,
-   "mediana": 8.0,
-   "dp": 68.3353,
+   "n": 54.0,
+   "media": 29.3148,
+   "mediana": 10.0,
+   "dp": 67.366,
    "min": 0.0,
-   "p25": 5.0,
-   "p75": 20.0,
-   "max": 453.0,
-   "amplitude": 453.0,
-   "cv": 2.61
+   "p25": 6.0,
+   "p75": 24.0,
+   "max": 417.0,
+   "amplitude": 417.0,
+   "cv": 2.298
   }
  },
  "dias": [
@@ -2108,7 +2108,7 @@
    "abre_domingo": 0.7391,
    "abre_segunda": 0.1739,
    "com_cardapio": 17,
-   "avaliacoes_b2": 1335
+   "avaliacoes_b2": 1329
   },
   {
    "grupo": "Rio de Janeiro",
@@ -2276,7 +2276,7 @@
    "abre_domingo": 0.8571,
    "abre_segunda": 0.2857,
    "com_cardapio": 4,
-   "avaliacoes_b2": 132
+   "avaliacoes_b2": 147
   },
   {
    "grupo": "Brasília",
@@ -2612,7 +2612,7 @@
    "abre_domingo": 0.8333,
    "abre_segunda": 0.0,
    "com_cardapio": 6,
-   "avaliacoes_b2": 298
+   "avaliacoes_b2": 471
   },
   {
    "grupo": "Curitiba",
@@ -2762,7 +2762,7 @@
    "abre_domingo": 0.6667,
    "abre_segunda": 0.3333,
    "com_cardapio": 4,
-   "avaliacoes_b2": 135
+   "avaliacoes_b2": 137
   },
   {
    "grupo": "Campinas",
@@ -3353,7 +3353,7 @@
    "abre_domingo": 0.5,
    "abre_segunda": 1.0,
    "com_cardapio": 2,
-   "avaliacoes_b2": 19
+   "avaliacoes_b2": 31
   },
   {
    "grupo": "Goiânia",
@@ -3617,7 +3617,7 @@
    "abre_domingo": 1.0,
    "abre_segunda": 0.0,
    "com_cardapio": 1,
-   "avaliacoes_b2": 10
+   "avaliacoes_b2": 12
   },
   {
    "grupo": "Salvador",
@@ -3926,7 +3926,7 @@
    "abre_domingo": 1.0,
    "abre_segunda": 0.0,
    "com_cardapio": 1,
-   "avaliacoes_b2": 40
+   "avaliacoes_b2": 39
   },
   {
    "grupo": "Vitória",
@@ -4218,7 +4218,7 @@
    "abre_domingo": 1.0,
    "abre_segunda": 0.0,
    "com_cardapio": 1,
-   "avaliacoes_b2": 40
+   "avaliacoes_b2": 39
   },
   {
    "grupo": "Nordeste",
@@ -4385,7 +4385,7 @@
    "abre_domingo": 1.0,
    "abre_segunda": 0.5,
    "com_cardapio": 3,
-   "avaliacoes_b2": 49
+   "avaliacoes_b2": 51
   },
   {
    "grupo": "Centro-Oeste",
@@ -4719,7 +4719,7 @@
    "abre_domingo": 0.775,
    "abre_segunda": 0.15,
    "com_cardapio": 29,
-   "avaliacoes_b2": 1774
+   "avaliacoes_b2": 1956
   },
   {
    "grupo": "Sul",
@@ -4868,7 +4868,7 @@
    "abre_domingo": 0.6364,
    "abre_segunda": 0.5455,
    "com_cardapio": 9,
-   "avaliacoes_b2": 228
+   "avaliacoes_b2": 242
   }
  ]
 }
