@@ -19,7 +19,7 @@ function carregar(loc = 'https://ludopedia.com.br/colecao?usuario=aarenabg') {
     setTimeout,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Coletor de acervos] carregado');"))
-    + 'Object.assign(globalThis.__test, { ACERVOS, alvoDaPagina, lerAcervoDeJogos, lerRejoy, nuxt, tituloDaLista, limpa, semRepetir, situacaoDe, estadoAcervo, proximoAcervo });})();';
+    + 'Object.assign(globalThis.__test, { ACERVOS, alvoDaPagina, lerAcervoDeJogos, lerRejoy, nuxt, tituloDaLista, limpa, semRepetir, situacaoDe, estadoAcervo, proximoAcervo, CASAS, parecido, casar, lerLojasAcervoDeJogos, lerCidadesRejoy, lerLocadorasRejoy, lerUsuariosLudopedia, lerListasLudopedia, alvos, situacaoDaCasa, linhasVarredura, ACEITE });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'acervo_coletor.user.js' });
   return ambiente.__test;
 }
@@ -71,4 +71,69 @@ test('situação e estado do menu', () => {
   assert.equal(t.estadoAcervo(a, { [a.chave]: { situacao: 'vazia' } }), 'ok');
   assert.equal(t.estadoAcervo(a, {}, { [a.chave]: true }), 'ok');
   assert.equal(t.proximoAcervo(a.id, {}, {}).fonte, 'ludopedia');
+});
+
+const casa = (t, nome) => t.CASAS.find((c) => c.nome.startsWith(nome));
+
+test('população: 63 casas do B1, sem repetição, com UF', () => {
+  const t = carregar();
+  assert.equal(t.CASAS.length, 63);
+  assert.equal(new Set(t.CASAS.map((c) => c.id)).size, 63);
+  assert.ok(t.CASAS.every((c) => /^[A-Z]{2}$/.test(c.uf)));
+});
+
+test('semelhança: @ igual ao endereço aceita; outra palavra ou grafia só parecida vai conferir', () => {
+  const t = carregar();
+  assert.equal(t.parecido(casa(t, 'Arena BG'), 'aarenabg', 'aarenabg').s, 1);
+  assert.ok(t.parecido(casa(t, 'Toca do Rato'), 'Toca do Rato', 'tocadorato').s >= t.ACEITE);
+  assert.ok(t.parecido(casa(t, 'XPlace'), 'Place Games', 'placegames').s < t.ACEITE);
+  assert.ok(t.parecido(casa(t, 'Dungeon'), 'Dungeons e Dados', 'dungeonsedados').s < t.ACEITE);
+  assert.ok(t.parecido(casa(t, 'Ludus'), 'Ludum', 'ludum').s < t.ACEITE);
+});
+
+test('casar: uma loja aceita por plataforma, mesma UF, lista de acervo antes de usuário homônimo', () => {
+  const t = carregar();
+  const c = casa(t, 'Dungeon');
+  const r = t.casar(c, { lojasAdj: [{ chave: 'dungeon', nome: 'Dungeon Games Store', uf: 'SP' }, { chave: 'dungeonluderia', nome: 'Dungeon Luderia', uf: 'SP' }, { chave: 'dungeonrj', nome: 'Dungeon Games Store', uf: 'RJ' }] });
+  assert.equal(JSON.stringify(r.filter((x) => x.semelhanca >= t.ACEITE).map((x) => x.chave)), JSON.stringify(['dungeon']));
+  assert.ok(!r.some((x) => x.chave === 'dungeonrj'));
+  const e = t.casar(casa(t, 'Encounter'), { usuarios: [{ usuario: 'Encounter', nome: 'Encounter' }], listas: [{ id: '1', url: 'https://ludopedia.com.br/lista/1/x', titulo: 'Encounter Board Games - Acervo de Jogos' }] });
+  assert.equal(e.filter((x) => x.semelhanca >= t.ACEITE).map((x) => x.chave)[0], 'lista1');
+});
+
+test('leitores dos catálogos: Acervo de Jogos, rejoy (cidades e lojas) e busca da Ludopedia', () => {
+  const t = carregar();
+  const adj = '<li data-list-filter-target="item" x><h4><a target="_blank" href="https://saojogue.acervodejogos.com.br">SÃO <b>JOGUE</b></a></h4><span class="text-slate-500">Salvador · BA </span></li>';
+  assert.equal(JSON.stringify(t.lerLojasAcervoDeJogos(adj)), JSON.stringify([{ chave: 'saojogue', nome: 'SÃO JOGUE', cidade: 'Salvador', uf: 'BA' }]));
+  assert.equal(JSON.stringify(t.lerCidadesRejoy('<a href="/locadoras?cidade=S%C3%A3o+Paulo&amp;uf=SP">x</a><a href="/locadoras?cidade=S%C3%A3o+Paulo&uf=SP">')), JSON.stringify([{ cidade: 'São Paulo', uf: 'SP' }]));
+  const d = [{ data: 1 }, { 'stores:Recife:PE': 2 }, [3], { slug: 4, name: 5, city: 6, state: 7 }, 'nala', 'Nala Land', 'Recife', 'PE'];
+  assert.equal(JSON.stringify(t.lerLocadorasRejoy(`<script id="__NUXT_DATA__" type="application/json">${JSON.stringify(d)}</script>`)), JSON.stringify([{ chave: 'nala', nome: 'Nala Land', cidade: 'Recife', uf: 'PE' }]));
+  const u = '<a href="https://ludopedia.com.br/usuario/Castelos Bar"><img></a><a class="n" href="https://ludopedia.com.br/usuario/Castelos Bar">Castelos Bar</a>';
+  assert.equal(JSON.stringify(t.lerUsuariosLudopedia(u)), JSON.stringify([{ usuario: 'Castelos Bar', nome: 'Castelos Bar' }]));
+  const l = '<a href="https://ludopedia.com.br/lista/20376/acervo-jogasampa"><img></a><a href="https://ludopedia.com.br/lista/20376/acervo-jogasampa">Acervo Jogasampa</a>';
+  assert.equal(t.lerListasLudopedia(l)[0].titulo, 'Acervo Jogasampa');
+});
+
+test('menu e CSV da varredura: todo acervo conhecido tem casa; cada casa aparece; situação por casa', () => {
+  const t = carregar();
+  const lista = t.alvos({});
+  assert.ok(!lista.some((a) => a.capital === 'Fora do B1'));
+  assert.equal(new Set(lista.map((a) => a.casa)).size, 63);
+  const reduto = casa(t, 'Reduto');
+  const achados = { [reduto.id]: { em: 1, cands: [], erros: [] } };
+  assert.equal(t.situacaoDaCasa(achados[reduto.id]), 'vazia');
+  assert.equal(t.alvos(achados).find((a) => a.casa === reduto.id).varrida, true);
+  achados[reduto.id].cands = [{ fonte: 'rejoy', chave: 'reduto', url: 'https://reduto.rejoy.com.br/search', nome_fonte: 'Reduto', semelhanca: 1, criterio: 'x' }];
+  assert.equal(t.situacaoDaCasa(achados[reduto.id]), 'coletar');
+  assert.ok(t.alvos(achados).some((a) => a.id === 'rejoy:reduto' && a.nome === reduto.nome));
+  const linhas = t.linhasVarredura(achados);
+  assert.equal(new Set(linhas.map((l) => l.estabelecimento)).size, 63);
+  assert.equal(t.situacaoDaCasa({ em: 1, cands: [], erros: ['rejoy: HTTP 500'] }), 'refazer: rejoy: HTTP 500');
+});
+
+test('páginas que não são acervo não viram alvo', () => {
+  assert.equal(carregar('https://www.acervodejogos.com.br/companies').alvoDaPagina(), null);
+  assert.equal(carregar('https://www.rejoy.com.br/locadoras').alvoDaPagina(), null);
+  assert.equal(carregar('https://ludopedia.com.br/').alvoDaPagina(), null);
+  assert.equal(carregar('https://saojogue.acervodejogos.com.br/').alvoDaPagina().nome, 'São Jogue - Bela Vista');
 });

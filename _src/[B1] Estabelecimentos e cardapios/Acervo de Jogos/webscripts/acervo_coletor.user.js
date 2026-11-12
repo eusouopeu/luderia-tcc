@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name         Coletor de acervos de jogos (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-1
-// @description  Lê o acervo de jogos das casas do B1 na Ludopedia (coleção ou lista), no Acervo de Jogos e na rejoy, e exporta o TXT da Ludopedia e um CSV por casa com a situação da coleta.
-// @match        https://ludopedia.com.br/colecao*
-// @match        https://ludopedia.com.br/lista/*
+// @version      2026.11.12-2
+// @description  Procura as 63 casas do B1 na Ludopedia, no Acervo de Jogos e na rejoy, lê cada acervo achado e exporta o TXT da Ludopedia, um CSV por acervo e o CSV da varredura, com a situação da coleta.
+// @match        https://ludopedia.com.br/*
 // @match        https://*.acervodejogos.com.br/*
 // @match        https://*.rejoy.com.br/*
 // @run-at       document-idle
@@ -12,6 +11,10 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_deleteValue
+// @grant        GM_xmlhttpRequest
+// @connect      acervodejogos.com.br
+// @connect      rejoy.com.br
+// @connect      ludopedia.com.br
 // ==/UserScript==
 
 /*
@@ -40,8 +43,21 @@
  *    B1_jogos_dos_acervos.csv mais `situacao` (_src/dicionario.md §4.5): ok, vazia
  *    (acervo lido sem título; uma linha com jogo vazio) ou refazer (leitura parou antes do fim).
  *
- * Menu dos acervos (padrão dos coletores): seletor por plataforma com ✓ ok, ! refazer e
- * ○ falta. Escolher abre a página e coleta sozinho; "Próximo" segue para o que falta.
+ * Varredura ("Procurar"): cada uma das 63 casas do B1 (CASAS) é procurada nas três
+ * plataformas, não só as de acervo já conhecido (ACERVOS):
+ *  - Acervo de Jogos: lista de lojas (/companies), mesma UF;
+ *  - rejoy: lojas de cada cidade das UFs do B1 (/locadoras?cidade=…&uf=…);
+ *  - Ludopedia: busca de usuário (/search_user) e de lista (/listas, títulos com acervo,
+ *    aluguel ou locação) pelo nome da casa e pelo @ do Instagram;
+ *  - sondagem direta de <@ ou site>.acervodejogos.com.br e .rejoy.com.br (404 = não existe).
+ * Achado com semelhança ≥ 0,75 vira alvo; de 0,5 a 0,75 fica no CSV para conferir.
+ * Saída: AAAA-MM-DD_acervos_varredura.csv, uma linha por casa e acervo achado (contagem
+ * não exclusiva: casa com dois acervos tem duas linhas), com situacao coletar, vazia
+ * (nenhum acervo nas três) ou refazer (pedido falhou).
+ *
+ * Menu dos acervos (padrão dos coletores): por capital, cada acervo de cada casa, com ✓ ok,
+ * ! refazer e ○ falta; casa sem acervo aparece uma vez (✓ depois de procurada). Escolher abre
+ * a página e coleta sozinho; "Próximo" segue para o que falta; "Coletar todos" encadeia.
  * Lojas online de venda (B1-c_lojas_venda.py) ficam no Python: cada plataforma
  * (Liga, Tray, Nuvemshop…) pede um leitor próprio e a da Liga esconde o preço em imagens.
  */
@@ -141,24 +157,28 @@
   const tituloDaLista = (t) => limpa(t).replace(/^\d+\s*-\s*/, '').replace(/\s+\d+$/, '');
 
   // ---------- página aberta ----------
-  function alvoDaPagina(loc = location) {
+  // Acervo da página aberta: entre os alvos do menu (conhecidos e achados na varredura) ou,
+  // fora deles, montado do endereço. Página que não é de acervo devolve null.
+  function alvoDaPagina(loc = location, lista = null) {
     const h = loc.hostname;
     const sub = h.split('.')[0];
-    if (h.endsWith('.acervodejogos.com.br')) return ACERVOS.find((a) => a.fonte === 'acervodejogos' && a.chave === sub) || { id: sub, chave: sub, nome: sub, fonte: 'acervodejogos', url: `https://${sub}.acervodejogos.com.br/boardgames?sort=mais_alugados` };
-    if (h.endsWith('.rejoy.com.br')) return ACERVOS.find((a) => a.fonte === 'rejoy' && a.chave === sub) || { id: sub, chave: sub, nome: sub, fonte: 'rejoy', url: `https://${sub}.rejoy.com.br/search` };
-    if (h === 'ludopedia.com.br') {
-      const lista = loc.pathname.match(/^\/lista\/(\d+)/);
-      const usuario = new URLSearchParams(loc.search).get('usuario');
-      const casa = ACERVOS.find((a) => {
-        if (a.fonte !== 'ludopedia') return false;
-        const u = new URL(a.url);
-        return lista ? u.pathname.startsWith(`/lista/${lista[1]}`) : usuario && (u.searchParams.get('usuario') || '').toLowerCase() === usuario.toLowerCase();
-      });
-      if (casa) return casa;
-      const chave = (lista ? `lista${lista[1]}` : usuario || 'ludopedia').toLowerCase().replace(/\W+/g, '');
-      return { id: chave, chave, nome: usuario || `lista ${lista?.[1]}`, fonte: 'ludopedia', url: loc.href };
+    const todos = () => lista || alvos();
+    for (const fonte of ['acervodejogos', 'rejoy']) {
+      if (!h.endsWith(`.${fonte}.com.br`) || sub === 'www') continue;
+      return todos().find((a) => a.fonte === fonte && a.chave === sub) || { id: `${fonte}:${sub}`, chave: sub, nome: sub, fonte, url: URL_FONTE[fonte](sub) };
     }
-    return null;
+    if (h !== 'ludopedia.com.br' || !/^\/(colecao|lista\/)/.test(loc.pathname)) return null;
+    const lista_ = loc.pathname.match(/^\/lista\/(\d+)/);
+    const usuario = new URLSearchParams(loc.search).get('usuario');
+    if (!lista_ && !usuario) return null;
+    const casa = todos().find((a) => {
+      if (a.fonte !== 'ludopedia') return false;
+      const u = new URL(a.url);
+      return lista_ ? u.pathname.startsWith(`/lista/${lista_[1]}`) : (u.searchParams.get('usuario') || '').toLowerCase() === usuario.toLowerCase();
+    });
+    if (casa) return casa;
+    const chave = lista_ ? `lista${lista_[1]}` : slug(usuario);
+    return { id: `ludopedia:${chave}`, chave, nome: usuario || `lista ${lista_[1]}`, fonte: 'ludopedia', url: loc.href };
   }
 
   async function baixarTexto(url) {
@@ -236,6 +256,7 @@
   const CHAVE_FEITOS = 'acv:feitos'; // { chave: { n, situacao, em } }
   const CHAVE_MARCAS = 'acv:marcas';
   const CHAVE_ABRIR = 'acv:abrir';
+  const CHAVE_ULTIMO = 'acv:ultimo'; // último item escolhido no menu (página que não é acervo)
   const COLS = ['estabelecimento', 'fonte', 'url_fonte', 'posicao', 'jogo', 'aluguel_rs', 'aluguel_dias', 'situacao', 'data_coleta'];
   let resultado = null; // { alvo, jogos, situacao, url }
 
@@ -289,25 +310,375 @@
     kit.piscar(el.bTxt);
   }
 
+  // ---------- população do B1 e varredura das plataformas ----------
+  // As 63 casas do B1: as 60 com Instagram (POP_IG do instagram_coletor.user.js) e as 3 sem
+  // perfil. [instagram, nome, capital, UF, domínio do site]. A varredura procura cada uma nas
+  // três plataformas, sem depender da lista ACERVOS (que guarda só os acervos já conhecidos).
+  const CASAS = [
+    ["bardo.mago", "Bardo Mago", "Belo Horizonte", "MG", ""],
+    ["comdadobar", "Comdado Bar e Jogos", "Belo Horizonte", "MG", "comdado.bar"],
+    ["garagemdonerd", "Garagem do Nerd", "Belo Horizonte", "MG", "garagemdonerd.com.br"],
+    ["latabuleria", "La Tabuleria", "Belo Horizonte", "MG", ""],
+    ["ludocafebh", "LudoCafé", "Belo Horizonte", "MG", "ludocafe.com.br"],
+    ["shelfbar", "Shelf Bar e Jogos", "Belo Horizonte", "MG", "shelfbar.com.br"],
+    ["ludotecasidequest", "Ludoteca Sidequest", "Belém", "PA", "ludotecasidequest.com.br"],
+    ["fortaludica", "FORTALÚDICA - BURGERS & JOGOS", "Brasília", "DF", "fortaludica.com.br"],
+    ["grutabsb", "Gruta BSB", "Brasília", "DF", "grutabsb.com.br"],
+    ["insidegamestore", "Inside Games", "Brasília", "DF", "insidegamestore.com.br"],
+    ["asgardbrasilia", "Loja de Jogos - Asgard", "Brasília", "DF", "asgardstore.com.br"],
+    ["ludotecabgc", "Ludoteca BGC", "Brasília", "DF", "ludoteca.com.br"],
+    ["utopiagamesbr", "Utopia Games & Food", "Brasília", "DF", "utopiagames.com.br"],
+    ["metropoly_", "Metropoly Bar", "Campinas", "SP", "metropolybar.com.br"],
+    ["muito_colecionaveis", "Muito Geek | TCG • Board Games • Fliperama", "Campinas", "SP", "muitocolecionaveis.com.br"],
+    ["nergeek", "Nergeek", "Campinas", "SP", "nergeek.com.br"],
+    ["alcapaojogos", "Alçapão Jogos", "Curitiba", "PR", "alcapaojogos.com.br"],
+    ["boardzgamepub", "BoardZ Game Pub", "Curitiba", "PR", "boardzgamepub.com.br"],
+    ["joyjoycafe", "Joyjoy Café", "Curitiba", "PR", "joyjoycafe.com.br"],
+    ["paladinohobbies", "Paladino Hobbies", "Curitiba", "PR", "paladinohobbies.com.br"],
+    ["tavernagamehouse", "Taverna Game House", "Curitiba", "PR", "tavernagamehouse.com.br"],
+    ["vilacelta", "Vila Celta Hobby Store - Jogos e Café", "Curitiba", "PR", "reidascartinhas.com.br"],
+    ["ccg_floripa", "CCG Floripa", "Florianópolis", "SC", "grupoccg.com.br"],
+    ["chefonplay", "Chef on Play", "Florianópolis", "SC", ""],
+    ["cineplay_sc", "Cineplay- Restaurante e Jogos", "Florianópolis", "SC", ""],
+    ["balboashobbygames", "Balboa's Hobby Games", "Fortaleza", "CE", "balboas.com.br"],
+    ["dominariacg", "Dominaria Cards & Games", "Fortaleza", "CE", "dominariacg.com.br"],
+    ["paladinsgames", "Paladins Game Store", "Goiânia", "GO", "paladinsgames.com.br"],
+    ["arcadeapub", "Arcadea Gaming Pub", "Porto Alegre", "RS", "arcadeapub.com.br"],
+    ["tocadorato_oficial", "Toca do Rato - Pizzaria e Jogos de Tabuleiro", "Porto Alegre", "RS", ""],
+    ["nalaland.jogos", "Nala Land - Bar de Jogos de Tabuleiro em Recife", "Recife", "PE", ""],
+    ["gob.ludobar", "Game Of Boards", "Rio de Janeiro", "RJ", "gameofboards.com.br"],
+    ["luderiacariocajogos", "Luderia Carioca", "Rio de Janeiro", "RJ", "luderiacarioca.com"],
+    ["magicstorebrasil", "Magic Store Brazil", "Rio de Janeiro", "RJ", "magicstorebrasil.com.br"],
+    ["lojaredjogos", "RED jogos", "Rio de Janeiro", "RJ", "redjogos.com.br"],
+    ["tabuclubnit", "TabuClub", "Rio de Janeiro", "RJ", ""],
+    ["saojogue", "São Jogue - Bela Vista", "Salvador", "BA", "saojogue.com.br"],
+    ["sessenta.minutos", "60 Minutos Escape, Hamburgueria e Boardgames", "São Paulo", "SP", "sessentaminutos.com.br"],
+    ["aarenabg", "Arena BG | Jogos de Tabuleiro | Hamburgueria", "São Paulo", "SP", "arenabg.com.br"],
+    ["bodogami", "Bodogami Restaurante e Cafeteria", "São Paulo", "SP", "bodogami.com.br"],
+    ["bravojogos", "Bravo Jogos", "São Paulo", "SP", "bravojogos.com.br"],
+    ["chqjogos.sa", "CHQ Jogos", "São Paulo", "SP", "chqjogos.com.br"],
+    ["cartolaluderia", "Cartola Luderia Bar", "São Paulo", "SP", ""],
+    ["castelosbareboardgames", "Castelos Bar & Boardgames", "São Paulo", "SP", "castelosbar.com.br"],
+    ["coletivogeekbr", "Coletivo Geek", "São Paulo", "SP", ""],
+    ["covilgb", "Covil Game Bar", "São Paulo", "SP", ""],
+    ["dungeongames.oficial", "Dungeon Games Store", "São Paulo", "SP", "dungeongamesstore.com.br"],
+    ["encounter.bg", "Encounter | Jogos de Tabuleiro | Board Games", "São Paulo", "SP", ""],
+    ["espaco162karaoke", "Espaço 162 - Meu Karaokê Box", "São Paulo", "SP", "espaco162.com.br"],
+    ["fanhourbr", "Fan Hour Games and Burgers", "São Paulo", "SP", "fanhour.com.br"],
+    ["flowg4mes", "Flow Games - Burgers, Cards & Comunidade", "São Paulo", "SP", "flowstore.com.br"],
+    ["jogasampa", "Jogasampa", "São Paulo", "SP", "jogasampa.com.br"],
+    ["ludusluderia", "Ludus Luderia", "São Paulo", "SP", "ludusluderia.com.br"],
+    ["omniverselivraria", "OMNIVERSE", "São Paulo", "SP", "omniverse.com.br"],
+    ["pittasboardgames", "Pitta's Board Games", "São Paulo", "SP", "pittasstore.com.br"],
+    ["lojaplacegames", "Place Games", "São Paulo", "SP", "placegames.com.br"],
+    ["playeasyjogos", "Play Easy", "São Paulo", "SP", "playeasy.com.br"],
+    ["tubaleria", "Tubaleria", "São Paulo", "SP", ""],
+    ["xplaceoficial", "XPlace", "São Paulo", "SP", "xplace.com.br"],
+    ["cafegeekvv", "Café Geek Cafeteria e Ludoteca", "Vitória", "ES", ""],
+    ["", "Cheio de Fome - Vila da Penha", "Rio de Janeiro", "RJ", ""],
+    ["", "Reduto", "Rio de Janeiro", "RJ", ""],
+    ["", "Covil Game Bar SBC", "São Paulo", "SP", ""]
+  ].map(([ig, nome, capital, uf, site]) => ({ id: slug(nome), ig, nome, capital, uf, site }));
+
+  function slug(t) {
+    return String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+  }
+
+  // Semelhança entre a casa e um nome achado numa plataforma (0 a 1), com o critério.
+  // Palavras genéricas e o nome da capital saem antes de comparar.
+  const PALAVRAS_VAZIAS = new Set(('a o e em de da do das dos the and bar jogos jogo tabuleiro board boardgames boardgame games game '
+    + 'cafe cafeteria luderia ludobar restaurante hamburgueria burgers burger pizzaria loja store hobby hobbies oficial pub food '
+    + 'cards tcg comunidade fliperama acervo lista aluguel para locacao locadora').split(' '));
+  const ACEITE = 0.75;   // a partir daqui o achado vira alvo de coleta
+  const CONFERIR = 0.5;  // entre CONFERIR e ACEITE: só no CSV da varredura, para conferir
+
+  function nucleo(nome, capital = '') {
+    const cidade = new Set(capital.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().split(/[^a-z0-9]+/));
+    const t = String(nome || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+    const n = t.filter((x) => !PALAVRAS_VAZIAS.has(x) && !cidade.has(x));
+    return n.length ? n : t;
+  }
+
+  function dice(a, b) {
+    const pares = (x) => { const m = new Map(); for (let i = 0; i < x.length - 1; i++) { const p = x.slice(i, i + 2); m.set(p, (m.get(p) || 0) + 1); } return m; };
+    if (a === b) return a ? 1 : 0;
+    if (a.length < 2 || b.length < 2) return 0;
+    const pa = pares(a), pb = pares(b);
+    let comum = 0;
+    for (const [p, n] of pa) comum += Math.min(n, pb.get(p) || 0);
+    return (2 * comum) / (a.length - 1 + b.length - 1);
+  }
+
+  function parecido(casa, nomeFonte, chave = '') {
+    const c = slug(chave), h = slug(casa.ig), s = slug(String(casa.site || '').split('.')[0]);
+    const na = nucleo(casa.nome, casa.capital), nb = nucleo(nomeFonte, casa.capital);
+    const ja = na.join(''), jb = nb.join('');
+    if (c && (c === h || c === s || c === ja)) return { s: 1, criterio: 'endereço igual ao Instagram, ao site ou ao nome' };
+    // Contido só vale quando o trecho que sobra é pequeno ("aarenabg" ⊃ "arenabg"), não
+    // quando é outra palavra ("dungeonsedados" ⊃ "dungeon").
+    const contem = (x, y) => x.length >= 5 && y.length >= 5 && (x.includes(y) || y.includes(x))
+      && Math.min(x.length, y.length) / Math.max(x.length, y.length) >= 0.6;
+    if (c && (contem(c, h) || contem(c, s) || contem(c, ja))) return { s: 0.9, criterio: 'endereço contém o Instagram, o site ou o nome' };
+    const [curto, longo] = na.length <= nb.length ? [na, nb] : [nb, na];
+    if (curto.join('').length >= 5 && curto.every((x) => longo.includes(x)) && curto.join('').length / longo.join('').length >= 0.5) {
+      return { s: 0.9, criterio: 'nome contido no outro' };
+    }
+    // Só a grafia parecida passa do aceite quando é quase igual (≥ 0,9); abaixo, vai conferir.
+    const d = Math.max(dice(ja, jb), c ? dice(ja, c) : 0);
+    return { s: Math.round((d >= 0.9 ? d : Math.min(d, 0.7)) * 100) / 100, criterio: 'nome parecido' };
+  }
+
+  // Catálogos públicos das plataformas.
+  function lerLojasAcervoDeJogos(texto) {
+    const lojas = [];
+    for (const [item] of texto.matchAll(/<li data-list-filter-target="item"[\s\S]*?<\/li>/g)) {
+      const i = item.replace(/\s+/g, ' ');
+      const a = i.match(/href="https:\/\/([^."]+)\.acervodejogos\.com\.br\/?"[^>]*>(.*?)<\/a>/);
+      const loc = i.match(/text-slate-500">([^<]*?) · ([A-Z]{2})\s*<\/span>/);
+      if (a) lojas.push({ chave: a[1], nome: limpa(a[2].replace(/<[^>]+>/g, '')), cidade: loc ? limpa(loc[1]) : '', uf: loc ? loc[2] : '' });
+    }
+    return lojas;
+  }
+
+  function lerCidadesRejoy(texto) {
+    const vistas = new Map();
+    for (const [, q] of texto.matchAll(/href="\/locadoras\?([^"]+)"/g)) {
+      const p = new URLSearchParams(q.replace(/&amp;/g, '&'));
+      if (p.get('cidade') && p.get('uf')) vistas.set(`${p.get('cidade')}|${p.get('uf')}`, { cidade: p.get('cidade'), uf: p.get('uf') });
+    }
+    return [...vistas.values()];
+  }
+
+  function lerLocadorasRejoy(texto) {
+    const dados = nuxt(texto);
+    return Object.entries(dados).filter(([c]) => c.startsWith('stores:')).flatMap(([, v]) => v || [])
+      .filter((l) => l && l.slug).map((l) => ({ chave: l.slug, nome: limpa(l.name), cidade: l.city || '', uf: l.state || '' }));
+  }
+
+  function lerUsuariosLudopedia(texto) {
+    const m = new Map();
+    for (const [, u, t] of texto.matchAll(/<a[^>]+href="https:\/\/ludopedia\.com\.br\/usuario\/([^"/?#]+)"[^>]*>([\s\S]*?)<\/a>/g)) {
+      const usuario = limpa(decodeURIComponent(u));
+      const nome = limpa(t.replace(/<[^>]+>/g, ''));
+      if (!m.has(usuario) || nome) m.set(usuario, { usuario, nome: nome || usuario });
+    }
+    return [...m.values()];
+  }
+
+  function lerListasLudopedia(texto) {
+    const m = new Map();
+    for (const [, id, sl, t] of texto.matchAll(/href="https:\/\/ludopedia\.com\.br\/lista\/(\d+)\/([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)) {
+      const titulo = limpa(t.replace(/<[^>]+>/g, ''));
+      if (titulo || !m.has(id)) m.set(id, { id, url: `https://ludopedia.com.br/lista/${id}/${sl}`, titulo: titulo || sl.replace(/-/g, ' ') });
+    }
+    return [...m.values()];
+  }
+
+  // Pedido a outro domínio (GM_xmlhttpRequest, com os cookies do navegador); sem ele, fetch.
+  function pedir(url) {
+    if (typeof GM_xmlhttpRequest !== 'function') return baixarTexto(url);
+    return new Promise((ok, erro) => GM_xmlhttpRequest({
+      method: 'GET', url, timeout: 30000,
+      onload: (r) => (r.status >= 200 && r.status < 300 ? ok(r.responseText) : erro(Object.assign(new Error(`HTTP ${r.status}`), { http: r.status }))),
+      onerror: () => erro(new Error('falha de rede')),
+      ontimeout: () => erro(new Error('tempo esgotado')),
+    }));
+  }
+
+  // Endereço que só existe se a casa tiver loja na plataforma (inexistente responde 404).
+  const existe = (url) => pedir(url).then(() => true, (e) => (e.http === 404 ? false : Promise.reject(e)));
+
+  const CHAVE_ACHADOS = 'acv:achados'; // { casa: { em, cands: [{ fonte, chave, url, nome_fonte, semelhanca, criterio }], erros: [] } }
+  const CHAVE_CADEIA = 'acv:cadeia';   // true enquanto "Coletar todos" segue de acervo em acervo
+  const URL_FONTE = {
+    acervodejogos: (c) => `https://${c}.acervodejogos.com.br/boardgames?sort=mais_alugados`,
+    rejoy: (c) => `https://${c}.rejoy.com.br/search`,
+  };
+
+  // Achados de uma casa nos catálogos, na busca da Ludopedia e na sondagem direta dos endereços.
+  function casar(casa, { lojasAdj = [], lojasRejoy = [], usuarios = [], listas = [] }) {
+    const cands = [];
+    const por = (fonte, chave, url, nomeFonte, uf, bonus = 0) => {
+      if (uf && casa.uf && uf !== casa.uf) return;
+      const p = parecido(casa, nomeFonte, chave);
+      if (p.s >= CONFERIR) cands.push({ fonte, chave, url, nome_fonte: nomeFonte, semelhanca: p.s >= ACEITE ? Math.min(1, p.s + bonus) : p.s, criterio: p.criterio + (bonus ? '; lista de acervo' : '') });
+    };
+    for (const l of lojasAdj) por('acervodejogos', l.chave, URL_FONTE.acervodejogos(l.chave), l.nome, l.uf);
+    for (const l of lojasRejoy) por('rejoy', l.chave, URL_FONTE.rejoy(l.chave), l.nome, l.uf);
+    // Na Ludopedia, lista declarada como acervo vem antes da coleção de um usuário homônimo
+    // (que pode ser pessoa física): no empate, fica a lista.
+    for (const l of listas) if (/acervo|alug|loca/i.test(l.titulo)) por('ludopedia', `lista${l.id}`, l.url, l.titulo, '', 0.1);
+    for (const u of usuarios) por('ludopedia', slug(u.usuario), `https://ludopedia.com.br/colecao?usuario=${encodeURIComponent(u.usuario)}&lista=colecao`, u.nome, '');
+    const melhor = new Map();
+    for (const c of cands.sort((a, b) => b.semelhanca - a.semelhanca)) if (!melhor.has(`${c.fonte}:${c.chave}`)) melhor.set(`${c.fonte}:${c.chave}`, c);
+    // Uma loja por plataforma: a mais parecida é aceita; as demais vão conferir.
+    const aceitas = new Set();
+    return [...melhor.values()].map((c) => {
+      if (c.semelhanca < ACEITE) return c;
+      if (aceitas.has(c.fonte)) return { ...c, semelhanca: Math.min(c.semelhanca, 0.7), criterio: `${c.criterio}; outra loja da mesma plataforma é mais parecida` };
+      aceitas.add(c.fonte);
+      return c;
+    });
+  }
+
+  // Acervo já conhecido (ACERVOS) da casa entra como achado e prevalece na sua plataforma:
+  // o mesmo endereço achado por outro nome sai, e outra loja aceita na plataforma vai conferir.
+  function juntarConhecidos(casa, cands) {
+    const meus = ACERVOS.filter((a) => casaDoAcervo(a) === casa);
+    const url = (u) => decodeURIComponent(u).toLowerCase();
+    const urls = new Set(meus.map((a) => url(a.url)));
+    const fontes = new Set(meus.map((a) => a.fonte));
+    return [
+      ...meus.map((a) => ({ fonte: a.fonte, chave: a.chave, url: a.url, nome_fonte: a.nome, semelhanca: 1, criterio: 'acervo já conhecido' })),
+      ...cands.filter((c) => !urls.has(url(c.url)) && !meus.some((a) => a.fonte === c.fonte && a.chave === c.chave))
+        .map((c) => (fontes.has(c.fonte) && c.semelhanca >= ACEITE ? { ...c, semelhanca: 0.7, criterio: `${c.criterio}; a casa já tem acervo conhecido nesta plataforma` } : c)),
+    ];
+  }
+
+  // Endereços a sondar direto: o @ do Instagram e o nome do site, quando o catálogo não os trouxe.
+  const sondaveis = (casa) => [...new Set([slug(casa.ig), slug(String(casa.site || '').split('.')[0])].filter((x) => x.length >= 4))];
+
+  async function varrer(casas = CASAS) {
+    const achados = kit.ler(CHAVE_ACHADOS, {});
+    const erros = [];
+    const passo = (t, f) => { status(t); kit.progresso('varredura', f, t); };
+    const tentar = async (rotulo, fn, padrao) => { try { return await fn(); } catch (e) { erros.push(`${rotulo}: ${e.message}`); return padrao; } };
+    passo('Acervo de Jogos: lista de lojas…', 0.02);
+    const lojasAdj = await tentar('Acervo de Jogos', async () => lerLojasAcervoDeJogos(await pedir('https://www.acervodejogos.com.br/companies')), []);
+    const ufs = new Set(casas.map((c) => c.uf));
+    const cidades = (await tentar('rejoy', async () => lerCidadesRejoy(await pedir('https://www.rejoy.com.br/locadoras')), [])).filter((c) => ufs.has(c.uf));
+    const lojasRejoy = [];
+    for (const [i, c] of cidades.entries()) {
+      if (kit.parar) throw new Error('interrompido');
+      passo(`rejoy: ${c.cidade}/${c.uf} (${i + 1} de ${cidades.length})`, 0.05 + 0.25 * (i / (cidades.length || 1)));
+      lojasRejoy.push(...await tentar(`rejoy ${c.cidade}`, async () => lerLocadorasRejoy(await pedir(`https://www.rejoy.com.br/locadoras?cidade=${encodeURIComponent(c.cidade)}&uf=${c.uf}`)), []));
+      await esperar(sortear([400, 800]));
+    }
+    for (const [i, casa] of casas.entries()) {
+      if (kit.parar) throw new Error('interrompido');
+      passo(`${casa.nome} (${i + 1} de ${casas.length})`, 0.3 + 0.7 * (i / casas.length));
+      const errosCasa = [];
+      const termos = [...new Set([nucleo(casa.nome, casa.capital).slice(0, 2).join(' '), slug(casa.ig)].filter((t) => t.length >= 4))];
+      const usuarios = [], listas = [];
+      for (const t of termos) {
+        try {
+          usuarios.push(...lerUsuariosLudopedia(await pedir(`https://ludopedia.com.br/search_user?search=${encodeURIComponent(t)}`)));
+          await esperar(sortear([700, 1300]));
+          listas.push(...lerListasLudopedia(await pedir(`https://ludopedia.com.br/listas?search=${encodeURIComponent(t)}`)));
+          await esperar(sortear([700, 1300]));
+        } catch (e) { errosCasa.push(`Ludopedia: ${e.message}`); }
+      }
+      const cands = casar(casa, { lojasAdj, lojasRejoy, usuarios, listas });
+      for (const fonte of ['acervodejogos', 'rejoy']) {
+        if (cands.some((x) => x.fonte === fonte && x.semelhanca >= ACEITE)) continue;
+        for (const c of sondaveis(casa)) {
+          if (cands.some((x) => x.fonte === fonte && x.chave === c)) continue;
+          try {
+            if (await existe(URL_FONTE[fonte](c))) cands.push({ fonte, chave: c, url: URL_FONTE[fonte](c), nome_fonte: c, semelhanca: 1, criterio: 'endereço do Instagram ou do site existe na plataforma' });
+          } catch (e) { errosCasa.push(`${PLATAFORMA[fonte]} ${c}: ${e.message}`); }
+          await esperar(sortear([250, 500]));
+        }
+      }
+      achados[casa.id] = { em: Date.now(), cands: juntarConhecidos(casa, cands), erros: errosCasa };
+      kit.gravar(CHAVE_ACHADOS, achados);
+    }
+    for (const casa of casas) if (erros.length && achados[casa.id]) achados[casa.id].erros = [...erros, ...achados[casa.id].erros];
+    kit.gravar(CHAVE_ACHADOS, achados);
+    kit.progresso('varredura', null);
+    mostrarVarredura(casas);
+    baixarVarredura();
+    refazerMenu();
+  }
+
+  // Situação da casa na varredura (dicionário §4.5): coletar (achou acervo), vazia (nenhum
+  // nas três plataformas) ou refazer (algum pedido falhou e nada foi achado).
+  function situacaoDaCasa(a) {
+    if (!a) return 'coletar: ainda não procurada';
+    if (a.cands.some((c) => c.semelhanca >= ACEITE)) return 'coletar';
+    return a.erros?.length ? `refazer: ${a.erros[0]}` : 'vazia';
+  }
+
+  const COLS_VARREDURA = ['estabelecimento', 'capital', 'uf', 'instagram', 'fonte', 'url_fonte', 'nome_na_fonte', 'semelhanca', 'criterio', 'aceito', 'situacao', 'data_coleta'];
+
+  // Uma linha por casa e acervo achado (casa com mais de um acervo tem mais de uma linha;
+  // contagem não exclusiva) e uma linha sem fonte para a casa sem nenhum achado.
+  function linhasVarredura(achados = kit.ler(CHAVE_ACHADOS, {})) {
+    return CASAS.flatMap((casa) => {
+      const a = achados[casa.id];
+      const base = { estabelecimento: casa.nome, capital: casa.capital, uf: casa.uf, instagram: casa.ig, situacao: situacaoDaCasa(a), data_coleta: a ? new Date(a.em).toLocaleDateString('sv-SE') : '' };
+      const cs = a?.cands || [];
+      return cs.length ? cs.map((c) => ({ ...base, fonte: c.fonte, url_fonte: c.url, nome_na_fonte: c.nome_fonte, semelhanca: String(c.semelhanca).replace('.', ','), criterio: c.criterio, aceito: c.semelhanca >= ACEITE ? 'sim' : 'conferir' }))
+        : [{ ...base, fonte: '', url_fonte: '', nome_na_fonte: '', semelhanca: '', criterio: '', aceito: '' }];
+    });
+  }
+
+  function baixarVarredura() {
+    kit.baixarArquivo(`${hoje()}_acervos_varredura.csv`, kit.csv(linhasVarredura(), COLS_VARREDURA));
+    if (el.bVarredura) kit.piscar(el.bVarredura);
+  }
+
+  function mostrarVarredura(casas = CASAS) {
+    const achados = kit.ler(CHAVE_ACHADOS, {});
+    const sits = casas.map((c) => situacaoDaCasa(achados[c.id]));
+    const com = sits.filter((s) => s === 'coletar').length;
+    const aceitos = casas.flatMap((c) => (achados[c.id]?.cands || []).filter((x) => x.semelhanca >= ACEITE));
+    const conferir = casas.reduce((n, c) => n + (achados[c.id]?.cands || []).filter((x) => x.semelhanca < ACEITE).length, 0);
+    const refazer = sits.filter((s) => s.startsWith('refazer')).length;
+    kit.resumo({
+      titulo: `${com} de ${casas.length} casas com acervo online`,
+      sub: 'Acervo de Jogos, rejoy e Ludopedia',
+      linhas: Object.keys(PLATAFORMA).map((f) => [aceitos.filter((x) => x.fonte === f).length, PLATAFORMA[f]]),
+      avisos: [conferir ? `${conferir} achados parecidos para conferir no CSV` : '', refazer ? `${refazer} casas com pedido falho: procurar de novo` : ''],
+      tipo: refazer ? 'alerta' : 'ok',
+    });
+  }
+
   // ---------- menu ----------
   const estadoAcervo = (a, feitos = {}, marcas = {}) => {
     if (marcas[a.chave] === true) return 'ok';
     if (marcas[a.chave] === false) return 'falta';
+    if (a.semAlvo) return a.varrida ? 'ok' : 'falta';
     const s = String(feitos[a.chave]?.situacao || '');
     return s.startsWith('refazer') ? 'falha' : s ? 'ok' : 'falta';
   };
   const estadoDoAlvo = (a) => estadoAcervo(a, kit.ler(CHAVE_FEITOS, {}), kit.ler(CHAVE_MARCAS, {}));
 
-  function proximoAcervo(idAtual, feitos = {}, marcas = {}) {
-    const i0 = ACERVOS.findIndex((a) => a.id === idAtual);
-    const atual = ACERVOS[i0] || ACERVOS[0];
-    const ordem = [...ACERVOS.slice(i0 + 1), ...ACERVOS.slice(0, Math.max(i0, 0))]
-      .filter((a) => a.id !== idAtual && estadoAcervo(a, feitos, marcas) !== 'ok');
-    return ordem.find((a) => a.fonte === atual.fonte) || ordem[0] || null;
+  // Casa de um acervo conhecido (ACERVOS): a mais parecida, se passar do aceite.
+  function casaDoAcervo(a) {
+    let melhor = null, s = 0;
+    for (const c of CASAS) { const p = parecido(c, a.nome, a.chave).s; if (p > s) { s = p; melhor = c; } }
+    return s >= ACEITE ? melhor : null;
+  }
+
+  // Itens do menu: cada acervo (conhecido ou achado na varredura) de cada casa, por capital;
+  // a casa sem acervo aparece uma vez, sem endereço (✓ depois de procurada, ○ antes).
+  function alvos(achados = kit.ler(CHAVE_ACHADOS, {})) {
+    const lista = [], vistos = new Set();
+    const novo = (a) => { const k = `${a.fonte}:${a.chave}`; if (vistos.has(k)) return false; vistos.add(k); return true; };
+    const doCasa = new Map(ACERVOS.map((a) => [a.id, casaDoAcervo(a)]));
+    for (const casa of CASAS) {
+      const meus = [
+        ...ACERVOS.filter((a) => doCasa.get(a.id) === casa),
+        ...(achados[casa.id]?.cands || []).filter((c) => c.semelhanca >= ACEITE)
+          .map((c) => ({ id: `${c.fonte}:${c.chave}`, chave: c.chave, fonte: c.fonte, url: c.url })),
+      ].filter(novo);
+      for (const a of meus) lista.push({ ...a, nome: casa.nome, casa: casa.id, capital: casa.capital });
+      if (!meus.length) lista.push({ id: `casa:${casa.id}`, chave: `casa:${casa.id}`, nome: casa.nome, casa: casa.id, capital: casa.capital, fonte: '', url: '', semAlvo: true, varrida: !!achados[casa.id] && !situacaoDaCasa(achados[casa.id]).startsWith('refazer') });
+    }
+    for (const a of ACERVOS) if (novo(a)) lista.push({ ...a, capital: 'Fora do B1' });
+    return lista;
+  }
+
+  function proximoAcervo(idAtual, feitos = {}, marcas = {}, lista = ACERVOS) {
+    const i0 = lista.findIndex((a) => a.id === idAtual);
+    const atual = lista[i0] || lista[0];
+    const ordem = [...lista.slice(i0 + 1), ...lista.slice(0, Math.max(i0, 0))]
+      .filter((a) => a.id !== idAtual && a.url && estadoAcervo(a, feitos, marcas) !== 'ok');
+    return ordem.find((a) => (a.capital ?? a.fonte) === (atual.capital ?? atual.fonte)) || ordem[0] || null;
   }
 
   function abrirAcervo(a) {
-    kit.gravar(CHAVE_ABRIR, { id: a.id, em: Date.now() });
+    kit.gravar(CHAVE_ABRIR, { id: a.id, chave: a.chave, nome: a.nome, fonte: a.fonte, em: Date.now() });
     location.href = a.url;
   }
 
@@ -1080,20 +1451,27 @@
     el.bTxt.hidden = alvo.fonte !== 'ludopedia';
   }
 
-  function montarPainel() {
-    const { botao, linha, secao, selo, criar } = kit;
-    menu = kit.menuAlvos({
-      itens: () => ACERVOS, grupo: (a) => PLATAFORMA[a.fonte], unidade: 'acervos', estadoDe: estadoDoAlvo,
-      atual: () => alvoDaPagina()?.id || ACERVOS[0].id,
-      detalhe: (a, e) => { const f = kit.ler(CHAVE_FEITOS, {})[a.chave]; return f ? (e === 'falha' ? 'refazer' : `${f.n} títulos`) : ''; },
+  function criarMenu() {
+    const lista = alvos();
+    return kit.menuAlvos({
+      itens: () => lista, grupo: (a) => a.capital || PLATAFORMA[a.fonte], unidade: 'acervos', estadoDe: estadoDoAlvo,
+      nome: (a) => (a.semAlvo ? a.nome : `${a.nome} · ${PLATAFORMA[a.fonte]}`),
+      atual: () => alvoDaPagina(location, lista)?.id || kit.ler(CHAVE_ULTIMO, '') || lista[0].id,
+      detalhe: (a, e) => {
+        if (a.semAlvo) return a.varrida ? 'sem acervo online' : 'procurar';
+        const f = kit.ler(CHAVE_FEITOS, {})[a.chave];
+        return f ? (e === 'falha' ? 'refazer' : `${f.n} títulos`) : '';
+      },
       aoEscolher: (a) => {
-        if (alvoDaPagina()?.id === a.id) { menu.rotular(); return; }
+        kit.gravar(CHAVE_ULTIMO, a.id);
         if (kit.ocupado) { status('Espere a leitura em curso terminar (ou pare).', 'alerta'); menu.rotular(); return; }
+        if (a.semAlvo) { const casa = CASAS.find((c) => c.id === a.casa); kit.executar(() => varrer([casa])); return; }
+        if (alvoDaPagina(location, lista)?.id === a.id) { menu.rotular(); return; }
         abrirAcervo(a);
       },
       aoProximo: () => {
-        const a = proximoAcervo(alvoDaPagina()?.id, kit.ler(CHAVE_FEITOS, {}), kit.ler(CHAVE_MARCAS, {}));
-        if (!a) { status('Todos os acervos estão coletados.', 'ok'); return; }
+        const a = proximoAcervo(alvoDaPagina(location, lista)?.id || kit.ler(CHAVE_ULTIMO, ''), kit.ler(CHAVE_FEITOS, {}), kit.ler(CHAVE_MARCAS, {}), lista);
+        if (!a) { status('Todos os acervos achados estão coletados.', 'ok'); return; }
         abrirAcervo(a);
       },
       aoMarcar: (a) => {
@@ -1103,22 +1481,53 @@
         menu.rotular();
       },
     });
-    const bColetar = botao('arrow-down-tray', 'Coletar acervo', () => kit.executar(coletar), { classe: 'primario', dica: 'Lê todas as páginas do acervo e baixa o CSV (e o TXT da Ludopedia)' });
-    kit.botaoParar();
+  }
+
+  // Depois da varredura, o menu ganha os acervos achados.
+  function refazerMenu() {
+    const velho = menu.caixa;
+    menu = criarMenu();
+    velho.replaceWith(menu.caixa);
+    menu.rotular();
+  }
+
+  // "Coletar todos": abre o próximo acervo que falta e, ao terminar cada leitura, segue para
+  // o seguinte, até acabar ou o Parar.
+  function seguirCadeia() {
+    const lista = alvos();
+    const a = proximoAcervo(alvoDaPagina(location, lista)?.id, kit.ler(CHAVE_FEITOS, {}), kit.ler(CHAVE_MARCAS, {}), lista);
+    if (!a) { kit.gravar(CHAVE_CADEIA, false); status('Coletar todos: nada mais a coletar.', 'ok'); return; }
+    status(`Coletar todos: abrindo ${a.nome} (${PLATAFORMA[a.fonte]})…`);
+    abrirAcervo(a);
+  }
+
+  function montarPainel() {
+    const { botao, linha, secao, selo, criar } = kit;
+    menu = criarMenu();
+    const bColetar = botao('arrow-down-tray', 'Coletar acervo', () => kit.executar(coletar), { classe: 'primario', dica: 'Lê todas as páginas do acervo aberto e baixa o CSV (e o TXT da Ludopedia)' });
+    kit.botaoParar(() => { kit.parar = true; kit.gravar(CHAVE_CADEIA, false); status('Parando…'); });
+    const bProcurar = botao('magnifying-glass', 'Procurar', () => kit.executar(() => varrer()),
+      { classe: 'mini', dica: 'Procura as 63 casas do B1 no Acervo de Jogos, na rejoy e na Ludopedia (catálogos, busca e endereço do Instagram/site). Leva alguns minutos.' });
+    const bTodos = botao('play', 'Coletar todos', () => { kit.gravar(CHAVE_CADEIA, true); seguirCadeia(); },
+      { classe: 'mini', dica: 'Abre cada acervo achado que falta, um após o outro, e coleta sozinho' });
+    el.bVarredura = botao('queue-list', '', baixarVarredura, { classe: 'leve', dica: 'CSV da varredura: cada casa, onde foi achada, semelhança e situação' });
     el.bCsv = botao('arrow-down-tray', 'CSV', baixarCsv, { classe: 'mini', dica: 'CSV com posição, título, aluguel e situação' });
     el.bTxt = botao('document-text', 'TXT', baixarTxt, { classe: 'mini', dica: 'ludopedia_<chave>.txt, no formato que o Python lê' });
     el.selo = selo();
     el.lista = criar('div', { className: 'lista' });
-    kit.acoes = [bColetar, el.bCsv, el.bTxt];
+    kit.acoes = [bColetar, bProcurar, bTodos, el.bCsv, el.bTxt];
     const alvo = alvoDaPagina();
+    const varridas = Object.keys(kit.ler(CHAVE_ACHADOS, {})).length;
     kit.montar({
-      nome: 'Acervo', largura: 320,
+      nome: 'Acervo', largura: 330, minimizado: !alvo && !kit.ler(CHAVE_CADEIA, false),
       css: '.jogo{display:flex;gap:6px;align-items:center;font-size:12.5px;padding:2px 4px;border-radius:6px}.jogo:hover{background:var(--sup)}.jogo .pos{min-width:2.4em;text-align:right}.jogo .chip{margin-left:auto}',
       filhos: [
         menu.caixa,
+        linha([bProcurar, bTodos, el.bVarredura]),
         linha([bColetar, kit.el.parar]),
-        kit.barra('coleta'),
-        kit.el.status = criar('div', { className: 'status', textContent: alvo ? `${alvo.nome} (${PLATAFORMA[alvo.fonte]}): clique em "Coletar acervo".` : 'Escolha um acervo no seletor.' }),
+        kit.barra('varredura'), kit.barra('coleta'),
+        kit.el.status = criar('div', { className: 'status', textContent: alvo ? `${alvo.nome} (${PLATAFORMA[alvo.fonte]}): clique em "Coletar acervo".`
+          : varridas ? 'Escolha um acervo no seletor ou "Coletar todos".' : 'Clique em "Procurar" para achar os acervos das casas do B1.' }),
         linha([kit.rotulo('Baixar'), el.bCsv, el.bTxt]),
         secao('titulos', ['Títulos', el.selo], [el.lista]),
       ],
@@ -1127,14 +1536,19 @@
     menu.rotular();
   }
 
-  // Acervo aberto pelo menu: coleta sozinho quando a página carrega.
+  // Acervo aberto pelo menu (ou pela cadeia): coleta sozinho quando a página carrega.
   function seguirPedido() {
     const p = kit.ler(CHAVE_ABRIR, null);
     if (!p) return;
     kit.gravar(CHAVE_ABRIR, null);
-    if (Date.now() - p.em > 2 * 60 * 1000 || alvoDaPagina()?.id !== p.id) return;
+    if (Date.now() - p.em > 2 * 60 * 1000 || alvoDaPagina()?.id !== p.id) { kit.gravar(CHAVE_CADEIA, false); return; }
     kit.minimizar(false);
-    setTimeout(() => kit.executar(coletar), 1500);
+    setTimeout(async () => {
+      const ok = await kit.executar(coletar);
+      if (!kit.ler(CHAVE_CADEIA, false)) return;
+      if (!ok) { kit.gravar(CHAVE_CADEIA, false); status('Coletar todos parou neste acervo.', 'alerta'); return; }
+      setTimeout(seguirCadeia, sortear([2000, 3500]));
+    }, 1500);
   }
 
   console.info('[Coletor de acervos] carregado');

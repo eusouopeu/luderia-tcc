@@ -21,7 +21,7 @@ function carregar(contexto = {}) {
   };
   ambiente.XMLHttpRequest.prototype.send = () => {};
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Coletor IG] carregado');"))
-    + 'Object.assign(globalThis.__test, { capturarPerfil, capturados, lerUsuarios, csv, filaSnowballAtiva, POP_IG, estadoPerfil, proximoPerfil });})();';
+    + 'Object.assign(globalThis.__test, { capturarPerfil, capturados, lerUsuarios, csv, filaSnowballAtiva, POP_IG, estadoPerfil, proximoPerfil, apiSumiu });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'instagram_coletor.user.js' });
   return ambiente.__test;
 }
@@ -70,4 +70,15 @@ test('menu dos perfis: coleta com situação "refazer" aparece como falha, e a m
   assert.equal(t.estadoPerfil(a.u, { [a.u]: { modo: 'periodo', situacao: 'refazer: período não coberto' } }, {}), 'falha');
   assert.equal(t.estadoPerfil(a.u, { [a.u]: { modo: 'periodo', situacao: 'vazia' } }, {}), 'ok');
   assert.equal(t.estadoPerfil(a.u, { [a.u]: { situacao: 'refazer: x' } }, { [a.u]: true }), 'ok');
+});
+
+test('API desativada (404, HTML no lugar de JSON) leva à coleta pela página; 429 e rede não', () => {
+  const t = carregar();
+  assert.equal(t.apiSumiu({ http: 404 }), true);
+  assert.equal(t.apiSumiu({ naoJson: true }), true);
+  assert.equal(t.apiSumiu({ http: 429 }), false);
+  assert.equal(t.apiSumiu(new Error('Failed to fetch')), false);
+  t.capturarPerfil({ username: 'Casa', full_name: 'Casa', follower_count: 10, is_private: true, category_name: 'Bar' });
+  assert.equal(t.capturados.get('casa').privado, 'sim');
+  assert.equal(t.capturados.get('casa').categoria, 'Bar');
 });

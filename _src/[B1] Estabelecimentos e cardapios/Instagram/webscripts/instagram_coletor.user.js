@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-2
+// @version      2026.11.12-3
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -20,6 +20,9 @@
  *    12 por vez, com pausa aleatória entre pedidos. Mais rápido que rolar.
  *    "Coletar período (API)": só os posts até a data "De" (2-3 pedidos por perfil).
  *    "Histórico completo (API)": vai até o primeiro post; use só para essa data.
+ *    Se a API antiga falhar como endpoint desativado (404, HTML no lugar de JSON; visto
+ *    em 12/11/2026), a coleta passa sozinha a rolar a grade do perfil aberto e ler as
+ *    respostas GraphQL do próprio site; a fila abre cada perfil e continua ao carregar.
  *  - Menu dos perfis (mesmo padrão do coletor de preços): o seletor do topo traz os 60
  *    perfis das casas do B1 por capital, com ✓ coletado pela API, ◐ só dados do perfil e
  *    ○ falta. Escolher um abre o perfil e coleta sozinho (no modo do seletor da fila: só o
@@ -261,6 +264,8 @@
       site: u.external_url || u.bio_links?.find((b) => b?.url)?.url || '',
       bio: typeof u.biography === 'string' ? u.biography : '',
       seguindo: u.edge_follow?.count ?? u.following_count ?? '',
+      categoria: u.category_name || u.business_category_name || u.category || '',
+      privado: typeof u.is_private === 'boolean' ? (u.is_private ? 'sim' : 'não') : '',
     };
     // Só registra quando veio algo além do nome (dono de post traz só username e nome).
     if (novo.seguidores !== '' || novo.site) novo.coletado_em = dataHora(Date.now() / 1000);
@@ -414,7 +419,8 @@
       },
     });
     if (!r.ok) throw Object.assign(new Error(`HTTP ${r.status} em ${caminho.split('?')[0]}`), { http: r.status });
-    const j = await r.json();
+    // Endpoint desativado costuma responder com a página HTML de "não encontrada".
+    const j = await r.json().catch(() => { throw Object.assign(new Error(`resposta não é JSON em ${caminho.split('?')[0]}`), { naoJson: true }); });
     if (j.status === 'fail') throw new Error(j.message || 'resposta "fail" do Instagram');
     return j;
   }
@@ -573,8 +579,67 @@
   //   (não fixado) anterior à data "De". Poucos pedidos por perfil; não mexe no cursor.
   // modo 'completo': vai até o primeiro post (data do primeiro post); continua do
   //   cursor salvo, se houver.
+  // A API antiga (/api/v1/users/web_profile_info/ e /api/v1/feed/user/) responde 404 desde
+  // nov/2026, ao menos sem login: o site passou a pedir tudo por /api/graphql. Falha desse
+  // tipo marca a API como fora por 6 h e a coleta segue pela própria página (rolagem da
+  // grade, com as respostas GraphQL que o interceptador já lê).
+  const CHAVE_API_FORA = 'igc-api-fora';
+  const HORAS_API_FORA = 6;
+  const apiSumiu = (e) => !!e && (e.naoJson || [400, 401, 403, 404, 410].includes(e.http));
+  const apiFora = () => Date.now() - (lerLs(CHAVE_API_FORA, 0) || 0) < HORAS_API_FORA * 3600e3;
+
   async function coletarPerfil(user, modo = 'completo') {
-    const info = (await apiPaciente(`/api/v1/users/web_profile_info/?username=${encodeURIComponent(user)}`)).data.user;
+    if (!apiFora()) {
+      try { return await coletarPelaApi(user, modo); } catch (e) {
+        if (!apiSumiu(e)) throw e;
+        gravarLs(CHAVE_API_FORA, Date.now());
+        status(`API do Instagram fora (${e.message}); coletando pela página.`, 'alerta');
+      }
+    }
+    return coletarPelaPagina(user, modo);
+  }
+
+  // Coleta pela página aberta: rola a grade até cobrir o período (modo 'periodo') ou chegar
+  // ao primeiro post (modo 'completo'). Os dados do perfil vêm das respostas do site e do
+  // cabeçalho (dadosPerfil); exige o perfil aberto.
+  async function coletarPelaPagina(user, modo) {
+    const periodo = modo === 'periodo';
+    if (periodo && !dataDe) throw new Error('defina a data "De" do período antes de coletar só o período');
+    if (perfilAtual() !== user) throw new Error(`abra o perfil @${user} para coletar pela página`);
+    lerDadosEmbutidos();
+    const privado = /esta conta é privada|this account is private/i.test(document.querySelector('main')?.textContent || '');
+    let altura = 0, semMudanca = 0;
+    rolando = true;
+    try {
+      while (perfilAtual() === user) {
+        if (parar) throw new Error('interrompido');
+        const ps = postsDe(user);
+        const total = totalDe(user);
+        const inicio = periodo && Date.parse(`${dataDe}T00:00:00`) / 1000;
+        const frac = periodo ? (ps[0] ? (Date.now() / 1000 - ps[0].taken_at) / (Date.now() / 1000 - inicio) : 0) : total ? ps.length / total : true;
+        kit.progresso('coleta', frac === true ? true : Math.min(0.99, frac), `@${user}: ${ps.length}${total ? ` de ${total}` : ''} posts (página)`);
+        status(`@${user} pela página: ${ps.length}/${total ?? '?'} posts · mais antigo ${ps[0] ? dataCurta(ps[0].taken_at) : '-'}`);
+        if (privado || periodoCoberto(user, ps) && (periodo || (total != null && ps.length >= total))) break;
+        if (semMudanca >= 8) break;
+        window.scrollTo(0, document.documentElement.scrollHeight);
+        await esperar(sortear([1200, 2000]));
+        const h = document.documentElement.scrollHeight;
+        semMudanca = h === altura ? semMudanca + 1 : 0;
+        altura = h;
+      }
+    } finally { rolando = false; }
+    if (perfilAtual() !== user) throw new Error('saiu do perfil durante a coleta');
+    const cap = capturados.get(user) || {};
+    perfis.set(user, {
+      perfil: user, categoria: cap.categoria || '', privado: privado || cap.privado === 'sim' ? 'sim' : 'não',
+      seguindo: cap.seguindo ?? '', bio: cap.bio || '', fonte_coleta: 'página',
+      coletado_em: dataHora(Date.now() / 1000),
+    });
+    if (privado) status(`@${user} é privado; só dados do perfil.`);
+  }
+
+  async function coletarPelaApi(user, modo) {
+    const info =(await apiPaciente(`/api/v1/users/web_profile_info/?username=${encodeURIComponent(user)}`)).data.user;
     if (typeof info.edge_owner_to_timeline_media?.count === 'number') totais.set(user, info.edge_owner_to_timeline_media.count);
     perfis.set(user, {
       perfil: user,
@@ -681,6 +746,13 @@
       for (const [i, u] of pendentes.entries()) {
         status(`Fila ${feitos.length + 1}/${usuarios.length}: @${u}`);
         kit.progresso('fila', feitos.length / usuarios.length, `Fila: @${u} (${feitos.length + 1} de ${usuarios.length})`);
+        // Sem a API, a coleta é pela página: abre o perfil e a fila continua ao carregar.
+        if (apiFora() && perfilAtual() !== u) {
+          gravarLs(CHAVE_ABRIR, { u, em: Date.now(), fila: true });
+          status(`Abrindo @${u}…`);
+          location.href = `https://www.instagram.com/${u}/`;
+          await new Promise(() => {}); // a página vai recarregar
+        }
         try { await coletarPerfil(u, modo); } catch (e) { registrarColeta(u, modo, `refazer: ${e.message}`); throw e; }
         registrarColeta(u, modo);
         feitos.push(u);
@@ -883,6 +955,14 @@
     if (!pedido) return;
     gravarLs(CHAVE_ABRIR, null);
     if (Date.now() - pedido.em > 2 * 60 * 1000 || perfilAtual() !== pedido.u || filaSnowballAtiva()) return;
+    const fila = pedido.fila && lerFila();
+    if (fila) {
+      el.fila.value = fila.todos.join('\n');
+      el.modoFila.valor = fila.modo || 'completo';
+      await executar(() => coletarFila(fila.todos, fila.modo || 'completo'));
+      rotularPerfis();
+      return;
+    }
     const modo = el.modoFila?.valor || 'periodo';
     await executar(() => coletarPerfil(pedido.u, modo).then(() => concluirPerfil(pedido.u, modo)));
     rotularPerfis();
@@ -2267,7 +2347,7 @@
     ], 'compacta');
 
     const bApi = botao('arrow-down-tray', 'Coletar período', comPerfil((u) => executar(() => coletarPerfil(u, 'periodo').then(() => concluirPerfil(u, 'periodo')))),
-      { classe: 'primario', dica: 'Pela API: dados do perfil e posts até a data "De" (2 a 3 pedidos). Não chega ao primeiro post.' });
+      { classe: 'primario', dica: 'Dados do perfil e posts até a data "De": pela API (2 a 3 pedidos) ou, se ela falhar, rolando a grade. Não chega ao primeiro post.' });
     const bHistorico = botao('clock', '', comPerfil((u) => executar(() => coletarPerfil(u, 'completo').then(() => concluirPerfil(u, 'completo')))),
       { dica: 'Histórico completo pela API, até o primeiro post. Muitos pedidos; continua de onde parou.' });
     kit.botaoParar(() => { parar = true; status('Parando…'); });
