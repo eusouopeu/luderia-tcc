@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-3
+// @version      2026.11.12-4
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -23,6 +23,8 @@
  *    Se a API antiga falhar como endpoint desativado (404, HTML no lugar de JSON; visto
  *    em 12/11/2026), a coleta passa sozinha a rolar a grade do perfil aberto e ler as
  *    respostas GraphQL do próprio site; a fila abre cada perfil e continua ao carregar.
+ *  - Bio do perfil: campo "Bio" no painel e colunas bio/fonte_bio no CSV de perfis, da API,
+ *    das respostas do site (biography) ou da meta description da página, nessa ordem.
  *  - Menu dos perfis (mesmo padrão do coletor de preços): o seletor do topo traz os 60
  *    perfis das casas do B1 por capital, com ✓ coletado pela API, ◐ só dados do perfil e
  *    ○ falta. Escolher um abre o perfil e coleta sozinho (no modo do seletor da fila: só o
@@ -282,7 +284,7 @@
   function ingerirTexto(t) {
     // Posts têm `taken_at`; os dados do perfil (seguidores, links da bio) vêm em
     // blocos à parte, sem posts, e também precisam passar.
-    if (!t || !/taken_at|bio_links|follower_count|media_count|external_url/.test(t)) return;
+    if (!t || !/taken_at|bio_links|biography|follower_count|media_count|external_url/.test(t)) return;
     try { ingerir(JSON.parse(t.replace(/^for \(;;\);/, ''))); agendarSelos(); } catch (_) { /* não é JSON */ }
   }
 
@@ -443,7 +445,7 @@
     'n_colab_outro_dono_periodo', 'n_sem_dono_periodo',
     'curtidas_periodo', 'n_posts_periodo_sem_curtidas', 'curtidas_periodo_com_compart', 'n_posts_periodo_com_compart_sem_curtidas',
     'comentarios_medidos_de', 'comentarios_medidos_ate', 'periodo_pronto', 'pendencias_periodo', 'primeiro_post_definitivo',
-    'indicios_aluguel', 'indicios_venda', 'indicios_precificacao', 'precos_citados_precificacao', 'bio', 'coletado_em'];
+    'indicios_aluguel', 'indicios_venda', 'indicios_precificacao', 'precos_citados_precificacao', 'bio', 'fonte_bio', 'coletado_em'];
   // curtidas_*: soma das curtidas no período (posts com curtidas ocultas ficam em *_sem_curtidas).
   // comentarios_medidos_de/ate: quando as contagens de comentários do período foram lidas.
   // periodo_pronto: "sim" quando os campos do período são definitivos (ver prontidao()).
@@ -483,6 +485,7 @@
       seguidores: d.seguidores.v, fonte_seguidores: d.seguidores.f,
       n_posts_declarado: d.posts.v, fonte_n_posts: d.posts.f,
       site: d.site.v, fonte_site: d.site.f,
+      bio: d.bio.v, fonte_bio: d.bio.f,
       n_posts_coletados: ps.length,
       n_posts_proprios: ps.filter((x) => x.perfil === user).length,
       grade_completa: total != null && ps.length >= total ? 'sim' : 'não',
@@ -632,7 +635,7 @@
     const cap = capturados.get(user) || {};
     perfis.set(user, {
       perfil: user, categoria: cap.categoria || '', privado: privado || cap.privado === 'sim' ? 'sim' : 'não',
-      seguindo: cap.seguindo ?? '', bio: cap.bio || '', fonte_coleta: 'página',
+      seguindo: cap.seguindo ?? '', fonte_coleta: 'página',
       coletado_em: dataHora(Date.now() / 1000),
     });
     if (privado) status(`@${user} é privado; só dados do perfil.`);
@@ -1882,6 +1885,10 @@
     const metaValida = titulo.toLowerCase().includes(`@${u})`);
     const descricao = metaValida ? (meta('og:description') || document.querySelector('meta[name="description"]')?.content || '') : '';
     const nomeMeta = metaValida ? titulo.split(' (@')[0].trim() : '';
+    // A meta description traz a bio inteira no fim: '… (@perfil) no Instagram: "bio"'.
+    // Só a meta name="description" tem a bio (a og:description não); vale se citar este @.
+    const descBio = metaValida ? document.querySelector('meta[name="description"]')?.content || '' : '';
+    const bioMeta = descBio.toLowerCase().includes(`(@${u})`) ? descBio.match(/(?:no|on) Instagram:\s*"([\s\S]*)"\s*$/)?.[1] || '' : '';
     const segMetaTxt = descricao.match(/^([\d.,]+\s*(?:mil|mi|k|m)?)\s*(?:followers|seguidores)/i)?.[1] || '';
     const cab = naPagina ? document.querySelector('header') : null;
     // No cabeçalho, o número abreviado ("60,5 mil") traz o exato no atributo title.
@@ -1917,6 +1924,7 @@
       seguidores: escolher([api.seguidores, 'API'], [cap.seguidores, 'JSON'],
         [tituloSeg.replace(/\D/g, ''), 'cabeçalho'], [inteiro(segMetaTxt), aprox(segMetaTxt) ? 'meta ≈' : 'meta']),
       site: escolher([api.site, 'API'], [cap.site, 'JSON'], [siteDom, siteDomAprox ? 'cabeçalho ≈' : 'cabeçalho']),
+      bio: escolher([api.bio, 'API'], [cap.bio, 'JSON'], [bioMeta.trim(), 'meta']),
       posts: escolher([api.n_posts_declarado, 'API'], [totais.get(u), 'JSON'],
         [inteiro(postsCab), aprox(postsCab) ? 'cabeçalho ≈' : 'cabeçalho'], [inteiro(postsMeta), aprox(postsMeta) ? 'meta ≈' : 'meta'], [totalPagina.get(u), 'página (salvo)']),
     };
@@ -1940,7 +1948,7 @@
     // Contagem que alimenta os campos copiáveis, conforme o toggle de compartilhados.
     const per = resumo && (contarCompartilhados ? resumo.comCompartilhados : resumo.proprios);
     const valores = {
-      nome: d.nome, url: { v: `https://www.instagram.com/${u}/`, f: '' }, site: d.site,
+      nome: d.nome, url: { v: `https://www.instagram.com/${u}/`, f: '' }, site: d.site, bio: d.bio,
       seguidores: d.seguidores,
       primeiro: { v: ps.length ? new Date(ps[0].taken_at * 1000).toLocaleDateString('pt-BR') : '', f: '' },
       // Total declarado pelo Instagram no perfil, não o nº de posts carregados.
@@ -2079,8 +2087,7 @@
   let cacheIndicios = { chave: '', valor: null };
 
   function indicios(u, ps) {
-    const api = perfis.get(u) || {};
-    const bio = api.bio || capturados.get(u)?.bio || '';
+    const bio = dadosPerfil(u).bio.v;
     const chave = `${u}|${ps.length}|${bio.length}`;
     if (cacheIndicios.chave === chave) return cacheIndicios.valor;
     const textos = [
@@ -2221,7 +2228,8 @@
     .val .verde[aria-pressed=false],.val .vermelho[aria-pressed=false]{background:transparent;color:var(--suave)}
     .campo{display:grid;grid-template-columns:38% minmax(0,1fr) auto;gap:4px;margin:3px 0;align-items:center}
     .campo .rot{font-size:11.5px;color:var(--suave);line-height:1.25}
-    .campo input{padding:4px 8px;font-size:12.5px}
+    .campo input,.campo textarea{padding:4px 8px;font-size:12.5px}
+    .campo textarea{resize:vertical;min-height:0;white-space:pre-wrap}
     .campo .ico{width:28px;height:28px}
     .fonte{font-style:italic;cursor:help}
     .aviso-campo{color:var(--alerta)}`;
@@ -2364,8 +2372,9 @@
 
     // ----- dados do perfil (campos copiáveis) -----
     el.campos = {}; el.fontes = {}; el.rotulos = {};
-    const campo = (chave, rotulo, extra) => {
-      const entrada = criar('input', { type: 'text', readOnly: true, 'aria-label': rotulo });
+    const campo = (chave, rotulo, extra, linhas = 0) => {
+      const entrada = linhas ? criar('textarea', { readOnly: true, rows: linhas, 'aria-label': rotulo })
+        : criar('input', { type: 'text', readOnly: true, 'aria-label': rotulo });
       el.campos[chave] = entrada;
       el.fontes[chave] = criar('span', { className: 'fonte' });
       el.rotulos[chave] = document.createTextNode(rotulo);
@@ -2395,6 +2404,7 @@
       campo('seguidores', 'Seguidores'),
       campo('total', 'Posts declarados no perfil'),
       campo('site', 'Site / Linktree'),
+      campo('bio', 'Bio', null, 3),
       campo('url', 'URL do Instagram'),
       el.blocoPeriodo,
     ]);

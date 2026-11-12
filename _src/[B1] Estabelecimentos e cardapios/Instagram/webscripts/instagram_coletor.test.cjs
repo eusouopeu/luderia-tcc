@@ -82,3 +82,9 @@ test('API desativada (404, HTML no lugar de JSON) leva à coleta pela página; 4
   assert.equal(t.capturados.get('casa').privado, 'sim');
   assert.equal(t.capturados.get('casa').categoria, 'Bar');
 });
+
+test('bio: capturada da biography das respostas do site', () => {
+  const t = carregar();
+  t.capturarPerfil({ username: 'casa', biography: 'Jogos e lanches\nReservas no site', follower_count: 1 });
+  assert.equal(t.capturados.get('casa').bio, 'Jogos e lanches\nReservas no site');
+});
