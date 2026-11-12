@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 12/11/2026, à tarde. **TMin v32** no PDF; os `.md` e o modelo já têm a demanda pelo índice "Horários de pico", a faixa do Monte Carlo na Tabela 9.4 e o gasto da L31 (`.docx`, PDF e apêndices não regerados). Banca em 16/11. Escopo congelado: só entra o que muda o TMin.
+Atualizado em 12/11/2026, à tarde. **TMin v32** no PDF; os `.md` e o modelo já têm a demanda pelo índice "Horários de pico", a faixa do Monte Carlo na Tabela 9.4, o gasto da L31 e quatro limitações novas no Quadro 3.4 (`.docx`, PDF e apêndices não regerados). Banca em 16/11. Escopo congelado: só entra o que muda o TMin.
 
 ## Fazendo agora (no máximo duas frentes)
 
