@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-6
+// @version      2026.11.12-7
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas e uma fila de buscas entre portais e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -511,6 +511,22 @@
     try { return !decodeURIComponent(new URL(atual).pathname).toLowerCase().includes(b); } catch (e) { return false; }
   }
 
+  // Página n de uma busca, montada a partir da URL pedida (não da barra de endereço): se o portal
+  // trocar a URL no meio da rodada (bairro some, cidade inteira), a próxima página continua no bairro.
+  function paginaDaBusca(portal, busca, n) {
+    const u = new URL(busca);
+    if (n > 1) u.searchParams.set(paramPagina(portal), String(n)); else u.searchParams.delete(paramPagina(portal));
+    return u.toString();
+  }
+
+  // Anúncio de outro bairro numa busca por bairro (patrocinado do OLX, listagem trocada pelo portal):
+  // não é guardado. Anúncio sem bairro fica (não dá para saber).
+  function foraDoBairro(a, busca) {
+    const b = bairroDaUrl(busca);
+    const ab = slugBairro(a.bairro);
+    return !!b && !!ab && ab !== b;
+  }
+
   // " · sala": tipo da busca no rótulo, quando não é o padrão (loja/ponto), para distinguir
   // na tabela da fila as buscas do mesmo bairro.
   function tipoDaUrl(p, u) {
@@ -894,16 +910,21 @@
   let guardados = carregar();
 
   // No QuintoAndar a "página" é o número de cliques em "Ver mais" mais um (a URL não muda).
-  async function coletarPagina(pagina = paginaAtual(portal, location.href)) {
+  // Com `alvo` (a busca pedida), confere antes e depois da leitura se o portal não desviou a página
+  // (bairro sumiu da URL): desviada, nada é guardado. Anúncios de outro bairro não são guardados.
+  async function coletarPagina(pagina = paginaAtual(portal, location.href), alvo = '') {
+    if (alvo && redirecionada(alvo, location.href)) return { desviada: true, anuncios: [], lidos: 0, novos: 0, gravou: true, total: null, fora: 0 };
     await esperarCards(portal);
     await rolarAteOFim();
     const anuncios = lerPagina(portal);
+    if (alvo && redirecionada(alvo, location.href)) return { desviada: true, anuncios: [], lidos: 0, novos: 0, gravou: true, total: null, fora: 0 };
     ultimoFunil = funil(anuncios, contarCards(portal));
     guardados = carregar();
     const total = totalResultados();
-    const novos = guardar(guardados, anuncios, { busca_url: location.href, pagina, total_busca: total, data_coleta: dataLocal(), alterado_em: Date.now() });
+    const doBairro = alvo ? anuncios.filter((a) => !foraDoBairro(a, alvo)) : anuncios;
+    const novos = guardar(guardados, doBairro, { busca_url: location.href, pagina, total_busca: total, data_coleta: dataLocal(), alterado_em: Date.now() });
     const gravou = salvar(guardados);
-    return { anuncios, lidos: anuncios.length, novos, gravou, total };
+    return { anuncios, lidos: anuncios.length, novos, gravou, total, fora: anuncios.length - doBairro.length };
   }
 
   let ultimoFunil = null;
@@ -1000,10 +1021,20 @@
     if (!auto) return;
     auto.vistos = auto.vistos || [];
     const pagina = portal === 'quintoandar' ? auto.paginas + 1 : paginaAtual(portal, location.href);
+    const fila = auto.fila ? lerFila() : null;
+    const alvo = (fila?.ativa ? fila.itens[fila.i] : auto.alvo) || '';
     const inicio = Date.now();
     atualizarBotoes();
     status(`Página ${pagina}: lendo…`);
-    const { anuncios, lidos, novos, gravou, total } = await coletarPagina(pagina);
+    const { anuncios, lidos, novos, gravou, total, desviada, fora } = await coletarPagina(pagina, alvo);
+    if (desviada) {
+      // O portal levou a rodada para fora do bairro: para aqui, sem guardar a página.
+      if (fila?.ativa) { gravarAuto(null); buscaDesviada(auto); return; }
+      gravarAuto(null);
+      atualizarBotoes();
+      status(`${rotuloBusca(alvo)}: o portal desviou a busca para ${location.pathname}; a rodada parou e esta página não foi guardada.`);
+      return;
+    }
     if (!gravou) { avisarCheio(); return; }
     if (total) auto.totalBusca = Math.max(auto.totalBusca || 0, total);
     if (!lerAuto()) return; // parado durante a leitura
@@ -1018,7 +1049,7 @@
     auto.paginas += 1;
     auto.total += novos;
     gravarHist([...lerHist(), { pagina, lidos, ineditos: inedit.length, novos, seg: Math.round((Date.now() - inicio) / 1000) }]);
-    mostrar(`Página ${pagina}: ${lidos} lidos, ${inedit.length} inéditos na rodada, ${novos} novos no navegador.`);
+    mostrar(`Página ${pagina}: ${lidos} lidos, ${inedit.length} inéditos na rodada, ${novos} novos no navegador${fora ? `, ${fora} de outro bairro descartados` : ''}.`);
     progressoBusca(auto);
     if (lidos === 0) return concluir(auto, 'página vazia');
     if (inedit.length === 0) return concluir(auto, 'página sem anúncio inédito');
@@ -1036,7 +1067,7 @@
       passoAutomatico();
       return;
     }
-    location.href = proximaPagina(portal, location.href);
+    location.href = alvo && portalDe(new URL(alvo).hostname) === portal ? paginaDaBusca(portal, alvo, pagina + 1) : proximaPagina(portal, location.href);
   }
 
   // ---------- fila em execução (sobrevive à troca de página e de portal pelo Tampermonkey) ----------
@@ -1139,13 +1170,13 @@
   // A busca aberta pela fila foi desviada pelo portal (bairro sem resultado, listagem da cidade):
   // nada é lido nem guardado; a busca fica sem coleta no menu e a fila segue para a próxima.
   let desviando = false;
-  function buscaDesviada() {
+  function buscaDesviada(auto = { vistos: [], totalBusca: null, paginas: 0 }) {
     desviando = true;
     const fila = lerFila();
     let onde = location.pathname;
     try { onde = decodeURIComponent(location.pathname); } catch (e) { /* mantém o caminho cru */ }
     status(`${rotuloBusca(fila.itens[fila.i])}: o portal desviou a busca para ${onde}; nada foi lido.`);
-    fimDaBuscaNaFila({ vistos: [], totalBusca: null, paginas: 0 }, `desviada pelo portal para ${onde}`);
+    fimDaBuscaNaFila(auto, `desviada pelo portal para ${onde}`);
   }
 
   function pausada() {

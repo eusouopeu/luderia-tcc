@@ -15,7 +15,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, BAIRROS_MENU, BAIRROS_DESTAQUE, bairroDaUrl, redirecionada, MONTAGEM_PADRAO, chaveAlvo, estadoAlvo, proximoAlvo });})();';
+    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, BAIRROS_MENU, BAIRROS_DESTAQUE, bairroDaUrl, redirecionada, paginaDaBusca, foraDoBairro, MONTAGEM_PADRAO, chaveAlvo, estadoAlvo, proximoAlvo });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'portais_aluguel.user.js' });
   return ambiente.__test;
 }
@@ -348,4 +348,16 @@ test('busca desviada pelo portal: o bairro some do caminho', () => {
   assert.equal(t.redirecionada(olx, 'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/grande-salvador?commt=6'), true);
   assert.equal(t.redirecionada(olx, 'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/graca?commt=6&o=2'), false);
   assert.equal(t.redirecionada('https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador/', 'https://www.zapimoveis.com.br/aluguel/x/'), false);
+});
+
+test('rodada presa ao bairro: próxima página pela busca pedida e anúncio de outro bairro fora', () => {
+  const olx = 'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/pituba?commt=6&commt=7&ss=100';
+  assert.equal(t.paginaDaBusca('olx', olx, 3), olx + '&o=3');
+  assert.equal(t.paginaDaBusca('olx', olx + '&o=2', 1), olx);
+  const zap = 'https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++caminho-das-arvores/?areaMinima=100&ordem=LOWEST_PRICE';
+  assert.equal(t.paginaDaBusca('zap', zap, 2), zap + '&pagina=2');
+  assert.equal(t.foraDoBairro({ bairro: 'Caminho Das Árvores' }, zap), false);
+  assert.equal(t.foraDoBairro({ bairro: 'Itaigara' }, zap), true);
+  assert.equal(t.foraDoBairro({ bairro: '' }, zap), false);
+  assert.equal(t.foraDoBairro({ bairro: 'Centro' }, 'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador?commt=6'), false);
 });
