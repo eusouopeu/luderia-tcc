@@ -19,7 +19,9 @@ rodar). A São Jogue fica de fora, como nas medidas do B1-a_horarios_pico.py.
 
 Barras com menos de 5 casas abertas saem em cinza claro (leitura frágil). A
 faixa sombreada marca o horário do plano (P7: terça a sábado das 14h às 23h,
-domingo das 14h às 20h).
+domingo das 14h às 20h). A linha mostra a % das 54 casas da população do B1
+(B1_horarios.csv, com a São Jogue) abertas em cada dia × hora, pela mesma regra
+de abertura; não depende da coleta do Google.
 
 Saídas (dados/[B1] Estabelecimentos e cardapios/estabelecimentos/5_graficos/graficos/):
   png/, svg/ e valores/ de B1_fluxo_dia_hora_media e B1_fluxo_dia_hora_mediana.
@@ -38,7 +40,7 @@ if __name__ == "__main__":
 
 import pandas as pd  # noqa: E402
 
-from graficos_comum import APAGADO, BASE, GRADE, TINTA, TINTA2, TINTA3, VERMELHO, br, figura, salvar  # noqa: E402
+from graficos_comum import APAGADO, GRADE, HALO, MEDIO, TINTA, TINTA2, TINTA3, VERMELHO, br, figura, salvar  # noqa: E402
 
 ROOT = _AQUI.parents[4]
 EST = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos"
@@ -91,7 +93,19 @@ def tabela():
     return t.sort_values(["ordem_dia", "ordem_hora"]).drop(columns=["ordem_dia", "ordem_hora"]), h.place_id.nunique()
 
 
-def grafico(t, n_casas, col, rotulo, nome):
+def populacao():
+    """% das casas do B1 (todas as de B1_horarios.csv) abertas em cada dia × hora (0-23, convenção do Google)."""
+    hor = pd.read_csv(EST / "B1_horarios.csv", sep=";")
+    exp = {(r.place_id, d): intervalos(getattr(r, d)) for r in hor.itertuples() for d in DIAS}
+    linhas = []
+    for d in DIAS:
+        for hr in range(24):
+            n = sum(aberta(exp[(p, d)], hr) for p in hor.place_id)
+            linhas.append({"dia_semana": d, "hora": hr, "casas_pop_abertas": n, "pct_pop_abertas": 100 * n / len(hor)})
+    return pd.DataFrame(linhas), len(hor)
+
+
+def grafico(t, n_casas, pop, n_pop, col, rotulo, nome):
     ok = t[t.casas_abertas >= N_MIN]
     topo = ok.loc[ok[col].idxmax()]
     dia_top = NOME_DIA[DIAS.index(topo.dia_semana)].lower()
@@ -101,7 +115,8 @@ def grafico(t, n_casas, col, rotulo, nome):
     sub = (f"{rotulo.capitalize()} do índice de movimento do Google (100 = hora mais cheia da semana da "
            f"casa), só entre as casas abertas em cada hora; {n_casas} concorrentes, sem a São Jogue")
     nota = (f"Nota: n de casas abertas varia por barra; barras em cinza claro têm menos de {N_MIN} casas. "
-            "Faixa sombreada: horário do plano (terça a sábado, 14h às 23h; domingo, 14h às 20h).")
+            "Faixa sombreada: horário do plano (terça a sábado, 14h às 23h; domingo, 14h às 20h). "
+            f"Linha: % das {n_pop} casas da população do B1 abertas na hora, pelo horário publicado.")
     fig, ax0 = figura(8.2, 10.2, titulo, sub, FONTE, esq=1.45, dir=0.3, base=0.75, nota=nota)
     pos = ax0.get_position()
     ax0.remove()
@@ -116,14 +131,20 @@ def grafico(t, n_casas, col, rotulo, nome):
             ax.axvspan(HORAS.index(a) - 0.5, HORAS.index(b - 1) + 0.5, color="#f6e7e7", zorder=0, lw=0)
         for v in (25, 50, 75, 100):
             ax.axhline(v, color=GRADE, lw=0.8, zorder=1)
-        cores = [APAGADO if (pd.isna(n) or n < N_MIN) else BASE for n in d.casas_abertas]
+        cores = [APAGADO if (pd.isna(n) or n < N_MIN) else MEDIO for n in d.casas_abertas]
         cores = [VERMELHO if (hr == topo.hora and dia == topo.dia_semana) else c for hr, c in zip(HORAS, cores)]
         ax.bar(x, d[col].fillna(0), width=0.78, color=cores, zorder=3)
+        lp = pop[pop.dia_semana == dia].set_index("hora").reindex(HORAS)["pct_pop_abertas"]
+        ax.plot(list(x), lp.values, color=TINTA, lw=1.5, marker="o", ms=2.8, zorder=4, path_effects=HALO)
+        if i == 0:
+            ax.text(len(HORAS) - 0.4, 104, f"linha: % das {n_pop} casas abertas", ha="right", va="bottom",
+                    fontsize=8.5, color=TINTA, zorder=5)
         dd = d[d.casas_abertas >= N_MIN]
         if len(dd):
             hm = dd[col].idxmax()
             ax.text(HORAS.index(hm), dd.at[hm, col] + 3, f"{br(dd.at[hm, col], 0)}%", ha="center",
-                    va="bottom", fontsize=8.5, color=TINTA, fontweight="semibold", zorder=5)
+                    va="bottom", fontsize=8.5, color=TINTA, fontweight="semibold", zorder=6,
+                    path_effects=HALO)
         ax.set_ylim(0, vmax * 1.12)
         ax.set_xlim(-0.6, len(HORAS) - 0.4)
         ax.set_yticks([0, 50, 100])
@@ -137,7 +158,11 @@ def grafico(t, n_casas, col, rotulo, nome):
             ax.spines[s].set_visible(False)
         ax.spines["bottom"].set_color(TINTA3)
     vals = t[["dia_semana", "hora", "casas_abertas", col]].rename(columns={col: f"{col}_pct"})
+    vals = pop[pop.hora.isin(HORAS)].merge(vals, on=["dia_semana", "hora"], how="left")
+    vals["ordem"] = vals.dia_semana.map(DIAS.index) * 100 + vals.hora.map(HORAS.index)
+    vals = vals.sort_values("ordem").drop(columns="ordem")
     vals[f"{col}_pct"] = vals[f"{col}_pct"].round(1)
+    vals["pct_pop_abertas"] = vals["pct_pop_abertas"].round(1)
     salvar(fig, PASTA, nome, vals)
     print(f"  {nome}: máximo {topo.dia_semana} {int(topo.hora)}h = {topo[col]:.1f}% (n = {int(topo.casas_abertas)})")
 
@@ -145,10 +170,13 @@ def grafico(t, n_casas, col, rotulo, nome):
 def main():
     global HORAS
     t, n = tabela()
+    pop, n_pop = populacao()
     # eixo só com as horas que têm alguma casa aberta (sem colunas vazias nas pontas)
-    HORAS = [hr for hr in HORAS if hr in set(t.hora)]
-    grafico(t, n, "media", "média", "B1_fluxo_dia_hora_media")
-    grafico(t, n, "mediana", "mediana", "B1_fluxo_dia_hora_mediana")
+    HORAS = [hr for hr in HORAS if hr in set(t.hora) or hr in set(pop.hora[pop.casas_pop_abertas > 0])]
+    grafico(t, n, pop, n_pop, "media", "média", "B1_fluxo_dia_hora_media")
+    grafico(t, n, pop, n_pop, "mediana", "mediana", "B1_fluxo_dia_hora_mediana")
+    m = pop.loc[pop.pct_pop_abertas.idxmax()]
+    print(f"  população aberta: máximo {m.dia_semana} {m.hora}h = {m.pct_pop_abertas:.1f}% ({m.casas_pop_abertas} de {n_pop})")
     por_dia = t.groupby("dia_semana").agg(n_max=("casas_abertas", "max")).reindex(DIAS)
     print("  casas abertas no horário de maior n, por dia:", por_dia.n_max.fillna(0).astype(int).to_dict())
 
