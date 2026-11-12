@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.15-3
+// @version      2026.11.12-1
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -20,6 +20,11 @@
  *    12 por vez, com pausa aleatória entre pedidos. Mais rápido que rolar.
  *    "Coletar período (API)": só os posts até a data "De" (2-3 pedidos por perfil).
  *    "Histórico completo (API)": vai até o primeiro post; use só para essa data.
+ *  - Menu dos perfis (mesmo padrão do coletor de preços): o seletor do topo traz os 60
+ *    perfis das casas do B1 por capital, com ✓ coletado pela API, ◐ só dados do perfil e
+ *    ○ falta. Escolher um abre o perfil e coleta sozinho (no modo do seletor da fila: só o
+ *    período ou o histórico); "Próximo" faz o mesmo com o próximo que falta (primeiro na
+ *    mesma capital); "Coletado"/"Desfazer" marca à mão; "Só os que faltam" esconde os prontos.
  *  - "Fila": coleta vários perfis em sequência, com pausa maior entre perfis,
  *    e baixa dois CSV no fim (posts e perfis).
  *  - Snowball (lista "seguindo"): saiu deste script em 15/10/2026 e virou o
@@ -665,6 +670,7 @@
       for (const [i, u] of pendentes.entries()) {
         status(`Fila ${feitos.length + 1}/${usuarios.length}: @${u}`);
         await coletarPerfil(u, modo);
+        registrarColeta(u, modo);
         feitos.push(u);
         gravarFila({ todos: usuarios, feitos, modo });
         if (i < pendentes.length - 1) {
@@ -679,6 +685,154 @@
       const comDados = usuarios.filter((u) => perfis.has(u));
       if (comDados.length && autoBaixar) exportar(comDados, `fila${comDados.length}`);
     }
+  }
+
+  // ---------- menu dos perfis do B1 ----------
+  // Mesmo padrão do coletor de preços (B5): seletor com os perfis por capital, marcados como
+  // coletados; escolher um abre o perfil e coleta sozinho (no modo do seletor da fila);
+  // "Próximo" abre o próximo que falta. População: as 60 casas do B1 com Instagram
+  // (estabelecimentos/3_triagem/B1_instagram_aprovadas.csv e redes_sociais/B1_instagram_resumo_notion.csv;
+  // sem perfil: Cheio de Fome - Vila da Penha, Reduto e Covil Game Bar SBC). [perfil, nome, capital]
+  const POP_IG = [
+    ["bardo.mago", "Bardo Mago", "Belo Horizonte"],
+    ["comdadobar", "Comdado Bar e Jogos", "Belo Horizonte"],
+    ["garagemdonerd", "Garagem do Nerd", "Belo Horizonte"],
+    ["latabuleria", "La Tabuleria", "Belo Horizonte"],
+    ["ludocafebh", "LudoCafé", "Belo Horizonte"],
+    ["shelfbar", "Shelf Bar e Jogos", "Belo Horizonte"],
+    ["ludotecasidequest", "Ludoteca Sidequest", "Belém"],
+    ["fortaludica", "FORTALÚDICA - BURGERS & JOGOS", "Brasília"],
+    ["grutabsb", "Gruta BSB", "Brasília"],
+    ["insidegamestore", "Inside Games", "Brasília"],
+    ["asgardbrasilia", "Loja de Jogos - Asgard", "Brasília"],
+    ["ludotecabgc", "Ludoteca BGC", "Brasília"],
+    ["utopiagamesbr", "Utopia Games & Food", "Brasília"],
+    ["metropoly_", "Metropoly Bar", "Campinas"],
+    ["muito_colecionaveis", "Muito Geek | TCG • Board Games • Fliperama", "Campinas"],
+    ["nergeek", "Nergeek", "Campinas"],
+    ["alcapaojogos", "Alçapão Jogos", "Curitiba"],
+    ["boardzgamepub", "BoardZ Game Pub", "Curitiba"],
+    ["joyjoycafe", "Joyjoy Café", "Curitiba"],
+    ["paladinohobbies", "Paladino Hobbies", "Curitiba"],
+    ["tavernagamehouse", "Taverna Game House", "Curitiba"],
+    ["vilacelta", "Vila Celta Hobby Store - Jogos e Café", "Curitiba"],
+    ["ccg_floripa", "CCG Floripa", "Florianópolis"],
+    ["chefonplay", "Chef on Play", "Florianópolis"],
+    ["cineplay_sc", "Cineplay- Restaurante e Jogos", "Florianópolis"],
+    ["balboashobbygames", "Balboa's Hobby Games", "Fortaleza"],
+    ["dominariacg", "Dominaria Cards & Games", "Fortaleza"],
+    ["paladinsgames", "Paladins Game Store", "Goiânia"],
+    ["arcadeapub", "Arcadea Gaming Pub", "Porto Alegre"],
+    ["tocadorato_oficial", "Toca do Rato - Pizzaria e Jogos de Tabuleiro", "Porto Alegre"],
+    ["nalaland.jogos", "Nala Land - Bar de Jogos de Tabuleiro em Recife", "Recife"],
+    ["gob.ludobar", "Game Of Boards", "Rio de Janeiro"],
+    ["luderiacariocajogos", "Luderia Carioca", "Rio de Janeiro"],
+    ["magicstorebrasil", "Magic Store Brazil", "Rio de Janeiro"],
+    ["lojaredjogos", "RED jogos", "Rio de Janeiro"],
+    ["tabuclubnit", "TabuClub", "Rio de Janeiro"],
+    ["saojogue", "São Jogue - Bela Vista", "Salvador"],
+    ["sessenta.minutos", "60 Minutos Escape, Hamburgueria e Boardgames", "São Paulo"],
+    ["aarenabg", "Arena BG | Jogos de Tabuleiro | Hamburgueria", "São Paulo"],
+    ["bodogami", "Bodogami Restaurante e Cafeteria", "São Paulo"],
+    ["bravojogos", "Bravo Jogos", "São Paulo"],
+    ["chqjogos.sa", "CHQ Jogos", "São Paulo"],
+    ["cartolaluderia", "Cartola Luderia Bar", "São Paulo"],
+    ["castelosbareboardgames", "Castelos Bar & Boardgames", "São Paulo"],
+    ["coletivogeekbr", "Coletivo Geek", "São Paulo"],
+    ["covilgb", "Covil Game Bar", "São Paulo"],
+    ["dungeongames.oficial", "Dungeon Games Store", "São Paulo"],
+    ["encounter.bg", "Encounter | Jogos de Tabuleiro | Board Games", "São Paulo"],
+    ["espaco162karaoke", "Espaço 162 - Meu Karaokê Box", "São Paulo"],
+    ["fanhourbr", "Fan Hour Games and Burgers", "São Paulo"],
+    ["flowg4mes", "Flow Games - Burgers, Cards & Comunidade", "São Paulo"],
+    ["jogasampa", "Jogasampa", "São Paulo"],
+    ["ludusluderia", "Ludus Luderia", "São Paulo"],
+    ["omniverselivraria", "OMNIVERSE", "São Paulo"],
+    ["pittasboardgames", "Pitta's Board Games", "São Paulo"],
+    ["lojaplacegames", "Place Games", "São Paulo"],
+    ["playeasyjogos", "Play Easy", "São Paulo"],
+    ["tubaleria", "Tubaleria", "São Paulo"],
+    ["xplaceoficial", "XPlace", "São Paulo"],
+    ["cafegeekvv", "Café Geek Cafeteria e Ludoteca", "Vitória"],
+  ].map(([u, nome, capital]) => ({ u, nome, capital }));
+  const CHAVE_ALVO = 'igc-alvo';
+  const CHAVE_ABRIR = 'igc-alvo-abrir';
+  const CHAVE_FEITOS = 'igc-alvos-feitos'; // { perfil: { modo, em, n } }
+  const CHAVE_MARCAS = 'igc-alvos-marcas'; // { perfil: true (dado por coletado) | false (desfeito) }
+  const CHAVE_SO_FALTAM = 'igc-alvos-so-faltam';
+  const lerLs = (k, padrao) => { try { return JSON.parse(localStorage.getItem(k) || 'null') ?? padrao; } catch (_) { return padrao; } };
+  const gravarLs = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, JSON.stringify(v)); } catch (_) { /* ignora */ } };
+
+  function registrarColeta(user, modo) {
+    gravarLs(CHAVE_FEITOS, { ...lerLs(CHAVE_FEITOS, {}), [user]: { modo, em: Date.now(), n: postsDe(user).length } });
+  }
+
+  // ok (coleta pela API concluída), perfil (só dados do perfil, lidos ao navegar) ou falta.
+  // A marca à mão prevalece.
+  function estadoPerfil(u, feitos = {}, marcas = {}, temPerfil = () => false) {
+    if (marcas[u] === true) return 'ok';
+    if (marcas[u] === false) return 'falta';
+    if (feitos[u]) return 'ok';
+    return temPerfil(u) ? 'perfil' : 'falta';
+  }
+
+  // Próximo perfil que falta: primeiro na capital do atual, depois nas outras, na ordem do
+  // seletor a partir do atual.
+  function proximoPerfil(atual, feitos = {}, marcas = {}, temPerfil = () => false) {
+    const i0 = POP_IG.findIndex((p) => p.u === atual);
+    const a = POP_IG[i0] || POP_IG[0];
+    const ordem = [...POP_IG.slice(i0 + 1), ...POP_IG.slice(0, Math.max(i0, 0))]
+      .filter((p) => p.u !== atual && estadoPerfil(p.u, feitos, marcas, temPerfil) !== 'ok');
+    return ordem.find((p) => p.capital === a.capital) || ordem[0] || null;
+  }
+
+  function abrirPerfil(p) {
+    gravarLs(CHAVE_ALVO, p.u);
+    gravarLs(CHAVE_ABRIR, { u: p.u, em: Date.now() });
+    status(`Abrindo @${p.u}…`);
+    location.href = `https://www.instagram.com/${p.u}/`;
+  }
+
+  function rotularPerfis() {
+    if (!el.alvo) return;
+    const feitos = lerLs(CHAVE_FEITOS, {});
+    const marcas = lerLs(CHAVE_MARCAS, {});
+    const soFaltam = lerLs(CHAVE_SO_FALTAM, false);
+    const tem = (u) => perfis.has(u);
+    const atual = POP_IG.some((p) => p.u === perfilAtual()) ? perfilAtual() : lerLs(CHAVE_ALVO, POP_IG[0].u);
+    let prontos = 0;
+    for (const o of el.alvo.querySelectorAll('option')) {
+      const p = POP_IG.find((x) => x.u === o.value);
+      const e = estadoPerfil(p.u, feitos, marcas, tem);
+      if (e === 'ok') prontos++;
+      o.className = e;
+      const f = feitos[p.u];
+      o.textContent = e === 'ok' ? `✓ ${p.nome} (@${p.u}${f ? `, ${f.modo === 'periodo' ? 'período' : 'histórico'}, ${f.n} posts` : ''})`
+        : e === 'perfil' ? `◐ ${p.nome} (@${p.u}, só perfil)` : `○ ${p.nome} (@${p.u})`;
+      o.hidden = soFaltam && e === 'ok' && p.u !== atual;
+    }
+    for (const g of el.alvo.querySelectorAll('optgroup')) g.hidden = [...g.querySelectorAll('option')].every((o) => o.hidden);
+    if (el.alvo.value !== atual) el.alvo.value = atual;
+    el.alvoInfo.textContent = `${prontos} de ${POP_IG.length} perfis coletados`;
+    const col = estadoPerfil(atual, feitos, marcas, tem) === 'ok';
+    el.bMarcar.textContent = col ? '✕ Desfazer' : '✓ Coletado';
+    el.bMarcar.title = col ? 'Desfazer: o perfil volta a faltar (seletor, "Próximo" e "só os que faltam"); os posts guardados ficam'
+      : 'Marcar coletado: dá o perfil por coletado sem nova coleta (ex.: perfil privado ou sem posts no período)';
+  }
+
+  // Perfil aberto pelo seletor ou por "Próximo": coleta sozinho quando a página carrega.
+  async function coletarAoAbrir() {
+    const pedido = lerLs(CHAVE_ABRIR, null);
+    if (!pedido) return;
+    gravarLs(CHAVE_ABRIR, null);
+    if (Date.now() - pedido.em > 2 * 60 * 1000 || perfilAtual() !== pedido.u || filaSnowballAtiva()) return;
+    const modo = el.modoFila?.value || 'periodo';
+    await executar(() => coletarPerfil(pedido.u, modo).then(() => {
+      registrarColeta(pedido.u, modo);
+      status(`@${pedido.u} coletado (${modo === 'periodo' ? 'período' : 'histórico completo'}). "Próximo" segue para o que falta.`);
+      if (autoBaixar) exportar([pedido.u], pedido.u);
+    }));
+    rotularPerfis();
   }
 
   // ---------- selos na grade ----------
@@ -1203,7 +1357,7 @@
     .pronto.pendente{background:#ef6c0022;color:inherit;border:1px solid #ef6c00}
     select{width:100%;box-sizing:border-box;margin:6px 0;padding:4px 6px;font:inherit;
       background:transparent;color:inherit;border:1px solid #888;border-radius:6px}
-    select option{color:#111}
+    select option{color:#111} select option.ok{color:#9ca3af} select option.perfil{color:#b45309}
     .lista{max-height:260px;overflow:auto;border-top:1px solid #8885}
     .lista .item{display:flex;gap:4px;align-items:center;border-bottom:1px solid #8885}
     .lista a{flex:1 1 auto;min-width:0;display:block;padding:5px 2px;color:inherit;text-decoration:none;font-size:12px}
@@ -1364,6 +1518,34 @@
     el.resumo = criar('p');
     el.status = criar('p', { className: 'status' });
     el.fila = criar('textarea', { placeholder: 'Fila: um @perfil ou link por linha' });
+    // Menu dos perfis do B1: escolher um abre o perfil e coleta sozinho.
+    const capitais = [...new Set(POP_IG.map((p) => p.capital))];
+    el.alvo = criar('select', {
+      title: 'Perfis das casas do B1, por capital: escolher um abre o perfil e coleta pela API (no modo do seletor da fila). ✓ coletado, ◐ só dados do perfil, ○ falta',
+      onchange: () => {
+        const p = POP_IG.find((x) => x.u === el.alvo.value);
+        if (perfilAtual() === p.u) { gravarLs(CHAVE_ALVO, p.u); rotularPerfis(); return; }
+        if (ocupado) { el.alvo.value = lerLs(CHAVE_ALVO, POP_IG[0].u); status('Espere a coleta em curso terminar (ou "Parar").'); return; }
+        abrirPerfil(p);
+      },
+    }, capitais.map((c) => criar('optgroup', { label: c },
+      POP_IG.filter((p) => p.capital === c).map((p) => criar('option', { value: p.u, textContent: p.nome })))));
+    el.alvoInfo = criar('p', { className: 'status' });
+    const bProximo = criar('button', { textContent: '▶ Próximo', title: 'Próximo que falta: abre o próximo perfil sem coleta (primeiro na mesma capital) e coleta sozinho', onclick: () => {
+      if (ocupado) { status('Espere a coleta em curso terminar (ou "Parar").'); return; }
+      const atual = POP_IG.some((p) => p.u === perfilAtual()) ? perfilAtual() : lerLs(CHAVE_ALVO, '');
+      const p = proximoPerfil(atual, lerLs(CHAVE_FEITOS, {}), lerLs(CHAVE_MARCAS, {}), (u) => perfis.has(u));
+      if (!p) { status('Todos os perfis do B1 estão coletados.'); return; }
+      abrirPerfil(p);
+    } });
+    el.bMarcar = criar('button', { onclick: () => {
+      const u = el.alvo.value;
+      const col = estadoPerfil(u, lerLs(CHAVE_FEITOS, {}), lerLs(CHAVE_MARCAS, {}), (x) => perfis.has(x)) === 'ok';
+      gravarLs(CHAVE_MARCAS, { ...lerLs(CHAVE_MARCAS, {}), [u]: !col });
+      status(col ? `@${u} volta a faltar.` : `@${u} marcado como coletado.`);
+      rotularPerfis();
+    } });
+    const chkSoFaltam = criar('input', { type: 'checkbox', checked: lerLs(CHAVE_SO_FALTAM, false), onchange: () => { gravarLs(CHAVE_SO_FALTAM, chkSoFaltam.checked); rotularPerfis(); } });
 
     const bRolar = botao('Rolar até o fim', () => executar(rolarAteOFim));
     // Volta ao topo; se a rolagem automática estiver em curso, para ela antes.
@@ -1374,12 +1556,12 @@
     el.contagens = criar('p', { className: 'status' });
     const bApi = botao('Coletar período (API)', () => {
       const u = perfilAtual();
-      if (u) executar(() => coletarPerfil(u, 'periodo').then(() => { if (autoBaixar) exportar([u], u); }));
+      if (u) executar(() => coletarPerfil(u, 'periodo').then(() => { registrarColeta(u, 'periodo'); if (autoBaixar) exportar([u], u); }));
     });
     bApi.title = 'Poucos pedidos: dados do perfil e posts até a data "De". Não chega ao primeiro post.';
     const bHistorico = botao('Histórico completo (API)', () => {
       const u = perfilAtual();
-      if (u) executar(() => coletarPerfil(u, 'completo').then(() => { status(`@${u} completo.`); if (autoBaixar) exportar([u], u); }));
+      if (u) executar(() => coletarPerfil(u, 'completo').then(() => { registrarColeta(u, 'completo'); status(`@${u} completo.`); if (autoBaixar) exportar([u], u); }));
     });
     bHistorico.title = 'Vai até o primeiro post (data do primeiro post). Muitos pedidos; continua de onde parou.';
     const bCsv = botao('Exportar CSV', () => { const u = perfilAtual(); if (u) exportar([u], u); });
@@ -1496,6 +1678,10 @@
     const cabecalho = criar('header', {}, [el.titulo, minimizar]);
     const painel = criar('div', { id: 'igc-painel' }, [
       cabecalho,
+      el.alvo,
+      criar('div', { className: 'linha' }, [bProximo, el.bMarcar]),
+      criar('label', {}, [chkSoFaltam, document.createTextNode(' Só os que faltam')]),
+      el.alvoInfo,
       criar('div', { className: 'linha' }, [bSom, bAuto]),
       el.resumo,
       el.contagens,
@@ -1553,11 +1739,12 @@
         atualizarResumo();
         mostrarConferencia();
         talvezRolarSozinho();
+        rotularPerfis();
       } catch (e) { console.error('[Coletor IG]', e); }
     }, 1000);
     garantirPainel();
     atualizarResumo();
-    carregarSalvos();
+    carregarSalvos().then(() => setTimeout(() => coletarAoAbrir().catch((e) => status(`Erro na coleta: ${e.message}`)), 2500));
     setInterval(salvar, 3000);
     addEventListener('pagehide', salvar);
     // Fila interrompida numa sessão anterior: repõe a lista para continuar.

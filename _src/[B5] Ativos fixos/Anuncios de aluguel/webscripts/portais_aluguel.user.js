@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-3
+// @version      2026.11.12-4
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas e uma fila de buscas entre portais e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -33,6 +33,13 @@
  * em outro portal. No fim, toca um som e baixa um CSV só, com tudo o que foi guardado.
  * "Parar" pausa a fila; "Continuar" retoma da busca em que parou. A tabela da fila
  * mostra, por busca, lidos, total e cobertura.
+ *
+ * Menu das buscas (mesmo padrão do coletor de preços): o seletor do topo traz as buscas da
+ * lista da fila, por portal, com ✓ coletada (lidos/total), ◐ cobertura abaixo de 95% e
+ * ○ falta. Escolher uma abre a busca e coleta todas as páginas sozinho (como "Todas");
+ * "Próximo" faz o mesmo com a próxima que falta (primeiro no mesmo portal);
+ * "Coletada"/"Desfazer" marca à mão; "só as que faltam" esconde as prontas. A rodada que
+ * termina (pelo menu, por "Todas" ou pela fila) fica registrada no Tampermonkey.
  *
  * Uma busca avulsa: abrir a busca no portal, já filtrada (tipo, cidade, bairro), e clicar
  * em "Todas". O script lê a página, rola até o fim, guarda os anúncios e vai para a página
@@ -101,6 +108,11 @@
   const CHAVE_FILA = 'tcc_aluguel_fila';
   const CHAVE_FILA_TEXTO = 'tcc_aluguel_fila_texto';
   const CHAVE_POSICAO = 'tcc_aluguel_posicao';
+  const CHAVE_FEITAS = 'tcc_aluguel_buscas_feitas'; // { chaveAlvo: resultadoBusca + chave_busca, em }
+  const CHAVE_MARCAS = 'tcc_aluguel_buscas_marcas'; // { chaveAlvo: true (dada por coletada) | false (desfeita) }
+  const CHAVE_ALVO = 'tcc_aluguel_alvo';
+  const CHAVE_ABRIR = 'tcc_aluguel_abrir';
+  const CHAVE_SO_FALTAM = 'tcc_aluguel_so_faltam';
   const PAUSA_FILA = [8000, 15000]; // ms entre buscas da fila (sorteado)
   const COBERTURA_MIN = 0.95; // abaixo disso, a fila repete a busca uma vez
   const LIMITE_FILA = 50; // páginas por busca na fila
@@ -485,6 +497,43 @@
       const u = new URL(url);
       return `${u.hostname.replace(/^www\./, '')}${decodeURIComponent(u.pathname).replace(/\/grande-[^/]+/, '').replace(/\/+$/, '')}`.toLowerCase();
     } catch (e) { return String(url); }
+  }
+
+  // ---------- menu das buscas (mesmo padrão do coletor de preços) ----------
+  // Uma opção por busca da lista da fila. Chave: host, caminho e parâmetros (sem o da página),
+  // para distinguir as buscas do mesmo caminho com tipos ou áreas diferentes (OLX).
+  function chaveAlvo(url) {
+    try {
+      const u = new URL(url);
+      for (const k of ['o', 'pagina']) u.searchParams.delete(k);
+      const q = [...u.searchParams.entries()].map(([k, v]) => `${k}=${v}`).sort().join('&');
+      return `${chaveBusca(url)}?${q}`;
+    } catch (e) { return String(url); }
+  }
+
+  // Estado de uma busca: ok (rodada com cobertura de 95% ou mais, ou sem total), baixa
+  // (cobertura abaixo de 95%) ou falta. A marca à mão prevalece. Sem registro pela chave
+  // completa, vale o da mesma chaveBusca, quando só uma busca da lista tem esse caminho.
+  function estadoAlvo(url, feitas = {}, marcas = {}, alvos = [url]) {
+    const k = chaveAlvo(url);
+    if (marcas[k] === true) return { e: 'ok', r: feitas[k] || null };
+    if (marcas[k] === false) return { e: 'falta', r: null };
+    let r = feitas[k];
+    if (!r && alvos.filter((a) => chaveBusca(a) === chaveBusca(url)).length === 1) {
+      r = Object.values(feitas).filter((x) => x.chave_busca === chaveBusca(url)).sort((a, b) => (b.em || 0) - (a.em || 0))[0];
+    }
+    if (!r) return { e: 'falta', r: null };
+    return { e: r.cobertura != null && r.cobertura < COBERTURA_MIN ? 'baixa' : 'ok', r };
+  }
+
+  // Próxima busca que falta (ou com cobertura baixa): primeiro no portal da atual, depois nos
+  // outros, na ordem da lista a partir da atual.
+  function proximoAlvo(alvos, atual, feitas = {}, marcas = {}) {
+    const i0 = alvos.indexOf(atual);
+    const ordem = [...alvos.slice(i0 + 1), ...alvos.slice(0, Math.max(i0, 0))]
+      .filter((u) => u !== atual && estadoAlvo(u, feitas, marcas, alvos).e !== 'ok');
+    const p = (u) => { try { return portalDe(new URL(u).hostname); } catch (e) { return ''; } };
+    return ordem.find((u) => p(u) === p(atual)) || ordem[0] || null;
   }
 
   // Repete a busca (uma vez) se a cobertura ficou abaixo do mínimo; sem total, não repete.
@@ -878,8 +927,17 @@
   const lerAuto = () => { try { return JSON.parse(sessionStorage.getItem(CHAVE_AUTO) || 'null'); } catch (e) { return null; } };
   const gravarAuto = (v) => { try { v ? sessionStorage.setItem(CHAVE_AUTO, JSON.stringify(v)) : sessionStorage.removeItem(CHAVE_AUTO); } catch (e) { /* sem modo automático */ } };
 
+  // Rodada concluída: fica registrada para o menu (✓ ou ◐ pela cobertura).
+  function registrarBusca(url, auto, motivo) {
+    if (!url) return;
+    const r = resultadoBusca(url, (auto.vistos || []).length, auto.totalBusca, auto.paginas, motivo);
+    gmGravar(CHAVE_FEITAS, { ...(gmLer(CHAVE_FEITAS, {}) || {}), [chaveAlvo(url)]: { ...r, chave_busca: chaveBusca(url), em: Date.now() } });
+  }
+
   function concluir(auto, motivo) {
     gravarAuto(null);
+    const filaAtiva = auto.fila && lerFila()?.ativa;
+    registrarBusca(filaAtiva ? lerFila().itens[lerFila().i] : auto.alvo || location.href, auto, motivo);
     atualizarBotoes();
     if (auto.fila && lerFila()?.ativa) { fimDaBuscaNaFila(auto, motivo); return; }
     progresso(el.pBusca, null);
@@ -1103,6 +1161,8 @@
     .tag{flex:0 0 auto;border-radius:999px;padding:2px 9px;font-size:12px;opacity:.55}
     .tag.on{opacity:1;background:var(--azul);border-color:var(--azul);color:#fff}
     input{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px}
+    select{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px;width:100%}
+    select option,select optgroup{color:#111} option.ok{color:#9ca3af} option.baixa{color:#b45309}
     input[type=number]{width:56px}
     input.largo{flex:1 1 140px;min-width:0}
     .rotulo{display:inline-flex;align-items:center;gap:3px;opacity:.7;font-size:12px}
@@ -1149,6 +1209,7 @@
     'trash': ["e:M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z"],
     'stop': ["M5.25 3A2.25 2.25 0 0 0 3 5.25v9.5A2.25 2.25 0 0 0 5.25 17h9.5A2.25 2.25 0 0 0 17 14.75v-9.5A2.25 2.25 0 0 0 14.75 3h-9.5Z"],
     'play': ["M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.344-5.891a1.5 1.5 0 0 0 0-2.538L6.3 2.841Z"],
+    'x-mark': ["M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"],
     'queue-list': ["M2 4.5A2.5 2.5 0 0 1 4.5 2h11a2.5 2.5 0 0 1 0 5h-11A2.5 2.5 0 0 1 2 4.5ZM2.75 9.083a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5H2.75ZM2.75 12.663a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5H2.75ZM2.75 16.25a.75.75 0 0 0 0 1.5h14.5a.75.75 0 1 0 0-1.5H2.75Z"],
   };
   function icone(nome) {
@@ -1394,6 +1455,7 @@
     mostrarBuscas(agruparBuscas(portal, dados), busca);
     mostrarFila();
     destacarCards(filtros, dados);
+    rotularAlvos();
   }
 
   function mostrar(t) {
@@ -1428,8 +1490,32 @@
     el.pFila = novaBarra();
     el.filaTexto = criar('textarea', { value: gmLer(CHAVE_FILA_TEXTO, FILA_PADRAO) || FILA_PADRAO, spellcheck: false,
       title: 'Buscas da fila: uma URL por linha (OLX, ZAP, Viva Real ou QuintoAndar), já filtrada; linhas com # são ignoradas',
-      onchange: () => { gmGravar(CHAVE_FILA_TEXTO, el.filaTexto.value); el.filaContagem.textContent = `${lerItensFila(el.filaTexto.value).length} buscas`; } });
+      onchange: () => { gmGravar(CHAVE_FILA_TEXTO, el.filaTexto.value); el.filaContagem.textContent = `${lerItensFila(el.filaTexto.value).length} buscas`; preencherAlvos(); } });
     el.filaContagem = criar('span', { className: 'rotulo', textContent: `${lerItensFila(el.filaTexto.value).length} buscas` });
+    // Menu das buscas: escolher uma abre a busca e coleta todas as páginas sozinho.
+    el.alvoSel = criar('select', {
+      title: 'Buscas da lista da fila, por portal: escolher uma abre a busca e coleta todas as páginas. ✓ coletada (lidos/total), ◐ cobertura abaixo de 95%, ○ falta',
+      onchange: () => {
+        const url = el.alvoSel.value;
+        if (lerFila()?.ativa || lerAuto()) { el.alvoSel.value = alvoAtual(); status('Espere a rodada em curso terminar (ou pare a fila).'); return; }
+        abrirAlvo(url);
+      },
+    });
+    el.alvoInfo = criar('span', { className: 'rotulo' });
+    const soFaltam = selo('só as que faltam', 'Esconde no seletor as buscas já coletadas', !!gmLer(CHAVE_SO_FALTAM, false), (v) => { gmGravar(CHAVE_SO_FALTAM, v); rotularAlvos(); });
+    const bProximo = botao('forward', 'Próximo', 'Próxima que falta: abre a próxima busca sem coleta ou com cobertura abaixo de 95% (primeiro no mesmo portal) e coleta todas as páginas', () => {
+      if (lerFila()?.ativa || lerAuto()) { status('Espere a rodada em curso terminar (ou pare a fila).'); return; }
+      const prox = proximoAlvo(alvosDaLista(), alvoAtual(), gmLer(CHAVE_FEITAS, {}) || {}, gmLer(CHAVE_MARCAS, {}) || {});
+      if (!prox) { status('Todas as buscas da lista estão coletadas.'); return; }
+      abrirAlvo(prox);
+    });
+    el.bMarcar = botao('check', 'Coletada', '', () => {
+      const url = alvoAtual();
+      const col = estadoAlvo(url, gmLer(CHAVE_FEITAS, {}) || {}, gmLer(CHAVE_MARCAS, {}) || {}, alvosDaLista()).e === 'ok';
+      gmGravar(CHAVE_MARCAS, { ...(gmLer(CHAVE_MARCAS, {}) || {}), [chaveAlvo(url)]: !col });
+      status(col ? `${rotuloBusca(url)} volta a faltar.` : `${rotuloBusca(url)} marcada como coletada.`);
+      rotularAlvos();
+    });
     el.filaTabela = criar('div');
     el.bFila = botao('queue-list', 'Fila', '', () => {
       if (lerFila()?.ativa) { pararFila(); gravarAuto(null); atualizarBotoes(); status('Fila parada. "Continuar" retoma da busca atual.'); return; }
@@ -1494,7 +1580,7 @@
     });
     el.bAuto = botao('forward', 'Todas', '', () => {
       if (lerAuto()) { gravarAuto(null); atualizarBotoes(); status('Parado.'); return; }
-      gravarAuto({ limite: Math.max(1, parseInt(el.limite.value, 10) || 50), paginas: 0, total: 0 });
+      gravarAuto({ limite: Math.max(1, parseInt(el.limite.value, 10) || 50), paginas: 0, total: 0, alvo: alvoAtual() && chaveBusca(alvoAtual()) === chaveBusca(location.href) ? alvoAtual() : buscaBase(portal, location.href) });
       gravarHist([]);
       passoAutomatico();
     });
@@ -1526,6 +1612,8 @@
     const cabecalho = criar('header', { title: 'Arraste para mover; clique para minimizar; duplo clique volta ao canto' }, [criar('span', { textContent: `Aluguel · ${NOMES_PORTAL[portal] || portal}` }), minimizar]);
     const painel = criar('div', { id: 'cal-painel' }, [
       cabecalho,
+      el.alvoSel,
+      criar('div', { className: 'linha' }, [soFaltam, bProximo, el.bMarcar, el.alvoInfo]),
       criar('div', { className: 'linha' }, [el.bFila, el.bContinuar, bPadrao, el.filaContagem]),
       el.pFila.caixa,
       el.pBusca.caixa,
@@ -1560,8 +1648,69 @@
     raiz.appendChild(criar('style', { textContent: CSS_PAINEL }));
     raiz.appendChild(painel);
     posicionarPainel();
+    preencherAlvos();
     atualizarBotoes();
     mostrar();
+  }
+
+  const alvosDaLista = () => lerItensFila(el.filaTexto ? el.filaTexto.value : (gmLer(CHAVE_FILA_TEXTO, FILA_PADRAO) || FILA_PADRAO));
+  // Busca atual do menu: a aberta (se está na lista) ou a última escolhida.
+  function alvoAtual() {
+    const alvos = alvosDaLista();
+    const aberta = alvos.find((u) => chaveAlvo(u) === chaveAlvo(buscaBase(portal, location.href)))
+      || alvos.find((u) => chaveBusca(u) === chaveBusca(location.href));
+    const salvo = gmLer(CHAVE_ALVO, '');
+    return aberta || (alvos.includes(salvo) ? salvo : alvos[0] || '');
+  }
+
+  function abrirAlvo(url) {
+    gmGravar(CHAVE_ALVO, url);
+    gmGravar(CHAVE_ABRIR, { url, em: Date.now() });
+    liberarAudio();
+    status(`Abrindo ${rotuloBusca(url)}…`);
+    location.href = url;
+  }
+
+  // Opções em grupos por portal, na ordem da lista.
+  function preencherAlvos() {
+    if (!el.alvoSel) return;
+    const alvos = alvosDaLista();
+    const grupos = new Map();
+    for (const u of alvos) {
+      const p = rotuloBusca(u).split(' · ')[0];
+      if (!grupos.has(p)) grupos.set(p, []);
+      grupos.get(p).push(u);
+    }
+    el.alvoSel.replaceChildren(...[...grupos].map(([p, us]) => criar('optgroup', { label: p },
+      us.map((u) => criar('option', { value: u, textContent: rotuloBusca(u) })))));
+    rotularAlvos();
+  }
+
+  function rotularAlvos() {
+    if (!el.alvoSel) return;
+    const alvos = alvosDaLista();
+    const feitas = gmLer(CHAVE_FEITAS, {}) || {};
+    const marcas = gmLer(CHAVE_MARCAS, {}) || {};
+    const soFaltam = !!gmLer(CHAVE_SO_FALTAM, false);
+    const atual = alvoAtual();
+    let prontas = 0;
+    for (const o of el.alvoSel.querySelectorAll('option')) {
+      const { e, r } = estadoAlvo(o.value, feitas, marcas, alvos);
+      const nome = rotuloBusca(o.value);
+      const lt = r ? ` (${r.lidos}${r.total ? `/${r.total}` : ''})` : '';
+      if (e === 'ok') prontas++;
+      o.className = e;
+      o.textContent = e === 'ok' ? `✓ ${nome}${lt}` : e === 'baixa' ? `◐ ${nome}${lt}, ${pctTxt(r.cobertura)}` : `○ ${nome}`;
+      o.hidden = soFaltam && e === 'ok' && o.value !== atual;
+    }
+    for (const g of el.alvoSel.querySelectorAll('optgroup')) g.hidden = [...g.querySelectorAll('option')].every((o) => o.hidden);
+    if (atual) el.alvoSel.value = atual;
+    el.alvoInfo.textContent = `${prontas} de ${alvos.length} coletadas`;
+    const col = atual && estadoAlvo(atual, feitas, marcas, alvos).e === 'ok';
+    el.bMarcar.replaceChildren(...partes(icone(col ? 'x-mark' : 'check'), criar('span', { textContent: col ? 'Desfazer' : 'Coletada' })));
+    el.bMarcar.title = col ? 'Desfazer: a busca volta a faltar (seletor, "Próximo" e "só as que faltam"); os anúncios guardados ficam'
+      : 'Marcar coletada: dá a busca por coletada sem rodar (ex.: portal fora do ar ou busca sem anúncios)';
+    el.bMarcar.disabled = !atual;
   }
 
   // Posição e tamanho escolhidos pelo autor, salvos no Tampermonkey (iguais em todos os
@@ -1629,9 +1778,11 @@
     if (!document.body) return;
     const fila = lerFila();
     const filaAqui = !!fila?.ativa && !!fila.itens[fila.i] && chaveBusca(fila.itens[fila.i]) === chaveBusca(location.href);
+    const pedido = gmLer(CHAVE_ABRIR, null);
+    const pedidoAqui = !!pedido && Date.now() - pedido.em < 2 * 60 * 1000 && chaveBusca(pedido.url) === chaveBusca(location.href);
     const desafio = (!!lerAuto() || filaAqui) && desafioCloudflare() && lerPagina(portal).length === 0;
     if (!ehBusca) {
-      ehBusca = lerPagina(portal).length > 0 || desafio || filaAqui || !!fila?.ativa || PAGINA_IMOVEIS.test(location.pathname)
+      ehBusca = lerPagina(portal).length > 0 || desafio || filaAqui || pedidoAqui || !!fila?.ativa || PAGINA_IMOVEIS.test(location.pathname)
         || (!!lerAuto() && ++tentativas > 13);
       if (!ehBusca) return;
       console.info(NOME, 'painel montado');
@@ -1640,7 +1791,16 @@
     if (!hospedeiro.isConnected) document.documentElement.appendChild(hospedeiro);
     if (desafio) { status('Bloqueio do Cloudflare: resolva o desafio na página; a coleta retoma desta página.'); return; }
     if (!iniciouAuto && lerAuto()) { iniciouAuto = true; passoAutomatico(); return; }
-    if (filaAqui && !iniciouAuto && !contando && !lerAuto()) iniciarBuscaDaFila();
+    if (filaAqui && !iniciouAuto && !contando && !lerAuto()) { iniciarBuscaDaFila(); return; }
+    // Busca escolhida no menu (ou por "Próximo"): coleta todas as páginas sozinha.
+    if (pedidoAqui && !fila?.ativa && !iniciouAuto && !lerAuto()) {
+      gmGravar(CHAVE_ABRIR, null);
+      iniciouAuto = true;
+      gravarAuto({ limite: Math.max(1, parseInt(el.limite.value, 10) || 50), paginas: 0, total: 0, alvo: pedido.url });
+      gravarHist([]);
+      status(`${rotuloBusca(pedido.url)}: coletando todas as páginas…`);
+      passoAutomatico();
+    }
   }
 
   // Aviso ao fechar a aba ou sair por link do portal com muitos anúncios fora de CSV; a

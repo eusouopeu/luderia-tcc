@@ -4,13 +4,13 @@ O plano operacional traduz a demanda estimada em espaço, processos e pessoas. O
 
 ## 7.1 LOCALIZAÇÃO E LAYOUT
 
-A luderia ocupa um salão térreo de cerca de 130 m² em um dos três bairros finalistas da matriz (Graça, Pituba ou Itaigara), a até 1.000 m de uma estação de metrô. A coleta de anúncios define o bairro (seção 6.4), e os requisitos mínimos do ponto estão no Quadro 6.2. A área é estimativa do autor (N6), com faixa de 110 a 150 m² no capítulo 9: cerca de 12 m² por mesa, mais 60 m² de balcão, acervo, cozinha e sanitários. O ponto precisa de zona que admita serviço de alimentação e lazer na Lei de Ordenamento do Uso e da Ocupação do Solo (LOUOS) de Salvador e de licença do Corpo de Bombeiros compatível com a lotação do salão (Quadro 8.1).
+A luderia ocupa um ponto térreo de 150 a 200 m² na Pituba, um dos três bairros finalistas da matriz (seção 6.4), a até 1.000 m de uma estação de metrô (decisão do autor, 12/11/2026). Os requisitos mínimos do ponto estão no Quadro 6.2. A área já comporta 8 mesas: cerca de 12 m² por mesa, mais 60 m² de balcão, acervo, cozinha e sanitários. Assim, a etapa de mesas (seção 10.4) não exige mudança nem obra. O custo é pagar, desde a abertura, o aluguel de cerca de 24 m² que só essa etapa ocupa. O capítulo 9 usa a área média dos 17 anúncios de 150 a 200 m² na Pituba, 182 m² (B5, nov/2026). O ponto precisa de zona que admita serviço de alimentação e lazer na Lei de Ordenamento do Uso e da Ocupação do Solo (LOUOS) de Salvador e de licença do Corpo de Bombeiros compatível com a lotação do salão (Quadro 8.1).
 
-O salão de jogos recebe 6 mesas, de 4 a 6 lugares, com cerca de 30 assentos. O número de mesas é a maior média de mesas ocupadas entre as visitas: 6,02, na Paralela, em 30/10 (B3); no pico dessa noite, 7 das 9 mesas estavam ocupadas. As estantes do acervo ficam no próprio salão, à vista das mesas, porque a escolha do jogo faz parte do serviço. Completam a área o balcão com o caixa, a cozinha, o depósito de alimentos e bebidas (A&B), quatro sanitários e uma rota acessível da entrada às mesas. Os sanitários dos clientes são três, masculino, feminino e adaptado, como pede o Código de Obras de Salvador para até 50 pessoas por sexo, e o adaptado tem o fraldário exigido em lei municipal; o quarto é o da equipe (NR-24) [AV]. Mesa, balcão e caixa têm trecho acessível, e o cardápio tem versão em Braille e em letras ampliadas (Lei n. 13.146/2015; ABNT NBR 9050). O croqui do salão sai do projeto do imóvel escolhido.
+O salão de jogos recebe 6 mesas, de 4 a 6 lugares, com cerca de 30 assentos. O número de mesas é a maior média de mesas ocupadas entre as visitas: 6,02, na Paralela, em 30/10 (B3); no pico dessa noite, 7 das 9 mesas estavam ocupadas. As estantes do acervo ficam no próprio salão, à vista das mesas, porque a escolha do jogo faz parte do serviço. Completam a área o balcão com o caixa, a cozinha, o depósito de alimentos e bebidas (A&B), quatro sanitários e uma rota acessível da entrada às mesas. Os sanitários dos clientes são três, masculino, feminino e adaptado, como pede o Código de Obras de Salvador para até 50 pessoas por sexo, e o adaptado tem o fraldário exigido em lei municipal; o quarto é o da equipe (NR-24) [AV]. Mesa, balcão e caixa têm trecho acessível, e o cardápio tem versão em Braille e em letras ampliadas (Lei n. 13.146/2015; ABNT NBR 9050). O croqui do salão sai do projeto do imóvel escolhido e reserva o lugar das 2 mesas da etapa de mesas.
 
 ## 7.2 CAPACIDADE INSTALADA
 
-A luderia abre de terça a sábado das 14h às 23h e no domingo das 14h às 20h, 51 horas por semana. A segunda fica fechada: é o dia em que mais concorrentes fecham (71% deles). O horário cobre o pico de cada dia, pelo horário publicado no Google Maps por 54 concorrentes do B1 (out/2026): 53 casas abertas às 18h e às 19h de quinta e sexta, 49 às 18h de sábado e 39 às 17h de domingo. O domingo fecha mais cedo para caber num turno de 6 horas, com intervalo de 15 minutos (CLT, art. 71, § 1º), o que permite um só cozinheiro sem parar a cozinha. O custo é a perda do fim de tarde: às 20h de domingo, 32 casas ainda estão abertas, e, às 21h, 25. Por isso, o horário cobre 85% das casas abertas no dia útil e 77% no fim de semana (B1; decisão do autor, 04/11/2026).
+A luderia abre de terça a sábado, das 14h às 23h, 45 horas por semana (decisão do autor, 12/11/2026). A segunda fica fechada: é o dia em que mais concorrentes fecham (71% deles). O domingo também fica fechado na abertura e só abre na etapa de mesas, das 14h às 20h, quando a cozinha tiver dois cozinheiros: com um só, o domingo seria a única folga semanal possível além da segunda. O horário cobre o pico de cada dia aberto, pelo horário publicado no Google Maps por 54 concorrentes do B1 (out/2026): 53 casas abertas às 18h e às 19h de quinta e sexta e 49 às 18h de sábado. O custo é a perda do domingo, com pico às 17h (39 casas abertas). O horário cobre 85% das casas abertas no dia útil e 82% na sexta e no sábado (B1).
 
 **Quadro 7.1 – Capacidade instalada e demanda provável**
 
@@ -19,28 +19,28 @@ A luderia abre de terça a sábado das 14h às 23h e no domingo das 14h às 20h,
 | Mesas no salão | 6 | Maior média de mesas ocupadas nas visitas do B3 (R01) |
 | Pessoas por grupo de mesa | 3,6 | B3, média das quatro visitas (R02) |
 | Permanência média | 109 min | B3, média das quatro visitas (R03) |
-| Horas abertas por semana | 51 h: 27 h de terça a quinta e 24 h de sexta a domingo | Decisão do autor; pico de cada dia, B1 (R13, R14) |
-| Circulação no pico | 4,13 a 11,43 pessoas por hora; 6,40 no provável | NFC-e e visitas do B3 (R04) |
-| Horas de pico equivalentes | 6,77 por dia de fim de semana; 1,10 vez isso no dia útil | Concorrentes abertos em cada hora, B1 (R15, R19) |
-| Capacidade máxima | 101 pessoas por dia aberto; 28 grupos | Todas as mesas ocupadas em todas as horas abertas |
-| Demanda provável no ano maduro | 37 pessoas por dia aberto; 10,3 grupos | 6,40 pessoas por hora × 6,77 horas no fim de semana; no dia útil, 65,5% disso, com o ajuste do horário (R04, R05, R15, R19) |
-| Giro provável | 1,7 grupo por mesa por dia aberto; 4,7 no teto | Grupos por dia ÷ 6 mesas |
+| Horas abertas por semana | 45 h: 27 h de terça a quinta e 18 h na sexta e no sábado | Decisão do autor; pico de cada dia, B1 (R13, R14) |
+| Circulação no pico | 4,15 a 11,43 pessoas por hora; 6,40 no provável | NFC-e e visitas do B3 (R04) |
+| Horas de pico equivalentes | 7,89 por dia de fim de semana (sexta e sábado); 1,03 vez isso no dia útil | Concorrentes abertos em cada hora, B1 (R15, R19) |
+| Capacidade máxima | 107 pessoas por dia aberto; 30 grupos | Todas as mesas ocupadas em todas as horas abertas |
+| Demanda provável no ano maduro | 41 pessoas por dia aberto; 11,3 grupos | 6,40 pessoas por hora × 7,89 horas na sexta e no sábado; no dia útil, 65,5% disso, com o ajuste do horário (R04, R05, R15, R19) |
+| Giro provável | 1,9 grupo por mesa por dia aberto; 5,0 no teto | Grupos por dia ÷ 6 mesas |
 
 Fonte: elaborado pelo próprio autor, com base nos Blocos B1 (10/2026) e B3 (10/10/2026 a 30/10/2026), em ANR (2026a; 2026b) e no modelo financeiro (Apêndice E).
 
-A demanda provável usa 37% da capacidade (Quadro 7.1). Em grupos de 3,6 pessoas, as 37 pessoas por dia aberto formam 10,3 grupos, e cada mesa recebe 1,7 grupo por dia: é o giro provável. Com permanência de 109 minutos, as 51 horas da semana comportariam até 4,7 grupos por mesa por dia aberto. No pico, a circulação fica limitada pelo salão: com grupos de 3,6 pessoas e permanência de 109 minutos, as 6 mesas comportam até 11,9 pessoas por hora. A circulação provável, de 6,40, ocupa 3,2 mesas no pico; a otimista, de 11,43, fica perto do teto. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto. Teto abaixo de 6 mesas exclui o imóvel.
+A demanda provável usa 38% da capacidade (Quadro 7.1). Em grupos de 3,6 pessoas, as 41 pessoas por dia aberto formam 11,3 grupos, e cada mesa recebe 1,9 grupo por dia: é o giro provável. Com permanência de 109 minutos, as 9 horas de cada dia comportariam até 5,0 grupos por mesa. No pico, a circulação fica limitada pelo salão: com grupos de 3,6 pessoas e permanência de 109 minutos, as 6 mesas comportam até 11,9 pessoas por hora. A circulação provável, de 6,40, ocupa 3,2 mesas no pico; a otimista, de 11,43, fica perto do teto. Essa folga depende de uma condição externa: a lotação aprovada pelo Corpo de Bombeiros. Esse teto só é conhecido com o projeto do imóvel e fica como condição de escolha do ponto. Teto abaixo de 8 mesas exclui o imóvel, porque o ponto precisa comportar a etapa de mesas.
 
 ## 7.3 PROCESSOS OPERACIONAIS
 
 A jornada do cliente tem cinco etapas. Na chegada, o instrutor no balcão registra o grupo e cobra a taxa de entrada por pessoa, válida por um turno de 3 horas; a reserva antecipada segue os mesmos turnos. Na mesa, o instrutor sugere títulos pelo perfil do grupo e explica as regras. O pedido de A&B é feito ao mesmo instrutor. No fim, a conta é paga no balcão, com NFC-e para toda venda, como o capítulo 8 assume. Por último, o instrutor confere as peças do jogo devolvido antes de guardar a caixa.
 
-O acúmulo de funções vem da referência medida. Em todas as visitas à São Jogue, os instrutores também atendiam as mesas, cuidavam do balcão e operavam o caixa: não havia caixa, garçom nem atendente separados (B3). A luderia repete esse arranjo: os instrutores cobrem salão e balcão, e o sócio fica no caixa em todo o horário aberto.
+O acúmulo de funções vem da referência medida. Em todas as visitas à São Jogue, os instrutores também atendiam as mesas, cuidavam do balcão e operavam o caixa: não havia caixa, garçom nem atendente separados (B3). A luderia repete esse arranjo: os instrutores cobrem salão e balcão, e o sócio fica no caixa e no salão em todo o horário aberto.
 
-A explicação de regras é o processo que mais pesa na avaliação. A explicação de jogos aparece em 14,3% das avaliações dos concorrentes e, quando criticada, acompanha nota média de 2,62 (B2, seção 6.1). O plano trata a explicação como serviço de mesa, com no máximo 2 mesas por instrutor no pico, e não como tarefa de quem estiver livre.
+A explicação de regras é o processo que mais pesa na avaliação. A explicação de jogos aparece em 14,3% das avaliações dos concorrentes e, quando criticada, acompanha nota média de 2,62 (B2, seção 6.1). O plano trata a explicação como serviço de mesa, e não como tarefa de quem estiver livre. A carga máxima é de 7 mesas para 3 pessoas no salão, cerca de 2,3 mesas por pessoa: a maior vista nas visitas, na Paralela em 30/10, com 7 mesas ocupadas no pico e 3 instrutores, que ainda davam conta do atendimento (B3).
 
 Um site de recomendação apoia esse serviço. O cliente ou o instrutor informa o número de pessoas, o tempo disponível, a idade do mais novo, o peso das regras e o estilo do grupo; o site lista os jogos do acervo que combinam e traz um tutorial rápido de cada um. As buscas, os jogos escolhidos e os jogos procurados que não estão no acervo ficam gravados e alimentam os gatilhos de expansão (seção 7.4) e de contingência (seção 10.4).
 
-O A&B tem cozinha completa desde a abertura, com lanches, porções e pratos de preparo rápido, além de bebidas. É o modelo da maioria dos concorrentes e a maior fonte de receita do plano: 70,8% da receita bruta no provável (capítulo 9). Os cardápios do B1 dão a base de preço e de composição. Um cardápio só com comidas recebidas prontas, como salgados (coxinha e quibe), fica como medida de perda máxima: entra se o caixa ficar negativo ou se a saída for avaliada (gatilhos G5 e G6, seção 10.4), e corta um cozinheiro e parte do custo fixo.
+O A&B tem cozinha completa desde a abertura, com lanches, porções e pratos de preparo rápido, além de bebidas. É o modelo da maioria dos concorrentes e a maior fonte de receita do plano: 73,8% da receita bruta no provável (capítulo 9). Os cardápios do B1 dão a base de preço e de composição. Um cardápio só com comidas recebidas prontas, como salgados (coxinha e quibe), fica como medida de perda máxima: entra se o caixa ficar negativo ou se a saída for avaliada (gatilhos G5 e G6, seção 10.4), e dispensa um cozinheiro e parte do custo fixo.
 
 ## 7.4 GESTÃO DO ACERVO
 
@@ -52,61 +52,63 @@ A conferência de peças acontece na devolução de cada jogo, pelo instrutor. J
 
 ## 7.5 ESTRUTURA ORGANIZACIONAL E PESSOAL
 
-A equipe é dimensionada pelo fluxo medido, não pelo número de funções. Na noite de maior circulação, o salão teve 32 pessoas sentadas no pico e 9 grupos de mesa ao longo da visita (B3, Bela Vista, 10/10/2026). Nas demais noites, o pico foi de 12 a 31 pessoas. No ano maduro provável, a luderia recebe 37 pessoas por dia aberto, com a maior parte de sexta a domingo.
+A equipe é dimensionada pelo fluxo medido, não pelo número de funções. Na noite de maior circulação, o salão teve 32 pessoas sentadas no pico e 9 grupos de mesa ao longo da visita (B3, Bela Vista, 10/10/2026). Nas demais noites, o pico foi de 12 a 31 pessoas. No ano maduro provável, a luderia recebe 41 pessoas por dia aberto, com a maior parte na sexta e no sábado.
 
-Esse fluxo cabe numa equipe de 5 empregados e o sócio (Quadro 7.2). Todos trabalham 5 dias por semana. De terça a sábado, o turno vai da abertura ao fechamento: 8 horas de trabalho e 1 hora de intervalo no meio (CLT, art. 71). No domingo, o turno tem 6 horas e 15 minutos de intervalo. A semana fica entre 38 e 40 horas, abaixo das 44 horas da CLT. A segunda, com a casa fechada, é folga de todos. Os atendentes folgam também na terça, na quarta ou no domingo; os cozinheiros, em semanas alternadas, na terça ou no domingo. A escala se repete a cada 4 semanas, e o domingo de folga segue duas regras. As duas atendentes folgam domingo sim, domingo não, como a CLT exige para a mulher (art. 386). O atendente folga um domingo a cada 4 semanas, e os cozinheiros, domingo sim, domingo não: os dois ficam dentro do limite de sete semanas para o repouso coincidir com o domingo nas atividades autorizadas a funcionar aos domingos, como restaurantes e bares (Portaria MTP n. 671/2021) [AV].
+Esse fluxo cabe numa equipe de 3 empregados e o sócio (Quadro 7.2): 2 atendentes e instrutores e 1 cozinheiro-chefe (decisão do autor, 12/11/2026). Todos trabalham de terça a sábado, da abertura ao fechamento: 8 horas de trabalho e 1 hora de intervalo no meio (CLT, art. 71), 40 horas por semana, abaixo das 44 horas da CLT. O domingo e a segunda, com a casa fechada, são as duas folgas semanais de todos.
 
-O salão tem 3 instrutores de quinta a sábado e 2 nos demais dias, e o sócio fica no salão e no caixa em todo o horário aberto. O teto é de 2 mesas, ou cerca de 10 clientes, por instrutor no pico: a maior carga vista nas visitas. Com 6 mesas e 3 pessoas no salão, a carga fica nesse teto. Na terça, na quarta e no domingo, os dois instrutores entram com a abertura e fecham a casa, e, nos intervalos de cada um, o salão fica com um instrutor e o sócio: teto de 4 mesas, nos dias de menor movimento. No domingo em que o atendente folga, uma vez a cada 4 semanas, ele folga junto com uma das atendentes, e o salão fica com a outra atendente e o sócio; nessa semana, a quarta tem os três instrutores. A cozinha tem 2 cozinheiros-chefes de quarta a sábado, com intervalos alternados, e os dois no pico. Na terça e no domingo, os dias de menor movimento, fica com um. No domingo, o intervalo de 15 minutos quase não para a cozinha. Na terça, o dia de menor movimento (4,63 horas de pico equivalentes, B1), o intervalo de 1 hora fica das 16h às 17h, antes do pico, e, nessa hora, a cozinha só serve itens prontos. A cozinha recebe o último pedido 1 hora antes do fechamento e fecha 30 minutos antes, para a limpeza. A gestão, as compras e a cobertura de imprevistos ficam com o sócio (pró-labore, C08).
+No salão ficam os 2 instrutores e o sócio em todo o horário aberto. Com 6 mesas e 3 pessoas, a carga fica abaixo do teto de 7 mesas para 3 pessoas (seção 7.3). Nos intervalos de cada instrutor, o salão fica com 2 pessoas, com teto de cerca de 4,7 mesas; por isso, os intervalos ficam antes do pico, das 16h às 18h. A cozinha tem 1 cozinheiro-chefe. O intervalo dele fica das 16h às 17h, antes do pico, e, nessa hora, a cozinha só serve itens prontos. A cozinha recebe o último pedido 1 hora antes do fechamento e fecha 30 minutos antes, para a limpeza. A gestão, as compras e a cobertura de imprevistos ficam com o sócio (pró-labore, C08).
+
+A equipe cresce com a etapa de mesas (seção 10.4). Com 8 mesas, a carga máxima pede 4 pessoas no salão (8 ÷ 2,3 = 3,4): o sócio e 3 instrutores. A etapa traz também o segundo cozinheiro, condição para abrir no domingo, das 14h às 20h, com turno de 6 horas e 15 minutos de intervalo (CLT, art. 71, § 1º), e a semana passa a 51 horas. Nessa escala, todos folgam dois dias por semana: a segunda e mais um, na terça, na quarta ou no domingo. As mulheres, cerca de metade da equipe, folgam domingo sim, domingo não, como a CLT exige (art. 386); os homens folgam um domingo a cada 4 semanas, dentro do limite de sete semanas para o repouso coincidir com o domingo nas atividades autorizadas a funcionar aos domingos, como restaurantes e bares (Portaria MTP n. 671/2021) [AV]. A folha passa de R$ 5,6 mil para R$ 9,3 mil por mês, sem encargos.
 
 **Quadro 7.2 – Equipe proposta**
 
 | Função | Pessoas | Escala | Salário de admissão (R$) | Remuneração com adicionais (R$) |
 |---|---|---|---|---|
-| Atendente e instrutor de jogos | 3 | 5 dias, da abertura ao fechamento: 8 h de terça a sábado, com 1 h de intervalo, e 6 h no domingo, com 15 min (38 a 40 h por semana). Três de quinta a sábado e dois nos demais dias. Folgas na segunda e na terça, na quarta ou no domingo | 1.653,75 | 1.836,56 |
-| Cozinheiro-chefe | 2 | 5 dias, no mesmo turno dos atendentes (38 a 40 h por semana). Dois de quarta a sábado e um na terça e no domingo. Folgas na segunda e, em semanas alternadas, na terça ou no domingo | 1.700,00 | 1.889,68 |
-| Sócio (caixa, gestão e mesas) | 1 | Todo o horário aberto: terça a sábado das 14h às 23h, domingo das 14h às 20h | Pró-labore (C08) | n.a. |
-| Total (folha mensal) | 5 empregados | n.a. | 8.361,25 | 9.289,03 |
+| Atendente e instrutor de jogos | 2 | 5 dias, de terça a sábado, da abertura ao fechamento: 8 h com 1 h de intervalo (40 h por semana). Folgas no domingo e na segunda | 1.653,75 | 1.845,99 |
+| Cozinheiro-chefe | 1 | 5 dias, no mesmo turno dos atendentes (40 h por semana). Folgas no domingo e na segunda | 1.700,00 | 1.897,62 |
+| Sócio (gestão, caixa e salão) | 1 | Todo o horário aberto: terça a sábado, das 14h às 23h | Pró-labore (C08) | n.a. |
+| Total (folha mensal) | 3 empregados | n.a. | 5.007,50 | 5.589,60 |
 
 Fonte: elaborado pelo próprio autor, com base nos Blocos B2 (1.628 avaliações) e B3 (10/10/2026 a 30/10/2026) e no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana; recreador em todas as atividades e cozinheiro geral na CNAE 56).
 
-Nota: remuneração por pessoa: salário, adicional noturno de 20% e hora noturna reduzida das 22h às 23h (CLT, art. 73), repouso sobre esses adicionais e feriados trabalhados em dobro (Lei n. 605/1949, art. 9º). O domingo trabalhado com folga na semana não tem adicional (TST, Súmula 146). Com encargos, provisões e vale-transporte de 43,6% (premissa C07), o custo vai a R$ 13.335,89 por mês (Tabela 9.2). Os salários ficam acima do piso de R$ 1.625,09 da convenção coletiva dos bares e restaurantes de Salvador (SHRBS e Sindbares, 2024/2026), que pode fixar adicional noturno maior que o da CLT [AV]. n.a.: não se aplica.
+Nota: remuneração por pessoa: salário, adicional noturno de 20% e hora noturna reduzida das 22h às 23h (CLT, art. 73), repouso sobre esses adicionais e feriados trabalhados em dobro (Lei n. 605/1949, art. 9º). O domingo trabalhado com folga na semana não tem adicional (TST, Súmula 146). Com encargos, provisões e vale-transporte de 43,5% (premissa C07), o custo vai a R$ 8.023,34 por mês (Tabela 9.2). Os salários ficam acima do piso de R$ 1.625,09 da convenção coletiva dos bares e restaurantes de Salvador (SHRBS e Sindbares, 2024/2026), que pode fixar adicional noturno maior que o da CLT [AV]. n.a.: não se aplica.
 
-Cada empregado fica até o fechamento de terça a sábado e faz, em média, 4,5 noites por semana depois das 22h. O cozinheiro custa R$ 2.708,57 por mês, e o instrutor, R$ 2.639,58: a diferença vem do salário (Tabela 7.1).
+Cada empregado fica até o fechamento nos 5 dias e faz 5 noites por semana depois das 22h. O cozinheiro custa R$ 2.719,11 por mês, e o instrutor, R$ 2.652,12: a diferença vem do salário (Tabela 7.1).
 
 **Tabela 7.1 – Composição do custo mensal por empregado, cenário provável (R$)**
 
 | Conta | Instrutor de jogos | Cozinheiro-chefe |
 |---|---|---|
 | Salário de admissão | 1.653,75 | 1.700,00 |
-| (+) Adicional noturno (20%) | 32,57 | 34,12 |
-| (+) Hora noturna reduzida (hora extra de 50%) | 41,88 | 43,86 |
-| (+) Repouso semanal sobre os adicionais | 16,48 | 17,26 |
+| (+) Adicional noturno (20%) | 35,95 | 36,96 |
+| (+) Hora noturna reduzida (hora extra de 50%) | 46,23 | 47,52 |
+| (+) Repouso semanal sobre os adicionais | 18,19 | 18,69 |
 | (+) Feriados trabalhados em dobro | 91,88 | 94,44 |
-| **(=) Remuneração** | 1.836,56 | 1.889,68 |
-| (+) FGTS (8%) | 146,92 | 151,17 |
-| (+) 13º salário (1/12) | 153,05 | 157,47 |
-| (+) Férias com 1/3 (1/12 × 4/3) | 204,06 | 209,96 |
-| (+) FGTS sobre 13º e férias | 28,57 | 29,40 |
-| **(=) Custo com encargos sobre a remuneração** | 2.369,16 | 2.437,69 |
+| **(=) Remuneração** | 1.845,99 | 1.897,62 |
+| (+) FGTS (8%) | 147,68 | 151,81 |
+| (+) 13º salário (1/12) | 153,83 | 158,13 |
+| (+) Férias com 1/3 (1/12 × 4/3) | 205,11 | 210,85 |
+| (+) FGTS sobre 13º e férias | 28,72 | 29,52 |
+| **(=) Custo com encargos sobre a remuneração** | 2.381,33 | 2.447,93 |
 | (+) Aviso prévio indenizado (provisão: 42 dias em 60 meses) | 38,59 | 39,67 |
 | (+) FGTS sobre o aviso prévio | 3,09 | 3,17 |
-| (+) Multa de 40% do FGTS (provisão) | 71,43 | 73,50 |
-| **(=) Custo com provisões de rescisão** | 2.482,26 | 2.554,03 |
+| (+) Multa de 40% do FGTS (provisão) | 71,79 | 73,80 |
+| **(=) Custo com provisões de rescisão** | 2.494,80 | 2.564,57 |
 | (+) Contribuição patronal ao INSS, RAT e terceiros (no DAS) | 0,00 | 0,00 |
 | (+) Vale-transporte (parte do empregador) | 157,32 | 154,54 |
-| **(=) Custo mensal por empregado** | 2.639,58 | 2.708,57 |
-| (×) Empregados no cargo | 3 | 2 |
-| **(=) Custo mensal do cargo** | 7.918,75 | 5.417,14 |
+| **(=) Custo mensal por empregado** | 2.652,12 | 2.719,11 |
+| (×) Empregados no cargo | 2 | 1 |
+| **(=) Custo mensal do cargo** | 5.304,23 | 2.719,11 |
 
 Fonte: elaborado pelo próprio autor, com base no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana), na CLT, na Lei n. 605/1949, na Lei n. 7.418/1985 e na Lei n. 8.036/1990; modelo financeiro (Apêndice E).
 
-Nota: os dois cargos somam R$ 13.335,89 por mês, o pessoal da Tabela 9.2. No Simples Nacional, a contribuição patronal fica no DAS (LC n. 123/2006, art. 13).
+Nota: os dois cargos somam R$ 8.023,34 por mês, o pessoal da Tabela 9.2. No Simples Nacional, a contribuição patronal fica no DAS (LC n. 123/2006, art. 13).
 
-Dois benefícios completam a remuneração, ambos por decisão do autor (04/11/2026). O primeiro é a refeição no local: uma por turno, feita pela cozinha da casa, com custo de insumos de R$ 12,00 (premissa C14, N6, faixa de R$ 9,00 a R$ 15,00). São 109 refeições por mês, R$ 1.304,40 (C15). A cozinha e os insumos já existem, e uma refeição pronta vale mais para o empregado que o vale-alimentação, que ainda exige preparo em casa. Fornecida em espécie pelo empregador, e não em dinheiro, a refeição é auxílio-alimentação: não integra a remuneração e não gera encargos (CLT, art. 457, § 2º, na redação da Lei n. 13.467/2017).
+Dois benefícios completam a remuneração, ambos por decisão do autor (04/11/2026). O primeiro é a refeição no local: uma por turno, feita pela cozinha da casa, com custo de insumos de R$ 12,00 (premissa C14, N6, faixa de R$ 9,00 a R$ 15,00). São 65 refeições por mês, R$ 782,40 (C15). A cozinha e os insumos já existem, e uma refeição pronta vale mais para o empregado que o vale-alimentação, que ainda exige preparo em casa. Fornecida em espécie pelo empregador, e não em dinheiro, a refeição é auxílio-alimentação: não integra a remuneração e não gera encargos (CLT, art. 457, § 2º, na redação da Lei n. 13.467/2017).
 
-O segundo é a participação nos lucros ou resultados (PLR): 5% do EBITDA do ano, paga só em ano com EBITDA positivo (premissa C16). A PLR não custa nada em ano sem lucro e, paga em no máximo duas parcelas por ano, não gera encargos (Lei n. 10.101/2000, art. 3º) [AV]. O rateio é por pontos, com metas da área: o cozinheiro recebe mais pontos que o instrutor, porque a comida é o segundo tema mais citado nas avaliações (B2), e as metas da cozinha (tempo de saída dos pratos, CMV) diferem das do salão (avaliações, aluguéis de jogos). No ano maduro provável, a PLR soma R$ 9.600 por ano, cerca de R$ 1,9 mil por empregado. As regras ficam num acordo com a comissão dos empregados, com um representante do sindicato (art. 2º) [AV].
+O segundo é a participação nos lucros ou resultados (PLR): 5% do EBITDA do ano, paga só em ano com EBITDA positivo (premissa C16). A PLR não custa nada em ano sem lucro e, paga em no máximo duas parcelas por ano, não gera encargos (Lei n. 10.101/2000, art. 3º) [AV]. O rateio é por pontos, com metas da área: o cozinheiro recebe mais pontos que o instrutor, porque a comida é o segundo tema mais citado nas avaliações (B2), e as metas da cozinha (tempo de saída dos pratos, CMV) diferem das do salão (avaliações, aluguéis de jogos). No ano maduro provável, a PLR soma R$ 7.885 por ano, cerca de R$ 2,6 mil por empregado. As regras ficam num acordo com a comissão dos empregados, com um representante do sindicato (art. 2º) [AV].
 
-A folha com encargos fica em 17,5% da receita do ano maduro provável, e em 19,2% com as refeições, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). O salário de admissão do Novo CAGED tende a ficar abaixo do salário pago a quem já está no cargo; por isso, o capítulo 9 testa um acréscimo de até 11,4% sobre ele. A São Jogue opera com mais gente: de três a sete instrutores no salão nas visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
+A folha com encargos fica em 11,5% da receita do ano maduro provável, e em 12,7% com as refeições, abaixo dos 25,1% de gastos com pessoal na média dos serviços de alimentação (IBGE, PAS 2024). O salário de admissão do Novo CAGED tende a ficar abaixo do salário pago a quem já está no cargo; por isso, o capítulo 9 testa um acréscimo de até 11,4% sobre ele. A São Jogue opera com mais gente: de três a sete instrutores no salão nas visitas. Essa diferença vem do porte da rede, com duas unidades e salas extras, e não muda o dimensionamento pela demanda.
 
 Contratar instrutores como jovens aprendizes reduz pouco o custo. Os salários já estão no piso, e o aprendiz trabalha no máximo 6 horas por dia, o que exige mais pessoas para cobrir as mesmas horas; menores de 18 anos não podem trabalhar depois das 22h (CLT, art. 404 e art. 432). O estágio exige relação com o curso do estudante (Lei n. 11.788/2008) e não cabe na função de atendimento. As duas formas ficam fora do provável. Fora da equipe fixa, o contador é terceirizado (R$ 1.200,00 por mês, C11). A limpeza diária entra nas tarefas de abertura e fechamento da equipe.
 

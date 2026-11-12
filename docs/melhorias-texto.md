@@ -24,7 +24,9 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
-**D82 — Calibração pelo índice do Google só no cap. 3 (12/11/2026).** Cap. 3 (3.4 e Quadro 3.4) descreve a conversão da média das visitas pelo índice "Horários de pico" da São Jogue (54,5% nos horários das visitas) e a premissa de proporção entre índice e ocupação; os caps. 6 (6.4), 7 (7.2) e 9 (9.1, R04 e R15) ainda usam a circulação média das visitas e as horas de pico equivalentes pelos concorrentes abertos. Sugestão: decidir o L25; se (a), levar a conversão aos caps. 6, 7 e 9; se (b), a frase do 3.4 vira nota do cenário alternativo.
+**D83 — Taxa de entrada de R$ 19,62 (29 casas) no texto × R$ 19,65 (31 casas) no modelo (12/11/2026).** O cap. 9 (9.1, 9.3 e 9.6) e o modelo usam a taxa recalculada com as casas novas do B1 (commit d5c12d1, Campinas e população de 63 casas); os caps. 4, 6 (Quadro 6.1 e 6.3), 10 (Quadro 10.1), 11 e o resumo ainda citam R$ 19,62 e 29 casas, junto das contagens de 54 concorrentes. Sugestão: propagar a população nova (L24 e L27) a todos os capítulos de uma vez.
+
+**D82 — Calibração pelo índice do Google só no cap. 3 (12/11/2026).** Cap. 3 (3.4 e Quadro 3.4) descreve a conversão da média das visitas pelo índice "Horários de pico" da São Jogue (54,5% nos horários das visitas) e a premissa de proporção entre índice e ocupação; os caps. 6 (6.4), 7 (7.2) e 9 (9.1, R04 e R15) ainda usam a circulação média das visitas e as horas de pico equivalentes pelos concorrentes abertos. Sugestão: decidir o L28; se (a), levar a conversão aos caps. 6, 7 e 9; se (b), a frase do 3.4 vira nota do cenário alternativo.
 
 **D80 — Acervo dos concorrentes sem a Fan Hour (12/11/2026).** Cap. 3 (3.2), cap. 6 (6.1 e 6.2) e cap. 7 (7.3) citam "30 acervos publicados" e a mediana de 322 títulos, e o cap. 5 (5.3.2), 468 títulos em 17 casas (L4). A busca de 11/11 achou o acervo da Fan Hour (142 jogos de tabuleiro), 31ª casa: com ela, a mediana dos acervos cai para 312. O texto segue certo para a data que cita (17/10/2026), mas o banco de jogos não pôde ser rodado de novo (pendências, "Cardápios, couvert e acervos"). Correção possível: nota em 3.6 ou rodar o banco quando o arquivo do B5 antigo voltar.
 
@@ -36,7 +38,6 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D79 — Folha de aprovação com a banca em branco (09/11/2026).** Pré-textuais do v31: orientador, dois membros e data em branco, no modelo da NBR 14724. Sugestão: conferir o modelo do colegiado (L22).
 
-**D64 — Dias com dois instrutores (04/11/2026).** Cap. 7 (7.5: teto de 2 mesas por instrutor e 3 pessoas no salão) × escala do Quadro 7.2. Na terça, na quarta e no domingo, o salão tem 2 instrutores e o sócio; no intervalo de cada um, fica com 1 instrutor e o sócio, teto de 4 mesas, e no domingo de folga do atendente (1 a cada 4 semanas) com 1 instrutor e o sócio o dia todo. O 7.5 declara a exceção; a demanda provável ocupa 3,2 mesas no pico, mas a otimista passa de 4. Decidido em L18: manter declarado no 7.5 (escala de 04/11: 3 instrutores de quinta a sábado e 2 nos demais dias).
 
 **D66 — TMin v32 com 115 páginas (12/11/2026).** Com texto, apêndices e folha de aprovação no mesmo PDF, são 115 páginas (116 no v31), dentro do teto de 120 (elevado em 09/11/2026). Ganhos só de formatação, sem cortar texto, estimados em 6 a 9 páginas: referências em espaço simples, como pede a NBR 14724 (2 a 3); fins dos caps. 5, 6 e 9 e dos Apêndices C e D com poucas linhas na última página (1 cada); sumário e siglas com 5 e 12 linhas na última página (1 cada). Detalhes na resposta de 09/11/2026 e no commit.
 

@@ -77,7 +77,7 @@ A contagem cobre só as horas observadas. Para estimar as vendas fora delas, o t
 
 As bases públicas (Bloco B4) trazem informações sobre o público e a renda (Censo 2022, estimativas de população e Pesquisa Nacional por Amostra de Domicílios, PNAD Contínua), o preço do aluguel (FipeZap), os salários (Novo Cadastro Geral de Empregados e Desempregados, Novo CAGED), os tributos (Simples Nacional e Comissão Nacional de Classificação, CONCLA), as margens do setor (Pesquisa Anual de Serviços, PAS), o gasto das famílias (Pesquisa de Orçamentos Familiares, POF 2017-2018) e a taxa de desconto (Banco Central). Cada série tem recorte e data de referência (Apêndice C).
 
-O Bloco B5 orça o investimento inicial item a item, nos 75 itens da abertura. Os itens da reforma usam as composições do Sistema Nacional de Pesquisa de Custos e Índices da Construção Civil (SINAPI) na Bahia, com a taxa de bonificações e despesas indiretas do Tribunal de Contas da União (N2). Os itens de mobiliário, cozinha e informática vêm de buscas na Amazon e no Mercado Livre. Em cada busca, foram coletados os cinco primeiros anúncios não patrocinados, na ordem do site, que cumprem a especificação mínima do item, com o preço sem frete (N3). O 3º quartil, a mediana e o 1º quartil das ofertas de cada item dão os cenários pessimista, provável e otimista. As quantidades, sem projeto do ponto, são estimativas do autor (N6).
+O Bloco B5 orça o investimento inicial item a item, nos 75 itens da abertura. Os itens da reforma usam as composições do Sistema Nacional de Pesquisa de Custos e Índices da Construção Civil (SINAPI) na Bahia, com a taxa de bonificações e despesas indiretas do Tribunal de Contas da União (N2). Os itens de mobiliário, cozinha e informática vêm de buscas na Amazon e no Mercado Livre. Em cada busca, foram coletados os cinco primeiros anúncios não patrocinados, na ordem do site, que cumprem a especificação mínima do item, com o preço sem frete (N3). O 3º quartil, a mediana e o 1º quartil das ofertas de cada item dão os cenários pessimista, provável e otimista. As quantidades, sem projeto do ponto, são estimativas do autor (N6). O aluguel, o condomínio e o IPTU vêm de anúncios de lojas e casas comerciais nos portais OLX, ZAP Imóveis e Viva Real (12/11/2026), sem salas em prédio e sem as duplicatas entre portais (N3).
 
 ## 3.3 TRATAMENTO DOS DADOS
 
@@ -123,7 +123,8 @@ O método mede bem os concorrentes estabelecidos e o movimento máximo da São J
 | NFC-e só a pedido, um intervalo por unidade | Vendas subestimadas; sem variação do mês | Notas como limite inferior, em faixa |
 | Registros incompletos nas visitas (nota fiscal do início, contagem de mesas a cada 30 minutos, quem já estava no salão na chegada) | Pessoas por nota sem medida; contagens da porta e das mesas diferentes | Circulação só pela porta; ocupação, grupo e permanência só pelas mesas; dado faltante declarado, sem imputação |
 | Falhas do script e erro de codificação | Registros perdidos; viés nos temas | Recodificação cega (kappa de 0,84 nos temas); conferência do script na página pendente |
-| FipeZap por cidade e POF de 2017-2018 | Aluguel sem bairro; valores defasados | Faixa larga; correção pelo IPCA; cotação do ponto |
+| Aluguel pelo preço pedido em anúncios e POF de 2017-2018 | Aluguel acima do fechado em contrato; valores defasados | Faixa do 1º ao 3º quartil dos anúncios; correção pelo IPCA; cotação do ponto |
+| Ponto só na Pituba, com área para 8 mesas desde a abertura (decisão do autor) | Aluguel de cerca de 24 m² sem uso até a etapa de mesas; sem comparação com os outros finalistas | Premissa declarada; área e aluguel pela média dos 17 anúncios de 150 a 200 m² (B5); etapa de mesas sem obra |
 
 Fonte: elaborado pelo próprio autor.
 

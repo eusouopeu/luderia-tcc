@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de avaliações do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.30-3
+// @version      2026.11.12-1
 // @description  Abre as avaliações de um lugar, ordena por mais recentes, rola até o fim do período, expande os textos (no idioma original), filtra por tema, opinião, componentes e busca, salva o progresso, coleta em fila, confere amostras e exporta CSV com autor pseudonimizado.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -37,6 +37,13 @@
  *    "ja_coletada" marca os já vistos, o filtro "não coletada antes" isola as
  *    novas e, se marcado, a rolagem para ao achar 10 já coletadas seguidas.
  *  - Período "de… até…" e "Localizar período" levam até uma janela de datas.
+ *
+ * Menu das casas (mesmo padrão do coletor de preços do B5): o seletor do topo traz as 63
+ * casas do B1 por capital, com ✓ coletada (avaliações lidas), ◐ lista parou de crescer,
+ * ! coleta incompleta e ○ falta. Escolher uma casa abre o lugar no Maps, coleta sozinho
+ * quando ele carrega e baixa o CSV de tudo; "Próximo" faz o mesmo com a próxima que falta
+ * (primeiro na mesma capital); "Coletada"/"Desfazer" marca à mão; "só as que faltam"
+ * esconde as prontas. O estado vem dos resumos de coleta guardados (place_id ou nome).
  *
  * Fila: uma URL do Maps ou um place_id por linha. O script abre cada lugar,
  * coleta, baixa o CSV de tudo (sempre, mesmo com o download automático desligado,
@@ -1073,6 +1080,7 @@
     await salvarAndamento(lugar, resultado, motivo);
     ultimoResumo = linhaResumo(lugar, resultado, motivo);
     GM_setValue(CHAVE_RESUMOS, [...GM_getValue(CHAVE_RESUMOS, []), ultimoResumo]);
+    rotularCasas();
     atualizarIdsConhecidos(true);
     atualizarFiltrosNaPagina();
     mostrarResumo(motivo, lugar);
@@ -1237,6 +1245,167 @@
     } finally {
       ocupado = false; atualizarBotoes();
     }
+  }
+
+  // ---------- menu das casas do B1 ----------
+  // Mesmo padrão do coletor de preços (B5): seletor com as casas por capital, marcadas
+  // como coletadas; escolher uma abre o lugar no Maps e coleta sozinho quando carrega;
+  // "Próximo" abre a próxima que falta. População: as 63 casas do B1
+  // (dados/[B1]…/entorno/B1_entorno_maps_fila.csv). [place_id, nome, capital]
+  const POP = [
+    ["ChIJRcWOaPabpgARDvX2Bad0qb0", "Bardo Mago", "Belo Horizonte"],
+    ["ChIJpzB8zc2XpgARoJTUu90J6Pw", "Comdado Bar e Jogos", "Belo Horizonte"],
+    ["ChIJsUAT-dObpgARCT2C5QpnVKU", "Garagem do Nerd", "Belo Horizonte"],
+    ["ChIJ-17ZQDG9pgARc-AxpXmaNRU", "La Tabuleria", "Belo Horizonte"],
+    ["ChIJx5jr3zGXpgARQGx9eX7TDmY", "LudoCafé", "Belo Horizonte"],
+    ["ChIJ6ZLMZw-XpgAR_OR6SwY5xKo", "Shelf Bar e Jogos", "Belo Horizonte"],
+    ["ChIJ-97tiEeNpJIRb_eV7a-sxBs", "Ludoteca Sidequest", "Belém"],
+    ["ChIJyXjE650xWpMRJL-J6QbGkt4", "FORTALÚDICA - BURGERS & JOGOS", "Brasília"],
+    ["ChIJ172cu2U7WpMR-GxnGmUHCkc", "Gruta BSB", "Brasília"],
+    ["ChIJdUv4La46WpMRnBvNknmOqWo", "Inside Games", "Brasília"],
+    ["ChIJzdFNP3AyWpMRH2P6HEuhE-I", "Loja de Jogos - Asgard", "Brasília"],
+    ["ChIJ15nLgwAwWpMRY1whwD29ZSo", "Ludoteca BGC", "Brasília"],
+    ["ChIJN8BZeb85WpMRgVKT05caxB4", "Utopia Games & Food", "Brasília"],
+    ["ChIJGXginrXGyJQR0LFEVIzp4hI", "Metropoly Bar", "Campinas"],
+    ["ChIJz-2zsLTHyJQRyn6ZZtDZgBI", "Muito Geek | TCG • Board Games • Fliperama", "Campinas"],
+    ["ChIJ5ehtIcbFyJQRf7QBB6TJ6XE", "Nergeek", "Campinas"],
+    ["ChIJ3ekLtDjl3JQRHwtNgmINgLo", "Alçapão Jogos", "Curitiba"],
+    ["ChIJY_lqHVLl3JQRvDHacOMDKuc", "BoardZ Game Pub", "Curitiba"],
+    ["ChIJOczn8z7l3JQRNBEL_ZJ3iQo", "Joyjoy Café", "Curitiba"],
+    ["ChIJK5Dhtunj3JQRniPWHB3haDU", "Paladino Hobbies", "Curitiba"],
+    ["ChIJc66HomXk3JQRNl28jz_VsPc", "Taverna Game House", "Curitiba"],
+    ["ChIJ1wjBJD7k3JQRQi7trfp_0aQ", "Vila Celta Hobby Store - Jogos e Café", "Curitiba"],
+    ["ChIJawIVeV0JM0oR5BtnD_poQeA", "CCG Floripa", "Florianópolis"],
+    ["ChIJc3F7ka83J5URQZ1XTl-_iak", "Chef on Play", "Florianópolis"],
+    ["ChIJJz8-gcY3J5URYdZrEXdHaAk", "Cineplay- Restaurante e Jogos", "Florianópolis"],
+    ["ChIJ0yXbI35IxwcR0_jLi-uINUU", "Balboa's Hobby Games", "Fortaleza"],
+    ["ChIJQURqeMZJxwcR95O-XLbS2mk", "Dominaria Cards & Games", "Fortaleza"],
+    ["ChIJ89uEICDxXpMRdaEvN0XiWK0", "Paladins Game Store", "Goiânia"],
+    ["ChIJHSDPTgF5GZURKmSqKITyoGM", "Arcadea Gaming Pub", "Porto Alegre"],
+    ["ChIJ41pgHNFDGZURC7yTegyn7nU", "Toca do Rato - Pizzaria e Jogos de Tabuleiro", "Porto Alegre"],
+    ["ChIJRUjwU66WoGgRzc9yJU7jkwM", "Nala Land - Bar de Jogos de Tabuleiro em Recife", "Recife"],
+    ["ChIJPx_QtT17mQAR9cO9ARQW00g", "Cheio de Fome - Vila da Penha", "Rio de Janeiro"],
+    ["ChIJu1yUroF_mQAR7qxqAfxKSw4", "Game Of Boards", "Rio de Janeiro"],
+    ["ChIJ90Gs_9rVmwAReA7MnIyPLTE", "Luderia Carioca", "Rio de Janeiro"],
+    ["ChIJYzHxUhR-mQARpqVtYD9th0c", "Magic Store Brazil", "Rio de Janeiro"],
+    ["ChIJ1SAzAGF_mQARQgP-yrPBxbQ", "RED jogos", "Rio de Janeiro"],
+    ["ChIJxXhMZN5_mQARj2JCqcWfTD8", "Reduto", "Rio de Janeiro"],
+    ["ChIJOcVssmeDmQARZZrnWu2mnwA", "TabuClub", "Rio de Janeiro"],
+    ["ChIJoTlvBfMbFgcRHvuCKHBQrXQ", "São Jogue - Bela Vista", "Salvador"],
+    ["ChIJfWR3S3ZazpQR6aC6xpbPMwU", "60 Minutos Escape, Hamburgueria e Boardgames", "São Paulo"],
+    ["ChIJYTHwWgBbzpQRFenbJdM5cxU", "Arena BG | Jogos de Tabuleiro | Hamburgueria", "São Paulo"],
+    ["ChIJKeHwNv5ZzpQRlmzx9rCTWdM", "Bodogami Restaurante e Cafeteria", "São Paulo"],
+    ["ChIJ__9TTnxCzpQRwVSzrOijkRY", "Bravo Jogos", "São Paulo"],
+    ["ChIJRU7FUX1CzpQRj3E7xMzGPvA", "CHQ Jogos", "São Paulo"],
+    ["ChIJrT_EWwBZzpQRGAZzptZbtsY", "Cartola Luderia Bar", "São Paulo"],
+    ["ChIJbZRHQPRfzpQRz97-ZOg0yXA", "Castelos Bar & Boardgames", "São Paulo"],
+    ["ChIJF9j3OCRbzpQRkk74_QtOk_0", "Coletivo Geek", "São Paulo"],
+    ["ChIJ7_DDAlH1zpQRJVJ0UHnItH8", "Covil Game Bar", "São Paulo"],
+    ["ChIJSU_eTQBDzpQRv_GdRUp0f-g", "Covil Game Bar SBC", "São Paulo"],
+    ["ChIJiZJ_DnIDz5QRaVafFCXGkUE", "Dungeon Games Store", "São Paulo"],
+    ["ChIJZz29dnVXzpQRvRh7_YKyUN4", "Encounter | Jogos de Tabuleiro | Board Games", "São Paulo"],
+    ["ChIJBUzaCedbzpQRkSqbwW7yAvQ", "Espaço 162 - Meu Karaokê Box", "São Paulo"],
+    ["ChIJ_aN4OAxXzpQR0UH63sAeVCA", "Fan Hour Games and Burgers", "São Paulo"],
+    ["ChIJa3UsDhRczpQRPPSuDl6acO8", "Flow Games - Burgers, Cards & Comunidade", "São Paulo"],
+    ["ChIJn7uU0RNbzpQRI4GI9KHOo_s", "Jogasampa", "São Paulo"],
+    ["ChIJTaG5ALpZzpQRUDErQ-RkfTs", "Ludus Luderia", "São Paulo"],
+    ["ChIJE43rt29ZzpQRnvADt6pXfto", "OMNIVERSE", "São Paulo"],
+    ["ChIJo-6lZMlezpQRmgUpUPfmRIs", "Pitta's Board Games", "São Paulo"],
+    ["ChIJkWsGmd1czpQRGLydxc29vbw", "Place Games", "São Paulo"],
+    ["ChIJNcHw7jNYzpQRKRHPOrb4jEw", "Play Easy", "São Paulo"],
+    ["ChIJsU5BAwBRzpQRAgLVvqg68os", "Tubaleria", "São Paulo"],
+    ["ChIJi5zbZadgzpQRIYeuK_eqQio", "XPlace", "São Paulo"],
+    ["ChIJfyav9YI9uAARjwbBqcRm2_k", "Café Geek Cafeteria e Ludoteca", "Vitória"],
+  ].map(([id, nome, capital]) => ({ id, nome, capital }));
+  const CHAVE_ALVO = 'alvo:atual';
+  const CHAVE_ABRIR = 'alvo:abrir';
+  const CHAVE_MARCAS = 'alvo:marcas'; // { place_id: true (dada por coletada) | false (desfeita) }
+  const CHAVE_SO_FALTAM = 'pref:soFaltam';
+  const urlCasa = (p) => `https://www.google.com/maps/place/?q=place_id:${p.id}`;
+  const pidAtual = () => GM_getValue(CHAVE_ALVO, POP[0].id);
+
+  // Casa do B1 do lugar aberto: pelo place_id (URL, fila ou campo) ou pelo nome exato.
+  function casaDoLugar(lugar) {
+    if (lugar.place_id) { const p = POP.find((x) => x.id === lugar.place_id); if (p) return p; }
+    const n = semAcento(lugar.nome_estabelecimento).trim();
+    return n ? POP.find((x) => semAcento(x.nome).trim() === n) || null : null;
+  }
+
+  // ok (coleta completa), incerta (a lista parou de crescer), falha (coleta incompleta)
+  // ou falta. A marca à mão ("Coletada"/"Desfazer") prevalece sobre os resumos.
+  function estadoCasa(p, resumos = GM_getValue(CHAVE_RESUMOS, []), marcas = GM_getValue(CHAVE_MARCAS, {})) {
+    if (marcas[p.id] === true) return { e: 'ok', n: '' };
+    if (marcas[p.id] === false) return { e: 'falta', n: '' };
+    const rs = resumos.filter((r) => r.place_id === p.id || (!r.place_id && semAcento(r.nome_estabelecimento).trim() === semAcento(p.nome).trim()));
+    if (!rs.length) return { e: 'falta', n: '' };
+    const melhor = rs.find((r) => r.coleta_completa === 'sim') || rs.find((r) => r.coleta_completa === 'incerta') || rs[rs.length - 1];
+    const e = melhor.coleta_completa === 'sim' ? 'ok' : melhor.coleta_completa === 'incerta' ? 'incerta' : 'falha';
+    return { e, n: melhor.lidas ?? '' };
+  }
+
+  // Próxima casa que falta (ou cuja coleta falhou): primeiro na capital da atual, depois
+  // nas outras, na ordem do seletor a partir da atual.
+  function proximaQueFalta(pid, resumos, marcas) {
+    const i0 = POP.findIndex((p) => p.id === pid);
+    const atual = POP[i0] || POP[0];
+    const ordem = [...POP.slice(i0 + 1), ...POP.slice(0, Math.max(i0, 0))]
+      .filter((p) => ['falta', 'falha'].includes(estadoCasa(p, resumos, marcas).e));
+    return ordem.find((p) => p.capital === atual.capital) || ordem[0] || null;
+  }
+
+  function abrirCasa(p) {
+    GM_setValue(CHAVE_ALVO, p.id);
+    GM_setValue(CHAVE_ABRIR, { pid: p.id, em: Date.now() });
+    status(`Abrindo ${p.nome}…`);
+    location.href = urlCasa(p);
+  }
+
+  function rotularCasas() {
+    if (!el.casa) return;
+    const resumos = GM_getValue(CHAVE_RESUMOS, []);
+    const marcas = GM_getValue(CHAVE_MARCAS, {});
+    const soFaltam = GM_getValue(CHAVE_SO_FALTAM, false);
+    const atual = pidAtual();
+    let prontas = 0;
+    for (const o of el.casa.querySelectorAll('option')) {
+      const p = POP.find((x) => x.id === o.value);
+      const { e, n } = estadoCasa(p, resumos, marcas);
+      if (e === 'ok' || e === 'incerta') prontas++;
+      o.className = e;
+      o.textContent = e === 'ok' ? `✓ ${p.nome}${n !== '' ? ` (${n})` : ''}` : e === 'incerta' ? `◐ ${p.nome} (${n}, incerta)`
+        : e === 'falha' ? `! ${p.nome} (incompleta)` : `○ ${p.nome}`;
+      o.hidden = soFaltam && (e === 'ok' || e === 'incerta') && p.id !== atual;
+    }
+    for (const g of el.casa.querySelectorAll('optgroup')) g.hidden = [...g.querySelectorAll('option')].every((o) => o.hidden);
+    el.casa.value = atual;
+    el.casaInfo.textContent = `${prontas} de ${POP.length} coletadas`;
+    const col = ['ok', 'incerta'].includes(estadoCasa(POP.find((p) => p.id === atual) || POP[0], resumos, marcas).e);
+    el.bMarcar.replaceChildren(icone(col ? 'x-mark' : 'check'), col ? 'Desfazer' : 'Coletada');
+    el.bMarcar.title = col ? 'Desfazer: a casa volta a faltar (seletor, "Próximo" e "só as que faltam"); as avaliações e resumos guardados ficam'
+      : 'Marcar coletada: dá a casa por coletada sem nova coleta (ex.: sem avaliações no período)';
+  }
+
+  // Casa aberta pelo seletor ou por "Próximo": coleta sozinha quando o lugar carrega e
+  // baixa o CSV de tudo (a página muda na próxima casa, como na fila).
+  async function coletarAoAbrir() {
+    const pedido = GM_getValue(CHAVE_ABRIR, null);
+    if (!pedido) return;
+    GM_deleteValue(CHAVE_ABRIR);
+    if (Date.now() - pedido.em > 2 * 60 * 1000) return;
+    const casa = POP.find((p) => p.id === pedido.pid);
+    if (!casa) return;
+    placeIdFila = casa.id;
+    await executar(async () => {
+      status(`${casa.nome}: esperando o lugar carregar…`);
+      if (!(await aguardar(() => infoLugar().nome_estabelecimento, 45000))) throw new Error(`${casa.nome} não carregou. Escolha a casa de novo ou abra o lugar à mão.`);
+      await esperar(2500);
+      el.jaOrdenado.checked = false;
+      status(`Coletando ${casa.nome}…`);
+      const motivo = await coletar();
+      if (resultado.length) baixar(resultado, 'tudo', { forcar: true });
+      rotularCasas();
+      if (motivo === 'ordem errada' || motivo === 'lista não encontrada') throw new Error(MSG_MOTIVO[motivo]);
+    }, { avisar: true });
   }
 
   // ---------- conferência (fidelidade) ----------
@@ -1727,6 +1896,7 @@
     select{padding:5px 4px;cursor:pointer;flex:1;min-width:0}
     .periodo{flex-wrap:nowrap}
     select option{color:#111;background:#fff}
+    select option.ok,select option.incerta{color:#9ca3af} select option.falha{color:#b45309}
     input{min-width:0;flex:1}
     input::placeholder,textarea::placeholder{color:var(--suave)}
     textarea{width:100%;height:64px;font:12px/1.45 ui-monospace,Menlo,monospace;resize:vertical;display:block}
@@ -1833,6 +2003,34 @@
     el.jaOrdenado = etiqueta('Já ordenei por "Mais recentes"', () => {}, { dica: 'Marque se já ordenou a lista à mão. O script pula a etapa de ordenar.' });
     el.pararConhecidas = etiqueta('Parar em 10 já coletadas seguidas', () => {}, { dica: 'A rolagem para ao achar 10 avaliações já coletadas em sequência: retoma de onde a última coleta parou.' });
     el.placeId = criar('input', { type: 'text', placeholder: 'place_id do B1 (se faltar na URL)' });
+
+    // ----- menu das casas do B1 -----
+    const capitais = [...new Set(POP.map((p) => p.capital))];
+    el.casa = criar('select', {
+      title: 'Casas do B1, por capital: escolher uma abre no Maps e coleta. ✓ coletada (avaliações lidas), ◐ lista parou de crescer, ! incompleta, ○ falta',
+      onchange: () => {
+        const p = POP.find((x) => x.id === el.casa.value);
+        if (casaDoLugar(infoLugar())?.id === p.id) { GM_setValue(CHAVE_ALVO, p.id); rotularCasas(); return; }
+        if (ocupado) { el.casa.value = pidAtual(); status('Espere a coleta em curso terminar (ou "Parar").', 'alerta'); return; }
+        abrirCasa(p);
+      },
+    }, capitais.map((c) => criar('optgroup', { label: c },
+      POP.filter((p) => p.capital === c).map((p) => criar('option', { value: p.id, textContent: p.nome })))));
+    el.casaInfo = criar('span', { className: 'suave' });
+    const soFaltam = etiqueta('só as que faltam', (v) => { GM_setValue(CHAVE_SO_FALTAM, v); rotularCasas(); },
+      { ligada: GM_getValue(CHAVE_SO_FALTAM, false), dica: 'Esconde no seletor as casas já coletadas.' });
+    const bProximo = botaoTexto('forward', 'Próximo', () => {
+      const p = proximaQueFalta(pidAtual(), GM_getValue(CHAVE_RESUMOS, []), GM_getValue(CHAVE_MARCAS, {}));
+      if (!p) { status('Todas as casas do B1 estão coletadas.', 'ok'); return; }
+      abrirCasa(p);
+    }, 'mini', 'Próxima que falta: abre a próxima casa sem coleta completa (primeiro na mesma capital) e coleta sozinho quando carregar');
+    el.bMarcar = botaoTexto('check', 'Coletada', () => {
+      const p = POP.find((x) => x.id === pidAtual());
+      const col = ['ok', 'incerta'].includes(estadoCasa(p).e);
+      GM_setValue(CHAVE_MARCAS, { ...GM_getValue(CHAVE_MARCAS, {}), [p.id]: !col });
+      status(col ? `${p.nome} volta a faltar.` : `${p.nome} marcada como coletada.`);
+      rotularCasas();
+    }, 'mini');
 
     // ----- topo: período e ações principais -----
     const seletorDe = criar('select', { onchange: (e) => { periodo.de = +e.target.value; reaplicar(); } },
@@ -2048,6 +2246,8 @@
     ]);
     const painel = criar('div', { id: 'painel' }, [
       cabecalho,
+      criar('div', { className: 'linha' }, [el.casa]),
+      criar('div', { className: 'linha' }, [soFaltam, bProximo, el.bMarcar, el.casaInfo]),
       criar('div', { className: 'linha periodo' }, [
         criar('span', { className: 'rotulo' }, ['Período', ajuda('Idade pelo rótulo do Google (semana = 7 dias, mês = 30, ano = 365). "Até 1 mês" inclui todo o rótulo "um mês atrás" (30 a 59 dias).')]),
         seletorDe, criar('span', { className: 'suave', textContent: 'até' }), seletorAte,
@@ -2198,6 +2398,9 @@
     if (nome && nome !== ultimoLugar) {
       if (ultimoLugar && !ocupado) { el.jaOrdenado.checked = false; el.placeId.value = ''; }
       ultimoLugar = nome;
+      const casa = casaDoLugar(infoLugar());
+      if (casa && casa.id !== pidAtual()) GM_setValue(CHAVE_ALVO, casa.id);
+      rotularCasas();
     }
     atualizarSeloFila();
     vigiarLista();
@@ -2221,5 +2424,7 @@
   garantirPainel();
   avisosAoAbrir();
   setInterval(() => { try { garantirPainel(); } catch (e) { console.error('[Avaliações do Maps]', e); } }, 1500);
-  rodarFilaNestaPagina();
+  rotularCasas();
+  if (GM_getValue(CHAVE_FILA, null)?.ativa) rodarFilaNestaPagina();
+  else coletarAoAbrir();
 })();
