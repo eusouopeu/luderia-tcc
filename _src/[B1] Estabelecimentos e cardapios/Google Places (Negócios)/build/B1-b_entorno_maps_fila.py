@@ -6,7 +6,9 @@ Objeto da fila: as luderias do B1 hoje, ou seja,
   - aprovadas na triagem manual das metrópoles (B1_triagem_manual_metro_av100.xlsx,
     resultado "aprovado"), menos as que saíram do objeto (EXCLUIDAS);
   - mais as "nova luderia" achadas pelo acervo de jogos
-    (B1_acervodejogos_triagem.csv, decisão "nova luderia").
+    (B1_acervodejogos_triagem.csv, decisão "nova luderia");
+  - mais as luderias da repaginação da busca (12/11/2026), com `origem` =
+    "repaginacao" em B1_aprovadas_metro_av100.xlsx (B1-b_triagem_manual.py).
 A lista traz o objeto inteiro, já coletado ou não: o próprio coletor pula,
 em cada fonte, quem já está guardado no navegador (desde 15/10/2026; antes,
 este script tirava da fila quem já tinha resumo do Maps). Cada place_id
@@ -42,6 +44,7 @@ PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 BRUTOS = PROCESSED / "_dados-brutos" / "estabelecimentos"
 TRIAGEM = PROCESSED / "estabelecimentos/3_triagem/B1_triagem_manual_metro_av100.xlsx"
 ACERVO = PROCESSED / "acervo_jogos/B1_acervodejogos_triagem.csv"
+APROVADAS = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
 LOCALIZACOES = BRUTOS / "B1_localizacoes.jsonl"
 SAIDA = PROCESSED / "entorno/B1_entorno_maps_fila.csv"
 
@@ -54,6 +57,9 @@ def alvos():
     tri = pd.read_excel(TRIAGEM)
     aprov = tri[tri["resultado da triagem"] == "aprovado"]
     out = {r.place_id: (r.nome, r.capital_endereco) for r in aprov.itertuples() if r.nome not in EXCLUIDAS}
+    apr = pd.read_excel(APROVADAS)
+    for r in apr[apr["origem"] == "repaginacao"].itertuples():
+        out.setdefault(r.place_id, (r.nome, r.capital_endereco))
     ac = pd.read_csv(ACERVO)
     for r in ac[ac["decisao"] == "nova luderia"].itertuples():
         out.setdefault(r.place_id, (r.nome_google, r.capital_google))

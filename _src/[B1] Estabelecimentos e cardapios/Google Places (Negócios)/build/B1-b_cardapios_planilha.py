@@ -76,6 +76,7 @@ RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos" / "
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 TRIAGEM = PROCESSED / "estabelecimentos/3_triagem/B1_triagem_manual_metro_av100.xlsx"
 NOVAS = PROCESSED / "acervo_jogos/B1_acervodejogos_luderias_novas.csv"
+APROVADAS = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
 SAIDA = PROCESSED / "cardapios" / "B1_cardapios_itens_precos.xlsx"
 
 DATA_COLETA = "2026-10-10"
@@ -449,7 +450,10 @@ def main():
     triagem = triagem[triagem["resultado da triagem"] == "aprovado"][["place_id", "nome", "capital_endereco"]]
     # luderias novas do acervo de jogos (fora da triagem manual)
     novas = pd.read_csv(NOVAS)[["place_id", "nome", "capital_endereco"]]
-    triagem = pd.concat([triagem, novas]).drop_duplicates("place_id")
+    # luderias da repaginação da busca (12/11/2026), ainda sem cardápio transcrito
+    apr = pd.read_excel(APROVADAS)
+    rep = apr[apr["origem"] == "repaginacao"][["place_id", "nome", "capital_endereco"]]
+    triagem = pd.concat([triagem, novas, rep]).drop_duplicates("place_id")
     itens = ler_transcricoes(triagem)
     resumo = montar_resumo(itens)
     precos = montar_precos_subcategoria(itens)

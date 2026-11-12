@@ -45,6 +45,14 @@ seguem no estudo (aprovadas da triagem manual mais as luderias novas do
 acervodejogos). Mesmo SKU "Place Details Enterprise" do modo --sem-reviews.
 Saída: B1_horarios.jsonl; pula os place_ids já presentes nele. Tabela em
 B1-b_horarios.py.
+
+Modo --repaginadas (12/11/2026): detalhes (sem `reviews`, SKU "Place Details
+Enterprise") das luderias aprovadas na triagem manual da repaginação
+(estabelecimentos/3_triagem/B1_repaginacao_triagem.csv) que estão no recorte
+(grupo diferente de Campinas, que fica de fora até a decisão L24). Saída
+separada, B1_detalhes_repaginacao.jsonl, para não entrar no funil do
+B1-b_planilha.py; quem monta a planilha de aprovadas
+(B1-b_triagem_manual.py) lê dele.
 """
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
 import sys
@@ -71,9 +79,11 @@ CANDIDATOS_PATH = RAW / "estabelecimentos/B1_candidatos.csv"
 DETALHES_PATH = RAW / "estabelecimentos/B1_detalhes.jsonl"
 SEM_REVIEWS_PATH = RAW / "estabelecimentos/B1_detalhes_sem_reviews.jsonl"
 HORARIOS_PATH = RAW / "estabelecimentos/B1_horarios.jsonl"
+REPAGINADAS_PATH = RAW / "estabelecimentos/B1_detalhes_repaginacao.jsonl"
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 APROVADAS_PATH = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
 NOVAS_PATH = PROCESSED / "acervo_jogos/B1_acervodejogos_luderias_novas.csv"
+REPAGINACAO_TRIAGEM_PATH = PROCESSED / "estabelecimentos/3_triagem/B1_repaginacao_triagem.csv"
 
 
 def load_unique_place_ids():
@@ -87,6 +97,13 @@ def load_casas_do_estudo():
 
     ids = list(pd.read_excel(APROVADAS_PATH)["place_id"]) + list(pd.read_csv(NOVAS_PATH)["place_id"])
     return sorted(set(ids))
+
+
+def load_repaginadas_aprovadas():
+    """place_ids aprovados na triagem da repaginação e dentro do recorte (sem Campinas)."""
+    with open(REPAGINACAO_TRIAGEM_PATH, newline="", encoding="utf-8") as f:
+        return sorted({r["place_id"] for r in DictReader(f)
+                       if r["resultado_triagem"] == "aprovado" and r["grupo"] != "Campinas"})
 
 
 def load_done_ids(paths):
@@ -113,9 +130,13 @@ def main():
                         help="coleta sem o campo reviews (SKU sem custo)")
     parser.add_argument("--horarios", action="store_true",
                         help="só horários de funcionamento das casas do estudo")
+    parser.add_argument("--repaginadas", action="store_true",
+                        help="detalhes das luderias aprovadas na triagem da repaginação")
     args = parser.parse_args()
 
-    if args.horarios:
+    if args.repaginadas:
+        out_path, ja_feitos = REPAGINADAS_PATH, (REPAGINADAS_PATH,)
+    elif args.horarios:
         out_path, ja_feitos = HORARIOS_PATH, (HORARIOS_PATH,)
     elif args.sem_reviews:
         out_path, ja_feitos = SEM_REVIEWS_PATH, (DETALHES_PATH, SEM_REVIEWS_PATH)
@@ -123,11 +144,16 @@ def main():
         out_path, ja_feitos = DETALHES_PATH, (DETALHES_PATH,)
 
     client = PlacesClient()
-    if args.horarios:
+    if args.repaginadas:
+        buscar = client.place_details_sem_reviews
+    elif args.horarios:
         buscar = client.place_horarios
     else:
         buscar = client.place_details_sem_reviews if args.sem_reviews else client.place_details
-    place_ids = load_casas_do_estudo() if args.horarios else load_unique_place_ids()
+    if args.repaginadas:
+        place_ids = load_repaginadas_aprovadas()
+    else:
+        place_ids = load_casas_do_estudo() if args.horarios else load_unique_place_ids()
     done = load_done_ids(ja_feitos)
     pendentes = [p for p in place_ids if p not in done]
     print(f"{len(place_ids)} place_ids únicos, {len(done)} já coletados, {len(pendentes)} pendentes")

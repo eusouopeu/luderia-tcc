@@ -87,6 +87,16 @@ ROTULOS = [
 ]
 DATA_RODADA_1 = "2026-11-12"
 
+# Rodada 2: decisões do autor sobre a fila gerada abaixo (posições 16, 20 e 25 da lista apresentada em
+# 12/11/2026). A ordem da fila vem do modelo treinado só com a rodada 1, para que as posições não mudem
+# quando as decisões da rodada 2 entram.
+ROTULOS_RODADA_2 = [
+    ("Cheio de Fome - Vila da Penha", "aprovado", "", "luderia", "fonte da confirmação não registrada"),
+    ("Espaço 162", "aprovado", "", "luderia", "fonte da confirmação não registrada"),
+    ("Reduto", "aprovado", "", "luderia", "fonte da confirmação não registrada"),
+]
+DATA_RODADA_2 = "2026-11-12"
+
 ALTA = {"loja de board game", "loja de RPG", "loja de card game", "luderia", "board game café",
         "café de jogos de tabuleiro", "loja de jogos de tabuleiro", "clube de jogos de tabuleiro"}
 BAIXA = {"quiz bar", "ludoteca"}
@@ -190,6 +200,14 @@ def main():
     pend["rodada"] = np.where(pend["termo_de_espaco"] == 1, 2, 3)
     pend["ordem"] = pend.groupby("rodada").cumcount() + 1
 
+    # Decisões da rodada 2 entram depois da ordenação (a fila não muda).
+    for inicio, res, por, atividade, obs in ROTULOS_RODADA_2:
+        achou = pend.index[(pend["rodada"] == 2) & pend["nome"].map(norm).str.startswith(norm(inicio))]
+        assert len(achou) == 1, (inicio, list(pend.loc[achou, "nome"]))
+        for k, v in zip(("resultado_triagem", "desclassificado_por", "atividade_identificada", "observacao",
+                         "data_triagem"), (res, por, atividade, obs, DATA_RODADA_2)):
+            pend.loc[achou[0], k] = v
+
     campos = ["rodada", "ordem", "place_id", "nome", "grupo", "endereco", "volume_avaliacoes", "avaliacao_media",
               "termo_de_espaco", "n_termos", "probabilidade", "resultado_triagem", "desclassificado_por",
               "atividade_identificada", "observacao", "data_triagem", "link_google_maps"]
@@ -199,10 +217,9 @@ def main():
 
     # Fechamento: cada candidato em uma única linha e em uma única rodada.
     assert len(saida) == len(base) and saida["place_id"].is_unique
-    print(f"{len(saida)} candidatos: rodada 1 {len(ROTULOS)} (decididos), rodada 2 {(pend.rodada == 2).sum()}, "
+    print(f"{len(saida)} candidatos: rodada 1 {len(ROTULOS)}, rodada 2 {(pend.rodada == 2).sum()}, "
           f"rodada 3 {(pend.rodada == 3).sum()} (sem termo de espaço); soma confere com {len(base)}")
-    print(saida[saida.rodada == 1].resultado_triagem.value_counts().to_dict(),
-          saida[saida.rodada == 1].desclassificado_por.value_counts().to_dict())
+    print(saida.groupby("rodada").resultado_triagem.value_counts().to_string())
 
 
 if __name__ == "__main__":

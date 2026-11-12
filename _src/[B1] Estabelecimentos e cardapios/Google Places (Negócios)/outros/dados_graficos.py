@@ -33,7 +33,10 @@ def casas() -> pd.DataFrame:
     d = _modulo_estatistica().montar_dados()
     cur = pd.read_csv(B1 / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv", sep=None, engine="python")
     nov = pd.read_csv(B1 / "acervo_jogos/B1_acervodejogos_luderias_novas.csv", sep=None, engine="python")
-    ref = pd.concat([cur, nov])[["place_id", "avaliacao_media", "volume_avaliacoes"]].drop_duplicates("place_id")
+    # Luderias da repaginação (12/11/2026): nota e volume vêm da planilha de aprovadas, que os leu da API.
+    apr = pd.read_excel(B1 / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx")
+    rep = apr[apr["origem"] == "repaginacao"]
+    ref = pd.concat([cur, nov, rep])[["place_id", "avaliacao_media", "volume_avaliacoes"]].drop_duplicates("place_id")
     x = d.drop(columns=["avaliacao_media", "volume_avaliacoes"]).merge(ref, on="place_id", how="left")
     assert len(x) == len(d) and x.place_id.is_unique
     falta = x[x.avaliacao_media.isna()]

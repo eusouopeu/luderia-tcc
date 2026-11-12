@@ -28,6 +28,14 @@ com data e motivo) e substituem a anotação original antes da classificação.
 Cada place_id recebe um único resultado; a soma dos resultados fecha com o
 total de linhas da entrada (conferido no terminal).
 
+Luderias da repaginação (12/11/2026). A busca de setembro não paginava (ver
+B1-c_places.py --repaginar); as casas novas aprovadas na triagem manual da
+repaginação (3_triagem/B1_repaginacao_triagem.csv) e dentro do recorte entram
+na planilha de aprovadas, com `origem` = "repaginacao", a partir dos detalhes
+de _dados-brutos/estabelecimentos/B1_detalhes_repaginacao.jsonl
+(B1-c_details.py --repaginadas). Campinas fica de fora até a decisão L24 (RM
+que não é a de uma capital). A planilha de triagem original não muda.
+
 Entrada (anotada à mão pelo autor):
   dados/[B1] Estabelecimentos e cardapios/_dados-brutos/
       B1_curadoria_manual_metropoles_mais_100_avaliacoes.xlsx
@@ -47,7 +55,10 @@ from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
 
+import csv
 import datetime
+import importlib.util
+import json
 import pathlib
 import re
 
@@ -60,6 +71,8 @@ RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
 PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 ENTRADA = RAW / "B1_curadoria_manual_metropoles_mais_100_avaliacoes.xlsx"
 CURADORIA = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv"
+REPAGINACAO_TRIAGEM = PROCESSED / "estabelecimentos/3_triagem/B1_repaginacao_triagem.csv"
+REPAGINACAO_DETALHES = RAW / "estabelecimentos/B1_detalhes_repaginacao.jsonl"
 SAIDA_TRIAGEM = PROCESSED / "estabelecimentos/3_triagem/B1_triagem_manual_metro_av100.xlsx"
 SAIDA_APROVADAS = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
 
@@ -123,6 +136,44 @@ def corrige_nota(df):
     return nota.astype(float).round(1)
 
 
+def linhas_repaginadas():
+    """Aprovadas da repaginação no recorte, nas colunas da planilha de aprovadas."""
+    from recorte_rm import classifica
+
+    # Regras de grupo de categoria e de @ do Instagram: as mesmas do B1-b_planilha.py.
+    spec = importlib.util.spec_from_file_location("planilha", pathlib.Path(__file__).with_name("B1-b_planilha.py"))
+    planilha = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(planilha)
+
+    with open(REPAGINACAO_TRIAGEM, newline="", encoding="utf-8") as f:
+        ids = [r["place_id"] for r in csv.DictReader(f)
+               if r["resultado_triagem"] == "aprovado" and r["grupo"] != "Campinas"]
+    detalhes = {}
+    with open(REPAGINACAO_DETALHES, encoding="utf-8") as f:
+        for linha in f:
+            if linha.strip():
+                d = json.loads(linha)
+                detalhes[d["id"]] = d
+    faltam = [i for i in ids if i not in detalhes]
+    assert not faltam, f"sem detalhes (rodar B1-c_details.py --repaginadas): {faltam}"
+    linhas = []
+    for pid in ids:
+        d = detalhes[pid]
+        c = classifica(d["formattedAddress"])
+        assert c["situacao"] in ("municipio_da_capital", "dentro_da_rm"), (pid, c)
+        linhas.append({
+            "place_id": pid, "nome": d["displayName"]["text"], "endereco": d["formattedAddress"],
+            "capital_endereco": c["capital_referencia"], "origem": "repaginacao", "match_tipo": "",
+            "grupo_categoria": planilha.grupo_categoria(d), "categorias_google": ";".join(d.get("types", [])),
+            "avaliacao_media": d.get("rating"), "volume_avaliacoes": d.get("userRatingCount") or 0,
+            "status_google": d.get("businessStatus", ""), "site_ou_rede_social": d.get("websiteUri"),
+            "instagram_usuario": planilha.instagram_usuario(d.get("websiteUri")),
+            "telefone": d.get("internationalPhoneNumber"), "link_google_maps": d.get("googleMapsUri"),
+            "data_coleta": d.get("data_coleta", ""),
+        })
+    return pd.DataFrame(linhas)
+
+
 def formata(caminho, larguras):
     """Cabeçalho em negrito, filtro, painel congelado e larguras fixas."""
     from openpyxl import load_workbook
@@ -169,6 +220,10 @@ def main():
     aprovadas["Comentário 1"] = aprovadas["Comentário 1"].where(
         aprovadas["Comentário 1"].astype(str).str.strip().str.lower() != "luderia autentica"
     )
+    n_triagem = len(aprovadas)
+    aprovadas = pd.concat([aprovadas, linhas_repaginadas()], ignore_index=True)
+    assert aprovadas["place_id"].is_unique
+    print(f"aprovadas: {n_triagem} da triagem original + {len(aprovadas) - n_triagem} da repaginação = {len(aprovadas)}")
     aprovadas.to_excel(SAIDA_APROVADAS, index=False, sheet_name="aprovadas")
 
     larguras = {"nome": 34, "endereco": 40, "link_google_maps": 30, "site_ou_rede_social": 30,
