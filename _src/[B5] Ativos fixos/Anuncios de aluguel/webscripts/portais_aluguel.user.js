@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-4
+// @version      2026.11.12-5
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas e uma fila de buscas entre portais e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -138,8 +138,26 @@
     predio: { rotulo: 'prédio', dica: 'Prédio inteiro (só ZAP e Viva Real)', olx: null, zap: 'predio-inteiro', vivareal: 'predio_comercial' },
     galpao: { rotulo: 'galpão', dica: 'Galpão ou depósito (só OLX)', olx: [2], zap: null, vivareal: null },
   };
-  // Bairros com selo no painel: os finalistas e as demais áreas do 6.4; outros, por texto.
-  const BAIRROS_SELO = ['Pituba', 'Itaigara', 'Graça', 'Barra', 'Rio Vermelho'];
+  // Bairros do menu do painel: primeiro os finalistas e as demais áreas do 6.4, depois os outros
+  // bairros de Salvador em ordem alfabética (Gomes et al., "Salvador: ecos da escravidão e da
+  // desigualdade em uma economia periférica", apêndice, p. 185-188). Os nomes compostos do apêndice
+  // ("Ondina/Chame-Chame") entram separados, como os portais os escrevem; o que o portal não
+  // reconhecer fica sem resultado (campo "outros" para a grafia do portal).
+  const BAIRROS_DESTAQUE = ['Pituba', 'Itaigara', 'Graça', 'Barra', 'Rio Vermelho'];
+  const BAIRROS_SALVADOR = ('Acupe;Águas Claras;Alto da Terezinha;Alto das Pombas;Alto do Cabrito;Alto do Coqueirinho;Amaralina;Areia Branca;Arenoso;Arraial do Retiro;'
+    + 'Bairro da Paz;Baixa de Quintas;Barbalho;Barreiras;Barris;Beiru;Boa Viagem;Boa Vista de Brotas;Boa Vista de São Caetano;Boca da Mata;Boca do Rio;Bom Juá;Bonfim;'
+    + 'Brotas;Cabula;Cabula VI;Caixa d\'Água;Cajazeiras II;Cajazeiras IV;Cajazeiras V;Cajazeiras VI;Cajazeiras VII;Cajazeiras VIII;Cajazeiras X;Cajazeiras XI;Calabar;'
+    + 'Calabetão;Calçada;Caminho das Árvores;Caminho de Areia;Campinas de Pirajá;Canabrava;Candeal;Canela;Capelinha;Cassange;Castelo Branco;Centro;Centro Histórico;'
+    + 'Chame-Chame;Chapada do Rio Vermelho;Cidade Nova;Colina de Periperi;Comércio;Cosme de Farias;Costa Azul;Coutos;Curuzu;Dois de Julho;Dom Avelar;Doron;'
+    + 'Engenho Velho da Federação;Engenho Velho de Brotas;Engomadeira;Fazenda Coutos;Fazenda Grande do Retiro;Fazenda Grande I;Fazenda Grande II;Fazenda Grande III;'
+    + 'Fazenda Grande IV;Federação;Garcia;Granjas Rurais Presidente Vargas;IAPI;Ilha Amarela;Ilha de Bom Jesus dos Passos;Ilha de Maré;Ilha dos Frades;Imbuí;Itacaranha;'
+    + 'Itapuã;Itinga;Jaguaripe I;Jardim Armação;Jardim Cajazeiras;Jardim Cruzeiro;Jardim das Margaridas;Jardim Nova Esperança;Jardim Santo Inácio;Horto Florestal;Lapinha;'
+    + 'Liberdade;Lobato;Luiz Anselmo;Macaúbas;Mangueira;Marechal Rondon;Mares;Massaranduba;Mata Escura;Matatu;Mirante de Periperi;Monte Serrat;Moradas da Lagoa;Mussurunga;'
+    + 'Narandiba;Nazaré;Nordeste de Amaralina;Nova Brasília;Nova Constituinte;Nova Esperança;Nova Sussuarana;Novo Horizonte;Novo Marotinho;Ondina;Palestina;Paripe;Patamares;'
+    + 'Pau da Lima;Pau Miúdo;Periperi;Pernambués;Pero Vaz;Piatã;Pirajá;Pituaçu;Plataforma;Praia Grande;Resgate;Retiro;Ribeira;Rio Sena;Roma;Saboeiro;Santa Cruz;Santa Luzia;'
+    + 'Santa Mônica;Santo Agostinho;Santo Antônio;São Caetano;São Cristóvão;São Gonçalo;São João do Cabrito;São Marcos;São Rafael;São Tomé;Saramandaia;Saúde;Sete de Abril;'
+    + 'Stella Maris;Stiep;Sussuarana;Tancredo Neves;Tororó;Trobogy;Uruguai;Vale das Pedrinhas;Vale dos Lagos;Valéria;Vila Canária;Vila Laura;Vila Ruy Barbosa;Vista Alegre;Vitória').split(';');
+  const BAIRROS_MENU = [...BAIRROS_DESTAQUE, ...BAIRROS_SALVADOR.filter((b) => !BAIRROS_DESTAQUE.includes(b))];
   const PORTAIS_BUSCA = ['olx', 'zap', 'vivareal'];
   // Buscas do plano (C04 e C05, áreas do 6.4): Loja e Outros com 100 m² ou mais.
   const MONTAGEM_PADRAO = { bairros: ['Pituba', 'Graça', 'Itaigara'], outros: '', areaMin: 100, areaMax: null, tipos: ['loja'], portais: PORTAIS_BUSCA };
@@ -1185,6 +1203,13 @@
     .barra{display:inline-block;width:70px;height:7px;border:1px solid #888;border-radius:4px;vertical-align:middle;overflow:hidden}
     .barra>span{display:block;height:100%;background:currentColor}
     details{margin:6px 0} summary{cursor:pointer;font-size:12px}
+    details.multi{flex:1 1 100%;margin:0;border:1px solid #888;border-radius:6px;padding:3px 6px}
+    details.multi>summary{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    input[type=checkbox]{width:auto;margin:0}
+    .opcoes{max-height:28vh;overflow:auto;border-top:1px solid var(--linha)}
+    .opc{display:flex;align-items:center;gap:6px;padding:2px 0;font-size:12px;cursor:pointer}
+    .opc[hidden]{display:none}
+    .opc.fim-destaque{border-bottom:1px solid var(--linha);padding-bottom:4px;margin-bottom:2px}
     .resumo{font-size:12px;display:flex;flex-wrap:wrap;align-items:center;gap:3px}
     .alerta{color:#b45309} .ok{color:#15803d} .ruim{color:var(--vermelho)}
     @media (prefers-color-scheme:dark){.alerta{color:#fbbf24}.ok{color:#4ade80}.ruim{color:#f87171}}
@@ -1250,6 +1275,40 @@
     pintar(ligado);
     b.onclick = () => { const v = !b.classList.contains('on'); pintar(v); aoMudar(v); };
     return b;
+  }
+  // Menu suspenso de múltipla escolha: o resumo mostra a escolha; dentro, busca por nome, "Todos" e
+  // "Nenhum" (valem para os bairros filtrados) e uma caixa de marcação por opção. Devolve o nó.
+  function menuMulti({ opcoes, destaques = [], marcados = [], rotulo, dica, aoMudar }) {
+    const escolhidos = new Set(marcados);
+    const resumo = criar('summary', { title: dica });
+    const busca = criar('input', { type: 'search', placeholder: 'filtrar…', className: 'largo', title: 'Filtrar a lista pelo nome (sem acento)' });
+    const caixas = new Map();
+    const itens = opcoes.map((o, i) => {
+      const cx = criar('input', { type: 'checkbox', checked: escolhidos.has(o) });
+      cx.onchange = () => { if (cx.checked) escolhidos.add(o); else escolhidos.delete(o); mudou(); };
+      caixas.set(o, cx);
+      const l = criar('label', { className: i === destaques.length - 1 ? 'opc fim-destaque' : 'opc' }, partes(cx, o));
+      l.dataset.nome = semAcento(o);
+      return l;
+    });
+    const lista = criar('div', { className: 'opcoes' }, itens);
+    const visiveis = () => itens.filter((l) => !l.hidden).map((l) => l.textContent);
+    const marcarVisiveis = (v) => { for (const o of visiveis()) { caixas.get(o).checked = v; if (v) escolhidos.add(o); else escolhidos.delete(o); } mudou(); };
+    function mudou() {
+      const sel = opcoes.filter((o) => escolhidos.has(o)).concat([...escolhidos].filter((o) => !opcoes.includes(o)));
+      resumo.textContent = `${rotulo}: ${!sel.length ? 'nenhum' : sel.length <= 2 ? sel.join(', ') : `${sel.slice(0, 2).join(', ')} +${sel.length - 2}`}`;
+      aoMudar(sel);
+    }
+    busca.oninput = () => {
+      const q = semAcento(busca.value).trim();
+      for (const l of itens) l.hidden = !!q && !l.dataset.nome.includes(q);
+    };
+    const barraMenu = criar('div', { className: 'linha' }, [busca,
+      botao('check', 'Todos', 'Marcar todos os bairros que aparecem na lista (respeita o filtro)', () => marcarVisiveis(true), 'ic'),
+      botao('x-mark', 'Nenhum', 'Desmarcar todos os bairros que aparecem na lista (respeita o filtro)', () => marcarVisiveis(false), 'ic')]);
+    const det = criar('details', { className: 'multi' }, [resumo, barraMenu, lista]);
+    mudou();
+    return det;
   }
   // Casa da grade: rótulo (k) ou valor (v), com ícone opcional
   const casa = (classe, ...xs) => criar('span', { className: classe }, partes(...xs));
@@ -1539,7 +1598,11 @@
       el.montagemPrevia.title = r.semBusca.length ? `Sem busca no portal (ficam de fora): ${r.semBusca.join('; ')}` : 'Buscas que "Gerar fila" põe na lista';
     };
     const seloLista = (campo, valor, rotulo, dica) => selo(rotulo, dica, (montagem[campo] || []).includes(valor), (v) => { montagem[campo] = alternar(montagem[campo], valor, v); prever(); });
-    const selosBairro = BAIRROS_SELO.map((b) => seloLista('bairros', b, b, `Buscar anúncios em ${b}`));
+    const menuBairros = menuMulti({
+      opcoes: BAIRROS_MENU, destaques: BAIRROS_DESTAQUE, marcados: montagem.bairros || [],
+      rotulo: 'Bairros', dica: 'Bairros de Salvador para montar as buscas: marque um ou mais; os cinco primeiros são as áreas do 6.4',
+      aoMudar: (lista) => { montagem.bairros = lista; prever(); },
+    });
     const outros = criar('input', { type: 'text', value: montagem.outros || '', placeholder: 'outros bairros (vírgula)', className: 'largo',
       title: 'Outros bairros de Salvador, separados por vírgula, como o portal escreve na URL (ex.: Caminho das Árvores, Stiep)',
       oninput: () => { montagem.outros = outros.value; prever(); } });
@@ -1560,7 +1623,7 @@
     prever();
     const rotuloIco = (ico, dica) => criar('span', { className: 'rotulo', title: dica }, [icone(ico)]);
     el.montagem = criar('details', {}, [criar('summary', { textContent: 'Montar buscas' }), criar('div', { className: 'caixa' }, [
-      criar('div', { className: 'linha' }, [rotuloIco('map-pin', 'Bairros'), ...selosBairro, outros]),
+      criar('div', { className: 'linha' }, [rotuloIco('map-pin', 'Bairros'), menuBairros, outros]),
       criar('div', { className: 'linha' }, [rotuloIco('adjustments-horizontal', 'Área em m²'), criar('span', { className: 'rotulo', textContent: 'área de' }), areaMin,
         criar('span', { className: 'rotulo', textContent: 'a' }), areaMax, criar('span', { className: 'rotulo', textContent: 'm²' })]),
       criar('div', { className: 'linha' }, [rotuloIco('tag', 'Tipo de imóvel comercial'), ...selosTipo]),
