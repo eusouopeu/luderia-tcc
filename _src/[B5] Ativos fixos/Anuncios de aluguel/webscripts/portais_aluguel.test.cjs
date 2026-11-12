@@ -128,6 +128,7 @@ test('card do OLX: cidade antes do bairro e operação pelo título', () => {
 test('total de resultados da busca e desafio do Cloudflare', () => {
   assert.equal(t.totalDeTexto('1.234 Lojas/Salões para alugar em Salvador - BA'), 1234);
   assert.equal(t.totalDeTexto('Resultados 1-50 de 2.345 resultados'), 2345);
+  assert.equal(t.totalDeTexto('1 - 13 de 13 resultados'), 13);
   assert.equal(t.totalDeTexto('Mais de 87 imóveis'), null);
   assert.equal(t.totalDeTexto('Aluguel de lojas em Salvador'), null);
   assert.equal(t.desafioDeTexto('Just a moment...'), true);

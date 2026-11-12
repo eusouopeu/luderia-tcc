@@ -1,6 +1,6 @@
 # AGORA
 
-Atualizado em 11/11/2026. Correções da orientação aplicadas no **TMin v31** (texto e apêndices num só PDF, 116 páginas, com folha de aprovação). Versão final para a banca em 16/11. Escopo congelado até a banca: só entra o que muda o TMin (`CLAUDE.md`, "Fluxo de trabalho até a banca").
+Atualizado em 12/11/2026. Correções da orientação aplicadas no **TMin v31** (texto e apêndices num só PDF, 116 páginas, com folha de aprovação). Versão final para a banca em 16/11. Escopo congelado até a banca: só entra o que muda o TMin (`CLAUDE.md`, "Fluxo de trabalho até a banca").
 
 ## Fazendo agora (no máximo duas frentes)
 
@@ -17,6 +17,7 @@ Atualizado em 11/11/2026. Correções da orientação aplicadas no **TMin v31** 
 
 - Quantidades do investimento (N6): aguardam projeto do ponto na Pituba.
 - Folha de aprovação: aguarda os nomes dos membros da banca.
+- Aluguel da OLX (C04 e C05): a coleta de 12/11 (01:38) tem 148 dos 151 anúncios de Loja e Outros com 100 m² ou mais na Pituba, Graça e Itaigara; refazer com o userscript 2026.11.12-1, pelas URLs de bairro (`/salvador/pituba?commt=6&commt=7&ss=100`), para fechar a cobertura e preencher o `total_busca`.
 
 ## Onde está o resto
 

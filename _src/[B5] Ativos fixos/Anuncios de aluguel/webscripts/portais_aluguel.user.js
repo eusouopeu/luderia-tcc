@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.03-3
+// @version      2026.11.12-1
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas seguintes e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -42,9 +42,13 @@
  * por busca (Apagar baixa antes o CSV do que sai). Os filtros só mudam esses indicadores
  * e o destaque dos cards na página; nada é descartado na coleta, e o CSV sai completo.
  *
- * Buscas que funcionam (02/11/2026):
- *  - OLX:       /imoveis/comercio-e-industria/estado-ba/grande-salvador/salvador
- *               (mistura venda e aluguel; a coluna operacao separa pelo título e preço)
+ * Buscas que funcionam (02/11/2026; OLX por bairro em 12/11/2026):
+ *  - OLX:       /imoveis/comercio-e-industria/aluguel/estado-ba/salvador/<bairro>?commt=6&commt=7&ss=100
+ *               (bairro: pituba, graca, itaigara; commt=6 e 7 são Loja e Outros; ss=100 é
+ *               área de 100 m² ou mais). Usar o caminho do bairro, não a busca por texto
+ *               (?q=pituba): o texto perde anúncios do bairro e traz os de outros bairros
+ *               que citam o nome no título (12/11/2026: 3 de 114 perdidos na Pituba).
+ *               Sem /aluguel, a busca mistura venda e aluguel (a coluna operacao separa).
  *  - ZAP:       /aluguel/loja-salao/ba+salvador/ e /aluguel/conjunto-comercial-sala/ba+salvador/
  *  - Viva Real: /aluguel/bahia/salvador/ponto-comercial_comercial/
  *  - QuintoAndar: /alugar/imovel/<bairro>-salvador-ba-brasil (em Salvador, só residencial)
@@ -548,8 +552,10 @@
     return m ? numeroBR(m[1]) : null;
   }
 
+  // OLX (12/11/2026): o contador "1 - 13 de 13 resultados" fica num <p> dentro da div
+  // de classe "…_titleContainer", fora do h1; por isso ela vem antes dos genéricos.
   function totalResultados() {
-    const candidatos = document.querySelectorAll('h1, h2, [data-cy*="title"], [data-testid*="result"], [class*="result"], [class*="Result"]');
+    const candidatos = document.querySelectorAll('[class*="titleContainer"] p, h1, h2, [data-cy*="title"], [data-testid*="result"], [class*="result"], [class*="Result"]');
     for (const n of candidatos) {
       const v = totalDeTexto(n.textContent);
       if (v != null) return v;
