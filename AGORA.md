@@ -18,6 +18,7 @@ Atualizado em 12/11/2026. **TMin v32** com as taxas de entrada achadas na busca 
 - Quantidades do investimento (N6): aguardam projeto do ponto na Pituba.
 - Folha de aprovação: aguarda os nomes dos membros da banca.
 - Aluguel (C04 e C05): coleta de 12/11 (OLX, ZAP e Viva Real), limitada a Pituba, Itaigara e Graça, processada pelo build (184 anúncios); lojas de 100 m² ou mais em Pituba, Itaigara e Graça: 150 anúncios, mediana de R$ 47,10/m² (Pituba R$ 48,30 com 117; Itaigara R$ 45,70 com 20; Graça R$ 35,60 com 13). Entra na C04 e na escolha do bairro só depois da L13; falta conferir à mão as 63 "Possíveis Duplicatas". Nova coleta: "Montar buscas" no painel do userscript 2026.11.12-3 (bairros, área mínima e máxima, tipo e portal).
+- Horários de pico dos concorrentes: coletor 2026.11.12-1 grava no Tampermonkey (a cota do localStorage travava a coleta perto de 35 casas; Ludus Luderia não gravou) e tem seletor com as 54 casas do B1 e "Próximo". Falta reinstalar, coletar as que faltam, baixar o CSV e rodar `B1-a_horarios_pico.py`.
 
 ## Onde está o resto
 
