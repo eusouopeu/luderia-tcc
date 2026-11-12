@@ -90,11 +90,11 @@ FONTES = {
     "bodogami": dict(place_id="ChIJKeHwNv5ZzpQRlmzx9rCTWdM",
                      url="https://www.bodogami.com.br/wp-content/uploads/2025/03/cardapio_bodogami_19mar2025.pdf",
                      formato="PDF (site)", data_cardapio="2025-03-19", status="extraído", nota=""),
-    "fanhour": dict(place_id="ChIJ_aN4OAxXzpQR0UH63sAeVCA", url="https://fanhour.com.br/menu",
-                    formato="página do site (texto) + preços de matéria de imprensa", data_cardapio="",
-                    status="parcial", data_coleta="2026-10-16",
-                    nota="itens do site (sem preço); 26 preços e a taxa de jogo da matéria São Paulo para "
-                         "Crianças, atualizada em 05/10/2026; 24 itens seguem sem preço"),
+    "fanhour": dict(place_id="ChIJ_aN4OAxXzpQR0UH63sAeVCA", url="https://qrco.de/bdUhFc",
+                    formato="PDF (botão do Linktree), transcrito à mão", data_cardapio="2026-11-03",
+                    status="extraído", data_coleta="2026-11-11",
+                    nota="PDF de 03/11/2026 no lugar dos preços de imprensa; a taxa de jogo e o Switch 2 "
+                         "seguem da matéria São Paulo para Crianças (05/10/2026), fora do PDF"),
     "shelf": dict(place_id="ChIJ6ZLMZw-XpgAR_OR6SwY5xKo",
                   url="https://www.vucafood.com.br/funminds/2365/cardapio-digital",
                   formato="cardápio digital VUCA Food (texto)", data_cardapio="", status="extraído", nota=""),
@@ -229,6 +229,27 @@ FONTES = {
            ("bardomago", "ChIJRcWOaPabpgARDvX2Bad0qb0", "bardo.mago"),
            ("tocadorato", "ChIJ41pgHNFDGZURC7yTegyn7nU", "tocadorato_oficial"),
            ("nalaland", "ChIJRUjwU66WoGgRzc9yJU7jkwM", "nalaland.jogos"),
+       ]},
+    # 11/11/2026: busca minuciosa (cardapios/B1_busca_minuciosa_taxa_cardapio_acervo.csv): taxa
+    # declarada pela própria casa na legenda de um post (ou no site, Bodogami); isenção ou
+    # abatimento por consumo fica na observação, não vira linha. Chef on Play e Castelos
+    # declaram não cobrar (linha de R$ 0, fora das médias de quem cobra). A linha de R$ 0 da
+    # Ludus saiu de ludus.csv: o site diz que a casa não cobra por tempo nem por jogo, e a
+    # entrada individual está em ludus_couvert.
+    **{f"{arq}_couvert": dict(place_id=pid, url=url,
+                              formato="legenda de post do Instagram da casa" if "instagram" in url else "página inicial do site",
+                              data_cardapio="", status="extraído", data_coleta="2026-11-11",
+                              nota="só o couvert ou a taxa de entrada")
+       for arq, pid, url in [
+           ("arcadea", "ChIJHSDPTgF5GZURKmSqKITyoGM", "https://www.instagram.com/p/DeKA9JljE3c/"),
+           ("bodogami", "ChIJKeHwNv5ZzpQRlmzx9rCTWdM", "https://www.bodogami.com.br/"),
+           ("fortaludica", "ChIJyXjE650xWpMRJL-J6QbGkt4", "https://www.instagram.com/p/DYkmVEOmCp4/"),
+           ("balboas", "ChIJ0yXbI35IxwcR0_jLi-uINUU", "https://www.instagram.com/p/DMvirdRyX_Y/"),
+           ("cartola", "ChIJrT_EWwBZzpQRGAZzptZbtsY", "https://www.instagram.com/p/DMvrC4FJyUZ/"),
+           ("vilacelta", "ChIJ1wjBJD7k3JQRQi7trfp_0aQ", "https://www.instagram.com/p/C6Zdg0axZrK/"),
+           ("ludus", "ChIJTaG5ALpZzpQRUDErQ-RkfTs", "https://www.instagram.com/p/DVWIdWrDT8X/"),
+           ("chefonplay", "ChIJc3F7ka83J5URQZ1XTl-_iak", "https://www.instagram.com/p/DTawJZ-Dsxz/"),
+           ("castelos", "ChIJbZRHQPRfzpQRz97-ZOg0yXA", "https://www.instagram.com/p/C5CDD8sRpYq/"),
        ]},
 }
 # aprovado com cardápio acessível, mas sem transcrição

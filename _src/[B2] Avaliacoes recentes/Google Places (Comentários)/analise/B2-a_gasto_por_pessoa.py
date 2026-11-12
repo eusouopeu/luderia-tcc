@@ -53,8 +53,8 @@ TAXAS = {
     "ChIJ6ZLMZw-XpgAR_OR6SwY5xKo": ("Shelf Bar e Jogos", "cardápio (B1)",
                                     {"terca": 15, "quarta": 20, "quinta": 20, "sexta": 30, "sabado": 30, "domingo": 30}),
     "ChIJ_aN4OAxXzpQR0UH63sAeVCA": ("Fan Hour Games and Burgers", "São Paulo para Crianças, 05/10/2026", _TODOS(20)),
-    "ChIJTaG5ALpZzpQRUDErQ-RkfTs": ("Ludus Luderia", "CNN Brasil, 02/10/2024 (o site diz que não cobra)",
-                                    {"quarta": 34, "quinta": 34, "sexta": 44, "sabado": 44, "domingo": 38}),
+    "ChIJTaG5ALpZzpQRUDErQ-RkfTs": ("Ludus Luderia", "Instagram, 01/03/2026",
+                                    {"quinta": 38, "sexta": 48, "sabado": 48, "domingo": 42}),
     "ChIJY_lqHVLl3JQRvDHacOMDKuc": ("BoardZ Game Pub", "site, Day Pass (opcional; a casa também cobra por jogo)",
                                     {"terca": 10, "quarta": 10, "quinta": 10, "sexta": 15, "sabado": 15, "domingo": 15}),
     "ChIJ-97tiEeNpJIRb_eV7a-sxBs": ("Ludoteca Sidequest", "site",
@@ -69,9 +69,9 @@ TAXAS = {
     "ChIJpzB8zc2XpgARoJTUu90J6Pw": ("Comdado Bar e Jogos", "cardápio (B1)",
                                     {"quarta": 15, "quinta": 15, "sexta": 20, "sabado": 20, "domingo": 20}),
     "ChIJKeHwNv5ZzpQRlmzx9rCTWdM": ("Bodogami Restaurante e Cafeteria",
-                                    "CNN Brasil, 02/10/2024; fim de semana = sábado e domingo; só para quem joga",
-                                    {**dict.fromkeys(DIAS[:5], 25), "sabado": 35, "domingo": 35}),
-    "ChIJbZRHQPRfzpQRz97-ZOg0yXA": ("Castelos Bar & Boardgames", "QuintoAndar, 23/09/2025 (sem cobrança)", _TODOS(0)),
+                                    "site, 11/11/2026; fim de semana = sábado e domingo; só para quem joga",
+                                    {**dict.fromkeys(DIAS[:5], 28), "sabado": 38, "domingo": 38}),
+    "ChIJbZRHQPRfzpQRz97-ZOg0yXA": ("Castelos Bar & Boardgames", "Instagram, 27/03/2024 (sem cobrança)", _TODOS(0)),
     "ChIJoTlvBfMbFgcRHvuCKHBQrXQ": ("São Jogue - Bela Vista", "site, turno de 3 h (B1, busca profunda)",
                                     {**dict.fromkeys(DIAS[:4], 22), "sexta": 28, "sabado": 28, "domingo": 28}),
     # demais casas com taxa no cardápio (B1_cardapios_itens_precos.xlsx); dia sem
@@ -99,6 +99,16 @@ TAXAS = {
                                     {**dict.fromkeys(DIAS[:5], 20), "sabado": 25, "domingo": 25}),
     "ChIJ41pgHNFDGZURC7yTegyn7nU": ("Toca do Rato", "Instagram, 04/10/2025", _TODOS(5)),
     "ChIJsU5BAwBRzpQRAgLVvqg68os": ("Tubaleria", "Instagram, 12/03/2026", _TODOS(28)),
+    # busca minuciosa de 11/11/2026 (cardapios/B1_busca_minuciosa_taxa_cardapio_acervo.csv)
+    "ChIJHSDPTgF5GZURKmSqKITyoGM": ("Arcadea Gaming Pub", "Instagram, 06/10/2026 (isenta com consumo de R$ 60)", _TODOS(15)),
+    "ChIJrT_EWwBZzpQRGAZzptZbtsY": ("Cartola Luderia Bar", "Instagram, 30/07/2025", _TODOS(15)),
+    "ChIJc3F7ka83J5URQZ1XTl-_iak": ("Chef on Play", "Instagram, 12/01/2026 (sem cobrança)", _TODOS(0)),
+    "ChIJyXjE650xWpMRJL-J6QbGkt4": ("FORTALÚDICA - BURGERS & JOGOS", "Instagram, 20/05/2026 (R$ 5 com consumo de R$ 50)",
+                                    {**dict.fromkeys(DIAS[:5], 15), "sabado": 20, "domingo": 20}),
+    "ChIJ0yXbI35IxwcR0_jLi-uINUU": ("Balboa's Hobby Games",
+                                    "Instagram, 30/07/2025; média do esquenta de 3 h (R$ 20) e da diária (R$ 30)", _TODOS(25)),
+    "ChIJ1wjBJD7k3JQRQi7trfp_0aQ": ("Vila Celta Hobby Store - Jogos e Café", "Instagram, 30/04/2024 (quarta sem cobrança)",
+                                    {"segunda": 5, "terca": 5, "quarta": 0, "quinta": 5, "sexta": 10, "sabado": 10, "domingo": 10}),
 }
 
 

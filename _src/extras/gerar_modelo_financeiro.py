@@ -33,8 +33,8 @@ circulação × horas de pico equivalentes do dia útil (R19) × razão dia úti
 semana do gasto com cartão (ANR/Mastercard).
 Receita por pessoa = gasto por pessoa declarado no Google Maps (B2), média das
 13 casas com taxa de entrada conhecida. A taxa de entrada (R07) é o preço
-adotado na seção 6.3, R$ 18,68 em todos os cenários (média da taxa das 22 casas
-que cobram, fora a São Jogue), e o restante do gasto é A&B (anexo I e CMV);
+adotado na seção 6.3, R$ 19,62 em todos os cenários (média da taxa das 29 casas
+que cobram, fora a São Jogue; R$ 18,68 e 22 casas até a busca de 11/11/2026), e o restante do gasto é A&B (anexo I e CMV);
 antes de 09/11/2026, a taxa era 28,4% do gasto (R$ 22,32 no provável), o que
 não batia com o preço adotado.
 

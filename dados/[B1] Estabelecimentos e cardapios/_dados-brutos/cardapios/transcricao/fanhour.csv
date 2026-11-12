@@ -1,55 +1,57 @@
 secao_original;item;descricao;variacao;preco;categoria;subcategoria;exige_preparo;observacao;data_cardapio
-Starters;Fan Hour Fries;fritas com tempero da casa;completa 280 g;27.7;entradas;batata;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Starters;Fan Hour Fries;fritas com tempero da casa;individual 140 g;19.9;entradas;batata;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Starters;MB Fries;fritas com cheddar e bacon;completa 280 g;37.7;entradas;batata;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Starters;MB Fries;fritas com cheddar e bacon;individual 140 g;26.7;entradas;batata;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Starters;Pastrami Fries;fritas com pastrami e sour cream;completa 280 g;44.9;entradas;batata;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Starters;Pastrami Fries;fritas com pastrami e sour cream;individual 140 g;31.9;entradas;batata;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Starters;Balloon Fight;queijo gouda empanado com maionese verde;6 unidades;38.7;entradas;outras;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Starters;Cuccos;coxinhas sem massa de frango com catupiry;6 unidades;38.9;entradas;outras;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Regular burgers;G.A. Choice;blend 150 g, american cheese, cebola caramelizada, bacon e cebola crispy;;;pratos principais;hambúrguer;S;site sem preços;
-Regular burgers;Zelda's Banquet;blend 150 g, american cheese, tomate, picles de cebola e salada;;50.3;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Regular burgers;Harvest Burger;burger de grão-de-bico com amêndoas e american cheese;;52.7;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Regular burgers;Mamma Mia Deluxe;blend 150 g, mussarela empanada e pesto rosso;;;pratos principais;hambúrguer;S;site sem preços;
-Regular burgers;One Ring;angus 150 g, anel de bacon com catupiry e picles;;57.3;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Regular burgers;Fan Chicken;sobrecoxa empanada com molho picante e alface;;;pratos principais;hambúrguer;S;site sem preços;
-Regular burgers;Double Melt;dois angus de 150 g, cheddar e farofa de bacon;;69.1;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Regular burgers;Cheddar of the Colossus;blend 150 g, anéis de cebola, bacon, cheddar e salada;;;pratos principais;hambúrguer;S;site sem preços;
-Menu kids;Cheeseburger;smash 80 g e american cheese;;32.3;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Menu kids;Cheesebacon;smash 80 g, american cheese e bacon;;35.9;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Menu kids;Cheesesalad;smash 80 g, american cheese e salada;;34.9;pratos principais;hambúrguer;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Monte seu burger;Monte seu burger;angus 150 g, queijo e acompanhamentos à escolha;1 burger;;pratos principais;hambúrguer;S;site sem preços;
-Monte seu burger;Monte seu burger;angus 150 g, queijo e acompanhamentos à escolha;2 burgers;;pratos principais;hambúrguer;S;site sem preços;
-Salad;Leaf Green;salada com burger bovino, vegetariano ou sobrecoxa empanada;;;pratos principais;outros;S;site sem preços;
-Milk shakes;Ice CB;creme com calda de chocolate;;36.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Milk shakes;Dreamland;morango;;36.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Milk shakes;Chocolate Island;chocolate;;36.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Milk shakes;Candy Shake;sorvete de creme com Nutella;;46.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Milk shakes;Unishake;sorvete de creme, marshmallow e casquinha;;38.3;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Sobremesas;Aeris' Dream;brownie com sorvete de creme;;30.9;sobremesas;sobremesas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Sobremesas;Great Balls;3 bolas de sorvete;;24.9;sobremesas;sobremesas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Sobremesas;Mr. Cookie;cookie com Nutella e sorvete;;29.9;sobremesas;sobremesas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Cervejas;Eisenbahn IPA;;;;bebidas;cerveja;N;site sem preços;
-Cervejas;Patagonia IPA;;;;bebidas;cerveja;N;site sem preços;
-Cervejas;Stella Artois;;;;bebidas;cerveja;N;site sem preços;
-Cervejas;Heineken;;;;bebidas;cerveja;N;site sem preços;
-Drinks;Tifa's Blend;caipirinha de vodca ou cachaça (limão ou morango);;;bebidas;drinks;S;site sem preços;
-Drinks;Duke's Mix;gim tônica com limão siciliano;;;bebidas;drinks;S;site sem preços;
-Drinks;Conker's Bad Drink;negroni;;;bebidas;drinks;S;site sem preços;
-Drinks;Wonder Drink;gim com morango, curaçau blue e grenadine;;;bebidas;drinks;S;site sem preços;
-Drinks;Gummy Bear;groselha e Schweppes Citrus com balas de gelatina;;24.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Drinks;PP Nectar;vodca, Schweppes Citrus e maçã verde;;;bebidas;drinks;S;site sem preços;
-Drinks;PP Nectar sem álcool;água com gás e xarope de maçã verde;;27.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Drinks;Rainbow;frutas vermelhas, laranja, curaçau blue e rum prata;;;bebidas;drinks;S;site sem preços;
-Drinks;Rainbow sem álcool;frutas vermelhas, laranja e Powerade;;26.9;bebidas;não alcoólicas;S;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Drinks;Vodca;;dose;;bebidas;drinks;N;site sem preços;
-Drinks;Red Label;;dose;;bebidas;drinks;N;site sem preços;
-Soft drinks;Refrigerante;;;;bebidas;refrigerante;N;site sem preços;
-Soft drinks;Suco Del Valle;;;;bebidas;não alcoólicas;N;site sem preços;
-Soft drinks;Ice tea pêssego;;;;bebidas;não alcoólicas;N;site sem preços;
-Soft drinks;Café expresso;;;;bebidas;não alcoólicas;S;site sem preços;
-Soft drinks;Água com ou sem gás;;;;bebidas;não alcoólicas;N;site sem preços;
-Drinks;Soda Pop;soda sem álcool;;25.9;bebidas;não alcoólicas;S;"preço da matéria São Paulo para Crianças (atualizada em 05/10/2026); item fora do site";2026-10-05
-Soft drinks;Arcane Tea;chá gelado;;14.9;bebidas;não alcoólicas;S;"preço da matéria São Paulo para Crianças (atualizada em 05/10/2026); item fora do site";2026-10-05
-Jogos;Jogos (tabuleiro, videogame e monitoria);por pessoa;;20.0;couvert ou taxa de jogo;couvert ou taxa de jogo;N;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
-Jogos;Nintendo Switch 2;por pessoa, no lugar da taxa de jogo comum;;40.0;outros;adicionais;N;preço da matéria São Paulo para Crianças (atualizada em 05/10/2026);2026-10-05
+Drinks exclusivos;Eletric Mojito Soda;xarope de mojito mint, limão siciliano e água com gás;;24.9;bebidas;não alcoólicas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks exclusivos;Eletric Mojito Álcool;cachaça, xarope de mojito mint, limão tahiti e água com gás;;36.9;bebidas;drinks;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks exclusivos;Fire Sunset;xarope de tangerina, suco de abacaxi e água com gás;;25.9;bebidas;não alcoólicas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Starters;Fan Hour Fries;fritas com tempero levemente apimentado da casa;completa;27.7;entradas;batata;S;"PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree); adicional de maionese verde R$ 4,50";2026-11-03
+Starters;Fan Hour Fries;fritas com tempero levemente apimentado da casa;individual;19.9;entradas;batata;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Starters;MB Fries;fritas cobertas;completa;37.7;entradas;batata;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Starters;MB Fries;fritas cobertas;individual;26.7;entradas;batata;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Starters;Pastrami Fries;fritas com pastrami;completa;44.9;entradas;batata;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Starters;Pastrami Fries;fritas com pastrami;individual;31.9;entradas;batata;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Starters;Balloon Fight;almofadinhas de queijo gouda empanado com maionese verde;;38.7;entradas;outras;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Starters;Cuccos;coxinhas sem massa;6 unidades;38.9;entradas;outras;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Regular burgers;G.A. Choice;angus 150 g, maionese picante, american cheese, cebola caramelizada com barbecue, bacon e cebola crispy;;51.3;pratos principais;hambúrguer;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Regular burgers;One Ring;angus 150 g, anel de bacon trançado na cebola recheado de catupiry, picles e maionese de alho assado;;57.3;pratos principais;hambúrguer;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Regular burgers;Zelda's Banquet;angus 150 g, maionese verde, american cheese gratinado, tomate, picles de cebola roxa, alface e molho mostarda e mel;;50.3;pratos principais;hambúrguer;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Regular burgers;Mamma Mia;angus 150 g, muçarela com catupiry empanada, pesto rosso e maionese de alho assado;;52.7;pratos principais;hambúrguer;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Regular burgers;Fan Chicken;hambúrguer de sobrecoxa empanada com molho da casa e alface americana;;47.3;pratos principais;hambúrguer;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Supreme titans;Double Melt;angus duplo (150 g cada), maionese de alho assado, picles, cheddar e farofa de bacon;;69.1;pratos principais;hambúrguer;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Supreme titans;Cheddar of the Colossus;angus 150 g, anéis de cebola empanados, bacon, maionese picante, cheddar, alface e tomate;;56.7;pratos principais;hambúrguer;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Kids;Cheeseburger;pão azul, smash de 80 g e american cheese;;32.7;pratos principais;hambúrguer;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Kids;Cheesesalad;pão azul, smash de 80 g, american cheese, alface, tomate e maionese verde;;34.9;pratos principais;hambúrguer;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Kids;Cheesebacon;pão azul, smash de 80 g, american cheese e bacon;;35.9;pratos principais;hambúrguer;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Light;Harvest Burger;burger de grão de bico com amêndoas, maionese verde, american cheese, tomate, cebola caramelizada e rúcula;;45.7;pratos principais;hambúrguer;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Light;Leaf Green;salada de alface americana, rúcula, tomate, picles de cebola roxa, granola salgada e molho mostarda e mel;com burger vegetariano;54.3;pratos principais;outros;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Light;Leaf Green;salada de alface americana, rúcula, tomate, picles de cebola roxa, granola salgada e molho mostarda e mel;com sobrecoxa empanada;56.3;pratos principais;outros;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Light;Leaf Green;salada de alface americana, rúcula, tomate, picles de cebola roxa, granola salgada e molho mostarda e mel;com burger bovino;58.3;pratos principais;outros;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Milk-shakes;Candy Shake;sorvete de creme artesanal com nutella e confeitos de chocolate;;47.9;bebidas;não alcoólicas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Milk-shakes;Unishake;sorvete de creme artesanal, marshmallows e casquinha;;39.9;bebidas;não alcoólicas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Milk-shakes;Chocolate Island;chocolate;;37.9;bebidas;não alcoólicas;S;"PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree); adicional de Ovomaltine R$ 4,90";2026-11-03
+Milk-shakes;Ice CB;creme com calda de chocolate;;37.9;bebidas;não alcoólicas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Milk-shakes;Dreamland;morango;;37.9;bebidas;não alcoólicas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Sobremesas;Aeris' Dream;brownie artesanal com sorvete de creme e crumble de amêndoas;;31.9;sobremesas;sobremesas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Sobremesas;Mr Cookie;cookie de chocolate com nutella e sorvete de creme;;30.9;sobremesas;sobremesas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Sobremesas;Great Balls;3 bolas de sorvete (creme, chocolate ou morango);;25.9;sobremesas;sobremesas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks sem álcool;Gummy Bear;;;24.9;bebidas;não alcoólicas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks sem álcool;Soda Pop;;;25.9;bebidas;não alcoólicas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks sem álcool;PP Nectar Soda;;;27.9;bebidas;não alcoólicas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks sem álcool;Rainbow Soda;;;26.9;bebidas;não alcoólicas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks sem álcool;Arcane Tea;;;14.9;bebidas;não alcoólicas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks com álcool;Wonder Drink;gin com infusão de morangos, curaçau blue, grenadine e Schweppes citrus;;42.9;bebidas;drinks;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks com álcool;Tifa's Blend;vodca, cachaça ou saquê com frutas (limão ou morango);;33.9;bebidas;drinks;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks com álcool;Kiss Fatality;melancia e morango com limão e vodca;;36.9;bebidas;drinks;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks com álcool;Golden Venom;manga e maracujá com limão e vodca;;36.9;bebidas;drinks;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks com álcool;Duke's Mix;gin, água tônica e limão siciliano;;39.9;bebidas;drinks;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks com álcool;Conker's Bad Drink;gin, Campari, vermute tinto e laranja;;36.9;bebidas;drinks;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks com álcool;Vodca;;dose;17.9;bebidas;drinks;N;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Drinks com álcool;Red Label;;dose;21.9;bebidas;drinks;N;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Cervejas;Heineken;;;18.9;bebidas;cerveja;N;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Cervejas;Stella Artois;;;18.9;bebidas;cerveja;N;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Cervejas;Patagonia IPA;;;21.9;bebidas;cerveja;N;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Cervejas;Eisenbahn IPA;;;21.9;bebidas;cerveja;N;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Soft drinks;Água com ou sem gás;;;7;bebidas;não alcoólicas;N;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Soft drinks;Café expresso;;;8;bebidas;não alcoólicas;S;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Soft drinks;Refrigerante;;;10;bebidas;refrigerante;N;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Soft drinks;Suco Del Valle;;;10;bebidas;não alcoólicas;N;PDF de 03/11/2026 (botão 'Cardápio de Comida' do Linktree);2026-11-03
+Jogos;Jogos (tabuleiro, videogame e monitoria);por pessoa;;20;couvert ou taxa de jogo;couvert ou taxa de jogo;N;"preço da matéria São Paulo para Crianças (atualizada em 05/10/2026); fora do PDF";2026-10-05
+Jogos;Nintendo Switch 2;por pessoa, no lugar da taxa de jogo comum;;40;outros;adicionais;N;"preço da matéria São Paulo para Crianças (atualizada em 05/10/2026); fora do PDF";2026-10-05

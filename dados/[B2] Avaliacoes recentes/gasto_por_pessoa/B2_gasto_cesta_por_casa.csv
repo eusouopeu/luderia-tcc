@@ -1,18 +1,18 @@
 ﻿place_id;nome_estabelecimento;avaliacoes;gasto_medio;gasto_mediano;bebida_mediana;hamburguer_min_nao_veg;bebida_mais_hamburguer;dias_abertos;taxa_ponderada;fonte_taxa;cesta_consumo;parcela_taxa;gasto_medio_por_cesta;gasto_mediano_por_cesta;no_recorte
-ChIJKeHwNv5ZzpQRlmzx9rCTWdM;Bodogami Restaurante e Cafeteria;341;88.2493;90.0;17.0;45.0;62.0;7.0;27.8571;"CNN Brasil, 02/10/2024; fim de semana = sábado e domingo; só para quem joga";89.8571;0.31;0.9821;1.0016;sim
+ChIJKeHwNv5ZzpQRlmzx9rCTWdM;Bodogami Restaurante e Cafeteria;341;88.2493;90.0;17.0;45.0;62.0;7.0;30.8571;"site, 11/11/2026; fim de semana = sábado e domingo; só para quem joga";92.8571;0.3323;0.9504;0.9692;sim
 ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;125;91.28;90.0;25.0;40.0;65.0;6.0;24.1667;cardápio (B1);89.1667;0.271;1.0237;1.0093;sim
-ChIJ_aN4OAxXzpQR0UH63sAeVCA;Fan Hour Games and Burgers;63;109.8413;110.0;32.4;32.3;64.7;6.0;20.0;São Paulo para Crianças, 05/10/2026;84.7;0.2361;1.2968;1.2987;sim
-ChIJbZRHQPRfzpQRz97-ZOg0yXA;Castelos Bar & Boardgames;41;80.2439;70.0;26.9;36.9;63.8;5.0;0.0;QuintoAndar, 23/09/2025 (sem cobrança);63.8;0.0;1.2577;1.0972;sim
-ChIJTaG5ALpZzpQRUDErQ-RkfTs;Ludus Luderia;32;99.6875;100.0;34.0;38.0;72.0;4.0;40.0;CNN Brasil, 02/10/2024 (o site diz que não cobra);112.0;0.3571;0.8901;0.8929;sim
+ChIJ_aN4OAxXzpQR0UH63sAeVCA;Fan Hour Games and Burgers;63;109.8413;110.0;25.9;32.7;58.6;6.0;20.0;São Paulo para Crianças, 05/10/2026;78.6;0.2545;1.3975;1.3995;sim
+ChIJbZRHQPRfzpQRz97-ZOg0yXA;Castelos Bar & Boardgames;41;80.2439;70.0;26.9;36.9;63.8;5.0;0.0;Instagram, 27/03/2024 (sem cobrança);63.8;0.0;1.2577;1.0972;sim
+ChIJTaG5ALpZzpQRUDErQ-RkfTs;Ludus Luderia;32;99.6875;100.0;34.0;38.0;72.0;4.0;44.0;Instagram, 01/03/2026;116.0;0.3793;0.8594;0.8621;sim
 ChIJOczn8z7l3JQRNBEL_ZJ3iQo;Joyjoy Café Cristo Rei;26;61.1923;50.0;;;;6.0;11.6667;Curitibando em Família, 01/08/2024;;;;;sim
+ChIJrT_EWwBZzpQRGAZzptZbtsY;Cartola Luderia Bar;25;81.2;70.0;36.0;;;3.0;15.0;Instagram, 30/07/2025;;;;;sim
 ChIJY_lqHVLl3JQRvDHacOMDKuc;BoardZ Game Pub;23;63.0435;50.0;16.0;22.0;38.0;6.0;12.5;"site, Day Pass (opcional; a casa também cobra por jogo)";50.5;0.2475;1.2484;0.9901;sim
 ChIJ-97tiEeNpJIRb_eV7a-sxBs;Ludoteca Sidequest;16;60.0;50.0;13.0;25.0;38.0;5.0;26.0;site;64.0;0.4062;0.9375;0.7812;sim
 ChIJ7_DDAlH1zpQRJVJ0UHnItH8;Covil Game Bar;12;85.0;90.0;18.0;22.0;40.0;5.0;17.0;Instagram, 29/04/2024 (perfil de mais de uma unidade);57.0;0.2982;1.4912;1.5789;sim
+ChIJHSDPTgF5GZURKmSqKITyoGM;Arcadea Gaming Pub;12;91.6667;90.0;25.0;40.0;65.0;7.0;15.0;Instagram, 06/10/2026 (isenta com consumo de R$ 60);80.0;0.1875;1.1458;1.125;sim
 ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;7;84.2857;90.0;34.4;;;6.0;15.0;"cartaz, jul/2024; com consumo mínimo de R$ 50, que a cesta da casa passa";;;;;sim
+ChIJc3F7ka83J5URQZ1XTl-_iak;Chef on Play;6;50.0833;50.0;6.8;25.9;32.7;7.0;0.0;Instagram, 12/01/2026 (sem cobrança);32.7;0.0;1.5316;1.5291;sim
 ChIJfyav9YI9uAARjwbBqcRm2_k;Café Geek Cafeteria e Ludoteca;6;40.0;40.0;12.5;;;4.0;10.0;"cardápio (B1); mediana dos 5 níveis do Ludoporte, que varia por nível e não por dia";;;;;sim
 ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;6;76.6667;70.0;18.0;28.0;46.0;5.0;18.0;cardápio (B1);64.0;0.2812;1.1979;1.0938;sim
 ChIJoTlvBfMbFgcRHvuCKHBQrXQ;São Jogue;3;83.3333;90.0;16.0;25.0;41.0;7.0;24.5714;site, turno de 3 h (B1, busca profunda);65.5714;0.3747;1.2709;1.3725;sim
 ChIJJz8-gcY3J5URYdZrEXdHaAk;Cineplay- Restaurante e Jogos;25;80.0;70.0;17.9;14.0;31.9;;;;;;;;não
-ChIJrT_EWwBZzpQRGAZzptZbtsY;Cartola Luderia Bar;25;81.2;70.0;36.0;;;;;;;;;;não
-ChIJHSDPTgF5GZURKmSqKITyoGM;Arcadea Gaming Pub;12;91.6667;90.0;25.0;40.0;65.0;;;;;;;;não
-ChIJc3F7ka83J5URQZ1XTl-_iak;Chef on Play;6;50.0833;50.0;6.8;25.9;32.7;;;;;;;;não
