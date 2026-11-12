@@ -9,7 +9,7 @@ Atualizado em 11/11/2026. Correções da orientação aplicadas no **TMin v31** 
 
 ## Próximos 3 passos
 
-1. Responder L20 a L26 no "Lote de decisões" ([pendências](docs/pendencias.md)): circulação provável pela média ou pela mediana; valores da verba I10 (estimados pelo Claude); nomes da banca na folha de aprovação; R05 diante do histograma da São Jogue (dia útil com 94,1% do fim de semana); busca do B1 sem paginação (336 candidatos novos à porta da triagem manual, 38 deles em Campinas); taxas de entrada achadas em 11/11 em seis casas, fora da média de R$ 18,68 (L25); derivados do B1 depois da busca (L26).
+1. Responder L20 a L26 no "Lote de decisões" ([pendências](docs/pendencias.md)): circulação provável pela média ou pela mediana; valores da verba I10 (estimados pelo Claude); nomes da banca na folha de aprovação; R05 diante do histograma da São Jogue (dia útil com 94,1% do fim de semana) e dos histogramas de fluxo dos 46 concorrentes por dia × hora, só com as casas abertas (pico no sábado às 20h: média 83%, mediana 92% da hora mais cheia; terça a quinta às 20h, 44% a 53%); busca do B1 sem paginação (336 candidatos novos à porta da triagem manual, 38 deles em Campinas); taxas de entrada achadas em 11/11 em seis casas, fora da média de R$ 18,68 (L25); derivados do B1 depois da busca (L26).
 2. Conferir as citações `[AV]` e trocar por citação indireta as conferidas.
 3. Ganhos de página só com formatação (116 páginas, dentro do novo teto de 120): referências em espaço simples e fins de capítulo com poucas linhas (melhoria D66).
 
