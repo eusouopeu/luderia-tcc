@@ -144,6 +144,21 @@ Valem para arquivos novos e para os existentes quando o script que os gera for a
 - Separador `;`, codificação UTF-8 com BOM (abre direto no Excel em português). Dos 171 CSV versionados em 14/10/2026, 136 usam `;` e 100 têm BOM. Os de `,` vêm de fontes ou userscripts antigos.
 - Fim de linha: o padrão do módulo `csv` do Python (`\r\n`). Scripts que reescrevem um CSV preservam o fim de linha original.
 
+### 4.4 Grupos de estação do entorno (B1)
+
+Cada resultado do coletor de entorno (`maps_entorno.user.js`) cai em um só grupo, pela categoria e pelo nome no Google Maps, nunca pela busca que o trouxe. No resumo do coletor, `qt_estacoes_<grupo>_<raio>m` e `dist_estacoes_<grupo>_mais_proxima_m`; no `B1_resumo_estabelecimentos.xlsx`, `<grupo>_<raio>m` e `dist_<grupo>_m`.
+
+| Grupo | O que entra | Desde |
+|---|---|---|
+| `metro` | metrôs, inclusive o monotrilho das linhas 15 e 17 de São Paulo quando o Maps o põe na categoria de metrô | 13/10/2026 |
+| `trem` | trens metropolitanos (CPTM, SuperVia, Trensurb), pelo operador mesmo na categoria de metrô | 15/10/2026 |
+| `vlt` | VLT (Carioca, Baixada Santista, Fortaleza, Salvador), bonde de uso urbano, aeromóvel de Porto Alegre, monotrilho fora da categoria de metrô | 12/11/2026 (coletor 2026.11.12-2) |
+| `brt` | BRT e estações-tubo da RIT de Curitiba; ônibus, fora de trilhos | 12/11/2026 (coletor 2026.11.12-2) |
+| `trilhos` (derivado) | `metro` + `trem` + `vlt`; vazio se algum dos três ficou vazio | 12/11/2026 |
+| `vlt_brt` (antigo) | VLT ou BRT, sem separação: coletas até o coletor 2026.11.12-1 (15/10/2026); no resumo do B1, nas coletas novas, `vlt` + `brt` | 13/10 a 12/11/2026 |
+
+Coleta antiga (só `vlt_brt`): `vlt` e `brt` ficam vazios, nunca zero; `trilhos` só sai onde VLT = 0 é certo (`vlt_brt` = 0 no raio, ou busca de VLT dispensada na cidade).
+
 ## 5. Variáveis no código
 
 | Objeto | Convenção atual | Exemplo |

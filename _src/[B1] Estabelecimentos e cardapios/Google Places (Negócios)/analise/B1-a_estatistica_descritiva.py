@@ -90,6 +90,12 @@ VARS = {
     "metro_500m": ("Entorno", "Estações de metrô até 500 m", "estações", DEC2),
     "metro_1000m": ("Entorno", "Estações de metrô até 1000 m", "estações", DEC2),
     "dist_metro_m": ("Entorno", "Distância à estação de metrô mais próxima", "metros (linha reta)", INT),
+    "trem_1000m": ("Entorno", "Estações de trem metropolitano até 1000 m", "estações", DEC2),
+    "vlt_1000m": ("Entorno", "Estações de VLT até 1000 m (só coletas a partir de 2026.11.12-2)", "estações", DEC2),
+    "brt_1000m": ("Entorno", "Estações de BRT até 1000 m (ônibus; só coletas a partir de 2026.11.12-2)", "estações", DEC2),
+    "trilhos_500m": ("Entorno", "Estações sobre trilhos (metrô + trem + VLT) até 500 m", "estações", DEC2),
+    "trilhos_1000m": ("Entorno", "Estações sobre trilhos (metrô + trem + VLT) até 1000 m", "estações", DEC2),
+    "dist_trilhos_m": ("Entorno", "Distância à estação sobre trilhos mais próxima", "metros (linha reta)", INT),
     "shopping_porte_500m": ("Entorno", "Shoppings de porte até 500 m (onde o porte foi buscado)", "shoppings", DEC2),
     "shopping_porte_1000m": ("Entorno", "Shoppings de porte até 1000 m (onde o porte foi buscado)", "shoppings", DEC2),
     "dist_shopping_m": ("Entorno", "Distância ao shopping mais próximo (qualquer porte)", "metros (linha reta)", INT),
@@ -125,6 +131,7 @@ SITE = ["cesta_site_baixa", "cesta_site_mediana", "cesta_site_alta"]
 # Proporções (0/1 por casa): a média é a proporção de casas.
 FLAGS = {
     "tem_metro_1000m": "Com estação de metrô até 1000 m",
+    "tem_trilhos_1000m": "Com estação sobre trilhos (metrô, trem ou VLT) até 1000 m (vazio = não separável)",
     "tem_cardapio": "Com cardápio transcrito",
     "cobra_couvert": "Couvert ou taxa de jogo encontrado (entre as com cardápio)",
     **{f"abre_{d}": f"Abre {NOME_DIA[d]}" for d in DIAS},
@@ -177,7 +184,10 @@ def montar_dados():
     d["interacoes_por_post"] = ((d.curtidas_periodo + d.comentarios_periodo) / d.n_posts_periodo).where(
         d.n_posts_periodo > 0).round(2)
     d["engajamento_pct"] = (d.interacoes_por_post / d.seguidores).round(5)
-    d["tem_metro_1000m"] = (d.metro_1000m > 0).astype(int)
+    # Casa sem coleta de entorno fica vazia, não 0 (até 12/11/2026 contava como 0).
+    d["tem_metro_1000m"] = (d.metro_1000m > 0).astype(float).where(d.metro_1000m.notna())
+    # Trilhos vazio (VLT e BRT juntos na coleta antiga, ou busca não feita) fica vazio, não 0.
+    d["tem_trilhos_1000m"] = (d.trilhos_1000m > 0).astype(float).where(d.trilhos_1000m.notna())
     d["tem_cardapio"] = d.itens_com_preco.notna().astype(int)
     d["cobra_couvert"] = d.couvert_no_cardapio.map({"sim": 1, "não encontrado": 0, "não": 0})
     for dia in DIAS:
@@ -328,6 +338,7 @@ PAINEL = [
     ("abre domingo (%)", "media", "abre_domingo", PCT),
     ("abre segunda (%)", "media", "abre_segunda", PCT),
     ("metrô até 1000 m (%)", "media", "tem_metro_1000m", PCT),
+    ("trilhos até 1000 m (%)", "media", "tem_trilhos_1000m", PCT),
     ("seguidores (mediana)", "mediana", "seguidores", INT),
     ("posts no período (média)", "media", "n_posts_periodo", DEC1),
     ("interações por post (mediana)", "mediana", "interacoes_por_post", DEC1),
@@ -432,11 +443,12 @@ def site(d):
             if grp == "metropole":
                 item["regiao"] = REGIAO[g]
             for c in ["avaliacao_media", "volume_avaliacoes", "seguidores", "interacoes_por_post", "cesta_mediana",
-                      "fecha_tarde_h", "horas_semana", "n_posts_periodo", "dist_metro_m", "bebida_mediana",
+                      "fecha_tarde_h", "horas_semana", "n_posts_periodo", "dist_metro_m", "dist_trilhos_m", "bebida_mediana",
                       "entrada_ou_prato_mediana", "couvert_mediana"]:
                 item[c] = resumo(s["cesta_site_mediana" if c == "cesta_mediana" else c])
-            for c in ["tem_metro_1000m", "abre_domingo", "abre_segunda"]:
-                item[c] = round(float(s[c].mean()), 4)
+            for c in ["tem_metro_1000m", "tem_trilhos_1000m", "abre_domingo", "abre_segunda"]:
+                m = s[c].mean()
+                item[c] = None if pd.isna(m) else round(float(m), 4)
             item["com_cardapio"] = int(s.tem_cardapio.sum())
             item["avaliacoes_b2"] = int(num(s.avaliacoes_b2).fillna(0).sum())
             out.append(item)

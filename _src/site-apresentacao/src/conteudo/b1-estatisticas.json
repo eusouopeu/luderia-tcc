@@ -139,6 +139,78 @@
    "amplitude": 725.0,
    "cv": 0.3959
   },
+  "trem_1000m": {
+   "grupo": "Entorno",
+   "rotulo": "Estações de trem metropolitano até 1000 m",
+   "unidade": "estações",
+   "n": 54.0,
+   "media": 0.0556,
+   "mediana": 0.0,
+   "dp": 0.2312,
+   "min": 0.0,
+   "p25": 0.0,
+   "p75": 0.0,
+   "max": 1.0,
+   "amplitude": 1.0,
+   "cv": 4.1618
+  },
+  "vlt_1000m": {
+   "grupo": "Entorno",
+   "rotulo": "Estações de VLT até 1000 m (só coletas a partir de 2026.11.12-2)",
+   "unidade": "estações",
+   "n": 0
+  },
+  "brt_1000m": {
+   "grupo": "Entorno",
+   "rotulo": "Estações de BRT até 1000 m (ônibus; só coletas a partir de 2026.11.12-2)",
+   "unidade": "estações",
+   "n": 0
+  },
+  "trilhos_500m": {
+   "grupo": "Entorno",
+   "rotulo": "Estações sobre trilhos (metrô + trem + VLT) até 500 m",
+   "unidade": "estações",
+   "n": 53.0,
+   "media": 0.2453,
+   "mediana": 0.0,
+   "dp": 0.5154,
+   "min": 0.0,
+   "p25": 0.0,
+   "p75": 0.0,
+   "max": 2.0,
+   "amplitude": 2.0,
+   "cv": 2.1011
+  },
+  "trilhos_1000m": {
+   "grupo": "Entorno",
+   "rotulo": "Estações sobre trilhos (metrô + trem + VLT) até 1000 m",
+   "unidade": "estações",
+   "n": 53.0,
+   "media": 0.7547,
+   "mediana": 0.0,
+   "dp": 0.9386,
+   "min": 0.0,
+   "p25": 0.0,
+   "p75": 1.0,
+   "max": 3.0,
+   "amplitude": 3.0,
+   "cv": 1.2437
+  },
+  "dist_trilhos_m": {
+   "grupo": "Entorno",
+   "rotulo": "Distância à estação sobre trilhos mais próxima",
+   "unidade": "metros (linha reta)",
+   "n": 25.0,
+   "media": 509.16,
+   "mediana": 555.0,
+   "dp": 179.2611,
+   "min": 95.0,
+   "p25": 387.0,
+   "p75": 607.0,
+   "max": 820.0,
+   "amplitude": 725.0,
+   "cv": 0.3521
+  },
   "shopping_porte_500m": {
    "grupo": "Entorno",
    "rotulo": "Shoppings de porte até 500 m (onde o porte foi buscado)",
@@ -598,7 +670,12 @@
   "tem_metro_1000m": {
    "rotulo": "Com estação de metrô até 1000 m",
    "casas": 24,
-   "n": 63
+   "n": 54
+  },
+  "tem_trilhos_1000m": {
+   "rotulo": "Com estação sobre trilhos (metrô, trem ou VLT) até 1000 m (vazio = não separável)",
+   "casas": 25,
+   "n": 53
   },
   "tem_cardapio": {
    "rotulo": "Com cardápio transcrito",
@@ -1978,6 +2055,18 @@
     "amplitude": 616.0,
     "cv": 0.3013
    },
+   "dist_trilhos_m": {
+    "n": 16.0,
+    "media": 544.875,
+    "mediana": 564.5,
+    "dp": 156.2224,
+    "min": 204.0,
+    "p25": 453.0,
+    "p75": 612.25,
+    "max": 820.0,
+    "amplitude": 616.0,
+    "cv": 0.2867
+   },
    "bebida_mediana": {
     "n": 16.0,
     "media": 19.3562,
@@ -2014,7 +2103,8 @@
     "amplitude": 45.0,
     "cv": 0.6069
    },
-   "tem_metro_1000m": 0.6087,
+   "tem_metro_1000m": 0.7368,
+   "tem_trilhos_1000m": 0.8421,
    "abre_domingo": 0.7391,
    "abre_segunda": 0.1739,
    "com_cardapio": 17,
@@ -2133,6 +2223,18 @@
     "amplitude": 394.0,
     "cv": 0.5883
    },
+   "dist_trilhos_m": {
+    "n": 2.0,
+    "media": 428.5,
+    "mediana": 428.5,
+    "dp": 178.898,
+    "min": 302.0,
+    "p25": 365.25,
+    "p75": 491.75,
+    "max": 555.0,
+    "amplitude": 253.0,
+    "cv": 0.4175
+   },
    "bebida_mediana": {
     "n": 3.0,
     "media": 17.3333,
@@ -2169,7 +2271,8 @@
     "amplitude": 2.5,
     "cv": 0.0693
    },
-   "tem_metro_1000m": 0.4286,
+   "tem_metro_1000m": 0.6,
+   "tem_trilhos_1000m": 0.5,
    "abre_domingo": 0.8571,
    "abre_segunda": 0.2857,
    "com_cardapio": 4,
@@ -2288,6 +2391,18 @@
     "amplitude": 338.0,
     "cv": 0.2854
    },
+   "dist_trilhos_m": {
+    "n": 4.0,
+    "media": 591.25,
+    "mediana": 583.5,
+    "dp": 168.7669,
+    "min": 430.0,
+    "p25": 456.25,
+    "p75": 718.5,
+    "max": 768.0,
+    "amplitude": 338.0,
+    "cv": 0.2854
+   },
    "bebida_mediana": {
     "n": 5.0,
     "media": 9.5,
@@ -2325,6 +2440,7 @@
     "cv": 0.0
    },
    "tem_metro_1000m": 0.6667,
+   "tem_trilhos_1000m": 0.6667,
    "abre_domingo": 0.8333,
    "abre_segunda": 0.3333,
    "com_cardapio": 5,
@@ -2443,6 +2559,18 @@
     "amplitude": 0.0,
     "cv": null
    },
+   "dist_trilhos_m": {
+    "n": 1.0,
+    "media": 307.0,
+    "mediana": 307.0,
+    "dp": null,
+    "min": 307.0,
+    "p25": 307.0,
+    "p75": 307.0,
+    "max": 307.0,
+    "amplitude": 0.0,
+    "cv": null
+   },
    "bebida_mediana": {
     "n": 5.0,
     "media": 23.48,
@@ -2480,6 +2608,7 @@
     "cv": 0.2388
    },
    "tem_metro_1000m": 0.1667,
+   "tem_trilhos_1000m": 0.1667,
    "abre_domingo": 0.8333,
    "abre_segunda": 0.0,
    "com_cardapio": 6,
@@ -2589,6 +2718,9 @@
    "dist_metro_m": {
     "n": 0
    },
+   "dist_trilhos_m": {
+    "n": 0
+   },
    "bebida_mediana": {
     "n": 2.0,
     "media": 14.0,
@@ -2626,6 +2758,7 @@
     "cv": 0.2665
    },
    "tem_metro_1000m": 0.0,
+   "tem_trilhos_1000m": 0.0,
    "abre_domingo": 0.6667,
    "abre_segunda": 0.3333,
    "com_cardapio": 4,
@@ -2708,6 +2841,9 @@
    "dist_metro_m": {
     "n": 0
    },
+   "dist_trilhos_m": {
+    "n": 0
+   },
    "bebida_mediana": {
     "n": 1.0,
     "media": 16.9,
@@ -2744,7 +2880,8 @@
     "amplitude": 0.0,
     "cv": null
    },
-   "tem_metro_1000m": 0.0,
+   "tem_metro_1000m": null,
+   "tem_trilhos_1000m": null,
    "abre_domingo": 0.6667,
    "abre_segunda": 0.0,
    "com_cardapio": 1,
@@ -2854,6 +2991,9 @@
    "dist_metro_m": {
     "n": 0
    },
+   "dist_trilhos_m": {
+    "n": 0
+   },
    "bebida_mediana": {
     "n": 2.0,
     "media": 12.35,
@@ -2891,6 +3031,7 @@
     "cv": null
    },
    "tem_metro_1000m": 0.0,
+   "tem_trilhos_1000m": 0.0,
    "abre_domingo": 0.6667,
    "abre_segunda": 0.6667,
    "com_cardapio": 3,
@@ -3009,6 +3150,18 @@
     "amplitude": 0.0,
     "cv": null
    },
+   "dist_trilhos_m": {
+    "n": 1.0,
+    "media": 95.0,
+    "mediana": 95.0,
+    "dp": null,
+    "min": 95.0,
+    "p25": 95.0,
+    "p75": 95.0,
+    "max": 95.0,
+    "amplitude": 0.0,
+    "cv": null
+   },
    "bebida_mediana": {
     "n": 1.0,
     "media": 8.0,
@@ -3046,6 +3199,7 @@
     "cv": null
    },
    "tem_metro_1000m": 0.5,
+   "tem_trilhos_1000m": 0.5,
    "abre_domingo": 1.0,
    "abre_segunda": 0.5,
    "com_cardapio": 1,
@@ -3155,6 +3309,9 @@
    "dist_metro_m": {
     "n": 0
    },
+   "dist_trilhos_m": {
+    "n": 0
+   },
    "bebida_mediana": {
     "n": 2.0,
     "media": 16.25,
@@ -3192,6 +3349,7 @@
     "cv": 0.7071
    },
    "tem_metro_1000m": 0.0,
+   "tem_trilhos_1000m": 0.0,
    "abre_domingo": 0.5,
    "abre_segunda": 1.0,
    "com_cardapio": 2,
@@ -3292,6 +3450,9 @@
    "dist_metro_m": {
     "n": 0
    },
+   "dist_trilhos_m": {
+    "n": 0
+   },
    "bebida_mediana": {
     "n": 0
    },
@@ -3302,6 +3463,7 @@
     "n": 0
    },
    "tem_metro_1000m": 0.0,
+   "tem_trilhos_1000m": 0.0,
    "abre_domingo": 1.0,
    "abre_segunda": 1.0,
    "com_cardapio": 0,
@@ -3411,6 +3573,9 @@
    "dist_metro_m": {
     "n": 0
    },
+   "dist_trilhos_m": {
+    "n": 0
+   },
    "bebida_mediana": {
     "n": 1.0,
     "media": 12.0,
@@ -3448,6 +3613,7 @@
     "cv": null
    },
    "tem_metro_1000m": 0.0,
+   "tem_trilhos_1000m": 0.0,
    "abre_domingo": 1.0,
    "abre_segunda": 0.0,
    "com_cardapio": 1,
@@ -3566,6 +3732,18 @@
     "amplitude": 0.0,
     "cv": null
    },
+   "dist_trilhos_m": {
+    "n": 1.0,
+    "media": 387.0,
+    "mediana": 387.0,
+    "dp": null,
+    "min": 387.0,
+    "p25": 387.0,
+    "p75": 387.0,
+    "max": 387.0,
+    "amplitude": 0.0,
+    "cv": null
+   },
    "bebida_mediana": {
     "n": 1.0,
     "media": 16.0,
@@ -3594,6 +3772,7 @@
     "n": 0
    },
    "tem_metro_1000m": 1.0,
+   "tem_trilhos_1000m": 1.0,
    "abre_domingo": 1.0,
    "abre_segunda": 1.0,
    "com_cardapio": 1,
@@ -3703,6 +3882,9 @@
    "dist_metro_m": {
     "n": 0
    },
+   "dist_trilhos_m": {
+    "n": 0
+   },
    "bebida_mediana": {
     "n": 1.0,
     "media": 13.0,
@@ -3740,6 +3922,7 @@
     "cv": null
    },
    "tem_metro_1000m": 0.0,
+   "tem_trilhos_1000m": 0.0,
    "abre_domingo": 1.0,
    "abre_segunda": 0.0,
    "com_cardapio": 1,
@@ -3840,6 +4023,9 @@
    "dist_metro_m": {
     "n": 0
    },
+   "dist_trilhos_m": {
+    "n": 0
+   },
    "bebida_mediana": {
     "n": 1.0,
     "media": 12.5,
@@ -3877,6 +4063,7 @@
     "cv": null
    },
    "tem_metro_1000m": 0.0,
+   "tem_trilhos_1000m": 0.0,
    "abre_domingo": 1.0,
    "abre_segunda": 0.0,
    "com_cardapio": 1,
@@ -3987,6 +4174,9 @@
    "dist_metro_m": {
     "n": 0
    },
+   "dist_trilhos_m": {
+    "n": 0
+   },
    "bebida_mediana": {
     "n": 1.0,
     "media": 13.0,
@@ -4024,6 +4214,7 @@
     "cv": null
    },
    "tem_metro_1000m": 0.0,
+   "tem_trilhos_1000m": 0.0,
    "abre_domingo": 1.0,
    "abre_segunda": 0.0,
    "com_cardapio": 1,
@@ -4141,6 +4332,18 @@
     "amplitude": 292.0,
     "cv": 0.8567
    },
+   "dist_trilhos_m": {
+    "n": 2.0,
+    "media": 241.0,
+    "mediana": 241.0,
+    "dp": 206.4752,
+    "min": 95.0,
+    "p25": 168.0,
+    "p75": 314.0,
+    "max": 387.0,
+    "amplitude": 292.0,
+    "cv": 0.8567
+   },
    "bebida_mediana": {
     "n": 3.0,
     "media": 12.0,
@@ -4178,6 +4381,7 @@
     "cv": 0.0
    },
    "tem_metro_1000m": 0.5,
+   "tem_trilhos_1000m": 0.5,
    "abre_domingo": 1.0,
    "abre_segunda": 0.5,
    "com_cardapio": 3,
@@ -4295,6 +4499,18 @@
     "amplitude": 338.0,
     "cv": 0.2854
    },
+   "dist_trilhos_m": {
+    "n": 4.0,
+    "media": 591.25,
+    "mediana": 583.5,
+    "dp": 168.7669,
+    "min": 430.0,
+    "p25": 456.25,
+    "p75": 718.5,
+    "max": 768.0,
+    "amplitude": 338.0,
+    "cv": 0.2854
+   },
    "bebida_mediana": {
     "n": 5.0,
     "media": 9.5,
@@ -4332,6 +4548,7 @@
     "cv": 0.0
    },
    "tem_metro_1000m": 0.5714,
+   "tem_trilhos_1000m": 0.5714,
    "abre_domingo": 0.8571,
    "abre_segunda": 0.4286,
    "com_cardapio": 5,
@@ -4449,6 +4666,18 @@
     "amplitude": 659.0,
     "cv": 0.3707
    },
+   "dist_trilhos_m": {
+    "n": 19.0,
+    "media": 520.1053,
+    "mediana": 555.0,
+    "dp": 161.6065,
+    "min": 204.0,
+    "p25": 399.5,
+    "p75": 597.0,
+    "max": 820.0,
+    "amplitude": 616.0,
+    "cv": 0.3107
+   },
    "bebida_mediana": {
     "n": 26.0,
     "media": 19.5577,
@@ -4485,7 +4714,8 @@
     "amplitude": 45.0,
     "cv": 0.4851
    },
-   "tem_metro_1000m": 0.45,
+   "tem_metro_1000m": 0.5806,
+   "tem_trilhos_1000m": 0.6333,
    "abre_domingo": 0.775,
    "abre_segunda": 0.15,
    "com_cardapio": 29,
@@ -4594,6 +4824,9 @@
    "dist_metro_m": {
     "n": 0
    },
+   "dist_trilhos_m": {
+    "n": 0
+   },
    "bebida_mediana": {
     "n": 6.0,
     "media": 14.2,
@@ -4631,6 +4864,7 @@
     "cv": 0.6452
    },
    "tem_metro_1000m": 0.0,
+   "tem_trilhos_1000m": 0.0,
    "abre_domingo": 0.6364,
    "abre_segunda": 0.5455,
    "com_cardapio": 9,

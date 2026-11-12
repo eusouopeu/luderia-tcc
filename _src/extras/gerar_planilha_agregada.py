@@ -13,7 +13,8 @@ tudo numa pasta só e depois separa, renumerando as tabelas de cada arquivo.
 Fora por pedido do autor (30/10/2026): os comentários do B2 (texto, temas e
 contagens de avaliações) e, no entorno, tudo o que vem do OpenStreetMap
 (`shopping_porte_*` e `B1_entorno.csv`). Do entorno ficam só as leituras do
-coletor do Google Maps (estações de metrô e distância ao shopping).
+coletor do Google Maps (estações de metrô, trem, VLT, BRT e "trilhos" =
+metrô + trem + VLT, e distância ao shopping).
 
 Tabelas do B1 usam fórmulas sobre a aba "Dados B1" (54 casas, valores do
 `B1_estatistica_descritiva_geral.xlsx`); as de Instagram, B3 e B4 trazem os
@@ -64,7 +65,10 @@ COLS = [
     ("abre_quinta", "abre quinta", "int"), ("abre_sexta", "abre sexta", "int"), ("abre_sabado", "abre sábado", "int"),
     ("abre_domingo", "abre domingo", "int"),
     ("metro_500m", "metrô até 500 m", "int"), ("metro_1000m", "metrô até 1000 m", "int"),
-    ("dist_metro_m", "distância ao metrô (m)", "int"), ("dist_shopping_m", "distância ao shopping (m)", "int"),
+    ("dist_metro_m", "distância ao metrô (m)", "int"),
+    ("trem_1000m", "trem até 1000 m", "int"), ("vlt_1000m", "VLT até 1000 m", "int"), ("brt_1000m", "BRT até 1000 m", "int"),
+    ("trilhos_500m", "trilhos até 500 m", "int"), ("trilhos_1000m", "trilhos até 1000 m", "int"),
+    ("dist_trilhos_m", "distância aos trilhos (m)", "int"), ("dist_shopping_m", "distância ao shopping (m)", "int"),
     ("seguidores", "seguidores", "int"), ("n_posts_total", "posts desde o início", "int"),
     ("idade_perfil_anos", "idade do perfil (anos)", "dec"), ("n_posts_periodo", "posts 01/09 a 01/10/2026", "int"),
     ("interacoes_por_post", "interações por post", "dec"), ("engajamento_pct", "engajamento", "pct"),
