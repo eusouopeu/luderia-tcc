@@ -4,7 +4,7 @@
 
 Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e estrutura física. Os números daqui (lugares, giros, equipe, horário) entram na árvore de direcionadores do cap. 9 e nas checagens de coerência.
 
-**Desenho enxuto (P7 em [1a_principios.md](1a_principios.md)):** 6 mesas; funcionamento de terça a sábado das 14h às 23h e domingo das 14h às 20h (51 h; decisão do autor, 04/11/2026), fechado na segunda; 2 cozinheiros-chefes e 3 instrutores, com turnos de 8 h e 1 h de intervalo de terça a sábado e de 6 h com 15 min no domingo, e folga na segunda e em mais um dia (cozinheiros: terça ou domingo, alternados por semana); benefícios: refeição no local e PLR de 5% do EBITDA. A São Jogue entra como referência de comportamento (ocupação, permanência, giro), não de porte.
+**Desenho enxuto (P7 em [1a_principios.md](1a_principios.md)):** 6 mesas, num ponto na Pituba de 150 a 200 m² que já comporta 8; funcionamento de terça a sábado das 14h às 23h (45 h; decisão do autor, 12/11/2026), fechado no domingo e na segunda; 1 cozinheiro-chefe e 2 instrutores, com turnos de 8 h e 1 h de intervalo, folgas no domingo e na segunda, e o sócio na gestão, no caixa e no salão. Etapa de mesas: mais 2 mesas, um instrutor, o segundo cozinheiro e o domingo das 14h às 20h (turno de 6 h com 15 min); todos folgam dois dias por semana (a segunda e mais um), mulheres (cerca de metade da equipe) domingo sim, domingo não, e homens um domingo a cada 4 semanas; benefícios: refeição no local e PLR de 5% do EBITDA. A São Jogue entra como referência de comportamento (ocupação, permanência, giro), não de porte.
 
 ## Divisão de subcapítulos
 
@@ -37,6 +37,6 @@ Mostrar como o negócio funciona no dia a dia e dimensionar capacidade, equipe e
 ### 7.5 Estrutura organizacional e pessoal
 - Organograma.
 - Cargos, funções, quantidade por turno (monitor de jogos, atendimento, bar, caixa, gestão). Na São Jogue, em todas as visitas, os instrutores também atendiam as mesas, o balcão e o caixa (B3); a equipe do plano segue esse acúmulo.
-- Dimensionamento da equipe coerente com a ocupação projetada: no máximo 2 mesas (cerca de 10 clientes) por instrutor no pico; escala semanal que respeite 8 h por dia, 44 h por semana e uma folga, cozinha incluída.
+- Dimensionamento da equipe coerente com a ocupação projetada: carga máxima de 7 mesas para 3 pessoas no salão (instrutores e sócio), a maior vista nas visitas (Paralela, 30/10/2026); escala semanal que respeite 8 h por dia, 44 h por semana e uma folga, cozinha incluída.
 - Salários e encargos com fonte (RAIS/CAGED, convenção coletiva) → premissas do cap. 9.
 - Terceirizados: contador, limpeza, segurança.

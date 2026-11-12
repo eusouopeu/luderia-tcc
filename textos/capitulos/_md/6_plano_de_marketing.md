@@ -25,7 +25,7 @@ A grade ERRC (eliminar, reduzir, elevar e criar) converte essas evidências em d
 | Eliminar | Consumação mínima e cobrança por jogo: uma taxa por pessoa e por turno | Regras da casa com 53 críticas e 17 elogios (B2); consumação mínima no LudoCafé e cobrança por título na BoardZ (B1) |
 | Reduzir | Acervo inicial de 175 títulos, contra a mediana de 322 nos 30 acervos publicados | Variedade do acervo com 13 críticas em 1.628 avaliações (B2) |
 | Reduzir | Taxa de entrada de R$ 19,62, abaixo da São Jogue | Preço da entrada com 25 críticas e 21 elogios (B2); Tabela A.2 (B1) |
-| Elevar | Instrutor no salão, com no máximo 2 mesas por instrutor no pico, e explicação de regras inclusa na taxa | Explicação de jogos em 14,3% das avaliações; nota média de 2,62 quando criticada (B2) |
+| Elevar | Instrutor no salão, com carga de até 7 mesas para 3 pessoas no salão, e explicação de regras inclusa na taxa | Explicação de jogos em 14,3% das avaliações; nota média de 2,62 quando criticada (B2) |
 | Elevar | Cardápio de preparo rápido | Rapidez do serviço com 42 críticas e 27 elogios; nota média de 2,50 quando criticada (B2) |
 | Criar | Indicação de jogo pelo perfil do grupo, com apoio de um site de recomendação | Indicações de jogos em 3,6% das avaliações; nota média de 1,25 nas 4 críticas (B2) |
 
@@ -43,7 +43,7 @@ Os alimentos e bebidas são a maior fonte de receita e o segundo tema das avalia
 
 ## 6.3 PREÇO
 
-A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor maior de sexta a domingo. É o modelo da São Jogue e o mais comum entre os concorrentes que divulgam a taxa: 17 dos 23 que cobram diferenciam o preço pelo dia da semana (Tabela A.2, no Apêndice A). O turno de 3 horas fica acima da permanência média medida no B3, de 109 minutos, e não limita o grupo típico; serve para liberar a mesa nos horários de reserva. A São Jogue usa o mesmo turno de 3 horas (Tabela A.2).
+A luderia cobra uma taxa de entrada por pessoa, por turno de 3 horas, com valor maior no fim de semana. É o modelo da São Jogue e o mais comum entre os concorrentes que divulgam a taxa: 17 dos 23 que cobram diferenciam o preço pelo dia da semana (Tabela A.2, no Apêndice A). O turno de 3 horas fica acima da permanência média medida no B3, de 109 minutos, e não limita o grupo típico; serve para liberar a mesa nos horários de reserva. A São Jogue usa o mesmo turno de 3 horas (Tabela A.2).
 
 Dos 54 concorrentes do B1, 30 cobram taxa de entrada, encontrada no cardápio, no site, na imprensa ou no Instagram; o Castelos e o Chef on Play declaram que não cobram, e nos outros 22 a cobrança não foi encontrada. A taxa de entrada do plano, de R$ 19,62, é a média da taxa das 29 casas de fora de Salvador que cobram (mediana de R$ 20,00): de cada casa entra a mediana dos seus valores, e a São Jogue, referência local, fica fora da média e é comparada à parte. A taxa da São Jogue está no alto da faixa. Pelo maior valor de cada casa, a mediana dos 30 concorrentes que cobram é de R$ 25,00 no fim de semana, e seis cobram mais que a São Jogue: Ludus (R$ 48,00 na sexta e no sábado), Encounter (R$ 45,00 no sábado), Bodogami (R$ 38,00), LudoCafé (R$ 35,00 sem consumo mínimo), Shelf (R$ 30,00) e Balboa's (R$ 30,00 pela diária). No dia útil, a mediana é de R$ 15,00, contra R$ 22,00. Os valores de Covil, LudoCafé, Garagem do Nerd, Joyjoy e Vila Celta são de 2024, e os de Balboa's e Cartola, de 2025: podem estar defasados. Isenção ou abatimento por consumo, como na Arcadea e na Fortalúdica, não entra na conta. A contagem exclui a sala privativa do Café Geek, cobrada por hora e por grupo.
 
@@ -61,7 +61,7 @@ O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 19
 
 ## 6.4 PRAÇA
 
-A matriz de bairros indica três finalistas para o ponto: Graça, Pituba e Itaigara (Tabela 6.1). A escolha final sai da coleta de anúncios nesses três bairros, antes do investimento. A matriz usa três indicadores, com pesos do autor (N6). O primeiro, de peso 40%, é o Índice de Infraestrutura e Serviços Urbanos (IISU) do QUALISalvador, levantamento da UFBA sobre a qualidade urbana dos bairros. O IISU reúne 23 indicadores de saneamento, saúde, educação, mobilidade, segurança pública e equipamentos urbanos, e mede o ambiente em que o negócio se instala (SANTOS et al., 2022, p. 92–95, 492–493) [AV]. O segundo, de peso 30%, é a renda média familiar per capita do mesmo levantamento (2018–2020), condição para pagar a visita: o gasto com lazer se concentra nas famílias de renda alta (seção 5.2). O terceiro, de peso 30%, é a densidade demográfica do Censo 2022 (IBGE), que aproxima o movimento e o comércio do entorno.
+A matriz de bairros indica três finalistas para o ponto: Graça, Pituba e Itaigara (Tabela 6.1). Entre eles, o plano adota a Pituba, pela oferta de pontos na coleta de anúncios (texto adiante). A matriz usa três indicadores, com pesos do autor (N6). O primeiro, de peso 40%, é o Índice de Infraestrutura e Serviços Urbanos (IISU) do QUALISalvador, levantamento da UFBA sobre a qualidade urbana dos bairros. O IISU reúne 23 indicadores de saneamento, saúde, educação, mobilidade, segurança pública e equipamentos urbanos, e mede o ambiente em que o negócio se instala (SANTOS et al., 2022, p. 92–95, 492–493) [AV]. O segundo, de peso 30%, é a renda média familiar per capita do mesmo levantamento (2018–2020), condição para pagar a visita: o gasto com lazer se concentra nas famílias de renda alta (seção 5.2). O terceiro, de peso 30%, é a densidade demográfica do Censo 2022 (IBGE), que aproxima o movimento e o comércio do entorno.
 
 A idade do público não entra. Ela é premissa do autor, e os clientes de uma luderia vêm de vários bairros, de carro ou de transporte público. A matriz considera só os bairros com renda per capita de pelo menos o dobro da média da cidade (R$ 2.819,54, o dobro de R$ 1.409,77): são 15 dos 160 bairros do levantamento. Cada indicador é normalizado de 0 a 1 entre os candidatos.
 
@@ -95,15 +95,15 @@ Os dados têm limites. Descrevem moradores, e não quem circula pelo bairro, com
 
 O ponto deve ficar a até 1.000 m de uma estação de metrô: os concorrentes nessa condição têm mediana de 770 avaliações no Google Maps, contra 396 dos que ficam longe (seção 5.4.2). O shopping de porte não mostra a mesma vantagem e não entra como exigência.
 
-A escolha entre os três finalistas depende do custo e da oferta de pontos. O FipeZap dá o aluguel comercial só para Salvador inteira (R$ 54,15 por m² em jul/2026), sem recorte de bairro, e o capítulo 9 usa esse valor. A coleta de anúncios fecha essa lacuna. Antes de assinar o contrato, o coletor do Bloco B5 busca nos portais OLX, ZAP Imóveis, Viva Real e QuintoAndar os salões térreos de 110 a 150 m² na Graça, na Pituba e no Itaigara. Para cada anúncio, registram-se o aluguel pedido, o condomínio e o IPTU, a área, o número de sanitários, o andar, a distância até a estação de metrô mais próxima e o atendimento ao Quadro 6.2. O bairro escolhido é o de maior nota da matriz que tenha ao menos três anúncios que atendam ao quadro e aluguel mediano pedido de até R$ 64,35 por m², o valor pessimista do plano (capítulo 9). Se nenhum dos três cumprir as duas condições, a coleta se estende ao 4º colocado, o Caminho das Árvores. O preço pedido é maior que o fechado (N2): a cotação com corretor substitui o anúncio antes do contrato.
+A escolha entre os três finalistas dependia do custo e da oferta de pontos. O FipeZap dá o aluguel comercial só para Salvador inteira, sem recorte de bairro, e a coleta de anúncios do Bloco B5 fechou essa lacuna (OLX, ZAP Imóveis e Viva Real, 12/11/2026). O plano adota a Pituba, 2ª colocada na matriz e o bairro com mais oferta: 139 dos 184 anúncios coletados nos três finalistas (decisão do autor, 12/11/2026). O ponto tem de 150 a 200 m², área que já comporta as 8 mesas da etapa de mesas (seção 7.1). Nessa faixa, os 17 anúncios da Pituba pedem, em média, R$ 11,6 mil por mês, ou R$ 63,79 por m², com condomínio e IPTU de 11,8% do aluguel; o capítulo 9 usa esses valores, com o 1º e o 3º quartil do preço por m² nos cenários. Antes de assinar o contrato, cada imóvel visitado é conferido no Quadro 6.2: sanitários, andar, distância até a estação de metrô e lotação aprovada. O preço pedido é maior que o fechado (N2): a cotação com corretor substitui o anúncio antes do contrato.
 
 **Quadro 6.2 – Requisitos mínimos do ponto**
 
 | Requisito | Mínimo | Origem |
 |---|---|---|
-| Área | De 110 a 150 m², com cerca de 130 m² no provável | Estimativa do autor (N6), capítulo 9 |
+| Área | De 150 a 200 m², com cerca de 182 m² no provável: área para 8 mesas | Decisão do autor; anúncios do B5, capítulo 9 |
 | Pavimento | Térreo, com entrada voltada para a rua e rota acessível até as mesas | Seção 7.1; ABNT NBR 9050 |
-| Salão | Espaço para 6 mesas, cerca de 30 assentos, com estantes do acervo à vista | Seção 7.1 (B3) |
+| Salão | Espaço para 8 mesas (6 na abertura), cerca de 40 assentos, com estantes do acervo à vista | Seção 7.1 (B3) |
 | Sanitários | Três de clientes (masculino, feminino e adaptado com fraldário) e um da equipe | Seção 7.1; Código de Obras de Salvador [AV]; NR-24 |
 | Cozinha e depósito | Espaço para cozinha completa e depósito de A&B, com fluxo e materiais da RDC n. 216/2004 | Seções 7.1 e 8.2 |
 | Zoneamento | Zona que admita serviço de alimentação e lazer | LOUOS de Salvador [AV] |
@@ -111,7 +111,7 @@ A escolha entre os três finalistas depende do custo e da oferta de pontos. O Fi
 | Metrô | Estação a até 1.000 m | Seção 5.4.2 |
 | Contrato | Prazo de 5 anos, com direito à ação renovatória | Seção 8.3 |
 | Horário e ruído | Funcionamento até as 23h sem restrição da zona | Seção 7.2; LOUOS de Salvador [AV] |
-| Aluguel | Mediana pedida de até R$ 64,35 por m² | Cenário pessimista, capítulo 9 |
+| Aluguel | Até R$ 75,00 por m², o 3º quartil dos anúncios de 150 a 200 m² na Pituba | Cenário pessimista, capítulo 9 |
 
 Fonte: elaborado pelo próprio autor, com base nos capítulos 7, 8 e 9.
 
@@ -121,33 +121,33 @@ O Google Maps é o canal principal, e o Instagram, o de apoio. Entre os 49 conco
 
 A mensagem fala com grupos de amigos e com quem organiza aniversários. Quando a avaliação diz com quem o cliente foi, os amigos aparecem em 56 avaliações, a família em 40, o aniversário em 39 e o casal em 13 (Bloco B2). O dado é exploratório (seção 3.3), mas confirma a ocasião em grupo do capítulo 5. O argumento é a proposta de valor: ninguém precisa conhecer o jogo, porque o instrutor ensina.
 
-O orçamento de marketing é de R$ 1.500,00 por mês no provável, de R$ 1.000,00 a R$ 2.000,00 nos cenários (premissa C10). O valor é estimativa do autor (N6): o escopo não inclui teste de anúncio, e o custo de aquisição de cliente não foi medido. No mês maduro do provável, o orçamento equivale a R$ 1,55 por visita (seção 6.6). Três indicadores acompanham o plano: a nota no Google Maps, com meta de 4,7, a mediana dos concorrentes; a proporção de avaliações que criticam o atendimento, de 5,7% nos concorrentes (B2); e a circulação no pico de fim de semana, que precisa ficar acima de 5,23 pessoas por hora, o ponto de ruptura da seção 9.5.
+O orçamento de marketing é de R$ 1.500,00 por mês no provável, de R$ 1.000,00 a R$ 2.000,00 nos cenários (premissa C10). O valor é estimativa do autor (N6): o escopo não inclui teste de anúncio, e o custo de aquisição de cliente não foi medido. No mês maduro do provável, o orçamento equivale a R$ 1,70 por visita (seção 6.6). Três indicadores acompanham o plano: a nota no Google Maps, com meta de 4,7, a mediana dos concorrentes; a proporção de avaliações que criticam o atendimento, de 5,7% nos concorrentes (B2); e a circulação no pico de fim de semana, que precisa ficar acima de 5,70 pessoas por hora, o ponto de ruptura da seção 9.5.
 
 ## 6.6 ESTIMATIVA DE DEMANDA
 
-A luderia deve receber 968 pessoas por mês no ano maduro do cenário provável, de 610 a 1.770 nos cenários (Tabela 6.2). A estimativa parte da *circulação*: as pessoas que entram na luderia por hora. A circulação no pico vem da contagem direta na São Jogue (B3), nas noites de sexta e sábado: 6,40 pessoas por hora, a média simples das quatro visitas (Tabela 3.1). Para levar a circulação ao dia, o modelo usa o horário dos 54 concorrentes (B1): em cada hora aberta do plano, o número de concorrentes abertos é dividido pelo número de concorrentes abertos nas horas das visitas. A soma dessas razões dá as horas de pico equivalentes do dia: 6,77 horas, em média, de sexta a domingo, nas 9 horas abertas de sexta e sábado e nas 6 do domingo. No mês maduro do cenário provável, a conta é a seguinte:
+A luderia deve receber 882 pessoas por mês no ano maduro do cenário provável, de 477 a 1.720 nos cenários (Tabela 6.2). A estimativa parte da *circulação*: as pessoas que entram na luderia por hora. A circulação no pico vem da contagem direta na São Jogue (B3), nas noites de sexta e sábado: 6,40 pessoas por hora, a média simples das quatro visitas (Tabela 3.1). Para levar a circulação ao dia, o modelo usa o horário dos 54 concorrentes (B1): em cada hora aberta do plano, o número de concorrentes abertos é dividido pelo número de concorrentes abertos nas horas das visitas. A soma dessas razões dá as horas de pico equivalentes do dia: 7,89 horas, em média, na sexta e no sábado, nas 9 horas abertas de cada dia. No mês maduro do cenário provável, a conta é a seguinte:
 
 pessoas por dia de fim de semana = circulação no pico × horas de pico equivalentes (1)
 
-6,40 × 6,77 = 43,3 pessoas por dia de fim de semana
+6,40 × 7,89 = 50,5 pessoas por dia de fim de semana
 
-O dia útil (terça a quinta) entra em separado do fim de semana (sexta a domingo), porque o movimento é menor. Em restaurantes de loja física, um dia de segunda a quinta recebe 61,9% do gasto de um dia de sexta a domingo no Rio de Janeiro e 69,2% em São Paulo (ANR, 2026a; 2026b). Com a média das duas cidades, 65,5%, e o ajuste do horário, o dia útil recebe 31,2 pessoas. O ajuste vem do horário do plano, que cobre 84,5% dos concorrentes abertos no dia útil e 77,0% no fim de semana (B1): o dia útil ganha a razão entre os dois, 1,10, porque abre 9 horas em todos os dias, e o fim de semana perde 3 horas no domingo. Com 3 dias de cada tipo por semana e 4,33 semanas por mês, o mês maduro soma 968 pessoas.
+O dia útil (terça a quinta) entra em separado do fim de semana (sexta e sábado), porque o movimento é menor. Em restaurantes de loja física, um dia de segunda a quinta recebe 61,9% do gasto de um dia de sexta a domingo no Rio de Janeiro e 69,2% em São Paulo (ANR, 2026a; 2026b). Com a média das duas cidades, 65,5%, e o ajuste do horário, o dia útil recebe 34,2 pessoas. O ajuste vem do horário do plano, que cobre 84,6% dos concorrentes abertos no dia útil e 81,9% na sexta e no sábado (B1): o dia útil ganha a razão entre os dois, 1,03. Com 3 dias úteis e 2 de fim de semana por semana e 4,33 semanas por mês, o mês maduro soma 882 pessoas. O domingo fica fechado na abertura e só entra com a etapa de mesas (seção 10.4).
 
 **Tabela 6.2 – Demanda no mês maduro, por cenário**
 
 | Variável | Pessimista | Provável | Otimista |
 |---|---|---|---|
-| Circulação no pico de fim de semana (pessoas por hora) | 4,13 | 6,40 | 11,43 |
+| Circulação no pico de fim de semana (pessoas por hora) | 4,15 | 6,40 | 11,43 |
 | Dia útil (% do fim de semana) | 61,9 | 65,5 | 69,2 |
-| Pessoas por dia de fim de semana | 28,0 | 43,3 | 77,4 |
-| Pessoas por dia útil | 19,0 | 31,2 | 58,8 |
-| Pessoas por mês | 610 | 968 | 1.770 |
+| Pessoas por dia de fim de semana | 32,7 | 50,5 | 90,2 |
+| Pessoas por dia útil | 20,9 | 34,2 | 64,5 |
+| Pessoas por mês | 477 | 882 | 1.720 |
 
 Fonte: elaborado pelo próprio autor, com base nos Blocos B1 e B3 e na ANR (2026a; 2026b), no modelo financeiro (Apêndice E).
 
-Nota: pessimista com as notas fiscais da São Jogue convertidas em circulação (seção 9.1) e a razão do Rio de Janeiro; otimista com a visita mais cheia e a razão de São Paulo. Horas de pico equivalentes de 6,77 e ajuste do horário de 1,10 nos três cenários.
+Nota: pessimista com as notas fiscais da São Jogue convertidas em circulação (seção 9.1) e a razão do Rio de Janeiro; otimista com a visita mais cheia e a razão de São Paulo. Horas de pico equivalentes de 7,89 e ajuste do horário de 1,03 nos três cenários; fim de semana de sexta e sábado.
 
-O primeiro ano tem rampa: o movimento começa em 40% do maduro e chega a 100% no mês 9, de 30% em 12 meses no pessimista a 50% em 6 meses no otimista (premissas R11 e R12, estimativa do autor, N6). O caminho inverso confere a ordem de grandeza. As 11,6 mil visitas por ano do provável equivalem a 1,5 visita por ano para cada 100 moradores de Salvador de 20 a 39 anos, cerca de 781 mil pessoas se mantida a proporção do Censo 2022 (IBGE).
+O primeiro ano tem rampa: o movimento começa em 40% do maduro e chega a 100% no mês 9, de 30% em 12 meses no pessimista a 50% em 6 meses no otimista (premissas R11 e R12, estimativa do autor, N6). O caminho inverso confere a ordem de grandeza. As 10,6 mil visitas por ano do provável equivalem a 1,4 visita por ano para cada 100 moradores de Salvador de 20 a 39 anos, cerca de 781 mil pessoas se mantida a proporção do Censo 2022 (IBGE).
 
 **Referências citadas neste capítulo**
 

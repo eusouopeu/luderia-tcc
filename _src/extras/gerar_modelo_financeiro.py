@@ -38,12 +38,14 @@ que cobram, fora a São Jogue; R$ 18,68 e 22 casas até a busca de 11/11/2026), 
 antes de 09/11/2026, a taxa era 28,4% do gasto (R$ 22,32 no provável), o que
 não batia com o preço adotado.
 
-Desenho enxuto (P7 de _instrucoes/1a_principios.md, 02/11/2026): 6 mesas;
-terça a sábado das 14h às 23h (9 h) e domingo das 14h às 20h (6 h), segunda
-fechada (decisão do autor, 04/11/2026); equipe de 5 (2 cozinheiros-chefes e 3
-atendentes e instrutores, em 5 dias de 8 h, com 6 h no domingo, 39 h por semana na
-média; decisão do autor, 04/11/2026), mais o
-sócio no caixa em todo o horário aberto (pró-labore, C08).
+Desenho enxuto (P7 de _instrucoes/1a_principios.md; decisão do autor, 12/11/2026): etapa 1
+com 6 mesas, de terça a sábado das 14h às 23h (45 h), domingo e segunda fechados; equipe de
+3 empregados (1 cozinheiro-chefe e 2 atendentes e instrutores, 5 dias de 8 h, 40 h por
+semana) mais o sócio na gestão, no caixa e no salão (pró-labore, C08). O ponto, na Pituba,
+já tem área para 8 mesas (150 a 200 m², C03 a C05). A etapa de mesas (cap. 10) é opção, só
+no Monte Carlo: dispara com a demanda de pico acima de GATILHO_MESAS do teto do salão, a
+partir do ano 2, e soma 2 mesas, instrutores pela regra de MESAS_POR_INSTRUTOR, um segundo
+cozinheiro e o domingo (das 14h às 20h), com a escala de ESCALA_EXP.
 A remuneração soma ao salário os adicionais legais da escala (ESCALA): noturno,
 hora noturna reduzida, repouso sobre eles e feriados em dobro; os encargos e o
 vale-transporte (C07) saem da mesma conta, linha a linha (custo_empregado).
@@ -54,7 +56,7 @@ pessoas por hora ≤ mesas × pessoas por mesa ÷ permanência (B3).
 Entradas: B1 (cesta de jogos; couvert dos cardápios; casas abertas por hora,
 B1-a_abertos_por_hora.py), B2 (gasto por pessoa e cesta por casa,
 B2-a_gasto_por_pessoa.py), B3 (contagem_resumo_visitas.csv,
-contagem_notas_intervalo.csv), B4 (FipeZap, CAGED, BCB,
+contagem_notas_intervalo.csv), B5 (anúncios de aluguel), B4 (CAGED, BCB,
 Simples Nacional, IBGE PAS e população). As premissas N6 ficam em PREMISSAS,
 com a justificativa da faixa.
 
@@ -98,27 +100,42 @@ FIGURA_MC = ROOT / "textos" / "capitulos" / "figuras" / "9_monte_carlo.png"
 SOFFICE = "/Applications/LibreOffice.app/Contents/MacOS/soffice"
 
 MESES = 60
-# Escala (decisão do autor, 04/11/2026): segunda fechada; turnos de 8 h com 1 h de intervalo de
-# terça a sábado (das 14h às 23h) e de 6 h com 15 min no domingo (das 14h às 20h); homem folga 1 domingo a cada 4 semanas e mulher, domingo sim, domingo não (CLT,
-# art. 386); atendentes 1 e 2 mulheres. Folgas de cada semana do ciclo de 4 semanas.
-# Atendentes: 5 dias (1 folga por semana, na terça, na quarta ou no domingo); 3 no salão de quinta
-# a sábado e 2 nos demais dias. Cozinheiros (decisão do autor, 04/11/2026): 2, com 5 dias (folga na
-# segunda e, em semanas alternadas, na terça ou no domingo); 2 na cozinha de quarta a sábado e 1 na
-# terça e no domingo.
-ESCALA = {
-    "Atendente e instrutor de jogos (recreador)": (
+INSTR = "Atendente e instrutor de jogos (recreador)"
+COZ = "Cozinheiro-chefe"
+# Folgas de cada semana do ciclo, entre os dias de terça a domingo (a segunda é sempre fechada).
+# Etapa 1 (decisão do autor, 12/11/2026): terça a sábado, das 14h às 23h, turnos de 8 h com 1 h de
+# intervalo; os 3 empregados trabalham os 5 dias e folgam no domingo e na segunda (casa fechada).
+ESCALA = {INSTR: ((("dom",),), (("dom",),)), COZ: ((("dom",),),)}
+JORNADA_SEM = {INSTR: 40, COZ: 40}  # 5 turnos de 8 h
+# turnos que fecham às 23h por semana (1 h depois das 22h), somados no cargo: todos ficam até o fechamento
+NOITES_SEM = {INSTR: 10, COZ: 5}
+# Etapa de mesas (expansão, só no Monte Carlo; decisões do autor, 04 e 12/11/2026): abre o domingo das
+# 14h às 20h (turno de 6 h com 15 min) com 2 cozinheiros, condição para abrir no domingo. Todos folgam
+# dois dias por semana (a segunda e mais um); metade da equipe é de mulheres (atendentes 1 e 2), que
+# folgam domingo sim, domingo não (CLT, art. 386); homens folgam 1 domingo a cada 4 semanas.
+# Atendentes: 3 no salão de quinta a sábado e 2 nos demais dias; cozinheiros alternam a folga entre
+# terça e domingo: 2 na cozinha de quarta a sábado e 1 na terça e no domingo.
+ESCALA_EXP = {
+    INSTR: (
         (("dom",), ("ter",), ("dom",), ("qua",)),
         (("ter",), ("dom",), ("ter",), ("dom",)),
         (("qua",), ("dom",), ("qua",), ("ter",))),
-    "Cozinheiro-chefe": (
+    COZ: (
         (("ter",), ("dom",)),
         (("dom",), ("ter",))),
 }
-JORNADA_SEM = {"Atendente e instrutor de jogos (recreador)": 39, "Cozinheiro-chefe": 39}  # média: 8 h de terça a sábado, 6 h no domingo
-# turnos que fecham às 23h, de terça a sábado, por semana (1 h depois das 22h): todos ficam até o
-# fechamento; atendentes, 15 turnos menos as folgas de terça e quarta (média de 13,25 no ciclo de 4
-# semanas); cozinheiros, 2 de quarta a sábado e 1 na terça
-NOITES_SEM = {"Atendente e instrutor de jogos (recreador)": 13.25, "Cozinheiro-chefe": 9}
+JORNADA_SEM_EXP = {INSTR: 39, COZ: 39}  # média: 8 h de terça a sábado, 6 h no domingo
+# atendentes, 15 turnos menos as folgas de terça e quarta (13,25 no ciclo); cozinheiros, 2 de quarta a sábado e 1 na terça
+NOITES_SEM_EXP = {INSTR: 13.25, COZ: 9}
+ETAPAS = {"etapa1": (ESCALA, JORNADA_SEM, NOITES_SEM), "expansao": (ESCALA_EXP, JORNADA_SEM_EXP, NOITES_SEM_EXP)}
+# Carga máxima de mesas por pessoa no salão (instrutores e sócio): 7 mesas ocupadas para 3 instrutores
+# no pico da Paralela em 30/10/2026, a maior carga vista nas visitas, com o atendimento em dia (B3; P7)
+MESAS_POR_INSTRUTOR = 7 / 3
+# gatilho da etapa de mesas (cap. 10): demanda no pico ≥ 85% do teto do salão de 6 mesas, nos dias e
+# horários de maior movimento, por 3 meses seguidos depois da maturação (decisão do autor, 12/11/2026)
+GATILHO_MESAS = 0.85
+# utilidades (C09) crescem com as horas abertas quando o domingo abre: 51 h ÷ 45 h
+HORAS_SEM, HORAS_SEM_EXP = 45, 51
 ADIC_NOTURNO = 0.20  # CLT, art. 73: 20% das 22h às 5h, hora noturna de 52 min 30 s
 HORA_EXTRA = 0.50  # CF, art. 7º, XVI: a hora reduzida das 22h às 23h passa da jornada contratada
 FERIADOS_ANO = 14  # 9 nacionais, 2 de julho (BA) e 4 de Salvador (Lei n. 9.093/1995) [AV]
@@ -135,10 +152,11 @@ SEMENTE = 20261031
 # Monte Carlo (02/11/2026, pedido do autor): distribuição PERT contínua entre o pessimista e o
 # otimista, com moda no provável; faixa própria onde indicado. A TMA fica fora do sorteio (o risco já
 # está no fluxo). As mesas ocupadas sorteiam a demanda, que pode passar do salão: o excedente aciona
-# a etapa de mesas (MC_EXPANSAO). Os gatilhos G5 e G6 do cap. 10 agem na simulação (calcula_mc).
+# a etapa de mesas (MC_EXPANSAO) quando passa de GATILHO_MESAS do teto. Os gatilhos G5 e G6 do cap. 10
+# agem na simulação (calcula_mc).
 MC_FAIXA = {"R02": (2.0, 6.0)}
 MC_FIXAS = {"M01"}
-MC_EXPANSAO = 2  # mesas a mais na etapa 3, a partir do ano 2
+MC_EXPANSAO = 2  # mesas a mais na etapa de mesas, a partir do ano 2 (o ponto já comporta 8)
 
 
 # ---------------------------------------------------------------- dados-fonte
@@ -187,10 +205,31 @@ def ler_fontes() -> dict:
     ab = pd.read_csv(B1 / "estabelecimentos" / "B1_abertos_por_hora.csv", sep=";", encoding="utf-8-sig").set_index("hora")
     pl = hp[hp["casa"] == "plano"]
     f["cobertura"] = {d: ab.loc[a:b - 1, d].sum() / ab[d].sum() for d, a, b in zip(pl["dia"], pl["abre"], pl["fecha"])}
+    # B5: anúncios de aluguel na Pituba de 150 a 200 m², área para 8 mesas desde a abertura (decisão do
+    # autor, 12/11/2026); fora as salas em prédio e, nas possíveis duplicatas do mesmo tipo com até 5 m²
+    # de diferença, o segundo anúncio do par
+    an = pd.read_csv(B5 / "aluguel" / "[B5] Anúncios de Aluguel 2026-11 (OLX, ZAP, Viva Real).csv",
+                     sep=";", decimal=",", encoding="utf-8-sig")
+    an = an[(an["bairro"] == "Pituba") & an["area_m2"].between(150, 200) & (an["subtipo"] != "sala")
+            & ~an["titulo"].str.contains("Salas", na=False)]
+    dup = pd.read_csv(B5 / "aluguel" / "[B5] Possíveis Duplicatas de Aluguel 2026-11 (OLX, ZAP, Viva Real).csv",
+                      sep=";", decimal=",", encoding="utf-8-sig")
+    tipo, fora = dict(zip(an["id"], an["subtipo"])), set()
+    for _, r in dup.iterrows():
+        if (r["id_a"] in tipo and r["id_b"] in tipo and tipo[r["id_a"]] == tipo[r["id_b"]]
+                and abs(r["area_m2_a"] - r["area_m2_b"]) <= 5 and r["id_a"] not in fora):
+            fora.add(r["id_b"])
+    an = an[~an["id"].isin(fora)].copy()
+    an["encargos"] = an["condominio"].fillna(0) + an["iptu"].fillna(0)
+    inf = an[an["iptu"].notna()]  # encargos só onde o anúncio informa o IPTU
+    f["aluguel_anuncios"] = an
+    f["aluguel_n"], f["aluguel_n_encargos"], f["aluguel_dup"] = len(an), len(inf), len(fora)
+    f["area_media"] = an["area_m2"].mean()
+    f["aluguel_m2"] = an["aluguel"].sum() / an["area_m2"].sum()  # área média × este valor = aluguel médio
+    f["aluguel_m2_q"] = (an["aluguel"] / an["area_m2"]).quantile([.25, .75]).tolist()
+    f["encargos_pct"] = inf["encargos"].sum() / inf["aluguel"].sum()
+    f["encargos_q"] = (inf["encargos"] / inf["aluguel"]).quantile([.25, .75]).tolist()
     # B4
-    fz = pd.read_csv(B4 / "financeiro" / "[B4] Aluguel Comercial por Capital 2026-07 (FipeZap).csv")
-    fz = fz[fz["capital"] == "Salvador"].iloc[0]
-    f["aluguel_m2"], f["aluguel_var12m"] = fz["comercial_locacao_preco_m2"], fz["comercial_locacao_var_12m_pct"]
     bcb = pd.read_csv(B4 / "financeiro" / "[B4] Selic IPCA e Salário Mínimo Último Valor 2026 (BCB).csv")
     f["selic"] = bcb.loc[bcb["serie"] == "selic_meta", "valor"].iloc[0]
     focus = pd.read_csv(B4 / "financeiro" / "[B4] Expectativas Focus 2026-2030 (BCB).csv")
@@ -215,25 +254,35 @@ def salario(f, ocupacao: str, recorte: str = "CNAE 56 - alimentação") -> float
     return float(c[(c["ocupacao"] == ocupacao) & (c["recorte"] == recorte)]["salario_mediana"].iloc[0])
 
 
-def quadro_pessoal(f) -> list[tuple]:
-    """(cargo, CBO, quantidade, salário, fonte). Equipe do desenho enxuto (P7): 48 h abertas
-    por semana, de terça a domingo; o caixa e a gestão ficam com o sócio (pró-labore, C08)."""
+def instrutores(mesas: int) -> int:
+    """Instrutores empregados para a carga máxima por pessoa no salão; o sócio é a primeira pessoa."""
+    return -(-mesas // MESAS_POR_INSTRUTOR) - 1
+
+
+def quadro_pessoal(f, etapa: str = "etapa1") -> list[tuple]:
+    """(cargo, CBO, quantidade, salário, fonte). Etapa 1 (P7): 6 mesas, 45 h abertas por semana, de
+    terça a sábado, 1 cozinheiro e 2 instrutores; a gestão, o caixa e o salão também ficam com o sócio
+    (pró-labore, C08). Expansão: 8 mesas e o domingo, com 2 cozinheiros e 3 instrutores."""
     cn56 = "CAGED, admissões ago/2025-jul/2026, Salvador, CNAE 56, mediana"
     todas = "CAGED, admissões ago/2025-jul/2026, Salvador, todas as atividades, mediana (CNAE 56 com amostra pequena)"
     rec = salario(f, "Recreador", "todas as atividades")
+    mesas = 6 if etapa == "etapa1" else 6 + MC_EXPANSAO
+    q_coz = 1 if etapa == "etapa1" else 2
     return [
-        ("Cozinheiro-chefe", "513205", 2, salario(f, "Cozinheiro geral"),
+        (COZ, "513205", q_coz, salario(f, "Cozinheiro geral"),
          cn56 + "; cozinheiro geral, sem chefe de cozinha no recorte"),
-        ("Atendente e instrutor de jogos (recreador)", "371410", 3, rec, todas),
+        (INSTR, "371410", int(instrutores(mesas)), rec, todas),
     ]
 
 
-def custo_empregado(sal: float, cargo: str, folgas: tuple, anos_aviso: int = 5, vt: bool = True) -> dict:
+def custo_empregado(sal: float, cargo: str, folgas: tuple, anos_aviso: int = 5, vt: bool = True,
+                    etapa: str = "etapa1") -> dict:
     """Custo mensal de um empregado, linha a linha (R$). Remuneração: salário mais adicionais da
     escala; encargos do empregador no Simples (a contribuição patronal fica no DAS dos anexos I e
     III, LC n. 123/2006, art. 13); provisão de uma rescisão sem justa causa a cada anos_aviso anos."""
-    sh = sal / (JORNADA_SEM[cargo] * 5)  # salário-hora: divisor de 5 × a jornada semanal
-    n = NOITES_SEM[cargo] / len(ESCALA[cargo]) * SEMANAS_MES  # noites depois das 22h por mês
+    escala, jornada, noites = ETAPAS[etapa]
+    sh = sal / (jornada[cargo] * 5)  # salário-hora: divisor de 5 × a jornada semanal
+    n = noites[cargo] / len(escala[cargo]) * SEMANAS_MES  # noites depois das 22h por mês
     dias_sem = 6 - sum(len(sem) for sem in folgas) / len(folgas)  # dias trabalhados por semana
     dom, fer = 365.25 / 7 / 12, FERIADOS_ANO / 12
     repouso = (dom + fer) / (365.25 / 12 - dom - fer)  # dias de repouso ÷ dias úteis do mês
@@ -259,14 +308,20 @@ def custo_empregado(sal: float, cargo: str, folgas: tuple, anos_aviso: int = 5, 
     return c
 
 
-def pessoal_detalhe(quadro) -> dict:
+def pessoal_detalhe(quadro, etapa: str = "etapa1") -> dict:
     """Por cargo: remuneração média por pessoa e custo linha a linha de cada pessoa da escala."""
     out = {}
     for cargo, _, q, s, _ in quadro:
-        pessoas = [custo_empregado(s, cargo, fl) for fl in ESCALA[cargo]]
+        pessoas = [custo_empregado(s, cargo, fl, etapa=etapa) for fl in ETAPAS[etapa][0][cargo]]
         assert len(pessoas) == q, cargo
         out[cargo] = dict(pessoas=pessoas, remuneracao=sum(p["Remuneração"] for p in pessoas) / q)
     return out
+
+
+def refeicoes_mes(etapa: str = "etapa1") -> float:
+    """Refeições da equipe por mês (C15): uma por turno trabalhado."""
+    esc = ETAPAS[etapa][0]
+    return sum(6 - sum(len(sem) for sem in fl) / len(fl) for cargo in esc for fl in esc[cargo]) * SEMANAS_MES
 
 
 def encargos_c07(quadro, anos_aviso: int, vt: bool) -> float:
@@ -319,11 +374,13 @@ def premissas(f) -> list[dict]:
     f["gasto_casas_cesta"] = gcc
     f["gasto"], f["parcela_taxa"] = gasto, parcela
     hp = f["horas_pico"]
-    r15 = sum(hp[d] for d in ("sexta", "sabado", "domingo")) / 3
+    # etapa 1: fim de semana = sexta e sábado (domingo fechado); a etapa de mesas abre o domingo
+    r15 = sum(hp[d] for d in ("sexta", "sabado")) / 2
+    f["r15_exp"] = sum(hp[d] for d in ("sexta", "sabado", "domingo")) / 3
     f["teto_circ"] = MESAS * pg.mean() * 60 / pm.mean()
     cb = f["cobertura"]
     cob_du = sum(cb[d] for d in ("terca", "quarta", "quinta")) / 3
-    cob_fds = sum(cb[d] for d in ("sexta", "sabado", "domingo")) / 3
+    cob_fds = sum(cb[d] for d in ("sexta", "sabado")) / 2
     # acréscimo salarial máximo (C06), provisório: maior distância entre o 3º quartil
     # e a mediana do salário de admissão entre os cargos do quadro
     c = f["caged"]
@@ -331,13 +388,12 @@ def premissas(f) -> list[dict]:
               for o, rc in (("Cozinheiro geral", "CNAE 56 - alimentação"), ("Recreador", "todas as atividades")))
     a = f["acervo"]
     q_ = quadro_pessoal(f)
-    # refeições da equipe (C15): uma por turno trabalhado
-    refeicoes = sum(6 - sum(len(sem) for sem in fl) / len(fl) for cargo, _, _, _, _ in q_ for fl in ESCALA[cargo]) * SEMANAS_MES
+    refeicoes = refeicoes_mes()
     R = lambda *x: dict(zip(("id", "nome", "unidade", "pess", "prov", "otim", "fonte", "nivel", "just"), x))
     return [
         R("R01", "Mesas do salão", "mesas", MESAS, MESAS, MESAS,
           "Decisão do autor (desenho enxuto); B3: maior ocupação vista nas visitas", "N5 + N6",
-          f"Capacidade do salão; limita a circulação no pico a {f['teto_circ']:.1f} pessoas por hora (mesas × pessoas por mesa ÷ permanência)."),
+          f"Capacidade do salão na etapa 1; limita a circulação no pico a {f['teto_circ']:.1f} pessoas por hora (mesas × pessoas por mesa ÷ permanência). O ponto já comporta 8 mesas (C03): a etapa de mesas, com mais 2, entra só no Monte Carlo (cap. 10)."),
         R("R02", "Pessoas por mesa ocupada", "pessoas", 2.5, round(pg.mean(), 1), 5.5,
           "B3, 4 visitas (out/2026); faixa do autor", "N5 + N6",
           f"Média das visitas {pg.mean():.1f} (de {pg.min():.1f} a {pg.max():.1f}); não entra na receita, só no teto do salão (R01)."),
@@ -369,17 +425,17 @@ def premissas(f) -> list[dict]:
         R("R12", "Meses até a maturidade", "meses", 12, 9, 6,
           "Estimativa do autor", "N6",
           "Rampa de 6 a 12 meses."),
-        R("R13", "Horas abertas por semana, fim de semana", "h", 24, 24, 24,
+        R("R13", "Horas abertas por semana, fim de semana", "h", 18, 18, 18,
           "B1: horário de 54 concorrentes (Google Maps, out/2026); decisão do autor", "N3",
-          "Sexta e sábado das 14h às 23h (9 h) e domingo das 14h às 20h (6 h): cobre o pico de sábado (18h) e o de domingo (17h); decisão do autor, 04/11/2026."),
+          "Sexta e sábado das 14h às 23h (9 h): cobre o pico de sábado (18h). Domingo fechado na etapa 1; abre das 14h às 20h só com 2 cozinheiros, na etapa de mesas (decisão do autor, 12/11/2026)."),
         R("R14", "Horas abertas por semana, dia útil", "h", 27, 27, 27,
           "B1: horário de 54 concorrentes (Google Maps, out/2026); decisão do autor", "N3",
           "Terça a quinta das 14h às 23h; segunda fechada (71% dos concorrentes fecham)."),
         R("R15", "Horas de pico equivalentes por dia de fim de semana", "h", round(r15, 2), round(r15, 2), round(r15, 2),
           "B1: horário de 54 concorrentes (Google Maps, out/2026)", "N3",
-          f"Soma, nas horas abertas do plano, das casas abertas em cada hora ÷ casas abertas nas janelas das visitas do B3; média de sexta ({hp['sexta']:.2f}), sábado ({hp['sabado']:.2f}) e domingo ({hp['domingo']:.2f})."),
-        R("R16", "Dias abertos por semana, fim de semana", "dias", 3, 3, 3,
-          "Decisão do autor (desenho enxuto)", "N3", "Sexta a domingo."),
+          f"Soma, nas horas abertas do plano, das casas abertas em cada hora ÷ casas abertas nas janelas das visitas do B3; média de sexta ({hp['sexta']:.2f}) e sábado ({hp['sabado']:.2f}); com o domingo ({hp['domingo']:.2f}), na etapa de mesas, {f['r15_exp']:.2f}."),
+        R("R16", "Dias abertos por semana, fim de semana", "dias", 2, 2, 2,
+          "Decisão do autor (desenho enxuto, 12/11/2026)", "N3", "Sexta e sábado; o domingo abre na etapa de mesas."),
         R("R17", "Dias abertos por semana, dia útil", "dias", 3, 3, 3,
           "Decisão do autor (desenho enxuto); B1", "N3", "Terça a quinta; segunda fechada."),
         R("R18", "Variação anual da demanda a partir do ano 3", "% ao ano", -0.05, 0.0, 0.02,
@@ -387,21 +443,22 @@ def premissas(f) -> list[dict]:
           "Pessimista: fim da novidade e reação da São Jogue; otimista: boca a boca, até o teto do salão (02/11/2026)."),
         R("R19", "Ajuste do horário de dia útil", "× fim de semana", round(cob_du / cob_fds, 4), round(cob_du / cob_fds, 4), round(cob_du / cob_fds, 4),
           "B1: horário de 54 concorrentes (Google Maps, out/2026)", "N3",
-          f"O dia útil usa as horas de pico do fim de semana (R15), corrigidas pela cobertura do horário: casas abertas nas horas do plano ÷ casas abertas no dia, média de terça a quinta ({cob_du:.1%}) ÷ média de sexta a domingo ({cob_fds:.1%}). Vale 1,00 quando os horários cobrem o dia na mesma proporção."),
+          f"O dia útil usa as horas de pico do fim de semana (R15), corrigidas pela cobertura do horário: casas abertas nas horas do plano ÷ casas abertas no dia, média de terça a quinta ({cob_du:.1%}) ÷ média de sexta e sábado ({cob_fds:.1%}). Vale 1,00 quando os horários cobrem o dia na mesma proporção."),
         R("C01", "CMV de alimentos e bebidas", "% do A&B", 0.35, 0.30, 0.26,
           "IBGE PAS 2023, serviços de alimentação (B4)", "N2",
           f"Mercadorias e materiais = {f['pas_mercadorias_pct']:.1f}% da receita líquida do setor."),
         R("C02", "Taxa de cartão", "% da receita", 0.035, 0.030, 0.025,
           "Estimativa do autor", "N6",
           "Mistura de débito, crédito e Pix."),
-        R("C03", "Área do ponto", "m²", 150, 130, 110,
-          "Estimativa do autor; fotos da São Jogue Bela Vista", "N6",
-          "Salão de 6 mesas (cerca de 12 m² por mesa) mais 60 m² de cozinha, balcão, acervo e banheiros; a Bela Vista tem salão de 75 a 95 m² para 10 mesas."),
-        R("C04", "Aluguel comercial", "R$ por m² ao mês", round(f["aluguel_m2"] * (1 + f["aluguel_var12m"] / 100), 2), round(f["aluguel_m2"], 2), 45,
-          "FipeZap, locação comercial, Salvador, jul/2026 (B4)", "N2",
-          f"Pessimista com a alta de {f['aluguel_var12m']:.1f}% em 12 meses; otimista para ponto fora de shopping."),
-        R("C05", "Condomínio e IPTU", "% do aluguel", 0.30, 0.20, 0.10,
-          "Estimativa do autor", "N6", "Maior em shopping."),
+        R("C03", "Área do ponto", "m²", *[round(f["area_media"], 1)] * 3,
+          f"B5: {f['aluguel_n']} anúncios de 150 a 200 m² na Pituba (OLX, ZAP e Viva Real, nov/2026); decisão do autor", "N3 + N6",
+          "Área média dos anúncios: o ponto comporta 8 mesas desde a abertura (cerca de 12 m² por mesa mais 60 m² de cozinha, balcão, acervo e banheiros), para a etapa de mesas não exigir mudança nem obra (decisão do autor, 12/11/2026)."),
+        R("C04", "Aluguel comercial", "R$ por m² ao mês", round(f["aluguel_m2_q"][1], 2), round(f["aluguel_m2"], 2), round(f["aluguel_m2_q"][0], 2),
+          f"B5: {f['aluguel_n']} anúncios de 150 a 200 m² na Pituba (OLX, ZAP e Viva Real, nov/2026), sem salas e sem {f['aluguel_dup']} duplicatas", "N3",
+          "Provável: aluguel médio ÷ área média (× C03 = aluguel médio dos anúncios); pessimista e otimista no 3º e no 1º quartil do aluguel por m² de cada anúncio."),
+        R("C05", "Condomínio e IPTU", "% do aluguel", round(f["encargos_q"][1], 4), round(f["encargos_pct"], 4), round(f["encargos_q"][0], 4),
+          f"B5: {f['aluguel_n_encargos']} dos {f['aluguel_n']} anúncios com IPTU informado (condomínio vazio = isento)", "N3",
+          "Provável: soma do condomínio e do IPTU ÷ soma do aluguel; pessimista e otimista no 3º e no 1º quartil da razão de cada anúncio."),
         R("C06", "Acréscimo sobre o salário de admissão", "% do salário do CAGED", round(acr, 4), 0.0, 0.0,
           "Novo CAGED, Salvador, 3º quartil ÷ mediana do salário de admissão (B4)", "N2 + N6",
           f"O CAGED registra a admissão, que tende a pagar menos que o estoque; variação só para cima, de 0% a {acr:.1%} (provisório: maior distância do 3º quartil à mediana entre os cargos; x a definir pelo autor)."),
@@ -410,7 +467,7 @@ def premissas(f) -> list[dict]:
           "CLT e Lei n. 8.036/1990 (FGTS, 13º, férias, aviso prévio e multa de 40%), Lei n. 7.418/1985 (vale-transporte)", "N1 + N6",
           "No Simples, a contribuição patronal fica no DAS dos anexos I e III. Provável: uma rescisão sem justa causa por vaga em 5 anos; pessimista: uma por ano; otimista: sem vale-transporte."),
         R("C08", "Pró-labore", "R$ por mês", 4000, 3000, 2000, "Estimativa do autor", "N6", "Um sócio na gestão."),
-        R("C09", "Utilidades (energia, água, gás, internet)", "R$ por mês", 6000, 4500, 3500, "Estimativa do autor", "N6", "Cozinha própria e ar-condicionado."),
+        R("C09", "Utilidades (energia, água, gás, internet)", "R$ por mês", 6000, 4500, 3500, "Estimativa do autor", "N6", "Cozinha própria e ar-condicionado; cresce com as horas abertas (51 h ÷ 45 h) quando o domingo abre."),
         R("C10", "Marketing", "R$ por mês", 2000, 1500, 1000, "Estimativa do autor", "N6", "Redes sociais e eventos."),
         R("C11", "Contabilidade", "R$ por mês", 1500, 1200, 900, "Estimativa do autor", "N6", "Escritório para empresa do Simples com folha."),
         R("C12", "Sistemas (caixa, reservas, nota fiscal)", "R$ por mês", 600, 450, 300, "Estimativa do autor", "N6", "Assinaturas."),
@@ -418,7 +475,7 @@ def premissas(f) -> list[dict]:
         R("C14", "Refeição da equipe no local", "R$ por refeição", 15, 12, 9, "Estimativa do autor", "N6",
           "Insumos de uma refeição por turno, feita pela cozinha da casa (alimentação in natura, que não integra a remuneração: CLT, art. 457, § 2º); decisão do autor, 04/11/2026."),
         R("C15", "Refeições da equipe", "refeições por mês", round(refeicoes, 1), round(refeicoes, 1), round(refeicoes, 1),
-          "Escala do cap. 7; decisão do autor (04/11/2026)", "N6", "Uma por turno: dias trabalhados por semana de cada empregado × semanas do mês."),
+          "Escala do cap. 7; decisão do autor (04/11/2026)", "N6", "Uma por turno: dias trabalhados por semana de cada empregado × semanas do mês (etapa 1; a etapa de mesas soma os turnos da escala com o domingo)."),
         R("C16", "Participação nos lucros ou resultados (PLR)", "% do EBITDA positivo do ano", 0.05, 0.05, 0.05,
           "Decisão do autor (04/11/2026); Lei n. 10.101/2000", "N6",
           "Paga só em ano com EBITDA positivo, sem encargos; rateio por pontos e metas da área (cap. 7)."),
@@ -465,21 +522,26 @@ def aliquota(f, anexo: str, rbt: float) -> float:
 
 def calcula(f, v: dict, folha: float) -> dict:
     m = []
+    # etapa de mesas (só no Monte Carlo, a partir do ano 2): v["EXP"] traz mesas, horas de pico e dias
+    # de fim de semana com o domingo, e a folha e as refeições da escala com 2 cozinheiros
+    exp = v.get("EXP")
     for mes in range(1, MESES + 1):
         ano_ = (mes - 1) // 12 + 1
         rampa = min(1.0, v["R11"] + (1 - v["R11"]) * (mes - 1) / (v["R12"] - 1))
         # tendência da demanda a partir do ano 3 (R18), limitada pelo salão: mesas × pessoas por mesa
-        # ÷ permanência; R01_exp só existe no Monte Carlo (etapa de mesas a partir do ano 2)
+        # ÷ permanência
         tend = (1 + v["R18"]) ** max(0, ano_ - 2)
-        mesas = v["R01"] if ano_ == 1 else v.get("R01_exp", v["R01"])
+        etapa = exp if (exp and ano_ >= 2) else None
+        mesas = etapa["R01"] if etapa else v["R01"]
         r04 = min(mesas * v["R02"] * 60 / v["R03"], v["R04"] * tend)
-        p_fds = r04 * v["R15"] * v["R16"] * rampa * v["M02"]
+        r15, r16 = (etapa["R15"], etapa["R16"]) if etapa else (v["R15"], v["R16"])
+        p_fds = r04 * r15 * r16 * rampa * v["M02"]
         p_du = r04 * v["R05"] * v["R15"] * v["R19"] * v["R17"] * rampa * v["M02"]
         taxa_fds, taxa_du = p_fds * v["R07"], p_du * v["R07"]
         ab = (p_fds + p_du) * (v["R06"] - v["R07"])
         alug = v["R09"] * v["R10"] * rampa * tend
         m.append(dict(ano=(mes - 1) // 12 + 1, pessoas=p_fds + p_du, taxa=taxa_fds + taxa_du,
-                      ab=ab, alug=alug, bruta=taxa_fds + taxa_du + ab + alug))
+                      ab=ab, alug=alug, bruta=taxa_fds + taxa_du + ab + alug, expandido=bool(etapa)))
     m = pd.DataFrame(m)
     rbt = m.groupby("ano")["bruta"].sum()
     al_i = {a: aliquota(f, "I", rbt[a]) for a in rbt.index}
@@ -488,9 +550,14 @@ def calcula(f, v: dict, folha: float) -> dict:
     m["cmv"] = m["ab"] * v["C01"]
     m["cartao"] = m["bruta"] * v["C02"]
     aluguel = v["C03"] * v["C04"]
-    fixos = (aluguel * (1 + v["C05"]) + folha * (1 + v["C06"]) * (1 + v["C07"]) + v["C08"] + v["C09"]
-             + v["C10"] + v["C11"] + v["C12"] + v["I05"] * v["C13"] / 12 + v["C14"] * v["C15"])
+
+    def custo_fixo(fl, refeicoes, util):
+        return (aluguel * (1 + v["C05"]) + fl * (1 + v["C06"]) * (1 + v["C07"]) + v["C08"] + v["C09"] * util
+                + v["C10"] + v["C11"] + v["C12"] + v["I05"] * v["C13"] / 12 + v["C14"] * refeicoes)
+    fixos = custo_fixo(folha, v["C15"], 1.0)
     m["fixos"] = fixos
+    if exp:
+        m.loc[m["expandido"], "fixos"] = custo_fixo(exp["folha"], exp["C15"], HORAS_SEM_EXP / HORAS_SEM)
     m["ebitda"] = m["bruta"] - m["simples"] - m["cmv"] - m["cartao"] - m["fixos"]
     inv = dict(reforma=v["I01"] * v["C03"], mobiliario=v["I02"], cozinha=v["I03"], ti=v["I04"],
                acervo=v["I05"], preop=v["I06"], outros=v["I10"], caucao=v["I07"] * aluguel, giro=v["I08"] * fixos)
@@ -517,7 +584,7 @@ def calcula(f, v: dict, folha: float) -> dict:
     return dict(vpl=vpl, tir=tir(fc), payback=payback, investimento=total_inv, inv=inv, fc=fc, residual=residual,
                 receita_madura=m["bruta"].iloc[-1], pessoas_madura=m["pessoas"].iloc[-1],
                 fixos=fixos, ebitda5=ano.loc[ANOS, "ebitda"], mc_pct=mc_pct,
-                receita_equilibrio=fixos / mc_pct, alug_madura=m["alug"].iloc[-1], ano=ano)
+                receita_equilibrio=fixos / mc_pct, alug_madura=m["alug"].iloc[-1], ano=ano, m=m)
 
 
 def tir(fc: list) -> float:
@@ -571,15 +638,17 @@ def pert(rng, lo, moda, hi):
 
 def calcula_mc(f, v: dict, folha: float, quadro) -> dict:
     """Um cenário do Monte Carlo com as decisões de gestão do cap. 10 (02/11/2026):
-    - etapa de mesas: se a demanda sorteada (R04) passa do teto do salão, a luderia abre mais
-      MC_EXPANSAO mesas a partir do ano 2, com mobiliário proporcional (I02) pago no fim do ano 1;
+    - etapa de mesas: se a demanda sorteada no pico (R04) chega a GATILHO_MESAS do teto do salão de 6
+      mesas, a luderia abre mais MC_EXPANSAO mesas a partir do ano 2, no ponto que já as comporta, com
+      mobiliário proporcional (I02) pago no fim do ano 1, um instrutor a mais (MESAS_POR_INSTRUTOR), um
+      segundo cozinheiro e o domingo das 14h às 20h (f["exp"], decisões do autor, 12/11/2026);
     - G5: ano (a partir do 2) com EBITDA negativo corta, no ano seguinte, um cozinheiro
       (cardápio de comidas recebidas prontas), com encargos;
     - G6: se o EBITDA segue negativo com o G5 ativo, a luderia fecha no fim desse ano e recupera
       caução, capital de giro e a revenda dos ativos (I09); sem valor residual."""
     teto = v["R01"] * v["R02"] * 60 / v["R03"]
-    expande = v["R04"] > teto
-    w = dict(v, R01_exp=v["R01"] + MC_EXPANSAO) if expande else v
+    expande = v["R04"] >= GATILHO_MESAS * teto
+    w = dict(v, EXP=f["exp"]) if expande else v
     r = calcula(f, w, folha)
     inv, ano = r["inv"], r["ano"]
     deprec = sum(inv[k] / VIDA_UTIL[k] for k in VIDA_UTIL)
@@ -1236,6 +1305,11 @@ def main():
     quadro = quadro_pessoal(f)
     det = pessoal_detalhe(quadro)
     folha = sum(q * det[cargo]["remuneracao"] for cargo, _, q, _, _ in quadro)
+    q_exp = quadro_pessoal(f, "expansao")
+    d_exp = pessoal_detalhe(q_exp, "expansao")
+    f["exp"] = dict(R01=6 + MC_EXPANSAO, R15=f["r15_exp"], R16=3, C15=refeicoes_mes("expansao"),
+                    folha=sum(q * d_exp[c]["remuneracao"] for c, _, q, _, _ in q_exp))
+    f["exp_quadro"] = {c: q for c, _, q, _, _ in q_exp}
     resultados = {c: calcula(f, valores(prem, c), folha) for c in CENARIOS}
     base = resultados["provavel"]
     tornado = []
@@ -1253,6 +1327,8 @@ def main():
     mc = monte_carlo(f, prem, folha, quadro)
 
     sem_residual = {c: calcula(f, dict(valores(prem, c), M03=0), folha) for c in CENARIOS}
+    print(f"Etapa de mesas: {f['exp']['R01']} mesas, {f['exp_quadro']}, folha R$ {f['exp']['folha']:,.2f}"
+          f" (etapa 1: R$ {folha:,.2f}), {f['exp']['C15']:.1f} refeições, horas de pico do fim de semana {f['exp']['R15']:.2f}")
     wb = planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual)
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     wb.save(SAIDA)

@@ -48,7 +48,7 @@ A inflação da alimentação fora do domicílio corre acima da geral, e mais em
 
 Fonte: elaborado pelo próprio autor, com base no IBGE, IPCA, tabela 7060 (08/2023 a 08/2026).
 
-O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvador chegou a R$ 54,15 por m² em julho de 2026, alta de 18,9% em 12 meses, contra 7,8% em São Paulo (FIPE, Índice FipeZAP). O aluguel é o principal custo fixo e entra como premissa de risco na escolha do ponto (seção 6.4) e na sensibilidade (capítulo 9). A cotação nos três bairros finalistas (seção 6.4) substitui o índice antes do investimento.
+O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvador chegou a R$ 54,15 por m² em julho de 2026, alta de 18,9% em 12 meses, contra 7,8% em São Paulo (FIPE, Índice FipeZAP). O aluguel é o principal custo fixo e entra como premissa de risco na escolha do ponto (seção 6.4) e na sensibilidade (capítulo 9). Os anúncios da Pituba (seção 6.4) substituem o índice no plano, e a cotação com corretor os substitui antes do investimento.
 
 **Social.** Salvador tem público em número. A população estimada em 2026 é de 2.559.945 habitantes na capital e de 3.623.067 nos 13 municípios da região metropolitana (IBGE, Estimativas da População), e 30,5% dos residentes da capital tinham de 20 a 39 anos no Censo 2022. O público dessa faixa soma cerca de 781 mil pessoas em Salvador, se mantida em 2026 a proporção do Censo 2022 (IBGE). A seção 6.6 confere a demanda contra esse total.
 
