@@ -1,29 +1,37 @@
 """
-Planilha Histogramas.xlsx: cinco abas com tabelas e histogramas nativos do
-Excel sobre os concorrentes do B1 (pedido do autor, 12/11/2026).
+Planilha Histogramas.xlsx: tabelas e histogramas nativos do Excel sobre os
+concorrentes do B1 (pedidos do autor, 12/11/2026).
 
-Abas e regras:
-  1. Taxas de entrada - histograma simples: faixas de R$ 5 da taxa ponderada
-     pelos dias de funcionamento (B2-a_gasto_por_pessoa.py), barras = n.º de
-     casas na faixa (32 casas com taxa conhecida, com a São Jogue).
-  2. Funcionamento - fluxo por dia × hora (B1-a_fluxo_dia_hora.py): uma tabela
-     e um gráfico com a média e outra com a mediana do índice do Google, só
-     entre as casas abertas na hora; barras = fluxo, linha = n.º das 54 casas
-     da população do B1 abertas na hora.
-  3. Cestas - histograma simples para a cesta sem a taxa (bebida + hambúrguer)
-     e outro para a cesta com a taxa (cesta de consumo da R06), mesmas faixas
-     de R$ 10, barras = n.º de casas.
-  4. Acervos - histograma simples do n.º de jogos por acervo
-     (B1_jogos_dos_acervos.csv), faixas de 200 jogos, barras = n.º de casas.
-  5. Jogos frequentes - os jogos presentes em mais acervos (corte que fecha
-     em pelo menos 20 jogos, empates incluídos; B1_banco_jogos.csv): uma
-     tabela e um gráfico com o aluguel médio e outra com o mediano; barras =
-     aluguel (R$, mistura locações de 1, 3 e 7 dias), linha = n.º de casas com
-     o jogo no acervo.
+Padrão: tabelas no formato ABNT do TCC (`planilha_estilo.py`: Arial 10, fundo
+branco, borda preta só no cabeçalho e no fim, texto à esquerda e números à
+direita, fonte abaixo) e gráficos só com as paletas purple e slate do Tailwind.
+Cada tabela se chama "Tabela {aba}.{n.º na aba} – título"; a aba Sumário (aba 0)
+lista e liga todas.
 
-As faixas contam com CONT.SES sobre a base listada na própria aba, e cada
-tabela fecha com o total da base (conferido aqui e na planilha). Média e
-mediana das abas 2 e 5 vêm agregadas pelos scripts de origem.
+Abas:
+  0. Sumário.
+  1. Taxas de entrada - faixas de R$ 5 da taxa ponderada (média dos dias em
+     que a casa abre), da mais barata e da mais cara de cada casa; barras =
+     n.º de casas. A base (Tabela 1.4) traz a taxa de cada dia da semana nos
+     dias em que a casa abre (TAXAS de B2-a_gasto_por_pessoa.py e horários de
+     B1_resumo_estabelecimentos.xlsx); ponderada, mínima e máxima são fórmulas.
+  2. Taxas por dia - média, mediana, mínimo e máximo da taxa em cada dia,
+     entre as casas abertas, e quantas cobram o próprio máximo, o próprio
+     mínimo, um valor único em todos os dias ou um valor intermediário (as
+     quatro somam as casas abertas no dia). Fórmulas sobre a Tabela 1.4.
+  3. Funcionamento - fluxo por dia × hora (B1-a_fluxo_dia_hora.py), média e
+     mediana entre as casas abertas; linha = n.º das 54 casas da população
+     abertas na hora (valores agregados pelo script de origem).
+  4. Cestas - faixas de R$ 10 da cesta sem a taxa (bebida + hambúrguer) e com
+     a taxa ponderada (fórmula sobre a Tabela 1.4).
+  5. Acervos - faixas de 200 jogos do n.º de jogos por acervo.
+  6. Jogos frequentes - jogos em mais acervos (corte que fecha em pelo menos
+     20, empates incluídos): aluguel médio e mediano (R$; mistura locações de
+     1, 3 e 7 dias) e linha com o n.º de casas com o jogo no acervo.
+
+Conferências: cada tabela de faixas fecha com o total da base (fórmula de
+diferença na aba e assert aqui); a taxa ponderada da fórmula é conferida contra
+B1_cesta_casas_com_taxa.csv.
 
 Saída: dados/[B1] Estabelecimentos e cardapios/estabelecimentos/5_graficos/Histogramas.xlsx
 
@@ -38,128 +46,161 @@ from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
 
+import importlib.util  # noqa: E402
 import re  # noqa: E402
 
 import pandas as pd  # noqa: E402
 from openpyxl import Workbook  # noqa: E402
 from openpyxl.chart import BarChart, LineChart, Reference  # noqa: E402
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side  # noqa: E402
-from openpyxl.utils import get_column_letter  # noqa: E402
+from openpyxl.utils import get_column_letter as L  # noqa: E402
 
 ROOT = _AQUI.parents[2]
 B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 VALORES = B1 / "estabelecimentos" / "5_graficos" / "graficos" / "valores"
 SAIDA = B1 / "estabelecimentos" / "5_graficos" / "Histogramas.xlsx"
 CESTA = ROOT / "dados" / "[B2] Avaliacoes recentes" / "gasto_por_pessoa" / "B1_cesta_casas_com_taxa.csv"
+SCRIPT_TAXAS = ROOT / "_src" / "[B2] Avaliacoes recentes" / "Google Places (Comentários)" / "analise" / \
+    "B2-a_gasto_por_pessoa.py"
 
-F = "Arial"
-TIT = Font(name=F, size=12, bold=True)
-CAB = Font(name=F, size=10, bold=True, color="FFFFFF")
-TXT = Font(name=F, size=10)
-NOTA = Font(name=F, size=9, italic=True, color="595959")
-NEG = Font(name=F, size=10, bold=True)
-FUNDO = PatternFill("solid", fgColor="4D4D4D")
-FINA = Side(style="thin", color="BFBFBF")
-BORDA = Border(top=FINA, bottom=FINA, left=FINA, right=FINA)
+# Tailwind CSS v3 (mesmas cores de planilha_estilo.py)
+ROXO_800, ROXO_500, ROXO_300 = "6B21A8", "A855F7", "D8B4FE"
+SLATE_300, SLATE_600, SLATE_800 = "CBD5E1", "475569", "1E293B"
+
+ARIAL = Font(name="Arial", size=10, color="000000")
+ARIAL_N = Font(name="Arial", size=10, color="000000", bold=True)
+LINK = Font(name="Arial", size=10, color="6B21A8", underline="single")
+BRANCO = PatternFill("solid", start_color="FFFFFF", end_color="FFFFFF")
+FINA = Side(style="thin", color="000000")
+SEM = Side(style="thin", color="FFFFFF")
+FMT = {"int": "#,##0", "dec": "#,##0.00", "rs": "#,##0.00", "pct": "0.00%", "txt": "@"}
+
 DIAS = ["segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo"]
-ABREV = dict(zip(DIAS, ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"]))
 NOME_DIA = dict(zip(DIAS, ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"]))
+ABREV = dict(zip(DIAS, ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"]))
+
+SUMARIO: list[tuple[str, str, str, int]] = []  # (aba, título, fonte, linha do título)
 
 
-# ---------- utilidades de escrita ----------
-def cab(ws, linha, col, titulos, larguras=None):
-    for i, t in enumerate(titulos):
-        c = ws.cell(linha, col + i, t)
-        c.font, c.fill, c.border = CAB, FUNDO, BORDA
-        c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
-    ws.row_dimensions[linha].height = 30
+# ---------------------------------------------------------------- tabelas ABNT
+def tabela(ws, aba_n, k, linha, titulo, cabecalho, linhas, tipos, fonte, larguras=None, notas=()):
+    """Tabela ABNT a partir de (linha, coluna A): título mesclado, cabeçalho, dados, fonte e notas.
+    Células que começam com "=" viram fórmula. Devolve (1.ª linha de dados, última linha, próxima linha livre)."""
+    nome = f"Tabela {aba_n}.{k} – {titulo}"
+    nc = len(cabecalho)
+    ws.cell(linha, 1, nome)
+    ws.merge_cells(start_row=linha, start_column=1, end_row=linha, end_column=nc)
+    for j, c in enumerate(cabecalho, 1):
+        ws.cell(linha + 1, j, c)
+    for i, lin in enumerate(linhas, linha + 2):
+        for j, v in enumerate(lin, 1):
+            ws.cell(i, j, None if (isinstance(v, float) and pd.isna(v)) else v)
+    ult = linha + 1 + len(linhas)
+    for r in range(linha, ult + 1):
+        for j in range(1, nc + 1):
+            c = ws.cell(r, j)
+            c.fill = BRANCO
+            if r == linha:
+                c.font, c.alignment = ARIAL_N, Alignment(horizontal="center", vertical="center", wrap_text=True)
+            elif r == linha + 1:
+                c.font = ARIAL_N
+                c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+                c.border = Border(top=FINA, bottom=FINA, left=SEM, right=SEM)
+            else:
+                t = tipos[j - 1]
+                c.font = ARIAL_N if str(ws.cell(r, 1).value).startswith("Total") else ARIAL
+                c.alignment = Alignment(horizontal="left" if t == "txt" else "right", vertical="center")
+                if t != "txt":
+                    c.number_format = FMT[t]
+                c.border = Border(top=SEM, left=SEM, right=SEM, bottom=FINA if r == ult else SEM)
+    ws.row_dimensions[linha].height = 28
+    ws.row_dimensions[linha + 1].height = 42
+    rod = ult + 1
+    for t in (f"Fonte: {fonte}", *notas):
+        ws.cell(rod, 1, t).font = ARIAL
+        rod += 1
     if larguras:
-        for i, w in enumerate(larguras):
-            letra = get_column_letter(col + i)
-            ws.column_dimensions[letra].width = max(ws.column_dimensions[letra].width or 0, w)
+        for j, w in enumerate(larguras, 1):
+            col = ws.column_dimensions[L(j)]
+            col.width = max(col.width or 0, w)
+    SUMARIO.append((ws.title, nome, fonte, linha))
+    return linha + 2, ult, rod + 1
 
 
-def cel(ws, linha, col, valor, fmt=None, fonte=TXT, alinhar=None):
-    c = ws.cell(linha, col, valor)
-    c.font, c.border = fonte, BORDA
-    if fmt:
-        c.number_format = fmt
-    if alinhar:
-        c.alignment = Alignment(horizontal=alinhar)
-    return c
+def linha_texto(ws, linha, rotulo, formula, fmt):
+    """Linha avulsa abaixo de uma tabela (média, mediana, conferência), sem bordas."""
+    ws.cell(linha, 1, rotulo).font = ARIAL
+    c = ws.cell(linha, 2, formula)
+    c.font, c.number_format, c.alignment = ARIAL, fmt, Alignment(horizontal="right")
 
 
-def titulo(ws, texto, fonte, nota):
-    ws["A1"] = texto
-    ws["A1"].font = TIT
-    ws["A2"] = fonte
-    ws["A2"].font = NOTA
-    ws["A3"] = nota
-    ws["A3"].font = NOTA
+def nova_aba(wb, nome):
+    ws = wb.create_sheet(nome)
     ws.sheet_view.showGridLines = False
+    return ws
 
 
-def eixos_visiveis(*graficos):
-    for g in graficos:
+# ---------------------------------------------------------------- gráficos
+def _eixos(*gs):
+    for g in gs:
         g.x_axis.delete = False
         g.y_axis.delete = False
+        g.y_axis.majorGridlines = None
 
 
-# ---------- histograma simples (faixas × n.º de casas) ----------
-def base(ws, linha, col, df, cols, titulos, fmts, larguras):
-    """Lista a base (uma linha por casa) a partir de (linha, col); devolve o intervalo da coluna de valor."""
-    ws.cell(linha - 1, col, "Base (uma linha por casa)").font = NEG
-    cab(ws, linha, col, titulos, larguras)
-    for i, r in enumerate(df[cols].itertuples(index=False), start=1):
-        for j, v in enumerate(r):
-            cel(ws, linha + i, col + j, None if pd.isna(v) else v, fmts[j])
-    return linha + 1, linha + len(df)
+def _cor_serie(s, cor, linha=False):
+    if linha:
+        s.graphicalProperties.line.solidFill = cor
+        s.graphicalProperties.line.width = 25000
+        s.smooth = False
+    else:
+        s.graphicalProperties.solidFill = cor
+        s.graphicalProperties.line.solidFill = cor
 
 
-def histograma(ws, linha, col, rotulo_var, faixas, rng, unidade, ancora, titulo_graf, eixo_x, fmt_lim):
-    """Tabela de faixas com CONT.SES sobre `rng` (texto 'D6:D37') e gráfico de barras ao lado.
-    Faixas [a, b); a última inclui o limite superior. Devolve a linha seguinte à tabela."""
-    ws.cell(linha - 1, col, titulo_graf).font = NEG
-    cab(ws, linha, col, ["Faixa", f"De ({unidade})", f"Até ({unidade})", "N.º de casas"], [18, 10, 10, 11])
-    n = len(faixas)
-    for i, (a, b) in enumerate(faixas):
-        r = linha + 1 + i
-        ultimo = i == n - 1
-        rot = f"{fmt_lim(a)} a {fmt_lim(b)}" if ultimo else f"{fmt_lim(a)} a < {fmt_lim(b)}"
-        cel(ws, r, col, rot, alinhar="left")
-        cel(ws, r, col + 1, a, "#,##0")
-        cel(ws, r, col + 2, b, "#,##0")
-        la, lb = get_column_letter(col + 1), get_column_letter(col + 2)
-        op = "<=" if ultimo else "<"
-        cel(ws, r, col + 3, f'=COUNTIFS({rng},">="&{la}{r},{rng},"{op}"&{lb}{r})', "0")
-    rt = linha + 1 + n
-    lc = get_column_letter(col + 3)
-    cel(ws, rt, col, "Total", fonte=NEG)
-    cel(ws, rt, col + 3, f"=SUM({lc}{linha + 1}:{lc}{rt - 1})", "0", NEG)
-    cel(ws, rt + 1, col, "Casas na base", fonte=TXT)
-    cel(ws, rt + 1, col + 3, f"=COUNT({rng})", "0")
-    cel(ws, rt + 2, col, "Diferença (deve ser 0)")
-    cel(ws, rt + 2, col + 3, f"={lc}{rt}-{lc}{rt + 1}", "0")
-    cel(ws, rt + 3, col, f"Média ({unidade})")
-    cel(ws, rt + 3, col + 3, f"=AVERAGE({rng})", "#,##0.00")
-    cel(ws, rt + 4, col, f"Mediana ({unidade})")
-    cel(ws, rt + 4, col + 3, f"=MEDIAN({rng})", "#,##0.00")
-
+def grafico_barras(ws, titulo, cats, series, cores, eixo_y, eixo_x, ancora, fmt="0", empilhar=False,
+                   largura=16, altura=8.5):
+    """cats: (col, l0, l1); series: lista de (col, linha do cabeçalho, l1)."""
     g = BarChart()
-    g.type, g.gapWidth, g.style = "col", 15, 10
-    g.title, g.y_axis.title, g.x_axis.title = titulo_graf, "N.º de casas", eixo_x
-    g.add_data(Reference(ws, min_col=col + 3, min_row=linha, max_row=rt - 1), titles_from_data=True)
-    g.set_categories(Reference(ws, min_col=col, min_row=linha + 1, max_row=rt - 1))
-    g.series[0].graphicalProperties.solidFill = "8F8F8F"
-    g.legend = None
-    g.y_axis.majorGridlines = None
-    g.y_axis.numFmt = "0"
-    g.height, g.width = 8, 16
-    eixos_visiveis(g)
+    g.type, g.gapWidth = "col", 30 if len(series) > 1 else 15
+    if empilhar:
+        g.grouping, g.overlap = "stacked", 100
+    g.title, g.y_axis.title, g.x_axis.title = titulo, eixo_y, eixo_x
+    for (col, l0, l1), cor in zip(series, cores):
+        g.add_data(Reference(ws, min_col=col, min_row=l0, max_row=l1), titles_from_data=True)
+        _cor_serie(g.series[-1], cor)
+    g.set_categories(Reference(ws, min_col=cats[0], min_row=cats[1], max_row=cats[2]))
+    g.y_axis.numFmt = fmt
+    if len(series) == 1:
+        g.legend = None
+    else:
+        g.legend.position = "b"
+    _eixos(g)
+    g.height, g.width = altura, largura
     ws.add_chart(g, ancora)
-    return rt + 6
 
 
+def grafico_combinado(ws, titulo, cats, barra, linha_, eixo_barra, eixo_linha, fmt_barra, ancora,
+                      largura=26, altura=11):
+    g = BarChart()
+    g.type, g.gapWidth, g.title = "col", 20, titulo
+    g.add_data(Reference(ws, min_col=barra[0], min_row=barra[1], max_row=barra[2]), titles_from_data=True)
+    _cor_serie(g.series[0], ROXO_500)
+    g.set_categories(Reference(ws, min_col=cats[0], min_row=cats[1], max_row=cats[2]))
+    g.y_axis.title, g.y_axis.numFmt = eixo_barra, fmt_barra
+    ln = LineChart()
+    ln.add_data(Reference(ws, min_col=linha_[0], min_row=linha_[1], max_row=linha_[2]), titles_from_data=True)
+    _cor_serie(ln.series[0], SLATE_800, linha=True)
+    ln.y_axis.axId, ln.y_axis.crosses = 200, "max"
+    ln.y_axis.title, ln.y_axis.numFmt = eixo_linha, "0"
+    _eixos(g, ln)
+    g += ln
+    g.legend.position = "b"
+    g.height, g.width = altura, largura
+    ws.add_chart(g, ancora)
+
+
+# ---------------------------------------------------------------- histograma por faixas
 def faixas(ini, fim, passo):
     return [(a, a + passo) for a in range(ini, fim, passo)]
 
@@ -168,161 +209,288 @@ def real(v):
     return f"R$ {v:,.0f}".replace(",", ".")
 
 
-# ---------- gráfico de barras + linha ----------
-def combinado(ws, col_cat, col_barra, col_linha, l0, l1, titulo_graf, eixo_barra, eixo_linha, fmt_barra, ancora,
-              largura=24, altura=10):
-    g = BarChart()
-    g.type, g.gapWidth = "col", 20
-    g.title = titulo_graf
-    g.add_data(Reference(ws, min_col=col_barra, min_row=l0, max_row=l1), titles_from_data=True)
-    g.set_categories(Reference(ws, min_col=col_cat, min_row=l0 + 1, max_row=l1))
-    g.series[0].graphicalProperties.solidFill = "8F8F8F"
-    g.y_axis.title, g.y_axis.numFmt = eixo_barra, fmt_barra
-    g.y_axis.majorGridlines = None
-    ln = LineChart()
-    ln.add_data(Reference(ws, min_col=col_linha, min_row=l0, max_row=l1), titles_from_data=True)
-    s = ln.series[0]
-    s.graphicalProperties.line.solidFill = "1F1F1F"
-    s.graphicalProperties.line.width = 22000
-    s.smooth = False
-    ln.y_axis.axId = 200
-    ln.y_axis.title = eixo_linha
-    ln.y_axis.crosses = "max"
-    ln.y_axis.numFmt = "0"
-    ln.y_axis.majorGridlines = None
-    eixos_visiveis(g, ln)
-    g += ln
-    g.legend.position = "b"
-    g.height, g.width = altura, largura
-    ws.add_chart(g, ancora)
+def inteiro(v):
+    return f"{v:,.0f}".replace(",", ".")
 
 
-# ---------- abas ----------
-def aba_taxas(wb, cesta):
-    ws = wb.create_sheet("Taxas de entrada")
-    d = cesta.dropna(subset=["taxa_ponderada"]).sort_values("taxa_ponderada").reset_index(drop=True)
-    titulo(ws, "Taxa de entrada dos concorrentes, por faixa de valor",
-           "Fonte: cardápios, sites, imprensa e Instagram das casas do B1 e site e NFC-e da São Jogue "
-           "(B2-a_gasto_por_pessoa.py, B1_cesta_casas_com_taxa.csv).",
-           "Taxa média ponderada pelos dias em que a casa abre; faixas [de, até), a última inclui o limite. "
-           f"{len(d)} casas com taxa conhecida, com a São Jogue.")
-    l0, l1 = base(ws, 6, 7, d, ["nome", "capital_endereco", "taxa_ponderada"],
-                  ["Casa", "Metrópole", "Taxa ponderada (R$)"], [None, None, "#,##0.00"], [34, 16, 12])
-    histograma(ws, 6, 1, "taxa", faixas(0, 45, 5), f"$I${l0}:$I${l1}", "R$", "A21",
-               "Casas por faixa de taxa de entrada", "Taxa de entrada (R$)", real)
-    return int(d.shape[0])
+def tabela_faixas(ws, aba_n, k, linha, titulo, fx, rng, unidade, fmt_lim, fonte, eixo_x, cor=ROXO_800,
+                  fmt_med="#,##0.00"):
+    """Faixas [de, até) com CONT.SES sobre `rng`; a última inclui o limite. Gráfico à direita da tabela.
+    Abaixo, média, mediana e a conferência contra a base. Devolve a próxima linha livre."""
+    linhas = []
+    l_dados = linha + 2
+    for i, (a, b) in enumerate(fx):
+        r = l_dados + i
+        ultimo = i == len(fx) - 1
+        op = "<=" if ultimo else "<"
+        rot = f"{fmt_lim(a)} a {fmt_lim(b)}" if ultimo else f"{fmt_lim(a)} a menos de {fmt_lim(b)}"
+        linhas.append([rot, a, b, f'=COUNTIFS({rng},">="&B{r},{rng},"{op}"&C{r})'])
+    rt = l_dados + len(fx)
+    linhas.append(["Total", None, None, f"=SUM(D{l_dados}:D{rt - 1})"])
+    d0, ult, prox = tabela(ws, aba_n, k, linha, titulo, ["Faixa", f"De ({unidade})", f"Até ({unidade})",
+                                                         "N.º de casas"], linhas, ["txt", "int", "int", "int"],
+                           fonte, larguras=[26, 11, 11, 11])
+    linha_texto(ws, prox - 1, f"Média ({unidade})", f"=AVERAGE({rng})", fmt_med)
+    linha_texto(ws, prox, f"Mediana ({unidade})", f"=MEDIAN({rng})", fmt_med)
+    linha_texto(ws, prox + 1, "Conferência: total − casas na base", f"=D{rt}-COUNT({rng})", "0")
+    grafico_barras(ws, f"Gráfico {aba_n}.{k} – {titulo}", (1, d0, rt - 1), [(4, d0 - 1, rt - 1)], [cor],
+                   "N.º de casas", eixo_x, f"F{linha}")
+    return max(prox + 3, linha + 19)
+
+
+# ---------------------------------------------------------------- dados
+def carregar_taxas():
+    spec = importlib.util.spec_from_file_location("b2_gasto", SCRIPT_TAXAS)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    es = pd.read_excel(B1 / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx", sheet_name="estabelecimentos")
+    es = es.set_index("place_id")
+    linhas = []
+    for pid, (_, fonte, regra) in mod.TAXAS.items():
+        r = es.loc[pid]
+        lin = {"place_id": pid, "nome": r["nome"], "metropole": r["capital_endereco"], "fonte": fonte}
+        for d in DIAS:
+            lin[d] = regra[d] if pd.notna(r[d]) else None  # só dias em que a casa abre
+        linhas.append(lin)
+    t = pd.DataFrame(linhas)
+    t["ponderada"] = t[DIAS].mean(axis=1)
+    return t.sort_values(["ponderada", "nome"]).reset_index(drop=True)
+
+
+# ---------------------------------------------------------------- abas
+def aba_taxas(wb, tx):
+    ws = nova_aba(wb, "1 Taxas de entrada")
+    fonte = ("cardápios, sites, imprensa e Instagram das casas do B1 e site e NFC-e da São Jogue "
+             "(TAXAS em B2-a_gasto_por_pessoa.py; horários em B1_resumo_estabelecimentos.xlsx).")
+    n = len(tx)
+    # base primeiro no layout? Não: faixas em cima, base embaixo; as faixas apontam para a base.
+    l_base = 3 + 3 * 19 + 1
+    b0, b1 = l_base + 2, l_base + 1 + n
+    rng = {k: f"${c}${b0}:${c}${b1}" for k, c in (("pond", "J"), ("min", "K"), ("max", "L"))}
+    ws.cell(1, 1, "Taxas de entrada dos concorrentes").font = ARIAL_N
+    nota = (f"{n} casas com taxa conhecida, com a São Jogue; só os dias em que a casa abre. Faixas de "
+            "R$ 5; a última inclui o limite superior.")
+    ws.cell(2, 1, nota).font = ARIAL
+    prox = 4
+    for k, (chave, tit, eixo) in enumerate([("pond", "Casas por faixa de taxa de entrada ponderada pelos dias "
+                                              "de funcionamento", "Taxa ponderada (R$)"),
+                                             ("min", "Casas por faixa da taxa de entrada mais barata da casa",
+                                              "Taxa mais barata (R$)"),
+                                             ("max", "Casas por faixa da taxa de entrada mais cara da casa",
+                                              "Taxa mais cara (R$)")], 1):
+        prox = tabela_faixas(ws, 1, k, prox, tit, faixas(0, 50, 5), rng[chave], "R$", real, fonte, eixo,
+                             cor=[ROXO_800, ROXO_300, ROXO_500][k - 1])
+    assert prox <= l_base, "faixas invadem a base"
+    linhas = []
+    for i, r in enumerate(tx.itertuples(index=False)):
+        lr = b0 + i
+        dias = [getattr(r, d) for d in DIAS]
+        linhas.append([r.nome, r.metropole, *dias, f"=AVERAGE(C{lr}:I{lr})", f"=MIN(C{lr}:I{lr})",
+                       f"=MAX(C{lr}:I{lr})", r.fonte])
+    tabela(ws, 1, 4, l_base, "Taxa de entrada por casa e dia da semana",
+           ["Casa", "Metrópole", *[NOME_DIA[d] for d in DIAS], "Ponderada (R$)", "Mais barata (R$)",
+            "Mais cara (R$)", "Fonte da taxa"],
+           linhas, ["txt", "txt"] + ["rs"] * 10 + ["txt"], fonte,
+           larguras=[36, 16] + [10] * 10 + [60],
+           notas=("Nota: célula vazia = casa fechada no dia. Ponderada = média dos dias em que a casa abre.",))
+    return {"base": (b0, b1), "aba": ws.title}
+
+
+def aba_taxas_dia(wb, ref):
+    ws = nova_aba(wb, "2 Taxas por dia")
+    b0, b1 = ref["base"]
+    a = f"'{ref['aba']}'!"
+    fonte = f"Tabela 1.4 ({ref['aba']})."
+    ws.cell(1, 1, "Taxas de entrada por dia da semana").font = ARIAL_N
+    ws.cell(2, 1, "Só as casas abertas no dia. Próprio máximo/mínimo: a taxa do dia é a mais cara/barata da "
+                  "semana da casa (casas com mais de um valor); valor único: a casa cobra o mesmo em todos os "
+                  "dias em que abre.").font = ARIAL
+    mx, mn = f"{a}$L${b0}:$L${b1}", f"{a}$K${b0}:$K${b1}"
+    linhas = []
+    l0 = 6
+    for i, d in enumerate(DIAS):
+        c = L(3 + i)
+        col = f"{a}${c}${b0}:${c}${b1}"
+        r = l0 + i
+        linhas.append([NOME_DIA[d], f"=COUNT({col})", f"=AVERAGE({col})", f"=MEDIAN({col})", f"=MIN({col})",
+                       f"=MAX({col})",
+                       f"=SUMPRODUCT(ISNUMBER({col})*({col}={mx})*({mx}>{mn}))",
+                       f"=SUMPRODUCT(ISNUMBER({col})*({col}={mn})*({mx}>{mn}))",
+                       f"=SUMPRODUCT(ISNUMBER({col})*({mx}={mn}))",
+                       f"=B{r}-G{r}-H{r}-I{r}"])
+    d0, ult, prox = tabela(ws, 2, 1, 4, "Taxa de entrada por dia da semana entre as casas abertas",
+                           ["Dia", "Casas abertas com taxa", "Média (R$)", "Mediana (R$)", "Mínimo (R$)",
+                            "Máximo (R$)", "Casas no próprio máximo", "Casas no próprio mínimo",
+                            "Casas com valor único", "Casas em valor intermediário"],
+                           linhas, ["txt", "int", "rs", "rs", "rs", "rs", "int", "int", "int", "int"], fonte,
+                           larguras=[12, 12, 11, 11, 11, 11, 12, 12, 12, 13],
+                           notas=("Nota: as quatro últimas colunas somam as casas abertas com taxa no dia.",))
+    assert d0 == l0
+    grafico_barras(ws, "Gráfico 2.1 – Taxa de entrada média, mediana, mínima e máxima por dia",
+                   (1, d0, ult), [(c, d0 - 1, ult) for c in (3, 4, 5, 6)],
+                   [ROXO_800, ROXO_500, SLATE_300, SLATE_600], "Taxa de entrada (R$)", "Dia da semana",
+                   f"A{prox + 1}", fmt='"R$ "#,##0', largura=20, altura=9.5)
+    grafico_barras(ws, "Gráfico 2.2 – Casas abertas por posição da taxa do dia na semana da casa",
+                   (1, d0, ult), [(c, d0 - 1, ult) for c in (7, 8, 9, 10)],
+                   [ROXO_800, ROXO_300, SLATE_600, SLATE_300], "N.º de casas", "Dia da semana",
+                   f"A{prox + 22}", empilhar=True, largura=20, altura=9.5)
 
 
 def aba_funcionamento(wb):
-    ws = wb.create_sheet("Funcionamento")
-    titulo(ws, "Fluxo dos concorrentes por dia e hora e casas abertas",
-           "Fonte: índice \"Horários de pico\" do Google Maps (coleta de 10 e 11/11/2026) e horários publicados "
-           "das casas (15/10/2026), recorte B1 (B1-a_fluxo_dia_hora.py).",
-           "Fluxo: índice do Google (100% = hora mais cheia da semana da casa), só entre as casas abertas na hora "
-           "(46 concorrentes, sem a São Jogue). Linha: n.º das 54 casas da população do B1 abertas na hora. "
-           "Horas de 0h a 5h: madrugada do próprio dia.")
-    for k, (col_var, rot, col0) in enumerate([("media_pct", "Fluxo médio", 1), ("mediana_pct", "Fluxo mediano", 8)]):
-        v = pd.read_csv(VALORES / f"B1_fluxo_dia_hora_{col_var.split('_')[0]}.csv", sep=";")
-        ws.cell(5, col0, f"Tabela {k + 1} - {rot} por dia e hora").font = NEG
-        cab(ws, 6, col0, ["Dia", "Hora", "Dia e hora", f"{rot} (%)", "Casas abertas na amostra (de 46)",
-                          "Casas abertas na população (de 54)"], [10, 6, 11, 10, 13, 13])
-        for i, r in enumerate(v.itertuples(index=False), start=7):
-            cel(ws, i, col0, NOME_DIA[r.dia_semana])
-            cel(ws, i, col0 + 1, int(r.hora), "0")
-            cel(ws, i, col0 + 2, f"{ABREV[r.dia_semana]} {int(r.hora)}h")
-            val = getattr(r, col_var)
-            cel(ws, i, col0 + 3, None if pd.isna(val) else val / 100, "0%")
-            cel(ws, i, col0 + 4, 0 if pd.isna(r.casas_abertas) else int(r.casas_abertas), "0")
-            cel(ws, i, col0 + 5, int(r.casas_pop_abertas), "0")
-        fim = 6 + len(v)
-        combinado(ws, col0 + 2, col0 + 3, col0 + 5, 6, fim, f"{rot} por dia e hora e casas abertas",
-                  f"{rot} (% da hora mais cheia)", "Casas abertas (de 54)", "0%",
-                  f"O{6 + k * 24}", largura=34, altura=11)
-    ws.freeze_panes = "A7"
+    ws = nova_aba(wb, "3 Funcionamento")
+    fonte = ("índice \"Horários de pico\" do Google Maps (coleta de 10 e 11/11/2026) e horários publicados das "
+             "casas (15/10/2026), recorte B1 (B1-a_fluxo_dia_hora.py; valores agregados pelo script).")
+    ws.cell(1, 1, "Fluxo dos concorrentes por dia e hora e casas abertas").font = ARIAL_N
+    ws.cell(2, 1, "Fluxo: índice do Google (100% = hora mais cheia da semana da casa), só entre as casas abertas na "
+                  "hora (46 concorrentes, sem a São Jogue). Horas de 0h a 5h: madrugada do próprio dia.").font = ARIAL
+    for k, (arq, col_var, rot) in enumerate([("media", "media_pct", "Fluxo médio"),
+                                             ("mediana", "mediana_pct", "Fluxo mediano")], 1):
+        v = pd.read_csv(VALORES / f"B1_fluxo_dia_hora_{arq}.csv", sep=";")
+        linhas = [[NOME_DIA[r.dia_semana], int(r.hora), f"{ABREV[r.dia_semana]} {int(r.hora)}h",
+                   None if pd.isna(getattr(r, col_var)) else getattr(r, col_var) / 100,
+                   0 if pd.isna(r.casas_abertas) else int(r.casas_abertas), int(r.casas_pop_abertas)]
+                  for r in v.itertuples(index=False)]
+        linha = 4 if k == 1 else 4 + len(v) + 6
+        d0, ult, _ = tabela(ws, 3, k, linha, f"{rot} por dia e hora e casas abertas",
+                            ["Dia", "Hora", "Dia e hora", f"{rot} (%)", "Casas abertas na amostra (de 46)",
+                             "Casas abertas na população (de 54)"],
+                            linhas, ["txt", "int", "txt", "pct", "int", "int"], fonte,
+                            larguras=[11, 7, 11, 11, 13, 13])
+        grafico_combinado(ws, f"Gráfico 3.{k} – {rot} por dia e hora e casas abertas", (3, d0, ult),
+                          (4, d0 - 1, ult), (6, d0 - 1, ult), f"{rot} (% da hora mais cheia)",
+                          "Casas abertas (de 54)", "0%", f"H{linha}", largura=34)
 
 
-def aba_cestas(wb, cesta):
-    ws = wb.create_sheet("Cestas")
-    d = cesta.dropna(subset=["cesta_consumo"]).sort_values("cesta_consumo").reset_index(drop=True)
-    titulo(ws, "Cesta de consumo por pessoa dos concorrentes, sem e com a taxa de entrada",
-           "Fonte: cardápios do B1 (bebida e hambúrguer) e taxas de entrada (B2-a_gasto_por_pessoa.py, "
-           "B1_cesta_casas_com_taxa.csv).",
-           "Sem taxa: bebida (mediana do cardápio) + hambúrguer mais barato não vegetariano. Com taxa: soma da "
-           f"taxa ponderada. {len(d)} casas com taxa, bebida e hambúrguer no cardápio; faixas de R$ 10.")
-    l0, l1 = base(ws, 6, 13, d, ["nome", "capital_endereco", "bebida_mais_hamburguer", "taxa_ponderada",
-                                 "cesta_consumo"],
-                  ["Casa", "Metrópole", "Cesta sem taxa (R$)", "Taxa ponderada (R$)", "Cesta com taxa (R$)"],
-                  [None, None, "#,##0.00", "#,##0.00", "#,##0.00"], [34, 16, 12, 12, 12])
-    fx = faixas(20, 120, 10)
-    histograma(ws, 6, 1, "sem", fx, f"$O${l0}:$O${l1}", "R$", "A24",
-               "Casas por faixa da cesta sem a taxa de entrada", "Cesta sem taxa (R$)", real)
-    histograma(ws, 6, 7, "com", fx, f"$Q${l0}:$Q${l1}", "R$", "G24",
-               "Casas por faixa da cesta com a taxa de entrada", "Cesta com taxa (R$)", real)
-    return int(d.shape[0])
+def aba_cestas(wb, cesta, ref):
+    ws = nova_aba(wb, "4 Cestas")
+    d = cesta.dropna(subset=["cesta_consumo"]).sort_values(["bebida_mais_hamburguer", "nome"]).reset_index(drop=True)
+    n = len(d)
+    fonte = ("cardápios do B1 (bebida e hambúrguer; B1_cesta_casas_com_taxa.csv) e taxa ponderada da Tabela 1.4.")
+    ws.cell(1, 1, "Cesta de consumo por pessoa dos concorrentes, sem e com a taxa de entrada").font = ARIAL_N
+    ws.cell(2, 1, f"Sem taxa: bebida (mediana do cardápio) + hambúrguer mais barato não vegetariano. Com taxa: soma "
+                  f"da taxa ponderada. {n} casas com taxa, bebida e hambúrguer no cardápio; faixas de R$ 10.").font = ARIAL
+    l_base = 4 + 2 * 19 + 1
+    b0, b1 = l_base + 2, l_base + 1 + n
+    a = f"'{ref['aba']}'!"
+    t0, t1 = ref["base"]
+    prox = 4
+    for k, (c, tit, eixo, cor) in enumerate([("C", "Casas por faixa da cesta sem a taxa de entrada",
+                                              "Cesta sem taxa (R$)", SLATE_600),
+                                             ("E", "Casas por faixa da cesta com a taxa de entrada",
+                                              "Cesta com taxa (R$)", ROXO_800)], 1):
+        prox = tabela_faixas(ws, 4, k, prox, tit, faixas(20, 120, 10), f"${c}${b0}:${c}${b1}", "R$", real,
+                             fonte, eixo, cor=cor)
+    assert prox <= l_base
+    linhas = []
+    for i, r in enumerate(d.itertuples(index=False)):
+        lr = b0 + i
+        linhas.append([r.nome, r.capital_endereco, r.bebida_mais_hamburguer,
+                       f"=INDEX({a}$J${t0}:$J${t1},MATCH(A{lr},{a}$A${t0}:$A${t1},0))", f"=C{lr}+D{lr}"])
+    tabela(ws, 4, 3, l_base, "Cesta de consumo por casa", ["Casa", "Metrópole", "Cesta sem taxa (R$)",
+                                                           "Taxa ponderada (R$)", "Cesta com taxa (R$)"],
+           linhas, ["txt", "txt", "rs", "rs", "rs"], fonte, larguras=[36, 16, 12, 12, 12])
+    return d
 
 
 def aba_acervos(wb):
-    ws = wb.create_sheet("Acervos")
+    ws = nova_aba(wb, "5 Acervos")
     a = pd.read_csv(B1 / "acervo_jogos" / "B1_jogos_dos_acervos.csv")
     d = (a.groupby("estabelecimento").agg(jogos=("jogo", "count"), fonte=("fonte", "first"))
-         .reset_index().sort_values("jogos"))
+         .reset_index().sort_values(["jogos", "estabelecimento"]).reset_index(drop=True))
     assert d.jogos.sum() == len(a)
-    titulo(ws, "Quantidade de jogos nos acervos dos concorrentes, por faixa",
-           "Fonte: acervos publicados pelas casas do B1 (acervodejogos, Ludopedia, sites e listas; "
-           "B1_jogos_dos_acervos.csv, out. a nov./2026).",
-           f"Títulos listados no acervo de cada casa; {len(d)} casas com acervo publicado; faixas de 200 jogos.")
-    l0, l1 = base(ws, 6, 7, d, ["estabelecimento", "fonte", "jogos"], ["Casa", "Fonte do acervo", "N.º de jogos"],
-                  [None, None, "#,##0"], [40, 14, 10])
-    histograma(ws, 6, 1, "jogos", faixas(0, 2000, 200), f"$I${l0}:$I${l1}", "jogos", "A24",
-               "Casas por faixa de tamanho do acervo", "N.º de jogos no acervo",
-               lambda v: f"{v:,.0f}".replace(",", "."))
-    return int(len(d)), int(d.jogos.sum())
+    fonte = ("acervos publicados pelas casas do B1 (acervodejogos, Ludopedia, sites e listas; "
+             "B1_jogos_dos_acervos.csv, out. a nov./2026).")
+    ws.cell(1, 1, "Quantidade de jogos nos acervos dos concorrentes").font = ARIAL_N
+    ws.cell(2, 1, f"Títulos listados no acervo de cada casa; {len(d)} casas com acervo publicado; faixas de 200 "
+                  "jogos.").font = ARIAL
+    l_base = 4 + 19 + 1
+    b0, b1 = l_base + 2, l_base + 1 + len(d)
+    prox = tabela_faixas(ws, 5, 1, 4, "Casas por faixa de tamanho do acervo", faixas(0, 2000, 200),
+                         f"$C${b0}:$C${b1}", "jogos", inteiro, fonte, "N.º de jogos no acervo")
+    assert prox <= l_base
+    tabela(ws, 5, 2, l_base, "Jogos no acervo por casa", ["Casa", "Fonte do acervo", "N.º de jogos"],
+           [[r.estabelecimento, r.fonte, int(r.jogos)] for r in d.itertuples(index=False)],
+           ["txt", "txt", "int"], fonte, larguras=[40, 14, 11])
+    return d
 
 
 def aba_jogos(wb):
-    ws = wb.create_sheet("Jogos frequentes")
+    ws = nova_aba(wb, "6 Jogos frequentes")
     b = pd.read_csv(B1 / "acervo_jogos" / "B1_banco_jogos.csv")
     b = b.sort_values(["n_casas_acervo", "jogo"], ascending=[False, True]).reset_index(drop=True)
-    corte = b.n_casas_acervo.iloc[19]
+    corte = int(b.n_casas_acervo.iloc[19])
     t = b[b.n_casas_acervo >= corte].copy()
     t["n_aluguel"] = t.aluguel_detalhe.fillna("").map(lambda s: len(re.findall(r"R\$", s)))
-    titulo(ws, "Aluguel dos jogos mais frequentes nos acervos dos concorrentes",
-           "Fonte: acervos e preços de aluguel publicados pelas casas do B1 (B1_banco_jogos.csv, out. a nov./2026).",
-           f"Jogos presentes em {corte} ou mais acervos ({len(t)} jogos, empates incluídos). Aluguel: média e "
-           "mediana entre as casas que alugam o jogo; mistura locações de 1, 3 e 7 dias. Linha: n.º de casas "
-           "com o jogo no acervo (de 31).")
-    for k, (col_var, rot, col0) in enumerate([("aluguel_media_rs", "Aluguel médio", 1),
-                                              ("aluguel_mediana_rs", "Aluguel mediano", 7)]):
-        ws.cell(5, col0, f"Tabela {k + 1} - {rot} dos jogos mais frequentes").font = NEG
-        cab(ws, 6, col0, ["Jogo", f"{rot} (R$)", "Casas que alugam", "Casas com o jogo no acervo"],
-            [30, 11, 10, 12])
-        for i, r in enumerate(t.itertuples(index=False), start=7):
-            cel(ws, i, col0, r.jogo)
-            val = getattr(r, col_var)
-            cel(ws, i, col0 + 1, None if pd.isna(val) else float(val), "#,##0.00")
-            cel(ws, i, col0 + 2, int(r.n_aluguel), "0")
-            cel(ws, i, col0 + 3, int(r.n_casas_acervo), "0")
-        fim = 6 + len(t)
-        combinado(ws, col0, col0 + 1, col0 + 3, 6, fim, f"{rot} e casas com o jogo no acervo",
-                  f"{rot} (R$)", "Casas com o jogo", '"R$ "#,##0', f"L{6 + k * 26}",
-                  largura=28, altura=12)
-    return len(t), int(corte)
+    fonte = "acervos e preços de aluguel publicados pelas casas do B1 (B1_banco_jogos.csv, out. a nov./2026)."
+    ws.cell(1, 1, "Aluguel dos jogos mais frequentes nos acervos dos concorrentes").font = ARIAL_N
+    ws.cell(2, 1, f"Jogos presentes em {corte} ou mais acervos ({len(t)} jogos, empates incluídos). Aluguel entre as "
+                  "casas que alugam o jogo; mistura locações de 1, 3 e 7 dias. Linha: casas com o jogo no acervo "
+                  "(de 31).").font = ARIAL
+    for k, (col_var, rot) in enumerate([("aluguel_media_rs", "Aluguel médio"),
+                                        ("aluguel_mediana_rs", "Aluguel mediano")], 1):
+        linha = 4 if k == 1 else 4 + len(t) + 6
+        linhas = [[r.jogo, None if pd.isna(getattr(r, col_var)) else float(getattr(r, col_var)), int(r.n_aluguel),
+                   int(r.n_casas_acervo)] for r in t.itertuples(index=False)]
+        d0, ult, _ = tabela(ws, 6, k, linha, f"{rot} dos jogos mais frequentes nos acervos",
+                            ["Jogo", f"{rot} (R$)", "Casas que alugam", "Casas com o jogo no acervo"],
+                            linhas, ["txt", "rs", "int", "int"], fonte, larguras=[30, 12, 11, 12])
+        grafico_combinado(ws, f"Gráfico 6.{k} – {rot} e casas com o jogo no acervo", (1, d0, ult),
+                          (2, d0 - 1, ult), (4, d0 - 1, ult), f"{rot} (R$)", "Casas com o jogo", '"R$ "#,##0',
+                          f"F{linha}", largura=26, altura=12)
+    return len(t), corte
+
+
+def aba_sumario(wb):
+    ws = wb.create_sheet("0 Sumário", 0)
+    ws.sheet_view.showGridLines = False
+    ws.cell(1, 1, "Sumário – Histogramas dos concorrentes do B1")
+    ws.merge_cells("A1:C1")
+    for j, c in enumerate(["Aba", "Tabela", "Fonte"], 1):
+        ws.cell(2, j, c)
+    for i, (aba, tit, fonte, lin) in enumerate(SUMARIO, 3):
+        ws.cell(i, 1, aba).hyperlink = f"#'{aba}'!A1"
+        ws.cell(i, 2, tit).hyperlink = f"#'{aba}'!A{lin}"
+        ws.cell(i, 3, fonte)
+    ult = 2 + len(SUMARIO)
+    for r in range(1, ult + 1):
+        for j in range(1, 4):
+            c = ws.cell(r, j)
+            c.fill = BRANCO
+            if r <= 2:
+                c.font = ARIAL_N
+                c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+                if r == 2:
+                    c.border = Border(top=FINA, bottom=FINA, left=SEM, right=SEM)
+            else:
+                c.font = LINK if j <= 2 else ARIAL
+                c.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
+                c.border = Border(top=SEM, left=SEM, right=SEM, bottom=FINA if r == ult else SEM)
+    ws.row_dimensions[1].height = 28
+    for j, w in enumerate([20, 70, 80], 1):
+        ws.column_dimensions[L(j)].width = w
+    ws.cell(ult + 1, 1, "Fonte: elaboração própria. Clique na aba ou na tabela para ir até ela.").font = ARIAL
 
 
 def main():
     cesta = pd.read_csv(CESTA, sep=";")
+    tx = carregar_taxas()
+    # conferência: taxa ponderada (média dos dias abertos) = a do script do B2
+    chk = tx.merge(cesta[["place_id", "taxa_ponderada"]], on="place_id", how="left")
+    assert len(chk) == len(cesta.dropna(subset=["taxa_ponderada"])), "casas com taxa não fecham"
+    assert (chk.ponderada - chk.taxa_ponderada).abs().max() < 0.01, "taxa ponderada diverge do B2"
     wb = Workbook()
     wb.remove(wb.active)
-    n_tx = aba_taxas(wb, cesta)
+    ref = aba_taxas(wb, tx)
+    aba_taxas_dia(wb, ref)
     aba_funcionamento(wb)
-    n_ce = aba_cestas(wb, cesta)
-    n_ac, n_jg = aba_acervos(wb)
+    d = aba_cestas(wb, cesta, ref)
+    ac = aba_acervos(wb)
     n_fr, corte = aba_jogos(wb)
+    aba_sumario(wb)
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     wb.save(SAIDA)
-    print(f"  gravado: {SAIDA.relative_to(ROOT)}")
-    print(f"  taxas: {n_tx} casas; cestas: {n_ce} casas; acervos: {n_ac} casas ({n_jg} títulos); "
-          f"jogos frequentes: {n_fr} (corte {corte} acervos)")
+    print(f"  gravado: {SAIDA.relative_to(ROOT)} ({len(SUMARIO)} tabelas)")
+    print(f"  taxas: {len(tx)} casas; cestas: {len(d)}; acervos: {len(ac)}; jogos frequentes: {n_fr} (corte {corte})")
 
 
 if __name__ == "__main__":
