@@ -10,7 +10,8 @@ lista e liga todas.
 
 Abas:
   0. Sumário.
-  1. Taxas de entrada - faixas de R$ 5 da taxa ponderada (média dos dias em
+  1. Taxas de entrada - só as casas que cobram em algum dia (as que nunca
+     cobram têm outro modelo de preço e ficam fora das abas 1 e 2); faixas de R$ 5 da taxa ponderada (média dos dias em
      que a casa abre), da mais barata e da mais cara de cada casa; barras =
      n.º de casas. A base (Tabela 1.4) traz a taxa de cada dia da semana nos
      dias em que a casa abre (TAXAS de B2-a_gasto_por_pessoa.py e horários de
@@ -254,11 +255,15 @@ def carregar_taxas():
         linhas.append(lin)
     t = pd.DataFrame(linhas)
     t["ponderada"] = t[DIAS].mean(axis=1)
-    return t.sort_values(["ponderada", "nome"]).reset_index(drop=True)
+    # casas que não cobram em nenhum dia têm outro modelo de preço (consumo), não uma taxa mais baixa:
+    # ficam fora das abas 1 e 2, como na taxa do plano ("média dos concorrentes que a cobram", 31/10/2026)
+    sem = t[t[DIAS].fillna(0).max(axis=1) == 0]
+    t = t.drop(sem.index)
+    return t.sort_values(["ponderada", "nome"]).reset_index(drop=True), sem.nome.tolist()
 
 
 # ---------------------------------------------------------------- abas
-def aba_taxas(wb, tx):
+def aba_taxas(wb, tx, sem):
     ws = nova_aba(wb, "1 Taxas de entrada")
     fonte = ("cardápios, sites, imprensa e Instagram das casas do B1 e site e NFC-e da São Jogue "
              "(TAXAS em B2-a_gasto_por_pessoa.py; horários em B1_resumo_estabelecimentos.xlsx).")
@@ -268,8 +273,9 @@ def aba_taxas(wb, tx):
     b0, b1 = l_base + 2, l_base + 1 + n
     rng = {k: f"${c}${b0}:${c}${b1}" for k, c in (("pond", "J"), ("min", "K"), ("max", "L"))}
     ws.cell(1, 1, "Taxas de entrada dos concorrentes").font = ARIAL_N
-    nota = (f"{n} casas com taxa conhecida, com a São Jogue; só os dias em que a casa abre. Faixas de "
-            "R$ 5; a última inclui o limite superior.")
+    nota = (f"{n} casas que cobram taxa, com a São Jogue; só os dias em que a casa abre. Fora: casas sem "
+            f"cobrança em nenhum dia ({'; '.join(sem)}), por terem outro modelo de preço. Faixas de R$ 5; a "
+            "última inclui o limite superior.")
     ws.cell(2, 1, nota).font = ARIAL
     prox = 4
     for k, (chave, tit, eixo) in enumerate([("pond", "Casas por faixa de taxa de entrada ponderada pelos dias "
@@ -302,7 +308,8 @@ def aba_taxas_dia(wb, ref):
     a = f"'{ref['aba']}'!"
     fonte = f"Tabela 1.4 ({ref['aba']})."
     ws.cell(1, 1, "Taxas de entrada por dia da semana").font = ARIAL_N
-    ws.cell(2, 1, "Só as casas abertas no dia. Próprio máximo/mínimo: a taxa do dia é a mais cara/barata da "
+    ws.cell(2, 1, "Só as casas que cobram taxa (Tabela 1.4) e estão abertas no dia; dia gratuito de casa que cobra "
+                  "nos outros dias entra como R$ 0. Próprio máximo/mínimo: a taxa do dia é a mais cara/barata da "
                   "semana da casa (casas com mais de um valor); valor único: a casa cobra o mesmo em todos os "
                   "dias em que abre.").font = ARIAL
     mx, mn = f"{a}$L${b0}:$L${b1}", f"{a}$K${b0}:$K${b1}"
@@ -365,7 +372,8 @@ def aba_cestas(wb, cesta, ref):
     ws = nova_aba(wb, "4 Cestas")
     d = cesta.dropna(subset=["cesta_consumo"]).sort_values(["bebida_mais_hamburguer", "nome"]).reset_index(drop=True)
     n = len(d)
-    fonte = ("cardápios do B1 (bebida e hambúrguer; B1_cesta_casas_com_taxa.csv) e taxa ponderada da Tabela 1.4.")
+    fonte = ("cardápios do B1 (bebida e hambúrguer; B1_cesta_casas_com_taxa.csv) e taxa ponderada da Tabela 1.4 "
+             "(R$ 0 nas casas sem cobrança, fora da Tabela 1.4).")
     ws.cell(1, 1, "Cesta de consumo por pessoa dos concorrentes, sem e com a taxa de entrada").font = ARIAL_N
     ws.cell(2, 1, f"Sem taxa: bebida (mediana do cardápio) + hambúrguer mais barato não vegetariano. Com taxa: soma "
                   f"da taxa ponderada. {n} casas com taxa, bebida e hambúrguer no cardápio; faixas de R$ 10.").font = ARIAL
@@ -385,7 +393,8 @@ def aba_cestas(wb, cesta, ref):
     for i, r in enumerate(d.itertuples(index=False)):
         lr = b0 + i
         linhas.append([r.nome, r.capital_endereco, r.bebida_mais_hamburguer,
-                       f"=INDEX({a}$J${t0}:$J${t1},MATCH(A{lr},{a}$A${t0}:$A${t1},0))", f"=C{lr}+D{lr}"])
+                       f"=IFERROR(INDEX({a}$J${t0}:$J${t1},MATCH(A{lr},{a}$A${t0}:$A${t1},0)),0)",
+                       f"=C{lr}+D{lr}"])
     tabela(ws, 4, 3, l_base, "Cesta de consumo por casa", ["Casa", "Metrópole", "Cesta sem taxa (R$)",
                                                            "Taxa ponderada (R$)", "Cesta com taxa (R$)"],
            linhas, ["txt", "txt", "rs", "rs", "rs"], fonte, larguras=[36, 16, 12, 12, 12])
@@ -473,14 +482,14 @@ def aba_sumario(wb):
 
 def main():
     cesta = pd.read_csv(CESTA, sep=";")
-    tx = carregar_taxas()
-    # conferência: taxa ponderada (média dos dias abertos) = a do script do B2
+    tx, sem = carregar_taxas()
+    # conferência: taxa ponderada (média dos dias abertos) = a do script do B2; casas que cobram + sem cobrança = total
     chk = tx.merge(cesta[["place_id", "taxa_ponderada"]], on="place_id", how="left")
-    assert len(chk) == len(cesta.dropna(subset=["taxa_ponderada"])), "casas com taxa não fecham"
+    assert len(chk) + len(sem) == len(cesta.dropna(subset=["taxa_ponderada"])), "casas com taxa não fecham"
     assert (chk.ponderada - chk.taxa_ponderada).abs().max() < 0.01, "taxa ponderada diverge do B2"
     wb = Workbook()
     wb.remove(wb.active)
-    ref = aba_taxas(wb, tx)
+    ref = aba_taxas(wb, tx, sem)
     aba_taxas_dia(wb, ref)
     aba_funcionamento(wb)
     d = aba_cestas(wb, cesta, ref)
@@ -490,7 +499,7 @@ def main():
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     wb.save(SAIDA)
     print(f"  gravado: {SAIDA.relative_to(ROOT)} ({len(SUMARIO)} tabelas)")
-    print(f"  taxas: {len(tx)} casas; cestas: {len(d)}; acervos: {len(ac)}; jogos frequentes: {n_fr} (corte {corte})")
+    print(f"  taxas: {len(tx)} casas que cobram (fora: {', '.join(sem)}); cestas: {len(d)}; acervos: {len(ac)}; jogos frequentes: {n_fr} (corte {corte})")
 
 
 if __name__ == "__main__":
