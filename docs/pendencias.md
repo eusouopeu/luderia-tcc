@@ -18,7 +18,6 @@ Perguntas fechadas para o autor responder de uma vez. Cada resposta vira uma lin
 | L8 | Quadro 3.2 atribui ao B2 os jogos citados, que no plano vêm dos acervos do B1 (I05) (D52); o tamanho do grupo do B2 já saiu (04/11/2026) | (a) B2 só com proposta de valor, reclamações e gasto por pessoa; (b) manter | (a) |
 | L9 | Escala de fontes do cap. 5 em 4 níveis × P1 e N1–N6 (D01) | (a) a escala sai do cap. 5 e fica só a N1–N6; (b) vira a P1 de `1a_principios.md` | (a) |
 | L10 | Variação dos salários no Monte Carlo (0% a +x% sobre a admissão do Novo CAGED; provisório 11,4%) | (a) manter 11,4% (maior distância do 3º quartil à mediana entre os cargos); (b) diferença admissão × estoque no CEMPRE/RAIS; (c) piso da convenção coletiva | (a), declarado |
-| L11 | Anúncios de aluguel com IPTU acima de 30% do aluguel (9 de 138, provavelmente anual) | (a) o build divide por 12 acima do limite; (b) descarta | (a) |
 | L12 | Casa comercial nos anúncios de aluguel (138 com subtipo "outro") | (a) subtipo próprio, dentro do filtro loja/ponto; (b) fora | (a) |
 | L13 | Resumo de aluguel por bairro (agora Graça, Pituba e Itaigara, os 3 finalistas da 6.4) | (a) decide o bairro pela regra da 6.4 (3 anúncios que atendem ao Quadro 6.2 e mediana até R$ 64,36 por m²) e entra nas C04 e C05; (b) só C04 e C05 | (a), depois da coleta
 | L14 | Site de recomendação no molde do Tabulado | (a) só proposta do plano; (b) protótipo | (a) até a banca |

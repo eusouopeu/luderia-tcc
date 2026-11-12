@@ -55,6 +55,15 @@ class TestAnunciosAluguel(unittest.TestCase):
             anuncio(5000002, 2400, 35, "Barra", busca=OLX_GERAL, portal="olx", titulo="Aluga-se sala comercial"),
             anuncio(5000003, 9000, 160, "Barra", busca=OLX_GERAL, portal="olx", titulo="Loja de esquina"),
         ]
+        # Lojas de shopping com a mesma área e aluguel: só os encargos as distinguem.
+        shopping = dict(busca=OLX_GERAL, portal="olx", titulo="Loja no shopping")
+        linhas += [
+            anuncio(5000010, 10000, 219, "Pituba", condominio="15365", iptu="3096", **shopping),
+            anuncio(5000011, 10000, 219, "Pituba", condominio="14852", iptu="2852", **shopping),
+            anuncio(5000012, 10000, 219, "Pituba", condominio="15365", iptu="3096", **shopping),  # repete o 5000010
+            anuncio(5000013, 20000, 580, "Pituba", condominio="0", iptu="875", **shopping),
+            anuncio(5000014, 20000, 580, "Pituba", iptu="875", **shopping),  # o mesmo, condomínio vazio em vez de isento
+        ]
         pd.DataFrame(linhas).reindex(columns=COLS).fillna("").to_csv(
             b.IN_DIR / "2026-11-02_1846_zap_anuncios_aluguel.csv", sep=";", index=False, encoding="utf-8-sig")
         (b.IN_DIR / "2026-11-02_zap_anuncios_aluguel (1).csv").write_text("x")
@@ -99,6 +108,32 @@ class TestAnunciosAluguel(unittest.TestCase):
         self.assertIn("301", self.df.index)
         pares = self.t["Possíveis Duplicatas de Aluguel"]
         self.assertTrue(((pares["id_a"].isin(["100", "301"])) & (pares["id_b"].isin(["100", "301"]))).any())
+
+    def test_lojas_com_encargos_distintos_nao_sao_duplicatas(self):
+        self.assertIn("5000011", self.df.index)
+        self.assertEqual(len({"5000010", "5000012"} & set(self.df.index)), 1)
+        self.assertEqual(len({"5000013", "5000014"} & set(self.df.index)), 1)
+
+    def test_iptu_anual_vira_mensal(self):
+        df = pd.DataFrame({
+            "titulo": ["Ponto para alugar, 580 m² por R$ 20.875,00/mês - Pituba",    # anual pelo título
+                       "Loja para alugar, 219 m² por R$ 28.460,20/mês - Itaigara",   # mensal pelo título (31%)
+                       "Prédio para Locação em Salvador",                            # anual: 211% do aluguel
+                       "Loja na Pituba",                                             # mensal: 10%
+                       "Loja sem IPTU"],
+            "aluguel": [20000, 10000, 87750, 9000, 5000],
+            "condominio": [None, 15365, 36800, 500, 300],
+            "iptu": [10500, 3095.2, 185500, 900, None],
+            "condominio_iptu": [None, 18460.2, 222300, 1400, None],
+        })
+        with contextlib.redirect_stdout(io.StringIO()):
+            r = b.ajustar_iptu(df)
+        self.assertEqual(r["iptu"].tolist()[:4], [875.0, 3095.2, round(185500 / 12, 2), 900])
+        self.assertTrue(pd.isna(r["iptu"].iloc[4]))
+        self.assertEqual(r["iptu_ajuste"].tolist(), ["anual pelo título", "", "anual por passar de 50% do aluguel", "", ""])
+        self.assertEqual(r["iptu_informado"].iloc[0], 10500)
+        self.assertEqual(r["condominio_iptu"].iloc[2], 36800 + round(185500 / 12, 2))
+        self.assertTrue(pd.isna(r["condominio_iptu"].iloc[0]))  # sem condomínio informado, sem soma
 
     def test_porte_e_custo_de_ocupacao(self):
         self.assertEqual(self.df.loc["100", "porte_plano"], "sim")

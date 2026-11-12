@@ -18,9 +18,17 @@ Saídas em dados/[B5] Ativos fixos/aluguel/, no padrão "[B5] {dado} {período} 
 Regras:
   - Fica só o que é aluguel em Salvador, com preço entre R$ 300 e R$ 100 mil e área informada.
   - ZAP e Viva Real publicam o mesmo anúncio com o mesmo id: conta uma vez (coluna portais).
-  - Anúncio repetido com outro id (mesmo segmento, bairro, área e aluguel) conta uma vez; a
-    coleta mais recente de cada anúncio prevalece. Pares quase iguais (área e aluguel a até
-    5%) não saem: vão para "Possíveis Duplicatas", para conferência.
+  - IPTU é gravado como o anunciante digitou, às vezes anual. Vira mensal (÷ 12, coluna
+    iptu_ajuste) quando o título traz o total mensal ("por R$ 20.875,00/mês") e ele fecha com
+    o IPTU anual, ou, sem essa conferência, quando o IPTU passa de 50% do aluguel (mensal
+    nessa altura não ocorre; 12/11/2026: o título confirmou anual a 52% do aluguel e mensal
+    a 31%). O valor digitado fica em iptu_informado.
+  - Anúncio repetido com outro id (mesmo segmento, bairro, área, aluguel, condomínio e IPTU)
+    conta uma vez; a coleta mais recente de cada anúncio prevalece. Condomínio e IPTU entram
+    na chave porque lojas distintas de um mesmo shopping repetem área e aluguel e só se
+    distinguem pelos encargos (12/11/2026, Shopping Itaigara: cinco lojas de 219 m² a
+    R$ 10.000); encargo vazio conta como 0 (a OLX deixa vazio o que o ZAP diz isento). Pares quase iguais (área e aluguel a até 5%) não saem: vão para "Possíveis
+    Duplicatas", para conferência.
   - Segmento: primeiro pela categoria da busca (busca_url: loja-salao, conjunto-comercial,
     comercio-e-industria, ponto-comercial → comercial; apartamento, casa, QuintoAndar →
     residencial); busca sem categoria, pelo tipo e título com termos só comerciais ("sala
@@ -98,6 +106,8 @@ NUMERICAS = ["aluguel", "condominio", "iptu", "condominio_iptu", "area_m2", "qua
              "pagina", "total_busca"]
 IQR_FATOR = 3
 MIN_AMOSTRA = 5
+IPTU_ANUAL_RAZAO = 0.5  # IPTU acima desta fração do aluguel é anual
+RE_TOTAL_TITULO = re.compile(r"por R\$\s*([\d.]+(?:,\d{1,2})?)\s*/\s*m[eê]s", re.IGNORECASE)
 
 
 def sem_acento(texto) -> str:
@@ -209,12 +219,36 @@ def cobertura(bruto: pd.DataFrame) -> pd.DataFrame:
     return res
 
 
+def total_do_titulo(titulo) -> float | None:
+    """Total mensal que o título anuncia ("por R$ 28.460,20/mês"), ou None."""
+    m = RE_TOTAL_TITULO.search(str(titulo or ""))
+    return float(m.group(1).replace(".", "").replace(",", ".")) if m else None
+
+
+def ajustar_iptu(df: pd.DataFrame) -> pd.DataFrame:
+    """IPTU anual vira mensal: pelo total mensal do título, ou por passar de IPTU_ANUAL_RAZAO do aluguel."""
+    iptu, cond = df["iptu"], df["condominio"].fillna(0)
+    total = df["titulo"].map(total_do_titulo)
+    perto = lambda a, b: (a - b).abs() <= 1  # noqa: E731  (centavos do arredondamento do portal)
+    titulo_anual = total.notna() & perto(df["aluguel"] + cond + iptu / 12, total)
+    titulo_mensal = total.notna() & perto(df["aluguel"] + cond + iptu, total)
+    razao_anual = ~titulo_mensal & ~titulo_anual & (iptu > IPTU_ANUAL_RAZAO * df["aluguel"])
+    anual = iptu.gt(0) & (titulo_anual | razao_anual)
+    ajuste = pd.Series("", index=df.index).mask(titulo_anual & anual, "anual pelo título")
+    ajuste = ajuste.mask(razao_anual & anual, f"anual por passar de {IPTU_ANUAL_RAZAO:.0%} do aluguel")
+    novo = iptu.where(~anual, (iptu / 12).round(2))
+    print(f"IPTU anual convertido em mensal: {anual.sum()} anúncios ({(titulo_anual & anual).sum()} pelo título)")
+    return df.assign(iptu_informado=iptu, iptu=novo, iptu_ajuste=ajuste,
+                     condominio_iptu=df["condominio_iptu"].where(~anual, df["condominio"] + novo))
+
+
 def tratar(df: pd.DataFrame) -> pd.DataFrame:
     n0 = len(df)
     df = df[df["operacao"].eq("aluguel")]
     df = df[df["cidade"].map(sem_acento).eq("salvador")]
     df = df[df["aluguel"].between(ALUGUEL_MIN, ALUGUEL_MAX) & df["area_m2"].gt(0)]
     print(f"filtro (aluguel em Salvador, preço e área válidos): {n0} -> {len(df)}")
+    df = ajustar_iptu(df)
 
     # ZAP e Viva Real dividem os ids; a coleta mais recente de cada anúncio prevalece.
     df = df.assign(chave=df["portal"].where(~df["portal"].isin(["zap", "vivareal"]), "grupo_olx") + ":" + df["id"])
@@ -238,16 +272,18 @@ def tratar(df: pd.DataFrame) -> pd.DataFrame:
 
     df = com_bairro(df)
 
-    repeticao = df[["segmento", "bairro_chave", "area_m2", "aluguel"]]
+    # Vazio e zero valem o mesmo: a OLX deixa vazio o encargo que o ZAP mostra como "isento"
+    # (12/11/2026: a mesma loja de 580 m² na Pituba, com condomínio vazio num e 0 no outro).
+    repeticao = df[["segmento", "bairro_chave", "area_m2", "aluguel", "condominio", "iptu"]].fillna({"condominio": 0, "iptu": 0})
     n2 = len(df)
     df = df[~repeticao.duplicated(keep="last")]
-    print(f"mesmo segmento, bairro, área e aluguel com outro id: {n2} -> {len(df)}")
+    print(f"mesmo segmento, bairro, área, aluguel, condomínio e IPTU com outro id: {n2} -> {len(df)}")
 
     df = sem_extremos(df)
 
     colunas = ["portais", "id", "url", "segmento", "segmento_origem", "subtipo", "porte_plano", "tipo", "titulo",
                "bairro", "bairro_no_censo", "bairro_portal", "area_6_4", "endereco", "aluguel", "condominio", "iptu",
-               "condominio_iptu", "area_m2", "aluguel_m2", "encargos_m2", "encargos_pct_aluguel", "custo_ocupacao_m2", "quartos", "banheiros",
+               "iptu_informado", "iptu_ajuste", "condominio_iptu", "area_m2", "aluguel_m2", "encargos_m2", "encargos_pct_aluguel", "custo_ocupacao_m2", "quartos", "banheiros",
                "vagas", "anunciante", "publicado", "data_coleta"]
     return df[colunas + ["bairro_chave"]].sort_values(["segmento", "subtipo", "bairro", "aluguel_m2"]).reset_index(drop=True)
 

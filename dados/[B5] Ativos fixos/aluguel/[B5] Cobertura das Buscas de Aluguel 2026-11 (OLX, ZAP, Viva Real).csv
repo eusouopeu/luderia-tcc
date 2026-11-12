@@ -1,0 +1,13 @@
+﻿portal;busca;total_busca;anuncios_lidos;paginas_lidas;data_coleta;cobertura
+olx;https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/graca?commt=6&commt=7&ss=100;13;13;1;2026-11-12;1,0
+olx;https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/itaigara?commt=6&commt=7;38;14;1;2026-11-12;0,368
+olx;https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/itaigara?commt=6&commt=7&ss=100;24;24;1;2026-11-12;1,0
+olx;https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/pituba?commt=6&commt=7&ss=100;114;114;3;2026-11-12;1,0
+vivareal;https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/graca/ponto-comercial_comercial/?areaMinima=100&ordem=LOWEST_PRICE;6;6;1;2026-11-12;1,0
+vivareal;https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/itaigara/ponto-comercial_comercial/?areaMinima=100&ordem=LOWEST_PRICE;24;24;1;2026-11-12;1,0
+vivareal;https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/pituba/ponto-comercial_comercial/?areaMinima=100&ordem=LOWEST_PRICE;74;73;3;2026-11-12;0,986
+zap;https://www.zapimoveis.com.br/aluguel/casa-comercial/ba+salvador/;143;122;5;2026-11-03;0,853
+zap;https://www.zapimoveis.com.br/aluguel/casa-comercial/ba+salvador/?onde=%2CBahia%2CSalvador%2C%2C%2C%2C%2Ccity%2CBR%3EBahia%3ENULL%3ESalvador%2C-12.977733%2C-38.501648%2C&tipos=imovel-comercial_comercial%2Cponto-comercial_comercial;1245;177;6;2026-11-03;0,142
+zap;https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++graca/?areaMinima=100&ordem=LOWEST_PRICE;6;6;1;2026-11-12;1,0
+zap;https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++itaigara/?areaMinima=100&ordem=LOWEST_PRICE;24;24;1;2026-11-12;1,0
+zap;https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++pituba/?areaMinima=100&ordem=LOWEST_PRICE;74;73;3;2026-11-12;0,986
