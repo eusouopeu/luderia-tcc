@@ -31,8 +31,9 @@ Interpretação estratégica do tornado e dos pontos de ruptura: cap. 10 ([9_ana
 Receita mensal
 ├── Couvert lúdico = clientes/dia × gasto por pessoa × parcela da taxa na cesta de consumo × dias abertos
 ├── Alimentos e bebidas = clientes/dia × gasto por pessoa × (1 − parcela da taxa) × dias abertos
-│     └── clientes/dia de fim de semana = circulação no pico (pessoas/h, B3) × horas de pico equivalentes (B1)
-│           └── dia útil = fim de semana × razão dia útil ÷ fim de semana (ANR/Mastercard)
+│     └── clientes/dia = circulação no pico (pessoas/h, B3) × horas de pico equivalentes do dia (B1)
+│           └── horas de pico equivalentes = soma do índice "Horários de pico" médio dos concorrentes
+│               abertos nas horas do plano ÷ índice nas janelas das visitas (fim de semana R15, dia útil R05)
 │    
 └── Eventos/aluguel de espaço = eventos/mês × preço médio
 
@@ -49,7 +50,7 @@ O modelo de alimentos e bebidas (cozinha própria, parceria ou só bar) é premi
 
 ## 2. Hierarquia de evidências
 
-Cada premissa recebe um nível. **Quanto mais alto o nível, mais confiável** (N1 é o mais confiável).
+Cada premissa recebe um nível. **Quanto mais alto o nível, mais confiável** (N1 é o mais confiável). O critério é a **robustez da medida** (quem mede, com que método e com que cobertura), e não a proximidade com o comportamento do consumidor: por isso a coleta própria (N5, quatro noites numa só concorrente) fica abaixo da referência setorial (N4). A proximidade com o comportamento desempata só dentro de um mesmo nível (decisão de 12/11/2026, cap. 3.1).
 
 | Nível | Tipo de evidência | Exemplo |
 |---|---|---|

@@ -17,8 +17,10 @@ Todo número do texto pode ser gerado de novo por um script deste repositório. 
 | `_src/extras/` | Utilitários gerais: log comum, carregadores do Tampermonkey, `.docx` do cronograma e do projeto, cópia para o vault, leitura offline dos bancos do Notion (`ler_notion_offline.py`) |
 | `dados/[Bn] Nome/_dados-brutos/` | Dados brutos (parte não publicada: ver `.gitignore`) |
 | `dados/[Bn] Nome/` | Tabelas e gráficos tratados |
+| `_src/Modelo financeiro/analise/` e `dados/modelo_financeiro/` | Modelo do cap. 9 (`gerar_modelo_financeiro.py`) e as premissas fixas em CSV (`premissas_autor.csv`, entrada; `premissas_registro.csv`, saída) |
+| `dados/dados_agregados/` | Planilhas DMax por bloco e gráficos (`gerar_planilha_agregada.py`) |
 | `bibliografia/` | PDFs de leitura, lista de leitura e referências das bases públicas |
-| `docs/` | Decisões, pendências, registro de alterações, diagnóstico bibliográfico |
+| `docs/` | Decisões, pendências, registro de alterações, melhorias do texto; pareceres avulsos em `docs/pareceres/` |
 | `_src/app-observacao/` | App Android usado na contagem direta (Bloco B3) |
 | `_src/site-apresentacao/` | Site da apresentação oral |
 | `arquivados/` | Rascunhos, saídas do desenho anterior e blocos retirados do escopo (antigo B5 de jogos, B6) e o modelo financeiro v0, guardados para uso futuro |

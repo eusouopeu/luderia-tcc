@@ -1,7 +1,7 @@
 """
 Planilhas com os dados agregados da pesquisa (B1, B3 e B4) e gráficos, uma por bloco.
 
-Lê só arquivos processados de `dados/` e grava em `dados/Dados agregados/`
+Lê só arquivos processados de `dados/` e grava em `dados/dados_agregados/`
 (DMax = versão completa, com todos os dados coletados; a DMin, essencial, será
 definida pelo autor; ver _instrucoes/1c_versoes.md):
 `B1_dados_agregados_DMax.xlsx`, `B1_dados_agregados_resumido.xlsx` (sem
@@ -47,7 +47,7 @@ D = ROOT / "dados"
 B1 = D / "[B1] Estabelecimentos e cardapios"
 B3 = D / "[B3] Contagem direta de ocupacao"
 B4 = D / "[B4] Bases publicas"
-SAIDA = D / "Dados agregados"
+SAIDA = D / "dados_agregados"
 GRAF = SAIDA / "graficos"
 
 # ---------------------------------------------------------------- B1: base
@@ -597,7 +597,7 @@ TABS = [a for a, _, _ in INDICE]
 B1_TABS, B3_TABS, B4_TABS = TABS[:14], TABS[14:15], TABS[15:]
 B1_FORA = {"Tab 10", "Tab 11", "Tab 12", "Tab 14"}  # eventos, dias e temas do Instagram e custo do acervo
 BASE_B1 = [(ABA_BASE, "Base das 54 casas do B1", FONTE_B1)]
-NOTA_GRAF = "Gráficos em PNG de 300 dpi em dados/Dados agregados/graficos/. Gerado por _src/extras/gerar_planilha_agregada.py."
+NOTA_GRAF = "Gráficos em PNG de 300 dpi em dados/dados_agregados/graficos/. Gerado por _src/extras/gerar_planilha_agregada.py."
 NOTA_FORA = "Fora, por pedido do autor (30/10/2026): comentários do B2 (planilha própria) e dados do OpenStreetMap no entorno."
 feitos = dividir(total, INDICE, [
     (SAIDA / "B1_dados_agregados_DMax.xlsx", "Dados agregados do B1 (estabelecimentos) – TCC Luderia, versão completa",

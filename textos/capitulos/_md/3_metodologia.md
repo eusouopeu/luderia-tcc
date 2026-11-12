@@ -8,7 +8,7 @@ Visando mitigar a insinceridade das respostas, o efeito do entrevistador e o vi�
 
 ## 3.1 HIERARQUIA DE EVIDÊNCIAS
 
-A escala de confiança ordena as fontes pela proximidade com o comportamento real do consumidor. Cada premissa recebe um nível de evidência, de N1, o mais confiável, a N6 (Quadro 3.1). Premissas sustentadas por mais de uma fonte registram todos os níveis em que se sustentam – por exemplo, "N3 + N5".
+A escala de confiança ordena as fontes pela robustez da medida: quem mede, com que método e com que cobertura. Cada premissa recebe um nível de evidência, de N1, o mais confiável, a N6 (Quadro 3.1). Premissas sustentadas por mais de uma fonte registram todos os níveis em que se sustentam – por exemplo, "N3 + N5".
 
 **Quadro 3.1 – Níveis de evidência das premissas**
 
@@ -19,9 +19,11 @@ A escala de confiança ordena as fontes pela proximidade com o comportamento rea
 | N3 | Benchmark de concorrentes a partir de rastros digitais (Google Maps, redes sociais dos estabelecimentos etc.) | Preços, horários e acervos do Bloco B1 |
 | N4 | Referência setorial ou relatório | Margens típicas de bares e restaurantes |
 | N5 | Coleta primária comportamental própria | Contagem direta de ocupação (Bloco B3) |
-| N6 | Estimativa do autor | Ocupação em dia útil |
+| N6 | Estimativa do autor | Rampa de maturação |
 
 Fonte: elaborado pelo próprio autor.
+
+Os dois primeiros níveis têm método público e cobertura ampla. O N3 cobre todos os concorrentes, com método descrito neste capítulo. O N4 vem de terceiros, com método não publicado ou de outra cidade. A coleta primária própria (N5) é a mais próxima do comportamento do consumidor, mas fica abaixo do N4 porque a amostra é pequena: quatro noites numa só concorrente. A proximidade com o comportamento desempata dentro de um mesmo nível, e não entre níveis.
 
 A escala também limita o peso das estimativas próprias. Nenhuma premissa crítica, entre as 5 de maior impacto no VPL, se fundamenta apenas em evidências do nível N6. Quando não há alternativa, a premissa recebe faixa larga e destaque na análise de riscos (capítulo 10). Além disso, entre dados de um mesmo nível, prevalece o mais próximo do comportamento real – por exemplo, o registro transacional prevalece sobre a observação direta, que, por sua vez, prevalece sobre a opinião declarada.
 
@@ -102,7 +104,7 @@ Nos Blocos B1 e B2, o protocolo previa conferir na página uma amostra sorteada 
 
 Cada capítulo do plano usa os dados com uma técnica própria. No marketing, a análise do contraste da penalidade e da recompensa (PRC) é adaptada às avaliações (seção 2.3). Como não há nota por atributo, a nota da avaliação faz o papel da satisfação geral, e a crítica ou o elogio a um tema, o de desempenho abaixo ou acima da referência. A penalidade de um tema é a distância entre a nota mediana dos concorrentes (4,7) e a nota média das avaliações que o criticam; a recompensa, a distância entre a nota média das que o elogiam e essa mediana. A regressão do método original não é feita. O tema com penalidade maior que a recompensa é tratado como obrigatório. No operacional, as reclamações são ordenadas pela frequência, e o tamanho dos grupos e a permanência dimensionam as mesas.
 
-No financeiro, a *circulação* no pico, em pessoas que entram por hora, vem da contagem direta, e o cenário pessimista dela vem das notas fiscais. O horário publicado dos concorrentes leva a circulação do pico às demais horas: cada hora aberta pesa o número de concorrentes abertos nela em relação ao das horas das visitas. O índice "Horários de pico" do Google Maps, que mede o movimento de cada hora em porcentagem da hora mais cheia da semana do lugar, permite outra conversão: a média das visitas dividida pelo índice da São Jogue nos horários delas (54,5%, de 19h a 21h de sexta e sábado) dá o movimento da hora mais cheia. A conversão supõe que o índice cresce na mesma proporção que a ocupação: 54,5% do índice equivalem a 54,5% da ocupação da hora mais cheia. Com quatro visitas, essa proporção não pode ser testada. A circulação de dia útil segue a razão entre o gasto com cartão de segunda a quinta e o de sexta a domingo em restaurantes (ANR, 2026a; 2026b). O ticket médio é o gasto por pessoa declarado no Google Maps, comparado com a *cesta de consumo* de cada concorrente: uma bebida, o hambúrguer mais barato e a taxa de entrada. O *giro*, número de grupos que uma mesa recebe por dia aberto, sai da demanda, do tamanho do grupo e do número de mesas, e confere, com a lei de Little, se a circulação cabe no salão (seção 7.2). As faixas das premissas vêm dos extremos medidos (visitas, concorrentes) ou do autor (N6), e não de intervalos de confiança: as amostras são pequenas e não aleatórias (quatro visitas, 16 concorrentes com gasto declarado). A matriz de evidências, que liga cada decisão do plano à pergunta, ao dado, à fonte e ao nível, está no Apêndice D.
+No financeiro, a *circulação* no pico, em pessoas que entram por hora, vem da contagem direta, e o cenário pessimista dela vem das notas fiscais. O índice "Horários de pico" do Google Maps, que mede o movimento de cada hora em porcentagem da hora mais cheia da semana do lugar, leva a circulação do pico às demais horas e ao dia útil. Em cada hora, entra a média do índice dos concorrentes abertos nela. A soma dessa curva nas horas abertas do plano, dividida pelo valor da curva nas janelas das visitas, dá as *horas de pico equivalentes* de cada dia: quantas horas com o movimento das visitas o dia contém. A conversão supõe que a circulação cresce na mesma proporção que o índice. Com quatro visitas, essa proporção não pode ser testada. O ticket médio é o gasto por pessoa declarado no Google Maps, comparado com a *cesta de consumo* de cada concorrente: uma bebida, o hambúrguer mais barato e a taxa de entrada. O *giro*, número de grupos que uma mesa recebe por dia aberto, sai da demanda, do tamanho do grupo e do número de mesas, e confere, com a lei de Little, se a circulação cabe no salão (seção 7.2). As faixas das premissas vêm dos extremos medidos (visitas, concorrentes) ou do autor (N6), e não de intervalos de confiança: as amostras são pequenas e não aleatórias (quatro visitas, 18 concorrentes com gasto declarado). A matriz de evidências, que liga cada decisão do plano à pergunta, ao dado, à fonte e ao nível, está no Apêndice D.
 
 ## 3.5 ASPECTOS ÉTICOS E LEGAIS
 
@@ -119,7 +121,7 @@ O método mede bem os concorrentes estabelecidos e o movimento máximo da São J
 | Autosseleção de quem avalia | Experiências extremas sobrerrepresentadas | Peso igual por concorrente |
 | Recorte de três meses e corte de 100 avaliações | Sem sazonalidade; casas novas fora | Sazonalidade como premissa com faixa |
 | Contagem em um só estabelecimento, em quatro noites de pico | Ocupação acima da média da semana | Contagem como limite superior; notas como piso |
-| Índice "Horários de pico" do Google Maps, relativo à hora mais cheia de cada lugar | Proporção entre índice e ocupação suposta, sem teste (quatro visitas) | Premissa declarada; circulação em faixa, das notas fiscais à visita de maior razão |
+| Índice "Horários de pico" do Google Maps, relativo à hora mais cheia de cada lugar | Proporção entre índice e circulação suposta, sem teste (quatro visitas) | Premissa declarada; pessimista pela curva mediana dos concorrentes |
 | NFC-e só a pedido, um intervalo por unidade | Vendas subestimadas; sem variação do mês | Notas como limite inferior, em faixa |
 | Registros incompletos nas visitas (nota fiscal do início, contagem de mesas a cada 30 minutos, quem já estava no salão na chegada) | Pessoas por nota sem medida; contagens da porta e das mesas diferentes | Circulação só pela porta; ocupação, grupo e permanência só pelas mesas; dado faltante declarado, sem imputação |
 | Falhas do script e erro de codificação | Registros perdidos; viés nos temas | Recodificação cega (kappa de 0,84 nos temas); conferência do script na página pendente |
@@ -129,10 +131,6 @@ O método mede bem os concorrentes estabelecidos e o movimento máximo da São J
 Fonte: elaborado pelo próprio autor.
 
 **Referências citadas neste capítulo**
-
-ASSOCIAÇÃO NACIONAL DE RESTAURANTES (ANR). *Panorama do consumo em restaurantes no Rio de Janeiro*: preferências por cozinha, dias da semana e momentos de refeição. São Paulo, 10 set. 2026a. Estudo do Mastercard Economics Institute em parceria com a ANR. Disponível em: https://anrbrasil.org.br/panorama-do-consumo-em-restaurantes-no-rio-de-janeiro-preferencias-por-cozinha-dias-da-semana-e-momentos-de-refeicao/. Acesso em: 2 nov. 2026.
-
-ASSOCIAÇÃO NACIONAL DE RESTAURANTES (ANR). *Calor e chuva esfriam o apetite?* Estudo inédito da Mastercard Economics Institute em parceria com a ANR revela o impacto do clima sobre os gastos em restaurantes de São Paulo. São Paulo, 11 ago. 2026b. Disponível em: https://anrbrasil.org.br/calor-e-chuva-esfriam-o-apetite-estudo-inedito-da-mastercard-economics-institute-em-parceria-com-a-anr-revela-o-impacto-do-clima-sobre-os-gastos-em-restaurantes-de-sao-paulo/. Acesso em: 2 nov. 2026.
 
 BANCO CENTRAL DO BRASIL (BCB). *Relatório Focus*: expectativas de mercado de 11 set. 2026. Brasília, 2026. Disponível em: https://www.bcb.gov.br/content/focus/focus/R20260911.pdf. Acesso em: 2 nov. 2026.
 

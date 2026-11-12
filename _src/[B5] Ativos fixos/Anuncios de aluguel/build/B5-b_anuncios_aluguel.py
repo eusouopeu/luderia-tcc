@@ -48,7 +48,7 @@ Regras:
   - Resumos: grupo com menos de 5 anúncios fica com amostra_suficiente = "não" e sem quartis.
   - É preço pedido, não preço fechado: o FipeZap (também preço de anúncio) e as cotações
     no ponto completam as premissas C04 (aluguel por m²) e C05 (condomínio e IPTU, % do aluguel)
-    do modelo (_src/extras/gerar_modelo_financeiro.py).
+    do modelo (_src/Modelo financeiro/analise/gerar_modelo_financeiro.py).
 """
 
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
