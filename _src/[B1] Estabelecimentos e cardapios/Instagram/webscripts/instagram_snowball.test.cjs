@@ -21,7 +21,7 @@ function carregar(contexto = {}) {
   };
   ambiente.XMLHttpRequest.prototype.send = () => {};
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Snowball IG] carregado');"))
-    + 'Object.assign(globalThis.__test, { sementeAtual, registrarSeguido, ingerirSeguindo, capturar, lerUsuarios, declaradoSeguindo, pendentes, lerSeguindoDom, linhasSeguindo, seguindo, csv, COLS_SEGUINDO, RE_SEGUINDO_URL, linkSeguindo, contadorSeguindo, pararFila, limparFila, lerFila, gravarFila, iniciarFila, RE_CONTADOR_SEGUINDO, ativo: () => parar });})();';
+    + 'Object.assign(globalThis.__test, { sementeAtual, registrarSeguido, ingerirSeguindo, capturar, lerUsuarios, declaradoSeguindo, pendentes, lerSeguindoDom, linhasSeguindo, seguindo, csv, COLS_SEGUINDO, RE_SEGUINDO_URL, linkSeguindo, contadorSeguindo, pararFila, limparFila, lerFila, gravarFila, iniciarFila, RE_CONTADOR_SEGUINDO, SEMENTES, estadoSemente, proximaSemente, ativo: () => parar });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'instagram_snowball.user.js' });
   return ambiente.__test;
 }
@@ -174,4 +174,19 @@ test('"Limpar fila" apaga a fila salva', () => {
   t.gravarFila({ todos: ['a'], feitos: [], falhas: {}, ativa: true });
   t.limparFila();
   assert.equal(t.lerFila(), null);
+});
+
+test('menu das sementes: estado pela lista capturada e próxima no mesmo grupo', () => {
+  const t = carregar();
+  assert.equal(t.SEMENTES.length, 52);
+  assert.equal(new Set(t.SEMENTES.map((p) => p.u)).size, 52);
+  const [a, b, c] = t.SEMENTES;
+  const meta = new Map([[a.u, { fim_rolagem: '2026-10-15 10:00' }]]);
+  assert.equal(t.estadoSemente(a.u, meta, {}, {}), 'ok');
+  assert.equal(t.estadoSemente(a.u, meta, {}, { [a.u]: false }), 'falta');
+  assert.equal(t.estadoSemente(b.u, meta, { [b.u]: 'sem link' }, {}), 'falha');
+  assert.equal(t.estadoSemente(c.u, meta, {}, { [c.u]: true }), 'ok');
+  assert.equal(t.proximaSemente(a.u, meta, {}, {}).u, b.u);
+  const todas = Object.fromEntries(t.SEMENTES.map((p) => [p.u, true]));
+  assert.equal(t.proximaSemente(a.u, meta, {}, todas), null);
 });

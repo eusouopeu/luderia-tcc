@@ -25,7 +25,7 @@ function carregar(contexto = {}) {
     ...contexto,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Avaliações do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { infoLugar, fimPeloVolume, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, terminaCortado, leituraMelhor, checarSeletores, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros, reciboExportacao, aplicarForaDoFiltro, filtros });})();';
+    + 'Object.assign(globalThis.__test, { infoLugar, fimPeloVolume, rolavel, cartoes, abrirAbaAvaliacoes, ordenarRecentes, expandirTextos, terminaCortado, leituraMelhor, checarSeletores, montarLinhas, csv, COLS, salvarArquivo, proximoIndice, wilson, placarConferencia, carregarFiltros, filtrosParaSalvar, passaFiltros, reciboExportacao, aplicarForaDoFiltro, filtros, POP, estadoCasa, proximaQueFalta, casaDoLugar });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_avaliacoes.user.js' });
   return ambiente.__test;
 }
@@ -292,4 +292,27 @@ test('reconhece o marcador " …" do Google no fim do texto cortado', () => {
   assert.equal(terminaCortado('Voltarei…'), false);
   assert.equal(terminaCortado('texto inteiro'), false);
   assert.equal(terminaCortado(undefined), false);
+});
+
+test('menu das casas: estado pelos resumos e marcas, e próxima que falta na mesma capital', () => {
+  const t = carregar();
+  assert.equal(t.POP.length, 63);
+  assert.equal(new Set(t.POP.map((p) => p.id)).size, 63);
+  const [a, b, c] = t.POP;
+  const resumos = [
+    { place_id: a.id, coleta_completa: 'sim', lidas: 40 },
+    { place_id: b.id, coleta_completa: 'não', lidas: 3 },
+    { place_id: '', nome_estabelecimento: c.nome, coleta_completa: 'incerta', lidas: 9 },
+  ];
+  assert.equal(t.estadoCasa(a, resumos, {}).e, 'ok');
+  assert.equal(t.estadoCasa(b, resumos, {}).e, 'falha');
+  assert.equal(t.estadoCasa(c, resumos, {}).e, 'incerta');
+  assert.equal(t.estadoCasa(a, resumos, { [a.id]: false }).e, 'falta');
+  assert.equal(t.estadoCasa(t.POP[3], resumos, { [t.POP[3].id]: true }).e, 'ok');
+  // de a: b falhou (volta a ela); com b marcada, pula c (incerta) e vai à seguinte da capital
+  assert.equal(t.proximaQueFalta(a.id, resumos, {}).id, b.id);
+  const prox = t.proximaQueFalta(a.id, resumos, { [b.id]: true });
+  assert.ok(![a.id, b.id, c.id].includes(prox.id));
+  if (t.POP.slice(3).some((p) => p.capital === a.capital)) assert.equal(prox.capital, a.capital);
+  assert.equal(t.casaDoLugar({ place_id: '', nome_estabelecimento: a.nome }).id, a.id);
 });

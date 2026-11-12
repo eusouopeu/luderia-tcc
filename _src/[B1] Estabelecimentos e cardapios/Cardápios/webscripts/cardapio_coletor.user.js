@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de cardápios virtuais (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.11-1
+// @version      2026.11.12-1
 // @description  Extrai itens (seção, nome, descrição, variação, preço) de cardápios on-line, conta itens por categoria e exporta CSV completo e CSV dos 2 itens mais baratos por categoria.
 // @match        *://*/*
 // @exclude      *://*.google.*/*
@@ -13,7 +13,10 @@
 // @exclude      *://mail.*/*
 // @run-at       document-start
 // @noframes
-// @grant        none
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_deleteValue
+// @grant        unsafeWindow
 // ==/UserScript==
 
 /*
@@ -36,6 +39,16 @@
  *    fixas do método do Bloco B1 e vêm de palavras-chave: revisar antes de usar.
  *  - CSV plano B: os 2 itens mais baratos de refrigerante, cerveja, drink alcoólico,
  *    batata frita, hambúrguer e sobremesa.
+ *
+ * Menu dos cardápios (mesmo padrão do coletor de preços do B5): o seletor do topo do painel
+ * traz os cardápios digitais conhecidos das casas do B1, por capital, com ✓ coletado (CSV
+ * completo baixado aqui, ou itens já em B1_cardapios_digitais_itens.csv) e ○ falta. Escolher
+ * um abre o cardápio; quando a página carrega, o painel abre sozinho, rola e extrai, para
+ * conferir antes de baixar o CSV completo, que marca o cardápio como coletado. "Próximo"
+ * abre o próximo que falta (primeiro na mesma capital); "Coletado"/"Desfazer" marca à mão.
+ * O painel só aparece em página com cara de cardápio: para começar, abra qualquer um deles.
+ * Os dados do menu ficam no Tampermonkey (comuns a todos os sites); por isso o script tem
+ * @grant e intercepta o fetch e o XHR da página pelo unsafeWindow.
  */
 
 (function () {
@@ -163,8 +176,10 @@
     try { ingerir(JSON.parse(t)); } catch (_) { /* não é JSON */ }
   }
 
-  const fetchOriginal = window.fetch;
-  window.fetch = async function (...args) {
+  // Com @grant, o script roda numa caixa isolada: o fetch e o XHR da página são os do unsafeWindow.
+  const W = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+  const fetchOriginal = W.fetch;
+  W.fetch = async function (...args) {
     const resp = await fetchOriginal.apply(this, args);
     try {
       if (/json/.test(resp.headers.get('content-type') || '')) resp.clone().text().then(ingerirTexto, () => {});
@@ -172,8 +187,8 @@
     return resp;
   };
 
-  const xhrSend = XMLHttpRequest.prototype.send;
-  XMLHttpRequest.prototype.send = function (...args) {
+  const xhrSend = W.XMLHttpRequest.prototype.send;
+  W.XMLHttpRequest.prototype.send = function (...args) {
     this.addEventListener('load', function () {
       try {
         if (this.responseType === 'json') ingerir(this.response);
@@ -354,6 +369,92 @@
   }
   let pararRolagem = false;
 
+  // ---------- menu dos cardápios ----------
+  // Cardápios digitais conhecidos das casas do B1 (B1_cardapios_digitais_itens.csv,
+  // B1_cardapios_busca_profunda.csv e B1_busca_minuciosa_taxa_cardapio_acervo.csv): só os
+  // que abrem como página (sem PDF, imagem, blog ou rede social). antes = itens já coletados.
+  // [id, casa, capital, url, antes: [itens, data] ou null]
+  const ALVOS = [
+    ['bardo_mago', 'Bardo Mago', 'Belo Horizonte', 'https://www.vucafood.com.br/funminds/2219/cardapio-digital', [111, '2026-10-12']],
+    ['garagem_do_nerd', 'Garagem do Nerd', 'Belo Horizonte', 'https://garagemdonerd.com.br/cardapio/', null],
+    ['la_tabuleria', 'La Tabuleria', 'Belo Horizonte', 'https://latabuleria.saipos.com/home', [104, '2026-10-12']],
+    ['metropoly_bar', 'Metropoly Bar', 'Campinas', 'https://www.deliway.com.br/metropoly-bar-delivery-campinas-sp', null],
+    ['toca_do_rato', 'Toca do Rato - Pizzaria e Jogos de Tabuleiro', 'Porto Alegre', 'https://tocadoratopizzasejogos.saipos.com/home', [25, '2026-10-12']],
+    ['cheio_de_fome', 'Cheio de Fome - Vila da Penha', 'Rio de Janeiro', 'https://pedido.anota.ai/loja/cheio-de-fome-vila-da-penha-1', null],
+    ['game_of_boards', 'Game Of Boards', 'Rio de Janeiro', 'https://www.ifood.com.br/delivery/rio-de-janeiro-rj/game-of-boards---ludobar--pizzaria-botafogo/', null],
+    ['sao_jogue_bela_vista', 'São Jogue - Bela Vista', 'Salvador', 'https://sao-jogue.goomer.app/', null],
+    ['fan_hour', 'Fan Hour Games and Burgers', 'São Paulo', 'https://qrco.de/bdUhFc', null],
+  ].map(([id, nome, capital, url, antes]) => ({ id, nome, capital, url, antes, host: new URL(url).hostname.replace(/^www\./, '') }));
+  const CHAVE_ALVO = 'ccv-alvo';
+  const CHAVE_ABRIR = 'ccv-alvo-abrir';
+  const CHAVE_FEITOS = 'ccv-alvos-feitos'; // { id: { itens, em } }
+  const CHAVE_MARCAS = 'ccv-alvos-marcas'; // { id: true (dado por coletado) | false (desfeito) }
+  const CHAVE_HOSTS = 'ccv-alvos-hosts';   // { id: host em que o cardápio abriu (redirecionamentos) }
+  const lerGm = (k, padrao) => { try { return GM_getValue(k, padrao) ?? padrao; } catch (_) { return padrao; } };
+  const gravarGm = (k, v) => { try { GM_setValue(k, v); } catch (_) { /* ignora */ } };
+  const hostAqui = () => location.hostname.replace(/^www\./, '');
+
+  // ok (CSV completo baixado aqui, ou itens já coletados antes) ou falta; a marca à mão prevalece.
+  function estadoCardapio(a, feitos = {}, marcas = {}) {
+    if (marcas[a.id] === true) return 'ok';
+    if (marcas[a.id] === false) return 'falta';
+    return feitos[a.id] || a.antes ? 'ok' : 'falta';
+  }
+
+  function proximoCardapio(idAtual, feitos = {}, marcas = {}) {
+    const i0 = ALVOS.findIndex((a) => a.id === idAtual);
+    const atual = ALVOS[i0] || ALVOS[0];
+    const ordem = [...ALVOS.slice(i0 + 1), ...ALVOS.slice(0, Math.max(i0, 0))]
+      .filter((a) => a.id !== idAtual && estadoCardapio(a, feitos, marcas) !== 'ok');
+    return ordem.find((a) => a.capital === atual.capital) || ordem[0] || null;
+  }
+
+  // Cardápio da página aberta: pelo host da URL conhecida ou pelo host em que ele abriu.
+  function alvoAqui() {
+    const hosts = lerGm(CHAVE_HOSTS, {});
+    const h = hostAqui();
+    const porCaminho = ALVOS.filter((a) => a.host === h || hosts[a.id] === h);
+    if (porCaminho.length <= 1) return porCaminho[0] || null;
+    return porCaminho.find((a) => location.href.startsWith(a.url.replace(/\/home$/, ''))) || null;
+  }
+
+  function abrirCardapio(a) {
+    gravarGm(CHAVE_ALVO, a.id);
+    gravarGm(CHAVE_ABRIR, { id: a.id, em: Date.now() });
+    location.href = a.url;
+  }
+
+  function rotularCardapios() {
+    if (!el.alvo) return;
+    const feitos = lerGm(CHAVE_FEITOS, {});
+    const marcas = lerGm(CHAVE_MARCAS, {});
+    const atual = alvoAqui()?.id || lerGm(CHAVE_ALVO, ALVOS[0].id);
+    let prontos = 0;
+    for (const o of el.alvo.querySelectorAll('option')) {
+      const a = ALVOS.find((x) => x.id === o.value);
+      const e = estadoCardapio(a, feitos, marcas);
+      if (e === 'ok') prontos++;
+      const f = feitos[a.id];
+      const det = f ? ` (${f.itens} itens)` : a.antes ? ` (${a.antes[0]} itens em ${a.antes[1].split('-').reverse().join('/')})` : '';
+      o.className = e;
+      o.textContent = e === 'ok' ? `✓ ${a.nome}${det}` : `○ ${a.nome}`;
+    }
+    if (el.alvo.value !== atual) el.alvo.value = atual;
+    el.alvoInfo.textContent = `${prontos} de ${ALVOS.length} cardápios coletados`;
+    const col = estadoCardapio(ALVOS.find((x) => x.id === atual) || ALVOS[0], feitos, marcas) === 'ok';
+    el.bMarcar.textContent = col ? '✕ Desfazer' : '✓ Coletado';
+    el.bMarcar.title = col ? 'Desfazer: o cardápio volta a faltar (seletor e "Próximo")' : 'Marcar coletado: dá o cardápio por coletado sem baixar o CSV aqui (ex.: transcrito à mão)';
+  }
+
+  // CSV completo baixado na página de um cardápio do menu: marca como coletado.
+  function registrarCardapio(n) {
+    const a = alvoAqui();
+    if (!a) return '';
+    gravarGm(CHAVE_FEITOS, { ...lerGm(CHAVE_FEITOS, {}), [a.id]: { itens: n, em: Date.now() } });
+    rotularCardapios();
+    return ` ${a.nome} marcado como coletado.`;
+  }
+
   // ---------- painel (padrão: canto superior direito, shadow DOM, fora do <body>) ----------
 
   const el = {};
@@ -380,6 +481,8 @@
       background:transparent;color:inherit;cursor:pointer;font:inherit}
     button:disabled{opacity:.4;cursor:default}
     select{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px}
+    #ccv-painel>select{width:100%;margin:6px 0}
+    select option,select optgroup{color:#111} option.ok{color:#9ca3af}
     table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
     td,th{padding:3px 4px;border-bottom:1px solid #8885;text-align:left}
     td.n,th.n{text-align:right}
@@ -438,13 +541,45 @@
       },
     });
     const exigeDados = (fn) => () => { if (!ultimo.length) extrair(); if (ultimo.length) fn(); else el.status.textContent = 'Nenhum item encontrado.'; };
-    const bCompleto = criar('button', { textContent: 'CSV completo', onclick: exigeDados(() => baixar(nomeArquivo('completo'), csv(ultimo, COLS))) });
+    const bCompleto = criar('button', { textContent: 'CSV completo', onclick: exigeDados(() => {
+      baixar(nomeArquivo('completo'), csv(ultimo, COLS));
+      el.status.textContent = `CSV completo baixado (${ultimo.length} itens).${registrarCardapio(ultimo.length)}`;
+    }) });
+    // Menu dos cardápios: escolher um abre o cardápio; ao carregar, rola e extrai sozinho.
+    const capitais = [...new Set(ALVOS.map((a) => a.capital))];
+    el.alvo = criar('select', {
+      title: 'Cardápios digitais das casas do B1, por capital: escolher um abre o cardápio, rola e extrai sozinho. ✓ coletado, ○ falta',
+      onchange: () => {
+        const a = ALVOS.find((x) => x.id === el.alvo.value);
+        if (alvoAqui()?.id === a.id) { gravarGm(CHAVE_ALVO, a.id); rotularCardapios(); return; }
+        abrirCardapio(a);
+      },
+    }, capitais.map((c) => criar('optgroup', { label: c },
+      ALVOS.filter((a) => a.capital === c).map((a) => criar('option', { value: a.id, textContent: a.nome })))));
+    el.alvoInfo = criar('p', { className: 'status' });
+    const bProximo = criar('button', { textContent: '▶ Próximo', title: 'Próximo que falta: abre o próximo cardápio sem coleta (primeiro na mesma capital), rola e extrai sozinho', onclick: () => {
+      const a = proximoCardapio(alvoAqui()?.id || lerGm(CHAVE_ALVO, ''), lerGm(CHAVE_FEITOS, {}), lerGm(CHAVE_MARCAS, {}));
+      if (!a) { el.status.textContent = 'Todos os cardápios do menu estão coletados.'; return; }
+      abrirCardapio(a);
+    } });
+    el.bMarcar = criar('button', { onclick: () => {
+      const id = el.alvo.value;
+      const a = ALVOS.find((x) => x.id === id);
+      const col = estadoCardapio(a, lerGm(CHAVE_FEITOS, {}), lerGm(CHAVE_MARCAS, {})) === 'ok';
+      gravarGm(CHAVE_MARCAS, { ...lerGm(CHAVE_MARCAS, {}), [id]: !col });
+      el.status.textContent = col ? `${a.nome} volta a faltar.` : `${a.nome} marcado como coletado.`;
+      rotularCardapios();
+    } });
+    el.rolarExtrair = () => bRolar.onclick();
     const bPlanoB = criar('button', { textContent: 'CSV plano B (2 mais baratos)', onclick: exigeDados(() => baixar(nomeArquivo('planoB'), csv(planoB(), COLS_B))) });
 
     const minimizar = criar('span', { textContent: '+' });
     const cabecalho = criar('header', {}, [el.titulo, minimizar]);
     const painel = criar('div', { id: 'ccv-painel', className: 'min' }, [
       cabecalho,
+      el.alvo,
+      criar('div', { className: 'linha' }, [bProximo, el.bMarcar]),
+      el.alvoInfo,
       criar('div', { className: 'linha' }, [seletor]),
       criar('div', { className: 'linha' }, [bExtrair, bRolar]),
       criar('div', { className: 'linha' }, [bCompleto, bPlanoB]),
@@ -453,10 +588,30 @@
     ]);
     cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.textContent = painel.classList.contains('min') ? '+' : '–'; };
 
+    el.painel = painel;
+    el.minimizar = minimizar;
     hospedeiro = criar('div', { id: 'ccv-hospedeiro' });
     const raiz = hospedeiro.attachShadow({ mode: 'open' });
     raiz.appendChild(criar('style', { textContent: CSS_PAINEL }));
     raiz.appendChild(painel);
+    rotularCardapios();
+  }
+
+  // Cardápio aberto pelo menu: grava o host em que abriu (redirecionamentos), abre o painel,
+  // rola e extrai; o CSV fica para depois da conferência.
+  function seguirPedido() {
+    const pedido = lerGm(CHAVE_ABRIR, null);
+    if (!pedido) return;
+    gravarGm(CHAVE_ABRIR, null);
+    if (Date.now() - pedido.em > 2 * 60 * 1000) return;
+    const a = ALVOS.find((x) => x.id === pedido.id);
+    if (!a) return;
+    if (a.host !== hostAqui()) gravarGm(CHAVE_HOSTS, { ...lerGm(CHAVE_HOSTS, {}), [a.id]: hostAqui() });
+    rotularCardapios();
+    el.painel.classList.remove('min');
+    el.minimizar.textContent = '–';
+    el.status.textContent = `${a.nome}: rolando e extraindo…`;
+    el.rolarExtrair();
   }
 
   // Só mostra o painel em páginas com cara de cardápio; depois de aparecer, é
@@ -474,7 +629,7 @@
       if (!pareceCardapio) return;
       console.info('[Coletor de cardápio] página com cara de cardápio');
     }
-    if (!hospedeiro) montarPainel();
+    if (!hospedeiro) { montarPainel(); seguirPedido(); }
     if (!hospedeiro.isConnected) document.documentElement.appendChild(hospedeiro);
   }
 

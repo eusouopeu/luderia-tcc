@@ -15,7 +15,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, MONTAGEM_PADRAO });})();';
+    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, MONTAGEM_PADRAO, chaveAlvo, estadoAlvo, proximoAlvo });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'portais_aluguel.user.js' });
   return ambiente.__test;
 }
@@ -300,4 +300,30 @@ test('fila: lê as URLs, rotula as buscas e decide repetir', () => {
   assert.equal(t.portalDoArquivo([{ portal: 'zap' }, { portal: 'zap' }], 'olx'), 'zap');
   assert.equal(t.portalDoArquivo([{ portal: 'zap' }, { portal: 'olx' }], 'olx'), 'portais');
   assert.equal(t.portalDoArquivo([], 'olx'), 'olx');
+});
+
+test('menu das buscas: estado pela rodada registrada, marca à mão e próxima no mesmo portal', () => {
+  const alvos = t.lerItensFila(t.FILA_PADRAO);
+  assert.equal(alvos.length, 9);
+  assert.equal(new Set(alvos.map(t.chaveAlvo)).size, 9);
+  // a página da busca não muda a chave
+  const u = new URL(alvos[0]); u.searchParams.set(u.hostname.includes('olx') ? 'o' : 'pagina', '3');
+  assert.equal(t.chaveAlvo(u.toString()), t.chaveAlvo(alvos[0]));
+  const feitas = {
+    [t.chaveAlvo(alvos[0])]: { ...t.resultadoBusca(alvos[0], 74, 74, 3, 'total da busca lido'), chave_busca: t.chaveBusca(alvos[0]), em: 1 },
+    [t.chaveAlvo(alvos[1])]: { ...t.resultadoBusca(alvos[1], 60, 74, 3, 'página vazia'), chave_busca: t.chaveBusca(alvos[1]), em: 1 },
+  };
+  assert.equal(t.estadoAlvo(alvos[0], feitas, {}, alvos).e, 'ok');
+  assert.equal(t.estadoAlvo(alvos[1], feitas, {}, alvos).e, 'baixa');
+  assert.equal(t.estadoAlvo(alvos[2], feitas, {}, alvos).e, 'falta');
+  assert.equal(t.estadoAlvo(alvos[0], feitas, { [t.chaveAlvo(alvos[0])]: false }, alvos).e, 'falta');
+  assert.equal(t.estadoAlvo(alvos[2], feitas, { [t.chaveAlvo(alvos[2])]: true }, alvos).e, 'ok');
+  // de alvos[0]: a seguinte que falta (alvos[1], cobertura baixa) e, com ela marcada, outra do mesmo portal se houver
+  assert.equal(t.proximoAlvo(alvos, alvos[0], feitas, {}), alvos[1]);
+  const prox = t.proximoAlvo(alvos, alvos[0], feitas, { [t.chaveAlvo(alvos[1])]: true });
+  assert.ok(![alvos[0], alvos[1]].includes(prox));
+  const portal = (x) => new URL(x).hostname;
+  if (alvos.slice(2).some((x) => portal(x) === portal(alvos[0]))) assert.equal(portal(prox), portal(alvos[0]));
+  const todas = Object.fromEntries(alvos.map((a) => [t.chaveAlvo(a), true]));
+  assert.equal(t.proximoAlvo(alvos, alvos[0], {}, todas), null);
 });

@@ -21,7 +21,7 @@ function carregar(contexto = {}) {
   };
   ambiente.XMLHttpRequest.prototype.send = () => {};
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Coletor IG] carregado');"))
-    + 'Object.assign(globalThis.__test, { capturarPerfil, capturados, lerUsuarios, csv, filaSnowballAtiva });})();';
+    + 'Object.assign(globalThis.__test, { capturarPerfil, capturados, lerUsuarios, csv, filaSnowballAtiva, POP_IG, estadoPerfil, proximoPerfil });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'instagram_coletor.user.js' });
   return ambiente.__test;
 }
@@ -46,4 +46,20 @@ test('reconhece a fila do Snowball em curso pelo localStorage do outro script', 
 
 test('o coletor não tem mais o snowball', () => {
   assert.ok(!/RE_SEGUINDO_URL|filaSeguindo|rolarSeguindo/.test(source));
+});
+
+test('menu dos perfis: estado e próximo que falta na mesma capital', () => {
+  const t = carregar();
+  assert.equal(t.POP_IG.length, 60);
+  assert.equal(new Set(t.POP_IG.map((p) => p.u)).size, 60);
+  const [a, b, c] = t.POP_IG;
+  assert.equal(t.estadoPerfil(a.u, { [a.u]: { modo: 'periodo' } }, {}), 'ok');
+  assert.equal(t.estadoPerfil(a.u, { [a.u]: { modo: 'periodo' } }, { [a.u]: false }), 'falta');
+  assert.equal(t.estadoPerfil(b.u, {}, {}, (u) => u === b.u), 'perfil');
+  assert.equal(t.estadoPerfil(c.u, {}, { [c.u]: true }), 'ok');
+  const prox = t.proximoPerfil(a.u, { [b.u]: {} }, {});
+  assert.ok(![a.u, b.u].includes(prox.u));
+  if (t.POP_IG.slice(2).some((p) => p.capital === a.capital)) assert.equal(prox.capital, a.capital);
+  const todos = Object.fromEntries(t.POP_IG.map((p) => [p.u, true]));
+  assert.equal(t.proximoPerfil(a.u, {}, todos), null);
 });

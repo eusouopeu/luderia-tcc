@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Horários de pico do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-1
-// @description  Lê o gráfico "Horários de pico" (ocupação relativa por dia e hora), o "ao vivo" e o tempo de permanência dos lugares do Google Maps; seletor com as 54 casas do B1, botão "Próximo" e exportação em CSV.
+// @version      2026.11.12-2
+// @description  Lê o gráfico "Horários de pico" (ocupação relativa por dia e hora), o "ao vivo" e o tempo de permanência dos lugares do Google Maps; seletor com as 63 casas do B1, botão "Próximo" e exportação em CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
 // @run-at       document-idle
@@ -24,9 +24,11 @@
  * dica ao passar o mouse.
  *
  * Uso:
- *  - O seletor traz as 54 casas do B1 (B1_horarios.csv), em grupos por capital:
+ *  - O seletor traz as 63 casas do B1 (B1_horarios.csv), em grupos por capital:
  *    ✓ coletada (com o número de barras), – sem gráfico de pico, ! coleta que
  *    falhou, ○ falta. "Só as que faltam" esconde as prontas.
+ *  - Escolher uma casa no seletor abre a casa no Maps e coleta sozinho quando ela
+ *    carrega (como "Abrir").
  *  - "Próximo" abre a próxima casa que falta (falhas incluídas) e coleta sozinho
  *    quando ela carrega; o resultado fica no status, para conferir antes de
  *    seguir. "Abrir" faz o mesmo com a casa escolhida; "Coletar" lê o lugar
@@ -62,8 +64,8 @@
   const DIAS = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
   const DIAS_RE = [/doming|sunday/i, /segunda|monday/i, /terca|terça|tuesday/i, /quarta|wednesday/i, /quinta|thursday/i, /sexta|friday/i, /sabado|sábado|saturday/i];
 
-  // População: as 54 casas do B1 (dados/[B1]…/estabelecimentos/B1_horarios.csv), com as
-  // coordenadas da Places API (_dados-brutos/estabelecimentos/B1_localizacoes.jsonl).
+  // População: as 63 casas do B1 (dados/[B1]…/estabelecimentos/B1_horarios.csv), com as
+  // coordenadas de dados/[B1]…/entorno/B1_entorno_maps_fila.csv (Places API).
   // [place_id, nome, capital, lat, lng]
   const POP = [
     ["ChIJRcWOaPabpgARDvX2Bad0qb0", "Bardo Mago", "Belo Horizonte", -19.905169, -43.915835],
@@ -79,6 +81,9 @@
     ["ChIJzdFNP3AyWpMRH2P6HEuhE-I", "Loja de Jogos - Asgard", "Brasília", -15.84384, -48.029229],
     ["ChIJ15nLgwAwWpMRY1whwD29ZSo", "Ludoteca BGC", "Brasília", -15.819414, -47.899706],
     ["ChIJN8BZeb85WpMRgVKT05caxB4", "Utopia Games & Food", "Brasília", -15.737604, -47.895234],
+    ["ChIJGXginrXGyJQR0LFEVIzp4hI", "Metropoly Bar", "Campinas", -22.821702, -47.076784],
+    ["ChIJz-2zsLTHyJQRyn6ZZtDZgBI", "Muito Geek | TCG • Board Games • Fliperama", "Campinas", -22.883997, -47.070259],
+    ["ChIJ5ehtIcbFyJQRf7QBB6TJ6XE", "Nergeek", "Campinas", -22.88954, -47.033546],
     ["ChIJ3ekLtDjl3JQRHwtNgmINgLo", "Alçapão Jogos", "Curitiba", -25.418006, -49.265488],
     ["ChIJY_lqHVLl3JQRvDHacOMDKuc", "BoardZ Game Pub", "Curitiba", -25.452186, -49.268753],
     ["ChIJOczn8z7l3JQRNBEL_ZJ3iQo", "Joyjoy Café", "Curitiba", -25.437043, -49.241465],
@@ -94,21 +99,27 @@
     ["ChIJHSDPTgF5GZURKmSqKITyoGM", "Arcadea Gaming Pub", "Porto Alegre", -30.021524, -51.206899],
     ["ChIJ41pgHNFDGZURC7yTegyn7nU", "Toca do Rato - Pizzaria e Jogos de Tabuleiro", "Porto Alegre", -29.61081, -51.166349],
     ["ChIJRUjwU66WoGgRzc9yJU7jkwM", "Nala Land - Bar de Jogos de Tabuleiro em Recife", "Recife", -8.023976, -34.895067],
+    ["ChIJPx_QtT17mQAR9cO9ARQW00g", "Cheio de Fome - Vila da Penha", "Rio de Janeiro", -22.840402, -43.308167],
     ["ChIJu1yUroF_mQAR7qxqAfxKSw4", "Game Of Boards", "Rio de Janeiro", -22.954819, -43.180991],
     ["ChIJ90Gs_9rVmwAReA7MnIyPLTE", "Luderia Carioca", "Rio de Janeiro", -22.9232, -43.177488],
     ["ChIJYzHxUhR-mQARpqVtYD9th0c", "Magic Store Brazil", "Rio de Janeiro", -22.916493, -43.241072],
     ["ChIJ1SAzAGF_mQARQgP-yrPBxbQ", "RED jogos", "Rio de Janeiro", -22.909066, -43.177219],
+    ["ChIJxXhMZN5_mQARj2JCqcWfTD8", "Reduto", "Rio de Janeiro", -22.953503, -43.196112],
     ["ChIJOcVssmeDmQARZZrnWu2mnwA", "TabuClub", "Rio de Janeiro", -22.898584, -43.10234],
     ["ChIJoTlvBfMbFgcRHvuCKHBQrXQ", "São Jogue - Bela Vista", "Salvador", -12.969436, -38.473681],
+    ["ChIJfWR3S3ZazpQR6aC6xpbPMwU", "60 Minutos Escape, Hamburgueria e Boardgames", "São Paulo", -23.624451, -46.669091],
     ["ChIJYTHwWgBbzpQRFenbJdM5cxU", "Arena BG | Jogos de Tabuleiro | Hamburgueria", "São Paulo", -23.599307, -46.601688],
     ["ChIJKeHwNv5ZzpQRlmzx9rCTWdM", "Bodogami Restaurante e Cafeteria", "São Paulo", -23.556847, -46.6366],
     ["ChIJ__9TTnxCzpQRwVSzrOijkRY", "Bravo Jogos", "São Paulo", -23.662974, -46.525198],
+    ["ChIJRU7FUX1CzpQRj3E7xMzGPvA", "CHQ Jogos", "São Paulo", -23.668268, -46.538039],
     ["ChIJrT_EWwBZzpQRGAZzptZbtsY", "Cartola Luderia Bar", "São Paulo", -23.563561, -46.638521],
     ["ChIJbZRHQPRfzpQRz97-ZOg0yXA", "Castelos Bar & Boardgames", "São Paulo", -23.542591, -46.562184],
     ["ChIJF9j3OCRbzpQRkk74_QtOk_0", "Coletivo Geek", "São Paulo", -23.614642, -46.666278],
     ["ChIJ7_DDAlH1zpQRJVJ0UHnItH8", "Covil Game Bar", "São Paulo", -23.465036, -46.523386],
+    ["ChIJSU_eTQBDzpQRv_GdRUp0f-g", "Covil Game Bar SBC", "São Paulo", -23.687824, -46.56191],
     ["ChIJiZJ_DnIDz5QRaVafFCXGkUE", "Dungeon Games Store", "São Paulo", -23.509005, -46.873919],
     ["ChIJZz29dnVXzpQRvRh7_YKyUN4", "Encounter | Jogos de Tabuleiro | Board Games", "São Paulo", -23.606458, -46.673858],
+    ["ChIJBUzaCedbzpQRkSqbwW7yAvQ", "Espaço 162 - Meu Karaokê Box", "São Paulo", -23.585295, -46.611131],
     ["ChIJ_aN4OAxXzpQR0UH63sAeVCA", "Fan Hour Games and Burgers", "São Paulo", -23.561704, -46.680473],
     ["ChIJa3UsDhRczpQRPPSuDl6acO8", "Flow Games - Burgers, Cards & Comunidade", "São Paulo", -23.581556, -46.58485],
     ["ChIJn7uU0RNbzpQRI4GI9KHOo_s", "Jogasampa", "São Paulo", -23.612477, -46.663246],
@@ -747,7 +758,7 @@
       casaGrade('k', 'Sem gráfico'), casaGrade('v', String(n.sem)),
       casaGrade('k', 'Guardados'), casaGrade('v', `${lugares.length} lugares`),
       casaGrade('k', 'Linhas'), casaGrade('v', String(nLinhas)),
-      ...(fora ? [criar('span', { className: 'todo', title: 'Lugares guardados que não casam com nenhuma das 54 casas (fila de links, falhas antigas ou fora dos 300 m)' },
+      ...(fora ? [criar('span', { className: 'todo', title: 'Lugares guardados que não casam com nenhuma das casas do B1 (fila de links, falhas antigas ou fora dos 300 m)' },
         partes(icone('exclamation-triangle'), `${fora} lugar(es) fora da população`))] : []),
     );
     el.pendentes.className = pend ? 'info alerta' : 'info ok';
@@ -782,8 +793,14 @@
   function montarPainel() {
     const capitais = [...new Set(POP.map((p) => p.capital))];
     el.item = criar('select', {
-      title: 'Casas do B1, por capital. ✓ coletada (barras lidas), – sem gráfico de pico, ! falhou, ○ falta',
-      onchange: () => { gravar(CHAVE_ITEM, el.item.value); atualizar(); },
+      title: 'Casas do B1, por capital: escolher uma abre no Maps e coleta. ✓ coletada (barras lidas), – sem gráfico de pico, ! falhou, ○ falta',
+      // Escolher no menu abre a casa no Maps e coleta sozinho quando ela carrega
+      // (mesmo efeito de "Abrir"); com a casa já aberta, só troca a escolha.
+      onchange: () => {
+        const p = POP.find((x) => x.id === el.item.value);
+        if (popDoLugar(infoLugar(), p.id)?.id === p.id) { gravar(CHAVE_ITEM, p.id); atualizar(); return; }
+        abrirCasa(p);
+      },
     }, capitais.map((c) => criar('optgroup', { label: c },
       POP.filter((p) => p.capital === c).map((p) => criar('option', { value: p.id, textContent: p.nome })))));
     const soFaltam = selo('só as que faltam', 'Esconde no seletor as casas já coletadas e as sem gráfico', ler(CHAVE_SO_FALTAM, false),

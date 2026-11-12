@@ -35,10 +35,10 @@ function linhasAntigas(url, nome, n) {
   return Array.from({ length: n }, (_, i) => ({ ...base, dia_semana: 'domingo', ordem_dia: Math.floor(i / 24), hora: i % 24, ocupacao_relativa: i, ao_vivo: '', leitura: 'rotulo' }));
 }
 
-test('a população traz as 54 casas do B1, sem repetição', () => {
+test('a população traz as 63 casas do B1, sem repetição', () => {
   const { t } = carregar();
-  assert.equal(t.POP.length, 54);
-  assert.equal(new Set(t.POP.map((p) => p.id)).size, 54);
+  assert.equal(t.POP.length, 63);
+  assert.equal(new Set(t.POP.map((p) => p.id)).size, 63);
   assert.ok(t.POP.some((p) => p.nome === 'Ludus Luderia'));
 });
 

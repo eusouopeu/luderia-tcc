@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Entorno no Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.30-1
+// @version      2026.11.12-1
 // @description  Conta estações de metrô, de trem, de VLT/BRT e shoppings a 500 m e 1000 m de cada estabelecimento no Google Maps (shopping de porte pelo número de avaliações); coleta a lista de estabelecimentos e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -27,6 +27,11 @@
  *
  * RODE NUMA JANELA PRÓPRIA, não numa aba em segundo plano: o navegador
  * desacelera os temporizadores de abas escondidas e a fila se arrasta.
+ *
+ * Menu (mesmo padrão do coletor de preços): o seletor do topo traz os estabelecimentos da
+ * lista por cidade, com ✓ coletado, ! pendente e ○ falta. Escolher um abre as buscas no Maps
+ * e coleta só ele (já coletado: pede confirmação e refaz); "Próximo" coleta o próximo que
+ * falta ou está pendente, primeiro na mesma cidade. A coleta pelo menu não exporta sozinha.
  *
  * ---------- Buscas ----------
  *
@@ -117,6 +122,8 @@
   const CHAVE_PAINEL_MAPS = 'tcc-entorno-largura-painel-maps';
   const CHAVE_POSICAO = 'tcc-entorno-posicao';
   const CHAVE_LISTA = 'tcc-entorno-lista';
+  const CHAVE_ITEM = 'tcc-entorno-item'; // estabelecimento escolhido no menu
+  const CHAVE_SO_FALTAM = 'tcc-entorno-so-faltam';
   // Coleta do OSM das versões até 2026.10.15-4: só para o botão que a apaga.
   const CHAVE_OSM_ANTIGA = 'tcc-entorno-osm-v1';
 
@@ -709,12 +716,47 @@
     Object.assign(fila, { tarefas: tarefasIniciais(fila.locais?.[fila.pos]), tarefa: 0, lidos: [], buscas_local: 0, subdivididas: [], censura: [], falhas: [], cobertura_insuf: [], cobertura_min_m: null });
   }
 
-  function iniciarFila(locais, refazer = false) {
+  // Menu dos estabelecimentos (mesmo padrão do coletor de preços): ok (coletado sem
+  // pendência), pend (coletado com falha, cobertura, censura, busca nova ou avaliações de
+  // shopping não lidas) ou falta.
+  function estadoLocal(l, dados = lerDados()) {
+    const k = chaveLocal(l);
+    const g = dados.locais.find((x) => x.chave === k);
+    if (!g) return 'falta';
+    return problemas(g).length || shoppingSemAvaliacao(dados, k) ? 'pend' : 'ok';
+  }
+
+  // Próximo que falta (ou pendente): primeiro na cidade do atual, depois nos outros, na ordem
+  // da lista a partir do atual.
+  function proximoLocal(base, kAtual, dados = lerDados()) {
+    const i0 = base.findIndex((l) => chaveLocal(l) === kAtual);
+    const atual = base[i0] || base[0];
+    const ordem = [...base.slice(i0 + 1), ...base.slice(0, Math.max(i0, 0))]
+      .filter((l) => chaveLocal(l) !== kAtual && estadoLocal(l, dados) !== 'ok');
+    return ordem.find((l) => atual && l.cidade === atual.cidade) || ordem[0] || null;
+  }
+
+  // Coleta só um estabelecimento (menu ou "Próximo"); se já tem coleta, ela é refeita. No fim,
+  // não exporta (os CSVs saem pelo botão "Exportar").
+  function coletarUm(l) {
+    const k = chaveLocal(l);
+    gravar(CHAVE_ITEM, k);
+    const dados = lerDados();
+    if (dados.locais.some((x) => x.chave === k)) {
+      dados.locais = dados.locais.filter((x) => x.chave !== k);
+      dados.resultados = dados.resultados.filter((r) => r.origem !== k);
+      gravar(CHAVE_DADOS, dados);
+    }
+    const { place_id, nome, cidade, lat, lng } = l;
+    iniciarFila([{ place_id, nome, cidade, lat, lng }], true, true);
+  }
+
+  function iniciarFila(locais, refazer = false, doMenu = false) {
     const dados = lerDados();
     const feitos = new Set(dados.locais.map((l) => l.chave));
     const pendentes = refazer ? locais : locais.filter((l) => !feitos.has(chaveLocal(l)));
     if (!pendentes.length) { status('Todos já coletados. "Refazer pendentes" ou "Limpar" para refazer.'); return; }
-    const fila = { ativa: true, parar: false, pausada: false, motivo_pausa: '', locais: pendentes, pos: 0, inicio: Date.now(), buscas_feitas: 0, locais_fechados: 0, buscas_em_fechados: 0 };
+    const fila = { ativa: true, parar: false, pausada: false, motivo_pausa: '', locais: pendentes, pos: 0, inicio: Date.now(), buscas_feitas: 0, locais_fechados: 0, buscas_em_fechados: 0, doMenu };
     zerarLocal(fila);
     gravar(CHAVE_FILA, fila);
     irPara(fila);
@@ -785,9 +827,10 @@
     if (fila.pos >= fila.locais.length || parar) {
       fila.ativa = false;
       gravar(CHAVE_FILA, fila);
-      status(parar ? 'Fila interrompida.' : `Fila concluída: ${fila.locais.length} estabelecimentos.`);
+      status(parar ? 'Fila interrompida.' : fila.doMenu ? `${fila.locais[0]?.nome || 'Estabelecimento'} coletado. "Próximo" segue para o que falta; "Exportar" baixa os CSVs.`
+        : `Fila concluída: ${fila.locais.length} estabelecimentos.`);
       atualizarPainel();
-      if (!parar) { tocar('fim'); exportar({ fontes: ['maps', 'shoppings'], locais: fila.locais }); }
+      if (!parar) { tocar('fim'); if (!fila.doMenu) exportar({ fontes: ['maps', 'shoppings'], locais: fila.locais }); }
       return;
     }
     gravar(CHAVE_FILA, fila);
@@ -1031,6 +1074,35 @@
     el.exportar.disabled = !n;
     desenharOpcoes();
     desenharRevisao();
+    desenharMenu(s, ocupado);
+  }
+
+  function desenharMenu(s, ocupado) {
+    if (!el.item) return;
+    const base = s.base;
+    const chaves = base.map(chaveLocal).join('|');
+    if (el.item.dataset.chaves !== chaves) {
+      el.item.dataset.chaves = chaves;
+      const cidades = [...new Set(base.map((l) => l.cidade || 'sem cidade'))];
+      el.item.replaceChildren(...cidades.map((c) => criar('optgroup', { label: c },
+        base.filter((l) => (l.cidade || 'sem cidade') === c).map((l) => criar('option', { value: chaveLocal(l), textContent: l.nome || chaveLocal(l) })))));
+    }
+    const soFaltam = ler(CHAVE_SO_FALTAM, false);
+    const atual = ler(CHAVE_ITEM, base[0] ? chaveLocal(base[0]) : '');
+    let prontos = 0;
+    for (const o of el.item.querySelectorAll('option')) {
+      const l = base.find((x) => chaveLocal(x) === o.value);
+      const e = estadoLocal(l, s.dados);
+      if (e === 'ok') prontos++;
+      o.className = e;
+      o.textContent = e === 'ok' ? `✓ ${l.nome}` : e === 'pend' ? `! ${l.nome} (pendente)` : `○ ${l.nome}`;
+      o.hidden = soFaltam && e === 'ok' && o.value !== atual;
+    }
+    for (const g of el.item.querySelectorAll('optgroup')) g.hidden = [...g.querySelectorAll('option')].every((o) => o.hidden);
+    if (base.some((l) => chaveLocal(l) === atual)) el.item.value = atual;
+    el.item.disabled = ocupado || !base.length;
+    el.proximo.disabled = ocupado || !base.length;
+    el.itemInfo.textContent = base.length ? `${prontos} de ${base.length} sem pendência` : 'Carregue a lista em 1.';
   }
 
   const CSS = `
@@ -1052,6 +1124,8 @@
     button[hidden],div[hidden]{display:none}
     textarea{width:100%;box-sizing:border-box;height:52px;font:12px monospace;
       background:transparent;color:inherit;border:1px solid #888;border-radius:6px}
+    #painel>select{width:100%;margin-top:6px}
+    option.ok{color:#9ca3af} option.pend{color:#b45309}
     select,input[type=number]{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:2px 4px}
     input[type=number]{width:80px}
     details{border-top:1px solid #8884;margin-top:8px;padding-top:4px}
@@ -1118,6 +1192,27 @@
     el.resumo = criar('p');
     el.status = criar('p', { className: 'status', textContent: 'Pronto.' });
 
+    // Menu: escolher um estabelecimento abre as buscas no Maps e coleta só ele.
+    el.item = criar('select', {
+      title: 'Estabelecimentos da lista, por cidade: escolher um abre as buscas no Maps e coleta só ele. ✓ coletado, ! pendente, ○ falta',
+      onchange: () => {
+        const s = situacaoGeral();
+        const l = s.base.find((x) => chaveLocal(x) === el.item.value);
+        if (!l) return;
+        if (estadoLocal(l, s.dados) === 'ok' && !confirm(`${l.nome} já tem coleta sem pendência. Refazer?`)) { gravar(CHAVE_ITEM, el.item.value); atualizarPainel(); return; }
+        coletarUm(l);
+      },
+    });
+    el.itemInfo = dica('');
+    el.proximo = botao('Próximo', () => {
+      const s = situacaoGeral();
+      const l = proximoLocal(s.base, ler(CHAVE_ITEM, ''), s.dados);
+      if (!l) { status('Todos os estabelecimentos da lista estão coletados, sem pendência.'); return; }
+      coletarUm(l);
+    }, true);
+    el.proximo.title = 'Próximo que falta: coleta o próximo estabelecimento sem coleta ou com pendência (primeiro na mesma cidade)';
+    const soFaltam = criar('input', { type: 'checkbox', checked: ler(CHAVE_SO_FALTAM, false), onchange: () => { gravar(CHAVE_SO_FALTAM, soFaltam.checked); atualizarPainel(); } });
+
     // 1. Lista
     el.listaInfo = dica('');
     el.fila = criar('textarea', { placeholder: 'Ou cole aqui: place_id;nome;lat;lng (uma por linha) ou CSV com cabeçalho', onchange: () => { if (el.fila.value.trim()) guardarLista(el.fila.value, 'colada no painel'); } });
@@ -1182,6 +1277,9 @@
     const painel = criar('div', { id: 'painel' }, [
       cabecalho,
       el.resumo,
+      el.item,
+      linha([el.proximo, criar('label', { className: 'linha dica' }, [soFaltam, criar('span', { textContent: 'só os que faltam' })])]),
+      el.itemInfo,
       secao('1. Lista de estabelecimentos', [
         dica('A população do trabalho: B1_entorno_maps_fila.csv (gerado por B1-b_entorno_maps_fila.py). A coleta abaixo trabalha sobre ela.'),
         linha([bArquivo, bEsquecer]), el.fila, el.listaInfo,

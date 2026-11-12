@@ -8,7 +8,7 @@ const source = fs.readFileSync(__dirname + '/maps_entorno.user.js', 'utf8');
 function carregar() {
   const ambiente = { __test: {}, localStorage: { getItem: () => null, setItem() {}, removeItem() {} }, location: { href: '', pathname: '/maps/' }, document: { querySelector: () => null, querySelectorAll: () => [] } };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Entorno do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { classificar, suspeito, distancia, deslocar, mPorPx, planejarBusca, coberturaReal, lerCartao, lerNumeroAvaliacoes, lerFila, cidadeDoEndereco, unir, nomesParecidos, marcarDuplicatas, mesmoShopping, montarSaida, montarShoppings, precisaSubdividir, quadrantes, colsResumo, nomesArquivos, dataLocal, foraDoMapa, tarefasIniciais, consultasDispensadas, uniaoLocais });})();';
+    + 'Object.assign(globalThis.__test, { estadoLocal, proximoLocal, classificar, suspeito, distancia, deslocar, mPorPx, planejarBusca, coberturaReal, lerCartao, lerNumeroAvaliacoes, lerFila, cidadeDoEndereco, unir, nomesParecidos, marcarDuplicatas, mesmoShopping, montarSaida, montarShoppings, precisaSubdividir, quadrantes, colsResumo, nomesArquivos, dataLocal, foraDoMapa, tarefasIniciais, consultasDispensadas, uniaoLocais });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_entorno.user.js' });
   return ambiente.__test;
 }
@@ -305,4 +305,23 @@ test('exportação pela lista: linha para quem falta; três CSVs', () => {
   assert.deepEqual(Object.keys(s).sort(), ['resultados', 'resumo', 'shoppings', 'universo']);
   // Sem lista: tudo o que está guardado, cada um uma vez.
   assert.equal(t.montarSaida(dados, {}, OP).universo.length, 1);
+});
+
+test('menu: estado do estabelecimento e próximo que falta na mesma cidade', () => {
+  const t = carregar();
+  const base = [
+    { place_id: 'a', nome: 'A', cidade: 'Salvador', lat: -13, lng: -38 },
+    { place_id: 'b', nome: 'B', cidade: 'Salvador', lat: -13, lng: -38 },
+    { place_id: 'c', nome: 'C', cidade: 'Recife', lat: -8, lng: -35 },
+    { place_id: 'd', nome: 'D', cidade: 'Salvador', lat: -13, lng: -38 },
+  ];
+  const ok = (chave) => ({ chave, consultas: [], falhas: [], cobertura_insuf: [], censura: [] });
+  const dados = { locais: [ok('a'), { ...ok('b'), falhas: ['estação de metrô'] }], resultados: [] };
+  assert.equal(t.estadoLocal(base[0], dados) === 'ok' || t.estadoLocal(base[0], dados) === 'pend', true);
+  assert.equal(t.estadoLocal(base[1], dados), 'pend');
+  assert.equal(t.estadoLocal(base[2], dados), 'falta');
+  // de c (Recife): a seguinte é d (falta), depois b (pendente) — sem outra de Recife
+  assert.equal(t.proximoLocal(base, 'c', dados).place_id, 'd');
+  // de a (Salvador): b (pendente, mesma cidade) antes de c
+  assert.equal(t.proximoLocal(base, 'a', dados).place_id, 'b');
 });

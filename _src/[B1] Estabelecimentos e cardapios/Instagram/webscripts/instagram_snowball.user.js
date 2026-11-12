@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Snowball do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.10.15-1
+// @version      2026.11.12-1
 // @description  Captura a lista "seguindo" de perfis-semente (snowball), um por vez ou em fila, e baixa um CSV por perfil.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -26,6 +26,11 @@
  *    o texto "seguindo" do cabeçalho; se ainda assim não abrir, o endereço
  *    /<perfil>/following/), rola, baixa e pausa antes da próxima. Abrir um perfil
  *    recarrega a página; a fila fica no localStorage e continua sozinha.
+ *  - Menu das sementes (mesmo padrão do coletor de preços): o seletor do topo traz as 11
+ *    sementes da rodada 1 e as 41 próximas, por capital, com ✓ coletada, ◐ capturada em
+ *    parte, ! sem lista e ○ falta. Escolher uma roda a fila só com ela (abre o perfil, a
+ *    lista, rola e baixa); "Próximo" faz o mesmo com a próxima que falta (primeiro no mesmo
+ *    grupo); "Coletada"/"Desfazer" marca à mão; "Só as que faltam" esconde as prontas.
  *  - "Parar" desliga a fila na hora, também durante a troca de página: a próxima
  *    carga não retoma. "Coletar fila" com a mesma lista continua de onde parou.
  *    "Limpar fila" para e apaga a fila salva. O campo da fila só é preenchido com a
@@ -463,6 +468,133 @@
     }
   }
 
+  // ---------- menu das sementes ----------
+  // Mesmo padrão do coletor de preços (B5): seletor com as sementes, marcadas como coletadas;
+  // escolher uma abre o perfil, abre a lista "seguindo", rola e baixa (uma fila de uma
+  // semente); "Próximo" faz o mesmo com a próxima que falta. Sementes: as 11 da rodada 1
+  // (redes_sociais/snowball/B1_snowball_sementes.csv) e as 41 próximas, por capital
+  // (B1_snowball_proximas_sementes.csv). [perfil, estabelecimento, grupo]
+  const SEMENTES = [
+    ["alcapaojogos", "", "Rodada 1"],
+    ["arainhadosdados", "", "Rodada 1"],
+    ["balboashobbygames", "", "Rodada 1"],
+    ["flowg4mes", "", "Rodada 1"],
+    ["fortaludica", "", "Rodada 1"],
+    ["grutabsb", "", "Rodada 1"],
+    ["jogasampa", "", "Rodada 1"],
+    ["lojaredjogos", "", "Rodada 1"],
+    ["ludotecabgc", "", "Rodada 1"],
+    ["ludotecasidequest", "", "Rodada 1"],
+    ["paladinohobbies", "", "Rodada 1"],
+    ["garagemdonerd", "Garagem do Nerd", "Belo Horizonte"],
+    ["ccg_floripa", "CCG Floripa", "Florianópolis"],
+    ["paladinsgames", "Paladins Game Store", "Goiânia"],
+    ["arcadeapub", "Arcadea Gaming Pub", "Porto Alegre"],
+    ["nalaland.jogos", "Nala Land - Bar de Jogos de Tabuleiro em Recife", "Recife"],
+    ["saojogue", "São Jogue - Bela Vista", "Salvador"],
+    ["cafegeekvv", "Café Geek Cafeteria e Ludoteca", "Vitória"],
+    ["dominariacg", "Dominaria Cards & Games", "Fortaleza"],
+    ["gob.ludobar", "Game Of Boards", "Rio de Janeiro"],
+    ["joyjoycafe", "Joyjoy Café", "Curitiba"],
+    ["encounter.bg", "Encounter | Jogos de Tabuleiro | Board Games", "São Paulo"],
+    ["insidegamestore", "Inside Games", "Brasília"],
+    ["ludocafebh", "LudoCafé", "Belo Horizonte"],
+    ["chefonplay", "Chef on Play", "Florianópolis"],
+    ["ilusoesindustriais", "Ilusões Industriais", "Porto Alegre"],
+    ["machadogames", "Machado Games", "Vitória"],
+    ["luderiacariocajogos", "Luderia Carioca", "Rio de Janeiro"],
+    ["boardzgamepub", "BoardZ Game Pub", "Curitiba"],
+    ["covilgb", "Covil Game Bar", "São Paulo"],
+    ["asgardbrasilia", "Loja de Jogos - Asgard", "Brasília"],
+    ["shelfbar", "Shelf Bar e Jogos", "Belo Horizonte"],
+    ["cineplay_sc", "Cineplay- Restaurante e Jogos", "Florianópolis"],
+    ["magicstorebrasil", "Magic Store Brazil", "Rio de Janeiro"],
+    ["vilacelta", "Vila Celta Hobby Store - Jogos e Café", "Curitiba"],
+    ["bodogami", "Bodogami Restaurante e Cafeteria", "São Paulo"],
+    ["utopiagamesbr", "Utopia Games & Food", "Brasília"],
+    ["comdadobar", "Comdado Bar e Jogos", "Belo Horizonte"],
+    ["tavernagamehouse", "Taverna Game House", "Curitiba"],
+    ["bravojogos", "Bravo Jogos", "São Paulo"],
+    ["ludusluderia", "Ludus Luderia", "São Paulo"],
+    ["pittasboardgames", "Pitta's Board Games", "São Paulo"],
+    ["playeasyjogos", "Play Easy", "São Paulo"],
+    ["xplaceoficial", "XPlace", "São Paulo"],
+    ["coletivogeekbr", "Coletivo Geek", "São Paulo"],
+    ["lojaplacegames", "Place Games", "São Paulo"],
+    ["castelosbareboardgames", "Castelos Bar & Boardgames", "São Paulo"],
+    ["dungeongames.oficial", "Dungeon Games Store", "São Paulo"],
+    ["omniverselivraria", "OMNIVERSE", "São Paulo"],
+    ["aarenabg", "Arena BG | Jogos de Tabuleiro | Hamburgueria", "São Paulo"],
+    ["cartolaluderia", "Cartola Luderia Bar", "São Paulo"],
+    ["fanhourbr", "Fan Hour Games and Burgers", "São Paulo"],
+  ].map(([u, nome, grupo]) => ({ u, nome, grupo }));
+  const CHAVE_ALVO = 'igs-alvo';
+  const CHAVE_MARCAS = 'igs-alvos-marcas'; // { perfil: true (dada por coletada) | false (desfeita) }
+  const CHAVE_SO_FALTAM = 'igs-alvos-so-faltam';
+  const lerLs = (k, padrao) => { try { return JSON.parse(localStorage.getItem(k) || 'null') ?? padrao; } catch (_) { return padrao; } };
+  const gravarLs = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, JSON.stringify(v)); } catch (_) { /* ignora */ } };
+
+  // ok (lista rolada até o fim), parcial (capturada em parte), falha (a fila não abriu a
+  // lista) ou falta. A marca à mão prevalece.
+  function estadoSemente(u, meta = seguindoMeta, falhas = {}, marcas = {}) {
+    if (marcas[u] === true) return 'ok';
+    if (marcas[u] === false) return 'falta';
+    const m = meta.get(u);
+    if (m?.fim_rolagem) return 'ok';
+    if (u in falhas) return 'falha';
+    return seguindo.get(u)?.size ? 'parcial' : 'falta';
+  }
+
+  // Próxima semente que falta: primeiro no grupo da atual, depois nos outros, na ordem do
+  // seletor a partir da atual.
+  function proximaSemente(atual, meta = seguindoMeta, falhas = {}, marcas = {}) {
+    const i0 = SEMENTES.findIndex((p) => p.u === atual);
+    const a = SEMENTES[i0] || SEMENTES[0];
+    const ordem = [...SEMENTES.slice(i0 + 1), ...SEMENTES.slice(0, Math.max(i0, 0))]
+      .filter((p) => p.u !== atual && estadoSemente(p.u, meta, falhas, marcas) !== 'ok');
+    return ordem.find((p) => p.grupo === a.grupo) || ordem[0] || null;
+  }
+
+  // Uma fila de uma semente: abre o perfil, a lista, rola e baixa (rodarFila).
+  function coletarSemente(p) {
+    const f = lerFila();
+    if (f && f.todos.length > 1 && pendentes(f).length && !confirm(`Há uma fila de ${f.todos.length} sementes com ${pendentes(f).length} por fazer. Trocar por @${p.u}? (as listas já capturadas ficam)`)) return false;
+    gravarLs(CHAVE_ALVO, p.u);
+    gravarFila({ todos: [p.u], feitos: [], falhas: {}, tentativas: {}, ativa: true });
+    if (el.fila) el.fila.value = p.u;
+    executar(rodarFila);
+    return true;
+  }
+
+  function rotularSementes() {
+    if (!el.alvo) return;
+    const falhas = lerFila()?.falhas || {};
+    const marcas = lerLs(CHAVE_MARCAS, {});
+    const soFaltam = lerLs(CHAVE_SO_FALTAM, false);
+    const aberta = sementeAtual() || perfilAtual();
+    const atual = SEMENTES.some((p) => p.u === aberta) ? aberta : lerLs(CHAVE_ALVO, SEMENTES[0].u);
+    let prontas = 0;
+    for (const o of el.alvo.querySelectorAll('option')) {
+      const p = SEMENTES.find((x) => x.u === o.value);
+      const e = estadoSemente(p.u, seguindoMeta, falhas, marcas);
+      if (e === 'ok') prontas++;
+      const n = seguindo.get(p.u)?.size || 0;
+      const nome = p.nome ? `${p.nome} (@${p.u}` : `@${p.u} (`;
+      const sep = p.nome ? ', ' : '';
+      o.className = e;
+      o.textContent = e === 'ok' ? `✓ ${nome}${sep}${n} seguidos)` : e === 'parcial' ? `◐ ${nome}${sep}${n} até agora)`
+        : e === 'falha' ? `! ${nome}${sep}sem lista)` : `○ ${p.nome ? `${p.nome} (@${p.u})` : `@${p.u}`}`;
+      o.hidden = soFaltam && e === 'ok' && p.u !== atual;
+    }
+    for (const g of el.alvo.querySelectorAll('optgroup')) g.hidden = [...g.querySelectorAll('option')].every((o) => o.hidden);
+    if (el.alvo.value !== atual) el.alvo.value = atual;
+    el.alvoInfo.textContent = `${prontas} de ${SEMENTES.length} sementes coletadas`;
+    const col = estadoSemente(atual, seguindoMeta, falhas, marcas) === 'ok';
+    el.bMarcar.textContent = col ? '✕ Desfazer' : '✓ Coletada';
+    el.bMarcar.title = col ? 'Desfazer: a semente volta a faltar (seletor, "Próximo" e "só as que faltam"); a lista capturada fica'
+      : 'Marcar coletada: dá a semente por coletada sem rolar a lista (ex.: perfil privado ou removido)';
+  }
+
   async function executar(tarefa) {
     if (ocupado) return;
     ocupado = true; parar = false; atualizarBotoes();
@@ -654,7 +786,9 @@
       background:transparent;color:inherit;border:1px solid #888;border-radius:6px}
     .status{font-size:12px;opacity:.8}
     .info{white-space:pre-line;background:#8881;border-radius:6px;padding:4px 6px}
-    button.toggle[aria-pressed=true]{background:#2e7d32;border-color:#2e7d32;color:#fff}`;
+    button.toggle[aria-pressed=true]{background:#2e7d32;border-color:#2e7d32;color:#fff}
+    select{width:100%;box-sizing:border-box;margin:6px 0;padding:4px 6px;font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px}
+    select option,select optgroup{color:#111} option.ok{color:#9ca3af} option.parcial,option.falha{color:#b45309}`;
 
   let hospedeiro = null;
 
@@ -670,6 +804,35 @@
     el.info = criar('p', { className: 'status info' });
     el.status = criar('p', { className: 'status' });
     el.fila = criar('textarea', { placeholder: 'Fila de sementes: um @perfil ou link por linha' });
+    // Menu das sementes: escolher uma abre o perfil e captura a lista "seguindo".
+    const grupos = [...new Set(SEMENTES.map((p) => p.grupo))];
+    el.alvo = criar('select', {
+      title: 'Sementes do snowball: escolher uma abre o perfil, a lista "seguindo", rola e baixa. ✓ coletada, ◐ capturada em parte, ! a fila não abriu a lista, ○ falta',
+      onchange: () => {
+        const p = SEMENTES.find((x) => x.u === el.alvo.value);
+        if (ocupado) { el.alvo.value = lerLs(CHAVE_ALVO, SEMENTES[0].u); status('Espere a lista em curso terminar (ou "Parar").'); return; }
+        if (estadoSemente(p.u, seguindoMeta, lerFila()?.falhas || {}, lerLs(CHAVE_MARCAS, {})) === 'ok' && !confirm(`@${p.u} já foi coletada. Rolar a lista de novo?`)) { gravarLs(CHAVE_ALVO, p.u); rotularSementes(); return; }
+        if (!coletarSemente(p)) rotularSementes();
+      },
+    }, grupos.map((g) => criar('optgroup', { label: g },
+      SEMENTES.filter((p) => p.grupo === g).map((p) => criar('option', { value: p.u, textContent: `@${p.u}` })))));
+    el.alvoInfo = criar('p', { className: 'status' });
+    const bProximo = botao('▶ Próximo', () => {
+      if (ocupado) { status('Espere a lista em curso terminar (ou "Parar").'); return; }
+      const aberta = sementeAtual() || perfilAtual();
+      const atual = SEMENTES.some((p) => p.u === aberta) ? aberta : lerLs(CHAVE_ALVO, '');
+      const p = proximaSemente(atual, seguindoMeta, lerFila()?.falhas || {}, lerLs(CHAVE_MARCAS, {}));
+      if (!p) { status('Todas as sementes estão coletadas.'); return; }
+      coletarSemente(p);
+    }, 'Próxima que falta: abre a próxima semente sem lista completa (primeiro no mesmo grupo), captura a lista "seguindo" e baixa.');
+    el.bMarcar = botao('', () => {
+      const u = el.alvo.value;
+      const col = estadoSemente(u, seguindoMeta, lerFila()?.falhas || {}, lerLs(CHAVE_MARCAS, {})) === 'ok';
+      gravarLs(CHAVE_MARCAS, { ...lerLs(CHAVE_MARCAS, {}), [u]: !col });
+      status(col ? `@${u} volta a faltar.` : `@${u} marcada como coletada.`);
+      rotularSementes();
+    });
+    const chkSoFaltam = criar('input', { type: 'checkbox', checked: lerLs(CHAVE_SO_FALTAM, false), onchange: () => { gravarLs(CHAVE_SO_FALTAM, chkSoFaltam.checked); rotularSementes(); } });
     const bRolar = botao('Rolar lista aberta', () => executar(() => rolarSeguindo()), 'Rola a lista "seguindo" aberta na tela até o fim.');
     const bFila = botao('Coletar fila', () => {
       const us = lerUsuarios(el.fila.value);
@@ -689,6 +852,10 @@
     const cabecalho = criar('header', {}, [criar('span', { textContent: 'Snowball IG (seguindo)' }), minimizar]);
     const painel = criar('div', { id: 'igs-painel' }, [
       cabecalho,
+      el.alvo,
+      criar('div', { className: 'linha' }, [bProximo, el.bMarcar]),
+      criar('label', {}, [chkSoFaltam, document.createTextNode(' Só as que faltam')]),
+      el.alvoInfo,
       criar('div', { className: 'linha' }, [bSom, bAuto]),
       el.info,
       criar('div', { className: 'linha' }, [bRolar]),
@@ -734,6 +901,7 @@
         lerSeguindoDom();
         mostrar();
         atualizarBotoes();
+        rotularSementes();
       } catch (e) { console.error('[Snowball IG]', e); }
     }, 1000);
     carregarSalvos().then(() => setTimeout(reporFila, 2500));
