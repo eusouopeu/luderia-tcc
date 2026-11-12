@@ -15,7 +15,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, BAIRROS_MENU, BAIRROS_DESTAQUE, bairroDaUrl, redirecionada, paginaDaBusca, foraDoBairro, MONTAGEM_PADRAO, chaveAlvo, estadoAlvo, proximoAlvo });})();';
+    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, BAIRROS_MENU, BAIRROS_DESTAQUE, bairroDaUrl, redirecionada, paginaDaBusca, foraDoBairro, MONTAGEM_PADRAO, chaveAlvo, estadoAlvo, proximoAlvo, decidirPasso, semResultadoDeTexto, urlDeAbertura, csvResumoFila });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'portais_aluguel.user.js' });
   return ambiente.__test;
 }
@@ -360,4 +360,48 @@ test('rodada presa ao bairro: próxima página pela busca pedida e anúncio de o
   assert.equal(t.foraDoBairro({ bairro: 'Itaigara' }, zap), true);
   assert.equal(t.foraDoBairro({ bairro: '' }, zap), false);
   assert.equal(t.foraDoBairro({ bairro: 'Centro' }, 'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador?commt=6'), false);
+});
+
+test('página vazia antes do total recarrega a mesma página; depois de MAX_RECARGAS, encerra como falha', () => {
+  const base = { lidos: 0, ineditos: 0, vistos: 50, total: 116, paginas: 2, limite: 50 };
+  assert.equal(t.decidirPasso({ ...base, recargas: 0 }).acao, 'recarregar');
+  assert.equal(t.decidirPasso({ ...base, recargas: 1 }).acao, 'recarregar');
+  const fim = json(t.decidirPasso({ ...base, recargas: 2 }));
+  assert.equal(fim.acao, 'concluir');
+  assert.equal(fim.falha, true);
+  assert.match(fim.motivo, /antes do total \(50 de 116\)/);
+  // Página repetida (sem inédito) antes do total: também recarrega.
+  assert.equal(t.decidirPasso({ ...base, lidos: 50, recargas: 0 }).acao, 'recarregar');
+});
+
+test('fim normal da rodada: total lido, sem total, sem resultado e limite', () => {
+  assert.equal(t.decidirPasso({ lidos: 10, ineditos: 10, vistos: 40, total: 40, paginas: 2, limite: 50 }).motivo, 'total da busca lido');
+  assert.equal(t.decidirPasso({ lidos: 30, ineditos: 30, vistos: 30, total: 40, paginas: 1, limite: 50 }).acao, 'seguir');
+  assert.equal(t.decidirPasso({ lidos: 0, ineditos: 0, vistos: 30, total: null, paginas: 1, limite: 50 }).motivo, 'página vazia');
+  assert.equal(t.decidirPasso({ lidos: 0, ineditos: 0, vistos: 0, total: null, paginas: 0, limite: 50, semResultado: true }).motivo, 'sem resultado no portal');
+  assert.equal(t.decidirPasso({ lidos: 30, ineditos: 30, vistos: 30, total: 100, paginas: 1, limite: 1 }).motivo, 'limite de páginas');
+  assert.equal(t.decidirPasso({ lidos: 30, ineditos: 0, vistos: 40, total: 40, paginas: 2, limite: 50 }).motivo, 'página sem anúncio inédito');
+});
+
+test('aviso de busca sem resultado nos portais', () => {
+  assert.equal(t.semResultadoDeTexto('Chame-chame\n\nNenhum imóvel encontrado com esses filtros'), true);
+  assert.equal(t.semResultadoDeTexto('Nenhum anúncio foi encontrado'), true);
+  assert.equal(t.semResultadoDeTexto('40 Lojas, Salões e Pontos Comerciais para alugar'), false);
+});
+
+test('repetição da fila retoma da página em que parou (menos no QuintoAndar)', () => {
+  const olx = 'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/pituba?commt=6&commt=7&ss=100';
+  assert.equal(t.urlDeAbertura(olx, null), olx);
+  assert.equal(t.urlDeAbertura(olx, { pagina: 2 }), olx + '&o=2');
+  const zap = 'https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++caminho-das-arvores/?areaMinima=100';
+  assert.equal(t.urlDeAbertura(zap, { pagina: 2 }), zap + '&pagina=2');
+  const qa = 'https://www.quintoandar.com.br/alugar/imovel/pituba-salvador-ba-brasil';
+  assert.equal(t.urlDeAbertura(qa, { pagina: 3 }), qa);
+});
+
+test('resumo da fila em CSV: uma linha por busca, com o motivo da parada', () => {
+  const s = t.csvResumoFila([{ rotulo: 'OLX · pituba', url: 'https://x/', lidos: 50, total: 116, cobertura: 50 / 116, paginas: 1, motivo: 'página vazia antes do total (50 de 116)', tentativa: 1 }]);
+  const linhas = s.replace(/^﻿/, '').split('\r\n');
+  assert.equal(linhas[0], 'rotulo;url;lidos;total;cobertura;paginas;motivo;tentativa');
+  assert.equal(linhas[1], 'OLX · pituba;https://x/;50;116;0,431;1;página vazia antes do total (50 de 116);1');
 });

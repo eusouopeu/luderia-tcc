@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-7
+// @version      2026.11.12-8
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas e uma fila de buscas entre portais e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -30,7 +30,11 @@
  * portal não tem fica de fora, com aviso. O script abre cada busca, coleta
  * todas as páginas, confere a cobertura (lidos ÷ total que o portal diz ter), repete a
  * busca uma vez se ela ficar abaixo de 95%, espera 8 a 15 s e passa à próxima, mesmo
- * em outro portal. No fim, toca um som e baixa um CSV só, com tudo o que foi guardado.
+ * em outro portal. Página vazia ou repetida antes do total (falha de carga ou bloqueio, como
+ * na rodada de 12/11/2026, que parou na página 1 do OLX na Pituba) é recarregada até 2 vezes;
+ * se ainda falhar, a repetição da busca retoma dessa página. No fim, toca um som e baixa um
+ * CSV só, com tudo o que foi guardado, e o resumo da fila (AAAA-MM-DD_HHmm_fila_resumo_aluguel.csv:
+ * lidos, total, cobertura e motivo da parada de cada busca).
  * "Parar" pausa a fila; "Continuar" retoma da busca em que parou. A tabela da fila
  * mostra, por busca, lidos, total e cobertura.
  *
@@ -116,6 +120,8 @@
   const PAUSA_FILA = [8000, 15000]; // ms entre buscas da fila (sorteado)
   const COBERTURA_MIN = 0.95; // abaixo disso, a fila repete a busca uma vez
   const LIMITE_FILA = 50; // páginas por busca na fila
+  const MAX_RECARGAS = 2; // recargas da mesma página vazia antes do total, antes de encerrar a busca
+  const PAUSA_RECARGA = [10000, 20000]; // ms antes de recarregar a página vazia (sorteado)
   const NOMES_PORTAL = { olx: 'OLX', zap: 'ZAP', vivareal: 'Viva Real', quintoandar: 'QuintoAndar' };
 
   const CHAVE_MONTAGEM = 'tcc_aluguel_montagem';
@@ -450,6 +456,9 @@
 
   const csv = (ls) => '﻿' + [COLS.join(';'), ...ls.map((l) => COLS.map((c) => celula(l[c])).join(';'))].join('\r\n');
 
+  const COLS_FILA = ['rotulo', 'url', 'lidos', 'total', 'cobertura', 'paginas', 'motivo', 'tentativa'];
+  const csvResumoFila = (rs) => '﻿' + [COLS_FILA.join(';'), ...(rs || []).map((r) => COLS_FILA.map((c) => celula(c === 'cobertura' && r[c] != null ? Math.round(r[c] * 1000) / 1000 : r[c])).join(';'))].join('\r\n');
+
   const dataLocal = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   const horaLocal = (d = new Date()) => `${String(d.getHours()).padStart(2, '0')}${String(d.getMinutes()).padStart(2, '0')}`;
 
@@ -509,6 +518,15 @@
     const b = bairroDaUrl(pedida);
     if (!b) return false;
     try { return !decodeURIComponent(new URL(atual).pathname).toLowerCase().includes(b); } catch (e) { return false; }
+  }
+
+  // URL que a fila abre: a da busca ou, na repetição que retoma, a da página em que a rodada parou
+  // (QuintoAndar não pagina pela URL: recomeça).
+  function urlDeAbertura(busca, retomada) {
+    try {
+      const p = portalDe(new URL(busca).hostname);
+      return retomada?.pagina > 1 && p !== 'quintoandar' ? paginaDaBusca(p, busca, retomada.pagina) : busca;
+    } catch (e) { return busca; }
   }
 
   // Página n de uma busca, montada a partir da URL pedida (não da barra de endereço): se o portal
@@ -594,6 +612,27 @@
 
   // Repete a busca (uma vez) se a cobertura ficou abaixo do mínimo; sem total, não repete.
   const repetirBusca = (r, tentativa) => r.cobertura != null && r.cobertura < COBERTURA_MIN && !(tentativa > 0);
+
+  // Próximo passo da rodada depois de ler uma página. Página vazia ou sem anúncio inédito antes
+  // de ler o total que o portal informa é falha de carga ou bloqueio (o portal serve a mesma
+  // página normalmente quando aberta de novo): recarrega a mesma página até MAX_RECARGAS vezes
+  // antes de encerrar. Sem total, ou com o total já lido, encerra como antes.
+  // s = { lidos, ineditos, vistos, total, paginas, limite, recargas, semResultado }
+  function decidirPasso(s) {
+    const faltam = s.total > 0 && s.vistos < s.total;
+    if (s.lidos === 0 || s.ineditos === 0) {
+      if (s.lidos === 0 && s.semResultado) return { acao: 'concluir', motivo: 'sem resultado no portal' };
+      if (faltam && (s.recargas || 0) < MAX_RECARGAS) return { acao: 'recarregar' };
+      const base = s.lidos === 0 ? 'página vazia' : 'página sem anúncio inédito';
+      return { acao: 'concluir', motivo: faltam ? `${base} antes do total (${s.vistos} de ${s.total})` : base, falha: faltam };
+    }
+    if (s.total > 0 && s.vistos >= s.total) return { acao: 'concluir', motivo: 'total da busca lido' };
+    if (s.paginas >= s.limite) return { acao: 'concluir', motivo: 'limite de páginas' };
+    return { acao: 'seguir' };
+  }
+
+  // "Nenhum imóvel encontrado com esses filtros" (ZAP, Viva Real), "Nenhum anúncio encontrado" (OLX).
+  const semResultadoDeTexto = (t) => /nenhum(?:a)?\s+(?:im[oó]ve(?:l|is)|an[uú]ncios?|resultados?)\s+(?:foi\s+)?encontrad/i.test(String(t || ''));
 
   // ---------- indicadores de qualidade do painel (sem DOM: testável) ----------
   // Só contam e destacam; nada é descartado na coleta. As regras repetem as do build
@@ -924,7 +963,8 @@
     const doBairro = alvo ? anuncios.filter((a) => !foraDoBairro(a, alvo)) : anuncios;
     const novos = guardar(guardados, doBairro, { busca_url: location.href, pagina, total_busca: total, data_coleta: dataLocal(), alterado_em: Date.now() });
     const gravou = salvar(guardados);
-    return { anuncios, lidos: anuncios.length, novos, gravou, total, fora: anuncios.length - doBairro.length };
+    const semResultado = !anuncios.length && semResultadoDeTexto(document.body?.innerText);
+    return { anuncios, doBairro, lidos: anuncios.length, novos, gravou, total, fora: anuncios.length - doBairro.length, semResultado };
   }
 
   let ultimoFunil = null;
@@ -955,6 +995,17 @@
     atualizarBotoes();
     baixarCsv(guardados);
     status('O armazenamento recusou a gravação: o CSV saiu com tudo o que foi lido. Confira o arquivo, apague buscas em "Buscas guardadas" e retome.');
+  }
+
+  // Resumo da fila, ao lado do CSV dos anúncios: por que cada busca parou e com que cobertura.
+  // Sem ele, uma busca que parou cedo (página vazia, bloqueio) não deixa rastro no CSV.
+  function baixarResumoFila(rs) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csvResumoFila(rs)], { type: 'text/csv;charset=utf-8' }));
+    a.download = `${dataLocal()}_${horaLocal()}_fila_resumo_aluguel.csv`;
+    (document.body || document.documentElement).appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
   }
 
   // parcial: CSV de uma busca, que não conta como exportação de tudo (aviso de pendentes).
@@ -1026,7 +1077,7 @@
     const inicio = Date.now();
     atualizarBotoes();
     status(`Página ${pagina}: lendo…`);
-    const { anuncios, lidos, novos, gravou, total, desviada, fora } = await coletarPagina(pagina, alvo);
+    const { doBairro, lidos, novos, gravou, total, desviada, fora, semResultado } = await coletarPagina(pagina, alvo);
     if (desviada) {
       // O portal levou a rodada para fora do bairro: para aqui, sem guardar a página.
       if (fila?.ativa) { gravarAuto(null); buscaDesviada(auto); return; }
@@ -1044,18 +1095,31 @@
       status('Bloqueio do Cloudflare: resolva o desafio na página; a coleta retoma desta página.');
       return;
     }
-    const inedit = ineditas(anuncios, auto.vistos);
+    // Só os anúncios do bairro contam para o total: o total do portal é o do bairro.
+    const inedit = ineditas(doBairro, auto.vistos);
     auto.vistos.push(...inedit);
-    auto.paginas += 1;
     auto.total += novos;
     gravarHist([...lerHist(), { pagina, lidos, ineditos: inedit.length, novos, seg: Math.round((Date.now() - inicio) / 1000) }]);
     mostrar(`Página ${pagina}: ${lidos} lidos, ${inedit.length} inéditos na rodada, ${novos} novos no navegador${fora ? `, ${fora} de outro bairro descartados` : ''}.`);
+    const passo = decidirPasso({ lidos, ineditos: inedit.length, vistos: auto.vistos.length, total: auto.totalBusca, paginas: auto.paginas + 1, limite: auto.limite, recargas: auto.recargas, semResultado });
+    if (passo.acao === 'recarregar' && portal !== 'quintoandar') {
+      // Mesma página de novo, depois de uma pausa: falha de carga ou bloqueio passageiro.
+      auto.recargas = (auto.recargas || 0) + 1;
+      gravarAuto(auto);
+      progressoBusca(auto);
+      status(`Página ${pagina} veio ${lidos ? 'repetida' : 'vazia'} com ${auto.vistos.length} de ${auto.totalBusca} lidos: recarregando (${auto.recargas} de ${MAX_RECARGAS})…`);
+      await esperar(sortear(PAUSA_RECARGA));
+      if (!lerAuto()) return;
+      if (alvo && portalDe(new URL(alvo).hostname) === portal) location.href = paginaDaBusca(portal, alvo, pagina);
+      else location.reload();
+      return;
+    }
+    if (lidos > 0) auto.paginas += 1;
+    auto.recargas = 0;
     progressoBusca(auto);
-    if (lidos === 0) return concluir(auto, 'página vazia');
-    if (inedit.length === 0) return concluir(auto, 'página sem anúncio inédito');
-    // Total lido: poupa a visita a uma página a mais (que viria vazia ou repetida).
-    if (auto.totalBusca && auto.vistos.length >= auto.totalBusca) return concluir(auto, 'total da busca lido');
-    if (auto.paginas >= auto.limite) return concluir(auto, 'limite de páginas');
+    // Página em que a rodada parou: a repetição da fila retoma dela, não da primeira.
+    auto.parouEm = passo.falha ? pagina : null;
+    if (passo.acao !== 'seguir') return concluir(auto, passo.motivo || (lidos ? 'página sem anúncio inédito' : 'página vazia'));
     gravarAuto(auto);
     await esperar(1500 + Math.random() * 1500);
     if (!lerAuto()) return;
@@ -1132,13 +1196,15 @@
     atualizarBotoes();
     status(`Abrindo ${rotuloBusca(fila.itens[fila.i])}…`);
     gravarFila({ ...fila, abertoEm: Date.now() });
-    location.href = fila.itens[fila.i];
+    location.href = urlDeAbertura(fila.itens[fila.i], fila.retomada);
   }
 
   function iniciarBuscaDaFila() {
     const fila = lerFila();
     iniciouAuto = true;
-    gravarAuto({ limite: LIMITE_FILA, paginas: 0, total: 0, fila: true });
+    const ret = fila.retomada;
+    gravarAuto({ limite: LIMITE_FILA, paginas: ret?.paginas || 0, total: 0, fila: true, vistos: ret?.vistos || [], totalBusca: ret?.totalBusca || undefined });
+    if (ret) gravarFila({ ...fila, retomada: null });
     gravarHist([]);
     progressoFila(fila);
     status(`Fila ${fila.i + 1} de ${fila.itens.length}: ${rotuloBusca(fila.itens[fila.i])}…`);
@@ -1152,7 +1218,9 @@
     fila.resultados = [...(fila.resultados || []).filter((x) => x.url !== url), r];
     const cob = r.cobertura == null ? 'sem total' : pctTxt(r.cobertura);
     if (repetirBusca(r, fila.tentativa)) {
-      gravarFila({ ...fila, tentativa: 1 });
+      // Parou numa página vazia antes do total: a repetição retoma dessa página, com o que já leu.
+      const retomada = auto.parouEm > 1 ? { pagina: auto.parouEm, vistos: auto.vistos || [], totalBusca: auto.totalBusca, paginas: auto.paginas } : null;
+      gravarFila({ ...fila, tentativa: 1, retomada });
       mostrar();
       if (!(await esperarContando(sortear(PAUSA_FILA), `${r.rotulo}: ${r.lidos} de ${r.total} (${cob}). Repetindo a busca em`))) return pausada();
       abrirItem();
@@ -1160,6 +1228,7 @@
     }
     fila.i++;
     fila.tentativa = 0;
+    fila.retomada = null;
     gravarFila(fila);
     mostrar();
     if (fila.i >= fila.itens.length) { encerrarFila(fila); return; }
@@ -1195,6 +1264,7 @@
     const desviadas = rs.filter((r) => /^desviada/.test(r.motivo || ''));
     som(!baixas.length && !desviadas.length);
     baixarCsv();
+    setTimeout(() => baixarResumoFila(rs), 1500);
     mostrar(`Fila concluída: ${rs.length} buscas, ${rs.reduce((n, r) => n + r.lidos, 0)} anúncios lidos; CSV de tudo baixado.`
       + (baixas.length ? ` Abaixo de ${pctTxt(COBERTURA_MIN)}: ${baixas.map((r) => r.rotulo).join(', ')}.` : '')
       + (desviadas.length ? ` Desviadas pelo portal (sem resultado no bairro, nada lido): ${desviadas.map((r) => r.rotulo).join(', ')}.` : ''));
