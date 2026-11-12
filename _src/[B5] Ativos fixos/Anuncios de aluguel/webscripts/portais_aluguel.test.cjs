@@ -15,7 +15,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2 });})();';
+    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'portais_aluguel.user.js' });
   return ambiente.__test;
 }
@@ -239,4 +239,26 @@ test('anúncios fora de CSV e R$/m² pedido da busca', () => {
   ];
   assert.deepEqual(json(t.resumoM2(lista)), { n: 3, mediana: 30, p25: 20, p75: 40 });
   assert.deepEqual(json(t.resumoM2([])), { n: 0, mediana: null, p25: null, p75: null });
+});
+
+test('fila: lê as URLs, rotula as buscas e decide repetir', () => {
+  const itens = t.lerItensFila(t.FILA_PADRAO);
+  assert.equal(itens.length, 9);
+  assert.ok(itens.filter((u) => /zapimoveis|vivareal/.test(u)).every((u) => u.includes('ordem=LOWEST_PRICE')));
+  assert.deepEqual(json(itens.map(t.rotuloBusca)), ['OLX · pituba', 'OLX · graca', 'OLX · itaigara', 'ZAP · pituba', 'ZAP · graca', 'ZAP · itaigara', 'Viva Real · pituba', 'Viva Real · graca', 'Viva Real · itaigara']);
+  assert.deepEqual(json(t.lerItensFila('# comentário\nhttps://exemplo.com/x\nnão é URL\n' + itens[0] + '\n' + itens[0])), [itens[0]]);
+  assert.equal(t.rotuloBusca('https://www.vivareal.com.br/aluguel/bahia/salvador/ponto-comercial_comercial/'), 'Viva Real');
+  const r = t.resultadoBusca(itens[0], 111, 114, 3, 'total da busca lido');
+  assert.equal(Math.round(r.cobertura * 1000), 974);
+  assert.equal(t.repetirBusca(r, 0), false);
+  const baixa = t.resultadoBusca(itens[0], 80, 114, 2, 'página sem anúncio inédito');
+  assert.equal(t.repetirBusca(baixa, 0), true);
+  assert.equal(t.repetirBusca(baixa, 1), false);
+  assert.equal(t.repetirBusca(t.resultadoBusca(itens[0], 10, null, 1, 'x'), 0), false);
+  assert.equal(t.chaveBusca('https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/grande-salvador/salvador/pituba?commt=6'),
+    t.chaveBusca('https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/pituba?commt=6&commt=7&ss=100&o=2'));
+  assert.notEqual(t.chaveBusca(itens[0]), t.chaveBusca(itens[1]));
+  assert.equal(t.portalDoArquivo([{ portal: 'zap' }, { portal: 'zap' }], 'olx'), 'zap');
+  assert.equal(t.portalDoArquivo([{ portal: 'zap' }, { portal: 'olx' }], 'olx'), 'portais');
+  assert.equal(t.portalDoArquivo([], 'olx'), 'olx');
 });

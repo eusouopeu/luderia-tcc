@@ -1,15 +1,18 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-1
-// @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas seguintes e exporta CSV.
+// @version      2026.11.12-2
+// @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas e uma fila de buscas entre portais e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
 // @match        https://www.vivareal.com.br/*
 // @match        https://www.quintoandar.com.br/*
 // @run-at       document-start
 // @noframes
-// @grant        none
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_deleteValue
+// @grant        unsafeWindow
 // ==/UserScript==
 
 /*
@@ -17,22 +20,35 @@
  * Salvador (cap. 9, premissas C04 e C05, e 6.4, escolha do bairro). Os portais bloqueiam
  * requisições fora do navegador (Cloudflare), por isso a coleta roda na página.
  *
- * Como usar: abrir a busca no portal, já filtrada (tipo, cidade, bairro), e clicar
- * em "Todas" (coletar todas as páginas). O script lê a página, rola até o fim, guarda os
- * anúncios e vai para a página seguinte (?o=N no OLX, ?pagina=N no ZAP e no Viva
- * Real, botão "Ver mais" no QuintoAndar) até uma página vir vazia, não trazer
- * anúncio inédito nesta rodada ou chegar ao limite. "Inédito" conta só a rodada:
- * refazer uma busca já guardada percorre todas as páginas de novo. No fim, toca
- * um som e baixa o CSV. Os anúncios ficam guardados no navegador (localStorage,
- * um por portal) até "Apagar"; o CSV traz tudo o que foi guardado. Se o
- * localStorage encher, a rodada para e o CSV sai na hora com o que foi lido. Se
- * aparecer o desafio do Cloudflare, a rodada pausa e retoma da mesma página depois
- * que ele for resolvido. Cada anúncio leva o total de resultados que o portal diz
- * ter na busca (total_busca), para o build medir a cobertura.
+ * Como usar (fila, o caminho normal): abrir qualquer página do OLX, do ZAP ou do Viva
+ * Real e clicar em "Fila". A fila já vem com as 9 buscas do plano (Loja e Outros com
+ * 100 m² ou mais na Pituba, na Graça e na Itaigara, nos três portais); a lista é
+ * editável, uma URL por linha, e "Padrão" a restaura. O script abre cada busca, coleta
+ * todas as páginas, confere a cobertura (lidos ÷ total que o portal diz ter), repete a
+ * busca uma vez se ela ficar abaixo de 95%, espera 8 a 15 s e passa à próxima, mesmo
+ * em outro portal. No fim, toca um som e baixa um CSV só, com tudo o que foi guardado.
+ * "Parar" pausa a fila; "Continuar" retoma da busca em que parou. A tabela da fila
+ * mostra, por busca, lidos, total e cobertura.
  *
- * Painel (mesmas regras de UI do coletor de preços): botões com ícone (Heroicons) e
- * nome curto, com o nome completo e a explicação na dica ao passar o mouse; filtros em
- * selos que ligam e desligam. Mostra os anúncios fora de CSV (com 100 ou mais, cobra o
+ * Uma busca avulsa: abrir a busca no portal, já filtrada (tipo, cidade, bairro), e clicar
+ * em "Todas". O script lê a página, rola até o fim, guarda os anúncios e vai para a página
+ * seguinte (?o=N no OLX, ?pagina=N no ZAP e no Viva Real, botão "Ver mais" no
+ * QuintoAndar) até uma página vir vazia, não trazer anúncio inédito nesta rodada, ler o
+ * total da busca ou chegar ao limite. "Inédito" conta só a rodada: refazer uma busca já
+ * guardada percorre todas as páginas de novo. No fim, toca um som e baixa o CSV.
+ *
+ * Os anúncios ficam no armazenamento do Tampermonkey, comum aos portais (o que estava no
+ * localStorage de cada portal, nas versões anteriores, passa para lá ao abrir o portal),
+ * até "Apagar". Se aparecer o desafio do Cloudflare, a rodada pausa e retoma da mesma
+ * página depois que ele for resolvido. Cada anúncio leva o total de resultados que o
+ * portal diz ter na busca (total_busca), para o build medir a cobertura.
+ *
+ * Painel (mesmas regras de UI do coletor de preços e do de avaliações): botões com ícone
+ * (Heroicons) e nome curto, com o nome completo e a explicação na dica ao passar o mouse;
+ * filtros em selos que ligam e desligam; arraste pelo cabeçalho e redimensione pelo canto
+ * inferior direito (posição e tamanho ficam salvos; duplo clique no cabeçalho volta ao
+ * canto); barras de progresso da busca e da fila. Som: o navegador só libera áudio depois
+ * de um clique na página; na fila, clique uma vez no painel para o aviso final tocar. Mostra os anúncios fora de CSV (com 100 ou mais, cobra o
  * download e o navegador pede confirmação ao fechar a aba), a cobertura da busca (lidos
  * ÷ total do portal), a coleta mais antiga da busca (alerta acima de 30 dias), a mediana,
  * P25 e P75 do R$/m² pedido, o funil da última página (cards → com id → com preço → com
@@ -42,15 +58,20 @@
  * por busca (Apagar baixa antes o CSV do que sai). Os filtros só mudam esses indicadores
  * e o destaque dos cards na página; nada é descartado na coleta, e o CSV sai completo.
  *
- * Buscas que funcionam (02/11/2026; OLX por bairro em 12/11/2026):
+ * Buscas que funcionam (02/11/2026; por bairro, nos três portais, em 12/11/2026):
  *  - OLX:       /imoveis/comercio-e-industria/aluguel/estado-ba/salvador/<bairro>?commt=6&commt=7&ss=100
  *               (bairro: pituba, graca, itaigara; commt=6 e 7 são Loja e Outros; ss=100 é
  *               área de 100 m² ou mais). Usar o caminho do bairro, não a busca por texto
  *               (?q=pituba): o texto perde anúncios do bairro e traz os de outros bairros
  *               que citam o nome no título (12/11/2026: 3 de 114 perdidos na Pituba).
  *               Sem /aluguel, a busca mistura venda e aluguel (a coluna operacao separa).
- *  - ZAP:       /aluguel/loja-salao/ba+salvador/ e /aluguel/conjunto-comercial-sala/ba+salvador/
- *  - Viva Real: /aluguel/bahia/salvador/ponto-comercial_comercial/
+ *  - ZAP:       /aluguel/loja-salao/ba+salvador++<bairro>/?areaMinima=100&ordem=LOWEST_PRICE (e
+ *               /aluguel/conjunto-comercial-sala/ba+salvador/ para salas)
+ *  - Viva Real: /aluguel/bahia/salvador/bairros/<bairro>/ponto-comercial_comercial/?areaMinima=100&ordem=LOWEST_PRICE
+ *               ZAP e Viva Real são do mesmo grupo e repetem os anúncios: o build junta pelo
+ *               id. Sem ordem=LOWEST_PRICE (menor preço), a ordem "relevância" muda de uma
+ *               página para a outra, repete anúncios e deixa outros de fora (12/11/2026,
+ *               Pituba: 68 de 74 no ZAP e 70 de 74 no Viva Real; com a ordem, 74 nos dois).
  *  - QuintoAndar: /alugar/imovel/<bairro>-salvador-ba-brasil (em Salvador, só residencial)
  *
  * Fontes de cada portal:
@@ -73,6 +94,21 @@
   const CHAVE_HIST = 'tcc_aluguel_hist';
   const CHAVE_FILTROS = 'tcc_aluguel_filtros';
   const CHAVE_EXPORTACAO = 'tcc_aluguel_exportado_em';
+  const CHAVE_FILA = 'tcc_aluguel_fila';
+  const CHAVE_FILA_TEXTO = 'tcc_aluguel_fila_texto';
+  const CHAVE_POSICAO = 'tcc_aluguel_posicao';
+  const PAUSA_FILA = [8000, 15000]; // ms entre buscas da fila (sorteado)
+  const COBERTURA_MIN = 0.95; // abaixo disso, a fila repete a busca uma vez
+  const LIMITE_FILA = 50; // páginas por busca na fila
+  const NOMES_PORTAL = { olx: 'OLX', zap: 'ZAP', vivareal: 'Viva Real', quintoandar: 'QuintoAndar' };
+
+  // Buscas do plano (C04 e C05, áreas do 6.4): Loja e Outros com 100 m² ou mais.
+  const BAIRROS_FILA = ['pituba', 'graca', 'itaigara'];
+  const FILA_PADRAO = [
+    ...BAIRROS_FILA.map((b) => `https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/${b}?commt=6&commt=7&ss=100`),
+    ...BAIRROS_FILA.map((b) => `https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++${b}/?areaMinima=100&ordem=LOWEST_PRICE`),
+    ...BAIRROS_FILA.map((b) => `https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/${b}/ponto-comercial_comercial/?areaMinima=100&ordem=LOWEST_PRICE`),
+  ].join('\n');
   const AVISO_PENDENTES = 100; // anúncios fora de CSV (cerca de 3 páginas) a partir dos quais o painel cobra o download
   const IDADE_MAX = 30; // dias até a coleta mais antiga de uma busca pedir revisão
 
@@ -251,13 +287,42 @@
     return u.toString();
   }
 
-  function carregar() {
-    try { return JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) { return {}; }
+  // Armazenamento do Tampermonkey (comum aos portais, sem o limite do localStorage); sem
+  // GM_* (testes), cai no localStorage.
+  const temGM = typeof GM_getValue === 'function';
+  function gmLer(k, padrao) {
+    try {
+      if (temGM) return GM_getValue(k, padrao);
+      const v = localStorage.getItem(k);
+      return v == null ? padrao : JSON.parse(v);
+    } catch (e) { return padrao; }
   }
+  function gmGravar(k, v) {
+    try { if (temGM) GM_setValue(k, v); else localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { console.error(NOME, 'armazenamento recusou', e); return false; }
+  }
+  const gmApagar = (k) => { try { if (temGM) GM_deleteValue(k); else localStorage.removeItem(k); } catch (e) { /* nada a apagar */ } };
 
-  // Devolve false se o localStorage recusar (cheio): quem chama avisa e baixa o CSV.
-  function salvar(dados) {
-    try { localStorage.setItem(CHAVE, JSON.stringify(dados)); return true; } catch (e) { console.error(NOME, 'localStorage cheio', e); return false; }
+  const carregar = () => gmLer(CHAVE, {}) || {};
+
+  // Devolve false se o armazenamento recusar: quem chama avisa e baixa o CSV.
+  const salvar = (dados) => gmGravar(CHAVE, dados);
+
+  // Junta ao armazenamento do Tampermonkey o que as versões anteriores deixaram no
+  // localStorage deste portal (fica a coleta mais recente de cada anúncio) e o apaga de lá.
+  function migrarLocalStorage() {
+    if (!temGM) return 0;
+    let antigos = null;
+    try { antigos = JSON.parse(localStorage.getItem(CHAVE) || 'null'); } catch (e) { antigos = null; }
+    const exportado = Number(localStorage.getItem(CHAVE_EXPORTACAO)) || 0;
+    if (exportado > gmLer(CHAVE_EXPORTACAO, 0)) gmGravar(CHAVE_EXPORTACAO, exportado);
+    if (!antigos || typeof antigos !== 'object') return 0;
+    const dados = carregar();
+    let n = 0;
+    for (const [k, a] of Object.entries(antigos)) {
+      if (!dados[k] || String(a.data_coleta || '') > String(dados[k].data_coleta || '')) { dados[k] = a; n++; }
+    }
+    if (salvar(dados)) { localStorage.removeItem(CHAVE); localStorage.removeItem(CHAVE_EXPORTACAO); }
+    return n;
   }
 
   // Chaves lidas nesta página que a rodada ainda não tinha visto.
@@ -292,6 +357,57 @@
   // AAAA-MM-DD_HHmm_<portal>_anuncios_aluguel.csv: a hora evita o "(1)" do navegador
   // quando o CSV sai duas vezes no mesmo dia.
   const nomeArquivo = (portal, data, hora) => `${data}_${hora}_${portal}_anuncios_aluguel.csv`;
+  // Portal do nome do CSV: o das linhas, ou "portais" quando o arquivo mistura mais de um.
+  const portalDoArquivo = (linhas, padrao) => { const ps = new Set(linhas.map((l) => l.portal).filter(Boolean)); return ps.size === 1 ? [...ps][0] : ps.size ? 'portais' : padrao; };
+
+  // ---------- fila de buscas (sem DOM: testável) ----------
+
+  // Uma URL de busca por linha, de um portal conhecido; sem repetidas.
+  function lerItensFila(texto) {
+    const vistos = new Set();
+    const itens = [];
+    for (const linha of String(texto || '').split(/\r?\n/)) {
+      const t = linha.trim();
+      if (!t || t.startsWith('#')) continue;
+      let u;
+      try { u = new URL(t); } catch (e) { continue; }
+      if (!portalDe(u.hostname) || vistos.has(u.toString())) continue;
+      vistos.add(u.toString());
+      itens.push(u.toString());
+    }
+    return itens;
+  }
+
+  // "OLX · pituba": portal e bairro da URL (++bairro no ZAP, /bairros/ no Viva Real, o
+  // segmento depois de /salvador/ no OLX e no QuintoAndar).
+  function rotuloBusca(url) {
+    try {
+      const u = new URL(url);
+      const p = portalDe(u.hostname);
+      const d = decodeURIComponent(u.pathname);
+      const m = d.match(/\+\+([^/]+)/) || d.match(/\/bairros\/([^/]+)/) || (p === 'olx' ? d.match(/\/salvador\/([^/]+)/) : null)
+        || (p === 'quintoandar' ? d.match(/\/imovel\/([^/]+?)-salvador/) : null);
+      return `${NOMES_PORTAL[p] || p}${m ? ` · ${m[1].replace(/-/g, ' ')}` : ''}`;
+    } catch (e) { return String(url); }
+  }
+
+  // Resultado de uma busca da fila: lidos (distintos na rodada), total do portal e cobertura.
+  function resultadoBusca(url, lidos, total, paginas, motivo) {
+    const t = total > 0 ? total : null;
+    return { url, rotulo: rotuloBusca(url), lidos, total: t, cobertura: t ? Math.min(1, lidos / t) : null, paginas, motivo };
+  }
+
+  // Mesma busca, para a fila reconhecer a página que abriu: host e caminho, sem a barra
+  // final e sem o "/grande-salvador" que o OLX tira no redirecionamento; ignora a query.
+  function chaveBusca(url) {
+    try {
+      const u = new URL(url);
+      return `${u.hostname.replace(/^www\./, '')}${decodeURIComponent(u.pathname).replace(/\/grande-[^/]+/, '').replace(/\/+$/, '')}`.toLowerCase();
+    } catch (e) { return String(url); }
+  }
+
+  // Repete a busca (uma vez) se a cobertura ficou abaixo do mínimo; sem total, não repete.
+  const repetirBusca = (r, tentativa) => r.cobertura != null && r.cobertura < COBERTURA_MIN && !(tentativa > 0);
 
   // ---------- indicadores de qualidade do painel (sem DOM: testável) ----------
   // Só contam e destacam; nada é descartado na coleta. As regras repetem as do build
@@ -428,6 +544,7 @@
   function agruparBuscas(portal, dados) {
     const g = new Map();
     for (const a of Object.values(dados)) {
+      if (a.portal && a.portal !== portal) continue;
       const b = buscaBase(portal, a.busca_url);
       const x = g.get(b) || { busca: b, n: 0, data: '' };
       x.n++;
@@ -527,9 +644,11 @@
     return lerPaginaZap(portal);
   }
 
+  // Com @grant, o script roda numa caixa isolada: o fetch da página é o do unsafeWindow.
   function interceptarQuinto() {
-    const original = window.fetch;
-    window.fetch = async function (...args) {
+    const w = typeof unsafeWindow !== 'undefined' ? unsafeWindow : window;
+    const original = w.fetch;
+    w.fetch = async function (...args) {
       const r = await original.apply(this, args);
       try {
         const url = String(args[0]?.url || args[0]);
@@ -611,9 +730,10 @@
     const anuncios = lerPagina(portal);
     ultimoFunil = funil(anuncios, contarCards(portal));
     guardados = carregar();
-    const novos = guardar(guardados, anuncios, { busca_url: location.href, pagina, total_busca: totalResultados(), data_coleta: dataLocal(), alterado_em: Date.now() });
+    const total = totalResultados();
+    const novos = guardar(guardados, anuncios, { busca_url: location.href, pagina, total_busca: total, data_coleta: dataLocal(), alterado_em: Date.now() });
     const gravou = salvar(guardados);
-    return { anuncios, lidos: anuncios.length, novos, gravou };
+    return { anuncios, lidos: anuncios.length, novos, gravou, total };
   }
 
   let ultimoFunil = null;
@@ -622,24 +742,28 @@
   const lerHist = () => { try { return JSON.parse(sessionStorage.getItem(CHAVE_HIST) || '[]'); } catch (e) { return []; } };
   const gravarHist = (h) => { try { sessionStorage.setItem(CHAVE_HIST, JSON.stringify(h)); } catch (e) { /* sem histórico */ } };
 
-  const lerFiltros = () => { try { return JSON.parse(localStorage.getItem(CHAVE_FILTROS) || '{}'); } catch (e) { return {}; } };
-  const gravarFiltros = (f) => { try { localStorage.setItem(CHAVE_FILTROS, JSON.stringify(f)); } catch (e) { /* filtros só na sessão */ } };
+  const lerFiltros = () => gmLer(CHAVE_FILTROS, {}) || {};
+  const gravarFiltros = (f) => gmGravar(CHAVE_FILTROS, f);
+  const exportadoEm = () => Number(gmLer(CHAVE_EXPORTACAO, 0)) || 0;
 
-  // Apaga os anúncios de uma busca (ou todos, sem busca) do localStorage.
+  const doPortal = (a) => !a.portal || a.portal === portal;
+
+  // Apaga os anúncios de uma busca (ou todos os deste portal, sem busca).
   function apagarBusca(busca) {
-    if (!busca) { localStorage.removeItem(CHAVE); return; }
     const dados = carregar();
-    for (const [k, a] of Object.entries(dados)) if (buscaBase(portal, a.busca_url) === busca) delete dados[k];
+    for (const [k, a] of Object.entries(dados)) if (doPortal(a) && (!busca || buscaBase(portal, a.busca_url) === busca)) delete dados[k];
     salvar(dados);
   }
 
-  const daBusca = (dados, busca) => Object.fromEntries(Object.entries(dados).filter(([, a]) => buscaBase(portal, a.busca_url) === busca));
+  const daBusca = (dados, busca) => Object.fromEntries(Object.entries(dados).filter(([, a]) => doPortal(a) && buscaBase(portal, a.busca_url) === busca));
+  const doPortalTodo = (dados) => Object.fromEntries(Object.entries(dados).filter(([, a]) => doPortal(a)));
 
   function avisarCheio() {
     gravarAuto(null);
+    pararFila();
     atualizarBotoes();
     baixarCsv(guardados);
-    status('Armazenamento do navegador cheio: o CSV saiu com tudo o que foi lido. Confira o arquivo, apague buscas em "Buscas guardadas" e retome.');
+    status('O armazenamento recusou a gravação: o CSV saiu com tudo o que foi lido. Confira o arquivo, apague buscas em "Buscas guardadas" e retome.');
   }
 
   // parcial: CSV de uma busca, que não conta como exportação de tudo (aviso de pendentes).
@@ -647,21 +771,26 @@
     const linhas = Object.values(dados).sort((a, b) => (a.pagina - b.pagina) || String(a.id).localeCompare(String(b.id)));
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([csv(linhas)], { type: 'text/csv;charset=utf-8' }));
-    a.download = nomeArquivo(portal, dataLocal(), horaLocal());
+    a.download = nomeArquivo(portalDoArquivo(linhas, portal), dataLocal(), horaLocal());
     (document.body || document.documentElement).appendChild(a);
     a.click();
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
-    if (!parcial) try { localStorage.setItem(CHAVE_EXPORTACAO, String(Date.now())); } catch (e) { /* sem marca */ }
+    if (!parcial) gmGravar(CHAVE_EXPORTACAO, Date.now());
   }
 
-  function som() {
+  // O navegador só libera o áudio depois de um clique: o painel chama liberarAudio a cada clique.
+  let audio = null;
+  function liberarAudio() {
+    try { audio = audio || new AudioContext(); if (audio.state === 'suspended') audio.resume(); } catch (e) { audio = null; }
+  }
+  function som(ok = true) {
     try {
-      const ctx = new AudioContext();
-      const o = ctx.createOscillator();
-      o.connect(ctx.destination);
-      o.frequency.value = 880;
+      liberarAudio();
+      const o = audio.createOscillator();
+      o.connect(audio.destination);
+      o.frequency.value = ok ? 880 : 330;
       o.start();
-      o.stop(ctx.currentTime + 0.4);
+      o.stop(audio.currentTime + 0.4);
     } catch (e) { /* sem som */ }
   }
 
@@ -671,9 +800,17 @@
   function concluir(auto, motivo) {
     gravarAuto(null);
     atualizarBotoes();
+    if (auto.fila && lerFila()?.ativa) { fimDaBuscaNaFila(auto, motivo); return; }
+    progresso(el.pBusca, null);
     som();
     baixarCsv();
     status(`Concluído: ${auto.paginas} páginas, ${auto.total} anúncios novos (${motivo}).`);
+  }
+
+  function progressoBusca(auto) {
+    const n = (auto.vistos || []).length;
+    const t = auto.totalBusca;
+    progresso(el.pBusca, t ? n / t : 0, `Busca: ${n}${t ? ` de ${t}` : ''} anúncios · ${auto.paginas} pág.`);
   }
 
   // Modo automático: sobrevive à troca de página pelo sessionStorage da aba. A parada
@@ -687,8 +824,9 @@
     const inicio = Date.now();
     atualizarBotoes();
     status(`Página ${pagina}: lendo…`);
-    const { anuncios, lidos, novos, gravou } = await coletarPagina(pagina);
+    const { anuncios, lidos, novos, gravou, total } = await coletarPagina(pagina);
     if (!gravou) { avisarCheio(); return; }
+    if (total) auto.totalBusca = Math.max(auto.totalBusca || 0, total);
     if (!lerAuto()) return; // parado durante a leitura
     if (lidos === 0 && desafioCloudflare()) {
       // Não conta como página vazia: espera o desafio e retoma desta mesma página.
@@ -702,8 +840,11 @@
     auto.total += novos;
     gravarHist([...lerHist(), { pagina, lidos, ineditos: inedit.length, novos, seg: Math.round((Date.now() - inicio) / 1000) }]);
     mostrar(`Página ${pagina}: ${lidos} lidos, ${inedit.length} inéditos na rodada, ${novos} novos no navegador.`);
+    progressoBusca(auto);
     if (lidos === 0) return concluir(auto, 'página vazia');
     if (inedit.length === 0) return concluir(auto, 'página sem anúncio inédito');
+    // Total lido: poupa a visita a uma página a mais (que viria vazia ou repetida).
+    if (auto.totalBusca && auto.vistos.length >= auto.totalBusca) return concluir(auto, 'total da busca lido');
     if (auto.paginas >= auto.limite) return concluir(auto, 'limite de páginas');
     gravarAuto(auto);
     await esperar(1500 + Math.random() * 1500);
@@ -717,6 +858,121 @@
       return;
     }
     location.href = proximaPagina(portal, location.href);
+  }
+
+  // ---------- fila em execução (sobrevive à troca de página e de portal pelo Tampermonkey) ----------
+  // fila = { itens: [url], i, ativa, tentativa, resultados: [resultadoBusca], inicio }
+
+  const lerFila = () => gmLer(CHAVE_FILA, null);
+  const gravarFila = (f) => gmGravar(CHAVE_FILA, f);
+  const sortear = ([a, b]) => a + Math.random() * (b - a);
+  let contando = false; // pausa entre buscas em curso nesta aba
+
+  // Espera contando no status; devolve false se a fila parar no meio.
+  async function esperarContando(ms, texto) {
+    contando = true;
+    const fim = Date.now() + ms;
+    try {
+      while (Date.now() < fim) {
+        if (!lerFila()?.ativa) return false;
+        status(`${texto} ${Math.ceil((fim - Date.now()) / 1000)} s.`);
+        await esperar(500);
+      }
+      return true;
+    } finally { contando = false; }
+  }
+
+  function progressoFila(fila) {
+    if (!fila?.itens?.length) { progresso(el.pFila, null); return; }
+    const n = fila.itens.length;
+    const atual = fila.itens[fila.i];
+    progresso(el.pFila, fila.i / n, `Fila: ${fila.i} de ${n} buscas${atual && fila.ativa ? ` · agora ${rotuloBusca(atual)}` : ''}`);
+  }
+
+  function iniciarFila() {
+    const texto = el.filaTexto.value;
+    gmGravar(CHAVE_FILA_TEXTO, texto);
+    const itens = lerItensFila(texto);
+    if (!itens.length) { status('A fila está vazia: uma URL de busca do OLX, ZAP, Viva Real ou QuintoAndar por linha.'); return; }
+    const antiga = lerFila();
+    if (antiga && antiga.i > 0 && antiga.i < antiga.itens.length && !confirm(`Há uma fila em curso (${antiga.i} de ${antiga.itens.length} buscas). Começar outra do zero?`)) return;
+    liberarAudio();
+    gravarFila({ itens, i: 0, ativa: true, tentativa: 0, resultados: [], inicio: Date.now() });
+    abrirItem();
+  }
+
+  function continuarFila() {
+    const fila = lerFila();
+    if (!fila || fila.i >= fila.itens.length) { status('Não há fila para continuar.'); return; }
+    liberarAudio();
+    gravarFila({ ...fila, ativa: true });
+    abrirItem();
+  }
+
+  function pararFila() {
+    const fila = lerFila();
+    if (fila?.ativa) gravarFila({ ...fila, ativa: false });
+  }
+
+  // Abre a busca atual da fila; ao carregar, verificar() a começa (iniciarBuscaDaFila).
+  function abrirItem() {
+    const fila = lerFila();
+    if (!fila?.ativa) return;
+    progressoFila(fila);
+    atualizarBotoes();
+    status(`Abrindo ${rotuloBusca(fila.itens[fila.i])}…`);
+    location.href = fila.itens[fila.i];
+  }
+
+  function iniciarBuscaDaFila() {
+    const fila = lerFila();
+    iniciouAuto = true;
+    gravarAuto({ limite: LIMITE_FILA, paginas: 0, total: 0, fila: true });
+    gravarHist([]);
+    progressoFila(fila);
+    status(`Fila ${fila.i + 1} de ${fila.itens.length}: ${rotuloBusca(fila.itens[fila.i])}…`);
+    passoAutomatico();
+  }
+
+  async function fimDaBuscaNaFila(auto, motivo) {
+    const fila = lerFila();
+    const url = fila.itens[fila.i];
+    const r = { ...resultadoBusca(url, (auto.vistos || []).length, auto.totalBusca, auto.paginas, motivo), tentativa: fila.tentativa || 0 };
+    fila.resultados = [...(fila.resultados || []).filter((x) => x.url !== url), r];
+    const cob = r.cobertura == null ? 'sem total' : pctTxt(r.cobertura);
+    if (repetirBusca(r, fila.tentativa)) {
+      gravarFila({ ...fila, tentativa: 1 });
+      mostrar();
+      if (!(await esperarContando(sortear(PAUSA_FILA), `${r.rotulo}: ${r.lidos} de ${r.total} (${cob}). Repetindo a busca em`))) return pausada();
+      abrirItem();
+      return;
+    }
+    fila.i++;
+    fila.tentativa = 0;
+    gravarFila(fila);
+    mostrar();
+    if (fila.i >= fila.itens.length) { encerrarFila(fila); return; }
+    if (!(await esperarContando(sortear(PAUSA_FILA), `${r.rotulo}: ${r.lidos} lidos (${cob}). Próxima busca (${fila.i + 1} de ${fila.itens.length}) em`))) return pausada();
+    abrirItem();
+  }
+
+  function pausada() {
+    const fila = lerFila();
+    atualizarBotoes();
+    status(`Fila pausada em ${fila?.i ?? 0} de ${fila?.itens?.length ?? 0} buscas. "Continuar" retoma.`);
+  }
+
+  function encerrarFila(fila) {
+    gravarFila({ ...fila, ativa: false, fim: Date.now() });
+    atualizarBotoes();
+    progresso(el.pBusca, null);
+    progressoFila(fila);
+    const rs = fila.resultados || [];
+    const baixas = rs.filter((r) => r.cobertura != null && r.cobertura < COBERTURA_MIN);
+    som(!baixas.length);
+    baixarCsv();
+    mostrar(`Fila concluída: ${rs.length} buscas, ${rs.reduce((n, r) => n + r.lidos, 0)} anúncios lidos; CSV de tudo baixado.`
+      + (baixas.length ? ` Abaixo de ${pctTxt(COBERTURA_MIN)}: ${baixas.map((r) => r.rotulo).join(', ')}.` : ''));
   }
 
   // ---------- painel (padrão: canto superior direito, shadow DOM, fora do <body>) ----------
@@ -737,12 +993,23 @@
   const CSS_PAINEL = `
     #cal-painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:360px;
       max-height:calc(100vh - 24px);overflow:auto;box-sizing:border-box;
+      resize:both;min-width:300px;min-height:120px;max-width:calc(100vw - 24px);
       background:#fff;color:#111;border:1px solid #ccc;border-radius:10px;
       box-shadow:0 4px 16px rgba(0,0,0,.18);font:13px/1.4 system-ui,sans-serif;padding:10px;
       --azul:#2563eb;--vermelho:#b91c1c;--linha:rgba(128,128,128,.25)}
     @media (prefers-color-scheme:dark){#cal-painel{background:#1e1e1e;color:#eee;border-color:#444;--azul:#3b82f6;--vermelho:#dc2626}}
     #cal-painel.min>*:not(header){display:none}
-    header{display:flex;justify-content:space-between;align-items:center;font-weight:700;cursor:pointer}
+    #cal-painel.min{height:auto!important;min-height:0;resize:none}
+    #cal-painel.arrastando{user-select:none;opacity:.92}
+    header{display:flex;justify-content:space-between;align-items:center;font-weight:700;cursor:grab;touch-action:none;user-select:none}
+    #cal-painel.arrastando header{cursor:grabbing}
+    textarea{width:100%;box-sizing:border-box;height:72px;font:11px/1.45 ui-monospace,Menlo,monospace;color:inherit;
+      background:transparent;border:1px solid #888;border-radius:6px;padding:4px;resize:vertical;white-space:pre;overflow:auto}
+    .progresso{margin:6px 0;font-size:12px}
+    .progresso[hidden]{display:none}
+    .progresso .trilho{height:8px;border-radius:4px;background:var(--linha);overflow:hidden;margin-bottom:2px}
+    .progresso .trilho>span{display:block;height:100%;width:0;background:var(--azul);transition:width .3s}
+    tr.atual td{font-weight:600}
     p{margin:4px 0}
     svg.ico{width:14px;height:14px;flex:0 0 auto;vertical-align:-2px}
     .linha{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0;align-items:center}
@@ -750,7 +1017,7 @@
       border-radius:6px;border:1px solid #888;background:transparent;color:inherit;cursor:pointer;font:inherit;white-space:nowrap}
     button:disabled{opacity:.4;cursor:default}
     button.principal{background:var(--azul);border-color:var(--azul);color:#fff;font-weight:600}
-    button.principal.ativo{background:var(--vermelho);border-color:var(--vermelho)}
+    button.ativo{background:var(--vermelho);border-color:var(--vermelho);color:#fff;font-weight:600}
     button.ic{flex:0 0 auto;padding:4px 7px}
     .tag{flex:0 0 auto;border-radius:999px;padding:2px 9px;font-size:12px;opacity:.55}
     .tag.on{opacity:1;background:var(--azul);border-color:var(--azul);color:#fff}
@@ -799,6 +1066,8 @@
     'tag': ["e:M4.5 2A2.5 2.5 0 0 0 2 4.5v3.879a2.5 2.5 0 0 0 .732 1.767l7.5 7.5a2.5 2.5 0 0 0 3.536 0l3.878-3.878a2.5 2.5 0 0 0 0-3.536l-7.5-7.5A2.5 2.5 0 0 0 8.38 2H4.5ZM5 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"],
     'trash': ["e:M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z"],
     'stop': ["M5.25 3A2.25 2.25 0 0 0 3 5.25v9.5A2.25 2.25 0 0 0 5.25 17h9.5A2.25 2.25 0 0 0 17 14.75v-9.5A2.25 2.25 0 0 0 14.75 3h-9.5Z"],
+    'play': ["M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.344-5.891a1.5 1.5 0 0 0 0-2.538L6.3 2.841Z"],
+    'queue-list': ["M2 4.5A2.5 2.5 0 0 1 4.5 2h11a2.5 2.5 0 0 1 0 5h-11A2.5 2.5 0 0 1 2 4.5ZM2.75 9.083a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5H2.75ZM2.75 12.663a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5H2.75ZM2.75 16.25a.75.75 0 0 0 0 1.5h14.5a.75.75 0 1 0 0-1.5H2.75Z"],
   };
   function icone(nome) {
     const ns = 'http://www.w3.org/2000/svg';
@@ -844,17 +1113,57 @@
   const aviso = (t) => criar('span', { className: 'alerta', title: t }, [icone('exclamation-triangle')]);
   const barra = (x) => { const s = criar('span'); s.style.width = `${Math.round(x * 100)}%`; return criar('span', { className: 'barra' }, [s]); };
 
+  // Barra de progresso (busca e fila): `frac` nulo esconde a barra.
+  function novaBarra() {
+    const cheio = criar('span');
+    const texto = criar('span');
+    return { caixa: criar('div', { className: 'progresso', hidden: true }, [criar('div', { className: 'trilho' }, [cheio]), texto]), cheio, texto };
+  }
+  function progresso(b, frac, texto = '') {
+    if (!b) return;
+    if (frac == null) { b.caixa.hidden = true; return; }
+    b.caixa.hidden = false;
+    b.cheio.style.width = `${Math.round(Math.min(1, Math.max(0, frac)) * 100)}%`;
+    b.texto.textContent = texto;
+  }
+
+  // Tabela da fila: uma linha por busca, com lidos, total e cobertura (as que faltam com "–").
+  function mostrarFila() {
+    if (!el.filaTabela) return;
+    const fila = lerFila();
+    progressoFila(fila);
+    if (!fila?.itens?.length) { el.filaTabela.replaceChildren(criar('p', { className: 'status', textContent: 'Nenhuma fila rodada ainda.' })); return; }
+    const porUrl = new Map((fila.resultados || []).map((r) => [r.url, r]));
+    const td = (v, classe = '', dica = '') => criar('td', { textContent: String(v), className: classe, title: dica });
+    const linhas = fila.itens.map((url, i) => {
+      const r = porUrl.get(url);
+      const atual = fila.ativa && i === fila.i;
+      const cor = r?.cobertura == null ? '' : r.cobertura >= COBERTURA_MIN ? 'ok' : 'ruim';
+      return criar('tr', { className: atual ? 'atual' : '', title: url }, [
+        td(`${atual ? '▸ ' : ''}${rotuloBusca(url)}`),
+        td(r ? r.lidos : '–'),
+        td(r?.total ?? '–'),
+        td(r ? (r.cobertura == null ? 's/ total' : pctTxt(r.cobertura)) : '–', cor, r ? `${r.paginas} pág.; parou por ${r.motivo}${r.tentativa ? '; repetida' : ''}` : ''),
+      ]);
+    });
+    const th = (t, dica) => criar('th', { textContent: t, title: dica });
+    el.filaTabela.replaceChildren(criar('table', {}, [
+      criar('thead', {}, [criar('tr', {}, [th('Busca', 'Portal e bairro da busca'), th('Lidos', 'Anúncios distintos lidos na busca'), th('Total', 'Total que o portal diz ter'), th('Cob.', `Cobertura: lidos ÷ total; abaixo de ${pctTxt(COBERTURA_MIN)}, a fila repete a busca uma vez`)])]),
+      criar('tbody', {}, linhas),
+    ]));
+  }
+
   // A8 do coletor de preços: anúncios guardados desde o último CSV de tudo.
   function mostrarPendentes(dados) {
-    const exportadoEm = Number(localStorage.getItem(CHAVE_EXPORTACAO)) || 0;
-    const pend = pendentes(dados, exportadoEm);
+    const exportado = exportadoEm();
+    const pend = pendentes(dados, exportado);
     el.pendentes.className = pend >= AVISO_PENDENTES ? 'info alerta' : pend ? 'info' : 'info ok';
-    el.pendentes.replaceChildren(...partes(pend >= AVISO_PENDENTES ? icone('exclamation-triangle') : !pend && exportadoEm ? icone('check') : '',
-      pend ? `${pend} fora do CSV` : exportadoEm ? 'CSV em dia' : 'Nada guardado ainda.'));
+    el.pendentes.replaceChildren(...partes(pend >= AVISO_PENDENTES ? icone('exclamation-triangle') : !pend && exportado ? icone('check') : '',
+      pend ? `${pend} fora do CSV` : exportado ? 'CSV em dia' : 'Nada guardado ainda.'));
     el.pendentes.title = pend
-      ? `${pend} anúncio(s) lidos desde o último CSV de tudo${exportadoEm ? ` (${quando(exportadoEm)})` : ' (nenhum baixado ainda)'}`
+      ? `${pend} anúncio(s) lidos, em todos os portais, desde o último CSV de tudo${exportado ? ` (${quando(exportado)})` : ' (nenhum baixado ainda)'}`
         + `${pend >= AVISO_PENDENTES ? '. Baixe o CSV: os dados só estão no navegador' : ''}`
-      : exportadoEm ? `CSV de tudo baixado em ${quando(exportadoEm)}` : '';
+      : exportado ? `CSV de tudo baixado em ${quando(exportado)}` : '';
   }
 
   // Portal, cobertura da busca atual e R$/m² pedido dos anúncios de aluguel da busca.
@@ -864,7 +1173,9 @@
     const cob = total ? Math.min(1, lista.length / total) : null;
     const datas = lista.map((a) => a.data_coleta).filter(Boolean).sort();
     const idade = datas[0] ? diasEntre(datas[0], dataLocal()) : null;
+    const semOrdem = (portal === 'zap' || portal === 'vivareal') && lerPagina(portal).length > 0 && !new URL(location.href).searchParams.get('ordem');
     el.geral.replaceChildren(
+      ...(semOrdem ? [casa('todo ruim', icone('exclamation-triangle'), 'Sem "ordem=LOWEST_PRICE" na URL: o portal repete anúncios entre páginas e deixa alguns de fora.')] : []),
       casa('k', icone('chart-bar'), 'Portal'), casa('v largo', `${todos.length} anúncios (${todos.filter((a) => a.operacao === 'aluguel').length} de aluguel)`),
       casa('k', icone('magnifying-glass'), 'Busca'),
       cob == null
@@ -989,7 +1300,7 @@
   function atualizarPainel() {
     if (!el.geral) return;
     const dados = carregar();
-    const todos = Object.values(dados);
+    const todos = Object.values(dados).filter(doPortal);
     const busca = buscaBase(portal, location.href);
     const lista = todos.filter((a) => buscaBase(portal, a.busca_url) === busca);
     const filtros = lerFiltros();
@@ -999,6 +1310,7 @@
     mostrarQualidade(lista, lista.filter((a) => passaFiltros(a, filtros)), filtros, todos);
     mostrarHist(lerHist());
     mostrarBuscas(agruparBuscas(portal, dados), busca);
+    mostrarFila();
     destacarCards(filtros, dados);
   }
 
@@ -1009,15 +1321,43 @@
 
   function atualizarBotoes() {
     if (!el.bAuto) return;
-    const ativo = !!lerAuto();
+    const fila = lerFila();
+    const naFila = !!fila?.ativa;
+    const ativo = !!lerAuto() && !naFila;
     el.bAuto.replaceChildren(...partes(icone(ativo ? 'stop' : 'forward'), criar('span', { textContent: ativo ? 'Parar' : 'Todas' })));
-    el.bAuto.title = ativo ? 'Parar a rodada automática' : 'Coletar todas as páginas: lê esta página e segue para as próximas até uma página vazia, sem anúncio inédito ou o limite; no fim, toca um som e baixa o CSV';
+    el.bAuto.title = ativo ? 'Parar a rodada automática' : 'Coletar todas as páginas desta busca: lê esta página e segue para as próximas até uma página vazia, sem anúncio inédito, o total da busca ou o limite; no fim, toca um som e baixa o CSV';
     el.bAuto.classList.toggle('ativo', ativo);
-    el.bPagina.disabled = ativo;
+    el.bAuto.disabled = naFila;
+    el.bPagina.disabled = ativo || naFila;
+    el.bFila.replaceChildren(...partes(icone(naFila ? 'stop' : 'queue-list'), criar('span', { textContent: naFila ? 'Parar fila' : 'Fila' })));
+    el.bFila.title = naFila ? 'Parar a fila: a busca atual para; "Continuar" retoma dela'
+      : 'Coletar a fila: abre cada busca da lista, lê todas as páginas, confere a cobertura (repete uma vez abaixo de 95%) e passa à próxima, em qualquer portal; no fim, toca um som e baixa um CSV com tudo';
+    el.bFila.classList.toggle('ativo', naFila);
+    const podeContinuar = !naFila && !!fila && !fila.fim && fila.i < fila.itens.length;
+    el.bContinuar.disabled = !podeContinuar;
+    el.bContinuar.title = podeContinuar ? `Continuar a fila da busca ${fila.i + 1} de ${fila.itens.length} (${rotuloBusca(fila.itens[fila.i])})` : 'Continuar a fila: nada pausado';
+    el.filaTexto.disabled = naFila;
   }
 
   function montarPainel() {
-    el.status = criar('p', { className: 'status', textContent: 'Abra a busca já filtrada e clique em "Todas".' });
+    el.status = criar('p', { className: 'status', textContent: 'Clique em "Fila" para coletar as buscas da lista, ou abra uma busca já filtrada e clique em "Todas".' });
+    el.pBusca = novaBarra();
+    el.pFila = novaBarra();
+    el.filaTexto = criar('textarea', { value: gmLer(CHAVE_FILA_TEXTO, FILA_PADRAO) || FILA_PADRAO, spellcheck: false,
+      title: 'Buscas da fila: uma URL por linha (OLX, ZAP, Viva Real ou QuintoAndar), já filtrada; linhas com # são ignoradas',
+      onchange: () => { gmGravar(CHAVE_FILA_TEXTO, el.filaTexto.value); el.filaContagem.textContent = `${lerItensFila(el.filaTexto.value).length} buscas`; } });
+    el.filaContagem = criar('span', { className: 'rotulo', textContent: `${lerItensFila(el.filaTexto.value).length} buscas` });
+    el.filaTabela = criar('div');
+    el.bFila = botao('queue-list', 'Fila', '', () => {
+      if (lerFila()?.ativa) { pararFila(); gravarAuto(null); atualizarBotoes(); status('Fila parada. "Continuar" retoma da busca atual.'); return; }
+      iniciarFila();
+    }, 'principal');
+    el.bContinuar = botao('play', 'Continuar', '', continuarFila);
+    const bPadrao = botao('arrow-path', '', 'Padrão: volta a lista às 9 buscas do plano (Loja e Outros com 100 m² ou mais na Pituba, Graça e Itaigara, no OLX, ZAP e Viva Real)', () => {
+      el.filaTexto.value = FILA_PADRAO;
+      el.filaTexto.onchange();
+      status('Lista da fila de volta ao padrão.');
+    }, 'ic');
     el.pendentes = criar('span');
     el.limite = criar('input', { type: 'number', min: 1, value: 50, title: 'Limite de páginas da rodada automática' });
     el.bPagina = botao('arrow-path', 'Esta página', 'Coletar esta página: lê e guarda só os anúncios desta página', async () => {
@@ -1033,9 +1373,9 @@
       gravarAuto({ limite: Math.max(1, parseInt(el.limite.value, 10) || 50), paginas: 0, total: 0 });
       gravarHist([]);
       passoAutomatico();
-    }, 'principal');
-    const bCsv = botao('arrow-down-tray', 'CSV', 'Baixar CSV de tudo: um arquivo com todos os anúncios guardados deste portal', () => { baixarCsv(); mostrar('CSV de tudo baixado.'); }, 'ic');
-    const bLimpar = botao('trash', '', 'Apagar tudo deste portal (baixa antes o CSV de tudo)', () => apagarComBackup(null), 'ic');
+    });
+    const bCsv = botao('arrow-down-tray', 'CSV', 'Baixar CSV de tudo: um arquivo com todos os anúncios guardados, de todos os portais', () => { baixarCsv(); mostrar('CSV de tudo baixado.'); }, 'ic');
+    const bLimpar = botao('trash', '', 'Apagar tudo deste portal (baixa antes o CSV dele)', () => apagarComBackup(null), 'ic');
 
     el.geral = criar('div', { className: 'grade' });
     el.resumo = criar('div', { className: 'grade' });
@@ -1059,61 +1399,137 @@
       (v) => { gravarFiltros({ ...lerFiltros(), [k]: v }); atualizarPainel(); }));
 
     const minimizar = criar('span', { className: 'rotulo' }, [icone('minus')]);
-    const cabecalho = criar('header', {}, [criar('span', { textContent: `Aluguel · ${portal}` }), minimizar]);
+    const cabecalho = criar('header', { title: 'Arraste para mover; clique para minimizar; duplo clique volta ao canto' }, [criar('span', { textContent: `Aluguel · ${NOMES_PORTAL[portal] || portal}` }), minimizar]);
     const painel = criar('div', { id: 'cal-painel' }, [
       cabecalho,
+      criar('div', { className: 'linha' }, [el.bFila, el.bContinuar, bPadrao, el.filaContagem]),
+      el.pFila.caixa,
+      el.pBusca.caixa,
+      el.status,
+      criar('details', {}, [criar('summary', { textContent: 'Buscas da fila' }), el.filaTexto, el.filaTabela]),
       criar('div', { className: 'linha' }, [el.bAuto, el.bPagina, criar('span', { className: 'rotulo', title: el.limite.title, textContent: 'máx.' }), el.limite]),
       criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', title: 'Filtros dos indicadores' }, [icone('adjustments-horizontal')]), ...selos]),
       criar('div', { className: 'linha' }, [bCsv, bLimpar, el.pendentes]),
       criar('div', { className: 'caixa' }, [el.geral, el.resumo]),
       el.funil,
-      el.status,
       criar('details', { open: true }, [criar('summary', { textContent: 'Qualidade da busca' }), criar('div', { className: 'caixa' }, [el.campos, el.mistura, el.alvo])]),
       criar('details', {}, [el.histTitulo, el.hist]),
       criar('details', {}, [el.buscasTitulo, el.buscas]),
     ]);
-    cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.replaceChildren(icone(painel.classList.contains('min') ? 'plus' : 'minus')); };
+    cabecalho.onclick = () => { if (arrastou) return; painel.classList.toggle('min'); minimizar.replaceChildren(icone(painel.classList.contains('min') ? 'plus' : 'minus')); };
+    el.painel = painel;
+    prepararArraste(cabecalho, painel);
+    painel.addEventListener('click', liberarAudio);
+    // As teclas digitadas no painel não chegam aos atalhos do portal.
+    for (const tipo of ['keydown', 'keyup', 'keypress']) painel.addEventListener(tipo, (e) => e.stopPropagation());
+    // O tamanho só muda pela alça do canto, que grava largura e altura no estilo.
+    addEventListener('pointerup', () => {
+      if (painel.classList.contains('min')) return;
+      const { width, height } = painel.style;
+      if (width && (width !== posicao?.width || height !== posicao?.height)) { posicao = { ...posicao, width, height }; gmGravar(CHAVE_POSICAO, posicao); }
+    });
+    addEventListener('resize', posicionarPainel);
 
     hospedeiro = criar('div', { id: 'cal-hospedeiro' });
     const raiz = hospedeiro.attachShadow({ mode: 'open' });
     raiz.appendChild(criar('style', { textContent: CSS_PAINEL }));
     raiz.appendChild(painel);
+    posicionarPainel();
     atualizarBotoes();
     mostrar();
+  }
+
+  // Posição e tamanho escolhidos pelo autor, salvos no Tampermonkey (iguais em todos os
+  // portais). Sem posição salva, o painel fica no canto superior direito.
+  let posicao = gmLer(CHAVE_POSICAO, null);
+  let arrastou = false;
+
+  function prepararArraste(cabecalho, painel) {
+    cabecalho.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0) return;
+      const r = painel.getBoundingClientRect();
+      const x0 = e.clientX, y0 = e.clientY;
+      let moveu = false;
+      const mover = (ev) => {
+        if (!moveu && Math.hypot(ev.clientX - x0, ev.clientY - y0) < 4) return;
+        moveu = true;
+        painel.classList.add('arrastando');
+        posicao = { ...posicao, left: Math.round(r.left + ev.clientX - x0), top: Math.round(r.top + ev.clientY - y0) };
+        posicionarPainel();
+      };
+      const soltar = () => {
+        removeEventListener('pointermove', mover);
+        removeEventListener('pointerup', soltar);
+        painel.classList.remove('arrastando');
+        if (!moveu) return;
+        gmGravar(CHAVE_POSICAO, posicao);
+        arrastou = true;
+        setTimeout(() => { arrastou = false; }, 0);
+      };
+      addEventListener('pointermove', mover);
+      addEventListener('pointerup', soltar);
+    });
+    cabecalho.addEventListener('dblclick', () => {
+      posicao = null;
+      gmApagar(CHAVE_POSICAO);
+      painel.style.width = painel.style.height = painel.style.left = painel.style.top = painel.style.right = '';
+      posicionarPainel();
+      status('Painel de volta ao canto, no tamanho padrão.');
+    });
+  }
+
+  function posicionarPainel() {
+    const p = el.painel;
+    if (!p) return;
+    if (posicao?.width && !p.style.width) { p.style.width = posicao.width; p.style.height = posicao.height || ''; }
+    if (posicao?.left == null) return;
+    const w = p.offsetWidth || 360;
+    p.style.left = `${Math.min(Math.max(0, posicao.left), Math.max(0, innerWidth - w))}px`;
+    p.style.top = `${Math.min(Math.max(0, posicao.top), Math.max(0, innerHeight - 48))}px`;
+    p.style.right = 'auto';
   }
 
   // O painel só aparece em página de busca (com cards); depois de aparecer, é reposto se sumir.
   // No modo automático, uma página que não mostra card em 20 s também encerra a coleta.
   let ehBusca = false;
+  // Páginas de imóveis (busca ou início do portal), onde o painel aparece mesmo sem card.
+  const PAGINA_IMOVEIS = /^\/(?:$|imoveis|aluguel|alugar|venda)/;
   let iniciouAuto = false;
   let tentativas = 0;
 
   // Durante o desafio do Cloudflare, o painel aparece com o aviso e a contagem de 20 s não corre.
+  // Fila: o painel aparece em qualquer página do portal (para "Fila" e para mostrar a
+  // espera); a busca da vez começa sozinha ao carregar, se for deste portal.
   function verificar() {
     if (!document.body) return;
-    const desafio = !!lerAuto() && desafioCloudflare() && lerPagina(portal).length === 0;
+    const fila = lerFila();
+    const filaAqui = !!fila?.ativa && !!fila.itens[fila.i] && chaveBusca(fila.itens[fila.i]) === chaveBusca(location.href);
+    const desafio = (!!lerAuto() || filaAqui) && desafioCloudflare() && lerPagina(portal).length === 0;
     if (!ehBusca) {
-      ehBusca = lerPagina(portal).length > 0 || desafio || (!!lerAuto() && ++tentativas > 13);
+      ehBusca = lerPagina(portal).length > 0 || desafio || filaAqui || !!fila?.ativa || PAGINA_IMOVEIS.test(location.pathname)
+        || (!!lerAuto() && ++tentativas > 13);
       if (!ehBusca) return;
-      console.info(NOME, 'página de busca');
+      console.info(NOME, 'painel montado');
     }
     if (!hospedeiro) montarPainel();
     if (!hospedeiro.isConnected) document.documentElement.appendChild(hospedeiro);
     if (desafio) { status('Bloqueio do Cloudflare: resolva o desafio na página; a coleta retoma desta página.'); return; }
-    if (!iniciouAuto && lerAuto()) { iniciouAuto = true; passoAutomatico(); }
+    if (!iniciouAuto && lerAuto()) { iniciouAuto = true; passoAutomatico(); return; }
+    if (filaAqui && !iniciouAuto && !contando && !lerAuto()) iniciarBuscaDaFila();
   }
 
   // Aviso ao fechar a aba ou sair por link do portal com muitos anúncios fora de CSV; a
   // rodada automática troca de página sozinha e não dispara o aviso.
   if (typeof window !== 'undefined' && window.addEventListener) {
     window.addEventListener('beforeunload', (e) => {
-      if (lerAuto() || pendentes(carregar(), Number(localStorage.getItem(CHAVE_EXPORTACAO)) || 0) < AVISO_PENDENTES) return;
+      if (lerAuto() || lerFila()?.ativa || pendentes(carregar(), exportadoEm()) < AVISO_PENDENTES) return;
       e.preventDefault();
       e.returnValue = '';
     });
   }
 
   console.info(NOME, 'carregado');
+  try { const n = migrarLocalStorage(); if (n) console.info(NOME, `${n} anúncios do localStorage passaram para o Tampermonkey`); } catch (e) { console.error(NOME, e); }
   if (portal === 'quintoandar') interceptarQuinto();
   setInterval(() => { try { verificar(); } catch (e) { console.error(NOME, e); } }, 1500);
 })();

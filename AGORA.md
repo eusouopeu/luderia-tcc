@@ -17,7 +17,7 @@ Atualizado em 12/11/2026. Correções da orientação aplicadas no **TMin v31** 
 
 - Quantidades do investimento (N6): aguardam projeto do ponto na Pituba.
 - Folha de aprovação: aguarda os nomes dos membros da banca.
-- Aluguel da OLX (C04 e C05): a coleta de 12/11 (01:38) tem 148 dos 151 anúncios de Loja e Outros com 100 m² ou mais na Pituba, Graça e Itaigara; refazer com o userscript 2026.11.12-1, pelas URLs de bairro (`/salvador/pituba?commt=6&commt=7&ss=100`), para fechar a cobertura e preencher o `total_busca`.
+- Aluguel (C04 e C05): a coleta de 12/11 (01:38, só OLX) tem 148 dos 151 anúncios de Loja e Outros com 100 m² ou mais na Pituba, Graça e Itaigara. Refazer com o userscript 2026.11.12-2: "Fila" coleta sozinha as 9 buscas (OLX, ZAP e Viva Real) e baixa um CSV só, para `_dados-brutos/aluguel/`.
 
 ## Onde está o resto
 
