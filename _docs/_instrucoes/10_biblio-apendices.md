@@ -97,7 +97,7 @@ Regra: prosa que só descreve um conjunto de itens vira quadro; o texto em volta
 
 ### Apêndices do TMin
 
-Só os apêndices citados no texto, com letras na ordem de citação, num arquivo separado ([1c_versoes.md](1c_versoes.md); `_src/Extras/G4_textos/gerar_apendices_tmin.py`). O texto cita só o número-chave.
+Só os apêndices citados no texto, com letras na ordem de citação, num arquivo separado ([1c_versoes.md](1c_versoes.md); `_src/outros/G4_textos/gerar_apendices_tmin.py`). O texto cita só o número-chave.
 
 | Apêndice | Conteúdo | Onde é citado | Origem |
 |---|---|---|---|

@@ -1,15 +1,15 @@
 ﻿tema;polaridade;pct_k2_grupo_1;n_k2_grupo_1;pct_k2_grupo_2;n_k2_grupo_2;qui2;p;q_bh;k;pct_k5_grupo_1;n_k5_grupo_1;pct_k5_grupo_2;n_k5_grupo_2;pct_k5_grupo_3;n_k5_grupo_3;pct_k5_grupo_4;n_k5_grupo_4;pct_k5_grupo_5;n_k5_grupo_5
 atendimento presencial;crítica;2.7;11.0;9.4;19.0;12.9;0.0003;0.0135;2;;;;;;;;;;
 qualquer tema;crítica;17.5;71.0;28.7;58.0;10.17;0.0014;;2;;;;;;;;;;
-bebidas;crítica;0.0;0.0;2.0;4.0;8.09;0.0044;0.0607;2;;;;;;;;;;
 atendimento online;elogio;0.0;0.0;2.0;4.0;8.09;0.0044;0.0607;2;;;;;;;;;;
+bebidas;crítica;0.0;0.0;2.0;4.0;8.09;0.0044;0.0607;2;;;;;;;;;;
 atendimento presencial;elogio;54.9;223.0;43.6;88.0;6.97;0.0083;0.0714;2;;;;;;;;;;
 comida;crítica;4.4;18.0;9.9;20.0;6.88;0.0087;0.0714;2;;;;;;;;;;
 explicação de jogos;crítica;0.7;3.0;3.5;7.0;6.2;0.0128;0.0874;2;;;;;;;;;;
 ambiente e decoração;elogio;32.5;132.0;23.3;47.0;5.55;0.0185;0.1083;2;;;;;;;;;;
 preço de outros itens;crítica;0.7;3.0;3.0;6.0;4.61;0.0319;0.1633;2;;;;;;;;;;
-regras da casa;crítica;2.0;8.0;5.0;10.0;4.17;0.0412;0.1687;2;;;;;;;;;;
 preço da entrada;crítica;2.0;8.0;5.0;10.0;4.17;0.0412;0.1687;2;;;;;;;;;;
+regras da casa;crítica;2.0;8.0;5.0;10.0;4.17;0.0412;0.1687;2;;;;;;;;;;
 preço do cardápio;crítica;4.2;17.0;7.9;16.0;3.66;0.0556;0.2073;2;;;;;;;;;;
 rapidez do serviço;elogio;1.2;5.0;3.5;7.0;3.48;0.0622;0.2124;2;;;;;;;;;;
 comemorações e grupos;crítica;0.2;1.0;1.5;3.0;3.17;0.0751;0.2369;2;;;;;;;;;;
@@ -69,8 +69,8 @@ eventos e comunidade;elogio;;;;;4.94;0.2932;0.6083;5;4.3;7.0;3.3;4.0;4.5;10.0;0.
 localização e acesso;elogio;;;;;4.67;0.3225;0.6083;5;0.0;0.0;0.8;1.0;0.5;1.0;1.4;1.0;3.0;1.0
 curadoria e conservação do acervo;elogio;;;;;4.6;0.3308;0.6083;5;8.1;13.0;6.7;8.0;12.7;28.0;11.0;8.0;6.1;2.0
 curadoria e conservação do acervo;crítica;;;;;4.47;0.3458;0.6083;5;0.6;1.0;0.0;0.0;2.3;5.0;1.4;1.0;3.0;1.0
-variedade do acervo;crítica;;;;;4.3;0.3669;0.6083;5;0.0;0.0;0.0;0.0;1.4;3.0;1.4;1.0;0.0;0.0
 comemorações e grupos;crítica;;;;;4.3;0.3669;0.6083;5;0.0;0.0;0.0;0.0;1.4;3.0;1.4;1.0;0.0;0.0
+variedade do acervo;crítica;;;;;4.3;0.3669;0.6083;5;0.0;0.0;0.0;0.0;1.4;3.0;1.4;1.0;0.0;0.0
 porções;crítica;;;;;4.27;0.3709;0.6083;5;0.6;1.0;1.7;2.0;0.5;1.0;2.7;2.0;3.0;1.0
 preço de outros itens;crítica;;;;;3.95;0.4128;0.6372;5;0.0;0.0;1.7;2.0;1.8;4.0;2.7;2.0;3.0;1.0
 variedade do acervo;elogio;;;;;3.9;0.4196;0.6372;5;21.7;35.0;20.8;25.0;16.7;37.0;19.2;14.0;9.1;3.0

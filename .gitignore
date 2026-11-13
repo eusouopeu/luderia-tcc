@@ -5,7 +5,7 @@ __pycache__/
 venv/
 # Dados brutos: textos integrais, históricos e respostas de API não são publicados (_docs/_instrucoes/4_metodologia.md §3.4)
 dados/*/_dados-brutos/**/*.jsonl
-_src/PyScripts/*/4_logs/*.log
+_src/pyScripts/*/4_logs/*.log
 # Atalho (alias do macOS) para ~/Codigos/Apps/_shared, os padrões comuns aos apps; vale só nesta máquina
 _src/_shared
 # Bloco B4: arquivos originais grandes (microdados e agregados do Censo); regeneráveis pelos scripts de coleta
@@ -55,7 +55,7 @@ dados/B1_cardapios/_dados-agregados/**/*.jpeg
 dados/B1_cardapios/_dados-agregados/**/*.webp
 dados/B1_cardapios/_dados-agregados/*.pdf
 # Modelo de idioma do Tesseract (OCR), baixado de tessdata_fast
-_src/PyScripts/B1_Cardapios/5_outros/tessdata/
+_src/pyScripts/B1_Cardapios/5_outros/tessdata/
 
 # Bloco B1: páginas HTML do Acervo de Jogos (material de terceiros, cache da coleta); só os CSV são publicados
 dados/B1_acervo_jogos/_dados-brutos/acervodejogos/*.html
@@ -64,8 +64,8 @@ dados/B1_acervo_jogos/_dados-brutos/acervos_luderias/*/
 dados/B1_acervo_jogos/_auditoria/
 dados/B1_acervo_jogos/_dados-brutos/lojas_venda/
 
-# Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/Extras/G5_outros/gerar_carregadores.py)
-_src/WebScripts/_carregadores/
+# Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/outros/G5_outros/gerar_carregadores.py)
+_src/webScripts/_carregadores/
 
 # Bloco B2: coletas do userscript e base consolidada trazem texto de avaliações (_docs/_instrucoes/4_metodologia.md §3.4); cobertura e fila são publicadas
 dados/B2_avaliacoes/_dados-brutos/coletas/
@@ -73,15 +73,15 @@ dados/B2_avaliacoes/_auditoria/
 dados/B2_avaliacoes/_dados-agregados/B2_avaliacoes_periodo.csv
 dados/B2_avaliacoes/_dados-brutos/analise_conteudo/
 
-# Cronograma: o .docx é gerado do .md quando for enviar (_src/Extras/G4_textos/gerar_docx_cronograma.js)
+# Cronograma: o .docx é gerado do .md quando for enviar (_src/outros/G4_textos/gerar_docx_cronograma.js)
 textos/_planejamento/cronograma_luderia*.docx
-_src/Extras/logs/
+_src/outros/logs/
 
 # Bloco B1: listas "seguindo" do Instagram e candidatos do snowball trazem @ de pessoas físicas (LGPD); só agregados e perfis de negócio são publicados
 dados/B1_redes_sociais/_dados-brutos/
 dados/B1_redes_sociais/_auditoria/
 _src/logs/
-_src/Extras/G3_modelo_financeiro/logs/*.log
+_src/outros/G3_modelo_financeiro/logs/*.log
 
 # Dependências Node dos testes dos webscripts e ícones de pasta do macOS ("Icon\r")
 node_modules/

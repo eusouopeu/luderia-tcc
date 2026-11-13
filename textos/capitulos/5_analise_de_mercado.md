@@ -12,13 +12,13 @@ A estrutura de custos dos serviços de alimentação completa o quadro. Em 2024,
 
 O mercado do entretenimento social fica entre esses dois lados. É um ecótono entre os serviços de alimentação e as atividades culturais e recreativas. Ecótono é a faixa de transição entre dois ambientes: reúne espécies de ambos e espécies próprias. No mercado, o equivalente é a ocasião de saída em que um grupo paga por um tempo de convívio em torno de uma atividade, com alimentos e bebidas. A luderia, o bar com jogos e o quiz-bar são exemplos. O termo é adotado pelo autor (N6) e corresponde ao *competitive socialising* (KAM INSIGHT, 2022), definido na seção 2.1. A receita vem da alimentação, e o motivo da visita vem da atividade.
 
-O Bloco B1 mede o núcleo desse mercado que tem a luderia como formato. Foram identificadas 54 luderias ativas com mais de 100 avaliações no Google Maps nas 14 metrópoles da pesquisa Regiões de Influência das Cidades (REGIC) (IBGE, 2020), em outubro de 2026. São Paulo concentra 19; Belo Horizonte, Brasília e Curitiba têm seis cada; Rio de Janeiro, cinco; Florianópolis, três; Fortaleza e Porto Alegre, duas; Belém, Goiânia, Recife, Salvador e Vitória, uma; Manaus não tem nenhuma (Figura 5.1). Casas fechadas não entram no conjunto, mesmo com mais de 100 avaliações. A nota mediana é 4,7 (de 4,2 a 5,0), e o volume mediano de avaliações, 621 (de 105 a 5.137).
+O Bloco B1 mede o núcleo desse mercado que tem a luderia como formato. Foram identificadas 63 luderias ativas com mais de 100 avaliações no Google Maps nas 15 metrópoles da pesquisa Regiões de Influência das Cidades (REGIC) (IBGE, 2020), de outubro a novembro de 2026: as 14 capitais e Campinas, a única metrópole que não é capital. São Paulo concentra 23; Rio de Janeiro, sete; Belo Horizonte, Brasília e Curitiba têm seis cada; Campinas e Florianópolis, três; Fortaleza e Porto Alegre, duas; Belém, Goiânia, Recife, Salvador e Vitória, uma; Manaus não tem nenhuma (Figura 5.1). Casas fechadas não entram no conjunto, mesmo com mais de 100 avaliações. A nota mediana é 4,7 (de 4,2 a 5,0), e o volume mediano de avaliações, 640 (de 105 a 5.137).
 
 **Figura 5.1 – Luderias ativas com mais de 100 avaliações por metrópole**
 
-![Luderias com mais de 100 avaliações por metrópole](../figuras/5_casas_por_metropole.png)
+![Luderias com mais de 100 avaliações por metrópole](../graficos/5-1_casas_por_metropole.png)
 
-Fonte: elaborado pelo próprio autor, com base no Bloco B1 (Google Places API, 15/10/2026).
+Fonte: elaborado pelo próprio autor, com base no Bloco B1 (Google Places API, 15/10/2026 a 12/11/2026).
 
 A decisão afetada é a composição da receita: o plano apoia a receita em alimentos e bebidas, com o jogo como motivo da visita, e compara o custo com a referência dos serviços de alimentação (capítulo 9).
 
@@ -30,11 +30,11 @@ A análise PESTEL examina o ambiente externo do mercado do entretenimento social
 
 **Econômico.** Os juros altos encarecem o capital. A meta da Selic estava em 14,00% ao ano em setembro de 2026, e o mercado espera 12,00% no fim de 2027 (BCB, SGS e Focus). A taxa de desconto do capítulo 9 parte dessa curva.
 
-A renda mede o poder de compra agregado. Na Região Metropolitana de Salvador, o rendimento médio do trabalho foi de R$ 3.271,00 no 2º trimestre de 2026: o 14º entre as 21 regiões metropolitanas com dado na PNAD Contínua e o 11º entre as 13 metrópoles com luderia no B1, acima só de Recife e Belém (Figura 5.2). A comparação usa a região metropolitana, e não a capital, porque em algumas metrópoles a capital reúne só parte da população da região, o que distorce a comparação. Na mesma região, o rendimento domiciliar per capita caiu de R$ 1.985,00, em 2023, para R$ 1.900,00, em 2025 (IBGE, PNAD Contínua). A renda menor pesa na definição do preço de entrada (seção 6.3), e o ponto precisa estar onde a renda se concentra (seção 6.4).
+A renda mede o poder de compra agregado. Na Região Metropolitana de Salvador, o rendimento médio do trabalho foi de R$ 3.271,00 no 2º trimestre de 2026: o 14º entre as 21 regiões metropolitanas com dado na PNAD Contínua e o 11º entre as 13 metrópoles com luderia no B1 e dado na pesquisa, acima só de Recife e Belém (Figura 5.2); Campinas, a 14ª com luderia, não tem recorte próprio na PNAD Contínua. A comparação usa a região metropolitana, e não a capital, porque em algumas metrópoles a capital reúne só parte da população da região, o que distorce a comparação. Na mesma região, o rendimento domiciliar per capita caiu de R$ 1.985,00, em 2023, para R$ 1.900,00, em 2025 (IBGE, PNAD Contínua). A renda menor pesa na definição do preço de entrada (seção 6.3), e o ponto precisa estar onde a renda se concentra (seção 6.4).
 
 **Figura 5.2 – Rendimento médio do trabalho nas regiões metropolitanas com luderia no B1, 2º trimestre de 2026 (R$)**
 
-![Rendimento médio do trabalho nas regiões metropolitanas com luderia no B1, 2º trimestre de 2026](../figuras/5_renda_trabalho_rm.png)
+![Rendimento médio do trabalho nas regiões metropolitanas com luderia no B1, 2º trimestre de 2026](../graficos/5-2_renda_trabalho_rm.png)
 
 Fonte: elaborado pelo próprio autor, com base no IBGE, PNAD Contínua (04/2026 a 06/2026).
 
@@ -44,7 +44,7 @@ A inflação da alimentação fora do domicílio corre acima da geral, e mais em
 
 **Figura 5.3 – IPCA acumulado em 12 meses até agosto: geral e alimentação fora do domicílio**
 
-![IPCA acumulado em 12 meses até agosto: geral e alimentação fora do domicílio](../figuras/5_ipca_alimentacao_fora.png)
+![IPCA acumulado em 12 meses até agosto: geral e alimentação fora do domicílio](../graficos/5-3_ipca_alimentacao_fora.png)
 
 Fonte: elaborado pelo próprio autor, com base no IBGE, IPCA, tabela 7060 (08/2023 a 08/2026).
 
@@ -78,7 +78,7 @@ A ocasião em grupo também aparece nas avaliações, embora poucas digam com qu
 
 Os dados das seções anteriores alimentam a análise das cinco forças (Quadro 5.1). A pressão mais forte vem dos substitutos – bares, aluguel de jogos e lazer em casa –, e a rivalidade é baixa no formato de luderia, mas alta diante do bar comum. Entrantes e clientes exercem pressão média.
 
-**Rivalidade.** Na prática, a concorrência local se resume a uma casa. A São Jogue é a única luderia de Salvador no recorte do B1 (seção 5.1). A unidade Bela Vista tem nota 4,8, 787 avaliações e abre 68 horas por semana; a Paralela, mais nova, tem 16 avaliações. As duas ficam dentro de shoppings (Bela Vista e Paralela), no eixo da Avenida Paralela, o que orienta a escolha de bairro (seção 6.4). Salvador tem a segunda menor oferta de luderias por habitante entre as metrópoles com ao menos uma casa: 0,028 por 100 mil habitantes da região metropolitana, acima só de Recife (0,025), contra 0,088 em São Paulo e 0,197 em Florianópolis, a maior (Bloco B1; IBGE, estimativas de 2026). A densidade baixa admite duas leituras: ou há espaço para um segundo concorrente, ou o público local adere pouco a esse tipo de casa. A ocupação observada na São Jogue (Bloco B3) testa as duas. Diante do bar comum, a rivalidade é alta: a alimentação concentra a receita do mercado (seção 5.1).
+**Rivalidade.** Na prática, a concorrência local se resume a uma casa. A São Jogue é a única luderia de Salvador no recorte do B1 (seção 5.1). A unidade Bela Vista tem nota 4,8, 787 avaliações e abre 68 horas por semana; a Paralela, mais nova, tem 16 avaliações. As duas ficam dentro de shoppings (Bela Vista e Paralela), no eixo da Avenida Paralela, o que orienta a escolha de bairro (seção 6.4). Salvador tem a segunda menor oferta de luderias por habitante entre as metrópoles com ao menos uma casa: 0,028 por 100 mil habitantes da região metropolitana, acima só de Recife (0,025), contra 0,090 em Campinas, 0,107 em São Paulo e 0,197 em Florianópolis, a maior (Bloco B1; IBGE, estimativas de 2026). A densidade baixa admite duas leituras: ou há espaço para um segundo concorrente, ou o público local adere pouco a esse tipo de casa. A ocupação observada na São Jogue (Bloco B3) testa as duas. Diante do bar comum, a rivalidade é alta: a alimentação concentra a receita do mercado (seção 5.1).
 
 **Entrantes.** A ameaça é média. O acervo é barato frente à cozinha, e a barreira está na curadoria e na explicação de jogos, tema de 14,3% das avaliações (seção 5.2).
 
@@ -106,19 +106,19 @@ A seção detalha a rivalidade e a ameaça de substitutos com os dados dos conco
 
 ### 5.4.1 Acervo e preço
 
-O acervo dos concorrentes tem mediana de 468 títulos (de 190 a 1.357), nas 17 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 30 dos 54 concorrentes, com mediana de R$ 20,00 por pessoa nos 29 de fora de Salvador (de R$ 5,00, na Toca do Rato, em Porto Alegre, a R$ 48,00, na Ludus, em São Paulo, na sexta e no sábado); o Castelos e o Chef on Play declaram que não cobram, e nos outros 22 o couvert não foi encontrado. Entre as que divulgam a política, o couvert é a regra (seção 6.3). O consumo por pessoa, uma bebida e o hambúrguer não vegetariano mais barato do cardápio, tem mediana de R$ 46,00 em 27 casas, com faixa interquartil de R$ 38,00 a R$ 60,30, e é de R$ 41,00 na São Jogue (Bloco B1, 2026). O hambúrguer entra no lugar de uma entrada ou prato qualquer porque aparece em quase todos os cardápios, o que torna as casas comparáveis. Salvador fica no meio da distribuição por metrópole (Figura 5.4). O couvert cobrado pelos concorrentes é a referência da taxa de entrada.
+O acervo dos concorrentes tem mediana de 300 títulos (de 59 a 1.833), nas 34 casas com acervo conhecido. O couvert ou taxa de entrada foi encontrado em 32 dos 63 concorrentes, com mediana de R$ 20,00 por pessoa nos 31 de fora de Salvador (de R$ 5,00, na Toca do Rato, em Porto Alegre, a R$ 48,00, na Ludus, em São Paulo, na sexta e no sábado); o Castelos e o Chef on Play declaram que não cobram, e nos outros 29 o couvert não foi encontrado ou é cobrado por hora (60 Minutos, em São Paulo). Entre as que divulgam a política, o couvert é a regra (seção 6.3). O consumo por pessoa, uma bebida e o hambúrguer não vegetariano mais barato do cardápio, tem mediana de R$ 46,00 em 31 casas, com faixa interquartil de R$ 38,00 a R$ 57,80, e é de R$ 41,00 na São Jogue (Bloco B1, 2026). O hambúrguer entra no lugar de uma entrada ou prato qualquer porque aparece em quase todos os cardápios, o que torna as casas comparáveis. Salvador fica no meio da distribuição por metrópole (Figura 5.4). O couvert cobrado pelos concorrentes é a referência da taxa de entrada.
 
 **Figura 5.4 – Consumo por pessoa (uma bebida e um hambúrguer), mediana por metrópole (R$)**
 
-![Consumo por pessoa uma bebida e um hambúrguer, mediana por metrópole](../figuras/5_consumo_por_metropole.png)
+![Consumo por pessoa uma bebida e um hambúrguer, mediana por metrópole](../graficos/5-4_consumo_por_metropole.png)
 
-Fonte: elaborado pelo próprio autor, com base nos cardápios do Bloco B1 (04/2024 a 07/2026).
+Fonte: elaborado pelo próprio autor, com base nos cardápios do Bloco B1 (04/2024 a 11/2026).
 
 ### 5.4.2 Metrô e shopping no entorno
 
 O entorno de cada concorrente mede onde a casa fica em relação ao metrô e ao shopping de porte. O estudo usa o número de avaliações no Google Maps como medida indireta de fluxo, e a associação não prova causa.
 
-Entre os 54 concorrentes do B1, os 24 com estação de metrô a até 1.000 m têm mediana de 770 avaliações, contra 396 dos 30 sem estação (Bloco B1, entorno pelo Google Maps). O shopping de porte não mostra a mesma vantagem: os 10 concorrentes com shopping a até 1.000 m têm mediana de 396 avaliações, contra 663 dos 19 sem (25 sem dado). A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica dentro do Shopping Bela Vista, a 387 m do metrô.
+Entre os 58 concorrentes do B1 com entorno coletado, os 24 com estação de metrô a até 1.000 m têm mediana de 771 avaliações, contra 317 dos 34 sem estação (Bloco B1, entorno pelo Google Maps). O shopping de porte mostra vantagem menor: os 30 concorrentes com shopping a até 1.000 m têm mediana de 753 avaliações, contra 538 dos 28 sem (5 sem dado). A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica dentro do Shopping Bela Vista, a 387 m do metrô.
 
 A decisão afetada é o ponto: a luderia deve ficar a até 1.000 m de uma estação de metrô (seção 6.4). O shopping não entra como exigência.
 

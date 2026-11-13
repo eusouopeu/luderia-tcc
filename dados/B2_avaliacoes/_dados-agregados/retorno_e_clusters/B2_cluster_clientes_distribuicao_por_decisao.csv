@@ -12,11 +12,11 @@ elogio;comida;12;5;4;15.4;7.8;13.8;volta;67
 elogio;indicações de jogos;2;2;0;2.6;3.1;0.0;volta;67
 elogio;localização e acesso;1;0;0;1.3;0.0;0.0;volta;67
 elogio;limpeza;1;1;1;1.3;1.6;3.4;volta;67
-elogio;eventos e comunidade;2;1;0;2.6;1.6;0.0;volta;67
 elogio;preço da entrada;2;1;0;2.6;1.6;0.0;volta;67
+elogio;eventos e comunidade;2;1;0;2.6;1.6;0.0;volta;67
+elogio;curadoria e conservação do acervo;1;1;0;1.3;1.6;0.0;volta;67
 elogio;regras da casa;1;1;0;1.3;1.6;0.0;volta;67
 elogio;conforto e barulho;1;1;0;1.3;1.6;0.0;volta;67
-elogio;curadoria e conservação do acervo;1;1;0;1.3;1.6;0.0;volta;67
 elogio;ambiente e decoração;12;9;5;15.4;14.1;17.2;volta;67
 elogio;atendimento presencial;24;16;7;30.8;25.0;24.1;volta;67
 elogio;variedade do acervo;6;4;2;7.7;6.2;6.9;volta;67
@@ -28,12 +28,12 @@ crítica;preço do cardápio;0;3;0;0.0;14.3;0.0;não volta;7
 crítica;preço da entrada;0;2;1;0.0;9.5;25.0;não volta;7
 crítica;regras da casa;0;2;0;0.0;9.5;0.0;não volta;7
 crítica;atendimento presencial;1;3;1;100.0;14.3;25.0;não volta;7
-crítica;comemorações e grupos;0;1;0;0.0;4.8;0.0;não volta;7
-crítica;ambiente e decoração;0;1;0;0.0;4.8;0.0;não volta;7
-crítica;bebidas;0;1;0;0.0;4.8;0.0;não volta;7
-crítica;localização e acesso;0;1;0;0.0;4.8;0.0;não volta;7
-crítica;explicação de jogos;0;1;0;0.0;4.8;0.0;não volta;7
 crítica;variedade do acervo;0;1;0;0.0;4.8;0.0;não volta;7
+crítica;comemorações e grupos;0;1;0;0.0;4.8;0.0;não volta;7
+crítica;explicação de jogos;0;1;0;0.0;4.8;0.0;não volta;7
+crítica;localização e acesso;0;1;0;0.0;4.8;0.0;não volta;7
+crítica;bebidas;0;1;0;0.0;4.8;0.0;não volta;7
+crítica;ambiente e decoração;0;1;0;0.0;4.8;0.0;não volta;7
 crítica;atendimento online;0;0;0;0.0;0.0;0.0;não volta;7
 crítica;conforto e barulho;0;0;0;0.0;0.0;0.0;não volta;7
 crítica;curadoria e conservação do acervo;0;0;0;0.0;0.0;0.0;não volta;7
