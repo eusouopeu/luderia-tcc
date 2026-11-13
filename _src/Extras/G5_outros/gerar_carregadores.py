@@ -83,7 +83,7 @@ def main():
     SAIDA.mkdir(exist_ok=True)
     antigas = json.loads(IMPRESSOES.read_text()) if IMPRESSOES.exists() else {}
     novas, mudaram = {}, []
-    for script in sorted(PASTA.glob("[[]B*/*.user.js")):
+    for script in sorted(PASTA.glob("B[0-9]_*/*.user.js")):
         linhas = cabecalho(script)
         destino = SAIDA / script.name
         destino.write_text(carregador(script, linhas), encoding="utf-8")

@@ -9,7 +9,7 @@ Entradas:
       fonte da quantidade, fonte do preço (sinapi, coleta ou gratuito), código SINAPI e termo de busca
   dados/B5_reforma/_dados-agregados/"[B5] SINAPI Composições BA AAAA-MM (Caixa).csv"   (B5-c_sinapi.py; o mês mais recente)
   dados/B5_{reforma,mobiliario}/_dados-brutos/*_precos.csv                (coletas em sites, quando houver)
-      do _src/WebScripts/[B5] Ativos fixos/precos_itens.user.js; usa id_item, url, produto, preco (por unidade da lista),
+      do _src/WebScripts/B5_ativos_fixos/precos_itens.user.js; usa id_item, url, produto, preco (por unidade da lista),
       preco_anuncio, unidades, posicao (na busca, na ordem do site; vazia nas exportações
       anteriores a 03/11/2026 01:40), motivo e excluida, com vírgula decimal. Cada exportação traz tudo o que
       estava guardado no navegador, então os arquivos se repetem entre si.
