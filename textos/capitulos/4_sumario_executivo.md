@@ -20,7 +20,7 @@ O investimento provável é de R$ 382 mil, sendo a reforma (39%) e o capital de 
 | TIR real (%) | 28,9 |
 | Payback descontado (anos) | 4,3 |
 
-Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E, 13/11/2026).
+Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E, 13 de novembro de 2026).
 
 Nota: faixa do Monte Carlo (P10, mediana e P90) na Tabela 9.4.
 

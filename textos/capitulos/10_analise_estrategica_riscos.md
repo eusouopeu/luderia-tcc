@@ -21,8 +21,8 @@ A luderia entra num mercado com uma referência forte e com margem folgada no pr
 |  | Marca nova contra uma rede com duas unidades | Seção 5.3 |
 | Oportunidades | Salvador com uma só luderia no recorte do B1, a São Jogue | Seção 5.3 |
 |  | Nenhuma unidade da São Jogue entre os bairros mais bem colocados da matriz | Seção 6.4 |
-| Ameaças | Selic de 14,0% e TMA real de 15% | BCB, set/2026; seção 9.1 |
-|  | Aluguel comercial de Salvador com alta de 18,9% em 12 meses | FipeZap, jul/2026 |
+| Ameaças | Selic de 14,0% e TMA real de 15% | BCB, setembro de 2026; seção 9.1 |
+|  | Aluguel comercial de Salvador com alta de 18,9% em 12 meses | FipeZap, julho de 2026 |
 |  | Reação da São Jogue com uma terceira unidade ou preço menor | Seções 5.3 e 6.3 |
 
 Fonte: elaborado pelo próprio autor, com base nos capítulos 5 a 9.

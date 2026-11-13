@@ -1,17 +1,17 @@
 # AGORA
 
-Atualizado em 13/11/2026. **TMin v33** em `textos/TCC_luderia_v33.docx` e `.pdf` (116 páginas; o nome não leva mais "TMin"), com os dados de 13/11: 63 luderias em 15 metrópoles (Campinas é a 15ª), taxa de entrada de R$ 19,65 (31 casas), 834 pessoas/mês, VPL de R$ 213 mil (R$ 5 mil sem residual), TIR de 28,9%, payback de 4,3 anos, P(VPL > 0) de 60,4% (P10 −R$ 410 mil, P90 R$ 1,45 milhão); rupturas: circulação 5,95 (7% abaixo), gasto R$ 72,77 (8%). Gráficos dos capítulos em `textos/graficos/` como `<cap>-<ordem>_<conteúdo>.png`; `textos/figuras/` só para diagramas e fotos. Planilhas `B<n>_dados_agregados.xlsx` (sem "DMax"); premissas do modelo em `textos/capitulos/modelo_financeiro/*.xlsx`, conferidas contra o modelo a cada execução. `_src/` com `outros/`, `pyScripts/` e `webScripts/`. Banca em 16/11. Escopo congelado: só entra o que muda o TMin.
+Atualizado em 13/11/2026. **TMin v34** em `textos/TCC_luderia_v34.docx` e `.pdf` (114 páginas; formatação do manual da UFBA: referências à esquerda e em espaço simples, datas por extenso, espaços por linhas em branco, capa e folhas de rosto e de aprovação do autor), com os mesmos números da v33: com os dados de 13/11: 63 luderias em 15 metrópoles (Campinas é a 15ª), taxa de entrada de R$ 19,65 (31 casas), 834 pessoas/mês, VPL de R$ 213 mil (R$ 5 mil sem residual), TIR de 28,9%, payback de 4,3 anos, P(VPL > 0) de 60,4% (P10 −R$ 410 mil, P90 R$ 1,45 milhão); rupturas: circulação 5,95 (7% abaixo), gasto R$ 72,77 (8%). Gráficos dos capítulos em `textos/graficos/` como `<cap>-<ordem>_<conteúdo>.png`; `textos/figuras/` só para diagramas e fotos. Planilhas `B<n>_dados_agregados.xlsx` (sem "DMax"); premissas do modelo em `textos/capitulos/modelo_financeiro/*.xlsx`, conferidas contra o modelo a cada execução. `_src/` com `outros/`, `pyScripts/` e `webScripts/`. Banca em 16/11. Escopo congelado: só entra o que muda o TMin.
 
 ## Fazendo agora (no máximo duas frentes)
 
-1. **Revisão da v33 pelo autor:** conferir no PDF as Tabelas 4.1, 6.2 e 9.2 a 9.6 e o Quadro 10.2 (aluguel pessimista virou risco alto, D87).
+1. **Revisão da v34 pelo autor:** conferir a formatação nova (capa, referências, espaços) e conferir no PDF as Tabelas 4.1, 6.2 e 9.2 a 9.6 e o Quadro 10.2 (aluguel pessimista virou risco alto, D87).
 2. **Fechamento para a banca:** citações `[AV]`, ajustes de formatação (teto de 120 páginas) e gravação da apresentação (roteiro de 23 slides e 18 minutos em [roteiro_apresentacao.md](textos/_planejamento/roteiro_apresentacao.md)).
 
 ## Próximos 3 passos
 
 1. Responder o "Lote de decisões" ([pendências](_docs/pendencias.md)): L1, L20 a L24, L27, L29, L30 e L32 (shopping no entorno).
 2. Recoletar o entorno com o coletor 2026.11.13-5 e regerar os números do 5.4.2 e do 6.4 (a v33 usa a coleta de 12/11, que pode subcontar estações de metrô).
-3. Conferir as citações `[AV]` e passar as conferidas para citação indireta.
+3. Regras da UFBA ainda abertas ([parecer](_docs/pareceres/regras-UFBA-nao-seguidas.md)): citações em versal capitular, números de um a dez por extenso, resumo e titulação do orientador.
 
 ## Bloqueado ou aguardando
 

@@ -8,11 +8,14 @@
 // grade completa, preta e de mesma espessura (ABNT), mesmo com números;
 // imagem em linha própria no formato ![texto](caminho relativo ao .md);
 // linhas de citação (>) e comentários HTML de rascunho são omitidos.
-// Larguras de coluna pelo conteúdo e <br> na célula para linhas separadas. Regras suplementares de _docs/_instrucoes/1d_formatacao.md: título 1 e título de
-// referências à esquerda; título 2 em caixa alta sem negrito; 0,5 cm depois do
-// parágrafo no corpo e nas referências, e nenhum espaço antes ou depois dos títulos (04/11/2026); referências justificadas, com espaçamento
-// 1,5, e reunidas no fim no trabalho inteiro; células centradas na vertical; coluna
-// de quadro só com palavras únicas centrada; legenda e fonte centralizadas.
+// Larguras de coluna pelo conteúdo e <br> na célula para linhas separadas. Regras suplementares de _docs/_instrucoes/1d_formatacao.md: título 1 à
+// esquerda; título 2 em caixa alta sem negrito; nenhum espaço antes ou depois dos títulos (04/11/2026);
+// espaços entre blocos feitos com linhas em branco de espaçamento simples, e não com o espaçamento do
+// parágrafo (13/11/2026): 6 pt depois do parágrafo do corpo, 12 pt antes da legenda, depois da fonte
+// (ou da nota) e entre as referências; referências à esquerda, em espaço simples, sob o título
+// REFERÊNCIAS centralizado e em negrito (manual da UFBA), reunidas no fim no trabalho inteiro; células
+// centradas na vertical; coluna de quadro só com palavras únicas centrada; legenda e fonte centralizadas;
+// nota justificada, em Arial 10.
 //
 // Versões (_docs/_instrucoes/1c_versoes.md): o TMin é o padrão, com os .md e os
 // .docx dos capítulos em textos/capitulos/ e o trabalho inteiro em textos/; o TMax fica em
@@ -84,7 +87,13 @@ const CM = 567;        // DXA por centímetro
 const LARGURA = 11906 - 3 * CM - 2 * CM; // A4 menos margens esquerda e direita
 const ENTRELINHA = 360; // 1,5
 const SIMPLES = 240;
-const DEPOIS = Math.round(0.5 * CM); // 0,5 cm depois do parágrafo
+
+// Linha em branco de espaçamento simples, com a altura dada pelo corpo da fonte (pt): é o que separa
+// os blocos, no lugar do espaçamento antes e depois do parágrafo (_docs/_instrucoes/1d_formatacao.md).
+function branco(pt = 12, keepNext = false) {
+  return new Paragraph({ keepNext, spacing: { line: SIMPLES, before: 0, after: 0 }, indent: { firstLine: 0 },
+    run: { size: pt * 2 }, children: [new TextRun({ text: "", font: FONTE, size: pt * 2 })] });
+}
 
 // Divide o texto em trechos com **negrito**, *itálico* e `código`.
 function runs(texto, base = {}) {
@@ -119,17 +128,24 @@ function corpo(texto) {
     children: runsCorpo(texto),
     alignment: AlignmentType.JUSTIFIED,
     indent: { firstLine: Math.round(1.0 * CM) },
-    spacing: { line: ENTRELINHA, after: DEPOIS },
+    spacing: { line: ENTRELINHA, before: 0, after: 0 },
   });
 }
 
-function legenda(texto, depois = 0) {
+// Legenda (título acima) ou fonte (abaixo): Arial 10, centralizada, espaço simples.
+function legenda(texto, fonte = false) {
   return new Paragraph({
     children: runs(texto, { size: TAM_QUADRO }),
     alignment: AlignmentType.CENTER,
-    keepNext: depois === 0,
-    spacing: { line: SIMPLES, before: depois ? 0 : 240, after: depois },
+    keepNext: !fonte,
+    spacing: { line: SIMPLES, before: 0, after: 0 },
   });
+}
+
+// Nota abaixo da fonte: Arial 10, justificada, espaço simples.
+function nota(texto) {
+  return new Paragraph({ children: runs(texto, { size: TAM_QUADRO }), alignment: AlignmentType.JUSTIFIED,
+    indent: { firstLine: 0 }, spacing: { line: SIMPLES, before: 0, after: 0 } });
 }
 
 const NUM = /^[-−]?(R\$ ?)?[\d.]+(,\d+)?%?$/;
@@ -209,17 +225,19 @@ function quadro(linhas, tipo) {
   });
 }
 
-// Título 1 (capítulo) e título de referências: caixa alta, negrito, à esquerda, sem recuo.
-function titulo1(texto, quebra) {
-  return new Paragraph({ heading: HeadingLevel.TITLE, alignment: AlignmentType.LEFT, indent: { firstLine: 0 },
+// Título 1 (capítulo): caixa alta, negrito, à esquerda, sem recuo. Título sem número (REFERÊNCIAS):
+// igual, mas centralizado (manual da UFBA).
+function titulo1(texto, quebra, centro = false) {
+  return new Paragraph({ heading: HeadingLevel.TITLE, alignment: centro ? AlignmentType.CENTER : AlignmentType.LEFT, indent: { firstLine: 0 },
     pageBreakBefore: quebra, keepNext: true, children: runs(texto.toUpperCase(), { bold: true }),
     spacing: { line: ENTRELINHA, before: 0, after: 0 } });
 }
 
-// Referências: espaçamento 1,5, justificadas, sem recuo (_docs/_instrucoes/1d_formatacao.md).
+// Referências: só à margem esquerda, espaço simples, sem recuo, e uma linha em branco de 12 pt
+// entre uma e outra (NBR 6023 e manual da UFBA; _docs/_instrucoes/1d_formatacao.md).
 function referencia(texto) {
-  return new Paragraph({ children: runs(texto), alignment: AlignmentType.JUSTIFIED,
-    indent: { firstLine: 0 }, spacing: { line: ENTRELINHA, after: DEPOIS } });
+  return [new Paragraph({ children: runs(texto), alignment: AlignmentType.LEFT,
+    indent: { firstLine: 0 }, spacing: { line: SIMPLES, before: 0, after: 0 } }), branco(12)];
 }
 
 // No trabalho inteiro, as listas de cada capítulo viram uma só, no fim, em ordem alfabética e sem repetição.
@@ -250,10 +268,10 @@ function converte(md, MD, blocos = []) {
     } else if (/^\*\*Refer[êe]ncias[^*]*\*\*/.test(l.trim())) {
       // "Referências citadas neste capítulo": como o título 1, sem número (só no capítulo avulso).
       referencias = true;
-      if (!TRABALHO) blocos.push(titulo1(l.trim().replace(/\*\*/g, "").toUpperCase(), true));
+      if (!TRABALHO) blocos.push(titulo1(l.trim().replace(/\*\*/g, "").toUpperCase(), true, true));
     } else if (/^\*\*(Quadro|Tabela|Figura) [\d.]+/.test(l)) {
       tipoLegenda = l.match(/^\*\*(Quadro|Tabela|Figura)/)[1];
-      blocos.push(legenda(l));
+      blocos.push(branco(12, true), legenda(l));
     } else if (/^!\[[^\]]*\]\([^)]+\)/.test(l.trim())) {
       const arq = path.resolve(path.dirname(MD), l.trim().match(/\(([^)]+)\)/)[1]);
       const buf = fs.readFileSync(arq);
@@ -262,7 +280,12 @@ function converte(md, MD, blocos = []) {
       blocos.push(new Paragraph({ alignment: AlignmentType.CENTER, keepNext: true, spacing: { after: 0 },
         children: [new ImageRun({ type: "png", data: buf, transformation: { width: w, height: Math.round(w * alt / larg) } })] }));
     } else if (l.startsWith("Fonte:")) {
-      blocos.push(legenda(l, 240));
+      blocos.push(legenda(l, true));
+      // nota logo abaixo da fonte; depois, a linha em branco que fecha a tabela, o quadro ou a figura
+      let j = i + 1;
+      while (j < linhas.length && !linhas[j].trim()) j++;
+      if (j < linhas.length && linhas[j].startsWith("Nota:")) { blocos.push(nota(linhas[j])); i = j; }
+      blocos.push(branco(12));
     } else if (l.startsWith("|")) {
       const tab = [];
       while (i < linhas.length && linhas[i].startsWith("|")) {
@@ -282,9 +305,9 @@ function converte(md, MD, blocos = []) {
         alignment: AlignmentType.JUSTIFIED,
         numbering: { reference: "numerada", level: 0, instance: instancia }, spacing: { line: ENTRELINHA, after: 0 } }));
     } else if (referencias) {
-      if (TRABALHO) REFS.add(l.trim()); else blocos.push(referencia(l));
+      if (TRABALHO) REFS.add(l.trim()); else blocos.push(...referencia(l));
     } else {
-      blocos.push(corpo(l));
+      blocos.push(corpo(l), branco(6));
     }
   }
   return blocos;
@@ -296,7 +319,7 @@ function trabalho() {
   const chave = (r) => r.replace(/[*`]/g, "").normalize("NFD").replace(/[̀-ͯ]/g, "");
   // Comparação por caractere: o "." do autor sozinho vem antes do ";" da coautoria.
   const ordem = [...REFS].sort((a, b) => (chave(a).toUpperCase() < chave(b).toUpperCase() ? -1 : 1));
-  return [...blocos, titulo1("REFERÊNCIAS", true), ...ordem.map(referencia)];
+  return [...blocos, titulo1("REFERÊNCIAS", true, true), ...ordem.flatMap(referencia)];
 }
 
 const doc = new Document({

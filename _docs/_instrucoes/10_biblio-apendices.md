@@ -16,7 +16,7 @@ Conferir o manual ou as normas complementares da UFBA e do curso, e as orientaç
 
 ## Referências (NBR 6023:2018)
 
-- Lista única, no fim do trabalho, em ordem alfabética. Alinhamento e espaçamento seguem `1d_formatacao.md` (justificada, espaço 1,5), que prevalece sobre a NBR 6023 (esquerda, espaço simples).
+- Lista única, no fim do trabalho, em ordem alfabética, sob o título REFERÊNCIAS centralizado e em negrito. Alinhada só à esquerda, em espaço simples, com uma linha em branco de 12 pt entre as referências (NBR 6023 e manual da UFBA; `1d_formatacao.md`).
 - Título em destaque (itálico ou negrito — escolher um e manter).
 - Documentos online: incluir "Disponível em: URL. Acesso em: dia mês abreviado ano." Toda referência com versão de acesso público (lei, base pública, artigo em acesso aberto, dissertação em repositório) leva o link, conferido antes de entrar; obra paga ou sem versão aberta (livros, periódicos fechados, ABNT) fica sem link.
 - Incluir apenas obras citadas no texto. Leituras não citadas não entram.

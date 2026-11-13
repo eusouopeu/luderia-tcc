@@ -3,7 +3,7 @@ Apêndices do TMin num .docx separado do trabalho principal.
 
 Uso: python3 _src/outros/G4_textos/gerar_apendices_tmin.py textos/TCC_luderia_v<n>.docx
 
-Acrescenta ao fim do próprio .docx principal, depois das referências (09/11/2026: texto e apêndices num só
+Acrescenta ao fim do próprio .docx principal, depois das referências (9 de novembro de 2026: texto e apêndices num só
 documento, pedido da orientação; antes, um .docx separado), os apêndices citados no texto, na ordem de citação:
 A (concorrentes do B1), B (contagem direta do B3), C (bases públicas do B4),
 D (matriz de evidências), E (registro de premissas), F (análise de conteúdo
@@ -34,7 +34,7 @@ B3 = ROOT / "dados" / "B3_contagem" / "_dados-agregados"
 B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados" / "analise_conteudo"
 FIG_MC = ROOT / "textos" / "graficos" / "G-1_monte_carlo.png"
 LETRAS = "ABCDEFG"
-DATA_MODELO = "09/11/2026"  # versão do modelo financeiro de que saem os apêndices E e G
+DATA_MODELO = "9 de novembro de 2026"  # versão do modelo financeiro de que saem os apêndices E e G
 
 
 # --------------------------------------------------------------- formato
@@ -77,24 +77,31 @@ def titulo(t):
             f'<w:r>{RPR.format(b=B(1), sz=24)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>')
 
 
+def branco(pt=12, keep=False):
+    """Linha em branco de espaçamento simples, com a altura do corpo `pt`: separa os blocos no lugar do
+    espaçamento antes e depois do parágrafo (_docs/_instrucoes/1d_formatacao.md, 13 de novembro de 2026)."""
+    return (f'<w:p><w:pPr>{"<w:keepNext/>" if keep else ""}<w:spacing w:before="0" w:after="0" w:line="240" w:lineRule="auto"/>'
+            f'<w:ind w:firstLine="0"/><w:rPr><w:sz w:val="{pt * 2}"/><w:szCs w:val="{pt * 2}"/></w:rPr></w:pPr></w:p>')
+
+
 def par(t):
-    return ('<w:p><w:pPr><w:spacing w:after="284" w:line="360" w:lineRule="auto"/><w:ind w:firstLine="567"/><w:jc w:val="both"/></w:pPr>'
-            f'<w:r>{RPR.format(b="", sz=24)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>')
+    return ('<w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="360" w:lineRule="auto"/><w:ind w:firstLine="567"/><w:jc w:val="both"/></w:pPr>'
+            f'<w:r>{RPR.format(b="", sz=24)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>' + branco(6))
 
 
 def legenda(t):
-    return ('<w:p><w:pPr><w:keepNext/><w:spacing w:before="240" w:after="0" w:line="240" w:lineRule="auto"/><w:jc w:val="center"/></w:pPr>'
+    return branco(12, keep=True) + ('<w:p><w:pPr><w:keepNext/><w:spacing w:before="0" w:after="0" w:line="240" w:lineRule="auto"/><w:jc w:val="center"/></w:pPr>'
             f'<w:r>{RPR.format(b=B(1), sz=20)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>')
 
 
 def fonte(t, fim=True):
-    return (f'<w:p><w:pPr><w:spacing w:before="0" w:after="{240 if fim else 0}" w:line="240" w:lineRule="auto"/><w:jc w:val="center"/></w:pPr>'
-            f'<w:r>{RPR.format(b="", sz=20)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>')
+    return (f'<w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="240" w:lineRule="auto"/><w:jc w:val="center"/></w:pPr>'
+            f'<w:r>{RPR.format(b="", sz=20)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>') + (branco(12) if fim else "")
 
 
 def nota(t):
-    return ('<w:p><w:pPr><w:spacing w:before="0" w:after="240" w:line="240" w:lineRule="auto"/><w:jc w:val="both"/></w:pPr>'
-            f'<w:r>{RPR.format(b="", sz=20)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>')
+    return ('<w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="240" w:lineRule="auto"/><w:jc w:val="both"/></w:pPr>'
+            f'<w:r>{RPR.format(b="", sz=20)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>') + branco(12)
 
 
 def tabela(tipo, larg, linhas, jc, sz=20):
@@ -196,7 +203,7 @@ def apendice_a(d):
     lista = est.sort_values(["capital_endereco", "volume_avaliacoes"], ascending=[True, False])
     t2 = [["Concorrente", "Metrópole", "Nota (1 a 5)", "Avaliações"]] + [
         [r.nome, r.capital_endereco, num(r.avaliacao_media), brl(r.volume_avaliacoes, 0)] for r in lista.itertuples()]
-    fonte_b1 = "Fonte: elaborado pelo próprio autor, com base no Bloco B1 (Google Places API, 09/2026 a 12/11/2026)."
+    fonte_b1 = "Fonte: elaborado pelo próprio autor, com base no Bloco B1 (Google Places API, setembro a 12 de novembro de 2026)."
     q1, n_termos, n_cap, sem_termo = termos_busca(est)
     return [titulo("APÊNDICE A – CONCORRENTES DO BLOCO B1"),
             par(f"A busca inicial pela Google Places API levantou 164 candidatos com mais de 100 avaliações nas 14 capitais metropolitanas "
@@ -238,7 +245,7 @@ def apendice_b(d):
                 "Bela Vista e 9 na Paralela (Tabela B.1)."),
             legenda("Tabela B.1 – Registros por visita"),
             tabela("Tabela", [800, 1071, 900, 1200, 900, 900, 1100, 1100, 1100], t1, ["left", "left"] + ["right"] * 7),
-            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B3 (10/10/2026 a 30/10/2026).", fim=False),
+            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B3 (10 a 30 de outubro de 2026).", fim=False),
             nota("Nota: visita pela data de início. Circulação: pessoas que entraram pela porta ÷ horas observadas, sem quem já estava "
                  "dentro na chegada (Tabela 3.1). Mesas ocupadas em média = ocupação média × mesas da unidade; pessoas por grupo e "
                  "permanência só dos grupos sentados durante a visita."),
@@ -248,7 +255,7 @@ def apendice_b(d):
                 "o número de pessoas por nota não foi medido."),
             legenda("Tabela B.2 – Notas fiscais emitidas entre visitas"),
             tabela("Tabela", [1771, 1800, 1800, 1000, 1350, 1350], t2, ["left", "left", "left", "right", "right", "right"]),
-            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B3 (NFC-e da São Jogue, 10/10/2026 a 30/10/2026).")], {}
+            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B3 (NFC-e da São Jogue, 10 a 30 de outubro de 2026).")], {}
 
 
 def apendice_c(d):
@@ -259,12 +266,12 @@ def apendice_c(d):
          ["IBGE, PNAD Contínua", "SIDRA 5436 e 7395", "Capitais; 2º trimestre de 2026", "Renda (seção 5.2)"],
          ["IBGE, POF 2017-2018", "SIDRA 6715 e 6972; perfil das despesas", "Brasil e Bahia; 2017-2018", "Gasto com lazer e alimentação fora (seções 5.1 e 5.5)"],
          ["IBGE, PAS", "SIDRA 2611, 2619 e 10758", "Brasil; 2023", "CMV de A&B (C01)"],
-         ["IBGE, IPCA", "SIDRA 7060", "Brasil e Salvador; 12 meses até ago/2026", "Preços (Figura 5.3)"],
-         ["MTE, Novo CAGED", "Admissões", "Salvador; ago/2025 a jul/2026", "Salários (Quadro 7.2; C06)"],
-         ["Fipe, FipeZap", "Locação comercial", "Salvador; jul/2026", "Aluguel (C04)"],
+         ["IBGE, IPCA", "SIDRA 7060", "Brasil e Salvador; 12 meses até agosto de 2026", "Preços (Figura 5.3)"],
+         ["MTE, Novo CAGED", "Admissões", "Salvador; agosto de 2025 a julho de 2026", "Salários (Quadro 7.2; C06)"],
+         ["Fipe, FipeZap", "Locação comercial", "Salvador; julho de 2026", "Aluguel (C04)"],
          ["LC n. 123/2006", "Anexos I e III", "Vigentes em 2026", "Simples Nacional (seção 8.1)"],
          ["IBGE, CONCLA", "CNAE 2.3", "Subclasses; 2026", "Enquadramento (seção 8.1)"],
-         ["BCB", "SGS 432, 1619 e 13522; Focus", "Brasil; Focus de 11/09/2026", "Taxa de desconto (M01)"]]
+         ["BCB", "SGS 432, 1619 e 13522; Focus", "Brasil; Focus de 11 de setembro de 2026", "Taxa de desconto (M01)"]]
     s = pd.concat([d["f"]["simples"]["I"], d["f"]["simples"]["III"]])
     t2 = [["Anexo", "Faixa", "Receita bruta em 12 meses (R$)", "Alíquota nominal (%)", "Parcela a deduzir (R$)"]] + [
         [r.anexo, str(int(r.faixa)), f"{brl(r.rbt12_min)} a {brl(r.rbt12_max)}", num(r.aliquota_nominal_pct), brl(r.parcela_deduzir)]
@@ -276,13 +283,13 @@ def apendice_c(d):
                 "As faixas do Simples Nacional (Tabela C.2) e os salários de admissão (Tabela C.3) entram direto no modelo financeiro."),
             legenda("Quadro C.1 – Séries das bases públicas usadas no plano"),
             tabela("Quadro", [2200, 2300, 2271, 2300], q, ["left"] * 4),
-            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B4 (10/2026)."),
+            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B4 (outubro de 2026)."),
             legenda("Tabela C.2 – Faixas do Simples Nacional, anexos I e III"),
             tabela("Tabela", [900, 800, 3371, 1900, 2100], t2, ["center", "center", "right", "right", "right"]),
             fonte("Fonte: elaborado pelo próprio autor, com base na LC n. 123/2006 (anexos I e III)."),
             legenda("Tabela C.3 – Salários de admissão da equipe"),
             tabela("Tabela", [4371, 1200, 1200, 2300], t3, ["left", "center", "right", "right"]),
-            fonte("Fonte: elaborado pelo próprio autor, com base no Novo CAGED (Salvador, admissões de 08/2025 a 07/2026, mediana).", fim=False),
+            fonte("Fonte: elaborado pelo próprio autor, com base no Novo CAGED (Salvador, admissões de agosto de 2025 a julho de 2026, mediana).", fim=False),
             nota("Nota: recreador em todas as atividades, porque a CNAE 56 tem amostra pequena para a ocupação, e cozinheiro geral na "
                  "CNAE 56, sem chefe de cozinha no recorte. Salário mensal de admissão, pago inteiro nas jornadas de 38 a 40 h por semana "
                  "do plano (seção 7.5); sem empregado de meio período.")], {}
@@ -326,11 +333,11 @@ def apendice_e(d):
             legenda("Quadro E.1 – Registro de premissas do modelo financeiro"),
             tabela("Quadro", [550, 2450, 1050, 1050, 1050, 2221, 700], linhas,
                    ["center", "left", "center", "center", "center", "left", "center"], sz=18),
-            fonte("Fonte: elaborado pelo próprio autor, com base no modelo financeiro e nos Blocos B1, B3 e B4 (10/2026).")], \
+            fonte("Fonte: elaborado pelo próprio autor, com base no modelo financeiro e nos Blocos B1, B3 e B4 (outubro de 2026).")], \
         dict(premissas=len(d["prem"]))
 
 
-# o que cada tema marca (resumo da descrição do banco "2 - Comentários" e do dicionário de 02/11/2026)
+# o que cada tema marca (resumo da descrição do banco "2 - Comentários" e do dicionário de 2 de novembro de 2026)
 DEF_TEMAS = {
     "atendimento presencial": "Cordialidade e atenção da equipe; atendimento e serviço genéricos",
     "comida": "Sabor e qualidade dos pratos",
@@ -384,7 +391,7 @@ def apendice_f(d):
             legenda("Quadro F.1 – Grade de temas e frequência nas avaliações"),
             tabela("Quadro", [2100, 3471, 900, 900, 1700], q1, ["left", "left", "right", "right", "right"], sz=18),
             fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B2 (avaliações até \"3 meses atrás\", coletadas de "
-                  "09/10/2026 a 30/10/2026).", fim=False),
+                  "9 a 30 de outubro de 2026).", fim=False),
             nota("Nota: temas não exclusivos; uma avaliação pode elogiar e criticar vários temas. Elogio e crítica em número de "
                  "avaliações, de 1.628."),
             par(f"A recodificação cega cobriu 199 avaliações sorteadas com estratificação por concorrente: 139 na rodada 1, antes da "
@@ -394,7 +401,7 @@ def apendice_f(d):
                 f"sem polaridade, é exploratório; nas 1.628 avaliações, aparece assim: {ctx}."),
             legenda("Tabela F.2 – Concordância da recodificação cega"),
             tabela("Tabela", [1000, 3871, 1400, 1200, 1600], t2, ["center", "left", "right", "right", "left"]),
-            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B2 (recodificação de 02/11/2026 e 03/11/2026).", fim=False),
+            fonte("Fonte: elaborado pelo próprio autor, com base no Bloco B2 (recodificação de 2 e 3 de novembro de 2026).", fim=False),
             nota("Nota: critério de aceitação de 0,70. Na rodada 1, a frequência de visita e a intenção de voltar não foram "
                  "comparadas, porque só o autor as codificou.")], dict(kappa_temas=num(k2.kappa))
 
@@ -468,7 +475,7 @@ def confere(texto, chaves):
 
 def main():
     """Põe os apêndices no fim do próprio .docx principal, depois das referências (um só documento com o texto e os
-    apêndices, pedido da orientação de 09/11/2026). Rodar uma vez sobre o .docx recém-gerado, antes dos pré-textuais."""
+    apêndices, pedido da orientação de 9 de novembro de 2026). Rodar uma vez sobre o .docx recém-gerado, antes dos pré-textuais."""
     principal = Path(sys.argv[1])
     z = zipfile.ZipFile(principal)
     itens = [(i, z.read(i.filename)) for i in z.infolist()]

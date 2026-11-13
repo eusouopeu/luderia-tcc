@@ -50,7 +50,7 @@ Premissa é um valor que o modelo assume sobre o futuro, como o gasto por pessoa
 | I01 | Reforma e instalações (R$ por m²) | 1.052,75 | 816,18 | 643,14 | 123.832 | N2 + N3 + N6 |
 | R09 | Aluguéis de jogos (por mês) | 10 | 30 | 60 | 91.170 | N6 |
 
-Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E) e nos Blocos B1 a B5 (10 e 11/2026).
+Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E) e nos Blocos B1 a B5 (outubro e novembro de 2026).
 
 As premissas de demanda vêm da contagem direta na São Jogue (B3). Nas quatro noites, entraram de 4,03 a 11,43 pessoas por hora, com média simples de 6,40, em que cada visita pesa o mesmo (Tabela 3.1). A circulação provável é essa média, e a otimista, a maior visita. A média é puxada pela visita de 10/10, a única acima de 5,26: a mediana das quatro é de 5,08, e a média ponderada pelas horas, 74 pessoas em 10,92 horas, de 6,78. Com a mediana, o VPL fica negativo, porque ela fica abaixo da ruptura da seção 9.5; com a média ponderada, sobe. A escolha da média simples segue o desenho das visitas, uma noite por unidade e por dia, mas a distância entre média e mediana mostra o quanto o provável depende de uma só noite. A circulação não é reduzida na proporção das mesas, de 10 na São Jogue para 6 no plano: a demanda vem do público, não do tamanho do salão, enquanto o salão não lota. Nas visitas, a São Jogue não lotou: a ocupação média das mesas foi de 30% a 67%. O salão de 6 mesas comporta até 11,9 pessoas por hora, com grupos de 3,6 pessoas e permanência média de 109 minutos.
 
@@ -58,9 +58,9 @@ A circulação pessimista vem das notas fiscais (NFC-e) da São Jogue. A Bela Vi
 
 Os preços vêm dos concorrentes (seção 6.3). A cesta de consumo de cada concorrente soma a taxa de entrada, a mediana das bebidas e o hambúrguer não vegetariano mais barato do cardápio, prato presente em quase todas as casas, o que torna as cestas comparáveis entre elas. Quando a taxa muda com o dia, entra a média das taxas, ponderada pelos dias em que cada uma vale. Nos 18 concorrentes com taxa de entrada conhecida e gasto declarado, o gasto médio é de R$ 78,94: média simples dos gastos das casas, cada uma pela média das declarações no ponto médio das faixas (seção 6.3). Nos 14 deles com cesta completa, a cesta média é de R$ 71,09: cada pessoa gasta pouco mais de uma cesta de consumo. O gasto pessimista é o do concorrente de menor gasto, R$ 40,00, e o otimista, o do de maior gasto, R$ 111,09. A taxa de entrada é a adotada na seção 6.3, R$ 19,65 nos três cenários (R07), e o restante do gasto é A&B. Com isso, o cenário muda o volume e o gasto em A&B.
 
-Do lado dos custos, o modelo usa dados públicos sempre que possível: o aluguel dos anúncios do Bloco B5, os salários das medianas de admissão em Salvador no Novo CAGED e o custo das mercadorias vendidas (CMV) da PAS. O CMV é o custo dos ingredientes e das bebidas que a casa revende. Nos serviços de alimentação, as mercadorias e os materiais de consumo e de reposição somaram 29,6% da receita líquida em 2023 (IBGE, PAS 2023), e o consumo de mercadorias, 26,8% em 2024 (IBGE, PAS 2024, tabela 10758; seção 5.1). O provável fica em 30% da receita de A&B, perto do dado de 2023, que inclui os materiais de consumo de uma cozinha; o otimista, em 26%, perto do de 2024; e o pessimista, em 35%, para a perda e o desperdício de uma casa nova. O salário de admissão tende a ficar abaixo do pago a quem já está no cargo; por isso, o pessimista soma 11,4% aos salários, a maior distância entre o 3º quartil e a mediana de admissão entre os cargos da equipe. O ponto fica na Pituba, com área para 8 mesas desde a abertura, para a etapa de mesas não exigir mudança nem obra (decisão do autor; seção 7.1). A área e o aluguel vêm dos 17 anúncios de 150 a 200 m² na Pituba (B5, nov/2026): área média de 182 m² e aluguel médio de R$ 11,6 mil por mês, ou R$ 63,79 por m², com condomínio e IPTU de 11,8% do aluguel. O pessimista e o otimista usam o 3º e o 1º quartil do preço por m², R$ 75,00 e R$ 50,00. O preço pedido no anúncio tende a ficar acima do fechado. As despesas gerais não têm cotação e ficam em N6; reforma, mobiliário, cozinha e informática vêm do orçamento da etapa 1 (seção 9.2). A refeição da equipe (C14 e C15) e a PLR (C16) são decisões do autor (N6) sobre benefícios, e não dados medidos.
+Do lado dos custos, o modelo usa dados públicos sempre que possível: o aluguel dos anúncios do Bloco B5, os salários das medianas de admissão em Salvador no Novo CAGED e o custo das mercadorias vendidas (CMV) da PAS. O CMV é o custo dos ingredientes e das bebidas que a casa revende. Nos serviços de alimentação, as mercadorias e os materiais de consumo e de reposição somaram 29,6% da receita líquida em 2023 (IBGE, PAS 2023), e o consumo de mercadorias, 26,8% em 2024 (IBGE, PAS 2024, tabela 10758; seção 5.1). O provável fica em 30% da receita de A&B, perto do dado de 2023, que inclui os materiais de consumo de uma cozinha; o otimista, em 26%, perto do de 2024; e o pessimista, em 35%, para a perda e o desperdício de uma casa nova. O salário de admissão tende a ficar abaixo do pago a quem já está no cargo; por isso, o pessimista soma 11,4% aos salários, a maior distância entre o 3º quartil e a mediana de admissão entre os cargos da equipe. O ponto fica na Pituba, com área para 8 mesas desde a abertura, para a etapa de mesas não exigir mudança nem obra (decisão do autor; seção 7.1). A área e o aluguel vêm dos 17 anúncios de 150 a 200 m² na Pituba (B5, novembro de 2026): área média de 182 m² e aluguel médio de R$ 11,6 mil por mês, ou R$ 63,79 por m², com condomínio e IPTU de 11,8% do aluguel. O pessimista e o otimista usam o 3º e o 1º quartil do preço por m², R$ 75,00 e R$ 50,00. O preço pedido no anúncio tende a ficar acima do fechado. As despesas gerais não têm cotação e ficam em N6; reforma, mobiliário, cozinha e informática vêm do orçamento da etapa 1 (seção 9.2). A refeição da equipe (C14 e C15) e a PLR (C16) são decisões do autor (N6) sobre benefícios, e não dados medidos.
 
-Falta a taxa que traz os valores futuros para o presente. A TMA é o retorno mínimo que o investidor exige para pôr o dinheiro na luderia, em vez de aplicá-lo numa alternativa segura (seção 2.5). Ela soma duas parcelas: o juro real, que é o ganho de uma aplicação segura acima da inflação, e um prêmio pelo risco de um pequeno negócio novo. O juro real sai da Selic meta de 14,0% (BCB, set/2026) e do IPCA esperado de 4,3% para 2027 (Focus):
+Falta a taxa que traz os valores futuros para o presente. A TMA é o retorno mínimo que o investidor exige para pôr o dinheiro na luderia, em vez de aplicá-lo numa alternativa segura (seção 2.5). Ela soma duas parcelas: o juro real, que é o ganho de uma aplicação segura acima da inflação, e um prêmio pelo risco de um pequeno negócio novo. O juro real sai da Selic meta de 14,0% (BCB, setembro de 2026) e do IPCA esperado de 4,3% para 2027 (Focus):
 
 juro real = (1 + Selic) ÷ (1 + IPCA esperado) − 1 (3)
 
@@ -72,7 +72,7 @@ A TMA provável é de 15% ao ano, um prêmio de 5,7 pontos percentuais sobre o j
 
 ![Selic meta e IPCA em 12 meses, com projeção do Relatório Focus](../graficos/9-1_selic_ipca.png)
 
-Fonte: elaborado pelo próprio autor, com base no Banco Central do Brasil, SGS (séries 432 e 13522) e Relatório Focus de 11/09/2026.
+Fonte: elaborado pelo próprio autor, com base no Banco Central do Brasil, SGS (séries 432 e 13522) e Relatório Focus de 11 de setembro de 2026.
 
 ## 9.2 INVESTIMENTO INICIAL
 
@@ -93,7 +93,7 @@ O investimento inicial é o dinheiro gasto antes da abertura: obra, equipamentos
 | Capital de giro | 121.780,56 | 65.428,60 | 38.445,64 |
 | Total | 567.147,95 | 382.118,69 | 276.076,28 |
 
-Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E) e no Bloco B5 (SINAPI de set/2026; anúncios de 03/11/2026; anúncios de aluguel de 12/11/2026).
+Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E) e no Bloco B5 (SINAPI de setembro de 2026; anúncios de 3 de novembro de 2026; anúncios de aluguel de 12 de novembro de 2026).
 
 O capital de giro é a reserva de caixa que paga as contas enquanto a receita ainda não cobre os custos. Ele equivale a dois meses de custos fixos, R$ 65 mil, e cobre os primeiros meses da rampa, em que a receita ainda fica abaixo dos custos. A caução são três meses de aluguel, exigidos pelo locador como garantia. Os dois valores ficam presos no negócio enquanto ele funciona e só voltam ao caixa se ele fechar (seção 9.3). A cozinha completa desde a abertura custa R$ 39 mil e sustenta o CMV de 30%; no pessimista, com a lava-louças de capota, chega a R$ 89 mil.
 
@@ -138,7 +138,7 @@ pessoas no equilíbrio = custos fixos ÷ margem por pessoa (5)
 
 O equilíbrio exige 620 pessoas por mês, 28,6 por dia aberto, o que equivale a R$ 49,6 mil de receita mensal. O cenário provável fica 35% acima desse ponto. A PLR não muda o equilíbrio: com EBITDA zero, ela também é zero. A conta usa as alíquotas do ano maduro.
 
-A Tabela 9.3 junta o resultado de cada ano e o fluxo de caixa. O resultado operacional antes de juros, impostos, depreciação e amortização (EBITDA) é a receita menos todos os custos que saem do caixa: mede o dinheiro que a operação gera. A depreciação é a perda de valor dos bens pelo uso, lançada como custo ao longo da vida útil, sem saída de dinheiro. No cenário provável, o EBITDA é positivo desde o ano 1, mesmo com a rampa, mas o lucro do ano 1 fica negativo depois da depreciação. A partir do ano 2, o EBITDA é de R$ 129 mil por ano, já descontada a PLR de R$ 7 mil, e o lucro, depois da depreciação de R$ 51 mil, de R$ 78 mil.
+A Tabela 9.3 junta o resultado de cada ano, na demonstração do resultado do exercício (DRE), e o fluxo de caixa, na demonstração dos fluxos de caixa (DFC). O resultado operacional antes de juros, impostos, depreciação e amortização (EBITDA) é a receita menos todos os custos que saem do caixa: mede o dinheiro que a operação gera. A depreciação é a perda de valor dos bens pelo uso, lançada como custo ao longo da vida útil, sem saída de dinheiro. No cenário provável, o EBITDA é positivo desde o ano 1, mesmo com a rampa, mas o lucro do ano 1 fica negativo depois da depreciação. A partir do ano 2, o EBITDA é de R$ 129 mil por ano, já descontada a PLR de R$ 7 mil, e o lucro, depois da depreciação de R$ 51 mil, de R$ 78 mil.
 
 O fluxo de caixa registra o dinheiro que entra e sai em cada ano: o investimento no ano 0 e o EBITDA nos anos 1 a 5. No ano 5 entra o valor residual: o valor que o negócio ainda tem no fim do horizonte, já que a luderia não fecha no ano 6. Como o negócio segue aberto, a caução e o capital de giro continuam presos nele e não voltam ao caixa: o valor residual já os inclui, e somá-los a ele contaria o mesmo dinheiro duas vezes. Só no cálculo sem valor residual, em que a luderia fecha no fim do ano 5, os dois voltam. O modelo calcula esse valor como uma perpetuidade, isto é, supõe que o resultado do ano 5 se repete todos os anos, sem crescimento, e traz essa sequência para o valor presente pela TMA (ASSAF NETO, 2014). Do EBITDA sai um reinvestimento igual à depreciação, para repor os bens gastos:
 
@@ -148,7 +148,7 @@ valor residual = (EBITDA do ano 5 − depreciação) ÷ TMA (6)
 
 A Tabela 9.3 também traz o fluxo descontado: cada valor futuro dividido por 1,15 elevado ao número de anos, o que o torna comparável ao dinheiro de hoje. A última linha acumula esses valores e, no ano 5, chega ao VPL. Sem o valor residual, o VPL provável segue positivo (seção 9.4).
 
-**Tabela 9.3 – Demonstração do resultado e fluxo de caixa projetados, cenário provável (R$)**
+**Tabela 9.3 – DRE e DFC projetados, cenário provável (R$)**
 
 | Conta | Ano 0 | Ano 1 | Ano 2 | Ano 3 | Ano 4 | Ano 5 |
 |---|---|---|---|---|---|---|
@@ -231,7 +231,7 @@ O ponto de ruptura é o valor de uma premissa que zera o VPL, com as demais no p
 | C01 | CMV de alimentos e bebidas (% do A&B) | 30% | 35,8% | 35% a 26% | 29,6% (IBGE, PAS 2023) | N2 |
 | M01 | Taxa mínima de atratividade real (% ao ano) | 15% | 23,6% | 18% a 12% | juro real de 9,3% (BCB) | N2 + N6 |
 
-Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E) e nos Blocos B1 a B5 (10/10/2026 a 12/11/2026).
+Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E) e nos Blocos B1 a B5 (10 de outubro a 12 de novembro de 2026).
 
 Nota: a faixa testada vai do pessimista ao otimista do registro de premissas.
 
@@ -250,7 +250,7 @@ A Tabela 9.6 junta os números de demanda do capítulo numa escada, em pessoas p
 | Cenário provável | 38,5 | Equação 1 (início do capítulo) |
 | Capacidade do salão | 107 | Seção 7.2 |
 
-Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E) e no Bloco B3 (10/10/2026 a 30/10/2026).
+Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E) e no Bloco B3 (10 a 30 de outubro de 2026).
 
 Nota: o equilíbrio econômico usa a ruptura da circulação no pico, com as demais premissas no provável. A São Jogue abre todos os dias, e o dia de calendário é também o dia aberto.
 
