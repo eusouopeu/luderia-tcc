@@ -17,10 +17,11 @@ Atualizado em 13/11/2026. Pastas reorganizadas (sem efeito em números): B4 em `
 
 - Quantidades do investimento (N6): projeto do ponto na Pituba.
 - Folha de aprovação: nomes da banca.
+- Legislação: a LOUOS de Salvador (Lei 9.148/2016) não tem texto integral em fonte oficial acessível; baixar à mão em `bibliografia/F1_Legislacao/4_funcionamento_e_pesquisa/`.
 - `B4-a_renda_rm.py` para: Campinas tem luderia no B1, mas a PNAD Contínua não tem a RM de Campinas; a Figura 5.x de renda por RM não regera até decidir (tirar Campinas da figura ou usar outra fonte).
 - Coletas do autor (aluguel, horários de pico, entorno, B2, webscripts): roteiros em [pendências](_docs/pendencias.md), "Coletas em andamento".
 - Entorno: a coleta de 12/11 (39 casas) subconta estações de metrô (Maps devolveu ranking de 10 da cidade). Coletor 2026.11.13-2 (sem BRT nem estação tubo); recoletar com ele, no mínimo as casas do Rio, antes de usar o entorno no TMin.
-- Webscripts (13/11): os carregadores apontam agora para `_src/WebScripts/`; **reinstalar todos** no Tampermonkey (`python3 _src/Extras/G5_outros/gerar_carregadores.py --abrir --todos`), senão os instalados procuram o caminho antigo e param; o coletor do Instagram coleta pela grade quando a API antiga falha (404 em 12/11); recoletar Cineplay, Fortalúdica, Bardo Mago e Comdado no período 01/07 a 01/11. Não muda o TMin até um acervo novo entrar no B1. Aluguel: reinstalar o `portais_aluguel` (2026.11.12-8, recarrega página vazia e retoma de onde parou) e refazer só OLX Pituba, ZAP Caminho das Árvores e Rio Vermelho, Viva Real e OLX Barra; o build usa só `data_coleta` 12/11 (há 296 linhas de 03/11 de Salvador inteira no CSV).
+- Webscripts (13/11): pastas renomeadas para `B1_estabelecimentos`, `B2_avaliacoes_recentes`, `B4_bases_publicas` e `B5_ativos_fixos`, e os carregadores apontam para elas; **reinstalar todos** no Tampermonkey (`python3 _src/Extras/G5_outros/gerar_carregadores.py --abrir --todos`), senão os instalados procuram o caminho antigo e param; o coletor do Instagram coleta pela grade quando a API antiga falha (404 em 12/11); recoletar Cineplay, Fortalúdica, Bardo Mago e Comdado no período 01/07 a 01/11. Não muda o TMin até um acervo novo entrar no B1. Aluguel: reinstalar o `portais_aluguel` (2026.11.12-8, recarrega página vazia e retoma de onde parou) e refazer só OLX Pituba, ZAP Caminho das Árvores e Rio Vermelho, Viva Real e OLX Barra; o build usa só `data_coleta` 12/11 (há 296 linhas de 03/11 de Salvador inteira no CSV).
 
 ## Onde está o resto
 

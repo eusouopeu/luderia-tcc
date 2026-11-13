@@ -16,7 +16,7 @@ Todo número do texto pode ser gerado de novo por um script deste repositório. 
 | `textos/_planejamento/_instrumentos/` | Roteiro de observação, livro de códigos da análise de conteúdo e protocolo de validação |
 | `_docs/_instrucoes/` | Instruções por capítulo (ver [CLAUDE.md](CLAUDE.md)) |
 | `_src/PyScripts/B<n>_<Coleta>/` | Scripts de uma coleta (ex.: `B1_Estabelecimentos`, `B4_Marketing`): `1_collect/`, `2_build/`, `3_analise/`, `4_logs/` (fora do git) e `5_outros/` (auxiliares). Convenções de nomes em [`_src/dicionario.md`](_src/dicionario.md) |
-| `_src/WebScripts/` | Webscripts do Tampermonkey e seus testes, uma pasta por bloco (`[Bn] Nome/`); carregadores em `_carregadores/` (fora do git, gerados por `_src/Extras/G5_outros/gerar_carregadores.py`) e kit dos painéis em `_kit_painel/` |
+| `_src/WebScripts/` | Webscripts do Tampermonkey e seus testes, uma pasta por bloco (`B<n>_<nome>/`, ex.: `B1_estabelecimentos/`); carregadores em `_carregadores/` (fora do git, gerados por `_src/Extras/G5_outros/gerar_carregadores.py`) e kit dos painéis em `_kit_painel/`; padrão comum em `specs/especificacoes_comuns.md` |
 | `_src/Extras/` | Utilitários gerais, por função: `G1_planilhas/` (DMax e histogramas), `G2_graficos/`, `G3_modelo_financeiro/`, `G4_textos/` (`.docx` dos capítulos, apêndices, pré-textuais, cronograma) e `G5_outros/` (log comum, carregadores do Tampermonkey, cópia para o vault, leitura offline do Notion) |
 | `dados/B<n>_<coleta>/_dados-brutos/` | Dados brutos de uma coleta (parte não publicada: ver `.gitignore`) |
 | `dados/B<n>_<coleta>/_auditoria/` | Amostras de conferência da coleta e seus registros de sorteio |
@@ -37,7 +37,7 @@ Abrir sempre o [AGORA.md](AGORA.md) primeiro. Depois, conforme a tarefa:
 |---|---|---|
 | Escrever o cap. N | `_docs/_instrucoes/` do capítulo (mapa no [CLAUDE.md](CLAUDE.md)); dados em `dados/B<n>_<coleta>/_dados-agregados/`; skill `meu-estilo-escrita` | `textos/capitulos/`; atualizar `textos/_planejamento/status_capitulos.md` |
 | Escrever o cap. 2 | `_docs/_instrucoes/2_ref-teorico.md` e `bibliografia/_lista-de-leitura_TMin_v2.md` | `textos/capitulos/` |
-| Coletar avaliações (B2) | `_src/WebScripts/[B2] Avaliacoes recentes/maps_avaliacoes.user.js` (Tampermonkey), fila em `dados/B2_avaliacoes/_dados-agregados/B2_fila_coleta.txt` | rodar `B2-b_avaliacoes.py`; situação em `B2_cobertura_coleta.csv` |
+| Coletar avaliações (B2) | `_src/WebScripts/B2_avaliacoes_recentes/maps_avaliacoes.user.js` (Tampermonkey), fila em `dados/B2_avaliacoes/_dados-agregados/B2_fila_coleta.txt` | rodar `B2-b_avaliacoes.py`; situação em `B2_cobertura_coleta.csv` |
 | Ir a campo (B3) | `textos/_planejamento/_instrumentos/roteiro_observacao_sao_jogue.md` e `_src/Extras/App_Observacao/` | `dados/B3_contagem/_dados-brutos/` |
 | Mexer em cardápios, acervos ou Instagram (B1) | `_src/PyScripts/B1_Cardapios/`, `_src/PyScripts/B1_Acervo_jogos/`, `_src/PyScripts/B1_Redes_sociais/` | `dados/B1_cardapios/`, `dados/B1_acervo_jogos/`, `dados/B1_redes_sociais/` |
 | Atualizar uma base pública (B4) | `_src/PyScripts/`; referências em `bibliografia/_referencias_bases_publicas.md` | `dados/B4_<uso>/_dados-agregados/` |

@@ -1,10 +1,116 @@
 ﻿segmento;subtipo;bairro;anuncios;amostra_suficiente;aluguel_m2_p25;aluguel_m2_mediana;aluguel_m2_p75;aluguel_mediana;area_m2_mediana;anuncios_com_encargos;encargos_m2_mediana;custo_ocupacao_m2_mediana
-comercial;loja_ponto;Pituba;79;sim;49,14;62,5;86,33;12000,0;195,0;53;5,52;72,0
-comercial;loja_ponto;Itaigara;29;sim;45,66;77,63;108,7;10000,0;219,0;26;78,39;125,12
+comercial;loja_ponto;Pituba;80;sim;49,57;61,28;86,33;12000,0;195,5;55;5,52;72,0
+comercial;loja_ponto;Caminho das Árvores;47;sim;56,82;73,53;103,94;23000,0;300,0;29;19,0;96,39
+comercial;loja_ponto;Rio Vermelho;33;sim;37,42;50,0;58,63;15000,0;260,0;13;3,87;57,6
+comercial;loja_ponto;Itaigara;31;sim;45,66;75,53;100,22;10000,0;219,0;28;78,39;125,12
+comercial;loja_ponto;Barra;22;sim;33,2;59,07;101,0;14500,0;252,5;12;3,72;69,28
+comercial;loja_ponto;Itapuã;8;sim;41,78;66,15;82,32;4000,0;55,0;4;0,0;41,18
+comercial;loja_ponto;Ondina;8;sim;31,21;52,53;69,14;12805,0;250,0;3;19,8;69,3
+comercial;loja_ponto;STIEP;7;sim;31,66;34,24;39,38;1250,0;33,0;7;0,0;34,24
 comercial;loja_ponto;Graça;6;sim;34,61;40,97;48,37;12000,0;225,0;3;5,8;59,07
+comercial;loja_ponto;Stella Maris;6;sim;33,81;38,74;63,37;3750,0;65,0;3;0,0;34,0
+comercial;loja_ponto;Boca do Rio;5;sim;8,33;37,5;41,67;3000,0;80,0;4;1,92;28,91
+comercial;loja_ponto;Canela;5;sim;22,22;35,0;40,0;14900,0;300,0;4;6,22;40,65
+comercial;loja_ponto;Federação;5;sim;65,22;66,67;89,29;2000,0;24,0;3;19,43;82,5
+comercial;loja_ponto;São Cristóvão;5;sim;30,77;37,5;43,48;1600,0;52,0;2;0,0;32,92
+comercial;loja_ponto;Brotas;4;não;;58,6;;2500,0;38,0;3;18,62;76,31
+comercial;loja_ponto;Mares;4;não;;22,88;;4150,0;145,5;2;0,84;32,08
+comercial;loja_ponto;Nazaré;4;não;;33,89;;2250,0;87,5;3;4,07;32,92
+comercial;loja_ponto;Sete de Abril;4;não;;57,07;;1175,0;20,0;4;5,06;62,12
+comercial;loja_ponto;IAPI;3;não;;50,0;;5900,0;79,0;0;;
+comercial;loja_ponto;Vila Ruy Barbosa / Jardim Cruzeiro;3;não;;65,22;;1500,0;23,0;3;2,27;67,39
+comercial;loja_ponto;Baixa de Quintas;2;não;;26,9;;2750,0;102,5;2;0,55;27,46
+comercial;loja_ponto;Calçada;2;não;;44,64;;3400,0;68,0;2;0,62;45,27
+comercial;loja_ponto;Centro;2;não;;46,92;;2350,0;47,5;2;1,65;48,58
+comercial;loja_ponto;Comércio;2;não;;50,38;;2600,0;54,0;2;10,98;61,35
+comercial;loja_ponto;Dois de Julho;2;não;;33,15;;6500,0;285,0;1;5,41;21,71
+comercial;loja_ponto;Piatã;2;não;;62,71;;1950,0;32,0;2;27,36;90,07
+comercial;loja_ponto;São Caetano;2;não;;41,75;;875,0;56,0;1;3,42;78,42
+comercial;loja_ponto;Vila Canária;2;não;;17,8;;3250,0;182,5;1;0,0;18,92
+comercial;loja_ponto;Vitória;2;não;;73,08;;13946,5;440,0;1;26,34;150,0
+comercial;loja_ponto;Acupe;1;não;;36,84;;2800,0;76,0;0;;
+comercial;loja_ponto;Baixa dos Sapateiros;1;não;;37,5;;1500,0;40,0;0;;
+comercial;loja_ponto;Barbalho;1;não;;29,0;;3480,0;120,0;1;0,0;29,0
+comercial;loja_ponto;Barreiras;1;não;;25,0;;2500,0;100,0;1;0,0;25,0
+comercial;loja_ponto;Barroquinha;1;não;;15,0;;1200,0;80,0;0;;
+comercial;loja_ponto;Boa Vista de Brotas;1;não;;17,56;;2300,0;131,0;0;;
+comercial;loja_ponto;Cajazeiras X;1;não;;45,16;;2800,0;62,0;0;;
+comercial;loja_ponto;Candeal;1;não;;25,45;;1400,0;55,0;1;6,18;31,63
+comercial;loja_ponto;Chapada do Rio Vermelho;1;não;;31,25;;2500,0;80,0;1;0,0;31,25
+comercial;loja_ponto;Cosme de Farias;1;não;;55,15;;7500,0;136,0;0;;
+comercial;loja_ponto;Doron;1;não;;75,0;;2100,0;28,0;1;0,0;75,0
+comercial;loja_ponto;Engenho Velho de Brotas;1;não;;85,71;;3000,0;35,0;1;15,49;101,2
+comercial;loja_ponto;Fazenda Grande IV;1;não;;17,14;;1200,0;70,0;0;;
+comercial;loja_ponto;Garcia;1;não;;56,63;;1699,0;30,0;1;0,0;56,63
+comercial;loja_ponto;Granjas Rurais Presidente Vargas;1;não;;38,33;;2300,0;60,0;0;;
+comercial;loja_ponto;Horto Florestal;1;não;;36,67;;2200,0;60,0;1;10,18;46,85
+comercial;loja_ponto;Jardim Armação;1;não;;46,15;;2400,0;52,0;0;;
+comercial;loja_ponto;Lapinha;1;não;;54,0;;2700,0;50,0;0;;
+comercial;loja_ponto;Massaranduba;1;não;;20,0;;3000,0;150,0;1;0,56;20,56
+comercial;loja_ponto;Narandiba;1;não;;26,67;;2000,0;75,0;0;;
+comercial;loja_ponto;Nordeste de Amaralina;1;não;;30,0;;3000,0;100,0;0;;
+comercial;loja_ponto;Paralela;1;não;;55,0;;2200,0;40,0;0;;
+comercial;loja_ponto;Paripe;1;não;;40,0;;2000,0;50,0;0;;
+comercial;loja_ponto;Patamares;1;não;;33,33;;10000,0;300,0;0;;
+comercial;loja_ponto;Pituaçu;1;não;;8,0;;3200,0;400,0;0;;
+comercial;loja_ponto;Praia Grande;1;não;;30,0;;3000,0;100,0;0;;
+comercial;loja_ponto;Praia do Flamengo;1;não;;48,78;;2000,0;41,0;0;;
+comercial;loja_ponto;Roma;1;não;;25,0;;1500,0;60,0;0;;
+comercial;loja_ponto;Santa Cruz;1;não;;46,43;;6500,0;140,0;1;3,57;50,0
+comercial;loja_ponto;São Marcos;1;não;;46,43;;1300,0;28,0;0;;
+comercial;loja_ponto;Tororó;1;não;;80,0;;4000,0;50,0;0;;
+comercial;loja_ponto;Uruguai;1;não;;35,09;;2000,0;57,0;0;;
 comercial;outro;Pituba;53;sim;31,61;43,66;53,33;12000,0;350,0;13;2,45;54,66
+comercial;outro;Caminho das Árvores;19;sim;43,11;57,69;75,3;20000,0;400,0;7;3,36;62,5
+comercial;outro;Rio Vermelho;18;sim;33,57;44,17;63,43;11000,0;265,5;4;13,66;78,14
+comercial;outro;Brotas;10;sim;14,97;18,99;33,21;6000,0;305,5;9;4,45;24,37
 comercial;outro;Graça;7;sim;23,46;31,13;52,3;10000,0;365,0;2;5,7;61,3
+comercial;outro;Barra;6;sim;33,48;38,3;56,7;19500,0;560,0;2;5,12;56,78
+comercial;outro;Canela;6;sim;27,52;34,5;39,75;16000,0;500,0;1;2,73;42,73
+comercial;outro;Itapuã;5;sim;25,0;29,44;30,0;5800,0;197,0;1;1,11;34,44
+comercial;outro;Amaralina;4;não;;40,72;;10250,0;200,0;2;1,06;41,78
+comercial;outro;Barris;4;não;;37,36;;9517,0;276,0;0;;
+comercial;outro;Matatu;4;não;;28,03;;7500,0;325,0;3;1,0;35,84
+comercial;outro;Costa Azul;3;não;;56,6;;15000,0;265,0;0;;
+comercial;outro;Acupe;2;não;;40,06;;3500,0;89,0;1;17,92;59,59
+comercial;outro;Barbalho;2;não;;47,1;;19250,0;389,5;1;0,0;50,87
+comercial;outro;Boca do Rio;2;não;;30,49;;26750,0;740,5;0;;
+comercial;outro;Federação;2;não;;57,21;;5750,0;126,0;1;0,0;76,92
+comercial;outro;Garcia;2;não;;40,1;;12750,0;318,0;2;1,1;41,2
 comercial;outro;Itaigara;2;não;;71,55;;14750,0;312,5;1;0,0;100,0
+comercial;outro;Jardim Armação;2;não;;40,79;;12500,0;310,0;1;0,81;37,95
+comercial;outro;Mussurunga;2;não;;25,46;;3150,0;138,0;2;0,16;25,61
+comercial;outro;Nazaré;2;não;;32,28;;6500,0;527,5;0;;
+comercial;outro;Ondina;2;não;;65,17;;47450,0;806,5;1;3,87;76,66
+comercial;outro;Pernambués;2;não;;18,0;;9000,0;500,0;1;1,0;16,0
+comercial;outro;Piatã;2;não;;35,26;;9000,0;250,0;0;;
+comercial;outro;Alto do Coqueirinho;1;não;;23,78;;4400,0;185,0;1;0,0;23,78
+comercial;outro;Baixa dos Sapateiros;1;não;;43,75;;3500,0;80,0;0;;
+comercial;outro;Cabula VI;1;não;;30,0;;15000,0;500,0;1;5,6;35,6
+comercial;outro;Candeal;1;não;;28,18;;6200,0;220,0;1;8,5;36,68
+comercial;outro;Centro;1;não;;44,44;;20000,0;450,0;1;0,0;44,44
+comercial;outro;Centro Histórico;1;não;;56,25;;22500,0;400,0;0;;
+comercial;outro;Engenho Velho de Brotas;1;não;;53,33;;3200,0;60,0;0;;
+comercial;outro;Fazenda Grande do Retiro;1;não;;35,71;;5000,0;140,0;1;1,79;37,5
+comercial;outro;IAPI;1;não;;34,3;;2950,0;86,0;0;;
+comercial;outro;Itacaranha;1;não;;13,89;;2500,0;180,0;1;5,28;19,17
+comercial;outro;Liberdade;1;não;;16,18;;2800,0;173,0;0;;
+comercial;outro;Mares;1;não;;10,0;;9000,0;900,0;1;0,0;10,0
+comercial;outro;Pituaçu;1;não;;105,63;;15000,0;142,0;0;;
+comercial;outro;STIEP;1;não;;28,0;;7000,0;250,0;1;0,18;28,18
+comercial;outro;Santo Antônio;1;não;;21,67;;6500,0;300,0;1;1,67;23,34
+comercial;outro;Saúde;1;não;;26,67;;3200,0;120,0;1;1,83;28,5
+comercial;outro;Stella Maris;1;não;;47,23;;8501,0;180,0;0;;
+comercial;outro;São Cristóvão;1;não;;32,61;;7500,0;230,0;0;;
+comercial;outro;Vila Canária;1;não;;9,84;;2400,0;244,0;0;;
+comercial;outro;Vila Laura;1;não;;40,0;;14000,0;350,0;0;;
 comercial;predio;Pituba;5;sim;25,09;29,36;41,12;20500,0;817,0;1;4,33;45,45
+comercial;predio;Rio Vermelho;3;não;;62,5;;12000,0;200,0;0;;
+comercial;predio;Barra;2;não;;45,76;;35000,0;753,5;0;;
+comercial;predio;Canela;2;não;;35,02;;51625,0;1439,0;0;;
 comercial;predio;Graça;1;não;;35,61;;12000,0;337,0;0;;
+comercial;predio;Ondina;1;não;;50,0;;50000,0;1000,0;0;;
 comercial;sala;Pituba;2;não;;35,64;;4772,0;143,0;1;17,93;43,75
+comercial;sala;Barra;1;não;;58,03;;30000,0;517,0;1;29,46;87,49
+comercial;sala;Costa Azul;1;não;;65,88;;1120,0;17,0;1;40,76;106,64
+comercial;sala;Rio Vermelho;1;não;;76,0;;19000,0;250,0;0;;

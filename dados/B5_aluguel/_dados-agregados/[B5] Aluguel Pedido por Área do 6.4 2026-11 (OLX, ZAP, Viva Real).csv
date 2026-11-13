@@ -1,3 +1,5 @@
 ﻿area_6_4;anuncios;amostra_suficiente;aluguel_m2_p25;aluguel_m2_mediana;aluguel_m2_p75;anuncios_com_encargos;encargos_m2_p25;encargos_m2_mediana;encargos_m2_p75;encargos_pct_aluguel_p25;encargos_pct_aluguel_mediana;encargos_pct_aluguel_p75;custo_ocupacao_m2_mediana;area_m2_mediana
 Pituba/Itaigara;23;sim;52,3;65,22;86,33;14;6,25;16,02;31,52;0,1;0,3;0,37;112,91;145,0
-Barra/Graça;2;não;;41,66;;0;;;;;;;;190,0
+Barra/Graça;12;sim;70,5;96,75;121,25;4;;2,84;;;0,03;;126,76;155,5
+Rio Vermelho;10;sim;40,56;68,93;103,09;3;;4,18;;;0,05;;113,86;137,0
+demais bairros;32;sim;24,75;44,4;62,5;18;0,5;2,52;20,69;0,02;0,06;0,32;46,18;133,5

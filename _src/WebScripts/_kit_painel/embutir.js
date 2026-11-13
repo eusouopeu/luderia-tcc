@@ -11,11 +11,11 @@ const path = require('node:path');
 
 const SRC = path.resolve(__dirname, '..', '..');
 const ALVOS = [
-  'Webscripts/[B1] Estabelecimentos e cardapios/instagram_coletor.user.js',
-  'Webscripts/[B1] Estabelecimentos e cardapios/instagram_snowball.user.js',
-  'Webscripts/[B1] Estabelecimentos e cardapios/cardapio_coletor.user.js',
-  'Webscripts/[B1] Estabelecimentos e cardapios/acervo_coletor.user.js',
-  'Webscripts/[B1] Estabelecimentos e cardapios/maps_entorno.user.js',
+  'WebScripts/B1_estabelecimentos/instagram_coletor.user.js',
+  'WebScripts/B1_estabelecimentos/instagram_snowball.user.js',
+  'WebScripts/B1_estabelecimentos/cardapio_coletor.user.js',
+  'WebScripts/B1_estabelecimentos/acervo_coletor.user.js',
+  'WebScripts/B1_estabelecimentos/maps_entorno.user.js',
 ];
 const INICIO = '// >>> kit_painel';
 const FIM = '// <<< kit_painel';

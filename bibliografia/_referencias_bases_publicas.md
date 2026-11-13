@@ -6,7 +6,7 @@ Critérios adotados:
 
 - **Bases de dados on-line atualizadas continuamente** (SIDRA, SGS, Focus, CAGED, CNAE): o ano da referência é o da versão consultada (2026), e o recorte usado (tabela, série, período) entra no título ou na nota.
 - **Documentos baixados** (planilha FipeZAP, nota metodológica, texto da LC 123/2006, arquivos do Censo): o original está em `dados/B4_<uso>/_dados-brutos/<fonte>/` (uso da fonte em `FONTE_USO`, no `bases_comum.py`).
-- **Dados de API**: o script de coleta está em `_src/[B4] Bases publicas/`. A resposta bruta, com URL e data, está em `dados/B4_<uso>/_dados-brutos/<fonte>/` (uso da fonte em `FONTE_USO`, no `bases_comum.py`).
+- **Dados de API**: o script de coleta está em `_src/B4_bases_publicas/`. A resposta bruta, com URL e data, está em `dados/B4_<uso>/_dados-brutos/<fonte>/` (uso da fonte em `FONTE_USO`, no `bases_comum.py`).
 - Elemento não conferido no documento original fica marcado `[AV]`.
 
 ---
@@ -59,7 +59,7 @@ INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE). **Sistema Nacional de �
 
 ## 2. Rastreabilidade: referência → coleta → saída
 
-Pastas: scripts em `_src/[B4] Bases publicas/`, brutos em `dados/B4_<uso>/_dados-brutos/<fonte>/`, saídas em `dados/B4_<uso>/_dados-agregados/`, nomeadas no padrão `[B4] {dado principal} {período} ({fonte}).csv`.
+Pastas: scripts em `_src/B4_bases_publicas/`, brutos em `dados/B4_<uso>/_dados-brutos/<fonte>/`, saídas em `dados/B4_<uso>/_dados-agregados/`, nomeadas no padrão `[B4] {dado principal} {período} ({fonte}).csv`.
 
 As saídas ficam em subpastas por **uso no plano**, não por fonte: a mesma fonte alimenta capítulos diferentes, e o que define a pasta é a decisão que o dado sustenta.
 
