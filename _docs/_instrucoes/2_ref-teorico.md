@@ -51,7 +51,7 @@ Padrão de parágrafo: **afirmação → sustentação (citação ou dado) → l
   |---|---|
   | Plano de negócios, estrutura do plano | Dornelas, *Plano de Negócios* |
   | Marketing: segmentação, posicionamento, proposta de valor, 4Ps, preço, canais | Kotler e Keller, *Administração de Marketing* (`bibliografia/F3_Livros/`) |
-  | Serviços e operações: capacidade, filas, lei de Little, *servicescape*, layout | Fitzsimmons e Fitzsimmons, *Administração de Serviços* |
+  | Serviços e operações: capacidade, filas, lei de Little | Fitzsimmons e Fitzsimmons, *Administração de Serviços* |
   | Estratégia e concorrência: cinco forças, estratégias genéricas | Porter, *Estratégia Competitiva* |
   | Finanças: VPL, TIR, payback, taxa de desconto (TMA, prêmio pelo risco), ponto de equilíbrio, sensibilidade, tornado | Bruni, *Avaliação de investimentos*, 3. ed., 2018 (p. 158, 177, 203–210, 220–221, 227–228, 260–262, 357–361; páginas conferidas no exemplar da UFBA) |
   | Prêmio de liquidez, ponto de ruptura, valor residual (perpetuidade) | Assaf Neto, *Finanças Corporativas e Valor*, 7. ed., 2014 (p. 89, 422–423; as páginas do valor residual no cap. 9 ficam a conferir) |
@@ -76,12 +76,11 @@ Evidência empírica de outros contextos fica no cap. 5: a expansão do segmento
 
 | Subcapítulo | Conteúdo | Ferramenta ou conceito que justifica | Usado em | Teto (páginas) |
 |---|---|---|---|---|
-| **Abertura** | Função do plano de negócios (um parágrafo) | Estrutura do trabalho | Estrutura geral | 0,5 |
+| **Abertura** | Função do plano de negócios; os 3M de Dornelas (demanda, tamanho e estrutura do mercado, margem) | Estrutura do trabalho; ordem dos caps. 5, 6 e 9 | Estrutura geral | 0,75 |
 | **2.1 Economia da experiência** | Experiência como oferta econômica; *competitive socialising* (a definição do termo fica aqui, e não na introdução) e terceiro lugar; concentração do gasto com lazer na renda (POF) | Proposta de valor do formato: a ocasião social | Caps. 5.2, 6.1 | 1,5 |
 | **2.2 Análise estratégica** | Cinco forças e PESTEL; SWOT | Ferramentas de análise dos caps. 5 e 10 | Caps. 5.3, 5.5, 10.1 | 1,5 |
 | **2.3 Atributos de satisfação** | Kano e PRC | Atributos que não podem ser reduzidos | Caps. 6.1, 6.2 | 1,5 |
-| **2.4 Ambiente de serviço e capacidade** | Ambiente físico; capacidade perecível e lei de Little | Ambiente, mesas, giro e equipe | Caps. 7, 9.2 | 1 |
-| **2.5 Viabilidade e decisão sob incerteza** | VPL, TIR, payback, TMA, ponto de equilíbrio; gestão baseada em evidências e cenários; sensibilidade, tornado e ponto de ruptura. Monte Carlo só se o extra for feito | Modelo financeiro e análise de riscos | Caps. 3, 9, 10 | 2,5 |
+| **2.4 Viabilidade e decisão sob incerteza** | VPL, TIR, payback, TMA, ponto de equilíbrio; capacidade perecível e lei de Little (o fluxo cabe no salão); gestão baseada em evidências e cenários; sensibilidade, tornado e ponto de ruptura. Monte Carlo só se o extra for feito | Modelo financeiro e análise de riscos; mesas, giro e equipe | Caps. 3, 7, 9, 10 | 3 |
 
 - A história das luderias (pioneiras, difusão no Brasil, números do setor) não entra no cap. 2: vai para a introdução, em um parágrafo.
 - Conceito sem ferramenta correspondente nos caps. 5 a 10 sai, mesmo que bem fundamentado.

@@ -2,7 +2,7 @@
 
 O plano de negócios é uma ferramenta de gestão que descreve um empreendimento e delineia sua estratégia de atuação futura. No âmbito de novos empreendimentos, ele serve para testar a viabilidade econômico-financeira do projeto, comunicar valor para investidores e sócios em potencial, e, de modo geral, reduzir o risco de abrir o negócio (DORNELAS, 2021). No Brasil, 25,8% das micro e pequenas empresas fecham nos primeiros cinco anos – 25,9% no setor de serviços (SEBRAE, 2024). Em um segmento recente e com pouca informação de mercado, como o das luderias, o plano precisa declarar quais premissas são incertas e como mitigar tais incertezas antes de investir todo o capital.
 
-Segundo Dornellas, existem 5 coisas para a gente saber
+Antes da elaboração do plano, Dornelas (2005, p. 36–37, [AV]) propõe que a ideia passe por um roteiro de análise de oportunidade, os 3M: demanda de mercado, tamanho e estrutura do mercado e análise de margem. A demanda trata do público-alvo, do acesso aos clientes e do crescimento do mercado. O tamanho e a estrutura tratam do número de concorrentes, das barreiras de entrada e do poder de fornecedores, compradores e substitutos. A margem trata dos lucros possíveis, dos custos, do ponto de equilíbrio e do retorno do capital. Os três critérios organizam este plano: a estrutura do mercado é analisada no capítulo 5, a demanda é estimada no capítulo 6 e a margem é calculada no capítulo 9.
 
 ## 2.1 A ECONOMIA DA EXPERIÊNCIA
 
@@ -22,25 +22,25 @@ O diagnóstico estratégico junta as análises do setor e do macroambiente às c
 
 O modelo Kano classifica os atributos de um serviço pela relação entre desempenho e satisfação. Atributos obrigatórios geram insatisfação quando ausentes, mas não geram satisfação quando presentes; atributos atrativos geram satisfação quando presentes, sem gerar insatisfação quando ausentes (PICOLO; TONTINI, 2008, p. 40).
 
-Para aplicar o modelo, é preciso medir essa relação em clientes reais. A análise do contraste da penalidade e da recompensa (PRC) faz essa classificação a partir de dados de satisfação. A satisfação geral é regredida contra indicadores de desempenho abaixo e acima de uma referência: o coeficiente de penalidade mede a perda de satisfação no primeiro caso, e o de recompensa, o ganho no segundo (PICOLO; TONTINI, 2008, p. 42–45). Atributo com penalidade maior que a recompensa é obrigatório; com recompensa maior, atrativo (PICOLO; TONTINI, 2008, p. 50–51). Na luderia, a PRC indica, por exemplo, se a explicação de regras pela equipe é um atributo obrigatório, cuja falta derruba a satisfação, ou atrativo, cuja presença a eleva. Essa separação mostra onde o negócio não pode economizar e onde pode se diferenciar.
+Para aplicar o modelo, é preciso medir essa relação em clientes reais. A análise do contraste da penalidade e da recompensa (PRC) faz essa classificação a partir de dados de satisfação. Para cada atributo, a PRC compara dois casos: o desempenho abaixo do esperado e o desempenho acima do esperado. O coeficiente de penalidade mede quanto a satisfação geral cai nos casos de desempenho abaixo do esperado. O coeficiente de recompensa mede quanto a satisfação geral sobe nos casos de desempenho acima do esperado. Os dois coeficientes saem de uma regressão da satisfação geral sobre esses indicadores (PICOLO; TONTINI, 2008, p. 42–45). Atributo com penalidade maior que a recompensa é obrigatório; atributo com recompensa maior que a penalidade, atrativo (PICOLO; TONTINI, 2008, p. 50–51). A Figura 2.1 ilustra os dois perfis. Assim, os atributos obrigatórios indicam onde o negócio não pode cortar recursos, enquanto os atrativos indicam onde ele pode buscar diferenciação.
 
-A PRC tem um limite: só identifica atributos que o cliente já experimentou, e atributos inovadores tendem a sair como não significativos (PICOLO; TONTINI, 2008, p. 56). O posicionamento usa a PRC para decidir o que não pode ser reduzido; o que a luderia cria de novo precisa de outra evidência, como a oferta de luderias de outras metrópoles. O que é novo pede comparação com outras casas.
+**Figura 2.1 – Penalidade e recompensa na análise PRC**
 
-## 2.4 AMBIENTE DE SERVIÇO E CAPACIDADE
+![Penalidade e recompensa na análise PRC](../graficos/2-1_prc_penalidade_recompensa.png)
 
-O ambiente físico também compõe o serviço: as condições ambientais, o arranjo do espaço e os sinais do local afetam a avaliação do cliente (FITZSIMMONS; FITZSIMMONS, 2014, p. 152–156). Ainda assim, o ambiente não é o fator de maior peso. Em clientes do Outback Steakhouse no Brasil, a qualidade da comida teve o maior efeito sobre a imagem do restaurante (coeficiente padronizado de 0,866), acima do serviço (0,223) e do ambiente (0,107) (VASCONCELLOS, 2016, p. 45–47). Numa luderia, o acervo e o espaço não compensam comida e serviço fracos.
+Fonte: elaborado pelo próprio autor, com base em Picolo e Tontini (2008).
 
-Além do ambiente, o serviço depende da capacidade, que é perecível: a mesa vazia em uma hora não pode ser vendida na hora seguinte. A lei de Little liga as medidas de ocupação: o número médio de clientes no estabelecimento é igual à taxa de chegada multiplicada pela permanência média (FITZSIMMONS; FITZSIMMONS, 2014, p. 406–410). Numa luderia, a permanência longa de cada grupo reduz o giro das mesas. Mais tempo por grupo exige mais mesas.
+A PRC, no entanto, tem um limite: ela só permite identifica atributos que o cliente já experimentou; atributos inovadores tendem a aparecer como não significativos (PICOLO; TONTINI, 2008, p. 56). Por isso, a PRC apoia apenas as decisões de reduzir ou ampliar atributos já consolidados. A inclusão de atributos novos se apoia em outra evidência, como a oferta das luderias de outras metrópoles.
 
-## 2.5 VIABILIDADE E DECISÃO SOB INCERTEZA
+## 2.4 VIABILIDADE E DECISÃO SOB INCERTEZA
 
-O estudo da viabilidade econômico-financeira de um projeto
+Para decidir se um projeto vale o investimento, a análise de viabilidade compara o dinheiro que ele exige hoje com o que ele devolve no futuro. Como um real hoje vale mais do que um real daqui a cinco anos, os valores futuros são trazidos para o presente por uma taxa de desconto, a taxa mínima de atratividade (TMA) – o retorno mínimo que o investidor aceita, dado o que ganharia em outra aplicação de risco parecido. Três indicadores resumem essa comparação. O valor presente líquido (VPL) é a soma dos fluxos de caixa futuros descontados pela TMA, menos o investimento inicial (BRUNI, 2018, p. 227–228). VPL positivo indica que o projeto devolve mais do que a TMA exige, ou seja, cria valor para o investidor. A taxa interna de retorno (TIR) é a taxa que torna o VPL igual a zero – o retorno anual que o próprio projeto entrega –, e o projeto é aceito quando a TIR supera a TMA (BRUNI, 2018, p. 260–262). O payback descontado é o prazo em que os fluxos descontados recuperam o investimento (BRUNI, 2018, p. 220–221) e mostra por quanto tempo o capital fica exposto ao risco.
 
-O valor presente líquido (VPL) é a soma dos fluxos de caixa futuros descontados pela taxa mínima de atratividade (TMA), menos o investimento inicial; VPL positivo indica que o projeto remunera o capital acima da TMA (BRUNI, 2018, p. 227–228). A taxa interna de retorno (TIR) é a taxa que torna o VPL igual a zero, e o projeto é aceito quando a TIR supera a TMA (BRUNI, 2018, p. 260–262). O payback descontado é o prazo em que os fluxos descontados recuperam o investimento (BRUNI, 2018, p. 220–221).
+A escolha da TMA, portanto, decide boa parte do resultado. Ela parte de uma taxa livre de risco e soma um prêmio pelo risco do projeto (BRUNI, 2018, p. 158, 177). Um negócio de capital fechado, sem liquidez, soma a esse prêmio um prêmio de liquidez, que remunera a dificuldade de vender o investimento por um valor justo (ASSAF NETO, 2014, p. 89). Em termos simples, a TMA começa no que o investidor ganharia sem risco, como num título público, e sobe por dois motivos: o negócio pode dar errado, e a participação numa luderia não se vende com a facilidade de uma ação na bolsa. Quanto maior a TMA, mais o projeto precisa render para ser aceito.
 
-A escolha da TMA, portanto, decide boa parte do resultado. Ela parte de uma taxa livre de risco e soma um prêmio pelo risco do projeto (BRUNI, 2018, p. 158, 177). Um negócio de capital fechado, sem liquidez, soma a esse prêmio um prêmio de liquidez, que remunera a dificuldade de vender o investimento por um valor justo (ASSAF NETO, 2014, p. 89).
+Os três indicadores respondem se o projeto vale o investimento; o ponto de equilíbrio responde quranto o negócio precisa vender. Ele é o volume de vendas em que a receita cobre os custos fixos e variáveis (BRUNI, 2018, p. 203–210). Na luderia, ele se expressa em visitantes por semana e pode ser comparado com o fluxo estimado. Se o fluxo fica abaixo dele, a operação não se paga.
 
-Os três indicadores respondem se o projeto vale o investimento; o ponto de equilíbrio responde quanto o negócio precisa vender. Ele é o volume de vendas em que a receita cobre os custos fixos e variáveis (BRUNI, 2018, p. 203–210). Na luderia, ele se expressa em visitantes por semana e pode ser comparado com o fluxo estimado. Se o fluxo fica abaixo dele, a operação não se paga.
+O fluxo estimado também precisa caber no salão. O serviço depende da capacidade, que é perecível – a mesa vazia em uma hora não pode ser vendida na hora seguinte. Para evitar perdas por falta ou excesso de espaço, a lei de Little liga as medidas de ocupação: o número médio de clientes no estabelecimento é igual à taxa de chegada multiplicada pela permanência média (FITZSIMMONS; FITZSIMMONS, 2014, p. 406–410).
 
 A qualidade de um plano de negócios depende, em grande parte, da qualidade das premissas adotadas. Por isso, o plano segue a gestão baseada em evidências: as decisões usam as melhores evidências disponíveis, e não o costume, a imitação de casos de sucesso ou a crença não testada (PFEFFER; SUTTON, 2006, [AV]). Quando as evidências são insuficientes, as premissas partem das evidências disponíveis e são testadas em pequena escala antes da decisão definitiva (PFEFFER; SUTTON, 2006, [AV]). Nas análises de cenário, as premissas de maior incerteza recebem três valores – pessimista, provável e otimista –, e o modelo financeiro é calculado com cada conjunto. O resultado é uma faixa de VPL, TIR e payback, em vez de um número único, que mostra sob quais condições o negócio se sustenta. Para além das análises, há ainda validações que podem ser realizadas antes do investimento integral.
 
@@ -53,7 +53,7 @@ O único estudo de viabilidade localizado sobre o formato, de um *board game caf
 | Economia da experiência; *competitive socialising*; ambiente de convívio | A ocasião social como produto | Seções 5.1, 5.2 e 6.1 |
 | Cinco forças; PESTEL | Espaço para um novo concorrente; limites externos | Seções 5.2 e 5.3 |
 | Modelo Kano e PRC | Atributos que não podem ser reduzidos | Seções 6.1 e 6.2 |
-| Ambiente físico; capacidade e lei de Little | Ambiente, mesas, giro e equipe | Cap. 7 e seção 9.1 |
+| Capacidade e lei de Little | Mesas, giro e equipe | Cap. 7 e seção 9.1 |
 | SWOT | Diagnóstico estratégico | Seção 10.1 |
 | VPL, TIR, payback descontado, ponto de equilíbrio | Investir ou não | Seção 9.4 |
 | Gestão baseada em evidências | Que dado sustenta cada premissa | Cap. 3; capítulo 11 |
@@ -68,6 +68,8 @@ ASAKURA, P. N.; SILVA, A. R. da; MELLO, D. A. Estudo de viabilidade econômica d
 ASSAF NETO, Alexandre. *Finanças corporativas e valor*. 7. ed. São Paulo: Atlas, 2014.
 
 BRUNI, Adriano Leal. *Avaliação de investimentos*. 3. ed. São Paulo: Atlas, 2018.
+
+DORNELAS, José. *Empreendedorismo*: transformando ideias em negócios. 2. ed. Rio de Janeiro: Campus, 2005. [AV]
 
 DORNELAS, José. *Plano de negócios*: seu guia definitivo. 3. ed. São Paulo: Empreende, 2021. [AV]
 
@@ -89,4 +91,3 @@ SEBRAE. *Sobrevivência das empresas mercantis brasileiras (2019–2023)*: relat
 
 SEBRAE. Jogos de tabuleiro movimentaram R$ 53 bilhões em 2024. Agência de Notícias do Sebrae, 2026.
 
-VASCONCELLOS, Pedro Henrique da Silva Carvalho de Barros e. *A influência da qualidade de serviço na imagem, satisfação e intenções comportamentais em restaurantes*: uma análise do Outback Steakhouse Brasil. 2016. Dissertação (Mestrado em Administração de Empresas) – Pontifícia Universidade Católica do Rio de Janeiro, Rio de Janeiro, 2016. Disponível em: https://www.maxwell.vrac.puc-rio.br/27909/27909.PDF. Acesso em: 2 nov. 2026.

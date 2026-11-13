@@ -73,12 +73,11 @@ Cada capítulo com arquivo de instrução próprio aponta para ele. Capítulos s
 
 ### 2. Referencial Teórico → [2_ref-teorico.md](2_ref-teorico.md)
 
-- **Abertura** — função do plano de negócios e risco de abrir um negócio.
+- **Abertura** — função do plano de negócios, risco de abrir um negócio e os 3M de Dornelas (demanda, tamanho e estrutura do mercado, margem).
 - **2.1 Economia da experiência** — experiência como oferta, *competitive socialising*, terceiro lugar.
 - **2.2 Análise estratégica** — cinco forças, PESTEL, SWOT.
 - **2.3 Atributos de satisfação** — Kano e PRC.
-- **2.4 Ambiente de serviço e capacidade** — ambiente físico, capacidade perecível, lei de Little.
-- **2.5 Viabilidade e decisão sob incerteza** — VPL, TIR, payback, ponto de equilíbrio, gestão baseada em evidências, cenários, sensibilidade.
+- **2.4 Viabilidade e decisão sob incerteza** — VPL, TIR, payback, ponto de equilíbrio, capacidade perecível e lei de Little, gestão baseada em evidências, cenários, sensibilidade.
 
 Evidência empírica de outros contextos (estudos de luderias, de jogadores e do segmento) vai para o cap. 5, não para o cap. 2.
 

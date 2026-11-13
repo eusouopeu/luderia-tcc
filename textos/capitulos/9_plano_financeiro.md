@@ -60,7 +60,7 @@ Os preços vêm dos concorrentes (seção 6.3). A cesta de consumo de cada conco
 
 Do lado dos custos, o modelo usa dados públicos sempre que possível: o aluguel dos anúncios do Bloco B5, os salários das medianas de admissão em Salvador no Novo CAGED e o custo das mercadorias vendidas (CMV) da PAS. O CMV é o custo dos ingredientes e das bebidas que a casa revende. Nos serviços de alimentação, as mercadorias e os materiais de consumo e de reposição somaram 29,6% da receita líquida em 2023 (IBGE, PAS 2023), e o consumo de mercadorias, 26,8% em 2024 (IBGE, PAS 2024, tabela 10758; seção 5.1). O provável fica em 30% da receita de A&B, perto do dado de 2023, que inclui os materiais de consumo de uma cozinha; o otimista, em 26%, perto do de 2024; e o pessimista, em 35%, para a perda e o desperdício de uma casa nova. O salário de admissão tende a ficar abaixo do pago a quem já está no cargo; por isso, o pessimista soma 11,4% aos salários, a maior distância entre o 3º quartil e a mediana de admissão entre os cargos da equipe. O ponto fica na Pituba, com área para 8 mesas desde a abertura, para a etapa de mesas não exigir mudança nem obra (decisão do autor; seção 7.1). A área e o aluguel vêm dos 17 anúncios de 150 a 200 m² na Pituba (B5, novembro de 2026): área média de 182 m² e aluguel médio de R$ 11,6 mil por mês, ou R$ 63,79 por m², com condomínio e IPTU de 11,8% do aluguel. O pessimista e o otimista usam o 3º e o 1º quartil do preço por m², R$ 75,00 e R$ 50,00. O preço pedido no anúncio tende a ficar acima do fechado. As despesas gerais não têm cotação e ficam em N6; reforma, mobiliário, cozinha e informática vêm do orçamento da etapa 1 (seção 9.2). A refeição da equipe (C14 e C15) e a PLR (C16) são decisões do autor (N6) sobre benefícios, e não dados medidos.
 
-Falta a taxa que traz os valores futuros para o presente. A TMA é o retorno mínimo que o investidor exige para pôr o dinheiro na luderia, em vez de aplicá-lo numa alternativa segura (seção 2.5). Ela soma duas parcelas: o juro real, que é o ganho de uma aplicação segura acima da inflação, e um prêmio pelo risco de um pequeno negócio novo. O juro real sai da Selic meta de 14,0% (BCB, setembro de 2026) e do IPCA esperado de 4,3% para 2027 (Focus):
+Falta a taxa que traz os valores futuros para o presente. A TMA é o retorno mínimo que o investidor exige para pôr o dinheiro na luderia, em vez de aplicá-lo numa alternativa segura (seção 2.4). Ela soma duas parcelas: o juro real, que é o ganho de uma aplicação segura acima da inflação, e um prêmio pelo risco de um pequeno negócio novo. O juro real sai da Selic meta de 14,0% (BCB, setembro de 2026) e do IPCA esperado de 4,3% para 2027 (Focus):
 
 juro real = (1 + Selic) ÷ (1 + IPCA esperado) − 1 (3)
 
@@ -173,7 +173,7 @@ Nota: o lucro líquido não desconta impostos sobre o lucro, que já estão no S
 
 ## 9.4 INDICADORES DE VIABILIDADE
 
-Os indicadores de viabilidade resumem o fluxo de caixa em respostas a três perguntas: quanto o negócio gera além do que a TMA exige, quanto ele rende e em quanto tempo devolve o investimento (seção 2.5). A Tabela 9.4 traz os indicadores do cenário provável e a faixa que a simulação de Monte Carlo dá a cada um (seção 9.5): o percentil 10 (P10), valor que 90% dos sorteios superam; a mediana; e o percentil 90 (P90), que só 10% superam.
+Os indicadores de viabilidade resumem o fluxo de caixa em respostas a três perguntas: quanto o negócio gera além do que a TMA exige, quanto ele rende e em quanto tempo devolve o investimento (seção 2.4). A Tabela 9.4 traz os indicadores do cenário provável e a faixa que a simulação de Monte Carlo dá a cada um (seção 9.5): o percentil 10 (P10), valor que 90% dos sorteios superam; a mediana; e o percentil 90 (P90), que só 10% superam.
 
 **Tabela 9.4 – Indicadores de viabilidade: cenário provável e faixa do Monte Carlo**
 
@@ -205,7 +205,7 @@ A faixa do Monte Carlo mostra o que o provável sozinho esconde. A mediana dos s
 
 ## 9.5 TRIANGULAÇÃO, SENSIBILIDADE E PONTO DE RUPTURA
 
-A análise de sensibilidade mede quanto o VPL muda quando uma premissa muda (seção 2.5). A Figura 9.2 mostra o tornado: cada barra leva uma premissa ao pessimista e ao otimista, com as demais no provável. As barras são ordenadas da maior para a menor, o que dá ao gráfico a forma de um funil.
+A análise de sensibilidade mede quanto o VPL muda quando uma premissa muda (seção 2.4). A Figura 9.2 mostra o tornado: cada barra leva uma premissa ao pessimista e ao otimista, com as demais no provável. As barras são ordenadas da maior para a menor, o que dá ao gráfico a forma de um funil.
 
 Duas premissas concentram o risco: a circulação no pico (R04) e o gasto por pessoa (R06), cada uma com efeito de R$ 2 milhões ou mais sobre o VPL entre os extremos da faixa. As três seguintes, com efeito de R$ 235 mil a R$ 410 mil, completam as premissas críticas: o aluguel (C04), o CMV (C01) e a TMA (M01). As duas primeiras têm dado próprio: a circulação vem da contagem direta (N5), e o gasto, das avaliações e dos cardápios dos concorrentes (N3).
 
@@ -219,7 +219,7 @@ A circulação pesa mais que o gasto porque a faixa medida é mais larga: a maio
 
 O tornado move uma premissa por vez; a simulação de Monte Carlo move todas juntas. Ela sorteia 10 mil combinações de premissas dentro das faixas, calcula o VPL de cada uma e conta em quantas ele fica positivo. Em cada sorteio, os gatilhos de contingência e a etapa de mesas agem como decisões de gestão (Apêndice G). O VPL fica positivo em 60,4% dos cenários, com mediana de R$ 204 mil. Os gatilhos agem em poucos sorteios: o G5 em 12,0% e o encerramento pelo G6 em 6,4%. A etapa de mesas, com o custo completo (2 mesas, um instrutor, o segundo cozinheiro e o domingo), entra em 8,1% dos sorteios: só quando a demanda de pico chega a 85% do teto do salão de 6 mesas. Os 60,4% dependem das hipóteses da simulação: das faixas do registro de premissas, da distribuição PERT e da independência entre as premissas. Se a circulação e o gasto caíssem juntos, como numa crise de renda, a probabilidade seria menor.
 
-O ponto de ruptura é o valor de uma premissa que zera o VPL, com as demais no provável (seção 2.5). Ele transforma o resultado numa condição que pode ser acompanhada. A Tabela 9.5 traz a ruptura das cinco premissas críticas. O negócio é viável, por exemplo, enquanto a circulação no pico ficar acima de 5,95 pessoas por hora: 7% abaixo do provável.
+O ponto de ruptura é o valor de uma premissa que zera o VPL, com as demais no provável (seção 2.4). Ele transforma o resultado numa condição que pode ser acompanhada. A Tabela 9.5 traz a ruptura das cinco premissas críticas. O negócio é viável, por exemplo, enquanto a circulação no pico ficar acima de 5,95 pessoas por hora: 7% abaixo do provável.
 
 **Tabela 9.5 – Ponto de ruptura das premissas críticas (VPL = 0)**
 
