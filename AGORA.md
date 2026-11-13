@@ -5,7 +5,7 @@ Atualizado em 13/11/2026. **TMin v33** em `textos/TCC_luderia_v33.docx` e `.pdf`
 ## Fazendo agora (no máximo duas frentes)
 
 1. **Revisão da v33 pelo autor:** conferir no PDF as Tabelas 4.1, 6.2 e 9.2 a 9.6 e o Quadro 10.2 (aluguel pessimista virou risco alto, D87).
-2. **Fechamento para a banca:** citações `[AV]` e ajustes de formatação (teto de 120 páginas).
+2. **Fechamento para a banca:** citações `[AV]`, ajustes de formatação (teto de 120 páginas) e gravação da apresentação (roteiro de 23 slides e 18 minutos em [roteiro_apresentacao.md](textos/_planejamento/roteiro_apresentacao.md)).
 
 ## Próximos 3 passos
 
