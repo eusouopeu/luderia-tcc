@@ -25,7 +25,7 @@ Saídas em dados/B1_entorno/_auditoria/:
       a distância a pé, para medir o quanto a linha reta subestima o trajeto)
   auditoria_registro.csv  uma linha por sorteio
 
-Passo a passo da conferência: textos/instrumentos/roteiro_auditoria_entorno_B1.md.
+Passo a passo da conferência: textos/_planejamento/_instrumentos/roteiro_auditoria_entorno_B1.md.
 
 Uso:
     python3 "_src/PyScripts/B1_Estabelecimentos/3_analise/B1-a_auditoria_entorno.py"
@@ -34,7 +34,7 @@ Uso:
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("Gerar_*"))]
+sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("G[0-9]_*"))]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)

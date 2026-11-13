@@ -37,7 +37,7 @@ Uso:
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("Gerar_*")), str(_AQUI.parents[1] / "5_outros")]
+sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("G[0-9]_*")), str(_AQUI.parents[1] / "5_outros")]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
@@ -60,7 +60,7 @@ REPAGINACAO = RAW / "B1_candidatos_repaginacao.csv"
 MINIMO_AVALIACOES = 101
 
 # Regras do filtro automático: as mesmas do B1-b_planilha.py, lidas de lá.
-_spec = importlib.util.spec_from_file_location("planilha", _AQUI.parents[1] / "build" / "B1-b_planilha.py")
+_spec = importlib.util.spec_from_file_location("planilha", _AQUI.parents[1] / "2_build" / "B1-b_planilha.py")
 planilha = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(planilha)
 

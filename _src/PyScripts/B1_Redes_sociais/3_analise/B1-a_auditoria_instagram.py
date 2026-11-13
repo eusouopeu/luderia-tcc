@@ -8,7 +8,7 @@ Desenho:
 - posts: 200 posts, cada perfil um estrato, com mínimo de 3 por perfil (ou
   todos, se tiver menos), resto na proporção do número de posts do perfil
   descontado o mínimo, maiores restos e menores chaves da semente
-  (_src/Extras/Gerar_outros/amostrar_auditoria.py), o mesmo desenho do B2.
+  (_src/Extras/G5_outros/amostrar_auditoria.py), o mesmo desenho do B2.
 Vale a coleta mais recente de cada perfil (data do nome do arquivo; `_2` é a
 segunda do dia).
 
@@ -29,7 +29,7 @@ Uso:
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("Gerar_*"))]
+sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("G[0-9]_*"))]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)

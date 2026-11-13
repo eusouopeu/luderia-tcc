@@ -21,7 +21,7 @@ import time
 import pandas as pd
 import requests
 
-ROOT = pathlib.Path(__file__).resolve().parents[3]
+ROOT = pathlib.Path(__file__).resolve().parents[4]
 DADOS = ROOT / "dados"
 DATA_COLETA = time.strftime("%Y-%m-%d")
 HEADERS = {"User-Agent": "Mozilla/5.0 (pesquisa academica UFBA - TCC Luderia)"}
@@ -62,9 +62,9 @@ SIDRA_API = "https://servicodados.ibge.gov.br/api/v3/agregados"
 
 # Coletas do bloco (dados/B4_<uso>/), por uso da tabela no plano.
 USOS = {
-    "mercado_demanda": "cap. 5 e 6: população e renda das capitais",
-    "ponto_operacoes": "6.4 e 7.1: escolha do bairro e perfil do entorno",
-    "juridico_tributario": "8.1: enquadramento e tributos",
+    "marketing": "cap. 5 e 6: população e renda das capitais",
+    "operacional": "6.4 e 7.1: escolha do bairro e perfil do entorno",
+    "juridico": "8.1: enquadramento e tributos",
     "financeiro": "cap. 9: premissas de custo, taxa de desconto e coerência setorial",
     "multiuso": "usada em mais de um capítulo (deflator, ticket, custo de pessoal)",
 }
@@ -73,12 +73,12 @@ USOS = {
 FONTE_USO = {
     "bcb": "financeiro",
     "fipezap": "financeiro",
-    "concla": "juridico_tributario",
-    "legislacao": "juridico_tributario",
-    "receita_cnpj": "juridico_tributario",
-    "ibge_rm": "mercado_demanda",
-    "ibge_censo_2022": "ponto_operacoes",
-    "observassa": "ponto_operacoes",
+    "concla": "juridico",
+    "legislacao": "juridico",
+    "receita_cnpj": "juridico",
+    "ibge_rm": "marketing",
+    "ibge_censo_2022": "operacional",
+    "observassa": "operacional",
     "ibge_sidra": "multiuso",
     "caged": "multiuso",
 }

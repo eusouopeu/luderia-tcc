@@ -24,7 +24,7 @@ Fontes:
                                                       -> títulos do acervo
   dados/B2_avaliacoes/_dados-agregados/B2_cobertura_coleta.csv -> avaliações no recorte
 
-Cesta por pessoa (textos/planejamento/_arquivo/registro_previo_luderia.md): couvert ou
+Cesta por pessoa (textos/_planejamento/_arquivo/registro_previo_luderia.md): couvert ou
 taxa de jogo + uma bebida + uma entrada ou um prato principal, com os preços do
 cardápio da própria casa, em três níveis: baixa (percentil 25 de cada
 categoria), mediana e alta (percentil 75). Couvert que não aparece no cardápio
@@ -48,7 +48,7 @@ Uso:
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("Gerar_*")), str(_AQUI.parents[1] / "5_outros")]
+sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("G[0-9]_*")), str(_AQUI.parents[1] / "5_outros")]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)

@@ -13,7 +13,7 @@ Saídas em dados/B2_avaliacoes/_dados-agregados/analise_conteudo/:
   B2_temas_estabelecimentos.csv comentários e comentários com tema por estabelecimento
   B2_recodificacao_kappa.csv   kappa de Cohen por rodada e variável
 Figura: graficos/<png|svg|valores>/B2_temas_polaridade, copiada para
-textos/capitulos/figuras/6_temas_avaliacoes.png.
+textos/figuras/6_temas_avaliacoes.png.
 
 Regras de contagem:
   - unidade = comentário; um tema conta uma vez por comentário e polaridade;
@@ -34,7 +34,7 @@ Uso:
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("Gerar_*"))]
+sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("G[0-9]_*"))]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
@@ -51,7 +51,7 @@ B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
 PASTA = B2 / "analise_conteudo"
 BASE = ROOT / "dados" / "B2_avaliacoes" / "_dados-brutos" / "analise_conteudo" / "2026-11-03_2_comentarios_grade2.csv"
 GRAF = B2 / "graficos"
-FIG_CAP = ROOT / "textos" / "capitulos" / "figuras" / "6_temas_avaliacoes.png"
+FIG_CAP = ROOT / "textos" / "figuras" / "6_temas_avaliacoes.png"
 
 TEMAS = ["ambiente e decoração", "atendimento online", "atendimento presencial", "bebidas", "comemorações e grupos",
          "comida", "conforto e barulho", "curadoria e conservação do acervo", "espaço e lotação",

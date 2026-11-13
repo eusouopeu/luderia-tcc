@@ -4,11 +4,11 @@
 
 Mais robusta que a de um plano de negócios comum. O método é defendido pela **confiabilidade do número que ele gera**, não pela teoria. Cada instrumento descrito aqui alimenta uma premissa (cap. 9) ou uma decisão (caps. 5 a 8). Instrumento que não alimenta nada sai.
 
-Hipóteses H1–H9 do desenho anterior não entram no plano; o registro prévio de 2026 fica em `textos/planejamento/_arquivo/registro_previo_luderia.md`, só para o extra. Resultados entram nos capítulos aplicados em linguagem de decisão; testes, estatísticas e valores-p vão para apêndice.
+Hipóteses H1–H9 do desenho anterior não entram no plano; o registro prévio de 2026 fica em `textos/_planejamento/_arquivo/registro_previo_luderia.md`, só para o extra. Resultados entram nos capítulos aplicados em linguagem de decisão; testes, estatísticas e valores-p vão para apêndice.
 
 ## Escopo adotado
 
-Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atualizar esta seção e `textos/planejamento/cronograma_luderia.md`.
+Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atualizar esta seção e `textos/_planejamento/cronograma_luderia.md`.
 
 - **Praça do plano:** Salvador (BA). A decisão de localização é o bairro e o ponto, não a cidade.
 - **Sem questionários.** Dados secundários públicos e uma única coleta primária comportamental (contagem direta de ocupação, com leitura do número da NFC-e).
@@ -23,15 +23,15 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 
 ### Correspondência entre blocos e arquivos do pipeline
 
-Cada bloco tem pasta `[Bn] Nome` em `_src/`, dividida em uma pasta por objeto (ex.: `Google Places (Negócios)`, `Instagram`, `CAGED`); em `dados/`, o bloco se divide em coletas, `B<n>_<coleta>/`, cada uma com `_dados-brutos/`, `_auditoria/` e `_dados-agregados/` (e um `_arquivo/` em cada, para as versões anteriores). Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `Bn-<letra>_<conteúdo>.py` nos scripts, guardados na subpasta da etapa (`collect/` → `c`, `build/` → `b`, `analise/` → `a`); cada objeto tem ainda `logs/` e `outros/`, e os webscripts do bloco ficam em `_src/Webscripts/[Bn] Nome/` (convenções em [`_src/dicionario.md`](../../_src/dicionario.md)). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `jogos_comum.py`, `instagram_comum.py`, `bases_comum.py`) não levam código e ficam em `outros/` do bloco. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam em `arquivados/`.
+Cada coleta de `dados/` tem pasta própria em `_src/PyScripts/`, `B<n>_<Coleta>/` (ex.: `B1_Estabelecimentos`, `B4_Marketing`); em `dados/`, o bloco se divide em coletas, `B<n>_<coleta>/`, cada uma com `_dados-brutos/`, `_auditoria/` e `_dados-agregados/` (e um `_arquivo/` em cada, para as versões anteriores). Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `Bn-<letra>_<conteúdo>.py` nos scripts, guardados na subpasta da etapa (`1_collect/` → `c`, `2_build/` → `b`, `3_analise/` → `a`); cada coleta tem ainda `4_logs/` e `5_outros/`, e os webscripts do bloco ficam em `_src/WebScripts/[Bn] Nome/` (convenções em [`_src/dicionario.md`](../../_src/dicionario.md)). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `jogos_comum.py`, `instagram_comum.py`, `bases_comum.py`) não levam código e ficam em `5_outros/`. O que junta dados de mais de um bloco (planilhas DMax, gráficos, quadros e figuras dos capítulos) fica em `textos/planilhas/`, `textos/graficos/`, `textos/quadros/` e `textos/figuras/`. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam fora do repositório, em `~/Documents/arquivados/`.
 
 | Bloco | Conteúdo | Scripts | Coletas em `dados/` |
 |---|---|---|---|
-| B1 | Estabelecimentos e cardápios | `_src/PyScripts/` (`Google Places (Negócios)/`, `Cardápios/`, `Acervo de Jogos/`, `Instagram/`) | `B1_estabelecimentos/`, `B1_entorno/`, `B1_cardapios/`, `B1_acervo_jogos/`, `B1_redes_sociais/` |
+| B1 | Estabelecimentos e cardápios | `_src/PyScripts/` (`B1_Estabelecimentos/`, `B1_Entorno/`, `B1_Cardapios/`, `B1_Acervo_jogos/`, `B1_Redes_sociais/`) | `B1_estabelecimentos/`, `B1_entorno/`, `B1_cardapios/`, `B1_acervo_jogos/`, `B1_redes_sociais/` |
 | B2 | Avaliações recentes | `_src/PyScripts/B2_Avaliacoes/` | `B2_avaliacoes/` |
 | B3 | Contagem direta de ocupação | `_src/PyScripts/B3_Contagem/` | `B3_contagem/` |
-| B4 | Bases públicas | `_src/PyScripts/` (uma pasta por fonte; `Comum/bases_comum.py`) | uma por uso: `B4_mercado_demanda/`, `B4_ponto_operacoes/`, `B4_juridico_tributario/`, `B4_financeiro/`, `B4_multiuso/` |
-| B5 | Ativos fixos | `_src/PyScripts/` (`Lista de itens/`, `SINAPI (Obra e reforma)/`, `Anuncios de aluguel/`) | uma por categoria: `B5_orcamento/`, `B5_aluguel/`, `B5_obra_reforma/`, `B5_mobiliario/`, `B5_cozinha_bar/`, `B5_equipamentos/`, `B5_acervo_jogos/` |
+| B4 | Bases públicas | `_src/PyScripts/` (`B4_Marketing/`, `B4_Operacional/`, `B4_Juridico/`, `B4_Financeiro/`, `B4_Multiuso/`, com o `bases_comum.py` em `B4_Multiuso/5_outros/`) | uma por uso: `B4_marketing/`, `B4_operacional/`, `B4_juridico/`, `B4_financeiro/`, `B4_multiuso/` |
+| B5 | Ativos fixos | `_src/PyScripts/` (`B5_Aluguel/`, `B5_Reforma/`, `B5_Mobiliario/`) | três: `B5_aluguel/` (anúncios), `B5_reforma/` (obra e SINAPI) e `B5_mobiliario/` (mobiliário, cozinha e bar, equipamentos, jogos e o orçamento da etapa 1) |
 
 ## Divisão de subcapítulos
 
@@ -97,7 +97,7 @@ O recorte por período descreve a operação atual de cada concorrente. Como est
 | Uso no plano | Circulação no pico e seu piso pelas notas fiscais (6.6 e cap. 9); pessoas por mesa; capacidade (7.2) |
 | Limitação | Quatro visitas em um único estabelecimento e uma única cidade, só em sexta e sábado à noite: a contagem não observa dias úteis nem horários de menor movimento, que entram pelo caminho das notas fiscais; NFC-e só a pedido do cliente (piso das vendas), podendo incluir delivery e balcão, e uma nota pode cobrir um grupo inteiro; um único intervalo entre visitas por unidade (Bela Vista, 10/10 a 16/10, 6 dias; Paralela, 17/10 a 30/10, 13 dias, abaixo dos 15 dias planejados); permanência censurada pelo início e fim da visita; a mesa do observador, fora do denominador, reduz o salão observado em uma mesa |
 
-O formato dos CSV do app e as saídas do `B3-a_contagem.py` estão em `textos/instrumentos/protocolo_validacao_coleta.md` (§1).
+O formato dos CSV do app e as saídas do `B3-a_contagem.py` estão em `textos/_planejamento/_instrumentos/protocolo_validacao_coleta.md` (§1).
 
 ### Bloco B4 — Bases públicas
 
@@ -113,14 +113,14 @@ O formato dos CSV do app e as saídas do `B3-a_contagem.py` estão em `textos/in
 | Lei Complementar 123/2006 e anexos do Simples Nacional | Alíquotas por faixa de receita | Tributos (8.1 e cap. 9) |
 | Banco Central — SGS e relatório Focus | Selic e IPCA observados e projetados; salário mínimo | Taxa mínima de atratividade e inflação do modelo (cap. 9) |
 
-Scripts em `_src/PyScripts/` (`B4-c_*` → `B4-b_*`); saídas `[B4] *.csv` em `dados/B4_<uso>/_dados-agregados/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
+Scripts em `_src/PyScripts/` (`B4-c_*` → `B4-b_*`); saídas `[B4] *.csv` em `dados/B4_<uso>/_dados-agregados/`; referências ABNT em `bibliografia/_referencias_bases_publicas.md`.
 
 ### Bloco B5 — Ativos fixos
 
-Orçamento da etapa 1 (premissas I01 a I04 do cap. 9), item a item, na lista `dados/B5_orcamento/_dados-agregados/[B5] Lista de Itens da Etapa 1 (elaboração própria).csv` (75 itens; `fonte_preco` sinapi, coleta ou gratuito).
+Orçamento da etapa 1 (premissas I01 a I04 do cap. 9), item a item, na lista `dados/B5_mobiliario/_dados-agregados/[B5] Lista de Itens da Etapa 1 (elaboração própria).csv` (75 itens; `fonte_preco` sinapi, coleta ou gratuito).
 
 - **SINAPI (reforma, N2):** composições da Bahia sem desoneração (`B5-c_sinapi.py`), com o BDI de construção de edifícios do TCU (Acórdão 2.622/2013): 1º quartil no otimista, médio no provável, 3º quartil no pessimista.
-- **Coleta em sites (mobiliário, cozinha e bar, informática, climatização; N3):** `_src/Webscripts/[B5] Ativos fixos/precos_itens.user.js` (Tampermonkey) na Amazon e no Mercado Livre, CEP de Salvador. Critério (decisão do autor, 03/11/2026): de cada busca, na ordenação padrão do site, entram os **5 primeiros anúncios que cumprem os requisitos técnicos mínimos** do item (medida ou capacidade, palavras exigidas e excluídas), pelo preço do produto, **sem frete, cor, estilo ou acabamento**. O coletor grava a `posicao` na busca e marca o item como coletado **por site**. O build (`B5-b_orcamento_itens.py`) corrige kit lido como unidade, descarta anúncio patrocinado sem página de produto e preço fora de 0,4× a 2,5× a mediana do item, e fica com as 5 primeiras por site; item com menos de 3 ofertas fica sem preço. Cenários: P75, mediana e P25 das ofertas.
+- **Coleta em sites (mobiliário, cozinha e bar, informática, climatização; N3):** `_src/WebScripts/[B5] Ativos fixos/precos_itens.user.js` (Tampermonkey) na Amazon e no Mercado Livre, CEP de Salvador. Critério (decisão do autor, 03/11/2026): de cada busca, na ordenação padrão do site, entram os **5 primeiros anúncios que cumprem os requisitos técnicos mínimos** do item (medida ou capacidade, palavras exigidas e excluídas), pelo preço do produto, **sem frete, cor, estilo ou acabamento**. O coletor grava a `posicao` na busca e marca o item como coletado **por site**. O build (`B5-b_orcamento_itens.py`) corrige kit lido como unidade, descarta anúncio patrocinado sem página de produto e preço fora de 0,4× a 2,5× a mediana do item, e fica com as 5 primeiras por site; item com menos de 3 ofertas fica sem preço. Cenários: P75, mediana e P25 das ofertas.
 - **Gratuito (N6):** item sem custo por informação do autor (ex.: maquininha cedida a PJ pelos bancos).
 - **Quantidade:** do autor (N6) até haver projeto do ponto; a I01 entra no modelo em R$ por m² (total ÷ área do C03).
 - Saídas em `orcamento/`: orçamento por item, por premissa e as ofertas filtradas; o `gerar_modelo_financeiro.py` lê o orçamento por premissa mais recente.
@@ -136,7 +136,7 @@ Orçamento da etapa 1 (premissas I01 a I04 do cap. 9), item a item, na lista `da
 
 ### Análise de conteúdo do Bloco B2
 
-Concluída em 03/11/2026. A codificação é temática, comentário por comentário, na grade de 22 temas do Notion (`textos/instrumentos/dicionario_temas_B2.md`), com apoio de IA, nas 1.628 avaliações: unidade de registro = tema; enumeração por presença; elogio e crítica na mesma grade; ocasião da visita e compra na loja numa coluna de contexto, sem polaridade (Bardin, 2002, p. 104–108). Base final: `_src/PyScripts/B2_Avaliacoes/2_build/B2-b_comentarios_grade2.py`; tabelas e kappa: `../analise/B2-a_temas_grade2.py`; Apêndice F do TMin.
+Concluída em 03/11/2026. A codificação é temática, comentário por comentário, na grade de 22 temas do Notion (`textos/_planejamento/_instrumentos/dicionario_temas_B2.md`), com apoio de IA, nas 1.628 avaliações: unidade de registro = tema; enumeração por presença; elogio e crítica na mesma grade; ocasião da visita e compra na loja numa coluna de contexto, sem polaridade (Bardin, 2002, p. 104–108). Base final: `_src/PyScripts/B2_Avaliacoes/2_build/B2-b_comentarios_grade2.py`; tabelas e kappa: `../analise/B2-a_temas_grade2.py`; Apêndice F do TMin.
 
 **Validação:** recodificação cega do autor em 199 avaliações sorteadas com estratificação, em duas rodadas (139 antes da revisão da grade e 60 depois), com kappa de Cohen agrupado e critério de 0,70. Temas: 0,83 e 0,84 (aceitos). Contexto: 0,58 e 0,52 (exploratório). "Costuma ir": 0,52 (excluído). "Voltará": 0,75. Variável abaixo do critério é reportada como exploratória e não sustenta premissa sozinha.
 
@@ -156,11 +156,11 @@ O procedimento muda conforme a natureza de cada bloco. Os Blocos B1 e B2 são ce
 
 Fonte: elaborado pelo próprio autor
 
-O procedimento completo (etapas por bloco, amostra de auditoria do B2, checagens do B3 e critério de Wilson de 5%) está em `textos/instrumentos/protocolo_validacao_coleta.md`, lido só em tarefa de coleta ou auditoria.
+O procedimento completo (etapas por bloco, amostra de auditoria do B2, checagens do B3 e critério de Wilson de 5%) está em `textos/_planejamento/_instrumentos/protocolo_validacao_coleta.md`, lido só em tarefa de coleta ou auditoria.
 
 ### Extra: registro prévio e testes de hipótese
 
-Só se sobrar tempo depois de o plano estar completo, e então em apêndice: testes H1–H9 do registro prévio (`textos/planejamento/_arquivo/registro_previo_luderia.md`), com correção de Benjamini-Hochberg e regressões com efeito fixo por estabelecimento. Não há divisão da base: se o extra for feito, os testes rodam na mesma base em que a grade foi construída, o que é declarado como limitação.
+Só se sobrar tempo depois de o plano estar completo, e então em apêndice: testes H1–H9 do registro prévio (`textos/_planejamento/_arquivo/registro_previo_luderia.md`), com correção de Benjamini-Hochberg e regressões com efeito fixo por estabelecimento. Não há divisão da base: se o extra for feito, os testes rodam na mesma base em que a grade foi construída, o que é declarado como limitação.
 
 ## 3.4 Técnicas de análise por área do plano
 

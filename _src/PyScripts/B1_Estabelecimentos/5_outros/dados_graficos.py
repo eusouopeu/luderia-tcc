@@ -18,7 +18,7 @@ import pandas as pd
 
 _AQUI = Path(__file__).resolve()
 ROOT = _AQUI.parents[4]
-_ED = _AQUI.parents[1] / "analise" / "B1-a_estatistica_descritiva.py"
+_ED = _AQUI.parents[1] / "3_analise" / "B1-a_estatistica_descritiva.py"
 
 
 def _modulo_estatistica():

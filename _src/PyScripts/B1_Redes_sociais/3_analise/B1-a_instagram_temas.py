@@ -1,7 +1,7 @@
 """
 Bloco B1 - temas das legendas do Instagram das casas aprovadas, pelas mesmas
 categorias da análise de conteúdo do B2 (livro de códigos em
-textos/instrumentos/_arquivo/analise_conteudo_bardin_B2.md, §1.4).
+textos/_planejamento/_instrumentos/_arquivo/analise_conteudo_bardin_B2.md, §1.4).
 
 Pergunta: o que as casas anunciam (legendas) bate com o que os clientes
 elogiam ou criticam (avaliações do Google, B2)? Tema muito anunciado e pouco
@@ -49,7 +49,7 @@ Uso:
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("Gerar_*")), str(_AQUI.parents[1] / "5_outros")]
+sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("G[0-9]_*")), str(_AQUI.parents[1] / "5_outros")]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)

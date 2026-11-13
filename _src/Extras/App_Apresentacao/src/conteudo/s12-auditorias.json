@@ -1,5 +1,5 @@
 {
-  "_leiaMe": "Aba 12: auditorias da coleta. Textos por conjunto aqui; números em auditorias.json (gerado por _src/Extras/Gerar_outros/auditorias_site.py a partir dos registros de cada pasta auditoria/). Método na seção 3.3 do TMin (Quadro 3.3).",
+  "_leiaMe": "Aba 12: auditorias da coleta. Textos por conjunto aqui; números em auditorias.json (gerado por _src/Extras/G5_outros/auditorias_site.py a partir dos registros de cada pasta auditoria/). Método na seção 3.3 do TMin (Quadro 3.3).",
   "intro": "Os scripts de coleta leem a fonte inteira: todos os estabelecimentos do recorte, todas as avaliações, todos os posts. Por isso, não há erro amostral na coleta. A auditoria não estima a população: ela estima a taxa de erro do instrumento, isto é, quanto o dado gravado difere da página de origem. O que se valida é o dado gerado, e não a autoria do código.",
   "regras": {
     "titulo": "Regras comuns a todas as auditorias",
@@ -57,7 +57,7 @@
       "confere": "Existência, grupo (metrô, trem, VLT/BRT, shopping, parque ou praia) e distância em linha reta de cada item contado a até 1.000 m, mais a estação mais próxima de cada fonte. Opcional: a distância a pé, para medir quanto a linha reta subestima o trajeto.",
       "amostragem": "Amostragem em dois estágios: primeiro, estabelecimentos estratificados por capital; depois, todos os itens contados em volta de cada estabelecimento sorteado.",
       "justificativa": "A unidade de erro do coletor é o item (estação ou shopping lido, classificado e medido). Os itens se agrupam por estabelecimento, porque saem da mesma busca. Conferir todos os itens de casas sorteadas mede, ao mesmo tempo, a fidelidade (item lido existe e está no grupo certo) e a completude (item que existe e não foi lido).",
-      "tamanho": "20% dos 54 estabelecimentos da fila, arredondado para cima: 0,2 × 54 = 10,8 → 11 casas, com 61 itens a conferir. O passo a passo está em textos/instrumentos/roteiro_auditoria_entorno_B1.md.",
+      "tamanho": "20% dos 54 estabelecimentos da fila, arredondado para cima: 0,2 × 54 = 10,8 → 11 casas, com 61 itens a conferir. O passo a passo está em textos/_planejamento/_instrumentos/roteiro_auditoria_entorno_B1.md.",
       "comparacao": "A distância é medida em linha reta, como no coletor. A distância a pé fica numa coluna à parte e não conta como erro.",
       "ressalva": "Com 11 casas, o limite com zero erros é de 25,9% na taxa por estabelecimento; com 61 itens, de 5,9%, ainda acima do critério. A coleta do OSM de 15/10 (11:38) trouxe só nós, sem polígonos, e o coletor foi corrigido. Depois da nova coleta, o script deve ser rodado de novo: as mesmas 11 casas saem sorteadas, porque a chave depende só do place_id, e os itens do OSM são atualizados."
     },
