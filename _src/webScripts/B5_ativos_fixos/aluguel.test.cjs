@@ -16,7 +16,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { anunciosDaBusca, numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, BAIRROS_MENU, BAIRROS_DESTAQUE, bairroDaUrl, redirecionada, paginaDaBusca, foraDoBairro, MONTAGEM_PADRAO, chaveAlvo, estadoAlvo, proximoAlvo, decidirPasso, semResultadoDeTexto, urlDeAbertura, csvResumoFila, bairroNaoReconhecido, tipoPeloTitulo, daRodada, rodadaDe, COLS });})();';
+    + 'Object.assign(globalThis.__test, { anunciosDaBusca, numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, BAIRROS_MENU, BAIRROS_DESTAQUE, bairroDaUrl, redirecionada, paginaDaBusca, foraDoBairro, MONTAGEM_PADRAO, chaveAlvo, semBusca, estadoAlvo, proximoAlvo, decidirPasso, semResultadoDeTexto, urlDeAbertura, csvResumoFila, bairroNaoReconhecido, tipoPeloTitulo, daRodada, rodadaDe, COLS });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'aluguel.user.js' });
   return ambiente.__test;
 }
@@ -448,4 +448,21 @@ test('"cada busca": o CSV leva só os anúncios guardados pela busca (com a cida
   const dados = { 'olx:1': { id: '1' }, 'olx:2': { id: '2' }, 'olx:3': { id: '3' } };
   assert.deepEqual(Object.keys(t.anunciosDaBusca(dados, { vistos: ['olx:1', 'olx:3'] })), ['olx:1', 'olx:3']);
   assert.deepEqual(Object.keys(t.anunciosDaBusca(dados, { cidadeInteira: true, vistos: ['olx:1', 'olx:2', 'olx:3'], vistosBairro: ['olx:2'] })), ['olx:2']);
+});
+
+test('apagar uma busca tira o registro da coleta dela (o ✓ do menu), não o das outras', () => {
+  const pituba = 'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/pituba?commt=6&ss=100';
+  const graca = 'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/graca?commt=6&ss=100';
+  const feitas = { [t.chaveAlvo(pituba)]: { lidos: 40 }, [t.chaveAlvo(graca)]: { lidos: 12 } };
+  assert.deepEqual(Object.keys(t.semBusca(feitas, `${pituba}&o=3`)), [t.chaveAlvo(graca)]);
+  // Query diferente da que está na lista (o portal acrescentou parâmetro): vale o caminho.
+  assert.deepEqual(Object.keys(t.semBusca(feitas, `${pituba}&sf=1`)), [t.chaveAlvo(graca)]);
+  assert.deepEqual(json(t.semBusca(undefined, pituba)), {});
+});
+
+test('a lixeira reinicia a coleta: anúncios, buscas feitas, marcas e fila', () => {
+  const fonte = fs.readFileSync(__dirname + '/aluguel.user.js', 'utf8');
+  const chaves = fonte.match(/const CHAVES_COLETA = \[([^\]]+)\]/)[1].split(/,\s*/);
+  for (const c of ['CHAVE', 'CHAVE_FEITAS', 'CHAVE_MARCAS', 'CHAVE_FILA', 'CHAVE_EXPORTACAO']) assert.ok(chaves.includes(c), c);
+  assert.match(fonte, /kit\.botaoPerigo\('trash', '', reiniciar/);
 });

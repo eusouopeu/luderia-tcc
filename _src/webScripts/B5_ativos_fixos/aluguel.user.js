@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-3
+// @version      2026.11.13-4
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas e uma fila de buscas entre portais e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -56,15 +56,18 @@
  *
  * Os anúncios ficam no armazenamento do Tampermonkey, comum aos portais (o que estava no
  * localStorage de cada portal, nas versões anteriores, passa para lá ao abrir o portal),
- * até "Apagar". Se aparecer o desafio do Cloudflare, a rodada pausa e retoma da mesma
+ * até "Reiniciar" (lixeira). Se aparecer o desafio do Cloudflare, a rodada pausa e retoma da mesma
  * página depois que ele for resolvido. Cada anúncio leva o total de resultados que o
  * portal diz ter na busca (total_busca), para o build medir a cobertura.
  *
- * Painel (mesmas regras de UI do coletor de preços e do de avaliações): botões com ícone
- * (Heroicons) e nome curto, com o nome completo e a explicação na dica ao passar o mouse;
- * filtros em selos que ligam e desligam; arraste pelo cabeçalho e redimensione pelo canto
- * inferior direito (posição e tamanho ficam salvos; duplo clique no cabeçalho volta ao
- * canto); barras de progresso da busca e da fila. Som: o navegador só libera áudio depois
+ * Painel pelo kit dos painéis (_kit_painel/kit_painel.js, o mesmo dos demais coletores):
+ * menu das buscas com contador, "Próximo", marcar e "só os que faltam"; "Parar" sempre à
+ * mão; som, download automático e "baixar cada busca" no cabeçalho; explicações em dicas;
+ * arraste pelo cabeçalho e redimensione pelo canto inferior direito (posição e tamanho
+ * ficam salvos; duplo clique no cabeçalho volta ao canto); barras de progresso da busca e
+ * da fila. A lixeira é o "Reiniciar": dois cliques, baixa antes o CSV de tudo e apaga os
+ * anúncios de todos os portais e o histórico de coleta (buscas feitas, marcas, fila e
+ * rodada); ficam a lista de buscas e as preferências. Som: o navegador só libera áudio depois
  * de um clique na página; na fila, clique uma vez no painel para o aviso final tocar. Mostra os anúncios fora de CSV (com 100 ou mais, cobra o
  * download e o navegador pede confirmação ao fechar a aba), a cobertura da busca (lidos
  * ÷ total do portal), a coleta mais antiga da busca (alerta acima de 30 dias), a mediana,
@@ -72,7 +75,7 @@
  * área), o preenchimento de cada campo, a mistura de operação, cidade e tipo, a prévia do
  * que o build vai descartar, quantos anúncios estão no alvo (porte do plano e áreas do
  * 6.4), o histórico da rodada automática e as buscas guardadas, com "Baixar" e "Apagar"
- * por busca (Apagar baixa antes o CSV do que sai). Os filtros só mudam esses indicadores
+ * por busca (Apagar baixa antes o CSV do que sai e tira o registro da coleta dela). Os filtros só mudam esses indicadores
  * e o destaque dos cards na página; nada é descartado na coleta, e o CSV sai completo.
  *
  * Buscas que funcionam (02/11/2026; por bairro, nos três portais, em 12/11/2026):
@@ -603,6 +606,14 @@
     } catch (e) { return String(url); }
   }
 
+  // Registro de coletas (feitas ou marcas, por chaveAlvo) sem as entradas de uma busca: a de
+  // chave igual ou, sem ela (o portal mudou a query), as do mesmo caminho.
+  function semBusca(registro, busca) {
+    const chaves = Object.keys(registro || {});
+    const fora = chaves.includes(chaveAlvo(busca)) ? [chaveAlvo(busca)] : chaves.filter((k) => k.startsWith(`${chaveBusca(busca)}?`));
+    return Object.fromEntries(Object.entries(registro || {}).filter(([k]) => !fora.includes(k)));
+  }
+
   // Estado de uma busca: ok (rodada com cobertura de 95% ou mais, ou sem total), baixa
   // (cobertura abaixo de 95%) ou falta. A marca à mão prevalece. Sem registro pela chave
   // completa, vale o da mesma chaveBusca, quando só uma busca da lista tem esse caminho.
@@ -1014,7 +1025,7 @@
     pararFila();
     atualizarBotoes();
     baixarCsv(guardados);
-    status('O armazenamento recusou a gravação: o CSV saiu com tudo o que foi lido. Confira o arquivo, apague buscas em "Buscas guardadas" e retome.');
+    status('O armazenamento recusou a gravação: o CSV saiu com tudo o que foi lido. Confira o arquivo, apague buscas em "Buscas guardadas" e retome.', 'erro');
   }
 
   // Resumo da fila, ao lado do CSV dos anúncios: por que cada busca parou e com que cobertura.
@@ -1022,20 +1033,7 @@
   // Download: com GM_download, em Downloads/TCC Luderia/B5_aluguel/_dados-brutos/ sem perguntar;
   // recusado (modo nativo do Tampermonkey, extensão fora da lista), o download comum.
   const PASTA_DOWNLOAD = 'B5_aluguel/_dados-brutos';
-  function baixarTexto(nome, texto) {
-    const url = URL.createObjectURL(new Blob([texto], { type: 'text/csv;charset=utf-8' }));
-    const comum = () => {
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = nome;
-      (document.body || document.documentElement).appendChild(a);
-      a.click();
-      a.remove();
-    };
-    setTimeout(() => URL.revokeObjectURL(url), 15000);
-    if (typeof GM_download !== 'function') return comum();
-    try { GM_download({ url, name: `TCC Luderia/${PASTA_DOWNLOAD}/${nome}`, saveAs: false, onerror: comum }); } catch (e) { comum(); }
-  }
+  const baixarTexto = (nome, texto) => kit.baixarArquivo(nome, texto);
 
   // Resumo da fila, ao lado do CSV dos anúncios: por que cada busca parou e com que cobertura.
   // Sem ele, uma busca que parou cedo (página vazia, bloqueio) não deixa rastro no CSV.
@@ -1075,22 +1073,6 @@
     if (!parcial) gmGravar(CHAVE_EXPORTACAO, Date.now());
   }
 
-  // O navegador só libera o áudio depois de um clique: o painel chama liberarAudio a cada clique.
-  let audio = null;
-  function liberarAudio() {
-    try { audio = audio || new AudioContext(); if (audio.state === 'suspended') audio.resume(); } catch (e) { audio = null; }
-  }
-  function som(ok = true) {
-    try {
-      liberarAudio();
-      const o = audio.createOscillator();
-      o.connect(audio.destination);
-      o.frequency.value = ok ? 880 : 330;
-      o.start();
-      o.stop(audio.currentTime + 0.4);
-    } catch (e) { /* sem som */ }
-  }
-
   const lerAuto = () => { try { return JSON.parse(sessionStorage.getItem(CHAVE_AUTO) || 'null'); } catch (e) { return null; } };
   const gravarAuto = (v) => { try { v ? sessionStorage.setItem(CHAVE_AUTO, JSON.stringify(v)) : sessionStorage.removeItem(CHAVE_AUTO); } catch (e) { /* sem modo automático */ } };
 
@@ -1107,16 +1089,16 @@
     registrarBusca(filaAtiva ? lerFila().itens[lerFila().i] : auto.alvo || location.href, auto, motivo);
     atualizarBotoes();
     if (auto.fila && lerFila()?.ativa) { fimDaBuscaNaFila(auto, motivo); return; }
-    progresso(el.pBusca, null);
-    som();
-    baixarCsv();
-    status(`Concluído: ${auto.paginas} páginas, ${auto.total} anúncios novos (${motivo}).`);
+    progresso('busca', null);
+    kit.tocar(true);
+    if (kit.autobaixar) baixarCsv();
+    mostrar(`Concluído: ${auto.paginas} páginas, ${auto.total} anúncios novos (${motivo}).${kit.autobaixar ? '' : ' Download automático desligado: baixe o CSV.'}`, 'ok');
   }
 
   function progressoBusca(auto) {
     const n = (auto.vistos || []).length;
     const t = auto.totalBusca;
-    progresso(el.pBusca, t ? n / t : 0, `Busca: ${n}${t ? ` de ${t}` : ''} anúncios · ${auto.paginas} pág.`);
+    progresso('busca', t ? n / t : 0, `Busca: ${n}${t ? ` de ${t}` : ''} anúncios · ${auto.paginas} pág.`);
   }
 
   // Modo automático: sobrevive à troca de página pelo sessionStorage da aba. A parada
@@ -1138,7 +1120,7 @@
       if (fila?.ativa) { gravarAuto(null); buscaDesviada(auto); return; }
       gravarAuto(null);
       atualizarBotoes();
-      status(`${rotuloBusca(alvo)}: o portal desviou a busca para ${location.pathname}; a rodada parou e esta página não foi guardada.`);
+      status(`${rotuloBusca(alvo)}: o portal desviou a busca para ${location.pathname}; a rodada parou e esta página não foi guardada.`, 'alerta');
       return;
     }
     if (!gravou) { avisarCheio(); return; }
@@ -1147,7 +1129,7 @@
     if (lidos === 0 && desafioCloudflare()) {
       // Não conta como página vazia: espera o desafio e retoma desta mesma página.
       iniciouAuto = false;
-      status('Bloqueio do Cloudflare: resolva o desafio na página; a coleta retoma desta página.');
+      status('Bloqueio do Cloudflare: resolva o desafio na página; a coleta retoma desta página.', 'alerta');
       return;
     }
     if (alvo && !auto.cidadeInteira && bairroNaoReconhecido({ lidos, fora, total })) {
@@ -1221,10 +1203,10 @@
   }
 
   function progressoFila(fila) {
-    if (!fila?.itens?.length) { progresso(el.pFila, null); return; }
+    if (!fila?.itens?.length) { progresso('fila', null); return; }
     const n = fila.itens.length;
     const atual = fila.itens[fila.i];
-    progresso(el.pFila, fila.i / n, `Fila: ${fila.i} de ${n} buscas${atual && fila.ativa ? ` · agora ${rotuloBusca(atual)}` : ''}`);
+    progresso('fila', fila.i / n, `Fila: ${fila.i} de ${n} buscas${atual && fila.ativa ? ` · agora ${rotuloBusca(atual)}` : ''}`);
   }
 
   function iniciarFila() {
@@ -1234,7 +1216,6 @@
     if (!itens.length) { status('A fila está vazia: uma URL de busca do OLX, ZAP, Viva Real ou QuintoAndar por linha.'); return; }
     const antiga = lerFila();
     if (antiga && antiga.i > 0 && antiga.i < antiga.itens.length && !confirm(`Há uma fila em curso (${antiga.i} de ${antiga.itens.length} buscas). Começar outra do zero?`)) return;
-    liberarAudio();
     gravarFila({ itens, i: 0, ativa: true, tentativa: 0, resultados: [], inicio: Date.now() });
     abrirItem();
   }
@@ -1242,7 +1223,6 @@
   function continuarFila() {
     const fila = lerFila();
     if (!fila || fila.i >= fila.itens.length) { status('Não há fila para continuar.'); return; }
-    liberarAudio();
     gravarFila({ ...fila, ativa: true });
     abrirItem();
   }
@@ -1290,7 +1270,7 @@
       abrirItem();
       return;
     }
-    if (gmLer(CHAVE_CADA, false)) baixarDaBusca(auto);
+    if (kit.baixarCada) baixarDaBusca(auto);
     fila.i++;
     fila.tentativa = 0;
     fila.retomada = null;
@@ -1316,153 +1296,886 @@
   function pausada() {
     const fila = lerFila();
     atualizarBotoes();
-    status(`Fila pausada em ${fila?.i ?? 0} de ${fila?.itens?.length ?? 0} buscas. "Continuar" retoma.`);
+    status(`Fila pausada em ${fila?.i ?? 0} de ${fila?.itens?.length ?? 0} buscas. "Continuar" retoma.`, 'alerta');
   }
 
   function encerrarFila(fila) {
     gravarFila({ ...fila, ativa: false, fim: Date.now() });
     atualizarBotoes();
-    progresso(el.pBusca, null);
+    progresso('busca', null);
     progressoFila(fila);
     const rs = fila.resultados || [];
     const baixas = rs.filter((r) => r.cobertura != null && r.cobertura < COBERTURA_MIN);
     const desviadas = rs.filter((r) => /^desviada/.test(r.motivo || ''));
-    som(!baixas.length && !desviadas.length);
+    const limpa = !baixas.length && !desviadas.length;
+    kit.tocar(limpa);
     // CSV só da rodada; o de tudo continua no botão "CSV".
-    const rodada = daRodada(carregar(), rodadaDe(fila.inicio));
-    baixarCsv(Object.keys(rodada).length ? rodada : carregar(), true);
-    setTimeout(() => baixarResumoFila(rs), 1500);
+    if (kit.autobaixar) {
+      const rodada = daRodada(carregar(), rodadaDe(fila.inicio));
+      baixarCsv(Object.keys(rodada).length ? rodada : carregar(), true);
+      setTimeout(() => baixarResumoFila(rs), 1500);
+    }
     const cidade = rs.filter((r) => r.bairro_reconhecido === 'não');
-    mostrar(`Fila concluída: ${rs.length} buscas, ${rs.reduce((n, r) => n + (r.guardados ?? r.lidos), 0)} anúncios guardados; CSV da rodada baixado em ${PASTA_DOWNLOAD}/.`
+    mostrar(`Fila concluída: ${rs.length} buscas, ${rs.reduce((n, r) => n + (r.guardados ?? r.lidos), 0)} anúncios guardados; ${kit.autobaixar ? `CSV da rodada baixado em ${PASTA_DOWNLOAD}/` : 'download automático desligado: baixe o CSV'}.`
       + (cidade.length ? ` Bairro não reconhecido pelo portal (lida a cidade, guardados só os do bairro): ${cidade.map((r) => r.rotulo).join(', ')}.` : '')
       + (baixas.length ? ` Abaixo de ${pctTxt(COBERTURA_MIN)}: ${baixas.map((r) => r.rotulo).join(', ')}.` : '')
-      + (desviadas.length ? ` Desviadas pelo portal (sem resultado no bairro, nada lido): ${desviadas.map((r) => r.rotulo).join(', ')}.` : ''));
+      + (desviadas.length ? ` Desviadas pelo portal (sem resultado no bairro, nada lido): ${desviadas.map((r) => r.rotulo).join(', ')}.` : ''), limpa ? 'ok' : 'alerta');
   }
 
-  // ---------- painel (padrão: canto superior direito, shadow DOM, fora do <body>) ----------
-  // Mesmas regras de UI do coletor de preços (mobiliario.user.js): botões com ícone
-  // (Heroicons) e nome curto, com o nome completo e a explicação na dica; filtros em selos que
-  // ligam e desligam; resumo em grade; painel montado com createElement (sem innerHTML).
+  // ---------- painel (kit dos painéis: _kit_painel/kit_painel.js) ----------
+  // Mesmo padrão dos demais coletores: canto superior direito, shadow DOM preso ao <html>,
+  // Montserrat, Heroicons outline, roxo como cor primária, explicações em dicas, ação
+  // destrutiva em dois cliques, "Parar" sempre à mão, som e download automático no cabeçalho.
 
+  // >>> kit_painel (cópia de _src/webScripts/_kit_painel/kit_painel.js; regerar com: node _src/webScripts/_kit_painel/embutir.js)
+  // Kit dos painéis dos webscripts do TCC Luderia. Fonte única: o embutir.js copia este
+  // bloco para dentro de cada .user.js, entre os marcadores; não editar a cópia.
+  // Padrão (o do maps_avaliacoes): canto superior direito, shadow DOM preso ao <html> e
+  // reposto se sumir, arrastável e redimensionável com posição salva, Montserrat,
+  // Heroicons outline, roxo como cor primária, verde/âmbar/vermelho para o desfecho,
+  // explicações em dicas (ⓘ ou sobre o próprio botão) em vez de texto solto.
+  // Só define funções: nada toca o DOM antes de montar() (os testes rodam no Node).
+  function kitPainel(op = {}) {
+    const P = op.prefixo || op.id || 'tcc';
+    const temGM = typeof GM_getValue === 'function' && typeof GM_setValue === 'function';
+    const ler = op.ler || ((c, padrao) => {
+      try {
+        if (temGM) return GM_getValue(c, padrao);
+        const v = localStorage.getItem(c);
+        return v == null ? padrao : JSON.parse(v);
+      } catch (_) { return padrao; }
+    });
+    const gravar = op.gravar || ((c, v) => {
+      try {
+        if (temGM) { if (v == null && typeof GM_deleteValue === 'function') GM_deleteValue(c); else GM_setValue(c, v); return; }
+        if (v == null) localStorage.removeItem(c); else localStorage.setItem(c, JSON.stringify(v));
+      } catch (_) { /* sem armazenamento */ }
+    });
+    const chave = (s) => `${P}:kit:${s}`;
+    const k = {
+      el: {}, ocupado: false, parar: false, acoes: [], ler, gravar,
+      som: ler(chave('som'), true), autobaixar: ler(chave('autobaixar'), true),
+      // Modo semiautomático (fila): baixar o arquivo de cada item (casa, perfil, busca) assim que
+      // ele termina, além do arquivo do fim da fila. Desligado por padrão.
+      baixarCada: ler(chave('baixarcada'), false),
+    };
+    const dicas = new WeakMap();
+    let hospedeiro = null, painel = null;
+
+    // ---------- elementos ----------
+    function criar(tag, props = {}, filhos = []) {
+      const n = document.createElement(tag);
+      for (const [a, v] of Object.entries(props)) {
+        if (v == null) continue;
+        if (a === 'dica') dica(n, v);
+        else if (a === 'style') n.style.cssText = v;
+        else if (a === 'role' || a.startsWith('aria-') || a.startsWith('data-')) n.setAttribute(a, v);
+        else n[a] = v;
+      }
+      for (const f of [].concat(filhos)) {
+        if (f == null || f === false) continue;
+        n.appendChild(typeof f === 'object' ? f : document.createTextNode(String(f)));
+      }
+      return n;
+    }
+
+    // Heroicons 24/outline (traço 1.5).
+    const ICONES = {
+      'adjustments-horizontal': 'M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75',
+      'arrow-down': 'M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3',
+      'arrow-down-on-square-stack': 'M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m-6 3.75 3 3m0 0 3-3m-3 3V1.5m6 9h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75',
+    'arrow-down-tray': 'M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3',
+      'arrow-path': 'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99',
+      'arrow-top-right-on-square': 'M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25',
+      'arrow-up': 'M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18',
+      'arrow-up-tray': 'M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5',
+      'arrow-uturn-left': 'M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3',
+      'bell': 'M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0',
+      'bell-slash': 'M9.143 17.082a24.248 24.248 0 0 0 3.844.148m-3.844-.148a23.856 23.856 0 0 1-5.455-1.31 8.964 8.964 0 0 0 2.3-5.542m3.155 6.852a3 3 0 0 0 5.667 1.97m1.965-2.277L21 21m-4.225-4.225a23.81 23.81 0 0 0 3.536-1.003A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6.53 6.53m10.245 10.245L6.53 6.53M3 3l3.53 3.53',
+      'calendar-days': 'M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5',
+      'chart-bar': 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z',
+      'check': 'm4.5 12.75 6 6 9-13.5',
+      'chevron-double-down': 'm4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5',
+      'chevron-left': 'M15.75 19.5 8.25 12l7.5-7.5',
+      'chevron-right': 'm8.25 4.5 7.5 7.5-7.5 7.5',
+      'clock': 'M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z',
+      'code-bracket': 'M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5',
+      'document-check': 'M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12',
+      'document-duplicate': 'M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75',
+      'document-text': 'M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z',
+      'exclamation-triangle': 'M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z',
+      'eye': 'M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178ZM15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z',
+      'forward': 'M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z',
+      'funnel': 'M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z',
+      'hashtag': 'M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5-3.9 19.5m-2.1-19.5-3.9 19.5',
+      'information-circle': 'm11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z',
+      'magnifying-glass': 'm21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z',
+      'map-pin': 'M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z',
+      'minus': 'M5 12h14',
+      'bolt': 'm3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z',
+      'bolt-slash': 'M11.412 15.655 9.75 21.75l3.745-4.012M9.257 13.5H3.75l2.659-2.849m2.048-2.194L14.25 2.25 12 10.5h8.25l-4.707 5.043M8.457 8.457 3 3m5.457 5.457 7.086 7.086m0 0L21 21',
+      'play': 'M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z',
+      'plus': 'M12 4.5v15m7.5-7.5h-15',
+      'queue-list': 'M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z',
+      'stop': 'M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z',
+      'tag': 'M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z M6 6h.008v.008H6V6Z',
+      'trash': 'm14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0',
+      'x-mark': 'M6 18 18 6M6 6l12 12',
+    };
+
+    function icone(nome, classe = '') {
+      const NS = 'http://www.w3.org/2000/svg';
+      const svg = document.createElementNS(NS, 'svg');
+      for (const [a, v] of Object.entries({ viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.5', 'aria-hidden': 'true' })) svg.setAttribute(a, v);
+      if (classe) svg.setAttribute('class', classe);
+      const p = document.createElementNS(NS, 'path');
+      p.setAttribute('d', ICONES[nome] || '');
+      p.setAttribute('stroke-linecap', 'round');
+      p.setAttribute('stroke-linejoin', 'round');
+      svg.appendChild(p);
+      return svg;
+    }
+
+    // ---------- dicas: balão próprio (mais rápido que o title do navegador) ----------
+    // Qualquer elemento com dica mostra o balão ao parar o mouse (ou com foco); o ⓘ
+    // abre na hora e, clicado, fica fixo até Esc, rolagem ou clique fora.
+    let dicaAncora = null, dicaFixa = false, timerDica = 0;
+
+    function dica(n, conteudo) {
+      if (!conteudo) { dicas.delete(n); n.removeAttribute('data-dica'); return n; }
+      dicas.set(n, conteudo);
+      n.setAttribute('data-dica', '');
+      if (typeof conteudo === 'string' && n.tagName === 'BUTTON' && !n.textContent.trim()) n.setAttribute('aria-label', conteudo);
+      return n;
+    }
+
+    function abrirDica(ancora, fixa = false) {
+      clearTimeout(timerDica);
+      const c = dicas.get(ancora);
+      if (!c || !k.el.dica) return;
+      dicaAncora = ancora; dicaFixa = fixa;
+      const v = typeof c === 'function' ? c() : c;
+      k.el.dica.replaceChildren(typeof v === 'object' ? v : document.createTextNode(String(v)));
+      k.el.dica.hidden = false;
+      const r = ancora.getBoundingClientRect(), d = k.el.dica.getBoundingClientRect(), M = 10;
+      const left = Math.min(Math.max(M, r.left + r.width / 2 - d.width / 2), innerWidth - d.width - M);
+      let top = r.bottom + 6;
+      if (top + d.height > innerHeight - M) top = Math.max(M, r.top - d.height - 6);
+      k.el.dica.style.left = `${left}px`;
+      k.el.dica.style.top = `${top}px`;
+    }
+
+    function fecharDica() {
+      clearTimeout(timerDica);
+      if (k.el.dica) k.el.dica.hidden = true;
+      dicaAncora = null; dicaFixa = false;
+    }
+
+    const comDica = (e) => e.composedPath().find((n) => n.nodeType === 1 && dicas.has(n));
+
+    function ajuda(conteudo, rotulo = 'Explicação') {
+      const i = criar('span', { className: 'ajuda', tabIndex: 0, role: 'button', 'aria-label': rotulo }, [icone('information-circle')]);
+      return dica(i, conteudo);
+    }
+
+    // ---------- controles ----------
+    // botao('arrow-down-tray', 'CSV', fn, { classe: 'mini', dica: '…' }); sem texto vira botão-ícone.
+    function botao(ico, texto, fn, { classe = '', dica: d = '' } = {}) {
+      const b = criar('button', { type: 'button', className: `${texto ? '' : 'ico '}${classe}`.trim(), onclick: fn },
+        [ico ? icone(ico) : null, texto || null]);
+      if (d) dica(b, d);
+      return b;
+    }
+
+    // Ação destrutiva em dois cliques: o primeiro arma (vermelho, treme) e o segundo, em até 3 s, executa.
+    function botaoPerigo(ico, texto, fn, { classe = '', dica: d = '' } = {}) {
+      const b = botao(ico, texto, null, { classe: `perigo ${classe}`, dica: d });
+      let armado = 0;
+      const desarmar = () => { clearTimeout(armado); armado = 0; b.classList.remove('armado'); dica(b, d); };
+      b.onclick = () => {
+        if (!armado) {
+          b.classList.add('armado');
+          dica(b, 'Clique de novo para confirmar');
+          abrirDica(b);
+          armado = setTimeout(desarmar, 3000);
+          return;
+        }
+        desarmar(); fecharDica(); fn();
+      };
+      return b;
+    }
+
+    // Etiqueta liga/desliga: cinza desligada, azul ligada. `checked` imita a caixa de marcar.
+    function etiqueta(rotulo, aoAlternar, { ligada = false, dica: d = '', ico = '' } = {}) {
+      const b = criar('button', { type: 'button', className: 'tag' }, [ico ? icone(ico) : null, rotulo]);
+      if (d) dica(b, d);
+      const pintar = (v) => b.setAttribute('aria-pressed', String(v));
+      pintar(ligada);
+      Object.defineProperty(b, 'checked', { get: () => b.getAttribute('aria-pressed') === 'true', set: (v) => pintar(!!v) });
+      b.onclick = () => { pintar(!b.checked); aoAlternar(b.checked); };
+      return b;
+    }
+
+    // Botão-ícone de preferência (fica roxo ligado); a dica diz o estado.
+    function alternaIcone({ ico, icoDesligado = ico, rotulo, ligado, aoMudar, classe = 'leve' }) {
+      const b = criar('button', { type: 'button', className: `ico ${classe}` });
+      let v = !!ligado;
+      const pintar = () => {
+        b.setAttribute('aria-pressed', String(v));
+        b.replaceChildren(icone(v ? ico : icoDesligado));
+        dica(b, `${rotulo}: ${v ? 'ligado' : 'desligado'}`);
+        b.setAttribute('aria-label', rotulo);
+      };
+      b.onclick = () => { v = !v; pintar(); aoMudar(v); if (dicaAncora === b) abrirDica(b); };
+      Object.defineProperty(b, 'checked', { get: () => v, set: (x) => { v = !!x; pintar(); } });
+      pintar();
+      return b;
+    }
+
+    // Opção da fila: baixar cada item ao terminar (k.baixarCada, gravada por script).
+    function botaoBaixarCada(rotulo = 'Baixar cada item ao terminar (fila)') {
+      return alternaIcone({ ico: 'arrow-down-on-square-stack', rotulo, ligado: k.baixarCada,
+        aoMudar: (v) => { k.baixarCada = v; gravar(chave('baixarcada'), v); } });
+    }
+
+    // Controle segmentado: [[valor, texto, dica]].
+    function pills(opcoes, valor, aoMudar) {
+      const caixa = criar('div', { className: 'pills', role: 'tablist' });
+      const bs = opcoes.map(([v, t, d]) => {
+        const b = criar('button', { type: 'button', className: 'pill', role: 'tab', 'data-valor': v }, [t]);
+        if (d) b.appendChild(ajuda(d));
+        b.onclick = () => { caixa.valor = v; aoMudar(v); };
+        return b;
+      });
+      Object.defineProperty(caixa, 'valor', {
+        get: () => valor,
+        set: (v) => { valor = v; for (const b of bs) b.setAttribute('aria-selected', String(b.dataset.valor === String(v))); },
+      });
+      caixa.append(...bs);
+      caixa.valor = valor;
+      return caixa;
+    }
+
+    // Seção recolhível que lembra se estava aberta.
+    const abertos = new Set(ler(chave('abertos'), op.abertos || []));
+    function secao(id, cabeca, filhos, aoAbrir = null) {
+      const d = criar('details', { open: abertos.has(id) }, [
+        criar('summary', {}, [icone('chevron-right', 'seta'), ...[].concat(cabeca)]), ...filhos]);
+      d.addEventListener('toggle', () => {
+        if (d.open) abertos.add(id); else abertos.delete(id);
+        gravar(chave('abertos'), [...abertos]);
+        if (d.open && aoAbrir) aoAbrir();
+      });
+      return d;
+    }
+
+    // Botão dentro do <summary> que não abre nem fecha a seção.
+    const naoAlterna = (fn) => (e) => { e.preventDefault(); e.stopPropagation(); fn(e); };
+
+    const linha = (filhos, classe = '') => criar('div', { className: `linha ${classe}`.trim() }, filhos);
+    const esp = () => criar('span', { className: 'esp' });
+    const rotulo = (t, d) => criar('span', { className: 'rotulo' }, [t, d ? ajuda(d) : null]);
+    const selo = (t = '', classe = '') => criar('span', { className: `selo ${classe}`.trim(), textContent: t });
+
+    // ---------- status, resumo e progresso ----------
+    function animarStatus() {
+      const s = k.el.status;
+      s.classList.remove('entra');
+      void s.offsetWidth;
+      s.classList.add('entra');
+    }
+
+    function status(t, tipo = '') {
+      if (!k.el.status) return;
+      const cls = `status${tipo ? ` st-${tipo}` : ''}`;
+      if (k.el.status.className.replace(' entra', '') !== cls || k.el.status.textContent !== t) {
+        const mudouTipo = k.el.status.className.replace(' entra', '') !== cls;
+        k.el.status.className = cls;
+        k.el.status.textContent = t;
+        if (mudouTipo) animarStatus();
+      }
+      if (tipo === 'ok' || tipo === 'erro' || tipo === 'alerta') estado(tipo);
+    }
+
+    // Resumo do desfecho: cabeçalho com a cor do resultado, contagens e avisos.
+    // linhas: [[número, texto, detalhe]]; avisos: textos em âmbar.
+    function resumo({ titulo, sub = '', linhas = [], avisos = [], tipo = '' }) {
+      if (!k.el.status) return;
+      const item = ([n, t, det]) => criar('li', {}, [criar('b', { textContent: String(n) }), ` ${t}`,
+        det ? criar('span', { className: 'suave', textContent: ` · ${det}` }) : null]);
+      k.el.status.className = `status rico${tipo ? ` st-${tipo}` : ''}`;
+      k.el.status.replaceChildren(...[
+        criar('div', { className: 'cab' }, [criar('span', { className: 'ponto' }), titulo]),
+        sub ? criar('div', { className: 'suave', textContent: sub }) : null,
+        linhas.length ? criar('ul', {}, linhas.map(item)) : null,
+        ...avisos.filter(Boolean).map((t) => criar('p', { className: 'aviso', textContent: t })),
+      ].filter(Boolean));
+      animarStatus();
+      if (tipo) estado(tipo);
+    }
+
+    // Barra de progresso: barra('coleta') cria; progresso('coleta', 0.4, 'texto'),
+    // progresso('coleta', true, 'texto') indeterminada e progresso('coleta', null) esconde.
+    const barras = {};
+    function barra(nome) {
+      const b = { preenchido: criar('div', { className: 'preenchido' }), texto: criar('span'), pct: criar('span') };
+      b.trilho = criar('div', { className: 'trilho' }, [b.preenchido]);
+      b.caixa = criar('div', { className: 'barra', hidden: true }, [criar('div', { className: 'txt' }, [b.texto, b.pct]), b.trilho]);
+      barras[nome] = b;
+      return b.caixa;
+    }
+
+    function progresso(nome, frac, texto = '') {
+      const b = barras[nome];
+      if (!b) return;
+      if (frac == null || frac === false) { b.caixa.hidden = true; return; }
+      b.caixa.hidden = false;
+      b.texto.textContent = texto;
+      const indef = frac === true;
+      b.trilho.classList.toggle('indef', indef);
+      b.preenchido.classList.toggle('rodando', !indef && k.ocupado);
+      if (indef) { b.pct.textContent = ''; return; }
+      const pct = Math.round(Math.min(1, Math.max(0, frac)) * 100);
+      b.preenchido.style.width = `${pct}%`;
+      b.pct.textContent = `${pct}%`;
+    }
+
+    // Ponto do cabeçalho (visível minimizado): cinza parado, roxo pulsando em curso,
+    // verde concluído, âmbar interrompido ou incerto, vermelho erro.
+    function estado(s = '') {
+      if (k.el.ponto) k.el.ponto.className = `ponto-estado ${s}`.trim();
+    }
+
+    // Liga e desliga as ações conforme a tarefa em curso.
+    function atualizarAcoes(ocupado = k.ocupado) {
+      for (const b of k.acoes) b.disabled = ocupado;
+      if (k.el.parar) k.el.parar.disabled = !ocupado;
+      if (ocupado) estado('rodando');
+    }
+
+    const botaoParar = (fn = () => { k.parar = true; status('Parando…'); }) =>
+      (k.el.parar = botao('stop', '', fn, { classe: 'parar', dica: 'Parar' }));
+
+    // Roda uma tarefa travando as ações; "Parar" põe k.parar = true.
+    async function executar(fn, { avisar = true } = {}) {
+      if (k.ocupado) return false;
+      k.ocupado = true; k.parar = false; atualizarAcoes();
+      let ok = true;
+      try { await fn(); } catch (e) { ok = false; if (!k.parar) status(`Erro: ${e.message}`, 'erro'); }
+      const parado = k.parar;
+      k.ocupado = false; atualizarAcoes();
+      estado(!ok && !parado ? 'erro' : parado ? 'alerta' : 'ok');
+      if (parado && ok) status('Interrompido.', 'alerta');
+      if (avisar) tocar(ok && !parado);
+      return ok && !parado;
+    }
+
+    // ---------- microinterações ----------
+    let audio = null;
+    function liberarAudio() {
+      try { audio = audio || new AudioContext(); if (audio.state === 'suspended') audio.resume(); } catch (_) { audio = null; }
+    }
+
+    function tocar(ok = true) {
+      if (!k.som) return;
+      liberarAudio();
+      if (!audio) return;
+      (ok ? [880, 1320] : [440, 330]).forEach((f, i) => {
+        const o = audio.createOscillator(), g = audio.createGain();
+        o.frequency.value = f;
+        o.connect(g); g.connect(audio.destination);
+        const t = audio.currentTime + i * 0.22;
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(0.3, t + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.2);
+        o.start(t); o.stop(t + 0.21);
+      });
+    }
+
+    // Brilho rápido num elemento (verde = feito, vermelho = falhou).
+    function piscar(n, tipo = 'ok') {
+      if (!n) return;
+      n.classList.remove('pisca-ok', 'pisca-erro');
+      void n.offsetWidth;
+      n.classList.add(`pisca-${tipo}`);
+      setTimeout(() => n.classList.remove(`pisca-${tipo}`), 800);
+    }
+
+    // O botão vira um ✓ verde por um instante.
+    function confirmarBotao(b) {
+      if (!b) return;
+      const antes = [...b.childNodes];
+      b.classList.add('feito');
+      b.replaceChildren(icone('check'), ...antes.filter((n) => n.nodeType === 3));
+      setTimeout(() => { b.classList.remove('feito'); b.replaceChildren(...antes); }, 1200);
+    }
+
+    async function copiar(texto, b) {
+      try { await navigator.clipboard.writeText(texto); } catch (_) {
+        const t = criar('textarea', { value: texto });
+        hospedeiro.shadowRoot.appendChild(t);
+        t.select();
+        document.execCommand('copy');
+        t.remove();
+      }
+      confirmarBotao(b);
+    }
+
+    // ---------- arquivos ----------
+    const celula = (v) => {
+      const s = v == null ? '' : String(v);
+      return /[;"\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+    };
+    // CSV com ";" e BOM (abre direto no Excel pt-BR; no pandas, sep=";").
+    const csv = (linhas, cols) => '﻿' + [cols.join(';'), ...linhas.map((l) => cols.map((c) => celula(l[c])).join(';'))].join('\r\n');
+
+    // Baixa o arquivo e devolve uma Promise que resolve quando o download foi entregue ao
+    // navegador (quem navega logo depois espera por ela; até 13/11/2026 o segundo CSV de um
+    // par se perdia na navegação). Com GM_download (script com @grant) e op.pasta (ex.:
+    // "B1_entorno/_dados-brutos"), salva sem perguntar em Downloads/TCC Luderia/<pasta>/,
+    // para o arquivo não cair na pasta de outra coleta; se o Tampermonkey recusar (modo de
+    // download nativo, extensão fora da lista), cai no download comum.
+    const pastaDoArquivo = (pasta, nome) => (pasta ? `TCC Luderia/${String(pasta).replace(/^\/+|\/+$/g, '')}/${nome}` : nome);
+    function baixarComum(nome, url) {
+      const a = criar('a', { href: url, download: nome });
+      (document.body || document.documentElement).appendChild(a);
+      a.click();
+      a.remove();
+    }
+    function baixarArquivo(nome, conteudo, tipo = 'text/csv;charset=utf-8', opcoes = {}) {
+      const pasta = opcoes.pasta ?? op.pastaDownload ?? '';
+      const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+      const soltar = () => setTimeout(() => URL.revokeObjectURL(url), 10000);
+      if (typeof GM_download !== 'function' || !pasta) {
+        baixarComum(nome, url);
+        soltar();
+        return esperarMs(600).then(() => ({ nome, via: 'navegador' }));
+      }
+      return new Promise((resolve) => {
+        let feito = false;
+        const fim = (via) => { if (feito) return; feito = true; soltar(); resolve({ nome: via === 'pasta' ? pastaDoArquivo(pasta, nome) : nome, via }); };
+        const comum = () => { baixarComum(nome, url); setTimeout(() => fim('navegador'), 600); };
+        try {
+          GM_download({ url, name: pastaDoArquivo(pasta, nome), saveAs: false, onload: () => fim('pasta'), onerror: () => { if (!feito) comum(); }, ontimeout: () => { if (!feito) comum(); } });
+          // Sem resposta do Tampermonkey em 15 s: segue (o download pode ainda sair).
+          setTimeout(() => fim('pasta'), 15000);
+        } catch (_) { comum(); }
+      });
+    }
+    const esperarMs = (ms) => new Promise((r) => setTimeout(r, ms));
+
+    // ---------- menu de alvos (casas, perfis, cardápios, acervos) ----------
+    // Seletor por grupo com ✓ ok, ◐ parcial, ! refazer, ○ falta; contador com barra fina;
+    // botões Próximo (o que falta, primeiro no mesmo grupo), Marcar/Desfazer e Só os que faltam.
+    const SIMBOLO = { ok: '✓', parcial: '◐', falha: '!', falta: '○' };
+    function menuAlvos({ itens, id = (x) => x.id, grupo = (x) => x.capital, nome = (x) => x.nome, detalhe = () => '',
+      estadoDe, atual, aoEscolher, aoProximo, aoMarcar, unidade = 'coletados' }) {
+      const lista = itens();
+      const grupos = [...new Set(lista.map(grupo))];
+      const select = criar('select', { 'aria-label': 'Alvo da coleta' }, grupos.map((g) => criar('optgroup', { label: g },
+        lista.filter((x) => grupo(x) === g).map((x) => criar('option', { value: id(x), textContent: nome(x) })))));
+      dica(select, `✓ ok · ◐ parcial · ! refazer · ○ falta. Escolher abre o alvo e coleta.`);
+      select.onchange = () => aoEscolher(lista.find((x) => id(x) === select.value));
+      let soFaltam = ler(chave('soFaltam'), false);
+      const bProx = botao('forward', 'Próximo', () => aoProximo(), { classe: 'mini', dica: 'Abre o próximo que falta (primeiro no mesmo grupo) e coleta sozinho' });
+      // Sem aoMarcar, o menu fica sem o botão Marcar/Desfazer.
+      const bMarcar = aoMarcar ? botao('check', '', () => aoMarcar(lista.find((x) => id(x) === select.value)), { classe: 'leve' }) : null;
+      const bFiltro = alternaIcone({ ico: 'funnel', rotulo: 'Só os que faltam', ligado: soFaltam,
+        aoMudar: (v) => { soFaltam = v; gravar(chave('soFaltam'), v); rotular(); } });
+      const cont = criar('span', { className: 'pos' });
+      const trilho = criar('div', { className: 'trilho fino' }, [criar('div', { className: 'preenchido' })]);
+      const caixa = criar('div', { className: 'menu' }, [
+        linha([select]),
+        linha([criar('div', { className: 'contador' }, [cont, trilho]), bProx, bMarcar, bFiltro], 'compacta'),
+      ]);
+      function rotular() {
+        const a = atual();
+        let prontos = 0;
+        for (const o of select.querySelectorAll('option')) {
+          const x = lista.find((y) => id(y) === o.value);
+          const e = estadoDe(x);
+          if (e === 'ok') prontos++;
+          const t = `${SIMBOLO[e] || '○'} ${nome(x)}${detalhe(x, e) ? ` · ${detalhe(x, e)}` : ''}`;
+          if (o.textContent !== t) o.textContent = t;
+          o.className = e;
+          o.hidden = soFaltam && e === 'ok' && id(x) !== a;
+        }
+        for (const g of select.querySelectorAll('optgroup')) g.hidden = [...g.querySelectorAll('option')].every((o) => o.hidden);
+        if (a && select.value !== a) select.value = a;
+        cont.textContent = `${prontos}/${lista.length} ${unidade}`;
+        trilho.firstChild.style.width = `${Math.round((100 * prontos) / (lista.length || 1))}%`;
+        const xa = lista.find((y) => id(y) === select.value);
+        const col = xa && estadoDe(xa) === 'ok';
+        if (!bMarcar) return;
+        bMarcar.replaceChildren(icone(col ? 'arrow-uturn-left' : 'check'));
+        dica(bMarcar, col ? 'Desfazer: volta a faltar' : 'Marcar como coletado, sem nova coleta');
+      }
+      return { caixa, select, rotular, bProx };
+    }
+
+    // ---------- painel ----------
+    const CSS = `
+      :host{--fundo:#fff;--texto:#18181b;--suave:#71717a;--sup:#f4f4f5;--sup2:#e4e4e7;--linha:#ececef;
+        --caneta:#7e22ce;--caneta-forte:#6b21a8;--caneta-100:#f3e8ff;--azul:#2563eb;--azul-100:#dbeafe;
+        --ok:#15803d;--ok-100:#dcfce7;--erro:#b91c1c;--erro-100:#fee2e2;--alerta:#b45309;--alerta-100:#fef3c7;
+        --fonte:Montserrat,system-ui,-apple-system,"Segoe UI",sans-serif}
+      @media (prefers-color-scheme:dark){:host{--fundo:#18181b;--texto:#f4f4f5;--suave:#a1a1aa;--sup:#27272a;--sup2:#3f3f46;
+        --linha:#27272a;--caneta:#a855f7;--caneta-forte:#9333ea;--caneta-100:#3b0764;--azul:#3b82f6;--azul-100:#172554;
+        --ok:#4ade80;--ok-100:#052e16;--erro:#f87171;--erro-100:#450a0a;--alerta:#fbbf24;--alerta-100:#451a03}}
+      *{box-sizing:border-box}
+      [hidden]{display:none!important}
+      #painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:var(--largura,272px);max-height:calc(100vh - 24px);
+        overflow:auto;background:var(--fundo);color:var(--texto);border-radius:14px;
+        box-shadow:0 8px 28px rgba(0,0,0,.2);font:13.5px/1.45 var(--fonte);padding:8px 12px 10px;
+        resize:both;min-width:224px;min-height:44px;max-width:calc(100vw - 24px);transition:box-shadow .2s}
+      #painel.min{height:auto!important;min-height:0;resize:none;width:auto!important;min-width:0}
+      #painel.min>*:not(header){display:none}
+      #painel.arrastando{user-select:none;opacity:.92;box-shadow:0 14px 40px rgba(0,0,0,.3)}
+      header{display:flex;align-items:center;gap:2px;cursor:grab;touch-action:none;min-height:32px}
+      #painel.arrastando header{cursor:grabbing}
+      header .nome{flex:1;font-weight:700;font-size:14.5px;cursor:pointer;user-select:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:6px}
+      .ponto-estado{width:8px;height:8px;border-radius:50%;background:var(--sup2);margin-right:8px;flex:none;transition:background .3s}
+      .ponto-estado.rodando{background:var(--caneta);animation:pulso 1.2s ease-in-out infinite}
+      .ponto-estado.ok{background:var(--ok)} .ponto-estado.alerta{background:var(--alerta)} .ponto-estado.erro{background:var(--erro)}
+      @keyframes pulso{0%,100%{box-shadow:0 0 0 0 rgba(147,51,234,.55)}50%{box-shadow:0 0 0 5px rgba(147,51,234,0)}}
+      svg{width:18px;height:18px;flex:none}
+      button{font:inherit;color:inherit;border:0;background:var(--sup);border-radius:8px;padding:6px 10px;cursor:pointer;
+        display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;
+        transition:background .15s,color .15s,transform .1s,box-shadow .2s}
+      button:hover:not(:disabled){background:var(--sup2)}
+      button:active:not(:disabled){transform:scale(.94)}
+      button:disabled{opacity:.35;cursor:default}
+      :focus-visible{outline:2px solid var(--azul);outline-offset:1px}
+      .ico{width:32px;height:32px;padding:0;flex:none}
+      .ico.leve{background:transparent;color:var(--suave)}
+      .ico.leve:hover:not(:disabled){background:var(--sup);color:var(--texto)}
+      .ico.leve[aria-pressed=true]{color:var(--caneta);background:var(--caneta-100)}
+      .primario{background:var(--caneta);color:#fff;font-weight:600;flex:1}
+      .primario:hover:not(:disabled){background:var(--caneta-forte)}
+      .verde{background:var(--ok-100);color:var(--ok)}
+      .vermelho{background:var(--erro-100);color:var(--erro)}
+      .verde:hover:not(:disabled),.vermelho:hover:not(:disabled){filter:brightness(.95)}
+      .verde[aria-pressed=true]{background:var(--ok);color:#fff} .vermelho[aria-pressed=true]{background:var(--erro);color:#fff}
+      .parar:not(:disabled){background:var(--erro-100);color:var(--erro)}
+      .perigo{color:var(--suave)} .perigo:hover:not(:disabled){color:var(--erro);background:var(--erro-100)}
+      button.armado{background:var(--erro)!important;color:#fff!important;animation:tremer .3s}
+      @keyframes tremer{25%{transform:translateX(-2px)}75%{transform:translateX(2px)}}
+      button.feito{background:var(--ok-100)!important;color:var(--ok)!important}
+      .pisca-ok{animation:piscaOk .8s} .pisca-erro{animation:piscaErro .8s}
+      @keyframes piscaOk{0%{box-shadow:0 0 0 0 rgba(21,128,61,.6)}100%{box-shadow:0 0 0 8px rgba(21,128,61,0)}}
+      @keyframes piscaErro{0%{box-shadow:0 0 0 0 rgba(185,28,28,.6)}100%{box-shadow:0 0 0 8px rgba(185,28,28,0)}}
+      .mini{padding:4px 9px;font-size:12.5px}
+      .mini svg{width:16px;height:16px}
+      .linha{display:flex;align-items:center;gap:6px;margin:7px 0;flex-wrap:wrap}
+      .linha.compacta{flex-wrap:nowrap;margin-top:4px}
+      .linha>.primario{min-width:0}
+      .esp{flex:1}
+      .rotulo{font-size:12px;font-weight:600;color:var(--suave);display:inline-flex;align-items:center;gap:4px}
+      .suave{color:var(--suave)}
+      select,input[type=text],input[type=search],input[type=date],textarea{font:inherit;color:inherit;background:var(--sup);border:0;border-radius:8px;padding:6px 8px;min-width:0}
+      select{padding:5px 4px;cursor:pointer;flex:1;width:100%}
+      select option{color:#111;background:#fff}
+      select option.ok{color:#9ca3af} select option.parcial{color:#2563eb} select option.falha{color:#b45309}
+      input{flex:1}
+      input[type=date]{color-scheme:light dark;padding:4px 6px;font-size:12.5px;flex:1 1 0}
+      input::placeholder,textarea::placeholder{color:var(--suave)}
+      textarea{width:100%;height:60px;font:12px/1.45 ui-monospace,Menlo,monospace;resize:vertical;display:block}
+      .busca{display:flex;align-items:center;gap:6px;background:var(--sup);border-radius:8px;padding:0 4px 0 10px;flex:1}
+      .busca input{background:transparent;padding:6px 0}
+      .busca>svg{color:var(--suave);width:16px;height:16px}
+      .contador{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+      .barra{margin:7px 0}
+      .barra[hidden]{display:none}
+      .barra .txt{display:flex;justify-content:space-between;font-size:12px;color:var(--suave);font-variant-numeric:tabular-nums}
+      .trilho{height:6px;background:var(--sup);border-radius:999px;overflow:hidden;display:flex;position:relative}
+      .trilho.fino{height:4px}
+      .preenchido{height:100%;width:0;background:var(--caneta);border-radius:999px;transition:width .35s ease}
+      .contador .preenchido{background:var(--ok)}
+      .preenchido.rodando{background-image:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);background-size:200% 100%;animation:brilho 1.4s linear infinite}
+      .trilho.indef .preenchido{width:35%!important;animation:indef 1.2s ease-in-out infinite}
+      @keyframes brilho{from{background-position:200% 0}to{background-position:-200% 0}}
+      @keyframes indef{from{transform:translateX(-100%)}to{transform:translateX(300%)}}
+      details{border-top:1px solid var(--linha)}
+      details[open]{padding-bottom:6px}
+      summary{list-style:none;display:flex;align-items:center;gap:6px;cursor:pointer;font-size:14px;font-weight:600;padding:7px 0;user-select:none}
+      summary::-webkit-details-marker{display:none}
+      summary .seta{width:15px;height:15px;color:var(--suave);transition:transform .2s}
+      details[open]>summary .seta{transform:rotate(90deg)}
+      summary .ico{width:28px;height:28px;background:transparent;color:var(--suave)}
+      summary .ico:hover:not(:disabled){background:var(--sup);color:var(--texto)}
+      .selo{font-size:11.5px;font-weight:600;background:var(--sup);color:var(--suave);border-radius:999px;padding:1px 8px;white-space:nowrap}
+      .selo:empty{display:none}
+      .selo.ok{background:var(--ok-100);color:var(--ok)} .selo.alerta{background:var(--alerta-100);color:var(--alerta)}
+      .selo.erro{background:var(--erro-100);color:var(--erro)} .selo.roxo{background:var(--caneta-100);color:var(--caneta)}
+      .pos{font-size:12px;color:var(--suave);font-variant-numeric:tabular-nums;font-weight:500;white-space:nowrap}
+      .subtitulo{font-size:12px;font-weight:600;color:var(--suave);margin:10px 0 5px;display:flex;align-items:center;gap:4px}
+      .tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+      .tag{padding:3px 10px;border-radius:999px;font-size:12.5px;background:var(--sup);color:var(--suave);gap:4px}
+      .tag svg{width:15px;height:15px}
+      .tag[aria-pressed=true]{background:var(--azul);color:#fff}
+      .tag[aria-pressed=true]:hover{background:var(--azul);filter:brightness(1.08)}
+      .tag[aria-pressed=true] .ajuda{color:#fffc}
+      .pills{display:flex;background:var(--sup);border-radius:999px;padding:3px;gap:2px;flex:1}
+      .pill{flex:1;background:transparent;border-radius:999px;padding:3px 6px;font-size:12.5px;color:var(--suave);gap:4px}
+      .pill:hover:not(:disabled){background:var(--sup2)}
+      .pill[aria-selected=true]{background:var(--fundo);color:var(--caneta);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+      .ajuda{display:inline-flex;color:var(--suave);cursor:help;border-radius:999px}
+      .ajuda svg{width:15px;height:15px}
+      .ajuda:hover{color:var(--caneta)}
+      .dica{position:fixed;z-index:2147483647;max-width:280px;background:var(--texto);color:var(--fundo);
+        font:12.5px/1.5 var(--fonte);padding:7px 10px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.25);pointer-events:none;
+        white-space:pre-line;animation:entra .12s ease-out}
+      .dica[hidden]{display:none}
+      .status{font-size:13px;border-radius:10px;padding:7px 10px;background:var(--sup);white-space:pre-line;margin:7px 0;transition:background .25s}
+      .status:empty{display:none}
+      .status.entra{animation:entra .25s ease-out}
+      @keyframes entra{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+      .status.rico{white-space:normal}
+      .status .cab{font-weight:600;display:flex;gap:8px;align-items:center}
+      .status ul{margin:4px 0 0;padding-left:18px}
+      .status li::marker{color:var(--suave)}
+      .ponto{width:8px;height:8px;border-radius:50%;background:var(--suave);flex:none}
+      .st-ok{background:var(--ok-100)} .st-ok .ponto{background:var(--ok)}
+      .st-alerta{background:var(--alerta-100)} .st-alerta .ponto{background:var(--alerta)}
+      .st-erro{background:var(--erro-100)} .st-erro .ponto{background:var(--erro)}
+      .aviso{color:var(--alerta);font-size:12.5px;margin:5px 0 0;font-weight:500}
+      .aviso::before{content:"⚠ "}
+      .st-alerta .aviso,.st-erro .aviso{color:inherit}
+      .info{font-size:12.5px;background:var(--sup);border-radius:10px;padding:7px 10px;margin:7px 0;white-space:pre-line}
+      .info:empty{display:none}
+      .mono{font:11.5px/1.4 ui-monospace,Menlo,monospace;color:var(--suave);word-break:break-all}
+      .chip{font-size:11.5px;font-weight:600;border-radius:999px;padding:1px 8px;white-space:nowrap;background:var(--sup);color:var(--suave)}
+      .chip.ok{background:var(--ok-100);color:var(--ok)} .chip.alerta{background:var(--alerta-100);color:var(--alerta)}
+      .chip.erro{background:var(--erro-100);color:var(--erro)} .chip.azul{background:var(--azul-100);color:var(--azul)}
+      .lista{max-height:280px;overflow:auto;display:flex;flex-direction:column;gap:1px;margin-top:4px}
+      .vazio{font-size:12.5px;color:var(--suave);margin:6px 0}
+      table{width:100%;border-collapse:collapse;font-size:12px;margin-top:4px;font-variant-numeric:tabular-nums}
+      td,th{padding:3px 4px;border-bottom:1px solid var(--linha);text-align:left}
+      th{color:var(--suave);font-weight:600} td.n,th.n{text-align:right}
+      tr.total td{font-weight:700;border-bottom:0}
+      @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}`;
+
+    function carregarFonte() {
+      if (document.getElementById('tcc-fonte-montserrat') || !document.head) return;
+      document.head.appendChild(criar('link', { id: 'tcc-fonte-montserrat', rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap' }));
+    }
+
+    // Painéis 20% mais estreitos desde 13/11/2026: a largura pedida pelo script vale ×ESCALA, e a
+    // largura já salva pelo autor é reduzida uma vez (marca `escala`).
+    const ESCALA = 0.8;
+    // Posição e tamanho escolhidos pelo autor; sem posição salva, vale posicaoPadrao().
+    let posicao = ler(chave('posicao'), null);
+    if (posicao?.width && posicao.escala !== ESCALA) {
+      const px = parseFloat(posicao.width);
+      posicao = { ...posicao, width: Number.isFinite(px) ? `${Math.round(px * ESCALA)}px` : posicao.width, escala: ESCALA };
+      gravar(chave('posicao'), posicao);
+    }
+    let arrastou = false;
+
+    function posicionar() {
+      if (!painel) return;
+      const p = painel;
+      if (posicao?.width && !p.style.width && !p.classList.contains('min')) { p.style.width = posicao.width; p.style.height = posicao.height || ''; }
+      if (posicao && posicao.left != null) {
+        const w = p.offsetWidth || 272;
+        const left = Math.min(Math.max(0, posicao.left), Math.max(0, innerWidth - w));
+        const top = Math.min(Math.max(0, posicao.top), Math.max(0, innerHeight - 44));
+        if (p.style.left !== `${left}px` || p.style.top !== `${top}px`) {
+          Object.assign(p.style, { left: `${left}px`, right: 'auto', top: `${top}px`, maxHeight: `calc(100vh - ${top + 12}px)` });
+        }
+        return;
+      }
+      const pad = op.posicaoPadrao?.() || {};
+      const top = pad.top ?? 12, right = pad.right ?? 12;
+      if (p.style.top !== `${top}px` || p.style.right !== `${right}px` || p.style.left) {
+        Object.assign(p.style, { left: '', right: `${right}px`, top: `${top}px`, maxHeight: `calc(100vh - ${top + 12}px)` });
+      }
+    }
+
+    function prepararArraste(cab) {
+      cab.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0 || e.composedPath().some((n) => n.tagName === 'BUTTON')) return;
+        const r = painel.getBoundingClientRect();
+        const x0 = e.clientX, y0 = e.clientY;
+        let moveu = false;
+        const mover = (ev) => {
+          if (!moveu && Math.hypot(ev.clientX - x0, ev.clientY - y0) < 4) return;
+          moveu = true;
+          painel.classList.add('arrastando');
+          fecharDica();
+          posicao = { ...posicao, left: Math.round(r.left + ev.clientX - x0), top: Math.round(r.top + ev.clientY - y0) };
+          posicionar();
+        };
+        const soltar = () => {
+          removeEventListener('pointermove', mover);
+          removeEventListener('pointerup', soltar);
+          painel.classList.remove('arrastando');
+          if (!moveu) return;
+          gravar(chave('posicao'), posicao);
+          arrastou = true;
+          setTimeout(() => { arrastou = false; }, 0);
+        };
+        addEventListener('pointermove', mover);
+        addEventListener('pointerup', soltar);
+      });
+      cab.addEventListener('dblclick', (e) => {
+        if (e.composedPath().some((n) => n.tagName === 'BUTTON')) return;
+        posicao = null;
+        gravar(chave('posicao'), null);
+        painel.style.width = painel.style.height = painel.style.left = '';
+        posicionar();
+        status('Painel de volta ao canto.');
+      });
+    }
+
+    function minimizar(v = !painel.classList.contains('min')) {
+      painel.classList.toggle('min', v);
+      k.el.bMin.replaceChildren(icone(v ? 'plus' : 'minus'));
+      dica(k.el.bMin, v ? 'Expandir' : 'Minimizar');
+      if (v) { painel.style.width = ''; painel.style.height = ''; } else posicionar();
+      gravar(chave('min'), v);
+      fecharDica();
+    }
+
+    // montar({ nome, filhos, extras (botões do cabeçalho), aposAuto (botões logo depois do download automático), largura, autobaixar, minimizado, css })
+    function montar({ nome, filhos, extras = [], aposAuto = [], largura = 340, autobaixar = false, minimizado, css = '' }) {
+      carregarFonte();
+      k.el.ponto = criar('span', { className: 'ponto-estado' });
+      k.el.nome = criar('span', { className: 'nome', textContent: nome });
+      k.el.bMin = botao('minus', '', () => minimizar(), { classe: 'leve', dica: 'Minimizar' });
+      const bSom = alternaIcone({ ico: 'bell', icoDesligado: 'bell-slash', rotulo: 'Som ao concluir', ligado: k.som,
+        aoMudar: (v) => { k.som = v; gravar(chave('som'), v); if (v) tocar(true); } });
+      const bAuto = autobaixar ? alternaIcone({ ico: 'arrow-down-tray', rotulo: 'Download automático', ligado: k.autobaixar,
+        aoMudar: (v) => { k.autobaixar = v; gravar(chave('autobaixar'), v); } }) : null;
+      const cab = criar('header', {}, [k.el.ponto, k.el.nome, ...extras, bSom, bAuto, ...aposAuto, k.el.bMin]);
+      dica(k.el.nome, 'Clique para minimizar · arraste para mover · duplo clique volta ao canto');
+      painel = criar('div', { id: 'painel', style: `--largura:${Math.round(largura * ESCALA)}px` }, [cab, ...filhos]);
+      k.el.painel = painel;
+      k.el.nome.onclick = () => { if (!arrastou) minimizar(); };
+      prepararArraste(cab);
+
+      // O tamanho só muda pela alça de redimensionar, que grava largura e altura no estilo.
+      addEventListener('pointerup', () => {
+        if (!painel || painel.classList.contains('min')) return;
+        const { width, height } = painel.style;
+        if (width && (width !== posicao?.width || height !== posicao?.height)) {
+          posicao = { ...posicao, width, height, escala: ESCALA };
+          gravar(chave('posicao'), posicao);
+        }
+      });
+      painel.addEventListener('click', liberarAudio);
+      painel.addEventListener('scroll', fecharDica);
+      // As teclas digitadas no painel não chegam aos atalhos do site.
+      for (const tipo of ['keydown', 'keyup', 'keypress']) painel.addEventListener(tipo, (e) => {
+        if (tipo === 'keydown' && e.key === 'Escape') fecharDica();
+        e.stopPropagation();
+      });
+      // Dicas: abre com atraso curto sobre botões e na hora sobre o ⓘ.
+      painel.addEventListener('pointerover', (e) => {
+        const n = comDica(e);
+        if (!n || dicaFixa || n === dicaAncora) return;
+        clearTimeout(timerDica);
+        timerDica = setTimeout(() => abrirDica(n), n.classList.contains('ajuda') ? 0 : 350);
+      });
+      painel.addEventListener('pointerout', (e) => {
+        const n = comDica(e);
+        if (!n || dicaFixa || (e.relatedTarget && n.contains(e.relatedTarget))) return;
+        clearTimeout(timerDica);
+        timerDica = setTimeout(fecharDica, 80);
+      });
+      painel.addEventListener('focusin', (e) => { const n = comDica(e); if (n && n.matches(':focus-visible')) abrirDica(n); });
+      painel.addEventListener('focusout', () => { if (!dicaFixa) fecharDica(); });
+      // Captura: tocar no ⓘ dentro de um botão não aciona o botão.
+      painel.addEventListener('click', (e) => {
+        const i = e.composedPath().find((n) => n.classList?.contains('ajuda'));
+        if (!i) return;
+        e.stopPropagation(); e.preventDefault();
+        if (dicaAncora === i && dicaFixa) fecharDica(); else abrirDica(i, true);
+      }, true);
+      addEventListener('keydown', (e) => { if (e.key === 'Escape') fecharDica(); });
+      addEventListener('scroll', () => { if (!dicaFixa) fecharDica(); }, true);
+      addEventListener('click', (e) => { if (dicaAncora && !e.composedPath().includes(dicaAncora)) fecharDica(); });
+
+      k.el.dica = criar('div', { className: 'dica', hidden: true, role: 'tooltip' });
+      hospedeiro = criar('div', { id: `${op.id || P}-hospedeiro` });
+      const raiz = hospedeiro.attachShadow({ mode: 'open' });
+      raiz.append(criar('style', { textContent: CSS + css }), painel, k.el.dica);
+      if (minimizado ?? ler(chave('min'), false)) minimizar(true);
+      atualizarAcoes();
+      garantir();
+      return painel;
+    }
+
+    // O React e outros sites podem refazer o <body>: o painel fica preso ao <html> e volta se sumir.
+    function garantir() {
+      if (!hospedeiro || !document.documentElement) return;
+      if (!hospedeiro.isConnected) document.documentElement.appendChild(hospedeiro);
+      posicionar();
+    }
+
+    Object.assign(k, {
+      criar, icone, dica, ajuda, botao, botaoPerigo, botaoParar, etiqueta, alternaIcone, botaoBaixarCada, pills, secao, naoAlterna,
+      linha, esp, rotulo, selo, status, resumo, barra, progresso, estado, atualizarAcoes, executar, tocar, piscar,
+      confirmarBotao, copiar, celula, csv, baixarArquivo, pastaDoArquivo, menuAlvos, montar, garantir, minimizar,
+      nome: (t) => { if (k.el.nome && k.el.nome.textContent !== t) k.el.nome.textContent = t; },
+      hospedeiro: () => hospedeiro,
+    });
+    return k;
+  }
+  // <<< kit_painel
+
+  // Preferências das versões anteriores passam para as chaves do kit (uma vez).
+  for (const [velha, nova] of [[CHAVE_POSICAO, 'tcc_aluguel:kit:posicao'], [CHAVE_CADA, 'tcc_aluguel:kit:baixarcada'], [CHAVE_SO_FALTAM, 'tcc_aluguel:kit:soFaltam']]) {
+    const v = gmLer(velha, null);
+    if (v != null) { if (gmLer(nova, null) == null) gmGravar(nova, v); gmApagar(velha); }
+  }
+
+  const kit = kitPainel({ id: 'cal', prefixo: 'tcc_aluguel', ler: gmLer, gravar: (c, v) => (v == null ? gmApagar(c) : gmGravar(c, v)),
+    abertos: ['qualidade'], pastaDownload: PASTA_DOWNLOAD });
+  const { criar, icone } = kit;
   const el = {};
-  let hospedeiro = null;
 
-  function criar(tag, props = {}, filhos = []) {
-    const n = document.createElement(tag);
-    Object.assign(n, props);
-    for (const f of filhos) n.appendChild(f);
-    return n;
-  }
-
+  // Só o que o kit não traz: grade dos indicadores, lista das buscas guardadas e menu de bairros.
   const CSS_PAINEL = `
-    #cal-painel{position:fixed;top:12px;right:12px;z-index:2147483647;width:288px;
-      max-height:calc(100vh - 24px);overflow:auto;box-sizing:border-box;
-      resize:both;min-width:240px;min-height:120px;max-width:calc(100vw - 24px);
-      background:#fff;color:#111;border:1px solid #ccc;border-radius:10px;
-      box-shadow:0 4px 16px rgba(0,0,0,.18);font:13px/1.4 system-ui,sans-serif;padding:10px;
-      --azul:#2563eb;--vermelho:#b91c1c;--linha:rgba(128,128,128,.25)}
-    @media (prefers-color-scheme:dark){#cal-painel{background:#1e1e1e;color:#eee;border-color:#444;--azul:#3b82f6;--vermelho:#dc2626}}
-    #cal-painel.min>*:not(header){display:none}
-    #cal-painel.min{height:auto!important;min-height:0;resize:none}
-    #cal-painel.arrastando{user-select:none;opacity:.92}
-    header{display:flex;justify-content:space-between;align-items:center;font-weight:700;cursor:grab;touch-action:none;user-select:none}
-    #cal-painel.arrastando header{cursor:grabbing}
-    textarea{width:100%;box-sizing:border-box;height:72px;font:11px/1.45 ui-monospace,Menlo,monospace;color:inherit;
-      background:transparent;border:1px solid #888;border-radius:6px;padding:4px;resize:vertical;white-space:pre;overflow:auto}
-    .progresso{margin:6px 0;font-size:12px}
-    .progresso[hidden]{display:none}
-    .progresso .trilho{height:8px;border-radius:4px;background:var(--linha);overflow:hidden;margin-bottom:2px}
-    .progresso .trilho>span{display:block;height:100%;width:0;background:var(--azul);transition:width .3s}
-    tr.atual td{font-weight:600}
-    p{margin:4px 0}
-    svg.ico{width:14px;height:14px;flex:0 0 auto;vertical-align:-2px}
-    .linha{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0;align-items:center}
-    button{flex:1 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 8px;
-      border-radius:6px;border:1px solid #888;background:transparent;color:inherit;cursor:pointer;font:inherit;white-space:nowrap}
-    button:disabled{opacity:.4;cursor:default}
-    button.principal{background:var(--azul);border-color:var(--azul);color:#fff;font-weight:600}
-    button.ativo{background:var(--vermelho);border-color:var(--vermelho);color:#fff;font-weight:600}
-    button.ic{flex:0 0 auto;padding:4px 7px}
-    .tag{flex:0 0 auto;border-radius:999px;padding:2px 9px;font-size:12px;opacity:.55}
-    .tag.on{opacity:1;background:var(--azul);border-color:var(--azul);color:#fff}
-    input{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px}
-    select{font:inherit;color:inherit;background:transparent;border:1px solid #888;border-radius:6px;padding:3px;width:100%}
-    select option,select optgroup{color:#111} option.ok{color:#9ca3af} option.baixa{color:#b45309}
-    input[type=number]{width:56px}
-    input.largo{flex:1 1 140px;min-width:0}
-    .rotulo{display:inline-flex;align-items:center;gap:3px;opacity:.7;font-size:12px}
-    .info{font-size:12px;display:inline-flex;align-items:center;gap:3px}
-    .caixa{border:1px solid var(--linha);border-radius:8px;padding:6px 8px;margin:6px 0}
-    .grade{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:2px 8px;font-size:12px;align-items:center}
-    .grade+.grade{margin-top:6px;padding-top:6px;border-top:1px solid var(--linha)}
-    .grade .k{opacity:.6;display:inline-flex;align-items:center;gap:3px}
-    .grade .v{font-variant-numeric:tabular-nums;display:inline-flex;align-items:center;gap:3px}
+    .caixa{background:var(--sup);border-radius:10px;padding:7px 10px;margin:7px 0}
+    .grade{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:2px 8px;font-size:12.5px;align-items:center}
+    .grade+.grade{margin-top:6px;padding-top:6px;border-top:1px solid var(--sup2)}
+    .grade .k{color:var(--suave);display:inline-flex;align-items:center;gap:3px}
+    .grade .v{font-variant-numeric:tabular-nums;display:inline-flex;align-items:center;gap:4px;font-weight:500}
     .grade .largo{grid-column:2 / -1}
     .grade .todo{grid-column:1 / -1;display:flex;align-items:center;gap:4px}
-    ul{list-style:none;margin:6px 0;padding:0;max-height:30vh;overflow:auto}
-    li{display:flex;gap:6px;align-items:center;padding:4px 0;border-bottom:1px solid var(--linha);font-size:12px}
+    .grade svg,.resumo svg,.rotulo svg,.selo svg{width:14px;height:14px}
+    .selo{display:inline-flex;align-items:center;gap:3px}
+    .resumo{font-size:12.5px;display:flex;flex-wrap:wrap;align-items:center;gap:3px;margin:7px 0}
+    .ok{color:var(--ok)} .alerta{color:var(--alerta)} .ruim{color:var(--erro)}
+    .mbarra{display:inline-block;width:64px;height:6px;background:var(--sup2);border-radius:999px;overflow:hidden}
+    .mbarra>span{display:block;height:100%;background:currentColor;border-radius:999px}
+    ul.buscas{list-style:none;margin:4px 0;padding:0;max-height:30vh;overflow:auto}
+    ul.buscas li{display:flex;gap:2px;align-items:center;padding:4px 0;border-bottom:1px solid var(--linha);font-size:12.5px}
     li .corpo{flex:1;min-width:0}
     li .titulo{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     li.atual .titulo{font-weight:600}
-    li .meta{font-size:11px;opacity:.75}
-    table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
-    th,td{text-align:right;padding:1px 4px} th:first-child,td:first-child{text-align:left}
-    .barra{display:inline-block;width:70px;height:7px;border:1px solid #888;border-radius:4px;vertical-align:middle;overflow:hidden}
-    .barra>span{display:block;height:100%;background:currentColor}
-    details{margin:6px 0} summary{cursor:pointer;font-size:12px}
-    details.multi{flex:1 1 100%;margin:0;border:1px solid #888;border-radius:6px;padding:3px 6px}
-    details.multi>summary{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    input[type=checkbox]{width:auto;margin:0}
-    .opcoes{max-height:28vh;overflow:auto;border-top:1px solid var(--linha)}
-    .opc{display:flex;align-items:center;gap:6px;padding:2px 0;font-size:12px;cursor:pointer}
-    .opc[hidden]{display:none}
-    .opc.fim-destaque{border-bottom:1px solid var(--linha);padding-bottom:4px;margin-bottom:2px}
-    .resumo{font-size:12px;display:flex;flex-wrap:wrap;align-items:center;gap:3px}
-    .alerta{color:#b45309} .ok{color:#15803d} .ruim{color:var(--vermelho)}
-    @media (prefers-color-scheme:dark){.alerta{color:#fbbf24}.ok{color:#4ade80}.ruim{color:#f87171}}
-    .status{font-size:12px;opacity:.8}`;
+    li .meta{font-size:11.5px;color:var(--suave)}
+    li .meta.alerta{color:var(--alerta)}
+    tr.atual td{font-weight:600}
+    th,td{text-align:right} th:first-child,td:first-child{text-align:left}
+    input[type=number]{font:inherit;color:inherit;background:var(--sup);border:0;border-radius:8px;padding:5px 6px;width:52px;flex:none}
+    input[type=checkbox]{flex:none;margin:0;accent-color:var(--caneta)}
+    textarea{white-space:pre;overflow:auto;height:72px}
+    details.multi{flex:1 1 100%;border:0;background:var(--sup);border-radius:8px;padding:0 8px}
+    details.multi>summary{display:block;font-size:13px;font-weight:500;padding:6px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    details.multi input[type=search]{background:var(--fundo)}
+    .opcoes{max-height:28vh;overflow:auto;border-top:1px solid var(--sup2);padding:4px 0}
+    .opc{display:flex;align-items:center;gap:6px;padding:2px 0;font-size:12.5px;cursor:pointer}
+    .opc.fim-destaque{border-bottom:1px solid var(--sup2);padding-bottom:4px;margin-bottom:2px}`;
 
-  // Ícones Heroicons (MIT, Tailwind Labs), versão 2.1.5, 20/solid: só os caminhos do SVG;
-  // "e:" marca fill-rule evenodd. Montados com createElementNS (sem innerHTML).
-  const ICONES = {
-    'adjustments-horizontal': ["M10 3.75a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM17.25 4.5a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM5 3.75a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 .75.75ZM4.25 17a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM17.25 17a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM9 10a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1 0-1.5h5.5A.75.75 0 0 1 9 10ZM17.25 10.75a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM14 10a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM10 16.25a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"],
-    'arrow-down-tray': ["M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z", "M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z"],
-    'arrow-path': ["e:M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138.75.75 0 0 0-1.449-.39Zm1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219Z"],
-    'chart-bar': ["M15.5 2A1.5 1.5 0 0 0 14 3.5v13a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 16.5 2h-1ZM9.5 6A1.5 1.5 0 0 0 8 7.5v9A1.5 1.5 0 0 0 9.5 18h1a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 10.5 6h-1ZM3.5 10A1.5 1.5 0 0 0 2 11.5v5A1.5 1.5 0 0 0 3.5 18h1A1.5 1.5 0 0 0 6 16.5v-5A1.5 1.5 0 0 0 4.5 10h-1Z"],
-    'check': ["e:M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"],
-    'exclamation-triangle': ["e:M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"],
-    'forward': ["M3.288 4.818A1.5 1.5 0 0 0 1 6.095v7.81a1.5 1.5 0 0 0 2.288 1.276l6.323-3.905c.155-.096.285-.213.389-.344v2.973a1.5 1.5 0 0 0 2.288 1.276l6.323-3.905a1.5 1.5 0 0 0 0-2.552l-6.323-3.906A1.5 1.5 0 0 0 10 6.095v2.972a1.506 1.506 0 0 0-.389-.343L3.288 4.818Z"],
-    'funnel': ["e:M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 0 1 .628.74v2.288a2.25 2.25 0 0 1-.659 1.59l-4.682 4.683a2.25 2.25 0 0 0-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 0 1 8 18.25v-5.757a2.25 2.25 0 0 0-.659-1.591L2.659 6.22A2.25 2.25 0 0 1 2 4.629V2.34a.75.75 0 0 1 .628-.74Z"],
-    'magnifying-glass': ["e:M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z"],
-    'map-pin': ["e:m9.69 18.933.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 0 0 .281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 1 0 3 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 0 0 2.273 1.765 11.842 11.842 0 0 0 .976.544l.062.029.018.008.006.003ZM10 11.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z"],
-    'minus': ["e:M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z"],
-    'plus': ["M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z"],
-    'tag': ["e:M4.5 2A2.5 2.5 0 0 0 2 4.5v3.879a2.5 2.5 0 0 0 .732 1.767l7.5 7.5a2.5 2.5 0 0 0 3.536 0l3.878-3.878a2.5 2.5 0 0 0 0-3.536l-7.5-7.5A2.5 2.5 0 0 0 8.38 2H4.5ZM5 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"],
-    'trash': ["e:M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z"],
-    'stop': ["M5.25 3A2.25 2.25 0 0 0 3 5.25v9.5A2.25 2.25 0 0 0 5.25 17h9.5A2.25 2.25 0 0 0 17 14.75v-9.5A2.25 2.25 0 0 0 14.75 3h-9.5Z"],
-    'play': ["M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.344-5.891a1.5 1.5 0 0 0 0-2.538L6.3 2.841Z"],
-    'x-mark': ["M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"],
-    'queue-list': ["M2 4.5A2.5 2.5 0 0 1 4.5 2h11a2.5 2.5 0 0 1 0 5h-11A2.5 2.5 0 0 1 2 4.5ZM2.75 9.083a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5H2.75ZM2.75 12.663a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5H2.75ZM2.75 16.25a.75.75 0 0 0 0 1.5h14.5a.75.75 0 1 0 0-1.5H2.75Z"],
-  };
-  function icone(nome) {
-    const ns = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(ns, 'svg');
-    svg.setAttribute('viewBox', '0 0 20 20');
-    svg.setAttribute('fill', 'currentColor');
-    svg.setAttribute('aria-hidden', 'true');
-    svg.setAttribute('class', 'ico');
-    for (const d of ICONES[nome] || []) {
-      const p = document.createElementNS(ns, 'path');
-      if (d.startsWith('e:')) { p.setAttribute('fill-rule', 'evenodd'); p.setAttribute('clip-rule', 'evenodd'); }
-      p.setAttribute('d', d.replace(/^e:/, ''));
-      svg.appendChild(p);
-    }
-    return svg;
-  }
   // Filhos mistos: texto e nós (ícones), sem vazios
   const partes = (...xs) => xs.filter((x) => x !== '' && x != null && x !== false).map((x) => (typeof x === 'string' ? document.createTextNode(x) : x));
 
-  const status = (t) => { if (el.status) { el.status.textContent = t; el.status.title = ''; } };
+  // tipo: '' (neutro), 'ok', 'alerta' ou 'erro' (pinta o status e o ponto do cabeçalho).
+  const status = (t, tipo = '') => kit.status(t, tipo);
+  const progresso = (nome, frac, texto = '') => kit.progresso(nome, frac, texto);
   const pctTxt = (x) => (x == null ? '–' : `${Math.round(x * 100)}%`);
   const reais = (v) => (v == null ? '–' : `R$ ${v.toFixed(2).replace('.', ',')}`);
   const doisDig = (n) => String(n).padStart(2, '0');
@@ -1472,23 +2185,16 @@
   const nivel = (x, bom = 0.9, medio = 0.6) => (x == null ? '' : x >= bom ? 'ok' : x >= medio ? 'alerta' : 'ruim');
   const NOMES_SUBTIPO = { loja_ponto: 'loja/ponto', sala: 'sala', galpao: 'galpão', predio: 'prédio', outro: 'outro', residencial: 'residencial' };
 
-  // Botão com ícone e nome curto; o nome completo e a explicação vão no title (tooltip)
-  const botao = (ico, rotulo, titulo, onclick, className = '') =>
-    criar('button', { title: titulo, onclick, className }, partes(icone(ico), rotulo && criar('span', { textContent: rotulo })));
+  // Botão com ícone e nome curto; o nome completo e a explicação vão na dica
+  const botao = (ico, rotulo, dica, fn, classe = '') => kit.botao(ico, rotulo, fn, { classe, dica });
   // Selo que liga e desliga (filtros)
-  function selo(rotulo, titulo, ligado, aoMudar) {
-    const b = criar('button', { className: 'tag', textContent: rotulo, title: titulo });
-    const pintar = (v) => { b.classList.toggle('on', v); b.setAttribute('aria-pressed', String(v)); };
-    pintar(ligado);
-    b.onclick = () => { const v = !b.classList.contains('on'); pintar(v); aoMudar(v); };
-    return b;
-  }
+  const selo = (rotulo, dica, ligado, aoMudar) => kit.etiqueta(rotulo, aoMudar, { ligada: ligado, dica });
   // Menu suspenso de múltipla escolha: o resumo mostra a escolha; dentro, busca por nome, "Todos" e
   // "Nenhum" (valem para os bairros filtrados) e uma caixa de marcação por opção. Devolve o nó.
   function menuMulti({ opcoes, destaques = [], marcados = [], rotulo, dica, aoMudar }) {
     const escolhidos = new Set(marcados);
-    const resumo = criar('summary', { title: dica });
-    const busca = criar('input', { type: 'search', placeholder: 'filtrar…', className: 'largo', title: 'Filtrar a lista pelo nome (sem acento)' });
+    const resumo = criar('summary', { dica });
+    const busca = criar('input', { type: 'search', placeholder: 'filtrar…', dica: 'Filtrar a lista pelo nome (sem acento)' });
     const caixas = new Map();
     const itens = opcoes.map((o, i) => {
       const cx = criar('input', { type: 'checkbox', checked: escolhidos.has(o) });
@@ -1510,52 +2216,39 @@
       const q = semAcento(busca.value).trim();
       for (const l of itens) l.hidden = !!q && !l.dataset.nome.includes(q);
     };
-    const barraMenu = criar('div', { className: 'linha' }, [busca,
-      botao('check', 'Todos', 'Marcar todos os bairros que aparecem na lista (respeita o filtro)', () => marcarVisiveis(true), 'ic'),
-      botao('x-mark', 'Nenhum', 'Desmarcar todos os bairros que aparecem na lista (respeita o filtro)', () => marcarVisiveis(false), 'ic')]);
+    const barraMenu = kit.linha([busca,
+      botao('check', '', 'Todos: marca os bairros que aparecem na lista (respeita o filtro)', () => marcarVisiveis(true), 'leve'),
+      botao('x-mark', '', 'Nenhum: desmarca os bairros que aparecem na lista (respeita o filtro)', () => marcarVisiveis(false), 'leve')], 'compacta');
     const det = criar('details', { className: 'multi' }, [resumo, barraMenu, lista]);
     mudou();
     return det;
   }
   // Casa da grade: rótulo (k) ou valor (v), com ícone opcional
   const casa = (classe, ...xs) => criar('span', { className: classe }, partes(...xs));
-  const aviso = (t) => criar('span', { className: 'alerta', title: t }, [icone('exclamation-triangle')]);
-  const barra = (x) => { const s = criar('span'); s.style.width = `${Math.round(x * 100)}%`; return criar('span', { className: 'barra' }, [s]); };
-
-  // Barra de progresso (busca e fila): `frac` nulo esconde a barra.
-  function novaBarra() {
-    const cheio = criar('span');
-    const texto = criar('span');
-    return { caixa: criar('div', { className: 'progresso', hidden: true }, [criar('div', { className: 'trilho' }, [cheio]), texto]), cheio, texto };
-  }
-  function progresso(b, frac, texto = '') {
-    if (!b) return;
-    if (frac == null) { b.caixa.hidden = true; return; }
-    b.caixa.hidden = false;
-    b.cheio.style.width = `${Math.round(Math.min(1, Math.max(0, frac)) * 100)}%`;
-    b.texto.textContent = texto;
-  }
+  const aviso = (t) => criar('span', { className: 'alerta', dica: t }, [icone('exclamation-triangle')]);
+  const miniBarra = (x) => { const s = criar('span'); s.style.width = `${Math.round(x * 100)}%`; return criar('span', { className: 'mbarra' }, [s]); };
+  const vazio = (t) => criar('p', { className: 'vazio', textContent: t });
 
   // Tabela da fila: uma linha por busca, com lidos, total e cobertura (as que faltam com "–").
   function mostrarFila() {
     if (!el.filaTabela) return;
     const fila = lerFila();
     progressoFila(fila);
-    if (!fila?.itens?.length) { el.filaTabela.replaceChildren(criar('p', { className: 'status', textContent: 'Nenhuma fila rodada ainda.' })); return; }
+    if (!fila?.itens?.length) { el.filaTabela.replaceChildren(vazio('Nenhuma fila rodada ainda.')); return; }
     const porUrl = new Map((fila.resultados || []).map((r) => [r.url, r]));
-    const td = (v, classe = '', dica = '') => criar('td', { textContent: String(v), className: classe, title: dica });
+    const td = (v, classe = '', dica = '') => criar('td', { textContent: String(v), className: classe, dica });
     const linhas = fila.itens.map((url, i) => {
       const r = porUrl.get(url);
       const atual = fila.ativa && i === fila.i;
       const cor = r?.cobertura == null ? '' : r.cobertura >= COBERTURA_MIN ? 'ok' : 'ruim';
-      return criar('tr', { className: atual ? 'atual' : '', title: url }, [
-        td(`${atual ? '▸ ' : ''}${rotuloBusca(url)}`),
+      return criar('tr', { className: atual ? 'atual' : '' }, [
+        td(`${atual ? '▸ ' : ''}${rotuloBusca(url)}`, '', url),
         td(r ? r.lidos : '–'),
         td(r?.total ?? '–'),
         td(r ? (r.cobertura == null ? 's/ total' : pctTxt(r.cobertura)) : '–', cor, r ? `${r.paginas} pág.; parou por ${r.motivo}${r.tentativa ? '; repetida' : ''}` : ''),
       ]);
     });
-    const th = (t, dica) => criar('th', { textContent: t, title: dica });
+    const th = (t, dica) => criar('th', { textContent: t, dica });
     el.filaTabela.replaceChildren(criar('table', {}, [
       criar('thead', {}, [criar('tr', {}, [th('Busca', 'Portal e bairro da busca'), th('Lidos', 'Anúncios distintos lidos na busca'), th('Total', 'Total que o portal diz ter'), th('Cob.', `Cobertura: lidos ÷ total; abaixo de ${pctTxt(COBERTURA_MIN)}, a fila repete a busca uma vez`)])]),
       criar('tbody', {}, linhas),
@@ -1566,13 +2259,13 @@
   function mostrarPendentes(dados) {
     const exportado = exportadoEm();
     const pend = pendentes(dados, exportado);
-    el.pendentes.className = pend >= AVISO_PENDENTES ? 'info alerta' : pend ? 'info' : 'info ok';
+    el.pendentes.className = pend >= AVISO_PENDENTES ? 'selo alerta' : pend ? 'selo' : 'selo ok';
     el.pendentes.replaceChildren(...partes(pend >= AVISO_PENDENTES ? icone('exclamation-triangle') : !pend && exportado ? icone('check') : '',
-      pend ? `${pend} fora do CSV` : exportado ? 'CSV em dia' : 'Nada guardado ainda.'));
-    el.pendentes.title = pend
+      pend ? `${pend} fora do CSV` : exportado ? 'CSV em dia' : ''));
+    kit.dica(el.pendentes, pend
       ? `${pend} anúncio(s) lidos, em todos os portais, desde o último CSV de tudo${exportado ? ` (${quando(exportado)})` : ' (nenhum baixado ainda)'}`
         + `${pend >= AVISO_PENDENTES ? '. Baixe o CSV: os dados só estão no navegador' : ''}`
-      : exportado ? `CSV de tudo baixado em ${quando(exportado)}` : '';
+      : exportado ? `CSV de tudo baixado em ${quando(exportado)}` : '');
   }
 
   // Portal, cobertura da busca atual e R$/m² pedido dos anúncios de aluguel da busca.
@@ -1589,12 +2282,11 @@
       casa('k', icone('magnifying-glass'), 'Busca'),
       cob == null
         ? casa('v largo', `${lista.length}`, aviso('Total da busca não lido na página: sem cobertura'))
-        : criar('span', { className: `v largo ${lerAuto() ? '' : nivel(cob, 0.8, 0.5)}`, title: `${lista.length} de ${total} anúncios que o portal diz ter na busca (${pctTxt(cob)})` },
-          partes(`${lista.length}/${total}`, barra(cob))),
+        : criar('span', { className: `v largo ${lerAuto() ? '' : nivel(cob, 0.8, 0.5)}`, dica: `${lista.length} de ${total} anúncios que o portal diz ter na busca (${pctTxt(cob)})` },
+          partes(`${lista.length}/${total}`, miniBarra(cob))),
       ...(lista.length ? [casa('k', 'Desde'), casa(`v largo${idade > IDADE_MAX ? ' alerta' : ''}`, diaMes(datas[0]), idade > IDADE_MAX && aviso(`Coleta mais antiga desta busca com ${idade} dias: refazer?`))] : []),
     );
     const r = resumoM2(lista.filter((a) => passaFiltros(a, lerFiltros())));
-    el.resumo.title = 'R$/m² pedido (aluguel ÷ área) dos anúncios de aluguel com área desta busca, nos filtros ligados';
     el.resumo.replaceChildren(...(!r.n ? [casa('todo', icone('tag'), 'Nenhum anúncio de aluguel com área nesta busca.')] : [
       casa('k', icone('tag'), 'Com área'), casa(`v${r.n < MIN_AMOSTRA ? ' alerta' : ''}`, String(r.n)),
       casa('k', 'R$/m²'), criar('b', { className: 'v', textContent: reais(r.mediana) }),
@@ -1605,13 +2297,13 @@
 
   // Funil da última página lida, com alerta se há cards sem id (seletor do portal mudou?).
   function mostrarFunil() {
-    if (!ultimoFunil) { el.funil.className = 'resumo'; el.funil.replaceChildren(...partes(icone('funnel'), ' Página ainda não lida nesta aba.')); return; }
+    if (!ultimoFunil) { el.funil.className = 'resumo suave'; el.funil.replaceChildren(...partes(icone('funnel'), ' Página ainda não lida nesta aba.')); kit.dica(el.funil, ''); return; }
     const f = ultimoFunil;
     const semId = f.comId < f.cards;
     el.funil.className = `resumo ${semId ? 'ruim' : f.comArea < f.comId * 0.8 ? 'alerta' : 'ok'}`;
     el.funil.replaceChildren(...partes(icone('funnel'), ` ${f.cards} cards → ${f.comId} com id → ${f.comPreco} com preço → ${f.comArea} com área`,
       semId && ' ', semId && icone('exclamation-triangle'), semId && ' cards sem id'));
-    el.funil.title = `Funil da última página lida${semId ? '. Há cards sem id: o seletor do portal pode ter mudado' : ''}`;
+    kit.dica(el.funil, `Funil da última página lida${semId ? '. Há cards sem id: o seletor do portal pode ter mudado' : ''}`);
   }
 
   // Preenchimento dos campos, mistura da busca, prévia do descarte e anúncios no alvo.
@@ -1622,7 +2314,7 @@
       return [casa('k', nome), casa(`v ${cor}`, pctTxt(q.pct[c]))];
     });
     const filtro = Object.values(filtros).some(Boolean);
-    el.campos.title = `Preenchimento de cada campo nos ${filtrados.length} anúncios ${filtro ? 'da busca nos filtros ligados' : 'da busca'}`;
+    kit.dica(el.campos, `Preenchimento de cada campo nos ${filtrados.length} anúncios ${filtro ? 'da busca nos filtros ligados' : 'da busca'}`);
     el.campos.replaceChildren(...(filtro ? [casa('k', icone('adjustments-horizontal'), 'Filtro'), casa('v largo', `${filtrados.length} de ${lista.length}`)] : []), ...campos);
 
     const m = mistura(lista);
@@ -1633,7 +2325,7 @@
       linhas.push(casa('k', 'Aluguel'), casa('v', pctTxt(m.pctAluguel)), casa('k', 'Venda'), casa(`v${m.pctVenda > 0.1 ? ' ruim' : ''}`, pctTxt(m.pctVenda)));
       linhas.push(casa('k', 'Fora de SSA'), casa(`v largo${m.pctFora > 0.1 ? ' ruim' : ''}`, pctTxt(m.pctFora)));
       const tipos = Object.entries(m.tipos).sort((x, y) => y[1] - x[1]);
-      linhas.push(criar('span', { className: 'k', textContent: 'Tipo', title: 'Tipo estimado pela busca e pelo texto, com as regras do build' }),
+      linhas.push(criar('span', { className: 'k', textContent: 'Tipo', dica: 'Tipo estimado pela busca e pelo texto, com as regras do build' }),
         casa('v largo', tipos.map(([t, n]) => `${NOMES_SUBTIPO[t] || t} ${n}`).join(' · ')));
       linhas.push(...m.alertas.map((a) => casa('todo ruim', icone('exclamation-triangle'), a)));
     }
@@ -1641,13 +2333,12 @@
       const nomes = { semArea: 'sem área', preco: 'preço fora de R$ 300 a 100 mil', foraSalvador: 'fora de Salvador', m2: 'R$/m² fora de 3 a 500' };
       const motivos = Object.entries(d.motivos).filter(([, n]) => n).map(([k, n]) => `${n} ${nomes[k]}`).join('; ');
       const frac = d.total / d.aluguel;
-      linhas.push(criar('span', { className: 'k', textContent: 'Descarte', title: 'Prévia do que o build vai descartar entre os anúncios de aluguel' }),
-        criar('span', { className: `v largo ${frac > 0.2 ? 'ruim' : frac > 0.05 ? 'alerta' : 'ok'}`, title: motivos || 'nenhum motivo de descarte' },
+      linhas.push(criar('span', { className: 'k', textContent: 'Descarte', dica: 'Prévia do que o build vai descartar entre os anúncios de aluguel' }),
+        criar('span', { className: `v largo ${frac > 0.2 ? 'ruim' : frac > 0.05 ? 'alerta' : 'ok'}`, dica: motivos || 'nenhum motivo de descarte' },
           partes(`${d.total} de ${d.aluguel}`, motivos && ` (${motivos})`)));
     }
     el.mistura.replaceChildren(...linhas);
 
-    el.alvo.title = `Anúncios de aluguel deste portal no porte do plano (${PORTE_MIN} a ${PORTE_MAX} m²) e, entre as lojas e pontos no porte, por área do 6.4; ✓ a partir de ${MIN_AMOSTRA}`;
     el.alvo.replaceChildren(
       casa('k', icone('map-pin'), 'No porte'), casa('v largo', `${alvo.porte} de aluguel`),
       ...Object.entries(alvo.porArea).flatMap(([a, n]) => [casa('k', a), casa(`v${n >= MIN_AMOSTRA ? ' ok' : ' alerta'}`, String(n), n >= MIN_AMOSTRA && icone('check'))]),
@@ -1656,40 +2347,67 @@
 
   function mostrarHist(hist) {
     el.histTitulo.textContent = `Rodada automática (${hist.length} pág.)`;
-    if (!hist.length) { el.hist.replaceChildren(criar('p', { className: 'status', textContent: 'Sem rodada automática nesta aba.' })); return; }
+    if (!hist.length) { el.hist.replaceChildren(vazio('Sem rodada automática nesta aba.')); return; }
     const td = (v) => criar('td', { textContent: String(v) });
     const linhas = hist.map((r) => criar('tr', {
       className: r.lidos === 0 || r.ineditos === 0 ? 'ruim' : r.ineditos < r.lidos / 2 ? 'alerta' : '',
-      title: r.lidos === 0 || r.ineditos === 0 ? 'Nada inédito: a rodada para aqui' : r.ineditos < r.lidos / 2 ? 'Menos da metade inédita: a busca pode estar se repetindo' : '',
+      dica: r.lidos === 0 || r.ineditos === 0 ? 'Nada inédito: a rodada para aqui' : r.ineditos < r.lidos / 2 ? 'Menos da metade inédita: a busca pode estar se repetindo' : '',
     }, [td(r.pagina), td(r.lidos), td(r.ineditos), td(r.novos), td(r.seg)]));
-    const th = (t, dica) => criar('th', { textContent: t, title: dica });
+    const th = (t, dica) => criar('th', { textContent: t, dica });
     el.hist.replaceChildren(criar('table', {}, [
       criar('thead', {}, [criar('tr', {}, [th('Pág.', 'Página'), th('Lidos', 'Anúncios lidos na página'), th('Inéd.', 'Inéditos nesta rodada'), th('Novos', 'Novos no navegador'), th('s', 'Segundos na página')])]),
       criar('tbody', {}, linhas),
     ]));
   }
 
-  // Apagar baixa antes o CSV do que vai sair (como o "Limpar" do coletor de preços).
-  function apagarComBackup(busca, n) {
-    if (!confirm(busca ? `Apagar os ${n} anúncios guardados desta busca? O CSV dela será baixado antes.` : 'Apagar todos os anúncios guardados deste portal? O CSV de tudo será baixado antes.')) return;
-    const dados = carregar();
-    if (busca) baixarCsv(daBusca(dados, busca), true); else baixarCsv(dados);
+  // Apagar uma busca: baixa antes o CSV dela, tira os anúncios e o registro da coleta
+  // (o ✓ do menu), para a busca voltar a faltar.
+  function apagarComBackup(busca) {
+    const dela = daBusca(carregar(), busca);
+    if (Object.keys(dela).length) baixarCsv(dela, true);
     apagarBusca(busca);
-    mostrar(busca ? 'Busca apagada (CSV baixado antes).' : 'Guardados apagados (CSV baixado antes).');
+    gmGravar(CHAVE_FEITAS, semBusca(gmLer(CHAVE_FEITAS, {}), busca));
+    gmGravar(CHAVE_MARCAS, semBusca(gmLer(CHAVE_MARCAS, {}), busca));
+    mostrar('Busca apagada (CSV baixado antes); ela volta a faltar no menu.', 'ok');
+  }
+
+  // Reiniciar (lixeira): volta o coletor ao zero. Até 13/11/2026 a lixeira só tirava os
+  // anúncios do portal aberto: o registro das buscas feitas (✓ do menu, "Próximo" e "só as que
+  // faltam"), as marcas à mão, a fila com os resultados, a rodada da aba e os anúncios dos
+  // outros portais ficavam, e a coleta seguinte herdava esse histórico. Baixa antes o CSV
+  // de tudo; ficam a lista de buscas, a montagem, os filtros e as preferências do painel.
+  const CHAVES_COLETA = [CHAVE, CHAVE_FEITAS, CHAVE_MARCAS, CHAVE_FILA, CHAVE_EXPORTACAO, CHAVE_ABRIR, CHAVE_ALVO];
+  function reiniciar() {
+    const dados = carregar();
+    const n = Object.keys(dados).length;
+    if (n) baixarCsv(dados, true);
+    gravarAuto(null);
+    gravarHist([]);
+    for (const c of CHAVES_COLETA) gmApagar(c);
+    // Sobra das versões anteriores no localStorage deste portal: sem isto, voltaria na próxima carga.
+    try { localStorage.removeItem(CHAVE); localStorage.removeItem(CHAVE_EXPORTACAO); } catch (e) { /* sem localStorage */ }
+    guardados = {};
+    ultimoFunil = null;
+    iniciouAuto = false;
+    progresso('busca', null);
+    progresso('fila', null);
+    atualizarBotoes();
+    kit.estado('');
+    mostrar(n ? `Reiniciado: ${n} anúncios apagados (CSV baixado antes) e histórico de coleta zerado.` : 'Reiniciado: histórico de coleta zerado.', 'ok');
   }
 
   function mostrarBuscas(buscas, atual) {
     el.buscasTitulo.textContent = `Buscas guardadas (${buscas.length})`;
     const rotulo = (b) => { try { const u = new URL(b); return decodeURIComponent(u.pathname + u.search); } catch (e) { return b; } };
-    el.buscas.replaceChildren(...(!buscas.length ? [criar('li', { textContent: 'Nada guardado neste portal.' })] : buscas.map((b) => {
+    el.buscas.replaceChildren(...(!buscas.length ? [vazio('Nada guardado neste portal.')] : buscas.map((b) => {
       const velha = diasEntre(b.data, dataLocal()) > IDADE_MAX;
       return criar('li', { className: b.busca === atual ? 'atual' : '' }, [
         criar('div', { className: 'corpo' }, [
-          criar('span', { className: 'titulo', textContent: rotulo(b.busca), title: b.busca }),
-          criar('span', { className: `meta${velha ? ' alerta' : ''}`, textContent: `${b.n} anúncios · ${diaMes(b.data)}${b.busca === atual ? ' · esta busca' : ''}`, title: velha ? `Coletada há mais de ${IDADE_MAX} dias` : '' }),
+          criar('span', { className: 'titulo', textContent: rotulo(b.busca), dica: b.busca }),
+          criar('span', { className: `meta${velha ? ' alerta' : ''}`, textContent: `${b.n} anúncios · ${diaMes(b.data)}${b.busca === atual ? ' · esta busca' : ''}`, dica: velha ? `Coletada há mais de ${IDADE_MAX} dias` : '' }),
         ]),
-        botao('arrow-down-tray', '', 'Baixar: CSV só desta busca', () => baixarCsv(daBusca(carregar(), b.busca), true), 'ic'),
-        botao('trash', '', 'Apagar: tira esta busca do navegador (baixa antes o CSV dela)', () => apagarComBackup(b.busca, b.n), 'ic'),
+        botao('arrow-down-tray', '', 'Baixar: CSV só desta busca', () => baixarCsv(daBusca(carregar(), b.busca), true), 'leve'),
+        kit.botaoPerigo('trash', '', () => apagarComBackup(b.busca), { classe: 'leve', dica: 'Apagar: tira do navegador os anúncios desta busca e o registro da coleta dela (baixa antes o CSV)' }),
       ]);
     })));
   }
@@ -1724,75 +2442,91 @@
     rotularAlvos();
   }
 
-  function mostrar(t) {
+  function mostrar(t, tipo = '') {
     atualizarPainel();
-    if (t) status(t);
+    if (t) status(t, tipo);
   }
 
+  const emCurso = () => !!lerFila()?.ativa || !!lerAuto();
+
+  // Trava as ações durante a fila ou a rodada; "Parar" fica sempre disponível.
   function atualizarBotoes() {
     if (!el.bAuto) return;
     const fila = lerFila();
     const naFila = !!fila?.ativa;
-    const ativo = !!lerAuto() && !naFila;
-    el.bAuto.replaceChildren(...partes(icone(ativo ? 'stop' : 'forward'), criar('span', { textContent: ativo ? 'Parar' : 'Todas' })));
-    el.bAuto.title = ativo ? 'Parar a rodada automática' : 'Coletar todas as páginas desta busca: lê esta página e segue para as próximas até uma página vazia, sem anúncio inédito, o total da busca ou o limite; no fim, toca um som e baixa o CSV';
-    el.bAuto.classList.toggle('ativo', ativo);
-    el.bAuto.disabled = naFila;
-    el.bPagina.disabled = ativo || naFila;
-    el.bFila.replaceChildren(...partes(icone(naFila ? 'stop' : 'queue-list'), criar('span', { textContent: naFila ? 'Parar fila' : 'Fila' })));
-    el.bFila.title = naFila ? 'Parar a fila: a busca atual para; "Continuar" retoma dela'
-      : 'Coletar a fila: abre cada busca da lista, lê todas as páginas, confere a cobertura (repete uma vez abaixo de 95%) e passa à próxima, em qualquer portal; no fim, toca um som e baixa um CSV com tudo';
-    el.bFila.classList.toggle('ativo', naFila);
-    const podeContinuar = !naFila && !!fila && !fila.fim && fila.i < fila.itens.length;
+    const rodando = naFila || !!lerAuto();
+    kit.atualizarAcoes(rodando);
+    if (!rodando && kit.el.ponto.classList.contains('rodando')) kit.estado('');
+    const podeContinuar = !rodando && !!fila && !fila.fim && fila.i < fila.itens.length;
     el.bContinuar.disabled = !podeContinuar;
-    el.bContinuar.title = podeContinuar ? `Continuar a fila da busca ${fila.i + 1} de ${fila.itens.length} (${rotuloBusca(fila.itens[fila.i])})` : 'Continuar a fila: nada pausado';
+    kit.dica(el.bContinuar, podeContinuar ? `Continuar a fila da busca ${fila.i + 1} de ${fila.itens.length} (${rotuloBusca(fila.itens[fila.i])})` : 'Continuar a fila: nada pausado');
     el.filaTexto.disabled = naFila;
-    if (el.bGerar) el.bGerar.disabled = naFila;
+    if (el.menu) el.menu.bProx.disabled = rodando;
+  }
+
+  // Parar: interrompe a fila (retomável por "Continuar") ou a rodada desta busca.
+  function parar() {
+    const naFila = !!lerFila()?.ativa;
+    pararFila();
+    gravarAuto(null);
+    atualizarBotoes();
+    status(naFila ? 'Fila parada. "Continuar" retoma da busca atual.' : 'Parado.', 'alerta');
+  }
+
+  // Menu das buscas (menuAlvos do kit): ✓ coletada, ◐ cobertura abaixo de 95%, ○ falta;
+  // escolher uma abre a busca e coleta todas as páginas. Refeito quando a lista da fila muda.
+  function criarMenu() {
+    const alvos = alvosDaLista();
+    const est = (u) => estadoAlvo(u, gmLer(CHAVE_FEITAS, {}) || {}, gmLer(CHAVE_MARCAS, {}) || {}, alvos);
+    return kit.menuAlvos({
+      itens: () => alvos, id: (u) => u, grupo: (u) => rotuloBusca(u).split(' · ')[0], nome: rotuloBusca, unidade: 'buscas',
+      estadoDe: (u) => ({ ok: 'ok', baixa: 'parcial' }[est(u).e] || 'falta'),
+      detalhe: (u, e) => { const { r } = est(u); return !r || e === 'falta' ? '' : `${r.lidos}${r.total ? `/${r.total}` : ''}${e === 'parcial' ? `, ${pctTxt(r.cobertura)}` : ''}`; },
+      atual: alvoAtual,
+      aoEscolher: (url) => {
+        if (!url) return;
+        if (emCurso()) { rotularAlvos(); status('Espere a rodada em curso terminar (ou pare).', 'alerta'); return; }
+        if (est(url).e === 'ok' && !confirm(`${rotuloBusca(url)} já está coletada. Refazer?`)) { rotularAlvos(); return; }
+        abrirAlvo(url);
+      },
+      aoProximo: () => {
+        if (emCurso()) { status('Espere a rodada em curso terminar (ou pare).', 'alerta'); return; }
+        const prox = proximoAlvo(alvos, alvoAtual(), gmLer(CHAVE_FEITAS, {}) || {}, gmLer(CHAVE_MARCAS, {}) || {});
+        if (!prox) { status('Todas as buscas da lista estão coletadas.', 'ok'); return; }
+        abrirAlvo(prox);
+      },
+      aoMarcar: (url) => {
+        if (!url) return;
+        const col = est(url).e === 'ok';
+        gmGravar(CHAVE_MARCAS, { ...(gmLer(CHAVE_MARCAS, {}) || {}), [chaveAlvo(url)]: !col });
+        gmGravar(CHAVE_ALVO, url);
+        status(col ? `${rotuloBusca(url)} volta a faltar.` : `${rotuloBusca(url)} marcada como coletada.`);
+        rotularAlvos();
+      },
+    });
   }
 
   function montarPainel() {
-    el.status = criar('p', { className: 'status', textContent: 'Clique em "Fila" para coletar as buscas da lista, ou abra uma busca já filtrada e clique em "Todas".' });
-    el.pBusca = novaBarra();
-    el.pFila = novaBarra();
+    kit.el.status = criar('div', { className: 'status', textContent: '"Fila" coleta as buscas da lista; "Todas", a busca aberta.' });
+    el.filaContagem = kit.selo('');
+    const contarFila = () => { el.filaContagem.textContent = `${lerItensFila(el.filaTexto.value).length} buscas`; };
     el.filaTexto = criar('textarea', { value: gmLer(CHAVE_FILA_TEXTO, FILA_PADRAO) || FILA_PADRAO, spellcheck: false,
-      title: 'Buscas da fila: uma URL por linha (OLX, ZAP, Viva Real ou QuintoAndar), já filtrada; linhas com # são ignoradas',
-      onchange: () => { gmGravar(CHAVE_FILA_TEXTO, el.filaTexto.value); el.filaContagem.textContent = `${lerItensFila(el.filaTexto.value).length} buscas`; preencherAlvos(); } });
-    el.filaContagem = criar('span', { className: 'rotulo', textContent: `${lerItensFila(el.filaTexto.value).length} buscas` });
-    // Menu das buscas: escolher uma abre a busca e coleta todas as páginas sozinho.
-    el.alvoSel = criar('select', {
-      title: 'Buscas da lista da fila, por portal: escolher uma abre a busca e coleta todas as páginas. ✓ coletada (lidos/total), ◐ cobertura abaixo de 95%, ○ falta',
-      onchange: () => {
-        const url = el.alvoSel.value;
-        if (lerFila()?.ativa || lerAuto()) { el.alvoSel.value = alvoAtual(); status('Espere a rodada em curso terminar (ou pare a fila).'); return; }
-        abrirAlvo(url);
-      },
-    });
-    el.alvoInfo = criar('span', { className: 'rotulo' });
-    const soFaltam = selo('só as que faltam', 'Esconde no seletor as buscas já coletadas', !!gmLer(CHAVE_SO_FALTAM, false), (v) => { gmGravar(CHAVE_SO_FALTAM, v); rotularAlvos(); });
-    const bProximo = botao('forward', 'Próximo', 'Próxima que falta: abre a próxima busca sem coleta ou com cobertura abaixo de 95% (primeiro no mesmo portal) e coleta todas as páginas', () => {
-      if (lerFila()?.ativa || lerAuto()) { status('Espere a rodada em curso terminar (ou pare a fila).'); return; }
-      const prox = proximoAlvo(alvosDaLista(), alvoAtual(), gmLer(CHAVE_FEITAS, {}) || {}, gmLer(CHAVE_MARCAS, {}) || {});
-      if (!prox) { status('Todas as buscas da lista estão coletadas.'); return; }
-      abrirAlvo(prox);
-    });
-    el.bMarcar = botao('check', 'Coletada', '', () => {
-      const url = alvoAtual();
-      const col = estadoAlvo(url, gmLer(CHAVE_FEITAS, {}) || {}, gmLer(CHAVE_MARCAS, {}) || {}, alvosDaLista()).e === 'ok';
-      gmGravar(CHAVE_MARCAS, { ...(gmLer(CHAVE_MARCAS, {}) || {}), [chaveAlvo(url)]: !col });
-      status(col ? `${rotuloBusca(url)} volta a faltar.` : `${rotuloBusca(url)} marcada como coletada.`);
-      rotularAlvos();
-    });
+      dica: 'Buscas da fila: uma URL por linha (OLX, ZAP, Viva Real ou QuintoAndar), já filtrada; linhas com # são ignoradas',
+      onchange: () => { gmGravar(CHAVE_FILA_TEXTO, el.filaTexto.value); contarFila(); preencherAlvos(); } });
+    contarFila();
+    el.menu = criarMenu();
+    el.menuCaixa = el.menu.caixa;
     el.filaTabela = criar('div');
-    el.bFila = botao('queue-list', 'Fila', '', () => {
-      if (lerFila()?.ativa) { pararFila(); gravarAuto(null); atualizarBotoes(); status('Fila parada. "Continuar" retoma da busca atual.'); return; }
-      iniciarFila();
-    }, 'principal');
-    el.bContinuar = botao('play', 'Continuar', '', continuarFila);
-    const bPadrao = botao('arrow-path', '', `Padrão: volta a lista às buscas do plano em lista_aluguel.js (${montarBuscas(MONTAGEM_PADRAO).urls.length} buscas: ${MONTAGEM_PADRAO.bairros.join(', ')}, a partir de ${MONTAGEM_PADRAO.areaMin} m²)`, () => {
+    el.bFila = botao('queue-list', 'Fila', 'Coletar a fila: abre cada busca da lista, lê todas as páginas, confere a cobertura (repete uma vez abaixo de 95%) e passa à próxima, em qualquer portal; no fim, toca um som e baixa o CSV da rodada', iniciarFila, 'primario');
+    el.bContinuar = botao('play', '', '', continuarFila);
+    const bParar = kit.botaoParar(parar);
+    kit.dica(bParar, 'Parar: interrompe a fila ("Continuar" retoma da busca atual) ou a rodada desta busca');
+    const bPadrao = botao('arrow-path', 'Padrão', `Padrão: volta a lista às buscas do plano em lista_aluguel.js (${montarBuscas(MONTAGEM_PADRAO).urls.length} buscas: ${MONTAGEM_PADRAO.bairros.join(', ')}, a partir de ${MONTAGEM_PADRAO.areaMin} m²)`, () => {
       el.filaTexto.value = FILA_PADRAO;
       el.filaTexto.onchange();
+      kit.confirmarBotao(bPadrao);
       status('Lista da fila de volta ao padrão.');
-    }, 'ic');
+    }, 'mini');
     // Montar buscas: bairros, área e tipos escolhidos viram a lista da fila ("Gerar fila").
     const montagem = { ...MONTAGEM_PADRAO, ...(gmLer(CHAVE_MONTAGEM, {}) || {}) };
     const alternar = (lista, v, ligado) => (ligado ? [...new Set([...(lista || []), v])] : (lista || []).filter((x) => x !== v));
@@ -1802,7 +2536,7 @@
       const r = montarBuscas(montagem);
       el.montagemPrevia.replaceChildren(...partes(r.semBusca.length ? icone('exclamation-triangle') : '', `${r.urls.length} buscas em ${r.bairros.length} bairro(s)`));
       el.montagemPrevia.className = r.semBusca.length ? 'rotulo alerta' : 'rotulo';
-      el.montagemPrevia.title = r.semBusca.length ? `Sem busca no portal (ficam de fora): ${r.semBusca.join('; ')}` : 'Buscas que "Gerar fila" põe na lista';
+      kit.dica(el.montagemPrevia, r.semBusca.length ? `Sem busca no portal (ficam de fora): ${r.semBusca.join('; ')}` : 'Buscas que "Gerar fila" põe na lista');
     };
     const seloLista = (campo, valor, rotulo, dica) => selo(rotulo, dica, (montagem[campo] || []).includes(valor), (v) => { montagem[campo] = alternar(montagem[campo], valor, v); prever(); });
     const menuBairros = menuMulti({
@@ -1810,10 +2544,10 @@
       rotulo: 'Bairros', dica: 'Bairros de Salvador para montar as buscas: marque um ou mais; os 11 primeiros (10 bairros) são os de maior renda, os demais seguem em ordem alfabética',
       aoMudar: (lista) => { montagem.bairros = lista; prever(); },
     });
-    const outros = criar('input', { type: 'text', value: montagem.outros || '', placeholder: 'outros bairros (vírgula)', className: 'largo',
-      title: 'Outros bairros de Salvador, separados por vírgula, como o portal escreve na URL (ex.: Caminho das Árvores, Stiep)',
+    const outros = criar('input', { type: 'text', value: montagem.outros || '', placeholder: 'outros bairros (vírgula)',
+      dica: 'Outros bairros de Salvador, separados por vírgula, como o portal escreve na URL (ex.: Caminho das Árvores, Stiep)',
       oninput: () => { montagem.outros = outros.value; prever(); } });
-    const campoArea = (campo, dica) => criar('input', { type: 'number', min: 0, step: 10, value: montagem[campo] ?? '', placeholder: '–', title: dica,
+    const campoArea = (campo, dica) => criar('input', { type: 'number', min: 0, step: 10, value: montagem[campo] ?? '', placeholder: '–', dica,
       oninput: (e) => { montagem[campo] = numeroOuNulo(e.target.value); prever(); } });
     const areaMin = campoArea('areaMin', 'Área mínima em m² (vazio: sem mínimo)');
     const areaMax = campoArea('areaMax', 'Área máxima em m² (vazio: sem máximo; menor que a mínima é ignorada)');
@@ -1821,52 +2555,47 @@
     const selosPortal = PORTAIS_BUSCA.map((p) => seloLista('portais', p, NOMES_PORTAL[p], `Montar buscas no ${NOMES_PORTAL[p]}`));
     el.bGerar = botao('magnifying-glass', 'Gerar fila', 'Gerar fila: troca a lista da fila pelas buscas montadas aqui (cada portal × bairro × tipo, com a área escolhida); depois, "Fila" coleta', () => {
       const r = montarBuscas(montagem);
-      if (!r.urls.length) { status('Nada a buscar: escolha ao menos um bairro, um tipo e um portal que tenha esse tipo.'); return; }
+      if (!r.urls.length) { status('Nada a buscar: escolha ao menos um bairro, um tipo e um portal que tenha esse tipo.', 'alerta'); return; }
       el.filaTexto.value = r.urls.join('\n');
       el.filaTexto.onchange();
       mostrarFila();
+      kit.confirmarBotao(el.bGerar);
       status(`Fila montada com ${r.urls.length} buscas${r.semBusca.length ? `; sem busca no portal: ${r.semBusca.join(', ')}` : ''}. Clique em "Fila" para coletar.`);
-    }, 'principal');
+    }, 'mini');
     prever();
-    const rotuloIco = (ico, dica) => criar('span', { className: 'rotulo', title: dica }, [icone(ico)]);
-    el.montagem = criar('details', {}, [criar('summary', { textContent: 'Montar buscas' }), criar('div', { className: 'caixa' }, [
-      criar('div', { className: 'linha' }, [rotuloIco('map-pin', 'Bairros'), menuBairros, outros]),
-      criar('div', { className: 'linha' }, [rotuloIco('adjustments-horizontal', 'Área em m²'), criar('span', { className: 'rotulo', textContent: 'área de' }), areaMin,
-        criar('span', { className: 'rotulo', textContent: 'a' }), areaMax, criar('span', { className: 'rotulo', textContent: 'm²' })]),
-      criar('div', { className: 'linha' }, [rotuloIco('tag', 'Tipo de imóvel comercial'), ...selosTipo]),
-      criar('div', { className: 'linha' }, [rotuloIco('funnel', 'Portais'), ...selosPortal]),
-      criar('div', { className: 'linha' }, [el.bGerar, el.montagemPrevia]),
-    ])]);
+    const rotuloIco = (ico, dica) => criar('span', { className: 'rotulo', dica }, [icone(ico)]);
+    const rotuloTxt = (t, dica = '') => criar('span', { className: 'rotulo', textContent: t, dica });
 
-    el.pendentes = criar('span');
-    el.limite =criar('input', { type: 'number', min: 1, value: 50, title: 'Limite de páginas da rodada automática' });
-    el.bPagina = botao('arrow-path', 'Esta página', 'Coletar esta página: lê e guarda só os anúncios desta página', async () => {
+    el.pendentes = kit.selo('');
+    el.limite = criar('input', { type: 'number', min: 1, value: 50, dica: 'Limite de páginas da rodada automática' });
+    el.bPagina = botao('document-text', 'Página', 'Coletar esta página: lê e guarda só os anúncios desta página', async () => {
       el.bPagina.disabled = true;
       status('Lendo a página…');
       const { lidos, novos, gravou } = await coletarPagina();
       el.bPagina.disabled = false;
       if (!gravou) { avisarCheio(); return; }
-      mostrar(`${lidos} lidos, ${novos} novos.`);
-    });
-    el.bAuto = botao('forward', 'Todas', '', () => {
-      if (lerAuto()) { gravarAuto(null); atualizarBotoes(); status('Parado.'); return; }
+      kit.confirmarBotao(el.bPagina);
+      mostrar(`${lidos} lidos, ${novos} novos.`, 'ok');
+    }, 'mini');
+    el.bAuto = botao('forward', 'Todas', 'Coletar todas as páginas desta busca: lê esta página e segue para as próximas até uma página vazia, sem anúncio inédito, o total da busca ou o limite; no fim, toca um som e baixa o CSV', () => {
       gravarAuto({ rodada: rodadaDe(Date.now()), limite: Math.max(1, parseInt(el.limite.value, 10) || 50), paginas: 0, total: 0, alvo: alvoAtual() && chaveBusca(alvoAtual()) === chaveBusca(location.href) ? alvoAtual() : buscaBase(portal, location.href) });
       gravarHist([]);
       passoAutomatico();
-    });
-    const bCsv = botao('arrow-down-tray', 'CSV', 'Baixar CSV de tudo: um arquivo com todos os anúncios guardados, de todos os portais', () => { baixarCsv(); mostrar('CSV de tudo baixado.'); }, 'ic');
-    const bLimpar = botao('trash', '', 'Apagar tudo deste portal (baixa antes o CSV dele)', () => apagarComBackup(null), 'ic');
+    }, 'mini');
+    const bCsv = botao('arrow-down-tray', 'CSV', `Baixar CSV de tudo: um arquivo com todos os anúncios guardados, de todos os portais, em ${PASTA_DOWNLOAD}/`, () => { baixarCsv(); kit.confirmarBotao(bCsv); mostrar('CSV de tudo baixado.', 'ok'); }, 'mini');
+    const bLimpar = kit.botaoPerigo('trash', '', reiniciar, { classe: 'leve',
+      dica: 'Reiniciar: apaga os anúncios guardados (de todos os portais) e o histórico de coleta (✓ do menu, marcas, fila e rodada). Baixa antes o CSV de tudo. Ficam a lista de buscas e as preferências' });
 
     el.geral = criar('div', { className: 'grade' });
-    el.resumo = criar('div', { className: 'grade' });
-    el.funil = criar('p');
+    el.resumo = criar('div', { className: 'grade', dica: 'R$/m² pedido (aluguel ÷ área) dos anúncios de aluguel com área desta busca, nos filtros ligados' });
+    el.funil = criar('div', { className: 'resumo' });
     el.campos = criar('div', { className: 'grade' });
     el.mistura = criar('div', { className: 'grade' });
-    el.alvo = criar('div', { className: 'grade' });
+    el.alvo = criar('div', { className: 'grade', dica: `Anúncios de aluguel deste portal no porte do plano (${PORTE_MIN} a ${PORTE_MAX} m²) e, entre as lojas e pontos no porte, por área do 6.4; ✓ a partir de ${MIN_AMOSTRA}` });
     el.hist = criar('div');
-    el.histTitulo = criar('summary');
-    el.buscas = criar('ul');
-    el.buscasTitulo = criar('summary');
+    el.histTitulo = criar('span');
+    el.buscas = criar('ul', { className: 'buscas' });
+    el.buscasTitulo = criar('span');
 
     // Filtros: só mudam os indicadores da busca e o destaque dos cards; o CSV sai completo.
     const FILTRO = {
@@ -1878,48 +2607,37 @@
     const selos = Object.entries(FILTRO).map(([k, [nome, dica]]) => selo(nome, `${dica}. Muda só os indicadores e o destaque dos cards; o CSV sai completo`, !!lerFiltros()[k],
       (v) => { gravarFiltros({ ...lerFiltros(), [k]: v }); atualizarPainel(); }));
 
-    const minimizar = criar('span', { className: 'rotulo' }, [icone('minus')]);
-    const cabecalho = criar('header', { title: 'Arraste para mover; clique para minimizar; duplo clique volta ao canto' }, [criar('span', { textContent: `Aluguel · ${NOMES_PORTAL[portal] || portal}` }), minimizar]);
-    const painel = criar('div', { id: 'cal-painel' }, [
-      cabecalho,
-      el.alvoSel,
-      criar('div', { className: 'linha' }, [soFaltam, bProximo, el.bMarcar, el.alvoInfo]),
-      criar('div', { className: 'linha' }, [el.bFila, el.bContinuar, bPadrao, el.filaContagem,
-        selo('cada busca', 'Baixar cada busca: na fila, baixa o CSV dos anúncios de cada busca assim que ela termina (além do CSV da rodada no fim)', !!gmLer(CHAVE_CADA, false), (v) => gmGravar(CHAVE_CADA, v))]),
-      el.pFila.caixa,
-      el.pBusca.caixa,
-      el.status,
-      el.montagem,
-      criar('details', {}, [criar('summary', { textContent: 'Buscas da fila' }), el.filaTexto, el.filaTabela]),
-      criar('div', { className: 'linha' }, [el.bAuto, el.bPagina, criar('span', { className: 'rotulo', title: el.limite.title, textContent: 'máx.' }), el.limite]),
-      criar('div', { className: 'linha' }, [criar('span', { className: 'rotulo', title: 'Filtros dos indicadores' }, [icone('adjustments-horizontal')]), ...selos]),
-      criar('div', { className: 'linha' }, [bCsv, bLimpar, el.pendentes]),
-      criar('div', { className: 'caixa' }, [el.geral, el.resumo]),
-      el.funil,
-      criar('details', { open: true }, [criar('summary', { textContent: 'Qualidade da busca' }), criar('div', { className: 'caixa' }, [el.campos, el.mistura, el.alvo])]),
-      criar('details', {}, [el.histTitulo, el.hist]),
-      criar('details', {}, [el.buscasTitulo, el.buscas]),
-    ]);
-    cabecalho.onclick = () => { if (arrastou) return; painel.classList.toggle('min'); minimizar.replaceChildren(icone(painel.classList.contains('min') ? 'plus' : 'minus')); };
-    el.painel = painel;
-    prepararArraste(cabecalho, painel);
-    painel.addEventListener('click', liberarAudio);
-    // As teclas digitadas no painel não chegam aos atalhos do portal.
-    for (const tipo of ['keydown', 'keyup', 'keypress']) painel.addEventListener(tipo, (e) => e.stopPropagation());
-    // O tamanho só muda pela alça do canto, que grava largura e altura no estilo.
-    addEventListener('pointerup', () => {
-      if (painel.classList.contains('min')) return;
-      const { width, height } = painel.style;
-      if (width && (width !== posicao?.width || height !== posicao?.height)) { posicao = { ...posicao, width, height, escala: 0.8 }; gmGravar(CHAVE_POSICAO, posicao); }
+    kit.acoes = [el.bFila, el.bAuto, el.bPagina, el.bGerar, bPadrao, bLimpar];
+    kit.montar({
+      nome: `Aluguel · ${NOMES_PORTAL[portal] || portal}`,
+      largura: 360,
+      autobaixar: true,
+      css: CSS_PAINEL,
+      extras: [kit.botaoBaixarCada('Baixar cada busca ao terminar (fila): além do CSV da rodada no fim')],
+      filhos: [
+        el.menuCaixa,
+        kit.linha([el.bFila, el.bContinuar, bParar]),
+        kit.barra('fila'),
+        kit.barra('busca'),
+        kit.el.status,
+        kit.linha([el.bAuto, el.bPagina, kit.esp(), rotuloTxt('máx.', 'Limite de páginas da rodada automática'), el.limite], 'compacta'),
+        kit.linha([bCsv, el.pendentes, kit.esp(), bLimpar]),
+        criar('div', { className: 'caixa' }, [el.geral, el.resumo]),
+        el.funil,
+        criar('div', { className: 'tags' }, [rotuloIco('adjustments-horizontal', 'Filtros dos indicadores'), ...selos]),
+        kit.secao('qualidade', 'Qualidade da busca', [criar('div', { className: 'caixa' }, [el.campos, el.mistura, el.alvo])]),
+        kit.secao('montar', 'Montar buscas', [
+          kit.linha([rotuloIco('map-pin', 'Bairros'), menuBairros, outros]),
+          kit.linha([rotuloIco('adjustments-horizontal', 'Área em m²'), rotuloTxt('de'), areaMin, rotuloTxt('a'), areaMax, rotuloTxt('m²')]),
+          criar('div', { className: 'tags' }, [rotuloIco('tag', 'Tipo de imóvel comercial'), ...selosTipo]),
+          criar('div', { className: 'tags' }, [rotuloIco('funnel', 'Portais'), ...selosPortal]),
+          kit.linha([el.bGerar, el.montagemPrevia]),
+        ]),
+        kit.secao('fila', ['Buscas da fila', el.filaContagem], [el.filaTexto, kit.linha([bPadrao]), el.filaTabela]),
+        kit.secao('hist', [el.histTitulo], [el.hist]),
+        kit.secao('buscas', [el.buscasTitulo], [el.buscas]),
+      ],
     });
-    addEventListener('resize', posicionarPainel);
-
-    hospedeiro = criar('div', { id: 'cal-hospedeiro' });
-    const raiz = hospedeiro.attachShadow({ mode: 'open' });
-    raiz.appendChild(criar('style', { textContent: CSS_PAINEL }));
-    raiz.appendChild(painel);
-    posicionarPainel();
-    preencherAlvos();
     atualizarBotoes();
     mostrar();
   }
@@ -1937,103 +2655,23 @@
   function abrirAlvo(url) {
     gmGravar(CHAVE_ALVO, url);
     gmGravar(CHAVE_ABRIR, { url, em: Date.now() });
-    liberarAudio();
     status(`Abrindo ${rotuloBusca(url)}…`);
     location.href = url;
   }
 
-  // Opções em grupos por portal, na ordem da lista.
+  // A lista da fila mudou: o menu é refeito com as buscas novas.
   function preencherAlvos() {
-    if (!el.alvoSel) return;
-    const alvos = alvosDaLista();
-    const grupos = new Map();
-    for (const u of alvos) {
-      const p = rotuloBusca(u).split(' · ')[0];
-      if (!grupos.has(p)) grupos.set(p, []);
-      grupos.get(p).push(u);
-    }
-    el.alvoSel.replaceChildren(...[...grupos].map(([p, us]) => criar('optgroup', { label: p },
-      us.map((u) => criar('option', { value: u, textContent: rotuloBusca(u) })))));
+    if (!el.menuCaixa) return;
+    const m = criarMenu();
+    el.menuCaixa.replaceWith(m.caixa);
+    el.menu = m;
+    el.menuCaixa = m.caixa;
     rotularAlvos();
+    atualizarBotoes();
   }
 
   function rotularAlvos() {
-    if (!el.alvoSel) return;
-    const alvos = alvosDaLista();
-    const feitas = gmLer(CHAVE_FEITAS, {}) || {};
-    const marcas = gmLer(CHAVE_MARCAS, {}) || {};
-    const soFaltam = !!gmLer(CHAVE_SO_FALTAM, false);
-    const atual = alvoAtual();
-    let prontas = 0;
-    for (const o of el.alvoSel.querySelectorAll('option')) {
-      const { e, r } = estadoAlvo(o.value, feitas, marcas, alvos);
-      const nome = rotuloBusca(o.value);
-      const lt = r ? ` (${r.lidos}${r.total ? `/${r.total}` : ''})` : '';
-      if (e === 'ok') prontas++;
-      o.className = e;
-      o.textContent = e === 'ok' ? `✓ ${nome}${lt}` : e === 'baixa' ? `◐ ${nome}${lt}, ${pctTxt(r.cobertura)}` : `○ ${nome}`;
-      o.hidden = soFaltam && e === 'ok' && o.value !== atual;
-    }
-    for (const g of el.alvoSel.querySelectorAll('optgroup')) g.hidden = [...g.querySelectorAll('option')].every((o) => o.hidden);
-    if (atual) el.alvoSel.value = atual;
-    el.alvoInfo.textContent = `${prontas} de ${alvos.length} coletadas`;
-    const col = atual && estadoAlvo(atual, feitas, marcas, alvos).e === 'ok';
-    el.bMarcar.replaceChildren(...partes(icone(col ? 'x-mark' : 'check'), criar('span', { textContent: col ? 'Desfazer' : 'Coletada' })));
-    el.bMarcar.title = col ? 'Desfazer: a busca volta a faltar (seletor, "Próximo" e "só as que faltam"); os anúncios guardados ficam'
-      : 'Marcar coletada: dá a busca por coletada sem rodar (ex.: portal fora do ar ou busca sem anúncios)';
-    el.bMarcar.disabled = !atual;
-  }
-
-  // Posição e tamanho escolhidos pelo autor, salvos no Tampermonkey (iguais em todos os
-  // portais). Sem posição salva, o painel fica no canto superior direito.
-  let posicao = gmLer(CHAVE_POSICAO, null);
-  // Painel 20% mais estreito desde 13/11/2026: largura já salva reduzida uma vez.
-  if (posicao?.width && posicao.escala !== 0.8) { const px = parseFloat(posicao.width); posicao = { ...posicao, width: Number.isFinite(px) ? `${Math.round(px * 0.8)}px` : posicao.width, escala: 0.8 }; gmGravar(CHAVE_POSICAO, posicao); }
-  let arrastou = false;
-
-  function prepararArraste(cabecalho, painel) {
-    cabecalho.addEventListener('pointerdown', (e) => {
-      if (e.button !== 0) return;
-      const r = painel.getBoundingClientRect();
-      const x0 = e.clientX, y0 = e.clientY;
-      let moveu = false;
-      const mover = (ev) => {
-        if (!moveu && Math.hypot(ev.clientX - x0, ev.clientY - y0) < 4) return;
-        moveu = true;
-        painel.classList.add('arrastando');
-        posicao = { ...posicao, left: Math.round(r.left + ev.clientX - x0), top: Math.round(r.top + ev.clientY - y0) };
-        posicionarPainel();
-      };
-      const soltar = () => {
-        removeEventListener('pointermove', mover);
-        removeEventListener('pointerup', soltar);
-        painel.classList.remove('arrastando');
-        if (!moveu) return;
-        gmGravar(CHAVE_POSICAO, posicao);
-        arrastou = true;
-        setTimeout(() => { arrastou = false; }, 0);
-      };
-      addEventListener('pointermove', mover);
-      addEventListener('pointerup', soltar);
-    });
-    cabecalho.addEventListener('dblclick', () => {
-      posicao = null;
-      gmApagar(CHAVE_POSICAO);
-      painel.style.width = painel.style.height = painel.style.left = painel.style.top = painel.style.right = '';
-      posicionarPainel();
-      status('Painel de volta ao canto, no tamanho padrão.');
-    });
-  }
-
-  function posicionarPainel() {
-    const p = el.painel;
-    if (!p) return;
-    if (posicao?.width && !p.style.width) { p.style.width = posicao.width; p.style.height = posicao.height || ''; }
-    if (posicao?.left == null) return;
-    const w = p.offsetWidth || 288;
-    p.style.left = `${Math.min(Math.max(0, posicao.left), Math.max(0, innerWidth - w))}px`;
-    p.style.top = `${Math.min(Math.max(0, posicao.top), Math.max(0, innerHeight - 48))}px`;
-    p.style.right = 'auto';
+    if (el.menu) el.menu.rotular();
   }
 
   // O painel só aparece em página de busca (com cards); depois de aparecer, é reposto se sumir.
@@ -2062,9 +2700,9 @@
       if (!ehBusca) return;
       console.info(NOME, 'painel montado');
     }
-    if (!hospedeiro) montarPainel();
-    if (!hospedeiro.isConnected) document.documentElement.appendChild(hospedeiro);
-    if (desafio) { status('Bloqueio do Cloudflare: resolva o desafio na página; a coleta retoma desta página.'); return; }
+    if (!kit.hospedeiro()) montarPainel();
+    kit.garantir();
+    if (desafio) { status('Bloqueio do Cloudflare: resolva o desafio na página; a coleta retoma desta página.', 'alerta'); return; }
     if (desviada) { buscaDesviada(); return; }
     if (!iniciouAuto && lerAuto()) { iniciouAuto = true; passoAutomatico(); return; }
     if (filaAqui && !iniciouAuto && !contando && !lerAuto()) { iniciarBuscaDaFila(); return; }
