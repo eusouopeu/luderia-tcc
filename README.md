@@ -15,18 +15,18 @@ Todo número do texto pode ser gerado de novo por um script deste repositório. 
 | `textos/_planejamento/` | Cronograma, status dos capítulos, projeto de pesquisa e registro prévio |
 | `textos/_planejamento/_instrumentos/` | Roteiro de observação, livro de códigos da análise de conteúdo e protocolo de validação |
 | `_docs/_instrucoes/` | Instruções por capítulo (ver [CLAUDE.md](CLAUDE.md)) |
-| `_src/PyScripts/B<n>_<Coleta>/` | Scripts de uma coleta (ex.: `B1_Estabelecimentos`, `B4_Marketing`): `1_collect/`, `2_build/`, `3_analise/`, `4_logs/` (fora do git) e `5_outros/` (auxiliares). Convenções de nomes em [`_src/dicionario.md`](_src/dicionario.md) |
-| `_src/WebScripts/` | Webscripts do Tampermonkey e seus testes, uma pasta por bloco (`B<n>_<nome>/`, ex.: `B1_estabelecimentos/`); carregadores em `_carregadores/` (fora do git, gerados por `_src/Extras/G5_outros/gerar_carregadores.py`) e kit dos painéis em `_kit_painel/`; padrão comum em `specs/especificacoes_comuns.md` |
-| `_src/Extras/` | Utilitários gerais, por função: `G1_planilhas/` (DMax e histogramas), `G2_graficos/`, `G3_modelo_financeiro/`, `G4_textos/` (`.docx` dos capítulos, apêndices, pré-textuais, cronograma) e `G5_outros/` (log comum, carregadores do Tampermonkey, cópia para o vault, leitura offline do Notion) |
+| `_src/pyScripts/B<n>_<Coleta>/` | Scripts de uma coleta (ex.: `B1_Estabelecimentos`, `B4_Marketing`): `1_collect/`, `2_build/`, `3_analise/`, `4_logs/` (fora do git) e `5_outros/` (auxiliares). Convenções de nomes em [`_src/dicionario.md`](_src/dicionario.md) |
+| `_src/webScripts/` | Webscripts do Tampermonkey e seus testes, uma pasta por bloco (`B<n>_<nome>/`, ex.: `B1_estabelecimentos/`); carregadores em `_carregadores/` (fora do git, gerados por `_src/outros/G5_outros/gerar_carregadores.py`) e kit dos painéis em `_kit_painel/`; padrão comum em `specs/especificacoes_comuns.md` |
+| `_src/outros/` | Utilitários gerais, por função: `G1_planilhas/` (dados agregados e histogramas), `G2_graficos/`, `G3_modelo_financeiro/`, `G4_textos/` (`.docx` dos capítulos, apêndices, pré-textuais, cronograma) e `G5_outros/` (log comum, carregadores do Tampermonkey, cópia para o vault, leitura offline do Notion) |
 | `dados/B<n>_<coleta>/_dados-brutos/` | Dados brutos de uma coleta (parte não publicada: ver `.gitignore`) |
 | `dados/B<n>_<coleta>/_auditoria/` | Amostras de conferência da coleta e seus registros de sorteio |
 | `dados/B<n>_<coleta>/_dados-agregados/` | Tabelas e gráficos tratados |
 | `.../_arquivo/` | Em cada uma das três subpastas: versões anteriores |
-| `_src/Extras/G3_modelo_financeiro/` e `dados/modelo_financeiro/` | Modelo do cap. 9 (`gerar_modelo_financeiro.py`) e as premissas fixas em CSV (`premissas_autor.csv`, entrada; `premissas_registro.csv`, saída) |
+| `_src/outros/G3_modelo_financeiro/` e `textos/capitulos/modelo_financeiro/` | Modelo do cap. 9 (`gerar_modelo_financeiro.py`) e as premissas fixas em xlsx (`premissas_autor.xlsx`, entrada; `premissas_registro.xlsx`, saída), conferidas a cada execução contra a aba premissas de `textos/planilhas/9_plano_financeiro_modelo.xlsx` (`--conferir` confere sem regerar) |
 | `bibliografia/` | PDFs por tipo (`F1_Legislacao/`, `F2_Relatorios/`, `F3_Livros/`, `F4_TCC_plano_negocios/`, `F5_Outros/`; fora do git), trechos citados, lista de leitura e referências das bases públicas |
 | `_docs/` | Decisões, pendências, registro de alterações, melhorias do texto; pareceres avulsos em `_docs/pareceres/` |
-| `_src/Extras/App_Observacao/` | App Android usado na contagem direta (Bloco B3) |
-| `_src/Extras/App_Apresentacao/` | Site da apresentação oral |
+| `_src/outros/App_Observacao/` | App Android usado na contagem direta (Bloco B3) |
+| `_src/outros/App_Apresentacao/` | Site da apresentação oral |
 | `~/Documents/arquivados/` | Fora do repositório: rascunhos, saídas do desenho anterior, blocos retirados do escopo (antigo B5 de jogos, B6) e o modelo financeiro v0 |
 
 ## Por onde começar
@@ -37,11 +37,11 @@ Abrir sempre o [AGORA.md](AGORA.md) primeiro. Depois, conforme a tarefa:
 |---|---|---|
 | Escrever o cap. N | `_docs/_instrucoes/` do capítulo (mapa no [CLAUDE.md](CLAUDE.md)); dados em `dados/B<n>_<coleta>/_dados-agregados/`; skill `meu-estilo-escrita` | `textos/capitulos/`; atualizar `textos/_planejamento/status_capitulos.md` |
 | Escrever o cap. 2 | `_docs/_instrucoes/2_ref-teorico.md` e `bibliografia/_lista-de-leitura_TMin_v2.md` | `textos/capitulos/` |
-| Coletar avaliações (B2) | `_src/WebScripts/B2_avaliacoes_recentes/maps_avaliacoes.user.js` (Tampermonkey), fila em `dados/B2_avaliacoes/_dados-agregados/B2_fila_coleta.txt` | rodar `B2-b_avaliacoes.py`; situação em `B2_cobertura_coleta.csv` |
-| Ir a campo (B3) | `textos/_planejamento/_instrumentos/roteiro_observacao_sao_jogue.md` e `_src/Extras/App_Observacao/` | `dados/B3_contagem/_dados-brutos/` |
-| Mexer em cardápios, acervos ou Instagram (B1) | `_src/PyScripts/B1_Cardapios/`, `_src/PyScripts/B1_Acervo_jogos/`, `_src/PyScripts/B1_Redes_sociais/` | `dados/B1_cardapios/`, `dados/B1_acervo_jogos/`, `dados/B1_redes_sociais/` |
-| Atualizar uma base pública (B4) | `_src/PyScripts/`; referências em `bibliografia/_referencias_bases_publicas.md` | `dados/B4_<uso>/_dados-agregados/` |
-| Ver ou mudar prazos | `textos/_planejamento/cronograma_luderia.md` | `node _src/Extras/G4_textos/gerar_docx_cronograma.js` (`--resumo` para a versão curta) gera o `.docx` |
+| Coletar avaliações (B2) | `_src/webScripts/B2_avaliacoes_recentes/maps_avaliacoes.user.js` (Tampermonkey), fila em `dados/B2_avaliacoes/_dados-agregados/B2_fila_coleta.txt` | rodar `B2-b_avaliacoes.py`; situação em `B2_cobertura_coleta.csv` |
+| Ir a campo (B3) | `textos/_planejamento/_instrumentos/roteiro_observacao_sao_jogue.md` e `_src/outros/App_Observacao/` | `dados/B3_contagem/_dados-brutos/` |
+| Mexer em cardápios, acervos ou Instagram (B1) | `_src/pyScripts/B1_Cardapios/`, `_src/pyScripts/B1_Acervo_jogos/`, `_src/pyScripts/B1_Redes_sociais/` | `dados/B1_cardapios/`, `dados/B1_acervo_jogos/`, `dados/B1_redes_sociais/` |
+| Atualizar uma base pública (B4) | `_src/pyScripts/`; referências em `bibliografia/_referencias_bases_publicas.md` | `dados/B4_<uso>/_dados-agregados/` |
+| Ver ou mudar prazos | `textos/_planejamento/cronograma_luderia.md` | `node _src/outros/G4_textos/gerar_docx_cronograma.js` (`--resumo` para a versão curta) gera o `.docx` |
 | Tomar ou consultar uma decisão | `_docs/decisoes.md` e `_docs/pendencias.md` | decisão tomada sai de pendências e entra em decisões |
 | Anotar dúvida ou ideia | `_docs/pendencias.md` | — |
 
@@ -61,7 +61,7 @@ Cada script segue a sequência `collect` (coleta) → `build` (tratamento) → `
 Todo script roda a partir de qualquer diretório:
 
 ```bash
-python3 "_src/PyScripts/B1_Estabelecimentos/3_analise/B1-a_limiares.py"
+python3 "_src/pyScripts/B1_Estabelecimentos/3_analise/B1-a_limiares.py"
 ```
 
 ## Instalação
@@ -81,11 +81,11 @@ npm i -g pnpm
 ```
 
 ```bash
-pnpm --dir _src/Extras/App_Apresentacao install
+pnpm --dir _src/outros/App_Apresentacao install
 ```
 
 ```bash
-pnpm --dir _src/Extras/App_Apresentacao dev
+pnpm --dir _src/outros/App_Apresentacao dev
 ```
 
 ## Regras de dados
