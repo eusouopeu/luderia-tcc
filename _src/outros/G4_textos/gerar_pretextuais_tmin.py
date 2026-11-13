@@ -71,7 +71,6 @@ SIGLAS = {
     "ICMS": "Imposto sobre Circulação de Mercadorias e Serviços",
     "INPI": "Instituto Nacional da Propriedade Industrial",
     "IPCA": "Índice Nacional de Preços ao Consumidor Amplo",
-    "IISU": "Índice de Infraestrutura e Serviços Urbanos",
     "IPTU": "Imposto Predial e Territorial Urbano",
     "IRPJ": "Imposto de Renda da Pessoa Jurídica",
     "ISS": "Imposto sobre Serviços",
@@ -120,7 +119,8 @@ def branco(n=1, pt=12, jc="center", esq=0):
     """n linhas em branco de espaçamento simples, com a altura do corpo `pt`: separam os blocos no lugar do
     espaçamento antes e depois do parágrafo (_docs/_instrucoes/1d_formatacao.md, 13/11/2026)."""
     return ('<w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="240" w:lineRule="auto"/>'
-            f'<w:ind w:left="{esq}" w:firstLine="0"/><w:jc w:val="{jc}"/><w:rPr><w:sz w:val="{pt * 2}"/><w:szCs w:val="{pt * 2}"/></w:rPr></w:pPr></w:p>') * n
+            f'<w:ind w:left="{esq}" w:firstLine="0"/><w:jc w:val="{jc}"/><w:rPr><w:sz w:val="{pt * 2}"/><w:szCs w:val="{pt * 2}"/></w:rPr></w:pPr>'
+            f'<w:r><w:rPr><w:sz w:val="{pt * 2}"/><w:szCs w:val="{pt * 2}"/></w:rPr><w:t xml:space="preserve"></w:t></w:r></w:p>') * n
 
 
 def titulo(t, quebra=True):

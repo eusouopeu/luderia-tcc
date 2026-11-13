@@ -11,7 +11,7 @@ A luderia entra num mercado com uma referência forte e com margem folgada no pr
 |  | Pontos | Evidência |
 |---|---|---|
 | Forças | Taxa de entrada de R$ 19,65, perto da mediana dos concorrentes (R$ 20,00) e abaixo da São Jogue (R$ 28,00 no fim de semana, com 4,8 estrelas em 787 avaliações) | Seções 6.3 e 9.6 |
-|  | Ponto na Pituba, 2ª da matriz de bairros e entre os três primeiros em todos os pesos testados, a até 1.000 m do metrô, com área para a etapa de mesas | Seções 6.4 e 7.1 |
+|  | Ponto na Pituba, bairro de maior renda de Salvador, a até 1.000 m do metrô, com área para a etapa de mesas | Seções 6.4 e 7.1 |
 |  | Dois instrutores e o sócio no salão em todas as horas abertas, com carga de até 7 mesas para 3 pessoas | Seções 7.3 e 7.5 |
 |  | Desenho enxuto: 6 mesas, 45 horas por semana, de terça a sábado, que cobrem o pico de cada dia aberto, equipe de 3 e o sócio e investimento por etapas, pago com o caixa gerado | Seções 7.2 e 10.4 |
 | Fraquezas | Aluguel com condomínio de 19,4% da receita, contra 4,0% no setor, com a área da etapa de mesas paga desde a abertura | Seção 9.6; IBGE, PAS 2024 |
@@ -20,7 +20,7 @@ A luderia entra num mercado com uma referência forte e com margem folgada no pr
 |  | Investimento orçado sem projeto do ponto: quantidades da reforma, do mobiliário e da cozinha em N6 | Seção 9.2 |
 |  | Marca nova contra uma rede com duas unidades | Seção 5.3 |
 | Oportunidades | Salvador com uma só luderia no recorte do B1, a São Jogue | Seção 5.3 |
-|  | Nenhuma unidade da São Jogue entre os bairros mais bem colocados da matriz | Seção 6.4 |
+|  | Nenhuma unidade da São Jogue entre os dez bairros de maior renda | Seção 6.4 |
 | Ameaças | Selic de 14,0% e TMA real de 15% | BCB, setembro de 2026; seção 9.1 |
 |  | Aluguel comercial de Salvador com alta de 18,9% em 12 meses | FipeZap, julho de 2026 |
 |  | Reação da São Jogue com uma terceira unidade ou preço menor | Seções 5.3 e 6.3 |

@@ -61,41 +61,32 @@ O plano adota como taxa de entrada a média dos concorrentes que a cobram: R$ 19
 
 ## 6.4 PRAÇA
 
-A matriz de bairros indica três finalistas para o ponto: Graça, Pituba e Itaigara (Tabela 6.1). Entre eles, o plano adota a Pituba, pela oferta de pontos na coleta de anúncios (texto adiante). A matriz usa três indicadores, com pesos do autor (N6). O primeiro, de peso 40%, é o Índice de Infraestrutura e Serviços Urbanos (IISU) do QUALISalvador, levantamento da UFBA sobre a qualidade urbana dos bairros. O IISU reúne 23 indicadores de saneamento, saúde, educação, mobilidade, segurança pública e equipamentos urbanos, e mede o ambiente em que o negócio se instala (SANTOS et al., 2022, p. 492) [AV]. O segundo, de peso 30%, é a renda média familiar per capita do mesmo levantamento (2018–2020), condição para pagar a visita: o gasto com lazer se concentra nas famílias de renda alta (seção 5.2). O terceiro, de peso 30%, é a densidade demográfica do Censo 2022 (IBGE), que aproxima o movimento e o comércio do entorno.
+O bairro do ponto é escolhido pela renda. O gasto com lazer se concentra nas famílias de renda alta (seção 5.2), e a renda média familiar per capita do QUALISalvador, levantamento da UFBA sobre os 160 bairros de Salvador (2018–2020), indica onde mora o público que pode pagar a visita. A Pituba tem a maior renda da cidade, R$ 5.742,28 por pessoa ao mês, quatro vezes a média de Salvador, de R$ 1.409,77 (GOMES et al., 2022, p. 187, 188), e é o bairro do ponto (decisão do autor, 13 de novembro de 2026). Os dez bairros de maior renda (Tabela 6.1) delimitam a coleta de anúncios que dá o preço do aluguel.
 
-A idade do público não entra. Ela é premissa do autor, e os clientes de uma luderia vêm de vários bairros, de carro ou de transporte público. A matriz considera só os bairros com renda per capita de pelo menos o dobro da média da cidade (R$ 2.819,54, o dobro de R$ 1.409,77): são 15 dos 160 bairros do levantamento. Cada indicador é normalizado de 0 a 1 entre os candidatos.
+A renda descreve os moradores, e não quem circula pelo bairro, com erro amostral de 8% a 10% ou mais por bairro, e os clientes de uma luderia vêm de vários bairros, de carro ou de transporte público. Nenhuma das duas unidades da São Jogue está entre os dez bairros: a Bela Vista fica no Shopping Bela Vista, em Pernambués, e a Paralela, no Shopping Paralela.
 
-**Tabela 6.1 – Matriz de critérios ponderados para o bairro, Salvador**
+**Tabela 6.1 – Bairros de maior renda familiar per capita, Salvador**
 
-| Posição | Bairro | IISU | Renda familiar per capita (R$) | Densidade (hab/km²) | Nota (0 a 1) |
-|---|---|---|---|---|---|
-| 1 | Graça | 0,87 | 5.425,88 | 17.488 | 0,821 |
-| 2 | Pituba | 0,88 | 5.742,30 | 12.708 | 0,786 |
-| 3 | Itaigara | 0,92 | 5.438,74 | 7.410 | 0,756 |
-| 4 | Caminho das Árvores | 0,86 | 4.661,13 | 6.788 | 0,483 |
-| 5 | Vitória | 0,81 | 4.385,77 | 12.627 | 0,431 |
-| 6 | Rio Vermelho | 0,85 | 3.713,90 | 10.131 | 0,417 |
-| 7 | Canela | 0,82 | 3.675,82 | 13.097 | 0,389 |
-| 8 | Patamares | 0,82 | 5.157,45 | 4.617 | 0,380 |
-| 9 | Barra | 0,80 | 4.163,10 | 10.715 | 0,337 |
-| 10 | Stiep | 0,82 | 3.442,60 | 10.747 | 0,313 |
-| 11 | Costa Azul | 0,80 | 3.345,20 | 13.001 | 0,292 |
-| 12 | Ondina/Chame-Chame | 0,81 | 3.883,95 | 6.987 | 0,256 |
-| 13 | Jardim Armação | 0,82 | 3.093,74 | 7.258 | 0,201 |
-| 14 | Piatã | 0,80 | 3.410,81 | 3.086 | 0,093 |
-| 15 | Stella Maris | 0,78 | 3.389,67 | 3.553 | 0,043 |
+| Posição | Bairro | Renda familiar per capita (R$) |
+|---|---|---|
+| 1 | Pituba | 5.742,28 |
+| 2 | Itaigara | 5.438,74 |
+| 3 | Graça | 5.425,88 |
+| 4 | Patamares | 5.157,45 |
+| 5 | Caminho das Árvores | 4.661,13 |
+| 6 | Vitória | 4.385,77 |
+| 7 | Barra | 4.163,10 |
+| 8 | Ondina/Chame-Chame | 3.883,95 |
+| 9 | Rio Vermelho | 3.713,90 |
+| 10 | Canela | 3.675,82 |
 
-Fonte: elaborado pelo próprio autor, com base no QUALISalvador (SANTOS et al., 2022, p. 92–95 e 185–188) e no IBGE (Censo 2022, agregados por bairro).
+Fonte: elaborado pelo próprio autor, com base no QUALISalvador (GOMES et al., 2022, p. 185–188).
 
-Nota: pesos de 40% para o IISU, 30% para a renda e 30% para a densidade; cada indicador normalizado de 0 a 1 entre os 15 candidatos. A densidade usa os moradores do Censo 2022.
-
-Os três finalistas ficam a 0,07 de distância entre si, e o 4º colocado está a 0,27 do 3º. A ordem entre os três depende dos pesos. Com pesos iguais, a Graça segue em 1º (0,841). Sem a densidade, o Itaigara passa a 1º (0,951) e a Pituba fica em 2º. Com o IISU em 60%, o Itaigara lidera (0,837) e a Pituba e a Graça empatam em 2º. Em 20 mil sorteios com cada peso variando 50% para mais ou para menos, a Graça é a 1ª em 76,6%, o Itaigara em 19,3% e a Pituba em 4,2%. Em todos os cenários testados, os três finalistas ocupam as três primeiras posições.
-
-Os dados têm limites. Descrevem moradores, e não quem circula pelo bairro, com erro amostral de 8% a 10% ou mais por bairro. O IISU varia só de 0,78 a 0,92 entre os candidatos, e a densidade é a de moradores. Nenhuma das duas unidades da São Jogue está entre os candidatos: a Bela Vista fica no Shopping Bela Vista, em Pernambués, e a Paralela, no Shopping Paralela.
+Nota: renda média familiar per capita de 2018 a 2020; média de Salvador, R$ 1.409,77.
 
 O ponto deve ficar a até 1.000 m de uma estação de metrô: os concorrentes nessa condição têm mediana de 771 avaliações no Google Maps, contra 572 dos que ficam longe (seção 5.4.2). O shopping de porte mostra vantagem menor (751 contra 601) e não entra como exigência.
 
-A escolha entre os três finalistas dependia do custo e da oferta de pontos. O FipeZap dá o aluguel comercial só para Salvador inteira, sem recorte de bairro, e a coleta de anúncios do Bloco B5 fechou essa lacuna (OLX, ZAP Imóveis e Viva Real, 12 e 13 de novembro de 2026). O plano adota a Pituba, 2ª colocada na matriz e o bairro com mais oferta: 140 dos 187 anúncios coletados nos três finalistas (decisão do autor, 12 de novembro de 2026). O ponto tem de 150 a 200 m², área que já comporta as 8 mesas da etapa de mesas (seção 7.1). Nessa faixa, os 17 anúncios da Pituba pedem, em média, R$ 11,6 mil por mês, ou R$ 63,79 por m², com condomínio e IPTU de 11,8% do aluguel; o capítulo 9 usa esses valores, com o 1º e o 3º quartil do preço por m² nos cenários. Antes de assinar o contrato, cada imóvel visitado é conferido no Quadro 6.2: sanitários, andar, distância até a estação de metrô e lotação aprovada. O preço pedido é maior que o fechado (N2): a cotação com corretor substitui o anúncio antes do contrato.
+O FipeZap dá o aluguel comercial só para Salvador inteira, sem recorte de bairro, e a coleta de anúncios do Bloco B5 fecha essa lacuna: imóveis comerciais de 100 a 200 m² para alugar nos dez bairros da Tabela 6.1, no OLX, no ZAP Imóveis e no NetImóveis, em 13 e 14 de novembro de 2026. O ponto tem de 150 a 200 m², área que já comporta as 8 mesas da etapa de mesas (seção 7.1). Na coleta anterior (OLX, ZAP Imóveis e Viva Real, 12 e 13 de novembro de 2026), os 17 anúncios de 150 a 200 m² da Pituba pediam, em média, R$ 11,6 mil por mês, ou R$ 63,79 por m², com condomínio e IPTU de 11,8% do aluguel; o capítulo 9 usa esses valores, com o 1º e o 3º quartil do preço por m² nos cenários, até a nova coleta substituí-los. Antes de assinar o contrato, cada imóvel visitado é conferido no Quadro 6.2: sanitários, andar, distância até a estação de metrô e lotação aprovada. O preço pedido é maior que o fechado (N2): a cotação com corretor substitui o anúncio antes do contrato.
 
 **Quadro 6.2 – Requisitos mínimos do ponto**
 
@@ -162,6 +153,8 @@ BANCO CENTRAL DO BRASIL (BCB). *Sistema Gerenciador de Séries Temporais (SGS)*:
 
 FUNDAÇÃO INSTITUTO DE PESQUISAS ECONÔMICAS (FIPE). *Índice FipeZAP*: locação comercial, julho de 2026. São Paulo, 2026. Disponível em: https://downloads.fipe.org.br/indices/fipezap/fipezap-202607-comercial.pdf. Acesso em: 2 nov. 2026.
 
+GOMES, Almerinda et al. Salvador: ecos da escravidão e da desigualdade em uma economia periférica. In: SANTOS, Elisabete et al. (org.). *QUALISalvador*: qualidade do ambiente urbano na cidade da Bahia. 2. ed. Salvador: EDUFBA, 2022. p. 155–188.
+
 IBGE. *Censo Demográfico 2022*: população residente por idade. Rio de Janeiro: IBGE, 2023. Disponível em: https://sidra.ibge.gov.br/tabela/9514. Acesso em: 2 nov. 2026.
 
 IBGE. *Estimativas da população residente*: 2026. Rio de Janeiro: IBGE, 2026. Disponível em: https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html. Acesso em: 2 nov. 2026.
@@ -179,5 +172,3 @@ IBGE. *Regiões de influência das cidades 2018*. Rio de Janeiro: IBGE, 2020. Di
 IBGE. *Sistema Nacional de Índices de Preços ao Consumidor*: IPCA, tabela 7060. Rio de Janeiro: IBGE, 2026. Disponível em: https://sidra.ibge.gov.br/tabela/7060. Acesso em: 2 nov. 2026.
 
 KIM, W. Chan; MAUBORGNE, Renée. *A estratégia do oceano azul*: como criar novos mercados e tornar a concorrência irrelevante. Rio de Janeiro: Elsevier, 2005. [AV]
-
-SANTOS, Elisabete et al. (org.). *QUALISalvador*: qualidade do ambiente urbano na cidade da Bahia. 2. ed. Salvador: EDUFBA, 2022. `[AV título e ano]`

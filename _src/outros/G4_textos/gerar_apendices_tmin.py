@@ -81,7 +81,8 @@ def branco(pt=12, keep=False):
     """Linha em branco de espaçamento simples, com a altura do corpo `pt`: separa os blocos no lugar do
     espaçamento antes e depois do parágrafo (_docs/_instrucoes/1d_formatacao.md, 13 de novembro de 2026)."""
     return (f'<w:p><w:pPr>{"<w:keepNext/>" if keep else ""}<w:spacing w:before="0" w:after="0" w:line="240" w:lineRule="auto"/>'
-            f'<w:ind w:firstLine="0"/><w:rPr><w:sz w:val="{pt * 2}"/><w:szCs w:val="{pt * 2}"/></w:rPr></w:pPr></w:p>')
+            f'<w:ind w:firstLine="0"/><w:rPr><w:sz w:val="{pt * 2}"/><w:szCs w:val="{pt * 2}"/></w:rPr></w:pPr>'
+            f'<w:r><w:rPr><w:sz w:val="{pt * 2}"/><w:szCs w:val="{pt * 2}"/></w:rPr><w:t xml:space="preserve"></w:t></w:r></w:p>')
 
 
 def par(t):
@@ -260,8 +261,8 @@ def apendice_b(d):
 
 def apendice_c(d):
     q = [["Base", "Tabela ou série", "Recorte e referência", "Uso no plano"],
-         ["IBGE, Censo 2022", "Agregados por bairro; SIDRA 9514", "Salvador, por bairro; 2022", "Densidade da matriz de bairros (seção 6.4)"],
-         ["UFBA, QUALISalvador", "IQUASalvador: IISU e renda familiar per capita", "160 bairros; 2018-2020", "Matriz de bairros (seção 6.4)"],
+         ["IBGE, Censo 2022", "SIDRA 9514", "Salvador; 2022", "Público de 20 a 39 anos (seção 5.2)"],
+         ["UFBA, QUALISalvador", "Renda média familiar per capita", "160 bairros; 2018-2020", "Bairro do ponto e bairros da coleta de aluguel (seção 6.4)"],
          ["IBGE, Estimativas da população", "Estimativas de 2026", "Salvador; 2026", "Penetração da demanda"],
          ["IBGE, PNAD Contínua", "SIDRA 5436 e 7395", "Capitais; 2º trimestre de 2026", "Renda (seção 5.2)"],
          ["IBGE, POF 2017-2018", "SIDRA 6715 e 6972; perfil das despesas", "Brasil e Bahia; 2017-2018", "Gasto com lazer e alimentação fora (seções 5.1 e 5.5)"],
@@ -297,7 +298,7 @@ def apendice_c(d):
 
 def apendice_d(d):
     q = [["Decisão", "Pergunta", "Dado usado (premissas)", "Fonte", "Nível"],
-         ["Bairro", "Onde instalar o ponto?", "IISU, renda per capita e densidade por bairro, com pesos do autor; estação de metrô a até 1.000 m", "QUALISalvador e Censo 2022 (B4); B1", "N2 + N3 + N6"],
+         ["Bairro", "Onde instalar o ponto?", "Maior renda familiar per capita entre os 160 bairros; estação de metrô a até 1.000 m", "QUALISalvador (B4); B1", "N2 + N3"],
          ["Modelo de cobrança", "Como o mercado cobra a entrada?", "Taxa por dia e turno nos concorrentes; NFC-e da São Jogue", "B1; B3", "N3 + N5"],
          ["Taxa de entrada", "Quanto cobrar por pessoa?", "Média da taxa das 31 casas que cobram, fora a São Jogue (R07)", "B1", "N3"],
          ["Consumo", "Quanto cada pessoa gasta?", "Gasto por pessoa declarado no Google Maps em 18 casas (804 declarações) e cesta de consumo de 14 casas (R06)", "B1; B2", "N3"],

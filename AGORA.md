@@ -9,8 +9,9 @@ Atualizado em 13/11/2026. **TMin v35** em `textos/TCC_luderia_v35.docx` e `.pdf`
 
 ## Próximos 3 passos
 
-1. Responder o "Lote de decisões" ([pendências](_docs/pendencias.md)): L1, L20 a L24, L27, L29, L30 e L32 (exigência de metrô no ponto: com a recoleta do entorno de 13/11, a vantagem do metrô caiu para 771 × 572 avaliações, perto da do shopping, 751 × 601; o 5.4.2 e o 6.4 já têm os números novos, a v35 ainda os antigos).
-2. Regras da UFBA ainda abertas ([parecer](_docs/pareceres/regras-UFBA-nao-seguidas.md)): citações em versal capitular, números de um a dez por extenso, referência antes do resumo e titulação do orientador.
+1. **Coleta de aluguel (13 e 14/11):** dez bairros de maior renda, 100 a 200 m², OLX, ZAP Imóveis e NetImóveis (o webscript não lê o NetImóveis); depois, rodar o build, responder a L33 e levar C04 e C05 ao cap. 9.
+2. Responder o "Lote de decisões" ([pendências](_docs/pendencias.md)): L1, L20 a L24, L27, L29, L30, L32 e L33 (exigência de metrô no ponto: com a recoleta do entorno de 13/11, a vantagem do metrô caiu para 771 × 572 avaliações, perto da do shopping, 751 × 601; o 5.4.2 e o 6.4 já têm os números novos, a v35 ainda os antigos).
+3. Regras da UFBA ainda abertas ([parecer](_docs/pareceres/regras-UFBA-nao-seguidas.md)): citações em versal capitular, números de um a dez por extenso, referência antes do resumo e titulação do orientador.
 
 ## Bloqueado ou aguardando
 
