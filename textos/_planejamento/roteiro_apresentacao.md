@@ -1,6 +1,6 @@
 # Roteiro da gravação – apresentação do TCC
 
-Base: TMin v33 (13/11/2026). Tempo-alvo de 18 minutos, com 2 de folga sobre o teto de 20. A fala soma cerca de 1.840 palavras: 14 minutos a 130 palavras por minuto, 17 a 110; a diferença até o tempo de cada slide fica para pausas e transições. Os resultados (slides 13 a 20) ocupam 7 minutos, cerca de 40% do vídeo.
+Base: TMin v33 (13/11/2026). Slides (com a fala nas notas do apresentador): https://claude.ai/artifact/S65Paw6jYZkMkS53zyF8fK, exportáveis em PDF ou PPTX pelo menu Share › Export. Tempo-alvo de 18 minutos, com 2 de folga sobre o teto de 20. A fala soma cerca de 1.840 palavras: 14 minutos a 130 palavras por minuto, 17 a 110; a diferença até o tempo de cada slide fica para pausas e transições. Os resultados (slides 13 a 20) ocupam 7 minutos, cerca de 40% do vídeo.
 
 Regra para os slides: no máximo um número grande ou um gráfico por slide, título como afirmação (o achado, e não o tema), fonte mínima de 24 pt, rodapé com a fonte do dado. A fala não lê o slide: o slide mostra o número, a fala explica o que ele decide.
 
