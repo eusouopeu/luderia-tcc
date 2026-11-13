@@ -86,7 +86,7 @@ O ponto do cabeçalho segue a mesma escala: cinza parado, roxo pulsando em curso
 - **Armazenamento:** `GM_getValue`/`GM_setValue` (comum a todos os sites do script), com `localStorage` como reserva; chaves com prefixo do script e versão (`tcc_precos_v1`).
 - **CSV:** separador `;`, BOM UTF-8 e aspas só onde precisa (abre no Excel pt-BR; no pandas, `sep=";"`); cabeçalho fixo, conferido no teste, igual ao que o build lê.
 - **Nome:** `AAAA-MM-DD_HHmm_<objeto>.csv` (a hora evita o "(1)" do navegador na segunda exportação do dia), salvo convenção própria da coleta (`_src/dicionario.md`).
-- **Destino:** a pasta `_dados-brutos/` da coleta, dita no comentário de abertura e na dica do botão de download.
+- **Destino:** a pasta `_dados-brutos/` da coleta, dita no comentário de abertura e na dica do botão de download. Com `@grant GM_download`, o arquivo vai sem pergunta para `Downloads/TCC Luderia/<coleta>/_dados-brutos/…` (`kit.baixarArquivo` com `pastaDownload`); se o Tampermonkey recusar (modo de download nativo, extensão fora da lista), sai pelo download comum. Vários arquivos seguidos saem um de cada vez, esperando cada download antes de navegar.
 - **Download automático** ao fim da coleta, com botão para desligar; aviso em âmbar quando há 25 ou mais registros guardados fora de CSV.
 - **Backup antes de apagar:** "Limpar" baixa antes um JSON com tudo o que está guardado; o painel importa CSVs exportados para refazer o armazenamento, com as guardadas valendo sobre o arquivo.
 - **Privacidade:** dado de pessoa física (ex.: listas "seguindo") vai para pasta fora do git; o script não envia nada para fora do navegador.

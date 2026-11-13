@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-1
+// @version      2026.11.13-2
 // @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas e uma fila de buscas entre portais e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
@@ -13,6 +13,7 @@
 // @grant        GM_setValue
 // @grant        GM_deleteValue
 // @grant        unsafeWindow
+// @grant        GM_download
 // ==/UserScript==
 
 /*
@@ -289,9 +290,20 @@
       cidade,
       endereco: /não informado/i.test(c.rua || '') ? '' : limpar(c.rua),
       anunciante: limpar(c.anunciante),
-      publicado: '',
+      publicado: NAO_INFORMADO,
     };
   }
+
+  // Campo que o portal não mostra na listagem: "não informado", não vazio (vazio parece falha de leitura).
+  const NAO_INFORMADO = 'não informado';
+  const TIPO_TITULO = [
+    [/\b(galpao|galpoes|deposito|armazem)\b/, 'Galpão (pelo título)'],
+    [/\b(predio comercial|predio inteiro)\b/, 'Prédio (pelo título)'],
+    [/\b(sala comercial|salas comerciais|conjunto comercial|escritorio|consultorio)\b/, 'Sala comercial (pelo título)'],
+    [/\b(loja|lojas|ponto comercial|pontos comerciais|salao comercial|box comercial)\b/, 'Loja/ponto (pelo título)'],
+    [/\b(casa|sobrado)\b/, 'Casa (pelo título)'],
+  ];
+  const tipoPeloTitulo = (titulo) => (TIPO_TITULO.find(([re]) => re.test(semAcento(titulo))) || [null, NAO_INFORMADO])[1];
 
   // OLX: campos = { titulo, href, preco, extras, detalhes: [aria-labels], local, data, caminho }
   function normalizarOlx(c) {
@@ -307,10 +319,12 @@
     const areaM2 = area(achar(/metros quadrados|m2|m²/));
     return {
       portal: 'olx',
+      // O card da OLX não traz o tipo (até 2026.11.13-1 saía vazio nos 323 anúncios de 13/11):
+      // vem do título, marcado como tal, ou "não informado".
+      tipo: tipoPeloTitulo(titulo),
       id: (String(c.href || '').match(/-(\d{6,})(?:[/?#]|$)/) || [])[1] || '',
       url: String(c.href || '').split('?')[0],
       titulo,
-      tipo: '',
       operacao: /\/aluguel(\/|$)/.test(caminho) ? 'aluguel' : /\/venda(\/|$)/.test(caminho) ? 'venda' : operacaoDe(titulo, preco, areaM2),
       aluguel: preco,
       condominio,
@@ -324,7 +338,7 @@
       cidade,
       endereco: '',
       anunciante: '',
-      publicado: limpar(c.data),
+      publicado: limpar(c.data) || NAO_INFORMADO,
     };
   }
 
@@ -354,7 +368,7 @@
       cidade,
       endereco,
       anunciante: '',
-      publicado: '',
+      publicado: NAO_INFORMADO,
     };
   }
 
@@ -447,7 +461,7 @@
 
   const COLS = ['portal', 'id', 'url', 'titulo', 'tipo', 'operacao', 'aluguel', 'condominio', 'iptu', 'condominio_iptu',
     'area_m2', 'quartos', 'banheiros', 'vagas', 'bairro', 'cidade', 'endereco', 'anunciante', 'publicado',
-    'busca_url', 'pagina', 'total_busca', 'data_coleta'];
+    'busca_url', 'pagina', 'total_busca', 'data_coleta', 'rodada'];
 
   function celula(v) {
     const s = typeof v === 'number' ? String(v).replace('.', ',') : String(v ?? '');
@@ -456,7 +470,9 @@
 
   const csv = (ls) => '﻿' + [COLS.join(';'), ...ls.map((l) => COLS.map((c) => celula(l[c])).join(';'))].join('\r\n');
 
-  const COLS_FILA = ['rotulo', 'url', 'lidos', 'total', 'cobertura', 'paginas', 'motivo', 'tentativa'];
+  // lidos: anúncios vistos na busca (base da cobertura contra o total do portal); guardados: os
+  // do bairro pedido; bairro_reconhecido "não" quando o portal devolveu a cidade inteira.
+  const COLS_FILA = ['rotulo', 'url', 'lidos', 'guardados', 'fora_do_bairro', 'bairro_reconhecido', 'total', 'cobertura', 'paginas', 'motivo', 'tentativa'];
   const csvResumoFila = (rs) => '﻿' + [COLS_FILA.join(';'), ...(rs || []).map((r) => COLS_FILA.map((c) => celula(c === 'cobertura' && r[c] != null ? Math.round(r[c] * 1000) / 1000 : r[c])).join(';'))].join('\r\n');
 
   const dataLocal = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -559,10 +575,20 @@
   }
 
   // Resultado de uma busca da fila: lidos (distintos na rodada), total do portal e cobertura.
-  function resultadoBusca(url, lidos, total, paginas, motivo) {
+  function resultadoBusca(url, lidos, total, paginas, motivo, extra = {}) {
     const t = total > 0 ? total : null;
-    return { url, rotulo: rotuloBusca(url), lidos, total: t, cobertura: t ? Math.min(1, lidos / t) : null, paginas, motivo };
+    return {
+      url, rotulo: rotuloBusca(url), lidos, guardados: extra.guardados ?? lidos, fora_do_bairro: extra.fora ?? 0,
+      bairro_reconhecido: extra.cidadeInteira ? 'não' : 'sim', total: t, cobertura: t ? Math.min(1, lidos / t) : null, paginas, motivo,
+    };
   }
+  const extraDe = (auto) => ({ guardados: auto.guardadosBusca, fora: auto.foraBusca, cidadeInteira: auto.cidadeInteira });
+
+  // Busca por bairro que o portal não reconheceu: a página traz a cidade inteira (total de
+  // Salvador) com o bairro ainda na URL. Visto na OLX em 13/11/2026: Caminho das Árvores e
+  // Chame-Chame com totais de 1.423 e 1.424 e quase todos os anúncios de outros bairros.
+  // Nesse caso a rodada pagina a cidade até o total, guardando só os do bairro.
+  const bairroNaoReconhecido = ({ lidos, fora, total }) => lidos >= 10 && fora / lidos >= 0.5 && total > 0;
 
   // Mesma busca, para a fila reconhecer a página que abriu: host e caminho, sem a barra
   // final e sem o "/grande-salvador" que o OLX tira no redirecionamento; ignora a query.
@@ -621,7 +647,9 @@
   function decidirPasso(s) {
     const faltam = s.total > 0 && s.vistos < s.total;
     if (s.lidos === 0 || s.ineditos === 0) {
-      if (s.lidos === 0 && s.semResultado) return { acao: 'concluir', motivo: 'sem resultado no portal' };
+      // "Sem resultado no portal" só quando a busca inteira não trouxe nada (até 2026.11.13-1 a
+      // página depois da última, com o aviso de sem resultado, encerrava assim buscas com 75 de 76).
+      if (s.lidos === 0 && s.semResultado && !s.vistos) return { acao: 'concluir', motivo: 'sem resultado no portal' };
       if (faltam && (s.recargas || 0) < MAX_RECARGAS) return { acao: 'recarregar' };
       const base = s.lidos === 0 ? 'página vazia' : 'página sem anúncio inédito';
       return { acao: 'concluir', motivo: faltam ? `${base} antes do total (${s.vistos} de ${s.total})` : base, falha: faltam };
@@ -951,7 +979,7 @@
   // No QuintoAndar a "página" é o número de cliques em "Ver mais" mais um (a URL não muda).
   // Com `alvo` (a busca pedida), confere antes e depois da leitura se o portal não desviou a página
   // (bairro sumiu da URL): desviada, nada é guardado. Anúncios de outro bairro não são guardados.
-  async function coletarPagina(pagina = paginaAtual(portal, location.href), alvo = '') {
+  async function coletarPagina(pagina = paginaAtual(portal, location.href), alvo = '', rodada = '') {
     if (alvo && redirecionada(alvo, location.href)) return { desviada: true, anuncios: [], lidos: 0, novos: 0, gravou: true, total: null, fora: 0 };
     await esperarCards(portal);
     await rolarAteOFim();
@@ -961,7 +989,7 @@
     guardados = carregar();
     const total = totalResultados();
     const doBairro = alvo ? anuncios.filter((a) => !foraDoBairro(a, alvo)) : anuncios;
-    const novos = guardar(guardados, doBairro, { busca_url: location.href, pagina, total_busca: total, data_coleta: dataLocal(), alterado_em: Date.now() });
+    const novos = guardar(guardados, doBairro, { busca_url: location.href, pagina, total_busca: total, data_coleta: dataLocal(), rodada, alterado_em: Date.now() });
     const gravou = salvar(guardados);
     const semResultado = !anuncios.length && semResultadoDeTexto(document.body?.innerText);
     return { anuncios, doBairro, lidos: anuncios.length, novos, gravou, total, fora: anuncios.length - doBairro.length, semResultado };
@@ -999,24 +1027,43 @@
 
   // Resumo da fila, ao lado do CSV dos anúncios: por que cada busca parou e com que cobertura.
   // Sem ele, uma busca que parou cedo (página vazia, bloqueio) não deixa rastro no CSV.
-  function baixarResumoFila(rs) {
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([csvResumoFila(rs)], { type: 'text/csv;charset=utf-8' }));
-    a.download = `${dataLocal()}_${horaLocal()}_fila_resumo_aluguel.csv`;
-    (document.body || document.documentElement).appendChild(a);
-    a.click();
-    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+  // Download: com GM_download, em Downloads/TCC Luderia/B5_aluguel/_dados-brutos/ sem perguntar;
+  // recusado (modo nativo do Tampermonkey, extensão fora da lista), o download comum.
+  const PASTA_DOWNLOAD = 'B5_aluguel/_dados-brutos';
+  function baixarTexto(nome, texto) {
+    const url = URL.createObjectURL(new Blob([texto], { type: 'text/csv;charset=utf-8' }));
+    const comum = () => {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = nome;
+      (document.body || document.documentElement).appendChild(a);
+      a.click();
+      a.remove();
+    };
+    setTimeout(() => URL.revokeObjectURL(url), 15000);
+    if (typeof GM_download !== 'function') return comum();
+    try { GM_download({ url, name: `TCC Luderia/${PASTA_DOWNLOAD}/${nome}`, saveAs: false, onerror: comum }); } catch (e) { comum(); }
   }
+
+  // Resumo da fila, ao lado do CSV dos anúncios: por que cada busca parou e com que cobertura.
+  // Sem ele, uma busca que parou cedo (página vazia, bloqueio) não deixa rastro no CSV.
+  function baixarResumoFila(rs) {
+    baixarTexto(`${dataLocal()}_${horaLocal()}_fila_resumo_aluguel.csv`, csvResumoFila(rs));
+  }
+
+  // Rodada: data e hora de início da fila (ou da busca avulsa), gravada em cada anúncio.
+  function rodadaDe(ms) {
+    const d = new Date(ms || Date.now());
+    const z = (n) => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())} ${z(d.getHours())}:${z(d.getMinutes())}`;
+  }
+  // Só os anúncios da rodada (o CSV de 13/11 levou 296 linhas de 03/11, de outra busca).
+  const daRodada = (dados, rodada) => Object.fromEntries(Object.entries(dados).filter(([, a]) => a.rodada === rodada));
 
   // parcial: CSV de uma busca, que não conta como exportação de tudo (aviso de pendentes).
   function baixarCsv(dados = carregar(), parcial = false) {
     const linhas = Object.values(dados).sort((a, b) => (a.pagina - b.pagina) || String(a.id).localeCompare(String(b.id)));
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([csv(linhas)], { type: 'text/csv;charset=utf-8' }));
-    a.download = nomeArquivo(portalDoArquivo(linhas, portal), dataLocal(), horaLocal());
-    (document.body || document.documentElement).appendChild(a);
-    a.click();
-    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+    baixarTexto(nomeArquivo(portalDoArquivo(linhas, portal), dataLocal(), horaLocal()), csv(linhas));
     if (!parcial) gmGravar(CHAVE_EXPORTACAO, Date.now());
   }
 
@@ -1042,7 +1089,7 @@
   // Rodada concluída: fica registrada para o menu (✓ ou ◐ pela cobertura).
   function registrarBusca(url, auto, motivo) {
     if (!url) return;
-    const r = resultadoBusca(url, (auto.vistos || []).length, auto.totalBusca, auto.paginas, motivo);
+    const r = resultadoBusca(url, (auto.vistos || []).length, auto.totalBusca, auto.paginas, motivo, extraDe(auto));
     gmGravar(CHAVE_FEITAS, { ...(gmLer(CHAVE_FEITAS, {}) || {}), [chaveAlvo(url)]: { ...r, chave_busca: chaveBusca(url), em: Date.now() } });
   }
 
@@ -1077,7 +1124,7 @@
     const inicio = Date.now();
     atualizarBotoes();
     status(`Página ${pagina}: lendo…`);
-    const { doBairro, lidos, novos, gravou, total, desviada, fora, semResultado } = await coletarPagina(pagina, alvo);
+    const { anuncios = [], doBairro, lidos, novos, gravou, total, desviada, fora, semResultado } = await coletarPagina(pagina, alvo, auto.rodada || '');
     if (desviada) {
       // O portal levou a rodada para fora do bairro: para aqui, sem guardar a página.
       if (fila?.ativa) { gravarAuto(null); buscaDesviada(auto); return; }
@@ -1095,9 +1142,18 @@
       status('Bloqueio do Cloudflare: resolva o desafio na página; a coleta retoma desta página.');
       return;
     }
-    // Só os anúncios do bairro contam para o total: o total do portal é o do bairro.
-    const inedit = ineditas(doBairro, auto.vistos);
+    if (alvo && !auto.cidadeInteira && bairroNaoReconhecido({ lidos, fora, total })) {
+      auto.cidadeInteira = true;
+      status(`${rotuloBusca(alvo)}: o portal não reconheceu o bairro e devolveu a cidade (${total} anúncios); a rodada lê a cidade até o total e guarda só os do bairro.`);
+    }
+    // Só os anúncios do bairro contam para o total: o total do portal é o do bairro. Com o
+    // bairro não reconhecido, o total é o da cidade, e contam todos os anúncios vistos.
+    const doBairroIneditos = ineditas(doBairro, auto.vistosBairro || auto.vistos);
+    const inedit = auto.cidadeInteira ? ineditas(anuncios, auto.vistos) : doBairroIneditos;
+    if (auto.cidadeInteira) auto.vistosBairro = [...(auto.vistosBairro || []), ...doBairroIneditos];
     auto.vistos.push(...inedit);
+    auto.guardadosBusca = (auto.guardadosBusca || 0) + doBairroIneditos.length;
+    auto.foraBusca = (auto.foraBusca || 0) + (fora || 0);
     auto.total += novos;
     gravarHist([...lerHist(), { pagina, lidos, ineditos: inedit.length, novos, seg: Math.round((Date.now() - inicio) / 1000) }]);
     mostrar(`Página ${pagina}: ${lidos} lidos, ${inedit.length} inéditos na rodada, ${novos} novos no navegador${fora ? `, ${fora} de outro bairro descartados` : ''}.`);
@@ -1203,7 +1259,7 @@
     const fila = lerFila();
     iniciouAuto = true;
     const ret = fila.retomada;
-    gravarAuto({ limite: LIMITE_FILA, paginas: ret?.paginas || 0, total: 0, fila: true, vistos: ret?.vistos || [], totalBusca: ret?.totalBusca || undefined });
+    gravarAuto({ limite: LIMITE_FILA, paginas: ret?.paginas || 0, total: 0, fila: true, vistos: ret?.vistos || [], totalBusca: ret?.totalBusca || undefined, rodada: rodadaDe(fila.inicio) });
     if (ret) gravarFila({ ...fila, retomada: null });
     gravarHist([]);
     progressoFila(fila);
@@ -1214,7 +1270,7 @@
   async function fimDaBuscaNaFila(auto, motivo) {
     const fila = lerFila();
     const url = fila.itens[fila.i];
-    const r = { ...resultadoBusca(url, (auto.vistos || []).length, auto.totalBusca, auto.paginas, motivo), tentativa: fila.tentativa || 0 };
+    const r = { ...resultadoBusca(url, (auto.vistos || []).length, auto.totalBusca, auto.paginas, motivo, extraDe(auto)), tentativa: fila.tentativa || 0 };
     fila.resultados = [...(fila.resultados || []).filter((x) => x.url !== url), r];
     const cob = r.cobertura == null ? 'sem total' : pctTxt(r.cobertura);
     if (repetirBusca(r, fila.tentativa)) {
@@ -1263,9 +1319,13 @@
     const baixas = rs.filter((r) => r.cobertura != null && r.cobertura < COBERTURA_MIN);
     const desviadas = rs.filter((r) => /^desviada/.test(r.motivo || ''));
     som(!baixas.length && !desviadas.length);
-    baixarCsv();
+    // CSV só da rodada; o de tudo continua no botão "CSV".
+    const rodada = daRodada(carregar(), rodadaDe(fila.inicio));
+    baixarCsv(Object.keys(rodada).length ? rodada : carregar(), true);
     setTimeout(() => baixarResumoFila(rs), 1500);
-    mostrar(`Fila concluída: ${rs.length} buscas, ${rs.reduce((n, r) => n + r.lidos, 0)} anúncios lidos; CSV de tudo baixado.`
+    const cidade = rs.filter((r) => r.bairro_reconhecido === 'não');
+    mostrar(`Fila concluída: ${rs.length} buscas, ${rs.reduce((n, r) => n + (r.guardados ?? r.lidos), 0)} anúncios guardados; CSV da rodada baixado em ${PASTA_DOWNLOAD}/.`
+      + (cidade.length ? ` Bairro não reconhecido pelo portal (lida a cidade, guardados só os do bairro): ${cidade.map((r) => r.rotulo).join(', ')}.` : '')
       + (baixas.length ? ` Abaixo de ${pctTxt(COBERTURA_MIN)}: ${baixas.map((r) => r.rotulo).join(', ')}.` : '')
       + (desviadas.length ? ` Desviadas pelo portal (sem resultado no bairro, nada lido): ${desviadas.map((r) => r.rotulo).join(', ')}.` : ''));
   }
@@ -1781,7 +1841,7 @@
     });
     el.bAuto = botao('forward', 'Todas', '', () => {
       if (lerAuto()) { gravarAuto(null); atualizarBotoes(); status('Parado.'); return; }
-      gravarAuto({ limite: Math.max(1, parseInt(el.limite.value, 10) || 50), paginas: 0, total: 0, alvo: alvoAtual() && chaveBusca(alvoAtual()) === chaveBusca(location.href) ? alvoAtual() : buscaBase(portal, location.href) });
+      gravarAuto({ rodada: rodadaDe(Date.now()), limite: Math.max(1, parseInt(el.limite.value, 10) || 50), paginas: 0, total: 0, alvo: alvoAtual() && chaveBusca(alvoAtual()) === chaveBusca(location.href) ? alvoAtual() : buscaBase(portal, location.href) });
       gravarHist([]);
       passoAutomatico();
     });
@@ -2002,7 +2062,7 @@
     if (pedidoAqui && !fila?.ativa && !iniciouAuto && !lerAuto()) {
       gmGravar(CHAVE_ABRIR, null);
       iniciouAuto = true;
-      gravarAuto({ limite: Math.max(1, parseInt(el.limite.value, 10) || 50), paginas: 0, total: 0, alvo: pedido.url });
+      gravarAuto({ limite: Math.max(1, parseInt(el.limite.value, 10) || 50), paginas: 0, total: 0, alvo: pedido.url, rodada: rodadaDe(Date.now()) });
       gravarHist([]);
       status(`${rotuloBusca(pedido.url)}: coletando todas as páginas…`);
       passoAutomatico();

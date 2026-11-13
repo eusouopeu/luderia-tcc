@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Horários de pico do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-1
+// @version      2026.11.13-2
 // @description  Lê o gráfico "Horários de pico" (ocupação relativa por dia e hora), o "ao vivo" e o tempo de permanência dos lugares do Google Maps; seletor com as 63 casas do B1, botão "Próximo" e exportação em CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -11,6 +11,7 @@
 // @grant        GM_setValue
 // @grant        GM_deleteValue
 // @grant        unsafeWindow
+// @grant        GM_download
 // ==/UserScript==
 
 /*
@@ -248,14 +249,17 @@
   }
 
   // O gráfico pode só ser montado quando aparece na tela: rola o painel até o fim.
-  async function percorrerPainel() {
+  // Devolve true se chegou ao fim do painel.
+  async function percorrerPainel(passos = 15, pausa = 350) {
     const c = rolavel(document.querySelector('div[role="main"] h1') || painelPrincipal());
-    if (!c) return;
-    for (let i = 0; i < 15 && c.scrollTop + c.clientHeight < c.scrollHeight - 5; i++) {
+    if (!c) return false;
+    for (let i = 0; i < passos && c.scrollTop + c.clientHeight < c.scrollHeight - 5; i++) {
       c.scrollBy(0, 700);
-      await esperar(350);
+      await esperar(pausa);
     }
+    const noFim = c.scrollTop + c.clientHeight >= c.scrollHeight - 5;
     c.scrollTo(0, 0);
+    return noFim;
   }
 
   // Formatos do rótulo de cada barra (o Google muda sem aviso):
@@ -377,9 +381,51 @@
       else linhas.push({ dia_semana: DIAS[d.getDay()], ordem_dia: d.getDay(), hora: d.getHours(), ocupacao_relativa: '', ao_vivo: aoVivo });
     }
 
-    const texto = painelPrincipal().innerText;
-    const permanencia = (texto.match(/(As pessoas (normalmente|costumam)[^\n]*|Normalmente, as pessoas passam[^\n]*|People typically spend[^\n]*)/i) || [])[0] || '';
+    const permanencia = lerPermanencia([painelPrincipal().innerText, painelPrincipal().textContent,
+      ...[...painelPrincipal().querySelectorAll('[aria-label]')].map((e) => e.getAttribute('aria-label'))]);
+    if (!permanencia) console.info('[Horários de pico] permanência não achada; linhas com "pessoas":', painelPrincipal().innerText.split('\n').filter((l) => /pessoas|people/i.test(l)));
     return { linhas, aviso: inferido ? 'Dia da semana inferido pela ordem dos grupos (as 7 vagas de dia não foram achadas); confira um dia no gráfico.' : '', permanencia, dia_inferido: inferido ? 'sim' : '' };
+  }
+
+  // Permanência ("As pessoas costumam passar de 1 a 2,5 h aqui", "Normalmente as pessoas passam
+  // até 2 horas aqui", "People typically spend 1.5 hours here"). Até 2026.11.13-1 a expressão
+  // pedia "As pessoas normalmente|costumam" no começo da linha e saiu vazia nas 63 casas de 12/11.
+  // Procura em vários textos (innerText, textContent, rótulos), na primeira frase que case.
+  const RE_PERMANENCIA = /((?:as )?pessoas[^.\n]{0,30}(?:passam|passar|ficam|ficar|permanecem)(?:[^.\n]|\.\d){0,60}|people (?:typically|usually) spend(?:[^.\n]|\.\d){0,60})/i;
+  function lerPermanencia(textos) {
+    for (const t of textos) {
+      const m = String(t || '').match(RE_PERMANENCIA);
+      if (m && /\d|meia|uma|um /i.test(m[1])) return m[1].trim();
+    }
+    return '';
+  }
+  // Minutos da permanência: { min, max } ("de 1 a 2,5 h" → 60 e 150; "até 2 horas" → '' e 120;
+  // "45 min" → 45 e 45; "15 min a 1 h" → 15 e 60).
+  function minutosPermanencia(texto) {
+    const t = semAcento(texto).replace(/(\d),(\d)/g, '$1.$2').replace(/\bmeia hora\b/g, '30 min').replace(/\buma hora\b/g, '1 h');
+    const partes = [...t.matchAll(/(\d+(?:\.\d+)?)\s*(h|hora|horas|hr|hours?|min|minutos?|minutes?)?\b/g)]
+      .filter((m) => m[1]).map((m) => ({ n: +m[1], u: m[2] || '' }));
+    if (!partes.length) return { min: '', max: '' };
+    // Unidade que falta ("de 1 a 2,5 h") é a do número seguinte.
+    for (let i = partes.length - 2; i >= 0; i--) if (!partes[i].u) partes[i].u = partes[i + 1].u;
+    const emMin = (p) => Math.round(/^h|hora|hr|hour/.test(p.u) ? p.n * 60 : p.n);
+    const vals = partes.filter((p) => p.u).map(emMin);
+    if (!vals.length) return { min: '', max: '' };
+    if (/\bate\b|up to/.test(t) && vals.length === 1) return { min: '', max: vals[0] };
+    return { min: Math.min(...vals), max: Math.max(...vals) };
+  }
+
+  // Lugar sem barras lidas: "sem horários de pico" só com prova de que o Maps não tem a seção
+  // (painel lido até o fim, com a seção de avaliações e sem "Horários de pico"); sem a prova,
+  // é falha ("!" no seletor) e entra no "Próximo". Até 2026.11.13-1 bastava não achar barras
+  // (7 casas em 12/11: Café Geek, Coletivo Geek, Jogasampa, Asgard, Paladino, RED, Reduto).
+  function provaSemGrafico({ texto = '', limitada = false, rolouAteOFim = false }) {
+    const t = semAcento(texto);
+    if (limitada) return { sem: false, motivo: 'visualização limitada do Maps (sem login): entre na conta' };
+    if (/horarios de pico|popular times/.test(t)) return { sem: false, motivo: 'a seção de horários de pico está no painel, mas as barras não carregaram' };
+    const fim = (t.match(/resumo das avaliacoes|review summary|avaliacoes|reviews/) || [])[0];
+    if (rolouAteOFim && fim) return { sem: true, prova: `painel lido até o fim (achado "${fim}"), sem a seção de horários de pico` };
+    return { sem: false, motivo: 'o painel não carregou até a seção de avaliações; o gráfico pode não ter carregado' };
   }
 
   // ---------- armazenamento ----------
@@ -469,7 +515,8 @@
   function estadoCasa(r) {
     if (!r) return 'falta';
     if (r.linhas?.length) return 'ok';
-    if (/sem hor[aá]rios de pico/i.test(r.situacao || '')) return 'sem';
+    // "Sem" só com a prova gravada (desde 2026.11.13-2); as anteriores voltam a falhar.
+    if (/sem hor[aá]rios de pico/i.test(r.situacao || '') && r.leitura) return 'sem';
     return 'falha';
   }
 
@@ -507,14 +554,38 @@
     }
     const lugar = infoLugar();
     const casa = popDoLugar(lugar, pidEscolhido);
-    const { linhas, aviso, permanencia = '', dia_inferido = '' } = lerPicos();
+    let leitura = lerPicos();
+    let prova = '';
+    if (!leitura.linhas.length) {
+      // Sem barras: espera mais, rola devagar até o fim e decide com prova.
+      await esperar(3000);
+      const rolou = await percorrerPainel(30, 700);
+      leitura = lerPicos();
+      if (!leitura.linhas.length) {
+        const texto = painelPrincipal().innerText;
+        const p = provaSemGrafico({ texto, limitada: /visualiza[cç][aã]o limitada|limited view/i.test(texto), rolouAteOFim: rolou });
+        if (!p.sem) {
+          const r = { ok: false, msg: `Nada gravado: ${p.motivo}. Colete de novo.` };
+          if (escolhida && ['falta', 'falha'].includes(estadoCasa(registrosPorCasa(lugaresGuardados()).get(escolhida.id)))) {
+            const dados = lugaresGuardados().filter((l) => !(l.place_id === escolhida.id && !l.linhas?.length));
+            dados.push({ nome: lugar.nome, url: location.href, place_id: escolhida.id, situacao: r.msg, coletado_em: agora(), coletado_ms: Date.now(), linhas: [] });
+            gravar(CHAVE_DADOS, dados);
+          }
+          return r;
+        }
+        prova = p.prova;
+      }
+    }
+    const { linhas, aviso, permanencia = '', dia_inferido = '' } = leitura;
+    const minutos = minutosPermanencia(permanencia);
     // Substitui só a coleta anterior do MESMO lugar: pelo código tirado da URL gravada
     // (o último lugar dela) ou pela mesma casa do B1. Até a versão 2026.11.11-1 o código
     // gravado podia ser o do lugar de onde se partiu, e comparar por ele ou pelo nome
     // apagava outra casa (ex.: coletar a Magic Store apagou o Garagem do Nerd).
     const dados = lugaresGuardados().filter((l) => !((lugar.id_maps && codigoDe(l) === lugar.id_maps) || (casa && l.place_id === casa.id)));
     dados.push({
-      ...lugar, place_id: casa?.id || '', permanencia, dia_inferido,
+      ...lugar, place_id: casa?.id || '', permanencia, permanencia_min_min: minutos.min, permanencia_max_min: minutos.max, dia_inferido,
+      leitura: linhas.length ? '' : prova,
       situacao: linhas.length ? 'ok' : 'sem horários de pico', coletado_em: agora(), coletado_ms: Date.now(),
       linhas: linhas.map((l) => [l.ordem_dia, l.hora, l.ocupacao_relativa, l.ao_vivo ?? '', l.leitura ?? '']),
     });
@@ -591,7 +662,7 @@
 
   // ---------- exportação ----------
 
-  const COLS = ['nome', 'endereco', 'id_maps', 'place_id', 'lat', 'lng', 'nota_media', 'n_avaliacoes', 'dia_semana', 'ordem_dia', 'hora', 'ocupacao_relativa', 'ao_vivo', 'leitura', 'dia_inferido', 'permanencia', 'situacao', 'coletado_em', 'url'];
+  const COLS = ['nome', 'endereco', 'id_maps', 'place_id', 'lat', 'lng', 'nota_media', 'n_avaliacoes', 'dia_semana', 'ordem_dia', 'hora', 'ocupacao_relativa', 'ao_vivo', 'leitura', 'dia_inferido', 'permanencia', 'permanencia_min_min', 'permanencia_max_min', 'situacao', 'coletado_em', 'url'];
 
   // Registros por lugar → uma linha por barra (lugar sem barras: uma linha só).
   function linhasCsv(lugares) {
@@ -614,12 +685,21 @@
     const texto = '﻿' + [COLS.join(';'), ...linhas.map((l) => COLS.map((c) => celula(l[c])).join(';'))].join('\r\n');
     const d = new Date();
     const p = (n) => String(n).padStart(2, '0');
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([texto], { type: 'text/csv;charset=utf-8' }));
-    a.download = `maps_horarios_pico_${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}.csv`;
-    document.documentElement.appendChild(a);
-    a.click();
-    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+    const nome = `maps_horarios_pico_${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}.csv`;
+    const url = URL.createObjectURL(new Blob([texto], { type: 'text/csv;charset=utf-8' }));
+    const comum = () => {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = nome;
+      document.documentElement.appendChild(a);
+      a.click();
+      a.remove();
+    };
+    setTimeout(() => URL.revokeObjectURL(url), 15000);
+    // Com GM_download, em Downloads/TCC Luderia/B1_estabelecimentos/_dados-brutos/horarios_pico/ sem perguntar.
+    if (typeof GM_download === 'function') {
+      try { GM_download({ url, name: `TCC Luderia/B1_estabelecimentos/_dados-brutos/horarios_pico/${nome}`, saveAs: false, onerror: comum }); } catch (e) { comum(); }
+    } else comum();
     gravar(CHAVE_EXPORTACAO, Date.now());
     return linhas.length;
   }

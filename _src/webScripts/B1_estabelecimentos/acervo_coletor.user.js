@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de acervos de jogos (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-1
+// @version      2026.11.13-2
 // @description  Procura as 63 casas do B1 na Ludopedia, no Acervo de Jogos e na rejoy, lê cada acervo achado e exporta o TXT da Ludopedia, um CSV por acervo e o CSV da varredura, com a situação da coleta.
 // @match        https://ludopedia.com.br/*
 // @match        https://*.acervodejogos.com.br/*
@@ -12,6 +12,7 @@
 // @grant        GM_setValue
 // @grant        GM_deleteValue
 // @grant        GM_xmlhttpRequest
+// @grant        GM_download
 // @connect      acervodejogos.com.br
 // @connect      rejoy.com.br
 // @connect      ludopedia.com.br
@@ -1071,14 +1072,40 @@
     // CSV com ";" e BOM (abre direto no Excel pt-BR; no pandas, sep=";").
     const csv = (linhas, cols) => '﻿' + [cols.join(';'), ...linhas.map((l) => cols.map((c) => celula(l[c])).join(';'))].join('\r\n');
 
-    function baixarArquivo(nome, conteudo, tipo = 'text/csv;charset=utf-8') {
-      const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+    // Baixa o arquivo e devolve uma Promise que resolve quando o download foi entregue ao
+    // navegador (quem navega logo depois espera por ela; até 13/11/2026 o segundo CSV de um
+    // par se perdia na navegação). Com GM_download (script com @grant) e op.pasta (ex.:
+    // "B1_entorno/_dados-brutos"), salva sem perguntar em Downloads/TCC Luderia/<pasta>/,
+    // para o arquivo não cair na pasta de outra coleta; se o Tampermonkey recusar (modo de
+    // download nativo, extensão fora da lista), cai no download comum.
+    const pastaDoArquivo = (pasta, nome) => (pasta ? `TCC Luderia/${String(pasta).replace(/^\/+|\/+$/g, '')}/${nome}` : nome);
+    function baixarComum(nome, url) {
       const a = criar('a', { href: url, download: nome });
       (document.body || document.documentElement).appendChild(a);
       a.click();
       a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 5000);
     }
+    function baixarArquivo(nome, conteudo, tipo = 'text/csv;charset=utf-8', opcoes = {}) {
+      const pasta = opcoes.pasta ?? op.pastaDownload ?? '';
+      const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+      const soltar = () => setTimeout(() => URL.revokeObjectURL(url), 10000);
+      if (typeof GM_download !== 'function' || !pasta) {
+        baixarComum(nome, url);
+        soltar();
+        return esperarMs(600).then(() => ({ nome, via: 'navegador' }));
+      }
+      return new Promise((resolve) => {
+        let feito = false;
+        const fim = (via) => { if (feito) return; feito = true; soltar(); resolve({ nome: via === 'pasta' ? pastaDoArquivo(pasta, nome) : nome, via }); };
+        const comum = () => { baixarComum(nome, url); setTimeout(() => fim('navegador'), 600); };
+        try {
+          GM_download({ url, name: pastaDoArquivo(pasta, nome), saveAs: false, onload: () => fim('pasta'), onerror: () => { if (!feito) comum(); }, ontimeout: () => { if (!feito) comum(); } });
+          // Sem resposta do Tampermonkey em 15 s: segue (o download pode ainda sair).
+          setTimeout(() => fim('pasta'), 15000);
+        } catch (_) { comum(); }
+      });
+    }
+    const esperarMs = (ms) => new Promise((r) => setTimeout(r, ms));
 
     // ---------- menu de alvos (casas, perfis, cardápios, acervos) ----------
     // Seletor por grupo com ✓ ok, ◐ parcial, ! refazer, ○ falta; contador com barra fina;
@@ -1433,7 +1460,7 @@
     Object.assign(k, {
       criar, icone, dica, ajuda, botao, botaoPerigo, botaoParar, etiqueta, alternaIcone, pills, secao, naoAlterna,
       linha, esp, rotulo, selo, status, resumo, barra, progresso, estado, atualizarAcoes, executar, tocar, piscar,
-      confirmarBotao, copiar, celula, csv, baixarArquivo, menuAlvos, montar, garantir, minimizar,
+      confirmarBotao, copiar, celula, csv, baixarArquivo, pastaDoArquivo, menuAlvos, montar, garantir, minimizar,
       nome: (t) => { if (k.el.nome && k.el.nome.textContent !== t) k.el.nome.textContent = t; },
       hospedeiro: () => hospedeiro,
     });
@@ -1442,7 +1469,9 @@
   // <<< kit_painel
 
   // ---------- painel ----------
-  const kit = kitPainel({ id: 'acv', abertos: ['titulos'] });
+  // Downloads vão para Downloads/TCC Luderia/B1_acervo_jogos/_dados-brutos/acervos_luderias/ quando o
+  // Tampermonkey permite (o acervo da Arena BG de 12/11 caiu na pasta do entorno).
+  const kit = kitPainel({ id: 'acv', abertos: ['titulos'], pastaDownload: 'B1_acervo_jogos/_dados-brutos/acervos_luderias' });
   const el = {};
   const status = (t, tipo = '') => kit.status(t, tipo);
   let menu = null;

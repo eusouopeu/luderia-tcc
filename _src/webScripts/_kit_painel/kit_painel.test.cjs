@@ -40,3 +40,33 @@ test('usa o armazenamento do Tampermonkey quando há GM_*', () => {
   assert.deepEqual(v.get('a'), { b: 1 });
   assert.deepEqual(k.ler('a', null), { b: 1 });
 });
+
+test('baixa na pasta da coleta pelo GM_download e espera o download antes de seguir', async () => {
+  const pedidos = [];
+  const amb = {
+    URL: { createObjectURL: () => 'blob:x', revokeObjectURL() {} }, Blob: class { constructor(p) { this.p = p; } },
+    GM_download: (o) => { pedidos.push(o); setTimeout(o.onload, 5); },
+    setTimeout, document: { createElement: () => ({ click() {}, remove() {} }), documentElement: { appendChild() {} } },
+  };
+  const ctx = { localStorage: { getItem: () => null, setItem() {}, removeItem() {} }, ...amb };
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, 'kit_painel.js'), 'utf8') + '\nglobalThis.k = kitPainel({ id: "t", pastaDownload: "B1_entorno/_dados-brutos" });', ctx);
+  const r = await ctx.k.baixarArquivo('a.csv', 'x');
+  assert.equal(pedidos[0].name, 'TCC Luderia/B1_entorno/_dados-brutos/a.csv');
+  assert.equal(pedidos[0].saveAs, false);
+  assert.equal(r.via, 'pasta');
+  assert.equal(ctx.k.pastaDoArquivo('', 'b.csv'), 'b.csv');
+});
+
+test('cai no download comum quando o Tampermonkey recusa', async () => {
+  let cliques = 0;
+  const ctx = {
+    localStorage: { getItem: () => null, setItem() {}, removeItem() {} }, setTimeout,
+    URL: { createObjectURL: () => 'blob:x', revokeObjectURL() {} }, Blob: class {},
+    GM_download: (o) => setTimeout(() => o.onerror({ error: 'not_whitelisted' }), 5),
+    document: { createElement: () => ({ click() { cliques++; }, remove() {} }), documentElement: { appendChild() {} } },
+  };
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, 'kit_painel.js'), 'utf8') + '\nglobalThis.k = kitPainel({ id: "t", pastaDownload: "x" });', ctx);
+  const r = await ctx.k.baixarArquivo('a.csv', 'x');
+  assert.equal(r.via, 'navegador');
+  assert.equal(cliques, 1);
+});

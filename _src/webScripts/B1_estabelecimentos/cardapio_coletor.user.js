@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de cardápios virtuais (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-1
+// @version      2026.11.13-2
 // @description  Extrai itens (seção, nome, descrição, variação, preço) de cardápios on-line, conta itens por categoria e exporta CSV completo e CSV dos 2 itens mais baratos por categoria.
 // @match        *://*/*
 // @exclude      *://*.google.*/*
@@ -341,10 +341,16 @@
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
   }
 
+  // Data local (toISOString dá o dia seguinte depois das 21h em Brasília).
+  function dataLocalHoje(d = new Date()) {
+    const z = (n) => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())}`;
+  }
+
   function nomeArquivo(sufixo) {
     const site = location.hostname.replace(/^www\./, '').replace(/[^\w.-]/g, '_');
     const caminho = location.pathname.split('/').filter(Boolean).pop() || '';
-    return `cardapio_${site}${caminho ? '_' + caminho.replace(/[^\w-]/g, '_').slice(0, 40) : ''}_${sufixo}_${new Date().toISOString().slice(0, 10)}.csv`;
+    return `cardapio_${site}${caminho ? '_' + caminho.replace(/[^\w-]/g, '_').slice(0, 40) : ''}_${sufixo}_${dataLocalHoje()}.csv`;
   }
 
   function planoB() {
@@ -878,14 +884,40 @@
     // CSV com ";" e BOM (abre direto no Excel pt-BR; no pandas, sep=";").
     const csv = (linhas, cols) => '﻿' + [cols.join(';'), ...linhas.map((l) => cols.map((c) => celula(l[c])).join(';'))].join('\r\n');
 
-    function baixarArquivo(nome, conteudo, tipo = 'text/csv;charset=utf-8') {
-      const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+    // Baixa o arquivo e devolve uma Promise que resolve quando o download foi entregue ao
+    // navegador (quem navega logo depois espera por ela; até 13/11/2026 o segundo CSV de um
+    // par se perdia na navegação). Com GM_download (script com @grant) e op.pasta (ex.:
+    // "B1_entorno/_dados-brutos"), salva sem perguntar em Downloads/TCC Luderia/<pasta>/,
+    // para o arquivo não cair na pasta de outra coleta; se o Tampermonkey recusar (modo de
+    // download nativo, extensão fora da lista), cai no download comum.
+    const pastaDoArquivo = (pasta, nome) => (pasta ? `TCC Luderia/${String(pasta).replace(/^\/+|\/+$/g, '')}/${nome}` : nome);
+    function baixarComum(nome, url) {
       const a = criar('a', { href: url, download: nome });
       (document.body || document.documentElement).appendChild(a);
       a.click();
       a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 5000);
     }
+    function baixarArquivo(nome, conteudo, tipo = 'text/csv;charset=utf-8', opcoes = {}) {
+      const pasta = opcoes.pasta ?? op.pastaDownload ?? '';
+      const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+      const soltar = () => setTimeout(() => URL.revokeObjectURL(url), 10000);
+      if (typeof GM_download !== 'function' || !pasta) {
+        baixarComum(nome, url);
+        soltar();
+        return esperarMs(600).then(() => ({ nome, via: 'navegador' }));
+      }
+      return new Promise((resolve) => {
+        let feito = false;
+        const fim = (via) => { if (feito) return; feito = true; soltar(); resolve({ nome: via === 'pasta' ? pastaDoArquivo(pasta, nome) : nome, via }); };
+        const comum = () => { baixarComum(nome, url); setTimeout(() => fim('navegador'), 600); };
+        try {
+          GM_download({ url, name: pastaDoArquivo(pasta, nome), saveAs: false, onload: () => fim('pasta'), onerror: () => { if (!feito) comum(); }, ontimeout: () => { if (!feito) comum(); } });
+          // Sem resposta do Tampermonkey em 15 s: segue (o download pode ainda sair).
+          setTimeout(() => fim('pasta'), 15000);
+        } catch (_) { comum(); }
+      });
+    }
+    const esperarMs = (ms) => new Promise((r) => setTimeout(r, ms));
 
     // ---------- menu de alvos (casas, perfis, cardápios, acervos) ----------
     // Seletor por grupo com ✓ ok, ◐ parcial, ! refazer, ○ falta; contador com barra fina;
@@ -1240,7 +1272,7 @@
     Object.assign(k, {
       criar, icone, dica, ajuda, botao, botaoPerigo, botaoParar, etiqueta, alternaIcone, pills, secao, naoAlterna,
       linha, esp, rotulo, selo, status, resumo, barra, progresso, estado, atualizarAcoes, executar, tocar, piscar,
-      confirmarBotao, copiar, celula, csv, baixarArquivo, menuAlvos, montar, garantir, minimizar,
+      confirmarBotao, copiar, celula, csv, baixarArquivo, pastaDoArquivo, menuAlvos, montar, garantir, minimizar,
       nome: (t) => { if (k.el.nome && k.el.nome.textContent !== t) k.el.nome.textContent = t; },
       hospedeiro: () => hospedeiro,
     });

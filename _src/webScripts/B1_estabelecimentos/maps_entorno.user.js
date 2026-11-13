@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Entorno no Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-3
+// @version      2026.11.13-4
 // @description  Conta estações de metrô, de trem, de VLT e shoppings a 500 m e 1000 m de cada estabelecimento no Google Maps (shopping de porte pelo número de avaliações); coleta a lista de estabelecimentos e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -9,7 +9,10 @@
 // @match        https://www.google.com.br/sorry/*
 // @run-at       document-idle
 // @noframes
-// @grant        none
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_deleteValue
+// @grant        GM_download
 // ==/UserScript==
 
 /*
@@ -132,7 +135,15 @@
  *    metro + trem + vlt + shoppings + outros = resultados_ate_1000m;
  *  - …_entorno_resultados.csv: um resultado por linha;
  *  - …_entorno_shoppings.csv: um shopping por linha (sem duplicatas), com
- *    avaliações e porte.
+ *    avaliações e porte;
+ *  - …_entorno_buscas.csv (desde 2026.11.13-4): uma busca feita por linha, com
+ *    quadrante, zoom, cobertura, n lidos, marca de fim e decisão.
+ * Desde 2026.11.13-4: os quatro saem um de cada vez, esperando cada download
+ * (os parciais de 15/10 e 13/11 perderam os resultados na navegação), e vão para
+ * Downloads/TCC Luderia/B1_entorno/_dados-brutos/ quando o Tampermonkey permite;
+ * a coleta fica no armazenamento do Tampermonkey (o localStorage do Maps encheu
+ * em 13/11); o parcial traz a lista inteira; a busca de shopping sempre se divide
+ * em 4 quadrantes; cada parada da fila fica registrada e aparece ao reabrir.
  * O resumo traz versao_script, a versão que fez a coleta (em branco nas
  * coletas anteriores a 2026.10.15-4). O fim da fila baixa os três; a cada 10
  * estabelecimentos, resumo e resultados parciais (opção no painel).
@@ -142,7 +153,7 @@
   'use strict';
 
   // Versão gravada nos CSVs. Não usa GM_info: pelo carregador, ele dá a versão do carregador.
-  const VERSAO = '2026.11.13-2';
+  const VERSAO = '2026.11.13-4';
   const CHAVE_DADOS = 'tcc-entorno-dados-v2';
   const CHAVE_FILA = 'tcc-entorno-fila-v2';
   const CHAVE_REVISOES = 'tcc-entorno-revisoes';
@@ -172,6 +183,11 @@
   const LIMIARES_AVAL = [500, 1000, 5000];
   const PARCIAL_A_CADA = 10;
   const PAUSA_ENTRE_BUSCAS = [3000, 6000];
+  // Fila parada há mais que isso (aba fechada, computador dormindo): ao reabrir, não segue
+  // sozinha; mostra o motivo e espera "Retomar".
+  const FILA_PARADA_MS = 10 * 60000;
+  // Pasta da coleta (Downloads/TCC Luderia/<pasta>/ quando o Tampermonkey permite).
+  const PASTA_DOWNLOAD = 'B1_entorno/_dados-brutos';
   const CONSULTAS = [
     { consulta: 'estação de metrô', grupo: 'metro' },
     { consulta: 'estação de trem', grupo: 'trem' },
@@ -249,12 +265,30 @@
     return `${dataLocal(d)} ${doisDig(d.getHours())}:${doisDig(d.getMinutes())}`;
   }
 
+  // Armazenamento do Tampermonkey (desde 2026.11.13-4; até a -3, localStorage do Maps, que
+  // tem cerca de 5 MB e encheu na coleta de 13/11, que parou em 40 de 63 casas). O que
+  // ficou no localStorage é lido na primeira vez e passa para o Tampermonkey ao regravar.
+  const temGM = typeof GM_getValue === 'function' && typeof GM_setValue === 'function';
+  let falhaGravacao = '';
   function ler(chave, padrao) {
-    try { return JSON.parse(localStorage.getItem(chave)) ?? padrao; } catch (_) { return padrao; }
+    try {
+      if (temGM) { const v = GM_getValue(chave, undefined); if (v !== undefined) return v ?? padrao; }
+      return JSON.parse(localStorage.getItem(chave)) ?? padrao;
+    } catch (_) { return padrao; }
   }
 
   function gravar(chave, valor) {
-    try { localStorage.setItem(chave, JSON.stringify(valor)); return true; } catch (e) { status(`Não consegui gravar no navegador (espaço cheio?): ${e.message}`, 'erro'); return false; }
+    try {
+      if (temGM) {
+        if (valor == null && typeof GM_deleteValue === 'function') GM_deleteValue(chave); else GM_setValue(chave, valor);
+        try { localStorage.removeItem(chave); } catch (_) { /* nada a migrar */ }
+      } else localStorage.setItem(chave, JSON.stringify(valor));
+      return true;
+    } catch (e) {
+      falhaGravacao = e.message || String(e);
+      status(`Não consegui gravar no navegador (espaço cheio?): ${falhaGravacao}`, 'erro');
+      return false;
+    }
   }
 
   const dadosVazios = () => ({ locais: [], resultados: [] });
@@ -605,7 +639,12 @@
   // que ignorava o mapa (casas distantes com a mesma lista) e omitia estações a
   // 300 m (Glória e Largo do Machado na Luderia Carioca). Demais listas: lotada
   // sem a marca de fim divide; item fora do mapa indica área esgotada.
+  // Shoppings: a busca única oscilou entre coletas (13/11 contra 12/11, mesmas casas:
+  // Paladins 2 e 8, Arcadea 2 e 14, Magic Store 3 e 12 a 1.000 m), sinal de lista
+  // ordenada por relevância, não pelo mapa. Desde 2026.11.13-4 a busca de shopping
+  // sempre se divide em 4 quadrantes, e o resultado é a união.
   function decidirLista({ n, fim, quadrante, grupo, algumForaDoMapa }) {
+    if (!quadrante && grupo === 'shopping') return 'subdividir';
     if (!quadrante && TRANSPORTE.includes(grupo) && n >= LISTA_CHEIA) return 'subdividir';
     if (!precisaSubdividir(n, fim) || algumForaDoMapa) return '';
     return quadrante ? 'censura' : 'subdividir';
@@ -841,7 +880,7 @@
   }
 
   function zerarLocal(fila) {
-    Object.assign(fila, { tarefas: tarefasIniciais(fila.locais?.[fila.pos]), tarefa: 0, lidos: [], buscas_local: 0, subdivididas: [], censura: [], falhas: [], cobertura_insuf: [], cobertura_min_m: null });
+    Object.assign(fila, { tarefas: tarefasIniciais(fila.locais?.[fila.pos]), tarefa: 0, lidos: [], registro: [], buscas_local: 0, subdivididas: [], censura: [], falhas: [], cobertura_insuf: [], cobertura_min_m: null });
   }
 
   // Menu dos estabelecimentos (mesmo padrão do coletor de preços): ok (coletado sem
@@ -926,6 +965,8 @@
     fila.censura.push(...cruzamento(unidos, fila.lidos));
     const dados = lerDados();
     dados.resultados = dados.resultados.filter((r) => r.origem !== k).concat(unidos);
+    dados.buscas = (dados.buscas || []).filter((b) => b.origem !== k)
+      .concat((fila.registro || []).map((b) => ({ origem: k, origem_place_id: local.place_id, origem_nome: local.nome, ...b })));
     dados.locais = dados.locais.filter((l) => l.chave !== k).concat([{
       chave: k, ...local, buscas: fila.buscas_local, subdivididas: fila.subdivididas, censura: fila.censura,
       falhas: fila.falhas, cobertura_insuf: fila.cobertura_insuf, cobertura_min_m: fila.cobertura_min_m, coletado_em,
@@ -933,13 +974,31 @@
       consultas_dispensadas: consultasDispensadas(local.cidade),
       versao_script: VERSAO,
     }]);
-    gravar(CHAVE_DADOS, dados);
+    if (!gravar(CHAVE_DADOS, dados)) {
+      // Sem gravar, a casa se perderia na próxima página: para a fila e baixa o que está na memória.
+      fila.parar = true;
+      registrarParada(fila, `armazenamento cheio ou recusado ao fechar ${local.nome} (${falhaGravacao})`);
+      await exportar({ fontes: ['maps', 'shoppings'], dados, sufixo: 'parcial-falha-gravacao' });
+      return false;
+    }
     fila.locais_fechados += 1;
     fila.buscas_em_fechados += fila.buscas_local;
     const restam = fila.pos + 1 < fila.locais.length;
     if (lerOpcoes().parcial && restam && fila.locais_fechados % PARCIAL_A_CADA === 0) {
-      exportar({ fontes: ['maps'], locais: dados.locais, sufixo: `parcial-${String(dados.locais.length).padStart(3, '0')}` });
+      // Parcial com a lista inteira (casa que falta sai "não coletado no Maps", e a soma
+      // fecha com a lista) e os 4 CSVs; espera os downloads antes de navegar.
+      const n = dados.locais.length;
+      await exportar({ fontes: ['maps', 'shoppings'], sufixo: `parcial-${String(n).padStart(3, '0')}` });
     }
+    return true;
+  }
+
+  // Motivo e hora de cada parada da fila, mostrados ao reabrir o Maps (até 2026.11.13-3 a
+  // fila podia parar sem deixar rastro; a de 13/11 parou às 02:35 na 40ª casa).
+  function registrarParada(fila, motivo) {
+    fila.paradas = [...(fila.paradas || []), { em: agora(), casa: fila.locais?.[fila.pos]?.nome || '', pos: fila.pos, motivo }].slice(-20);
+    fila.motivo_parada = motivo;
+    gravar(CHAVE_FILA, fila);
   }
 
   function previsao(fila) {
@@ -952,28 +1011,43 @@
   }
 
   async function seguir(fila, msg) {
-    const parar = ler(CHAVE_FILA, {}).parar;
+    const parar = ler(CHAVE_FILA, {}).parar || fila.parar;
     if (fila.pos >= fila.locais.length || parar) {
       fila.ativa = false;
+      if (parar && !fila.motivo_parada) registrarParada(fila, 'botão Parar');
       gravar(CHAVE_FILA, fila);
       status(parar ? 'Fila interrompida.' : fila.doMenu ? `${fila.locais[0]?.nome || 'Estabelecimento'} coletado.`
         : `Fila concluída: ${fila.locais.length} estabelecimentos.`, parar ? 'alerta' : 'ok');
       atualizarPainel();
-      if (!parar) { tocar('fim'); if (!fila.doMenu) exportar({ fontes: ['maps', 'shoppings'], locais: fila.locais }); }
+      if (!parar) { tocar('fim'); if (!fila.doMenu) await exportar({ fontes: ['maps', 'shoppings'] }); }
       return;
     }
-    gravar(CHAVE_FILA, fila);
+    fila.ultimo_passo_ms = Date.now();
+    if (!gravar(CHAVE_FILA, fila)) {
+      fila.ativa = false;
+      tocar('alerta');
+      status(`Fila parada: não consegui gravar a posição (${falhaGravacao}). Exporte e libere espaço.`, 'erro');
+      await exportar({ fontes: ['maps', 'shoppings'], sufixo: 'parcial-falha-gravacao' });
+      atualizarPainel();
+      return;
+    }
     atualizarPainel();
     status(`${fila.pos + 1}/${fila.locais.length} · ${msg}${previsao(fila)}${document.hidden ? ' Aba em segundo plano: use janela própria.' : ''}`);
     await esperar(sortear(PAUSA_ENTRE_BUSCAS));
-    if (ler(CHAVE_FILA, {}).parar) { fila.ativa = false; gravar(CHAVE_FILA, fila); status('Fila interrompida.', 'alerta'); atualizarPainel(); return; }
+    if (ler(CHAVE_FILA, {}).parar) { fila.ativa = false; registrarParada(fila, 'botão Parar'); status('Fila interrompida.', 'alerta'); atualizarPainel(); return; }
     irPara(fila);
+  }
+
+  // Ao abrir o Maps com uma fila parada no meio: diz onde e por quê.
+  function avisarParada(fila) {
+    if (!fila || !fila.locais?.length || fila.pos >= fila.locais.length || !fila.motivo_parada) return;
+    status(`Fila parada na casa ${fila.pos + 1}/${fila.locais.length} (${fila.locais[fila.pos]?.nome || ''}): ${fila.motivo_parada}. Retomar segue dela.`, 'alerta');
   }
 
   function pausarPorBloqueio(fila) {
     fila.pausada = true;
     fila.motivo_pausa = 'bloqueio';
-    gravar(CHAVE_FILA, fila);
+    registrarParada(fila, 'verificação do Google (tráfego incomum)');
     tocar('alerta');
     status('O Google pediu verificação (tráfego incomum). Resolva a verificação; a fila segue sozinha ao voltar ao Maps. Se não seguir, clique em Retomar.', 'alerta');
     atualizarPainel();
@@ -981,10 +1055,16 @@
 
   async function continuarFila() {
     const fila = ler(CHAVE_FILA, null);
-    if (!fila || !fila.ativa) return;
+    if (!fila || !fila.ativa) { avisarParada(fila); return; }
     if (bloqueado()) { pausarPorBloqueio(fila); return; }
+    // Fila ativa que não andou há mais de 10 min: a aba foi fechada ou o computador dormiu.
+    if (!fila.pausada && fila.ultimo_passo_ms && Date.now() - fila.ultimo_passo_ms > FILA_PARADA_MS) {
+      fila.pausada = true;
+      fila.motivo_pausa = 'parada';
+      registrarParada(fila, `fila sem andar desde ${new Date(fila.ultimo_passo_ms).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })} (aba fechada ou computador em repouso)`);
+    }
     if (fila.pausada) {
-      if (fila.motivo_pausa !== 'bloqueio' || !/\/maps\/(search|place)\//.test(location.href)) { status('Fila pausada. Clique em Retomar.', 'alerta'); return; }
+      if (fila.motivo_pausa !== 'bloqueio' || !/\/maps\/(search|place)\//.test(location.href)) { status(`Fila pausada na casa ${fila.pos + 1}/${fila.locais.length}${fila.motivo_parada ? ` (${fila.motivo_parada})` : ''}. Clique em Retomar.`, 'alerta'); return; }
       fila.pausada = false;
       fila.motivo_pausa = '';
       gravar(CHAVE_FILA, fila);
@@ -994,6 +1074,12 @@
     status(`${fila.pos + 1}/${fila.locais.length} · ${local.nome}: lendo "${rotulo(t)}"…`);
     const leitura = await lerBusca();
     if (leitura.estado === 'bloqueado') { pausarPorBloqueio(fila); return; }
+    const reg = {
+      consulta: t.consulta, grupo: t.grupo, quadrante: t.quadrante || '', zoom: t.busca?.zoom ?? '', alcance_m: t.alcance,
+      cobertura_m: '', estado: leitura.estado, n_lidos: leitura.itens.length, chegou_ao_fim: leitura.fim ? 'sim' : 'não',
+      tentativa: t.tentativas + 1, decisao: '', coletado_em: agora(),
+    };
+    (fila.registro = fila.registro || []).push(reg);
     fila.buscas_feitas += 1;
     fila.buscas_local += 1;
     let msg = `"${rotulo(t)}": ${leitura.itens.length} resultados.`;
@@ -1005,7 +1091,9 @@
     } else {
       const [alat, alng] = deslocar(local.lat, local.lng, t.norte, t.leste);
       const cob = t.busca ? coberturaReal(alat, alng, t.busca, janelaAtual()) : 0;
+      reg.cobertura_m = cob;
       if (cob < t.alcance && t.tentativas < TENTATIVAS) {
+        reg.decisao = 'refazer com zoom menor';
         t.tentativas += 1;
         t.reducao += 1;
         await seguir(fila, `"${rotulo(t)}" cobriu ${cob} m de ${t.alcance} m; refazendo com zoom menor.`);
@@ -1018,13 +1106,14 @@
         n: leitura.itens.length, fim: !!leitura.fim, quadrante: t.quadrante, grupo: t.grupo,
         algumForaDoMapa: !!t.busca && leitura.itens.some((r) => foraDoMapa(r, t.busca, janelaAtual())),
       });
+      reg.decisao = decisao || 'completa';
       if (decisao === 'subdividir') { fila.tarefas.push(...quadrantes(t)); fila.subdivididas.push(t.consulta); msg += ' Lista cheia: 4 quadrantes.'; }
       if (decisao === 'censura') fila.censura.push(rotulo(t));
     }
 
     fila.tarefa += 1;
     if (fila.tarefa >= fila.tarefas.length) {
-      await fecharLocal(fila);
+      if (!(await fecharLocal(fila))) { await seguir(fila, 'parada por falha de gravação'); return; }
       msg = `${local.nome} concluído.`;
       fila.pos += 1;
       zerarLocal(fila);
@@ -1058,14 +1147,9 @@
     return '﻿' + [cols.join(';'), ...linhas.map((l) => cols.map((c) => celula(l[c])).join(';'))].join('\r\n');
   }
 
-  function baixar(texto, nome) {
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([texto], { type: 'text/csv;charset=utf-8' }));
-    a.download = nome;
-    document.documentElement.appendChild(a);
-    a.click();
-    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
-  }
+  // Um download por vez, esperando cada um (kit.baixarArquivo): navegar no meio perdia o
+  // segundo CSV dos parciais (os de 15/10 e 13/11 só trouxeram o resumo).
+  const baixar = (texto, nome) => kit.baixarArquivo(nome, texto, 'text/csv;charset=utf-8', { pasta: PASTA_DOWNLOAD });
 
   // "2026-10-14_sao_jogue_rio_vermelho_entorno_resumo.csv"; com mais de um
   // estabelecimento, "2026-10-14_3_estabelecimentos_entorno_resumo.csv".
@@ -1073,19 +1157,35 @@
     const quem = locais.length === 1 ? nomeArquivo(locais[0].nome) : `${locais.length}_estabelecimentos`;
     const fim = sufixo ? `_${sufixo}` : '';
     const nome = (tipo) => `${data}_${quem}_entorno_${tipo}${fim}.csv`;
-    return { resumo: nome('resumo'), resultados: nome('resultados'), shoppings: nome('shoppings') };
+    return { resumo: nome('resumo'), resultados: nome('resultados'), shoppings: nome('shoppings'), buscas: nome('buscas') };
   }
 
   // Sem "locais", exporta a lista guardada (ou, sem lista, tudo o que está guardado).
-  function exportar({ fontes = ['maps', 'shoppings'], locais = null, sufixo = '' } = {}) {
-    const saida = montarSaida(lerDados(), ler(CHAVE_REVISOES, {}), lerOpcoes(), locais || listaAtual().locais);
+  // Devolve uma Promise que resolve depois do último download (quem navega espera por ela).
+  async function exportar({ fontes = ['maps', 'shoppings'], locais = null, sufixo = '', dados = null } = {}) {
+    const base = dados || lerDados();
+    const saida = montarSaida(base, ler(CHAVE_REVISOES, {}), lerOpcoes(), locais || listaAtual().locais);
     if (!saida.universo.length) { status('Nada para exportar.', 'alerta'); return; }
     const nomes = nomesArquivos(saida.universo, dataLocal(new Date()), sufixo);
+    const arquivos = arquivosExportacao(saida, base, fontes, nomes);
+    status(`Baixando ${arquivos.length} CSVs de ${saida.universo.length} estabelecimentos para ${PASTA_DOWNLOAD}/.`);
+    let via = '';
+    for (const [texto, nome] of arquivos) via = (await baixar(texto, nome))?.via || via;
+    status(`${arquivos.length} CSVs de ${saida.universo.length} estabelecimentos baixados${via === 'pasta' ? ` em Downloads/TCC Luderia/${PASTA_DOWNLOAD}/` : `; mova para dados/${PASTA_DOWNLOAD}/`}.`, 'ok');
+  }
+
+  // CSV de buscas: uma linha por busca feita (casa, consulta, quadrante, zoom, cobertura,
+  // n lidos, marca de fim, decisão), para auditar a coleta sem repeti-la.
+  const COLS_BUSCAS = ['origem_place_id', 'origem_nome', 'consulta', 'grupo', 'quadrante', 'zoom', 'alcance_m', 'cobertura_m', 'estado', 'n_lidos', 'chegou_ao_fim', 'tentativa', 'decisao', 'coletado_em'];
+  function arquivosExportacao(saida, dados, fontes, nomes) {
     const arquivos = [];
     if (fontes.includes('maps')) arquivos.push([csv(saida.resumo, colsResumo()), nomes.resumo], [csv(saida.resultados, COLS_RESULTADOS), nomes.resultados]);
     if (fontes.includes('shoppings')) arquivos.push([csv(saida.shoppings, COLS_SHOPPINGS), nomes.shoppings]);
-    arquivos.forEach(([texto, nome], i) => setTimeout(() => baixar(texto, nome), i * 800));
-    status(`Baixando ${arquivos.length} CSVs de ${saida.universo.length} estabelecimentos.`);
+    if (fontes.includes('maps')) {
+      const doUniverso = new Set(saida.universo.map(chaveLocal));
+      arquivos.push([csv((dados.buscas || []).filter((b) => doUniverso.has(b.origem)), COLS_BUSCAS), nomes.buscas]);
+    }
+    return arquivos;
   }
 
   // ---------- lista de estabelecimentos (a população) ----------
@@ -1515,14 +1615,40 @@
     // CSV com ";" e BOM (abre direto no Excel pt-BR; no pandas, sep=";").
     const csv = (linhas, cols) => '﻿' + [cols.join(';'), ...linhas.map((l) => cols.map((c) => celula(l[c])).join(';'))].join('\r\n');
 
-    function baixarArquivo(nome, conteudo, tipo = 'text/csv;charset=utf-8') {
-      const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+    // Baixa o arquivo e devolve uma Promise que resolve quando o download foi entregue ao
+    // navegador (quem navega logo depois espera por ela; até 13/11/2026 o segundo CSV de um
+    // par se perdia na navegação). Com GM_download (script com @grant) e op.pasta (ex.:
+    // "B1_entorno/_dados-brutos"), salva sem perguntar em Downloads/TCC Luderia/<pasta>/,
+    // para o arquivo não cair na pasta de outra coleta; se o Tampermonkey recusar (modo de
+    // download nativo, extensão fora da lista), cai no download comum.
+    const pastaDoArquivo = (pasta, nome) => (pasta ? `TCC Luderia/${String(pasta).replace(/^\/+|\/+$/g, '')}/${nome}` : nome);
+    function baixarComum(nome, url) {
       const a = criar('a', { href: url, download: nome });
       (document.body || document.documentElement).appendChild(a);
       a.click();
       a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 5000);
     }
+    function baixarArquivo(nome, conteudo, tipo = 'text/csv;charset=utf-8', opcoes = {}) {
+      const pasta = opcoes.pasta ?? op.pastaDownload ?? '';
+      const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+      const soltar = () => setTimeout(() => URL.revokeObjectURL(url), 10000);
+      if (typeof GM_download !== 'function' || !pasta) {
+        baixarComum(nome, url);
+        soltar();
+        return esperarMs(600).then(() => ({ nome, via: 'navegador' }));
+      }
+      return new Promise((resolve) => {
+        let feito = false;
+        const fim = (via) => { if (feito) return; feito = true; soltar(); resolve({ nome: via === 'pasta' ? pastaDoArquivo(pasta, nome) : nome, via }); };
+        const comum = () => { baixarComum(nome, url); setTimeout(() => fim('navegador'), 600); };
+        try {
+          GM_download({ url, name: pastaDoArquivo(pasta, nome), saveAs: false, onload: () => fim('pasta'), onerror: () => { if (!feito) comum(); }, ontimeout: () => { if (!feito) comum(); } });
+          // Sem resposta do Tampermonkey em 15 s: segue (o download pode ainda sair).
+          setTimeout(() => fim('pasta'), 15000);
+        } catch (_) { comum(); }
+      });
+    }
+    const esperarMs = (ms) => new Promise((r) => setTimeout(r, ms));
 
     // ---------- menu de alvos (casas, perfis, cardápios, acervos) ----------
     // Seletor por grupo com ✓ ok, ◐ parcial, ! refazer, ○ falta; contador com barra fina;
@@ -1877,7 +2003,7 @@
     Object.assign(k, {
       criar, icone, dica, ajuda, botao, botaoPerigo, botaoParar, etiqueta, alternaIcone, pills, secao, naoAlterna,
       linha, esp, rotulo, selo, status, resumo, barra, progresso, estado, atualizarAcoes, executar, tocar, piscar,
-      confirmarBotao, copiar, celula, csv, baixarArquivo, menuAlvos, montar, garantir, minimizar,
+      confirmarBotao, copiar, celula, csv, baixarArquivo, pastaDoArquivo, menuAlvos, montar, garantir, minimizar,
       nome: (t) => { if (k.el.nome && k.el.nome.textContent !== t) k.el.nome.textContent = t; },
       hospedeiro: () => hospedeiro,
     });
@@ -2058,11 +2184,12 @@
     kit.botaoParar(() => { const f = ler(CHAVE_FILA, {}); f.parar = true; gravar(CHAVE_FILA, f); status('A fila para depois da busca atual.', 'alerta'); });
     el.retomar = botao('play', 'Retomar', () => {
       const f = ler(CHAVE_FILA, null);
-      if (!f?.ativa) return;
-      f.pausada = false;
-      f.motivo_pausa = '';
+      // Retoma também a fila interrompida (Parar, falha de gravação), da casa em que parou.
+      if (!f?.locais?.length || f.pos >= f.locais.length) { status('Nenhuma fila para retomar.'); return; }
+      Object.assign(f, { ativa: true, parar: false, pausada: false, motivo_pausa: '', motivo_parada: '', ultimo_passo_ms: Date.now() });
+      if (!Array.isArray(f.tarefas) || f.tarefa >= f.tarefas.length) zerarLocal(f);
       irPara(f);
-    }, { classe: 'primario', dica: 'Retomar a fila pausada' });
+    }, { classe: 'primario', dica: 'Retomar a fila pausada ou interrompida, da casa em que parou (o motivo da parada aparece no status ao abrir o Maps)' });
 
     // Exportar.
     el.exportar = botao('arrow-down-tray', 'CSV', () => { exportar(); kit.piscar(el.exportar); }, { classe: 'mini' });

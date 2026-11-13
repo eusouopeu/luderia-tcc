@@ -25,7 +25,7 @@ function carregar(html, href = 'https://www.amazon.com.br/s?k=x') {
     document,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { ITENS, numeroBR, freteDe, precoAtual, tipoPreco, palavras, relevancia, medidas, medidaConflita, motivosRegras, kitDe, marcarVariantes, revisarGuardadas, lerCsv, importar, motivosOferta, funil, quantil, pendentes, coberturaCategoria, cepDe, ehSalvador, ofertasJsonLd, siteDe, urlBusca, guardar, excluir, ativas, resumoItem, mediana, somarOfertas, csv, nomeArquivo, lerOfertas, cepDoSite });})();';
+    + 'Object.assign(globalThis.__test, { ITENS, numeroBR, freteDe, precoAtual, tipoPreco, palavras, relevancia, medidas, medidaConflita, motivosRegras, kitDe, marcarVariantes, revisarGuardadas, lerCsv, importar, motivosOferta, funil, quantil, pendentes, coberturaCategoria, cepDe, ehSalvador, ofertasJsonLd, siteDe, urlBusca, guardar, excluir, ativas, resumoItem, mediana, somarOfertas, csv, nomeArquivo, lerOfertas, cepDoSite, resumoItens, csvResumo, COLS_RESUMO });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'precos_itens.user.js' });
   return ambiente.__test;
 }
@@ -549,4 +549,19 @@ test('somar: abre a próxima página e, ao carregar, soma as ofertas dela às an
   p2.botao('Somar próxima página').onclick();
   assert.equal(p2.ambiente.location.href, 'https://www.amazon.com.br/s?k=mesa+inox&page=3');
   assert.equal(memoria.tcc_precos_soma.paginas, 2);
+});
+
+test('resumo por item separa ok, abaixo de 3, sem oferta e não buscado (03/11: OB42 e MO06 sem linha)', () => {
+  const g = {};
+  const of = (id, fonte, k) => { g[`${id}|${fonte}|${k}`] = { id_item: id, fonte, preco: 100 + k, excluida: 0 }; };
+  [1, 2, 3].forEach((k) => of('OB40', 'amazon', k));
+  of('CB14', 'mercadolivre', 1); of('CB14', 'mercadolivre', 2);
+  const buscas = { 'OB42|mercadolivre': { id_item: 'OB42', site: 'mercadolivre', data_coleta: '2026-11-13' } };
+  const r = Object.fromEntries(t.resumoItens(g, buscas).map((l) => [l.id_item, l.situacao]));
+  assert.equal(r.OB40, 'ok');
+  assert.equal(r.CB14, 'abaixo de 3');
+  assert.equal(r.OB42, 'sem oferta');
+  assert.equal(r.MO06, 'não buscado');
+  const cab = t.csvResumo([]).replace(/^\ufeff/, '').split('\r\n')[0];
+  assert.equal(cab, t.COLS_RESUMO.join(';'));
 });

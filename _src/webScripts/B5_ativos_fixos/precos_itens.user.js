@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de preços dos itens (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-1
+// @version      2026.11.13-2
 // @description  Lê as ofertas das buscas e páginas de produto (Amazon, Mercado Livre, Magalu, Leroy Merlin e lojas com dados estruturados), filtra as que correspondem ao item da lista da etapa 1 e exporta CSV por categoria.
 // @match        https://www.amazon.com.br/*
 // @match        https://lista.mercadolivre.com.br/*
@@ -14,6 +14,7 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_deleteValue
+// @grant        GM_download
 // ==/UserScript==
 
 /*
@@ -104,6 +105,9 @@
   const CHAVE_EXPORTACAO = 'tcc_precos_exportado_em';
   const CHAVE_SO_FALTAM = 'tcc_precos_so_faltam';
   const CHAVE_PULADOS = 'tcc_precos_pulados'; // { id_item: data em que foi pulado }
+  // Buscas feitas por item e site, com ou sem oferta guardada (desde 2026.11.13-2): sem elas o CSV
+  // não distinguia "não buscado" de "buscado sem oferta" (OB42 e MO06 sem linha em 03/11).
+  const CHAVE_BUSCAS = 'tcc_precos_buscas'; // { 'id|site': { id_item, site, busca, data_coleta, paginas, lidas, nos_filtros } }
   const CHAVE_COLETADOS = 'tcc_precos_coletados'; // { site: { id_item: true (coletado) | false (desfeito) } }
   const AVISO_PENDENTES = 25; // guardadas ou excluídas fora de CSV a partir das quais o painel cobra o download
   const MIN_OFERTAS = 3; // o build usa P25, mediana e P75: abaixo disso o item fica frágil
@@ -814,16 +818,50 @@
   const cepAtual = () => cepDoSite() || GM_getValue(CHAVE_CEP, '');
   const filtrosAtuais = () => ({ ...FILTROS_PADRAO, ...GM_getValue(CHAVE_FILTROS, {}) });
 
+  // Com GM_download, em Downloads/TCC Luderia/<pasta da categoria>/ sem perguntar; recusado, o comum.
+  const PASTA_CATEGORIA = { obra_reforma: 'B5_reforma/_dados-brutos' };
+  const pastaDe = (nome) => PASTA_CATEGORIA[Object.keys(PASTA_CATEGORIA).find((c) => nome.includes(`_${c}_`))] || 'B5_mobiliario/_dados-brutos';
   function baixar(nome, conteudo, tipo, atraso = 0) {
     setTimeout(() => {
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
-      a.download = nome;
-      (document.body || document.documentElement).appendChild(a);
-      a.click();
-      setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+      const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+      const comum = () => {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = nome;
+        (document.body || document.documentElement).appendChild(a);
+        a.click();
+        a.remove();
+      };
+      setTimeout(() => URL.revokeObjectURL(url), 15000);
+      if (typeof GM_download !== 'function') return comum();
+      try { GM_download({ url, name: `TCC Luderia/${pastaDe(nome)}/${nome}`, saveAs: false, onerror: comum }); } catch (e) { comum(); }
     }, atraso);
   }
+
+  function registrarBusca(item, siteBusca, info) {
+    const b = GM_getValue(CHAVE_BUSCAS, {}) || {};
+    b[`${item.id}|${siteBusca}`] = { id_item: item.id, categoria: item.categoria, site: siteBusca, data_coleta: dataLocal(), ...info };
+    GM_setValue(CHAVE_BUSCAS, b);
+  }
+
+  // Resumo por item da lista: sites buscados, ofertas ativas e situação (ok, abaixo de 3, sem
+  // oferta, não buscado). Sai com o CSV, num arquivo que o build não lê como preço.
+  const COLS_RESUMO = ['id_item', 'categoria', 'item', 'sites_buscados', 'buscas', 'ofertas_ativas', 'sites_com_oferta', 'situacao', 'ultima_busca'];
+  function resumoItens(guardados, buscas) {
+    const bs = Object.values(buscas || {});
+    return ITENS.map((i) => {
+      const minhas = bs.filter((b) => b.id_item === i.id);
+      const ofertas = ativas(guardados).filter((l) => l.id_item === i.id);
+      const n = ofertas.length;
+      const situacao = n >= MIN_OFERTAS ? 'ok' : n > 0 ? `abaixo de ${MIN_OFERTAS}` : minhas.length ? 'sem oferta' : 'não buscado';
+      return {
+        id_item: i.id, categoria: i.categoria, item: i.item, sites_buscados: [...new Set(minhas.map((b) => b.site))].sort().join(', '),
+        buscas: minhas.length, ofertas_ativas: n, sites_com_oferta: [...new Set(ofertas.map((l) => l.fonte))].sort().join(', '),
+        situacao, ultima_busca: minhas.map((b) => b.data_coleta).sort().pop() || '',
+      };
+    });
+  }
+  const csvResumo = (linhas) => '\ufeff' + [COLS_RESUMO.join(';'), ...linhas.map((l) => COLS_RESUMO.map((c) => celula(l[c])).join(';'))].join('\r\n');
 
   function baixarCsv() {
     const porCategoria = {};
@@ -833,8 +871,10 @@
       linhas.sort((a, b) => a.id_item.localeCompare(b.id_item) || a.fonte.localeCompare(b.fonte) || (a.posicao ?? Infinity) - (b.posicao ?? Infinity) || a.preco - b.preco);
       baixar(nomeArquivo(categoria, dataLocal(agora), horaLocal(agora)), csv(linhas), 'text/csv;charset=utf-8', i * 800);
     });
+    const n = Object.keys(porCategoria).length;
+    baixar(`${dataLocal(agora)}_${horaLocal(agora)}_resumo_itens_coleta.csv`, csvResumo(resumoItens(carregar(), GM_getValue(CHAVE_BUSCAS, {}))), 'text/csv;charset=utf-8', n * 800);
     GM_setValue(CHAVE_EXPORTACAO, agora.getTime());
-    return Object.keys(porCategoria).length;
+    return n;
   }
 
   // ---------- painel (padrão: canto superior direito, shadow DOM, fora do <body>) ----------
@@ -1231,6 +1271,8 @@
     assinaturaLida = assinatura(ofertas);
     somando = somar;
     paginas = somar ? paginas + 1 : 1;
+    registrarBusca(itemAtual(), site, { busca: urlLida, paginas, lidas: ofertasLidas.length,
+      nos_filtros: ofertasLidas.filter((o) => !motivosOferta(o, itemAtual().termo, referencia()).length).length });
     listarOfertas();
     const marcadas = caixasMarcadas().length;
     const novas = ofertasLidas.length - (somar ? antes : 0);

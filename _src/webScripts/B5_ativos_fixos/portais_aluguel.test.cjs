@@ -15,7 +15,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, BAIRROS_MENU, BAIRROS_DESTAQUE, bairroDaUrl, redirecionada, paginaDaBusca, foraDoBairro, MONTAGEM_PADRAO, chaveAlvo, estadoAlvo, proximoAlvo, decidirPasso, semResultadoDeTexto, urlDeAbertura, csvResumoFila });})();';
+    + 'Object.assign(globalThis.__test, { numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, BAIRROS_MENU, BAIRROS_DESTAQUE, bairroDaUrl, redirecionada, paginaDaBusca, foraDoBairro, MONTAGEM_PADRAO, chaveAlvo, estadoAlvo, proximoAlvo, decidirPasso, semResultadoDeTexto, urlDeAbertura, csvResumoFila, bairroNaoReconhecido, tipoPeloTitulo, daRodada, rodadaDe, COLS });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'portais_aluguel.user.js' });
   return ambiente.__test;
 }
@@ -400,8 +400,45 @@ test('repetição da fila retoma da página em que parou (menos no QuintoAndar)'
 });
 
 test('resumo da fila em CSV: uma linha por busca, com o motivo da parada', () => {
-  const s = t.csvResumoFila([{ rotulo: 'OLX · pituba', url: 'https://x/', lidos: 50, total: 116, cobertura: 50 / 116, paginas: 1, motivo: 'página vazia antes do total (50 de 116)', tentativa: 1 }]);
+  const s = t.csvResumoFila([{ rotulo: 'OLX · pituba', url: 'https://x/', lidos: 50, guardados: 50, fora_do_bairro: 0, bairro_reconhecido: 'sim', total: 116, cobertura: 50 / 116, paginas: 1, motivo: 'página vazia antes do total (50 de 116)', tentativa: 1 }]);
   const linhas = s.replace(/^﻿/, '').split('\r\n');
-  assert.equal(linhas[0], 'rotulo;url;lidos;total;cobertura;paginas;motivo;tentativa');
-  assert.equal(linhas[1], 'OLX · pituba;https://x/;50;116;0,431;1;página vazia antes do total (50 de 116);1');
+  assert.equal(linhas[0], 'rotulo;url;lidos;guardados;fora_do_bairro;bairro_reconhecido;total;cobertura;paginas;motivo;tentativa');
+  assert.equal(linhas[1], 'OLX · pituba;https://x/;50;50;0;sim;116;0,431;1;página vazia antes do total (50 de 116);1');
+});
+
+test('OLX que devolve a cidade inteira numa busca por bairro é reconhecida (13/11: Caminho das Árvores, Chame-Chame)', () => {
+  assert.equal(t.bairroNaoReconhecido({ lidos: 50, fora: 47, total: 1423 }), true);
+  assert.equal(t.bairroNaoReconhecido({ lidos: 50, fora: 3, total: 116 }), false);
+  assert.equal(t.bairroNaoReconhecido({ lidos: 4, fora: 4, total: 10 }), false, 'página pequena não decide');
+});
+
+test('"sem resultado no portal" só quando a busca inteira não trouxe nada', () => {
+  // ZAP Pituba em 13/11: 75 de 76 e a página seguinte com o aviso de sem resultado.
+  const r = t.decidirPasso({ lidos: 0, ineditos: 0, vistos: 75, total: 76, paginas: 4, limite: 50, recargas: 2, semResultado: true });
+  assert.equal(r.acao, 'concluir');
+  assert.match(r.motivo, /página vazia antes do total \(75 de 76\)/);
+  assert.equal(t.decidirPasso({ lidos: 0, ineditos: 0, vistos: 0, total: null, paginas: 1, limite: 50, recargas: 0, semResultado: true }).motivo, 'sem resultado no portal');
+});
+
+test('resumo da fila separa lidos, guardados e bairro reconhecido', () => {
+  const r = t.resultadoBusca('https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/chame-chame?commt=6&commt=7&ss=100', 1424, 1424, 29, 'total da busca lido', { guardados: 6, fora: 1418, cidadeInteira: true });
+  assert.equal(r.guardados, 6);
+  assert.equal(r.bairro_reconhecido, 'não');
+  assert.equal(r.cobertura, 1);
+  const linhas = t.csvResumoFila([r]).split('\r\n');
+  assert.equal(linhas[0].replace('\ufeff', ''), 'rotulo;url;lidos;guardados;fora_do_bairro;bairro_reconhecido;total;cobertura;paginas;motivo;tentativa');
+});
+
+test('tipo da OLX pelo título, ou "não informado"', () => {
+  assert.equal(t.tipoPeloTitulo('Loja térrea 180 m² na Pituba'), 'Loja/ponto (pelo título)');
+  assert.equal(t.tipoPeloTitulo('Sala comercial no Itaigara'), 'Sala comercial (pelo título)');
+  assert.equal(t.tipoPeloTitulo('Imóvel 200 m²'), 'não informado');
+});
+
+test('CSV leva a rodada e a exportação do fim da fila fica só nela', () => {
+  assert.equal(t.COLS[t.COLS.length - 1], 'rodada');
+  const r = t.rodadaDe(new Date(2026, 10, 13, 1, 21).getTime());
+  assert.equal(r, '2026-11-13 01:21');
+  const d = { 'zap:1': { rodada: r }, 'zap:2': { rodada: '2026-11-03 10:00' }, 'zap:3': {} };
+  assert.deepEqual(Object.keys(t.daRodada(d, r)), ['zap:1']);
 });

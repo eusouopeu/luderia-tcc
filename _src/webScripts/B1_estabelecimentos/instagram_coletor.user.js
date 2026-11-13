@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de perfis do Instagram (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-1
+// @version      2026.11.13-2
 // @description  Mostra data, curtidas e comentários sobre cada post da grade; rola até o primeiro post; coleta posts e dados de perfis e exporta CSV/JSON.
 // @match        https://www.instagram.com/*
 // @run-at       document-start
@@ -25,7 +25,9 @@
  *    respostas GraphQL do próprio site; a fila abre cada perfil e continua ao carregar.
  *  - Bio do perfil: campo "Bio" no painel e colunas bio/fonte_bio no CSV de perfis, da API,
  *    das respostas do site (biography) ou da meta description da página, nessa ordem.
- *  - Período: ao abrir, vale o da última coleta feita (o padrão do B1 só sem coleta ou no ↻).
+ *  - Período: ao abrir, vale sempre o padrão do B1 (01/07 a 01/11/2026, desde 2026.11.13-2;
+ *    antes valia o da última coleta, e Bardo Mago e Comdado saíram com 01/09 a 01/10 em 12/11).
+ *    Período diferente do padrão fica avisado em âmbar no status.
  *  - Raio no cabeçalho, ao lado do download automático: desligado, abrir um perfil pelo menu
  *    ou "Próximo" não coleta nem rola sozinho (a fila continua, porque é pedida à mão).
  *  - Menu dos perfis (mesmo padrão do coletor de preços): o seletor do topo traz os 60
@@ -530,15 +532,19 @@
     };
   }
 
+  // Nome na convenção do projeto, AAAA-MM-DD_<perfil>_instagram_<perfis|posts>.csv, com a data
+  // local (até 2026.11.13-1: instagram_<tipo>_<perfil>_<data UTC>.csv; a coleta de 12/11 às 22h
+  // saiu com 13/11).
+  const nomeExportacao = (sufixo, tipo, quando = Date.now()) => `${dataHora(quando / 1000).slice(0, 10)}_${sufixo}_instagram_${tipo}.csv`;
   function exportar(usuarios, sufixo, { soPerfis = false } = {}) {
-    const carimbo = new Date().toISOString().slice(0, 10);
-    baixar(`instagram_perfis_${sufixo}_${carimbo}.csv`, csv(usuarios.map(linhaPerfil), COLS_PERFIS), 'text/csv;charset=utf-8');
+    if (foraDoPadrao()) status('Exportando com período fora do padrão do B1: confira as colunas periodo_de e periodo_ate.', 'alerta');
+    baixar(nomeExportacao(sufixo, 'perfis'), csv(usuarios.map(linhaPerfil), COLS_PERFIS), 'text/csv;charset=utf-8');
     if (soPerfis) return;
     const linhas = usuarios.flatMap((u) => {
       const nums = numeros(u);
       return postsDe(u).map((p) => ({ ...p, vinculo: vinculo(p, u), numero_post: nums.get(p.shortcode) ?? '', data_hora: dataHora(p.taken_at), evento_validado: validacao.get(p.shortcode) || '' }));
     });
-    baixar(`instagram_posts_${sufixo}_${carimbo}.csv`, csv(linhas, COLS_POSTS), 'text/csv;charset=utf-8');
+    baixar(nomeExportacao(sufixo, 'posts'), csv(linhas, COLS_POSTS), 'text/csv;charset=utf-8');
   }
 
   // ---------- coleta ----------
@@ -876,8 +882,14 @@
       return t != null && ps.length >= t ? (ps.length ? 'ok' : 'vazia') : 'refazer: histórico incompleto';
     }
     if (!periodoCoberto(u, ps)) return 'refazer: período não coberto';
-    return ps.some(passaData) ? 'ok' : 'vazia';
+    if (ps.some(passaData)) return 'ok';
+    const depois = postsDepoisDoPeriodo(u, ps);
+    // Perfil ativo (12 ou mais posts depois do fim) sem nenhum no período: provável parada cedo
+    // (Cineplay em 12 e 13/11: 12 posts de novembro e 2 de abril, nenhum de julho a outubro).
+    return depois >= ATIVO_DEPOIS ? `refazer: nenhum post no período e ${depois} depois dele (conferir)` : 'vazia';
   }
+  const ATIVO_DEPOIS = 12;
+  const postsDepoisDoPeriodo = (u, ps) => (dataAte ? ps.filter((p) => p.perfil === u && diaLocal(p.taken_at) > dataAte).length : 0);
 
   function registrarColeta(user, modo, situacao = situacaoPerfil(user, modo)) {
     gravarLs(CHAVE_FEITOS, { ...lerLs(CHAVE_FEITOS, {}), [user]: { modo, em: Date.now(), n: postsDe(user).length, situacao } });
@@ -992,13 +1004,11 @@
   let soEventos = false;
   let busca = '';
   // Período padrão da coleta do Bloco B1; 'AAAA-MM-DD' ou vazio; inclusivo nas duas pontas.
-  const PERIODO_PADRAO = ['2026-09-01', '2026-10-01'];
-  // Ao abrir, vale o período da última coleta feita (CHAVE_PERIODO); sem coleta, o padrão.
+  const PERIODO_PADRAO = ['2026-07-01', '2026-11-01'];
+  // Ao abrir, vale sempre o padrão (a última coleta fica gravada só para registro).
   const CHAVE_PERIODO = 'igc-periodo-ultima-coleta';
-  let [dataDe, dataAte] = (() => {
-    const p = lerLs(CHAVE_PERIODO, null);
-    return Array.isArray(p) && p.length === 2 && p.every((x) => x === '' || /^\d{4}-\d{2}-\d{2}$/.test(x)) ? p : PERIODO_PADRAO;
-  })();
+  let [dataDe, dataAte] = PERIODO_PADRAO;
+  const foraDoPadrao = () => dataDe !== PERIODO_PADRAO[0] || dataAte !== PERIODO_PADRAO[1];
 
   function diaLocal(ts) {
     return dataHora(ts).slice(0, 10);
@@ -1465,14 +1475,40 @@
     // CSV com ";" e BOM (abre direto no Excel pt-BR; no pandas, sep=";").
     const csv = (linhas, cols) => '﻿' + [cols.join(';'), ...linhas.map((l) => cols.map((c) => celula(l[c])).join(';'))].join('\r\n');
 
-    function baixarArquivo(nome, conteudo, tipo = 'text/csv;charset=utf-8') {
-      const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+    // Baixa o arquivo e devolve uma Promise que resolve quando o download foi entregue ao
+    // navegador (quem navega logo depois espera por ela; até 13/11/2026 o segundo CSV de um
+    // par se perdia na navegação). Com GM_download (script com @grant) e op.pasta (ex.:
+    // "B1_entorno/_dados-brutos"), salva sem perguntar em Downloads/TCC Luderia/<pasta>/,
+    // para o arquivo não cair na pasta de outra coleta; se o Tampermonkey recusar (modo de
+    // download nativo, extensão fora da lista), cai no download comum.
+    const pastaDoArquivo = (pasta, nome) => (pasta ? `TCC Luderia/${String(pasta).replace(/^\/+|\/+$/g, '')}/${nome}` : nome);
+    function baixarComum(nome, url) {
       const a = criar('a', { href: url, download: nome });
       (document.body || document.documentElement).appendChild(a);
       a.click();
       a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 5000);
     }
+    function baixarArquivo(nome, conteudo, tipo = 'text/csv;charset=utf-8', opcoes = {}) {
+      const pasta = opcoes.pasta ?? op.pastaDownload ?? '';
+      const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+      const soltar = () => setTimeout(() => URL.revokeObjectURL(url), 10000);
+      if (typeof GM_download !== 'function' || !pasta) {
+        baixarComum(nome, url);
+        soltar();
+        return esperarMs(600).then(() => ({ nome, via: 'navegador' }));
+      }
+      return new Promise((resolve) => {
+        let feito = false;
+        const fim = (via) => { if (feito) return; feito = true; soltar(); resolve({ nome: via === 'pasta' ? pastaDoArquivo(pasta, nome) : nome, via }); };
+        const comum = () => { baixarComum(nome, url); setTimeout(() => fim('navegador'), 600); };
+        try {
+          GM_download({ url, name: pastaDoArquivo(pasta, nome), saveAs: false, onload: () => fim('pasta'), onerror: () => { if (!feito) comum(); }, ontimeout: () => { if (!feito) comum(); } });
+          // Sem resposta do Tampermonkey em 15 s: segue (o download pode ainda sair).
+          setTimeout(() => fim('pasta'), 15000);
+        } catch (_) { comum(); }
+      });
+    }
+    const esperarMs = (ms) => new Promise((r) => setTimeout(r, ms));
 
     // ---------- menu de alvos (casas, perfis, cardápios, acervos) ----------
     // Seletor por grupo com ✓ ok, ◐ parcial, ! refazer, ○ falta; contador com barra fina;
@@ -1827,7 +1863,7 @@
     Object.assign(k, {
       criar, icone, dica, ajuda, botao, botaoPerigo, botaoParar, etiqueta, alternaIcone, pills, secao, naoAlterna,
       linha, esp, rotulo, selo, status, resumo, barra, progresso, estado, atualizarAcoes, executar, tocar, piscar,
-      confirmarBotao, copiar, celula, csv, baixarArquivo, menuAlvos, montar, garantir, minimizar,
+      confirmarBotao, copiar, celula, csv, baixarArquivo, pastaDoArquivo, menuAlvos, montar, garantir, minimizar,
       nome: (t) => { if (k.el.nome && k.el.nome.textContent !== t) k.el.nome.textContent = t; },
       hospedeiro: () => hospedeiro,
     });
@@ -2088,14 +2124,19 @@
   // primeira página da grade. Os fixados vêm na primeira página e nem sempre trazem a marca
   // (12/11/2026: Cineplay e Fortalúdica pararam por posts de janeiro e abril fixados sem
   // marca); post antigo na primeira página não prova nada.
+  // Desde 2026.11.13-2, pede 3 posts do próprio perfil, não fixados, anteriores à data "De" e
+  // depois da primeira página: um post antigo solto (fixado sem marca, colaboração de outro
+  // dono) não encerra a coleta.
   const PRIMEIRA_PAGINA = 12;
+  const ANTIGOS_MIN = 3;
   function periodoCoberto(u, ps) {
     const total = totalDe(u);
     if (total != null && ps.length >= total) return true;
     if (!dataDe) return false;
     const ordem = [...ps].sort((a, b) => (a.chegada ?? Infinity) - (b.chegada ?? Infinity));
     const primeira = new Set(ordem.slice(0, PRIMEIRA_PAGINA).map((p) => p.shortcode));
-    return ps.some((p) => !p.fixado && diaLocal(p.taken_at) < dataDe && !primeira.has(p.shortcode));
+    const antigos = ps.filter((p) => !p.fixado && p.perfil === u && diaLocal(p.taken_at) < dataDe && !primeira.has(p.shortcode));
+    return antigos.length >= ANTIGOS_MIN;
   }
 
   // Os campos só estão prontos para ir ao Notion quando nenhum é parcial ou aproximado.
@@ -2110,6 +2151,7 @@
     if (!per) pendencias.push('sem período definido');
     else {
       if (!periodoCoberto(u, ps)) pendencias.push('período não coberto (carregue mais posts)');
+      else if (!ps.some(passaData) && postsDepoisDoPeriodo(u, ps) >= ATIVO_DEPOIS) pendencias.push(`nenhum post no período e ${postsDepoisDoPeriodo(u, ps)} depois dele (conferir)`);
       if (per.semContagem) pendencias.push(`${per.semContagem} post(s) sem contagem de comentários`);
     }
     return { periodo: !pendencias.length, pendencias, primeiro: total != null && ps.length >= total };
@@ -2388,7 +2430,10 @@
 
     // Período (inclusivo nas duas pontas): define o que "Coletar período" busca, os campos
     // do período e o que fica esmaecido na grade.
-    const aoMudarData = () => { dataDe = el.de.value; dataAte = el.ate.value; aplicarSelos(); atualizarResumo(); };
+    const aoMudarData = () => {
+      dataDe = el.de.value; dataAte = el.ate.value; aplicarSelos(); atualizarResumo();
+      if (foraDoPadrao()) status(`Período fora do padrão do B1 (${PERIODO_PADRAO.map((d) => d.split('-').reverse().join('/')).join(' a ')}): a coleta não fica comparável às outras.`, 'alerta');
+    };
     el.de = criar('input', { type: 'date', value: dataDe, 'aria-label': 'De', onchange: aoMudarData });
     el.ate = criar('input', { type: 'date', value: dataAte, 'aria-label': 'Até', onchange: aoMudarData });
     const padrao = PERIODO_PADRAO.map((d) => d.split('-').reverse().join('/')).join(' a ');

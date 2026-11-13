@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Coletor de avaliações do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-1
+// @version      2026.11.13-2
 // @description  Abre as avaliações de um lugar, ordena por mais recentes, rola até o fim do período, expande os textos (no idioma original), filtra por tema, opinião, componentes e busca, salva o progresso, coleta em fila, confere amostras e exporta CSV com autor pseudonimizado.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -11,6 +11,7 @@
 // @grant        GM_setValue
 // @grant        GM_deleteValue
 // @grant        GM_listValues
+// @grant        GM_download
 // ==/UserScript==
 
 /*
@@ -1617,13 +1618,29 @@
   const csv = (linhas, cols) => '﻿' + [cols.join(';'), ...linhas.map((l) => cols.map((c) => celula(l[c])).join(';'))].join('\r\n');
   const nomeArquivo = (t) => String(t || 'lugar').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\w]+/g, '_').replace(/^_|_$/g, '').toLowerCase();
 
+  // Nome do lugar no arquivo: o da população do B1 quando o place_id está nela. O Maps chama
+  // as duas unidades de "São Jogue", e o segundo arquivo do dia virava "(1)" ou sobrescrevia.
+  function nomeParaArquivo(placeId, nome) {
+    const p = placeId && POP.find((x) => x.id === placeId);
+    return nomeArquivo(p ? p.nome : nome);
+  }
+
+  // Com GM_download, em Downloads/TCC Luderia/B2_avaliacoes/_dados-brutos/coletas/ sem perguntar;
+  // recusado (modo nativo, extensão fora da lista), o download comum.
+  const PASTA_DOWNLOAD = 'B2_avaliacoes/_dados-brutos/coletas';
   function salvarArquivo(nome, conteudo) {
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([conteudo], { type: 'text/csv;charset=utf-8' }));
-    a.download = nome;
-    document.documentElement.appendChild(a);
-    a.click();
-    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+    const url = URL.createObjectURL(new Blob([conteudo], { type: 'text/csv;charset=utf-8' }));
+    const comum = () => {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = nome;
+      document.documentElement.appendChild(a);
+      a.click();
+      a.remove();
+    };
+    setTimeout(() => URL.revokeObjectURL(url), 15000);
+    if (typeof GM_download !== 'function') return comum();
+    try { GM_download({ url, name: `TCC Luderia/${PASTA_DOWNLOAD}/${nome}`, saveAs: false, onerror: comum }); } catch (e) { comum(); }
   }
 
   // Recibo da exportação: o que foi aplicado às linhas do arquivo. No recorte "tudo"
@@ -1653,7 +1670,7 @@
     const placeId = el.placeId.value.trim();
     const recibo = reciboExportacao(sufixo);
     const saida = linhas.map((l) => ({ ...(l.place_id || !placeId ? l : { ...l, place_id: placeId }), ...recibo }));
-    salvarArquivo(`${dataLocal(new Date())}_${nomeArquivo(linhas[0].nome_estabelecimento)}_maps_avaliacoes_${sufixo}.csv`, csv(saida, COLS));
+    salvarArquivo(`${dataLocal(new Date())}_${nomeParaArquivo(saida[0].place_id, linhas[0].nome_estabelecimento)}_maps_avaliacoes_${sufixo}.csv`, csv(saida, COLS));
   }
 
   function baixarResumo(linhas, sufixo) {
@@ -1663,7 +1680,7 @@
 
   // Resumo de um lugar só, baixado depois de cada coleta, mesmo com zero linhas.
   function nomeResumoLugar(resumo, reserva = '', data = new Date()) {
-    return `${dataLocal(data)}_${nomeArquivo(resumo.nome_estabelecimento || reserva || resumo.place_id)}_maps_avaliacoes_resumo.csv`;
+    return `${dataLocal(data)}_${nomeParaArquivo(resumo.place_id, resumo.nome_estabelecimento || reserva || resumo.place_id)}_maps_avaliacoes_resumo.csv`;
   }
 
   function baixarResumoLugar(resumo, reserva = '') {

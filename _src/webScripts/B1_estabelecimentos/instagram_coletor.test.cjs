@@ -21,7 +21,7 @@ function carregar(contexto = {}) {
   };
   ambiente.XMLHttpRequest.prototype.send = () => {};
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Coletor IG] carregado');"))
-    + 'Object.assign(globalThis.__test, { capturarPerfil, capturados, lerUsuarios, csv, filaSnowballAtiva, POP_IG, estadoPerfil, proximoPerfil, apiSumiu });})();';
+    + 'Object.assign(globalThis.__test, { capturarPerfil, capturados, lerUsuarios, csv, filaSnowballAtiva, POP_IG, estadoPerfil, proximoPerfil, apiSumiu, posts, perfis, totais, periodoCoberto, situacaoPerfil, nomeExportacao, PERIODO_PADRAO });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'instagram_coletor.user.js' });
   return ambiente.__test;
 }
@@ -87,4 +87,44 @@ test('bio: capturada da biography das respostas do site', () => {
   const t = carregar();
   t.capturarPerfil({ username: 'casa', biography: 'Jogos e lanches\nReservas no site', follower_count: 1 });
   assert.equal(t.capturados.get('casa').bio, 'Jogos e lanches\nReservas no site');
+});
+
+// Cineplay (@cineplay_sc) em 12 e 13/11/2026: 12 posts de novembro na primeira página (2 fixados)
+// e 2 de abril na segunda; a coleta parou, e o período (01/07 a 01/11) saiu vazio.
+function cineplay(t, antigos) {
+  t.posts.clear();
+  const ts = (d) => Math.floor(new Date(`${d}T12:00:00`).getTime() / 1000);
+  let chegada = 0;
+  for (let i = 0; i < 12; i++) {
+    const code = `nov${i}`;
+    t.posts.set(code, { shortcode: code, perfil: 'cineplay_sc', taken_at: ts(`2026-11-${String(2 + i).padStart(2, '0')}`), fixado: i < 2 ? 'sim' : '', chegada: chegada++ });
+  }
+  antigos.forEach((d, i) => t.posts.set(`ant${i}`, { shortcode: `ant${i}`, perfil: 'cineplay_sc', taken_at: ts(d), fixado: '', chegada: chegada++ }));
+  t.perfis.set('cineplay_sc', { privado: 'não' });
+  t.totais.set('cineplay_sc', 1733);
+}
+
+test('período padrão do B1 é 01/07 a 01/11', () => {
+  const t = carregar();
+  assert.deepEqual([...t.PERIODO_PADRAO], ['2026-07-01', '2026-11-01']);
+});
+
+test('dois posts antigos soltos não dão o período por coberto; três dão', () => {
+  const t = carregar();
+  cineplay(t, ['2026-04-20', '2026-04-23']);
+  assert.equal(t.periodoCoberto('cineplay_sc', [...t.posts.values()]), false);
+  cineplay(t, ['2026-04-20', '2026-04-23', '2026-04-10']);
+  assert.equal(t.periodoCoberto('cineplay_sc', [...t.posts.values()]), true);
+});
+
+test('perfil ativo sem post no período sai "refazer", não "vazia"', () => {
+  const t = carregar();
+  cineplay(t, ['2026-04-20', '2026-04-23', '2026-04-10']);
+  assert.match(t.situacaoPerfil('cineplay_sc', 'periodo'), /^refazer: nenhum post no período e 12 depois dele/);
+});
+
+test('nome do arquivo na convenção, com a data local', () => {
+  const t = carregar();
+  const quando = new Date(2026, 10, 12, 22, 15).getTime();
+  assert.equal(t.nomeExportacao('cineplay_sc', 'posts', quando), '2026-11-12_cineplay_sc_instagram_posts.csv');
 });

@@ -2,6 +2,8 @@
 
 Auditoria de 13/11/2026 sobre os CSVs em `dados/` (só a versão mais recente de cada coleta). O bloco abaixo é o prompt, pronto para colar numa sessão nova.
 
+**Aplicado em 13/11/2026** (entorno 2026.11.13-4; aluguel, horários de pico, Instagram, preços, avaliações, acervo e cardápios 2026.11.13-2). Fica de fora: a URL da OLX que filtra Caminho das Árvores e Chame-Chame não foi descoberta (o coletor lê a cidade e guarda só os do bairro); a variação dos VLT da RED jogos não é erro (as 7 paradas a 1.000 m são distintas, conferido em teste); o cardápio e o snowball seguem com o download comum.
+
 ## Resultado da auditoria
 
 | Webscript | Coleta auditada | Situação |
