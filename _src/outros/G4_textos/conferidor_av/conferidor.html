@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conferidor de citações</title>
+<style>
+:root {
+  --fundo: #f6f5f2; --painel: #ffffff; --texto: #1d1d1b; --suave: #6b6a65; --borda: #dedcd5;
+  --marca: #c62828; --marca-fundo: #fdecea; --achado: #fff3b0; --ok: #2e7d32; --nao: #c62828; --sem: #8a6d00;
+  --realce: #1f5fa8;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --fundo: #171716; --painel: #222220; --texto: #ecebe6; --suave: #a09f98; --borda: #3a3936;
+    --marca: #ff8a80; --marca-fundo: #3d2020; --achado: #5a4b00; --ok: #81c784; --nao: #ff8a80; --sem: #e0c060;
+    --realce: #8ab4f8; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; font: 15px/1.5 -apple-system, "Segoe UI", sans-serif; background: var(--fundo); color: var(--texto);
+  height: 100vh; display: grid; grid-template-rows: auto 1fr; }
+header { display: flex; gap: 16px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--borda); background: var(--painel); }
+header h1 { font-size: 16px; margin: 0; font-weight: 600; }
+.progresso { flex: 1; height: 6px; background: var(--borda); border-radius: 3px; overflow: hidden; }
+.progresso div { height: 100%; background: var(--ok); width: 0; transition: width .2s; }
+.contagem { color: var(--suave); font-size: 13px; white-space: nowrap; }
+main { display: grid; grid-template-columns: minmax(380px, 42%) 1fr; min-height: 0; }
+.esq { overflow: auto; padding: 16px; border-right: 1px solid var(--borda); display: flex; flex-direction: column; gap: 14px; }
+.dir { display: grid; grid-template-rows: auto 1fr 38%; min-height: 0; }
+.meta { font-size: 13px; color: var(--suave); display: flex; flex-wrap: wrap; gap: 6px 12px; }
+.selo { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; border: 1px solid var(--borda); }
+.selo.ok { color: var(--ok); border-color: var(--ok); } .selo.nao { color: var(--nao); border-color: var(--nao); }
+.selo.sem { color: var(--sem); border-color: var(--sem); }
+.original { background: var(--painel); border: 1px solid var(--borda); border-radius: 6px; padding: 12px; white-space: pre-wrap; word-break: break-word; }
+mark.av { background: var(--marca-fundo); color: var(--marca); font-weight: 600; padding: 0 2px; }
+label { font-size: 13px; color: var(--suave); display: block; margin-bottom: 4px; }
+textarea, input[type=text], select { width: 100%; font: inherit; color: var(--texto); background: var(--painel);
+  border: 1px solid var(--borda); border-radius: 6px; padding: 8px; }
+textarea { min-height: 130px; resize: vertical; }
+.botoes { display: flex; gap: 8px; flex-wrap: wrap; }
+button { font: inherit; display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 6px;
+  border: 1px solid var(--borda); background: var(--painel); color: var(--texto); cursor: pointer; }
+button:hover { border-color: var(--suave); }
+button svg { width: 18px; height: 18px; }
+button.ok { color: var(--ok); } button.nao { color: var(--nao); } button.sem { color: var(--sem); }
+kbd { font-size: 11px; border: 1px solid var(--borda); border-radius: 3px; padding: 0 4px; color: var(--suave); }
+.links a { color: var(--realce); word-break: break-all; }
+.links li { margin-bottom: 4px; } ul { margin: 0; padding-left: 18px; }
+.barra-fonte { display: flex; gap: 8px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--borda); background: var(--painel); }
+.barra-fonte select { flex: 1; }
+.barra-fonte input { width: 64px; }
+iframe { width: 100%; height: 100%; border: 0; background: #888; }
+.pagina { overflow: auto; padding: 12px 16px; border-top: 1px solid var(--borda); background: var(--painel);
+  white-space: pre-wrap; font: 13px/1.5 ui-monospace, Menlo, monospace; }
+.pagina mark { background: var(--achado); color: inherit; }
+.vazio { margin: auto; color: var(--suave); text-align: center; padding: 40px; }
+.feito { border-left: 4px solid var(--ok); padding-left: 10px; }
+.aviso { font-size: 13px; color: var(--sem); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Conferidor de citações</h1>
+  <div class="progresso"><div id="barra"></div></div>
+  <span class="contagem" id="contagem"></span>
+  <button id="aplicar" title="Grava nos .md os cartões marcados como confere">Aplicar nos capítulos</button>
+</header>
+<main>
+  <section class="esq" id="esq"><div class="vazio">Carregando a fila…</div></section>
+  <section class="dir">
+    <div class="barra-fonte">
+      <select id="fonte" title="Obra do acervo"></select>
+      <button id="pAnt" title="Página anterior"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg></button>
+      <input type="text" id="pag" title="Página do PDF">
+      <button id="pProx" title="Próxima página"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg></button>
+    </div>
+    <iframe id="pdf" title="PDF da obra"></iframe>
+    <div class="pagina" id="pagina"></div>
+  </section>
+</main>
+<script>
+const ICONE = {
+  ok: '<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>',
+  nao: '<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>',
+  sem: '<svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636"/></svg>',
+  ant: '<svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>',
+  prox: '<svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>',
+};
+const ROTULO = { confere: 'confere', nao_confere: 'não confere', sem_acesso: 'sem acesso' };
+let cartoes = [], vereditos = {}, i = 0, fonteAtual = null, paginaAtual = 1, termos = [];
+
+const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const marcar = s => esc(s).replace(/`?\[AV(?:[^\]A-Za-z][^\]]*)?\]`?/g, m => `<mark class="av">${m}</mark>`);
+const normal = s => s.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+async function carregar() {
+  const r = await (await fetch('/api/fila')).json();
+  cartoes = r.cartoes; vereditos = r.vereditos;
+  try { const salvo = +localStorage.getItem('conferidor_i'); if (salvo < cartoes.length) i = salvo; } catch (e) {}
+  if (!cartoes.length) { document.getElementById('esq').innerHTML = '<div class="vazio">Nenhum [AV] nos capítulos.</div>'; return; }
+  mostrar();
+}
+
+function progresso() {
+  const feitos = cartoes.filter(c => vereditos[c.id] && vereditos[c.id].texto_original === c.texto).length;
+  document.getElementById('barra').style.width = (100 * feitos / cartoes.length) + '%';
+  document.getElementById('contagem').textContent = `${i + 1} de ${cartoes.length} · ${feitos} com veredito`;
+}
+
+function mostrar() {
+  const c = cartoes[i];
+  try { localStorage.setItem('conferidor_i', i); } catch (e) {}
+  const v = vereditos[c.id] && vereditos[c.id].texto_original === c.texto ? vereditos[c.id] : null;
+  const onde = c.ocorrencias.map(o => `${o.arquivo.replace('.md', '')}:${o.linha}`).join(', ');
+  const nota = c.nota < 0 ? '<span class="selo sem">sem PDF no acervo</span>'
+    : `<span class="selo ${c.nota >= .7 ? 'ok' : c.nota >= .4 ? 'sem' : 'nao'}">coincidência ${Math.round(c.nota * 100)}%</span>`;
+  const links = c.links.length ? `<div><label>Links da referência</label><ul class="links">${c.links.map(l =>
+    `<li><span class="selo ${l.estado.startsWith('2') || l.estado.startsWith('3') ? 'ok' : 'nao'}">${esc(l.estado)}</span> <a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.url)}</a></li>`).join('')}</ul></div>` : '';
+  const semTexto = c.fontes.some(f => f.sem_texto) ? '<div class="aviso">PDF sem camada de texto (escaneado): a busca não acha o trecho; a página é só a provável.</div>' : '';
+  document.getElementById('esq').innerHTML = `
+    <div class="meta"><span>${c.referencia ? 'Referência' : 'Citação no texto'}</span><span>${c.marcas} marca(s)</span>${nota}
+      <span title="${esc(onde)}">${c.ocorrencias.length > 1 ? c.ocorrencias.length + ' ocorrências: ' : ''}${esc(onde)}</span></div>
+    ${v ? `<div class="feito">Veredito: <strong>${ROTULO[v.veredito] || v.veredito}</strong>${v.aplicado === 'sim' ? ' (aplicado)' : ''} · ${esc(v.data)}</div>` : ''}
+    <div><label>Linha no capítulo</label><div class="original">${marcar(c.texto)}</div></div>
+    ${links}${semTexto}
+    <div><label for="novo">Texto revisado (entra no .md com "confere"; ajuste a página ou o trecho aqui) <kbd>⌘ Enter</kbd></label>
+      <textarea id="novo">${esc(v ? v.texto_novo || c.sugerido : c.sugerido)}</textarea></div>
+    <div><label for="nota">Nota (opcional: o que não confere, onde procurar)</label>
+      <input type="text" id="nota" value="${esc(v ? v.nota : '')}"></div>
+    <div class="botoes">
+      <button class="ok" data-v="confere">${ICONE.ok} Confere <kbd>1</kbd></button>
+      <button class="nao" data-v="nao_confere">${ICONE.nao} Não confere <kbd>2</kbd></button>
+      <button class="sem" data-v="sem_acesso">${ICONE.sem} Sem acesso <kbd>3</kbd></button>
+    </div>
+    <div class="botoes">
+      <button id="ant">${ICONE.ant} Anterior <kbd>←</kbd></button>
+      <button id="prox">Próximo ${ICONE.prox} <kbd>→</kbd></button>
+    </div>`;
+  document.querySelectorAll('[data-v]').forEach(b => b.onclick = () => decidir(b.dataset.v));
+  document.getElementById('ant').onclick = () => ir(-1);
+  document.getElementById('prox').onclick = () => ir(1);
+  const sel = document.getElementById('fonte');
+  sel.innerHTML = c.fontes.length ? c.fontes.map((f, k) =>
+    `<option value="${k}">${esc(f.arquivo)} · p. ${f.pagina} · ${Math.round(f.coincidencia * 100)}%</option>`).join('')
+    : '<option>Sem PDF no acervo para esta linha</option>';
+  sel.onchange = () => abrirFonte(+sel.value);
+  if (c.fontes.length) abrirFonte(0, v && v.pagina ? +v.pagina : null);
+  else { fonteAtual = null; document.getElementById('pdf').src = 'about:blank'; document.getElementById('pagina').textContent = ''; }
+  progresso();
+}
+
+function abrirFonte(k, pagina) {
+  const c = cartoes[i]; fonteAtual = c.fontes[k]; termos = fonteAtual.termos || [];
+  irPagina(pagina || fonteAtual.pagina, true);
+}
+
+async function irPagina(p, recarregar) {
+  if (!fonteAtual) return;
+  paginaAtual = Math.max(1, p);
+  document.getElementById('pag').value = paginaAtual;
+  const src = '/pdf/' + encodeURIComponent(fonteAtual.arquivo).replace(/%2F/g, '/') + '#page=' + paginaAtual;
+  const quadro = document.getElementById('pdf');
+  // o leitor de PDF só obedece #page numa carga nova
+  quadro.src = 'about:blank'; setTimeout(() => quadro.src = src, 30);
+  const r = await (await fetch(`/api/pagina?f=${encodeURIComponent(fonteAtual.arquivo)}&p=${paginaAtual}`)).json();
+  let html = esc(r.texto || '(página sem texto extraível)');
+  const alvo = termos.filter(t => !t.startsWith('art.'));
+  if (alvo.length) {
+    // realça, na página, as palavras da frase citada (sem acento e sem caixa)
+    const norm = normal(r.texto || '');
+    const pos = [];
+    for (const t of alvo) { let k = -1; while ((k = norm.indexOf(t, k + 1)) >= 0) pos.push([k, k + t.length]); }
+    pos.sort((a, b) => a[0] - b[0]);
+    let saida = '', ult = 0; const bruto = r.texto || '';
+    for (const [a, b] of pos) { if (a < ult) continue; saida += esc(bruto.slice(ult, a)) + '<mark>' + esc(bruto.slice(a, b)) + '</mark>'; ult = b; }
+    html = saida + esc(bruto.slice(ult));
+  }
+  document.getElementById('pagina').innerHTML = `<div class="meta">Texto extraído da p. ${paginaAtual} de ${r.total}; em amarelo, palavras da frase citada</div>${html}`;
+  const primeira = document.querySelector('#pagina mark'); if (primeira) primeira.scrollIntoView({ block: 'center' });
+}
+
+async function decidir(veredito) {
+  const c = cartoes[i];
+  const corpo = { id: c.id, veredito, texto_novo: document.getElementById('novo').value.trim(),
+    nota: document.getElementById('nota').value.trim(), fonte: fonteAtual ? fonteAtual.arquivo : '',
+    pagina: fonteAtual ? String(paginaAtual) : '' };
+  const r = await fetch('/api/veredito', { method: 'POST', body: JSON.stringify(corpo) });
+  if (!r.ok) { alert('Não gravou o veredito.'); return; }
+  vereditos[c.id] = { ...corpo, texto_original: c.texto, data: 'agora', aplicado: '' };
+  ir(1);
+}
+
+function ir(d) { i = Math.min(cartoes.length - 1, Math.max(0, i + d)); mostrar(); }
+
+document.addEventListener('keydown', e => {
+  const campo = ['TEXTAREA', 'INPUT', 'SELECT'].includes(document.activeElement.tagName);
+  if (campo) {
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); decidir('confere'); }
+    if (e.key === 'Escape') document.activeElement.blur();
+    return;
+  }
+  if (e.key === '1') decidir('confere');
+  else if (e.key === '2') decidir('nao_confere');
+  else if (e.key === '3') decidir('sem_acesso');
+  else if (e.key === 'ArrowRight') ir(1);
+  else if (e.key === 'ArrowLeft') ir(-1);
+});
+document.getElementById('pAnt').onclick = () => irPagina(paginaAtual - 1);
+document.getElementById('pProx').onclick = () => irPagina(paginaAtual + 1);
+document.getElementById('pag').onchange = e => irPagina(+e.target.value || 1);
+document.getElementById('aplicar').onclick = async () => {
+  const pendentes = cartoes.filter(c => vereditos[c.id] && vereditos[c.id].veredito === 'confere' && vereditos[c.id].aplicado !== 'sim').length;
+  if (!pendentes) { alert('Nenhum cartão "confere" esperando aplicação.'); return; }
+  if (!confirm(`Gravar ${pendentes} cartão(ões) nos .md? A versão atual de cada capítulo vai antes para textos/capitulos/_arquivo/.`)) return;
+  const r = await (await fetch('/api/aplicar', { method: 'POST', body: '{}' })).json();
+  alert(`${r.aplicados} aplicado(s) em: ${r.arquivos.join(', ') || 'nenhum'}` + (r.falhas.length ? `\nLinha mudou no .md (não aplicado):\n${r.falhas.join('\n')}` : ''));
+  i = 0; carregar();
+};
+carregar();
+</script>
+</body>
+</html>

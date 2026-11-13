@@ -29,6 +29,7 @@ Conferir o manual ou as normas complementares da UFBA e do curso, e as orientaç
   - **Repositório de código:** AUTOR. *Título do repositório*. Ano. Disponível em: URL. Acesso em: ...
 - Referência não conferida fica marcada `[AV]` (a verificar) e não entra na versão final.
 - Citação ainda não verificada na obra fica **em vermelho e em citação direta**: o trecho entre aspas, com `[AV]` e a página provável, para o autor achar o trecho no arquivo da referência. No `.md`, a citação leva `[AV]`; o `gerar_docx_capitulo.js` pinta a frase de vermelho (`--vermelho` com os autores que ainda têm `[AV]`). Ao gerar uma versão nova, o Claude compara com o `.docx` da versão anterior: citação que saiu em vermelho e o autor deixou em preto foi **conferida** — perde o `[AV]`, volta a ser citação indireta (paráfrase com a página) e entra em `bibliografia/citacoes_conferidas.md`.
+- Caminho mais rápido para os `[AV]`: o conferidor (`python3 _src/outros/G4_textos/conferidor_av/conferidor.py`, fila em http://127.0.0.1:8765). Um cartão por linha com `[AV]` (a referência repetida em vários capítulos conta uma vez), com o PDF de `bibliografia/` aberto na página em que achou a frase e o estado dos links. O autor revisa o texto do cartão e dá o veredito (`1` confere, `2` não confere, `3` sem acesso), gravado em `bibliografia/conferencia_av.csv`; "Aplicar nos capítulos" (ou `conferidor.py aplicar`) arquiva os `.md`, troca as linhas conferidas e registra as citações do texto em `citacoes_conferidas.md`.
 
 ## Tabelas, quadros e figuras
 

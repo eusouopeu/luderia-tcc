@@ -5,7 +5,7 @@ Atualizado em 13/11/2026. **TMin v35** em `textos/TCC_luderia_v35.docx` e `.pdf`
 ## Fazendo agora (no máximo duas frentes)
 
 1. **Revisão da v35 pelo autor:** conferir o resumo estruturado, o primeiro parágrafo do cap. 1 (falta fonte para a tendência, D88) e a formatação nova e conferir no PDF as Tabelas 4.1, 6.2 e 9.2 a 9.6 e o Quadro 10.2 (aluguel pessimista virou risco alto, D87).
-2. **Fechamento para a banca:** citações `[AV]`, ajustes de formatação (teto de 120 páginas) e gravação da apresentação (roteiro de 23 slides e 18 minutos em [roteiro_apresentacao.md](textos/_planejamento/roteiro_apresentacao.md)).
+2. **Fechamento para a banca:** citações `[AV]` (58 linhas; conferir pelo conferidor, `python3 _src/outros/G4_textos/conferidor_av/conferidor.py`, regras em `10_biblio-apendices.md`), ajustes de formatação (teto de 120 páginas) e gravação da apresentação (roteiro de 23 slides e 18 minutos em [roteiro_apresentacao.md](textos/_planejamento/roteiro_apresentacao.md)).
 
 ## Próximos 3 passos
 

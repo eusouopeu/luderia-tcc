@@ -91,3 +91,6 @@ Icon?
 textos/planilhas/_arquivo/2026-10-30_*
 # Bloco B1: fotos de couvert e entradas (material de terceiros)
 dados/B1_cardapios/_dados-brutos/precificacao_promocoes/
+
+# Conferidor de [AV]: texto extraído dos PDFs e estado dos links (cache local)
+_src/outros/G4_textos/conferidor_av/_cache/
