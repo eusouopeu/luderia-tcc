@@ -33,3 +33,11 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 **Antes**: `B2-a_gasto_por_pessoa.py` (02/11/2026) usa R$ 34 a R$ 44 por dia (CNN Brasil, 02/10/2024).
 **Depois**: o cardápio do B1 e `B2-a_retorno_e_clusters.py` usam R$ 0 (página inicial do site: "não cobra por tempo nem por jogo").
 **Efeitos colaterais**: a cesta de consumo da Ludus no B2 (R$ 122) e o gasto por cesta que apoia a R06 usam um valor que o site da casa nega; nos grupos de preço, a Ludus entra como casa sem cobrança.
+
+## 2026/11/13
+
+### 03:54
+**Objeto**: Quadro 7.1 de `textos/capitulos/7_plano_operacional.md` × seção 6.6 e Tabela 6.2 de `6_plano_de_marketing.md` (e caps. 9 e 10)
+**Antes**: o Quadro 7.1 traz 7,73 horas de pico equivalentes por dia de fim de semana, 4,98 por dia útil e circulação pessimista de 3,87 pessoas por hora.
+**Depois**: a seção 6.6, a Tabela 6.2 e os caps. 9 e 10 trazem 7,69, 4,90 e 3,89 (dados de 13/11).
+**Efeitos colaterais**: a conta da linha "Demanda provável" do Quadro 7.1 dá 38,9 pessoas por dia aberto com os valores antigos, contra 38,5 na Tabela 9.6; o arredondamento para 39 esconde a diferença, mas os fatores não fecham entre os capítulos.
