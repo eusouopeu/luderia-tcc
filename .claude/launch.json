@@ -27,7 +27,8 @@
       "name": "conferidor-av",
       "runtimeExecutable": "python3",
       "runtimeArgs": [
-        "_src/outros/G4_textos/conferidor_av/conferidor.py"
+        "_src/outros/G4_textos/conferidor_av/conferidor.py",
+        "--sem-navegador"
       ],
       "port": 8765
     }

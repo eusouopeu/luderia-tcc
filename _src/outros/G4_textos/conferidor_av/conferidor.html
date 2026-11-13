@@ -7,47 +7,56 @@
 <style>
 :root {
   --fundo: #f6f5f2; --painel: #ffffff; --texto: #1d1d1b; --suave: #6b6a65; --borda: #dedcd5;
-  --marca: #c62828; --marca-fundo: #fdecea; --achado: #fff3b0; --ok: #2e7d32; --nao: #c62828; --sem: #8a6d00;
+  --marca: #c62828; --marca-fundo: #fdecea; --achado: #fff3b0; --frase: #e3edf9; --ok: #2e7d32; --nao: #c62828; --sem: #8a6d00;
   --realce: #1f5fa8;
 }
 @media (prefers-color-scheme: dark) {
   :root { --fundo: #171716; --painel: #222220; --texto: #ecebe6; --suave: #a09f98; --borda: #3a3936;
-    --marca: #ff8a80; --marca-fundo: #3d2020; --achado: #5a4b00; --ok: #81c784; --nao: #ff8a80; --sem: #e0c060;
+    --marca: #ff8a80; --marca-fundo: #3d2020; --achado: #5a4b00; --frase: #1e3350; --ok: #81c784; --nao: #ff8a80; --sem: #e0c060;
     --realce: #8ab4f8; }
 }
 * { box-sizing: border-box; }
 body { margin: 0; font: 15px/1.5 -apple-system, "Segoe UI", sans-serif; background: var(--fundo); color: var(--texto);
   height: 100vh; display: grid; grid-template-rows: auto 1fr; }
-header { display: flex; gap: 16px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--borda); background: var(--painel); }
-header h1 { font-size: 16px; margin: 0; font-weight: 600; }
-.progresso { flex: 1; height: 6px; background: var(--borda); border-radius: 3px; overflow: hidden; }
+header { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--borda); background: var(--painel); }
+header h1 { font-size: 16px; margin: 0; font-weight: 600; white-space: nowrap; }
+.progresso { flex: 1; min-width: 60px; height: 6px; background: var(--borda); border-radius: 3px; overflow: hidden; }
 .progresso div { height: 100%; background: var(--ok); width: 0; transition: width .2s; }
 .contagem { color: var(--suave); font-size: 13px; white-space: nowrap; }
 main { display: grid; grid-template-columns: minmax(380px, 42%) 1fr; min-height: 0; }
 .esq { overflow: auto; padding: 16px; border-right: 1px solid var(--borda); display: flex; flex-direction: column; gap: 14px; }
 .dir { display: grid; grid-template-rows: auto 1fr 38%; min-height: 0; }
 .meta { font-size: 13px; color: var(--suave); display: flex; flex-wrap: wrap; gap: 6px 12px; }
+.grupo { font-size: 13px; color: var(--suave); }
+.grupo strong { color: var(--texto); font-weight: 600; }
 .selo { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; border: 1px solid var(--borda); }
 .selo.ok { color: var(--ok); border-color: var(--ok); } .selo.nao { color: var(--nao); border-color: var(--nao); }
 .selo.sem { color: var(--sem); border-color: var(--sem); }
 .original { background: var(--painel); border: 1px solid var(--borda); border-radius: 6px; padding: 12px; white-space: pre-wrap; word-break: break-word; }
 mark.av { background: var(--marca-fundo); color: var(--marca); font-weight: 600; padding: 0 2px; }
+.frase { background: var(--frase); border-radius: 2px; }
+.tarefas { border: 1px solid var(--sem); color: var(--sem); border-radius: 6px; padding: 8px 12px; font-size: 14px; }
+.tarefas ul { margin: 4px 0 0; }
 label { font-size: 13px; color: var(--suave); display: block; margin-bottom: 4px; }
 textarea, input[type=text], select { width: 100%; font: inherit; color: var(--texto); background: var(--painel);
   border: 1px solid var(--borda); border-radius: 6px; padding: 8px; }
 textarea { min-height: 130px; resize: vertical; }
+.campos { display: grid; grid-template-columns: 150px 1fr; gap: 10px; }
 .botoes { display: flex; gap: 8px; flex-wrap: wrap; }
 button { font: inherit; display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 6px;
-  border: 1px solid var(--borda); background: var(--painel); color: var(--texto); cursor: pointer; }
+  border: 1px solid var(--borda); background: var(--painel); color: var(--texto); cursor: pointer; white-space: nowrap; }
 button:hover { border-color: var(--suave); }
-button svg { width: 18px; height: 18px; }
+button svg { width: 18px; height: 18px; flex: none; }
 button.ok { color: var(--ok); } button.nao { color: var(--nao); } button.sem { color: var(--sem); }
+button.chip { padding: 2px 8px; font-size: 12px; border-radius: 10px; }
+button.chip.atual { border-color: var(--realce); color: var(--realce); }
 kbd { font-size: 11px; border: 1px solid var(--borda); border-radius: 3px; padding: 0 4px; color: var(--suave); }
 .links a { color: var(--realce); word-break: break-all; }
 .links li { margin-bottom: 4px; } ul { margin: 0; padding-left: 18px; }
-.barra-fonte { display: flex; gap: 8px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--borda); background: var(--painel); }
-.barra-fonte select { flex: 1; }
+.barra-fonte { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--borda); background: var(--painel); }
+.barra-fonte select { flex: 1; min-width: 200px; }
 .barra-fonte input { width: 64px; }
+.achados { display: flex; gap: 6px; align-items: center; font-size: 12px; color: var(--suave); width: 100%; }
 iframe { width: 100%; height: 100%; border: 0; background: #888; }
 .pagina { overflow: auto; padding: 12px 16px; border-top: 1px solid var(--borda); background: var(--painel);
   white-space: pre-wrap; font: 13px/1.5 ui-monospace, Menlo, monospace; }
@@ -55,6 +64,17 @@ iframe { width: 100%; height: 100%; border: 0; background: #888; }
 .vazio { margin: auto; color: var(--suave); text-align: center; padding: 40px; }
 .feito { border-left: 4px solid var(--ok); padding-left: 10px; }
 .aviso { font-size: 13px; color: var(--sem); }
+dialog { border: 1px solid var(--borda); border-radius: 8px; background: var(--painel); color: var(--texto);
+  width: min(760px, 92vw); max-height: 80vh; padding: 0; }
+dialog::backdrop { background: rgb(0 0 0 / .35); }
+.dlg-topo { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--borda);
+  position: sticky; top: 0; background: var(--painel); }
+.dlg-topo h2 { font-size: 15px; margin: 0; }
+.dlg-corpo { padding: 12px 16px; }
+.dlg-corpo h3 { font-size: 14px; margin: 12px 0 6px; }
+.item { padding: 8px 10px; border: 1px solid var(--borda); border-radius: 6px; margin-bottom: 8px; cursor: pointer; }
+.item:hover { border-color: var(--realce); }
+.item small { color: var(--suave); display: block; }
 </style>
 </head>
 <body>
@@ -62,70 +82,114 @@ iframe { width: 100%; height: 100%; border: 0; background: #888; }
   <h1>Conferidor de citações</h1>
   <div class="progresso"><div id="barra"></div></div>
   <span class="contagem" id="contagem"></span>
-  <button id="aplicar" title="Grava nos .md os cartões marcados como confere">Aplicar nos capítulos</button>
+  <button id="pendente" title="Próximo cartão sem veredito (N)"></button>
+  <button id="faltam" title="Obras citadas sem PDF no acervo"></button>
+  <button id="relatorio" title="Cartões com &quot;não confere&quot; ou &quot;sem acesso&quot;"></button>
+  <button id="aplicar" title="Grava nos .md os cartões marcados como confere"></button>
 </header>
 <main>
   <section class="esq" id="esq"><div class="vazio">Carregando a fila…</div></section>
   <section class="dir">
     <div class="barra-fonte">
-      <select id="fonte" title="Obra do acervo"></select>
-      <button id="pAnt" title="Página anterior"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg></button>
+      <select id="fonte" title="Obra do cartão: as sugeridas ou qualquer PDF do acervo (a escolha fica guardada)"></select>
+      <button id="pAnt" title="Página anterior"></button>
       <input type="text" id="pag" title="Página do PDF">
-      <button id="pProx" title="Próxima página"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg></button>
+      <button id="pProx" title="Próxima página"></button>
+      <div class="achados" id="achados"></div>
     </div>
     <iframe id="pdf" title="PDF da obra"></iframe>
     <div class="pagina" id="pagina"></div>
   </section>
 </main>
+<dialog id="dlg"><div class="dlg-topo"><h2 id="dlgTitulo"></h2><button id="dlgFechar" title="Fechar"></button></div><div class="dlg-corpo" id="dlgCorpo"></div></dialog>
 <script>
+// Heroicons (outline, 24px)
+const svg = (d, w = 1.8) => `<svg fill="none" viewBox="0 0 24 24" stroke-width="${w}" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="${d}"/></svg>`;
 const ICONE = {
-  ok: '<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>',
-  nao: '<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>',
-  sem: '<svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636"/></svg>',
-  ant: '<svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>',
-  prox: '<svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>',
+  ok: svg('m4.5 12.75 6 6 9-13.5', 2),
+  nao: svg('M6 18 18 6M6 6l12 12', 2),
+  sem: svg('M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636'),
+  ant: svg('M15.75 19.5 8.25 12l7.5-7.5'),
+  prox: svg('m8.25 4.5 7.5 7.5-7.5 7.5'),
+  pendente: svg('m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5'),
+  lupa: svg('m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z'),
+  lista: svg('M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z'),
+  gravar: svg('M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3'),
+  fechar: svg('M6 18 18 6M6 6l12 12'),
 };
 const ROTULO = { confere: 'confere', nao_confere: 'não confere', sem_acesso: 'sem acesso' };
-let cartoes = [], vereditos = {}, i = 0, fonteAtual = null, paginaAtual = 1, termos = [];
+let cartoes = [], vereditos = {}, acervo = [], i = 0, fonteAtual = null, paginaAtual = 1, termos = [];
 
-const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const marcar = s => esc(s).replace(/`?\[AV(?:[^\]A-Za-z][^\]]*)?\]`?/g, m => `<mark class="av">${m}</mark>`);
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const normal = s => s.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const vereditoDe = c => vereditos[c.id] && vereditos[c.id].texto_original === c.texto ? vereditos[c.id] : null;
+const pct = x => Math.round(x * 100) + '%';
 
-async function carregar() {
+$('pendente').innerHTML = `${ICONE.pendente} Próximo pendente <kbd>N</kbd>`;
+$('faltam').innerHTML = `${ICONE.lupa} Obras que faltam`;
+$('relatorio').innerHTML = `${ICONE.lista} Pendências`;
+$('aplicar').innerHTML = `${ICONE.gravar} Aplicar nos capítulos`;
+$('pAnt').innerHTML = ICONE.ant; $('pProx').innerHTML = ICONE.prox; $('dlgFechar').innerHTML = ICONE.fechar;
+
+async function carregar(irPara) {
   const r = await (await fetch('/api/fila')).json();
-  cartoes = r.cartoes; vereditos = r.vereditos;
-  try { const salvo = +localStorage.getItem('conferidor_i'); if (salvo < cartoes.length) i = salvo; } catch (e) {}
-  if (!cartoes.length) { document.getElementById('esq').innerHTML = '<div class="vazio">Nenhum [AV] nos capítulos.</div>'; return; }
+  cartoes = r.cartoes; vereditos = r.vereditos; acervo = r.acervo;
+  if (!cartoes.length) { $('esq').innerHTML = '<div class="vazio">Nenhum [AV] nos capítulos.</div>'; return; }
+  let salvo = null;
+  try { salvo = localStorage.getItem('conferidor_id'); } catch (e) {}
+  const k = cartoes.findIndex(c => c.id === (irPara || salvo));
+  i = k >= 0 ? k : Math.max(0, cartoes.findIndex(c => !vereditoDe(c)));
   mostrar();
 }
 
 function progresso() {
-  const feitos = cartoes.filter(c => vereditos[c.id] && vereditos[c.id].texto_original === c.texto).length;
-  document.getElementById('barra').style.width = (100 * feitos / cartoes.length) + '%';
-  document.getElementById('contagem').textContent = `${i + 1} de ${cartoes.length} · ${feitos} com veredito`;
+  const feitos = cartoes.filter(vereditoDe).length;
+  $('barra').style.width = (100 * feitos / cartoes.length) + '%';
+  $('contagem').textContent = `${i + 1} de ${cartoes.length} · ${feitos} com veredito`;
+}
+
+// linha do capítulo com a frase de cada marca em azul e a marca em vermelho
+function linhaMarcada(c) {
+  let html = '', ult = 0;
+  for (const m of c.posicoes) {
+    html += esc(c.texto.slice(ult, m.frase));
+    if (m.ini > m.frase) html += `<span class="frase">${esc(c.texto.slice(m.frase, m.ini))}</span>`;
+    html += `<mark class="av">${esc(c.texto.slice(m.ini, m.fim))}</mark>`;
+    ult = m.fim;
+  }
+  return html + esc(c.texto.slice(ult));
 }
 
 function mostrar() {
   const c = cartoes[i];
-  try { localStorage.setItem('conferidor_i', i); } catch (e) {}
-  const v = vereditos[c.id] && vereditos[c.id].texto_original === c.texto ? vereditos[c.id] : null;
+  try { localStorage.setItem('conferidor_id', c.id); } catch (e) {}
+  const v = vereditoDe(c);
   const onde = c.ocorrencias.map(o => `${o.arquivo.replace('.md', '')}:${o.linha}`).join(', ');
   const nota = c.nota < 0 ? '<span class="selo sem">sem PDF no acervo</span>'
-    : `<span class="selo ${c.nota >= .7 ? 'ok' : c.nota >= .4 ? 'sem' : 'nao'}">coincidência ${Math.round(c.nota * 100)}%</span>`;
+    : `<span class="selo ${c.nota >= .7 ? 'ok' : c.nota >= .4 ? 'sem' : 'nao'}">coincidência ${pct(c.nota)}</span>`;
+  const doGrupo = cartoes.filter(x => x.grupo === c.grupo);
+  const tarefas = c.posicoes.map(m => m.tarefa).filter(Boolean);
   const links = c.links.length ? `<div><label>Links da referência</label><ul class="links">${c.links.map(l =>
     `<li><span class="selo ${l.estado.startsWith('2') || l.estado.startsWith('3') ? 'ok' : 'nao'}">${esc(l.estado)}</span> <a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.url)}</a></li>`).join('')}</ul></div>` : '';
   const semTexto = c.fontes.some(f => f.sem_texto) ? '<div class="aviso">PDF sem camada de texto (escaneado): a busca não acha o trecho; a página é só a provável.</div>' : '';
-  document.getElementById('esq').innerHTML = `
+  const semFonte = c.fontes.length ? '' : `<div class="aviso">Sem PDF sugerido. Escolha a obra em "Todo o acervo", à direita, ou procure a obra (${esc(c.obra)}) e salve-a em bibliografia/.</div>`;
+  $('esq').innerHTML = `
     <div class="meta"><span>${c.referencia ? 'Referência' : 'Citação no texto'}</span><span>${c.marcas} marca(s)</span>${nota}
       <span title="${esc(onde)}">${c.ocorrencias.length > 1 ? c.ocorrencias.length + ' ocorrências: ' : ''}${esc(onde)}</span></div>
+    <div class="grupo">Obra: <strong>${esc(c.grupo)}</strong> · cartão ${doGrupo.indexOf(c) + 1} de ${doGrupo.length} da obra</div>
     ${v ? `<div class="feito">Veredito: <strong>${ROTULO[v.veredito] || v.veredito}</strong>${v.aplicado === 'sim' ? ' (aplicado)' : ''} · ${esc(v.data)}</div>` : ''}
-    <div><label>Linha no capítulo</label><div class="original">${marcar(c.texto)}</div></div>
-    ${links}${semTexto}
-    <div><label for="novo">Texto revisado (entra no .md com "confere"; ajuste a página ou o trecho aqui) <kbd>⌘ Enter</kbd></label>
+    ${tarefas.length ? `<div class="tarefas">O que conferir:<ul>${tarefas.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
+    <div><label>Linha no capítulo (em azul, a frase que cada marca confere)</label><div class="original">${linhaMarcada(c)}</div></div>
+    ${links}${semTexto}${semFonte}
+    <div><label for="novo">Texto revisado (com "confere", substitui a linha inteira no .md) <kbd>⌘ Enter</kbd></label>
       <textarea id="novo">${esc(v ? v.texto_novo || c.sugerido : c.sugerido)}</textarea></div>
-    <div><label for="nota">Nota (opcional: o que não confere, onde procurar)</label>
-      <input type="text" id="nota" value="${esc(v ? v.nota : '')}"></div>
+    <div class="campos">
+      <div><label for="pimp" title="A página do livro, que vai para citacoes_conferidas.md; vazia, vai a do PDF">Página impressa</label>
+        <input type="text" id="pimp" value="${esc(v ? v.pagina_impressa || '' : c.pagina_citada)}" placeholder="ex.: 92"></div>
+      <div><label for="nota">Nota (opcional: o que não confere, onde procurar)</label>
+        <input type="text" id="nota" value="${esc(v ? v.nota : '')}"></div>
+    </div>
     <div class="botoes">
       <button class="ok" data-v="confere">${ICONE.ok} Confere <kbd>1</kbd></button>
       <button class="nao" data-v="nao_confere">${ICONE.nao} Não confere <kbd>2</kbd></button>
@@ -136,84 +200,159 @@ function mostrar() {
       <button id="prox">Próximo ${ICONE.prox} <kbd>→</kbd></button>
     </div>`;
   document.querySelectorAll('[data-v]').forEach(b => b.onclick = () => decidir(b.dataset.v));
-  document.getElementById('ant').onclick = () => ir(-1);
-  document.getElementById('prox').onclick = () => ir(1);
-  const sel = document.getElementById('fonte');
-  sel.innerHTML = c.fontes.length ? c.fontes.map((f, k) =>
-    `<option value="${k}">${esc(f.arquivo)} · p. ${f.pagina} · ${Math.round(f.coincidencia * 100)}%</option>`).join('')
-    : '<option>Sem PDF no acervo para esta linha</option>';
-  sel.onchange = () => abrirFonte(+sel.value);
-  if (c.fontes.length) abrirFonte(0, v && v.pagina ? +v.pagina : null);
-  else { fonteAtual = null; document.getElementById('pdf').src = 'about:blank'; document.getElementById('pagina').textContent = ''; }
+  $('ant').onclick = () => ir(-1);
+  $('prox').onclick = () => ir(1);
+  montarSeletor(c);
+  const k = v && v.fonte ? Math.max(0, c.fontes.findIndex(f => f.arquivo === v.fonte)) : 0;
+  if (c.fontes.length) abrirFonte(k, v && v.pagina && c.fontes[k].arquivo === v.fonte ? +v.pagina : null);
+  else { fonteAtual = null; $('pdf').src = 'about:blank'; $('pagina').textContent = ''; $('achados').innerHTML = ''; $('pag').value = ''; }
   progresso();
 }
 
-function abrirFonte(k, pagina) {
-  const c = cartoes[i]; fonteAtual = c.fontes[k]; termos = fonteAtual.termos || [];
-  irPagina(pagina || fonteAtual.pagina, true);
+function montarSeletor(c) {
+  const sugeridas = c.fontes.map((f, k) =>
+    `<option value="s:${k}">${esc(f.arquivo)} · p. ${f.pagina} · ${pct(f.coincidencia)}${f.escolhida ? ' (escolhida)' : ''}</option>`).join('');
+  const resto = acervo.filter(a => !c.fontes.some(f => f.arquivo === a))
+    .map(a => `<option value="a:${esc(a)}">${esc(a)}</option>`).join('');
+  $('fonte').innerHTML = (sugeridas ? `<optgroup label="Sugeridas">${sugeridas}</optgroup>` : '<option value="">Sem PDF sugerido: escolha no acervo</option>')
+    + `<optgroup label="Todo o acervo">${resto}</optgroup>`;
 }
 
-async function irPagina(p, recarregar) {
+$('fonte').onchange = async e => {
+  const c = cartoes[i], [tipo, valor] = [e.target.value.slice(0, 1), e.target.value.slice(2)];
+  if (!tipo) return;
+  const arquivo = tipo === 's' ? c.fontes[+valor].arquivo : valor;
+  const r = await fetch('/api/fonte', { method: 'POST', body: JSON.stringify({ id: c.id, arquivo }) });
+  const d = await r.json();
+  if (!r.ok) { alert(d.erro || 'Não trocou a obra.'); return; }
+  c.fontes = d.fontes; c.nota = d.nota;
+  // redesenha o cartão (selo e avisos) sem perder o que já foi digitado
+  const digitado = ['novo', 'pimp', 'nota'].map(id => $(id).value);
+  mostrar();
+  ['novo', 'pimp', 'nota'].forEach((id, k) => $(id).value = digitado[k]);
+};
+
+function abrirFonte(k, pagina) {
+  const c = cartoes[i]; fonteAtual = c.fontes[k]; termos = fonteAtual.termos || [];
+  $('fonte').value = 's:' + k;
+  irPagina(pagina || fonteAtual.pagina);
+}
+
+function chips() {
+  const a = (fonteAtual && fonteAtual.achados) || [];
+  $('achados').innerHTML = a.length ? 'Melhores páginas: ' + a.map(x =>
+    `<button class="chip ${x.pagina === paginaAtual ? 'atual' : ''}" data-p="${x.pagina}">p. ${x.pagina} · ${pct(x.coincidencia)}</button>`).join('')
+    : (fonteAtual ? 'Nenhuma página com as palavras da frase' : '');
+  document.querySelectorAll('[data-p]').forEach(b => b.onclick = () => irPagina(+b.dataset.p));
+}
+
+async function irPagina(p) {
   if (!fonteAtual) return;
   paginaAtual = Math.max(1, p);
-  document.getElementById('pag').value = paginaAtual;
+  $('pag').value = paginaAtual;
+  chips();
   const src = '/pdf/' + encodeURIComponent(fonteAtual.arquivo).replace(/%2F/g, '/') + '#page=' + paginaAtual;
-  const quadro = document.getElementById('pdf');
+  const quadro = $('pdf');
   // o leitor de PDF só obedece #page numa carga nova
   quadro.src = 'about:blank'; setTimeout(() => quadro.src = src, 30);
   const r = await (await fetch(`/api/pagina?f=${encodeURIComponent(fonteAtual.arquivo)}&p=${paginaAtual}`)).json();
   let html = esc(r.texto || '(página sem texto extraível)');
   const alvo = termos.filter(t => !t.startsWith('art.'));
-  if (alvo.length) {
+  if (alvo.length && r.texto) {
     // realça, na página, as palavras da frase citada (sem acento e sem caixa)
-    const norm = normal(r.texto || '');
-    const pos = [];
+    const norm = normal(r.texto), pos = [];
     for (const t of alvo) { let k = -1; while ((k = norm.indexOf(t, k + 1)) >= 0) pos.push([k, k + t.length]); }
     pos.sort((a, b) => a[0] - b[0]);
-    let saida = '', ult = 0; const bruto = r.texto || '';
+    let saida = '', ult = 0; const bruto = r.texto;
     for (const [a, b] of pos) { if (a < ult) continue; saida += esc(bruto.slice(ult, a)) + '<mark>' + esc(bruto.slice(a, b)) + '</mark>'; ult = b; }
     html = saida + esc(bruto.slice(ult));
   }
-  document.getElementById('pagina').innerHTML = `<div class="meta">Texto extraído da p. ${paginaAtual} de ${r.total}; em amarelo, palavras da frase citada</div>${html}`;
+  $('pagina').innerHTML = `<div class="meta">Texto extraído da p. ${paginaAtual} de ${r.total} do PDF; em amarelo, palavras da frase citada</div>${html}`;
   const primeira = document.querySelector('#pagina mark'); if (primeira) primeira.scrollIntoView({ block: 'center' });
 }
 
 async function decidir(veredito) {
   const c = cartoes[i];
-  const corpo = { id: c.id, veredito, texto_novo: document.getElementById('novo').value.trim(),
-    nota: document.getElementById('nota').value.trim(), fonte: fonteAtual ? fonteAtual.arquivo : '',
+  const corpo = { id: c.id, veredito, texto_novo: $('novo').value.trim(), nota: $('nota').value.trim(),
+    pagina_impressa: $('pimp').value.trim(), fonte: fonteAtual ? fonteAtual.arquivo : '',
     pagina: fonteAtual ? String(paginaAtual) : '' };
+  if (veredito === 'confere') {
+    if (!corpo.texto_novo) { alert('Texto revisado vazio: com "confere" ele substitui a linha inteira no .md.'); return; }
+    if (/\[AV/.test(corpo.texto_novo)) {
+      if (!confirm('O texto revisado ainda tem [AV]: depois de aplicado, a linha volta para a fila. Gravar assim?')) return;
+      corpo.manter_av = true;
+    }
+  }
   const r = await fetch('/api/veredito', { method: 'POST', body: JSON.stringify(corpo) });
-  if (!r.ok) { alert('Não gravou o veredito.'); return; }
-  vereditos[c.id] = { ...corpo, texto_original: c.texto, data: 'agora', aplicado: '' };
-  ir(1);
+  const d = await r.json();
+  if (!r.ok) { alert('Não gravou o veredito: ' + (d.erro || r.status)); return; }
+  vereditos[c.id] = d.registro;
+  proximoPendente();
 }
 
 function ir(d) { i = Math.min(cartoes.length - 1, Math.max(0, i + d)); mostrar(); }
 
+function proximoPendente() {
+  for (let d = 1; d <= cartoes.length; d++) {
+    const k = (i + d) % cartoes.length;
+    if (!vereditoDe(cartoes[k])) { i = k; mostrar(); return; }
+  }
+  mostrar(); alert('Todos os cartões têm veredito.');
+}
+
+function irPara(id) { const k = cartoes.findIndex(c => c.id === id); if (k >= 0) { i = k; $('dlg').close(); mostrar(); } }
+
+function abrirDialogo(titulo, html) {
+  $('dlgTitulo').textContent = titulo; $('dlgCorpo').innerHTML = html;
+  document.querySelectorAll('#dlgCorpo [data-id]').forEach(el => el.onclick = () => irPara(el.dataset.id));
+  $('dlg').showModal();
+}
+
+$('faltam').onclick = async () => {
+  const grupos = await (await fetch('/api/faltam')).json();
+  const total = grupos.reduce((s, g) => s + g.cartoes, 0);
+  abrirDialogo(`Obras que faltam no acervo (${total} cartões)`, grupos.length ? `<p class="aviso">Da obra que destrava mais cartões para a que destrava menos. Salve o PDF em bibliografia/F*/ e reabra o conferidor.</p>` +
+    grupos.map(g => `<div class="item" data-id="${g.ids[0]}"><strong>${esc(g.obra)}</strong> · ${g.cartoes} cartão(ões)<small>${esc(g.onde.join(', '))}</small></div>`).join('')
+    : '<p>Todos os cartões têm PDF sugerido.</p>');
+};
+
+$('relatorio').onclick = async () => {
+  const itens = await (await fetch('/api/relatorio')).json();
+  const bloco = (v, t) => { const g = itens.filter(x => x.veredito === v); return g.length ? `<h3>${t} (${g.length})</h3>` + g.map(x =>
+    `<div class="item" ${x.atual ? `data-id="${x.id}"` : ''}><strong>${esc(x.onde)}</strong>${x.atual ? '' : ' · a linha mudou no .md'} · ${esc(x.obra || 'sem obra')}<small>${esc(x.nota || 'sem nota')}</small><small>${esc(x.texto.slice(0, 180))}</small></div>`).join('') : ''; };
+  abrirDialogo('Pendências da conferência', itens.length ? bloco('nao_confere', 'Não confere: reescrever ou trocar a fonte') + bloco('sem_acesso', 'Sem acesso: buscar a obra')
+    : '<p>Nenhum cartão com "não confere" ou "sem acesso".</p>');
+};
+
+$('dlgFechar').onclick = () => $('dlg').close();
+$('pendente').onclick = proximoPendente;
+
 document.addEventListener('keydown', e => {
+  if ($('dlg').open) return;
   const campo = ['TEXTAREA', 'INPUT', 'SELECT'].includes(document.activeElement.tagName);
   if (campo) {
     if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); decidir('confere'); }
     if (e.key === 'Escape') document.activeElement.blur();
     return;
   }
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
   if (e.key === '1') decidir('confere');
   else if (e.key === '2') decidir('nao_confere');
   else if (e.key === '3') decidir('sem_acesso');
+  else if (e.key === 'n' || e.key === 'N') proximoPendente();
   else if (e.key === 'ArrowRight') ir(1);
   else if (e.key === 'ArrowLeft') ir(-1);
 });
-document.getElementById('pAnt').onclick = () => irPagina(paginaAtual - 1);
-document.getElementById('pProx').onclick = () => irPagina(paginaAtual + 1);
-document.getElementById('pag').onchange = e => irPagina(+e.target.value || 1);
-document.getElementById('aplicar').onclick = async () => {
-  const pendentes = cartoes.filter(c => vereditos[c.id] && vereditos[c.id].veredito === 'confere' && vereditos[c.id].aplicado !== 'sim').length;
+$('pAnt').onclick = () => irPagina(paginaAtual - 1);
+$('pProx').onclick = () => irPagina(paginaAtual + 1);
+$('pag').onchange = e => irPagina(+e.target.value || 1);
+$('aplicar').onclick = async () => {
+  const pendentes = cartoes.filter(c => { const v = vereditoDe(c); return v && v.veredito === 'confere' && v.aplicado !== 'sim'; }).length;
   if (!pendentes) { alert('Nenhum cartão "confere" esperando aplicação.'); return; }
   if (!confirm(`Gravar ${pendentes} cartão(ões) nos .md? A versão atual de cada capítulo vai antes para textos/capitulos/_arquivo/.`)) return;
   const r = await (await fetch('/api/aplicar', { method: 'POST', body: '{}' })).json();
-  alert(`${r.aplicados} aplicado(s) em: ${r.arquivos.join(', ') || 'nenhum'}` + (r.falhas.length ? `\nLinha mudou no .md (não aplicado):\n${r.falhas.join('\n')}` : ''));
-  i = 0; carregar();
+  alert(`${r.aplicados} aplicado(s) em: ${r.arquivos.join(', ') || 'nenhum'}` + (r.falhas.length ? `\nNão aplicado (a linha mudou no .md ou o texto está vazio):\n${r.falhas.join('\n')}` : ''));
+  await carregar();
 };
 carregar();
 </script>
