@@ -9,7 +9,7 @@ const source = fs.readFileSync(__dirname + '/lista_maps_entorno.js', 'utf8') + '
 function carregar() {
   const ambiente = { __test: {}, localStorage: { getItem: () => null, setItem() {}, removeItem() {} }, location: { href: '', pathname: '/maps/' }, document: { querySelector: () => null, querySelectorAll: () => [] } };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Entorno do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { estadoLocal, proximoLocal, classificar, suspeito, distancia, deslocar, mPorPx, planejarBusca, coberturaReal, lerCartao, lerNumeroAvaliacoes, lerFila, cidadeDoEndereco, unir, nomesParecidos, marcarDuplicatas, mesmoShopping, montarSaida, montarShoppings, precisaSubdividir, decidirLista, cruzamento, quadrantes, colsResumo, nomesArquivos, dataLocal, foraDoMapa, tarefasIniciais, consultasDispensadas, uniaoLocais, classificarNaCidade, gruposAusentes, grupoRevisto, semRetiradas, arquivosExportacao, COLS_BUSCAS, registrarParada });})();';
+    + 'Object.assign(globalThis.__test, { estadoLocal, proximoLocal, classificar, suspeito, distancia, deslocar, mPorPx, planejarBusca, coberturaReal, lerCartao, lerNumeroAvaliacoes, lerFila, cidadeDoEndereco, unir, nomesParecidos, marcarDuplicatas, mesmoShopping, montarSaida, montarShoppings, precisaSubdividir, decidirLista, cruzamento, quadrantes, inserirQuadrantes, colsResumo, nomesArquivos, dataLocal, foraDoMapa, tarefasIniciais, consultasDispensadas, uniaoLocais, classificarNaCidade, gruposAusentes, grupoRevisto, semRetiradas, arquivosExportacao, COLS_BUSCAS, registrarParada });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_entorno.user.js' });
   return ambiente.__test;
 }
@@ -470,6 +470,15 @@ test('busca de shopping sempre se divide em quadrantes (lista oscilava entre col
   assert.equal(t.decidirLista({ n: 3, fim: true, quadrante: 'NE', grupo: 'shopping', algumForaDoMapa: false }), '');
   assert.equal(t.decidirLista({ n: 20, fim: false, quadrante: 'NE', grupo: 'shopping', algumForaDoMapa: false }), 'censura');
   assert.equal(t.decidirLista({ n: 3, fim: true, quadrante: '', grupo: 'metro', algumForaDoMapa: false }), '');
+});
+
+test('quadrantes entram logo depois da busca que os gerou, não no fim da fila', () => {
+  const fila = { tarefa: 0, tarefas: t.tarefasIniciais({ cidade: 'Salvador' }) };
+  t.inserirQuadrantes(fila, fila.tarefas[0]);
+  assert.deepEqual(json(fila.tarefas.map((x) => x.consulta + (x.quadrante ? ` ${x.quadrante}` : ''))),
+    ['estação de metrô', 'estação de metrô NO', 'estação de metrô NE', 'estação de metrô SO', 'estação de metrô SE', 'estação VLT', 'shopping center']);
+  // Quadrante não se divide de novo: a fila de uma casa é finita.
+  assert.notEqual(t.decidirLista({ n: 20, fim: false, quadrante: 'NO', grupo: 'metro', algumForaDoMapa: false }), 'subdividir');
 });
 
 test('exportação traz resumo, resultados, shoppings e buscas, com linha para quem falta', () => {

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Entorno no Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-5
+// @version      2026.11.13-6
 // @description  Conta estações de metrô, de trem, de VLT e shoppings a 500 m e 1000 m de cada estabelecimento no Google Maps (shopping de porte pelo número de avaliações); coleta a lista de estabelecimentos e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -162,7 +162,7 @@
   }
 
   // Versão gravada nos CSVs. Não usa GM_info: pelo carregador, ele dá a versão do carregador.
-  const VERSAO = '2026.11.13-5';
+  const VERSAO = '2026.11.13-6';
   const CHAVE_DADOS = 'tcc-entorno-dados-v2';
   const CHAVE_FILA = 'tcc-entorno-fila-v2';
   const CHAVE_REVISOES = 'tcc-entorno-revisoes';
@@ -688,6 +688,12 @@
       .map(([norte, leste, q]) => ({ consulta: t.consulta, grupo: t.grupo, norte, leste, alcance: d, quadrante: q, tentativas: 0, reducao: 0 }));
   }
 
+  // Quadrantes logo depois da busca que os gerou (até 2026.11.13-5 iam para o fim da fila:
+  // depois do shopping a fila voltava ao metrô e ao shopping, e parecia repetir as buscas).
+  function inserirQuadrantes(fila, t) {
+    fila.tarefas.splice(fila.tarefa + 1, 0, ...quadrantes(t));
+  }
+
   const rotulo = (t) => t.consulta + (t.quadrante ? ` ${t.quadrante}` : '');
   const grupoDaConsulta = (r) => CONSULTAS.find((c) => r.startsWith(c.consulta))?.grupo;
   const chaveLocal = (l) => l.place_id || `${l.lat},${l.lng}`;
@@ -1015,7 +1021,9 @@
   function previsao(fila) {
     if (fila.buscas_feitas < 2) return '';
     const sPorBusca = (Date.now() - fila.inicio) / 1000 / fila.buscas_feitas;
-    const porLocal = fila.locais_fechados ? fila.buscas_em_fechados / fila.locais_fechados : CONSULTAS.length;
+    // Antes da 1ª casa fechada: buscas da casa atual mais os quadrantes que ainda virão
+    // (shopping sempre; estações, em geral).
+    const porLocal = fila.locais_fechados ? fila.buscas_em_fechados / fila.locais_fechados : Math.max(fila.tarefas.length, CONSULTAS.length + 8);
     const restantes = (fila.tarefas.length - fila.tarefa) + (fila.locais.length - fila.pos - 1) * porLocal;
     const min = Math.round((restantes * sPorBusca) / 60);
     return min >= 1 ? ` Faltam ~${min} min.` : ' Falta menos de 1 min.';
@@ -1082,7 +1090,7 @@
     }
     const local = fila.locais[fila.pos];
     const t = fila.tarefas[fila.tarefa];
-    status(`${fila.pos + 1}/${fila.locais.length} · ${local.nome}: lendo "${rotulo(t)}"…`);
+    status(`${fila.pos + 1}/${fila.locais.length} · ${local.nome}: busca ${fila.tarefa + 1}/${fila.tarefas.length}, lendo "${rotulo(t)}"${t.tentativas ? ` (tentativa ${t.tentativas + 1} de ${TENTATIVAS + 1})` : ''}…`);
     const leitura = await lerBusca();
     if (leitura.estado === 'bloqueado') { pausarPorBloqueio(fila); return; }
     const reg = {
@@ -1096,7 +1104,7 @@
     let msg = `"${rotulo(t)}": ${leitura.itens.length} resultados.`;
 
     if (leitura.estado === 'falhou') {
-      if (t.tentativas < TENTATIVAS) { t.tentativas += 1; await seguir(fila, `"${rotulo(t)}" não carregou; tentativa ${t.tentativas + 1}.`); return; }
+      if (t.tentativas < TENTATIVAS) { t.tentativas += 1; await seguir(fila, `"${rotulo(t)}" não carregou; tentativa ${t.tentativas + 1} de ${TENTATIVAS + 1}.`); return; }
       fila.falhas.push(rotulo(t));
       msg = `"${rotulo(t)}" falhou ${TENTATIVAS + 1} vezes; grupo fica em branco.`;
     } else {
@@ -1107,7 +1115,7 @@
         reg.decisao = 'refazer com zoom menor';
         t.tentativas += 1;
         t.reducao += 1;
-        await seguir(fila, `"${rotulo(t)}" cobriu ${cob} m de ${t.alcance} m; refazendo com zoom menor.`);
+        await seguir(fila, `"${rotulo(t)}" cobriu ${cob} m de ${t.alcance} m; refazendo com zoom menor (tentativa ${t.tentativas + 1} de ${TENTATIVAS + 1}).`);
         return;
       }
       if (cob < t.alcance) fila.cobertura_insuf.push(rotulo(t));
@@ -1118,7 +1126,7 @@
         algumForaDoMapa: !!t.busca && leitura.itens.some((r) => foraDoMapa(r, t.busca, janelaAtual())),
       });
       reg.decisao = decisao || 'completa';
-      if (decisao === 'subdividir') { fila.tarefas.push(...quadrantes(t)); fila.subdivididas.push(t.consulta); msg += ' Lista cheia: 4 quadrantes.'; }
+      if (decisao === 'subdividir') { inserirQuadrantes(fila, t); fila.subdivididas.push(t.consulta); msg += ` ${t.grupo === 'shopping' ? 'Shopping sempre se divide' : 'Lista cheia'}: a seguir, a mesma busca em 4 quadrantes (NO, NE, SO, SE).`; }
       if (decisao === 'censura') fila.censura.push(rotulo(t));
     }
 
