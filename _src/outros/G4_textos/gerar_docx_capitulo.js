@@ -244,6 +244,21 @@ function referencia(texto) {
 const REFS = new Set();
 
 let instancia = 0; // contínua entre capítulos, para cada lista numerada recomeçar em 1
+
+// Linha em branco depois de um título quando o que vem a seguir é texto (parágrafo ou lista), e não
+// outro título; antes de legenda, a linha em branco já sai com a própria legenda (1d_formatacao.md).
+function brancoAposTitulo(linhas, i, blocos) {
+  let j = i + 1;
+  while (j < linhas.length) {
+    const t = linhas[j].trim();
+    if (t.startsWith("<!--")) { while (j < linhas.length && !linhas[j].includes("-->")) j++; j++; continue; }
+    if (!t || /^-{3,}$/.test(t) || linhas[j].startsWith(">")) { j++; continue; }
+    break;
+  }
+  const prox = j < linhas.length ? linhas[j] : "";
+  if (prox && !/^#{1,3} /.test(prox) && !/^\*\*(Quadro|Tabela|Figura) [\d.]+/.test(prox)) blocos.push(branco(12, true));
+}
+
 function converte(md, MD, blocos = []) {
   const linhas = md.split("\n");
   let referencias = false;
@@ -259,16 +274,19 @@ function converte(md, MD, blocos = []) {
 
     if (l.startsWith("# ")) {
       blocos.push(titulo1(l.slice(2), blocos.length > 0));
+      brancoAposTitulo(linhas, i, blocos);
     } else if (l.startsWith("## ")) {
       blocos.push(new Paragraph({ heading: HeadingLevel.HEADING_1, keepNext: true,
         children: runs(l.slice(3).toUpperCase(), { bold: false }), spacing: { line: ENTRELINHA, before: 0, after: 0 } }));
+      brancoAposTitulo(linhas, i, blocos);
     } else if (l.startsWith("### ")) {
       blocos.push(new Paragraph({ heading: HeadingLevel.HEADING_2, keepNext: true,
         children: runs(l.slice(4), { bold: true }), spacing: { line: ENTRELINHA, before: 0, after: 0 } }));
+      brancoAposTitulo(linhas, i, blocos);
     } else if (/^\*\*Refer[êe]ncias[^*]*\*\*/.test(l.trim())) {
       // "Referências citadas neste capítulo": como o título 1, sem número (só no capítulo avulso).
       referencias = true;
-      if (!TRABALHO) blocos.push(titulo1(l.trim().replace(/\*\*/g, "").toUpperCase(), true, true));
+      if (!TRABALHO) blocos.push(titulo1(l.trim().replace(/\*\*/g, "").toUpperCase(), true, true), branco(12));
     } else if (/^\*\*(Quadro|Tabela|Figura) [\d.]+/.test(l)) {
       tipoLegenda = l.match(/^\*\*(Quadro|Tabela|Figura)/)[1];
       blocos.push(branco(12, true), legenda(l));
@@ -319,7 +337,7 @@ function trabalho() {
   const chave = (r) => r.replace(/[*`]/g, "").normalize("NFD").replace(/[̀-ͯ]/g, "");
   // Comparação por caractere: o "." do autor sozinho vem antes do ";" da coautoria.
   const ordem = [...REFS].sort((a, b) => (chave(a).toUpperCase() < chave(b).toUpperCase() ? -1 : 1));
-  return [...blocos, titulo1("REFERÊNCIAS", true, true), ...ordem.flatMap(referencia)];
+  return [...blocos, titulo1("REFERÊNCIAS", true, true), branco(12), ...ordem.flatMap(referencia)];
 }
 
 const doc = new Document({

@@ -26,6 +26,10 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D86 — Shopping de porte com vantagem nas avaliações (13/11/2026).** Cap. 5 (5.4.2) e cap. 6 (6.4): com as 63 casas, os 30 concorrentes com shopping a até 1.000 m têm mediana de 753 avaliações, contra 538 dos 28 sem (antes 396 × 663); o texto passou a dizer "vantagem menor" que a do metrô (771 × 317), mas a decisão "o shopping não entra como exigência" foi tomada com o dado antigo. Decisão do autor (Lote de decisões, L32).
 
+**D88 — Tendência do consumo de experiências sem fonte (13/11/2026).** Cap. 1, primeiro parágrafo: "a compra de experiências ganha espaço sobre a compra de produtos e até de serviços" e a migração de restaurantes, bares e academias para a oferta de experiências não têm citação; só o dado da PAS (IBGE) tem fonte. Citar Pine e Gilmore (1998), já no cap. 2 (2.1), ou outra fonte conferida pelo autor.
+
+**D89 — Natureza da pesquisa só no resumo (13/11/2026).** O resumo diz que a pesquisa é "aplicada, descritivo-exploratória e de abordagem mista"; o cap. 3 diz "descritivo-exploratória de abordagem mista (quali-quanti)", mas não diz "aplicada". Acrescentar a natureza no primeiro parágrafo do cap. 3.
+
 **D87 — Aluguel pessimista com VPL negativo na matriz de riscos (13/11/2026).** Cap. 10 (Quadro 10.2): com aluguel e condomínio no pessimista (C04 e C05), o VPL fica em −R$ 7 mil, e o risco passou de médio a alto. O 9.5 e o 10.3 dizem que o aluguel não muda o sinal do VPL dentro da faixa, o que vale só para a C04 sozinha (R$ 29 mil). Ajustar o 9.5 e o 10.3 ou a nota do Quadro 10.2.
 
 

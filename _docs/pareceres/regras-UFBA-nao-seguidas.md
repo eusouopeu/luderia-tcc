@@ -31,7 +31,7 @@ Resolvidos em 13/11/2026 e retirados desta lista: referências à esquerda, em e
 |---|---|---|
 | 3.7 | Orientador precedido da titulação (Orientador: Prof. Dr. ...) (p. 59, 63) | Sem titulação |
 | 3.8 | Resumo antecedido da **referência completa** do trabalho (SOBRENOME, Nome. **Título**: subtítulo. Ano. Orientador: ... nº f. Trabalho de Conclusão de Curso (Bacharelado em Administração) – Escola de Administração, Universidade Federal da Bahia, Salvador, ano.), e o abstract da mesma referência em inglês (p. 69–72) | Sem referência |
-| 3.9 | Resumo sem siglas, citações, fórmulas e frases negativas; primeira frase diz o tema e a categoria (TCC); explicita natureza, abordagem, objetivos, procedimentos, técnicas, população e lócus da pesquisa (p. 69) | Usa IBGE e Fipe; não declara natureza (aplicada), abordagem (quantitativa/qualiquanti), objetivos (descritiva/exploratória) e procedimentos (documental, estudo de campo) |
+| 3.9 | Resumo sem siglas, citações, fórmulas e frases negativas; primeira frase diz o tema e a categoria (TCC); explicita natureza, abordagem, objetivos, procedimentos, técnicas, população e lócus da pesquisa (p. 69) | Em parte (v35): partes indicadas, sem siglas, com natureza, objetivos e abordagem; falta nomear os procedimentos (documental, estudo de campo) |
 | 3.10 | Palavras-chave em minúsculas (salvo nomes próprios), separadas por ponto e vírgula, com ponto no fim (p. 70) | Já segue; conferir só o *Keywords* |
 | 3.11 | Listas e sumário em tabela de três colunas sem bordas (número, título, página) (p. 73–74). Recomendação, não obrigação | Tabulação com pontilhado |
 | 3.12 | Lista de símbolos, se houver, na ordem em que aparecem (p. 73) | Sem lista; avaliar se as fórmulas do cap. 9 (VPL, TIR) usam símbolos que pedem uma |
