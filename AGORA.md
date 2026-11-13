@@ -9,7 +9,7 @@ Atualizado em 13/11/2026. **TMin v35** em `textos/TCC_luderia_v35.docx` e `.pdf`
 
 ## Próximos 3 passos
 
-1. Responder o "Lote de decisões" ([pendências](_docs/pendencias.md)): L1, L20 a L24, L27, L29, L30 e L32 (shopping no entorno).
+1. Responder o "Lote de decisões" ([pendências](_docs/pendencias.md)): L1, L20 a L24, L27, L29, L30, L31 (pedidos de 12/11 fora do desenho atual: taxa pela mediana, dia útil pelos histogramas, circulação da Paralela, 130 m²) e L32 (shopping no entorno).
 2. Recoletar o entorno com o coletor 2026.11.13-6 e regerar os números do 5.4.2 e do 6.4 (a v33 usa a coleta de 12/11, que pode subcontar estações de metrô).
 3. Regras da UFBA ainda abertas ([parecer](_docs/pareceres/regras-UFBA-nao-seguidas.md)): citações em versal capitular, números de um a dez por extenso, referência antes do resumo e titulação do orientador.
 

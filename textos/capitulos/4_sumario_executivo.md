@@ -25,7 +25,3 @@ Fonte: elaborado pelo próprio autor, com base no modelo financeiro (Apêndice E
 Nota: faixa do Monte Carlo (P10, mediana e P90) na Tabela 9.4.
 
 O negócio é viável nas premissas prováveis: o VPL é de R$ 213 mil (Tabela 4.1) e segue positivo sem o valor residual, por pouco (R$ 5 mil). A TIR de 28,9% repousa em quatro visitas a uma só concorrente e deve ser lida como faixa, e não como previsão. A viabilidade depende de duas premissas, a circulação no pico e o gasto por pessoa, que têm ruptura cerca de 7% a 8% abaixo do provável (seção 10.3). A margem é estreita na circulação: a ruptura, de 5,95 pessoas por hora, fica acima da mediana das quatro visitas, de 5,08. Na simulação de Monte Carlo, o VPL fica positivo em 60,4% dos cenários, de −R$ 410 mil no P10 a R$ 1,45 milhão no P90, com as hipóteses do Apêndice G. O desenho enxuto limita a perda máxima: a expansão só acontece quando a demanda medida pede, e seis gatilhos mensuráveis acionam medidas de contenção, da mudança na política de taxa de entrada à redução do espaço e do horário (seção 10.4). O fluxo de dia útil não foi medido na observação direta e é a premissa que mais precisa de validação antes do investimento, junto com a cotação do ponto.
-
-**Referências citadas neste capítulo**
-
-IBGE. *Pesquisa Anual de Serviços (PAS)*: tabelas 2611, 2619 e 10758. Rio de Janeiro: IBGE, 2025-2026. Disponível em: https://sidra.ibge.gov.br/tabela/2611, https://sidra.ibge.gov.br/tabela/2619 e https://sidra.ibge.gov.br/tabela/10758. Acesso em: 2 nov. 2026. `[AV ano de cada edição]`

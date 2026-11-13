@@ -135,10 +135,6 @@ Fonte: elaborado pelo próprio autor.
 
 **Referências citadas neste capítulo**
 
-BANCO CENTRAL DO BRASIL (BCB). *Relatório Focus*: expectativas de mercado de 11 set. 2026. Brasília, 2026. Disponível em: https://www.bcb.gov.br/content/focus/focus/R20260911.pdf. Acesso em: 2 nov. 2026.
-
-BANCO CENTRAL DO BRASIL (BCB). *Sistema Gerenciador de Séries Temporais (SGS)*: séries 432, 433, 1619 e 13522. Brasília, 2026. Disponível em: https://www3.bcb.gov.br/sgspub/. Acesso em: 14 out. 2026.
-
 BARDIN, Laurence. *Análise de conteúdo*. Tradução de Luís Antero Reto e Augusto Pinheiro. Lisboa: Edições 70, 2002.
 
 BRASIL. Conselho Nacional de Saúde. Resolução nº 510, de 7 de abril de 2016. Dispõe sobre as normas aplicáveis a pesquisas em Ciências Humanas e Sociais. *Diário Oficial da União*: seção 1, Brasília, DF, 24 maio 2016. Disponível em: https://www.gov.br/conselho-nacional-de-saude/pt-br/atos-normativos/resolucoes/2016/resolucao-no-510.pdf/view. Acesso em: 2 nov. 2026. [AV]
