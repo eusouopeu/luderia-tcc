@@ -12,8 +12,8 @@ horário da São Jogue, convertem as NFC-e por dia em circulação no pico (R04
 pessimista).
 
 Entradas: B1_resumo_estabelecimentos.xlsx (aba estabelecimentos);
-          dados/[B3] Contagem direta de ocupacao/contagem_resumo_visitas.csv
-Saídas em dados/[B1] Estabelecimentos e cardapios/estabelecimentos/:
+          dados/B3_contagem/_dados-agregados/contagem_resumo_visitas.csv
+Saídas em dados/B1_estabelecimentos/_dados-agregados/:
   B1_abertos_por_hora.csv         casas abertas por faixa de hora (linhas) e dia (colunas)
   B1_horas_pico_equivalentes.csv  referência e horas de pico equivalentes por dia, no horário
                                   do plano (casa = plano) e no da São Jogue Bela Vista
@@ -33,8 +33,8 @@ if __name__ == "__main__":
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-PASTA = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos"
-VISITAS = ROOT / "dados" / "[B3] Contagem direta de ocupacao" / "contagem_resumo_visitas.csv"
+PASTA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados"
+VISITAS = ROOT / "dados" / "B3_contagem" / "_dados-agregados" / "contagem_resumo_visitas.csv"
 DIAS = ["segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo"]
 HORAS = range(0, 30)  # 24 a 29 = madrugada do dia seguinte
 # horário do plano (P7 de _instrucoes/1a_principios.md): [abre, fecha)

@@ -13,9 +13,9 @@ autor (N6): público de 20 a 39 anos (50%), renda média dos responsáveis (30%)
 público de 20 a 39 anos por km² (20%). A ordem é testada com três outros
 conjuntos de pesos.
 
-Entradas: dados/[B4] Bases publicas/ponto_operacoes/[B4] População por Bairro 2022 (IBGE Censo).csv;
-          dados/[B4] Bases publicas/ponto_operacoes/[B4] Renda Média do Responsável por Bairro 2010 (ObservaSSA).csv
-Saída: dados/[B4] Bases publicas/ponto_operacoes/B4_matriz_bairros_salvador.csv
+Entradas: dados/B4_ponto_operacoes/_dados-agregados/[B4] População por Bairro 2022 (IBGE Censo).csv;
+          dados/B4_ponto_operacoes/_dados-agregados/[B4] Renda Média do Responsável por Bairro 2010 (ObservaSSA).csv
+Saída: dados/B4_ponto_operacoes/_dados-agregados/B4_matriz_bairros_salvador.csv
 """
 
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
@@ -29,11 +29,11 @@ if __name__ == "__main__":
 
 import pandas as pd
 
-from bases_comum import PROCESSED_DIR
+from bases_comum import pasta_uso
 
-ENTRADA = PROCESSED_DIR / "ponto_operacoes" / "[B4] População por Bairro 2022 (IBGE Censo).csv"
-RENDA = PROCESSED_DIR / "ponto_operacoes" / "[B4] Renda Média do Responsável por Bairro 2010 (ObservaSSA).csv"
-SAIDA = PROCESSED_DIR / "ponto_operacoes" / "B4_matriz_bairros_salvador.csv"
+ENTRADA = pasta_uso("ponto_operacoes") / "[B4] População por Bairro 2022 (IBGE Censo).csv"
+RENDA = pasta_uso("ponto_operacoes") / "[B4] Renda Média do Responsável por Bairro 2010 (ObservaSSA).csv"
+SAIDA = pasta_uso("ponto_operacoes") / "B4_matriz_bairros_salvador.csv"
 PESOS = {"pop_20_39": 0.5, "renda_2010": 0.3, "pop_20_39_km2": 0.2}
 TESTES = [(0.4, 0.4, 0.2), (0.6, 0.2, 0.2), (1 / 3, 1 / 3, 1 / 3)]
 

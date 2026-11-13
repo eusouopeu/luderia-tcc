@@ -19,10 +19,10 @@ Padronizações:
 Partes que não se encaixam em nenhum campo vão para a coluna "sobras" e são
 listadas no terminal.
 
-Entrada: estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx
+Entrada: dados/B1_estabelecimentos/_dados-agregados/3_triagem/B1_aprovadas_metro_av100.xlsx
          (B1-b_triagem_manual.py)
-Saída em dados/[B1] Estabelecimentos e cardapios/:
-  estabelecimentos/3_triagem/B1_comentarios_aprovadas_metro_av100.xlsx
+Saída:
+  dados/B1_estabelecimentos/_dados-agregados/3_triagem/B1_comentarios_aprovadas_metro_av100.xlsx
 Fica fora do repositório (contém texto de avaliações).
 
 Uso:
@@ -46,9 +46,8 @@ from openpyxl.styles import Alignment, Font
 from openpyxl.utils import get_column_letter
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-ENTRADA = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
-SAIDA = PROCESSED / "estabelecimentos/3_triagem/B1_comentarios_aprovadas_metro_av100.xlsx"
+ENTRADA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_aprovadas_metro_av100.xlsx"
+SAIDA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_comentarios_aprovadas_metro_av100.xlsx"
 
 R = "R"
 ASPECTOS = ("comida", "serviço", "ambiente")

@@ -7,9 +7,9 @@ B1 conta as luderias pela capital da região metropolitana do endereço, e algum
 capitais têm pouca população dentro do limite municipal. Brasília entra pelo
 Distrito Federal (a PNAD Contínua não publica a RIDE).
 
-Entradas: dados/[B4] Bases publicas/mercado_demanda/[B4] Renda do Trabalho por
+Entradas: dados/B4_mercado_demanda/_dados-agregados/[B4] Renda do Trabalho por
           Região Metropolitana 2024-2026 (IBGE PNADC).csv;
-          dados/[B1] .../estabelecimentos/B1_resumo_estabelecimentos.xlsx (metrópoles com luderia)
+          dados/B1_estabelecimentos/_dados-agregados/B1_resumo_estabelecimentos.xlsx (metrópoles com luderia)
 Saída: textos/capitulos/figuras/5_renda_trabalho_rm.png; imprime a posição de Salvador.
 
 Uso:
@@ -29,9 +29,8 @@ import pandas as pd
 import planilha_estilo as est
 
 ROOT = _AQUI.parents[4]
-ENTRADA = ROOT / "dados" / "[B4] Bases publicas" / "mercado_demanda" / \
-    "[B4] Renda do Trabalho por Região Metropolitana 2024-2026 (IBGE PNADC).csv"
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx"
+ENTRADA = ROOT / "dados" / "B4_mercado_demanda" / "_dados-agregados" / "[B4] Renda do Trabalho por Região Metropolitana 2024-2026 (IBGE PNADC).csv"
+B1 = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx"
 FIG = ROOT / "textos" / "capitulos" / "figuras"
 VARIAVEL = 5932  # rendimento médio real habitual do trabalho principal
 

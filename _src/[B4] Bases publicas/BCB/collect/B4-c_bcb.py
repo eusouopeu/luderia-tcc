@@ -3,7 +3,7 @@ Coleta séries do Banco Central: SGS (observado) e relatório Focus (projeções
 
 Uso no plano: taxa mínima de atratividade, inflação do modelo e salário mínimo (cap. 9).
 
-Saídas em dados/[B4] Bases publicas/_dados-brutos/bcb/:
+Saídas em dados/B4_financeiro/_dados-brutos/bcb/:
   sgs_<codigo>_<nome>.json   séries do SGS
   focus_anuais.json          expectativas anuais dos últimos 120 dias
 """
@@ -20,9 +20,9 @@ if __name__ == "__main__":
 import datetime as dt
 from urllib.parse import quote, urlencode
 
-from bases_comum import DATA_COLETA, RAW_DIR, baixar_json, salvar_json
+from bases_comum import DATA_COLETA, baixar_json, pasta_bruta, salvar_json
 
-OUT_DIR = RAW_DIR / "bcb"
+OUT_DIR = pasta_bruta("bcb")
 SGS_API = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.{}/dados"
 FOCUS_API = "https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais"
 

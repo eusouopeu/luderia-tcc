@@ -1,12 +1,12 @@
 """
 Bloco B1 - tabela dos horários de funcionamento das luderias do estudo.
 
-Entrada: _dados-brutos/estabelecimentos/B1_horarios.jsonl (B1-c_details.py
+Entrada: dados/B1_estabelecimentos/_dados-brutos/B1_horarios.jsonl (B1-c_details.py
 --horarios, campo regularOpeningHours da Places API). Objeto: as aprovadas da
 triagem manual, menos as que saíram do objeto (EXCLUIDAS), mais as luderias
 novas do acervo de jogos. Cada place_id ocupa uma linha.
 
-Saída: dados/[B1] Estabelecimentos e cardapios/estabelecimentos/B1_horarios.csv
+Saída: dados/B1_estabelecimentos/_dados-agregados/B1_horarios.csv
 (";" e UTF-8 com BOM), com
   - uma coluna por dia (segunda a domingo) no formato "16:00-00:00"; turnos
     do mesmo dia separados por " | "; vazio = fechado;
@@ -34,11 +34,10 @@ import json
 import pandas as pd
 
 ROOT = _AQUI.parents[4]
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-BRUTO = PROCESSED / "_dados-brutos" / "estabelecimentos" / "B1_horarios.jsonl"
-APROVADAS = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
-NOVAS = PROCESSED / "acervo_jogos/B1_acervodejogos_luderias_novas.csv"
-SAIDA = PROCESSED / "estabelecimentos/B1_horarios.csv"
+BRUTO = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_horarios.jsonl"
+APROVADAS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_aprovadas_metro_av100.xlsx"
+NOVAS = ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_acervodejogos_luderias_novas.csv"
+SAIDA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_horarios.csv"
 
 # Saíram do objeto em 14/10/2026 (docs/decisoes.md).
 EXCLUIDAS = {"Machado Games", "Ilusões Industriais"}

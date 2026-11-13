@@ -4,7 +4,7 @@ quantas casas por metrópole, nota média e volume de avaliações no Google,
 dias e horários de funcionamento, seguidores no Instagram e cesta por pessoa.
 
 Entrada: outros/dados_graficos.py (base do B1-a_estatistica_descritiva.py, com
-nota e volume do CSV da curadoria) e estabelecimentos/B1_horarios.csv.
+nota e volume do CSV da curadoria) e dados/B1_estabelecimentos/_dados-agregados/B1_horarios.csv.
 
 Regras:
 - cada place_id conta uma vez, na metrópole do endereço e na região da UF da
@@ -15,7 +15,7 @@ Regras:
 - Instagram de LudoCafé e Dominaria fica de fora (perfil errado coletado);
 - casas sem o dado ficam fora só do gráfico daquele dado, com o n no subtítulo.
 
-Saídas (dados/[B1] Estabelecimentos e cardapios/estabelecimentos/5_graficos/graficos/):
+Saídas (dados/B1_estabelecimentos/_dados-agregados/5_graficos/graficos/):
   png/<nome>.png (300 dpi, para o .docx), svg/<nome>.svg (texto editável) e
   valores/<nome>.csv (números desenhados). Para atualizar depois de corrigir
   uma coleta, rodar o script de novo.
@@ -40,7 +40,7 @@ from graficos_comum import (APAGADO, BASE, CLARO, GRADE, HALO, MEDIO, ORDEM_REGI
                             TINTA2, TINTA3, VERMELHO, br, cor_casa, figura, grade_x, grade_y, salvar)
 
 ROOT = _AQUI.parents[4]
-PASTA = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos" / "5_graficos" / "graficos"
+PASTA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "5_graficos" / "graficos"
 FONTE_MAPS = ("Fonte: elaboração própria com dados do Google Maps (Places API, set. 2026; casas novas em "
               "12/10/2026), recorte B1.")
 FONTE_HOR = "Fonte: elaboração própria com horários do Google Maps e dos perfis das casas (15/10/2026), recorte B1."

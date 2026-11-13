@@ -18,7 +18,7 @@ Coordenadas: B1_localizacoes.jsonl. Os place_ids que ainda não estão lá são
 buscados na Places API (Place Details, só o campo location) e acrescentados ao
 jsonl, que é o repositório bruto das coordenadas.
 
-Saída: dados/[B1] Estabelecimentos e cardapios/entorno/B1_entorno_maps_fila.csv
+Saída: dados/B1_entorno/_dados-agregados/B1_entorno_maps_fila.csv
 (";" e UTF-8 com BOM; place_id, nome, capital_endereco, lat, lng), o formato
 que o botão "Carregar CSV" do coletor lê.
 
@@ -40,13 +40,12 @@ import json
 import pandas as pd
 
 ROOT = _AQUI.parents[4]
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-BRUTOS = PROCESSED / "_dados-brutos" / "estabelecimentos"
-TRIAGEM = PROCESSED / "estabelecimentos/3_triagem/B1_triagem_manual_metro_av100.xlsx"
-ACERVO = PROCESSED / "acervo_jogos/B1_acervodejogos_triagem.csv"
-APROVADAS = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
+BRUTOS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos"
+TRIAGEM = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_triagem_manual_metro_av100.xlsx"
+ACERVO = ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_acervodejogos_triagem.csv"
+APROVADAS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_aprovadas_metro_av100.xlsx"
 LOCALIZACOES = BRUTOS / "B1_localizacoes.jsonl"
-SAIDA = PROCESSED / "entorno/B1_entorno_maps_fila.csv"
+SAIDA = ROOT / "dados" / "B1_entorno" / "_dados-agregados" / "B1_entorno_maps_fila.csv"
 
 # Saíram do objeto em 14/10/2026 (docs/decisoes.md): loja de videogame e loja de TCG.
 EXCLUIDAS = {"Machado Games", "Ilusões Industriais"}

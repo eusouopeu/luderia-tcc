@@ -19,10 +19,10 @@ de gasto com cartão (antiga R05) e do ajuste do horário (antiga R19). Com o
 horário da São Jogue, os sete dias da semana convertem as NFC-e por dia em
 circulação no pico (R04 pessimista).
 
-Entradas: estabelecimentos/B1_horarios_pico_concorrentes_horas.csv
+Entradas: dados/B1_estabelecimentos/_dados-agregados/B1_horarios_pico_concorrentes_horas.csv
           (B1-a_horarios_pico.py); B1_resumo_estabelecimentos.xlsx (horários);
-          dados/[B3] Contagem direta de ocupacao/contagem_resumo_visitas.csv
-Saídas em dados/[B1] Estabelecimentos e cardapios/estabelecimentos/:
+          dados/B3_contagem/_dados-agregados/contagem_resumo_visitas.csv
+Saídas em dados/B1_estabelecimentos/_dados-agregados/:
   B1_curva_pico_concorrentes.csv  dia × hora: média, mediana e casas abertas
   B1_horas_pico_indice.csv        referência e horas de pico equivalentes por
                                   dia, no horário do plano e no da São Jogue,
@@ -43,8 +43,8 @@ if __name__ == "__main__":
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-PASTA = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos"
-VISITAS = ROOT / "dados" / "[B3] Contagem direta de ocupacao" / "contagem_resumo_visitas.csv"
+PASTA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados"
+VISITAS = ROOT / "dados" / "B3_contagem" / "_dados-agregados" / "contagem_resumo_visitas.csv"
 DIAS = ["segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo"]
 # horário do plano (P7 de _instrucoes/1a_principios.md): [abre, fecha); domingo só na etapa de mesas
 PLANO = {"terca": (14, 23), "quarta": (14, 23), "quinta": (14, 23), "sexta": (14, 23),

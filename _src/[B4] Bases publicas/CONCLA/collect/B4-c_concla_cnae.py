@@ -2,7 +2,7 @@
 Coleta na API do IBGE (CONCLA) as subclasses CNAE candidatas ao enquadramento da
 luderia e das atividades secundárias (8.1).
 
-Saída: dados/[B4] Bases publicas/_dados-brutos/concla/cnae_subclasses.json
+Saída: dados/B4_juridico_tributario/_dados-brutos/concla/cnae_subclasses.json
 """
 
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
@@ -14,10 +14,10 @@ from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
 
-from bases_comum import DATA_COLETA, RAW_DIR, baixar, salvar_json
+from bases_comum import DATA_COLETA, baixar, pasta_bruta, salvar_json
 
 API = "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses/{}"
-OUT_PATH = RAW_DIR / "concla" / "cnae_subclasses.json"
+OUT_PATH = pasta_bruta("concla") / "cnae_subclasses.json"
 
 # Subclasse -> papel no enquadramento
 SUBCLASSES = {

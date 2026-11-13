@@ -9,7 +9,7 @@ Três figuras, todas em "de cada N avaliações com texto":
   aniversário...) e funcionário citado pelo nome
   (grade de 100 ícones, 1 ícone = 1 avaliação em 100).
 
-Entradas (saídas do B2-a_conteudo_bardin.py, em dados/[B2] Avaliacoes recentes/analise_conteudo/):
+Entradas (saídas do B2-a_conteudo_bardin.py, em dados/B2_avaliacoes/_dados-agregados/analise_conteudo/):
   B2_codificacao_bardin.csv          uma linha por avaliação; o total (n) é o das "analisada"
   B2_bardin_frequencia_categorias.csv  contagem por categoria e polaridade
   B2_bardin_contexto.csv             ocasião e outros códigos de contexto
@@ -26,7 +26,7 @@ Regras:
 - uma avaliação pode cair em várias categorias (contagem não exclusiva por
   desenho), então as linhas não somam 100%; por isso não há total como soma.
 
-Saídas (dados/[B2] Avaliacoes recentes/graficos/): png/ (300 dpi), svg/ (texto
+Saídas (dados/B2_avaliacoes/_dados-agregados/graficos/): png/ (300 dpi), svg/ (texto
 editável) e valores/ (B2_pict_*). Para atualizar depois de refazer a
 codificação, rodar o B2-a_conteudo_bardin.py e depois este script.
 
@@ -50,7 +50,7 @@ from graficos_comum import (APAGADO, BASE, HALO, TINTA, TINTA2, VERMELHO, br, fi
                             pessoa, pictograma_linhas, salvar)
 
 ROOT = _AQUI.parents[4]
-B2 = ROOT / "dados" / "[B2] Avaliacoes recentes"
+B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
 AC = B2 / "analise_conteudo"
 PASTA = B2 / "graficos"
 FONTE = ("Fonte: elaboração própria com avaliações com texto do Google Maps até \"3 meses atrás\" "

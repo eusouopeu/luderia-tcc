@@ -4,7 +4,7 @@ luderias do objeto: monta o corpus, conta as categorias e sorteia a amostra de
 controle de qualidade.
 
 Corpus (opção --corpus): sai direto das coletas do userscript maps_avaliacoes
-em dados/[B2] Avaliacoes recentes/_dados-brutos/coletas/.
+em dados/B2_avaliacoes/_dados-brutos/coletas/.
   - Cada coleta é ligada a um estabelecimento do B1_resumo_estabelecimentos.xlsx
     pelo cid do Google Maps (segunda parte do id_maps).
   - Quando um estabelecimento tem mais de um arquivo de coleta, entra só o mais
@@ -36,18 +36,18 @@ Regras de contagem:
     Bodogami (458 comentários) e o Shelf (243) não dominem o resultado.
 
 Entradas:
-  dados/[B2] Avaliacoes recentes/_dados-brutos/coletas/*.csv          (--corpus)
-  dados/[B1] Estabelecimentos e cardapios/estabelecimentos/B1_resumo_estabelecimentos.xlsx
-  dados/[B2] Avaliacoes recentes/analise_conteudo/B2_codificacao_bardin.csv
+  dados/B2_avaliacoes/_dados-brutos/coletas/*.csv          (--corpus)
+  dados/B1_estabelecimentos/_dados-agregados/B1_resumo_estabelecimentos.xlsx
+  dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_codificacao_bardin.csv
 Saídas:
-  _dados-brutos/analise_conteudo/B2_bardin_corpus.csv  (--corpus; fora do git: tem texto)
-  analise_conteudo/B2_bardin_arquivos_coleta.csv        (--corpus; arquivo escolhido por estabelecimento)
-  analise_conteudo/B2_bardin_frequencia_categorias.csv  (categoria x polaridade x tipo)
-  analise_conteudo/B2_bardin_contexto.csv               (códigos de contexto x tipo)
-  analise_conteudo/B2_bardin_estabelecimentos.csv       (comentários analisados por estabelecimento)
-  analise_conteudo/B2_bardin_nota_por_categoria.csv     (nota média dos comentários com a menção)
-  analise_conteudo/B2_bardin_amostra_controle.csv       (ids sorteados para a recodificação cega)
-  analise_conteudo/B2_bardin_concordancia.csv           (só quando existir a recodificação)
+  dados/B2_avaliacoes/_dados-brutos/analise_conteudo/B2_bardin_corpus.csv  (--corpus; fora do git: tem texto)
+  dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_bardin_arquivos_coleta.csv        (--corpus; arquivo escolhido por estabelecimento)
+  dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_bardin_frequencia_categorias.csv  (categoria x polaridade x tipo)
+  dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_bardin_contexto.csv               (códigos de contexto x tipo)
+  dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_bardin_estabelecimentos.csv       (comentários analisados por estabelecimento)
+  dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_bardin_nota_por_categoria.csv     (nota média dos comentários com a menção)
+  dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_bardin_amostra_controle.csv       (ids sorteados para a recodificação cega)
+  dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_bardin_concordancia.csv           (só quando existir a recodificação)
 
 Recodificação: o segundo codificador preenche
   B2_bardin_recodificacao.csv  (colunas id_avaliacao;codigos)
@@ -75,11 +75,11 @@ import re
 import pandas as pd
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-B2 = ROOT / "dados" / "[B2] Avaliacoes recentes"
+B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
 PASTA = B2 / "analise_conteudo"
-COLETAS = B2 / "_dados-brutos" / "coletas"
-CORPUS = B2 / "_dados-brutos" / "analise_conteudo" / "B2_bardin_corpus.csv"
-RESUMO_B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx"
+COLETAS = ROOT / "dados" / "B2_avaliacoes" / "_dados-brutos" / "coletas"
+CORPUS = ROOT / "dados" / "B2_avaliacoes" / "_dados-brutos" / "analise_conteudo" / "B2_bardin_corpus.csv"
+RESUMO_B1 = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx"
 ENTRADA = PASTA / "B2_codificacao_bardin.csv"
 RECODIFICACAO = PASTA / "B2_bardin_recodificacao.csv"
 

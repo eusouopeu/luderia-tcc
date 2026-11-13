@@ -1,7 +1,7 @@
 """
 Onde ficam os cardápios originais (PDF, imagens) de cada estabelecimento.
 
-Os originais ficam em dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/,
+Os originais ficam em dados/B1_cardapios/_dados-brutos/,
 numa pasta por estabelecimento agrupada pela cidade: ca_<cidade>/ca_<estabelecimento>/.
 A cidade é a capital da região metropolitana do endereço (recorte_rm.py), a mesma
 usada nas tabelas do B1.
@@ -12,14 +12,13 @@ antes de 14/10/2026) à cidade e ao nome curto da pasta. Estabelecimento novo en
 aqui antes de rodar a coleta.
 
 As demais pastas ca_ (ca_arena_bg, ca_bodogami, ca_fan_hour, ca_place_games,
-ca_shelf_bar) guardam originais transcritos à mão em _dados-brutos/cardapios/transcricao/
+ca_shelf_bar) guardam originais transcritos à mão em dados/B1_cardapios/_dados-brutos/transcricao/
 e não passam pela coleta nem pelo OCR.
 """
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-BRUTOS = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
-ORIGINAIS = BRUTOS / "cardapios"
+ORIGINAIS = ROOT / "dados" / "B1_cardapios" / "_dados-brutos"
 
 # nome nas saídas -> (cidade, estabelecimento), para ca_<cidade>/ca_<estabelecimento>/
 PASTAS = {
@@ -44,7 +43,7 @@ PASTAS = {
     "TabuClub": ("rio_de_janeiro", "tabuclub"),
 }
 # Cardápio de jogos (não de comida e bebida): fica com os acervos das luderias
-JOGOS_COVIL = ("Cardapio de jogos Covil Game bar", BRUTOS / "acervos_luderias" / "Cardapio de jogos Covil Game bar")
+JOGOS_COVIL = ("Cardapio de jogos Covil Game bar", ROOT / "dados" / "B1_acervo_jogos" / "_dados-brutos" / "acervos_luderias" / "Cardapio de jogos Covil Game bar")
 
 
 def pasta_original(nome):

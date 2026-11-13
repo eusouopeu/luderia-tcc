@@ -3,7 +3,7 @@ Bloco B3 - análise das visitas registradas no app de observação (_src/app-obs
 
 Entrada: os CSVs exportados pelo app (Ajustes › Exportar, ou o botão de envio da
 unidade), consolidados por build/B3-b_importar_app.py em
-`dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/`, com as colunas
+`dados/B3_contagem/_dados-brutos/`, com as colunas
 `visita_id` e `observador` (POV1, POV2):
   contagem_grupos_mesa.csv, contagem_fluxo.csv, contagem_rodadas.csv,
   contagem_acustica.csv, contagem_visitas.csv, contagem_precos.csv,
@@ -11,7 +11,7 @@ unidade), consolidados por build/B3-b_importar_app.py em
   contagem_fotos.csv
 Separador ";" com BOM (o app grava assim para o Excel).
 
-Saídas em `dados/[B3] Contagem direta de ocupacao/`:
+Saídas em `dados/B3_contagem/`:
   contagem_resumo_visitas.csv  - uma linha por observador de cada visita e uma
       linha `observador = media` por visita, com a média dos observadores
       (cada observador com registro válido conta uma vez; tabela ausente ou
@@ -71,10 +71,10 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-ENTRADA = ROOT / "dados" / "[B3] Contagem direta de ocupacao" / "_dados-brutos" / "app"
+ENTRADA = ROOT / "dados" / "B3_contagem" / "_dados-brutos"
 ESTRUTURA = _AQUI.parents[1] / "outros" / "B3_estrutura_unidades.csv"
 OBSERVADOR = _AQUI.parents[1] / "outros" / "B3_mesa_observador.csv"
-SAIDA = ROOT / "dados" / "[B3] Contagem direta de ocupacao"
+SAIDA = ROOT / "dados" / "B3_contagem" / "_dados-agregados"
 
 
 def ler(nome: str) -> pd.DataFrame:

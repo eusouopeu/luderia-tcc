@@ -41,9 +41,9 @@ decisão de voltar e contexto. Diferença entre grupos por qui-quadrado de
 independência (grupo x tema citado), com q de Benjamini-Hochberg.
 
 Entrada:
-  _dados-brutos/analise_conteudo/2026-11-03_2_comentarios_grade2.csv (fora do git)
-  dados/[B1] Estabelecimentos e cardapios/estabelecimentos/B1_resumo_estabelecimentos.xlsx
-Saídas em dados/[B2] Avaliacoes recentes/retorno_e_clusters/:
+  dados/B2_avaliacoes/_dados-brutos/analise_conteudo/2026-11-03_2_comentarios_grade2.csv (fora do git)
+  dados/B1_estabelecimentos/_dados-agregados/B1_resumo_estabelecimentos.xlsx
+Saídas em dados/B2_avaliacoes/_dados-agregados/retorno_e_clusters/:
   B2_retorno_decisao_resumo.csv     nota, aspectos, contexto e gasto por decisão
   B2_retorno_temas.csv              tema x polaridade x comparação (a, b, c)
   B2_cluster_casas.csv              uma linha por casa: variáveis, fonte e grupo
@@ -74,9 +74,9 @@ import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[4]
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx"
-B2 = ROOT / "dados" / "[B2] Avaliacoes recentes"
-BASE = B2 / "_dados-brutos" / "analise_conteudo" / "2026-11-03_2_comentarios_grade2.csv"
+B1 = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx"
+B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
+BASE = ROOT / "dados" / "B2_avaliacoes" / "_dados-brutos" / "analise_conteudo" / "2026-11-03_2_comentarios_grade2.csv"
 PASTA = B2 / "retorno_e_clusters"
 SEMENTE = 20261103
 K_CANDIDATOS = range(2, 6)

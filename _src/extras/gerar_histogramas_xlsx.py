@@ -34,7 +34,7 @@ Conferências: cada tabela de faixas fecha com o total da base (fórmula de
 diferença na aba e assert aqui); a taxa ponderada da fórmula é conferida contra
 B1_cesta_casas_com_taxa.csv.
 
-Saída: dados/[B1] Estabelecimentos e cardapios/estabelecimentos/5_graficos/Histogramas.xlsx
+Saída: dados/B1_estabelecimentos/_dados-agregados/5_graficos/Histogramas.xlsx
 
 Uso:
     python3 _src/extras/gerar_histogramas_xlsx.py
@@ -57,10 +57,9 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side  # noqa: 
 from openpyxl.utils import get_column_letter as L  # noqa: E402
 
 ROOT = _AQUI.parents[2]
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-VALORES = B1 / "estabelecimentos" / "5_graficos" / "graficos" / "valores"
-SAIDA = B1 / "estabelecimentos" / "5_graficos" / "Histogramas.xlsx"
-CESTA = ROOT / "dados" / "[B2] Avaliacoes recentes" / "gasto_por_pessoa" / "B1_cesta_casas_com_taxa.csv"
+VALORES = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "5_graficos" / "graficos" / "valores"
+SAIDA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "5_graficos" / "Histogramas.xlsx"
+CESTA = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados" / "gasto_por_pessoa" / "B1_cesta_casas_com_taxa.csv"
 SCRIPT_TAXAS = ROOT / "_src" / "[B2] Avaliacoes recentes" / "Google Places (Comentários)" / "analise" / \
     "B2-a_gasto_por_pessoa.py"
 
@@ -244,7 +243,7 @@ def carregar_taxas():
     spec = importlib.util.spec_from_file_location("b2_gasto", SCRIPT_TAXAS)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    es = pd.read_excel(B1 / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx", sheet_name="estabelecimentos")
+    es = pd.read_excel(ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx", sheet_name="estabelecimentos")
     es = es.set_index("place_id")
     linhas = []
     for pid, (_, fonte, regra) in mod.TAXAS.items():
@@ -403,7 +402,7 @@ def aba_cestas(wb, cesta, ref):
 
 def aba_acervos(wb):
     ws = nova_aba(wb, "5 Acervos")
-    a = pd.read_csv(B1 / "acervo_jogos" / "B1_jogos_dos_acervos.csv")
+    a = pd.read_csv(ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_jogos_dos_acervos.csv")
     d = (a.groupby("estabelecimento").agg(jogos=("jogo", "count"), fonte=("fonte", "first"))
          .reset_index().sort_values(["jogos", "estabelecimento"]).reset_index(drop=True))
     assert d.jogos.sum() == len(a)
@@ -425,7 +424,7 @@ def aba_acervos(wb):
 
 def aba_jogos(wb):
     ws = nova_aba(wb, "6 Jogos frequentes")
-    b = pd.read_csv(B1 / "acervo_jogos" / "B1_banco_jogos.csv")
+    b = pd.read_csv(ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_banco_jogos.csv")
     b = b.sort_values(["n_casas_acervo", "jogo"], ascending=[False, True]).reset_index(drop=True)
     corte = int(b.n_casas_acervo.iloc[19])
     t = b[b.n_casas_acervo >= corte].copy()

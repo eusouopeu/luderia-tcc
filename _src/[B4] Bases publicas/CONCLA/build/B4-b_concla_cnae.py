@@ -1,7 +1,7 @@
 """
 Achata o JSON das subclasses CNAE coletado por B4-c_concla_cnae.py.
 
-Saída: juridico_tributario/"[B4] Subclasses CNAE {ano da coleta} (CONCLA).csv"
+Saída: dados/B4_juridico_tributario/_dados-agregados/"[B4] Subclasses CNAE {ano da coleta} (CONCLA).csv"
   uma linha por subclasse: código formatado, hierarquia, papel no plano, atividades
   compreendidas e observações (o que a subclasse compreende e não compreende).
 """
@@ -17,9 +17,9 @@ if __name__ == "__main__":
 
 import pandas as pd
 
-from bases_comum import DATA_COLETA, PROCESSED_DIR, RAW_DIR, caminho_saida, ler_json
+from bases_comum import DATA_COLETA, caminho_saida, ler_json, pasta_bruta
 
-IN_PATH = RAW_DIR / "concla" / "cnae_subclasses.json"
+IN_PATH = pasta_bruta("concla") / "cnae_subclasses.json"
 OUT_PATH = caminho_saida("juridico_tributario", "Subclasses CNAE", DATA_COLETA[:4], "CONCLA")
 
 
@@ -43,7 +43,6 @@ def main() -> None:
             "observacoes": " | ".join(o.replace("\r\n", " ").strip() for o in item.get("observacoes", [])),
             "data_coleta": bruto["data_coleta"],
         })
-    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(linhas).to_csv(OUT_PATH, index=False)
     print(f"{len(linhas)} subclasses -> {OUT_PATH.name}")
 

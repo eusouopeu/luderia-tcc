@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[3]
-ENTRADA = RAIZ / "dados" / "[B2] Avaliacoes recentes" / "analise_conteudo"
+ENTRADA = RAIZ / "dados" / "B2_avaliacoes" / "_dados-agregados" / "analise_conteudo"
 SAIDA = Path(__file__).resolve().parents[1] / "src" / "conteudo" / "b2-temas.json"
 
 
@@ -35,7 +35,7 @@ def main():
               "aceita": r["aceita"] == "sim"} for r in ler("B2_recodificacao_kappa.csv")]
     total = sum(e["comentarios"] for e in estab)
     assert total == 1628, total  # a tabela por estabelecimento fecha com o total do B2
-    saida = {"_leiaMe": "Gerado por scripts/sincronizar_b2.py a partir de dados/[B2]…/analise_conteudo/B2_temas_*.csv e B2_recodificacao_kappa.csv. Não editar à mão.",
+    saida = {"_leiaMe": "Gerado por scripts/sincronizar_b2.py a partir de dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_temas_*.csv e B2_recodificacao_kappa.csv. Não editar à mão.",
              "comentarios": total, "estabelecimentos": len(estab), "temas": temas, "contexto": contexto,
              "porEstabelecimento": estab, "kappa": kappa}
     SAIDA.write_text(json.dumps(saida, ensure_ascii=False, indent=1), encoding="utf-8")

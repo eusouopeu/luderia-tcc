@@ -1,7 +1,7 @@
 """
 Trata os JSON do SIDRA coletados por B4-c_ibge_sidra.py.
 
-Saídas em dados/[B4] Bases publicas/<uso>/, no padrão "[B4] {dado} {período} ({fonte}).csv":
+Saídas em dados/B4_<uso>/_dados-agregados/, no padrão "[B4] {dado} {período} ({fonte}).csv":
   uma saída por consulta, em formato longo (uma linha por valor), com uso e nome definidos em SAIDAS
   "[B4] Resumo de População e Renda por Capital ... (IBGE).csv": uma linha por capital, com
   população, faixa de 20 a 39 anos e renda
@@ -18,10 +18,9 @@ if __name__ == "__main__":
 
 import pandas as pd
 
-from bases_comum import (CAPITAIS, PROCESSED_DIR, RAW_DIR, caminho_saida, conferir_capitais, ler_json,
-                         rotulo_periodo, sidra_para_df)
+from bases_comum import CAPITAIS, caminho_saida, conferir_capitais, ler_json, pasta_bruta, rotulo_periodo, sidra_para_df
 
-IN_DIR = RAW_DIR / "ibge_sidra"
+IN_DIR = pasta_bruta("ibge_sidra")
 
 # Consulta (nome do JSON bruto) -> (uso, dado principal, fonte). O período sai dos próprios dados.
 SAIDAS = {
@@ -80,7 +79,6 @@ def resumo_capitais(t: dict[str, pd.DataFrame]) -> pd.DataFrame:
 
 
 def main() -> None:
-    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     tabelas = {}
     for arq in sorted(IN_DIR.glob("*.json")):
         df = sidra_para_df(ler_json(arq))

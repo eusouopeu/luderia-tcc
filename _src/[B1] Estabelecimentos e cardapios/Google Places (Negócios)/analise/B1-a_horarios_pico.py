@@ -4,10 +4,10 @@ razão entre o movimento do dia útil e o do fim de semana, por casa, e a lista
 das casas do B1 ainda sem coleta.
 
 Entrada:
-  - _dados-brutos/estabelecimentos/horarios_pico/maps_horarios_pico_*.csv
+  - dados/B1_estabelecimentos/_dados-brutos/horarios_pico/maps_horarios_pico_*.csv
     (webscripts/maps_horarios_pico.user.js; vale o arquivo mais recente);
-  - estabelecimentos/B1_horarios.csv (horário da Places API, 54 casas);
-  - _dados-brutos/estabelecimentos/B1_localizacoes.jsonl (coordenadas).
+  - dados/B1_estabelecimentos/_dados-agregados/B1_horarios.csv (horário da Places API, 54 casas);
+  - dados/B1_estabelecimentos/_dados-brutos/B1_localizacoes.jsonl (coordenadas).
 
 Correção do dia nas coletas até a versão 2026.11.10-1 do coletor: numa casa
 fechada em algum dia, o coletor numerava só os grupos com barras, e os dias
@@ -30,7 +30,7 @@ Medidas, por casa (índice do Google, 0-100, 100 = hora mais cheia da semana):
 O índice mede presença (pessoas no local × tempo), não entradas nem gasto, e
 casas em shopping recebem o movimento do entorno (ver L23 em docs/pendencias.md).
 
-Saídas (dados/[B1] Estabelecimentos e cardapios/estabelecimentos/):
+Saídas (dados/B1_estabelecimentos/_dados-agregados/):
   - B1_horarios_pico_concorrentes.csv: uma linha por casa do B1, com a
     situação da coleta no vocabulário único (_src/dicionario.md §4.5): ok;
     vazia (lugar coletado sem gráfico de horários de pico no Maps); refazer
@@ -58,12 +58,11 @@ import re
 import pandas as pd
 
 ROOT = _AQUI.parents[4]
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-BRUTOS = PROCESSED / "_dados-brutos" / "estabelecimentos"
-HORARIOS = PROCESSED / "estabelecimentos" / "B1_horarios.csv"
+BRUTOS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos"
+HORARIOS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_horarios.csv"
 LOCAL = BRUTOS / "B1_localizacoes.jsonl"
-SAIDA = PROCESSED / "estabelecimentos" / "B1_horarios_pico_concorrentes.csv"
-SAIDA_HORAS = PROCESSED / "estabelecimentos" / "B1_horarios_pico_concorrentes_horas.csv"
+SAIDA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_horarios_pico_concorrentes.csv"
+SAIDA_HORAS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_horarios_pico_concorrentes_horas.csv"
 
 # Índice do Google: 0 = domingo.
 DIAS = ["domingo", "segunda", "terca", "quarta", "quinta", "sexta", "sabado"]

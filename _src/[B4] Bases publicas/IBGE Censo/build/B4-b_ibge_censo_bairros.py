@@ -1,8 +1,8 @@
 """
 Trata os Agregados por Bairros do Censo 2022 (IBGE) para as 27 capitais.
 
-Entrada: zips e dicionário em dados/[B4] Bases publicas/_dados-brutos/ibge_censo_2022/
-Saída: ponto_operacoes/"[B4] População por Bairro 2022 (IBGE Censo).csv"
+Entrada: zips e dicionário em dados/B4_ponto_operacoes/_dados-brutos/ibge_censo_2022/
+Saída: dados/B4_ponto_operacoes/_dados-agregados/"[B4] População por Bairro 2022 (IBGE Censo).csv"
   uma linha por bairro: população, domicílios, média de moradores, área, densidade,
   população por faixa etária, participação da faixa de 20 a 39 anos e participação
   dos apartamentos nos domicílios ocupados (V00049 ÷ domicílios particulares
@@ -28,9 +28,9 @@ import zipfile
 
 import pandas as pd
 
-from bases_comum import CAPITAIS, PROCESSED_DIR, RAW_DIR, caminho_saida
+from bases_comum import CAPITAIS, caminho_saida, pasta_bruta
 
-IN_DIR = RAW_DIR / "ibge_censo_2022"
+IN_DIR = pasta_bruta("ibge_censo_2022")
 OUT_PATH = caminho_saida("ponto_operacoes", "População por Bairro", "2022", "IBGE Censo")
 BASICO = {"v0001": "pessoas", "v0002": "domicilios", "v0007": "domicilios_particulares_ocupados",
           "v0005": "media_moradores"}
@@ -96,7 +96,6 @@ def main() -> None:
     df["pct_apartamento"] = (df["domicilios_apartamento"] / df["domicilios_particulares_ocupados"] * 100).round(1)
     df.columns = [c.lower() for c in df.columns]
 
-    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     df.to_csv(OUT_PATH, index=False)
     print(f"{len(df)} bairros em {df['capital'].nunique()} capitais")
     print(df.groupby("capital").agg(bairros=("cd_bairro", "size"), pessoas=("pessoas", "sum")).to_string())

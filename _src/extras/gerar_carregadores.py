@@ -1,5 +1,5 @@
 """
-Gera um "carregador" do Tampermonkey para cada script das pastas webscripts/ dos objetos de cada bloco, para que o
+Gera um "carregador" do Tampermonkey para cada script de _src/Webscripts/<bloco>/, para que o
 navegador rode sempre a versão do disco, sem reinstalar a cada mudança.
 
 Como funciona:
@@ -12,7 +12,7 @@ Como funciona:
   - mudança só no corpo do script vale no próximo recarregar da página;
   - mudança no cabeçalho (novo @match, @grant, @run-at...) exige instalar o
     carregador de novo. O script guarda a impressão dos cabeçalhos em
-    extras/carregadores/cabecalhos.json e lista os carregadores que mudaram; com
+    Webscripts/_carregadores/cabecalhos.json e lista os carregadores que mudaram; com
     --abrir, abre esses no navegador (Vivaldi) para instalar com um clique.
 
 Configuração única no Vivaldi (feita pelo autor):
@@ -37,8 +37,8 @@ import re
 import subprocess
 from pathlib import Path
 
-PASTA = Path(__file__).resolve().parents[1]  # _src/
-SAIDA = Path(__file__).resolve().parent / "carregadores"
+PASTA = Path(__file__).resolve().parents[1] / "Webscripts"  # _src/Webscripts/
+SAIDA = PASTA / "_carregadores"
 IMPRESSOES = SAIDA / "cabecalhos.json"
 # Navegador com o Tampermonkey em que os carregadores funcionam. O Firefox não
 # serve: lá o Tampermonkey não lê @require file:///.
@@ -83,7 +83,7 @@ def main():
     SAIDA.mkdir(exist_ok=True)
     antigas = json.loads(IMPRESSOES.read_text()) if IMPRESSOES.exists() else {}
     novas, mudaram = {}, []
-    for script in sorted(PASTA.glob("[[]B*/*/webscripts/*.user.js")):
+    for script in sorted(PASTA.glob("[[]B*/*.user.js")):
         linhas = cabecalho(script)
         destino = SAIDA / script.name
         destino.write_text(carregador(script, linhas), encoding="utf-8")

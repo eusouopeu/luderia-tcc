@@ -25,12 +25,12 @@ espaço de jogo aparecem como loja de jogos ou de brinquedos. A categoria vira
 a coluna `grupo_categoria`, só para orientar a curadoria.
 
 O script tem três saídas, não duas:
-  estabelecimentos/2_recorte/B1_curadoria.csv  -> aprovados, vão para a curadoria manual
-  estabelecimentos/1_busca/B1_triagem.csv             -> indefinidos: sem palavra-chave no nome e
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_curadoria.csv  -> aprovados, vão para a curadoria manual
+  dados/B1_estabelecimentos/_dados-agregados/1_busca/B1_triagem.csv             -> indefinidos: sem palavra-chave no nome e
                                      sem avaliações coletadas. O filtro não
                                      tem como decidir, porque o texto das
                                      avaliações não foi comprado para eles.
-  estabelecimentos/1_busca/B1_descartados.csv -> reprovados de fato
+  dados/B1_estabelecimentos/_dados-agregados/1_busca/B1_descartados.csv -> reprovados de fato
 
 A triagem manual decide os indefinidos: quem tem `fotos_comprovam` ou
 `instagram_comprova` igual a "sim" sobe para a planilha de curadoria, com
@@ -69,15 +69,13 @@ from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-CANDIDATOS_PATH = RAW / "estabelecimentos/B1_candidatos.csv"
-DETALHES_PATH = RAW / "estabelecimentos/B1_detalhes.jsonl"
-DETALHES_SEM_REVIEWS_PATH = RAW / "estabelecimentos/B1_detalhes_sem_reviews.jsonl"
-LISTA_MANUAL_PATH = RAW / "B1_lista_manual_rj.csv"
-OUT_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria.csv"
-OUT_DESCARTADOS_PATH = PROCESSED / "estabelecimentos/1_busca/B1_descartados.csv"
-OUT_TRIAGEM_PATH = PROCESSED / "estabelecimentos/1_busca/B1_triagem.csv"
+CANDIDATOS_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_candidatos.csv"
+DETALHES_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_detalhes.jsonl"
+DETALHES_SEM_REVIEWS_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_detalhes_sem_reviews.jsonl"
+LISTA_MANUAL_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_lista_manual_rj.csv"
+OUT_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria.csv"
+OUT_DESCARTADOS_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "1_busca" / "B1_descartados.csv"
+OUT_TRIAGEM_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "1_busca" / "B1_triagem.csv"
 
 JANELA_ATIVIDADE = timedelta(days=183)
 
@@ -496,7 +494,8 @@ def main():
     )
     descartados.sort(key=lambda r: r["nome"] or "")
 
-    PROCESSED.mkdir(parents=True, exist_ok=True)
+    for caminho in (OUT_PATH, OUT_DESCARTADOS_PATH, OUT_TRIAGEM_PATH):
+        caminho.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT_PATH, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=COLUNAS_CURADORIA)
         writer.writeheader()

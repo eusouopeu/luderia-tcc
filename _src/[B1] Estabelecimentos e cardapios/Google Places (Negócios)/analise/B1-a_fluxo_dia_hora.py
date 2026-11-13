@@ -3,7 +3,7 @@ Bloco B1 - fluxo dos concorrentes por dia da semana e hora (histogramas do
 índice "Horários de pico" do Google Maps): um gráfico com a média e outro com
 a mediana das casas, em % da hora mais cheia da semana de cada casa.
 
-Entrada (dados/[B1] Estabelecimentos e cardapios/estabelecimentos/):
+Entrada (dados/B1_estabelecimentos/_dados-agregados/):
   - B1_horarios_pico_concorrentes_horas.csv (B1-a_horarios_pico.py): índice
     0-100 por casa × dia × hora, com o dia já corrigido;
   - B1_horarios.csv: horário publicado de cada casa (Places API e perfis).
@@ -23,7 +23,7 @@ domingo das 14h às 20h). A linha mostra a % das 54 casas da população do B1
 (B1_horarios.csv, com a São Jogue) abertas em cada dia × hora, pela mesma regra
 de abertura; não depende da coleta do Google.
 
-Saídas (dados/[B1] Estabelecimentos e cardapios/estabelecimentos/5_graficos/graficos/):
+Saídas (dados/B1_estabelecimentos/_dados-agregados/5_graficos/graficos/):
   png/, svg/ e valores/ de B1_fluxo_dia_hora_media e B1_fluxo_dia_hora_mediana.
 
 Uso:
@@ -43,7 +43,7 @@ import pandas as pd  # noqa: E402
 from graficos_comum import APAGADO, GRADE, HALO, MEDIO, TINTA, TINTA2, TINTA3, VERMELHO, br, figura, salvar  # noqa: E402
 
 ROOT = _AQUI.parents[4]
-EST = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos"
+EST = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados"
 PASTA = EST / "5_graficos" / "graficos"
 FONTE = ("Fonte: elaboração própria com o índice \"Horários de pico\" do Google Maps (coleta de 10 e "
          "11/11/2026) e os horários publicados das casas (15/10/2026), recorte B1.")

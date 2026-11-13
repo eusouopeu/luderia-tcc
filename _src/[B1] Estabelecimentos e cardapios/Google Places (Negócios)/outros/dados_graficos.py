@@ -18,7 +18,6 @@ import pandas as pd
 
 _AQUI = Path(__file__).resolve()
 ROOT = _AQUI.parents[4]
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
 _ED = _AQUI.parents[1] / "analise" / "B1-a_estatistica_descritiva.py"
 
 
@@ -31,10 +30,10 @@ def _modulo_estatistica():
 
 def casas() -> pd.DataFrame:
     d = _modulo_estatistica().montar_dados()
-    cur = pd.read_csv(B1 / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv", sep=None, engine="python")
-    nov = pd.read_csv(B1 / "acervo_jogos/B1_acervodejogos_luderias_novas.csv", sep=None, engine="python")
+    cur = pd.read_csv(ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria_metro_f_av100.csv", sep=None, engine="python")
+    nov = pd.read_csv(ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_acervodejogos_luderias_novas.csv", sep=None, engine="python")
     # Luderias da repaginação (12/11/2026): nota e volume vêm da planilha de aprovadas, que os leu da API.
-    apr = pd.read_excel(B1 / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx")
+    apr = pd.read_excel(ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_aprovadas_metro_av100.xlsx")
     rep = apr[apr["origem"] == "repaginacao"]
     ref = pd.concat([cur, nov, rep])[["place_id", "avaliacao_media", "volume_avaliacoes"]].drop_duplicates("place_id")
     x = d.drop(columns=["avaliacao_media", "volume_avaliacoes"]).merge(ref, on="place_id", how="left")
@@ -56,7 +55,7 @@ def abertas_por_faixa(passo_min: int = 30, ini_h: int = 8, fim_h: int = 27) -> p
     à abertura passa da meia-noite e conta no mesmo dia (eixo vai até 27 = 3h).
     Uma casa conta como aberta na faixa se o ponto médio da faixa cai num
     intervalo de funcionamento."""
-    h = pd.read_csv(B1 / "estabelecimentos/B1_horarios.csv", sep=";", encoding="utf-8-sig")
+    h = pd.read_csv(ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_horarios.csv", sep=";", encoding="utf-8-sig")
     base = casas()[["place_id"]]
     h = base.merge(h, on="place_id", how="left")
     assert len(h) == len(base)

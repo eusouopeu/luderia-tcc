@@ -8,7 +8,7 @@ casas com cardápio em prints do Maps/Instagram, cardápio digital (Saipos e VUC
 Food), página Takeat ou imagem/PDF transcritos à mão. Os 13 primeiros desses
 são convertidos por Cardápios/build/B1-b_cardapios_transcricoes.py; Alçapão,
 Café Geek e Fortalúdica foram transcritos à mão das imagens. Em 16/10/2026, a busca
-profunda (cardapios/B1_cardapios_busca_profunda.csv) trouxe o TabuClub (PDF transcrito à
+profunda (dados/B1_cardapios/_dados-agregados/B1_cardapios_busca_profunda.csv) trouxe o TabuClub (PDF transcrito à
 mão), preços de imprensa para a Fan Hour e cardápios parciais (couvert ou poucos itens,
 de site, imprensa ou TikTok) de LudoCafé, Game Of Boards, Garagem do Nerd e Joyjoy
 (São Jogue e Asgard ganharam cardápio completo em 17/10). Em 31/10/2026, prints do
@@ -16,10 +16,10 @@ Instagram trouxeram o couvert de 10 casas que não o tinham no cardápio (arquiv
 <casa>_couvert); no mesmo dia, o Day Pass da BoardZ (página "Como funciona" do
 site) e o cartaz do couvert do LudoCafé (foto do Google Maps de jul/2024, que substitui
 o valor de jun/2024 da imprensa). Cada cardápio foi transcrito
-para um CSV em dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/transcricao/
+para um CSV em dados/B1_cardapios/_dados-brutos/transcricao/
 (um arquivo por estabelecimento, separador ";"). A transcrição é manual para
 imagens e PDFs e automática para páginas em texto (VUCA Food, Wix). As fontes
-originais (PDF, imagens, HTML) ficam em _dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/ e fora do repositório.
+originais (PDF, imagens, HTML) ficam em dados/B1_cardapios/_dados-brutos/ca_<cidade>/ca_<estabelecimento>/ e fora do repositório.
 
 Categorias fixas (_instrucoes/4_metodologia.md, Bloco B1):
   bebidas: drinks, refrigerante, cerveja, não alcoólicas
@@ -48,7 +48,7 @@ Item sem preço no cardápio fica com preço vazio, não zero. Quando a
 transcrição traz a coluna data_cardapio (prints com datas diferentes), ela
 vale linha a linha; vazia, vale a data da fonte em FONTES.
 
-Saída em dados/[B1] Estabelecimentos e cardapios/:
+Saída:
   B1_cardapios_itens_precos.xlsx  (abas itens, resumo, precos_subcategoria, fontes)
 
 Uso:
@@ -72,12 +72,11 @@ from openpyxl.styles import Alignment, Font
 from openpyxl.utils import get_column_letter
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos" / "cardapios" / "transcricao"
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-TRIAGEM = PROCESSED / "estabelecimentos/3_triagem/B1_triagem_manual_metro_av100.xlsx"
-NOVAS = PROCESSED / "acervo_jogos/B1_acervodejogos_luderias_novas.csv"
-APROVADAS = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
-SAIDA = PROCESSED / "cardapios" / "B1_cardapios_itens_precos.xlsx"
+RAW = ROOT / "dados" / "B1_cardapios" / "_dados-brutos" / "transcricao"
+TRIAGEM = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_triagem_manual_metro_av100.xlsx"
+NOVAS = ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_acervodejogos_luderias_novas.csv"
+APROVADAS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_aprovadas_metro_av100.xlsx"
+SAIDA = ROOT / "dados" / "B1_cardapios" / "_dados-agregados" / "B1_cardapios_itens_precos.xlsx"
 
 DATA_COLETA = "2026-10-10"
 
@@ -186,7 +185,7 @@ FONTES = {
                         url="https://drive.google.com/uc?export=download&id=1cl7YIKdJhuuhNCUKAO0-96czajLGInqJ",
                         formato="PDF (Canva), transcrito à mão", data_cardapio="2025-12", status="extraído",
                         data_coleta="2026-10-12", nota=""),
-    # Busca profunda de 16/10/2026 (registro em cardapios/B1_cardapios_busca_profunda.csv)
+    # Busca profunda de 16/10/2026 (registro em dados/B1_cardapios/_dados-agregados/B1_cardapios_busca_profunda.csv)
     "tabuclub": dict(place_id="ChIJOcVssmeDmQARZZrnWu2mnwA",
                      url="https://drive.google.com/file/d/1-KDTgvYRZKe4R9KCWVQHRD5xiWqjSgPW/view",
                      formato="PDF no Google Drive (link do Linktree), transcrito à mão", data_cardapio="",
@@ -231,7 +230,7 @@ FONTES = {
            ("tocadorato", "ChIJ41pgHNFDGZURC7yTegyn7nU", "tocadorato_oficial"),
            ("nalaland", "ChIJRUjwU66WoGgRzc9yJU7jkwM", "nalaland.jogos"),
        ]},
-    # 11/11/2026: busca minuciosa (cardapios/B1_busca_minuciosa_taxa_cardapio_acervo.csv): taxa
+    # 11/11/2026: busca minuciosa (dados/B1_cardapios/_dados-agregados/B1_busca_minuciosa_taxa_cardapio_acervo.csv): taxa
     # declarada pela própria casa na legenda de um post (ou no site, Bodogami); isenção ou
     # abatimento por consumo fica na observação, não vira linha. Chef on Play e Castelos
     # declaram não cobrar (linha de R$ 0, fora das médias de quem cobra). A linha de R$ 0 da

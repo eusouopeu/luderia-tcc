@@ -26,7 +26,7 @@ O resultado NÃO decide quem é luderia: os que chegam ao fim são candidatos à
 triagem manual do autor (fotos do Maps, Instagram), a mesma que levou de 164
 para 51 aprovadas na coleta original.
 
-Saídas em dados/[B1] Estabelecimentos e cardapios/estabelecimentos/1_busca/:
+Saídas em dados/B1_estabelecimentos/_dados-agregados/1_busca/:
   B1_repaginacao_funil.csv        grupo x situação, com totais
   B1_repaginacao_candidatos.csv   quem chegou à porta da triagem manual
 
@@ -52,8 +52,8 @@ import recorte_rm
 from regic import load_regic
 
 ROOT = Path(__file__).resolve().parents[4]
-RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos" / "estabelecimentos"
-SAIDA = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos" / "1_busca"
+RAW = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos"
+SAIDA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "1_busca"
 CANDIDATOS = RAW / "B1_candidatos.csv"
 REPAGINACAO = RAW / "B1_candidatos_repaginacao.csv"
 

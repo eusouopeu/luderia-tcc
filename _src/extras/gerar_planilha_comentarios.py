@@ -19,7 +19,7 @@ autor): o campo não mede o tamanho do grupo que foi à casa.
 cega); Contexto entra como exploratória (kappa 0,52).
 
 Uso: python3 _src/extras/gerar_planilha_comentarios.py [caminho do CSV]
-Sem argumento, lê o CSV em `dados/[B2]…/_dados-brutos/analise_conteudo/`.
+Sem argumento, lê o CSV em `dados/B2_avaliacoes/_dados-brutos/analise_conteudo/`.
 """
 
 from __future__ import annotations
@@ -40,9 +40,8 @@ import planilha_estilo as est  # noqa: E402
 from planilha_estilo import *  # noqa: E402,F403
 
 D = ROOT / "dados"
-B1 = D / "[B1] Estabelecimentos e cardapios"
 NOME_CSV = "2026-11-03_2_comentarios_grade2.csv"
-CANDIDATOS = [D / "[B2] Avaliacoes recentes" / "_dados-brutos" / "analise_conteudo" / NOME_CSV]
+CANDIDATOS = [D / "B2_avaliacoes" / "_dados-brutos" / "analise_conteudo" / NOME_CSV]
 SAIDA = D / "dados_agregados"
 GRAF = SAIDA / "graficos_comentarios"
 
@@ -55,7 +54,7 @@ print(f"Lendo {arq}")
 d = pd.read_csv(arq)
 
 # ---------------------------------------------------------------- base
-res = pd.read_excel(B1 / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx", sheet_name="estabelecimentos")
+res = pd.read_excel(D / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx", sheet_name="estabelecimentos")
 cap = d["Place ID"].map(dict(zip(res.place_id, res.capital_endereco)))
 cap = cap.fillna(d.Estabelecimento.map(dict(zip(res.nome, res.capital_endereco))))
 d["metropole"] = cap.fillna(d["Capital do endereço"])

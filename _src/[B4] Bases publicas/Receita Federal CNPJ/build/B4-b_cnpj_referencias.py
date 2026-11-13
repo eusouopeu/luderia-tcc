@@ -4,8 +4,8 @@ Federal (BrasilAPI): natureza jurídica, CNAE principal e secundários, opção
 pelo Simples, porte, início de atividade e capital social. Uma linha por CNAE
 de cada CNPJ (tipo = principal ou secundário).
 
-Entrada: dados/[B4] Bases publicas/_dados-brutos/receita_cnpj/cnpj_*.json
-Saída: dados/[B4] Bases publicas/juridico_tributario/[B4] CNPJ de Referência 2026-10 (Receita Federal).csv
+Entrada: dados/B4_juridico_tributario/_dados-brutos/receita_cnpj/cnpj_*.json
+Saída: dados/B4_juridico_tributario/_dados-agregados/[B4] CNPJ de Referência 2026-10 (Receita Federal).csv
 """
 
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
@@ -19,14 +19,14 @@ if __name__ == "__main__":
 
 import pandas as pd
 
-from bases_comum import PROCESSED_DIR, RAW_DIR, ler_json
+from bases_comum import DADOS, ler_json, pasta_bruta, pasta_uso
 
-SAIDA = PROCESSED_DIR / "juridico_tributario" / "[B4] CNPJ de Referência 2026-10 (Receita Federal).csv"
+SAIDA = pasta_uso("juridico_tributario") / "[B4] CNPJ de Referência 2026-10 (Receita Federal).csv"
 
 
 def main() -> None:
     linhas = []
-    for arq in sorted((RAW_DIR / "receita_cnpj").glob("cnpj_*.json")):
+    for arq in sorted(pasta_bruta("receita_cnpj").glob("cnpj_*.json")):
         d = ler_json(arq)
         base = {k: d.get(k) for k in ("cnpj", "razao_social", "natureza_juridica", "opcao_pelo_simples",
                                       "data_opcao_pelo_simples", "porte", "data_inicio_atividade", "capital_social")}
@@ -40,7 +40,7 @@ def main() -> None:
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(SAIDA, index=False)
     print(df.groupby(["razao_social", "tipo_cnae"]).size().to_string())
-    print(f"{len(df)} linhas -> {SAIDA.relative_to(PROCESSED_DIR.parents[1])}")
+    print(f"{len(df)} linhas -> {SAIDA.relative_to(DADOS.parent)}")
 
 
 if __name__ == "__main__":

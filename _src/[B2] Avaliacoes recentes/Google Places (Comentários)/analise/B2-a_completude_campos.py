@@ -20,7 +20,7 @@ um, contam-se as avaliações:
 As três são aninhadas (sem_campos ⊆ abaixo_do_maximo ⊆ falta_campo_visto) e são teto
 do corte pelo "Mais": o avaliador pode simplesmente não ter preenchido o campo.
 
-Saída: dados/[B2] Avaliacoes recentes/B2_completude_campos.csv (uma linha por
+Saída: dados/B2_avaliacoes/_dados-agregados/B2_completude_campos.csv (uma linha por
 estabelecimento, com a linha TOTAL; a soma das linhas fecha com o total).
 
 Uso:
@@ -38,8 +38,8 @@ if __name__ == "__main__":
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-B2 = ROOT / "dados" / "[B2] Avaliacoes recentes"
-COLETAS = B2 / "_dados-brutos" / "coletas"
+B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
+COLETAS = ROOT / "dados" / "B2_avaliacoes" / "_dados-brutos" / "coletas"
 ARQUIVOS = B2 / "analise_conteudo" / "B2_bardin_arquivos_coleta.csv"
 SAIDA = B2 / "B2_completude_campos.csv"
 

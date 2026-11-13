@@ -5,10 +5,10 @@ O B1 conta cada casa na capital da região metropolitana do endereço; o denomin
 é, portanto, a população estimada da região metropolitana inteira (soma dos
 municípios da composição do IBGE), e não só a da capital. Manaus entra com zero casa.
 
-Entradas: dados/[B4] .../_dados-brutos/ibge_rm/Composicao_RM_2025.xlsx (via recorte_rm.py);
-          dados/[B4] .../mercado_demanda/[B4] População Estimada por Município 2026 (IBGE).csv;
-          dados/[B1] .../estabelecimentos/B1_resumo_estabelecimentos.xlsx
-Saída: dados/[B1] .../estabelecimentos/4_estatistica_descritiva/B1_densidade_rm.csv
+Entradas: dados/B4_mercado_demanda/_dados-brutos/ibge_rm/Composicao_RM_2025.xlsx (via recorte_rm.py);
+          dados/B4_mercado_demanda/_dados-agregados/[B4] População Estimada por Município 2026 (IBGE).csv;
+          dados/B1_estabelecimentos/_dados-agregados/B1_resumo_estabelecimentos.xlsx
+Saída: dados/B1_estabelecimentos/_dados-agregados/4_estatistica_descritiva/B1_densidade_rm.csv
 
 Uso:
     python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_densidade_rm.py"
@@ -28,8 +28,8 @@ from openpyxl import load_workbook
 import recorte_rm as rr
 
 ROOT = _AQUI.parents[4]
-POP = ROOT / "dados" / "[B4] Bases publicas" / "mercado_demanda" / "[B4] População Estimada por Município 2026 (IBGE).csv"
-EST = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos"
+POP = ROOT / "dados" / "B4_mercado_demanda" / "_dados-agregados" / "[B4] População Estimada por Município 2026 (IBGE).csv"
+EST = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados"
 METROPOLES = ["Belém", "Belo Horizonte", "Brasília", "Curitiba", "Florianópolis", "Fortaleza", "Goiânia",
               "Manaus", "Porto Alegre", "Recife", "Rio de Janeiro", "Salvador", "São Paulo", "Vitória", "Campinas"]
 

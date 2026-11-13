@@ -10,16 +10,16 @@ como trecho do nome (ex.: "eletronico" acha "Eletrônicos"; "fisio" acha
 "Fisioterapia"). A contagem por termo não é exclusiva: um nome com dois
 termos conta nos dois. A linha "qualquer condição" conta cada place_id uma vez.
 
-Saídas em dados/[B1] Estabelecimentos e cardapios/:
-  estabelecimentos/1_busca/B1_termos_suspeitos.csv - condição x planilha
-  estabelecimentos/2_recorte/B1_curadoria_metro_f.csv e
-  estabelecimentos/2_recorte/B1_curadoria_regio_f.csv - curadoria do
+Saídas:
+  dados/B1_estabelecimentos/_dados-agregados/1_busca/B1_termos_suspeitos.csv - condição x planilha
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_curadoria_metro_f.csv e
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_curadoria_regio_f.csv - curadoria do
       grupo sem as linhas com algum termo suspeito no nome ("store" e loja de
       departamento não tiram a linha). A coluna capital_busca é trocada por
       capital_endereco: a capital da UF do endereço.
-  estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv -
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_curadoria_metro_f_av100.csv -
       curadoria filtrada das metrópoles só com volume de avaliações > 100.
-  estabelecimentos/2_recorte/B1_curadoria_metro_f_av50.csv -
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_curadoria_metro_f_av50.csv -
       mesma curadoria filtrada com volume >= 50, para avaliar a expansão
       da população (pedido do autor em 13/10/2026).
 
@@ -42,23 +42,23 @@ import unicodedata
 from recorte_rm import classifica
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-OUT_PATH = PROCESSED / "estabelecimentos/1_busca/B1_termos_suspeitos.csv"
+PROCESSED = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados"
+OUT_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "1_busca" / "B1_termos_suspeitos.csv"
 # Grupo REGIC -> planilha filtrada gerada a partir da curadoria dele.
 FILTRADAS = {
-    "metropoles": PROCESSED / "estabelecimentos/2_recorte/B1_curadoria_metro_f.csv",
-    "capitais_regionais": PROCESSED / "estabelecimentos/2_recorte/B1_curadoria_regio_f.csv",
+    "metropoles": ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria_metro_f.csv",
+    "capitais_regionais": ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria_regio_f.csv",
 }
-OUT_METROPOLES_100_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv"
-OUT_METROPOLES_50_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av50.csv"
+OUT_METROPOLES_100_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria_metro_f_av100.csv"
+OUT_METROPOLES_50_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria_metro_f_av50.csv"
 MINIMO_AVALIACOES = 100  # estritamente maior que
 MINIMO_AVALIACOES_EXPANSAO = 50  # maior ou igual
 
 PLANILHAS = {
-    "curadoria_metropoles": "estabelecimentos/2_recorte/B1_curadoria_metro.csv",
-    "curadoria_capitais_regionais": "estabelecimentos/2_recorte/B1_curadoria_regio.csv",
-    "descartados_metropoles": "estabelecimentos/1_busca/B1_descartados_metro.csv",
-    "descartados_capitais_regionais": "estabelecimentos/1_busca/B1_descartados_regio.csv",
+    "curadoria_metropoles": "2_recorte/B1_curadoria_metro.csv",
+    "curadoria_capitais_regionais": "2_recorte/B1_curadoria_regio.csv",
+    "descartados_metropoles": "1_busca/B1_descartados_metro.csv",
+    "descartados_capitais_regionais": "1_busca/B1_descartados_regio.csv",
 }
 # Termo -> grafias que contam para ele. Grafias que já contêm o termo (ex.:
 # "brinquedos" contém "brinquedo") entram por clareza, sem mudar a contagem.

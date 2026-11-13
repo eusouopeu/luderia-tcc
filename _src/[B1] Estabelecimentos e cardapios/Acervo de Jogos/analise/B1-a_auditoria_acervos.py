@@ -8,8 +8,8 @@ estabelecimento, resto na proporção do tamanho do acervo descontado o mínimo,
 maiores restos e menores chaves da semente (_src/extras/amostrar_auditoria.py),
 o mesmo desenho do B2.
 
-Entrada: acervo_jogos/B1_jogos_dos_acervos.csv (um jogo por estabelecimento e linha)
-Saídas em _dados-brutos/acervos_luderias/auditoria/:
+Entrada: dados/B1_acervo_jogos/_dados-agregados/B1_jogos_dos_acervos.csv (um jogo por estabelecimento e linha)
+Saídas em dados/B1_acervo_jogos/_auditoria/:
   B1_auditoria_acervos.csv
   auditoria_registro.csv
 
@@ -35,9 +35,8 @@ import pandas as pd
 import amostrar_auditoria as aa
 
 ROOT = Path(__file__).resolve().parents[4]
-PROCESSADOS = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-ENTRADA = PROCESSADOS / "acervo_jogos/B1_jogos_dos_acervos.csv"
-SAIDA = PROCESSADOS / "_dados-brutos/acervos_luderias/auditoria"
+ENTRADA = ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_jogos_dos_acervos.csv"
+SAIDA = ROOT / "dados" / "B1_acervo_jogos" / "_auditoria"
 
 SEMENTE = 20261015
 N_JOGOS = 200

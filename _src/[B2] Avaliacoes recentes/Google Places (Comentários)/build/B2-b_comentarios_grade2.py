@@ -6,9 +6,9 @@ Bloco B2 - base final da análise de conteúdo: os 1.628 comentários do banco
 Por que três fontes: o índice SQL do Notion e o cache do app desktop ainda
 devolvem os temas de antes da grade 2. A base sai, então, de:
   - temas, Contexto, "Costuma ir" e "Voltará": o retrato tirado antes da
-    grade 2 (`_dados-brutos/analise_conteudo/2026-11-02_B2_notion_antes_grade2.json`,
+    grade 2 (`dados/B2_avaliacoes/_dados-brutos/analise_conteudo/2026-11-02_B2_notion_antes_grade2.json`,
     1.628 páginas) com o plano da grade 2 por cima
-    (`analise_conteudo/B2_plano_grade2.json`, 652 páginas; cada propriedade do
+    (`dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_plano_grade2.json`, 652 páginas; cada propriedade do
     plano substitui a do retrato). Páginas lidas uma a uma no Notion em
     03/11/2026 batem com essa soma;
   - demais campos (notas por aspecto, preço por pessoa, espera, barulho, grupo,
@@ -23,7 +23,7 @@ base, mas sai da análise (kappa 0,52 na rodada 2); Contexto entra como
 exploratória (kappa 0,52).
 
 Saída (fora do git: tem o texto dos comentários):
-  dados/[B2] Avaliacoes recentes/_dados-brutos/analise_conteudo/2026-11-03_2_comentarios_grade2.csv
+  dados/B2_avaliacoes/_dados-brutos/analise_conteudo/2026-11-03_2_comentarios_grade2.csv
 no formato da exportação do Notion (listas separadas por vírgula), lido por
 `_src/extras/gerar_planilha_comentarios.py` e por `../analise/B2-a_temas_grade2.py`.
 
@@ -49,11 +49,11 @@ import pandas as pd  # noqa: E402
 import ler_notion_offline as lno  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[4]
-B2 = ROOT / "dados" / "[B2] Avaliacoes recentes"
-RETRATO = B2 / "_dados-brutos" / "analise_conteudo" / "2026-11-02_B2_notion_antes_grade2.json"
+B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
+RETRATO = ROOT / "dados" / "B2_avaliacoes" / "_dados-brutos" / "analise_conteudo" / "2026-11-02_B2_notion_antes_grade2.json"
 PLANO = B2 / "analise_conteudo" / "B2_plano_grade2.json"
-SAIDA = B2 / "_dados-brutos" / "analise_conteudo" / "2026-11-03_2_comentarios_grade2.csv"
-RESUMO_B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx"
+SAIDA = ROOT / "dados" / "B2_avaliacoes" / "_dados-brutos" / "analise_conteudo" / "2026-11-03_2_comentarios_grade2.csv"
+RESUMO_B1 = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx"
 
 TEMAS = ["ambiente e decoração", "atendimento online", "atendimento presencial", "bebidas", "comemorações e grupos",
          "comida", "conforto e barulho", "curadoria e conservação do acervo", "espaço e lotação",

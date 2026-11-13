@@ -5,7 +5,7 @@ Google Maps (_instrucoes/4_metodologia.md §3.4, etapa 1 do B1).
 
 População: as 54 luderias do objeto (aprovadas na triagem manual, menos as que
 saíram do objeto, mais as luderias novas do acervodejogos), lidas de
-estabelecimentos/B1_resumo_estabelecimentos.xlsx. Até 15/10/2026 a população
+dados/B1_estabelecimentos/_dados-agregados/B1_resumo_estabelecimentos.xlsx. Até 15/10/2026 a população
 era a lista de 164 candidatos antes da curadoria; por decisão do autor, a
 auditoria cobre só as casas que entram nas análises.
 
@@ -14,12 +14,12 @@ por capital do endereço e faixa de volume de avaliações (101 a 300, 301 a 100
 mais de 1000), alocação proporcional pelos maiores restos e, dentro do estrato,
 as menores chaves da semente (_src/extras/amostrar_auditoria.py).
 
-Entradas: estabelecimentos/B1_resumo_estabelecimentos.xlsx (aba estabelecimentos; população)
-          estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv e
-          acervo_jogos/B1_acervodejogos_luderias_novas.csv (data da coleta de cada casa)
+Entradas: dados/B1_estabelecimentos/_dados-agregados/B1_resumo_estabelecimentos.xlsx (aba estabelecimentos; população)
+          dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_curadoria_metro_f_av100.csv e
+          dados/B1_acervo_jogos/_dados-agregados/B1_acervodejogos_luderias_novas.csv (data da coleta de cada casa)
 Saídas:
-  _dados-brutos/estabelecimentos/auditoria/B1_auditoria_estabelecimentos.csv
-  _dados-brutos/estabelecimentos/auditoria/auditoria_registro.csv (uma linha por sorteio)
+  dados/B1_estabelecimentos/_auditoria/B1_auditoria_estabelecimentos.csv
+  dados/B1_estabelecimentos/_auditoria/auditoria_registro.csv (uma linha por sorteio)
 
 Conferência: abrir link_google_maps e anotar nota_na_pagina e
 volume_na_pagina como aparecem na página, e endereco_confere (sim/nao). Os
@@ -46,12 +46,10 @@ import pandas as pd
 import amostrar_auditoria as aa
 
 ROOT = Path(__file__).resolve().parents[4]
-PROCESSADOS = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-BRUTOS = PROCESSADOS / "_dados-brutos"
-ENTRADA = PROCESSADOS / "estabelecimentos/B1_resumo_estabelecimentos.xlsx"
-CURADORIA = PROCESSADOS / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv"
-NOVAS = PROCESSADOS / "acervo_jogos/B1_acervodejogos_luderias_novas.csv"
-SAIDA = BRUTOS / "estabelecimentos/auditoria"
+ENTRADA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx"
+CURADORIA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria_metro_f_av100.csv"
+NOVAS = ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_acervodejogos_luderias_novas.csv"
+SAIDA = ROOT / "dados" / "B1_estabelecimentos" / "_auditoria"
 
 SEMENTE = 20261015
 FRACAO = 0.20

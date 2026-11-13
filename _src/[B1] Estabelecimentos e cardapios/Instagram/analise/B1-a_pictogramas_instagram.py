@@ -24,7 +24,7 @@ Regras:
 - comentários e curtidas por post = total do período ÷ posts do período
   (casas sem post no período ficam fora).
 
-Saídas (dados/[B1] Estabelecimentos e cardapios/estabelecimentos/5_graficos/pictogramas/):
+Saídas (dados/B1_estabelecimentos/_dados-agregados/5_graficos/pictogramas/):
   png/, svg/ (texto editável) e valores/ (B1_pict_*). Para atualizar depois
   de corrigir uma coleta, rodar o script de novo.
 
@@ -46,7 +46,7 @@ from dados_graficos import casas  # noqa: E402
 from graficos_comum import BASE, ORDEM_REGIAO, TINTA, VERMELHO, br, pictograma_linhas, salvar  # noqa: E402
 
 ROOT = _AQUI.parents[4]
-PASTA = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos" / "5_graficos" / "pictogramas"
+PASTA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "5_graficos" / "pictogramas"
 FONTE = ("Fonte: elaboração própria com perfis e posts do Instagram coletados de 11 a 15/10/2026; "
          "posts de 01/09 a 01/10/2026 (B1).")
 

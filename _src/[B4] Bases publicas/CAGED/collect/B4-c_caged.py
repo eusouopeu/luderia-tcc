@@ -13,7 +13,7 @@ Uso:
   python B4-c_caged.py --inicio 202101 --fim 202512
   python B4-c_caged.py --manter-originais         # não apaga os .7z
 
-Saídas em dados/[B4] Bases publicas/_dados-brutos/caged/:
+Saídas em dados/B4_multiuso/_dados-brutos/caged/:
   caged_mov_<AAAAMM>_admissoes.csv.gz   admissões filtradas, só as colunas usadas no tratamento
   layout_novo_caged_movimentacao.xlsx
 Meses já processados (.csv ou .csv.gz) são pulados.
@@ -36,11 +36,11 @@ import time
 import pandas as pd
 import py7zr
 
-from bases_comum import CAPITAIS, CBOS, RAW_DIR
+from bases_comum import CAPITAIS, CBOS, pasta_bruta
 
 FTP_HOST = "ftp.mtps.gov.br"
 FTP_BASE = "/pdet/microdados/NOVO CAGED"
-OUT_DIR = RAW_DIR / "caged"
+OUT_DIR = pasta_bruta("caged")
 TMP_DIR = OUT_DIR / "_tmp"
 
 MUNICIPIOS = {cod[:6] for cod in CAPITAIS}  # o CAGED usa o código de 6 dígitos

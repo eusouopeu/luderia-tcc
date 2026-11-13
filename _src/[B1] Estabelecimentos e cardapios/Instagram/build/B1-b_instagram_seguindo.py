@@ -8,7 +8,7 @@ Para que serve: achar casas fora da lista do B1 e medir a cobertura da busca
 no Google Maps (B1-a_instagram_snowball.py). Não é amostra probabilística.
 
 Entrada (fora do git: a lista traz @ de pessoas físicas):
-  dados/[B1] Estabelecimentos e cardapios/_dados-brutos/redes_sociais/seguindo/**/
+  dados/B1_redes_sociais/_dados-brutos/seguindo/**/
       AAAA-MM-DD_<perfil>_instagram_seguindo.csv   (webscripts/instagram_snowball.user.js)
 
 Regras:
@@ -25,24 +25,24 @@ Regras:
     contagens agregadas.
 
 Saídas:
-  _dados-brutos/redes_sociais/snowball/B1_snowball_candidatos.csv  (fora do git)
+  dados/B1_redes_sociais/_dados-brutos/snowball/B1_snowball_candidatos.csv  (fora do git)
       uma linha por conta com grau >= CORTE_GRAVAR, com as colunas de
       classificação manual (classe, metropole, avaliacoes_maps, observacao),
       preservadas de uma execução para a outra;
-  _dados-brutos/redes_sociais/snowball/B1_snowball_candidatos_grau3.csv  (fora do git)
+  dados/B1_redes_sociais/_dados-brutos/snowball/B1_snowball_candidatos_grau3.csv  (fora do git)
       recorte para leitura: candidatos seguidos por 3+ sementes, novas primeiro;
       o que for classificado nele volta para a lista de candidatos (vale sobre ela);
-  redes_sociais/snowball/B1_snowball_sementes.csv
+  dados/B1_redes_sociais/_dados-agregados/snowball/B1_snowball_sementes.csv
       uma linha por semente: capturados, declarados, % capturada e se a semente é
       casa aprovada (a análise supõe sementes = casas aprovadas);
-  redes_sociais/snowball/B1_snowball_proximas_sementes.csv e .txt
+  dados/B1_redes_sociais/_dados-agregados/snowball/B1_snowball_proximas_sementes.csv e .txt
       casas aprovadas ainda sem lista coletada, na ordem sugerida de coleta:
       rodízio entre capitais, começando pelas com menos sementes; dentro da
       capital, a mais seguida primeiro. O .txt (um @ por linha) vai direto para
       "Coletar fila" do Snowball do Instagram (instagram_snowball.user.js);
-  redes_sociais/snowball/B1_snowball_grau.csv
+  dados/B1_redes_sociais/_dados-agregados/snowball/B1_snowball_grau.csv
       nº de contas por grau de entrada (fecha com o total de contas distintas);
-  redes_sociais/snowball/B1_snowball_grau_aprovadas.csv
+  dados/B1_redes_sociais/_dados-agregados/snowball/B1_snowball_grau_aprovadas.csv
       grau de entrada de cada casa aprovada (base da sensibilidade); casa com
       dois @ fica com o maior grau.
 

@@ -1,9 +1,11 @@
 """
 Constantes e funções comuns aos scripts do Bloco B4 (bases públicas).
 
-Estrutura de pastas:
-  dados/[B4] Bases publicas/_dados-brutos/<fonte>/   respostas brutas das APIs e arquivos originais
-  dados/[B4] Bases publicas/     tabelas tratadas, padrão "[B4] {dado} {período} ({fonte}).csv"
+Estrutura de pastas (uma coleta por uso da tabela no plano, ver USOS):
+  dados/B4_<uso>/_dados-brutos/<fonte>/   respostas brutas das APIs e arquivos originais
+  dados/B4_<uso>/_auditoria/<fonte>/      amostras de conferência (B4-a_auditoria_bases.py)
+  dados/B4_<uso>/_dados-agregados/        tabelas tratadas, padrão "[B4] {dado} {período} ({fonte}).csv"
+A fonte usada em mais de um uso guarda os brutos em B4_multiuso (ver FONTE_USO).
 
 A consulta ao SIDRA usa a API de agregados do IBGE, versão 3:
 https://servicodados.ibge.gov.br/api/docs/agregados?versao=3
@@ -20,8 +22,7 @@ import pandas as pd
 import requests
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]
-RAW_DIR = ROOT / "dados" / "[B4] Bases publicas" / "_dados-brutos"
-PROCESSED_DIR = ROOT / "dados" / "[B4] Bases publicas"
+DADOS = ROOT / "dados"
 DATA_COLETA = time.strftime("%Y-%m-%d")
 HEADERS = {"User-Agent": "Mozilla/5.0 (pesquisa academica UFBA - TCC Luderia)"}
 
@@ -59,7 +60,7 @@ IDS_CAPITAIS = ",".join(CAPITAIS)
 
 SIDRA_API = "https://servicodados.ibge.gov.br/api/v3/agregados"
 
-# Subpastas de dados/[B4] Bases publicas/, por uso da tabela no plano.
+# Coletas do bloco (dados/B4_<uso>/), por uso da tabela no plano.
 USOS = {
     "mercado_demanda": "cap. 5 e 6: população e renda das capitais",
     "ponto_operacoes": "6.4 e 7.1: escolha do bairro e perfil do entorno",
@@ -67,6 +68,37 @@ USOS = {
     "financeiro": "cap. 9: premissas de custo, taxa de desconto e coerência setorial",
     "multiuso": "usada em mais de um capítulo (deflator, ticket, custo de pessoal)",
 }
+
+# Fonte -> coleta (uso) que guarda os brutos e a auditoria dela.
+FONTE_USO = {
+    "bcb": "financeiro",
+    "fipezap": "financeiro",
+    "concla": "juridico_tributario",
+    "legislacao": "juridico_tributario",
+    "receita_cnpj": "juridico_tributario",
+    "ibge_rm": "mercado_demanda",
+    "ibge_censo_2022": "ponto_operacoes",
+    "observassa": "ponto_operacoes",
+    "ibge_sidra": "multiuso",
+    "caged": "multiuso",
+}
+
+
+def pasta_uso(uso: str) -> pathlib.Path:
+    """Pasta das tabelas tratadas de um uso: dados/B4_<uso>/_dados-agregados/."""
+    if uso not in USOS:
+        raise ValueError(f"Uso fora do conjunto previsto: {uso}")
+    return DADOS / f"B4_{uso}" / "_dados-agregados"
+
+
+def pasta_bruta(fonte: str) -> pathlib.Path:
+    """Pasta dos brutos de uma fonte: dados/B4_<uso>/_dados-brutos/<fonte>/."""
+    return DADOS / f"B4_{FONTE_USO[fonte]}" / "_dados-brutos" / fonte
+
+
+def pasta_auditoria(fonte: str) -> pathlib.Path:
+    """Pasta da auditoria de uma fonte: dados/B4_<uso>/_auditoria/<fonte>/."""
+    return DADOS / f"B4_{FONTE_USO[fonte]}" / "_auditoria" / fonte
 
 
 def rotulo_periodo(valores) -> str:
@@ -78,14 +110,12 @@ def rotulo_periodo(valores) -> str:
 
 
 def caminho_saida(subpasta: str, dado: str, periodo: str, fonte: str) -> pathlib.Path:
-    """Caminho de saída do bloco: <subpasta de uso>/"[B4] {dado principal} {período} ({fonte}).csv".
+    """Caminho de saída do bloco: dados/B4_<uso>/_dados-agregados/"[B4] {dado principal} {período} ({fonte}).csv".
 
     A subpasta é o uso da tabela no plano (ver USOS), não a fonte: a mesma fonte pode
     alimentar capítulos diferentes e o que decide a pasta é a decisão que o dado sustenta.
     """
-    if subpasta not in USOS:
-        raise ValueError(f"Subpasta fora do conjunto previsto: {subpasta}")
-    destino = PROCESSED_DIR / subpasta
+    destino = pasta_uso(subpasta)
     destino.mkdir(parents=True, exist_ok=True)
     return destino / f"[B4] {dado} {periodo} ({fonte}).csv"
 _cache_metadados: dict[int, dict] = {}

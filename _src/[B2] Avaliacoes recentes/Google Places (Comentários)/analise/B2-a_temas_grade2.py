@@ -5,9 +5,9 @@ tabelas `B2_bardin_*` do livro de códigos de 15/10/2026: a grade validada pela
 recodificação é a do Notion (decisão de 03/11/2026).
 
 Entradas:
-  _dados-brutos/analise_conteudo/2026-11-03_2_comentarios_grade2.csv  (B2-b_comentarios_grade2.py)
-  analise_conteudo/B2_recodificacao_rodada1.csv e B2_recodificacao_rodada2.csv
-Saídas em dados/[B2] Avaliacoes recentes/analise_conteudo/:
+  dados/B2_avaliacoes/_dados-brutos/analise_conteudo/2026-11-03_2_comentarios_grade2.csv  (B2-b_comentarios_grade2.py)
+  dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_recodificacao_rodada1.csv e B2_recodificacao_rodada2.csv
+Saídas em dados/B2_avaliacoes/_dados-agregados/analise_conteudo/:
   B2_temas_frequencia.csv      tema x polaridade: comentários, % das 1.628, nota média
   B2_temas_contexto.csv        contexto (exploratório), comentários e %
   B2_temas_estabelecimentos.csv comentários e comentários com tema por estabelecimento
@@ -47,9 +47,9 @@ import pandas as pd  # noqa: E402
 import graficos_comum as gc  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[4]
-B2 = ROOT / "dados" / "[B2] Avaliacoes recentes"
+B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
 PASTA = B2 / "analise_conteudo"
-BASE = B2 / "_dados-brutos" / "analise_conteudo" / "2026-11-03_2_comentarios_grade2.csv"
+BASE = ROOT / "dados" / "B2_avaliacoes" / "_dados-brutos" / "analise_conteudo" / "2026-11-03_2_comentarios_grade2.csv"
 GRAF = B2 / "graficos"
 FIG_CAP = ROOT / "textos" / "capitulos" / "figuras" / "6_temas_avaliacoes.png"
 

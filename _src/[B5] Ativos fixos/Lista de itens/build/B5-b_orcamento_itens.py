@@ -3,17 +3,17 @@ Orça a lista de itens da etapa 1 (reforma, mobiliário, cozinha e bar, caixa e
 informática) com os custos do SINAPI e os preços coletados em sites, nos três
 cenários do modelo, e resume por premissa (I01 a I04 do cap. 9).
 
-Entradas em dados/[B5] Ativos fixos/:
-  orcamento/"[B5] Lista de Itens da Etapa 1 (elaboração própria).csv"
+Entradas:
+  dados/B5_orcamento/_dados-agregados/"[B5] Lista de Itens da Etapa 1 (elaboração própria).csv"
       um item por linha: premissa, unidade, base (fixa ou por_m2), quantidade por cenário,
       fonte da quantidade, fonte do preço (sinapi, coleta ou gratuito), código SINAPI e termo de busca
-  obra_reforma/"[B5] SINAPI Composições BA AAAA-MM (Caixa).csv"   (B5-c_sinapi.py; o mês mais recente)
-  _dados-brutos/<categoria>/*_precos.csv                          (coletas em sites, quando houver)
-      do webscripts/precos_itens.user.js; usa id_item, url, produto, preco (por unidade da lista),
+  dados/B5_obra_reforma/_dados-agregados/"[B5] SINAPI Composições BA AAAA-MM (Caixa).csv"   (B5-c_sinapi.py; o mês mais recente)
+  dados/B5_<categoria>/_dados-brutos/*_precos.csv                          (coletas em sites, quando houver)
+      do _src/Webscripts/[B5] Ativos fixos/precos_itens.user.js; usa id_item, url, produto, preco (por unidade da lista),
       preco_anuncio, unidades, posicao (na busca, na ordem do site; vazia nas exportações
       anteriores a 03/11/2026 01:40), motivo e excluida, com vírgula decimal. Cada exportação traz tudo o que
       estava guardado no navegador, então os arquivos se repetem entre si.
-Saídas em dados/[B5] Ativos fixos/orcamento/:
+Saídas em dados/B5_orcamento/_dados-agregados/:
   "[B5] Orçamento por Item Etapa 1 {mês} (SINAPI e coletas).csv"
       quantidade, preço unitário e total de cada item nos três cenários, com o nível de evidência
   "[B5] Orçamento por Premissa Etapa 1 {mês} (SINAPI e coletas).csv"
@@ -61,10 +61,8 @@ import re
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-BLOCO = ROOT / "dados" / "[B5] Ativos fixos"
-OUT_DIR = BLOCO / "orcamento"
+OUT_DIR = ROOT / "dados" / "B5_orcamento" / "_dados-agregados"
 LISTA = OUT_DIR / "[B5] Lista de Itens da Etapa 1 (elaboração própria).csv"
-RAW_DIR = BLOCO / "_dados-brutos"
 CENARIOS = ["pessimista", "provavel", "otimista"]
 AREA_M2 = {"pessimista": 150, "provavel": 130, "otimista": 110}       # C03 do registro de premissas
 BDI = {"pessimista": 0.2500, "provavel": 0.2212, "otimista": 0.2034}  # TCU, Acórdão 2.622/2013
@@ -100,7 +98,7 @@ def ler_lista() -> pd.DataFrame:
 
 
 def ler_sinapi() -> tuple[str, pd.DataFrame]:
-    arquivos = sorted((BLOCO / "obra_reforma").glob("[[]B5[]] SINAPI Composições BA *.csv"))
+    arquivos = sorted((ROOT / "dados" / "B5_obra_reforma" / "_dados-agregados").glob("[[]B5[]] SINAPI Composições BA *.csv"))
     if not arquivos:
         raise FileNotFoundError("Sem SINAPI: rodar B5-c_sinapi.py antes")
     arq = arquivos[-1]
@@ -111,7 +109,7 @@ def ler_sinapi() -> tuple[str, pd.DataFrame]:
 
 
 def ler_coletas(itens_coleta: set[str]) -> pd.DataFrame:
-    arquivos = sorted(RAW_DIR.glob("*/*_precos.csv"), key=lambda a: a.name)
+    arquivos = sorted((ROOT / "dados").glob("B5_*/_dados-brutos/*_precos.csv"), key=lambda a: a.name)
     if not arquivos:
         print("coletas em sites: nenhuma ainda")
         return pd.DataFrame(columns=["id_item", "categoria", "fonte", "produto", "preco", "url", "data_coleta"])

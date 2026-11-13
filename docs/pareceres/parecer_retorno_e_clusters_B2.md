@@ -1,6 +1,6 @@
 # B2: o que acompanha a decisão de voltar e o conteúdo das avaliações por grupo de preço
 
-Parecer de 03/11/2026, a pedido do autor. Script: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_retorno_e_clusters.py`. Tabelas: `dados/[B2] Avaliacoes recentes/retorno_e_clusters/`. Base: as 1.628 avaliações do B2 codificadas na grade de 22 temas (Notion, 03/11/2026).
+Parecer de 03/11/2026, a pedido do autor. Script: `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_retorno_e_clusters.py`. Tabelas: `dados/B2_avaliacoes/_dados-agregados/retorno_e_clusters/`. Base: as 1.628 avaliações do B2 codificadas na grade de 22 temas (Notion, 03/11/2026).
 
 ## Resumo para o plano
 

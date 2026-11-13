@@ -2,9 +2,9 @@
 Extrai da planilha original do Índice FipeZAP as séries de imóveis comerciais
 (salas e conjuntos de até 200 m²) e o preço de locação residencial das capitais.
 
-Entrada: dados/[B4] Bases publicas/_dados-brutos/fipezap/fipezap-serieshistoricas_<data>.xlsx
-Saídas em dados/[B4] Bases publicas/:
-Saídas em financeiro/, no padrão "[B4] {dado} {período} ({fonte}).csv":
+Entrada: dados/B4_financeiro/_dados-brutos/fipezap/fipezap-serieshistoricas_<data>.xlsx
+Saídas:
+Saídas em dados/B4_financeiro/_dados-agregados/, no padrão "[B4] {dado} {período} ({fonte}).csv":
   "Aluguel e Venda Comercial"          série mensal por cidade (só meses com dado)
   "Aluguel Comercial por Capital"      uma linha por capital: último preço de locação comercial e
                                        residencial (R$/m²) e variação em 12 meses
@@ -27,9 +27,9 @@ if __name__ == "__main__":
 
 import pandas as pd
 
-from bases_comum import CAPITAIS, PROCESSED_DIR, RAW_DIR, caminho_saida, rotulo_periodo
+from bases_comum import CAPITAIS, caminho_saida, pasta_bruta, rotulo_periodo
 
-IN_DIR = RAW_DIR / "fipezap"
+IN_DIR = pasta_bruta("fipezap")
 COMERCIAL = {
     47: "venda_indice", 48: "venda_var_mensal_pct", 49: "venda_var_12m_pct", 50: "venda_preco_m2",
     51: "locacao_indice", 52: "locacao_var_mensal_pct", 53: "locacao_var_12m_pct", 54: "locacao_preco_m2",
@@ -84,7 +84,6 @@ def main() -> None:
                      residencial_locacao_var_12m_pct=res["residencial_locacao_var_12m_pct"].iloc[-1])
         ultimos.append(u)
 
-    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     serie = pd.concat(series, ignore_index=True)
     serie.to_csv(caminho_saida("financeiro", "Aluguel e Venda Comercial", rotulo_periodo(serie["data"]), "FipeZap"),
                  index=False)

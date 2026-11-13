@@ -8,8 +8,8 @@ todos, se tiver menos), resto na proporção do número de itens da casa descont
 o mínimo, maiores restos e menores chaves da semente
 (_src/extras/amostrar_auditoria.py), o mesmo desenho do B2.
 
-Entrada: _dados-brutos/cardapios/transcricao/<casa>.csv (um item por linha)
-Saídas em _dados-brutos/cardapios/auditoria/ (fora do git, como a pasta):
+Entrada: dados/B1_cardapios/_dados-brutos/transcricao/<casa>.csv (um item por linha)
+Saídas em dados/B1_cardapios/_auditoria/ (fora do git, como a pasta):
   B1_auditoria_cardapios.csv  com a pasta do original (ca_<cidade>/ca_<casa>/), quando houver
   auditoria_registro.csv
 
@@ -38,10 +38,9 @@ import pandas as pd
 import amostrar_auditoria as aa
 
 ROOT = Path(__file__).resolve().parents[4]
-BRUTOS = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
-ENTRADA = BRUTOS / "cardapios/transcricao"
-ORIGINAIS = BRUTOS / "cardapios"
-SAIDA = BRUTOS / "cardapios/auditoria"
+ENTRADA = ROOT / "dados" / "B1_cardapios" / "_dados-brutos" / "transcricao"
+ORIGINAIS = ROOT / "dados" / "B1_cardapios" / "_dados-brutos"
+SAIDA = ROOT / "dados" / "B1_cardapios" / "_auditoria"
 
 SEMENTE = 20261015
 N_ITENS = 200
@@ -80,7 +79,7 @@ def main():
     aa.resumo("B1 cardápios", len(itens), amostra)
     sem = sorted(c for c, p in originais.items() if not p)
     if sem:
-        print(f"sem pasta de original em _dados-brutos/cardapios/ca_*: {', '.join(sem)} (conferir na fonte online)")
+        print(f"sem pasta de original em dados/B1_cardapios/_dados-brutos/ca_*: {', '.join(sem)} (conferir na fonte online)")
     print(f"gravado em: {SAIDA.relative_to(ROOT)}")
 
 

@@ -5,9 +5,9 @@ Bloco B1 - cesta de jogos: custo do núcleo do acervo, faixa de preço por jogo,
 Pedido do autor em 17/10/2026: cesta com corte de 15 ou mais casas, faixa de
 preço e índice por loja.
 
-Entrada: acervo_jogos/B1_banco_jogos.csv (B1-b_banco_jogos.py), que já traz um
+Entrada: dados/B1_acervo_jogos/_dados-agregados/B1_banco_jogos.csv (B1-b_banco_jogos.py), que já traz um
 preço de venda por loja e jogo (o menor, se houver mais de uma edição), só do
-jogo base novo, e o aluguel por casa; e acervo_jogos/B1_jogos_dos_acervos.csv,
+jogo base novo, e o aluguel por casa; e dados/B1_acervo_jogos/_dados-agregados/B1_jogos_dos_acervos.csv,
 para o tamanho dos acervos.
 
 Regras:
@@ -38,7 +38,7 @@ Regras:
   coeficiente de variação do preço do mesmo jogo entre as lojas (jogos vendidos
   em 2 ou mais lojas), arredondado para o ponto percentual.
 
-Saída: acervo_jogos/B1_cesta_jogos.xlsx (abas cesta, perfis, indice_lojas,
+Saída: dados/B1_acervo_jogos/_dados-agregados/B1_cesta_jogos.xlsx (abas cesta, perfis, indice_lojas,
 acervo_inicial e acervo_joelho; acervo_inicial ganha a linha "joelho").
 
 Uso:
@@ -56,7 +56,7 @@ if __name__ == "__main__":
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-PROC = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "acervo_jogos"
+PROC = ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados"
 BANCO = PROC / "B1_banco_jogos.csv"
 ACERVOS = PROC / "B1_jogos_dos_acervos.csv"
 SAIDA = PROC / "B1_cesta_jogos.xlsx"

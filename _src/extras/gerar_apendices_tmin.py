@@ -30,9 +30,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "Modelo financeiro"
 import gerar_modelo_financeiro as g  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-B3 = ROOT / "dados" / "[B3] Contagem direta de ocupacao"
-B2 = ROOT / "dados" / "[B2] Avaliacoes recentes" / "analise_conteudo"
+B3 = ROOT / "dados" / "B3_contagem" / "_dados-agregados"
+B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados" / "analise_conteudo"
 FIG_MC = ROOT / "textos" / "capitulos" / "figuras" / "9_monte_carlo.png"
 LETRAS = "ABCDEFG"
 DATA_MODELO = "09/11/2026"  # versão do modelo financeiro de que saem os apêndices E e G
@@ -140,7 +139,7 @@ def dados():
     det = g.pessoal_detalhe(quadro)  # remuneração com os adicionais da escala, como no modelo
     folha = sum(q * det[cargo]["remuneracao"] for cargo, _, q, _, _ in quadro)
     mc = g.monte_carlo(f, prem, folha, quadro)
-    est = pd.read_excel(B1 / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx", sheet_name="estabelecimentos")
+    est = pd.read_excel(ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx", sheet_name="estabelecimentos")
     vis = pd.read_csv(B3 / "contagem_resumo_visitas.csv", sep=";", encoding="utf-8-sig")
     vis = vis[vis["observador"] != "media"]
     notas = pd.read_csv(B3 / "contagem_notas_intervalo.csv", sep=";", encoding="utf-8-sig")
@@ -156,7 +155,7 @@ UNIDADE = {"BV": "Bela Vista", "PA": "Paralela"}
 # --------------------------------------------------------------- apêndices
 def taxas_entrada():
     """Tabela A.2: taxa de entrada dos concorrentes que a divulgam (saiu do cap. 6 para o apêndice)."""
-    pasta = B1 / "estabelecimentos"
+    pasta = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados"
     ta = pd.read_csv(pasta / "B1_taxa_entrada_concorrentes.csv", sep=";", encoding="utf-8-sig", dtype=str)
     notas = json.loads((pasta / "B1_taxa_entrada_concorrentes_notas.json").read_text(encoding="utf-8"))
     linhas = [["Concorrente", "Capital", "Dia útil", "Fim de semana"]] + ta.values.tolist()
@@ -170,9 +169,9 @@ def termos_busca(est):
     """Termos da busca na Google Places API, só com os candidatos do recorte das 14 metrópoles (164 com mais de 100
     avaliações) e os aprovados (54). Um estabelecimento pode ser achado por vários termos: as linhas não somam."""
     import collections
-    cur = pd.read_csv(B1 / "estabelecimentos" / "2_recorte" / "B1_curadoria_metro_f_av100.csv", sep=None, engine="python",
+    cur = pd.read_csv(ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria_metro_f_av100.csv", sep=None, engine="python",
                       encoding="utf-8-sig")
-    brutos = pd.read_csv(B1 / "_dados-brutos" / "estabelecimentos" / "B1_candidatos.csv", encoding="utf-8-sig")
+    brutos = pd.read_csv(ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_candidatos.csv", encoding="utf-8-sig")
     rec, apr = set(cur.place_id), set(est.place_id)
     achados = collections.defaultdict(set)
     for r in brutos.itertuples():

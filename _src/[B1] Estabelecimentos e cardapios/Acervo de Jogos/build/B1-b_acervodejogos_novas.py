@@ -11,11 +11,11 @@ registrada em CURADORIA com a evidência e a data. Lojas com mais de 100
 avaliações no recorte que não são luderia, ou cujo resultado do Google é outra
 casa, ficam em DESCARTES com o motivo, para a conta fechar.
 
-Entrada: acervo_jogos/B1_acervodejogos_lojas.csv e B1_acervodejogos_places.csv
-Saída:   acervo_jogos/B1_acervodejogos_luderias_novas.csv (uma linha por luderia)
-         acervo_jogos/B1_acervodejogos_triagem.csv (todas as lojas consultadas no
+Entrada: dados/B1_acervo_jogos/_dados-agregados/B1_acervodejogos_lojas.csv e B1_acervodejogos_places.csv
+Saída:   dados/B1_acervo_jogos/_dados-agregados/B1_acervodejogos_luderias_novas.csv (uma linha por luderia)
+         dados/B1_acervo_jogos/_dados-agregados/B1_acervodejogos_triagem.csv (todas as lojas consultadas no
          Google com mais de 100 avaliações no recorte, com a decisão)
-         acervo_jogos/B1_acervodejogos_triagem_50_ou_mais_avaliacoes.csv (mesma
+         dados/B1_acervo_jogos/_dados-agregados/B1_acervodejogos_triagem_50_ou_mais_avaliacoes.csv (mesma
          triagem com corte de 50 ou mais avaliações, para avaliar a expansão da
          população; pedido do autor em 13/10/2026). Na faixa de 50 a 100, a loja
          cujo place_id está na curadoria filtrada de 50+ ainda não passou pela
@@ -41,9 +41,8 @@ ROOT = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(ROOT / "_src" / "[B1] Estabelecimentos e cardapios" / "Google Places (Negócios)" / "outros"))
 import recorte_rm as R  # noqa: E402
 
-PROC = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-PASTA = PROC / "acervo_jogos"
-CURADORIA_50 = PROC / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av50.csv"
+PASTA = ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados"
+CURADORIA_50 = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria_metro_f_av50.csv"
 METROPOLES = {
     "São Paulo", "Brasília", "Rio de Janeiro", "Belém", "Belo Horizonte", "Curitiba",
     "Florianópolis", "Fortaleza", "Goiânia", "Porto Alegre", "Recife", "Salvador",

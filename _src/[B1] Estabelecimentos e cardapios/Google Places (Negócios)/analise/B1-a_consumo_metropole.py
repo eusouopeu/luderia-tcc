@@ -4,7 +4,7 @@ não vegetariano) por metrópole, mediana entre as casas com os dois itens no ca
 
 A cesta segue a decisão de 04/11/2026 (hambúrguer no lugar de "uma entrada ou prato").
 
-Entrada: dados/[B1] .../estabelecimentos/B1_resumo_estabelecimentos.xlsx (aba cesta)
+Entrada: dados/B1_estabelecimentos/_dados-agregados/B1_resumo_estabelecimentos.xlsx (aba cesta)
 Saída: textos/capitulos/figuras/5_consumo_por_metropole.png; imprime as estatísticas do texto (5.3.2).
 
 Uso:
@@ -24,7 +24,7 @@ import pandas as pd
 import planilha_estilo as est
 
 ROOT = _AQUI.parents[4]
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx"
+B1 = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx"
 FIG = ROOT / "textos" / "capitulos" / "figuras"
 
 

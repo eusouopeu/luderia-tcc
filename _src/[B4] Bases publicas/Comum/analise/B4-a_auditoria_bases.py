@@ -9,8 +9,8 @@ linha de cada série de cada arquivo processado (série = valor da coluna
 essa coluna, o arquivo é uma série). A linha sorteada traz o período e o
 recorte geográfico a conferir.
 
-Entrada: dados/[B4] Bases publicas/<uso>/[B4] *.csv (saídas dos B4-b_*)
-Saídas: dados/[B4] Bases publicas/_dados-brutos/<fonte>/auditoria/B4_auditoria_<fonte>.csv,
+Entrada: dados/B4_<uso>/_dados-agregados/[B4] *.csv (saídas dos B4-b_*)
+Saídas: dados/B4_<uso>/_auditoria/<fonte>/B4_auditoria_<fonte>.csv,
   uma por pasta de fonte (bcb, caged, concla, fipezap, ibge_censo_2022,
   ibge_sidra, legislacao), mais auditoria_registro.csv em cada uma.
 
@@ -28,7 +28,7 @@ Uso:
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [str(_AQUI.parents[3] / "extras")]
+sys.path[:0] = [str(_AQUI.parents[3] / "extras"), str(_AQUI.parents[1])]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
@@ -38,10 +38,10 @@ import re
 import pandas as pd
 
 import amostrar_auditoria as aa
+from bases_comum import pasta_auditoria  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[4]
-PROCESSADOS = ROOT / "dados" / "[B4] Bases publicas"
-BRUTOS = PROCESSADOS / "_dados-brutos"
+DADOS = ROOT / "dados"
 USOS = ["mercado_demanda", "ponto_operacoes", "juridico_tributario", "financeiro", "multiuso"]
 
 SEMENTE = 20261015
@@ -79,14 +79,14 @@ def linhas_sorteadas(caminho: Path) -> pd.DataFrame:
     dados = [c for c in d.columns if c not in ("linha_arquivo", "serie_auditada", "id_linha")]
     amostra["valores"] = amostra[dados].apply(
         lambda r: " | ".join(f"{c}={v}" for c, v in r.items() if pd.notna(v) and v != ""), axis=1)
-    amostra["arquivo"] = f"{caminho.parent.name}/{caminho.name}"
+    amostra["arquivo"] = f"{caminho.parents[1].name.removeprefix('B4_')}/{caminho.name}"  # <uso>/<arquivo>
     return amostra[["estrato_sorteio", "chave_sorteio", "arquivo", "linha_arquivo", "serie_auditada", "valores"]]
 
 
 def main():
     por_pasta, origens, populacao = {}, {}, {}
     for uso in USOS:
-        for f in sorted((PROCESSADOS / uso).glob("*.csv")):
+        for f in sorted((DADOS / f"B4_{uso}" / "_dados-agregados").glob("*.csv")):
             pasta, portal = fonte_do_arquivo(f.name)
             if not pasta:
                 print(f"AVISO: fonte não reconhecida em {f.name}; arquivo fora da lista")
@@ -98,7 +98,7 @@ def main():
             populacao[pasta] = populacao.get(pasta, 0) + 1
     for pasta, partes in sorted(por_pasta.items()):
         tabela = pd.concat(partes, ignore_index=True)
-        aa.gravar(tabela, BRUTOS / pasta / "auditoria", f"B4_auditoria_{pasta}.csv", CONFERIR, script=__file__,
+        aa.gravar(tabela, pasta_auditoria(pasta), f"B4_auditoria_{pasta}.csv", CONFERIR, script=__file__,
                   semente=SEMENTE, populacao=populacao[pasta], origem=origens[pasta],
                   desenho="uma linha sorteada por série de cada arquivo processado (reconciliação exaustiva)")
         print(f"{pasta}: {populacao[pasta]} arquivos, {len(tabela)} séries a conferir")

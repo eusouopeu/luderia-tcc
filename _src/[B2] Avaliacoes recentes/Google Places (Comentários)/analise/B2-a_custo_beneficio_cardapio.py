@@ -26,7 +26,7 @@ faixa da Abrasel) e pede cozinheiros com salário 50% maior; o preço baixo cort
 15% do A&B sem mudar o custo em reais; ambiente é medido por R$ 10 mil
 investidos, sem orçamento no B5.
 
-Saída: dados/[B2] Avaliacoes recentes/retorno_e_clusters/B2_custo_beneficio_posicoes.csv
+Saída: dados/B2_avaliacoes/_dados-agregados/retorno_e_clusters/B2_custo_beneficio_posicoes.csv
 
 Uso:
     python3 "_src/[B2] Avaliacoes recentes/Google Places (Comentários)/analise/B2-a_custo_beneficio_cardapio.py"
@@ -46,10 +46,10 @@ import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[4]
-B2 = ROOT / "dados" / "[B2] Avaliacoes recentes"
+B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
 PASTA = B2 / "retorno_e_clusters"
-BASE = B2 / "_dados-brutos" / "analise_conteudo" / "2026-11-03_2_comentarios_grade2.csv"
-ACERVO = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "acervo_jogos" / "B1_cesta_jogos.xlsx"
+BASE = ROOT / "dados" / "B2_avaliacoes" / "_dados-brutos" / "analise_conteudo" / "2026-11-03_2_comentarios_grade2.csv"
+ACERVO = ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_cesta_jogos.xlsx"
 
 PESSOAS = 942            # cap. 9, provável, mês maduro
 TAXA = 19.83             # R$ por pessoa (18.679,17 ÷ 942)

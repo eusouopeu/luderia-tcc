@@ -7,21 +7,21 @@ Objeto: as aprovadas da triagem manual, menos as que saíram do objeto
 (EXCLUIDAS), mais as luderias novas do acervo de jogos (54 casas em 15/10/2026).
 Cada place_id ocupa uma linha.
 
-Fontes (dados/[B1] Estabelecimentos e cardapios/, salvo indicação):
-  estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx e
-  acervo_jogos/B1_acervodejogos_luderias_novas.csv  -> endereço, nota, volume
-  estabelecimentos/B1_horarios.csv                    -> horários (Places API)
-  _dados-brutos/entornos/*_entorno_resumo.csv         -> entorno (coletor do Maps;
+Fontes:
+  dados/B1_estabelecimentos/_dados-agregados/3_triagem/B1_aprovadas_metro_av100.xlsx e
+  dados/B1_acervo_jogos/_dados-agregados/B1_acervodejogos_luderias_novas.csv  -> endereço, nota, volume
+  dados/B1_estabelecimentos/_dados-agregados/B1_horarios.csv                    -> horários (Places API)
+  dados/B1_entorno/_dados-brutos/*_entorno_resumo.csv         -> entorno (coletor do Maps;
       vale o export mais recente de cada casa; distância a estação a mais de
       50 km, de outra cidade, fica vazia; metrô, trem, VLT, BRT e "trilhos" =
       metrô + trem + VLT; VLT e BRT separados só desde o coletor 2026.11.12-2)
-  redes_sociais/B1_instagram_resumo_notion.csv        -> Instagram (retrato do
+  dados/B1_redes_sociais/_dados-agregados/B1_instagram_resumo_notion.csv        -> Instagram (retrato do
       Notion "A - Estabelecimentos" de 15/10/2026; período 01/09 a 01/10 com
       colaborações da grade)
-  cardapios/B1_cardapios_itens_precos.xlsx            -> cesta por pessoa
-  acervo_jogos/B1_jogos_dos_acervos.csv e B1_acervodejogos_luderias_novas.csv
+  dados/B1_cardapios/_dados-agregados/B1_cardapios_itens_precos.xlsx            -> cesta por pessoa
+  dados/B1_acervo_jogos/_dados-agregados/B1_jogos_dos_acervos.csv e B1_acervodejogos_luderias_novas.csv
                                                       -> títulos do acervo
-  dados/[B2] Avaliacoes recentes/B2_cobertura_coleta.csv -> avaliações no recorte
+  dados/B2_avaliacoes/_dados-agregados/B2_cobertura_coleta.csv -> avaliações no recorte
 
 Cesta por pessoa (textos/planejamento/_arquivo/registro_previo_luderia.md): couvert ou
 taxa de jogo + uma bebida + uma entrada ou um prato principal, com os preços do
@@ -36,7 +36,7 @@ Só entram as linhas de referência do cardápio (linha_referencia = "S": cardá
 mais recente, sem combo, menor tamanho; decisão do autor, 22/10/2026), para que
 um item com dois tamanhos não pese duas vezes nem o combo puxe a mediana.
 
-Saída: dados/[B1] Estabelecimentos e cardapios/estabelecimentos/B1_resumo_estabelecimentos.xlsx
+Saída: dados/B1_estabelecimentos/_dados-agregados/B1_resumo_estabelecimentos.xlsx
   abas estabelecimentos, cesta, por_capital (fórmulas sobre estabelecimentos),
   dicionario.
 
@@ -58,9 +58,8 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 
 ROOT = _AQUI.parents[4]
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-B2 = ROOT / "dados" / "[B2] Avaliacoes recentes"
-SAIDA = B1 / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx"
+B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
+SAIDA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx"
 EXCLUIDAS = {"Machado Games", "Ilusões Industriais"}  # fora do objeto desde 14/10/2026
 
 # Nome do estabelecimento em B1_jogos_dos_acervos.csv -> nome na triagem.
@@ -75,9 +74,9 @@ FONTE = "Arial"
 
 
 def casas():
-    a = pd.read_excel(B1 / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx")
+    a = pd.read_excel(ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_aprovadas_metro_av100.xlsx")
     a = a[~a["nome"].isin(EXCLUIDAS)].assign(origem="triagem manual")
-    n = pd.read_csv(B1 / "acervo_jogos/B1_acervodejogos_luderias_novas.csv").rename(
+    n = pd.read_csv(ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_acervodejogos_luderias_novas.csv").rename(
         columns={"endereco_google": "endereco"}).assign(origem="acervodejogos")
     cols = ["place_id", "nome", "capital_endereco", "endereco", "avaliacao_media", "volume_avaliacoes",
             "link_google_maps", "origem"]
@@ -85,7 +84,7 @@ def casas():
 
 
 def horarios():
-    h = pd.read_csv(B1 / "estabelecimentos/B1_horarios.csv", sep=";", encoding="utf-8-sig")
+    h = pd.read_csv(ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_horarios.csv", sep=";", encoding="utf-8-sig")
     return h[["place_id", "dias_abertos", "horas_semana", "abre_cedo", "fecha_tarde", *DIAS]]
 
 
@@ -103,7 +102,7 @@ def entorno():
     vlt_brt guarda a contagem "VLT ou BRT, sem separação". Trilhos só sai
     quando não há ambiguidade: vlt_brt = 0 no raio, ou busca de VLT dispensada
     na cidade (sem VLT em operação), caso em que vlt = 0."""
-    pasta = B1 / "_dados-brutos" / "entornos"
+    pasta = ROOT / "dados" / "B1_entorno" / "_dados-brutos"
     partes = []
     for f in sorted(pasta.glob("*_entorno_resumo*.csv")):
         if "parcial" in f.name:
@@ -152,7 +151,7 @@ def entorno():
 
 
 def instagram():
-    i = pd.read_csv(B1 / "redes_sociais/B1_instagram_resumo_notion.csv", sep=";", encoding="utf-8-sig")
+    i = pd.read_csv(ROOT / "dados" / "B1_redes_sociais" / "_dados-agregados" / "B1_instagram_resumo_notion.csv", sep=";", encoding="utf-8-sig")
     return i.drop(columns=["estabelecimento"]).rename(columns={"observacao": "obs_instagram"})
 
 
@@ -169,7 +168,7 @@ def vegetariano(r) -> bool:
 
 
 def cesta():
-    it = pd.read_excel(B1 / "cardapios/B1_cardapios_itens_precos.xlsx", sheet_name="itens")
+    it = pd.read_excel(ROOT / "dados" / "B1_cardapios" / "_dados-agregados" / "B1_cardapios_itens_precos.xlsx", sheet_name="itens")
     it = it[it.linha_referencia == "S"].dropna(subset=["preco"])
     linhas = []
     for pid, g in it.groupby("place_id"):
@@ -193,12 +192,12 @@ def cesta():
 
 
 def acervo(base):
-    j = pd.read_csv(B1 / "acervo_jogos/B1_jogos_dos_acervos.csv", sep=None, engine="python")
+    j = pd.read_csv(ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_jogos_dos_acervos.csv", sep=None, engine="python")
     j["nome"] = j["estabelecimento"].replace(APELIDOS_ACERVO)
     t = j.groupby("nome").agg(titulos_acervo=("jogo", "nunique"), fonte_acervo=("fonte", "first")).reset_index()
     t = base[["place_id", "nome"]].merge(t, on="nome", how="inner")
     sem = set(t.place_id)
-    n = pd.read_csv(B1 / "acervo_jogos/B1_acervodejogos_luderias_novas.csv")
+    n = pd.read_csv(ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_acervodejogos_luderias_novas.csv")
     extra = n[~n.place_id.isin(sem)][["place_id", "titulos_acervo"]].assign(fonte_acervo="acervodejogos (contagem da página)")
     return pd.concat([t[["place_id", "titulos_acervo", "fonte_acervo"]], extra])
 

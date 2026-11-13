@@ -25,7 +25,7 @@ chamada cai no SKU "Place Details Enterprise", que no mesmo mês registrava
 
 Consequência para o filtro (B1-b_planilha.py): registros sem reviews só
 podem ser aprovados pela palavra-chave no NOME. Quem não bate no nome não é
-descartado, e sim mandado para `estabelecimentos/1_busca/B1_triagem.csv`, porque a evidência que
+descartado, e sim mandado para `dados/B1_estabelecimentos/_dados-agregados/1_busca/B1_triagem.csv`, porque a evidência que
 decidiria o caso não foi comprada. Ausência de evidência não é evidência de
 ausência.
 
@@ -48,7 +48,7 @@ B1-b_horarios.py.
 
 Modo --repaginadas (12/11/2026): detalhes (sem `reviews`, SKU "Place Details
 Enterprise") das luderias aprovadas na triagem manual da repaginação
-(estabelecimentos/3_triagem/B1_repaginacao_triagem.csv) que estão no recorte
+(dados/B1_estabelecimentos/_dados-agregados/3_triagem/B1_repaginacao_triagem.csv) que estão no recorte
 (inclusive Campinas, 15ª metrópole, decisão do autor em 12/11/2026). Saída
 separada, B1_detalhes_repaginacao.jsonl, para não entrar no funil do
 B1-b_planilha.py; quem monta a planilha de aprovadas
@@ -74,16 +74,14 @@ from tqdm import tqdm
 from places_client import PlacesClient
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
-CANDIDATOS_PATH = RAW / "estabelecimentos/B1_candidatos.csv"
-DETALHES_PATH = RAW / "estabelecimentos/B1_detalhes.jsonl"
-SEM_REVIEWS_PATH = RAW / "estabelecimentos/B1_detalhes_sem_reviews.jsonl"
-HORARIOS_PATH = RAW / "estabelecimentos/B1_horarios.jsonl"
-REPAGINADAS_PATH = RAW / "estabelecimentos/B1_detalhes_repaginacao.jsonl"
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-APROVADAS_PATH = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
-NOVAS_PATH = PROCESSED / "acervo_jogos/B1_acervodejogos_luderias_novas.csv"
-REPAGINACAO_TRIAGEM_PATH = PROCESSED / "estabelecimentos/3_triagem/B1_repaginacao_triagem.csv"
+CANDIDATOS_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_candidatos.csv"
+DETALHES_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_detalhes.jsonl"
+SEM_REVIEWS_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_detalhes_sem_reviews.jsonl"
+HORARIOS_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_horarios.jsonl"
+REPAGINADAS_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_detalhes_repaginacao.jsonl"
+APROVADAS_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_aprovadas_metro_av100.xlsx"
+NOVAS_PATH = ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_acervodejogos_luderias_novas.csv"
+REPAGINACAO_TRIAGEM_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_repaginacao_triagem.csv"
 
 
 def load_unique_place_ids():

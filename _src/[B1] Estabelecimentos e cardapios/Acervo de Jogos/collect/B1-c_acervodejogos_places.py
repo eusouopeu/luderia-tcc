@@ -11,12 +11,12 @@ mensal de 1.000 chamadas).
 Escolha do resultado: entre os 3 primeiros, o de nome mais parecido com o da
 loja (razão de similaridade sobre o nome normalizado). Similaridade abaixo de
 0,5 fica marcada "conferir", porque pode ser outra casa.
-Saída: acervo_jogos/B1_acervodejogos_places.csv, uma linha por loja
-consultada, e resposta bruta em dados/[B1].../_dados-brutos/acervodejogos/places.jsonl.
+Saída: dados/B1_acervo_jogos/_dados-agregados/B1_acervodejogos_places.csv, uma linha por loja
+consultada, e resposta bruta em dados/B1_acervo_jogos/_dados-brutos/acervodejogos/places.jsonl.
 Cache: loja que já tem resposta no places.jsonl não é consultada de novo (a
 API cobra por chamada); para atualizar, apagar o arquivo.
 Colunas de cruzamento com a população: ja_na_curadoria (place_id está em
-estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv) e
+dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_curadoria_metro_f_av100.csv) e
 ja_aprovada (place_id está nas 51 aprovadas).
 """
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
@@ -46,12 +46,11 @@ sys.path.insert(0, str(ROOT / "_src" / "[B1] Estabelecimentos e cardapios" / "Go
 import recorte_rm as R  # noqa: E402
 
 load_dotenv(ROOT / ".env")
-PROC = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-ENTRADA = PROC / "acervo_jogos" / "B1_acervodejogos_lojas.csv"
-SAIDA = PROC / "acervo_jogos" / "B1_acervodejogos_places.csv"
-BRUTO = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos" / "acervodejogos" / "places.jsonl"
-CURADORIA = PROC / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv"
-APROVADAS = PROC / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
+ENTRADA = ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_acervodejogos_lojas.csv"
+SAIDA = ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_acervodejogos_places.csv"
+BRUTO = ROOT / "dados" / "B1_acervo_jogos" / "_dados-brutos" / "acervodejogos" / "places.jsonl"
+CURADORIA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria_metro_f_av100.csv"
+APROVADAS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_aprovadas_metro_av100.xlsx"
 
 MASCARA = ",".join("places." + c for c in [
     "id", "displayName", "formattedAddress", "rating", "userRatingCount", "types",

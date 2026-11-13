@@ -4,7 +4,7 @@ desvio padrão, mínimo, quartis, máximo, amplitude e coeficiente de variação
 cada variável, para o conjunto inteiro (54 casas em 15/10/2026), por metrópole
 e por região do Brasil.
 
-Entrada: estabelecimentos/B1_resumo_estabelecimentos.xlsx (B1-b_resumo.py),
+Entrada: dados/B1_estabelecimentos/_dados-agregados/B1_resumo_estabelecimentos.xlsx (B1-b_resumo.py),
 abas estabelecimentos e cesta. Consumo e cesta são somados aqui a partir das
 colunas de preço da aba cesta, para não depender dos valores em cache:
 consumo por pessoa = bebida + entrada ou prato; cesta completa = consumo +
@@ -24,7 +24,7 @@ Regras:
 - desvio padrão amostral (STDEV); quartis pelo método inclusivo (PERCENTILE),
   o mesmo do pandas.
 
-Saídas (dados/[B1] Estabelecimentos e cardapios/estabelecimentos/4_estatistica_descritiva/):
+Saídas (dados/B1_estabelecimentos/_dados-agregados/4_estatistica_descritiva/):
   B1_estatistica_descritiva_geral.xlsx      abas geral, frequencias, dados, dicionario
   B1_estatistica_descritiva_por_grupo.xlsx  abas metropole_painel, metropole_detalhe,
                                             regiao_painel, regiao_detalhe, dados
@@ -54,9 +54,8 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.formula import ArrayFormula
 
 ROOT = _AQUI.parents[4]
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-RESUMO = B1 / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx"
-PASTA = B1 / "estabelecimentos" / "4_estatistica_descritiva"
+RESUMO = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx"
+PASTA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "4_estatistica_descritiva"
 SAIDA_GERAL = PASTA / "B1_estatistica_descritiva_geral.xlsx"
 SAIDA_GRUPO = PASTA / "B1_estatistica_descritiva_por_grupo.xlsx"
 SAIDA_SITE = ROOT / "_src" / "site-apresentacao" / "src" / "conteudo" / "b1-estatisticas.json"

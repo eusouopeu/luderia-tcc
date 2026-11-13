@@ -12,11 +12,11 @@ valores coletados.
 
 Entradas (a coleta mais recente de cada estabelecimento, pela data no nome do
 arquivo; parciais ficam de fora):
-  entorno/B1_entorno_maps_fila.csv                         população (54 casas em 15/10/2026)
-  _dados-brutos/entornos/*_entorno_resumo.csv e *_entorno_resultados.csv          (Maps)
-  _dados-brutos/entornos/*_entorno_osm_resumo.csv e *_entorno_osm_resultados.csv  (OSM)
+  dados/B1_entorno/_dados-agregados/B1_entorno_maps_fila.csv                         população (54 casas em 15/10/2026)
+  dados/B1_entorno/_dados-brutos/*_entorno_resumo.csv e *_entorno_resultados.csv          (Maps)
+  dados/B1_entorno/_dados-brutos/*_entorno_osm_resumo.csv e *_entorno_osm_resultados.csv  (OSM)
 
-Saídas em _dados-brutos/entornos/auditoria/:
+Saídas em dados/B1_entorno/_auditoria/:
   B1_auditoria_entorno_estabelecimentos.csv  um estabelecimento por linha: contagens do
       Maps e do OSM e colunas para a contagem manual e os itens que faltaram
   B1_auditoria_entorno_itens.csv  cada estação, shopping, praia ou parque contado a até
@@ -48,11 +48,9 @@ import pandas as pd
 import amostrar_auditoria as aa
 
 ROOT = Path(__file__).resolve().parents[4]
-PROCESSADOS = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-BRUTOS = PROCESSADOS / "_dados-brutos"
-FILA = PROCESSADOS / "entorno/B1_entorno_maps_fila.csv"
-ENTORNOS = BRUTOS / "entornos"
-SAIDA = ENTORNOS / "auditoria"
+FILA = ROOT / "dados" / "B1_entorno" / "_dados-agregados" / "B1_entorno_maps_fila.csv"
+ENTORNOS = ROOT / "dados" / "B1_entorno" / "_dados-brutos"
+SAIDA = ROOT / "dados" / "B1_entorno" / "_auditoria"
 
 SEMENTE = 20261015
 FRACAO = 0.20

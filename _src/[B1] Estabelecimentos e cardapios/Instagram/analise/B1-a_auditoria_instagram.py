@@ -12,8 +12,8 @@ Desenho:
 Vale a coleta mais recente de cada perfil (data do nome do arquivo; `_2` é a
 segunda do dia).
 
-Entrada: redes_sociais/rs_<cidade>/rs_<perfil>/AAAA-MM-DD_<perfil>_instagram_<perfis|posts>.csv
-Saídas em _dados-brutos/redes_sociais/auditoria/ (fora do git, como a pasta):
+Entrada: dados/B1_redes_sociais/_dados-agregados/rs_<cidade>/rs_<perfil>/AAAA-MM-DD_<perfil>_instagram_<perfis|posts>.csv
+Saídas em dados/B1_redes_sociais/_auditoria/ (fora do git, como a pasta):
   B1_auditoria_instagram_perfis.csv
   B1_auditoria_instagram_posts.csv
   auditoria_registro.csv
@@ -41,9 +41,8 @@ import pandas as pd
 import amostrar_auditoria as aa
 
 ROOT = Path(__file__).resolve().parents[4]
-PROCESSADOS = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-ENTRADA = PROCESSADOS / "redes_sociais"
-SAIDA = PROCESSADOS / "_dados-brutos/redes_sociais/auditoria"
+ENTRADA = ROOT / "dados" / "B1_redes_sociais" / "_dados-agregados"
+SAIDA = ROOT / "dados" / "B1_redes_sociais" / "_auditoria"
 
 SEMENTE = 20261015
 N_POSTS = 200

@@ -3,12 +3,12 @@ Junta os CSVs do coletor de anúncios (webscripts/portais_aluguel.user.js) num
 cadastro único de anúncios de aluguel e em resumos do preço pedido por bairro e
 pelas áreas candidatas do 6.4.
 
-Entrada: dados/[B5] Ativos fixos/_dados-brutos/aluguel/AAAA-MM-DD_HHmm_<portal>_anuncios_aluguel.csv
+Entrada: dados/B5_aluguel/_dados-brutos/AAAA-MM-DD_HHmm_<portal>_anuncios_aluguel.csv
          (os CSVs baixados pelo coletor, um por portal e data; o nome antigo, sem a hora,
          também vale). CSV da pasta fora desse padrão (ex.: "... (1).csv") gera aviso.
-         Bairros oficiais: dados/[B4] Bases publicas/ponto_operacoes/[B4] População por
+         Bairros oficiais: dados/B4_ponto_operacoes/_dados-agregados/[B4] População por
          Bairro 2022 (IBGE Censo).csv; apelidos dos portais em outros/bairros_apelidos.csv.
-Saídas em dados/[B5] Ativos fixos/aluguel/, no padrão "[B5] {dado} {período} ({fonte}).csv":
+Saídas em dados/B5_aluguel/_dados-agregados/, no padrão "[B5] {dado} {período} ({fonte}).csv":
   "Anúncios de Aluguel"              um anúncio por linha: subtipo, porte, aluguel, encargos, R$/m², bairro
   "Aluguel Pedido por Bairro"        por segmento, subtipo e bairro: anúncios, quartis do R$/m², encargos
   "Aluguel Pedido por Área do 6.4"   lojas e pontos no porte do plano, por área candidata: C04 e C05
@@ -67,10 +67,9 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit, unquote
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-BLOCO = ROOT / "dados" / "[B5] Ativos fixos"
-IN_DIR = BLOCO / "_dados-brutos" / "aluguel"
-OUT_DIR = BLOCO / "aluguel"
-CENSO = ROOT / "dados" / "[B4] Bases publicas" / "ponto_operacoes" / "[B4] População por Bairro 2022 (IBGE Censo).csv"
+IN_DIR = ROOT / "dados" / "B5_aluguel" / "_dados-brutos"
+OUT_DIR = ROOT / "dados" / "B5_aluguel" / "_dados-agregados"
+CENSO = ROOT / "dados" / "B4_ponto_operacoes" / "_dados-agregados" / "[B4] População por Bairro 2022 (IBGE Censo).csv"
 APELIDOS = _AQUI.parents[1] / "outros" / "bairros_apelidos.csv"
 CD_SALVADOR = 2927408
 FONTE = {"olx": "OLX", "zap": "ZAP", "vivareal": "Viva Real", "quintoandar": "QuintoAndar"}

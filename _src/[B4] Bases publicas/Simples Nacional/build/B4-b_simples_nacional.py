@@ -2,9 +2,9 @@
 Extrai do HTML compilado da LC nº 123/2006 as tabelas dos Anexos I a V do Simples
 Nacional na redação da LC nº 155/2016 (vigente).
 
-Entrada: dados/[B4] Bases publicas/_dados-brutos/legislacao/lcp123_compilada_planalto_<data>.htm
-Saídas em dados/[B4] Bases publicas/:
-Saídas em juridico_tributario/, no padrão "[B4] {dado} {período} ({fonte}).csv", com o ano de vigência conferida:
+Entrada: dados/B4_juridico_tributario/_dados-brutos/legislacao/lcp123_compilada_planalto_<data>.htm
+Saídas:
+Saídas em dados/B4_juridico_tributario/_dados-agregados/, no padrão "[B4] {dado} {período} ({fonte}).csv", com o ano de vigência conferida:
   "Faixas e Alíquotas por Anexo"      anexo, faixa, receita bruta em 12 meses (mín., máx.),
                                       alíquota nominal e parcela a deduzir
   "Repartição de Tributos por Anexo"  percentual de repartição de cada tributo por faixa
@@ -26,9 +26,9 @@ import re
 import pandas as pd
 from bs4 import BeautifulSoup
 
-from bases_comum import DATA_COLETA, PROCESSED_DIR, RAW_DIR, caminho_saida
+from bases_comum import DATA_COLETA, caminho_saida, pasta_bruta
 
-IN_DIR = RAW_DIR / "legislacao"
+IN_DIR = pasta_bruta("legislacao")
 
 
 def texto(celula) -> str:
@@ -78,7 +78,6 @@ def main() -> None:
                     reparticao.append({"anexo": anexo, "faixa": int(linha[0][0]), "rotulo_faixa": linha[0],
                                        "tributo": tributo, "percentual": valor_br(bruto), "valor_original": bruto})
 
-    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     df_faixas = pd.DataFrame(faixas)
     df_faixas.to_csv(caminho_saida("juridico_tributario", "Faixas e Alíquotas por Anexo", DATA_COLETA[:4], "Simples Nacional"), index=False)
     pd.DataFrame(reparticao).to_csv(

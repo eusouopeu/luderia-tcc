@@ -29,7 +29,7 @@ Captura e recaptura (estimador de Chapman), para k >= CORTE_GRAVAR:
   (heterogeneidade); as duas fazem N subestimar a população. Ler N como
   limite inferior. Só vale com todos os candidatos de grau >= k classificados.
 
-Saídas em dados/[B1] Estabelecimentos e cardapios/redes_sociais/snowball/:
+Saídas em dados/B1_redes_sociais/_dados-agregados/snowball/:
   B1_snowball_corte.csv               (k: contas, classificados, precisão, sensibilidade, novas)
   B1_snowball_novas.csv               (perfis de negócio ou grupo fora da lista aprovada; sem pessoas)
   B1_snowball_captura_recaptura.csv   (k: n1, n2, m, N de Chapman com IC 95%, cobertura)

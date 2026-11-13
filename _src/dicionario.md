@@ -8,17 +8,18 @@ Legenda: `Bn` = código do bloco de dados (B1 a B4); `<x>` = parte variável; `[
 
 | Objeto | Convenção atual | Exemplo |
 |---|---|---|
-| Bloco em `_src/` | `[Bn] <Nome>`, o mesmo nome da pasta do bloco em `dados/` | `_src/[B1] Estabelecimentos e cardapios/` |
+| Bloco em `_src/` | `[Bn] <Nome>`; em `dados/`, o bloco se divide em coletas (`B<n>_<coleta>/`) | `_src/[B1] Estabelecimentos e cardapios/` |
 | Objeto dentro do bloco em `_src/` | `<Fonte> (<Objeto>)` quando a mesma fonte serve a mais de um objeto, senão só o objeto ou a fonte; maiúsculas e acento como na escrita normal | `Google Places (Negócios)`, `Google Places (Comentários)`, `Cardápios`, `CAGED` |
-| Subpastas de cada objeto | `collect/`, `build/`, `analise/` (scripts por etapa), `webscripts/` (Tampermonkey e testes), `logs/` (fora do git) e `outros/` (módulos auxiliares e arquivos de apoio). As seis existem em todo objeto; pasta vazia leva `.gitkeep` | `Cardápios/outros/tessdata/` |
+| Subpastas de cada objeto | `collect/`, `build/`, `analise/` (scripts por etapa), `logs/` (fora do git) e `outros/` (módulos auxiliares e arquivos de apoio). As cinco existem em todo objeto; pasta vazia leva `.gitkeep` | `Cardápios/outros/tessdata/` |
 | Auxiliar comum a vários objetos do bloco | pasta `Comum/` no bloco, com os módulos; script que vale para todas as fontes do bloco fica em `Comum/analise/` (log em `Comum/logs/`) | `_src/[B4] Bases publicas/Comum/bases_comum.py`, `Comum/analise/B4-a_auditoria_bases.py` |
 | Utilitários gerais | `_src/extras/` | `_src/extras/log_execucao.py` |
-| Bloco em `dados/` | `[Bn] <Objeto>`: o código e o que os dados descrevem. Uma pasta por bloco | `dados/[B2] Avaliacoes recentes/` |
-| Dados brutos | `dados/[Bn] <Objeto>/_dados-brutos/` (o `_` põe a pasta no topo da listagem); os processados ficam na raiz do bloco | `dados/[B4] Bases publicas/_dados-brutos/bcb/` |
-| Subpastas dentro dos blocos de `dados/` | minúsculas, sem acento, palavras unidas por `_` (exceção: `_dados-brutos/`) | `acervo_jogos/`, `redes_sociais/analise_legendas/` |
-| Amostras de auditoria | `auditoria/` dentro da pasta dos brutos que a amostra confere, com `<Bn>_auditoria_<objeto>.csv` e `auditoria_registro.csv` (uma linha por sorteio) | `_dados-brutos/entornos/auditoria/B1_auditoria_entorno_itens.csv` |
-| Etapas de uma seleção | número da ordem + `_` + etapa, dentro de uma pasta do objeto | `estabelecimentos/1_busca/`, `2_recorte/`, `3_triagem/` |
-| Pasta por estabelecimento | `<prefixo>_<estabelecimento>/`, agrupada em `<prefixo>_<cidade>/`. Prefixo pelo tipo de material: `rs` (redes sociais), `ca` (cardápios originais). `<estabelecimento>`: perfil do Instagram em `rs`, nome curto em `ca`; `<cidade>`: capital da região metropolitana do endereço (a mesma das tabelas do B1). Ambos em minúsculas, sem acento, com `_` | `redes_sociais/rs_sao_paulo/rs_bodogami/`, `_dados-brutos/cardapios/ca_sao_paulo/ca_cartola/` |
+| Webscripts (Tampermonkey) | `_src/Webscripts/[Bn] <Nome>/`, uma pasta por bloco, com o script (`<conteúdo>.user.js`) e o teste (`<conteúdo>.test.cjs`) lado a lado; carregadores em `_src/Webscripts/_carregadores/` (fora do git) e kit dos painéis em `_src/Webscripts/_kit_painel/` | `_src/Webscripts/[B1] Estabelecimentos e cardapios/maps_entorno.user.js` |
+| Coleta em `dados/` | `B<n>_<coleta>/`, direto na raiz de `dados/`: o código do bloco e o que a coleta descreve. B4: uma por uso (`USOS`); B5: uma por categoria | `dados/B1_entorno/`, `dados/B4_financeiro/` |
+| Subpastas de cada coleta | `_dados-brutos/` (brutos), `_auditoria/` (amostras de conferência) e `_dados-agregados/` (tabelas e gráficos tratados); o `_` põe as três no topo da listagem. Em cada uma, `_arquivo/` guarda as versões anteriores. Coleta com mais de uma fonte nos brutos separa por fonte | `dados/B4_financeiro/_dados-brutos/bcb/`, `dados/B1_entorno/_dados-agregados/_arquivo/` |
+| Subpastas dentro das coletas | minúsculas, sem acento, palavras unidas por `_` (exceção: `_dados-brutos/`, `_dados-agregados/`) | `_dados-agregados/analise_legendas/`, `_dados-brutos/acervos_luderias/` |
+| Amostras de auditoria | `_auditoria/` da coleta que a amostra confere (no B4, `_auditoria/<fonte>/`), com `<Bn>_auditoria_<objeto>.csv` e `auditoria_registro.csv` (uma linha por sorteio) | `dados/B1_entorno/_auditoria/B1_auditoria_entorno_itens.csv` |
+| Etapas de uma seleção | número da ordem + `_` + etapa, dentro de `_dados-agregados/` da coleta | `B1_estabelecimentos/_dados-agregados/1_busca/`, `2_recorte/`, `3_triagem/` |
+| Pasta por estabelecimento | `<prefixo>_<estabelecimento>/`, agrupada em `<prefixo>_<cidade>/`. Prefixo pelo tipo de material: `rs` (redes sociais), `ca` (cardápios originais). `<estabelecimento>`: perfil do Instagram em `rs`, nome curto em `ca`; `<cidade>`: capital da região metropolitana do endereço (a mesma das tabelas do B1). Ambos em minúsculas, sem acento, com `_` | `B1_redes_sociais/_dados-agregados/rs_sao_paulo/rs_bodogami/`, `B1_cardapios/_dados-brutos/ca_sao_paulo/ca_cartola/` |
 | Pastas fora de uso | `arquivados/<código>-<tema>/`, com a estrutura da época | `arquivados/B5-jogos/` |
 
 **Passadas**
@@ -33,6 +34,8 @@ Legenda: `Bn` = código do bloco de dados (B1 a B4); `<x>` = parte variável; `[
 | 14/10/2026 | Pastas de `_src/` por fonte: `[B1] Acervo de Jogos`, `[B1] Cardapios`, `[B1] Google Places (estabelecimentos)`, `[B1] Instagram`, `[B2] Google Places (comentarios)`, `[B3] Contagem direta de ocupacao`, `[B4] Bases publicas` (scripts de todas as fontes juntos) | `_src/[Bn] Nome/<Objeto>/`, com o nome do bloco igual ao de `dados/` |
 | 14/10/2026 | `dados/[Bn] Nome/dados-brutos/` | `dados/[Bn] Nome/_dados-brutos/` |
 | 14/10/2026 | Utilitários soltos na raiz de `_src/` (`gerar_carregadores.py`, `gerar_docx_*.js`, `log_execucao.py`, `sincronizar_vault.sh`, `carregadores/`) | `_src/extras/` |
+| 12/11/2026 | Uma pasta por bloco em `dados/` (`dados/[Bn] Nome/`, processados na raiz e brutos em `_dados-brutos/<objeto>/`, auditorias em `_dados-brutos/<objeto>/auditoria/`; no B4, processados por uso e brutos por fonte) | uma pasta por coleta, `dados/B<n>_<coleta>/`, com `_dados-brutos/`, `_auditoria/` e `_dados-agregados/`, cada uma com `_arquivo/`; no B4, uma coleta por uso, com os brutos de cada fonte no uso de `FONTE_USO` |
+| 12/11/2026 | `webscripts/` em cada objeto de `_src/[Bn] Nome/`; carregadores em `_src/extras/carregadores/` e kit dos painéis em `_src/extras/kit_painel/` | `_src/Webscripts/[Bn] Nome/`; `_src/Webscripts/_carregadores/` e `_src/Webscripts/_kit_painel/` |
 
 ## 2. Scripts
 
@@ -42,7 +45,7 @@ Legenda: `Bn` = código do bloco de dados (B1 a B4); `<x>` = parte variável; `[
 | Módulo auxiliar | `<tema>_<comum\|client>.py` ou nome do que faz, sem código de bloco nem etapa; fica em `outros/` | `outros/bases_comum.py`, `outros/places_client.py`, `outros/recorte_rm.py` |
 | Webscript (Tampermonkey) | `<site>_<objeto>.user.js`; teste ao lado, `<mesmo nome>.test.cjs` | `maps_avaliacoes.user.js`, `maps_avaliacoes.test.cjs` |
 | Versão do webscript (`@version`) | `AAAA.MM.DD-n` (n-ésima versão do dia) | `2026.10.13-7` |
-| Painel do webscript | kit comum `_src/extras/kit_painel/kit_painel.js`, copiado para dentro do script entre `// >>> kit_painel` e `// <<< kit_painel` por `node _src/extras/kit_painel/embutir.js` (não editar a cópia); o teste `kit_painel.test.cjs` falha se alguma cópia ficar velha. Usam o kit: coletor e snowball do Instagram, cardápios e acervos | `const kit = kitPainel({ id: 'acv' })` |
+| Painel do webscript | kit comum `_src/Webscripts/_kit_painel/kit_painel.js`, copiado para dentro do script entre `// >>> kit_painel` e `// <<< kit_painel` por `node _src/Webscripts/_kit_painel/embutir.js` (não editar a cópia); o teste `kit_painel.test.cjs` falha se alguma cópia ficar velha. Usam o kit: coletor e snowball do Instagram, cardápios e acervos | `const kit = kitPainel({ id: 'acv' })` |
 | Utilitário geral | verbo no infinitivo + objeto, em `_src/extras/` | `gerar_carregadores.py`, `sincronizar_vault.sh`, `log_execucao.py` |
 
 Nomes com hífen não podem ser importados como módulo Python. Por isso, código usado por mais de um script vai para um módulo auxiliar em `outros/`, nunca para um script de etapa.
@@ -60,10 +63,10 @@ Nomes com hífen não podem ser importados como módulo Python. Por isso, códig
 |---|---|---|
 | Saída de script (B1 a B3) | `Bn_<objeto>[_<recorte>][_<filtro>][_<limiar>].<ext>`, com os códigos da tabela abaixo; sem palavras que a pasta ou a extensão já dizem (`planilha_`, `grafico_`, `por_filtro`, `avaliacoes`) | `B1_curadoria_metro_f_av100.csv`, `B1_limiares_regio_f.png` |
 | Figura de script (B1 e B2) | `Bn_<objeto>` para gráficos, `Bn_mapa_<variável>_<metro\|regiao>` para cartogramas `Bn_pict_<variável>` para pictogramas e `Bn_nuvem_palavras[_<recorte>]` para nuvens de palavras; cada figura em três subpastas: `png/` (300 dpi, para o .docx), `svg/` (texto editável) e `valores/` (CSV com os números desenhados). No B1, em `estabelecimentos/5_graficos/<graficos\|cartogramas\|pictogramas>/`; no B2, em `graficos/` | `5_graficos/cartogramas/png/B1_mapa_nota_metro.png`, `graficos/svg/B2_pict_temas.svg` |
-| Saída do B4 | `[B4] {dado principal} {período} ({fonte}).csv`, na subpasta de uso (`mercado_demanda/`, `ponto_operacoes/`, `juridico_tributario/`, `financeiro/`, `multiuso/`) | `[B4] Aluguel Comercial por Capital 2026-07 (FipeZap).csv` |
-| Resposta bruta de API do B4 | `<série>_<código>_<descrição>.json` ou `<fonte>_<conteúdo>.json`, na subpasta da fonte | `bcb/sgs_1619_salario_minimo.json` |
+| Saída do B4 | `[B4] {dado principal} {período} ({fonte}).csv`, em `dados/B4_<uso>/_dados-agregados/` (usos: `mercado_demanda`, `ponto_operacoes`, `juridico_tributario`, `financeiro`, `multiuso`) | `[B4] Aluguel Comercial por Capital 2026-07 (FipeZap).csv` |
+| Resposta bruta de API do B4 | `<série>_<código>_<descrição>.json` ou `<fonte>_<conteúdo>.json`, em `_dados-brutos/<fonte>/` da coleta do uso (`FONTE_USO`) | `B4_financeiro/_dados-brutos/bcb/sgs_1619_salario_minimo.json` |
 | Cache bruto do Google Places e afins | `Bn_<conteúdo>.jsonl` (fora do git) | `B1_detalhes.jsonl` |
-| Coleta de rede social | `AAAA-MM-DD_<estabelecimento>_instagram_<perfis\|posts\|seguindo>.csv`; duplicata do mesmo dia leva `_2`. As listas `seguindo` (snowball) ficam em `_dados-brutos/redes_sociais/seguindo/`, fora do git; o build gera `B1_snowball_candidatos_grau3.csv` (recorte para classificar) e `B1_snowball_proximas_sementes.{csv,txt}` (fila de sementes) | `2026-10-11_bodogami_instagram_posts.csv` |
+| Coleta de rede social | `AAAA-MM-DD_<estabelecimento>_instagram_<perfis\|posts\|seguindo>.csv`; duplicata do mesmo dia leva `_2`. As listas `seguindo` (snowball) ficam em `dados/B1_redes_sociais/_dados-brutos/seguindo/`, fora do git; o build gera `B1_snowball_candidatos_grau3.csv` (recorte para classificar) e `B1_snowball_proximas_sementes.{csv,txt}` (fila de sementes) | `2026-10-11_bodogami_instagram_posts.csv` |
 | Coleta de avaliações do Maps | `AAAA-MM-DD_<lugar>_maps_avaliacoes_<periodo\|filtros\|tudo>.csv` | `2026-10-13_boardz_game_pub_maps_avaliacoes_tudo.csv` |
 | Exportação do app de observação | `contagem_<conteúdo>.csv` | `contagem_visitas.csv`, `contagem_30min.csv` |
 | Log de execução | `<script>_AAAA-MM-DD_HHMM.log`, em `logs/` do bloco (fora do git) | `B1-b_planilha_2026-10-14_0930.log` |
@@ -192,7 +195,7 @@ Onde fica o marcador de cada coletor (levantamento de 12/11/2026; mudou só o qu
 | Objeto | Convenção atual | Exemplo |
 |---|---|---|
 | Raiz do projeto | `ROOT = Path(__file__).resolve().parents[4]` em scripts de etapa e auxiliares de `outros/` (`parents[3]` em `Comum/`; antes, em 14/10/2026, `parents[3]` e, até então, `parents[2]`) | — |
-| Caminhos fixos | constantes em maiúsculas no topo do script, em português nos scripts novos: `BRUTOS` (pasta `_dados-brutos/` do bloco), `PROCESSADOS` (raiz do bloco em `dados/`), `ENTRADA`, `SAIDA` | `SAIDA = PROCESSADOS / "B1_entorno.csv"` |
+| Caminhos fixos | constantes em maiúsculas no topo do script, em português nos scripts novos: `BRUTOS` (`_dados-brutos/` da coleta), `PROCESSADOS` (`_dados-agregados/` da coleta), `ENTRADA`, `SAIDA`; no B4, `pasta_bruta(fonte)`, `pasta_auditoria(fonte)` e `pasta_uso(uso)` do `bases_comum.py` | `SAIDA = ROOT / "dados" / "B1_entorno" / "_dados-agregados" / "B1_entorno.csv"` |
 | Nomes antigos equivalentes | `RAW`/`RAW_DIR`/`BRUTO` = brutos; `PROCESSED`/`PROCESSED_DIR`/`PASTA` = processados; `OUT_PATH`/`*_PATH` = arquivo de saída ou de entrada. Não são renomeados sem outra mudança no script | — |
 | Funções e variáveis | `snake_case`, em português | `caminho_saida`, `conferir_capitais` |
 | Classes | `CamelCase` | `PlacesClient`, `OverpassClient` |

@@ -11,8 +11,8 @@ Uso: python B5-c_sinapi.py [AAAA-MM]
      (a Caixa publica o mês M por volta do dia 10 de M+1).
 
 Entrada: nenhuma (download). O zip fica em
-         dados/[B5] Ativos fixos/_dados-brutos/obra_reforma/sinapi/ (fora do git).
-Saídas em dados/[B5] Ativos fixos/obra_reforma/:
+         dados/B5_obra_reforma/_dados-brutos/sinapi/ (fora do git).
+Saídas em dados/B5_obra_reforma/_dados-agregados/:
   "[B5] SINAPI Composições BA {AAAA-MM} (Caixa).csv"  grupo, código, descrição, unidade, custo, %AS
   "[B5] SINAPI Insumos BA {AAAA-MM} (Caixa).csv"      classificação, código, descrição, unidade, origem, preço
 
@@ -45,9 +45,8 @@ import pandas as pd
 import requests
 
 ROOT = Path(__file__).resolve().parents[4]
-BLOCO = ROOT / "dados" / "[B5] Ativos fixos"
-RAW_DIR = BLOCO / "_dados-brutos" / "obra_reforma" / "sinapi"
-OUT_DIR = BLOCO / "obra_reforma"
+RAW_DIR = ROOT / "dados" / "B5_obra_reforma" / "_dados-brutos" / "sinapi"
+OUT_DIR = ROOT / "dados" / "B5_obra_reforma" / "_dados-agregados"
 URL = "https://www.caixa.gov.br/Downloads/sinapi-relatorios-mensais/SINAPI-{mes}-formato-xlsx.zip"
 UF = "BA"
 MESES_PARA_TRAS = 4

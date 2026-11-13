@@ -15,7 +15,7 @@ A segunda etapa (estabelecimento com erro) usa a mesma chave: as 20 seguintes
 na ordem de chave_sorteio, ou todas, se o recorte tiver até 30.
 
 Entrada: B2_avaliacoes_periodo.csv (base consolidada por B2-b_avaliacoes.py)
-Saídas em _dados-brutos/coletas/auditoria/ (fora do git: trazem o texto das avaliações):
+Saídas em dados/B2_avaliacoes/_auditoria/ (fora do git: trazem o texto das avaliações):
   B2_auditoria_avaliacoes.csv   etapa 1: texto_confere, nota_confere, data_relativa_na_pagina
   B2_auditoria_completude.csv   etapa 2: todos os estabelecimentos, com o número coletado
                                 no recorte e a coluna para o número contado na página
@@ -38,9 +38,9 @@ import pandas as pd
 import amostrar_auditoria as aa
 
 ROOT = Path(__file__).resolve().parents[4]
-PROCESSADOS = ROOT / "dados" / "[B2] Avaliacoes recentes"
+PROCESSADOS = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
 ENTRADA = PROCESSADOS / "B2_avaliacoes_periodo.csv"
-SAIDA = PROCESSADOS / "_dados-brutos/coletas/auditoria"
+SAIDA = ROOT / "dados" / "B2_avaliacoes" / "_auditoria"
 
 SEMENTE = 20261015
 N_AVALIACOES = 200

@@ -1,17 +1,17 @@
 """
 Bloco B1 - converte os cardápios extraídos fora da transcrição manual para o
-formato de _dados-brutos/cardapios/transcricao/ (um CSV por estabelecimento,
+formato de dados/B1_cardapios/_dados-brutos/transcricao/ (um CSV por estabelecimento,
 ";"), que o B1-b_cardapios_planilha.py junta na planilha de itens e preços.
 
 Fontes convertidas:
-  - prints (cardapios/B1_cardapios_prints_itens.csv): 9 casas, fotos do Maps
+  - prints (dados/B1_cardapios/_dados-agregados/B1_cardapios_prints_itens.csv): 9 casas, fotos do Maps
     ou do Instagram transcritas à mão; o mesmo item em fotos de datas
     diferentes fica só na mais recente (foto sem data perde para a datada);
-  - cardápios digitais (cardapios/B1_cardapios_digitais_itens.csv): Bardo Mago,
+  - cardápios digitais (dados/B1_cardapios/_dados-agregados/B1_cardapios_digitais_itens.csv): Bardo Mago,
     La Tabuleria e Toca do Rato (Saipos e VUCA Food); jogos à venda e avisos
     ("Esclarecimentos") ficam de fora;
   - couvert lúdico dos prints de práticas (B1_cardapios_prints_praticas.csv);
-  - Cartola: CSVs exportados da página Takeat (_dados-brutos/cardapios/
+  - Cartola: CSVs exportados da página Takeat (dados/B1_cardapios/_dados-brutos/
     ca_sao_paulo/ca_cartola/); com dois preços, o primeiro é o de tabela e o
     segundo vai para a observação.
 
@@ -38,9 +38,8 @@ import unicodedata
 import pandas as pd
 
 ROOT = _AQUI.parents[4]
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-CARD = PROCESSED / "cardapios"
-BRUTOS = PROCESSED / "_dados-brutos" / "cardapios"
+CARD = ROOT / "dados" / "B1_cardapios" / "_dados-agregados"
+BRUTOS = ROOT / "dados" / "B1_cardapios" / "_dados-brutos"
 SAIDA = BRUTOS / "transcricao"
 CARTOLA = BRUTOS / "ca_sao_paulo" / "ca_cartola"
 

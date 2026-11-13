@@ -17,7 +17,7 @@ Regras:
 - medianas por grupo usam só as casas com o dado; o n de cada grupo vai na
   tabela de valores.
 
-Saídas (dados/[B1] Estabelecimentos e cardapios/estabelecimentos/5_graficos/cartogramas/):
+Saídas (dados/B1_estabelecimentos/_dados-agregados/5_graficos/cartogramas/):
   png/, svg/ (texto editável) e valores/ (B1_mapa_*). Para atualizar depois de
   corrigir uma coleta, rodar o script de novo.
 
@@ -44,7 +44,7 @@ from graficos_comum import (BASE, HALO, ORDEM_REGIAO, SEQUENCIAL, TINTA, TINTA2,
                             figura, salvar)
 
 ROOT = _AQUI.parents[4]
-PASTA = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "estabelecimentos" / "5_graficos" / "cartogramas"
+PASTA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "5_graficos" / "cartogramas"
 MALHA = _AQUI.parents[1] / "outros" / "malha_uf_ibge.geojson"
 FONTE = ("Fonte: elaboração própria com dados do Google Maps, do Instagram e dos cardápios das casas (set. e out. "
          "2026), recorte B1; malha das UFs: IBGE.")

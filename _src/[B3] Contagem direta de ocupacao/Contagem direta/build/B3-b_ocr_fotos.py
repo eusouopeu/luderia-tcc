@@ -3,11 +3,11 @@ Bloco B3 - texto das fotos de apoio (cardápio, estante) tiradas no app de obser
 
 Entrada: as fotos exportadas pelo app (Ajustes › Exportar › Fotos, ou copiadas de
 Documentos/ObservacaoLuderia/fotos no celular) em
-`dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/fotos/`, e o
+`dados/B3_contagem/_dados-brutos/fotos/`, e o
 `contagem_fotos.csv` em `.../app/` (liga cada arquivo à unidade, categoria e hora).
 As fotos não são publicadas (.gitignore): cardápio e estante são material de terceiros.
 
-Saída: `dados/[B3] Contagem direta de ocupacao/contagem_fotos_texto.csv`,
+Saída: `dados/B3_contagem/_dados-agregados/contagem_fotos_texto.csv`,
 uma linha por foto com o texto lido (Tesseract). O texto é insumo para transcrever
 preços e jogos à mão, como no Bloco B1: OCR de cardápio erra valores, então não
 entra em análise sem conferência.
@@ -31,8 +31,8 @@ import pytesseract
 from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parents[4]
-ENTRADA = ROOT / "dados" / "[B3] Contagem direta de ocupacao" / "_dados-brutos" / "app"
-SAIDA = ROOT / "dados" / "[B3] Contagem direta de ocupacao"
+ENTRADA = ROOT / "dados" / "B3_contagem" / "_dados-brutos"
+SAIDA = ROOT / "dados" / "B3_contagem" / "_dados-agregados"
 
 
 def idioma() -> str:

@@ -20,7 +20,7 @@ Achado que orienta a fila: 92% das 51 aprovadas e as 6 luderias da rodada 1 fora
 achadas por pelo menos um termo de espaço; entre as reprovadas, 20%. A coluna
 `termo_de_espaco` marca isso, e a rodada seguinte é o que sobra com o traço.
 
-Saída em dados/[B1] Estabelecimentos e cardapios/estabelecimentos/3_triagem/:
+Saída em dados/B1_estabelecimentos/_dados-agregados/3_triagem/:
   B1_repaginacao_triagem.csv   decisões do autor (rodada 1) e fila da rodada 2
 
 Uso:
@@ -48,11 +48,10 @@ from sklearn.metrics import roc_auc_score
 from sklearn.preprocessing import StandardScaler
 
 ROOT = Path(__file__).resolve().parents[4]
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-RAW = B1 / "_dados-brutos" / "estabelecimentos"
-CANDIDATOS = B1 / "estabelecimentos" / "1_busca" / "B1_repaginacao_candidatos.csv"
-TRIAGEM_ORIGINAL = B1 / "estabelecimentos" / "3_triagem" / "B1_triagem_manual_metro_av100.xlsx"
-SAIDA = B1 / "estabelecimentos" / "3_triagem" / "B1_repaginacao_triagem.csv"
+RAW = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos"
+CANDIDATOS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "1_busca" / "B1_repaginacao_candidatos.csv"
+TRIAGEM_ORIGINAL = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_triagem_manual_metro_av100.xlsx"
+SAIDA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_repaginacao_triagem.csv"
 REDES_FORA = r"\bri\s*happy\b|\bkalunga\b|\bleitura\b"
 
 # Decisões do autor, 12/11/2026 (rodada 1, na ordem em que a lista foi apresentada).

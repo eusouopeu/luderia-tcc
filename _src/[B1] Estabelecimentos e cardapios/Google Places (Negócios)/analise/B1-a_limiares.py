@@ -7,13 +7,13 @@ para escolher o limiar pela distribuição, e não antes de ver os dados.
 Também mede quantos estabelecimentos da lista manual do autor (Rio de Janeiro)
 a busca automática encontrou: primeira estimativa de cobertura.
 
-Saídas em dados/[B1] Estabelecimentos e cardapios/:
-  estabelecimentos/2_recorte/B1_limiares.csv - capital (UF do endereço) x limiar (total e só ativos),
+Saídas:
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_limiares.csv - capital (UF do endereço) x limiar (total e só ativos),
       com a coluna REGIC e as capitais agrupadas em Metrópoles e Capitais
       Regionais; a linha de cada grupo, acima das suas capitais, é a soma delas
-  estabelecimentos/2_recorte/B1_limiares_f.csv - mesma tabela, a partir das
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_limiares_f.csv - mesma tabela, a partir das
       curadorias filtradas por termos suspeitos (B1-a_termos_suspeitos.py)
-  estabelecimentos/1_busca/B1_cobertura_lista_manual.csv - item da lista manual x encontrado
+  dados/B1_estabelecimentos/_dados-agregados/1_busca/B1_cobertura_lista_manual.csv - item da lista manual x encontrado
 
 Uso:
     python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/analise/B1-a_limiares.py"
@@ -36,19 +36,17 @@ from recorte_rm import classifica, no_recorte
 from regic import GRUPOS_REGIC, load_regic
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-CURADORIA_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria.csv"
-DESCARTADOS_PATH = PROCESSED / "estabelecimentos/1_busca/B1_descartados.csv"
-CANDIDATOS_PATH = RAW / "estabelecimentos/B1_candidatos.csv"
-LISTA_MANUAL_PATH = RAW / "B1_lista_manual_rj.csv"
-OUT_LIMIARES = PROCESSED / "estabelecimentos/2_recorte/B1_limiares.csv"
-OUT_LIMIARES_FILTRADA = PROCESSED / "estabelecimentos/2_recorte/B1_limiares_f.csv"
+CURADORIA_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria.csv"
+DESCARTADOS_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "1_busca" / "B1_descartados.csv"
+CANDIDATOS_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_candidatos.csv"
+LISTA_MANUAL_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_lista_manual_rj.csv"
+OUT_LIMIARES = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_limiares.csv"
+OUT_LIMIARES_FILTRADA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_limiares_f.csv"
 FILTRADAS_PATHS = [
-    PROCESSED / "estabelecimentos/2_recorte/B1_curadoria_metro_f.csv",
-    PROCESSED / "estabelecimentos/2_recorte/B1_curadoria_regio_f.csv",
+    ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria_metro_f.csv",
+    ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria_regio_f.csv",
 ]
-OUT_COBERTURA = PROCESSED / "estabelecimentos/1_busca/B1_cobertura_lista_manual.csv"
+OUT_COBERTURA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "1_busca" / "B1_cobertura_lista_manual.csv"
 
 LIMIARES = [0, 10, 20, 30, 50, 100]
 

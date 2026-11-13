@@ -1,5 +1,5 @@
 {
- "_leiaMe": "Gerado por scripts/sincronizar_b2.py a partir de dados/[B2]…/analise_conteudo/B2_temas_*.csv e B2_recodificacao_kappa.csv. Não editar à mão.",
+ "_leiaMe": "Gerado por scripts/sincronizar_b2.py a partir de dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_temas_*.csv e B2_recodificacao_kappa.csv. Não editar à mão.",
  "comentarios": 1628,
  "estabelecimentos": 53,
  "temas": [

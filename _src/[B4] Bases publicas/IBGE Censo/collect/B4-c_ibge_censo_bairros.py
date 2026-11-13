@@ -6,7 +6,7 @@ Temas: básico (pessoas, domicílios, média de moradores) e demografia (sexo e 
 Renda não é divulgada nesse recorte; a renda por capital vem do SIDRA
 (B4-c_ibge_sidra.py).
 
-Saída: dados/[B4] Bases publicas/_dados-brutos/ibge_censo_2022/ (zips e xlsx originais)
+Saída: dados/B4_ponto_operacoes/_dados-brutos/ibge_censo_2022/ (zips e xlsx originais)
 """
 
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
@@ -20,11 +20,11 @@ if __name__ == "__main__":
 
 import re
 
-from bases_comum import RAW_DIR, baixar
+from bases_comum import baixar, pasta_bruta
 
 BASE = "https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Agregados_por_Setores_Censitarios/"
 TEMAS = ["basico", "demografia", "caracteristicas_domicilio1"]
-OUT_DIR = RAW_DIR / "ibge_censo_2022"
+OUT_DIR = pasta_bruta("ibge_censo_2022")
 
 
 def main() -> None:

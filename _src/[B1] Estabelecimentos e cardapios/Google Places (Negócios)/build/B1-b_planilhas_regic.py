@@ -11,11 +11,11 @@ a soma dos grupos mais esses casos tem de fechar com o total de cada arquivo.
 Rodar depois de B1-b_planilha.py. As saídas são derivadas: rodar de
 novo sobrescreve as colunas manuais preenchidas nelas.
 
-Saídas em dados/[B1] Estabelecimentos e cardapios/:
-  estabelecimentos/2_recorte/B1_curadoria_metro.csv
-  estabelecimentos/2_recorte/B1_curadoria_regio.csv
-  estabelecimentos/1_busca/B1_descartados_metro.csv
-  estabelecimentos/1_busca/B1_descartados_regio.csv
+Saídas:
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_curadoria_metro.csv
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_curadoria_regio.csv
+  dados/B1_estabelecimentos/_dados-agregados/1_busca/B1_descartados_metro.csv
+  dados/B1_estabelecimentos/_dados-agregados/1_busca/B1_descartados_regio.csv
 
 Uso:
     python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/build/B1-b_planilhas_regic.py"
@@ -36,11 +36,11 @@ from regic import load_regic
 from recorte_rm import classifica
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
+PROCESSED = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados"
 # Planilha de entrada -> pasta e prefixo das saídas por grupo ({prefixo}_{código do grupo}.csv)
 ENTRADAS = {
-    "estabelecimentos/2_recorte/B1_curadoria.csv": "estabelecimentos/2_recorte/B1_curadoria",
-    "estabelecimentos/1_busca/B1_descartados.csv": "estabelecimentos/1_busca/B1_descartados",
+    "2_recorte/B1_curadoria.csv": "2_recorte/B1_curadoria",
+    "1_busca/B1_descartados.csv": "1_busca/B1_descartados",
 }
 SUFIXO_GRUPO = {"Metrópoles": "metro", "Capitais Regionais": "regio"}
 

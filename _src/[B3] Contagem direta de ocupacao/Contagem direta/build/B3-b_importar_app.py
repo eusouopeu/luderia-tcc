@@ -4,13 +4,13 @@ de cada observador numa tabela única por conteúdo, entrada do B3-a_contagem.py
 
 Cada visita tem dois observadores simultâneos (POV1 e POV2), para que um cubra
 as lacunas do outro. Os CSVs exportados pelo app ficam intactos em:
-  dados/[B3] Contagem direta de ocupacao/_dados-brutos/app/originais/<visita_id>/<observador>/
+  dados/B3_contagem/_dados-brutos/originais/<visita_id>/<observador>/
     AAAA-MM-DD_SJ<unidade>_<observador>_contagem_<conteúdo>.csv     (exportado pelo app)
     AAAA-MM-DD_SJ<unidade>_<observador>_transcricao_<conteúdo>.csv  (digitado depois, nas
         mesmas colunas do app; ex.: itens da NFC-e transcritos da foto da nota)
 com <visita_id> = AAAA-MM-DD_SJ<unidade> (ex.: 2026-10-10_SJBV).
 
-Saída em `_dados-brutos/app/`: um contagem_<conteúdo>.csv por conteúdo, com as
+Saída em `dados/B3_contagem/_dados-brutos/`: um contagem_<conteúdo>.csv por conteúdo, com as
 colunas `visita_id`, `observador` e `fonte_registro` (app, transcricao) à
 frente das do app.
 
@@ -45,7 +45,7 @@ import re
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-APP = ROOT / "dados" / "[B3] Contagem direta de ocupacao" / "_dados-brutos" / "app"
+APP = ROOT / "dados" / "B3_contagem" / "_dados-brutos"
 ORIGINAIS = APP / "originais"
 DESCARTES = _AQUI.parents[1] / "outros" / "B3_descartes_app.csv"
 CORRECOES = _AQUI.parents[1] / "outros" / "B3_correcoes_app.csv"

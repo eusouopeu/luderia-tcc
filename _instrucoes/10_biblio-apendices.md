@@ -101,12 +101,12 @@ Só os apêndices citados no texto, com letras na ordem de citação, num arquiv
 
 | Apêndice | Conteúdo | Onde é citado | Origem |
 |---|---|---|---|
-| A | Concorrentes do B1: lista dos aprovados (nome, metrópole, avaliação, volume; sem texto de avaliações) | 3 | `dados/[B1] Estabelecimentos e cardapios/` |
-| B | Contagem direta do B3: protocolo, estrutura das unidades, registros por visita, ocupação, NFC-e | 3 | `dados/[B3] Contagem direta de ocupacao/`; `textos/instrumentos/roteiro_observacao_sao_jogue.md` |
-| C | Tabelas de apoio das bases públicas (B4): população por bairro, salários de admissão, faixas do Simples, Selic e IPCA | 3 | `dados/[B4] Bases publicas/` |
+| A | Concorrentes do B1: lista dos aprovados (nome, metrópole, avaliação, volume; sem texto de avaliações) | 3 | `dados/B1_estabelecimentos/_dados-agregados/` |
+| B | Contagem direta do B3: protocolo, estrutura das unidades, registros por visita, ocupação, NFC-e | 3 | `dados/B3_contagem/`; `textos/instrumentos/roteiro_observacao_sao_jogue.md` |
+| C | Tabelas de apoio das bases públicas (B4): população por bairro, salários de admissão, faixas do Simples, Selic e IPCA | 3 | `dados/B4_<uso>/_dados-agregados/` |
 | D | Matriz de evidências | 3 | [4_metodologia.md](4_metodologia.md) |
 | E | Registro de premissas | 4, 6 a 9 | [8_financeiro.md](8_financeiro.md); `gerar_modelo_financeiro.py` |
-| F | Análise de conteúdo das avaliações (B2): grade, frequências, kappa | 6 | `textos/instrumentos/dicionario_temas_B2.md`; `dados/[B2] Avaliacoes recentes/` |
+| F | Análise de conteúdo das avaliações (B2): grade, frequências, kappa | 6 | `textos/instrumentos/dicionario_temas_B2.md`; `dados/B2_avaliacoes/` |
 | G | Simulação de Monte Carlo | 9 | [8_financeiro.md](8_financeiro.md) §4.4 |
 
 Teto dos apêndices: 9 páginas. O que não couber fica só no repositório, com o link no apêndice que o resume. Testes de hipótese H1–H9, se feitos, entram num apêndice novo, dentro do mesmo teto.

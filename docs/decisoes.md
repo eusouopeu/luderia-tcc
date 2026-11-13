@@ -4,6 +4,7 @@ Uma linha por decisão já tomada sobre o TCC, da mais recente para a mais antig
 
 | Data | Decisão | Detalhe em |
 |---|---|---|
+| 13/11/2026 | Organização: webscripts reunidos em `_src/Webscripts/[Bn] Nome/` (carregadores em `_carregadores/`, kit dos painéis em `_kit_painel/`); `dados/` com uma pasta por coleta, `B<n>_<coleta>/`, cada uma com `_dados-brutos/`, `_auditoria/` e `_dados-agregados/` e um `_arquivo/` em cada; B4 com uma coleta por uso (brutos no uso de `FONTE_USO`, fonte de vários usos em `B4_multiuso`) | `_src/dicionario.md`; `CLAUDE.md` |
 | 12/11/2026 | Horas de pico equivalentes pelo índice "Horários de pico" do Google Maps de 47 concorrentes (curva média das casas abertas em cada hora ÷ curva nas janelas das visitas), no lugar da contagem de casas abertas: R15 de 7,73 h no fim de semana e R05 de 4,98 h no dia útil (antes razão de gasto com cartão da ANR, N4), pessimista pela curva mediana; sai a R19. Variante da L28 sem a calibração pelos 54,5% da São Jogue | Caps. 3.4, 6.6, 7.2, 9 e 10; `B1-a_horas_pico_indice.py` |
 | 12/11/2026 | R18 (variação anual da demanda) retirada: demanda madura constante depois da rampa; o valor residual segue como perpetuidade sem crescimento | Caps. 9 e 10 |
 | 12/11/2026 | Tabela 9.4 com o provável e o P10, a mediana e o P90 do Monte Carlo de cada indicador; os extremos pessimista e otimista vão para a nota | Cap. 9.4; `gerar_modelo_financeiro.py` |

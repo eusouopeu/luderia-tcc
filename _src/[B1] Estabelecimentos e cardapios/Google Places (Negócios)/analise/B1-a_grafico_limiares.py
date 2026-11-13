@@ -1,7 +1,7 @@
 """
 Bloco B1 - gráfico da distribuição de frequências de todos os candidatos da
 planilha de curadoria (ativos ou não) por volume de avaliações no Google Maps.
-Lê a linha TOTAL_UNICOS das colunas `min_x` de estabelecimentos/2_recorte/B1_limiares.csv
+Lê a linha TOTAL_UNICOS das colunas `min_x` de dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_limiares.csv
 (gerada por B1-a_limiares.py); as colunas `min_x_ativos` ficam de
 fora.
 
@@ -9,12 +9,12 @@ As colunas `min_x` são acumuladas (volume >= x). O painel da esquerda
 desacumula em faixas (frequência simples); o da direita mostra o acumulado,
 que é o número de estabelecimentos que sobra em cada limiar de corte.
 
-Saídas em dados/[B1] Estabelecimentos e cardapios/:
-  estabelecimentos/2_recorte/B1_limiares.png            -> contagens
-  estabelecimentos/2_recorte/B1_limiares_pct.png -> % do total de candidatos
-  estabelecimentos/2_recorte/B1_limiares_metro_f.png e
-  estabelecimentos/2_recorte/B1_limiares_regio_f.png -> contagens da
-      linha de cada grupo em estabelecimentos/2_recorte/B1_limiares_f.csv (curadorias
+Saídas:
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_limiares.png            -> contagens
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_limiares_pct.png -> % do total de candidatos
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_limiares_metro_f.png e
+  dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_limiares_regio_f.png -> contagens da
+      linha de cada grupo em dados/B1_estabelecimentos/_dados-agregados/2_recorte/B1_limiares_f.csv (curadorias
       sem termos suspeitos no nome)
 
 Uso:
@@ -38,15 +38,14 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-LIMIARES_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_limiares.csv"
-OUT_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_limiares.png"
-OUT_PERCENTUAL_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_limiares_pct.png"
-LIMIARES_FILTRADA_PATH = PROCESSED / "estabelecimentos/2_recorte/B1_limiares_f.csv"
+LIMIARES_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_limiares.csv"
+OUT_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_limiares.png"
+OUT_PERCENTUAL_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_limiares_pct.png"
+LIMIARES_FILTRADA_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_limiares_f.csv"
 # Linha da tabela filtrada -> gráfico de contagens gerado para ela.
 GRAFICOS_FILTRADA = {
-    "Metrópoles": PROCESSED / "estabelecimentos/2_recorte/B1_limiares_metro_f.png",
-    "Capitais Regionais": PROCESSED / "estabelecimentos/2_recorte/B1_limiares_regio_f.png",
+    "Metrópoles": ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_limiares_metro_f.png",
+    "Capitais Regionais": ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_limiares_regio_f.png",
 }
 
 COR_BARRA = "#2a78d6"

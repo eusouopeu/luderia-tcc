@@ -1,8 +1,8 @@
 """Baixa os cardápios (PDF e imagens) dos estabelecimentos do banco A do Notion.
 
-Saída: dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/
+Saída: dados/B1_cardapios/_dados-brutos/ca_<cidade>/ca_<estabelecimento>/
 (pasta definida em PASTAS, outros/cardapios_comum.py; estabelecimento novo entra lá antes)
-Cada arquivo baixado é registrado em cardapios/B1_cardapios_baixados.csv (estabelecimento, url, arquivo, tipo, tamanho, baixado_em).
+Cada arquivo baixado é registrado em dados/B1_cardapios/_dados-agregados/B1_cardapios_baixados.csv (estabelecimento, url, arquivo, tipo, tamanho, baixado_em).
 Arquivos já baixados são pulados. Páginas Wix são varridas por imagens hospedadas em static.wixstatic.com.
 """
 # Caminhos: _src/extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
@@ -25,7 +25,7 @@ from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[4]
-LOG = ROOT / "dados/[B1] Estabelecimentos e cardapios/cardapios/B1_cardapios_baixados.csv"
+LOG = ROOT / "dados" / "B1_cardapios" / "_dados-agregados" / "B1_cardapios_baixados.csv"
 CTX = ssl.create_default_context(cafile=certifi.where())
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh) AppleWebKit/537.36 Chrome/120 Safari/537.36"}
 

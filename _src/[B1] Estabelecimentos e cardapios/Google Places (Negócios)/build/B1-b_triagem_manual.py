@@ -32,17 +32,17 @@ Luderias da repaginação (12/11/2026). A busca de setembro não paginava (ver
 B1-c_places.py --repaginar); as casas novas aprovadas na triagem manual da
 repaginação (3_triagem/B1_repaginacao_triagem.csv) e dentro do recorte entram
 na planilha de aprovadas, com `origem` = "repaginacao", a partir dos detalhes
-de _dados-brutos/estabelecimentos/B1_detalhes_repaginacao.jsonl
+de dados/B1_estabelecimentos/_dados-brutos/B1_detalhes_repaginacao.jsonl
 (B1-c_details.py --repaginadas). Campinas entra como 15ª metrópole da REGIC
 (decisão do autor em 12/11/2026; recorte_rm.metropole_do_endereco). A planilha
 de triagem original não muda.
 
 Entrada (anotada à mão pelo autor):
-  dados/[B1] Estabelecimentos e cardapios/_dados-brutos/
+  dados/B1_estabelecimentos/_dados-brutos/
       B1_curadoria_manual_metropoles_mais_100_avaliacoes.xlsx
-Saídas em dados/[B1] Estabelecimentos e cardapios/:
-  estabelecimentos/3_triagem/B1_triagem_manual_metro_av100.xlsx
-  estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx
+Saídas:
+  dados/B1_estabelecimentos/_dados-agregados/3_triagem/B1_triagem_manual_metro_av100.xlsx
+  dados/B1_estabelecimentos/_dados-agregados/3_triagem/B1_aprovadas_metro_av100.xlsx
 
 Uso:
     python3 "_src/[B1] Estabelecimentos e cardapios/Google Places (Negócios)/build/B1-b_triagem_manual.py"
@@ -68,14 +68,12 @@ from openpyxl.styles import Alignment, Font
 from openpyxl.utils import get_column_letter
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-ENTRADA = RAW / "B1_curadoria_manual_metropoles_mais_100_avaliacoes.xlsx"
-CURADORIA = PROCESSED / "estabelecimentos/2_recorte/B1_curadoria_metro_f_av100.csv"
-REPAGINACAO_TRIAGEM = PROCESSED / "estabelecimentos/3_triagem/B1_repaginacao_triagem.csv"
-REPAGINACAO_DETALHES = RAW / "estabelecimentos/B1_detalhes_repaginacao.jsonl"
-SAIDA_TRIAGEM = PROCESSED / "estabelecimentos/3_triagem/B1_triagem_manual_metro_av100.xlsx"
-SAIDA_APROVADAS = PROCESSED / "estabelecimentos/3_triagem/B1_aprovadas_metro_av100.xlsx"
+ENTRADA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_curadoria_manual_metropoles_mais_100_avaliacoes.xlsx"
+CURADORIA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria_metro_f_av100.csv"
+REPAGINACAO_TRIAGEM = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_repaginacao_triagem.csv"
+REPAGINACAO_DETALHES = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_detalhes_repaginacao.jsonl"
+SAIDA_TRIAGEM = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_triagem_manual_metro_av100.xlsx"
+SAIDA_APROVADAS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_aprovadas_metro_av100.xlsx"
 
 COL_FOTOS = "possui fotos no google maps?"
 COL_FOTOS_OK = "fotos do google maps comprovam?"

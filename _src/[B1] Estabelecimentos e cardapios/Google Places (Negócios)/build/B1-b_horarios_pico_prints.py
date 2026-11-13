@@ -6,7 +6,7 @@ Por que dos prints: o Maps só mostra o gráfico com a conta Google conectada, e
 o coletor (webscripts/maps_horarios_pico.user.js) depende do HTML da página,
 que muda sem aviso. O print guarda a prova do que foi lido.
 
-Entrada: _dados-brutos/estabelecimentos/horarios_pico/prints_sao_jogue/
+Entrada: dados/B1_estabelecimentos/_dados-brutos/horarios_pico/prints_sao_jogue/
   AAAA-MM-DD_sao_jogue_horarios_pico_<dia>.png, print do gráfico de um dia,
   capturado no navegador (escala 1:1, tema claro).
 
@@ -32,7 +32,7 @@ dos prints, com diferença máxima de 0,7 ponto e média de -0,1.
 O índice é relativo (forma da curva), não pessoas. Serve para a razão entre
 dias e para as horas de pico equivalentes; a escala em pessoas vem do B3.
 
-Saídas (dados/[B1] Estabelecimentos e cardapios/estabelecimentos/):
+Saídas (dados/B1_estabelecimentos/_dados-agregados/):
   - B1_horarios_pico_sao_jogue.csv: uma linha por dia × hora aberta, com
     altura_px, base_px (altura da linha tracejada) e indice_semana (0-100);
   - B1_horarios_pico_sao_jogue_resumo.csv: por dia, soma do índice (volume do
@@ -57,10 +57,9 @@ import pandas as pd
 from PIL import Image
 
 ROOT = _AQUI.parents[4]
-PROCESSED = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-PRINTS = PROCESSED / "_dados-brutos" / "estabelecimentos" / "horarios_pico" / "prints_sao_jogue"
-SAIDA = PROCESSED / "estabelecimentos" / "B1_horarios_pico_sao_jogue.csv"
-SAIDA_RESUMO = PROCESSED / "estabelecimentos" / "B1_horarios_pico_sao_jogue_resumo.csv"
+PRINTS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "horarios_pico" / "prints_sao_jogue"
+SAIDA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_horarios_pico_sao_jogue.csv"
+SAIDA_RESUMO = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_horarios_pico_sao_jogue_resumo.csv"
 
 DIAS = ["segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo"]
 GRUPO = {"terca": "dia util", "quarta": "dia util", "quinta": "dia util",

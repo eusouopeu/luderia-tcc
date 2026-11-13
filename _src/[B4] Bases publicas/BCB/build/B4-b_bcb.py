@@ -1,8 +1,8 @@
 """
 Trata as séries do Banco Central coletadas por B4-c_bcb.py.
 
-Saídas em dados/[B4] Bases publicas/:
-Saídas em financeiro/, no padrão "[B4] {dado} {período} ({fonte}).csv":
+Saídas:
+Saídas em dados/B4_financeiro/_dados-agregados/, no padrão "[B4] {dado} {período} ({fonte}).csv":
   "Selic IPCA e Salário Mínimo"                séries do SGS em formato longo (codigo_sgs, serie, data, valor)
   "Selic IPCA e Salário Mínimo Último Valor"   último valor de cada série
   "Expectativas Focus"                         pesquisa Focus mais recente de cada indicador, por ano de
@@ -20,13 +20,12 @@ if __name__ == "__main__":
 
 import pandas as pd
 
-from bases_comum import PROCESSED_DIR, RAW_DIR, caminho_saida, ler_json, rotulo_periodo
+from bases_comum import caminho_saida, ler_json, pasta_bruta, rotulo_periodo
 
-IN_DIR = RAW_DIR / "bcb"
+IN_DIR = pasta_bruta("bcb")
 
 
 def main() -> None:
-    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 
     partes = []
     for arq in sorted(IN_DIR.glob("sgs_*.json")):

@@ -31,24 +31,22 @@ import pandas as pd
 from amostrar_auditoria import Z_95, wilson_superior  # noqa: E402
 
 ROOT = _AQUI.parents[2]
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos"
-B2 = ROOT / "dados" / "[B2] Avaliacoes recentes" / "_dados-brutos"
-B4 = ROOT / "dados" / "[B4] Bases publicas" / "_dados-brutos"
+B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-brutos"
 SAIDA = ROOT / "_src" / "site-apresentacao" / "src" / "conteudo" / "auditorias.json"
 CRITERIO = 0.05
 FONTES_B4 = ["bcb", "caged", "concla", "fipezap", "ibge_censo_2022", "ibge_sidra", "legislacao"]
 
 # id -> (pasta, arquivo da amostra, unidade)
 AMOSTRAS = {
-    "estabelecimentos": (B1 / "estabelecimentos/auditoria", "B1_auditoria_estabelecimentos.csv", "estabelecimento"),
-    "entorno_casas": (B1 / "entornos/auditoria", "B1_auditoria_entorno_estabelecimentos.csv", "estabelecimento"),
-    "entorno_itens": (B1 / "entornos/auditoria", "B1_auditoria_entorno_itens.csv", "item a até 1000 m"),
-    "instagram_perfis": (B1 / "redes_sociais/auditoria", "B1_auditoria_instagram_perfis.csv", "perfil"),
-    "instagram_posts": (B1 / "redes_sociais/auditoria", "B1_auditoria_instagram_posts.csv", "post"),
-    "cardapios": (B1 / "cardapios/auditoria", "B1_auditoria_cardapios.csv", "item com preço"),
-    "acervos": (B1 / "acervos_luderias/auditoria", "B1_auditoria_acervos.csv", "jogo"),
-    "avaliacoes": (B2 / "coletas/auditoria", "B2_auditoria_avaliacoes.csv", "avaliação com texto"),
-    "completude": (B2 / "coletas/auditoria", "B2_auditoria_completude.csv", "estabelecimento"),
+    "estabelecimentos": (ROOT / "dados" / "B1_estabelecimentos" / "_auditoria", "B1_auditoria_estabelecimentos.csv", "estabelecimento"),
+    "entorno_casas": (ROOT / "dados" / "B1_entorno" / "_auditoria", "B1_auditoria_entorno_estabelecimentos.csv", "estabelecimento"),
+    "entorno_itens": (ROOT / "dados" / "B1_entorno" / "_auditoria", "B1_auditoria_entorno_itens.csv", "item a até 1000 m"),
+    "instagram_perfis": (ROOT / "dados" / "B1_redes_sociais" / "_auditoria", "B1_auditoria_instagram_perfis.csv", "perfil"),
+    "instagram_posts": (ROOT / "dados" / "B1_redes_sociais" / "_auditoria", "B1_auditoria_instagram_posts.csv", "post"),
+    "cardapios": (ROOT / "dados" / "B1_cardapios" / "_auditoria", "B1_auditoria_cardapios.csv", "item com preço"),
+    "acervos": (ROOT / "dados" / "B1_acervo_jogos" / "_auditoria", "B1_auditoria_acervos.csv", "jogo"),
+    "avaliacoes": (ROOT / "dados" / "B2_avaliacoes" / "_auditoria", "B2_auditoria_avaliacoes.csv", "avaliação com texto"),
+    "completude": (ROOT / "dados" / "B2_avaliacoes" / "_auditoria", "B2_auditoria_completude.csv", "estabelecimento"),
 }
 
 
@@ -100,7 +98,7 @@ def main():
     # B4: uma linha por série de cada arquivo, somada nas sete pastas de fonte.
     fontes = []
     for f in FONTES_B4:
-        pasta = B4 / f / "auditoria"
+        pasta = next((ROOT / "dados").glob(f"B4_*/_auditoria/{f}"))
         df = pd.read_csv(pasta / f"B4_auditoria_{f}.csv", sep=";", encoding="utf-8-sig")
         reg = registro(pasta, f"B4_auditoria_{f}.csv")
         fontes.append({"fonte": f, "arquivos": int(reg.populacao), "series": int(len(df))})

@@ -1,7 +1,7 @@
 """Extrai o texto dos cardápios baixados (PDF com camada de texto ou OCR; imagens por OCR).
 
-Entrada: dados/[B1] Estabelecimentos e cardapios/_dados-brutos/cardapios/ca_<cidade>/ca_<estabelecimento>/*.{pdf,png,jpg,webp}
-         (pastas em PASTAS, outros/cardapios_comum.py) e o cardápio de jogos do Covil, em _dados-brutos/acervos_luderias/
+Entrada: dados/B1_cardapios/_dados-brutos/ca_<cidade>/ca_<estabelecimento>/*.{pdf,png,jpg,webp}
+         (pastas em PASTAS, outros/cardapios_comum.py) e o cardápio de jogos do Covil, em dados/B1_acervo_jogos/_dados-brutos/acervos_luderias/
 Saída:   .../cardapios/transcricao/<Estabelecimento>.txt (texto bruto por arquivo)
          .../cardapios/B1_cardapios_ocr_linhas.csv (estabelecimento;arquivo;linha;texto;preco_rs)
 O idioma português vem de _src/[B1] Estabelecimentos e cardapios/Cardápios/outros/tessdata (tessdata_fast); sem ele, cai para inglês.
@@ -29,7 +29,7 @@ from PIL import Image, ImageOps
 from cardapios_comum import JOGOS_COVIL, PASTAS, pasta_original
 
 ROOT = Path(__file__).resolve().parents[4]
-BASE = ROOT / "dados/[B1] Estabelecimentos e cardapios/cardapios"
+BASE = ROOT / "dados" / "B1_cardapios" / "_dados-agregados"
 TRANSCRICAO = BASE / "transcricao"
 TESSDATA = Path(__file__).resolve().parents[1] / "outros" / "tessdata"
 LANG = "por" if (TESSDATA / "por.traineddata").exists() else "eng"

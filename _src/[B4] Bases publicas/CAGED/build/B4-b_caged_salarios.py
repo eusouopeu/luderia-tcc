@@ -8,8 +8,8 @@ Colunas ausentes em meses antigos não filtram (o mês entra sem aquele critéri
 Para a média não ser distorcida por erro de declaração, ficam de fora salários
 abaixo de 50% ou acima de 30 vezes o salário mínimo vigente na competência.
 
-Saídas em dados/[B4] Bases publicas/:
-Saídas em multiuso/ (custo de pessoal em 7.5 e cap. 9), no padrão "[B4] {dado} {período} ({fonte}).csv":
+Saídas:
+Saídas em dados/B4_multiuso/_dados-agregados/ (custo de pessoal em 7.5 e cap. 9), no padrão "[B4] {dado} {período} ({fonte}).csv":
   "Salário Admissão por Capital"   últimos 12 meses: média, p25, mediana, p75
   "Salário Admissão Mensal"        por competência: média nominal e real, mediana, salário mínimo
                                    vigente e razão média/mínimo
@@ -32,10 +32,10 @@ if __name__ == "__main__":
 
 import pandas as pd
 
-from bases_comum import CAPITAIS, CBOS, PROCESSED_DIR, RAW_DIR, caminho_saida, ler_json, rotulo_periodo
+from bases_comum import CAPITAIS, CBOS, caminho_saida, ler_json, pasta_bruta, rotulo_periodo
 
-IN_DIR = RAW_DIR / "caged"
-BCB_DIR = RAW_DIR / "bcb"
+IN_DIR = pasta_bruta("caged")
+BCB_DIR = pasta_bruta("bcb")
 HORAS_MINIMAS = 40
 UNIDADE_MES = "5"  # unidadesaláriocódigo: 5 = Mês (layout do Novo CAGED)
 LIMITE_INFERIOR_SM = 0.5
@@ -135,7 +135,6 @@ def main() -> None:
     base_ipca = ipca.loc[ipca.index <= df["competencia"].max()].iloc[-1]
     df["salario_real"] = df["salario"] * base_ipca / df["competencia"].map(ipca)
     df["ano"] = df["competencia"] // 100
-    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     colunas = ["recorte", "capital", "cbo", "ocupacao", "admissoes", "salario_medio", "salario_p25", "salario_mediana",
                "salario_p75", "salario_medio_real", "horas_mediana", "amostra_pequena"]
 

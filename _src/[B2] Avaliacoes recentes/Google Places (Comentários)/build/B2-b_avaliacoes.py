@@ -3,8 +3,8 @@ Bloco B2 - consolida as coletas do userscript maps_avaliacoes, confere a
 cobertura de cada estabelecimento e gera a fila do que falta coletar.
 
 Etapas:
-  1. Move de ~/Downloads (ou da pasta de --origem) e da raiz de _dados-brutos/
-     para dados/[B2] Avaliacoes recentes/_dados-brutos/:
+  1. Move de ~/Downloads (ou da pasta de --origem) e da raiz de dados/B2_avaliacoes/_dados-brutos/
+     para dados/B2_avaliacoes/_dados-brutos/:
        *_maps_avaliacoes_tudo*.csv      -> coletas/
        *_maps_avaliacoes_resumo*.csv    -> resumos/ (um por lugar, desde o
                                            coletor 2026.11.12-2, e os da fila
@@ -49,7 +49,7 @@ Conferência de somas (diferença zero, senão o script para):
     (casas "coletar" ficam vazias e não entram na soma);
   - na cobertura: no período = com texto + sem texto.
 
-Saídas em dados/[B2] Avaliacoes recentes/:
+Saídas em dados/B2_avaliacoes/:
   B2_avaliacoes_periodo.csv   avaliações no recorte (fica fora do repositório:
                               contém texto de avaliações)
   B2_cobertura_coleta.csv     uma linha por casa da população do B1 (sem texto)
@@ -85,8 +85,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[4]
 # População do B1: a mesma função do B1-b_resumo.py, para as duas bases terem as mesmas casas.
 B1_RESUMO = ROOT / "_src" / "[B1] Estabelecimentos e cardapios" / "Google Places (Negócios)" / "build" / "B1-b_resumo.py"
-RAW = ROOT / "dados" / "[B2] Avaliacoes recentes" / "_dados-brutos"
-PROCESSED = ROOT / "dados" / "[B2] Avaliacoes recentes"
+RAW = ROOT / "dados" / "B2_avaliacoes" / "_dados-brutos"
+PROCESSED = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
 COLETAS = RAW / "coletas"
 RESUMOS = RAW / "resumos"
 
@@ -99,7 +99,7 @@ COBRE_RECORTE = PERIODO_ATE_DIAS
 
 
 def mover_downloads(*origens):
-    """Move os CSV do userscript para dados/[B2] Avaliacoes recentes/_dados-brutos/; devolve quantos foram movidos."""
+    """Move os CSV do userscript para dados/B2_avaliacoes/_dados-brutos/; devolve quantos foram movidos."""
     movidos = 0
     for padrao, destino in PADROES.items():
         destino.mkdir(parents=True, exist_ok=True)
@@ -289,11 +289,11 @@ def montar_cobertura(b1, col, base, res):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[1])
     ap.add_argument("--origem", type=Path, default=Path.home() / "Downloads", help="pasta dos CSV baixados")
-    ap.add_argument("--sem-mover", action="store_true", help="não move nada; usa só o que já está em dados/[B2] Avaliacoes recentes/_dados-brutos")
+    ap.add_argument("--sem-mover", action="store_true", help="não move nada; usa só o que já está em dados/B2_avaliacoes/_dados-brutos")
     args = ap.parse_args()
 
     if not args.sem_mover:
-        print(f"Movidos de {args.origem} e da raiz de _dados-brutos/: {mover_downloads(args.origem.expanduser(), RAW)}")
+        print(f"Movidos de {args.origem} e da raiz de dados/B2_avaliacoes/_dados-brutos/: {mover_downloads(args.origem.expanduser(), RAW)}")
 
     b1 = ler_b1()
     col, sem_par = ler_coletas(b1)

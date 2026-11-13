@@ -8,9 +8,9 @@ busca do Google Places não alcançou (ex.: Bardo Mago e JogArt Club, em Belo
 Horizonte). Pedido do autor em 12/10/2026.
 
 Entrada: https://www.acervodejogos.com.br/companies e a página inicial de
-cada loja (HTML guardado em dados/[B1].../_dados-brutos/acervodejogos/, que serve de
+cada loja (HTML guardado em dados/B1_acervo_jogos/_dados-brutos/acervodejogos/, que serve de
 cache: página já baixada não é baixada de novo).
-Saída: dados/[B1] Estabelecimentos e cardapios/acervo_jogos/
+Saída: dados/B1_acervo_jogos/_dados-agregados/
 B1_acervodejogos_lojas.csv, uma linha por loja (todas as lojas da
 plataforma), com a situação do município no recorte (recorte_rm.py).
 
@@ -45,8 +45,8 @@ ROOT = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(ROOT / "_src" / "[B1] Estabelecimentos e cardapios" / "Google Places (Negócios)" / "outros"))
 import recorte_rm as R  # noqa: E402
 
-RAW = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos" / "acervodejogos"
-SAIDA = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "acervo_jogos" / "B1_acervodejogos_lojas.csv"
+RAW = ROOT / "dados" / "B1_acervo_jogos" / "_dados-brutos" / "acervodejogos"
+SAIDA = ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_acervodejogos_lojas.csv"
 URL_LISTA = "https://www.acervodejogos.com.br/companies"
 CTX = ssl.create_default_context(cafile=certifi.where())
 UA = {"User-Agent": "Mozilla/5.0"}

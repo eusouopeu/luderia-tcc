@@ -2,7 +2,7 @@
 Baixa a planilha original de séries históricas do Índice FipeZAP (residencial e
 comercial) e a nota metodológica.
 
-Saída: dados/[B4] Bases publicas/_dados-brutos/fipezap/ (xlsx e pdf originais)
+Saída: dados/B4_financeiro/_dados-brutos/fipezap/ (xlsx e pdf originais)
 A extração da locação comercial fica em B4-b_fipezap_comercial.py.
 """
 
@@ -15,9 +15,9 @@ from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
 
-from bases_comum import DATA_COLETA, RAW_DIR, baixar
+from bases_comum import DATA_COLETA, baixar, pasta_bruta
 
-OUT_DIR = RAW_DIR / "fipezap"
+OUT_DIR = pasta_bruta("fipezap")
 ARQUIVOS = {
     "https://downloads.fipe.org.br/indices/fipezap/fipezap-serieshistoricas.xlsx":
         f"fipezap-serieshistoricas_{DATA_COLETA}.xlsx",

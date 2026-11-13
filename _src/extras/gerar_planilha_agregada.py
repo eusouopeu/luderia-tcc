@@ -44,9 +44,7 @@ import planilha_estilo as est  # noqa: E402
 from planilha_estilo import *  # noqa: E402,F403
 
 D = ROOT / "dados"
-B1 = D / "[B1] Estabelecimentos e cardapios"
-B3 = D / "[B3] Contagem direta de ocupacao"
-B4 = D / "[B4] Bases publicas"
+B3 = D / "B3_contagem" / "_dados-agregados"
 SAIDA = D / "dados_agregados"
 GRAF = SAIDA / "graficos"
 
@@ -54,7 +52,7 @@ GRAF = SAIDA / "graficos"
 registrar_execucao(__file__)
 est.GRAF = GRAF
 
-ARQ_DESC = B1 / "estabelecimentos" / "4_estatistica_descritiva" / "B1_estatistica_descritiva_geral.xlsx"
+ARQ_DESC = D / "B1_estabelecimentos" / "_dados-agregados" / "4_estatistica_descritiva" / "B1_estatistica_descritiva_geral.xlsx"
 base = pd.read_excel(ARQ_DESC, sheet_name="dados")
 COLS = [
     ("nome", "casa", "txt"), ("metropole", "metrópole", "txt"), ("regiao", "região", "txt"),
@@ -304,7 +302,7 @@ nova_aba("Tab 8", "Tabela 8 – Couvert: encontrado no cardápio de 8 das 36 cas
          ["Nota: \"não encontrado\" não quer dizer que a casa não cobra; o couvert pode estar fora do cardápio coletado."])
 
 # ---------------------------------------------------------------- B1: Instagram
-LEG = B1 / "redes_sociais" / "analise_legendas"
+LEG = D / "B1_redes_sociais" / "_dados-agregados" / "analise_legendas"
 FONTE_IG = "B1, legendas do Instagram das casas (coletor do Instagram, 2026), análise de legendas"
 
 
@@ -370,7 +368,7 @@ nova_aba("Tab 12", "Tabela 12 – Temas das legendas do Instagram: programação
          ["Nota: temas não exclusivos; o % ponderado dá peso igual a cada estabelecimento. Comparação com o B2 retirada desta planilha."])
 
 # ---------------------------------------------------------------- B1: acervo
-AC = B1 / "acervo_jogos"
+AC = D / "B1_acervo_jogos" / "_dados-agregados"
 bj = pd.read_csv(AC / "B1_banco_jogos.csv")
 cj = pd.read_excel(AC / "B1_cesta_jogos.xlsx", sheet_name="cesta")
 top = bj.sort_values(["n_casas_acervo", "jogo"], ascending=[False, True]).head(20).merge(
@@ -438,7 +436,7 @@ for i, (_, _, t) in enumerate(VARS_B3, 3):
 
 # ---------------------------------------------------------------- B4
 CAP_B1 = sorted(base.metropole.unique())
-rp = pd.read_csv(B4 / "mercado_demanda" / "[B4] Resumo de População e Renda por Capital 2022-2026 (IBGE).csv")
+rp = pd.read_csv(D / "B4_mercado_demanda" / "_dados-agregados" / "[B4] Resumo de População e Renda por Capital 2022-2026 (IBGE).csv")
 rp = rp[rp.capital.isin(CAP_B1)].sort_values("renda_trabalho_habitual_pnadc_202602", ascending=False)
 linhas_t16 = [[r.capital, r.uf, r.pop_censo_2022, r.pop_estimada_2026, r.pop_20_39_censo_2022,
                f"=E{k}/C{k}", r.renda_media_14mais_censo_2022, r.renda_mediana_14mais_censo_2022,
@@ -454,7 +452,7 @@ nova_aba("Tab 16", "Tabela 16 – População e renda das capitais do B1: Salvad
          "B4, IBGE: Censo 2022, estimativas de população 2026 e PNAD Contínua (2º trimestre de 2026)",
          [18, 6, 14, 14, 14, 11, 15, 15, 16], g16)
 
-al = pd.read_csv(B4 / "financeiro" / "[B4] Aluguel Comercial por Capital 2026-07 (FipeZap).csv")
+al = pd.read_csv(D / "B4_financeiro" / "_dados-agregados" / "[B4] Aluguel Comercial por Capital 2026-07 (FipeZap).csv")
 al = al[al.capital.isin(CAP_B1)].copy()
 al["valor"] = al.comercial_locacao_preco_m2.fillna(al.comercial_estimado_preco_m2_mediana)
 al["origem"] = np.where(al.comercial_locacao_preco_m2.notna(), "FipeZap comercial",
@@ -471,7 +469,7 @@ nova_aba("Tab 17", "Tabela 17 – Aluguel comercial por m²: Salvador está entr
          "B4, FipeZap (índice de locação comercial e residencial, julho de 2026)", [18, 6, 14, 14, 13, 12, 40], g17,
          ["Nota: onde o FipeZap não cobre o comercial, estimativa pelo residencial vezes a razão comercial/residencial das capitais cobertas."])
 
-sa = pd.read_csv(B4 / "multiuso" / "[B4] Salário Admissão por Capital 2025-2026 (CAGED).csv")
+sa = pd.read_csv(D / "B4_multiuso" / "_dados-agregados" / "[B4] Salário Admissão por Capital 2025-2026 (CAGED).csv")
 sa = sa[sa.recorte == "CNAE 56 - alimentação"]
 ssa = sa[sa.capital == "Salvador"].set_index("ocupacao")
 sbr = sa[sa.capital == "27 capitais"].set_index("ocupacao")
@@ -488,7 +486,7 @@ nova_aba("Tab 18", "Tabela 18 – Salário de admissão em alimentação: Salvad
          ["txt", "int", "dec", "int", "dec", "pct", "txt"],
          "B4, Novo CAGED (admissões de 08/2025 a 07/2026, CNAE 56 – alimentação)", [34, 12, 14, 12, 14, 12, 12], g18)
 
-sn = pd.read_csv(B4 / "juridico_tributario" / "[B4] Faixas e Alíquotas por Anexo 2026 (Simples Nacional).csv")
+sn = pd.read_csv(D / "B4_juridico_tributario" / "_dados-agregados" / "[B4] Faixas e Alíquotas por Anexo 2026 (Simples Nacional).csv")
 sn = sn[sn.anexo.isin(["I", "III"])]
 linhas_t19 = [[r.anexo, r.faixa, r.rbt12_min, r.rbt12_max, r.aliquota_nominal_pct / 100, r.parcela_deduzir,
                f"=IFERROR((D{k}*E{k}-F{k})/D{k},\"\")"] for k, r in enumerate(sn.itertuples(), 3)]
@@ -503,8 +501,8 @@ nova_aba("Tab 19", "Tabela 19 – Simples Nacional, anexos I e III: alíquota ef
          "B4, Lei Complementar 123/2006, anexos I e III (Simples Nacional, 2026)", [8, 7, 18, 16, 12, 16, 16], g19,
          ["Nota: alíquota efetiva = (receita × alíquota nominal − parcela a deduzir) ÷ receita."])
 
-bc = pd.read_csv(B4 / "financeiro" / "[B4] Selic IPCA e Salário Mínimo 2017-2026 (BCB).csv", parse_dates=["data"])
-fo = pd.read_csv(B4 / "financeiro" / "[B4] Expectativas Focus 2026-2030 (BCB).csv")
+bc = pd.read_csv(D / "B4_financeiro" / "_dados-agregados" / "[B4] Selic IPCA e Salário Mínimo 2017-2026 (BCB).csv", parse_dates=["data"])
+fo = pd.read_csv(D / "B4_financeiro" / "_dados-agregados" / "[B4] Expectativas Focus 2026-2030 (BCB).csv")
 anual = {}
 for serie, rot in (("selic_meta", "selic"), ("ipca_acumulado_12_meses", "ipca")):
     s = bc[bc.serie == serie].sort_values("data")
@@ -534,7 +532,7 @@ nova_aba("Tab 20", "Tabela 20 – Selic e IPCA: juros altos em 2026, com queda e
          "B4, Banco Central do Brasil: SGS (séries 432 e 13522) e Relatório Focus de 11/09/2026", [8, 16, 12, 14, 30], g20,
          ["Nota: realizado = último valor do ano (2026 até a data indicada); Focus = mediana das expectativas para o fim do ano."])
 
-ip = pd.read_csv(B4 / "multiuso" / "[B4] IPCA Alimentação Fora do Domicílio 2023-2026 (IBGE).csv")
+ip = pd.read_csv(D / "B4_multiuso" / "_dados-agregados" / "[B4] IPCA Alimentação Fora do Domicílio 2023-2026 (IBGE).csv")
 col_item = ip.columns[8]
 ip = ip[ip.variavel.str.contains("12 meses") & ip.localidade.isin(["Brasil", "Salvador - BA"])
         & ip[col_item].isin(["Índice geral", "1201.Alimentação fora do domicílio"])]

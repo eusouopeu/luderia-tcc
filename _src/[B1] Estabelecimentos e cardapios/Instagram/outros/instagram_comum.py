@@ -1,7 +1,7 @@
 """
 Bloco B1 - funções comuns às análises das legendas do Instagram.
 
-Carrega os CSVs de posts exportados pelo coletor (_src/[B1] Estabelecimentos e cardapios/Instagram/webscripts/instagram_coletor.user.js),
+Carrega os CSVs de posts exportados pelo coletor (_src/Webscripts/[B1] Estabelecimentos e cardapios/instagram_coletor.user.js),
 um por perfil coletado, e devolve uma base com um post por linha.
 
 Regras de atribuição (uma unidade, um grupo):
@@ -11,7 +11,7 @@ Regras de atribuição (uma unidade, um grupo):
   - cada post pertence ao seu dono (coluna perfil), nunca à página em que foi
     coletado; colaboração conta uma vez, para o dono;
   - entram só posts cujo dono é uma casa da lista aprovada do B1
-    (estabelecimentos/3_triagem/B1_instagram_aprovadas.csv, mais os apelidos de ALIAS); posts de
+    (dados/B1_estabelecimentos/_dados-agregados/3_triagem/B1_instagram_aprovadas.csv, mais os apelidos de ALIAS); posts de
     parceiros que aparecem na grade de uma casa saem;
   - cada casa recebe um único tipo (tipo_casa: casa de jogos ou loja com espaço de jogo),
     pelo dicionário ESTAB da análise de conteúdo do B2, para que as duas
@@ -25,13 +25,11 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-PASTA_B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-PASTA_REDES = PASTA_B1 / "redes_sociais"
+PASTA_REDES = ROOT / "dados" / "B1_redes_sociais" / "_dados-agregados"
 SAIDA = PASTA_REDES / "analise_legendas"
-APROVADAS = PASTA_B1 / "estabelecimentos/3_triagem/B1_instagram_aprovadas.csv"
+APROVADAS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_instagram_aprovadas.csv"
 SCRIPT_B2 = ROOT / "_src" / "[B2] Avaliacoes recentes" / "Google Places (Comentários)" / "analise" / "B2-a_conteudo_bardin.py"
-B2_FREQUENCIA = (ROOT / "dados" / "[B2] Avaliacoes recentes" / "analise_conteudo"
-                 / "B2_bardin_frequencia_categorias.csv")
+B2_FREQUENCIA = (ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados" / "analise_conteudo" / "B2_bardin_frequencia_categorias.csv")
 B2_CONTEXTO = B2_FREQUENCIA.with_name("B2_bardin_contexto.csv")
 
 # Perfil coletado com @ diferente do registrado na lista aprovada.

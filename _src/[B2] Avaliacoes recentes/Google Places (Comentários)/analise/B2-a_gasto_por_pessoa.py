@@ -17,11 +17,11 @@ conhecida no B1 (cardápio, site, imprensa ou Instagram) e a São Jogue. Recorte
 do gasto (R06): casas com taxa conhecida e gasto declarado. A cesta só existe
 nas casas do recorte com bebida e hambúrguer no cardápio.
 
-Saída 2: gasto_por_pessoa/B1_cesta_casas_com_taxa.csv, a cesta de todas as casas
+Saída 2: dados/B2_avaliacoes/_dados-agregados/gasto_por_pessoa/B1_cesta_casas_com_taxa.csv, a cesta de todas as casas
 com taxa conhecida, com ou sem gasto declarado.
 
 Entradas: B2_avaliacoes_periodo.csv; B1_resumo_estabelecimentos.xlsx
-Saída: dados/[B2] Avaliacoes recentes/gasto_por_pessoa/B2_gasto_cesta_por_casa.csv
+Saída: dados/B2_avaliacoes/_dados-agregados/gasto_por_pessoa/B2_gasto_cesta_por_casa.csv
        (uma linha por casa com gasto declarado; a soma de avaliacoes fecha com o
        total de avaliações com faixa de preço)
 
@@ -42,8 +42,7 @@ import re
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-B1 = ROOT / "dados" / "[B1] Estabelecimentos e cardapios"
-B2 = ROOT / "dados" / "[B2] Avaliacoes recentes"
+B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
 SAIDA = B2 / "gasto_por_pessoa" / "B2_gasto_cesta_por_casa.csv"
 DIAS = ["segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo"]
 
@@ -134,7 +133,7 @@ def main():
          .agg(avaliacoes="size", gasto_medio="mean", gasto_mediano="median").reset_index())
     assert g["avaliacoes"].sum() == len(av), "casas não fecham com o total de avaliações com faixa"
 
-    xl = B1 / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx"
+    xl = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx"
     ce = pd.read_excel(xl, sheet_name="cesta")
     ce["bebida_mais_hamburguer"] = ce["bebida_mediana"] + ce["hamburguer_min_nao_veg"]
     es = pd.read_excel(xl, sheet_name="estabelecimentos")

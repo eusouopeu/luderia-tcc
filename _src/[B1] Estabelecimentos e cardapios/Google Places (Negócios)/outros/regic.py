@@ -6,7 +6,7 @@ planilhas por grupo (B1-b_planilhas_regic.py).
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-REGIC_PATH = ROOT / "dados" / "[B1] Estabelecimentos e cardapios" / "_dados-brutos" / "Metrópoles.md"
+REGIC_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "Metrópoles.md"
 
 # Grupos da pesquisa (REGIC 2018, IBGE), na ordem da tabela.
 GRUPOS_REGIC = ["Metrópoles", "Capitais Regionais"]

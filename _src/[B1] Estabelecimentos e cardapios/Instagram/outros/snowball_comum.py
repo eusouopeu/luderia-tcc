@@ -4,7 +4,7 @@ Bloco B1 - caminhos e constantes comuns ao snowball pelo Instagram
 """
 import instagram_comum as ic
 
-BRUTOS = ic.PASTA_B1 / "_dados-brutos" / "redes_sociais"
+BRUTOS = ic.ROOT / "dados" / "B1_redes_sociais" / "_dados-brutos"
 BRUTOS_SEGUINDO = BRUTOS / "seguindo"          # CSVs do coletor (fora do git)
 BRUTOS_SNOWBALL = BRUTOS / "snowball"          # candidatos com @ de pessoas (fora do git)
 CANDIDATOS = BRUTOS_SNOWBALL / "B1_snowball_candidatos.csv"
@@ -14,8 +14,8 @@ CORTE_LEITURA = 3
 CANDIDATOS_LEITURA = BRUTOS_SNOWBALL / f"B1_snowball_candidatos_grau{CORTE_LEITURA}.csv"
 SAIDA = ic.PASTA_REDES / "snowball"            # só agregados e perfis de negócio (no git)
 
-CURADORIA = ic.PASTA_B1 / "estabelecimentos" / "2_recorte" / "B1_curadoria.csv"
-ACERVO_LOJAS = ic.PASTA_B1 / "acervo_jogos" / "B1_acervodejogos_lojas.csv"
+CURADORIA = ic.ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "2_recorte" / "B1_curadoria.csv"
+ACERVO_LOJAS = ic.ROOT / "dados" / "B1_acervo_jogos" / "_dados-agregados" / "B1_acervodejogos_lojas.csv"
 
 COLS_MANUAIS = ["classe", "metropole", "avaliacoes_maps", "observacao"]
 CLASSES = [

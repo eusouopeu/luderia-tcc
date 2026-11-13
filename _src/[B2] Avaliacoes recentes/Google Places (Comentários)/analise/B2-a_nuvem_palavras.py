@@ -25,11 +25,11 @@ Uma avaliação pode ter várias palavras (contagem não exclusiva por desenho),
 então os percentuais não somam 100% e não há total como soma.
 
 Entradas:
-  analise_conteudo/B2_codificacao_bardin.csv            quais avaliações entram (situacao = analisada)
-  analise_conteudo/B2_bardin_estabelecimentos.csv       nomes das casas
-  _dados-brutos/analise_conteudo/B2_bardin_corpus.csv   textos (fora do git; gerado pelo B2-a_conteudo_bardin.py --corpus)
+  dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_codificacao_bardin.csv            quais avaliações entram (situacao = analisada)
+  dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_bardin_estabelecimentos.csv       nomes das casas
+  dados/B2_avaliacoes/_dados-brutos/analise_conteudo/B2_bardin_corpus.csv   textos (fora do git; gerado pelo B2-a_conteudo_bardin.py --corpus)
 
-Saídas (dados/[B2] Avaliacoes recentes/graficos/): png/ (300 dpi), svg/ e
+Saídas (dados/B2_avaliacoes/_dados-agregados/graficos/): png/ (300 dpi), svg/ e
 valores/ (as 150 palavras desenhadas, com % simples e ponderado).
 
 Uso:
@@ -56,9 +56,9 @@ from wordcloud import WordCloud  # noqa: E402
 from graficos_comum import TINTA, VERMELHO, _FONTES, br, figura, margens, salvar  # noqa: E402
 
 ROOT = _AQUI.parents[4]
-B2 = ROOT / "dados" / "[B2] Avaliacoes recentes"
+B2 = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados"
 AC = B2 / "analise_conteudo"
-CORPUS = B2 / "_dados-brutos" / "analise_conteudo" / "B2_bardin_corpus.csv"
+CORPUS = ROOT / "dados" / "B2_avaliacoes" / "_dados-brutos" / "analise_conteudo" / "B2_bardin_corpus.csv"
 PASTA = B2 / "graficos"
 FONTE_TTF = str(_FONTES / "SourceSans3-Semibold.ttf")
 FONTE = ("Fonte: elaboração própria com avaliações com texto do Google Maps até \"3 meses atrás\" "

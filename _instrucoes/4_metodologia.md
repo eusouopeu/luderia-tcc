@@ -23,15 +23,15 @@ Resumo das decisões de desenho tomadas pelo autor. Mudança de escopo exige atu
 
 ### Correspondência entre blocos e arquivos do pipeline
 
-Cada bloco tem pasta `[Bn] Nome`, com o mesmo nome, em `_src/` e em `dados/`; em `_src/`, o bloco se divide em uma pasta por objeto (ex.: `Google Places (Negócios)`, `Instagram`, `CAGED`); dentro de `dados/[Bn] Nome/` ficam os arquivos processados e a subpasta `_dados-brutos/`. Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `Bn-<letra>_<conteúdo>.py` nos scripts, guardados na subpasta da etapa (`collect/` → `c`, `build/` → `b`, `analise/` → `a`); cada objeto tem ainda `webscripts/`, `logs/` e `outros/` (convenções em [`_src/dicionario.md`](../_src/dicionario.md)). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `jogos_comum.py`, `instagram_comum.py`, `bases_comum.py`) não levam código e ficam em `outros/` do bloco. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam em `arquivados/`.
+Cada bloco tem pasta `[Bn] Nome` em `_src/`, dividida em uma pasta por objeto (ex.: `Google Places (Negócios)`, `Instagram`, `CAGED`); em `dados/`, o bloco se divide em coletas, `B<n>_<coleta>/`, cada uma com `_dados-brutos/`, `_auditoria/` e `_dados-agregados/` (e um `_arquivo/` em cada, para as versões anteriores). Arquivos gerados e scripts levam o código do bloco: `Bn_<conteúdo>` nas saídas, `Bn-<letra>_<conteúdo>.py` nos scripts, guardados na subpasta da etapa (`collect/` → `c`, `build/` → `b`, `analise/` → `a`); cada objeto tem ainda `logs/` e `outros/`, e os webscripts do bloco ficam em `_src/Webscripts/[Bn] Nome/` (convenções em [`_src/dicionario.md`](../_src/dicionario.md)). As tabelas do Bloco B4 seguem o padrão `[B4] {dado} {período} ({fonte}).csv`. Módulos auxiliares sem saída própria (`places_client.py`, `osm_client.py`, `recorte_rm.py`, `jogos_comum.py`, `instagram_comum.py`, `bases_comum.py`) não levam código e ficam em `outros/` do bloco. Saídas e scripts do desenho anterior e o Bloco B6, retirado, ficam em `arquivados/`.
 
-| Bloco | Conteúdo | Scripts | Pasta de dados |
+| Bloco | Conteúdo | Scripts | Coletas em `dados/` |
 |---|---|---|---|
-| B1 | Estabelecimentos e cardápios | `_src/[B1] Estabelecimentos e cardapios/` (`Google Places (Negócios)/`, `Cardápios/`, `Acervo de Jogos/`, `Instagram/`) | `[B1] Estabelecimentos e cardapios/` |
-| B2 | Avaliações recentes | `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/` | `[B2] Avaliacoes recentes/` |
-| B3 | Contagem direta de ocupação | `_src/[B3] Contagem direta de ocupacao/Contagem direta/` | `[B3] Contagem direta de ocupacao/` |
-| B4 | Bases públicas | `_src/[B4] Bases publicas/` (uma pasta por fonte; `Comum/bases_comum.py`) | `[B4] Bases publicas/` |
-| B5 | Ativos fixos | `_src/[B5] Ativos fixos/` (`Lista de itens/`, `SINAPI (Obra e reforma)/`, `Anuncios de aluguel/`) | `[B5] Ativos fixos/` (`orcamento/`, uma subpasta por categoria) |
+| B1 | Estabelecimentos e cardápios | `_src/[B1] Estabelecimentos e cardapios/` (`Google Places (Negócios)/`, `Cardápios/`, `Acervo de Jogos/`, `Instagram/`) | `B1_estabelecimentos/`, `B1_entorno/`, `B1_cardapios/`, `B1_acervo_jogos/`, `B1_redes_sociais/` |
+| B2 | Avaliações recentes | `_src/[B2] Avaliacoes recentes/Google Places (Comentários)/` | `B2_avaliacoes/` |
+| B3 | Contagem direta de ocupação | `_src/[B3] Contagem direta de ocupacao/Contagem direta/` | `B3_contagem/` |
+| B4 | Bases públicas | `_src/[B4] Bases publicas/` (uma pasta por fonte; `Comum/bases_comum.py`) | uma por uso: `B4_mercado_demanda/`, `B4_ponto_operacoes/`, `B4_juridico_tributario/`, `B4_financeiro/`, `B4_multiuso/` |
+| B5 | Ativos fixos | `_src/[B5] Ativos fixos/` (`Lista de itens/`, `SINAPI (Obra e reforma)/`, `Anuncios de aluguel/`) | uma por categoria: `B5_orcamento/`, `B5_aluguel/`, `B5_obra_reforma/`, `B5_mobiliario/`, `B5_cozinha_bar/`, `B5_equipamentos/`, `B5_acervo_jogos/` |
 
 ## Divisão de subcapítulos
 
@@ -113,14 +113,14 @@ O formato dos CSV do app e as saídas do `B3-a_contagem.py` estão em `textos/in
 | Lei Complementar 123/2006 e anexos do Simples Nacional | Alíquotas por faixa de receita | Tributos (8.1 e cap. 9) |
 | Banco Central — SGS e relatório Focus | Selic e IPCA observados e projetados; salário mínimo | Taxa mínima de atratividade e inflação do modelo (cap. 9) |
 
-Scripts em `_src/[B4] Bases publicas/` (`B4-c_*` → `B4-b_*`); saídas `[B4] *.csv` em `dados/[B4] Bases publicas/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
+Scripts em `_src/[B4] Bases publicas/` (`B4-c_*` → `B4-b_*`); saídas `[B4] *.csv` em `dados/B4_<uso>/_dados-agregados/`; referências ABNT em `bibliografia/referencias_bases_publicas.md`.
 
 ### Bloco B5 — Ativos fixos
 
-Orçamento da etapa 1 (premissas I01 a I04 do cap. 9), item a item, na lista `dados/[B5] Ativos fixos/orcamento/[B5] Lista de Itens da Etapa 1 (elaboração própria).csv` (75 itens; `fonte_preco` sinapi, coleta ou gratuito).
+Orçamento da etapa 1 (premissas I01 a I04 do cap. 9), item a item, na lista `dados/B5_orcamento/_dados-agregados/[B5] Lista de Itens da Etapa 1 (elaboração própria).csv` (75 itens; `fonte_preco` sinapi, coleta ou gratuito).
 
 - **SINAPI (reforma, N2):** composições da Bahia sem desoneração (`B5-c_sinapi.py`), com o BDI de construção de edifícios do TCU (Acórdão 2.622/2013): 1º quartil no otimista, médio no provável, 3º quartil no pessimista.
-- **Coleta em sites (mobiliário, cozinha e bar, informática, climatização; N3):** `webscripts/precos_itens.user.js` (Tampermonkey) na Amazon e no Mercado Livre, CEP de Salvador. Critério (decisão do autor, 03/11/2026): de cada busca, na ordenação padrão do site, entram os **5 primeiros anúncios que cumprem os requisitos técnicos mínimos** do item (medida ou capacidade, palavras exigidas e excluídas), pelo preço do produto, **sem frete, cor, estilo ou acabamento**. O coletor grava a `posicao` na busca e marca o item como coletado **por site**. O build (`B5-b_orcamento_itens.py`) corrige kit lido como unidade, descarta anúncio patrocinado sem página de produto e preço fora de 0,4× a 2,5× a mediana do item, e fica com as 5 primeiras por site; item com menos de 3 ofertas fica sem preço. Cenários: P75, mediana e P25 das ofertas.
+- **Coleta em sites (mobiliário, cozinha e bar, informática, climatização; N3):** `_src/Webscripts/[B5] Ativos fixos/precos_itens.user.js` (Tampermonkey) na Amazon e no Mercado Livre, CEP de Salvador. Critério (decisão do autor, 03/11/2026): de cada busca, na ordenação padrão do site, entram os **5 primeiros anúncios que cumprem os requisitos técnicos mínimos** do item (medida ou capacidade, palavras exigidas e excluídas), pelo preço do produto, **sem frete, cor, estilo ou acabamento**. O coletor grava a `posicao` na busca e marca o item como coletado **por site**. O build (`B5-b_orcamento_itens.py`) corrige kit lido como unidade, descarta anúncio patrocinado sem página de produto e preço fora de 0,4× a 2,5× a mediana do item, e fica com as 5 primeiras por site; item com menos de 3 ofertas fica sem preço. Cenários: P75, mediana e P25 das ofertas.
 - **Gratuito (N6):** item sem custo por informação do autor (ex.: maquininha cedida a PJ pelos bancos).
 - **Quantidade:** do autor (N6) até haver projeto do ponto; a I01 entra no modelo em R$ por m² (total ÷ área do C03).
 - Saídas em `orcamento/`: orçamento por item, por premissa e as ofertas filtradas; o `gerar_modelo_financeiro.py` lê o orçamento por premissa mais recente.
@@ -129,8 +129,8 @@ Orçamento da etapa 1 (premissas I01 a I04 do cap. 9), item a item, na lista `da
 
 ### Pipeline
 
-- Scripts em `_src/[bloco]/<objeto>/collect/`, `build/` e `analise/`, seguindo o padrão `Bn-c_*` → `Bn-b_*` → `Bn-a_*` ([dicionário](../_src/dicionario.md)); saídas em `dados/[bloco]/` com o prefixo do bloco.
-- Dados brutos (textos integrais) ficam em `dados/[bloco]/_dados-brutos/`, fora do repositório público. O TCC e o repositório divulgam **apenas dados processados**.
+- Scripts em `_src/[bloco]/<objeto>/collect/`, `build/` e `analise/`, seguindo o padrão `Bn-c_*` → `Bn-b_*` → `Bn-a_*` ([dicionário](../_src/dicionario.md)); saídas em `dados/B<n>_<coleta>/_dados-agregados/` com o prefixo do bloco.
+- Dados brutos (textos integrais) ficam em `dados/B<n>_<coleta>/_dados-brutos/`, fora do repositório público. O TCC e o repositório divulgam **apenas dados processados**.
 - Dicionário de dados com nome, descrição, tipo, unidade e origem de cada variável.
 - Todo sorteio (amostras da recodificação cega e da auditoria da coleta) usa semente fixa registrada no código.
 

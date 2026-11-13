@@ -1,7 +1,7 @@
 """
 Coleta, na API de agregados do IBGE (SIDRA), as tabelas do Bloco B4 usadas no plano.
 
-Cada consulta gera dados/[B4] Bases publicas/_dados-brutos/ibge_sidra/<nome>.json com a URL,
+Cada consulta gera dados/B4_multiuso/_dados-brutos/ibge_sidra/<nome>.json com a URL,
 a data da coleta, o uso no plano e a resposta integral da API.
 O tratamento fica em B4-b_ibge_sidra.py.
 """
@@ -15,9 +15,9 @@ from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
 
-from bases_comum import IDS_CAPITAIS, RAW_DIR, categorias, salvar_json, sidra, variaveis_absolutas
+from bases_comum import IDS_CAPITAIS, categorias, pasta_bruta, salvar_json, sidra, variaveis_absolutas
 
-OUT_DIR = RAW_DIR / "ibge_sidra"
+OUT_DIR = pasta_bruta("ibge_sidra")
 CAP = f"N6[{IDS_CAPITAIS}]"
 
 

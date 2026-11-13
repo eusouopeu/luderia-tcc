@@ -16,7 +16,7 @@ textos/instrumentos/_arquivo/analise_conteudo_bardin_B2.md e grava um JSON com:
 Cada comentário pertence a um único estabelecimento e cada estabelecimento a
 um único tipo; a soma dos comentários por tipo fecha com o total analisado.
 
-Entradas: dados/[B2] Avaliacoes recentes/analise_conteudo/B2_*.csv
+Entradas: dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_*.csv
           textos/instrumentos/_arquivo/analise_conteudo_bardin_B2.md
 Saída:    _src/site-apresentacao/src/conteudo/b2-conteudo.json
 
@@ -38,7 +38,7 @@ import re
 import pandas as pd
 
 ROOT = _AQUI.parents[4]
-PASTA = ROOT / "dados" / "[B2] Avaliacoes recentes" / "analise_conteudo"
+PASTA = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados" / "analise_conteudo"
 DOC = ROOT / "textos" / "instrumentos" / "_arquivo" / "analise_conteudo_bardin_B2.md"
 SAIDA = ROOT / "_src" / "site-apresentacao" / "src" / "conteudo" / "b2-conteudo.json"
 TIPOS = {"total": "total", "casa de jogos": "casas", "loja com espaço de jogo": "lojas"}
