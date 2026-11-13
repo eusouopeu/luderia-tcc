@@ -1,6 +1,6 @@
 # Especificações comuns dos webscripts
 
-O que todo webscript (userscript do Tampermonkey) do TCC Luderia segue. Vale para script novo e para painel reescrito. As regras saíram dos pedidos do autor desde 11/10/2026 e das decisões de 02 e 03/11/2026 (`_docs/decisoes.md`). O padrão de referência é o `B2_avaliacoes_recentes/maps_avaliacoes.user.js`, e o código comum fica em `_kit_painel/kit_painel.js`.
+O que todo webscript (userscript do Tampermonkey) do TCC Luderia segue. Vale para script novo e para painel reescrito. As regras saíram dos pedidos do autor desde 11/10/2026 e das decisões de 02 e 03/11/2026 (`_docs/decisoes.md`). O padrão de referência e o código comum ficam em `_kit_painel/kit_painel.js`, usado por todos os scripts com painel desde 13/11/2026 (o kit nasceu do painel do `maps_avaliacoes`); nenhum script monta painel próprio.
 
 ## 1. Arquivos e pastas
 
@@ -98,6 +98,7 @@ O ponto do cabeçalho segue a mesma escala: cinza parado, roxo pulsando em curso
 
 - `<script>.test.cjs` roda no Node (`node <arquivo>`), sem navegador: o kit só define funções e nada toca o DOM antes de `montar()`.
 - Cobrir a leitura de cada site com HTML salvo em `fixtures` (no `5_outros/` da coleta em `_src/pyScripts/`), o cabeçalho do CSV, o nome do arquivo e as regras de filtro.
+- Teste que monta o painel num DOM de teste lê a explicação de um botão no atributo `data-dica` (o kit grava ali a dica em texto) e declara `addEventListener`, `innerWidth` e `innerHeight` no ambiente.
 - `kit_painel.test.cjs` confere que todo script tem a cópia atual do kit (`node _src/webScripts/_kit_painel/embutir.js --conferir`).
 
 ## 11. Antes de entregar

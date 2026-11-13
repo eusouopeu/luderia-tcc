@@ -25,7 +25,7 @@ function carregar({ antigas = null, cota = Infinity } = {}) {
     structuredClone,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Horários de pico] carregado');"))
-    + 'Object.assign(globalThis.__test, { POP, converterAntigas, migrarLocalStorage, linhasCsv, popDoLugar, registrosPorCasa, estadoCasa, proximaQueFalta, urlCasa, lerBarra, lugaresGuardados, lerPermanencia, minutosPermanencia, provaSemGrafico });})();';
+    + 'Object.assign(globalThis.__test, { POP, converterAntigas, migrarLocalStorage, linhasCsv, popDoLugar, registrosPorCasa, estadoCasa, proximaQueFalta, estadoComMarca, urlCasa, lerBarra, lugaresGuardados, lerPermanencia, minutosPermanencia, provaSemGrafico });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_horarios_pico.user.js' });
   return { t: ambiente.__test, gm, ls };
 }

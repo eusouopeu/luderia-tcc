@@ -16,7 +16,10 @@ const ALVOS = [
   'webScripts/B1_estabelecimentos/cardapio.user.js',
   'webScripts/B1_estabelecimentos/acervo.user.js',
   'webScripts/B1_estabelecimentos/maps_entorno.user.js',
+  'webScripts/B1_estabelecimentos/maps_horarios_pico.user.js',
+  'webScripts/B2_avaliacoes_recentes/maps_avaliacoes.user.js',
   'webScripts/B5_ativos_fixos/aluguel.user.js',
+  'webScripts/B5_ativos_fixos/mobiliario.user.js',
 ];
 const INICIO = '// >>> kit_painel';
 const FIM = '// <<< kit_painel';

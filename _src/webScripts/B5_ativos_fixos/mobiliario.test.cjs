@@ -395,12 +395,15 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
     location: { href: 'https://www.amazon.com.br/s?k=mesa+inox', hostname: 'www.amazon.com.br' },
     GM_getValue: (k, d) => (k in memoria ? memoria[k] : d), GM_setValue: (k, v) => { memoria[k] = v; }, GM_deleteValue: (k) => { delete memoria[k]; },
     setInterval: (f) => { tique = f; }, setTimeout() {}, confirm: () => true,
+    addEventListener() {}, removeEventListener() {}, innerWidth: 1280, innerHeight: 800,
   };
   vm.runInNewContext(source, ambiente, { filename: 'mobiliario.user.js' });
   tique();
   const r = document.getElementById('cpi-hospedeiro').shadowRoot;
-  const botao = (t) => [...r.querySelectorAll('button')].find((b) => b.title.startsWith(`${t}:`) || b.textContent === t);
-  const textos = () => [...r.querySelectorAll('p, .info, .grade')].map((p) => `${p.textContent} ${p.title || ''}`).join(' | ');
+  // A explicação de cada botão está na dica do kit (atributo data-dica)
+  const dica = (n) => n.getAttribute('data-dica') || '';
+  const botao = (t) => [...r.querySelectorAll('button')].find((b) => dica(b).startsWith(`${t}:`) || b.textContent === t);
+  const textos = () => [...r.querySelectorAll('.selo, .grade, .resumo')].map((p) => `${p.textContent} ${dica(p)}`).join(' | ');
   // Ao abrir, a página é lida sozinha quando as ofertas param de mudar: Guardar já fica liberado
   assert.equal(botao('Guardar marcadas').disabled, true);
   tique();
@@ -415,13 +418,13 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   botao('Ler ofertas').onclick();
   assert.match(r.querySelector('.status').textContent, /^3 ofertas de 3 cards, 0 marcadas\./);
   assert.match(textos(), /3 cards → 3 com preço → 2 sem patrocinado → 2 no termo → 0 nos filtros Funil da leitura desta página; leitor próprio do site/);
-  const motivo = (c) => c.closest('li').querySelector('.alerta').title;
+  const motivo = (c) => dica(c.closest('li').querySelector('.alerta'));
   const caixas = [...r.querySelectorAll('ul')[1].querySelectorAll('input[type=checkbox]')];
   assert.match(motivo(caixas[1]), /sem avaliações/);
   caixas[1].checked = true; // o autor confere e marca a Nortinox
   botao('Só preço padrão').onclick(); // todas são Pix na Amazon
   assert.match(motivo(caixas[2]), /medida: 53\/84\/92 cm, termo 150 cm/);
-  assert.match(caixas[1].closest('li').querySelector('b').title, /sem Pix R\$ 1299,90/);
+  assert.match(dica(caixas[1].closest('li').querySelector('b')), /sem Pix R\$ 1299,90/);
   assert.match(r.querySelector('.status').textContent, /^1 oferta\(s\) de Pix ou cupom desmarcadas; 0 marcadas/);
   caixas[1].checked = true;
   caixas[2].checked = true;
@@ -429,7 +432,7 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   // Revisão automática ao guardar: a de medida errada sai; a sem avaliações fica (não vale na revisão)
   botao('Guardar marcadas').onclick();
   assert.match(r.querySelector('.status').textContent, /^2 guardadas \(2 novas\)\. Revisão: 1 excluída\(s\) \(CB09 1\)\./);
-  assert.match(r.querySelector('.status').title, /CB09 .*: medida: 53\/84\/92 cm, termo 150 cm/);
+  assert.match(dica(r.querySelector('.status')), /CB09 .*: medida: 53\/84\/92 cm, termo 150 cm/);
   assert.deepEqual(json(Object.values(JSON.parse(memoria.tcc_precos_v1)).map((l) => [l.motivo, l.excluida]).sort()), [['medida: 53/84/92 cm, termo 150 cm', 1], ['sem avaliações', 0]]);
   // Guardada com o filtro de medida desligado, a oferta fica: a revisão respeita o filtro desligado ao guardar
   memoria.tcc_precos_filtros = { medida: false };
@@ -464,7 +467,7 @@ test('painel: ler, guardar, excluir e aviso de troca de página (fixture da Amaz
   assert.equal(opcao('CB09').className, 'coletado');
   botao('Desfazer coletado').onclick();
   // só os que faltam: nenhum completo, nada escondido; próximo que falta fica na categoria
-  const so = botao('só os que faltam');
+  const so = botao('Só os que faltam');
   so.onclick();
   assert.equal(so.getAttribute('aria-pressed'), 'true');
   assert.equal(memoria.tcc_precos_so_faltam, true);
@@ -525,11 +528,12 @@ test('somar: abre a próxima página e, ao carregar, soma as ofertas dela às an
       location: { href, hostname: 'www.amazon.com.br' },
       GM_getValue: (k, d) => (k in memoria ? memoria[k] : d), GM_setValue: (k, v) => { memoria[k] = v; }, GM_deleteValue: (k) => { delete memoria[k]; },
       setInterval: (f) => { tique = f; }, setTimeout() {}, confirm: () => true,
+    addEventListener() {}, removeEventListener() {}, innerWidth: 1280, innerHeight: 800,
     };
     vm.runInNewContext(source, ambiente, { filename: 'mobiliario.user.js' });
     tique(); tique(); tique();
     const r = document.getElementById('cpi-hospedeiro').shadowRoot;
-    const botao = (t) => [...r.querySelectorAll('button')].find((b) => b.title.startsWith(`${t}:`));
+    const botao = (t) => [...r.querySelectorAll('button')].find((b) => (b.getAttribute('data-dica') || '').startsWith(`${t}:`));
     return { document, ambiente, r, botao };
   };
   // página 1: a próxima vem do link de paginação da Amazon
@@ -565,4 +569,10 @@ test('resumo por item separa ok, abaixo de 3, sem oferta e não buscado (03/11: 
   assert.equal(r.MO06, 'não buscado');
   const cab = t.csvResumo([]).replace(/^\ufeff/, '').split('\r\n')[0];
   assert.equal(cab, t.COLS_RESUMO.join(';'));
+});
+
+test('a lixeira reinicia a coleta: ofertas, coletados por site, pulados e registro das buscas', () => {
+  const chaves = source.match(/const CHAVES_COLETA = \[([^\]]+)\]/)[1].split(/,\s*/);
+  for (const c of ['CHAVE', 'CHAVE_COLETADOS', 'CHAVE_PULADOS', 'CHAVE_BUSCAS', 'CHAVE_EXPORTACAO']) assert.ok(chaves.includes(c), c);
+  assert.match(source, /kp\.botaoPerigo\('trash', '', reiniciar/);
 });
