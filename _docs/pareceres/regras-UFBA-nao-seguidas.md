@@ -2,7 +2,7 @@
 
 Comparação de 13/11/2026 entre o *Manual de estilo acadêmico* da UFBA, 7. ed. (trechos em `_docs/`: `Normas-UFBA-formatacao-p1.pdf`, p. 57–84; `manual-UFBA-citacao.pdf`, p. 89–95; `manual-UFBA-formatacao-p2.pdf`, p. 115–121), e o que o projeto aplica hoje: skill `formatacao-texto-ufba`, `_docs/_instrucoes/1d_formatacao.md`, `_docs/_instrucoes/10_biblio-apendices.md`, os geradores de `_src/outros/G4_textos/` e os `.md` de `textos/capitulos/`. Só entra o que diverge ou falta; o que já é seguido ficou de fora.
 
-Resolvidos em 13/11/2026 e retirados desta lista: referências à esquerda, em espaço simples, sob o título centralizado (antigos 2.1 e 2.2); 6 pt depois do parágrafo (4.1); datas com o mês por extenso (5.6); e unidades no padrão SI, com espaço (5.5, decisão do autor). Também saíram os itens da capa, da folha de rosto e da folha de aprovação que o autor ajustou no v33 (brasão, corpos, versal, 6 cm). Os demais seguem abertos.
+Resolvidos em 13/11/2026 e retirados desta lista: referências à esquerda, em espaço simples, sob o título centralizado (antigos 2.1 e 2.2); 6 pt depois do parágrafo (4.1); datas com o mês por extenso (5.6); unidades no padrão SI, com espaço (5.5, decisão do autor); e número da página no canto superior direito (4.10). Também saíram os itens da capa, da folha de rosto e da folha de aprovação que o autor ajustou no v33 (brasão, corpos, versal, 6 cm). Os demais seguem abertos.
 
 ## 1. Citações no texto (afetam todos os capítulos)
 
@@ -47,7 +47,6 @@ Resolvidos em 13/11/2026 e retirados desta lista: referências à esquerda, em e
 | 4.7 | Cor preta; cores só nas ilustrações (p. 115) | Segue, salvo o vermelho temporário das citações `[AV]`, que precisa sair da versão final | — |
 | 4.8 | Sem caixas de texto; ilustrações inseridas de modo que se movam sem quebrar o texto (p. 58) | Não conferido nas figuras do `.docx` | Gerador de figuras |
 | 4.9 | PDF depositado no RI com número em todas as páginas contadas (p. 117) | Número só a partir da introdução, como manda a NBR; o depósito digital pede conferir com a biblioteca da EAUFBA | Decisão do autor |
-| 4.10 | Número da página no canto **superior** direito (p. 117; também na skill) | No rodapé, à direita (`gerar_docx_capitulo.js`, `footers`) | Gerador |
 
 ## 5. Redação (afeta todos os capítulos; `1b_escrita.md`)
 

@@ -330,6 +330,7 @@ def main():
             f.append(entrada(s, imp(p), b=nivel in (1, 3), caps=nivel in (1, 2)))
         sect = x[x.rfind("<w:sectPr"):x.rfind("</w:sectPr>") + len("</w:sectPr>")]
         sect = re.sub(r"<w:footerReference[^>]*/>", "", sect)
+        sect = re.sub(r"<w:headerReference[^>]*/>", "", sect)
         sect = re.sub(r"<w:pgNumType[^>]*/>", "", sect)
         f.append(f'<w:p><w:pPr>{sect}</w:pPr></w:p>')
         corpo = re.sub(r"<w:pgNumType[^>]*/>", "", corpo_xml)

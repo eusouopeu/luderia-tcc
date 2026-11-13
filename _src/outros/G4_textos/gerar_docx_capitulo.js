@@ -34,7 +34,7 @@ const fs = require("fs");
 const path = require("path");
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, ImageRun,
-  AlignmentType, HeadingLevel, LevelFormat, BorderStyle, ShadingType, PageNumber, Footer, VerticalAlign,
+  AlignmentType, HeadingLevel, LevelFormat, BorderStyle, ShadingType, PageNumber, Header, VerticalAlign,
 } = require("docx");
 
 const ROOT = path.resolve(__dirname, "..", "..", "..");
@@ -350,7 +350,8 @@ const doc = new Document({
       size: { width: 11906, height: 16838 },
       margin: { top: 3 * CM, left: 3 * CM, bottom: 2 * CM, right: 2 * CM },
     } },
-    footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.RIGHT,
+    // número da página no canto superior direito (NBR 14724 e manual da UFBA)
+    headers: { default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT,
       children: [new TextRun({ children: [PageNumber.CURRENT], font: FONTE, size: TAM_QUADRO })] })] }) },
     children: trabalho(),
   }],
