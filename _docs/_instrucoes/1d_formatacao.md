@@ -8,7 +8,7 @@ O `.docx` do trabalho inteiro abre com a capa (instituição, autor, título, lo
 
 ## Espaçamentos (13/11/2026)
 
-Todo espaço entre blocos é feito com **linhas em branco de espaçamento simples (1,0)**, e não com o espaçamento antes e depois do parágrafo. A altura da linha em branco é dada pelo corpo da fonte: 6 pt depois do parágrafo do corpo (manual da UFBA); 12 pt antes da legenda de tabela, quadro ou figura, depois da fonte (ou da nota) e entre uma referência e outra; linhas de 12 pt para posicionar os elementos da capa e das folhas de rosto e de aprovação. Entre um título (capítulo, seção, subseção, REFERÊNCIAS ou pré-textual) e o texto que vem logo depois, uma linha em branco de 12 pt; entre dois títulos seguidos, nenhuma. Os geradores (`gerar_docx_capitulo.js`, `gerar_apendices_tmin.py` e `gerar_pretextuais_tmin.py`) usam a função `branco()`.
+Todo espaço entre blocos é feito com **linhas em branco de espaçamento simples (1,0)**, e não com o espaçamento antes e depois do parágrafo. Os parágrafos do corpo não têm espaçamento antes nem depois: cada um é separado do seguinte por uma linha em branco de espaçamento simples, de 12 pt (pedido do autor, 13/11/2026). A altura da linha em branco é dada pelo corpo da fonte: 12 pt entre parágrafos do corpo; 12 pt antes da legenda de tabela, quadro ou figura, depois da fonte (ou da nota) e entre uma referência e outra; linhas de 12 pt para posicionar os elementos da capa e das folhas de rosto e de aprovação. Entre um título (capítulo, seção, subseção, REFERÊNCIAS ou pré-textual) e o texto que vem logo depois, uma linha em branco de 12 pt; entre dois títulos seguidos, nenhuma. Os geradores (`gerar_docx_capitulo.js`, `gerar_apendices_tmin.py` e `gerar_pretextuais_tmin.py`) usam a função `branco()`.
 
 ## Títulos
 
@@ -21,7 +21,7 @@ Todo espaço entre blocos é feito com **linhas em branco de espaçamento simple
 
 ## Parágrafos
 
-- **Corpo do texto:** recuo de 1,00 cm na primeira linha e uma linha em branco de 6 pt depois do parágrafo (manual da UFBA; no lugar da linha em branco de 12 pt da skill). Os demais atributos seguem a skill.
+- **Corpo do texto:** recuo de 1,00 cm na primeira linha sem espaçamento antes e depois, e uma linha em branco de 12 pt, espaçamento simples, entre um parágrafo e outro (pedido do autor, 13/11/2026). Legenda e fonte de tabela, quadro e figura também ficam separadas do texto acima e abaixo por uma linha em branco simples de 12 pt. Os demais atributos seguem a skill.
 - **Referências bibliográficas:** alinhadas só à margem esquerda, em espaço simples, **sem recuo na primeira linha**, com uma linha em branco de 12 pt entre uma e outra (NBR 6023 e manual da UFBA).
 - **Abertura de capítulo:** todo capítulo começa com texto, antes da primeira seção numerada.
 - **Resumo e abstract:** com a indicação das partes (manual da UFBA), num só parágrafo em espaço simples: **Introdução:**, **Objetivo:**, **Método:**, **Resultados:** e **Conclusão:**, com os rótulos em negrito (*Introduction*, *Objective*, *Method*, *Results* e *Conclusion* no abstract); natureza, objetivos e abordagem da pesquisa no Método; sem siglas.

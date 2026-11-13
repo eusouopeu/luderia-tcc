@@ -46,7 +46,7 @@ Legenda, no fim de cada referência:
 
 ### Plano de negócios e gestão baseada em evidências
 
-- [ ] DORNELAS, José. *Plano de negócios*: seu guia definitivo. 3. ed. São Paulo: Empreende, 2021. [AV] Conferir se o PDF é a 3. ed. de 2021. 📄
+- [ ] DORNELAS, José. *Plano de negócios*: seu guia definitivo. 3. ed. São Paulo: Empreende, 2021. [AV] Conferir se o PDF é a 3. ed. de 2021. 📄 PDF sem camada de texto (CamScanner); páginas localizadas por OCR em 13/11/2026: conceito e usos do plano (p. 4, 7), metodologia 3M (p. 21).
   - [ ] o plano serve para planejar e para comunicar valor e credibilidade a investidores e sócios (p. 6–10).
 - [ ] FIGUEIREDO, Américo Rodrigues de. Gestão baseada em evidências. *GV-executivo*, São Paulo, v. 19, n. 1, p. 30–32, jan./fev. 2020. 📄
   - [ ] definição: uso consciente, explícito e criterioso das melhores evidências (p. 31).
@@ -145,7 +145,7 @@ Legenda, no fim de cada referência:
   - [x] atitude e comportamento (p. 155–156): a atitude só se manifesta por comportamento ou declaração do entrevistado, e o comportamento pode ser observado (p. 155); comportamento é o que as pessoas fizeram ou fazem, e o Quadro 5.8 (p. 156) o decompõe em quem, o quê, quanto, quando, onde, como.
   - [x] tipos de pesquisa (p. 76–77): classificação por objetivo (exploratória e conclusiva), por natureza (descritiva e causal) e por forma de coleta (comunicação e observação); a descritiva responde quem, o quê, quanto, quando e onde (p. 77).
   - [x] amostragem não probabilística (p. 266–270, 272): a seleção depende, ao menos em parte, do julgamento do pesquisador, e não há chance conhecida de um elemento entrar na amostra; só a probabilística dá estimativas com precisão da população (p. 266). Razões para usá-la: não haver alternativa viável (p. 267–268), a probabilística falhar na prática (p. 268), a generalização não ser o propósito, como na pesquisa exploratória (p. 268) e falta de tempo e recursos (p. 269). O pesquisador deve declarar o limite: nunca divulgar resultado de amostra não probabilística como se fosse probabilística (p. 267).
-  - [x] amostra intencional ou por julgamento (p. 270): escolhem-se os casos a incluir; não permite afirmações conclusivas sobre a população, mas, com critérios corretos, rende mais que a por conveniência. Sustenta o recorte das 54 luderias e da São Jogue.
+  - [x] amostra intencional ou por julgamento (p. 270): escolhem-se os casos a incluir; não permite afirmações conclusivas sobre a população, mas, com critérios corretos, rende mais que a por conveniência. Fora do B1 desde 13/11/2026: os 63 concorrentes são a população estudada, não amostra.
   - [x] amostra por conveniência (p. 269): barata e simples, serve à pesquisa exploratória e não é recomendada para pesquisas conclusivas.
   - [x] amostra por tráfego (p. 272): observar pessoas que passam por um local; exige trabalho de campo em horas, dias da semana e dias do mês diferentes, com conhecimento prévio do volume de tráfego. Sustenta a distribuição das quatro visitas (sexta e sábado, duas unidades).
   - [x] pesquisa exploratória (p. 80–81): objetivos e métodos (fontes secundárias, levantamento de experiências, estudo de casos, observação informal).

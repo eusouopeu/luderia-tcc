@@ -325,7 +325,7 @@ function converte(md, MD, blocos = []) {
     } else if (referencias) {
       if (TRABALHO) REFS.add(l.trim()); else blocos.push(...referencia(l));
     } else {
-      blocos.push(corpo(l), branco(6));
+      blocos.push(corpo(l), branco(12));
     }
   }
   return blocos;
