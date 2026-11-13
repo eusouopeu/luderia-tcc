@@ -24,7 +24,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 ## Média
 
-**D86 — Shopping de porte com vantagem nas avaliações (13/11/2026).** Cap. 5 (5.4.2) e cap. 6 (6.4): com as 63 casas, os 30 concorrentes com shopping a até 1.000 m têm mediana de 753 avaliações, contra 538 dos 28 sem (antes 396 × 663); o texto passou a dizer "vantagem menor" que a do metrô (771 × 317), mas a decisão "o shopping não entra como exigência" foi tomada com o dado antigo. Decisão do autor (Lote de decisões, L32).
+**D86 — Metrô e shopping de porte com vantagens parecidas nas avaliações (13/11/2026, atualizado com a recoleta do entorno).** Cap. 5 (5.4.2) e cap. 6 (6.4): com a recoleta completa das 63 casas, metrô a até 1.000 m dá mediana de 771 avaliações contra 572 sem (antes 771 × 317, com 5 casas sem dado), e shopping de porte, 751 contra 601 (antes 753 × 538). O texto mantém "vantagem menor" para o shopping, o que segue certo, mas a exigência de metrô no ponto (6.4, 7.1 e a força "ponto na Pituba" do cap. 10) foi decidida quando a vantagem era de 2,4 vezes; hoje é de 1,35 vez. Decisão do autor (Lote de decisões, L32).
 
 **D88 — Tendência do consumo de experiências sem fonte (13/11/2026).** Cap. 1, primeiro parágrafo: "a compra de experiências ganha espaço sobre a compra de produtos e até de serviços" e a migração de restaurantes, bares e academias para a oferta de experiências não têm citação; só o dado da PAS (IBGE) tem fonte. Citar Pine e Gilmore (1998), já no cap. 2 (2.1), ou outra fonte conferida pelo autor.
 

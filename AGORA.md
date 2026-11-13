@@ -9,9 +9,8 @@ Atualizado em 13/11/2026. **TMin v35** em `textos/TCC_luderia_v35.docx` e `.pdf`
 
 ## Próximos 3 passos
 
-1. Responder o "Lote de decisões" ([pendências](_docs/pendencias.md)): L1, L20 a L24, L27, L29, L30 e L32 (shopping no entorno).
-2. Recoletar o entorno com o coletor 2026.11.13-6 e regerar os números do 5.4.2 e do 6.4 (a v33 usa a coleta de 12/11, que pode subcontar estações de metrô).
-3. Regras da UFBA ainda abertas ([parecer](_docs/pareceres/regras-UFBA-nao-seguidas.md)): citações em versal capitular, números de um a dez por extenso, referência antes do resumo e titulação do orientador.
+1. Responder o "Lote de decisões" ([pendências](_docs/pendencias.md)): L1, L20 a L24, L27, L29, L30 e L32 (exigência de metrô no ponto: com a recoleta do entorno de 13/11, a vantagem do metrô caiu para 771 × 572 avaliações, perto da do shopping, 751 × 601; o 5.4.2 e o 6.4 já têm os números novos, a v35 ainda os antigos).
+2. Regras da UFBA ainda abertas ([parecer](_docs/pareceres/regras-UFBA-nao-seguidas.md)): citações em versal capitular, números de um a dez por extenso, referência antes do resumo e titulação do orientador.
 
 ## Bloqueado ou aguardando
 
@@ -19,9 +18,8 @@ Atualizado em 13/11/2026. **TMin v35** em `textos/TCC_luderia_v35.docx` e `.pdf`
 - Folha de aprovação: nomes da banca.
 - Legislação: a LOUOS de Salvador (Lei 9.148/2016) não tem texto integral em fonte oficial acessível; baixar à mão em `bibliografia/F1_Legislacao/4_funcionamento_e_pesquisa/`.
 - Coletas do autor (aluguel, horários de pico, entorno, B2, webscripts): roteiros em [pendências](_docs/pendencias.md), "Coletas em andamento".
-- Entorno: a coleta de 12/11 (39 casas) subconta estações de metrô (Maps devolveu ranking de 10 da cidade). Coletor 2026.11.13-6 (sem BRT nem estação tubo; quadrantes logo após a busca que os gera, com "busca i/N" no status: casa de Salvador faz 11 buscas, do Rio até 20); recoletar com ele, no mínimo as casas do Rio, antes de usar o entorno no TMin.
 - Webscripts (13/11, tarde): todos os painéis pelo kit (aluguel, horários de pico, mobiliário e avaliações migrados) e lixeira que reinicia a coleta (dados e histórico, com backup antes). Não exige reinstalar os carregadores: basta recarregar a página. Testados numa página local e nos testes, não nos sites reais: conferir na primeira coleta de cada um.
-- Webscripts (13/11): renomeados (`acervo`, `cardapio`, `instagram`, `aluguel`, `mobiliario`), com os itens dos menus em `lista_<script>.js` e a opção da fila "baixar cada item"; **reinstalar todos os carregadores** (`python3 _src/outros/G5_outros/gerar_carregadores.py --abrir --todos`), senão os instalados procuram o arquivo antigo, e apagar no Tampermonkey os de nome antigo que sobrarem. Depois, recoletar entorno (63 casas), OLX Caminho das Árvores e Chame-Chame, horários de pico (permanência), Cineplay, Fortalúdica e 4 itens do B5; roteiro em [pendências](_docs/pendencias.md), "Coletas em andamento". Rodar `B2b_avaliacoes.py`: as 9 casas "coletar" já têm coleta de 12/11. Scripts Python agora sem hífen (`B1b_…`).
+- Webscripts (13/11): renomeados (`acervo`, `cardapio`, `instagram`, `aluguel`, `mobiliario`), com os itens dos menus em `lista_<script>.js` e a opção da fila "baixar cada item"; **reinstalar todos os carregadores** (`python3 _src/outros/G5_outros/gerar_carregadores.py --abrir --todos`), senão os instalados procuram o arquivo antigo, e apagar no Tampermonkey os de nome antigo que sobrarem. Depois, recoletar OLX Caminho das Árvores e Chame-Chame, horários de pico (permanência), Cineplay, Fortalúdica e 4 itens do B5; roteiro em [pendências](_docs/pendencias.md), "Coletas em andamento". Rodar `B2b_avaliacoes.py`: as 9 casas "coletar" já têm coleta de 12/11. Scripts Python agora sem hífen (`B1b_…`).
 
 ## Onde está o resto
 

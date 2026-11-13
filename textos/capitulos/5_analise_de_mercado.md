@@ -118,7 +118,7 @@ Fonte: elaborado pelo próprio autor, com base nos cardápios do Bloco B1 (abril
 
 O entorno de cada concorrente mede onde a casa fica em relação ao metrô e ao shopping de porte. O estudo usa o número de avaliações no Google Maps como medida indireta de fluxo, e a associação não prova causa.
 
-Entre os 58 concorrentes do B1 com entorno coletado, os 24 com estação de metrô a até 1.000 m têm mediana de 771 avaliações, contra 317 dos 34 sem estação (Bloco B1, entorno pelo Google Maps). O shopping de porte mostra vantagem menor: os 30 concorrentes com shopping a até 1.000 m têm mediana de 753 avaliações, contra 538 dos 28 sem (5 sem dado). A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica dentro do Shopping Bela Vista, a 387 m do metrô.
+Entre os 63 concorrentes do B1, os 24 com estação de metrô a até 1.000 m têm mediana de 771 avaliações, contra 572 dos 39 sem estação (Bloco B1, entorno pelo Google Maps, 13 de novembro de 2026). O shopping de porte mostra vantagem menor: os 35 concorrentes com shopping de porte a até 1.000 m têm mediana de 751 avaliações, contra 601 dos 28 sem. A São Jogue da Bela Vista, único concorrente de Salvador no B1 (787 avaliações), fica dentro do Shopping Bela Vista, a 387 m do metrô.
 
 A decisão afetada é o ponto: a luderia deve ficar a até 1.000 m de uma estação de metrô (seção 6.4). O shopping não entra como exigência.
 

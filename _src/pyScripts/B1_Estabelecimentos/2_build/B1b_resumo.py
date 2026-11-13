@@ -225,7 +225,7 @@ DIC = {
     "abre_cedo": ("Horários", "Horário de abertura mais cedo da semana", "idem"),
     "fecha_tarde": ("Horários", "Fechamento mais tarde da semana (depois da meia-noite: 24 + h, ex. 25:00)", "idem"),
     **{d: ("Horários", f"Turnos de {d} (vazio = fechado)", "idem") for d in DIAS},
-    "metro_500m": ("Entorno", "Estações de metrô até 500 m", "coletor de entorno do Maps, 15/10/2026"),
+    "metro_500m": ("Entorno", "Estações de metrô até 500 m", "coletor de entorno do Maps, 13/11/2026 (versão 2026.11.13-6)"),
     "metro_1000m": ("Entorno", "Estações de metrô até 1000 m", "idem"),
     "dist_metro_m": ("Entorno", "Distância (m) à estação de metrô mais próxima, só até 1000 m; vazio com metro_1000m = 0: nenhuma até 1000 m", "idem"),
     "trem_500m": ("Entorno", "Estações de trem metropolitano (CPTM, SuperVia, Trensurb) até 500 m; vazio = busca não feita", "idem"),

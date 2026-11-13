@@ -1,0 +1,97 @@
+﻿origem_place_id;origem_nome;consulta;grupo;quadrante;zoom;alcance_m;cobertura_m;estado;n_lidos;chegou_ao_fim;tentativa;decisao;coletado_em
+ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;estação de metrô;metro;;14;1000;1738;lista;10;sim;1;subdividir;2026-11-13 09:37
+ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;estação de metrô;metro;NO;15;500;869;lista;10;sim;1;completa;2026-11-13 09:37
+ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;estação de metrô;metro;NE;15;500;869;lista;10;sim;1;completa;2026-11-13 09:37
+ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;estação de metrô;metro;SO;15;500;869;lista;10;sim;1;completa;2026-11-13 09:37
+ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;estação de metrô;metro;SE;15;500;869;lista;10;sim;1;completa;2026-11-13 09:37
+ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;shopping center;shopping;;14;1000;1738;lista;78;não;1;subdividir;2026-11-13 09:38
+ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;shopping center;shopping;NO;15;500;869;lista;72;não;1;completa;2026-11-13 09:38
+ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;shopping center;shopping;NE;15;500;869;lista;78;não;1;completa;2026-11-13 09:39
+ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;shopping center;shopping;SO;15;500;869;lista;72;não;1;completa;2026-11-13 09:39
+ChIJRcWOaPabpgARDvX2Bad0qb0;Bardo Mago;shopping center;shopping;SE;15;500;869;lista;72;não;1;completa;2026-11-13 09:39
+ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;estação de metrô;metro;;14;1000;1738;lista;10;sim;1;subdividir;2026-11-13 09:40
+ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;estação de metrô;metro;NO;15;500;869;lista;10;sim;1;completa;2026-11-13 09:40
+ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;estação de metrô;metro;NE;15;500;869;lista;10;sim;1;completa;2026-11-13 09:40
+ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;estação de metrô;metro;SO;15;500;869;lista;10;sim;1;completa;2026-11-13 09:40
+ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;estação de metrô;metro;SE;15;500;869;lista;10;sim;1;completa;2026-11-13 09:40
+ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;shopping center;shopping;;14;1000;1738;lista;78;não;1;subdividir;2026-11-13 09:41
+ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;shopping center;shopping;NO;15;500;869;lista;78;não;1;completa;2026-11-13 09:41
+ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;shopping center;shopping;NE;15;500;869;lista;72;não;1;completa;2026-11-13 09:42
+ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;shopping center;shopping;SO;15;500;869;lista;78;não;1;completa;2026-11-13 09:42
+ChIJpzB8zc2XpgARoJTUu90J6Pw;Comdado Bar e Jogos;shopping center;shopping;SE;15;500;869;lista;78;não;1;completa;2026-11-13 09:42
+ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;estação de metrô;metro;;14;1000;1738;lista;10;sim;1;subdividir;2026-11-13 09:43
+ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;estação de metrô;metro;NO;15;500;869;lista;10;sim;1;completa;2026-11-13 09:43
+ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;estação de metrô;metro;NE;15;500;869;lista;10;sim;1;completa;2026-11-13 09:43
+ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;estação de metrô;metro;SO;15;500;869;lista;10;sim;1;completa;2026-11-13 09:43
+ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;estação de metrô;metro;SE;15;500;869;lista;10;sim;1;completa;2026-11-13 09:43
+ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;shopping center;shopping;;14;1000;1738;lista;80;não;1;subdividir;2026-11-13 09:44
+ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;shopping center;shopping;NO;15;500;869;lista;78;não;1;completa;2026-11-13 09:44
+ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;shopping center;shopping;NE;15;500;869;lista;72;não;1;completa;2026-11-13 09:45
+ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;shopping center;shopping;SO;15;500;869;lista;72;não;1;completa;2026-11-13 09:45
+ChIJsUAT-dObpgARCT2C5QpnVKU;Garagem do Nerd;shopping center;shopping;SE;15;500;869;lista;52;não;1;completa;2026-11-13 09:46
+ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;estação de metrô;metro;;14;1000;1738;lista;10;sim;1;subdividir;2026-11-13 09:46
+ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;estação de metrô;metro;NO;15;500;869;lista;10;sim;1;completa;2026-11-13 09:46
+ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;estação de metrô;metro;NE;15;500;869;lista;10;sim;1;completa;2026-11-13 09:46
+ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;estação de metrô;metro;SO;15;500;869;lista;10;sim;1;completa;2026-11-13 09:46
+ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;estação de metrô;metro;SE;15;500;869;lista;10;sim;1;completa;2026-11-13 09:46
+ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;shopping center;shopping;;14;1000;1738;lista;72;não;1;subdividir;2026-11-13 09:47
+ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;shopping center;shopping;NO;15;500;869;lista;78;não;1;completa;2026-11-13 09:47
+ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;shopping center;shopping;NE;15;500;869;lista;52;não;1;completa;2026-11-13 09:48
+ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;shopping center;shopping;SO;15;500;869;lista;78;não;1;completa;2026-11-13 09:48
+ChIJ-17ZQDG9pgARc-AxpXmaNRU;La Tabuleria;shopping center;shopping;SE;15;500;869;lista;78;não;1;completa;2026-11-13 09:48
+ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;estação de metrô;metro;;14;1000;1738;lista;10;sim;1;subdividir;2026-11-13 09:49
+ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;estação de metrô;metro;NO;15;500;869;lista;10;sim;1;completa;2026-11-13 09:49
+ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;estação de metrô;metro;NE;15;500;869;lista;10;sim;1;completa;2026-11-13 09:49
+ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;estação de metrô;metro;SO;15;500;869;lista;10;sim;1;completa;2026-11-13 09:49
+ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;estação de metrô;metro;SE;15;500;869;lista;10;sim;1;completa;2026-11-13 09:49
+ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;shopping center;shopping;;14;1000;1738;lista;78;não;1;subdividir;2026-11-13 09:50
+ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;shopping center;shopping;NO;15;500;869;lista;80;não;1;completa;2026-11-13 09:50
+ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;shopping center;shopping;NE;15;500;869;lista;78;não;1;completa;2026-11-13 09:50
+ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;shopping center;shopping;SO;15;500;869;lista;66;não;1;completa;2026-11-13 09:51
+ChIJx5jr3zGXpgARQGx9eX7TDmY;LudoCafé;shopping center;shopping;SE;15;500;869;lista;40;não;1;completa;2026-11-13 09:51
+ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;estação de metrô;metro;;14;1000;;falhou;0;sim;1;;2026-11-13 09:52
+ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;estação de metrô;metro;;14;1000;1738;lista;10;sim;2;subdividir;2026-11-13 09:53
+ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;estação de metrô;metro;NO;15;500;869;lista;10;sim;1;completa;2026-11-13 09:53
+ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;estação de metrô;metro;NE;15;500;869;lista;10;sim;1;completa;2026-11-13 09:53
+ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;estação de metrô;metro;SO;15;500;869;lista;10;sim;1;completa;2026-11-13 09:53
+ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;estação de metrô;metro;SE;15;500;869;lista;10;sim;1;completa;2026-11-13 09:53
+ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;shopping center;shopping;;14;1000;1738;lista;66;não;1;subdividir;2026-11-13 09:54
+ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;shopping center;shopping;NO;15;500;869;lista;66;não;1;completa;2026-11-13 09:54
+ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;shopping center;shopping;NE;15;500;869;lista;20;não;1;completa;2026-11-13 09:54
+ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;shopping center;shopping;SO;15;500;869;lista;72;não;1;completa;2026-11-13 09:55
+ChIJ6ZLMZw-XpgAR_OR6SwY5xKo;Shelf Bar e Jogos;shopping center;shopping;SE;15;500;869;lista;72;não;1;completa;2026-11-13 09:55
+ChIJ-97tiEeNpJIRb_eV7a-sxBs;Ludoteca Sidequest;shopping center;shopping;;14;1000;1848;lista;78;não;1;subdividir;2026-11-13 09:56
+ChIJ-97tiEeNpJIRb_eV7a-sxBs;Ludoteca Sidequest;shopping center;shopping;NO;15;500;924;lista;40;não;1;completa;2026-11-13 09:56
+ChIJ-97tiEeNpJIRb_eV7a-sxBs;Ludoteca Sidequest;shopping center;shopping;NE;15;500;924;lista;66;não;1;completa;2026-11-13 09:57
+ChIJ-97tiEeNpJIRb_eV7a-sxBs;Ludoteca Sidequest;shopping center;shopping;SO;15;500;924;lista;52;não;1;completa;2026-11-13 09:57
+ChIJ-97tiEeNpJIRb_eV7a-sxBs;Ludoteca Sidequest;shopping center;shopping;SE;15;500;924;lista;66;não;1;completa;2026-11-13 09:58
+ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;estação de metrô;metro;;14;1000;1779;lista;10;sim;1;subdividir;2026-11-13 09:58
+ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;estação de metrô;metro;NO;15;500;889;lista;10;sim;1;completa;2026-11-13 09:58
+ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;estação de metrô;metro;NE;15;500;889;lista;10;sim;1;completa;2026-11-13 09:58
+ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;estação de metrô;metro;SO;15;500;889;lista;10;sim;1;completa;2026-11-13 09:58
+ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;estação de metrô;metro;SE;15;500;889;lista;10;sim;1;completa;2026-11-13 09:58
+ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;shopping center;shopping;;14;1000;1779;lista;66;não;1;subdividir;2026-11-13 09:59
+ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;shopping center;shopping;NO;15;500;889;lista;60;não;1;completa;2026-11-13 09:59
+ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;shopping center;shopping;NE;15;500;889;lista;20;não;1;completa;2026-11-13 10:00
+ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;shopping center;shopping;SO;15;500;889;lista;66;não;1;completa;2026-11-13 10:00
+ChIJyXjE650xWpMRJL-J6QbGkt4;FORTALÚDICA - BURGERS & JOGOS;shopping center;shopping;SE;15;500;889;lista;66;não;1;completa;2026-11-13 10:01
+ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;estação de metrô;metro;;14;1000;1779;lista;10;sim;1;subdividir;2026-11-13 10:01
+ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;estação de metrô;metro;NO;15;500;890;lista;10;sim;1;completa;2026-11-13 10:01
+ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;estação de metrô;metro;NE;15;500;890;lista;10;sim;1;completa;2026-11-13 10:02
+ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;estação de metrô;metro;SO;15;500;890;lista;10;sim;1;completa;2026-11-13 10:02
+ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;estação de metrô;metro;SE;15;500;890;lista;10;sim;1;completa;2026-11-13 10:02
+ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;shopping center;shopping;;14;1000;1779;lista;42;não;1;subdividir;2026-11-13 10:03
+ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;shopping center;shopping;NO;15;500;890;lista;68;não;1;completa;2026-11-13 10:03
+ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;shopping center;shopping;NE;15;500;890;lista;54;não;1;completa;2026-11-13 10:04
+ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;shopping center;shopping;SO;15;500;890;lista;21;não;1;completa;2026-11-13 10:04
+ChIJ172cu2U7WpMR-GxnGmUHCkc;Gruta BSB;shopping center;shopping;SE;15;500;890;lista;21;não;1;completa;2026-11-13 10:04
+ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;estação de metrô;metro;;14;1000;1779;lista;10;sim;1;subdividir;2026-11-13 10:05
+ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;estação de metrô;metro;NO;15;500;889;lista;10;sim;1;completa;2026-11-13 10:05
+ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;estação de metrô;metro;NE;15;500;889;lista;10;sim;1;completa;2026-11-13 10:05
+ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;estação de metrô;metro;SO;15;500;889;lista;10;sim;1;completa;2026-11-13 10:05
+ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;estação de metrô;metro;SE;15;500;889;lista;10;sim;1;completa;2026-11-13 10:05
+ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;shopping center;shopping;;14;1000;1779;lista;62;não;1;subdividir;2026-11-13 10:06
+ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;shopping center;shopping;NO;15;500;889;lista;20;não;1;completa;2026-11-13 10:06
+ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;shopping center;shopping;NE;15;500;889;lista;42;não;1;completa;2026-11-13 10:07
+ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;shopping center;shopping;SO;15;500;889;lista;20;não;1;completa;2026-11-13 10:07
+ChIJdUv4La46WpMRnBvNknmOqWo;Inside Games;shopping center;shopping;SE;15;500;889;lista;74;não;1;completa;2026-11-13 10:07
