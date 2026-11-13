@@ -1,9 +1,9 @@
 {
   "name": "b5-precos-itens-webscripts",
   "private": true,
-  "description": "Testes do coletor de preços (B5): node --test precos_itens.test.cjs",
+  "description": "Testes do coletor de preços (B5): node --test mobiliario.test.cjs",
   "scripts": {
-    "test": "node --test precos_itens.test.cjs"
+    "test": "node --test mobiliario.test.cjs"
   },
   "devDependencies": {
     "linkedom": "^0.18.15"

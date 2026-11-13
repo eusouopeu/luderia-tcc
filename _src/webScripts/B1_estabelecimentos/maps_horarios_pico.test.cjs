@@ -3,7 +3,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 
-const source = fs.readFileSync(__dirname + '/maps_horarios_pico.user.js', 'utf8');
+// A lista do menu (lista_maps_horarios_pico.js) vem antes, como no carregador (@require).
+const source = fs.readFileSync(__dirname + '/lista_maps_horarios_pico.js', 'utf8') + '\n' + fs.readFileSync(__dirname + '/maps_horarios_pico.user.js', 'utf8');
 
 // Armazenamento do Tampermonkey e localStorage simulados (o localStorage com cota).
 function carregar({ antigas = null, cota = Infinity } = {}) {

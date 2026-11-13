@@ -59,7 +59,7 @@ A matriz de evidências (decisão → pergunta → dado → fonte → confiança
 | **Entorno** | Só pelo Google Maps (o OpenStreetMap saiu do coletor e da análise em 30/10/2026): estações de metrô, trem e VLT (BRT e estações-tubo, que são ônibus, ficam fora desde 13/11/2026) e shoppings de porte em 500 m e 1.000 m, e distância da estação e do shopping mais próximos, até 1.000 m, em linha reta de pino a pino. Shopping de porte = 1.000 avaliações ou mais no Maps; contagens com 500 e 5.000 avaliações para sensibilidade (`maps_entorno.user.js`) |
 | **Cardápios** | Itens oferecidos, preço por item, variedade por categoria e número de itens que exigem preparo (sem contar itens prontos, como balas, refrigerantes e água). Categorias fixas: **bebidas** (drinks, refrigerante, cerveja, não alcoólicas), **entradas** (batata, outras), **pratos principais** (hambúrguer, pizza, outros), **sobremesas**, **couvert ou taxa de jogo** |
 | Registro | Data da coleta e link do cardápio; preços em R$ com duas casas decimais. Cardápios de prints, digitais e Takeat convertidos por regras de categoria; jogos à venda ficam fora. Item com preço por quantidade (chopp 1x, 2x, 3x) entra só com o preço de 1 unidade. Item com mais de uma linha (tamanho, combo ou print de outra data) fica todo na planilha, mas só a linha de referência (`linha_referencia` = S) entra na cesta e nas medianas: cardápio mais recente, sem combo, menor tamanho |
-| **Acervos** | Lista de jogos de qualquer das 54 casas que publique uma (Acervo de Jogos, rejoy, Ludopedia, site, Canva ou PDF), com ou sem cardápio. **Cesta de jogos** = jogos presentes em 15 ou mais dos 30 acervos; preço em faixa entre lojas (menor, mediana, p75, máximo); índice por loja só com 10 ou mais jogos comparáveis; custo do acervo inicial estendido pelo preço médio por título (`B1-a_cesta_jogos.py`) |
+| **Acervos** | Lista de jogos de qualquer das 54 casas que publique uma (Acervo de Jogos, rejoy, Ludopedia, site, Canva ou PDF), com ou sem cardápio. **Cesta de jogos** = jogos presentes em 15 ou mais dos 30 acervos; preço em faixa entre lojas (menor, mediana, p75, máximo); índice por loja só com 10 ou mais jogos comparáveis; custo do acervo inicial estendido pelo preço médio por título (`B1a_cesta_jogos.py`) |
 | Uso no plano | Concorrência (5.3), preço (6.3), cardápio (6.2), ponto (6.4), acervo inicial e investimento (7.2, 9.3), ticket médio (cap. 9) |
 | Limitação | O corte de 100 avaliações exclui casas novas ou pequenas: o recorte descreve concorrentes estabelecidos. Cardápios desatualizados ou indisponíveis; preço de cardápio não informa quanto cada pessoa consome |
 
@@ -84,7 +84,7 @@ O recorte por período descreve a operação atual de cada concorrente. Como est
 | Item | Descrição |
 |---|---|
 | Local | As duas unidades da São Jogue, única luderia de Salvador: Bela Vista (`SJBV`, unidade `BV`) e Paralela (`SJPA`, unidade `PA`) |
-| Visitas | 4 no total, 2 por unidade, só em **sexta e sábado à noite**, para medir o movimento máximo (orientação de 31/10/2026): Bela Vista em 10/10 (sábado) e 16/10 (sexta); Paralela em 17/10 (sábado) e 30/10 (sexta). Início entre 18h30 e 19h30. O desenho anterior (sábado 03/10 e domingo 18/10, retorno a 15 dias, horários sorteados por `B3-b_contagem_sorteio.py`, semente 20260916) fica só como registro |
+| Visitas | 4 no total, 2 por unidade, só em **sexta e sábado à noite**, para medir o movimento máximo (orientação de 31/10/2026): Bela Vista em 10/10 (sábado) e 16/10 (sexta); Paralela em 17/10 (sábado) e 30/10 (sexta). Início entre 18h30 e 19h30. O desenho anterior (sábado 03/10 e domingo 18/10, retorno a 15 dias, horários sorteados por `B3b_contagem_sorteio.py`, semente 20260916) fica só como registro |
 | Posição do observador | **Dentro do salão**, sentado a uma mesa como cliente. A mesa do próprio observador não entra nos registros: nem o grupo, nem as pessoas, nem o comportamento (3 pessoas na visita de 10/10 ao Bela Vista; 2 nas demais), e sai do denominador da ocupação |
 | Duração da visita | Prevista de 3 horas; observada de 2,5 a 3,3 horas. Horário de início e de fim registrados; todas as taxas são calculadas por hora observada |
 | Registro contínuo | Entrada e saída de cada grupo na porta (horário, pessoas, crianças), com código para ligar entrada e saída; e cada grupo de mesa: mesa, entrada, saída, permanência, pessoas, crianças, jogos e chamadas do instrutor. Grupo que já estava no salão na chegada é estoque inicial, e grupo ainda no salão no fim tem permanência censurada |
@@ -97,7 +97,7 @@ O recorte por período descreve a operação atual de cada concorrente. Como est
 | Uso no plano | Circulação no pico e seu piso pelas notas fiscais (6.6 e cap. 9); pessoas por mesa; capacidade (7.2) |
 | Limitação | Quatro visitas em um único estabelecimento e uma única cidade, só em sexta e sábado à noite: a contagem não observa dias úteis nem horários de menor movimento, que entram pelo caminho das notas fiscais; NFC-e só a pedido do cliente (piso das vendas), podendo incluir delivery e balcão, e uma nota pode cobrir um grupo inteiro; um único intervalo entre visitas por unidade (Bela Vista, 10/10 a 16/10, 6 dias; Paralela, 17/10 a 30/10, 13 dias, abaixo dos 15 dias planejados); permanência censurada pelo início e fim da visita; a mesa do observador, fora do denominador, reduz o salão observado em uma mesa |
 
-O formato dos CSV do app e as saídas do `B3-a_contagem.py` estão em `textos/_planejamento/_instrumentos/protocolo_validacao_coleta.md` (§1).
+O formato dos CSV do app e as saídas do `B3a_contagem.py` estão em `textos/_planejamento/_instrumentos/protocolo_validacao_coleta.md` (§1).
 
 ### Bloco B4 — Bases públicas
 
@@ -113,14 +113,14 @@ O formato dos CSV do app e as saídas do `B3-a_contagem.py` estão em `textos/_p
 | Lei Complementar 123/2006 e anexos do Simples Nacional | Alíquotas por faixa de receita | Tributos (8.1 e cap. 9) |
 | Banco Central — SGS e relatório Focus | Selic e IPCA observados e projetados; salário mínimo | Taxa mínima de atratividade e inflação do modelo (cap. 9) |
 
-Scripts em `_src/pyScripts/` (`B4-c_*` → `B4-b_*`); saídas `[B4] *.csv` em `dados/B4_<uso>/_dados-agregados/`; referências ABNT em `bibliografia/_referencias_bases_publicas.md`.
+Scripts em `_src/pyScripts/` (`B4c_*` → `B4b_*`); saídas `[B4] *.csv` em `dados/B4_<uso>/_dados-agregados/`; referências ABNT em `bibliografia/_referencias_bases_publicas.md`.
 
 ### Bloco B5 — Ativos fixos
 
 Orçamento da etapa 1 (premissas I01 a I04 do cap. 9), item a item, na lista `dados/B5_mobiliario/_dados-agregados/[B5] Lista de Itens da Etapa 1 (elaboração própria).csv` (75 itens; `fonte_preco` sinapi, coleta ou gratuito).
 
-- **SINAPI (reforma, N2):** composições da Bahia sem desoneração (`B5-c_sinapi.py`), com o BDI de construção de edifícios do TCU (Acórdão 2.622/2013): 1º quartil no otimista, médio no provável, 3º quartil no pessimista.
-- **Coleta em sites (mobiliário, cozinha e bar, informática, climatização; N3):** `_src/webScripts/B5_ativos_fixos/precos_itens.user.js` (Tampermonkey) na Amazon e no Mercado Livre, CEP de Salvador. Critério (decisão do autor, 03/11/2026): de cada busca, na ordenação padrão do site, entram os **5 primeiros anúncios que cumprem os requisitos técnicos mínimos** do item (medida ou capacidade, palavras exigidas e excluídas), pelo preço do produto, **sem frete, cor, estilo ou acabamento**. O coletor grava a `posicao` na busca e marca o item como coletado **por site**. O build (`B5-b_orcamento_itens.py`) corrige kit lido como unidade, descarta anúncio patrocinado sem página de produto e preço fora de 0,4× a 2,5× a mediana do item, e fica com as 5 primeiras por site; item com menos de 3 ofertas fica sem preço. Cenários: P75, mediana e P25 das ofertas.
+- **SINAPI (reforma, N2):** composições da Bahia sem desoneração (`B5c_sinapi.py`), com o BDI de construção de edifícios do TCU (Acórdão 2.622/2013): 1º quartil no otimista, médio no provável, 3º quartil no pessimista.
+- **Coleta em sites (mobiliário, cozinha e bar, informática, climatização; N3):** `_src/webScripts/B5_ativos_fixos/mobiliario.user.js` (Tampermonkey) na Amazon e no Mercado Livre, CEP de Salvador. Critério (decisão do autor, 03/11/2026): de cada busca, na ordenação padrão do site, entram os **5 primeiros anúncios que cumprem os requisitos técnicos mínimos** do item (medida ou capacidade, palavras exigidas e excluídas), pelo preço do produto, **sem frete, cor, estilo ou acabamento**. O coletor grava a `posicao` na busca e marca o item como coletado **por site**. O build (`B5b_orcamento_itens.py`) corrige kit lido como unidade, descarta anúncio patrocinado sem página de produto e preço fora de 0,4× a 2,5× a mediana do item, e fica com as 5 primeiras por site; item com menos de 3 ofertas fica sem preço. Cenários: P75, mediana e P25 das ofertas.
 - **Gratuito (N6):** item sem custo por informação do autor (ex.: maquininha cedida a PJ pelos bancos).
 - **Quantidade:** do autor (N6) até haver projeto do ponto; a I01 entra no modelo em R$ por m² (total ÷ área do C03).
 - Saídas em `orcamento/`: orçamento por item, por premissa e as ofertas filtradas; o `gerar_modelo_financeiro.py` lê o orçamento por premissa mais recente.
@@ -129,14 +129,14 @@ Orçamento da etapa 1 (premissas I01 a I04 do cap. 9), item a item, na lista `da
 
 ### Pipeline
 
-- Scripts em `_src/[bloco]/<objeto>/collect/`, `build/` e `analise/`, seguindo o padrão `Bn-c_*` → `Bn-b_*` → `Bn-a_*` ([dicionário](../../_src/dicionario.md)); saídas em `dados/B<n>_<coleta>/_dados-agregados/` com o prefixo do bloco.
+- Scripts em `_src/[bloco]/<objeto>/collect/`, `build/` e `analise/`, seguindo o padrão `Bnc_*` → `Bnb_*` → `Bna_*` ([dicionário](../../_src/dicionario.md)); saídas em `dados/B<n>_<coleta>/_dados-agregados/` com o prefixo do bloco.
 - Dados brutos (textos integrais) ficam em `dados/B<n>_<coleta>/_dados-brutos/`, fora do repositório público. O TCC e o repositório divulgam **apenas dados processados**.
 - Dicionário de dados com nome, descrição, tipo, unidade e origem de cada variável.
 - Todo sorteio (amostras da recodificação cega e da auditoria da coleta) usa semente fixa registrada no código.
 
 ### Análise de conteúdo do Bloco B2
 
-Concluída em 03/11/2026. A codificação é temática, comentário por comentário, na grade de 22 temas do Notion (`textos/_planejamento/_instrumentos/dicionario_temas_B2.md`), com apoio de IA, nas 1.628 avaliações: unidade de registro = tema; enumeração por presença; elogio e crítica na mesma grade; ocasião da visita e compra na loja numa coluna de contexto, sem polaridade (Bardin, 2002, p. 104–108). Base final: `_src/pyScripts/B2_Avaliacoes/2_build/B2-b_comentarios_grade2.py`; tabelas e kappa: `../analise/B2-a_temas_grade2.py`; Apêndice F do TMin.
+Concluída em 03/11/2026. A codificação é temática, comentário por comentário, na grade de 22 temas do Notion (`textos/_planejamento/_instrumentos/dicionario_temas_B2.md`), com apoio de IA, nas 1.628 avaliações: unidade de registro = tema; enumeração por presença; elogio e crítica na mesma grade; ocasião da visita e compra na loja numa coluna de contexto, sem polaridade (Bardin, 2002, p. 104–108). Base final: `_src/pyScripts/B2_Avaliacoes/2_build/B2b_comentarios_grade2.py`; tabelas e kappa: `../analise/B2a_temas_grade2.py`; Apêndice F do TMin.
 
 **Validação:** recodificação cega do autor em 199 avaliações sorteadas com estratificação, em duas rodadas (139 antes da revisão da grade e 60 depois), com kappa de Cohen agrupado e critério de 0,70. Temas: 0,83 e 0,84 (aceitos). Contexto: 0,58 e 0,52 (exploratório). "Costuma ir": 0,52 (excluído). "Voltará": 0,75. Variável abaixo do critério é reportada como exploratória e não sustenta premissa sozinha.
 
@@ -183,7 +183,7 @@ Só se sobrar tempo depois de o plano estar completo, e então em apêndice: tes
 | Premissa | Evidência | Técnica | Limitação declarada |
 |---|---|---|---|
 | **Circulação no pico** | Contagem direta na São Jogue (Bloco B3) | Pessoas que entram por hora: provável na média das visitas, otimista na maior; pessimista pelas NFC-e emitidas entre as visitas (piso) | Um estabelecimento, quatro visitas, só sexta e sábado à noite; nota só a pedido do cliente |
-| **Horas de pico equivalentes (R15 fim de semana, R05 dia útil)** | Índice "Horários de pico" do Google Maps dos concorrentes (Bloco B1) | Soma da curva média do índice das casas abertas nas horas do plano ÷ curva nas janelas das visitas; pessimista pela curva mediana (`B1-a_horas_pico_indice.py`, 12/11/2026) | Índice relativo à hora mais cheia de cada casa; proporção entre índice e circulação suposta; casas de fora de Salvador |
+| **Horas de pico equivalentes (R15 fim de semana, R05 dia útil)** | Índice "Horários de pico" do Google Maps dos concorrentes (Bloco B1) | Soma da curva média do índice das casas abertas nas horas do plano ÷ curva nas janelas das visitas; pessimista pela curva mediana (`B1a_horas_pico_indice.py`, 12/11/2026) | Índice relativo à hora mais cheia de cada casa; proporção entre índice e circulação suposta; casas de fora de Salvador |
 | **Pessoas por mesa** | Tamanho do grupo observado (Bloco B3) | Distribuição por visita | Poucas observações |
 | **Giro de mesa** | Permanência observada (Bloco B3) e política de cobrança (Bloco B1) | Permanência média; comparação descritiva dos modelos de cobrança | Permanência censurada pelo início e fim da visita |
 | **Ticket médio** | Itens fixos do cardápio (bebidas, entradas, principal, sobremesa, couvert) | **Cesta de consumo** = bebida + entrada ou prato + taxa de entrada (ponderada pelos dias em que cada taxa vale), só nas casas com taxa conhecida (decisão de 02/11/2026); o gasto por pessoa declarado no Google Maps (B2) dessas casas é a premissa R06, e a parcela da taxa na cesta separa taxa e A&B; checada contra a POF | Gasto por pessoa é premissa com faixa (casa de menor e de maior gasto) |

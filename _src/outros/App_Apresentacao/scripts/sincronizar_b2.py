@@ -1,5 +1,5 @@
 """
-Converte as tabelas da análise de conteúdo do B2 na grade 2 (22 temas; B2-a_temas_grade2.py)
+Converte as tabelas da análise de conteúdo do B2 na grade 2 (22 temas; B2a_temas_grade2.py)
 em src/conteudo/b2-temas.json, que a aba "Análise de conteúdo" do site lê.
 
 Uso: python3 scripts/sincronizar_b2.py   (ou: pnpm run b2)

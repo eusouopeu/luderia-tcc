@@ -1,7 +1,7 @@
 """
 Divisão das capitais pela REGIC 2018 (IBGE), extraída pelo autor para
-Metrópoles.md. Usado pela análise de limiares (B1-a_limiares.py) e pelas
-planilhas por grupo (B1-b_planilhas_regic.py).
+Metrópoles.md. Usado pela análise de limiares (B1a_limiares.py) e pelas
+planilhas por grupo (B1b_planilhas_regic.py).
 """
 import pathlib
 

@@ -3,7 +3,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 
-const source = fs.readFileSync(__dirname + '/instagram_snowball.user.js', 'utf8');
+// A lista do menu (lista_instagram_snowball.js) vem antes, como no carregador (@require).
+const source = fs.readFileSync(__dirname + '/lista_instagram_snowball.js', 'utf8') + '\n' + fs.readFileSync(__dirname + '/instagram_snowball.user.js', 'utf8');
 
 function carregar(contexto = {}) {
   const ambiente = {

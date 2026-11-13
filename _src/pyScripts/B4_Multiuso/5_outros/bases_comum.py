@@ -3,7 +3,7 @@ Constantes e funções comuns aos scripts do Bloco B4 (bases públicas).
 
 Estrutura de pastas (uma coleta por uso da tabela no plano, ver USOS):
   dados/B4_<uso>/_dados-brutos/<fonte>/   respostas brutas das APIs e arquivos originais
-  dados/B4_<uso>/_auditoria/<fonte>/      amostras de conferência (B4-a_auditoria_bases.py)
+  dados/B4_<uso>/_auditoria/<fonte>/      amostras de conferência (B4a_auditoria_bases.py)
   dados/B4_<uso>/_dados-agregados/        tabelas tratadas, padrão "[B4] {dado} {período} ({fonte}).csv"
 A fonte usada em mais de um uso guarda os brutos em B4_multiuso (ver FONTE_USO).
 
@@ -237,7 +237,7 @@ def conferir_capitais(df: pd.DataFrame) -> None:
             raise ValueError(f"Código {cod}: esperado {CAPITAIS[cod][0]}, IBGE devolveu {nome}")
 
 
-# Ocupações do CAGED usadas no plano (coleta em B4-c_caged.py, salários em B4-b_caged_salarios.py)
+# Ocupações do CAGED usadas no plano (coleta em B4c_caged.py, salários em B4b_caged_salarios.py)
 CBOS = {
     "513405": "Garçom",
     "513415": "Cumim",

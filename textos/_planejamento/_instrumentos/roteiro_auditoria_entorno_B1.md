@@ -28,7 +28,7 @@ O ponto de chegada é o pino do item no Maps, não a entrada da estação nem a 
 
 ## 3. Antes de começar
 
-- [ ] Rodar `B1-a_auditoria_entorno.py` depois da última coleta, para a amostra trazer os valores atuais. A chave do sorteio depende só do `place_id`: os estabelecimentos sorteados não mudam com a recoleta.
+- [ ] Rodar `B1a_auditoria_entorno.py` depois da última coleta, para a amostra trazer os valores atuais. A chave do sorteio depende só do `place_id`: os estabelecimentos sorteados não mudam com a recoleta.
 - [ ] Conferir só os itens com `fonte = maps`.
 - [ ] Abrir o Google Maps numa janela anônima, sem login, em português (`hl=pt-BR`). A janela anônima reduz a personalização dos resultados.
 - [ ] Abrir `dados/B1_entorno/_auditoria/B1_auditoria_entorno_estabelecimentos.csv` e `B1_auditoria_entorno_itens.csv`.

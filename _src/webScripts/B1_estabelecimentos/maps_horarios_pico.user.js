@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Horários de pico do Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-2
+// @version      2026.11.13-3
 // @description  Lê o gráfico "Horários de pico" (ocupação relativa por dia e hora), o "ao vivo" e o tempo de permanência dos lugares do Google Maps; seletor com as 63 casas do B1, botão "Próximo" e exportação em CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -12,6 +12,7 @@
 // @grant        GM_deleteValue
 // @grant        unsafeWindow
 // @grant        GM_download
+// @require      lista_maps_horarios_pico.js
 // ==/UserScript==
 
 /*
@@ -35,7 +36,7 @@
  *    seguir. "Abrir" faz o mesmo com a casa escolhida; "Coletar" lê o lugar
  *    aberto de novo.
  *  - A coleta se liga à casa do B1 pela distância (até 300 m, como na análise
- *    B1-a_horarios_pico.py); se o lugar aberto não for a casa escolhida, o
+ *    B1a_horarios_pico.py); se o lugar aberto não for a casa escolhida, o
  *    status avisa e a coleta vai para a casa certa (ou para nenhuma).
  *  - Fila de links (opcional): links do Maps ou nomes, um por linha.
  *
@@ -58,6 +59,7 @@
   const CHAVE_ABRIR = 'tcc-picos-abrir';
   const CHAVE_SO_FALTAM = 'tcc-picos-so-faltam';
   const CHAVE_EXPORTACAO = 'tcc-picos-exportado-em';
+  const CHAVE_CADA = 'tcc-picos-baixar-cada'; // fila: baixar o CSV de cada lugar ao terminar
   const ANTIGA_DADOS = 'tcc-picos-resultados'; // localStorage, até 2026.11.11-4
   const ANTIGA_FILA = 'tcc-picos-fila';
   const LIMITE_M = 300;
@@ -65,74 +67,15 @@
   const DIAS = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
   const DIAS_RE = [/doming|sunday/i, /segunda|monday/i, /terca|terça|tuesday/i, /quarta|wednesday/i, /quinta|thursday/i, /sexta|friday/i, /sabado|sábado|saturday/i];
 
-  // População: as 63 casas do B1 (dados/B1_estabelecimentos/_dados-agregados/B1_horarios.csv), com as
-  // coordenadas de dados/B1_entorno/_dados-agregados/B1_entorno_maps_fila.csv (Places API).
-  // [place_id, nome, capital, lat, lng]
-  const POP = [
-    ["ChIJRcWOaPabpgARDvX2Bad0qb0", "Bardo Mago", "Belo Horizonte", -19.905169, -43.915835],
-    ["ChIJpzB8zc2XpgARoJTUu90J6Pw", "Comdado Bar e Jogos", "Belo Horizonte", -19.927646, -43.954388],
-    ["ChIJsUAT-dObpgARCT2C5QpnVKU", "Garagem do Nerd", "Belo Horizonte", -19.917242, -43.901223],
-    ["ChIJ-17ZQDG9pgARc-AxpXmaNRU", "La Tabuleria", "Belo Horizonte", -19.976597, -43.977367],
-    ["ChIJx5jr3zGXpgARQGx9eX7TDmY", "LudoCafé", "Belo Horizonte", -19.944717, -43.946234],
-    ["ChIJ6ZLMZw-XpgAR_OR6SwY5xKo", "Shelf Bar e Jogos", "Belo Horizonte", -19.937803, -43.944948],
-    ["ChIJ-97tiEeNpJIRb_eV7a-sxBs", "Ludoteca Sidequest", "Belém", -1.44916, -48.486457],
-    ["ChIJyXjE650xWpMRJL-J6QbGkt4", "FORTALÚDICA - BURGERS & JOGOS", "Brasília", -15.833121, -47.983815],
-    ["ChIJ172cu2U7WpMR-GxnGmUHCkc", "Gruta BSB", "Brasília", -15.76649, -47.877086],
-    ["ChIJdUv4La46WpMRnBvNknmOqWo", "Inside Games", "Brasília", -15.82264, -47.919744],
-    ["ChIJzdFNP3AyWpMRH2P6HEuhE-I", "Loja de Jogos - Asgard", "Brasília", -15.84384, -48.029229],
-    ["ChIJ15nLgwAwWpMRY1whwD29ZSo", "Ludoteca BGC", "Brasília", -15.819414, -47.899706],
-    ["ChIJN8BZeb85WpMRgVKT05caxB4", "Utopia Games & Food", "Brasília", -15.737604, -47.895234],
-    ["ChIJGXginrXGyJQR0LFEVIzp4hI", "Metropoly Bar", "Campinas", -22.821702, -47.076784],
-    ["ChIJz-2zsLTHyJQRyn6ZZtDZgBI", "Muito Geek | TCG • Board Games • Fliperama", "Campinas", -22.883997, -47.070259],
-    ["ChIJ5ehtIcbFyJQRf7QBB6TJ6XE", "Nergeek", "Campinas", -22.88954, -47.033546],
-    ["ChIJ3ekLtDjl3JQRHwtNgmINgLo", "Alçapão Jogos", "Curitiba", -25.418006, -49.265488],
-    ["ChIJY_lqHVLl3JQRvDHacOMDKuc", "BoardZ Game Pub", "Curitiba", -25.452186, -49.268753],
-    ["ChIJOczn8z7l3JQRNBEL_ZJ3iQo", "Joyjoy Café", "Curitiba", -25.437043, -49.241465],
-    ["ChIJK5Dhtunj3JQRniPWHB3haDU", "Paladino Hobbies", "Curitiba", -25.434156, -49.302922],
-    ["ChIJc66HomXk3JQRNl28jz_VsPc", "Taverna Game House", "Curitiba", -25.441605, -49.270879],
-    ["ChIJ1wjBJD7k3JQRQi7trfp_0aQ", "Vila Celta Hobby Store - Jogos e Café", "Curitiba", -25.44302, -49.266283],
-    ["ChIJawIVeV0JM0oR5BtnD_poQeA", "CCG Floripa", "Florianópolis", -27.58156, -48.526293],
-    ["ChIJc3F7ka83J5URQZ1XTl-_iak", "Chef on Play", "Florianópolis", -27.587931, -48.523133],
-    ["ChIJJz8-gcY3J5URYdZrEXdHaAk", "Cineplay- Restaurante e Jogos", "Florianópolis", -27.611552, -48.627225],
-    ["ChIJ0yXbI35IxwcR0_jLi-uINUU", "Balboa's Hobby Games", "Fortaleza", -3.734689, -38.500261],
-    ["ChIJQURqeMZJxwcR95O-XLbS2mk", "Dominaria Cards & Games", "Fortaleza", -3.738413, -38.53968],
-    ["ChIJ89uEICDxXpMRdaEvN0XiWK0", "Paladins Game Store", "Goiânia", -16.712706, -49.264019],
-    ["ChIJHSDPTgF5GZURKmSqKITyoGM", "Arcadea Gaming Pub", "Porto Alegre", -30.021524, -51.206899],
-    ["ChIJ41pgHNFDGZURC7yTegyn7nU", "Toca do Rato - Pizzaria e Jogos de Tabuleiro", "Porto Alegre", -29.61081, -51.166349],
-    ["ChIJRUjwU66WoGgRzc9yJU7jkwM", "Nala Land - Bar de Jogos de Tabuleiro em Recife", "Recife", -8.023976, -34.895067],
-    ["ChIJPx_QtT17mQAR9cO9ARQW00g", "Cheio de Fome - Vila da Penha", "Rio de Janeiro", -22.840402, -43.308167],
-    ["ChIJu1yUroF_mQAR7qxqAfxKSw4", "Game Of Boards", "Rio de Janeiro", -22.954819, -43.180991],
-    ["ChIJ90Gs_9rVmwAReA7MnIyPLTE", "Luderia Carioca", "Rio de Janeiro", -22.9232, -43.177488],
-    ["ChIJYzHxUhR-mQARpqVtYD9th0c", "Magic Store Brazil", "Rio de Janeiro", -22.916493, -43.241072],
-    ["ChIJ1SAzAGF_mQARQgP-yrPBxbQ", "RED jogos", "Rio de Janeiro", -22.909066, -43.177219],
-    ["ChIJxXhMZN5_mQARj2JCqcWfTD8", "Reduto", "Rio de Janeiro", -22.953503, -43.196112],
-    ["ChIJOcVssmeDmQARZZrnWu2mnwA", "TabuClub", "Rio de Janeiro", -22.898584, -43.10234],
-    ["ChIJoTlvBfMbFgcRHvuCKHBQrXQ", "São Jogue - Bela Vista", "Salvador", -12.969436, -38.473681],
-    ["ChIJfWR3S3ZazpQR6aC6xpbPMwU", "60 Minutos Escape, Hamburgueria e Boardgames", "São Paulo", -23.624451, -46.669091],
-    ["ChIJYTHwWgBbzpQRFenbJdM5cxU", "Arena BG | Jogos de Tabuleiro | Hamburgueria", "São Paulo", -23.599307, -46.601688],
-    ["ChIJKeHwNv5ZzpQRlmzx9rCTWdM", "Bodogami Restaurante e Cafeteria", "São Paulo", -23.556847, -46.6366],
-    ["ChIJ__9TTnxCzpQRwVSzrOijkRY", "Bravo Jogos", "São Paulo", -23.662974, -46.525198],
-    ["ChIJRU7FUX1CzpQRj3E7xMzGPvA", "CHQ Jogos", "São Paulo", -23.668268, -46.538039],
-    ["ChIJrT_EWwBZzpQRGAZzptZbtsY", "Cartola Luderia Bar", "São Paulo", -23.563561, -46.638521],
-    ["ChIJbZRHQPRfzpQRz97-ZOg0yXA", "Castelos Bar & Boardgames", "São Paulo", -23.542591, -46.562184],
-    ["ChIJF9j3OCRbzpQRkk74_QtOk_0", "Coletivo Geek", "São Paulo", -23.614642, -46.666278],
-    ["ChIJ7_DDAlH1zpQRJVJ0UHnItH8", "Covil Game Bar", "São Paulo", -23.465036, -46.523386],
-    ["ChIJSU_eTQBDzpQRv_GdRUp0f-g", "Covil Game Bar SBC", "São Paulo", -23.687824, -46.56191],
-    ["ChIJiZJ_DnIDz5QRaVafFCXGkUE", "Dungeon Games Store", "São Paulo", -23.509005, -46.873919],
-    ["ChIJZz29dnVXzpQRvRh7_YKyUN4", "Encounter | Jogos de Tabuleiro | Board Games", "São Paulo", -23.606458, -46.673858],
-    ["ChIJBUzaCedbzpQRkSqbwW7yAvQ", "Espaço 162 - Meu Karaokê Box", "São Paulo", -23.585295, -46.611131],
-    ["ChIJ_aN4OAxXzpQR0UH63sAeVCA", "Fan Hour Games and Burgers", "São Paulo", -23.561704, -46.680473],
-    ["ChIJa3UsDhRczpQRPPSuDl6acO8", "Flow Games - Burgers, Cards & Comunidade", "São Paulo", -23.581556, -46.58485],
-    ["ChIJn7uU0RNbzpQRI4GI9KHOo_s", "Jogasampa", "São Paulo", -23.612477, -46.663246],
-    ["ChIJTaG5ALpZzpQRUDErQ-RkfTs", "Ludus Luderia", "São Paulo", -23.561838, -46.64621],
-    ["ChIJE43rt29ZzpQRnvADt6pXfto", "OMNIVERSE", "São Paulo", -23.613038, -46.676947],
-    ["ChIJo-6lZMlezpQRmgUpUPfmRIs", "Pitta's Board Games", "São Paulo", -23.547275, -46.592412],
-    ["ChIJkWsGmd1czpQRGLydxc29vbw", "Place Games", "São Paulo", -23.621405, -46.561556],
-    ["ChIJNcHw7jNYzpQRKRHPOrb4jEw", "Play Easy", "São Paulo", -23.551913, -46.656812],
-    ["ChIJsU5BAwBRzpQRAgLVvqg68os", "Tubaleria", "São Paulo", -23.632058, -46.709815],
-    ["ChIJi5zbZadgzpQRIYeuK_eqQio", "XPlace", "São Paulo", -23.532507, -46.515814],
-    ["ChIJfyav9YI9uAARjwbBqcRm2_k", "Café Geek Cafeteria e Ludoteca", "Vitória", -20.344746, -40.310846],
-  ].map(([id, nome, capital, lat, lng]) => ({ id, nome, capital, lat, lng }));
+  // A lista vem de lista_maps_horarios_pico.js, lida pelo carregador (@require) antes deste arquivo.
+  if (typeof LISTA_MAPS_HORARIOS_PICO === 'undefined') {
+    const msg = '[Horários de pico] lista_maps_horarios_pico.js não foi carregada: reinstale o carregador (python3 _src/outros/G5_outros/gerar_carregadores.py --abrir).';
+    console.error(msg);
+    if (typeof alert === 'function') alert(msg);
+    return;
+  }
+  // Itens do menu em lista_maps_horarios_pico.js (pasta deste script).
+  const POP = LISTA_MAPS_HORARIOS_PICO.map(([id, nome, capital, lat, lng]) => ({ id, nome, capital, lat, lng }));
 
   // ---------- utilidades ----------
 
@@ -643,6 +586,11 @@
         gravar(CHAVE_DADOS, dados);
       }
     }
+    // Opção "baixar cada lugar": o CSV só do lugar que acabou de ser lido (o registro mais recente).
+    if (ler(CHAVE_CADA, false)) {
+      const ultimo = lugaresGuardados().reduce((a, l) => ((l.coletado_ms || 0) > (a?.coletado_ms || 0) ? l : a), null);
+      if (ultimo) baixarCsv([ultimo], nomeCurto(ultimo.nome || 'lugar'));
+    }
     fila.pos += 1;
     if (fila.pos >= fila.itens.length || fila.parar) {
       fila.ativa = false;
@@ -680,12 +628,18 @@
     return /[";\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
   }
 
-  function baixarCsv() {
-    const linhas = linhasCsv(lugaresGuardados());
+  // "Ludus Luderia" -> "ludus_luderia" (nome do arquivo de um lugar só).
+  const nomeCurto = (s) => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') || 'lugar';
+
+  // Sem argumentos, tudo o que está guardado; com "lugar", só os registros dados, e o nome
+  // ganha o lugar no fim (maps_horarios_pico_<data>_<hora>_<lugar>.csv: o build lê os dois e
+  // fica com a coleta mais recente de cada lugar).
+  function baixarCsv(lugares = null, lugar = '') {
+    const linhas = linhasCsv(lugares || lugaresGuardados());
     const texto = '﻿' + [COLS.join(';'), ...linhas.map((l) => COLS.map((c) => celula(l[c])).join(';'))].join('\r\n');
     const d = new Date();
     const p = (n) => String(n).padStart(2, '0');
-    const nome = `maps_horarios_pico_${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}.csv`;
+    const nome = `maps_horarios_pico_${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}${lugar ? `_${lugar}` : ''}.csv`;
     const url = URL.createObjectURL(new Blob([texto], { type: 'text/csv;charset=utf-8' }));
     const comum = () => {
       const a = document.createElement('a');
@@ -700,7 +654,7 @@
     if (typeof GM_download === 'function') {
       try { GM_download({ url, name: `TCC Luderia/B1_estabelecimentos/_dados-brutos/horarios_pico/${nome}`, saveAs: false, onerror: comum }); } catch (e) { comum(); }
     } else comum();
-    gravar(CHAVE_EXPORTACAO, Date.now());
+    if (!lugares) gravar(CHAVE_EXPORTACAO, Date.now());
     return linhas.length;
   }
 
@@ -932,7 +886,8 @@
       criar('div', { className: 'caixa' }, [el.grade]),
       criar('div', { className: 'linha' }, [bCsv, bLimpar, el.pendentes]),
       criar('details', {}, [criar('summary', { textContent: 'Fila de links' }), el.fila,
-        criar('div', { className: 'linha' }, [bFila, el.parar]), el.filaInfo]),
+        criar('div', { className: 'linha' }, [bFila, el.parar,
+          selo('cada lugar', 'Baixar cada lugar: na fila, baixa o CSV de cada lugar assim que ele é lido (além do CSV geral do botão CSV)', ler(CHAVE_CADA, false), (v) => gravar(CHAVE_CADA, v))]), el.filaInfo]),
       el.status,
     ]);
     cabecalho.onclick = () => { painel.classList.toggle('min'); minimizar.replaceChildren(icone(painel.classList.contains('min') ? 'plus' : 'minus')); };

@@ -9,7 +9,7 @@ A (concorrentes do B1), B (contagem direta do B3), C (bases públicas do B4),
 D (matriz de evidências), E (registro de premissas), F (análise de conteúdo
 das avaliações do B2) e G (Monte Carlo). Os números vêm dos dados e do modelo
 financeiro (`gerar_modelo_financeiro.py`), não do texto; os do F, das saídas de
-`_src/pyScripts/B2_Avaliacoes/3_analise/B2-a_temas_grade2.py`. Estilos, rodapé e margens são os do .docx principal.
+`_src/pyScripts/B2_Avaliacoes/3_analise/B2a_temas_grade2.py`. Estilos, rodapé e margens são os do .docx principal.
 
 Toda vez que o principal mudar, rodar de novo: o script confere se o principal
 cita exatamente os apêndices A a G e se os números-chave citados no texto

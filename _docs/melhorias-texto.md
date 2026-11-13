@@ -47,7 +47,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D61 — Critério do B5 × coletas de 03/11 (03/11/2026).** Cap. 3 (3.2.4: "os cinco primeiros anúncios de cada busca, na ordem do site") × dados do cap. 9 (Tabela 9.1). As exportações de 03/11 01:11 não têm a posição na busca (o coletor ordenava por preço); o build usa, nelas, até 5 ofertas por site espaçadas na ordem de preço. O texto descreve o critério, e os números só o seguem depois da recoleta com o coletor 2026.11.03-8 (pendências, B5).
 
 
-**D59 — Site e pictogramas com o livro de códigos antigo (03/11/2026).** `_src/outros/App_Apresentacao` (`b2-conteudo.json`, `B2-a_conteudo_site.py`) e `B2-a_pictogramas.py` × caps. 5 e 6 e Apêndice F. O site e os pictogramas usam as tabelas `B2_bardin_*` (livro de 15/10, 1.588 avaliações), e o texto usa a grade de 22 temas (1.628 avaliações). Sugestão: refazer o site e os pictogramas com `B2_temas_*.csv` antes da defesa.
+**D59 — Site e pictogramas com o livro de códigos antigo (03/11/2026).** `_src/outros/App_Apresentacao` (`b2-conteudo.json`, `B2a_conteudo_site.py`) e `B2a_pictogramas.py` × caps. 5 e 6 e Apêndice F. O site e os pictogramas usam as tabelas `B2_bardin_*` (livro de 15/10, 1.588 avaliações), e o texto usa a grade de 22 temas (1.628 avaliações). Sugestão: refazer o site e os pictogramas com `B2_temas_*.csv` antes da defesa.
 
 **D54 — Figura 6.2 com a base antiga do B2 (02/11/2026; Figura 6.1 até o TMin v20).** Cap. 6 (6.3, Figura 6.2: 602 declarações, 352 sem a Bodogami) × 6.3 e cap. 9 (675 declarações de 12 concorrentes, na base de 769 declarações com faixa de preço). Sugestão: regerar a Figura 6.2 com `B2_avaliacoes_periodo.csv` atual e citar as mesmas contagens nos dois parágrafos.
 

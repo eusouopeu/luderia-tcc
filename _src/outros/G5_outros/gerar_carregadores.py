@@ -9,7 +9,9 @@ Como funciona:
   - @name e @namespace iguais aos do script fazem o Tampermonkey tratar o
     carregador como atualização do script já instalado: ele o substitui e
     mantém o armazenamento (o sal do maps_avaliacoes, por exemplo);
-  - mudança só no corpo do script vale no próximo recarregar da página;
+  - a lista do menu (lista_<script>.js, @require relativo no cabeçalho do script) entra
+    como outro @require file:///, antes do script;
+  - mudança só no corpo do script ou na lista vale no próximo recarregar da página;
   - mudança no cabeçalho (novo @match, @grant, @run-at...) exige instalar o
     carregador de novo. O script guarda a impressão dos cabeçalhos em
     Webscripts/_carregadores/cabecalhos.json e lista os carregadores que mudaram; com
@@ -55,12 +57,24 @@ def cabecalho(script):
 
 def carregador(script, linhas):
     saida = ["// ==UserScript=="]
+    listas = []
     for l in linhas:
         if l.startswith("// @description"):
             l = l.replace("@description  ", "@description  [carregador local] ", 1)
-        if l.startswith(("// @require", "// @updateURL", "// @downloadURL")):
+        if l.startswith("// @require"):
+            # @require relativo (lista_<script>.js, a lista do menu): vira file:/// da pasta do
+            # script e entra antes dele, para a lista existir quando o script rodar.
+            alvo = l.split(None, 2)[2].strip()
+            if not re.match(r"[a-z]+:", alvo):
+                arquivo = (script.parent / alvo).resolve()
+                if not arquivo.exists():
+                    raise FileNotFoundError(f"{script.name}: @require {alvo} não existe")
+                listas.append(f"// @require      {arquivo.as_uri()}")
+            continue
+        if l.startswith(("// @updateURL", "// @downloadURL")):
             continue
         saida.append(l)
+    saida.extend(listas)
     saida.append(f"// @require      {script.resolve().as_uri()}")
     saida.append("// ==/UserScript==")
     saida.append(f"// Gerado por gerar_carregadores.py. O código está em {script.name}, lido do disco a cada página.")

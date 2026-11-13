@@ -9,13 +9,13 @@ Auditoria de 13/11/2026 sobre os CSVs em `dados/` (só a versão mais recente de
 | Webscript | Coleta auditada | Situação |
 |---|---|---|
 | `maps_entorno` | 13/11, versão 2026.11.13-2 | **Incompleta:** 40 de 63 casas (faltam 22 de São Paulo e a de Vitória); só há `resumo` parcial, sem `resultados` nem `shoppings`. **Não íntegra:** shoppings a 1.000 m mudam de 12/11 para 13/11 em 23 de 38 casas |
-| `instagram_coletor` | 12/11 (61 perfis) e recoleta de 4 perfis | Íntegra em 59 perfis. **Incompletas:** Cineplay (0 posts no período) e Fortalúdica (3), coletadas antes da correção dos fixados. Nome de arquivo com data errada e fora da convenção |
-| `portais_aluguel` | 13/11 01:37 (1.051 anúncios, 33 buscas) | **Incompletas:** OLX Caminho das Árvores (58 de 1.423) e OLX Chame-Chame (0 de 1.424). Motivo de parada errado em 4 buscas; `tipo` vazio nos 323 anúncios da OLX; 296 linhas de 03/11 misturadas |
+| `instagram` | 12/11 (61 perfis) e recoleta de 4 perfis | Íntegra em 59 perfis. **Incompletas:** Cineplay (0 posts no período) e Fortalúdica (3), coletadas antes da correção dos fixados. Nome de arquivo com data errada e fora da convenção |
+| `aluguel` | 13/11 01:37 (1.051 anúncios, 33 buscas) | **Incompletas:** OLX Caminho das Árvores (58 de 1.423) e OLX Chame-Chame (0 de 1.424). Motivo de parada errado em 4 buscas; `tipo` vazio nos 323 anúncios da OLX; 296 linhas de 03/11 misturadas |
 | `maps_horarios_pico` | 12/11 13:53 (63 de 63 casas) | Completa. **Não íntegra:** `permanencia` vazia nas 63 casas; 7 casas "sem horários de pico" sem prova de que o gráfico não existe |
-| `precos_itens` | 03/11 (731 ofertas, 34 itens) | **Incompleta:** OB42 e MO06 sem oferta; EQ03 com 1 e CB14 com 2 (mínimo 3) |
+| `mobiliario` | 03/11 (731 ofertas, 34 itens) | **Incompleta:** OB42 e MO06 sem oferta; EQ03 com 1 e CB14 com 2 (mínimo 3) |
 | `maps_avaliacoes` | 12/11 (16 casas, versão 2026.11.12-2) | Íntegra (lidas = linhas, sem `review_id` repetido, `place_id` em todas). Risco: as duas São Jogue geram o mesmo nome de arquivo |
-| `acervo_coletor` | 12/11, Arena BG | Íntegra (547 títulos, igual ao total da Ludopedia). Varredura das 63 casas não feita (depois da banca) |
-| `cardapio_coletor`, `instagram_snowball`, `B4-w_observassa` | sem coleta nova | Nada a auditar |
+| `acervo` | 12/11, Arena BG | Íntegra (547 títulos, igual ao total da Ludopedia). Varredura das 63 casas não feita (depois da banca) |
+| `cardapio`, `instagram_snowball`, `B4-w_observassa` | sem coleta nova | Nada a auditar |
 
 Fora dos scripts: os 9 "coletar" do `B2_cobertura_coleta.csv` já foram coletados em 12/11 (13:07 a 13:33); o build é de 11:51 e não foi rodado de novo. Há downloads em pasta errada: `fiofj.csv` (parcial-030 do entorno), 3 CSVs de entorno em `dados/B5_aluguel/_dados-brutos/` e `2026-11-12_arenabg_acervo.csv` em `dados/B1_entorno/_dados-brutos/`.
 
@@ -63,7 +63,7 @@ Ordem de prioridade: 1 (entorno), 2 (aluguel), 3 (horários de pico), 4 (Instagr
       de paradas da mesma estação até 150 m e a exclusão de resultados que são linha, não
       estação; cubra com fixture da RED jogos.
 
-2. `B5_ativos_fixos/portais_aluguel.user.js`
+2. `B5_ativos_fixos/aluguel.user.js`
    Evidência: `dados/B5_aluguel/_dados-brutos/2026-11-13_0121_fila_resumo_aluguel.csv` e
    `2026-11-13_0137_portais_anuncios_aluguel.csv`.
    a) OLX sem o bairro: "caminho-das-arvores" leu 58 de 1.423 e "chame-chame" 0 de 1.424. O
@@ -94,7 +94,7 @@ Ordem de prioridade: 1 (entorno), 2 (aluguel), 3 (horários de pico), 4 (Instagr
       mostra o gráfico" (painel carregado até o fim, seção ausente) de "gráfico não carregou"
       (vira falha, com "!" no seletor), e grave em `leitura` a prova usada.
 
-4. `B1_estabelecimentos/instagram_coletor.user.js`
+4. `B1_estabelecimentos/instagram.user.js`
    Evidência: `dados/B1_redes_sociais/_dados-brutos/instagram_posts_cineplay_sc_2026-11-13.csv`
    (14 posts: 12 de novembro e 2 de abril, 0 no período de 01/07 a 01/11, perfil com 1.733
    posts) e `…_fortaludica_…` (12 posts, 3 no período).
@@ -107,7 +107,7 @@ Ordem de prioridade: 1 (entorno), 2 (aluguel), 3 (horários de pico), 4 (Instagr
    c) Nome do arquivo: `exportar()` usa `new Date().toISOString()` (coleta de 12/11 às 22:15
       saiu com 2026-11-13) e o padrão `instagram_posts_<perfil>_<data>.csv`. Use a data local e
       a convenção do projeto: `AAAA-MM-DD_<estabelecimento>_instagram_<perfis|posts>.csv`.
-      Procure o mesmo `toISOString().slice(0, 10)` nos outros scripts (o `cardapio_coletor`
+      Procure o mesmo `toISOString().slice(0, 10)` nos outros scripts (o `cardapio`
       tem, na linha 347) e troque por data local.
    d) Período fixo: Bardo Mago e Comdado foram coletados em 12/11 com 01/09 a 01/10 enquanto
       os outros 59 usaram 01/07 a 01/11: `PERIODO_PADRAO` (linha 995) ainda é 01/09 a 01/10 e
@@ -115,7 +115,7 @@ Ordem de prioridade: 1 (entorno), 2 (aluguel), 3 (horários de pico), 4 (Instagr
       período do painel for diferente do padrão e recuse exportar perfis com períodos distintos
       no mesmo arquivo.
 
-5. `B5_ativos_fixos/precos_itens.user.js`
+5. `B5_ativos_fixos/mobiliario.user.js`
    Evidência: `dados/B5_mobiliario/_dados-brutos/2026-11-03_0111_*_precos.csv` e
    `dados/B5_reforma/_dados-brutos/2026-11-03_0111_obra_reforma_precos.csv`.
    OB42 (letreiro de fachada) e MO06 (balcão de atendimento e caixa) não têm linha; EQ03 tem

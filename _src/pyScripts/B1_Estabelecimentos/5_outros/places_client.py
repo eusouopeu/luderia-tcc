@@ -18,12 +18,12 @@ SEARCH_FIELD_MASK = ",".join(
         # Sem este campo na máscara a API não devolve o token e a busca para
         # na primeira página (20 resultados). Foi o que aconteceu na coleta de
         # setembro de 2026: nenhuma das 403 buscas passou de 20 (ver
-        # B1-c_places.py --repaginar).
+        # B1c_places.py --repaginar).
         "nextPageToken",
     ]
 )
 
-# Máscara da repaginação (B1-c_places.py --repaginar): traz também o que a
+# Máscara da repaginação (B1c_places.py --repaginar): traz também o que a
 # medição precisa (volume de avaliações, status e categorias), para não pagar
 # uma chamada de detalhes por candidato novo. Esses campos levam a chamada ao
 # SKU "Text Search Enterprise".

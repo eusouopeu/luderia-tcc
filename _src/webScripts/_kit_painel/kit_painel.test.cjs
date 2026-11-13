@@ -70,3 +70,37 @@ test('cai no download comum quando o Tampermonkey recusa', async () => {
   assert.equal(r.via, 'navegador');
   assert.equal(cliques, 1);
 });
+
+test('opção da fila "baixar cada item": desligada por padrão e gravada por script', () => {
+  const v = new Map();
+  const k = kit({ GM_getValue: (c, p) => (v.has(c) ? v.get(c) : p), GM_setValue: (c, x) => v.set(c, x) });
+  assert.equal(k.baixarCada, false);
+  assert.equal(typeof k.botaoBaixarCada, 'function');
+  v.set('t:kit:baixarcada', true);
+  assert.equal(kit({ GM_getValue: (c, p) => (v.has(c) ? v.get(c) : p), GM_setValue: () => {} }).baixarCada, true);
+});
+
+// Cada webscript com menu lê os itens de lista_<script>.js (o carregador a põe antes, com
+// @require). Sem a lista, o script avisa e para em vez de quebrar no meio.
+const COM_LISTA = ['B1_estabelecimentos/acervo', 'B1_estabelecimentos/cardapio', 'B1_estabelecimentos/instagram',
+  'B1_estabelecimentos/instagram_snowball', 'B1_estabelecimentos/maps_entorno', 'B1_estabelecimentos/maps_horarios_pico',
+  'B2_avaliacoes_recentes/maps_avaliacoes', 'B5_ativos_fixos/aluguel', 'B5_ativos_fixos/mobiliario'];
+
+test('cada webscript com menu declara a lista no cabeçalho e para sem ela', () => {
+  for (const rel of COM_LISTA) {
+    const dir = path.join(__dirname, '..', path.dirname(rel));
+    const nome = path.basename(rel);
+    const fonte = fs.readFileSync(path.join(dir, `${nome}.user.js`), 'utf8');
+    assert.ok(fs.existsSync(path.join(dir, `lista_${nome}.js`)), `falta lista_${nome}.js`);
+    assert.match(fonte, new RegExp(`// @require\\s+lista_${nome}\\.js\\n`), `${nome}: sem @require da lista`);
+    const avisos = [];
+    const ctx = { alert: (m) => avisos.push(m), console: { error: () => {}, info: () => {}, log: () => {} } };
+    const ini = fonte.indexOf('  if (typeof LISTA_');
+    assert.ok(ini > 0, `${nome}: sem guarda da lista`);
+    const guarda = fonte.slice(ini, fonte.indexOf('\n  }\n', ini) + 4);
+    vm.runInNewContext(`(function () {\n${guarda}\n  globalThis.seguiu = true;\n})();`, ctx);
+    assert.equal(ctx.seguiu, undefined, `${nome}: seguiu sem a lista`);
+    assert.equal(avisos.length, 1, `${nome}: não avisou`);
+    assert.match(avisos[0], new RegExp(`lista_${nome}\\.js`));
+  }
+});

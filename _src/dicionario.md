@@ -10,7 +10,7 @@ Legenda: `Bn` = código do bloco de dados (B1 a B4); `<x>` = parte variável; `[
 |---|---|---|
 | Coleta em `_src/` | `_src/pyScripts/B<n>_<Coleta>/`, uma pasta por coleta de `dados/`, com a inicial maiúscula | `_src/pyScripts/B4_Marketing/`, `_src/pyScripts/B5_Mobiliario/` |
 | Subpastas de cada coleta em `_src/` | `1_collect/`, `2_build/`, `3_analise/` (scripts por etapa), `4_logs/` (fora do git) e `5_outros/` (módulos auxiliares e arquivos de apoio). As cinco existem em toda coleta; pasta vazia leva `.gitkeep` | `B1_Cardapios/5_outros/tessdata/` |
-| Auxiliar comum a várias coletas do bloco | no B4, `B4_Multiuso/5_outros/` (módulos) e `B4_Multiuso/3_analise/` (script que vale para todas as fontes) | `_src/pyScripts/B4_Multiuso/5_outros/bases_comum.py`, `B4_Multiuso/3_analise/B4-a_auditoria_bases.py` |
+| Auxiliar comum a várias coletas do bloco | no B4, `B4_Multiuso/5_outros/` (módulos) e `B4_Multiuso/3_analise/` (script que vale para todas as fontes) | `_src/pyScripts/B4_Multiuso/5_outros/bases_comum.py`, `B4_Multiuso/3_analise/B4a_auditoria_bases.py` |
 | Utilitários gerais | `_src/outros/G<n>_<função>/`: `G1_planilhas`, `G2_graficos`, `G3_modelo_financeiro`, `G4_textos`, `G5_outros`; os apps em `App_<Nome>/` | `_src/outros/G5_outros/log_execucao.py` |
 | Webscripts (Tampermonkey) | `_src/webScripts/B<n>_<nome>/`, uma pasta por bloco, com o script (`<conteúdo>.user.js`) e o teste (`<conteúdo>.test.cjs`) lado a lado; carregadores em `_src/webScripts/_carregadores/` (fora do git) e kit dos painéis em `_src/webScripts/_kit_painel/` | `_src/webScripts/B1_estabelecimentos/maps_entorno.user.js` |
 | Coleta em `dados/` | `B<n>_<coleta>/`, direto na raiz de `dados/`: o código do bloco e o que a coleta descreve. B4: uma por uso (`USOS`); B5: `aluguel`, `reforma` (obra e SINAPI) e `mobiliario` (mobiliário, cozinha e bar, equipamentos, jogos e o orçamento) | `dados/B1_entorno/`, `dados/B4_financeiro/` |
@@ -44,9 +44,9 @@ Legenda: `Bn` = código do bloco de dados (B1 a B4); `<x>` = parte variável; `[
 
 | Objeto | Convenção atual | Exemplo |
 |---|---|---|
-| Script Python de etapa | `[Bn]-[c\|b\|a]_<objeto>.py`: código do bloco ao qual o objeto da ação pertence, hífen, primeira letra da ação (`c` collect, coleta; `b` build, tratamento; `a` analise), `_`, descrição do objeto em minúsculas com `_`. Fica na subpasta da etapa | `build/B1-b_cardapios_ocr.py`, `analise/B1-a_grafico_limiares.py` |
+| Script Python de etapa | `[Bn][c\|b\|a]_<objeto>.py`: código do bloco ao qual o objeto da ação pertence, primeira letra da ação colada ao código (`c` collect, coleta; `b` build, tratamento; `a` analise), `_`, descrição do objeto em minúsculas com `_`. Fica na subpasta da etapa; o log em `4_logs/` leva o mesmo nome | `2_build/B1b_cardapios_ocr.py`, `3_analise/B1a_grafico_limiares.py` |
 | Módulo auxiliar | `<tema>_<comum\|client>.py` ou nome do que faz, sem código de bloco nem etapa; fica em `outros/` | `outros/bases_comum.py`, `outros/places_client.py`, `outros/recorte_rm.py` |
-| Webscript (Tampermonkey) | `<site>_<objeto>.user.js`; teste ao lado, `<mesmo nome>.test.cjs` | `maps_avaliacoes.user.js`, `maps_avaliacoes.test.cjs` |
+| Webscript (Tampermonkey) | `<objeto>.user.js`, ou `<site>_<objeto>.user.js` quando há mais de um script do objeto; teste ao lado, `<mesmo nome>.test.cjs`; itens do menu em `lista_<mesmo nome>.js` | `aluguel.user.js`, `aluguel.test.cjs`, `lista_aluguel.js`; `maps_avaliacoes.user.js` |
 | Versão do webscript (`@version`) | `AAAA.MM.DD-n` (n-ésima versão do dia) | `2026.10.13-7` |
 | Painel do webscript | kit comum `_src/webScripts/_kit_painel/kit_painel.js`, copiado para dentro do script entre `// >>> kit_painel` e `// <<< kit_painel` por `node _src/webScripts/_kit_painel/embutir.js` (não editar a cópia); o teste `kit_painel.test.cjs` falha se alguma cópia ficar velha. Usam o kit: coletor e snowball do Instagram, cardápios e acervos | `const kit = kitPainel({ id: 'acv' })` |
 | Utilitário geral | verbo no infinitivo + objeto, em `_src/outros/` | `gerar_carregadores.py`, `sincronizar_vault.sh`, `log_execucao.py` |
@@ -59,6 +59,8 @@ Nomes com hífen não podem ser importados como módulo Python. Por isso, códig
 |---|---|---|
 | 12/10/2026 | `<etapa>_bloco_<letra>_<conteúdo>.py` e prefixos soltos do desenho anterior (`bloco_b_*`, `collect_bases_*`, `contagem_*`, `cardapios_*`) | `collect_bloco_b_details.py`, `build_bloco_c_analise.py` |
 | 14/10/2026 | `<etapa>_Bn_<conteúdo>.py`, com etapa `collect`, `build` ou `analise` (no B5, também `scrape`) | `build_B1_cardapios_ocr.py`, `analise_B1_grafico_limiares.py` |
+| 13/11/2026 | `[Bn]-[c\|b\|a]_<objeto>.py`, com hífen entre o bloco e a etapa (scripts e logs) | `B1-b_cardapios_ocr.py`, `B1-a_grafico_limiares.py` |
+| 13/11/2026 | webscripts `acervo_coletor`, `cardapio_coletor`, `instagram_coletor`, `portais_aluguel` e `precos_itens` (`.user.js` e `.test.cjs`), com a lista do menu dentro do script | `precos_itens.user.js` (hoje `mobiliario.user.js`) |
 
 ## 3. Arquivos de dados
 
@@ -72,7 +74,7 @@ Nomes com hífen não podem ser importados como módulo Python. Por isso, códig
 | Coleta de rede social | `AAAA-MM-DD_<estabelecimento>_instagram_<perfis\|posts\|seguindo>.csv`; duplicata do mesmo dia leva `_2`. As listas `seguindo` (snowball) ficam em `dados/B1_redes_sociais/_dados-brutos/seguindo/`, fora do git; o build gera `B1_snowball_candidatos_grau3.csv` (recorte para classificar) e `B1_snowball_proximas_sementes.{csv,txt}` (fila de sementes) | `2026-10-11_bodogami_instagram_posts.csv` |
 | Coleta de avaliações do Maps | `AAAA-MM-DD_<lugar>_maps_avaliacoes_<periodo\|filtros\|tudo>.csv` | `2026-10-13_boardz_game_pub_maps_avaliacoes_tudo.csv` |
 | Exportação do app de observação | `contagem_<conteúdo>.csv` | `contagem_visitas.csv`, `contagem_30min.csv` |
-| Log de execução | `<script>_AAAA-MM-DD_HHMM.log`, em `logs/` do bloco (fora do git) | `B1-b_planilha_2026-10-14_0930.log` |
+| Log de execução | `<script>_AAAA-MM-DD_HHMM.log`, em `logs/` do bloco (fora do git) | `B1b_planilha_2026-10-14_0930.log` |
 | PDF da bibliografia | `Sobrenome[ e Sobrenome \| et al.] (ano) - Título curto.pdf`; TCC com a sigla da instituição no fim; sem autor, `Sem autor (s.d.)`. Trecho fotografado, em `trechos_citados/`, `Autor (ano) - p. <páginas>.pdf` | `F3_Livros/Assaf Neto (2014) - Finanças corporativas e valor.pdf`, `F4_TCC_plano_negocios/Coelho (2021) - Plano de negócios Casa 388 bar e restaurante (UFMG).pdf` |
 
 Códigos das partes do nome das saídas:
@@ -182,16 +184,16 @@ Onde fica o marcador de cada coletor (levantamento de 12/11/2026; mudou só o qu
 
 | Coletor | O que é "vazio" | Marcador | Build que lê | Mudou? |
 |---|---|---|---|---|
-| `maps_avaliacoes.user.js` (B2) | lugar sem avaliação no recorte | CSV-resumo por lugar, `AAAA-MM-DD_<lugar>_maps_avaliacoes_resumo.csv`, baixado sempre, mesmo com zero lidas (desde 2026.11.12-2) | `B2-b_avaliacoes.py` (`resumos/`) | sim |
-| `maps_horarios_pico.user.js` (B1) | lugar sem gráfico de "Horários de pico" | linha do lugar no CSV, com `situacao` = "sem horários de pico" (já existia) | `B1-a_horarios_pico.py` (vazia, refazer, coletar) | só o build |
-| `maps_entorno.user.js` (B1) | nenhuma estação ou shopping no raio | linha do lugar no resumo com contagem 0 (branco = busca não feita) e `situacao` | `B1-b_resumo.py` | não (já distingue) |
-| `instagram_coletor.user.js` (B1) | perfil sem post no período | linha do perfil no CSV de perfis, baixado sempre ao fim de cada coleta (mesmo com o download automático desligado), com `situacao` (desde 2026.11.12-2) | Notion "A - Estabelecimentos" | sim (só o marcador) |
-| `instagram_snowball.user.js` (B1) | perfil sem lista de "seguindo" | CSV de seguindo, sempre baixado | `B1-b_instagram_seguindo.py` (não depende) | não |
-| `cardapio_coletor.user.js` (B1) | casa sem cardápio | `B1_busca_minuciosa_taxa_cardapio_acervo.csv` (busca à mão); no menu do painel, a última extração sem itens fica `refazer` (!) e a de fontes divergentes, `conferir` (◐) (desde 2026.11.12-2) | `B1-b_cardapios_planilha.py` (não depende) | não |
-| `acervo_coletor.user.js` (B1) | acervo publicado sem título | `AAAA-MM-DD_<chave>_acervo.csv`, baixado sempre, com `situacao` (uma linha de jogo vazio quando `vazia`) | `B1-c_jogos_dos_acervos.py` lê o `ludopedia_<chave>.txt` (não depende do CSV) | novo (12/11/2026) |
-| `acervo_coletor.user.js` (B1), varredura | casa do B1 sem acervo em nenhuma das três plataformas | `AAAA-MM-DD_acervos_varredura.csv`, uma linha por casa e acervo achado (não exclusiva) e uma sem fonte para a casa sem achado; `situacao` coletar, vazia ou refazer | nenhum script lê ainda | novo (12/11/2026) |
-| `precos_itens.user.js` (B5) | item sem oferta | nenhum; item sem preço sai da soma, buscado ou não | `B5-b_orcamento_itens.py` (não depende: a cobertura de itens com preço decide) | não |
-| `portais_aluguel.user.js` (B5) | busca sem anúncio | parada "página vazia" no painel | `B5-b_anuncios_aluguel.py` (não depende) | não |
+| `maps_avaliacoes.user.js` (B2) | lugar sem avaliação no recorte | CSV-resumo por lugar, `AAAA-MM-DD_<lugar>_maps_avaliacoes_resumo.csv`, baixado sempre, mesmo com zero lidas (desde 2026.11.12-2) | `B2b_avaliacoes.py` (`resumos/`) | sim |
+| `maps_horarios_pico.user.js` (B1) | lugar sem gráfico de "Horários de pico" | linha do lugar no CSV, com `situacao` = "sem horários de pico" (já existia) | `B1a_horarios_pico.py` (vazia, refazer, coletar) | só o build |
+| `maps_entorno.user.js` (B1) | nenhuma estação ou shopping no raio | linha do lugar no resumo com contagem 0 (branco = busca não feita) e `situacao` | `B1b_resumo.py` | não (já distingue) |
+| `instagram.user.js` (B1) | perfil sem post no período | linha do perfil no CSV de perfis, baixado sempre ao fim de cada coleta (mesmo com o download automático desligado), com `situacao` (desde 2026.11.12-2) | Notion "A - Estabelecimentos" | sim (só o marcador) |
+| `instagram_snowball.user.js` (B1) | perfil sem lista de "seguindo" | CSV de seguindo, sempre baixado | `B1b_instagram_seguindo.py` (não depende) | não |
+| `cardapio.user.js` (B1) | casa sem cardápio | `B1_busca_minuciosa_taxa_cardapio_acervo.csv` (busca à mão); no menu do painel, a última extração sem itens fica `refazer` (!) e a de fontes divergentes, `conferir` (◐) (desde 2026.11.12-2) | `B1b_cardapios_planilha.py` (não depende) | não |
+| `acervo.user.js` (B1) | acervo publicado sem título | `AAAA-MM-DD_<chave>_acervo.csv`, baixado sempre, com `situacao` (uma linha de jogo vazio quando `vazia`) | `B1c_jogos_dos_acervos.py` lê o `ludopedia_<chave>.txt` (não depende do CSV) | novo (12/11/2026) |
+| `acervo.user.js` (B1), varredura | casa do B1 sem acervo em nenhuma das três plataformas | `AAAA-MM-DD_acervos_varredura.csv`, uma linha por casa e acervo achado (não exclusiva) e uma sem fonte para a casa sem achado; `situacao` coletar, vazia ou refazer | nenhum script lê ainda | novo (12/11/2026) |
+| `mobiliario.user.js` (B5) | item sem oferta | nenhum; item sem preço sai da soma, buscado ou não | `B5b_orcamento_itens.py` (não depende: a cobertura de itens com preço decide) | não |
+| `aluguel.user.js` (B5) | busca sem anúncio | parada "página vazia" no painel | `B5b_anuncios_aluguel.py` (não depende) | não |
 | `collect/*.py` (B1, B4, B5) | API ou base sem resultado | log de `logs/` (`log_execucao.py`), com o que cada chamada devolveu | builds de cada bloco (não dependem) | não |
 
 ## 5. Variáveis no código

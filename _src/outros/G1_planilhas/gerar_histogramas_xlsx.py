@@ -14,13 +14,13 @@ Abas:
      cobram têm outro modelo de preço e ficam fora das abas 1 e 2); faixas de R$ 5 da taxa ponderada (média dos dias em
      que a casa abre), da mais barata e da mais cara de cada casa; barras =
      n.º de casas. A base (Tabela 1.4) traz a taxa de cada dia da semana nos
-     dias em que a casa abre (TAXAS de B2-a_gasto_por_pessoa.py e horários de
+     dias em que a casa abre (TAXAS de B2a_gasto_por_pessoa.py e horários de
      B1_resumo_estabelecimentos.xlsx); ponderada, mínima e máxima são fórmulas.
   2. Taxas por dia - média, mediana, mínimo e máximo da taxa em cada dia,
      entre as casas abertas, e quantas cobram o próprio máximo, o próprio
      mínimo, um valor único em todos os dias ou um valor intermediário (as
      quatro somam as casas abertas no dia). Fórmulas sobre a Tabela 1.4.
-  3. Funcionamento - fluxo por dia × hora (B1-a_fluxo_dia_hora.py), média e
+  3. Funcionamento - fluxo por dia × hora (B1a_fluxo_dia_hora.py), média e
      mediana entre as casas abertas; linha = n.º das 54 casas da população
      abertas na hora (valores agregados pelo script de origem).
   4. Cestas - faixas de R$ 10 da cesta sem a taxa (bebida + hambúrguer) e com
@@ -61,7 +61,7 @@ VALORES = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "5_grafi
 SAIDA = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "5_graficos" / "Histogramas.xlsx"
 CESTA = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados" / "gasto_por_pessoa" / "B1_cesta_casas_com_taxa.csv"
 SCRIPT_TAXAS = ROOT / "_src" / "pyScripts" / "B2_Avaliacoes" / "3_analise" / \
-    "B2-a_gasto_por_pessoa.py"
+    "B2a_gasto_por_pessoa.py"
 
 # Tailwind CSS v3 (mesmas cores de planilha_estilo.py)
 ROXO_800, ROXO_500, ROXO_300 = "6B21A8", "A855F7", "D8B4FE"
@@ -265,7 +265,7 @@ def carregar_taxas():
 def aba_taxas(wb, tx, sem):
     ws = nova_aba(wb, "1 Taxas de entrada")
     fonte = ("cardápios, sites, imprensa e Instagram das casas do B1 e site e NFC-e da São Jogue "
-             "(TAXAS em B2-a_gasto_por_pessoa.py; horários em B1_resumo_estabelecimentos.xlsx).")
+             "(TAXAS em B2a_gasto_por_pessoa.py; horários em B1_resumo_estabelecimentos.xlsx).")
     n = len(tx)
     # base primeiro no layout? Não: faixas em cima, base embaixo; as faixas apontam para a base.
     l_base = 3 + 3 * 19 + 1
@@ -345,7 +345,7 @@ def aba_taxas_dia(wb, ref):
 def aba_funcionamento(wb):
     ws = nova_aba(wb, "3 Funcionamento")
     fonte = ("índice \"Horários de pico\" do Google Maps (coleta de 10 e 11/11/2026) e horários publicados das "
-             "casas (15/10/2026), recorte B1 (B1-a_fluxo_dia_hora.py; valores agregados pelo script).")
+             "casas (15/10/2026), recorte B1 (B1a_fluxo_dia_hora.py; valores agregados pelo script).")
     ws.cell(1, 1, "Fluxo dos concorrentes por dia e hora e casas abertas").font = ARIAL_N
     ws.cell(2, 1, "Fluxo: índice do Google (100% = hora mais cheia da semana da casa), só entre as casas abertas na "
                   "hora (46 concorrentes, sem a São Jogue). Horas de 0h a 5h: madrugada do próprio dia.").font = ARIAL

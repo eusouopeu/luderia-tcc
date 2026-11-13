@@ -3,7 +3,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 
-const source = fs.readFileSync(__dirname + '/maps_entorno.user.js', 'utf8');
+// A lista do menu (lista_maps_entorno.js) vem antes, como no carregador (@require).
+const source = fs.readFileSync(__dirname + '/lista_maps_entorno.js', 'utf8') + '\n' + fs.readFileSync(__dirname + '/maps_entorno.user.js', 'utf8');
 
 function carregar() {
   const ambiente = { __test: {}, localStorage: { getItem: () => null, setItem() {}, removeItem() {} }, location: { href: '', pathname: '/maps/' }, document: { querySelector: () => null, querySelectorAll: () => [] } };

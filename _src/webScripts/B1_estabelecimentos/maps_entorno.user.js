@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Entorno no Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-4
+// @version      2026.11.13-5
 // @description  Conta estações de metrô, de trem, de VLT e shoppings a 500 m e 1000 m de cada estabelecimento no Google Maps (shopping de porte pelo número de avaliações); coleta a lista de estabelecimentos e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -13,6 +13,7 @@
 // @grant        GM_setValue
 // @grant        GM_deleteValue
 // @grant        GM_download
+// @require      lista_maps_entorno.js
 // ==/UserScript==
 
 /*
@@ -24,7 +25,7 @@
  * Maps, e o porte do shopping, só o número de avaliações).
  * O painel trabalha sobre a LISTA de estabelecimentos (a população, em
  * dados/B1_entorno/_dados-agregados/B1_entorno_maps_fila.csv, gerada por
- * B1-b_entorno_maps_fila.py). "Coletar no Maps os N que faltam" busca só os
+ * B1b_entorno_maps_fila.py). "Coletar no Maps os N que faltam" busca só os
  * da lista ainda sem coleta. Nada é apagado ao coletar; "Refazer" recoleta só
  * o que o botão indica.
  *
@@ -152,8 +153,16 @@
 (function () {
   'use strict';
 
+  // A lista padrão vem de lista_maps_entorno.js, lida pelo carregador (@require) antes deste arquivo.
+  if (typeof LISTA_MAPS_ENTORNO === 'undefined') {
+    const msg = '[Entorno no Maps] lista_maps_entorno.js não foi carregada: reinstale o carregador (python3 _src/outros/G5_outros/gerar_carregadores.py --abrir).';
+    console.error(msg);
+    if (typeof alert === 'function') alert(msg);
+    return;
+  }
+
   // Versão gravada nos CSVs. Não usa GM_info: pelo carregador, ele dá a versão do carregador.
-  const VERSAO = '2026.11.13-4';
+  const VERSAO = '2026.11.13-5';
   const CHAVE_DADOS = 'tcc-entorno-dados-v2';
   const CHAVE_FILA = 'tcc-entorno-fila-v2';
   const CHAVE_REVISOES = 'tcc-entorno-revisoes';
@@ -983,6 +992,8 @@
     }
     fila.locais_fechados += 1;
     fila.buscas_em_fechados += fila.buscas_local;
+    // Opção "baixar cada item": os 4 CSVs só desta casa, antes de seguir para a próxima.
+    if (kit.baixarCada) await exportar({ fontes: ['maps', 'shoppings'], locais: [local], dados });
     const restam = fila.pos + 1 < fila.locais.length;
     if (lerOpcoes().parcial && restam && fila.locais_fechados % PARCIAL_A_CADA === 0) {
       // Parcial com a lista inteira (casa que falta sai "não coletado no Maps", e a soma
@@ -1190,9 +1201,11 @@
 
   // ---------- lista de estabelecimentos (a população) ----------
 
+  // Sem lista carregada no painel, vale a de lista_maps_entorno.js (as 63 casas do B1).
+  const LISTA_PADRAO = LISTA_MAPS_ENTORNO.map(([place_id, nome, cidade, lat, lng]) => ({ place_id, nome, cidade, lat, lng }));
   function listaAtual() {
     const l = ler(CHAVE_LISTA, null);
-    return l && Array.isArray(l.locais) ? l : { locais: [], arquivo: '' };
+    return l && Array.isArray(l.locais) && l.locais.length ? l : { locais: LISTA_PADRAO, arquivo: 'lista_maps_entorno.js', padrao: true };
   }
 
   function guardarLista(texto, arquivo) {
@@ -1254,6 +1267,9 @@
     const k = {
       el: {}, ocupado: false, parar: false, acoes: [], ler, gravar,
       som: ler(chave('som'), true), autobaixar: ler(chave('autobaixar'), true),
+      // Modo semiautomático (fila): baixar o arquivo de cada item (casa, perfil, busca) assim que
+      // ele termina, além do arquivo do fim da fila. Desligado por padrão.
+      baixarCada: ler(chave('baixarcada'), false),
     };
     const dicas = new WeakMap();
     let hospedeiro = null, painel = null;
@@ -1278,7 +1294,8 @@
     // Heroicons 24/outline (traço 1.5).
     const ICONES = {
       'arrow-down': 'M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3',
-      'arrow-down-tray': 'M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3',
+      'arrow-down-on-square-stack': 'M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m-6 3.75 3 3m0 0 3-3m-3 3V1.5m6 9h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75',
+    'arrow-down-tray': 'M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3',
       'arrow-path': 'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99',
       'arrow-top-right-on-square': 'M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25',
       'arrow-up': 'M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18',
@@ -1422,6 +1439,12 @@
       Object.defineProperty(b, 'checked', { get: () => v, set: (x) => { v = !!x; pintar(); } });
       pintar();
       return b;
+    }
+
+    // Opção da fila: baixar cada item ao terminar (k.baixarCada, gravada por script).
+    function botaoBaixarCada(rotulo = 'Baixar cada item ao terminar (fila)') {
+      return alternaIcone({ ico: 'arrow-down-on-square-stack', rotulo, ligado: k.baixarCada,
+        aoMudar: (v) => { k.baixarCada = v; gravar(chave('baixarcada'), v); } });
     }
 
     // Controle segmentado: [[valor, texto, dica]].
@@ -2001,7 +2024,7 @@
     }
 
     Object.assign(k, {
-      criar, icone, dica, ajuda, botao, botaoPerigo, botaoParar, etiqueta, alternaIcone, pills, secao, naoAlterna,
+      criar, icone, dica, ajuda, botao, botaoPerigo, botaoParar, etiqueta, alternaIcone, botaoBaixarCada, pills, secao, naoAlterna,
       linha, esp, rotulo, selo, status, resumo, barra, progresso, estado, atualizarAcoes, executar, tocar, piscar,
       confirmarBotao, copiar, celula, csv, baixarArquivo, pastaDoArquivo, menuAlvos, montar, garantir, minimizar,
       nome: (t) => { if (k.el.nome && k.el.nome.textContent !== t) k.el.nome.textContent = t; },
@@ -2195,6 +2218,7 @@
     el.exportar = botao('arrow-down-tray', 'CSV', () => { exportar(); kit.piscar(el.exportar); }, { classe: 'mini' });
     el.parcial = kit.alternaIcone({ ico: 'document-text', rotulo: `CSV parcial a cada ${PARCIAL_A_CADA} estabelecimentos`, ligado: lerOpcoes().parcial,
       aoMudar: (v) => mudarOpcao('parcial', v) });
+    el.baixarCada = kit.botaoBaixarCada('Baixar os 4 CSVs de cada estabelecimento ao terminar (fila)');
 
     // Lista (a população).
     const arqFila = arquivoTexto((texto, nome) => guardarLista(texto, nome));
@@ -2206,7 +2230,7 @@
     el.esquecer = kit.botaoPerigo('x-mark', '', () => { gravar(CHAVE_LISTA, null); el.fila.value = ''; atualizarPainel(); status('Lista esquecida; nada coletado foi apagado.'); },
       { classe: 'leve', dica: 'Esquecer a lista (a coleta guardada fica)' });
     const secLista = secao('lista', ['Lista', el.listaSelo, el.fora,
-      ajuda('A população do trabalho: B1_entorno_maps_fila.csv, gerado por B1-b_entorno_maps_fila.py. O menu, a coleta e a exportação trabalham sobre ela; CSV com cabeçalho ou place_id;nome;lat;lng, uma por linha.')], [
+      ajuda('A população do trabalho: B1_entorno_maps_fila.csv, gerado por B1b_entorno_maps_fila.py. O menu, a coleta e a exportação trabalham sobre ela; CSV com cabeçalho ou place_id;nome;lat;lng, uma por linha.')], [
       linha([botao('arrow-up-tray', 'CSV', () => arqFila.click(), { classe: 'mini', dica: 'Carregar a lista (CSV)' }), el.listaArquivo, el.esquecer], 'compacta'),
       el.fila, arqFila,
     ]);
@@ -2246,7 +2270,7 @@
         linha([el.coletar, el.retomar, el.pend, el.este, kit.el.parar], 'compacta'),
         kit.barra('fila'),
         kit.el.status = criar('div', { className: 'status' }),
-        linha([kit.rotulo('Exportar'), el.exportar, el.parcial]),
+        linha([kit.rotulo('Exportar'), el.exportar, el.parcial, el.baixarCada]),
         secLista, secPorte, secRevisao,
         linha([esp(), el.osm, bApagar]),
       ],

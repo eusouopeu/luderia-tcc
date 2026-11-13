@@ -12,6 +12,7 @@
 // @grant        GM_deleteValue
 // @grant        GM_listValues
 // @grant        GM_download
+// @require      lista_maps_avaliacoes.js
 // ==/UserScript==
 
 /*
@@ -1264,76 +1265,15 @@
     }
   }
 
-  // ---------- menu das casas do B1 ----------
-  // Mesmo padrão do coletor de preços (B5): seletor com as casas por capital, marcadas
-  // como coletadas; escolher uma abre o lugar no Maps e coleta sozinho quando carrega;
-  // "Próximo" abre a próxima que falta. População: as 63 casas do B1
-  // (dados/B1_entorno/_dados-agregados/B1_entorno_maps_fila.csv). [place_id, nome, capital]
-  const POP = [
-    ["ChIJRcWOaPabpgARDvX2Bad0qb0", "Bardo Mago", "Belo Horizonte"],
-    ["ChIJpzB8zc2XpgARoJTUu90J6Pw", "Comdado Bar e Jogos", "Belo Horizonte"],
-    ["ChIJsUAT-dObpgARCT2C5QpnVKU", "Garagem do Nerd", "Belo Horizonte"],
-    ["ChIJ-17ZQDG9pgARc-AxpXmaNRU", "La Tabuleria", "Belo Horizonte"],
-    ["ChIJx5jr3zGXpgARQGx9eX7TDmY", "LudoCafé", "Belo Horizonte"],
-    ["ChIJ6ZLMZw-XpgAR_OR6SwY5xKo", "Shelf Bar e Jogos", "Belo Horizonte"],
-    ["ChIJ-97tiEeNpJIRb_eV7a-sxBs", "Ludoteca Sidequest", "Belém"],
-    ["ChIJyXjE650xWpMRJL-J6QbGkt4", "FORTALÚDICA - BURGERS & JOGOS", "Brasília"],
-    ["ChIJ172cu2U7WpMR-GxnGmUHCkc", "Gruta BSB", "Brasília"],
-    ["ChIJdUv4La46WpMRnBvNknmOqWo", "Inside Games", "Brasília"],
-    ["ChIJzdFNP3AyWpMRH2P6HEuhE-I", "Loja de Jogos - Asgard", "Brasília"],
-    ["ChIJ15nLgwAwWpMRY1whwD29ZSo", "Ludoteca BGC", "Brasília"],
-    ["ChIJN8BZeb85WpMRgVKT05caxB4", "Utopia Games & Food", "Brasília"],
-    ["ChIJGXginrXGyJQR0LFEVIzp4hI", "Metropoly Bar", "Campinas"],
-    ["ChIJz-2zsLTHyJQRyn6ZZtDZgBI", "Muito Geek | TCG • Board Games • Fliperama", "Campinas"],
-    ["ChIJ5ehtIcbFyJQRf7QBB6TJ6XE", "Nergeek", "Campinas"],
-    ["ChIJ3ekLtDjl3JQRHwtNgmINgLo", "Alçapão Jogos", "Curitiba"],
-    ["ChIJY_lqHVLl3JQRvDHacOMDKuc", "BoardZ Game Pub", "Curitiba"],
-    ["ChIJOczn8z7l3JQRNBEL_ZJ3iQo", "Joyjoy Café", "Curitiba"],
-    ["ChIJK5Dhtunj3JQRniPWHB3haDU", "Paladino Hobbies", "Curitiba"],
-    ["ChIJc66HomXk3JQRNl28jz_VsPc", "Taverna Game House", "Curitiba"],
-    ["ChIJ1wjBJD7k3JQRQi7trfp_0aQ", "Vila Celta Hobby Store - Jogos e Café", "Curitiba"],
-    ["ChIJawIVeV0JM0oR5BtnD_poQeA", "CCG Floripa", "Florianópolis"],
-    ["ChIJc3F7ka83J5URQZ1XTl-_iak", "Chef on Play", "Florianópolis"],
-    ["ChIJJz8-gcY3J5URYdZrEXdHaAk", "Cineplay- Restaurante e Jogos", "Florianópolis"],
-    ["ChIJ0yXbI35IxwcR0_jLi-uINUU", "Balboa's Hobby Games", "Fortaleza"],
-    ["ChIJQURqeMZJxwcR95O-XLbS2mk", "Dominaria Cards & Games", "Fortaleza"],
-    ["ChIJ89uEICDxXpMRdaEvN0XiWK0", "Paladins Game Store", "Goiânia"],
-    ["ChIJHSDPTgF5GZURKmSqKITyoGM", "Arcadea Gaming Pub", "Porto Alegre"],
-    ["ChIJ41pgHNFDGZURC7yTegyn7nU", "Toca do Rato - Pizzaria e Jogos de Tabuleiro", "Porto Alegre"],
-    ["ChIJRUjwU66WoGgRzc9yJU7jkwM", "Nala Land - Bar de Jogos de Tabuleiro em Recife", "Recife"],
-    ["ChIJPx_QtT17mQAR9cO9ARQW00g", "Cheio de Fome - Vila da Penha", "Rio de Janeiro"],
-    ["ChIJu1yUroF_mQAR7qxqAfxKSw4", "Game Of Boards", "Rio de Janeiro"],
-    ["ChIJ90Gs_9rVmwAReA7MnIyPLTE", "Luderia Carioca", "Rio de Janeiro"],
-    ["ChIJYzHxUhR-mQARpqVtYD9th0c", "Magic Store Brazil", "Rio de Janeiro"],
-    ["ChIJ1SAzAGF_mQARQgP-yrPBxbQ", "RED jogos", "Rio de Janeiro"],
-    ["ChIJxXhMZN5_mQARj2JCqcWfTD8", "Reduto", "Rio de Janeiro"],
-    ["ChIJOcVssmeDmQARZZrnWu2mnwA", "TabuClub", "Rio de Janeiro"],
-    ["ChIJoTlvBfMbFgcRHvuCKHBQrXQ", "São Jogue - Bela Vista", "Salvador"],
-    ["ChIJfWR3S3ZazpQR6aC6xpbPMwU", "60 Minutos Escape, Hamburgueria e Boardgames", "São Paulo"],
-    ["ChIJYTHwWgBbzpQRFenbJdM5cxU", "Arena BG | Jogos de Tabuleiro | Hamburgueria", "São Paulo"],
-    ["ChIJKeHwNv5ZzpQRlmzx9rCTWdM", "Bodogami Restaurante e Cafeteria", "São Paulo"],
-    ["ChIJ__9TTnxCzpQRwVSzrOijkRY", "Bravo Jogos", "São Paulo"],
-    ["ChIJRU7FUX1CzpQRj3E7xMzGPvA", "CHQ Jogos", "São Paulo"],
-    ["ChIJrT_EWwBZzpQRGAZzptZbtsY", "Cartola Luderia Bar", "São Paulo"],
-    ["ChIJbZRHQPRfzpQRz97-ZOg0yXA", "Castelos Bar & Boardgames", "São Paulo"],
-    ["ChIJF9j3OCRbzpQRkk74_QtOk_0", "Coletivo Geek", "São Paulo"],
-    ["ChIJ7_DDAlH1zpQRJVJ0UHnItH8", "Covil Game Bar", "São Paulo"],
-    ["ChIJSU_eTQBDzpQRv_GdRUp0f-g", "Covil Game Bar SBC", "São Paulo"],
-    ["ChIJiZJ_DnIDz5QRaVafFCXGkUE", "Dungeon Games Store", "São Paulo"],
-    ["ChIJZz29dnVXzpQRvRh7_YKyUN4", "Encounter | Jogos de Tabuleiro | Board Games", "São Paulo"],
-    ["ChIJBUzaCedbzpQRkSqbwW7yAvQ", "Espaço 162 - Meu Karaokê Box", "São Paulo"],
-    ["ChIJ_aN4OAxXzpQR0UH63sAeVCA", "Fan Hour Games and Burgers", "São Paulo"],
-    ["ChIJa3UsDhRczpQRPPSuDl6acO8", "Flow Games - Burgers, Cards & Comunidade", "São Paulo"],
-    ["ChIJn7uU0RNbzpQRI4GI9KHOo_s", "Jogasampa", "São Paulo"],
-    ["ChIJTaG5ALpZzpQRUDErQ-RkfTs", "Ludus Luderia", "São Paulo"],
-    ["ChIJE43rt29ZzpQRnvADt6pXfto", "OMNIVERSE", "São Paulo"],
-    ["ChIJo-6lZMlezpQRmgUpUPfmRIs", "Pitta's Board Games", "São Paulo"],
-    ["ChIJkWsGmd1czpQRGLydxc29vbw", "Place Games", "São Paulo"],
-    ["ChIJNcHw7jNYzpQRKRHPOrb4jEw", "Play Easy", "São Paulo"],
-    ["ChIJsU5BAwBRzpQRAgLVvqg68os", "Tubaleria", "São Paulo"],
-    ["ChIJi5zbZadgzpQRIYeuK_eqQio", "XPlace", "São Paulo"],
-    ["ChIJfyav9YI9uAARjwbBqcRm2_k", "Café Geek Cafeteria e Ludoteca", "Vitória"],
-  ].map(([id, nome, capital]) => ({ id, nome, capital }));
+  // A lista vem de lista_maps_avaliacoes.js, lida pelo carregador (@require) antes deste arquivo.
+  if (typeof LISTA_MAPS_AVALIACOES === 'undefined') {
+    const msg = '[Avaliações do Maps] lista_maps_avaliacoes.js não foi carregada: reinstale o carregador (python3 _src/outros/G5_outros/gerar_carregadores.py --abrir).';
+    console.error(msg);
+    if (typeof alert === 'function') alert(msg);
+    return;
+  }
+  // Itens do menu em lista_maps_avaliacoes.js (pasta deste script).
+  const POP = LISTA_MAPS_AVALIACOES.map(([id, nome, capital]) => ({ id, nome, capital }));
   const CHAVE_ALVO = 'alvo:atual';
   const CHAVE_ABRIR = 'alvo:abrir';
   const CHAVE_MARCAS = 'alvo:marcas'; // { place_id: true (dada por coletada) | false (desfeita) }
