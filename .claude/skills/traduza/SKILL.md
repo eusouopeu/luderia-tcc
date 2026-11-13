@@ -1,11 +1,11 @@
 ---
 name: traduza
-description: Gera uma nota em docs/notas/ explicando, como para uma criança de 5 a 10 anos, um conteúdo que o autor não entendeu numa resposta (termo, fórmula, procedimento, técnica, sigla). Acione SEMPRE que o autor escrever "/traduza X" ou marcar o conteúdo entre sinais de igual duplos, como "==VPL==" ou "==TIR, payback==", inclusive quando X for um trecho da resposta anterior. Não acione para pedidos de explicação na própria conversa sem os marcadores ("o que é X?", "me explique X"), que seguem resposta normal ou a skill learn.
+description: Gera uma nota em _docs/notas/ explicando, como para uma criança de 5 a 10 anos, um conteúdo que o autor não entendeu numa resposta (termo, fórmula, procedimento, técnica, sigla). Acione SEMPRE que o autor escrever "/traduza X" ou marcar o conteúdo entre sinais de igual duplos, como "==VPL==" ou "==TIR, payback==", inclusive quando X for um trecho da resposta anterior. Não acione para pedidos de explicação na própria conversa sem os marcadores ("o que é X?", "me explique X"), que seguem resposta normal ou a skill learn.
 ---
 
 # Traduza
 
-O autor marca o que não entendeu com `/traduza X` ou `==X==`. A explicação vira um arquivo em `docs/notas/`, para ele consultar depois e estudar para a banca, em vez de se perder no histórico da conversa.
+O autor marca o que não entendeu com `/traduza X` ou `==X==`. A explicação vira um arquivo em `_docs/notas/`, para ele consultar depois e estudar para a banca, em vez de se perder no histórico da conversa.
 
 ## Entrada
 
@@ -17,11 +17,11 @@ O autor marca o que não entendeu com `/traduza X` ou `==X==`. A explicação vi
 
 ## Arquivo
 
-- Pasta: `docs/notas/`. Criar se não existir.
+- Pasta: `_docs/notas/`. Criar se não existir.
 - Nome: `AAAA-MM-DD_termo.md` (data de `date`; termo em minúsculas, sem acento, com `-` entre palavras). Ex.: `2026-10-14_vpl.md`.
-- **Sem duplicata:** antes de criar, procurar em `docs/notas/` uma nota sobre o mesmo termo (qualquer data). Se existir, acrescentar ao fim dela uma seção `## Complemento (AAAA-MM-DD)` com o que a nova dúvida pede, em vez de criar outro arquivo.
-- **Índice:** manter `docs/notas/README.md` com uma linha por nota, em ordem alfabética: `- [Termo](arquivo.md) — explicação em uma frase`.
-- As notas **não** entram no registro de alterações (`docs/registro-de-alteracoes.md`); entram no commit de fim de sessão.
+- **Sem duplicata:** antes de criar, procurar em `_docs/notas/` uma nota sobre o mesmo termo (qualquer data). Se existir, acrescentar ao fim dela uma seção `## Complemento (AAAA-MM-DD)` com o que a nova dúvida pede, em vez de criar outro arquivo.
+- **Índice:** manter `_docs/notas/README.md` com uma linha por nota, em ordem alfabética: `- [Termo](arquivo.md) — explicação em uma frase`.
+- As notas **não** entram no registro de alterações (`_docs/registro-de-alteracoes.md`); entram no commit de fim de sessão.
 
 ## Formato da nota
 

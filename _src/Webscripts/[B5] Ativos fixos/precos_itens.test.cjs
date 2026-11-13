@@ -8,7 +8,7 @@ const source = fs.readFileSync(__dirname + '/precos_itens.user.js', 'utf8');
 const { parseHTML } = require('linkedom');
 
 const LISTA = path.resolve(__dirname, '../../../dados/B5_orcamento/_dados-agregados/[B5] Lista de Itens da Etapa 1 (elaboração própria).csv');
-const FIXTURES = path.resolve(__dirname, '../../[B5] Ativos fixos/Lista de itens/outros/fixtures_html');
+const FIXTURES = path.resolve(__dirname, '../../PyScripts/B5_Orcamento/5_outros/fixtures_html');
 
 // Roda o userscript até antes do painel e expõe as funções. Sem html, um documento vazio;
 // com html, o DOM da fixture (linkedom) no endereço dado.

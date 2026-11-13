@@ -1,5 +1,5 @@
 """
-Cap. 9 - modelo financeiro da luderia (_instrucoes/8_financeiro.md).
+Cap. 9 - modelo financeiro da luderia (_docs/_instrucoes/8_financeiro.md).
 
 Gera `textos/capitulos/9_plano_financeiro_modelo.xlsx`, dirigido por premissas:
 abas premissas, pessoal, simples, receitas, custos, investimento, dre,
@@ -41,7 +41,7 @@ que cobram, fora a São Jogue; R$ 18,68 e 22 casas até a busca de 11/11/2026), 
 antes de 09/11/2026, a taxa era 28,4% do gasto (R$ 22,32 no provável), o que
 não batia com o preço adotado.
 
-Desenho enxuto (P7 de _instrucoes/1a_principios.md; decisão do autor, 12/11/2026): etapa 1
+Desenho enxuto (P7 de _docs/_instrucoes/1a_principios.md; decisão do autor, 12/11/2026): etapa 1
 com 6 mesas, de terça a sábado das 14h às 23h (45 h), domingo e segunda fechados; equipe de
 3 empregados (1 cozinheiro-chefe e 2 atendentes e instrutores, 5 dias de 8 h, 40 h por
 semana) mais o sócio na gestão, no caixa e no salão (pró-labore, C08). O ponto, na Pituba,
@@ -74,7 +74,7 @@ Uso: python3 "_src/Modelo financeiro/analise/gerar_modelo_financeiro.py"
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [str(_AQUI.parents[2] / "extras")]
+sys.path[:0] = [*map(str, (_AQUI.parents[2] / "Extras").glob("Gerar_*"))]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
@@ -770,7 +770,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
             ws.cell(r, c).number_format = fmt
     ws["A2"].font = NEGRITO
     ws["D2"].font = NEGRITO
-    nota(ws, ult + 2, "Fonte: elaboração própria com dados dos Blocos B1, B3 e B4 (out/2026). Níveis de evidência N1 (mais confiável) a N6 (estimativa do autor), conforme _instrucoes/8_financeiro.md. Impacto no VPL pelo tornado (aba sensibilidade): 5 maiores = Alto, 5 seguintes = Médio.", 11)
+    nota(ws, ult + 2, "Fonte: elaboração própria com dados dos Blocos B1, B3 e B4 (out/2026). Níveis de evidência N1 (mais confiável) a N6 (estimativa do autor), conforme _docs/_instrucoes/8_financeiro.md. Impacto no VPL pelo tornado (aba sensibilidade): 5 maiores = Alto, 5 seguintes = Médio.", 11)
     for col, w in zip("ABCDEFGHIJK", (6, 34, 16, 12, 12, 12, 12, 36, 9, 52, 10)):
         ws.column_dimensions[col].width = w
 
@@ -1142,7 +1142,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
             if j > 1:
                 ws.cell(r2 + 1 + i, j).number_format = MOEDA
     ultr = r2 + len(CENARIOS)
-    nota(ws, ultr + 2, "Fonte: elaboração própria. Valores gravados pelo script _src/extras/gerar_modelo_financeiro.py, que recalcula o modelo em Python e confere o VPL com esta planilha nos três cenários; mudar a aba premissas não atualiza esta aba (rodar o script de novo).", 7)
+    nota(ws, ultr + 2, "Fonte: elaboração própria. Valores gravados pelo script _src/Extras/gerar_modelo_financeiro.py, que recalcula o modelo em Python e confere o VPL com esta planilha nos três cenários; mudar a aba premissas não atualiza esta aba (rodar o script de novo).", 7)
     for col, w in zip("ABCDEFG", (12, 44, 18, 18, 18, 18, 18)):
         ws.column_dimensions[col].width = w
 

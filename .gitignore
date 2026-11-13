@@ -3,9 +3,9 @@ __pycache__/
 *.pyc
 .venv/
 venv/
-# Dados brutos: textos integrais, históricos e respostas de API não são publicados (_instrucoes/4_metodologia.md §3.4)
+# Dados brutos: textos integrais, históricos e respostas de API não são publicados (_docs/_instrucoes/4_metodologia.md §3.4)
 dados/*/_dados-brutos/**/*.jsonl
-_src/*/*/logs/*.log
+_src/PyScripts/*/4_logs/*.log
 # Atalho (alias do macOS) para ~/Codigos/Apps/_shared, os padrões comuns aos apps; vale só nesta máquina
 _src/_shared
 # Bloco B4: arquivos originais grandes (microdados e agregados do Censo); regeneráveis pelos scripts de coleta
@@ -18,7 +18,7 @@ dados/B5_obra_reforma/_dados-brutos/sinapi/
 .DS_Store
 .tmp.driveupload/
 .tmp.drivedownload/
-# Bloco B1: curadoria manual e luderias aprovadas trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4)
+# Bloco B1: curadoria manual e luderias aprovadas trazem texto de avaliações (_docs/_instrucoes/4_metodologia.md §3.4)
 dados/B1_estabelecimentos/_dados-brutos/B1_curadoria_manual_*.xlsx
 dados/B1_estabelecimentos/_dados-agregados/3_triagem/B1_aprovadas_*.xlsx
 dados/B1_estabelecimentos/_dados-agregados/3_triagem/B1_comentarios_aprovadas_*.xlsx
@@ -52,7 +52,7 @@ dados/B1_cardapios/_dados-agregados/**/*.jpeg
 dados/B1_cardapios/_dados-agregados/**/*.webp
 dados/B1_cardapios/_dados-agregados/*.pdf
 # Modelo de idioma do Tesseract (OCR), baixado de tessdata_fast
-_src/\[B1\]*/*/outros/tessdata/
+_src/PyScripts/B1_Cardapios/5_outros/tessdata/
 
 # Bloco B1: páginas HTML do Acervo de Jogos (material de terceiros, cache da coleta); só os CSV são publicados
 dados/B1_acervo_jogos/_dados-brutos/acervodejogos/*.html
@@ -61,18 +61,18 @@ dados/B1_acervo_jogos/_dados-brutos/acervos_luderias/*/
 dados/B1_acervo_jogos/_auditoria/
 dados/B1_acervo_jogos/_dados-brutos/lojas_venda/
 
-# Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/extras/gerar_carregadores.py)
+# Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/Extras/Gerar_outros/gerar_carregadores.py)
 _src/Webscripts/_carregadores/
 
-# Bloco B2: coletas do userscript e base consolidada trazem texto de avaliações (_instrucoes/4_metodologia.md §3.4); cobertura e fila são publicadas
+# Bloco B2: coletas do userscript e base consolidada trazem texto de avaliações (_docs/_instrucoes/4_metodologia.md §3.4); cobertura e fila são publicadas
 dados/B2_avaliacoes/_dados-brutos/coletas/
 dados/B2_avaliacoes/_auditoria/
 dados/B2_avaliacoes/_dados-agregados/B2_avaliacoes_periodo.csv
 dados/B2_avaliacoes/_dados-brutos/analise_conteudo/
 
-# Cronograma: o .docx é gerado do .md quando for enviar (_src/extras/gerar_docx_cronograma.js)
+# Cronograma: o .docx é gerado do .md quando for enviar (_src/Extras/Gerar_textos/gerar_docx_cronograma.js)
 textos/planejamento/cronograma_luderia*.docx
-_src/extras/logs/
+_src/Extras/logs/
 
 # Bloco B1: listas "seguindo" do Instagram e candidatos do snowball trazem @ de pessoas físicas (LGPD); só agregados e perfis de negócio são publicados
 dados/B1_redes_sociais/_dados-brutos/

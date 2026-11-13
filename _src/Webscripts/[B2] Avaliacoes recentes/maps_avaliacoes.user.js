@@ -15,7 +15,7 @@
 
 /*
  * Uso pessoal, para o Bloco B2: completar estabelecimentos em que a coleta
- * automática falhou. O recorte do método (_instrucoes/4_metodologia.md) é o
+ * automática falhou. O recorte do método (_docs/_instrucoes/4_metodologia.md) é o
  * período padrão "de agora até 1 mês": todas as avaliações COM TEXTO cujo rótulo
  * de data seja de até "um mês atrás", inclusive, na data da coleta.
  *
