@@ -15,6 +15,7 @@ const ALVOS = [
   'Webscripts/[B1] Estabelecimentos e cardapios/instagram_snowball.user.js',
   'Webscripts/[B1] Estabelecimentos e cardapios/cardapio_coletor.user.js',
   'Webscripts/[B1] Estabelecimentos e cardapios/acervo_coletor.user.js',
+  'Webscripts/[B1] Estabelecimentos e cardapios/maps_entorno.user.js',
 ];
 const INICIO = '// >>> kit_painel';
 const FIM = '// <<< kit_painel';
