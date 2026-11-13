@@ -33,7 +33,7 @@ from functools import lru_cache
 from openpyxl import load_workbook
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
-RM_PATH = ROOT / "dados" / "B4_mercado_demanda" / "_dados-brutos" / "ibge_rm" / "Composicao_RM_2025.xlsx"
+RM_PATH = ROOT / "dados" / "B4_marketing" / "_dados-brutos" / "ibge_rm" / "Composicao_RM_2025.xlsx"
 
 # Capital de cada UF, com a UF por sigla e por nome (o Google usa os dois).
 CAPITAL_POR_UF = {

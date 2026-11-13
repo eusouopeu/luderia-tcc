@@ -1,10 +1,10 @@
 # Formatação dos .docx e PDF
 
-Regras suplementares à skill `formatacao-texto-ufba`. Valem para todo `.docx` e `.pdf` gerado do TCC. Em conflito com a skill, valem estas. O `_src/Extras/Gerar_textos/gerar_docx_capitulo.js` aplica todas.
+Regras suplementares à skill `formatacao-texto-ufba`. Valem para todo `.docx` e `.pdf` gerado do TCC. Em conflito com a skill, valem estas. O `_src/Extras/G4_textos/gerar_docx_capitulo.js` aplica todas.
 
 ## Capa, folha de rosto e títulos (04/11/2026)
 
-O `.docx` do trabalho inteiro abre com a capa (instituição, autor, título, local e ano) e a folha de rosto (autor, título, natureza do trabalho, orientador, local e ano), geradas por `_src/Extras/Gerar_textos/gerar_pretextuais_tmin.py`. A capa não conta: a folha de rosto é a página 1, e o número só é impresso a partir da introdução. Títulos de capítulo, seção e subseção ficam sem espaçamento antes e depois; só o parágrafo de texto tem 0,5 cm depois. Colunas de tabelas e quadros são dimensionadas pelo conteúdo (`gerar_docx_capitulo.js`), e `<br>` na célula do `.md` separa linhas.
+O `.docx` do trabalho inteiro abre com a capa (instituição, autor, título, local e ano) e a folha de rosto (autor, título, natureza do trabalho, orientador, local e ano), geradas por `_src/Extras/G4_textos/gerar_pretextuais_tmin.py`. A capa não conta: a folha de rosto é a página 1, e o número só é impresso a partir da introdução. Títulos de capítulo, seção e subseção ficam sem espaçamento antes e depois; só o parágrafo de texto tem 0,5 cm depois. Colunas de tabelas e quadros são dimensionadas pelo conteúdo (`gerar_docx_capitulo.js`), e `<br>` na célula do `.md` separa linhas.
 
 ## Títulos
 

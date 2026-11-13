@@ -28,7 +28,7 @@ Uso:
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("Gerar_*")), str(_AQUI.parents[1] / "5_outros")]
+sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("G[0-9]_*")), str(_AQUI.parents[1] / "5_outros")]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
@@ -42,7 +42,7 @@ from bases_comum import pasta_auditoria  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[4]
 DADOS = ROOT / "dados"
-USOS = ["mercado_demanda", "ponto_operacoes", "juridico_tributario", "financeiro", "multiuso"]
+USOS = ["marketing", "operacional", "juridico", "financeiro", "multiuso"]
 
 SEMENTE = 20261015
 COLUNAS_SERIE = ["serie", "codigo_sgs", "variavel", "indicador", "anexo"]

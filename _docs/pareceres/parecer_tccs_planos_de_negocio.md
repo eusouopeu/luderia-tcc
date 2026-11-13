@@ -1,6 +1,6 @@
 # Parecer: o plano da luderia diante de 33 TCCs-plano de negócios
 
-Feito em 03/11/2026, a pedido do autor, sobre a pasta `bibliografia/Planos de Negócio/` (33 PDFs, só no Mac). Comparado com o TMin v23 (`textos/capitulos/_md/`).
+Feito em 03/11/2026, a pedido do autor, sobre a pasta `bibliografia/Planos de Negócio/` (33 PDFs, só no Mac). Comparado com o TMin v23 (`textos/capitulos/`).
 
 **Como foi feito.** Leitura do sumário dos 33 trabalhos e da metodologia dos principais; busca de termos no texto completo de todos. A busca conta **menção**, não seção desenvolvida: os números abaixo indicam frequência, não qualidade. O foco é o **núcleo** de 15 trabalhos de Administração (graduação ou pós em gestão) sobre alimentação e bebida, e os **7 bares** (de qualquer curso).
 
@@ -107,7 +107,7 @@ Fonte: elaborado pelo próprio autor com base nos TCCs de `bibliografia/Planos d
 
 ## 6. Obras mais citadas nos referenciais: onde estão
 
-Levantadas nas listas de referências dos 11 trabalhos em 03/11/2026. "Na pasta" = já está em `bibliografia/`; "Baixada" = posta em `bibliografia/Obras citadas nos TCCs/`. Livros comerciais não foram baixados: não há cópia legal gratuita.
+Levantadas nas listas de referências dos 11 trabalhos em 03/11/2026. "Na pasta" = já está em `bibliografia/`; "Baixada" = posta em `bibliografia/F2_Relatorios/`. Livros comerciais não foram baixados: não há cópia legal gratuita.
 
 | Obra (edição mais citada) | Citada em | Situação |
 |---|---|---|

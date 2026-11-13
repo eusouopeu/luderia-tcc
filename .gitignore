@@ -14,7 +14,7 @@ dados/B4_*/_dados-brutos/**/*.zip
 dados/B4_multiuso/_dados-brutos/caged/
 dados/B4_multiuso/_auditoria/caged/
 # Bloco B5: zip mensal do SINAPI (Caixa, 16 MB); regenerável pelo B5-c_sinapi.py
-dados/B5_obra_reforma/_dados-brutos/sinapi/
+dados/B5_reforma/_dados-brutos/sinapi/
 .DS_Store
 .tmp.driveupload/
 .tmp.drivedownload/
@@ -24,10 +24,13 @@ dados/B1_estabelecimentos/_dados-agregados/3_triagem/B1_aprovadas_*.xlsx
 dados/B1_estabelecimentos/_dados-agregados/3_triagem/B1_comentarios_aprovadas_*.xlsx
 
 # PDFs de terceiros baixados para leitura (direitos autorais; repositório público)
-bibliografia/leituras-*/*
-!bibliografia/leituras-*/checklist-conceitos.md
-bibliografia/bibliografia-v2/pdfs/
-bibliografia/bibliografia-v2/amostras-sumarios/
+bibliografia/**/*.pdf
+bibliografia/**/*.PDF
+bibliografia/**/*.epub
+bibliografia/_arquivo/leituras-*/*
+!bibliografia/_arquivo/leituras-*/checklist-conceitos.md
+bibliografia/_arquivo/bibliografia-v2/pdfs/
+bibliografia/_arquivo/bibliografia-v2/amostras-sumarios/
 
 # Bloco B1: cardápios originais (PDF, imagens, HTML de terceiros); só a transcrição em CSV é publicada
 dados/B1_cardapios/_dados-brutos/*
@@ -61,8 +64,8 @@ dados/B1_acervo_jogos/_dados-brutos/acervos_luderias/*/
 dados/B1_acervo_jogos/_auditoria/
 dados/B1_acervo_jogos/_dados-brutos/lojas_venda/
 
-# Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/Extras/Gerar_outros/gerar_carregadores.py)
-_src/Webscripts/_carregadores/
+# Carregadores locais do Tampermonkey: caminho absoluto desta máquina (_src/Extras/G5_outros/gerar_carregadores.py)
+_src/WebScripts/_carregadores/
 
 # Bloco B2: coletas do userscript e base consolidada trazem texto de avaliações (_docs/_instrucoes/4_metodologia.md §3.4); cobertura e fila são publicadas
 dados/B2_avaliacoes/_dados-brutos/coletas/
@@ -70,21 +73,21 @@ dados/B2_avaliacoes/_auditoria/
 dados/B2_avaliacoes/_dados-agregados/B2_avaliacoes_periodo.csv
 dados/B2_avaliacoes/_dados-brutos/analise_conteudo/
 
-# Cronograma: o .docx é gerado do .md quando for enviar (_src/Extras/Gerar_textos/gerar_docx_cronograma.js)
-textos/planejamento/cronograma_luderia*.docx
+# Cronograma: o .docx é gerado do .md quando for enviar (_src/Extras/G4_textos/gerar_docx_cronograma.js)
+textos/_planejamento/cronograma_luderia*.docx
 _src/Extras/logs/
 
 # Bloco B1: listas "seguindo" do Instagram e candidatos do snowball trazem @ de pessoas físicas (LGPD); só agregados e perfis de negócio são publicados
 dados/B1_redes_sociais/_dados-brutos/
 dados/B1_redes_sociais/_auditoria/
 _src/logs/
-_src/Modelo financeiro/logs/*.log
+_src/Extras/G3_modelo_financeiro/logs/*.log
 
 # Dependências Node dos testes dos webscripts e ícones de pasta do macOS ("Icon\r")
 node_modules/
 Icon?
 
 # Dados agregados: cópia de 30/10/2026 (antes do DMax), mantida só nesta máquina
-dados/dados_agregados/_arquivo/2026-10-30_*
+textos/planilhas/_arquivo/2026-10-30_*
 # Bloco B1: fotos de couvert e entradas (material de terceiros)
 dados/B1_cardapios/_dados-brutos/precificacao_promocoes/

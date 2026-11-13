@@ -1,5 +1,5 @@
 """
-Extrai as tabelas e os quadros do TMin (textos/capitulos/_md/*.md) para
+Extrai as tabelas e os quadros do TMin (textos/capitulos/*.md) para
 src/conteudo/tabelas.json, indexados pelo número ("Tabela 9.4", "Quadro 6.2").
 O site lê os números daqui, e não de cópias digitadas: rodar de novo depois de
 cada versão do texto (pnpm run tabelas).
@@ -11,7 +11,7 @@ import re
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[4]
-MD = RAIZ / "textos" / "capitulos" / "_md"
+MD = RAIZ / "textos" / "capitulos"
 SAIDA = Path(__file__).resolve().parents[1] / "src" / "conteudo" / "tabelas.json"
 
 

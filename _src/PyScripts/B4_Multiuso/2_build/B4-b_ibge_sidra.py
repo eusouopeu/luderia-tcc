@@ -11,7 +11,7 @@ Saídas em dados/B4_<uso>/_dados-agregados/, no padrão "[B4] {dado} {período} 
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("Gerar_*")), str(_AQUI.parents[1] / "5_outros"), str(_AQUI.parents[2] / "B4_Multiuso" / "5_outros")]
+sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("G[0-9]_*")), str(_AQUI.parents[1] / "5_outros"), str(_AQUI.parents[2] / "B4_Multiuso" / "5_outros")]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
@@ -32,14 +32,14 @@ SAIDAS = {
     "pas_familias_receita": ("financeiro", "Serviços às Famílias Receita", "IBGE PAS"),
     "pof_alimentacao_fora_renda_uf": ("multiuso", "Despesa com Alimentação por Renda", "IBGE POF"),
     "pof_despesas_renda_uf": ("multiuso", "Despesa Total por Renda", "IBGE POF"),
-    "populacao_censo_2022": ("mercado_demanda", "População Residente", "IBGE Censo"),
-    "populacao_estimada": ("mercado_demanda", "População Estimada", "IBGE"),
-    "populacao_idade_censo_2022": ("mercado_demanda", "População por Idade", "IBGE Censo"),
-    "renda_censo_2022_idade": ("mercado_demanda", "Renda por Idade", "IBGE Censo"),
-    "renda_pnadc_per_capita_rm_uf": ("mercado_demanda", "Renda Domiciliar per Capita", "IBGE PNADC"),
-    "renda_pnadc_trabalho_capitais": ("mercado_demanda", "Renda do Trabalho por Capital", "IBGE PNADC"),
-    "populacao_estimada_municipios": ("mercado_demanda", "População Estimada por Município", "IBGE"),
-    "renda_pnadc_trabalho_rm": ("mercado_demanda", "Renda do Trabalho por Região Metropolitana", "IBGE PNADC"),
+    "populacao_censo_2022": ("marketing", "População Residente", "IBGE Censo"),
+    "populacao_estimada": ("marketing", "População Estimada", "IBGE"),
+    "populacao_idade_censo_2022": ("marketing", "População por Idade", "IBGE Censo"),
+    "renda_censo_2022_idade": ("marketing", "Renda por Idade", "IBGE Censo"),
+    "renda_pnadc_per_capita_rm_uf": ("marketing", "Renda Domiciliar per Capita", "IBGE PNADC"),
+    "renda_pnadc_trabalho_capitais": ("marketing", "Renda do Trabalho por Capital", "IBGE PNADC"),
+    "populacao_estimada_municipios": ("marketing", "População Estimada por Município", "IBGE"),
+    "renda_pnadc_trabalho_rm": ("marketing", "Renda do Trabalho por Região Metropolitana", "IBGE PNADC"),
 }
 FAIXAS_20_39 = ["20 a 24 anos", "25 a 29 anos", "30 a 34 anos", "35 a 39 anos"]
 PADRAO_PNADC = "habitualmente recebido no trabalho principal"  # variável de referência da tabela 5436
@@ -91,7 +91,7 @@ def main() -> None:
         print(f"{arq.stem:34s} {len(df):>6} linhas")
     resumo = resumo_capitais(tabelas)
     periodo = f"{tabelas['populacao_censo_2022']['periodo'].max()}-{tabelas['populacao_estimada']['periodo'].max()}"
-    resumo.to_csv(caminho_saida("mercado_demanda", "Resumo de População e Renda por Capital", periodo, "IBGE"), index=False)
+    resumo.to_csv(caminho_saida("marketing", "Resumo de População e Renda por Capital", periodo, "IBGE"), index=False)
     print(resumo.to_string(index=False))
 
 

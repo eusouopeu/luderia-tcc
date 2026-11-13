@@ -37,7 +37,7 @@ Uso:
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("Gerar_*")), str(_AQUI.parents[1] / "5_outros")]
+sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("G[0-9]_*")), str(_AQUI.parents[1] / "5_outros")]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
@@ -58,7 +58,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 CANDIDATOS_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "B1_candidatos.csv"
 REGIC_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-brutos" / "Metrópoles.md"
-RESUMO_CAPITAIS_PATH = (ROOT / "dados" / "B4_mercado_demanda" / "_dados-agregados" / "[B4] Resumo de População e Renda por Capital 2022-2026 (IBGE).csv")
+RESUMO_CAPITAIS_PATH = (ROOT / "dados" / "B4_marketing" / "_dados-agregados" / "[B4] Resumo de População e Renda por Capital 2022-2026 (IBGE).csv")
 OUT_PATH = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_base_amostragem.xlsx"
 
 META_POR_ESTRATO = 45

@@ -5,7 +5,7 @@ não vegetariano) por metrópole, mediana entre as casas com os dois itens no ca
 A cesta segue a decisão de 04/11/2026 (hambúrguer no lugar de "uma entrada ou prato").
 
 Entrada: dados/B1_estabelecimentos/_dados-agregados/B1_resumo_estabelecimentos.xlsx (aba cesta)
-Saída: textos/capitulos/figuras/5_consumo_por_metropole.png; imprime as estatísticas do texto (5.3.2).
+Saída: textos/figuras/5_consumo_por_metropole.png; imprime as estatísticas do texto (5.3.2).
 
 Uso:
     python3 "_src/PyScripts/B1_Estabelecimentos/3_analise/B1-a_consumo_metropole.py"
@@ -14,7 +14,7 @@ Uso:
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("Gerar_*"))]
+sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("G[0-9]_*"))]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
@@ -25,7 +25,7 @@ import planilha_estilo as est
 
 ROOT = _AQUI.parents[4]
 B1 = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx"
-FIG = ROOT / "textos" / "capitulos" / "figuras"
+FIG = ROOT / "textos" / "figuras"
 
 
 def main():

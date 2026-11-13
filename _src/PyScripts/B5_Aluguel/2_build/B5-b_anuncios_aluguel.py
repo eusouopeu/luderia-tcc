@@ -6,7 +6,7 @@ pelas áreas candidatas do 6.4.
 Entrada: dados/B5_aluguel/_dados-brutos/AAAA-MM-DD_HHmm_<portal>_anuncios_aluguel.csv
          (os CSVs baixados pelo coletor, um por portal e data; o nome antigo, sem a hora,
          também vale). CSV da pasta fora desse padrão (ex.: "... (1).csv") gera aviso.
-         Bairros oficiais: dados/B4_ponto_operacoes/_dados-agregados/[B4] População por
+         Bairros oficiais: dados/B4_operacional/_dados-agregados/[B4] População por
          Bairro 2022 (IBGE Censo).csv; apelidos dos portais em outros/bairros_apelidos.csv.
 Saídas em dados/B5_aluguel/_dados-agregados/, no padrão "[B5] {dado} {período} ({fonte}).csv":
   "Anúncios de Aluguel"              um anúncio por linha: subtipo, porte, aluguel, encargos, R$/m², bairro
@@ -48,14 +48,14 @@ Regras:
   - Resumos: grupo com menos de 5 anúncios fica com amostra_suficiente = "não" e sem quartis.
   - É preço pedido, não preço fechado: o FipeZap (também preço de anúncio) e as cotações
     no ponto completam as premissas C04 (aluguel por m²) e C05 (condomínio e IPTU, % do aluguel)
-    do modelo (_src/Modelo financeiro/analise/gerar_modelo_financeiro.py).
+    do modelo (_src/Extras/G3_modelo_financeiro/gerar_modelo_financeiro.py).
 """
 
 # Caminhos: _src/Extras/ (log comum) e outros/ do objeto (auxiliares); log em ../logs/
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("Gerar_*")), str(_AQUI.parents[1] / "5_outros")]
+sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("G[0-9]_*")), str(_AQUI.parents[1] / "5_outros")]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
@@ -69,7 +69,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[4]
 IN_DIR = ROOT / "dados" / "B5_aluguel" / "_dados-brutos"
 OUT_DIR = ROOT / "dados" / "B5_aluguel" / "_dados-agregados"
-CENSO = ROOT / "dados" / "B4_ponto_operacoes" / "_dados-agregados" / "[B4] População por Bairro 2022 (IBGE Censo).csv"
+CENSO = ROOT / "dados" / "B4_operacional" / "_dados-agregados" / "[B4] População por Bairro 2022 (IBGE Censo).csv"
 APELIDOS = _AQUI.parents[1] / "5_outros" / "bairros_apelidos.csv"
 CD_SALVADOR = 2927408
 FONTE = {"olx": "OLX", "zap": "ZAP", "vivareal": "Viva Real", "quintoandar": "QuintoAndar"}

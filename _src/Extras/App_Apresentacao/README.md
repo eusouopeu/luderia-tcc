@@ -26,7 +26,7 @@ na barra lateral.
 - **Texto das abas 1 a 8:** `src/conteudo/plano.json` (blocos: kpis, texto, lista, cartões, passos, chamada, tabela,
   barras, abas e sanfona; renderizados por `src/components/blocos.jsx`).
 - **Tabelas e quadros:** não são digitados. `scripts/sincronizar_tabelas.py` extrai todas as tabelas e quadros do TMin
-  (`textos/capitulos/_md/`) para `src/conteudo/tabelas.json`, e o `plano.json` só aponta o número ("Tabela 9.4").
+  (`textos/capitulos/`) para `src/conteudo/tabelas.json`, e o `plano.json` só aponta o número ("Tabela 9.4").
   Depois de cada versão do texto: `pnpm run tabelas`.
 - **Abas 9 a 13:** `src/conteudo/b1-estatisticas.json`, `b2-conteudo.json` e `auditorias.json`, com os textos em
   `s8-*.json`, `s11-*.json` e `s12-*.json`.

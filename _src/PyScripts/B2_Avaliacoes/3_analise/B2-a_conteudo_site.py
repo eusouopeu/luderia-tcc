@@ -3,7 +3,7 @@ Bloco B2 - resumo da análise de conteúdo (Bardin) para a aba 11 do site de
 apresentação.
 
 Lê as tabelas de B2-a_conteudo_bardin.py e os achados do §3 de
-textos/instrumentos/_arquivo/analise_conteudo_bardin_B2.md e grava um JSON com:
+textos/_planejamento/_instrumentos/_arquivo/analise_conteudo_bardin_B2.md e grava um JSON com:
   - números do corpus (comentários analisados, estabelecimentos, tipos, notas);
   - menções por categoria e polaridade, por tipo de estabelecimento, em % dos
     comentários e em % ponderado por estabelecimento;
@@ -17,7 +17,7 @@ Cada comentário pertence a um único estabelecimento e cada estabelecimento a
 um único tipo; a soma dos comentários por tipo fecha com o total analisado.
 
 Entradas: dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_*.csv
-          textos/instrumentos/_arquivo/analise_conteudo_bardin_B2.md
+          textos/_planejamento/_instrumentos/_arquivo/analise_conteudo_bardin_B2.md
 Saída:    _src/site-apresentacao/src/conteudo/b2-conteudo.json
 
 Uso:
@@ -27,7 +27,7 @@ Uso:
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("Gerar_*"))]
+sys.path[:0] = [*map(str, (_AQUI.parents[3] / "Extras").glob("G[0-9]_*"))]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
@@ -39,7 +39,7 @@ import pandas as pd
 
 ROOT = _AQUI.parents[4]
 PASTA = ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados" / "analise_conteudo"
-DOC = ROOT / "textos" / "instrumentos" / "_arquivo" / "analise_conteudo_bardin_B2.md"
+DOC = ROOT / "textos" / "_planejamento" / "_instrumentos" / "_arquivo" / "analise_conteudo_bardin_B2.md"
 SAIDA = ROOT / "_src" / "Extras" / "App_Apresentacao" / "src" / "conteudo" / "b2-conteudo.json"
 TIPOS = {"total": "total", "casa de jogos": "casas", "loja com espaço de jogo": "lojas"}
 
