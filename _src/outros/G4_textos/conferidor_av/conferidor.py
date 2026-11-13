@@ -30,6 +30,7 @@ import sys
 import unicodedata
 import urllib.parse
 import urllib.request
+import webbrowser
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -424,12 +425,24 @@ def main() -> None:
     if len(sys.argv) > 1 and sys.argv[1] == "aplicar":
         print(json.dumps(aplicar(), ensure_ascii=False, indent=1))
         return
+    endereco = f"http://127.0.0.1:{PORTA}"
+    try:  # reserva a porta antes de montar a fila, para não esperar à toa
+        servidor = ThreadingHTTPServer(("127.0.0.1", PORTA), Servidor)
+    except OSError:
+        print(f"A porta {PORTA} já está em uso: o conferidor provavelmente já está aberto em {endereco}.\n"
+              f"Para reiniciar, encerre o outro (Ctrl+C no terminal dele, ou: kill $(lsof -ti tcp:{PORTA})).")
+        webbrowser.open(endereco)
+        sys.exit(1)
     print("Montando a fila (PDFs e links)…", flush=True)
     Servidor.fila = montar_fila()
     com_fonte = sum(1 for c in Servidor.fila if c["fontes"])
     print(f"{len(Servidor.fila)} cartões, {com_fonte} com PDF no acervo.")
-    print(f"Fila em http://127.0.0.1:{PORTA}  (Ctrl+C encerra)", flush=True)
-    ThreadingHTTPServer(("127.0.0.1", PORTA), Servidor).serve_forever()
+    print(f"Fila em {endereco}  (Ctrl+C encerra)", flush=True)
+    webbrowser.open(endereco)
+    try:
+        servidor.serve_forever()
+    except KeyboardInterrupt:
+        print("\nConferidor encerrado.")
 
 
 if __name__ == "__main__":
