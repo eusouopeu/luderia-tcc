@@ -1,5 +1,5 @@
 """
-Cap. 9 - modelo financeiro da luderia (_instrucoes/8_financeiro.md).
+Cap. 9 - modelo financeiro da luderia (_docs/_instrucoes/8_financeiro.md).
 
 Gera `textos/capitulos/9_plano_financeiro_modelo.xlsx`, dirigido por premissas:
 abas premissas, pessoal, simples, receitas, custos, investimento, dre,
@@ -41,7 +41,7 @@ que cobram, fora a São Jogue; R$ 18,68 e 22 casas até a busca de 11/11/2026), 
 antes de 09/11/2026, a taxa era 28,4% do gasto (R$ 22,32 no provável), o que
 não batia com o preço adotado.
 
-Desenho enxuto (P7 de _instrucoes/1a_principios.md; decisão do autor, 12/11/2026): etapa 1
+Desenho enxuto (P7 de _docs/_instrucoes/1a_principios.md; decisão do autor, 12/11/2026): etapa 1
 com 6 mesas, de terça a sábado das 14h às 23h (45 h), domingo e segunda fechados; equipe de
 3 empregados (1 cozinheiro-chefe e 2 atendentes e instrutores, 5 dias de 8 h, 40 h por
 semana) mais o sócio na gestão, no caixa e no salão (pró-labore, C08). O ponto, na Pituba,
@@ -74,7 +74,7 @@ Uso: python3 "_src/Modelo financeiro/analise/gerar_modelo_financeiro.py"
 import sys
 from pathlib import Path
 _AQUI = Path(__file__).resolve()
-sys.path[:0] = [str(_AQUI.parents[2] / "extras")]
+sys.path[:0] = [*map(str, (_AQUI.parents[2] / "Extras").glob("Gerar_*"))]
 from log_execucao import registrar_execucao  # noqa: E402
 if __name__ == "__main__":
     registrar_execucao(__file__)
@@ -99,10 +99,7 @@ DADOS = ROOT / "dados"
 MODELO = DADOS / "modelo_financeiro"
 PREMISSAS_AUTOR = MODELO / "premissas_autor.csv"  # entrada: premissas de valor fixo (decisões e estimativas do autor)
 REGISTRO = MODELO / "premissas_registro.csv"  # saída: as premissas com os valores resolvidos
-B1 = DADOS / "[B1] Estabelecimentos e cardapios"
-B3 = DADOS / "[B3] Contagem direta de ocupacao"
-B4 = DADOS / "[B4] Bases publicas"
-B5 = DADOS / "[B5] Ativos fixos"
+B3 = DADOS / "B3_contagem" / "_dados-agregados"
 SAIDA = ROOT / "textos" / "capitulos" / "9_plano_financeiro_modelo.xlsx"
 FIGURA = ROOT / "textos" / "capitulos" / "figuras" / "9_tornado.png"
 FIGURA_MC = ROOT / "textos" / "capitulos" / "figuras" / "9_monte_carlo.png"
@@ -179,22 +176,22 @@ def ler_fontes() -> dict:
     f["mesas_ocupadas"] = r["ocupacao_mesas_media_pct"] / 100 * r["mesas_denominador"]
     f["notas"] = pd.read_csv(B3 / "contagem_notas_intervalo.csv", sep=";", encoding="utf-8-sig")
     # B1: cesta de jogos (acervo inicial) e taxas de jogo dos concorrentes
-    ai = pd.read_excel(B1 / "acervo_jogos" / "B1_cesta_jogos.xlsx", sheet_name="acervo_inicial")
+    ai = pd.read_excel(DADOS / "B1_acervo_jogos" / "_dados-agregados" / "B1_cesta_jogos.xlsx", sheet_name="acervo_inicial")
     f["acervo"] = dict(zip(ai["tamanho"], ai["custo_provavel_rs"]))
     f["acervo_faixa"] = ai.set_index("tamanho")[["custo_pessimista_rs", "custo_provavel_rs", "custo_otimista_rs"]].to_dict("index")
     f["acervo_titulos"] = dict(zip(ai["tamanho"], ai["titulos"]))
     # B5: orçamento da etapa 1 por premissa (SINAPI e coletas em sites; B5-b_orcamento_itens.py), o mês mais recente
-    orc = sorted((B5 / "orcamento").glob("[[]B5[]] Orçamento por Premissa Etapa 1 *.csv"))[-1]
+    orc = sorted((DADOS / "B5_orcamento" / "_dados-agregados").glob("[[]B5[]] Orçamento por Premissa Etapa 1 *.csv"))[-1]
     f["b5"] = pd.read_csv(orc, sep=";", decimal=",", encoding="utf-8-sig").set_index("premissa")
     f["b5_arquivo"] = orc.name
-    ps = pd.read_excel(B1 / "cardapios" / "B1_cardapios_itens_precos.xlsx", sheet_name="precos_subcategoria")
+    ps = pd.read_excel(DADOS / "B1_cardapios" / "_dados-agregados" / "B1_cardapios_itens_precos.xlsx", sheet_name="precos_subcategoria")
     taxa = ps["couvert ou taxa de jogo | couvert ou taxa de jogo"].dropna()
     taxa = taxa[taxa > 0]
     f["taxa_b1_mediana"], f["taxa_b1_n"] = taxa.median(), len(taxa)
     # couvert e cesta de consumo por casa (B1_resumo_estabelecimentos, aba cesta):
     # couvert só nas casas que cobram (encontrado e > 0); cesta de consumo =
     # bebida mediana + hambúrguer não vegetariano mais barato, só nas casas com os dois
-    ce = pd.read_excel(B1 / "estabelecimentos" / "B1_resumo_estabelecimentos.xlsx", sheet_name="cesta")
+    ce = pd.read_excel(DADOS / "B1_estabelecimentos" / "_dados-agregados" / "B1_resumo_estabelecimentos.xlsx", sheet_name="cesta")
     cv = ce.loc[ce["couvert_no_cardapio"] == "sim", "couvert_mediana"]
     cv = cv[cv > 0]
     co = (ce["bebida_mediana"] + ce["hamburguer_min_nao_veg"]).dropna()
@@ -202,25 +199,25 @@ def ler_fontes() -> dict:
     f["cesta_consumo_media"], f["cesta_consumo_n"], f["cesta_consumo_mediana"] = co.mean(), len(co), co.median()
     f["couvert_q"], f["cesta_q"] = cv.quantile([.25, .75]).tolist(), co.quantile([.25, .75]).tolist()
     # B2: gasto por pessoa declarado e cesta de consumo (com a taxa) das casas no recorte
-    gc = pd.read_csv(DADOS / "[B2] Avaliacoes recentes" / "gasto_por_pessoa" / "B2_gasto_cesta_por_casa.csv",
+    gc = pd.read_csv(DADOS / "B2_avaliacoes" / "_dados-agregados" / "gasto_por_pessoa" / "B2_gasto_cesta_por_casa.csv",
                      sep=";", encoding="utf-8-sig")
     f["gasto_casas"] = gc[gc["no_recorte"] == "sim"]
     # B1: horas de pico equivalentes por dia pelo índice "Horários de pico" dos concorrentes (curva
     # média e mediana das casas abertas ÷ curva nas janelas das visitas; B1-a_horas_pico_indice.py)
-    hp = pd.read_csv(B1 / "estabelecimentos" / "B1_horas_pico_indice.csv", sep=";", encoding="utf-8-sig")
+    hp = pd.read_csv(DADOS / "B1_estabelecimentos" / "_dados-agregados" / "B1_horas_pico_indice.csv", sep=";", encoding="utf-8-sig")
     for casa, chave in (("plano", "horas_pico"), ("São Jogue", "horas_pico_sj")):
         f[chave] = {est: dict(zip(h["dia"], h["horas_pico_equivalentes"]))
                     for est, h in hp[hp["casa"] == casa].groupby("curva")}
-    f["n_casas_indice"] = pd.read_csv(B1 / "estabelecimentos" / "B1_horarios_pico_concorrentes_horas.csv",
+    f["n_casas_indice"] = pd.read_csv(DADOS / "B1_estabelecimentos" / "_dados-agregados" / "B1_horarios_pico_concorrentes_horas.csv",
                                       sep=";", encoding="utf-8-sig")["place_id"].nunique()
     # B5: anúncios de aluguel na Pituba de 150 a 200 m², área para 8 mesas desde a abertura (decisão do
     # autor, 12/11/2026); fora as salas em prédio e, nas possíveis duplicatas do mesmo tipo com até 5 m²
     # de diferença, o segundo anúncio do par
-    an = pd.read_csv(B5 / "aluguel" / "[B5] Anúncios de Aluguel 2026-11 (OLX, ZAP, Viva Real).csv",
+    an = pd.read_csv(DADOS / "B5_aluguel" / "_dados-agregados" / "[B5] Anúncios de Aluguel 2026-11 (OLX, ZAP, Viva Real).csv",
                      sep=";", decimal=",", encoding="utf-8-sig")
     an = an[(an["bairro"] == "Pituba") & an["area_m2"].between(150, 200) & (an["subtipo"] != "sala")
             & ~an["titulo"].str.contains("Salas", na=False)]
-    dup = pd.read_csv(B5 / "aluguel" / "[B5] Possíveis Duplicatas de Aluguel 2026-11 (OLX, ZAP, Viva Real).csv",
+    dup = pd.read_csv(DADOS / "B5_aluguel" / "_dados-agregados" / "[B5] Possíveis Duplicatas de Aluguel 2026-11 (OLX, ZAP, Viva Real).csv",
                       sep=";", decimal=",", encoding="utf-8-sig")
     tipo, fora = dict(zip(an["id"], an["subtipo"])), set()
     for _, r in dup.iterrows():
@@ -238,21 +235,21 @@ def ler_fontes() -> dict:
     f["encargos_pct"] = inf["encargos"].sum() / inf["aluguel"].sum()
     f["encargos_q"] = (inf["encargos"] / inf["aluguel"]).quantile([.25, .75]).tolist()
     # B4
-    bcb = pd.read_csv(B4 / "financeiro" / "[B4] Selic IPCA e Salário Mínimo Último Valor 2026 (BCB).csv")
+    bcb = pd.read_csv(DADOS / "B4_financeiro" / "_dados-agregados" / "[B4] Selic IPCA e Salário Mínimo Último Valor 2026 (BCB).csv")
     f["selic"] = bcb.loc[bcb["serie"] == "selic_meta", "valor"].iloc[0]
-    focus = pd.read_csv(B4 / "financeiro" / "[B4] Expectativas Focus 2026-2030 (BCB).csv")
+    focus = pd.read_csv(DADOS / "B4_financeiro" / "_dados-agregados" / "[B4] Expectativas Focus 2026-2030 (BCB).csv")
     f["ipca_2027"] = focus[(focus["Indicador"] == "IPCA") & (focus["DataReferencia"] == 2027)]["Mediana"].iloc[0]
     f["juro_real"] = ((1 + f["selic"] / 100) / (1 + f["ipca_2027"] / 100) - 1) * 100
-    pas_c = pd.read_csv(B4 / "financeiro" / "[B4] Serviços às Famílias Custos 2019-2023 (IBGE PAS).csv")
-    pas_r = pd.read_csv(B4 / "financeiro" / "[B4] Serviços às Famílias Receita 2019-2023 (IBGE PAS).csv")
+    pas_c = pd.read_csv(DADOS / "B4_financeiro" / "_dados-agregados" / "[B4] Serviços às Famílias Custos 2019-2023 (IBGE PAS).csv")
+    pas_r = pd.read_csv(DADOS / "B4_financeiro" / "_dados-agregados" / "[B4] Serviços às Famílias Receita 2019-2023 (IBGE PAS).csv")
     sel = lambda d, var: d[(d["periodo"] == 2023) & (d["variavel"] == var)
                            & d["Serviços prestados às famílias"].str.startswith("1.2")]["valor"].iloc[0]
     f["pas_mercadorias_pct"] = sel(pas_c, "Mercadorias, materiais de consumo e de reposição") / sel(pas_r, "Receita operacional líquida") * 100
-    cg = pd.read_csv(B4 / "multiuso" / "[B4] Salário Admissão por Capital 2025-2026 (CAGED).csv")
+    cg = pd.read_csv(DADOS / "B4_multiuso" / "_dados-agregados" / "[B4] Salário Admissão por Capital 2025-2026 (CAGED).csv")
     f["caged"] = cg[cg["capital"] == "Salvador"]
-    sn = pd.read_csv(B4 / "juridico_tributario" / "[B4] Faixas e Alíquotas por Anexo 2026 (Simples Nacional).csv")
+    sn = pd.read_csv(DADOS / "B4_juridico_tributario" / "_dados-agregados" / "[B4] Faixas e Alíquotas por Anexo 2026 (Simples Nacional).csv")
     f["simples"] = {a: sn[sn["anexo"] == a].reset_index(drop=True) for a in ("I", "III")}
-    pop = pd.read_csv(B4 / "mercado_demanda" / "[B4] Resumo de População e Renda por Capital 2022-2026 (IBGE).csv")
+    pop = pd.read_csv(DADOS / "B4_mercado_demanda" / "_dados-agregados" / "[B4] Resumo de População e Renda por Capital 2022-2026 (IBGE).csv")
     f["pop_salvador"] = pop.loc[pop["capital"] == "Salvador", "pop_estimada_2026"].iloc[0]
     return f
 
@@ -773,7 +770,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
             ws.cell(r, c).number_format = fmt
     ws["A2"].font = NEGRITO
     ws["D2"].font = NEGRITO
-    nota(ws, ult + 2, "Fonte: elaboração própria com dados dos Blocos B1, B3 e B4 (out/2026). Níveis de evidência N1 (mais confiável) a N6 (estimativa do autor), conforme _instrucoes/8_financeiro.md. Impacto no VPL pelo tornado (aba sensibilidade): 5 maiores = Alto, 5 seguintes = Médio.", 11)
+    nota(ws, ult + 2, "Fonte: elaboração própria com dados dos Blocos B1, B3 e B4 (out/2026). Níveis de evidência N1 (mais confiável) a N6 (estimativa do autor), conforme _docs/_instrucoes/8_financeiro.md. Impacto no VPL pelo tornado (aba sensibilidade): 5 maiores = Alto, 5 seguintes = Médio.", 11)
     for col, w in zip("ABCDEFGHIJK", (6, 34, 16, 12, 12, 12, 12, 36, 9, 52, 10)):
         ws.column_dimensions[col].width = w
 
@@ -1145,7 +1142,7 @@ def planilha(f, prem, quadro, resultados, tornado, rupt, mc, sem_residual):
             if j > 1:
                 ws.cell(r2 + 1 + i, j).number_format = MOEDA
     ultr = r2 + len(CENARIOS)
-    nota(ws, ultr + 2, "Fonte: elaboração própria. Valores gravados pelo script _src/extras/gerar_modelo_financeiro.py, que recalcula o modelo em Python e confere o VPL com esta planilha nos três cenários; mudar a aba premissas não atualiza esta aba (rodar o script de novo).", 7)
+    nota(ws, ultr + 2, "Fonte: elaboração própria. Valores gravados pelo script _src/Extras/gerar_modelo_financeiro.py, que recalcula o modelo em Python e confere o VPL com esta planilha nos três cenários; mudar a aba premissas não atualiza esta aba (rodar o script de novo).", 7)
     for col, w in zip("ABCDEFG", (12, 44, 18, 18, 18, 18, 18)):
         ws.column_dimensions[col].width = w
 

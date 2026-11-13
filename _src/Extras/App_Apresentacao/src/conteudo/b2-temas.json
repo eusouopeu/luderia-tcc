@@ -1,0 +1,664 @@
+{
+ "_leiaMe": "Gerado por scripts/sincronizar_b2.py a partir de dados/B2_avaliacoes/_dados-agregados/analise_conteudo/B2_temas_*.csv e B2_recodificacao_kappa.csv. Não editar à mão.",
+ "comentarios": 1628,
+ "estabelecimentos": 53,
+ "temas": [
+  {
+   "tema": "atendimento presencial",
+   "elogio": 822,
+   "critica": 92,
+   "comTema": 905,
+   "pctElogio": 50.5,
+   "pctCritica": 5.7,
+   "pctTema": 55.6,
+   "notaElogio": 4.88,
+   "notaCritica": 1.93
+  },
+  {
+   "tema": "comida",
+   "elogio": 503,
+   "critica": 67,
+   "comTema": 555,
+   "pctElogio": 30.9,
+   "pctCritica": 4.1,
+   "pctTema": 34.1,
+   "notaElogio": 4.82,
+   "notaCritica": 2.73
+  },
+  {
+   "tema": "ambiente e decoração",
+   "elogio": 422,
+   "critica": 6,
+   "comTema": 427,
+   "pctElogio": 25.9,
+   "pctCritica": 0.4,
+   "pctTema": 26.2,
+   "notaElogio": 4.75,
+   "notaCritica": 2.83
+  },
+  {
+   "tema": "variedade do acervo",
+   "elogio": 316,
+   "critica": 13,
+   "comTema": 327,
+   "pctElogio": 19.4,
+   "pctCritica": 0.8,
+   "pctTema": 20.1,
+   "notaElogio": 4.79,
+   "notaCritica": 3.38
+  },
+  {
+   "tema": "explicação de jogos",
+   "elogio": 212,
+   "critica": 21,
+   "comTema": 233,
+   "pctElogio": 13.0,
+   "pctCritica": 1.3,
+   "pctTema": 14.3,
+   "notaElogio": 4.85,
+   "notaCritica": 2.62
+  },
+  {
+   "tema": "curadoria e conservação do acervo",
+   "elogio": 136,
+   "critica": 13,
+   "comTema": 149,
+   "pctElogio": 8.4,
+   "pctCritica": 0.8,
+   "pctTema": 9.2,
+   "notaElogio": 4.69,
+   "notaCritica": 2.85
+  },
+  {
+   "tema": "espaço e lotação",
+   "elogio": 73,
+   "critica": 35,
+   "comTema": 107,
+   "pctElogio": 4.5,
+   "pctCritica": 2.1,
+   "pctTema": 6.6,
+   "notaElogio": 4.82,
+   "notaCritica": 2.57
+  },
+  {
+   "tema": "bebidas",
+   "elogio": 89,
+   "critica": 9,
+   "comTema": 98,
+   "pctElogio": 5.5,
+   "pctCritica": 0.6,
+   "pctTema": 6.0,
+   "notaElogio": 4.87,
+   "notaCritica": 2.44
+  },
+  {
+   "tema": "eventos e comunidade",
+   "elogio": 89,
+   "critica": 5,
+   "comTema": 94,
+   "pctElogio": 5.5,
+   "pctCritica": 0.3,
+   "pctTema": 5.8,
+   "notaElogio": 4.84,
+   "notaCritica": 2.0
+  },
+  {
+   "tema": "preço de outros itens",
+   "elogio": 68,
+   "critica": 17,
+   "comTema": 84,
+   "pctElogio": 4.2,
+   "pctCritica": 1.0,
+   "pctTema": 5.2,
+   "notaElogio": 4.84,
+   "notaCritica": 3.12
+  },
+  {
+   "tema": "conforto e barulho",
+   "elogio": 46,
+   "critica": 38,
+   "comTema": 83,
+   "pctElogio": 2.8,
+   "pctCritica": 2.3,
+   "pctTema": 5.1,
+   "notaElogio": 4.76,
+   "notaCritica": 3.42
+  },
+  {
+   "tema": "preço do cardápio",
+   "elogio": 27,
+   "critica": 48,
+   "comTema": 74,
+   "pctElogio": 1.7,
+   "pctCritica": 2.9,
+   "pctTema": 4.5,
+   "notaElogio": 4.96,
+   "notaCritica": 3.35
+  },
+  {
+   "tema": "regras da casa",
+   "elogio": 17,
+   "critica": 53,
+   "comTema": 70,
+   "pctElogio": 1.0,
+   "pctCritica": 3.3,
+   "pctTema": 4.3,
+   "notaElogio": 4.76,
+   "notaCritica": 2.83
+  },
+  {
+   "tema": "rapidez do serviço",
+   "elogio": 27,
+   "critica": 42,
+   "comTema": 68,
+   "pctElogio": 1.7,
+   "pctCritica": 2.6,
+   "pctTema": 4.2,
+   "notaElogio": 4.56,
+   "notaCritica": 2.5
+  },
+  {
+   "tema": "variedade do cardápio",
+   "elogio": 42,
+   "critica": 24,
+   "comTema": 66,
+   "pctElogio": 2.6,
+   "pctCritica": 1.5,
+   "pctTema": 4.1,
+   "notaElogio": 4.79,
+   "notaCritica": 3.83
+  },
+  {
+   "tema": "indicações de jogos",
+   "elogio": 55,
+   "critica": 4,
+   "comTema": 59,
+   "pctElogio": 3.4,
+   "pctCritica": 0.2,
+   "pctTema": 3.6,
+   "notaElogio": 4.89,
+   "notaCritica": 1.25
+  },
+  {
+   "tema": "comemorações e grupos",
+   "elogio": 45,
+   "critica": 6,
+   "comTema": 51,
+   "pctElogio": 2.8,
+   "pctCritica": 0.4,
+   "pctTema": 3.1,
+   "notaElogio": 4.51,
+   "notaCritica": 1.83
+  },
+  {
+   "tema": "preço da entrada",
+   "elogio": 21,
+   "critica": 25,
+   "comTema": 45,
+   "pctElogio": 1.3,
+   "pctCritica": 1.5,
+   "pctTema": 2.8,
+   "notaElogio": 4.81,
+   "notaCritica": 3.08
+  },
+  {
+   "tema": "porções",
+   "elogio": 26,
+   "critica": 15,
+   "comTema": 40,
+   "pctElogio": 1.6,
+   "pctCritica": 0.9,
+   "pctTema": 2.5,
+   "notaElogio": 4.92,
+   "notaCritica": 3.27
+  },
+  {
+   "tema": "limpeza",
+   "elogio": 20,
+   "critica": 14,
+   "comTema": 34,
+   "pctElogio": 1.2,
+   "pctCritica": 0.9,
+   "pctTema": 2.1,
+   "notaElogio": 4.9,
+   "notaCritica": 2.0
+  },
+  {
+   "tema": "atendimento online",
+   "elogio": 22,
+   "critica": 13,
+   "comTema": 34,
+   "pctElogio": 1.4,
+   "pctCritica": 0.8,
+   "pctTema": 2.1,
+   "notaElogio": 4.5,
+   "notaCritica": 1.46
+  },
+  {
+   "tema": "localização e acesso",
+   "elogio": 15,
+   "critica": 8,
+   "comTema": 22,
+   "pctElogio": 0.9,
+   "pctCritica": 0.5,
+   "pctTema": 1.4,
+   "notaElogio": 4.93,
+   "notaCritica": 4.5
+  }
+ ],
+ "contexto": [
+  {
+   "contexto": "loja",
+   "comentarios": 115,
+   "pct": 7.1
+  },
+  {
+   "contexto": "amigos",
+   "comentarios": 56,
+   "pct": 3.4
+  },
+  {
+   "contexto": "família",
+   "comentarios": 40,
+   "pct": 2.5
+  },
+  {
+   "contexto": "aniversário",
+   "comentarios": 39,
+   "pct": 2.4
+  },
+  {
+   "contexto": "apenas loja",
+   "comentarios": 35,
+   "pct": 2.1
+  },
+  {
+   "contexto": "aluguel",
+   "comentarios": 15,
+   "pct": 0.9
+  },
+  {
+   "contexto": "casal",
+   "comentarios": 13,
+   "pct": 0.8
+  }
+ ],
+ "porEstabelecimento": [
+  {
+   "metropole": "São Paulo",
+   "nome": "Bodogami Restaurante e Cafeteria",
+   "comentarios": 453,
+   "comTema": 340
+  },
+  {
+   "metropole": "Belo Horizonte",
+   "nome": "Shelf Bar e Jogos",
+   "comentarios": 243,
+   "comTema": 228
+  },
+  {
+   "metropole": "Belo Horizonte",
+   "nome": "Bardo Mago",
+   "comentarios": 100,
+   "comTema": 91
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Fan Hour Games and Burgers",
+   "comentarios": 80,
+   "comTema": 70
+  },
+  {
+   "metropole": "Rio de Janeiro",
+   "nome": "Luderia Carioca",
+   "comentarios": 69,
+   "comTema": 63
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Encounter | Jogos de Tabuleiro | Board Games",
+   "comentarios": 63,
+   "comTema": 50
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Castelos Bar & Boardgames",
+   "comentarios": 48,
+   "comTema": 38
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Cartola Luderia Bar",
+   "comentarios": 38,
+   "comTema": 37
+  },
+  {
+   "metropole": "Rio de Janeiro",
+   "nome": "Magic Store Brazil",
+   "comentarios": 38,
+   "comTema": 32
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Ludus Luderia",
+   "comentarios": 28,
+   "comTema": 25
+  },
+  {
+   "metropole": "Belém",
+   "nome": "Ludoteca Sidequest",
+   "comentarios": 26,
+   "comTema": 15
+  },
+  {
+   "metropole": "Curitiba",
+   "nome": "BoardZ Game Pub",
+   "comentarios": 24,
+   "comTema": 23
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Tubaleria",
+   "comentarios": 24,
+   "comTema": 19
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Bravo Jogos",
+   "comentarios": 24,
+   "comTema": 21
+  },
+  {
+   "metropole": "Brasília",
+   "nome": "Utopia Games & Food",
+   "comentarios": 23,
+   "comTema": 22
+  },
+  {
+   "metropole": "Florianópolis",
+   "nome": "Cineplay- Restaurante e Jogos",
+   "comentarios": 23,
+   "comTema": 16
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Play Easy",
+   "comentarios": 22,
+   "comTema": 20
+  },
+  {
+   "metropole": "Curitiba",
+   "nome": "Joyjoy Café",
+   "comentarios": 18,
+   "comTema": 13
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "OMNIVERSE",
+   "comentarios": 18,
+   "comTema": 15
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Flow Games - Burgers Cards & Comunidade",
+   "comentarios": 16,
+   "comTema": 16
+  },
+  {
+   "metropole": "Brasília",
+   "nome": "FORTALÚDICA - BURGERS & JOGOS",
+   "comentarios": 15,
+   "comTema": 14
+  },
+  {
+   "metropole": "Fortaleza",
+   "nome": "Dominaria Cards & Games",
+   "comentarios": 14,
+   "comTema": 14
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Arena BG | Jogos de Tabuleiro | Hamburgueria",
+   "comentarios": 13,
+   "comTema": 13
+  },
+  {
+   "metropole": "Brasília",
+   "nome": "Ludoteca BGC",
+   "comentarios": 13,
+   "comTema": 12
+  },
+  {
+   "metropole": "Florianópolis",
+   "nome": "Chef on Play",
+   "comentarios": 12,
+   "comTema": 12
+  },
+  {
+   "metropole": "Porto Alegre",
+   "nome": "Arcadea Gaming Pub",
+   "comentarios": 11,
+   "comTema": 11
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Place Games",
+   "comentarios": 11,
+   "comTema": 11
+  },
+  {
+   "metropole": "Rio de Janeiro",
+   "nome": "TabuClub",
+   "comentarios": 11,
+   "comTema": 8
+  },
+  {
+   "metropole": "Fortaleza",
+   "nome": "Balboa's Hobby Games",
+   "comentarios": 9,
+   "comTema": 8
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "XPlace",
+   "comentarios": 9,
+   "comTema": 8
+  },
+  {
+   "metropole": "Curitiba",
+   "nome": "Alçapão Jogos",
+   "comentarios": 8,
+   "comTema": 8
+  },
+  {
+   "metropole": "Brasília",
+   "nome": "Gruta BSB",
+   "comentarios": 8,
+   "comTema": 6
+  },
+  {
+   "metropole": "Curitiba",
+   "nome": "Vila Celta Hobby Store - Jogos e Café",
+   "comentarios": 8,
+   "comTema": 7
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Pitta's Board Games",
+   "comentarios": 7,
+   "comTema": 6
+  },
+  {
+   "metropole": "Recife",
+   "nome": "Nala Land - Bar de Jogos de Tabuleiro em Recife",
+   "comentarios": 7,
+   "comTema": 4
+  },
+  {
+   "metropole": "Rio de Janeiro",
+   "nome": "Game Of Boards",
+   "comentarios": 7,
+   "comTema": 7
+  },
+  {
+   "metropole": "Porto Alegre",
+   "nome": "Toca do Rato - Pizzaria e Jogos de Tabuleiro",
+   "comentarios": 7,
+   "comTema": 7
+  },
+  {
+   "metropole": "Goiânia",
+   "nome": "Paladins Game Store",
+   "comentarios": 7,
+   "comTema": 7
+  },
+  {
+   "metropole": "Brasília",
+   "nome": "Inside Games",
+   "comentarios": 6,
+   "comTema": 6
+  },
+  {
+   "metropole": "Belo Horizonte",
+   "nome": "La Tabuleria",
+   "comentarios": 6,
+   "comTema": 6
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Covil Game Bar",
+   "comentarios": 6,
+   "comTema": 6
+  },
+  {
+   "metropole": "Belo Horizonte",
+   "nome": "LudoCafé",
+   "comentarios": 6,
+   "comTema": 6
+  },
+  {
+   "metropole": "Belo Horizonte",
+   "nome": "Comdado Bar e Jogos",
+   "comentarios": 6,
+   "comTema": 4
+  },
+  {
+   "metropole": "Rio de Janeiro",
+   "nome": "RED jogos",
+   "comentarios": 6,
+   "comTema": 6
+  },
+  {
+   "metropole": "Florianópolis",
+   "nome": "CCG Floripa",
+   "comentarios": 6,
+   "comTema": 4
+  },
+  {
+   "metropole": "Curitiba",
+   "nome": "Taverna Game House",
+   "comentarios": 6,
+   "comTema": 4
+  },
+  {
+   "metropole": "Vitória",
+   "nome": "Café Geek Cafeteria e Ludoteca",
+   "comentarios": 5,
+   "comTema": 4
+  },
+  {
+   "metropole": "Salvador",
+   "nome": "São Jogue - Bela Vista",
+   "comentarios": 4,
+   "comTema": 4
+  },
+  {
+   "metropole": "Brasília",
+   "nome": "Loja de Jogos - Asgard",
+   "comentarios": 4,
+   "comTema": 3
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Dungeon Games Store",
+   "comentarios": 4,
+   "comTema": 4
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Coletivo Geek",
+   "comentarios": 4,
+   "comTema": 4
+  },
+  {
+   "metropole": "São Paulo",
+   "nome": "Jogasampa",
+   "comentarios": 3,
+   "comTema": 3
+  },
+  {
+   "metropole": "Belo Horizonte",
+   "nome": "Garagem do Nerd",
+   "comentarios": 1,
+   "comTema": 0
+  }
+ ],
+ "kappa": [
+  {
+   "rodada": 1,
+   "variavel": "temas (positivos e negativos, agrupados)",
+   "linhas": 139,
+   "kappa": 0.83,
+   "aceita": true
+  },
+  {
+   "rodada": 1,
+   "variavel": "contexto",
+   "linhas": 139,
+   "kappa": 0.58,
+   "aceita": false
+  },
+  {
+   "rodada": 1,
+   "variavel": "costuma ir",
+   "linhas": 139,
+   "kappa": null,
+   "aceita": false
+  },
+  {
+   "rodada": 1,
+   "variavel": "voltará",
+   "linhas": 139,
+   "kappa": null,
+   "aceita": false
+  },
+  {
+   "rodada": 2,
+   "variavel": "temas (positivos e negativos, agrupados)",
+   "linhas": 60,
+   "kappa": 0.84,
+   "aceita": true
+  },
+  {
+   "rodada": 2,
+   "variavel": "contexto",
+   "linhas": 60,
+   "kappa": 0.52,
+   "aceita": false
+  },
+  {
+   "rodada": 2,
+   "variavel": "costuma ir",
+   "linhas": 60,
+   "kappa": 0.52,
+   "aceita": false
+  },
+  {
+   "rodada": 2,
+   "variavel": "voltará",
+   "linhas": 60,
+   "kappa": 0.75,
+   "aceita": true
+  }
+ ]
+}
