@@ -8,7 +8,7 @@ A luderia deve ser uma sociedade limitada, unipessoal se tiver um só sócio. A 
 
 A empresa entra no Simples Nacional como empresa de pequeno porte. A receita provável do ano 2, de R$ 916 mil, passa do teto da microempresa (R$ 360 mil) e fica abaixo do limite de R$ 4,8 milhões (LC n. 123/2006, art. 3º). Cada receita segue o anexo da atividade: o A&B é revenda de mercadoria, no anexo I; a taxa de entrada é serviço de recreação, no anexo III, pela regra geral do art. 18, § 5º-F; o aluguel de jogos é locação de bem móvel, no anexo III sem a parcela do Imposto sobre Serviços (ISS) (art. 18, § 4º, V). O Simples custa 40% menos que o Lucro Presumido: R$ 84,7 mil, contra R$ 140,1 mil por ano (Tabela 8.1). A diferença vem sobretudo da contribuição patronal sobre a folha: no Simples, ela está dentro do Documento de Arrecadação do Simples Nacional (DAS) dos anexos I e III; no Lucro Presumido, soma 3,8% da receita.
 
-**Tabela 8.1 – Tributos no ano maduro, cenário provável: Simples Nacional × Lucro Presumido (R$)**
+**Tabela 8.1 – Tributos no ano maduro, cenário provável (R$)**
 
 | Tributo | Simples Nacional | Lucro Presumido |
 |---|---|---|

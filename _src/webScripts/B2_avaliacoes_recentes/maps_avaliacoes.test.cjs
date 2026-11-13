@@ -3,7 +3,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 
-const source = fs.readFileSync(__dirname + '/maps_avaliacoes.user.js', 'utf8');
+// A lista do menu (lista_maps_avaliacoes.js) vem antes, como no carregador (@require).
+const source = fs.readFileSync(__dirname + '/lista_maps_avaliacoes.js', 'utf8') + '\n' + fs.readFileSync(__dirname + '/maps_avaliacoes.user.js', 'utf8');
 
 function carregar(contexto = {}) {
   const valores = new Map();
@@ -327,6 +328,7 @@ test('marcador de coleta: situação ok, vazia ou refazer e resumo por lugar com
   assert.equal(t.nomeResumoLugar({ nome_estabelecimento: 'CHQ Jogos' }, '', d), '2026-11-12_chq_jogos_maps_avaliacoes_resumo.csv');
   assert.equal(t.nomeResumoLugar({ nome_estabelecimento: '' }, 'Reduto', d), '2026-11-12_reduto_maps_avaliacoes_resumo.csv', 'lugar que não carregou: nome da casa');
   assert.equal(t.nomeResumoLugar({ place_id: 'ChIJx' }, '', d), '2026-11-12_chijx_maps_avaliacoes_resumo.csv');
+  assert.equal(t.nomeResumoLugar({ place_id: 'ChIJoTlvBfMbFgcRHvuCKHBQrXQ', nome_estabelecimento: 'São Jogue' }, '', d), '2026-11-12_sao_jogue_bela_vista_maps_avaliacoes_resumo.csv', 'unidade pelo nome do B1');
   assert.ok(t.COLS_RESUMO.includes('situacao') && t.COLS_RESUMO.includes('lidas') && t.COLS_RESUMO.includes('no_periodo') && t.COLS_RESUMO.includes('motivo_parada') && t.COLS_RESUMO.includes('versao_script') && t.COLS_RESUMO.includes('data_coleta'));
   // Zero linhas ainda gera o CSV (cabeçalho e a linha do resumo).
   const texto = t.csv([{ lidas: 0, no_periodo: 0, situacao: 'vazia', motivo_parada: 'fim da lista' }], t.COLS_RESUMO);

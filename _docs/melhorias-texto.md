@@ -26,6 +26,10 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 
 **D86 — Shopping de porte com vantagem nas avaliações (13/11/2026).** Cap. 5 (5.4.2) e cap. 6 (6.4): com as 63 casas, os 30 concorrentes com shopping a até 1.000 m têm mediana de 753 avaliações, contra 538 dos 28 sem (antes 396 × 663); o texto passou a dizer "vantagem menor" que a do metrô (771 × 317), mas a decisão "o shopping não entra como exigência" foi tomada com o dado antigo. Decisão do autor (Lote de decisões, L32).
 
+**D88 — Tendência do consumo de experiências sem fonte (13/11/2026).** Cap. 1, primeiro parágrafo: "a compra de experiências ganha espaço sobre a compra de produtos e até de serviços" e a migração de restaurantes, bares e academias para a oferta de experiências não têm citação; só o dado da PAS (IBGE) tem fonte. Citar Pine e Gilmore (1998), já no cap. 2 (2.1), ou outra fonte conferida pelo autor.
+
+**D89 — Natureza da pesquisa só no resumo (13/11/2026).** O resumo diz que a pesquisa é "aplicada, descritivo-exploratória e de abordagem mista"; o cap. 3 diz "descritivo-exploratória de abordagem mista (quali-quanti)", mas não diz "aplicada". Acrescentar a natureza no primeiro parágrafo do cap. 3.
+
 **D87 — Aluguel pessimista com VPL negativo na matriz de riscos (13/11/2026).** Cap. 10 (Quadro 10.2): com aluguel e condomínio no pessimista (C04 e C05), o VPL fica em −R$ 7 mil, e o risco passou de médio a alto. O 9.5 e o 10.3 dizem que o aluguel não muda o sinal do VPL dentro da faixa, o que vale só para a C04 sozinha (R$ 29 mil). Ajustar o 9.5 e o 10.3 ou a nota do Quadro 10.2.
 
 
@@ -47,7 +51,7 @@ Formato de um item: **ID — título curto.** Onde (cap. e seção). O que diver
 **D61 — Critério do B5 × coletas de 03/11 (03/11/2026).** Cap. 3 (3.2.4: "os cinco primeiros anúncios de cada busca, na ordem do site") × dados do cap. 9 (Tabela 9.1). As exportações de 03/11 01:11 não têm a posição na busca (o coletor ordenava por preço); o build usa, nelas, até 5 ofertas por site espaçadas na ordem de preço. O texto descreve o critério, e os números só o seguem depois da recoleta com o coletor 2026.11.03-8 (pendências, B5).
 
 
-**D59 — Site e pictogramas com o livro de códigos antigo (03/11/2026).** `_src/outros/App_Apresentacao` (`b2-conteudo.json`, `B2-a_conteudo_site.py`) e `B2-a_pictogramas.py` × caps. 5 e 6 e Apêndice F. O site e os pictogramas usam as tabelas `B2_bardin_*` (livro de 15/10, 1.588 avaliações), e o texto usa a grade de 22 temas (1.628 avaliações). Sugestão: refazer o site e os pictogramas com `B2_temas_*.csv` antes da defesa.
+**D59 — Site e pictogramas com o livro de códigos antigo (03/11/2026).** `_src/outros/App_Apresentacao` (`b2-conteudo.json`, `B2a_conteudo_site.py`) e `B2a_pictogramas.py` × caps. 5 e 6 e Apêndice F. O site e os pictogramas usam as tabelas `B2_bardin_*` (livro de 15/10, 1.588 avaliações), e o texto usa a grade de 22 temas (1.628 avaliações). Sugestão: refazer o site e os pictogramas com `B2_temas_*.csv` antes da defesa.
 
 **D54 — Figura 6.2 com a base antiga do B2 (02/11/2026; Figura 6.1 até o TMin v20).** Cap. 6 (6.3, Figura 6.2: 602 declarações, 352 sem a Bodogami) × 6.3 e cap. 9 (675 declarações de 12 concorrentes, na base de 769 declarações com faixa de preço). Sugestão: regerar a Figura 6.2 com `B2_avaliacoes_periodo.csv` atual e citar as mesmas contagens nos dois parágrafos.
 

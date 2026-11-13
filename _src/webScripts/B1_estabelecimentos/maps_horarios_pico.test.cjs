@@ -3,7 +3,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 
-const source = fs.readFileSync(__dirname + '/maps_horarios_pico.user.js', 'utf8');
+// A lista do menu (lista_maps_horarios_pico.js) vem antes, como no carregador (@require).
+const source = fs.readFileSync(__dirname + '/lista_maps_horarios_pico.js', 'utf8') + '\n' + fs.readFileSync(__dirname + '/maps_horarios_pico.user.js', 'utf8');
 
 // Armazenamento do Tampermonkey e localStorage simulados (o localStorage com cota).
 function carregar({ antigas = null, cota = Infinity } = {}) {
@@ -24,7 +25,7 @@ function carregar({ antigas = null, cota = Infinity } = {}) {
     structuredClone,
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Horários de pico] carregado');"))
-    + 'Object.assign(globalThis.__test, { POP, converterAntigas, migrarLocalStorage, linhasCsv, popDoLugar, registrosPorCasa, estadoCasa, proximaQueFalta, urlCasa, lerBarra, lugaresGuardados });})();';
+    + 'Object.assign(globalThis.__test, { POP, converterAntigas, migrarLocalStorage, linhasCsv, popDoLugar, registrosPorCasa, estadoCasa, proximaQueFalta, urlCasa, lerBarra, lugaresGuardados, lerPermanencia, minutosPermanencia, provaSemGrafico });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_horarios_pico.user.js' });
   return { t: ambiente.__test, gm, ls };
 }
@@ -81,7 +82,7 @@ test('estado por casa e "Próximo" pulam as prontas e voltam às falhas', () => 
   const [a, b, c] = t.POP;
   const lugares = [
     { place_id: a.id, linhas: [[0, 10, 50, '', 'rotulo']], situacao: 'ok' },
-    { place_id: b.id, linhas: [], situacao: 'sem horários de pico' },
+    { place_id: b.id, linhas: [], situacao: 'sem horários de pico', leitura: 'painel lido até o fim (achado "avaliacoes"), sem a seção de horários de pico' },
     { place_id: c.id, linhas: [], situacao: 'Nada gravado: nenhum lugar aberto.' },
   ];
   const reg = t.registrosPorCasa(lugares);
@@ -107,4 +108,31 @@ test('leitura das barras segue igual', () => {
   const { t } = carregar();
   assert.deepEqual({ ...t.lerBarra('Movimento às 13:00: 39%.') }, { pct: 39, hora: 13 });
   assert.deepEqual({ ...t.lerBarra('Usually 45% busy at 7 PM.') }, { pct: 45, hora: 19 });
+});
+
+test('lê a permanência nas formas do Maps (vazia nas 63 casas de 12/11)', () => {
+  const { t } = carregar();
+  assert.equal(t.lerPermanencia(['Horários de pico\nAs pessoas costumam passar de 1 a 2,5 h aqui']), 'As pessoas costumam passar de 1 a 2,5 h aqui');
+  assert.equal(t.lerPermanencia(['', 'Normalmente as pessoas passam até 2 horas aqui']), 'as pessoas passam até 2 horas aqui');
+  assert.equal(t.lerPermanencia(['People typically spend 1.5 hours here']), 'People typically spend 1.5 hours here');
+  assert.equal(t.lerPermanencia(['Ambiente agradável para todas as pessoas.']), '');
+});
+
+test('converte a permanência em minutos', () => {
+  const { t } = carregar();
+  assert.deepEqual(JSON.parse(JSON.stringify(t.minutosPermanencia('As pessoas costumam passar de 1 a 2,5 h aqui'))), { min: 60, max: 150 });
+  assert.deepEqual(JSON.parse(JSON.stringify(t.minutosPermanencia('pessoas passam até 2 horas aqui'))), { min: '', max: 120 });
+  assert.deepEqual(JSON.parse(JSON.stringify(t.minutosPermanencia('As pessoas costumam passar de 15 min a 1 h aqui'))), { min: 15, max: 60 });
+  assert.deepEqual(JSON.parse(JSON.stringify(t.minutosPermanencia('As pessoas costumam passar 45 min aqui'))), { min: 45, max: 45 });
+  assert.deepEqual(JSON.parse(JSON.stringify(t.minutosPermanencia(''))), { min: '', max: '' });
+});
+
+test('"sem horários de pico" só com prova; sem ela, falha', () => {
+  const { t } = carregar();
+  assert.equal(t.provaSemGrafico({ texto: 'Visão geral\nResumo das avaliações\n4,8', rolouAteOFim: true }).sem, true);
+  assert.equal(t.provaSemGrafico({ texto: 'Visão geral\nResumo das avaliações', rolouAteOFim: false }).sem, false);
+  assert.equal(t.provaSemGrafico({ texto: 'Horários de pico\nResumo das avaliações', rolouAteOFim: true }).sem, false);
+  assert.equal(t.provaSemGrafico({ texto: 'Visualização limitada', limitada: true, rolouAteOFim: true }).sem, false);
+  assert.equal(t.estadoCasa({ linhas: [], situacao: 'sem horários de pico' }), 'falha', 'coleta antiga sem prova volta para a fila');
+  assert.equal(t.estadoCasa({ linhas: [], situacao: 'sem horários de pico', leitura: 'painel lido até o fim' }), 'sem');
 });

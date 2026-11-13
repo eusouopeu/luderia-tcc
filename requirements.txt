@@ -9,4 +9,4 @@ matplotlib>=3.8
 pytesseract>=0.3
 Pillow>=10.0
 
-# B3-b_ocr_fotos.py também exige o Tesseract instalado no sistema (brew install tesseract tesseract-lang)
+# B3b_ocr_fotos.py também exige o Tesseract instalado no sistema (brew install tesseract tesseract-lang)

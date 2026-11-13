@@ -18,7 +18,7 @@ O Bloco B1 mede o núcleo desse mercado que tem a luderia como formato. Foram id
 
 ![Luderias com mais de 100 avaliações por metrópole](../graficos/5-1_casas_por_metropole.png)
 
-Fonte: elaborado pelo próprio autor, com base no Bloco B1 (Google Places API, 15/10/2026 a 12/11/2026).
+Fonte: elaborado pelo próprio autor, com base no Bloco B1 (Google Places API, 15 de outubro a 12 de novembro de 2026).
 
 A decisão afetada é a composição da receita: o plano apoia a receita em alimentos e bebidas, com o jogo como motivo da visita, e compara o custo com a referência dos serviços de alimentação (capítulo 9).
 
@@ -36,7 +36,7 @@ A renda mede o poder de compra agregado. Na Região Metropolitana de Salvador, o
 
 ![Rendimento médio do trabalho nas regiões metropolitanas com luderia no B1, 2º trimestre de 2026](../graficos/5-2_renda_trabalho_rm.png)
 
-Fonte: elaborado pelo próprio autor, com base no IBGE, PNAD Contínua (04/2026 a 06/2026).
+Fonte: elaborado pelo próprio autor, com base no IBGE, PNAD Contínua (abril a junho de 2026).
 
 Nota: Brasília corresponde ao Distrito Federal.
 
@@ -46,7 +46,7 @@ A inflação da alimentação fora do domicílio corre acima da geral, e mais em
 
 ![IPCA acumulado em 12 meses até agosto: geral e alimentação fora do domicílio](../graficos/5-3_ipca_alimentacao_fora.png)
 
-Fonte: elaborado pelo próprio autor, com base no IBGE, IPCA, tabela 7060 (08/2023 a 08/2026).
+Fonte: elaborado pelo próprio autor, com base no IBGE, IPCA, tabela 7060 (agosto de 2023 a agosto de 2026).
 
 O custo do ponto segue a mesma tendência de alta. O aluguel comercial em Salvador chegou a R$ 54,15 por m² em julho de 2026, alta de 18,9% em 12 meses, contra 7,8% em São Paulo (FIPE, Índice FipeZAP). O aluguel é o principal custo fixo e entra como premissa de risco na escolha do ponto (seção 6.4) e na sensibilidade (capítulo 9). Os anúncios da Pituba (seção 6.4) substituem o índice no plano, e a cotação com corretor os substitui antes do investimento.
 
@@ -112,7 +112,7 @@ O acervo dos concorrentes tem mediana de 300 títulos (de 59 a 1.833), nas 34 ca
 
 ![Consumo por pessoa uma bebida e um hambúrguer, mediana por metrópole](../graficos/5-4_consumo_por_metropole.png)
 
-Fonte: elaborado pelo próprio autor, com base nos cardápios do Bloco B1 (04/2024 a 11/2026).
+Fonte: elaborado pelo próprio autor, com base nos cardápios do Bloco B1 (abril de 2024 a novembro de 2026).
 
 ### 5.4.2 Metrô e shopping no entorno
 

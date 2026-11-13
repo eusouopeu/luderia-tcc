@@ -3,12 +3,13 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 
-const source = fs.readFileSync(__dirname + '/maps_entorno.user.js', 'utf8');
+// A lista do menu (lista_maps_entorno.js) vem antes, como no carregador (@require).
+const source = fs.readFileSync(__dirname + '/lista_maps_entorno.js', 'utf8') + '\n' + fs.readFileSync(__dirname + '/maps_entorno.user.js', 'utf8');
 
 function carregar() {
   const ambiente = { __test: {}, localStorage: { getItem: () => null, setItem() {}, removeItem() {} }, location: { href: '', pathname: '/maps/' }, document: { querySelector: () => null, querySelectorAll: () => [] } };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Entorno do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { estadoLocal, proximoLocal, classificar, suspeito, distancia, deslocar, mPorPx, planejarBusca, coberturaReal, lerCartao, lerNumeroAvaliacoes, lerFila, cidadeDoEndereco, unir, nomesParecidos, marcarDuplicatas, mesmoShopping, montarSaida, montarShoppings, precisaSubdividir, decidirLista, cruzamento, quadrantes, colsResumo, nomesArquivos, dataLocal, foraDoMapa, tarefasIniciais, consultasDispensadas, uniaoLocais, classificarNaCidade, gruposAusentes, grupoRevisto, semRetiradas });})();';
+    + 'Object.assign(globalThis.__test, { estadoLocal, proximoLocal, classificar, suspeito, distancia, deslocar, mPorPx, planejarBusca, coberturaReal, lerCartao, lerNumeroAvaliacoes, lerFila, cidadeDoEndereco, unir, nomesParecidos, marcarDuplicatas, mesmoShopping, montarSaida, montarShoppings, precisaSubdividir, decidirLista, cruzamento, quadrantes, inserirQuadrantes, colsResumo, nomesArquivos, dataLocal, foraDoMapa, tarefasIniciais, consultasDispensadas, uniaoLocais, classificarNaCidade, gruposAusentes, grupoRevisto, semRetiradas, arquivosExportacao, COLS_BUSCAS, registrarParada });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_entorno.user.js' });
   return ambiente.__test;
 }
@@ -144,6 +145,7 @@ test('nome do arquivo: data local primeiro, depois o estabelecimento', () => {
     resumo: '2026-10-14_sao_jogue_rio_vermelho_entorno_resumo.csv',
     resultados: '2026-10-14_sao_jogue_rio_vermelho_entorno_resultados.csv',
     shoppings: '2026-10-14_sao_jogue_rio_vermelho_entorno_shoppings.csv',
+    buscas: '2026-10-14_sao_jogue_rio_vermelho_entorno_buscas.csv',
   });
   assert.equal(t.nomesArquivos([{ nome: 'A' }, { nome: 'B' }, { nome: 'C' }], '2026-10-14', 'parcial-010').resumo, '2026-10-14_3_estabelecimentos_entorno_resumo_parcial-010.csv');
   assert.equal(t.dataLocal(new Date(2026, 9, 14, 23, 30)), '2026-10-14', 'às 23h30 ainda é dia 14');
@@ -424,7 +426,7 @@ test('estações: lista cheia divide sempre; demais, só lotada sem fim e sem it
   assert.equal(t.decidirLista({ n: 9, fim: true, quadrante: '', grupo: 'metro', algumForaDoMapa: false }), '');
   assert.equal(t.decidirLista({ n: 10, fim: true, quadrante: 'NO', grupo: 'metro', algumForaDoMapa: true }), '', 'quadrante com item fora do mapa: área esgotada');
   assert.equal(t.decidirLista({ n: 12, fim: false, quadrante: 'NO', grupo: 'vlt', algumForaDoMapa: false }), 'censura');
-  assert.equal(t.decidirLista({ n: 70, fim: true, quadrante: '', grupo: 'shopping', algumForaDoMapa: true }), '');
+  assert.equal(t.decidirLista({ n: 70, fim: true, quadrante: 'NO', grupo: 'shopping', algumForaDoMapa: true }), '');
   assert.equal(t.decidirLista({ n: 70, fim: false, quadrante: '', grupo: 'shopping', algumForaDoMapa: false }), 'subdividir');
 });
 
@@ -461,4 +463,57 @@ test('ruído: traçado da linha, loja com categoria de shopping e centro comerci
   assert.equal(t.classificar('Shopping Buritis', 'Centro comercial'), 'shopping');
   assert.equal(t.classificar('Centro Comercial Riviera Buritis', 'Shopping center'), 'shopping');
   assert.equal(t.classificar('Galeria do Centro', 'Centro comercial'), 'outro');
+});
+
+test('busca de shopping sempre se divide em quadrantes (lista oscilava entre coletas)', () => {
+  assert.equal(t.decidirLista({ n: 3, fim: true, quadrante: '', grupo: 'shopping', algumForaDoMapa: true }), 'subdividir');
+  assert.equal(t.decidirLista({ n: 3, fim: true, quadrante: 'NE', grupo: 'shopping', algumForaDoMapa: false }), '');
+  assert.equal(t.decidirLista({ n: 20, fim: false, quadrante: 'NE', grupo: 'shopping', algumForaDoMapa: false }), 'censura');
+  assert.equal(t.decidirLista({ n: 3, fim: true, quadrante: '', grupo: 'metro', algumForaDoMapa: false }), '');
+});
+
+test('quadrantes entram logo depois da busca que os gerou, não no fim da fila', () => {
+  const fila = { tarefa: 0, tarefas: t.tarefasIniciais({ cidade: 'Salvador' }) };
+  t.inserirQuadrantes(fila, fila.tarefas[0]);
+  assert.deepEqual(json(fila.tarefas.map((x) => x.consulta + (x.quadrante ? ` ${x.quadrante}` : ''))),
+    ['estação de metrô', 'estação de metrô NO', 'estação de metrô NE', 'estação de metrô SO', 'estação de metrô SE', 'estação VLT', 'shopping center']);
+  // Quadrante não se divide de novo: a fila de uma casa é finita.
+  assert.notEqual(t.decidirLista({ n: 20, fim: false, quadrante: 'NO', grupo: 'metro', algumForaDoMapa: false }), 'subdividir');
+});
+
+test('exportação traz resumo, resultados, shoppings e buscas, com linha para quem falta', () => {
+  const lista = [{ place_id: 'A', nome: 'Casa A', cidade: 'Rio de Janeiro', lat: -22.9, lng: -43.17 }, { place_id: 'B', nome: 'Casa B', cidade: 'Rio de Janeiro', lat: -22.8, lng: -43.1 }];
+  const dados = {
+    locais: [{ chave: 'A', ...lista[0], consultas: ['estação de metrô', 'estação de trem', 'estação VLT', 'shopping center'], falhas: [], censura: [], coletado_em: 'x' }],
+    resultados: [], buscas: [{ origem: 'A', origem_place_id: 'A', consulta: 'shopping center', quadrante: 'NE', n_lidos: 4 }, { origem: 'Z', consulta: 'x' }],
+  };
+  const saida = t.montarSaida(dados, {}, OP, lista);
+  assert.equal(saida.resumo.length, 2, 'soma fecha com a lista');
+  assert.equal(saida.resumo[1].situacao, 'não coletado no Maps');
+  const nomes = t.nomesArquivos(saida.universo, '2026-11-13', 'parcial-001');
+  const arqs = t.arquivosExportacao(saida, dados, ['maps', 'shoppings'], nomes);
+  assert.deepEqual(json(arqs.map((a) => a[1].replace(/^2026-11-13_2_estabelecimentos_entorno_/, ''))), ['resumo_parcial-001.csv', 'resultados_parcial-001.csv', 'shoppings_parcial-001.csv', 'buscas_parcial-001.csv']);
+  const buscas = arqs[3][0].split('\r\n');
+  assert.equal(buscas[0].replace('\ufeff', ''), t.COLS_BUSCAS.join(';'));
+  assert.equal(buscas.length, 2, 'só as buscas das casas exportadas');
+});
+
+test('parada da fila fica registrada com motivo e casa', () => {
+  const f = { locais: [{ nome: 'X' }, { nome: 'Y' }], pos: 1 };
+  t.registrarParada(f, 'botão Parar');
+  assert.equal(f.motivo_parada, 'botão Parar');
+  assert.equal(f.paradas[0].casa, 'Y');
+});
+
+test('VLT da RED jogos: traçado e parada da mesma estação não contam (coleta de 12/11)', () => {
+  const brutos = [
+    ['Cinelândia', 'Ponto de bonde', -22.910896, -43.175454], ['Sete de Setembro', 'Ponto de bonde', -22.905288, -43.177557],
+    ['Estação VLT Cinelândia', 'Serviço de transporte', -22.910590, -43.175593], ['Parada VLT - Colombo', 'Serviço de transporte', -22.905328, -43.178263],
+    ['Praça XV', 'Ponto de bonde', -22.902179, -43.173072], ['Estação Carioca do VLT', 'Serviço de transporte', -22.907993, -43.176549],
+    ['Carioca', 'Ponto de bonde', -22.907990, -43.176550], ['Antônio Carlos/MAM', 'Ponto de bonde', -22.911265, -43.172053],
+    ['Traçado do mapa do vlt rio de janeiro', 'Serviço de transporte', -22.906362, -43.177185], ['Candelária', 'Ponto de bonde', -22.901686, -43.178861],
+    ['Tiradentes', 'Ponto de bonde', -22.906588, -43.183027], ['Vlt Candelária', 'Serviço de transporte', -22.901689, -43.178861],
+  ].map(([nome, categoria_maps, lat, lng]) => ({ nome, categoria_maps, lat, lng, grupo: t.classificar(nome, categoria_maps), n_avaliacoes: '' }));
+  const rs = t.marcarDuplicatas(brutos).filter((r) => r.grupo === 'vlt' && !r.duplicata_de);
+  assert.equal(rs.length, 7, rs.map((r) => r.nome).join(', '));
 });

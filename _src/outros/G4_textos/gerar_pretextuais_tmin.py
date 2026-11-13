@@ -54,6 +54,8 @@ SIGLAS = {
     "CONCLA": "Comissão Nacional de Classificação",
     "CSLL": "Contribuição Social sobre o Lucro Líquido",
     "DAS": "Documento de Arrecadação do Simples Nacional",
+    "DFC": "Demonstração dos fluxos de caixa",
+    "DRE": "Demonstração do resultado do exercício",
     "EBITDA": "Lucro antes de juros, impostos, depreciação e amortização (Earnings Before Interest, Taxes, Depreciation and Amortization)",
     "EC": "Emenda Constitucional",
     "ECAD": "Escritório Central de Arrecadação e Distribuição",
@@ -98,6 +100,7 @@ SIGLAS = {
     "SIDRA": "Sistema IBGE de Recuperação Automática",
     "SINAPI": "Sistema Nacional de Pesquisa de Custos e Índices da Construção Civil",
     "SWOT": "Forças, fraquezas, oportunidades e ameaças (Strengths, Weaknesses, Opportunities, Threats)",
+    "TCG": "Jogos de cartas colecionáveis (Trading card games)",
     "TIR": "Taxa interna de retorno",
     "TMA": "Taxa mínima de atratividade",
     "VLT": "Veículo leve sobre trilhos",
@@ -109,14 +112,22 @@ txt = lambda e: html.unescape("".join(re.findall(r"<w:t[^>]*>([^<]*)</w:t>", e))
 FONTE = '<w:rFonts w:ascii="Arial" w:hAnsi="Arial" w:eastAsia="Arial" w:cs="Arial"/>'
 
 
-def rpr(b=False, caps=False):
-    return f'<w:rPr>{FONTE}{"<w:b/><w:bCs/>" if b else ""}{"<w:caps/>" if caps else ""}<w:sz w:val="24"/><w:szCs w:val="24"/></w:rPr>'
+def rpr(b=False, caps=False, sz=12):
+    return f'<w:rPr>{FONTE}{"<w:b/><w:bCs/>" if b else ""}{"<w:caps/>" if caps else ""}<w:sz w:val="{sz * 2}"/><w:szCs w:val="{sz * 2}"/></w:rPr>'
+
+
+def branco(n=1, pt=12, jc="center", esq=0):
+    """n linhas em branco de espaçamento simples, com a altura do corpo `pt`: separam os blocos no lugar do
+    espaçamento antes e depois do parágrafo (_docs/_instrucoes/1d_formatacao.md, 13/11/2026)."""
+    return ('<w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="240" w:lineRule="auto"/>'
+            f'<w:ind w:left="{esq}" w:firstLine="0"/><w:jc w:val="{jc}"/><w:rPr><w:sz w:val="{pt * 2}"/><w:szCs w:val="{pt * 2}"/></w:rPr></w:pPr></w:p>') * n
 
 
 def titulo(t, quebra=True):
+    """Título sem número (RESUMO, listas, SUMÁRIO): centralizado, maiúsculas e negrito, seguido de uma linha em branco."""
     return ('<w:p><w:pPr>' + ('<w:pageBreakBefore/>' if quebra else '') +
-            '<w:spacing w:before="0" w:after="283" w:line="360" w:lineRule="auto"/><w:ind w:firstLine="0"/><w:jc w:val="center"/></w:pPr>'
-            f'<w:r>{rpr(b=True)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>')
+            '<w:spacing w:before="0" w:after="0" w:line="360" w:lineRule="auto"/><w:ind w:firstLine="0"/><w:jc w:val="center"/></w:pPr>'
+            f'<w:r>{rpr(b=True)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>') + branco()
 
 # Dados da capa e da folha de rosto (NBR 14724). A capa não entra na contagem das páginas:
 # a folha de rosto é a página 1, e o número só é impresso a partir da introdução.
@@ -127,38 +138,59 @@ ORIENTADOR = "Jair Sampaio Soares Junior"
 LOCAL, ANO = "Salvador", "2026"
 NATUREZA = ("Trabalho de Conclusão de Curso apresentado ao curso de Administração da Escola de Administração da "
             "Universidade Federal da Bahia, como requisito parcial para a obtenção do grau de Bacharel em Administração.")
+BRASAO_RID, BRASAO = "rIdBrasaoUfba", Path(__file__).with_name("brasao_ufba.png")
 
 
-def linha(t, b=False, antes=0, depois=0, jc="center", esq=0, simples=True, quebra=False):
+def linha(t, b=False, sz=12, jc="center", esq=0, simples=True, quebra=False, recuo=0):
     return ('<w:p><w:pPr>' + ('<w:pageBreakBefore/>' if quebra else '') +
-            f'<w:spacing w:before="{antes}" w:after="{depois}" w:line="{240 if simples else 360}" w:lineRule="auto"/>'
-            f'<w:ind w:left="{esq}" w:firstLine="0"/><w:jc w:val="{jc}"/></w:pPr>'
-            f'<w:r>{rpr(b)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>')
+            f'<w:spacing w:before="0" w:after="0" w:line="{240 if simples else 360}" w:lineRule="auto"/>'
+            f'<w:ind w:left="{esq}" w:firstLine="{recuo}"/><w:jc w:val="{jc}"/></w:pPr>'
+            f'<w:r>{rpr(b, sz=sz)}<w:t xml:space="preserve">{esc(t)}</w:t></w:r></w:p>')
 
 
-def titulo_trabalho(antes):
-    return ('<w:p><w:pPr>' f'<w:spacing w:before="{antes}" w:after="0" w:line="360" w:lineRule="auto"/><w:ind w:firstLine="0"/><w:jc w:val="center"/></w:pPr>'
-            f'<w:r>{rpr(True)}<w:t xml:space="preserve">{esc(TITULO.upper())}:</w:t></w:r>'
-            f'<w:r>{rpr(False)}<w:br/><w:t xml:space="preserve">{esc(SUBTITULO)}</w:t></w:r></w:p>')
+def titulo_trabalho(sz_tit, sz_sub, b_sub):
+    """Título em versal e negrito, seguido de dois pontos; subtítulo em versal logo depois (manual da UFBA)."""
+    return ('<w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="360" w:lineRule="auto"/><w:ind w:firstLine="0"/><w:jc w:val="center"/></w:pPr>'
+            f'<w:r>{rpr(True, sz=sz_tit)}<w:t xml:space="preserve">{esc(TITULO.upper())}:</w:t></w:r>'
+            f'<w:r>{rpr(b_sub, sz=sz_sub)}<w:br/><w:t xml:space="preserve">{esc(SUBTITULO.upper())}</w:t></w:r></w:p>')
+
+
+def brasao():
+    """Brasão da UFBA no topo da capa (1,6 × 2,5 cm)."""
+    cx, cy = 585000, 900000
+    return ('<w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="240" w:lineRule="auto"/><w:ind w:firstLine="0"/><w:jc w:val="center"/></w:pPr>'
+            f'<w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="{cx}" cy="{cy}"/>'
+            '<wp:docPr id="9001" name="Brasão da UFBA"/><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">'
+            '<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">'
+            '<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="9001" name="brasao_ufba.png"/>'
+            f'<pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="{BRASAO_RID}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill>'
+            f'<pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="{cx}" cy="{cy}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr>'
+            '</pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>')
 
 
 def capa_e_rosto():
-    capa = [linha("UNIVERSIDADE FEDERAL DA BAHIA", b=True), linha("ESCOLA DE ADMINISTRAÇÃO", b=True),
-            linha(AUTOR.upper(), antes=2600), titulo_trabalho(2900),
-            linha(LOCAL, antes=4300), linha(ANO)]
-    rosto = [linha(AUTOR.upper(), quebra=True), titulo_trabalho(2900),
-             linha(NATUREZA, antes=2400, jc="both", esq=4536),
-             linha(f"Orientador: {ORIENTADOR}", antes=360, jc="left", esq=4536),
-             linha(LOCAL, antes=2700), linha(ANO)]
+    """Capa, folha de rosto e folha de aprovação no leiaute que o autor montou no v33 (13/11/2026), com as
+    distâncias feitas por linhas em branco de espaçamento simples. Capa: instituição, unidade e curso em
+    corpo 16, 14 e 12; autor, local e ano em corpo 14; título em 16 e subtítulo em 14 (manual da UFBA).
+    Folha de rosto: nota de natureza a 6 cm da margem esquerda."""
+    seis = 3402  # 6 cm
+    capa = [brasao(), linha("UNIVERSIDADE FEDERAL DA BAHIA", b=True, sz=16), linha("ESCOLA DE ADMINISTRAÇÃO", b=True, sz=14),
+            linha("BACHARELADO EM ADMINISTRAÇÃO", b=True), branco(9),
+            linha(AUTOR.upper(), b=True, sz=14), branco(10), titulo_trabalho(16, 14, True), branco(8, jc="center"),
+            linha(LOCAL.upper(), sz=14), linha(ANO, sz=14)]
+    rosto = [linha(AUTOR.upper(), b=True, sz=14, quebra=True), branco(10), titulo_trabalho(16, 14, False),
+             branco(7, esq=seis), linha(NATUREZA, jc="both", esq=seis), branco(1, esq=seis),
+             linha(f"Orientador: {ORIENTADOR}", jc="left", esq=seis), branco(17),
+             linha(LOCAL.upper(), sz=14), linha(ANO, sz=14)]
     # folha de aprovação (NBR 14724, 4.2.1.3): os nomes da banca e a data entram quando a banca for definida
-    membro = lambda nome, inst: [linha("_" * 50, antes=700), linha(nome), linha(inst)]
-    aprov = ([linha(AUTOR.upper(), quebra=True), titulo_trabalho(900),
-              linha(NATUREZA, antes=900, jc="both", esq=4536),
-              linha(f"Aprovado em ____ de ________________ de {ANO}.", antes=900, jc="left"),
-              linha("BANCA EXAMINADORA", b=True, antes=600)]
+    membro = lambda nome, inst: [branco(3), linha("_" * 50), linha(nome), linha(inst)]
+    aprov = ([linha(AUTOR.upper(), b=True, quebra=True), branco(3), titulo_trabalho(12, 12, False),
+              linha(NATUREZA, jc="both"), branco(3),
+              linha(f"Aprovado em ____ de ________________ de {ANO}.", jc="right"), branco(4),
+              linha("BANCA EXAMINADORA"), branco(1)]
              + membro(f"{ORIENTADOR} – Orientador", "Universidade Federal da Bahia")
-             + membro("Membro da banca examinadora", "Instituição")
-             + membro("Membro da banca examinadora", "Instituição"))
+             + membro("Membro da banca examinadora", "Universidade Federal da Bahia")
+             + membro("Membro da banca examinadora", "Universidade Federal da Bahia"))
     return "".join(capa + rosto + aprov)
 
 
@@ -182,7 +214,7 @@ def resumo_e_abstract():
         tit, *paras = [l for l in bloco.splitlines() if l.strip()]
         out.append(titulo(tit.strip()))
         for i, par in enumerate(paras):
-            out.append(par_md(par.strip(), depois=283 if i < len(paras) - 1 else 0))
+            out.append(par_md(par.strip()) + (branco() if i < len(paras) - 1 else ""))
     return "".join(out)
 
 
@@ -222,7 +254,7 @@ def siglas_usadas(texto):
     candidatas = set(re.findall(r"(?<![\w&-])([A-Z]{2,6})(?![\w&-])", sem_cit))
     conhecidas = {p.strip() for sg in SIGLAS for p in re.split(r",| a ", sg)} | {"CAGED"}
     ignorar = {"II", "III", "IV", "VI", "VII", "AV", "SP", "UK", "DF", "BA", "RJ", "MG", "PR", "PE", "PA", "BV", "TMIN", "TMAX", "MVP",
-               "NETO", "KAM", "ERRC", "DRE", "UFBA", "BUSCAR", "BG", "STIEP", "OLX", "ZAP"}
+               "NETO", "KAM", "ERRC", "UFBA", "BUSCAR", "BG", "STIEP", "OLX", "ZAP"}
     faltam = sorted(c for c in candidatas - conhecidas - ignorar if not c.isdigit())
     return sorted(usadas, key=lambda s: s.lower()), faltam
 
@@ -298,6 +330,7 @@ def main():
             f.append(entrada(s, imp(p), b=nivel in (1, 3), caps=nivel in (1, 2)))
         sect = x[x.rfind("<w:sectPr"):x.rfind("</w:sectPr>") + len("</w:sectPr>")]
         sect = re.sub(r"<w:footerReference[^>]*/>", "", sect)
+        sect = re.sub(r"<w:headerReference[^>]*/>", "", sect)
         sect = re.sub(r"<w:pgNumType[^>]*/>", "", sect)
         f.append(f'<w:p><w:pPr>{sect}</w:pPr></w:p>')
         corpo = re.sub(r"<w:pgNumType[^>]*/>", "", corpo_xml)
@@ -309,7 +342,17 @@ def main():
     def grava(doc, destino):
         with zipfile.ZipFile(destino, "w", zipfile.ZIP_DEFLATED) as zo:
             for item, dado in itens:
-                zo.writestr(item, doc.encode() if item.filename == "word/document.xml" else dado)
+                if item.filename == "word/document.xml":
+                    dado = doc.encode()
+                elif item.filename == "word/_rels/document.xml.rels" and BRASAO_RID.encode() not in dado:
+                    rel = (f'<Relationship Id="{BRASAO_RID}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" '
+                           'Target="media/brasao_ufba.png"/>')
+                    dado = dado.replace(b"</Relationships>", rel.encode() + b"</Relationships>")
+                elif item.filename == "[Content_Types].xml" and b'Extension="png"' not in dado:
+                    dado = dado.replace(b"<Types ", b"<Types ", 1).replace(b"</Types>", b'<Default Extension="png" ContentType="image/png"/></Types>')
+                if item.filename != "word/media/brasao_ufba.png":
+                    zo.writestr(item, dado)
+            zo.writestr("word/media/brasao_ufba.png", BRASAO.read_bytes())
 
     zeros = lambda l: ["00"] * len(l)
     with tempfile.TemporaryDirectory() as d:

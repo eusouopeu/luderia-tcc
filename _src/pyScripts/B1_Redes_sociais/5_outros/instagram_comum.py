@@ -1,7 +1,7 @@
 """
 Bloco B1 - funções comuns às análises das legendas do Instagram.
 
-Carrega os CSVs de posts exportados pelo coletor (_src/webScripts/B1_estabelecimentos/instagram_coletor.user.js),
+Carrega os CSVs de posts exportados pelo coletor (_src/webScripts/B1_estabelecimentos/instagram.user.js),
 um por perfil coletado, e devolve uma base com um post por linha.
 
 Regras de atribuição (uma unidade, um grupo):
@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parents[4]
 PASTA_REDES = ROOT / "dados" / "B1_redes_sociais" / "_dados-agregados"
 SAIDA = PASTA_REDES / "analise_legendas"
 APROVADAS = ROOT / "dados" / "B1_estabelecimentos" / "_dados-agregados" / "3_triagem" / "B1_instagram_aprovadas.csv"
-SCRIPT_B2 = ROOT / "_src" / "pyScripts" / "B2_Avaliacoes" / "3_analise" / "B2-a_conteudo_bardin.py"
+SCRIPT_B2 = ROOT / "_src" / "pyScripts" / "B2_Avaliacoes" / "3_analise" / "B2a_conteudo_bardin.py"
 B2_FREQUENCIA = (ROOT / "dados" / "B2_avaliacoes" / "_dados-agregados" / "analise_conteudo" / "B2_bardin_frequencia_categorias.csv")
 B2_CONTEXTO = B2_FREQUENCIA.with_name("B2_bardin_contexto.csv")
 
@@ -156,7 +156,7 @@ def conferir_soma(partes, total, rotulo):
 
 
 # ---------- eventos nas legendas ----------
-# Cópia fiel do classificador do instagram_coletor.user.js (CATEGORIAS e AGENDA),
+# Cópia fiel do classificador do instagram.user.js (CATEGORIAS e AGENDA),
 # para que posts coletados por versões antigas do coletor, sem a coluna evento,
 # sejam classificados pela mesma regra. Mudou lá, muda aqui. re.ASCII imita o
 # \b do JavaScript, em que º, ª e emoji não são letras.

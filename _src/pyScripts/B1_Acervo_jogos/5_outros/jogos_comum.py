@@ -8,7 +8,7 @@ da Ludopedia, nesta ordem:
 1. slug de jogo base igual à chave (ludopedia_ids.csv do B5 arquivado);
 2. nome igual à chave no ranking ou nos detalhes do B5;
 3. melhor resultado da busca da API com semelhança de nome >= 0,85
-   (cache ludopedia_api_busca.json, B1-c_jogos_ludopedia.py); sem
+   (cache ludopedia_api_busca.json, B1c_jogos_ludopedia.py); sem
    isso, o primeiro resultado cujo nome antes de ":" é igual à chave.
 Sem nada disso, o grupo fica só com a chave. Grafias diferentes com o mesmo
 slug contam como um jogo; cada casa conta uma vez por jogo.

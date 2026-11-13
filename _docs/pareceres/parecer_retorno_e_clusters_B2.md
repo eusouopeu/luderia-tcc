@@ -1,6 +1,6 @@
 # B2: o que acompanha a decisão de voltar e o conteúdo das avaliações por grupo de preço
 
-Parecer de 03/11/2026, a pedido do autor. Script: `_src/pyScripts/B2_Avaliacoes/3_analise/B2-a_retorno_e_clusters.py`. Tabelas: `dados/B2_avaliacoes/_dados-agregados/retorno_e_clusters/`. Base: as 1.628 avaliações do B2 codificadas na grade de 22 temas (Notion, 03/11/2026).
+Parecer de 03/11/2026, a pedido do autor. Script: `_src/pyScripts/B2_Avaliacoes/3_analise/B2a_retorno_e_clusters.py`. Tabelas: `dados/B2_avaliacoes/_dados-agregados/retorno_e_clusters/`. Base: as 1.628 avaliações do B2 codificadas na grade de 22 temas (Notion, 03/11/2026).
 
 ## Resumo para o plano
 
@@ -225,7 +225,7 @@ Limites: o gasto declarado inclui a ocasião (aniversário, grupo grande) e não
 
 ## 4. Custo-benefício: cardápio de qualidade, preço baixo, acervo ou ambiente
 
-Pedido do autor (03/11/2026): estimar o que rende mais por pessoa e por mês na luderia do plano. Script `B2-a_custo_beneficio_cardapio.py`; tabelas `B2_custo_beneficio_posicoes.csv` e `B2_custo_beneficio_grupos.csv`.
+Pedido do autor (03/11/2026): estimar o que rende mais por pessoa e por mês na luderia do plano. Script `B2a_custo_beneficio_cardapio.py`; tabelas `B2_custo_beneficio_posicoes.csv` e `B2_custo_beneficio_grupos.csv`.
 
 **A premissa de que o cardápio caro tem comida melhor não aparece no B2.** Nas casas do grupo 2 (consumo caro), a nota média de comida é 4,37, contra 4,67 no grupo 1 (média das casas com nota de aspecto). A crítica à comida também é maior: 5% das avaliações, contra 2% (q = 0,17). O cardápio caro cobra mais, mas não é percebido como mais gostoso. A expectativa que o preço cria pode até explicar a crítica maior. Como a crítica à comida aparece em metade das avaliações de quem não volta (seção 1), cobrar mais sem entregar mais é risco de retenção.
 

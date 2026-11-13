@@ -7,9 +7,10 @@ O que todo webscript (userscript do Tampermonkey) do TCC Luderia segue. Vale par
 | Item | Regra |
 |---|---|
 | Pasta | `_src/webScripts/B<n>_<nome>/`, uma por bloco (`B1_estabelecimentos/`, `B2_avaliacoes_recentes/`, `B4_bases_publicas/`, `B5_ativos_fixos/`) |
-| Script | `<site>_<objeto>.user.js`, com o teste ao lado, `<mesmo nome>.test.cjs` |
+| Script | `<objeto>.user.js` (ex.: `acervo`, `cardapio`, `instagram`, `aluguel`, `mobiliario`) ou `<site>_<objeto>.user.js` quando há mais de um script do mesmo objeto (`maps_entorno`, `instagram_snowball`), com o teste ao lado, `<mesmo nome>.test.cjs` |
+| Lista do menu | `lista_<script>.js`, ao lado do script: `var LISTA_<SCRIPT> = [...]` com os itens do dropdown (casas, perfis, acervos, buscas, itens). O script declara `// @require lista_<script>.js` no cabeçalho, e o carregador a lê antes dele; sem ela, o script avisa e para. Editar a lista muda o menu no próximo recarregar, sem reinstalar. O teste lê a lista antes do script |
 | Kit do painel | `_kit_painel/kit_painel.js`, copiado para dentro do script entre `// >>> kit_painel` e `// <<< kit_painel` por `node _src/webScripts/_kit_painel/embutir.js`. Nunca editar a cópia embutida. Script novo entra na lista `ALVOS` do `embutir.js` |
-| Carregador | `_carregadores/<script>.user.js` (fora do git), gerado por `python3 _src/outros/G5_outros/gerar_carregadores.py`: só o cabeçalho e um `@require file://` para o script. O Tampermonkey instala o carregador, então editar o script não exige reinstalar; mudança de cabeçalho (`@match`, `@grant`) exige (`--abrir`) |
+| Carregador | `_carregadores/<script>.user.js` (fora do git), gerado por `python3 _src/outros/G5_outros/gerar_carregadores.py`: só o cabeçalho e um `@require file://` para a lista do menu (se houver) e outro para o script. O Tampermonkey instala o carregador, então editar o script não exige reinstalar; mudança de cabeçalho (`@match`, `@grant`) exige (`--abrir`) |
 | Especificações | esta pasta, `specs/` |
 
 ## 2. Cabeçalho
@@ -39,7 +40,7 @@ Todo coletor que trabalha sobre uma lista (estabelecimentos, perfis, cardápios,
 - Contador `prontos/total <unidade>` com barra fina de progresso.
 - Botões na mesma linha: **Próximo** (o próximo que falta, primeiro no mesmo grupo, e já coleta), **Marcar/Desfazer** (marca sem nova coleta, ou volta a faltar) e o filtro **Só os que faltam** (funil, lembrado entre sessões).
 - Escolher um alvo abre a página dele e coleta; alvo já coletado pede confirmação antes de refazer.
-- A lista vem de um arquivo do pipeline (ex.: `B1_entorno_maps_fila.csv`, a lista de itens do B5), embutida ou importada, nunca digitada no painel.
+- A lista vem de um arquivo do pipeline (ex.: `B1_entorno_maps_fila.csv`, a lista de itens do B5), copiada para `lista_<script>.js` (seção 1) ou importada no painel, nunca digitada nele.
 
 ## 5. Texto enxuto, ícones e dicas
 
@@ -79,6 +80,7 @@ O ponto do cabeçalho segue a mesma escala: cinza parado, roxo pulsando em curso
 - **Critério registrado:** cada linha leva `data_coleta`, a busca ou a página de origem e a posição na página quando o critério depende da ordem (ex.: os 5 primeiros anúncios que cumprem os requisitos).
 - **Exclusão é marcada, não apagada:** o que o autor exclui no painel vai no CSV com `excluida = 1`, e o build respeita.
 - **Retomar de onde parou:** a fila e o que já foi lido ficam no armazenamento; página vazia ou erro de carga recarrega e retoma. Avisar no comentário de abertura quando o script precisa rodar numa janela própria (o navegador desacelera abas em segundo plano).
+- **Baixar cada item (fila):** todo script cuja fila guarda os itens e só baixa no fim tem a opção de baixar o arquivo de cada item assim que ele termina (`kit.botaoBaixarCada`, ícone `arrow-down-on-square-stack`; nos painéis próprios, o selo "cada …"), desligada por padrão. O nome do arquivo de um item segue a convenção da coleta, para o build ler os dois e ficar com a versão mais recente de cada unidade. Scripts que já baixam um arquivo por item sempre (avaliações, snowball, acervo) não precisam dela; os sem fila (cardápio, mobiliário) também não.
 - **Desafio do site (captcha, `sorry`):** o script para e avisa; nunca tenta resolver.
 
 ## 9. Dados e arquivos
@@ -86,7 +88,7 @@ O ponto do cabeçalho segue a mesma escala: cinza parado, roxo pulsando em curso
 - **Armazenamento:** `GM_getValue`/`GM_setValue` (comum a todos os sites do script), com `localStorage` como reserva; chaves com prefixo do script e versão (`tcc_precos_v1`).
 - **CSV:** separador `;`, BOM UTF-8 e aspas só onde precisa (abre no Excel pt-BR; no pandas, `sep=";"`); cabeçalho fixo, conferido no teste, igual ao que o build lê.
 - **Nome:** `AAAA-MM-DD_HHmm_<objeto>.csv` (a hora evita o "(1)" do navegador na segunda exportação do dia), salvo convenção própria da coleta (`_src/dicionario.md`).
-- **Destino:** a pasta `_dados-brutos/` da coleta, dita no comentário de abertura e na dica do botão de download.
+- **Destino:** a pasta `_dados-brutos/` da coleta, dita no comentário de abertura e na dica do botão de download. Com `@grant GM_download`, o arquivo vai sem pergunta para `Downloads/TCC Luderia/<coleta>/_dados-brutos/…` (`kit.baixarArquivo` com `pastaDownload`); se o Tampermonkey recusar (modo de download nativo, extensão fora da lista), sai pelo download comum. Vários arquivos seguidos saem um de cada vez, esperando cada download antes de navegar.
 - **Download automático** ao fim da coleta, com botão para desligar; aviso em âmbar quando há 25 ou mais registros guardados fora de CSV.
 - **Backup antes de apagar:** "Limpar" baixa antes um JSON com tudo o que está guardado; o painel importa CSVs exportados para refazer o armazenamento, com as guardadas valendo sobre o arquivo.
 - **Privacidade:** dado de pessoa física (ex.: listas "seguindo") vai para pasta fora do git; o script não envia nada para fora do navegador.

@@ -37,7 +37,7 @@ Abrir sempre o [AGORA.md](AGORA.md) primeiro. Depois, conforme a tarefa:
 |---|---|---|
 | Escrever o cap. N | `_docs/_instrucoes/` do capítulo (mapa no [CLAUDE.md](CLAUDE.md)); dados em `dados/B<n>_<coleta>/_dados-agregados/`; skill `meu-estilo-escrita` | `textos/capitulos/`; atualizar `textos/_planejamento/status_capitulos.md` |
 | Escrever o cap. 2 | `_docs/_instrucoes/2_ref-teorico.md` e `bibliografia/_lista-de-leitura_TMin_v2.md` | `textos/capitulos/` |
-| Coletar avaliações (B2) | `_src/webScripts/B2_avaliacoes_recentes/maps_avaliacoes.user.js` (Tampermonkey), fila em `dados/B2_avaliacoes/_dados-agregados/B2_fila_coleta.txt` | rodar `B2-b_avaliacoes.py`; situação em `B2_cobertura_coleta.csv` |
+| Coletar avaliações (B2) | `_src/webScripts/B2_avaliacoes_recentes/maps_avaliacoes.user.js` (Tampermonkey), fila em `dados/B2_avaliacoes/_dados-agregados/B2_fila_coleta.txt` | rodar `B2b_avaliacoes.py`; situação em `B2_cobertura_coleta.csv` |
 | Ir a campo (B3) | `textos/_planejamento/_instrumentos/roteiro_observacao_sao_jogue.md` e `_src/outros/App_Observacao/` | `dados/B3_contagem/_dados-brutos/` |
 | Mexer em cardápios, acervos ou Instagram (B1) | `_src/pyScripts/B1_Cardapios/`, `_src/pyScripts/B1_Acervo_jogos/`, `_src/pyScripts/B1_Redes_sociais/` | `dados/B1_cardapios/`, `dados/B1_acervo_jogos/`, `dados/B1_redes_sociais/` |
 | Atualizar uma base pública (B4) | `_src/pyScripts/`; referências em `bibliografia/_referencias_bases_publicas.md` | `dados/B4_<uso>/_dados-agregados/` |
@@ -47,21 +47,21 @@ Abrir sempre o [AGORA.md](AGORA.md) primeiro. Depois, conforme a tarefa:
 
 ## Pipeline
 
-Cada script segue a sequência `collect` (coleta) → `build` (tratamento) → `analise`. Os scripts se chamam `Bn-<c|b|a>_<conteúdo>.py` e as saídas, `Bn_<conteúdo>` ([dicionário](_src/dicionario.md)). Os blocos estão em ordem de relevância para o plano.
+Cada script segue a sequência `collect` (coleta) → `build` (tratamento) → `analise`. Os scripts se chamam `Bn<c|b|a>_<conteúdo>.py` e as saídas, `Bn_<conteúdo>` ([dicionário](_src/dicionario.md)). Os blocos estão em ordem de relevância para o plano.
 
 | Bloco | Fonte | Scripts principais | Uso no plano |
 |---|---|---|---|
-| **B1** Estabelecimentos e cardápios | Google Places API, OpenStreetMap, curadoria manual | `B1-c_places` → `B1-c_details` (`--sem-reviews`) → `B1-b_planilha` → `B1-b_planilhas_regic` → `B1-a_limiares` → `B1-b_triagem_manual` → `B1-b_cardapios_planilha`; legendas do Instagram: `B1-a_instagram_temas`, `B1-a_instagram_precos`, `B1-a_instagram_eventos` | Concorrência, preço, ticket, eventos |
-| **B2** Avaliações recentes | Google Maps (avaliações até "3 meses atrás", inclusive) | userscript `maps_avaliacoes` → `B2-b_avaliacoes` (consolida, confere cobertura, gera a fila) → `B2-a_conteudo_bardin` | Proposta de valor, reclamações, fluxo |
-| **B3** Contagem direta de ocupação | Observação na São Jogue (app) e NFC-e | `B3-b_contagem_sorteio` → `B3-a_contagem`, `B3-b_ocr_fotos` | Ocupação, giro, calibração |
-| **B4** Bases públicas | IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA | `B4-c_*` → `B4-b_*` | Demanda, custos, tributos, taxa de desconto |
-| **B5** Ativos fixos | Sites e e-commerces (orçamentos de obra, aluguel, mobiliário, cozinha e bar, equipamentos, jogos) | `B5_aluguel`: userscript `portais_aluguel` → `B5-b_anuncios_aluguel`; `B5_reforma`: `B5-c_sinapi`; `B5_mobiliario`: userscript `precos_itens` → `B5-b_orcamento_itens` | Investimento inicial, aluguel |
+| **B1** Estabelecimentos e cardápios | Google Places API, OpenStreetMap, curadoria manual | `B1c_places` → `B1c_details` (`--sem-reviews`) → `B1b_planilha` → `B1b_planilhas_regic` → `B1a_limiares` → `B1b_triagem_manual` → `B1b_cardapios_planilha`; legendas do Instagram: `B1a_instagram_temas`, `B1a_instagram_precos`, `B1a_instagram_eventos` | Concorrência, preço, ticket, eventos |
+| **B2** Avaliações recentes | Google Maps (avaliações até "3 meses atrás", inclusive) | userscript `maps_avaliacoes` → `B2b_avaliacoes` (consolida, confere cobertura, gera a fila) → `B2a_conteudo_bardin` | Proposta de valor, reclamações, fluxo |
+| **B3** Contagem direta de ocupação | Observação na São Jogue (app) e NFC-e | `B3b_contagem_sorteio` → `B3a_contagem`, `B3b_ocr_fotos` | Ocupação, giro, calibração |
+| **B4** Bases públicas | IBGE, Novo CAGED, FipeZap, Simples Nacional, BCB, CONCLA | `B4c_*` → `B4b_*` | Demanda, custos, tributos, taxa de desconto |
+| **B5** Ativos fixos | Sites e e-commerces (orçamentos de obra, aluguel, mobiliário, cozinha e bar, equipamentos, jogos) | `B5_aluguel`: userscript `aluguel` → `B5b_anuncios_aluguel`; `B5_reforma`: `B5c_sinapi`; `B5_mobiliario`: userscript `mobiliario` → `B5b_orcamento_itens` | Investimento inicial, aluguel |
 | **B6** Histórico dos avaliadores | — | — | Retirado em 18/09/2026 (`~/Documents/arquivados/B6-avaliadores/`) |
 
 Todo script roda a partir de qualquer diretório:
 
 ```bash
-python3 "_src/pyScripts/B1_Estabelecimentos/3_analise/B1-a_limiares.py"
+python3 "_src/pyScripts/B1_Estabelecimentos/3_analise/B1a_limiares.py"
 ```
 
 ## Instalação

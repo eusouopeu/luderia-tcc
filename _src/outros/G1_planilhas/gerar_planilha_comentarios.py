@@ -3,7 +3,7 @@ Planilha separada com os dados agregados dos comentários do B2, com gráficos.
 
 Lê a base final do banco "2 - Comentários" do Notion, com a grade 2 de temas
 (`2026-11-03_2_comentarios_grade2.csv`, montada por
-`_src/pyScripts/B2_Avaliacoes/2_build/B2-b_comentarios_grade2.py`;
+`_src/pyScripts/B2_Avaliacoes/2_build/B2b_comentarios_grade2.py`;
 codificação concluída em 03/11/2026), e grava `textos/planilhas/B2_dados_agregados.xlsx`, uma aba por
 tabela com o gráfico ao lado, e os PNGs em `textos/graficos/comentarios/`.
 

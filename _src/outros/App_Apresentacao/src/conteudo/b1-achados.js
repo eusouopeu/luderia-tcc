@@ -1,5 +1,5 @@
 // Achados das abas de resultados do B1. O texto fica aqui, e os números vêm de
-// b1-estatisticas.json (gerado por B1-a_estatistica_descritiva.py): ao rodar o
+// b1-estatisticas.json (gerado por B1a_estatistica_descritiva.py): ao rodar o
 // script de novo, as frases se atualizam sozinhas. Para mudar a redação, edite as
 // frases abaixo; para mudar um número, rode o script.
 import D from "./b1-estatisticas.json";

@@ -1,7 +1,7 @@
 """
 Base por casa usada pelos gráficos, pictogramas e cartogramas do B1.
 
-Parte de `montar_dados()` do B1-a_estatistica_descritiva.py (mesmas regras:
+Parte de `montar_dados()` do B1a_estatistica_descritiva.py (mesmas regras:
 cada place_id uma vez, na metrópole do endereço; Instagram de LudoCafé e
 Dominaria vazio; couvert só onde se cobra) e troca a nota média e o volume de
 avaliações pelos do CSV da curadoria (B1_curadoria_metro_f_av100.csv) e, para
@@ -18,7 +18,7 @@ import pandas as pd
 
 _AQUI = Path(__file__).resolve()
 ROOT = _AQUI.parents[4]
-_ED = _AQUI.parents[1] / "3_analise" / "B1-a_estatistica_descritiva.py"
+_ED = _AQUI.parents[1] / "3_analise" / "B1a_estatistica_descritiva.py"
 
 
 def _modulo_estatistica():

@@ -31,7 +31,7 @@ pelas mesas; pessimista pelas NFC-e) × horas de pico equivalentes do fim de sem
 (R15); dia útil = mesma circulação × horas de pico equivalentes do dia útil (R05).
 As horas vêm do índice "Horários de pico" do Google Maps dos concorrentes (soma do
 índice médio nas horas do plano ÷ índice médio nas janelas das visitas;
-B1-a_horas_pico_indice.py, decisão do autor de 12/11/2026, que trocou a contagem de
+B1a_horas_pico_indice.py, decisão do autor de 12/11/2026, que trocou a contagem de
 casas abertas, a razão de gasto com cartão da ANR e o ajuste do horário R19). A
 demanda madura fica constante depois da rampa (R18 retirada em 12/11/2026).
 Receita por pessoa = gasto por pessoa declarado no Google Maps (B2), média das
@@ -57,8 +57,8 @@ mesa, permanência), não de porte. A circulação fica limitada ao salão:
 pessoas por hora ≤ mesas × pessoas por mesa ÷ permanência (B3).
 
 Entradas: B1 (cesta de jogos; couvert dos cardápios; horas de pico pelo índice,
-B1-a_horas_pico_indice.py), B2 (gasto por pessoa e cesta por casa,
-B2-a_gasto_por_pessoa.py), B3 (contagem_resumo_visitas.csv,
+B1a_horas_pico_indice.py), B2 (gasto por pessoa e cesta por casa,
+B2a_gasto_por_pessoa.py), B3 (contagem_resumo_visitas.csv,
 contagem_notas_intervalo.csv), B5 (orçamento e anúncios de aluguel), B4 (CAGED,
 BCB, Simples Nacional, IBGE PAS e população). As premissas de valor fixo
 (decisões e estimativas do autor) ficam em textos/capitulos/modelo_financeiro/
@@ -181,7 +181,7 @@ def ler_fontes() -> dict:
     f["acervo"] = dict(zip(ai["tamanho"], ai["custo_provavel_rs"]))
     f["acervo_faixa"] = ai.set_index("tamanho")[["custo_pessimista_rs", "custo_provavel_rs", "custo_otimista_rs"]].to_dict("index")
     f["acervo_titulos"] = dict(zip(ai["tamanho"], ai["titulos"]))
-    # B5: orçamento da etapa 1 por premissa (SINAPI e coletas em sites; B5-b_orcamento_itens.py), o mês mais recente
+    # B5: orçamento da etapa 1 por premissa (SINAPI e coletas em sites; B5b_orcamento_itens.py), o mês mais recente
     orc = sorted((DADOS / "B5_mobiliario" / "_dados-agregados").glob("[[]B5[]] Orçamento por Premissa Etapa 1 *.csv"))[-1]
     f["b5"] = pd.read_csv(orc, sep=";", decimal=",", encoding="utf-8-sig").set_index("premissa")
     f["b5_arquivo"] = orc.name
@@ -204,7 +204,7 @@ def ler_fontes() -> dict:
                      sep=";", encoding="utf-8-sig")
     f["gasto_casas"] = gc[gc["no_recorte"] == "sim"]
     # B1: horas de pico equivalentes por dia pelo índice "Horários de pico" dos concorrentes (curva
-    # média e mediana das casas abertas ÷ curva nas janelas das visitas; B1-a_horas_pico_indice.py)
+    # média e mediana das casas abertas ÷ curva nas janelas das visitas; B1a_horas_pico_indice.py)
     hp = pd.read_csv(DADOS / "B1_estabelecimentos" / "_dados-agregados" / "B1_horas_pico_indice.csv", sep=";", encoding="utf-8-sig")
     for casa, chave in (("plano", "horas_pico"), ("São Jogue", "horas_pico_sj")):
         f[chave] = {est: dict(zip(h["dia"], h["horas_pico_equivalentes"]))

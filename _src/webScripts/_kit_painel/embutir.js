@@ -11,10 +11,10 @@ const path = require('node:path');
 
 const SRC = path.resolve(__dirname, '..', '..');
 const ALVOS = [
-  'webScripts/B1_estabelecimentos/instagram_coletor.user.js',
+  'webScripts/B1_estabelecimentos/instagram.user.js',
   'webScripts/B1_estabelecimentos/instagram_snowball.user.js',
-  'webScripts/B1_estabelecimentos/cardapio_coletor.user.js',
-  'webScripts/B1_estabelecimentos/acervo_coletor.user.js',
+  'webScripts/B1_estabelecimentos/cardapio.user.js',
+  'webScripts/B1_estabelecimentos/acervo.user.js',
   'webScripts/B1_estabelecimentos/maps_entorno.user.js',
 ];
 const INICIO = '// >>> kit_painel';

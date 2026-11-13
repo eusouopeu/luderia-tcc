@@ -10,7 +10,7 @@ O Interlúdio vende uma experiência de entretenimento ativo, sem requisito de c
 
 ![Temas elogiados e criticados nas avaliações dos concorrentes](../graficos/6-1_temas_avaliacoes.png)
 
-Fonte: elaborado pelo próprio autor, com base no Bloco B2 (avaliações até "3 meses atrás", coletadas de 09/10/2026 a 30/10/2026).
+Fonte: elaborado pelo próprio autor, com base no Bloco B2 (avaliações até "3 meses atrás", coletadas de 9 a 30 de outubro de 2026).
 
 Nota: temas não exclusivos; uma avaliação pode elogiar e criticar vários temas. Grade de 22 temas e frequências no Apêndice F.
 
@@ -53,7 +53,7 @@ As avaliações confirmam que o preço da entrada pesa, mas pouco. Das 1.628 ava
 
 ![Gasto por pessoa declarado pelos avaliadores no Google Maps](../graficos/6-2_gasto_declarado_por_pessoa.png)
 
-Fonte: elaborado pelo próprio autor, com base no Bloco B2 (avaliações até "3 meses atrás", coletadas de 09/10/2026 a 30/10/2026).
+Fonte: elaborado pelo próprio autor, com base no Bloco B2 (avaliações até "3 meses atrás", coletadas de 9 a 30 de outubro de 2026).
 
 O gasto declarado confirma a cesta de consumo dos cardápios. A cesta de cada concorrente soma a taxa de entrada, a mediana das bebidas e o hambúrguer não vegetariano mais barato do cardápio. Quando a taxa muda com o dia, entra a média das taxas, ponderada pelos dias em que cada uma vale. Nos 18 concorrentes com taxa conhecida e gasto declarado, incluída a São Jogue, o gasto médio declarado é de R$ 78,94 por pessoa (804 declarações; Blocos B1 e B2). O cálculo tem três passos. Primeiro, cada declaração vale o ponto médio da sua faixa de R$ 20,00 (R$ 80,00 a R$ 100,00 vale R$ 90,00; R$ 1,00 a R$ 20,00, R$ 10,50). A faixa aberta "R$ 200 ou mais", com 32 das 804 declarações (4,0%), vale R$ 200,00, o limite inferior, o que subestima o gasto; com R$ 220,00, a média subiria para R$ 79,32. Segundo, o gasto de cada concorrente é a média das suas declarações. Terceiro, o gasto do plano é a média simples dos 18 concorrentes, com peso igual por casa (Quadro 3.4): ponderada pelas declarações, a média seria de R$ 88,84, puxada pela Bodogami, com 309 das 804. Catorze deles têm bebida e hambúrguer no cardápio, e a cesta média desses catorze é de R$ 71,09: cada pessoa gasta pouco mais de uma cesta de consumo. Num grupo de 3,6 pessoas, a visita custa R$ 284,18. Na Bahia, as famílias com renda de R$ 5.724,00 a R$ 9.540,00 gastavam R$ 448,65 por mês com alimentação fora do domicílio (IBGE, POF 2017-2018), ou R$ 694,55 a preços de agosto de 2026, corrigidos pelo IPCA (BCB, SGS): uma visita consome 41% desse orçamento. A luderia é ocasião de saída, não hábito semanal.
 
@@ -95,7 +95,7 @@ Os dados têm limites. Descrevem moradores, e não quem circula pelo bairro, com
 
 O ponto deve ficar a até 1.000 m de uma estação de metrô: os concorrentes nessa condição têm mediana de 771 avaliações no Google Maps, contra 317 dos que ficam longe (seção 5.4.2). O shopping de porte mostra vantagem menor (753 contra 538) e não entra como exigência.
 
-A escolha entre os três finalistas dependia do custo e da oferta de pontos. O FipeZap dá o aluguel comercial só para Salvador inteira, sem recorte de bairro, e a coleta de anúncios do Bloco B5 fechou essa lacuna (OLX, ZAP Imóveis e Viva Real, 12 e 13/11/2026). O plano adota a Pituba, 2ª colocada na matriz e o bairro com mais oferta: 140 dos 187 anúncios coletados nos três finalistas (decisão do autor, 12/11/2026). O ponto tem de 150 a 200 m², área que já comporta as 8 mesas da etapa de mesas (seção 7.1). Nessa faixa, os 17 anúncios da Pituba pedem, em média, R$ 11,6 mil por mês, ou R$ 63,79 por m², com condomínio e IPTU de 11,8% do aluguel; o capítulo 9 usa esses valores, com o 1º e o 3º quartil do preço por m² nos cenários. Antes de assinar o contrato, cada imóvel visitado é conferido no Quadro 6.2: sanitários, andar, distância até a estação de metrô e lotação aprovada. O preço pedido é maior que o fechado (N2): a cotação com corretor substitui o anúncio antes do contrato.
+A escolha entre os três finalistas dependia do custo e da oferta de pontos. O FipeZap dá o aluguel comercial só para Salvador inteira, sem recorte de bairro, e a coleta de anúncios do Bloco B5 fechou essa lacuna (OLX, ZAP Imóveis e Viva Real, 12 e 13 de novembro de 2026). O plano adota a Pituba, 2ª colocada na matriz e o bairro com mais oferta: 140 dos 187 anúncios coletados nos três finalistas (decisão do autor, 12 de novembro de 2026). O ponto tem de 150 a 200 m², área que já comporta as 8 mesas da etapa de mesas (seção 7.1). Nessa faixa, os 17 anúncios da Pituba pedem, em média, R$ 11,6 mil por mês, ou R$ 63,79 por m², com condomínio e IPTU de 11,8% do aluguel; o capítulo 9 usa esses valores, com o 1º e o 3º quartil do preço por m² nos cenários. Antes de assinar o contrato, cada imóvel visitado é conferido no Quadro 6.2: sanitários, andar, distância até a estação de metrô e lotação aprovada. O preço pedido é maior que o fechado (N2): a cotação com corretor substitui o anúncio antes do contrato.
 
 **Quadro 6.2 – Requisitos mínimos do ponto**
 
@@ -117,7 +117,7 @@ Fonte: elaborado pelo próprio autor, com base nos capítulos 7, 8 e 9.
 
 ## 6.5 PROMOÇÃO E COMUNICAÇÃO
 
-O Google Maps é o canal principal, e o Instagram, o de apoio. Entre os 49 concorrentes com perfil medido, os que têm mais seguidores no Instagram também têm mais avaliações no Google Maps (correlação de Spearman de 0,62), mas o número de posts no mês não acompanha as avaliações (0,15; posts de 01/09/2026 a 01/10/2026). A mediana é de 14.021 seguidores e 12 posts no mês; a São Jogue tem 38.492 seguidores e publicou 26 vezes (Bloco B1). A luderia não precisa publicar mais que os concorrentes. Precisa de clientes que avaliem e de um perfil que mostre a mesa e o instrutor.
+O Google Maps é o canal principal, e o Instagram, o de apoio. Entre os 49 concorrentes com perfil medido, os que têm mais seguidores no Instagram também têm mais avaliações no Google Maps (correlação de Spearman de 0,62), mas o número de posts no mês não acompanha as avaliações (0,15; posts de 1º de setembro a 1º de outubro de 2026). A mediana é de 14.021 seguidores e 12 posts no mês; a São Jogue tem 38.492 seguidores e publicou 26 vezes (Bloco B1). A luderia não precisa publicar mais que os concorrentes. Precisa de clientes que avaliem e de um perfil que mostre a mesa e o instrutor.
 
 A mensagem fala com grupos de amigos e com quem organiza aniversários. Quando a avaliação diz com quem o cliente foi, os amigos aparecem em 56 avaliações, a família em 40, o aniversário em 39 e o casal em 13 (Bloco B2). O dado é exploratório (seção 3.3), mas confirma a ocasião em grupo do capítulo 5. O argumento é a proposta de valor: ninguém precisa conhecer o jogo, porque o instrutor ensina.
 
@@ -148,7 +148,7 @@ O dia útil sai da mesma curva, porque o índice mede o movimento de todos os di
 | Pessoas por dia útil | 17,0 | 31,4 | 56,0 |
 | Pessoas por mês | 474 | 834 | 1.490 |
 
-Fonte: elaborado pelo próprio autor, com base nos Blocos B1 (11/2026) e B3 (10/10/2026 a 30/10/2026), no modelo financeiro (Apêndice E).
+Fonte: elaborado pelo próprio autor, com base nos Blocos B1 (novembro de 2026) e B3 (10 a 30 de outubro de 2026), no modelo financeiro (Apêndice E).
 
 Nota: pessimista com as notas fiscais da São Jogue convertidas em circulação (seção 9.1) e a curva mediana do índice; otimista com a visita mais cheia e a curva média; fim de semana de sexta e sábado.
 

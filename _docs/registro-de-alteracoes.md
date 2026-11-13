@@ -29,7 +29,7 @@ Formato de uma divergência encontrada entre documentos (data em que foi encontr
 ## 2026/11/05
 
 ### 08:21
-**Objeto**: taxa de entrada da Ludus Luderia em `B2-a_gasto_por_pessoa.py` × `B2-a_retorno_e_clusters.py` e `B1_cardapios_itens_precos.xlsx`
-**Antes**: `B2-a_gasto_por_pessoa.py` (02/11/2026) usa R$ 34 a R$ 44 por dia (CNN Brasil, 02/10/2024).
-**Depois**: o cardápio do B1 e `B2-a_retorno_e_clusters.py` usam R$ 0 (página inicial do site: "não cobra por tempo nem por jogo").
+**Objeto**: taxa de entrada da Ludus Luderia em `B2a_gasto_por_pessoa.py` × `B2a_retorno_e_clusters.py` e `B1_cardapios_itens_precos.xlsx`
+**Antes**: `B2a_gasto_por_pessoa.py` (02/11/2026) usa R$ 34 a R$ 44 por dia (CNN Brasil, 02/10/2024).
+**Depois**: o cardápio do B1 e `B2a_retorno_e_clusters.py` usam R$ 0 (página inicial do site: "não cobra por tempo nem por jogo").
 **Efeitos colaterais**: a cesta de consumo da Ludus no B2 (R$ 122) e o gasto por cesta que apoia a R06 usam um valor que o site da casa nega; nos grupos de preço, a Ludus entra como casa sem cobrança.

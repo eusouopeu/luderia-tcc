@@ -6,6 +6,7 @@
 // @match        https://www.instagram.com/*
 // @run-at       document-start
 // @grant        none
+// @require      lista_instagram_snowball.js
 // ==/UserScript==
 
 /*
@@ -37,7 +38,7 @@
  *    fila salva quando está vazio, e pode ser editado à vontade.
  *  - CSV: AAAA-MM-DD_<perfil>_instagram_seguindo.csv (";" e UTF-8 com BOM). A lista
  *    traz @ de pessoas físicas: o CSV fica em _dados-brutos, fora do git
- *    (ver B1-b_instagram_seguindo.py).
+ *    (ver B1b_instagram_seguindo.py).
  *  - Listas capturadas ficam salvas no navegador (IndexedDB "igs-snowball"). Na
  *    primeira carga, o script copia as listas e a fila que o coletor antigo guardou.
  */
@@ -494,66 +495,15 @@
     }
   }
 
-  // ---------- menu das sementes ----------
-  // Mesmo padrão do coletor de preços (B5): seletor com as sementes, marcadas como coletadas;
-  // escolher uma abre o perfil, abre a lista "seguindo", rola e baixa (uma fila de uma
-  // semente); "Próximo" faz o mesmo com a próxima que falta. Sementes: as 11 da rodada 1
-  // (dados/B1_redes_sociais/_dados-agregados/snowball/B1_snowball_sementes.csv) e as 41 próximas, por capital
-  // (B1_snowball_proximas_sementes.csv). [perfil, estabelecimento, grupo]
-  const SEMENTES = [
-    ["alcapaojogos", "", "Rodada 1"],
-    ["arainhadosdados", "", "Rodada 1"],
-    ["balboashobbygames", "", "Rodada 1"],
-    ["flowg4mes", "", "Rodada 1"],
-    ["fortaludica", "", "Rodada 1"],
-    ["grutabsb", "", "Rodada 1"],
-    ["jogasampa", "", "Rodada 1"],
-    ["lojaredjogos", "", "Rodada 1"],
-    ["ludotecabgc", "", "Rodada 1"],
-    ["ludotecasidequest", "", "Rodada 1"],
-    ["paladinohobbies", "", "Rodada 1"],
-    ["garagemdonerd", "Garagem do Nerd", "Belo Horizonte"],
-    ["ccg_floripa", "CCG Floripa", "Florianópolis"],
-    ["paladinsgames", "Paladins Game Store", "Goiânia"],
-    ["arcadeapub", "Arcadea Gaming Pub", "Porto Alegre"],
-    ["nalaland.jogos", "Nala Land - Bar de Jogos de Tabuleiro em Recife", "Recife"],
-    ["saojogue", "São Jogue - Bela Vista", "Salvador"],
-    ["cafegeekvv", "Café Geek Cafeteria e Ludoteca", "Vitória"],
-    ["dominariacg", "Dominaria Cards & Games", "Fortaleza"],
-    ["gob.ludobar", "Game Of Boards", "Rio de Janeiro"],
-    ["joyjoycafe", "Joyjoy Café", "Curitiba"],
-    ["encounter.bg", "Encounter | Jogos de Tabuleiro | Board Games", "São Paulo"],
-    ["insidegamestore", "Inside Games", "Brasília"],
-    ["ludocafebh", "LudoCafé", "Belo Horizonte"],
-    ["chefonplay", "Chef on Play", "Florianópolis"],
-    ["ilusoesindustriais", "Ilusões Industriais", "Porto Alegre"],
-    ["machadogames", "Machado Games", "Vitória"],
-    ["luderiacariocajogos", "Luderia Carioca", "Rio de Janeiro"],
-    ["boardzgamepub", "BoardZ Game Pub", "Curitiba"],
-    ["covilgb", "Covil Game Bar", "São Paulo"],
-    ["asgardbrasilia", "Loja de Jogos - Asgard", "Brasília"],
-    ["shelfbar", "Shelf Bar e Jogos", "Belo Horizonte"],
-    ["cineplay_sc", "Cineplay- Restaurante e Jogos", "Florianópolis"],
-    ["magicstorebrasil", "Magic Store Brazil", "Rio de Janeiro"],
-    ["vilacelta", "Vila Celta Hobby Store - Jogos e Café", "Curitiba"],
-    ["bodogami", "Bodogami Restaurante e Cafeteria", "São Paulo"],
-    ["utopiagamesbr", "Utopia Games & Food", "Brasília"],
-    ["comdadobar", "Comdado Bar e Jogos", "Belo Horizonte"],
-    ["tavernagamehouse", "Taverna Game House", "Curitiba"],
-    ["bravojogos", "Bravo Jogos", "São Paulo"],
-    ["ludusluderia", "Ludus Luderia", "São Paulo"],
-    ["pittasboardgames", "Pitta's Board Games", "São Paulo"],
-    ["playeasyjogos", "Play Easy", "São Paulo"],
-    ["xplaceoficial", "XPlace", "São Paulo"],
-    ["coletivogeekbr", "Coletivo Geek", "São Paulo"],
-    ["lojaplacegames", "Place Games", "São Paulo"],
-    ["castelosbareboardgames", "Castelos Bar & Boardgames", "São Paulo"],
-    ["dungeongames.oficial", "Dungeon Games Store", "São Paulo"],
-    ["omniverselivraria", "OMNIVERSE", "São Paulo"],
-    ["aarenabg", "Arena BG | Jogos de Tabuleiro | Hamburgueria", "São Paulo"],
-    ["cartolaluderia", "Cartola Luderia Bar", "São Paulo"],
-    ["fanhourbr", "Fan Hour Games and Burgers", "São Paulo"],
-  ].map(([u, nome, grupo]) => ({ u, nome, grupo }));
+  // A lista vem de lista_instagram_snowball.js, lida pelo carregador (@require) antes deste arquivo.
+  if (typeof LISTA_INSTAGRAM_SNOWBALL === 'undefined') {
+    const msg = '[Snowball do Instagram] lista_instagram_snowball.js não foi carregada: reinstale o carregador (python3 _src/outros/G5_outros/gerar_carregadores.py --abrir).';
+    console.error(msg);
+    if (typeof alert === 'function') alert(msg);
+    return;
+  }
+  // Itens do menu em lista_instagram_snowball.js (pasta deste script).
+  const SEMENTES = LISTA_INSTAGRAM_SNOWBALL.map(([u, nome, grupo]) => ({ u, nome, grupo }));
   const CHAVE_ALVO = 'igs-alvo';
   const CHAVE_MARCAS = 'igs-alvos-marcas'; // { perfil: true (dada por coletada) | false (desfeita) }
   const lerLs = (k, padrao) => { try { return JSON.parse(localStorage.getItem(k) || 'null') ?? padrao; } catch (_) { return padrao; } };
@@ -761,6 +711,9 @@
     const k = {
       el: {}, ocupado: false, parar: false, acoes: [], ler, gravar,
       som: ler(chave('som'), true), autobaixar: ler(chave('autobaixar'), true),
+      // Modo semiautomático (fila): baixar o arquivo de cada item (casa, perfil, busca) assim que
+      // ele termina, além do arquivo do fim da fila. Desligado por padrão.
+      baixarCada: ler(chave('baixarcada'), false),
     };
     const dicas = new WeakMap();
     let hospedeiro = null, painel = null;
@@ -785,7 +738,8 @@
     // Heroicons 24/outline (traço 1.5).
     const ICONES = {
       'arrow-down': 'M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3',
-      'arrow-down-tray': 'M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3',
+      'arrow-down-on-square-stack': 'M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m-6 3.75 3 3m0 0 3-3m-3 3V1.5m6 9h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75',
+    'arrow-down-tray': 'M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3',
       'arrow-path': 'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99',
       'arrow-top-right-on-square': 'M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25',
       'arrow-up': 'M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18',
@@ -929,6 +883,12 @@
       Object.defineProperty(b, 'checked', { get: () => v, set: (x) => { v = !!x; pintar(); } });
       pintar();
       return b;
+    }
+
+    // Opção da fila: baixar cada item ao terminar (k.baixarCada, gravada por script).
+    function botaoBaixarCada(rotulo = 'Baixar cada item ao terminar (fila)') {
+      return alternaIcone({ ico: 'arrow-down-on-square-stack', rotulo, ligado: k.baixarCada,
+        aoMudar: (v) => { k.baixarCada = v; gravar(chave('baixarcada'), v); } });
     }
 
     // Controle segmentado: [[valor, texto, dica]].
@@ -1122,14 +1082,40 @@
     // CSV com ";" e BOM (abre direto no Excel pt-BR; no pandas, sep=";").
     const csv = (linhas, cols) => '﻿' + [cols.join(';'), ...linhas.map((l) => cols.map((c) => celula(l[c])).join(';'))].join('\r\n');
 
-    function baixarArquivo(nome, conteudo, tipo = 'text/csv;charset=utf-8') {
-      const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+    // Baixa o arquivo e devolve uma Promise que resolve quando o download foi entregue ao
+    // navegador (quem navega logo depois espera por ela; até 13/11/2026 o segundo CSV de um
+    // par se perdia na navegação). Com GM_download (script com @grant) e op.pasta (ex.:
+    // "B1_entorno/_dados-brutos"), salva sem perguntar em Downloads/TCC Luderia/<pasta>/,
+    // para o arquivo não cair na pasta de outra coleta; se o Tampermonkey recusar (modo de
+    // download nativo, extensão fora da lista), cai no download comum.
+    const pastaDoArquivo = (pasta, nome) => (pasta ? `TCC Luderia/${String(pasta).replace(/^\/+|\/+$/g, '')}/${nome}` : nome);
+    function baixarComum(nome, url) {
       const a = criar('a', { href: url, download: nome });
       (document.body || document.documentElement).appendChild(a);
       a.click();
       a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 5000);
     }
+    function baixarArquivo(nome, conteudo, tipo = 'text/csv;charset=utf-8', opcoes = {}) {
+      const pasta = opcoes.pasta ?? op.pastaDownload ?? '';
+      const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+      const soltar = () => setTimeout(() => URL.revokeObjectURL(url), 10000);
+      if (typeof GM_download !== 'function' || !pasta) {
+        baixarComum(nome, url);
+        soltar();
+        return esperarMs(600).then(() => ({ nome, via: 'navegador' }));
+      }
+      return new Promise((resolve) => {
+        let feito = false;
+        const fim = (via) => { if (feito) return; feito = true; soltar(); resolve({ nome: via === 'pasta' ? pastaDoArquivo(pasta, nome) : nome, via }); };
+        const comum = () => { baixarComum(nome, url); setTimeout(() => fim('navegador'), 600); };
+        try {
+          GM_download({ url, name: pastaDoArquivo(pasta, nome), saveAs: false, onload: () => fim('pasta'), onerror: () => { if (!feito) comum(); }, ontimeout: () => { if (!feito) comum(); } });
+          // Sem resposta do Tampermonkey em 15 s: segue (o download pode ainda sair).
+          setTimeout(() => fim('pasta'), 15000);
+        } catch (_) { comum(); }
+      });
+    }
+    const esperarMs = (ms) => new Promise((r) => setTimeout(r, ms));
 
     // ---------- menu de alvos (casas, perfis, cardápios, acervos) ----------
     // Seletor por grupo com ✓ ok, ◐ parcial, ! refazer, ○ falta; contador com barra fina;
@@ -1482,9 +1468,9 @@
     }
 
     Object.assign(k, {
-      criar, icone, dica, ajuda, botao, botaoPerigo, botaoParar, etiqueta, alternaIcone, pills, secao, naoAlterna,
+      criar, icone, dica, ajuda, botao, botaoPerigo, botaoParar, etiqueta, alternaIcone, botaoBaixarCada, pills, secao, naoAlterna,
       linha, esp, rotulo, selo, status, resumo, barra, progresso, estado, atualizarAcoes, executar, tocar, piscar,
-      confirmarBotao, copiar, celula, csv, baixarArquivo, menuAlvos, montar, garantir, minimizar,
+      confirmarBotao, copiar, celula, csv, baixarArquivo, pastaDoArquivo, menuAlvos, montar, garantir, minimizar,
       nome: (t) => { if (k.el.nome && k.el.nome.textContent !== t) k.el.nome.textContent = t; },
       hospedeiro: () => hospedeiro,
     });

@@ -1,6 +1,6 @@
 """
 Bloco B1 - caminhos e constantes comuns ao snowball pelo Instagram
-(build/B1-b_instagram_seguindo.py e analise/B1-a_instagram_snowball.py).
+(build/B1b_instagram_seguindo.py e analise/B1a_instagram_snowball.py).
 """
 import instagram_comum as ic
 
