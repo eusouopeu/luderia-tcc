@@ -8,7 +8,7 @@ const source = fs.readFileSync(__dirname + '/maps_entorno.user.js', 'utf8');
 function carregar() {
   const ambiente = { __test: {}, localStorage: { getItem: () => null, setItem() {}, removeItem() {} }, location: { href: '', pathname: '/maps/' }, document: { querySelector: () => null, querySelectorAll: () => [] } };
   const instrumentado = source.slice(0, source.indexOf("  console.info('[Entorno do Maps] carregado');"))
-    + 'Object.assign(globalThis.__test, { estadoLocal, proximoLocal, classificar, suspeito, distancia, deslocar, mPorPx, planejarBusca, coberturaReal, lerCartao, lerNumeroAvaliacoes, lerFila, cidadeDoEndereco, unir, nomesParecidos, marcarDuplicatas, mesmoShopping, montarSaida, montarShoppings, precisaSubdividir, quadrantes, colsResumo, nomesArquivos, dataLocal, foraDoMapa, tarefasIniciais, consultasDispensadas, uniaoLocais, classificarNaCidade, gruposAusentes, grupoRevisto });})();';
+    + 'Object.assign(globalThis.__test, { estadoLocal, proximoLocal, classificar, suspeito, distancia, deslocar, mPorPx, planejarBusca, coberturaReal, lerCartao, lerNumeroAvaliacoes, lerFila, cidadeDoEndereco, unir, nomesParecidos, marcarDuplicatas, mesmoShopping, montarSaida, montarShoppings, precisaSubdividir, decidirLista, cruzamento, quadrantes, colsResumo, nomesArquivos, dataLocal, foraDoMapa, tarefasIniciais, consultasDispensadas, uniaoLocais, classificarNaCidade, gruposAusentes, grupoRevisto });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'maps_entorno.user.js' });
   return ambiente.__test;
 }
@@ -406,4 +406,49 @@ test('trilhos = metrô + trem + VLT; BRT fora; distância da mais próxima até 
   assert.equal(l.qt_estacoes_metro_1000m + l.qt_estacoes_trem_1000m + l.qt_estacoes_vlt_1000m + l.qt_estacoes_brt_1000m + l.qt_shoppings_1000m + l.qt_outros_1000m, l.resultados_ate_1000m);
   for (const c of ['qt_estacoes_vlt_500m', 'qt_estacoes_brt_500m', 'dist_estacoes_vlt_mais_proxima_m', 'dist_estacoes_brt_mais_proxima_m', 'qt_estacoes_trilhos_500m', 'qt_estacoes_trilhos_1000m', 'dist_trilhos_mais_proxima_m']) assert.ok(t.colsResumo().includes(c), c);
   assert.ok(!t.colsResumo().some((c) => c.includes('vlt_brt')));
+});
+
+test('estações: lista cheia divide sempre; demais, só lotada sem fim e sem item fora do mapa', () => {
+  // Coleta de 12/11: metrô com 10 itens, marca de fim e itens fora do mapa (ranking da cidade).
+  assert.equal(t.decidirLista({ n: 10, fim: true, quadrante: '', grupo: 'metro', algumForaDoMapa: true }), 'subdividir');
+  assert.equal(t.decidirLista({ n: 9, fim: true, quadrante: '', grupo: 'metro', algumForaDoMapa: false }), '');
+  assert.equal(t.decidirLista({ n: 10, fim: true, quadrante: 'NO', grupo: 'metro', algumForaDoMapa: true }), '', 'quadrante com item fora do mapa: área esgotada');
+  assert.equal(t.decidirLista({ n: 12, fim: false, quadrante: 'NO', grupo: 'vlt', algumForaDoMapa: false }), 'censura');
+  assert.equal(t.decidirLista({ n: 70, fim: true, quadrante: '', grupo: 'shopping', algumForaDoMapa: true }), '');
+  assert.equal(t.decidirLista({ n: 70, fim: false, quadrante: '', grupo: 'shopping', algumForaDoMapa: false }), 'subdividir');
+});
+
+test('cruzamento: estação no raio trazida só por outra busca, com a lista do grupo cheia', () => {
+  const lidos = [...Array(10)].map((_, i) => ({ consulta: 'estação de metrô', nome: `M${i}` })).concat([{ consulta: 'estação VLT' }]);
+  const base = { lat: -22.9259, lng: -43.1765 };
+  const unidos = [
+    { nome: 'Catete', grupo_auto: 'metro', distancia_m: 302, consultas: 'estação VLT', ...base },
+    { nome: 'Carioca', grupo_auto: 'metro', distancia_m: 1676, consultas: 'estação VLT', lat: -22.90, lng: -43.17 },
+    { nome: 'Praça Onze', grupo_auto: 'metro', distancia_m: 900, consultas: 'estação de metrô', lat: -22.91, lng: -43.19 },
+  ];
+  assert.deepEqual(json(t.cruzamento(unidos, lidos)), ['estação de metrô (cruzamento: Catete)']);
+  // Lista do metrô com menos de 10: não acusa.
+  assert.deepEqual(json(t.cruzamento(unidos, lidos.slice(5))), []);
+  // Outro cadastro da mesma estação veio pela busca de metrô: não acusa.
+  const comPar = unidos.concat([{ nome: 'Estação Catete', grupo_auto: 'metro', distancia_m: 310, consultas: 'estação de metrô NO', lat: -22.9260, lng: -43.1766 }]);
+  assert.deepEqual(json(t.cruzamento(comPar, lidos)), []);
+});
+
+test('parada ou saída da mesma estação com outro nome funde; estações vizinhas não', () => {
+  const rs = t.marcarDuplicatas([
+    { nome: 'Sete de Setembro', grupo: 'vlt', lat: -22.9052875, lng: -43.1775573, n_avaliacoes: '' },
+    { nome: 'Parada VLT - Colombo', grupo: 'vlt', lat: -22.9053281, lng: -43.1782631, n_avaliacoes: '' },
+    { nome: 'Carioca', grupo: 'vlt', lat: -22.90799, lng: -43.17655, n_avaliacoes: '' },
+  ]);
+  assert.equal(rs[1].duplicata_de, 'Sete de Setembro');
+  assert.equal(rs[2].duplicata_de, '');
+});
+
+test('ruído: traçado da linha, loja com categoria de shopping e centro comercial com shopping no nome', () => {
+  assert.equal(t.classificar('Traçado do mapa do vlt rio de janeiro', 'Serviço de transporte'), 'outro');
+  assert.equal(t.classificar('Loja T-Rex Brasil', 'Shopping center'), 'outro');
+  assert.equal(t.classificar('Minds Idiomas - Águas Claras', 'Shopping center'), 'outro');
+  assert.equal(t.classificar('Shopping Buritis', 'Centro comercial'), 'shopping');
+  assert.equal(t.classificar('Centro Comercial Riviera Buritis', 'Shopping center'), 'shopping');
+  assert.equal(t.classificar('Galeria do Centro', 'Centro comercial'), 'outro');
 });

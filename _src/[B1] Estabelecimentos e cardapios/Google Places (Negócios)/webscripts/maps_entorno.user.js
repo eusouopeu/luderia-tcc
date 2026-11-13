@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Entorno no Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.12-2
+// @version      2026.11.12-3
 // @description  Conta estações de metrô, de trem, de VLT, de BRT e shoppings a 500 m e 1000 m de cada estabelecimento no Google Maps (shopping de porte pelo número de avaliações); coleta a lista de estabelecimentos e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
@@ -84,13 +84,26 @@
  * vezes; depois o grupo fica em branco (nunca zero). "Tráfego incomum" pausa a
  * fila com alarme. Lista lotada sem a marca de fim é refeita em quatro
  * quadrantes; quadrante lotado marca censura possível.
+ * Estações (desde 2026.11.12-3): lista com 10 ou mais itens é refeita em
+ * quatro quadrantes mesmo com a marca de fim. Na coleta de 12/11 (versão -2)
+ * as buscas de metrô e trem voltaram com exatamente 10 itens, num ranking da
+ * cidade que ignorava o mapa, e omitiram estações a 300 m. Estação no raio
+ * trazida só pela busca de outro grupo, com lista do próprio grupo cheia,
+ * marca censura possível ("cruzamento"); a contagem não é corrigida.
  *
  * Duplicatas. Resultados do mesmo grupo a até 150 m e com nome parecido
  * contam uma vez (fica o de mais avaliações). Shoppings, até 400 m (as
  * entradas de um shopping grande ficam a mais de 150 m uma da outra): mesmo
  * nome sem "shopping", "mall" e espaços ("DiamondMall" = "Diamond Mall") ou
  * cadastro de parte do shopping (entrada, estacionamento, garagem, sala, piso,
- * torre, bloco, acesso, portaria) perto de outro shopping.
+ * torre, bloco, acesso, portaria) perto de outro shopping. Estações: cadastro
+ * de parada, saída, acesso, entrada, plataforma ou embarque a até 150 m de
+ * outra estação do mesmo grupo conta uma vez, mesmo com outro nome ("Parada
+ * VLT - Colombo" = Sete de Setembro).
+ *
+ * Classificação de ruído: traçado, mapa ou trajeto da linha vai para
+ * "outro"; loja, escola ou curso com a categoria de shopping também;
+ * "Centro comercial" com "shopping" ou "mall" no nome vai para shopping.
  *
  * Revisão. "Revisar classificação": resultados do Maps no grupo "outro" a até
  * 1000 m com cara de estação ou shopping, para reclassificar com um clique.
@@ -128,7 +141,7 @@
   'use strict';
 
   // Versão gravada nos CSVs. Não usa GM_info: pelo carregador, ele dá a versão do carregador.
-  const VERSAO = '2026.11.12-2';
+  const VERSAO = '2026.11.12-3';
   const CHAVE_DADOS = 'tcc-entorno-dados-v2';
   const CHAVE_FILA = 'tcc-entorno-fila-v2';
   const CHAVE_REVISOES = 'tcc-entorno-revisoes';
@@ -344,7 +357,13 @@
     const c = semAcento(categoria).trim();
     // Estação ainda não inaugurada ("Futura estação Rua do Grito (BRT ABC)") ou fechada.
     if (/\bfutura\b|em (obras|construcao|implantacao)|desativad|\bplanejad|\bprojetad/.test(n)) return 'outro';
+    // Traçado ou mapa da linha não é parada ("Traçado do mapa do vlt rio de janeiro").
+    if (/\btracado\b|\bmapa\b|\btrajeto\b|\bitinerario\b/.test(n)) return 'outro';
+    // Loja ou escola com a categoria de shopping ("Loja T-Rex Brasil", "Minds Idiomas").
+    if (/^(shopping|shopping center|shopping mall|outlet)$/.test(c) && /^lojas?\b|\bidiomas\b|\bescola\b|\bcursos?\b/.test(n)) return 'outro';
     if (/^(shopping|shopping center|shopping mall|outlet)$/.test(c)) return 'shopping';
+    // Centro comercial com "shopping" ou "mall" no nome ("Shopping Buritis").
+    if (/^centro comercial$/.test(c) && /\bshopping\b|\bmall\b/.test(n)) return 'shopping';
     const transporte = /transporte|estacao|parada|ponto|terminal|onibus|trem|bonde|metro/.test(c);
     // VLT e aeromóvel pelo nome valem mais que a categoria (o Maps põe parada do VLT como metrô).
     if (/\bvlt\b|aeromovel/.test(n) && transporte) return 'vlt';
@@ -414,12 +433,16 @@
 
   // Cadastro de parte de um shopping ("Entrada C - Diamond Mall", "Garagem boulevard").
   const PARTE_DE_SHOPPING = /\b(entrada|estacionamento|garagem|sala|piso|torre|bloco|acesso|portaria)\b/;
+  // Cadastro de parada, saída ou acesso de uma estação ("Parada VLT - Colombo"
+  // a 70 m da parada Sete de Setembro): mesma estação mesmo com outro nome.
+  const PARTE_DE_ESTACAO = /\b(parada|saida|acesso|entrada|plataforma|embarque|desembarque)\b/;
 
   // r repete m (m tem mais avaliações): mesmo grupo, perto e nome parecido.
   function repete(m, r) {
     if (m.grupo !== r.grupo) return false;
     const d = distancia(m.lat, m.lng, r.lat, r.lng);
     if (d <= DIST_DUPLICATA_M && nomesParecidos(m.nome, r.nome)) return true;
+    if (TRANSPORTE.includes(r.grupo) && d <= DIST_DUPLICATA_M && (PARTE_DE_ESTACAO.test(semAcento(r.nome)) || PARTE_DE_ESTACAO.test(semAcento(m.nome)))) return true;
     return r.grupo === 'shopping' && d <= DIST_DUPLICATA_SHOPPING_M && (mesmoShopping(m.nome, r.nome) || PARTE_DE_SHOPPING.test(semAcento(r.nome)));
   }
 
@@ -531,15 +554,15 @@
 
   async function lerBusca() {
     const estado = await esperarBusca();
-    if (estado === 'bloqueado' || estado === 'falhou') return { estado, itens: [], lotou: false };
+    if (estado === 'bloqueado' || estado === 'falhou') return { estado, itens: [], fim: true };
     await esperar(1200);
-    if (estado === 'vazio') return { estado, itens: [], lotou: false };
+    if (estado === 'vazio') return { estado, itens: [], fim: true };
     if (estado === 'lugar') {
       const nome = document.querySelector('h1.DUwDvf')?.innerText || '';
       const categoria = document.querySelector('button[jsaction*="category"]')?.innerText || '';
       const resumo = document.querySelector('div.F7nice')?.innerText || '';
       const avaliacoes = lerNumeroAvaliacoes(resumo) || (/nenhuma avaliacao|no reviews/.test(semAcento(resumo)) ? '0' : '');
-      return { estado, itens: [{ nome, categoria_maps: categoria, n_avaliacoes: avaliacoes, ...lerHref(location.href) }], lotou: false };
+      return { estado, itens: [{ nome, categoria_maps: categoria, n_avaliacoes: avaliacoes, ...lerHref(location.href) }], fim: true };
     }
     const feed = lista();
     let antes = -1;
@@ -552,11 +575,41 @@
       await esperar(1300);
     }
     const itens = resultadosNaTela().filter((r) => r.lat != null);
-    return { estado, itens, lotou: precisaSubdividir(itens.length, fimDaLista(feed)) };
+    return { estado, itens, fim: fimDaLista(feed) };
   }
 
+  const LISTA_CHEIA = 10;
   // Lista com 10 ou mais itens sem a marca de fim pode ter cortado resultados.
-  function precisaSubdividir(n, chegouAoFim) { return n >= 10 && !chegouAoFim; }
+  function precisaSubdividir(n, chegouAoFim) { return n >= LISTA_CHEIA && !chegouAoFim; }
+
+  // O que fazer com a lista lida: '' (completa), 'subdividir' ou 'censura'.
+  // Estações: lista com 10 ou mais itens se divide sempre, mesmo com a marca de
+  // fim e itens fora do mapa. Na coleta de 12/11 as buscas de metrô e trem
+  // voltaram com exatamente 10 itens e a marca de fim, num ranking da cidade
+  // que ignorava o mapa (casas distantes com a mesma lista) e omitia estações a
+  // 300 m (Glória e Largo do Machado na Luderia Carioca). Demais listas: lotada
+  // sem a marca de fim divide; item fora do mapa indica área esgotada.
+  function decidirLista({ n, fim, quadrante, grupo, algumForaDoMapa }) {
+    if (!quadrante && TRANSPORTE.includes(grupo) && n >= LISTA_CHEIA) return 'subdividir';
+    if (!precisaSubdividir(n, fim) || algumForaDoMapa) return '';
+    return quadrante ? 'censura' : 'subdividir';
+  }
+
+  // Estação no raio trazida só pela busca de outro grupo, com uma lista do
+  // próprio grupo cheia: a lista do grupo foi cortada. Vira censura possível
+  // ("estação de metrô (cruzamento: Catete)"), nunca contagem corrigida.
+  function cruzamento(unidos, lidos) {
+    const tamanhos = new Map();
+    for (const r of lidos) tamanhos.set(r.consulta, (tamanhos.get(r.consulta) || 0) + 1);
+    const cheio = (g) => [...tamanhos].some(([rot, n]) => grupoDaConsulta(rot) === g && n >= LISTA_CHEIA);
+    const doGrupo = (r) => String(r.consultas || '').split(' | ').some((c) => grupoDaConsulta(c) === r.grupo_auto);
+    const noRaio = unidos.filter((r) => TRANSPORTE.includes(r.grupo_auto) && r.distancia_m <= RAIO_MAX);
+    return noRaio
+      .filter((r) => !doGrupo(r) && cheio(r.grupo_auto)
+        // Outro cadastro da mesma estação já veio pela busca do grupo.
+        && !noRaio.some((o) => o !== r && o.grupo_auto === r.grupo_auto && doGrupo(o) && distancia(o.lat, o.lng, r.lat, r.lng) <= DIST_DUPLICATA_M))
+      .map((r) => `${CONSULTAS.find((c) => c.grupo === r.grupo_auto).consulta} (cruzamento: ${r.nome})`);
+  }
 
   // ---------- plano de buscas ----------
 
@@ -854,6 +907,7 @@
       distancia_m: distancia(local.lat, local.lng, r.lat, r.lng),
       coletado_em,
     }));
+    fila.censura.push(...cruzamento(unidos, fila.lidos));
     const dados = lerDados();
     dados.resultados = dados.resultados.filter((r) => r.origem !== k).concat(unidos);
     dados.locais = dados.locais.filter((l) => l.chave !== k).concat([{
@@ -944,11 +998,12 @@
       if (cob < t.alcance) fila.cobertura_insuf.push(rotulo(t));
       if (!t.quadrante) fila.cobertura_min_m = fila.cobertura_min_m == null ? cob : Math.min(fila.cobertura_min_m, cob);
       fila.lidos.push(...leitura.itens.map((r) => ({ ...r, consulta: rotulo(t) })));
-      // Lista lotada com item fora do mapa: nada foi cortado na área (comum na
-      // busca de trem em cidade sem trem); não subdivide nem marca censura.
-      if (leitura.lotou && t.busca && leitura.itens.some((r) => foraDoMapa(r, t.busca, janelaAtual()))) leitura.lotou = false;
-      if (leitura.lotou && !t.quadrante) { fila.tarefas.push(...quadrantes(t)); fila.subdivididas.push(t.consulta); msg += ' Lista lotada: 4 quadrantes.'; }
-      if (leitura.lotou && t.quadrante) fila.censura.push(rotulo(t));
+      const decisao = decidirLista({
+        n: leitura.itens.length, fim: !!leitura.fim, quadrante: t.quadrante, grupo: t.grupo,
+        algumForaDoMapa: !!t.busca && leitura.itens.some((r) => foraDoMapa(r, t.busca, janelaAtual())),
+      });
+      if (decisao === 'subdividir') { fila.tarefas.push(...quadrantes(t)); fila.subdivididas.push(t.consulta); msg += ' Lista cheia: 4 quadrantes.'; }
+      if (decisao === 'censura') fila.censura.push(rotulo(t));
     }
 
     fila.tarefa += 1;
