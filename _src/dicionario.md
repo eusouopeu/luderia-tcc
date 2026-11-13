@@ -157,11 +157,11 @@ Cada resultado do coletor de entorno (`maps_entorno.user.js`) cai em um só grup
 | `metro` | metrôs, inclusive o monotrilho das linhas 15 e 17 de São Paulo quando o Maps o põe na categoria de metrô | 13/10/2026 |
 | `trem` | trens metropolitanos (CPTM, SuperVia, Trensurb), pelo operador mesmo na categoria de metrô | 15/10/2026 |
 | `vlt` | VLT (Carioca, Baixada Santista, Fortaleza, Salvador), bonde de uso urbano, aeromóvel de Porto Alegre, monotrilho fora da categoria de metrô | 12/11/2026 (coletor 2026.11.12-2) |
-| `brt` | BRT e estações-tubo da RIT de Curitiba; ônibus, fora de trilhos | 12/11/2026 (coletor 2026.11.12-2) |
+| `brt` (retirado) | BRT e estações-tubo da RIT de Curitiba (ônibus): fora da coleta desde o coletor 2026.11.13-2; estação de BRT trazida por outra busca cai em `outro` | 12 a 13/11/2026 |
 | `trilhos` (derivado) | `metro` + `trem` + `vlt`; vazio se algum dos três ficou vazio | 12/11/2026 |
-| `vlt_brt` (antigo) | VLT ou BRT, sem separação: coletas até o coletor 2026.11.12-1 (15/10/2026); no resumo do B1, nas coletas novas, `vlt` + `brt` | 13/10 a 12/11/2026 |
+| `vlt_brt` (antigo) | VLT ou BRT, sem separação: coletas até o coletor 2026.11.12-1 (15/10/2026); no resumo do B1, vazio nas coletas novas | 13/10 a 12/11/2026 |
 
-Coleta antiga (só `vlt_brt`): `vlt` e `brt` ficam vazios, nunca zero; `trilhos` só sai onde VLT = 0 é certo (`vlt_brt` = 0 no raio, ou busca de VLT dispensada na cidade).
+Coleta antiga (só `vlt_brt`): `vlt` fica vazio, nunca zero; `trilhos` só sai onde VLT = 0 é certo (`vlt_brt` = 0 no raio, ou busca de VLT dispensada na cidade).
 
 ### 4.5 Situação da coleta (vocabulário único)
 

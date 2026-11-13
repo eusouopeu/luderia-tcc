@@ -91,7 +91,6 @@ VARS = {
     "dist_metro_m": ("Entorno", "Distância à estação de metrô mais próxima", "metros (linha reta)", INT),
     "trem_1000m": ("Entorno", "Estações de trem metropolitano até 1000 m", "estações", DEC2),
     "vlt_1000m": ("Entorno", "Estações de VLT até 1000 m (só coletas a partir de 2026.11.12-2)", "estações", DEC2),
-    "brt_1000m": ("Entorno", "Estações de BRT até 1000 m (ônibus; só coletas a partir de 2026.11.12-2)", "estações", DEC2),
     "trilhos_500m": ("Entorno", "Estações sobre trilhos (metrô + trem + VLT) até 500 m", "estações", DEC2),
     "trilhos_1000m": ("Entorno", "Estações sobre trilhos (metrô + trem + VLT) até 1000 m", "estações", DEC2),
     "dist_trilhos_m": ("Entorno", "Distância à estação sobre trilhos mais próxima", "metros (linha reta)", INT),

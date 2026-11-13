@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Entorno no Google Maps (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-1
-// @description  Conta estações de metrô, de trem, de VLT, de BRT e shoppings a 500 m e 1000 m de cada estabelecimento no Google Maps (shopping de porte pelo número de avaliações); coleta a lista de estabelecimentos e exporta CSV.
+// @version      2026.11.13-2
+// @description  Conta estações de metrô, de trem, de VLT e shoppings a 500 m e 1000 m de cada estabelecimento no Google Maps (shopping de porte pelo número de avaliações); coleta a lista de estabelecimentos e exporta CSV.
 // @match        https://www.google.com/maps/*
 // @match        https://www.google.com.br/maps/*
 // @match        https://www.google.com/sorry/*
@@ -40,11 +40,11 @@
  * (nome, categoria, coordenada, avaliações), calcula a distância em linha
  * reta (haversine) e conta os que caem a até 500 m e 1000 m.
  *
- * Buscas: "estação de metrô", "estação de trem", "estação BRT", "estação VLT",
- * "estação tubo" (só em Curitiba: a busca "estação BRT" não devolve as
- * estações-tubo da RIT) e "shopping center". Cada resultado vai para UM grupo pela própria categoria e
+ * Buscas: "estação de metrô", "estação de trem", "estação VLT" e "shopping
+ * center". BRT e estações-tubo de Curitiba ficam fora desde 2026.11.13-2
+ * (ônibus; não entram no plano). Cada resultado vai para UM grupo pela própria categoria e
  * nome no Maps (classificar), nunca pela busca que o trouxe; repetido entre
- * buscas conta uma vez. Grupos: metro, trem, vlt, brt, shopping, outro.
+ * buscas conta uma vez. Grupos: metro, trem, vlt, shopping, outro.
  *  - metro: metrôs (inclui o monotrilho das linhas 15 e 17 de São Paulo
  *    quando o Maps o põe na categoria de metrô);
  *  - trem: trens metropolitanos (CPTM, SuperVia, Trensurb), pelo operador
@@ -52,8 +52,9 @@
  *  - vlt: veículo leve sobre trilhos (VLT Carioca, da Baixada Santista, de
  *    Fortaleza, de Salvador), bonde de uso urbano (Santa Teresa), aeromóvel
  *    de Porto Alegre e monotrilho fora da categoria de metrô;
- *  - brt: ônibus em corredor (BRT, estações-tubo da RIT de Curitiba). É
- *    ônibus, não trilho.
+ * Estação de BRT trazida por outra busca vai para "outro" e não entra na
+ * revisão. Resultados guardados que só as buscas de BRT e de estação-tubo
+ * trouxeram (até 2026.11.13-1) são apagados ao abrir o painel.
  * Até a versão 2026.11.12-1, vlt e brt saíam juntos (qt_estacoes_vlt_brt_*):
  * nas exportações antigas essa coluna é "VLT ou BRT, sem separação".
  * Colunas derivadas "trilhos" = metro + trem + vlt: qt_estacoes_trilhos_<raio>m
@@ -61,7 +62,7 @@
  * A classificação é refeita na exportação, então regra nova vale também para o
  * que já está guardado.
  *
- * Buscas dispensadas. Nas metrópoles da REGIC sem metrô, trem, VLT ou BRT em
+ * Buscas dispensadas. Nas metrópoles da REGIC sem metrô, trem ou VLT em
  * operação (SEM_SISTEMA, situação em novembro de 2026), a busca desse sistema
  * não é feita: o grupo sai zero, não branco, e a coluna consultas_dispensadas
  * diz o porquê. Nessas cidades, resultado que cai no grupo do sistema
@@ -128,7 +129,7 @@
  * "N_estabelecimentos"). Um estabelecimento por linha no resumo, com linha
  * também para quem ainda não foi coletado (situacao diz o quê):
  *  - …_entorno_resumo.csv: qt_*_500m contidas em qt_*_1000m; a 1000 m,
- *    metro + trem + vlt + brt + shoppings + outros = resultados_ate_1000m;
+ *    metro + trem + vlt + shoppings + outros = resultados_ate_1000m;
  *  - …_entorno_resultados.csv: um resultado por linha;
  *  - …_entorno_shoppings.csv: um shopping por linha (sem duplicatas), com
  *    avaliações e porte.
@@ -141,7 +142,7 @@
   'use strict';
 
   // Versão gravada nos CSVs. Não usa GM_info: pelo carregador, ele dá a versão do carregador.
-  const VERSAO = '2026.11.13-1';
+  const VERSAO = '2026.11.13-2';
   const CHAVE_DADOS = 'tcc-entorno-dados-v2';
   const CHAVE_FILA = 'tcc-entorno-fila-v2';
   const CHAVE_REVISOES = 'tcc-entorno-revisoes';
@@ -174,13 +175,13 @@
   const CONSULTAS = [
     { consulta: 'estação de metrô', grupo: 'metro' },
     { consulta: 'estação de trem', grupo: 'trem' },
-    { consulta: 'estação BRT', grupo: 'brt' },
     { consulta: 'estação VLT', grupo: 'vlt' },
-    { consulta: 'estação tubo', grupo: 'brt' },
     { consulta: 'shopping center', grupo: 'shopping' },
   ];
   // Consultas dos estabelecimentos guardados antes do campo "consultas" (até 13/10/2026).
-  const CONSULTAS_ANTIGAS = ['estação de metrô', 'estação BRT', 'estação VLT', 'shopping center'];
+  const CONSULTAS_ANTIGAS = ['estação de metrô', 'estação VLT', 'shopping center'];
+  // Buscas retiradas em 2026.11.13-2 (BRT é ônibus; não entra no plano).
+  const CONSULTAS_RETIRADAS = ['estação BRT', 'estação tubo'];
   // Sistemas ausentes por metrópole (REGIC), em novembro de 2026: a busca é dispensada.
   // Chave: nome da cidade sem acento, em minúsculas, como sai do endereço.
   // São Paulo faz a busca de VLT (monotrilho fora da categoria de metrô) e
@@ -188,14 +189,12 @@
   // 2021; o VLT que o substitui fica com a busca feita (estação em obras sai
   // "outro" pelo nome). Belo Horizonte: o trem da Vitória-Minas é de longa
   // distância, não sistema urbano. Campinas: sem metrô, trem urbano ou VLT
-  // (o VLT de 1990 a 1995 foi desativado); tem BRT.
+  // (o VLT de 1990 a 1995 foi desativado).
   const METRO = 'estação de metrô';
   const TREM = 'estação de trem';
   const VLT = 'estação VLT';
-  const BRT = 'estação BRT';
-  const TUBO = 'estação tubo';
   // Buscas que só valem em algumas cidades; nas demais, dispensadas.
-  const SO_NAS_CIDADES = { [TUBO]: ['curitiba'] };
+  const SO_NAS_CIDADES = {};
   const SEM_SISTEMA = {
     'sao paulo': [],
     'rio de janeiro': [],
@@ -204,17 +203,17 @@
     belem: [METRO, TREM, VLT],
     'belo horizonte': [TREM, VLT],
     curitiba: [METRO, TREM, VLT],
-    florianopolis: [METRO, TREM, VLT, BRT],
+    florianopolis: [METRO, TREM, VLT],
     fortaleza: [],
     goiania: [METRO, TREM, VLT],
-    manaus: [METRO, TREM, VLT, BRT],
+    manaus: [METRO, TREM, VLT],
     'porto alegre': [],
     recife: [],
     salvador: [TREM],
-    vitoria: [METRO, TREM, VLT, BRT],
+    vitoria: [METRO, TREM, VLT],
   };
-  const TRANSPORTE = ['metro', 'trem', 'vlt', 'brt'];
-  // "Trilhos": metrô, trem e VLT (BRT é ônibus).
+  const TRANSPORTE = ['metro', 'trem', 'vlt'];
+  // "Trilhos": metrô, trem e VLT.
   const TRILHOS = ['metro', 'trem', 'vlt'];
   function consultasDispensadas(cidade) {
     const c = semAcento(cidade).trim();
@@ -230,7 +229,7 @@
       return qs.length && qs.every((q) => sem.includes(q));
     });
   }
-  const GRUPOS = { metro: 'estacoes_metro', trem: 'estacoes_trem', vlt: 'estacoes_vlt', brt: 'estacoes_brt', shopping: 'shoppings' };
+  const GRUPOS = { metro: 'estacoes_metro', trem: 'estacoes_trem', vlt: 'estacoes_vlt', shopping: 'shoppings' };
   const OPCOES_PADRAO = { limiar_aval: 1000, parcial: true };
 
   // ---------- utilidades ----------
@@ -259,7 +258,21 @@
   }
 
   const dadosVazios = () => ({ locais: [], resultados: [] });
-  const lerDados = () => { const d = ler(CHAVE_DADOS, null); return d && Array.isArray(d.locais) ? d : dadosVazios(); };
+  const lerDados = () => { const d = ler(CHAVE_DADOS, null); return d && Array.isArray(d.locais) ? semRetiradas(d) : dadosVazios(); };
+  // Tira dos dados guardados as buscas retiradas (BRT, estação tubo): resultado
+  // trazido só por elas sai; das listas do estabelecimento, a busca sai.
+  const retirada = (c) => CONSULTAS_RETIRADAS.some((q) => String(c).startsWith(q));
+  const semRetiradasLista = (xs) => (Array.isArray(xs) ? xs.filter((c) => !retirada(c)) : xs);
+  function semRetiradas(d) {
+    const resultados = d.resultados.filter((r) => String(r.consultas ?? r.consulta ?? '').split(' | ').some((c) => !c || !retirada(c)))
+      .map((r) => (r.consultas ? { ...r, consultas: r.consultas.split(' | ').filter((c) => !retirada(c)).join(' | ') } : r));
+    const locais = d.locais.map((l) => {
+      const m = { ...l };
+      for (const k of ['consultas', 'consultas_dispensadas', 'falhas', 'subdivididas', 'cobertura_insuf', 'censura']) if (Array.isArray(l[k])) m[k] = semRetiradasLista(l[k]);
+      return m;
+    });
+    return { ...d, locais, resultados };
+  }
   const lerOpcoes = () => ({ ...OPCOES_PADRAO, ...ler(CHAVE_OPCOES, {}) });
 
   // Distância em linha reta, em metros.
@@ -352,6 +365,8 @@
   // VLT, bonde de uso urbano, aeromóvel e monotrilho (fora da categoria de metrô).
   const RE_VLT = /\bvlt\b|veiculo leve|light rail|\bbonde\b|\btram\b|tranvia|aeromovel|monotrilho|monorail/;
   const RE_BRT = /\bbrt\b|bus rapid/;
+  // BRT (inclui as estações-tubo de Curitiba): fora da coleta desde 2026.11.13-2.
+  const ehBrt = (nome, categoria) => /^estacao tubo\b/.test(semAcento(nome)) || RE_BRT.test(semAcento(`${nome} ${categoria}`));
 
   function classificar(nome, categoria) {
     const n = semAcento(nome);
@@ -372,14 +387,12 @@
     if (/\b(cptm|supervia|trensurb)\b/.test(n) && /estacao|transporte|metro/.test(c)) return 'trem';
     // Metrô, inclusive monotrilho na categoria de metrô (linhas 15 e 17 de São Paulo).
     if (/\bmetro\b|subway/.test(c)) return 'metro';
-    // Estações-tubo do BRT de Curitiba (RIT), muitas sem categoria no Maps.
-    if (/^estacao tubo\b/.test(n)) return 'brt';
+    // BRT e estações-tubo de Curitiba: ônibus, fora do plano.
+    if (ehBrt(nome, categoria)) return 'outro';
     if (RE_VLT.test(c)) return 'vlt';
-    if (RE_BRT.test(c)) return 'brt';
     // "Companhia ferroviária" é a sede do operador, não estação.
     if (/\btrem\b|\btrens\b|ferrovi|train station|railway/.test(c) && !/^(companhia|empresa)\b/.test(c)) return 'trem';
     if (RE_VLT.test(n) && transporte) return 'vlt';
-    if (RE_BRT.test(n) && transporte) return 'brt';
     if (/\bmetro\b/.test(n) && /estacao|transporte/.test(c)) return 'metro';
     if (/\b(cptm|supervia|trensurb|trem)\b/.test(n) && /estacao|transporte/.test(c)) return 'trem';
     return 'outro';
@@ -391,17 +404,19 @@
     return gruposAusentes(cidade).includes(g) ? 'outro' : g;
   }
 
-  // Revisão manual gravada com o grupo antigo "vlt_brt" (até 2026.11.12-1): separa pelo nome e categoria.
+  // Revisão manual com grupo retirado: "brt" (até 2026.11.13-1) vale "outro";
+  // "vlt_brt" (até 2026.11.12-1) vale "vlt" só quando o nome ou a categoria dizem VLT.
   function grupoRevisto(rev, nome, categoria) {
+    if (rev === 'brt') return 'outro';
     if (rev !== 'vlt_brt') return rev;
     const t = semAcento(`${nome} ${categoria}`);
-    return RE_BRT.test(t) || /estacao tubo/.test(t) ? 'brt' : RE_VLT.test(t) ? 'vlt' : 'brt';
+    return RE_VLT.test(t) && !ehBrt(nome, categoria) ? 'vlt' : 'outro';
   }
 
   // "Outro" com cara de estação ou shopping: vai para a revisão manual.
   function suspeito(r) {
-    return r.grupo_auto === 'outro' && r.distancia_m <= RAIO_MAX &&
-      /estac|terminal|metro|\bbrt\b|\bvlt\b|\btrem\b|cptm|supervia|trensurb|ferrovi|bonde|aeromovel|monotrilho|shopping|\bmall\b/.test(semAcento(`${r.nome} ${r.categoria_maps}`));
+    return r.grupo_auto === 'outro' && r.distancia_m <= RAIO_MAX && !ehBrt(r.nome, r.categoria_maps) &&
+      /estac|terminal|metro|\bvlt\b|\btrem\b|cptm|supervia|trensurb|ferrovi|bonde|aeromovel|monotrilho|shopping|\bmall\b/.test(semAcento(`${r.nome} ${r.categoria_maps}`));
   }
 
   // ---------- duplicatas ----------
@@ -1893,7 +1908,7 @@
     if (!el.revisao.parentElement.open) return;
     el.revisao.replaceChildren(...(itens.length ? itens.map((r) => {
       const k = chave(r);
-      const sel = criar('select', { 'aria-label': `Grupo de ${r.nome}` }, ['metro', 'trem', 'vlt', 'brt', 'shopping', 'outro'].map((g) => criar('option', { value: g, textContent: g })));
+      const sel = criar('select', { 'aria-label': `Grupo de ${r.nome}` }, ['metro', 'trem', 'vlt', 'shopping', 'outro'].map((g) => criar('option', { value: g, textContent: g })));
       sel.value = grupoRevisto(revisoes[k], r.nome, r.categoria_maps) || r.grupo_auto;
       sel.onchange = () => {
         const rv = ler(CHAVE_REVISOES, {});
@@ -2110,6 +2125,11 @@
   }
 
   console.info('[Entorno do Maps] carregado');
+  // Libera o espaço das buscas retiradas (BRT, estação tubo) guardadas por versões anteriores.
+  try {
+    const d0 = ler(CHAVE_DADOS, null);
+    if (d0 && Array.isArray(d0.locais) && /estação (BRT|tubo)/.test(JSON.stringify(d0))) gravar(CHAVE_DADOS, lerDados());
+  } catch (e) { console.error('[Entorno do Maps]', e); }
   garantirPainel();
   setInterval(() => { try { garantirPainel(); } catch (e) { console.error('[Entorno do Maps]', e); } }, 1500);
   continuarFila().catch((e) => status(`Erro na fila: ${e.message}`, 'erro'));

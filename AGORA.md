@@ -18,7 +18,7 @@ Atualizado em 13/11/2026. Pastas reorganizadas: webscripts em `_src/Webscripts/`
 - Quantidades do investimento (N6): projeto do ponto na Pituba.
 - Folha de aprovação: nomes da banca.
 - Coletas do autor (aluguel, horários de pico, entorno, B2, webscripts): roteiros em [pendências](docs/pendencias.md), "Coletas em andamento".
-- Entorno: a coleta de 12/11 (39 casas) subconta estações de metrô (Maps devolveu ranking de 10 da cidade). Coletor 2026.11.12-3 corrigido; recoletar com ele, no mínimo as casas do Rio, antes de usar o entorno no TMin.
+- Entorno: a coleta de 12/11 (39 casas) subconta estações de metrô (Maps devolveu ranking de 10 da cidade). Coletor 2026.11.13-2 (sem BRT nem estação tubo); recoletar com ele, no mínimo as casas do Rio, antes de usar o entorno no TMin.
 - Webscripts (13/11): os carregadores apontam agora para `_src/Webscripts/`; **reinstalar todos** no Tampermonkey (`python3 _src/extras/gerar_carregadores.py --abrir --todos`), senão os instalados procuram o caminho antigo e param; o coletor do Instagram coleta pela grade quando a API antiga falha (404 em 12/11); recoletar Cineplay, Fortalúdica, Bardo Mago e Comdado no período 01/07 a 01/11. Não muda o TMin até um acervo novo entrar no B1. Aluguel: reinstalar o `portais_aluguel` (2026.11.12-8, recarrega página vazia e retoma de onde parou) e refazer só OLX Pituba, ZAP Caminho das Árvores e Rio Vermelho, Viva Real e OLX Barra; o build usa só `data_coleta` 12/11 (há 296 linhas de 03/11 de Salvador inteira no CSV).
 
 ## Onde está o resto

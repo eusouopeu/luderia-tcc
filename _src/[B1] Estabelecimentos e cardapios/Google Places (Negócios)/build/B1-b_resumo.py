@@ -13,8 +13,9 @@ Fontes:
   dados/B1_estabelecimentos/_dados-agregados/B1_horarios.csv                    -> horários (Places API)
   dados/B1_entorno/_dados-brutos/*_entorno_resumo.csv         -> entorno (coletor do Maps;
       vale o export mais recente de cada casa; distância a estação a mais de
-      50 km, de outra cidade, fica vazia; metrô, trem, VLT, BRT e "trilhos" =
-      metrô + trem + VLT; VLT e BRT separados só desde o coletor 2026.11.12-2)
+      50 km, de outra cidade, fica vazia; metrô, trem, VLT e "trilhos" =
+      metrô + trem + VLT; VLT separado do BRT desde o coletor 2026.11.12-2;
+      BRT fora da coleta desde 2026.11.13-2)
   dados/B1_redes_sociais/_dados-agregados/B1_instagram_resumo_notion.csv        -> Instagram (retrato do
       Notion "A - Estabelecimentos" de 15/10/2026; período 01/09 a 01/10 com
       colaborações da grade)
@@ -88,8 +89,9 @@ def horarios():
     return h[["place_id", "dias_abertos", "horas_semana", "abre_cedo", "fecha_tarde", *DIAS]]
 
 
-# Grupos de estação no resumo. "trilhos" = metro + trem + vlt (BRT é ônibus).
-ESTACOES = ("metro", "trem", "vlt", "brt")
+# Grupos de estação no resumo. "trilhos" = metro + trem + vlt. BRT (ônibus)
+# fora da coleta desde o coletor 2026.11.13-2.
+ESTACOES = ("metro", "trem", "vlt")
 TRILHOS = ("metro", "trem", "vlt")
 
 
@@ -98,7 +100,7 @@ def entorno():
     trouxe (coluna ausente ou busca não feita) fica vazio, nunca zero.
 
     Até a versão 2026.11.12-1 do coletor, VLT e BRT saíam juntos
-    (qt_estacoes_vlt_brt_*): nesses exports, vlt e brt ficam vazios e
+    (qt_estacoes_vlt_brt_*): nesses exports, vlt fica vazio e
     vlt_brt guarda a contagem "VLT ou BRT, sem separação". Trilhos só sai
     quando não há ambiguidade: vlt_brt = 0 no raio, ou busca de VLT dispensada
     na cidade (sem VLT em operação), caso em que vlt = 0."""
@@ -127,9 +129,9 @@ def entorno():
         for r in (500, 1000):
             out[f"{g}_{r}m"] = col(f"qt_estacoes_{g}_{r}m")
         out[f"dist_{g}_m"] = col(f"dist_estacoes_{g}_mais_proxima_m")
-    # VLT ou BRT sem separação: o valor do export antigo; nos novos, vlt + brt.
+    # VLT ou BRT sem separação: só nos exports antigos; nos novos, vazio.
     for r in (500, 1000):
-        out[f"vlt_brt_{r}m"] = col(f"qt_estacoes_vlt_brt_{r}m").fillna(out[f"vlt_{r}m"] + out[f"brt_{r}m"])
+        out[f"vlt_brt_{r}m"] = col(f"qt_estacoes_vlt_brt_{r}m")
     # Trilhos. Novo coletor: colunas próprias. Export antigo: metro + trem
     # onde vlt = 0 é certo (vlt_brt = 0 no raio ou busca de VLT dispensada).
     vlt_dispensado = col("consultas_dispensadas").fillna("").str.contains("estação VLT", regex=False)
@@ -232,10 +234,7 @@ DIC = {
     "vlt_500m": ("Entorno", "Estações de VLT, bonde urbano, aeromóvel ou monotrilho fora da categoria de metrô até 500 m; vazio = coleta anterior ao coletor 2026.11.12-2 (VLT e BRT juntos em vlt_brt)", "coletor de entorno do Maps, desde 2026.11.12-2"),
     "vlt_1000m": ("Entorno", "Estações de VLT até 1000 m; vazio = coleta anterior a 2026.11.12-2", "idem"),
     "dist_vlt_m": ("Entorno", "Distância (m) à estação de VLT mais próxima, só até 1000 m", "idem"),
-    "brt_500m": ("Entorno", "Estações de BRT (inclui as estações-tubo de Curitiba) até 500 m; ônibus, fora de trilhos; vazio = coleta anterior a 2026.11.12-2", "idem"),
-    "brt_1000m": ("Entorno", "Estações de BRT até 1000 m; vazio = coleta anterior a 2026.11.12-2", "idem"),
-    "dist_brt_m": ("Entorno", "Distância (m) à estação de BRT mais próxima, só até 1000 m", "idem"),
-    "vlt_brt_500m": ("Entorno", "Estações de VLT ou BRT, sem separação, até 500 m (coletas até 2026.11.12-1; nas novas, vlt + brt)", "coletor de entorno do Maps, 15/10/2026"),
+    "vlt_brt_500m": ("Entorno", "Estações de VLT ou BRT, sem separação, até 500 m (só coletas até 2026.11.12-1; nas novas, vazio)", "coletor de entorno do Maps, 15/10/2026"),
     "vlt_brt_1000m": ("Entorno", "Estações de VLT ou BRT, sem separação, até 1000 m", "idem"),
     "trilhos_500m": ("Entorno", "Estações sobre trilhos (metrô + trem + VLT) até 500 m; nas coletas antigas, só onde VLT = 0 é certo (vlt_brt = 0 ou busca de VLT dispensada); vazio = não separável ou busca não feita", "coletor de entorno do Maps"),
     "trilhos_1000m": ("Entorno", "Estações sobre trilhos (metrô + trem + VLT) até 1000 m; mesma regra de trilhos_500m", "idem"),

@@ -160,12 +160,6 @@
    "unidade": "estações",
    "n": 0
   },
-  "brt_1000m": {
-   "grupo": "Entorno",
-   "rotulo": "Estações de BRT até 1000 m (ônibus; só coletas a partir de 2026.11.12-2)",
-   "unidade": "estações",
-   "n": 0
-  },
   "trilhos_500m": {
    "grupo": "Entorno",
    "rotulo": "Estações sobre trilhos (metrô + trem + VLT) até 500 m",
