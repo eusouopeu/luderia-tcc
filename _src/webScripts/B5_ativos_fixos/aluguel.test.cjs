@@ -16,7 +16,7 @@ function carregar() {
     document: { querySelector: () => null, querySelectorAll: () => [], getElementById: () => null },
   };
   const instrumentado = source.slice(0, source.indexOf("  console.info(NOME, 'carregado');"))
-    + 'Object.assign(globalThis.__test, { anunciosDaBusca, numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, slugBairro, BAIRROS_MENU, BAIRROS_DESTAQUE, bairroDaUrl, redirecionada, paginaDaBusca, foraDoBairro, MONTAGEM_PADRAO, chaveAlvo, semBusca, estadoAlvo, proximoAlvo, decidirPasso, semResultadoDeTexto, urlDeAbertura, csvResumoFila, bairroNaoReconhecido, tipoPeloTitulo, daRodada, rodadaDe, COLS });})();';
+    + 'Object.assign(globalThis.__test, { anunciosDaBusca, numeroBR, valorRotulado, operacaoDe, normalizarGrupoOlx, normalizarOlx, normalizarQuinto, casasQuinto, portalDe, paginaAtual, proximaPagina, guardar, ineditas, csv, nomeArquivo, totalDeTexto, desafioDeTexto, buscaBase, classificar, areaDe6_4, passaFiltros, funil, qualidade, mistura, previaDescarte, noAlvo, agruparBuscas, pendentes, resumoM2, lerItensFila, rotuloBusca, resultadoBusca, repetirBusca, portalDoArquivo, chaveBusca, FILA_PADRAO, montarBuscas, normalizarNet, semAssinatura, PORTAIS_BUSCA, slugBairro, BAIRROS_MENU, BAIRROS_DESTAQUE, bairroDaUrl, redirecionada, paginaDaBusca, foraDoBairro, MONTAGEM_PADRAO, chaveAlvo, semBusca, estadoAlvo, proximoAlvo, decidirPasso, semResultadoDeTexto, urlDeAbertura, csvResumoFila, bairroNaoReconhecido, tipoPeloTitulo, daRodada, rodadaDe, COLS });})();';
   vm.runInNewContext(instrumentado, ambiente, { filename: 'aluguel.user.js' });
   return ambiente.__test;
 }
@@ -242,18 +242,20 @@ test('anúncios fora de CSV e R$/m² pedido da busca', () => {
   assert.deepEqual(json(t.resumoM2([])), { n: 0, mediana: null, p25: null, p75: null });
 });
 
-test('montar buscas: padrão igual às 9 buscas do plano', () => {
-  assert.deepEqual(json(t.lerItensFila(t.FILA_PADRAO)), [
-    'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/pituba?commt=6&commt=7&ss=100',
-    'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/graca?commt=6&commt=7&ss=100',
-    'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/itaigara?commt=6&commt=7&ss=100',
-    'https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++pituba/?areaMinima=100&ordem=LOWEST_PRICE',
-    'https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++graca/?areaMinima=100&ordem=LOWEST_PRICE',
-    'https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++itaigara/?areaMinima=100&ordem=LOWEST_PRICE',
-    'https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/pituba/ponto-comercial_comercial/?areaMinima=100&ordem=LOWEST_PRICE',
-    'https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/graca/ponto-comercial_comercial/?areaMinima=100&ordem=LOWEST_PRICE',
-    'https://www.vivareal.com.br/aluguel/bahia/salvador/bairros/itaigara/ponto-comercial_comercial/?areaMinima=100&ordem=LOWEST_PRICE',
-  ]);
+test('montar buscas: padrão igual às 33 buscas do plano (11 bairros × OLX, ZAP e NetImóveis)', () => {
+  const itens = json(t.lerItensFila(t.FILA_PADRAO));
+  assert.equal(itens.length, 33);
+  const por = (re) => itens.filter((u) => re.test(u));
+  assert.equal(por(/olx\.com\.br/).length, 11);
+  assert.equal(por(/zapimoveis\.com\.br/).length, 11);
+  assert.equal(por(/netimoveis\.com/).length, 11);
+  assert.equal(por(/vivareal/).length, 0);
+  assert.equal(itens[0], 'https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/pituba?commt=6&commt=7&ss=100&se=200');
+  assert.equal(itens[11], 'https://www.zapimoveis.com.br/aluguel/loja-salao/ba+salvador++pituba/?areaMinima=100&areaMaxima=200&ordem=LOWEST_PRICE');
+  assert.equal(itens[22], 'https://www.netimoveis.com/locacao/bahia/salvador/bairros/pituba/loja?localizacao=BR-BA-salvador-pituba--&transacao=locacao&areaMin=100&areaMax=200');
+  assert.deepEqual(new Set(itens.map(t.bairroDaUrl)), new Set(['pituba', 'itaigara', 'graca', 'patamares', 'caminho-das-arvores', 'vitoria', 'barra', 'ondina', 'chame-chame', 'rio-vermelho', 'canela']));
+  // o Viva Real segue na montagem, fora do padrão
+  assert.ok(json(t.PORTAIS_BUSCA).includes('vivareal'));
 });
 
 test('montar buscas: bairros, área, tipos e portais', () => {
@@ -283,9 +285,10 @@ test('montar buscas: bairros, área, tipos e portais', () => {
 
 test('fila: lê as URLs, rotula as buscas e decide repetir', () => {
   const itens = t.lerItensFila(t.FILA_PADRAO);
-  assert.equal(itens.length, 9);
+  assert.equal(itens.length, 33);
   assert.ok(itens.filter((u) => /zapimoveis|vivareal/.test(u)).every((u) => u.includes('ordem=LOWEST_PRICE')));
-  assert.deepEqual(json(itens.map(t.rotuloBusca)), ['OLX · pituba', 'OLX · graca', 'OLX · itaigara', 'ZAP · pituba', 'ZAP · graca', 'ZAP · itaigara', 'Viva Real · pituba', 'Viva Real · graca', 'Viva Real · itaigara']);
+  assert.deepEqual(json([0, 1, 10, 11, 21, 22, 32].map((i) => t.rotuloBusca(itens[i]))),
+    ['OLX · pituba', 'OLX · itaigara', 'OLX · canela', 'ZAP · pituba', 'ZAP · canela', 'NetImóveis · pituba', 'NetImóveis · canela']);
   assert.deepEqual(json(t.lerItensFila('# comentário\nhttps://exemplo.com/x\nnão é URL\n' + itens[0] + '\n' + itens[0])), [itens[0]]);
   assert.equal(t.rotuloBusca('https://www.vivareal.com.br/aluguel/bahia/salvador/ponto-comercial_comercial/'), 'Viva Real');
   const r = t.resultadoBusca(itens[0], 111, 114, 3, 'total da busca lido');
@@ -305,11 +308,13 @@ test('fila: lê as URLs, rotula as buscas e decide repetir', () => {
 
 test('menu das buscas: estado pela rodada registrada, marca à mão e próxima no mesmo portal', () => {
   const alvos = t.lerItensFila(t.FILA_PADRAO);
-  assert.equal(alvos.length, 9);
-  assert.equal(new Set(alvos.map(t.chaveAlvo)).size, 9);
-  // a página da busca não muda a chave
+  assert.equal(alvos.length, 33);
+  assert.equal(new Set(alvos.map(t.chaveAlvo)).size, 33);
+  // a página da busca não muda a chave (no NetImóveis, nem a assinatura da página)
   const u = new URL(alvos[0]); u.searchParams.set(u.hostname.includes('olx') ? 'o' : 'pagina', '3');
   assert.equal(t.chaveAlvo(u.toString()), t.chaveAlvo(alvos[0]));
+  const n = new URL(alvos[22]); n.searchParams.set('pag', '2'); n.searchParams.set('sig', 'x'); n.searchParams.set('ts', '1');
+  assert.equal(t.chaveAlvo(n.toString()), t.chaveAlvo(alvos[22]));
   const feitas = {
     [t.chaveAlvo(alvos[0])]: { ...t.resultadoBusca(alvos[0], 74, 74, 3, 'total da busca lido'), chave_busca: t.chaveBusca(alvos[0]), em: 1 },
     [t.chaveAlvo(alvos[1])]: { ...t.resultadoBusca(alvos[1], 60, 74, 3, 'página vazia'), chave_busca: t.chaveBusca(alvos[1]), em: 1 },
@@ -327,6 +332,54 @@ test('menu das buscas: estado pela rodada registrada, marca à mão e próxima n
   if (alvos.slice(2).some((x) => portal(x) === portal(alvos[0]))) assert.equal(portal(prox), portal(alvos[0]));
   const todas = Object.fromEntries(alvos.map((a) => [t.chaveAlvo(a), true]));
   assert.equal(t.proximoAlvo(alvos, alvos[0], {}, todas), null);
+});
+
+test('NetImóveis: card, encargos, paginação assinada e classificação', () => {
+  const href = 'https://www.netimoveis.com/imovel/locacao-salao-bahia-salvador-pituba/1095359?tipoUrl=salao&transacao=locacao&localizacao=bahia-salvador-pituba';
+  const linhas = ['Vídeo', 'Ver mais fotos', 'Salão para alugar com 167 m², 2 banheiros, 2 vagas', 'Avenida Manoel Dias da Silva', 'Pituba, Salvador',
+    'Tamanho do imóvel', '167m²', 'Quantidade de quartos', '0', 'Quantidade de banheiros', '2', 'Quantidade de vagas de garagem', '2',
+    'Código: 1095359', 'R$ 6.500', 'Condomínio: R$ 1.135 • IPTU: R$ 763 (11)', 'Conhecer o imóvel'];
+  const a = json(t.normalizarNet({ titulo: 'Salão para alugar com 167 m², 2 banheiros, 2 vagas', href, linhas }));
+  assert.equal(a.portal, 'netimoveis');
+  assert.equal(a.id, '1095359');
+  assert.equal(a.url, 'https://www.netimoveis.com/imovel/locacao-salao-bahia-salvador-pituba/1095359');
+  assert.equal(a.tipo, 'Salão');
+  assert.equal(a.operacao, 'aluguel');
+  assert.equal(a.aluguel, 6500);
+  assert.equal(a.condominio, 1135);
+  assert.equal(a.iptu, 763);
+  assert.equal(a.condominio_iptu, 1898);
+  assert.equal(a.area_m2, 167);
+  assert.deepEqual([a.quartos, a.banheiros, a.vagas], [0, 2, 2]);
+  assert.deepEqual([a.bairro, a.cidade, a.endereco], ['Pituba', 'Salvador', 'Avenida Manoel Dias da Silva']);
+  // sem condomínio, endereço com vírgula e área de milhar
+  const b = json(t.normalizarNet({ titulo: 'Ponto comercial para alugar com 7500 m², 10 banheiros', href: 'https://www.netimoveis.com/imovel/locacao-ponto-comercial-bahia-salvador-boca-do-rio/1172015?x=1',
+    linhas: ['Ponto comercial para alugar com 7500 m², 10 banheiros', 'Avenida Jorge Amado, 186', 'Boca do Rio, Salvador', 'Tamanho do imóvel', '7.500m²', 'Código: 1172015', 'R$ 190.000', 'IPTU: R$ 10.880 (11)'] }));
+  assert.deepEqual([b.id, b.tipo, b.aluguel, b.condominio, b.iptu, b.condominio_iptu, b.area_m2, b.bairro, b.endereco],
+    ['1172015', 'Ponto comercial', 190000, null, 10880, null, 7500, 'Boca do Rio', 'Avenida Jorge Amado, 186']);
+  // página: pag=N assinado; a URL da busca fica sem a página e sem a assinatura
+  const busca = 'https://www.netimoveis.com/locacao/bahia/salvador/bairros/pituba/loja?localizacao=BR-BA-salvador-pituba--&transacao=locacao&areaMin=100&areaMax=200';
+  const p2 = busca + '&pag=2&sig=abc&ts=1794603626';
+  assert.equal(t.portalDe('www.netimoveis.com'), 'netimoveis');
+  assert.equal(t.paginaAtual('netimoveis', p2), 2);
+  assert.equal(t.buscaBase('netimoveis', p2), busca);
+  assert.equal(t.semAssinatura(p2), busca + '&pag=2');
+  assert.equal(t.urlDeAbertura(busca, { pagina: 3 }), busca); // recomeça: pag=3 sem assinatura volta à 1
+  assert.equal(t.bairroDaUrl(busca), 'pituba');
+  assert.equal(t.redirecionada(busca, p2), false);
+  assert.deepEqual(json(t.classificar({ busca_url: busca, tipo: 'Salão', titulo: 'Salão para alugar' })), { segmento: 'comercial', subtipo: 'loja_ponto' });
+  assert.deepEqual(json(t.classificar({ busca_url: busca.replace('/loja?', '/sala?'), tipo: '', titulo: '' })), { segmento: 'comercial', subtipo: 'sala' });
+  assert.equal(t.totalDeTexto('3 Lojas para alugar em Pituba (Salvador - BA)'), 3);
+  assert.equal(t.totalDeTexto('0 Lojas para alugar em Graça (Salvador - BA)'), 0);
+  assert.equal(t.semResultadoDeTexto('Nenhum imóvel encontrado Não encontramos imóveis com os filtros selecionados.'), true);
+  // montagem: tipos do NetImóveis; casa comercial não existe nele
+  const r = t.montarBuscas({ bairros: ['Rio Vermelho'], areaMin: 100, areaMax: 200, tipos: ['loja', 'sala', 'casa'], portais: ['netimoveis'] });
+  assert.deepEqual(json(r.urls), [
+    'https://www.netimoveis.com/locacao/bahia/salvador/bairros/rio-vermelho/loja?localizacao=BR-BA-salvador-rio-vermelho--&transacao=locacao&areaMin=100&areaMax=200',
+    'https://www.netimoveis.com/locacao/bahia/salvador/bairros/rio-vermelho/sala?localizacao=BR-BA-salvador-rio-vermelho--&transacao=locacao&areaMin=100&areaMax=200',
+  ]);
+  assert.deepEqual(json(r.semBusca), ['casa comercial no NetImóveis']);
+  assert.equal(t.rotuloBusca(r.urls[1]), 'NetImóveis · rio vermelho · sala');
 });
 
 test('menu de bairros: destaques primeiro, sem repetição e com slug válido', () => {

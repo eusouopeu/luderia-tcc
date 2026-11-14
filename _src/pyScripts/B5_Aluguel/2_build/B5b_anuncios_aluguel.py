@@ -18,6 +18,8 @@ Saídas em dados/B5_aluguel/_dados-agregados/, no padrão "[B5] {dado} {período
 Regras:
   - Fica só o que é aluguel em Salvador, com preço entre R$ 300 e R$ 100 mil e área informada.
   - ZAP e Viva Real publicam o mesmo anúncio com o mesmo id: conta uma vez (coluna portais).
+    O NetImóveis tem ids próprios: o anúncio repetido em outro portal sai pela regra seguinte
+    (mesmo segmento, bairro, área, aluguel e encargos) ou fica em "Possíveis Duplicatas".
   - IPTU é gravado como o anunciante digitou, às vezes anual. Vira mensal (÷ 12, coluna
     iptu_ajuste) quando o título traz o total mensal ("por R$ 20.875,00/mês") e ele fecha com
     o IPTU anual, ou, sem essa conferência, quando o IPTU passa de 50% do aluguel (mensal
@@ -72,7 +74,7 @@ OUT_DIR = ROOT / "dados" / "B5_aluguel" / "_dados-agregados"
 CENSO = ROOT / "dados" / "B4_operacional" / "_dados-agregados" / "[B4] População por Bairro 2022 (IBGE Censo).csv"
 APELIDOS = _AQUI.parents[1] / "5_outros" / "bairros_apelidos.csv"
 CD_SALVADOR = 2927408
-FONTE = {"olx": "OLX", "zap": "ZAP", "vivareal": "Viva Real", "quintoandar": "QuintoAndar"}
+FONTE = {"olx": "OLX", "zap": "ZAP", "vivareal": "Viva Real", "quintoandar": "QuintoAndar", "netimoveis": "NetImóveis"}
 ALUGUEL_MIN, ALUGUEL_MAX = 300, 100_000
 PORTE_MIN, PORTE_MAX = 100, 200
 AREAS_6_4 = {"Pituba": "Pituba/Itaigara", "Itaigara": "Pituba/Itaigara", "Barra": "Barra/Graça",
@@ -83,7 +85,10 @@ TOLERANCIA_DUPLICATA = 0.05
 RE_ARQUIVO = re.compile(r"^\d{4}-\d{2}-\d{2}(_\d{4}(\d{2})?)?_[a-z]+_anuncios_aluguel\.csv$")
 # Categoria da busca (busca_url): decide o segmento quando a busca já filtrou o tipo. O comercial vem
 # primeiro: "/casa-comercial/" casaria com o "/casa-" do residencial.
-RE_BUSCA_COMERCIAL = re.compile(r"loja-salao|conjunto-comercial|comercio-e-industria|ponto-comercial|casa-comercial|imovel-comercial|galpao|predio-inteiro|imoveis-comerciais|consultorio")
+# NetImóveis: o tipo é o último trecho do caminho (/bairros/<bairro>/loja?…, /sala, /predio, /galpao).
+RE_NET_TIPO = r"netimoveis\.com/locacao/[^?#]*/(?:{})(?:[?#]|$)"
+RE_BUSCA_COMERCIAL = re.compile(r"loja-salao|conjunto-comercial|comercio-e-industria|ponto-comercial|casa-comercial|imovel-comercial|galpao|predio-inteiro|imoveis-comerciais|consultorio|"
+                                + RE_NET_TIPO.format("loja|sala|predio"))
 RE_BUSCA_RESIDENCIAL = re.compile(r"quintoandar\.com\.br|/apartamentos?[/_-]|/casas?[/_-]|kitnet|flat|cobertura")
 # Busca sem categoria: termos que só aparecem em imóvel comercial ("sala comercial", não "sala";
 # "box comercial", não "box", que também é o do banheiro).
@@ -93,8 +98,9 @@ RE_COMERCIAL = re.compile(
     r"|sala para escritorio|sala empresarial|centro empresarial)\b"
 )
 # Subtipo do comercial, na ordem: o primeiro que casar vale.
-SUBTIPO_BUSCA = [("loja_ponto", r"loja-salao|ponto-comercial"), ("sala", r"conjunto-comercial|consultorio"),
-                 ("galpao", r"galpao"), ("predio", r"predio-inteiro")]
+SUBTIPO_BUSCA = [("loja_ponto", r"loja-salao|ponto-comercial|" + RE_NET_TIPO.format("loja")),
+                 ("sala", r"conjunto-comercial|consultorio|" + RE_NET_TIPO.format("sala")),
+                 ("galpao", r"galpao"), ("predio", r"predio-inteiro|" + RE_NET_TIPO.format("predio"))]
 SUBTIPO_TEXTO = [
     ("galpao", r"\b(galpao|galpoes|depositos?|armazem)\b"),
     ("predio", r"\b(predios? comercia(?:l|is)|predio inteiro)\b"),
@@ -156,9 +162,10 @@ def subtipo_de(segmento, busca_url, tipo, titulo) -> str:
 
 
 def busca_base(url) -> str:
-    """URL da busca sem o parâmetro de página (?o= no OLX, ?pagina= nos demais)."""
+    """URL da busca sem o parâmetro de página (?o= no OLX, ?pag= no NetImóveis, com a assinatura sig e ts
+    da paginação, ?pagina= nos demais)."""
     p = urlsplit(str(url or ""))
-    q = [(k, v) for k, v in parse_qsl(p.query) if k not in ("o", "pagina")]
+    q = [(k, v) for k, v in parse_qsl(p.query) if k not in ("o", "pagina", "pag", "sig", "ts")]
     return urlunsplit((p.scheme, p.netloc, p.path, urlencode(q), ""))
 
 

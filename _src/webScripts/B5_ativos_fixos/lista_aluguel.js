@@ -5,9 +5,10 @@
 // o botão "Padrão" (seta circular, ao lado de "Continuar").
 
 var LISTA_ALUGUEL = {
-  // Buscas do plano (C04 e C05, áreas do 6.4): Loja e Outros com 100 m² ou mais, nos
-  // bairros abaixo; os portais ficam no script (OLX, ZAP e Viva Real).
-  montagem_padrao: { bairros: ['Pituba', 'Graça', 'Itaigara'], outros: '', areaMin: 100, areaMax: null, tipos: ['loja'] },
+  // Buscas do plano (13/11/2026, decisão do autor): loja ou ponto de 100 a 200 m² nos 11 bairros de
+  // maior renda (os 10 da Tabela 6.1, com Ondina e Chame-Chame separados), no OLX, no ZAP e no NetImóveis.
+  montagem_padrao: { bairros: ['Pituba', 'Itaigara', 'Graça', 'Patamares', 'Caminho das Árvores', 'Vitória', 'Barra', 'Ondina', 'Chame-Chame', 'Rio Vermelho', 'Canela'],
+    outros: '', areaMin: 100, areaMax: 200, tipos: ['loja'], portais: ['olx', 'zap', 'netimoveis'] },
   // Bairros do menu do painel: no topo, juntos, os 10 de maior renda média familiar per capita
   // (Gomes et al., "Salvador: ecos da escravidão e da desigualdade em uma economia periférica",
   // apêndice, p. 185-188, 2018-2020), em ordem decrescente de renda; depois, os demais bairros de

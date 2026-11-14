@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         Coletor de anúncios de aluguel (TCC Luderia)
 // @namespace    tcc-luderia
-// @version      2026.11.13-4
-// @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas e uma fila de buscas entre portais e exporta CSV.
+// @version      2026.11.13-5
+// @description  Lê os anúncios das páginas de busca do OLX, ZAP Imóveis, Viva Real, NetImóveis e QuintoAndar (preço, condomínio, IPTU, área, bairro), percorre as páginas e uma fila de buscas entre portais e exporta CSV.
 // @match        https://www.olx.com.br/*
 // @match        https://www.zapimoveis.com.br/*
 // @match        https://www.vivareal.com.br/*
 // @match        https://www.quintoandar.com.br/*
+// @match        https://www.netimoveis.com/*
 // @run-at       document-start
 // @noframes
 // @grant        GM_getValue
@@ -22,9 +23,10 @@
  * Salvador (cap. 9, premissas C04 e C05, e 6.4, escolha do bairro). Os portais bloqueiam
  * requisições fora do navegador (Cloudflare), por isso a coleta roda na página.
  *
- * Como usar (fila, o caminho normal): abrir qualquer página do OLX, do ZAP ou do Viva
- * Real e clicar em "Fila". A fila já vem com as 9 buscas do plano (Loja e Outros com
- * 100 m² ou mais na Pituba, na Graça e na Itaigara, nos três portais); a lista é
+ * Como usar (fila, o caminho normal): abrir qualquer página do OLX, do ZAP, do Viva Real
+ * ou do NetImóveis e clicar em "Fila". A fila já vem com as 33 buscas do plano (loja ou
+ * ponto de 100 a 200 m² nos 11 bairros de maior renda, com Ondina e Chame-Chame separados,
+ * no OLX, no ZAP e no NetImóveis; 6.4, decisão do autor de 13/11/2026); a lista é
  * editável, uma URL por linha, e "Padrão" a restaura. Para outra fila, abrir "Montar
  * buscas", escolher bairros (selos ou texto), área mínima e máxima, tipos (loja/ponto,
  * sala, casa comercial, prédio, galpão) e portais, e clicar em "Gerar fila": a lista passa
@@ -49,8 +51,8 @@
  *
  * Uma busca avulsa: abrir a busca no portal, já filtrada (tipo, cidade, bairro), e clicar
  * em "Todas". O script lê a página, rola até o fim, guarda os anúncios e vai para a página
- * seguinte (?o=N no OLX, ?pagina=N no ZAP e no Viva Real, botão "Ver mais" no
- * QuintoAndar) até uma página vir vazia, não trazer anúncio inédito nesta rodada, ler o
+ * seguinte (?o=N no OLX, ?pagina=N no ZAP e no Viva Real, botão "Próxima página" no
+ * NetImóveis, botão "Ver mais" no QuintoAndar) até uma página vir vazia, não trazer anúncio inédito nesta rodada, ler o
  * total da busca ou chegar ao limite. "Inédito" conta só a rodada: refazer uma busca já
  * guardada percorre todas as páginas de novo. No fim, toca um som e baixa o CSV.
  *
@@ -92,11 +94,22 @@
  *               id. Sem ordem=LOWEST_PRICE (menor preço), a ordem "relevância" muda de uma
  *               página para a outra, repete anúncios e deixa outros de fora (12/11/2026,
  *               Pituba: 68 de 74 no ZAP e 70 de 74 no Viva Real; com a ordem, 74 nos dois).
+ *  - NetImóveis (13/11/2026): /locacao/bahia/salvador/bairros/<bairro>/loja?localizacao=BR-BA-salvador-<bairro>--&transacao=locacao&areaMin=100&areaMax=200
+ *               (tipo no caminho: loja, sala, predio, galpao). A página seguinte só abre pelo
+ *               botão "Próxima página", que troca a lista sem recarregar a página: a URL leva
+ *               pag=N com uma assinatura (sig, ts), e pag=N sem ela volta à página 1. 21
+ *               anúncios por página; no fim, o botão fica desabilitado. Cada anúncio aparece duas vezes no HTML (listas de
+ *               celular e de computador): conta uma vez, pelo código. Busca sem resultado:
+ *               "0 Lojas para alugar…" e "Nenhum imóvel encontrado".
  *  - QuintoAndar: /alugar/imovel/<bairro>-salvador-ba-brasil (em Salvador, só residencial)
  *
  * Fontes de cada portal:
  *  - OLX: cards section.olx-adcard (título, preço, condomínio, IPTU, área, bairro, data).
  *  - ZAP e Viva Real (mesmo layout, mesmos ids de anúncio): cards [data-cy="rp-property-cd"].
+ *  - NetImóveis: cards li.list-none com link /imovel/ (título, endereço, bairro, área,
+ *    banheiros, vagas, código, aluguel, condomínio e IPTU). O IPTU vem como "R$ 763 (11)":
+ *    o valor da parcela e, entre parênteses, o número de parcelas; grava-se a parcela, como
+ *    valor mensal (a diferença para o anual ÷ 12 fica abaixo de 1% do custo de ocupação).
  *  - QuintoAndar: JSON da página (__NEXT_DATA__) e respostas de /search/list.
  *
  * Saída: CSV com ";" e UTF-8 com BOM, uma linha por anúncio. Valores em R$ por mês;
@@ -128,7 +141,7 @@
   const LIMITE_FILA = 50; // páginas por busca na fila
   const MAX_RECARGAS = 2; // recargas da mesma página vazia antes do total, antes de encerrar a busca
   const PAUSA_RECARGA = [10000, 20000]; // ms antes de recarregar a página vazia (sorteado)
-  const NOMES_PORTAL = { olx: 'OLX', zap: 'ZAP', vivareal: 'Viva Real', quintoandar: 'QuintoAndar' };
+  const NOMES_PORTAL = { olx: 'OLX', zap: 'ZAP', vivareal: 'Viva Real', netimoveis: 'NetImóveis', quintoandar: 'QuintoAndar' };
 
   const CHAVE_MONTAGEM = 'tcc_aluguel_montagem';
 
@@ -142,13 +155,15 @@
   //    imovel-comercial_comercial, predio_comercial); sem galpão (404).
   //  - ZAP e Viva Real: área em areaMinima e areaMaxima; ordem=LOWEST_PRICE (sem ela, a
   //    ordem muda entre páginas e anúncios ficam de fora).
+  //  - NetImóveis (13/11/2026): tipo no caminho (loja, sala, predio, galpao); área em areaMin
+  //    e areaMax; sem casa comercial.
   // Tipo sem busca num portal fica de fora da fila daquele portal (o painel avisa).
   const TIPOS_BUSCA = {
-    loja: { rotulo: 'loja/ponto', dica: 'Loja, salão ou ponto comercial (OLX: Loja e Outros)', olx: [6, 7], zap: 'loja-salao', vivareal: 'ponto-comercial_comercial' },
-    sala: { rotulo: 'sala', dica: 'Sala ou conjunto comercial (OLX: Escritório)', olx: [1], zap: 'conjunto-comercial-sala', vivareal: 'sala_comercial' },
-    casa: { rotulo: 'casa comercial', dica: 'Casa ou imóvel comercial (só ZAP e Viva Real)', olx: null, zap: 'casa-comercial', vivareal: 'imovel-comercial_comercial' },
-    predio: { rotulo: 'prédio', dica: 'Prédio inteiro (só ZAP e Viva Real)', olx: null, zap: 'predio-inteiro', vivareal: 'predio_comercial' },
-    galpao: { rotulo: 'galpão', dica: 'Galpão ou depósito (só OLX)', olx: [2], zap: null, vivareal: null },
+    loja: { rotulo: 'loja/ponto', dica: 'Loja, salão ou ponto comercial (OLX: Loja e Outros)', olx: [6, 7], zap: 'loja-salao', vivareal: 'ponto-comercial_comercial', netimoveis: 'loja' },
+    sala: { rotulo: 'sala', dica: 'Sala ou conjunto comercial (OLX: Escritório)', olx: [1], zap: 'conjunto-comercial-sala', vivareal: 'sala_comercial', netimoveis: 'sala' },
+    casa: { rotulo: 'casa comercial', dica: 'Casa ou imóvel comercial (só ZAP e Viva Real)', olx: null, zap: 'casa-comercial', vivareal: 'imovel-comercial_comercial', netimoveis: null },
+    predio: { rotulo: 'prédio', dica: 'Prédio inteiro (ZAP, Viva Real e NetImóveis)', olx: null, zap: 'predio-inteiro', vivareal: 'predio_comercial', netimoveis: 'predio' },
+    galpao: { rotulo: 'galpão', dica: 'Galpão ou depósito (OLX e NetImóveis)', olx: [2], zap: null, vivareal: null, netimoveis: 'galpao' },
   };
   // As listas vêm de lista_aluguel.js, lida pelo carregador (@require) antes deste arquivo.
   if (typeof LISTA_ALUGUEL === 'undefined') {
@@ -161,9 +176,9 @@
   const BAIRROS_DESTAQUE = LISTA_ALUGUEL.bairros_destaque;
   const BAIRROS_SALVADOR = LISTA_ALUGUEL.bairros_salvador;
   const BAIRROS_MENU = [...BAIRROS_DESTAQUE, ...BAIRROS_SALVADOR.filter((b) => !BAIRROS_DESTAQUE.includes(b)).sort((a, b) => a.localeCompare(b, 'pt'))];
-  const PORTAIS_BUSCA = ['olx', 'zap', 'vivareal'];
-  // Buscas do plano (montagem padrão): lista_aluguel.js.
-  const MONTAGEM_PADRAO = { ...LISTA_ALUGUEL.montagem_padrao, portais: PORTAIS_BUSCA };
+  const PORTAIS_BUSCA = ['olx', 'zap', 'vivareal', 'netimoveis'];
+  // Buscas do plano (montagem padrão, com os portais dela): lista_aluguel.js.
+  const MONTAGEM_PADRAO = { portais: PORTAIS_BUSCA, ...LISTA_ALUGUEL.montagem_padrao };
 
   // "Rio Vermelho" -> "rio-vermelho"; "Graça" -> "graca" (como os portais escrevem o bairro na URL).
   const slugBairro = (b) => String(b || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -196,6 +211,11 @@
           if (min) q.push(`ss=${min}`);
           if (max) q.push(`se=${max}`);
           urls.push(`https://www.olx.com.br/imoveis/comercio-e-industria/aluguel/estado-ba/salvador/${b}?${q.join('&')}`);
+          continue;
+        }
+        if (p === 'netimoveis') {
+          const q = [`localizacao=BR-BA-salvador-${b}--`, 'transacao=locacao', min && `areaMin=${min}`, max && `areaMax=${max}`].filter(Boolean).join('&');
+          for (const t of comBusca) urls.push(`https://www.netimoveis.com/locacao/bahia/salvador/bairros/${b}/${TIPOS_BUSCA[t].netimoveis}?${q}`);
           continue;
         }
         const q = [min && `areaMinima=${min}`, max && `areaMaxima=${max}`, 'ordem=LOWEST_PRICE'].filter(Boolean).join('&');
@@ -337,6 +357,50 @@
     };
   }
 
+  // NetImóveis: campos = { titulo, href, linhas: [textos do card, na ordem] }. O card não tem
+  // rótulos por campo fora dos números (área, quartos, banheiros, vagas vêm depois do rótulo);
+  // bairro na linha "<bairro>, Salvador", endereço na linha anterior, aluguel na linha "R$ …",
+  // encargos na linha "Condomínio: R$ … • IPTU: R$ … (parcelas)".
+  function normalizarNet(c) {
+    const titulo = limpar(c.titulo);
+    const linhas = (c.linhas || []).map(limpar).filter(Boolean);
+    const depois = (re) => { const i = linhas.findIndex((l) => re.test(semAcento(l))); return i >= 0 ? linhas[i + 1] : null; };
+    // "<bairro>, Salvador"; sem ela, a primeira linha com vírgula depois do título que não é preço nem rótulo.
+    const ehLocal = (l) => /,\s*[^,]+$/.test(l) && !/^R\$|:/.test(l) && l !== titulo;
+    let iLocal = linhas.findIndex((l) => ehLocal(l) && /,\s*salvador$/i.test(l));
+    if (iLocal < 0) iLocal = linhas.findIndex(ehLocal);
+    const local = iLocal >= 0 ? linhas[iLocal] : '';
+    const corte = local.lastIndexOf(',');
+    const endereco = iLocal > 0 && linhas[iLocal - 1] !== titulo ? linhas[iLocal - 1] : '';
+    const preco = numeroBR(linhas.find((l) => /^R\$\s*\d/.test(l)));
+    const encargos = linhas.filter((l) => /^(condom|iptu)/i.test(semAcento(l))).join(' • ');
+    const condominio = valorRotulado(encargos, 'Condom[ií]nio:');
+    const iptu = valorRotulado(encargos, 'IPTU:');
+    const areaM2 = area(depois(/^tamanho do imovel/)) ?? area(titulo);
+    const href = String(c.href || '');
+    return {
+      portal: 'netimoveis',
+      id: (href.match(/\/(\d+)(?:[?#]|$)/) || [])[1] || (linhas.join(' ').match(/C[oó]digo:\s*(\d+)/) || [])[1] || '',
+      url: href.split('?')[0],
+      titulo,
+      tipo: (titulo.match(/^(.*?)\s+(?:para alugar|à venda|para comprar)/i) || [])[1] || tipoPeloTitulo(titulo),
+      operacao: /\/imovel\/locacao-/.test(href) || /para alugar/i.test(titulo) ? 'aluguel' : /\/imovel\/venda-/.test(href) ? 'venda' : operacaoDe(titulo, preco, areaM2),
+      aluguel: preco,
+      condominio,
+      iptu,
+      condominio_iptu: condominio != null && iptu != null ? condominio + iptu : null,
+      area_m2: areaM2,
+      quartos: inteiro(depois(/^quantidade de quartos/)),
+      banheiros: inteiro(depois(/^quantidade de banheiros/)),
+      vagas: inteiro(depois(/^quantidade de vagas/)),
+      bairro: corte > 0 ? local.slice(0, corte).trim() : local,
+      cidade: corte > 0 ? local.slice(corte + 1).trim() : '',
+      endereco,
+      anunciante: '',
+      publicado: NAO_INFORMADO,
+    };
+  }
+
   // QuintoAndar: objeto da casa no __NEXT_DATA__ (rentPrice, condoIptu) ou _source de /search/list (rent, iptuPlusCondominium).
   function normalizarQuinto(h) {
     const aluguel = h.rentPrice ?? h.rent ?? null;
@@ -385,10 +449,16 @@
     if (/zapimoveis\.com\.br$/.test(host)) return 'zap';
     if (/vivareal\.com\.br$/.test(host)) return 'vivareal';
     if (/quintoandar\.com\.br$/.test(host)) return 'quintoandar';
+    if (/netimoveis\.com$/.test(host)) return 'netimoveis';
     return '';
   }
 
-  const paramPagina = (portal) => (portal === 'olx' ? 'o' : 'pagina');
+  const paramPagina = (portal) => (portal === 'olx' ? 'o' : portal === 'netimoveis' ? 'pag' : 'pagina');
+  // Assinatura da paginação do NetImóveis (pag=N vem com sig e ts): fora da URL da busca.
+  const PARAMS_ASSINATURA = ['sig', 'ts'];
+  function semAssinatura(href) {
+    try { const u = new URL(href); PARAMS_ASSINATURA.forEach((k) => u.searchParams.delete(k)); return u.toString(); } catch (e) { return String(href || ''); }
+  }
 
   function paginaAtual(portal, href) {
     const u = new URL(href);
@@ -532,11 +602,12 @@
   }
 
   // URL que a fila abre: a da busca ou, na repetição que retoma, a da página em que a rodada parou
-  // (QuintoAndar não pagina pela URL: recomeça).
+  // (QuintoAndar e NetImóveis não paginam por URL montada: recomeçam).
+  const SEM_PAGINA_NA_URL = ['quintoandar', 'netimoveis'];
   function urlDeAbertura(busca, retomada) {
     try {
       const p = portalDe(new URL(busca).hostname);
-      return retomada?.pagina > 1 && p !== 'quintoandar' ? paginaDaBusca(p, busca, retomada.pagina) : busca;
+      return retomada?.pagina > 1 && !SEM_PAGINA_NA_URL.includes(p) ? paginaDaBusca(p, busca, retomada.pagina) : busca;
     } catch (e) { return busca; }
   }
 
@@ -600,7 +671,7 @@
   function chaveAlvo(url) {
     try {
       const u = new URL(url);
-      for (const k of ['o', 'pagina']) u.searchParams.delete(k);
+      for (const k of ['o', 'pagina', 'pag', ...PARAMS_ASSINATURA]) u.searchParams.delete(k);
       const q = [...u.searchParams.entries()].map(([k, v]) => `${k}=${v}`).sort().join('&');
       return `${chaveBusca(url)}?${q}`;
     } catch (e) { return String(url); }
@@ -674,15 +745,19 @@
     try {
       const u = new URL(href);
       u.searchParams.delete(paramPagina(portal));
+      PARAMS_ASSINATURA.forEach((k) => u.searchParams.delete(k));
       u.hash = '';
       return u.toString();
     } catch (e) { return String(href || ''); }
   }
 
-  const RE_BUSCA_COMERCIAL = /loja-salao|conjunto-comercial|comercio-e-industria|ponto-comercial|casa-comercial|imovel-comercial|galpao|predio-inteiro|imoveis-comerciais|consultorio/;
+  // NetImóveis: o tipo é o último trecho do caminho (/bairros/<bairro>/loja?…).
+  const reNet = (tipos) => `netimoveis\\.com/locacao/[^?#]*/(?:${tipos})(?:[?#]|$)`;
+  const RE_BUSCA_COMERCIAL = new RegExp('loja-salao|conjunto-comercial|comercio-e-industria|ponto-comercial|casa-comercial|imovel-comercial|galpao|predio-inteiro|imoveis-comerciais|consultorio|' + reNet('loja|sala|predio'));
   const RE_BUSCA_RESIDENCIAL = /quintoandar\.com\.br|\/apartamentos?[/_-]|\/casas?[/_-]|kitnet|flat|cobertura/;
   const RE_COMERCIAL = /\b(lojas?|(?:salao|saloes|salas?|pontos?|imove(?:l|is)|predios?|conjuntos?|box) comercia(?:l|is)|galpao|galpoes|depositos?|armazem|escritorios?|consultorios?|andar corporativo|sala para escritorio|sala empresarial|centro empresarial)\b/;
-  const SUBTIPO_BUSCA = [['loja_ponto', /loja-salao|ponto-comercial/], ['sala', /conjunto-comercial|consultorio/], ['galpao', /galpao/], ['predio', /predio-inteiro/]];
+  const SUBTIPO_BUSCA = [['loja_ponto', new RegExp('loja-salao|ponto-comercial|' + reNet('loja'))], ['sala', new RegExp('conjunto-comercial|consultorio|' + reNet('sala'))],
+    ['galpao', /galpao/], ['predio', new RegExp('predio-inteiro|' + reNet('predio'))]];
   const SUBTIPO_TEXTO = [
     ['galpao', /\b(galpao|galpoes|depositos?|armazem)\b/],
     ['predio', /\b(predios? comercia(?:l|is)|predio inteiro)\b/],
@@ -837,7 +912,33 @@
   // Card de cada anúncio lido na página (portal:id → elemento), para os filtros destacarem.
   const cardsDaPagina = new Map();
   const SEL_CARDS = { olx: 'section.olx-adcard', zap: '[data-cy="rp-property-cd"]', vivareal: '[data-cy="rp-property-cd"]' };
-  const contarCards = (portal) => (SEL_CARDS[portal] ? document.querySelectorAll(SEL_CARDS[portal]).length : lerPaginaQuinto().length);
+  const contarCards = (portal) => (portal === 'netimoveis' ? cardsNet().length : SEL_CARDS[portal] ? document.querySelectorAll(SEL_CARDS[portal]).length : lerPaginaQuinto().length);
+
+  // NetImóveis: cada anúncio sai duas vezes no HTML (lista de celular e de computador); fica o
+  // card visível de cada código.
+  function cardsNet() {
+    const porId = new Map();
+    for (const card of document.querySelectorAll('li.list-none')) {
+      const a = card.querySelector('a[href*="/imovel/"]');
+      if (!a || card.parentElement?.closest('li.list-none')) continue;
+      const id = (a.href.match(/\/(\d+)(?:[?#]|$)/) || [])[1] || a.href;
+      if (!porId.has(id) || (card.offsetParent !== null && porId.get(id).offsetParent === null)) porId.set(id, card);
+    }
+    return [...porId.values()];
+  }
+
+  function lerPaginaNet() {
+    cardsDaPagina.clear();
+    return cardsNet().map((card) => registrarCard(normalizarNet({
+      titulo: texto(card, 'h2'),
+      href: card.querySelector('a[href*="/imovel/"]')?.href || '',
+      linhas: String(card.innerText || card.textContent || '').split('\n'),
+    }), card)).filter((a) => a.id);
+  }
+
+  // Botão "Próxima página" do NetImóveis (a URL da página seguinte é assinada pelo site).
+  const botaoProximaNet = () => [...document.querySelectorAll('button, a')]
+    .find((b) => /pr[oó]xima p[aá]gina/i.test(`${b.textContent || ''} ${b.getAttribute('aria-label') || ''}`) && !b.disabled && b.getAttribute('aria-disabled') !== 'true' && b.offsetParent !== null);
 
   function registrarCard(a, card) {
     if (a.id) cardsDaPagina.set(`${a.portal}:${a.id}`, card);
@@ -897,6 +998,7 @@
   function lerPagina(portal) {
     if (portal === 'olx') return lerPaginaOlx();
     if (portal === 'quintoandar') return lerPaginaQuinto();
+    if (portal === 'netimoveis') return lerPaginaNet();
     return lerPaginaZap(portal);
   }
 
@@ -992,7 +1094,7 @@
     guardados = carregar();
     const total = totalResultados();
     const doBairro = alvo ? anuncios.filter((a) => !foraDoBairro(a, alvo)) : anuncios;
-    const novos = guardar(guardados, doBairro, { busca_url: location.href, pagina, total_busca: total, data_coleta: dataLocal(), rodada, alterado_em: Date.now() });
+    const novos = guardar(guardados, doBairro, { busca_url: semAssinatura(location.href), pagina, total_busca: total, data_coleta: dataLocal(), rodada, alterado_em: Date.now() });
     const gravou = salvar(guardados);
     const semResultado = !anuncios.length && semResultadoDeTexto(document.body?.innerText);
     return { anuncios, doBairro, lidos: anuncios.length, novos, gravou, total, fora: anuncios.length - doBairro.length, semResultado };
@@ -1156,7 +1258,7 @@
       status(`Página ${pagina} veio ${lidos ? 'repetida' : 'vazia'} com ${auto.vistos.length} de ${auto.totalBusca} lidos: recarregando (${auto.recargas} de ${MAX_RECARGAS})…`);
       await esperar(sortear(PAUSA_RECARGA));
       if (!lerAuto()) return;
-      if (alvo && portalDe(new URL(alvo).hostname) === portal) location.href = paginaDaBusca(portal, alvo, pagina);
+      if (alvo && portalDe(new URL(alvo).hostname) === portal && !SEM_PAGINA_NA_URL.includes(portal)) location.href = paginaDaBusca(portal, alvo, pagina);
       else location.reload();
       return;
     }
@@ -1174,6 +1276,21 @@
       if (!b) return concluir(auto, 'sem botão "Ver mais"');
       b.click();
       await esperar(2000); // a resposta de /search/list chega depois do clique
+      passoAutomatico();
+      return;
+    }
+    if (portal === 'netimoveis') {
+      // O botão troca a lista sem recarregar a página (13/11/2026): espera a página mudar
+      // (pag na URL ou primeiro card diferente, até 20 s) e segue a rodada nesta mesma aba.
+      const b = botaoProximaNet();
+      if (!b) return concluir(auto, 'sem botão "Próxima página"');
+      const antes = `${location.href}|${cardsNet()[0]?.querySelector('a[href*="/imovel/"]')?.href || ''}`;
+      b.click();
+      for (let i = 0; i < 40; i++) {
+        await esperar(500);
+        if (`${location.href}|${cardsNet()[0]?.querySelector('a[href*="/imovel/"]')?.href || ''}` !== antes) break;
+      }
+      if (!lerAuto()) return;
       passoAutomatico();
       return;
     }
@@ -1213,7 +1330,7 @@
     const texto = el.filaTexto.value;
     gmGravar(CHAVE_FILA_TEXTO, texto);
     const itens = lerItensFila(texto);
-    if (!itens.length) { status('A fila está vazia: uma URL de busca do OLX, ZAP, Viva Real ou QuintoAndar por linha.'); return; }
+    if (!itens.length) { status('A fila está vazia: uma URL de busca do OLX, ZAP, Viva Real, NetImóveis ou QuintoAndar por linha.'); return; }
     const antiga = lerFila();
     if (antiga && antiga.i > 0 && antiga.i < antiga.itens.length && !confirm(`Há uma fila em curso (${antiga.i} de ${antiga.itens.length} buscas). Começar outra do zero?`)) return;
     gravarFila({ itens, i: 0, ativa: true, tentativa: 0, resultados: [], inicio: Date.now() });
@@ -2521,7 +2638,7 @@
     el.filaContagem = kit.selo('');
     const contarFila = () => { el.filaContagem.textContent = `${lerItensFila(el.filaTexto.value).length} buscas`; };
     el.filaTexto = criar('textarea', { value: gmLer(CHAVE_FILA_TEXTO, FILA_PADRAO) || FILA_PADRAO, spellcheck: false,
-      dica: 'Buscas da fila: uma URL por linha (OLX, ZAP, Viva Real ou QuintoAndar), já filtrada; linhas com # são ignoradas',
+      dica: 'Buscas da fila: uma URL por linha (OLX, ZAP, Viva Real, NetImóveis ou QuintoAndar), já filtrada; linhas com # são ignoradas',
       onchange: () => { gmGravar(CHAVE_FILA_TEXTO, el.filaTexto.value); contarFila(); preencherAlvos(); } });
     contarFila();
     el.menu = criarMenu();

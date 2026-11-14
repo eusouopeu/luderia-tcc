@@ -93,6 +93,14 @@ class TestAnunciosAluguel(unittest.TestCase):
         self.assertEqual(b.subtipo_de("comercial", dois, "Imóvel comercial", "Imóvel comercial para alugar"), "outro")
         self.assertEqual(b.subtipo_de("comercial", dois, "Ponto comercial/Loja/Box", "Ponto comercial para alugar"), "loja_ponto")
         self.assertEqual(b.subtipo_de("comercial", url + "?tipos=ponto-comercial_comercial", "Casa", "Casa"), "loja_ponto")
+        # NetImóveis: tipo no fim do caminho; a página (pag) e a assinatura (sig, ts) saem da busca
+        net = "https://www.netimoveis.com/locacao/bahia/salvador/bairros/pituba/loja?localizacao=BR-BA-salvador-pituba--&transacao=locacao&areaMin=100&areaMax=200"
+        self.assertEqual(b.segmento_de(net, "Salão", "Salão para alugar com 167 m²"), ("comercial", "busca"))
+        self.assertEqual(b.subtipo_de("comercial", net, "Salão", "Salão para alugar"), "loja_ponto")
+        self.assertEqual(b.subtipo_de("comercial", net.replace("/loja?", "/sala?"), "Sala", "Sala para alugar"), "sala")
+        self.assertEqual(b.busca_base(net + "&pag=2&sig=abc&ts=1794603626"), net)
+        self.assertEqual(b.FONTE["netimoveis"], "NetImóveis")
+        self.assertTrue(b.RE_ARQUIVO.match("2026-11-13_1530_netimoveis_anuncios_aluguel.csv"))
 
     def test_bairros_oficiais_e_area_6_4(self):
         self.assertEqual(self.df.loc["200", "bairro"], "Caminho das Árvores")
